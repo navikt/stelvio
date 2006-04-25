@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Tjenester - Guide</title>
+	</properties>
+	<body>
+		<section name="Tjenester - Guide">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					Pakken <i>no.trygdeetaten.common.framework.service</i> består av klasser og interface
+					som kan benyttes til å implementere tjenester for å prosessere forretningslogikk,
+					integrasjonslogikk, eller annen type logikk. Komponentene i denne pakken benyttes 
+					i forbindelse med prosessering av tjenester i samme JVM.
+				</p>
+				<p>
+					Pakken <i>no.trygdeetaten.common.framework.ejb</i> inneholder komponenter for å
+					prosessere EJB-tjenester, eventuelt i en annen JVM. Se også 
+					<a href="ServiceLocator.html">Service Locator</a>
+				</p>
+			
+			</subsection>
+			
+			<subsection name="LocalService">
+			
+				<h4>Hvordan implementere en LocalService</h4>
+
+<pre>
+package no.trygdeetaten.business.bidrag.service;
+
+import no.trygdeetaten.common.framework.service.LocalService;
+
+public class HeltallsDivisjon implements LocalService {
+
+   public HeltallsDivisjon() {
+      // TODO: Legg til nødvendig logikk i konstruktøren
+   }
+   
+   public ServiceResponse execute( ServiceRequest request ) throws ServiceFailedException {
+      // Hent ut teller og nevner fra requesten og sjekk for ugyldige verdier
+      // NB! Tar ikke med casting og liknende for å holde eksempelet enkelt
+      int teller = request.get( "teller" );
+      int nevner = request.get( "nevner" );
+      if( nevner == 0 ) {
+         throw new ServiceFailedException( "Kan ikke dele på null!" );
+      }
+      int resultat = teller / nevner;
+      ServiceResponse response = new ServiceResponse();
+      response.set("resultat", resultat);
+      return response;
+   }
+}
+</pre>
+
+				<h4>Hvordan konfigurere en LocalService</h4>
+				
+<pre>
+&lt;beans&gt;
+   ...
+   &lt;bean id="Divider" class="no.trygdeetaten.business.bidrag.service.HeltallsDivisjon" /&gt;
+   ...
+&lt;/beans&gt;			
+</pre>	
+		
+				<h4>Hvordan bruke en LocalService</h4>
+				
+<pre>
+...
+// Bruk en LocalServiceLocator for å slå opp tjenesten
+ServiceLocator services = new BusinessServiceLocator();
+
+// Slå opp ønsket tjeneste
+Service hentOppgave = null;
+
+try {
+   hentOppgave = services.lookup("HentOppgave");
+} catch( ServiceNotFoundException snfe) {
+   // TODO: Legg til feilhåndtering
+}
+
+// Utfør tjenesten
+try {
+	ServiceResponse response = hentOppgave.execute( request );
+} catch( ServiceFailedException sfe) {
+   // TODO: Legg til feilhåndtering
+}
+
+...
+</pre>				
+			
+			</subsection>
+			
+			<subsection name="RemoteServiceLocator">
+			
+				<h4>Hvordan implementere en RemoteServiceLocator</h4>
+
+<pre>
+package no.trygdeetaten.business.bidrag;
+
+import no.trygdeetaten.common.framework.ejb.RemoteServiceLocator;
+
+public final class EnterpriseServiceLocator extends RemoteServiceLocator {
+
+   public EnterpriseServiceLocator() {
+      
+      // Angi hvilken konfigurasjonsfil tjenestene er definert i
+      // Resten er ivaretatt av superklassen
+      super("enterprise-services.xml");
+   }
+}
+</pre>
+
+				<h4>Hvordan konfigurere en RemoteServiceLocator</h4>
+				
+<pre>
+&lt;beans&gt;
+   &lt;bean id="FinnPersonITPS" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription"&gt;
+      &lt;property name="jndiName"&gt; ejb/no/trygdeetaten/integration/tps/FinnPersonITPS &lt;/property&gt;
+      &lt;property name="providerUrl"&gt; localhost &lt;/property&gt;
+      &lt;property name="initialContextFactory"&gt; com.ibm.websphere.naming.WsnInitialContextFactory &lt;/property&gt;
+      &lt;property name="urlPkgPrefixes"&gt; com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming &lt;/property&gt;
+      &lt;property name="securityPrincipal"&gt; aspecialuser &lt;/property&gt;
+      &lt;property name="securityCredentials"&gt; hissecretpassword &lt;/property&gt;
+      &lt;property name="cacheable"&gt; false &lt;/property&gt;
+   &lt;/bean&gt;
+&lt;/beans&gt;			
+</pre>
+		
+				<h4>Hvordan bruke en RemoteServiceLocator</h4>
+				
+<pre>
+...
+// Opprett en instans av ønsket implementasjon
+ServiceLocator services = new EnterpriseServiceLocator();
+
+// Slå opp ønsket tjeneste
+Service finnPerson = null;
+
+try {
+   finnPerson = services.lookup("FinnPersonITPS");
+} catch( ServiceNotFoundException snfe) {
+   // TODO: Legg til feilhåndtering
+}
+
+// Utfør tjenesten
+try {
+	ServiceResponse response = finnPerson.execute( request );
+} catch( ServiceFailedException sfe) {
+   // TODO: Legg til feilhåndtering
+} catch( RemoteException re) {
+   // TODO: Legg til feilhåndtering
+}
+
+...
+</pre>			
+			</subsection>
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.3  2004/06/16 14:28:59  psa2920
+Tatt bort tomme linker
+
+Revision 1.2  2004/06/16 14:07:45  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>			
+		</section>
+	</body>
+</document>
+

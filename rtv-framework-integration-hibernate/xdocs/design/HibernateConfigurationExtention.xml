@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Detaljert Design</title>
+	</properties>
+	<body>
+	<section name="Hibernate Utvidelse for meldingshåndtering">
+		<subsection name="Oversikt">
+		 	<p>Det er valgt å benytte Hibernate for konfigurasjon av meldingsbaserte tjenester. For
+			å kunne støtte dette var nødvendig å utvide Hibernate konfigurasjonen.
+			Dette er gjort ved å benytte <b>offset</b> og <b>length</b>. Det
+			er i hovedsak kun nødvendig å gjøre noen utvidelser for å få inn disse verdiene, men grunnet
+			oppbygning av klassestrukturen i Hibernate var det nødvendig å kopiere enkelte klasser fra
+			Hibernate og gjøre utvidelser.
+			</p>
+			<table>
+				<tr>
+					<td><b>Navn</b></td>
+					<td>Configuration</td>
+				</tr>
+				<tr>
+					<td><b>Type</b></td>
+					<td>pojo</td>
+				</tr>
+				<tr>
+					<td><b>Beskrivelse</b></td>
+					<td>Denne er en kopi av Hibernate sin Configuration, grunnet protected metoder, var det nødvendig
+					med en kopi for å kunne nå enkelte metoder.</td>
+				</tr>
+			</table>
+			<h4>Klassediagram</h4>
+			<img src="../images/design/HibernateExtentionDiagram.png"/>
+		</subsection>
+		<subsection name = "Bruk">
+			<a name="bruk"/>
+			<p>Det skal ikke være nødvendig å bruke disse klassene direkte, funksjonaliteten i disse
+			er gjort tilgjengelig gjennom <a href="HibernateConfigurationHelpers.html">hjelpe klasser</a></p>
+		</subsection>
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.3  2004/06/18 10:29:22  tkc2920
+Rettet opp skrivefeil etter kommentarer fra Hårvard Bjåstad
+
+Revision 1.2  2004/06/17 07:59:39  tkc2920
+Lagt in ny endringslogg for automatisk logg ved insjekking i CVS
+]]>			
+</source>
+			</subsection>
+	</section>
+	</body>
+</document>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+	<extend>../rtv-framework-main/project.xml</extend>
+
+
+	<id>rtv-framework-logging-java</id>
+	<shortDescription>RTV - Rammeverk for logging</shortDescription>
+	<name>rtv-framework-logging-java</name>
+
+	<!-- 
+    Inherit from main
+    <currentVersion/> -->
+
+
+	<!-- jar files the project is dependent on -->
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>mx4j</groupId>
+			<artifactId>mx4j-jmx</artifactId>
+			<version>1.1</version>
+		</dependency>
+	</dependencies>
+
+
+</project>

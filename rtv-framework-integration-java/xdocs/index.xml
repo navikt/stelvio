@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<link REL="SHORTCUT ICON" HREF="/images/logo.ico"></link>
+		<title>J2EE-rammeverk - Integrasjonstjenester</title>
+	</properties>
+	<body>
+		<!-- Don't remove the next line, it is used to substitute compiler errors if maven site fails -->
+		<!--ERRORS-->
+		<section name="J2EE-rammeverk - Integrasjonstjenester">
+		
+			<subsection name="Oversikt">
+			
+				<p>
+					Dette prosjektet inneholder integrasjonstjenestene i Trygdeetatens J2EE-rammeverk.
+					Komponentene og tjenestene er av en slik karakter at de kun skal kunne benyttes i 
+					integrasjonslaget. Figuren nedenfor viser hvordan komponentene i integrasjonslaget
+					implementerer "best practice" designmønstre og flyten av kontroll mellom dem.
+					<img src="images/design/arch_components_integration_overview.gif"/><br/>
+				</p>
+				
+			</subsection>
+			
+			<subsection name="Beskrivelse">
+			
+				<p>
+					Et objekt av typen <i>Business Service</i> kan aksessere objekter av typen 
+					<i>Integration Service</i> på følgende måte.
+				</p>
+				<p>
+					<i>Integration Service</i> objektene mottar <i>ServiceRequest</i> objekter som input fra
+					klientene og returnerer <i>ServiceResponse</i> objekter tilbake. 
+				</p>
+				<p>
+					<i>ServiceRequest</i> objektet inneholder et tjenstenavn, som kan benyttes av et 
+					<i>IntegrationFacade</i> objekt for å lokalisere hvilken <i>Integration Service</i> klientene
+					etterspør.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Klassediagram">
+			
+				<p>
+					Diagrammet nedenfor viser arv og avhengigheter mellom de sentrale komponentene 
+					i integrasjonslaget. Interne EJB/RMI klasser er utelatt for å forenkle oversikten.
+					<br/><img src="images/design/IntegrationServicesClass.gif"/><br/>
+				</p>	
+			
+			</subsection>
+			
+			<subsection name="Sekvensdiagram">
+							
+				<p>
+					Diagrammet nedenfor viser hvordan avhengighetene mellom objektene settes vha 
+					<i>dependency injection</i>, samt hvordan et objekt av typen <i>Business Service</i> 
+					kan benytte et <i>IntegrationDelegate</i> objekt for å delegere kall til et objekt av
+					typen <i>Integration Service</i>.
+					<br/><img src="images/design/IntegrationServiceSequence2.gif"/><br/>
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Liste over integrasjonstjenester">
+				<table>
+					<tr>
+						<th>Tjeneste</th>
+						<th>Design</th>
+						<th>Guide</th>
+						<th>Javadoc</th>
+					</tr>
+					
+					<tr>
+						<td>Integration Delegate</td>
+						<td><a href="design/IntegrationDelegate.html">Design</a></td>
+						<td><a href="guide/IntegrationDelegate.html">Guide</a></td>
+						<td><a href="apidocs/index.html">no.trygdeetaten.business.framework.integration</a></td>
+					</tr>
+					
+					<tr>
+						<td>Service Locator</td>
+						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/design/ServiceLocator.html">Design</a></td>
+						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/guide/ServiceLocator.html">Guide</a></td>
+						<td><a href="apidocs/index.html">no.trygdeetaten.common.framework.service</a></td>
+					</tr>
+					
+					<tr>
+						<td>Integration Facade</td>
+						<td><a href="design/IntegrationFacade.html">Design</a></td>
+						<td><a href="guide/IntegrationFacade.html">Guide</a></td>
+						<td><a href="apidocs/index.html">no.trygdeetaten.integration.framework.facade</a></td>
+					</tr>
+					
+					<tr>
+						<td>Integration Service</td>
+						<td><a href="design/IntegrationService.html">Design</a></td>
+						<td><a href="guide/IntegrationService.html">Guide</a></td>
+						<td><a href="apidocs/index.html">no.trygdeetaten.integration.framework.service</a></td>
+					</tr>
+					
+					<tr>
+						<td>Feilhåndtering</td>
+						<td colspan="2"><a href="design/ErrorHandling.html">Design og Guide</a></td>
+						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/apidocs/no/trygdeetaten/common/framework/error/package-summary.html">no.trygdeetaten.common.framework.error</a></td>
+					</tr>
+					
+					<tr>
+						<td>Transaksjonshåndtering</td>
+						<td><a href="http://hpapt03/multiproject/rtv-framework-business-java/design/Transactions.html">Design</a></td>
+						<td><a href="http://hpapt03/multiproject/rtv-framework-business-java/guide/Transactions.html">Guide</a></td>
+						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/apidocs/no/trygdeetaten/common/framework/ejb/package-summary.html">no.trygdeetaten.common.framework.ejb</a></td>
+					</tr>
+										
+				</table>
+			
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.8  2004/06/18 13:34:41  psa2920
+endret beskrivelse og restrukturert etter QA-gjennomgang
+
+Revision 1.7  2004/06/18 13:09:14  psa2920
+la til endringslogg og oppdaterte linker
+]]>			
+</source>
+			</subsection>				
+		</section>
+	</body>
+</document>
+     

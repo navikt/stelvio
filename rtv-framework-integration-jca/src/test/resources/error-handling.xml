@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<!--
+	Error Handling Configuration is used by the ErrorHandler
+-->
+<beans>
+	<!-- <bean id="ErrorHandler" class="no.trygdeetaten.common.framework.error.DefaultHandlerImpl"/> -->
+
+	<bean id="RemoteServiceLocator" class="no.trygdeetaten.common.framework.ejb.RemoteServiceLocator" />
+
+	<bean id="InitErrorHandler" class="no.trygdeetaten.common.framework.error.InitErrorHandler">
+		<property name="serviceLocator">
+			<ref bean="RemoteServiceLocator" />
+		</property>
+	</bean>
+
+	<bean id="ErrorHandler" class="no.trygdeetaten.common.framework.error.LogHandlerImpl" init-method="init">
+		<property name="delegate">
+			<ref bean="InitErrorHandler" />
+		</property>
+		<property name="systemId">
+			<value>T666</value>
+		</property>
+		<property name="systemLanguage">
+			<value>J2EE</value>
+		</property>
+		<property name="systemName">
+			<value>BISYS</value>
+		</property>
+		<property name="datePattern">
+			<value>yyyyMMdd</value>
+		</property>
+		<property name="timePattern">
+			<value>HHmmss</value>
+		</property>
+	</bean>
+
+</beans>
+

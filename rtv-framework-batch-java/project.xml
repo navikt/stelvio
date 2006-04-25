@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+
+    <extend>../rtv-framework-main/project.xml</extend>
+
+    <id>rtv-framework-batch-java</id>
+
+    <shortDescription>RTV - Rammeverk for batch</shortDescription>
+
+    <name>rtv-framework-batch-java</name> 
+
+    <dependencies>
+		<dependency>
+			<groupId>rtv-framework</groupId>
+			<artifactId>rtv-framework-common-java</artifactId>
+			<version>${pom.currentVersion}</version>
+			<properties>
+				<eclipse.dependency>true</eclipse.dependency>
+			</properties>
+		</dependency>		
+		<dependency>
+			<groupId>rtv-framework</groupId>
+			<artifactId>rtv-framework-common-test</artifactId>
+			<version>${pom.currentVersion}</version>
+			<properties>
+				<eclipse.dependency>true</eclipse.dependency>
+			</properties>
+		</dependency>
+    </dependencies>
+
+</project>

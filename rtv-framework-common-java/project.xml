@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+	<extend>${basedir}/../rtv-framework-main/project.xml</extend>
+
+	<!-- a unique name for this project -->
+	<id>rtv-framework-common-java</id>
+	<!-- a short but descriptive name for the project -->
+	<name>rtv-framework-common-java</name>
+
+	<!-- details about the organization that 'owns' the project -->
+	<shortDescription>RTV - Rammeverk fellestjenester</shortDescription>
+
+	<package>no.trygdeetaten.common.framework</package>
+
+	<!-- 
+	    Inherit from main
+	    <currentVersion/> -->
+
+	<!-- jar files the project is dependent on -->
+	<dependencies>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>mx4j</groupId>
+			<artifactId>mx4j-jmx</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>was</groupId>
+			<artifactId>runtime</artifactId>
+			<version>5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>was</groupId>
+			<artifactId>ecutils</artifactId>
+			<version>5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>was</groupId>
+			<artifactId>wsexception</artifactId>
+			<version>5.1</version>
+		</dependency>
+	</dependencies>
+
+</project>

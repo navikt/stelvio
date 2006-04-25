@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Ytelsesmåling - Design</title>
+	</properties>
+	<body>
+		<section name="Ytelsesmåling - Design">
+
+			<subsection name="Oversikt">
+
+				<p>
+					Ytelsesmålinger benyttes for å måle prosesseringstiden internt i arkitekturen og 
+					applikasjonskomponentene. Resultatene kan benyttes for å identifisere flaskehalser 
+					og komponenter med dårlig ytelse. Ytelsesmålinger foretas normalt ikke i ordinær drift,
+					men underderveis i utviklings- og testfasen, eller ved eventuelle behov.
+				</p>
+				
+			</subsection>
+			
+			<subsection name="Beskrivelse">
+			
+				<h4>Monitor</h4>
+				<p>
+					Interface som definerer metodene i monitoren for å starte, avslutte og feile monitoreringen.
+				</p>
+				
+				<h4>DefaultMonitorImpl</h4>
+				<p>
+					En default implementasjon som ikke monitorerer.
+				</p>
+
+				<h4>LogMonitorImpl</h4>
+				<p>
+					En implementasjon som logger ytelsen vha loggrammeverket.
+				</p>
+
+				<h4>AbstractMonitor</h4>
+				<p>
+					En abstrakt klasse for monitorimplementasjoner som ønsker å konfigurere nivået på monitoreringen.
+				</p>
+
+				<h4>PerformanceMonitor</h4>
+				<p>
+					Den konkrete klassen som benyttes av arkitekturkomponentene til å logge. Klassen aksesseres vha 
+					statiske metoder og delegerer alle kall til til en konkret implementasjonen av Monitor.
+				</p>
+
+				<h4>PerformanceMonitorFilter</h4>
+				<p>
+					Et intercepting filter som monitorerer total responstid fra en HttpServletRequest treffer 
+					applikasjonen, til applikasjonen har generert ferdig HttpServletResponsen.
+				</p>
+				
+				<h4>MonitorKey</h4>
+				<p>
+					En nøkkel som benyttes for å beskrive hva som monitoreres og nivået som monitoreres. Se 
+					<a href="../guide/PerformanceMonitoring.html">guide</a> for detaljert beskrivelse av hvordan 
+					nivået kan konfigureres.
+				</p>
+				
+				<h4>TimeElement</h4>
+				<p>
+					Klasse som benyttes av LogMonitorImpl for å skille intern prosesseringstid 
+					fra ekstern prosesseringstid.
+				</p>
+				
+				<h4>performance-monitoring.xml</h4>
+				<p>
+					Konfigurasjonsfil benyttet av PerformanceMonitor for å konfigurere monitoreringsnivå og
+					hvilken implementasjon av Monitor som skal benyttes.
+				</p>
+
+			</subsection>
+
+			<subsection name="Klassediagram">
+
+				<img src="../images/design/PerformanceMonitoringClass.gif" />
+
+			</subsection>
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/06/21 16:09:39  psa2920
+la til klassediagram og klassebeskrivelser
+
+Revision 1.1  2004/06/18 13:20:36  psa2920
+la til mal for design av ytelsesmåling
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

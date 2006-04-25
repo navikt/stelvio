@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<link REL="SHORTCUT ICON" HREF="/images/logo.ico"></link>
+		<title>J2EE-rammeverk - Presentasjonstjenester</title>
+	</properties>
+	<body>
+		<!-- Don't remove the next line, it is used to substitute compiler errors if maven site fails -->
+		<!--ERRORS-->
+		<section name="J2EE-rammeverk - Presentasjonstjenester">
+		
+			<subsection name="Oversikt">
+			
+			<p>
+				Dette prosjektet inneholder presentasjonstjenestene i Trygdeetatens J2EE-rammeverk.
+				Komponentene og tjenestene er av en slik karakter at de kun skal kunne benyttes i 
+				presentasjonslaget. Figuren nedenfor viser hvordan komponentene i presentasjonslaget
+				implementerer "best practice" designmønstre og flyten av kontroll mellom dem.
+				<img src="images/design/arch_components_web_overview.gif"/><br/>
+			</p>
+
+			</subsection>
+
+			<subsection name="Beskrivelse">
+			<p>
+				Presentasjonslaget består mesteparten av rammeverket Jakarta Struts og tilpasninger som er gjort for bruk her.
+				I tillegg brukes en liten del av Spring til konfigurering. Dette dekker kraven til Overordnet design som er vist
+				i figuren ovenfor.
+				<br/>
+				I Struts 1.1 som skal brukes er ActionServlet implementeringen av Front Controller. 
+				Det er en liten klasse som tar hand om forespørselen og	sender den videre til RequestProsessor
+				som er Struts sin Application Controller. RequestProsessor har mange funksjoner som kan
+				overrides hvis tilleggs funksjonalitet trenges.
+				<br/>
+				Service to Worker er implementert av Action klassen og utvides av den enkelte action som skal utføres.
+				<br/>
+				View Helper er en FormBean som holder i informasjonen som formidles mellom web klienten og presentasjonslaget.
+				I Struts er det enten en egen klasse for hver form eller, fra Struts 1.1, en dynamisk klasse som
+				defineres i Struts konfigurasjonsfil. Her skal dynamisk form brukes der mulig.
+				<br/>
+				I JSP siden brukes Taglibs for at gjøre koden mer dynamisk. Logikken ligger i bibliotekene isteden for
+				direkte i JSP siden.
+				<br/>
+				Composite View og Sub-View er presentasjonsdelen av arkitekturen. Den delen som brukes av
+				arkitekturen for at generere HTML kode som sendes til web klienten.  
+				Tiles brukes for å sette sammen forskjellige presentasjonsdeler til en helhet. 
+				<br/>
+				BussinesDelegate er et objekt som bruker Service Locator for å finne riktig tjeneste i tjenestelaget.
+				BussinesDelegate formidler et Transfer Object ned til mottagende tjeneste.
+			</p>			
+			</subsection>
+			
+			<subsection name="Liste over presentasjonstjenester">
+				<p>
+					Design og guide for tjenester i presentasjonslaget. For detaljert beskrivelse av tjenestene se <a href="#javadoc">javadoc</a>.
+				</p>
+				<table>
+					<tr>
+						<th>Tjeneste</th>
+						<th>Design</th>
+						<th>Guide</th>
+						<th>Beskrivelse</th>
+					</tr>
+					<tr>
+						<td>Action - Form</td>
+						<td><a href="design/ActionForm.html">Design</a></td>
+						<td><a href="guide/ActionForm.html">Guide</a></td>
+						<td>Action er utførende klasse og Form inneholder transportdata fra klienten</td>
+					</tr>
+					<tr>
+						<td>Validering</td>
+						<td><a href="design/Validering.html">Design</a></td>
+						<td><a href="guide/Validering.html">Guide</a></td>
+						<td>Validering av Form data sendt fra klient</td>
+					</tr>
+					<tr>
+						<td>Tiles</td>
+						<td><a href="design/Tiles.html">Design</a></td>
+						<td><a href="guide/Tiles.html">Guide</a></td>
+						<td>Enkelt portalrammeverk for sammenslåing og layout av websider</td>
+					</tr>
+					<tr>
+						<td>Taglibs</td>
+						<td><a href="design/Taglibs.html">Design</a></td>
+						<td><a href="guide/Taglibs.html">Guide</a></td>
+						<td>Biblioteker for fremvisningslogikk</td>
+					</tr>
+					<tr>
+						<td>Feilhåndtering</td>
+						<td><a href="design/Feilhandtering.html">Design</a></td>
+						<td><a href="guide/Feilhandtering.html">Guide</a></td>
+						<td>Feilhåndteringsmekanismer i presentasjonslaget</td>
+					</tr>
+					<tr>
+						<td>Navigasjon</td>
+						<td><a href="design/Navigering.html">Design</a></td>
+						<td><a href="guide/Navigering.html">Guide</a></td>
+						<td>Navigasjonsmekanismer og muligheter i presentasjonslaget</td>
+					</tr>
+				</table>
+			
+			</subsection>
+
+			<subsection name="Javadoc"><a name="Javadoc"/>
+				<p>
+					Her er javadocen for klasser og metoder i presentasjonstjenestene.
+					<br/>
+					<a href="apidocs/index.html">no.trygdeetaten.web.framework</a>
+				</p>
+			</subsection>
+
+			<subsection name="Utviklingshåndbok">
+				<p>
+					Her ligger dokumentasjon og standarder som ikke har en naturlig plass i Guidene ovenfor.
+					Men meste informasjonen om utvikling finnes i guidene.
+					<br/>
+					<a href="guide/KonfOgStandard.html">Konfigurasjon og Standarder</a>
+				</p>
+
+			</subsection>
+
+			<subsection name="HOWTO's">
+				<p>
+					Her finnes korte howto som gir en enkel og kort innføring i forskjellige områder
+					til bruk for en snabb oppstart i programmeringen. Det skal være en kort beskrivelse av hva
+					hvert enkelt delområde skal løse og et kodeeksempel.
+					<br/>
+					Det ligger mye nyttig informasjon i guidene over. 
+					<br/>
+					For Form, Validering og Navigering se guidene.
+					<table>
+						<tr>
+							<th>HowTo</th>
+							<th>Beskrivelse</th>
+						</tr>
+						<tr>
+							<td><a href="howto/ActionHowto.html">Kode en Action</a></td>
+							<td>
+								Et eksempel på en Actionklasse med kall på servicer i forretninglaget.
+							</td>
+						</tr>
+						<tr>
+							<td><a href="howto/TestingHowto.html">Testing</a></td>
+							<td>
+								Testing av kode som lages i presentasjonslaget ved bruk av StrutsTestCase.
+							</td>
+						</tr>
+					</table>
+				</p>
+			</subsection>
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.17  2004/08/04 10:46:41  jla2920
+Fjernet navigering howto. Info ligger i guiden.
+
+Revision 1.16  2004/08/03 14:32:31  jla2920
+Lagt formHowto til guiden
+
+Revision 1.15  2004/07/28 14:37:56  jla2920
+Lagt til Howto ref
+
+Revision 1.14  2004/06/18 13:10:20  jla2920
+Oppdatert etter review og satt inn ny endringslogg
+]]>			
+</source>
+			</subsection>
+
+			
+		</section>
+	</body>
+</document>
+     

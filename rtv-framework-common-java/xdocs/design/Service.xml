@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Tjenester - Design</title>
+	</properties>
+	<body>
+		<section name="Tjenester - Design">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					Pakken <i>no.trygdeetaten.common.framework.service</i> består av klasser og interface
+					som kan benyttes til å implementere tjenester for å prosessere forretningslogikk,
+					integrasjonslogikk, eller annen type logikk. Komponentene i denne pakken benyttes 
+					i forbindelse med prosessering av tjenester i samme JVM.
+				</p>
+				<p>
+					Pakken <i>no.trygdeetaten.common.framework.ejb</i> inneholder komponenter for å
+					prosessere EJB-tjenester, eventuelt i en annen JVM. Se også 
+					<a href="ServiceLocator.html">Service Locator</a>
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Klassediagram">
+			
+				<p>
+					Diagrammet viser sammenhengen mellom designmønstrene <i>Service Delegate</i>, 
+					<i>Service Locator</i> og <i>Service</i>, samt hvordan <i>Transfer Object</i>
+					benyttes for å sende data til og fra en tjeneste.
+				</p>
+			
+				<img src="../images/design/ServiceClass.gif"/>
+			
+			</subsection>
+			
+			<subsection name="Implementasjon">
+			
+				<h4>Service</h4>
+				
+				<table>
+					<tr>
+						<td><b>Navn</b></td>
+						<td>Service</td>
+					</tr>
+					<tr>
+						<td><b>Type</b></td>
+						<td>Interface</td>
+					</tr>
+					<tr>
+						<td><b>Pakke</b></td>
+						<td>no.trygdeetaten.common.framework.service</td>
+					</tr>
+					<tr>
+						<td><b>Beskrivelse</b></td>
+						<td>
+							Generisk interface som implementeres av alle klasser som
+							utfører logikk som representerer en tjeneste. Interfacet har ingen 
+							metoder og er derfor kun et "marker" interface. 
+						</td>
+					</tr>
+					<tr>
+						<td><b>Implementerer</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Arver fra</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Avhengig av</b></td>
+						<td>-</td>
+					</tr>
+				</table>
+				
+				<h4>LocalService</h4>
+				
+				<table>
+					<tr>
+						<td><b>Navn</b></td>
+						<td>LocalService</td>
+					</tr>
+					<tr>
+						<td><b>Type</b></td>
+						<td>Interface</td>
+					</tr>
+					<tr>
+						<td><b>Pakke</b></td>
+						<td>no.trygdeetaten.common.framework.service</td>
+					</tr>
+					<tr>
+						<td><b>Beskrivelse</b></td>
+						<td> 
+							Interface som implementeres av klasser som utfører logikk
+							som representerer en tjeneste som prosesseres lokalt.
+						</td>
+					</tr>
+					<tr>
+						<td><b>Implementerer</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Arver fra</b></td>
+						<td>Service</td>
+					</tr>
+					<tr>
+						<td><b>Avhengig av</b></td>
+						<td>ServiceRequest, ServiceResponse, ServiceFailedException</td>
+					</tr>
+				</table>
+				
+				<h5>	Metoder: </h5>
+				
+				<table>
+					<tr>
+						<th>TYPE</th>
+						<th>NAVN</th>
+						<th>PARAMETERE</th>
+						<th>BESKRIVELSE</th>
+					</tr>
+					<tr>
+						<td>ServiceResponse</td>
+						<td>execute</td>
+						<td>ServiceRequest</td>
+						<td>
+							Utfører prosessering av logikken som implementeres av den lokale tjenesten.
+							ServiceFailedException kastes dersom prosesseringen feiler.
+						</td>
+					</tr>			
+				</table>
+				
+				<h4>ServiceDelegate</h4>
+				
+				<table>
+					<tr>
+						<td><b>Navn</b></td>
+						<td>ServiceDelegate</td>
+					</tr>
+					<tr>
+						<td><b>Type</b></td>
+						<td>Interface</td>
+					</tr>
+					<tr>
+						<td><b>Pakke</b></td>
+						<td>no.trygdeetaten.common.framework.service</td>
+					</tr>
+					<tr>
+						<td><b>Beskrivelse</b></td>
+						<td> 
+							ServiceDelegate er en proxy som benyttes for å innkapsle og skjule
+							lokalisering og aksessering av andre tjenester. ServiceDelegate 
+							implementeres av klasser som benytter en <i>Service Locator</i> for
+							å lokalisere tjenester.
+						</td>
+					</tr>
+					<tr>
+						<td><b>Implementerer</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Arver fra</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Avhengig av</b></td>
+						<td>-</td>
+					</tr>
+				</table>
+				
+				<h5>	Metoder: </h5>
+				
+				<table>
+					<tr>
+						<th>TYPE</th>
+						<th>NAVN</th>
+						<th>PARAMETERE</th>
+						<th>BESKRIVELSE</th>
+					</tr>
+					<tr>
+						<td>void</td>
+						<td>setServiceLocator</td>
+						<td>ServiceLocator</td>
+						<td>
+							Tilordner en instans av ServiceLocator til et objekt som implementerer dette interfacet.
+						</td>
+					</tr>			
+				</table>
+						
+			</subsection>
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.3  2004/06/16 14:28:59  psa2920
+Tatt bort tomme linker
+
+Revision 1.2  2004/06/16 13:53:01  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

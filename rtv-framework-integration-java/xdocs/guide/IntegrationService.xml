@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Guide IntegrationService</title>
+	</properties>
+	<body>
+		<section name="Guide IntegrationService">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>IntegrationService</i> er en mal for hvordan integrasjonstjenester skal implementeres. 
+					En integrasjonstjeneste implementerer logikk for å aksessere eksterne systemer.
+				</p>
+				
+			</subsection>			
+						
+			<subsection name="Retningslinjer for implementasjon">
+			
+				<h4>Hvordan implementere en integrasjonstjeneste?</h4>
+				<p>
+					Alle klasser som implementerer integrasjonslogikk 
+					skal følge retningslinjene som er skissert nedenfor.
+				</p>
+				<ul>
+					<li> 
+						Klassene skal arve 
+						<a href="../apidocs/no/trygdeetaten/integration/framework/service/IntegrationService.html">
+						no.trygdeetaten.integration.framework.service.IntegrationService</a> <br/>
+					</li>
+					<li> 
+						Pakken som klassene legges i skal navngis etter følgende standard: <br/>
+						no.trygdeetaten.integration.framework.<font 
+						color="blue">[API]</font><br/>
+					</li>
+					<li>
+						Klassennavn skal være på norsk, men uten de norske tegnene <i>æ</i>,<i>ø</i> og <i>å</i>. 
+						Disse bokstavene erstattes hhv av <i>e</i>, <i>o</i> og <i>a</i>. <br/>
+					</li>
+					<li>
+						Det skal ikke implementeres klassevariabler eller instansvariabler i tjenestene, 
+						kun lokale variabler deklarert inne i metodene. Dette er viktig for å sikre at
+						funksjonaliteten er "thread safe".<br/>
+					</li>
+					<li>
+						Hver tjeneste må ha en default kontruktør uten parametre (f.eks. 
+						<code>public OpprettOppgaveService() {...}</code>) for at tjenestene skal kunne instansieres
+						dynamisk vha reflection.<br/>
+					</li>
+					<li>
+						Referanser til andre klasser skal unngås så langt som mulig. Benytt referanser til 
+						interface istedenfor som vist i eksempelet nedenfor. Dette fremmer løskobling og 
+						testbarhet av klassene. <br/>
+					</li>
+				</ul>
+				
+				<p>
+					Forretningstjenestene refererer ikke direkte til integrasjonstjenestene, men til en
+					lokal <i>IntegrationDelegate</i>. Et <i>IntegrationDelegate</i> objekt benytter en 
+					<i>RemoteServiceLocator</i> for å lokalisere integrasjonsfasaden, og delegerer prosessering 
+					av integrasjonslogikken til den.
+				</p>
+				<p>
+					Eksempelet nedenfor viser hvordan vi kan implementere <i>AvsluttOppgaverService</i> tjenesten til å
+					benytte den eksterne integrasjonstjenesten <i>FinnPersonerService</i>.
+				</p>
+				<h5>AvsluttOppgaverService.java:</h5>
+<source><![CDATA[
+package no.trygdeetaten.business.saksbehandling.service.oppgave;
+
+import no.trygdeetaten.common.framework.service.LocalService;
+import no.trygdeetaten.common.framework.service.ServiceFailedException;
+import no.trygdeetaten.common.framework.service.ServiceRequest;
+import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.trygdeetaten.business.framework.service.BusinessService;
+
+public class AvsluttOppgaverService extends BusinessService {
+
+	// Integrasjonstjenestene deklareres som LocalService for å løskoble komponentene og 
+	// tillate at ulike implementasjoner av integrasjonstjenestene benyttes. 
+	// Dette oppnås derfor ved konfigurasjonsendring istedenfor kodeendring.
+	// En integration delegate benyttes for å delegere prosessering av FinnPersonerService
+	// til integrasjonsfasaden
+	private LocalService delegate = null;
+	
+	// default konstruktør som benyttes av <i>Spring Framework</i> for å instansiere objektet
+	public AvsluttOppgaverService(){
+		super();
+	}
+	
+	// Metode som benyttes av <i>Spring Framework</i> for sette avhengigheten (dependency injection)
+	public void setDelegate(LocalService delegate ){
+		this.delegate = delegate;
+	}
+	
+	// Metoden som implementerer forretningslogikken
+	protected ServiceResponse doExecute( ServiceRequest request ) throws ServiceFailedException {
+	   ...   
+	   // For kunne delegere prosessering av FinnPersonerService til integrasjonsfasaden, 
+	   // må vi informere fasaden om at dette er tjenesten vi ønsker å aksessere
+	   ServiceRequest input = new ServiceRequest("FinnPersonerService");   
+	   try {
+	      ServiceResponse output = delegate.execute( input );
+	      ...
+	   } catch( ServiceFailedException sfe ) {
+	      // Feilhåndtering
+	   }
+	   ...
+	}
+}
+]]></source>	
+								
+				<h4>Hvordan konfigurere en integrasjonstjeneste?</h4>
+				<p>
+					Integrasjonstjenester konfigureres ikke på samme måte som forretningstjenester, fordi disse 
+					tjenestene potensielt kan prosessere i et annet miljø enn forretningstjenestene.
+				</p>
+				
+				<h5>application-services.xml:</h5>
+				<p>
+					<i>application-services.xml</i> definerer hvilke lokale tjenester som skal være tilgjengelig 
+					under forretningsfasaden. En <i>BusinessFacadeBean</i> benytter <i>ApplicationServiceLocator</i> 
+					med referanse til denne konfigurasjonsfilen.
+				</p>
+				<p>
+					Forretningstjenestene refererer ikke direkte til de eksterne integrasjonstjenestene, men til en
+					lokal <i>IntegrationDelegate</i>. Eksempelet nedenfor viser hvordan denne avhengigheten kan konfigureres.
+				</p>
+<source><![CDATA[
+<beans>
+   ...
+   <!-- Forretningstjenesten -->
+   <bean id="AvsluttOppgaverService" class="no.trygdeetaten.business.saksbehandling.service.oppgave.AvsluttOppgaverService">
+      <property name="finnPersoner"><ref bean="IntegrationDelegate"/></property>
+   </bean>
+   ...
+   <!-- Innkapslinger av integrasjonsbussen -->
+   <bean id="IntegrationDelegate"   class="no.trygdeetaten.business.framework.integration.IntegrationDelegate" />
+   ...
+</beans>			
+]]></source>
+				
+				<h5>distributed-services.xml:</h5>
+				<p>
+					<i>distributed-services.xml</i> definerer hvilke distribuerte tjenester som skal være tilgjengelig.
+					I presentasjonslaget benytter en <i>BusinessDelegate</i> en <i>RemoteServiceLocator</i> som har 
+					referanse til denne filen. I forretningslaget benytter en <i>IntegrationDelegate</i> en 
+					<i>RemoteServiceLocator</i> som har referanse til den samme filen.
+				</p>
+				<p>
+					Eksempelet nedenfor viser hvordan en forretningsfasade og integrasjonsfasade kan konfigureres.
+				</p>
+<source><![CDATA[
+<beans>
+   ...
+   <bean id="BusinessFacade" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription">
+      <property name="jndiName"> ejb/no/trygdeetaten/business/BusinessFacade </property>
+      <property name="providerUrl"> localhost </property>
+      <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
+      <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>
+      <property name="securityPrincipal"> aspecialuser </property>
+      <property name="securityCredentials"> hissecretpassword </property>
+      <property name="cacheable"> true </property>
+   </bean>
+   ...
+   <bean id="IntegrationFacade" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription">
+      <property name="jndiName"> ejb/no/trygdeetaten/integration/IntegrationFacade </property>
+      <property name="providerUrl"> localhost </property>
+      <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
+      <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>
+      <property name="securityPrincipal"> anotherspecialuser </property>
+      <property name="securityCredentials"> hissecretpassword </property>
+      <property name="cacheable"> true </property>
+   </bean>
+   ...
+</beans>			
+]]></source>				
+				
+				<h5>enterprise-services.xml:</h5>
+				<p>
+					<i>enterprise-services.xml</i> definerer hvilke lokale tjenester som skal være tilgjengelig 
+					under forretningsfasaden. En <i>IntegrationFacadeBean</i> benytter <i>EnterpriseServiceLocator</i> 
+					med referanse til denne konfigurasjonsfilen.
+				</p>
+				<p>
+					Eksempelet nedenfor viser konfigurasjonen av to forskjellige eksterne integrasjonstjenester.
+				</p>
+<source><![CDATA[
+<beans>
+   ...
+   <!-- Enterprise Integration tjenester -->
+   <bean id="FinnPersonerService" class="no.trygdeetaten.integration.jms.FinnPersonerService" />
+   <bean id="HentPersonService"   class="no.trygdeetaten.integration.jms.HentPersonService" />
+   ...
+</beans>			
+]]></source>
+				
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.5  2004/06/21 11:25:52  psa2920
+oppdtatert ihht QA-drevne arkitekturendringer
+
+Revision 1.4  2004/06/18 13:08:35  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

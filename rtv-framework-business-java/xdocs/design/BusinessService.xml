@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Design BusinessService</title>
+	</properties>
+	<body>
+		<section name="Design BusinessService">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>BusinessService</i> er en mal for hvordan forretningstjenester skal implementeres. 
+					En forretningstjeneste implementerer applikasjonsspesifikk logikk som for eksempel 
+					beregninger, beslutningsprosesser, osv. Tjenestene implementeres
+					etter samme mal for å forenkle utvikling og vedlikehold av logikken.
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Beskrivelse">
+			
+				<h4>LocalService</h4>
+				<p>
+					<i>LocalService</i> er et interface som alle forretningstjenester implementerer ved å
+					arve fra <i>BusinessService</i>. Ved at alle forretningstjenestene implementerer det
+					samme interfacet, kan arkitekturen bruke <i>Command Pattern (GoF)</i> for å kalle alle
+					tjenester på samme måte, uten å kjenne til hvilken tjeneste som kalles og hvordan den er 
+					implementert.
+				</p>
+				
+				<h4>BusinessService</h4>
+				<p>
+					<i>BusinessService</i> er en abstrakt klasse som implementerer <i>LocalService</i> 
+					interfacet. Klassen implementerer <i>Template Method Pattern (GoF)</i> for å sikre at
+					de ulike stegene som kal utføres hver gang, utføres i riktig rekkefølge selv om de ulike
+					tjenestene implementerer stegene forskjellig. Klassen inneholder blant annet logikk for 
+					å instansiere logging, samt utføre ytelsesmåling. 
+				</p>
+				<p>
+					Alle klasser som implementerer forretningslogikk skal arve fra <i>BusinessService</i>.
+				</p>
+				
+				<h4>application-services.xml</h4>
+				<p>
+					Konfigurasjonsfil hvor alle persisteringstjenester er definert. En <i>Business Facade</i>
+					oppretter en <i>LocalServiceLocator</i> for å laste inn filen og opprette instanser av 
+					tjenestene og administrere relasjonene mellom dem.
+				</p>
+				
+				<h4>application-services.xml</h4>
+				<p>
+					Konfigurasjonsfil hvor alle forretningstjenester er definert. En <i>BusinessFacade</i>
+					oppretter en <i>LocalServiceLocator</i> for å laste inn filen og opprette instanser av 
+					tjenestene og administrere relasjonene mellom dem.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Klassediagram">
+			
+				<img src="../images/design/BusinessServiceClass.gif"/>
+			
+			</subsection>
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/06/18 10:10:53  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+						
+		</section>
+	</body>
+</document>
+

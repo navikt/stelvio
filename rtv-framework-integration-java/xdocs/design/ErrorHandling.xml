@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Feilhåndtering i forretnings- og integrasjonslaget</title>
+	</properties>
+	<body>
+		<section name="Feilhåndtering i forretnings- og integrasjonslaget">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					Feilhåndtering i forretningslaget og integrasjonslaget skal i utgangspunktet implementeres 
+					likt og som beskrevet i <i>Fellestjenester - Feilhåndtering</i>. 
+					<ul>
+						<li><a href="http://hpapt03/multiproject/rtv-framework-common-java/design/ErrorHandling.html">Design Feilhåndtering</a>.</li>
+						<li><a href="http://hpapt03/multiproject/rtv-framework-common-java/guide/ErrorHandling.html">Guide Feilhåndtering</a>.</li>
+					</ul>
+				</p>
+				<p>
+					Felles for begge lagene er at fasadene har ansvaret for at alle feil håndteres før kontrollen 
+					gis tilbake til laget over. Dette gir mulighet for å implementere overvåkning av feilstatistikker, 
+					samt foreta logging, varsling og eventuelt dynamisk rekonfigurering av tjenestene. Håndtering av 
+					transaksjoner og eventuell tilbakerulling legges også her.
+				</p>
+				<p>
+					Integrasjonstjenester skal <b>ALDRI</b> kaste andre typer feil enn <i>ApplicationException</i> 
+					og <i>SystemException</i>. Det betyr f.eks. at alle forekomster av SQLException skal pakkes inn 
+					før de eventuelt sendes videre.
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Beskrivelse">
+							
+				<h4>BusinessFasadeBean og IntegrationFacadeBean</h4>
+				<p>
+					Sesjonsfasadene benytter <i>ErrorHandler</i> for å håndtere alle typer feil i forretnings- 
+					og integrasjonslaget.
+				</p>
+				<p>
+					Dersom fasaden deltar i en transaksjon og en systemfeil fanges opp, vil transaksjonen automatisk 
+					rulles tilbake når den er ferdig.
+				</p>
+				<p>
+					Dersom fasaden deltar i en transaksjon og en applikasjonsfeil fanges opp, vil transaksjonen 
+					automatisk rulles tilbake når den er ferdig, dersom dette er spesifisert i applikasjonsfeilen.
+					Hvis dette ikke er spesifisert, vil transaksjonen fullføres.
+				</p>
+				<p>
+					Fasadene sørger for at alle feil blir håndtert (i praksis logget) før de kastes videre.
+					I tillegg vil alle nøstede feil bli tatt bort før feilen kastes videre, for å hindre problemer
+					med lasting av klasser på klienten som kun ligger i CLASSPATH på fasadens side.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Klassediagram">
+			
+				<p>
+					Figuren nedenfor viser et forenklet bilde av hvordan feilhåndteringen skal implementeres 
+					i forretningslaget og integrasjonslaget.
+				</p>
+			
+				<img src="../images/design/ErrorHandlingClass.gif"/>
+			
+			</subsection>
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.3  2004/06/18 13:28:16  psa2920
+endret beskrivelsen i oversikten
+
+Revision 1.2  2004/06/18 13:08:35  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+						
+		</section>
+	</body>
+</document>
+

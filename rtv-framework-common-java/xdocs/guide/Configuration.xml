@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Konfigurasjon - Guide</title>
+	</properties>
+	<body>
+		<section name="Konfigurasjon - Guide">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>Config</i> er et tynt overbygg over <i>Spring framework</i> for å laste og instantiere
+					Java beans. <i>Config</i> implementerer et <i>JMX Standard MBean</i> interface for oppdatering
+					og persistering av konfigurasjon.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Config">
+			
+				<h4>Hvordan bruke Config</h4>
+				<p>
+					Som utvikler skal man ikke behøve å skrive kode for å hente ut properties selv. Istedet skal man anta
+					at verdiene man trenger allerede er satt i en instans variabel på klassen. Det må også finnes en <i>setter</i>
+					metode for denne variabelen, f.eks. <i>setJndiName</i> for å sette instans variabelen jndiName. Det er Spring
+					Framework som har ansvaret for å sette alle instans variablene på klassen og instansiere klassen. Eksempelet under
+					viser hvordan f.eks. ServiceLocator kan benytte Config for å hente et object.
+				</p>
+
+<source>
+...
+
+// hent en instans av ønsket konfigurasjon basert på filnavn.
+Config configuration = Config.getConfig(filename);
+
+...
+
+// hent ønsket bean vha. instans av config.
+RemoteServiceDescription desc = (RemoteServiceDescription)configuration.getBean("ServerXRemoteDescription");
+
+// For å hente ut egenskapene som Spring satte er det bare å kalle en getter
+String jndiName = desc.getJndiName();
+String providerUrl = desc.getProviderUrl();
+
+</source>
+
+				<h4>Hvordan konfigurere Spring Framework</h4>
+				<p>
+					<i>Spring Framework</i> som ligger til grunn for Config benytter et XML format for konfigurering av
+					beans. Dette formatet er beskrevet i følgende DTD: <a href="spring-dtd.txt">spring-beans-1.0-m4.dtd</a>
+				</p>
+				<strong>Overordnet beskrivelse av spring-beans-1.0-m4.dtd</strong>
+				<p>
+					Ethvert XML dokument må ha et rot element. For Spring er dette <i>beans</i>. <i>beans</i> kan inneholde 0-1
+					<i>description</i> elementer og 1+ <i>bean</i> elementer. Et <i>bean</i> element er definisjonen
+					på en Java Bean. <i>bean</i> har følgende atributter:<br/>
+					<ul>
+						<li>id - Et unikt navn på bønnen.</li>
+						<li>class - Java klassen som representerer denne bønne definisjonen.</li>
+					</ul>
+					For en helt enkel bean som ikke trenger noen spesielle verdier satt er dette alt som trengs for å lage en bean definisjon.
+					<br/>Dersom man ønsker å sette noen verdier på bønnen kan dette gjøres enten ved å sette disse verdiene ved a gi de
+					til konstruktøren til bønnen vha. én eller flere <i>constructor-arg</i> elementer eller ved å bruke setter-metoder vha. en eller 
+					flere <i>property</i> elementer.<br/>
+					<i>property</i> har et atributt, <i>name</i>, som må settes. Dette forteller hvilken setter-metode på bønnen som skal kalles.
+					F.eks. en <i>property</i> med name=oppgaveNavn refererer til metoden setOppgaveNavn.
+					<br/>
+					Begge disse kan inneholde nestede <i>bean</i> definisjoner, en referanse til en annen bean med <i>ref</i> eller en verdi definert
+					inne i et <i>value</i> element.
+					<br/>
+					Dersom man ønsker at noe ekstra arbeid, f.eks. validering, skal utføres etter at Spring Framework har satt alle egenskapene, kan man konfigurere
+					en bean med en <i>init-method</i> (se eksempelet for HentOppgave under). <i>init-method</i> skal inneholde metode navnet til en metode
+					uten argumenter eller retur type.
+					<br/>					
+					For en komplett beskrivelse av alle elementer og atributter som Spring benytter seg av, se <a href="spring-dtd.txt">spring-beans-1.0-m4.dtd</a>.
+				</p>
+				<p>
+					Eksempel:
+				</p>
+<source><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://hpapt03/dtd/spring-beans-1.0-m4.dtd">
+<beans>
+   <bean id="HentOppgaveliste" class="no.trygdeetaten.business.oppgaver.service.HentOppgaveListeService" />
+   <bean id="HentOppgave" class="no.trygdeetaten.business.oppgaver.service.HentOppgaveService" init-method="init">
+      <constructor-arg>
+         <value>TestOppgave</value>
+      </constructor-arg>
+   </bean>
+   <bean id="OppdaterOppgave" class="no.trygdeetaten.business.oppgaver.service.OppdaterOppgaveService">
+      <property name="oppgaveNavn">
+         <value>TestOppgave</value>
+      </property>
+      <property name="overordnetOppgave">
+         <ref bean="SlettOppgave"/>
+      </property>
+   </bean>
+   <bean id="SlettOppgave" class="no.trygdeetaten.business.oppgaver.service.SlettOppgaveService" />
+</beans>		
+]]>			
+</source>	
+			
+			</subsection>
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.7  2004/06/16 14:07:45  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

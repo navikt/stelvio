@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Tiles - Guide</title>
+	</properties>
+	<body>
+		<section name="Tiles - Guide">
+			
+			<subsection name="Oversikt">
+				<p>
+					Tiles er et rammeverk som brukes for å bygge opp fremvisningen av websider fra forskjellige deler. 
+					Tiles bygger opp web sidene av de forskjellige delene dynamisk. Delene gjenbrukes slik slik at element
+					som brukes på flere sider kun er definert en plass. Det	kan ses på som en enkel portal funksjonalitet.
+					Det finnes også støtte for å bruke forskjellige språk.
+					<br/>
+					Det brukes en layout (template) som definerer hvilke deler som skal finnes med web sidene. Denne layouten
+					kan legge inn default JSPsider og verdier som overstyres av de forskjellige sidene som arver denne layouten.
+					På så måte kan en mer generell tile kan definere felles funksjonalitet.
+				</p>
+			</subsection>
+			
+			<subsection name="Beskrivelse">
+				<p>
+					Tiles skal brukes til å dele opp fremvisningen i hovedsak tre deler. En header del øverst i vindu som
+					inneholder logo og informasjon om navigasjonssti, pålogget bruker og en enkel menyrad. En meny i venstre
+					del av vindu med linker det er mulig å navigere til. Og så en innholdside der selve vinduet er definert
+					<br/>
+					
+					<h4>Hovedlayout</h4>
+						Hovedlayouten definerer delene som skal finnes med. De fleste av disse delene overstyres av de
+						enkelte sidene som bruker hovedlayouten. Som f.eks. <i>innhold</i> i eksemplet
+					
+<source><![CDATA[
+<definition name="layout.basis" path="/WEB-INF/jsp/layout/layout.jsp">
+	<put name="stiltype"   value="styles/stylesheet.css" />
+	<put name="stiltype2"  value="" />
+	<put name="javascript" value="" />
+	<put name="tittel"     value="tiles-defs.xml: Endre tittel" />
+	<put name="brukerinfo" value="/WEB-INF/jsp/common/brukerinfo.jsp" />
+	<put name="sidesti"    value="tiles-defs.xml: Endre sidesti" />
+	<put name="menylinje"  value="tiles-defs.xml: Endre menylinje" />
+	<put name="innhold"    value="tiles-defs.xml: Endre innhold" />
+</definition>
+]]></source>
+					
+					<h4>Sidelayout</h4>
+						Sidelayouten utvidder og overstyrer hovedlayouten. I eksemplet overstyres f.eks. tittel feltet.
+						
+<source><![CDATA[
+<definition name="side.oppgaveliste" extends="layout.basis">
+	<put name="javascript" value="" />
+	<put name="tittel"     value="Oppgaveliste" />
+	<put name="sidesti"    value="Oppgaveliste" />
+	<put name="menylinje"  value="meny.oppgaveliste" />
+	<put name="innhold"    value="innhold.oppgaveliste" />
+</definition>
+
+<definition name="meny.oppgaveliste" extends="/WEB-INF/jsp/menu/oppgaveliste.jsp">
+</definition>
+
+<definition name="innhold.oppgaveliste" extends="/WEB-INF/jsp/pages/oppgaveliste.jsp">
+</definition>
+]]></source>
+
+					<h4>Taglibs</h4>
+						Det er et eget taglib som brukes sammen med Tiles. Dette er beskrevet i 
+						<a href="Taglibs.html">taglib guiden.</a>
+
+					<h4>Best practice</h4>
+						<li>All definisjon av Tile bør ligge i tiles-defs.xml og ikke i JSPsidene.</li>
+						<li>Det er bedre å definere en side-del som en tile i stedet for en JSP, dvs. ikke slik:</li>
+<source><![CDATA[
+<definition name="side.nyheter" extends="defaultLayout">
+  <put name="title" value="Nyheter" />
+  <put name="body" value="/pages/body.jsp" />
+</definition>
+]]></source>
+						men slik:
+<source><![CDATA[
+<definition name="side.nyheter" extends="defaultLayout">
+  <put name="title" value="Nyheter" />
+  <put name="body" value="body.nyheter" />
+</definition>
+
+<definition name="body.nyheter" path="/pages/body.jsp ">
+  <put name="<attributt>" value="<verdi>" />
+</definition>
+]]></source>
+						det vil gi mer fleksibilitet til å flytte på sideelementer.
+
+					<h4>Konfigurasjon</h4>
+						For at tiles skal kunne benyttes må tiles plugin være definert i <i>struts-config.xml</i>.
+						Det må også være <code>TilesRequestProsessor</code> som er satt i controller taggen.
+						(definitions-debug har defaultverdi 0 som ikke er debugging)
+<source><![CDATA[
+<plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+    <set-property property="definitions-debug" value="2" />
+    <set-property property="moduleAware" value="false" />
+    <set-property property="definitions-parser-validate" value="true" />
+</plug-in>					
+
+<controller processorClass="no.trygdeetaten.web.framework.action.FrameworkTilesRequestProcessor" /> 
+]]></source>
+				</p>
+
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.5  2004/06/18 14:24:47  jla2920
+Oppdatert etter review og satt inn ny endringslogg
+]]>			
+</source>
+			</subsection>
+
+			
+		</section>
+	</body>
+</document>
+

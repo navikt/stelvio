@@ -1,0 +1,9 @@
+.websettings
+jcoverage.ser
+*.log
+*.md5
+*snapshot-version
+bin
+junit*.properties
+rtv-framework-integration-java.iml
+*.log*

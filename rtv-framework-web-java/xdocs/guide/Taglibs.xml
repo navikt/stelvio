@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Taglibs - Guide</title>
+	</properties>
+	<body>
+		<section name="Taglibs - Guide">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					Det er ikke ønskelig å blande kode med presentasjonslogikk, i form av HTML. Derfor brukes
+					biblioteker som inneholder koden som skal utføres når en web side genereres. Disse biblioteker kalles
+					for taglibs finnes til forskjellige behov for fremvisning. Her skal fortrinnsvis Struts taglibs brukes.
+					
+				</p>
+			</subsection>
+			
+			<subsection name="Beskrivelse av taglibs">
+				<p>
+					Her beskrives de taglibs som brukes for presentasjonslaget.
+					Se også Howto for beskrivelse av JSTL og Displaytag etc.
+			
+					<h4>Struts HTML tags</h4>
+						HTML taggene inneholder vanlige HTML attributer og brukes ved input data i en form f.eks.
+						<table>
+							<tr>
+								<th>Tag navn</th>
+								<th>Beskrivelse</th>
+							</tr>
+							<tr>
+								<td>image</td>
+								<td>Lager et bilde sender formen i vinduet. 
+								Attributen <i>src</i> er url'en til bildet som skal brukes.
+								Attributen <i>property</i> inneholder navnet på feltet i FormBean som brukes. 
+								(Det må finnes et felt i FormBean som med samme navn som property attributen)
+								Attributen <i>title</i> setter verdien som skal vises ved tips (hvis musepekeren peker på et felt).
+								Attributen <i>alt</i> er en tekst som vises hvis ikke bildet finnes.
+								</td>
+							</tr>
+							<tr>
+								<td>submit</td>
+								<td>Sender formen. 
+								Attributen <i>property</i> inneholder url'en som skal motta requesten. 
+								Se også den prosjekt-spesifikke tagen <i>button</i> som også kan inneholde bilder.
+								</td>
+							</tr>
+							<tr>
+								<td>radio</td>
+								<td>Skriver ut en radioknapp i vinduet. Denne kan brukes i en <i>nested:iterate</i> tag.
+								Attributen <i>property</i> settes til navnet på strengen som holder radio-verdien.
+								<i>IdName</i> settes til id'en i iterator-tagen.
+								<i>Name</i> settes til navnet på formen.
+								<i>Value</i> settes til "value", denne hentes fra hver <i>LabelValueBean</i>.
+								I <i>ActionForm</i> objektet trenger man altså å definere en streng for å holde verdien av radioknappen 
+								og en <i>ArrayList</i> av <i>LabelValueBean</i>s for å holde verdier og tekster for radioknappene.
+								</td>
+							</tr>		
+						</table>
+						
+					<h4>Tiles</h4>
+						Tagger som brukes sammen med <a href="Tiles.html">tilesrammeverket</a>. Beskrivelse av noen av de
+						vanligste taggene:
+						<br/>
+						<table>
+							<tr>
+								<th>Tag navn</th>
+								<th>Beskrivelse</th>
+							</tr>
+							<tr>
+								<td>definition</td>
+								<td>Oppretter en templatedefinisjon. Den kan utvide en annen definisjon og overstyre
+								verdier. Attributen <i>name</i> inneholder navnet på tiles definisjonen. Attributen 
+								<i>extends</i> refererer til tilen som er utvidet.</td>
+							</tr>
+							<tr>
+								<td>getAsString</td>
+								<td>Henter en verdien til et attribute som en streng</td>
+							</tr>
+							<tr>
+								<td>insert</td>
+								<td>Setter inn en tile komponent i en side. Attributen <i>attribute</i> inneholder
+								tilekonteksten som skal settes inn </td>
+							</tr>
+							<tr>
+								<td>put</td>
+								<td>Setter en attribute verdi som skal sendes til en tile</td>
+							</tr>
+						</table>
+						
+					<h4>Displaytag</h4>
+						Tagger som brukes for å vise frem lister. Denne taglib'en tar hånd om bla-funksjonalitet og
+						sortering på flere kolonner. De to viktigste taggene her er <i>table</i> og <i>column</i>. 
+						Merk også at det er utviklet egne tagger som må brukes dersom man ønsker form-felt i listen (se
+						<i>prosjektspesifikke tags</i> under. Attributtene som er beskrevet under er bare et utvalg av de
+						som finnes for <i>displaytag</i> - se definisjonsdokumentet for en mer komplett oversikt. Der finnes
+						også en oversikt over hvilke variabler som finnes for å modifisere utseende til tabellen. Disse kan 
+						settes enten ved å bruke <i>setProperty</i> (beskrevet under)
+						eller ved å modifisere <code>displaytag.properties</code> (globale endringer for prosjektet), 
+						som ligger i <code>rtv-bidragproto-config-dev-env/src/main/resources</code>.
+						Når en liste skal vises frem, må det i formdata-objektet ligge 2 get-metoder for denne listen, én som
+						returnerer listen uten parametere, og én som returnerer ett objekt i listen med en int-parameter
+						(indeks i listen).
+						Se <i>Oppgaveliste-displaytag.jsp</i> for et eksempel på hvordan denne taglib'en kan brukes.
+						
+						<br/>
+						<table>
+							<tr>
+								<th>Tag navn</th>
+								<th>Beskrivelse</th>
+							</tr>
+							<tr>
+								<td>table</td>
+								<td>Oppretter en tabell. For at input-felt og kolonner skal vises riktig, må attributten
+								<i>name</i> inneholde navnet på formen og navnet på listen, f.eks. "OppgavelisteForm.oppgaver".
+								<i>requestURI</i> settes til navnet på siden, f.eks. "/oppgaveliste.do". <i>pagesize</i> bestemmer
+								antall elementer som skal vises pr. side. <i>id</i> er et vilkårlig navn på objektet det skal 
+								itereres over, f.eks. oppgave. <i>class</i> brukes på vanlig måte til å angi style-definisjoner.</td>
+							</tr>
+							<tr>
+								<td>column</td>
+								<td>Oppretter en kolonne innenfor en tabell. <i>title</i> angir overskriften på kolonnen. 
+								<i>property</i> settes til navnet på feltet i objektet som skal vises frem. <i>sortable</i> settes
+								til true dersom det skal være mulig å sortere på kolonnen. <i>headerClass</i>
+								angir style-definisjoner for overskriften mens <i>class</i> gjelder for de vanlig tabell-dataene.</td>
+							</tr>
+							<tr>
+								<td>setProperty</td>
+								<td><i>name</i> gir navnet på attributten som skal settes, og <i>value</i> gir verdien. Denne må nestes
+								i <i>table</i>-taggen, og overstyrer properties for kun denne tabellen.</td>
+							</tr>
+						</table>
+					<h4>Prosjektspesifikke tags</h4>
+						Tagger som er lag for behov i prosjektet. (Taglib definisjonsfilen heter bidrag.tld)
+						<table>
+							<tr>
+							
+								<th>Tag navn</th>
+								<th>Beskrivelse</th>
+							</tr>
+							<tr>
+								<td>link</td>
+								<td>Lager en link i vinduet. Hvis param* attributene brukes legges en parameter
+								på requesten fra raden itereringen er i.
+								Attributen <i>action</i> inneholder url'en som skal motta requesten.
+								Attributen <i>paramId</i> er navnet på feltet i raden.
+								Attributen <i>paramName</i> er navnet på itererings raden (samme som id i iterate taggen)
+								Attributen <i>paramProperty</i> er navnet på feltet i raden.
+								</td>
+							</tr>
+							<tr>
+								<td>newwindowlink</td> 
+								<td>En link åpner et nytt vindu og øker vindus id'n.
+								Attributen <i>action</i> inneholder url'en som skal motta requesten.
+								Attributen <i>target</i> er navnet på det nye vinduet som åpnes. 
+								</td>
+							</tr>							
+							<tr>
+								<td>action</td> 
+								<td>Attributen <i>action</i> inneholder navnet action som skal motta requesten. 
+								</td>
+							</tr>
+							<tr>
+								<td>form</td>
+								<td>Lager en htmlform i vinduet. Denne taggen legger på et skjult felt i slutten av formen
+								som inneholder vindu id. Den legger også på et skjult felt som brukes til å sende verdien
+								av submit-knapper (som defineres som <i>button</i>, se under).
+								Attributen <i>action</i> inneholder navnet action som skal motta requesten. 
+								</td>
+							</tr>
+							<tr>
+								<td>messages</td>
+								<td>En iteratortag som henter frem meddelanden som skal vises i vinduet. Er tilpasset for
+								å kunne vise driftsmeldinger.
+								Attributen <i>id</i> er navnet på JavaBean som inneholder meddelandene. 
+								</td>
+							</tr>
+							<tr>
+								<td>button</td>
+								<td>Viser en knapp i vinduet. Mellom start- og slutt-tagene kan både tekst og bilder legges
+								som skal vises på knappen. Et klikk på knappen sender formen.
+								Attributen <i>property</i> inneholder Action-metoden som skal behandle requesten.
+								</td>
+							</tr>
+							<tr>
+								<td>checkbox</td>
+								<td>Kun for bruk i <i>display:table</i>. <i>name</i> settes til boolean-variablen i liste-objektet
+								som skal vises frem.</td>
+							</tr>
+							<tr>
+								<td>text</td>
+								<td>Kun for bruk i <i>display:table</i>. <i>name</i> settes til String-variablen i liste-objektet
+								som skal vises frem.</td>
+							</tr>
+							<tr>
+								<td>menu</td>
+								<td>Skriver sidemeny for en side. Henter ut menyelementer og struktur fra databasen, basert på
+								hvilken side som vises og hvilken tilstand prosessen har (f.eks. opprette, oppdatere osv.). Tilstand
+								må være satt i <code>TransactionContext</code>-objektet.
+								Det er 5 atributter som påvirker utseende av menyen: <i>mainHeaderClass</i> og <i>mainItemClass</i>
+								styrer utseende til den øverste delen av tabellen (overskriften er "Meny"), mens <i>subHeaderClass</i>
+								og <i>subItemClass</i> bestemmer utseende til den nederste (overskrift "Undermeny").
+								<i>linkClass</i> angir utseende for alle link-komponenenten til menyelementene.</td>
+							</tr>
+							<tr>
+								<td>fnr</td>
+								<td>Denne fungerer på akkurat samme måte som c:out med unntaket at dersom <code>value</code>
+									er 11 tegn langt så blir det satt inn et mellomrom etter 6 tegn.
+								</td>
+							</tr>
+							<tr>
+								<td>navn</td>
+								<td>Brukes for å vise dødskode eller diskresjonskode. Viser verdien som ligger i attributten <i>value</i>.
+								Attributtene <i>dead</i> og <i>protect</i> må evaluere til boolske verdier. <i>default</i> brukes til defaultverdi.
+								Eksempel:
+								<b/>
+<source><![CDATA[
+<bidrag:navn value="${rolle.personData.kortnavn}" 
+			 dead="${rolle.personData.datoDo != null}" 
+			 protect="${rolle.personData.spesregType == null}" />
+]]></source>
+								</td>
+							</tr>
+							<tr>
+								<td>fnrOptionsCollection</td>
+								<td>Brukes for å foramtere en nedtrekksliste med personnummer.
+								Samme attributter som for <i>html:OptionsCollection</i>.
+								Eksempel:
+								<b/>
+<source><![CDATA[
+<bidrag:fnrOptionsCollection name="ukostFD" 
+		property="fnrCol" 
+		value="value" 
+		label="label"/>
+]]></source>
+								</td>
+							</tr>
+							<tr>
+								<td>formatDate</td>
+								<td>Brukes for å foramtere dato. Viser i datoen 31.12.9999.
+								Har attributene <i>value</i> og <i>pattern</i> kun value er required.
+								Eksempel:
+								<b/>
+<source><![CDATA[
+<bidrag:formatDate value="${ukostFD.datoFOMNum}"/>
+]]></source>
+								</td>
+							</tr>
+							<tr>
+								<td>ctDecode</td>
+								<td>Dekoder en kode mot KodeTableManager. <i>codestable</i> tar inn Kode-do'en, 
+								mens <i>value</i> tar inn el-uttrykk for kodeverdien.
+								Eksempel:
+								<b/>
+<source><![CDATA[
+<bidrag:ctDecode codestable="KodeBeslAarsakDO" value="${perioder.kodeResultat}"/>
+]]></source>
+								</td>
+							</tr>
+							<tr>
+								<td>truncate</td>
+								<td>Korter inn bodyen til tagen med lengden satt som attributt. 
+								Legger til '...' som default bak den forkortede teksten. Eller det som settes
+								i attributten <i>concat</i>.
+								Eksempel:
+								<b/>
+<source><![CDATA[
+<bidrag:truncate length="8" concat="..">
+	<bidrag:ctDecode codestable="KodeBeslAarsakDO" value="${periodeData.resultat}" />
+</bidrag:truncate>&nbsp;
+]]></source>
+								</td>
+							</tr>
+						</table>
+						
+					<h4>Felles Attributer</h4>
+						Det finnes noen attributer som brukes i flere taglibs. De er beskrevet under. 
+						<table>
+							<tr>
+								<th>Tag navn</th>
+								<th>Beskrivelse</th>
+							</tr>
+							<tr>
+								<td>tabindex</td>
+								<td>Setter rekkefølgen på hvordan tabulator tasten skal navigere i vinduet. 
+								Kan brukes på inputfelter, knapper, linker etc.
+								</td>
+							</tr>
+						</table>
+					
+					<h4>Konfigurasjon</h4>
+						Alle Taglibs som brukes må ha en definisjonsfil i WEB-INF katalogen.
+				</p>
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.15  2005/01/06 14:19:35  jla2920
+Lagt til beskrivelse av tagger
+
+Revision 1.14  2004/11/25 13:55:59  jla2920
+Lagt til to tagger
+
+Revision 1.13  2004/11/17 14:03:10  tsb2920
+Added fnr
+
+Revision 1.12  2004/11/17 13:30:04  jla2920
+Oppdatert med navntag for død/diskresjon
+
+Revision 1.11  2004/09/21 12:15:50  cra2920
+Oppdatert info om displaytag
+
+Revision 1.10  2004/09/20 10:58:02  cra2920
+Oppdatert info om displaytag
+
+Revision 1.9  2004/09/16 11:35:05  cra2920
+Lagt til info om menykomponent
+
+Revision 1.8  2004/09/06 09:07:47  cra2920
+Lag til info om displaytag og input-tagger i denne
+
+Revision 1.7  2004/08/30 07:08:31  cra2920
+Lagt til info om radioknapper
+
+Revision 1.6  2004/08/25 10:58:09  cra2920
+Lagt til info om button-tag og oppdatert submit-tag
+
+Revision 1.5  2004/06/18 14:24:26  jla2920
+Oppdatert etter review og satt inn ny endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

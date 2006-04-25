@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Action Form - Design</title>
+	</properties>
+	<body>
+		<section name="Action Form - Design">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					Service to Worker er i Struts implementert av Action klassen. Application controller
+					finner riktig Action ved å slå opp i Action Mappingen definert i Struts konfigurasjonsfil.
+					Det finnes et sett med Action klasser i Struts som kan brukes ved forskjellige behov.
+					Action klassen utvides til de enkelte action som skal utføres.
+					<br/>
+					ViewHelper er en JavaBean som formidler informasjon mellom web klienten og presentasjonslaget.
+					I Struts er det enten en egen klasse for hver form eller, fra Struts 1.1, en dynamisk klasse som
+					defineres i Struts konfigurasjonsfil.
+				</p>
+			
+				
+			</subsection>
+			
+			<subsection name="Beskrivelse">
+			
+				<p>
+					<h4>Action</h4>
+						<i>FindDispatchAction</i> er en abstrakt klasse som utvider <i>DispatchAction</i>.
+						Her ligger felles metoder til bruk i Action klassen som utvikleren utvider.
+						Det er en metode som returnerer	BussinesDelegate samt en default metode for lasting av vindu
+						som henter formen til et vindu fra sessions konteksten.
+						<br/>
+						Initialiseringen av klassen overrider superklassens execute og henter Business Delegate
+						fra applikations konteksten slik at den kan nås fra en sub-klasse. I execute skal det også ligge
+						logikk for å hente metodenavnet som skal brukes i Action klassen og kall på dispatchMethod i superklassen.
+						<br/>
+						Hvis en bruker klikker på en knapp/link to ganger for resultatet fra første klikk vises i vinduet blir
+						det problem at fullføre requesten på serveren. Det må legges til funksjonalitet som forhindrer dette med
+						at sette en token som sjekkes ved hver ny request. Denne funksjonaliteten bør kunne legges i en metode
+						til denne abstrakte klassen som utvikleren må utvide.
+						<br/>
+						Det skal finnes mulighet å lagre informasjon i konteksten til sessionen som en bruker er i. Det er
+						nøkkelinformasjon som brukes av flere vinduer og som må huskes i flere steg. Som ikke kan dekkes av
+						innparametrer til vinduet.
+					<h4>ActionServlet</h4>
+						<i>FrameworkActionServlet</i> er en subklasse til <i>ActionServlet</i> som har tilleggsfunksjonalitet
+						for at hente og legge inn informasjon om Bussines Delegate i servlet konteksten.
+						<br/>
+					<h4>Form</h4>
+						Standard Struts klasser brukes til Forms Bean.
+				</p>
+			</subsection>
+
+			<subsection name="Sekvensdiagram">
+			
+				<p>
+					Diagrammet viser hvordan en forespørsel blir sendt gjennom arkitekturen. 
+				</p>
+			
+				<img src="../images/design/ActionSequence.gif"/>
+			
+			</subsection>
+			
+			<subsection name="Implementasjon">
+				<p>
+					Se javadoc for beskrivelse av klasser og metoder.
+					<br/>
+					Klassene implementeres i pakken no.trygdeetaten.web.framework.action
+					<br/>
+					Dobbelklikk (request sendes før svar er returnert) 
+					Se artikkel: http://www.javaworld.com/javaworld/javatips/jw-javatip136.html
+										
+				<h4>Bruk av Spring</h4>
+					Kommentarer til implementasjonsvalg
+					<br/>
+					Spring 1.0.1 fantes tilgjengelig når Action-Form delen av arkitekturen implementeredes.
+					Der finnes det muligheter for å implementere Actions som Spring Beans slik at de kan 
+					defineres i Spring konfigurasjonsfil og opprettes av Spring rammeverket. 
+					(se org.springframework.web.struts pakken med plugin) Dette er testet og det virker.
+					Actions må da defineres både i Struts og Spring konfigurasjonsfiler.
+					Samt at en spring servlet som holder i WebApplicationContext må startes i tillegg til Struts
+					servleten. Når det kun er Business Delegate som skal hentes inn med bruk av Spring rammeverket
+					her gir det ikke noen merverdi at bruke Struts plugin fra Spring. Kun Spring core og
+					bean factory trenger da å brukes.
+				</p>
+
+			</subsection>			
+
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.10  2004/06/18 13:10:21  jla2920
+Oppdatert etter review og satt inn ny endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

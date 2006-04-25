@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://hpapt03/dtd/spring-beans.dtd">
+<!-- 
+	Presentation Services Configuration is used by the FrameworkActionServlet
+-->
+<beans>
+
+	<bean id="RemoteServiceLocator" class="no.trygdeetaten.common.framework.ejb.RemoteServiceLocator" />
+
+	<bean id="BusinessDelegate" class="no.trygdeetaten.common.framework.ejb.ServiceDelegateImpl">
+		<property name="serviceLocator">
+			<ref bean="RemoteServiceLocator" />
+		</property>
+		<property name="serviceFacadeName">
+			<value>BusinessFacade</value>
+		</property>
+		<property name="delegateMonitorKey">
+			<bean class="no.trygdeetaten.common.framework.performance.MonitorKey">
+				<property name="description">
+					<value>BusinessFacade</value>
+				</property>
+				<property name="level">
+					<value>2</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="InitCodesTableManager" class="no.trygdeetaten.common.framework.ejb.ServiceDelegateImpl">
+		<property name="serviceLocator">
+			<ref bean="RemoteServiceLocator" />
+		</property>
+		<property name="serviceFacadeName">
+			<value>BusinessFacade</value>
+		</property>
+		<property name="delegateMonitorKey">
+			<bean class="no.trygdeetaten.common.framework.performance.MonitorKey">
+				<property name="description">
+					<value>InitCodesTableManager</value>
+				</property>
+				<property name="level">
+					<value>5</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="TestBean" class="no.trygdeetaten.web.framework.servlet.ServletContextAttributeSetter"/>
+
+	<bean id="ServletContextAwareBean"
+	       class="no.trygdeetaten.web.framework.servlet.StartupServletTest$ServletContextAwareBean"/>
+
+</beans>
+

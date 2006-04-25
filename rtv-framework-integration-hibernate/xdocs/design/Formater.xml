@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Detaljert Design</title>
+	</properties>
+	<body>
+	<section name="Formater">
+		<subsection name="Oversikt">
+		 	<table>
+				<tr>
+					<td><b>Navn</b></td>
+					<td>Formater</td>
+				</tr>
+				<tr>
+					<td><b>Type</b></td>
+					<td>interface</td>
+				</tr>
+				<tr>
+					<td><b>Beskrivelse</b></td>
+					<td>Dette interface er for å kunne koble formaterere av input og output
+					felt til å fra CTG.</td>
+				</tr>
+				<tr>
+					<td><b>Implements</b></td>
+					<td>ingen</td>
+				</tr>
+				<tr>
+					<td><b>Extends</b></td>
+					<td>ingen</td>
+				</tr>
+			</table>
+			<h4>Detaljert beskrivelse av komponenten</h4>
+			<p>Dette interface er laget for å kunne konvertere forskjellige typer som er spesiell og
+			ikke supporteres av hibernate. CICS har en del spesielle typer, blant annet gjeller dette 
+			hvordan de represenderer fortegn i tall. For å enkelt kunne tilpasse data representasjoner
+			inn og ut av cics er dette interfacet laget slik at en implementasjon vil kunne
+			kobles inn uten å endre andre deler av koden. 
+			Formatereren blir satt inn i eksisterende kode ved hjelp av config rammeverket.</p>
+		</subsection>
+	
+	
+		<subsection name="Bruk">
+			<a name="bruk"/>
+			<p>
+				Denne seksjonen inneholder en beskrivelse av hvordan modulen skal brukes.
+				</p>
+					<h4>Hvordan lage en ny Formaterer</h4>
+			<p>For å bygge en ny formaterer er det bare å lage en ny pojo som implementerer Formater interfacet.
+			</p>
+			<h4>Eksempel på property configurasjon</h4>
+<source><![CDATA[<property name="inntektBelop" 		column="M722-INNTEKT-BELOP" 		type="long" 	length="9" offset="53"  formater="LongFormater"/>]]>
+</source>
+		<h4>Konfigurere en ny formaterer implementasjon</h4>
+		<p>For å kunne benytte en formater som deffinert på property elementet(se over) må klassen være
+		deffinert opp i enterprise-services.xml
+		Her følger et enkelt eksempel på hvordan dette kan gjøres:
+<source><![CDATA[<bean id="LongFormater" class="no.trygdeetaten.integration.framework.hibernate.formater.LongFormater" singleton="true">
+	</bean>]]>
+</source>
+		</p>
+</subsection>
+
+<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.1  2004/10/05 15:30:46  tkc2920
+Initial version
+
+]]>			
+</source>
+			</subsection>
+	</section>
+	</body>
+</document>
+

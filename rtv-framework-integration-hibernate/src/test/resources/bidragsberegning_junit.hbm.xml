@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "src/test/resources/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+	<class name="no.trygdeetaten.integration.framework.hibernate.records.Foreldre" table="K460M700Param" schema="K460M700">
+		<id name="id" column="id" type="long">
+			<generator class="hilo"></generator>
+		</id>
+		<property name="aksjonskode" 	column="M700-AKSJONSKODE" 		type="string" 	length="8" offset="0"/>
+		<property name="sakNr" 			column="M700-SAKSNR" 			type="string" 	length="7" offset="8"/>
+		<property name="soknadsType" 	column="M700-KODE-SOKNADSTYPE" 		type="string" 	length="2" offset="15"/>
+		<property name="ugKode" 		column="M700-UG-KODE" 			type="string" 	length="2" offset="17"/>
+		<property name="datoSoknad" 	column="M700-DATO-SOKNAD" 		type="string" 	length="8" offset="19"/>
+		<property name="datoSokFOM" 	column="M700-DATO-SOKT-FOM" 		type="string" 	length="8" offset="27"/>
+		<property name="datoBerTOM" 	column="M700-DATO-BEREGN-TOM" 		type="string" 	length="8" offset="35"/>
+		<property name="brukerId" 		column="M700-BRUKERID" 			type="string" 	length="8" offset="43"/>
+		<property name="objectnrBP" 	column="M700-OBJEKTNR-BP" 		type="string" 	length="2" offset="51"/>
+		<property name="personIdBP" 	column="M700-PERSON-ID-BP" 		type="string" 	length="11" offset="53"/>
+		<property name="soktGebyrFriBP" column="M700-SOKT-GEBYRFRITAK-BP" 	type="string" 	length="1" offset="64"/>
+		<property name="objectnrBM" 	column="M700-OBJEKTNR-BM" 		type="string" 	length="2" offset="65"/>
+		<property name="personIdBM" 	column="M700-PERSON-ID-BM" 		type="string" 	length="11" offset="67"/>
+		<property name="soktGebyrFriBM" column="M700-SOKT-GEBYRFRITAK-BM"	type="string" 	length="1" offset="78"/>
+		<property name="feilPeker" 		column="M700-FEIL-FELTPEKER-1"		type="string" 	length="3" offset="79"/>
+		<property name="numRecords"		column="M700-ANT-BARN-ELEMENTER" 	type="int" 	length="2" offset="82"/>
+		<set name="barn">
+			<key column="M700-ANT-BARN-ELEMENTER"/>
+			<one-to-many class="no.trygdeetaten.integration.framework.hibernate.records.Barn" offset="84" length="540"/>
+		</set>	
+	</class>
+	<class name="no.trygdeetaten.integration.framework.hibernate.records.Barn" table="BARN" schema="K460M700">
+		<id name="id" column="id" type="long">
+			<generator class="hilo"></generator>
+		</id>
+		<property name="objectNr" 	column="M700-OBJEKTNR-BARN" 		type="string" length="2" 	offset="0"/>
+		<property name="personId" 	column="M700-PERSON-ID-BARN" 		type="string" length="11" 	offset="2"/>
+		<property name="bidragFl" 	column="M700-BIDRAG-FLAGG" 		type="string" length="1" 	offset="13"/>
+		<property name="tillBidragFl" 	column="M700-TILL-BIDRAG-FLAGG" 	type="string" length="1" 	offset="14"/>
+		<property name="forskuddFl" 	column="M700-FORSKUDD-FLAGG" 		type="string" length="1" 	offset="15"/>
+		<property name="saerTilskFl" 	column="M700-SAERTILSK-FLAGG" 		type="string" length="1" 	offset="16"/>
+		<property name="samvaerKls" 	column="M700-SAMVAER-KLASSE" 		type="string" length="2" 	offset="17"/>
+		<property name="innkrevFl" 	column="M700-INNKREV-FLAGG" 		type="string" length="1" 	offset="19"/>
+		<property name="belopLopBidrag" column="M700-BELOP-LOPENDE-BIDRAG" 	type="string" length="9" 	offset="20"/>
+		<property name="feilPeker" 	column="M700-FEIL-FELTPEKER-2" 		type="string" length="6" 	offset="29"/>
+	</class>
+</hibernate-mapping>
+
+
+
+
+
+
+
+
+
+
+
+

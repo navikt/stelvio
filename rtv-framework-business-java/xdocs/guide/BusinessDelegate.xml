@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Guide BusinessDelegate</title>
+	</properties>
+	<body>
+		<section name="Guide BusinessDelegate">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>BusinessDelegate</i> er en klasse som innkapsler funksjonalitet for å lokalisere
+					og aksessere en forretningsfasade. Dette er en implementasjon av <i>Business Delegate</i> 
+					designmønstret beskrevet i <i>Core J2EE Patterns</i>. Hensikten med klassen er å forenkle
+					forretningstjenestenes integrasjon med forretningsfasaden, redusere antall kodelinjer og 
+					potensielle feil ved å samle gjenbrukbar logikk, samt gjøre programmering og enhetstesting av 
+					forretningstjenestene enklere og raskere.
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Hvordan benytte en BusinessDelegate">
+			
+				<p>
+					Se <a href="BusinessService.html#Integrasjon_mot_eksterne_systemer">Integrasjon mot eksterne systemer</a>
+				</p>
+			
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/06/18 10:10:53  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>			
+			
+		</section>
+	</body>
+</document>
+

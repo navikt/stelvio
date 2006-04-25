@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Kodetabeller - guide</title>
+	</properties>
+	<body>
+		<section name="Kodetabeller - guide">
+			<subsection name="Oversikt">
+				<p>
+ 					Kodetabellene er lagret i sjablongdatabasen og caches i applikasjonen ved oppstart av systemet. Cachen
+ 					oppfriskes en gang i døgnet slik at endringer i kodetabellene blir effektuert i systemet påfølgende dag. Til
+ 					å hente ut kodetabellene bruker applikasjonen Hibernate-rammeverket. Det er klassen CodesTableManager som
+					sørger for at kodetabellene blir hentet fra databasen og denne klassen holder også alle kodetabellene.
+				</p>
+				<p>
+					For å hente ut en kode/dekode fra kodeverket benyttes metoder på CodesTableManager-klassen. Denne klassen er
+ 					implementert som en singleton og er tilgjengelig over alt i applikasjonen.
+				</p>
+			</subsection>
+			<subsection name="Bruk av CodesTableManager">
+				<p>
+					Kommer...
+				</p>
+			</subsection>
+			<subsection name="Endringslogg">
+				<source><![CDATA[
+$Log$
+Revision 1.3  2005/01/05 09:03:32  skb2930
+Begynt på å legge inn hvordan bruke CodesTableManager
+
+Revision 1.1  2004/06/18 14:06:57  rwa2920
+Lagt inn
+				]]>
+				</source>
+			</subsection>
+		</section>
+	</body>
+</document>

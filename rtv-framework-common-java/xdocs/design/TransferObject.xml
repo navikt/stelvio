@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Detaljert Design</title>
+	</properties>
+	<body>
+	<section name="TransferObject">
+		<subsection name="Oversikt">
+		<p>Transfer Object er designet for å optimalisere transport av data mellom lagene. 
+      Istedenfor å sende og motta individuelle dataelementer, benyttes et Transfer Object 
+      som inneholder alle dataelementene i en enkel struktur. Transfer Object transporteres 
+      mellom lagene ved hjelp av pass-by-value teknikk istedenfor pass-by-reference. Det betyr 
+      at det er en kopi av det originale objektet som sendes til det andre laget istedenfor 
+      en referanse til originalobjektet. WebSphere Application Server kan konfigureres 
+      til å benytte pass-by-reference for å forbedre ytelsen når lagene befinner seg 
+      på samme maskin og i samme JVM. Bruk av dette designmønsteret gir følgende fordeler:<br/>
+	<li>Redusert nettverkstrafikk.</li>
+	<li>Grensesnitt til forretningstjenester og integrasjonstjenester forenkles.</li>
+	<li>Større mengder data overført ved hjelp av færre kall.</li>
+	<li>Redusert duplisering av kode.</li><br/>
+      
+      Det implementeres en generisk superklasse for Transfer Objectene som inneholder en hashmap og
+      metoder som gir mulighet til å legge til og hente ut objekter med en tilhørende
+      nøkkelverdi i form av en streng. Denne klassen subklasses av ServiceRequest og ServiceResponse-klassene 
+      som går henholdsvis ut og inn fra klienten til serveren. <br/>
+      I tilfeller der en ønsker komplekse TransferObjecter benyttes en Transfer Object 
+      Assembler som samler data fra forskjellige servicer og domeneobjekter og legger 
+      dem inn i et Transfer Object som deretter sendes mellom lagene. Ettersom TransferObject er en
+      abstrakt klasse vil det være de faktiske ServiceRequest og ServiceResponse-objektene som 
+      vil bli brukt til å sende data til og fra servicene.</p>
+		 	
+			<h4>Klassediagram</h4>
+			<img src="../images/design/transferobject.gif"/>
+
+		</subsection>
+
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.8  2004/06/18 13:52:05  rwa2920
+Lagt inn endringslogg
+
+Revision 1.7  2004/06/16 13:53:01  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+
+
+
+	</section>
+	</body>
+</document>
+

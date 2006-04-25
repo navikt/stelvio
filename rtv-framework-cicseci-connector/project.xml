@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+    <extend>../rtv-framework-main/project.xml</extend>
+    
+    <!-- a unique name for this project -->
+    <id>rtv-framework-cicseci-connector</id>
+    
+    <!-- a short but descriptive name for the project -->
+    <name>rtv-framework-cicseci-connector</name>
+       
+    <!-- details about the organization that 'owns' the project --> 
+    <shortDescription>JCA Connector provided by IBM</shortDescription>
+
+</project>

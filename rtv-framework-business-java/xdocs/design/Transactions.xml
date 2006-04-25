@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Design Transaksjonshåndtering</title>
+	</properties>
+	<body>
+		<section name="Design Transaksjonshåndtering">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					Arkitekturen er designet for å utnytte standardmekanismer for transaksjonshåndtering 
+					i EJB-containeren. All forretningslogikk og integrasjonslogikk deltar i en transaksjon, 
+					mens presentasjonslogikken aldri deltar i transaksjoner. Arkitekturen benytter i 
+					utgangspunktet <i>Container Managed Transactions (CMT)</i>. Ved behov kan kan 
+					<i>Bean Managed Transactions (BMT)</i> benyttes i f.eks. batcharkitekturen.
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Beskrivelse">
+							
+				<h4>Transaksjonsgrenser</h4>
+				<p>
+					Alle transaksjoner startes og avsluttes i forretningsfasaden, mens integrasjonsfasaden i 
+					utgangspunktet deltar i samme transaksjon som forretningsfasaden. I praksis betyr dette at 
+					transaksjonsattributtet settes til <i>Required</i> for <i>BusinessFasade</i> og 
+					<i>Mandatory</i> for <i>IntegrationFasade</i>. <i>Required</i> betyr at EJB-metoden alltid 
+					skal delta i en transaksjon. Dersom det ikke finnes en transaksjon allerede, starter 
+					containeren en ny. <i>Mandatory</i> betyr at EJB-metoden alltid skal delta i en transaksjon.
+					Dersom det ikke finnes en transaksjon allerede, kaster containeren en Exception.
+				</p>
+				
+				<h4>Feilhåndtering</h4>
+				<p>
+					I følge EJB-spesifikasjonen har containeren ansvar for å rulle tilbake en transaksjon dersom 
+					en metode kaster en <i>java.lang.RuntimeException</i>, eller når metoden <i>setRollbackOnly()</i> 
+					kalles på <i>javax.ejb.EJBContext</i>.
+				</p>
+				<h5>SystemException</h5>
+				<p>
+					Transaksjoner rulles alltid tilbake dersom en <i>SystemException</i> kastes videre fra 
+					forretningsfasaden. Dersom  en <i>SystemException</i> kastes fra integrasjonsfasaden,
+					vil transaksjonen kun rulles tilbake dersom forretningslogikken ikke fanger den opp. <br/>
+					<b>NB!</b> Applikasjonene skal ALDRI fange opp SystemException!
+				</p>
+				<h5>ApplicationException</h5>
+				<p>
+					Transaksjoner rulles ikke tilbake dersom en <i>ServiceFailedException</i> kastes fra 
+					forretningsfasaden. Dersom applikasjoner har behov for å rulle tilbake transaksjoner 
+					også ved applikasjonsfeil, må metoden <i>setRollbackOnly()</i> kalles på 
+					<i>ServiceFailedException</i> før den kastes. Forretningsfasaden og integrasjonsfasaden 
+					vil kalle <i>isRollbackOnly()</i> på <i>ServiceFailedException</i>, og kalle 
+					<i>setRollbackOnly()</i> på <i>javax.ejb.SessionContext</i> dersom den returnerte <i>true</i>.
+				</p>
+				
+				<h4>Distribuerte transaksjoner</h4>
+				<p>
+					Applikasjonene har behov for å aksessere flere baksystem innenfor samme transaksjon. 
+					Derfor vil arkitekturen tilby støtte for globale (distribuerte) transaksjoner ihht 
+					X/Open XA-spesifikasjonen.
+				</p>
+				<h5>JDBC</h5>
+				<p>
+					En JDBC driver med XA-støtte må benyttes for hver database som skal delta i 
+					globale transaksjoner.
+				</p>
+				<h5>JMS</h5>
+				<p>
+					<i>Enable XA</i> må være avhuket i Websphere Admin konsollet for hver 
+					<i>QueueConnectionFactory</i> som skal delta i globale transaksjoner. <br/>
+					<b>NB!</b> Det er viktig å være klar over at transaksjonsgrensene kun strekker seg til 
+					levering av en melding til en kø. En eventuell tilbakerulling av en transaksjon vil 
+					ikke medføre tilbakerulling av tilstanden i det eksterne systemet som plukket opp meldingen.
+				</p>
+				<h5>JCA</h5>
+				<p>
+					<i>CICS Transaction Gateway (CTG)</i> støtter ikke <i>Two Phase Commit (2PC)</i>.
+					CTG støtter følgende one-phase commit optimaliseringer som det er uklart om Websphere 5.1
+					støtter; <i>Local transaction optimalization</i> og <i>Last resource optimalization</i>.
+					Dette må undersøkes nærmere med IBM.
+				</p>
+			
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/06/21 12:06:02  psa2920
+endret etter review
+
+Revision 1.1  2004/06/18 10:23:47  psa2920
+første versjon design og guide av transaksjonshåndtering
+]]>			
+</source>
+			</subsection>			
+			
+		</section>
+	</body>
+</document>
+

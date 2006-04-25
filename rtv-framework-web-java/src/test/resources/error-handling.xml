@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://hpapt03/dtd/spring-beans.dtd">
+<!--
+	Error Handling Configuration is used by the ErrorHandler
+-->
+<beans>
+	<!-- <bean id="ErrorHandler" class="no.trygdeetaten.common.framework.error.DefaultHandlerImpl"/> -->
+	<bean id="ErrorHandler" class="no.trygdeetaten.common.framework.error.DefaultHandlerImpl" init-method="init"/>
+
+</beans>
+

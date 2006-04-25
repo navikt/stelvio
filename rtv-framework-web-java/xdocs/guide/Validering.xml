@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Validering - Guide</title>
+	</properties>
+	<body>
+		<section name="Validering - Guide">
+			
+			<subsection name="Oversikt">			
+				<p>
+					Validering av data fra web klienten skjer med hjelp av rammeverk fra Jakarta.
+					Isteden for å legge validering i hver enkelt form ligger valideringen i xml filer.
+					<br/>
+					Validering skal ikke utføres i web klienten men på serversiden. Hvis det skulle 
+					være behov for web klientvalidering må samme validering uansett gjøres på serversiden
+					da klientvalidering kan unngås.
+				</p>
+			</subsection>
+			
+			<subsection name="Beskrivelse">
+				<h4>Konfigurasjon</h4>
+					<p>
+						For å kunne bruke valideringsrammeverket i Struts må Validator plugin være registrert
+						i <i>struts-config.xml</i>.
+						<br/>
+						Filen <i>validation-rules.xml</i> inneholder ferdigdefinerte valideringsregler. Hvis
+						egenutviklede regler skal legges til skal de legges i en egen xml fil.
+						<br/>
+						Valideringsreglene knyttet til en form legges inn i filen <i>validation.xml</i>. 
+						Det legges inn validerings konstanter i <i>global</i> delen og forms/actionmapping 
+						i <i>formset</i> delen. Konstantverdien er et regexp uttrykk.
+						<br/>
+						Meldingen som skal vises ved valideringsfeil ligger i application.properties filen på vanlig
+						måte. (Se brukerhåndboken Konfigureringsfiler) Meldingene til standard valideringene som ligger
+						inne er definert og starter med <i>error.</i> 
+						f.eks. <i>errors.required={0} is required.</i>
+					</p>
+
+				<h4>Tilgjengelige valideringer</h4>
+					<p>
+						Det finnes ferdige regler definert i konfigurasjonsfilene som kan brukes for validering.
+						Det er regler som dekker mange typer av validering og skal brukes i så stor grad det er mulig.
+						<br/>
+						Regler som finnes dekker områder som påkrevde felt, sjekk at et felt følger et visst mønster,
+						sjekker verdier i flere felter mot hverandre. Mønstersjekken skjer med hjelp av regulær uttrykk.
+						(Perl syntaks, Oro i Jakarta commons brukes) Localisering kan brukes sammen med Validator rammeverket
+						slik at forskjellige regler kan legges på forskjellige språk.
+						<br/>
+						<table>
+							<tr>
+								<th>Validering</th>
+								<th>Beskrivelse</th>
+							</tr>
+							<tr>
+								<td>required</td>
+								<td>Sjekker at feltet ikke er tomt</td>
+							</tr>
+							<tr>
+								<td>mask</td>
+								<td>Sjekker verdien i feltet mot et Regulær uttrykk</td>
+							</tr>
+							<tr>
+								<td>range</td>
+								<td>Sjekker at en verdi ligger innom et visst område</td>
+							</tr>
+							<tr>
+								<td>maxLength</td>
+								<td>Sjekker at verdien i feltet ikke overskrider en maks lengde</td>
+							</tr>
+							<tr>
+								<td>minLength</td>
+								<td>Sjekker at verdien i feltet ikke overskrider en minimums lengde</td>
+							</tr>
+							<tr>
+								<td>byte,short,integer etc.</td>
+								<td>Sjekker at verdien kan konverteres til motsvarende primitiv</td>
+							</tr>
+							<tr>
+								<td>date</td>
+								<td>Sjekker at verdien er en gyldig dato. Dato mask må spesifiseres. Bruk 
+								<i>datePatternStrict</i> for å validere hele datoen. datePattern validerer
+								"på frihand".</td>
+							</tr>
+							<tr>
+								<td>creditCard</td>
+								<td>Sjekker at verdien kan være et kreditkortnummer</td>
+							</tr>
+							<tr>
+								<td>email</td>
+								<td>Sjekker at verdien kan være en mailadresse (bl.a. inneholder alfa-krøll)</td>
+							</tr>
+						</table>
+					</p>
+			</subsection>
+			
+			<subsection name="Bruk av validering">
+
+				<h4>I validation.xml</h4>
+					<p>
+						For dynamiske former finnes to klasser som kan bruke i definisjon av formen. 
+						(Definisjonen av formen ligger i <i>struts-config.xml</i>) Forskjellen er på hvilket nivå 
+						valideringen skjer:
+						<br/>
+						<li>ValidatorForm brukes for validering på formsnivå</li>
+						<li>ValidatorActionForm brukes for validering på actionnivå. (Hvis en form brukes i flere
+						vinduer kan det valideres forskjellige i de Action som bruker formen)</li>
+						<br/>
+						Det er i konfigurasjonsfilen det settes opp på hvilket nivå som valideringen skal skje. Dersom
+						validering ikke ønskes for en gitt action-metode, kan dette konfigureres i struts-config.xml
+						(se <i>Konfigurasjon</i> i <a href="ActionForm.html">Action guide</a>).
+						<br/>
+					 	Eksempel på validering av felter i en form der et felt sjekkes for at det finnes verdier, at 
+						tegnene finnes samt at minst et visst antall tegn er skrevet inn. Beskrivelse av felter:
+						<br/>
+						<li>form name: navnet på formen som skal valideres</li>
+						<li>property: feltet som valideres</li>
+						<li>depends: typene av validering som skal skje</li>
+						<li>msg: refererer til meldingen som skal vises</li>
+						<li>arg0: parameter som settes inn i meddelandet. Eks: <i>{0}</i> må ha minimum 5 tegn </li>
+						<li>var: parameter til validereren</li>
+<source><![CDATA[
+<form name="firstForm">
+	<field
+                property="name1String"
+                depends="required,date">
+               	<arg0 key="prompt.name1String"/>
+               	<var>
+               		<var-name>date-pattern</var-name>
+               		<var-value>dd.mm.yyyy</var-value>
+             	</var>
+        </field>
+	<field
+        	property="name2String"
+	        depends="required,mask,minlength">
+	        <msg name="mask" key="firstForm.name2String.maskmsg"/>
+	        <msg name="minlength" key="firstForm.name2String.minlengthmsg"/>
+            	<arg0 key="prompt.name2String"/>
+            	<var>
+	        	<var-name>mask</var-name>
+    	           	<var-value>^[0-9a-zA-Z|æ|ø|å|Æ|Ø|Å]*$</var-value>
+        	</var>
+            	<var>
+	                <var-name>minlength</var-name>
+    	           	<var-value>5</var-value>
+        	</var>
+         </field>
+	 <field
+            	property="name3String"
+	        depends="required,integer,range">
+            	<arg0 key="prompt.name2String"/>
+            	<arg1 name="range" key="${var:min}" resource="false"/>
+            	<arg2 name="range" key="${var:max}" resource="false"/>
+            	<var>
+	                <var-name>min</var-name>
+    	           	<var-value>1</var-value>
+        	</var>
+            	<var>
+	                <var-name>max</var-name>
+    	           	<var-value>5</var-value>
+        	</var>
+         </field>
+</form>]]>
+</source>
+					</p>
+
+				<h4>Validering av lister</h4>
+					<p>
+						For å kunne validere verdier i collections i en form må attributen <i>indexedListProperty</i>
+						settes i validation.xml. Der skal navnet på collection stå. (Obs noen regler virker ikke med
+						<i>indexedListProperty</i>. F.eks. så validerer regelen <i>integer</i> kun den første raden.
+						required og mask virker...)						
+					</p>
+
+				<h4>Meldinger ved valideringsfeil</h4>
+					<p>
+						Hvis et felt valideres til å være ugyldig skal feilmeldingen vises for brukeren.
+						Nedenfor er et eksempel på hvordan feilmeldinger skrives ut som en liste. Overskriften
+						hentes fra resource bundle.
+					</p>
+<source><![CDATA[
+<logic:messagesPresent>
+   <bean:message key="errors.header"/>
+   <ul>
+   <html:messages id="error">
+      <li><bean:write name="error"/></li>
+   </html:messages>
+   </ul><hr>
+</logic:messagesPresent>]]>
+</source>
+
+				<h4>Validering av returdata fra andre vinduer</h4>
+					<p>
+						Valideringen må skje i Actionklassen.
+						<br/>
+						Det skal være mulig at hente inn verdier fra et annet vindu som så blir sendt tilbake som
+						returverdier i requesten. F.eks. ved å søke frem en person og returnere personnummeret. 
+						Dette feltet kan ikke valideres når søkevinduet åpnes uten verdien må valideres ved lagring i 
+						Actionklassen. Hvis feltet skulle feile valideringen i Action så opprettes/legges en error inn
+						i ActionErrors. Denne feilmeldingen vises da i vinduet.
+					</p>
+				<h4>Validering av flere felter sammen</h4>
+					<p>
+						Hvis flere felter må valideres i en sammenheng må en egen validator lages og defineres i
+						<i>validation-rules.xml</i> og brukes i <i>validation.xml</i>. (Se Jakartas Struts
+						dokumentasjon ved behov)
+						<br/>
+						Hvis det er en validering som kun utføres en eller noen få plasser kan vailderingen skje
+						direkte i Actionklassen.
+					</p>
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.8  2004/12/06 16:08:54  jla2920
+Lagt til datePatternStrict beskrivelse
+
+Revision 1.7  2004/08/24 11:33:00  cra2920
+Oppdatert info om validering
+
+Revision 1.6  2004/08/03 14:31:21  jla2920
+Noe tillegg
+
+Revision 1.5  2004/06/18 13:10:20  jla2920
+Oppdatert etter review og satt inn ny endringslogg
+]]>			
+</source>
+			</subsection>
+		</section>
+	</body>
+</document>
+

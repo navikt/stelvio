@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<beans>
+	<bean id="TestLocalService" class="no.trygdeetaten.integration.framework.service.TestLocalService"></bean>
+
+	<!-- *******************  START TREKK MODULEN, foreløpig stubbet ****************  -->
+	<bean id="TrekkModul" class="no.trygdeetaten.integration.framework.stubs.IntegrationStub" singleton="true">
+		<property name="inputServiceName">
+			<value>SystemServiceName</value>
+		</property>
+		<property name="interactions">
+			<map>
+				<entry key="TrekkdetaljerService">
+					<map>
+						<entry key="TREKKDETALJOUTPUT">
+							<ref bean="TrekkdetaljerServiceStub" />
+						</entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- Stub av T771Trekkdetaljer output, foreløpig stubbet -->
+	<bean id="TrekkdetaljerServiceStub" class="no.trygdeetaten.integration.framework.stubs.TestT771TrekkdetaljerOutput">
+		<property name="id">
+			<value>771</value>
+		</property>
+		<property name="antall">
+			<value>2</value>
+		</property>
+		<property name="trekkdetaljer">
+			<set>
+				<ref bean="T771TrekkdetaljerRad0" />
+				<ref bean="T771TrekkdetaljerRad1" />
+			</set>
+		</property>
+		<property name="returMelding">
+			<ref bean="TrekkReturMelding" />
+		</property>
+	</bean>
+
+	<!-- stub av trekkdetaljrader 0 -->
+	<bean id="T771TrekkdetaljerRad0" class="no.trygdeetaten.integration.framework.stubs.TestT771TrekkdetaljerRad">
+		<property name="debitorOffnr">
+			<value>01234567890</value>
+		</property>
+		<property name="kreditorOffnr">
+			<value>01234567892</value>
+		</property>
+		<property name="kreditornavn">
+			<value>Kreditor Navn</value>
+		</property>
+		<property name="kodeTrekktype">
+			<value>ABCD</value>
+		</property>
+		<property name="tekstTrekktype">
+			<value>Trekktype tekst</value>
+		</property>
+		<property name="datoTrekkperFom">
+			<ref bean="DummyDato" />
+		</property>
+		<property name="kreditorsRef">
+			<value>Kreditors Ref</value>
+		</property>
+		<property name="kodeTrekkalt">
+			<value>S</value>
+		</property>
+		<property name="tekstTrekkalt">
+			<value>Saldo</value>
+		</property>
+		<property name="sats">
+			<value>123</value>
+		</property>
+		<property name="datoTrukket">
+			<ref bean="DummyDato" />
+		</property>
+		<property name="kodeFagomrade">
+			<value>BI</value>
+		</property>
+		<property name="tekstFagomrade">
+			<value>Bidrag</value>
+		</property>
+		<property name="belopTrukket">
+			<value>1000</value>
+		</property>
+	</bean>
+	<!--	stubb av trekkdetaljrader 1 -->
+	<bean id="T771TrekkdetaljerRad1" class="no.trygdeetaten.integration.framework.stubs.TestT771TrekkdetaljerRad">
+		<property name="debitorOffnr">
+			<value>01234567890</value>
+		</property>
+		<property name="kreditorOffnr">
+			<value>01234567892</value>
+		</property>
+		<property name="kreditornavn">
+			<value>Kreditor Navn 222</value>
+		</property>
+		<property name="kodeTrekktype">
+			<value>ABCD</value>
+		</property>
+		<property name="tekstTrekktype">
+			<value>Trekktype tekst 2</value>
+		</property>
+		<property name="datoTrekkperFom">
+			<ref bean="DummyDato" />
+		</property>
+		<property name="kreditorsRef">
+			<value>Kreditors Ref</value>
+		</property>
+		<property name="kodeTrekkalt">
+			<value>S</value>
+		</property>
+		<property name="tekstTrekkalt">
+			<value>Saldo</value>
+		</property>
+		<property name="sats">
+			<value>123</value>
+		</property>
+		<property name="datoTrukket">
+			<ref bean="DummyDato" />
+		</property>
+		<property name="kodeFagomrade">
+			<value>BI</value>
+		</property>
+		<property name="tekstFagomrade">
+			<value>Bidrag</value>
+		</property>
+		<property name="belopTrukket">
+			<value>1200</value>
+		</property>
+	</bean>
+	<!-- STUB av returmelding for trekk -->
+	<bean id="TrekkReturMelding" class="no.trygdeetaten.integration.framework.stubs.TestK469Message"></bean>
+
+	<!-- STUB For trekk -->
+	<bean id="DummyDato" class="java.util.Date"></bean>
+
+	<!-- ************************ SLUTT TREKK MODULEN, foreløpig stubbet ************ -->
+
+</beans>
+
+
+

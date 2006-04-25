@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<stringValue>String 1</stringValue>
+	<characterValue>C</characterValue>
+	<cValue>c</cValue>
+	<doubleValue>1.0</doubleValue>
+	<dValue>2.0</dValue>
+	<shortValue>3</shortValue>
+	<sValue>4</sValue>
+	<integerValue>6</integerValue>
+	<iValue>7</iValue>
+	<longValue>8</longValue>
+	<lValue>9</lValue>
+	<booleanValue>true</booleanValue>
+	<bValue>false</bValue>
+	<floatValue>0.1</floatValue>
+	<fValue>0.2</fValue>
+	<byteValue>56</byteValue>
+	<byValue>57</byValue>
+	<attributes att1="Attrib 1" att2="Attrib 2"/>
+</root>

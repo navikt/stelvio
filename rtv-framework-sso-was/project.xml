@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+	<extend>${basedir}/../rtv-framework-main/project.xml</extend>
+
+	<id>rtv-framework-sso-was</id>
+	<name>rtv-framework-sso-was</name>
+
+	<shortDescription>Single Sign-On for WebSphere</shortDescription>
+	
+	<contributors>
+		<contributor>
+			<name>person1f201b37d484</name>
+			<id>hza2920</id>
+			<email>test@example.com</email>
+			<organization>Trygdeetaten</organization>
+			<roles>
+				<role>Arkitekt</role>
+				<role>Utvikler</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>personbf936f5cae20</name>
+			<id>shc2920</id>
+			<email>test@example.com</email>
+			<organization>Trygdeetaten</organization>
+			<roles>
+				<role>Arkitekt</role>
+				<role>Utvikler</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>person7553f5959484</name>
+			<id>psa2920</id>
+			<email>test@example.com</email>
+			<organization>Trygdeetaten</organization>
+			<roles>
+				<role>Arkitekt</role>
+				<role>Utvikler</role>
+			</roles>
+		</contributor>
+	</contributors>
+	<dependencies>
+		<dependency>
+			<groupId>was</groupId>
+			<artifactId>wssec</artifactId>
+			<version>6.0</version>
+		</dependency>
+	</dependencies>
+
+</project>

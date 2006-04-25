@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Guide BusinessFacade</title>
+	</properties>
+	<body>
+		<section name="Guide BusinessFacade">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>BusinessFacade</i> er en <i>Stateless Session EJB</i> som implementeres for
+					å aksessere forretningslogikk fra presentasjonslaget. Denne forretningsfasaden
+					fungerer som en integrasjonsbuss, med kjennskap til hvor tjenester befinner seg og
+					hvordan disse aksesseres. Forretningsfasaden er sentral i en tjenesteorientert
+					arkitektur (SOA).
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Hvordan benytte forretningsfasaden?">
+			
+				<h4>BusinessDelegate</h4>
+				<p>
+					Applikasjonskomponenter aksesserer aldri forretningsfasaden direkte men via en 
+					<i>BusinessDelegate</i>, som innkapsler lokalisering av fasaden vha en
+					<i>RemoteServiceLocator</i> og delegerer prosessering til den.
+				</p>	
+				
+				<h4>RemoteServiceLocator</h4>
+				<p>
+					<i>RemoteServiceLocator</i> leser konfigurasjonen av blant annet forretningsfasaden fra 
+					<i>distributed-services.xml</i>, slår opp og eventuelt cacher fasadens <i>home interface</i>
+					internt for å bedre ytelsen.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Hvordan konfigurere forretningsfasaden?">
+			
+				<h4>distributed-services.xml</h4>
+				<p>
+					Eksempelet nedenfor viser hvordan forretningsfasaden kan konfigureres.
+				</p>
+<source><![CDATA[
+<beans>
+   ...
+   <bean id="BusinessFacade" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription">
+      <property name="jndiName"> ejb/no/trygdeetaten/business/BusinessFacade </property>
+      <property name="providerUrl"> localhost </property>
+      <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
+      <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>
+      <property name="securityPrincipal"> aspecialuser </property>
+      <property name="securityCredentials"> hissecretpassword </property>
+      <property name="cacheable"> true </property>
+   </bean>
+   ...
+</beans>			
+]]></source>
+			
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/06/18 10:10:53  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>			
+			
+		</section>
+	</body>
+</document>
+

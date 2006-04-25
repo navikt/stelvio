@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Action - Howto</title>
+	</properties>
+	<body>
+		<section name="Action - Howto">
+			
+			<subsection name="Oversikt">
+				<p>
+				 	En Action er den utførende delen i presentasjonslaget. Det er implementeringen av "Service to Worker" i 
+				 	oversiktsbilden på forsiden. Her gjøres kall på forretningslogikken og det avgjøres hvem som skal få videre
+				 	fokus. Actionklassen skal arve fra <i>FindDispatchAction</i> der det ligger fellestjenester som trenges.
+				</p>
+			</subsection>
+			
+			<subsection name="Eksempel">
+			
+				<h4>Metodesignatur og bruk av formdata</h4>
+					<p>
+						Metoden må ha en presis signatur for at kunne bli kjørt av rammeverket. Se eksempel.
+						<br/>
+						Formen som er knyttet til en action i struts-config.xml kommer som innparameter til
+						Actionklassen. Den må kastes før den kan brukes som en vanlig JavaBean.
+<source><![CDATA[
+public ActionForward executeSok(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+	throws Exception {
+
+OGS140SokePersonForm sokePersonForm = (OGS140SokePersonForm) form;
+]]></source>
+					</p>
+				<h4>Kall på forretningslogikken</h4>
+					<p>
+						For at kalle forretningslaget må <i>BusinessDelegate</i> hentes. Dette gjøres med getBusinessDelegate
+						metoden som ligger i superklassen. Navnet på servicen som skal kjøres må være en av servicene som er 
+						definert i konfigurasjonsfilen <i>application-services.xml</i>.
+<source><![CDATA[
+// Create a Transfer Object
+ServiceRequest input = new ServiceRequest();
+// Set the name of the business service to run
+input.setServiceName("HentPerson");
+// Add data
+input.setData("fnr", sokePersonForm.getFnummer());
+
+// Get the BusinessDelegate and run.. 
+ServiceResponse output = super.getBusinessDelegate().execute(input);
+// Use the resultdata
+List personListe = (List) output.getData("personer");
+]]></source>
+						Service request og response (Transfer Object) trenger ikke å kodes, data lagres internt i en HashMap.
+					</p>
+					
+				<h4>Overføring og mellomlagring av data </h4>
+					<p>
+						Data kan lagres i sessionen til en bruker. Dvs. at dataen er tilgjengelig så lenge
+						brukeren er pålogget. I denne arkitekturen kan en brukere operere med flere vinduer
+						samtidig og der informasjonen i et vindu ikke skal være synlig for et annet vindu.
+						Derfor brukes metodene <i>setSessionContext(), getSessionContext og getAllSessionContext()</i>
+						i klassen RequestUtils som holder styr på vinduets id. (Se også Javadoc for klassen)
+<source><![CDATA[
+RequestUtils.setSessionContext(request, "key", "value");					
+String value = (String) RequestUtils.getSessionContext(request, "key");
+]]></source>
+						Skal informasjon lagres som skal være synlig for alle vinduer brukes <i>setAttribute() og
+						getAttribute()</i> på sessionen direkte.
+					</p>
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/08/04 10:45:09  jla2920
+Kun små endringer
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Detaljert Design</title>
+	</properties>
+	<body>
+	<section name="JCACicsService">
+		<subsection name="Oversikt">
+		 	<table>
+				<tr>
+					<td><b>Navn</b></td>
+					<td>JCAService</td>
+				</tr>
+				<tr>
+					<td><b>Type</b></td>
+					<td>pojo</td>
+				</tr>
+				<tr>
+					<td><b>Beskrivelse</b></td>
+					<td>Remote service for eksekvering av backend kall via til et legacysystem via JCA. Denne tjenesten kan blant annet koble
+					seg mot CICS ved bruk av JCA og CTG.</td>
+				</tr>
+				<tr>
+					<td><b>Implements</b></td>
+					<td>ingen</td>
+				</tr>
+				<tr>
+					<td><b>Extends</b></td>
+					<td>IntegrationService</td>
+				</tr>
+			</table>
+			<h4>Detaljert beskrivelse av komponenten</h4>
+			<p>JCAService er en integrasjons komponent for å koble seg til CICS gjennom bruk av Cics Transaction Gateway (CTG).
+			Denne komponenten skal kunne koble seg til hvilket som helst cics program ved konfigurasjon av mappingen mellom CopyBooks
+			og objekter <a href="#bruk">(Se guide).</a>
+			Den kan også benyttes mot andre JCA ResourceAdaptere.
+			Komponenten gjør et oppslag i JNDI for å finne den connection den skal benytte seg av. Dette må konfigureres for den 
+			enkelte service. Med dette menes at hver CICS modul må ha en representativ ConnectionFactory satt opp i WSAD.
+			Når kal gjøres mot JCACicsService må riktig ConnectionFactory benyttes for å koble mot riktig CICS.</p>
+			<h4>Klassediagram</h4>
+			<img src="../images/design/JCAService_class_diagram.png"/>
+			<h4>Sekvensdiagram</h4>
+			<img src="../images/design/JCAService_sequence_diagram.png"/>
+		</subsection>
+	
+	
+		<subsection name="Bruk">
+			<a name="bruk"/>
+			<p>
+				Denne seksjonen inneholder en beskrivelse av hvordan modulen skal brukes.
+				</p>
+			<h4>Kodeeksempel</h4>
+			<p>JCAService skal ikke brukes direkte, den skal kun benyttes via superklassen IntegrationService.
+			Denne skal benyttes likt for alle integrasjonskomponenter, den som skal benytte en slik service må
+			sette opp ServiceRequesten før kall til integrasjonslaget.</p>
+			<code>public class JCAService extends IntegrationService</code>
+			<p>Konfigurasjon av integrasjon mot CICS er en essensiell del av kommunikasjonen. Den baserer
+			seg på å bygge en XML representasjon av Copybooks.			
+			</p>
+			<h4>Eksempel på en copybook</h4>
+<source><![CDATA[
+05 K460M700-PARAM.                                
+   10 M700-AKSJONSKODE                  PIC X(08).
+   10 M700-SAKSNR                       PIC X(07).
+   10 M700-KODE-SOKNADSTYPE             PIC X(02).
+   10 M700-UG-KODE                      PIC X(02).
+   10 M700-DATO-SOKNAD                  PIC X(08).
+   10 M700-DATO-SOKT-FOM                PIC X(08).
+   10 M700-DATO-BEREGN-TOM              PIC X(08).
+   10 M700-BRUKERID                     PIC X(08).
+   10 M700-OBJEKTNR-BP                  PIC X(02).
+   10 M700-PERSON-ID-BP                 PIC X(11).
+   10 M700-SOKT-GEBYRFRITAK-BP          PIC X(01).
+   10 M700-OBJEKTNR-BM                  PIC X(02).
+   10 M700-PERSON-ID-BM                 PIC X(11).
+   10 M700-SOKT-GEBYRFRITAK-BM          PIC X(01).
+   10 M700-FEIL-FELTPEKER-1             PIC X(03).
+   10 M700-BARN-TABELL.                           
+      15 M700-ANT-BARN-ELEMENTER        PIC 9(02).
+      15 FILLER OCCURS 15 TIMES.                   
+         20 M700-OBJEKTNR-BARN          PIC X(02). 
+         20 M700-PERSON-ID-BARN         PIC X(11). 
+         20 M700-BIDRAG-FLAGG           PIC X(01). 
+         20 M700-TILL-BIDRAG-FLAGG      PIC X(01). 
+         20 M700-FORSKUDD-FLAGG         PIC X(01). 
+         20 M700-SAERTILSK-FLAGG        PIC X(01). 
+         20 M700-SAMVAER-KLASSE         PIC X(02). 
+         20 M700-INNKREV-FLAGG          PIC X(01). 
+         20 M700-BELOP-LOPENDE-BIDRAG   PIC S9(09).
+         20 M700-FEIL-FELTPEKER-2       PIC X(6).  
+]]>
+</source>
+<h4>XML representasjon av copybooken over</h4>
+<p>XML representasjonen følger formatet til hibernate mappingen. Dette innebærer at blant annet type representasjon følger
+Hibernates spesifikasjon. Et annet viktig punkt her er at Hibernate krever en <b>id</b>, det er bare å følge som eksemplet under
+er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
+<source>
+<![CDATA[
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hpapt03/dtd/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+	<class name="no.trygdeetaten.integration.framework.Foreldre" table="FORELDRE" schema="K460M700">
+		<id name="id" column="id" type="long">
+			<generator class="hilo"></generator>
+		</id>
+		<property name="aksjonskode" 		column="M700-AKSJONSKODE" 		type="string" 	length="8" 	offset="0"/>
+		<property name="sakNr" 			column="M700-SAKSNR" 			type="string" 	length="7" 	offset="8"/>
+		<property name="soknadsType" 		column="M700-KODE-SOKNADSTYPE" 		type="string" 	length="2" 	offset="15"/>
+		<property name="ugKode" 		column="M700-UG-KODE" 			type="string" 	length="2" 	offset="17"/>
+		<property name="datoSoknad" 		column="M700-DATO-SOKNAD" 		type="string" 	length="8" 	offset="19"/>
+		<property name="datoSokFOM" 		column="M700-DATO-SOKT-FOM" 		type="string" 	length="8" 	offset="27"/>
+		<property name="datoBerTOM" 		column="M700-DATO-BEREGN-TOM" 		type="string" 	length="8" 	offset="35"/>
+		<property name="brukerId" 		column="M700-BRUKERID" 			type="string" 	length="8" 	offset="43"/>
+		<property name="objectnrBP" 		column="M700-OBJEKTNR-BP" 		type="string" 	length="2" 	offset="51"/>
+		<property name="personIdBP" 		column="M700-PERSON-ID-BP" 		type="string" 	length="11" 	offset="53"/>
+		<property name="soktGebyrFriBP" 	column="M700-SOKT-GEBYRFRITAK-BP" 	type="string" 	length="1" 	offset="64"/>
+		<property name="objectnrBM" 		column="M700-OBJEKTNR-BM" 		type="string" 	length="2" 	offset="65"/>
+		<property name="personIdBM" 		column="M700-PERSON-ID-BM" 		type="string" 	length="11" 	offset="67"/>
+		<property name="soktGebyrFriBM" 	column="M700-SOKT-GEBYRFRITAK-BM"	type="string" 	length="1" 	offset="78"/>
+		<property name="feilPeker" 		column="M700-FEIL-FELTPEKER-1"		type="string" 	length="3" 	offset="79"/>
+		<property name="numRecords"		column="M700-ANT-BARN-ELEMENTER" 	type="int" 	length="2" 	offset="82"/>
+		<set name="barn">
+			<key column="M700-ANT-BARN-ELEMENTER"/>
+			<one-to-many class="no.trygdeetaten.integration.framework.Barn" offset="84" length="540"/>
+		</set>	
+	</class>
+	<class name="no.trygdeetaten.integration.framework.Barn" table="BARN" schema="K460M700">
+		<id name="id" column="id" type="long">
+			<generator class="hilo"></generator>
+		</id>
+		<property name="objectNr" 	column="M700-OBJEKTNR-BARN" 		type="string" length="2" 	offset="0"/>
+		<property name="personId" 	column="M700-PERSON-ID-BARN" 		type="string" length="11" 	offset="2"/>
+		<property name="bidragFl" 	column="M700-BIDRAG-FLAGG" 		type="string" length="1" 	offset="13"/>
+		<property name="tillBidragFl" 	column="M700-TILL-BIDRAG-FLAGG" 	type="string" length="1" 	offset="14"/>
+		<property name="forskuddFl" 	column="M700-FORSKUDD-FLAGG" 		type="string" length="1" 	offset="15"/>
+		<property name="saerTilskFl" 	column="M700-SAERTILSK-FLAGG" 		type="string" length="1" 	offset="16"/>
+		<property name="samvaerKls" 	column="M700-SAMVAER-KLASSE" 		type="string" length="2" 	offset="17"/>
+		<property name="innkrevFl" 	column="M700-INNKREV-FLAGG" 		type="string" length="1" 	offset="19"/>
+		<property name="belopLopBidrag" column="M700-BELOP-LOPENDE-BIDRAG" 	type="string" length="9" 	offset="20"/>
+		<property name="feilPeker" 	column="M700-FEIL-FELTPEKER-2" 		type="string" length="6" 	offset="29"/>
+	</class>
+</hibernate-mapping>
+]]>
+</source>
+		</subsection>
+		
+	<subsection name="Bruk av JCAService">
+		<p>
+			
+		</p>
+		<source>
+			LocalService service = (LocalService)configInstance.getBean("BidragsBeregningsModul");
+			// Sett navnet på CICS programmet som skal kalles
+			serviceRequest.setData("SystemServiceName","K460M700");
+			ServiceResponse response = service.execute( serviceRequest );
+		</source>
+		<h4>Konfig</h4>
+		<p>Alle av atributtene nedenfor må være med.</p>
+<source>
+<![CDATA[
+<beans>
+	<bean id="BidragsBeregningsModul" class="no.trygdeetaten.integration.framework.jca.cics.service.JCACicsService" singleton="true" init-method="init">
+		<property name="queueJndi"><value>jca/cics</value></property>
+		<property name="Interactions">
+			<map>
+				<entry key="K460M700"><ref bean="K460M700"/></entry>
+			</map>
+		</property>
+		<property name="lookupHelper"><ref bean="ResourceLookupHelper"/></property>
+	</bean>
+	<bean id="K460M700" class="no.trygdeetaten.integration.framework.jca.cics.service.InteractionProperties" singleton="true" init-method="init">
+		<property name="mappingFlies">
+			<list>
+				<value>bidragsberegning_K460M700.hbm.xml</value>
+			</list>
+		</property>
+		<property name="functionName"><value>K460C700</value></property>
+		<property name="commareaLength"><value>2000</value></property>
+		<property name="preplyLength"><value>2000</value></property>
+		<property name="executionTimeout"><value>10</value></property>
+	</bean>
+	<bean id="ResourceLookupHelper" class="no.trygdeetaten.common.framework.util.ResourceLookupHelper"/>
+</beans>
+]]>
+	<subsection name="Benytte andre record typer">
+		<p>
+			Som vist i klassediagrammet så er implementasjon av Cics records kun en implementasjon av et
+			interface (RecordMapper). For å kunne benytte JCAService mot andre JCA ResourceAdapters så er det bare å lage
+			en ny implementasjon av dette interfacet.
+		</p>
+	</subsection>
+</source>
+	</subsection>
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2005/04/08 06:48:07  maven
+New version to the changed made from JCACics to a generic JCA
+
+Revision 1.1  2005/03/08 14:46:49  maven
+New with JCAService
+
+Revision 1.4  2004/08/31 08:41:57  tsb2920
+Updated with lookuphelper
+
+Revision 1.3  2004/06/17 08:01:44  tkc2920
+Lagt in ny endringslogg for automatisk logg ved insjekking i CVS
+]]>			
+</source>
+			</subsection>
+	</section>
+	</body>
+</document>
+

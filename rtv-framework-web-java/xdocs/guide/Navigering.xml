@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Navigation - Guide</title>
+	</properties>
+	<body>
+		<section name="Navigation - Guide">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					I rammeverket Struts utføres navigeringen i de enkelte Actionklassene. Når en metode i Action er klar
+					returneres en ActionForward til RequestProcessorn. Denne forwarden forteller hvor man skal videre.
+					Forwarden er definert i Struts konfigurasjonsfil. 
+					<br/>
+					Det skal være mulig å returnere til en side der brukeren har registrert verdier og som viser verdiene uten
+					at brukeren må legge inn verdiene på nytt. F.eks. i et
+					registreringsvindu så skal det være mulig å legge inn noe data, gå til et søkevindu som returnerer data
+					til registreringsvindu. I registreringsvinduet skal da de opprinnelige verdiene samt retur fra søkevindu
+					vises. Dette betyr at en Form skal kunne lagres i sessionen og kunne hentes frem ved retur. Det skal
+					også være lov å ha flere vinduer åpne samtidlig slik at det må finnes logikk for å kunne skille vinduene
+					fra hverandre. (Et vindu skal ikke kunne hente inn det andre vinduets form) 
+					<br/>
+					I denne arkitekturen er det mulig at navigere frem og tilbake mellom sider (fra et hovedvindu til
+					et undervindu) samt bruke flere	vinduer samtidlig. Informasjonen skal huskes når et undervindu
+					returnerer og informasjonen skal være unik for et enkelt vindu.					
+				</p>
+				
+			</subsection>
+			
+			<subsection name="Beskrivelse av Struts navigeringsmekanismer">
+			
+				<h4>Forward</h4>
+					<p>
+						Et sentralt begrep i strutsrammeverket er Forward. Det er et objekt som inneholder Action mappingen
+						til hver Action, dvs. mulige alternativ som kan få fokus etter at denne Action er ferdig.
+						<br/>
+						Som beskrevet over er det Actionklassen som forteller Controllern, <i>RequestProsessor</i>,
+						om status for handlingen utført i Action. Det gjøres med et forward objekt som finnes frem ved hjelp
+						av en Action mapping. Action returnerer forward objektet til Controllern som gir kontrollen
+						videre til en action eller en JSP side beroende på hva som refereres i forward objektet.
+						<br/>
+						For hver Action defineres alle forward som er mulig i Struts konfigurasjonsfil.
+						Eksempel på en actionmapping:
+<source><![CDATA[
+<action path="/action2" 
+	type="no.trygdeetaten.web.bidragproto.action.Action2" 
+	name="secondForm" 
+	scope="request" 
+	input="/WEB-INF/jsp/pages/Page2.jsp">
+	<exception key="non.existing.key" 
+		scope="request" 
+		handler="no.trygdeetaten.web.framework.action.FrameworkExceptionHandler" 
+		type="no.trygdeetaten.common.framework.error.ApplicationException" 
+		path="side.page2" />
+	<forward name="failure" path="side.page2"/>
+	<forward name="windowload" path="side.page2"/>
+	<forward name="success" path="side.page2"/>
+	<forward name="/action1" path="/action1.do"/> 
+</action>		
+]]></source>
+						Stien er referanse til en tile. Tiles brukes for å bygge sammen sider.
+						<br/>
+						Det er også definert en egen sti for feilsituasjoner.
+					</p>
+			</subsection>
+
+			<subsection name="Flyt mellom hovedvinduer og undervinduer">
+				<h4>Beskrivelse</h4>
+					<p>
+						Det er mulig å definere vinduer som undervinduer til andre vinduer (hovedvinduer). Disse undervinduer
+						kan navigere tilbake til hovedvinduet og informasjonen i hovedvinduet skal da være som før undervinduet
+						ble kalt. I undervinduet finnes det tilgang på en <i>tilbake</i> funksjonalitet som gir forwarden til
+						det vindu som kalte undervinduet. Det kan være flere hovedvinduer som bruker samme undervindu.
+						<br/>
+						Navigasjon og tjenestekall mellom hovedvindu og undervindu:
+						<li>Et hovedvindu er ansvarlig for å registrere informasjonen som er registrert, tilbake stien samt hvilket
+						felt som eventuelt skal ta mot returverdien fra undervinduet.</li>
+						<li>Når undervinduet er ferdig med forretningslogikken hentes returstien og evt. felt returverdien skal inn i.</li>
+						<li>Hovedvinduet leser inn returverdien (og sletter navigeringsinformasjonen).</li>
+						<br/>
+
+				<h4>Eksempel på kode for Action tilhørende hovedvinduet</h4>
+						Returen fra Action metoden som kjøres bruker
+						<i>RequestUtils.findForward()</i> isteden for findForward som ligger i ActionMapping!
+<source><![CDATA[
+return RequestUtils.findForward(mapping, request, "/action2", form, "/action1", "loginname", "executeMinus");
+]]></source>
+						<li>Parameter tre er forward til neste Action som skal få fokus. Denne må ha samme navn som Action Mappingen.</li>
+						<li>Parameter fire er navnet på Formen som brukes i hovedvinduet.</li>
+						<li>Parameter fem er denne Action Mappingens navn (som er retursti for undervinduet).</li>
+						<li>Parameter seks er feltet i Formen til hovedvinduet der returverdien skal legges.</li>
+						<li>Parameter syv er navnet på metoden som skal kjøres ved retur til et hovedvindu. 
+							(Er parameteren tom kjøres default metoden executeLoad ved retur)</li>
+						<br/>
+						For mer detaljert informasjon se Javadoc for RequestUtils.
+						<br/>
+				<h4>Eksempelkode for Action i undervindu</h4>
+						Returverdien legges inn i et request attribute.
+						<br/>						
+						<i>RequestUtils.findForward()</i> finner forward som returnerer til
+						hovedvinduet. (<i>RequestUtils.findForward()</i> kan også brukes med en parameter som angir antall nivåer som skal
+						returnere tilbake. Se javadoc.)
+<source><![CDATA[
+DynaActionForm dynaForm = (DynaActionForm) form;
+
+String name = (String)dynaForm.get("name");
+String field = ReturnUtils.getReturnField(request);
+RequestUtils.setSessionContext(request, field, name);
+	
+return RequestUtils.findForward(mapping, request);
+]]></source>
+
+
+						<br/>
+				<h4>Eksempelkode for retur til Action i hovedvindu</h4>
+						(executeLoad må overstyres med denne koden)
+<source><![CDATA[
+DynaActionForm dynForm = (DynaActionForm) form;
+String name = (String)RequestUtils.getSessionContext(request, "loginname");
+
+if (name != null) {
+    dynForm.set("loginname", name);
+}		
+return RequestUtils.findForward(mapping, request, "windowload");
+]]></source>
+
+					</p>
+					
+				<h4>Navigering med executeForward og executeBack</h4>
+					<p>
+						executeForward og executeBack i FindDispatchAction kan brukes direkte i en link i en JSP side for å styre navigeringen.
+						<br/>
+						For å bruke executeForward må ActionMappingen sendes med i Requesten fra JSP siden.
+						(Mappingen til en global forward i struts-config.xml)
+						Returfelt og returmetode kan også sendes med.
+						<br/>
+						Eksempel:
+						
+<source><![CDATA[						
+<bidrag:link
+		action='/SokePerson?executeForward=fwd&FORWARD_ACTION=OGS170PersonopplysningerAction&RETURNMETHOD_TO_EXECUTE=Soke'
+		paramId="fnummer" paramName="person" paramProperty="fnr"
+		tabindex="3">						
+]]></source>
+						(Verdien bak likhetstegnet i 'executeForward=fwd' er vilkorlig men noe må stå der)
+						<br/>
+						executeBack henter returinformasjon og sender videre til lagret Action.
+					</p>
+			</subsection>
+
+			<subsection name="Navigeringsprinsipper">
+				<p>
+					<h4>Informasjonsflyt mellom vinduer</h4>
+						Beskrivelse av informasjonsflyt mellom vinduer.
+						<br/>
+						Informasjon skal kunne overføres fra et vindu til et annet for at kunne brukes til henting av data,
+						styre navigasjon etc.
+						Informasjon som kan ses på som input til et vindu sendes som parameter til vinduet. Det er typisk id'er
+						som skal vises frem. Det skal også lagres verdier i sessionskonteksten som kan brukes av vinduene.
+						Det er informasjon trenges av mange vinduer. Eksempel på det er person id og sak id.
+						 
+				</p>
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.7  2004/08/04 11:18:02  jla2920
+Lagt beskrivelse av executeForward og executeBack
+
+Revision 1.6  2004/08/04 10:44:15  jla2920
+Lagt til beskrivelse av valg av metode som skal eksekvere ved retur til hovedvindu
+
+Revision 1.5  2004/07/27 12:41:42  jla2920
+Beskrivelse av navigering der forward skjer med navnet på 
+actionmappingen og ikke med navnet på klassen.
+
+Revision 1.4  2004/06/18 13:10:20  jla2920
+Oppdatert etter review og satt inn ny endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Design BusinessDelegate</title>
+	</properties>
+	<body>
+		<section name="Design BusinessDelegate">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>BusinessDelegate</i> er en klasse som innkapsler funksjonalitet for å lokalisere
+					og aksessere en forretningsfasade. Dette er en implementasjon av <i>Business Delegate</i> 
+					designmønstret beskrevet i <i>Core J2EE Patterns</i>. Hensikten med klassen er å forenkle
+					presentasjonstjenestenes integrasjon med forretningsfasaden, redusere antall kodelinjer og 
+					potensielle feil ved å samle gjenbrukbar logikk, samt gjøre programmering og enhetstesting av 
+					fpresentasjonstjenestene enklere og raskere.
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Beskrivelse">
+							
+				<h4>AbstractServiceDelegate</h4>
+				<p>
+					<i>AbstractServiceDelegate</i> er en abstrakt klasse som implementerer <i>LocalService</i> og
+					<i>ServiceDelegate</i> interfacene. Funksjonalitet som kan gjenbrukes av de forskjellige 
+					delegate implementasjonene er implementert i denne klassen.
+				</p>
+				
+				<h4>BusinessDelegate</h4>
+				<p>
+					<i>BusinessDelegate</i> er en subklasse av <i>AbstractServiceDelegate</i> som benytter  
+					<i>RemoteServiceDelegate</i> for å lokalisere et <i>BusinessFacade</i> objekt, som 
+					prossesering avforretningslogikk delegeres til.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Klassediagram">
+			
+				<img src="../images/design/BusinessDelegateClass.gif"/>
+			
+			</subsection>
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/06/18 10:10:53  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>			
+			
+		</section>
+	</body>
+</document>
+

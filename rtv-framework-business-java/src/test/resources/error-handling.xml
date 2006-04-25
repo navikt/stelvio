@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<!--
+	Error Handling Configuration is used by the ErrorHandler
+-->
+<beans>
+
+
+	<bean id="RemoteServiceLocator" class="no.trygdeetaten.common.framework.error.TestServiceLocator" />
+
+	<bean id="InitErrorHandler" class="no.trygdeetaten.common.framework.error.InitErrorHandler">
+		<property name="serviceLocator">
+			<ref bean="RemoteServiceLocator" />
+		</property>
+	</bean>
+
+	<bean id="ErrorHandler" class="no.trygdeetaten.common.framework.error.TestHandlerImpl" init-method="init"></bean>
+
+</beans>
+

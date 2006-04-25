@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Guide IntegrationFacade</title>
+	</properties>
+	<body>
+		<section name="Guide IntegrationFacade">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>IntegrationFacade</i> er en <i>Stateless Session EJB</i> som implementeres for
+					å løskoble forretningslogikken fra kjennskap til i hvilke eksterne systemer data 
+					befinner seg i og hvordan disse systemene aksesseres. Denne integrasjonsfasaden
+					fungere som en integrasjonsbuss, med kjennskap til hvor tjenester befinner seg og
+					hvordan disse aksesseres. Integrasjonsfasaden er sentral i en tjenesteorientert
+					arkitektur (SOA).
+				</p>
+				<p>
+					Integrasjonsfasaden implementerer funksjonalitet som et EAI-verktøy typisk håndterer,
+					og vil kunne tilpasses eller erstattes dersom et EAI-verktøy innføres.
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Hvordan benytte integrasjonsfasaden?">
+			
+				<h4>IntegrationDelegate</h4>
+				<p>
+					Applikasjonskomponenter aksesserer aldri integrasjonsfasaden direkte men via en 
+					<i>IntegrationDelegate</i>, som innkapsler lokalisering av fasaden vha en
+					<i>RemoteServiceLocator</i> og delegerer prosessering til den.
+				</p>	
+				
+				<h4>RemoteServiceLocator</h4>
+				<p>
+					<i>RemoteServiceLocator</i> leser konfigurasjonen av blant annet integrasjonsfasaden fra 
+					<i>distributed-services.xml</i>, slår opp og eventuelt cacher fasadens <i>home interface</i>
+					internt for å bedre ytelsen.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Hvordan konfigurere integrasjonsfasaden?">
+			
+				<h4>distributed-services.xml</h4>
+				<p>
+					Eksempelet nedenfor viser hvordan integrasjonsfasaden kan konfigureres.
+				</p>
+<source><![CDATA[
+<beans>
+   ...
+   <bean id="IntegrationFacade" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription">
+      <property name="jndiName"> ejb/no/trygdeetaten/integration/IntegrationFacade </property>
+      <property name="providerUrl"> localhost </property>
+      <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
+      <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>
+      <property name="securityPrincipal"> aspecialuser </property>
+      <property name="securityCredentials"> hissecretpassword </property>
+      <property name="cacheable"> true </property>
+   </bean>
+   ...
+</beans>			
+]]></source>
+			
+			</subsection>
+			
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/06/18 13:08:35  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

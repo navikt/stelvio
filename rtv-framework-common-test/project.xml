@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+	<extend>${basedir}/../rtv-framework-main/project.xml</extend>
+
+	<id>rtv-framework-common-test</id>
+	<name>rtv-framework-common-test</name>
+
+	<shortDescription>RTV - Rammeverk for test</shortDescription>
+	<package>no.trygdeetaten.common.framework.test</package>
+
+	<!-- 
+    Inherit from main
+    <currentVersion/> -->
+
+	<contributors>
+		<contributor>
+			<name>person6738f4899a21 Øveraasen</name>
+			<id>joa2930</id>
+			<email>test@example.com</email>
+			<organization>Trygdeetaten</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>Bente Johannessen</name>
+			<id>bja2930</id>
+			<email>test@example.com</email>
+			<organization>Trygdeetaten</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+		</contributor>
+	</contributors>
+	<dependencies>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.7.1-dev</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>strutstestcase</groupId>
+			<artifactId>strutstestcase</artifactId>
+			<version>2.1.2-1.1-2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>struts</groupId>
+			<artifactId>struts</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<includes>
+					<include>*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.xmi</include>
+					<include>**/*.LogFactory</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+
+</project>

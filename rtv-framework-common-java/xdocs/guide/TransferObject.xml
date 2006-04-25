@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Transfer Object - Guide</title>
+	</properties>
+	<body>
+		<section name="Transfer Object - Guide">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>Transfer Object</i> er et designmønster som benyttes for 
+					å skille sende data mellom lagene i applikasjonen. Se <a href="../design/transferobject.html">designet</a> 
+					for en nærmere beskrivelse.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="TransferObject">
+			
+				<h4>Hvordan bruke et TransferObject</h4>
+				
+<pre>
+
+PersonDomainObject bidragsPliktig = new PersonDomainObject();
+bidragsPliktig.setName("Per Persen");
+...
+// Create a ServiceRequest
+ServiceRequest someRequest = new ServiceRequest();
+someRequest.addObject( "bidragspliktig", bidragsPliktig );
+
+</pre>
+
+			</subsection>
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.3  2004/06/18 13:52:05  rwa2920
+Lagt inn endringslogg
+
+Revision 1.2  2004/06/16 14:07:45  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>			
+
+		</section>
+	</body>
+</document>
+

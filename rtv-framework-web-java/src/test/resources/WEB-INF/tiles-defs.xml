@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://hpapt03/dtd/tiles-config_1_1.dtd">
+<tiles-definitions>
+
+
+	<!-- /////////////////////// LAYOUT /////////////////////// -->
+
+	<!-- Skjermbildenes hovedlayout med meny -->
+	<definition name="layout.root" path="/WEB-INF/jsp/layout/rootLayout.jsp">
+		<put name="tittel" value="tiles-defs.xml: Endre tittel" />
+		<put name="sidesti" value="tiles-defs.xml: Endre sidesti" />
+		<put name="brukerinfo" value="/WEB-INF/jsp/common/brukerinfo.jsp" />
+		<put name="header" value="/WEB-INF/jsp/common/header.jsp" />
+		<put name="menylinje" value="/WEB-INF/jsp/menu/standard.jsp" />
+		<put name="meny" value="tiles-defs.xml: Endre meny" />
+		<put name="errors" value="/WEB-INF/jsp/common/errors.jsp" />
+		<put name="innhold" value="tiles-defs.xml: Endre innhold" />
+	</definition>
+
+
+	<!-- Skjermbildenes hovedlayout -->
+	<definition name="layout.basis" path="/WEB-INF/jsp/layout/layout.jsp">
+		<put name="stiltype" value="styles/stylesheet.css" />
+		<put name="javastyle" value="" />
+		<put name="javascript" value="" />
+		<put name="tittel" value="tiles-defs.xml: Endre tittel" />
+		<put name="brukerinfo" value="/WEB-INF/jsp/common/brukerinfo.jsp" />
+		<put name="sidesti" value="tiles-defs.xml: Endre sidesti" />
+		<put name="menylinje" value="tiles-defs.xml: Endre menylinje" />
+		<put name="meny" value="tiles-defs.xml: Endre meny" />
+		<put name="innhold" value="tiles-defs.xml: Endre innhold" />
+	</definition>
+
+	<!-- Enkel layout uten menykolonne -->
+	<definition name="layout.enkel" extends="layout.basis">
+		<put name="menylinje" value="/WEB-INF/jsp/menu/enkel.jsp" />
+	</definition>
+
+	<!-- Standardlayout med smal menykolonne -->
+	<definition name="layout.standard" extends="layout.basis">
+		<put name="menylinje" value="/WEB-INF/jsp/menu/standard.jsp" />
+		<put name="innhold" value="/WEB-INF/jsp/layout/standard.jsp" />
+	</definition>
+
+
+	<!-- /////////////////////// Felles def. /////////////////////// -->
+
+	<definition name="meny.MenyTilbake" path="/WEB-INF/jsp/menu/MenyTilbake.jsp"></definition>
+
+	<definition name="meny.MenyTilbake" path="/WEB-INF/jsp/menu/MenyTilbake.jsp"></definition>
+
+	<definition name="menylinje.prototype" path="/WEB-INF/jsp/menu/Prototype.jsp"></definition>
+
+	<!-- /////////////////////// SKJERMBILDER /////////////////////// -->
+
+	<!-- ///// JMX Administrasjon ///// -->
+	<definition name="side.jmx.oversikt" extends="layout.basis">
+		<put name="javascript" value="styles/xtree.css" />
+		<put name="javastyle" value="javascript/xtree.js" />
+		<put name="tittel" value="Systemkonfigurasjon - Oversikt" />
+		<put name="sidesti" value="Systemkonfigurasjon" />
+		<put name="menylinje" value="menylinje.prototype" />
+		<put name="innhold" value="innhold.jmx.oversikt" />
+	</definition>
+	<definition name="innhold.jmx.oversikt" path="/WEB-INF/jsp/pages/JMXOversikt.jsp"></definition>
+	
+	<definition name="side.jmx.log4j" extends="layout.basis">
+		<put name="javascript" value="styles/xtree.css" />
+		<put name="javastyle" value="javascript/xtree.js" />
+		<put name="tittel" value="Systemkonfigurasjon - Log4j" />
+		<put name="sidesti" value="Systemkonfigurasjon" />
+		<put name="menylinje" value="menylinje.prototype" />
+		<put name="innhold" value="innhold.jmx.log4j" />
+	</definition>
+	<definition name="innhold.jmx.log4j" path="/WEB-INF/jsp/pages/JMXLog4j.jsp"></definition>
+	
+	<definition name="side.jmx.spring" extends="layout.basis">
+		<put name="javascript" value="styles/xtree.css" />
+		<put name="javastyle" value="javascript/xtree.js" />
+		<put name="tittel" value="Systemkonfigurasjon - Spring" />
+		<put name="sidesti" value="Systemkonfigurasjon" />
+		<put name="menylinje" value="menylinje.prototype" />
+		<put name="innhold" value="innhold.jmx.spring" />
+	</definition>
+	<definition name="innhold.jmx.spring" path="/WEB-INF/jsp/pages/JMXSpring.jsp"></definition>
+	
+	<!-- ///// Feilhåndtering ///// -->
+	<definition name="side.error.exception" extends="layout.basis">
+		<put name="javascript" value="styles/xtree.css" />
+		<put name="javastyle" value="javascript/xtree.js" />
+		<put name="tittel" value="Teknisk feil" />
+		<put name="sidesti" value="" />
+		<put name="menylinje" value="menylinje.prototype" />
+		<put name="innhold" value="innhold.error.exception" />
+	</definition>
+	<definition name="innhold.error.exception" path="/WEB-INF/jsp/exceptions/UnhandledException.jsp"></definition>
+	
+
+	<!-- ///// Welcome ///// -->
+	<definition name="side.welcome" extends="layout.root">
+		<put name="javascript" value="" />
+		<put name="tittel" value="Arkitekturprototype Bidragsprosjektet - Fase 2" />
+		<put name="sidesti" value="Arkitekturprototype BISYS" />
+		<put name="meny" value="meny.welcome" />
+		<put name="innhold" value="innhold.welcome" />
+	</definition>
+
+	<definition name="meny.welcome" path="/WEB-INF/jsp/menu/Welcome.jsp"></definition>
+
+	<definition name="innhold.welcome" path="/WEB-INF/jsp/pages/Welcome.jsp"></definition>
+
+
+	<!-- ///// Oppgaveliste ///// -->
+	<definition name="side.oppgaveliste" extends="layout.basis">
+		<put name="javascript" value="styles/xtree.css" />
+		<put name="javastyle" value="javascript/xtree.js" />
+		<put name="tittel" value="Oppgaveliste" />
+		<put name="sidesti" value="Oppgaveliste" />
+		<put name="menylinje" value="menylinje.prototype" />
+		<put name="innhold" value="innhold.oppgaveliste" />
+	</definition>
+
+	<definition name="menylinje.oppgaveliste" path="/WEB-INF/jsp/menu/oppgaveliste.jsp"></definition>
+
+	<definition name="innhold.oppgaveliste" path="/WEB-INF/jsp/pages/oppgaveliste.jsp"></definition>
+
+	<!-- ///// OFS020Sak ///// -->
+	<definition name="side.OFS020Sak" extends="layout.root">
+		<put name="javascript" value="" />
+		<put name="tittel" value="OFS020Sak" />
+		<put name="sidesti" value="OFS020Sak" />
+		<put name="meny" value="meny.OFS020Sak" />
+		<put name="innhold" value="innhold.OFS020Sak" />
+	</definition>
+
+	<definition name="meny.OFS020Sak" path="/WEB-INF/jsp/menu/OFS020Sak.jsp"></definition>
+
+	<definition name="innhold.OFS020Sak" path="/WEB-INF/jsp/pages/OFS020Sak.jsp"></definition>
+
+	<!-- ///// OFS040FatteVedtak ///// -->
+	<definition name="side.OFS040FatteVedtak" extends="layout.root">
+		<put name="javascript" value="" />
+		<put name="tittel" value="OFS040FatteVedtak" />
+		<put name="sidesti" value="OFS040FatteVedtak" />
+		<put name="menylinje" value="menylinje.OFS040FatteVedtak" />
+		<put name="meny" value="meny.OFS040FatteVedtak" />
+		<put name="innhold" value="innhold.OFS040FatteVedtak" />
+	</definition>
+
+	<definition name="menylinje.OFS040FatteVedtak" path="/WEB-INF/jsp/menu/standard.jsp"></definition>
+
+	<definition name="meny.OFS040FatteVedtak" path="/WEB-INF/jsp/menu/OFS040FatteVedtak.jsp"></definition>
+
+	<definition name="innhold.OFS040FatteVedtak" path="/WEB-INF/jsp/pages/OFS040FatteVedtak.jsp"></definition>
+
+	<!-- ///// OFS050Soknad ///// -->
+	<definition name="side.OFS050Soknad" extends="layout.root">
+		<put name="javascript" value="" />
+		<put name="tittel" value="OFS050Soknad" />
+		<put name="sidesti" value="OFS050Soknad" />
+		<put name="meny" value="meny.OFS050Soknad" />
+		<put name="innhold" value="innhold.OFS050Soknad" />
+	</definition>
+
+	<definition name="meny.OFS050Soknad" path="/WEB-INF/jsp/menu/OFS050Soknad.jsp"></definition>
+
+	<definition name="innhold.OFS050Soknad" path="/WEB-INF/jsp/pages/OFS050Soknad.jsp"></definition>
+
+	<!-- ///// PreSokePerson ///// -->
+	<definition name="side.PreSokePerson" extends="layout.root">
+		<put name="tittel" value="PreSokePerson" />
+		<put name="sidesti" value="PreSokePerson" />
+		<put name="meny" value="meny.welcome" />
+		<put name="innhold" value="/WEB-INF/jsp/pages/PreSokePerson.jsp" />
+	</definition>
+
+	<!-- ///// OGS140SokePerson ///// -->
+	<definition name="side.OGS140SokePerson" extends="layout.root">
+		<put name="tittel" value="OGS140SokePerson" />
+		<put name="sidesti" value="OGS140SokePerson" />
+		<put name="menylinje" value="menylinje.OGS140SokePerson" />
+		<put name="meny" value="meny.MenyTilbake" />
+		<put name="innhold" value="innhold.OGS140SokePerson" />
+	</definition>
+
+	<definition name="menylinje.OGS140SokePerson" path="/WEB-INF/jsp/menu/standard.jsp"></definition>
+
+	<definition name="meny.OGS140SokePerson" path="/WEB-INF/jsp/menu/OGS140SokePersonTilbake.jsp"></definition>
+
+	<definition name="innhold.OGS140SokePerson" path="/WEB-INF/jsp/pages/OGS140SokePerson.jsp"></definition>
+
+	<!-- ///// OGS170Personopplysninger ///// -->
+	<definition name="side.OGS170Personopplysninger" extends="layout.root">
+		<put name="tittel" value="OGS170Personopplysninger" />
+		<put name="sidesti" value="OGS170Personopplysninger" />
+		<put name="meny" value="meny.MenyTilbake" />
+		<put name="innhold" value="innhold.OGS170Personopplysninger" />
+	</definition>
+
+	<definition name="innhold.OGS170Personopplysninger" path="/WEB-INF/jsp/pages/OGS170Personopplysninger.jsp"></definition>
+
+	<!-- ///// Ikke Implementert  (en side som forteller at siden ikke er implementert enda) ///// -->
+	<definition name="side.IkkeImplementert" extends="layout.root">
+		<put name="tittel" value="Ikke Implementert" />
+		<put name="sidesti" value="Ikke Implementert" />
+		<put name="meny" value="meny.welcome" />
+		<put name="innhold" value="/WEB-INF/jsp/pages/IkkeImplementert.jsp" />
+	</definition>
+
+	<!-- ///// Ingen retuverdi lagret (GÃ¥tt til et undervindu direkte?) ///// -->
+	<definition name="side.IngenReturverdi" extends="layout.root">
+		<put name="tittel" value="Ikke Returverdi" />
+		<put name="sidesti" value="Ikke Returverdi" />
+		<put name="meny" value="meny.welcome" />
+		<put name="innhold" value="/WEB-INF/jsp/pages/IngenReturverdi.jsp" />
+	</definition>
+
+	<!--  /////////////////////// Dummy proto /////////////////////// -->
+
+	<definition name="side.page1" extends="layout.standard">
+		<put name="javascript" value="" />
+		<put name="tittel" value="Page 1" />
+		<put name="sidesti" value="Page 1" />
+		<put name="innhold" value="innhold.page1" />
+	</definition>
+
+	<definition name="innhold.page1" path="/WEB-INF/jsp/pages/Page1.jsp"></definition>
+
+	<definition name="side.page2" extends="layout.basis">
+		<put name="javascript" value="" />
+		<put name="tittel" value="Page 2" />
+		<put name="brukerinfo" value="Innlogget JL" />
+		<put name="sidesti" value="side 2" />
+		<put name="innhold" value="innhold.page2" />
+	</definition>
+
+	<definition name="innhold.page2" path="/WEB-INF/jsp/pages/Page2.jsp"></definition>
+
+	<definition name="side.page3" extends="layout.standard">
+		<put name="javascript" value="" />
+		<put name="tittel" value="Page 3" />
+		<put name="sidesti" value="side 3" />
+		<put name="innhold" value="innhold.page3" />
+	</definition>
+
+	<definition name="innhold.page3" path="/WEB-INF/jsp/pages/Page3.jsp"></definition>
+
+</tiles-definitions>

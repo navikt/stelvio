@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Service Locator - Design</title>
+	</properties>
+	<body>
+		<section name="Service Locator - Design">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>Service Locator</i> er et "best practice" J2EE designmønster som benyttes for 
+					å skjule og implementere funksjonalitet for å slå opp tjenester og komponenter.
+					En <i>Service Locator</i> skjuler implementeringsdetaljene ifm oppslagsmekanismene 
+					og innkapsler relasjoner og avhengigheter.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Beskrivelse">
+			</subsection>
+			
+			<subsection name="Klassediagram">
+			
+				<p>
+					Diagrammet viser to ulike implementasjoner av <i>ServiceLocator</i>, og samspillet 
+					til ulike typer <i>Service</i>. Avhengigheten til konfigurasjonstjenestene er også
+					tatt med.
+				</p>
+			
+				<img src="../images/design/ServiceLocatorClass.gif"/>
+			
+			</subsection>
+			
+			<subsection name="Implementasjon">
+			
+				<h4>ServiceLocator</h4>
+				
+				<table>
+					<tr>
+						<td><b>Navn</b></td>
+						<td>ServiceLocator</td>
+					</tr>
+					<tr>
+						<td><b>Type</b></td>
+						<td>Interface</td>
+					</tr>
+					<tr>
+						<td><b>Pakke</b></td>
+						<td>no.trygdeetaten.common.framework.service</td>
+					</tr>
+					<tr>
+						<td><b>Beskrivelse</b></td>
+						<td>Interface som implementeres av klasser som ønsker å 
+						implementere <i>Service Locator</i> designmønstret for
+						å slå opp og aksessere implementasjoner interfacet Service.
+						</td>
+					</tr>
+					<tr>
+						<td><b>Implementerer</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Arver fra</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Avhengig av</b></td>
+						<td>-</td>
+					</tr>
+				</table>
+				
+				<h5>	Metoder: </h5>
+				
+				<table>
+					<tr>
+						<th>TYPE</th>
+						<th>NAVN</th>
+						<th>PARAMETERE</th>
+						<th>BESKRIVELSE</th>
+					</tr>
+					<tr>
+						<td>Service</td>
+						<td>lookup</td>
+						<td>String</td>
+						<td>
+							Lokaliserer spesifisert tjeneste. ServiceNotFoundException kastes dersom
+							implementasjonen ikke klarer å lokalisere og returnere navngitt tjeneste.
+						</td>
+					</tr>				
+				</table>
+				
+				<h4>LocalServiceLocator</h4>
+				
+				<table>
+					<tr>
+						<td><b>Navn</b></td>
+						<td>LocalServiceLocator</td>
+					</tr>
+					<tr>
+						<td><b>Type</b></td>
+						<td>Abstract Class</td>
+					</tr>
+					<tr>
+						<td><b>Pakke</b></td>
+						<td>no.trygdeetaten.common.framework.service</td>
+					</tr>
+					<tr>
+						<td><b>Beskrivelse</b></td>
+						<td> 
+							<i>Service Locator</i> implementasjon som kan benyttes for 
+							å slå opp og aksessere implementasjoner interfacet LocalService.
+						</td>
+					</tr>
+					<tr>
+						<td><b>Implementerer</b></td>
+						<td>ServiceLocator</td>
+					</tr>
+					<tr>
+						<td><b>Arver fra</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Avhengig av</b></td>
+						<td>Config</td>
+					</tr>
+				</table>
+				
+				<h5>	Metoder: </h5>
+				
+				<table>
+					<tr>
+						<th>TYPE</th>
+						<th>NAVN</th>
+						<th>PARAMETERE</th>
+						<th>BESKRIVELSE</th>
+					</tr>
+					<tr>
+						<td>Constructor</td>
+						<td>LocalServiceLocator</td>
+						<td>String</td>
+						<td>
+							Konstruerer en instans av klassen. Konstruktøren er kun synlig for klasser
+							som arver fra denne. Parameteren angir hvilket filnavn som skal benyttes 
+							for å konfigurere mapping mellom logisk navn og klassenavn på de ulike 
+							tjenestene. Til dette benyttes en instans av Config.
+						</td>
+					</tr>
+					<tr>
+						<td>LocalService</td>
+						<td>lookup</td>
+						<td>String</td>
+						<td>
+							Lokaliserer spesifisert lokale tjeneste. ServiceNotFoundException kastes dersom
+							navngitt tjeneste ikke er spesifisert i konfigurasjonsfilen eller dersom tjenesten 
+							ikke kan instansieres av ulike årsaker.
+						</td>
+					</tr>				
+				</table>
+				
+				<h4>RemoteServiceLocator</h4>
+				
+				<table>
+					<tr>
+						<td><b>Navn</b></td>
+						<td>RemoteServiceLocator</td>
+					</tr>
+					<tr>
+						<td><b>Type</b></td>
+						<td>Abstract Class</td>
+					</tr>
+					<tr>
+						<td><b>Pakke</b></td>
+						<td>no.trygdeetaten.common.framework.ejb</td>
+					</tr>
+					<tr>
+						<td><b>Beskrivelse</b></td>
+						<td> 
+							<i>Service Locator</i> implementasjon som kan benyttes for 
+							å slå opp og aksessere implementasjoner interfacet RemoteService.
+						</td>
+					</tr>
+					<tr>
+						<td><b>Implementerer</b></td>
+						<td>ServiceLocator</td>
+					</tr>
+					<tr>
+						<td><b>Arver fra</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Avhengig av</b></td>
+						<td>Config, RemoteServiceDescription</td>
+					</tr>
+				</table>
+				
+				<h5>	Metoder: </h5>
+				
+				<table>
+					<tr>
+						<th>TYPE</th>
+						<th>NAVN</th>
+						<th>PARAMETERE</th>
+						<th>BESKRIVELSE</th>
+					</tr>
+					<tr>
+						<td>Constructor</td>
+						<td>RemoteServiceLocator</td>
+						<td>String</td>
+						<td>
+							Konstruerer en instans av klassen. Konstruktøren er kun synlig for klasser
+							som arver fra denne. Parameteren angir hvilket filnavn som skal benyttes 
+							for å konfigurere mapping mellom logisk navn og klassenavn på de ulike 
+							tjenestene. Til dette benyttes en instans av Config.
+						</td>
+					</tr>
+					<tr>
+						<td>RemoteService</td>
+						<td>lookup</td>
+						<td>String</td>
+						<td>
+							Lokaliserer spesifisert remote tjeneste. En remote tjeneste er en <i>Stateless
+							Session EJB</i> som implementerer <i>RemoteSession</i> interfacet.
+							ServiceNotFoundException kastes dersom navngitt tjeneste ikke er spesifisert
+							i konfigurasjonsfilen eller dersom tjenesten ikke kan instansieres av ulike årsaker.
+							Metoden benytter <i>Config</i> for å slå opp og lokalisere instanser av 
+							<i>RemoteServiceDescription</i>, som igjen benyttes for å utføre nødvendig JNDI oppslag.
+							Home interfacet til tjensten caches dersom spesifisert i <i>RemoteServiceDescription</i>.
+						</td>
+					</tr>				
+				</table>
+				
+				<h4>RemoteServiceDescription</h4>
+				
+				<table>
+					<tr>
+						<td><b>Navn</b></td>
+						<td>RemoteServiceDescription</td>
+					</tr>
+					<tr>
+						<td><b>Type</b></td>
+						<td>Class</td>
+					</tr>
+					<tr>
+						<td><b>Pakke</b></td>
+						<td>no.trygdeetaten.common.framework.ejb</td>
+					</tr>
+					<tr>
+						<td><b>Beskrivelse</b></td>
+						<td> 
+							Java Bean som benyttes for å implementere en typesikker konfigurasjon av en
+							remote tjeneste.
+						</td>
+					</tr>
+					<tr>
+						<td><b>Implementerer</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Arver fra</b></td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td><b>Avhengig av</b></td>
+						<td>-</td>
+					</tr>
+				</table>
+				
+				<h5>	Attributter: </h5>
+				
+				<table>
+					<tr>
+						<th>TYPE</th>
+						<th>NAVN</th>
+						<th>BESKRIVELSE</th>
+					</tr>
+					<tr>
+						<td> String </td>
+						<td> jndiName </td>
+						<td> Navnet tjenesten er registrert med i JNDI </td>
+					</tr>
+					<tr>
+						<td> String </td>
+						<td> providerUrl </td>
+						<td> Adressen til JNDI provideren </td>
+					</tr>
+					<tr>
+						<td> String </td>
+						<td> initialContextFactory </td>
+						<td> Fullstendig InitialContextFactory klassenavn</td>
+					</tr>
+					<tr>
+						<td> String </td>
+						<td> urlPkgPrefixes </td>
+						<td> Prefikser for oppslag i JNDI </td>
+					</tr>
+					<tr>
+						<td> String </td>
+						<td> securityPrincipal </td>
+						<td> Brukernavn som benyttes for oppslaget mot JNDI. Vanligvis ikke brukt! </td>
+					</tr>
+					<tr>
+						<td> String </td>
+						<td> securityCredentials </td>
+						<td> Passord som benyttes for oppslaget mot JNDI. Vanligvis ikke brukt! </td>
+					</tr>
+					<tr>
+						<td> boolean </td>
+						<td> cacheable </td>
+						<td> Angir om tjenesten kan caches eller ikke, default er <i>true</i> </td>
+					</tr>			
+				</table>
+				
+				<h4>XML Configuration File</h4>
+				
+				<h5>Eksempel på konfigurasjon av lokale tjenester</h5>
+				
+<source><![CDATA[
+<beans>
+   <bean id="HentOppgaveliste" class="no.trygdeetaten.business.oppgaver.service.HentOppgaveListeService" />
+   <bean id="HentOppgave" class="no.trygdeetaten.business.oppgaver.service.HentOppgaveService" />
+   <bean id="OppdaterOppgave" class="no.trygdeetaten.business.oppgaver.service.OppdaterOppgaveService" />
+   <bean id="SlettOppgave" class="no.trygdeetaten.business.oppgaver.service.SlettOppgaveService" />
+</beans>			
+]]></source>
+
+				<h5>Eksempel på konfigurasjon av en remote tjeneste</h5>
+				
+<source><![CDATA[
+<beans>
+   <bean id="FinnPersonITPS" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription">
+      <property name="jndiName"> ejb/no/trygdeetaten/integration/tps/FinnPersonITPS </property>
+      <property name="providerUrl"> localhost </property>
+      <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
+      <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>
+      <property name="securityPrincipal"> aspecialuser </property>
+      <property name="securityCredentials"> hissecretpassword </property>
+      <property name="cacheable"> false </property>
+   </bean>
+</beans>			
+]]></source>
+						
+			</subsection>
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.4  2004/06/16 13:53:01  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

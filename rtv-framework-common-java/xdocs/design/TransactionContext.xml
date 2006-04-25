@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Transaksjonskontekst - Design</title>
+	</properties>
+	<body>
+		<section name="Transaksjonskontekst - Design">
+
+			<subsection name="Oversikt">
+
+				<p>
+					Transaksjonskontekst er en beholder som benyttes for å oppbevare data som må være 
+					tilgjengelig over flere arkitekturlag.
+				</p>
+				<p>
+					Et <i>Intercepting Filter</i> benyttes for å initialisere og rydde opp i konteksten
+					henholdsvis før og etter prosessering. Konteksten eksporteres til brukerens sesjon 
+					etter prosessering, slik at den igjen kan importeres før neste prosessering.
+				</p>
+				<p>
+					Transaksjonskonteksten sendes mellom to arkitekturlag som en del av et <i>Transfer Object</i>.
+					I presentasjonslaget er det en <i>Business Delegate</i> som eksporterer konteksten slik at den
+					kan sendes med hver <i>ServiceRequest</i> til forretningslaget. På forretningslaget importerer en
+					<i>Business Facade</i> konteksten fra hver <i>ServiceRequest</i> før kontrollen delegeres 
+					til forretningstjenestene. Transaksjonskonteksten sendes tilbake med hver <i>ServiceResponse</i>.
+				</p>
+			</subsection>
+			
+			<subsection name="Beskrivelse">
+			
+				<h4>Context</h4>
+				<p>
+					Et interface som definerer metodene i konteksten. Metoder for å legge inn og hente ut verdier samt
+					importere og exportere kontekst.
+				</p>
+				
+				<h4>DefaultContextImpl</h4>
+				<p>
+					En default implementasjon som bruker en InheritableThreadLocal for å lagre key-value par.
+				</p>
+
+				<h4>Log4jContextImpl</h4>
+				<p>
+					En implementasjon som bruker en Log4j MDC class for lagring av key-value par. Denne 
+					implementasjonen må brukes hvis konteksten skal logges.
+				</p>
+
+				<h4>AbstractContext</h4>
+				<p>
+					En abstrakt kontekst som prøver å bruke Log4jContextImpl. Hvis log4j ikke er tilgjengelig i VM så
+					brukes default kontekst implementasjonen.
+				</p>
+
+				<h4>TransactionContext</h4>
+				<p>
+					Dette er den konkrete kontekstklassen som brukes utenfor arkitekturen for å lagre og hente samt
+					exportere og importere kontekst.
+				</p>
+
+				<h4>TransactionContextFilter</h4>
+				<p>
+					Et intercepting filter som importerer og eksporterer konteksten hhv før og etter prosessering av
+					requesten og responsen.
+				</p>
+				
+				<h4>AbstractServiceDelegate</h4>
+				<p>
+					Abstrakt delegate klasse med logikk for å eksportere og importere konteksten hhv før og etter 
+					delegering av prosessering til fasaden.
+				</p>
+				
+				<h4>AbstractServiceFacade</h4>
+				<p>
+					Abstrakt fasade klasse med logikk for å importere og eksportere konteksten hhv før og etter 
+					prosessering av forretnings- elelr integrasjonstjenesten.
+				</p>
+
+			</subsection>
+
+			<subsection name="Klassediagram">
+
+				<p>
+					Diagrammet viser hvordan kontekstklassene er organisert.
+				</p>
+
+				<img src="../images/design/ContextClass.gif" />
+
+			</subsection>
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.1  2004/06/16 15:19:36  psa2920
+Endret filnavn og ferdigstilt design
+
+Revision 1.2  2004/06/16 13:53:01  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+			
+		</section>
+	</body>
+</document>
+

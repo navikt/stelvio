@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Design IntegrationService</title>
+	</properties>
+	<body>
+		<section name="Design IntegrationService">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>IntegrationService</i> er en mal for hvordan integrasjonstjenester skal implementeres. 
+					En integrasjonstjeneste implementerer enten logikk for å aksessere applikasjonsdata i en 
+					database, eller logikk for å kommunisere med eksterne systemer. Tjenestene implementeres
+					etter samme mal for å forenkle utvikling og vedlikehold av logikken.
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Beskrivelse">
+			
+				<h4>LocalService</h4>
+				<p>
+					<i>LocalService</i> er et interface som alle integrasjonstjenester implementerer ved å
+					arve fra <i>IntegrationService</i>. Ved at alle integrasjonstjenestene implementerer det
+					samme interfacet, kan arkitekturen bruke <i>Command Pattern (GoF)</i> for å kalle alle
+					tjenester på samme måte, uten å kjenne til hvilken tjeneste som kalles og hvordan den er 
+					implementert.
+				</p>
+				
+				<h4>AbstractLocalService</h4>
+				<p>
+					<i>AbstractLocalService</i> er en abstrakt klasse som implementerer <i>LocalService</i> 
+					interfacet. Logikk som er felles for alle <i>LocalService</i> implementasjoner finnes her.
+				</p>
+				
+				<h4>IntegrationService</h4>
+				<p>
+					<i>IntegrationService</i> er en abstrakt klasse som implementerer <i>LocalService</i> 
+					interfacet. Klassen implementerer <i>Template Method Pattern (GoF)</i> for å sikre at
+					de ulike stegene som kal utføres hver gang, utføres i riktig rekkefølge selv om de ulike
+					tjenestene implementerer stegene forskjellig. Klassen inneholder blant annet logikk for 
+					å instansiere logging, samt utføre ytelsesmåling.
+				</p>
+				
+				<h4>enterprise-services.xml</h4>
+				<p>
+					Konfigurasjonsfil hvor alle integrasjonstjenester er definert. En <i>Integration Facade</i>
+					oppretter en <i>LocalServiceLocator</i> for å laste inn filen og opprette instanser av 
+					tjenestene og administrere relasjonene mellom dem.
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Klassediagram">
+			
+				<img src="../images/design/IntegrationServiceClass.gif"/>
+			
+			</subsection>
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.4  2004/06/18 14:11:58  psa2920
+oppdatert klassebeskrivelser
+
+Revision 1.3  2004/06/18 13:08:35  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+						
+		</section>
+	</body>
+</document>
+

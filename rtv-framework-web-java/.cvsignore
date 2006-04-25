@@ -1,0 +1,8 @@
+
+bin
+jcoverage.ser
+*.log
+*.log.*
+junit*.properties
+*.md5
+rtv-framework-web-java.iml

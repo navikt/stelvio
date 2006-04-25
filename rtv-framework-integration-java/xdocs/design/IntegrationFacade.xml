@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+	<properties>
+		<title>Design IntegrationFacade</title>
+	</properties>
+	<body>
+		<section name="Design IntegrationFacade">
+			
+			<subsection name="Oversikt">
+			
+				<p>
+					<i>IntegrationFacade</i> er en <i>Stateless Session EJB</i> som implementeres for
+					å løskoble forretningslogikken fra kjennskap til i hvilke eksterne systemer data 
+					befinner seg i og hvordan disse systemene aksesseres. Denne integrasjonsfasaden
+					fungere som en integrasjonsbuss, med kjennskap til hvor tjenester befinner seg og
+					hvordan disse aksesseres. Integrasjonsfasaden er sentral i en tjenesteorientert
+					arkitektur (SOA).
+				</p>
+				<p>
+					Integrasjonsfasaden implementerer funksjonalitet som et EAI-verktøy typisk håndterer,
+					og vil kunne tilpasses eller erstattes dersom et EAI-verktøy innføres.
+				</p>
+				
+			</subsection>			
+			
+			<subsection name="Beskrivelse">
+			
+				<h4>RemoteService</h4>
+				<p>
+					<i>RemoteService</i> er et interface som definerer grensesnittet distribuerte tjenester
+					må implementere. Ved at alle destribuerte tjenester implementerer det samme interfacet, 
+					kan arkitekturen bruke <i>Command Pattern (GoF)</i> for å kalle alle på samme måte, uten 
+					å kjenne til hvilken tjeneste som kalles og hvordan den er implementert.
+				</p>
+				
+				<h4>AbstractServiceFacade</h4>
+				<p>
+					<i>AbstractServiceFacade</i> er en abstrakt klasse som alle fasader kan arve fra, og 
+					inneholder blant annet logikk for å instansiere logging, aksessere en <i>ServiceLocator</i>, 
+					samt utføre ytelsesmåling.
+				</p>
+				
+				<h4>IntegrationFacade</h4>
+				<p>
+					<i>IntegrationFacade</i> er integrasjonsfasadens <i>remote interface</i>, og arver 
+					egenskapene fra <i>RemoteService</i>.
+				</p>
+				
+				<h4>IntegrationFacadeHome</h4>
+				<p>
+					<i>IntegrationFacadeHome</i> er integrasjonsfasadens <i>home interface</i>.
+				</p>
+				
+				<h4>IntegrationFacadeBean</h4>
+				<p>
+					<i>IntegrationFacadeBean</i> er implementasjonen av integrasjonsfasaden, og arver fra
+					<i>AbstractServiceFacade</i>. Klassen benytter <i>EnterpriseServiceLocator</i> for å
+					lokalisere integrasjonstjenestene.
+				</p>
+				
+				<h4>EnterpriseServiceLocator</h4>
+				<p>
+					<i>EnterpriseServiceLocator</i> er en subklasse av <i>LocalServiceLocator</i> og 
+					inneholder et register av lokale tjenester konfigurert i <i>enterprise-services.xml</i>
+				</p>
+			
+			</subsection>
+			
+			<subsection name="Klassediagram">
+			
+				<img src="../images/design/IntegrationFacadeClass.gif"/>
+			
+			</subsection>
+
+			<subsection name = "Endringslogg">
+<source><![CDATA[
+$Log$
+Revision 1.2  2004/06/18 13:08:35  psa2920
+la til endringslogg
+]]>			
+</source>
+			</subsection>
+						
+		</section>
+	</body>
+</document>
+

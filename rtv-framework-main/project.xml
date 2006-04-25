@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+	<extend>${basedir}/../rtv-maven-main/project.xml</extend>
+
+	<groupId>rtv-framework</groupId>
+
+	<!-- a unique name for this project -->
+	<id>rtv-framework-main</id>
+
+	<!-- a short but descriptive name for the project -->
+	<shortDescription>J2EE-rammeverk - Oversikt</shortDescription>
+	<url>http://a59apvl002.internsone.local/framework</url>
+	<siteDirectory>/var/www/docs/framework</siteDirectory>
+	<name>rtv-framework-main</name>
+	<logo/>
+	<!-- The version of the project under development, e.g. 1.1, 1.2, 2.0-dev -->
+	<currentVersion>SNAPSHOT</currentVersion>
+	
+	<package>no.trygdeetaten</package>
+
+	<developers>
+		<developer>
+			<name>person7553f5959484</name>
+			<id>psa2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Teknisk arkitekt</role>
+				<role>Teknisk designer</role>
+				<role>Teknisk utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>person5b7fd84b3197</name>
+			<id>tkc2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Teknisk arkitekt</role>
+				<role>Teknisk designer</role>
+				<role>Teknisk utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>Jonas Lindholm</name>
+			<id>jla2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Teknisk arkitekt</role>
+				<role>Teknisk designer</role>
+				<role>Teknisk utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>person356941106810</name>
+			<id>tsb2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Teknisk arkitekt</role>
+				<role>Teknisk designer</role>
+				<role>Teknisk utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+				<developer>
+			<name>Ragnar Wisløff</name>
+			<id>rwa2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Teknisk arkitekt</role>
+				<role>Teknisk designer</role>
+				<role>Teknisk utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>personbf936f5cae20</name>
+			<id>shc2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Teknisk arkitekt</role>
+				<role>Teknisk designer</role>
+				<role>Teknisk utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>personf8e9850ed756</name>
+			<id>skb2930</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Teknisk Team</role>
+				<role>Teknisk utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>person1f201b37d484</name>
+			<id>hza2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Teknisk arkitekt</role>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>person02f3de2754b4</name>
+			<id>mha2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>persond56073296bff Røren</name>
+			<id>rra2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>Espen Næss</name>
+			<id>ena2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer> 
+		<developer>
+			<name>persona2c5e3b49756 Moen</name>
+			<id>lma2970</id>
+			<email>test@example.com</email>
+			<organization>Trygdeetaten</organization>
+			<roles>
+				<role>Teknisk arkitekt</role>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>person3f0dd77ee0b7 Holgeid</name>
+			<id>khc2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Leveransesjef</role>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>Ida person06d64ca177a6e Dørum</name>
+			<id>idb2970</id>
+			<email>test@example.com</email>
+			<organization>Trygdeetaten</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>person5204c0b677af</name>
+			<id>tma2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>Espen Sigvartsen</name>
+			<id>esc2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>persone5d69f3729a8</name>
+			<id>jrb2920</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<name>Alexander E. Gray</name>
+			<id>agb2970</id>
+			<email>test@example.com</email>
+			<organization>Accenture</organization>
+			<roles>
+				<role>Utvikler</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>		
+	</developers>
+
+
+	<!-- jar files the project is dependent on -->
+
+	<dependencies>
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>j2ee</groupId>
+			<artifactId>j2ee</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>2.1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>hibernate</groupId>
+			<artifactId>hibernate3</artifactId>
+			<version>3.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>1.2.1</version>
+			<properties>
+				<ear.bundle>true</ear.bundle>
+				<ejb.manifest.classpath>true</ejb.manifest.classpath>
+				<war.manifest.classpath>true</war.manifest.classpath>
+			</properties>
+		</dependency>
+		<dependency>
+			<groupId>jmock</groupId>
+			<artifactId>jmock</artifactId>
+			<version>20040803-110809</version>
+		</dependency>
+		<dependency>
+			<groupId>jmock</groupId>
+			<artifactId>jmock-cglib</artifactId>
+			<version>20040803-110809</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>rtv-maven-plugins</groupId>
+			<artifactId>rtv-maven-commongoals-plugin</artifactId>
+			<version>SNAPSHOT</version>
+			<type>plugin</type>
+		</dependency>
+	</dependencies>
+	<!-- build information for the project -->
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<unitTestSourceDirectory>src/test/java</unitTestSourceDirectory>
+		<unitTest>
+			<includes>
+				<include>**/*Test.java</include>
+			</includes>
+			<resources>
+				<resource>
+					<directory>src/test/resources</directory>
+					<includes>
+						<include>*/**</include>
+					</includes>
+				</resource>
+			</resources>
+		</unitTest>
+	</build>
+</project>
