@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
 
-    <extend>../rtv-framework-main/project.xml</extend>
+    <extend>../nav-framework-main/project.xml</extend>
 
-    <id>rtv-framework-batch-java</id>
+    <id>nav-framework-batch-java</id>
 
-    <shortDescription>RTV - Rammeverk for batch</shortDescription>
+    <shortDescription>nav - Rammeverk for batch</shortDescription>
 
-    <name>rtv-framework-batch-java</name> 
+    <name>nav-framework-batch-java</name> 
 
     <dependencies>
 		<dependency>
-			<groupId>rtv-framework</groupId>
-			<artifactId>rtv-framework-common-java</artifactId>
+			<groupId>nav-framework</groupId>
+			<artifactId>nav-framework-common-java</artifactId>
 			<version>${pom.currentVersion}</version>
 			<properties>
 				<eclipse.dependency>true</eclipse.dependency>
 			</properties>
 		</dependency>		
 		<dependency>
-			<groupId>rtv-framework</groupId>
-			<artifactId>rtv-framework-common-test</artifactId>
+			<groupId>nav-framework</groupId>
+			<artifactId>nav-framework-common-test</artifactId>
 			<version>${pom.currentVersion}</version>
 			<properties>
 				<eclipse.dependency>true</eclipse.dependency>
