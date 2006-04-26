@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>../rtv-framework-main/project.xml</extend>
+	<extend>../nav-framework-main/project.xml</extend>
 
 	<!-- a unique name for this project -->
-	<id>rtv-framework-web-java</id>
+	<id>nav-framework-web-java</id>
 
 	<!-- a short but descriptive name for the project -->
-	<shortDescription>RTV - Rammeverk Presentasjonstjenester</shortDescription>
+	<shortDescription>nav - Rammeverk Presentasjonstjenester</shortDescription>
 
-	<name>rtv-framework-web-java</name>
+	<name>nav-framework-web-java</name>
 
 	<!-- jar files the project is dependent on -->
 
@@ -34,13 +34,13 @@
 			<version>1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>rtv-framework</groupId>
-			<artifactId>rtv-framework-common-java</artifactId>
+			<groupId>nav-framework</groupId>
+			<artifactId>nav-framework-common-java</artifactId>
 			<version>${pom.currentVersion}</version>
 		</dependency>
 		<dependency>
-			<groupId>rtv-framework</groupId>
-			<artifactId>rtv-framework-common-test</artifactId>
+			<groupId>nav-framework</groupId>
+			<artifactId>nav-framework-common-test</artifactId>
 			<version>${pom.currentVersion}</version>
 		</dependency>
 		<dependency>
@@ -61,7 +61,7 @@
 		<dependency>
 			<groupId>displaytag</groupId>
 			<artifactId>displaytag</artifactId>
-			<version>1.0_RTV_2005.11.21</version>
+			<version>1.0_nav_2005.11.21</version>
 		</dependency>
 		<dependency>
 			<groupId>taglibs</groupId>
