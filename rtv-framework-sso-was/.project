@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>rtv-framework-sso-was</name>
+	<name>nav-framework-sso-was</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -12,6 +12,11 @@
 		</buildCommand>
 		<buildCommand>
 			<name>com.ibm.etools.ctc.serviceprojectbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.sse.model.structuredbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>

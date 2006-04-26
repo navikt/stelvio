@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../rtv-framework-main/project.xml</extend>
+	<extend>${basedir}/../nav-framework-main/project.xml</extend>
 
-	<id>rtv-framework-sso-was</id>
-	<name>rtv-framework-sso-was</name>
+	<id>nav-framework-sso-was</id>
+	<name>nav-framework-sso-was</name>
 
 	<shortDescription>Single Sign-On for WebSphere</shortDescription>
 	
