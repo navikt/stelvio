@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>../rtv-framework-main/project.xml</extend>
+	<extend>../nav-framework-main/project.xml</extend>
 
 
-	<id>rtv-framework-logging-java</id>
-	<shortDescription>RTV - Rammeverk for logging</shortDescription>
-	<name>rtv-framework-logging-java</name>
+	<id>nav-framework-logging-java</id>
+	<shortDescription>nav - Rammeverk for logging</shortDescription>
+	<name>nav-framework-logging-java</name>
 
 	<!-- 
     Inherit from main
