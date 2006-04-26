@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../rtv-framework-main/project.xml</extend>
+	<extend>${basedir}/../nav-framework-main/project.xml</extend>
 
-	<id>rtv-framework-common-test</id>
-	<name>rtv-framework-common-test</name>
+	<id>nav-framework-common-test</id>
+	<name>nav-framework-common-test</name>
 
-	<shortDescription>RTV - Rammeverk for test</shortDescription>
+	<shortDescription>nav - Rammeverk for test</shortDescription>
 	<package>no.trygdeetaten.common.framework.test</package>
 
 	<!-- 
