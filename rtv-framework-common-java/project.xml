@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../rtv-framework-main/project.xml</extend>
+	<extend>${basedir}/../nav-framework-main/project.xml</extend>
 
 	<!-- a unique name for this project -->
-	<id>rtv-framework-common-java</id>
+	<id>nav-framework-common-java</id>
 	<!-- a short but descriptive name for the project -->
-	<name>rtv-framework-common-java</name>
+	<name>nav-framework-common-java</name>
 
 	<!-- details about the organization that 'owns' the project -->
-	<shortDescription>RTV - Rammeverk fellestjenester</shortDescription>
+	<shortDescription>nav - Rammeverk fellestjenester</shortDescription>
 
 	<package>no.trygdeetaten.common.framework</package>
 
