@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>../rtv-framework-main/project.xml</extend>
+	<extend>../nav-framework-main/project.xml</extend>
 
 
 	<!-- a unique name for this project -->
-	<id>rtv-framework-integration-hibernate</id>
+	<id>nav-framework-integration-hibernate</id>
 	<!-- a short but descriptive name for the project -->
-	<shortDescription>RTV - Rammeverk for Hibernate</shortDescription>
-	<name>rtv-framework-integration-hibernate</name>
+	<shortDescription>nav - Rammeverk for Hibernate</shortDescription>
+	<name>nav-framework-integration-hibernate</name>
 	<!-- 
     Inherit from main
     <currentVersion/> -->
@@ -37,8 +37,8 @@
 			<version>3.0</version>
 		</dependency>
 		<dependency>
-			<groupId>rtv-framework</groupId>
-			<artifactId>rtv-framework-common-java</artifactId>
+			<groupId>nav-framework</groupId>
+			<artifactId>nav-framework-common-java</artifactId>
 			<version>${pom.currentVersion}</version>
 		</dependency>
 		<dependency>
