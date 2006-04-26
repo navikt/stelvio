@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../rtv-maven-main/project.xml</extend>
+	<extend>${basedir}/../nav-maven-main/project.xml</extend>
 
-	<groupId>rtv-framework</groupId>
+	<groupId>nav-framework</groupId>
 
 	<!-- a unique name for this project -->
-	<id>rtv-framework-main</id>
+	<id>nav-framework-main</id>
 
 	<!-- a short but descriptive name for the project -->
 	<shortDescription>J2EE-rammeverk - Oversikt</shortDescription>
 	<url>http://a59apvl002.internsone.local/framework</url>
 	<siteDirectory>/var/www/docs/framework</siteDirectory>
-	<name>rtv-framework-main</name>
+	<name>nav-framework-main</name>
 	<logo/>
 	<!-- The version of the project under development, e.g. 1.1, 1.2, 2.0-dev -->
 	<currentVersion>SNAPSHOT</currentVersion>
@@ -287,8 +287,8 @@
 			<version>2.1</version>
 		</dependency>
 		<dependency>
-			<groupId>rtv-maven-plugins</groupId>
-			<artifactId>rtv-maven-commongoals-plugin</artifactId>
+			<groupId>nav-maven-plugins</groupId>
+			<artifactId>nav-maven-commongoals-plugin</artifactId>
 			<version>SNAPSHOT</version>
 			<type>plugin</type>
 		</dependency>
