@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../rtv-framework-main/project.xml</extend>
+	<extend>${basedir}/../nav-framework-main/project.xml</extend>
 
-	<artifactId>rtv-framework-common-report</artifactId>
-	<name>rtv-framework-common-report</name>
+	<artifactId>nav-framework-common-report</artifactId>
+	<name>nav-framework-common-report</name>
 
-	<shortDescription>RTV - rtv-framework-common-report</shortDescription>
+	<shortDescription>nav - nav-framework-common-report</shortDescription>
 
 	<developers>
 		<developer>
