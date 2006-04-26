@@ -4,9 +4,6 @@
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="var" path="MAVEN_REPO/junit/jars/junit-3.8.1.jar"/>
-	<classpathentry kind="src" path="/rtv-framework-common-java"/>
-	<classpathentry kind="src" path="/rtv-framework-integration-hibernate"/>
-	<classpathentry kind="src" path="/rtv-framework-integration-java"/>
 	<classpathentry kind="var" path="MAVEN_REPO/hibernate/jars/hibernate-2.1.6.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/xerces/jars/xmlParserAPIs-2.2.1.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/xerces/jars/xerces-2.4.0.jar"/>
@@ -23,12 +20,15 @@
 	<classpathentry kind="var" path="MAVEN_REPO/dom4j/jars/dom4j-1.4.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/log4j/jars/log4j-1.2.8.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/IBM JRE 1.4.1"/>
-	<classpathentry kind="src" path="/rtv-framework-logging-java"/>
 	<classpathentry kind="var" path="MAVEN_REPO/jmock/jars/jmock-cglib-20040803-110809.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/cglib/jars/cglib-nodep-2.1.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/jmock/jars/jmock-20040803-110809.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/castor/jars/castor-0.9.5.3-xml.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/frmapper/jars/frmapper-1.0.7.jar"/>
 	<classpathentry sourcepath="APPS/spring-framework-1.2.1/src" kind="var" path="MAVEN_REPO/springframework/jars/spring-1.2.1.jar"/>
+	<classpathentry kind="src" path="/nav-framework-common-java"/>
+	<classpathentry kind="src" path="/nav-framework-integration-java"/>
+	<classpathentry kind="src" path="/nav-framework-integration-hibernate"/>
+	<classpathentry kind="src" path="/nav-framework-logging-java"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

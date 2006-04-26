@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>../rtv-framework-main/project.xml</extend>
+	<extend>../nav-framework-main/project.xml</extend>
 
 	<!-- a unique name for this project -->
-	<id>rtv-framework-integration-jca</id>
+	<id>nav-framework-integration-jca</id>
 	<!-- a short but descriptive name for the project -->
-	<shortDescription>RTV - Rammeverk for kobling mot JCA adaptere</shortDescription>
-	<name>rtv-framework-integration-jca</name>
+	<shortDescription>nav - Rammeverk for kobling mot JCA adaptere</shortDescription>
+	<name>nav-framework-integration-jca</name>
 	<!-- 
     Inherit from main
     <currentVersion/> -->
@@ -14,24 +14,24 @@
 	<!-- jar files the project is dependent on -->
 	<dependencies>
 		<dependency>
-			<groupId>rtv-framework</groupId>
-			<artifactId>rtv-framework-common-java</artifactId>
+			<groupId>nav-framework</groupId>
+			<artifactId>nav-framework-common-java</artifactId>
 			<version>${pom.currentVersion}</version>
 			<properties>
 				<eclipse.dependency>true</eclipse.dependency>
 			</properties>
 		</dependency>
 		<dependency>
-			<groupId>rtv-framework</groupId>
-			<artifactId>rtv-framework-integration-hibernate</artifactId>
+			<groupId>nav-framework</groupId>
+			<artifactId>nav-framework-integration-hibernate</artifactId>
 			<version>${pom.currentVersion}</version>
 			<properties>
 				<eclipse.dependency>true</eclipse.dependency>
 			</properties>
 		</dependency>
 		<dependency>
-			<groupId>rtv-framework</groupId>
-			<artifactId>rtv-framework-integration-java</artifactId>
+			<groupId>nav-framework</groupId>
+			<artifactId>nav-framework-integration-java</artifactId>
 			<version>${pom.currentVersion}</version>
 			<properties>
 				<eclipse.dependency>true</eclipse.dependency>
