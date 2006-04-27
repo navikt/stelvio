@@ -165,7 +165,7 @@ public class Log4jLogFactoryTest extends TestCase {
 		try {
 			// reset the file
 			FileOutputStream out = new FileOutputStream(url.getFile(), false);
-			prop.setProperty("log4j.logger.no.trygdeetaten", "ERROR, Console, TEST");
+			prop.setProperty("log4j.logger.no.nav", "ERROR, Console, TEST");
 			prop.store(out, null);
 			out.close();
 			LogFactory fac = LogFactory.getFactory();
@@ -184,9 +184,9 @@ public class Log4jLogFactoryTest extends TestCase {
 			assertEquals(
 				"Test 2: Unexpected LOGGER configuration",
 				"ERROR, Console, TEST",
-				prop.getProperty("log4j.logger.no.trygdeetaten"));
+				prop.getProperty("log4j.logger.no.nav"));
 			// set the level to DEBUG
-			prop.setProperty("log4j.logger.no.trygdeetaten", "DEBUG, Console, TEST");
+			prop.setProperty("log4j.logger.no.nav", "DEBUG, Console, TEST");
 
 			out = new FileOutputStream(url.getFile(), false);
 			prop.store(out, null);
