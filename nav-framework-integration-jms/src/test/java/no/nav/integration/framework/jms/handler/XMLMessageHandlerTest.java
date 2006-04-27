@@ -15,10 +15,10 @@ import junit.framework.TestCase;
 
 import no.nav.integration.framework.jms.DummyTextMessage;
 import no.nav.integration.framework.jms.handler.XMLMessageHandler;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceResponse;
 
 
 /**

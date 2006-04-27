@@ -4,9 +4,9 @@
 	<comment>
   </comment>
 	<projects>
-		<project>rtv-framework-common-java</project>
-		<project>rtv-framework-integration-hibernate</project>
-		<project>rtv-framework-integration-java</project>
+		<project>nav-framework-common-java</project>
+		<project>nav-framework-integration-hibernate</project>
+		<project>nav-framework-integration-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
