@@ -6,7 +6,7 @@
 	<name>nav-framework-common-test</name>
 
 	<shortDescription>nav - Rammeverk for test</shortDescription>
-	<package>no.trygdeetaten.common.framework.test</package>
+	<package>no.nav.common.framework.test</package>
 
 	<!-- 
     Inherit from main
@@ -17,7 +17,7 @@
 			<name>person6738f4899a21 Øveraasen</name>
 			<id>joa2930</id>
 			<email>test@example.com</email>
-			<organization>Trygdeetaten</organization>
+			<organization>nav</organization>
 			<roles>
 				<role>Utvikler</role>
 			</roles>
@@ -26,7 +26,7 @@
 			<name>Bente Johannessen</name>
 			<id>bja2930</id>
 			<email>test@example.com</email>
-			<organization>Trygdeetaten</organization>
+			<organization>nav</organization>
 			<roles>
 				<role>Utvikler</role>
 			</roles>
