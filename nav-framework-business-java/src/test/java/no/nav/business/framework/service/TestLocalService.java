@@ -1,4 +1,4 @@
-package no.trygdeetaten.business.framework.service;
+package no.nav.business.framework.service;
 
 import no.trygdeetaten.common.framework.service.LocalService;
 import no.trygdeetaten.common.framework.service.ServiceFailedException;

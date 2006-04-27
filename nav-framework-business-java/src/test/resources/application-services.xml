@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://hpapt03/dtd/spring-beans-1.0-m4.dtd">
 <beans>
-	<bean id="TestLocalService" class="no.trygdeetaten.business.framework.service.TestLocalService"></bean>
+	<bean id="TestLocalService" class="no.nav.business.framework.service.TestLocalService"></bean>
 </beans>
 

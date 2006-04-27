@@ -1,4 +1,4 @@
-package no.trygdeetaten.business.framework.service;
+package no.nav.business.framework.service;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;

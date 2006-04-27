@@ -1,5 +1,6 @@
-package no.trygdeetaten.business.framework.service;
+package no.nav.business.framework.service;
 
+import no.nav.business.framework.service.BusinessService;
 import no.trygdeetaten.common.framework.FrameworkError;
 import no.trygdeetaten.common.framework.error.ErrorCode;
 import no.trygdeetaten.common.framework.error.SystemException;

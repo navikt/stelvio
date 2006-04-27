@@ -130,13 +130,13 @@
 						<td>Business Service</td>
 						<td><a href="design/BusinessService.html">Design</a></td>
 						<td><a href="guide/BusinessService.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.trygdeetaten.business.framework.service</a></td>
+						<td><a href="apidocs/index.html">no.nav.business.framework.service</a></td>
 					</tr>
 					
 					<tr>
 						<td>Feilhåndtering</td>
 						<td colspan="2"><a href="http://hpapt03/multiproject/rtv-framework-integration-java/design/ErrorHandling.html">Design og Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/apidocs/no/trygdeetaten/common/framework/error/package-summary.html">no.trygdeetaten.common.framework.error</a></td>
+						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/apidocs/no/trygdeetaten/common/framework/error/package-summary.html">no.nav.common.framework.error</a></td>
 					</tr>
 					
 					<tr>

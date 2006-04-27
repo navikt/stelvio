@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.error;
+package no.nav.common.framework.error;
 
 import no.trygdeetaten.common.framework.error.Handler;
 

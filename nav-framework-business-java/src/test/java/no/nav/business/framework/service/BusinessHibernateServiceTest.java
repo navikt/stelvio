@@ -1,9 +1,10 @@
-package no.trygdeetaten.business.framework.service;
+package no.nav.business.framework.service;
 
 import org.jmock.cglib.Mock;
 import org.jmock.cglib.MockObjectTestCase;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
+import no.nav.business.framework.service.BusinessHibernateService;
 import no.trygdeetaten.common.framework.service.ServiceFailedException;
 import no.trygdeetaten.common.framework.service.ServiceRequest;
 import no.trygdeetaten.common.framework.service.ServiceResponse;

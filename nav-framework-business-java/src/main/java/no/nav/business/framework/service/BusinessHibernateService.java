@@ -1,4 +1,4 @@
-package no.trygdeetaten.business.framework.service;
+package no.nav.business.framework.service;
 
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
