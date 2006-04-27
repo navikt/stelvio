@@ -10,7 +10,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author person356941106810, Accenture
  * @version $Id: BatchDO.java 2064 2005-03-04 09:18:15Z psa2920 $ 
  */
-public class BatchDO extends no.trygdeetaten.common.framework.core.DomainObject {
+public class BatchDO extends no.nav.common.framework.core.DomainObject {
 
 	/** identifier field */
 	private String batchname;

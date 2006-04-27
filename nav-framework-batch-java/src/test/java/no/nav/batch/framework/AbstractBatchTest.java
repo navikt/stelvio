@@ -9,10 +9,10 @@ import org.jmock.MockObjectTestCase;
 import no.nav.batch.framework.AbstractBatch;
 import no.nav.batch.framework.BatchStatus;
 import no.nav.batch.framework.domain.BatchDO;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.util.MessageFormatter;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.test.spring.hibernate.MockHibernateTemplate;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.util.MessageFormatter;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.test.spring.hibernate.MockHibernateTemplate;
 
 /**
  * @author person356941106810, Accenture

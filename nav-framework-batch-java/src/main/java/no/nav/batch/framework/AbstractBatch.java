@@ -16,12 +16,12 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import no.nav.batch.framework.domain.BatchDO;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.config.ConfigurationException;
-import no.trygdeetaten.common.framework.context.TransactionContext;
-import no.trygdeetaten.common.framework.error.Severity;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.util.MessageFormatter;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.config.ConfigurationException;
+import no.nav.common.framework.context.TransactionContext;
+import no.nav.common.framework.error.Severity;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.util.MessageFormatter;
 
 /**
  * Abstract class for classes implementing scheduled batch logic.
