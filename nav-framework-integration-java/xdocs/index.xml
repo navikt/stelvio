@@ -95,7 +95,7 @@
 						<td>Integration Service</td>
 						<td><a href="design/IntegrationService.html">Design</a></td>
 						<td><a href="guide/IntegrationService.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.trygdeetaten.integration.framework.service</a></td>
+						<td><a href="apidocs/index.html">no.nav.integration.framework.service</a></td>
 					</tr>
 					
 					<tr>

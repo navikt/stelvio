@@ -26,7 +26,7 @@
 					<li> 
 						Klassene skal arve 
 						<a href="../apidocs/no/trygdeetaten/integration/framework/service/IntegrationService.html">
-						no.trygdeetaten.integration.framework.service.IntegrationService</a> <br/>
+						no.nav.integration.framework.service.IntegrationService</a> <br/>
 					</li>
 					<li> 
 						Pakken som klassene legges i skal navngis etter følgende standard: <br/>

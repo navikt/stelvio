@@ -2,10 +2,10 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
 
 <beans>
-	<bean id="TestLocalService" class="no.trygdeetaten.integration.framework.service.TestLocalService"></bean>
+	<bean id="TestLocalService" class="no.nav.integration.framework.service.TestLocalService"></bean>
 
 	<!-- *******************  START TREKK MODULEN, foreløpig stubbet ****************  -->
-	<bean id="TrekkModul" class="no.trygdeetaten.integration.framework.stubs.IntegrationStub" singleton="true">
+	<bean id="TrekkModul" class="no.nav.integration.framework.stubs.IntegrationStub" singleton="true">
 		<property name="inputServiceName">
 			<value>SystemServiceName</value>
 		</property>
@@ -23,7 +23,7 @@
 	</bean>
 
 	<!-- Stub av T771Trekkdetaljer output, foreløpig stubbet -->
-	<bean id="TrekkdetaljerServiceStub" class="no.trygdeetaten.integration.framework.stubs.TestT771TrekkdetaljerOutput">
+	<bean id="TrekkdetaljerServiceStub" class="no.nav.integration.framework.stubs.TestT771TrekkdetaljerOutput">
 		<property name="id">
 			<value>771</value>
 		</property>
@@ -42,7 +42,7 @@
 	</bean>
 
 	<!-- stub av trekkdetaljrader 0 -->
-	<bean id="T771TrekkdetaljerRad0" class="no.trygdeetaten.integration.framework.stubs.TestT771TrekkdetaljerRad">
+	<bean id="T771TrekkdetaljerRad0" class="no.nav.integration.framework.stubs.TestT771TrekkdetaljerRad">
 		<property name="debitorOffnr">
 			<value>01234567890</value>
 		</property>
@@ -87,7 +87,7 @@
 		</property>
 	</bean>
 	<!--	stubb av trekkdetaljrader 1 -->
-	<bean id="T771TrekkdetaljerRad1" class="no.trygdeetaten.integration.framework.stubs.TestT771TrekkdetaljerRad">
+	<bean id="T771TrekkdetaljerRad1" class="no.nav.integration.framework.stubs.TestT771TrekkdetaljerRad">
 		<property name="debitorOffnr">
 			<value>01234567890</value>
 		</property>
@@ -132,7 +132,7 @@
 		</property>
 	</bean>
 	<!-- STUB av returmelding for trekk -->
-	<bean id="TrekkReturMelding" class="no.trygdeetaten.integration.framework.stubs.TestK469Message"></bean>
+	<bean id="TrekkReturMelding" class="no.nav.integration.framework.stubs.TestK469Message"></bean>
 
 	<!-- STUB For trekk -->
 	<bean id="DummyDato" class="java.util.Date"></bean>
