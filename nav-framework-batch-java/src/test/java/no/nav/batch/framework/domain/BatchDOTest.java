@@ -1,5 +1,6 @@
-package no.trygdeetaten.batch.framework.domain;
+package no.nav.batch.framework.domain;
 
+import no.nav.batch.framework.domain.BatchDO;
 import junit.framework.TestCase;
 
 /**

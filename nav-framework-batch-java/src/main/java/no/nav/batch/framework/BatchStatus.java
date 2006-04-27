@@ -1,4 +1,4 @@
-package no.trygdeetaten.batch.framework;
+package no.nav.batch.framework;
 
 /**
  * Holds the status codes that are allowed from a Batch.

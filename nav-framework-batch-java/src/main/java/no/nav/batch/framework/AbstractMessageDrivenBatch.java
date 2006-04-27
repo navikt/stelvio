@@ -1,4 +1,4 @@
-package no.trygdeetaten.batch.framework;
+package no.nav.batch.framework;
 
 import javax.jms.Message;
 

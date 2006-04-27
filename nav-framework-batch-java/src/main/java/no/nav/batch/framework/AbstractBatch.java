@@ -1,4 +1,4 @@
-package no.trygdeetaten.batch.framework;
+package no.nav.batch.framework;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import no.trygdeetaten.batch.framework.domain.BatchDO;
+import no.nav.batch.framework.domain.BatchDO;
 import no.trygdeetaten.common.framework.FrameworkError;
 import no.trygdeetaten.common.framework.config.ConfigurationException;
 import no.trygdeetaten.common.framework.context.TransactionContext;
