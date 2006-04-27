@@ -4,4 +4,4 @@ jcoverage.ser
 *.md5
 *snapshot-version
 bin
-rtv-framework-integration-hibernate.iml
+nav-framework-integration-hibernate.iml
