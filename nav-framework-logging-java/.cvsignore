@@ -2,4 +2,4 @@ jcoverage.ser
 *.md5
 junit*.properties
 bin
-rtv-framework-logging-java.iml
+nav-framework-logging-java.iml
