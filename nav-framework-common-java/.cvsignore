@@ -5,5 +5,5 @@ jcoverage.ser
 debug.log.*
 junit*.properties
 *.md5
-rtv-framework-common-java.iml
+nav-framework-common-java.iml
 javadoc*
