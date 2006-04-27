@@ -42,20 +42,20 @@
 						<th><b>Pakke</b></th>
 					</tr>
 					<tr>
-						<td> <a href="/framework/multiproject/rtv-framework-common-java/">Fellestjenester</a> </td>
-						<td> <a href="/framework/multiproject/rtv-framework-common-java/apidocs/index.html">no.trygdeetaten.common.framework</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-common-java/">Fellestjenester</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-common-java/apidocs/index.html">no.trygdeetaten.common.framework</a> </td>
 					</tr>
 					<tr>
-						<td> <a href="/framework/multiproject/rtv-framework-web-java/">Presentasjonstjenester</a> </td>
-						<td> <a href="/framework/multiproject/rtv-framework-web-java/apidocs/index.html">no.trygdeetaten.web.framework</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-web-java/">Presentasjonstjenester</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-web-java/apidocs/index.html">no.trygdeetaten.web.framework</a> </td>
 					</tr>
 					<tr>
-						<td> <a href="/framework/multiproject/rtv-framework-business-java/">Forretningstjenester</a> </td>
-						<td> <a href="/framework//multiproject/rtv-framework-business-java/apidocs/index.html">no.trygdeetaten.business.framework</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-business-java/">Forretningstjenester</a> </td>
+						<td> <a href="/framework//multiproject/nav-framework-business-java/apidocs/index.html">no.trygdeetaten.business.framework</a> </td>
 					</tr>
 					<tr>
-						<td> <a href="/framework/multiproject/rtv-framework-integration-java/">Integrasjonstjenester</a> </td>
-						<td> <a href="/framework/multiproject/rtv-framework-integration-java/apidocs/index.html">no.trygdeetaten.integration.framework</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-integration-java/">Integrasjonstjenester</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-integration-java/apidocs/index.html">no.trygdeetaten.integration.framework</a> </td>
 					</tr>
 				</table>
 				

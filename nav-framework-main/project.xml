@@ -16,7 +16,7 @@
 	<!-- The version of the project under development, e.g. 1.1, 1.2, 2.0-dev -->
 	<currentVersion>SNAPSHOT</currentVersion>
 	
-	<package>no.trygdeetaten</package>
+	<package>no.nav</package>
 
 	<developers>
 		<developer>
