@@ -76,7 +76,7 @@
 <source><![CDATA[
 <global-exceptions>
 	<exception key="exception.systemexception"
-    	   	type="no.trygdeetaten.common.framework.error.SystemException"
+    	   	type="no.nav.common.framework.error.SystemException"
 		path="/WEB-INF/pages/SystemException.jsp">
 	</exception>
 </global-exceptions>
@@ -90,8 +90,8 @@
 		input="/WEB-INF/jsp/pages/Page2.jsp">
 		<exception key="non.existing.key" 
 			scope="request" 
-			handler="no.trygdeetaten.web.framework.action.FrameworkExceptionHandler" 
-			type="no.trygdeetaten.common.framework.error.ApplicationException" 
+			handler="no.nav.web.framework.action.FrameworkExceptionHandler" 
+			type="no.nav.common.framework.error.ApplicationException" 
 			path="/WEB-INF/pages/Page2.jsp"/>
 		<forward name="failure" path="/WEB-INF/pages/Page2.jsp" contextRelative="true" />
 		<forward name="windowload" path="/WEB-INF/pages/Page2.jsp" contextRelative="true" />

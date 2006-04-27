@@ -66,7 +66,7 @@
 				<p>
 					Se javadoc for beskrivelse av klasser og metoder.
 					<br/>
-					Klassene implementeres i pakken no.trygdeetaten.web.framework.action
+					Klassene implementeres i pakken no.nav.web.framework.action
 					<br/>
 					Dobbelklikk (request sendes før svar er returnert) 
 					Se artikkel: http://www.javaworld.com/javaworld/javatips/jw-javatip136.html

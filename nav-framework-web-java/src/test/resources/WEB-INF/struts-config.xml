@@ -9,7 +9,7 @@
 
 	<form-beans>
 
-		<form-bean name="frameworkErrorForm" type="no.trygdeetaten.web.framework.action.FrameworkErrorForm"/>
+		<form-bean name="frameworkErrorForm" type="no.nav.web.framework.action.FrameworkErrorForm"/>
 
 		<form-bean name="secondForm" type="org.apache.struts.action.DynaActionForm">
 			<form-property name="2name1" type="java.lang.String" />
@@ -30,7 +30,7 @@
 
 	<!-- =================================== Global Forward Definitions -->
 	<global-exceptions>
-		<exception type="no.trygdeetaten.common.framework.error.SystemException" path="/systemexception.do" key="non.existing.key"/>
+		<exception type="no.nav.common.framework.error.SystemException" path="/systemexception.do" key="non.existing.key"/>
 	</global-exceptions>
 
 	<global-forwards>
@@ -68,28 +68,28 @@
 		<!-- Forwards to Welcome.jsp -->
 
 		<!-- Forward to welcomepage using a Syncronized forward action -->
-		<action path="/Welcome" type="no.trygdeetaten.web.framework.action.ForwardSynchroAction" parameter="side.welcome" />
+		<action path="/Welcome" type="no.nav.web.framework.action.ForwardSynchroAction" parameter="side.welcome" />
 		<!--		<action path="/Welcome" type="org.apache.struts.actions.ForwardAction" parameter="side.welcome" /> -->
 		<!--		<action path="/IkkeImplementert" type="org.apache.struts.actions.ForwardAction" parameter="side.IkkeImplementert" /> -->
 
 
 		<!-- == Vindu Action Mapping (Dummy proto) == -->
 
-		<action path="/action1" type="no.trygdeetaten.web.framework.util.DummyAction" name="firstForm" scope="request" input="side.page1">
+		<action path="/action1" type="no.nav.web.framework.util.DummyAction" name="firstForm" scope="request" input="side.page1">
 			<forward name="failure" path="side.page1" />
 			<forward name="windowload" path="side.page1" />
 			<forward name="success" path="side.page1" />
 			<forward name="Action2" path="/action2.do" />
 		</action>
 		
-		<action path="/testFindDispatchAction" type="no.trygdeetaten.web.framework.action.TestFindDispatchActionTestAction" name="firstForm" scope="request" input="side.page1">
+		<action path="/testFindDispatchAction" type="no.nav.web.framework.action.TestFindDispatchActionTestAction" name="firstForm" scope="request" input="side.page1">
 			<forward name="failure" path="side.page1" />
 			<forward name="windowload" path="side.page1" />
 			<forward name="success" path="side.page1" />
 			<forward name="Action2" path="/action2.do" />
 		</action>
 		
-		<action path="/testFrameworkErrorAction" type="no.trygdeetaten.web.framework.action.FrameworkErrorAction" name="frameworkErrorForm" scope="request" input="side.page1">
+		<action path="/testFrameworkErrorAction" type="no.nav.web.framework.action.FrameworkErrorAction" name="frameworkErrorForm" scope="request" input="side.page1">
 			<forward name="failure" path="side.page1" />
 			<forward name="windowload" path="side.page1" />
 			<forward name="success" path="side.page1" />
@@ -97,7 +97,7 @@
 		</action>
 		
 		<action path="/action2" type="no.trygdeetaten.web.generelt.action.Action2" name="secondForm" scope="request" input="/WEB-INF/jsp/pages/Page2.jsp">
-			<exception key="non.existing.key" scope="request" handler="no.trygdeetaten.web.framework.action.FrameworkExceptionHandler" type="no.trygdeetaten.common.framework.error.ApplicationException" path="side.page2" />
+			<exception key="non.existing.key" scope="request" handler="no.nav.web.framework.action.FrameworkExceptionHandler" type="no.nav.common.framework.error.ApplicationException" path="side.page2" />
 			<forward name="failure" path="side.page2" />
 			<forward name="windowload" path="side.page2" />
 			<forward name="success" path="side.page2" />
@@ -119,7 +119,7 @@
 
 	<!-- ===================================== Controller Configuration -->
 
-	<controller processorClass="no.trygdeetaten.web.framework.action.FrameworkTilesRequestProcessor" />
+	<controller processorClass="no.nav.web.framework.action.FrameworkTilesRequestProcessor" />
 	<!--	    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor" /> -->
 
 	<!-- ================================ Message Resources Definitions -->

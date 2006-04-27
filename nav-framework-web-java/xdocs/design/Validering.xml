@@ -38,8 +38,8 @@
 				<p>
 					Se javadoc for beskrivelse av klasser og metoder.
 					<br/>
-					FrameworkTilesRequestProcessor implementeres i pakken no.trygdeetaten.web.framework.action. 
-					RequestUtils implementeres i pakken no.trygdeetaten.web.framework.util.
+					FrameworkTilesRequestProcessor implementeres i pakken no.nav.web.framework.action. 
+					RequestUtils implementeres i pakken no.nav.web.framework.util.
 					<br/>
 				</p>
 										

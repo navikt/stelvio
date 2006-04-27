@@ -10,19 +10,19 @@
 		<filter-name>PerformanceMonitorFilter</filter-name>
 		<display-name>PerformanceMonitorFilter</display-name>
 		<description>Performance Monitoring Filter</description>
-		<filter-class>no.trygdeetaten.web.framework.filter.PerformanceMonitorFilter</filter-class>
+		<filter-class>no.nav.web.framework.filter.PerformanceMonitorFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>TransactionContextFilter</filter-name>
 		<display-name>TransactionContextFilter</display-name>
 		<description>Transaction Context Filter</description>
-		<filter-class>no.trygdeetaten.web.framework.filter.TransactionContextFilter</filter-class>
+		<filter-class>no.nav.web.framework.filter.TransactionContextFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>SecurityFilter</filter-name>
 		<display-name>SecurityFilter</display-name>
 		<description>Security Filter</description>
-		<filter-class>no.trygdeetaten.web.framework.filter.SecurityFilter</filter-class>
+		<filter-class>no.nav.web.framework.filter.SecurityFilter</filter-class>
 		<init-param>
 			<param-name>PRESENTATION_SERVICES</param-name>
 			<param-value>presentation-services.xml</param-value>
@@ -44,21 +44,21 @@
 		<servlet-name>StartupServlet</servlet-name>
 		<display-name>StartupServlet</display-name>
 		<description>Startup Servlet</description>
-		<servlet-class>no.trygdeetaten.web.framework.servlet.StartupServlet</servlet-class>
+		<servlet-class>no.nav.web.framework.servlet.StartupServlet</servlet-class>
 		<init-param>
 			<param-name>StartupHelperList</param-name>
 			<param-value>ErrorHandlerStartup</param-value>
 		</init-param>
 		<init-param>
 			<param-name>ErrorHandlerStartup</param-name>
-			<param-value>no.trygdeetaten.common.framework.error.ErrorHandlerInitializer</param-value>
+			<param-value>no.nav.common.framework.error.ErrorHandlerInitializer</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>FrameworkActionServlet</servlet-name>
 		<display-name>FrameworkActionServlet</display-name>
-		<servlet-class>no.trygdeetaten.web.framework.action.FrameworkActionServlet</servlet-class>
+		<servlet-class>no.nav.web.framework.action.FrameworkActionServlet</servlet-class>
 		<init-param>
 			<param-name>config</param-name>
 			<param-value>/WEB-INF/struts-config.xml</param-value>
