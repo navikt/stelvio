@@ -482,7 +482,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 
 	/**
 	 * Helper method for retrieving the collection of codes table items based on the class name name of the codes table
-	 * (the package name <code>no.trygdeetaten.common.domain</code> is appended). If a filter is specified, it will be
+	 * (the package name <code>no.nav.common.domain</code> is appended). If a filter is specified, it will be
 	 * used to filter out codes table items. If a comparator is specified, the items will be sorted with this.
 	 *
 	 * @param selectedPropertyValue the value of selected property.

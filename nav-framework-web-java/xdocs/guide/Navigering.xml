@@ -44,7 +44,7 @@
 						Eksempel på en actionmapping:
 <source><![CDATA[
 <action path="/action2" 
-	type="no.trygdeetaten.web.bidragproto.action.Action2" 
+	type="no.nav.web.bidragproto.action.Action2" 
 	name="secondForm" 
 	scope="request" 
 	input="/WEB-INF/jsp/pages/Page2.jsp">

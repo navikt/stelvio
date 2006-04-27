@@ -12,7 +12,7 @@
 			<subsection name="Oversikt">
 			
 			<p>
-				Dette prosjektet inneholder presentasjonstjenestene i Trygdeetatens J2EE-rammeverk.
+				Dette prosjektet inneholder presentasjonstjenestene i NAVs J2EE-rammeverk.
 				Komponentene og tjenestene er av en slik karakter at de kun skal kunne benyttes i 
 				presentasjonslaget. Figuren nedenfor viser hvordan komponentene i presentasjonslaget
 				implementerer "best practice" designmønstre og flyten av kontroll mellom dem.
@@ -105,7 +105,7 @@
 				<p>
 					Her er javadocen for klasser og metoder i presentasjonstjenestene.
 					<br/>
-					<a href="apidocs/index.html">no.trygdeetaten.web.framework</a>
+					<a href="apidocs/index.html">no.nav.web.framework</a>
 				</p>
 			</subsection>
 

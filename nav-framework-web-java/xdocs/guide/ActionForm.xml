@@ -136,7 +136,7 @@ if (name != null) {
 					</p>
 <source><![CDATA[
 		<action path="/action1"
-			type="no.trygdeetaten.web.bidragproto.action.Action1"
+			type="no.nav.web.bidragproto.action.Action1"
 			name="firstForm"
 			scope="request"
 			input="/pages/Welcome.jsp"
@@ -200,7 +200,7 @@ if (name != null) {
 <source><![CDATA[
 <form-bean 
     name="LoginForm" 
-    type="no.trygdeetaten.web.prototype.form.LoginForm">
+    type="no.nav.web.prototype.form.LoginForm">
 </form-bean>]]>
 </source>
 

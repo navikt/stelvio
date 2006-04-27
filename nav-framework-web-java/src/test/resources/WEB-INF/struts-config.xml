@@ -96,7 +96,7 @@
 			<forward name="Action2" path="/action2.do" />
 		</action>
 		
-		<action path="/action2" type="no.trygdeetaten.web.generelt.action.Action2" name="secondForm" scope="request" input="/WEB-INF/jsp/pages/Page2.jsp">
+		<action path="/action2" type="no.nav.web.generelt.action.Action2" name="secondForm" scope="request" input="/WEB-INF/jsp/pages/Page2.jsp">
 			<exception key="non.existing.key" scope="request" handler="no.nav.web.framework.action.FrameworkExceptionHandler" type="no.nav.common.framework.error.ApplicationException" path="side.page2" />
 			<forward name="failure" path="side.page2" />
 			<forward name="windowload" path="side.page2" />
@@ -105,7 +105,7 @@
 			<forward name="Action3" path="/action3.do" />
 		</action>
 
-		<action path="/action3" type="no.trygdeetaten.web.generelt.action.Action3" name="thirdForm" scope="request" input="/WEB-INF/jsp/pages/Page3.jsp">
+		<action path="/action3" type="no.nav.web.generelt.action.Action3" name="thirdForm" scope="request" input="/WEB-INF/jsp/pages/Page3.jsp">
 			<forward name="failure" path="side.page3" />
 			<forward name="windowload" path="side.page3" />
 			<forward name="success" path="side.page3" />

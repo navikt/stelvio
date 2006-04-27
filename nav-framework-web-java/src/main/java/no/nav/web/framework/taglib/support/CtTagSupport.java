@@ -18,7 +18,7 @@ import no.nav.web.framework.constants.Constants;
  */
 public final class CtTagSupport {
 
-	private static final String DO_PACKAGE_NAME = "no.trygdeetaten.common.domain.";
+	private static final String DO_PACKAGE_NAME = "no.nav.common.domain.";
 
 	/** Not to be instantiated. */
 	private CtTagSupport() {
