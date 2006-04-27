@@ -120,9 +120,9 @@ import net.sf.hibernate.Query;
 
 import no.trygdeetaten.common.domain.oppgave.Oppgaveliste;
 import no.trygdeetaten.common.domain.oppgave.OppgavelisteNode;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 import no.trygdeetaten.business.oppgaver.constants.OppgaveConstants;
 
@@ -185,7 +185,7 @@ public class HentOppgavelisterService extends BusinessHibernateService {
 				<p>Eksempelet nedenfor viser hvordan forretningsfasaden kan konfigureres.</p>
 <source><![CDATA[<beans>
    ...
-   <bean id="BusinessFacade" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription">
+   <bean id="BusinessFacade" class="no.nav.common.framework.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/trygdeetaten/business/BusinessFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>

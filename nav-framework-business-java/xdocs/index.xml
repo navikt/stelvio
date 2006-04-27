@@ -114,9 +114,9 @@
 					
 					<tr>
 						<td>Service Locator</td>
-						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/design/ServiceLocator.html">Design</a></td>
-						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/guide/ServiceLocator.html">Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/apidocs/no/trygdeetaten/common/framework/service/package-summary.html">no.trygdeetaten.common.framework.service</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/design/ServiceLocator.html">Design</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/guide/ServiceLocator.html">Guide</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/trygdeetaten/common/framework/service/package-summary.html">no.nav.common.framework.service</a></td>
 					</tr>
 					
 					<tr>
@@ -135,15 +135,15 @@
 					
 					<tr>
 						<td>Feilhåndtering</td>
-						<td colspan="2"><a href="http://hpapt03/multiproject/rtv-framework-integration-java/design/ErrorHandling.html">Design og Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/apidocs/no/trygdeetaten/common/framework/error/package-summary.html">no.nav.common.framework.error</a></td>
+						<td colspan="2"><a href="http://hpapt03/multiproject/nav-framework-integration-java/design/ErrorHandling.html">Design og Guide</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/trygdeetaten/common/framework/error/package-summary.html">no.nav.common.framework.error</a></td>
 					</tr>
 					
 					<tr>
 						<td>Transaksjonshåndtering</td>
 						<td><a href="design/Transactions.html">Design</a></td>
 						<td><a href="guide/Transactions.html">Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/rtv-framework-common-java/apidocs/no/trygdeetaten/common/framework/ejb/package-summary.html">no.trygdeetaten.common.framework.ejb</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/trygdeetaten/common/framework/ejb/package-summary.html">no.nav.common.framework.ejb</a></td>
 					</tr>
 										
 				</table>

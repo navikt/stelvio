@@ -4,8 +4,8 @@ import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
 
 /**
  * Base class that adds support for using Hibernate from a BusinessService implementation.

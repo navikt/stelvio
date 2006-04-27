@@ -5,17 +5,17 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.BeanNameAware;
 
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.jmx.ServiceLevelConstants;
-import no.trygdeetaten.common.framework.jmx.ServiceLevelMBean;
-import no.trygdeetaten.common.framework.jmx.ServiceLevelMBeanFactory;
-import no.trygdeetaten.common.framework.performance.MonitorKey;
-import no.trygdeetaten.common.framework.performance.PerformanceMonitor;
-import no.trygdeetaten.common.framework.service.LocalService;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.jmx.ServiceLevelConstants;
+import no.nav.common.framework.jmx.ServiceLevelMBean;
+import no.nav.common.framework.jmx.ServiceLevelMBeanFactory;
+import no.nav.common.framework.performance.MonitorKey;
+import no.nav.common.framework.performance.PerformanceMonitor;
+import no.nav.common.framework.service.LocalService;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * Abstract class that all implementations of an <i>Business Service</i> should extend.

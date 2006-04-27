@@ -5,9 +5,9 @@ import org.jmock.cglib.MockObjectTestCase;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import no.nav.business.framework.service.BusinessHibernateService;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * BusinessHibernateService Unit Test.

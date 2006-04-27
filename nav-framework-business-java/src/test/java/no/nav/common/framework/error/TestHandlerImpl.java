@@ -1,6 +1,6 @@
 package no.nav.common.framework.error;
 
-import no.trygdeetaten.common.framework.error.Handler;
+import no.nav.common.framework.error.Handler;
 
 /**
  * Handler for testing ErrorHandler.

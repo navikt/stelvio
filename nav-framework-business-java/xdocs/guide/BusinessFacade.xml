@@ -45,7 +45,7 @@
 <source><![CDATA[
 <beans>
    ...
-   <bean id="BusinessFacade" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription">
+   <bean id="BusinessFacade" class="no.nav.common.framework.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/trygdeetaten/business/BusinessFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
