@@ -1,4 +1,6 @@
-package no.trygdeetaten.common.framework.test.spring.hibernate;
+package no.nav.common.framework.test.spring.hibernate;
+
+import no.nav.common.framework.test.spring.hibernate.MockHibernateTemplate;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

@@ -1,6 +1,8 @@
-package no.trygdeetaten.common.framework.test.spring.transaction;
+package no.nav.common.framework.test.spring.transaction;
 
 import junit.framework.AssertionFailedError;
+
+import no.nav.common.framework.test.spring.transaction.MockTransactionTemplate;
 
 import org.jmock.MockObjectTestCase;
 import org.springframework.transaction.TransactionStatus;

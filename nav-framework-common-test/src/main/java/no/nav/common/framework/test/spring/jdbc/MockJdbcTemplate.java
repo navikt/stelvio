@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.test.spring.jdbc;
+package no.nav.common.framework.test.spring.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

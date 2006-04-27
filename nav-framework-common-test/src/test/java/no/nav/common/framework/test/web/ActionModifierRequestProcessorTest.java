@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.test.web;
+package no.nav.common.framework.test.web;
 
 import java.io.IOException;
 
@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import junit.framework.AssertionFailedError;
+
+import no.nav.common.framework.test.web.ActionModifierRequestProcessor;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionMapping;
@@ -49,14 +51,14 @@ public class ActionModifierRequestProcessorTest extends MockObjectTestCase {
 	public void testActionCanBeNullThenActionFromConfigWillBeUsed() throws IOException {
 		requestProcessor = new ActionModifierRequestProcessor(null, new ActionServlet(), new RequestProcessor());
 		final Action action =
-			runProcessActionCreate("no.trygdeetaten.common.framework.test.web.ActionModifierRequestProcessorTest$SecondDummyAction");
+			runProcessActionCreate("no.nav.common.framework.test.web.ActionModifierRequestProcessorTest$SecondDummyAction");
 
 		assertEquals("Not the correct Action class returned;", SecondDummyAction.class, action.getClass());
 	}
 
 	public void testActionShouldBeInstantiatedWithActionServlet() throws IOException {
 		final Action action =
-			runProcessActionCreate("no.trygdeetaten.common.framework.test.web.ActionModifierRequestProcessorTest$FirstDummyAction");
+			runProcessActionCreate("no.nav.common.framework.test.web.ActionModifierRequestProcessorTest$FirstDummyAction");
 
 		// Is it ok?
 		assertSame("Not the same action servlet instance", mockActionServlet.proxy(), action.getServlet());
@@ -71,13 +73,13 @@ public class ActionModifierRequestProcessorTest extends MockObjectTestCase {
 	 */
 	public void testActionClassTypeFromStrutsConfigMustBeUsed() throws IOException {
 		try {
-			runProcessActionCreate("no.trygdeetaten.common.framework.test.web.ActionModifierRequestProcessorTest$SecondDummyAction");
+			runProcessActionCreate("no.nav.common.framework.test.web.ActionModifierRequestProcessorTest$SecondDummyAction");
 			fail("AssertionFailedError should have been thrown");
 		} catch (AssertionFailedError afe) {
 			assertEquals(
 				"Not the correct exception message",
 				"Specified class should be this: "
-					+ "no.trygdeetaten.common.framework.test.web.ActionModifierRequestProcessorTest$SecondDummyAction",
+					+ "no.nav.common.framework.test.web.ActionModifierRequestProcessorTest$SecondDummyAction",
 				afe.getMessage());
 		}
 

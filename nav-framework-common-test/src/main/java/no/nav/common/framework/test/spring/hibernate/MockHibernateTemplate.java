@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.test.spring.hibernate;
+package no.nav.common.framework.test.spring.hibernate;
 
 import java.io.Serializable;
 import java.sql.SQLException;

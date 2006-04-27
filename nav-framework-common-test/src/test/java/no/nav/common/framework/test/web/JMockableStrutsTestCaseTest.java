@@ -1,6 +1,8 @@
-package no.trygdeetaten.common.framework.test.web;
+package no.nav.common.framework.test.web;
 
 import junit.framework.AssertionFailedError;
+
+import no.nav.common.framework.test.web.JMockableStrutsTestCase;
 
 import org.jmock.MockObjectTestCase;
 

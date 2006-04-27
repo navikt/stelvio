@@ -1,4 +1,4 @@
- package no.trygdeetaten.common.framework.test.web;
+ package no.nav.common.framework.test.web;
 
 import javax.servlet.ServletException;
 

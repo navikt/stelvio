@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.test.web;
+package no.nav.common.framework.test.web;
 
 import java.io.IOException;
 
@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import junit.framework.AssertionFailedError;
 import servletunit.ServletContextSimulator;
+
+import no.nav.common.framework.test.web.ActionModifierActionServlet;
+import no.nav.common.framework.test.web.ActionModifierRequestProcessor;
 
 import org.apache.struts.Globals;
 import org.apache.struts.action.Action;

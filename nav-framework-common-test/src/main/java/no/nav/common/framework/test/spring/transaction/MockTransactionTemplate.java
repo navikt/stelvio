@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.test.spring.transaction;
+package no.nav.common.framework.test.spring.transaction;
 
 
 import junit.framework.AssertionFailedError;
