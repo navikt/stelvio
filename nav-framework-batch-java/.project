@@ -4,10 +4,10 @@
 	<comment>
   </comment>
 	<projects>
-		<project>rtv-framework-business-java</project>
-		<project>rtv-framework-common-java</project>
-		<project>rtv-framework-common-test</project>
-		<project>rtv-framework-integration-java</project>
+		<project>nav-framework-business-java</project>
+		<project>nav-framework-common-java</project>
+		<project>nav-framework-common-test</project>
+		<project>nav-framework-integration-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
