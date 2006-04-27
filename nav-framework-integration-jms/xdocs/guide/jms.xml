@@ -84,7 +84,7 @@ ServiceResponse response = service.execute( serviceRequest );
 				<source>
 					<![CDATA[
 <beans>
-	<bean id="BrevServer" class="no.trygdeetaten.integration.framework.jms.JMSService" singleton="true" init-method="init">
+	<bean id="BrevServer" class="no.nav.integration.framework.jms.JMSService" singleton="true" init-method="init">
 		<property name="isSynchronous"><value>true</value></property>
 		<property name="queueJndi"><value>jms/queue/BrevServerQueue</value></property>
 		<property name="queueConnectionFactoryJndi"><value>jms/qcf/JMSQCF</value></property>
@@ -138,7 +138,7 @@ ServiceResponse response = service.execute( serviceRequest );
 					For å kunne formatere beskjeder til å ha XML-innhold kan man benytte XMLMessageFormatter.
 					<source>
 						<![CDATA[
-<bean id="XmlFormatter1" class="no.trygdeetaten.integration.framework.jms.XMLMessageFormatter" singleton="true" init-method="init">
+<bean id="XmlFormatter1" class="no.nav.integration.framework.jms.XMLMessageFormatter" singleton="true" init-method="init">
 	<!-- Header felter -->
 	<property name="jmsCorrelationId"><value>feltIRequest</value></property>
 	<property name="keyField"><value>feltIRequest</value></property>
@@ -252,7 +252,7 @@ ServiceResponse response = service.execute( serviceRequest );
 					Eksempel på konfigurasjon:
 					<source>
 						<![CDATA[
-<bean id="XMLHandler1" class="no.trygdeetaten.integration.framework.jms.handler.XMLMessageHandler" singleton="true" init-method="init">
+<bean id="XMLHandler1" class="no.nav.integration.framework.jms.handler.XMLMessageHandler" singleton="true" init-method="init">
 	<!-- Header felter -->
 	<property name="headerFields">
 		<map>
