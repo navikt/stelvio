@@ -10,7 +10,7 @@
 			
 				<p>
 					Feilhåndtering er en viktig tjeneste som både arkitektur og applikasjoner har
-					behov for. Pakken <i>no.trygdeetaten.common.framework.error</i>
+					behov for. Pakken <i>no.nav.common.framework.error</i>
 					består av klasser og interface for feilhåndtering. 
 				</p>
 				<p>
@@ -104,7 +104,7 @@
 					Konstantene i <i>ErrorCode</i> er typesikre for å tvinge at alle feilkoder samles og defineres 
 					i subklasser, slik at det blir enklere å holde en oversikt over alle feiltypene. <br/>
 					Se <a href="../apidocs/no/trygdeetaten/common/framework/error/ErrorCode.html">
-					no.trygdeetaten.common.framework.error.ErrorCode</a> for detaljer.
+					no.nav.common.framework.error.ErrorCode</a> for detaljer.
 				</p>
 				
 				<h4>Severity</h4>

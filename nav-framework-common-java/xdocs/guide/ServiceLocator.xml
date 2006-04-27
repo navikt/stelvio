@@ -24,7 +24,7 @@
 <pre>
 package no.trygdeetaten.business.bidrag;
 
-import no.trygdeetaten.common.framework.service.LocalServiceLocator;
+import no.nav.common.framework.service.LocalServiceLocator;
 
 public final class BusinessServiceLocator extends LocalServiceLocator {
 
@@ -83,7 +83,7 @@ try {
 <pre>
 package no.trygdeetaten.business.bidrag;
 
-import no.trygdeetaten.common.framework.ejb.RemoteServiceLocator;
+import no.nav.common.framework.ejb.RemoteServiceLocator;
 
 public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 
@@ -100,7 +100,7 @@ public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 				
 <pre>
 &lt;beans&gt;
-   &lt;bean id="FinnPersonITPS" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription"&gt;
+   &lt;bean id="FinnPersonITPS" class="no.nav.common.framework.ejb.RemoteServiceDescription"&gt;
       &lt;property name="jndiName"&gt; ejb/no/trygdeetaten/integration/tps/FinnPersonITPS &lt;/property&gt;
       &lt;property name="providerUrl"&gt; localhost &lt;/property&gt;
       &lt;property name="initialContextFactory"&gt; com.ibm.websphere.naming.WsnInitialContextFactory &lt;/property&gt;

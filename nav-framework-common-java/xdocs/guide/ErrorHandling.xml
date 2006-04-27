@@ -10,7 +10,7 @@
 			
 				<p>
 					Feilhåndtering er en viktig tjeneste som både arkitektur og applikasjoner har
-					behov for. Pakken <i>no.trygdeetaten.common.framework.error</i>
+					behov for. Pakken <i>no.nav.common.framework.error</i>
 					består av klasser og interface for feilhåndtering. 
 				</p>
 				<p>
@@ -67,7 +67,7 @@
 						ligge i pakken <i>no.trygdeetaten.common.<font color="blue">[applikasjon]</font></i>. Pass på
 						at feilkoden ikke er definert fra før, og at den er ihht konvensjonene beskrevet i 
 						<a href="../apidocs/no/trygdeetaten/common/framework/error/ErrorCode.html">
-						no.trygdeetaten.common.framework.error.ErrorCode</a>.<br/>
+						no.nav.common.framework.error.ErrorCode</a>.<br/>
 					</li>
 					<li>
 						Registrer feiltypen i databasen (Tabellen er foreløpig ikke definert) med følgende informasjon;
@@ -175,8 +175,8 @@ try {
 				<h4>Oppdatering av konstanter</h4>
 				<p>Feilkoder skal defineres i en av følgende klasser:</p>
 				<ul>
-					<li>no.trygdeetaten.common.framework.error.ErrorCode - interne feil i feilhåndteringen</li>
-					<li>no.trygdeetaten.common.framework.FrameworkError - systemfeil</li>
+					<li>no.nav.common.framework.error.ErrorCode - interne feil i feilhåndteringen</li>
+					<li>no.nav.common.framework.FrameworkError - systemfeil</li>
 					<li>no.trygdeetaten.common.<font color="blue">[applikasjon]</font>.ApplicationError - applikasjonsfeil</li>
 				</ul>
 				<h4>Oppdatering av databasen</h4>

@@ -10,7 +10,7 @@
 	<!-- details about the organization that 'owns' the project -->
 	<shortDescription>nav - Rammeverk fellestjenester</shortDescription>
 
-	<package>no.trygdeetaten.common.framework</package>
+	<package>no.nav.common.framework</package>
 
 	<!-- 
 	    Inherit from main

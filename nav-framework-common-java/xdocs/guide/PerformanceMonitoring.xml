@@ -17,7 +17,7 @@
 				<p>Ytelsesmålingen konfigureres i performance-monitoring.xml som vist i eksempelet under.</p>
 
 <source><![CDATA[<beans>
-	<bean id="PerformanceMonitor" class="no.trygdeetaten.common.framework.performance.LogMonitorImpl">
+	<bean id="PerformanceMonitor" class="no.nav.common.framework.performance.LogMonitorImpl">
 		<property name="level">
 			<value>3</value>
 		</property>
@@ -29,8 +29,8 @@
 					<i>Monitor</i>
 					og kan benyttes direkte i class-attributtet:
 					<ul>
-						<li>no.trygdeetaten.common.framework.performance.DefaultMonitorImpl -> Ingen monitorering</li>
-						<li>no.trygdeetaten.common.framework.performance.LogMonitorImpl -> Ytelsen logges til performance.log</li>
+						<li>no.nav.common.framework.performance.DefaultMonitorImpl -> Ingen monitorering</li>
+						<li>no.nav.common.framework.performance.LogMonitorImpl -> Ytelsen logges til performance.log</li>
 					</ul>
 				</p>
 				<p>
@@ -44,7 +44,7 @@
 						<li>5 - Full monitorering</li>
 					</ul>
 					Se også javadoc for
-					<a href="../apidocs/no/trygdeetaten/common/framework/performance/AbstractMonitor.html">no.trygdeetaten.common.framework.performance.AbstractMonitor.html</a>
+					<a href="../apidocs/no/trygdeetaten/common/framework/performance/AbstractMonitor.html">no.nav.common.framework.performance.AbstractMonitor.html</a>
 				</p>
 
 			</subsection>

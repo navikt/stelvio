@@ -28,21 +28,21 @@
 						<td>Transfer Object</td>
 						<td><a href="design/TransferObject.html">Design</a></td>
 						<td><a href="guide/TransferObject.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/core/package-summary.html">no.trygdeetaten.common.framework.core</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/core/package-summary.html">no.nav.common.framework.core</a></td>
 					</tr>
 					
 					<tr>
 						<td>Domain Object</td>
 						<td><a href="design/DomainObject.html">Design</a></td>
 						<td><a href="guide/DomainObject.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/core/package-summary.html">no.trygdeetaten.common.framework.core</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/core/package-summary.html">no.nav.common.framework.core</a></td>
 					</tr>
 					
 					<tr>
 						<td>Konfigurasjon</td>
 						<td><a href="design/Configuration.html">Design</a></td>
 						<td><a href="guide/Configuration.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/config/package-summary.html">no.trygdeetaten.common.framework.config</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/config/package-summary.html">no.nav.common.framework.config</a></td>
 					</tr>
 					
 					
@@ -50,42 +50,42 @@
 						<td>Feilhåndtering</td>
 						<td><a href="design/ErrorHandling.html">Design</a></td>
 						<td><a href="guide/ErrorHandling.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/error/package-summary.html">no.trygdeetaten.common.framework.error</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/error/package-summary.html">no.nav.common.framework.error</a></td>
 					</tr>
 										
 					<tr>
 						<td>Transaksjonskontekst</td>
 						<td><a href="design/TransactionContext.html">Design</a></td>
 						<td><a href="guide/TransactionContext.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/context/package-summary.html">no.trygdeetaten.common.framework.context</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/context/package-summary.html">no.nav.common.framework.context</a></td>
 					</tr>
 					
 					<tr>
 						<td>Kodetabeller</td>
 						<td><a href="design/Kodetabell.html">Design</a></td>
 						<td><a href="guide/Kodetabell.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/codestable/package-summary.html">no.trygdeetaten.common.framework.codestable</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/codestable/package-summary.html">no.nav.common.framework.codestable</a></td>
 					</tr>
 					
 					<tr>
 						<td>Tjenester</td>
 						<td><a href="design/Service.html">Design</a></td>
 						<td><a href="guide/Service.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/service/package-summary.html">no.trygdeetaten.common.framework.service</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/service/package-summary.html">no.nav.common.framework.service</a></td>
 					</tr>
 					
 					<tr>
 						<td>Service Locator</td>
 						<td><a href="design/ServiceLocator.html">Design</a></td>
 						<td><a href="guide/ServiceLocator.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/service/package-summary.html">no.trygdeetaten.common.framework.service</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/service/package-summary.html">no.nav.common.framework.service</a></td>
 					</tr>
 							
 					<tr>
 						<td>Overvåkning</td>
 						<td><a href="design/Monitoring.html">Design</a></td>
 						<td><a href="guide/Monitoring.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/monitor/package-summary.html">no.trygdeetaten.common.framework.monitor</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/monitor/package-summary.html">no.nav.common.framework.monitor</a></td>
 					</tr>
 					<tr>
 						<td>Autentisering</td>
@@ -103,7 +103,7 @@
 						<td>Ytelsesmåling</td>
 						<td><a href="design/PerformanceMonitoring.html">Design</a></td>
 						<td><a href="guide/PerformanceMonitoring.html">Guide</a></td>
-						<td><a href="apidocs/no/trygdeetaten/common/framework/performance/package-summary.html">no.trygdeetaten.common.framework.performance</a></td>
+						<td><a href="apidocs/no/trygdeetaten/common/framework/performance/package-summary.html">no.nav.common.framework.performance</a></td>
 					</tr>
 					
 				</table>
