@@ -21,13 +21,13 @@
 				<ul>
 					<li>
 						Klassene skal arve
-						<a href="../apidocs/no/trygdeetaten/business/framework/service/BusinessService.html">no.nav.business.framework.service.BusinessService</a>
+						<a href="../apidocs/no/nav/business/framework/service/BusinessService.html">no.nav.business.framework.service.BusinessService</a>
 						<br />
 					</li>
 					<li>
 						Pakken som klassene legges i skal navngis etter følgende standard:
 						<br />
-						no.trygdeetaten.business.
+						no.nav.business.
 						<font color="blue">[applikasjon]</font>
 						.
 						<font color="blue">[funksjonelt område]</font>
@@ -84,7 +84,7 @@
 					<i>BusinessDelegate</i>
 					for å utføre forretningslogikk.
 				</p>
-<source><![CDATA[package no.trygdeetaten.web.saksbehandling.action.oppgave;
+<source><![CDATA[package no.nav.web.saksbehandling.action.oppgave;
 
 ...
 
@@ -112,21 +112,21 @@ public class OGS020OppgavelisteAction extends FindDispatchAction {
 
 				<h4>HentOppgavelisterService.java:</h4>
 				<p>Eksempelet nedenfor viser hvordan forretningslogikken implementeres, og hvordan hibernate kan benyttes fra forretningslogikken.</p>
-<source><![CDATA[package no.trygdeetaten.business.oppgaver.service;
+<source><![CDATA[package no.nav.business.oppgaver.service;
 
 import java.util.List;
 
 import net.sf.hibernate.Query;
 
-import no.trygdeetaten.common.domain.oppgave.Oppgaveliste;
-import no.trygdeetaten.common.domain.oppgave.OppgavelisteNode;
+import no.nav.common.domain.oppgave.Oppgaveliste;
+import no.nav.common.domain.oppgave.OppgavelisteNode;
 import no.nav.common.framework.service.ServiceFailedException;
 import no.nav.common.framework.service.ServiceRequest;
 import no.nav.common.framework.service.ServiceResponse;
 
-import no.trygdeetaten.business.oppgaver.constants.OppgaveConstants;
+import no.nav.business.oppgaver.constants.OppgaveConstants;
 
-import no.trygdeetaten.integration.framework.hibernate.service.BusinessHibernateService;
+import no.nav.integration.framework.hibernate.service.BusinessHibernateService;
 
 public class HentOppgavelisterService extends BusinessHibernateService {
 	
@@ -186,7 +186,7 @@ public class HentOppgavelisterService extends BusinessHibernateService {
 <source><![CDATA[<beans>
    ...
    <bean id="BusinessFacade" class="no.nav.common.framework.ejb.RemoteServiceDescription">
-      <property name="jndiName"> ejb/no/trygdeetaten/business/BusinessFacade </property>
+      <property name="jndiName"> ejb/no/nav/business/BusinessFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
       <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>
@@ -215,7 +215,7 @@ public class HentOppgavelisterService extends BusinessHibernateService {
 		</constructor-arg>
 	</bean>
 	
-	<bean id="HentOppgavelister" class="no.trygdeetaten.business.oppgaver.service.HentOppgavelisterService">
+	<bean id="HentOppgavelister" class="no.nav.business.oppgaver.service.HentOppgavelisterService">
 		<property name="hibernateHelper">
 			<ref bean="HibernateHelper_GenerellSak" />
 		</property>
