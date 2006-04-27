@@ -5,7 +5,7 @@
 -->
 <beans>
 
-	<bean id="ErrorHandler" class="no.trygdeetaten.common.framework.error.TestHandlerImpl" init-method="init"></bean>
+	<bean id="ErrorHandler" class="no.nav.common.framework.error.TestHandlerImpl" init-method="init"></bean>
 
 </beans>
 

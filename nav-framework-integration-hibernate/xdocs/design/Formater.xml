@@ -54,7 +54,7 @@
 		<p>For å kunne benytte en formater som deffinert på property elementet(se over) må klassen være
 		deffinert opp i enterprise-services.xml
 		Her følger et enkelt eksempel på hvordan dette kan gjøres:
-<source><![CDATA[<bean id="LongFormater" class="no.trygdeetaten.integration.framework.hibernate.formater.LongFormater" singleton="true">
+<source><![CDATA[<bean id="LongFormater" class="no.nav.integration.framework.hibernate.formater.LongFormater" singleton="true">
 	</bean>]]>
 </source>
 		</p>
