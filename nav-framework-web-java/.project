@@ -4,8 +4,8 @@
 	<comment>
   </comment>
 	<projects>
-		<project>rtv-framework-common-java</project>
-		<project>rtv-framework-common-test</project>
+		<project>nav-framework-common-java</project>
+		<project>nav-framework-common-test</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

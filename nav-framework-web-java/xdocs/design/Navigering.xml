@@ -45,7 +45,7 @@
 						skal skje når en ny action kalles.
 						<br/>
 						Det skal også finnes funksjonalitet for at lagre informasjon i sessionskonteksten som applikasjonen kan bruke.
-						Det er laget design for klientkonteksten i prosjektet <a href="../../rtv-framework-common-java/index.html">rtv-framework-common-java</a>
+						Det er laget design for klientkonteksten i prosjektet <a href="../../nav-framework-common-java/index.html">nav-framework-common-java</a>
 					<h4>FindDispatchAction</h4>
 						Hvis en bruker klikker på en knapp/link to ganger for resultatet fra første klikk vises i vinduet blir
 						det problem at fullføre requesten på serveren. Det må legges til funksjonalitet som forhindrer dette med

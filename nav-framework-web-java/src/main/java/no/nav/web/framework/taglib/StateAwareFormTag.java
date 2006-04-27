@@ -44,7 +44,7 @@ public class StateAwareFormTag extends FormTag {
 		
 		// Add token
 		results.append(renderToken());
-		// RTV Specific state handling
+		// NAV Specific state handling
 		results.append(renderState());
 
 		ResponseUtils.write(pageContext, results.toString());

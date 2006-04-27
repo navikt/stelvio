@@ -132,9 +132,9 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 			uri = forwardPath;
 		}
 
-		// RTV: Get the mode from the forward and set in the TransactionContext and the session.
-		// RTV: Only set if the property is set in struts-config.xml, i.e. the forward
-		// RTV: is of type StateAwareActionForward.
+		// NAV: Get the mode from the forward and set in the TransactionContext and the session.
+		// NAV: Only set if the property is set in struts-config.xml, i.e. the forward
+		// NAV: is of type StateAwareActionForward.
 		if (forward instanceof StateAwareActionForward) {
 
 			if (null == ((StateAwareActionForward) forward).getState()) {
@@ -152,7 +152,7 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 			TransactionContext.setState("normal");
 		}
 
-		// RTV: Remove FormBean from HttpSession unless forward is of type SessionScope
+		// NAV: Remove FormBean from HttpSession unless forward is of type SessionScope
 		if (!(forward instanceof SessionScope)) {
 			ActionMapping mapping = getActionMapping(request);
 			no.nav.web.framework.util.RequestUtils.removeSessionAttribute(request, mapping.getName());
@@ -161,10 +161,10 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 			}
 		}
 
-		// RTV: Set next screen as module
+		// NAV: Set next screen as module
 		TransactionContext.setModuleId(no.nav.web.framework.util.RequestUtils.getScreenId(uri));
 
-		// RTV: Set default method in next screen
+		// NAV: Set default method in next screen
 		if (null == request.getAttribute(Constants.METHOD_TO_EXECUTE)) {
 			request.setAttribute(
 				Constants.METHOD_TO_EXECUTE,

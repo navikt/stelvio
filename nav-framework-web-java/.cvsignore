@@ -5,4 +5,4 @@ jcoverage.ser
 *.log.*
 junit*.properties
 *.md5
-rtv-framework-web-java.iml
+nav-framework-web-java.iml
