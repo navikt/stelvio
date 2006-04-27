@@ -16,25 +16,25 @@
 			<td>Hibernate rammeverk</td>
 			<td><a href="design/hibernate.html">Design</a></td>
 			<td><a href="guide/hibernate.html">Guide</a></td>
-         <td><a href="apidocs/index.html">no.trygdeetaten.integration.framework.hibernate</a></td>
+         <td><a href="apidocs/index.html">no.nav.integration.framework.hibernate</a></td>
 		</tr>
 		<tr>
 			<td>Hibernate Configuration Extentions</td>
 			<td><a href="design/HibernateConfigurationExtention.html">Design</a></td>
 			<td><a href="design/HibernateConfigurationExtention.html#bruk">Guide</a></td>
-			<td><a href="apidocs/index.html">no.trygdeetaten.integration.framework.hibernate</a></td>
+			<td><a href="apidocs/index.html">no.nav.integration.framework.hibernate</a></td>
 		</tr>
 		<tr>
 			<td>Hibernate Configuration Helpers</td>
 			<td><a href="design/HibernateConfigurationHelpers.html">Design</a></td>
 			<td><a href="design/HibernateConfigurationHelpers.html#bruk">Guide</a></td>
-			<td><a href="apidocs/index.html">no.trygdeetaten.integration.framework.hibernate</a></td>
+			<td><a href="apidocs/index.html">no.nav.integration.framework.hibernate</a></td>
 		</tr>
     	<tr>
 			<td>Formater</td>
 			<td><a href="design/Formater.html">Design</a></td>
 			<td><a href="design/Formater.html#bruk">Guide</a></td>
-			<td><a href="apidocs/index.html">no.trygdeetaten.integration.framework.hibernate</a></td>
+			<td><a href="apidocs/index.html">no.nav.integration.framework.hibernate</a></td>
 		</tr>
 	</table>
 	</section>
