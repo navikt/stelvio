@@ -1,4 +1,4 @@
-package no.trygdeetaten.framework.sso;
+package no.nav.framework.sso;
 
 import java.util.Enumeration;
 import java.util.Properties;
@@ -42,7 +42,7 @@ public class NtlmTrustInterceptor implements TrustAssociationInterceptor {
 
 	private void debug(String message) {
 		if (null != System.getProperty(DEBUG)) {
-			System.out.println("[no.trygdeetaten.framework.sso.NtlmTrustInterceptor] - " + message);
+			System.out.println("[no.nav.framework.sso.NtlmTrustInterceptor] - " + message);
 		}
 	}
 

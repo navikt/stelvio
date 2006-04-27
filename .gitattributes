@@ -643,8 +643,8 @@ nav-framework-sso-was/.classpath -text
 nav-framework-sso-was/.cvsignore -text
 nav-framework-sso-was/.project -text
 nav-framework-sso-was/project.xml -text
-nav-framework-sso-was/src/main/java/no/trygdeetaten/framework/sso/NtlmTrustInterceptor.java -text
-nav-framework-sso-was/src/main/java/no/trygdeetaten/framework/sso/RTVTrustInterceptor.java -text
+nav-framework-sso-was/src/main/java/no/nav/framework/sso/NtlmTrustInterceptor.java -text
+nav-framework-sso-was/src/main/java/no/nav/framework/sso/RTVTrustInterceptor.java -text
 nav-framework-web-java/.classpath -text
 nav-framework-web-java/.cvsignore -text
 nav-framework-web-java/.project -text

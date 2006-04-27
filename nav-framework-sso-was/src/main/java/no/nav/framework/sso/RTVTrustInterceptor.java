@@ -1,4 +1,4 @@
-package no.trygdeetaten.framework.sso;
+package no.nav.framework.sso;
 
 import java.util.Properties;
 
@@ -14,8 +14,8 @@ import com.ibm.websphere.security.WebTrustAssociationUserException;
  * og
  * E:\apps\IBM\WebSphere Studio\Application Developer\v5.1.1\runtimes\base_v51\lib\wssec.jar.
  * @author person1f201b37d484, Accenture
- * @version $Id: RTVTrustInterceptor.java 2654 2005-11-28 11:14:54Z shc2920 $
- * @deprecated bruk no.trygdeetaten.framework.sso.NtlmTrustInterceptor istedenfor.
+ * @version $Id: NAVTrustInterceptor.java 2654 2005-11-28 11:14:54Z shc2920 $
+ * @deprecated bruk no.nav.framework.sso.NtlmTrustInterceptor istedenfor.
  */
 public class RTVTrustInterceptor
 	extends com.ibm.websphere.security.WebSphereBaseTrustAssociationInterceptor
