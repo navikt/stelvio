@@ -10,14 +10,14 @@ import net.sf.hibernate.MappingException;
 import net.sf.hibernate.mapping.RootClass;
 
 import no.nav.integration.framework.jms.MessageHandler;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceResponse;
 
-import no.trygdeetaten.integration.framework.hibernate.cfg.Configuration;
-import no.trygdeetaten.integration.framework.hibernate.helper.RecordConverter;
-import no.trygdeetaten.integration.framework.hibernate.helper.RecordHelper;
+import no.nav.integration.framework.hibernate.cfg.Configuration;
+import no.nav.integration.framework.hibernate.helper.RecordConverter;
+import no.nav.integration.framework.hibernate.helper.RecordHelper;
 
 /**
  * Oversetter fra en "Oppdrag string" til ett DO objekt via en hbm mapping.

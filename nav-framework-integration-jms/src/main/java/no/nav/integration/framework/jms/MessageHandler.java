@@ -2,8 +2,8 @@ package no.nav.integration.framework.jms;
 
 import javax.jms.Message;
 
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * MessageHandler performs special handling of JMS messages. This can include

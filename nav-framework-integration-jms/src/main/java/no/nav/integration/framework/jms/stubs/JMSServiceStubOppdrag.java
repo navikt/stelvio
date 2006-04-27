@@ -24,12 +24,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.nav.integration.framework.jms.formatter.DynamicXMLMessageFormatter;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
-import no.trygdeetaten.integration.framework.service.IntegrationService;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
+import no.nav.integration.framework.service.IntegrationService;
 
 
 /**

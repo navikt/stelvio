@@ -102,7 +102,7 @@ ServiceResponse response = service.execute( serviceRequest );
 	<bean id="XMLMessageHandler" singleton="true" init-method="init">
 		<!-- Se XMLMessageHandler -->
 	</bean>
-	<bean id="ResourceLookupHelper" class="no.trygdeetaten.common.framework.util.ResourceLookupHelper" />
+	<bean id="ResourceLookupHelper" class="no.nav.common.framework.util.ResourceLookupHelper" />
 </beans>		
 					
 				]]>

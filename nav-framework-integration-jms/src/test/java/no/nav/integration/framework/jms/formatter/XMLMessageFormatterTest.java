@@ -13,11 +13,11 @@ import junit.framework.TestCase;
 import no.nav.integration.framework.jms.DummyQueueSession;
 import no.nav.integration.framework.jms.DummyTextMessage;
 import no.nav.integration.framework.jms.formatter.XMLMessageFormatter;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.core.TransferObject;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.core.TransferObject;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
 
 
 /**

@@ -12,7 +12,7 @@ import junit.framework.TestCase;
 
 import no.nav.integration.framework.jms.DummyQueueSession;
 import no.nav.integration.framework.jms.formatter.DynamicXMLMessageFormatter;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceRequest;
 
 /**
  * Test class for Dynamic XML message formatting.

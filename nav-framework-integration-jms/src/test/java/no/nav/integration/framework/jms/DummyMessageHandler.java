@@ -3,7 +3,7 @@ package no.nav.integration.framework.jms;
 import javax.jms.Message;
 
 import no.nav.integration.framework.jms.MessageHandler;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * 

@@ -3,8 +3,8 @@ package no.nav.integration.framework.jms;
 import javax.jms.Message;
 import javax.jms.Session;
 
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
 
 /**
  * Formats a message so that it is understandable by a backend system.

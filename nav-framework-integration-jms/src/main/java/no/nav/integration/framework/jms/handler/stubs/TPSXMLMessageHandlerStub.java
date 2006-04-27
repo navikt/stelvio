@@ -14,10 +14,10 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.InputStreamResource;
 
 import no.nav.integration.framework.jms.handler.XMLMessageHandler;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * Stub for properties that does not yet exist in TPS.

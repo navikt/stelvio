@@ -27,11 +27,11 @@ import org.xml.sax.SAXException;
 import org.apache.commons.lang.StringUtils;
 
 import no.nav.integration.framework.jms.MessageHandler;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.Constants;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.Constants;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * Handles javax.jms.TextMesssages that contains XML as the message body.

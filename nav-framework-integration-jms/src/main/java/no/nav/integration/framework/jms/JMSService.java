@@ -15,16 +15,16 @@ import javax.jms.QueueSession;
 import javax.jms.Session;
 import org.apache.commons.lang.StringUtils;
 
-import no.trygdeetaten.common.framework.Constants;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.ejb.LookupHelper;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.performance.MonitorKey;
-import no.trygdeetaten.common.framework.performance.PerformanceMonitor;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
-import no.trygdeetaten.integration.framework.service.IntegrationService;
+import no.nav.common.framework.Constants;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.ejb.LookupHelper;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.performance.MonitorKey;
+import no.nav.common.framework.performance.PerformanceMonitor;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
+import no.nav.integration.framework.service.IntegrationService;
 
 /**
  * Integration service class which handles JMS communication. This service supports the following:

@@ -6,10 +6,10 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import no.nav.integration.framework.jms.MessageFormatter;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
 
 
 /**
@@ -22,7 +22,7 @@ public class StringBufferFormatter implements MessageFormatter {
 
 	/** 
 	 * {@inheritDoc}
-	 * @see no.nav.integration.framework.jms.MessageFormatter#formatMessage(javax.jms.Session, no.trygdeetaten.common.framework.service.ServiceRequest)
+	 * @see no.nav.integration.framework.jms.MessageFormatter#formatMessage(javax.jms.Session, no.nav.common.framework.service.ServiceRequest)
 	 */
 	public Message formatMessage(Session session, ServiceRequest input) throws ServiceFailedException {
 

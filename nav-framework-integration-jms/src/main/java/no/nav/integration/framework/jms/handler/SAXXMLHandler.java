@@ -8,7 +8,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * Handles XML messages using SAX parsing.

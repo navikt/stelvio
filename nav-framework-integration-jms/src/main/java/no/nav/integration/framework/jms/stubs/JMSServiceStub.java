@@ -10,9 +10,9 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 
 import no.nav.integration.framework.jms.JMSService;
 import no.nav.integration.framework.jms.handler.stubs.TPSXMLMessageHandlerStub;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 
 /**
@@ -28,7 +28,7 @@ public class JMSServiceStub extends JMSService {
 	protected static final String FNR = "fnr";
 	/**
 	 * Executes a service request, but stubs the calls that does not yet exist
-	 * @see no.trygdeetaten.integration.framework.service.IntegrationService#doExecute(no.trygdeetaten.common.framework.service.ServiceRequest)
+	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.nav.common.framework.service.ServiceRequest)
 	 */
 	protected ServiceResponse doExecute(ServiceRequest request) throws ServiceFailedException {
 		// find out if we want to actually call the service or not

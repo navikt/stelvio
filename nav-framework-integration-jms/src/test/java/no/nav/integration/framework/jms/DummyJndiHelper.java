@@ -2,9 +2,9 @@ package no.nav.integration.framework.jms;
 
 import java.util.Hashtable;
 
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.ejb.LookupHelper;
-import no.trygdeetaten.common.framework.service.ServiceNotFoundException;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.ejb.LookupHelper;
+import no.nav.common.framework.service.ServiceNotFoundException;
 
 /**
  * 
@@ -15,7 +15,7 @@ public class DummyJndiHelper implements LookupHelper {
 	private DummyQueueConnectionFactory factory = new DummyQueueConnectionFactory();
 
 	/* (non-Javadoc)
-	 * @see no.trygdeetaten.integration.framework.jndi.JNDIHelper#lookup(java.lang.String)
+	 * @see no.nav.integration.framework.jndi.JNDIHelper#lookup(java.lang.String)
 	 */
 	public Object lookup(String jndiName, Hashtable env) throws ServiceNotFoundException {
 		
