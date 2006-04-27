@@ -5,5 +5,5 @@ jcoverage.ser
 *snapshot-version
 bin
 junit*.properties
-rtv-framework-integration-java.iml
+nav-framework-integration-java.iml
 *.log*

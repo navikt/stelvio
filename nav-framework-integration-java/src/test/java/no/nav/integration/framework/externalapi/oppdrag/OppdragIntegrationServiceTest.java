@@ -16,14 +16,14 @@ import com.ibm.no.rtv.oppdrag.exception.PredatorUpdateFailedException;
 import com.ibm.no.rtv.oppdrag.value.OppdragVO;
 
 import no.nav.integration.framework.externalapi.oppdrag.OppdragIntegrationService;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.monitor.ErrorMonitor;
-import no.trygdeetaten.common.framework.monitor.Monitor;
-import no.trygdeetaten.common.framework.monitor.MonitorChain;
-import no.trygdeetaten.common.framework.monitor.ReportReceiver;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.monitor.ErrorMonitor;
+import no.nav.common.framework.monitor.Monitor;
+import no.nav.common.framework.monitor.MonitorChain;
+import no.nav.common.framework.monitor.ReportReceiver;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * Test of OppdragService integration

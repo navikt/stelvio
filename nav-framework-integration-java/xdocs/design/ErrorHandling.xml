@@ -12,8 +12,8 @@
 					Feilhåndtering i forretningslaget og integrasjonslaget skal i utgangspunktet implementeres 
 					likt og som beskrevet i <i>Fellestjenester - Feilhåndtering</i>. 
 					<ul>
-						<li><a href="http://hpapt03/multiproject/rtv-framework-common-java/design/ErrorHandling.html">Design Feilhåndtering</a>.</li>
-						<li><a href="http://hpapt03/multiproject/rtv-framework-common-java/guide/ErrorHandling.html">Guide Feilhåndtering</a>.</li>
+						<li><a href="http://hpapt03/multiproject/nav-framework-common-java/design/ErrorHandling.html">Design Feilhåndtering</a>.</li>
+						<li><a href="http://hpapt03/multiproject/nav-framework-common-java/guide/ErrorHandling.html">Guide Feilhåndtering</a>.</li>
 					</ul>
 				</p>
 				<p>

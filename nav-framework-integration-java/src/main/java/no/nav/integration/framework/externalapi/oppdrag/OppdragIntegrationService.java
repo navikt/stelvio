@@ -8,12 +8,12 @@ import com.ibm.no.rtv.oppdrag.bus.OppdragService;
 import com.ibm.no.rtv.oppdrag.value.OppdragVO;
 
 import no.nav.integration.framework.service.IntegrationService;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.error.system.OppdragException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.error.system.OppdragException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * Integration service for synchronous communication to Oppdrag system. This
