@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.log.factory;
+package no.nav.common.framework.log.factory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,7 +21,7 @@ import org.apache.log4j.helpers.LogLog;
 import org.apache.log4j.helpers.OptionConverter;
 import org.apache.log4j.xml.DOMConfigurator;
 
-import no.trygdeetaten.common.framework.log.jmx.Log4JConfig;
+import no.nav.common.framework.log.jmx.Log4JConfig;
 
 /**
  * A commons-logging LogFactory implementation which adds support for Log4J and file watching.
@@ -48,7 +48,7 @@ public class Log4jLogFactory extends LogFactory {
 	 * the log4j configuration (in milliseconds).
 	 */
 	public static final String REFRESH_INTERVAL =
-		"no.trygdeetaten.common.framework.log.factory.Log4jLogFactory.refreshInterval";
+		"no.nav.common.framework.log.factory.Log4jLogFactory.refreshInterval";
 
 	/** Wether or not to use the default init. sequence in LogManager */
 	public static final String DEFAULT_INIT_OVERRIDE_KEY = "log4j.defaultInitOverride";

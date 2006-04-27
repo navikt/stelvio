@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.log.appenders;
+package no.nav.common.framework.log.appenders;
 
 import org.apache.log4j.spi.LoggingEvent;
 import org.apache.log4j.varia.FallbackErrorHandler;

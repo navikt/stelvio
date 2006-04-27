@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.log.jmx;
+package no.nav.common.framework.log.jmx;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

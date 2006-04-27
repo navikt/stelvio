@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.log.factory;
+package no.nav.common.framework.log.factory;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.Properties;
 
 import junit.framework.TestCase;
+
+import no.nav.common.framework.log.factory.Log4jLogFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,7 +34,7 @@ public class Log4jLogFactoryTest extends TestCase {
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
-		//System.setProperty("org.apache.commons.logging.LogFactory", "no.trygdeetaten.common.framework.log.factory.Log4jLogFactory");
+		//System.setProperty("org.apache.commons.logging.LogFactory", "no.nav.common.framework.log.factory.Log4jLogFactory");
 		System.setProperty("log4j.configuration", "test-log4j.properties");
 	}
 

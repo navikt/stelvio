@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.log.appenders;
+package no.nav.common.framework.log.appenders;
 
 import javax.jms.JMSException;
 import javax.jms.QueueConnection;

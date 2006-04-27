@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.log.jmx;
+package no.nav.common.framework.log.jmx;
 
 /**
  * MBean implementation which manages Log4J configuration.

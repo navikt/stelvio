@@ -194,10 +194,10 @@ protected final Log log = LogFactory.getLog(this.getClass());
 				for en LogFactory. commons-logging.properties ser slik ut:
 				<source>
 # the LogFactory implementation to use
-org.apache.commons.logging.LogFactory=no.trygdeetaten.common.framework.log.factory.Log4jLogFactory
+org.apache.commons.logging.LogFactory=no.nav.common.framework.log.factory.Log4jLogFactory
 
 # the interval between each refresh of the logging configuration. Default is 60 seconds.
-no.trygdeetaten.common.framework.log.factory.Log4jLogFactory.refreshInterval=60000				
+no.nav.common.framework.log.factory.Log4jLogFactory.refreshInterval=60000				
 				</source>
 				</p>
 				<h4>Konfigurering av Log4j</h4>
@@ -236,7 +236,7 @@ log4j.appender.Systemlog.layout=org.apache.log4j.PatternLayout
 log4j.appender.Systemlog.layout.ConversionPattern=[%d, %-5p, %c:%L] - [%X{user},%X{screen},%X{process},%X{transaction}] - %m%n
 
 ### The Error Log JMS Appender
-log4j.appender.JMS=no.trygdeetaten.common.framework.log.appenders.JMSQueueAppender
+log4j.appender.JMS=no.nav.common.framework.log.appenders.JMSQueueAppender
 log4j.appender.JMS.layout=org.apache.log4j.PatternLayout
 log4j.appender.JMS.layout.ConversionPattern=[%d, %-5p, %c:%L] - %m%n
 log4j.appender.JMS.initialContextFactoryName=com.ibm.websphere.naming.WsnInitialContextFactory

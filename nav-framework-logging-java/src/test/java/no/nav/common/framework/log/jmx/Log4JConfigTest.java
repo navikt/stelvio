@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.log.jmx;
+package no.nav.common.framework.log.jmx;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
+
+import no.nav.common.framework.log.jmx.Log4JConfig;
 
 import junit.framework.TestCase;
 

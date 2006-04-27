@@ -1,4 +1,4 @@
-package no.trygdeetaten.common.framework.log.appenders;
+package no.nav.common.framework.log.appenders;
 
 import javax.jms.JMSException;
 import javax.jms.Queue;
@@ -7,6 +7,8 @@ import javax.naming.Context;
 import javax.naming.NamingException;
 
 import junit.framework.TestCase;
+
+import no.nav.common.framework.log.appenders.JMSQueueAppender;
 
 import org.apache.log4j.Category;
 import org.apache.log4j.PatternLayout;
@@ -108,7 +110,7 @@ public class JMSQueueAppenderTest extends TestCase {
 
 			// test: No options are set. We should get a number of errors
 			ic.setErrorOnLookup(true);
-			appender.setInitialContextFactoryName("no.trygdeetaten.common.framework.log.appenders.TestInitialContextFactory");
+			appender.setInitialContextFactoryName("no.nav.common.framework.log.appenders.TestInitialContextFactory");
 			appender.setProviderURL("iiop://test:999");
 			appender.activateOptions();
 			assertEquals("Test 4: Unexpected number of errors", 1, handler.getNumErrors());
@@ -212,7 +214,7 @@ public class JMSQueueAppenderTest extends TestCase {
 			appender.setLayout(new PatternLayout("%p - %m "));
 			appender.setQueueConnectionFactoryBindingName("jms/qcf");
 			appender.setQueueBindingName("jms/queue");
-			appender.setInitialContextFactoryName("no.trygdeetaten.common.framework.log.appenders.TestInitialContextFactory");
+			appender.setInitialContextFactoryName("no.nav.common.framework.log.appenders.TestInitialContextFactory");
 			appender.setProviderURL("iiop://test:999");
 			TestQueueConnectionFactory testFac = new TestQueueConnectionFactory();
 			ic.setQcf(testFac);
