@@ -50,8 +50,8 @@
 <source><![CDATA[
 <beans>
    ...
-   <bean id="IntegrationFacade" class="no.trygdeetaten.common.framework.ejb.RemoteServiceDescription">
-      <property name="jndiName"> ejb/no/trygdeetaten/integration/IntegrationFacade </property>
+   <bean id="IntegrationFacade" class="no.nav.common.framework.ejb.RemoteServiceDescription">
+      <property name="jndiName"> ejb/no/nav/integration/IntegrationFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
       <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>

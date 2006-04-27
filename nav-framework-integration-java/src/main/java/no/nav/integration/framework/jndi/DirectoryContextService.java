@@ -21,13 +21,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.nav.integration.framework.service.IntegrationService;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.performance.MonitorKey;
-import no.trygdeetaten.common.framework.performance.PerformanceMonitor;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.performance.MonitorKey;
+import no.nav.common.framework.performance.PerformanceMonitor;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 
 /**
@@ -134,7 +134,7 @@ public class DirectoryContextService extends IntegrationService {
 	 * will be directly accessible.
 	 * 
 	 * {@inheritDoc}
-	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.trygdeetaten.common.framework.service.ServiceRequest)
+	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.nav.common.framework.service.ServiceRequest)
 	 */
 	protected ServiceResponse doExecute(ServiceRequest request) throws ServiceFailedException {
 

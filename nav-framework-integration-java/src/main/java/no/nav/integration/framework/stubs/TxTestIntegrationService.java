@@ -1,11 +1,11 @@
 package no.nav.integration.framework.stubs;
 
 import no.nav.integration.framework.service.IntegrationService;
-import no.trygdeetaten.common.framework.error.ErrorCode;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.error.ErrorCode;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 
 /**
@@ -18,7 +18,7 @@ public class TxTestIntegrationService extends IntegrationService {
 
 	/** 
 	 * {@inheritDoc}
-	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.trygdeetaten.common.framework.service.ServiceRequest)
+	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.nav.common.framework.service.ServiceRequest)
 	 */
 	protected ServiceResponse doExecute(ServiceRequest request) throws ServiceFailedException {
 

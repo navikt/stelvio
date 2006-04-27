@@ -15,12 +15,12 @@ import no.nav.integration.framework.service.IntegrationService;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.error.system.ELDOKException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.error.system.ELDOKException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * @author person5b7fd84b3197, Accenture
@@ -132,7 +132,7 @@ public class EldokJournalpostIntegrationService extends IntegrationService {
 	 * 		<table>
 	 * RETURNVAL = Journalpost
 	 * 
-	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.trygdeetaten.common.framework.service.ServiceRequest)
+	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.nav.common.framework.service.ServiceRequest)
 	 */
 	protected ServiceResponse doExecute(ServiceRequest request) throws ServiceFailedException {
 		String function = (String) request.getData(FUNCTION);

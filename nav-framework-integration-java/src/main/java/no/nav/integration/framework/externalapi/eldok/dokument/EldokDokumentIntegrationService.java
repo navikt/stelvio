@@ -10,12 +10,12 @@ import no.ibm.egov.earkiv.api.dokument.EADokument;
 import no.ibm.egov.earkiv.util.exceptions.EArkivException;
 import no.nav.integration.framework.service.IntegrationService;
 
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.SystemException;
-import no.trygdeetaten.common.framework.error.system.ELDOKException;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.SystemException;
+import no.nav.common.framework.error.system.ELDOKException;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 
 /**
@@ -130,7 +130,7 @@ public class EldokDokumentIntegrationService extends IntegrationService {
 	 * 			<tr><td>DOKBESK</td><td>Dokbeskriv</td></tr>
 	 * 		<table>
 	 * RETURNVAL = Dokbeskriv
-	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.trygdeetaten.common.framework.service.ServiceRequest)
+	 * @see no.nav.integration.framework.service.IntegrationService#doExecute(no.nav.common.framework.service.ServiceRequest)
 	 */
 	protected ServiceResponse doExecute(ServiceRequest request) throws ServiceFailedException {
 		String function = (String) request.getData(FUNCTION);

@@ -1,9 +1,9 @@
 package no.nav.integration.framework.service;
 
-import no.trygdeetaten.common.framework.service.LocalService;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.service.LocalService;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * LocalService for testing LocalServiceLocator.

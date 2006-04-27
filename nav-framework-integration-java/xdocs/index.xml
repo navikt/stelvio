@@ -12,7 +12,7 @@
 			<subsection name="Oversikt">
 			
 				<p>
-					Dette prosjektet inneholder integrasjonstjenestene i Trygdeetatens J2EE-rammeverk.
+					Dette prosjektet inneholder integrasjonstjenestene i NAVs J2EE-rammeverk.
 					Komponentene og tjenestene er av en slik karakter at de kun skal kunne benyttes i 
 					integrasjonslaget. Figuren nedenfor viser hvordan komponentene i integrasjonslaget
 					implementerer "best practice" designmønstre og flyten av kontroll mellom dem.
@@ -74,21 +74,21 @@
 						<td>Integration Delegate</td>
 						<td><a href="design/IntegrationDelegate.html">Design</a></td>
 						<td><a href="guide/IntegrationDelegate.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.trygdeetaten.business.framework.integration</a></td>
+						<td><a href="apidocs/index.html">no.nav.business.framework.integration</a></td>
 					</tr>
 					
 					<tr>
 						<td>Service Locator</td>
 						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/design/ServiceLocator.html">Design</a></td>
 						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/guide/ServiceLocator.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.trygdeetaten.common.framework.service</a></td>
+						<td><a href="apidocs/index.html">no.nav.common.framework.service</a></td>
 					</tr>
 					
 					<tr>
 						<td>Integration Facade</td>
 						<td><a href="design/IntegrationFacade.html">Design</a></td>
 						<td><a href="guide/IntegrationFacade.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.trygdeetaten.integration.framework.facade</a></td>
+						<td><a href="apidocs/index.html">no.nav.integration.framework.facade</a></td>
 					</tr>
 					
 					<tr>
@@ -101,14 +101,14 @@
 					<tr>
 						<td>Feilhåndtering</td>
 						<td colspan="2"><a href="design/ErrorHandling.html">Design og Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/trygdeetaten/common/framework/error/package-summary.html">no.trygdeetaten.common.framework.error</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/error/package-summary.html">no.nav.common.framework.error</a></td>
 					</tr>
 					
 					<tr>
 						<td>Transaksjonshåndtering</td>
 						<td><a href="http://hpapt03/multiproject/nav-framework-business-java/design/Transactions.html">Design</a></td>
 						<td><a href="http://hpapt03/multiproject/nav-framework-business-java/guide/Transactions.html">Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/trygdeetaten/common/framework/ejb/package-summary.html">no.trygdeetaten.common.framework.ejb</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/ejb/package-summary.html">no.nav.common.framework.ejb</a></td>
 					</tr>
 										
 				</table>

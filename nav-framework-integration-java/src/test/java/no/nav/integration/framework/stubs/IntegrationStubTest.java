@@ -3,10 +3,10 @@ package no.nav.integration.framework.stubs;
 import java.util.Set;
 
 import no.nav.integration.framework.stubs.IntegrationStub;
-import no.trygdeetaten.common.framework.config.Config;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.config.Config;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 import junit.framework.TestCase;
 

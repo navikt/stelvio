@@ -3,15 +3,15 @@ package no.nav.integration.framework.service;
 import junit.framework.TestCase;
 
 import no.nav.integration.framework.service.IntegrationService;
-import no.trygdeetaten.common.framework.FrameworkError;
-import no.trygdeetaten.common.framework.error.ErrorCode;
-import no.trygdeetaten.common.framework.monitor.ErrorMonitor;
-import no.trygdeetaten.common.framework.monitor.Monitor;
-import no.trygdeetaten.common.framework.monitor.MonitorChain;
-import no.trygdeetaten.common.framework.monitor.ReportReceiver;
-import no.trygdeetaten.common.framework.service.ServiceFailedException;
-import no.trygdeetaten.common.framework.service.ServiceRequest;
-import no.trygdeetaten.common.framework.service.ServiceResponse;
+import no.nav.common.framework.FrameworkError;
+import no.nav.common.framework.error.ErrorCode;
+import no.nav.common.framework.monitor.ErrorMonitor;
+import no.nav.common.framework.monitor.Monitor;
+import no.nav.common.framework.monitor.MonitorChain;
+import no.nav.common.framework.monitor.ReportReceiver;
+import no.nav.common.framework.service.ServiceFailedException;
+import no.nav.common.framework.service.ServiceRequest;
+import no.nav.common.framework.service.ServiceResponse;
 
 /**
  * IntegrationService Unit Test.
