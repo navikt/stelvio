@@ -113,7 +113,7 @@ public final class ErrorCodesUtil {
 	 * 
 	 * <pre>
 	 * java -cp CLASSPATH no.nav.common.framework util.ErrorCodesUtil \
-	 *    E:/data/workspace/head/nav-framework-common-java/src/main/java/no/trygdeetaten/common/framework/error/ErrorCode.java \
+	 *    E:/data/workspace/head/nav-framework-common-java/src/main/java/no/nav/common/framework/error/ErrorCode.java \
 	 *    E:/data/workspace/head/ErrorCode.java.report
 	 * </pre>
 	 * 
@@ -121,7 +121,7 @@ public final class ErrorCodesUtil {
 	 * 
 	 * <pre>
 	 * java -cp CLASSPATH no.nav.common.framework util.ErrorCodesUtil \
-	 *    E:/data/workspace/head/nav-framework-common-java/src/main/java/no/trygdeetaten/common/framework/FrameworkError.java \
+	 *    E:/data/workspace/head/nav-framework-common-java/src/main/java/no/nav/common/framework/FrameworkError.java \
 	 *    E:/data/workspace/head/FrameworkError.java.report
 	 * </pre>
 	 * 
@@ -129,7 +129,7 @@ public final class ErrorCodesUtil {
 	 * 
 	 * <pre>
 	 * java -cp CLASSPATH no.nav.common.framework util.ErrorCodesUtil \
-	 *    E:/data/workspace/head/rtv-bidrag-common-java/src/main/java/no/trygdeetaten/common/ApplicationError.java \
+	 *    E:/data/workspace/head/rtv-bidrag-common-java/src/main/java/no/nav/common/ApplicationError.java \
 	 *    E:/data/workspace/head/ApplicationError.java.report
 	 * </pre>
 	 * 
@@ -145,7 +145,7 @@ public final class ErrorCodesUtil {
 			System.err.println(
 				"Example: java -cp CLASSPATH no.nav.common.framework util.ErrorCodesUtil "
 					+ "E:/data/workspace/head/nav-framework-common-java/src/main/java/"
-					+ "no/trygdeetaten/common/framework/FrameworkError.java "
+					+ "no/nav/common/framework/FrameworkError.java "
 					+ "E:/data/workspace/head/FrameworkError.java.report");
 			System.exit(1);
 		}

@@ -55,10 +55,10 @@
 				</p>
 <source><![CDATA[
 <beans>
-   <bean id="HentOppgaveliste" class="no.trygdeetaten.business.oppgaver.service.HentOppgaveListeService" />
-   <bean id="HentOppgave" class="no.trygdeetaten.business.oppgaver.service.HentOppgaveService" />
-   <bean id="OppdaterOppgave" class="no.trygdeetaten.business.oppgaver.service.OppdaterOppgaveService" />
-   <bean id="SlettOppgave" class="no.trygdeetaten.business.oppgaver.service.SlettOppgaveService" />
+   <bean id="HentOppgaveliste" class="no.nav.business.oppgaver.service.HentOppgaveListeService" />
+   <bean id="HentOppgave" class="no.nav.business.oppgaver.service.HentOppgaveService" />
+   <bean id="OppdaterOppgave" class="no.nav.business.oppgaver.service.OppdaterOppgaveService" />
+   <bean id="SlettOppgave" class="no.nav.business.oppgaver.service.SlettOppgaveService" />
 </beans>		
 ]]></source>				
 				<h4>ConfigMBean</h4>

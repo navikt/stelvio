@@ -64,9 +64,9 @@
 				<ol>
 					<li>
 						Velg en ny feilkode og legg den til som en ny konstant i klassen <i>ApplicationError</i> som skal
-						ligge i pakken <i>no.trygdeetaten.common.<font color="blue">[applikasjon]</font></i>. Pass på
+						ligge i pakken <i>no.nav.common.<font color="blue">[applikasjon]</font></i>. Pass på
 						at feilkoden ikke er definert fra før, og at den er ihht konvensjonene beskrevet i 
-						<a href="../apidocs/no/trygdeetaten/common/framework/error/ErrorCode.html">
+						<a href="../apidocs/no/nav/common/framework/error/ErrorCode.html">
 						no.nav.common.framework.error.ErrorCode</a>.<br/>
 					</li>
 					<li>
@@ -177,7 +177,7 @@ try {
 				<ul>
 					<li>no.nav.common.framework.error.ErrorCode - interne feil i feilhåndteringen</li>
 					<li>no.nav.common.framework.FrameworkError - systemfeil</li>
-					<li>no.trygdeetaten.common.<font color="blue">[applikasjon]</font>.ApplicationError - applikasjonsfeil</li>
+					<li>no.nav.common.<font color="blue">[applikasjon]</font>.ApplicationError - applikasjonsfeil</li>
 				</ul>
 				<h4>Oppdatering av databasen</h4>
 				<p>

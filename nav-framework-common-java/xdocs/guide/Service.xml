@@ -27,7 +27,7 @@
 				<h4>Hvordan implementere en LocalService</h4>
 
 <pre>
-package no.trygdeetaten.business.bidrag.service;
+package no.nav.business.bidrag.service;
 
 import no.nav.common.framework.service.LocalService;
 
@@ -58,7 +58,7 @@ public class HeltallsDivisjon implements LocalService {
 <pre>
 &lt;beans&gt;
    ...
-   &lt;bean id="Divider" class="no.trygdeetaten.business.bidrag.service.HeltallsDivisjon" /&gt;
+   &lt;bean id="Divider" class="no.nav.business.bidrag.service.HeltallsDivisjon" /&gt;
    ...
 &lt;/beans&gt;			
 </pre>	
@@ -96,7 +96,7 @@ try {
 				<h4>Hvordan implementere en RemoteServiceLocator</h4>
 
 <pre>
-package no.trygdeetaten.business.bidrag;
+package no.nav.business.bidrag;
 
 import no.nav.common.framework.ejb.RemoteServiceLocator;
 
@@ -116,7 +116,7 @@ public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 <pre>
 &lt;beans&gt;
    &lt;bean id="FinnPersonITPS" class="no.nav.common.framework.ejb.RemoteServiceDescription"&gt;
-      &lt;property name="jndiName"&gt; ejb/no/trygdeetaten/integration/tps/FinnPersonITPS &lt;/property&gt;
+      &lt;property name="jndiName"&gt; ejb/no/nav/integration/tps/FinnPersonITPS &lt;/property&gt;
       &lt;property name="providerUrl"&gt; localhost &lt;/property&gt;
       &lt;property name="initialContextFactory"&gt; com.ibm.websphere.naming.WsnInitialContextFactory &lt;/property&gt;
       &lt;property name="urlPkgPrefixes"&gt; com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming &lt;/property&gt;

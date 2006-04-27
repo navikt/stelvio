@@ -81,13 +81,13 @@ String providerUrl = desc.getProviderUrl();
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://hpapt03/dtd/spring-beans-1.0-m4.dtd">
 <beans>
-   <bean id="HentOppgaveliste" class="no.trygdeetaten.business.oppgaver.service.HentOppgaveListeService" />
-   <bean id="HentOppgave" class="no.trygdeetaten.business.oppgaver.service.HentOppgaveService" init-method="init">
+   <bean id="HentOppgaveliste" class="no.nav.business.oppgaver.service.HentOppgaveListeService" />
+   <bean id="HentOppgave" class="no.nav.business.oppgaver.service.HentOppgaveService" init-method="init">
       <constructor-arg>
          <value>TestOppgave</value>
       </constructor-arg>
    </bean>
-   <bean id="OppdaterOppgave" class="no.trygdeetaten.business.oppgaver.service.OppdaterOppgaveService">
+   <bean id="OppdaterOppgave" class="no.nav.business.oppgaver.service.OppdaterOppgaveService">
       <property name="oppgaveNavn">
          <value>TestOppgave</value>
       </property>
@@ -95,7 +95,7 @@ String providerUrl = desc.getProviderUrl();
          <ref bean="SlettOppgave"/>
       </property>
    </bean>
-   <bean id="SlettOppgave" class="no.trygdeetaten.business.oppgaver.service.SlettOppgaveService" />
+   <bean id="SlettOppgave" class="no.nav.business.oppgaver.service.SlettOppgaveService" />
 </beans>		
 ]]>			
 </source>	

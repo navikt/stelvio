@@ -39,7 +39,7 @@
 				<p>Dette eksempelet viser hvordan JMSService er konfigurert opp til å benytte overvåking:</p>
 				<source><![CDATA[
 <beans>
-	<bean id="BrevServerJMSService" class="no.trygdeetaten.integration.framework.jms.JMSService" singleton="true" init-method="init">
+	<bean id="BrevServerJMSService" class="no.nav.integration.framework.jms.JMSService" singleton="true" init-method="init">
 		<!-- moitorChain er en property på superklassen, IntegrationService-->
 		<property name="monitorChain"><bean ref="BrevServerMonitorChain"/></property>
 		...

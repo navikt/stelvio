@@ -22,7 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * EHCache plugin for Trygdeetaten.
+ * EHCache plugin for nav.
  * 
  * <p/>
  * 

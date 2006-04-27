@@ -25,7 +25,7 @@ public class RemoteServiceDescriptionTest extends TestCase {
 		String jndiName = "TheJndiName";
 		String providerUrl = "TheProviderUrl";
 		String initialContextFactory = "TheOneAndOnlyInitialContextFactory";
-		String urlPkgPrefixes = "no.trygdeetaten.framework";
+		String urlPkgPrefixes = "no.nav.framework";
 		String securityPrincipal = "username";
 		String securityCredentials = "secret";
 		boolean cacheable = false;

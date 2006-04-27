@@ -103,7 +103,7 @@
 				<p>
 					Konstantene i <i>ErrorCode</i> er typesikre for å tvinge at alle feilkoder samles og defineres 
 					i subklasser, slik at det blir enklere å holde en oversikt over alle feiltypene. <br/>
-					Se <a href="../apidocs/no/trygdeetaten/common/framework/error/ErrorCode.html">
+					Se <a href="../apidocs/no/nav/common/framework/error/ErrorCode.html">
 					no.nav.common.framework.error.ErrorCode</a> for detaljer.
 				</p>
 				
