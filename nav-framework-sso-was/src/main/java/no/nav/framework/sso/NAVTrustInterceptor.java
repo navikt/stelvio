@@ -17,7 +17,7 @@ import com.ibm.websphere.security.WebTrustAssociationUserException;
  * @version $Id: NAVTrustInterceptor.java 2654 2005-11-28 11:14:54Z shc2920 $
  * @deprecated bruk no.nav.framework.sso.NtlmTrustInterceptor istedenfor.
  */
-public class RTVTrustInterceptor
+public class NAVTrustInterceptor
 	extends com.ibm.websphere.security.WebSphereBaseTrustAssociationInterceptor
 	implements com.ibm.websphere.security.TrustAssociationInterceptor {
 
