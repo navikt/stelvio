@@ -11,7 +11,7 @@
 			
 			<subsection name="Oversikt">
 				<p>
-					Dette prosjektet inneholder en overordnet oversikt over Trygdeetatens J2EE-rammeverk og
+					Dette prosjektet inneholder en overordnet oversikt over NAVs J2EE-rammeverk og
 					arkitektur. Arkitekturen organiseres i løst koblede lag, der hvert lag er tildelt ansvaret
 					for en unik oppgave i arkitekturen. Som figuren nedenfor også indikerer, adresserer 
 					rammeverket de tre midterste lagene.
@@ -43,19 +43,19 @@
 					</tr>
 					<tr>
 						<td> <a href="/framework/multiproject/nav-framework-common-java/">Fellestjenester</a> </td>
-						<td> <a href="/framework/multiproject/nav-framework-common-java/apidocs/index.html">no.trygdeetaten.common.framework</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-common-java/apidocs/index.html">no.nav.common.framework</a> </td>
 					</tr>
 					<tr>
 						<td> <a href="/framework/multiproject/nav-framework-web-java/">Presentasjonstjenester</a> </td>
-						<td> <a href="/framework/multiproject/nav-framework-web-java/apidocs/index.html">no.trygdeetaten.web.framework</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-web-java/apidocs/index.html">no.nav.web.framework</a> </td>
 					</tr>
 					<tr>
 						<td> <a href="/framework/multiproject/nav-framework-business-java/">Forretningstjenester</a> </td>
-						<td> <a href="/framework//multiproject/nav-framework-business-java/apidocs/index.html">no.trygdeetaten.business.framework</a> </td>
+						<td> <a href="/framework//multiproject/nav-framework-business-java/apidocs/index.html">no.nav.business.framework</a> </td>
 					</tr>
 					<tr>
 						<td> <a href="/framework/multiproject/nav-framework-integration-java/">Integrasjonstjenester</a> </td>
-						<td> <a href="/framework/multiproject/nav-framework-integration-java/apidocs/index.html">no.trygdeetaten.integration.framework</a> </td>
+						<td> <a href="/framework/multiproject/nav-framework-integration-java/apidocs/index.html">no.nav.integration.framework</a> </td>
 					</tr>
 				</table>
 				
