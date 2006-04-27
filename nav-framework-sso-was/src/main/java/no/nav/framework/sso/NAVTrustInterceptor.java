@@ -10,7 +10,7 @@ import com.ibm.websphere.security.WebTrustAssociationUserException;
 
 /**
  * Konfigureres ved å sette denne i LTPA > Trust Association > Trust Interceptor
- * og sette ws.ext.dirs på serveren til å inkludere hvor denne filen ligger (E:\data\workspace\head\rtv-framework-sso-was\bin)
+ * og sette ws.ext.dirs på serveren til å inkludere hvor denne filen ligger (E:\data\workspace\head\nav-framework-sso-was\bin)
  * og
  * E:\apps\IBM\WebSphere Studio\Application Developer\v5.1.1\runtimes\base_v51\lib\wssec.jar.
  * @author person1f201b37d484, Accenture
