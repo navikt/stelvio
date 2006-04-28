@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../nav-maven-main/project.xml</extend>
+	<extend>${basedir}/../rtv-maven-main/project.xml</extend>
 
 	<groupId>nav-framework</groupId>
 
@@ -287,8 +287,8 @@
 			<version>2.1</version>
 		</dependency>
 		<dependency>
-			<groupId>nav-maven-plugins</groupId>
-			<artifactId>nav-maven-commongoals-plugin</artifactId>
+			<groupId>rtv-maven-plugins</groupId>
+			<artifactId>rtv-maven-commongoals-plugin</artifactId>
 			<version>SNAPSHOT</version>
 			<type>plugin</type>
 		</dependency>
