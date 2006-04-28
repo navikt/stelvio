@@ -1,6 +1,8 @@
 nav-framework-batch-java/bin
 nav-framework-batch-java/target
 nav-framework-business-java/bin
+nav-framework-cicseci-connector/.compatibility
+nav-framework-cicseci-connector/.j2ee
 nav-framework-common-java/bin
 nav-framework-common-java/debug.log
 nav-framework-common-java/target
