@@ -5,6 +5,8 @@ nav-framework-common-report/target
 nav-framework-common-test/target
 nav-framework-integration-java/bin
 nav-framework-integration-java/target
+nav-framework-integration-jca/bin
+nav-framework-integration-jca/target
 nav-framework-integration-jms/bin
 nav-framework-integration-jms/target
 nav-framework-logging-java/bin
