@@ -2,6 +2,7 @@ nav-framework-batch-java/bin
 nav-framework-batch-java/target
 nav-framework-common-report/bin
 nav-framework-common-report/target
+nav-framework-common-test/target
 nav-framework-integration-java/bin
 nav-framework-integration-java/target
 nav-framework-integration-jms/bin
