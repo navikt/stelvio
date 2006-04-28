@@ -20,10 +20,11 @@
 	<classpathentry kind="var" path="MAVEN_REPO/jmock/jars/jmock-20040803-110809.jar"/>
 	<classpathentry sourcepath="EHCACHE_1_1_SRC" kind="var" path="MAVEN_REPO/ehcache/jars/ehcache-1.1.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/springframework/jars/spring-1.2.1.jar"/>
-	<classpathentry kind="var" path="JRE_LIB"/>
 	<classpathentry kind="var" path="MAVEN_REPO/was/jars/ecutils-5.1.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/was/jars/runtime-5.1.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/was/jars/wsexception-5.1.jar"/>
 	<classpathentry kind="src" path="/nav-framework-logging-java"/>
+	<classpathentry kind="var" path="ACTIVATION_JAR"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
