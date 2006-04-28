@@ -17,4 +17,6 @@ nav-framework-integration-jms/bin
 nav-framework-integration-jms/target
 nav-framework-logging-java/bin
 nav-framework-logging-java/target
+nav-framework-sso-was/bin
+nav-framework-sso-was/target
 nav-framework-web-java/bin
