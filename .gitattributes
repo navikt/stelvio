@@ -601,6 +601,7 @@ nav-framework-integration-jms/xdocs/navigation.xml -text
 nav-framework-logging-java/.classpath -text
 nav-framework-logging-java/.cvsignore -text
 nav-framework-logging-java/.project -text
+nav-framework-logging-java/.runtime -text
 nav-framework-logging-java/.server -text
 nav-framework-logging-java/.serverPreference -text
 nav-framework-logging-java/models/rtv-framework-logging-java.mdx -text
