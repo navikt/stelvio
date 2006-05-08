@@ -19,6 +19,7 @@ nav-framework-batch-java/xdocs/index.xml -text
 nav-framework-business-java/.classpath -text
 nav-framework-business-java/.cvsignore -text
 nav-framework-business-java/.project -text
+nav-framework-business-java/.runtime -text
 nav-framework-business-java/.server -text
 nav-framework-business-java/.serverPreference -text
 nav-framework-business-java/LICENSE.txt -text
