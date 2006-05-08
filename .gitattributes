@@ -450,6 +450,7 @@ nav-framework-integration-hibernate/xdocs/index.xml -text
 nav-framework-integration-java/.classpath -text
 nav-framework-integration-java/.cvsignore -text
 nav-framework-integration-java/.project -text
+nav-framework-integration-java/.runtime -text
 nav-framework-integration-java/.server -text
 nav-framework-integration-java/.serverPreference -text
 nav-framework-integration-java/LICENSE.txt -text
