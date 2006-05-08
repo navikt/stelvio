@@ -654,6 +654,7 @@ nav-framework-sso-was/src/main/java/no/nav/framework/sso/NtlmTrustInterceptor.ja
 nav-framework-web-java/.classpath -text
 nav-framework-web-java/.cvsignore -text
 nav-framework-web-java/.project -text
+nav-framework-web-java/.runtime -text
 nav-framework-web-java/.server -text
 nav-framework-web-java/.serverPreference -text
 nav-framework-web-java/LICENSE.txt -text
