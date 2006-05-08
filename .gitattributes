@@ -69,6 +69,7 @@ nav-framework-cicseci-connector/project.xml -text
 nav-framework-common-java/.classpath -text
 nav-framework-common-java/.cvsignore -text
 nav-framework-common-java/.project -text
+nav-framework-common-java/.runtime -text
 nav-framework-common-java/.server -text
 nav-framework-common-java/.serverPreference -text
 nav-framework-common-java/LICENSE.txt -text
