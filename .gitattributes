@@ -540,6 +540,7 @@ nav-framework-integration-jca/xdocs/index.xml -text
 nav-framework-integration-jms/.classpath -text
 nav-framework-integration-jms/.cvsignore -text
 nav-framework-integration-jms/.project -text
+nav-framework-integration-jms/.runtime -text
 nav-framework-integration-jms/.server -text
 nav-framework-integration-jms/.serverPreference -text
 nav-framework-integration-jms/models/rtv-framework-integration-jms.mdx -text
