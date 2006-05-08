@@ -76,7 +76,7 @@ public class StartupServlet extends HttpServlet {
 	 *    </init-param>
 	 *    <init-param>
 	 *       <param-name>userId</param-name>
-	 *       <param-value>RTV9999</param-value>
+	 *       <param-value>NAV9999</param-value>
 	 *    </init-param>
 	 *    <load-on-startup>1</load-on-startup>
 	 * </servlet>

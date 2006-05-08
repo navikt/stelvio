@@ -78,7 +78,7 @@ public abstract class AbstractFilter implements Filter {
 	 *    </init-param>
 	 *    <init-param>
 	 *       <param-name>userId</param-name>
-	 *       <param-value>RTV9999</param-value>
+	 *       <param-value>NAV9999</param-value>
 	 *    </init-param>
 	 * </filter>
 	 * </pre>
