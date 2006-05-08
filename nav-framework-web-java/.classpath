@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="var" path="MAVEN_REPO/junit/jars/junit-3.8.1.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/commons-beanutils/jars/commons-beanutils-1.6.1.jar"/>
@@ -24,8 +23,9 @@
 	<classpathentry kind="var" path="MAVEN_REPO/strutstestcase/jars/strutstestcase-2.1.2-1.1-2.3.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/struts/jars/struts-el-1.1.jar"/>
 	<classpathentry kind="var" path="MAVEN_REPO/displaytag/jars/displaytag-1.0_RTV_2005.11.21.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="/nav-framework-common-java"/>
 	<classpathentry kind="src" path="/nav-framework-common-test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere v6 JRE"/>
+	<classpathentry kind="con" path="com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
