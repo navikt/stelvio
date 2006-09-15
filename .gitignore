@@ -1,5 +1,3 @@
-nav-framework-common-report/bin
-nav-framework-common-report/target
 stelvio-framework-batch-java/bin
 stelvio-framework-batch-java/target
 stelvio-framework-business-java/bin
@@ -8,6 +6,8 @@ stelvio-framework-cicseci-connector/.j2ee
 stelvio-framework-common-java/bin
 stelvio-framework-common-java/debug.log
 stelvio-framework-common-java/target
+stelvio-framework-common-report/bin
+stelvio-framework-common-report/target
 stelvio-framework-common-test/target
 stelvio-framework-integration-hibernate/bin
 stelvio-framework-integration-hibernate/target
