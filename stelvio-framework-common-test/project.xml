@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../nav-framework-main/project.xml</extend>
+	<extend>${basedir}/../stelvio-framework-main/project.xml</extend>
 
-	<id>nav-framework-common-test</id>
-	<name>nav-framework-common-test</name>
+	<id>stelvio-framework-common-test</id>
+	<name>stelvio-framework-common-test</name>
 
-	<shortDescription>nav - Rammeverk for test</shortDescription>
+	<shortDescription>stelvio - Rammeverk for test</shortDescription>
 	<package>no.stelvio.common.framework.test</package>
 
 	<!-- 

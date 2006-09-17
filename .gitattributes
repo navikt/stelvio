@@ -649,8 +649,8 @@ stelvio-framework-sso-was/.classpath -text
 stelvio-framework-sso-was/.cvsignore -text
 stelvio-framework-sso-was/.project -text
 stelvio-framework-sso-was/project.xml -text
-stelvio-framework-sso-was/src/main/java/no/stelvio/framework/sso/NAVTrustInterceptor.java -text
 stelvio-framework-sso-was/src/main/java/no/stelvio/framework/sso/NtlmTrustInterceptor.java -text
+stelvio-framework-sso-was/src/main/java/no/stelvio/framework/sso/StelvioTrustInterceptor.java -text
 stelvio-framework-web-java/.classpath -text
 stelvio-framework-web-java/.cvsignore -text
 stelvio-framework-web-java/.project -text

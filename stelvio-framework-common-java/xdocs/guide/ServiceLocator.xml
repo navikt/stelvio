@@ -101,7 +101,7 @@ package no.stelvio.business.bidrag;
 <pre>
 &lt;beans&gt;
    &lt;bean id="FinnPersonITPS" class="no.stelvio.common.framework.ejb.RemoteServiceDescription"&gt;
-      &lt;property name="jndiName"&gt; ejb/no/nav/integration/tps/FinnPersonITPS &lt;/property&gt;
+      &lt;property name="jndiName"&gt; ejb/no/stelvio/integration/tps/FinnPersonITPS &lt;/property&gt;
       &lt;property name="providerUrl"&gt; localhost &lt;/property&gt;
       &lt;property name="initialContextFactory"&gt; com.ibm.websphere.naming.WsnInitialContextFactory &lt;/property&gt;
       &lt;property name="urlPkgPrefixes"&gt; com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming &lt;/property&gt;

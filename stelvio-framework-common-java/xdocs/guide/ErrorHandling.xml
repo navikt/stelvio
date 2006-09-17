@@ -67,7 +67,7 @@
 						ligge i pakken <i>no.stelvio.common.
                         <font color="blue">[applikasjon]</font></i>. Pass på
 						at feilkoden ikke er definert fra før, og at den er ihht konvensjonene beskrevet i 
-						<a href="../apidocs/no/nav/common/framework/error/ErrorCode.html">
+						<a href="../apidocs/no/stelvio/common/framework/error/ErrorCode.html">
                             no.stelvio.common.framework.error.ErrorCode
                         </a>.<br/>
 					</li>

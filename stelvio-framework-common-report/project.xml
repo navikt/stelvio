@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../nav-framework-main/project.xml</extend>
+	<extend>${basedir}/../stelvio-framework-main/project.xml</extend>
 
-	<artifactId>nav-framework-common-report</artifactId>
-	<name>nav-framework-common-report</name>
+	<artifactId>stelvio-framework-common-report</artifactId>
+	<name>stelvio-framework-common-report</name>
 
-	<shortDescription>nav - nav-framework-common-report</shortDescription>
+	<shortDescription>stelvio - stelvio-framework-common-report</shortDescription>
 
 	<developers>
 		<developer>

@@ -79,8 +79,8 @@
 					
 					<tr>
 						<td>Service Locator</td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/design/ServiceLocator.html">Design</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/guide/ServiceLocator.html">Guide</a></td>
+						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/design/ServiceLocator.html">Design</a></td>
+						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/guide/ServiceLocator.html">Guide</a></td>
 						<td><a href="apidocs/index.html">no.stelvio.common.framework.service</a></td>
 					</tr>
 					
@@ -101,16 +101,16 @@
 					<tr>
 						<td>Feilhåndtering</td>
 						<td colspan="2"><a href="design/ErrorHandling.html">Design og Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/error/package-summary.html">
+						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/apidocs/no/stelvio/common/framework/error/package-summary.html">
                             no.stelvio.common.framework.error
                         </a></td>
 					</tr>
 					
 					<tr>
 						<td>Transaksjonshåndtering</td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-business-java/design/Transactions.html">Design</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-business-java/guide/Transactions.html">Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/ejb/package-summary.html">
+						<td><a href="http://hpapt03/multiproject/stelvio-framework-business-java/design/Transactions.html">Design</a></td>
+						<td><a href="http://hpapt03/multiproject/stelvio-framework-business-java/guide/Transactions.html">Guide</a></td>
+						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/apidocs/no/stelvio/common/framework/ejb/package-summary.html">
                             no.stelvio.common.framework.ejb
                         </a></td>
 					</tr>

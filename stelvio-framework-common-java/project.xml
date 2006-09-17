@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../nav-framework-main/project.xml</extend>
+	<extend>${basedir}/../stelvio-framework-main/project.xml</extend>
 
 	<!-- a unique name for this project -->
-	<id>nav-framework-common-java</id>
+	<id>stelvio-framework-common-java</id>
 	<!-- a short but descriptive name for the project -->
-	<name>nav-framework-common-java</name>
+	<name>stelvio-framework-common-java</name>
 
 	<!-- details about the organization that 'owns' the project -->
-	<shortDescription>nav - Rammeverk fellestjenester</shortDescription>
+	<shortDescription>stelvio - Rammeverk fellestjenester</shortDescription>
 
 	<package>no.stelvio.common.framework</package>
 

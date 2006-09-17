@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>../nav-framework-main/project.xml</extend>
+	<extend>../stelvio-framework-main/project.xml</extend>
 
 	<!-- a unique name for this project -->
-	<id>nav-framework-web-java</id>
+	<id>stelvio-framework-web-java</id>
 
 	<!-- a short but descriptive name for the project -->
-	<shortDescription>nav - Rammeverk Presentasjonstjenester</shortDescription>
+	<shortDescription>stelvio - Rammeverk Presentasjonstjenester</shortDescription>
 
-	<name>nav-framework-web-java</name>
+	<name>stelvio-framework-web-java</name>
 
 	<!-- jar files the project is dependent on -->
 
@@ -34,13 +34,13 @@
 			<version>1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>nav-framework</groupId>
-			<artifactId>nav-framework-common-java</artifactId>
+			<groupId>stelvio-framework</groupId>
+			<artifactId>stelvio-framework-common-java</artifactId>
 			<version>${pom.currentVersion}</version>
 		</dependency>
 		<dependency>
-			<groupId>nav-framework</groupId>
-			<artifactId>nav-framework-common-test</artifactId>
+			<groupId>stelvio-framework</groupId>
+			<artifactId>stelvio-framework-common-test</artifactId>
 			<version>${pom.currentVersion}</version>
 		</dependency>
 		<dependency>

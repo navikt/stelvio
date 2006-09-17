@@ -329,7 +329,7 @@
 <source><![CDATA[
 <beans>
    <bean id="FinnPersonITPS" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
-      <property name="jndiName"> ejb/no/nav/integration/tps/FinnPersonITPS </property>
+      <property name="jndiName"> ejb/no/stelvio/integration/tps/FinnPersonITPS </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
       <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>

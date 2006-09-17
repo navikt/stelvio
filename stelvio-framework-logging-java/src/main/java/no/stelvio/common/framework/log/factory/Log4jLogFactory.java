@@ -48,7 +48,7 @@ public class Log4jLogFactory extends LogFactory {
 	 * the log4j configuration (in milliseconds).
 	 */
 	public static final String REFRESH_INTERVAL =
-		"no.nav.common.framework.log.factory.Log4jLogFactory.refreshInterval";
+		"no.stelvio.common.framework.log.factory.Log4jLogFactory.refreshInterval";
 
 	/** Wether or not to use the default init. sequence in LogManager */
 	public static final String DEFAULT_INIT_OVERRIDE_KEY = "log4j.defaultInitOverride";

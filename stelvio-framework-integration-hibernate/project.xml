@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>../nav-framework-main/project.xml</extend>
+	<extend>../stelvio-framework-main/project.xml</extend>
 
 
 	<!-- a unique name for this project -->
-	<id>nav-framework-integration-hibernate</id>
+	<id>stelvio-framework-integration-hibernate</id>
 	<!-- a short but descriptive name for the project -->
-	<shortDescription>nav - Rammeverk for Hibernate</shortDescription>
-	<name>nav-framework-integration-hibernate</name>
+	<shortDescription>stelvio - Rammeverk for Hibernate</shortDescription>
+	<name>stelvio-framework-integration-hibernate</name>
 	<!-- 
     Inherit from main
     <currentVersion/> -->
@@ -37,8 +37,8 @@
 			<version>3.0</version>
 		</dependency>
 		<dependency>
-			<groupId>nav-framework</groupId>
-			<artifactId>nav-framework-common-java</artifactId>
+			<groupId>stelvio-framework</groupId>
+			<artifactId>stelvio-framework-common-java</artifactId>
 			<version>${pom.currentVersion}</version>
 		</dependency>
 		<dependency>

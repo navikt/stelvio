@@ -2,16 +2,16 @@
 <project>
 	<extend>${basedir}/../rtv-maven-main/project.xml</extend>
 
-	<groupId>nav-framework</groupId>
+	<groupId>stelvio-framework</groupId>
 
 	<!-- a unique name for this project -->
-	<id>nav-framework-main</id>
+	<id>stelvio-framework-main</id>
 
 	<!-- a short but descriptive name for the project -->
 	<shortDescription>J2EE-rammeverk - Oversikt</shortDescription>
 	<url>http://a59apvl002.internsone.local/framework</url>
 	<siteDirectory>/var/www/docs/framework</siteDirectory>
-	<name>nav-framework-main</name>
+	<name>stelvio-framework-main</name>
 	<logo/>
 	<!-- The version of the project under development, e.g. 1.1, 1.2, 2.0-dev -->
 	<currentVersion>SNAPSHOT</currentVersion>

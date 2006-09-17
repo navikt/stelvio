@@ -25,7 +25,7 @@
 				<ul>
 					<li> 
 						Klassene skal arve 
-						<a href="../apidocs/no/nav/integration/framework/service/IntegrationService.html">
+						<a href="../apidocs/no/stelvio/integration/framework/service/IntegrationService.html">
                             no.stelvio.integration.framework.service.IntegrationService
                         </a> <br/>
 					</li>
@@ -156,7 +156,7 @@ public class AvsluttOppgaverService extends BusinessService {
 <beans>
    ...
    <bean id="BusinessFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
-      <property name="jndiName"> ejb/no/nav/business/BusinessFacade </property>
+      <property name="jndiName"> ejb/no/stelvio/business/BusinessFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
       <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>
@@ -166,7 +166,7 @@ public class AvsluttOppgaverService extends BusinessService {
    </bean>
    ...
    <bean id="IntegrationFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
-      <property name="jndiName"> ejb/no/nav/integration/IntegrationFacade </property>
+      <property name="jndiName"> ejb/no/stelvio/integration/IntegrationFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
       <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>

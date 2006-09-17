@@ -267,15 +267,15 @@ log4j.logger.org.jfree.data=WARN, Console, Systemlog
 log4j.logger.sno.stelviounit.struts=WARN, Console, Systemlog
 
 ### Framework loggers
-lno.stelvioogger.no.nav.common.framework=INFO, Console, Systemlog, JMno.stelvioj.logger.no.nav.web.framework=INFO, Console, Systemlog, JMS
-logno.stelvioger.no.nav.business.framework=INFO, Console, Systemlog, JMS
-log4j.logger.no.nav.integrationno.stelviowork=INFO, Console, Systemlog, JMS
+lno.stelvioogger.no.stelvio.common.framework=INFO, Console, Systemlog, JMno.stelvioj.logger.no.stelvio.web.framework=INFO, Console, Systemlog, JMS
+logno.stelvioger.no.stelvio.business.framework=INFO, Console, Systemlog, JMS
+log4j.logger.no.stelvio.integrationno.stelviowork=INFO, Console, Systemlog, JMS
 
 ### Applicno.stelviologgers
-log4j.logger.no.nav.common=DEBUG, Cno.stelvio, Debuglog
-log4j.logger.no.nav.web=DEBUG, Consolno.stelviouglog
-log4j.logger.no.nav.business=DEBUG, Console, Debuglog
-log4j.logger.no.nav.integration=DEBUG, Console, Debuglog
+log4j.logger.no.stelvio.common=DEBUG, Cno.stelvio, Debuglog
+log4j.logger.no.stelvio.web=DEBUG, Consolno.stelviouglog
+log4j.logger.no.stelvio.business=DEBUG, Console, Debuglog
+log4j.logger.no.stelvio.integration=DEBUG, Console, Debuglog
 ...
 ]]></source>
 				<p>

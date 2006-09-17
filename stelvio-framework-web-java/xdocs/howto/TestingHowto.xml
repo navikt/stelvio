@@ -30,7 +30,7 @@
 						verifiseres	Forwardresultatet og eventuelle feil.
 <source><![CDATA[
 // Set directory where the configfiles are located
-File contDir = new File("./src/test/java/no/nav/web/framework/util");
+File contDir = new File("./src/test/java/no/stelvio/web/framework/util");
 setContextDirectory(contDir);
 
 setRequestPathInfo("/action1.do");
@@ -64,7 +64,7 @@ verifyNoActionErrors();
 						Utdrag fra en testklasse:
 <source><![CDATA[
 // Set directory where the configfiles are located
-File contDir = new File("./src/test/java/no/nav/web/generelt/action");
+File contDir = new File("./src/test/java/no/stelvio/web/generelt/action");
 setContextDirectory(contDir);
 setServletConfigFile("/WEB-INF/web.xml");
 

@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
 
-    <extend>../nav-framework-main/project.xml</extend>
+    <extend>../stelvio-framework-main/project.xml</extend>
 
-    <id>nav-framework-batch-java</id>
+    <id>stelvio-framework-batch-java</id>
 
-    <shortDescription>nav - Rammeverk for batch</shortDescription>
+    <shortDescription>stelvio - Rammeverk for batch</shortDescription>
 
-    <name>nav-framework-batch-java</name> 
+    <name>stelvio-framework-batch-java</name>
 
     <dependencies>
 		<dependency>
-			<groupId>nav-framework</groupId>
-			<artifactId>nav-framework-common-java</artifactId>
+			<groupId>stelvio-framework</groupId>
+			<artifactId>stelvio-framework-common-java</artifactId>
 			<version>${pom.currentVersion}</version>
 			<properties>
 				<eclipse.dependency>true</eclipse.dependency>
 			</properties>
 		</dependency>		
 		<dependency>
-			<groupId>nav-framework</groupId>
-			<artifactId>nav-framework-common-test</artifactId>
+			<groupId>stelvio-framework</groupId>
+			<artifactId>stelvio-framework-common-test</artifactId>
 			<version>${pom.currentVersion}</version>
 			<properties>
 				<eclipse.dependency>true</eclipse.dependency>

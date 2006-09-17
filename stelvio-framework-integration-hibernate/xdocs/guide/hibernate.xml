@@ -39,7 +39,7 @@
 <source><![CDATA[
 developer=RWA2920
 packagename=no.stelvio.integration.framework.hibernate.test
-build.dir=e:/data/nav-framework-integration-hibernate/
+build.dir=e:/data/stelvio-framework-integration-hibernate/
 build.gen-hbm.dir=${build.dir}/src/main/resources
 build.gen-src.dir=${build.dir}/src/main/java
 ]]></source>

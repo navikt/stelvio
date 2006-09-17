@@ -46,7 +46,7 @@
 <beans>
    ...
    <bean id="BusinessFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
-      <property name="jndiName"> ejb/no/nav/business/BusinessFacade </property>
+      <property name="jndiName"> ejb/no/stelvio/business/BusinessFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
       <property name="urlPkgPrefixes"> com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.naming </property>

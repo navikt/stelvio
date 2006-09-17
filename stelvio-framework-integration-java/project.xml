@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>../nav-framework-main/project.xml</extend>
+	<extend>../stelvio-framework-main/project.xml</extend>
 
 	<!-- a unique name for this project -->
-	<id>nav-framework-integration-java</id>
+	<id>stelvio-framework-integration-java</id>
 
 	<!-- a short but descriptive name for the project -->
-	<shortDescription>nav - Rammeverk for integrasjonstjenester</shortDescription>
+	<shortDescription>stelvio - Rammeverk for integrasjonstjenester</shortDescription>
 
-	<name>nav-framework-integration-java</name>
+	<name>stelvio-framework-integration-java</name>
 	<!-- 
     Inherit from main
     <currentVersion/> -->
@@ -16,8 +16,8 @@
 	<!-- jar files the project is dependent on -->
 	<dependencies>
 		<dependency>
-			<groupId>nav-framework</groupId>
-			<artifactId>nav-framework-common-java</artifactId>
+			<groupId>stelvio-framework</groupId>
+			<artifactId>stelvio-framework-common-java</artifactId>
 			<version>${pom.currentVersion}</version>
 			<properties>
 				<eclipse.dependency>true</eclipse.dependency>

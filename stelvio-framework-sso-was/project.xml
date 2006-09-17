@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project>
-	<extend>${basedir}/../nav-framework-main/project.xml</extend>
+	<extend>${basedir}/../stelvio-framework-main/project.xml</extend>
 
-	<id>nav-framework-sso-was</id>
-	<name>nav-framework-sso-was</name>
+	<id>stelvio-framework-sso-was</id>
+	<name>stelvio-framework-sso-was</name>
 
 	<shortDescription>Single Sign-On for WebSphere</shortDescription>
 	
