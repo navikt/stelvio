@@ -37,7 +37,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hpapt03/dtd/hibernate-mapping-2.0.dtd">
 <hibernate-mapping>
-	<class name="no.nav.integration.framework.Foreldre" table="FORELDRE" schema="K460M700">
+	<class name="no.stelvio.integration.framework.Foreldre" table="FORELDRE" schema="K460M700">
 		<id name="id" column="id" type="long">
 			<generator class="hilo"></generator>
 		</id>
@@ -59,10 +59,10 @@
 		<property name="numRecords"		column="M700-ANT-BARN-ELEMENTER" 	type="int" 	length="2" 	offset="82"/>
 		<set name="barn">
 			<key column="M700-ANT-BARN-ELEMENTER"/>
-			<one-to-many class="no.nav.integration.framework.Barn" offset="84" length="540"/>
+			<one-to-many class="no.stelvio.integration.framework.Barn" offset="84" length="540"/>
 		</set>	
 	</class>
-	<class name="no.nav.integration.framework.Barn" table="BARN" schema="K460M700">
+	<class name="no.stelvio.integration.framework.Barn" table="BARN" schema="K460M700">
 		<id name="id" column="id" type="long">
 			<generator class="hilo"></generator>
 		</id>

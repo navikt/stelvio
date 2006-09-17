@@ -5,9 +5,9 @@
 -->
 <beans>
 
-	<bean id="RemoteServiceLocator" class="no.nav.common.framework.ejb.RemoteServiceLocator" />
+	<bean id="RemoteServiceLocator" class="no.stelvio.common.framework.ejb.RemoteServiceLocator" />
 
-	<bean id="BusinessDelegate" class="no.nav.common.framework.ejb.ServiceDelegateImpl">
+	<bean id="BusinessDelegate" class="no.stelvio.common.framework.ejb.ServiceDelegateImpl">
 		<property name="serviceLocator">
 			<ref bean="RemoteServiceLocator" />
 		</property>
@@ -15,7 +15,7 @@
 			<value>BusinessFacade</value>
 		</property>
 		<property name="delegateMonitorKey">
-			<bean class="no.nav.common.framework.performance.MonitorKey">
+			<bean class="no.stelvio.common.framework.performance.MonitorKey">
 				<property name="description">
 					<value>BusinessFacade</value>
 				</property>
@@ -26,7 +26,7 @@
 		</property>
 	</bean>
 
-	<bean id="InitCodesTableManager" class="no.nav.common.framework.ejb.ServiceDelegateImpl">
+	<bean id="InitCodesTableManager" class="no.stelvio.common.framework.ejb.ServiceDelegateImpl">
 		<property name="serviceLocator">
 			<ref bean="RemoteServiceLocator" />
 		</property>
@@ -34,7 +34,7 @@
 			<value>BusinessFacade</value>
 		</property>
 		<property name="delegateMonitorKey">
-			<bean class="no.nav.common.framework.performance.MonitorKey">
+			<bean class="no.stelvio.common.framework.performance.MonitorKey">
 				<property name="description">
 					<value>InitCodesTableManager</value>
 				</property>
@@ -45,10 +45,10 @@
 		</property>
 	</bean>
 
-	<bean id="TestBean" class="no.nav.web.framework.servlet.ServletContextAttributeSetter"/>
+	<bean id="TestBean" class="no.stelvio.web.framework.servlet.ServletContextAttributeSetter"/>
 
 	<bean id="ServletContextAwareBean"
-	       class="no.nav.web.framework.servlet.StartupServletTest$ServletContextAwareBean"/>
+	       class="no.stelvio.web.framework.servlet.StartupServletTest$ServletContextAwareBean"/>
 
 </beans>
 

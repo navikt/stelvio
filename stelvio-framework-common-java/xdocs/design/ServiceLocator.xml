@@ -47,7 +47,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.nav.common.framework.service</td>
+						<td>no.stelvio.common.framework.service</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -103,7 +103,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.nav.common.framework.service</td>
+						<td>no.stelvio.common.framework.service</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -171,7 +171,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.nav.common.framework.ejb</td>
+						<td>no.stelvio.common.framework.ejb</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -243,7 +243,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.nav.common.framework.ejb</td>
+						<td>no.stelvio.common.framework.ejb</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -317,10 +317,10 @@
 				
 <source><![CDATA[
 <beans>
-   <bean id="HentOppgaveliste" class="no.nav.business.oppgaver.service.HentOppgaveListeService" />
-   <bean id="HentOppgave" class="no.nav.business.oppgaver.service.HentOppgaveService" />
-   <bean id="OppdaterOppgave" class="no.nav.business.oppgaver.service.OppdaterOppgaveService" />
-   <bean id="SlettOppgave" class="no.nav.business.oppgaver.service.SlettOppgaveService" />
+   <bean id="HentOppgaveliste" class="no.stelvio.business.oppgaver.service.HentOppgaveListeService" />
+   <bean id="HentOppgave" class="no.stelvio.business.oppgaver.service.HentOppgaveService" />
+   <bean id="OppdaterOppgave" class="no.stelvio.business.oppgaver.service.OppdaterOppgaveService" />
+   <bean id="SlettOppgave" class="no.stelvio.business.oppgaver.service.SlettOppgaveService" />
 </beans>			
 ]]></source>
 
@@ -328,7 +328,7 @@
 				
 <source><![CDATA[
 <beans>
-   <bean id="FinnPersonITPS" class="no.nav.common.framework.ejb.RemoteServiceDescription">
+   <bean id="FinnPersonITPS" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/nav/integration/tps/FinnPersonITPS </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>

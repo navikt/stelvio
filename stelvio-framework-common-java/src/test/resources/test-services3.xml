@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans-1.0.dtd">
 <beans>
-	<bean id="TestLocalService" class="no.nav.common.framework.service.TestLocalService"></bean>
+	<bean id="TestLocalService" class="no.stelvio.common.framework.service.TestLocalService"></bean>
 </beans>
 

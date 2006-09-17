@@ -39,45 +39,45 @@
 				<p>Dette eksempelet viser hvordan JMSService er konfigurert opp til å benytte overvåking:</p>
 				<source><![CDATA[
 <beans>
-	<bean id="BrevServerJMSService" class="no.nav.integration.framework.jms.JMSService" singleton="true" init-method="init">
-		<!-- moitorChain er en property på superklassen, IntegrationService-->
-		<property name="monitorChain"><bean ref="BrevServerMonitorChain"/></property>
-		...
-		Konfigurasjons parametre for JMSService
-		...
-	</bean>
-	<!-- definisjonen av en monitorChain og hvilke monitors denne inneholder -->
-	<!-- init-method MÅ benyttes! -->
-	<bean id="BrevServerMonitorChain" class="no.nav.common.framework.monitor.MonitorChain" init-method="init">
-		<!-- en monitorchain har én setter som tar en array med monitors -->
-		<property name="monitors">
-			<list>
-				<bean id="BrevServerPerformanceMonitor" class="no.nav.common.framework.monitor.PerformanceMonitor">
-					<!-- denne monitoren rapporterer til en MBean -->
-					<property name="reportDestination"><bean ref="PerfMBean"/></property>
-					<property name="reportName"><value>BrevServer</value></property>
-				</bean>
-				<bean id="BrevServerErrorMonitor" class="no.nav.common.framework.monitor.ErrorMonitor">
-					<!-- denne monitoren rapporterer til en MBean -->
-					<property name="reportDestination"><bean ref="ErrorMBean"/></property>
-					<property name="reportName"><value>BrevServer</value></property>
-					<!-- denne slår seg automatisk av hvis 90% av alle kall feiler -->
-					<property name="measurementPool"><value>10</value></property>
-					<property name="measurementTarget"><value>9</value></property>
-					<!-- feilmeldingen som skal brukes dersom den slår seg av -->
-					<property name="erroMessage"><value>This service has been disabled.</value></property>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean id="PerfMBean" class="no.nav.common.framework.monitor.PerformanceMonitorReportRecevier">
-		<property name="objectName">Performance<value></value></property>
-	</bean>
-	<bean id="ErrorMBean" class="no.nav.common.framework.monitor.ErrorMonitorReportReceiver">
-		<property name="objectName">Error<value></value></property>
-	</bean>
-</beans>				
-				]]></source>
+	<bean id="BrevServerJMSService" class="no.stelvio.integration.framework.jms.JMSService" singleton="true" init-method="init">
+                        <!-- moitorChain er en property på superklassen, IntegrationService-->
+                        <property name="monitorChain"><bean ref="BrevServerMonitorChain"/></property>
+                        ...
+                        Konfigurasjons parametre for JMSService
+                        ...
+                    </bean>
+                    <!-- definisjonen av en monitorChain og hvilke monitors denne inneholder -->
+                    <!-- init-method MÅ benyttes! -->
+                    <bean id="BrevServerMonitorChain" class="no.stelvio.common.framework.monitor.MonitorChain" init-method="init">
+                        <!-- en monitorchain har én setter som tar en array med monitors -->
+                        <property name="monitors">
+                            <list>
+                                <bean id="BrevServerPerformanceMonitor" class="no.stelvio.common.framework.monitor.PerformanceMonitor">
+                                    <!-- denne monitoren rapporterer til en MBean -->
+                                    <property name="reportDestination"><bean ref="PerfMBean"/></property>
+                                    <property name="reportName"><value>BrevServer</value></property>
+                                </bean>
+                                <bean id="BrevServerErrorMonitor" class="no.stelvio.common.framework.monitor.ErrorMonitor">
+                                    <!-- denne monitoren rapporterer til en MBean -->
+                                    <property name="reportDestination"><bean ref="ErrorMBean"/></property>
+                                    <property name="reportName"><value>BrevServer</value></property>
+                                    <!-- denne slår seg automatisk av hvis 90% av alle kall feiler -->
+                                    <property name="measurementPool"><value>10</value></property>
+                                    <property name="measurementTarget"><value>9</value></property>
+                                    <!-- feilmeldingen som skal brukes dersom den slår seg av -->
+                                    <property name="erroMessage"><value>This service has been disabled.</value></property>
+                                </bean>
+                            </list>
+                        </property>
+                    </bean>
+                    <bean id="PerfMBean" class="no.stelvio.common.framework.monitor.PerformanceMonitorReportRecevier">
+                        <property name="objectName">Performance<value></value></property>
+                    </bean>
+                    <bean id="ErrorMBean" class="no.stelvio.common.framework.monitor.ErrorMonitorReportReceiver">
+                        <property name="objectName">Error<value></value></property>
+                    </bean>
+                </beans>
+                                ]]></source>
 			</subsection>
 			<subsection name="PerformanceMonitor og PerformanceMonitorReportReceiver">
 				<p>

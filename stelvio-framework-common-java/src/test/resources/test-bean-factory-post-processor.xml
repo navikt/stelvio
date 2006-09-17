@@ -7,7 +7,7 @@
 	<bean id="beanFactoryPostProcessor" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location"><value>test-bean-factory-post-processor.properties</value></property>
 	</bean>
-	<bean id="TestBean" class="no.nav.common.framework.ejb.RemoteServiceDescription">
+	<bean id="TestBean" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
 		<property name="jndiName"><value>${jndi.name}</value></property>
 		<property name="providerUrl"><value>${provider.url}</value></property>
 		<property name="initialContextFactory"><value>${initialContextFactory}</value></property>

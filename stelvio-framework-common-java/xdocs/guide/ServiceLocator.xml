@@ -22,11 +22,11 @@
 				<h4>Hvordan implementere en LocalServiceLocator</h4>
 
 <pre>
-package no.nav.business.bidrag;
+package no.stelvio.business.bidrag;
 
-import no.nav.common.framework.service.LocalServiceLocator;
+    import no.stelvio.common.framework.service.LocalServiceLocator;
 
-public final class BusinessServiceLocator extends LocalServiceLocator {
+    public final class BusinessServiceLocator extends LocalServiceLocator {
 
    public BusinessServiceLocator() {
       
@@ -41,10 +41,10 @@ public final class BusinessServiceLocator extends LocalServiceLocator {
 				
 <pre>
 &lt;beans&gt;
-   &lt;bean id="HentOppgaveliste" class="no.nav.business.oppgaver.service.HentOppgaveListeService" /&gt;
-   &lt;bean id="HentOppgave" class="no.nav.business.oppgaver.service.HentOppgaveService" /&gt;
-   &lt;bean id="OppdaterOppgave" class="no.nav.business.oppgaver.service.OppdaterOppgaveService" /&gt;
-   &lt;bean id="SlettOppgave" class="no.nav.business.oppgaver.service.SlettOppgaveService" /&gt;
+   &lt;bean id="HentOppgaveliste" class="no.stelvio.business.oppgaver.service.HentOppgaveListeService" /&gt;
+   &lt;bean id="HentOppgave" class="no.stelvio.business.oppgaver.service.HentOppgaveService" /&gt;
+   &lt;bean id="OppdaterOppgave" class="no.stelvio.business.oppgaver.service.OppdaterOppgaveService" /&gt;
+   &lt;bean id="SlettOppgave" class="no.stelvio.business.oppgaver.service.SlettOppgaveService" /&gt;
 &lt;/beans&gt;			
 </pre>	
 		
@@ -81,11 +81,11 @@ try {
 				<h4>Hvordan implementere en RemoteServiceLocator</h4>
 
 <pre>
-package no.nav.business.bidrag;
+package no.stelvio.business.bidrag;
 
-import no.nav.common.framework.ejb.RemoteServiceLocator;
+    import no.stelvio.common.framework.ejb.RemoteServiceLocator;
 
-public final class EnterpriseServiceLocator extends RemoteServiceLocator {
+    public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 
    public EnterpriseServiceLocator() {
       
@@ -100,7 +100,7 @@ public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 				
 <pre>
 &lt;beans&gt;
-   &lt;bean id="FinnPersonITPS" class="no.nav.common.framework.ejb.RemoteServiceDescription"&gt;
+   &lt;bean id="FinnPersonITPS" class="no.stelvio.common.framework.ejb.RemoteServiceDescription"&gt;
       &lt;property name="jndiName"&gt; ejb/no/nav/integration/tps/FinnPersonITPS &lt;/property&gt;
       &lt;property name="providerUrl"&gt; localhost &lt;/property&gt;
       &lt;property name="initialContextFactory"&gt; com.ibm.websphere.naming.WsnInitialContextFactory &lt;/property&gt;

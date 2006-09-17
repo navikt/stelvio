@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "src/test/resources/hibernate-mapping-2.0.dtd">
 <hibernate-mapping>
-	<class name="no.nav.integration.framework.hibernate.records.Foreldre" table="K460M700Param" schema="K460M700">
+	<class name="no.stelvio.integration.framework.hibernate.records.Foreldre" table="K460M700Param" schema="K460M700">
 		<id name="id" column="id" type="long">
 			<generator class="hilo"></generator>
 		</id>
@@ -23,10 +23,10 @@
 		<property name="numRecords"		column="M700-ANT-BARN-ELEMENTER" 	type="int" 	length="2" offset="82"/>
 		<set name="barn">
 			<key column="M700-ANT-BARN-ELEMENTER"/>
-			<one-to-many class="no.nav.integration.framework.hibernate.records.Barn" offset="84" length="540"/>
+			<one-to-many class="no.stelvio.integration.framework.hibernate.records.Barn" offset="84" length="540"/>
 		</set>	
 	</class>
-	<class name="no.nav.integration.framework.hibernate.records.Barn" table="BARN" schema="K460M700">
+	<class name="no.stelvio.integration.framework.hibernate.records.Barn" table="BARN" schema="K460M700">
 		<id name="id" column="id" type="long">
 			<generator class="hilo"></generator>
 		</id>

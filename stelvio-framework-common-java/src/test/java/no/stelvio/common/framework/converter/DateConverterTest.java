@@ -1,0 +1,77 @@
+package no.stelvio.common.framework.converter;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import no.stelvio.common.framework.converter.DateConverter;
+
+import org.apache.commons.beanutils.ConversionException;
+
+import junit.framework.TestCase;
+
+/**
+ * 
+ * @author person5b7fd84b3197, Accenture
+ */
+public class DateConverterTest extends TestCase {
+
+	private DateConverter converter = null; 
+
+	public void testConvert() {
+		
+	}
+
+	/**
+	 * Setup test.
+	 * @see junit.framework.TestCase#setUp()
+	 */
+	protected void setUp() throws Exception {
+		super.setUp();
+		converter = new DateConverter();
+	}
+	
+	/**
+	 * Test null input
+	 *
+	 */
+	public void testConvertNull() {
+		assertTrue(converter.convert( String.class, null ) == null);
+	}
+	
+	/**
+	 * Test Date input
+	 *
+	 */
+	public void testConvertDate() {
+		assertTrue(converter.convert( Date.class, new Date() ) instanceof Date);
+	}
+	/**
+	 * Test Calendar input
+	 *
+	 */
+	public void testConvertCalendar() {
+		assertTrue(converter.convert( Calendar.class, Calendar.getInstance() ) instanceof Date);
+	}	
+	/**
+	 * Test String input
+	 *
+	 */
+	public void testConvertString() {
+		assertTrue(converter.convert( String.class, "07.03.2005" ) instanceof Date);
+	}
+	
+	/**
+	 * Test bogus input
+	 *
+	 */
+	public void testConvertBogus() {
+		try {
+			converter.convert(String.class, new String("abc"));
+			fail();
+		} catch( ConversionException ce ) {
+			assertTrue(true);
+		}
+
+	}
+	
+}

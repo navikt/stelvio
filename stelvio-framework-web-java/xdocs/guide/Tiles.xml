@@ -100,7 +100,7 @@
     <set-property property="definitions-parser-validate" value="true" />
 </plug-in>					
 
-<controller processorClass="no.nav.web.framework.action.FrameworkTilesRequestProcessor" /> 
+<controller processorClass="no.stelvio.web.framework.action.FrameworkTilesRequestProcessor" />
 ]]></source>
 				</p>
 

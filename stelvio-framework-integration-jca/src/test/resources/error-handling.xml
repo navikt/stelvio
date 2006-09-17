@@ -4,17 +4,17 @@
 	Error Handling Configuration is used by the ErrorHandler
 -->
 <beans>
-	<!-- <bean id="ErrorHandler" class="no.nav.common.framework.error.DefaultHandlerImpl"/> -->
+	<!-- <bean id="ErrorHandler" class="no.stelvio.common.framework.error.DefaultHandlerImpl"/> -->
 
-	<bean id="RemoteServiceLocator" class="no.nav.common.framework.ejb.RemoteServiceLocator" />
+	<bean id="RemoteServiceLocator" class="no.stelvio.common.framework.ejb.RemoteServiceLocator" />
 
-	<bean id="InitErrorHandler" class="no.nav.common.framework.error.InitErrorHandler">
+	<bean id="InitErrorHandler" class="no.stelvio.common.framework.error.InitErrorHandler">
 		<property name="serviceLocator">
 			<ref bean="RemoteServiceLocator" />
 		</property>
 	</bean>
 
-	<bean id="ErrorHandler" class="no.nav.common.framework.error.LogHandlerImpl" init-method="init">
+	<bean id="ErrorHandler" class="no.stelvio.common.framework.error.LogHandlerImpl" init-method="init">
 		<property name="delegate">
 			<ref bean="InitErrorHandler" />
 		</property>

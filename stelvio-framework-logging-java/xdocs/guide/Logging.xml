@@ -194,11 +194,11 @@ protected final Log log = LogFactory.getLog(this.getClass());
 				for en LogFactory. commons-logging.properties ser slik ut:
 				<source>
 # the LogFactory implementation to use
-org.apache.commons.logging.LogFactory=no.nav.common.framework.log.factory.Log4jLogFactory
+                    org.apache.commons.logging.LogFactory=no.stelvio.common.framework.log.factory.Log4jLogFactory
 
-# the interval between each refresh of the logging configuration. Default is 60 seconds.
-no.nav.common.framework.log.factory.Log4jLogFactory.refreshInterval=60000				
-				</source>
+                    # the interval between each refresh of the logging configuration. Default is 60 seconds.
+                    no.stelvio.common.framework.log.factory.Log4jLogFactory.refreshInterval=60000
+                </source>
 				</p>
 				<h4>Konfigurering av Log4j</h4>
 				<p>Eksemplene nedenfor viser hvordan Log4j kan konfigureres vha log4j.properties</p>
@@ -236,7 +236,7 @@ log4j.appender.Systemlog.layout=org.apache.log4j.PatternLayout
 log4j.appender.Systemlog.layout.ConversionPattern=[%d, %-5p, %c:%L] - [%X{user},%X{screen},%X{process},%X{transaction}] - %m%n
 
 ### The Error Log JMS Appender
-log4j.appender.JMS=no.nav.common.framework.log.appenders.JMSQueueAppender
+log4j.appender.JMS=no.stelvio.common.framework.log.appenders.JMSQueueAppender
 log4j.appender.JMS.layout=org.apache.log4j.PatternLayout
 log4j.appender.JMS.layout.ConversionPattern=[%d, %-5p, %c:%L] - %m%n
 log4j.appender.JMS.initialContextFactoryName=com.ibm.websphere.naming.WsnInitialContextFactory
@@ -255,8 +255,8 @@ log4j.appender.JMS.URLPkgPrefixes=com.ibm.ws.runtime:com.ibm.ws.naming
 					Log4j støtter hierarkiske loggere, dvs arv av konfigurasjon. Dette gir en ekstrem fleksibilitet
 					ved at spesifikke loggere arver fra de mer generiske loggere. For eksempel vil man kunne 
 					konfigurere logging fra alle arkitektur- og applikasjonskomponentene ved å konfigurere en logger
-					som tilsvarer minste felles multiplum av java pakkenavnet til komponentene (no.nav). 
-				</p>
+					som tilsvarer minste felles multiplum av java pakkenavnet til komponentene (no.stelvio).
+                </p>
 <source><![CDATA[				
 ...
 ### External loggers
@@ -264,17 +264,16 @@ log4j.logger.de.laures.cewolf=WARN, Console, Systemlog
 log4j.logger.com.jcoverage=WARN, Console, Systemlog
 log4j.logger.org.apache=WARN, Console, Systemlog
 log4j.logger.org.jfree.data=WARN, Console, Systemlog
-log4j.logger.servletunit.struts=WARN, Console, Systemlog
+log4j.logger.sno.stelviounit.struts=WARN, Console, Systemlog
 
 ### Framework loggers
-log4j.logger.no.nav.common.framework=INFO, Console, Systemlog, JMS
-log4j.logger.no.nav.web.framework=INFO, Console, Systemlog, JMS
-log4j.logger.no.nav.business.framework=INFO, Console, Systemlog, JMS
-log4j.logger.no.nav.integration.framework=INFO, Console, Systemlog, JMS
+lno.stelvioogger.no.nav.common.framework=INFO, Console, Systemlog, JMno.stelvioj.logger.no.nav.web.framework=INFO, Console, Systemlog, JMS
+logno.stelvioger.no.nav.business.framework=INFO, Console, Systemlog, JMS
+log4j.logger.no.nav.integrationno.stelviowork=INFO, Console, Systemlog, JMS
 
-### Application loggers
-log4j.logger.no.nav.common=DEBUG, Console, Debuglog
-log4j.logger.no.nav.web=DEBUG, Console, Debuglog
+### Applicno.stelviologgers
+log4j.logger.no.nav.common=DEBUG, Cno.stelvio, Debuglog
+log4j.logger.no.nav.web=DEBUG, Consolno.stelviouglog
 log4j.logger.no.nav.business=DEBUG, Console, Debuglog
 log4j.logger.no.nav.integration=DEBUG, Console, Debuglog
 ...

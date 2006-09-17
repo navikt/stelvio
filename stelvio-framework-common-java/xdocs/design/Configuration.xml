@@ -9,7 +9,7 @@
 			<subsection name="Oversikt">
 
 				<p>
-					Pakken <i>no.nav.common.framework.config</i>
+					Pakken <i>no.stelvio.common.framework.config</i>
 					består av klasser og interface for systemkonfigurasjon. 
 					Implementasjonen av konfigurasjonstjenestene støtter følgende funksjonalitet:
 				</p>
@@ -55,10 +55,10 @@
 				</p>
 <source><![CDATA[
 <beans>
-   <bean id="HentOppgaveliste" class="no.nav.business.oppgaver.service.HentOppgaveListeService" />
-   <bean id="HentOppgave" class="no.nav.business.oppgaver.service.HentOppgaveService" />
-   <bean id="OppdaterOppgave" class="no.nav.business.oppgaver.service.OppdaterOppgaveService" />
-   <bean id="SlettOppgave" class="no.nav.business.oppgaver.service.SlettOppgaveService" />
+   <bean id="HentOppgaveliste" class="no.stelvio.business.oppgaver.service.HentOppgaveListeService" />
+   <bean id="HentOppgave" class="no.stelvio.business.oppgaver.service.HentOppgaveService" />
+   <bean id="OppdaterOppgave" class="no.stelvio.business.oppgaver.service.OppdaterOppgaveService" />
+   <bean id="SlettOppgave" class="no.stelvio.business.oppgaver.service.SlettOppgaveService" />
 </beans>		
 ]]></source>				
 				<h4>ConfigMBean</h4>

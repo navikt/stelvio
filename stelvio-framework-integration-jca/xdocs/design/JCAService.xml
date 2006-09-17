@@ -99,7 +99,7 @@ er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hpapt03/dtd/hibernate-mapping-2.0.dtd">
 <hibernate-mapping>
-	<class name="no.nav.integration.framework.Foreldre" table="FORELDRE" schema="K460M700">
+	<class name="no.stelvio.integration.framework.Foreldre" table="FORELDRE" schema="K460M700">
 		<id name="id" column="id" type="long">
 			<generator class="hilo"></generator>
 		</id>
@@ -121,10 +121,10 @@ er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
 		<property name="numRecords"		column="M700-ANT-BARN-ELEMENTER" 	type="int" 	length="2" 	offset="82"/>
 		<set name="barn">
 			<key column="M700-ANT-BARN-ELEMENTER"/>
-			<one-to-many class="no.nav.integration.framework.Barn" offset="84" length="540"/>
+			<one-to-many class="no.stelvio.integration.framework.Barn" offset="84" length="540"/>
 		</set>	
 	</class>
-	<class name="no.nav.integration.framework.Barn" table="BARN" schema="K460M700">
+	<class name="no.stelvio.integration.framework.Barn" table="BARN" schema="K460M700">
 		<id name="id" column="id" type="long">
 			<generator class="hilo"></generator>
 		</id>
@@ -159,7 +159,7 @@ er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
 <source>
 <![CDATA[
 <beans>
-	<bean id="BidragsBeregningsModul" class="no.nav.integration.framework.jca.cics.service.JCACicsService" singleton="true" init-method="init">
+	<bean id="BidragsBeregningsModul" class="no.stelvio.integration.framework.jca.cics.service.JCACicsService" singleton="true" init-method="init">
 		<property name="queueJndi"><value>jca/cics</value></property>
 		<property name="Interactions">
 			<map>
@@ -168,7 +168,7 @@ er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
 		</property>
 		<property name="lookupHelper"><ref bean="ResourceLookupHelper"/></property>
 	</bean>
-	<bean id="K460M700" class="no.nav.integration.framework.jca.cics.service.InteractionProperties" singleton="true" init-method="init">
+	<bean id="K460M700" class="no.stelvio.integration.framework.jca.cics.service.InteractionProperties" singleton="true" init-method="init">
 		<property name="mappingFlies">
 			<list>
 				<value>bidragsberegning_K460M700.hbm.xml</value>
@@ -179,7 +179,7 @@ er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
 		<property name="preplyLength"><value>2000</value></property>
 		<property name="executionTimeout"><value>10</value></property>
 	</bean>
-	<bean id="ResourceLookupHelper" class="no.nav.common.framework.util.ResourceLookupHelper"/>
+	<bean id="ResourceLookupHelper" class="no.stelvio.common.framework.util.ResourceLookupHelper"/>
 </beans>
 ]]>
 	<subsection name="Benytte andre record typer">

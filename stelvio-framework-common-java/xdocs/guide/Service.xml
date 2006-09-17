@@ -9,13 +9,13 @@
 			<subsection name="Oversikt">
 			
 				<p>
-					Pakken <i>no.nav.common.framework.service</i> består av klasser og interface
+					Pakken <i>no.stelvio.common.framework.service</i> består av klasser og interface
 					som kan benyttes til å implementere tjenester for å prosessere forretningslogikk,
 					integrasjonslogikk, eller annen type logikk. Komponentene i denne pakken benyttes 
 					i forbindelse med prosessering av tjenester i samme JVM.
 				</p>
 				<p>
-					Pakken <i>no.nav.common.framework.ejb</i> inneholder komponenter for å
+					Pakken <i>no.stelvio.common.framework.ejb</i> inneholder komponenter for å
 					prosessere EJB-tjenester, eventuelt i en annen JVM. Se også 
 					<a href="ServiceLocator.html">Service Locator</a>
 				</p>
@@ -27,11 +27,11 @@
 				<h4>Hvordan implementere en LocalService</h4>
 
 <pre>
-package no.nav.business.bidrag.service;
+package no.stelvio.business.bidrag.service;
 
-import no.nav.common.framework.service.LocalService;
+    import no.stelvio.common.framework.service.LocalService;
 
-public class HeltallsDivisjon implements LocalService {
+    public class HeltallsDivisjon implements LocalService {
 
    public HeltallsDivisjon() {
       // TODO: Legg til nødvendig logikk i konstruktøren
@@ -58,7 +58,7 @@ public class HeltallsDivisjon implements LocalService {
 <pre>
 &lt;beans&gt;
    ...
-   &lt;bean id="Divider" class="no.nav.business.bidrag.service.HeltallsDivisjon" /&gt;
+   &lt;bean id="Divider" class="no.stelvio.business.bidrag.service.HeltallsDivisjon" /&gt;
    ...
 &lt;/beans&gt;			
 </pre>	
@@ -96,11 +96,11 @@ try {
 				<h4>Hvordan implementere en RemoteServiceLocator</h4>
 
 <pre>
-package no.nav.business.bidrag;
+package no.stelvio.business.bidrag;
 
-import no.nav.common.framework.ejb.RemoteServiceLocator;
+    import no.stelvio.common.framework.ejb.RemoteServiceLocator;
 
-public final class EnterpriseServiceLocator extends RemoteServiceLocator {
+    public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 
    public EnterpriseServiceLocator() {
       
@@ -115,7 +115,7 @@ public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 				
 <pre>
 &lt;beans&gt;
-   &lt;bean id="FinnPersonITPS" class="no.nav.common.framework.ejb.RemoteServiceDescription"&gt;
+   &lt;bean id="FinnPersonITPS" class="no.stelvio.common.framework.ejb.RemoteServiceDescription"&gt;
       &lt;property name="jndiName"&gt; ejb/no/nav/integration/tps/FinnPersonITPS &lt;/property&gt;
       &lt;property name="providerUrl"&gt; localhost &lt;/property&gt;
       &lt;property name="initialContextFactory"&gt; com.ibm.websphere.naming.WsnInitialContextFactory &lt;/property&gt;

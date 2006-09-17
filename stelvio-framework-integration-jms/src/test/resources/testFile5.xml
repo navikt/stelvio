@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <mapping>
 	<description>Basic mapping example</description>
-	<class name="no.nav.integration.framework.jms.formatter.OppdragTestBean" auto-complete="true">
+	<class name="no.stelvio.integration.framework.jms.formatter.OppdragTestBean" auto-complete="true">
 		<map-to xml="oppdrag" />
 		<field name="testField">
 			<bind-xml name="field1"/>
@@ -12,15 +12,15 @@
 		<field name="intTest" type="integer">
 			<bind-xml name="integerValue" node="element"/>
 		</field>
-		<field name="elements" collection="collection" type="no.nav.integration.framework.jms.formatter.OppdragTestBeanElement">
+		<field name="elements" collection="collection" type="no.stelvio.integration.framework.jms.formatter.OppdragTestBeanElement">
 			<bind-xml name="element" node="element"/>
 		</field> 
 	</class>
-	<class name="no.nav.integration.framework.jms.formatter.OppdragTestBeanElement" auto-complete="true">
+	<class name="no.stelvio.integration.framework.jms.formatter.OppdragTestBeanElement" auto-complete="true">
 		<field name="val" type="string">
 			<bind-xml name="fieldU" node="element"/>
 		</field>
-		<field name="dato" type="date" handler="no.nav.integration.framework.jms.formatter.OppdragDateFormatter">
+		<field name="dato" type="date" handler="no.stelvio.integration.framework.jms.formatter.OppdragDateFormatter">
 			<bind-xml name="fomDato" node="element"/>
 		</field>
 	</class>

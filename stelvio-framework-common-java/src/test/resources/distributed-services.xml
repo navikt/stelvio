@@ -5,7 +5,7 @@
 -->
 <beans>
 
-	<bean id="TestEJBHome" class="no.nav.common.framework.ejb.RemoteServiceDescription">
+	<bean id="TestEJBHome" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
 		<property name="jndiName">
 			<value>ejb/TestEJBHome</value>
 		</property>
@@ -29,7 +29,7 @@
 		</property>
 	</bean>
 
-	<bean id="IncompleteConfiguredFacade" class="no.nav.common.framework.ejb.RemoteServiceDescription"></bean>
+	<bean id="IncompleteConfiguredFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription"></bean>
 
 </beans>
 

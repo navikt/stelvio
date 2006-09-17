@@ -4,7 +4,7 @@
 	Distributed Services Configuration is used by the RemoteServiceLocator
 -->
 <beans>
-	<bean id="TestBean3" class="no.nav.common.framework.ejb.RemoteServiceDescription">
+	<bean id="TestBean3" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
 		<property name="jndiName"><value>ejb/business/bidrag/BusinessFacadeHome</value></property>
 		<property name="providerUrl"><value>iiop://localhost:2809/</value></property>
 		<property name="initialContextFactory"><value>com.ibm.websphere.naming.WsnInitialContextFactory</value></property>

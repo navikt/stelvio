@@ -6,7 +6,7 @@
 	<name>nav-framework-common-test</name>
 
 	<shortDescription>nav - Rammeverk for test</shortDescription>
-	<package>no.nav.common.framework.test</package>
+	<package>no.stelvio.common.framework.test</package>
 
 	<!-- 
     Inherit from main

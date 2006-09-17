@@ -109,41 +109,47 @@
 						<td>Business Delegate</td>
 						<td><a href="design/BusinessDelegate.html">Design</a></td>
 						<td><a href="guide/BusinessDelegate.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.nav.web.framework.business</a></td>
+						<td><a href="apidocs/index.html">no.stelvio.web.framework.business</a></td>
 					</tr>
 					
 					<tr>
 						<td>Service Locator</td>
 						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/design/ServiceLocator.html">Design</a></td>
 						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/guide/ServiceLocator.html">Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/service/package-summary.html">no.nav.common.framework.service</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/service/package-summary.html">
+                            no.stelvio.common.framework.service
+                        </a></td>
 					</tr>
 					
 					<tr>
 						<td>Business Facade</td>
 						<td><a href="design/BusinessFacade.html">Design</a></td>
 						<td><a href="guide/BusinessFacade.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.nav.business.framework.facade</a></td>
+						<td><a href="apidocs/index.html">no.stelvio.business.framework.facade</a></td>
 					</tr>
 					
 					<tr>
 						<td>Business Service</td>
 						<td><a href="design/BusinessService.html">Design</a></td>
 						<td><a href="guide/BusinessService.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.nav.business.framework.service</a></td>
+						<td><a href="apidocs/index.html">no.stelvio.business.framework.service</a></td>
 					</tr>
 					
 					<tr>
 						<td>Feilhåndtering</td>
 						<td colspan="2"><a href="http://hpapt03/multiproject/nav-framework-integration-java/design/ErrorHandling.html">Design og Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/error/package-summary.html">no.nav.common.framework.error</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/error/package-summary.html">
+                            no.stelvio.common.framework.error
+                        </a></td>
 					</tr>
 					
 					<tr>
 						<td>Transaksjonshåndtering</td>
 						<td><a href="design/Transactions.html">Design</a></td>
 						<td><a href="guide/Transactions.html">Guide</a></td>
-						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/ejb/package-summary.html">no.nav.common.framework.ejb</a></td>
+						<td><a href="http://hpapt03/multiproject/nav-framework-common-java/apidocs/no/nav/common/framework/ejb/package-summary.html">
+                            no.stelvio.common.framework.ejb
+                        </a></td>
 					</tr>
 										
 				</table>

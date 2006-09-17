@@ -42,8 +42,8 @@
 				<p>
 					Se javadoc for beskrivelse av klasser og metoder.
 					<br/>
-					Klassen implementeres i pakken no.nav.web.framework.action
-					<br/>
+					Klassen implementeres i pakken no.stelvio.web.framework.action
+                    <br/>
 				</p>
 										
 			</subsection>

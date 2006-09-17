@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "src/test/resources/hibernate-mapping-2.0.dtd">
 <hibernate-mapping>
-	<class name="no.nav.integration.framework.hibernate.records.Foreldre" table="K460M700Param" schema="K460M700">
+	<class name="no.stelvio.integration.framework.hibernate.records.Foreldre" table="K460M700Param" schema="K460M700">
 		<id name="id" column="id" type="long">
 			<generator class="hilo"></generator>
 		</id>

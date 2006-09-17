@@ -84,28 +84,28 @@ ServiceResponse response = service.execute( serviceRequest );
 				<source>
 					<![CDATA[
 <beans>
-	<bean id="BrevServer" class="no.nav.integration.framework.jms.JMSService" singleton="true" init-method="init">
-		<property name="isSynchronous"><value>true</value></property>
-		<property name="queueJndi"><value>jms/queue/BrevServerQueue</value></property>
-		<property name="queueConnectionFactoryJndi"><value>jms/qcf/JMSQCF</value></property>
-		<property name="specifyReturnQueue"><value>true</value></property>
-		<property name="useTempQueue"><value>true</value></property>
-		<property name="timeout"><value>30000</value></property> <!-- vent i 30 sekunder -->
-		<property name="messageHandler"><ref bean="XMLMessageHandler"/></property>
-		<property name="messageFormatter"><ref bean="XMLMessageFormatter"/></property>
-		<property name="messageTtl"><value>30000</value></property>
-		<property name="lookupHelper"><ref bean="ResourceLookupHelper"/></property>
-	</bean>
-	<bean id="XMLMessageFormatter" singleton="true" init-method="init">
-		<!-- Se XMLMessageFormatter -->
-	</bean>
-	<bean id="XMLMessageHandler" singleton="true" init-method="init">
-		<!-- Se XMLMessageHandler -->
-	</bean>
-	<bean id="ResourceLookupHelper" class="no.nav.common.framework.util.ResourceLookupHelper" />
-</beans>		
-					
-				]]>
+	<bean id="BrevServer" class="no.stelvio.integration.framework.jms.JMSService" singleton="true" init-method="init">
+                            <property name="isSynchronous"><value>true</value></property>
+                            <property name="queueJndi"><value>jms/queue/BrevServerQueue</value></property>
+                            <property name="queueConnectionFactoryJndi"><value>jms/qcf/JMSQCF</value></property>
+                            <property name="specifyReturnQueue"><value>true</value></property>
+                            <property name="useTempQueue"><value>true</value></property>
+                            <property name="timeout"><value>30000</value></property> <!-- vent i 30 sekunder -->
+                            <property name="messageHandler"><ref bean="XMLMessageHandler"/></property>
+                            <property name="messageFormatter"><ref bean="XMLMessageFormatter"/></property>
+                            <property name="messageTtl"><value>30000</value></property>
+                            <property name="lookupHelper"><ref bean="ResourceLookupHelper"/></property>
+                        </bean>
+                        <bean id="XMLMessageFormatter" singleton="true" init-method="init">
+                            <!-- Se XMLMessageFormatter -->
+                        </bean>
+                        <bean id="XMLMessageHandler" singleton="true" init-method="init">
+                            <!-- Se XMLMessageHandler -->
+                        </bean>
+                        <bean id="ResourceLookupHelper" class="no.stelvio.common.framework.util.ResourceLookupHelper" />
+                    </beans>
+
+                                    ]]>
 				</source>
 				<p>
 					Legg spesielt merke til at
@@ -138,37 +138,37 @@ ServiceResponse response = service.execute( serviceRequest );
 					For å kunne formatere beskjeder til å ha XML-innhold kan man benytte XMLMessageFormatter.
 					<source>
 						<![CDATA[
-<bean id="XmlFormatter1" class="no.nav.integration.framework.jms.XMLMessageFormatter" singleton="true" init-method="init">
-	<!-- Header felter -->
-	<property name="jmsCorrelationId"><value>feltIRequest</value></property>
-	<property name="keyField"><value>feltIRequest</value></property>
-	<property name="xmlFileMappings">
-		<map>
-			<entry key="Online"><value>OnlineLetter.xml</value></entry>
-			<entry key="Batch"><value>BatchLetter.xml</value></entry>
-		</map>
-	</property>
-	<property name="fieldNames">
-		<list>
-			<value>feltIRequest1</value>
-			<value>feltIRequest1</value>
-		</list>
-	</property>
-	<property name="dynamicHeaderFields">
-		<map>
-			<entry key="headerField1"><value>value1</value></entry>
-			<entry key="headerField2"><value>value2</value></entry>
-		</map>
-	</property>
-	<property name="staticHeaderFields">
-		<map>
-			<entry key="headerField1"><value>value1</value></entry>
-			<entry key="headerField1"><value>value2</value></entry>
-			<entry key="headerField1"><value>value3</value></entry>
-		</map>
-	</property>
-</bean>					
-					]]>
+<bean id="XmlFormatter1" class="no.stelvio.integration.framework.jms.XMLMessageFormatter" singleton="true" init-method="init">
+                            <!-- Header felter -->
+                            <property name="jmsCorrelationId"><value>feltIRequest</value></property>
+                            <property name="keyField"><value>feltIRequest</value></property>
+                            <property name="xmlFileMappings">
+                                <map>
+                                    <entry key="Online"><value>OnlineLetter.xml</value></entry>
+                                    <entry key="Batch"><value>BatchLetter.xml</value></entry>
+                                </map>
+                            </property>
+                            <property name="fieldNames">
+                                <list>
+                                    <value>feltIRequest1</value>
+                                    <value>feltIRequest1</value>
+                                </list>
+                            </property>
+                            <property name="dynamicHeaderFields">
+                                <map>
+                                    <entry key="headerField1"><value>value1</value></entry>
+                                    <entry key="headerField2"><value>value2</value></entry>
+                                </map>
+                            </property>
+                            <property name="staticHeaderFields">
+                                <map>
+                                    <entry key="headerField1"><value>value1</value></entry>
+                                    <entry key="headerField1"><value>value2</value></entry>
+                                    <entry key="headerField1"><value>value3</value></entry>
+                                </map>
+                            </property>
+                        </bean>
+                                            ]]>
 					</source>
 					XMLMessageFormatter produserer en
 					<i>javax.jms.TextMessage</i>
@@ -252,39 +252,39 @@ ServiceResponse response = service.execute( serviceRequest );
 					Eksempel på konfigurasjon:
 					<source>
 						<![CDATA[
-<bean id="XMLHandler1" class="no.nav.integration.framework.jms.handler.XMLMessageHandler" singleton="true" init-method="init">
-	<!-- Header felter -->
-	<property name="headerFields">
-		<map>
-			<entry key="headerFieldName1"><value>responseField1</value></entry>
-			<entry key="headerFieldName2"><value>responseField1</value></entry>
-		</map>
-	</property>
-	<property name="reponseFields">
-		<map>
-			<entry key="/data/gren1/blad1"><value>responseField1</value></entry>
-			<entry key="/data/gren2/blad2/@attributt2"><value>responseField2.x.y</value></entry>
-			<entry key="/data/gren3/blad3/@attributt3"><value>responseField3</value></entry>
-		</map>
-	</property>
-	<property name="responseClassNames">
-		<map>
-			<entry key="responseField1"><value>class1</value></entry>
-			<entry key="responseField2"><value>class2</value></entry>
-			<entry key="responseField3"><value>class3</value></entry>
-		</map>
-	</property>
-	<property name="staticResponseFields">
-		<map>
-			<entry key="navnPåResponseFelt"><value>verdi</value></entry>
-		</map>
-	</property>
-	<property name="statusMessageField"><value>/data/status</value></property>
-	<property name="statusResponseField"><value>status</value></property>
-	<property name="errorMessageField"><value>/data/error</value></property>
-	<property name="exceptionOnError"><value>true</value></property>
-</bean>					
-					]]>
+<bean id="XMLHandler1" class="no.stelvio.integration.framework.jms.handler.XMLMessageHandler" singleton="true" init-method="init">
+                            <!-- Header felter -->
+                            <property name="headerFields">
+                                <map>
+                                    <entry key="headerFieldName1"><value>responseField1</value></entry>
+                                    <entry key="headerFieldName2"><value>responseField1</value></entry>
+                                </map>
+                            </property>
+                            <property name="reponseFields">
+                                <map>
+                                    <entry key="/data/gren1/blad1"><value>responseField1</value></entry>
+                                    <entry key="/data/gren2/blad2/@attributt2"><value>responseField2.x.y</value></entry>
+                                    <entry key="/data/gren3/blad3/@attributt3"><value>responseField3</value></entry>
+                                </map>
+                            </property>
+                            <property name="responseClassNames">
+                                <map>
+                                    <entry key="responseField1"><value>class1</value></entry>
+                                    <entry key="responseField2"><value>class2</value></entry>
+                                    <entry key="responseField3"><value>class3</value></entry>
+                                </map>
+                            </property>
+                            <property name="staticResponseFields">
+                                <map>
+                                    <entry key="navnPåResponseFelt"><value>verdi</value></entry>
+                                </map>
+                            </property>
+                            <property name="statusMessageField"><value>/data/status</value></property>
+                            <property name="statusResponseField"><value>status</value></property>
+                            <property name="errorMessageField"><value>/data/error</value></property>
+                            <property name="exceptionOnError"><value>true</value></property>
+                        </bean>
+                                            ]]>
 					</source>
 					XMLMessageHandler har følgende egenskaper:
 					<table>

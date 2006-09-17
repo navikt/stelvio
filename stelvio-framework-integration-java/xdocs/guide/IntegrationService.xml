@@ -26,11 +26,13 @@
 					<li> 
 						Klassene skal arve 
 						<a href="../apidocs/no/nav/integration/framework/service/IntegrationService.html">
-						no.nav.integration.framework.service.IntegrationService</a> <br/>
+                            no.stelvio.integration.framework.service.IntegrationService
+                        </a> <br/>
 					</li>
 					<li> 
 						Pakken som klassene legges i skal navngis etter følgende standard: <br/>
-						no.nav.integration.framework.<font 
+                        no.stelvio.integration.framework.
+                        <font
 						color="blue">[API]</font><br/>
 					</li>
 					<li>
@@ -66,13 +68,13 @@
 				</p>
 				<h5>AvsluttOppgaverService.java:</h5>
 <source><![CDATA[
-package no.nav.business.saksbehandling.service.oppgave;
+package no.stelvio.business.saksbehandling.service.oppgave;
 
-import no.nav.common.framework.service.LocalService;
-import no.nav.common.framework.service.ServiceFailedException;
-import no.nav.common.framework.service.ServiceRequest;
-import no.nav.common.framework.service.ServiceResponse;
-import no.nav.business.framework.service.BusinessService;
+import no.stelvio.common.framework.service.LocalService;
+import no.stelvio.common.framework.service.ServiceFailedException;
+import no.stelvio.common.framework.service.ServiceRequest;
+import no.stelvio.common.framework.service.ServiceResponse;
+import no.stelvio.business.framework.service.BusinessService;
 
 public class AvsluttOppgaverService extends BusinessService {
 
@@ -130,12 +132,12 @@ public class AvsluttOppgaverService extends BusinessService {
 <beans>
    ...
    <!-- Forretningstjenesten -->
-   <bean id="AvsluttOppgaverService" class="no.nav.business.saksbehandling.service.oppgave.AvsluttOppgaverService">
+   <bean id="AvsluttOppgaverService" class="no.stelvio.business.saksbehandling.service.oppgave.AvsluttOppgaverService">
       <property name="finnPersoner"><ref bean="IntegrationDelegate"/></property>
    </bean>
    ...
    <!-- Innkapslinger av integrasjonsbussen -->
-   <bean id="IntegrationDelegate"   class="no.nav.business.framework.integration.IntegrationDelegate" />
+   <bean id="IntegrationDelegate"   class="no.stelvio.business.framework.integration.IntegrationDelegate" />
    ...
 </beans>			
 ]]></source>
@@ -153,7 +155,7 @@ public class AvsluttOppgaverService extends BusinessService {
 <source><![CDATA[
 <beans>
    ...
-   <bean id="BusinessFacade" class="no.nav.common.framework.ejb.RemoteServiceDescription">
+   <bean id="BusinessFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/nav/business/BusinessFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
@@ -163,7 +165,7 @@ public class AvsluttOppgaverService extends BusinessService {
       <property name="cacheable"> true </property>
    </bean>
    ...
-   <bean id="IntegrationFacade" class="no.nav.common.framework.ejb.RemoteServiceDescription">
+   <bean id="IntegrationFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/nav/integration/IntegrationFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
@@ -189,8 +191,8 @@ public class AvsluttOppgaverService extends BusinessService {
 <beans>
    ...
    <!-- Enterprise Integration tjenester -->
-   <bean id="FinnPersonerService" class="no.nav.integration.jms.FinnPersonerService" />
-   <bean id="HentPersonService"   class="no.nav.integration.jms.HentPersonService" />
+   <bean id="FinnPersonerService" class="no.stelvio.integration.jms.FinnPersonerService" />
+   <bean id="HentPersonService"   class="no.stelvio.integration.jms.HentPersonService" />
    ...
 </beans>			
 ]]></source>
