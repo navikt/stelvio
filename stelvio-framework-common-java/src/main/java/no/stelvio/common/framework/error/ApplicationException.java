@@ -1,6 +1,6 @@
 package no.stelvio.common.framework.error;
 
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.util.SequenceNumberGenerator;
 
 /**
@@ -117,10 +117,10 @@ public class ApplicationException extends Exception implements LoggableException
 			System.arraycopy(arguments, 0, this.arguments, 0, arguments.length);
 		}
 
-		this.userId = TransactionContext.getUserId();
-		this.screenId = TransactionContext.getScreenId();
-		this.processId = TransactionContext.getProcessId();
-		this.transactionId = TransactionContext.getTransactionId();
+		this.userId = RequestContext.getUserId();
+		this.screenId = RequestContext.getScreenId();
+		this.processId = RequestContext.getProcessId();
+		this.transactionId = RequestContext.getTransactionId();
 		this.errorId = String.valueOf(SequenceNumberGenerator.getNextId("ErrorId"));
 	}
 

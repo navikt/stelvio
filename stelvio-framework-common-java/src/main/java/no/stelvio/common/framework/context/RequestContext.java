@@ -3,20 +3,20 @@ package no.stelvio.common.framework.context;
 /**
  * This class is used to store and retrieve information that must
  * be available anywhere in the system during a single request.
- * The population of the different fields in the TransactionContext is left to the
+ * The population of the different fields in the RequestContext is left to the
  * outmost component (normally the Presentation Framework).
  *
  * All transaction specific information is stored for the current thread.
  * Again, it is the outmost component responsibility to populate
  * and remove the data from the thread.
  *
- * While working on different tiers, the TransactionContext must be exported 
+ * While working on different tiers, the RequestContext must be exported 
  * in one tier, and then imported back again on the other tier.
  *
  * @author person7553f5959484, Accenture
- * @version $Id: TransactionContext.java 1979 2005-02-16 16:34:40Z psa2920 $
+ * @version $Id: RequestContext.java 1979 2005-02-16 16:34:40Z psa2920 $
  */
-public final class TransactionContext extends AbstractContext {
+public final class RequestContext extends AbstractContext {
 
 	// Internal constants to be used as keys for accessing the heap
 	private static final String USER_ID = "user";
@@ -24,13 +24,13 @@ public final class TransactionContext extends AbstractContext {
 	private static final String MODULE_ID = "module";
 	private static final String PROCESS_ID = "process";
 	private static final String TRANSACTION_ID = "transaction";
-	private static final String STATE = "state";
+	private static final String LOCALE = "locale";
 
 	/**
 	 * Private constructor to ensure class being accessed
 	 * in a static way only
 	 */
-	private TransactionContext() {
+	private RequestContext() {
 		super();
 	}
 
@@ -89,12 +89,12 @@ public final class TransactionContext extends AbstractContext {
 	}
 
 	/**
-	 * Get the state in which the current process is executing.
+	 * Get the user locale.
 	 * 
-	 * @return The state of the current process.
+	 * @return The user locale.
 	 */
-	public static String getState() {
-		return (String) get(STATE);
+	public static String getLocale() {
+		return (String) get(LOCALE);
 	}
 
 	/**
@@ -150,11 +150,11 @@ public final class TransactionContext extends AbstractContext {
 	}
 
 	/**
-	 * Set the state in which the current process is executing.
+	 * Set the user locale.
 	 * 
-	 * @param state The state of the current process.
+	 * @param locale The user locale.
 	 */
-	public static void setState(String state) {
-		put(STATE, state);
+	public static void setLocale(String locale) {
+		put(LOCALE, locale);
 	}
 }

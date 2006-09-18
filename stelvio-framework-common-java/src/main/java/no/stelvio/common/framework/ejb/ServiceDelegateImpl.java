@@ -3,7 +3,7 @@ package no.stelvio.common.framework.ejb;
 import java.rmi.RemoteException;
 
 import no.stelvio.common.framework.FrameworkError;
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.ExceptionWrapper;
 import no.stelvio.common.framework.error.SystemException;
 import no.stelvio.common.framework.performance.MonitorKey;
@@ -65,12 +65,12 @@ public class ServiceDelegateImpl implements LocalService, ServiceDelegate {
 			throw new SystemException(FrameworkError.SERVICE_FACADE_TYPE_ERROR, e, serviceFacadeName);
 		}
 		try {
-			request.setData(TransactionContext.class.getName(), TransactionContext.exportContext());
+			request.setData(RequestContext.class.getName(), RequestContext.exportContext());
 			PerformanceMonitor.start(delegateMonitorKey, request.getServiceName());
 			ServiceResponse response = serviceFacade.execute(request);
 			PerformanceMonitor.end(delegateMonitorKey);
 			if (null != response) {
-				TransactionContext.importContext(response.getData(TransactionContext.class.getName()));
+				RequestContext.importContext(response.getData(RequestContext.class.getName()));
 			}
 			return response;
 		} catch (ServiceFailedException sfe) {

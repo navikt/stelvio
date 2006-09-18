@@ -1,6 +1,6 @@
 package no.stelvio.common.framework.error;
 
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.util.SequenceNumberGenerator;
 
 /**
@@ -110,10 +110,10 @@ public class SystemException extends RuntimeException implements
 		super(cause);
 
 		errorCode = code.getCode();
-		userId = TransactionContext.getUserId();
-		screenId = TransactionContext.getScreenId();
-		processId = TransactionContext.getProcessId();
-		transactionId = TransactionContext.getTransactionId();
+		userId = RequestContext.getUserId();
+		screenId = RequestContext.getScreenId();
+		processId = RequestContext.getProcessId();
+		transactionId = RequestContext.getTransactionId();
 		errorId = String.valueOf(SequenceNumberGenerator.getNextId("ErrorId"));
 
 		copyArguments(arguments);

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.ApplicationException;
 import no.stelvio.common.framework.error.ErrorCode;
 import no.stelvio.common.framework.error.ErrorConfig;
@@ -79,11 +79,11 @@ public class LogHandlerImplTest extends TestCase {
 	 */
 	public void testHandleErrorSystemExceptions() {
 
-		TransactionContext.setScreenId("Oppgaveliste");
-		TransactionContext.setModuleId("Oppgaveliste");
-		TransactionContext.setProcessId("HentOppgavelister");
-		TransactionContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
-		TransactionContext.setUserId("psa2920");
+		RequestContext.setScreenId("Oppgaveliste");
+		RequestContext.setModuleId("Oppgaveliste");
+		RequestContext.setProcessId("HentOppgavelister");
+		RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
+		RequestContext.setUserId("psa2920");
 
 		assertTrue("handleError(SystemException) should have returned SystemException", h
 				.handleError(new SystemException(ErrorCode.UNSPECIFIED_ERROR, new Object[] { new Integer(0),
@@ -105,11 +105,11 @@ public class LogHandlerImplTest extends TestCase {
 
 	public void testHandleErrorApplicationExceptions() {
 
-		TransactionContext.setScreenId("Oppgaveliste");
-		TransactionContext.setModuleId("Oppgaveliste");
-		TransactionContext.setProcessId("HentOppgavelister");
-		TransactionContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
-		TransactionContext.setUserId("psa2920");
+		RequestContext.setScreenId("Oppgaveliste");
+		RequestContext.setModuleId("Oppgaveliste");
+		RequestContext.setProcessId("HentOppgavelister");
+		RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
+		RequestContext.setUserId("psa2920");
 
 		assertTrue("handleError(ApplicationException) should have returned ApplicationException", h
 				.handleError(new ApplicationException(ErrorCode.UNSPECIFIED_ERROR, new Object[] { new Integer(0),
@@ -175,8 +175,8 @@ public class LogHandlerImplTest extends TestCase {
 		});
 		h3.init();
 
-		TransactionContext.setProcessId("HentOppgavelister");
-		TransactionContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
+		RequestContext.setProcessId("HentOppgavelister");
+		RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
 	}
 
 	public void testErrorMessageIncludeErrorCodeAndId() {

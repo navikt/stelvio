@@ -102,8 +102,8 @@ stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/context/
 stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/context/Context.java -text
 stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/context/DefaultContextImpl.java -text
 stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/context/Log4jContextImpl.java -text
+stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/context/RequestContext.java -text
 stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/context/ThreadLocalMap.java -text
-stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/context/TransactionContext.java -text
 stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/context/package.html -text
 stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/converter/CalendarConverter.java -text
 stelvio-framework-common-java/src/main/java/no/stelvio/common/framework/converter/ConverterLoader.java -text
@@ -207,8 +207,8 @@ stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/codestab
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/config/ConfigTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/context/DefaultContextImplTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/context/Log4jContextImplTest.java -text
+stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/context/RequestContextTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/context/ThreadLocalMapTest.java -text
-stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/context/TransactionContextTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/converter/CalendarConverterTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/converter/ConverterLoaderTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/converter/DateConverterTest.java -text
