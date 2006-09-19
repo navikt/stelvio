@@ -1,8 +1,6 @@
 stelvio-framework-batch-java/bin
 stelvio-framework-batch-java/target
 stelvio-framework-business-java/bin
-stelvio-framework-cicseci-connector/.compatibility
-stelvio-framework-cicseci-connector/.j2ee
 stelvio-framework-common-java/bin
 stelvio-framework-common-java/debug.log
 stelvio-framework-common-java/target
