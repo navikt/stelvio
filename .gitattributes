@@ -77,6 +77,7 @@ stelvio-framework-common-java/.serverPreference -text
 stelvio-framework-common-java/LICENSE.txt -text
 stelvio-framework-common-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
 stelvio-framework-common-java/models/rtv-framework-common.mdx -text
+stelvio-framework-common-java/pom.xml -text
 stelvio-framework-common-java/project.properties -text
 stelvio-framework-common-java/project.xml -text
 stelvio-framework-common-java/src/main/java/.cvsignore -text
