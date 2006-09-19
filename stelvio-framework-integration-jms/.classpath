@@ -14,9 +14,9 @@
 	<classpathentry kind="var" path="M2_REPO/castor/jars/castor-0.9.5.3-xml.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-lang/jars/commons-lang-2.0.jar"/>
 	<classpathentry sourcepath="Hibernate216_source" kind="var" path="M2_REPO/hibernate/jars/hibernate-2.1.6.jar"/>
-	<classpathentry kind="src" path="/nav-framework-common-java"/>
-	<classpathentry kind="src" path="/nav-framework-integration-hibernate"/>
-	<classpathentry kind="src" path="/nav-framework-integration-java"/>
+	<classpathentry kind="src" path="/stelvio-framework-common-java"/>
+	<classpathentry kind="src" path="/stelvio-framework-integration-hibernate"/>
+	<classpathentry kind="src" path="/stelvio-framework-integration-java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere v6 JRE"/>
 	<classpathentry kind="con" path="com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6"/>
 	<classpathentry kind="output" path="bin"/>

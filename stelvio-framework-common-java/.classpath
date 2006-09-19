@@ -22,7 +22,7 @@
 	<classpathentry kind="var" path="M2_REPO/was/jars/ecutils-5.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/was/jars/runtime-5.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/was/jars/wsexception-5.1.jar"/>
-	<classpathentry kind="src" path="/nav-framework-logging-java"/>
+	<classpathentry kind="src" path="/stelvio-framework-logging-java"/>
 	<classpathentry kind="var" path="ACTIVATION_JAR"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere v6 JRE"/>
 	<classpathentry kind="con" path="com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60/was.base.v6"/>

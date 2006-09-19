@@ -25,9 +25,9 @@
 	<classpathentry kind="var" path="M2_REPO/castor/jars/castor-0.9.5.3-xml.jar"/>
 	<classpathentry kind="var" path="M2_REPO/frmapper/jars/frmapper-1.0.7.jar"/>
 	<classpathentry sourcepath="APPS/spring-framework-1.2.1/src" kind="var" path="M2_REPO/springframework/jars/spring-1.2.1.jar"/>
-	<classpathentry kind="src" path="/nav-framework-common-java"/>
-	<classpathentry kind="src" path="/nav-framework-integration-java"/>
-	<classpathentry kind="src" path="/nav-framework-integration-hibernate"/>
-	<classpathentry kind="src" path="/nav-framework-logging-java"/>
+	<classpathentry kind="src" path="/stelvio-framework-common-java"/>
+	<classpathentry kind="src" path="/stelvio-framework-integration-java"/>
+	<classpathentry kind="src" path="/stelvio-framework-integration-hibernate"/>
+	<classpathentry kind="src" path="/stelvio-framework-logging-java"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

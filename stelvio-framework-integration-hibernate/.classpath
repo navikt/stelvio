@@ -16,6 +16,6 @@
 	<classpathentry kind="var" path="M2_REPO/commons-beanutils/jars/commons-beanutils-1.6.1.jar"/>
 	<classpathentry sourcepath="APPS/spring-framework-1.2.1/src" kind="var" path="M2_REPO/springframework/jars/spring-1.2.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/nav-framework-common-java"/>
+	<classpathentry kind="src" path="/stelvio-framework-common-java"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
