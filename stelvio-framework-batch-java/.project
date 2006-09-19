@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>nav-framework-batch-java</name>
+	<name>stelvio-framework-batch-java</name>
 	<comment>
   </comment>
 	<projects>
-		<project>nav-framework-business-java</project>
-		<project>nav-framework-common-java</project>
-		<project>nav-framework-common-test</project>
-		<project>nav-framework-integration-java</project>
+		<project>stelvio-framework-business-java</project>
+		<project>stelvio-framework-common-java</project>
+		<project>stelvio-framework-common-test</project>
+		<project>stelvio-framework-integration-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

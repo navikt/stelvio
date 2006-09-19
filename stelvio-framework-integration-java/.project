@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>nav-framework-integration-java</name>
+	<name>stelvio-framework-integration-java</name>
 	<comment>
   </comment>
 	<projects>
-		<project>nav-framework-common-java</project>
+		<project>stelvio-framework-common-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

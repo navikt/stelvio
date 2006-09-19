@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>nav-framework-integration-jca</name>
+	<name>stelvio-framework-integration-jca</name>
 	<comment>
   </comment>
 	<projects>
-		<project>nav-framework-common-java</project>
-		<project>nav-framework-integration-hibernate</project>
-		<project>nav-framework-integration-java</project>
-		<project>nav-framework-logging-java</project>
+		<project>stelvio-framework-common-java</project>
+		<project>stelvio-framework-integration-hibernate</project>
+		<project>stelvio-framework-integration-java</project>
+		<project>stelvio-framework-logging-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
