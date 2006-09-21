@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.util.SequenceNumberGenerator;
 import no.stelvio.web.framework.constants.Constants;
 import no.stelvio.web.framework.util.RequestUtils;
@@ -16,7 +16,7 @@ import no.stelvio.web.framework.util.RequestUtils;
 
 /**
  * RequestContextFilter is an implementation of the <i>Intercepting Filter</i> pattern that
- * is responsible for constructing and destroying the <i>TransactionContext</i> for each request
+ * is responsible for constructing and destroying the <i>RequestContext</i> for each request
  * and response being processed. This filter should be the first filter in the chain.
  * 
  * @author person7553f5959484, Accenture
@@ -24,18 +24,18 @@ import no.stelvio.web.framework.util.RequestUtils;
  */
 public class RequestContextFilter extends AbstractFilter {
 
-	private static final String TRANSACTION_CONTEXT = "TransactionContext";
+	private static final String REQUEST_CONTEXT = "RequestContext";
 
 	/**
 	 * Performs the following processing steps:
 	 * <ol>
-	 * 	<li> Loads TransactionContext from Session if possible </li>
-	 * 	<li> Updates TransactionContext with current screenId </li>
-	 * 	<li> Updates TransactionContext with current processId </li>
-	 * 	<li> Updates TransactionContext with current transactionId </li>
+	 * 	<li> Loads RequestContext from Session if possible </li>
+	 * 	<li> Updates RequestContext with current screenId </li>
+	 * 	<li> Updates RequestContext with current processId </li>
+	 * 	<li> Updates RequestContext with current transactionId </li>
 	 * 	<li> Delegates processing to the next filter or resource in the chain </li>
-	 * 	<li> Stores TransactionContext in Session if possible </li>
-	 * 	<li> Resets TransactionContext before next time</li>
+	 * 	<li> Stores RequestContext in Session if possible </li>
+	 * 	<li> Resets RequestContext before next time</li>
 	 * </ol>
 	 * 
 	 * {@inheritDoc}
@@ -44,66 +44,72 @@ public class RequestContextFilter extends AbstractFilter {
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 		throws IOException, ServletException {
 
-		// Only import the transaction context from session if both the session
-		// and a persisted context exists.
-		HttpSession session = request.getSession(false);
-		if (null != session) {
-			Object context = session.getAttribute(TRANSACTION_CONTEXT);
-			if (null != context) {
-				TransactionContext.importContext(context);
+		try {
+			// Only import the transaction context from session if both the session
+			// and a persisted context exists.
+			HttpSession session = request.getSession(false);
+			if (null != session) {
+				Object context = session.getAttribute(REQUEST_CONTEXT);
+				if (null != context) {
+					RequestContext.importContext(context);
+				} else {
+					if (log.isDebugEnabled()) {
+						log.debug("Session exits, but RequestContext was not persisted");
+					}
+				}
+			}
+	
+			// Update user id if necessary
+			if (null == RequestContext.getUserId()) {
+				String userId = request.getRemoteUser();
+				// Support for anonymous access
+				if (null == userId) {
+					userId = "";
+				}
+				if (log.isDebugEnabled()) {
+					log.debug("UserId not set! setting to " + userId);
+				}
+				RequestContext.setUserId(userId.toUpperCase());
+			}
+	
+			// Allways update the screen, module, process and transaction id
+			RequestContext.setScreenId(RequestUtils.getScreenId(request));
+			RequestContext.setModuleId(RequestContext.getScreenId());
+			RequestContext.setProcessId(RequestUtils.getProcessId(request));
+			RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
+	
+			// Check if current state is submitted with the request
+			String state = request.getParameter(Constants.CURRENT_STATE);
+			if (null == state) {
+				// Apply default state
+				RequestContext.setState("normal");
 			} else {
-				if (log.isDebugEnabled()) {
-					log.debug("Session exits, but TransactionContext was not persisted");
+				// Apply desired state
+				RequestContext.setState(state);
+			}
+	
+			// Delegate processing to the next filter or resource in the chain
+			chain.doFilter(request, response);
+	
+			// Session might have bean constructed, deleted or invalidated during
+			// processing further down the chain, so check again
+			session = request.getSession(false);
+			if (null != session) {
+				try {
+					session.setAttribute(REQUEST_CONTEXT, RequestContext.exportContext());
+				} catch (IllegalStateException ise) {
+					if (log.isDebugEnabled()) {
+						log.debug("Session was invalidated, could not persist RequestContext", ise);
+					}
 				}
 			}
 		}
-
-		// Update user id if necessary
-		if (null == TransactionContext.getUserId()) {
-			String userId = request.getRemoteUser();
-			// Support for anonymous access
-			if (null == userId) {
-				userId = "";
-			}
-			if (log.isDebugEnabled()) {
-				log.debug("UserId not set! setting to " + userId);
-			}
-			TransactionContext.setUserId(userId.toUpperCase());
+		catch (Exception e) {
+			throw new ServletException("An error occured while updating the RequestContext", e);
 		}
-
-		// Allways update the screen, module, process and transaction id
-		TransactionContext.setScreenId(RequestUtils.getScreenId(request));
-		TransactionContext.setModuleId(TransactionContext.getScreenId());
-		TransactionContext.setProcessId(RequestUtils.getProcessId(request));
-		TransactionContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
-
-		// Check if current state is submitted with the request
-		String state = request.getParameter(Constants.CURRENT_STATE);
-		if (null == state) {
-			// Apply default state
-			TransactionContext.setState("normal");
-		} else {
-			// Apply desired state
-			TransactionContext.setState(state);
+		finally {
+			// Reset the RequestContext allways, just to be on the safe side :)
+			RequestContext.remove();
 		}
-
-		// Delegate processing to the next filter or resource in the chain
-		chain.doFilter(request, response);
-
-		// Session might have bean constructed, deleted or invalidated during
-		// processing further down the chain, so check again
-		session = request.getSession(false);
-		if (null != session) {
-			try {
-				session.setAttribute(TRANSACTION_CONTEXT, TransactionContext.exportContext());
-			} catch (IllegalStateException ise) {
-				if (log.isDebugEnabled()) {
-					log.debug("Session was invalidated, could not persist TransactionContext", ise);
-				}
-			}
-		}
-
-		// Reset the TransactionContext allways, just to be on the safe side :)
-		TransactionContext.remove();
 	}
 }
