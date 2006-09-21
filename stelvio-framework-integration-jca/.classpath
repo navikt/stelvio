@@ -29,5 +29,6 @@
 	<classpathentry kind="src" path="/stelvio-framework-integration-java"/>
 	<classpathentry kind="src" path="/stelvio-framework-integration-hibernate"/>
 	<classpathentry kind="src" path="/stelvio-framework-logging-java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

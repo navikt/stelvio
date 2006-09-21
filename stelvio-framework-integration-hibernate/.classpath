@@ -17,5 +17,6 @@
 	<classpathentry sourcepath="APPS/spring-framework-1.2.1/src" kind="var" path="M2_REPO/springframework/jars/spring-1.2.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="/stelvio-framework-common-java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
