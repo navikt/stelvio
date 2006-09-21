@@ -2,12 +2,99 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.stelvio.framework</groupId>
-    <artifactId>stelvio-framework</artifactId>
+    <artifactId>framework</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>stelvio - framework</name>
     <modules>
-        <module>stelvio-framework-main</module>
+        <module>stelvio-framework-batch-java</module>
+        <module>stelvio-framework-business-java</module>
         <module>stelvio-framework-common-java</module>
+        <module>stelvio-framework-common-test</module>
+        <module>stelvio-framework-integration-hibernate</module>
+        <module>stelvio-framework-integration-java</module>
+        <module>stelvio-framework-integration-jca</module>
+        <module>stelvio-framework-integration-jms</module>
+        <module>stelvio-framework-logging-java</module>
+        <module>stelvio-framework-sso-was</module>
+        <module>stelvio-framework-web-java</module>
     </modules>
+    <developers>
+        <developer>
+            <name>personf8e9850ed756</name>
+            <id>ska2812</id>
+            <email>test@example.com</email>
+            <organization>Accenture</organization>
+            <roles>
+                <role>Teknisk arkitekt</role>
+                <role>Teknisk designer</role>
+                <role>Teknisk utvikler</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <!-- jar files the project is dependent on -->
+    <dependencies>
+        <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>j2ee</groupId>
+            <artifactId>j2ee</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>hibernate</groupId>
+            <artifactId>hibernate</artifactId>
+            <version>2.1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>hibernate</groupId>
+            <artifactId>hibernate3</artifactId>
+            <version>3.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>springframework</groupId>
+            <artifactId>spring</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jmock</groupId>
+            <artifactId>jmock</artifactId>
+            <version>20040803-110809</version>
+        </dependency>
+        <dependency>
+            <groupId>jmock</groupId>
+            <artifactId>jmock-cglib</artifactId>
+            <version>20040803-110809</version>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>2.1</version>
+        </dependency>
+    </dependencies>
 </project>
