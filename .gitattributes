@@ -608,7 +608,7 @@ stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/action/StateAw
 stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/constants/Constants.java -text
 stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/filter/AbstractFilter.java -text
 stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/filter/PerformanceMonitorFilter.java -text
-stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/filter/TransactionContextFilter.java -text
+stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/filter/RequestContextFilter.java -text
 stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/servlet/ServletContextAttributeSetter.java -text
 stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/servlet/StartupServlet.java -text
 stelvio-framework-web-java/src/main/java/no/stelvio/web/framework/taglib/AmountTag.java -text

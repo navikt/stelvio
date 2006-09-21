@@ -15,14 +15,14 @@ import no.stelvio.web.framework.util.RequestUtils;
 
 
 /**
- * TransactionContextFilter is an implementation of the <i>Intercepting Filter</i> pattern that
+ * RequestContextFilter is an implementation of the <i>Intercepting Filter</i> pattern that
  * is responsible for constructing and destroying the <i>TransactionContext</i> for each request
  * and response being processed. This filter should be the first filter in the chain.
  * 
  * @author person7553f5959484, Accenture
- * @version $Id: TransactionContextFilter.java 2574 2005-10-20 08:04:22Z psa2920 $
+ * @version $Id: RequestContextFilter.java 2574 2005-10-20 08:04:22Z psa2920 $
  */
-public class TransactionContextFilter extends AbstractFilter {
+public class RequestContextFilter extends AbstractFilter {
 
 	private static final String TRANSACTION_CONTEXT = "TransactionContext";
 

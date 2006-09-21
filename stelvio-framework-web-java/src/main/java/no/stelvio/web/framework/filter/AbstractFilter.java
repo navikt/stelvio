@@ -15,7 +15,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.framework.FrameworkError;
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.ErrorHandler;
 import no.stelvio.common.framework.error.LoggableException;
 import no.stelvio.common.framework.error.SystemException;
@@ -64,10 +64,10 @@ public abstract class AbstractFilter implements Filter {
 	 * 
 	 * <pre>
 	 * <filter>
-	 *    <filter-name>TransactionContextFilter</filter-name>
-	 *    <display-name>TransactionContextFilter</display-name>
-	 *    <description>Transaction Context Filter</description>
-	 *    <filter-class>no.stelvio.web.framework.filter.TransactionContextFilter</filter-class>
+	 *    <filter-name>RequestContextFilter</filter-name>
+	 *    <display-name>RequestContextFilter</display-name>
+	 *    <description>Request Context Filter</description>
+	 *    <filter-class>no.stelvio.web.framework.filter.RequestContextFilter</filter-class>
 	 *    <init-param>
 	 *       <param-name>screenId</param-name>
 	 *       <param-value>BISYS</param-value>

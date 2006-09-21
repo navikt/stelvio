@@ -13,10 +13,10 @@
 		<filter-class>no.stelvio.web.framework.filter.PerformanceMonitorFilter</filter-class>
 	</filter>
 	<filter>
-		<filter-name>TransactionContextFilter</filter-name>
-		<display-name>TransactionContextFilter</display-name>
-		<description>Transaction Context Filter</description>
-		<filter-class>no.stelvio.web.framework.filter.TransactionContextFilter</filter-class>
+		<filter-name>RequestContextFilter</filter-name>
+		<display-name>RequestContextFilter</display-name>
+		<description>Request Context Filter</description>
+		<filter-class>no.stelvio.web.framework.filter.RequestContextFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>SecurityFilter</filter-name>
@@ -33,7 +33,7 @@
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
-		<filter-name>TransactionContextFilter</filter-name>
+		<filter-name>RequestContextFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
