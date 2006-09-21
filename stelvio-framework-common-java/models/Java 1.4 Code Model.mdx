@@ -8611,20 +8611,20 @@
 <dsc reserve="728" >/**
  * This class is used to store and retrieve information that must
  * be available anywhere in the system during a single request.
- * The population of the different fields in the TransactionContext is left to the
+ * The population of the different fields in the RequestContext is left to the
  * outmost component (normally the Presentation Framework).
  *
  * All transaction specific information is stored for the current thread.
  * Again, it is the outmost component responsibility to populate
  * and remove the data from the thread.
  *
- * While working on different tiers, the TransactionContext must be exported 
+ * While working on different tiers, the RequestContext must be exported 
  * in one tier, and then imported back again on the other tier.
  *
  * @author Petter Skodvin
  * @version $Revision: 1.3 $ $Author: psa2920 $ $Date: 2004/07/14 11:37:55 $
  */</dsc>
-<nam>TransactionContext</nam>
+<nam>RequestContext</nam>
 <rlt>
 <grz id="RcChuBDm2BGKYwANVs5Szg" >
 <anc>B:no.nav.common.framework.context.AbstractContext</anc>
@@ -8635,23 +8635,23 @@
 </grz>
 </rlt>
 <isl>TRUE</isl>
-<anc reserve="828" >0:|{}1:False|{}A:Public|{}E:TransactionContext|{}H:/**
+<anc reserve="828" >0:|{}1:False|{}A:Public|{}E:RequestContext|{}H:/**
  * This class is used to store and retrieve information that must
  * be available anywhere in the system during a single request.
- * The population of the different fields in the TransactionContext is left to the
+ * The population of the different fields in the RequestContext is left to the
  * outmost component (normally the Presentation Framework).
  *
  * All transaction specific information is stored for the current thread.
  * Again, it is the outmost component responsibility to populate
  * and remove the data from the thread.
  *
- * While working on different tiers, the TransactionContext must be exported 
+ * While working on different tiers, the RequestContext must be exported 
  * in one tier, and then imported back again on the other tier.
  *
  * @author Petter Skodvin
  * @version $Revision: 1.3 $ $Author: psa2920 $ $Date: 2004/07/14 11:37:55 $
  */|{}L:False|{}M:False|{}P:False|{}R:True|{}Y:False</anc>
-<ans>no::nav::common::framework::context::TransactionContext</ans>
+<ans>no::nav::common::framework::context::RequestContext</ans>
 <ari>{B8A1BAFA-E610-11D8-8A63-000D56CE52CE},{B8A1BAFE-E610-11D8-8A63-000D56CE52CE}</ari>
 <att>
 <att id="RsChuBDm2BGKYwANVs5Szg" >
@@ -8837,12 +8837,12 @@
  * Private constructor to ensure class being accessed
  * in a static way only
  */</dsc>
-<nam>TransactionContext</nam>
-<anc reserve="195" >1:False|{}A:Private|{}E:TransactionContext|{}F:Sequential|{}H:/**
+<nam>RequestContext</nam>
+<anc reserve="195" >1:False|{}A:Private|{}E:RequestContext|{}F:Sequential|{}H:/**
  * Private constructor to ensure class being accessed
  * in a static way only
  */|{}I:|{}P:False|{}R:False|{}S:False|{}U:False</anc>
-<ans>TransactionContext()</ans>
+<ans>RequestContext()</ans>
 <vsb>PRIVATE</vsb>
 <prm>
 <prm id="W8ChuBDm2BGKYwANVs5Szg" >
@@ -9205,10 +9205,10 @@
 <tgd>
 <RMS:LRF id="zJsaqdzl2BGKYwANVs5Szg" />
 </tgd>
-<val>no\nav\common\framework\context\TransactionContext.java</val>
+<val>no\nav\common\framework\context\RequestContext.java</val>
 </stv>
 </otv>
-<nam>TransactionContext.java</nam>
+<nam>RequestContext.java</nam>
 <rlt>
 <elr id="/7qhuBDm2BGKYwANVs5Szg" >
 <noe>
@@ -9914,7 +9914,7 @@
 </noe>
 </acc>
 </rlt>
-<anc reserve="760" >N:java.rmi.RemoteException,no.nav.common.framework.FrameworkError,no.nav.common.framework.context.TransactionContext,no.nav.common.framework.error.SystemException,no.nav.common.framework.performance.MonitorKey,no.nav.common.framework.performance.PerformanceMonitor,no.nav.common.framework.service.LocalService,no.nav.common.framework.service.ServiceDelegate,no.nav.common.framework.service.ServiceFailedException,no.nav.common.framework.service.ServiceLocator,no.nav.common.framework.service.ServiceNotFoundException,no.nav.common.framework.service.ServiceRequest,no.nav.common.framework.service.ServiceResponse|{}V:no.nav.common.framework.ejb</anc>
+<anc reserve="760" >N:java.rmi.RemoteException,no.nav.common.framework.FrameworkError,no.nav.common.framework.context.RequestContext,no.nav.common.framework.error.SystemException,no.nav.common.framework.performance.MonitorKey,no.nav.common.framework.performance.PerformanceMonitor,no.nav.common.framework.service.LocalService,no.nav.common.framework.service.ServiceDelegate,no.nav.common.framework.service.ServiceFailedException,no.nav.common.framework.service.ServiceLocator,no.nav.common.framework.service.ServiceNotFoundException,no.nav.common.framework.service.ServiceRequest,no.nav.common.framework.service.ServiceResponse|{}V:no.nav.common.framework.ejb</anc>
 </cmx>
 <clx id="MbuhuBDm2BGKYwANVs5Szg" >
 <dsc reserve="273" >/**
@@ -12259,7 +12259,7 @@
 </noe>
 </acc>
 </rlt>
-<anc reserve="166" >N:no.nav.common.framework.context.TransactionContext,no.nav.common.framework.util.SequenceNumberGenerator|{}V:no.nav.common.framework.error</anc>
+<anc reserve="166" >N:no.nav.common.framework.context.RequestContext,no.nav.common.framework.util.SequenceNumberGenerator|{}V:no.nav.common.framework.error</anc>
 </cmx>
 <clx id="gbuhuBDm2BGKYwANVs5Szg" >
 <dsc reserve="233" >/**
@@ -16209,7 +16209,7 @@
 </noe>
 </acc>
 </rlt>
-<anc reserve="166" >N:no.nav.common.framework.context.TransactionContext,no.nav.common.framework.util.SequenceNumberGenerator|{}V:no.nav.common.framework.error</anc>
+<anc reserve="166" >N:no.nav.common.framework.context.RequestContext,no.nav.common.framework.util.SequenceNumberGenerator|{}V:no.nav.common.framework.error</anc>
 </cmx>
 </cls>
 </pkx>

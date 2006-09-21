@@ -196,7 +196,7 @@
 								<td>menu</td>
 								<td>Skriver sidemeny for en side. Henter ut menyelementer og struktur fra databasen, basert på
 								hvilken side som vises og hvilken tilstand prosessen har (f.eks. opprette, oppdatere osv.). Tilstand
-								må være satt i <code>TransactionContext</code>-objektet.
+								må være satt i <code>RequestContext</code>-objektet.
 								Det er 5 atributter som påvirker utseende av menyen: <i>mainHeaderClass</i> og <i>mainItemClass</i>
 								styrer utseende til den øverste delen av tabellen (overskriften er "Meny"), mens <i>subHeaderClass</i>
 								og <i>subItemClass</i> bestemmer utseende til den nederste (overskrift "Undermeny").

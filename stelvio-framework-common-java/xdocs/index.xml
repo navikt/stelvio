@@ -63,8 +63,8 @@
 										
 					<tr>
 						<td>Transaksjonskontekst</td>
-						<td><a href="design/TransactionContext.html">Design</a></td>
-						<td><a href="guide/TransactionContext.html">Guide</a></td>
+						<td><a href="design/RequestContext.html">Design</a></td>
+						<td><a href="guide/RequestContext.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/context/package-summary.html">
                             no.stelvio.common.framework.context
                         </a></td>

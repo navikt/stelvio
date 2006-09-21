@@ -7,7 +7,7 @@ import org.apache.struts.taglib.html.Constants;
 import org.apache.struts.taglib.html.FormTag;
 import org.apache.struts.util.ResponseUtils;
 
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 
 /**
  * Implementation of Struts' FormTag that holds state.
@@ -67,7 +67,8 @@ public class StateAwareFormTag extends FormTag {
 		StringBuffer results = new StringBuffer("<input type=\"hidden\" name=\"");
 		results.append(no.stelvio.web.framework.constants.Constants.CURRENT_STATE);
 		results.append("\" value=\"");
-		results.append(TransactionContext.getState());
+		//results.append(RequestContext.getState());
+		results.append("state-value is removed from RequestContext");
 		results.append("\" />");
 		return results.toString();
 	}

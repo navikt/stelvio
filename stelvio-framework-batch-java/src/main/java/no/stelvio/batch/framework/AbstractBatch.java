@@ -18,7 +18,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import no.stelvio.batch.framework.domain.BatchDO;
 import no.stelvio.common.framework.FrameworkError;
 import no.stelvio.common.framework.config.ConfigurationException;
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.Severity;
 import no.stelvio.common.framework.error.SystemException;
 import no.stelvio.common.framework.util.MessageFormatter;
@@ -252,7 +252,7 @@ public abstract class AbstractBatch {
 	 * @param severity the severity of the message to log.
 	 */
 	private void log(String message, Integer severity) {
-		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { TransactionContext.getUserId(), severity, BATCH, batchName, message }));
+		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { RequestContext.getUserId(), severity, BATCH, batchName, message }));
 	}
 
 	/**

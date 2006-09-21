@@ -157,7 +157,7 @@ public class HentOppgavelisterService extends BusinessHibernateService {
 				// Organiser oppgavelistene etter ident, og slå sammen alle andres identer til en felles type
 				if (null == liste.getAnsvarligIdent()) {
 					liste.setAnsvarligIdent(OppgaveConstants.UFORDELTE_OPPGAVER);
-				} else if (liste.getAnsvarligIdent().equals(TransactionContext.getUserId())) {
+				} else if (liste.getAnsvarligIdent().equals(RequestContext.getUserId())) {
 					liste.setAnsvarligIdent(OppgaveConstants.EGNE_OPPGAVER);
 				} else {
 					liste.setAnsvarligIdent(OppgaveConstants.ANDRES_OPPGAVER);

@@ -13,7 +13,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.config.ExceptionConfig;
 import org.apache.struts.util.MessageResources;
 
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.ErrorHandler;
 import no.stelvio.common.framework.error.LoggableException;
 
@@ -103,10 +103,10 @@ public class FrameworkErrorAction extends Action {
 			errorForm.setStacktrace("Ukjent");
 			errorForm.setErrorCode("Ukjent");
 			errorForm.setErrorId("Ukjent");
-			errorForm.setProcessId(TransactionContext.getProcessId());
-			errorForm.setScreenId(TransactionContext.getScreenId());
-			errorForm.setTransactionId(TransactionContext.getTransactionId());
-			errorForm.setUserId(TransactionContext.getUserId());
+			errorForm.setProcessId(RequestContext.getProcessId());
+			errorForm.setScreenId(RequestContext.getScreenId());
+			errorForm.setTransactionId(RequestContext.getTransactionId());
+			errorForm.setUserId(RequestContext.getUserId());
 		}
 
 		if ("Load".equals(errorForm.getProcessId())) {
@@ -117,7 +117,7 @@ public class FrameworkErrorAction extends Action {
 			log.debug("Forward to view");
 		}
 
-		TransactionContext.setProcessId("Load");
+		RequestContext.setProcessId("Load");
 		return mapping.getInputForward();
 	}
 }

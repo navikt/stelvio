@@ -9,7 +9,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 import org.apache.struts.util.ResponseUtils;
 
 import no.stelvio.common.framework.config.Config;
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.ErrorHandler;
 
 /**
@@ -159,7 +159,7 @@ public class HelpLinkTag extends TagSupport {
 		}
 		html.append(url);
 		if (isContextAware) {
-			html.append(TransactionContext.getModuleId());
+			html.append(RequestContext.getModuleId());
 			if (null != extention) {
 				html.append(extention);
 			}

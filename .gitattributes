@@ -273,11 +273,11 @@ stelvio-framework-common-java/xdocs/design/ErrorHandling.xml -text
 stelvio-framework-common-java/xdocs/design/Kodetabell.xml -text
 stelvio-framework-common-java/xdocs/design/Monitoring.xml -text
 stelvio-framework-common-java/xdocs/design/PerformanceMonitoring.xml -text
+stelvio-framework-common-java/xdocs/design/RequestContext.xml -text
 stelvio-framework-common-java/xdocs/design/Service.xml -text
 stelvio-framework-common-java/xdocs/design/ServiceLocator.xml -text
 stelvio-framework-common-java/xdocs/design/TODO.xml -text
 stelvio-framework-common-java/xdocs/design/Tilgangskontroll.xml -text
-stelvio-framework-common-java/xdocs/design/TransactionContext.xml -text
 stelvio-framework-common-java/xdocs/design/TransferObject.xml -text
 stelvio-framework-common-java/xdocs/guide/Autentisering.xml -text
 stelvio-framework-common-java/xdocs/guide/Configuration.xml -text
@@ -286,11 +286,11 @@ stelvio-framework-common-java/xdocs/guide/ErrorHandling.xml -text
 stelvio-framework-common-java/xdocs/guide/Kodetabell.xml -text
 stelvio-framework-common-java/xdocs/guide/Monitoring.xml -text
 stelvio-framework-common-java/xdocs/guide/PerformanceMonitoring.xml -text
+stelvio-framework-common-java/xdocs/guide/RequestContext.xml -text
 stelvio-framework-common-java/xdocs/guide/Service.xml -text
 stelvio-framework-common-java/xdocs/guide/ServiceLocator.xml -text
 stelvio-framework-common-java/xdocs/guide/TODO.xml -text
 stelvio-framework-common-java/xdocs/guide/Tilgangskontroll.xml -text
-stelvio-framework-common-java/xdocs/guide/TransactionContext.xml -text
 stelvio-framework-common-java/xdocs/guide/TransferObject.xml -text
 stelvio-framework-common-java/xdocs/guide/spring-dtd.txt -text
 stelvio-framework-common-java/xdocs/images/.xvpics/codestable.jpg -text svneol=unset#application/octet-stream

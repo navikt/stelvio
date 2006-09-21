@@ -22,7 +22,7 @@ import org.apache.struts.actions.DispatchAction;
 
 import no.stelvio.common.framework.codestable.CodesTableManager;
 import no.stelvio.common.framework.config.Config;
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.jmx.ServiceLevelConstants;
 import no.stelvio.common.framework.jmx.ServiceLevelMBean;
 import no.stelvio.common.framework.jmx.ServiceLevelMBeanFactory;
@@ -278,7 +278,7 @@ public abstract class FindDispatchAction extends DispatchAction {
 			serviceLevelMBean =
 				ServiceLevelMBeanFactory.getMBean(
 					ServiceLevelConstants.SERVICE_TYPE_PRESENTATION,
-					TransactionContext.getModuleId() + "-" + TransactionContext.getProcessId());
+					RequestContext.getModuleId() + "-" + RequestContext.getProcessId());
 		}
 
 		long start = System.currentTimeMillis();

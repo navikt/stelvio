@@ -14,7 +14,7 @@ import org.springframework.web.context.support.ServletContextAwareProcessor;
 
 import no.stelvio.common.framework.config.Config;
 import no.stelvio.common.framework.config.ConfigurationException;
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.ErrorHandler;
 import no.stelvio.common.framework.performance.MonitorKey;
 import no.stelvio.common.framework.performance.PerformanceMonitor;
@@ -94,25 +94,25 @@ public class StartupServlet extends HttpServlet {
 	 */
 	public void init() throws ServletException {
 		try {
-			TransactionContext.setScreenId(getServletConfig().getInitParameter("screenId"));
-			TransactionContext.setModuleId(getServletConfig().getInitParameter("moduleId"));
-			TransactionContext.setProcessId(getServletConfig().getInitParameter("processId"));
-			TransactionContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
-			TransactionContext.setUserId(getServletConfig().getInitParameter("userId"));
+			RequestContext.setScreenId(getServletConfig().getInitParameter("screenId"));
+			RequestContext.setModuleId(getServletConfig().getInitParameter("moduleId"));
+			RequestContext.setProcessId(getServletConfig().getInitParameter("processId"));
+			RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
+			RequestContext.setUserId(getServletConfig().getInitParameter("userId"));
 
 			PerformanceMonitor.start(MONITOR_KEY);
 			startup();
 			PerformanceMonitor.end(MONITOR_KEY);
 
-			TransactionContext.remove();
 		} catch (ServletException se) {
 			PerformanceMonitor.fail(MONITOR_KEY);
-			TransactionContext.remove();
 			throw se;
 		} catch (RuntimeException re) {
 			PerformanceMonitor.fail(MONITOR_KEY);
-			TransactionContext.remove();
 			throw re;
+		}
+		finally {
+			RequestContext.remove();
 		}
 	}
 

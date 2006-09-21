@@ -3,7 +3,7 @@ package no.stelvio.web.framework.action;
 import org.apache.struts.Globals;
 import servletunit.struts.MockStrutsTestCase;
 
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.ApplicationException;
 import no.stelvio.common.framework.error.ErrorCode;
 import no.stelvio.common.framework.error.SystemException;
@@ -79,9 +79,9 @@ public class FrameworkErrorActionTest extends MockStrutsTestCase {
 		super.setUp();
 		setRequestPathInfo("/testFrameworkErrorAction");
 
-		TransactionContext.setProcessId("processId");
-		TransactionContext.setScreenId("screenId");
-		TransactionContext.setTransactionId("transactionId");
-		TransactionContext.setUserId("userId");
+		RequestContext.setProcessId("processId");
+		RequestContext.setScreenId("screenId");
+		RequestContext.setTransactionId("transactionId");
+		RequestContext.setUserId("userId");
 	}
 }

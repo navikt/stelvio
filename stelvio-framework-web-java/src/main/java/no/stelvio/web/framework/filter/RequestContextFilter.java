@@ -45,7 +45,7 @@ public class RequestContextFilter extends AbstractFilter {
 		throws IOException, ServletException {
 
 		try {
-			// Only import the transaction context from session if both the session
+			// Only import the request context from session if both the session
 			// and a persisted context exists.
 			HttpSession session = request.getSession(false);
 			if (null != session) {
@@ -77,16 +77,6 @@ public class RequestContextFilter extends AbstractFilter {
 			RequestContext.setModuleId(RequestContext.getScreenId());
 			RequestContext.setProcessId(RequestUtils.getProcessId(request));
 			RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
-	
-			// Check if current state is submitted with the request
-			String state = request.getParameter(Constants.CURRENT_STATE);
-			if (null == state) {
-				// Apply default state
-				RequestContext.setState("normal");
-			} else {
-				// Apply desired state
-				RequestContext.setState(state);
-			}
 	
 			// Delegate processing to the next filter or resource in the chain
 			chain.doFilter(request, response);

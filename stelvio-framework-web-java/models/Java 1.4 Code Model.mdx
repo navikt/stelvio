@@ -2263,7 +2263,7 @@
 </acc>
 <acc id="QtuhuBDm2BGKYwANVs5Szg" >
 <noe>
-<RMS:PRF name="no.nav.common.framework.context.TransactionContext"  classStr="clx" />
+<RMS:PRF name="no.nav.common.framework.context.RequestContext"  classStr="clx" />
 </noe>
 </acc>
 <acc id="Q9uhuBDm2BGKYwANVs5Szg" >
@@ -2302,7 +2302,7 @@
 </noe>
 </acc>
 </rlt>
-<anc reserve="460" >N:javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,no.nav.common.framework.context.TransactionContext,no.nav.common.framework.error.ErrorHandler,no.nav.common.framework.error.LoggableException,org.apache.struts.Globals,org.apache.struts.action.Action,org.apache.struts.action.ActionForm,org.apache.struts.action.ActionForward,org.apache.struts.action.ActionMapping|{}V:no.nav.web.framework.action</anc>
+<anc reserve="460" >N:javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,no.nav.common.framework.context.RequestContext,no.nav.common.framework.error.ErrorHandler,no.nav.common.framework.error.LoggableException,org.apache.struts.Globals,org.apache.struts.action.Action,org.apache.struts.action.ActionForm,org.apache.struts.action.ActionForward,org.apache.struts.action.ActionMapping|{}V:no.nav.web.framework.action</anc>
 </cmx>
 <clx id="S9uhuBDm2BGKYwANVs5Szg" >
 <dsc reserve="248" >/**
@@ -4768,7 +4768,7 @@
 </acc>
 <acc id="uduhuBDm2BGKYwANVs5Szg" >
 <noe>
-<RMS:PRF name="no.nav.common.framework.context.TransactionContext"  classStr="clx" />
+<RMS:PRF name="no.nav.common.framework.context.RequestContext"  classStr="clx" />
 </noe>
 </acc>
 <acc id="utuhuBDm2BGKYwANVs5Szg" >
@@ -4807,18 +4807,18 @@
 </noe>
 </acc>
 </rlt>
-<anc reserve="746" >N:java.io.IOException,javax.servlet.FilterChain,javax.servlet.ServletException,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,no.nav.common.framework.FrameworkError,no.nav.common.framework.config.Config,no.nav.common.framework.context.TransactionContext,no.nav.common.framework.error.ApplicationException,no.nav.common.framework.error.ErrorHandler,no.nav.common.framework.service.ServiceFailedException,no.nav.common.framework.service.ServiceRequest,no.nav.common.framework.service.ServiceResponse,no.nav.web.framework.business.BusinessDelegate,no.nav.web.framework.constants.Constants|{}V:no.nav.web.framework.filter</anc>
+<anc reserve="746" >N:java.io.IOException,javax.servlet.FilterChain,javax.servlet.ServletException,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,no.nav.common.framework.FrameworkError,no.nav.common.framework.config.Config,no.nav.common.framework.context.RequestContext,no.nav.common.framework.error.ApplicationException,no.nav.common.framework.error.ErrorHandler,no.nav.common.framework.service.ServiceFailedException,no.nav.common.framework.service.ServiceRequest,no.nav.common.framework.service.ServiceResponse,no.nav.web.framework.business.BusinessDelegate,no.nav.web.framework.constants.Constants|{}V:no.nav.web.framework.filter</anc>
 </cmx>
 <clx id="wtuhuBDm2BGKYwANVs5Szg" >
 <dsc reserve="400" >/**
- * TransactionContextFilter is an implementation of the &lt;i&gt;Intercepting Filter&lt;/i&gt; pattern that
- * is responsible for constructing and destroying the &lt;i&gt;TransactionContext&lt;/i&gt; for each request
+ * RequestContextFilter is an implementation of the &lt;i&gt;Intercepting Filter&lt;/i&gt; pattern that
+ * is responsible for constructing and destroying the &lt;i&gt;RequestContext&lt;/i&gt; for each request
  * and response being processed. This filter should be the first filter in the chain.
  * 
  * @author person7553f5959484
  * @version $Revision: 1.2 $ $Author: psa2920 $ $Date: 2004/07/14 11:40:19 $
  */</dsc>
-<nam>TransactionContextFilter</nam>
+<nam>RequestContextFilter</nam>
 <rlt>
 <grz id="Lsx23Bzm2BGKYwANVs5Szg" >
 <anc>B:no.nav.web.framework.filter.AbstractFilter</anc>
@@ -4828,15 +4828,15 @@
 </noe>
 </grz>
 </rlt>
-<anc reserve="507" >0:|{}1:False|{}A:Public|{}E:TransactionContextFilter|{}H:/**
- * TransactionContextFilter is an implementation of the &lt;i&gt;Intercepting Filter&lt;/i&gt; pattern that
- * is responsible for constructing and destroying the &lt;i&gt;TransactionContext&lt;/i&gt; for each request
+<anc reserve="507" >0:|{}1:False|{}A:Public|{}E:RequestContextFilter|{}H:/**
+ * RequestContextFilter is an implementation of the &lt;i&gt;Intercepting Filter&lt;/i&gt; pattern that
+ * is responsible for constructing and destroying the &lt;i&gt;RequestContext&lt;/i&gt; for each request
  * and response being processed. This filter should be the first filter in the chain.
  * 
  * @author person7553f5959484
  * @version $Revision: 1.2 $ $Author: psa2920 $ $Date: 2004/07/14 11:40:19 $
  */|{}L:False|{}M:False|{}P:False|{}R:False|{}Y:False</anc>
-<ans>no::nav::web::framework::filter::TransactionContextFilter</ans>
+<ans>no::nav::web::framework::filter::RequestContextFilter</ans>
 <ari>{B8A1DBC2-E610-11D8-8A63-000D56CE52CE},{B8A1DBC5-E610-11D8-8A63-000D56CE52CE}</ari>
 <att>
 <att id="L8x23Bzm2BGKYwANVs5Szg" >
@@ -4863,10 +4863,10 @@
 <val>TRUE</val>
 </ntv>
 </otv>
-<nam>TRANSACTION_CONTEXT</nam>
-<anc reserve="124" >4:String|{}5:False|{}A:Private|{}C:Frozen|{}E:TRANSACTION_CONTEXT|{}G:|{}H:|{}O:&quot;TransactionContext&quot;|{}S:True|{}X:Persistent</anc>
-<ans>TRANSACTION_CONTEXT</ans>
-<dve>&quot;TransactionContext&quot;</dve>
+<nam>REQUEST_CONTEXT</nam>
+<anc reserve="124" >4:String|{}5:False|{}A:Private|{}C:Frozen|{}E:REQUEST_CONTEXT|{}G:|{}H:|{}O:&quot;RequestContext&quot;|{}S:True|{}X:Persistent</anc>
+<ans>REQUEST_CONTEXT</ans>
+<dve>&quot;RequestContext&quot;</dve>
 <tye>String</tye>
 <chn>FROZEN</chn>
 <ows>CLASSIFIER</ows>
@@ -4895,13 +4895,13 @@
 <dsc reserve="740" >/**
  * Performs the following processing steps:
  * &lt;ol&gt;
- * 	&lt;li&gt; Loads TransactionContext from Session if possible &lt;/li&gt;
- * 	&lt;li&gt; Updates TransactionContext with current screenId &lt;/li&gt;
- * 	&lt;li&gt; Updates TransactionContext with current processId &lt;/li&gt;
- * 	&lt;li&gt; Updates TransactionContext with current transactionId &lt;/li&gt;
+ * 	&lt;li&gt; Loads RequestContext from Session if possible &lt;/li&gt;
+ * 	&lt;li&gt; Updates RequestContext with current screenId &lt;/li&gt;
+ * 	&lt;li&gt; Updates RequestContext with current processId &lt;/li&gt;
+ * 	&lt;li&gt; Updates RequestContext with current transactionId &lt;/li&gt;
  * 	&lt;li&gt; Delegates processing to the next filter or resource in the chain &lt;/li&gt;
- * 	&lt;li&gt; Stores TransactionContext in Session if possible &lt;/li&gt;
- * 	&lt;li&gt; Resets TransactionContext before next time&lt;/li&gt;
+ * 	&lt;li&gt; Stores RequestContext in Session if possible &lt;/li&gt;
+ * 	&lt;li&gt; Resets RequestContext before next time&lt;/li&gt;
  * &lt;/ol&gt;
  * 
  * @inheritDoc
@@ -4911,13 +4911,13 @@
 <anc reserve="868" >1:False|{}A:Protected|{}E:doFilter|{}F:Sequential|{}H:/**
  * Performs the following processing steps:
  * &lt;ol&gt;
- * 	&lt;li&gt; Loads TransactionContext from Session if possible &lt;/li&gt;
- * 	&lt;li&gt; Updates TransactionContext with current screenId &lt;/li&gt;
- * 	&lt;li&gt; Updates TransactionContext with current processId &lt;/li&gt;
- * 	&lt;li&gt; Updates TransactionContext with current transactionId &lt;/li&gt;
+ * 	&lt;li&gt; Loads RequestContext from Session if possible &lt;/li&gt;
+ * 	&lt;li&gt; Updates RequestContext with current screenId &lt;/li&gt;
+ * 	&lt;li&gt; Updates RequestContext with current processId &lt;/li&gt;
+ * 	&lt;li&gt; Updates RequestContext with current transactionId &lt;/li&gt;
  * 	&lt;li&gt; Delegates processing to the next filter or resource in the chain &lt;/li&gt;
- * 	&lt;li&gt; Stores TransactionContext in Session if possible &lt;/li&gt;
- * 	&lt;li&gt; Resets TransactionContext before next time&lt;/li&gt;
+ * 	&lt;li&gt; Stores RequestContext in Session if possible &lt;/li&gt;
+ * 	&lt;li&gt; Resets RequestContext before next time&lt;/li&gt;
  * &lt;/ol&gt;
  * 
  * @inheritDoc
@@ -4957,10 +4957,10 @@
 <tgd>
 <RMS:LRF id="ydmhuBDm2BGKYwANVs5Szg" />
 </tgd>
-<val>no\nav\web\framework\filter\TransactionContextFilter.java</val>
+<val>no\nav\web\framework\filter\RequestContextFilter.java</val>
 </stv>
 </otv>
-<nam>TransactionContextFilter.java</nam>
+<nam>RequestContextFilter.java</nam>
 <rlt reserve="10" >
 <elr id="xtuhuBDm2BGKYwANVs5Szg" >
 <noe>
@@ -4999,7 +4999,7 @@
 </acc>
 <acc id="ztuhuBDm2BGKYwANVs5Szg" >
 <noe>
-<RMS:PRF name="no.nav.common.framework.context.TransactionContext"  classStr="clx" />
+<RMS:PRF name="no.nav.common.framework.context.RequestContext"  classStr="clx" />
 </noe>
 </acc>
 <acc id="z9uhuBDm2BGKYwANVs5Szg" >
@@ -5013,7 +5013,7 @@
 </noe>
 </acc>
 </rlt>
-<anc reserve="397" >N:java.io.IOException,javax.servlet.FilterChain,javax.servlet.ServletException,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpSession,no.nav.common.framework.context.TransactionContext,no.nav.common.framework.util.SequenceNumberGenerator,no.nav.web.framework.util.RequestUtils|{}V:no.nav.web.framework.filter</anc>
+<anc reserve="397" >N:java.io.IOException,javax.servlet.FilterChain,javax.servlet.ServletException,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,javax.servlet.http.HttpSession,no.nav.common.framework.context.RequestContext,no.nav.common.framework.util.SequenceNumberGenerator,no.nav.web.framework.util.RequestUtils|{}V:no.nav.web.framework.filter</anc>
 </cmx>
 </cls>
 </pkx>

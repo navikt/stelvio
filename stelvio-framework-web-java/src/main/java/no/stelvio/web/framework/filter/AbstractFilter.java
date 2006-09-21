@@ -90,22 +90,27 @@ public abstract class AbstractFilter implements Filter {
 	 * @see javax.servlet.Filter#init(javax.servlet.FilterConfig)
 	 */
 	public final void init(FilterConfig filterConfig) throws ServletException {
-		
-		this.filterConfig = filterConfig;
-		
-		setTransactionContext("Startup");
-		
-		if (log.isInfoEnabled()) {
-			log.info("Initializing " + filterConfig.getFilterName() + " ...");
+		try {
+			this.filterConfig = filterConfig;
+			
+			setRequestContext("Startup");
+			
+			if (log.isInfoEnabled()) {
+				log.info("Initializing " + filterConfig.getFilterName() + " ...");
+			}
+			
+			doInit();
+			
+			if (log.isInfoEnabled()) {
+				log.info(filterConfig.getFilterName() + " initialized");
+			}
 		}
-		
-		doInit();
-		
-		if (log.isInfoEnabled()) {
-			log.info(filterConfig.getFilterName() + " initialized");
+		catch (Exception e) {
+			throw new ServletException("An error occured while initiating the filter", e);
 		}
-		
-		TransactionContext.remove();
+		finally {
+			RequestContext.remove();
+		}
 	}
 
 	/**
@@ -192,15 +197,19 @@ public abstract class AbstractFilter implements Filter {
 	 * @see javax.servlet.Filter#destroy()
 	 */
 	public void destroy() {
-		setTransactionContext("Shutdown");
-		if (log.isInfoEnabled()) {
-			log.info("Destroying " + filterConfig.getFilterName() + " ...");
+		try {
+			setRequestContext("Shutdown");
+			if (log.isInfoEnabled()) {
+				log.info("Destroying " + filterConfig.getFilterName() + " ...");
+			}
+			doDestroy();
+			if (log.isInfoEnabled()) {
+				log.info(filterConfig.getFilterName() + " destroyed");
+			}
 		}
-		doDestroy();
-		if (log.isInfoEnabled()) {
-			log.info(filterConfig.getFilterName() + " destroyed");
+		finally {
+			RequestContext.remove();
 		}
-		TransactionContext.remove();
 	}
 
 	/**
@@ -220,15 +229,15 @@ public abstract class AbstractFilter implements Filter {
 	}
 
 	/**
-	 * Initialize transaction context to ensure proper logging.
+	 * Initialize request context to ensure proper logging.
 	 * 
 	 * @param processId the process id, either "Startup" or "Shutdown" is used.
 	 */
-	private void setTransactionContext(String processId) {
-		TransactionContext.setScreenId(filterConfig.getInitParameter("screenId"));
-		TransactionContext.setModuleId(filterConfig.getInitParameter("moduleId"));
-		TransactionContext.setProcessId(processId);
-		TransactionContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
-		TransactionContext.setUserId(filterConfig.getInitParameter("userId"));
+	private void setRequestContext(String processId) {
+		RequestContext.setScreenId(filterConfig.getInitParameter("screenId"));
+		RequestContext.setModuleId(filterConfig.getInitParameter("moduleId"));
+		RequestContext.setProcessId(processId);
+		RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
+		RequestContext.setUserId(filterConfig.getInitParameter("userId"));
 	}
 }

@@ -21,8 +21,8 @@
 						og eventuelt oppdaterer konfigurasjonen.
 					</li>
 					<li>
-						at <i>Jakarta Log4j</i> kan aksessere informasjon lagret i <a href="TransactionContext">
-						transaksjonskonteksten</a>. Dette er implementert i <i>Transaction Context</i>.
+						at <i>Jakarta Log4j</i> kan aksessere informasjon lagret i <a href="RequestContext">
+						RequestContexten</a>. Dette er implementert i <i>RequestContext</i>.
 					</li>
 					<li>
 						at <i>Jakarta Log4j</i> kan konfigureres vha <i>Java Management Extentions</i> (JMX),

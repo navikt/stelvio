@@ -19,14 +19,14 @@ import org.apache.struts.tiles.TilesRequestProcessor;
 import org.apache.struts.util.RequestUtils;
 
 import no.stelvio.common.framework.FrameworkError;
-import no.stelvio.common.framework.context.TransactionContext;
+import no.stelvio.common.framework.context.RequestContext;
 import no.stelvio.common.framework.error.ErrorHandler;
 import no.stelvio.common.framework.error.SystemException;
 import no.stelvio.web.framework.constants.Constants;
 
 /**
  * This class Overrides the standard Struts <code>RequestProcessor</code> (for tiles) to make it possible to set the
- * <code>TransactionContext</code> properties and to not run validation in specific cases.
+ * <code>RequestContext</code> properties and to not run validation in specific cases.
  * 
  * @author Jonas Lindholm, Accenture
  * @author person7553f5959484, Accenture
@@ -91,7 +91,7 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 	}
 
 	/**
-	 * Method overrided to set <code>TransactionContext</code> properties. Includes the functionality from both
+	 * Method overrided to set <code>RequestContext</code> properties. Includes the functionality from both
 	 * <code>TilesRequestProcessor</code> and <code>RequestProcessor</code>, as the properties need to be set before
 	 * <i>doForward</i> is called.
 	 *  
@@ -132,7 +132,7 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 			uri = forwardPath;
 		}
 
-		// NAV: Get the mode from the forward and set in the TransactionContext and the session.
+		// NAV: Get the mode from the forward and set in the RequestContext and the session.
 		// NAV: Only set if the property is set in struts-config.xml, i.e. the forward
 		// NAV: is of type StateAwareActionForward.
 		if (forward instanceof StateAwareActionForward) {
@@ -140,16 +140,18 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 			if (null == ((StateAwareActionForward) forward).getState()) {
 				throw new IllegalStateException(
 					"State must be configured for <action path='/"
-					+ TransactionContext.getScreenId()
+					+ RequestContext.getScreenId()
 					+ "' ...> and  <forward name='"
 					+ forward.getName()
 					+ "' ...> in struts-config.xml! For details, see javadoc for "
 					+ StateAwareActionForward.class.getName());
 			} else {
-				TransactionContext.setState(((StateAwareActionForward) forward).getState());
+				// ES: Removed from RequestContext
+				//RequestContext.setState(((StateAwareActionForward) forward).getState());
 			}
 		} else {
-			TransactionContext.setState("normal");
+			// ES: Removed from RequestContext
+			//RequestContext.setState("normal");
 		}
 
 		// NAV: Remove FormBean from HttpSession unless forward is of type SessionScope
@@ -162,7 +164,7 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 		}
 
 		// NAV: Set next screen as module
-		TransactionContext.setModuleId(no.stelvio.web.framework.util.RequestUtils.getScreenId(uri));
+		RequestContext.setModuleId(no.stelvio.web.framework.util.RequestUtils.getScreenId(uri));
 
 		// NAV: Set default method in next screen
 		if (null == request.getAttribute(Constants.METHOD_TO_EXECUTE)) {
