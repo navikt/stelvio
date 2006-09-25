@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>no.stelvio.framework</groupId>
-            <artifactId>integration</artifactId>
+            <artifactId>integration-java</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -22,11 +22,11 @@
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>no.stelvio.framework</groupId>
             <artifactId>integration-hibernate</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
+        </dependency-->
         <dependency>
             <groupId>mx4j</groupId>
             <artifactId>mx4j-jmx</artifactId>
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>castor</groupId>
             <artifactId>castor</artifactId>
-            <version>0.9.5.3-xml</version>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 </project>
