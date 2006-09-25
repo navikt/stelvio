@@ -334,14 +334,8 @@ stelvio-framework-common-test/rtv-framework-test-common.iml -text
 stelvio-framework-common-test/src/main/java/no/stelvio/common/framework/test/spring/hibernate/MockHibernateTemplate.java -text
 stelvio-framework-common-test/src/main/java/no/stelvio/common/framework/test/spring/jdbc/MockJdbcTemplate.java -text
 stelvio-framework-common-test/src/main/java/no/stelvio/common/framework/test/spring/transaction/MockTransactionTemplate.java -text
-stelvio-framework-common-test/src/main/java/no/stelvio/common/framework/test/web/ActionModifierActionServlet.java -text
-stelvio-framework-common-test/src/main/java/no/stelvio/common/framework/test/web/ActionModifierRequestProcessor.java -text
-stelvio-framework-common-test/src/main/java/no/stelvio/common/framework/test/web/JMockableStrutsTestCase.java -text
 stelvio-framework-common-test/src/test/java/no/stelvio/common/framework/test/spring/hibernate/MockHibernateTemplateTest.java -text
 stelvio-framework-common-test/src/test/java/no/stelvio/common/framework/test/spring/transaction/MockTransactionTemplateTest.java -text
-stelvio-framework-common-test/src/test/java/no/stelvio/common/framework/test/web/ActionModifierActionServletTest.java -text
-stelvio-framework-common-test/src/test/java/no/stelvio/common/framework/test/web/ActionModifierRequestProcessorTest.java -text
-stelvio-framework-common-test/src/test/java/no/stelvio/common/framework/test/web/JMockableStrutsTestCaseTest.java -text
 stelvio-framework-integration-java/.classpath -text
 stelvio-framework-integration-java/.cvsignore -text
 stelvio-framework-integration-java/.project -text
