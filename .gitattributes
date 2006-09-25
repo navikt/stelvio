@@ -204,13 +204,11 @@ stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/core/Tra
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/dummy/Bean.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/dummy/BeanOther.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/dummy/CalendarBean.java -text
-stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/AbstractServiceFacadeTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/EJBLookupHelperTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/RemoteServiceDescriptionTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/RemoteServiceLocatorTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/ServiceDelegateImplTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/ServiceDelegateLocalImplTest.java -text
-stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/SessionAdapterTest.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/TestContext.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/TestEJB.java -text
 stelvio-framework-common-java/src/test/java/no/stelvio/common/framework/ejb/TestEJBHome.java -text
