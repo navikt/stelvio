@@ -1,21 +1,18 @@
 package no.stelvio.integration.framework.jca.cics.service;
 
-import javax.resource.ResourceException;
-import javax.resource.cci.InteractionSpec;
-import javax.resource.cci.Record;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.ibm.connector2.cics.ECIInteractionSpec;
-
 import no.stelvio.common.framework.FrameworkError;
 import no.stelvio.common.framework.error.ApplicationException;
 import no.stelvio.common.framework.error.SystemException;
 import no.stelvio.common.framework.service.ServiceFailedException;
-import no.stelvio.integration.framework.hibernate.formater.Formater;
 import no.stelvio.integration.framework.jca.cics.records.CICSGenericRecord;
 import no.stelvio.integration.framework.jca.service.RecordMapper;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import javax.resource.ResourceException;
+import javax.resource.cci.InteractionSpec;
+import javax.resource.cci.Record;
 
 
 /**
@@ -84,12 +81,13 @@ public class FixedRecordMapper implements RecordMapper {
 			log.debug("ReturnRecord from Cics: '" + cicsRecord.getText() + "'");
 		}
 
-		Formater stringFormater = interProps.getStringFormater();
-		String fixedRecordText = (String) stringFormater.formatOutput(cicsRecord.getText());
+// TODO: Formater is inside the hibernate module which is removed for now
+//		Formater stringFormater = interProps.getStringFormater();
+//		String fixedRecordText = (String) stringFormater.formatOutput(cicsRecord.getText());
 		String frmappingFileOut = interProps.getFrmappingfileOut();
 
 		try {
-			return mapperWrapper.fixedRecordFormatToMap(frmappingFileOut, fixedRecordText);
+			return mapperWrapper.fixedRecordFormatToMap(frmappingFileOut, "fixedRecordText" /* TODO fixedRecordText */);
 		} catch (ApplicationException e) {
 			throw new ServiceFailedException(FrameworkError.JCA_RECORD_CONVERSION_ERROR, e, frmappingFileOut);
 		}

@@ -1,29 +1,19 @@
 package no.stelvio.integration.framework.jca.cics.service;
 
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
+import com.ibm.connector2.cics.ECIInteractionSpec;
+import no.stelvio.common.framework.FrameworkError;
+import no.stelvio.common.framework.error.SystemException;
+import no.stelvio.common.framework.service.ServiceFailedException;
+import no.stelvio.integration.framework.jca.cics.records.CICSGenericRecord;
+import no.stelvio.integration.framework.jca.service.RecordMapper;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.resource.ResourceException;
 import javax.resource.cci.InteractionSpec;
 import javax.resource.cci.Record;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.ibm.connector2.cics.ECIInteractionSpec;
-
-import net.sf.hibernate.MappingException;
-import net.sf.hibernate.mapping.RootClass;
-
-import no.stelvio.common.framework.FrameworkError;
-import no.stelvio.common.framework.error.SystemException;
-import no.stelvio.common.framework.service.ServiceFailedException;
-import no.stelvio.integration.framework.hibernate.cfg.Configuration;
-import no.stelvio.integration.framework.hibernate.helper.RecordConverter;
-import no.stelvio.integration.framework.hibernate.helper.RecordHelper;
-import no.stelvio.integration.framework.jca.cics.records.CICSGenericRecord;
-import no.stelvio.integration.framework.jca.service.RecordMapper;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -35,7 +25,8 @@ import no.stelvio.integration.framework.jca.service.RecordMapper;
 public class CicsStaticRecordMapper implements RecordMapper {
 	private static final Log log = LogFactory.getLog(CicsStaticRecordMapper.class);
 	private Map cache = new HashMap(12);
-	private RecordConverter recordConverter;
+// TODO: RecordConverter is inside the hibernate module which is removed for now
+//	private RecordConverter recordConverter;
 
 	/**
 	 * {@inheritDoc}
@@ -45,20 +36,22 @@ public class CicsStaticRecordMapper implements RecordMapper {
 	public Record classToRecord(String recordName, InteractionProperties interProps, Object bean)
 		throws ServiceFailedException {
 
-		Configuration configuration = getConfiguration(interProps, retrieveClassloader());
-		RootClass clazz = RecordHelper.getServiceRootClass(configuration, recordName);
+// TODO: Is inside the hibernate module which is removed for now
+//		Configuration configuration = getConfiguration(interProps, retrieveClassloader());
+//		RootClass clazz = RecordHelper.getServiceRootClass(configuration, recordName);
 
-		if (log.isDebugEnabled()) {
-			log.debug("RootClassName: " + clazz.getName());
-		}
+//		if (log.isDebugEnabled()) {
+//			log.debug("RootClassName: " + clazz.getName());
+//		}
 
 		StringBuffer buffer = new StringBuffer();
 
 		// Create a string from the given service
 		try {
-			recordConverter.classToRecord(configuration, clazz, bean, buffer);
+// TODO: Is inside the hibernate module which is removed for now
+//			recordConverter.classToRecord(configuration, clazz, bean, buffer);
 		} catch (Exception e) {
-			throw new ServiceFailedException(FrameworkError.JCA_RECORD_CONVERSION_ERROR, e, clazz.getName());
+			throw new ServiceFailedException(FrameworkError.JCA_RECORD_CONVERSION_ERROR, e, "TODO"/*clazz.getName()*/);
 		}
 
 		if (log.isDebugEnabled()) {
@@ -87,13 +80,15 @@ public class CicsStaticRecordMapper implements RecordMapper {
 			log.debug("ReturnRecord from Cics: " + cicsRecord.getText());
 		}
 
-		Configuration configuration = getConfiguration(interProps, retrieveClassloader());
-		RootClass clazz = RecordHelper.getServiceRootClass(configuration, recordName);
+// TODO: Is inside the hibernate module which is removed for now
+//		Configuration configuration = getConfiguration(interProps, retrieveClassloader());
+//		RootClass clazz = RecordHelper.getServiceRootClass(configuration, recordName);
 
 		try {
-			return recordConverter.recordToClass(configuration, cicsRecord.getText(), clazz);
-		} catch (Exception e) {
-			throw new ServiceFailedException(FrameworkError.JCA_RECORD_CONVERSION_ERROR, e, clazz.getName());
+//			return recordConverter.recordToClass(configuration, cicsRecord.getText(), clazz);
+            return null;
+        } catch (Exception e) {
+			throw new ServiceFailedException(FrameworkError.JCA_RECORD_CONVERSION_ERROR, e, "test"/*clazz.getName()*/);
 		}
 	}
 
@@ -130,6 +125,8 @@ public class CicsStaticRecordMapper implements RecordMapper {
 	 * @param contextClassLoader the <code>ClassLoader</code> to use for loading the mapping files.
 	 * @return Configuration the record mapper configuration.
 	 */
+// TODO: Uses the hibernate module which is removed for now
+/*
 	private synchronized Configuration getConfiguration(InteractionProperties interaction, final ClassLoader contextClassLoader) {
 
 		Configuration config = (Configuration) cache.get(interaction);
@@ -155,15 +152,19 @@ public class CicsStaticRecordMapper implements RecordMapper {
 
 		return newConfig;
 	}
+*/
 
 	/**
 	 * Creates an empty configuration.
 	 *
 	 * @return an empty configuration.
 	 */
+// TODO: Uses the hibernate module which is removed for now
+/*
 	Configuration newConfig() {
 		return new Configuration();
 	}
+*/
 
 	/**
 	 * Helper method for retrieving the class loader to use for loading mapping files.
@@ -180,7 +181,10 @@ public class CicsStaticRecordMapper implements RecordMapper {
 	 * @param recordConverter the <code>RecordConverter</code> to use.
 	 * @see RecordConverter
 	 */
+// TODO: Uses the hibernate module which is removed for now
+/*
 	public void setRecordConverter(final RecordConverter recordConverter) {
 		this.recordConverter = recordConverter;
 	}
+*/
 }

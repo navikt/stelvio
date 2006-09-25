@@ -1,10 +1,9 @@
 package no.stelvio.integration.framework.jca.cics.service;
 
-import java.util.List;
-
 import no.stelvio.common.framework.FrameworkError;
 import no.stelvio.common.framework.error.SystemException;
-import no.stelvio.integration.framework.hibernate.formater.Formater;
+
+import java.util.List;
 
 
 /**
@@ -46,7 +45,8 @@ public class InteractionProperties {
 
 	/** Hold string-formatter name 
 	 */
-	private Formater stringFormater = null;
+// TODO: Formater is inside the hibernate module which is removed for now
+//	private Formater stringFormater = null;
 
 	/**
 	 * Validates the configuration of this service and performs further initialization. This method
@@ -73,9 +73,12 @@ public class InteractionProperties {
 			throw new SystemException(FrameworkError.JCA_SERVICE_PROPERTY_MISSING, "mappingFiles");
 		}
 
+// TODO: Uses the hibernate module which is removed for now
+/*
 		if (null == stringFormater) {
 			throw new SystemException(FrameworkError.JCA_SERVICE_PROPERTY_MISSING, "stringFormater");
 		}
+*/
 	}
 
 	/**
@@ -213,23 +216,24 @@ public class InteractionProperties {
 		frmappingfileOut = string;
 	}
 
-	/**
-	 * Getter stringFormater
-	 * 
-	 * @return stringFormater
-	 * 
-	 */
-	public Formater getStringFormater() {
-		return stringFormater;
-	}
-
-	/**
-	 * Setter stringFormater
-	 * 
-	 * @param formater stringFormater
-	 * 
-	 */
-	public void setStringFormater(Formater formater) {
-		stringFormater = formater;
-	}
+// TODO: Formater is inside the hibernate module which is removed for now
+//	/**
+//	 * Getter stringFormater
+//	 *
+//	 * @return stringFormater
+//	 *
+//	 */
+//	public Formater getStringFormater() {
+//		return stringFormater;
+//	}
+//
+//	/**
+//	 * Setter stringFormater
+//	 *
+//	 * @param formater stringFormater
+//	 *
+//	 */
+//	public void setStringFormater(Formater formater) {
+//		stringFormater = formater;
+//	}
 }
