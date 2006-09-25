@@ -1,7 +1,5 @@
 package no.stelvio.common.framework.error;
 
-import com.ibm.ejs.container.UnknownLocalException;
-
 /**
  * LocalException wrapper for WebSphere Application Server 5.1.
  * 
@@ -16,7 +14,7 @@ public class WebSphere51LocalExceptionWrapper implements ExceptionWrapper {
 	public Throwable getCause(Throwable t) {
 		Throwable cause = t.getCause();
 
-		while (cause instanceof UnknownLocalException) {
+		while ("com.ibm.ejs.container.UnknownLocalException".equals(cause.toString())) {
 			// WebSphere Application Server 5.1 likes to wrap runtime exceptions
 			// inside of a com.ibm.ejs.container.UnknownLocalException
 			cause = cause.getCause();
