@@ -1,10 +1,8 @@
 package no.stelvio.web.framework.taglib;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.Tag;
+import no.stelvio.web.framework.taglib.support.CtTagSupport;
+import no.stelvio.web.framework.taglib.support.ExpressionEvaluator;
+import no.stelvio.web.framework.util.RequestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -12,9 +10,10 @@ import org.apache.struts.taglib.html.SelectTag;
 import org.apache.struts.taglib.nested.NestedNameSupport;
 import org.apache.struts.taglib.nested.NestedPropertyHelper;
 
-import no.stelvio.web.framework.taglib.support.CtTagSupport;
-import no.stelvio.web.framework.taglib.support.ExpressionEvaluator;
-import no.stelvio.web.framework.util.RequestUtils;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.Tag;
+import java.io.IOException;
 
 /**
  * Extension of the SelectTag by adding an attribute for determining if the field should be read-only or not.
@@ -186,9 +185,12 @@ public class CTSelectTag extends SelectTag implements NestedNameSupport {
 	 * @throws JspException
 	 */
 	protected void prepareIndex(StringBuffer handlers, String propertyName) throws JspException {
+// TODO: Uses the display tag which is removed for now
+/*
 		if (!no.stelvio.web.framework.taglib.support.TagSupport.prepareIndex(this, pageContext, handlers, propertyName)) {
 			super.prepareIndex(handlers, propertyName);
 		}
+*/
 	}
 
 	/**

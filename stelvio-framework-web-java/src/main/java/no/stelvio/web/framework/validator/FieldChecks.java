@@ -1,11 +1,8 @@
 package no.stelvio.web.framework.validator;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
+import no.stelvio.common.framework.util.DateUtil;
+import no.stelvio.common.framework.util.FNRUtil;
+import no.stelvio.common.framework.util.StringHelper;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.StringUtils;
@@ -18,11 +15,10 @@ import org.apache.commons.validator.util.ValidatorUtils;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.validator.Resources;
-import org.apache.taglibs.standard.lang.support.ExpressionEvaluatorManager;
 
-import no.stelvio.common.framework.util.DateUtil;
-import no.stelvio.common.framework.util.FNRUtil;
-import no.stelvio.common.framework.util.StringHelper;
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 
 /**
  * This class contains the default validations that are used in the validator-rules.xml file.
@@ -259,33 +255,34 @@ public final class FieldChecks {
 	                                 Validator validator,
 	                                 HttpServletRequest request) {
 
-		PageContext pageContext = new FakePageContext(request);
-		String test = field.getVarValue("test");
+// TODO: Should not use this
+//		PageContext pageContext = new FakePageContext(request);
+//		String test = field.getVarValue("test");
 
-		if (field.isIndexed()) {
-			pageContext.setAttribute("indexedProperty", bean);
-			pageContext.setAttribute("form", validator.getParameterValue(Validator.BEAN_PARAM));
-		} else {
-			pageContext.setAttribute("form", bean);
-		}
+//		if (field.isIndexed()) {
+//			pageContext.setAttribute("indexedProperty", bean);
+//			pageContext.setAttribute("form", validator.getParameterValue(Validator.BEAN_PARAM));
+//		} else {
+//			pageContext.setAttribute("form", bean);
+//		}
 
-		pageContext.setAttribute("field", field);
-		pageContext.setAttribute("this", retrieveProperty(bean, field.getProperty()));
-		pageContext.setAttribute("value", ValidatorUtils.getValueAsString(bean, field.getProperty()));
+//		pageContext.setAttribute("field", field);
+//		pageContext.setAttribute("this", retrieveProperty(bean, field.getProperty()));
+//		pageContext.setAttribute("value", ValidatorUtils.getValueAsString(bean, field.getProperty()));
 		Boolean result = Boolean.FALSE;
 
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("The EL expression to test: " + test);
-			LOG.debug("PageContext to use for validating the EL expression: " + pageContext);
-		}
+//		if (LOG.isDebugEnabled()) {
+//			LOG.debug("The EL expression to test: " + test);
+//			LOG.debug("PageContext to use for validating the EL expression: " + pageContext);
+//		}
 
-		try {
-			result = (Boolean) ExpressionEvaluatorManager.evaluate("validateEl", test, Boolean.class, pageContext);
-		} catch (JspException je) {
-			if (LOG.isWarnEnabled()) {
-				LOG.warn(je.getMessage(), je);
-			}
-		}
+//		try {
+//			result = (Boolean) ExpressionEvaluatorManager.evaluate("validateEl", test, Boolean.class, pageContext);
+//		} catch (JspException je) {
+//			if (LOG.isWarnEnabled()) {
+//				LOG.warn(je.getMessage(), je);
+//			}
+//		}
 
 		if (!result.booleanValue()) {
 			if (LOG.isDebugEnabled()) {
