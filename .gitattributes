@@ -7,6 +7,7 @@ stelvio-framework-batch-java/.runtime -text
 stelvio-framework-batch-java/.server -text
 stelvio-framework-batch-java/.serverPreference -text
 stelvio-framework-batch-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
+stelvio-framework-batch-java/pom.xml -text
 stelvio-framework-batch-java/project.properties -text
 stelvio-framework-batch-java/project.xml -text
 stelvio-framework-batch-java/src/main/java/.cvsignore -text
@@ -346,6 +347,7 @@ stelvio-framework-integration-java/.server -text
 stelvio-framework-integration-java/.serverPreference -text
 stelvio-framework-integration-java/LICENSE.txt -text
 stelvio-framework-integration-java/models/rtv-framework-integration.mdx -text
+stelvio-framework-integration-java/pom.xml -text
 stelvio-framework-integration-java/project.properties -text
 stelvio-framework-integration-java/project.xml -text
 stelvio-framework-integration-java/src/main/java/.cvsignore -text
@@ -401,6 +403,7 @@ stelvio-framework-integration-jca/.project -text
 stelvio-framework-integration-jca/.server -text
 stelvio-framework-integration-jca/.serverPreference -text
 stelvio-framework-integration-jca/models/JCAServiceModel.mdx -text
+stelvio-framework-integration-jca/pom.xml -text
 stelvio-framework-integration-jca/project.properties -text
 stelvio-framework-integration-jca/project.xml -text
 stelvio-framework-integration-jca/src/main/java/.cvsignore -text
@@ -437,6 +440,7 @@ stelvio-framework-integration-jms/.runtime -text
 stelvio-framework-integration-jms/.server -text
 stelvio-framework-integration-jms/.serverPreference -text
 stelvio-framework-integration-jms/models/rtv-framework-integration-jms.mdx -text
+stelvio-framework-integration-jms/pom.xml -text
 stelvio-framework-integration-jms/project.properties -text
 stelvio-framework-integration-jms/project.xml -text
 stelvio-framework-integration-jms/src/main/java/.cvsignore -text
@@ -494,6 +498,7 @@ stelvio-framework-logging-java/.runtime -text
 stelvio-framework-logging-java/.server -text
 stelvio-framework-logging-java/.serverPreference -text
 stelvio-framework-logging-java/models/rtv-framework-logging-java.mdx -text
+stelvio-framework-logging-java/pom.xml -text
 stelvio-framework-logging-java/project.properties -text
 stelvio-framework-logging-java/project.xml -text
 stelvio-framework-logging-java/src/main/java/.cvsignore -text
@@ -521,6 +526,7 @@ stelvio-framework-logging-java/xdocs/index.xml -text
 stelvio-framework-sso-was/.classpath -text
 stelvio-framework-sso-was/.cvsignore -text
 stelvio-framework-sso-was/.project -text
+stelvio-framework-sso-was/pom.xml -text
 stelvio-framework-sso-was/project.xml -text
 stelvio-framework-sso-was/src/main/java/no/stelvio/framework/sso/NtlmTrustInterceptor.java -text
 stelvio-framework-sso-was/src/main/java/no/stelvio/framework/sso/StelvioTrustInterceptor.java -text
@@ -532,6 +538,7 @@ stelvio-framework-web-java/.server -text
 stelvio-framework-web-java/.serverPreference -text
 stelvio-framework-web-java/LICENSE.txt -text
 stelvio-framework-web-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
+stelvio-framework-web-java/pom.xml -text
 stelvio-framework-web-java/project.properties -text
 stelvio-framework-web-java/project.xml -text
 stelvio-framework-web-java/src/main/java/.cvsignore -text
