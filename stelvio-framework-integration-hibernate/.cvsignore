@@ -1,7 +1,0 @@
-.websettings
-jcoverage.ser
-*.log
-*.md5
-*snapshot-version
-bin
-nav-framework-integration-hibernate.iml

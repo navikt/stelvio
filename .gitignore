@@ -5,8 +5,6 @@ stelvio-framework-common-java/bin
 stelvio-framework-common-java/debug.log
 stelvio-framework-common-java/target
 stelvio-framework-common-test/target
-stelvio-framework-integration-hibernate/bin
-stelvio-framework-integration-hibernate/target
 stelvio-framework-integration-java/bin
 stelvio-framework-integration-java/target
 stelvio-framework-integration-jca/bin
