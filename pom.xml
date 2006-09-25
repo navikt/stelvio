@@ -96,4 +96,15 @@
             <version>3.8.1</version>
         </dependency>
     </dependencies>
+    <repositories>
+    <repository>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>nav-maven1-repo</id>
+      <name>Maven 1.x Repository</name>
+      <url>http://10.1.85.41/maven</url>
+      <layout>legacy</layout>
+    </repository>
+  </repositories>
 </project>
