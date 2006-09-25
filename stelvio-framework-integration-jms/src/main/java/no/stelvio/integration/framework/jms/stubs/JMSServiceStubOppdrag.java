@@ -1,35 +1,20 @@
 package no.stelvio.integration.framework.jms.stubs;
 
-import java.io.Serializable;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.jms.BytesMessage;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.MapMessage;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.ObjectMessage;
-import javax.jms.Queue;
-import javax.jms.QueueBrowser;
-import javax.jms.QueueReceiver;
-import javax.jms.QueueSender;
-import javax.jms.QueueSession;
-import javax.jms.StreamMessage;
-import javax.jms.TemporaryQueue;
-import javax.jms.TextMessage;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import no.stelvio.integration.framework.jms.formatter.DynamicXMLMessageFormatter;
 import no.stelvio.common.framework.FrameworkError;
 import no.stelvio.common.framework.error.SystemException;
 import no.stelvio.common.framework.service.ServiceFailedException;
 import no.stelvio.common.framework.service.ServiceRequest;
 import no.stelvio.common.framework.service.ServiceResponse;
+import no.stelvio.integration.framework.jms.formatter.DynamicXMLMessageFormatter;
 import no.stelvio.integration.framework.service.IntegrationService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import javax.jms.*;
+import java.io.Serializable;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -487,7 +472,19 @@ public class JMSServiceStubOppdrag extends IntegrationService {
 			return null;
 		}
 
-		/** 
+        public Topic createTopic(String string) throws JMSException {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public TopicSubscriber createDurableSubscriber(Topic topic, String string) throws JMSException {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public TopicSubscriber createDurableSubscriber(Topic topic, String string, String string1, boolean b) throws JMSException {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        /**
 		 * {@inheritDoc}
 		 * @see javax.jms.QueueSession#createReceiver(javax.jms.Queue)
 		 */
@@ -535,7 +532,15 @@ public class JMSServiceStubOppdrag extends IntegrationService {
 			return null;
 		}
 
-		/** 
+        public TemporaryTopic createTemporaryTopic() throws JMSException {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public void unsubscribe(String string) throws JMSException {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        /**
 		 * {@inheritDoc}
 		 * @see javax.jms.Session#createBytesMessage()
 		 */
@@ -609,7 +614,11 @@ public class JMSServiceStubOppdrag extends IntegrationService {
 			return false;
 		}
 
-		/** 
+        public int getAcknowledgeMode() throws JMSException {
+            return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        /**
 		 * {@inheritDoc}
 		 * @see javax.jms.Session#commit()
 		 */
@@ -658,5 +667,21 @@ public class JMSServiceStubOppdrag extends IntegrationService {
 		 */
 		public void run() {
 		}
-	}
+
+        public MessageProducer createProducer(Destination destination) throws JMSException {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public MessageConsumer createConsumer(Destination destination) throws JMSException {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public MessageConsumer createConsumer(Destination destination, String string) throws JMSException {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public MessageConsumer createConsumer(Destination destination, String string, boolean b) throws JMSException {
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+    }
 }
