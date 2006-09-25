@@ -11,7 +11,6 @@
         <module>stelvio-framework-business-java</module>
         <module>stelvio-framework-common-java</module>
         <module>stelvio-framework-common-test</module>
-        <module>stelvio-framework-integration-hibernate</module>
         <module>stelvio-framework-integration-java</module>
         <module>stelvio-framework-integration-jca</module>
         <module>stelvio-framework-integration-jms</module>
@@ -49,11 +48,6 @@
         <dependency>
             <groupId>hibernate</groupId>
             <artifactId>hibernate</artifactId>
-            <version>2.1.6</version>
-        </dependency>
-        <dependency>
-            <groupId>hibernate</groupId>
-            <artifactId>hibernate3</artifactId>
             <version>3.0.5</version>
         </dependency>
         <dependency>
@@ -84,17 +78,22 @@
         <dependency>
             <groupId>jmock</groupId>
             <artifactId>jmock</artifactId>
-            <version>20040803-110809</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>jmock</groupId>
             <artifactId>jmock-cglib</artifactId>
-            <version>20040803-110809</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
             <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
         </dependency>
     </dependencies>
 </project>

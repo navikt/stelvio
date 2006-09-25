@@ -26,6 +26,7 @@ stelvio-framework-business-java/.serverPreference -text
 stelvio-framework-business-java/LICENSE.txt -text
 stelvio-framework-business-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
 stelvio-framework-business-java/models/rtv-framework-business.mdx -text
+stelvio-framework-business-java/pom.xml -text
 stelvio-framework-business-java/project.properties -text
 stelvio-framework-business-java/project.xml -text
 stelvio-framework-business-java/src/main/java/.cvsignore -text
@@ -328,6 +329,7 @@ stelvio-framework-common-java/xdocs/navigation.xml -text
 stelvio-framework-common-test/.classpath -text
 stelvio-framework-common-test/.cvsignore -text
 stelvio-framework-common-test/.project -text
+stelvio-framework-common-test/pom.xml -text
 stelvio-framework-common-test/project.properties -text
 stelvio-framework-common-test/project.xml -text
 stelvio-framework-common-test/rtv-framework-test-common.iml -text
