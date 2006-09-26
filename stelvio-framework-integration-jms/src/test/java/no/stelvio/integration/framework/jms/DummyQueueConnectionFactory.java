@@ -1,5 +1,6 @@
 package no.stelvio.integration.framework.jms;
 
+import javax.jms.Connection;
 import javax.jms.JMSException;
 import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
@@ -49,6 +50,16 @@ public class DummyQueueConnectionFactory implements QueueConnectionFactory {
 	 */
 	public DummyQueueConnection getConn() {
 		return conn;
+	}
+
+	public Connection createConnection() throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Connection createConnection(String arg0, String arg1) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,5 +1,6 @@
 package no.stelvio.common.framework.log.appenders;
 
+import javax.jms.Connection;
 import javax.jms.JMSException;
 import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
@@ -71,5 +72,15 @@ public class TestQueueConnectionFactory implements QueueConnectionFactory {
 	 */
 	public void setErrorOnCreate(boolean b) {
 		errorOnCreate = b;
+	}
+
+	public Connection createConnection() throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Connection createConnection(String arg0, String arg1) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

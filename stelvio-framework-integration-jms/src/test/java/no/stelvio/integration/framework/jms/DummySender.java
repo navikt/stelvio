@@ -1,5 +1,6 @@
 package no.stelvio.integration.framework.jms;
 
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Queue;
@@ -97,5 +98,20 @@ public class DummySender implements QueueSender {
 	 */
 	public int getMessagesSent() {
 		return messagesSent;
+	}
+
+	public Destination getDestination() throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void send(Destination arg0, Message arg1) throws JMSException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void send(Destination arg0, Message arg1, int arg2, int arg3, long arg4) throws JMSException {
+		// TODO Auto-generated method stub
+		
 	}
 }

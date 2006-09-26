@@ -3,10 +3,13 @@ package no.stelvio.integration.framework.jms;
 import java.io.Serializable;
 
 import javax.jms.BytesMessage;
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
 import javax.jms.Message;
+import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
+import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 import javax.jms.QueueBrowser;
@@ -15,7 +18,10 @@ import javax.jms.QueueSender;
 import javax.jms.QueueSession;
 import javax.jms.StreamMessage;
 import javax.jms.TemporaryQueue;
+import javax.jms.TemporaryTopic;
 import javax.jms.TextMessage;
+import javax.jms.Topic;
+import javax.jms.TopicSubscriber;
 
 /**
  * 
@@ -280,6 +286,56 @@ public class DummyQueueSession implements QueueSession {
 	 */
 	public void setFailOnMessageCreate(boolean b) {
 		failOnMessageCreate = b;
+	}
+
+	public MessageConsumer createConsumer(Destination arg0) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public MessageConsumer createConsumer(Destination arg0, String arg1) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public MessageConsumer createConsumer(Destination arg0, String arg1, boolean arg2) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public TopicSubscriber createDurableSubscriber(Topic arg0, String arg1) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public TopicSubscriber createDurableSubscriber(Topic arg0, String arg1, String arg2, boolean arg3) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public MessageProducer createProducer(Destination arg0) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public TemporaryTopic createTemporaryTopic() throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Topic createTopic(String arg0) throws JMSException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getAcknowledgeMode() throws JMSException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void unsubscribe(String arg0) throws JMSException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
