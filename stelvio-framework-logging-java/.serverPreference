@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<server-preference>
-   <deployable factoryId="com.ibm.etools.server.looseArchive"
-      memento="nav-framework-logging-java" server="/rtv-bidrag-local-testserver/rtv-bidrag-local-testserver.wsi"/>
-</server-preference>

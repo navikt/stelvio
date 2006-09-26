@@ -1,6 +1,0 @@
-bin
-*.log
-jcoverage.ser
-debug.log.*
-*.md5
-nav-framework-integration-jca.iml

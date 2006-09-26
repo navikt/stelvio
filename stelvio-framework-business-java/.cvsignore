@@ -1,6 +1,0 @@
-bin
-
-*.md5
-jcoverage.ser
-*-snapshot-version
-nav-framework-business-java.iml

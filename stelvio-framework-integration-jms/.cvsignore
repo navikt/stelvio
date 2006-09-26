@@ -1,9 +1,0 @@
-*.log
-jcoverage.ser
-.websettings
-bin
-*.md5
-rtv-framework-integration-jms-pom-snapshot-version
-javadoc*
-rtv-framework-integration-jms.iml
-*.log*

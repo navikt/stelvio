@@ -1,9 +1,0 @@
-*.log
-.server
-bin
-jcoverage.ser
-debug.log.*
-junit*.properties
-*.md5
-nav-framework-common-java.iml
-javadoc*
