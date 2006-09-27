@@ -50,7 +50,7 @@
 <source><![CDATA[
 <beans>
    ...
-   <bean id="IntegrationFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
+   <bean id="IntegrationFacade" class="no.stelvio.common.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/stelvio/integration/IntegrationFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>

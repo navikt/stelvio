@@ -4,7 +4,7 @@
 	Performance Monitoring Configuration is used by the PerformanceMonitor
 -->
 <beans>
-     <bean id="PerformanceMonitor" class="no.stelvio.common.framework.performance.LogMonitorImpl">
+     <bean id="PerformanceMonitor" class="no.stelvio.common.performance.LogMonitorImpl">
      	<property name="level"><value>4</value></property>
      </bean>
 </beans>

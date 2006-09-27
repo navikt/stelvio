@@ -9,7 +9,7 @@
 			<subsection name="Oversikt">
 
 				<p>
-					Pakken <i>no.stelvio.common.framework.config</i>
+					Pakken <i>no.stelvio.common.config</i>
 					består av klasser og interface for systemkonfigurasjon. 
 					Implementasjonen av konfigurasjonstjenestene støtter følgende funksjonalitet:
 				</p>

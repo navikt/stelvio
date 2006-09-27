@@ -10,19 +10,19 @@
 		<filter-name>PerformanceMonitorFilter</filter-name>
 		<display-name>PerformanceMonitorFilter</display-name>
 		<description>Performance Monitoring Filter</description>
-		<filter-class>no.stelvio.web.framework.filter.PerformanceMonitorFilter</filter-class>
+		<filter-class>no.stelvio.web.filter.PerformanceMonitorFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>RequestContextFilter</filter-name>
 		<display-name>RequestContextFilter</display-name>
 		<description>Request Context Filter</description>
-		<filter-class>no.stelvio.web.framework.filter.RequestContextFilter</filter-class>
+		<filter-class>no.stelvio.web.filter.RequestContextFilter</filter-class>
 	</filter>
 	<filter>
 		<filter-name>SecurityFilter</filter-name>
 		<display-name>SecurityFilter</display-name>
 		<description>Security Filter</description>
-		<filter-class>no.stelvio.web.framework.filter.SecurityFilter</filter-class>
+		<filter-class>no.stelvio.web.filter.SecurityFilter</filter-class>
 		<init-param>
 			<param-name>PRESENTATION_SERVICES</param-name>
 			<param-value>presentation-services.xml</param-value>
@@ -44,21 +44,21 @@
 		<servlet-name>StartupServlet</servlet-name>
 		<display-name>StartupServlet</display-name>
 		<description>Startup Servlet</description>
-		<servlet-class>no.stelvio.web.framework.servlet.StartupServlet</servlet-class>
+		<servlet-class>no.stelvio.web.servlet.StartupServlet</servlet-class>
 		<init-param>
 			<param-name>StartupHelperList</param-name>
 			<param-value>ErrorHandlerStartup</param-value>
 		</init-param>
 		<init-param>
 			<param-name>ErrorHandlerStartup</param-name>
-			<param-value>no.stelvio.common.framework.error.ErrorHandlerInitializer</param-value>
+			<param-value>no.stelvio.common.error.ErrorHandlerInitializer</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>FrameworkActionServlet</servlet-name>
 		<display-name>FrameworkActionServlet</display-name>
-		<servlet-class>no.stelvio.web.framework.action.FrameworkActionServlet</servlet-class>
+		<servlet-class>no.stelvio.web.action.FrameworkActionServlet</servlet-class>
 		<init-param>
 			<param-name>config</param-name>
 			<param-value>/WEB-INF/struts-config.xml</param-value>

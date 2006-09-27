@@ -17,7 +17,7 @@
 				<p>Ytelsesmålingen konfigureres i performance-monitoring.xml som vist i eksempelet under.</p>
 
 <source><![CDATA[<beans>
-	<bean id="PerformanceMonitor" class="no.stelvio.common.framework.performance.LogMonitorImpl">
+	<bean id="PerformanceMonitor" class="no.stelvio.common.performance.LogMonitorImpl">
 		<property name="level">
 			<value>3</value>
 		</property>
@@ -29,8 +29,8 @@
 					<i>Monitor</i>
 					og kan benyttes direkte i class-attributtet:
 					<ul>
-						<li>no.stelvio.common.framework.performance.DefaultMonitorImpl -> Ingen monitorering</li>
-						<li>no.stelvio.common.framework.performance.LogMonitorImpl -> Ytelsen logges til performance.log</li>
+						<li>no.stelvio.common.performance.DefaultMonitorImpl -> Ingen monitorering</li>
+						<li>no.stelvio.common.performance.LogMonitorImpl -> Ytelsen logges til performance.log</li>
 					</ul>
 				</p>
 				<p>
@@ -45,7 +45,7 @@
 					</ul>
 					Se også javadoc for
 					<a href="../apidocs/no/stelvio/common/framework/performance/AbstractMonitor.html">
-                        no.stelvio.common.framework.performance.AbstractMonitor.html
+                        no.stelvio.common.performance.AbstractMonitor.html
                     </a>
 				</p>
 

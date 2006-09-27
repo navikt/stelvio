@@ -26,7 +26,7 @@
 					<li> 
 						Klassene skal arve 
 						<a href="../apidocs/no/stelvio/integration/framework/service/IntegrationService.html">
-                            no.stelvio.integration.framework.service.IntegrationService
+                            no.stelvio.integration.service.IntegrationService
                         </a> <br/>
 					</li>
 					<li> 
@@ -70,11 +70,11 @@
 <source><![CDATA[
 package no.stelvio.business.saksbehandling.service.oppgave;
 
-import no.stelvio.common.framework.service.LocalService;
-import no.stelvio.common.framework.service.ServiceFailedException;
-import no.stelvio.common.framework.service.ServiceRequest;
-import no.stelvio.common.framework.service.ServiceResponse;
-import no.stelvio.business.framework.service.BusinessService;
+import no.stelvio.common.service.LocalService;
+import no.stelvio.common.service.ServiceFailedException;
+import no.stelvio.common.service.ServiceRequest;
+import no.stelvio.common.service.ServiceResponse;
+import no.stelvio.business.service.BusinessService;
 
 public class AvsluttOppgaverService extends BusinessService {
 
@@ -155,7 +155,7 @@ public class AvsluttOppgaverService extends BusinessService {
 <source><![CDATA[
 <beans>
    ...
-   <bean id="BusinessFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
+   <bean id="BusinessFacade" class="no.stelvio.common.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/stelvio/business/BusinessFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
@@ -165,7 +165,7 @@ public class AvsluttOppgaverService extends BusinessService {
       <property name="cacheable"> true </property>
    </bean>
    ...
-   <bean id="IntegrationFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
+   <bean id="IntegrationFacade" class="no.stelvio.common.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/stelvio/integration/IntegrationFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>

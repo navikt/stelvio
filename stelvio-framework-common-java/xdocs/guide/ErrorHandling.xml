@@ -10,7 +10,7 @@
 			
 				<p>
 					Feilhåndtering er en viktig tjeneste som både arkitektur og applikasjoner har
-					behov for. Pakken <i>no.stelvio.common.framework.error</i>
+					behov for. Pakken <i>no.stelvio.common.error</i>
 					består av klasser og interface for feilhåndtering. 
 				</p>
 				<p>
@@ -68,7 +68,7 @@
                         <font color="blue">[applikasjon]</font></i>. Pass på
 						at feilkoden ikke er definert fra før, og at den er ihht konvensjonene beskrevet i 
 						<a href="../apidocs/no/stelvio/common/framework/error/ErrorCode.html">
-                            no.stelvio.common.framework.error.ErrorCode
+                            no.stelvio.common.error.ErrorCode
                         </a>.<br/>
 					</li>
 					<li>
@@ -177,8 +177,8 @@ try {
 				<h4>Oppdatering av konstanter</h4>
 				<p>Feilkoder skal defineres i en av følgende klasser:</p>
 				<ul>
-					<li>no.stelvio.common.framework.error.ErrorCode - interne feil i feilhåndteringen</li>
-					<li>no.stelvio.common.framework.FrameworkError - systemfeil</li>
+					<li>no.stelvio.common.error.ErrorCode - interne feil i feilhåndteringen</li>
+					<li>no.stelvio.common.FrameworkError - systemfeil</li>
 					<li>no.stelvio.common.
                         <font color="blue">[applikasjon]</font>.ApplicationError - applikasjonsfeil</li>
 				</ul>

@@ -47,7 +47,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.stelvio.common.framework.service</td>
+						<td>no.stelvio.common.service</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -103,7 +103,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.stelvio.common.framework.service</td>
+						<td>no.stelvio.common.service</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -171,7 +171,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.stelvio.common.framework.ejb</td>
+						<td>no.stelvio.common.ejb</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -243,7 +243,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.stelvio.common.framework.ejb</td>
+						<td>no.stelvio.common.ejb</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -328,7 +328,7 @@
 				
 <source><![CDATA[
 <beans>
-   <bean id="FinnPersonITPS" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
+   <bean id="FinnPersonITPS" class="no.stelvio.common.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/stelvio/integration/tps/FinnPersonITPS </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>

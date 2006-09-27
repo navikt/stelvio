@@ -6,7 +6,7 @@
 	<name>stelvio-framework-common-test</name>
 
 	<shortDescription>stelvio - Rammeverk for test</shortDescription>
-	<package>no.stelvio.common.framework.test</package>
+	<package>no.stelvio.common.test</package>
 
 	<!-- 
     Inherit from main

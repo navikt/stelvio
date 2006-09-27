@@ -159,7 +159,7 @@ er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
 <source>
 <![CDATA[
 <beans>
-	<bean id="BidragsBeregningsModul" class="no.stelvio.integration.framework.jca.cics.service.JCACicsService" singleton="true" init-method="init">
+	<bean id="BidragsBeregningsModul" class="no.stelvio.integration.jca.cics.service.JCACicsService" singleton="true" init-method="init">
 		<property name="queueJndi"><value>jca/cics</value></property>
 		<property name="Interactions">
 			<map>
@@ -168,7 +168,7 @@ er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
 		</property>
 		<property name="lookupHelper"><ref bean="ResourceLookupHelper"/></property>
 	</bean>
-	<bean id="K460M700" class="no.stelvio.integration.framework.jca.cics.service.InteractionProperties" singleton="true" init-method="init">
+	<bean id="K460M700" class="no.stelvio.integration.jca.cics.service.InteractionProperties" singleton="true" init-method="init">
 		<property name="mappingFlies">
 			<list>
 				<value>bidragsberegning_K460M700.hbm.xml</value>
@@ -179,7 +179,7 @@ er ikke benyttet av servicen, men kreves av XML validering og XML parser.</p>
 		<property name="preplyLength"><value>2000</value></property>
 		<property name="executionTimeout"><value>10</value></property>
 	</bean>
-	<bean id="ResourceLookupHelper" class="no.stelvio.common.framework.util.ResourceLookupHelper"/>
+	<bean id="ResourceLookupHelper" class="no.stelvio.common.util.ResourceLookupHelper"/>
 </beans>
 ]]>
 	<subsection name="Benytte andre record typer">

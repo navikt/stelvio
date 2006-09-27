@@ -9,13 +9,13 @@
 			<subsection name="Oversikt">
 			
 				<p>
-					Pakken <i>no.stelvio.common.framework.service</i> består av klasser og interface
+					Pakken <i>no.stelvio.common.service</i> består av klasser og interface
 					som kan benyttes til å implementere tjenester for å prosessere forretningslogikk,
 					integrasjonslogikk, eller annen type logikk. Komponentene i denne pakken benyttes 
 					i forbindelse med prosessering av tjenester i samme JVM.
 				</p>
 				<p>
-					Pakken <i>no.stelvio.common.framework.ejb</i> inneholder komponenter for å
+					Pakken <i>no.stelvio.common.ejb</i> inneholder komponenter for å
 					prosessere EJB-tjenester, eventuelt i en annen JVM. Se også 
 					<a href="ServiceLocator.html">Service Locator</a>
 				</p>
@@ -29,7 +29,7 @@
 <pre>
 package no.stelvio.business.bidrag.service;
 
-    import no.stelvio.common.framework.service.LocalService;
+    import no.stelvio.common.service.LocalService;
 
     public class HeltallsDivisjon implements LocalService {
 
@@ -98,7 +98,7 @@ try {
 <pre>
 package no.stelvio.business.bidrag;
 
-    import no.stelvio.common.framework.ejb.RemoteServiceLocator;
+    import no.stelvio.common.ejb.RemoteServiceLocator;
 
     public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 
@@ -115,7 +115,7 @@ package no.stelvio.business.bidrag;
 				
 <pre>
 &lt;beans&gt;
-   &lt;bean id="FinnPersonITPS" class="no.stelvio.common.framework.ejb.RemoteServiceDescription"&gt;
+   &lt;bean id="FinnPersonITPS" class="no.stelvio.common.ejb.RemoteServiceDescription"&gt;
       &lt;property name="jndiName"&gt; ejb/no/stelvio/integration/tps/FinnPersonITPS &lt;/property&gt;
       &lt;property name="providerUrl"&gt; localhost &lt;/property&gt;
       &lt;property name="initialContextFactory"&gt; com.ibm.websphere.naming.WsnInitialContextFactory &lt;/property&gt;

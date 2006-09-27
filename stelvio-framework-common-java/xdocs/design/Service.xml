@@ -9,13 +9,13 @@
 			<subsection name="Oversikt">
 			
 				<p>
-					Pakken <i>no.stelvio.common.framework.service</i> består av klasser og interface
+					Pakken <i>no.stelvio.common.service</i> består av klasser og interface
 					som kan benyttes til å implementere tjenester for å prosessere forretningslogikk,
 					integrasjonslogikk, eller annen type logikk. Komponentene i denne pakken benyttes 
 					i forbindelse med prosessering av tjenester i samme JVM.
 				</p>
 				<p>
-					Pakken <i>no.stelvio.common.framework.ejb</i> inneholder komponenter for å
+					Pakken <i>no.stelvio.common.ejb</i> inneholder komponenter for å
 					prosessere EJB-tjenester, eventuelt i en annen JVM. Se også 
 					<a href="ServiceLocator.html">Service Locator</a>
 				</p>
@@ -49,7 +49,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.stelvio.common.framework.service</td>
+						<td>no.stelvio.common.service</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -86,7 +86,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.stelvio.common.framework.service</td>
+						<td>no.stelvio.common.service</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>
@@ -142,7 +142,7 @@
 					</tr>
 					<tr>
 						<td><b>Pakke</b></td>
-						<td>no.stelvio.common.framework.service</td>
+						<td>no.stelvio.common.service</td>
 					</tr>
 					<tr>
 						<td><b>Beskrivelse</b></td>

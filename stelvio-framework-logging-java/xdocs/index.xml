@@ -23,7 +23,7 @@
 						<td>Logging</td>
 						<td><a href="design/Logging.html">Design</a></td>
 						<td><a href="guide/Logging.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.stelvio.common.framework.log</a></td>
+						<td><a href="apidocs/index.html">no.stelvio.common.log</a></td>
 					</tr>
 				</table>
 			</subsection>

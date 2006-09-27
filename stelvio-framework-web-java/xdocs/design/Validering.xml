@@ -38,8 +38,8 @@
 				<p>
 					Se javadoc for beskrivelse av klasser og metoder.
 					<br/>
-					FrameworkTilesRequestProcessor implementeres i pakken no.stelvio.web.framework.action.
-                    RequestUtils implementeres i pakken no.stelvio.web.framework.util.
+					FrameworkTilesRequestProcessor implementeres i pakken no.stelvio.web.action.
+                    RequestUtils implementeres i pakken no.stelvio.web.util.
                     <br/>
 				</p>
 										

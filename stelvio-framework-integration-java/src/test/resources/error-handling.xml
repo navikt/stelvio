@@ -6,15 +6,15 @@
 <beans>
 
 
-	<bean id="RemoteServiceLocator" class="no.stelvio.common.framework.error.TestServiceLocator" />
+	<bean id="RemoteServiceLocator" class="no.stelvio.common.error.TestServiceLocator" />
 
-	<bean id="InitErrorHandler" class="no.stelvio.common.framework.error.InitErrorHandler">
+	<bean id="InitErrorHandler" class="no.stelvio.common.error.InitErrorHandler">
 		<property name="serviceLocator">
 			<ref bean="RemoteServiceLocator" />
 		</property>
 	</bean>
 
-	<bean id="ErrorHandler" class="no.stelvio.common.framework.error.TestHandlerImpl" init-method="init"></bean>
+	<bean id="ErrorHandler" class="no.stelvio.common.error.TestHandlerImpl" init-method="init"></bean>
 
 </beans>
 

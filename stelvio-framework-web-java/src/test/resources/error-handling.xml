@@ -4,8 +4,8 @@
 	Error Handling Configuration is used by the ErrorHandler
 -->
 <beans>
-	<!-- <bean id="ErrorHandler" class="no.stelvio.common.framework.error.DefaultHandlerImpl"/> -->
-	<bean id="ErrorHandler" class="no.stelvio.common.framework.error.DefaultHandlerImpl" init-method="init"/>
+	<!-- <bean id="ErrorHandler" class="no.stelvio.common.error.DefaultHandlerImpl"/> -->
+	<bean id="ErrorHandler" class="no.stelvio.common.error.DefaultHandlerImpl" init-method="init"/>
 
 </beans>
 

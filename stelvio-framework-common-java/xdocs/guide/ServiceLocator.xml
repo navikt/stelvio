@@ -24,7 +24,7 @@
 <pre>
 package no.stelvio.business.bidrag;
 
-    import no.stelvio.common.framework.service.LocalServiceLocator;
+    import no.stelvio.common.service.LocalServiceLocator;
 
     public final class BusinessServiceLocator extends LocalServiceLocator {
 
@@ -83,7 +83,7 @@ try {
 <pre>
 package no.stelvio.business.bidrag;
 
-    import no.stelvio.common.framework.ejb.RemoteServiceLocator;
+    import no.stelvio.common.ejb.RemoteServiceLocator;
 
     public final class EnterpriseServiceLocator extends RemoteServiceLocator {
 
@@ -100,7 +100,7 @@ package no.stelvio.business.bidrag;
 				
 <pre>
 &lt;beans&gt;
-   &lt;bean id="FinnPersonITPS" class="no.stelvio.common.framework.ejb.RemoteServiceDescription"&gt;
+   &lt;bean id="FinnPersonITPS" class="no.stelvio.common.ejb.RemoteServiceDescription"&gt;
       &lt;property name="jndiName"&gt; ejb/no/stelvio/integration/tps/FinnPersonITPS &lt;/property&gt;
       &lt;property name="providerUrl"&gt; localhost &lt;/property&gt;
       &lt;property name="initialContextFactory"&gt; com.ibm.websphere.naming.WsnInitialContextFactory &lt;/property&gt;

@@ -117,7 +117,7 @@
 						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/design/ServiceLocator.html">Design</a></td>
 						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/guide/ServiceLocator.html">Guide</a></td>
 						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/apidocs/no/stelvio/common/framework/service/package-summary.html">
-                            no.stelvio.common.framework.service
+                            no.stelvio.common.service
                         </a></td>
 					</tr>
 					
@@ -132,14 +132,14 @@
 						<td>Business Service</td>
 						<td><a href="design/BusinessService.html">Design</a></td>
 						<td><a href="guide/BusinessService.html">Guide</a></td>
-						<td><a href="apidocs/index.html">no.stelvio.business.framework.service</a></td>
+						<td><a href="apidocs/index.html">no.stelvio.business.service</a></td>
 					</tr>
 					
 					<tr>
 						<td>Feilhåndtering</td>
 						<td colspan="2"><a href="http://hpapt03/multiproject/stelvio-framework-integration-java/design/ErrorHandling.html">Design og Guide</a></td>
 						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/apidocs/no/stelvio/common/framework/error/package-summary.html">
-                            no.stelvio.common.framework.error
+                            no.stelvio.common.error
                         </a></td>
 					</tr>
 					
@@ -148,7 +148,7 @@
 						<td><a href="design/Transactions.html">Design</a></td>
 						<td><a href="guide/Transactions.html">Guide</a></td>
 						<td><a href="http://hpapt03/multiproject/stelvio-framework-common-java/apidocs/no/stelvio/common/framework/ejb/package-summary.html">
-                            no.stelvio.common.framework.ejb
+                            no.stelvio.common.ejb
                         </a></td>
 					</tr>
 										

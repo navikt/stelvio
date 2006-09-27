@@ -29,7 +29,7 @@
 						<td><a href="design/TransferObject.html">Design</a></td>
 						<td><a href="guide/TransferObject.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/core/package-summary.html">
-                            no.stelvio.common.framework.core
+                            no.stelvio.common.core
                         </a></td>
 					</tr>
 					
@@ -38,7 +38,7 @@
 						<td><a href="design/DomainObject.html">Design</a></td>
 						<td><a href="guide/DomainObject.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/core/package-summary.html">
-                            no.stelvio.common.framework.core
+                            no.stelvio.common.core
                         </a></td>
 					</tr>
 					
@@ -47,7 +47,7 @@
 						<td><a href="design/Configuration.html">Design</a></td>
 						<td><a href="guide/Configuration.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/config/package-summary.html">
-                            no.stelvio.common.framework.config
+                            no.stelvio.common.config
                         </a></td>
 					</tr>
 					
@@ -57,7 +57,7 @@
 						<td><a href="design/ErrorHandling.html">Design</a></td>
 						<td><a href="guide/ErrorHandling.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/error/package-summary.html">
-                            no.stelvio.common.framework.error
+                            no.stelvio.common.error
                         </a></td>
 					</tr>
 										
@@ -66,7 +66,7 @@
 						<td><a href="design/RequestContext.html">Design</a></td>
 						<td><a href="guide/RequestContext.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/context/package-summary.html">
-                            no.stelvio.common.framework.context
+                            no.stelvio.common.context
                         </a></td>
 					</tr>
 					
@@ -75,7 +75,7 @@
 						<td><a href="design/Kodetabell.html">Design</a></td>
 						<td><a href="guide/Kodetabell.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/codestable/package-summary.html">
-                            no.stelvio.common.framework.codestable
+                            no.stelvio.common.codestable
                         </a></td>
 					</tr>
 					
@@ -84,7 +84,7 @@
 						<td><a href="design/Service.html">Design</a></td>
 						<td><a href="guide/Service.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/service/package-summary.html">
-                            no.stelvio.common.framework.service
+                            no.stelvio.common.service
                         </a></td>
 					</tr>
 					
@@ -93,7 +93,7 @@
 						<td><a href="design/ServiceLocator.html">Design</a></td>
 						<td><a href="guide/ServiceLocator.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/service/package-summary.html">
-                            no.stelvio.common.framework.service
+                            no.stelvio.common.service
                         </a></td>
 					</tr>
 							
@@ -102,7 +102,7 @@
 						<td><a href="design/Monitoring.html">Design</a></td>
 						<td><a href="guide/Monitoring.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/monitor/package-summary.html">
-                            no.stelvio.common.framework.monitor
+                            no.stelvio.common.monitor
                         </a></td>
 					</tr>
 					<tr>
@@ -122,7 +122,7 @@
 						<td><a href="design/PerformanceMonitoring.html">Design</a></td>
 						<td><a href="guide/PerformanceMonitoring.html">Guide</a></td>
 						<td><a href="apidocs/no/stelvio/common/framework/performance/package-summary.html">
-                            no.stelvio.common.framework.performance
+                            no.stelvio.common.performance
                         </a></td>
 					</tr>
 					

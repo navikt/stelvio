@@ -22,7 +22,7 @@
 					<li>
 						Klassene skal arve
 						<a href="../apidocs/no/stelvio/business/framework/service/BusinessService.html">
-                            no.stelvio.business.framework.service.BusinessService
+                            no.stelvio.business.service.BusinessService
                         </a>
 						<br />
 					</li>
@@ -122,13 +122,13 @@ import net.sf.hibernate.Query;
 
 import no.stelvio.common.domain.oppgave.Oppgaveliste;
 import no.stelvio.common.domain.oppgave.OppgavelisteNode;
-import no.stelvio.common.framework.service.ServiceFailedException;
-import no.stelvio.common.framework.service.ServiceRequest;
-import no.stelvio.common.framework.service.ServiceResponse;
+import no.stelvio.common.service.ServiceFailedException;
+import no.stelvio.common.service.ServiceRequest;
+import no.stelvio.common.service.ServiceResponse;
 
 import no.stelvio.business.oppgaver.constants.OppgaveConstants;
 
-import no.stelvio.integration.framework.hibernate.service.BusinessHibernateService;
+import no.stelvio.integration.hibernate.service.BusinessHibernateService;
 
 public class HentOppgavelisterService extends BusinessHibernateService {
 	
@@ -187,7 +187,7 @@ public class HentOppgavelisterService extends BusinessHibernateService {
 				<p>Eksempelet nedenfor viser hvordan forretningsfasaden kan konfigureres.</p>
 <source><![CDATA[<beans>
    ...
-   <bean id="BusinessFacade" class="no.stelvio.common.framework.ejb.RemoteServiceDescription">
+   <bean id="BusinessFacade" class="no.stelvio.common.ejb.RemoteServiceDescription">
       <property name="jndiName"> ejb/no/stelvio/business/BusinessFacade </property>
       <property name="providerUrl"> localhost </property>
       <property name="initialContextFactory"> com.ibm.websphere.naming.WsnInitialContextFactory </property>
