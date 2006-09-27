@@ -22,9 +22,6 @@ stelvio-framework-integration-jms/target
 stelvio-framework-logging-java/bin
 stelvio-framework-logging-java/logging.iml
 stelvio-framework-logging-java/target
-stelvio-framework-sso-was/bin
-stelvio-framework-sso-was/sso-was.iml
-stelvio-framework-sso-was/target
 stelvio-framework-web-java/bin
 stelvio-framework-web-java/target
 stelvio-framework-web-java/web.iml

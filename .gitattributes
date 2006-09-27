@@ -493,12 +493,6 @@ stelvio-framework-logging-java/xdocs/design/Logging.xml -text
 stelvio-framework-logging-java/xdocs/guide/Logging.xml -text
 stelvio-framework-logging-java/xdocs/images/design/LoggingClass.gif -text
 stelvio-framework-logging-java/xdocs/index.xml -text
-stelvio-framework-sso-was/.classpath -text
-stelvio-framework-sso-was/.project -text
-stelvio-framework-sso-was/pom.xml -text
-stelvio-framework-sso-was/project.xml -text
-stelvio-framework-sso-was/src/main/java/no/stelvio/framework/sso/NtlmTrustInterceptor.java -text
-stelvio-framework-sso-was/src/main/java/no/stelvio/framework/sso/StelvioTrustInterceptor.java -text
 stelvio-framework-web-java/.classpath -text
 stelvio-framework-web-java/.project -text
 stelvio-framework-web-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
