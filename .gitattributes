@@ -1,5 +1,4 @@
 * text=auto !eol
-/.project -text
 /pom.xml -text
 stelvio-batch-java/.classpath -text
 stelvio-batch-java/.project -text
