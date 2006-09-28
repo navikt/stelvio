@@ -7,20 +7,19 @@
     <version>1.0-SNAPSHOT</version>
     <name>stelvio - framework</name>
     <modules>
-        <module>stelvio-framework-batch-java</module>
-        <module>stelvio-framework-business-java</module>
-        <module>stelvio-framework-common-java</module>
-        <module>stelvio-framework-common-test</module>
-        <module>stelvio-framework-integration-java</module>
-        <module>stelvio-framework-integration-jca</module>
-        <module>stelvio-framework-integration-jms</module>
-        <module>stelvio-framework-logging-java</module>
-        <module>stelvio-framework-sso-was</module>
-        <module>stelvio-framework-web-java</module>
+        <module>stelvio-batch-java</module>
+        <module>stelvio-business-java</module>
+        <module>stelvio-common-java</module>
+        <module>stelvio-common-test-java</module>
+        <module>stelvio-integration-java</module>
+        <module>stelvio-integration-jca</module>
+        <module>stelvio-integration-jms</module>
+        <module>stelvio-logging-java</module>
+        <module>stelvio-web-java</module>
     </modules>
     <developers>
         <developer>
-            <name>personf8e9850ed756</name>
+            <name>Stig Kleppe-Jørgensen</name>
             <id>ska2812</id>
             <email>test@example.com</email>
             <organization>Accenture</organization>
