@@ -9,16 +9,20 @@ import org.springframework.aop.support.RegexpMethodPointcutAdvisor;
 import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 
+import java.util.logging.Logger;
+
 /**
  * Caches results of method invocations.
  *
+ * @todo fix this class or remove it most probably
  * @author personf8e9850ed756
  * @version $Revision: $, $Date: $
  */
 public class MethodCacheInterceptor extends RegexpMethodPointcutAdvisor implements MethodInterceptor {
 	private Cache cache;
+    private Logger logger;
 
-	/**
+    /**
 	 * Called when an intercepted method is called.
 	 *
 	 * @param methodInvocation holds state regarding the invocation of the method.
@@ -30,19 +34,23 @@ public class MethodCacheInterceptor extends RegexpMethodPointcutAdvisor implemen
 		Object result = cache.get(cacheKey);
 
 		if (null == result) {
+/*
 			if (logger.isDebugEnabled()) {
 				logger.debug("Nothing cached for key '" + cacheKey + "'; caching result from method call");
 			}
+*/
 
 			result = methodInvocation.proceed();
 			cache.put(cacheKey, result);
-		} else if (logger.isDebugEnabled()) {
+		} /*else if (logger.isDebugEnabled()) {
 			logger.debug("Item is present in cache for key: " + cacheKey);
 		}
-
+*/
+/*
 		if (logger.isDebugEnabled()) {
 			logger.debug("result retrieved: " + result);
 		}
+*/
 
 		return result;
 	}

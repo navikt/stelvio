@@ -35,7 +35,8 @@ import org.apache.commons.logging.LogFactory;
  * {@link net.sf.ehcache.store.DiskStore}. The {@link net.sf.ehcache.store.DiskStore}
  * requires that both keys and values be {@link Serializable}. For this reason
  * this plugin throws Exceptions when either of these are not castable to {@link Serializable}.
- * 
+ *
+ * @todo will be using spring-cache, so remove this 
  * @author person7553f5959484, Accenture
  * @version $Id: EHCache.java 2786 2006-02-28 13:24:08Z skb2930 $
  */
@@ -204,7 +205,7 @@ public class EHCache
 	public void clear() {
 		try {
 			cache.removeAll();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			throw new ConfigurationException(
 				FrameworkError.CACHE_CLEAR_ERROR,
 				e,
@@ -352,7 +353,7 @@ public class EHCache
 			if (log.isWarnEnabled()) {
 				log.warn("Failed to reset cache " + getName(), e);
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			if (log.isWarnEnabled()) {
 				log.warn("Failed to reset cache " + getName(), e);
 			}
