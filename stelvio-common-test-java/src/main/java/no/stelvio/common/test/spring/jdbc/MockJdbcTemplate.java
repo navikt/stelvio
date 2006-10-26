@@ -174,8 +174,8 @@ public class MockJdbcTemplate extends JdbcTemplate implements Verifiable, Builde
 	/**
 	 * @see org.springframework.jdbc.core.JdbcTemplate#query(java.lang.String, java.lang.Object[], int[], org.springframework.jdbc.core.RowCallbackHandler)
 	 */
-	public List query(String arg0, Object[] arg1, int[] arg2, RowCallbackHandler arg3) throws DataAccessException {
-		return proxyJdbcTemplate.query(arg0, arg1, arg2, arg3);
+	public void query(String arg0, Object[] arg1, int[] arg2, RowCallbackHandler arg3) throws DataAccessException {
+		proxyJdbcTemplate.query(arg0, arg1, arg2, arg3);
 	}
 
 	/**
@@ -195,8 +195,8 @@ public class MockJdbcTemplate extends JdbcTemplate implements Verifiable, Builde
 	/**
 	 * @see org.springframework.jdbc.core.JdbcTemplate#query(java.lang.String, java.lang.Object[], org.springframework.jdbc.core.RowCallbackHandler)
 	 */
-	public List query(String arg0, Object[] arg1, RowCallbackHandler arg2) throws DataAccessException {
-		return proxyJdbcTemplate.query(arg0, arg1, arg2);
+	public void query(String arg0, Object[] arg1, RowCallbackHandler arg2) throws DataAccessException {
+		proxyJdbcTemplate.query(arg0, arg1, arg2);
 	}
 
 	/**
@@ -216,8 +216,8 @@ public class MockJdbcTemplate extends JdbcTemplate implements Verifiable, Builde
 	/**
 	 * @see org.springframework.jdbc.core.JdbcTemplate#query(java.lang.String, org.springframework.jdbc.core.PreparedStatementSetter, org.springframework.jdbc.core.RowCallbackHandler)
 	 */
-	public List query(String arg0, PreparedStatementSetter arg1, RowCallbackHandler arg2) throws DataAccessException {
-		return proxyJdbcTemplate.query(arg0, arg1, arg2);
+	public void query(String arg0, PreparedStatementSetter arg1, RowCallbackHandler arg2) throws DataAccessException {
+		proxyJdbcTemplate.query(arg0, arg1, arg2);
 	}
 
 	/**
@@ -237,8 +237,8 @@ public class MockJdbcTemplate extends JdbcTemplate implements Verifiable, Builde
 	/**
 	 * @see org.springframework.jdbc.core.JdbcTemplate#query(java.lang.String, org.springframework.jdbc.core.RowCallbackHandler)
 	 */
-	public List query(String arg0, RowCallbackHandler arg1) throws DataAccessException {
-		return proxyJdbcTemplate.query(arg0, arg1);
+	public void query(String arg0, RowCallbackHandler arg1) throws DataAccessException {
+		proxyJdbcTemplate.query(arg0, arg1);
 	}
 
 	/**
@@ -262,8 +262,8 @@ public class MockJdbcTemplate extends JdbcTemplate implements Verifiable, Builde
 	/**
 	 * @see org.springframework.jdbc.core.JdbcTemplate#query(org.springframework.jdbc.core.PreparedStatementCreator, org.springframework.jdbc.core.RowCallbackHandler)
 	 */
-	public List query(PreparedStatementCreator arg0, RowCallbackHandler arg1) throws DataAccessException {
-		return proxyJdbcTemplate.query(arg0, arg1);
+	public void query(PreparedStatementCreator arg0, RowCallbackHandler arg1) throws DataAccessException {
+		proxyJdbcTemplate.query(arg0, arg1);
 	}
 
 	/**

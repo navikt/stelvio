@@ -27,6 +27,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
  * typically implemented as anonymous classes for the execute and executeFind methods also will be run when unit
  * testing. When using a regular mock for HibernateTemplate this code will not be run.
  *
+ * @todo moving over to JPA, so should be deleted
  * @author personf8e9850ed756
  * @version $Revision: 2379 $, $Date: 2005-06-24 11:40:20 +0200 (Fri, 24 Jun 2005) $
  * @see HibernateTemplate
@@ -204,10 +205,6 @@ public class MockHibernateTemplate extends HibernateTemplate implements Verifiab
 		return proxyHibernateTemplate.save(entity);
 	}
 
-	public void save(Object entity, Serializable id) throws DataAccessException {
-		proxyHibernateTemplate.save(entity, id);
-	}
-
 	public void saveOrUpdate(Object entity) throws DataAccessException {
 		proxyHibernateTemplate.saveOrUpdate(entity);
 	}
@@ -355,10 +352,6 @@ public class MockHibernateTemplate extends HibernateTemplate implements Verifiab
 
 	public Serializable save(final String entityName, final Object entity) throws DataAccessException {
 		return proxyHibernateTemplate.save(entityName, entity);
-	}
-
-	public void save(final String entityName, final Object entity, final Serializable id) throws DataAccessException {
-		proxyHibernateTemplate.save(entityName, entity, id);
 	}
 
 	public void update(final String entityName, final Object entity) throws DataAccessException {
