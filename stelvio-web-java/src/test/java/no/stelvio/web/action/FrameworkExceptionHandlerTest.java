@@ -1,13 +1,12 @@
 package no.stelvio.web.action;
 
+import no.stelvio.common.FrameworkError;
+import no.stelvio.common.error.ApplicationException;
+
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.config.ExceptionConfig;
 
 import servletunit.struts.MockStrutsTestCase;
-
-import no.stelvio.common.framework.FrameworkError;
-import no.stelvio.common.error.ApplicationException;
-import no.stelvio.web.action.FrameworkExceptionHandler;
 
 /**
  * 

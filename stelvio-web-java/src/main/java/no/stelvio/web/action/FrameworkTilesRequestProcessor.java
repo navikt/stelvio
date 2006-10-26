@@ -1,28 +1,28 @@
 package no.stelvio.web.action;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.config.ForwardConfig;
-import org.apache.struts.tiles.TilesRequestProcessor;
-import org.apache.struts.util.RequestUtils;
-
-import no.stelvio.common.framework.FrameworkError;
+import no.stelvio.common.FrameworkError;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.ErrorHandler;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.web.constants.Constants;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.struts.Globals;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.config.ForwardConfig;
+import org.apache.struts.tiles.TilesRequestProcessor;
+import org.apache.struts.util.RequestUtils;
 
 /**
  * This class Overrides the standard Struts <code>RequestProcessor</code> (for tiles) to make it possible to set the

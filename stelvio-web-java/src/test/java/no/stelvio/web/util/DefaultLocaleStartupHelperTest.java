@@ -4,10 +4,8 @@ import java.security.Permission;
 import java.util.PropertyPermission;
 
 import junit.framework.TestCase;
-
-import no.stelvio.common.framework.FrameworkError;
+import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
-import no.stelvio.web.util.DefaultLocaleStartupHelper;
 
 /**
  * Unit test for DefaultLocaleStartupHelper.

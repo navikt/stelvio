@@ -2,11 +2,11 @@ package no.stelvio.web.util;
 
 import java.util.Locale;
 
-import org.apache.commons.logging.LogFactory;
-import org.apache.commons.lang.ArrayUtils;
-
-import no.stelvio.common.framework.FrameworkError;
+import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
+
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Utility for setting the system's deafult locale.

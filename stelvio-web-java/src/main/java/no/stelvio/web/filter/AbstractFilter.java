@@ -11,15 +11,15 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import no.stelvio.common.framework.FrameworkError;
+import no.stelvio.common.FrameworkError;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.ErrorHandler;
 import no.stelvio.common.error.LoggableException;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.util.SequenceNumberGenerator;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * AbstractFilter is a convenient class that an <i>Intercepting Filter</i> implementation
