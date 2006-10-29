@@ -5,7 +5,7 @@
 -->
 <beans>
 
-	<bean id="ErrorHandler" class="no.stelvio.common.error.TestHandlerImpl" init-method="init"></bean>
+	<bean id="ErrorHandler" class="no.stelvio.common.error.old.TestHandlerImpl" init-method="init"></bean>
 
 </beans>
 

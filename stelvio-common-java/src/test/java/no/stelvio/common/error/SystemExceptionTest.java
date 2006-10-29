@@ -1,6 +1,7 @@
 package no.stelvio.common.error;
 
-import no.stelvio.common.error.ErrorCode;
+import no.stelvio.common.error.old.ErrorCode;
+import no.stelvio.common.error.old.TestError;
 import no.stelvio.common.error.SystemException;
 import junit.framework.TestCase;
 

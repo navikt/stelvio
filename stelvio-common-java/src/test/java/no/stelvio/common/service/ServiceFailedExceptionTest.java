@@ -2,7 +2,7 @@ package no.stelvio.common.service;
 
 import junit.framework.TestCase;
 
-import no.stelvio.common.error.TestError;
+import no.stelvio.common.error.old.TestError;
 import no.stelvio.common.service.ServiceFailedException;
 
 /**

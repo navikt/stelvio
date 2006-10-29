@@ -12,7 +12,7 @@ import junit.framework.TestCase;
 import no.stelvio.common.FrameworkError;
 import no.stelvio.common.ejb.RemoteService;
 import no.stelvio.common.ejb.ServiceDelegateImpl;
-import no.stelvio.common.error.DefaultExceptionWrapper;
+import no.stelvio.common.error.old.DefaultExceptionWrapper;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.performance.MonitorKey;
 import no.stelvio.common.service.Service;

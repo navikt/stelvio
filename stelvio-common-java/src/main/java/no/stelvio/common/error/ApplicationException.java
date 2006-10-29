@@ -2,6 +2,7 @@ package no.stelvio.common.error;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
+import no.stelvio.common.error.old.ErrorCode;
 
 /**
  * Thrown to indicate that a recoverable exception in the application logic

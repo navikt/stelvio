@@ -68,7 +68,7 @@
                         <font color="blue">[applikasjon]</font></i>. Pass på
 						at feilkoden ikke er definert fra før, og at den er ihht konvensjonene beskrevet i 
 						<a href="../apidocs/no/stelvio/common/framework/error/ErrorCode.html">
-                            no.stelvio.common.error.ErrorCode
+                            no.stelvio.common.error.old.ErrorCode
                         </a>.<br/>
 					</li>
 					<li>
@@ -177,7 +177,7 @@ try {
 				<h4>Oppdatering av konstanter</h4>
 				<p>Feilkoder skal defineres i en av følgende klasser:</p>
 				<ul>
-					<li>no.stelvio.common.error.ErrorCode - interne feil i feilhåndteringen</li>
+					<li>no.stelvio.common.error.old.ErrorCode - interne feil i feilhåndteringen</li>
 					<li>no.stelvio.common.FrameworkError - systemfeil</li>
 					<li>no.stelvio.common.
                         <font color="blue">[applikasjon]</font>.ApplicationError - applikasjonsfeil</li>

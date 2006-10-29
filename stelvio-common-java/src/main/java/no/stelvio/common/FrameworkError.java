@@ -1,6 +1,6 @@
 package no.stelvio.common;
 
-import no.stelvio.common.error.ErrorCode;
+import no.stelvio.common.error.old.ErrorCode;
 
 /**
  * Framework error code constants.

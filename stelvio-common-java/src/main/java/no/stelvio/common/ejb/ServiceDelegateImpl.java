@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 import no.stelvio.common.FrameworkError;
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.ExceptionWrapper;
+import no.stelvio.common.error.old.ExceptionWrapper;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.performance.MonitorKey;
 import no.stelvio.common.performance.PerformanceMonitor;

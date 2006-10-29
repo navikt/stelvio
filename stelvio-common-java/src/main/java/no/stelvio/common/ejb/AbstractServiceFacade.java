@@ -1,6 +1,6 @@
 package no.stelvio.common.ejb;
 
-import no.stelvio.common.error.ErrorHandler;
+import no.stelvio.common.error.old.ErrorHandler;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.service.LocalService;
 import no.stelvio.common.service.ServiceFailedException;

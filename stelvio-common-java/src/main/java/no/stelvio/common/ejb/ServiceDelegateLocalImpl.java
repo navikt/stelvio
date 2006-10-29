@@ -6,7 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.FrameworkError;
-import no.stelvio.common.error.ExceptionWrapper;
+import no.stelvio.common.error.old.ExceptionWrapper;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.performance.MonitorKey;
 import no.stelvio.common.performance.PerformanceMonitor;
