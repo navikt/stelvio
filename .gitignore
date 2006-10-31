@@ -10,9 +10,6 @@ stelvio-common-java/debug.log
 stelvio-common-java/target
 stelvio-common-test-java/common-test.iml
 stelvio-common-test-java/target
-stelvio-integration-jca/bin
-stelvio-integration-jca/integration-jca.iml
-stelvio-integration-jca/target
 stelvio-logging-java/bin
 stelvio-logging-java/logging.iml
 stelvio-logging-java/target

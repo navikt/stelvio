@@ -309,15 +309,6 @@ stelvio-common-test-java/src/main/java/no/stelvio/common/test/spring/jdbc/MockJd
 stelvio-common-test-java/src/main/java/no/stelvio/common/test/spring/transaction/MockTransactionTemplate.java -text
 stelvio-common-test-java/src/test/java/no/stelvio/common/test/spring/hibernate/MockHibernateTemplateTest.java -text
 stelvio-common-test-java/src/test/java/no/stelvio/common/test/spring/transaction/MockTransactionTemplateTest.java -text
-stelvio-integration-jca/.classpath -text
-stelvio-integration-jca/.project -text
-stelvio-integration-jca/models/JCAServiceModel.mdx -text
-stelvio-integration-jca/project.properties -text
-stelvio-integration-jca/src/main/java/.cvsignore -text
-stelvio-integration-jca/xdocs/design/JCAService.xml -text
-stelvio-integration-jca/xdocs/images/design/JCAService_class_diagram.png -text
-stelvio-integration-jca/xdocs/images/design/JCAService_sequence_diagram.png -text
-stelvio-integration-jca/xdocs/index.xml -text
 stelvio-logging-java/.classpath -text
 stelvio-logging-java/.project -text
 stelvio-logging-java/models/rtv-framework-logging-java.mdx -text
