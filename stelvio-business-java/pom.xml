@@ -2,14 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>no.stelvio.framework</groupId>
-        <artifactId>framework</artifactId>
+        <groupId>no.stelvio</groupId>
+        <artifactId>stelvio</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>no.stelvio.framework</groupId>
-    <artifactId>business</artifactId>
+    <groupId>no.stelvio</groupId>
+    <artifactId>stelvio-business-java</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
     <name>stelvio - framework business</name>
     <dependencies>
         <dependency>
@@ -18,9 +17,9 @@
             <version>1.1</version>
         </dependency>
         <dependency>
-            <groupId>no.stelvio.framework</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>no.stelvio</groupId>
+            <artifactId>stelvio-common-java</artifactId>
+            <version>${pom.version}</version>
         </dependency>
     </dependencies>
 </project>
