@@ -1,41 +1,24 @@
 package no.stelvio.common.error;
 
-import no.stelvio.common.error.ErrorHandler;
-import junit.framework.TestCase;
+import com.agical.rmock.extension.junit.RMockTestCase;
 
 /**
- * ErrorHandler Unit Test.
- * 
- * @author person7553f5959484, Accenture
- * @version $Revision: 1037 $ $Author: psa2920 $ $Date: 2004-08-16 15:25:10 +0200 (Mon, 16 Aug 2004) $
+ * @author personf8e9850ed756
+ * @todo write javadoc
+ * @todo error handler needs locale from context, have a prototype target source get it so we dont need to call static method here
  */
-public class ErrorHandlerTest extends TestCase {
+public abstract class ErrorHandlerTest extends RMockTestCase {
+    public void testAfterHandlingRethrow() {
+        expectThatExceptionThrown(is.instanceOf(Throwable.class));
+    }
 
-	private String message = "Ohhh my God, Noooooooooo!!!";
-	private Throwable t = new RuntimeException(message);
+    public void testThrowsExceptionIfInputToGetErrorIsNotThrowable() {
+        expectThatExceptionThrown(is.);
+    }
 
-	/**
-	 * Constructor for ErrorHandlerTest.
-	 * @param arg0
-	 */
-	public ErrorHandlerTest(String arg0) {
-		super(arg0);
-	}
+    public void testGetErrorThrowsExceptionIfNoLocaleGiven() {
+        getErrorHandler().getError(IllegalArgumentException.class);
+    }
 
-	public void testHandleError() {
-		assertEquals("t should have been the same", t, ErrorHandler.handleError(t));
-	}
-
-	public void testGetMessage() {
-		assertEquals("message should have been the same", t.getLocalizedMessage(), ErrorHandler.getMessage(t));
-	}
-
-	public void testGetStacktraceAsString() {
-		assertNull(ErrorHandler.getStacktraceAsString(null));
-		assertNotNull(ErrorHandler.getStacktraceAsString(t));
-	}
-
-	public void testInit() {
-		ErrorHandler.init();
-	}
+    public abstract ErrorHandler getErrorHandler();
 }

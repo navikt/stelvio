@@ -56,7 +56,6 @@ stelvio-common-java/models/rtv-framework-common.mdx -text
 stelvio-common-java/pom.xml -text
 stelvio-common-java/project.properties -text
 stelvio-common-java/project.xml -text
-stelvio-common-java/src/main/java/.cvsignore -text
 stelvio-common-java/src/main/java/no/stelvio/common/Constants.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/FrameworkError.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
@@ -102,6 +101,7 @@ stelvio-common-java/src/main/java/no/stelvio/common/error/DefaultHandlerImpl.jav
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorCode.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorConfig.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandler.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlerFactoryBean.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlerInitializer.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionWrapper.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/Handler.java -text
@@ -195,6 +195,7 @@ stelvio-common-java/src/test/java/no/stelvio/common/error/DefaultHandlerImplTest
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorCodeTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorConfigTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerErrorTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerFactoryBeanTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerInitializerTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/LogHandlerImplTest.java -text
