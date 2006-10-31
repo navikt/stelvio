@@ -98,6 +98,7 @@ stelvio-common-java/src/main/java/no/stelvio/common/core/package.html -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ApplicationException.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/DefaultExceptionWrapper.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/DefaultHandlerImpl.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/error/Err.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorCode.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorConfig.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandler.java -text
@@ -192,10 +193,12 @@ stelvio-common-java/src/test/java/no/stelvio/common/dummy/BeanOther.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/dummy/CalendarBean.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ApplicationExceptionTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/DefaultHandlerImplTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/ErrTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorCodeTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorConfigTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerErrorTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerFactoryBeanTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerImplTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerInitializerTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/LogHandlerImplTest.java -text
