@@ -2,6 +2,9 @@ package no.stelvio.common.codestable;
 
 import java.util.ArrayList;
 
+import no.stelvio.common.FrameworkError;
+import no.stelvio.common.error.SystemException;
+
 /**
  * Implementation of CodesTableInitializer for initialization of the codestables 
  * and loading them into the cache for the codestables.
@@ -11,7 +14,12 @@ import java.util.ArrayList;
  */
 public class CodesTableInitializerImpl implements CodesTableInitializer {
 
-	private ArrayList<? extends CodesTable> codesTables;
+	private ArrayList<? extends Class<CodesTable>> codesTables;
+	private CodesTableManager codesTableManager;
+	
+	public void setCodesTableManager(CodesTableManager codesTableManager){
+		this.codesTableManager = codesTableManager;
+	}
 	
 	/**
 	 * Uses CodesTableManager to load the codestables from the database into the
@@ -21,22 +29,21 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	public void init() {
 				
 		if(codesTables.isEmpty()){
-			//throw new CodesTableException();
+			throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND);
 		}
 		
-		/*
 		try{
-			for(CodesTable ct : codesTables){
-				//CodesTableManager.getCodesTable(ct);
+			for(Class<CodesTable> ct : codesTables){
+				CodesTable ctable = codesTableManager.getCodesTable(ct);
 				
-				if( == null){
-					//throw new CodesTableException(); throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, codesTableName);
+				if(null == ctable){
+					throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, ct);
 				}
 			}
 		}
 		catch(Exception ex){
-			//throw new CodesTableException(); throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, sfe);
+			throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, ex);
 		}
-		*/
+		
 	}
 }

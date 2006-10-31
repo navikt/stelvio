@@ -1,5 +1,8 @@
 package no.stelvio.common.codestable;
 
+import no.stelvio.common.FrameworkError;
+import no.stelvio.common.error.SystemException;
+
 /**
  * Implementation of CodesTableFactory used to retrieve a codestable from the database.
  * 
@@ -28,22 +31,17 @@ public class CodesTableFactoryImpl implements CodesTableFactory {
 		
 		T ctable = null;
 		
-		/*
 		try{
-			codesTableItemRepository.findCodesTable(codesTable);
+			ctable = codesTableItemRepository.findCodesTable(codesTable);
 		}
 		catch(Exception err){
-			//TODO: un-comment exception
-			//throw new CodesTableException();throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, sfe);
+			throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, err);
 		}
 		
 		if(ctable == null){
-			//TODO: un-comment exception
-			//throw new CodesTableException(); throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, codesTableClass.getName());
+			throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, codesTable.getName());
 		}
 		
 		return ctable;	
-		*/
-		return null;
 	}
 }

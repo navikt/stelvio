@@ -20,5 +20,6 @@ public interface CodesTable {
 	public void resetPrediacte();
 	public String getDecode(Object code);
 	public String getDecode(Object code, Locale locale) ;
+	public void setCodesTableItem(CodesTableItem codesTableItem);
 
 }

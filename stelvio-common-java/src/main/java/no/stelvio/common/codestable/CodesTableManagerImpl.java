@@ -7,7 +7,7 @@ import no.stelvio.common.error.SystemException;
 /**
  * Implementation of CodesTableManager used for accessing and caching persistent codes tables.
  * 
- * @author personb66fa0b5ff6e, Trygdeetaten
+ * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
 public class CodesTableManagerImpl implements CodesTableManager {
@@ -45,8 +45,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 */
 	private void validateCodesTableClass(final Class codesTableClass){
 		if(null!= codesTableClass && !CodesTableItem.class.isAssignableFrom(codesTableClass)){
-			//TODO: skift ut med riktig type exception
-			//throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, codesTableClass + " is not a codestable");
+			throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, codesTableClass + " is not a codestable");
 		}
 	}	
 }

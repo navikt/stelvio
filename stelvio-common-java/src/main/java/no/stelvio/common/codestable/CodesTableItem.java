@@ -104,7 +104,7 @@ public class CodesTableItem implements Serializable {
 	 * Returns the first date the item is valid from.
 	 * @return the first date the item is valid
 	 */
-	public Date getFromDato(){
+	public Date getFromDate(){
 		return fromDate;
 	}
 	
@@ -112,7 +112,7 @@ public class CodesTableItem implements Serializable {
 	 * Sets the first date the item is valid from.
 	 * @param date the first date the item is valid
 	 */
-	public void setFromDato(Date date){
+	public void setFromDate(Date date){
 		this.fromDate = date;
 	}
 	
@@ -120,7 +120,7 @@ public class CodesTableItem implements Serializable {
 	 * Returns the last date the item is valid from.
 	 * @return the last date the item is valid
 	 */
-	public Date getToDato(){
+	public Date getToDate(){
 		return toDate;
 	}
 
@@ -128,7 +128,7 @@ public class CodesTableItem implements Serializable {
 	 * Sets the last date the item is valid from.
 	 * @param date the last date the item is valid
 	 */
-	public void setToDato(Date date){
+	public void setToDate(Date date){
 		this.toDate = date;
 	}
 
@@ -153,7 +153,7 @@ public class CodesTableItem implements Serializable {
 	 * Returns the validity of this item.
 	 * @return true if item is valid, false otherwise
 	 */
-	public boolean getIsValid(){
+	public Boolean getIsValid(){
 		return isValid;
 	}
 
@@ -161,7 +161,7 @@ public class CodesTableItem implements Serializable {
 	 * Sets the validity of this item.
 	 * @param isValid true to mark item as valid, false otherwise
 	 */
-	public void setIsValid(boolean isValid){
+	public void setIsValid(Boolean isValid){
 		this.isValid = isValid;
 	}
 
@@ -175,8 +175,8 @@ public class CodesTableItem implements Serializable {
 			.append("code", getCode())
 			.append("decode", getDecode())
 			.append("locale", getLocale())
-			.append("validFrom", getFromDato())
-			.append("validTo", getToDato())
+			.append("validFrom", getFromDate())
+			.append("validTo", getToDate())
 			.append("isValid", getIsValid())
 			.toString();
 	}

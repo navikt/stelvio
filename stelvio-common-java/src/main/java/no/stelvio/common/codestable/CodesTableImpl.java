@@ -8,6 +8,8 @@ import org.apache.commons.collections.Predicate;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.error.SystemException;
+import no.stelvio.common.FrameworkError;
 
 /**
  * Implementation of CodesTable used to handle a codestable, its beloning values and add
@@ -21,14 +23,21 @@ public class CodesTableImpl implements CodesTable {
 	/**
 	 * List of codestableitems in a codestable.
 	 */
-	protected ArrayList<CodesTableItem> codesTableItems = null;
+	protected ArrayList<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
 	
 	//List of filtered codestableitems
-	private ArrayList<CodesTableItem> filteredCodesTableItems = null;
+	private ArrayList<CodesTableItem> filteredCodesTableItems = new ArrayList<CodesTableItem>();
 	
 	//List of predicates added to the codestableitems
-	private ArrayList<Predicate> predicates = null;
-		
+	private ArrayList<Predicate> predicates =new ArrayList<Predicate>();
+	
+	/**
+	 * TODO
+	 */
+	public void setCodesTableItem(CodesTableItem codesTableItem){
+		this.codesTableItems.add(codesTableItem);
+	}
+	
 	/** 
 	 * Returns the item in the specified codes table that matches the specified code.
 	 * 
@@ -41,7 +50,7 @@ public class CodesTableImpl implements CodesTable {
 		CodesTableItem cti = null;
 								
 		//There are no predicates for the items of the codestable  
-		if(this.predicates == null){
+		if(this.predicates.isEmpty()){
 			for(CodesTableItem c : this.codesTableItems){
 				if (c.getCode() == code.toString()){
 					cti = c;
@@ -49,7 +58,7 @@ public class CodesTableImpl implements CodesTable {
 			}
 		}
 		//There are defined predicates for the items of the codestable
-		else if(this.predicates != null){ 
+		else if(!this.predicates.isEmpty()){ 
 			for(CodesTableItem c : this.filteredCodesTableItems){
 				if (c.getCode() == code.toString()){
 					cti = c;
@@ -58,8 +67,7 @@ public class CodesTableImpl implements CodesTable {
 		}
 		
 		if(cti == null){
-			//TODO: comment in exception
-			//throw new CodesTableException();
+			throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, "Codestable with code" +code);
 		}
 		
 		return cti;
@@ -73,13 +81,15 @@ public class CodesTableImpl implements CodesTable {
 	public void addPredicate(Predicate predicate) {
 		//If there are no previous predicates added to a codestable, all of the codetableitems in a codetable
 		//are filtered
-		if(predicates == null){
-			this.filteredCodesTableItems = (ArrayList<CodesTableItem>) CollectionUtils.select(this.codesTableItems, predicate);
-		}
-		//If there are previous predicates added to a codestable, the codetableitems in the filtered collection 
-		//are filtered
-		else{
-			this.filteredCodesTableItems = (ArrayList<CodesTableItem>) CollectionUtils.select(this.filteredCodesTableItems, predicate);
+		synchronized (this.filteredCodesTableItems){
+			if(this.predicates.isEmpty()){
+				this.filteredCodesTableItems = (ArrayList<CodesTableItem>) CollectionUtils.select(this.codesTableItems, predicate);
+			}
+			//If there are previous predicates added to a codestable, the codetableitems in the filtered collection 
+			//are filtered
+			else{
+				this.filteredCodesTableItems = (ArrayList<CodesTableItem>) CollectionUtils.select(this.filteredCodesTableItems, predicate);
+			}
 		}
 		
 		this.predicates.add(predicate);	
@@ -93,7 +103,9 @@ public class CodesTableImpl implements CodesTable {
 	 */
 	public String getDecode(Object code) {
 		//TODO hente ut riktig requestcontext - hvordan skal denne bygges opp?
-		Locale locale = new Locale(RequestContext.getLocale().substring(0,1), RequestContext.getLocale().substring(3,4));
+		//Locale locale = new Locale(RequestContext.getLocale().substring(0,1), RequestContext.getLocale().substring(3,4));
+		
+		Locale locale = new Locale("nb", "NO");
 		
 		return getDecode(code, locale);
 	}
@@ -117,9 +129,8 @@ public class CodesTableImpl implements CodesTable {
 			}
 		}
 		
-		//TODO: COMMENT IN: throw new CodesTableException();
-
-		return null;	
+		throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, "Codestable with code" +code);
+	
 	}
 
 	/** 
