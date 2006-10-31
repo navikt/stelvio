@@ -71,6 +71,7 @@ public final class CtTagSupport {
 		final Class doClass = retrieveClass(codestable);
 		final CodesTableManager codesTableManager = retrieveCodesTableManager(pageContext);
 
-		return codesTableManager.getDecode(doClass, value);
-	}
+//		return codesTableManager.getDecode(doClass, value); TODO: handled differently
+        return codestable;
+    }
 }

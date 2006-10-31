@@ -1,14 +1,13 @@
 package no.stelvio.web.taglib;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Comparator;
-import java.util.Collections;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-
+import java.util.Map;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
@@ -23,7 +22,6 @@ import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.RequestUtils;
 import org.apache.struts.util.ResponseUtils;
 
-import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.web.taglib.support.CtTagSupport;
 import no.stelvio.web.taglib.support.ExpressionEvaluator;
@@ -81,7 +79,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 	 * Holds a bean which implements {@link CodesTableManager.Filter}. If not null, it will be used to select which
 	 * elements of the codes table that should be shown.
 	 */
-	private CodesTableManager.Filter ctFilter = null;
+//	private CodesTableManager.Filter ctFilter = null; TODO: new way of handling this
 
 	/**
 	 * A potential EL expression that points to a bean which implements {@link CodesTableManager.Filter}.
@@ -302,7 +300,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 
 		codestable = null;
 		elCodestable = null;
-		ctFilter = null;
+//		ctFilter = null; TODO: new way of handling this
 		elFilterBean = null;
 		elFilterFormProperty = null;
 		comparator = null;
@@ -357,7 +355,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 		addEmptyOption = eval.evaluateBoolean("addEmptyOption", elAddEmptyOption, addEmptyOption);
 		emptyOptionText = eval.evaluateString("emptyOptionText", elEmptyOptionText);
 		codestable = eval.evaluateString("codestable", elCodestable);
-		ctFilter = evaluateFilterInstance(eval);
+//		ctFilter = evaluateFilterInstance(eval); TODO: new way of handling this
 		comparator = evaluateComparatorInstance(eval);
 		filterHtml = eval.evaluateBoolean("filterHtml", elFilterHtml, filterHtml);
 		style = eval.evaluateString("style", elStyle);
@@ -371,6 +369,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 	 * @return the filter instance.
 	 * @throws JspException a filter can not be created based on the EL expression.
 	 */
+/* TODO: new way of handling this
 	private CodesTableManager.Filter evaluateFilterInstance(final ExpressionEvaluator eval) throws JspException {
 		CodesTableManager.Filter ctFilter = null;
 
@@ -383,6 +382,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 
 		return ctFilter;
 	}
+*/
 
 	/**
 	 * Returns a Comparator based on an EL expression.
@@ -492,15 +492,18 @@ public class CTOptionsCollectionTag extends TagSupport {
 	private Collection retrieveCodesTable(String selectedPropertyValue) throws JspException {
 		final Class doClass = CtTagSupport.retrieveClass(codestable);
 		final CodesTableManager codesTableManager = CtTagSupport.retrieveCodesTableManager(pageContext);
-		final Map ct;
+		final Map ct = null;
 
-		if (null == ctFilter) {
-			ct = codesTableManager.getCodesTable(doClass);
+/* TODO: new way of handling this
+        ct = codesTableManager.getCodesTable(doClass);
 
-			if (ct.isEmpty()) {
-				throw new JspException("No codes table were found for " + doClass);
-			}
-		} else {
+        if (ct.isEmpty()) {
+            throw new JspException("No codes table were found for " + doClass);
+        }
+
+        if (null == ctFilter) {
+		}
+		else {
 			ct = codesTableManager.getFilteredCodesTable(doClass, ctFilter);
 
 			if (addProperty) {
@@ -512,7 +515,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 				}
 			}
 		}
-
+*/
 		return sort(ct.values());
 	}
 
