@@ -1,9 +1,7 @@
 package no.stelvio.common.service;
 
-import no.stelvio.common.error.old.TestError;
-import no.stelvio.common.service.ServiceNotFoundException;
-
 import junit.framework.TestCase;
+import no.stelvio.common.error.TestError;
 
 /**
  * ServiceNotFoundException Unit Test.

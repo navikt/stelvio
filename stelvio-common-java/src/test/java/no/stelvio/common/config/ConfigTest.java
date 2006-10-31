@@ -7,23 +7,20 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-import javax.management.MBeanServer;
-import javax.management.MBeanServerFactory;
-import javax.management.ObjectName;
-import javax.management.MalformedObjectNameException;
-import javax.management.ReflectionException;
+import javax.management.AttributeNotFoundException;
 import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
-import javax.management.AttributeNotFoundException;
-import junit.framework.TestCase;
+import javax.management.MBeanServer;
+import javax.management.MBeanServerFactory;
+import javax.management.MalformedObjectNameException;
+import javax.management.ObjectName;
+import javax.management.ReflectionException;
 
-import no.stelvio.common.config.Config;
-import no.stelvio.common.config.ConfigurationException;
-import no.stelvio.common.ejb.RemoteServiceDescription;
+import junit.framework.TestCase;
 
 /**
  * Unit test for Config.
@@ -186,16 +183,6 @@ public class ConfigTest extends TestCase {
 		assertFalse("Test 3: Start and end files were the same", file.equals(file3));
 	}
 
-	public void testBeanFactoryPostProcessorsAreCalled() {
-		System.setProperty(Config.CONFIG_CAN_BE_CHANGED_SYSTEM_PROPERTY, "true");
-		Config config = Config.getConfig("test-bean-factory-post-processor.xml");
-		RemoteServiceDescription description = (RemoteServiceDescription) config.getBean("TestBean");
-
-		assertEquals("Not the correct jndi name;", "ejb/business/bidrag/BusinessFacadeTestHome", description.getJndiName());
-		assertEquals("Not the correct provider url;", "iiop://localhost:2909/", description.getProviderUrl());
-		assertEquals("Not the correct initical context factory;", "com.ibm.websphere.naming.WsnInitialContextFactories", description.getInitialContextFactory());
-		assertEquals("Not the correct url pgk prefixes;", "com.ibm.runtime:com.ibm.ws.naming:com.ibm.websphere.namings", description.getUrlPkgPrefixes());
-	}
 
 	public void testCanChangeConfigIfSystemPropertyIsSetToTrue() {
 		System.setProperty(Config.CONFIG_CAN_BE_CHANGED_SYSTEM_PROPERTY, "true");

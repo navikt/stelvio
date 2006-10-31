@@ -1,7 +1,7 @@
 package no.stelvio.common.service;
 
 import no.stelvio.common.error.ApplicationException;
-import no.stelvio.common.error.old.ErrorCode;
+import no.stelvio.common.error.ErrorCode;
 
 /**
  * Thrown to indicate that execution of a <i>Service</i> failed.

@@ -1,6 +1,6 @@
 package no.stelvio.common.error.system;
 
-import no.stelvio.common.error.old.ErrorCode;
+import no.stelvio.common.error.ErrorCode;
 import no.stelvio.common.error.SystemException;
 
 /**
