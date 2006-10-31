@@ -1,4 +1,5 @@
-﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.stelvio.framework</groupId>
@@ -16,7 +17,7 @@
     </modules>
     <developers>
         <developer>
-            <name>Stig Kleppe-Jørgensen</name>
+            <name>personf8e9850ed756</name>
             <id>ska2812</id>
             <email>test@example.com</email>
             <organization>Accenture</organization>
