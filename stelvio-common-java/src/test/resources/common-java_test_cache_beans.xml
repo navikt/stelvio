@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/schema/beans/spring-beans.dtd">
+
+<beans> 
+	<bean id="autoproxy" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+	  <property name="configLocation" value="/test-ehcache.xml" />
+	</bean>
+	
+	<bean id="cacheProviderFacade" class="org.springmodules.cache.provider.ehcache.EhCacheFacade">
+	  <property name="cacheManager" ref="cacheManager" />
+	</bean>
+	
+	<bean id="cachingAttributeSource" class="org.springmodules.cache.annotations.AnnotationCachingAttributeSource" />
+	
+	<bean id="cachingListener" class="no.stelvio.common.cache.CustomCachingListener" />
+	
+	<bean id="cachingInterceptor" class="org.springmodules.cache.interceptor.caching.MetadataCachingInterceptor">
+	  <property name="cacheProviderFacade" ref="cacheProviderFacade" />
+	  <property name="cachingAttributeSource" ref="cachingAttributeSource" />
+	  <property name="cachingListeners">
+	    <list>
+	      <ref bean="cachingListener" />
+	    </list>
+	  </property>
+	  <property name="cachingModels">
+	    <props>
+	      <prop key="non-persistent">cacheName=sampleCache1</prop>      
+	      <prop key="persistent">cacheName=sampleCache2</prop>
+	    </props>
+	  </property>
+	</bean>	
+	<bean id="cachingAttributeSourceAdvisor" class="org.springmodules.cache.interceptor.caching.CachingAttributeSourceAdvisor">
+	  <constructor-arg ref="cachingInterceptor" />
+	</bean>
+	
+	<bean id="flushingAttributeSource" class="org.springmodules.cache.annotations.AnnotationFlushingAttributeSource" />
+	
+	<bean id="flushingInterceptor" class="org.springmodules.cache.interceptor.flush.MetadataFlushingInterceptor">
+	  <property name="cacheProviderFacade" ref="cacheProviderFacade" />
+	  <property name="flushingAttributeSource" ref="flushingAttributeSource" />
+	  <property name="flushingModels">
+	    <props>
+	      <prop key="flushingModel">cacheNames=sampleCache1</prop>
+	    </props>
+	  </property>
+	</bean>
+	
+	<bean id="flushingAttributeSourceAdvisor" class="org.springmodules.cache.interceptor.flush.FlushingAttributeSourceAdvisor">
+	  <constructor-arg ref="flushingInterceptor" />
+	</bean>
+  
+	<bean id="cacheTest" class="no.stelvio.common.cache.CacheTestImpl" />
+	
+	<bean id="cacheManagement" class="no.stelvio.common.cache.CacheManagementImpl">	
+		<property name="cacheManager" ref="cacheManager" />
+	</bean>
+	
+	<bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean"/>
+	 
+	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
+		<property name="beans">
+			<map>
+				<entry key="bean:name=cacheManagement" value-ref="cacheManagement" />
+			</map>
+		</property>
+		<property name="server" ref="mbeanServer"/>
+	</bean>
+	 
+	<bean id="cacheManagementProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean">
+		<property name="objectName" value="bean:name=cacheManagement"/>
+		<property name="proxyInterface" value="no.stelvio.common.cache.CacheManagement"/>
+	</bean>
+</beans>

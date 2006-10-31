@@ -224,6 +224,7 @@ stelvio-common-java/src/test/java/no/stelvio/common/util/DateUtilTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/util/FNRUtilTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/util/ReflectUtilTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/util/StringHelperTest.java -text
+stelvio-common-java/src/test/resources/common-java_test_cache_beans.xml -text
 stelvio-common-java/src/test/resources/distributed-services.xml -text
 stelvio-common-java/src/test/resources/error-handling.xml -text
 stelvio-common-java/src/test/resources/log4j.properties -text
