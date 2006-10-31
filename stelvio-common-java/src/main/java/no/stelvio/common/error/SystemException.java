@@ -2,6 +2,7 @@ package no.stelvio.common.error;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
+import no.stelvio.common.FrameworkError;
 
 /**
  * Thrown to indicate that an unrecoverable system exception has occured. <p/>
@@ -54,7 +55,7 @@ public class SystemException extends RuntimeException implements
 	public SystemException(ErrorCode code, Object argument) {
 		this(code, null, new Object[] { argument });
 	}
-
+	
 	/**
 	 * Constructs a new SystemException with the specified error code and list
 	 * of arguments.
@@ -77,6 +78,14 @@ public class SystemException extends RuntimeException implements
 	 *            the cause of this exception.
 	 */
 	public SystemException(ErrorCode code, Throwable cause) {
+		this(code, cause, null);
+	}
+
+	/**
+	 * @param code error code
+	 * @param cause exception
+	 */
+	public SystemException(FrameworkError code, Throwable cause) {
 		this(code, cause, null);
 	}
 
