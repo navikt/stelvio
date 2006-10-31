@@ -61,6 +61,8 @@ stelvio-common-java/src/main/java/no/stelvio/common/Constants.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/FrameworkError.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
+stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagementImpl.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTable.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableFactory.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableFactoryImpl.java -text
