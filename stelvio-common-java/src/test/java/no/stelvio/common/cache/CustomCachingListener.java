@@ -1,0 +1,34 @@
+/**
+ * 
+ */
+package no.stelvio.common.cache;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springmodules.cache.CachingModel;
+import org.springmodules.cache.interceptor.caching.CachingListener;
+
+/**
+ * Custom listener-class that listens to changes in the cache.
+ * 
+ * @author Eirik, Accenture
+ */
+public class CustomCachingListener implements CachingListener {
+	private Logger log = Logger.getLogger(CustomCachingListener.class);
+	
+	public CustomCachingListener() {
+		log.debug("DEBUG FROM LISTENER: Entering constructor for CustomCachingListener...");
+	}
+	
+	public void onCaching(Serializable key, Object object, CachingModel model) {
+		log.debug("DEBUG FROM LISTENER: Entering CustomCachingListener.onCaching()");
+		
+		log.debug("DEBUG FROM LISTENER: \n\n");
+		log.debug("DEBUG FROM LISTENER: Listener - key: "+key);
+		log.debug("DEBUG FROM LISTENER: Listener - object: "+object);
+		log.debug("DEBUG FROM LISTENER: Listener - model: "+model);
+		log.debug("DEBUG FROM LISTENER: \n\n");
+	}
+}
