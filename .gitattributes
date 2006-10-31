@@ -318,10 +318,6 @@ stelvio-integration-jca/xdocs/design/JCAService.xml -text
 stelvio-integration-jca/xdocs/images/design/JCAService_class_diagram.png -text
 stelvio-integration-jca/xdocs/images/design/JCAService_sequence_diagram.png -text
 stelvio-integration-jca/xdocs/index.xml -text
-stelvio-integration-jms/.classpath -text
-stelvio-integration-jms/.project -text
-stelvio-integration-jms/project.properties -text
-stelvio-integration-jms/project.xml -text
 stelvio-logging-java/.classpath -text
 stelvio-logging-java/.project -text
 stelvio-logging-java/models/rtv-framework-logging-java.mdx -text

@@ -13,9 +13,6 @@ stelvio-common-test-java/target
 stelvio-integration-jca/bin
 stelvio-integration-jca/integration-jca.iml
 stelvio-integration-jca/target
-stelvio-integration-jms/bin
-stelvio-integration-jms/integration-jms.iml
-stelvio-integration-jms/target
 stelvio-logging-java/bin
 stelvio-logging-java/logging.iml
 stelvio-logging-java/target
