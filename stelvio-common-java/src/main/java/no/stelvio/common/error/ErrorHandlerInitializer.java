@@ -1,6 +1,8 @@
 package no.stelvio.common.error;
 
 import no.stelvio.common.core.Initializable;
+import no.stelvio.common.error.old.ErrorHandler;
+
 
 /**
  * Class that initializes the ErrorHandler.

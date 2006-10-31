@@ -2,7 +2,6 @@ package no.stelvio.web.taglib;
 
 import java.net.URL;
 import java.util.Hashtable;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
@@ -10,7 +9,6 @@ import org.apache.struts.util.ResponseUtils;
 
 import no.stelvio.common.config.Config;
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.ErrorHandler;
 
 /**
  * Custom tag for rendering a link to the help page. The tag uses the Spring Framework configuration file,
@@ -147,15 +145,15 @@ public class HelpLinkTag extends TagSupport {
 		StringBuffer html = new StringBuffer("<a href=\"");
 		URL url = (URL) urls.get(beanId);
 		if (null == url) {
-			try {
+//			try {
 				Config config = (Config) pageContext.getServletContext().getAttribute(Config.PRESENTATION_SERVICES);
 				url = (URL) config.getBean(beanId);
 				if (null != url) {
 					urls.put(beanId, url);
 				}
-			} catch (RuntimeException re) {
-				ErrorHandler.handleError(re);
-			}
+//			} catch (RuntimeException re) {
+//				ErrorHandler.handleError(re); TODO: handle differently
+//			}
 		}
 		html.append(url);
 		if (isContextAware) {

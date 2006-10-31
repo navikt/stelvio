@@ -2,11 +2,11 @@ package no.stelvio.web.servlet;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
-
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -15,7 +15,6 @@ import org.springframework.web.context.support.ServletContextAwareProcessor;
 import no.stelvio.common.config.Config;
 import no.stelvio.common.config.ConfigurationException;
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.ErrorHandler;
 import no.stelvio.common.performance.MonitorKey;
 import no.stelvio.common.performance.PerformanceMonitor;
 import no.stelvio.common.util.SequenceNumberGenerator;
@@ -143,8 +142,8 @@ public class StartupServlet extends HttpServlet {
 					beanFactory.addBeanPostProcessor(new ServletContextAwareProcessor(getServletContext()));
 				} catch (Throwable t) {
 					throw new ServletException(
-						"Failed to initialize Spring Configuration using " + filename,
-						ErrorHandler.handleError(t));
+						"Failed to initialize Spring Configuration using " + filename
+						/* TODO: error should be handled differently ErrorHandler.handleError(t)*/);
 				}
 
 				getServletContext().setAttribute(Config.PRESENTATION_SERVICES, config);
@@ -175,6 +174,7 @@ public class StartupServlet extends HttpServlet {
 						log.warn("Failed to initialize " + beanId);
 					}
 
+/* TODO: error should be handled differently 
 					try {
 						// Handle the error and continue if that is possible
 						ErrorHandler.handleError(ce);
@@ -182,6 +182,7 @@ public class StartupServlet extends HttpServlet {
 						// Abort initialization if the error cannot be handled
 						throw new ServletException("Failed to initialize and ErrorHandler could not handle error for " + beanId, ce);
 					}
+*/
 				}
 			}
 		}

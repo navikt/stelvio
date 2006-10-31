@@ -5,7 +5,6 @@ import javax.servlet.ServletException;
 import org.apache.struts.action.ActionServlet;
 
 import no.stelvio.common.config.Config;
-import no.stelvio.common.error.ErrorHandler;
 import no.stelvio.web.constants.Constants;
 
 
@@ -42,8 +41,8 @@ public class FrameworkActionServlet extends ActionServlet {
 				getServletContext().setAttribute(Config.PRESENTATION_SERVICES, Config.getConfig(filename));
 			} catch (Throwable t) {
 				throw new ServletException(
-					"Failed to Initialize Spring Configuration using " + filename,
-					ErrorHandler.handleError(t));
+					"Failed to Initialize Spring Configuration using " + filename
+					/*ErrorHandler.handleError(t) TODO: handled differently*/);
 			}
 		}
 		if (log.isInfoEnabled()) {

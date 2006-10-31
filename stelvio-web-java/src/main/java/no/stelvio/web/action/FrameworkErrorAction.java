@@ -14,8 +14,8 @@ import org.apache.struts.config.ExceptionConfig;
 import org.apache.struts.util.MessageResources;
 
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.ErrorHandler;
 import no.stelvio.common.error.LoggableException;
+import no.stelvio.common.error.old.ErrorHandler;
 
 /**
  * Handles errors before they are displayed on the global error page.

@@ -3,16 +3,9 @@ package no.stelvio.web.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.ErrorHandler;
-import no.stelvio.common.error.SystemException;
-import no.stelvio.web.constants.Constants;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -23,6 +16,11 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.tiles.TilesRequestProcessor;
 import org.apache.struts.util.RequestUtils;
+
+import no.stelvio.common.FrameworkError;
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.error.SystemException;
+import no.stelvio.web.constants.Constants;
 
 /**
  * This class Overrides the standard Struts <code>RequestProcessor</code> (for tiles) to make it possible to set the
@@ -81,8 +79,8 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 			try {
 				super.processPopulate(request, response, form, mapping);
 			} catch (Exception e) {
-				throw (SystemException) ErrorHandler.handleError(
-						new SystemException(FrameworkError.WEB_DOUBLE_CLICK, e));
+				throw /* TODO: handled differently now ErrorHandler.handleError(*/
+						new SystemException(FrameworkError.WEB_DOUBLE_CLICK, e);
 			}
 
 			request.setAttribute(IS_LOCAL_FORWARD, Boolean.TRUE);

@@ -3,8 +3,8 @@ package no.stelvio.common.performance;
 import no.stelvio.common.FrameworkError;
 import no.stelvio.common.config.Config;
 import no.stelvio.common.config.ConfigurationException;
-import no.stelvio.common.error.ErrorHandler;
 import no.stelvio.common.error.SystemException;
+import no.stelvio.common.error.old.ErrorHandler;
 
 /**
  * PerformanceMonitor is the facade for all performance monitoring,

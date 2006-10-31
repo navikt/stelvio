@@ -1,7 +1,6 @@
 package no.stelvio.web.filter;
 
 import java.io.IOException;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -11,15 +10,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import no.stelvio.common.FrameworkError;
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.ErrorHandler;
 import no.stelvio.common.error.LoggableException;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.util.SequenceNumberGenerator;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * AbstractFilter is a convenient class that an <i>Intercepting Filter</i> implementation
@@ -142,7 +140,7 @@ public abstract class AbstractFilter implements Filter {
 				new SystemException(FrameworkError.FILTER_PROCESSING_FAILED, re, new String[] { filterConfig.getFilterName()});
 
 			// Handle the error
-			ErrorHandler.handleError(se);
+//			ErrorHandler.handleError(se); TODO: handled differently
 
 			//	Loop through the exception chain to build a nested message for the system exception.
 			StringBuffer message = new StringBuffer();
@@ -150,7 +148,7 @@ public abstract class AbstractFilter implements Filter {
 			Throwable t = se;
 			while (null != t) {
 				if (t instanceof LoggableException) {
-					message.append(ErrorHandler.getMessage(t));
+//					message.append(ErrorHandler.getMessage(t)); TODO: handled differently
 					message.append("(feilnummer=").append(((LoggableException) t).getErrorId()).append(")");
 				} else {
 					message.append(t.getLocalizedMessage());
