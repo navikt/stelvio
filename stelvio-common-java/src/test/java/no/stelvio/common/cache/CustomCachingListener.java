@@ -4,7 +4,6 @@
 package no.stelvio.common.cache;
 
 import java.io.Serializable;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springmodules.cache.CachingModel;
