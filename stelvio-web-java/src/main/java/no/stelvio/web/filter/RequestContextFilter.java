@@ -58,19 +58,6 @@ public class RequestContextFilter extends AbstractFilter {
 				}
 			}
 	
-			// Update user id if necessary
-			if (null == RequestContext.getUserId()) {
-				String userId = request.getRemoteUser();
-				// Support for anonymous access
-				if (null == userId) {
-					userId = "";
-				}
-				if (log.isDebugEnabled()) {
-					log.debug("UserId not set! setting to " + userId);
-				}
-				RequestContext.setUserId(userId.toUpperCase());
-			}
-	
 			// Allways update the screen, module, process and transaction id
 			RequestContext.setScreenId(RequestUtils.getScreenId(request));
 			RequestContext.setModuleId(RequestContext.getScreenId());
