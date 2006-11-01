@@ -225,6 +225,16 @@ stelvio-common-java/src/test/java/no/stelvio/common/error/SeverityTest.java -tex
 stelvio-common-java/src/test/java/no/stelvio/common/error/SystemExceptionTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/TestError.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/TestHandlerImpl.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/DefaultHandlerImplTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/ErrorCodeTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/ErrorConfigTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/ErrorHandlerErrorTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/ErrorHandlerInitializerTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/ErrorHandlerTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/LogHandlerImplTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/SeverityTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/TestError.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/error/old/TestHandlerImpl.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/error/system/TPSExceptionTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/jmx/JMXUtilsTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/monitor/DummyManager.java -text
