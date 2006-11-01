@@ -6,6 +6,6 @@ package no.stelvio.common.error;
  */
 public class ErrorHandlerImplTest extends ErrorHandlerTest {
     public ErrorHandler getErrorHandler() {
-        return null;  // TODO: implement body
+        return new ErrorHandlerImpl();
     }
 }

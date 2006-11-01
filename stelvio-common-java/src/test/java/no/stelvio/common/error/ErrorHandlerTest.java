@@ -9,15 +9,21 @@ import com.agical.rmock.extension.junit.RMockTestCase;
  */
 public abstract class ErrorHandlerTest extends RMockTestCase {
     public void testAfterHandlingRethrow() {
-        expectThatExceptionThrown(is.instanceOf(Throwable.class));
+        try {
+            getErrorHandler().handleError(new IllegalArgumentException());
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+            // Should happen
+        }
     }
 
-    public void testThrowsExceptionIfInputToGetErrorIsNotThrowable() {
-        expectThatExceptionThrown(is.);
-    }
-
-    public void testGetErrorThrowsExceptionIfNoLocaleGiven() {
-        getErrorHandler().getError(IllegalArgumentException.class);
+    public void testGetErrorThrowsExceptionIfNoLocaleExistsOrGiven() {
+        try {
+            getErrorHandler().getError(IllegalArgumentException.class);
+            fail("Exception should have been thrown");
+        } catch (Exception e) {
+            // Should happen, TODO: better exception
+        }
     }
 
     public abstract ErrorHandler getErrorHandler();

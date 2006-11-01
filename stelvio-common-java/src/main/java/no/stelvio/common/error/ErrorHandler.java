@@ -6,4 +6,5 @@ package no.stelvio.common.error;
  */
 public interface ErrorHandler {
     Err getError(Class<? extends Throwable> clazz);
+    Throwable handleError(Throwable e);
 }
