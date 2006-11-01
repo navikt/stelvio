@@ -104,6 +104,7 @@ stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorConfig.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandler.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlerFactoryBean.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlerInitializer.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorRetriever.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionWrapper.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/Handler.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/error/LogHandlerImpl.java -text
