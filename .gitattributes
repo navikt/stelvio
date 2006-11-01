@@ -58,6 +58,7 @@ stelvio-common-java/project.properties -text
 stelvio-common-java/project.xml -text
 stelvio-common-java/src/main/java/no/stelvio/common/Constants.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/FrameworkError.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/aop/ContextHandlerAdvice.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
 stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.java -text
@@ -176,6 +177,15 @@ stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceNotFoundExcep
 stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceRequest.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceResponse.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/service/package.html -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/BusinessRequest.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/BusinessResponse.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainer.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainerImpl.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponse.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponseImpl.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponse.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponseImpl.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/transferobject/TransferObject.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/util/DateUtil.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/util/ErrorCodesUtil.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/util/FNRUtil.java -text

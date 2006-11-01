@@ -1,5 +1,11 @@
 package no.stelvio.common.context;
 
+import java.util.Locale;
+
+import no.stelvio.common.transferobject.ContextContainer;
+
+import org.apache.commons.lang.Validate;
+
 /**
  * This class is used to store and retrieve information that must
  * be available anywhere in the system during a single request.
@@ -154,7 +160,21 @@ public final class RequestContext extends AbstractContext {
 	 * 
 	 * @param locale The user locale.
 	 */
-	public static void setLocale(String locale) {
+	public static void setLocale(Locale locale) {
 		put(LOCALE, locale);
+	}
+	
+	/**
+	 * Stores the values wrapped in the ContextContainer to ThreadLocal.
+	 * @param cc
+	 */
+	public static void importContextValues(ContextContainer cc) {
+		Validate.notNull(cc);
+		setLocale(cc.getLocale());
+		setModuleId(cc.getModuleId());
+		setProcessId(cc.getProcessId());
+		setScreenId(cc.getScreenId());
+		setTransactionId(cc.getTransactionId());
+		setUserId(cc.getUserId());
 	}
 }
