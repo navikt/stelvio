@@ -50,7 +50,9 @@ public class CodesTableManagerImpl implements CodesTableManager {
 		ArrayList<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
 		
 		codesTableItems = (ArrayList<CodesTableItem>) codesTableFactory.retrieveCodesTable(codesTable);
+		return null;
 		
+		/*
 		for(CodesTableItem ct : codesTableItems){
 			codesTable.addCodesTableItem(ct);
 		}
@@ -64,6 +66,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 				throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, ct);
 			}
 		}
+		*/
 	}
 	
 	/**

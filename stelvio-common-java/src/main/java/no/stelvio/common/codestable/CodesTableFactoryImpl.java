@@ -1,5 +1,7 @@
 package no.stelvio.common.codestable;
 
+import java.util.List;
+
 import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 
@@ -40,27 +42,34 @@ public class CodesTableFactoryImpl implements CodesTableFactory {
 	 * @return T <code>CodesTable</code> or <CodesTablePeriodic</>
 	 * @throws CodesTableException
 	 */
+	/*
 	public <T extends CodesTable> T retrieveCodesTable(Class<T> codesTable) {
 		
-		/**
+		
 		if (null == codesTableRetriever) {
 			throw new SystemException(
 				FrameworkError.SERVICE_INIT_ERROR,
 				new IllegalStateException("No delegate has been set for retrieving codes tables."),
 				name);
 		}
-		*/
+		
 					
 		//T ct = codesTableRetriever.retrieve(codesTable);
 			
-		/*
+	
 		if (null == ct) {
 			System.out.println("Systems exception");
 			throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, codesTable.getName());
 		}
 	
 		return ct;
-		*/
+		
+		return null;
+	}
+*/
+
+	public <T extends CodesTableItem> List<T> retrieveCodesTable(Class<T> codesTable) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

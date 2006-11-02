@@ -38,11 +38,13 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 		
 		try{
 			for(Class<CodesTable> ct : codesTableClasses){
+				/*
 				CodesTable ctable = codesTableManager.getCodesTable(ct);
 				
 				if(null == ctable){
 					throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, ct);
 				}
+				*/
 			}
 		}
 		catch(Exception ex){
