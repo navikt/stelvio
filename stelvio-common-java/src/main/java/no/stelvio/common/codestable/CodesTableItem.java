@@ -9,8 +9,6 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-//TODO: importer javax.persistence og un-comment annotationsene og skriv spørringene
-
 /**
  * CodesTableItem represents an item in a codes table.
  * 

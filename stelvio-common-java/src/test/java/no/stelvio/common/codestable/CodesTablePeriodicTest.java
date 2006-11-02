@@ -36,9 +36,9 @@ public class CodesTablePeriodicTest extends AbstractDependencyInjectionSpringCon
 		codesTablePeriodic = (CodesTablePeriodic) applicationContext.getBean("codesTablePeriodic");
 		assertNotNull("Couldn't initiate CodesTablePeriodic using standard POJO implementation.", codesTablePeriodic);
 		
-		codesTablePeriodic.setCodesTableItem(TestCodesTableItem.CTI1);
-		codesTablePeriodic.setCodesTableItem(TestCodesTableItem.CTI2);
-		codesTablePeriodic.setCodesTableItem(TestCodesTableItem.CTI3);
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItem.CTI1);
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItem.CTI2);
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItem.CTI3);
 	}
 	
 	/**

@@ -13,13 +13,13 @@ import org.apache.commons.collections.Predicate;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public interface CodesTable {
+public interface CodesTable<T extends CodesTableItem> {
 	
-	public CodesTableItem getCodesTableItem(Object code) ;
+	public T getCodesTableItem(Object code) ;
 	public void addPredicate(Predicate predicate);
 	public void resetPrediacte();
 	public String getDecode(Object code);
 	public String getDecode(Object code, Locale locale) ;
-	public void setCodesTableItem(CodesTableItem codesTableItem);
+	public void addCodesTableItem(T codesTableItem);
 
 }

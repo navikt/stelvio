@@ -70,11 +70,11 @@ stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableImpl.ja
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableInitializer.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableInitializerImpl.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItem.java -text
-stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItemRepository.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManager.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManagerImpl.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodic.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodicImpl.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableRetriever.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
 stelvio-common-java/src/main/java/no/stelvio/common/config/Config.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/config/ConfigMBean.java -text
@@ -202,6 +202,8 @@ stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheManagementTest.ja
 stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheTestImpl.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/cache/CustomCachingListener.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableFactoryTest.java -text
+stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableInitializerTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableManagerTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTablePeriodicTest.java -text
@@ -268,6 +270,7 @@ stelvio-common-java/src/test/java/no/stelvio/common/util/FNRUtilTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/util/ReflectUtilTest.java -text
 stelvio-common-java/src/test/java/no/stelvio/common/util/StringHelperTest.java -text
 stelvio-common-java/src/test/resources/common-java_test_cache_beans.xml -text
+stelvio-common-java/src/test/resources/common-java_test_codestable_beans.xml -text
 stelvio-common-java/src/test/resources/distributed-services.xml -text
 stelvio-common-java/src/test/resources/error-handling.xml -text
 stelvio-common-java/src/test/resources/log4j.properties -text

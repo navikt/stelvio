@@ -1,5 +1,8 @@
 package no.stelvio.common.codestable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import no.stelvio.common.FrameworkError;
 import no.stelvio.common.codestable.CodesTableFactory;
 import no.stelvio.common.error.SystemException;
@@ -17,11 +20,22 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	
 	private CodesTableFactory codesTableFactory;
 	
+	private CodesTable codesTable;
+	
 	/**
+	 * TODO
 	 * @param codesTableFactory 
 	 */
 	public void setCodesTableFactory(CodesTableFactory codesTableFactory){
 		this.codesTableFactory = codesTableFactory;
+	}
+	
+	/**
+	 * TODO
+	 * @param codesTableFactory 
+	 */
+	public void setCodesTable(CodesTable codesTable){
+		this.codesTable = codesTable;
 	}
 	
 	/**
@@ -30,10 +44,26 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 * @param codesTable the <code>CodesTable</code> or <code>CodesTablePeriodic</code> to fetch from either cache or database.
 	 * @return codesTable the fetched <code>CodesTable</code> or <code>CodesTablePeriodic</code>.
 	 */
-	public <T extends CodesTable> T getCodesTable(Class<T> codesTable) {
+	public <T extends CodesTable> T getCodesTable(Class<? extends CodesTableItem> codesTable) {
 		validateCodesTableClass(codesTable);
 		
-		return codesTableFactory.retrieveCodesTable(codesTable);
+		ArrayList<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
+		
+		codesTableItems = (ArrayList<CodesTableItem>) codesTableFactory.retrieveCodesTable(codesTable);
+		
+		for(CodesTableItem ct : codesTableItems){
+			codesTable.addCodesTableItem(ct);
+		}
+		
+		return codesTable;
+		
+		for(Class<CodesTable> ct : codesTableClasses){
+			CodesTable ctable = codesTableManager.getCodesTable(ct);
+			
+			if(null == ctable){
+				throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, ct);
+			}
+		}
 	}
 	
 	/**

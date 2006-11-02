@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 
-import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.FrameworkError;
@@ -34,7 +33,7 @@ public class CodesTableImpl implements CodesTable {
 	/**
 	 * TODO
 	 */
-	public void setCodesTableItem(CodesTableItem codesTableItem){
+	public void addCodesTableItem(CodesTableItem codesTableItem){
 		this.codesTableItems.add(codesTableItem);
 	}
 	

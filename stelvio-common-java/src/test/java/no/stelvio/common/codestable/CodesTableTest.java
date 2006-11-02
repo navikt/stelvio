@@ -36,9 +36,9 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 		codesTable = (CodesTable) applicationContext.getBean("codesTable");
 		assertNotNull("Couldn't initiate CodesTable using standard POJO implementation.", codesTable);
 		
-		codesTable.setCodesTableItem(TestCodesTableItem.CTI1);
-		codesTable.setCodesTableItem(TestCodesTableItem.CTI2);
-		codesTable.setCodesTableItem(TestCodesTableItem.CTI3);
+		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
+		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
+		codesTable.addCodesTableItem(TestCodesTableItem.CTI3);
 	}
 	
 	/**

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+                       "http://www.springframework.org/schema/beans/spring-beans.dtd">
+<!--
+	Springs application context used by Codestable. 
+-->
+<beans>
+ <bean class="no.stelvio.common.codestable.CodesTableManagerImpl" id="codesTableManager"/>
+ <bean class="no.stelvio.common.codestable.CodesTableRetrieverImpl" id="codesTableRetriever"/>
+ <bean class="no.stelvio.common.codestable.CodesTableImpl" id="codesTable"/>
+ <bean class="no.stelvio.common.codestable.CodesTablePeriodicImpl" id="codesTablePeriodic"/>
+ <bean class="no.stelvio.common.codestable.CodesTableFactoryImpl" id="codesTableFactory">
+  <property name="codesTableRetriever" ref="codesTableRetriever"/>
+ </bean>
+</beans>

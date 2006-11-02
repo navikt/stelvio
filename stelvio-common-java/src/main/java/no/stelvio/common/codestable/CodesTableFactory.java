@@ -1,5 +1,7 @@
 package no.stelvio.common.codestable;
 
+import java.util.List;
+
 /**
  * Interface defining functionality for retrieving a codestable from the database.
  * 
@@ -8,6 +10,5 @@ package no.stelvio.common.codestable;
  */
 public interface CodesTableFactory{
 	
-	public <T extends CodesTable> T retrieveCodesTable(Class<T> codestable) ;
-	
+	public <T extends CodesTableItem> List<T> retrieveCodesTable(Class<T> codesTable);
 }

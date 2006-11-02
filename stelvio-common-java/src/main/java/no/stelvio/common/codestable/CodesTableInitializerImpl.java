@@ -14,9 +14,13 @@ import no.stelvio.common.error.SystemException;
  */
 public class CodesTableInitializerImpl implements CodesTableInitializer {
 
-	private ArrayList<? extends Class<CodesTable>> codesTables;
+	private ArrayList<? extends Class<CodesTable>> codesTableClasses;
 	private CodesTableManager codesTableManager;
 	
+	/**
+	 * TODO
+	 * @param codesTableManager
+	 */
 	public void setCodesTableManager(CodesTableManager codesTableManager){
 		this.codesTableManager = codesTableManager;
 	}
@@ -28,12 +32,12 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	 */
 	public void init() {
 				
-		if(codesTables.isEmpty()){
+		if(codesTableClasses.isEmpty()){
 			throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND);
 		}
 		
 		try{
-			for(Class<CodesTable> ct : codesTables){
+			for(Class<CodesTable> ct : codesTableClasses){
 				CodesTable ctable = codesTableManager.getCodesTable(ct);
 				
 				if(null == ctable){
@@ -44,6 +48,5 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 		catch(Exception ex){
 			throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, ex);
 		}
-		
 	}
 }

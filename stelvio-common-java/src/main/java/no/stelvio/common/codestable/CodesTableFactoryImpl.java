@@ -11,16 +11,29 @@ import no.stelvio.common.error.SystemException;
  */
 public class CodesTableFactoryImpl implements CodesTableFactory {
 	
-	private CodesTableItemRepository codesTableItemRepository;
+	// The business delegate
+	//private CodesTableRetriever codesTableRetriever = new CodesTableRetrieverImpl();
 	
+	// Name of the component
+	private String name = "";
+
 	/**
-	 * TODO: DOCUMENT ME!
-	 * @param codesTableItemRepository
+	 * TODO
+	 * @param codesTableRetriever
 	 */
-	public void setCodesTableItemRepository(CodesTableItemRepository codesTableItemRepository){
-		this.codesTableItemRepository = codesTableItemRepository;
+	public void setCodesTableRetriever(CodesTableRetriever codesTableRetriever) {
+		//this.codesTableRetriever = codesTableRetriever;
 	}
-	
+
+	/**
+	 * Assigns the name of this component. The name is only used in error reporting.
+	 * 
+	 * @param name the name.
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/**
 	 * TODO: document me!
 	 * @param codesTable a <code>CodesTable</code> or <CodesTablePeriodic</> 
@@ -29,19 +42,25 @@ public class CodesTableFactoryImpl implements CodesTableFactory {
 	 */
 	public <T extends CodesTable> T retrieveCodesTable(Class<T> codesTable) {
 		
-		T ctable = null;
-		
-		try{
-			ctable = codesTableItemRepository.findCodesTable(codesTable);
+		/**
+		if (null == codesTableRetriever) {
+			throw new SystemException(
+				FrameworkError.SERVICE_INIT_ERROR,
+				new IllegalStateException("No delegate has been set for retrieving codes tables."),
+				name);
 		}
-		catch(Exception err){
-			throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, err);
-		}
-		
-		if(ctable == null){
+		*/
+					
+		//T ct = codesTableRetriever.retrieve(codesTable);
+			
+		/*
+		if (null == ct) {
+			System.out.println("Systems exception");
 			throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, codesTable.getName());
 		}
-		
-		return ctable;	
+	
+		return ct;
+		*/
+		return null;
 	}
 }
