@@ -1,4 +1,6 @@
 * text=auto !eol
+inf/was61/stelvio-securityextensions-java/.classpath -text
+inf/was61/stelvio-securityextensions-java/.project -text
 /pom.xml -text
 stelvio-batch-java/.classpath -text
 stelvio-batch-java/.project -text
