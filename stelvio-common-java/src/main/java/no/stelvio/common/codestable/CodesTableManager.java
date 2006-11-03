@@ -12,6 +12,6 @@ package no.stelvio.common.codestable;
  */
 public interface CodesTableManager {
 
-	public <T extends CodesTable> T getCodesTable(Class<? extends CodesTableItem> codesTable);
-	
+	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem);
+	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem);
 }

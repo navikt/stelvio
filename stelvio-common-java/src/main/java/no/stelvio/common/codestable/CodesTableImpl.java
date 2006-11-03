@@ -1,5 +1,6 @@
 package no.stelvio.common.codestable;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.ArrayList;
 
@@ -7,6 +8,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 
 import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.FrameworkError;
 
@@ -22,14 +24,14 @@ public class CodesTableImpl implements CodesTable {
 	/**
 	 * List of codestableitems in a codestable.
 	 */
-	protected ArrayList<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
+	protected List<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
 	
 	//List of filtered codestableitems
-	private ArrayList<CodesTableItem> filteredCodesTableItems = new ArrayList<CodesTableItem>();
+	private List<CodesTableItem> filteredCodesTableItems = new ArrayList<CodesTableItem>();
 	
 	//List of predicates added to the codestableitems
-	private ArrayList<Predicate> predicates =new ArrayList<Predicate>();
-	
+	private List<Predicate> predicates = new ArrayList<Predicate>();
+		
 	/**
 	 * TODO
 	 */
@@ -100,13 +102,8 @@ public class CodesTableImpl implements CodesTable {
 	 * @param code the item's code.
 	 * @return decode or null if the code does not exist in the codes table.
 	 */
-	public String getDecode(Object code) {
-		//TODO hente ut riktig requestcontext - hvordan skal denne bygges opp?
-		//Locale locale = new Locale(RequestContext.getLocale().substring(0,1), RequestContext.getLocale().substring(3,4));
-		
-		Locale locale = new Locale("nb", "NO");
-		
-		return getDecode(code, locale);
+	public String getDecode(Object code) {				
+		return getDecode(code, RequestContext.getLocale());
 	}
 
 	/** 
@@ -129,7 +126,6 @@ public class CodesTableImpl implements CodesTable {
 		}
 		
 		throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, "Codestable with code" +code);
-	
 	}
 
 	/** 
@@ -139,4 +135,5 @@ public class CodesTableImpl implements CodesTable {
 		this.predicates.clear();
 		this.filteredCodesTableItems.clear();
 	}
+
 }

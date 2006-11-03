@@ -15,12 +15,7 @@ import no.stelvio.common.error.SystemException;
  */
 public class CodesTableManagerImpl implements CodesTableManager {
 
-	//TODO: er denne nødvendig? Definert i desinget
-	//private ArrayList<? extends CodesTable> codesTables;
-	
 	private CodesTableFactory codesTableFactory;
-	
-	private CodesTable codesTable;
 	
 	/**
 	 * TODO
@@ -29,46 +24,51 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	public void setCodesTableFactory(CodesTableFactory codesTableFactory){
 		this.codesTableFactory = codesTableFactory;
 	}
-	
-	/**
-	 * TODO
-	 * @param codesTableFactory 
-	 */
-	public void setCodesTable(CodesTable codesTable){
-		this.codesTable = codesTable;
-	}
-	
+		
 	/**
 	 * Uses CodesTableFactory to fetch the codestable from the database.
 	 * 
 	 * @param codesTable the <code>CodesTable</code> or <code>CodesTablePeriodic</code> to fetch from either cache or database.
 	 * @return codesTable the fetched <code>CodesTable</code> or <code>CodesTablePeriodic</code>.
 	 */
-	public <T extends CodesTable> T getCodesTable(Class<? extends CodesTableItem> codesTable) {
-		validateCodesTableClass(codesTable);
+	//TODO: FIKSE CASTING
+	@SuppressWarnings("unchecked")
+	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem) {
+		CodesTable<T> codesTable = (CodesTable<T>) new CodesTableImpl();
 		
-		ArrayList<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
+		validateCodesTableClass(codesTableItem);
 		
-		codesTableItems = (ArrayList<CodesTableItem>) codesTableFactory.retrieveCodesTable(codesTable);
-		return null;
+		List<T> codesTableItems = new ArrayList<T>();
 		
-		/*
-		for(CodesTableItem ct : codesTableItems){
+		codesTableItems = (List<T>) codesTableFactory.retrieveCodesTable(codesTableItem);
+		
+		for(T ct : codesTableItems){
 			codesTable.addCodesTableItem(ct);
 		}
-		
+				
 		return codesTable;
 		
-		for(Class<CodesTable> ct : codesTableClasses){
-			CodesTable ctable = codesTableManager.getCodesTable(ct);
-			
-			if(null == ctable){
-				throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, ct);
-			}
-		}
-		*/
 	}
-	
+
+	//TODO: FIKSE CASTING
+	@SuppressWarnings("unchecked")
+	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
+		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new CodesTablePeriodicImpl();
+		
+		validateCodesTableClass(codesTableItem);
+		
+		List<T> codesTableItems = new ArrayList<T>();
+		
+		codesTableItems = (List<T>) codesTableFactory.retrieveCodesTablePeriodic(codesTableItem);
+		
+		
+/*		for(T ctp : codesTableItems){
+			codesTablePeriodic.addCodesTableItem(ctp);
+		}*/
+				
+		return codesTablePeriodic;
+	}
+
 	/**
 	 * Checks that the class to load a codes table for is a subclass of <code>CodesTableItem</>.
 	 * If not, an exception wil be thrown.

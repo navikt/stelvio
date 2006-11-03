@@ -12,7 +12,7 @@ import java.util.Locale;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public interface CodesTablePeriodic extends CodesTable {
+public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends CodesTable {
 	
 	public String getDecode(Object code, Date date);
 	public String getDecode(Object code, Locale locale, Date date) ;

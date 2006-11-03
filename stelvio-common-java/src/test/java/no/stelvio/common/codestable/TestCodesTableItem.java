@@ -18,7 +18,7 @@ public class TestCodesTableItem extends CodesTableItem {
 	private static final Locale locale2 = new Locale("nn", "NO");
 	
 	public TestCodesTableItem(String code, String decode, Date fromDate, Date toDate, Locale locale, Boolean isValid){
-		super(code, decode, fromDate, toDate, locale, isValid);
+		//super(code, decode, fromDate, toDate, locale, isValid);
 	}
 	
 	public static final TestCodesTableItem CTI1 = new TestCodesTableItem("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);

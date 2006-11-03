@@ -11,4 +11,5 @@ import java.util.List;
 public interface CodesTableFactory{
 	
 	public <T extends CodesTableItem> List<T> retrieveCodesTable(Class<T> codesTable);
+	public <T extends CodesTableItemPeriodic> List<T> retrieveCodesTablePeriodic(Class<T> codesTable);
 }

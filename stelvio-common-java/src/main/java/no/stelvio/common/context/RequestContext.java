@@ -99,8 +99,8 @@ public final class RequestContext extends AbstractContext {
 	 * 
 	 * @return The user locale.
 	 */
-	public static String getLocale() {
-		return (String) get(LOCALE);
+	public static Locale getLocale() {
+		return (Locale) get(LOCALE);
 	}
 
 	/**

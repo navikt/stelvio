@@ -23,13 +23,8 @@ public class CodesTablePeriodicImpl extends CodesTableImpl implements CodesTable
 	 * @param date the date an item must be valid.
 	 * @return the decode or null if the code does not exist in the codes table.
 	 */
-	public String getDecode(Object code, Date date) {
-		//TODO hente ut riktig requestcontext - hvordan skal denne bygges opp?
-		//Locale locale = new Locale(RequestContext.getLocale().substring(0,1), RequestContext.getLocale().substring(3,4));
-		
-		Locale locale = new Locale("nb", "NO");
-		
-		return getDecode(code, locale, date);
+	public String getDecode(Object code, Date date) {		
+		return getDecode(code, RequestContext.getLocale(), date);
 	}
 	
 	/**
@@ -45,12 +40,14 @@ public class CodesTablePeriodicImpl extends CodesTableImpl implements CodesTable
 		//If there are predicates added to the codestableitems in a codestable,
 		//codesTableItem will only return an item if it belongs to the filtered collection
 		//of codestableitems
-		for(CodesTableItem cti : codesTableItems){
+		/*for(CodesTableItemPeriodic cti : codesTableItems){
 			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) && cti.getFromDate().before(date) && cti.getToDate().after(date)){
 				 return cti.getDecode();
 			}
 		}
 		
-		throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, "Codestable with code" +code);
+		throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, "Codestable with code" +code);*/
+		
+		return null;
 	}
 }

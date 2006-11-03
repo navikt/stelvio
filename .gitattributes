@@ -72,11 +72,12 @@ stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableImpl.ja
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableInitializer.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableInitializerImpl.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItem.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItemAb.java -text
+stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItemPeriodic.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManager.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManagerImpl.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodic.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodicImpl.java -text
-stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableRetriever.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
 stelvio-common-java/src/main/java/no/stelvio/common/config/Config.java -text
 stelvio-common-java/src/main/java/no/stelvio/common/config/ConfigMBean.java -text
