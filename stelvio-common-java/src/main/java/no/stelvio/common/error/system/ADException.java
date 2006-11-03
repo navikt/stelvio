@@ -19,7 +19,7 @@ public class ADException extends SystemException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public ADException(ErrorCode code) {
-		super(code, AD);
+		super(AD);
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class ADException extends SystemException {
 	 * @param cause the cause of this exception.
 	 */
 	public ADException(ErrorCode code, Throwable cause) {
-		super(code, cause, AD);
+		super(cause, AD);
 	}
 
 	/**

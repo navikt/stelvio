@@ -1,16 +1,14 @@
 package no.stelvio.common.codestable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.ArrayList;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 
-import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.SystemException;
-import no.stelvio.common.FrameworkError;
 
 /**
  * Implementation of CodesTable used to handle a codestable, its beloning values and add
@@ -68,7 +66,7 @@ public class CodesTableImpl implements CodesTable {
 		}
 		
 		if(cti == null){
-			throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, "Codestable with code" +code);
+			throw new SystemException("Codestable with code" +code);
 		}
 		
 		return cti;
@@ -125,7 +123,7 @@ public class CodesTableImpl implements CodesTable {
 			}
 		}
 		
-		throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, "Codestable with code" +code);
+		throw new SystemException("Codestable with code" +code);
 	}
 
 	/** 

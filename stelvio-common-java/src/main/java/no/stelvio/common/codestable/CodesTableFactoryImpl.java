@@ -2,9 +2,6 @@ package no.stelvio.common.codestable;
 
 import java.util.List;
 
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.error.SystemException;
-
 /**
  * Implementation of CodesTableFactory used to retrieve a codestable from the database.
  * 

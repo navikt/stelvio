@@ -7,7 +7,6 @@ import java.util.Set;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -39,7 +38,7 @@ public class ConverterLoader {
 			try {
 				clazz = Class.forName(str);
 			} catch (ClassNotFoundException e) {			
-				throw new SystemException(FrameworkError.CONFIG_NAME_NOT_FOUND, e);
+				throw new SystemException(e);
 			}
 			ConvertUtils.register( (Converter) converters.get( str ), clazz );
 		}

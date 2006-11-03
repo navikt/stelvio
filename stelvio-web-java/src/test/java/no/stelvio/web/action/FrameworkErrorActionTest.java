@@ -1,14 +1,11 @@
 package no.stelvio.web.action;
 
 import org.apache.struts.Globals;
-import servletunit.struts.MockStrutsTestCase;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.ApplicationException;
-import no.stelvio.common.error.ErrorCode;
 import no.stelvio.common.error.SystemException;
-import no.stelvio.web.action.FrameworkErrorAction;
-import no.stelvio.web.action.FrameworkErrorForm;
+import servletunit.struts.MockStrutsTestCase;
 
 /**
  * Unit test for {@link FrameworkErrorAction}.
@@ -23,7 +20,7 @@ public class FrameworkErrorActionTest extends MockStrutsTestCase {
 	}
 
 	public void testNotHandledErrorsOnRequestShouldFillInForm() {
-		getRequest().setAttribute(Globals.EXCEPTION_KEY, new ApplicationException(ErrorCode.UNSPECIFIED_ERROR));
+		getRequest().setAttribute(Globals.EXCEPTION_KEY, new ApplicationException());
 		actionPerform();
 		// Cannot check errorId when it is generated from <code>SequenceNumberGenerator</code>
 		// Cannot check stacktrace when it is a real stacktrace
@@ -31,7 +28,7 @@ public class FrameworkErrorActionTest extends MockStrutsTestCase {
 	}
 
 	public void testHandledErrorsOnRequestShouldSetConfiguredExceptionTrue() {
-		getRequest().setAttribute(Globals.EXCEPTION_KEY, new SystemException(ErrorCode.UNSPECIFIED_ERROR));
+		getRequest().setAttribute(Globals.EXCEPTION_KEY, new SystemException());
 		actionPerform();
 		// Cannot check errorId when it is generated from <code>SequenceNumberGenerator</code>
 		// Cannot check stacktrace when it is a real stacktrace

@@ -5,6 +5,7 @@ package no.stelvio.common.error;
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: DefaultExceptionWrapper.java 2266 2005-05-24 10:22:09Z psa2920 $
+ * @todo do we need this?
  */
 public class DefaultExceptionWrapper implements ExceptionWrapper {
 

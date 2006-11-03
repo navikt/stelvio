@@ -17,7 +17,7 @@ public class PredatorException extends SystemException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public PredatorException(ErrorCode code) {
-		super(code);
+		super();
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class PredatorException extends SystemException {
 	 * @param cause the cause of this exception.
 	 */
 	public PredatorException(ErrorCode code, Throwable cause) {
-		super(code, cause);
+		super(cause);
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class PredatorException extends SystemException {
 	 * @param argument the cause of this exception.
 	 */
 	public PredatorException(ErrorCode code, Object argument) {
-		super(code, argument);
+		super(argument);
 	}
 
 	/**

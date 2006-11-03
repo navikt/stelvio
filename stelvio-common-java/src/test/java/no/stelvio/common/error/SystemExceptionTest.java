@@ -24,7 +24,7 @@ public class SystemExceptionTest extends TestCase {
 	public void testObjectCopy() {
 
 		SystemException original =
-			new SystemException(new ErrorCode(666), new RuntimeException("The Original Cause"), new String[] { "1", "2", "3" });
+			new SystemException(new RuntimeException("The Original Cause"), new String[] { "1", "2", "3" });
 		original.setLogged();
 		SystemException copy = (SystemException) original.copy();
 
@@ -55,7 +55,7 @@ public class SystemExceptionTest extends TestCase {
 	}
 
 	public void testGetArguments() {
-		SystemException se = new SystemException(TestError.ERR_100000, "Eneste argument");
+		SystemException se = new SystemException("Eneste argument");
 		super.assertEquals("getArguments() should not be null", "Eneste argument", se.getArguments()[0]);
 	}
 	
@@ -64,7 +64,7 @@ public class SystemExceptionTest extends TestCase {
 			String arg0 = "A";
 			Object[] arguments = new Object[] { arg0 };
 
-		SystemException se = new SystemException(TestError.ERR_100000, null, arguments);
+		SystemException se = new SystemException(null, arguments);
 
 			assertNotSame("Arguments not immutable, array is the same", arguments, se.getArguments());
 			assertSame("arg0 should be the same", arg0, se.getArguments()[0]);
@@ -73,7 +73,7 @@ public class SystemExceptionTest extends TestCase {
 	
 	public void testSystemExceptionErrorCodeObjectArray() {
 		Object[] arguments = new String[] { "Petter", "Skodvin" };
-		SystemException se = new SystemException(TestError.ERR_100000, arguments);
+		SystemException se = new SystemException(arguments);
 		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), se.getErrorCode());
 		assertEquals("There should be 2 arguments", 2, se.getArguments().length);
 		assertEquals("Argument 1 should be Petter", "Petter", se.getArguments()[0]);
@@ -83,14 +83,14 @@ public class SystemExceptionTest extends TestCase {
 
 	public void testSystemExceptionErrorCodeThrowable() {
 		Throwable cause = new RuntimeException("The Original Cause");
-		SystemException se = new SystemException(TestError.ERR_100000, cause);
+		SystemException se = new SystemException(cause);
 		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), se.getErrorCode());
 		assertEquals("Cause is The Original Cause", cause, se.getCause());
 	}
 
 	public void testSystemExceptionErrorCodeThrowableObject() {
 		Throwable cause = new RuntimeException("The Original Cause");
-		SystemException se = new SystemException(TestError.ERR_100000, cause, "Argument");
+		SystemException se = new SystemException(cause, "Argument");
 		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), se.getErrorCode());
 		assertEquals("Cause is The Original Cause", cause, se.getCause());
 		assertEquals("There should be 1 arguments", 1, se.getArguments().length);

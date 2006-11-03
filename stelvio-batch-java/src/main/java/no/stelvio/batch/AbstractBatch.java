@@ -99,8 +99,8 @@ public abstract class AbstractBatch {
 		final List list = getHibernateTemplate().findByNamedQueryAndNamedParam("BATCH_BY_BATCHNAME", "batchname", batchName);
 
 		if (list.size() != 1) {
-			throw new SystemException(FrameworkError.BATCH_PROPETIES_READ_ERROR,
-			                           batchName + " has zero or more than 1 entries in the database");
+			throw new SystemException(
+                    batchName + " has zero or more than 1 entries in the database");
 		}
 
 		return (BatchDO) list.get(0);
@@ -115,7 +115,7 @@ public abstract class AbstractBatch {
 	 */
 	protected Properties getBatchProperties(BatchDO batchDO) throws SystemException {
 		if (batchDO == null) {
-			throw new SystemException(FrameworkError.BATCH_PROPETIES_READ_ERROR, "Batch parameters cannot be null");
+			throw new SystemException("Batch parameters cannot be null");
 		}
 
 		Properties props = new Properties();
@@ -133,8 +133,7 @@ public abstract class AbstractBatch {
 			props.load(stream);
 		} catch (IOException e) {
 			throw new SystemException(
-				FrameworkError.BATCH_PROPETIES_READ_ERROR,
-				e,
+                    e,
 				"Could not read batch properties; wrong format: " + params);
 		}
 		if (log.isDebugEnabled()) {
@@ -157,7 +156,7 @@ public abstract class AbstractBatch {
 		}
 
 		if (batchDO == null) {
-			throw new SystemException(FrameworkError.BATCH_PROPETIES_WRITE_ERROR, "Batch parameters cannot be null");
+			throw new SystemException("Batch parameters cannot be null");
 		}
 
 		Enumeration names = props.propertyNames();

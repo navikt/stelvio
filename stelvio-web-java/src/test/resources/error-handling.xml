@@ -5,7 +5,7 @@
 -->
 <beans>
 	<!-- <bean id="ErrorHandler" class="no.stelvio.common.error.DefaultHandlerImpl"/> -->
-	<bean id="ErrorHandler" class="no.stelvio.common.error.DefaultHandlerImpl" init-method="init"/>
+	<!-- TODO: should use the new version <bean id="ErrorHandler" class="no.stelvio.common.error.DefaultHandlerImpl" init-method="init"/>-->
 
 </beans>
 

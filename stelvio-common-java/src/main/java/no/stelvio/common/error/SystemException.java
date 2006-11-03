@@ -2,7 +2,6 @@ package no.stelvio.common.error;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
-import no.stelvio.common.FrameworkError;
 
 /**
  * Thrown to indicate that an unrecoverable system exception has occured. <p/>
@@ -35,90 +34,65 @@ public class SystemException extends RuntimeException implements
 
 	/**
 	 * Constructs a new SystemException with the specified error code.
-	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
-	 */
-	public SystemException(ErrorCode code) {
-		this(code, null, null);
+	 *
+     */
+	public SystemException() {
+		this(null, null);
 	}
 
 	/**
 	 * Constructs a new SystemException with the specified error code and
 	 * argument.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param argument
-	 *            detail to be included in the error message.
-	 */
-	public SystemException(ErrorCode code, Object argument) {
-		this(code, null, new Object[] { argument });
+     */
+	public SystemException(Object argument) {
+		this(null, new Object[] { argument });
 	}
 	
 	/**
 	 * Constructs a new SystemException with the specified error code and list
 	 * of arguments.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param arguments
-	 *            list of details to be included in the error message.
-	 */
-	public SystemException(ErrorCode code, Object[] arguments) {
-		this(code, null, arguments);
+     */
+	public SystemException(Object[] arguments) {
+		this(null, arguments);
 	}
 
 	/**
 	 * Constructs a new SystemException with the specified error code and cause.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param cause
-	 *            the cause of this exception.
-	 */
-	public SystemException(ErrorCode code, Throwable cause) {
-		this(code, cause, null);
-	}
-
-	/**
-	 * @param code error code
-	 * @param cause exception
-	 */
-	public SystemException(FrameworkError code, Throwable cause) {
-		this(code, cause, null);
+     */
+	public SystemException(Throwable cause) {
+		this(cause, null);
 	}
 
 	/**
 	 * Constructs a new SystemException with the specified error code, cause and
 	 * argument.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param cause
 	 *            the cause of this exception.
-	 * @param argument
-	 *            detail to be included in the error message.
-	 */
-	public SystemException(ErrorCode code, Throwable cause, Object argument) {
-		this(code, cause, new Object[] { argument });
+     * @param argument
+     */
+	public SystemException(Throwable cause, Object argument) {
+		this(cause, new Object[] { argument });
 	}
 
 	/**
 	 * Constructs a new SystemException with the specified error code, cause and
 	 * list of arguments.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param cause
 	 *            the cause of this exception.
-	 * @param arguments
-	 *            list of details to be included in the error message.
-	 */
-	public SystemException(ErrorCode code, Throwable cause, Object[] arguments) {
+     * @param arguments
+     */
+	public SystemException(Throwable cause, Object[] arguments) {
 		super(cause);
 
-		errorCode = code.getCode();
+		errorCode = /*code.getCode() TODO: checkout new version*/ 0;
 		userId = RequestContext.getUserId();
 		screenId = RequestContext.getScreenId();
 		processId = RequestContext.getProcessId();

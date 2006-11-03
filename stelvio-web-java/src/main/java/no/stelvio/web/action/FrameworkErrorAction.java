@@ -15,7 +15,6 @@ import org.apache.struts.util.MessageResources;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.LoggableException;
-import no.stelvio.common.error.old.ErrorHandler;
 
 /**
  * Handles errors before they are displayed on the global error page.
@@ -31,7 +30,7 @@ public class FrameworkErrorAction extends Action {
 	protected final Log log = LogFactory.getLog(this.getClass());
 
 	/**
-	 * Uses the ErrorHandler to handle the exception and prepares information pieces
+	 * Uses the ErrorHandler (TODO: use new version) to handle the exception and prepares information pieces
 	 * for display in the corresponding view.
 	 * 
 	 * {@inheritDoc}
@@ -51,7 +50,7 @@ public class FrameworkErrorAction extends Action {
 				log.debug("Error found: " + e);
 			}
 
-			LoggableException le = (LoggableException) ErrorHandler.handleError(e);
+			LoggableException le = (LoggableException) /*ErrorHandler.handleError(e) TODO: look at new version */ null;
 
 			if (log.isDebugEnabled()) {
 				log.debug("Transformed error through ErrorHandler: " + le);
@@ -82,10 +81,10 @@ public class FrameworkErrorAction extends Action {
 					errorForm.setErrorMessage(message);
 				}
 			} else {
-				errorForm.setErrorMessage(ErrorHandler.getMessage(e));
+				errorForm.setErrorMessage(/*ErrorHandler.getMessage(e) TODO: look at new version*/ null);
 			}
 
-			errorForm.setStacktrace(ErrorHandler.getStacktraceAsString(e));
+			errorForm.setStacktrace(/*ErrorHandler.getStacktraceAsString(e)TODO: look at new version*/ null);
 			errorForm.setErrorCode(String.valueOf(le.getErrorCode()));
 			errorForm.setErrorId(le.getErrorId());
 			errorForm.setProcessId(le.getProcessId());

@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -34,9 +33,9 @@ public final class ReflectUtil {
 		try {
 			result = clazz.newInstance();
 		} catch (InstantiationException ie) {
-			throw new SystemException(FrameworkError.REFLECTION_INSTANTIATION_ERROR, ie, clazz.getName());
+			throw new SystemException(ie, clazz.getName());
 		} catch (IllegalAccessException iae) {
-			throw new SystemException(FrameworkError.REFLECTION_INSTANTIATION_ERROR, iae, clazz.getName());
+			throw new SystemException(iae, clazz.getName());
 		}
 
 		return result;
@@ -55,18 +54,15 @@ public final class ReflectUtil {
 			return PropertyUtils.getSimpleProperty(instance, prop);
 		} catch (IllegalAccessException e) {
 			throw new SystemException(
-				FrameworkError.REFLECTION_GET_PROPERTY_ERROR,
-				e,
+                    e,
 				new String[] { prop, instance.getClass().getName()});
 		} catch (InvocationTargetException e) {
 			throw new SystemException(
-				FrameworkError.REFLECTION_GET_PROPERTY_ERROR,
-				e,
+                    e,
 				new String[] { prop, instance.getClass().getName()});
 		} catch (NoSuchMethodException e) {
 			throw new SystemException(
-				FrameworkError.REFLECTION_GET_PROPERTY_ERROR,
-				e,
+                    e,
 				new String[] { prop, instance.getClass().getName()});
 		}
 	}
@@ -95,18 +91,15 @@ public final class ReflectUtil {
 			PropertyUtils.setSimpleProperty(instance, property, val);
 		} catch (IllegalAccessException e) {
 			throw new SystemException(
-				FrameworkError.REFLECTION_SET_PROPERTY_ERROR,
-				e,
+                    e,
 				new String[] { property, instance.getClass().getName()});
 		} catch (InvocationTargetException e) {
 			throw new SystemException(
-				FrameworkError.REFLECTION_SET_PROPERTY_ERROR,
-				e,
+                    e,
 				new String[] { property, instance.getClass().getName()});
 		} catch (NoSuchMethodException e) {
 			throw new SystemException(
-				FrameworkError.REFLECTION_SET_PROPERTY_ERROR,
-				e,
+                    e,
 				new String[] { property, instance.getClass().getName()});
 		}
 	}
@@ -123,11 +116,11 @@ public final class ReflectUtil {
 			Method method = object.getClass().getMethod(methodName, null);
 			return method.invoke(object, null);
 		} catch (NoSuchMethodException nsme) {
-			throw new SystemException(FrameworkError.SYSTEM_UNAVAILABLE_ERROR, nsme, methodName);
+			throw new SystemException(nsme, methodName);
 		} catch (IllegalAccessException iae) {
-			throw new SystemException(FrameworkError.SYSTEM_UNAVAILABLE_ERROR, iae, methodName);
+			throw new SystemException(iae, methodName);
 		} catch (InvocationTargetException ite) {
-			throw new SystemException(FrameworkError.SYSTEM_UNAVAILABLE_ERROR, ite, methodName);
+			throw new SystemException(ite, methodName);
 		}
 	}
 }

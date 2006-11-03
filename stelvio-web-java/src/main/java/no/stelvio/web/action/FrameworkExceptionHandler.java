@@ -14,7 +14,6 @@ import org.apache.struts.config.ExceptionConfig;
 import org.apache.struts.util.ModuleException;
 
 import no.stelvio.common.error.LoggableException;
-import no.stelvio.common.error.old.ErrorHandler;
 
 /**
  * Handler for <code>ApplicationException</code> exceptions. Set a flag in the context
@@ -59,7 +58,7 @@ public class FrameworkExceptionHandler extends ExceptionHandler {
             error = ((ModuleException) ex).getError();
             property = ((ModuleException) ex).getProperty();
         } else if (ex instanceof LoggableException) {
-            error = new ActionError(ae.getKey(), ErrorHandler.getMessage(ex));
+            error = new ActionError(ae.getKey(), /*ErrorHandler.getMessage(ex) TODO: look at new version*/ null);
             property = error.getKey();
         } else {
             error = new ActionError(ae.getKey(), ex.getMessage());

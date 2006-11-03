@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.LoggableException;
 import no.stelvio.common.error.SystemException;
@@ -137,7 +136,7 @@ public abstract class AbstractFilter implements Filter {
 
 			// Create a new top level error
 			SystemException se =
-				new SystemException(FrameworkError.FILTER_PROCESSING_FAILED, re, new String[] { filterConfig.getFilterName()});
+				new SystemException(re, new String[] { filterConfig.getFilterName()});
 
 			// Handle the error
 //			ErrorHandler.handleError(se); TODO: handled differently

@@ -3,8 +3,6 @@ package no.stelvio.common.codestable;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.codestable.CodesTableFactory;
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -78,7 +76,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 */
 	private void validateCodesTableClass(final Class codesTableClass){
 		if(null!= codesTableClass && !CodesTableItem.class.isAssignableFrom(codesTableClass)){
-			throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, codesTableClass + " is not a codestable");
+			throw new SystemException(codesTableClass + " is not a codestable");
 		}
 	}	
 }

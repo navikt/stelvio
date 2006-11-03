@@ -16,7 +16,7 @@ public class TSSException extends SystemException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public TSSException(ErrorCode code) {
-		super(code);
+		super();
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class TSSException extends SystemException {
 	 * @param cause the cause of this exception.
 	 */
 	public TSSException(ErrorCode code, Throwable cause) {
-		super(code, cause);
+		super(cause);
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class TSSException extends SystemException {
 	 * @param argument detail to be included in the error message.
 	 */
 	public TSSException(ErrorCode code, Object argument) {
-		super(code, argument);
+		super(argument);
 	}	
 
 	/**

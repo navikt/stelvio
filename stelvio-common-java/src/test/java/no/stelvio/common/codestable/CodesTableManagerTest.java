@@ -1,21 +1,7 @@
 package no.stelvio.common.codestable;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-
-import org.jmock.MockObjectTestCase;
 import org.jmock.Mock;
-
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.codestable.CodesTableItem;
-import no.stelvio.common.codestable.CodesTableManager;
-import no.stelvio.common.error.SystemException;
-import no.stelvio.common.service.LocalService;
-import no.stelvio.common.service.ServiceResponse;
+import org.jmock.MockObjectTestCase;
 
 /**
  * Test class for CodesTableManager

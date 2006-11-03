@@ -20,7 +20,7 @@ public class OppdragException extends SystemException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public OppdragException(ErrorCode code) {
-		super(code, OPPDRAG);
+		super(OPPDRAG);
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class OppdragException extends SystemException {
 	 * @param cause the cause of this exception.
 	 */
 	public OppdragException(ErrorCode code, Throwable cause) {
-		super(code, cause, OPPDRAG);
+		super(cause, OPPDRAG);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class OppdragException extends SystemException {
 	 * @param arguments list of details to be included in the error message.
 	 */
 	public OppdragException(ErrorCode code, Object[] arguments) {
-		super(code, arguments);
+		super(arguments);
 	}
 
 	/**

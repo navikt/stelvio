@@ -1,6 +1,5 @@
 package no.stelvio.common.util;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.ErrorCode;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.service.ServiceFailedException;
@@ -62,8 +61,7 @@ public final class StringHelper {
 
 		if (null == record || (length + offset) > record.length()) {
 			throw new SystemException(
-				FrameworkError.UNSPECIFIED_ERROR,
-				new Object[] {
+                    new Object[] {
 					"StringHelper.getProperty",
 					"Input record is null or will couse StringIndexOutOfBoundsException" });
 		}

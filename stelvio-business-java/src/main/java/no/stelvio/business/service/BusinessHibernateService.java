@@ -4,7 +4,6 @@ import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -48,7 +47,7 @@ public abstract class BusinessHibernateService extends BusinessService {
 		try {
 			Hibernate.initialize(proxy);
 		} catch (HibernateException e) {
-			throw new SystemException(FrameworkError.HIBERNATE_INITIALIZATION_ERROR, e);
+			throw new SystemException(e);
 		}
 	}
 }

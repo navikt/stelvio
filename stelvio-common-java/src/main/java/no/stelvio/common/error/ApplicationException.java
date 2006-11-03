@@ -33,82 +33,65 @@ public class ApplicationException extends Exception implements LoggableException
 
 	/**
 	 * Constructs a new ApplicationException with the specified error code.
-	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
-	 */
-	public ApplicationException(ErrorCode code) {
-		this(code, null, null);
+	 *
+     */
+	public ApplicationException() {
+		this(null, null);
 	}
 
 	/**
 	 * Constructs a new ApplicationException with the specified error code and
 	 * argument.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param argument
-	 *            detail to be included in the error message.
-	 */
-	public ApplicationException(ErrorCode code, Object argument) {
-		this(code, null, new Object[] { argument });
+     */
+	public ApplicationException(Object argument) {
+		this(null, new Object[] { argument });
 	}
 
 	/**
 	 * Constructs a new ApplicationException with the specified error code and
 	 * list of arguments.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param arguments
-	 *            list of details to be included in the error message.
-	 */
-	public ApplicationException(ErrorCode code, Object[] arguments) {
-		this(code, null, arguments);
+     */
+	public ApplicationException(Object[] arguments) {
+		this(null, arguments);
 	}
 
 	/**
 	 * Constructs a new ApplicationException with the specified error code and
 	 * cause.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param cause
-	 *            the cause of this exception.
-	 */
-	public ApplicationException(ErrorCode code, Throwable cause) {
-		this(code, cause, null);
+     */
+	public ApplicationException(Throwable cause) {
+		this(cause, null);
 	}
 
 	/**
 	 * Constructs a new ApplicationException with the specified error code,
 	 * cause and argument.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param cause
 	 *            the cause of this exception.
-	 * @param argument
-	 *            detail to be included in the error message.
-	 */
-	public ApplicationException(ErrorCode code, Throwable cause, Object argument) {
-		this(code, cause, new Object[] { argument });
+     * @param argument
+     */
+	public ApplicationException(Throwable cause, Object argument) {
+		this(cause, new Object[] { argument });
 	}
 
 	/**
 	 * Constructs a new ApplicationException with the specified error code,
 	 * cause and list of arguments.
 	 * 
-	 * @param code
-	 *            the error code to be used when handling the exception.
 	 * @param cause
 	 *            the cause of this exception.
-	 * @param arguments
-	 *            list of details to be included in the error message.
-	 */
-	public ApplicationException(ErrorCode code, Throwable cause, Object[] arguments) {
+     * @param arguments
+     */
+	public ApplicationException(Throwable cause, Object[] arguments) {
 		super(cause);
-		this.errorCode = code.getCode();
+        this.errorCode = /*code.getCode() TODO: checkout new version*/ 0;
 
 		if (null == arguments) {
 			this.arguments = null;

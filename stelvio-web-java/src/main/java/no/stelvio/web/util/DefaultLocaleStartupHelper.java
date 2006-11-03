@@ -2,11 +2,10 @@ package no.stelvio.web.util;
 
 import java.util.Locale;
 
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.error.SystemException;
-
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.logging.LogFactory;
+
+import no.stelvio.common.error.SystemException;
 
 /**
  * Utility for setting the system's deafult locale.
@@ -35,17 +34,17 @@ public class DefaultLocaleStartupHelper {
 	 */
 	public DefaultLocaleStartupHelper(String language, String country) {
 		if (!ArrayUtils.contains(Locale.getISOLanguages(), language)) {
-			throw new SystemException(FrameworkError.LOCALE_LANGUAGE_NOT_SUPPORTED, language);
+			throw new SystemException(language);
 		}
 
 		if (!ArrayUtils.contains(Locale.getISOCountries(), country)) {
-			throw new SystemException(FrameworkError.LOCALE_COUNTRY_NOT_SUPPORTED, country);
+			throw new SystemException(country);
 		}
 
 		Locale defaultLocale = new Locale(language, country);
 
 		if (!ArrayUtils.contains(Locale.getAvailableLocales(), defaultLocale)) {
-			throw new SystemException(FrameworkError.LOCALE_NOT_AVAILABLE, defaultLocale.toString());
+			throw new SystemException(defaultLocale.toString());
 		}
 
 		// Set the locale as the system default locale
@@ -53,7 +52,7 @@ public class DefaultLocaleStartupHelper {
 			Locale.setDefault(defaultLocale);
 			LogFactory.getLog(getClass()).info("Default System Locale set to " + defaultLocale.toString());
 		} catch (SecurityException e) {
-			throw new SystemException(FrameworkError.LOCALE_SECURITY_FAILURE, e);
+			throw new SystemException(e);
 		}
 	}
 }

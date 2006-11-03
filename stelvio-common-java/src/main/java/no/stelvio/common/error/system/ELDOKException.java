@@ -17,7 +17,7 @@ public class ELDOKException extends SystemException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public ELDOKException(ErrorCode code) {
-		super(code);
+		super();
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class ELDOKException extends SystemException {
 	 * @param cause the cause of this exception.
 	 */
 	public ELDOKException(ErrorCode code, Throwable cause) {
-		super(code, cause);
+		super(cause);
 	}
 
 	/**

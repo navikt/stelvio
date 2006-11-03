@@ -3,7 +3,6 @@ package no.stelvio.common.monitor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.MBeanRegistrationException;
 import javax.management.MBeanServer;
@@ -11,10 +10,10 @@ import javax.management.MBeanServerFactory;
 import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -38,11 +37,11 @@ public class ErrorMonitorReportReceiver implements ErrorMonitorReportReceiverMBe
 	 */
 	public void init() {
 		if (reporterSize <= 0) {
-			throw new SystemException(FrameworkError.MONITORING_ERROR_INVALID_REPORT_SIZE_ERROR);
+			throw new SystemException();
 		}
 
 		if (objectName == null) {
-			throw new SystemException(FrameworkError.MONITORING_ERROR_INVALID_OBJECT_NAME_ERROR);
+			throw new SystemException();
 		}
 
 		ArrayList servers = MBeanServerFactory.findMBeanServer(null);
@@ -59,7 +58,7 @@ public class ErrorMonitorReportReceiver implements ErrorMonitorReportReceiverMBe
 		try {
 			name = new ObjectName("Monitoring:name=" + objectName);
 		} catch (MalformedObjectNameException e) {
-			throw new SystemException(FrameworkError.MONITORING_ERROR_INVALID_OBJECT_NAME_ERROR, e, objectName);
+			throw new SystemException(e, objectName);
 		}
 
 		if (!server.isRegistered(name)) {
@@ -72,9 +71,9 @@ public class ErrorMonitorReportReceiver implements ErrorMonitorReportReceiverMBe
 					log.debug("Failed to register service for management", iae);
 				}
 			} catch (MBeanRegistrationException e) {
-				throw new SystemException(FrameworkError.MONITORING_ERROR_MBEAN_REGISTRATION_ERROR, e);
+				throw new SystemException(e);
 			} catch (NotCompliantMBeanException e) {
-				throw new SystemException(FrameworkError.MONITORING_ERROR_MBEAN_REGISTRATION_ERROR, e);
+				throw new SystemException(e);
 			}
 		}
 

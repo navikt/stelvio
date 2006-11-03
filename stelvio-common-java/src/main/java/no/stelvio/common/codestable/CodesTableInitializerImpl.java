@@ -2,7 +2,6 @@ package no.stelvio.common.codestable;
 
 import java.util.ArrayList;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -33,7 +32,7 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	public void init() {
 				
 		if(codesTableClasses.isEmpty()){
-			throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND);
+			throw new SystemException();
 		}
 		
 		try{
@@ -42,13 +41,13 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 				CodesTable ctable = codesTableManager.getCodesTable(ct);
 				
 				if(null == ctable){
-					throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, ct);
+					throw new SystemException(/*FrameworkError.CODES_TABLE_NOT_FOUND TODO: use new exception instead*/ ct);
 				}
 				
 			}
 		}
 		catch(Exception ex){
-			throw new SystemException(FrameworkError.CODES_TABLE_INIT_ERROR, ex);
+			throw new SystemException(ex);
 		}
 	}
 }

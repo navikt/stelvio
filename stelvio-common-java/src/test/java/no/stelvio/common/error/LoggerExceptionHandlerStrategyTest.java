@@ -4,14 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import junit.framework.TestCase;
-
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.ApplicationException;
-import no.stelvio.common.error.ErrorCode;
-import no.stelvio.common.error.ErrorConfig;
-import no.stelvio.common.error.LogHandlerImpl;
-import no.stelvio.common.error.Severity;
-import no.stelvio.common.error.SystemException;
 import no.stelvio.common.service.LocalService;
 import no.stelvio.common.service.ServiceFailedException;
 import no.stelvio.common.service.ServiceRequest;
@@ -27,9 +20,9 @@ import no.stelvio.common.util.SequenceNumberGenerator;
  * @version $Revision: 2843 $ $Author: psa2920 $ $Date: 2006-02-15 13:00:22
  *          +0100 (on, 15 feb 2006) $
  */
-public class LogHandlerImplTest extends TestCase {
+public class LoggerExceptionHandlerStrategyTest extends TestCase {
 
-	LogHandlerImpl h = null;
+	LoggerExceptionHandlerStrategy h = null;
 
 	MessageFormatter msgFormatter = null;
 
@@ -39,12 +32,13 @@ public class LogHandlerImplTest extends TestCase {
 	 * {@inheritDoc}
 	 */
 	protected void setUp() {
-		h = new LogHandlerImpl();
+		h = new LoggerExceptionHandlerStrategy();
 		msgFormatter = new Log469MessageFormatterImpl("T666", "Java", "Bidrag Fase 2", "yyyyMMdd", "HHmmss");
 		h.setMessageFormatter(msgFormatter);
 		h.setDelegate(new LocalService() {
 			public ServiceResponse execute(ServiceRequest request) throws ServiceFailedException {
 				Map m = new HashMap();
+/* TODO different in new version
 				m.put(new Integer(ErrorCode.UNSPECIFIED_ERROR.getCode()), new ErrorConfig(ErrorCode.UNSPECIFIED_ERROR
 						.getCode(), Severity.ERROR, "En teknisk feil har oppstått: {0}. Feilen er av typen {1}."));
 				m.put(new Integer(ErrorCode.UNCONFIGURED_ERROR.getCode()), new ErrorConfig(ErrorCode.UNCONFIGURED_ERROR
@@ -59,6 +53,7 @@ public class LogHandlerImplTest extends TestCase {
 								+ "internasjonalt annerkjent godkjennelsesorgan. Feilmeldingen "
 								+ "er jo over 255 tegn lang og burde kuttes på slutten og "
 								+ "erstattes av prikker som viser at teksten er for lang"));
+*/
 				return new ServiceResponse("ErrorMap", m);
 			}
 		});
@@ -86,18 +81,18 @@ public class LogHandlerImplTest extends TestCase {
 		RequestContext.setUserId("psa2920");
 
 		assertTrue("handleError(SystemException) should have returned SystemException", h
-				.handleError(new SystemException(ErrorCode.UNSPECIFIED_ERROR, new Object[] { new Integer(0),
+				.handleError(new SystemException(new Object[] { new Integer(0),
 						new Double(1.2) })) instanceof SystemException);
 
 		assertTrue("handleError(SystemException) should have returned SystemException", h
-				.handleError(new SystemException(TestError.ERR_100000, new IllegalArgumentException(
+				.handleError(new SystemException(new IllegalArgumentException(
 						"Ulovlig tallformat, kun heltall er lovlig"), new Double(137.89))) instanceof SystemException);
 
 		assertTrue("handleError(SystemException) should have returned SystemException", h
-				.handleError(new SystemException(TestError.ERR_200000)) instanceof SystemException);
+				.handleError(new SystemException()) instanceof SystemException);
 
 		assertTrue("handleError(SystemException) should have returned SystemException", h
-				.handleError(new SystemException(TestError.ERR_300000)) instanceof SystemException);
+				.handleError(new SystemException()) instanceof SystemException);
 
 		assertTrue("handleError(Exception) should have returned SystemException", h.handleError(new Exception(
 				"Dette er en Exception")) instanceof SystemException);
@@ -112,34 +107,34 @@ public class LogHandlerImplTest extends TestCase {
 		RequestContext.setUserId("psa2920");
 
 		assertTrue("handleError(ApplicationException) should have returned ApplicationException", h
-				.handleError(new ApplicationException(ErrorCode.UNSPECIFIED_ERROR, new Object[] { new Integer(0),
+				.handleError(new ApplicationException(new Object[] { new Integer(0),
 						new Double(1.2) })) instanceof ApplicationException);
 
 		assertTrue(
 				"handleError(ApplicationException) should have returned ApplicationException",
-				h.handleError(new ApplicationException(TestError.ERR_100000, new IllegalArgumentException(
+				h.handleError(new ApplicationException(new IllegalArgumentException(
 						"Ulovlig tallformat, kun heltall er lovlig"), new Double(137.89))) instanceof ApplicationException);
 
 		assertTrue("handleError(ApplicationException) should have returned ApplicationException", h
-				.handleError(new ApplicationException(TestError.ERR_200000)) instanceof ApplicationException);
+				.handleError(new ApplicationException()) instanceof ApplicationException);
 
 		assertTrue("handleError(ApplicationException) should have returned ApplicationException", h
-				.handleError(new ApplicationException(TestError.ERR_300000)) instanceof ApplicationException);
+				.handleError(new ApplicationException()) instanceof ApplicationException);
 
 	}
 
 	public void testGetMessage() {
-		assertNotNull(h.getMessage(new ApplicationException(TestError.ERR_100000, new IllegalArgumentException(
+		assertNotNull(h.getMessage(new ApplicationException(new IllegalArgumentException(
 				"Ulovlig tallformat, kun heltall er lovlig"), new Double(137.89))));
 
-		assertNotNull(h.getMessage(new ApplicationException(TestError.ERR_999999, new IllegalArgumentException(
+		assertNotNull(h.getMessage(new ApplicationException(new IllegalArgumentException(
 				"Ulovlig tallformat, kun heltall er lovlig"), new Double(137.89))));
 
 		assertNotNull(h.getMessage(new Exception("Dette er en Exception")));
 	}
 
 	public void testErrorsInErrorHandling() {
-		LogHandlerImpl h1 = new LogHandlerImpl();
+		LoggerExceptionHandlerStrategy h1 = new LoggerExceptionHandlerStrategy();
 		h1.setDelegate(new LocalService() {
 			public ServiceResponse execute(ServiceRequest request) throws ServiceFailedException {
 				throw new ServiceFailedException(TestError.ERR_100000);
@@ -153,7 +148,7 @@ public class LogHandlerImplTest extends TestCase {
 			assertTrue("Init should have thrown SystemException", t instanceof SystemException);
 		}
 
-		LogHandlerImpl h2 = new LogHandlerImpl();
+		LoggerExceptionHandlerStrategy h2 = new LoggerExceptionHandlerStrategy();
 		h2.setDelegate(new LocalService() {
 			public ServiceResponse execute(ServiceRequest request) throws ServiceFailedException {
 				throw new RuntimeException("Dette går jo aldri bra");
@@ -167,7 +162,7 @@ public class LogHandlerImplTest extends TestCase {
 			// should happen
 		}
 
-		LogHandlerImpl h3 = new LogHandlerImpl();
+		LoggerExceptionHandlerStrategy h3 = new LoggerExceptionHandlerStrategy();
 		h3.setDelegate(new LocalService() {
 			public ServiceResponse execute(ServiceRequest request) throws ServiceFailedException {
 				return new ServiceResponse("ErrorMap", new HashMap());
@@ -180,7 +175,7 @@ public class LogHandlerImplTest extends TestCase {
 	}
 
 	public void testErrorMessageIncludeErrorCodeAndId() {
-		ApplicationException le = new ApplicationException(ErrorCode.UNCONFIGURED_ERROR);
+		ApplicationException le = new ApplicationException();
 
 		// Should only check that the formatting is done correctly, not the
 		// error id or message is retrieved correctly

@@ -17,7 +17,7 @@ public final class ServiceNotFoundException extends SystemException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public ServiceNotFoundException(ErrorCode code) {
-		super(code);
+		super();
 	}
 
 	/**
@@ -27,7 +27,7 @@ public final class ServiceNotFoundException extends SystemException {
 	 * @param cause the cause of this exception.
 	 */
 	public ServiceNotFoundException(ErrorCode code, Throwable cause) {
-		super(code, cause);
+		super(cause);
 	}
 
 	/**
@@ -38,6 +38,6 @@ public final class ServiceNotFoundException extends SystemException {
 	 * @param argument detail to be included in the error message.
 	 */
 	public ServiceNotFoundException(ErrorCode code, Throwable cause, Object argument) {
-		super(code, cause, argument);
+		super(cause, argument);
 	}
 }

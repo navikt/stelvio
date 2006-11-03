@@ -16,7 +16,7 @@ public class TPSException extends SystemException {
 
 	/** Should not be possible to instansiate directly, only through factory methods. */
 	private TPSException() {
-		super(ErrorCode.UNSPECIFIED_ERROR);
+		super();
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class TPSException extends SystemException {
 	 * @param identifier the identifier for the request that caused this exception.
 	 */
 	private TPSException(ErrorCode code, Throwable cause, final String argument, final String identifier) {
-		super(code, cause, argument);
+		super(cause, argument);
 		this.identifier = identifier;
 	}
 

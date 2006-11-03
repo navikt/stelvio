@@ -17,7 +17,7 @@ public class BBMException extends SystemException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public BBMException(ErrorCode code) {
-		super(code);
+		super();
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class BBMException extends SystemException {
 	 * @param argument detail to be included in the error message.
 	 */
 	public BBMException(ErrorCode code, Object argument) {
-		super(code, argument);
+		super(argument);
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class BBMException extends SystemException {
 	 * @param arguments list of details to be included in the error message.
 	 */
 	public BBMException(ErrorCode code, Object[] arguments) {
-		super(code, null, arguments);
+		super(null, arguments);
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class BBMException extends SystemException {
 	 * @param cause the cause of this exception.
 	 */
 	public BBMException(ErrorCode code, Throwable cause) {
-		super(code, cause);
+		super(cause);
 	}
 
 	/**

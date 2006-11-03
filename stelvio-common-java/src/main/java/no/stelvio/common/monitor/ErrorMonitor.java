@@ -45,17 +45,17 @@ public class ErrorMonitor implements Manager {
 	 */
 	public void init() {
 		if (reportDestination == null) {
-			throw new SystemException(FrameworkError.MONITORING_NO_REPORT_DESTINATION_ERROR);
+			throw new SystemException();
 		}
 
 		if (reportName == null) {
-			throw new SystemException(FrameworkError.MONITORING_NO_REPORT_NAME_ERROR);
+			throw new SystemException();
 		}
 		if (measurementPool <= 0) {
 			manage = false;
 		} else {
 			if (measurementTarget < 0 || measurementTarget >= measurementPool) {
-				throw new SystemException(FrameworkError.MONITORING_ERROR_MEASUREMENT_ERROR);
+				throw new SystemException();
 			}
 			// calculate target ratio
 			errorRatio = ((double) measurementTarget) / ((double) measurementPool);

@@ -17,7 +17,6 @@ import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.tiles.TilesRequestProcessor;
 import org.apache.struts.util.RequestUtils;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.web.constants.Constants;
@@ -80,7 +79,7 @@ public class FrameworkTilesRequestProcessor extends TilesRequestProcessor {
 				super.processPopulate(request, response, form, mapping);
 			} catch (Exception e) {
 				throw /* TODO: handled differently now ErrorHandler.handleError(*/
-						new SystemException(FrameworkError.WEB_DOUBLE_CLICK, e);
+						new SystemException(e);
 			}
 
 			request.setAttribute(IS_LOCAL_FORWARD, Boolean.TRUE);

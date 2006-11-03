@@ -14,7 +14,8 @@
 		</property>
 	</bean>
 
-	<bean id="ErrorHandler" class="no.stelvio.common.error.TestHandlerImpl" init-method="init"></bean>
+    <!--TODO: use new version-->
+    <!--<bean id="ErrorHandler" class="no.stelvio.common.error.TestHandlerImpl" init-method="init"></bean>-->
 
 </beans>
 

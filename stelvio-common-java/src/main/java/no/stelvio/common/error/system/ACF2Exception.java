@@ -19,7 +19,7 @@ public class ACF2Exception extends SystemException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public ACF2Exception(ErrorCode code) {
-		super(code, ACF2);
+		super(ACF2);
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class ACF2Exception extends SystemException {
 	 * @param cause the cause of this exception.
 	 */
 	public ACF2Exception(ErrorCode code, Throwable cause) {
-		super(code, cause, ACF2);
+		super(cause, ACF2);
 	}
 
 	/**

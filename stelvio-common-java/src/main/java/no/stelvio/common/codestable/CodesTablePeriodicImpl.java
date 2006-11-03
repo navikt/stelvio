@@ -3,14 +3,12 @@ package no.stelvio.common.codestable;
 import java.util.Date;
 import java.util.Locale;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.SystemException;
 
 /**
  * Implementation of CodesTablePeriodic for retrieving codes tables that has
  * defined a period of validity.
- * 
+ *
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
@@ -18,18 +16,18 @@ public class CodesTablePeriodicImpl extends CodesTableImpl implements CodesTable
 
 	/**
 	 * Returns the decode for a code in a codes table.
-	 * 
+	 *
 	 * @param code the item's code.
 	 * @param date the date an item must be valid.
 	 * @return the decode or null if the code does not exist in the codes table.
 	 */
-	public String getDecode(Object code, Date date) {		
+	public String getDecode(Object code, Date date) {
 		return getDecode(code, RequestContext.getLocale(), date);
 	}
-	
+
 	/**
 	 * Returns the decode code in specified codes table.
-	 * 
+	 *
 	 * @param code the item's code.
 	 * @param locale the local for an item.
 	 * @param date the date an item must be valid.
@@ -45,9 +43,9 @@ public class CodesTablePeriodicImpl extends CodesTableImpl implements CodesTable
 				 return cti.getDecode();
 			}
 		}
-		
-		throw new SystemException(FrameworkError.CODES_TABLE_NOT_FOUND, "Codestable with code" +code);*/
-		
-		return null;
-	}
+
+		throw new SystemException("Codestable with code" +code);*/
+
+        return null;
+    }
 }

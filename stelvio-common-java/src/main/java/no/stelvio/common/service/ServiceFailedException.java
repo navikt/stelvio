@@ -20,7 +20,7 @@ public class ServiceFailedException extends ApplicationException {
 	 * @param code the error code to be used when handling the exception.
 	 */
 	public ServiceFailedException(ErrorCode code) {
-		super(code);
+		super();
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class ServiceFailedException extends ApplicationException {
 	 * @param argument detail to be included in the error message.
 	 */
 	public ServiceFailedException(ErrorCode code, Object argument) {
-		super(code, argument);
+		super(argument);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class ServiceFailedException extends ApplicationException {
 	 * @param arguments list of details to be included in the error message.
 	 */
 	public ServiceFailedException(ErrorCode code, Object[] arguments) {
-		super(code, arguments);
+		super(arguments);
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class ServiceFailedException extends ApplicationException {
 	 * @param cause the cause of this exception.
 	 */
 	public ServiceFailedException(ErrorCode code, Throwable cause) {
-		super(code, cause);
+		super(cause);
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class ServiceFailedException extends ApplicationException {
 	 * @param argument detail to be included in the error message.
 	 */
 	public ServiceFailedException(ErrorCode code, Throwable cause, Object argument) {
-		super(code, cause, argument);
+		super(cause, argument);
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class ServiceFailedException extends ApplicationException {
 	 * @param arguments list of details to be included in the error message.
 	 */
 	public ServiceFailedException(ErrorCode code, Throwable cause, Object[] arguments) {
-		super(code, cause, arguments);
+		super(cause, arguments);
 	}
 
 	/**

@@ -1,6 +1,5 @@
 package no.stelvio.common.monitor;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.service.ServiceFailedException;
 
@@ -23,7 +22,7 @@ public class MonitorChain {
 	 */
 	public void init() {
 		if (monitors == null || monitors.length == 0) {
-			throw new SystemException(FrameworkError.MONITORING_CHAIN_NO_MONITORS_ERROR);
+			throw new SystemException();
 		}
 
 		// loop through all monitors and check if they are a manager also

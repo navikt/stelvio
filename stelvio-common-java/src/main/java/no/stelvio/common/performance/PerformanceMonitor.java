@@ -3,8 +3,6 @@ package no.stelvio.common.performance;
 import no.stelvio.common.FrameworkError;
 import no.stelvio.common.config.Config;
 import no.stelvio.common.config.ConfigurationException;
-import no.stelvio.common.error.SystemException;
-import no.stelvio.common.error.old.ErrorHandler;
 
 /**
  * PerformanceMonitor is the facade for all performance monitoring,
@@ -39,11 +37,11 @@ public final class PerformanceMonitor {
 		try {
 			perfConfig = Config.getConfig(CONFIGURATION_FILE);
 		} catch (Throwable t) {
-			try {
+//			try {
 				throw new ConfigurationException(FrameworkError.PERFORMANCE_CONFIGURATION_ERROR, t, CONFIGURATION_FILE);
-			} catch (ConfigurationException ce) {
-				throw (SystemException) ErrorHandler.handleError(ce);
-			}
+//			} catch (ConfigurationException ce) {
+//				throw (SystemException) ErrorHandler.handleError(ce); TODO: look at new version
+//			}
 		}
 	}
 

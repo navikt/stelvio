@@ -51,7 +51,7 @@
 		</init-param>
 		<init-param>
 			<param-name>ErrorHandlerStartup</param-name>
-			<param-value>no.stelvio.common.error.ErrorHandlerInitializer</param-value>
+			<!--TODO: changed in new version <param-value>no.stelvio.common.error.ErrorHandlerInitializer</param-value>-->
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

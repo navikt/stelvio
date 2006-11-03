@@ -17,6 +17,7 @@ package no.stelvio.common.error;
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: Severity.java 1954 2005-02-08 13:35:42Z psa2920 $
+ * @todo should be an Enum
  */
 public final class Severity {
 

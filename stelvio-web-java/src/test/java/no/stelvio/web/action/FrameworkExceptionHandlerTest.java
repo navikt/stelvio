@@ -1,11 +1,9 @@
 package no.stelvio.web.action;
 
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.error.ApplicationException;
-
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.config.ExceptionConfig;
 
+import no.stelvio.common.error.ApplicationException;
 import servletunit.struts.MockStrutsTestCase;
 
 /**
@@ -28,7 +26,7 @@ public class FrameworkExceptionHandlerTest extends MockStrutsTestCase {
 	public void testExecuteExceptionExceptionConfigActionMappingActionFormHttpServletRequestHttpServletResponse() {
 		try {
 			FrameworkExceptionHandler handler = new FrameworkExceptionHandler();
-			ApplicationException ex = new ApplicationException(FrameworkError.UNSPECIFIED_ERROR);
+			ApplicationException ex = new ApplicationException();
 			ExceptionConfig ec = new ExceptionConfig();
 			ec.setPath("/path");
 			

@@ -25,8 +25,7 @@ public class ApplicationExceptionTest extends TestCase {
 
 		ApplicationException original =
 			new ApplicationException(
-				new ErrorCode(666),
-				new RuntimeException("The Original Cause"),
+                    new RuntimeException("The Original Cause"),
 				new String[] { "1", "2", "3" });
 		original.setLogged();
 		ApplicationException copy = (ApplicationException) original.copy();
@@ -58,7 +57,7 @@ public class ApplicationExceptionTest extends TestCase {
 	}
 
 	public void testGetArguments() {
-		ApplicationException ae = new ApplicationException(TestError.ERR_100000, "Eneste argument");
+		ApplicationException ae = new ApplicationException("Eneste argument");
 		super.assertEquals("getArguments() should not be null", "Eneste argument", ae.getArguments()[0]);
 	}
 
@@ -67,7 +66,7 @@ public class ApplicationExceptionTest extends TestCase {
 		String arg0 = "A";
 		Object[] arguments = new Object[] { arg0 };
 
-		ApplicationException ae = new ApplicationException(TestError.ERR_100000, null, arguments);
+		ApplicationException ae = new ApplicationException(null, arguments);
 
 		assertNotSame("Arguments not immutable, array is the same", arguments, ae.getArguments());
 		assertSame("arg0 should be the same", arg0, ae.getArguments()[0]);
@@ -76,7 +75,7 @@ public class ApplicationExceptionTest extends TestCase {
 
 	public void testApplicationExceptionErrorCodeObjectArray() {
 		Object[] arguments = new String[] { "Petter", "Skodvin" };
-		ApplicationException ae = new ApplicationException(TestError.ERR_100000, arguments);
+		ApplicationException ae = new ApplicationException(arguments);
 		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), ae.getErrorCode());
 		assertEquals("There should be 2 arguments", 2, ae.getArguments().length);
 		assertEquals("Argument 1 should be Petter", "Petter", ae.getArguments()[0]);
@@ -86,14 +85,14 @@ public class ApplicationExceptionTest extends TestCase {
 
 	public void testApplicationExceptionErrorCodeThrowable() {
 		Throwable cause = new RuntimeException("The Original Cause");
-		ApplicationException ae = new ApplicationException(TestError.ERR_100000, cause);
+		ApplicationException ae = new ApplicationException(cause);
 		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), ae.getErrorCode());
 		assertEquals("Cause is The Original Cause", cause, ae.getCause());
 	}
 
 	public void testApplicationExceptionErrorCodeThrowableObject() {
 		Throwable cause = new RuntimeException("The Original Cause");
-		ApplicationException ae = new ApplicationException(TestError.ERR_100000, cause, "Argument");
+		ApplicationException ae = new ApplicationException(cause, "Argument");
 		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), ae.getErrorCode());
 		assertEquals("Cause is The Original Cause", cause, ae.getCause());
 		assertEquals("There should be 1 arguments", 1, ae.getArguments().length);

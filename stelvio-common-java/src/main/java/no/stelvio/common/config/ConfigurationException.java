@@ -29,6 +29,6 @@ public class ConfigurationException extends SystemException {
 	 * @param argument detail to be included in the error message.
 	 */
 	public ConfigurationException(ErrorCode code, Throwable cause, Object argument) {
-		super(code, cause, argument);
+		super(cause, argument);
 	}
 }
