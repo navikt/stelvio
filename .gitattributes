@@ -105,6 +105,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/SystemException.ja
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/ExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/EventSubmittorExceptionHandlerStrategy.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/ExceptionHandlerStrategyMulticaster.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/FallbackExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/RethrowExceptionHandlerStrategy.java -text
