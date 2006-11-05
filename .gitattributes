@@ -97,7 +97,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/core/TransferObject.java
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ApplicationException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/Err.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlerFactoryBean.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionHandlerFacade.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionWrapper.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/LoggableException.java -text
@@ -112,6 +111,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/R
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacade.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionWrapper.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorRetriever.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorsFactoryBean.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/JMXUtils.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/ServiceLevelConstants.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/ServiceLevelMBean.java -text
@@ -202,12 +202,12 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/BeanOther.java -te
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/CalendarBean.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ApplicationExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerFactoryBeanTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ExceptionHandlerFacadeTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/SeverityTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/SystemExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategyTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacadeTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ErrorsFactoryBeanTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/jmx/JMXUtilsTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/JMSQueueAppenderTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestErrorhandler.java -text

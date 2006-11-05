@@ -1,20 +1,22 @@
-package no.stelvio.common.error;
-
-import com.agical.rmock.extension.junit.RMockTestCase;
-import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.InitializingBean;
+package no.stelvio.common.error.support;
 
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.InitializingBean;
+
+import com.agical.rmock.extension.junit.RMockTestCase;
+import no.stelvio.common.error.Err;
+
 /**
- * Unit test for {@link ErrorHandlerFactoryBean}.
+ * Unit test for {@link ErrorsFactoryBean}.
  *
  * @author personf8e9850ed756
  */
-public class ErrorHandlerFactoryBeanTest extends RMockTestCase {
+public class ErrorsFactoryBeanTest extends RMockTestCase {
     private ErrorRetriever errorRetriever;
-    private ErrorHandlerFactoryBean ehfb;
+    private ErrorsFactoryBean ehfb;
 
     public void testReturnsCorrectType() throws Exception {
         setupRetriever();
@@ -39,18 +41,18 @@ public class ErrorHandlerFactoryBeanTest extends RMockTestCase {
     }
 
     public void testShouldImplementInitializingBean() {
-        assertThat(ErrorHandlerFactoryBean.class, is.clazz.assignableTo(InitializingBean.class));
+        assertThat(ErrorsFactoryBean.class, is.clazz.assignableTo(InitializingBean.class));
     }
 
     public void testShouldImplementFactoryBean() {
-        assertThat(ErrorHandlerFactoryBean.class, is.clazz.assignableTo(FactoryBean.class));
+        assertThat(ErrorsFactoryBean.class, is.clazz.assignableTo(FactoryBean.class));
     }
 
     protected void setUp() throws Exception {
         super.setUp();
 
         errorRetriever = (ErrorRetriever) mock(ErrorRetriever.class);
-        ehfb = new ErrorHandlerFactoryBean();
+        ehfb = new ErrorsFactoryBean();
         ehfb.setErrorRetriever(errorRetriever);
     }
 

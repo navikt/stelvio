@@ -1,16 +1,18 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.support;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 
-import java.util.Collection;
+import no.stelvio.common.error.Err;
 
 /**
  * @todo write javadoc
  *
  * @author personf8e9850ed756
  */                 
-public class ErrorHandlerFactoryBean implements FactoryBean, InitializingBean {
+public class ErrorsFactoryBean implements FactoryBean, InitializingBean {
     private ErrorRetriever errorRetriever;
     private Collection<Err> errors;
 
