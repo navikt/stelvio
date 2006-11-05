@@ -9,7 +9,7 @@
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio-batch-java</artifactId>
     <packaging>jar</packaging>
-    <name>stelvio - framework batch</name>
+    <name>stelvio - batch</name>
     <dependencies>
         <dependency>
             <groupId>no.stelvio</groupId>
@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>no.stelvio</groupId>
-            <artifactId>stelvio-common-test-java</artifactId>
+            <artifactId>stelvio-test-java</artifactId>
             <version>${pom.version}</version>
         </dependency>
     </dependencies>

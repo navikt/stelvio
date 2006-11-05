@@ -9,7 +9,7 @@
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio-business-java</artifactId>
     <packaging>jar</packaging>
-    <name>stelvio - framework business</name>
+    <name>stelvio - business</name>
     <dependencies>
         <dependency>
             <groupId>mx4j</groupId>

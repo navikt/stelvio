@@ -9,7 +9,7 @@
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio-common-java</artifactId>
     <packaging>jar</packaging>
-    <name>stelvio - framework common services</name>
+    <name>stelvio - common</name>
     <dependencies>
         <dependency>
             <groupId>commons-collections</groupId>

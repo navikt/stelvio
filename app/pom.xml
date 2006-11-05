@@ -6,14 +6,13 @@
     <artifactId>stelvio</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>stelvio - framework</name>
+    <name>stelvio</name>
     <modules>
+        <module>stelvio-common-java</module>
+        <module>stelvio-test-java</module>
         <module>stelvio-batch-java</module>
         <module>stelvio-business-java</module>
-        <module>stelvio-common-java</module>
-        <module>stelvio-common-test-java</module>
-        <module>stelvio-logging-java</module>
-        <module>stelvio-web-java</module>
+        <module>stelvio-presentation-java</module>
     </modules>
     <developers>
         <developer>
@@ -117,14 +116,13 @@
             <name>NAV Maven2 Internal Repository</name>
             <url>scp://10.3.31.41/var/maven2/mirror</url>
         </repository>
-<!-- TODO enable this when snapshot server is up and running
         <snapshotRepository>
-            <id>nav-maven2-repo</id>
+            <id>nav-maven2-repo-snapshot</id>
             <name>NAV Maven2 Internal Snapshot Repository</name>
-            <url>scp://utviklerportalen.adeo.no/var/rtv-mavenrep/maven2-snapshot</url>
+            <url>scp://10.3.31.41/var/maven2/snapshot</url>
         </snapshotRepository>
--->
         <site>
+            <!-- TODO: Create web site -->
             <id>website</id>
             <url>scp://www.mycompany.com/www/docs/project/</url>
         </site>
@@ -135,17 +133,15 @@
             <name>NAV Maven2 Internal Repository</name>
             <url>http://10.3.31.41/m2mirror</url>
         </repository>
-<!-- TODO enable this when snapshot server is up and running
         <repository>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
-            <id>nav-maven2-repo</id>
+            <id>nav-maven2-repo-snapshot</id>
             <name>NAV Maven2 Internal Snapshot Repository</name>
-            <url>http://local machine/maven/maven2-snapshot</url>
+            <url>http://10.3.31.41/m2snapshot</url>
         </repository>
--->
-<!-- TODO should probably not enable this, only deploy things needed to the new repository
+<!-- TODO should probably not enable this, only deploy libs needed from m1-repo to the new repository
         <repository>
             <snapshots>
                 <enabled>true</enabled>
