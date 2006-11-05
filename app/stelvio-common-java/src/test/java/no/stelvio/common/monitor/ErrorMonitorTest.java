@@ -1,13 +1,8 @@
 package no.stelvio.common.monitor;
 
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.error.SystemException;
-import no.stelvio.common.monitor.ErrorMonitor;
-import no.stelvio.common.monitor.MonitorEvent;
-import no.stelvio.common.monitor.ReportReceiver;
-import no.stelvio.common.service.ServiceFailedException;
-
 import junit.framework.TestCase;
+import no.stelvio.common.error.SystemException;
+import no.stelvio.common.service.ServiceFailedException;
 
 /**
  * 
@@ -32,10 +27,9 @@ public class ErrorMonitorTest extends TestCase {
 				monitor.init();
 			} catch (SystemException e) {
 				ex = true;
-				assertEquals("Test 1", FrameworkError.MONITORING_NO_REPORT_DESTINATION_ERROR.getCode(), e.getErrorCode());
-
 			}
-			assertTrue("Test 2", ex);
+            
+            assertTrue("Test 2", ex);
 			ex = false;
 
 			// TEST: the report name has not been set
@@ -49,10 +43,9 @@ public class ErrorMonitorTest extends TestCase {
 				monitor.init();
 			} catch (SystemException e) {
 				ex = true;
-				assertEquals("Test 3", FrameworkError.MONITORING_NO_REPORT_NAME_ERROR.getCode(), e.getErrorCode());
-
 			}
-			assertTrue("Test 4", ex);
+
+            assertTrue("Test 4", ex);
 			ex = false;
 
 			// TEST: measuremeant pool and target is not set correctly
@@ -63,10 +56,9 @@ public class ErrorMonitorTest extends TestCase {
 				monitor.init();
 			} catch (SystemException e) {
 				ex = true;
-				assertEquals("Test 5", FrameworkError.MONITORING_ERROR_MEASUREMENT_ERROR.getCode(), e.getErrorCode());
-
 			}
-			assertTrue("Test 6", ex);
+            
+            assertTrue("Test 6", ex);
 			ex = false;
 
 			// TEST: all ok
@@ -113,7 +105,6 @@ public class ErrorMonitorTest extends TestCase {
 				monitor.preManage(event);
 			} catch (ServiceFailedException e) {
 				ex = true;
-				assertEquals("Test 1", FrameworkError.MONITORING_ERROR_SERVICE_DISABLED.getCode(), e.getErrorCode());
 			}
 			assertTrue("Test 2", ex);
 

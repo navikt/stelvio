@@ -1,6 +1,5 @@
 package no.stelvio.common.service;
 
-import no.stelvio.common.error.ErrorCode;
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -13,31 +12,28 @@ public final class ServiceNotFoundException extends SystemException {
 
 	/**
 	 * Constructs a new ServiceNotFoundException with the specified error code.
-	 * 
-	 * @param code the error code to be used when handling the exception.
-	 */
-	public ServiceNotFoundException(ErrorCode code) {
+	 *
+     */
+	public ServiceNotFoundException() {
 		super();
 	}
 
 	/**
 	 * Constructs a new ServiceNotFoundException with the specified error code and cause.
 	 * 
-	 * @param code the error code to be used when handling the exception.
 	 * @param cause the cause of this exception.
 	 */
-	public ServiceNotFoundException(ErrorCode code, Throwable cause) {
+	public ServiceNotFoundException(Throwable cause) {
 		super(cause);
 	}
 
 	/**
 	 * Constructs a new ServiceNotFoundException with the specified error code and cause.
 	 * 
-	 * @param code the error code to be used when handling the exception.
 	 * @param cause the cause of this exception.
-	 * @param argument detail to be included in the error message.
-	 */
-	public ServiceNotFoundException(ErrorCode code, Throwable cause, Object argument) {
+     * @param argument detail to be included in the error message.
+     */
+	public ServiceNotFoundException(Throwable cause, Object argument) {
 		super(cause, argument);
 	}
 }

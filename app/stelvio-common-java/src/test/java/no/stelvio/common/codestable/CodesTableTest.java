@@ -2,12 +2,9 @@ package no.stelvio.common.codestable;
 
 import java.util.Locale;
 
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.error.SystemException;
-
-import org.apache.commons.collections.Predicate;
-import org.springframework.beans.BeansException;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+
+import no.stelvio.common.error.SystemException;
 
 /**
  * Unit test of CodesTable.
@@ -50,7 +47,7 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 			codesTable.getCodesTableItem("t8code15");
 			fail("SystemException should have been thrown");
 		}catch(SystemException e){
-			assertEquals("Unexpected error code", FrameworkError.CODES_TABLE_NOT_FOUND.getCode(), e.getErrorCode());
+            // should happen
 		}
 
 		//Test: get an item
@@ -132,7 +129,7 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 			codesTable.getDecode("t8code15");
 			fail("SystemException should have been thrown");
 		}catch(SystemException e){
-			assertEquals("Unexpected error code", FrameworkError.CODES_TABLE_NOT_FOUND.getCode(), e.getErrorCode());
+            // should happen
 		}
 
 		//Test: get a decode
@@ -152,7 +149,7 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 			codesTable.getDecode("t8code15");
 			fail("SystemException should have been thrown");
 		}catch(SystemException e){
-			assertEquals("Unexpected error code", FrameworkError.CODES_TABLE_NOT_FOUND.getCode(), e.getErrorCode());
+            // should happen
 		}
 
 		//Test: get a decode

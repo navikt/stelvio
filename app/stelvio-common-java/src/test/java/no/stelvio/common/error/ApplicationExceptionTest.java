@@ -31,7 +31,6 @@ public class ApplicationExceptionTest extends TestCase {
 		ApplicationException copy = (ApplicationException) original.copy();
 
 		super.assertEquals("isLogged() should match", original.isLogged(), copy.isLogged());
-		super.assertEquals("getErrorCode() should match", original.getErrorCode(), copy.getErrorCode());
 		super.assertEquals("getErrorId() should match", original.getErrorId(), copy.getErrorId());
 		super.assertEquals("getMessage() should match", original.getMessage(), copy.getMessage());
 		super.assertEquals("getLocalizedMessage() should match", original.getLocalizedMessage(), copy.getLocalizedMessage());
@@ -76,7 +75,6 @@ public class ApplicationExceptionTest extends TestCase {
 	public void testApplicationExceptionErrorCodeObjectArray() {
 		Object[] arguments = new String[] { "Petter", "Skodvin" };
 		ApplicationException ae = new ApplicationException(arguments);
-		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), ae.getErrorCode());
 		assertEquals("There should be 2 arguments", 2, ae.getArguments().length);
 		assertEquals("Argument 1 should be Petter", "Petter", ae.getArguments()[0]);
 		assertEquals("Argument 2 should be Skodvin", "Skodvin", ae.getArguments()[1]);
@@ -86,14 +84,12 @@ public class ApplicationExceptionTest extends TestCase {
 	public void testApplicationExceptionErrorCodeThrowable() {
 		Throwable cause = new RuntimeException("The Original Cause");
 		ApplicationException ae = new ApplicationException(cause);
-		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), ae.getErrorCode());
 		assertEquals("Cause is The Original Cause", cause, ae.getCause());
 	}
 
 	public void testApplicationExceptionErrorCodeThrowableObject() {
 		Throwable cause = new RuntimeException("The Original Cause");
 		ApplicationException ae = new ApplicationException(cause, "Argument");
-		assertEquals("ErrorCode should be TestError.ERR_100000", TestError.ERR_100000.getCode(), ae.getErrorCode());
 		assertEquals("Cause is The Original Cause", cause, ae.getCause());
 		assertEquals("There should be 1 arguments", 1, ae.getArguments().length);
 		assertEquals("Argument 1 should be Argument", "Argument", ae.getArguments()[0]);

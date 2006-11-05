@@ -112,7 +112,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
 
         if (t instanceof LoggableException) {
             LoggableException le = (LoggableException) t;
-            return getMessage(le.getErrorCode(), le.getArguments());
+            return getMessage(1/*le.getErrorCode()*/, le.getArguments());
         } else {
             if (null == t.getLocalizedMessage()) {
                 return t.toString();
@@ -144,7 +144,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @param le the exception.
      */
     private void logInternal(LoggableException le) {
-        Integer severity = getSeverity(le.getErrorCode());
+        Integer severity = getSeverity(1/*le.getErrorCode()*/);
         final Throwable throwable = (Throwable) le;
 
         if (throwable instanceof SystemException) {
@@ -181,10 +181,10 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
         Object[] params =
             new Object[] {
                 le.getUserId(),
-                getSeverity(le.getErrorCode()),
+                getSeverity(1/*le.getErrorCode()*/),
                 le.getScreenId(),
                 le.getProcessId(),
-                getMessage(le.getErrorCode(), le.getArguments())};
+                getMessage(1/*le.getErrorCode()*/, le.getArguments())};
         return messageFormatter.formatMessage(params);
     }
 
@@ -197,8 +197,8 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @return the formated message.
      */
     String getSystemLogMessage(LoggableException le) {
-        return "ErrCode=" + le.getErrorCode() + ",ErrId=" + le.getErrorId() +
-                ",Message=" + getMessage(le.getErrorCode(), le.getArguments());
+        return "ErrCode=" + 1/*le.getErrorCode()*/ + ",ErrId=" + le.getErrorId() +
+                ",Message=" + getMessage(1/*le.getErrorCode()*/, le.getArguments());
     }
 
     /**

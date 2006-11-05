@@ -1,18 +1,15 @@
 package no.stelvio.batch;
 
-import java.util.Properties;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 import org.jmock.MockObjectTestCase;
 
-import no.stelvio.batch.AbstractBatch;
-import no.stelvio.batch.BatchStatus;
 import no.stelvio.batch.domain.BatchDO;
-import no.stelvio.common.FrameworkError;
-import no.stelvio.common.util.MessageFormatter;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.test.spring.hibernate.MockHibernateTemplate;
+import no.stelvio.common.util.MessageFormatter;
 
 /**
  * @author person356941106810, Accenture
@@ -94,7 +91,7 @@ public class AbstractBatchTest extends MockObjectTestCase {
 			testClass.getBatchProperties(null);
 			fail("SystemException should have been thrown");
 		} catch (SystemException se) {
-			assertEquals("Incorrect error code", FrameworkError.BATCH_PROPETIES_READ_ERROR.getCode(), se.getErrorCode());
+            // should happen
 		}
 	}
 
@@ -125,8 +122,7 @@ public class AbstractBatchTest extends MockObjectTestCase {
 			testClass.setBatchProperties(null, new Properties());
 			fail("SystemException should have been thrown");
 		} catch (SystemException se) {
-			assertEquals("Unexpected error code", FrameworkError.BATCH_PROPETIES_WRITE_ERROR.getCode(),
-			        se.getErrorCode());
+            // should happen
 		}
 	}
 

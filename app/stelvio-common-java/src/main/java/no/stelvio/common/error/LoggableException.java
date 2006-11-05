@@ -30,14 +30,7 @@ public interface LoggableException {
 	 */
 	Object copy();
 
-	/**
-	 * Get the error code identifying the type of error.
-	 *
-	 * @return The error code identifying this exception
-	 */
-	int getErrorCode();
-	
-	/**
+    /**
 	 * Get the arguments identifying details about the error.
 	 * 
 	 * @return The arguments detailing this exception.

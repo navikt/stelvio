@@ -1,13 +1,7 @@
 package no.stelvio.common.monitor;
 
 import junit.framework.TestCase;
-
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
-import no.stelvio.common.monitor.ErrorMonitor;
-import no.stelvio.common.monitor.Monitor;
-import no.stelvio.common.monitor.MonitorChain;
-import no.stelvio.common.monitor.MonitorEvent;
 
 /**
  * 
@@ -32,7 +26,6 @@ public class MonitorChainTest extends TestCase {
 				chain.init();
 			} catch (SystemException e) {
 				ex = true;
-				assertEquals("Test 1:", FrameworkError.MONITORING_CHAIN_NO_MONITORS_ERROR.getCode(), e.getErrorCode());
 			}
 
 			assertTrue("Test 2", ex);

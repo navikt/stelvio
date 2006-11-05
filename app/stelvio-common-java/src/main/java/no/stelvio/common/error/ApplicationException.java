@@ -194,16 +194,7 @@ public class ApplicationException extends Exception implements LoggableException
 		return screenId;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see no.stelvio.common.error.LoggableException#getErrorCode()
-	 */
-	public int getErrorCode() {
-		return errorCode;
-	}
-
-	/**
+    /**
 	 * {@inheritDoc}
 	 * 
 	 * @see no.stelvio.common.error.LoggableException#getArguments()
@@ -224,9 +215,10 @@ public class ApplicationException extends Exception implements LoggableException
 	 * {@inheritDoc}
 	 * 
 	 * @see java.lang.Throwable#getMessage()
+     * @todo not correct in new version
 	 */
 	public String getMessage() {
-		return String.valueOf(getErrorCode());
+		return "TODO";
 	}
 
 	/**
