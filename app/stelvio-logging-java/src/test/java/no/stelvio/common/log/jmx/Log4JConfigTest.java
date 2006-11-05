@@ -6,12 +6,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
-
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
-
-import no.stelvio.common.log.jmx.Log4JConfig;
 
 import junit.framework.TestCase;
 
@@ -20,6 +17,7 @@ import junit.framework.TestCase;
  * 
  * @author person356941106810, Accenture
  * @version $Id: Log4JConfigTest.java 2866 2006-04-25 11:20:22Z psa2920 $
+ * @deprecated Use log4j's built-in JMX support; if not enough, look at how HiveMind has done it. 
  */
 public class Log4JConfigTest extends TestCase {
 

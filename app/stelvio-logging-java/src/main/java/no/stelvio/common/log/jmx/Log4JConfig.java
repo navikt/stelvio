@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.MBeanRegistrationException;
 import javax.management.MBeanServer;
@@ -13,6 +12,7 @@ import javax.management.MBeanServerFactory;
 import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
+
 import org.apache.log4j.helpers.LogLog;
 
 /**
@@ -20,6 +20,7 @@ import org.apache.log4j.helpers.LogLog;
  * 
  * @author person356941106810, Accenture
  * @version $Id: Log4JConfig.java 2796 2006-02-28 19:40:23Z skb2930 $
+ * @deprecated Use log4j's built-in JMX support; if not enough, look at how HiveMind has done it. 
  */
 public class Log4JConfig implements Log4JConfigMBean {
 	private String currentConfig = null;

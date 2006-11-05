@@ -5,6 +5,7 @@ package no.stelvio.common.log.jmx;
  * 
  * @author person356941106810, Accenture
  * @version $Id: Log4JConfigMBean.java 2194 2005-04-06 09:43:22Z psa2920 $
+ * @deprecated Use log4j's built-in JMX support; if not enough, look at how HiveMind has done it
  */
 public interface Log4JConfigMBean {
 	
