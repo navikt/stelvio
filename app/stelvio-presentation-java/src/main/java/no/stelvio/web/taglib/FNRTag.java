@@ -2,8 +2,6 @@ package no.stelvio.web.taglib;
 
 import javax.servlet.jsp.JspException;
 
-import org.apache.taglibs.standard.tag.common.core.OutSupport;
-
 import no.stelvio.web.taglib.support.ExpressionEvaluator;
 
 /**
@@ -12,7 +10,7 @@ import no.stelvio.web.taglib.support.ExpressionEvaluator;
  * @author person356941106810, Accenture
  * @version $Id: FNRTag.java 2049 2005-03-03 14:28:52Z psa2920 $
  */
-public class FNRTag extends OutSupport {
+public class FNRTag {
 
 	private static final int FNR_LEN = 11;
 

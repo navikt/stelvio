@@ -5,14 +5,13 @@ import org.apache.struts.Globals;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.ApplicationException;
 import no.stelvio.common.error.SystemException;
-import servletunit.struts.MockStrutsTestCase;
 
 /**
  * Unit test for {@link FrameworkErrorAction}.
  * 
  * @author person356941106810, Accenture
  */
-public class FrameworkErrorActionTest extends MockStrutsTestCase {
+public class FrameworkErrorActionTest {
 
 	public void testNoErrorsOnRequestShouldSetDefaultForm() {
 		actionPerform();

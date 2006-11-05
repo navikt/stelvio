@@ -5,8 +5,6 @@ import java.util.Hashtable;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import org.apache.struts.util.ResponseUtils;
-
 import no.stelvio.common.config.Config;
 import no.stelvio.common.context.RequestContext;
 
@@ -64,6 +62,7 @@ import no.stelvio.common.context.RequestContext;
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: HelpLinkTag.java 2201 2005-04-07 08:16:41Z psa2920 $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
 public class HelpLinkTag extends TagSupport {
 

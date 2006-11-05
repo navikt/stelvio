@@ -43,8 +43,8 @@ import no.stelvio.web.taglib.support.ExpressionEvaluator;
  *
  * @author person02f3de2754b4, Accenture
  * @author personf8e9850ed756, Accenture
- * 
  * @version $Id: CTOptionsCollectionTag.java 2854 2006-04-25 10:56:51Z psa2920 $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
 public class CTOptionsCollectionTag extends TagSupport {
 

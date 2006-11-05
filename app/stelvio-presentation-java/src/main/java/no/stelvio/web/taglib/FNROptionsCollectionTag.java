@@ -1,16 +1,14 @@
 package no.stelvio.web.taglib;
 
-import org.apache.struts.util.ResponseUtils;
-
-import org.apache.strutsel.taglib.html.ELOptionsCollectionTag;
 /**
  * Tag for displaying FNR in a optionsCollection. This will display on the follwoing format:
  * ddmmyy xxxxx
  *
  * @author Jonas Lindholm, Accenture
  * @version $Revision: 2049 $ $Author: psa2920 $ $Date: 2005-03-03 15:28:52 +0100 (Thu, 03 Mar 2005) $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
-public class FNROptionsCollectionTag extends ELOptionsCollectionTag {
+public class FNROptionsCollectionTag {
 
 	/**
 	 * The style associated with this tag.

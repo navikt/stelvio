@@ -1,19 +1,18 @@
 package no.stelvio.web.taglib;
 
-import no.stelvio.web.taglib.support.CtTagSupport;
-import no.stelvio.web.taglib.support.ExpressionEvaluator;
-import no.stelvio.web.util.RequestUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.taglib.html.SelectTag;
-import org.apache.struts.taglib.nested.NestedNameSupport;
-import org.apache.struts.taglib.nested.NestedPropertyHelper;
-
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.Tag;
-import java.io.IOException;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.struts.taglib.nested.NestedPropertyHelper;
+
+import no.stelvio.web.taglib.support.CtTagSupport;
+import no.stelvio.web.taglib.support.ExpressionEvaluator;
+import no.stelvio.web.util.RequestUtils;
 
 /**
  * Extension of the SelectTag by adding an attribute for determining if the field should be read-only or not.
@@ -22,8 +21,9 @@ import java.io.IOException;
  *
  * @author personf8e9850ed756, Accenture
  * @version $Id: CTSelectTag.java 2523 2005-10-07 06:17:58Z skb2930 $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
-public class CTSelectTag extends SelectTag implements NestedNameSupport {
+public class CTSelectTag {
 
 	private static final Log LOG = LogFactory.getLog(CTSelectTag.class);
 

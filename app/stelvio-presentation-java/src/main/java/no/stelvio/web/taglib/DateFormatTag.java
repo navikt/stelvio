@@ -2,9 +2,9 @@ package no.stelvio.web.taglib;
 
 import java.io.IOException;
 import java.util.Date;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
+
 import org.apache.taglibs.standard.lang.support.ExpressionEvaluatorManager;
 
 import no.stelvio.common.util.DateUtil;
@@ -17,7 +17,8 @@ import no.stelvio.web.taglib.support.DateSupport;
  * @author person7553f5959484, Accenture
  * 
  * @version $Id: DateFormatTag.java 2713 2005-12-15 12:24:55Z skb2930 $
-  */
+ * @todo we might need this in new framework, but then as a JSF-tag.
+ */
 public class DateFormatTag extends TagSupport {
 
 	private String value; // stores EL-based property

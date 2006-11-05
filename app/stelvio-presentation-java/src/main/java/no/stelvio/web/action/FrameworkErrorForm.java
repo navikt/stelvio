@@ -1,14 +1,13 @@
 package no.stelvio.web.action;
 
-import org.apache.struts.action.ActionForm;
-
 /**
  * The form that holds the technical error details.
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: FrameworkErrorForm.java 2745 2006-01-26 20:44:41Z skb2930 $
+ * @todo we might need this in new framework.
  */
-public class FrameworkErrorForm extends ActionForm {
+public class FrameworkErrorForm {
 
 	private String errorMessage = null;
 	private String stacktrace = null;

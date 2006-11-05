@@ -1,7 +1,6 @@
 package no.stelvio.web.taglib;
 
 import java.io.IOException;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyTagSupport;
 
@@ -10,6 +9,7 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
  * 
  * @author Fredrik Dahl-Jørgensen, Accenture
  * @version $Id: TruncateTag.java 2726 2005-12-30 13:08:35Z skb2930 $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
 public class TruncateTag extends BodyTagSupport {
 

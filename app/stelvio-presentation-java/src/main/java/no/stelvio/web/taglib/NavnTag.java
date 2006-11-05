@@ -1,21 +1,20 @@
 package no.stelvio.web.taglib;
 
 import javax.servlet.jsp.JspException;
+
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
-import org.apache.taglibs.standard.tag.common.core.OutSupport;
-import org.apache.taglibs.standard.tag.el.core.ExpressionUtil;
 
 /**
  * Tag to show special codes for dead or protected persons.
  *
  * @author Jonas Lindholm, Accenture
  * @version $Id: NavnTag.java 2552 2005-10-14 10:14:21Z fda2920 $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
-public class NavnTag extends OutSupport {
+public class NavnTag {
 	/** Logger to be used for writing <i>TRACE</i> and <i>DEBUG</i> messages. */
 	private static final Log log = LogFactory.getLog(NavnTag.class);
 	private static final String NAVN = "navn";

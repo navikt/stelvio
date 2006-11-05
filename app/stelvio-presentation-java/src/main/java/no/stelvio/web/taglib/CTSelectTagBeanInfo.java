@@ -19,6 +19,8 @@ import org.apache.commons.logging.LogFactory;
  * tag instances if they received the same original attribute values, and the
  * JSP compiler can choose to not re-call the setter methods, because it can
  * assume the same values are already set.
+ *
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
 public class CTSelectTagBeanInfo extends SimpleBeanInfo {
 

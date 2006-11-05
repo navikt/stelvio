@@ -1,12 +1,11 @@
 package no.stelvio.web.util;
 
 import java.util.Enumeration;
-import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
+
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,6 +18,7 @@ import no.stelvio.web.constants.Constants;
  * @author person7553f5959484, Accenture
  * @author Jonas Lindholm, Accenture
  * @version $Revision: 2220 $ $Author: skb2930 $ $Date: 2005-04-21 13:38:23 +0200 (Thu, 21 Apr 2005) $
+ * @todo we might need this in new framework.
  */
 public final class RequestUtils {
 
@@ -126,6 +126,7 @@ public final class RequestUtils {
 	 * 
 	 * @param request the HttpServletRequest we are processing
 	 * @return The method to execute in the action.
+     * @todo probably not needed.
 	 */
 	public static String getMethod(HttpServletRequest request) {
 		String methodToExecute = (String) request.getAttribute(Constants.METHOD_TO_EXECUTE);
@@ -255,53 +256,7 @@ public final class RequestUtils {
 		}
 	}
 
-	/**
-	 * Checks whether the input to a specified ActionForm method should be validated. 
-	 * The <code>parameter</code> attribute from the struts-config.xml action tag consists
-	 * of a comma-separated list of methods that should not be validated. This method also
-	 * returns false for the WINDOW_LOAD & WINDOW_FORWARD method.
-	 * 
-	 * @param strutsParameter The string containing the methods not to be validated.
-	 * @param method The requested method.
-	 * @return True iff the input to the method should be validated.
-	 */
-	public static boolean validate(String strutsParameter, String method) {
-
-		// Never validate a form when window loads
-		if (Constants.WINDOW_LOAD_METHOD.equals(method)) {
-			return false;
-		}
-
-		// Never validate a form when the forward method is called
-		if (Constants.WINDOW_FORWARD_METHOD.equals(method)) {
-			return false;
-		}
-
-		// There was no excludes list, validate as usual
-		if (null == strutsParameter) {
-			return true;
-		}
-
-		// Don't validate form before executing these methods
-		String[] noValidateMethods = strutsParameter.split(SEPARATORS_REGEXP);
-
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("Methods that should not be validated for: " + Arrays.asList(noValidateMethods));
-		}
-
-		for (int cnt = 0; cnt < noValidateMethods.length; cnt++) {
-			String noValidateMethod = noValidateMethods[cnt];
-
-			if (noValidateMethod.equals(method)) {
-				return false;
-			}
-		}
-
-		// Current method was not on the excludes list, validate as usual
-		return true;
-	}
-
-	/**
+    /**
 	 * Retrieves a property on a bean in the page context as a string.
 	 *
 	 * @param pageContext the page context to retrieve the bean from.

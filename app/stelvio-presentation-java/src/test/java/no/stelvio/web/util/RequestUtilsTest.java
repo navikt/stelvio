@@ -1,6 +1,5 @@
 package no.stelvio.web.util;
 
-import no.stelvio.web.util.RequestUtils;
 import junit.framework.TestCase;
 import servletunit.HttpServletRequestSimulator;
 import servletunit.ServletContextSimulator;
@@ -74,20 +73,7 @@ public class RequestUtilsTest extends TestCase {
 		assertEquals(processId, "Load");
 	}
 
-	/**
-	 * Checks that validate returns false when the method is found in the list of method, true otherwise.
-	 */
-	public void testValidate() {
-		assertTrue("Should be validated", RequestUtils.validate("test1,test2", "test"));
-		assertFalse("Should not be validated", RequestUtils.validate("test1,test2", "test2"));
-		assertTrue("Should be validated", RequestUtils.validate("test1,\ntest2", "test"));
-		assertFalse("Should not be validated", RequestUtils.validate("test1,\ntest2", "test2"));
-
-		assertFalse("Should not be validated", RequestUtils.validate("executeTilbake", "executeLoad"));
-		assertFalse("Should not be validated", RequestUtils.validate("executeTilbake", "executeForward"));
-	}
-
-	private void addRequestParameter(String key, String value) {
+    private void addRequestParameter(String key, String value) {
 		request.addParameter(key, value);
 	}
 }

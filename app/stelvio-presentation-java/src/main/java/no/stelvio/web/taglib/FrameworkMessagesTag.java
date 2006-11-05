@@ -4,20 +4,17 @@ import javax.servlet.jsp.JspException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.taglib.html.MessagesTag;
-import org.apache.struts.util.RequestUtils;
-import org.apache.struts.util.ResponseUtils;
 
 /**
  * Description
  *
  * @author Jonas Lindholm, Accenture
  * @version $Revision: 967 $ $Author: jla2920 $ $Date: 2004-08-03 13:18:17 +0200 (Tue, 03 Aug 2004) $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
-public class FrameworkMessagesTag extends MessagesTag {
+public class FrameworkMessagesTag {
 
 	/**
 	 * Commons Logging instance.

@@ -1,7 +1,6 @@
 package no.stelvio.web.filter;
 
 import java.io.IOException;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -84,7 +83,7 @@ public class RequestContextFilter extends AbstractFilter {
 			throw new ServletException("An error occured while updating the RequestContext", e);
 		}
 		finally {
-			// Reset the RequestContext allways, just to be on the safe side :)
+			// Always reset the RequestContext, just to be on the safe side
 			RequestContext.remove();
 		}
 	}

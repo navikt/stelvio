@@ -1,19 +1,17 @@
 package no.stelvio.web.taglib;
 
 import java.io.IOException;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
-
-import org.apache.struts.taglib.html.ButtonTag;
 
 /**
  * Adds the script necessary to use a <code>button</code> as a form submit button.
  * 
  * @author Christian Rømming, Accenture
  * @version $Revision: 1907 $ $Author: agb2970 $ $Date: 2005-01-26 16:04:27 +0100 (Wed, 26 Jan 2005) $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
-public class SubmitButtonTag extends ButtonTag {
+public class SubmitButtonTag {
 
 	/** The index of current form. */
 	String formindex = null;

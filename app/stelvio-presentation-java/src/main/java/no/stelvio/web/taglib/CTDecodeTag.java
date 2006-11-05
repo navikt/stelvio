@@ -2,8 +2,6 @@ package no.stelvio.web.taglib;
 
 import javax.servlet.jsp.JspException;
 
-import org.apache.taglibs.standard.tag.common.core.OutSupport;
-
 import no.stelvio.web.taglib.support.CtTagSupport;
 import no.stelvio.web.taglib.support.ExpressionEvaluator;
 
@@ -12,8 +10,9 @@ import no.stelvio.web.taglib.support.ExpressionEvaluator;
  * 
  * @author Fredrik Dahl-Jørgensen, Accenture
  * @version $Id: CTDecodeTag.java 2038 2005-03-03 12:09:23Z psa2920 $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
-public class CTDecodeTag extends OutSupport {
+public class CTDecodeTag {
 
 	/** The class name of the codes table to show. */
 	private String codestable = null;

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -23,8 +22,9 @@ import no.stelvio.common.error.LoggableException;
  * 
  * @author person7553f5959484, Accenture
  * @version $Revision: 2757 $ $Author: skb2930 $ $Date: 2006-02-01 15:00:33 +0100 (Wed, 01 Feb 2006) $
+ * @todo we might need this in new framework.
  */
-public class FrameworkErrorAction extends Action {
+public class FrameworkErrorAction {
 
 	/** Logger to be used for writing <i>TRACE</i> and <i>DEBUG</i> messages. */
 	protected final Log log = LogFactory.getLog(this.getClass());

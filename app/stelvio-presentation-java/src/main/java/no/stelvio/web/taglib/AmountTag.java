@@ -1,7 +1,6 @@
 package no.stelvio.web.taglib;
 
 import javax.servlet.jsp.JspException;
-import org.apache.taglibs.standard.tag.common.core.OutSupport;
 
 import no.stelvio.web.taglib.support.AmountSupport;
 import no.stelvio.web.taglib.support.ExpressionEvaluator;
@@ -23,8 +22,9 @@ import no.stelvio.web.taglib.support.ExpressionEvaluator;
  * @author person5204c0b677af, Accenture
  * @author Stig Kleppe-J&oslash;rgensen, Accenture
  * @version $Revision: 2729 $ $Author: skb2930 $ $Date: 2006-01-03 13:53:40 +0100 (Tue, 03 Jan 2006) $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
-public class AmountTag extends OutSupport {
+public class AmountTag {
 	private String elValue;
 	private String elDefault;
 	private Object evaluatedValue;
@@ -42,14 +42,15 @@ public class AmountTag extends OutSupport {
 	public int doStartTag() throws JspException {
 		evaluateExpressions();
 		formatAmount();
-		return super.doStartTag();
-	}
+//		return super.doStartTag();
+        return 0;
+    }
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public void release() {
-		super.release();
+//		super.release();
 		init();
 	}
 
@@ -84,9 +85,9 @@ public class AmountTag extends OutSupport {
 	 * @throws JspException if expressions ccan't be evaluated.
 	 */
 	private void evaluateExpressions() throws JspException {
-		ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator(this, pageContext);
+		ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator(this, null /*TODO pageContext*/);
 
-		def = expressionEvaluator.evaluateString("default", elDefault);
+//		def = expressionEvaluator.evaluateString("default", elDefault);
 		evaluatedValue = expressionEvaluator.evaluate("value", elValue, Object.class);
 	}
 
@@ -94,8 +95,8 @@ public class AmountTag extends OutSupport {
 	 * Formats the amount.
 	 */
 	private void formatAmount() {
-		value = AmountSupport.formatAmount(evaluatedValue);
-		// Should not escape output as then the &nbsp; as thousands separator will be escaped
-		escapeXml = false;
-	}
+        String value = AmountSupport.formatAmount(evaluatedValue);
+        // Should not escape output as then the &nbsp; as thousands separator will be escaped
+        boolean escapeXml = false;
+    }
 }

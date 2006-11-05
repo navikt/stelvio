@@ -1,22 +1,19 @@
 package no.stelvio.web.taglib;
 
 import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
-
-import org.apache.struts.Globals;
-import org.apache.struts.taglib.html.BaseTag;
 
 /**
  * Override doStartTag to change the root base to the context path
  *
  * @author Jonas Lindholm, Accenture
  * @version $Revision: 967 $ $Author: jla2920 $ $Date: 2004-08-03 13:18:17 +0200 (Tue, 03 Aug 2004) $
+ * @todo we might need this in new framework, but then as a JSF-tag.
  */
-public class RootBaseTag extends BaseTag {
+public class RootBaseTag {
 
 	/**
 	 * Process the start of this tag.
