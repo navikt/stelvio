@@ -106,11 +106,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/LoggableException.
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/Severity.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/SystemException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/package.html -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/EventSubmittorExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/ExceptionHandlerStrategy.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/FallbackExceptionHandlerStrategy.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/LoggerExceptionHandlerStrategy.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/RethrowExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/EventSubmittorExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/FallbackExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategy.java -text
@@ -205,7 +201,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/Bean.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/BeanOther.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/CalendarBean.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ApplicationExceptionTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/DefaultExceptionHandlerFacadeTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerFactoryBeanTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ExceptionHandlerFacadeTest.java -text
