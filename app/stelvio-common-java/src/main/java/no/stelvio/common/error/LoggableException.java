@@ -27,6 +27,7 @@ public interface LoggableException {
 	 * Creates an exact copy of the instance 
 	 * 
 	 * @return a copy of this instance.
+     * @todo use copy constructor instead?? look into usage
 	 */
 	Object copy();
 
