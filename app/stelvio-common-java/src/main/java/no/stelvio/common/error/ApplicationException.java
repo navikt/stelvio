@@ -10,8 +10,9 @@ import no.stelvio.common.util.SequenceNumberGenerator;
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: ApplicationException.java 2839 2006-04-25 10:23:10Z psa2920 $
+ * @todo change javadoc to say something about only use it when the client MUST catch it else use SystemException.
  */
-public class ApplicationException extends Exception implements LoggableException {
+public abstract class ApplicationException extends Exception implements LoggableException {
 
 	// Initialize upon construction
 	private final String userId;
@@ -24,9 +25,7 @@ public class ApplicationException extends Exception implements LoggableException
 
 	private final String errorId;
 
-	private final int errorCode;
-
-	private final Object[] arguments;
+    private final Object[] arguments;
 
 	// The exception is not logged by default
 	private boolean isLogged = false;
@@ -91,9 +90,8 @@ public class ApplicationException extends Exception implements LoggableException
      */
 	public ApplicationException(Throwable cause, Object[] arguments) {
 		super(cause);
-        this.errorCode = /*code.getCode() TODO: checkout new version*/ 0;
 
-		if (null == arguments) {
+        if (null == arguments) {
 			this.arguments = null;
 		} else {
 			this.arguments = new Object[arguments.length];
@@ -115,8 +113,7 @@ public class ApplicationException extends Exception implements LoggableException
 	 */
 	protected ApplicationException(ApplicationException other) {
 		super();
-		this.errorCode = other.errorCode;
-		if (null == other.getArguments()) {
+        if (null == other.getArguments()) {
 			this.arguments = null;
 		} else {
 			Object[] tmp = new Object[other.getArguments().length];
@@ -226,7 +223,6 @@ public class ApplicationException extends Exception implements LoggableException
 	 * following:
 	 * <ul>
 	 * <li>The name of the actual class of this object
-	 * <li>The result of the {@link #getErrorCode} method for this object
 	 * <li>The arguments this object was created with
 	 * </ul>
 	 * 
@@ -236,8 +232,7 @@ public class ApplicationException extends Exception implements LoggableException
 	 */
 	public String toString() {
 		StringBuffer sb = new StringBuffer(getClass().getName());
-		sb.append(": Code=").append(this.errorCode);
-		sb.append(",ErrId=").append(this.errorId);
+		sb.append(": ErrId=").append(this.errorId);
 		sb.append(",Screen=").append(this.screenId);
 		sb.append(",Process=").append(this.processId);
 		sb.append(",TxId=").append(this.transactionId);
@@ -253,18 +248,5 @@ public class ApplicationException extends Exception implements LoggableException
 			sb.append("]");
 		}
 		return sb.toString();
-	}
-
-	/**
-	 * Creates an exact copy of this instance. <p/> Note that the elements of
-	 * the copy's arguments are the same elements as in the original. <p/> Also
-	 * notice that the cause will not be copied.
-	 * 
-	 * {@inheritDoc}
-	 * 
-	 * @see no.stelvio.common.error.LoggableException#copy()
-	 */
-	public Object copy() {
-		return new ApplicationException(this);
 	}
 }

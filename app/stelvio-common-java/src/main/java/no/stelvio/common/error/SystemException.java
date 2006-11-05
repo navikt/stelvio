@@ -11,7 +11,7 @@ import no.stelvio.common.util.SequenceNumberGenerator;
  * @version $Revision: 2837 $ $Author: psa2920 $ $Date: 2006-01-09 16:12:14
  *          +0100 (ma, 09 jan 2006) $
  */
-public class SystemException extends RuntimeException implements
+public abstract class SystemException extends RuntimeException implements
 		LoggableException {
 
 	// Initialize upon construction
@@ -25,9 +25,7 @@ public class SystemException extends RuntimeException implements
 
 	private final String errorId;
 
-	private final int errorCode;
-
-	private Object[] arguments;
+    private Object[] arguments;
 
 	// The exception is not logged by default
 	private boolean isLogged = false;
@@ -92,8 +90,7 @@ public class SystemException extends RuntimeException implements
 	public SystemException(Throwable cause, Object[] arguments) {
 		super(cause);
 
-		errorCode = /*code.getCode() TODO: checkout new version*/ 0;
-		userId = RequestContext.getUserId();
+        userId = RequestContext.getUserId();
 		screenId = RequestContext.getScreenId();
 		processId = RequestContext.getProcessId();
 		transactionId = RequestContext.getTransactionId();
@@ -110,8 +107,7 @@ public class SystemException extends RuntimeException implements
 	 */
 	protected SystemException(SystemException other) {
 
-		errorCode = other.errorCode;
-		userId = other.userId;
+        userId = other.userId;
 		screenId = other.screenId;
 		processId = other.processId;
 		transactionId = other.transactionId;
@@ -170,14 +166,7 @@ public class SystemException extends RuntimeException implements
 		return screenId;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public int getErrorCode() {
-		return errorCode;
-	}
-
-	/**
+    /**
 	 * {@inheritDoc}
 	 */
 	public Object[] getArguments() {
@@ -191,9 +180,10 @@ public class SystemException extends RuntimeException implements
 	 * Gets a String representation of the error code.
 	 * 
 	 * {@inheritDoc}
+     * @todo other message
 	 */
 	public String getMessage() {
-		return String.valueOf(errorCode);
+		return "TODO";
 	}
 
 	/**
@@ -201,7 +191,6 @@ public class SystemException extends RuntimeException implements
 	 * following:
 	 * <ul>
 	 * <li>The name of the actual class of this object
-	 * <li>The result of the {@link #getErrorCode} method for this object
 	 * <li>The arguments this object was created with
 	 * </ul>
 	 * 
@@ -209,8 +198,7 @@ public class SystemException extends RuntimeException implements
 	 */
 	public String toString() {
 		StringBuffer sb = new StringBuffer(getClass().getName());
-		sb.append(": Code=").append(errorCode);
-		sb.append(",ErrId=").append(errorId);
+		sb.append(": ErrId=").append(errorId);
 		sb.append(",Screen=").append(screenId);
 		sb.append(",Process=").append(processId);
 		sb.append(",TxId=").append(transactionId);
@@ -231,17 +219,6 @@ public class SystemException extends RuntimeException implements
 		}
 
 		return sb.toString();
-	}
-
-	/**
-	 * Creates an exact copy of this instance. <p/> Note that the elements of
-	 * the copy's arguments are the same elements as in the original. <p/> Also
-	 * notice that the cause will not be copied.
-	 * 
-	 * {@inheritDoc}
-	 */
-	public Object copy() {
-		return new SystemException(this);
 	}
 
 	/**
