@@ -14,7 +14,7 @@ public class Err {
     private Locale locale;
     private String className;
     private String message;
-    private Integer severity;
+    private Severity severity;
     private String shortDescription;
     private String longDescription;
 
@@ -26,7 +26,7 @@ public class Err {
                Locale locale,
                String className,
                String message,
-               Integer severity,
+               Severity severity,
                String shortDescription,
                String longDescription) {
         this.id = id;
@@ -54,7 +54,7 @@ public class Err {
         return message;
     }
 
-    public Integer getSeverity() {
+    public Severity getSeverity() {
         return severity;
     }
 

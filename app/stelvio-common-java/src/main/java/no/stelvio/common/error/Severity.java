@@ -19,14 +19,18 @@ package no.stelvio.common.error;
  * @version $Id: Severity.java 1954 2005-02-08 13:35:42Z psa2920 $
  * @todo should be an Enum
  */
-public final class Severity {
+public enum Severity {
+    FATAL(5),
+    ERROR(4),
+    WARN(3);
 
-	/** Constant representing severity of type FATAL. Constant value is 5. */
-	public static final Integer FATAL = new Integer(5);
+    private int level;
 
-	/** Constant representing severity of type ERROR. Constant value is 4. */
-	public static final Integer ERROR = new Integer(4);
+    Severity(int level) {
+        this.level = level;
+    }
 
-	/** Constant representing severity of type WARN. Constant value is 3. */
-	public static final Integer WARN = new Integer(3);
+    public boolean isMoreFatalThan(Severity other) {
+        return level > other.level;
+    }
 }

@@ -247,9 +247,9 @@ public abstract class AbstractBatch {
 	 * Helper method for logging a message to the batch log.
 	 *
 	 * @param message the message to log.
-	 * @param severity the severity of the message to log.
-	 */
-	private void log(String message, Integer severity) {
+     * @param severity the severity of the message to log.
+     */
+	private void log(String message, Severity severity) {
 		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { RequestContext.getUserId(), severity, BATCH, batchName, message }));
 	}
 

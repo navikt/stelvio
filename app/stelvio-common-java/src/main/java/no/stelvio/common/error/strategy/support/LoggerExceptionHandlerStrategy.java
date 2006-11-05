@@ -142,7 +142,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @param le the exception.
      */
     private void logInternal(LoggableException le) {
-        Integer severity = getSeverity(1/*le.getErrorCode()*/);
+        Severity severity = getSeverity(1/*le.getErrorCode()*/);
         final Throwable throwable = (Throwable) le;
 
         if (throwable instanceof SystemException) {
@@ -246,7 +246,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @param code error type
      * @return the error severity
      */
-    private Integer getSeverity(int code) {
+    private Severity getSeverity(int code) {
         Err error = (Err) errorMap.get(code); // TODO: not the correct approach in new version
 
         return null == error ? Severity.ERROR : error.getSeverity();
