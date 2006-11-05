@@ -1,4 +1,6 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.support;
+
+import no.stelvio.common.error.ExceptionWrapper;
 
 /**
  * Default wrapper for unit testing.

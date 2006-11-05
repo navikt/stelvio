@@ -96,10 +96,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/core/Initializable.java 
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/TransferObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ApplicationException.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/DefaultExceptionWrapper.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/Err.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlerFactoryBean.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorRetriever.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionHandlerFacade.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionWrapper.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/LoggableException.java -text
@@ -112,6 +110,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/F
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/RethrowExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacade.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionWrapper.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorRetriever.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/JMXUtils.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/ServiceLevelConstants.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/ServiceLevelMBean.java -text
