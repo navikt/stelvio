@@ -353,11 +353,8 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/CTSelectTagBea
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/DateFormatTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/FNROptionsCollectionTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/FNRTag.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/FrameworkMessagesTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/HelpLinkTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/NavnTag.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/RootBaseTag.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/SubmitButtonTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/TruncateTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/AmountSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/CtTagSupport.java -text

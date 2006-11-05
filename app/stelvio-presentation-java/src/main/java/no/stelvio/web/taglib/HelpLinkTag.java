@@ -167,7 +167,7 @@ public class HelpLinkTag extends TagSupport {
 		}
 		html.append("\">").append(label).append("</a>");
 
-		ResponseUtils.write(pageContext, html.toString());
+//		ResponseUtils.write(pageContext, html.toString());
 		return SKIP_BODY;
 	}
 }

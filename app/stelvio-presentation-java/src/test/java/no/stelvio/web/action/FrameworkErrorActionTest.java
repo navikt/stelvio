@@ -1,34 +1,28 @@
 package no.stelvio.web.action;
 
-import org.apache.struts.Globals;
-
+import junit.framework.TestCase;
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.ApplicationException;
-import no.stelvio.common.error.SystemException;
 
 /**
  * Unit test for {@link FrameworkErrorAction}.
  * 
  * @author person356941106810, Accenture
  */
-public class FrameworkErrorActionTest {
+public class FrameworkErrorActionTest extends TestCase {
 
 	public void testNoErrorsOnRequestShouldSetDefaultForm() {
-		actionPerform();
 		verifyState("Ukjent", "Ukjent", "En feil har oppstått.", "processId", "screenId", "transactionId", "userId", "Ukjent");
 	}
 
 	public void testNotHandledErrorsOnRequestShouldFillInForm() {
-		getRequest().setAttribute(Globals.EXCEPTION_KEY, new ApplicationException());
-		actionPerform();
+//		getRequest().setAttribute(Globals.EXCEPTION_KEY, new ApplicationException());
 		// Cannot check errorId when it is generated from <code>SequenceNumberGenerator</code>
 		// Cannot check stacktrace when it is a real stacktrace
 		verifyState("0", null, "0", "processId", "screenId", "transactionId", "userId", null);
 	}
 
 	public void testHandledErrorsOnRequestShouldSetConfiguredExceptionTrue() {
-		getRequest().setAttribute(Globals.EXCEPTION_KEY, new SystemException());
-		actionPerform();
+//		getRequest().setAttribute(Globals.EXCEPTION_KEY, new SystemException());
 		// Cannot check errorId when it is generated from <code>SequenceNumberGenerator</code>
 		// Cannot check stacktrace when it is a real stacktrace
 		verifyState("0", null, "", "processId", "screenId", "transactionId", "userId", null);
@@ -49,7 +43,7 @@ public class FrameworkErrorActionTest {
 	private void verifyState(final String errorCode, final String errorId, final String errorMessage, final String processId,
 	                         final String screenId, final String transactionId, final String userId, final String stacktrace
 	) {
-		final FrameworkErrorForm form = (FrameworkErrorForm) getActionForm();
+		final FrameworkErrorForm form = null; // TODO: get this from JSF-context or something
 		assertEquals("Not correct error code", errorCode, form.getErrorCode());
 
 		// Cannot check errorId when it is generated from <code>SequenceNumberGenerator</code>.
@@ -67,13 +61,10 @@ public class FrameworkErrorActionTest {
 		if (null != stacktrace) {
 			assertEquals("Not correct stacktrace", stacktrace, form.getStacktrace());
 		}
-
-		verifyInputTilesForward("side.page1");
 	}
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		setRequestPathInfo("/testFrameworkErrorAction");
 
 		RequestContext.setProcessId("processId");
 		RequestContext.setScreenId("screenId");

@@ -26,8 +26,9 @@ public class NavnTag {
 	private Boolean isDead;
 	private Boolean isProtect;
 	private Integer maxLength;
+    private String value;
 
-	/** Constructs a default instance of NavnTag. */
+    /** Constructs a default instance of NavnTag. */
 	public NavnTag() {
 		super();
 		init();
@@ -43,13 +44,11 @@ public class NavnTag {
 		// evaluate any expressions we were passed, once per invocation
 		evaluateExpressions();
 
-		// chain to the parent implementation
-		return super.doStartTag();
-	}
+        return 0;
+    }
 
 	/** Releases any resources we may have (or inherit). */
 	public void release() {
-		super.release();
 		init();
 	}
 
@@ -113,8 +112,9 @@ public class NavnTag {
 	 * @throws JspException iv expression evaluation fails.
 	 */
 	private void evaluateExpressions() throws JspException {
-		String name;
+		String name = null;
 
+/* TODO make JSF-version of this
 		try {
 			name = ((String) ExpressionUtil.evalNotNull(NAVN, "value", (String) value, String.class, this, pageContext)).trim();
 		} catch (NullAttributeException ex) {
@@ -151,6 +151,7 @@ public class NavnTag {
 
 		// Can't write escape characters for the value. The whole expresssion below would be visible in html then.
 		escapeXml = false;
+*/
 
 		// Add special sign for dead or protected person
 		value = "";

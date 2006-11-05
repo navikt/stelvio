@@ -1,6 +1,7 @@
 package no.stelvio.web.taglib;
 
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.Tag;
 
 import no.stelvio.web.taglib.support.AmountSupport;
 import no.stelvio.web.taglib.support.ExpressionEvaluator;
@@ -85,7 +86,7 @@ public class AmountTag {
 	 * @throws JspException if expressions ccan't be evaluated.
 	 */
 	private void evaluateExpressions() throws JspException {
-		ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator(this, null /*TODO pageContext*/);
+		ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator((Tag) this, null /*TODO pageContext*/);
 
 //		def = expressionEvaluator.evaluateString("default", elDefault);
 		evaluatedValue = expressionEvaluator.evaluate("value", elValue, Object.class);

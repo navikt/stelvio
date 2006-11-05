@@ -16,11 +16,6 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.taglib.html.Constants;
-import org.apache.struts.taglib.html.SelectTag;
-import org.apache.struts.util.MessageResources;
-import org.apache.struts.util.RequestUtils;
-import org.apache.struts.util.ResponseUtils;
 
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.web.taglib.support.CtTagSupport;
@@ -50,8 +45,8 @@ public class CTOptionsCollectionTag extends TagSupport {
 
 	private static final String BEAN_VALUE_PROPERTY = "kode";
 	private static final String BEAN_LABEL_PROPERTY = "dekode";
-	protected static final MessageResources MESSAGES =
-		MessageResources.getMessageResources(Constants.Package + ".LocalStrings");
+//	protected static final MessageResources MESSAGES =
+//		MessageResources.getMessageResources(Constants.Package + ".LocalStrings");
 
 	// ------------------------------------------------------------- Properties
 
@@ -248,11 +243,11 @@ public class CTOptionsCollectionTag extends TagSupport {
 		evaluateExpressions();
 
 		// Acquire the select tag we are associated with
-		final SelectTag selectTag = (SelectTag) pageContext.getAttribute(Constants.SELECT_KEY);
+		final CTSelectTag selectTag = (CTSelectTag) pageContext.getAttribute("TODO"/*TODO Constants.SELECT_KEY*/);
 
 		if (selectTag == null) {
-			final JspException e = new JspException(MESSAGES.getMessage("optionsCollectionTag.select"));
-			RequestUtils.saveException(pageContext, e);
+			final JspException e = new JspException("TODO"/*TODO MESSAGES.getMessage("optionsCollectionTag.select")*/);
+//			RequestUtils.saveException(pageContext, e);
 			throw e;
 		}
 
@@ -262,8 +257,8 @@ public class CTOptionsCollectionTag extends TagSupport {
 		final Collection collection = retrieveCodesTable(getPropertyValue(selectTag));
 
 		if (collection == null) {
-			final JspException e = new JspException(MESSAGES.getMessage("optionsCollectionTag.collection"));
-			RequestUtils.saveException(pageContext, e);
+			final JspException e = new JspException("TODO"/*TODO MESSAGES.getMessage("optionsCollectionTag.collection")*/);
+//			RequestUtils.saveException(pageContext, e);
 			throw e;
 		}
 
@@ -287,7 +282,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 		}
 
 		// Render this element to our writer
-		ResponseUtils.write(pageContext, sb.toString());
+//		ResponseUtils.write(pageContext, sb.toString());
 
 		return SKIP_BODY;
 	}
@@ -329,7 +324,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 				new JspException(
 					"You can specify either the Filter instance directly or "
 						+ "the surrounding form's property which returns a Filter instance, but not both");
-			RequestUtils.saveException(pageContext, jspe);
+//			RequestUtils.saveException(pageContext, jspe);
 			throw jspe;
 		}
 
@@ -338,7 +333,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 				new JspException(
 					"You can specify either the Comparator instance directly or "
 						+ "the surrounding form's property which returns a Comparator instance, but not both");
-			RequestUtils.saveException(pageContext, jspe);
+//			RequestUtils.saveException(pageContext, jspe);
 			throw jspe;
 		}
 	}
@@ -398,7 +393,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 			comparator = (Comparator) eval.evaluate("filterBean", elComparatorBean, Comparator.class);
 		} else if (null != elComparatorFormProperty) {
 			final String formProperty = (String) eval.evaluate("comparatorFormProperty", elComparatorFormProperty, String.class);
-			comparator = (Comparator) RequestUtils.lookup(pageContext, Constants.BEAN_KEY, formProperty, null);
+//			comparator = (Comparator) RequestUtils.lookup(pageContext, Constants.BEAN_KEY, formProperty, null);
 		}
 
 		return comparator;
@@ -447,7 +442,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 		sb.append(">");
 
 		if (filterHtml) {
-			sb.append(ResponseUtils.filter(label));
+//			sb.append(ResponseUtils.filter(label));
 		} else {
 			sb.append(label);
 		}
@@ -461,7 +456,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 	 * @param selectTag the parent select tag.
 	 * @throws JspException if the codestable attribute is specified both in the parent tag and here.
 	 */
-	private void acquireCodestableFromParent(final SelectTag selectTag) throws JspException {
+	private void acquireCodestableFromParent(final CTSelectTag selectTag) throws JspException {
 		if (selectTag instanceof CTSelectTag) {
 			CTSelectTag ctSelectTag = (CTSelectTag) selectTag;
 
@@ -473,7 +468,7 @@ public class CTOptionsCollectionTag extends TagSupport {
 						new JspException(
 							"Should not specify the codestable in both the select tag"
 								+ " and the options collection tag, only in one of them");
-					RequestUtils.saveException(pageContext, e);
+//					RequestUtils.saveException(pageContext, e);
 					throw e;
 				}
 			}
@@ -555,17 +550,17 @@ public class CTOptionsCollectionTag extends TagSupport {
 				value = "";
 			}
 		} catch (IllegalAccessException e) {
-			final JspException jspe = new JspException(MESSAGES.getMessage("getter.access", property, bean));
-			RequestUtils.saveException(pageContext, jspe);
+			final JspException jspe = new JspException("TODO"/*TODO MESSAGES.getMessage("getter.access", property, bean)*/);
+//			RequestUtils.saveException(pageContext, jspe);
 			throw jspe;
 		} catch (InvocationTargetException e) {
 			final Throwable t = e.getTargetException();
-			final JspException jspe = new JspException(MESSAGES.getMessage("getter.result", property, t.toString()));
-			RequestUtils.saveException(pageContext, jspe);
+			final JspException jspe = new JspException("TODO"/*TODO MESSAGES.getMessage("getter.result", property, bean)*/);
+//			RequestUtils.saveException(pageContext, jspe);
 			throw jspe;
 		} catch (NoSuchMethodException e) {
-			final JspException jspe = new JspException(MESSAGES.getMessage("getter.method", property, bean));
-			RequestUtils.saveException(pageContext, jspe);
+			final JspException jspe = new JspException("TODO"/*TODO MESSAGES.getMessage("getter.method", property, bean)*/);
+//			RequestUtils.saveException(pageContext, jspe);
 			throw jspe;
 		}
 
@@ -581,35 +576,36 @@ public class CTOptionsCollectionTag extends TagSupport {
 	 * @return String property Value
 	 * @throws JspException if property can't be retrieved.
 	 */
-	private String getPropertyValue(SelectTag selectTag) throws JspException {
+	private String getPropertyValue(CTSelectTag selectTag) throws JspException {
 
 		String name = selectTag.getName();
 		String value = selectTag.getValue();
 		String property = selectTag.getProperty();
 
 		if (value == null) {
-			Object bean = RequestUtils.lookup(pageContext, name, null);
-			if (bean == null) {
-				JspException e = new JspException(MESSAGES.getMessage("getter.bean", name));
-				RequestUtils.saveException(pageContext, e);
-				throw e;
-			}
+//			Object bean = RequestUtils.lookup(pageContext, name, null);
+//			if (bean == null) {
+//				JspException e = new JspException(MESSAGES.getMessage("getter.bean", name));
+//				RequestUtils.saveException(pageContext, e);
+//				throw e;
+//			}
 
 			try {
-				value = BeanUtils.getProperty(bean, property);
+                Object bean = null;
+                value = BeanUtils.getProperty(bean, property);
 
 			} catch (IllegalAccessException e) {
-				RequestUtils.saveException(pageContext, e);
-				throw new JspException(MESSAGES.getMessage("getter.access", property, name));
+//				RequestUtils.saveException(pageContext, e);
+//				throw new JspException(MESSAGES.getMessage("getter.access", property, name));
 
 			} catch (InvocationTargetException e) {
-				Throwable t = e.getTargetException();
-				RequestUtils.saveException(pageContext, t);
-				throw new JspException(MESSAGES.getMessage("getter.result", property, t.toString()));
+//				Throwable t = e.getTargetException();
+//				RequestUtils.saveException(pageContext, t);
+//				throw new JspException(MESSAGES.getMessage("getter.result", property, t.toString()));
 
 			} catch (NoSuchMethodException e) {
-				RequestUtils.saveException(pageContext, e);
-				throw new JspException(MESSAGES.getMessage("getter.method", property, name));
+//				RequestUtils.saveException(pageContext, e);
+//				throw new JspException(MESSAGES.getMessage("getter.method", property, name));
 			}
 		}
 

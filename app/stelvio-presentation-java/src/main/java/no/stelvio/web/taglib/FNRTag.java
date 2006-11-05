@@ -1,6 +1,7 @@
 package no.stelvio.web.taglib;
 
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.Tag;
 
 import no.stelvio.web.taglib.support.ExpressionEvaluator;
 
@@ -17,8 +18,11 @@ public class FNRTag {
 	private String fnrValue;
 	private String fnrDefault;
 	private String fnrEscapeXml;
+    private String value;
+    private String def;
+    private boolean escapeXml;
 
-	/**
+    /**
 	 * Creates a new FNR Tag
 	 */
 	public FNRTag() {
@@ -31,15 +35,14 @@ public class FNRTag {
 	 */
 	public int doStartTag() throws JspException {
 		evaluateExpressions();
-		return super.doStartTag();
-	}
+        return 0;
+    }
 
 	/** 
 	 * {@inheritDoc}
 	 * @see javax.servlet.jsp.tagext.Tag#release()
 	 */
 	public void release() {
-		super.release();
 		init();
 	}
 
@@ -83,7 +86,7 @@ public class FNRTag {
 	 * @throws JspException if expressions ccan't be evaluated.
 	 */
 	private void evaluateExpressions() throws JspException {
-		ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator(this, pageContext);
+		ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator((Tag) this, null /*TODO pageContext*/);
 
 		String val = expressionEvaluator.evaluateString("value", fnrValue);
 		value = val;

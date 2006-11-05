@@ -5,12 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.config.ExceptionConfig;
-import org.apache.struts.util.MessageResources;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.LoggableException;
@@ -35,15 +29,13 @@ public class FrameworkErrorAction {
 	 * 
 	 * {@inheritDoc}
 	 */
-	public ActionForward execute(
-		ActionMapping mapping,
-		ActionForm form,
+	public String execute(
 		HttpServletRequest request,
 		HttpServletResponse response)
 		throws Exception {
 
-		FrameworkErrorForm errorForm = (FrameworkErrorForm) form;
-		Exception e = (Exception) request.getAttribute(Globals.EXCEPTION_KEY);
+		FrameworkErrorForm errorForm = new FrameworkErrorForm();
+		Exception e = (Exception) request.getAttribute("TODO"/*TODO Globals.EXCEPTION_KEY*/);
 
 		if (null != e) {
 			if (log.isDebugEnabled()) {
@@ -56,34 +48,7 @@ public class FrameworkErrorAction {
 				log.debug("Transformed error through ErrorHandler: " + le);
 			}
 
-			ExceptionConfig exConfig = mapping.findException(e.getClass());
-
-			if (null != exConfig) {
-				if (log.isDebugEnabled()) {
-					log.debug("ExceptionConfig found: " + exConfig);
-				}
-
-				MessageResources resources = (MessageResources) request.getAttribute(Globals.MESSAGES_KEY);
-
-				if (null != resources) {
-					String key = exConfig.getKey();
-
-					if (null == key && log.isWarnEnabled()) {
-						log.warn("Key not configured for exception:" + e.getClass().getName());
-					}
-
-					String message = resources.getMessage(key);
-
-					if (null == message && log.isWarnEnabled()) {
-						log.warn("Message not configured for key:" + key);
-					}
-
-					errorForm.setErrorMessage(message);
-				}
-			} else {
-				errorForm.setErrorMessage(/*ErrorHandler.getMessage(e) TODO: look at new version*/ null);
-			}
-
+            errorForm.setErrorMessage(/*ErrorHandler.getMessage(e) TODO: look at new version*/ null);
 			errorForm.setStacktrace(/*ErrorHandler.getStacktraceAsString(e)TODO: look at new version*/ null);
 			errorForm.setErrorCode(String.valueOf(le.getErrorCode()));
 			errorForm.setErrorId(le.getErrorId());
@@ -117,6 +82,6 @@ public class FrameworkErrorAction {
 		}
 
 		RequestContext.setProcessId("Load");
-		return mapping.getInputForward();
+		return "ok";
 	}
 }

@@ -1,6 +1,7 @@
 package no.stelvio.web.taglib;
 
 import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.Tag;
 
 import no.stelvio.web.taglib.support.CtTagSupport;
 import no.stelvio.web.taglib.support.ExpressionEvaluator;
@@ -22,8 +23,9 @@ public class CTDecodeTag {
 
 	/** the el value */
 	private String elValue = null;
+    private Object value;
 
-	/**
+    /**
 	 * Sets the name of the codes table.
 	 * 
 	 * @param codestable the codes table name.
@@ -55,16 +57,15 @@ public class CTDecodeTag {
 	 */
 	public int doStartTag() throws JspException {
 		evaluateExpressions();
-		value = CtTagSupport.decode(value, codestable, pageContext);
-		return super.doStartTag();
-	}
+        value = CtTagSupport.decode("value", codestable, null /*TODO pageContext*/);
+        return 0;
+    }
 
 	/**
 	 * {@inheritDoc}
 	 * @see javax.servlet.jsp.tagext.Tag#release()
 	 */
 	public void release() {
-		super.release();
 		init();
 	}
 
@@ -83,7 +84,7 @@ public class CTDecodeTag {
 	 */
 	protected void evaluateExpressions() throws JspException {
 
-		final ExpressionEvaluator eval = new ExpressionEvaluator(this, pageContext);
+		final ExpressionEvaluator eval = new ExpressionEvaluator((Tag) this, null /*TODO pageContext*/);
 		codestable = eval.evaluateString("codestable", elCodestable);
 		value = eval.evaluateString("value", elValue);
 	}

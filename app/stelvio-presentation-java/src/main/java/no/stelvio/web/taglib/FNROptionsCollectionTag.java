@@ -85,11 +85,12 @@ public class FNROptionsCollectionTag {
 			}
 		}
 
-		if (filter) {
-			sb.append(ResponseUtils.filter(label));
-		} else {
+        // TODO what about filtering?
+//		if (filter) {
+//			sb.append(ResponseUtils.filter(label));
+//		} else {
 			sb.append(label);
-		}
+//		}
 		sb.append("</option>\r\n");
 	}
 }

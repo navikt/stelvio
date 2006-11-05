@@ -267,7 +267,7 @@ public final class RequestUtils {
 	 */
 	public static String retrievePropertyOnBeanAsString(PageContext pageContext, String beanName, String property)
 		throws JspException {
-		Object beanProp = org.apache.struts.util.RequestUtils.lookup(pageContext, beanName, property, null);
+		Object beanProp = "TODO";// TODO RequestUtils.lookup(pageContext, beanName, property, null);
 		String value = ConvertUtils.convert(beanProp);
 
 		if (LOG.isDebugEnabled()) {

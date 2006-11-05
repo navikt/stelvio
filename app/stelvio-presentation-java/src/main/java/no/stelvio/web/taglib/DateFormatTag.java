@@ -5,8 +5,6 @@ import java.util.Date;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import org.apache.taglibs.standard.lang.support.ExpressionEvaluatorManager;
-
 import no.stelvio.common.util.DateUtil;
 import no.stelvio.web.taglib.support.DateSupport;
 
@@ -113,6 +111,6 @@ public class DateFormatTag extends TagSupport {
 		// propagate up.
 
 		// 'value' attribute (mandatory)
-		date = (Date) ExpressionEvaluatorManager.evaluate("value", value, Date.class, this, pageContext);
+//		date = (Date) ExpressionEvaluatorManager.evaluate("value", value, Date.class, this, pageContext);
 	}
 }

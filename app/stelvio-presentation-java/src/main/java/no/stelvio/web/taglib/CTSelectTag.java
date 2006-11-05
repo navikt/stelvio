@@ -1,6 +1,5 @@
 package no.stelvio.web.taglib;
 
-import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.Tag;
@@ -8,7 +7,6 @@ import javax.servlet.jsp.tagext.Tag;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.taglib.nested.NestedPropertyHelper;
 
 import no.stelvio.web.taglib.support.CtTagSupport;
 import no.stelvio.web.taglib.support.ExpressionEvaluator;
@@ -34,8 +32,11 @@ public class CTSelectTag {
 	String codestable = null;
 	/** The class name of the codes table to show (as a potential EL expression). */
 	String elCodestable = null;
+    private String name;
+    private String value;
+    private String property;
 
-	/**
+    /**
 	 * Sets the name of the codes table.
 	 * 
 	 * @param codestable the codes table name.
@@ -83,25 +84,21 @@ public class CTSelectTag {
 			}
 
 			if (!StringUtils.isBlank(codestable)) {
-				out = CtTagSupport.decode(out, codestable, pageContext);
+				out = CtTagSupport.decode(out, codestable, null /*TODO pageContext*/);
 
 				if (LOG.isDebugEnabled()) {
 					LOG.debug("decode from codestable (" + codestable + "): " + out);
 				}
 			}
 
-			try {
-				// OutSupport.out does not handle nulls
-				if (null != out) {
-					pageContext.getOut().write(out);
-				}
-			} catch (IOException ioe) {
-				throw new JspException(ioe.getMessage(), ioe);
-			}
+            // OutSupport.out does not handle nulls
+            if (null != out) {
+//					pageContext.getOut().write(out);
+            }
 
-			return SKIP_BODY;
+			return 0;
 		} else {
-			return super.doStartTag();
+			return 1;
 		}
 	}
 
@@ -112,9 +109,9 @@ public class CTSelectTag {
 		originalProperty = getProperty();
 
 		// request
-		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
+		HttpServletRequest request = null;
 		// set the properties
-		NestedPropertyHelper.setNestedProperties(request, this);
+//		NestedPropertyHelper.setNestedProperties(request, (NestedPropertySupport) this);
 	}
 
 	/**
@@ -130,7 +127,7 @@ public class CTSelectTag {
 		if (readonly) {
 			retVal = Tag.EVAL_PAGE;
 		} else {
-			retVal = super.doEndTag();
+			retVal = 0;
 		}
 
 		endNesting();
@@ -140,8 +137,9 @@ public class CTSelectTag {
 	/** End nesting. */
 	private void endNesting() {
 		// reset the properties
-		setName(originalName);
-		setProperty(originalProperty);
+        // TODO what about these methods?
+//		setName(originalName);
+//		setProperty(originalProperty);
 
 	}
 
@@ -152,25 +150,25 @@ public class CTSelectTag {
 	 * @throws JspException if something went wrong evaluating.
 	 */
 	protected void evaluateExpressions() throws JspException {
-		final ExpressionEvaluator eval = new ExpressionEvaluator(this, pageContext);
+		final ExpressionEvaluator eval = new ExpressionEvaluator((Tag) this, null /*pageContext*/);
 		String evalVal;
 
 		evalVal = eval.evaluateString("name", getName());
 
 		if (null != evalVal) {
-			setName(evalVal);
+//			setName(evalVal);
 		}
 
 		evalVal = eval.evaluateString("property", getProperty());
 
 		if (null != evalVal) {
-			setProperty(evalVal);
+//			setProperty(evalVal);
 		}
 
 		evalVal = eval.evaluateString("value", getValue());
 
 		if (null != evalVal) {
-			setValue(evalVal);
+//			setValue(evalVal);
 		}
 
 		codestable = eval.evaluateString("codestable", elCodestable);
@@ -199,7 +197,6 @@ public class CTSelectTag {
 	 * @see javax.servlet.jsp.tagext.Tag#release()
 	 */
 	public void release() {
-		super.release();
 		init();
 	}
 
@@ -211,7 +208,7 @@ public class CTSelectTag {
 	 */
 	private String calculateValue() throws JspException {
 		if (null == getValue()) {
-			return RequestUtils.retrievePropertyOnBeanAsString(pageContext, getName(), getProperty());
+			return RequestUtils.retrievePropertyOnBeanAsString(null /*TODO pageContext*/, getName(), getProperty());
 		} else {
 			return getValue();
 		}
@@ -224,4 +221,20 @@ public class CTSelectTag {
 		codestable = null;
 		elCodestable = null;
 	}
+
+    public boolean isMatched(String s) {
+        return false;  // TODO: Probably should not need to be here
+    }
+
+    public String getName() {
+        return name;// TODO: Probably should not need to be here
+    }
+
+    public String getValue() {
+        return value;// TODO: Probably should not need to be here
+    }
+
+    public String getProperty() {
+        return property;// TODO: Probably should not need to be here
+    }
 }

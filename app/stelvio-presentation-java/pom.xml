@@ -41,6 +41,7 @@
             <artifactId>stelvio-test-java</artifactId>
             <version>${pom.version}</version>
         </dependency>
+<!--
         <dependency>
             <groupId>struts</groupId>
             <artifactId>struts</artifactId>
@@ -73,5 +74,6 @@
             <artifactId>standard</artifactId>
             <version>1.0.6</version>
         </dependency>
+-->
     </dependencies>
 </project>

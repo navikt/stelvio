@@ -6,10 +6,6 @@ import javax.servlet.jsp.tagext.Tag;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.taglib.nested.NestedPropertyHelper;
-import org.apache.struts.taglib.nested.NestedReference;
-import org.apache.struts.util.RequestUtils;
-import org.apache.taglibs.standard.lang.support.ExpressionEvaluatorManager;
 
 /**
  * Helper class for evaluating EL.
@@ -49,25 +45,25 @@ public class ExpressionEvaluator {
 		Object result = null;
 
 		// Are we inside a nested tag?
-		NestedReference nr = (NestedReference) pageContext.getRequest().getAttribute(NestedPropertyHelper.NESTED_INCLUDES_KEY);
+//		NestedReference nr = (NestedReference) pageContext.getRequest().getAttribute(NestedPropertyHelper.NESTED_INCLUDES_KEY);
 
-		if (null == nr) {
-			if (log.isDebugEnabled()) {
-				log.debug("NestedReference == null");
-			}
-		} else {
-			Object property = RequestUtils.lookup(pageContext, nr.getBeanName(), nr.getNestedProperty(), null);
-			pageContext.setAttribute("nestedBean", property, PageContext.REQUEST_SCOPE);
-
-			if (log.isDebugEnabled()) {
-				log.debug("NestedReference.beanName: " + nr.getBeanName());
-				log.debug("               .nestedProperty: " + nr.getNestedProperty());
-				log.debug("  gives the bean: " + property);
-			}
-		}
+//		if (null == nr) {
+//			if (log.isDebugEnabled()) {
+//				log.debug("NestedReference == null");
+//			}
+//		} else {
+//			Object property = RequestUtils.lookup(pageContext, nr.getBeanName(), nr.getNestedProperty(), null);
+//			pageContext.setAttribute("nestedBean", property, PageContext.REQUEST_SCOPE);
+//
+//			if (log.isDebugEnabled()) {
+//				log.debug("NestedReference.beanName: " + nr.getBeanName());
+//				log.debug("               .nestedProperty: " + nr.getNestedProperty());
+//				log.debug("  gives the bean: " + property);
+//			}
+//		}
 
 		if (attrValue != null) {
-			result = ExpressionEvaluatorManager.evaluate(attrName, attrValue, returnClass, tag, pageContext);
+//			result = ExpressionEvaluatorManager.evaluate(attrName, attrValue, returnClass, tag, pageContext);
 		}
 
 		if (log.isDebugEnabled()) {
