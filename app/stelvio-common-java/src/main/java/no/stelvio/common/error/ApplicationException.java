@@ -11,6 +11,7 @@ import no.stelvio.common.util.SequenceNumberGenerator;
  * @author person7553f5959484, Accenture
  * @version $Id: ApplicationException.java 2839 2006-04-25 10:23:10Z psa2920 $
  * @todo change javadoc to say something about only use it when the client MUST catch it else use SystemException.
+ * @todo is the name correct when the previous todo is implemented?
  */
 public abstract class ApplicationException extends Exception implements LoggableException {
 

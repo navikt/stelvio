@@ -8,8 +8,9 @@ import no.stelvio.common.util.SequenceNumberGenerator;
  * Applications will typically not handle recovery from system exceptions.
  * 
  * @author person7553f5959484
- * @version $Revision: 2837 $ $Author: psa2920 $ $Date: 2006-01-09 16:12:14
- *          +0100 (ma, 09 jan 2006) $
+ * @version $Revision: 2837 $ $Author: psa2920 $ $Date: 2006-01-09 16:12:14 +0100 (ma, 09 jan 2006) $
+ * @todo change javadoc to say something about usage, see ApplicationException.
+ * @todo is the name correct when the previous todo is implemented?
  */
 public abstract class SystemException extends RuntimeException implements
 		LoggableException {
