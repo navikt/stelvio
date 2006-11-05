@@ -1,4 +1,7 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.support;
+
+import no.stelvio.common.error.Err;
+import no.stelvio.common.error.ExceptionHandlerFacade;
 
 /**
  * @author personf8e9850ed756

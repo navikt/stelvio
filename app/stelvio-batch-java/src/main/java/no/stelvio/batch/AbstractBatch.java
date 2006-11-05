@@ -16,7 +16,6 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import no.stelvio.batch.domain.BatchDO;
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.config.ConfigurationException;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.Severity;
@@ -409,6 +408,6 @@ public abstract class AbstractBatch {
 	 * @deprecated Put the query into sql-queries and put it into a property on your bean class by using ${property name}
 	 */
 	protected String getNamedQueryString(final String queryName) throws ConfigurationException {
-		throw new ConfigurationException(FrameworkError.HIBERNATE_QUERY_CREATE_ERROR, "deprecated usage: " + queryName);
+		throw new ConfigurationException("deprecated usage: " + queryName);
 	}
 }

@@ -1,6 +1,5 @@
 package no.stelvio.common.util;
 
-import no.stelvio.common.error.ErrorCode;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.service.ServiceFailedException;
 
@@ -101,9 +100,7 @@ public final class StringHelper {
 		// The input data is bigger than the length of the coulmn
 		if (strlen > length) {
 			throw new ServiceFailedException(
-				ErrorCode.UNSPECIFIED_ERROR,
-				new IllegalArgumentException("Teksten '" + value + "' er lengre enn " + length + " tegn."),
-				new Object[] { "StringHelper.appendProperty", "Teksten '" + value + "' er lengre enn " + length + " tegn." });
+                    new Object[] { "StringHelper.appendProperty", "Teksten '" + value + "' er lengre enn " + length + " tegn." });
 		}
 		if (number) {
 			for (int i = 0; i < (length - strlen); i++) {

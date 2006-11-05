@@ -1,6 +1,5 @@
 package no.stelvio.common.config;
 
-import no.stelvio.common.error.ErrorCode;
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -14,21 +13,19 @@ public class ConfigurationException extends SystemException {
 	/**
 	 * Constructs a new ConfigurationException with the specified error code and argument.
 	 * 
-	 * @param code the error code to be used when handling the exception.
 	 * @param argument detail to be included in the error message.
 	 */
-	public ConfigurationException(ErrorCode code, Object argument) {
-		this(code, null, argument);
+	public ConfigurationException(Object argument) {
+		this(null, argument);
 	}
 
 	/**
 	 * Constructs a new ConfigurationException with the specified error code, cause and argument.
 	 *
-	 * @param code the error code to be used when handling the exception.
 	 * @param cause the cause of this exception.
-	 * @param argument detail to be included in the error message.
-	 */
-	public ConfigurationException(ErrorCode code, Throwable cause, Object argument) {
+     * @param argument detail to be included in the error message.
+     */
+	public ConfigurationException(Throwable cause, Object argument) {
 		super(cause, argument);
 	}
 }

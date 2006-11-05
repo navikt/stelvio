@@ -1,6 +1,5 @@
 package no.stelvio.common.monitor;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.service.ServiceFailedException;
 
@@ -78,9 +77,9 @@ public class ErrorMonitor implements Manager {
 			currentRatio = ((double) currentCount) / ((double) currentNumCalls);
 			if (currentRatio >= errorRatio) {
 				if (errorMessage != null) {
-					throw new ServiceFailedException(FrameworkError.MONITORING_ERROR_SERVICE_DISABLED, errorMessage);
+					throw new ServiceFailedException(errorMessage);
 				} else {
-					throw new ServiceFailedException(FrameworkError.MONITORING_ERROR_SERVICE_DISABLED);
+					throw new ServiceFailedException();
 				}
 			}
 		}

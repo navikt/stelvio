@@ -2,10 +2,9 @@ package no.stelvio.web.servlet;
 
 import java.util.Properties;
 
-import no.stelvio.web.servlet.ServletContextAttributeSetter;
+import org.springframework.mock.web.MockServletContext;
 
 import junit.framework.TestCase;
-import servletunit.ServletContextSimulator;
 
 /**
  * Unit test for {@link ServletContextAttributeSetter}.
@@ -15,7 +14,7 @@ import servletunit.ServletContextSimulator;
  */
 public class ServletContextAttributeSetterTest extends TestCase {
 	private ServletContextAttributeSetter servletContextAttributeSetter;
-	private ServletContextSimulator servletContext;
+	private MockServletContext servletContext;
 
 	public void testPropertiesAreSetInServletContext() {
 		final Properties properties = new Properties();
@@ -30,7 +29,7 @@ public class ServletContextAttributeSetterTest extends TestCase {
 	}
 
 	protected void setUp() {
-		servletContext = new ServletContextSimulator();
+		servletContext = new MockServletContext();
 
 		servletContextAttributeSetter = new ServletContextAttributeSetter();
 		servletContextAttributeSetter.setServletContext(servletContext);

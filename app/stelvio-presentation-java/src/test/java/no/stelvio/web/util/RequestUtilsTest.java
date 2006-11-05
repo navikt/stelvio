@@ -1,8 +1,9 @@
 package no.stelvio.web.util;
 
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockServletContext;
+
 import junit.framework.TestCase;
-import servletunit.HttpServletRequestSimulator;
-import servletunit.ServletContextSimulator;
 
 /**
  * Description
@@ -11,8 +12,8 @@ import servletunit.ServletContextSimulator;
  * @version $Revision: 2348 $ $Author: psa2920 $ $Date: 2005-06-21 16:26:50 +0200 (Tue, 21 Jun 2005) $
  */
 public class RequestUtilsTest extends TestCase {
-	private final ServletContextSimulator context = new ServletContextSimulator();
-	private final HttpServletRequestSimulator request = new HttpServletRequestSimulator(context);
+	private final MockServletContext context = new MockServletContext();
+	private final MockHttpServletRequest request = new MockHttpServletRequest(context);
 
 	/** Test with two execute request parameters */
 	final public void testGetProcessId() {

@@ -1,4 +1,4 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.strategy;
 
 import java.text.MessageFormat;
 import java.util.Map;
@@ -6,6 +6,12 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import no.stelvio.common.error.ApplicationException;
+import no.stelvio.common.error.Err;
+import no.stelvio.common.error.ExceptionHandlerStrategy;
+import no.stelvio.common.error.LoggableException;
+import no.stelvio.common.error.Severity;
+import no.stelvio.common.error.SystemException;
 import no.stelvio.common.service.LocalService;
 import no.stelvio.common.service.ServiceFailedException;
 import no.stelvio.common.service.ServiceRequest;

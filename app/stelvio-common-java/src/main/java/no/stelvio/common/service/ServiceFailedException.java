@@ -1,7 +1,6 @@
 package no.stelvio.common.service;
 
 import no.stelvio.common.error.ApplicationException;
-import no.stelvio.common.error.ErrorCode;
 
 /**
  * Thrown to indicate that execution of a <i>Service</i> failed.
@@ -16,10 +15,9 @@ public class ServiceFailedException extends ApplicationException {
 
 	/**
 	 * Constructs a new ServiceFailedException with the specified error code.
-	 * 
-	 * @param code the error code to be used when handling the exception.
-	 */
-	public ServiceFailedException(ErrorCode code) {
+	 *
+     */
+	public ServiceFailedException() {
 		super();
 	}
 
@@ -27,10 +25,9 @@ public class ServiceFailedException extends ApplicationException {
 	 * Constructs a new ServiceFailedException with the specified error code 
 	 * and argument.
 	 * 
-	 * @param code the error code to be used when handling the exception.
 	 * @param argument detail to be included in the error message.
 	 */
-	public ServiceFailedException(ErrorCode code, Object argument) {
+	public ServiceFailedException(Object argument) {
 		super(argument);
 	}
 
@@ -38,10 +35,9 @@ public class ServiceFailedException extends ApplicationException {
 	 * Constructs a new ServiceFailedException with the specified error code 
 	 * and list of arguments.
 	 * 
-	 * @param code the error code to be used when handling the exception.
 	 * @param arguments list of details to be included in the error message.
 	 */
-	public ServiceFailedException(ErrorCode code, Object[] arguments) {
+	public ServiceFailedException(Object[] arguments) {
 		super(arguments);
 	}
 
@@ -49,10 +45,9 @@ public class ServiceFailedException extends ApplicationException {
 	 * Constructs a new ServiceFailedException with the specified error code 
 	 * and cause.
 	 * 
-	 * @param code the error code to be used when handling the exception.
 	 * @param cause the cause of this exception.
 	 */
-	public ServiceFailedException(ErrorCode code, Throwable cause) {
+	public ServiceFailedException(Throwable cause) {
 		super(cause);
 	}
 
@@ -60,11 +55,10 @@ public class ServiceFailedException extends ApplicationException {
 	 * Constructs a new ServiceFailedException with the specified error code, 
 	 * cause and argument.
 	 * 
-	 * @param code the error code to be used when handling the exception.
 	 * @param cause the cause of this exception.
-	 * @param argument detail to be included in the error message.
-	 */
-	public ServiceFailedException(ErrorCode code, Throwable cause, Object argument) {
+     * @param argument detail to be included in the error message.
+     */
+	public ServiceFailedException(Throwable cause, Object argument) {
 		super(cause, argument);
 	}
 
@@ -72,11 +66,10 @@ public class ServiceFailedException extends ApplicationException {
 	 * Constructs a new ServiceFailedException with the specified error code, 
 	 * cause and list of arguments.
 	 * 
-	 * @param code the error code to be used when handling the exception.
 	 * @param cause the cause of this exception.
-	 * @param arguments list of details to be included in the error message.
-	 */
-	public ServiceFailedException(ErrorCode code, Throwable cause, Object[] arguments) {
+     * @param arguments list of details to be included in the error message.
+     */
+	public ServiceFailedException(Throwable cause, Object[] arguments) {
 		super(cause, arguments);
 	}
 
@@ -90,7 +83,7 @@ public class ServiceFailedException extends ApplicationException {
 		this.rollbackOnly = other.isRollbackOnly();
 	}
 
-	/**
+    /**
 	 * Test if the transaction has been marked for rollback only. An enterprise 
 	 * bean can use this operation, for example, to test after an exception has 
 	 * been caught, wheter it is fruitless to continue computation on behalf of 

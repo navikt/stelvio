@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-
 import javax.management.Attribute;
 import javax.management.AttributeNotFoundException;
 import javax.management.InstanceAlreadyExistsException;
@@ -25,6 +24,7 @@ import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
 import javax.management.ReflectionException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
@@ -35,8 +35,6 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.OrderComparator;
 import org.springframework.core.io.InputStreamResource;
-
-import no.stelvio.common.FrameworkError;
 
 /**
  * Config is the central class of the system configuration services.
@@ -184,9 +182,9 @@ public class Config implements ConfigMBean {
 		try {
 			return beanFactory.getBean(beanName);
 		} catch (NoSuchBeanDefinitionException nsbde) {
-			throw new ConfigurationException(FrameworkError.CONFIG_NAME_NOT_FOUND, nsbde, beanName);
+			throw new ConfigurationException(nsbde, beanName);
 		} catch (BeanCreationException bce) {
-			throw new ConfigurationException(FrameworkError.CONFIG_NAME_CREATE_ERROR, bce, beanName);
+			throw new ConfigurationException(bce, beanName);
 		}
 	}
 
@@ -204,7 +202,7 @@ public class Config implements ConfigMBean {
 			writer.write(xml);
 			writer.flush();
 		} catch (IOException e) {
-			throw new ConfigurationException(FrameworkError.CONFIG_WRITE_ERROR, e, "Error saving configuration.");
+			throw new ConfigurationException(e, "Error saving configuration.");
 		} finally {
 			if (null != writer) {
 				try {
@@ -224,8 +222,8 @@ public class Config implements ConfigMBean {
 	 */
 	public void update(String xmlString) {
 		if (!canBeChanged()) {
-			throw new ConfigurationException(FrameworkError.CONFIG_MBEAN_UPDATE_ERROR,
-			                          "Can only change configuration when system property is set");
+			throw new ConfigurationException(
+                    "Can only change configuration when system property is set");
 		}
 
 		updateInternal(xmlString);
@@ -278,8 +276,7 @@ public class Config implements ConfigMBean {
 			mbeanName = new ObjectName("Config:type=Spring,filename=" + filename + ",classloader=" + classLoaderId);
 		} catch (MalformedObjectNameException e) {
 			throw new ConfigurationException(
-					FrameworkError.CONFIG_NAME_CREATE_ERROR,
-			        e,
+                    e,
 			        "Config:type=Spring,filename=" + filename + ",classloader=" + classLoaderId);
 		}
 		return mbeanName;
@@ -303,7 +300,7 @@ public class Config implements ConfigMBean {
 		}
 
 		if (null == resource) {
-			throw new ConfigurationException(FrameworkError.CONFIG_FILE_NOT_FOUND, filename);
+			throw new ConfigurationException(filename);
 		}
 
 		return configFileContent();
@@ -332,15 +329,15 @@ public class Config implements ConfigMBean {
 				line = reader.readLine();
 			}
 		} catch (RuntimeException re) {
-			throw new ConfigurationException(FrameworkError.CONFIG_FILE_NOT_FOUND, re, filename);
+			throw new ConfigurationException(re, filename);
 		} catch (IOException e) {
-			throw new ConfigurationException(FrameworkError.CONFIG_FILE_LOAD_ERROR, e, filename);
+			throw new ConfigurationException(e, filename);
 		} finally {
 			if (null != reader) {
 				try {
 					reader.close();
 				} catch (IOException e) {
-					throw new ConfigurationException(FrameworkError.CONFIG_FILE_LOAD_ERROR, e, filename);
+					throw new ConfigurationException(e, filename);
 				}
 			}
 		}
@@ -362,11 +359,11 @@ public class Config implements ConfigMBean {
 			log.info("Registering MBean with name:" + mbeanName);
 			server.registerMBean(this, mbeanName);
 		} catch (InstanceAlreadyExistsException e) {
-			throw new ConfigurationException(FrameworkError.CONFIG_NAME_CREATE_ERROR, e, mbeanName);
+			throw new ConfigurationException(e, mbeanName);
 		} catch (MBeanRegistrationException e) {
-			throw new ConfigurationException(FrameworkError.CONFIG_NAME_CREATE_ERROR, e, mbeanName);
+			throw new ConfigurationException(e, mbeanName);
 		} catch (NotCompliantMBeanException e) {
-			throw new ConfigurationException(FrameworkError.CONFIG_NAME_CREATE_ERROR, e, mbeanName);
+			throw new ConfigurationException(e, mbeanName);
 		}
 	}
 
@@ -381,21 +378,20 @@ public class Config implements ConfigMBean {
 
 			server.invoke(mbeanName, "addListener", new Config[] { this }, new String[] {getClass().getName()});
 		} catch (AttributeNotFoundException e) {
-			throw new ConfigurationException(FrameworkError.CONFIG_READ_ERROR,
-			                                  e,
+			throw new ConfigurationException(
+                    e,
 			                                  "Attribute not found on Config MBean.");
 		} catch (InstanceNotFoundException e) {
-			throw new ConfigurationException(FrameworkError.CONFIG_READ_ERROR,
-			                                  e,
+			throw new ConfigurationException(
+                    e,
 			                                  "Config instance not found.");
 		} catch (MBeanException e) {
-			throw new ConfigurationException(FrameworkError.CONFIG_READ_ERROR,
-			                                  e,
+			throw new ConfigurationException(
+                    e,
 			                                  "Error communicating with Config MBean.");
 		} catch (ReflectionException e) {
 			throw new ConfigurationException(
-				FrameworkError.CONFIG_READ_ERROR,
-			    e,
+                    e,
 			    "Unable to read attributes from Config MBean.");
 		}
 
@@ -414,8 +410,7 @@ public class Config implements ConfigMBean {
 			createXMLBeanFactory(in);
 		} catch (BeansException e) {
 			throw new ConfigurationException(
-					FrameworkError.CONFIG_READ_ERROR,
-			        e,
+                    e,
 			        "Unable to read XML configuration from file '" + filename + "'");
 		}
 
@@ -432,7 +427,7 @@ public class Config implements ConfigMBean {
 	 */
 	private void createXMLBeanFactory(InputStream in) throws BeansException {
 		if (null == in) {
-			throw new ConfigurationException(FrameworkError.CONFIG_FILE_NOT_FOUND, null, null);
+			throw new ConfigurationException(null, null);
 		}
 
 		beanFactory = new XmlBeanFactory(new InputStreamResource(in));
@@ -455,15 +450,15 @@ public class Config implements ConfigMBean {
 			try {
 				server.setAttribute(mbeanName, new Attribute(fieldName, value));
 			} catch (InstanceNotFoundException e) {
-				throw new ConfigurationException(FrameworkError.CONFIG_MBEAN_UPDATE_ERROR, e, mbeanName);
+				throw new ConfigurationException(e, mbeanName);
 			} catch (AttributeNotFoundException e) {
-				throw new ConfigurationException(FrameworkError.CONFIG_MBEAN_UPDATE_ERROR, e, fieldName);
+				throw new ConfigurationException(e, fieldName);
 			} catch (InvalidAttributeValueException e) {
-				throw new ConfigurationException(FrameworkError.CONFIG_MBEAN_UPDATE_ERROR, e, value);
+				throw new ConfigurationException(e, value);
 			} catch (MBeanException e) {
-				throw new ConfigurationException(FrameworkError.CONFIG_MBEAN_UPDATE_ERROR, e, mbeanName);
+				throw new ConfigurationException(e, mbeanName);
 			} catch (ReflectionException e) {
-				throw new ConfigurationException(FrameworkError.CONFIG_MBEAN_UPDATE_ERROR, e, mbeanName);
+				throw new ConfigurationException(e, mbeanName);
 			}
 		}
 	}

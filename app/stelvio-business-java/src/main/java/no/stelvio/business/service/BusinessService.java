@@ -5,7 +5,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.BeanNameAware;
 
-import no.stelvio.common.FrameworkError;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.jmx.ServiceLevelConstants;
 import no.stelvio.common.jmx.ServiceLevelMBean;
@@ -155,7 +154,7 @@ public abstract class BusinessService implements LocalService, BeanNameAware {
 	 */
 	protected void validate(ServiceRequest request, String key) throws ServiceFailedException {
 		if (null == request.getData(key)) {
-			throw new ServiceFailedException(FrameworkError.SERVICE_INPUT_MISSING, key);
+			throw new ServiceFailedException(key);
 		}
 	}
 
