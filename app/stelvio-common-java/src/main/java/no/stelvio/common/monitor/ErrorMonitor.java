@@ -1,6 +1,6 @@
 package no.stelvio.common.monitor;
 
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.config.ConfigurationException;
 import no.stelvio.common.service.ServiceFailedException;
 
 /**
@@ -44,17 +44,17 @@ public class ErrorMonitor implements Manager {
 	 */
 	public void init() {
 		if (reportDestination == null) {
-			throw new SystemException();
+			throw new ConfigurationException("reportDestination");
 		}
 
 		if (reportName == null) {
-			throw new SystemException();
+			throw new ConfigurationException("reportName");
 		}
 		if (measurementPool <= 0) {
 			manage = false;
 		} else {
 			if (measurementTarget < 0 || measurementTarget >= measurementPool) {
-				throw new SystemException();
+				throw new ConfigurationException("measurementPool");
 			}
 			// calculate target ratio
 			errorRatio = ((double) measurementTarget) / ((double) measurementPool);
@@ -127,11 +127,11 @@ public class ErrorMonitor implements Manager {
 		}
 		Object[] reportValues = new Object[3];
 		// number of calls
-		reportValues[0] = new Long(currentNumCalls);
+		reportValues[0] = currentNumCalls;
 		// number of errors
-		reportValues[1] = new Long(currentCount);
+		reportValues[1] = currentCount;
 		// current ratio
-		reportValues[2] = new Double(currentRatio);
+		reportValues[2] = currentRatio;
 		reportDestination.report(reportName, reportValues);
 	}
 

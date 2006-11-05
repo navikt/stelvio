@@ -8,7 +8,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.SystemException;
 
 /**
  * Implementation of CodesTable used to handle a codestable, its beloning values and add
@@ -66,7 +65,7 @@ public class CodesTableImpl implements CodesTable {
 		}
 		
 		if(cti == null){
-			throw new SystemException("Codestable with code" +code);
+            throw new CodesTableException("Codestable with code" +code);
 		}
 		
 		return cti;
@@ -123,7 +122,7 @@ public class CodesTableImpl implements CodesTable {
 			}
 		}
 		
-		throw new SystemException("Codestable with code" +code);
+		throw new CodesTableException("Codestable with code" +code);
 	}
 
 	/** 

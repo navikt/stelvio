@@ -9,26 +9,16 @@ import junit.framework.TestCase;
  * @version $Revision: 2836 $ $Author: psa2920 $ $Date: 2006-04-25 12:15:25 +0200 (Tue, 25 Apr 2006) $
  */
 public class SystemExceptionTest extends TestCase {
-
-	/**
-	 * Constructor for SystemExceptionTest.
-	 * @param arg0
-	 */
-	public SystemExceptionTest(String arg0) {
-		super(arg0);
-	}
-
-	/*
+    /*
 	 * Test for Object copy()
 	 */
 	public void testObjectCopy() {
 
-		SystemException original =
-			new SystemException(new RuntimeException("The Original Cause"), new String[] { "1", "2", "3" });
+		SystemException original = createSystemException();
 		original.setLogged();
 		SystemException copy = (SystemException) original.copy();
 
-		super.assertEquals("isLogged() should match", original.isLogged(), copy.isLogged());
+		assertEquals("isLogged() should match", original.isLogged(), copy.isLogged());
 		super.assertEquals("getErrorId() should match", original.getErrorId(), copy.getErrorId());
 		super.assertEquals("getMessage() should match", original.getMessage(), copy.getMessage());
 		super.assertEquals("getLocalizedMessage() should match", original.getLocalizedMessage(), copy.getLocalizedMessage());
@@ -53,8 +43,16 @@ public class SystemExceptionTest extends TestCase {
 		super.assertNull("getCause() should have been removed", copy.getCause());
 	}
 
-	public void testGetArguments() {
-		SystemException se = new SystemException("Eneste argument");
+    private SystemException createSystemException() {
+        return new SystemException(new RuntimeException("The Original Cause"), new String[] { "1", "2", "3" }) {
+            public Object copy() {
+                return null;  // TODO: implement body
+            }
+        };
+    }
+
+    public void testGetArguments() {
+		SystemException se = createSystemException();
 		super.assertEquals("getArguments() should not be null", "Eneste argument", se.getArguments()[0]);
 	}
 	
@@ -63,7 +61,7 @@ public class SystemExceptionTest extends TestCase {
 			String arg0 = "A";
 			Object[] arguments = new Object[] { arg0 };
 
-		SystemException se = new SystemException(null, arguments);
+		SystemException se = createSystemException();
 
 			assertNotSame("Arguments not immutable, array is the same", arguments, se.getArguments());
 			assertSame("arg0 should be the same", arg0, se.getArguments()[0]);
@@ -72,7 +70,7 @@ public class SystemExceptionTest extends TestCase {
 	
 	public void testSystemExceptionErrorCodeObjectArray() {
 		Object[] arguments = new String[] { "Petter", "Skodvin" };
-		SystemException se = new SystemException(arguments);
+		SystemException se = createSystemException();
 		assertEquals("There should be 2 arguments", 2, se.getArguments().length);
 		assertEquals("Argument 1 should be Petter", "Petter", se.getArguments()[0]);
 		assertEquals("Argument 2 should be Skodvin", "Skodvin", se.getArguments()[1]);
@@ -81,13 +79,13 @@ public class SystemExceptionTest extends TestCase {
 
 	public void testSystemExceptionErrorCodeThrowable() {
 		Throwable cause = new RuntimeException("The Original Cause");
-		SystemException se = new SystemException(cause);
+		SystemException se = createSystemException();
 		assertEquals("Cause is The Original Cause", cause, se.getCause());
 	}
 
 	public void testSystemExceptionErrorCodeThrowableObject() {
 		Throwable cause = new RuntimeException("The Original Cause");
-		SystemException se = new SystemException(cause, "Argument");
+		SystemException se = createSystemException();
 		assertEquals("Cause is The Original Cause", cause, se.getCause());
 		assertEquals("There should be 1 arguments", 1, se.getArguments().length);
 		assertEquals("Argument 1 should be Argument", "Argument", se.getArguments()[0]);

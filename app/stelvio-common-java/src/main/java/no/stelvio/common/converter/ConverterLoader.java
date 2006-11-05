@@ -1,13 +1,11 @@
 package no.stelvio.common.converter;
 
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.config.ConfigurationException;
 
 /**
  * This class will be configured to load all nessesary
@@ -30,19 +28,20 @@ public class ConverterLoader {
 		if(null == converters || converters.isEmpty()) {
 			return;
 		}
-		Set allConverters = converters.keySet();
-		Iterator iter = allConverters.iterator();
-		while(iter.hasNext()) {
-			String str = (String) iter.next();
-			Class clazz = null;
-			try {
-				clazz = Class.forName(str);
-			} catch (ClassNotFoundException e) {			
-				throw new SystemException(e);
-			}
-			ConvertUtils.register( (Converter) converters.get( str ), clazz );
-		}
-	}
+
+        for (Object allConverter : converters.keySet()) {
+            String str = (String) allConverter;
+            Class clazz;
+
+            try {
+                clazz = Class.forName(str);
+            } catch (ClassNotFoundException e) {
+                throw new ConfigurationException(e);
+            }
+
+            ConvertUtils.register((Converter) converters.get(str), clazz);
+        }
+    }
 
 	/**
 	 * Setter method for converters.

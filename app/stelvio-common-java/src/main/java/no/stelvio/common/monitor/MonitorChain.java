@@ -1,6 +1,6 @@
 package no.stelvio.common.monitor;
 
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.config.ConfigurationException;
 import no.stelvio.common.service.ServiceFailedException;
 
 /**
@@ -8,6 +8,7 @@ import no.stelvio.common.service.ServiceFailedException;
  * configured.
  * 
  * @author person356941106810, Accenture
+ * @deprecated not in use, should it be??
  */
 public class MonitorChain {
 
@@ -22,7 +23,7 @@ public class MonitorChain {
 	 */
 	public void init() {
 		if (monitors == null || monitors.length == 0) {
-			throw new SystemException();
+			throw new ConfigurationException("monitors");
 		}
 
 		// loop through all monitors and check if they are a manager also

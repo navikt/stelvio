@@ -9,24 +9,13 @@ import junit.framework.TestCase;
  * @version $Revision: 2838 $ $Author: psa2920 $ $Date: 2006-04-25 12:22:58 +0200 (Tue, 25 Apr 2006) $
  */
 public class ApplicationExceptionTest extends TestCase {
-
-	/**
-	 * Constructor for SystemExceptionTest.
-	 * @param arg0
-	 */
-	public ApplicationExceptionTest(String arg0) {
-		super(arg0);
-	}
-
 	/*
 	 * Test for Object copy()
 	 */
 	public void testObjectCopy() {
 
 		ApplicationException original =
-			new ApplicationException(
-                    new RuntimeException("The Original Cause"),
-				new String[] { "1", "2", "3" });
+                createApplicationException();
 		original.setLogged();
 		ApplicationException copy = (ApplicationException) original.copy();
 
@@ -55,44 +44,51 @@ public class ApplicationExceptionTest extends TestCase {
 		super.assertNull("getCause() should have been removed", copy.getCause());
 	}
 
-	public void testGetArguments() {
-		ApplicationException ae = new ApplicationException("Eneste argument");
+    public void testGetArguments() {
+		ApplicationException ae = createApplicationException();
 		super.assertEquals("getArguments() should not be null", "Eneste argument", ae.getArguments()[0]);
 	}
 
-	public void testGetArgumentsNotSameButContentsAreTheSame() {
+    public void testGetArgumentsNotSameButContentsAreTheSame() {
 
 		String arg0 = "A";
 		Object[] arguments = new Object[] { arg0 };
 
-		ApplicationException ae = new ApplicationException(null, arguments);
+		ApplicationException ae = createApplicationException();
 
 		assertNotSame("Arguments not immutable, array is the same", arguments, ae.getArguments());
 		assertSame("arg0 should be the same", arg0, ae.getArguments()[0]);
 
 	}
 
-	public void testApplicationExceptionErrorCodeObjectArray() {
+    public void testApplicationExceptionErrorCodeObjectArray() {
 		Object[] arguments = new String[] { "Petter", "Skodvin" };
-		ApplicationException ae = new ApplicationException(arguments);
+		ApplicationException ae = createApplicationException();
 		assertEquals("There should be 2 arguments", 2, ae.getArguments().length);
 		assertEquals("Argument 1 should be Petter", "Petter", ae.getArguments()[0]);
 		assertEquals("Argument 2 should be Skodvin", "Skodvin", ae.getArguments()[1]);
 
 	}
 
-	public void testApplicationExceptionErrorCodeThrowable() {
+    public void testApplicationExceptionErrorCodeThrowable() {
 		Throwable cause = new RuntimeException("The Original Cause");
-		ApplicationException ae = new ApplicationException(cause);
+		ApplicationException ae = createApplicationException();
 		assertEquals("Cause is The Original Cause", cause, ae.getCause());
 	}
 
-	public void testApplicationExceptionErrorCodeThrowableObject() {
+    public void testApplicationExceptionErrorCodeThrowableObject() {
 		Throwable cause = new RuntimeException("The Original Cause");
-		ApplicationException ae = new ApplicationException(cause, "Argument");
+		ApplicationException ae = createApplicationException();
 		assertEquals("Cause is The Original Cause", cause, ae.getCause());
 		assertEquals("There should be 1 arguments", 1, ae.getArguments().length);
 		assertEquals("Argument 1 should be Argument", "Argument", ae.getArguments()[0]);
 	}
 
+    private ApplicationException createApplicationException() {
+        return new ApplicationException( new RuntimeException("The Original Cause"), new String[] { "1", "2", "3" }) {
+            public Object copy() {
+                return null;  // TODO: implement body
+            }
+        };
+    }
 }

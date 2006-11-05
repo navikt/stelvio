@@ -1,6 +1,5 @@
 package no.stelvio.common.util;
 
-import no.stelvio.common.error.SystemException;
 import no.stelvio.common.service.ServiceFailedException;
 
 /**
@@ -9,6 +8,7 @@ import no.stelvio.common.service.ServiceFailedException;
  * 
  * @author person5b7fd84b3197, Accenture
  * @version $Revision: 2648 $ $Author: ena2920 $ $Date: 2005-11-26 15:57:51 +0100 (Sat, 26 Nov 2005) $
+ * @deprecated do we need this anymore?
  */
 public final class StringHelper {
 
@@ -59,10 +59,12 @@ public final class StringHelper {
 	public static String getProperty(int length, int offset, String record) {
 
 		if (null == record || (length + offset) > record.length()) {
+/* TODO handle this
 			throw new SystemException(
                     new Object[] {
 					"StringHelper.getProperty",
 					"Input record is null or will couse StringIndexOutOfBoundsException" });
+*/
 		}
 
 		return record.substring(offset, offset + length);

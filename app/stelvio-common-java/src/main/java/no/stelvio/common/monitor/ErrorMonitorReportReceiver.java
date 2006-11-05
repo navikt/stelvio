@@ -14,7 +14,7 @@ import javax.management.ObjectName;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.config.ConfigurationException;
 
 /**
  * This MBean gathers information from all ErrorMonitors.
@@ -37,11 +37,11 @@ public class ErrorMonitorReportReceiver implements ErrorMonitorReportReceiverMBe
 	 */
 	public void init() {
 		if (reporterSize <= 0) {
-			throw new SystemException();
+			throw new ConfigurationException("reporterSize");
 		}
 
 		if (objectName == null) {
-			throw new SystemException();
+			throw new ConfigurationException("objectName");
 		}
 
 		ArrayList servers = MBeanServerFactory.findMBeanServer(null);
@@ -58,8 +58,8 @@ public class ErrorMonitorReportReceiver implements ErrorMonitorReportReceiverMBe
 		try {
 			name = new ObjectName("Monitoring:name=" + objectName);
 		} catch (MalformedObjectNameException e) {
-			throw new SystemException(e, objectName);
-		}
+            // TODO handle this
+        }
 
 		if (!server.isRegistered(name)) {
 			try {
@@ -71,9 +71,9 @@ public class ErrorMonitorReportReceiver implements ErrorMonitorReportReceiverMBe
 					log.debug("Failed to register service for management", iae);
 				}
 			} catch (MBeanRegistrationException e) {
-				throw new SystemException(e);
+                // TODO handle this
 			} catch (NotCompliantMBeanException e) {
-				throw new SystemException(e);
+                // TODO handle this
 			}
 		}
 

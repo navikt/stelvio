@@ -2,8 +2,6 @@ package no.stelvio.common.codestable;
 
 import java.util.ArrayList;
 
-import no.stelvio.common.error.SystemException;
-
 /**
  * Implementation of CodesTableInitializer for initialization of the codestables 
  * and loading them into the cache for the codestables.
@@ -32,7 +30,7 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	public void init() {
 				
 		if(codesTableClasses.isEmpty()){
-			throw new SystemException();
+			throw new CodesTableException();
 		}
 		
 		try{
@@ -41,13 +39,13 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 				CodesTable ctable = codesTableManager.getCodesTable(ct);
 				
 				if(null == ctable){
-					throw new SystemException(/*FrameworkError.CODES_TABLE_NOT_FOUND TODO: use new exception instead*/ ct);
+					throw new CodesTableNotFoundException(/*FrameworkError.CODES_TABLE_NOT_FOUND TODO: use new exception instead*/ ct);
 				}
 				
 			}
 		}
 		catch(Exception ex){
-			throw new SystemException(ex);
+			throw new CodesTableException(ex);
 		}
 	}
 }

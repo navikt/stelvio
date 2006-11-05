@@ -76,7 +76,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 */
 	private void validateCodesTableClass(final Class codesTableClass){
 		if(null!= codesTableClass && !CodesTableItem.class.isAssignableFrom(codesTableClass)){
-			throw new SystemException(codesTableClass + " is not a codestable");
+			throw new CodesTableException(codesTableClass + " is not a codestable");
 		}
 	}	
 }

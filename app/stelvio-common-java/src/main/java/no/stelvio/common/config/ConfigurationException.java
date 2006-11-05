@@ -28,4 +28,11 @@ public class ConfigurationException extends SystemException {
 	public ConfigurationException(Throwable cause, Object argument) {
 		super(cause, argument);
 	}
+
+    /**
+     * @todo not quite correct
+     */
+    public Object copy() {
+        return new ConfigurationException(null);
+    }
 }

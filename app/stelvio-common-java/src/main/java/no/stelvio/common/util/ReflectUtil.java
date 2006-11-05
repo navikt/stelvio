@@ -6,8 +6,6 @@ import java.lang.reflect.Method;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 
-import no.stelvio.common.error.SystemException;
-
 /**
  * This class is a statical helper for doing reflection tasks.
  * 
@@ -33,9 +31,9 @@ public final class ReflectUtil {
 		try {
 			result = clazz.newInstance();
 		} catch (InstantiationException ie) {
-			throw new SystemException(ie, clazz.getName());
+			throw new ReflectionException(ie, clazz.getName());
 		} catch (IllegalAccessException iae) {
-			throw new SystemException(iae, clazz.getName());
+			throw new ReflectionException(iae, clazz.getName());
 		}
 
 		return result;
@@ -53,15 +51,15 @@ public final class ReflectUtil {
 		try {
 			return PropertyUtils.getSimpleProperty(instance, prop);
 		} catch (IllegalAccessException e) {
-			throw new SystemException(
+			throw new ReflectionException(
                     e,
 				new String[] { prop, instance.getClass().getName()});
 		} catch (InvocationTargetException e) {
-			throw new SystemException(
+			throw new ReflectionException(
                     e,
 				new String[] { prop, instance.getClass().getName()});
 		} catch (NoSuchMethodException e) {
-			throw new SystemException(
+			throw new ReflectionException(
                     e,
 				new String[] { prop, instance.getClass().getName()});
 		}
@@ -90,15 +88,15 @@ public final class ReflectUtil {
 
 			PropertyUtils.setSimpleProperty(instance, property, val);
 		} catch (IllegalAccessException e) {
-			throw new SystemException(
+			throw new ReflectionException(
                     e,
 				new String[] { property, instance.getClass().getName()});
 		} catch (InvocationTargetException e) {
-			throw new SystemException(
+			throw new ReflectionException(
                     e,
 				new String[] { property, instance.getClass().getName()});
 		} catch (NoSuchMethodException e) {
-			throw new SystemException(
+			throw new ReflectionException(
                     e,
 				new String[] { property, instance.getClass().getName()});
 		}
@@ -116,11 +114,11 @@ public final class ReflectUtil {
 			Method method = object.getClass().getMethod(methodName, null);
 			return method.invoke(object, null);
 		} catch (NoSuchMethodException nsme) {
-			throw new SystemException(nsme, methodName);
+			throw new ReflectionException(nsme, methodName);
 		} catch (IllegalAccessException iae) {
-			throw new SystemException(iae, methodName);
+			throw new ReflectionException(iae, methodName);
 		} catch (InvocationTargetException ite) {
-			throw new SystemException(ite, methodName);
+			throw new ReflectionException(ite, methodName);
 		}
 	}
 }

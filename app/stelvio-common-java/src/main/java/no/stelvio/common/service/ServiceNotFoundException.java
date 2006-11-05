@@ -36,4 +36,11 @@ public final class ServiceNotFoundException extends SystemException {
 	public ServiceNotFoundException(Throwable cause, Object argument) {
 		super(cause, argument);
 	}
+
+    /**
+     * @todo check this out
+     */
+    public Object copy() {
+        return new ServiceNotFoundException();
+    }
 }
