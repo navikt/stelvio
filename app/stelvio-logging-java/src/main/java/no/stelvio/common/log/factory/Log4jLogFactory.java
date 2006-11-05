@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,27 +27,35 @@ import no.stelvio.common.log.jmx.Log4JConfig;
  * 
  * @author person356941106810, Accenture
  * @version $Id: Log4jLogFactory.java 2194 2005-04-06 09:43:22Z psa2920 $
+ * @todo Commons Logging has this already, but without refresh support. If JMX for Log4J is used, use Commons Logging's
+ * version instead.
  */
 public class Log4jLogFactory extends LogFactory {
 
 	/** The config. refresh interval. Default 60 seconds.*/
 	private long refreshInterval = FileWatchdog.DEFAULT_DELAY;
 
-	/** Configuration attributes */
-	private Map attributes = new Hashtable();
+	/**
+     * Configuration attributes.
+     *
+     * @todo Maybe use {@link java.util.concurrent.ConcurrentHashMap}
+     */
+	private Map<String, Object> attributes = new Hashtable<String, Object>();
 
 	/**
 	 * The org.apache.commons.logging.Log instances that have
 	 * already been created, keyed by logger name.
+     *
+     * @todo Maybe use {@link java.util.concurrent.ConcurrentHashMap} 
 	 */
-	private Map instances = new Hashtable();
+	private Map<String, Log> instances = new Hashtable<String, Log>();
 
 	/**
 	 * The name of the property used to determine the interval between each refresh of 
 	 * the log4j configuration (in milliseconds).
 	 */
 	public static final String REFRESH_INTERVAL =
-		"no.stelvio.common.framework.log.factory.Log4jLogFactory.refreshInterval";
+		"no.stelvio.common.log.factory.Log4jLogFactory.refreshInterval";
 
 	/** Wether or not to use the default init. sequence in LogManager */
 	public static final String DEFAULT_INIT_OVERRIDE_KEY = "log4j.defaultInitOverride";
@@ -74,7 +81,7 @@ public class Log4jLogFactory extends LogFactory {
 	 * @return the configuration attribute
 	 */
 	public Object getAttribute(String name) {
-		return (attributes.get(name));
+		return attributes.get(name);
 	}
 
 	/**
@@ -82,17 +89,13 @@ public class Log4jLogFactory extends LogFactory {
 	 * configuration attributes.  If there are no such attributes, a zero
 	 * length array is returned.
 	 * 
-	 * @return an array wil all attribute names
+	 * @return an array with all attribute names.
 	 */
 	public String[] getAttributeNames() {
-		List names = new ArrayList();
-		Iterator keys = attributes.keySet().iterator();
-
-		while (keys.hasNext()) {
-			names.add((String) keys.next());
-		}
-		String[] results = new String[names.size()];
+		List<String> names = new ArrayList<String>(attributes.keySet());
+        String[] results = new String[names.size()];
 		names.toArray(results);
+
 		return results;
 	}
 
@@ -100,21 +103,13 @@ public class Log4jLogFactory extends LogFactory {
 	* Convenience method to derive a name from the specified class and
 	* call <code>getInstance(String)</code> with it.
 	*
-	* @param clazz Class for which a suitable Log name will be derived
-	*
-	* @return A Log instance
-	*
-	* @exception LogConfigurationException if a suitable <code>Log</code> instance cannot be returned
+	* @param clazz Class for which a suitable Log name will be derived.
+	* @return A Log instance for the specified class name.
+	* @exception LogConfigurationException if a suitable <code>Log</code> instance cannot be returned.
 	*/
 	public Log getInstance(Class clazz) throws LogConfigurationException {
-
-		Log log = (Log) instances.get(clazz.getName());
-		if (log == null) {
-			log = new Log4JLogger(Logger.getLogger(clazz));
-			instances.put(clazz.getName(), log);
-		}
-		return log;
-	}
+        return getInstance(clazz.getName());
+    }
 
 	/**
 	* <p>Construct (if necessary) and return a <code>Log</code> instance,
@@ -136,12 +131,14 @@ public class Log4jLogFactory extends LogFactory {
 	* @return a Log instance
 	*/
 	public Log getInstance(String name) throws LogConfigurationException {
-		Log log = (Log) instances.get(name);
-		if (log == null) {
+		Log log = instances.get(name);
+
+        if (log == null) {
 			log = new Log4JLogger(Logger.getLogger(name));
 			instances.put(name, log);
 		}
-		return log;
+
+        return log;
 	}
 
 	/**
@@ -153,7 +150,6 @@ public class Log4jLogFactory extends LogFactory {
 	*/
 	public void release() {
 		instances.clear();
-
 	}
 
 	/**
@@ -176,39 +172,42 @@ public class Log4jLogFactory extends LogFactory {
 	*  to remove any setting for this attribute
 	*/
 	public void setAttribute(String name, Object value) {
-		if (value == null) {
-			attributes.remove(name);
-		} else {
-			attributes.put(name, value);
-		}
+        if (value == null) {
+            attributes.remove(name);
+            // Should not check for reconfiguring if refresh interval's value cannot be checked against
+        } else {
+            attributes.put(name, value);
 
-		if (REFRESH_INTERVAL.equalsIgnoreCase(name)) {
-			// reconfigure the framework if the refresh interval changes
-			long refresh = Long.parseLong(value.toString());
-			if (refresh != refreshInterval) {
-				refreshInterval = refresh;
-				// this must be set so that the static configure method can reach it
-				System.setProperty(REFRESH_INTERVAL, Long.toString(refreshInterval));
-				LogLog.debug("Reconfiguring Log4J with a refresh value of [" + refreshInterval + "] milliseconds.");
-				configure();
-			}
-		}
-	}
+            if (REFRESH_INTERVAL.equalsIgnoreCase(name)) {
+                long refresh = Long.parseLong(value.toString());
+
+                // reconfigure the logging framework if the refresh interval changes
+                if (refresh != refreshInterval) {
+                    refreshInterval = refresh;
+                    // this must be set so that the static configure method can reach it
+                    System.setProperty(REFRESH_INTERVAL, Long.toString(refreshInterval));
+                    LogLog.debug("Reconfiguring Log4J with a refresh value of [" + refreshInterval + "] milliseconds.");
+                    configure();
+                }
+            }
+        }
+    }
 
 	/**
 	 * Performs configuration of the Log4J framework. This will ensure that the
 	 * framework is initialized with watch functionality.
 	 */
 	private static void configure() {
-
 		// make sure the Log4J log manager initialization is overridden.
 		System.setProperty(DEFAULT_INIT_OVERRIDE_KEY, "true");
 		LogLog.debug("Initializing Log4J with automatic refresh of properties.");
 		LogManager.resetConfiguration();
-		// get the property file to use (default to "log4j.properties")
+
+        // get the property file to use (default to "log4j.properties")
 		String log4jConfig = OptionConverter.getSystemProperty(DEFAULT_CONFIGURATION_KEY, "log4j.properties");
-		URL url = null;
-		try {
+		URL url;
+
+        try {
 			url = new URL(log4jConfig);
 		} catch (MalformedURLException ex) {
 			// so, resource is not a URL:
@@ -219,10 +218,11 @@ public class Log4jLogFactory extends LogFactory {
 		// get the actual filename and configure it
 		if (url != null) {
 			String fileName = url.getFile();
-			Object objRefresh = OptionConverter.getSystemProperty(REFRESH_INTERVAL, null);
+			String objRefresh = OptionConverter.getSystemProperty(REFRESH_INTERVAL, null);
 			long refreshInterval = FileWatchdog.DEFAULT_DELAY;
-			if (objRefresh != null) {
-				refreshInterval = Long.parseLong(objRefresh.toString());
+
+            if (objRefresh != null) {
+				refreshInterval = Long.parseLong(objRefresh);
 			}
 
 			LogLog.debug(
@@ -231,7 +231,8 @@ public class Log4jLogFactory extends LogFactory {
 					+ "] for automatic log4j configuration. Refresh interval is ["
 					+ refreshInterval
 					+ "] milliseconds.");
-			// check wether it is an xml file or a prop. file
+
+            // check wether it is an xml file or a prop. file
 			if (fileName.endsWith(".xml")) {
 				DOMConfigurator.configureAndWatch(fileName, refreshInterval);
 			} else {
@@ -251,5 +252,4 @@ public class Log4jLogFactory extends LogFactory {
 			LogLog.debug("Could not find resource: [" + log4jConfig + "].");
 		}
 	}
-
 }
