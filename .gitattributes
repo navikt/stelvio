@@ -204,7 +204,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/error/ApplicationExcepti
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlerFactoryBeanTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ExceptionHandlerFacadeTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/LoggerExceptionHandlerStrategyTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/SeverityTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/SystemExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategyTest.java -text
