@@ -8,9 +8,6 @@ app/stelvio-common-java/bin
 app/stelvio-common-java/common.iml
 app/stelvio-common-java/debug.log
 app/stelvio-common-java/target
-app/stelvio-logging-java/bin
-app/stelvio-logging-java/logging.iml
-app/stelvio-logging-java/target
 app/stelvio-presentation-java/bin
 app/stelvio-presentation-java/target
 app/stelvio-presentation-java/web.iml
