@@ -62,6 +62,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagementImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTable.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableFactory.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableFactoryImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableImpl.java -text
@@ -72,6 +73,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableIte
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItemPeriodic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManager.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManagerImpl.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableNotFoundException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodicImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
@@ -172,8 +174,10 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/util/Log469MessageFormat
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/MessageFormatter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ObjectUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ReflectUtil.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/util/ReflectionException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/SequenceNumberGenerator.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/StringHelper.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/util/StringHelperException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/package.html -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisorTests.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheAnnotationsTest.java -text
