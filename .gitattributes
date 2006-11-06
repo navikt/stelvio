@@ -115,6 +115,11 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExc
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionWrapper.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorRetriever.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorsFactoryBean.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/event/AuditEvent.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/event/AuditItem.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/event/EventListener.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/event/support/CeiEventListener.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/event/support/LoggingEventListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/JMXUtils.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/ServiceLevelConstants.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/ServiceLevelMBean.java -text
