@@ -175,6 +175,14 @@
                         <target>1.5</target>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-plugin</artifactId>
+                    <configuration>
+                        <username>svnguest</username>
+                        <password>Subversion01</password>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
