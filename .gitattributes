@@ -396,3 +396,4 @@ app/stelvio-test-java/src/test/java/no/stelvio/common/test/spring/hibernate/Mock
 app/stelvio-test-java/src/test/java/no/stelvio/common/test/spring/transaction/MockTransactionTemplateTest.java -text
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
+inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
