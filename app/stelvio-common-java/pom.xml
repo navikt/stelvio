@@ -100,6 +100,11 @@
 					<artifactId>jcs</artifactId>
 					<groupId>jcs</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>spring</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				
 	        </exclusions>
         </dependency>
         <dependency>
