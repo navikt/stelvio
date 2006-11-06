@@ -29,6 +29,17 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</connection>
+        <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://10.33.1.53/fisheye</url>
+    </scm>
+    <ciManagement>
+        <system>continuum</system>
+        <url>http://127.0.0.1/continuum</url>
+    </ciManagement>
+
     <!-- TODO use clirr maven report to check for changes in APIs -->
     <!-- jar files the project is dependent on -->
     <dependencies>
@@ -106,14 +117,14 @@
     </dependencies>
     <distributionManagement>
         <repository>
-            <id>nav-maven2-repo</id>
+            <id>nav-maven2-repo-internal</id>
             <name>NAV Maven2 Internal Repository</name>
-            <url>scp://10.3.31.41/var/maven2/mirror</url>
+            <url>scp://10.3.32.41/var/maven2/internal</url>
         </repository>
         <snapshotRepository>
             <id>nav-maven2-repo-snapshot</id>
             <name>NAV Maven2 Internal Snapshot Repository</name>
-            <url>scp://10.3.31.41/var/maven2/snapshot</url>
+            <url>scp://10.3.32.41/var/maven2/snapshot</url>
         </snapshotRepository>
         <site>
             <!-- TODO: Create web site -->
@@ -123,8 +134,13 @@
     </distributionManagement>
     <repositories>
         <repository>
-            <id>nav-maven2-repo</id>
+            <id>nav-maven2-repo-internal</id>
             <name>NAV Maven2 Internal Repository</name>
+            <url>http://10.3.32.41/m2internal</url>
+        </repository>
+        <repository>
+            <id>nav-maven2-repo-mirror</id>
+            <name>NAV Maven2 Mirror Repository</name>
             <url>http://10.3.32.41/m2mirror</url>
         </repository>
         <repository>
