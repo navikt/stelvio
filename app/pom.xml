@@ -125,7 +125,7 @@
         <repository>
             <id>nav-maven2-repo</id>
             <name>NAV Maven2 Internal Repository</name>
-            <url>http://10.3.31.41/m2mirror</url>
+            <url>http://10.3.32.41/m2mirror</url>
         </repository>
         <repository>
             <snapshots>
@@ -133,7 +133,7 @@
             </snapshots>
             <id>nav-maven2-repo-snapshot</id>
             <name>NAV Maven2 Internal Snapshot Repository</name>
-            <url>http://10.3.31.41/m2snapshot</url>
+            <url>http://10.3.32.41/m2snapshot</url>
         </repository>
 <!-- TODO should probably not enable this, only deploy libs needed from m1-repo to the new repository
         <repository>
