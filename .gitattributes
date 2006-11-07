@@ -131,6 +131,9 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/log/appenders/JMSQueueAp
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/Log4jLogFactory.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfig.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfigMBean.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Menu.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Permission.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Screen.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/monitor/ErrorMonitor.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/monitor/ErrorMonitorReportReceiver.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/monitor/ErrorMonitorReportReceiverMBean.java -text
