@@ -7,6 +7,7 @@ import junit.framework.TestCase;
  * RequestContext Unit Test.
  * 
  * @author person7553f5959484, Accenture
+ * @author person4f9bc5bd17cc, Accenture
  * @version $Revision: 1976 $ $Author: psa2920 $ $Date: 2005-02-16 16:57:25 +0100 (Wed, 16 Feb 2005) $
  */
 public class RequestContextTest extends TestCase {
@@ -38,8 +39,9 @@ public class RequestContextTest extends TestCase {
 		assertEquals("process", process, RequestContext.getProcessId());
 		assertEquals("transaction", transaction, RequestContext.getTransactionId());
 
+		RequestContext.remove();
+		
 		assertNull("user", RequestContext.getUserId());
 
 	}
-
 }

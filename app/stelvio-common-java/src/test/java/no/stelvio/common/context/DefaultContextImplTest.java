@@ -10,6 +10,7 @@ import junit.framework.TestCase;
  * DefaultContextImpl Unit Test.
  * 
  * @author person7553f5959484, Accenture
+ * @author person4f9bc5bd17cc, Accenture
  * @version $Revision: 1058 $ $Author: psa2920 $ $Date: 2004-08-17 16:15:17 +0200 (Tue, 17 Aug 2004) $
  */
 public class DefaultContextImplTest extends TestCase {
@@ -42,7 +43,7 @@ public class DefaultContextImplTest extends TestCase {
 			assertTrue("importContext(String) should have thrown ClassCastException", t instanceof ClassCastException);
 		}
 
-		Hashtable h = new Hashtable();
+		Hashtable<String, Object> h = new Hashtable<String, Object>();
 		h.put("key", o);
 
 		c.importContext(h);

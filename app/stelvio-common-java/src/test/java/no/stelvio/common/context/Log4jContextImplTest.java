@@ -10,6 +10,7 @@ import junit.framework.TestCase;
  * Log4jContextImpl Unit Test.
  * 
  * @author person7553f5959484, Accenture
+ * @author person4f9bc5bd17cc, Accenture
  * @version $Revision: 1057 $ $Author: psa2920 $ $Date: 2004-08-17 16:08:01 +0200 (Tue, 17 Aug 2004) $
  */
 public class Log4jContextImplTest extends TestCase {
@@ -27,7 +28,7 @@ public class Log4jContextImplTest extends TestCase {
 
 		assertNull("Exported Hashtable should have been null", c.exportContext());
 
-		Hashtable h = new Hashtable();
+		Hashtable<String, Object> h = new Hashtable<String, Object>();
 		Object o = "value";
 		h.put("key", o);
 

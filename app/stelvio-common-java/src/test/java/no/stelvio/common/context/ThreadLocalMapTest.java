@@ -10,6 +10,7 @@ import junit.framework.TestCase;
  * ThreadLocalMap Unit Test.
  * 
  * @author person7553f5959484, Accenture
+ * @author person4f9bc5bd17cc, Accenture
  * @version $Revision: 1055 $ $Author: psa2920 $ $Date: 2004-08-17 15:38:08 +0200 (Tue, 17 Aug 2004) $
  */
 public class ThreadLocalMapTest extends TestCase {
@@ -24,7 +25,7 @@ public class ThreadLocalMapTest extends TestCase {
 
 	public void test() {
 		TestThreadLocalMap map = new TestThreadLocalMap();
-		Hashtable h = new Hashtable();
+		Hashtable<String, String> h = new Hashtable<String, String>();
 		h.put("key", "value");
 		Hashtable o = (Hashtable) map.childValue(h);
 
