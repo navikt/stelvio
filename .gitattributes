@@ -134,6 +134,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfigMBean
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Menu.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Permission.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Screen.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/JpaMenuRepository.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/MenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/monitor/ErrorMonitor.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/monitor/ErrorMonitorReportReceiver.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/monitor/ErrorMonitorReportReceiverMBean.java -text
