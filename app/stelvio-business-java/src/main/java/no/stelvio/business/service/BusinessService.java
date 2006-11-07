@@ -101,7 +101,8 @@ public abstract class BusinessService implements LocalService, BeanNameAware {
 			try {
 				release();
 			} catch (RuntimeException re) {
-				throw new SystemException(re);
+                // TODO check out what to do here; most likely the whole class will be removed 
+//				throw new SystemException(re);
 			}
 		}
 	}
@@ -171,7 +172,8 @@ public abstract class BusinessService implements LocalService, BeanNameAware {
 		Object value = request.getData(key);
 
 		if (null == value || value instanceof String && StringUtils.isBlank((String) value)) {
-			throw new SystemException(key);
+            // TODO check out what to do here; most likely the whole class will be removed
+//			throw new SystemException(key);
 		}
 
 		return value;

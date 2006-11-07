@@ -47,7 +47,8 @@ public abstract class BusinessHibernateService extends BusinessService {
 		try {
 			Hibernate.initialize(proxy);
 		} catch (HibernateException e) {
-			throw new SystemException(e);
+            // TODO check out what to do here; most likely the whole class will be removed
+//            throw new SystemException(e);
 		}
 	}
 }
