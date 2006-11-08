@@ -2,7 +2,6 @@ package no.stelvio.common.menu.domain;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,6 +25,7 @@ import javax.persistence.Version;
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
+ * @todo should not be necessary with setters at all?
  */
 @NamedQueries({
 	@NamedQuery(name="Menu.findParents", query="SELECT m FROM Menu m WHERE m.parent is null")
