@@ -118,6 +118,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorsFact
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/AuditEvent.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/AuditItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/EventListener.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/event/audit/AuditEvent.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/event/audit/AuditItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/support/CeiEventListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/support/LoggingEventListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/jmx/JMXUtils.java -text
