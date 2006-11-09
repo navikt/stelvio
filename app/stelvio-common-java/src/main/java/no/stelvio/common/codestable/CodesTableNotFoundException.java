@@ -5,7 +5,7 @@ package no.stelvio.common.codestable;
  * @todo write javadoc
  */
 public class CodesTableNotFoundException extends CodesTableException {
-    public CodesTableNotFoundException(Class<CodesTableItem> cti) {
+    public CodesTableNotFoundException(Class<AbstractCodesTableItem> cti) {
         // TODO: implement body
     }
 }

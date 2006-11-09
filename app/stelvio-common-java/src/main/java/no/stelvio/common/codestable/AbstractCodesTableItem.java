@@ -6,37 +6,31 @@ import java.util.Locale;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public abstract class CodesTableItemAb implements Serializable {
+/**
+ * Abstract class for the CodesTableItem component.
+ * 
+ * @author personb66fa0b5ff6e, Accenture
+ * @verion $Id$
+ */
+public abstract class AbstractCodesTableItem implements Serializable {
 
-	private String code;
-	private String decode;
-	private Locale locale;
-	private Boolean isValid;
+	/** A codestableitem's code. */
+	protected String code;
 	
-	/**
-	 * Constructor for CodesTableItem.
+	/** A codestableitem's decode, i.e. a message. */
+	protected String decode;
+	
+	/** A codestableitem's locale that represents the country and 
+	 * language the items decode is defined for.
 	 */
-	public CodesTableItemAb(){
-	}
+	protected Locale locale;
 	
-	/**
-	 * Constructor for an item, initializing its attributes.
-	 * @param code the code.
-	 * @param decode the decode.
-	 * @param locale the locale of the item.
-	 * @param isvalid validity of the item.
-	 * @param version the version of the item.
-	 */
-	public CodesTableItemAb(String code, String decode, Locale locale, Boolean isValid){
-		this.code = code;
-		this.decode = decode;
-		this.locale = locale;
-		this.isValid = isValid;
-	}
-	
+	/** Defines the validity of a codestableitem. */
+	protected Boolean isValid;
+		
 	/**
 	 * Returns the code represented by this item.
-	 * @return the code.
+	 * @return The items code.
 	 */
 	public String getCode(){
 		return code;
@@ -52,14 +46,14 @@ public abstract class CodesTableItemAb implements Serializable {
 
 	/**
 	 * Returns the decode represented by this item.
-	 * @return the decode.
+	 * @return The items decode.
 	 */
 	public String getDecode(){
 		return decode;
 	}
 
 	/**
-	 * Sets the decode represented by this item
+	 * Sets the decode represented by this item.
 	 * @param decode the decode
 	 */
 	public void setDecode(String decode){
@@ -68,14 +62,14 @@ public abstract class CodesTableItemAb implements Serializable {
 
 	/**
 	 * Returns the locale of this item.
-	 * @return the locale of the item
+	 * @return The items locale.
 	 */
 	public Locale getLocale(){
 		return locale;
 	}
 	
 	/**
-	 * Sets the locale of this item
+	 * Sets the locale of this item.
 	 * @param locale the locale of the item
 	 */
 	public void setLocale(Locale locale){
@@ -84,7 +78,7 @@ public abstract class CodesTableItemAb implements Serializable {
 	
 	/**
 	 * Returns the validity of this item.
-	 * @return true if item is valid, false otherwise
+	 * @return isValid as true if item is valid, false otherwise.
 	 */
 	public Boolean getIsValid(){
 		return isValid;
@@ -99,20 +93,19 @@ public abstract class CodesTableItemAb implements Serializable {
 	}
 	
 	/**
-	 * Abstract method for toString().
+	 * Abstract method for toString() that must be implemented by its 
+	 * subclasses.
 	 */
 	public abstract String toString();
 	
 	/**
 	 * Compares this instance with another object. 
 	 * The method returns true if the other object is not null,
-	 * and is of same class as this and other.getCode() 
-	 * equals this.getCode().
+	 * and is of same class as this and other.getCode() equals this.getCode().
 	 * 
 	 * {@inheritDoc}
 	 */
 	public boolean equals(Object other) {
-
 		if (null == other) {
 			// This aint null
 			return false;
@@ -121,7 +114,7 @@ public abstract class CodesTableItemAb implements Serializable {
 			return false;
 		} else {
 			// This is the same class as other
-			CodesTableItemAb castOther = (CodesTableItemAb) other;
+			AbstractCodesTableItem castOther = (AbstractCodesTableItem) other;
 			return new EqualsBuilder().append(this.getCode(), castOther.getCode()).isEquals();
 		}
 	}

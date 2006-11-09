@@ -61,15 +61,14 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterce
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagementImpl.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/AbstractCodesTableItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTable.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableFactory.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableFactoryImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableInitializer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableInitializerImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItem.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItemAb.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItemPeriodic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManager.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManagerImpl.java -text

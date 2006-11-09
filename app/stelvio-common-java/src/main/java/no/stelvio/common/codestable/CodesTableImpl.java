@@ -18,10 +18,8 @@ import no.stelvio.common.context.RequestContext;
  */
 public class CodesTableImpl implements CodesTable {
 
-	/**
-	 * List of codestableitems in a codestable.
-	 */
-	protected List<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
+	//List of codestableitems
+	private List<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
 	
 	//List of filtered codestableitems
 	private List<CodesTableItem> filteredCodesTableItems = new ArrayList<CodesTableItem>();
@@ -30,24 +28,20 @@ public class CodesTableImpl implements CodesTable {
 	private List<Predicate> predicates = new ArrayList<Predicate>();
 		
 	/**
-	 * TODO
+	 * {@inheritDoc CodesTable#addCodesTableItem(CodesTableItem codesTableItem)}
 	 */
 	public void addCodesTableItem(CodesTableItem codesTableItem){
 		this.codesTableItems.add(codesTableItem);
 	}
 	
 	/** 
-	 * Returns the item in the specified codes table that matches the specified code.
-	 * 
-	 * @param code the item's code.
-	 * @return the codes table item or null if the code does not exist in the codes table.
-	 * @throws CodesTableException 
+	 * {@inheritDoc {@link CodesTable#getCodesTableItem(Object)}
 	 */
 	public CodesTableItem getCodesTableItem(Object code) {
 		
 		CodesTableItem cti = null;
 								
-		//There are no predicates for the items of the codestable  
+		//There are no predicates for the items in the codestable  
 		if(this.predicates.isEmpty()){
 			for(CodesTableItem c : this.codesTableItems){
 				if (c.getCode() == code.toString()){
@@ -55,7 +49,7 @@ public class CodesTableImpl implements CodesTable {
 				}
 			}
 		}
-		//There are defined predicates for the items of the codestable
+		//There are defined predicates for the items in the codestable
 		else if(!this.predicates.isEmpty()){ 
 			for(CodesTableItem c : this.filteredCodesTableItems){
 				if (c.getCode() == code.toString()){
@@ -63,18 +57,12 @@ public class CodesTableImpl implements CodesTable {
 				}
 			}
 		}
-		
-		if(cti == null){
-            throw new CodesTableException("Codestable with code" +code);
-		}
-		
+			
 		return cti;
 	}
 		
 	/**
-	 * Add a predicate on the list of items in a codes table.
-	 * 
-	 * @param predicate the predicate to filter the items in a codes table.
+	 * {@inheritDoc CodesTable#addPredicate()}
 	 */
 	public void addPredicate(Predicate predicate) {
 		//If there are no previous predicates added to a codestable, all of the codetableitems in a codetable
@@ -92,24 +80,24 @@ public class CodesTableImpl implements CodesTable {
 		
 		this.predicates.add(predicate);	
 	}
+	
+	/** 
+	 * {@inheritDoc CodesTable#resetPredicate()}
+	 */
+	public void resetPrediacte() {
+		this.predicates.clear();
+		this.filteredCodesTableItems.clear();
+	}
 
 	/**
-	 * Returns the decode code in specified codes table.
-	 * 
-	 * @param code the item's code.
-	 * @return decode or null if the code does not exist in the codes table.
+	 * {@inheritDoc CodesTable#getDecode()}
 	 */
-	public String getDecode(Object code) {				
+	public String getDecode(Object code) {		
 		return getDecode(code, RequestContext.getLocale());
 	}
 
 	/** 
-	 * Returns the decode code in specified codes table.
-	 * 
-	 * @param code the item's code.
-	 * @param locale the internationalization code.
-	 * @return decode or null if the code does not exist in the codes table.
-	 * @throws CodesTableException 
+	 * {@inheritDoc CodesTable#getDecode()}
 	 */
 	public String getDecode(Object code, Locale locale) {
 			
@@ -122,15 +110,6 @@ public class CodesTableImpl implements CodesTable {
 			}
 		}
 		
-		throw new CodesTableException("Codestable with code" +code);
+		return null;
 	}
-
-	/** 
-	 * Removes all of the predicates on a CodesTable/CodesTablePeriodic.
-	 */
-	public void resetPrediacte() {
-		this.predicates.clear();
-		this.filteredCodesTableItems.clear();
-	}
-
 }
