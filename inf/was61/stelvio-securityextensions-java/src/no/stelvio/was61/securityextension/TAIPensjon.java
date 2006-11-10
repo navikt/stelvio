@@ -23,6 +23,15 @@ import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
 import com.ibm.wsspi.security.token.AttributeNameConstants;
 
+/*
+ * 
+ * Dette er en veldig basic testimplementasjon. 
+ * Den vil behandle alle inkommende requests som komer fra en firefox browser.
+ * For mer informasjon om hvordan implementasjon og konfigurasjon av denne klassen
+ * skal gjøres, se PP42030. Denne klassen viser bare eksempelbruk.
+ * 
+ */
+
 public class TAIPensjon implements TrustAssociationInterceptor {
 
 	public void cleanup() {
@@ -61,10 +70,11 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 		HttpSession s = req.getSession();
 		String userid = "";
 		try {
-			
+			// Henter ut logon_type for å skille mellom hva slags innlogging som blir gjort
 			String logon_type = (String) s.getAttribute( "logon_type" );
 			
 			if ( logon_type == null || logon_type.equals( "" ) ) {
+				// Ingen login, sendes videre.
 				s.setAttribute( "logon_type", "PIN" );
 				s.setAttribute( "next_page", req.getContextPath() );
 				RequestDispatcher disp = req.getRequestDispatcher( "/login2.jsp" );
@@ -105,36 +115,37 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 	private Subject createSubject( String userid, HttpSession s ) {
 		Subject subject = new Subject();
 		try {
+			
+			// Her lages Subjectet
+			
 			InitialContext ctx = new InitialContext();
+			
+			// For å hente ut korrekte gruppenavn, gjør oppslag i userregistry slik at mappingen 
+			// blir korrekt
 			UserRegistry ad_reg = (UserRegistry) ctx.lookup("UserRegistry");
-			//UserRegistry reg = new RegistryTest(); //(UserRegistry) ctx.lookup("UserRegistry");
 			
-						
-			
-			//String password = "XXX";
-			String uniqueid = "ting"; // reg.getUniqueUserId( userid );
+			// Hent ut fødselsnummer fra requesten og bruk som unik id
+			// Bruk dene pluss en timpestamp som cache_key
+			String uniqueid = "fødselsnummer";
 			String key = uniqueid + "TAIRemoved" + String.valueOf(System.currentTimeMillis());
 			
-			List groups = new ArrayList(); //convertGroupsToUniqueIds(reg,reg.getGroupsForUser(userid));
+			// Hent ut grupper fra userregistry. Viktig at det er UniqueGroupId som blir brukt
+			List groups = new ArrayList(); 
 			groups.add( ad_reg.getUniqueGroupId( "Leder" ) );
-			groups.add( ad_reg.getUniqueGroupId( "detteernoeteit" ) );
 			
-			s.setAttribute( "GROUPS", groups );
-			
+			// Bygg opp hashtabellen men informasjonen og legg til subjectet.
 			Hashtable hashtable = new Hashtable();
 			hashtable.put(AttributeNameConstants.WSCREDENTIAL_UNIQUEID, uniqueid);
 			hashtable.put(AttributeNameConstants.WSCREDENTIAL_SECURITYNAME, userid);
-			//hashtable.put(AttributeNameConstants.WSCREDENTIAL_PASSWORD, password );
-			hashtable.put(AttributeNameConstants.WSCREDENTIAL_GROUPS, groups);
-			
-			//System.out.println("Subject cache key is " + key);
-			//hashtable.put(AttributeNameConstants.WSCREDENTIAL_CACHE_KEY, key);
+			hashtable.put(AttributeNameConstants.WSCREDENTIAL_GROUPS, groups);			
+			hashtable.put(AttributeNameConstants.WSCREDENTIAL_CACHE_KEY, key);
 			subject.getPublicCredentials().add(hashtable);
 			
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			subject = null;
 		}
+		// Returner det ferdige subjektet tilbake
 		return subject;
 	}
 	
