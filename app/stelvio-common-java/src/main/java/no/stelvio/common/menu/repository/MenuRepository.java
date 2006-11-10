@@ -20,6 +20,4 @@ public interface MenuRepository {
 	 * @return a list of root Menu objects. 
 	 */
 	public List<Menu> getParents();
-	
-	public void populateTestData();
 }
