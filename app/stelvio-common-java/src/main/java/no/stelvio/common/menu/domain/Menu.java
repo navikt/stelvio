@@ -2,6 +2,7 @@ package no.stelvio.common.menu.domain;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +17,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Version;
 
 /**
  * Class represent a Menu.
@@ -25,7 +25,6 @@ import javax.persistence.Version;
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
- * @todo should not be necessary with setters at all?
  */
 @NamedQueries({
 	@NamedQuery(name="Menu.findParents", query="SELECT m FROM Menu m WHERE m.parent is null")
@@ -77,15 +76,6 @@ public class Menu implements Serializable {
 	private List<Screen> screens;
 	
 	/**
-	 * In order to prevent "lost updates" all entities need to include a version field.
-	 * This field is used by the persistence provider to implement optimistic locking.
-	 */ 
-	// There shall be no setter-method for the version-field.
-	@Version
-	@Column(name="VERSION")
-	private long version;
-	
-	/**
 	 * The name of the flow to execute when clicking the menuitem.
 	 */
 	@Column(name="FLOW_NAME")
@@ -94,8 +84,8 @@ public class Menu implements Serializable {
 	/**
 	 * The sortingorder of the menuitem.
 	 */
-	@Column(name="SORTING")
-	private int sorting;
+	@Column(name="ORDER")
+	private int order;
 	
 	/**
 	 * The text to display.
@@ -181,15 +171,15 @@ public class Menu implements Serializable {
 	/**
 	 * @return the sort order.
 	 */
-	public int getSorting() {
-		return sorting;
+	public int getOrder() {
+		return order;
 	}
 	
 	/**
-	 * @param sorting the sort order to set
+	 * @param order the sort order to set
 	 */
-	public void setSorting(int sorting) {
-		this.sorting = sorting;
+	public void setOrder(int sorting) {
+		this.order = sorting;
 	}
 
 	/**
@@ -218,14 +208,5 @@ public class Menu implements Serializable {
 	 */
 	public void setScreens(List<Screen> screens) {
 		this.screens = screens;
-	}
-
-	/**
-	 * In order to prevent "lost updates" all entities need to include a version field.
-	 * This field is used by the persistence provider to implement optimistic locking.
-	 * @return the version
-	 */
-	public long getVersion() {
-		return version;
 	}
 }
