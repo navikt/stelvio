@@ -178,8 +178,8 @@ public class Menu implements Serializable {
 	/**
 	 * @param order the sort order to set
 	 */
-	public void setOrder(int sorting) {
-		this.order = sorting;
+	public void setOrder(int order) {
+		this.order = order;
 	}
 
 	/**
