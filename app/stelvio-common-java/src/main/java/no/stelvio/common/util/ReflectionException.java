@@ -1,5 +1,7 @@
 package no.stelvio.common.util;
 
+import java.util.Arrays;
+
 import no.stelvio.common.error.SystemException;
 
 /**
@@ -7,14 +9,11 @@ import no.stelvio.common.error.SystemException;
  * @todo write javadoc
  */
 public class ReflectionException extends SystemException {
-    public ReflectionException(Exception e, String[] name) {
+    public ReflectionException(Exception cause, String... name) {
+        super(cause, Arrays.asList(name));
     }
 
-    public ReflectionException(Exception e, String name) {
-        // TODO: implement body
-    }
-
-    public Object copy() {
-        return null;  // TODO: implement body
+    protected String getMessageTemplate() {
+        return "Problems doing reflection with the following arguments: {0}";
     }
 }

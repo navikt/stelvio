@@ -1,9 +1,7 @@
 package no.stelvio.common.util;
 
 import junit.framework.TestCase;
-
-import no.stelvio.common.error.ApplicationException;
-import no.stelvio.common.util.FNRUtil;
+import no.stelvio.common.error.RecoverableException;
 
 /**
  * Test-klasse for FNR util.
@@ -63,13 +61,13 @@ public class FNRUtilTest extends TestCase {
 	}
 
 
-	public void testIsDoFodt() throws ApplicationException {
+	public void testIsDoFodt() throws RecoverableException {
 		assertFalse("Barnet er ikke død-født;", FNRUtil.isDoFodt("12345678901"));
 		assertTrue("Barnet er død-født;", FNRUtil.isDoFodt("12345678901"));
 
 		try {
 			FNRUtil.isDoFodt("jalla");
-			fail("Denne skal kaste en ApplicationException siden fnr ikke gyldig");
+			fail("Denne skal kaste en RecoverableException siden fnr ikke gyldig");
 		} catch (IllegalArgumentException e) {
 			// skal skje
 		}
