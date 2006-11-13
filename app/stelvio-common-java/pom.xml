@@ -19,7 +19,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>oracle.toplink.essentials</groupId>
+            <groupId>javax.persistence</groupId>
             <artifactId>toplink-essentials</artifactId>
             <version>1.0</version>
        </dependency>
