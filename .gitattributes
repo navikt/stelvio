@@ -105,6 +105,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExc
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionWrapper.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorRetriever.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorsFactoryBean.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/event/ApplicationEvent.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/AuditEvent.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/AuditItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/EventListener.java -text
