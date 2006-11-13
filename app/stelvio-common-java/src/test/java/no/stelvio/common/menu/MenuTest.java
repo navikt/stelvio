@@ -10,7 +10,6 @@ import junit.framework.TestCase;
 import no.stelvio.common.menu.domain.Menu;
 import no.stelvio.common.menu.domain.Permission;
 import no.stelvio.common.menu.domain.Screen;
-import no.stelvio.common.menu.repository.MenuRepository;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -81,7 +80,7 @@ INSERT INTO SCREEN_MENU(screen_id, menu_id) VALUES (4, 6)
  * @author person4f9bc5bd17cc, Accenture
  */
 public class MenuTest extends TestCase {
-	private MenuRepository menuRepo;
+	private MenuItemService menuItemService;
 	private String screen;
 	private List<String> roles = new ArrayList<String>();
 	
@@ -90,7 +89,7 @@ public class MenuTest extends TestCase {
 	 */
 	public void setUp() throws Exception {
 		ApplicationContext context = new ClassPathXmlApplicationContext("common-java_test_menu_beans.xml"); 
-		menuRepo = (MenuRepository) context.getBean("menu.menuRepositoryImpl");
+		menuItemService = (MenuItemService) context.getBean("menu.menuItemService");
 		
 		screen = "4";
 		
@@ -164,8 +163,7 @@ public class MenuTest extends TestCase {
 	 * Method to run the test
 	 */
 	public void test() {
-		menuRepo.populateTestData();
-		List<Menu> menus = menuRepo.getParents();
+		List<Menu> menus = menuItemService.getMenuItems();
 		for (Menu menu : menus) {
 			printMenu(menu, 0);
 		}
@@ -177,6 +175,6 @@ public class MenuTest extends TestCase {
 	 */
 	@Override
 	public void tearDown() {
-		menuRepo = null;
+		menuItemService = null;
 	}
 }
