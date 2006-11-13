@@ -2,6 +2,8 @@ package no.stelvio.common.transferobject;
 
 import java.io.Serializable;
 
+import no.stelvio.common.context.RequestContext;
+
 
 /**
  * Business requests are serializable and (may) contain a ContextContainer.
