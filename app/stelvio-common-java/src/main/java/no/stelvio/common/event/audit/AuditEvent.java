@@ -3,7 +3,10 @@ package no.stelvio.common.event.audit;
 import java.util.Collections;
 import java.util.Set;
 
-import org.springframework.context.ApplicationEvent;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.util.CollectionUtils;
+
+import no.stelvio.common.event.ApplicationEvent;
 
 /**
  * @author personf8e9850ed756
@@ -22,6 +25,15 @@ public class AuditEvent extends ApplicationEvent {
      */
     public AuditEvent(Object source, String message, String userLogin, String userLocation, Set<AuditItem> auditItems) {
         super(source);
+
+        checkArgument(message, "message");
+        checkArgument(userLogin, "userLogin");
+        checkArgument(userLocation, "userLocation");
+
+        if (CollectionUtils.isEmpty(auditItems)) {
+            throw new IllegalArgumentException("auditItems is mandatory; cannot be empty");
+        }
+
         this.message = message;
         this.userLogin = userLogin;
         this.userLocation = userLocation;
@@ -50,5 +62,11 @@ public class AuditEvent extends ApplicationEvent {
 
     public String getUserLocation() {
         return userLocation;
+    }
+
+    private void checkArgument(String argument, String argumentName) {
+        if (StringUtils.isBlank(argument)) {
+            throw new IllegalArgumentException(argumentName + " is mandatory");
+        }
     }
 }
