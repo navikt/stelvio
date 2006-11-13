@@ -104,6 +104,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * and is of same class as this and other.getCode() equals this.getCode().
 	 * 
 	 * {@inheritDoc}
+     * @todo what about locale? Are 2 cti's equal if they have the same code but not the same locale?
 	 */
 	public boolean equals(Object other) {
 		if (null == other) {
