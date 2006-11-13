@@ -138,8 +138,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Screen.java 
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/JpaMenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/MenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/package.html -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/security/AccessController.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/security/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/service/LocalService.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/service/Service.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceDelegate.java -text
