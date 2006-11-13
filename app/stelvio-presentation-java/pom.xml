@@ -11,11 +11,6 @@
     <packaging>jar</packaging>
     <name>stelvio - presentation</name>
     <dependencies>
-    	<dependency>
-			<groupId>opensymphony</groupId> 
-			<artifactId>oscache</artifactId> 
-			<version>2.3</version> 
-    	</dependency>
         <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
