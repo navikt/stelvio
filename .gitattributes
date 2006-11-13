@@ -124,15 +124,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Screen.java 
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/JpaMenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/MenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/package.html -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/LocalService.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/Service.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceDelegate.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceFailedException.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceLocator.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceNotFoundException.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceRequest.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/ServiceResponse.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/service/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/BusinessRequest.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/BusinessResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainer.java -text
@@ -200,9 +191,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestTextMe
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/factory/Log4jLogFactoryTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/jmx/Log4JConfigTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/menu/MenuTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/service/ServiceRequestTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/service/ServiceResponseTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/service/TestLocalService.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/DateUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/FNRUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/ReflectUtilTest.java -text
