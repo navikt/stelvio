@@ -135,8 +135,8 @@ public abstract class AbstractFilter implements Filter {
 		} catch (RuntimeException re) {
 
 			// Create a new top level error
-			SystemException se =
-				new SystemException(re, new String[] { filterConfig.getFilterName()});
+			SystemException se = null;
+//				new SystemException(re, new String[] { filterConfig.getFilterName()});TODO: handled differently
 
 			// Handle the error
 //			ErrorHandler.handleError(se); TODO: handled differently

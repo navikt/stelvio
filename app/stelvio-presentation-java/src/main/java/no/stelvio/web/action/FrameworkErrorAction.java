@@ -51,7 +51,7 @@ public class FrameworkErrorAction {
             errorForm.setErrorMessage(/*ErrorHandler.getMessage(e) TODO: look at new version*/ null);
 			errorForm.setStacktrace(/*ErrorHandler.getStacktraceAsString(e)TODO: look at new version*/ null);
 			errorForm.setErrorCode(String.valueOf(1/*le.getErrorCode()*/));
-			errorForm.setErrorId(le.getErrorId());
+			errorForm.setErrorId("1"/*le.getErrorId()*/);
 			errorForm.setProcessId(le.getProcessId());
 			errorForm.setScreenId(le.getScreenId());
 			errorForm.setTransactionId(le.getTransactionId());

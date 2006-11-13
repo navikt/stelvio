@@ -31,21 +31,22 @@ public class DefaultLocaleStartupHelper {
 	 * the server: <code>-Djava.security.policy=PATH_TO_YOUR_NEW_POLICY_FILE</code>.
 	 * 
 	 * @param language the two-letter lowercase ISO-639 language code, e.g. "no","se" and "en"
-	 * @param country the two-letter uppercase ISO-3166 country code, e.g. "NO", "SE", "GB" and "US" 
+	 * @param country the two-letter uppercase ISO-3166 country code, e.g. "NO", "SE", "GB" and "US"
+     * @todo should it be done like this? Doesn't Spring have something like it? Loook into Spring's LocaleResolver 
 	 */
 	public DefaultLocaleStartupHelper(String language, String country) {
 		if (!ArrayUtils.contains(Locale.getISOLanguages(), language)) {
-			throw new SystemException(language);
+			throw createSystemException(language);
 		}
 
 		if (!ArrayUtils.contains(Locale.getISOCountries(), country)) {
-			throw new SystemException(country);
+			throw createSystemException(country);
 		}
 
 		Locale defaultLocale = new Locale(language, country);
 
 		if (!ArrayUtils.contains(Locale.getAvailableLocales(), defaultLocale)) {
-			throw new SystemException(defaultLocale.toString());
+			throw createSystemException(defaultLocale.toString());
 		}
 
 		// Set the locale as the system default locale
@@ -53,7 +54,12 @@ public class DefaultLocaleStartupHelper {
 			Locale.setDefault(defaultLocale);
 			LogFactory.getLog(getClass()).info("Default System Locale set to " + defaultLocale.toString());
 		} catch (SecurityException e) {
-			throw new SystemException(e);
-		}
+            throw new SystemException(e) {};
+        }
 	}
+
+    private SystemException createSystemException(String language) {
+        // TODO create another exception to use
+        return new SystemException(language) {};
+    }
 }
