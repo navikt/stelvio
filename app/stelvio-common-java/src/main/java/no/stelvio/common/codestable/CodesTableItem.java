@@ -20,10 +20,10 @@ public class CodesTableItem extends AbstractCodesTableItem {
 	
 	/**
 	 * Constructor for an item, initializing its attributes.
-	 * @param code the code
-	 * @param decode the decode
-	 * @param locale the locale of the item
-	 * @param isvalid validity of the item
+	 * @param code the code.
+	 * @param decode the decode.
+	 * @param locale the locale of the item.
+	 * @param isvalid validity of the item.
 	 */
 	public CodesTableItem(String code, String decode, Locale locale, Boolean isValid){
 		this.code = code;

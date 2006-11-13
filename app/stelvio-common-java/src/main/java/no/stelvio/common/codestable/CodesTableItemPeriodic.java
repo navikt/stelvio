@@ -27,12 +27,12 @@ public class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	
 	/**
 	 * Constructor for an item, initializing all of its attributes.
-	 * @param code the code
-	 * @param decode the decode
-	 * @param fromDate the date an item is valid from
-	 * @param toDate the date an item is valid to
-	 * @param locale the locale of the item
-	 * @param isvalid validity of the item
+	 * @param code the code.
+	 * @param decode the decode.
+	 * @param fromDate the date an item is valid from.
+	 * @param toDate the date an item is valid to.
+	 * @param locale the locale of the item.
+	 * @param isvalid validity of the item.
 	 */
 	public CodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Locale locale, Boolean isValid){
 		this.code = code;
@@ -53,7 +53,7 @@ public class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	
 	/**
 	 * Sets the date the item is valid from.
-	 * @param date the date the item is valid
+	 * @param date the date the item is valid.
 	 */
 	public void setFromDate(Date date){
 		this.fromDate = date;
@@ -69,7 +69,7 @@ public class CodesTableItemPeriodic extends AbstractCodesTableItem {
 
 	/**
 	 * Sets the date the item is valid to.
-	 * @param date the date the item is valid to
+	 * @param date the date the item is valid to.
 	 */
 	public void setToDate(Date date){
 		this.toDate = date;

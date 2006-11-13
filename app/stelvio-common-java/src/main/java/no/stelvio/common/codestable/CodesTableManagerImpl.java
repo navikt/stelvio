@@ -18,7 +18,6 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	/**
 	 * {@inheritDoc CacheTableManager#getCodesTable()}
 	 */
-	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem) {
 
 		CodesTable<T> codesTable = (CodesTable<T>) new CodesTableImpl();
@@ -40,10 +39,8 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 * {@inheritDoc CacheTableManager#getCodesTablePeriodic()}
 	 */
 	//TODO: FIKSE CASTING
-	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
 		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new CodesTablePeriodicImpl();
-		
 		validateCodesTablePeriodicClass(codesTableItem);
 		
 		List<T> codesTableItems = new ArrayList<T>();
@@ -60,7 +57,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	/**
 	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItem</>.
 	 * 
-	 * @param codesTableClass the class to load a codestable for
+	 * @param codesTableClass the class to load a codestable for.
 	 * @throws CodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>
 	 */
 	private void validateCodesTableClass(final Class codesTableClass){

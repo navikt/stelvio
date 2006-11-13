@@ -88,7 +88,7 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	/**
 	 * Sets the CodesTableManager.
 	 * 
-	 * @param codesTableManager the CodesTableManager
+	 * @param codesTableManager the CodesTableManager.
 	 */
 	public void setCodesTableManager(CodesTableManager codesTableManager){
 		this.codesTableManager = codesTableManager;

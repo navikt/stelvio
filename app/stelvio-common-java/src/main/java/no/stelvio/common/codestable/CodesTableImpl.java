@@ -35,7 +35,7 @@ public class CodesTableImpl implements CodesTable {
 	}
 	
 	/** 
-	 * {@inheritDoc {@link CodesTable#getCodesTableItem(Object)}
+	 * {@inheritDoc CodesTable#getCodesTableItem()}
 	 */
 	public CodesTableItem getCodesTableItem(Object code) {
 		

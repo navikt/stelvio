@@ -198,13 +198,15 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheManagementTes
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheTestImpl.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CustomCachingListener.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableFactoryTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableInitializerTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemPeriodicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableManagerTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableManagerTestold.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTablePeriodicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestCodesTableItem.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestCodesTableItemPeriodic.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/config/ConfigTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/context/DefaultContextImplTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/context/Log4jContextImplTest.java -text

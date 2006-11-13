@@ -22,7 +22,7 @@ public interface CodesTableManager {
 	  * Retrieves a <code>CodesTablePeriodic</code> from the database by using <code>CodesTableFactory</code>.
 	 * 
 	 * @param codesTableItemPeriodic the <code>CodesTablePeriodic</code> to retieve - represented by a <code>CodesTableItemPeriodic</code>s class.
-	 * @return The fetched <code>CodesTablePeriodic</code>
+	 * @return The fetched <code>CodesTablePeriodic</code>.
 	 */
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItemPeriodic);
 }

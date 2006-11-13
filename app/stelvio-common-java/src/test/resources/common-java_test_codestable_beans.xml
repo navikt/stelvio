@@ -6,10 +6,19 @@
 -->
 <beans>
  <bean class="no.stelvio.common.codestable.CodesTableManagerImpl" id="codesTableManager"/>
- <bean class="no.stelvio.common.codestable.CodesTableRetrieverImpl" id="codesTableRetriever"/>
  <bean class="no.stelvio.common.codestable.CodesTableImpl" id="codesTable"/>
  <bean class="no.stelvio.common.codestable.CodesTablePeriodicImpl" id="codesTablePeriodic"/>
- <bean class="no.stelvio.common.codestable.CodesTableFactoryImpl" id="codesTableFactory">
-  <property name="codesTableRetriever" ref="codesTableRetriever"/>
+ <!--  <bean class="no.stelvio.common.codestable.CodesTableFactoryImpl" id="codesTableFactory"/>-->
+ <bean class="no.stelvio.common.codestable.CodesTableInitializerImpl" id="codesTableInitializer">
+  <property name="codesTableClasses">
+   <list>
+    <value>no.stelvio.common.codestable.CodesTableItem</value>
+   </list>
+  </property>
+  <property name="codesTablePeriodicClasses">
+   <list>
+    <value>no.stelvio.common.codestable.CodesTableItemPeriodic</value>
+   </list>
+  </property>
  </bean>
 </beans>

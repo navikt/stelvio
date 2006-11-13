@@ -16,10 +16,10 @@ public class CodesTableException extends SystemException {
     }
 
     public CodesTableException(Exception ex) {
-        // TODO: implement body
+       
     }
 
     public Object copy() {
-        return null;  // TODO: implement body
+        return null; 
     }
 }

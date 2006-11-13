@@ -19,14 +19,14 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	/**
 	 * Adds a <code>CodesTableItemPeriodic</code> to the <code>CodesTablePeriodic</code>.
 	 * 
-	 * @param codesTableItemPeriodic the item to add 
+	 * @param codesTableItemPeriodic the item to add.
 	 */
 	public void addCodesTableItem(T codesTableItemPeriodic);
 	
 	/**
 	 * Returns the <code>CodesTableItemPeriodic</code> in the specified <code>CodesTablePeriodic</code> that matches the specified <code>code</code>.
 	 * 
-	 * @param code the item's code
+	 * @param code the item's code.
 	 * @return The <code>CodesTableItemPeriodoc</code> or <code>null</code> if the code does not exist in the codestable.
 	 */
 	public T getCodesTableItem(Object code);
@@ -34,7 +34,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	/**
 	 * Add a predicate to the list of items in a <code>CodesTablePeriodic<code>.
 	 * 
-	 * @param predicate the <code>Predicate</code> to filter the items in a <code>CodesTablePeriodic<code> with
+	 * @param predicate the <code>Predicate</code> to filter the items in a <code>CodesTablePeriodic<code> with.
 	 */
 	public void addPredicate(Predicate predicate);
 	
@@ -44,14 +44,14 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	/**
 	 * Returns the decode for a code in a <code>CodesTableItempPriodic</code> belonging to a <code>CodesTablePeriodic</code>.
 	 * 
-	 * @param code the items code
+	 * @param code the items code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
 	 */
 	public String getDecode(Object code, Date date);
 	
 	/**
 	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
-	 * @param code the items code
+	 * @param code the items code.
 	 * @param locale the internationalization code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
 	 */

@@ -36,7 +36,7 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 	}
 	
 	/** 
-	 * {@inheritDoc CacheTablePeriodic#getCodesTableItem(Object)}
+	 * {@inheritDoc CacheTablePeriodic#getCodesTableItem()}
 	 */
 	public CodesTableItemPeriodic getCodesTableItem(Object code) {
 		

@@ -16,14 +16,14 @@ public interface CodesTable<T extends CodesTableItem> {
 	/**
 	 * Adds a <code>CodesTableItem</code> to the <code>CodesTable</code>.
 	 * 
-	 * @param codesTableItem the item to add 
+	 * @param codesTableItem the item to add. 
 	 */
 	public void addCodesTableItem(T codesTableItem);
 	
 	/**
 	 * Returns the <code>CodesTableItem</code> in the <code>CodesTable</code> that matches the specified <code>code</code>.
 	 * 
-	 * @param code the item's code
+	 * @param code the item's code.
 	 * @return The <code>CodesTableItem</code> or <code>null</code> if the code does not exist in the <code>CodesTable</code>.
 	 */
 	public T getCodesTableItem(Object code) throws CodesTableException ;
@@ -31,7 +31,7 @@ public interface CodesTable<T extends CodesTableItem> {
 	/**
 	 * Add a predicate to the list of items in a <code>CodesTable</code>.
 	 * 
-	 * @param predicate the <code>Predicate</code> to filter the items in the <code>CodesTable</code> with
+	 * @param predicate the <code>Predicate</code> to filter the items in the <code>CodesTable</code> with.
 	 */
 	public void addPredicate(Predicate predicate);
 	
@@ -41,14 +41,14 @@ public interface CodesTable<T extends CodesTableItem> {
 	/**
 	 * Returns the decode for a code in a <code>CodesTableItem</code> belonging to a <code>CodesTable</code>.
 	 * 
-	 * @param code the items code
+	 * @param code the items code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTable</code>.
 	 */
 	public String getDecode(Object code);
 	
 	/**
 	 * Returns the decode for a code in <code>CodesTableItem</code> with a specific locale.
-	 * @param code the items code
+	 * @param code the items code.
 	 * @param locale the internationalization code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTable<code>.
 	 */

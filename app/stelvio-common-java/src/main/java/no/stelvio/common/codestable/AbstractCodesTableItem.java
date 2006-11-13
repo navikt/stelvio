@@ -38,7 +38,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	
 	/**
 	 * Sets the code represented by this item.
-	 * @param code the code
+	 * @param code the code.
 	 */
 	public void setCode(String code){
 		this.code = code;
@@ -54,7 +54,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 
 	/**
 	 * Sets the decode represented by this item.
-	 * @param decode the decode
+	 * @param decode the decode.
 	 */
 	public void setDecode(String decode){
 		this.decode = decode;
@@ -70,7 +70,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	
 	/**
 	 * Sets the locale of this item.
-	 * @param locale the locale of the item
+	 * @param locale the locale of the item.
 	 */
 	public void setLocale(Locale locale){
 		this.locale = locale;
@@ -86,7 +86,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 
 	/**
 	 * Sets the validity of this item.
-	 * @param isValid true to mark item as valid, false otherwise
+	 * @param isValid true to mark item as valid, false otherwise.
 	 */
 	public void setIsValid(Boolean isValid){
 		this.isValid = isValid;
