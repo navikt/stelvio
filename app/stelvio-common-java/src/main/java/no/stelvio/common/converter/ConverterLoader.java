@@ -5,8 +5,6 @@ import java.util.Map;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 
-import no.stelvio.common.config.ConfigurationException;
-
 /**
  * This class will be configured to load all nessesary
  * Converter classes to be used with Apache BeanUtils.
@@ -36,7 +34,7 @@ public class ConverterLoader {
             try {
                 clazz = Class.forName(str);
             } catch (ClassNotFoundException e) {
-                throw new ConfigurationException(e);
+                throw new IllegalArgumentException(e);
             }
 
             ConvertUtils.register((Converter) converters.get(str), clazz);
