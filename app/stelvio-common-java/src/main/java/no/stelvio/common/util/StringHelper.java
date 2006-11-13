@@ -138,9 +138,9 @@ public final class StringHelper {
 	/**
 	 * This method inserts leading zero's on a given string.
 	 * 
-	 * @param str - String to insert/pad
-	 * @param lenght - Max. length of string
-	 * @return String - The padded value
+	 * @param str String to insert/pad
+	 * @param length Max. length of string
+	 * @return String The padded value
 	 */
 	public static String insertLeadingZeros(String str, int length) {
 		if(str.length() == length){
