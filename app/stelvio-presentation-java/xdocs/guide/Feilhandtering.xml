@@ -91,7 +91,7 @@
 		<exception key="non.existing.key" 
 			scope="request" 
 			handler="no.stelvio.web.action.FrameworkExceptionHandler"
-			type="no.stelvio.common.error.ApplicationException"
+			type="no.stelvio.common.error.RecoverableException"
 			path="/WEB-INF/pages/Page2.jsp"/>
 		<forward name="failure" path="/WEB-INF/pages/Page2.jsp" contextRelative="true" />
 		<forward name="windowload" path="/WEB-INF/pages/Page2.jsp" contextRelative="true" />

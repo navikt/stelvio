@@ -15,15 +15,15 @@ public class FrameworkErrorActionTest extends TestCase {
 	}
 
 	public void testNotHandledErrorsOnRequestShouldFillInForm() {
-//		getRequest().setAttribute(Globals.EXCEPTION_KEY, new ApplicationException());
-		// Cannot check errorId when it is generated from <code>SequenceNumberGenerator</code>
+//		getRequest().setAttribute(Globals.EXCEPTION_KEY, new RecoverableException());
+		// Cannot check getErrorId when it is generated from <code>SequenceNumberGenerator</code>
 		// Cannot check stacktrace when it is a real stacktrace
 		verifyState("0", null, "0", "processId", "screenId", "transactionId", "userId", null);
 	}
 
 	public void testHandledErrorsOnRequestShouldSetConfiguredExceptionTrue() {
 //		getRequest().setAttribute(Globals.EXCEPTION_KEY, new SystemException());
-		// Cannot check errorId when it is generated from <code>SequenceNumberGenerator</code>
+		// Cannot check getErrorId when it is generated from <code>SequenceNumberGenerator</code>
 		// Cannot check stacktrace when it is a real stacktrace
 		verifyState("0", null, "", "processId", "screenId", "transactionId", "userId", null);
 	}
@@ -46,7 +46,7 @@ public class FrameworkErrorActionTest extends TestCase {
 		final FrameworkErrorForm form = null; // TODO: get this from JSF-context or something
 		assertEquals("Not correct error code", errorCode, form.getErrorCode());
 
-		// Cannot check errorId when it is generated from <code>SequenceNumberGenerator</code>.
+		// Cannot check getErrorId when it is generated from <code>SequenceNumberGenerator</code>.
 		if (null != errorId) {
 			assertEquals("Not correct error id", errorId, form.getErrorId());
 		}
