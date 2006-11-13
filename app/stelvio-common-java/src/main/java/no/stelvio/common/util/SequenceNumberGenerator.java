@@ -18,6 +18,7 @@ import java.net.UnknownHostException;
  * 
  * @author person7553f5959484
  * @version $Revision: 916 $ $Author: psa2920 $ $Date: 2004-07-14 08:24:41 +0200 (Wed, 14 Jul 2004) $
+ * @todo maybe use UUID inside here?
  */
 public final class SequenceNumberGenerator {
 
