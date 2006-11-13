@@ -12,14 +12,7 @@ public class CodesTableException extends SystemException {
         super(message);
     }
 
-    public CodesTableException() {
-    }
-
-    public CodesTableException(Exception ex) {
-       
-    }
-
-    public Object copy() {
-        return null; 
+    protected String getMessageTemplate() {
+        return "Problems with handling codes table: {0}";
     }
 }
