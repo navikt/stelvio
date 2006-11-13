@@ -181,6 +181,12 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/error/SystemExceptionTes
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategyTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacadeTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ErrorsFactoryBeanTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/event/ApplicationEventTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/event/EventIntegrationTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/event/EventListenerTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/event/audit/AuditEventTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/event/audit/AuditItemTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/event/support/LoggingEventListenerTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/JMSQueueAppenderTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestErrorhandler.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestInitialContext.java -text
