@@ -54,12 +54,20 @@ public class DefaultLocaleStartupHelper {
 			Locale.setDefault(defaultLocale);
 			LogFactory.getLog(getClass()).info("Default System Locale set to " + defaultLocale.toString());
 		} catch (SecurityException e) {
-            throw new SystemException(e) {};
+            throw new SystemException(e) {
+                protected String getMessageTemplate() {
+                    return null;  // TODO: implement body
+                }
+            };
         }
 	}
 
     private SystemException createSystemException(String language) {
         // TODO create another exception to use
-        return new SystemException(language) {};
+        return new SystemException(language) {
+            protected String getMessageTemplate() {
+                return null;  // TODO: implement body
+            }
+        };
     }
 }
