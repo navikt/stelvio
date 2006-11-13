@@ -5,41 +5,42 @@ import no.stelvio.common.error.support.CommonExceptionLogic;
 import no.stelvio.common.error.support.Diversifier;
 
 /**
- * Thrown to indicate that an unrecoverable system exception has occured. <p/>
- * Applications will typically not handle recovery from system exceptions.
+ * Thrown to indicate that a recoverable exception in the application logic
+ * occured. <p/> This is the base exception that all application specific
+ * exceptions must extend.
  * 
- * @author person7553f5959484
- * @version $Revision: 2837 $ $Author: psa2920 $ $Date: 2006-01-09 16:12:14 +0100 (ma, 09 jan 2006) $
- * @todo change javadoc to say something about usage, see RecoverableException.
- * @todo is the name correct when the previous todo is implemented?
- * @todo should it have an abstract method, or something, maybe just use protected constructors.
+ * @author person7553f5959484, Accenture
+ * @version $Id: RecoverableException.java 2839 2006-04-25 10:23:10Z psa2920 $
+ * @todo change javadoc to say something about only use it when the client MUST catch it else use SystemException.
+ * @todo is the name correct when the previous todo is implemented? Maybe call it RecoverableExcpetion?
  */
-public abstract class SystemException extends RuntimeException implements LoggableException {
+public abstract class RecoverableException extends Exception implements LoggableException {
     private final CommonExceptionLogic commonExceptionLogic;
 
     /**
-	 * Constructs a new SystemException with the specified list of templateArguments for the message template.
+	 * Constructs a new RecoverableException with the specified list of getTemplateArguments for the message template.
 	 * 
-	 * @param templateArguments the templateArguments to use when filling out the message template.
+	 * @param templateArguments the getTemplateArguments to use when filling out the message template.
      */
-    protected SystemException(Object... templateArguments) {
+    protected RecoverableException(Object... templateArguments) {
 		this(null, templateArguments);
 	}
 
     /**
-     * Constructs a new SystemException with the specified cause and list of templateArguments for the message template.
+     * Constructs a new RecoverableException with the specified cause and list of templateArguments for
+     * the message template.
 	 *
 	 * @param cause the cause of this exception.
-     * @param templateArguments the templateArguments to use when filling out the message template.
+     * @param templateArguments the getTemplateArguments to use when filling out the message template.
      */
-    protected SystemException(Throwable cause, Object... templateArguments) {
+    protected RecoverableException(Throwable cause, Object... templateArguments) {
 		super(cause);
 
-        commonExceptionLogic = new SystemExceptionLogic(templateArguments);
+        commonExceptionLogic = new RecoverableExceptionLogic(templateArguments);
     }
 
     /**
-	 * Constructs a copy of the specified SystemException without the cause.
+	 * Constructs a copy of the specified RecoverableException without the cause.
      * <p>
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.
@@ -48,10 +49,10 @@ public abstract class SystemException extends RuntimeException implements Loggab
      * @param diversifier just here to enable calling this constructor specifically.
      * @see RethrowExceptionHandlerStrategy
      */
-	protected SystemException(SystemException other, Diversifier diversifier) {
+	protected RecoverableException(RecoverableException other, Diversifier diversifier) {
 		super();
 
-        commonExceptionLogic = new SystemExceptionLogic(other.commonExceptionLogic);
+        commonExceptionLogic = new RecoverableExceptionLogic(other.commonExceptionLogic);
     }
 
     /**
@@ -174,17 +175,17 @@ public abstract class SystemException extends RuntimeException implements Loggab
     /**
      * @todo is it okay to have a non-static inner class?
      */
-    private class SystemExceptionLogic extends CommonExceptionLogic {
-        public SystemExceptionLogic(Object[] templateArguments) {
+    private class RecoverableExceptionLogic extends CommonExceptionLogic {
+        public RecoverableExceptionLogic(Object[] templateArguments) {
             super(templateArguments);
         }
 
-        public SystemExceptionLogic(CommonExceptionLogic cel) {
+        public RecoverableExceptionLogic(CommonExceptionLogic cel) {
             super(cel);
         }
 
         protected String getMessageTemplate() {
-            return SystemException.this.getMessageTemplate();
+            return RecoverableException.this.getMessageTemplate();
         }
     }
 }

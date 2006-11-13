@@ -6,16 +6,12 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.common.error.ApplicationException;
 import no.stelvio.common.error.Err;
 import no.stelvio.common.error.LoggableException;
+import no.stelvio.common.error.RecoverableException;
 import no.stelvio.common.error.Severity;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
-import no.stelvio.common.service.LocalService;
-import no.stelvio.common.service.ServiceFailedException;
-import no.stelvio.common.service.ServiceRequest;
-import no.stelvio.common.service.ServiceResponse;
 import no.stelvio.common.util.MessageFormatter;
 
 /**
@@ -33,9 +29,6 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
 
     // The cache of error configurations
     private Map errorMap;
-
-    // The business delegate
-    private LocalService delegate;
 
     // The message formatter
     private MessageFormatter messageFormatter;
@@ -62,12 +55,9 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      */
     public void init() {
         try {
-            ServiceResponse response = delegate.execute(new ServiceRequest("InitErrorHandling"));
-            errorMap = (Map) response.getData("ErrorMap");
+//            ServiceResponse response = delegate.execute(new ServiceRequest("InitErrorHandling"));
+//            errorMap = (Map) response.getData("ErrorMap");
             isInitialized = true;
-        } catch (ServiceFailedException sfe) {
-            // Let ErorHandler handle initialization failure
-//            throw new SystemException(sfe);
         } catch (RuntimeException re) {
 //            throw new SystemException(re);
         }
@@ -86,7 +76,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
         }
 */
 
-        if (t instanceof ApplicationException || t instanceof SystemException) {
+        if (t instanceof RecoverableException || t instanceof SystemException) {
             return (Throwable) handleInternal((LoggableException) t);
         } else {
             return new RuntimeException("TODO: fix me"); //TODO use new way of doing this
@@ -94,7 +84,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
     }
 
     /**
-     * If the throwable is of type LoggableException the error code and arguments will be used to lookup and format the message,
+     * If the throwable is of type LoggableException the error code and getTemplateArguments will be used to lookup and format the message,
      * otherwise the result of <code>Throwable.getLocalizedMessage()</code> is returned.
      *
      * @param t the <code>Throwable</code> to extract message from.
@@ -110,7 +100,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
 
         if (t instanceof LoggableException) {
             LoggableException le = (LoggableException) t;
-            return getMessage(1/*le.getErrorCode()*/, le.getArguments());
+            return getMessage(1/*le.getErrorCode()*/, le.getTemplateArguments());
         } else {
             if (null == t.getLocalizedMessage()) {
                 return t.toString();
@@ -133,7 +123,9 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
             le.setLogged();
         }
 
-        return (LoggableException) le.copy();
+//        return (LoggableException) le.copy();
+        // TODO look into this
+        return le;
     }
 
     /**
@@ -182,7 +174,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
                 getSeverity(1/*le.getErrorCode()*/),
                 le.getScreenId(),
                 le.getProcessId(),
-                getMessage(1/*le.getErrorCode()*/, le.getArguments())};
+                getMessage(1/*le.getErrorCode()*/, le.getTemplateArguments())};
         return messageFormatter.formatMessage(params);
     }
 
@@ -196,7 +188,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      */
     String getSystemLogMessage(LoggableException le) {
         return "ErrCode=" + 1/*le.getErrorCode()*/ + ",ErrId=" + le.getErrorId() +
-                ",Message=" + getMessage(1/*le.getErrorCode()*/, le.getArguments());
+                ",Message=" + getMessage(1/*le.getErrorCode()*/, le.getTemplateArguments());
     }
 
     /**
@@ -266,15 +258,6 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
         return defaultHandler;
     }
 */
-
-    /**
-     * Assigns an implementation of a LocalService as the delegate.
-     *
-     * @param service the local service
-     */
-    public void setDelegate(LocalService service) {
-        delegate = service;
-    }
 
     /**
      * Assigns a message formatter to formatt messages.

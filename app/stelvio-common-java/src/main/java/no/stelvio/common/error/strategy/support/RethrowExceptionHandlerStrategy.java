@@ -9,4 +9,12 @@ import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
  * @todo So with this, one could make an exception wrapper that returns the same output that the original exception did  
  */
 public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy {
+    /**
+     * @todo maybe return an object that holds what should be down
+     * @param exception
+     * @return
+     */
+    public <T extends Exception> T handle(T exception) {
+        return exception;
+    }
 }

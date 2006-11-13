@@ -29,21 +29,21 @@ public interface LoggableException {
 	 * @return a copy of this instance.
      * @todo use copy constructor instead?? look into usage
 	 */
-	Object copy();
+//	Object copy();
 
     /**
-	 * Get the arguments identifying details about the error.
+	 * Get the getTemplateArguments identifying details about the error.
 	 * 
-	 * @return The arguments detailing this exception.
+	 * @return The getTemplateArguments detailing this exception.
 	 */
-	Object [] getArguments();
+	Object [] getTemplateArguments();
 	
 	/**
 	 * Get the unique id of this exception.
 	 *
 	 * @return The unique id of this exception
 	 */
-	String getErrorId();
+	long getErrorId();
 
 	/**
 	 * Get the id of the user or system that executed

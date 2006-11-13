@@ -1,7 +1,5 @@
 package no.stelvio.common.util;
 
-import no.stelvio.common.service.ServiceFailedException;
-
 /**
  * This class provides som static method for string modification.
  * The class is intended to support handeling of CICS records.
@@ -81,9 +79,8 @@ public final class StringHelper {
 	 * @param value - The value
 	 * @param buff - The buffer to append the value to
 	 * @param type - The type eg. string
-	 * @throws ServiceFailedException - If value.toString is longer than length 
 	 */
-	public static void appendProperty(int length, Object value, StringBuffer buff, String type) throws ServiceFailedException {
+	public static void appendProperty(int length, Object value, StringBuffer buff, String type) {
 		boolean number = false;
 		String val = EMPTY_STRING;
 		if (LONG.equals(type)
@@ -101,8 +98,8 @@ public final class StringHelper {
 		int strlen = val.length();
 		// The input data is bigger than the length of the coulmn
 		if (strlen > length) {
-			throw new ServiceFailedException(
-                    new Object[] { "StringHelper.appendProperty", "Teksten '" + value + "' er lengre enn " + length + " tegn." });
+			throw new IllegalArgumentException(
+                    "StringHelper.appendProperty: Teksten '" + value + "' er lengre enn " + length + " tegn.");
 		}
 		if (number) {
 			for (int i = 0; i < (length - strlen); i++) {

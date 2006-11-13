@@ -1,8 +1,5 @@
 package no.stelvio.common.util;
 
-import no.stelvio.common.service.ServiceFailedException;
-import no.stelvio.common.util.StringHelper;
-
 import junit.framework.TestCase;
 
 /**
@@ -32,7 +29,7 @@ public class StringHelperTest extends TestCase {
 	 * Test AppendProperty
 	 *
 	 */
-	public void testAppendProperty() throws ServiceFailedException {
+	public void testAppendProperty() {
 		StringBuffer buff = new StringBuffer();
 		Object value = "12345";
 		String type = "string";
@@ -64,20 +61,16 @@ public class StringHelperTest extends TestCase {
 		Object value = "12345";
 		String type = "string";
 		int length = 4;
-		try {
-			StringHelper.appendProperty(length, value, buff,type );
-			fail("Did not throw exception when input is to long");
-		} catch (ServiceFailedException e) {
-			// Should be thrown
-		}	
-		
-	}
+        StringHelper.appendProperty(length, value, buff,type );
+        fail("Did not throw exception when input is to long");
+
+    }
 	
 	/**
 	 * Test AppendProperty
 	 *
 	 */
-	public void testAppendPropertyWithLengtEQInputlength() throws ServiceFailedException {
+	public void testAppendPropertyWithLengtEQInputlength() {
 		StringBuffer buff = new StringBuffer();
 		Object value = "12345";
 		String type = "string";
