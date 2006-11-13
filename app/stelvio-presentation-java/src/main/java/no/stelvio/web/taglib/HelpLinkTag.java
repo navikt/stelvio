@@ -5,7 +5,6 @@ import java.util.Hashtable;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import no.stelvio.common.config.Config;
 import no.stelvio.common.context.RequestContext;
 
 /**
@@ -145,8 +144,8 @@ public class HelpLinkTag extends TagSupport {
 		URL url = (URL) urls.get(beanId);
 		if (null == url) {
 //			try {
-				Config config = (Config) pageContext.getServletContext().getAttribute(Config.PRESENTATION_SERVICES);
-				url = (URL) config.getBean(beanId);
+//				Config config = (Config) pageContext.getServletContext().getAttribute(Config.PRESENTATION_SERVICES);
+//				url = (URL) config.getBean(beanId);
 				if (null != url) {
 					urls.put(beanId, url);
 				}

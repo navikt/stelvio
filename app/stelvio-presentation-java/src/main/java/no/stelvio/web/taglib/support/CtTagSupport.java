@@ -6,8 +6,6 @@ import javax.servlet.jsp.PageContext;
 import org.apache.commons.lang.StringUtils;
 
 import no.stelvio.common.codestable.CodesTableManager;
-import no.stelvio.common.config.Config;
-import no.stelvio.web.constants.Constants;
 
 
 /**
@@ -31,10 +29,11 @@ public final class CtTagSupport {
 	 * @return a codes table manager.
 	 */
 	public static CodesTableManager retrieveCodesTableManager(PageContext pageContext) {
-		final Config config = (Config) pageContext.getServletContext().getAttribute(Config.PRESENTATION_SERVICES);
+//		final Config config = (Config) pageContext.getServletContext().getAttribute(Config.PRESENTATION_SERVICES);
 
-		return (CodesTableManager) config.getBean(Constants.CODES_TABLE_MANAGER_BEAN);
-	}
+//		return (CodesTableManager) config.getBean(Constants.CODES_TABLE_MANAGER_BEAN);
+        return null;
+    }
 
 	/**
 	 * Retrieves a class to be used for looking up a codes table.

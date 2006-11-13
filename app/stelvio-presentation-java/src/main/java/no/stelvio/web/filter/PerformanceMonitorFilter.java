@@ -6,11 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import no.stelvio.common.performance.MonitorKey;
-import no.stelvio.common.performance.PerformanceMonitor;
-import no.stelvio.web.util.RequestUtils;
-
-
 /**
  * PerformanceMonitorFilter is an implementation of the <i>Intercepting Filter</i> pattern that
  * is responsible for monitoring the total request/response processing time.
@@ -21,7 +16,7 @@ import no.stelvio.web.util.RequestUtils;
  */
 public final class PerformanceMonitorFilter extends AbstractFilter {
 
-	private static final MonitorKey MONITOR_KEY = new MonitorKey("Presentation", MonitorKey.PRESENTATION);
+//	private static final MonitorKey MONITOR_KEY = new MonitorKey("Presentation", MonitorKey.PRESENTATION);
 
 	/**
 	 * Performs the following processing steps:
@@ -37,20 +32,20 @@ public final class PerformanceMonitorFilter extends AbstractFilter {
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 		throws IOException, ServletException {
 
-		PerformanceMonitor.start(MONITOR_KEY, RequestUtils.getScreenId(request));
+//		PerformanceMonitor.start(MONITOR_KEY, RequestUtils.getScreenId(request));
 
 		// Delegate processing to the next filter or resource in the chain
 		try {
 			chain.doFilter(request, response);
-			PerformanceMonitor.end(MONITOR_KEY);
+//			PerformanceMonitor.end(MONITOR_KEY);
 		} catch (IOException ioe) {
-			PerformanceMonitor.fail(MONITOR_KEY);
+//			PerformanceMonitor.fail(MONITOR_KEY);
 			throw ioe;
 		} catch (ServletException se) {
-			PerformanceMonitor.fail(MONITOR_KEY);
+//			PerformanceMonitor.fail(MONITOR_KEY);
 			throw se;
 		} catch (RuntimeException re) {
-			PerformanceMonitor.fail(MONITOR_KEY);
+//			PerformanceMonitor.fail(MONITOR_KEY);
 			throw re;
 		}
 	}
