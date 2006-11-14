@@ -184,6 +184,57 @@
                         <password>Subversion01</password>
                     </configuration>
                 </plugin>
+		<plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <aggregate>true</aggregate>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jxr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <targetjdk>1.5</targetjdk>
+                    <rulesets>
+                        <ruleset>/rulesets/basic.xml</ruleset>
+                        <ruleset>/rulesets/controversial.xml</ruleset>
+                    </rulesets>
+                    <format>xml</format>
+                    <linkXref>true</linkXref>
+                    <sourceEncoding>utf-8</sourceEncoding>
+
+                    <minimumTokens>100</minimumTokens>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+            </plugin>
+            <plugin>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+            </plugin>
+            <plugin>
+                <artifactId>javancss-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+            </plugin>
+            <plugin>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+            </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
