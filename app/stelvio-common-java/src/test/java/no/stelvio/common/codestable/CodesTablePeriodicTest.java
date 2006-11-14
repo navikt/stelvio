@@ -32,6 +32,8 @@ public class CodesTablePeriodicTest extends AbstractDependencyInjectionSpringCon
 	/**
 	 * Initialize components prior to running tests.
 	 */
+	//TODO: FIX CASTING
+	@SuppressWarnings("unchecked")
 	public void onSetUp() throws Exception {
 		codesTablePeriodic = (CodesTablePeriodic) applicationContext.getBean("codesTablePeriodic");
 		assertNotNull("Couldn't initiate CodesTablePeriodic using standard POJO implementation.", codesTablePeriodic);

@@ -14,10 +14,11 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	//The CodesTableFactory used for retrieval of codestables
 	private CodesTableFactory codesTableFactory;
 	
-	//TODO: FIKSE CASTING
 	/**
 	 * {@inheritDoc CacheTableManager#getCodesTable()}
 	 */
+	//TODO: FIX CASTING
+	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem) {
 
 		CodesTable<T> codesTable = (CodesTable<T>) new CodesTableImpl();
@@ -38,7 +39,8 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	/**
 	 * {@inheritDoc CacheTableManager#getCodesTablePeriodic()}
 	 */
-	//TODO: FIKSE CASTING
+	//TODO: FIX CASTING
+	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
 		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new CodesTablePeriodicImpl();
 		validateCodesTablePeriodicClass(codesTableItem);

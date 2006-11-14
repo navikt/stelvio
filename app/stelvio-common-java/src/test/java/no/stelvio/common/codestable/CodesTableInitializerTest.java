@@ -18,6 +18,8 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	 * Tests CodesTableInitializer with both <code>CodesTableItem</code>'s and <code>CodesTableItemPeriodic</code>'s.
 	 * @throws Exception
 	 */
+	//TODO: FIX CASTING
+	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializer() throws Exception {
 		//Test data
 		CodesTable codesTable = new CodesTableImpl();
@@ -63,6 +65,8 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	 * Tests CodesTableInitializer with only <code>CodesTableItem</code>'s.
 	 * @throws Exception
 	 */
+	//TODO: FIX CASTING
+	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerGetCodesTable() throws Exception {
 		//Test data
 		CodesTable codesTable = new CodesTableImpl();
@@ -96,6 +100,8 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	 * Tests CodesTableInitializer with both only <code>CodesTableItemPeriodic</code>'s.
 	 * @throws Exception
 	 */
+	//TODO: FIX CASTING
+	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerGetCodesTablePeriodic() throws Exception{
 		//Test data		
 		CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
@@ -148,6 +154,8 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	 * retrieved from the database.
 	 * @throws Exception
 	 */
+	//TODO: FIX CASTING
+	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerModifyCodesTableMangersReturnValue() throws Exception { 
 		//Test data
 		CodesTable codesTable = new CodesTableImpl();

@@ -158,7 +158,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableIni
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemPeriodicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableManagerTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableManagerTestold.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableNotFoundExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTablePeriodicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableTest.java -text

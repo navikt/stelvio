@@ -30,6 +30,8 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 	/**
 	 * Initialize components prior to running tests.
 	 */
+	//TODO: FIX CASTING
+	@SuppressWarnings("unchecked")
 	public void onSetUp() throws Exception {
 		codesTable = (CodesTable) applicationContext.getBean("codesTable");
 		assertNotNull("Couldn't initiate CodesTable using standard POJO implementation.", codesTable);
