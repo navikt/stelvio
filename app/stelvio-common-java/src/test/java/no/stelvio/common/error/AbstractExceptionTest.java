@@ -11,7 +11,7 @@ import no.stelvio.common.context.RequestContext;
  * @todo add javadoc
  * @todo didn't run as JUnit 4.x test case. Don't know why; could be my test runner.
  */
-public abstract class AbstractExceptionTest<T extends LoggableException> {
+public abstract class AbstractExceptionTest<T extends StelvioException> {
     @Test
     public void copyConstructorCopiesAllFields() {
         T original = createException();
@@ -38,10 +38,10 @@ public abstract class AbstractExceptionTest<T extends LoggableException> {
 
     @Test
     public void causeIsSavedForLaterUsage() {
-        RuntimeException cause = new RuntimeException("The Original Cause");
+        RuntimeException cause = new RuntimeException("The original cause");
         Exception ewc = (Exception) createExceptionWithCause(cause);
 
-        assertSame(cause, ewc.getCause(), "Cause is The Original Cause");
+        assertSame(cause, ewc.getCause(), "Cause is the original cause");
     }
 
     protected abstract T createExceptionWithCause(Exception cause);

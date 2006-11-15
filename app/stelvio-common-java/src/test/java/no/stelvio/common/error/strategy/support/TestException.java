@@ -23,7 +23,7 @@ public class TestException extends SystemException {
      *
      */
     public TestException(TestException other, Diversifier diversifier) {
-        super(other, diversifier);
+        super(other);
         state = other.state;
     }
 

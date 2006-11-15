@@ -7,9 +7,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.error.Err;
-import no.stelvio.common.error.LoggableException;
 import no.stelvio.common.error.RecoverableException;
 import no.stelvio.common.error.Severity;
+import no.stelvio.common.error.StelvioException;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 import no.stelvio.common.util.MessageFormatter;
@@ -77,7 +77,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
 */
 
         if (t instanceof RecoverableException || t instanceof SystemException) {
-            return (Throwable) handleInternal((LoggableException) t);
+            return (Throwable) handleInternal((StelvioException) t);
         } else {
             return new RuntimeException("TODO: fix me"); //TODO use new way of doing this
         }
@@ -98,8 +98,8 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
         }
 */
 
-        if (t instanceof LoggableException) {
-            LoggableException le = (LoggableException) t;
+        if (t instanceof StelvioException) {
+            StelvioException le = (StelvioException) t;
             return getMessage(1/*le.getErrorCode()*/, le.getTemplateArguments());
         } else {
             if (null == t.getLocalizedMessage()) {
@@ -116,7 +116,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @param le the exception to handle.
      * @return the handled exception.
      */
-    private LoggableException handleInternal(LoggableException le) {
+    private StelvioException handleInternal(StelvioException le) {
         // Log the error only once
         if (!le.isLogged()) {
             logInternal(le);
@@ -133,7 +133,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      *
      * @param le the exception.
      */
-    private void logInternal(LoggableException le) {
+    private void logInternal(StelvioException le) {
         Severity severity = getSeverity(1/*le.getErrorCode()*/);
         final Throwable throwable = (Throwable) le;
 
@@ -167,7 +167,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @param le the exception to handle.
      * @return the formated message.
      */
-    private String getEnterpriseLogMessage(LoggableException le) {
+    private String getEnterpriseLogMessage(StelvioException le) {
         Object[] params =
             new Object[] {
                 le.getUserId(),
@@ -186,7 +186,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @param le the exception to handle.
      * @return the formated message.
      */
-    String getSystemLogMessage(LoggableException le) {
+    String getSystemLogMessage(StelvioException le) {
         return "ErrCode=" + 1/*le.getErrorCode()*/ + ",ErrId=" + le.getErrorId() +
                 ",Message=" + getMessage(1/*le.getErrorCode()*/, le.getTemplateArguments());
     }

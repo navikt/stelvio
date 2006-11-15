@@ -14,7 +14,7 @@ import no.stelvio.common.error.support.Diversifier;
  * @todo change javadoc to say something about only use it when the client MUST catch it else use SystemException.
  * @todo is the name correct when the previous todo is implemented? Maybe call it RecoverableExcpetion?
  */
-public abstract class RecoverableException extends Exception implements LoggableException {
+public abstract class RecoverableException extends Exception implements StelvioException {
     private final CommonExceptionLogic commonExceptionLogic;
 
     /**

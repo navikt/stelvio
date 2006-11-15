@@ -3,7 +3,7 @@ package no.stelvio.common.error;
 import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
 
-import no.stelvio.common.error.support.Diversifier;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * Unit test of SystemException.
@@ -37,24 +37,7 @@ public class SystemExceptionTest extends AbstractExceptionTest<SystemException> 
     }
 
     protected SystemException createCopy(SystemException ae) {
-        return new TestSystemException(ae, Diversifier.INSTANCE);
+        return new TestSystemException(new ExceptionToCopyHolder<SystemException>(ae));
     }
 
-    private static class TestSystemException extends SystemException {
-        private TestSystemException(SystemException other, Diversifier diversifier) {
-            super(other, diversifier);
-        }
-
-        public TestSystemException(Object... templateArguments) {
-            super(templateArguments);
-        }
-
-        public TestSystemException(Throwable cause, Object... templateArguments) {
-            super(cause, templateArguments);
-        }
-
-        protected String getMessageTemplate() {
-            return "dummy: {0}";
-        }
-    }
 }

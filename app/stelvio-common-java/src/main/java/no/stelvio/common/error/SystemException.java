@@ -2,7 +2,7 @@ package no.stelvio.common.error;
 
 import no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy;
 import no.stelvio.common.error.support.CommonExceptionLogic;
-import no.stelvio.common.error.support.Diversifier;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * Thrown to indicate that an unrecoverable system exception has occured. <p/>
@@ -14,7 +14,7 @@ import no.stelvio.common.error.support.Diversifier;
  * @todo is the name correct when the previous todo is implemented?
  * @todo should it have an abstract method, or something, maybe just use protected constructors.
  */
-public abstract class SystemException extends RuntimeException implements LoggableException {
+public abstract class SystemException extends RuntimeException implements StelvioException {
     private final CommonExceptionLogic commonExceptionLogic;
 
     /**
@@ -44,14 +44,14 @@ public abstract class SystemException extends RuntimeException implements Loggab
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.
 	 *
-	 * @param other the original exception.
-     * @param diversifier just here to enable calling this constructor specifically.
+	 * @param holder
      * @see RethrowExceptionHandlerStrategy
      */
-	protected SystemException(SystemException other, Diversifier diversifier) {
+	protected SystemException(ExceptionToCopyHolder holder) {
 		super();
 
-        commonExceptionLogic = new SystemExceptionLogic(other.commonExceptionLogic);
+        SystemException systemException = SystemException.class.cast(holder.value());
+        commonExceptionLogic = new SystemExceptionLogic(systemException.commonExceptionLogic);
     }
 
     /**

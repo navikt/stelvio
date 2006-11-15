@@ -40,21 +40,4 @@ public class RecoverableExceptionTest extends AbstractExceptionTest<RecoverableE
         return new TestRecoverableException(ae, Diversifier.INSTANCE);
     }
 
-    private static class TestRecoverableException extends RecoverableException {
-        private TestRecoverableException(RecoverableException other, Diversifier diversifier) {
-            super(other, diversifier);
-        }
-
-        public TestRecoverableException(Object... templateArguments) {
-            super(templateArguments);
-        }
-
-        public TestRecoverableException(Throwable cause, Object... templateArguments) {
-            super(cause, templateArguments);
-        }
-
-        protected String getMessageTemplate() {
-            return "dummy: {0}";
-        }
-    }
 }
