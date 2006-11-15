@@ -38,6 +38,6 @@ public class TestException extends SystemException {
     }
 
     protected String getMessageTemplate() {
-        return null;  // TODO: implement body
+        return "template: {0}";
     }
 }
