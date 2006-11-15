@@ -57,11 +57,6 @@ public class CommonExceptionLogicTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void exceptionIsThrownWhenDiversifierIsPartOfTheArguments() {
-        createDummy("{0}", Diversifier.INSTANCE);
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
     public void exceptionIsThrownWhenArgsIsNull() {
         createDummy("test");
     }

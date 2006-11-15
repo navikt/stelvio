@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import no.stelvio.common.error.SystemException;
-import no.stelvio.common.error.support.Diversifier;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * Unit test for {@link RethrowExceptionHandlerStrategy}.
@@ -26,7 +26,7 @@ public class RethrowExceptionHandlerStrategyTest {
             expected = e;
             // Calling copy constructor
             // in rethrow strategy, the stack trace elements for the exception should be copied over too, not just for the cause
-            te = new TestException(e, Diversifier.INSTANCE);
+            te = new TestException(new ExceptionToCopyHolder<SystemException>(e));
             // TODO should imitate output too with the name of the original exception within
             // should imitate the cause
             te.initCause(new ImitatorException(e.getCause()));

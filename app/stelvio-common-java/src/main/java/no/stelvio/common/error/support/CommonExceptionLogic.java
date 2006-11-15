@@ -48,11 +48,6 @@ public abstract class CommonExceptionLogic implements Serializable {
             if (null == templateArgument) {
                 throw new IllegalArgumentException("None of the template arguments can be null");
             }
-
-            if (templateArgument instanceof Diversifier) {
-                throw new IllegalArgumentException(
-                        "Cannot use Diversifier as template argument; make sure the copy constructor is correct");
-            }
         }
         
         constructMessage();

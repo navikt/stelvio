@@ -106,7 +106,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/R
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/CommonExceptionLogic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacade.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionWrapper.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/Diversifier.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorRetriever.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorsFactoryBean.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ExceptionToCopyHolder.java -text

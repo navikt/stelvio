@@ -1,10 +1,14 @@
 package no.stelvio.common.error;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * @author personf8e9850ed756
@@ -42,6 +46,14 @@ public abstract class AbstractExceptionTest<T extends StelvioException> {
         Exception ewc = (Exception) createExceptionWithCause(cause);
 
         assertSame(cause, ewc.getCause(), "Cause is the original cause");
+    }
+
+    @Test
+    public void copyConstructorShouldBeProtected() throws NoSuchMethodException {
+        Constructor constructor =
+                createException().getClass().getSuperclass().getDeclaredConstructor(ExceptionToCopyHolder.class);
+
+        assertTrue(Modifier.isProtected(constructor.getModifiers()), "Copy constructor should be protected");
     }
 
     protected abstract T createExceptionWithCause(Exception cause);

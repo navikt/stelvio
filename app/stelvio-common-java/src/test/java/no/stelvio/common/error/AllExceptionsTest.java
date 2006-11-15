@@ -11,7 +11,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 import com.agical.rmock.extension.junit.RMockTestCase;
-import no.stelvio.common.error.support.Diversifier;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * Unit test for alle exception checking that the correct constructors exist.
@@ -41,7 +41,7 @@ public class AllExceptionsTest extends RMockTestCase {
             Constructor<Exception> constructor;
 
             try {
-                constructor = clazz.getDeclaredConstructor(clazz, Diversifier.class);
+                constructor = clazz.getDeclaredConstructor(ExceptionToCopyHolder.class);
 
                 if (!Modifier.isProtected(constructor.getModifiers())) {
                     classes.add(clazz);

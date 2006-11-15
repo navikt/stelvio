@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import no.stelvio.common.error.RecoverableException;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
-import no.stelvio.common.error.support.Diversifier;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * @author personf8e9850ed756
@@ -26,9 +26,9 @@ public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy
             Constructor<T> cons = null;
             try {
                 // TODO is it possible to remove the cast here?
-                cons = (Constructor<T>) exception.getClass().getDeclaredConstructor(exception.getClass(), Diversifier.class);
+                cons = (Constructor<T>) exception.getClass().getDeclaredConstructor(ExceptionToCopyHolder.class);
                 cons.setAccessible(true);
-                copy = cons.newInstance(exception, Diversifier.INSTANCE);
+                copy = cons.newInstance(new ExceptionToCopyHolder<SystemException>((SystemException) exception));
             } catch (NoSuchMethodException e) {
                 // TODO correct exception? Programming error...
                 throw new IllegalStateException("Need to have the correct constructor", e);

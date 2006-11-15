@@ -74,8 +74,6 @@ public abstract class SystemException extends RuntimeException implements Stelvi
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getErrorId()
 	 */
 	public final long getErrorId() {
 		return commonExceptionLogic.getErrorId();
@@ -83,8 +81,6 @@ public abstract class SystemException extends RuntimeException implements Stelvi
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getUserId()
 	 */
 	public final String getUserId() {
 		return commonExceptionLogic.getUserId();
@@ -92,8 +88,6 @@ public abstract class SystemException extends RuntimeException implements Stelvi
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getProcessId()
 	 */
 	public final String getProcessId() {
 		return commonExceptionLogic.getProcessId();
@@ -101,8 +95,6 @@ public abstract class SystemException extends RuntimeException implements Stelvi
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getTransactionId()
 	 */
 	public final String getTransactionId() {
 		return commonExceptionLogic.getTransactionId();
@@ -110,8 +102,6 @@ public abstract class SystemException extends RuntimeException implements Stelvi
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getScreenId()
 	 */
 	public final String getScreenId() {
 		return commonExceptionLogic.getScreenId();
@@ -119,8 +109,6 @@ public abstract class SystemException extends RuntimeException implements Stelvi
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getTemplateArguments()
 	 */
 	public final Object[] getTemplateArguments() {
         return commonExceptionLogic.getTemplateArguments();

@@ -15,7 +15,7 @@ public class TestSystemException extends SystemException {
         super(cause, templateArguments);
     }
 
-    public TestSystemException(ExceptionToCopyHolder holder) {
+    protected TestSystemException(ExceptionToCopyHolder holder) {
         super(holder);
     }
 

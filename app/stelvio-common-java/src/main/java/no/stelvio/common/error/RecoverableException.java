@@ -2,7 +2,7 @@ package no.stelvio.common.error;
 
 import no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy;
 import no.stelvio.common.error.support.CommonExceptionLogic;
-import no.stelvio.common.error.support.Diversifier;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * Thrown to indicate that a recoverable exception in the application logic
@@ -45,14 +45,14 @@ public abstract class RecoverableException extends Exception implements StelvioE
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.
 	 *
-	 * @param other the original exception.
-     * @param diversifier just here to enable calling this constructor specifically.
+	 * @param holder
      * @see RethrowExceptionHandlerStrategy
      */
-	protected RecoverableException(RecoverableException other, Diversifier diversifier) {
+	protected RecoverableException(ExceptionToCopyHolder holder) {
 		super();
 
-        commonExceptionLogic = new RecoverableExceptionLogic(other.commonExceptionLogic);
+        RecoverableException recoverableException = RecoverableException.class.cast(holder.value());
+        commonExceptionLogic = new RecoverableExceptionLogic(recoverableException.commonExceptionLogic);
     }
 
     /**
@@ -75,8 +75,6 @@ public abstract class RecoverableException extends Exception implements StelvioE
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getErrorId()
 	 */
 	public final long getErrorId() {
 		return commonExceptionLogic.getErrorId();
@@ -84,8 +82,6 @@ public abstract class RecoverableException extends Exception implements StelvioE
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getUserId()
 	 */
 	public final String getUserId() {
 		return commonExceptionLogic.getUserId();
@@ -93,8 +89,6 @@ public abstract class RecoverableException extends Exception implements StelvioE
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getProcessId()
 	 */
 	public final String getProcessId() {
 		return commonExceptionLogic.getProcessId();
@@ -102,8 +96,6 @@ public abstract class RecoverableException extends Exception implements StelvioE
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getTransactionId()
 	 */
 	public final String getTransactionId() {
 		return commonExceptionLogic.getTransactionId();
@@ -111,8 +103,6 @@ public abstract class RecoverableException extends Exception implements StelvioE
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getScreenId()
 	 */
 	public final String getScreenId() {
 		return commonExceptionLogic.getScreenId();
@@ -120,8 +110,6 @@ public abstract class RecoverableException extends Exception implements StelvioE
 
     /**
 	 * {@inheritDoc}
-	 *
-	 * @see no.stelvio.common.error.LoggableException#getTemplateArguments()
 	 */
 	public final Object[] getTemplateArguments() {
         return commonExceptionLogic.getTemplateArguments();
