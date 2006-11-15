@@ -10,7 +10,7 @@ package no.stelvio.common.error.strategy.support;
  * @todo better javadoc
  * @todo should it be in another package?
  * @todo This will fill in the stack trace which is quite excepensive, but this need to be performance tested.
- * @todo If logging is done too, the stack trace will be filled in anyway 
+ * @todo If logging is done too, the stack trace will be filled in anyway (see over) 
  */
 class ImitatorException extends RuntimeException {
     private String throwableToImitateClassName;
