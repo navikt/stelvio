@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import no.stelvio.common.error.SystemException;
+import no.stelvio.common.error.support.Diversifier;
+
 /**
  * Unit test for {@link RethrowExceptionHandlerStrategy}.
  *
@@ -23,7 +26,7 @@ public class RethrowExceptionHandlerStrategyTest {
             expected = e;
             // Calling copy constructor
             // in rethrow strategy, the stack trace elements for the exception should be copied over too, not just for the cause
-            te = new TestException(e, "sdf");
+            te = new TestException(e, Diversifier.INSTANCE);
             // TODO should imitate output too with the name of the original exception within
             // should imitate the cause
             te.initCause(new ImitatorException(e.getCause()));
@@ -45,15 +48,20 @@ public class RethrowExceptionHandlerStrategyTest {
     @Test
     public void causesIsExchangedWithImitatorInRethrownException() {
         TestException te = createThrownException();
-        TestException copy;
+        SystemException copy = null;
 
         try {
             rethrower.handle(te);
-        } catch (TestException e) {
+        } catch (SystemException e) {
             copy = e;
         }
 
-//        assertEquals("Cause is not correct", expected, te.getCause());
+        System.out.println("=================");
+        copy.printStackTrace();
+        System.out.println("=================");
+        for (Throwable cause = copy.getCause(); cause != null; cause = cause.getCause()) {
+            assertTrue("Cause should be of type ImitatorException", cause instanceof ImitatorException);
+        }
     }
 
     @Test
