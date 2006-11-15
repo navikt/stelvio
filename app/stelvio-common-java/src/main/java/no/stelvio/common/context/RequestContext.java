@@ -2,9 +2,9 @@ package no.stelvio.common.context;
 
 import java.util.Locale;
 
-import no.stelvio.common.transferobject.ContextContainer;
-
 import org.apache.commons.lang.Validate;
+
+import no.stelvio.common.transferobject.ContextContainer;
 
 /**
  * This class is used to store and retrieve information that must
@@ -21,6 +21,10 @@ import org.apache.commons.lang.Validate;
  *
  * @author person7553f5959484, Accenture
  * @version $Id: RequestContext.java 1979 2005-02-16 16:34:40Z psa2920 $
+ * @todo make this into a "standalone class", and have a RequestContextHolder that holds an instance of this in the
+ * thread context. Or even better, have the possibility to have multiple context objects in the thread context, see
+ * the *ContextHolder classes in Spring. By having this, we could have the Log4J's MDC values by it self, not inside
+ * this class.
  */
 public final class RequestContext extends AbstractContext {
 
