@@ -15,6 +15,7 @@ import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.LoggableException;
+import no.stelvio.common.error.StelvioException;
 import no.stelvio.common.error.SystemException;
 import no.stelvio.common.util.SequenceNumberGenerator;
 
@@ -148,7 +149,7 @@ public abstract class AbstractFilter implements Filter {
 			while (null != t) {
 				if (t instanceof LoggableException) {
 //					message.append(ErrorHandler.getMessage(t)); TODO: handled differently
-					message.append("(feilnummer=").append(((LoggableException) t).getErrorId()).append(")");
+					message.append("(feilnummer=").append(((StelvioException) t).getErrorId()).append(")");
 				} else {
 					message.append(t.getLocalizedMessage());
 				}

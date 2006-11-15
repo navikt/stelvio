@@ -7,7 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.LoggableException;
+import no.stelvio.common.error.StelvioException;
 
 /**
  * Handles errors before they are displayed on the global error page.
@@ -42,7 +42,7 @@ public class FrameworkErrorAction {
 				log.debug("Error found: " + e);
 			}
 
-			LoggableException le = (LoggableException) /*ErrorHandler.handleError(e) TODO: look at new version */ null;
+			StelvioException le = (StelvioException) /*ErrorHandler.handleError(e) TODO: look at new version */ null;
 
 			if (log.isDebugEnabled()) {
 				log.debug("Transformed error through ErrorHandler: " + le);
