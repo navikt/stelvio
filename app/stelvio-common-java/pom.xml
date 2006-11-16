@@ -12,7 +12,12 @@
     <name>stelvio - common</name>
     <dependencies>
     	<!-- START: Remove if moving menu domain and repository classes -->
-    	<dependency>
+    	 <dependency>
+            <artifactId>acegi-security</artifactId>
+            <groupId>org.acegisecurity</groupId>
+            <version>1.0.2</version>
+        </dependency>
+	<dependency>
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>1.8.0.7</version>
