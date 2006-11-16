@@ -277,6 +277,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/constants/Constants.j
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/filter/AbstractFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/filter/PerformanceMonitorFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/filter/RequestContextFilter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/acegi/AcegiSecurityContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/servlet/ServletContextAttributeSetter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/AmountTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/CTDecodeTag.java -text
