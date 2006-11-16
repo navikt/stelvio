@@ -188,8 +188,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/error/TestSystemExceptio
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/ImitatorExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategyTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/RethrowExceptionHandlerStrategyTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/TestException.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/TestExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/CommonExceptionLogicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacadeTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ErrorsFactoryBeanTest.java -text

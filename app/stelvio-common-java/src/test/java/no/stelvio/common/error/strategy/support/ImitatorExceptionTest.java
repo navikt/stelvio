@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.Test;
 
+import no.stelvio.common.error.TestSystemException;
+
 /**
  * Unit test for {@link ImitatorException}.
  *
@@ -25,7 +27,7 @@ public class ImitatorExceptionTest {
 
     @Test
     public void stacktraceElementsAreCopiedFromImitatedException() {
-        TestException thrown = createThrownException();
+        TestSystemException thrown = createThrownException();
 
         ImitatorException imitatorException = new ImitatorException(thrown);
         assertEquals("Stack traces don't match up; ",
@@ -34,7 +36,7 @@ public class ImitatorExceptionTest {
 
     @Test
     public void causeShouldNotBeCopied() {
-        TestException thrown = createThrownException();
+        TestSystemException thrown = createThrownException();
 
         assertNull("Cause should be removed", new ImitatorException(thrown).getCause());
     }
@@ -44,10 +46,10 @@ public class ImitatorExceptionTest {
         imitator = new ImitatorException(new IllegalArgumentException("illegalArgument"));
     }
 
-    private TestException createThrownException() {
+    private TestSystemException createThrownException() {
         try {
-            throw new TestException("state");
-        } catch (TestException e) {
+            throw new TestSystemException("state");
+        } catch (TestSystemException e) {
             return e;
         }
     }
