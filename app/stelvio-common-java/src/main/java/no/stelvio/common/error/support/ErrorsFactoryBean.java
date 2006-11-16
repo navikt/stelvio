@@ -8,10 +8,12 @@ import org.springframework.beans.factory.InitializingBean;
 import no.stelvio.common.error.Err;
 
 /**
- * @todo write javadoc
+ * Simple factory for shared list of errors. Allows for the the classes needing this list not having to worry about
+ * retrieving it; they just need to setup a dependency to a definition of this class.  
  *
  * @author personf8e9850ed756
- */                 
+ * @todo more javadoc
+ */
 public class ErrorsFactoryBean implements FactoryBean, InitializingBean {
     private ErrorRetriever errorRetriever;
     private Collection<Err> errors;
@@ -21,8 +23,7 @@ public class ErrorsFactoryBean implements FactoryBean, InitializingBean {
     }
 
     public Class getObjectType() {
-        // TODO: maybe do something better to avoid NullPointerException if setup is wrong
-        return errors.getClass();
+        return Collection.class;
     }
 
     public boolean isSingleton() {
