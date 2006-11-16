@@ -4,69 +4,43 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import no.stelvio.common.error.SystemException;
-import no.stelvio.common.error.support.ExceptionToCopyHolder;
+import no.stelvio.common.error.TestSystemException;
 
 /**
  * Unit test for {@link RethrowExceptionHandlerStrategy}.
  *
  * @author personf8e9850ed756
+ * @todo now we only use SystemException in the test, should RecoverableException also be used?
  */
 public class RethrowExceptionHandlerStrategyTest {
     private RethrowExceptionHandlerStrategy rethrower;
 
     @Test
-    public void removeCause() {
-        TestException te = null;
-        TestException expected = null;
-
-        try {
-            a();
-        } catch (TestException e) {
-            expected = e;
-            // Calling copy constructor
-            // in rethrow strategy, the stack trace elements for the exception should be copied over too, not just for the cause
-            te = new TestException(new ExceptionToCopyHolder<SystemException>(e));
-            // TODO should imitate output too with the name of the original exception within
-            // should imitate the cause
-            te.initCause(new ImitatorException(e.getCause()));
-        }
-
-        // init stack trace
-        te.getStackTrace();
-        expected.getStackTrace();
-
-        // TODO remember that err id should be the same also
-        assertEquals("Stacktrace elements should be equal", expected.getCause().getStackTrace(), te.getCause().getStackTrace());
-        assertNotNull("Exception should have a cause", te.getCause());
-        assertNull("Exception's cause should not have a cause", te.getCause().getCause());
-
-        te.printStackTrace();
-        expected.printStackTrace();
-    }
-
-    @Test
     public void causesIsExchangedWithImitatorInRethrownException() {
-        TestException te = createThrownException();
-        SystemException copy = null;
-
-        try {
-            rethrower.handle(te);
-        } catch (SystemException e) {
-            copy = e;
-        }
-
-        System.out.println("=================");
-        copy.printStackTrace();
-        System.out.println("=================");
-        for (Throwable cause = copy.getCause(); cause != null; cause = cause.getCause()) {
-            assertTrue("Cause should be of type ImitatorException", cause instanceof ImitatorException);
-        }
+        handleException(new ExceptionHandler() {
+            public void handle(TestSystemException original, TestSystemException copy) {
+                for (Throwable cause = copy.getCause(); cause != null; cause = cause.getCause()) {
+                    assertTrue("Cause should be of type ImitatorException", cause instanceof ImitatorException);
+                }
+            }
+        });
     }
 
     @Test
     public void stacktraceElementsAreTheSameInRethrownException() {
-//        createRethrower()
+        handleException(new ExceptionHandler() {
+            public void handle(TestSystemException original, TestSystemException copy) {
+                Throwable origCause = original.getCause();
+                Throwable copyCause = copy.getCause();
+
+                // Don't need the test specifically that the copy has the same number of causes as the original
+                // as we will get a NullPointerException in this for loop if this is the case
+                for (; origCause != null || copyCause != null;
+                     origCause = origCause.getCause(), copyCause = copyCause.getCause()) {
+                    assertEquals(origCause.getStackTrace(), copyCause.getStackTrace());
+                }
+            }
+        });
     }
 
     @Before
@@ -74,10 +48,21 @@ public class RethrowExceptionHandlerStrategyTest {
         rethrower = new RethrowExceptionHandlerStrategy();
     }
 
-    private TestException createThrownException() {
+    private void handleException(ExceptionHandler exceptionHandler) {
+        TestSystemException te = createThrownException();
+
+        try {
+            rethrower.handle(te);
+            fail("Rethrower should throw the exception");
+        } catch (TestSystemException e) {
+            exceptionHandler.handle(te, e);
+        }
+    }
+
+    private TestSystemException createThrownException() {
         try {
             a();
-        } catch (TestException e) {
+        } catch (TestSystemException e) {
             return e;
         }
 
@@ -88,16 +73,16 @@ public class RethrowExceptionHandlerStrategyTest {
     private void a() {
         try {
             b();
-        } catch (TestException e) {
-            throw new TestException(e, "b()");
+        } catch (TestSystemException e) {
+            throw new TestSystemException(e, "b()");
         }
     }
 
     private void b() {
         try {
             c();
-        } catch (TestException e) {
-            throw new TestException(e, "c()");
+        } catch (TestSystemException e) {
+            throw new TestSystemException(e, "c()");
         }
     }
 
@@ -106,7 +91,10 @@ public class RethrowExceptionHandlerStrategyTest {
     }
 
     private void d() {
-        throw new TestException(new IllegalArgumentException(), "d()");
+        throw new TestSystemException(new IllegalArgumentException(), "d()");
     }
 
+    private static interface ExceptionHandler {
+        void handle(TestSystemException original, TestSystemException copy);
+    }
 }

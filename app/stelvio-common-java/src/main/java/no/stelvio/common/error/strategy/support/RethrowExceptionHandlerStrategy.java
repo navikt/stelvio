@@ -3,8 +3,7 @@ package no.stelvio.common.error.strategy.support;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import no.stelvio.common.error.RecoverableException;
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.error.StelvioException;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
@@ -18,35 +17,32 @@ public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy
      * @param exception
      * @return
      */
-    public <T extends Exception> T handle(T exception) throws T {
-        T copy = null;
+    public <T extends Throwable> T handle(T exception) throws T {
+        T copy;
 
-        if (exception instanceof SystemException) {
-            // TODO use reflection to create the real class
-            Constructor<T> cons = null;
+        if (exception instanceof StelvioException) {
             try {
                 // TODO is it possible to remove the cast here?
-                cons = (Constructor<T>) exception.getClass().getDeclaredConstructor(ExceptionToCopyHolder.class);
+                Constructor<T> cons =
+                        (Constructor<T>) exception.getClass().getDeclaredConstructor(ExceptionToCopyHolder.class);
                 cons.setAccessible(true);
-                copy = cons.newInstance(new ExceptionToCopyHolder<SystemException>((SystemException) exception));
+                copy = cons.newInstance(new ExceptionToCopyHolder<StelvioException>((StelvioException) exception));
             } catch (NoSuchMethodException e) {
-                // TODO correct exception? Programming error...
+                // TODO correct exceptionS? Programming error...
                 throw new IllegalStateException("Need to have the correct constructor", e);
             } catch (IllegalAccessException e) {
-                e.printStackTrace();  // TODO: implement body
+                throw new IllegalStateException("Need to have the correct constructor", e);
             } catch (InvocationTargetException e) {
-                e.printStackTrace();  // TODO: implement body
+                throw new IllegalStateException("Need to have the correct constructor", e);
             } catch (InstantiationException e) {
-                e.printStackTrace();  // TODO: implement body
+                throw new IllegalStateException("Need to have the correct constructor", e);
             }
-        } else if (exception instanceof RecoverableException) {
-//            new RecoverableException(((RecoverableException) exception), Diversifier.INSTANCE);
         } else {
             // TODO what to do with exception not being our own, wrap them for now
-//            throw new SystemException()
+            copy = (T) new ImitatorException(exception);
         }
 
-        Exception origCopy = copy;
+        Throwable origCopy = copy;
 
         for (Throwable cause = exception.getCause(); cause != null; cause = cause.getCause()) {
             ImitatorException imitator = new ImitatorException(cause);
