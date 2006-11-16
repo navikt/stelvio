@@ -27,6 +27,12 @@
             <groupId>javax.persistence</groupId>
             <artifactId>toplink-essentials</artifactId>
             <version>1.0</version>
+		<exclusions>    	
+	        <exclusion>
+				<artifactId>ehcache</artifactId>
+				<groupId>ehcache</groupId>
+			</exclusion>
+		</exclusions>
        </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -72,10 +78,10 @@
             <groupId>org.springmodules</groupId>
             <version>0.6</version>
 	        <exclusions>
-		    	<exclusion>
+		        <exclusion>
 					<artifactId>ehcache</artifactId>
 					<groupId>ehcache</groupId>
-				</exclusion>
+				</exclusion>		    	
 		        <exclusion>
 					<artifactId>xpp3_min</artifactId>
 					<groupId>xpp3</groupId>
