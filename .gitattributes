@@ -137,12 +137,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/Annotatio
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/AnnotationAttributesMappingEditor.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/CollectionFilterer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/DataFilterer.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/DiskresjonsFilter.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/EnhetsFilter.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/EnhetsProvider.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/EnhetsVoter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/MethodDefinitionSources.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/SaksVoter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/SecurityAnnotationsAttributes.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/acegi/annotation/Secured.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/BusinessRequest.java -text
