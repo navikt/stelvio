@@ -1,7 +1,7 @@
 package no.stelvio.common.error;
 
 /**
- * Error severity constants. The severity levels reflect 
+ * Error severity enumeration. The severity levels reflect 
  * the most severe log levels used in Jakarta Commons Logging where 
  * <code>FATAL</code> has highest severity and 
  * <code>WARN</code> the lowest, se the ordered list below:
@@ -17,7 +17,6 @@ package no.stelvio.common.error;
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: Severity.java 1954 2005-02-08 13:35:42Z psa2920 $
- * @todo should be an Enum
  */
 public enum Severity {
     FATAL(5),
