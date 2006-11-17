@@ -1,16 +1,15 @@
 
 package no.stelvio.web.security.acegi;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import no.stelvio.web.filter.AbstractFilter;
 import org.acegisecurity.Authentication;
 import org.acegisecurity.GrantedAuthorityImpl;
 import org.acegisecurity.GrantedAuthority;
 import org.acegisecurity.providers.UsernamePasswordAuthenticationToken;
 import org.acegisecurity.context.SecurityContextHolder;
-import org.springframework.beans.factory.InitializingBean;
 import java.io.IOException;
 
 import java.security.*;
@@ -20,21 +19,14 @@ import java.security.*;
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
-public class AcegiSecurityContextFilter implements Filter,InitializingBean
+public class AcegiSecurityContextFilter extends AbstractFilter
 {
-	
-	
-
-	public void afterPropertiesSet() throws Exception 
-	{
-			
-	}
 	
 	/**
 	 * {@inheritDoc}
 	 * 
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 	throws IOException, ServletException 
 	{
 		//Først opprette securityContext
@@ -44,15 +36,15 @@ public class AcegiSecurityContextFilter implements Filter,InitializingBean
 		 slik at securityContexten er satt opp.. Evt implementer i dette filteret..
 		 * */
 //		hent ut detaljer fra brukerkonteksten
-		HttpServletRequest req = (HttpServletRequest)request;
-		Principal principal = req.getUserPrincipal();
+		Principal principal = request.getUserPrincipal();
 		//--------------------------------------
 		// Gjøres bare en gang! sjekk om det allerede finnes et authentication objekt i
 		// securityContexten.
 		//------------------------------------
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if(auth == null || ( principal != null && !principal.equals(auth.getPrincipal())))
-		{
+		{ 
+			System.out.println("----- Start AcegiSecurityContextFilter -----");
 			Object credentials = "";
 			GrantedAuthority granted = new GrantedAuthorityImpl("Granted");
 			GrantedAuthority[] authorities = {granted};
@@ -64,25 +56,11 @@ public class AcegiSecurityContextFilter implements Filter,InitializingBean
 					
 			//Populere securityContext med authentication object
 			SecurityContextHolder.getContext().setAuthentication(token);
-			System.out.println("******************Custom Filter er nå i gang!!!!!!!");
+			System.out.println("----- End AcegiSecurityContextFilter -----");
 			//---------------------------------------------------------------
 		}
 		
 		chain.doFilter(request, response);
 		
 	}
-	
-	/**
-		* Does nothing. We use IoC container lifecycle services instead.
-		*/
-	   public void destroy() {}
-	/**
-		* Does nothing. We use IoC container lifecycle services instead.
-		*
-		* @param filterConfig ignored
-		*
-		* @throws ServletException ignored
-		*/
-	   public void init(FilterConfig filterConfig) throws ServletException {}
-	
 }
