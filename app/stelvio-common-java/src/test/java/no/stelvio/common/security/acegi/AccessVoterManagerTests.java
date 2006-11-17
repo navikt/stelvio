@@ -1,9 +1,10 @@
 package no.stelvio.common.security.acegi;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.acegisecurity.AccessDeniedException;
-import org.acegisecurity.Authentication;
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.ConfigAttributeDefinition;
 import org.acegisecurity.GrantedAuthority;
@@ -12,13 +13,7 @@ import org.acegisecurity.SecurityConfig;
 import org.acegisecurity.afterinvocation.AfterInvocationProvider;
 import org.acegisecurity.providers.TestingAuthenticationToken;
 import org.acegisecurity.vote.AccessDecisionVoter;
-import org.acegisecurity.AcegiMessageSource;
 import org.junit.Test;
-import org.springframework.context.MessageSource;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
 
 public class AccessVoterManagerTests {
 
