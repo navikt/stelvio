@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 
 /**
+ * TODO Update comments
+ * 
  * Java 5 Annotation <code>Attributes</code> metadata implementation used for  secure method interception.<p>This
  * <code>Attributes</code> implementation will return security  configuration for classes described using the
  * <code>Secured</code> Java 5 annotation.</p>
@@ -33,7 +35,7 @@ import java.util.ArrayList;
  * language-level metadata support.</p>
  *
  * @author persondab2f89862d3, Accenture
- * 
+ * @version $Id$
  *
  * @see org.acegisecurity.annotation.Secured
  */
@@ -42,7 +44,6 @@ public class SecurityAnnotationsAttributes implements Attributes {
     
 	private AnnotationAttributesMapping annotationMapping;
 	
-	//~ Methods ========================================================================================================
 	
     /**
      * Get the <code>Secured</code> attributes for a given target class.
@@ -121,14 +122,23 @@ public class SecurityAnnotationsAttributes implements Attributes {
         return attributes;
     }
 
+    /* (non-Javadoc)
+     * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Method, java.lang.Class)
+     */
     public Collection getAttributes(Method method, Class clazz) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
+    /* (non-Javadoc)
+     * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Field)
+     */
     public Collection getAttributes(Field field) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
 
+    /* (non-Javadoc)
+     * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Field, java.lang.Class)
+     */
     public Collection getAttributes(Field field, Class clazz) {
         throw new UnsupportedOperationException("Unsupported operation");
     }

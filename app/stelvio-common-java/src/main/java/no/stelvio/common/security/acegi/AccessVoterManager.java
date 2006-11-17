@@ -6,9 +6,7 @@ import org.acegisecurity.AcegiMessageSource;
 import org.acegisecurity.Authentication;
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.afterinvocation.AfterInvocationProvider;
 import org.acegisecurity.vote.*;
-import org.springframework.aop.framework.ReflectiveMethodInvocation;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
@@ -19,36 +17,40 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * TODO update comments
+ * Implementation of {@link AccessDecisionManager}.<p>Handles configuration of a bean context defined list
+ * of  {@link AccessDecisionVoter}s and the access control behaviour if all  voters abstain from voting (defaults to
+ * deny access).</p>
+ * 
+ * @author persondab2f89862d3, Accenture
+ * @version $Id$
+ */
 
 public class AccessVoterManager implements AccessDecisionManager, InitializingBean,
     MessageSourceAware {
-    //~ Instance fields ================================================================================================
-
+  
     private List<AccessDecisionVoter> decisionVoters;
     protected MessageSourceAccessor messages = AcegiMessageSource.getAccessor();
     private boolean allowIfAllAbstainDecisions = false;
 
-    //~ Methods ========================================================================================================
-
+    /* (non-Javadoc)
+     * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
+     */
     public void afterPropertiesSet() throws Exception {
-        //checkIfValidList(this.decisionVoters);
         Assert.notNull(this.messages, "A message source must be set");
     }
 
+    /**
+     * 
+     */
     protected final void checkAllowIfAllAbstainDecisions() {
         if (!this.isAllowIfAllAbstainDecisions()) {
-            throw new AccessDeniedException(messages.getMessage("AbstractAccessDecisionManager.accessDenied",
+            throw new AccessDeniedException(this.messages.getMessage("AbstractAccessDecisionManager.accessDenied",
                     "Access is denied"));
         }
     }
 
-    /*private void checkIfValidList(List listToCheck) {
-        if ((listToCheck == null) || (listToCheck.size() == 0)) {
-            throw new IllegalArgumentException("A list of AccessDecisionVoters is required");
-        }
-    }*/
-
-	//~ Methods ========================================================================================================
     /**
      * TODO document me!
      * If no voters are specified an <code>AlwaysAffirmativeVoter</code> will be added to the list.
@@ -67,7 +69,9 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
              		AccessDecisionVoter voter = (AccessDecisionVoter)clazz.newInstance();
              		if(!this.decisionVoters.contains(voter)){
              			this.decisionVoters.add(voter);
-             		}else System.out.println("The list already contain this voter.");
+             		} else {
+						System.out.println("The list already contain this voter.");
+					}
              	}   
              }
     		 if(this.decisionVoters.size() == 0 ){
@@ -82,6 +86,11 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
         	 throw new IllegalArgumentException("Could not create an instance of class '" + configAttribute + "'",ile);
          }
     }
+    
+    /**
+     * @param clazz
+     * @return
+     */
     public boolean isAccessDecisionVoter(Class clazz){
     	return AccessDecisionVoter.class.isAssignableFrom(clazz) ? true : false;
     }
@@ -117,7 +126,7 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     		   return;
     	   }else if(result == AccessDecisionVoter.ACCESS_DENIED){
     		   System.out.println("------------------ End AccessVoterManager -------------------");
-    		   throw new AccessDeniedException(messages.getMessage("AccessVoterManager.accessDenied",
+    		   throw new AccessDeniedException(this.messages.getMessage("AccessVoterManager.accessDenied",
                "Access is denied"));
     	   }	   
         }
@@ -126,47 +135,37 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
         System.out.println("------------------ End AccessVoterManager -------------------");
     }
     
-    
-    
-  
-   
-    public List getDecisionVoters() {
+    /**
+     * @return
+     */
+    public List<AccessDecisionVoter> getDecisionVoters() {
         return this.decisionVoters;
     }
 
+    /**
+     * @return
+     */
     public boolean isAllowIfAllAbstainDecisions() {
-        return allowIfAllAbstainDecisions;
+        return this.allowIfAllAbstainDecisions;
     }
 
+    /**
+     * @param allowIfAllAbstainDecisions
+     */
     public void setAllowIfAllAbstainDecisions(boolean allowIfAllAbstainDecisions) {
         this.allowIfAllAbstainDecisions = allowIfAllAbstainDecisions;
     }
-
-   /* public void setDecisionVoters(List newList) {
-        checkIfValidList(newList);
-
-        Iterator iter = newList.iterator();
-
-        while (iter.hasNext()) {
-            Object currentObject = null;
-
-            try {
-                currentObject = iter.next();
-
-                AccessDecisionVoter attemptToCast = (AccessDecisionVoter) currentObject;
-            } catch (ClassCastException cce) {
-                throw new IllegalArgumentException("AccessDecisionVoter " + currentObject.getClass().getName()
-                    + " must implement AccessDecisionVoter");
-            }
-        }
-
-        this.decisionVoters = newList;
-    }*/
-
+    
+    /* (non-Javadoc)
+     * @see org.springframework.context.MessageSourceAware#setMessageSource(org.springframework.context.MessageSource)
+     */
     public void setMessageSource(MessageSource messageSource) {
         this.messages = new MessageSourceAccessor(messageSource);
     }
 
+    /* (non-Javadoc)
+     * @see org.acegisecurity.AccessDecisionManager#supports(org.acegisecurity.ConfigAttribute)
+     */
     public boolean supports(ConfigAttribute attribute) {
         if(this.decisionVoters != null){
 			Iterator iter = this.decisionVoters.iterator();

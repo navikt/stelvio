@@ -10,7 +10,7 @@ import org.springframework.beans.factory.InitializingBean;
 /**
  * 
  * @author persondab2f89862d3, Accenture
- *
+ * @version $Id$
  */
 public class MethodDefinitionSources implements MethodDefinitionSource, InitializingBean{
 
@@ -18,12 +18,18 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
 	private MethodDefinitionSource methodDefinitionAttributes;
 	
 	
+	/* (non-Javadoc)
+	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
+	 */
 	public void afterPropertiesSet() throws Exception {
 		if ((methodDefinitionMap == null) && methodDefinitionAttributes == null) {
             throw new IllegalArgumentException("At least one methodDefinitionSource is required.");
         }
     }
 	
+	/* (non-Javadoc)
+	 * @see org.acegisecurity.intercept.ObjectDefinitionSource#getAttributes(java.lang.Object)
+	 */
 	public ConfigAttributeDefinition getAttributes(Object object)
 	{
 		ConfigAttributeDefinition defAttributes = (methodDefinitionAttributes != null) ? 
@@ -41,7 +47,11 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
 		}
 	}
 	
-	 private void merge(ConfigAttributeDefinition definition, ConfigAttributeDefinition toMerge) {
+	 /**
+	 * @param definition
+	 * @param toMerge
+	 */
+	private void merge(ConfigAttributeDefinition definition, ConfigAttributeDefinition toMerge) {
         if (toMerge == null) {
             return;
         }
@@ -58,6 +68,9 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
         }
     }
 	
+	/**
+	 * @return
+	 */
 	public MethodDefinitionSource getMethodDefinitionAttributes() {
 		return methodDefinitionAttributes;
 	}
@@ -74,6 +87,9 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
 
 
 
+	/**
+	 * @return
+	 */
 	public MethodDefinitionSource getMethodDefinitionMap() {
 		return methodDefinitionMap;
 	}
@@ -81,6 +97,9 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
 
 
 
+	/**
+	 * @param methodDefinitionMap
+	 */
 	public void setMethodDefinitionMap(MethodDefinitionSource methodDefinitionMap) {
 		this.methodDefinitionMap = methodDefinitionMap;
 	}
@@ -92,9 +111,7 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
      *
      * @return an iterator over all the <code>ConfigAttributeDefinition</code>s or <code>null</code> if unsupported
      */
-    public Iterator getConfigAttributeDefinitions()
-    {
-    	//MethodMapDefinitions sin iterator eller null hvis denne ikke finnes
+    public Iterator getConfigAttributeDefinitions(){
     	return null;
     }
     
@@ -106,8 +123,7 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
      *
      * @return true if the implementation can process the indicated class
      */
-    public boolean supports(Class clazz)
-    {
+    public boolean supports(Class clazz){
     	return methodDefinitionAttributes != null ? methodDefinitionAttributes.supports(clazz) : methodDefinitionMap.supports(clazz);
     }
 }

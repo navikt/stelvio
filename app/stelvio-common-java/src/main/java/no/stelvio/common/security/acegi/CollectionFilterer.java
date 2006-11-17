@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.Set;
 /**
  * A filter used to filter Collections.
+ * 
+ * @author persondab2f89862d3, Accenture
+ * @version $Id$
  */
 public class CollectionFilterer implements DataFilterer {
     //~ Static fields/initializers =====================================================================================
@@ -21,6 +24,9 @@ public class CollectionFilterer implements DataFilterer {
 
     //~ Constructors ===================================================================================================
 
+    /**
+     * @param collection
+     */
     public CollectionFilterer(Collection collection) {
         this.collection = collection;
 
@@ -66,6 +72,9 @@ public class CollectionFilterer implements DataFilterer {
         removeList.add(object);
     }
     
+    /* (non-Javadoc)
+     * @see no.stelvio.common.security.acegi.DataFilterer#clear()
+     */
     public void clear(){
     	collection.clear();
     }

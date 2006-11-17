@@ -1,10 +1,15 @@
 package no.stelvio.common.security.acegi;
 import org.acegisecurity.AcegiSecurityException;
 
+/**
+ * 
+ * @author persondab2f89862d3, Accenture
+ * @version $Id$
+ */
 public class AcegiConfigurationException extends AcegiSecurityException{
 	
 	/**
-     * Constructs an <code>AccessDeniedException</code> with the specified
+     * Constructs an <code>AcegiConfigurationException</code> with the specified
      * message.
      *
      * @param msg the detail message
@@ -14,7 +19,7 @@ public class AcegiConfigurationException extends AcegiSecurityException{
     }
 
     /**
-     * Constructs an <code>AccessDeniedException</code> with the specified
+     * Constructs an <code>AcegiConfigurationException</code> with the specified
      * message and root cause.
      *
      * @param msg the detail message

@@ -14,30 +14,26 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.InitializingBean;
 
+
+/**
+ * @author persondab2f89862d3, Accenture
+ * @version $Id$
+ */
 public class AfterInvocationProviderManager implements AfterInvocationManager, InitializingBean {
-    //~ Static fields/initializers =====================================================================================
+    
 
     protected static final Log logger = LogFactory.getLog(AfterInvocationProviderManager.class);
 
-    //~ Instance fields ================================================================================================
-
     private List<AfterInvocationProvider> providers;
 
-    //~ Methods ========================================================================================================
+   
 
-    public void afterPropertiesSet() throws Exception {
-        //checkIfValidList(this.providers);
-    }
-
-   /* private void checkIfValidList(List<AfterInvocationProvider> listToCheck) {
-        if ((listToCheck == null) || (listToCheck.size() == 0)) {
-            throw new IllegalArgumentException("A list of AfterInvocationProviders is required");
-        }
-    }*/
-    
+    /**
+     * @param config
+     */
     public void addProviders(ConfigAttributeDefinition config){
     	
-    	providers = new ArrayList<AfterInvocationProvider>();
+    	this.providers = new ArrayList<AfterInvocationProvider>();
     	Iterator iterator = config.getConfigAttributes();     
     	ConfigAttribute configAttribute = null;
     	try {
@@ -47,7 +43,7 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
              	System.out.println("configAttribute '" + configAttribute + "'is AfterInvocationProvider: " + isAfterInvocationProvider(clazz));
              	if(isAfterInvocationProvider(clazz)){
              		AfterInvocationProvider provider = (AfterInvocationProvider)clazz.newInstance();
-             		providers.add(provider);
+             		this.providers.add(provider);
              	}   
              }
 		 }catch (ClassNotFoundException ex) {
@@ -58,11 +54,16 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
         	 throw new IllegalArgumentException("Could not create an instance of class '" + configAttribute + "'",ile);
          }
     }
-    public boolean isAfterInvocationProvider(Class clazz){
-    	return AfterInvocationProvider.class.isAssignableFrom(clazz) ? true : false;
+    
+    /* (non-Javadoc)
+     * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
+     */
+    public void afterPropertiesSet() throws Exception {
+     
     }
-    
-    
+    /* (non-Javadoc)
+     * @see org.acegisecurity.AfterInvocationManager#decide(org.acegisecurity.Authentication, java.lang.Object, org.acegisecurity.ConfigAttributeDefinition, java.lang.Object)
+     */
     public Object decide(Authentication authentication, Object object, ConfigAttributeDefinition config,
             Object returnedObject) throws AccessDeniedException {
             
@@ -80,90 +81,23 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
         return result;
     }
     
-    public Object decide_old(Authentication authentication, Object object, ConfigAttributeDefinition config,
-            Object returnedObject) throws AccessDeniedException {
-            //Iterator iter = this.providers.iterator();
-            Object result = returnedObject;
-//          looper through attributes so that the correct voter is used
-            Iterator iterator = config.getConfigAttributes();
-           
-            System.out.println("---------------- DatafilterManager -------------------");
-            addProviders(config);
-            
-            ConfigAttribute configattribute;
-            while(iterator.hasNext())
-            {
-            	configattribute = (ConfigAttribute)iterator.next();
-            	
-            	System.out.println("-- Henter attributt: " + configattribute); 
-        		
-    	        for(int j=0;j<providers.size();j++) 
-    	        {
-    	        	AfterInvocationProvider provider = providers.get(j);
-    	        	
-    	        	System.out.println("-- Henter filter: " + provider.getClass().getName());
-    		        	if(provider.getClass().getName().equals(configattribute.getAttribute()))
-    			        {
-    		        		System.out.println("-- Fant Filter " + provider.getClass().getName());
-    			        	result = provider.decide(authentication, object, config, result);
-    			        	break;
-    			        }   
-    	    	}
-            	
-            	
-            }
-              	
-            System.out.println("------------ End DatafilterManager -------------------");
-            return result;
-        }
     
+    /**
+     * @return
+     */
     public List<AfterInvocationProvider> getProviders() {
         return this.providers;
     }
-
-    /*public void setProviders(List<AfterInvocationProvider> newList) {
-        checkIfValidList(newList);
-
-        Iterator iter = newList.iterator();
-
-        while (iter.hasNext()) {
-            Object currentObject = null;
-
-            try {
-                currentObject = iter.next();
-
-                AfterInvocationProvider attemptToCast = (AfterInvocationProvider) currentObject;
-            } catch (ClassCastException cce) {
-            	
-            	System.out.println("----------- Set providers: " + "Classcast...");
-                throw new IllegalArgumentException("AfterInvocationProvider " + currentObject.getClass().getName()
-                    + " must implement AfterInvocationProvider");
-            }
-        }
-
-        this.providers = newList;
-    }*/
-
-    public boolean supports(ConfigAttribute attribute) {
-       if(this.providers != null){
-    	   Iterator<AfterInvocationProvider> iter = this.providers.iterator();
-
-           while (iter.hasNext()) {
-               AfterInvocationProvider provider = iter.next();
-
-               if (logger.isDebugEnabled()) {
-                   logger.debug("Evaluating " + attribute + " against " + provider);
-               }
-
-               if (provider.supports(attribute)) {
-                   return true;
-               }
-           }
-    	   return false;
-       }else{
-    	   return true;
-       }
+      
+    
+    /**
+     * @param clazz
+     * @return
+     */
+    public boolean isAfterInvocationProvider(Class clazz){
+    	return AfterInvocationProvider.class.isAssignableFrom(clazz) ? true : false;
     }
+
 
     /**
      * Iterates through all <code>AfterInvocationProvider</code>s and ensures each can support the presented
@@ -190,5 +124,26 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
     		 
     	 
     	
+    }
+
+    public boolean supports(ConfigAttribute attribute) {
+       if(this.providers != null){
+    	   Iterator<AfterInvocationProvider> iter = this.providers.iterator();
+
+           while (iter.hasNext()) {
+               AfterInvocationProvider provider = iter.next();
+
+               if (logger.isDebugEnabled()) {
+                   logger.debug("Evaluating " + attribute + " against " + provider);
+               }
+
+               if (provider.supports(attribute)) {
+                   return true;
+               }
+           }
+    	   return false;
+       }else{
+    	   return true;
+       }
     }
 }

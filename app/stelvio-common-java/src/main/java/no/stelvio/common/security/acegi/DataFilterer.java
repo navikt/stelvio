@@ -1,8 +1,15 @@
 package no.stelvio.common.security.acegi;
 import java.util.Iterator;
+
+
+/**
+* TODO
+ * 
+ * @author persondab2f89862d3, Accenture
+ * @version $Id$
+ */
 public interface DataFilterer {
 	 
-	//~ Methods ========================================================================================================
     /**
      * Gets the filtered collection or array.
      *

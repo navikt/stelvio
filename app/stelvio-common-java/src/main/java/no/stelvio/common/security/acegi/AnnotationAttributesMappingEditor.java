@@ -20,17 +20,18 @@ import java.util.regex.*;
  * Property editor to assist with the setup of a {@link AnnotationAttributesMapping}.<p>The class creates and populates
  * a {@link AnnotationAttributesMapping}.</p>
  *
- * @author persondab2f89862d3
- * 
+ * @author persondab2f89862d3, Accenture
+ * @version $Id$
  */
 
 public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
-    //~ Static fields/initializers =====================================================================================
 
     private static final Log logger = LogFactory.getLog(AnnotationAttributesMappingEditor.class);
 
-    //~ Methods ========================================================================================================
 
+    /* (non-Javadoc)
+     * @see java.beans.PropertyEditorSupport#setAsText(java.lang.String)
+     */
     public void setAsText(String s) throws IllegalArgumentException {
     	AnnotationAttributesMapping source = new AnnotationAttributesMapping();
 

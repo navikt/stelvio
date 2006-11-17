@@ -4,6 +4,12 @@ import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.ConfigAttributeDefinition;
 import org.acegisecurity.vote.*;
 
+/**
+ * TODO
+ * 
+ * @author persondab2f89862d3, Accenture
+ * @version $Id$
+ */
 public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
     //~ Instance fields ================================================================================================
 
@@ -22,6 +28,9 @@ public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
         return true;
     }
 
+    /* (non-Javadoc)
+     * @see org.acegisecurity.vote.AccessDecisionVoter#vote(org.acegisecurity.Authentication, java.lang.Object, org.acegisecurity.ConfigAttributeDefinition)
+     */
     public int vote(Authentication authentication, Object object, ConfigAttributeDefinition config) 
     {    
     	return ACCESS_GRANTED;
