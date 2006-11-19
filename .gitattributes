@@ -5,7 +5,6 @@ app/stelvio-batch-java/.project -text
 app/stelvio-batch-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
 app/stelvio-batch-java/pom.xml -text
 app/stelvio-batch-java/project.properties -text
-app/stelvio-batch-java/project.xml -text
 app/stelvio-batch-java/src/main/java/.cvsignore -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/AbstractBatch.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/AbstractMessageDrivenBatch.java -text
@@ -21,7 +20,6 @@ app/stelvio-business-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
 app/stelvio-business-java/models/rtv-framework-business.mdx -text
 app/stelvio-business-java/pom.xml -text
 app/stelvio-business-java/project.properties -text
-app/stelvio-business-java/project.xml -text
 app/stelvio-business-java/src/main/java/.cvsignore -text
 app/stelvio-business-java/src/test/resources/application-services.xml -text
 app/stelvio-business-java/src/test/resources/error-handling.xml -text
@@ -49,7 +47,6 @@ app/stelvio-common-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
 app/stelvio-common-java/models/rtv-framework-common.mdx -text
 app/stelvio-common-java/pom.xml -text
 app/stelvio-common-java/project.properties -text
-app/stelvio-common-java/project.xml -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/Constants.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/ContextHandlerAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
@@ -265,7 +262,6 @@ app/stelvio-presentation-java/.project -text
 app/stelvio-presentation-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
 app/stelvio-presentation-java/pom.xml -text
 app/stelvio-presentation-java/project.properties -text
-app/stelvio-presentation-java/project.xml -text
 app/stelvio-presentation-java/src/main/java/.cvsignore -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/action/FrameworkErrorAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/action/FrameworkErrorForm.java -text
@@ -326,7 +322,6 @@ app/stelvio-test-java/.classpath -text
 app/stelvio-test-java/.project -text
 app/stelvio-test-java/pom.xml -text
 app/stelvio-test-java/project.properties -text
-app/stelvio-test-java/project.xml -text
 app/stelvio-test-java/src/main/java/no/stelvio/common/test/spring/hibernate/MockHibernateTemplate.java -text
 app/stelvio-test-java/src/main/java/no/stelvio/common/test/spring/jdbc/MockJdbcTemplate.java -text
 app/stelvio-test-java/src/main/java/no/stelvio/common/test/spring/transaction/MockTransactionTemplate.java -text
