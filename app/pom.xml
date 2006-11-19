@@ -169,12 +169,19 @@
             <plugin>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.1</version>
                 <configuration>
-                    <aggregate>true</aggregate>
+                    <quiet>true</quiet>
+                    <tags>
+                        <tag>
+                            <name>todo</name>
+                            <placement>a</placement>
+                            <head>To do:</head>
+                        </tag>
+                    </tags>
                 </configuration>
                 <reportSets>
                     <reportSet>
@@ -186,6 +193,7 @@
                     <reportSet>
                         <id>doccheck</id>
                         <configuration>
+                            <!-- TODO the configuration is not correct; the report is generated, but gets located in a null folder -->
                             <name>DocCheck</name>
                             <description>DocCheck documentation</description>
                             <doclet>com.sun.tools.doclets.doccheck.DocCheck</doclet>
@@ -216,7 +224,6 @@
                     <format>xml</format>
                     <linkXref>true</linkXref>
                     <sourceEncoding>utf-8</sourceEncoding>
-
                     <minimumTokens>100</minimumTokens>
                 </configuration>
             </plugin>
@@ -224,7 +231,6 @@
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <groupId>org.codehaus.mojo</groupId>
             </plugin>
-
         </plugins>
     </reporting>
     <build>
