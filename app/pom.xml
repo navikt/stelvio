@@ -10,7 +10,7 @@
     <modules>
         <module>stelvio-common-java</module>
         <module>stelvio-test-java</module>
-        <module>stelvio-batch-java</module>
+        <!--module>stelvio-batch-java</module-->
         <module>stelvio-business-java</module>
         <module>stelvio-presentation-java</module>
     </modules>
@@ -225,10 +225,6 @@
                 <groupId>org.codehaus.mojo</groupId>
             </plugin>
 
-            <plugin>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <groupId>org.codehaus.mojo</groupId>
-            </plugin>
         </plugins>
     </reporting>
     <build>
