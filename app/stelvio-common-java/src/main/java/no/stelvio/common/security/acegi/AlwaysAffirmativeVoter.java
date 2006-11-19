@@ -5,14 +5,20 @@ import org.acegisecurity.ConfigAttributeDefinition;
 import org.acegisecurity.vote.*;
 
 /**
- * TODO
+ * Implementation of a <code>AccessDecisionVoter</code> that always grants access to a secure object.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
 public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
-    //~ Instance fields ================================================================================================
 
+	/**
+     * This implementation supports any type of ConfigAttribute, because it does not use the presented attribute.
+     *
+     * @param clazz the secure object
+     *
+     * @return always <code>true</code>
+     */
     public boolean supports(ConfigAttribute attribute) {
     	return true;
     }
@@ -28,7 +34,9 @@ public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
         return true;
     }
 
-    /* (non-Javadoc)
+    /** 
+     * This implementation always grant access to a secure object.
+     * @return always <code>org.acegisecurity.vote.AccessDecisionVoter.ACCESS_GRANTED</code> 
      * @see org.acegisecurity.vote.AccessDecisionVoter#vote(org.acegisecurity.Authentication, java.lang.Object, org.acegisecurity.ConfigAttributeDefinition)
      */
     public int vote(Authentication authentication, Object object, ConfigAttributeDefinition config) 

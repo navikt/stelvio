@@ -11,19 +11,12 @@ import java.util.Set;
  * @version $Id$
  */
 public class CollectionFilterer implements DataFilterer {
-    //~ Static fields/initializers =====================================================================================
-
-    //~ Instance fields ================================================================================================
-
+   
     private Collection collection;
-
-    // collectionIter offers significant performance optimisations (as
-    // per acegisecurity-developer mailing list conversation 19/5/05)
     private Iterator collectionIter;
     private Set<Object> removeList;
 
-    //~ Constructors ===================================================================================================
-
+    
     /**
      * @param collection
      */
@@ -39,8 +32,6 @@ public class CollectionFilterer implements DataFilterer {
         // manually adding may lose sort order or other capabilities)
         removeList = new HashSet<Object>();
     }
-
-    //~ Methods ========================================================================================================
 
     /**
      * 

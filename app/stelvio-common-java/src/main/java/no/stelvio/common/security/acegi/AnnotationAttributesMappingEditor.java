@@ -29,7 +29,17 @@ public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
     private static final Log logger = LogFactory.getLog(AnnotationAttributesMappingEditor.class);
 
 
-    /* (non-Javadoc)
+    /** 
+     * Creates and populates a {@link AnnotationAttributesMapping} using a string in the following format:
+     * <p>Id1 = package.subpackage.maybeanother.ClassName , package.subpackage.maybeanother.ClassName2, ....</p>
+     * <p>Id2 = package.subpackage.maybeanother.ClassName2, package.subpackage.maybeanother.ClassName3, ....</p>
+     * <p>.... = ....</p>
+     * where the text before the '=' sign is considered as the key and the commaseparated list as a collection of ConfigAttributes.
+     * <p></p>
+     * @param s the string to parse.
+     * @throws IllegalArgumentException if the value of a property is not in the correct format, i.e. string should be
+     * a commaseparated list of possible full class name representations. 
+     * {@inheritDoc}
      * @see java.beans.PropertyEditorSupport#setAsText(java.lang.String)
      */
     public void setAsText(String s) throws IllegalArgumentException {
@@ -42,9 +52,7 @@ public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
             // Use properties editor to tokenize the string
             PropertiesEditor propertiesEditor = new PropertiesEditor();
             propertiesEditor.setAsText(s);
-            
-            
-            
+                 
             Properties props = (Properties) propertiesEditor.getValue();
 
             // Now we have properties, process each one individually
@@ -79,8 +87,7 @@ public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
                 		providers.add(new SecurityConfig(str));
                 	}
                 	
-                }
-                
+                }              
                System.out.println("Providers:" + providers + " Size:" + providers.size());
                if (providers.size() > 0) {
             	   source.addProviders(name, providers);

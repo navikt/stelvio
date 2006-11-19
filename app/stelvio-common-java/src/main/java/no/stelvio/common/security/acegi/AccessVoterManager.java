@@ -18,15 +18,15 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * TODO update comments
- * Implementation of {@link AccessDecisionManager}.<p>Handles configuration of a bean context defined list
+ * This class is an implementation of {@link AccessDecisionManager}.<p>Handles configuration of a bean context defined list
  * of  {@link AccessDecisionVoter}s and the access control behaviour if all  voters abstain from voting (defaults to
- * deny access).</p>
+ * deny access).</p> The list of {@link AccessDecisionVoter}s is retrieved from a {@link ConfigAttributeDefinition} 
+ * which is derived from a {@link ObjectDefinitionSource}. The {@link ObjectDefinitionSource} is defined in a bean context 
+ * and injected into a security interceptor.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
-
 public class AccessVoterManager implements AccessDecisionManager, InitializingBean,
     MessageSourceAware {
   
@@ -34,7 +34,8 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     protected MessageSourceAccessor messages = AcegiMessageSource.getAccessor();
     private boolean allowIfAllAbstainDecisions = false;
 
-    /* (non-Javadoc)
+    /**
+     * {@inheritDoc}
      * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
      */
     public void afterPropertiesSet() throws Exception {
@@ -42,6 +43,8 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     }
 
     /**
+     * Checks if access should be granted if all voters abstain from voting.
+     * @throws AccessDeniedException if no access should be granted.
      * 
      */
     protected final void checkAllowIfAllAbstainDecisions() {
@@ -52,8 +55,12 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     }
 
     /**
-     * TODO document me!
-     * If no voters are specified an <code>AlwaysAffirmativeVoter</code> will be added to the list.
+     * Iterates through the attributes in a ConfigAttributeDefinition and creates a list of 
+     * <code>AccessDecisionVoter</code>s based on these. If no voters are found an <code>AlwaysAffirmativeVoter</code> 
+     * will be added to the list so that access is always granted to the secure object.
+     * @param config the {@link ConfigAttributeDefinition} containing attributes with the full class names of 
+     * 				 the voters that should be used on the secure object (e.g. a method invocation).
+     * @throws IllegalArgumentException if the attributes do not represent a class.
      */
     public void addDecisionVoters(ConfigAttributeDefinition config){
     	
@@ -88,18 +95,18 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     }
     
     /**
-     * @param clazz
-     * @return
+     * Checks if the presented class is an <code>AccessDecisionVoter</code> implementation.
+     * @param clazz the class to check
+     * @return <code>true</code> if the class is an <code>AccessDecisionVoter</code>.
      */
     public boolean isAccessDecisionVoter(Class clazz){
     	return AccessDecisionVoter.class.isAssignableFrom(clazz) ? true : false;
     }
     
     /**
-     * TODO Update these comments
      * This concrete implementation simply polls all configured  {@link AccessDecisionVoter}s and grants access
-     * if any <code>AccessDecisionVoter</code> voted affirmatively. Denies access only if there was a deny vote AND no
-     * affirmative votes.<p>If every <code>AccessDecisionVoter</code> abstained from voting, the decision will
+     * if an <code>AccessDecisionVoter</code> voted affirmatively or denies access if there is a deny vote. If a voter 
+     * abstain from voting the next one in the list will be invoked.<p>If every <code>AccessDecisionVoter</code> abstained from voting, the decision will
      * be based on the {@link #isAllowIfAllAbstainDecisions()} property (defaults to false).</p>
      *
      * @param authentication the caller invoking the method
@@ -136,35 +143,39 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     }
     
     /**
-     * @return
+     * Returns the list of <code>AccessDecisionVoter</code>s.
+     * @return the voter list.
      */
     public List<AccessDecisionVoter> getDecisionVoters() {
         return this.decisionVoters;
     }
 
     /**
-     * @return
+     * Returns whether or not access should be granted if all voters abstain from voting.
+     * @return <code>true</code> if this property is explicitly set, <code>false</code> otherwise. 
      */
     public boolean isAllowIfAllAbstainDecisions() {
         return this.allowIfAllAbstainDecisions;
     }
 
     /**
-     * @param allowIfAllAbstainDecisions
+     * Sets whether or not access should be granted if all voters abstain from voting.
+     * @param allowIfAllAbstainDecisions <code>true</code> if access should be granted, <code>false</code> otherwise.
      */
     public void setAllowIfAllAbstainDecisions(boolean allowIfAllAbstainDecisions) {
         this.allowIfAllAbstainDecisions = allowIfAllAbstainDecisions;
     }
     
-    /* (non-Javadoc)
+    /** 
+     * Sets the message source.
      * @see org.springframework.context.MessageSourceAware#setMessageSource(org.springframework.context.MessageSource)
      */
     public void setMessageSource(MessageSource messageSource) {
         this.messages = new MessageSourceAccessor(messageSource);
     }
 
-    /* (non-Javadoc)
-     * @see org.acegisecurity.AccessDecisionManager#supports(org.acegisecurity.ConfigAttribute)
+    /**
+     * {@inheritDoc}
      */
     public boolean supports(ConfigAttribute attribute) {
         if(this.decisionVoters != null){
@@ -187,9 +198,9 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
      * Iterates through all <code>AccessDecisionVoter</code>s and ensures each can support the presented class.<p>If
      * one or more voters cannot support the presented class, <code>false</code> is returned.</p>
      *
-     * @param clazz DOCUMENT ME!
+     * @param clazz the class to check.
      *
-     * @return DOCUMENT ME!
+     * @return <code>true</code> if all voters support the presented class, <code>false</code> otherwise.
      */
     public boolean supports(Class clazz) {
         if(this.decisionVoters != null){

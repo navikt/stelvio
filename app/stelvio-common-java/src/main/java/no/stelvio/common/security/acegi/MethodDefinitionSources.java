@@ -8,6 +8,8 @@ import org.acegisecurity.intercept.AbstractSecurityInterceptor;
 import org.acegisecurity.intercept.method.MethodDefinitionSource;
 import org.springframework.beans.factory.InitializingBean;
 /**
+ * This class is an implementation of a {@link MethodDefinitionSource} with the only purpose of merging two different 
+ * {@link MethodDefinitionSource} implementations into one source represented by this class.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
@@ -18,24 +20,32 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
 	private MethodDefinitionSource methodDefinitionAttributes;
 	
 	
-	/* (non-Javadoc)
+	/**
+	 * Requires that at least one {@link MethodDefinitionSource} is set in the bean context.
+	 * 
+	 * @throws IllegalArgumentException if no sources are present.
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
 	public void afterPropertiesSet() throws Exception {
-		if ((methodDefinitionMap == null) && methodDefinitionAttributes == null) {
+		if ((this.methodDefinitionMap == null) && this.methodDefinitionAttributes == null) {
             throw new IllegalArgumentException("At least one methodDefinitionSource is required.");
         }
     }
 	
-	/* (non-Javadoc)
-	 * @see org.acegisecurity.intercept.ObjectDefinitionSource#getAttributes(java.lang.Object)
+	/**
+	 *  Returns the merged ConfigAttributeDefinition that applies to a given secure object from 
+	 *  the two configured MethodDefinitionSources. Returns null if no ConfigAttribiteDefinition applies.
+	 *  
+	 *  @param object the object being secured
+	 *  @return the ConfigAttributeDefinition that applies to the passed object
+	 *  @throws IllegalArgumentException if the passed object is not of a type supported by the ObjectDefinitionSource implementation
 	 */
 	public ConfigAttributeDefinition getAttributes(Object object)
 	{
-		ConfigAttributeDefinition defAttributes = (methodDefinitionAttributes != null) ? 
-													methodDefinitionAttributes.getAttributes(object) : null;
-		ConfigAttributeDefinition defMap = (methodDefinitionMap != null) ?
-											methodDefinitionMap.getAttributes(object) : null;
+		ConfigAttributeDefinition defAttributes = (this.methodDefinitionAttributes != null) ? 
+													this.methodDefinitionAttributes.getAttributes(object) : null;
+		ConfigAttributeDefinition defMap = (this.methodDefinitionMap != null) ?
+											this.methodDefinitionMap.getAttributes(object) : null;
 		
 		if(defAttributes == null){
 			return defMap;
@@ -48,8 +58,9 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
 	}
 	
 	 /**
-	 * @param definition
-	 * @param toMerge
+	 * Merges the second <code>ConfigAttributeDefinition</code> parameter into the first with no duplicates.
+	 * @param definition the final merged ConfigAttributeDefinition
+	 * @param toMerge the ConfigAttributeDefinition to merge into the first parameter
 	 */
 	private void merge(ConfigAttributeDefinition definition, ConfigAttributeDefinition toMerge) {
         if (toMerge == null) {
@@ -69,36 +80,33 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
     }
 	
 	/**
-	 * @return
+	 * Returns the methodDefinitionAttributes property.
+	 * @return the methodDefinitionAttributes
 	 */
 	public MethodDefinitionSource getMethodDefinitionAttributes() {
-		return methodDefinitionAttributes;
+		return this.methodDefinitionAttributes;
 	}
 
-
 	/**
-	 * @param methodDefinitionAttributes
+	 * Sets the methodDefinitionAttributes property.
+	 * @param methodDefinitionAttributes a MethodDefintionSource.
 	 */
 	public void setMethodDefinitionAttributes(
 			MethodDefinitionSource methodDefinitionAttributes) {
 		this.methodDefinitionAttributes = methodDefinitionAttributes;
 	}
 
-
-
-
 	/**
-	 * @return
+	 * Returns the methodDefinitionMap property.
+	 * @return the methodDefinitionMap
 	 */
 	public MethodDefinitionSource getMethodDefinitionMap() {
-		return methodDefinitionMap;
+		return this.methodDefinitionMap;
 	}
 
-
-
-
 	/**
-	 * @param methodDefinitionMap
+	 * Sets the methodDefinitionMap property.
+	 * @param methodDefinitionMap a MethodDefintionSource.
 	 */
 	public void setMethodDefinitionMap(MethodDefinitionSource methodDefinitionMap) {
 		this.methodDefinitionMap = methodDefinitionMap;
@@ -124,6 +132,6 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
      * @return true if the implementation can process the indicated class
      */
     public boolean supports(Class clazz){
-    	return methodDefinitionAttributes != null ? methodDefinitionAttributes.supports(clazz) : methodDefinitionMap.supports(clazz);
+    	return this.methodDefinitionAttributes != null ? this.methodDefinitionAttributes.supports(clazz) : this.methodDefinitionMap.supports(clazz);
     }
 }

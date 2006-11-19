@@ -12,14 +12,24 @@ import org.acegisecurity.ConfigAttributeDefinition;
 import org.acegisecurity.afterinvocation.AfterInvocationProvider;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.InitializingBean;
+
 
 
 /**
+ * Provider-based implementation of {@link AfterInvocationManager}.
+ * <p>Handles configuration of a bean context defined list
+ * of  {@link AfterInvocationProvider}s. The list of {@link AfterInvocationProvider}s is retrieved from a {@link ConfigAttributeDefinition} 
+ * which is derived from an {@link ObjectDefinitionSource}. The {@link ObjectDefinitionSource} is defined in a bean context 
+ * and injected into a security interceptor.</p>
+ *  <p>Every <code>AfterInvocationProvider</code> will be polled when the {@link #decide(Authentication, Object,
+ * ConfigAttributeDefinition, Object)} method is called. The <code>Object</code> returned from each provider will be
+ * presented to the successive provider for processing. This means each provider <b>must</b> ensure they return the
+ * <code>Object</code>, even if they are not interested in the "after invocation" decision. </p>
+ * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
-public class AfterInvocationProviderManager implements AfterInvocationManager, InitializingBean {
+public class AfterInvocationProviderManager implements AfterInvocationManager{
     
 
     protected static final Log logger = LogFactory.getLog(AfterInvocationProviderManager.class);
@@ -27,9 +37,12 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
     private List<AfterInvocationProvider> providers;
 
    
-
     /**
-     * @param config
+     * Iterates through the attributes in a ConfigAttributeDefinition and creates a list of 
+     * <code>AfterInvocationProvider</code>s based on these.
+     * @param config the {@link ConfigAttributeDefinition} containing attributes with the full class names of 
+     * 				 the <code>AfterInvocationProvider</code>s that should be used on the secure object (e.g. a method invocation).
+     * @throws IllegalArgumentException if the attributes do not represent a class.
      */
     public void addProviders(ConfigAttributeDefinition config){
     	
@@ -55,14 +68,20 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
          }
     }
     
-    /* (non-Javadoc)
-     * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
-     */
-    public void afterPropertiesSet() throws Exception {
-     
-    }
-    /* (non-Javadoc)
-     * @see org.acegisecurity.AfterInvocationManager#decide(org.acegisecurity.Authentication, java.lang.Object, org.acegisecurity.ConfigAttributeDefinition, java.lang.Object)
+    /**
+     * Given the details of a secure object invocation including its returned <code>Object</code>, make an
+     * access control decision or optionally modify the returned <code>Object</code>.
+     *
+     * @param authentication the caller that invoked the method
+     * @param object the secured object that was called
+     * @param config the configuration attributes associated with the secured object that was invoked
+     * @param returnedObject the <code>Object</code> that was returned from the secure object invocation
+     *
+     * @return the <code>Object</code> that will ultimately be returned to the caller (if an implementation does not
+     *         wish to modify the object to be returned to the caller, the implementation should simply return the
+     *         same object it was passed by the <code>returnedObject</code> method argument)
+     *
+     * @throws AccessDeniedException if access is denied
      */
     public Object decide(Authentication authentication, Object object, ConfigAttributeDefinition config,
             Object returnedObject) throws AccessDeniedException {
@@ -83,7 +102,8 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
     
     
     /**
-     * @return
+     * Returns the list of <code>AfterInvocationProvider</code>s.
+     * @return the provider list.
      */
     public List<AfterInvocationProvider> getProviders() {
         return this.providers;
@@ -91,8 +111,9 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
       
     
     /**
-     * @param clazz
-     * @return
+     * Checks if the presented class is an <code>AfterInvocationProvider</code> implementation.
+     * @param clazz the class to check
+     * @return <code>true</code> if the class is an <code>AfterInvocationProvider</code>, <code>false</code> otherwise.
      */
     public boolean isAfterInvocationProvider(Class clazz){
     	return AfterInvocationProvider.class.isAssignableFrom(clazz) ? true : false;
@@ -125,7 +146,10 @@ public class AfterInvocationProviderManager implements AfterInvocationManager, I
     	 
     	
     }
-
+    
+    /**
+     * {@inheritDoc}
+     */
     public boolean supports(ConfigAttribute attribute) {
        if(this.providers != null){
     	   Iterator<AfterInvocationProvider> iter = this.providers.iterator();
