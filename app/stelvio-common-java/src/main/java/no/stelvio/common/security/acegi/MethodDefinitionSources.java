@@ -68,13 +68,10 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
         }
 
         Iterator attribs = toMerge.getConfigAttributes();
-        System.out.println("--- Merging ConfigAttributeDefinitions ---");
         while (attribs.hasNext()) {
         	ConfigAttribute ca = (ConfigAttribute) attribs.next();
         	if(!definition.contains(ca)){
         		definition.addConfigAttribute(ca);
-        	}else{
-        		System.out.println("--- ConfigAttributeDefinition does already contain attribute " + ca.getAttribute() + " ---");
         	}
         }
     }

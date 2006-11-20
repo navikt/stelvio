@@ -2,7 +2,7 @@ package no.stelvio.common.security.acegi;
 import org.acegisecurity.AcegiSecurityException;
 
 /**
- * This class represent an exception that occurs when the configuration is not properly set up.
+ * This class represent an exception that occurs when the security configuration is not properly set up.
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */

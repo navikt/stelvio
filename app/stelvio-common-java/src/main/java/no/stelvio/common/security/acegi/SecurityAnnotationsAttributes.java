@@ -76,8 +76,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
                 	
                 	Collection<ConfigAttribute> providers = this.annotationMapping.getProviders(auth);
                 	if(providers != null){
-                		attributes.addAll(providers);
-                        System.out.println("Adding attributes for id:" + auth + " - providers:" + providers);	
+                		attributes.addAll(providers);	
                 	}else{
                 		throw new AcegiConfigurationException("The @Secured annotation attribute '" + auth +"' for Class '" + target.getName() + "'" 
 								+ " cannot be found in the annotation mapping.");
@@ -123,8 +122,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
                 for (String auth : attr.value()) {
                 	Collection<ConfigAttribute> providers = this.annotationMapping.getProviders(auth);
                 	if(providers != null){
-                		attributes.addAll(providers);
-                		 System.out.println("Adding attributes for id:" + auth + " - providers:" + providers);	
+                		attributes.addAll(providers);	
                 	}else{
                 		throw new AcegiConfigurationException("The @Secured annotation attribute '" + auth +"' for method '" + method + "'" 
                 												+ " cannot be found in the annotation mapping.");

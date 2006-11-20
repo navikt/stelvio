@@ -18,9 +18,10 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * This class is an implementation of {@link AccessDecisionManager}.<p>Handles configuration of a bean context defined list
- * of  {@link AccessDecisionVoter}s and the access control behaviour if all  voters abstain from voting (defaults to
- * deny access).</p> The list of {@link AccessDecisionVoter}s is retrieved from a {@link ConfigAttributeDefinition} 
+ * This class is an implementation of {@link AccessDecisionManager}.
+ * <p>Handles configuration of a bean context defined list of  {@link AccessDecisionVoter}s and the access control 
+ * behaviour if all  voters abstain from voting (defaults to deny access).</p> 
+ * The list of {@link AccessDecisionVoter}s is retrieved from a {@link ConfigAttributeDefinition} 
  * which is derived from a {@link ObjectDefinitionSource}. The {@link ObjectDefinitionSource} is defined in a bean context 
  * and injected into a security interceptor.
  * 
@@ -71,14 +72,12 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     		 while(iterator.hasNext()){
              	configAttribute = (ConfigAttribute)iterator.next();	
              	Class clazz = Class.forName(configAttribute.getAttribute(), true, Thread.currentThread().getContextClassLoader());
-             	System.out.println("configAttribute '" + configAttribute + "'is AccessDecisionVoter: " + isAccessDecisionVoter(clazz));
+             	
              	if(isAccessDecisionVoter(clazz)){
              		AccessDecisionVoter voter = (AccessDecisionVoter)clazz.newInstance();
              		if(!this.decisionVoters.contains(voter)){
              			this.decisionVoters.add(voter);
-             		} else {
-						System.out.println("The list already contain this voter.");
-					}
+             		} 
              	}   
              }
     		 if(this.decisionVoters.size() == 0 ){
@@ -118,10 +117,8 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     public void decide(Authentication authentication, Object object, ConfigAttributeDefinition config)
         throws AccessDeniedException,AcegiConfigurationException {
         
-    	//populate the provider list with respect to the config attributes
     	addDecisionVoters(config);     
     	Iterator voterIterator = this.getDecisionVoters().iterator();
-        System.out.println("------------------ AccessVoterManager -------------------");
         int result = AccessDecisionVoter.ACCESS_ABSTAIN; 
         while (voterIterator.hasNext()) 
         {
@@ -129,17 +126,14 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
            result = voter.vote(authentication, object, config);
         	
            if(result == AccessDecisionVoter.ACCESS_GRANTED){
-        	   System.out.println("------------------ End AccessVoterManager -------------------");
     		   return;
     	   }else if(result == AccessDecisionVoter.ACCESS_DENIED){
-    		   System.out.println("------------------ End AccessVoterManager -------------------");
     		   throw new AccessDeniedException(this.messages.getMessage("AccessVoterManager.accessDenied",
                "Access is denied"));
     	   }	   
         }
         // To get this far, every AccessDecisionVoter abstained
         checkAllowIfAllAbstainDecisions();
-        System.out.println("------------------ End AccessVoterManager -------------------");
     }
     
     /**

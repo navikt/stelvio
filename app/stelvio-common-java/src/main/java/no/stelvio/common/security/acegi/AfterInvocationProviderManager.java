@@ -13,8 +13,6 @@ import org.acegisecurity.afterinvocation.AfterInvocationProvider;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-
-
 /**
  * Provider-based implementation of {@link AfterInvocationManager}.
  * <p>Handles configuration of a bean context defined list
@@ -53,7 +51,7 @@ public class AfterInvocationProviderManager implements AfterInvocationManager{
     		 while(iterator.hasNext()){
              	configAttribute = (ConfigAttribute)iterator.next();	
              	Class clazz = Class.forName(configAttribute.getAttribute(), true, Thread.currentThread().getContextClassLoader());
-             	System.out.println("configAttribute '" + configAttribute + "'is AfterInvocationProvider: " + isAfterInvocationProvider(clazz));
+             	
              	if(isAfterInvocationProvider(clazz)){
              		AfterInvocationProvider provider = (AfterInvocationProvider)clazz.newInstance();
              		this.providers.add(provider);
@@ -88,15 +86,13 @@ public class AfterInvocationProviderManager implements AfterInvocationManager{
             
     	//populate the provider list with respect to the config attributes
     	addProviders(config);
-    	Iterator iter = this.providers.iterator();
-            
+    	Iterator iter = this.providers.iterator();           
         Object result = returnedObject;
-        System.out.println("---------------- AfterInvocationProviderManager -------------------");
+  
         while (iter.hasNext()) {
             AfterInvocationProvider provider = (AfterInvocationProvider) iter.next();
             result = provider.decide(authentication, object, config, result);
         }
-        System.out.println("------------ End AfterInvocationProviderManager -------------------");
         return result;
     }
     

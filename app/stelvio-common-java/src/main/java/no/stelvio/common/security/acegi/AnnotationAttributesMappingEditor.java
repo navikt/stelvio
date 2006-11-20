@@ -46,47 +46,45 @@ public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
         	
             // Use properties editor to tokenize the string
             PropertiesEditor propertiesEditor = new PropertiesEditor();
-            propertiesEditor.setAsText(s);
-                 
+            propertiesEditor.setAsText(s);           
             Properties props = (Properties) propertiesEditor.getValue();
 
             // Now we have properties, process each one individually
             for (Iterator iter = props.keySet().iterator(); iter.hasNext();) {
-            	List<ConfigAttribute> providers = new ArrayList<ConfigAttribute>();
-            	String name = (String) iter.next();
-                String value = props.getProperty(name);
-                
-                String regex = "[^\\w\\.\\,\\n\\s]";//The following format is allowed: letters.another.etc,moreletters.etc
-                Pattern pattern = Pattern.compile(regex);
-                
-                if(pattern.matcher(value).find()){
-                	
-                	throw new IllegalArgumentException("Value '" + value + "' for Id '" + name + "'"
-                			  + " is not allowed to contain anything other than word characters, dots and commas.");
-                }else if(value.startsWith(".")){
-                	
-                	throw new IllegalArgumentException("Value '" + value + "' for Id '" + name + "'"
-              			  + " is not allowed to start with a dot.");
-                }else if(value.endsWith(".")){
-                	
-                	throw new IllegalArgumentException("Value '" + value + "' for Id '" + name + "'"
-              			  + " is not allowed to end with a dot.");
-                }
-                
-                String[] tokens = StringUtils.commaDelimitedListToStringArray(value);
-                
-                System.out.println("Name:" + name); 
-                for (int i = 0; i < tokens.length; i++) {
-                	String str = tokens[i].trim();
-                	if(!str.equals("")){
-                		providers.add(new SecurityConfig(str));
-                	}
-                	
-                }              
-               System.out.println("Providers:" + providers + " Size:" + providers.size());
-               if (providers.size() > 0) {
-            	   source.addProviders(name, providers);
-               }
+	        	List<ConfigAttribute> providers = new ArrayList<ConfigAttribute>();
+	        	String name = (String) iter.next();
+	            String value = props.getProperty(name);
+	            
+	            //The following format is allowed: letters.another.etc,moreletters.etc
+	            String regex = "[^\\w\\.\\,\\n\\s]";
+	            Pattern pattern = Pattern.compile(regex);
+	            
+	            if(pattern.matcher(value).find()){
+	            	
+	            	throw new IllegalArgumentException("Value '" + value + "' for Id '" + name + "'"
+	            			  + " is not allowed to contain anything other than word characters, dots and commas.");
+	            }else if(value.startsWith(".")){
+	            	
+	            	throw new IllegalArgumentException("Value '" + value + "' for Id '" + name + "'"
+	          			  + " is not allowed to start with a dot.");
+	            }else if(value.endsWith(".")){
+	            	
+	            	throw new IllegalArgumentException("Value '" + value + "' for Id '" + name + "'"
+	          			  + " is not allowed to end with a dot.");
+	            }
+	            
+	            String[] tokens = StringUtils.commaDelimitedListToStringArray(value);   
+	            for (int i = 0; i < tokens.length; i++) {
+	            	String str = tokens[i].trim();
+	            	if(!str.equals("")){
+	            		providers.add(new SecurityConfig(str));
+	            	}
+	            	
+	            }              
+               
+		        if (providers.size() > 0) {
+		           source.addProviders(name, providers);
+		        }
             }  
         }
         setValue(source);
