@@ -29,11 +29,11 @@ public class RecoverableExceptionTest extends AbstractExceptionTest<TestRecovera
     }
 
     protected TestRecoverableException createException() {
-        return new TestRecoverableException("message");
+        return new TestRecoverableException("messageFrom");
     }
 
     protected TestRecoverableException createExceptionWithCause(Exception e) {
-        return new TestRecoverableException(e, "message");
+        return new TestRecoverableException(e, "messageFrom");
     }
 
     protected TestRecoverableException createCopy(TestRecoverableException re) {

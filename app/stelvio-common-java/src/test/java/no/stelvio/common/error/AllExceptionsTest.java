@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-import com.agical.rmock.extension.junit.RMockTestCase;
+import static org.junit.Assert.fail;
+import org.junit.Test;
+
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
@@ -20,19 +22,16 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * or PMD module.
  */
 //public class AllExceptionsTest extends DynamicTestSuite {
-public class AllExceptionsTest extends RMockTestCase {
-    public AllExceptionsTest() {
-        super("Tests that all exceptions have the correct constructors");
-    }
-
-    public void test() throws IOException, ClassNotFoundException, NoSuchMethodException {
+public class AllExceptionsTest {
+    @Test
+    public void allExceptionHaveCorrectConstructors() throws IOException, ClassNotFoundException, NoSuchMethodException {
         Enumeration<URL> resources = getClass().getClassLoader().getResources("");
         List<Class<Exception>> filelist = new ArrayList<Class<Exception>>();
 
         while (resources.hasMoreElements()) {
             URL url = resources.nextElement();
             File topDir = new File(url.getFile());
-            findAllFilesRecursive(topDir, filelist, topDir);
+            findAllClassesRecursive(topDir, filelist, topDir);
         }
 
         List<Class<Exception>> classes = new ArrayList<Class<Exception>>();
@@ -56,7 +55,7 @@ public class AllExceptionsTest extends RMockTestCase {
         }
     }
 
-    private void findAllFilesRecursive(File directory, List<Class<Exception>> filelist, File start) throws ClassNotFoundException {
+    private void findAllClassesRecursive(File directory, List<Class<Exception>> filelist, File start) throws ClassNotFoundException {
         File[] files = directory.listFiles(new FileFilter() {
             public boolean accept(File pathname) {
                 return pathname.getName().endsWith(".class") || pathname.isDirectory();
@@ -65,7 +64,7 @@ public class AllExceptionsTest extends RMockTestCase {
 
         for (File file : files) {
             if (file.isDirectory()) {
-                findAllFilesRecursive(file, filelist, start);
+                findAllClassesRecursive(file, filelist, start);
             } else {
                 Class<?> exception = makeException(file, start);
 
@@ -82,11 +81,13 @@ public class AllExceptionsTest extends RMockTestCase {
         String className = classAsPath.replace(File.separatorChar, '.').replace(".class", "");
         Class<?> exceptionClass = Class.forName(className, false, Thread.currentThread().getContextClassLoader());
 
-        if (SystemException.class.isAssignableFrom(exceptionClass) ||
-            RecoverableException.class.isAssignableFrom(exceptionClass)) {
-            return exceptionClass;
-        } else {
-            return null;
+        if (!Modifier.isAbstract(exceptionClass.getModifiers())) {
+            if (UnrecoverableException.class.isAssignableFrom(exceptionClass) ||
+                RecoverableException.class.isAssignableFrom(exceptionClass)) {
+                return exceptionClass;
+            }
         }
+
+        return null;
     }
 }

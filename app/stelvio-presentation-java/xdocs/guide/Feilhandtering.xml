@@ -76,7 +76,7 @@
 <source><![CDATA[
 <global-exceptions>
 	<exception key="exception.systemexception"
-    	   	type="no.stelvio.common.error.SystemException"
+    	   	type="no.stelvio.common.error.UnrecoverableException"
 		path="/WEB-INF/pages/SystemException.jsp">
 	</exception>
 </global-exceptions>

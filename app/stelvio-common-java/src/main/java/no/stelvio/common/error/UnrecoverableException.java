@@ -14,32 +14,32 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * @todo is the name correct when the previous todo is implemented?
  * @todo should it have an abstract method, or something, maybe just use protected constructors.
  */
-public abstract class SystemException extends RuntimeException implements StelvioException {
+public abstract class UnrecoverableException extends RuntimeException implements StelvioException {
     private final CommonExceptionLogic commonExceptionLogic;
 
     /**
-	 * Constructs a new SystemException with the specified list of templateArguments for the message template.
+	 * Constructs a new UnrecoverableException with the specified list of templateArguments for the messageFrom template.
 	 * 
-	 * @param templateArguments the templateArguments to use when filling out the message template.
+	 * @param templateArguments the templateArguments to use when filling out the messageFrom template.
      */
-    protected SystemException(Object... templateArguments) {
+    protected UnrecoverableException(Object... templateArguments) {
 		this(null, templateArguments);
 	}
 
     /**
-     * Constructs a new SystemException with the specified cause and list of templateArguments for the message template.
+     * Constructs a new UnrecoverableException with the specified cause and list of templateArguments for the messageFrom template.
 	 *
 	 * @param cause the cause of this exception.
-     * @param templateArguments the templateArguments to use when filling out the message template.
+     * @param templateArguments the templateArguments to use when filling out the messageFrom template.
      */
-    protected SystemException(Throwable cause, Object... templateArguments) {
+    protected UnrecoverableException(Throwable cause, Object... templateArguments) {
 		super(cause);
 
         commonExceptionLogic = new SystemExceptionLogic(templateArguments);
     }
 
     /**
-	 * Constructs a copy of the specified SystemException without the cause.
+	 * Constructs a copy of the specified UnrecoverableException without the cause.
      * <p>
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.
@@ -47,11 +47,11 @@ public abstract class SystemException extends RuntimeException implements Stelvi
 	 * @param holder
      * @see RethrowExceptionHandlerStrategy
      */
-	protected SystemException(ExceptionToCopyHolder holder) {
+	protected UnrecoverableException(ExceptionToCopyHolder holder) {
 		super();
 
-        SystemException systemException = SystemException.class.cast(holder.value());
-        commonExceptionLogic = new SystemExceptionLogic(systemException.commonExceptionLogic);
+        UnrecoverableException unrecoverableException = UnrecoverableException.class.cast(holder.value());
+        commonExceptionLogic = new SystemExceptionLogic(unrecoverableException.commonExceptionLogic);
     }
 
     /**
@@ -153,16 +153,17 @@ public abstract class SystemException extends RuntimeException implements Stelvi
 	}
 
     /**
-     * Implemented by subclasses by returning the template to use for constructing the exception's message.
+     * Implemented by subclasses by returning the template to use for constructing the exception's messageFrom.
      *
-     * @return the template to use for constructing the exception's message.
+     * @return the template to use for constructing the exception's messageFrom.
      */
-    protected abstract String getMessageTemplate();
+    protected abstract String messageTemplate();
 
     /**
      * @todo is it okay to have a non-static inner class?
      */
     private class SystemExceptionLogic extends CommonExceptionLogic {
+
         public SystemExceptionLogic(Object[] templateArguments) {
             super(templateArguments);
         }
@@ -172,7 +173,7 @@ public abstract class SystemException extends RuntimeException implements Stelvi
         }
 
         protected String getMessageTemplate() {
-            return SystemException.this.getMessageTemplate();
+            return UnrecoverableException.this.messageTemplate();
         }
     }
 }

@@ -1,18 +1,18 @@
 package no.stelvio.common.codestable;
 
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.error.UnrecoverableException;
 
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
  * @todo make more specific exceptions
  */
-public class CodesTableException extends SystemException {
+public class CodesTableException extends UnrecoverableException {
     public CodesTableException(String message) {
-        super(message);
+        super();
     }
 
-    protected String getMessageTemplate() {
+    protected String messageTemplate() {
         return "Problems with handling codes table: {0}";
     }
 }

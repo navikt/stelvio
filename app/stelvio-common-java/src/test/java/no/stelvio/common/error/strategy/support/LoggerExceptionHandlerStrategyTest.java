@@ -1,164 +1,121 @@
 package no.stelvio.common.error.strategy.support;
 
-import junit.framework.TestCase;
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.RecoverableException;
-import no.stelvio.common.error.SystemException;
-import no.stelvio.common.util.Log469MessageFormatterImpl;
-import no.stelvio.common.util.MessageFormatter;
-import no.stelvio.common.util.SequenceNumberGenerator;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.impl.LogFactoryImpl;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsSame.same;
+import static org.hamcrest.text.StringContains.containsString;
+import org.jmock.InAnyOrder;
+import org.jmock.Mockery;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+
+import no.stelvio.common.error.Err;
+import no.stelvio.common.error.ErrorResolver;
+import no.stelvio.common.error.TestRecoverableException;
+import no.stelvio.common.error.TestUnrecoverableException;
+import no.stelvio.common.error.message.Extractor;
 
 /**
- * Unit test of LogHandlerImpl.
+ * Unit test of {@link LoggerExceptionHandlerStrategy}.
  * 
- * @author person7553f5959484
- * @version $Revision: 2843 $ $Author: psa2920 $ $Date: 2006-02-15 13:00:22
- *          +0100 (on, 15 feb 2006) $
+ * @author personcb9a87e24a5f
+ * @todo fails because the setup of expectations must be all done in one block.
  */
-public class LoggerExceptionHandlerStrategyTest extends TestCase {
+public class LoggerExceptionHandlerStrategyTest {
+    private LoggerExceptionHandlerStrategy leh;
+    private Mockery context;
+    private Log log;
 
-	LoggerExceptionHandlerStrategy h = null;
+    @Test
+    public void exceptionShouldBeMarkedLogged() {
+        TestUnrecoverableException systemException = leh.handleException(new TestUnrecoverableException("error"));
 
-	MessageFormatter msgFormatter = null;
+        assertTrue("Should have been marked as logged", systemException.isLogged());
+        context.assertIsSatisfied();
+    }
 
-	/**
-	 * Initialize Handler
-	 * 
-	 * {@inheritDoc}
-	 */
-	protected void setUp() {
-		h = new LoggerExceptionHandlerStrategy();
-		msgFormatter = new Log469MessageFormatterImpl("T666", "Java", "Bidrag Fase 2", "yyyyMMdd", "HHmmss");
-		h.setMessageFormatter(msgFormatter);
-		h.init();
+    @Test
+    public void sameExceptionIsReturned() throws Throwable {
+        Throwable systemException = new TestUnrecoverableException("error");
+        Throwable throwable = leh.handleException(systemException);
+
+        assertThat(throwable, same(systemException));
+        context.assertIsSatisfied();
+    }
+
+    @Test
+    public void messageIsCreatedFromTemplateInErrorsTableAndLogged() throws TestRecoverableException {
+        context.expects(new InAnyOrder() {{
+            one (log).debug("test");
+        }});
+
+        leh.handleException(new TestRecoverableException("error"));
+        context.assertIsSatisfied();
+    }
+
+    @Test
+    public void messageContainsArgumentsToException() throws TestRecoverableException {
+        context.expects(new InAnyOrder() {{
+            one (log).debug(with(containsString("error")));
+        }});
+
+        leh.handleException(new TestRecoverableException("error"));
+        context.assertIsSatisfied();
+    }
+
+    @Before
+    public void setupForTest() {
+        context = new Mockery();
+        leh = createInstanceToTest();
+
+        System.setProperty("org.apache.commons.logging.LogFactory",
+                "no.stelvio.common.error.strategy.support.LoggerExceptionHandlerStrategyTest$TestLogFactory");
+        LogFactory.releaseAll();
+        ((TestLogFactory) LogFactory.getFactory()).setLog(log);
+        log = context.mock(Log.class);
 	}
 
-	/**
-	 * Destroy Handler.
-	 * 
-	 * {@inheritDoc}
-	 */
-	protected void tearDown() {
-		h = null;
-	}
+    private LoggerExceptionHandlerStrategy createInstanceToTest() {
+        LoggerExceptionHandlerStrategy leh = new LoggerExceptionHandlerStrategy();
+        leh.setExtractor(createExtractorMock());
+        leh.setErrorResolver(createErrorResolverMock());
+        return leh;
+    }
 
-	/*
-	 * Test for Throwable handleError(Throwable)
-	 */
-	public void testHandleErrorSystemExceptions() {
+    private Extractor createExtractorMock() {
+        final Extractor extractor = context.mock(Extractor.class);
 
-		RequestContext.setScreenId("Oppgaveliste");
-		RequestContext.setModuleId("Oppgaveliste");
-		RequestContext.setProcessId("HentOppgavelister");
-		RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
-		RequestContext.setUserId("psa2920");
+        context.expects(new InAnyOrder() {{
+            one (extractor).messageFrom(with(a(Throwable.class))); will(returnValue("test"));
+        }});
 
-/* TODO make a better test
-		assertTrue("handleError(SystemException) should have returned SystemException", h
-				.handleError(new SystemException(new Object[] { new Integer(0),
-						new Double(1.2) })) instanceof SystemException);
+        return extractor;
+    }
 
-		assertTrue("handleError(SystemException) should have returned SystemException", h
-				.handleError(new SystemException(new IllegalArgumentException(
-						"Ulovlig tallformat, kun heltall er lovlig"), new Double(137.89))) instanceof SystemException);
+    private ErrorResolver createErrorResolverMock() {
+        final ErrorResolver errorResolver = context.mock(ErrorResolver.class);
+        final Err result = new Err.Builder(String.class).message("test: {0}").build();
 
-		assertTrue("handleError(SystemException) should have returned SystemException", h
-				.handleError(new SystemException()) instanceof SystemException);
+        context.expects(new InAnyOrder() {{
+            one (errorResolver).resolve(with(a(Throwable.class))); will(returnValue(result));
+            one (errorResolver).resolve(with(a(Throwable.class))); will(returnValue(result));
+        }});
 
-		assertTrue("handleError(SystemException) should have returned SystemException", h
-				.handleError(new SystemException()) instanceof SystemException);
+        return errorResolver;
+    }
 
-		assertTrue("handleError(Exception) should have returned SystemException", h.handleError(new Exception(
-				"Dette er en Exception")) instanceof SystemException);
-*/
+    public static class TestLogFactory extends LogFactoryImpl {
+        private Log log;
 
-	}
-
-	public void testHandleErrorApplicationExceptions() {
-
-		RequestContext.setScreenId("Oppgaveliste");
-		RequestContext.setModuleId("Oppgaveliste");
-		RequestContext.setProcessId("HentOppgavelister");
-		RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
-		RequestContext.setUserId("psa2920");
-
-/* TODO make a better test
-		assertTrue("handleError(RecoverableException) should have returned RecoverableException", h
-				.handleError(new RecoverableException(new Object[] { new Integer(0),
-						new Double(1.2) })) instanceof RecoverableException);
-
-		assertTrue(
-				"handleError(RecoverableException) should have returned RecoverableException",
-				h.handleError(new RecoverableException(new IllegalArgumentException(
-						"Ulovlig tallformat, kun heltall er lovlig"), new Double(137.89))) instanceof RecoverableException);
-
-		assertTrue("handleError(RecoverableException) should have returned RecoverableException", h
-				.handleError(new RecoverableException()) instanceof RecoverableException);
-
-		assertTrue("handleError(RecoverableException) should have returned RecoverableException", h
-				.handleError(new RecoverableException()) instanceof RecoverableException);
-*/
-
-	}
-
-	public void testGetMessage() {
-/* TODO make a better test
-		assertNotNull(h.getMessage(new RecoverableException(new IllegalArgumentException(
-				"Ulovlig tallformat, kun heltall er lovlig"), new Double(137.89))));
-
-		assertNotNull(h.getMessage(new RecoverableException(new IllegalArgumentException(
-				"Ulovlig tallformat, kun heltall er lovlig"), new Double(137.89))));
-*/
-
-		assertNotNull(h.getMessage(new Exception("Dette er en Exception")));
-	}
-
-	public void testErrorsInErrorHandling() {
-		LoggerExceptionHandlerStrategy h1 = new LoggerExceptionHandlerStrategy();
-
-		try {
-			h1.init();
-//	TODO better here		fail("Init failed, should have caught SystemException");
-		} catch (Throwable t) {
-			assertTrue("Init should have thrown SystemException", t instanceof SystemException);
-		}
-
-		LoggerExceptionHandlerStrategy h2 = new LoggerExceptionHandlerStrategy();
-
-		try {
-			h2.init();
-//	TODO		fail("Init failed, should have thrown SystemException");
-		} catch (SystemException t) {
-			// should happen
-		}
-
-		LoggerExceptionHandlerStrategy h3 = new LoggerExceptionHandlerStrategy();
-		h3.init();
-
-		RequestContext.setProcessId("HentOppgavelister");
-		RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId()));
-	}
-
-	public void testErrorMessageIncludeErrorCodeAndId() {
-		RecoverableException le = new TestRecoverableException("message");
-
-		// Should only check that the formatting is done correctly, not the
-		// error id or message is retrieved correctly
-		assertEquals("Do not have error code and id", "ErrCode=1,ErrId=" + le.getErrorId() + ",Message="
-				+ h.getMessage(le), h.getSystemLogMessage(le));
-	}
-
-    private class TestRecoverableException extends RecoverableException {
-        public TestRecoverableException(String message) {
-            super(message);
+        public Log getInstance(Class clazz) {
+            return log;
         }
 
-        protected String getMessageTemplate() {
-            return "testApplicationException: {0}";
-        }
-
-        protected int getMessageTemplateArgumentsLength() {
-            return 1;
+        public void setLog(Log log) {
+            this.log = log;
         }
     }
 }

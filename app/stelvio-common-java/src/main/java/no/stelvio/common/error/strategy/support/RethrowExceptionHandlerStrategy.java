@@ -17,7 +17,7 @@ public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy
      * @param exception
      * @return
      */
-    public <T extends Throwable> T handle(T exception) throws T {
+    public <T extends Throwable> T handleException(T exception) throws T {
         T copy;
 
         if (exception instanceof StelvioException) {
@@ -50,6 +50,6 @@ public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy
             origCopy = imitator;
         }
 
-        throw copy;
+        return copy;
     }
 }

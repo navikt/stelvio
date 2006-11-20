@@ -92,7 +92,7 @@ public class CommonExceptionLogicTest {
     @Test
     public void messageIsGeneratedFromTemplateAndArgs() {
         CommonExceptionLogic cel = createDummy("nr1:{0},nr2:{1,number,integer},nr3:{2}", arguments);
-        assertEquals(cel.getMessage(), "nr1:class java.lang.String,nr2:1,nr3:arg", "Not the correct message;");
+        assertEquals(cel.getMessage(), "nr1:class java.lang.String,nr2:1,nr3:arg", "Not the correct messageFrom;");
     }
 
     @BeforeMethod

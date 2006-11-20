@@ -61,9 +61,9 @@ public abstract class CommonExceptionLogic implements Serializable {
     }
 
     /**
-     * Implemented by subclasses by returning the template to use for constructing the exception's message.
+     * Implemented by subclasses by returning the template to use for constructing the exception's messageFrom.
      *
-     * @return the template to use for constructing the exception's message.
+     * @return the template to use for constructing the exception's messageFrom.
      */
     protected abstract String getMessageTemplate();
 
@@ -118,7 +118,7 @@ public abstract class CommonExceptionLogic implements Serializable {
         String template = getMessageTemplate();
 
         if (StringUtils.isBlank(template)) {
-            throw new IllegalArgumentException("The message template should not be empty");
+            throw new IllegalArgumentException("The messageFrom template should not be empty");
         }
 
         MessageFormat messageFormat = new MessageFormat(template);

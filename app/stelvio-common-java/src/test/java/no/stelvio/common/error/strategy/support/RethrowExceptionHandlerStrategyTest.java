@@ -1,16 +1,17 @@
 package no.stelvio.common.error.strategy.support;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import no.stelvio.common.error.TestSystemException;
+import no.stelvio.common.error.TestUnrecoverableException;
 
 /**
  * Unit test for {@link RethrowExceptionHandlerStrategy}.
  *
  * @author personf8e9850ed756
- * @todo now we only use SystemException in the test, should RecoverableException also be used?
+ * @todo now we only use UnrecoverableException in the test, should RecoverableException also be used?
  */
 public class RethrowExceptionHandlerStrategyTest {
     private RethrowExceptionHandlerStrategy rethrower;
@@ -18,7 +19,7 @@ public class RethrowExceptionHandlerStrategyTest {
     @Test
     public void causesIsExchangedWithImitatorInRethrownException() {
         handleException(new ExceptionHandler() {
-            public void handle(TestSystemException original, TestSystemException copy) {
+            public void handle(TestUnrecoverableException original, TestUnrecoverableException copy) {
                 for (Throwable cause = copy.getCause(); cause != null; cause = cause.getCause()) {
                     assertTrue("Cause should be of type ImitatorException", cause instanceof ImitatorException);
                 }
@@ -29,7 +30,7 @@ public class RethrowExceptionHandlerStrategyTest {
     @Test
     public void stacktraceElementsAreTheSameInRethrownException() {
         handleException(new ExceptionHandler() {
-            public void handle(TestSystemException original, TestSystemException copy) {
+            public void handle(TestUnrecoverableException original, TestUnrecoverableException copy) {
                 Throwable origCause = original.getCause();
                 Throwable copyCause = copy.getCause();
 
@@ -49,20 +50,13 @@ public class RethrowExceptionHandlerStrategyTest {
     }
 
     private void handleException(ExceptionHandler exceptionHandler) {
-        TestSystemException te = createThrownException();
-
-        try {
-            rethrower.handle(te);
-            fail("Rethrower should throw the exception");
-        } catch (TestSystemException e) {
-            exceptionHandler.handle(te, e);
-        }
+        exceptionHandler.handle(createThrownException(), rethrower.handleException(createThrownException()));
     }
 
-    private TestSystemException createThrownException() {
+    private TestUnrecoverableException createThrownException() {
         try {
             a();
-        } catch (TestSystemException e) {
+        } catch (TestUnrecoverableException e) {
             return e;
         }
 
@@ -73,16 +67,16 @@ public class RethrowExceptionHandlerStrategyTest {
     private void a() {
         try {
             b();
-        } catch (TestSystemException e) {
-            throw new TestSystemException(e, "b()");
+        } catch (TestUnrecoverableException e) {
+            throw new TestUnrecoverableException(e, "b()");
         }
     }
 
     private void b() {
         try {
             c();
-        } catch (TestSystemException e) {
-            throw new TestSystemException(e, "c()");
+        } catch (TestUnrecoverableException e) {
+            throw new TestUnrecoverableException(e, "c()");
         }
     }
 
@@ -91,10 +85,10 @@ public class RethrowExceptionHandlerStrategyTest {
     }
 
     private void d() {
-        throw new TestSystemException(new IllegalArgumentException(), "d()");
+        throw new TestUnrecoverableException(new IllegalArgumentException(), "d()");
     }
 
     private static interface ExceptionHandler {
-        void handle(TestSystemException original, TestSystemException copy);
+        void handle(TestUnrecoverableException original, TestUnrecoverableException copy);
     }
 }

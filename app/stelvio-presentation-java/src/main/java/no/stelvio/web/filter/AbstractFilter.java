@@ -16,7 +16,7 @@ import org.apache.commons.logging.LogFactory;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.LoggableException;
 import no.stelvio.common.error.StelvioException;
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.error.UnrecoverableException;
 import no.stelvio.common.util.SequenceNumberGenerator;
 
 /**
@@ -136,11 +136,11 @@ public abstract class AbstractFilter implements Filter {
 		} catch (RuntimeException re) {
 
 			// Create a new top level error
-			SystemException se = null;
-//				new SystemException(re, new String[] { filterConfig.getFilterName()});TODO: handled differently
+			UnrecoverableException se = null;
+//				new UnrecoverableException(re, new String[] { filterConfig.getFilterName()});TODO: handled differently
 
 			// Handle the error
-//			ErrorHandler.handleError(se); TODO: handled differently
+//			ErrorHandler.handleException(se); TODO: handled differently
 
 			//	Loop through the exception chain to build a nested message for the system exception.
 			StringBuffer message = new StringBuffer();

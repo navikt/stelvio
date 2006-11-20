@@ -1,19 +1,17 @@
 package no.stelvio.common.util;
 
-import java.util.Arrays;
-
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.error.UnrecoverableException;
 
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
  */
-public class ReflectionException extends SystemException {
+public class ReflectionException extends UnrecoverableException {
     public ReflectionException(Exception cause, String... name) {
-        super(cause, Arrays.asList(name));
+        super(cause);
     }
 
-    protected String getMessageTemplate() {
+    protected String messageTemplate() {
         return "Problems doing reflection with the following arguments: {0}";
     }
 }

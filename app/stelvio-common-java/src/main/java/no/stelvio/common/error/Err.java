@@ -18,8 +18,8 @@ public class Err {
     private String shortDescription;
     private String longDescription;
 
-    private Err(String id) {
-        this.id = id;
+    private Err(String className) {
+        this.className = className;
     }
 
     public Err(String id,
@@ -42,10 +42,6 @@ public class Err {
         return id;
     }
 
-    public Locale getLocale() {
-        return locale;
-    }
-
     public String getClassName() {
         return className;
     }
@@ -66,17 +62,49 @@ public class Err {
         return longDescription;
     }
 
+    public String toString() {
+        return "Err{" +
+                "className='" + className + '\'' +
+                ", message='" + message + '\'' +
+                '}';
+    }
+
     // TODO should this be here?
     // TODO test this
     public static class Builder {
         Err err;
 
-        public Builder(String id) {
-            err = new Err(id);
+        public Builder(String className) {
+            err = new Err(className);
+        }
+
+        // TODO is this correct? Cannot use Class<? extends Throwable> when using StelvioException
+        public Builder(Class<? extends Object> clazz) {
+            err = new Err(clazz.getName()); 
         }
 
         public Err build() {
             return err;
+        }
+
+        public Builder message(String message) {
+            err.message = message;
+            return this;
+        }
+
+        public Builder severity(Severity severity) {
+            err.severity = severity;
+            return this;
+        }
+
+        public Builder shortDescription(String description) {
+            err.shortDescription = description;
+            return this;
+        }
+
+        public Builder longDescription(String description) {
+            err.longDescription = description;
+            return this;
         }
     }
 }

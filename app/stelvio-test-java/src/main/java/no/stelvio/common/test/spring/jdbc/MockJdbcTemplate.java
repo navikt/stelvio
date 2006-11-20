@@ -6,12 +6,8 @@ import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
 
-import org.jmock.builder.BuilderNamespace;
-import org.jmock.builder.MatchBuilder;
-import org.jmock.builder.NameMatchBuilder;
-import org.jmock.cglib.Mock;
-import org.jmock.core.InvocationMatcher;
-import org.jmock.core.Verifiable;
+import org.jmock.Mockery;
+import org.jmock.internal.ExpectationBuilder;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -30,25 +26,36 @@ import org.springframework.jdbc.support.SQLExceptionTranslator;
 import org.springframework.jdbc.support.nativejdbc.NativeJdbcExtractor;
 
 /**
+ * A mocked version of {@link JdbcTemplate} that should be used in unit tests.
+ *
  * @author person02f3de2754b4, Accenture
+ * @todo check out if this works
  */
-public class MockJdbcTemplate extends JdbcTemplate implements Verifiable, BuilderNamespace {
+public class MockJdbcTemplate extends JdbcTemplate { //implements Verifiable, BuilderNamespace {
 
-	private final Mock mockJdbcTemplate = new Mock(JdbcTemplate.class);
-	private final JdbcTemplate proxyJdbcTemplate = (JdbcTemplate) mockJdbcTemplate.proxy();
+    private final Mockery context = new Mockery();
+	private final JdbcTemplate proxyJdbcTemplate = context.mock(JdbcTemplate.class);
+	private final ResultSet proxyResultSet = context.mock(ResultSet.class);
 
-	private final Mock mockResultSet = new Mock(ResultSet.class);
-	private final ResultSet proxyResultSet = (ResultSet) mockResultSet.proxy();
-	
-	/**
+    /**
+     * Sets the expected number of times a method should be called. Use the returned value to set the expected method.
+     *
+     * @param groupBuilder a matcher for setting how many times a method should be called.
+     * @todo javadoc is not correct.
+     */
+    public void expects(ExpectationBuilder groupBuilder) {
+        context.expects(groupBuilder);
+    }
+
+    /**
 	 * Sets the expected return for a result set
 	 *
 	 * @param invocationMatcher a matcher for setting return from result set
-	 * @return an instance of NameMatchBuilder to use for setting which method should be called.
-	 * @see NameMatchBuilder
+     * @todo javadoc is not correct.
+     * @todo don't need our own expect method
 	 */
-	public NameMatchBuilder expectsOnResultSet(InvocationMatcher invocationMatcher) {
-		return mockResultSet.expects(invocationMatcher);
+    public void expectsOnResultSet(ExpectationBuilder groupBuilder) {
+        context.expects(groupBuilder);
 	}
 
 	/**
@@ -413,43 +420,10 @@ public class MockJdbcTemplate extends JdbcTemplate implements Verifiable, Builde
 	}
 
 	/**
-	 * Sets the expected number of times a method should be called. Use the returned value to set the expected method.
-	 *
-	 * @param invocationMatcher a matcher for setting how many times a method should be called.
-	 * @return an instance of NameMatchBuilder to use for setting which method should be called.
-	 * @see NameMatchBuilder
-	 */
-	public NameMatchBuilder expects(InvocationMatcher invocationMatcher) {
-		return mockJdbcTemplate.expects(invocationMatcher);
-	}
-
-	/**
 	 * Verifies that the JdbcTemplate and ResultSet are used correctly.
 	 */
 	public void verify() {
-		mockJdbcTemplate.verify();
-		mockResultSet.verify();
-	}
-
-	/**
-	 * @see BuilderNamespace#lookupID(String)
-	 */
-	public MatchBuilder lookupID(String arg0) {
-		return mockJdbcTemplate.lookupID(arg0);
-	}
-
-	/**
-	 * @see BuilderNamespace#registerMethodName(String, MatchBuilder)
-	 */
-	public void registerMethodName(String arg0, MatchBuilder arg1) {
-		mockJdbcTemplate.registerMethodName(arg0, arg1);
-	}
-
-	/**
-	 * @see BuilderNamespace#registerUniqueID(String, MatchBuilder)
-	 */
-	public void registerUniqueID(String arg0, MatchBuilder arg1) {
-		mockJdbcTemplate.registerUniqueID(arg0, arg1);
-	}
+        context.assertIsSatisfied();
+    }
 
 }

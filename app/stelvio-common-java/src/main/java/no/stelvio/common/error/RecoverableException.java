@@ -11,16 +11,16 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: RecoverableException.java 2839 2006-04-25 10:23:10Z psa2920 $
- * @todo change javadoc to say something about only use it when the client MUST catch it else use SystemException.
+ * @todo change javadoc to say something about only use it when the client MUST catch it else use UnrecoverableException.
  * @todo is the name correct when the previous todo is implemented? Maybe call it RecoverableExcpetion?
  */
 public abstract class RecoverableException extends Exception implements StelvioException {
     private final CommonExceptionLogic commonExceptionLogic;
 
     /**
-	 * Constructs a new RecoverableException with the specified list of getTemplateArguments for the message template.
+	 * Constructs a new RecoverableException with the specified list of getTemplateArguments for the messageFrom template.
 	 * 
-	 * @param templateArguments the getTemplateArguments to use when filling out the message template.
+	 * @param templateArguments the getTemplateArguments to use when filling out the messageFrom template.
      */
     protected RecoverableException(Object... templateArguments) {
 		this(null, templateArguments);
@@ -28,10 +28,10 @@ public abstract class RecoverableException extends Exception implements StelvioE
 
     /**
      * Constructs a new RecoverableException with the specified cause and list of templateArguments for
-     * the message template.
+     * the messageFrom template.
 	 *
 	 * @param cause the cause of this exception.
-     * @param templateArguments the getTemplateArguments to use when filling out the message template.
+     * @param templateArguments the getTemplateArguments to use when filling out the messageFrom template.
      */
     protected RecoverableException(Throwable cause, Object... templateArguments) {
 		super(cause);
@@ -154,9 +154,9 @@ public abstract class RecoverableException extends Exception implements StelvioE
 	}
 
     /**
-     * Implemented by subclasses by returning the template to use for constructing the exception's message.
+     * Implemented by subclasses by returning the template to use for constructing the exception's messageFrom.
      *
-     * @return the template to use for constructing the exception's message.
+     * @return the template to use for constructing the exception's messageFrom.
      */
     protected abstract String getMessageTemplate();
 

@@ -4,7 +4,7 @@ import java.security.Permission;
 import java.util.PropertyPermission;
 
 import junit.framework.TestCase;
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.error.UnrecoverableException;
 
 /**
  * Unit test for DefaultLocaleStartupHelper.
@@ -21,8 +21,8 @@ public class DefaultLocaleStartupHelperTest extends TestCase {
 	public void testSetDefaultLocaleLanguageNotValid() {
 		try {
 			new DefaultLocaleStartupHelper("norsk", "NO");
-			fail("DefaultLocaleStartupHelper should have thrown SystemException.LOCALE_LANGUAGE_NOT_SUPPORTED");
-		} catch (SystemException e) {
+			fail("DefaultLocaleStartupHelper should have thrown UnrecoverableException.LOCALE_LANGUAGE_NOT_SUPPORTED");
+		} catch (UnrecoverableException e) {
             // should happen
 		}
 	}
@@ -30,8 +30,8 @@ public class DefaultLocaleStartupHelperTest extends TestCase {
 	public void testSetDefaultLocaleCountryNotValid() {
 		try {
 			new DefaultLocaleStartupHelper("no", "NORGE");
-			fail("DefaultLocaleStartupHelper should have thrown SystemException.LOCALE_COUNTRY_NOT_SUPPORTED");
-		} catch (SystemException e) {
+			fail("DefaultLocaleStartupHelper should have thrown UnrecoverableException.LOCALE_COUNTRY_NOT_SUPPORTED");
+		} catch (UnrecoverableException e) {
             // should happen
 		}
 	}
@@ -39,8 +39,8 @@ public class DefaultLocaleStartupHelperTest extends TestCase {
 	public void testSetDefaultLocaleLocaleNotAvailable() {
 		try {
 			new DefaultLocaleStartupHelper("no", "US");
-			fail("DefaultLocaleStartupHelper should have thrown SystemException.LOCALE_NOT_AVAILABLE");
-		} catch (SystemException e) {
+			fail("DefaultLocaleStartupHelper should have thrown UnrecoverableException.LOCALE_NOT_AVAILABLE");
+		} catch (UnrecoverableException e) {
             // should happen
 		}
 	}
@@ -51,8 +51,8 @@ public class DefaultLocaleStartupHelperTest extends TestCase {
 		try {
 			System.setSecurityManager(new TestSecurityManager());
 			new DefaultLocaleStartupHelper("no", "NO");
-			fail("DefaultLocaleStartupHelper should have thrown SystemException.LOCALE_SECURITY_FAILURE");
-		} catch (SystemException e) {
+			fail("DefaultLocaleStartupHelper should have thrown UnrecoverableException.LOCALE_SECURITY_FAILURE");
+		} catch (UnrecoverableException e) {
             // should happen
 		} finally {
 			System.setSecurityManager(oldSecurityManager);

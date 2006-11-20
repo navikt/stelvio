@@ -32,7 +32,7 @@ class ImitatorException extends RuntimeException {
      * <p>
      * This will be a string consisting of the name of the class of which the
      * object is imitating, the string `<code>(imitated)</code>', and
-     * the message of the class of which the object is imitating.
+     * the messageFrom of the class of which the object is imitating.
      * <p>
      * In other words, this method returns a string equal to the
      * value of:

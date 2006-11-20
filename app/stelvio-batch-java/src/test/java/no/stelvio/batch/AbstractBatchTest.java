@@ -4,22 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import org.jmock.MockObjectTestCase;
+import org.jmock.integration.junit3.MockObjectTestCase;
 
 import no.stelvio.batch.domain.BatchDO;
-import no.stelvio.common.error.SystemException;
-import no.stelvio.common.test.spring.hibernate.MockHibernateTemplate;
+import no.stelvio.common.error.UnrecoverableException;
 import no.stelvio.common.util.MessageFormatter;
 
 /**
  * @author person356941106810, Accenture
  * @version $Id: AbstractBatchTest.java 1955 2005-02-08 15:43:02Z psa2920 $
+ * @todo make a MockJpaTemplate to use here
  */
 public class AbstractBatchTest extends MockObjectTestCase {
 
 	private AbstractBatch testClass = null;
 	private int desiredStatus = BatchStatus.BATCH_OK;
-	private MockHibernateTemplate mockHibernateTemplate;
 
 	protected void setUp() throws Exception {
 		// this line is added just to get 100% on batchstatus
@@ -38,8 +37,8 @@ public class AbstractBatchTest extends MockObjectTestCase {
 			}
 		});
 
-		mockHibernateTemplate = new MockHibernateTemplate();
-		testClass.setHibernateTemplate(mockHibernateTemplate);
+//		mockHibernateTemplate = new MockHibernateTemplate();
+//		testClass.setHibernateTemplate(mockHibernateTemplate);
 	}
 
 	private void initHibernateTemplateFindExpectations() {
@@ -49,17 +48,21 @@ public class AbstractBatchTest extends MockObjectTestCase {
 		List list = new ArrayList();
 		list.add(batchDO);
 
+/*
 		mockHibernateTemplate.
 		        expects(once()).
 		        method("findByNamedQueryAndNamedParam").
 		        with(eq("BATCH_BY_BATCHNAME"), eq("batchname"), eq("testBatch")).
 		        will(returnValue(list));
+*/
 	}
 
 	private void initHibernateTemplateSaveExpectations() {
+/*
 		mockHibernateTemplate.
 		        expects(once()).
 		        method("saveOrUpdate").with(eq(null));
+*/
 	}
 
 	public void testReadBatchParameters() {
@@ -89,8 +92,8 @@ public class AbstractBatchTest extends MockObjectTestCase {
 	public void testExceptionThrownWhenBatchPropertiesIsNull() {
 		try {
 			testClass.getBatchProperties(null);
-			fail("SystemException should have been thrown");
-		} catch (SystemException se) {
+			fail("UnrecoverableException should have been thrown");
+		} catch (UnrecoverableException se) {
             // should happen
 		}
 	}
@@ -120,8 +123,8 @@ public class AbstractBatchTest extends MockObjectTestCase {
 	public void testSetNullBatch() {
 		try {
 			testClass.setBatchProperties(null, new Properties());
-			fail("SystemException should have been thrown");
-		} catch (SystemException se) {
+			fail("UnrecoverableException should have been thrown");
+		} catch (UnrecoverableException se) {
             // should happen
 		}
 	}

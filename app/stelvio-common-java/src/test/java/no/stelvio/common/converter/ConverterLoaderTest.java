@@ -2,11 +2,8 @@ package no.stelvio.common.converter;
 
 import java.util.HashMap;
 
-import no.stelvio.common.converter.ConverterLoader;
-import no.stelvio.common.converter.DateConverter;
-import no.stelvio.common.error.SystemException;
-
 import junit.framework.TestCase;
+import no.stelvio.common.error.UnrecoverableException;
 
 /**
  * 
@@ -48,7 +45,7 @@ public class ConverterLoaderTest extends TestCase {
 		try {
 			loader.init();
 			fail();
-		} catch (SystemException e) {
+		} catch (UnrecoverableException e) {
 			assertTrue("Should Fail", true);
 		}
 		

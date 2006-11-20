@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import no.stelvio.common.error.TestSystemException;
+import no.stelvio.common.error.TestUnrecoverableException;
 
 /**
  * Unit test for {@link ImitatorException}.
@@ -22,12 +22,12 @@ public class ImitatorExceptionTest {
 
     @Test
     public void messageShouldBeEqualToImitatedException() {
-        assertEquals("The message is wrong", "illegalArgument", imitator.getMessage());
+        assertEquals("The messageFrom is wrong", "illegalArgument", imitator.getMessage());
     }
 
     @Test
     public void stacktraceElementsAreCopiedFromImitatedException() {
-        TestSystemException thrown = createThrownException();
+        TestUnrecoverableException thrown = createThrownException();
 
         ImitatorException imitatorException = new ImitatorException(thrown);
         assertEquals("Stack traces don't match up; ",
@@ -36,7 +36,7 @@ public class ImitatorExceptionTest {
 
     @Test
     public void causeShouldNotBeCopied() {
-        TestSystemException thrown = createThrownException();
+        TestUnrecoverableException thrown = createThrownException();
 
         assertNull("Cause should be removed", new ImitatorException(thrown).getCause());
     }
@@ -46,10 +46,10 @@ public class ImitatorExceptionTest {
         imitator = new ImitatorException(new IllegalArgumentException("illegalArgument"));
     }
 
-    private TestSystemException createThrownException() {
+    private TestUnrecoverableException createThrownException() {
         try {
-            throw new TestSystemException("state");
-        } catch (TestSystemException e) {
+            throw new TestUnrecoverableException("state");
+        } catch (TestUnrecoverableException e) {
             return e;
         }
     }

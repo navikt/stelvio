@@ -4,9 +4,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import no.stelvio.common.error.RecoverableException;
-import no.stelvio.common.error.SystemException;
 import no.stelvio.common.error.TestRecoverableException;
-import no.stelvio.common.error.TestSystemException;
+import no.stelvio.common.error.TestUnrecoverableException;
+import no.stelvio.common.error.UnrecoverableException;
 
 /**
  * Unit test for {@link ExceptionToCopyHolder}.
@@ -16,9 +16,9 @@ import no.stelvio.common.error.TestSystemException;
 public class ExceptionToCopyHolderTest {
     @Test
     public void addingASystemExceptionReturnsTheSame() {
-        ExceptionToCopyHolder<SystemException> holder =
-                new ExceptionToCopyHolder<SystemException>(new TestSystemException("sys"));
-        assertTrue("Should return a SystemException", holder.value() instanceof SystemException);
+        ExceptionToCopyHolder<UnrecoverableException> holder =
+                new ExceptionToCopyHolder<UnrecoverableException>(new TestUnrecoverableException("sys"));
+        assertTrue("Should return a UnrecoverableException", holder.value() instanceof UnrecoverableException);
     }
 
     @Test

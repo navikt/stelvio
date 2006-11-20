@@ -1,12 +1,7 @@
 package no.stelvio.common.test.spring.transaction;
 
-
-import junit.framework.AssertionFailedError;
-
-import org.jmock.builder.NameMatchBuilder;
-import org.jmock.core.InvocationMatcher;
-import org.jmock.core.Verifiable;
-import org.jmock.Mock;
+import org.jmock.Mockery;
+import org.jmock.internal.ExpectationGroupBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.TransactionStatus;
@@ -23,24 +18,23 @@ import org.springframework.transaction.support.TransactionTemplate;
  * @see org.springframework.transaction.support.TransactionTemplate
  * @see org.springframework.transaction.support.TransactionTemplate#execute(org.springframework.transaction.support.TransactionCallback)
  */
-public class MockTransactionTemplate extends TransactionTemplate implements Verifiable {
-
-	private final Mock mockTransactionStatus = new Mock(TransactionStatus.class);
-	private final TransactionStatus proxyTransactionStatus = (TransactionStatus) mockTransactionStatus.proxy();
+public class MockTransactionTemplate extends TransactionTemplate {
+    private final Mockery context = new Mockery();
+    final TransactionStatus proxyTransactionStatus = context.mock(TransactionStatus.class);
 
 	/**
 	 * Sets the expected number of times a method on TransactinStatus should be called. Use the returned value to set
 	 * the expected method.
 	 *
 	 * @param invocationMatcher a matcher for setting how many times a method should be called.
-	 * @return an instance of NameMatchBuilder to use for setting which method should be called.
-	 * @see NameMatchBuilder
+     * @todo fix javadoc
+     * @todo don't need an expect method especially for TransactionStatus; doesn't give anything
 	 */
-	public NameMatchBuilder expectsOnTransactionStatus(InvocationMatcher invocationMatcher) {
-		return mockTransactionStatus.expects(invocationMatcher);
-	}
+	public void expectsOnTransactionStatus(ExpectationGroupBuilder builder) {
+        context.expects(builder);
+    }
 
-	/**
+    /**
 	 * Runs the TransactionCallback action and handles the exceptions like it is done in TransactionTemplate, that is,
 	 * nothing is done with them as no rollback is done in unit tests. The method is given a mock TransactionStatus
 	 *
@@ -56,22 +50,24 @@ public class MockTransactionTemplate extends TransactionTemplate implements Veri
 	}
 
 	public void setTransactionManager(PlatformTransactionManager transactionManager) {
-		throw createNoExecuteAssertionFailed();
+		throwUnsupportedOperationException();
 	}
 
 	public PlatformTransactionManager getTransactionManager() {
-		throw createNoExecuteAssertionFailed();
-	}
+		throwUnsupportedOperationException();
+        // Will never get here
+        return null;
+    }
 
 	public void afterPropertiesSet() {
-		throw createNoExecuteAssertionFailed();
+		throwUnsupportedOperationException();
 	}
 
-	private AssertionFailedError createNoExecuteAssertionFailed() {
-		return new AssertionFailedError("Should not be executed");
+	private void throwUnsupportedOperationException() {
+		throw new UnsupportedOperationException("Should not be executed");
 	}
 
 	public void verify() {
-		mockTransactionStatus.verify();
+		context.assertIsSatisfied();
 	}
 }

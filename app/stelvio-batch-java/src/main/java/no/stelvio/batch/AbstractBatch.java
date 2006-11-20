@@ -18,7 +18,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import no.stelvio.batch.domain.BatchDO;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.Severity;
-import no.stelvio.common.error.SystemException;
+import no.stelvio.common.error.UnrecoverableException;
 import no.stelvio.common.util.MessageFormatter;
 
 /**
@@ -28,6 +28,7 @@ import no.stelvio.common.util.MessageFormatter;
  * @author person1f201b37d484, Accenture
  * @author personf8e9850ed756, Accenture
  * @version $Id: AbstractBatch.java 2834 2006-03-10 10:41:36Z skb2930 $
+ * @todo should be using JpaTemplate
  */
 public abstract class AbstractBatch {
 
@@ -81,24 +82,24 @@ public abstract class AbstractBatch {
 	 * Executes a batch and returns the status.
 	 *
 	 * @return the status code of the batch.
-	 * @throws SystemException if batch execution fails.
+	 * @throws UnrecoverableException if batch execution fails.
 	 */
-	public abstract int executeBatch() throws SystemException;
+	public abstract int executeBatch() throws UnrecoverableException;
 
 	/**
 	 * Reads the batch configuration for the given batch.
 	 *
 	 * @param batchName the name of the batch to read config for
 	 * @return the batch configuration or null if no config exists.
-	 * @throws SystemException if the specified batch was not found.
+	 * @throws UnrecoverableException if the specified batch was not found.
 	 */
-	protected BatchDO readBatchParameters(String batchName) throws SystemException {
+	protected BatchDO readBatchParameters(String batchName) throws UnrecoverableException {
 
 		final List list = getHibernateTemplate().findByNamedQueryAndNamedParam("BATCH_BY_BATCHNAME", "batchname", batchName);
 
 		if (list.size() != 1) {
             // TODO check this out
-//			throw new SystemException(
+//			throw new UnrecoverableException(
 //                    batchName + " has zero or more than 1 entries in the database");
 		}
 
@@ -110,12 +111,12 @@ public abstract class AbstractBatch {
 	 *
 	 * @param batchDO the batch configuration
 	 * @return the batch properties
-	 * @throws SystemException if batchDO is null.
+	 * @throws UnrecoverableException if batchDO is null.
 	 */
-	protected Properties getBatchProperties(BatchDO batchDO) throws SystemException {
+	protected Properties getBatchProperties(BatchDO batchDO) throws UnrecoverableException {
 		if (batchDO == null) {
             // TODO check this out
-//			throw new SystemException("Batch parameters cannot be null");
+//			throw new UnrecoverableException("Batch parameters cannot be null");
 		}
 
 		Properties props = new Properties();
@@ -133,7 +134,7 @@ public abstract class AbstractBatch {
 			props.load(stream);
 		} catch (IOException e) {
             // TODO check this out
-//			throw new SystemException(
+//			throw new UnrecoverableException(
 //                    e,
 //				"Could not read batch properties; wrong format: " + params);
 		}
@@ -148,9 +149,9 @@ public abstract class AbstractBatch {
 	 *
 	 * @param batchDO the batch configuration to update
 	 * @param props the the updated properties
-	 * @throws SystemException if batchDO is null.
+	 * @throws UnrecoverableException if batchDO is null.
 	 */
-	protected void setBatchProperties(BatchDO batchDO, Properties props) throws SystemException {
+	protected void setBatchProperties(BatchDO batchDO, Properties props) throws UnrecoverableException {
 		if (props == null) {
 			batchDO.setParameters(null);
 			return;
@@ -158,7 +159,7 @@ public abstract class AbstractBatch {
 
 		if (batchDO == null) {
             // TODO check this out
-//			throw new SystemException("Batch parameters cannot be null");
+//			throw new UnrecoverableException("Batch parameters cannot be null");
 		}
 
 		Enumeration names = props.propertyNames();
