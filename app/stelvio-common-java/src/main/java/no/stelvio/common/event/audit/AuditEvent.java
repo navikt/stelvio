@@ -69,4 +69,14 @@ public class AuditEvent extends ApplicationEvent {
             throw new IllegalArgumentException(argumentName + " is mandatory");
         }
     }
+
+
+    public String toString() {
+        return "AuditEvent{" +
+                "message='" + message + '\'' +
+                ", userLogin='" + userLogin + '\'' +
+                ", userLocation='" + userLocation + '\'' +
+                ", auditItems=" + auditItems +
+                '}';
+    }
 }

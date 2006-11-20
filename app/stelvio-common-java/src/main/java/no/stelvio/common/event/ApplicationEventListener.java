@@ -8,5 +8,5 @@ import org.springframework.context.ApplicationListener;
  * @todo should it extend AppListener? Then it must implement onApplicationEvent --> not correct naming?
  * @todo is the class name ok? should not start with the same as the package -> could be ApplicationListener
  */
-public interface EventListener extends ApplicationListener {
+public interface ApplicationEventListener extends ApplicationListener {
 }

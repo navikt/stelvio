@@ -14,15 +14,15 @@ import no.stelvio.common.event.audit.AuditItem;
  * @author personf8e9850ed756
  * @todo write javadoc
  * @todo should check out how to publish an AuditEvent by having a bean that is ApplicationEventPublisherAware
- * that publishees an AuditEvent and our own test EventListener
+ * that publishees an AuditEvent and our own test ApplicationEventListener
  * @todo should be an integration test.
  */
 public class EventIntegrationTest extends AbstractDependencyInjectionSpringContextTests {
     private TestBean bean;
-    private TestEventListener event;
+    private TestApplicationEventListener event;
 
     protected String[] getConfigLocations() {
-        return new String[] { "test-event.xml" };  // TODO: where's the spring config?
+        return new String[] { "test-event.xml" };
     }
 
     public void testPublishOk() throws Exception {
@@ -47,9 +47,9 @@ public class EventIntegrationTest extends AbstractDependencyInjectionSpringConte
     /**
      * Will be populated by Spring from the context.
      *
-     * @param event the TestEventListener to use in this test.
+     * @param event the TestApplicationEventListener to use in this test.
      */
-    public void setEvent(TestEventListener event) {
+    public void setEvent(TestApplicationEventListener event) {
         this.event = event;
     }
 
@@ -69,7 +69,7 @@ public class EventIntegrationTest extends AbstractDependencyInjectionSpringConte
     }
 
     // Just having this in Spring's context file will register it with the application context.
-    private static class TestEventListener implements EventListener {
+    private static class TestApplicationEventListener implements ApplicationEventListener {
         private AuditEvent event;
 
         public void onApplicationEvent(ApplicationEvent event) {

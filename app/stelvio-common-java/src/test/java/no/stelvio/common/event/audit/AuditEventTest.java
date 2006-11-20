@@ -2,6 +2,11 @@ package no.stelvio.common.event.audit;
 
 import java.util.HashSet;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.eq;
+import static org.junit.Assert.fail;
+import org.junit.Test;
+
 import no.stelvio.common.event.ApplicationEvent;
 import no.stelvio.common.event.ApplicationEventTest;
 
@@ -11,7 +16,8 @@ import no.stelvio.common.event.ApplicationEventTest;
  * @author personf8e9850ed756
  */
 public class AuditEventTest extends ApplicationEventTest {
-    public void testConstructorArgumentsAreMandatory() {
+    @Test
+    public void constructorArgumentsAreMandatory() {
         HashSet<AuditItem> auditItems = createAuditItems();
 
         createAuditEventAndCheckForMissingInputFailure(null, "userLogin", "userLocation", auditItems);
@@ -20,13 +26,18 @@ public class AuditEventTest extends ApplicationEventTest {
         createAuditEventAndCheckForMissingInputFailure("message", "userLogin", "userLocation", null);
     }
 
-    public void testAuditInfoIsSaved() {
+    @Test
+    public void auditInfoIsSaved() {
         AuditEvent event = (AuditEvent) getEvent();
 
-        assertEquals("Message is not correct", event.getMessage(), "message");
-        assertEquals("User login is not correct", event.getUserLogin(), "userLogin");
-        assertEquals("User location is not correct", event.getUserLocation(), "userLocation");
-        assertEquals("1 audit item should be present", event.getAuditItems().size(), 1);
+        assertThat(event.getMessage(), eq("message"));
+        assertThat(event.getUserLogin(), eq("userLogin"));
+        assertThat(event.getUserLocation(), eq("userLocation"));
+        assertThat(event.getAuditItems().size(), eq(1));
+    }
+
+    protected ApplicationEvent createApplicationEvent() {
+        return new AuditEvent(this, "message", "userLogin", "userLocation", createAuditItems());
     }
 
     private void createAuditEventAndCheckForMissingInputFailure(
@@ -37,10 +48,6 @@ public class AuditEventTest extends ApplicationEventTest {
         } catch (IllegalArgumentException e) {
             // should happen
         }
-    }
-
-    protected ApplicationEvent createApplicationEvent() {
-        return new AuditEvent(this, "message", "userLogin", "userLocation", createAuditItems());
     }
 
     private HashSet<AuditItem> createAuditItems() {

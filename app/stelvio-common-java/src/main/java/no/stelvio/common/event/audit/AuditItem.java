@@ -40,4 +40,11 @@ public class AuditItem {
     public Object getAuditable() {
         return auditable;
     }
+
+    public String toString() {
+        return "AuditItem{" +
+                "description='" + description + '\'' +
+                ", auditable=" + auditable +
+                '}';
+    }
 }

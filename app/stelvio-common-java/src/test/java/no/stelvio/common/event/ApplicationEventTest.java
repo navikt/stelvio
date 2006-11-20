@@ -1,31 +1,32 @@
 package no.stelvio.common.event;
 
-import junit.framework.TestCase;
+import org.hamcrest.MatcherAssert;
+import static org.hamcrest.core.IsSame.same;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Unit test for {@link ApplicationEvent}:
  *
  * @author personf8e9850ed756
  */
-public abstract class ApplicationEventTest extends TestCase {
+public abstract class ApplicationEventTest {
     private ApplicationEvent event;
 
-    public void testConstructorArgumentAreMandatory() {
-        try {
-            new ApplicationEvent(null) {};
-            fail("IllegalArgumentException should have been thrown");
-        } catch (IllegalArgumentException e) {
-            // should happen
-        }
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorArgumentAreMandatory() {
+        new ApplicationEvent(null) {};
     }
 
-    public void testObjectOnWhichTheEventInitiallyOccurredIsSaved() {
-        assertEquals("Should hold this instance", event.getSource(), this);
+    @Test
+    public void objectOnWhichTheEventInitiallyOccurredIsSaved() {
+        MatcherAssert.assertThat((ApplicationEventTest) event.getSource(), same(this));
     }
 
     protected abstract ApplicationEvent createApplicationEvent();
 
-    protected void setUp() throws Exception {
+    @Before
+    public void setupApplicationEvent() throws Exception {
         event = createApplicationEvent();
     }
 

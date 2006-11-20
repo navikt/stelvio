@@ -1,14 +1,16 @@
 package no.stelvio.common.event.audit;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.fail;
+import org.junit.Test;
 
 /**
  * Unit test for {@link AuditItem}.
  *
  * @author personf8e9850ed756
  */
-public class AuditItemTest extends TestCase {
-    public void testConstructorArgumentsAreMandatory() {
+public class AuditItemTest {
+    @Test
+    public void constructorArgumentsAreMandatory() {
         createAuditItemAndCheckForMissingInputFailure(null, new Object());
         createAuditItemAndCheckForMissingInputFailure("description", null);
     }
