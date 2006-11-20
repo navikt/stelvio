@@ -18,7 +18,6 @@ import org.junit.Test;
 public class AccessVoterManagerTests {
 
 	
-
 	@Test
 	public void testCheckAllowIfAllAbstainDecisions() {
 		AccessVoterManager mgr = new AccessVoterManager();
@@ -101,7 +100,6 @@ public class AccessVoterManagerTests {
         	manager.addDecisionVoters(config);
         	fail("Should have thrown IllegalArgumentException");
         } catch (IllegalArgumentException expected) {
-        	System.out.println("Exception caught:" + expected.getMessage());
             assertTrue(true);
         }    	
 	}
