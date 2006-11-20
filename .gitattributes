@@ -220,6 +220,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/R
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/CommonExceptionLogicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/DefaultErrorResolverTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacadeTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ErrorHandlingAdviceTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ErrorResolverFactoryBeanTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ExceptionToCopyHolderTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/event/ApplicationEventTest.java -text
