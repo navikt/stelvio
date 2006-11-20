@@ -12,7 +12,8 @@ import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
- * @todo should we log to specific logs? Like ENTERPRISE_LOG / SYSTEM_LOG as were done in previous version
+ * @todo should we log to specific logs? Like ENTERPRISE_LOG / SYSTEM_LOG as were done in previous version ->
+ * use a log resolver maybe? Share with event logging
  */
 public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy {
     // TODO probably this need to be better
