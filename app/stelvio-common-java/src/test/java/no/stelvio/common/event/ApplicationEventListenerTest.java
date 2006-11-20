@@ -1,7 +1,6 @@
 package no.stelvio.common.event;
 
 import static org.junit.Assert.fail;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -9,12 +8,10 @@ import org.junit.Test;
  * @author personf8e9850ed756
  */
 public abstract class ApplicationEventListenerTest {
-    private ApplicationEventListener applicationEventListener;
-
     @Test
     public void applicationEventAreMandatory() {
         try {
-            applicationEventListener.onApplicationEvent(null);
+            createEventListener().onApplicationEvent(null);
             fail("IllegalArgumentException should have been thrown");
         } catch (IllegalArgumentException e) {
             // should happen
@@ -22,9 +19,4 @@ public abstract class ApplicationEventListenerTest {
     }
 
     protected abstract ApplicationEventListener createEventListener();
-
-    @Before
-    public void setupApplicationEventListener() throws Exception {
-        applicationEventListener = createEventListener();
-    }
 }
