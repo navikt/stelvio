@@ -25,10 +25,11 @@ public class EventPublisherExceptionHandlerStrategyTest {
         strategy.setApplicationEventPublisher(eventPublisher);
 
         context.expects(new InAnyOrder() {{
-            one (eventPublisher).publishEvent(new ApplicationEvent(this){});
+            one (eventPublisher).publishEvent(with(an(ApplicationEvent.class)));
         }});
 
         strategy.handleException(new Throwable());
+        context.assertIsSatisfied();
     }
 
     @Test
