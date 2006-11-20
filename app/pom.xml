@@ -5,7 +5,7 @@
     <groupId>no.stelvio</groupId>
     <artifactId>stelvio</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>stelvio</name>
     <modules>
         <module>stelvio-common-java</module>
@@ -155,14 +155,14 @@
             <url>scp://utviklerportalen.adeo.no/var/maven2/internal</url>
         </repository>
         <snapshotRepository>
-            <id>nav-maven2-snapshot-repo</id>
+            <id>nav-pensjon-maven2-snapshot-repo</id>
             <name>NAV Maven2 Internal Snapshot Repository</name>
-            <url>scp://10.3.32.41/var/maven2/snapshot</url>
+            <url>scp://utviklerportalen.adeo.no/var/maven2/snapshot</url>
         </snapshotRepository>
-        <!--site>
+        <site>
             <id>website</id>
-            <url>scp://www.mycompany.com/www/docs/project/</url>
-        </site-->
+            <url>scp://10.33.1.53/var/www/html/project/</url>
+        </site>
     </distributionManagement>
     <reporting>
         <plugins>
@@ -170,46 +170,36 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <quiet>true</quiet>
-                    <tags>
-                        <tag>
-                            <name>todo</name>
-                            <placement>a</placement>
-                            <head>To do:</head>
-                        </tag>
-                    </tags>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <id>html</id>
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                    <reportSet>
-                        <id>doccheck</id>
-                        <configuration>
-                            <!-- TODO the configuration is not correct; the report is generated, but gets located in a null folder -->
-                            <name>DocCheck</name>
-                            <description>DocCheck documentation</description>
-                            <doclet>com.sun.tools.doclets.doccheck.DocCheck</doclet>
-                            <docletArtifact>
-                                <groupId>com.sun.tools.doclets</groupId>
-                                <artifactId>doccheck</artifactId>
-                                <version>1.2b2</version>
-                            </docletArtifact>
-                            <destDir>doccheck</destDir>
-                        </configuration>
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.1</version>
+        <reportSets>
+          <reportSet>
+            <id>html</id>
+            <reports>
+              <report>javadoc</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>doccheck</id>
+            <configuration>
+              <name>DocCheck</name>
+              <description>DocCheck documentation</description>
+              <doclet>com.sun.tools.doclets.doccheck.DocCheck</doclet>
+              <docletArtifact>
+                <groupId>com.sun.tools.doclets</groupId>
+                <artifactId>doccheck</artifactId>
+                <version>1.2b2</version>
+              </docletArtifact>
+	        <additionalparam>-d .</additionalparam>
+              <destDir>doccheck</destDir>
+            </configuration>
+            <reports>
+              <report>javadoc</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
             <plugin>
                 <artifactId>maven-surefire-report-plugin</artifactId>
             </plugin>
