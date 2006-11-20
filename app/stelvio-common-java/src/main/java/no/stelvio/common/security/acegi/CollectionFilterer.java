@@ -63,7 +63,8 @@ public class CollectionFilterer implements DataFilterer {
         removeList.add(object);
     }
     
-    /* (non-Javadoc)
+    /**
+     * 
      * @see no.stelvio.common.security.acegi.DataFilterer#clear()
      */
     public void clear(){

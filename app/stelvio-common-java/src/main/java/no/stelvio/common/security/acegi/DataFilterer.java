@@ -3,7 +3,7 @@ import java.util.Iterator;
 
 
 /**
-* TODO
+ * Interface for collection or array filtering.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$

@@ -2,8 +2,6 @@ package no.stelvio.common.security.acegi;
 
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.SecurityConfig;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import org.springframework.beans.propertyeditors.PropertiesEditor;
 import org.springframework.util.StringUtils;
@@ -25,9 +23,6 @@ import java.util.regex.*;
  */
 
 public class AnnotationAttributesMappingEditor extends PropertyEditorSupport {
-
-    private static final Log logger = LogFactory.getLog(AnnotationAttributesMappingEditor.class);
-
 
     /** 
      * Creates and populates a {@link AnnotationAttributesMapping} using a string in the following format:
