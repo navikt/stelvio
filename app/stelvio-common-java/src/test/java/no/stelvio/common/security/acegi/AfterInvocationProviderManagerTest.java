@@ -73,7 +73,6 @@ public class AfterInvocationProviderManagerTest {
         	manager.addProviders(config);
         	fail("Should have thrown IllegalArgumentException");
         } catch (IllegalArgumentException expected) {
-        	System.out.println("Exception caught:" + expected.getMessage());
             assertTrue(true);
         }    	
 	}
