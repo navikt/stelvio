@@ -118,8 +118,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorResol
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorsRetriever.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ExceptionToCopyHolder.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/ApplicationEvent.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/event/AuditEvent.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/event/AuditItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/EventListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/audit/AuditEvent.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/audit/AuditItem.java -text
