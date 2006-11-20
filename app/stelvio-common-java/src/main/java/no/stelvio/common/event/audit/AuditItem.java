@@ -16,7 +16,7 @@ public class AuditItem {
         }
 
         if (null == auditable) {
-            throw new IllegalArgumentException("description is mandatory");
+            throw new IllegalArgumentException("auditable is mandatory");
         }
 
         this.description = description;
