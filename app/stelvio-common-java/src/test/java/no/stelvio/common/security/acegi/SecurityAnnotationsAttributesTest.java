@@ -63,7 +63,6 @@ public class SecurityAnnotationsAttributesTest {
 				this.attributes.getAttributes(MockService2.class);
 				fail("Should have thrown AcegiConfigurationException.");
 		} catch (AcegiConfigurationException expected) {
-			System.out.println("Exception:" + expected.getMessage());
 			assertTrue(true);
 		}	
 	}
@@ -121,7 +120,6 @@ public class SecurityAnnotationsAttributesTest {
 				this.attributes.getAttributes(method);
 				fail("Should have thrown AcegiConfigurationException.");
 		} catch (AcegiConfigurationException expected) {
-			System.out.println("Exception:" + expected.getMessage());
 			assertTrue(true);
 		}	
         
