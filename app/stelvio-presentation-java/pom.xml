@@ -50,6 +50,7 @@
             <groupId>no.stelvio</groupId>
             <artifactId>stelvio-test-java</artifactId>
             <version>${pom.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
