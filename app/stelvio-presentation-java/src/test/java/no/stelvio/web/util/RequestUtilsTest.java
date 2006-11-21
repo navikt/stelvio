@@ -1,9 +1,12 @@
 package no.stelvio.web.util;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.eq;
+import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockServletContext;
 
-import junit.framework.TestCase;
+import junit.framework.JUnit4TestAdapter;
 
 /**
  * Description
@@ -11,12 +14,13 @@ import junit.framework.TestCase;
  * @author Jonas Lindholm
  * @version $Revision: 2348 $ $Author: psa2920 $ $Date: 2005-06-21 16:26:50 +0200 (Tue, 21 Jun 2005) $
  */
-public class RequestUtilsTest extends TestCase {
+public class RequestUtilsTest {
 	private final MockServletContext context = new MockServletContext();
 	private final MockHttpServletRequest request = new MockHttpServletRequest(context);
 
 	/** Test with two execute request parameters */
-	final public void testGetProcessId() {
+    @Test
+    public void getProcessId() {
 		addRequestParameter("para1", "value1");
 		addRequestParameter("para2", "value2");
 		addRequestParameter("executeWindow1", "executeValue1");
@@ -24,39 +28,43 @@ public class RequestUtilsTest extends TestCase {
 
 		String processId = RequestUtils.getProcessId(request);
 
-		assertEquals("Window2", processId);
+		assertThat(processId, eq("Window2"));
 	}
 
 	/** Test for a imagebutton request */
-	final public void testGetProcessId2() {
+    @Test
+	public void getProcessId2() {
 		addRequestParameter("para1", "value1");
 		addRequestParameter("para2", "value2");
 		addRequestParameter("executeSok.y", "nada");
 
 		String processId = RequestUtils.getProcessId(request);
 
-		assertEquals("Sok", processId);
+        assertThat(processId, eq("Sok"));
 	}
 
 	/** Test for a nested button */
-	final public void testGetProcessId3() {
+    @Test
+	public void getProcessId3() {
 		addRequestParameter("para1", "value1");
 		addRequestParameter("para2", "value2");
 		addRequestParameter("executeVelg[1]", "nada");
 
 		String processId = RequestUtils.getProcessId(request);
 
-		assertEquals("Velg", processId);
+        assertThat(processId, eq("Velg"));
 	}
 
 	/** Test default method */
-	final public void testGetProcessId4() {
+    @Test
+	public void getProcessId4() {
 		String processId = RequestUtils.getProcessId(request);
 
-		assertEquals("Load", processId);
+        assertThat(processId, eq("Load"));
 	}
 
-	final public void testGetMethodNumber() {
+    @Test
+	public void getMethodNumber() {
 		addRequestParameter("para1", "value1");
 		addRequestParameter("para2", "value2");
 		//addRequestParameter("executeWindow1", "executeValue1");
@@ -66,15 +74,20 @@ public class RequestUtilsTest extends TestCase {
 
 		Integer methodNumber = RequestUtils.getMethodNumber(request);
 
-		assertEquals(new Integer(1), methodNumber);
+        assertThat(methodNumber, eq(1));
 	}
 
-	final public void testGetMethod() {
+    @Test
+	public void getMethod() {
 		String processId = RequestUtils.getProcessId(request);
-		assertEquals(processId, "Load");
+        assertThat(processId, eq("Load"));
 	}
 
     private void addRequestParameter(String key, String value) {
 		request.addParameter(key, value);
 	}
+
+    public static junit.framework.Test suite() {
+        return new JUnit4TestAdapter(RequestUtilsTest.class);
+    }
 }
