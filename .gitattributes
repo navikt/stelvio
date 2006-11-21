@@ -41,7 +41,6 @@ app/stelvio-business-java/xdocs/index.xml -text
 app/stelvio-business-java/xdocs/navigation.xml -text
 app/stelvio-common-java/.classpath -text
 app/stelvio-common-java/.project -text
-app/stelvio-common-java/LICENSE.txt -text
 app/stelvio-common-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
 app/stelvio-common-java/models/rtv-framework-common.mdx -text
 app/stelvio-common-java/pom.xml -text
