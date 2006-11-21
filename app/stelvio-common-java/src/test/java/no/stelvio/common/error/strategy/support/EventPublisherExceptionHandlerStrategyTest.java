@@ -1,6 +1,6 @@
 package no.stelvio.common.error.strategy.support;
 
-import org.hamcrest.MatcherAssert;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsInstanceOf.isA;
 import org.jmock.InAnyOrder;
 import org.jmock.Mockery;
@@ -34,7 +34,7 @@ public class EventPublisherExceptionHandlerStrategyTest {
 
     @Test
     public void shouldImplementApplicationEventPublisherAware() {
-        MatcherAssert.assertThat(strategy, isA(ApplicationEventPublisherAware.class));
+        assertThat(strategy, isA(ApplicationEventPublisherAware.class));
     }
 
     @Before
