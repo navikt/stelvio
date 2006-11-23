@@ -24,8 +24,8 @@ public class AnnotationAttributesMapping {
 	
 	/**
 	 * Adds a list of providers to the HashMap with the annotationAttribute as the key.
-	 * @param annotationAttribute
-	 * @param providers
+	 * @param annotationAttribute the annotationAttribute
+	 * @param providers the provider list
 	 */
 	public void addProviders(String annotationAttribute, List<ConfigAttribute> providers)
 	{

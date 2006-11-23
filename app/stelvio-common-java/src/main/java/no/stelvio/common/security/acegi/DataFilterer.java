@@ -3,7 +3,7 @@ import java.util.Iterator;
 
 
 /**
- * Interface for collection or array filtering.
+ * Filter strategy interface.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$

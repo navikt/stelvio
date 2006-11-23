@@ -18,7 +18,8 @@ public class CollectionFilterer implements DataFilterer {
 
     
     /**
-     * @param collection
+     * Sets the collection to filter.
+     * @param collection the collection to filter.
      */
     public CollectionFilterer(Collection collection) {
         this.collection = collection;
@@ -34,8 +35,7 @@ public class CollectionFilterer implements DataFilterer {
     }
 
     /**
-     * 
-     * @see org.acegisecurity.afterinvocation.Filterer#getFilteredObject()
+     * {@inheritDoc}
      */
     public Object getFilteredObject() {
         // Now the Iterator has ended, remove Objects from Collection
@@ -47,8 +47,7 @@ public class CollectionFilterer implements DataFilterer {
     }
 
     /**
-     * 
-     * @see org.acegisecurity.afterinvocation.Filterer#iterator()
+     * {@inheritDoc}
      */
     public Iterator iterator() {
         collectionIter = collection.iterator();
@@ -56,16 +55,14 @@ public class CollectionFilterer implements DataFilterer {
     }
 
     /**
-     * 
-     * @see org.acegisecurity.afterinvocation.Filterer#remove(java.lang.Object)
+     * {@inheritDoc}
      */
     public void remove(Object object) {
         removeList.add(object);
     }
     
     /**
-     * 
-     * @see no.stelvio.common.security.acegi.DataFilterer#clear()
+     * {@inheritDoc}
      */
     public void clear(){
     	collection.clear();
