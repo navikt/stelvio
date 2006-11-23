@@ -1,18 +1,21 @@
 
 package no.stelvio.web.security.acegi;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import java.io.IOException;
+import java.security.Principal;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import no.stelvio.web.filter.AbstractFilter;
-import org.acegisecurity.Authentication;
-import org.acegisecurity.GrantedAuthorityImpl;
-import org.acegisecurity.GrantedAuthority;
-import org.acegisecurity.providers.UsernamePasswordAuthenticationToken;
-import org.acegisecurity.context.SecurityContextHolder;
-import java.io.IOException;
 
-import java.security.*;
+import org.acegisecurity.Authentication;
+import org.acegisecurity.GrantedAuthority;
+import org.acegisecurity.GrantedAuthorityImpl;
+import org.acegisecurity.context.SecurityContextHolder;
+import org.acegisecurity.providers.UsernamePasswordAuthenticationToken;
 /**
  * A filter that populates the <code>org.acegisecurity.context.SecurityContext</code> in the 
  * <code>org.acegisecurity.context.SecurityContextHolder</code> with an <code>org.acegisecurity.Authentication</code> 
@@ -29,8 +32,8 @@ public class AcegiSecurityContextFilter extends AbstractFilter
 	
 	/**
 	 * {@inheritDoc}
-	 * 
 	 */
+	@Override
 	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 	throws IOException, ServletException 
 	{
