@@ -298,7 +298,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/excepti
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageProtocolSwitchFailedException.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageSecurityFileNotFoundException.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageSecurityFileParseException.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/ThrowPhaseListenerExceptionsFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/listener/J2eeSecurityPhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/parse/J2EERole.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/parse/J2EERoles.java -text
