@@ -153,12 +153,12 @@
         <repository>
             <id>nav-maven2-internal-repo</id>
             <name>NAV Maven2 Internal Repository</name>
-            <url>scp://utviklerportalen.adeo.no/var/maven2/internal</url>
+            <url>scp://maven.adeo.no/var/maven2/internal</url>
         </repository>
         <snapshotRepository>
             <id>nav-pensjon-maven2-snapshot-repo</id>
             <name>NAV Maven2 Internal Snapshot Repository</name>
-            <url>scp://utviklerportalen.adeo.no/var/maven2/snapshot</url>
+            <url>scp://maven.adeo.no/var/maven2/snapshot</url>
         </snapshotRepository>
         <site>
             <id>website</id>
