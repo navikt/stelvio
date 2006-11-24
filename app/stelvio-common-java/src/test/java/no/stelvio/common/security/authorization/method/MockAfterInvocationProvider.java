@@ -1,4 +1,4 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
 import org.acegisecurity.AccessDeniedException;
 import org.acegisecurity.Authentication;

@@ -1,4 +1,4 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,10 @@ import org.junit.Test;
 
 import org.acegisecurity.SecurityConfig;
 import org.acegisecurity.ConfigAttribute;
-import no.stelvio.common.security.acegi.annotation.Secured;
+import org.acegisecurity.annotation.Secured;
+import no.stelvio.common.security.authorization.method.AcegiConfigurationException;
+import no.stelvio.common.security.authorization.method.AnnotationAttributesMapping;
+import no.stelvio.common.security.authorization.method.SecurityAnnotationsAttributes;
 
 import org.springframework.metadata.Attributes;
 

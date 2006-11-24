@@ -1,6 +1,8 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
 import static org.junit.Assert.*;
+
+import no.stelvio.common.security.authorization.method.AfterInvocationProviderManager;
 
 import org.acegisecurity.AccessDeniedException;
 import org.acegisecurity.ConfigAttributeDefinition;

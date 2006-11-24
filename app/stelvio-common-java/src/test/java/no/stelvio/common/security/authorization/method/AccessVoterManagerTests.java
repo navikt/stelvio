@@ -1,8 +1,11 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import no.stelvio.common.security.authorization.method.AccessVoterManager;
+import no.stelvio.common.security.authorization.method.AlwaysAffirmativeVoter;
 
 import org.acegisecurity.AccessDeniedException;
 import org.acegisecurity.ConfigAttribute;

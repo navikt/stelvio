@@ -1,6 +1,6 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
-import no.stelvio.common.security.acegi.annotation.Secured;
+import org.acegisecurity.annotation.Secured;
 
 @Secured({"Id1"})
 public interface MockService {

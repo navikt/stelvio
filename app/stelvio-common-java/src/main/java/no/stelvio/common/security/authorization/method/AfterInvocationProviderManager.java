@@ -1,4 +1,4 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,8 +1,11 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Method;
+
+import no.stelvio.common.security.authorization.method.AnnotationAttributesMapping;
+import no.stelvio.common.security.authorization.method.AnnotationAttributesMappingEditor;
 
 import org.acegisecurity.ConfigAttributeDefinition;
 //import org.acegisecurity.MockJoinPoint;

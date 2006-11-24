@@ -1,6 +1,8 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
 import static org.junit.Assert.*;
+
+import no.stelvio.common.security.authorization.method.AlwaysAffirmativeVoter;
 
 import org.acegisecurity.vote.AccessDecisionVoter;
 import org.junit.Before;

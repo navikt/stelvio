@@ -1,8 +1,7 @@
-package no.stelvio.common.security.acegi;
+package no.stelvio.common.security.authorization.method;
 
 import org.acegisecurity.ConfigAttribute;
-import no.stelvio.common.security.acegi.annotation.Secured;
-
+import org.acegisecurity.annotation.Secured;
 import org.springframework.metadata.Attributes;
 
 import java.lang.annotation.Annotation;
