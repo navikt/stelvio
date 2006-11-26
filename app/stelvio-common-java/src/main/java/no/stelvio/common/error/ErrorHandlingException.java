@@ -7,7 +7,7 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * @todo write javadoc
  * @todo should this be abstract?
  */
-public abstract class ErrorHandlingException extends UnrecoverableException {
+public abstract class ErrorHandlingException extends SystemUnrecoverableException {
     protected ErrorHandlingException(Object... templateArguments) {
         super(templateArguments);
     }
