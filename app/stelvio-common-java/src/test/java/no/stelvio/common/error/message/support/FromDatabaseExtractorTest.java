@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import no.stelvio.common.error.ErrorResolver;
-import no.stelvio.common.error.RecoverableException;
+import no.stelvio.common.error.FunctionalRecoverableException;
 import no.stelvio.common.error.TestRecoverableException;
 import no.stelvio.common.error.TestUnrecoverableException;
 import no.stelvio.common.error.message.Extractor;
@@ -46,7 +46,7 @@ public class FromDatabaseExtractorTest extends ExtractorTest {
         final ErrorResolver errorResolver = context.mock(ErrorResolver.class);
 
         context.expects(new InAnyOrder() {{
-            one (errorResolver).resolve(with(a(RecoverableException.class)));
+            one (errorResolver).resolve(with(a(FunctionalRecoverableException.class)));
         }});
 
         fromDatabaseExtractor = new FromDatabaseExtractor();

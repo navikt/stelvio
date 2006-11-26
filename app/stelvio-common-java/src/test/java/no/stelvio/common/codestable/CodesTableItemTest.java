@@ -1,7 +1,6 @@
 package no.stelvio.common.codestable;
 
 import java.util.Locale;
-import no.stelvio.common.codestable.CodesTableItem;
 
 import com.agical.rmock.extension.junit.RMockTestCase;
 
@@ -68,10 +67,10 @@ public class CodesTableItemTest extends RMockTestCase {
 	 * Test for boolean equals(Object).
 	 */
 	public void testEqualsObject() {
-		super.assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI1));
-		super.assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.CTI1.equals(null));
-		super.assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.CTI1.equals("String"));
-		super.assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI2));
+		assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI1));
+		assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.CTI1.equals(null));
+		assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.CTI1.equals("String"));
+		assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI2));
 	}
 
 	/**

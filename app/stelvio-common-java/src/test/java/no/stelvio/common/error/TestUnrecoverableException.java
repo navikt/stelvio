@@ -6,7 +6,7 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * @author personf8e9850ed756
 * @todo write javadoc
 */
-public class TestUnrecoverableException extends UnrecoverableException {
+public class TestUnrecoverableException extends SystemUnrecoverableException {
     public TestUnrecoverableException(Object... templateArguments) {
         super(templateArguments);
     }

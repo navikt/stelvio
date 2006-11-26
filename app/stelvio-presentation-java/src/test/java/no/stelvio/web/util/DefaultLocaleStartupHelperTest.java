@@ -4,7 +4,7 @@ import java.security.Permission;
 import java.util.PropertyPermission;
 
 import junit.framework.TestCase;
-import no.stelvio.common.error.UnrecoverableException;
+import no.stelvio.common.error.SystemUnrecoverableException;
 
 /**
  * Unit test for DefaultLocaleStartupHelper.
@@ -22,7 +22,7 @@ public class DefaultLocaleStartupHelperTest extends TestCase {
 		try {
 			new DefaultLocaleStartupHelper("norsk", "NO");
 			fail("DefaultLocaleStartupHelper should have thrown UnrecoverableException.LOCALE_LANGUAGE_NOT_SUPPORTED");
-		} catch (UnrecoverableException e) {
+		} catch (SystemUnrecoverableException e) {
             // should happen
 		}
 	}
@@ -31,7 +31,7 @@ public class DefaultLocaleStartupHelperTest extends TestCase {
 		try {
 			new DefaultLocaleStartupHelper("no", "NORGE");
 			fail("DefaultLocaleStartupHelper should have thrown UnrecoverableException.LOCALE_COUNTRY_NOT_SUPPORTED");
-		} catch (UnrecoverableException e) {
+		} catch (SystemUnrecoverableException e) {
             // should happen
 		}
 	}
@@ -40,7 +40,7 @@ public class DefaultLocaleStartupHelperTest extends TestCase {
 		try {
 			new DefaultLocaleStartupHelper("no", "US");
 			fail("DefaultLocaleStartupHelper should have thrown UnrecoverableException.LOCALE_NOT_AVAILABLE");
-		} catch (UnrecoverableException e) {
+		} catch (SystemUnrecoverableException e) {
             // should happen
 		}
 	}
@@ -52,7 +52,7 @@ public class DefaultLocaleStartupHelperTest extends TestCase {
 			System.setSecurityManager(new TestSecurityManager());
 			new DefaultLocaleStartupHelper("no", "NO");
 			fail("DefaultLocaleStartupHelper should have thrown UnrecoverableException.LOCALE_SECURITY_FAILURE");
-		} catch (UnrecoverableException e) {
+		} catch (SystemUnrecoverableException e) {
             // should happen
 		} finally {
 			System.setSecurityManager(oldSecurityManager);

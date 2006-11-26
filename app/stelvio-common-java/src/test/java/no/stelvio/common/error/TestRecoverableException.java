@@ -6,7 +6,7 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * @author personf8e9850ed756
 * @todo write javadoc
 */
-public class TestRecoverableException extends RecoverableException {
+public class TestRecoverableException extends FunctionalRecoverableException {
     public TestRecoverableException(Object... templateArguments) {
         super(templateArguments);
     }

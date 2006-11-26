@@ -83,11 +83,11 @@ public class CodesTableItemPeriodicTest extends RMockTestCase {
 	 */
 	public void testEqualsObject() {
 	
-		super.assertTrue("Test 1: CodesTableItemPeriodic.equals(CodesTableItemPeriodic) should have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP1));
-		super.assertFalse("Test 2: CodesTableItemPeriodic.equals(null) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(null));
-		super.assertFalse("Test 3: CodesTableItemPeriodic.equals(Object) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals("String"));
-		super.assertFalse("Test 4: CodesTableItemPeriodic1.equals(CodesTableItemPeriodic2) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP2));
-		super.assertFalse("Test 4: CodesTableItemPeriodic1.equals(CodesTableItem2) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItem.CTI2));
+		assertTrue("Test 1: CodesTableItemPeriodic.equals(CodesTableItemPeriodic) should have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP1));
+		assertFalse("Test 2: CodesTableItemPeriodic.equals(null) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(null));
+		assertFalse("Test 3: CodesTableItemPeriodic.equals(Object) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals("String"));
+		assertFalse("Test 4: CodesTableItemPeriodic1.equals(CodesTableItemPeriodic2) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP2));
+		assertFalse("Test 4: CodesTableItemPeriodic1.equals(CodesTableItem2) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItem.CTI2));
 	}
 
 	/**

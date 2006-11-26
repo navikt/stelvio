@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.agical.rmock.extension.junit.RMockTestCase;
-import no.stelvio.common.error.UnrecoverableException;
+import no.stelvio.common.error.SystemUnrecoverableException;
 
 /**
  * Unit test of CodesTableInitializer.
@@ -142,7 +142,7 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 		try{
 			codesTableInitializer.init();
 			fail("Expected exception");
-		} catch(UnrecoverableException ex){
+		} catch(SystemUnrecoverableException ex){
 			assertEquals("Test 1: Expected exception ", "No CodesTables or CodesTablePeriodics have been set", ex.getMessage());
 		}
 	}

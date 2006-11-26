@@ -3,7 +3,7 @@ package no.stelvio.common.converter;
 import java.util.HashMap;
 
 import junit.framework.TestCase;
-import no.stelvio.common.error.UnrecoverableException;
+import no.stelvio.common.error.SystemUnrecoverableException;
 
 /**
  * 
@@ -45,7 +45,7 @@ public class ConverterLoaderTest extends TestCase {
 		try {
 			loader.init();
 			fail();
-		} catch (UnrecoverableException e) {
+		} catch (SystemUnrecoverableException e) {
 			assertTrue("Should Fail", true);
 		}
 		

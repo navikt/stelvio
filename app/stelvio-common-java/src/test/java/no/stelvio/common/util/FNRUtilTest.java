@@ -1,7 +1,7 @@
 package no.stelvio.common.util;
 
 import junit.framework.TestCase;
-import no.stelvio.common.error.RecoverableException;
+import no.stelvio.common.error.FunctionalRecoverableException;
 
 /**
  * Test-klasse for FNR util.
@@ -61,7 +61,7 @@ public class FNRUtilTest extends TestCase {
 	}
 
 
-	public void testIsDoFodt() throws RecoverableException {
+	public void testIsDoFodt() throws FunctionalRecoverableException {
 		assertFalse("Barnet er ikke død-født;", FNRUtil.isDoFodt("12345678901"));
 		assertTrue("Barnet er død-født;", FNRUtil.isDoFodt("12345678901"));
 
