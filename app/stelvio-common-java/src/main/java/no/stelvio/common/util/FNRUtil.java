@@ -2,7 +2,7 @@ package no.stelvio.common.util;
 
 import org.apache.commons.lang.StringUtils;
 
-import no.stelvio.common.error.RecoverableException;
+import no.stelvio.common.error.FunctionalRecoverableException;
 
 /**
  * Util klasse for diverse operasjoner på FNR/DNR.
@@ -93,9 +93,9 @@ public final class FNRUtil {
 	 *
 	 * @param fnr fødselsnummeret til personen.
 	 * @return om barnet er døfødt eller ikke
-	 * @throws RecoverableException hvis en feil oppstår
+	 * @throws FunctionalRecoverableException hvis en feil oppstår
 	 */
-	public static boolean isDoFodt(String fnr) throws RecoverableException {
+	public static boolean isDoFodt(String fnr) throws FunctionalRecoverableException {
 
 		if(!(null != fnr && fnr.length() == FNR_LENGTH && StringUtils.isNumeric(fnr))){			
 			throw new IllegalArgumentException("Fødselsnummer " + fnr + " er ikke gyldig");

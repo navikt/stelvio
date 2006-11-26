@@ -1,14 +1,14 @@
 package no.stelvio.common.util;
 
-import no.stelvio.common.error.UnrecoverableException;
+import no.stelvio.common.error.SystemUnrecoverableException;
 
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
  */
-public class ReflectionException extends UnrecoverableException {
+public class ReflectionException extends SystemUnrecoverableException {
     public ReflectionException(Exception cause, String... name) {
-        super(cause);
+        super(cause, name);
     }
 
     protected String messageTemplate() {

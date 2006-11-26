@@ -1,15 +1,24 @@
 package no.stelvio.common.codestable;
 
-import no.stelvio.common.error.UnrecoverableException;
+import no.stelvio.common.error.SystemUnrecoverableException;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
- * @todo make more specific exceptions
+ * @todo should be abstract
  */
-public class CodesTableException extends UnrecoverableException {
-    public CodesTableException(String message) {
-        super();
+public class CodesTableException extends SystemUnrecoverableException {
+    protected CodesTableException(Object... templateArguments) {
+        super(templateArguments);
+    }
+
+    protected CodesTableException(Throwable cause, Object... templateArguments) {
+        super(cause, templateArguments);
+    }
+
+    protected CodesTableException(ExceptionToCopyHolder holder) {
+        super(holder);
     }
 
     protected String messageTemplate() {
