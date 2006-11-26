@@ -6,11 +6,12 @@ package no.stelvio.common.error.strategy.support;
  * onto other layers without forcing these to include exceptions included in causes in their classpath.
  *
  * @author personf8e9850ed756
- * @see RethrowExceptionHandlerStrategy.
+ * @see RethrowExceptionHandlerStrategy
  * @todo better javadoc
  * @todo should it be in another package?
  * @todo This will fill in the stack trace which is quite excepensive, but this need to be performance tested.
- * @todo If logging is done too, the stack trace will be filled in anyway (see over) 
+ * @todo If logging is done too, the stack trace will be filled in anyway (see over)
+ * @todo should it extend SystemUnrecoverableException? 
  */
 class ImitatorException extends RuntimeException {
     private String throwableToImitateClassName;

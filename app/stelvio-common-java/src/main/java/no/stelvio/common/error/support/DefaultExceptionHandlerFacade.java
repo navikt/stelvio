@@ -7,7 +7,6 @@ import no.stelvio.common.error.strategy.support.FallbackExceptionHandlerStrategy
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
- * @todo should check that all exception classes specified in the database can be instantiated, maybe have a set anyway  
  */
 public class DefaultExceptionHandlerFacade implements ExceptionHandlerFacade {
     // TODO javadoc... default is FallBack...

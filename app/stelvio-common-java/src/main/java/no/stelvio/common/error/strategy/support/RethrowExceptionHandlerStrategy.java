@@ -13,7 +13,6 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  */
 public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy {
     /**
-     * @todo maybe return an object that holds what should be done
      * @param exception
      * @return
      */
@@ -38,7 +37,7 @@ public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy
                 throw new IllegalStateException("Need to have the correct constructor", e);
             }
         } else {
-            // TODO what to do with exception not being our own, wrap them for now
+            // TODO maybe create an exception to hold exceptions not being our own or expand Imitator to extend SystemUnrecoverableException
             copy = (T) new ImitatorException(exception);
         }
 

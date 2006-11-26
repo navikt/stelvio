@@ -44,6 +44,7 @@ public class FromDatabaseExtractor implements Extractor {
 
                 return MessageFormat.format(error.getMessage(), arguments);
             } else {
+                // TODO put message from exception into template 
                 return error.getMessage();
             }
         }

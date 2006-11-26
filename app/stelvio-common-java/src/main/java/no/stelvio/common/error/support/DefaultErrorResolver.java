@@ -21,6 +21,7 @@ import no.stelvio.common.error.StelvioException;
  *
  * @author personf8e9850ed756
  * @todo better javadoc
+ * @todo should check that all exception classes specified in the database can be instantiated, maybe have a set anyway  
  * @todo this class has quite a lot of aspects now; should be divided?
  */
 public class DefaultErrorResolver implements ErrorResolver {
@@ -65,6 +66,17 @@ public class DefaultErrorResolver implements ErrorResolver {
         return error;
     }
 
+    /**
+     * Checks that the error definition fits with the exception. That is, that they have the same number of template
+     * arguments.
+     * <p/>
+     * This will not check that a <code>StelvioException</code> has the correct amount of template arguments; this is
+     * done in <code>CommonExceptionLogic</code>.
+     *
+     * @param error
+     * @param throwable
+     * @see CommonExceptionLogic
+     */
     private void checkError(Err error, Throwable throwable) {
         if (null == error) {
             throw new ErrorNotFoundException(throwable.getClass());
@@ -75,7 +87,8 @@ public class DefaultErrorResolver implements ErrorResolver {
         if (throwable instanceof StelvioException) {
             argsInException = ((StelvioException) throwable).getTemplateArguments().length;
         } else {
-            argsInException = 0;
+            // TODO template for other exceptions should always have 1 argument: the message from the exception
+            argsInException = 1;
         }
 
         checkArgsLength(error, throwable, argsInException);
