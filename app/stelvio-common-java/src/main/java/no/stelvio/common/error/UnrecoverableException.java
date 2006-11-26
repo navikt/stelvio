@@ -15,7 +15,7 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * @todo is the name correct when the previous todo is implemented?
  * @todo should it have an abstract method, or something, maybe just use protected constructors.
  */
-public abstract class UnrecoverableException extends RuntimeException implements StelvioException {
+abstract class UnrecoverableException extends RuntimeException implements StelvioException {
     private final CommonExceptionLogic commonExceptionLogic;
 
     /**
