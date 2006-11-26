@@ -293,6 +293,11 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/filter/PerformanceMon
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/filter/RequestContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/jsf/resolver/MessageSourcePropertyResolver.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/acegi/AcegiSecurityContextFilter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/PageAccessDeniedException.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/PageAuthenticationFailedException.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/PageProtocolSwitchFailedException.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/PageSecurityFileNotFoundException.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/PageSecurityFileParseException.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/authentication/J2eeAuthenticationServlet.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/constants/Constants.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageAccessDeniedException.java -text
@@ -308,7 +313,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/parse/J
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/parse/SSLConfig.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/parse/SecurityConfiguration.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/parse/SecurityConfigurationXML.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/template/faces-security-config[!!-~](template).xml -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/util/J2eeSecurityObject.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/servlet/ServletContextAttributeSetter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/AmountTag.java -text

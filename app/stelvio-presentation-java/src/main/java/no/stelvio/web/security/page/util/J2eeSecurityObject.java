@@ -19,11 +19,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import no.stelvio.web.security.page.PageAccessDeniedException;
+import no.stelvio.web.security.page.PageAuthenticationFailedException;
+import no.stelvio.web.security.page.PageProtocolSwitchFailedException;
+import no.stelvio.web.security.page.PageSecurityFileNotFoundException;
 import no.stelvio.web.security.page.constants.Constants;
-import no.stelvio.web.security.page.exceptions.PageAccessDeniedException;
-import no.stelvio.web.security.page.exceptions.PageAuthenticationFailedException;
-import no.stelvio.web.security.page.exceptions.PageProtocolSwitchFailedException;
-import no.stelvio.web.security.page.exceptions.PageSecurityFileNotFoundException;
 import no.stelvio.web.security.page.parse.J2EERole;
 import no.stelvio.web.security.page.parse.J2EERoles;
 import no.stelvio.web.security.page.parse.JSFApplication;

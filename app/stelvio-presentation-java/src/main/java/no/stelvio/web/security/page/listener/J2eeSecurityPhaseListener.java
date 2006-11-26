@@ -22,11 +22,11 @@ import org.apache.commons.logging.LogFactory;
 
 
 
+import no.stelvio.web.security.page.PageAccessDeniedException;
+import no.stelvio.web.security.page.PageAuthenticationFailedException;
+import no.stelvio.web.security.page.PageProtocolSwitchFailedException;
+import no.stelvio.web.security.page.PageSecurityFileNotFoundException;
 import no.stelvio.web.security.page.constants.Constants;
-import no.stelvio.web.security.page.exceptions.PageAccessDeniedException;
-import no.stelvio.web.security.page.exceptions.PageAuthenticationFailedException;
-import no.stelvio.web.security.page.exceptions.PageProtocolSwitchFailedException;
-import no.stelvio.web.security.page.exceptions.PageSecurityFileNotFoundException;
 import no.stelvio.web.security.page.parse.JSFPage;
 import no.stelvio.web.security.page.util.J2eeSecurityObject;
 
