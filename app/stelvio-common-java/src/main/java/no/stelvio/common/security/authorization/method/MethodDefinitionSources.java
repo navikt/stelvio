@@ -117,7 +117,11 @@ public class MethodDefinitionSources implements MethodDefinitionSource, Initiali
      * @return an iterator over all the <code>ConfigAttributeDefinition</code>s or <code>null</code> if unsupported
      */
     public Iterator getConfigAttributeDefinitions(){
-    	return null;
+    	if(this.methodDefinitionMap != null){
+    		return this.methodDefinitionMap.getConfigAttributeDefinitions();
+    	}else{
+    		return null;
+    	}
     }
     
     /**

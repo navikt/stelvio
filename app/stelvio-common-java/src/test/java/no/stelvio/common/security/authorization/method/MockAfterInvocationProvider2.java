@@ -9,7 +9,7 @@ import org.acegisecurity.afterinvocation.AfterInvocationProvider;
 public class MockAfterInvocationProvider2 implements AfterInvocationProvider{
 
 	public Object decide(Authentication authentication, Object object, ConfigAttributeDefinition config,
-		    Object returnedObject) throws AccessDeniedException
+		    Object returnedObject) throws MethodAccessDeniedException
 		    {
 				String filteredValue ="Filtered2";
 				return filteredValue;

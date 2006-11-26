@@ -25,13 +25,13 @@ public class AccessVoterManagerTests {
 	public void testCheckAllowIfAllAbstainDecisions() {
 		AccessVoterManager mgr = new AccessVoterManager();
 		try{
-			mgr.checkAllowIfAllAbstainDecisions();
-			fail("Should have thrown an AccessDeniedException.");
-		}catch(AccessDeniedException expected){
+			mgr.checkAllowIfAllAbstainDecisions(new Object());
+			fail("Should have thrown an MethodAccessDeniedException.");
+		}catch(MethodAccessDeniedException expected){
 			assertTrue(true);
 		}
 		mgr.setAllowIfAllAbstainDecisions(true);
-		mgr.checkAllowIfAllAbstainDecisions();
+		mgr.checkAllowIfAllAbstainDecisions(new Object());
 		assertTrue(true);
 	}
 
@@ -43,9 +43,9 @@ public class AccessVoterManagerTests {
 	public void testAddDecisionVoters1() {
 		
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessDeniedVoter")); // grant
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessGrantedVoter")); // deny
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessAbstainVoter"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessDeniedVoter")); // grant
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessGrantedVoter")); // deny
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessAbstainVoter"));
         AccessVoterManager manager = new AccessVoterManager();
         manager.addDecisionVoters(config);
 		assertEquals(config.size(), manager.getDecisionVoters().size());    
@@ -58,9 +58,9 @@ public class AccessVoterManagerTests {
 	@Test
 	public void testAddDecisionVoters2(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessDeniedVoter")); // grant
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider")); // deny
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessAbstainVoter"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessDeniedVoter")); // grant
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider")); // deny
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessAbstainVoter"));
         AccessVoterManager manager = new AccessVoterManager();
         manager.addDecisionVoters(config);	
         assertEquals(config.size() - 1, manager.getDecisionVoters().size());
@@ -74,8 +74,8 @@ public class AccessVoterManagerTests {
 	@Test
 	public void testAddDecisionVoters3(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider")); // grant
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider2")); // deny
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider")); // grant
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider2")); // deny
         AccessVoterManager manager = new AccessVoterManager();
         manager.addDecisionVoters(config);	
         
@@ -95,14 +95,14 @@ public class AccessVoterManagerTests {
 	@Test
 	public void testAddDecisionVoters4(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessDeniedVoter")); 
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessDeniedVoter")); 
         config.addConfigAttribute(new SecurityConfig("AClassThatDoesntExist")); 
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessAbstainVoter"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessAbstainVoter"));
         AccessVoterManager manager = new AccessVoterManager();
         try{
         	manager.addDecisionVoters(config);
-        	fail("Should have thrown IllegalArgumentException");
-        } catch (IllegalArgumentException expected) {
+        	fail("Should have thrown AccessDecisionVoterNotFoundException");
+        } catch (AccessDecisionVoterNotFoundException expected) {
             assertTrue(true);
         }    	
 	}
@@ -120,9 +120,9 @@ public class AccessVoterManagerTests {
 
 	private ConfigAttributeDefinition makeConfigAttributeDefinition() {
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessDeniedVoter")); // grant
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessGrantedVoter")); // deny
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessAbstainVoter"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessDeniedVoter")); // grant
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessGrantedVoter")); // deny
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessAbstainVoter"));
         return config;
     }
 	 private TestingAuthenticationToken makeTestToken() {
@@ -136,7 +136,7 @@ public class AccessVoterManagerTests {
 		AccessVoterManager mgr = new AccessVoterManager();
 		TestingAuthenticationToken auth = makeTestToken();
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessGrantedVoter"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessGrantedVoter"));
 		mgr.decide(auth, new Object(), config);
 		assertTrue(true);
 	}
@@ -146,11 +146,11 @@ public class AccessVoterManagerTests {
 		AccessVoterManager mgr = new AccessVoterManager();
 		TestingAuthenticationToken auth = makeTestToken();
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessDeniedVoter"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessDeniedVoter"));
 		try{
 			mgr.decide(auth, new Object(), config);
-			fail("Should have thrown an AccessDeniedException.");
-		}catch(AccessDeniedException expected){
+			fail("Should have thrown an MethodAccessDeniedException.");
+		}catch(MethodAccessDeniedException expected){
 			assertTrue(true);
 		}	
 	}
@@ -159,11 +159,11 @@ public class AccessVoterManagerTests {
 		AccessVoterManager mgr = new AccessVoterManager();
 		TestingAuthenticationToken auth = makeTestToken();
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessAbstainVoter"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessAbstainVoter"));
 		try{
 			mgr.decide(auth, new Object(), config);
-			fail("Should have thrown an AccessDeniedException.");
-		}catch(AccessDeniedException expected){
+			fail("Should have thrown an MethodAccessDeniedException.");
+		}catch(MethodAccessDeniedException expected){
 			assertTrue(true);
 		}	
 	}
@@ -172,7 +172,7 @@ public class AccessVoterManagerTests {
 		AccessVoterManager mgr = new AccessVoterManager();
 		TestingAuthenticationToken auth = makeTestToken();
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessAbstainVoter"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessAbstainVoter"));
         mgr.setAllowIfAllAbstainDecisions(true);  
 		mgr.decide(auth, new Object(), config);
 		assertTrue(true);		

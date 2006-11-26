@@ -77,8 +77,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
                 	if(providers != null){
                 		attributes.addAll(providers);	
                 	}else{
-                		throw new AcegiConfigurationException("The @Secured annotation attribute '" + auth +"' for Class '" + target.getName() + "'" 
-								+ " cannot be found in the annotation mapping.");
+                		throw new SecureAnnotationNotInMappingException(attr,target);
                 	}
                 }
 
@@ -123,8 +122,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
                 	if(providers != null){
                 		attributes.addAll(providers);	
                 	}else{
-                		throw new AcegiConfigurationException("The @Secured annotation attribute '" + auth +"' for method '" + method + "'" 
-                												+ " cannot be found in the annotation mapping.");
+                		throw new SecureAnnotationNotInMappingException(attr,method);
                 	}
                 }
                 break;

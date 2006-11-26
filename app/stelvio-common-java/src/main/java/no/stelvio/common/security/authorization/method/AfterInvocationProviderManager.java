@@ -58,12 +58,17 @@ public class AfterInvocationProviderManager implements AfterInvocationManager{
              	}   
              }
 		 }catch (ClassNotFoundException ex) {
-             throw new IllegalArgumentException("Class '" + configAttribute + "' not found");
-         }catch (InstantiationException ine){
-        	 throw new IllegalArgumentException("Class '" + configAttribute + "' cannot be instantiated. It is either am interface or abstract class.",ine);
-         }catch(IllegalAccessException ile){
-        	 throw new IllegalArgumentException("Could not create an instance of class '" + configAttribute + "'",ile);
-         }
+             throw new AfterInvocationProviderNotFoundException(ex,configAttribute.getAttribute()
+						, "Class '" + configAttribute + "' not found");
+		 }catch (InstantiationException ine){
+			 throw new AfterInvocationProviderNotFoundException(ine,configAttribute.getAttribute()
+						,"Class '" + configAttribute + "' cannot be instantiated."
+						+ "It is either an interface or abstract class.");
+		 }catch(IllegalAccessException ile){
+			 throw new AfterInvocationProviderNotFoundException(ile,configAttribute.getAttribute()
+						,"Could not create an instance of class '" 
+						+ configAttribute + "'");
+		 }
     }
     
     /**
@@ -82,15 +87,15 @@ public class AfterInvocationProviderManager implements AfterInvocationManager{
      * @throws AccessDeniedException if access is denied
      */
     public Object decide(Authentication authentication, Object object, ConfigAttributeDefinition config,
-            Object returnedObject) throws AccessDeniedException {
+            Object returnedObject) throws MethodAccessDeniedException {
             
     	//populate the provider list with respect to the config attributes
     	addProviders(config);
-    	Iterator iter = this.providers.iterator();           
+    	Iterator<AfterInvocationProvider> iter = this.providers.iterator();           
         Object result = returnedObject;
   
         while (iter.hasNext()) {
-            AfterInvocationProvider provider = (AfterInvocationProvider) iter.next();
+            AfterInvocationProvider provider = iter.next();
             result = provider.decide(authentication, object, config, result);
         }
         return result;

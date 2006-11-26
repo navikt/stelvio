@@ -21,8 +21,8 @@ public class AfterInvocationProviderManagerTest {
 	public void testAddProviders1() {
 		
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider")); // grant
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider2")); // deny
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider")); // grant
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider2")); // deny
         AfterInvocationProviderManager mgr = new AfterInvocationProviderManager();
         mgr.addProviders(config);
 		assertEquals(config.size(), mgr.getProviders().size());    
@@ -35,9 +35,9 @@ public class AfterInvocationProviderManagerTest {
 	@Test
 	public void testAddProviders2(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider")); // grant
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessGrantedVoter")); // deny
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider2"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider")); // grant
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessGrantedVoter")); // deny
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider2"));
         AfterInvocationProviderManager manager = new AfterInvocationProviderManager();
         manager.addProviders(config);	
         assertEquals(config.size() - 1, manager.getProviders().size());
@@ -51,8 +51,8 @@ public class AfterInvocationProviderManagerTest {
 	@Test
 	public void testAddProviders3(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-		config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessDeniedVoter")); 
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAccessGrantedVoter"));
+		config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessDeniedVoter")); 
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAccessGrantedVoter"));
         AfterInvocationProviderManager manager = new AfterInvocationProviderManager();
         manager.addProviders(config);	
         assertEquals(0,manager.getProviders().size());
@@ -67,14 +67,14 @@ public class AfterInvocationProviderManagerTest {
 	@Test
 	public void testAddProviders4(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider")); 
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider")); 
         config.addConfigAttribute(new SecurityConfig("AClassThatDoesntExist")); 
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider2"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider2"));
         AfterInvocationProviderManager manager = new AfterInvocationProviderManager();
         try{
         	manager.addProviders(config);
-        	fail("Should have thrown IllegalArgumentException");
-        } catch (IllegalArgumentException expected) {
+        	fail("Should have thrown AfterInvocationProviderNotFoundException");
+        } catch (AfterInvocationProviderNotFoundException expected) {
             assertTrue(true);
         }    	
 	}
@@ -93,7 +93,7 @@ public class AfterInvocationProviderManagerTest {
 	@Test
 	public void testDecideDoNotFilterObject(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProviderNoFiltering")); 
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProviderNoFiltering")); 
         AfterInvocationProviderManager manager = new AfterInvocationProviderManager();
 		manager.addProviders(config);
 		String returnedObject ="Before decide.";
@@ -103,7 +103,7 @@ public class AfterInvocationProviderManagerTest {
 	@Test
 	public void testDecideFilterObject(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider")); 
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider")); 
         AfterInvocationProviderManager manager = new AfterInvocationProviderManager();
         manager.addProviders(config);
 		String originalObject ="Before decide.";
@@ -113,8 +113,8 @@ public class AfterInvocationProviderManagerTest {
 	@Test
 	public void testDecideFilterObjectWithMultipleFilters(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider")); 
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProvider2"));
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider")); 
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProvider2"));
         AfterInvocationProviderManager manager = new AfterInvocationProviderManager();
         manager.addProviders(config);
 		String originalObject ="Before decide.";
@@ -123,13 +123,13 @@ public class AfterInvocationProviderManagerTest {
 	@Test
 	public void testDecideDenyAccess(){
 		ConfigAttributeDefinition config = new ConfigAttributeDefinition();
-        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.acegi.MockAfterInvocationProviderDeniesAccess"));     
+        config.addConfigAttribute(new SecurityConfig("no.stelvio.common.security.authorization.method.MockAfterInvocationProviderDeniesAccess"));     
         AfterInvocationProviderManager manager = new AfterInvocationProviderManager();
         manager.addProviders(config);
         try{
         	manager.decide(null, null, config, new Object());
-        	fail("Should have thrown AccessDeniedException");
-        }catch(AccessDeniedException expected){
+        	fail("Should have thrown MethodAccessDeniedException");
+        }catch(MethodAccessDeniedException expected){
         	assertTrue(true);
         }
 		

@@ -7,6 +7,7 @@ import org.acegisecurity.Authentication;
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.ConfigAttributeDefinition;
 import org.acegisecurity.vote.*;
+import org.springframework.aop.framework.ReflectiveMethodInvocation;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
@@ -48,10 +49,14 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
      * @throws AccessDeniedException if no access should be granted.
      * 
      */
-    protected final void checkAllowIfAllAbstainDecisions() {
+    public final void checkAllowIfAllAbstainDecisions(Object secureObject) {
         if (!this.isAllowIfAllAbstainDecisions()) {
-            throw new AccessDeniedException(this.messages.getMessage("AbstractAccessDecisionManager.accessDenied",
-                    "Access is denied"));
+        	if(secureObject instanceof ReflectiveMethodInvocation){
+  			   ReflectiveMethodInvocation invoc = (ReflectiveMethodInvocation)secureObject;
+  			   throw new MethodAccessDeniedException(invoc.getMethod());
+  		   	}else{
+  			   throw new MethodAccessDeniedException("Could not find method.");
+  		   	}  
         }
     }
 
@@ -85,11 +90,16 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
     		 }
     		 
 		 }catch (ClassNotFoundException ex) {
-             throw new IllegalArgumentException("Class '" + configAttribute + "' not found");
+             throw new AccessDecisionVoterNotFoundException(ex,configAttribute.getAttribute()
+            		 										, "Class '" + configAttribute + "' not found");
          }catch (InstantiationException ine){
-        	 throw new IllegalArgumentException("Class '" + configAttribute + "' cannot be instantiated. It is either am interface or abstract class.",ine);
+        	 throw new AccessDecisionVoterNotFoundException(ine,configAttribute.getAttribute()
+        			 										,"Class '" + configAttribute + "' cannot be instantiated."
+        			 										+ "It is either an interface or abstract class.");
          }catch(IllegalAccessException ile){
-        	 throw new IllegalArgumentException("Could not create an instance of class '" + configAttribute + "'",ile);
+        	 throw new AccessDecisionVoterNotFoundException(ile,configAttribute.getAttribute()
+        			 										,"Could not create an instance of class '" 
+        			 										+ configAttribute + "'");
          }
     }
     
@@ -112,10 +122,10 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
      * @param object the secured object
      * @param config the configuration attributes associated with the method being invoked
      *
-     * @throws AccessDeniedException if access is denied
+     * @throws MethodAccessDeniedException if access is denied
      */
     public void decide(Authentication authentication, Object object, ConfigAttributeDefinition config)
-        throws AccessDeniedException,AcegiConfigurationException {
+        throws MethodAccessDeniedException {
         
     	addDecisionVoters(config);     
     	Iterator voterIterator = this.getDecisionVoters().iterator();
@@ -128,12 +138,16 @@ public class AccessVoterManager implements AccessDecisionManager, InitializingBe
            if(result == AccessDecisionVoter.ACCESS_GRANTED){
     		   return;
     	   }else if(result == AccessDecisionVoter.ACCESS_DENIED){
-    		   throw new AccessDeniedException(this.messages.getMessage("AccessVoterManager.accessDenied",
-               "Access is denied"));
+    		   if(object instanceof ReflectiveMethodInvocation){
+    			   ReflectiveMethodInvocation invoc = (ReflectiveMethodInvocation)object;
+    			   throw new MethodAccessDeniedException(invoc.getMethod());
+    		   }else{
+    			   throw new MethodAccessDeniedException("Secure object is not a ReflectiveMethodInvocation.");
+    		   }
     	   }	   
         }
         // To get this far, every AccessDecisionVoter abstained
-        checkAllowIfAllAbstainDecisions();
+        checkAllowIfAllAbstainDecisions(object);
     }
     
     /**

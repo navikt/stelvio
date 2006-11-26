@@ -7,13 +7,9 @@ import org.junit.Test;
 
 import org.acegisecurity.SecurityConfig;
 import org.acegisecurity.ConfigAttribute;
-import org.acegisecurity.annotation.Secured;
-import no.stelvio.common.security.authorization.method.AcegiConfigurationException;
+
 import no.stelvio.common.security.authorization.method.AnnotationAttributesMapping;
 import no.stelvio.common.security.authorization.method.SecurityAnnotationsAttributes;
-
-import org.springframework.metadata.Attributes;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -64,8 +60,8 @@ public class SecurityAnnotationsAttributesTest {
 		//Class is annotated with @Secured({"IdThatDoesNotExistInMapping"}) which is not present in the mapping
 		try {
 				this.attributes.getAttributes(MockService2.class);
-				fail("Should have thrown AcegiConfigurationException.");
-		} catch (AcegiConfigurationException expected) {
+				fail("Should have thrown SecureAnnotationNotInMappingException.");
+		} catch (SecureAnnotationNotInMappingException expected) {
 			assertTrue(true);
 		}	
 	}
@@ -121,8 +117,8 @@ public class SecurityAnnotationsAttributesTest {
         //where 'AnotherIdThatDoesNotExistInMapping' is not present in the mapping.
 		try {
 				this.attributes.getAttributes(method);
-				fail("Should have thrown AcegiConfigurationException.");
-		} catch (AcegiConfigurationException expected) {
+				fail("Should have thrown SecureAnnotationNotInMappingException.");
+		} catch (SecureAnnotationNotInMappingException expected) {
 			assertTrue(true);
 		}	
         

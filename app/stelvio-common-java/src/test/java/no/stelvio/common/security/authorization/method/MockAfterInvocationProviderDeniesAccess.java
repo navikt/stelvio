@@ -9,9 +9,9 @@ import org.acegisecurity.afterinvocation.AfterInvocationProvider;
 public class MockAfterInvocationProviderDeniesAccess implements AfterInvocationProvider{
 
 	public Object decide(Authentication authentication, Object object, ConfigAttributeDefinition config,
-		    Object returnedObject) throws AccessDeniedException
+		    Object returnedObject) throws MethodAccessDeniedException
 		    {
-				throw new AccessDeniedException("Access is denied");
+				throw new MethodAccessDeniedException("Access is denied");
 																		
 		    }
 	public boolean supports(ConfigAttribute attribute)
