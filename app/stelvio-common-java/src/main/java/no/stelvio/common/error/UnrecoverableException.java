@@ -5,8 +5,9 @@ import no.stelvio.common.error.support.CommonExceptionLogic;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
- * Thrown to indicate that an unrecoverable system exception has occured. <p/>
- * Applications will typically not handle recovery from system exceptions.
+ * Thrown to indicate that an unrecoverable exception has occured.
+ * <p/>
+ * Applications will typically not handle recovery from these exceptions.
  * 
  * @author person7553f5959484
  * @version $Revision: 2837 $ $Author: psa2920 $ $Date: 2006-01-09 16:12:14 +0100 (ma, 09 jan 2006) $
