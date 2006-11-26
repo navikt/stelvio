@@ -90,10 +90,13 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorNotFoundExcep
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorResolver.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionHandlerFacade.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionWrapper.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/FunctionalRecoverableException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/FunctionalUnrecoverableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/LoggableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/RecoverableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/Severity.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/StelvioException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/SystemUnrecoverableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/UnrecoverableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/message/Builder.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/message/Extractor.java -text
