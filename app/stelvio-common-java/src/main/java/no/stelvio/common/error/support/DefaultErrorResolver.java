@@ -21,7 +21,7 @@ import no.stelvio.common.error.StelvioException;
  *
  * @author personf8e9850ed756
  * @todo better javadoc
- * @todo should another class validate that the class exist before loading the Class object here?
+ * @todo this class has quite a lot of aspects now; should be divided?
  */
 public class DefaultErrorResolver implements ErrorResolver {
     private final HashMap<Class, Err> errorMap;
@@ -30,15 +30,17 @@ public class DefaultErrorResolver implements ErrorResolver {
         errorMap = new HashMap<Class, Err>(errors.size());
 
         for (Err error : errors) {
-            errorMap.put(loadClass(error), error);
+            // TODO should another class validate that the class exist before loading the Class object here?
+            // Could really only be the ErrorResolverFactoryBean as the EJB that retrieves the errors are in another class loader
+            errorMap.put(loadClass(error.getClassName()), error);
         }
     }
 
     /**
      * @param throwable
      * @return
-     * @todo could cache the eventual mapping between clazz and the class in the errorMap; that is, so finding super
-     * classes and interfaces don't have to be done.
+     * @todo should cache the eventual mapping between clazz and the class in the errorMap; that is, so finding super
+     * classes and interfaces don't have to be done each time.
      */
     public Err resolve(Throwable throwable) {
         // TODO should we allow throwing IllegalArgumentException for coding errors? And not make our own version?
@@ -121,10 +123,11 @@ public class DefaultErrorResolver implements ErrorResolver {
         }
     }
 
-    private Class<?> loadClass(Err error) throws ConfigurationException {
+    private Class<?> loadClass(String className) throws ConfigurationException {
         try {
-            return Class.forName(error.getClassName());
+            return Class.forName(className);
         } catch (ClassNotFoundException e) {
+            // TODO should use some kind of Error*Exception
             throw new ConfigurationException(e, "errorHandling");
         }
     }
