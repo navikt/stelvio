@@ -72,7 +72,7 @@ public class Err {
     // TODO should this be here?
     // TODO test this
     public static class Builder {
-        Err err;
+        private Err err;
 
         public Builder(String className) {
             err = new Err(className);
