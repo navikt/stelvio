@@ -1,6 +1,6 @@
 package no.stelvio.common.error.strategy.support;
 
-import java.util.List;
+import java.util.Set;
 
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 
@@ -13,7 +13,7 @@ import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
  */
 public class ExceptionHandlerStrategyMulticaster implements ExceptionHandlerStrategy {
     // TODO have the strategies implement Ordered from Spring so they will be ordered correctly in the chain
-    private List<ExceptionHandlerStrategy> strategies;
+    private Set<ExceptionHandlerStrategy> strategies;
 
     public <T extends Throwable> T handleException(T e) throws T {
         T throwable = e;
@@ -25,7 +25,7 @@ public class ExceptionHandlerStrategyMulticaster implements ExceptionHandlerStra
         return throwable;
     }
 
-    public void setStrategies(List<ExceptionHandlerStrategy> strategies) {
+    public void setStrategies(Set<ExceptionHandlerStrategy> strategies) {
         this.strategies = strategies;
     }
 }

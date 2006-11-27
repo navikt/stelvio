@@ -1,8 +1,9 @@
 package no.stelvio.common.error.strategy.support;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.hamcrest.MatcherAssert;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsSame.same;
 import org.jmock.InThisOrder;
 import org.jmock.Mockery;
@@ -28,7 +29,7 @@ public class ExceptionHandlerStrategyMulticasterTest {
             one (strategy2).handleException(exception); will(returnValue(exception));
         }});
 
-        ArrayList<ExceptionHandlerStrategy> strategies = new ArrayList<ExceptionHandlerStrategy>();
+        Set<ExceptionHandlerStrategy> strategies = new HashSet<ExceptionHandlerStrategy>(2);
         strategies.add(strategy1);
         strategies.add(strategy2);
 
@@ -36,7 +37,7 @@ public class ExceptionHandlerStrategyMulticasterTest {
         strategyMulticaster.setStrategies(strategies);
         IllegalStateException result = strategyMulticaster.handleException(exception);
 
-        MatcherAssert.assertThat(result, same(exception));
+        assertThat(result, same(exception));
         context.assertIsSatisfied();
     }
 }
