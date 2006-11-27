@@ -71,14 +71,11 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 	public boolean isTargetInterceptor(HttpServletRequest req)
 			throws WebTrustAssociationException {
 		
-		System.out.println("#####isTargetinterceptor#####");
-		
 		HttpSession s = req.getSession();
 		
 		String logon_type = (String) s.getAttribute("logon_type");
-		System.out.println("login_type: " + logon_type);
 		
-		if ( logon_type == null ||logon_type.equals( "" )  ) {
+		if ( logon_type == null || logon_type.equals( "" )) {
 			return false;
 		}			
 		
@@ -92,7 +89,6 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 			return true;
 		}
 		
-		System.out.println("#####return false#####");
 		return false;
 	}
 	
@@ -133,7 +129,6 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 					return returnToLogon( session, "No username specified", req, res);
 				} else {
 					userid = tmp_id;
-					System.out.println("Vi har brukernavn");
 				}
 				grupper.add(rollePrefix + "PIN");
 				
@@ -152,12 +147,10 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 		} catch ( Exception e ) {
 			throw new WebTrustAssociationFailedException( "Noe gikk galt i TAI! " + e.getMessage() );
 		}
-		System.out.println( "Lager subject" );
 		Subject subject = createSubject( userid, session, grupper);
 		if ( subject == null ) {
 			return TAIResult.create(HttpServletResponse.SC_UNAUTHORIZED);
 		}
-		System.out.println("Subject funka, sender videre");
 		return TAIResult.create(HttpServletResponse.SC_OK, "notused", subject);
 	}
 	
