@@ -8,7 +8,7 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * @todo write javadoc
  * @todo should be abstract
  */
-public class CodesTableException extends SystemUnrecoverableException {
+public abstract class CodesTableException extends SystemUnrecoverableException {
     protected CodesTableException(Object... templateArguments) {
         super(templateArguments);
     }
@@ -19,9 +19,5 @@ public class CodesTableException extends SystemUnrecoverableException {
 
     protected CodesTableException(ExceptionToCopyHolder holder) {
         super(holder);
-    }
-
-    protected String messageTemplate() {
-        return "Problems with handling codes table: {0}";
     }
 }

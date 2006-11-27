@@ -18,4 +18,7 @@ public class CodesTableNotFoundException extends CodesTableException {
         return s;
     }
 
+    protected String messageTemplate() {
+        return "Problems with handling codes table: {0}";
+    }
 }

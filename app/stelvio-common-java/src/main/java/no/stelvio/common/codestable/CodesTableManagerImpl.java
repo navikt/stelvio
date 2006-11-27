@@ -1,6 +1,5 @@
 package no.stelvio.common.codestable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,16 +19,12 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	//TODO: FIX CASTING
 	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem) {
+        validateCodesTableClass(codesTableItem);
 
-		CodesTable<T> codesTable = (CodesTable<T>) new CodesTableImpl();
-		
-		validateCodesTableClass(codesTableItem);
+        CodesTable<T> codesTable = (CodesTable<T>) new CodesTableImpl();
+        List<T> codesTableItems = codesTableFactory.retrieveCodesTable(codesTableItem);
 
-		List<T> codesTableItems = new ArrayList<T>();
-		
-		codesTableItems = (List<T>) codesTableFactory.retrieveCodesTable(codesTableItem);
-		
-		for(T ct : codesTableItems){
+        for(T ct : codesTableItems){
 			codesTable.addCodesTableItem(ct);
 		}
 				
@@ -44,12 +39,10 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
 		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new CodesTablePeriodicImpl();
 		validateCodesTablePeriodicClass(codesTableItem);
-		
-		List<T> codesTableItems = new ArrayList<T>();
-		
-		codesTableItems = (List<T>) codesTableFactory.retrieveCodesTablePeriodic(codesTableItem);
-		
-		for(T ctp : codesTableItems){
+
+        List<T> codesTableItems = codesTableFactory.retrieveCodesTablePeriodic(codesTableItem);
+
+        for(T ctp : codesTableItems){
 			codesTablePeriodic.addCodesTableItem(ctp);
 		}
 				
@@ -64,7 +57,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 */
 	private void validateCodesTableClass(final Class codesTableClass){
 		if(null!= codesTableClass && !CodesTableItem.class.isAssignableFrom(codesTableClass)){
-			throw new CodesTableException(codesTableClass + " is not a codestable");
+			throw new NotCodesTableException(codesTableClass);
 		}
 	}	
 	
@@ -76,7 +69,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 */
 	private void validateCodesTablePeriodicClass(final Class codesTablePeriodicClass){
 		if(null!= codesTablePeriodicClass && !CodesTableItemPeriodic.class.isAssignableFrom(codesTablePeriodicClass)){
-			throw new CodesTableException (codesTablePeriodicClass + " is not a codestable");
+			throw new NotCodesTableException (codesTablePeriodicClass);
 		}
 	}	
 	

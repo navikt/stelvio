@@ -53,6 +53,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.ja
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagementImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/AbstractCodesTableItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTable.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableConfigurationException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableFactory.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableImpl.java -text
@@ -65,6 +66,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableMan
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableNotFoundException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodicImpl.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/NotCodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/AbstractContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/Context.java -text
