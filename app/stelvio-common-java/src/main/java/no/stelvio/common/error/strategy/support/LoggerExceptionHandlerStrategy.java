@@ -7,6 +7,7 @@ import no.stelvio.common.error.Err;
 import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.message.Extractor;
 import no.stelvio.common.error.message.support.FromDatabaseExtractor;
+import no.stelvio.common.error.message.support.FromExceptionExtractor;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 
 /**
@@ -21,12 +22,12 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
     private static final Log log = LogFactory.getLog(LoggerExceptionHandlerStrategy.class);
 
     /**
-     * <code>Extractor</code> that extracts message from the database is used if nothing is specified.
+     * <code>Extractor</code> that extracts message from the exception is used if nothing is specified.
      *
      * @todo better javadoc
      * @see FromDatabaseExtractor
      */
-    private Extractor extractor = new FromDatabaseExtractor();
+    private Extractor extractor = new FromExceptionExtractor();
     private ErrorResolver errorResolver;
 
     /**
