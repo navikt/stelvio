@@ -24,8 +24,8 @@ import com.ibm.wsspi.security.token.AttributeNameConstants;
  * TAIPensjon er en interceptor som trigges når en bruker som ikke er autentisert 
  * prøver å aksessere en beskyttet ressurs i applikasjonen. Det opprettes et 
  * sikkerhetsobjekt basert på hvor requesten kommer fra (PIN, Portal) og type pålogging 
- * (ekstern, ekstern sakbehandler, fullmakt). Sikkerhetsobjekt opprettes uten at brukerbase
- * av noe slag (LDAP, DB, etc.) kontaktes.
+ * (ekstern, ekstern sakbehandler, fullmakt). Gruppene som brukeren er medlem av i LDAP legges
+ * i sikkerhetsobjektet.
  */
 public class TAIPensjon implements TrustAssociationInterceptor {
 
