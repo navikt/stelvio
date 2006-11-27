@@ -3,8 +3,6 @@ package no.stelvio.common.codestable;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.stelvio.common.codestable.CodesTableItem;
-
 /**
  * Implementation of CodesTableInitializer for initialization of the codestables 
  * and loading them into the cache for the codestables.
@@ -27,61 +25,55 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	 * {@inheritDoc CodesTableInitializer#init()}
 	 */
 	public void init() {
-		Integer counter = 0;
-		
 		if(codesTableClasses.isEmpty() && codesTablePeriodicClasses.isEmpty()){
-			throw new CodesTableException("No CodesTables or CodesTablePeriodics have been set");
+			throw new CodesTableConfigurationException("No CodesTables or CodesTablePeriodics have been set");
 		}
 		
 		//CodesTableItem's
 		for(Class<CodesTableItem> ct : codesTableClasses){			
-			validateCodesTableItemClass(codesTableClasses.get(counter));
+			validateCodesTableItemClass(ct);
 								
 			CodesTable cTable = codesTableManager.getCodesTable(ct);
 
 			if(null == cTable){
-				throw new CodesTableException(ct + " is not a codestable");
+				throw new CodesTableNotFoundException(ct);
 			}
-			counter++;
 		}
 
 		//CodesTableItemPeriodic's
-		counter = 0;
-
-		for(Class<CodesTableItemPeriodic> ctp : codesTablePeriodicClasses){		
-			validateCodesTableItemPeriodicClass(codesTablePeriodicClasses.get(counter));
+		for(Class<CodesTableItemPeriodic> ctp : codesTablePeriodicClasses){
+			validateCodesTableItemPeriodicClass(ctp);
 
 			CodesTablePeriodic cTablePeriodic = codesTableManager.getCodesTablePeriodic(ctp);
 				
 			if(null == cTablePeriodic){
-				throw new CodesTableException(cTablePeriodic + " is not a codestable");
+				throw new CodesTableNotFoundException(ctp);
 			}
-			counter++;
 		}
 	}
 	
 	/**
 	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItem</>.
 	 * 
-	 * @param name the class to load a codes table for.
+	 * @param codesTableItemClass the class to load a codes table for.
 	 * @throws CodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>.
 	 */
 	private void validateCodesTableItemClass(final Class<CodesTableItem> codesTableItemClass){
 	
 		if(null!= codesTableItemClass && !CodesTableItem.class.isAssignableFrom(codesTableItemClass)){
-			throw new CodesTableException(codesTableItemClass + " is not a codestable");
+			throw new NotCodesTableException(codesTableItemClass);
 		}
 	}	
 	
 	/**
 	 * Checks that the class to load a codes table for is a subclass of <code>CodesTableItemPeriodic</>.
 	 * 
-	 * @param codesTableClass the class to load a codes table for.
+	 * @param codesTableItemPeriodicClass the class to load a codes table for.
 	 * @throws CodesTableException if the class to load a codes table for is not a subclass of <code>CodesTablePeriodic</code>.
 	 */
 	private void validateCodesTableItemPeriodicClass(final Class<CodesTableItemPeriodic> codesTableItemPeriodicClass){
 		if(null!= codesTableItemPeriodicClass && !CodesTableItemPeriodic.class.isAssignableFrom(codesTableItemPeriodicClass)){
-			throw new CodesTableException(codesTableItemPeriodicClass + " is not a codestableperiodic");
+			throw new NotCodesTableException(codesTableItemPeriodicClass);
 		}
 	}
 	
