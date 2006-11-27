@@ -246,22 +246,19 @@ public class J2eeSecurityPhaseListener implements PhaseListener
 				}      			    			
 			}
 	  }
-	  
 	  /**
 	   * Private helper method which checks if a page has been evaluated before.
 	   * 
 	   * @param viewId the id of a page
 	   * @param exctx the external context used to extract the id of the previous page
-	   * @return <code>true</code> if the previous page has been evaluated before
+	   * @return <code>true</code> if the page has been evaluated before
 	   */
 	  private boolean pageAlreadyEvaluated(String viewId,ExternalContext exctx)
 	  {
 		  	HttpSession session = (HttpSession)exctx.getSession(true);        
 	      	String previousView = (String)session.getAttribute(Constants.PREVIOUS_JSF_PAGE_URL);
 		    return (previousView != null && previousView.equals(viewId)) ? true : false;     
-	  }
-	  
-	  
+	  } 
 	  /**
 	   * Checks if caching is enabled, obtains the cache and searchs for the current viewId.
 	   * 
@@ -277,7 +274,6 @@ public class J2eeSecurityPhaseListener implements PhaseListener
 		  return isPageInCache(this.useSessionPageCache, viewId, userPageCache); 
 	  }
 	 
-	  
 	  /**
 	   * Private helper method which checks if a page is in the cache, 
 	   * i.e. the page is already authorized.
@@ -329,11 +325,7 @@ public class J2eeSecurityPhaseListener implements PhaseListener
 	      }else{
 	    	  return false;
 	      }  	  
-	  }
-	
-	  
-	  
-	             
+	  }          
 	  /**
 	   * Returns the page authorization cache from <code>Session</code>. If caching is enabled 
 	   * and <code>Session</code> does not contain a cache, a new cache will be created in Session
@@ -358,9 +350,6 @@ public class J2eeSecurityPhaseListener implements PhaseListener
 	       return null;
 	    }
 	  }
-	  
-	
-	  
 	  /**
 	   * Handles the security constraints and ensures that the user is authorized to view the page.
 	   * 
@@ -463,6 +452,26 @@ public class J2eeSecurityPhaseListener implements PhaseListener
 		   	
 		   	handleError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,null);
 		}
+	}
+
+	/**
+	 * Gets the J2eeSecurityObject which is used to conduct the security checks and maintain the security 
+	 * definitions of the application.
+	 * @return the j2eeSecurityObject
+	 * @see #setJ2eeSecurityObject()
+	 */
+	public J2eeSecurityObject getJ2eeSecurityObject() {
+		return j2eeSecurityObject;
+	}
+
+	/**
+	 * Gets the J2eeSecurityObject which is used to conduct the security checks and maintain the security 
+	 * definitions of the application.
+	 * @param securityObject the j2eeSecurityObject to set
+	 * @see #getJ2eeSecurityObject()
+	 */
+	public void setJ2eeSecurityObject(J2eeSecurityObject securityObject) {
+		j2eeSecurityObject = securityObject;
 	}
   
   
