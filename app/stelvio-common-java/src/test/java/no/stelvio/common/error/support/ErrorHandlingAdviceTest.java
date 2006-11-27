@@ -24,7 +24,7 @@ public class ErrorHandlingAdviceTest {
         ErrorHandlingAdvice advice = new ErrorHandlingAdvice();
         advice.setExceptionHandlerFacade(facade);
 
-        advice.afterThrowing(null, null, null, throwable);
+        advice.afterThrowing(throwable);
         context.assertIsSatisfied();
     }
 }
