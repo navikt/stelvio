@@ -57,7 +57,8 @@ public class RequestContextFilter extends AbstractFilter {
 				}
 			}
 	
-			// Allways update the screen, module, process and transaction id
+			// Allways update the user, screen, module, process and transaction id
+			RequestContext.setUserId(request.getRemoteUser());
 			RequestContext.setScreenId(RequestUtils.getScreenId(request));
 			RequestContext.setModuleId(RequestContext.getScreenId());
 			RequestContext.setProcessId(RequestUtils.getProcessId(request));
