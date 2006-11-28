@@ -10,6 +10,8 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
+ * @todo not the correct name; doesn't throw the exception itself, only creates a new instance of it and removing causes
+ * @todo maybe morpher or something would be a better name
  */
 public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy {
     /**

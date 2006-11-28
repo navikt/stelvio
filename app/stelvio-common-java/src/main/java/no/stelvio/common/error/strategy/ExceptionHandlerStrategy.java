@@ -6,5 +6,13 @@ package no.stelvio.common.error.strategy;
  * @todo refactor common tests inta an abstract test class for the interface.
  */
 public interface ExceptionHandlerStrategy {
+    /**
+     *
+     * @param e
+     * @return
+     * @throws T
+     *
+     * @todo Don't need a throws T, do we?
+     */
     <T extends Throwable> T handleException(T e) throws T;
 }

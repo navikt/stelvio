@@ -16,7 +16,8 @@ public interface CodesTable<T extends CodesTableItem> {
 	/**
 	 * Adds a <code>CodesTableItem</code> to the <code>CodesTable</code>.
 	 * 
-	 * @param codesTableItem the item to add. 
+	 * @param codesTableItem the item to add.
+     * @todo LATER: remove this and use constructor in impl instead. 
 	 */
 	public void addCodesTableItem(T codesTableItem);
 	
