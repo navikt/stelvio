@@ -281,6 +281,7 @@ app/stelvio-common-java/src/test/resources/spring-beans.dtd -text
 app/stelvio-common-java/src/test/resources/test-bean-factory-post-processor.properties -text
 app/stelvio-common-java/src/test/resources/test-bean-factory-post-processor.xml -text
 app/stelvio-common-java/src/test/resources/test-ehcache.xml -text
+app/stelvio-common-java/src/test/resources/test-event.xml -text
 app/stelvio-common-java/src/test/resources/test-local-service-locator.xml -text
 app/stelvio-common-java/src/test/resources/test-log4j.properties -text
 app/stelvio-common-java/src/test/resources/test-services.xml -text
