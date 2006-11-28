@@ -10,7 +10,7 @@ import no.stelvio.common.context.RequestContext;
  * 
  * @author personff564022aedd
  */
-public interface BusinessRequest extends Serializable {
+public interface ServiceRequest extends Serializable {
 	
 	/**
 	 * @return {@link ContextContainer}

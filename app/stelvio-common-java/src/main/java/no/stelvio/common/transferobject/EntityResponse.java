@@ -5,7 +5,7 @@ package no.stelvio.common.transferobject;
  * 
  * @author personff564022aedd
  */
-public interface EntityResponse<T> extends BusinessResponse {
+public interface EntityResponse<T> extends ServiceResponse {
 	
 	/**
 	 * @return entity T

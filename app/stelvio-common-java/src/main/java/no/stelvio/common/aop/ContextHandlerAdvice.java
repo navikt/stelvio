@@ -1,7 +1,7 @@
 package no.stelvio.common.aop;
 
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.transferobject.BusinessRequest;
+import no.stelvio.common.transferobject.ServiceRequest;
 import no.stelvio.common.transferobject.ContextContainer;
 
 import org.aopalliance.intercept.MethodInterceptor;
@@ -20,8 +20,8 @@ public class ContextHandlerAdvice implements MethodInterceptor {
 	public Object invoke(MethodInvocation i) throws Throwable {
 		
 		Object[] args = i.getArguments();
-		if (args.length > 0 && args[0] instanceof BusinessRequest) {
-			ContextContainer cc = ((BusinessRequest)args[0]).getContextContainer();
+		if (args.length > 0 && args[0] instanceof ServiceRequest) {
+			ContextContainer cc = ((ServiceRequest)args[0]).getContextContainer();
 			
 			if (cc != null) {
 				RequestContext.importContextValues(cc);

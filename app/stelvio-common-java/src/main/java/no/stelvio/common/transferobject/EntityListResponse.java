@@ -7,7 +7,7 @@ import java.util.List;
  * 
  * @author personff564022aedd
  */
-public interface EntityListResponse<T> extends BusinessResponse {
+public interface EntityListResponse<T> extends ServiceResponse {
 
 	/**
 	 * @return a List of entities of type T

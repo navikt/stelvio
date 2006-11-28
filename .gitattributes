@@ -152,14 +152,14 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/MethodDefinitionSources.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecureAnnotationNotInMappingException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributes.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/BusinessRequest.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/BusinessResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainerImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponseImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponseImpl.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceRequest.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/TransferObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/DateUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ErrorCodesUtil.java -text

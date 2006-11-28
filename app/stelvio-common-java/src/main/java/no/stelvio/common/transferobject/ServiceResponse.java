@@ -7,5 +7,5 @@ import java.io.Serializable;
  * 
  * @author personff564022aedd
  */
-public interface BusinessResponse extends Serializable {
+public interface ServiceResponse extends Serializable {
 }
