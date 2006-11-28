@@ -1,11 +1,16 @@
 package no.stelvio.web.filter;
 
 import java.io.IOException;
+
+import javax.faces.context.FacesContext;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.webflow.execution.FlowSession;
+import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
@@ -59,7 +64,7 @@ public class RequestContextFilter extends AbstractFilter {
 	
 			// Allways update the user, screen, module, process and transaction id
 			RequestContext.setUserId(request.getRemoteUser());
-			RequestContext.setScreenId(RequestUtils.getScreenId(request));
+			RequestContext.setScreenId(getScreenId());
 			RequestContext.setModuleId(RequestContext.getScreenId());
 			RequestContext.setProcessId(RequestUtils.getProcessId(request));
 			RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
@@ -87,5 +92,19 @@ public class RequestContextFilter extends AbstractFilter {
 			// Always reset the RequestContext, just to be on the safe side
 			RequestContext.remove();
 		}
+	}
+	
+	/**
+	 * Method to retrieve the unique screen id. 
+	 * @return the current flow filename and the state id of the viewstate, ex. my-flow-file:state-id
+	 */
+	private String getScreenId() {
+		FlowSession session = FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
+		
+		if (session != null) {
+			return session.getDefinition().getId()+":"+session.getState().getId();
+		}
+		
+		return null;
 	}
 }
