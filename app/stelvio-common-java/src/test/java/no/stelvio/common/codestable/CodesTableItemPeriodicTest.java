@@ -3,6 +3,10 @@ package no.stelvio.common.codestable;
 import java.util.Date;
 import java.util.Locale;
 
+import org.junit.Test;
+
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+
 import com.agical.rmock.extension.junit.RMockTestCase;
 
 /**
@@ -16,6 +20,7 @@ public class CodesTableItemPeriodicTest extends RMockTestCase {
 	/**
 	 * Test of constructor for CodesTableItem.
 	 */
+	@Test
 	public void testCodesTableItemEmptyConstructor() {
 		CodesTableItemPeriodic cti = new CodesTableItemPeriodic();
 		
@@ -30,6 +35,7 @@ public class CodesTableItemPeriodicTest extends RMockTestCase {
 	/**
 	 * Test of constructor for CodesTableItem()
 	 */
+	@Test
 	public void testCodesTableItemConstrutor() {
 		
 		Date date = new Date();
@@ -49,6 +55,7 @@ public class CodesTableItemPeriodicTest extends RMockTestCase {
 	/**
 	 * Test of CodesTableItem's getters and setters.
 	 */
+	@Test
 	public void testSettersAndGetters() {
 		
 		Date date = new Date();
@@ -73,6 +80,7 @@ public class CodesTableItemPeriodicTest extends RMockTestCase {
 	/**
 	 * Test toString().
 	 */
+	@Test
 	public void testToString() {
 		CodesTableItemPeriodic cti = new CodesTableItemPeriodic("t1code1", "t1decode1", new Date(), new Date(), new Locale("nb", "NO"), Boolean.TRUE);
 		assertNotNull("Test 1: toString is not null", cti.toString());
@@ -81,18 +89,20 @@ public class CodesTableItemPeriodicTest extends RMockTestCase {
 	/**
 	 * Test for boolean equals(Object).
 	 */
+	@Test
 	public void testEqualsObject() {
 	
-		assertTrue("Test 1: CodesTableItemPeriodic.equals(CodesTableItemPeriodic) should have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP1));
-		assertFalse("Test 2: CodesTableItemPeriodic.equals(null) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(null));
-		assertFalse("Test 3: CodesTableItemPeriodic.equals(Object) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals("String"));
-		assertFalse("Test 4: CodesTableItemPeriodic1.equals(CodesTableItemPeriodic2) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP2));
-		assertFalse("Test 4: CodesTableItemPeriodic1.equals(CodesTableItem2) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItem.CTI2));
+		super.assertTrue("Test 1: CodesTableItemPeriodic.equals(CodesTableItemPeriodic) should have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP1));
+		super.assertFalse("Test 2: CodesTableItemPeriodic.equals(null) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(null));
+		super.assertFalse("Test 3: CodesTableItemPeriodic.equals(Object) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals("String"));
+		super.assertFalse("Test 4: CodesTableItemPeriodic1.equals(CodesTableItemPeriodic2) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP2));
+		super.assertFalse("Test 4: CodesTableItemPeriodic1.equals(CodesTableItem2) should not have matched", TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItem.CTI2));
 	}
 
 	/**
 	 * Test of hashCode().
 	 */
+	@Test
 	public void testHashCode() {
 		assertEquals(
 			"Equals is true, then hashCode is true",

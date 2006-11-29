@@ -3,7 +3,18 @@ package no.stelvio.common.codestable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.agical.rmock.extension.junit.RMockTestCase;
+
+import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.codestable.CodesTableImpl;
+import no.stelvio.common.codestable.CodesTablePeriodic;
+import no.stelvio.common.codestable.CodesTablePeriodicImpl;
+import no.stelvio.common.codestable.CodesTableManagerImpl;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTableFactory;
 
 /**
  * Unit test for CodesTableManager.
@@ -16,7 +27,9 @@ public class CodesTableManagerTest extends RMockTestCase  {
 	 * Tests CodesTableManager's methods for retrieval of <code>CodesTable</code>.
 	 * @throws Exception
 	 */
+	@Test
 	public void testCodesTableManager() throws Exception{
+		
 		//Test data
 		CodesTable codesTable = new CodesTableImpl();
 		CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
@@ -47,7 +60,7 @@ public class CodesTableManagerTest extends RMockTestCase  {
 		
 		//Test the test objects method getCodesTable
 		codesTable = codesTableManager.getCodesTable(TestCodesTableItem.CTI1.getClass());
-		
+				
 		assertEquals("Test 1 : Codestable holds correct codestableitem 1", codesTable.getCodesTableItem(TestCodesTableItem.CTI1.getCode()).getCode(), TestCodesTableItem.CTI1.getCode());
 		assertEquals("Test 2 : Codestable holds correct codestableitem 2", codesTable.getCodesTableItem(TestCodesTableItem.CTI2.getCode()).getCode(), TestCodesTableItem.CTI2.getCode());
 		assertEquals("Test 3 : Codestable holds correct codestableitem 3", codesTable.getCodesTableItem(TestCodesTableItem.CTI3.getCode()).getCode(), TestCodesTableItem.CTI3.getCode());
@@ -60,6 +73,5 @@ public class CodesTableManagerTest extends RMockTestCase  {
 		assertEquals("Test 6 : Codestableperiodic holds correct codestableitemperiodic 2", codesTablePeriodic.getCodesTableItem(TestCodesTableItemPeriodic.CTIP2.getCode()).getCode(), TestCodesTableItemPeriodic.CTIP2.getCode());
 		assertEquals("Test 7 : Codestableperiodic holds correct codestableitemperiodic 3", codesTablePeriodic.getCodesTableItem(TestCodesTableItemPeriodic.CTIP3.getCode()).getCode(), TestCodesTableItemPeriodic.CTIP3.getCode());
 		assertNull("Test 8 : Codestableperiodic shouldn't hold this codestableitemperiodic", codesTablePeriodic.getCodesTableItem(TestCodesTableItemPeriodic.CTIP4.getCode()));
-
 	}
 }

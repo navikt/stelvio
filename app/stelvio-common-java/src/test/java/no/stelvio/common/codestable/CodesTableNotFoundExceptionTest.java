@@ -3,6 +3,8 @@ package no.stelvio.common.codestable;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+import no.stelvio.common.codestable.CodesTableNotFoundException;
+
 /**
  * @author personf8e9850ed756
  * @todo add javadoc

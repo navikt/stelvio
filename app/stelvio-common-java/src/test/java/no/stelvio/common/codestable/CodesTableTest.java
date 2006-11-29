@@ -3,8 +3,12 @@ package no.stelvio.common.codestable;
 import java.util.Locale;
 
 import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.codestable.CodesTableItem;
 
 import org.apache.commons.collections.Predicate;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 /**
@@ -32,6 +36,7 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 	 */
 	//TODO: FIX CASTING
 	@SuppressWarnings("unchecked")
+	@Before
 	public void onSetUp() throws Exception {
 		codesTable = (CodesTable) applicationContext.getBean("codesTable");
 		assertNotNull("Couldn't initiate CodesTable using standard POJO implementation.", codesTable);
@@ -45,6 +50,7 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 	/**
 	 * Test of getCodesTableItem().
 	 */
+	@Test
 	public void testGetCodesTableItem(){
 		
 		//Test: get an item that does not exist
@@ -61,6 +67,7 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 	/**
 	 * Test of addPredicate(Predicate predicate).
 	 */
+	@Test
 	public void testAddPredicateAndRemovePredicate(){
 		
 		Predicate pred1 = new Predicate(){
@@ -114,33 +121,43 @@ public class CodesTableTest extends AbstractDependencyInjectionSpringContextTest
 	/**
 	 * Test of getDecode(Object code).
 	 */
+	@Test
 	public void testGetDecodeWithCode(){
-		//Test: get a decode for a code that does not exist
-		assertNull("Test 1 : A null-value should have been returned" , codesTable.getDecode("t8code15"));
-		
+
 		//Set the locale in the RequestContext
 		Locale locale = new Locale("nb", "NO");
 		RequestContext.setLocale(locale);
 		
+		//Test: get a decode for a code that does not exist
+		try{
+			codesTable.getDecode("t8code15");
+			fail("Expected exception");	
+		} catch(Exception ex){
+			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
+		}
+
 		//Test: get a decode
-		String decode = codesTable.getDecode(TestCodesTableItem.CTI1.getCode());
-		assertNotNull("Test 2: decode not found", decode);
-		assertEquals("Test 3: unexptected decode", "t1decode1", decode);
+		assertEquals("Test 3: unexptected decode", codesTable.getDecode(TestCodesTableItem.CTI1.getCode()), "t1decode1");
 	}
 	
 	/**
 	 * Test of getDecode(Object code, Locale locale).
 	 */
+	@Test
 	public void testGetDecodeWithCodeAndLocale(){
-		Locale locale = new Locale("nb", "NO");
 		
+		Locale locale = new Locale("nb", "NO");
+			
 		//Test: get a decode for a code that does not exist
-		assertNull("Test 1 : A null-value should have been returned" , codesTable.getDecode("t8code15"));
+		try{
+			codesTable.getDecode("t8code15", locale);
+			fail("Expected exception");	
+		} catch(Exception ex){
+			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
+		}
 
 		//Test: get a decode
-		String decode = codesTable.getDecode(TestCodesTableItem.CTI1.getCode(), locale);
-		assertNotNull("Test 2: decode not found", decode);
-		assertEquals("Test 3: unexptected decode", "t1decode1", decode);
+		assertEquals("Test 3: unexptected decode", codesTable.getDecode(TestCodesTableItem.CTI1.getCode(), locale) , "t1decode1");
 	}
 	
 	/**

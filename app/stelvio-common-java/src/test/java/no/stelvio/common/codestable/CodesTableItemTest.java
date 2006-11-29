@@ -2,6 +2,10 @@ package no.stelvio.common.codestable;
 
 import java.util.Locale;
 
+import org.junit.Test;
+
+import no.stelvio.common.codestable.CodesTableItem;
+
 import com.agical.rmock.extension.junit.RMockTestCase;
 
 /**
@@ -15,6 +19,7 @@ public class CodesTableItemTest extends RMockTestCase {
 	/**
 	 * Test of constructor for CodesTableItem.
 	 */
+	@Test
 	public void testCodesTableItemEmptyConstructor() {
 		CodesTableItem cti = new CodesTableItem();
 		
@@ -27,6 +32,7 @@ public class CodesTableItemTest extends RMockTestCase {
 	/**
 	 * Test of constructor for CodesTableItem()
 	 */
+	@Test
 	public void testCodesTableItemConstrutor() {
 		Locale locale = new Locale("nb", "NO");
 		CodesTableItem cti = new CodesTableItem("t1code1", "t1decode1", locale, Boolean.TRUE);
@@ -40,6 +46,7 @@ public class CodesTableItemTest extends RMockTestCase {
 	/**
 	 * Test of CodesTableItem's getters and setters.
 	 */
+	@Test
 	public void testSettersAndGetters() {
 		Locale locale = new Locale("nb", "NO");
 		CodesTableItem cti = new CodesTableItem();
@@ -58,6 +65,7 @@ public class CodesTableItemTest extends RMockTestCase {
 	/**
 	 * Test toString().
 	 */
+	@Test
 	public void testToString() {
 		CodesTableItem cti = new CodesTableItem("t1code1", "t1decode1", new Locale("nb", "NO"), Boolean.TRUE);
 		assertNotNull("Test 1: toString is not null", cti.toString());
@@ -66,16 +74,18 @@ public class CodesTableItemTest extends RMockTestCase {
 	/**
 	 * Test for boolean equals(Object).
 	 */
+	@Test
 	public void testEqualsObject() {
-		assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI1));
-		assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.CTI1.equals(null));
-		assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.CTI1.equals("String"));
-		assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI2));
+		super.assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI1));
+		super.assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.CTI1.equals(null));
+		super.assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.CTI1.equals("String"));
+		super.assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI2));
 	}
 
 	/**
 	 * Test of hashCode().
 	 */
+	@Test
 	public void testHashCode() {
 		assertEquals(
 			"Equals is true, then hashCode is true",

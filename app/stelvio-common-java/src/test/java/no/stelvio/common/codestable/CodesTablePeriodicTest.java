@@ -123,13 +123,14 @@ public class CodesTablePeriodicTest extends AbstractDependencyInjectionSpringCon
 		Locale locale = new Locale("nb", "NO");
 		RequestContext.setLocale(locale);
 		
-		//Test: get a decode for a code that does not exist
-		assertNull("Test 1 : A null-value should have been returned" , codesTablePeriodic.getDecode("t8code15", date));
+		try{
+			codesTablePeriodic.getDecode("t8code15", date);
+			fail("Expected exception");	
+		} catch(Exception ex){
+			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
+		}
 
-		//Test: get a decode
-		String decode = codesTablePeriodic.getDecode(TestCodesTableItemPeriodic.CTIP1.getCode(), date);
-		assertNotNull("Test 2: decode not found", decode);
-		assertEquals("Test 3: unexptected decode", "t1decode1", decode);
+		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItemPeriodic.CTIP1.getCode(), date), "t1decode1");
 	}
 	
 	/**
@@ -141,14 +142,15 @@ public class CodesTablePeriodicTest extends AbstractDependencyInjectionSpringCon
 		Calendar cal = Calendar.getInstance();
 		cal.set(106, 10, 15);
 		Date date = new Date(cal.getTimeInMillis());
-		
-		//Test: get a decode for a code that does not exist
-		assertNull("Test 1 : A null-value should have been returned" , codesTablePeriodic.getDecode("t8code15", date));
+	
+		try{
+			codesTablePeriodic.getDecode("t8code15", date);
+			fail("Expected exception");	
+		} catch(Exception ex){
+			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
+		}
 
-		//Test: get a decode
-		String decode = codesTablePeriodic.getDecode(TestCodesTableItem.CTI1.getCode(), locale, date);
-		assertNotNull("Test 1: decode not found", decode);
-		assertEquals("Test 2: unexptected decode", "t1decode1", decode);
+		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItem.CTI1.getCode(), locale, date), "t1decode1");
 	}
 	
 	/**

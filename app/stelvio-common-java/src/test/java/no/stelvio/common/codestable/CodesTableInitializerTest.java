@@ -3,8 +3,15 @@ package no.stelvio.common.codestable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
+/*import no.stelvio.common.codestable.CodesTableImpl;
+import no.stelvio.common.codestable.CodesTablePeriodicImpl;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTableInitializerImpl;*/
+
 import com.agical.rmock.extension.junit.RMockTestCase;
-import no.stelvio.common.error.SystemUnrecoverableException;
 
 /**
  * Unit test of CodesTableInitializer.
@@ -20,6 +27,7 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	//TODO: FIX CASTING
 	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializer() throws Exception {
+		
 		//Test data
 		CodesTable codesTable = new CodesTableImpl();
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
@@ -142,8 +150,8 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 		try{
 			codesTableInitializer.init();
 			fail("Expected exception");
-		} catch(SystemUnrecoverableException ex){
-			assertEquals("Test 1: Expected exception ", "No CodesTables or CodesTablePeriodics have been set", ex.getMessage());
+		} catch(Exception ex){
+			assertEquals("Test 1: Expected exception ", ex.getClass().getSimpleName(), "CodesTableConfigurationException" );
 		}
 	}
 	
@@ -191,9 +199,9 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 		//Test the test objects method
 		try{
 			codesTableInitializer.init();
+			fail("Exptected exception");
 		} catch(Exception ex){
-			System.out.println("ex.getMessage "+ ex.getMessage());
-			assertEquals("Test 1: Expected exception ", codesTablePeriodic +" is not a codestable", ex.getMessage());
+			assertEquals("Test 1: Expected exception ", ex.getClass().getSimpleName(), "CodesTableNotFoundException");
 		}		
 	}	
 }
