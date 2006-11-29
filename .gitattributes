@@ -334,6 +334,8 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/FNRTag.java -t
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/HelpLinkTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/NavnTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/TruncateTag.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/breadcrumb/Breadcrumb.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/breadcrumb/action/BreadcrumbAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/AmountSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/CtTagSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/DateSupport.java -text
