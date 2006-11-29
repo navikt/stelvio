@@ -1,6 +1,6 @@
 package no.stelvio.common.event;
 
-import org.hamcrest.MatcherAssert;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsSame.same;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public abstract class ApplicationEventTest {
 
     @Test
     public void objectOnWhichTheEventInitiallyOccurredIsSaved() {
-        MatcherAssert.assertThat((ApplicationEventTest) event.getSource(), same(this));
+        assertThat((ApplicationEventTest) event.getSource(), same(this));
     }
 
     protected abstract ApplicationEvent createApplicationEvent();
