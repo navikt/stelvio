@@ -6,7 +6,6 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
- * @todo should be abstract
  */
 public abstract class CodesTableException extends SystemUnrecoverableException {
     protected CodesTableException(Object... templateArguments) {
