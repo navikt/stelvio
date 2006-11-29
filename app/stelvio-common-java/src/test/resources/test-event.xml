@@ -6,6 +6,6 @@
 -->
 <beans>
 	<bean id="applicationEventPublisherAwareBean" class="no.stelvio.common.event.EventIntegrationTest$TestBean"/>
-	<bean id="eventListener" class="no.stelvio.common.event.EventIntegrationTest$TestApplicationEventListener"/>
+	<bean class="no.stelvio.common.event.EventIntegrationTest$TestApplicationEventListener"/>
 </beans>
 
