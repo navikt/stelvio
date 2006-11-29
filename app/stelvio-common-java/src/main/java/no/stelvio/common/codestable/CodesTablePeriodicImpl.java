@@ -29,14 +29,14 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 	private List<Predicate> predicates = new ArrayList<Predicate>();
 		
 	/**
-	 * {@inheritDoc CacheTablePeriodic#addCodesTableItem()}
+	 * {@inheritDoc}
 	 */
 	public void addCodesTableItem(CodesTableItemPeriodic codesTableItemPeriodic){
 		this.codesTableItems.add(codesTableItemPeriodic);
 	}
 	
 	/** 
-	 * {@inheritDoc CacheTablePeriodic#getCodesTableItem()}
+	 * {@inheritDoc}
 	 */
 	public CodesTableItemPeriodic getCodesTableItem(Object code) {
 		
@@ -49,9 +49,7 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 					cti = c;
 				}
 			}
-		}
-		//There are defined predicates for the items of the codestableperiodic
-		else if(!this.predicates.isEmpty()){ 
+		} else if(!this.predicates.isEmpty()){ 
 			for(CodesTableItemPeriodic c : this.filteredCodesTableItems){
 				if (c.getCode() == code.toString()){
 					cti = c;
@@ -63,19 +61,20 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 	}
 		
 	/**
-	 * {@inheritDoc CodesTablePeriodic#addPredicate()}
+	 * {@inheritDoc)}
 	 */
 	public void addPredicate(Predicate predicate) {
-		//If there are no previous predicates added to a codestableperiodic, all of the codetableitemperiodics in a codetableperiodic
-		//are filtered
+		//If there are no previous predicates added to a codestableperiodic, 
+		//all of the codetableitemperiodics in a codetableperiodic
+		//are filtered, or else the codestableitemperiodics in the filtered 
+		//collection are filtered.
 		synchronized (this.filteredCodesTableItems){
 			if(this.predicates.isEmpty()){
-				this.filteredCodesTableItems = (ArrayList<CodesTableItemPeriodic>) CollectionUtils.select(this.codesTableItems, predicate);
-			}
-			//If there are previous predicates added to a codestableperiodic, the codetableitemperiodics in the filtered collection 
-			//are filtered
-			else{
-				this.filteredCodesTableItems = (ArrayList<CodesTableItemPeriodic>) CollectionUtils.select(this.filteredCodesTableItems, predicate);
+				this.filteredCodesTableItems = (ArrayList<CodesTableItemPeriodic>) 
+					CollectionUtils.select(this.codesTableItems, predicate);
+			} else{
+				this.filteredCodesTableItems = (ArrayList<CodesTableItemPeriodic>) 
+					CollectionUtils.select(this.filteredCodesTableItems, predicate);
 			}
 		}
 		
@@ -83,7 +82,7 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 	}
 	
 	/** 
-	 * {@inheritDoc CodesTablePeriodic#resetPredicate()}
+	 * {@inheritDoc}
 	 */
 	public void resetPrediacte() {
 		this.predicates.clear();
@@ -91,25 +90,45 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 	}
 
 	/**
-	 * {@inheritDoc CodesTablePeriodic#getDecode()}
+	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code, Date date){
 		return getDecode(code, RequestContext.getLocale(), date);
 	}
 	
 	/** 
-	 * {@inheritDoc CodesTablePeriodic#getDecode()}
+	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code, Locale locale, Date date) {
+		
+		String decode = null;
+		String defaultDecode = null;
+		
 		//If there are predicates added to the codestableitems in a codestable,
 		//codesTableItem will only return an item if it belongs to the filtered collection
 		//of codestableitems
 		for(CodesTableItemPeriodic cti : codesTableItems){
-			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) && cti.getFromDate().before(date) && cti.getToDate().after(date)){
-				 return cti.getDecode();
+			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) && 
+					cti.getFromDate().before(date) && cti.getToDate().after(date)){
+				 decode = cti.getDecode();
+				 break;
+			} else if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(RequestContext.getLocale()) && 
+					cti.getFromDate().before(date) && cti.getToDate().after(date)){
+				 defaultDecode = cti.getDecode();
 			}
 		}
-
-		return null;
+		
+		//If there doesn't exist a decode for the input code, date and locale, use the 
+		//default decode of the input code and date, or throw an exception
+		if(decode == null){
+			if(defaultDecode != null){
+				return defaultDecode;
+			}
+			else{
+				throw new DecodeNotFoundException(code.toString());
+			}
+		}
+		
+		return decode;
     }
 }
