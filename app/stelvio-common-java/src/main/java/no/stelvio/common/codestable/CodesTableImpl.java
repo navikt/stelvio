@@ -8,7 +8,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 
 import no.stelvio.common.context.RequestContext;
-
+ 
 /**
  * Implementation of CodesTable used to handle a codestable, its beloning values and add
  * predicates to filter the items in the codestable. 
@@ -28,14 +28,14 @@ public class CodesTableImpl implements CodesTable {
 	private List<Predicate> predicates = new ArrayList<Predicate>();
 		
 	/**
-	 * {@inheritDoc CodesTable#addCodesTableItem(CodesTableItem codesTableItem)}
+	 * {@inheritDoc}
 	 */
 	public void addCodesTableItem(CodesTableItem codesTableItem){
 		this.codesTableItems.add(codesTableItem);
 	}
 	
 	/** 
-	 * {@inheritDoc CodesTable#getCodesTableItem()}
+	 * {@inheritDoc}
 	 */
 	public CodesTableItem getCodesTableItem(Object code) {
 		
@@ -48,9 +48,7 @@ public class CodesTableImpl implements CodesTable {
 					cti = c;
 				}
 			}
-		}
-		//There are defined predicates for the items in the codestable
-		else if(!this.predicates.isEmpty()){ 
+		} else if(!this.predicates.isEmpty()){ 
 			for(CodesTableItem c : this.filteredCodesTableItems){
 				if (c.getCode() == code.toString()){
 					cti = c;
@@ -62,19 +60,17 @@ public class CodesTableImpl implements CodesTable {
 	}
 		
 	/**
-	 * {@inheritDoc CodesTable#addPredicate()}
+	 * {@inheritDoc}
 	 */
 	public void addPredicate(Predicate predicate) {
 		//If there are no previous predicates added to a codestable, all of the codetableitems in a codetable
-		//are filtered
+		//are filtered, or else the codestableitems in the filtered collection are filtered.
 		synchronized (this.filteredCodesTableItems){
 			if(this.predicates.isEmpty()){
 				this.filteredCodesTableItems = (ArrayList<CodesTableItem>) CollectionUtils.select(this.codesTableItems, predicate);
-			}
-			//If there are previous predicates added to a codestable, the codetableitems in the filtered collection 
-			//are filtered
-			else{
-				this.filteredCodesTableItems = (ArrayList<CodesTableItem>) CollectionUtils.select(this.filteredCodesTableItems, predicate);
+			} else{
+				this.filteredCodesTableItems = (ArrayList<CodesTableItem>) 
+						CollectionUtils.select(this.filteredCodesTableItems, predicate);
 			}
 		}
 		
@@ -82,7 +78,7 @@ public class CodesTableImpl implements CodesTable {
 	}
 	
 	/** 
-	 * {@inheritDoc CodesTable#resetPredicate()}
+	 * {@inheritDoc}
 	 */
 	public void resetPrediacte() {
 		this.predicates.clear();
@@ -90,26 +86,43 @@ public class CodesTableImpl implements CodesTable {
 	}
 
 	/**
-	 * {@inheritDoc CodesTable#getDecode()}
+	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code) {		
 		return getDecode(code, RequestContext.getLocale());
 	}
 
 	/** 
-	 * {@inheritDoc CodesTable#getDecode()}
+	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code, Locale locale) {
-			
+		
+		String decode = null;
+		String defaultDecode = null;
+
 		//If there are predicates added to the codestableitems in a codestable,
 		//getCodesTableItem() will only return an item if it belongs to the filtered collection
 		//of codestableitems
-		for(CodesTableItem cti : this.codesTableItems){
+		for(CodesTableItem cti : this.codesTableItems){			
 			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) ){
-				 return cti.getDecode();
+				 decode = cti.getDecode();
+				 break;
+			} else if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(RequestContext.getLocale())){
+				defaultDecode = cti.getDecode();
 			}
 		}
 		
-		return null;
+		//If there doesn't exist a decode for the input code and locale, use the 
+		//default decode of the input code, or throw an exception
+		if(decode == null){
+			if(defaultDecode != null){
+				return defaultDecode;
+			}
+			else{
+				throw new DecodeNotFoundException(code.toString());
+			}
+		}
+		
+		return decode;
 	}
 }

@@ -14,12 +14,13 @@ public interface CodesTableInitializer {
 	 * <code>CodesTablePeriodic</code>s from the database into the
 	 * cache.
 	 * 
-	 * @throws CodesTableException thrown if a <code>CodesTable</code> or a 
-	 * <code>CodesTablePeriodic</code> that is defined in Springs application context 
-	 * used to retrieve the tables from the database - isn't a class of 
-	 * either <code>CodesTableItem</code> or <code>CodesTableItemPeriodic</code>. 
-	 * This exception is also thrown if the desired <code>CodesTable</code>/
+	 * @throws CodesTableNotFoundException thrown if the desired <code>CodesTable</code>/
 	 * <code>CodesTablePeriodic</code> cannot be retrieved from the database.
+	 * 
+	 * @throws CodesTableConfigurationException thrown if there haven't been defined 
+	 * any <code>CodesTableItem</code>'s or <code>CodesTableItemPeriodic</code> in 
+	 * the configuration, used to load the application's needed <code>CodesTable</code>'s 
+	 * and <code>CodesTablePeriodic</code>. 
 	 */
-	public void init() throws CodesTableException;
+	void init() throws CodesTableConfigurationException, CodesTableNotFoundException;
 }
