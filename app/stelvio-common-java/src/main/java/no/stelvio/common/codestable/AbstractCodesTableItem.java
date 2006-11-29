@@ -31,6 +31,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Returns the code represented by this item.
 	 * @return The items code.
+	 * @see #setCode
 	 */
 	public String getCode(){
 		return code;
@@ -39,6 +40,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Sets the code represented by this item.
 	 * @param code the code.
+	 * @see #getCode
 	 */
 	public void setCode(String code){
 		this.code = code;
@@ -47,6 +49,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Returns the decode represented by this item.
 	 * @return The items decode.
+	 * @see #setDecode
 	 */
 	public String getDecode(){
 		return decode;
@@ -55,6 +58,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Sets the decode represented by this item.
 	 * @param decode the decode.
+	 * @see #getDecode
 	 */
 	public void setDecode(String decode){
 		this.decode = decode;
@@ -63,6 +67,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Returns the locale of this item.
 	 * @return The items locale.
+	 * @see #setLocale
 	 */
 	public Locale getLocale(){
 		return locale;
@@ -71,6 +76,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Sets the locale of this item.
 	 * @param locale the locale of the item.
+	 * @see #getLocale
 	 */
 	public void setLocale(Locale locale){
 		this.locale = locale;
@@ -79,6 +85,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Returns the validity of this item.
 	 * @return isValid as true if item is valid, false otherwise.
+	 * @see #setIsValid
 	 */
 	public Boolean getIsValid(){
 		return isValid;
@@ -87,6 +94,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Sets the validity of this item.
 	 * @param isValid true to mark item as valid, false otherwise.
+	 * @see #getIsValid
 	 */
 	public void setIsValid(Boolean isValid){
 		this.isValid = isValid;
@@ -95,6 +103,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Abstract method for toString() that must be implemented by its 
 	 * subclasses.
+	 * @return Returns a <Code>String</code> representation of this object.
 	 */
 	public abstract String toString();
 	
