@@ -1,12 +1,11 @@
 package no.stelvio.common.error;
 
-import java.util.Locale;
-
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
  * @todo Should this be the class being persisted?
  * @todo Should this have more logic?
+ * @todo Should it implement Comparable based on Severity
  */
 public class ErrorDefinition {
     private String id;
