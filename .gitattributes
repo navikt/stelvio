@@ -338,6 +338,10 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/NavnTag.java -
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/TruncateTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/breadcrumb/Breadcrumb.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/breadcrumb/action/BreadcrumbAction.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/menu/components/MenuComponent.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/menu/components/MenuItemComponent.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/menu/renderers/MenuItemRenderer.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/menu/renderers/MenuRenderer.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/AmountSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/CtTagSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/DateSupport.java -text
