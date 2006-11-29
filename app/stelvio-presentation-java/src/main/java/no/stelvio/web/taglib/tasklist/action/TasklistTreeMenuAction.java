@@ -38,14 +38,19 @@ public class TasklistTreeMenuAction implements Serializable {
 	
 	/**
 	 * TODO: Document me
+	 * TODO: Add correct error handling
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public TreeNode getTreeData() {
+	public TreeNode getTreeData() throws Exception {
 		TreeNode rootTreeNode = new TreeNodeBase("rootFolder", "Ansvarlige", false);
 
 		// Get the logged in saksbehandler object
 		Saksbehandler saksbehandler = getLoggedInSaksbehandler();
+		
+		if (saksbehandler == null) {
+			throw new Exception("Ingen saksbehandler logget inn.");
+		}
 		
 		// Get TreeModel from service (TODO: Change getSaksbehandlerNr return type from Long to String)
 		List<Responsible> responsibles = getTreeModel(""+saksbehandler.getSaksbehandlernr());
