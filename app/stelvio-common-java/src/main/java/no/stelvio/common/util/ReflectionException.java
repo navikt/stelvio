@@ -8,7 +8,7 @@ import no.stelvio.common.error.SystemUnrecoverableException;
  */
 public class ReflectionException extends SystemUnrecoverableException {
     public ReflectionException(Exception cause, String... name) {
-        super(cause, name);
+        super(cause, (Object)name);
     }
 
     protected String messageTemplate() {

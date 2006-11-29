@@ -111,8 +111,8 @@ public final class ReflectUtil {
 	 */
 	public static Object callMethodOnInstance(Object object, String methodName) {
 		try {
-			Method method = object.getClass().getMethod(methodName, null);
-			return method.invoke(object, null);
+			Method method = object.getClass().getMethod(methodName);
+			return method.invoke(object);
 		} catch (NoSuchMethodException nsme) {
 			throw new ReflectionException(nsme, methodName);
 		} catch (IllegalAccessException iae) {

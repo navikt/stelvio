@@ -19,10 +19,6 @@ package no.stelvio.common.aop;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Method;
 
-import junit.framework.TestCase;
-
-import no.stelvio.common.aop.MethodWrapperInterceptorAdvisor;
-
 import org.aopalliance.aop.Advice;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -33,6 +29,8 @@ import org.springframework.aop.framework.Advised;
 import org.springframework.aop.support.JdkRegexpMethodPointcut;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.support.StaticListableBeanFactory;
+
+import junit.framework.TestCase;
 
 /**
  * Unit test for {@link no.stelvio.common.aop.MethodWrapperInterceptorAdvisor}.
@@ -63,7 +61,7 @@ public class MethodWrapperInterceptorAdvisorTests extends TestCase {
 
     public void testCheckRegexpPatternIsUsedByPointcut() throws NoSuchMethodException
     {
-        final Method method = MethodWrapperInterceptorAdvisorTests.class.getMethod("testCheckRegexpPatternIsUsedByPointcut", null);
+        final Method method = MethodWrapperInterceptorAdvisorTests.class.getMethod("testCheckRegexpPatternIsUsedByPointcut");
 
         ia.setPattern(".*MethodWrapper.*test.*ByPointcut");
         assertTrue("JdkRegexpMethodPointcut is not initialized correctly",
