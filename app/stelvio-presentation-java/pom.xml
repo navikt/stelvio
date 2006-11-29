@@ -12,6 +12,16 @@
     <name>stelvio - presentation</name>
     <dependencies>
     	<dependency>
+            <artifactId>myfaces-api</artifactId>
+            <groupId>org.apache.myfaces.core</groupId>
+            <version>1.1.4</version>
+        </dependency>
+        <dependency>
+            <artifactId>myfaces-impl</artifactId>
+            <groupId>org.apache.myfaces.core</groupId>
+            <version>1.1.4</version>
+        </dependency>
+    	<dependency>
             <artifactId>spring-webflow</artifactId>
             <groupId>org.springframework</groupId>
             <version>1.0</version>
