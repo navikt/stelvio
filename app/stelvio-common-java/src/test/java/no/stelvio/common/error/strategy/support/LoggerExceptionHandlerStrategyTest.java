@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import no.stelvio.common.error.Err;
+import no.stelvio.common.error.ErrorDefinition;
 import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.TestRecoverableException;
 import no.stelvio.common.error.TestUnrecoverableException;
@@ -97,7 +97,7 @@ public class LoggerExceptionHandlerStrategyTest {
 
     private ErrorResolver createErrorResolverMock() {
         final ErrorResolver errorResolver = context.mock(ErrorResolver.class);
-        final Err result = new Err.Builder(String.class).message("test: {0}").build();
+        final ErrorDefinition result = new ErrorDefinition.Builder(String.class).message("test: {0}").build();
 
         context.expects(new InAnyOrder() {{
             one (errorResolver).resolve(with(a(Throwable.class))); will(returnValue(result));

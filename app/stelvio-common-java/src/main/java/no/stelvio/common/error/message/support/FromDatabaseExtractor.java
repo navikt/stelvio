@@ -2,17 +2,17 @@ package no.stelvio.common.error.message.support;
 
 import java.text.MessageFormat;
 
-import no.stelvio.common.error.Err;
+import no.stelvio.common.error.ErrorDefinition;
 import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.StelvioException;
 import no.stelvio.common.error.message.Extractor;
 
 /**
- * Finds the message associated with the given exception by using the database provided list of <code>Err</code>s.
+ * Finds the message associated with the given exception by using the database provided list of <code>ErrorDefinition</code>s.
  * If the exception is not found in the list, use a fallback <code>Extractor</code>.
  *
  * @author personf8e9850ed756
- * @see Err
+ * @see ErrorDefinition
  * @see Extractor
  * @todo better javadoc
  */
@@ -34,7 +34,7 @@ public class FromDatabaseExtractor implements Extractor {
      * Otherwise we could just jump directly onto fallback if a non-stelvio exception. 
      */
     public String messageFrom(Throwable throwable) {
-        Err error = errorResolver.resolve(throwable);
+        ErrorDefinition error = errorResolver.resolve(throwable);
 
         if (null == error) {
             return fallback.messageFrom(throwable);

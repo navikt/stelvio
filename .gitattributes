@@ -86,8 +86,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/core/Initializable.java 
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/TransferObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ConfigurationException.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/Err.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorConfigurationException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorDefinition.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlingException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorNotFoundException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorResolver.java -text
@@ -203,7 +203,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/BeanOther.java -te
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/CalendarBean.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/AbstractExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/AllExceptionsTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorDefinitionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlingIntegrationTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorResolverTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ExceptionHandlerFacadeTest.java -text

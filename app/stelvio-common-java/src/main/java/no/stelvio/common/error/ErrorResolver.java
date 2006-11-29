@@ -5,5 +5,5 @@ package no.stelvio.common.error;
  * @todo write javadoc
  */
 public interface ErrorResolver {
-    Err resolve(Throwable throwable);
+    ErrorDefinition resolve(Throwable throwable);
 }

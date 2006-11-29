@@ -10,14 +10,14 @@ import java.util.Set;
 import org.springframework.util.Assert;
 
 import no.stelvio.common.error.ConfigurationException;
-import no.stelvio.common.error.Err;
 import no.stelvio.common.error.ErrorConfigurationException;
+import no.stelvio.common.error.ErrorDefinition;
 import no.stelvio.common.error.ErrorNotFoundException;
 import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.StelvioException;
 
 /**
- * Returns the <code>Err</code> corresponding to the given class or one of its superclasses or superinterfaces.
+ * Returns the <code>ErrorDefinition</code> corresponding to the given class or one of its superclasses or superinterfaces.
  *
  * @author personf8e9850ed756
  * @todo better javadoc
@@ -25,12 +25,12 @@ import no.stelvio.common.error.StelvioException;
  * @todo this class has quite a lot of aspects now; should be divided?
  */
 public class DefaultErrorResolver implements ErrorResolver {
-    private final HashMap<Class, Err> errorMap;
+    private final HashMap<Class, ErrorDefinition> errorMap;
 
-    public DefaultErrorResolver(Collection<Err> errors) {
-        errorMap = new HashMap<Class, Err>(errors.size());
+    public DefaultErrorResolver(Collection<ErrorDefinition> errors) {
+        errorMap = new HashMap<Class, ErrorDefinition>(errors.size());
 
-        for (Err error : errors) {
+        for (ErrorDefinition error : errors) {
             // TODO should another class validate that the class exist before loading the Class object here?
             // Could really only be the ErrorResolverFactoryBean as the EJB that retrieves the errors are in another class loader
             errorMap.put(loadClass(error.getClassName()), error);
@@ -43,16 +43,16 @@ public class DefaultErrorResolver implements ErrorResolver {
      * @todo should cache the eventual mapping between clazz and the class in the errorMap; that is, so finding super
      * classes and interfaces don't have to be done each time.
      */
-    public Err resolve(Throwable throwable) {
+    public ErrorDefinition resolve(Throwable throwable) {
         // TODO should we allow throwing IllegalArgumentException for coding errors? And not make our own version?
         Assert.notNull(throwable);
 
-        Err error = errorMap.get(throwable.getClass());
+        ErrorDefinition error = errorMap.get(throwable.getClass());
 
         if (null == error) {
             // TODO use builtin method in Commons Collections for searching a map if it exists
             for (Class classOrInterface : findSuperClassesAndInterfaces(throwable.getClass())) {
-                Err errorInner = errorMap.get(classOrInterface);
+                ErrorDefinition errorInner = errorMap.get(classOrInterface);
 
                 if (null != errorInner) {
                     error = errorInner;
@@ -77,7 +77,7 @@ public class DefaultErrorResolver implements ErrorResolver {
      * @param throwable
      * @see CommonExceptionLogic
      */
-    private void checkError(Err error, Throwable throwable) {
+    private void checkError(ErrorDefinition error, Throwable throwable) {
         if (null == error) {
             throw new ErrorNotFoundException(throwable.getClass());
         }
@@ -94,7 +94,7 @@ public class DefaultErrorResolver implements ErrorResolver {
         checkArgsLength(error, throwable, argsInException);
     }
 
-    private void checkArgsLength(Err error, Throwable throwable, final int argsInException) {
+    private void checkArgsLength(ErrorDefinition error, Throwable throwable, final int argsInException) {
         String message = error.getMessage();
         MessageFormat messageFormat = new MessageFormat(message);
         int argsInError = messageFormat.getFormats().length;

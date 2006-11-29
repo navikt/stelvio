@@ -5,32 +5,28 @@ import java.util.Locale;
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
- * @todo Have a different name, but not Error
  * @todo Should this be the class being persisted?
  * @todo Should this have more logic?
  */
-public class Err {
+public class ErrorDefinition {
     private String id;
-    private Locale locale;
     private String className;
     private String message;
     private Severity severity;
     private String shortDescription;
     private String longDescription;
 
-    private Err(String className) {
+    private ErrorDefinition(String className) {
         this.className = className;
     }
 
-    public Err(String id,
-               Locale locale,
+    public ErrorDefinition(String id,
                String className,
                String message,
                Severity severity,
                String shortDescription,
                String longDescription) {
         this.id = id;
-        this.locale = locale;
         this.className = className;
         this.message = message;
         this.severity = severity;
@@ -63,7 +59,7 @@ public class Err {
     }
 
     public String toString() {
-        return "Err{" +
+        return "ErrorDefinition{" +
                 "className='" + className + '\'' +
                 ", message='" + message + '\'' +
                 '}';
@@ -72,38 +68,38 @@ public class Err {
     // TODO should this be here?
     // TODO test this
     public static class Builder {
-        private Err err;
+        private ErrorDefinition errorDefinition;
 
         public Builder(String className) {
-            err = new Err(className);
+            errorDefinition = new ErrorDefinition(className);
         }
 
         // TODO is this correct? Cannot use Class<? extends Throwable> when using StelvioException
         public Builder(Class<? extends Object> clazz) {
-            err = new Err(clazz.getName()); 
+            errorDefinition = new ErrorDefinition(clazz.getName());
         }
 
-        public Err build() {
-            return err;
+        public ErrorDefinition build() {
+            return errorDefinition;
         }
 
         public Builder message(String message) {
-            err.message = message;
+            errorDefinition.message = message;
             return this;
         }
 
         public Builder severity(Severity severity) {
-            err.severity = severity;
+            errorDefinition.severity = severity;
             return this;
         }
 
         public Builder shortDescription(String description) {
-            err.shortDescription = description;
+            errorDefinition.shortDescription = description;
             return this;
         }
 
         public Builder longDescription(String description) {
-            err.longDescription = description;
+            errorDefinition.longDescription = description;
             return this;
         }
     }

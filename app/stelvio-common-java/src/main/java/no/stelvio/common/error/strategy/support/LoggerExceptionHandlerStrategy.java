@@ -3,7 +3,7 @@ package no.stelvio.common.error.strategy.support;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.common.error.Err;
+import no.stelvio.common.error.ErrorDefinition;
 import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.message.Extractor;
 import no.stelvio.common.error.message.support.FromDatabaseExtractor;
@@ -39,7 +39,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      */
     public <T extends Throwable> T handleException(T throwable) throws T {
         String message = extractor.messageFrom(throwable);
-        Err error = errorResolver.resolve(throwable);
+        ErrorDefinition error = errorResolver.resolve(throwable);
 
         switch (error.getSeverity()) {
             case FATAL:

@@ -8,7 +8,7 @@ import static org.hamcrest.core.IsNull.isNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import no.stelvio.common.error.Err;
+import no.stelvio.common.error.ErrorDefinition;
 import no.stelvio.common.error.ErrorHandlingException;
 import no.stelvio.common.error.ErrorNotFoundException;
 import no.stelvio.common.error.ErrorResolver;
@@ -25,14 +25,14 @@ public class DefaultErrorResolverTest extends ErrorResolverTest {
 
     @Test
     public void walkTheInheritanceHierarchyWhenFindingError() {
-        Err error = defaultErrorResolver.resolve(new ErrorNotFoundException(ErrorHandlingException.class));
+        ErrorDefinition error = defaultErrorResolver.resolve(new ErrorNotFoundException(ErrorHandlingException.class));
         MatcherAssert.assertThat(error, isNotNull());
     }
 
     @Before
     public void setupErrorResolver() {
-        Collection<Err> errors = new HashSet<Err>();
-        errors.add(new Err.Builder(StelvioException.class).message("test: {0}").build());
+        Collection<ErrorDefinition> errors = new HashSet<ErrorDefinition>();
+        errors.add(new ErrorDefinition.Builder(StelvioException.class).message("test: {0}").build());
 
         defaultErrorResolver = new DefaultErrorResolver(errors);
     }
