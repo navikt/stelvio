@@ -14,7 +14,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	private CodesTableFactory codesTableFactory;
 	
 	/**
-	 * {@inheritDoc CacheTableManager#getCodesTable()}
+	 * {@inheritDoc}
 	 */
 	//TODO: FIX CASTING
 	@SuppressWarnings("unchecked")
@@ -27,19 +27,19 @@ public class CodesTableManagerImpl implements CodesTableManager {
         for(T ct : codesTableItems){
 			codesTable.addCodesTableItem(ct);
 		}
-				
+		
 		return codesTable;
 	}
 
 	/**
-	 * {@inheritDoc CacheTableManager#getCodesTablePeriodic()}
+	 * {@inheritDoc}
 	 */
 	//TODO: FIX CASTING
 	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
-		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new CodesTablePeriodicImpl();
 		validateCodesTablePeriodicClass(codesTableItem);
-
+		
+		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new CodesTablePeriodicImpl();
         List<T> codesTableItems = codesTableFactory.retrieveCodesTablePeriodic(codesTableItem);
 
         for(T ctp : codesTableItems){
@@ -53,7 +53,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItem</>.
 	 * 
 	 * @param codesTableClass the class to load a codestable for.
-	 * @throws CodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>
+	 * @throws NotCodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>
 	 */
 	private void validateCodesTableClass(final Class codesTableClass){
 		if(null!= codesTableClass && !CodesTableItem.class.isAssignableFrom(codesTableClass)){
@@ -65,7 +65,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItemPeriodic</>.
 	 * 
 	 * @param codesTablePeriodicClass the class to load a codestable for.
-	 * @throws CodesTableException if the class to load a codestable for is not a subclass of <code>CodesTablePeriodic</code>.
+	 * @throws NotCodesTableException if the class to load a codestable for is not a subclass of <code>CodesTablePeriodic</code>.
 	 */
 	private void validateCodesTablePeriodicClass(final Class codesTablePeriodicClass){
 		if(null!= codesTablePeriodicClass && !CodesTableItemPeriodic.class.isAssignableFrom(codesTablePeriodicClass)){
@@ -76,7 +76,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	/**
 	 * Sets the <code>CodesTableFactory</code> that is used to retrieve 
 	 * the codestables from the database.
-	 * @param codesTableFactory 
+	 * @param codesTableFactory a reference to the interface for retrieving codestables from the database.
 	 */
 	public void setCodesTableFactory(CodesTableFactory codesTableFactory){
 		this.codesTableFactory = codesTableFactory;

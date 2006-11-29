@@ -22,7 +22,7 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	private List<Class<CodesTableItemPeriodic>> codesTablePeriodicClasses = new ArrayList<Class<CodesTableItemPeriodic>>();
 	
 	/**
-	 * {@inheritDoc CodesTableInitializer#init()}
+	 * {@inheritDoc}
 	 */
 	public void init() {
 		if(codesTableClasses.isEmpty() && codesTablePeriodicClasses.isEmpty()){
