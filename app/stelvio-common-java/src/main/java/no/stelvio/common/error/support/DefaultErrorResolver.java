@@ -44,7 +44,7 @@ public class DefaultErrorResolver implements ErrorResolver {
      * classes and interfaces don't have to be done each time.
      */
     public ErrorDefinition resolve(Throwable throwable) {
-        // TODO should we allow throwing IllegalArgumentException for coding errors? And not make our own version?
+        // TODO should we allow throwing IllegalArgumentException for coding errors? Maybe make our own version of Assert.x()?
         Assert.notNull(throwable);
 
         ErrorDefinition error = errorMap.get(throwable.getClass());
