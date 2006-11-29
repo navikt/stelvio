@@ -23,7 +23,7 @@ public class CodesTableItem extends AbstractCodesTableItem {
 	 * @param code the code.
 	 * @param decode the decode.
 	 * @param locale the locale of the item.
-	 * @param isvalid validity of the item.
+	 * @param isValid validity of the item.
 	 */
 	public CodesTableItem(String code, String decode, Locale locale, Boolean isValid){
 		this.code = code;

@@ -66,6 +66,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableMan
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableNotFoundException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePeriodicImpl.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/DecodeNotFoundException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/NotCodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/AbstractContext.java -text
