@@ -344,10 +344,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/Amount
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/CtTagSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/DateSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/ExpressionEvaluator.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/Area.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/Responsible.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/Saksbehandler.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/TaskType.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/action/TasklistMenuForm.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/action/TasklistTreeMenuAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/util/DefaultLocaleStartupHelper.java -text
