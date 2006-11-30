@@ -1,7 +1,8 @@
 package no.stelvio.common.error;
 
-import static org.testng.Assert.assertEquals;
-import org.testng.annotations.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.eq;
+import org.junit.Test;
 
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
@@ -16,7 +17,7 @@ public class RecoverableExceptionTest extends AbstractExceptionTest<TestRecovera
     public void takesAListForTheTemplateArguments() {
         TestRecoverableException exception = new TestRecoverableException(2.0);
 
-        assertEquals(exception.getTemplateArguments()[0], 2.0, "Not the correct value;");
+        assertThat((Double) exception.getTemplateArguments()[0], eq(2.0));
     }
 
     @Test
@@ -24,8 +25,8 @@ public class RecoverableExceptionTest extends AbstractExceptionTest<TestRecovera
         TestRecoverableException exception =
                 new TestRecoverableException(new IllegalArgumentException("problems"), String.class);
 
-        assertEquals(exception.getCause().getMessage(), "problems");
-        assertEquals(exception.getTemplateArguments()[0], String.class, "Not the correct value;");
+        assertThat(exception.getCause().getMessage(), eq("problems"));
+        assertThat((Class<String>) exception.getTemplateArguments()[0], eq(String.class));
     }
 
     protected TestRecoverableException createException() {

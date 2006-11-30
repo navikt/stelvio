@@ -1,8 +1,12 @@
 package no.stelvio.common.error.support;
 
-import static org.testng.Assert.assertEquals;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.eq;
+import static org.hamcrest.core.IsEqual.isFalse;
+import static org.hamcrest.core.IsEqual.isTrue;
+import org.junit.Before;
+import org.junit.Test;
+
 
 /**
  * Unit test for {@link CommonExceptionLogic}.
@@ -17,13 +21,13 @@ public class CommonExceptionLogicTest {
     public void everyFieldIsCopiedByCopyConstructor() {
         CommonExceptionLogic copy = new DefaultCommonExceptionLogic(cel);
 
-        assertEquals(copy.getErrorId(), cel.getErrorId(), "Error id not copied correctly");
-        assertEquals(copy.getUserId(), cel.getUserId(), "User id not copied correctly");
-        assertEquals(copy.getScreenId(), cel.getScreenId(), "Screen id not copied correctly");
-        assertEquals(copy.getProcessId(), cel.getProcessId(), "Process id not copied correctly");
-        assertEquals(copy.getTransactionId(), cel.getTransactionId(), "Transaction id not copied correctly");
-        assertEquals(copy.getTemplateArguments(), cel.getTemplateArguments(), "Arguments not copied correctly");
-        assertEquals(copy.isLogged(), cel.isLogged(), "Logged not copied correctly");
+        assertThat(copy.getErrorId(), eq(cel.getErrorId()));
+        assertThat(copy.getUserId(), eq(cel.getUserId()));
+        assertThat(copy.getScreenId(), eq(cel.getScreenId()));
+        assertThat(copy.getProcessId(), eq(cel.getProcessId()));
+        assertThat(copy.getTransactionId(), eq(cel.getTransactionId()));
+        assertThat(copy.getTemplateArguments(), eq(cel.getTemplateArguments()));
+        assertThat(copy.isLogged(), eq(cel.isLogged()));
     }
 
     /**
@@ -37,46 +41,46 @@ public class CommonExceptionLogicTest {
         arguments[0] = "changed";
         Object[] argCopy = cel.getTemplateArguments();
 
-        assertEquals(argCopy[0], "arg1", "Arguments not copied safely");        
+        assertThat((String) argCopy[0], eq("arg1"));
     }
 
     @Test
     public void argumentsCopiedAreEqualToSource() {
         Object[] argCopy = cel.getTemplateArguments();
 
-        assertEquals(argCopy[0], arguments[0], "Class argument not copied correctly");
-        assertEquals(argCopy[1], arguments[1], "double argument not copied correctly");
-        assertEquals(argCopy[2], arguments[2], "String argument not copied correctly");
+        assertThat(argCopy[0], eq(arguments[0]));
+        assertThat(argCopy[1], eq(arguments[1]));
+        assertThat(argCopy[2], eq(arguments[2]));
     }
 
     @Test
     public void canSetThatAnExceptionIsLogged() {
-        assertEquals(false, cel.isLogged(), "Should not be set logged");
+        assertThat(cel.isLogged(), isFalse());
         cel.setLogged();
-        assertEquals(true, cel.isLogged(), "Should be set logged");
+        assertThat(cel.isLogged(), isTrue());
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void exceptionIsThrownWhenArgsIsNull() {
         createDummy("test");
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void exceptionIsThrownWhenArgsIsEmpty() {
         createDummy("test", new Object[] {});
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void exceptionIsThrownWhenMessageTemplateIsNull() {
         createDummy(null, arguments);
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void exceptionIsThrownWhenMessageTemplateIsEmpty() {
         createDummy("", arguments);
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void exceptionIsThrownWhenNoArgsInTemplate() {
         createDummy("test", arguments);
     }
@@ -84,7 +88,7 @@ public class CommonExceptionLogicTest {
     /**
      * Number of arguments in the template and sent to the constructor cannot be different.
      */
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void exceptionIsThrownWhenNumOfArgsAreDifferent() {
         createDummy("test{0}", arguments);
     }
@@ -92,10 +96,10 @@ public class CommonExceptionLogicTest {
     @Test
     public void messageIsGeneratedFromTemplateAndArgs() {
         CommonExceptionLogic cel = createDummy("nr1:{0},nr2:{1,number,integer},nr3:{2}", arguments);
-        assertEquals(cel.getMessage(), "nr1:class java.lang.String,nr2:1,nr3:arg", "Not the correct messageFrom;");
+        assertThat(cel.getMessage(), eq("nr1:class java.lang.String,nr2:1,nr3:arg"));
     }
 
-    @BeforeMethod
+    @Before
     public void createArguments() {
         arguments = new Object[] {String.class, 1.1, "arg"};
         cel = new DefaultCommonExceptionLogic(arguments);

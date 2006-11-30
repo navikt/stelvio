@@ -3,9 +3,13 @@ package no.stelvio.common.error;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
-import static org.testng.Assert.*;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.eq;
+import static org.hamcrest.core.IsEqual.isTrue;
+import static org.hamcrest.core.IsNull.isNull;
+import static org.hamcrest.core.IsSame.same;
+import org.junit.Before;
+import org.junit.Test;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
@@ -22,22 +26,20 @@ public abstract class AbstractExceptionTest<T extends StelvioException> {
         original.setLogged();
         T copy = createCopy(original);
 
-        assertEquals(copy.isLogged(), original.isLogged(), "isLogged() should match;");
-        assertEquals(copy.getErrorId(), original.getErrorId(), "getErrorId() should match;");
-        assertEquals(copy.getProcessId(), original.getProcessId(), "getProcessId() should match;");
-        assertEquals(copy.getScreenId(), original.getScreenId(), "getScreenId() should match;");
-        assertEquals(copy.getTransactionId(), original.getTransactionId(),
-                "getTransactionId() should match;");
-        assertEquals(copy.getUserId(), original.getUserId(), "getUserId() should match;");
+        assertThat(copy.isLogged(), eq(original.isLogged()));
+        assertThat(copy.getErrorId(), eq(original.getErrorId()));
+        assertThat(copy.getProcessId(), eq(original.getProcessId()));
+        assertThat(copy.getScreenId(), eq(original.getScreenId()));
+        assertThat(copy.getTransactionId(), eq(original.getTransactionId()));
+        assertThat(copy.getUserId(), eq(original.getUserId()));
 
         Exception exCopy = ((Exception) copy);
         Exception exOriginal = ((Exception) original);
-        assertEquals(exCopy.getMessage(), exOriginal.getMessage(), "getMessage() should match;");
-        assertEquals(exCopy.getLocalizedMessage(), exOriginal.getLocalizedMessage(),
-                "getLocalizedMessage() should match;");
-        assertEquals(exCopy.toString(), exOriginal.toString(), "toString() should match;");
+        assertThat(exCopy.getMessage(), eq(exOriginal.getMessage()));
+        assertThat(exCopy.getLocalizedMessage(), eq(exOriginal.getLocalizedMessage()));
+        assertThat(exCopy.toString(), eq(exOriginal.toString()));
 
-        assertNull(exCopy.getCause(), "cause should have been removed");
+        assertThat(exCopy.getCause(), isNull());
     }
 
     @Test
@@ -45,7 +47,7 @@ public abstract class AbstractExceptionTest<T extends StelvioException> {
         RuntimeException cause = new RuntimeException("The original cause");
         Exception ewc = (Exception) createExceptionWithCause(cause);
 
-        assertSame(cause, ewc.getCause(), "Cause is the original cause");
+        assertThat(cause, same(ewc.getCause()));
     }
 
     @Test
@@ -53,7 +55,7 @@ public abstract class AbstractExceptionTest<T extends StelvioException> {
         Constructor constructor =
                 createException().getClass().getSuperclass().getDeclaredConstructor(ExceptionToCopyHolder.class);
 
-        assertTrue(Modifier.isProtected(constructor.getModifiers()), "Copy constructor should be protected");
+        assertThat(Modifier.isProtected(constructor.getModifiers()), isTrue());
     }
 
     protected abstract T createExceptionWithCause(Exception cause);
@@ -62,7 +64,7 @@ public abstract class AbstractExceptionTest<T extends StelvioException> {
 
     protected abstract T createCopy(T le);
 
-    @BeforeClass
+    @Before
     public void setUpRequestContext() {
         RequestContext.setModuleId("module");
         RequestContext.setProcessId("process");
