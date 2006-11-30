@@ -342,16 +342,12 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/FNRTag.java -t
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/HelpLinkTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/NavnTag.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/TruncateTag.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/breadcrumb/action/BreadcrumbAction.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/breadcrumb/domain/Breadcrumb.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/menu/components/MenuComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/menu/components/MenuItemComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/AmountSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/CtTagSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/DateSupport.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/support/ExpressionEvaluator.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/action/TasklistMenuForm.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/action/TasklistTreeMenuAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/util/DefaultLocaleStartupHelper.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/util/RequestUtils.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/action/FrameworkErrorActionTest.java -text
