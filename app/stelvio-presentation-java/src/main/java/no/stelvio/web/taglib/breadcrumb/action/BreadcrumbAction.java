@@ -8,7 +8,7 @@ import java.util.List;
 import javax.faces.context.FacesContext;
 
 import no.stelvio.common.context.RequestContext;
-import no.stelvio.web.taglib.breadcrumb.Breadcrumb;
+import no.stelvio.web.taglib.breadcrumb.domain.Breadcrumb;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
