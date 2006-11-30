@@ -57,15 +57,12 @@
 		<property name="cacheManager" ref="cacheManager" />
 	</bean>
 	
-	<bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean"/>
-	 
 	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
 		<property name="beans">
 			<map>
 				<entry key="bean:name=cacheManagement" value-ref="cacheManagement" />
 			</map>
 		</property>
-		<property name="server" ref="mbeanServer"/>
 	</bean>
 	 
 	<bean id="cacheManagementProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean">
