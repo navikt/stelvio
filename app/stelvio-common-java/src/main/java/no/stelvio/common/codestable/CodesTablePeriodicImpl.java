@@ -108,13 +108,13 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 		//codesTableItem will only return an item if it belongs to the filtered collection
 		//of codestableitems
 		for(CodesTableItemPeriodic cti : codesTableItems){
-			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) && 
-					cti.getFromDate().before(date) && cti.getToDate().after(date)){
-				 decode = cti.getDecode();
-				 break;
-			} else if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(RequestContext.getLocale()) && 
-					cti.getFromDate().before(date) && cti.getToDate().after(date)){
-				 defaultDecode = cti.getDecode();
+			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) 
+					&& cti.getFromDate().before(date) && cti.getToDate().after(date)){ 
+				decode = cti.getDecode();
+				break;
+			} else if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(RequestContext.getLocale()) 
+					&& cti.getFromDate().before(date) && cti.getToDate().after(date)){
+				defaultDecode = cti.getDecode();
 			}
 		}
 		

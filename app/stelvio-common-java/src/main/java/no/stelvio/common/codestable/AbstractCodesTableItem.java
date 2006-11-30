@@ -110,10 +110,10 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Compares this instance with another object. 
 	 * The method returns true if the other object is not null,
-	 * and is of same class as this and other.getCode() equals this.getCode().
+	 * and is of same class as this and other.getCode() equals this.getCode(),
+	 * and other.getLocale() equals this.getLocale().
 	 * 
 	 * {@inheritDoc}
-     * @todo what about locale? Are 2 cti's equal if they have the same code but not the same locale?
 	 */
 	public boolean equals(Object other) {
 		if (null == other) {
@@ -125,17 +125,17 @@ public abstract class AbstractCodesTableItem implements Serializable {
 		} else {
 			// This is the same class as other
 			AbstractCodesTableItem castOther = (AbstractCodesTableItem) other;
-			return new EqualsBuilder().append(this.getCode(), castOther.getCode()).isEquals();
+			return new EqualsBuilder().append(this.getCode(), castOther.getCode()).append(this.getLocale(), castOther.getLocale()).isEquals();
 		}
 	}
 
 	/**
-	 * Hash code is computed based on the class name of this instance and the code.
+	 * Hash code is computed based on the class name of this instance, the code and the locale.
 	 * 
 	 * {@inheritDoc}
 	 */
 	public int hashCode() {
 		// Compare by class name to support multiple classloaders
-		return new HashCodeBuilder().append(this.getClass().getName()).append(getCode()).toHashCode();
+		return new HashCodeBuilder().append(this.getClass().getName()).append(getCode()).append(getLocale()).toHashCode();
 	}
 }

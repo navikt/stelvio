@@ -29,9 +29,8 @@ public interface CodesTable<T extends CodesTableItem> {
 	 * 
 	 * @param code the item's code.
 	 * @return The <code>CodesTableItem</code> or <code>null</code> if the code does not exist in the <code>CodesTable</code>.
-	 * @throws CodesTableException thrown if an item doesn't exist in the codestable.
 	 */
-	T getCodesTableItem(Object code) throws CodesTableException;
+	T getCodesTableItem(Object code);
 	
 	/**
 	 * Add a predicate to the list of items in a <code>CodesTable</code>.

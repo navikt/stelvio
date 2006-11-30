@@ -56,7 +56,7 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItem</>.
 	 * 
 	 * @param codesTableItemClass the class to load a codes table for.
-	 * @throws CodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>.
+	 * @throws NotCodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>.
 	 */
 	private void validateCodesTableItemClass(final Class<CodesTableItem> codesTableItemClass){
 	
@@ -69,7 +69,7 @@ public class CodesTableInitializerImpl implements CodesTableInitializer {
 	 * Checks that the class to load a codes table for is a subclass of <code>CodesTableItemPeriodic</>.
 	 * 
 	 * @param codesTableItemPeriodicClass the class to load a codes table for.
-	 * @throws CodesTableException if the class to load a codes table for is not a subclass of <code>CodesTablePeriodic</code>.
+	 * @throws NotCodesTableException if the class to load a codes table for is not a subclass of <code>CodesTablePeriodic</code>.
 	 */
 	private void validateCodesTableItemPeriodicClass(final Class<CodesTableItemPeriodic> codesTableItemPeriodicClass){
 		if(null!= codesTableItemPeriodicClass && !CodesTableItemPeriodic.class.isAssignableFrom(codesTableItemPeriodicClass)){

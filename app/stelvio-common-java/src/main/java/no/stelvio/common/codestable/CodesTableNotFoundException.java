@@ -3,12 +3,20 @@ package no.stelvio.common.codestable;
 import java.text.MessageFormat;
 
 /**
+ * Exception thrown when a <code>CodesTable</code> or <code>CodesTablePeriodic</code>
+ * cannot be retrieved.
  * @author personf8e9850ed756
  * @todo write javadoc
+ * @version $Id$
  */
 public class CodesTableNotFoundException extends CodesTableException {
     private static final MessageFormat FORMAT = new MessageFormat("Codestable {0} does not exist");
 
+    /**
+     * 
+     * @param <T>
+     * @param cti
+     */
     public <T extends AbstractCodesTableItem> CodesTableNotFoundException(Class<T> cti) {
         super(create(cti));
     }

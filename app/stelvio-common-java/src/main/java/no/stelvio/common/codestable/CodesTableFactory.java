@@ -32,7 +32,7 @@ public interface CodesTableFactory{
 	 * 
 	 * @param <T> <code>CodesTableItemPeriodic</code>'s or subclasses of <code>CodesTableItemPeriodic</code> that are valid input 
 	 * and output parameters.
-	 * @param codesTable the class of type <code>CodesTableItemPeriodic</code> that represents the <code>CodesTablePeriodic</code> 
+	 * @param codesTablePeriodic the class of type <code>CodesTableItemPeriodic</code> that represents the <code>CodesTablePeriodic</code> 
 	 * the items shall be retrieved from.
 	 * @return A list of <code>CodesTableItemPeriodic</code>s belonging to a <code>CodesTablePeriodic</code>.
 	 * @throws CodesTableNotFoundException - exception thrown when a codestable couldn't be retrieved from the database.

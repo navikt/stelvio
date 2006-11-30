@@ -1,7 +1,9 @@
 package no.stelvio.common.codestable;
 
 /**
- * CodesTableConfigurationException
+ * Exception thrown when <code>CodesTable</code> or a 
+ * <code>CodesTablePeriodic</code> doesn't hold a requested 
+ * <code>decode</code>.
  * @author personf8e9850ed756
  * @todo write javadoc
  * @version $Id$

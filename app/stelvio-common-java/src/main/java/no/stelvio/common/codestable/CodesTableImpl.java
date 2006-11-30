@@ -117,8 +117,7 @@ public class CodesTableImpl implements CodesTable {
 		if(decode == null){
 			if(defaultDecode != null){
 				return defaultDecode;
-			}
-			else{
+			} else{
 				throw new DecodeNotFoundException(code.toString());
 			}
 		}

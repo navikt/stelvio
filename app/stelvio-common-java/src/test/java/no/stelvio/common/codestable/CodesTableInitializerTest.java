@@ -1,5 +1,6 @@
 package no.stelvio.common.codestable;
 
+
 import java.util.ArrayList;
 import java.util.List;
 

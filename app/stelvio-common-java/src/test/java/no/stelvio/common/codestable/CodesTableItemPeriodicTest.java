@@ -1,5 +1,6 @@
 package no.stelvio.common.codestable;
 
+
 import java.util.Date;
 import java.util.Locale;
 
