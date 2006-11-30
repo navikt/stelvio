@@ -5,7 +5,7 @@ package no.stelvio.common.menu.service.impl;
 
 import java.util.List;
 
-import no.stelvio.common.menu.domain.Menu;
+import no.stelvio.common.menu.domain.MenuItem;
 import no.stelvio.common.menu.repository.MenuRepository;
 import no.stelvio.common.menu.service.MenuItemService;
 
@@ -20,7 +20,7 @@ public class MenuItemServiceImpl implements MenuItemService {
 	/**
 	 * {@inheritDoc MenuItemService#getMenuItems()}
 	 */
-	public List<Menu> getMenuItems() {
+	public List<MenuItem> getMenuItems() {
 		return menuRepository.getParents();
 	}
 	

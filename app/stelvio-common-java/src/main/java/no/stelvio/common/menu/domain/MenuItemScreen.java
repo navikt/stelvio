@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 /**
- * Class represent a MenuScreen.
+ * Class represent a MenuItemScreen.
  * Instances of this class are Java Persistence API Entities,
  * and may be persisted by an JPA EntityManager.
  * 
@@ -20,9 +20,9 @@ import javax.persistence.Version;
  * @version $id$
  * @todo should not be necessary with setters at all?
  */
-@Entity(name="MenuScreen")
+@Entity(name="MenuItemScreen")
 @Table(name="SCREEN")
-public class MenuScreen implements Serializable {
+public class MenuItemScreen implements Serializable {
 	// TODO: Remove or create generated value
 	private static final long serialVersionUID = 1L;
 
@@ -34,10 +34,10 @@ public class MenuScreen implements Serializable {
 	private int screenId;
 	
 	/**
-	 * A list of Menu objects that are a part of this screen.
+	 * A list of MenuItem objects that are a part of this screen.
 	 */
 	@ManyToMany(mappedBy="screens")
-	private List<Menu> menus;
+	private List<MenuItem> menuItems;
 	
 	/**
 	 * In order to prevent "lost updates" all entities need to include a version field.
@@ -57,7 +57,7 @@ public class MenuScreen implements Serializable {
 	/**
 	 * Default no-arg constructor protected as it should only be used by persistence provider.
 	 */
-	public MenuScreen() {}
+	public MenuItemScreen() {}
 	
 	/**
 	 * @return the screenId
@@ -97,16 +97,16 @@ public class MenuScreen implements Serializable {
 	}
 
 	/**
-	 * @return a list of Menu objects that are a part of this screen.
+	 * @return a list of MenuItem objects that are a part of this screen.
 	 */
-	public List<Menu> getMenus() {
-		return menus;
+	public List<MenuItem> getMenus() {
+		return menuItems;
 	}
 
 	/**
-	 * @param menus sets the Menu objects that are a part of this screen.
+	 * @param menuItems sets the MenuItem objects that are a part of this screen.
 	 */
-	public void setMenus(List<Menu> menus) {
-		this.menus = menus;
+	public void setMenus(List<MenuItem> menuItems) {
+		this.menuItems = menuItems;
 	}
 }

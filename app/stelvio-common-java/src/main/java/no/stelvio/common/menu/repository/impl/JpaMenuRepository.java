@@ -5,9 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import no.stelvio.common.menu.domain.Menu;
-import no.stelvio.common.menu.domain.Permission;
-import no.stelvio.common.menu.domain.Screen;
+import no.stelvio.common.menu.domain.MenuItem;
+import no.stelvio.common.menu.domain.MenuItemPermission;
+import no.stelvio.common.menu.domain.MenuItemScreen;
 import no.stelvio.common.menu.repository.MenuRepository;
 
 /**
@@ -30,7 +30,7 @@ public class JpaMenuRepository implements MenuRepository {
 	 * {@inheritDoc MenuRepository#getParents()}
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Menu> getParents() {
-		return entityManager.createNamedQuery("Menu.findParents").getResultList();
+	public List<MenuItem> getParents() {
+		return entityManager.createNamedQuery("MenuItem.findParents").getResultList();
 	}
 }

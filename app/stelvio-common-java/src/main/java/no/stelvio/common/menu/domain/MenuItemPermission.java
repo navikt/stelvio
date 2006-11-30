@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 /**
- * Class represent a MenuPermission.
+ * Class represent a MenuItemPermission.
  * Instances of this class are Java Persistence API Entities,
  * and may be persisted by an JPA EntityManager.
  * 
@@ -20,9 +20,9 @@ import javax.persistence.Version;
  * @version $id$
  * @todo should not be necessary with setters at all?
  */
-@Entity(name="MenuPermission")
+@Entity(name="MenuItemPermission")
 @Table(name="PERMISSION")
-public class MenuPermission implements Serializable {
+public class MenuItemPermission implements Serializable {
 	// TODO: Remove or create generated value
 	private static final long serialVersionUID = 1L;
 
@@ -34,10 +34,10 @@ public class MenuPermission implements Serializable {
 	private int permissionId;
 	
 	/**
-	 * A list of Menu objects that are a part of this permission.
+	 * A list of MenuItem objects that are a part of this permission.
 	 */
 	@ManyToMany(mappedBy="permissions")
-	private List<Menu> menus;
+	private List<MenuItem> menuItems;
 	
 	/**
 	 * In order to prevent "lost updates" all entities need to include a version field.
@@ -63,7 +63,7 @@ public class MenuPermission implements Serializable {
 	/**
 	 * Default no-arg constructor protected as it should only be used by persistence provider.
 	 */
-	public MenuPermission() {}
+	public MenuItemPermission() {}
 	
 	/**
 	 * @return the discretion.
@@ -117,16 +117,16 @@ public class MenuPermission implements Serializable {
 	}
 
 	/**
-	 * @return a list of Menu object that are a part of this permission.
+	 * @return a list of MenuItem object that are a part of this permission.
 	 */
-	public List<Menu> getMenus() {
-		return menus;
+	public List<MenuItem> getMenus() {
+		return menuItems;
 	}
 
 	/**
-	 * @param menus the Menu objects that are a part of this permission.
+	 * @param menuItems the MenuItem objects that are a part of this permission.
 	 */
-	public void setMenus(List<Menu> menus) {
-		this.menus = menus;
+	public void setMenus(List<MenuItem> menuItems) {
+		this.menuItems = menuItems;
 	}
 }

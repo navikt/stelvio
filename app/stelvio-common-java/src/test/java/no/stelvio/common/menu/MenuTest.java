@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.TestCase;
-import no.stelvio.common.menu.domain.Menu;
-import no.stelvio.common.menu.domain.Permission;
-import no.stelvio.common.menu.domain.Screen;
+import no.stelvio.common.menu.domain.MenuItem;
+import no.stelvio.common.menu.domain.MenuItemPermission;
+import no.stelvio.common.menu.domain.MenuItemScreen;
+import no.stelvio.common.menu.service.MenuItemService;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -33,12 +34,12 @@ INSERT INTO SCREEN(screen_id, version, name) VALUES(2,1,'minprofil')
 INSERT INTO SCREEN(screen_id, version, name) VALUES(3,1,'reghenvendelse')
 INSERT INTO SCREEN(screen_id, version, name) VALUES(4,1,'sokperson')
 
-INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(1,'Menu 01',1,'Flow 01',1,NULL)
-INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(2,'Menu 02',1,'Flow 02',1,NULL)
-INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(3,'Menu 03',1,'Flow 03',1,NULL)
-INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(4,'Menu 04 - child',1,'Flow 04',1,1)
-INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(5,'Menu 05 - child',1,'Flow 05',1,2)
-INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(6,'Menu 06 - child',1,'Flow 06',1,1)
+INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(1,'MenuItem 01',1,'Flow 01',1,NULL)
+INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(2,'MenuItem 02',1,'Flow 02',1,NULL)
+INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(3,'MenuItem 03',1,'Flow 03',1,NULL)
+INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(4,'MenuItem 04 - child',1,'Flow 04',1,1)
+INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(5,'MenuItem 05 - child',1,'Flow 05',1,2)
+INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(6,'MenuItem 06 - child',1,'Flow 06',1,1)
 INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(7,'Menu07 - child', 1, 'Flow 07', 1, 4)
 INSERT INTO MENU(menu_id, lead_text, sorting, flow_name, version, parent_id) VALUES(8,'Menu08 - child', 1, 'Flow 08', 1, 7)
 
@@ -100,23 +101,23 @@ public class MenuTest extends TestCase {
 
 	/**
 	 * Check if the menu has the correct permissions.
-	 * @param permissions to check
+	 * @param menuItemPermissions to check
 	 * @return true if the menu has correct permissions, false otherwise
 	 */
-	private boolean checkPermission(List<Permission> permissions) {
+	private boolean checkPermission(List<MenuItemPermission> menuItemPermissions) {
 		boolean isValid = false;
 		
-		for (Permission permission : permissions) {
+		for (MenuItemPermission menuItemPermission : menuItemPermissions) {
 			// Check roles
 			for (String role : roles) {
-				if (permission.getRole().equalsIgnoreCase(role)) {
+				if (menuItemPermission.getRole().equalsIgnoreCase(role)) {
 					isValid = true;
 					break;
 				}
 			}
 			
 			// Check desrection
-			if (isValid && !permission.isDiscretion()) {
+			if (isValid && !menuItemPermission.isDiscretion()) {
 				return true;
 			}
 		}
@@ -126,12 +127,12 @@ public class MenuTest extends TestCase {
 	
 	/**
 	 * Check if menu is in specified screen
-	 * @param screens to check
+	 * @param menuItemScreens to check
 	 * @return true if menu is in screen, false otherwise 
 	 */
-	private boolean inScreen(List<Screen> screens) {
-		for (Screen screen : screens) {
-			if (screen.getScreenId() == new Integer(this.screen)) {
+	private boolean inScreen(List<MenuItemScreen> menuItemScreens) {
+		for (MenuItemScreen menuItemScreen : menuItemScreens) {
+			if (menuItemScreen.getScreenId() == new Integer(this.screen)) {
 				return true;
 			}
 		}
@@ -141,18 +142,18 @@ public class MenuTest extends TestCase {
 	
 	/**
 	 * Recursive method to print the menutree
-	 * @param menu the menu to print
+	 * @param menuItem the menu to print
 	 * @param indent number of spaces to print before the text
 	 */
-	public void printMenu(Menu menu, int indent) {
-		if (checkPermission(menu.getPermissions()) && inScreen(menu.getScreens())) {
+	public void printMenu(MenuItem menuItem, int indent) {
+		if (checkPermission(menuItem.getPermissions()) && inScreen(menuItem.getScreens())) {
 			for (int i = 0; i < indent; i++) {
 				System.out.print(" ");
 			}
 			
-			System.out.println(menu.getFlowName()+" - "+menu.getLeadtext());
-			if (menu.getChildren() != null && menu.getChildren().size() > 0) {
-				for (Menu aMenu : menu.getChildren()) {
+			System.out.println(menuItem.getFlowName()+" - "+menuItem.getLeadtext());
+			if (menuItem.getChildren() != null && menuItem.getChildren().size() > 0) {
+				for (MenuItem aMenu : menuItem.getChildren()) {
 					printMenu(aMenu, indent+1);
 				}
 			}
@@ -163,11 +164,11 @@ public class MenuTest extends TestCase {
 	 * Method to run the test
 	 */
 	public void test() {
-		List<Menu> menus = menuItemService.getMenuItems();
-		for (Menu menu : menus) {
-			printMenu(menu, 0);
+		List<MenuItem> menuItems = menuItemService.getMenuItems();
+		for (MenuItem menuItem : menuItems) {
+			printMenu(menuItem, 0);
 		}
-		System.out.println("menus: "+menus.size());
+		System.out.println("menus: "+menuItems.size());
 	}
 	
 	/**

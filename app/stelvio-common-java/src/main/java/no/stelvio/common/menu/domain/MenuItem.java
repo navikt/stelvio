@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * Class represent a Menu.
+ * Class represent a MenuItem.
  * Instances of this class are Java Persistence API Entities,
  * and may be persisted by an JPA EntityManager.
  * 
@@ -27,11 +27,11 @@ import javax.persistence.Table;
  * @version $id$
  */
 @NamedQueries({
-	@NamedQuery(name="Menu.findParents", query="SELECT m FROM Menu m WHERE m.parent is null")
+	@NamedQuery(name="MenuItem.findParents", query="SELECT m FROM MenuItem m WHERE m.parent is null")
 })
-@Entity(name="Menu")
+@Entity(name="MenuItem")
 @Table(name="MENU")
-public class Menu implements Serializable {
+public class MenuItem implements Serializable {
 	// TODO: Remove or create generated value
 	private static final long serialVersionUID = 1L;
 
@@ -47,33 +47,33 @@ public class Menu implements Serializable {
 	 */
 	@ManyToOne
 	@JoinColumn(name="PARENT_ID")
-	private Menu parent;
+	private MenuItem parent;
 	
 	/**
-	 * List of child Menu objects.
+	 * List of child MenuItem objects.
 	 */
 	@OneToMany(mappedBy="parent", fetch=FetchType.EAGER)
-	private List<Menu> children;
+	private List<MenuItem> children;
 	
 	/**
-	 * List of menuPermissions this menu is a part of.
+	 * List of menuItemPermissions this menu is a part of.
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="PERMISSION_MENU",
 		joinColumns=@JoinColumn(name="MENU_ID"),
 		inverseJoinColumns=@JoinColumn(name="PERMISSION_ID")
 	)
-	private List<MenuPermission> menuPermissions;
+	private List<MenuItemPermission> menuItemPermissions;
 	
 	/**
-	 * List of menuScreens this menu is a part of.
+	 * List of menuItemScreens this menu is a part of.
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="SCREEN_MENU",
 		joinColumns=@JoinColumn(name="MENU_ID"),
 		inverseJoinColumns=@JoinColumn(name="SCREEN_ID")
 	)
-	private List<MenuScreen> menuScreens;
+	private List<MenuItemScreen> menuItemScreens;
 	
 	/**
 	 * The name of the flow to execute when clicking the menuitem.
@@ -96,19 +96,19 @@ public class Menu implements Serializable {
 	/**
 	 * Default no-arg constructor protected as it should only be used by persistence provider.
 	 */
-	public Menu() {}
+	public MenuItem() {}
 	
 	/**
-	 * @return the list of children Menu objects.
+	 * @return the list of children MenuItem objects.
 	 */
-	public List<Menu> getChildren() {
+	public List<MenuItem> getChildren() {
 		return children;
 	}
 	
 	/**
-	 * @param children the child Menu objects.
+	 * @param children the child MenuItem objects.
 	 */
-	public void setChildren(List<Menu> children) {
+	public void setChildren(List<MenuItem> children) {
 		this.children = children;
 	}
 	
@@ -155,16 +155,16 @@ public class Menu implements Serializable {
 	}
 	
 	/**
-	 * @return the parent Menu object.
+	 * @return the parent MenuItem object.
 	 */
-	public Menu getParent() {
+	public MenuItem getParent() {
 		return parent;
 	}
 	
 	/**
-	 * @param parent the parent Menu object to set.
+	 * @param parent the parent MenuItem object to set.
 	 */
-	public void setParent(Menu parent_id) {
+	public void setParent(MenuItem parent_id) {
 		this.parent = parent_id;
 	}
 	
@@ -183,30 +183,30 @@ public class Menu implements Serializable {
 	}
 
 	/**
-	 * @return a list of MenuPermission objects this menu is a part of.
+	 * @return a list of MenuItemPermission objects this menu is a part of.
 	 */
-	public List<MenuPermission> getPermissions() {
-		return menuPermissions;
+	public List<MenuItemPermission> getPermissions() {
+		return menuItemPermissions;
 	}
 
 	/**
-	 * @param menuPermissions sets the MenuPermission objects this menu is a part of
+	 * @param menuItemPermissions sets the MenuItemPermission objects this menu is a part of
 	 */
-	public void setPermissions(List<MenuPermission> menuPermissions) {
-		this.menuPermissions = menuPermissions;
+	public void setPermissions(List<MenuItemPermission> menuItemPermissions) {
+		this.menuItemPermissions = menuItemPermissions;
 	}
 
 	/**
-	 * @return a list of MenuScreen objects this menu is a part of.
+	 * @return a list of MenuItemScreen objects this menu is a part of.
 	 */
-	public List<MenuScreen> getScreens() {
-		return menuScreens;
+	public List<MenuItemScreen> getScreens() {
+		return menuItemScreens;
 	}
 
 	/**
-	 * @param menuScreens sets the MenuScreen objects this menu is a part of.
+	 * @param menuItemScreens sets the MenuItemScreen objects this menu is a part of.
 	 */
-	public void setScreens(List<MenuScreen> menuScreens) {
-		this.menuScreens = menuScreens;
+	public void setScreens(List<MenuItemScreen> menuItemScreens) {
+		this.menuItemScreens = menuItemScreens;
 	}
 }
