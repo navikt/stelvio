@@ -350,8 +350,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/Saksb
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/TaskType.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/action/TasklistMenuForm.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/action/TasklistTreeMenuAction.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/util/SaksbehandlerUtil.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/taglib/tasklist/util/TasklistTreeUtil.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/util/DefaultLocaleStartupHelper.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/util/RequestUtils.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/action/FrameworkErrorActionTest.java -text
