@@ -17,6 +17,7 @@ import no.stelvio.web.taglib.tasklist.util.TasklistTreeUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.custom.tree2.TreeNode;
 import org.apache.myfaces.custom.tree2.TreeNodeBase;
+import org.springframework.webflow.execution.FlowSession;
 import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
 import org.springmodules.cache.annotations.Cacheable;
 
@@ -31,6 +32,8 @@ import org.springmodules.cache.annotations.Cacheable;
 public class TasklistTreeMenuAction implements Serializable {
 	// TODO: Add genereated serialVersionUID
 	private static final long serialVersionUID = 1L;
+	private FacesContext facesContext;
+	private FlowSession flowSession;
 	
 	// Services which implemented classes are injected using Spring 
 	private TasklistTreeUtil tasklistTreeUtil;
@@ -103,7 +106,7 @@ public class TasklistTreeMenuAction implements Serializable {
 	 * TODO: Document me
 	 */
 	private Responsible getOtherSaksbehandler() {
-		TasklistMenuForm form = (TasklistMenuForm) FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession().getScope().get("tasklistMenuForm");
+		TasklistMenuForm form = (TasklistMenuForm) getFlowSession().getScope().get("tasklistMenuForm");
 		if (form != null) {
 			if (!StringUtils.isEmpty(form.getOtherCaseWorkerId())) {
 				return getResponsible(form.getOtherCaseWorkerId());
@@ -147,7 +150,7 @@ public class TasklistTreeMenuAction implements Serializable {
 	 * @return
 	 */
 	private Saksbehandler getLoggedInSaksbehandler() {
-		return (Saksbehandler) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("saksbehandler");
+		return (Saksbehandler) getFacesContext().getExternalContext().getSessionMap().get("saksbehandler");
 	}
 	
 	/**
@@ -155,7 +158,7 @@ public class TasklistTreeMenuAction implements Serializable {
 	 * @return
 	 */
 	private String getCurrentEnhet() {
-		if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().containsKey("enhet")) {
+		if (getFacesContext().getExternalContext().getSessionMap().containsKey("enhet")) {
 			return (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("enhet");
 		}
 		return null;
@@ -173,5 +176,39 @@ public class TasklistTreeMenuAction implements Serializable {
 	 */
 	public void setTasklistTreeUtil(TasklistTreeUtil tasklistTreeUtil) {
 		this.tasklistTreeUtil = tasklistTreeUtil;
+	}
+
+	/**
+	 * @return the facesContext
+	 */
+	public FacesContext getFacesContext() {
+		if (facesContext == null) {
+			facesContext = FacesContext.getCurrentInstance();
+		}
+		return facesContext;
+	}
+
+	/**
+	 * @param facesContext the facesContext to set
+	 */
+	public void setFacesContext(FacesContext facesContext) {
+		this.facesContext = facesContext;
+	}
+
+	/**
+	 * @return the flowSession
+	 */
+	public FlowSession getFlowSession() {
+		if (flowSession == null) {
+			flowSession = FlowExecutionHolderUtils.getFlowExecutionHolder(getFacesContext()).getFlowExecution().getActiveSession();
+		}
+		return flowSession;
+	}
+
+	/**
+	 * @param flowSession the flowSession to set
+	 */
+	public void setFlowSession(FlowSession flowSession) {
+		this.flowSession = flowSession;
 	}
 }
