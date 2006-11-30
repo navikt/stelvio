@@ -47,12 +47,14 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 			for(CodesTableItemPeriodic c : this.codesTableItems){
 				if (c.getCode() == code.toString()){
 					cti = c;
+					break;
 				}
 			}
-		} else if(!this.predicates.isEmpty()){ 
+		} else { 
 			for(CodesTableItemPeriodic c : this.filteredCodesTableItems){
 				if (c.getCode() == code.toString()){
 					cti = c;
+					break;
 				}
 			}
 		}
@@ -107,6 +109,7 @@ public class CodesTablePeriodicImpl implements CodesTablePeriodic {
 		//If there are predicates added to the codestableitems in a codestable,
 		//codesTableItem will only return an item if it belongs to the filtered collection
 		//of codestableitems
+		//TODO: optimize loop
 		for(CodesTableItemPeriodic cti : codesTableItems){
 			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) 
 					&& cti.getFromDate().before(date) && cti.getToDate().after(date)){ 

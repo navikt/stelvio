@@ -153,6 +153,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/MethodDefinitionSources.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecureAnnotationNotInMappingException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributes.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/TasklistService.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/TasklistServiceImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/domain/Area.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/domain/Responsible.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/domain/Saksbehandler.java -text

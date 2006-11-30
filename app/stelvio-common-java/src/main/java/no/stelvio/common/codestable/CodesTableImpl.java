@@ -46,12 +46,14 @@ public class CodesTableImpl implements CodesTable {
 			for(CodesTableItem c : this.codesTableItems){
 				if (c.getCode() == code.toString()){
 					cti = c;
+					break;
 				}
 			}
 		} else if(!this.predicates.isEmpty()){ 
 			for(CodesTableItem c : this.filteredCodesTableItems){
 				if (c.getCode() == code.toString()){
 					cti = c;
+					break;
 				}
 			}
 		}
@@ -103,6 +105,7 @@ public class CodesTableImpl implements CodesTable {
 		//If there are predicates added to the codestableitems in a codestable,
 		//getCodesTableItem() will only return an item if it belongs to the filtered collection
 		//of codestableitems
+		//TODO: optimize
 		for(CodesTableItem cti : this.codesTableItems){			
 			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) ){
 				 decode = cti.getDecode();
