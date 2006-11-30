@@ -56,24 +56,24 @@ public class Menu implements Serializable {
 	private List<Menu> children;
 	
 	/**
-	 * List of permissions this menu is a part of.
+	 * List of menuPermissions this menu is a part of.
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="PERMISSION_MENU",
 		joinColumns=@JoinColumn(name="MENU_ID"),
 		inverseJoinColumns=@JoinColumn(name="PERMISSION_ID")
 	)
-	private List<Permission> permissions;
+	private List<MenuPermission> menuPermissions;
 	
 	/**
-	 * List of screens this menu is a part of.
+	 * List of menuScreens this menu is a part of.
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="SCREEN_MENU",
 		joinColumns=@JoinColumn(name="MENU_ID"),
 		inverseJoinColumns=@JoinColumn(name="SCREEN_ID")
 	)
-	private List<Screen> screens;
+	private List<MenuScreen> menuScreens;
 	
 	/**
 	 * The name of the flow to execute when clicking the menuitem.
@@ -183,30 +183,30 @@ public class Menu implements Serializable {
 	}
 
 	/**
-	 * @return a list of Permission objects this menu is a part of.
+	 * @return a list of MenuPermission objects this menu is a part of.
 	 */
-	public List<Permission> getPermissions() {
-		return permissions;
+	public List<MenuPermission> getPermissions() {
+		return menuPermissions;
 	}
 
 	/**
-	 * @param permissions sets the Permission objects this menu is a part of
+	 * @param menuPermissions sets the MenuPermission objects this menu is a part of
 	 */
-	public void setPermissions(List<Permission> permissions) {
-		this.permissions = permissions;
+	public void setPermissions(List<MenuPermission> menuPermissions) {
+		this.menuPermissions = menuPermissions;
 	}
 
 	/**
-	 * @return a list of Screen objects this menu is a part of.
+	 * @return a list of MenuScreen objects this menu is a part of.
 	 */
-	public List<Screen> getScreens() {
-		return screens;
+	public List<MenuScreen> getScreens() {
+		return menuScreens;
 	}
 
 	/**
-	 * @param screens sets the Screen objects this menu is a part of.
+	 * @param menuScreens sets the MenuScreen objects this menu is a part of.
 	 */
-	public void setScreens(List<Screen> screens) {
-		this.screens = screens;
+	public void setScreens(List<MenuScreen> menuScreens) {
+		this.menuScreens = menuScreens;
 	}
 }

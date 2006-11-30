@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 /**
- * Class represent a Screen.
+ * Class represent a MenuPermission.
  * Instances of this class are Java Persistence API Entities,
  * and may be persisted by an JPA EntityManager.
  * 
@@ -20,23 +20,23 @@ import javax.persistence.Version;
  * @version $id$
  * @todo should not be necessary with setters at all?
  */
-@Entity(name="Screen")
-@Table(name="SCREEN")
-public class Screen implements Serializable {
+@Entity(name="MenuPermission")
+@Table(name="PERMISSION")
+public class MenuPermission implements Serializable {
 	// TODO: Remove or create generated value
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The primary key.
 	 */
-	@Column(name="SCREEN_ID")
+	@Column(name="PERMISSION_ID")
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private int screenId;
+	private int permissionId;
 	
 	/**
-	 * A list of Menu objects that are a part of this screen.
+	 * A list of Menu objects that are a part of this permission.
 	 */
-	@ManyToMany(mappedBy="screens")
+	@ManyToMany(mappedBy="permissions")
 	private List<Menu> menus;
 	
 	/**
@@ -44,47 +44,67 @@ public class Screen implements Serializable {
 	 * This field is used by the persistence provider to implement optimistic locking.
 	 */
 	// There shall be no setter-method for the version-field.
-	@Version
 	@Column(name="VERSION")
+	@Version
 	private long version;
 	
 	/**
-	 * The name of the screen.
+	 * The name of the role.
 	 */
-	@Column(name="NAME")
-	private String name;
-
+	@Column(name="ROLE")
+	private String role;
+	
+	/**
+	 * Specifies wether or not the permission has descretion.
+	 */
+	@Column(name="DISCRETION")
+	private boolean discretion;
+	
 	/**
 	 * Default no-arg constructor protected as it should only be used by persistence provider.
 	 */
-	public Screen() {}
+	public MenuPermission() {}
 	
 	/**
-	 * @return the screenId
+	 * @return the discretion.
 	 */
-	public int getScreenId() {
-		return screenId;
+	public boolean isDiscretion() {
+		return discretion;
+	}
+	
+	/**
+	 * @param discretion the discretion to set.
+	 */
+	public void setDiscretion(boolean discretion) {
+		this.discretion = discretion;
+	}
+	
+	/**
+	 * @return the name of the role.
+	 */
+	public String getRole() {
+		return role;
+	}
+	
+	/**
+	 * @param role the name of the role to set.
+	 */
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	/**
-	 * @param screenId the screenId to set
+	 * @return the permissionId.
 	 */
-	public void setScreenId(int id) {
-		this.screenId = id;
+	public int getPermissionId() {
+		return permissionId;
 	}
 
 	/**
-	 * @return the name of the screen.
+	 * @param permissionId the permissionId to set.
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the screen name to set.
-	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setPermissionId(int id) {
+		this.permissionId = id;
 	}
 
 	/**
@@ -97,14 +117,14 @@ public class Screen implements Serializable {
 	}
 
 	/**
-	 * @return a list of Menu objects that are a part of this screen.
+	 * @return a list of Menu object that are a part of this permission.
 	 */
 	public List<Menu> getMenus() {
 		return menus;
 	}
 
 	/**
-	 * @param menus sets the Menu objects that are a part of this screen.
+	 * @param menus the Menu objects that are a part of this permission.
 	 */
 	public void setMenus(List<Menu> menus) {
 		this.menus = menus;
