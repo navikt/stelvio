@@ -87,17 +87,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.agical.rmock</groupId>
-            <artifactId>rmock</artifactId>
-            <version>2.0.0-rc-6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <classifier>jdk15</classifier>
-            <version>5.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-api</artifactId>
             <version>0.1</version>
