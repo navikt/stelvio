@@ -1,5 +1,6 @@
 package no.stelvio.common.codestable;
 
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -144,7 +145,7 @@ public class CodesTablePeriodicTest extends AbstractDependencyInjectionSpringCon
 		Date date = new Date(cal.getTimeInMillis());
 	
 		try{
-			codesTablePeriodic.getDecode("t8code15", date);
+			codesTablePeriodic.getDecode("t8code15", locale, date);
 			fail("Expected exception");	
 		} catch(Exception ex){
 			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
