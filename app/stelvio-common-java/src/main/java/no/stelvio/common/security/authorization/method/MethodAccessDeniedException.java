@@ -3,6 +3,7 @@ package no.stelvio.common.security.authorization.method;
 import java.lang.reflect.Method;
 
 import no.stelvio.common.security.SecurityException;
+
 /**
  * Exception thrown if access to a method should be denied.
  * 
@@ -11,38 +12,52 @@ import no.stelvio.common.security.SecurityException;
  */
 public class MethodAccessDeniedException extends SecurityException {
 
-	private static final long serialVersionUID =1L;
-	
+	private static final long serialVersionUID = 1L;
+
 	/**
-	 * Creates an exception with the supplied parameters in the message. 
-	 * @param method the method access is denied to.
+	 * Creates an exception with the supplied parameters in the message.
+	 * 
+	 * @param method
+	 *            the method access is denied to.
 	 */
-	public MethodAccessDeniedException(Method method){
+	public MethodAccessDeniedException(Method method) {
 		super(method);
 	}
+
 	/**
-	 * Creates an exception with the supplied parameters in the message. 
-	 * @param method the method access is denied to.
+	 * Creates an exception with the supplied parameters in the message.
+	 * 
+	 * @param method
+	 *            the method access is denied to.
 	 */
-	public MethodAccessDeniedException(String method){
+	public MethodAccessDeniedException(String method) {
 		super(method);
 	}
+
 	/**
-	 * Creates an exception with the supplied parameters in the message. 
-	 * @param the root cause for the exception.
-	 * @param method the method access is denied to.
+	 * Creates an exception with the supplied parameters in the message.
+	 * 
+	 * @param the
+	 *            root cause for the exception.
+	 * @param method
+	 *            the method access is denied to.
 	 */
-	public MethodAccessDeniedException(Throwable cause, Method method){
-		super(cause,method);
+	public MethodAccessDeniedException(Throwable cause, Method method) {
+		super(cause, method);
 	}
+
 	/**
-	 * Creates an exception with the supplied parameters in the message. 
-	 * @param the root cause for the exception.
-	 * @param method the method access is denied to.
+	 * Creates an exception with the supplied parameters in the message.
+	 * 
+	 * @param the
+	 *            root cause for the exception.
+	 * @param method
+	 *            the method access is denied to.
 	 */
-	public MethodAccessDeniedException(Throwable cause, String method){
-		super(cause,method);
+	public MethodAccessDeniedException(Throwable cause, String method) {
+		super(cause, method);
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
