@@ -363,6 +363,7 @@ app/stelvio-presentation-java/src/test/java/no/stelvio/web/security/page/listene
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/security/page/util/J2eeSecurityObjectTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/security/page/util/MockSecurityConfiguration.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/servlet/ServletContextAttributeSetterTest.java -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/web/taglib/breadcrumb/BreadcrumbTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/taglib/support/DateSupportTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/util/DefaultLocaleStartupHelperTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/util/RequestUtilsTest.java -text
