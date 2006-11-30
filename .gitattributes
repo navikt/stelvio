@@ -131,13 +131,13 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/log/appenders/JMSQueueAp
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/Log4jLogFactory.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfig.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfigMBean.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/MenuItemService.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/MenuItemServiceImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Menu.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Permission.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/Screen.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/JpaMenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/MenuRepository.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/impl/JpaMenuRepository.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/service/MenuItemService.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/service/impl/MenuItemServiceImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/SecurityException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/AccessDecisionVoterNotFoundException.java -text

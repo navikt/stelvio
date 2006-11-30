@@ -1,4 +1,4 @@
-package no.stelvio.common.menu.repository;
+package no.stelvio.common.menu.repository.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import no.stelvio.common.menu.domain.Menu;
 import no.stelvio.common.menu.domain.Permission;
 import no.stelvio.common.menu.domain.Screen;
+import no.stelvio.common.menu.repository.MenuRepository;
 
 /**
  * Implementation of MenuRepository interface that uses Java Persistence API to perform CRUD operations.
