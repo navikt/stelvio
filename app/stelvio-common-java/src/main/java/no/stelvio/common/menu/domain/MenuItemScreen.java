@@ -21,7 +21,7 @@ import javax.persistence.Version;
  * @todo should not be necessary with setters at all?
  */
 @Entity(name="MenuItemScreen")
-@Table(name="SCREEN")
+@Table(name="MENU_SCREEN")
 public class MenuItemScreen implements Serializable {
 	// TODO: Remove or create generated value
 	private static final long serialVersionUID = 1L;
@@ -29,7 +29,7 @@ public class MenuItemScreen implements Serializable {
 	/**
 	 * The primary key.
 	 */
-	@Column(name="SCREEN_ID")
+	@Column(name="MENU_SCREEN_ID")
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int screenId;
 	

@@ -30,7 +30,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="MenuItem.findParents", query="SELECT m FROM MenuItem m WHERE m.parent is null")
 })
 @Entity(name="MenuItem")
-@Table(name="MENU")
+@Table(name="MENU_ITEM")
 public class MenuItem implements Serializable {
 	// TODO: Remove or create generated value
 	private static final long serialVersionUID = 1L;
@@ -39,7 +39,7 @@ public class MenuItem implements Serializable {
 	 * The primary key.
 	 */
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="MENU_ID")
+	@Column(name="MENU_ITEM_ID")
 	private int menuId;
 	
 	/**
@@ -60,8 +60,8 @@ public class MenuItem implements Serializable {
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="PERMISSION_MENU",
-		joinColumns=@JoinColumn(name="MENU_ID"),
-		inverseJoinColumns=@JoinColumn(name="PERMISSION_ID")
+		joinColumns=@JoinColumn(name="MENU_ITEM_ID"),
+		inverseJoinColumns=@JoinColumn(name="MENU_PERMISSION_ID")
 	)
 	private List<MenuItemPermission> menuItemPermissions;
 	
@@ -70,8 +70,8 @@ public class MenuItem implements Serializable {
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="SCREEN_MENU",
-		joinColumns=@JoinColumn(name="MENU_ID"),
-		inverseJoinColumns=@JoinColumn(name="SCREEN_ID")
+		joinColumns=@JoinColumn(name="MENU_ITEM_ID"),
+		inverseJoinColumns=@JoinColumn(name="MENU_SCREEN_ID")
 	)
 	private List<MenuItemScreen> menuItemScreens;
 	
