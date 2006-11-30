@@ -50,26 +50,6 @@
 <!--	<bean id="ServletContextAwareBean"-->
 <!--	       class="no.stelvio.web.servlet.StartupServletTest$ServletContextAwareBean"/>-->
 	
-	<!-- Breadcrumb -->
-	<bean id="breadcrumbAction"
-			class="no.stelvio.web.taglib.breadcrumb.action.BreadcrumbAction"
-			singleton="false" />
-	<!-- Breadcrumb -->
-			
-	<!-- Tasklist -->
-	<bean id="tasklistMenuForm"
-			class="no.stelvio.web.taglib.tasklist.action.TasklistMenuForm" 
-			singleton="false" />
-			
-	<bean id="tasklistTreeBacker"
-			class="no.stelvio.web.taglib.tasklist.action.TasklistTreeMenuAction" 
-			singleton="false">
-		<property name="tasklistTreeUtil" ref="tasklistTreeUtil" />
-		<property name="saksbehandlerUtil" ref="saksbehandlerUtil" />
-	</bean>
-	
-	<bean class="no.stelvio.web.taglib.tasklist.TasklistTreeUtilImpl" id="tasklistTreeUtil" />
-	<bean class="no.stelvio.web.taglib.tasklist.SaksbehandlerUtilImpl" id="saksbehandlerUtil" />
-	<!-- Tasklist -->
+
 </beans>
 
