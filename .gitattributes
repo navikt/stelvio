@@ -157,8 +157,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/domain/Area.jav
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/domain/Responsible.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/domain/Saksbehandler.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/domain/TaskType.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/repository/SaksbehandlerUtil.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/repository/TasklistTreeUtil.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/repository/SaksbehandlerRepository.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/repository/TasklistTreeRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainerImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponse.java -text

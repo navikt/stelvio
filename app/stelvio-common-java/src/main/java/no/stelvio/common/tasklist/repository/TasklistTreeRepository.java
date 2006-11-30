@@ -10,20 +10,12 @@ import no.stelvio.common.tasklist.domain.Responsible;
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  */
-public interface SaksbehandlerUtil {
+public interface TasklistTreeRepository {
 	/**
 	 * TODO: Document me
 	 * 
-	 * @param enhetId
+	 * @param responsibleId
 	 * @return
 	 */
-	public List<Responsible> getSaksbehandlere(String enhetId);
-	
-	/**
-	 * TODO: Document me
-	 * 
-	 * @param saksbehandlerNr
-	 * @return
-	 */
-	public Responsible getSaksbehandler(String saksbehandlerNr);
+	public List<Responsible> getTaskTreeModel(String responsibleId);
 }
