@@ -3,7 +3,10 @@ package no.stelvio.web.taglib.tasklist;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.stelvio.web.taglib.tasklist.util.SaksbehandlerUtil;
+import no.stelvio.common.tasklist.domain.Area;
+import no.stelvio.common.tasklist.domain.Responsible;
+import no.stelvio.common.tasklist.domain.TaskType;
+import no.stelvio.common.tasklist.repository.SaksbehandlerUtil;
 
 /**
  * TODO: Document me

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import junit.framework.TestCase;
+import no.stelvio.common.tasklist.domain.Saksbehandler;
 import no.stelvio.web.taglib.tasklist.action.TasklistMenuForm;
 import no.stelvio.web.taglib.tasklist.action.TasklistTreeMenuAction;
 
