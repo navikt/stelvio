@@ -365,6 +365,9 @@ app/stelvio-presentation-java/src/test/java/no/stelvio/web/security/page/util/Mo
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/servlet/ServletContextAttributeSetterTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/taglib/breadcrumb/BreadcrumbTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/taglib/support/DateSupportTest.java -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/web/taglib/tasklist/SaksbehandlerUtilImpl.java -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/web/taglib/tasklist/TasklistTest.java -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/web/taglib/tasklist/TasklistTreeUtilImpl.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/util/DefaultLocaleStartupHelperTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/web/util/RequestUtilsTest.java -text
 app/stelvio-presentation-java/src/test/resources/WEB-INF/web.xml -text
