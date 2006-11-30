@@ -67,9 +67,7 @@ public class BreadcrumbAction implements Serializable, MessageSourceAware {
 	 * @param flowSession
 	 */
 	public void setFlowSession(FlowSession flowSession) {
-		if (this.flowSession == null) {
-			this.flowSession = flowSession;
-		}
+		this.flowSession = flowSession;
 	}
 	
 	/**
@@ -80,7 +78,6 @@ public class BreadcrumbAction implements Serializable, MessageSourceAware {
 	public FlowSession getFlowSession() {
 		if (flowSession == null) {
 			flowSession = FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
-			return flowSession;
 		}
 		
 		return flowSession;
