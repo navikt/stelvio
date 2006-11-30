@@ -34,6 +34,7 @@ import javax.faces.el.PropertyResolver;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
+//TODO: PropertyResolver is deprecated - replace with javax.el.elresolver
 public class MessageSourcePropertyResolver extends PropertyResolver {
     /**
      * No Arguments to message source.
@@ -74,7 +75,7 @@ public class MessageSourcePropertyResolver extends PropertyResolver {
         if (base instanceof MessageSource) {
             MessageSource messageSource = (MessageSource) base;
             
-            //The original code that retrieves the locale from FacesContext
+            //The original code written by the author - that retrieves the locale from FacesContext
             //Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
             
             //Retrieves the locale set by the RequestContext module
