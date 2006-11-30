@@ -4,6 +4,7 @@ import java.util.List;
 
 import junit.framework.TestCase;
 import no.stelvio.web.taglib.breadcrumb.action.BreadcrumbAction;
+import no.stelvio.web.taglib.breadcrumb.domain.Breadcrumb;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
