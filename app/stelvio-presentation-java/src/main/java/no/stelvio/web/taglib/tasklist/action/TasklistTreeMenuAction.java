@@ -7,12 +7,12 @@ import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
-import no.stelvio.web.taglib.tasklist.Area;
-import no.stelvio.web.taglib.tasklist.Responsible;
-import no.stelvio.web.taglib.tasklist.Saksbehandler;
-import no.stelvio.web.taglib.tasklist.TaskType;
-import no.stelvio.web.taglib.tasklist.util.SaksbehandlerUtil;
-import no.stelvio.web.taglib.tasklist.util.TasklistTreeUtil;
+import no.stelvio.common.tasklist.domain.Area;
+import no.stelvio.common.tasklist.domain.Responsible;
+import no.stelvio.common.tasklist.domain.Saksbehandler;
+import no.stelvio.common.tasklist.domain.TaskType;
+import no.stelvio.common.tasklist.repository.SaksbehandlerUtil;
+import no.stelvio.common.tasklist.repository.TasklistTreeUtil;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.myfaces.custom.tree2.TreeNode;
@@ -20,6 +20,7 @@ import org.apache.myfaces.custom.tree2.TreeNodeBase;
 import org.springframework.webflow.execution.FlowSession;
 import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
 import org.springmodules.cache.annotations.Cacheable;
+
 
 /**
  * TODO: Document me
