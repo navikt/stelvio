@@ -25,6 +25,7 @@ public class BreadcrumbAction implements Serializable, MessageSourceAware {
 	// TODO: Add generated serialVersionUID
 	private static final long serialVersionUID = 1L;
 	private MessageSource messages;
+	private FlowSession flowSession;
 
 	/**
 	 * TODO: Document me
@@ -32,7 +33,7 @@ public class BreadcrumbAction implements Serializable, MessageSourceAware {
 	 */
 	@SuppressWarnings("unchecked")
 	public  List<Breadcrumb> getBreadcrumb() {
-		FlowSession session = FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
+		FlowSession session = getFlowSession();
 		List<Breadcrumb> breadcrumbs = new ArrayList<Breadcrumb>();
 		
 		int index = 0;
@@ -58,5 +59,30 @@ public class BreadcrumbAction implements Serializable, MessageSourceAware {
 	 */
 	public void setMessageSource(MessageSource messages) {
 		this.messages = messages;
+	}
+	
+	/**
+	 * TODO: Document me
+	 * 
+	 * @param flowSession
+	 */
+	public void setFlowSession(FlowSession flowSession) {
+		if (this.flowSession == null) {
+			this.flowSession = flowSession;
+		}
+	}
+	
+	/**
+	 * TODO: Document me
+	 * 
+	 * @return
+	 */
+	public FlowSession getFlowSession() {
+		if (flowSession == null) {
+			flowSession = FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
+			return flowSession;
+		}
+		
+		return flowSession;
 	}
 }
