@@ -4,23 +4,19 @@ package no.stelvio.common.codestable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
-/*import no.stelvio.common.codestable.CodesTableImpl;
-import no.stelvio.common.codestable.CodesTablePeriodicImpl;
-import no.stelvio.common.codestable.CodesTableItem;
-import no.stelvio.common.codestable.CodesTableItemPeriodic;
-import no.stelvio.common.codestable.CodesTableInitializerImpl;*/
-
-import com.agical.rmock.extension.junit.RMockTestCase;
+import org.hamcrest.core.IsAnything;
+import org.jmock.InAnyOrder;
+import org.jmock.Mockery;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * Unit test of CodesTableInitializer.
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTableInitializerTest extends RMockTestCase  {
-				
+public class CodesTableInitializerTest {
+
 	/**
 	 * Tests CodesTableInitializer with both <code>CodesTableItem</code>'s and <code>CodesTableItemPeriodic</code>'s.
 	 * @throws Exception
@@ -30,11 +26,11 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	public void testCodesTableInitializer() throws Exception {
 		
 		//Test data
-		CodesTable codesTable = new CodesTableImpl();
+		final CodesTable codesTable = new CodesTableImpl();
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
 		
-		CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
+		final CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
 		
@@ -43,30 +39,27 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 		
 		List<Class<CodesTableItemPeriodic>> ctip = new ArrayList<Class<CodesTableItemPeriodic>>();
 		ctip.add(CodesTableItemPeriodic.class);
-		
+
+		Mockery context = new Mockery();
+		final CodesTableManager codesTableManager = context.mock(CodesTableManager.class);
+
 		//Mock CodesTableManger's methods
-		CodesTableManager mockCodesTableManager = (CodesTableManager) mock(CodesTableManager.class);
-		mockCodesTableManager.getCodesTable(TestCodesTableItem.CTI1.getClass());
-		modify().args(is.ANYTHING);
-		modify().returnValue(codesTable);
-		
-		mockCodesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.CTIP1.getClass());
-		modify().args(is.ANYTHING);
-		modify().returnValue(codesTablePeriodic);
-		startVerification();
-				
+		context.expects(new InAnyOrder() {{
+			one(codesTableManager).getCodesTable((Class<CodesTableItem>) with(IsAnything.anything()));
+			will(returnValue(codesTable));
+			one(codesTableManager).getCodesTablePeriodic((Class<CodesTableItemPeriodic>) with(IsAnything.anything()));
+			will(returnValue(codesTablePeriodic));
+		}});
+
 		//Initialize the test object
 		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
 		codesTableInitializer.setCodesTableClasses(cti);
 		codesTableInitializer.setCodesTablePeriodicClasses(ctip);
-		codesTableInitializer.setCodesTableManager(mockCodesTableManager);
+		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
 		//Test the test objects method
-		try{
-			codesTableInitializer.init();
-		} catch(Exception ex){
-			fail("Unexptected exception " +ex);
-		}		
+		codesTableInitializer.init();
+		context.assertIsSatisfied();
 	}
 
 	/**
@@ -77,31 +70,30 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerGetCodesTable() throws Exception {
 		//Test data
-		CodesTable codesTable = new CodesTableImpl();
+		final CodesTable codesTable = new CodesTableImpl();
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
 		
 		List<Class<CodesTableItem>> cti = new ArrayList<Class<CodesTableItem>>();
 		cti.add(CodesTableItem.class);
 		
-		//Mock CodesTableMangers method
-		CodesTableManager mockCodesTableManager = (CodesTableManager) mock(CodesTableManager.class);
-		mockCodesTableManager.getCodesTable(TestCodesTableItem.CTI1.getClass());
-		modify().args(is.ANYTHING);
-		modify().returnValue(codesTable);
-		startVerification();
-		
+		Mockery context = new Mockery();
+		final CodesTableManager codesTableManager = context.mock(CodesTableManager.class);
+
+		//Mock CodesTableManger's methods
+		context.expects(new InAnyOrder() {{
+			one(codesTableManager).getCodesTable((Class<CodesTableItem>) with(IsAnything.anything()));
+			will(returnValue(codesTable));
+		}});
+
 		//Initialize the test object
 		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
 		codesTableInitializer.setCodesTableClasses(cti);
-		codesTableInitializer.setCodesTableManager(mockCodesTableManager);
+		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
 		//Test the test objects method
-		try{
-			codesTableInitializer.init();
-		} catch(Exception ex){
-			fail("Unexptected exception " +ex);
-		}		
+		codesTableInitializer.init();
+		context.assertIsSatisfied();
 	}
 	
 	/**
@@ -112,31 +104,30 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerGetCodesTablePeriodic() throws Exception{
 		//Test data		
-		CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
+		final CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
 		
 		List<Class<CodesTableItemPeriodic>> ctip = new ArrayList<Class<CodesTableItemPeriodic>>();
 		ctip.add(CodesTableItemPeriodic.class);
-		
-		//Mock CodesTableMangers method
-		CodesTableManager mockCodesTableManager = (CodesTableManager) mock(CodesTableManager.class);
-		mockCodesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.CTIP1.getClass());
-		modify().args(is.ANYTHING);
-		modify().returnValue(codesTablePeriodic);
-		startVerification();
-				
+
+		Mockery context = new Mockery();
+		final CodesTableManager codesTableManager = context.mock(CodesTableManager.class);
+
+		//Mock CodesTableManger's methods
+		context.expects(new InAnyOrder() {{
+			one(codesTableManager).getCodesTablePeriodic((Class<CodesTableItemPeriodic>) with(IsAnything.anything()));
+			will(returnValue(codesTablePeriodic));
+		}});
+
 		//Initialize the test object
 		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
 		codesTableInitializer.setCodesTablePeriodicClasses(ctip);
-		codesTableInitializer.setCodesTableManager(mockCodesTableManager);
+		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
 		//Test the test objects method
-		try{
-			codesTableInitializer.init();
-		} catch(Exception ex){
-			fail("Unexptected exception " +ex);
-		}	
+		codesTableInitializer.init();
+		context.assertIsSatisfied();
 	}
 	
 	/**
@@ -166,7 +157,7 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerModifyCodesTableMangersReturnValue() throws Exception { 
 		//Test data
-		CodesTable codesTable = new CodesTableImpl();
+		final CodesTable codesTable = new CodesTableImpl();
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
 		
@@ -179,23 +170,23 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 		
 		List<Class<CodesTableItemPeriodic>> ctip = new ArrayList<Class<CodesTableItemPeriodic>>();
 		ctip.add(CodesTableItemPeriodic.class);
-		
-		//Mock CodesTableMangers method
-		CodesTableManager mockCodesTableManager = (CodesTableManager) mock(CodesTableManager.class);
-		mockCodesTableManager.getCodesTable(TestCodesTableItem.CTI1.getClass());
-		modify().args(is.ANYTHING);
-		modify().returnValue(codesTable);
-		
-		mockCodesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.CTIP1.getClass());
-		modify().args(is.ANYTHING);
-		modify().returnValue(null);
-		startVerification();	
-		
+
+		Mockery context = new Mockery();
+		final CodesTableManager codesTableManager = context.mock(CodesTableManager.class);
+
+		//Mock CodesTableManger's methods
+		context.expects(new InAnyOrder() {{
+			one(codesTableManager).getCodesTable((Class<CodesTableItem>) with(IsAnything.anything()));
+			will(returnValue(codesTable));
+			one(codesTableManager).getCodesTablePeriodic((Class<CodesTableItemPeriodic>) with(IsAnything.anything()));
+			will(returnValue(null));
+		}});
+
 		//Initialize the test object
 		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
 		codesTableInitializer.setCodesTableClasses(cti);
 		codesTableInitializer.setCodesTablePeriodicClasses(ctip);
-		codesTableInitializer.setCodesTableManager(mockCodesTableManager);
+		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
 		//Test the test objects method
 		try{
@@ -203,6 +194,8 @@ public class CodesTableInitializerTest extends RMockTestCase  {
 			fail("Exptected exception");
 		} catch(Exception ex){
 			assertEquals("Test 1: Expected exception ", ex.getClass().getSimpleName(), "CodesTableNotFoundException");
-		}		
-	}	
+		}
+
+		context.assertIsSatisfied();
+	}
 }

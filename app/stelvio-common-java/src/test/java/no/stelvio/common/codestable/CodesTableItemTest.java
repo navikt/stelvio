@@ -2,11 +2,11 @@ package no.stelvio.common.codestable;
 
 import java.util.Locale;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-
-import no.stelvio.common.codestable.CodesTableItem;
-
-import com.agical.rmock.extension.junit.RMockTestCase;
 
 /**
  * Unit test of CodesTableItem.
@@ -14,7 +14,7 @@ import com.agical.rmock.extension.junit.RMockTestCase;
  * @author personb66fa0b5ff6e
  * @version $Id$
  */
-public class CodesTableItemTest extends RMockTestCase {
+public class CodesTableItemTest {
 	
 	/**
 	 * Test of constructor for CodesTableItem.
@@ -76,10 +76,10 @@ public class CodesTableItemTest extends RMockTestCase {
 	 */
 	@Test
 	public void testEqualsObject() {
-		super.assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI1));
-		super.assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.CTI1.equals(null));
-		super.assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.CTI1.equals("String"));
-		super.assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI2));
+		assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI1));
+		assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.CTI1.equals(null));
+		assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.CTI1.equals("String"));
+		assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI2));
 	}
 
 	/**
