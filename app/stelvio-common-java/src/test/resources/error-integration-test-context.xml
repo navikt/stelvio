@@ -21,15 +21,15 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
     </aop:config>
 
     <!-- This makes ErrorHandlingFacade an error handler for every bean this advice is injected onto  -->
-    <bean id="error.advice" class="no.stelvio.common.error.support.ErrorHandlingAdvice">
+    <bean id="error.advice" class="no.stelvio.common.error.support.ErrorHandlingAdvice" lazy-init="true">
         <property name="exceptionHandlerFacade" ref="error.facade"/>
     </bean>
 
     
-    <bean id="error.facade" class="no.stelvio.common.error.support.DefaultExceptionHandlerFacade">
+    <bean id="error.facade" class="no.stelvio.common.error.support.DefaultExceptionHandlerFacade" lazy-init="true">
         <property name="defaultStrategy" ref="error.strategy"/>
     </bean>
-    <bean id="error.strategy" class="no.stelvio.common.error.strategy.support.ExceptionHandlerStrategyMulticaster">
+    <bean id="error.strategy" class="no.stelvio.common.error.strategy.support.ExceptionHandlerStrategyMulticaster" lazy-init="true">
         <property name="strategies">
             <set>
                 <ref local="error.logStrategy"/>
@@ -37,20 +37,20 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
             </set>
         </property>
     </bean>
-    <bean id="error.logStrategy" class="no.stelvio.common.error.strategy.support.LoggerExceptionHandlerStrategy">
+    <bean id="error.logStrategy" class="no.stelvio.common.error.strategy.support.LoggerExceptionHandlerStrategy" lazy-init="true">
         <property name="errorResolver" ref="error.errorResolverFb"/>
     </bean>
-    <bean id="error.rethrowStrategy" class="no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy"/>
+    <bean id="error.rethrowStrategy" class="no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy" lazy-init="true"/>
 
 
-    <bean id="error.errorResolverFb" class="no.stelvio.common.error.support.ErrorResolverFactoryBean">
+    <bean id="error.errorResolverFb" class="no.stelvio.common.error.support.ErrorResolverFactoryBean" lazy-init="true">
         <property name="errorRetriever" ref="error.retriever"/>
     </bean>
-    <bean id="error.retriever" class="no.stelvio.common.error.TestErrorsRetriever"/>
+    <bean id="error.retriever" class="no.stelvio.common.error.TestErrorsRetriever" lazy-init="true"/>
 
     
-    <bean id="error.testThrower" class="no.stelvio.common.error.TestThrower"/>
-    <bean id="error.testCatcher" class="no.stelvio.common.error.TestCatcher">
+    <bean id="error.testThrower" class="no.stelvio.common.error.TestThrower" lazy-init="true"/>
+    <bean id="error.testBean" class="no.stelvio.common.error.TestBean" lazy-init="true">
         <property name="testThrower" ref="error.testThrower"/>
     </bean>
 </beans>

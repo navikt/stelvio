@@ -1,5 +1,6 @@
 package no.stelvio.common.error.support;
 
+import no.stelvio.common.error.ErrorResolver;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.isNotNull;
 import static org.hamcrest.object.IsCompatibleType.compatibleType;
@@ -10,8 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
-
-import no.stelvio.common.error.ErrorResolver;
 
 /**
  * Unit test for {@link ErrorResolverFactoryBean}.
@@ -58,7 +57,21 @@ public class ErrorResolverFactoryBeanTest {
         assertThat(ErrorResolverFactoryBean.class, compatibleType(FactoryBean.class));
     }
 
-    @Before
+	/**
+	 * When the <code>ErrorDefinitionRetriever</code> fails, an exception that can be handled specifically by the facade
+	 * is thrown.
+	 */
+	@Test(expected = ErrorDefinitionRetrieverFailedException.class)
+	public void whenErrorDefinitionRetrieverFailsDetectableExceptionIsThrown() throws Exception {
+		mockery.expects(new InAnyOrder() {{
+		        one (errorsRetriever).retrieve(); will(throwException(new IllegalStateException("problems")));
+		    }});
+
+		ehfb.afterPropertiesSet();
+	}
+
+
+	@Before
     public void setUp() throws Exception {
         mockery = new Mockery();
         errorsRetriever = mockery.mock(ErrorsRetriever.class);

@@ -19,8 +19,10 @@ public class DefaultExceptionHandlerFacade implements ExceptionHandlerFacade {
         try {
             t = defaultStrategy.handleException(e);
         } catch (Throwable throwable) {
-            // TODO is it possible to catch T?
-            t = (T) fallbackStrategy.handleException(throwable);
+	        // Original exception
+            t = fallbackStrategy.handleException(e);
+	        // Just print out new exception (database down, etc)
+            fallbackStrategy.handleException(throwable);
         }
 
         throw t;

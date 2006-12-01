@@ -117,6 +117,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/CommonExce
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultErrorResolver.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacade.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionWrapper.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorDefinitionRetrieverFailedException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorHandlingAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorResolverFactoryBean.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorsRetriever.java -text
@@ -217,7 +218,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorResolverTest.
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ExceptionHandlerFacadeTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/RecoverableExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/SeverityTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/TestCatcher.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/error/TestBean.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/TestErrorsRetriever.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/TestRecoverableException.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/TestThrower.java -text
@@ -284,7 +285,7 @@ app/stelvio-common-java/src/test/resources/common-java_test_menu_beans.xml -text
 app/stelvio-common-java/src/test/resources/commons-logging.properties -text
 app/stelvio-common-java/src/test/resources/distributed-services.xml -text
 app/stelvio-common-java/src/test/resources/error-handling.xml -text
-app/stelvio-common-java/src/test/resources/integration-test-context.xml -text
+app/stelvio-common-java/src/test/resources/error-integration-test-context.xml -text
 app/stelvio-common-java/src/test/resources/log4j.properties -text
 app/stelvio-common-java/src/test/resources/performance-monitoring.xml -text
 app/stelvio-common-java/src/test/resources/spring-beans.dtd -text

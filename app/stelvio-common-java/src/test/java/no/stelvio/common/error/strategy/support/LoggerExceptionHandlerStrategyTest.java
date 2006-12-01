@@ -1,5 +1,11 @@
 package no.stelvio.common.error.strategy.support;
 
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.error.ErrorDefinition;
+import no.stelvio.common.error.ErrorResolver;
+import no.stelvio.common.error.TestRecoverableException;
+import no.stelvio.common.error.TestUnrecoverableException;
+import no.stelvio.common.error.message.Extractor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.impl.LogFactoryImpl;
@@ -11,12 +17,6 @@ import org.jmock.Mockery;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-
-import no.stelvio.common.error.ErrorDefinition;
-import no.stelvio.common.error.ErrorResolver;
-import no.stelvio.common.error.TestRecoverableException;
-import no.stelvio.common.error.TestUnrecoverableException;
-import no.stelvio.common.error.message.Extractor;
 
 /**
  * Unit test of {@link LoggerExceptionHandlerStrategy}.
@@ -66,7 +66,13 @@ public class LoggerExceptionHandlerStrategyTest {
         context.assertIsSatisfied();
     }
 
-    @Before
+	@Test
+	public void messageContainsRequestContextValues() {
+		
+	}
+
+
+	@Before
     public void setupForTest() {
         context = new Mockery();
         leh = createInstanceToTest();
@@ -76,7 +82,12 @@ public class LoggerExceptionHandlerStrategyTest {
         LogFactory.releaseAll();
         ((TestLogFactory) LogFactory.getFactory()).setLog(log);
         log = context.mock(Log.class);
-	}
+
+	    RequestContext.setUserId("UserId");
+	    RequestContext.setScreenId("ScreenId");
+	    RequestContext.setProcessId("ProcessId");
+	    RequestContext.setTransactionId("TransactionId");
+    }
 
     private LoggerExceptionHandlerStrategy createInstanceToTest() {
         LoggerExceptionHandlerStrategy leh = new LoggerExceptionHandlerStrategy();

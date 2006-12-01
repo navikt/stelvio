@@ -1,8 +1,7 @@
 package no.stelvio.common.error;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Modifier;
-
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.eq;
 import static org.hamcrest.core.IsEqual.isTrue;
@@ -11,8 +10,9 @@ import static org.hamcrest.core.IsSame.same;
 import org.junit.Before;
 import org.junit.Test;
 
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.support.ExceptionToCopyHolder;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 
 /**
  * @author personf8e9850ed756
@@ -58,7 +58,16 @@ public abstract class AbstractExceptionTest<T extends StelvioException> {
         assertThat(Modifier.isProtected(constructor.getModifiers()), isTrue());
     }
 
-    protected abstract T createExceptionWithCause(Exception cause);
+	@Test(expected = IllegalArgumentException.class)
+	public void createExceptionWithoutParametersThrowsException() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+		Class<T> exceptionClass = exceptionClass();
+		Constructor<T> constructor = exceptionClass.getConstructor(Object[].class);
+		constructor.newInstance();
+	}
+
+	protected abstract Class<T> exceptionClass();
+
+	protected abstract T createExceptionWithCause(Exception cause);
 
     protected abstract T createException();
 

@@ -1,11 +1,10 @@
 package no.stelvio.common.error;
 
 
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.eq;
 import org.junit.Test;
-
-import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * Unit test of UnrecoverableException.
@@ -34,7 +33,11 @@ public class UnrecoverableExceptionTest extends AbstractExceptionTest<TestUnreco
         return new TestUnrecoverableException("messageFrom");
     }
 
-    protected TestUnrecoverableException createExceptionWithCause(Exception e) {
+	protected Class<TestUnrecoverableException> exceptionClass() {
+		return TestUnrecoverableException.class;
+	}
+
+	protected TestUnrecoverableException createExceptionWithCause(Exception e) {
         return new TestUnrecoverableException(e, "messageFrom");
     }
 

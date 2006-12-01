@@ -1,20 +1,10 @@
 package no.stelvio.common.error.support;
 
-import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
+import no.stelvio.common.error.*;
 import org.springframework.util.Assert;
 
-import no.stelvio.common.error.ConfigurationException;
-import no.stelvio.common.error.ErrorConfigurationException;
-import no.stelvio.common.error.ErrorDefinition;
-import no.stelvio.common.error.ErrorNotFoundException;
-import no.stelvio.common.error.ErrorResolver;
-import no.stelvio.common.error.StelvioException;
+import java.text.MessageFormat;
+import java.util.*;
 
 /**
  * Returns the <code>ErrorDefinition</code> corresponding to the given class or one of its superclasses or superinterfaces.
@@ -140,8 +130,7 @@ public class DefaultErrorResolver implements ErrorResolver {
         try {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {
-            // TODO should use some kind of Error*Exception
-            throw new ConfigurationException(e, "errorHandling");
+            throw new IllegalStateException("Definition of error has the wrong class name", e);
         }
     }
 }
