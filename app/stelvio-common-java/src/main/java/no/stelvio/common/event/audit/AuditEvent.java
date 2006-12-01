@@ -1,6 +1,7 @@
 package no.stelvio.common.event.audit;
 
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
@@ -37,7 +38,7 @@ public class AuditEvent extends ApplicationEvent {
         this.message = message;
         this.userLogin = userLogin;
         this.userLocation = userLocation;
-        this.auditItems = auditItems;
+	    this.auditItems = new LinkedHashSet<AuditItem>(auditItems);
     }
 
     public void addAuditItem(AuditItem auditItem) {
