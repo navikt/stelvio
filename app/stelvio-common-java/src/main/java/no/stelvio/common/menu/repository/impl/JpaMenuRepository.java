@@ -6,8 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import no.stelvio.common.menu.domain.MenuItem;
-import no.stelvio.common.menu.domain.MenuItemPermission;
-import no.stelvio.common.menu.domain.MenuItemScreen;
 import no.stelvio.common.menu.repository.MenuRepository;
 
 /**
