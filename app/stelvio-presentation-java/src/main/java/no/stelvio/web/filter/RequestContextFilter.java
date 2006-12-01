@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.webflow.execution.FlowSession;
-import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
-
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
 import no.stelvio.web.util.RequestUtils;
+
+import org.springframework.webflow.execution.FlowSession;
+import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
 
 
 /**
@@ -26,9 +26,8 @@ import no.stelvio.web.util.RequestUtils;
  * @version $Id: RequestContextFilter.java 2574 2005-10-20 08:04:22Z psa2920 $
  */
 public class RequestContextFilter extends AbstractFilter {
-
 	private static final String REQUEST_CONTEXT = "RequestContext";
-
+	
 	/**
 	 * Performs the following processing steps:
 	 * <ol>
@@ -51,6 +50,7 @@ public class RequestContextFilter extends AbstractFilter {
 			// Only import the request context from session if both the session
 			// and a persisted context exists.
 			HttpSession session = request.getSession(false);
+			
 			if (null != session) {
 				Object context = session.getAttribute(REQUEST_CONTEXT);
 				if (null != context) {
@@ -68,10 +68,10 @@ public class RequestContextFilter extends AbstractFilter {
 			RequestContext.setModuleId(RequestContext.getScreenId());
 			RequestContext.setProcessId(RequestUtils.getProcessId(request));
 			RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
-	
+			
 			// Delegate processing to the next filter or resource in the chain
 			chain.doFilter(request, response);
-	
+			
 			// Session might have bean constructed, deleted or invalidated during
 			// processing further down the chain, so check again
 			session = request.getSession(false);
@@ -97,10 +97,10 @@ public class RequestContextFilter extends AbstractFilter {
 	/**
 	 * Method to retrieve the unique screen id. 
 	 * @return the current flow filename and the state id of the viewstate, ex. my-flow-file:state-id
+	 * @throws Exception 
 	 */
-	private String getScreenId() {
+	private String getScreenId() throws Exception {
 		FlowSession session = FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
-		
 		if (session != null) {
 			return session.getDefinition().getId()+":"+session.getState().getId();
 		}
