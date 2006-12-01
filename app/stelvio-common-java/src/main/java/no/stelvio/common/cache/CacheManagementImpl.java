@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
  * JMX-component using Spring configuration.
  * 
  * @author person4f9bc5bd17cc, Accenture
+ * @version $id$
  */
 public class CacheManagementImpl implements CacheManagement {
 	private Logger log = Logger.getLogger(CacheManagementImpl.class);

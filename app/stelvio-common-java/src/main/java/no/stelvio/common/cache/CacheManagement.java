@@ -12,6 +12,7 @@ import net.sf.ehcache.CacheManager;
  * Implementations are standard POJO's that can be JMX-enabled using Spring configuration.
  * 
  * @author person4f9bc5bd17cc, Accenture
+ * @version $id$
  */
 public interface CacheManagement {
 	/**
