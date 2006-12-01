@@ -146,7 +146,24 @@ public class MenuTest extends TestCase {
 	 * @param indent number of spaces to print before the text
 	 */
 	public void printMenu(MenuItem menuItem, int indent) {
-		if (checkPermission(menuItem.getPermissions()) && inScreen(menuItem.getScreens())) {
+		List<MenuItemPermission> permissions = menuItem.getPermissions() == null || menuItem.getPermissions().size() <= 0 ? null : menuItem.getPermissions();
+		List<MenuItemScreen> screens = menuItem.getScreens() == null || menuItem.getScreens().size() <= 0 ? null : menuItem.getScreens();
+		
+		boolean createMenuItem = false;
+		if (permissions == null && screens == null) {
+			createMenuItem = true;
+		}
+		else if (permissions == null && (screens != null && inScreen(screens))) {
+			createMenuItem = true;
+		}
+		else if ((permissions != null && checkPermission(permissions)) && screens == null) {
+			createMenuItem = true;
+		}
+		else if ((permissions != null && checkPermission(permissions)) && (screens != null && inScreen(screens))) {
+			createMenuItem = true;
+		}
+		
+		if (createMenuItem) {
 			for (int i = 0; i < indent; i++) {
 				System.out.print(" ");
 			}
@@ -169,6 +186,8 @@ public class MenuTest extends TestCase {
 			printMenu(menuItem, 0);
 		}
 		System.out.println("menus: "+menuItems.size());
+		
+		assertTrue("No menu items returned", menuItems.size() > 0);
 	}
 	
 	/**

@@ -256,6 +256,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestQueueS
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestTextMessage.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/factory/Log4jLogFactoryTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/jmx/Log4JConfigTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/menu/MenuItemServiceImpl.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/menu/MenuTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AccessVoterManagerTests.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AfterInvocationProviderManagerTest.java -text
