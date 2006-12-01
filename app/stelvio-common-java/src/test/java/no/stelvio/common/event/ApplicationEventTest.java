@@ -1,6 +1,8 @@
 package no.stelvio.common.event;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import org.hamcrest.core.IsEqual;
+import org.hamcrest.core.IsNot;
 import static org.hamcrest.core.IsSame.same;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +25,13 @@ public abstract class ApplicationEventTest {
         assertThat((ApplicationEventTest) event.getSource(), same(this));
     }
 
-    protected abstract ApplicationEvent createApplicationEvent();
+	@Test
+	public void timeStampIsSetOnCreatedEvent() {
+		assertThat(event.getTimestamp(), IsNot.not(IsEqual.eq(0L)));
+	}
+
+
+	protected abstract ApplicationEvent createApplicationEvent();
 
     @Before
     public void setupApplicationEvent() throws Exception {

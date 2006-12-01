@@ -1,6 +1,7 @@
 package no.stelvio.common.event.audit;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.eq;
@@ -33,10 +34,25 @@ public class AuditEventTest extends ApplicationEventTest {
         assertThat(event.getMessage(), eq("message"));
         assertThat(event.getUserLogin(), eq("userLogin"));
         assertThat(event.getUserLocation(), eq("userLocation"));
-        assertThat(event.getAuditItems().size(), eq(1));
+        assertThat(event.getAuditItems().size(), eq(2));
     }
 
-    protected ApplicationEvent createApplicationEvent() {
+	public void auditEventIsImmutable() {
+		Set<AuditItem> consItems = createAuditItems();
+		AuditEvent event = new AuditEvent(this, "message", "userLogin", "userLocation", consItems );
+		consItems.clear();
+		assertThat(event.getAuditItems().size(), eq(2));
+
+		Set<AuditItem> gottenItems = event.getAuditItems();
+		try {
+			gottenItems.clear();
+		} catch (UnsupportedOperationException e) {
+			// should happen
+		}
+		assertThat(event.getAuditItems().size(), eq(2));
+	}
+
+	protected ApplicationEvent createApplicationEvent() {
         return new AuditEvent(this, "message", "userLogin", "userLocation", createAuditItems());
     }
 
@@ -52,8 +68,9 @@ public class AuditEventTest extends ApplicationEventTest {
 
     private HashSet<AuditItem> createAuditItems() {
         HashSet<AuditItem> auditItems = new HashSet<AuditItem>();
-        auditItems.add(new AuditItem("description", "auditable"));
-        
+        auditItems.add(new AuditItem("description1", "auditable1"));
+        auditItems.add(new AuditItem("description2", "auditable2"));
+
         return auditItems;
     }
 }

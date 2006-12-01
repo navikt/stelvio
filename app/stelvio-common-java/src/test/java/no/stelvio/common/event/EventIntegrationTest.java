@@ -13,8 +13,6 @@ import no.stelvio.common.event.audit.AuditItem;
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
- * @todo should check out how to publish an AuditEvent by having a bean that is ApplicationEventPublisherAware
- * that publishees an AuditEvent and our own test ApplicationEventListener
  * @todo should be an integration test.
  */
 public class EventIntegrationTest extends AbstractDependencyInjectionSpringContextTests {
