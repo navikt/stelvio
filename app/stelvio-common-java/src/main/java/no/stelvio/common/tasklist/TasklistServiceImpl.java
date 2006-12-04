@@ -3,7 +3,7 @@ package no.stelvio.common.tasklist;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.nav.domain.sak.generellsak.Oppgave;
+//import no.nav.domain.sak.generellsak.Oppgave;
 
 /**
  * Class implementing the interface TasklistService, that retrives lists of 
@@ -18,7 +18,8 @@ public class TasklistServiceImpl implements TasklistService {
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<Oppgave> getCaseworkerTasks(String caseworkerID){
+	
+	/*public List<Oppgave> getCaseworkerTasks(String caseworkerID){
 		
 		//TODO - This method must be updated with a call to a service exposed
 		//by the integration-layer, when the design of the service is ready, 
@@ -29,12 +30,12 @@ public class TasklistServiceImpl implements TasklistService {
 		List<Oppgave> tasks = new ArrayList<Oppgave>();
 		
 		return tasks;
-	}
+	}*/
 	
 	/** 
 	 * {@inheritDoc}
 	 */
-	public List<Oppgave> getUnitTasks(String unitID){
+	/*public List<Oppgave> getUnitTasks(String unitID){
 		
 		//TODO - This method must be updated with a call to a service exposed
 		//by the integration-layer, when the design of the service is ready, 
@@ -45,5 +46,5 @@ public class TasklistServiceImpl implements TasklistService {
 		List<Oppgave> tasks = new ArrayList<Oppgave>();
 		
 		return tasks;
-	}
+	}*/
 }
