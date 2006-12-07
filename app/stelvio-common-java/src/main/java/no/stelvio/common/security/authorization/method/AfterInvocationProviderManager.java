@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.acegisecurity.AccessDeniedException;
 import org.acegisecurity.AfterInvocationManager;
 import org.acegisecurity.Authentication;
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.ConfigAttributeDefinition;
 import org.acegisecurity.afterinvocation.AfterInvocationProvider;
-import org.acegisecurity.intercept.ObjectDefinitionSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -38,7 +36,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class AfterInvocationProviderManager implements AfterInvocationManager {
 
-	protected static final Log logger = LogFactory
+	private static final Log logger = LogFactory
 			.getLog(AfterInvocationProviderManager.class);
 
 	private List<AfterInvocationProvider> providers;
@@ -53,10 +51,11 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 	 *            with the full class names of the
 	 *            <code>AfterInvocationProvider</code>s that should be used
 	 *            on the secure object (e.g. a method invocation).
-	 * @throws IllegalArgumentException
-	 *             if the attributes do not represent a class.
+	 * @throws AfterInvocationProviderNotFoundException
+	 *             if one of the attributes do not represent a class.
 	 */
-	public void addProviders(ConfigAttributeDefinition config) {
+	public void addProviders(ConfigAttributeDefinition config) 
+				throws AfterInvocationProviderNotFoundException{
 
 		this.providers = new ArrayList<AfterInvocationProvider>();
 		Iterator iterator = config.getConfigAttributes();
@@ -112,7 +111,7 @@ public class AfterInvocationProviderManager implements AfterInvocationManager {
 	 *         return the same object it was passed by the
 	 *         <code>returnedObject</code> method argument)
 	 * 
-	 * @throws AccessDeniedException
+	 * @throws MethodAccessDeniedException
 	 *             if access is denied
 	 */
 	public Object decide(Authentication authentication, Object object,

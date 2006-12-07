@@ -37,10 +37,10 @@ public class MethodAccessDeniedException extends SecurityException {
 	/**
 	 * Creates an exception with the supplied parameters in the message.
 	 * 
-	 * @param the
-	 *            root cause for the exception.
+	 * @param cause
+	 * 			  the root cause for the exception.
 	 * @param method
-	 *            the method access is denied to.
+	 *            the method in which access was denied.
 	 */
 	public MethodAccessDeniedException(Throwable cause, Method method) {
 		super(cause, method);
@@ -49,8 +49,8 @@ public class MethodAccessDeniedException extends SecurityException {
 	/**
 	 * Creates an exception with the supplied parameters in the message.
 	 * 
-	 * @param the
-	 *            root cause for the exception.
+	 * @param cause
+	 * 			  the root cause for the exception.
 	 * @param method
 	 *            the method access is denied to.
 	 */

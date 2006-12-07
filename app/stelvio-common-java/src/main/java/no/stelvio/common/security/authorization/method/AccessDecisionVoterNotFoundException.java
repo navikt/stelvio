@@ -41,6 +41,7 @@ public class AccessDecisionVoterNotFoundException extends SecurityException {
 	}
 
 	/**
+	 * 
 	 * {@inheritDoc}
 	 */
 	@Override

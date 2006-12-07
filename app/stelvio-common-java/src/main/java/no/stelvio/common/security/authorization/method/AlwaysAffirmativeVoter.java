@@ -18,8 +18,8 @@ public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
 	 * This implementation supports any type of ConfigAttribute, because it does
 	 * not use the presented attribute.
 	 * 
-	 * @param clazz
-	 *            the secure object
+	 * @param attribute
+	 *            the configuration attribute
 	 * 
 	 * @return always <code>true</code>
 	 */
@@ -42,7 +42,9 @@ public class AlwaysAffirmativeVoter implements AccessDecisionVoter {
 
 	/**
 	 * This implementation always grant access to a secure object.
-	 * 
+	 * @param authentication {@inheritDoc}
+	 * @param object {@inheritDoc}
+	 * @param config {@inheritDoc}
 	 * @return always
 	 *         <code>org.acegisecurity.vote.AccessDecisionVoter.ACCESS_GRANTED</code>
 	 * @see org.acegisecurity.vote.AccessDecisionVoter#vote(org.acegisecurity.Authentication,

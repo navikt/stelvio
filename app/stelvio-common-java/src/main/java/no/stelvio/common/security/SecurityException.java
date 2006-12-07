@@ -21,8 +21,8 @@ public abstract class SecurityException extends SystemUnrecoverableException {
 	 *            the templateArguments to use when filling out the messageFrom
 	 *            template.
 	 */
-	protected SecurityException(Throwable t, Object... templateArguments) {
-		super(t, templateArguments);
+	protected SecurityException(Throwable cause, Object... templateArguments) {
+		super(cause, templateArguments);
 	}
 
 	/**

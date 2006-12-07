@@ -78,7 +78,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 * 
 	 * @see Attributes#getAttributes
 	 * 
-	 * @throws AcegiConfigurationException
+	 * @throws SecureAnnotationNotInMappingException
 	 *             if no mapping can be found for an annotation attribute
 	 */
 	public Collection<ConfigAttribute> getAttributes(Class target) {
@@ -110,7 +110,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
 
 	/**
 	 * This class does not support this operation.
-	 * 
+	 * @return null
 	 * @throws UnsupportedOperationException
 	 * @see org.springframework.metadata.Attributes#getAttributes(java.lang.Class,
 	 *      java.lang.Class)
@@ -131,7 +131,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
 	 * 
 	 * @see Attributes#getAttributes
 	 * 
-	 * @throws AcegiConfigurationException
+	 * @throws SecureAnnotationNotInMappingException
 	 *             if no mapping can be found for an annotation attribute
 	 */
 	public Collection<ConfigAttribute> getAttributes(Method method) {
@@ -160,7 +160,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
 
 	/**
 	 * This class does not support this operation.
-	 * 
+	 * @return null
 	 * @throws UnsupportedOperationException
 	 * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Method,
 	 *      java.lang.Class)
@@ -171,7 +171,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
 
 	/**
 	 * This class does not support this operation.
-	 * 
+	 * @return null
 	 * @throws UnsupportedOperationException
 	 * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Field)
 	 */
@@ -181,7 +181,7 @@ public class SecurityAnnotationsAttributes implements Attributes {
 
 	/**
 	 * This class does not support this operation.
-	 * 
+	 * @return null
 	 * @throws UnsupportedOperationException
 	 * @see org.springframework.metadata.Attributes#getAttributes(java.lang.reflect.Field,
 	 *      java.lang.Class)

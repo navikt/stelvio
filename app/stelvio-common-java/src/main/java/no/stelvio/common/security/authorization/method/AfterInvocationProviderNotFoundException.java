@@ -28,8 +28,8 @@ public class AfterInvocationProviderNotFoundException extends SecurityException 
 	/**
 	 * Creates an exception with the supplied parameters in the message.
 	 * 
-	 * @param the
-	 *            root cause for the exception
+	 * @param cause
+	 *            the root cause for the exception
 	 * @param name
 	 *            the class name of the AfterInvocationProvider.
 	 * @param reason

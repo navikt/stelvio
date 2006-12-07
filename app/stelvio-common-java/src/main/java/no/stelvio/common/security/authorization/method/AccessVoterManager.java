@@ -5,12 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.acegisecurity.AccessDecisionManager;
-import org.acegisecurity.AccessDeniedException;
 import org.acegisecurity.AcegiMessageSource;
 import org.acegisecurity.Authentication;
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.intercept.ObjectDefinitionSource;
 import org.acegisecurity.vote.AccessDecisionVoter;
 import org.springframework.aop.framework.ReflectiveMethodInvocation;
 import org.springframework.beans.factory.InitializingBean;
@@ -39,7 +37,7 @@ public class AccessVoterManager implements AccessDecisionManager,
 
 	private List<AccessDecisionVoter> decisionVoters;
 
-	protected MessageSourceAccessor messages = AcegiMessageSource.getAccessor();
+	private MessageSourceAccessor messages = AcegiMessageSource.getAccessor();
 
 	private boolean allowIfAllAbstainDecisions = false;
 
@@ -54,12 +52,13 @@ public class AccessVoterManager implements AccessDecisionManager,
 
 	/**
 	 * Checks if access should be granted if all voters abstain from voting.
-	 * 
-	 * @throws AccessDeniedException
+	 * @param secureObject the secured object, e.g. a MethodInvocation
+	 * @throws MethodAccessDeniedException
 	 *             if no access should be granted.
 	 * 
 	 */
-	public final void checkAllowIfAllAbstainDecisions(Object secureObject) {
+	public final void checkAllowIfAllAbstainDecisions(Object secureObject)
+					throws MethodAccessDeniedException {
 		if (!this.isAllowIfAllAbstainDecisions()) {
 			if (secureObject instanceof ReflectiveMethodInvocation) {
 				ReflectiveMethodInvocation invoc = (ReflectiveMethodInvocation) secureObject;
@@ -80,10 +79,11 @@ public class AccessVoterManager implements AccessDecisionManager,
 	 *            the {@link ConfigAttributeDefinition} containing attributes
 	 *            with the full class names of the voters that should be used on
 	 *            the secure object (e.g. a method invocation).
-	 * @throws IllegalArgumentException
-	 *             if the attributes do not represent a class.
+	 * @throws AccessDecisionVoterNotFoundException
+	 *             if one of the attributes do not represent a class.
 	 */
-	public void addDecisionVoters(ConfigAttributeDefinition config) {
+	public void addDecisionVoters(ConfigAttributeDefinition config)
+				throws AccessDecisionVoterNotFoundException {
 
 		this.decisionVoters = new ArrayList<AccessDecisionVoter>();
 		Iterator iterator = config.getConfigAttributes();
@@ -220,7 +220,7 @@ public class AccessVoterManager implements AccessDecisionManager,
 
 	/**
 	 * Sets the message source.
-	 * 
+	 * @param messageSource the message source
 	 * @see org.springframework.context.MessageSourceAware#setMessageSource(org.springframework.context.MessageSource)
 	 */
 	public void setMessageSource(MessageSource messageSource) {

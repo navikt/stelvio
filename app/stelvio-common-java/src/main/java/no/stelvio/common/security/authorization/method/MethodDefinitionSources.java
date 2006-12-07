@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.ConfigAttributeDefinition;
-import org.acegisecurity.intercept.AbstractSecurityInterceptor;
 import org.acegisecurity.intercept.method.MethodDefinitionSource;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -31,7 +30,7 @@ public class MethodDefinitionSources implements MethodDefinitionSource,
 	 *             if no sources are present.
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
-	public void afterPropertiesSet() throws Exception {
+	public void afterPropertiesSet() throws IllegalArgumentException {
 		if ((this.methodDefinitionMap == null)
 				&& this.methodDefinitionAttributes == null) {
 			throw new IllegalArgumentException(
@@ -47,9 +46,6 @@ public class MethodDefinitionSources implements MethodDefinitionSource,
 	 * @param object
 	 *            the object being secured
 	 * @return the ConfigAttributeDefinition that applies to the passed object
-	 * @throws IllegalArgumentException
-	 *             if the passed object is not of a type supported by the
-	 *             ObjectDefinitionSource implementation
 	 */
 	public ConfigAttributeDefinition getAttributes(Object object) {
 		ConfigAttributeDefinition defAttributes = (this.methodDefinitionAttributes != null) ? this.methodDefinitionAttributes

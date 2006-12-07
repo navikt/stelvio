@@ -15,14 +15,14 @@ public interface DataFilterer {
 	 * 
 	 * @return the filtered collection or array
 	 */
-	public Object getFilteredObject();
+	Object getFilteredObject();
 
 	/**
 	 * Returns an iterator over the filtered collection or array.
 	 * 
 	 * @return an Iterator
 	 */
-	public Iterator iterator();
+	Iterator iterator();
 
 	/**
 	 * Removes the the given object from the resulting list.
@@ -30,10 +30,10 @@ public interface DataFilterer {
 	 * @param object
 	 *            the object to be removed
 	 */
-	public void remove(Object object);
+	void remove(Object object);
 
 	/**
 	 * Removes all the items in the collection.
 	 */
-	public void clear();
+	void clear();
 }
