@@ -320,11 +320,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/PageSec
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/PageSecurityFileParseException.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/authentication/J2eeAuthenticationServlet.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/constants/Constants.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageAccessDeniedException.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageAuthenticationFailedException.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageProtocolSwitchFailedException.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageSecurityFileNotFoundException.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/exceptions/PageSecurityFileParseException.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/listener/J2eeSecurityPhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/parse/J2EERole.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/web/security/page/parse/J2EERoles.java -text

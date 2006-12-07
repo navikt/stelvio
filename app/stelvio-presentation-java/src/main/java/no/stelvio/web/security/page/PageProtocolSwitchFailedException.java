@@ -1,6 +1,7 @@
 package no.stelvio.web.security.page;
 
 import no.stelvio.common.security.SecurityException;
+
 /**
  * Thrown when an attempt to redirect from http to https and vice versa fails.
  * 
@@ -8,33 +9,47 @@ import no.stelvio.common.security.SecurityException;
  * @version $Id$
  */
 public class PageProtocolSwitchFailedException extends SecurityException {
-	
+
 	private static final long serialVersionUID = 1L;
+
 	private boolean pageRequiresSSL;
-	
+
 	/**
-	 * Constructor to set the viewId of the page, whether or not SSL is required and the port of
-	 * the redirect. 
-	 * @param viewId the viewId.
-	 * @param pageRequiresSSL whether or not the page requires SSL.
-	 * @param port the port used in the redirect.
+	 * Constructor to set the viewId of the page, whether or not SSL is required
+	 * and the port of the redirect.
+	 * 
+	 * @param viewId
+	 *            the viewId.
+	 * @param pageRequiresSSL
+	 *            whether or not the page requires SSL.
+	 * @param port
+	 *            the port used in the redirect.
 	 */
-	public PageProtocolSwitchFailedException(String viewId,boolean pageRequiresSSL, String port){
-		super(viewId,port);
+	public PageProtocolSwitchFailedException(String viewId,
+			boolean pageRequiresSSL, String port) {
+		super(viewId, port);
 		this.pageRequiresSSL = pageRequiresSSL;
 	}
+
 	/**
-	 * Constructor to set the viewId of the page, whether or not SSL is required and the port of
-	 * the redirect. 
-	 * @param cause the root cause for the error.
-	 * @param viewId the viewId.
-	 * @param pageRequiresSSL whether or not the page requires SSL.
-	 * @param port the port used in the redirect.
+	 * Constructor to set the viewId of the page, whether or not SSL is required
+	 * and the port of the redirect.
+	 * 
+	 * @param cause
+	 *            the root cause for the error.
+	 * @param viewId
+	 *            the viewId.
+	 * @param pageRequiresSSL
+	 *            whether or not the page requires SSL.
+	 * @param port
+	 *            the port used in the redirect.
 	 */
-	public PageProtocolSwitchFailedException(Throwable cause,String viewId,boolean pageRequiresSSL, String port){
-		super(cause,viewId,port);
+	public PageProtocolSwitchFailedException(Throwable cause, String viewId,
+			boolean pageRequiresSSL, String port) {
+		super(cause, viewId, port);
 		this.pageRequiresSSL = pageRequiresSSL;
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */

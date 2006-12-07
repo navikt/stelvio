@@ -1,8 +1,10 @@
 package no.stelvio.web.security.page;
 
 import no.stelvio.common.security.SecurityException;
+
 /**
- * Thrown if the parsing of the security definitions from the configuration file fails.
+ * Thrown if the parsing of the security definitions from the configuration file
+ * fails.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
@@ -13,19 +15,27 @@ public class PageSecurityFileParseException extends SecurityException {
 
 	/**
 	 * Constructor to set the name of the configuration file.
-	 * @param configFile the configuration filename.
+	 * 
+	 * @param configFile
+	 *            the configuration filename.
 	 */
-	public PageSecurityFileParseException(String configFile){
+	public PageSecurityFileParseException(String configFile) {
 		super(configFile);
 	}
+
 	/**
-	 * Constructor to set the name of the configuration file and the root cause for the exception.
-	 * @param cause the root cause for the exception.
-	 * @param configFile the configuration filename.
+	 * Constructor to set the name of the configuration file and the root cause
+	 * for the exception.
+	 * 
+	 * @param cause
+	 *            the root cause for the exception.
+	 * @param configFile
+	 *            the configuration filename.
 	 */
-	public PageSecurityFileParseException(Throwable cause,String configFile){
-		super(cause,configFile);
+	public PageSecurityFileParseException(Throwable cause, String configFile) {
+		super(cause, configFile);
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */
