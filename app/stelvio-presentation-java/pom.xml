@@ -35,6 +35,17 @@
             <artifactId>shale-test</artifactId>
             <groupId>org.apache.shale</groupId>
             <version>1.0.3</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>myfaces</groupId>
+                    <artifactId>myfaces-api</artifactId>
+                </exclusion>            
+                <exclusion>
+                    <groupId>myfaces</groupId>
+                    <artifactId>myfaces-impl</artifactId>
+                </exclusion>            
+            </exclusions>
         </dependency>
         <dependency>
             <artifactId>acegi-security</artifactId>
