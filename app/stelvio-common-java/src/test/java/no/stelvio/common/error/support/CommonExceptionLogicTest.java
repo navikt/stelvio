@@ -108,7 +108,7 @@ public class CommonExceptionLogicTest {
 
     private CommonExceptionLogic createDummy(final String messageTemplate, Object... arguments) {
         return new CommonExceptionLogic(arguments) {
-            protected String getMessageTemplate() {
+            protected String messageTemplate() {
                 return messageTemplate;
             }
         };
@@ -123,7 +123,7 @@ public class CommonExceptionLogicTest {
             super(cel);
         }
 
-        protected String getMessageTemplate() {
+        protected String messageTemplate() {
             return "{0}{1}{2}";
         }
     }

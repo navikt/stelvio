@@ -1,13 +1,12 @@
 package no.stelvio.common.error.support;
 
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.util.SequenceNumberGenerator;
+import org.apache.commons.lang.StringUtils;
+
 import java.io.Serializable;
 import java.text.Format;
 import java.text.MessageFormat;
-
-import org.apache.commons.lang.StringUtils;
-
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.util.SequenceNumberGenerator;
 
 /**
  * Helper class for root exceptions.
@@ -65,7 +64,7 @@ public abstract class CommonExceptionLogic implements Serializable {
      *
      * @return the template to use for constructing the exception's messageFrom.
      */
-    protected abstract String getMessageTemplate();
+    protected abstract String messageTemplate();
 
     public long getErrorId() {
         return errorId;
@@ -115,7 +114,7 @@ public abstract class CommonExceptionLogic implements Serializable {
     }
 
     private void constructMessage() {
-        String template = getMessageTemplate();
+        String template = messageTemplate();
 
         if (StringUtils.isBlank(template)) {
             throw new IllegalArgumentException("The messageFrom template should not be empty");

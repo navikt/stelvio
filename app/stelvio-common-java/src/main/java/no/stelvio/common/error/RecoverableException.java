@@ -172,7 +172,7 @@ abstract class RecoverableException extends Exception implements StelvioExceptio
             super(cel);
         }
 
-        protected String getMessageTemplate() {
+        protected String messageTemplate() {
             return RecoverableException.this.getMessageTemplate();
         }
     }

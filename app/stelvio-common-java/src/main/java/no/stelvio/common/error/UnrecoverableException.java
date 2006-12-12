@@ -173,7 +173,7 @@ abstract class UnrecoverableException extends RuntimeException implements Stelvi
             super(cel);
         }
 
-        protected String getMessageTemplate() {
+        protected String messageTemplate() {
             return UnrecoverableException.this.messageTemplate();
         }
     }
