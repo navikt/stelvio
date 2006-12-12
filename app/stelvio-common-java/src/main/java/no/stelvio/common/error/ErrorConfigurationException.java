@@ -16,7 +16,7 @@ public class ErrorConfigurationException extends ErrorHandlingException {
         this.argsInException = argsInException;
     }
 
-    protected String messageTemplate() {
+    protected String messageTemplate(final int numArgs) {
         return "Configuration for error {0} is not defined correctly; {1} args in definition, but {2} args in exception";
     }
 }

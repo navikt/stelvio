@@ -17,7 +17,7 @@ public class CodesTableConfigurationException extends CodesTableException {
         super(message);
     }
 
-    protected String messageTemplate() {
+    protected String messageTemplate(final int numArgs) {
         return "Problems configuration of codes table module: {0}";
     }
 }

@@ -1,8 +1,8 @@
 package no.stelvio.common.security.authorization.method;
 
-import java.lang.reflect.Method;
-
 import no.stelvio.common.security.SecurityException;
+
+import java.lang.reflect.Method;
 
 /**
  * Exception thrown if access to a method should be denied.
@@ -62,7 +62,7 @@ public class MethodAccessDeniedException extends SecurityException {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "Access is denied to method: {0}";
 	}
 

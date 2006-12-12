@@ -41,11 +41,10 @@ public class AccessDecisionVoterNotFoundException extends SecurityException {
 	}
 
 	/**
-	 * 
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "Could not find configured AccessDecisionVoter {0}: {1}";
 	}
 

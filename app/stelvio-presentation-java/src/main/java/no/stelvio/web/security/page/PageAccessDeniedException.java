@@ -43,7 +43,7 @@ public class PageAccessDeniedException extends SecurityException {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "User is not authorized to view this page: {0}";
 	}
 

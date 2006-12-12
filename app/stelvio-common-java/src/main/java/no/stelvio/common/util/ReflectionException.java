@@ -11,7 +11,7 @@ public class ReflectionException extends SystemUnrecoverableException {
         super(cause, (Object)name);
     }
 
-    protected String messageTemplate() {
+    protected String messageTemplate(final int numArgs) {
         return "Problems doing reflection with the following arguments: {0}";
     }
 }

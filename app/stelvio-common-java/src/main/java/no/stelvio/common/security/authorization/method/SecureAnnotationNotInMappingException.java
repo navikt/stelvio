@@ -1,10 +1,9 @@
 package no.stelvio.common.security.authorization.method;
 
-import java.lang.reflect.Method;
-
 import no.stelvio.common.security.SecurityException;
-
 import org.acegisecurity.annotation.Secured;
+
+import java.lang.reflect.Method;
 
 /**
  * Exception thrown if the attribute of a <code>Secured</code> annotation is
@@ -47,7 +46,7 @@ public class SecureAnnotationNotInMappingException extends SecurityException {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "The @Secured annotation attribute {0} for {1} was not found in the annotation mapping.";
 	}
 

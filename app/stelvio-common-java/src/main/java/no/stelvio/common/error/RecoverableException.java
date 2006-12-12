@@ -156,9 +156,11 @@ abstract class RecoverableException extends Exception implements StelvioExceptio
     /**
      * Implemented by subclasses by returning the template to use for constructing the exception's messageFrom.
      *
+     * @param numArgs the number of arguments to the exception's constructor. Can be used if there is a need to
+     * dynamically build a template to fit the number of arguments.
      * @return the template to use for constructing the exception's messageFrom.
      */
-    protected abstract String getMessageTemplate();
+    protected abstract String messageTemplate(final int numArgs);
 
     /**
      * @todo is it okay to have a non-static inner class?
@@ -172,8 +174,8 @@ abstract class RecoverableException extends Exception implements StelvioExceptio
             super(cel);
         }
 
-        protected String messageTemplate() {
-            return RecoverableException.this.getMessageTemplate();
+        protected String messageTemplate(final int numArgs) {
+            return RecoverableException.this.messageTemplate(numArgs);
         }
     }
 }

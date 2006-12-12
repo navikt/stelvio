@@ -62,9 +62,11 @@ public abstract class CommonExceptionLogic implements Serializable {
     /**
      * Implemented by subclasses by returning the template to use for constructing the exception's messageFrom.
      *
+     * @param numArgs the number of arguments to the exception's constructor. Can be used if there is a need to
+     * dynamically build a template to fit the number of arguments.
      * @return the template to use for constructing the exception's messageFrom.
      */
-    protected abstract String messageTemplate();
+    protected abstract String messageTemplate(final int numArgs);
 
     public long getErrorId() {
         return errorId;
@@ -114,7 +116,7 @@ public abstract class CommonExceptionLogic implements Serializable {
     }
 
     private void constructMessage() {
-        String template = messageTemplate();
+        String template = messageTemplate(templateArguments.length);
 
         if (StringUtils.isBlank(template)) {
             throw new IllegalArgumentException("The messageFrom template should not be empty");

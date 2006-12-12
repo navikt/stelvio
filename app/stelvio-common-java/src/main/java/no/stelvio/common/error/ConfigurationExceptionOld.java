@@ -24,7 +24,7 @@ public class ConfigurationExceptionOld extends UnrecoverableException {
         source = holder.value().source;
     }
 
-    protected String messageTemplate() {
+    protected String messageTemplate(final int numArgs) {
         return "Problems setting up {0}";
     }
 }

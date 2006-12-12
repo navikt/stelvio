@@ -15,7 +15,7 @@ public class NotCodesTableException extends CodesTableException {
         super(codesTable);
     }
 
-    protected String messageTemplate() {
+    protected String messageTemplate(final int numArgs) {
         return "{0} is not a codes table";
     }
 }

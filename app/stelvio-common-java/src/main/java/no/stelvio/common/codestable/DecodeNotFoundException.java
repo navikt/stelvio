@@ -18,7 +18,7 @@ public class DecodeNotFoundException extends CodesTableException {
 		super(message);
 	}
 
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "No decode found for code {0}";
 	}
 }

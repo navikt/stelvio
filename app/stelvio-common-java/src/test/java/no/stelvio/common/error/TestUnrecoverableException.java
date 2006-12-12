@@ -19,7 +19,7 @@ public class TestUnrecoverableException extends SystemUnrecoverableException {
         super(holder);
     }
 
-    protected String messageTemplate() {
+    protected String messageTemplate(final int numArgs) {
         return "dummy: {0}";
     }
 }

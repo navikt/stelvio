@@ -40,7 +40,7 @@ public class PageSecurityFileNotFoundException extends SecurityException {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "Could not find the security configuration file: {0}";
 	}
 }

@@ -1,11 +1,10 @@
 package no.stelvio.web.util;
 
-import java.util.Locale;
-
+import no.stelvio.common.error.SystemUnrecoverableException;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.common.error.SystemUnrecoverableException;
+import java.util.Locale;
 
 /**
  * Utility for setting the system's deafult locale.
@@ -55,7 +54,7 @@ public class DefaultLocaleStartupHelper {
 			LogFactory.getLog(getClass()).info("Default System Locale set to " + defaultLocale.toString());
 		} catch (SecurityException e) {
             throw new SystemUnrecoverableException(e) {
-                protected String messageTemplate() {
+                protected String messageTemplate(final int numArgs) {
                     return null;  // TODO: implement body
                 }
             };
@@ -65,7 +64,7 @@ public class DefaultLocaleStartupHelper {
     private SystemUnrecoverableException createSystemException(String language) {
         // TODO create another exception to use
         return new SystemUnrecoverableException(language) {
-            protected String messageTemplate() {
+            protected String messageTemplate(final int numArgs) {
                 return null;  // TODO: implement body
             }
         };

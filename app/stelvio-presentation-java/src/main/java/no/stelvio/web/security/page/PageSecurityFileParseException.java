@@ -40,7 +40,7 @@ public class PageSecurityFileParseException extends SecurityException {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "An error occured while parsing file: {0}";
 	}
 

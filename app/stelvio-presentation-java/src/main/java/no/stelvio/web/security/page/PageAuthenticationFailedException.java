@@ -63,7 +63,7 @@ public class PageAuthenticationFailedException extends SecurityException {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "Could not authenticate user when accessing page: {0}";
 	}
 

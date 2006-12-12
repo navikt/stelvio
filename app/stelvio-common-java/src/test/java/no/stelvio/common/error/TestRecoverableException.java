@@ -19,7 +19,7 @@ public class TestRecoverableException extends FunctionalRecoverableException {
         super(holder);
     }
 
-    protected String getMessageTemplate() {
+    protected String messageTemplate(final int numArgs) {
         return "dummy: {0}";
     }
 }

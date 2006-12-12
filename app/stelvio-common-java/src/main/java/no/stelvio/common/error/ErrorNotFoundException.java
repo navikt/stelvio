@@ -29,7 +29,7 @@ public class ErrorNotFoundException extends ErrorHandlingException {
         this.clazz = holder.value().clazz;
     }
 
-    protected String messageTemplate() {
+    protected String messageTemplate(final int numArgs) {
         return "Could not find error for {0}";
     }
 }

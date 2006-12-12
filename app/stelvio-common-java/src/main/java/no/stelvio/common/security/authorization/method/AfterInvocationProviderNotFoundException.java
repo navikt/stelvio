@@ -44,7 +44,7 @@ public class AfterInvocationProviderNotFoundException extends SecurityException 
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String messageTemplate() {
+	protected String messageTemplate(final int numArgs) {
 		return "Could not find configured AfterInvocationProvider {0}: {1}";
 	}
 
