@@ -86,6 +86,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/core/Initializable.java 
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/TransferObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ConfigurationException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/ConfigurationExceptionOld.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorConfigurationException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorDefinition.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlingException.java -text
