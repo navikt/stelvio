@@ -126,7 +126,7 @@ public class DefaultErrorResolver implements ErrorResolver {
         }
     }
 
-    private Class<?> loadClass(String className) throws ConfigurationException {
+    private Class<?> loadClass(String className) throws IllegalStateException {
         try {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {
