@@ -73,11 +73,6 @@
             <version>1.1</version>
         </dependency>
         <dependency>
-            <artifactId>myfaces-api</artifactId>
-            <groupId>org.apache.myfaces.core</groupId>
-            <version>1.1.4</version>
-        </dependency>
-        <dependency>
             <groupId>no.stelvio</groupId>
             <artifactId>stelvio-common-java</artifactId>
             <version>${pom.version}</version>
