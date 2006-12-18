@@ -53,7 +53,7 @@
   
 	<bean id="cacheTest" class="no.stelvio.common.cache.CacheTestImpl" />
 	
-	<bean id="cacheManagement" class="no.stelvio.common.cache.CacheManagementImpl">	
+	<bean id="cacheManagement" class="no.stelvio.common.cache.support.DefaultCacheManagement">
 		<property name="cacheManager" ref="cacheManager" />
 	</bean>
 	

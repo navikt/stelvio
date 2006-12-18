@@ -1,10 +1,10 @@
 /**
  * 
  */
-package no.stelvio.common.cache;
+package no.stelvio.common.cache.support;
 
 import net.sf.ehcache.CacheManager;
-
+import no.stelvio.common.cache.CacheManagement;
 import org.apache.log4j.Logger;
 
 /**
@@ -16,8 +16,8 @@ import org.apache.log4j.Logger;
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  */
-public class CacheManagementImpl implements CacheManagement {
-	private Logger log = Logger.getLogger(CacheManagementImpl.class);
+public class DefaultCacheManagement implements CacheManagement {
+	private Logger log = Logger.getLogger(DefaultCacheManagement.class);
 	private CacheManager cacheManager;
 	
 	/**

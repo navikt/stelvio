@@ -50,7 +50,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/aop/ContextHandlerAdvice
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagementImpl.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/cache/support/DefaultCacheManagement.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/AbstractCodesTableItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTable.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableConfigurationException.java -text
