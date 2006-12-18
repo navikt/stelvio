@@ -1,14 +1,16 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.support;
+
+import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.DecodeNotFoundException;
+import no.stelvio.common.context.RequestContext;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
-
-import no.stelvio.common.context.RequestContext;
- 
 /**
  * Implementation of CodesTable used to handle a codestable, its beloning values and add
  * predicates to filter the items in the codestable. 
@@ -16,7 +18,7 @@ import no.stelvio.common.context.RequestContext;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTableImpl implements CodesTable {
+public class DefaultCodesTable implements CodesTable {
 
 	//List of codestableitems
 	private List<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();

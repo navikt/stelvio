@@ -1,4 +1,7 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.factory.support;
+
+import no.stelvio.common.codestable.*;
+import no.stelvio.common.codestable.factory.CodesTableInitializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +13,7 @@ import java.util.List;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTableInitializerImpl implements CodesTableInitializer {
+public class DefaultCodesTableInitializer implements CodesTableInitializer {
 	
 	//The CodesTableManager
 	private CodesTableManager codesTableManager;

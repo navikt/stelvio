@@ -1,4 +1,7 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.support;
+
+import no.stelvio.common.codestable.*;
+import no.stelvio.common.codestable.factory.CodesTableFactory;
 
 import java.util.List;
 
@@ -8,7 +11,7 @@ import java.util.List;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTableManagerImpl implements CodesTableManager {
+public class DefaultCodesTableManager implements CodesTableManager {
 
 	//The CodesTableFactory used for retrieval of codestables
 	private CodesTableFactory codesTableFactory;
@@ -21,7 +24,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem) {
         validateCodesTableClass(codesTableItem);
 
-        CodesTable<T> codesTable = (CodesTable<T>) new CodesTableImpl();
+        CodesTable<T> codesTable = (CodesTable<T>) new DefaultCodesTable();
         List<T> codesTableItems = codesTableFactory.retrieveCodesTable(codesTableItem);
 
         for(T ct : codesTableItems){
@@ -39,7 +42,7 @@ public class CodesTableManagerImpl implements CodesTableManager {
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
 		validateCodesTablePeriodicClass(codesTableItem);
 		
-		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new CodesTablePeriodicImpl();
+		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new DefaultCodesTablePeriodic();
         List<T> codesTableItems = codesTableFactory.retrieveCodesTablePeriodic(codesTableItem);
 
         for(T ctp : codesTableItems){

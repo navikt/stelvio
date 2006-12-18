@@ -1,14 +1,16 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.support;
+
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTablePeriodic;
+import no.stelvio.common.codestable.DecodeNotFoundException;
+import no.stelvio.common.context.RequestContext;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
-
-import no.stelvio.common.context.RequestContext;
 
 /**
  * Implementation of CodesTablePeriodic for retrieving <code>CodesTable</code>s that has
@@ -17,7 +19,7 @@ import no.stelvio.common.context.RequestContext;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTablePeriodicImpl implements CodesTablePeriodic {
+public class DefaultCodesTablePeriodic implements CodesTablePeriodic {
 
 	//List of codestableitemperiodics 
 	private List<CodesTableItemPeriodic> codesTableItems = new ArrayList<CodesTableItemPeriodic>();
