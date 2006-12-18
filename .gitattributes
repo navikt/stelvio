@@ -99,7 +99,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionHandlerFa
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ExceptionWrapper.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/FunctionalRecoverableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/FunctionalUnrecoverableException.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/InitMethodException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/LoggableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/RecoverableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/Severity.java -text
