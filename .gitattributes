@@ -69,6 +69,11 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTablePer
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/DecodeNotFoundException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/NotCodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/config/ConfigurationException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/config/ConflictingPropertiesException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/config/InvalidPropertyException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/config/MissingPropertyException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/config/PropertyExceedsLimitException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/AbstractContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/Context.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/DefaultContextImpl.java -text
