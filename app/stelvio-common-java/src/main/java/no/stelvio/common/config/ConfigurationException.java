@@ -4,10 +4,9 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
- * Exceptions thrown by the init-method in Stelvio configuration 
- * as a result of erroneous configuration are subclasses of this exception
- * @author person983601e0e117, Accenture
+ * Subclasses of this exception is used to signal erroneous configuration.
  *
+ * @author person983601e0e117, Accenture
  */
 public abstract class ConfigurationException extends FunctionalUnrecoverableException {
 
