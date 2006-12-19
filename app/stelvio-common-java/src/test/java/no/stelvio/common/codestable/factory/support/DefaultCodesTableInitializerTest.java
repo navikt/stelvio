@@ -1,4 +1,4 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.factory.support;
 
 
 import java.util.ArrayList;
@@ -10,12 +10,22 @@ import org.jmock.Mockery;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTableManager;
+import no.stelvio.common.codestable.CodesTablePeriodic;
+import no.stelvio.common.codestable.TestCodesTableItem;
+import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
+import no.stelvio.common.codestable.support.DefaultCodesTable;
+import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
+
 /**
  * Unit test of CodesTableInitializer.
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTableInitializerTest {
+public class DefaultCodesTableInitializerTest {
 
 	/**
 	 * Tests CodesTableInitializer with both <code>CodesTableItem</code>'s and <code>CodesTableItemPeriodic</code>'s.
@@ -26,11 +36,11 @@ public class CodesTableInitializerTest {
 	public void testCodesTableInitializer() throws Exception {
 		
 		//Test data
-		final CodesTable codesTable = new CodesTableImpl();
+		final CodesTable codesTable = new DefaultCodesTable();
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
 		
-		final CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
+		final CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic();
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
 		
@@ -52,7 +62,7 @@ public class CodesTableInitializerTest {
 		}});
 
 		//Initialize the test object
-		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
+		DefaultCodesTableInitializer codesTableInitializer = new DefaultCodesTableInitializer();
 		codesTableInitializer.setCodesTableClasses(cti);
 		codesTableInitializer.setCodesTablePeriodicClasses(ctip);
 		codesTableInitializer.setCodesTableManager(codesTableManager);
@@ -70,7 +80,7 @@ public class CodesTableInitializerTest {
 	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerGetCodesTable() throws Exception {
 		//Test data
-		final CodesTable codesTable = new CodesTableImpl();
+		final CodesTable codesTable = new DefaultCodesTable();
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
 		
@@ -87,7 +97,7 @@ public class CodesTableInitializerTest {
 		}});
 
 		//Initialize the test object
-		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
+		DefaultCodesTableInitializer codesTableInitializer = new DefaultCodesTableInitializer();
 		codesTableInitializer.setCodesTableClasses(cti);
 		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
@@ -104,7 +114,7 @@ public class CodesTableInitializerTest {
 	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerGetCodesTablePeriodic() throws Exception{
 		//Test data		
-		final CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
+		final CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic();
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
 		
@@ -121,7 +131,7 @@ public class CodesTableInitializerTest {
 		}});
 
 		//Initialize the test object
-		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
+		DefaultCodesTableInitializer codesTableInitializer = new DefaultCodesTableInitializer();
 		codesTableInitializer.setCodesTablePeriodicClasses(ctip);
 		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
@@ -137,7 +147,7 @@ public class CodesTableInitializerTest {
 	public void testCodesTableInitializerEmptyClassLists() throws Exception { 
 						
 		//Initialize the test object
-		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
+		DefaultCodesTableInitializer codesTableInitializer = new DefaultCodesTableInitializer();
 
 		try{
 			codesTableInitializer.init();
@@ -157,11 +167,11 @@ public class CodesTableInitializerTest {
 	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerModifyCodesTableMangersReturnValue() throws Exception { 
 		//Test data
-		final CodesTable codesTable = new CodesTableImpl();
+		final CodesTable codesTable = new DefaultCodesTable();
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
 		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
 		
-		CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
+		CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic();
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
 		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
 		
@@ -183,7 +193,7 @@ public class CodesTableInitializerTest {
 		}});
 
 		//Initialize the test object
-		CodesTableInitializerImpl codesTableInitializer = new CodesTableInitializerImpl();
+		DefaultCodesTableInitializer codesTableInitializer = new DefaultCodesTableInitializer();
 		codesTableInitializer.setCodesTableClasses(cti);
 		codesTableInitializer.setCodesTablePeriodicClasses(ctip);
 		codesTableInitializer.setCodesTableManager(codesTableManager);

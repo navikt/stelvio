@@ -1,22 +1,23 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.support;
 
 import java.util.Locale;
-
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.codestable.CodesTable;
-import no.stelvio.common.codestable.CodesTableItem;
 
 import org.apache.commons.collections.Predicate;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
+import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.TestCodesTableItem;
+import no.stelvio.common.context.RequestContext;
+
 /**
  * Unit test of CodesTable.
  * @author personb66fa0b5ff6e
  * @version $Id$
  */
-public class CodesTableTest extends AbstractDependencyInjectionSpringContextTests {
+public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringContextTests {
 
 	/** Implementation class to test */
 	private CodesTable codesTable;

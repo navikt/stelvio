@@ -1,4 +1,4 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.support;
 
 
 import java.util.ArrayList;
@@ -11,12 +11,20 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
+import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTablePeriodic;
+import no.stelvio.common.codestable.TestCodesTableItem;
+import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
+import no.stelvio.common.codestable.factory.CodesTableFactory;
+
 /**
  * Unit test for CodesTableManager.
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTableManagerTest {
+public class DefaultCodesTableManagerTest {
 	private Mockery context;
 
 	/**
@@ -48,9 +56,9 @@ public class CodesTableManagerTest {
 		}});
 
 		//Initialize the test object
-		CodesTableManagerImpl codesTableManager = new CodesTableManagerImpl();
+		DefaultCodesTableManager codesTableManager = new DefaultCodesTableManager();
 		codesTableManager.setCodesTableFactory(codesTableFactory);
-		
+
 		//Test the test objects method getCodesTable
 		CodesTable codesTable = codesTableManager.getCodesTable(TestCodesTableItem.CTI1.getClass());
 

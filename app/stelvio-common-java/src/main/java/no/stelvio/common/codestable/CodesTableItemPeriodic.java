@@ -21,6 +21,7 @@ public class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	
 	/**
 	 * Constructor for <code>CodesTableItemPeriodic</code>.
+     * FIXME why default constructor?
 	 */
 	public CodesTableItemPeriodic(){
 	}

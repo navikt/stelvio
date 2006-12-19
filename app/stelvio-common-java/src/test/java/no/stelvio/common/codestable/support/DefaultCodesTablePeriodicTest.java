@@ -1,21 +1,25 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.support;
 
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import no.stelvio.common.context.RequestContext;
-
 import org.apache.commons.collections.Predicate;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTablePeriodic;
+import no.stelvio.common.codestable.TestCodesTableItem;
+import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
+import no.stelvio.common.context.RequestContext;
 
 /**
  * Unit test of CodesTablePeriodic.
  * @author personb66fa0b5ff6e
  * @version $Id$
  */
-public class CodesTablePeriodicTest extends AbstractDependencyInjectionSpringContextTests {
+public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSpringContextTests {
 
 	/** Implementation class to test */
 	private CodesTablePeriodic codesTablePeriodic;
