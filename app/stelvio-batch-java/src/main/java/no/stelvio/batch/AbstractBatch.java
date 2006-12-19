@@ -18,7 +18,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import no.stelvio.batch.domain.BatchDO;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.error.Severity;
-import no.stelvio.common.error.UnrecoverableException;
+import no.stelvio.common.error.SystemUnrecoverableException;
 import no.stelvio.common.util.MessageFormatter;
 
 /**
@@ -84,7 +84,7 @@ public abstract class AbstractBatch {
 	 * @return the status code of the batch.
 	 * @throws UnrecoverableException if batch execution fails.
 	 */
-	public abstract int executeBatch() throws UnrecoverableException;
+	public abstract int executeBatch() throws SystemUnrecoverableException;
 
 	/**
 	 * Reads the batch configuration for the given batch.
@@ -93,7 +93,7 @@ public abstract class AbstractBatch {
 	 * @return the batch configuration or null if no config exists.
 	 * @throws UnrecoverableException if the specified batch was not found.
 	 */
-	protected BatchDO readBatchParameters(String batchName) throws UnrecoverableException {
+	protected BatchDO readBatchParameters(String batchName) throws SystemUnrecoverableException {
 
 		final List list = getHibernateTemplate().findByNamedQueryAndNamedParam("BATCH_BY_BATCHNAME", "batchname", batchName);
 
@@ -113,7 +113,7 @@ public abstract class AbstractBatch {
 	 * @return the batch properties
 	 * @throws UnrecoverableException if batchDO is null.
 	 */
-	protected Properties getBatchProperties(BatchDO batchDO) throws UnrecoverableException {
+	protected Properties getBatchProperties(BatchDO batchDO) throws SystemUnrecoverableException {
 		if (batchDO == null) {
             // TODO check this out
 //			throw new UnrecoverableException("Batch parameters cannot be null");
@@ -151,7 +151,7 @@ public abstract class AbstractBatch {
 	 * @param props the the updated properties
 	 * @throws UnrecoverableException if batchDO is null.
 	 */
-	protected void setBatchProperties(BatchDO batchDO, Properties props) throws UnrecoverableException {
+	protected void setBatchProperties(BatchDO batchDO, Properties props) throws SystemUnrecoverableException {
 		if (props == null) {
 			batchDO.setParameters(null);
 			return;

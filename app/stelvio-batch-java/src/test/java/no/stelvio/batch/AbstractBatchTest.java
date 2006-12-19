@@ -7,7 +7,7 @@ import java.util.Properties;
 import org.jmock.integration.junit3.MockObjectTestCase;
 
 import no.stelvio.batch.domain.BatchDO;
-import no.stelvio.common.error.UnrecoverableException;
+import no.stelvio.common.error.SystemUnrecoverableException;
 import no.stelvio.common.util.MessageFormatter;
 
 /**
@@ -93,7 +93,7 @@ public class AbstractBatchTest extends MockObjectTestCase {
 		try {
 			testClass.getBatchProperties(null);
 			fail("UnrecoverableException should have been thrown");
-		} catch (UnrecoverableException se) {
+		} catch (SystemUnrecoverableException se) {
             // should happen
 		}
 	}
@@ -124,7 +124,7 @@ public class AbstractBatchTest extends MockObjectTestCase {
 		try {
 			testClass.setBatchProperties(null, new Properties());
 			fail("UnrecoverableException should have been thrown");
-		} catch (UnrecoverableException se) {
+		} catch (SystemUnrecoverableException se) {
             // should happen
 		}
 	}
