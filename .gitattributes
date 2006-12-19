@@ -140,9 +140,9 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/MenuItem.jav
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/MenuItemPermission.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/MenuItemScreen.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/MenuRepository.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/impl/JpaMenuRepository.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/support/JpaMenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/service/MenuItemService.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/service/impl/MenuItemServiceImpl.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/menu/service/support/MenuItemServiceImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/SecurityException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/AccessDecisionVoterNotFoundException.java -text
@@ -261,8 +261,8 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestQueueS
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestTextMessage.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/factory/Log4jLogFactoryTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/jmx/Log4JConfigTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/menu/MenuItemServiceImpl.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/menu/MenuTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/menu/TestMenuItemService.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AccessVoterManagerTests.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AfterInvocationProviderManagerTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AlwaysAffirmativeVoterTest.java -text

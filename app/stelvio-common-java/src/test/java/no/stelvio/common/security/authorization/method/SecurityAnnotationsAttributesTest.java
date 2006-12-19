@@ -1,21 +1,16 @@
 package no.stelvio.common.security.authorization.method;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import org.acegisecurity.SecurityConfig;
-import org.acegisecurity.ConfigAttribute;
-
-import no.stelvio.common.security.authorization.method.AnnotationAttributesMapping;
-import no.stelvio.common.security.authorization.method.SecurityAnnotationsAttributes;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-
-import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.acegisecurity.ConfigAttribute;
+import org.acegisecurity.SecurityConfig;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class SecurityAnnotationsAttributesTest {
 
@@ -23,7 +18,7 @@ public class SecurityAnnotationsAttributesTest {
 	
 	@Before
 	public void setUp() throws Exception {
-//		 create the Annotations impl
+//		 create the Annotations support
         this.attributes = new SecurityAnnotationsAttributes();
         setUpMapping();
 	}

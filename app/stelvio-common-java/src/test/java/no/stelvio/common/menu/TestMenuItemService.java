@@ -16,7 +16,7 @@ import no.stelvio.common.menu.service.MenuItemService;
  * @author utvikler
  *
  */
-public class MenuItemServiceImpl implements MenuItemService {
+public class TestMenuItemService implements MenuItemService {
 	public List<MenuItem> getMenuItems() {
 		return getMockMenuWithChildren();
 	}

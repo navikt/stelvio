@@ -1,7 +1,6 @@
-package no.stelvio.common.menu.repository.impl;
+package no.stelvio.common.menu.repository.support;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 

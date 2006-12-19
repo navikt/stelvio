@@ -68,7 +68,7 @@
 <!--        <property name="entityManagerFactory" ref="menu.entityManagerFactory" />-->
 <!--    </bean>    -->
     
-    <bean id="menu.menuItemService" class="no.stelvio.common.menu.MenuItemServiceImpl" />
+    <bean id="menu.menuItemService" class="no.stelvio.common.menu.TestMenuItemService" />
     
 <!--	<bean id="menu.menuTestData" class="no.stelvio.common.menu.MenuTestDataImpl" />-->
 <!--	<bean id="menu.menuRepositoryImpl" class="no.stelvio.common.menu.repository.JpaMenuRepository" />-->
