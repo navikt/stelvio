@@ -1,7 +1,6 @@
 package no.stelvio.web.filter;
 
 import java.io.IOException;
-
 import javax.faces.context.FacesContext;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.webflow.execution.FlowSession;
+import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
+
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
 import no.stelvio.web.util.RequestUtils;
-
-import org.springframework.webflow.execution.FlowSession;
-import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
 
 
 /**
@@ -24,6 +23,7 @@ import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: RequestContextFilter.java 2574 2005-10-20 08:04:22Z psa2920 $
+ * @todo Rather make a listener? Or at least inherit from Spring's OncePerRequestFilter
  */
 public class RequestContextFilter extends AbstractFilter {
 	private static final String REQUEST_CONTEXT = "RequestContext";
