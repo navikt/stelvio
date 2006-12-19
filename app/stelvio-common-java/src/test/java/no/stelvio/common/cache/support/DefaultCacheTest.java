@@ -1,9 +1,12 @@
-package no.stelvio.common.cache;
+package no.stelvio.common.cache.support;
 
 
 import org.apache.log4j.Logger;
 import org.springmodules.cache.annotations.CacheFlush;
 import org.springmodules.cache.annotations.Cacheable;
+
+import no.stelvio.common.cache.CacheManagementTest;
+import no.stelvio.common.cache.CacheTest;
 
 /**
  * Implements services for accessing data related to CacheTest. 

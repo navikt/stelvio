@@ -191,7 +191,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheAnnotationsTe
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheManagementTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CustomCachingListener.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/cache/DefaultCacheTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/DefaultCacheTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableInitializerTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemPeriodicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemTest.java -text
