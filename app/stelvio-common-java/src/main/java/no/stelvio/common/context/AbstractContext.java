@@ -1,5 +1,7 @@
 package no.stelvio.common.context;
 
+import no.stelvio.common.context.support.DefaultContext;
+
 /**
  * This class is used to store and retrieve information that must
  * be available anywhere in the system during a single request.
@@ -21,7 +23,7 @@ abstract class AbstractContext {
 	// We don't directly reference the class so that this class can be loaded
 	// without the JVM to try to load any log4j classes
 
-	private static final String LOG4J_PLUGIN_CLASS_NAME = "no.stelvio.common.context.Log4jContextImpl";
+	private static final String LOG4J_PLUGIN_CLASS_NAME = "no.stelvio.common.context.support.Log4jContextImpl";
 
 	private static final String LOG4J_DETECTOR_CLASS_NAME = "org.apache.log4j.Logger";
 
@@ -41,12 +43,12 @@ abstract class AbstractContext {
 	 * Initializes the AbstractContext by detecting
 	 * if Log4j is present in the classpath, and loads
 	 * the Log4jContextImpl if it is and the
-	 * DefaultContextImpl if it isn't. 
+	 * DefaultContext if it isn't.
 	 */
 	private static void init() {
 
 		// Determine the context to use
-		contextClass = DefaultContextImpl.class;
+		contextClass = DefaultContext.class;
 		try {
 			ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
@@ -64,7 +66,7 @@ abstract class AbstractContext {
 			context = (Context) contextClass.newInstance();
 		} catch (Exception ie) {
 			ie.printStackTrace(System.err);
-			context = new DefaultContextImpl();
+			context = new DefaultContext();
 		}
 	}
 

@@ -1,4 +1,4 @@
-package no.stelvio.common.context;
+package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.MDC;
+
+import no.stelvio.common.context.Context;
 
 /**
  * Context implementation that uses the Log4j MDC class
@@ -26,9 +28,9 @@ import org.apache.log4j.MDC;
  * @author person7553f5959484
  * @version $Revision: 123 $ $Date: 2004-05-06 20:09:25 +0200 (Thu, 06 May 2004) $
  */
-class Log4jContextImpl implements Context {
+class Log4jContext implements Context {
 
-	private static Log log = LogFactory.getLog(Log4jContextImpl.class);
+	private static Log log = LogFactory.getLog(Log4jContext.class);
 
 	/**
 	 * Put a context value as identified with the key parameter 

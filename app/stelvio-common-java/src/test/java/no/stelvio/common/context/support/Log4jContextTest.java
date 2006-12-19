@@ -1,30 +1,30 @@
-package no.stelvio.common.context;
+package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
 
-import no.stelvio.common.context.Log4jContextImpl;
+import no.stelvio.common.context.support.Log4jContext;
 
 import junit.framework.TestCase;
 
 /**
- * Log4jContextImpl Unit Test.
+ * Log4jContext Unit Test.
  * 
  * @author person7553f5959484, Accenture
  * @author person4f9bc5bd17cc, Accenture
  * @version $Revision: 1057 $ $Author: psa2920 $ $Date: 2004-08-17 16:08:01 +0200 (Tue, 17 Aug 2004) $
  */
-public class Log4jContextImplTest extends TestCase {
+public class Log4jContextTest extends TestCase {
 
 	/**
 	 * Constructor for Log4jContextImplTest.
 	 * @param arg0
 	 */
-	public Log4jContextImplTest(String arg0) {
+	public Log4jContextTest(String arg0) {
 		super(arg0);
 	}
 
 	public void test() {
-		Log4jContextImpl c = new Log4jContextImpl();
+		Log4jContext c = new Log4jContext();
 
 		assertNull("Exported Hashtable should have been null", c.exportContext());
 

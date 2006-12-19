@@ -1,31 +1,31 @@
-package no.stelvio.common.context;
+package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
 
-import no.stelvio.common.context.DefaultContextImpl;
+import no.stelvio.common.context.support.DefaultContext;
 
 import junit.framework.TestCase;
 
 /**
- * DefaultContextImpl Unit Test.
+ * DefaultContext Unit Test.
  * 
  * @author person7553f5959484, Accenture
  * @author person4f9bc5bd17cc, Accenture
  * @version $Revision: 1058 $ $Author: psa2920 $ $Date: 2004-08-17 16:15:17 +0200 (Tue, 17 Aug 2004) $
  */
-public class DefaultContextImplTest extends TestCase {
+public class DefaultContextTest extends TestCase {
 
 	/**
 	 * Constructor for DefaultContextImplTest.
 	 * @param arg0
 	 */
-	public DefaultContextImplTest(String arg0) {
+	public DefaultContextTest(String arg0) {
 		super(arg0);
 	}
 
 	public void test() {
 
-		DefaultContextImpl c = new DefaultContextImpl();
+		DefaultContext c = new DefaultContext();
 
 		assertNull("Object should have been null", c.get("key"));
 		Object o = "value";

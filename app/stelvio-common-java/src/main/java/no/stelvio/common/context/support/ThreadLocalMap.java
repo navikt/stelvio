@@ -1,4 +1,4 @@
-package no.stelvio.common.context;
+package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
 

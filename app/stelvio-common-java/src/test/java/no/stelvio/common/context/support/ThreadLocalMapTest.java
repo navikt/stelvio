@@ -1,8 +1,8 @@
-package no.stelvio.common.context;
+package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
 
-import no.stelvio.common.context.ThreadLocalMap;
+import no.stelvio.common.context.support.ThreadLocalMap;
 
 import junit.framework.TestCase;
 

@@ -1,6 +1,9 @@
-package no.stelvio.common.context;
+package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
+
+import no.stelvio.common.context.Context;
+import no.stelvio.common.context.ThreadLocalMap;
 
 /**
  * Context implementation that uses the InheritableThreadLocal class
@@ -10,7 +13,7 @@ import java.util.Hashtable;
  * @author person7553f5959484
  * @version $Revision: 2001 $ $Date: 2005-03-01 14:49:06 +0100 (Tue, 01 Mar 2005) $
  */
-public class DefaultContextImpl implements Context {
+public class DefaultContext implements Context {
 
 	// The capasity of the user context
 	// --> Update this calue when you add/remove a field
