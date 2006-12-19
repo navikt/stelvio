@@ -167,14 +167,14 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/repository/Saks
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/repository/TasklistTreeRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/support/DefaultTasklistService.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainer.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainerImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponse.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponseImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponse.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponseImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceRequest.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/TransferObject.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultContextContainer.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultEntityListResponse.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultEntityResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/DateUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ErrorCodesUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/FNRUtil.java -text

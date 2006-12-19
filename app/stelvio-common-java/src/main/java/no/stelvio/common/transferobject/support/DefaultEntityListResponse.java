@@ -1,6 +1,9 @@
-package no.stelvio.common.transferobject;
+package no.stelvio.common.transferobject.support;
 
 import java.util.List;
+
+import no.stelvio.common.transferobject.TransferObject;
+import no.stelvio.common.transferobject.EntityListResponse;
 
 
 /**
@@ -8,11 +11,11 @@ import java.util.List;
  * 
  * @author personff564022aedd
  */
-public class EntityListResponseImpl<T> extends TransferObject implements EntityListResponse<T> {
+public class DefaultEntityListResponse<T> extends TransferObject implements EntityListResponse<T> {
 
 	private List<T> entities;
 	
-	public EntityListResponseImpl(List<T> entities) {
+	public DefaultEntityListResponse(List<T> entities) {
 		this.entities = entities;
 	}
 

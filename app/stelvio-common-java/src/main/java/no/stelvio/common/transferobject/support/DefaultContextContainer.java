@@ -1,15 +1,16 @@
-package no.stelvio.common.transferobject;
+package no.stelvio.common.transferobject.support;
 
 import java.util.Locale;
 
 import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.transferobject.ContextContainer;
 
 /**
  * Contains information to be stored on the {@link RequestContext}.
  * 
  * @author personff564022aedd
  */
-public class ContextContainerImpl implements ContextContainer {
+public class DefaultContextContainer implements ContextContainer {
 
 	private Locale locale;
 	private String moduleId;
