@@ -10,7 +10,7 @@ import org.springmodules.cache.annotations.Cacheable;
  *  
  * @author person4f9bc5bd17cc, Accenture
  */
-public class CacheTestImpl implements CacheTest {
+public class DefaultCacheTest implements CacheTest {
 	private Logger log = Logger.getLogger(CacheManagementTest.class);
 	private final String initialString = "This is a cacheable string";
 	private String cachedString = new String(initialString);
