@@ -1,7 +1,9 @@
-package no.stelvio.common.tasklist;
+package no.stelvio.common.tasklist.support;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import no.stelvio.common.tasklist.TasklistService;
 
 //import no.stelvio.business.domain.Oppgave;
 
@@ -13,7 +15,7 @@ import java.util.List;
  * @version $Id$
  */
 //TODO: This is an EJB that should be placed outside of the common module
-public class TasklistServiceImpl implements TasklistService {
+public class DefaultTasklistService implements TasklistService {
 	
 	/** 
 	 * {@inheritDoc}
