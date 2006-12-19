@@ -1,9 +1,8 @@
 package no.stelvio.common.context.support;
 
-import java.util.Hashtable;
-
 import no.stelvio.common.context.Context;
-import no.stelvio.common.context.ThreadLocalMap;
+
+import java.util.Hashtable;
 
 /**
  * Context implementation that uses the InheritableThreadLocal class
