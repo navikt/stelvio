@@ -14,16 +14,15 @@ public class MissingPropertyException extends ConfigurationException {
 
 	/**
 	 * {@inheritDoc no.stelvio.common.config.ConfigurationException#ConfigurationException(ExceptionToCopyHolder)}
-	 */	
+	 */
 	public MissingPropertyException(ExceptionToCopyHolder holder) {
 		super(holder);
 	}
 
 	/**
 	 * Constructs a new MissingPropertyException
-	 * @param cause the cause of this exception
 	 * @param templateArguments list of required properties was missing
-	 */	
+	 */
 	public MissingPropertyException(Object... templateArguments) {
 		super(templateArguments);
 	}
@@ -32,16 +31,16 @@ public class MissingPropertyException extends ConfigurationException {
 	 * Constructs a new MissingPropertyException
 	 * @param cause the cause of this exception
 	 * @param templateArguments list of required properties was missing
-	 */	
+	 */
 	public MissingPropertyException(Throwable cause, Object... templateArguments) {
 		super(cause, templateArguments);
 	}
 
-	
+
 	/**
 	 * Method that returns a message template that lists the required properties that was not set
 	 * and subsequently caused this exception to be thrown
-	 * 
+	 *
      * @param numArgs the number of arguments to the exception's constructor.
      * @return the template to use for constructing the exception's messageFrom.
 	 */
@@ -54,6 +53,6 @@ public class MissingPropertyException extends ConfigurationException {
 		}
 		template.append(TEMPLATE_END);
 		return template.toString();
-	}	
+	}
 
 }
