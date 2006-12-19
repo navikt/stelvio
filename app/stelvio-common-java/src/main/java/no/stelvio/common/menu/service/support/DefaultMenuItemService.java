@@ -14,7 +14,7 @@ import no.stelvio.common.menu.service.MenuItemService;
  * 
  * @author person4f9bc5bd17cc, Accenture
  */
-public class MenuItemServiceImpl implements MenuItemService {
+public class DefaultMenuItemService implements MenuItemService {
 	private MenuRepository menuRepository;
 
 	/**
