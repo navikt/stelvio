@@ -77,6 +77,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/config/PropertyExceedsLi
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/AbstractContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/Context.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/RequestContext.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/context/RequestContextHolder.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/DefaultContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/Log4jContext.java -text
