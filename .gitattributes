@@ -404,6 +404,9 @@ app/stelvio-test-java/src/main/java/no/stelvio/common/test/spring/jdbc/MockJdbcT
 app/stelvio-test-java/src/main/java/no/stelvio/common/test/spring/transaction/MockTransactionTemplate.java -text
 app/stelvio-test-java/src/test/java/no/stelvio/common/test/spring/transaction/MockTransactionTemplateTest.java -text
 app/workspaces/pom.xml -text
+app/workspaces/stelvio-app-workspace/.project -text
+app/workspaces/stelvio-app-workspace/pom.xml -text
+app/workspaces/stelvio-app-workspace/stelvio-app-trunk.psf -text
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+	<provider id="org.polarion.team.svn.core.svnnature">
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-test-java,stelvio-test-java,400240-10f19ee7737-28263603a095923870da72ef93811016;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;;;"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-presentation-java,stelvio-presentation-java,400240-10f19ee7737-28263603a095923870da72ef93811016;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;;;"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-common-java,stelvio-common-java,400240-10f19ee7737-28263603a095923870da72ef93811016;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;;;"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-business-java,stelvio-business-java,400240-10f19ee7737-28263603a095923870da72ef93811016;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;;;"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-batch-java,stelvio-batch-java,400240-10f19ee7737-28263603a095923870da72ef93811016;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;;;"/>
+	</provider>
+</psf>
