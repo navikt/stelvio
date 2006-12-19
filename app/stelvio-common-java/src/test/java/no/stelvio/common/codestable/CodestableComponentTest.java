@@ -14,6 +14,10 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
+import no.stelvio.common.codestable.factory.CodesTableFactory;
+import no.stelvio.common.codestable.support.DefaultCodesTable;
+import no.stelvio.common.codestable.support.DefaultCodesTableManager;
+import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
 import no.stelvio.common.context.RequestContext;
 
 /**
@@ -32,7 +36,7 @@ public class CodestableComponentTest {
 	//
 	private Date date;
 	//
-	private CodesTableManagerImpl codesTableManager = new CodesTableManagerImpl();
+	private DefaultCodesTableManager codesTableManager = new DefaultCodesTableManager();
 	private Mockery context;
 
 	@Before
@@ -74,7 +78,7 @@ public class CodestableComponentTest {
 	@Test
 	public void testCodesTable() throws Exception {
 
-		CodesTable codesTable = new CodesTableImpl();
+		CodesTable codesTable = new DefaultCodesTable();
 		codesTable = codesTableManager.getCodesTable(TestCodesTableItem.CTI1.getClass());
 
 		assertEquals("Con001.001 : getCodesTable failed - doesn't hold an expected value", codesTable.getCodesTableItem(code), TestCodesTableItem.CTI1);
@@ -136,7 +140,7 @@ public class CodestableComponentTest {
 	 */
 	@Test
 	public void testGetCodesTablePeriodic() {
-		CodesTablePeriodic codesTablePeriodic = new CodesTablePeriodicImpl();
+		CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic();
 		codesTablePeriodic = codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.CTIP1.getClass());
 
 		assertEquals("Con007.001 : getCodesTablePeriodic failed - doesn't hold an expected value", codesTablePeriodic.getCodesTableItem(code), TestCodesTableItemPeriodic.CTIP1);
