@@ -10,7 +10,7 @@
     <modules>
         <module>stelvio-common-java</module>
         <module>stelvio-test-java</module>
-        <!--module>stelvio-batch-java</module-->
+        <module>stelvio-batch-java</module>
         <module>stelvio-business-java</module>
         <module>stelvio-presentation-java</module>
     </modules>
