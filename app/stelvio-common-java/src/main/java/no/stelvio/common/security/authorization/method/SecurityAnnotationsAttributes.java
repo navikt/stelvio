@@ -64,7 +64,7 @@ import org.springframework.metadata.Attributes;
 
 public class SecurityAnnotationsAttributes implements Attributes {
 
-	private AnnotationAttributesMapping annotationMapping;
+	private AnnotationAttributesMapping annotationMapping; 
 
 	/**
 	 * Get the <code>Secured</code> attributes for a given target class and

@@ -164,6 +164,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/DataFilterer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/MethodAccessDeniedException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/MethodDefinitionSources.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/Roles.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/RolesUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecureAnnotationNotInMappingException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributes.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/tasklist/TasklistService.java -text
@@ -287,6 +289,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockMethodDefinitionSource.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockService.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/MockService2.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/RolesUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributesTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/DateUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/FNRUtilTest.java -text
