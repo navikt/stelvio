@@ -20,6 +20,13 @@ app/stelvio-business-java/models/rtv-framework-business.mdx -text
 app/stelvio-business-java/pom.xml -text
 app/stelvio-business-java/project.properties -text
 app/stelvio-business-java/src/main/java/.cvsignore -text
+app/stelvio-business-java/src/main/java/no/stelvio/business/model/BNummer.java -text
+app/stelvio-business-java/src/main/java/no/stelvio/business/model/DNummer.java -text
+app/stelvio-business-java/src/main/java/no/stelvio/business/model/Fodselsnummer.java -text
+app/stelvio-business-java/src/main/java/no/stelvio/business/model/PidNum.java -text
+app/stelvio-business-java/src/main/java/no/stelvio/business/model/PidNumFactory.java -text
+app/stelvio-business-java/src/main/java/no/stelvio/business/model/support/DefaultPidNumFactory.java -text
+app/stelvio-business-java/src/test/java/no/stelvio/business/model/FodselsnummerTest.java -text
 app/stelvio-business-java/src/test/resources/application-services.xml -text
 app/stelvio-business-java/src/test/resources/error-handling.xml -text
 app/stelvio-business-java/src/test/resources/performance-monitoring.xml -text
