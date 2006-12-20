@@ -6,5 +6,7 @@ package no.stelvio.common.error;
  * @todo should it be called facade?
  */
 public interface ExceptionHandlerFacade {
-    <T extends Throwable> void handleException(T e) throws Throwable;
+    <T extends Throwable> void handle(T e);
+    <T extends Throwable> void rethrow(T e) throws Throwable;
+	<T extends Throwable> void throwNew(Class<T> exceptionToThrow, Class<? extends StelvioException> cause, Object... params) throws Throwable;
 }

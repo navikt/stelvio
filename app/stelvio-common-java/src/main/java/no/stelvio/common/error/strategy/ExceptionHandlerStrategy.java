@@ -11,8 +11,6 @@ public interface ExceptionHandlerStrategy {
      * @param e
      * @return
      * @throws T
-     *
-     * @todo Don't need a throws T, do we?
      */
-    <T extends Throwable> T handleException(T e) throws T;
+    <T extends Throwable> T handleException(T e);
 }

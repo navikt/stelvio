@@ -13,7 +13,7 @@ public abstract class ExceptionHandlerFacadeTest {
     @Test
     public void afterHandlingRethrow() throws Throwable {
         try {
-            exceptionHandlerFacade().handleException(new IllegalArgumentException());
+            exceptionHandlerFacade().handle(new IllegalArgumentException());
             fail("IllegalArgumentException should have been thrown");
         } catch (IllegalArgumentException e) {
             // Should happen

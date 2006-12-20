@@ -19,7 +19,7 @@ import no.stelvio.common.event.audit.AuditItem;
 public class EventPublisherExceptionHandlerStrategy implements ExceptionHandlerStrategy, ApplicationEventPublisherAware {
     private ApplicationEventPublisher applicationEventPublisher;
 
-    public <T extends Throwable> T handleException(T throwable) throws T {
+    public <T extends Throwable> T handleException(T throwable) {
         applicationEventPublisher.publishEvent(createAuditEvent());
         return throwable;
     }

@@ -18,7 +18,7 @@ public class ErrorHandlingAdviceTest {
         final IllegalArgumentException throwable = new IllegalArgumentException("test");
 
         context.expects(new InAnyOrder() {{
-            one (facade).handleException(with(same(throwable)));
+            one (facade).handle(with(same(throwable)));
         }});
 
         ErrorHandlingAdvice advice = new ErrorHandlingAdvice();

@@ -28,13 +28,13 @@ public class DefaultExceptionHandlerFacadeTest extends ExceptionHandlerFacadeTes
         DefaultExceptionHandlerFacade facade = new DefaultExceptionHandlerFacade();
         facade.setFallbackStrategy(facadeMock);
         facade.setDefaultStrategy(new ExceptionHandlerStrategy() {
-            public <T extends Throwable> T handleException(T e) throws T {
-                throw e;
+            public <T extends Throwable> T handleException(T e) {
+                return e;
             }
         });
 
         try {
-            facade.handleException(exception);
+            facade.handle(exception);
             fail("IllegalStateException should have benne thrown");
         } catch (IllegalStateException e) {
             // should happen
@@ -47,7 +47,7 @@ public class DefaultExceptionHandlerFacadeTest extends ExceptionHandlerFacadeTes
         DefaultExceptionHandlerFacade facade = new DefaultExceptionHandlerFacade();
 
         facade.setDefaultStrategy(new ExceptionHandlerStrategy() {
-            public <T extends Throwable> T handleException(T e) throws T {
+            public <T extends Throwable> T handleException(T e) {
                 return e;
             }
         });

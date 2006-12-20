@@ -37,7 +37,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @todo javadoc
      * @todo what about the properties from StelvioException like errorId, userId, etc?
      */
-    public <T extends Throwable> T handleException(T throwable) throws T {
+    public <T extends Throwable> T handleException(T throwable) {
         String message = extractor.messageFrom(throwable);
         ErrorDefinition error = errorResolver.resolve(throwable);
 

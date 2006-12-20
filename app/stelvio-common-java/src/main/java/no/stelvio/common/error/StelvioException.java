@@ -3,6 +3,7 @@ package no.stelvio.common.error;
 /**
  * @author personf8e9850ed756
  * @todo write javadoc
+ * @todo should this be package private? Is this needed outside the package?
  */
 public interface StelvioException extends LoggableException {
     /**

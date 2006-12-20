@@ -15,7 +15,7 @@ public class ExceptionHandlerStrategyMulticaster implements ExceptionHandlerStra
     // TODO have the strategies implement Ordered from Spring so they will be ordered correctly in the chain
     private Set<ExceptionHandlerStrategy> strategies;
 
-    public <T extends Throwable> T handleException(T e) throws T {
+    public <T extends Throwable> T handleException(T e) {
         T throwable = e;
 
         for (ExceptionHandlerStrategy strategy : strategies) {

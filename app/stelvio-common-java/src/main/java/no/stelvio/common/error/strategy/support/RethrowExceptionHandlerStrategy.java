@@ -1,11 +1,11 @@
 package no.stelvio.common.error.strategy.support;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 import no.stelvio.common.error.StelvioException;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author personf8e9850ed756
@@ -18,7 +18,7 @@ public class RethrowExceptionHandlerStrategy implements ExceptionHandlerStrategy
      * @param exception
      * @return
      */
-    public <T extends Throwable> T handleException(T exception) throws T {
+    public <T extends Throwable> T handleException(T exception) {
         T copy;
 
         if (exception instanceof StelvioException) {

@@ -21,7 +21,7 @@ public class ErrorHandlingAdvice implements ThrowsAdvice {
      */
     public void afterThrowing(Throwable throwable)
             throws Throwable {
-        exceptionHandlerFacade.handleException(throwable);
+        exceptionHandlerFacade.handle(throwable);
     }
 
     public void setExceptionHandlerFacade(ExceptionHandlerFacade exceptionHandlerFacade) {

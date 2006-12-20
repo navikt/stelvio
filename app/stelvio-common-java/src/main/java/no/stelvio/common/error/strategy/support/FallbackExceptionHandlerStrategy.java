@@ -14,7 +14,7 @@ import java.io.StringWriter;
  * log, etc. the original.
  */
 public class FallbackExceptionHandlerStrategy implements ExceptionHandlerStrategy {
-    public <T extends Throwable> T handleException(T throwable) throws T {
+    public <T extends Throwable> T handleException(T throwable) {
         printException(throwable);
 
         return throwable;
@@ -24,7 +24,7 @@ public class FallbackExceptionHandlerStrategy implements ExceptionHandlerStrateg
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
 
-        pw.println("FallbackExceptionHandler.handleException: ");
+        pw.println("FallbackExceptionHandler.handle: ");
         throwable.printStackTrace(pw);
         pw.flush();
         pw.close();
