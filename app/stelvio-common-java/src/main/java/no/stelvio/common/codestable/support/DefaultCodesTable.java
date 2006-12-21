@@ -1,15 +1,16 @@
 package no.stelvio.common.codestable.support;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
+
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.context.RequestContext;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Implementation of CodesTable used to handle a codestable, its beloning values and add
@@ -17,6 +18,7 @@ import java.util.Locale;
  * 
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
+ * @later use Commons Collection's LazyMap to initialize the filtered codes table map
  */
 public class DefaultCodesTable implements CodesTable {
 

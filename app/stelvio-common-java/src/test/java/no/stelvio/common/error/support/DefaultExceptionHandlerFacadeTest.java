@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import no.stelvio.common.error.ExceptionHandlerFacade;
 import no.stelvio.common.error.ExceptionHandlerFacadeTest;
+import no.stelvio.common.error.SystemUnrecoverableException;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 
 /**
@@ -14,7 +15,6 @@ import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
  * @todo write javadoc
  */
 public class DefaultExceptionHandlerFacadeTest extends ExceptionHandlerFacadeTest {
-
     @Test
     public void fallbackStrategyIsUsedIfDefaultThrowsException() throws Throwable {
         Mockery context = new Mockery();
@@ -22,14 +22,14 @@ public class DefaultExceptionHandlerFacadeTest extends ExceptionHandlerFacadeTes
         final IllegalStateException exception = new IllegalStateException("test");
 
         context.expects(new InAnyOrder() {{
-            one (facadeMock).handleException(exception); will(returnValue(exception));
+            one (facadeMock).handleException((Throwable)with(anything())); will(returnValue(exception));
         }});
 
         DefaultExceptionHandlerFacade facade = new DefaultExceptionHandlerFacade();
         facade.setFallbackStrategy(facadeMock);
         facade.setDefaultStrategy(new ExceptionHandlerStrategy() {
             public <T extends Throwable> T handleException(T e) {
-                return e;
+                throw new IllegalStateException("test");
             }
         });
 
@@ -43,6 +43,26 @@ public class DefaultExceptionHandlerFacadeTest extends ExceptionHandlerFacadeTes
         context.assertIsSatisfied();
     }
 
+    @Test
+    public void shouldThrowException() throws Throwable {
+        ExceptionHandlerFacade facade = exceptionHandlerFacade();
+
+        try {
+            facade.rethrow(new IllegalStateException("test"));
+            fail("Should throw IllegalStateException");
+        } catch (IllegalStateException e) {
+            // Should happen
+        }
+
+        try {
+            facade.throwNew(TestSystemUnrecoverableException.class, new IllegalArgumentException("iae"), "test");
+            fail("Should throw SystemUnrecoverableException");
+        } catch (SystemUnrecoverableException e) {
+            // Should happen
+            // LATER check that cause is correct
+        }
+    }
+
     protected ExceptionHandlerFacade exceptionHandlerFacade() {
         DefaultExceptionHandlerFacade facade = new DefaultExceptionHandlerFacade();
 
@@ -53,5 +73,19 @@ public class DefaultExceptionHandlerFacadeTest extends ExceptionHandlerFacadeTes
         });
 
         return facade;
+    }
+
+    public static class TestSystemUnrecoverableException extends SystemUnrecoverableException {
+        protected TestSystemUnrecoverableException(IllegalArgumentException cause, String dummy) {
+            super(cause, dummy);
+        }
+
+        protected TestSystemUnrecoverableException(ExceptionToCopyHolder holder) {
+            super(holder);
+        }
+
+        protected String messageTemplate(final int numArgs) {
+            return "dummy: {0}";
+        }
     }
 }

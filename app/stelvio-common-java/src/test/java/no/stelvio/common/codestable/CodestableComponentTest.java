@@ -218,4 +218,4 @@ public class CodestableComponentTest {
 		assertEquals("Test : getDecode() with locale failed ", codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.CTIP1.getClass()).getDecode(code, nonSupportedLocale, date), decode);
 		context.assertIsSatisfied();
 	}
-}==== ORIGINAL VERSION app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodestableComponentTest.java 116664152216592
+}
