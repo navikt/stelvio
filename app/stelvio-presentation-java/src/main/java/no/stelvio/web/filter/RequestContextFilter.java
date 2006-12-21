@@ -41,7 +41,7 @@ public class RequestContextFilter extends AbstractFilter {
 	 * </ol>
 	 * 
 	 * {@inheritDoc}
-	 * @see no.stelvio.web.filter.AbstractFilter#doFilter(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain)
+	 * @see no.stelvio.web.filter.AbstractFilter#doFilter(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse,  javax.servlet.FilterChain)
 	 */
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 		throws IOException, ServletException {
@@ -100,7 +100,7 @@ public class RequestContextFilter extends AbstractFilter {
 	 * @throws Exception 
 	 */
 	private String getScreenId() throws Exception {
-		FlowSession session = FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
+		FlowSession session =  FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
 		if (session != null) {
 			return session.getDefinition().getId()+":"+session.getState().getId();
 		}
