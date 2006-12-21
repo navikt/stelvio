@@ -303,7 +303,6 @@ app/stelvio-common-java/src/test/resources/commons-logging.properties -text
 app/stelvio-common-java/src/test/resources/distributed-services.xml -text
 app/stelvio-common-java/src/test/resources/error-handling.xml -text
 app/stelvio-common-java/src/test/resources/error-integration-test-context.xml -text
-app/stelvio-common-java/src/test/resources/integration-test-context.xml -text
 app/stelvio-common-java/src/test/resources/log4j.properties -text
 app/stelvio-common-java/src/test/resources/performance-monitoring.xml -text
 app/stelvio-common-java/src/test/resources/spring-beans.dtd -text

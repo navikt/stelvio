@@ -119,4 +119,4 @@ public class DefaultContext implements Context {
 					+ "java.util.Hashtable");
 		}
 	}
-}
+}==== ORIGINAL VERSION app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/DefaultContext.java 116670510622854
