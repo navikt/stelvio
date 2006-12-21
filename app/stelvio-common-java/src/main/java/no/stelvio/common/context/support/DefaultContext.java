@@ -15,7 +15,7 @@ import java.util.Hashtable;
 public class DefaultContext implements Context {
 
 	// The capasity of the user context
-	// --> Update this calue when you add/remove a field
+	// Update this calue when you add/remove a field
 	protected static final int CAPACITY = 5;
 
 	/**
