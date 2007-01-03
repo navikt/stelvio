@@ -52,7 +52,7 @@
 	<classpathentry kind="var" path="M2_REPO/qdox/qdox/1.5/qdox-1.5.jar" sourcepath="M2_REPO/qdox/qdox/1.5/qdox-1.5-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" sourcepath="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/acegisecurity/acegi-security-tiger/1.0.0/acegi-security-tiger-1.0.0.jar" sourcepath="M2_REPO/org/acegisecurity/acegi-security-tiger/1.0.0/acegi-security-tiger-1.0.0-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring/2.0/spring-2.0.jar" sourcepath="M2_REPO/org/springframework/spring/2.0/spring-2.0-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/springframework/spring/2.0.1/spring-2.0.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/2.0/spring-webmvc-2.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/xstream/xstream/1.1.2/xstream-1.1.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/2.0/spring-context-2.0.jar"/>
