@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
+
+	<!-- Defines the start-state. -->
+	<start-state idref="vis_oppgaveliste" />
+
+
+	<!-- view-state vis_oppgaveliste
+			For the moment the only view-state on this page. -->
+	<view-state id="vis_oppgaveliste" view="/pages/oppgavelisten.xhtml">
+       	<transition on="velg_brukeroversikt" to="brukeroversikt"/>
+       	<transition on="velg_oversiktOverHenvendelser" to="oversiktOverHenvendelser"/>
+	</view-state>
+
+	<subflow-state id="brukeroversikt" flow="brukeroversikt-flow"/>
+
+	<subflow-state id="oversiktOverHenvendelser" flow="oversiktoverhenvendelser-flow"/>
+
+	<!-- Imports spring beans, and Valang stuff into this flow -->
+	<import resource="spring/oppgavelisten-flow-beans.xml"/>
+
+</flow>

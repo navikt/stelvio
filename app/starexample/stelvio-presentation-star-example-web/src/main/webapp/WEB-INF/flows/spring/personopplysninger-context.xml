@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+	
+<beans>
+
+	<bean id="personopplysningerFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="personopplysningerForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.psak.person.personopplysninger.PersonopplysningerForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+	</bean>
+	
+	<bean id="personopplysningerForm" class="no.nav.presentation.pensjon.psak.person.personopplysninger.PersonopplysningerForm" singleton="false"  /> 
+	
+	<bean id="personopplysningerAction" class="no.nav.presentation.pensjon.psak.person.personopplysninger.PersonopplysningerAction" abstract="false" singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+  	</bean>
+	 
+</beans>

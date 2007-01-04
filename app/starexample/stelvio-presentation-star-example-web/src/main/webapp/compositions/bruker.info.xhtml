@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:z="http://www.qualcomm.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<f:loadBundle basename="resources" var="msg" />
+
+<ui:composition>
+
+<form jsfc="h:form" id="brukerinfo">
+
+  <table class="standard_data_tabell" cellspacing="0" border="0" width="365">
+    <tr> 
+      <td class="standard_data_tabell_label" width="174" height="9">Fodselsnummer</td>
+      <td class="standard_data_tabell_label" width="191" height="9">Navn</td>
+    </tr>
+    <tr>
+      <td class="standard_data_tabell_data" height="22" width="174">
+      	<h:outputText value="#{brukerinfo.fodselsnummer}"></h:outputText> 
+      </td>
+      <td class="standard_data_tabell_data" width="191">
+      	<h:outputText value="#{brukerinfo.navn}" />
+      </td>
+    </tr>
+  </table>
+</form>
+</ui:composition>
+
+</html>

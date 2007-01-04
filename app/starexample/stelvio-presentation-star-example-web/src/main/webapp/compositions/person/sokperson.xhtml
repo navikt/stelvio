@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:z="http://www.qualcomm.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:nav="http://www.nav.no/jsf">
+
+<f:loadBundle basename="formatting" var="formatting" />
+
+<ui:composition>
+
+<form jsfc="h:form" id="sokePersonForm">
+
+<t:selectOneRadio id="valgtSok" layout="spread" value="#{sokePerson.valgtSok}">
+	<f:selectItems value="#{sokePersonForm.valgSelectItems}" />
+</t:selectOneRadio>
+
+<p class="spacer_tabeller" />
+
+<table border="0" cellpadding="1" cellspacing="0">
+	<tbody>
+		<tr>
+			<td width="#{formatting.sok_tdlength_begrens}"><h3>Søk navn eller adresse</h3></td>
+			<td><h3>Begrens søket med</h3></td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="standard_data_tabell" cellspacing="0" cellpadding="1" width="859" border="0">
+	<tbody>
+    <tr> 
+    	<td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_radio}">
+    		<t:radio for="valgtSok" index="0" />
+    	</td>
+      	<td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_1}">Fornavn/Etternavn</td>
+      	<td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_2}"> 
+        	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="20" id="fornavn" value="#{sokePerson.fornavn}" />
+			<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="20" id="etternavn" value="#{sokePerson.etternavn}" />
+			<nav:errorMessage form="sokePersonForm" for="fornavn" />
+			<nav:errorMessage form="sokePersonForm" for="etternavn" />
+      	</td>
+      	<td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_3}">Fødselsdato</td>
+      	<td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_4}"> 
+        	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="10" id="fodselsDato" value="#{sokePerson.fodselsDato}" />&#160;
+      	</td>
+      	<td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_5}">Fødselsår</td>
+      	<td class="standard_data_tabell_data"> 
+        	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="10" id="fodselsAr" value="#{sokePerson.fodselsAr}" />&#160;åååå
+      	</td>
+    </tr>
+    <tr> 
+      	<td class="standard_data_tabell_data" > 
+	      	<t:radio for="valgtSok" index="1" />
+      	</td>
+      	<td class="standard_data_tabell_label" >Bostedsadresse</td>
+      	<td class="standard_data_tabell_data"> 
+        	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="20" id="bostedsadresse" value="#{sokePerson.bostedsadresse}" />Nr
+        	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="5" id="nrFra" value="#{sokePerson.nrFra}" />-
+        	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="5" id="nrTil" value="#{sokePerson.nrTil}" />
+        	<nav:errorMessage form="sokePersonForm" for="bostedsadresse" />
+      	</td>
+      	<td class="standard_data_tabell_label" >Kjønn</td>
+      	<td class="standard_data_tabell_data" >
+	      	<h:selectOneMenu id="kjonn1" value="#{sokePerson.kjonn1}">
+				<f:selectItems value="#{sokePerson.kjonnSelectItems}" />
+			</h:selectOneMenu>
+      	</td>
+      	<td class="standard_data_tabell_label" >NAV-enhet</td>
+      	<td class="standard_data_tabell_data" >
+        	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="10" id="navEnhet1" value="#{sokePerson.navEnhet1}" />
+      	</td>
+    </tr>
+    </tbody> 
+</table>
+  
+<p class="spacer_tabeller" />
+  
+<table border="0" cellpadding="1" cellspacing="0">
+	<tbody>
+		<tr>
+			<td width="#{formatting.sok_tdlength_begrens}"><h3>Søk annen adresse</h3></td>
+			<td><h3>Begrens søket med</h3></td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="standard_data_tabell" cellspacing="0" cellpadding="1" width="859" border="0">
+	<tbody>
+		<tr> 
+	   		<td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_radio}">
+    			<t:radio for="valgtSok" index="2" />
+    		</td>
+        	<td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_1}"> 
+            	<h:selectOneMenu id="adresseType" value="#{sokePerson.adresseType}">
+					<f:selectItems value="#{sokePerson.adresseTypeSelectItems}" />
+				</h:selectOneMenu>
+            </td>
+            <td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_2}"> 
+            	<h:selectOneMenu id="adresseHint" value="#{sokePerson.adresseHint}">
+					<f:selectItems value="#{sokePerson.adresseHintSelectItems}" />
+				</h:selectOneMenu>
+              	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="20" id="annenAdresse" value="#{sokePerson.annenAdresse}"/>
+              	<nav:errorMessage form="sokePersonForm" for="annenAdresse" />
+            </td>
+            <td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_3}">NAV-enhet</td>
+            <td class="standard_data_tabell_data" > 
+              	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="20" id="navEnhet2" value="#{sokePerson.navEnhet2}" />
+            </td>
+		</tr>
+	</tbody>
+</table>
+		
+<p class="spacer_tabeller" />
+		
+   		
+<table border="0" cellpadding="1" cellspacing="0">
+	<tbody>
+		<tr>
+			<td width="#{formatting.sok_tdlength_begrens}"><h3>Søk fødselsdato</h3></td>
+			<td><h3>Begrens søket med</h3></td>
+		</tr>
+	</tbody>
+</table>
+   		
+   		
+<table class="standard_data_tabell" cellspacing="0" cellpPadding="1" width="859" border="0">
+	<tbody>
+    	<tr class="hoved_data_tabell">
+        	<td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_radio}"> 
+            	<t:radio for="valgtSok" index="3" />
+            </td>
+            <td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_1}">Fødselsdato</td>
+            <td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_2}"> 
+            	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="10" id="fullFodselsDato" value="#{sokePerson.fullFodselsDato}" />&#160;dd.mm.åååå
+            	<nav:errorMessage form="sokePersonForm" for="fullFodselsDato" />
+            </td>
+            <td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_3}">Kjønn</td>
+            <td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_4}"> 
+            	<h:selectOneMenu id="kjonn2" value="#{sokePerson.kjonn2}">
+					<f:selectItems value="#{sokePerson.kjonnSelectItems}" />
+				</h:selectOneMenu>
+            </td>
+            <td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_5}">NAV-enhet</td>
+            <td class="standard_data_tabell_data"> 
+              	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="10" id="navEnhet3" value="#{sokePerson.navEnhet3}" />
+            </td>
+		</tr>
+	</tbody> 
+</table>
+        
+		<p class="spacer_tabeller" />
+		
+<table border="0" cellpadding="1" cellspacing="0">
+	<tbody>
+		<tr>
+			<td><h3>Andre søk</h3></td>
+		</tr>
+	</tbody>
+</table>
+		
+		
+		<table cellspacing="0" cellpadding="1" width="860" border="0" valign="top">
+        <tbody>
+        <tr>
+    		<td valign="top" width="860">
+            	<table class="standard_data_tabell" cellspacing="0" cellpadding="0" width="859" border="0">
+                <tbody> 
+        		<tr class="hoved_data_tabell">
+          			<td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_radio}">
+          				<t:radio for="valgtSok" index="4" />
+          			</td>
+                  	<td class="standard_data_tabell_label" width="#{formatting.sok_tdlength_1}">Fødselsnummer</td>
+                  	<td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_2}"> 
+                    	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="15" id="fnr" value="#{sokePerson.fnr}" maxlength="11" />
+                    	<nav:errorMessage form="sokePersonForm" for="fnr" /></td>
+                  	<td class="standard_data_tabell_data" width="#{formatting.sok_tdlength_radio}"> 
+                    	<t:radio for="valgtSok" index="6" />
+                    </td>
+                  	<td class="standard_data_tabell_label" width="150">Kontonummer utland</td>
+                  	<td class="standard_data_tabell_data"> 
+                    	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="15" id="utenlandskKontonummer" value="#{sokePerson.utenlandskKontonummer}" />
+                    	<nav:errorMessage form="sokePersonForm" for="utenlandskKontonummer" /></td>
+          		</tr>
+          		
+        		<tr class="hoved_data_tabell">
+          			<td class="standard_data_tabell_data">
+          				<t:radio for="valgtSok" index="5" />
+          			</td>
+                  	<td class="standard_data_tabell_label">Kontonummer norsk</td>
+                  	<td class="standard_data_tabell_data"> 
+                    	<input jsfc="h:inputText" style="FONT-SIZE: xx-small" size="15" id="norskKontonummer" value="#{sokePerson.norskKontonummer}" />
+                    	<nav:errorMessage form="sokePersonForm" for="norskKontonummer" />
+                    </td>
+                  	<td class="standard_data_tabell_data"> 
+                    	&#160;<!-- t:radio for="valgtSok" index="7" /-->
+                    </td>
+                    <td class="standard_data_tabell_data">&#160;</td>
+                    <td class="standard_data_tabell_data">&#160;</td>
+      			</tr>
+      			</tbody>
+      			</table>
+      		</td>
+      	</tr>
+      	</tbody>
+      	</table>
+      	
+		<table width="859" height="13">
+          <tr> 
+            <td class="knapperad" colspan="7">
+            <input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
+              <div align="right">
+	              <input class="NAVbtn" type="submit" jsfc="h:commandButton" action="sok" value="Søk" />&#160;
+	              <input class="NAVbtn" type="submit" jsfc="h:commandButton" action="reset" value="Nullstill søk" />
+              </div>
+            </td>
+          </tr>
+        </table>
+      
+  
+  
+</form>
+  
+</ui:composition>
+</html>

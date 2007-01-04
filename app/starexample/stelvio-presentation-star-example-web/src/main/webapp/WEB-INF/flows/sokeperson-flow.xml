@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
+
+	<!-- start-state to enter -->
+	<start-state idref="enter" />
+
+
+	<!-- view-state enter 
+			This state is when the user has entered the flow for the first time,
+			or an error has happened, or the reset form button has been pressed -->
+	<view-state id="enter" view="/pages/person/sokeperson.xhtml">
+		<entry-actions>
+			<set attribute="showSokePersonResults" scope="flow" value="false"/>
+		</entry-actions>
+	</view-state>
+
+
+	<!-- view-state results
+			The view-state that shows the results -->
+	<view-state id="results" view="/pages/person/sokeperson.xhtml">
+		<entry-actions>
+			<set attribute="showSokePersonResults" scope="flow" value="true"/>
+		</entry-actions>
+		
+		<transition on="choose" to="hent" />
+		<transition on="person" to="personDetails" />
+	</view-state>
+ 
+ 
+ 	<!-- decision-state whatToValidate
+ 			After the user has clicked sok, this state is activated. It checks which
+ 			radio button that has been selected. Depending on which one, the user is
+ 			sent to the correct action-state. -->
+	<decision-state id="whatToValidate">
+		<if test="${flowScope.sokePersonForm.valgtSok.equals('nameOption')}" then="validateName" />
+		<if test="${flowScope.sokePersonForm.valgtSok.equals('addressOption')}" then="validateAdresse" />
+		<if test="${flowScope.sokePersonForm.valgtSok.equals('diffAddressOption')}" then="validateAnnenAdresse" />
+		<if test="${flowScope.sokePersonForm.valgtSok.equals('birthdateOption')}" then="validateFodselsdato" />
+    	<if test="${flowScope.sokePersonForm.valgtSok.equals('birthnumberOption')}" then="validateBirth" />
+    	<if test="${flowScope.sokePersonForm.valgtSok.equals('accountNrOption')}" then="validateAccountNrOption" />
+    	<if test="${flowScope.sokePersonForm.valgtSok.equals('accountNrForeginOption')}" then="validateAccountNrForeginOption" />
+    	<if test="true" then="sokPerson" />
+    </decision-state>
+
+
+	<!-- action-state validateName
+			The user has selected the name radio button. So we have to validate the name. -->
+	<action-state id="validateName">
+        <action bean="sokePersonNavnFormAction" method="validate"/>
+    	<transition on="success" to="sokPerson"/>
+    </action-state>
+
+
+	<!-- action-state validateAdresse
+			The user has selected the address radio button. So we have to validate the address. -->
+	<action-state id="validateAdresse">
+        <action bean="sokePersonAdressFormAction" method="validate"/>
+    	<transition on="success" to="sokPerson"/>
+    </action-state>
+
+
+	<!-- action-state validateAnnenAdresse
+			The user has selected the different address radio button. So we have to validate that. -->
+	<action-state id="validateAnnenAdresse">
+        <action bean="sokePersonAnnenAdressFormAction" method="validate"/>
+    	<transition on="success" to="sokPerson"/>
+    </action-state>
+
+
+	<!-- action-state validateFodselsdato
+			The user has selected the birthdate radio button. So we have to validate that. -->
+	<action-state id="validateFodselsdato">
+        <action bean="sokePersonFodselsdatoFormAction" method="validate"/>
+    	<transition on="success" to="sokPerson"/>
+    </action-state>
+
+
+	<!-- action-state validateBirth
+			The user has selected the birth radio button. So we have to validate that. -->
+	<action-state id="validateBirth">
+        <action bean="sokePersonFodselsnummerFormAction" method="validate"/>
+    	<transition on="success" to="sokPerson"/>
+    </action-state>
+
+	<action-state id="validateAccountNrOption">
+        <action bean="sokePersonAccountNrOptionFormAction" method="validate"/>
+    	<transition on="success" to="sokPerson"/>
+    </action-state>
+
+	<action-state id="validateAccountNrForeginOption">
+        <action bean="sokePersonAccountNrForeginOptionFormAction" method="validate"/>
+    	<transition on="success" to="sokPerson"/>
+    </action-state>
+
+
+	<!-- Action states -->
+	<action-state id="sokPerson">
+	
+    	<bean-action bean="sokePersonAction" method="sokPerson">
+        	<method-arguments>
+            	<argument expression="flowScope.sokePersonForm"/>
+            </method-arguments>
+            <method-result name="sokePersonResultList" scope="flow" />
+        </bean-action>
+	
+    
+    	<transition on="success" to="results"/>
+    </action-state>
+    
+    <action-state id="resetForm">
+    	<bean-action bean="sokePersonAction" method="resetForm">
+        	<method-arguments>
+            	<argument expression="flowScope.sokePersonForm"/>
+            </method-arguments>
+        </bean-action>
+    	<transition on="success" to="enter"/>
+    </action-state>
+	 
+	<!-- End states -->
+	<end-state id="avbryt" />
+
+
+	<end-state id="hent">
+		<entry-actions>
+			<set attribute="person" scope="conversation" value="flowScope.localPersonDO"/>
+		</entry-actions>
+	</end-state>
+
+	<end-state id="logout" view="flowRedirect:start-flow" />
+	
+	<!-- Glabl transitions -->
+	<global-transitions>
+
+		<transition on="reset" to="resetForm"/>
+		
+		<transition on="tilbake" to="avbryt"/>
+
+		<transition on="sok" to="whatToValidate">
+       		<action bean="sokePersonFormAction" method="bind"/>
+		</transition>
+	
+		<transition on="logout" to="logout" />
+		
+    	<transition on="error" to="enter" />
+		
+	</global-transitions>
+
+	<import resource="spring/sokeperson-flow-beans.xml"/>
+</flow>

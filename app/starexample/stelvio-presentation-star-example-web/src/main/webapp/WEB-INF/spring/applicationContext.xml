@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+
+<beans>
+                       
+                       
+<!-- Application context definition -->
+
+	<bean id="oversiktOverHenvendelserForm" class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserForm" />
+	<bean id="oversiktOverHenvendelserAction" class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserAction" />
+
+	<bean id="henvendelseStatistikk" class="no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk"/>
+
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+  		<property name="basename" value="resources" />
+	</bean>
+
+	<bean class="no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO" id="saksbehandler" singleton="false"/>
+
+	<bean class="no.nav.presentation.pensjon.saksbehandling.form.StartForm" id="startForm" singleton="false"/>
+
+ 	<bean class="no.nav.presentation.pensjon.saksbehandling.action.SokePersonAction" id="sokePersonAction" name="no.nav.presentation.pensjon.saksbehandling.action.SokePersonAction">
+  		<property name="personService" ref="personServiceMock"/>
+ 	</bean>
+ 	
+ 	<bean class="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm" id="sokePersonForm" singleton="false" />
+ 	
+ 	
+ 	<!-- common action classes -->
+ 	
+ 	<bean class="no.nav.presentation.pensjon.common.action.PersonAction" id="personAction">
+  		<property name="personService" ref="personServiceMock"/>
+ 	</bean>
+ 	
+ 	<!-- end of common action classes -->
+ 	
+ 	
+ 	<bean class="no.nav.presentation.pensjon.saksbehandling.action.HenvendelseAction" id="henvendelseAction">
+  		<property name="henvendelsesService" ref="henvendelsServiceMock"/>
+ 	</bean>
+ 	
+ 	<bean class="no.nav.presentation.pensjon.saksbehandling.form.HentPersonForm" id="hentPersonForm" singleton="false" />
+  
+  
+ <!-- Creates the registry of flow definitions for this application. -->
+  
+ 
+ 
+ <!-- Launches new flow executions and resumes existing executions: Spring 1.2 config version -->
+<bean id="flowExecutor" class="org.springframework.webflow.config.FlowExecutorFactoryBean">
+	<property name="definitionLocator" ref="flowDefinitionLocator"/>
+	<property name="repositoryType" ref="myField" />
+</bean>
+
+<bean id="myField"
+        class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+  <property name="staticField" value="org.springframework.webflow.config.RepositoryType.CONTINUATION"/>
+</bean>
+
+<!-- Creates the registry of flow definitions for this application: Spring 1.2 config version -->
+<bean id="flowDefinitionLocator" class="org.springframework.webflow.engine.builder.xml.XmlFlowRegistryFactoryBean">
+	<property name="flowLocations">
+		<list>
+			
+			<value>/WEB-INF/flows/*-flow.xml</value>
+			<value>/WEB-INF/flows/**/*-flow.xml</value>
+		</list>
+	</property>
+</bean>
+ 
+ <!-- Creates, saves, and restores managed flow executions -->
+
+ <!--
+	  Spring configured flow navigation handler delegate, allowing for custom configuration
+	  using standard dependency injection techniques.
+	  
+	  Note: this definition is optional; you may choose to simply specify your FlowNavigationHandler
+	  in your faces-config.xml if its defaults meet your needs.
+	-->
+ <bean
+  class="org.springframework.webflow.executor.jsf.FlowNavigationHandler" id="jsfNavigationHandler">
+  <!-- property name="repositoryFactory" ref="repositoryFactory" / -->
+ </bean>
+ <!--
+	  Spring configured flow phase listener delegate, allowing for custom configuration using
+	  standard dependency injection techniques.
+	  
+	  Note: this definition is optional; you may choose to simply specify your FlowPhaseListener
+	  in your faces-config.xml if its defaults meet your needs.
+	-->
+ <bean
+  class="org.springframework.webflow.executor.jsf.FlowPhaseListener" id="flowPhaseListener">
+  <!-- property name="repositoryFactory" ref="repositoryFactory" / -->
+ </bean>
+ 
+ <bean class="no.nav.service.pensjon.person.impl.PersonServiceMock" id="personServiceMock" name="no.nav.service.pensjon.person.impl.PersonServiceMock"/>
+ 
+ <bean class="no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl.HenvendelsServiceMock" id="henvendelsServiceMock" name="no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl.HenvendelsServiceMock"/>
+ 
+ <bean class="no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl.OrgEnhetServiceMock" id="orgEnhetServiceMock" name="no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl.OrgEnhetServiceMock"/>
+  
+ <bean class="no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl.SaksbehandlerServiceMock" id="saksbehandlerServiceMock" name="no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl.SaksbehandlerServiceMock"/>
+ 
+ <!--  bean def for HenvendelseService, update with real implementation class when ready -->
+ <bean id="henvendelseService" class="no.nav.service.pensjon.henvendelse.impl.HenvendelseServiceMock" />
+ 
+</beans>

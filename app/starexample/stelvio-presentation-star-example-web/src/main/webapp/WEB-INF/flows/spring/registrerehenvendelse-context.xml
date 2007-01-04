@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+	
+<beans>
+
+	<bean id="henvendelseFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="henvendelseForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.HenvendelseForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+	    
+	    <property name="validator">
+			<ref bean="henvendelseValidator"/>
+		</property>
+	</bean>
+	
+	<bean id="henvendelseForm" class="no.nav.presentation.pensjon.saksbehandling.form.HenvendelseForm" singleton="false"  /> 
+	
+	<bean id="registrerHenvendelseAction" class="no.nav.presentation.pensjon.saksbehandling.action.RegistrerHenvendelseAction" abstract="false" singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+  		<property name="henvendelsesService" ref="henvendelsServiceMock" /> 
+  		<property name="personService" ref="personServiceMock" /> 
+  		<property name="orgEnhetService" ref="orgEnhetServiceMock" /> 
+  		<property name="henvendelseAction" ref="henvendelseAction"/>
+  	</bean>
+	 
+	 <!-- Validering som må legges til senere:
+	 	  * Hvis beskrivelsen er over 2000 tegn og en oppgave er åpen eller ikke opprettet så skal en 
+	 	    feilmelding vises og beskrivelsen skal ikke lagres.
+	 	  * Sjekker ikke at tidsbruk har f.eks. registrert verdi 009.	
+	  -->
+	<bean id="henvendelseValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	  <property name="valang">
+	    <value>
+	    	<![CDATA[
+	    		{ beskrivelse : length(?) < 2000: 'Beskrivelsen kan ikke være lenger enn 2000 tegn' : 'description_length' : 2}
+	    		{ beskrivelse : length(?) > 0: 'Beskrivelse må fylles ut' : 'description_length' : 2}
+	    		{ oppfolging : length(beskrivelse) < 0 OR ? IS NULL OR length(?) < 4000 : 'Oppfølging kan ikke være lenger enn 4000 tegn' : 'name_length' : 2}
+				{ fagomrade : fagomrade != 'Velg fagomrade' : 'Fagområde må velges' } 
+		      	{ henvendelsesType : henvendelsesType != 'Velg type henvendelse' : 'Henvendelses type må velges'}
+		      	{ stonadsType : stonadsType != 'Henvendelsen gjelder' : 'Henvendelses type må velges'}
+				{ tidsbruk : length(?) > 0 AND match('\\d{0,3}', ?) IS TRUE : 'Tidsbruk må bestå av 1-3 tall'}    	
+	    	]]>
+	    </value>
+	  </property>
+	</bean>
+
+</beans>

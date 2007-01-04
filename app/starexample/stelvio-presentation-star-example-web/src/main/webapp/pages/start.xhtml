@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
+      
+		<head>
+			<title></title>
+			
+		</head>
+
+		<body>
+		
+			<form jsfc="h:form">
+				<input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
+
+				Saksbehandlernr: <h:inputText id="saksbehandlernr" value="#{flowScope.startForm.saksbehandlernr}" maxlength="1" size="1" />
+				<input class="NAVbtn" type="submit" jsfc="h:commandButton" action="hent" value="Hent" />
+				<br /><h:message showSummary="true" showDetail="false" style="color: red; font-weight: bold;" for="saksbehandlernr" />
+			</form>		
+		
+		</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:nav="http://www.nav.no/jsf"
+      xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+<ui:composition template="/templates/ramme-saksbehandling.xhtml">
+						
+	<ui:define name="pageTitle">Personopplysninger</ui:define>
+  	<ui:define name="where">Personopplysninger</ui:define>
+  	
+	<ui:define name="leftMenu"><nav:menu toRender="true" where="personopplysninger" /></ui:define>
+	
+	<ui:define name="body">
+		<ui:decorate template="layout/personopplysningerLayout.xhtml">
+		
+			<!-- Brukerinfo -->
+			<ui:define name="etternavn"><h:outputText class="outputlang" id="etternavn" value="#{person.etternavn}" /></ui:define>
+			<ui:define name="mellomnavn"><h:outputText class="outputlang" id="mellomnavn" value="#{person.mellomnavn}" /></ui:define>
+			<ui:define name="fornavn"><h:outputText class="outputlang" id="fornavn" value="#{person.fornavn}" /></ui:define>
+			<ui:define name="kortnavn"><h:outputText class="outputlang" id="kortnavn" value="#{person.kortnavn}" /></ui:define>
+			<ui:define name="dodsdato"><h:outputText class="outputlang" id="dodsdato" value="#{person.dodsdato}" /></ui:define>
+			<ui:define name="egenAnsatt"><h:outputText class="outputlang" id="egenAnsatt" value="#{person.egenAnsatt}" /></ui:define>
+			<ui:define name="diskresjonskode"><h:outputText class="outputlang" id="diskresjonskode" value="#{person.diskresjonskode}" /></ui:define>
+			
+			<!-- Personopplysninger -->
+			<ui:define name="sivilstand"><h:outputText class="outputlang" id="sivilstand" value="#{person.sivilstand}" /></ui:define>
+			<ui:define name="samboerFNR"><h:outputText class="outputlang" id="samboerFNR" value="#{person.samboerFNR}" /></ui:define>
+			<ui:define name="umyndiggjortFOM"><h:outputText class="outputlang" id="umyndiggjortFOM" value="#{person.umyndiggjortDato}" /></ui:define>
+			<ui:define name="statsborgerskap"><h:outputText class="outputlang" id="statsborgerskap" value="#{person.personUtland.statsborgerskap}" /></ui:define>
+			<ui:define name="utvandret"><h:outputText class="outputlang" id="utvandret" value="#{person.personUtland.utvandretTil}" /></ui:define>
+			
+			<!-- Kontoopplysninger -->
+			<!-- 
+			<ui:define name="kontonummer"><h:inputText class="inputlang" id="kontonummer" value="#{person.kontonummer}" maxlength="15" size="15"/></ui:define>	
+			 -->
+			<!-- Bostedsadresse -->
+			<!-- 
+			<ui:define name="bostedsadresse"><h:outputText class="outputlang" id="bostedsadresse" value="#{person.bostedsadresse}" /></ui:define>
+			<ui:define name="bostedsPostNrSted"><h:outputText class="outputlang" id="bostedsPostNrSted" value="#{person.bostedsPostNrSted}" /></ui:define>
+			 -->
+			<!-- Postadresse -->
+			<!-- 
+			<ui:define name="postadresseLinje1"><h:outputText class="outputlang" id="postadresseLinje1" value="#{person.postadresseLinje1}" /></ui:define>
+			<ui:define name="postadresseLinje2"><h:outputText class="outputlang" id="postadresseLinje2" value="#{person.postadresseLinje2}" /></ui:define>
+			<ui:define name="postadresseLinje3"><h:outputText class="outputlang" id="postadresseLinje3" value="#{person.postadresseLinje3}" /></ui:define>
+			<ui:define name="postadresseLand"><h:outputText class="outputlang" id="postadresseLand" value="#{person.postadresseLand}" /></ui:define>
+			 -->
+			<!-- Tilleggsadresse -->	
+			<!-- 
+			<ui:define name="slettTilleggsadresse"><h:commandButton class="NAVbtn" action="slettTilleggsadresse" value="Slett tilleggsadresse" /></ui:define>
+			<ui:define name="tilleggsadresseLinje1"><h:inputText class="inputlang" id="tilleggsadresseLinje1" value="#{person.tilleggsadresseLinje1}" /></ui:define>
+			<ui:define name="tilleggsadresseLinje2"><h:inputText class="inputlang" id="tilleggsadresseLinje2" value="#{person.tilleggsadresseLinje2}" /></ui:define>
+			<ui:define name="tilleggsadressePostNr"><h:inputText class="inputlang" id="tilleggsadressePostNr" value="#{person.tilleggsadressePostNr}" /></ui:define>
+			<ui:define name="tilleggsadressePostSted"><h:outputText class="outputlang" id="tilleggsadressePostSted" value="#{person.tilleggsadressePostSted}" /></ui:define>
+			 -->
+			<!-- Utenlandsadresse -->
+			<!-- 
+			<ui:define name="utenlandsadresseLinje1"><h:inputText class="inputlang" id="utenlandsadresseLinje1" value="#{person.utelandsadresseLinje1}" /></ui:define>
+			<ui:define name="utenlandsadresseLinje2"><h:inputText class="inputlang" id="utenlandsadresseLinje2" value="#{person.utelandsadresseLinje2}" /></ui:define>
+			<ui:define name="utenlandsadresseLinje3"><h:inputText class="inputlang" id="utenlandsadresseLinje3" value="#{person.utelandsadresseLinje3}" /></ui:define>				
+			
+			<ui:define name="lagre">
+				<h:commandLink class="NAVbtn" action="lagre">
+					<img height="14" src="../img/save.gif" width="14" style="vertical-align: middle" />
+				</h:commandLink>
+			</ui:define>
+				 -->				
+		</ui:decorate>
+	</ui:define>
+	
+</ui:composition>
+</html>

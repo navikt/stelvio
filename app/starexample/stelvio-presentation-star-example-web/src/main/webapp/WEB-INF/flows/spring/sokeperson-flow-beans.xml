@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+
+<beans>
+
+
+	<!-- In order to only validate the used fields we have divided the form into smaller forms to be validated -->
+	
+	<!-- The main form, only used to bind the values -->
+	<bean id="sokePersonFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="sokePersonForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+	</bean>
+	
+	
+	
+	<!-- Validation if the radio button "Navn/ etternavn" is selected-->
+	<bean id="sokePersonNavnFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="sokePersonForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		<property name="validator">
+			<ref bean="sokePersonNavnValidator"/>
+		</property>
+	</bean>
+	<bean id="sokePersonNavnValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+		<property name="valang">
+	    	<value>
+	    		<![CDATA[
+	    			{ fornavn : length(?) != 0 OR length(etternavn) != 0: 'Du må taste inn et navn'}
+		    	]]>
+		    </value>
+		</property>
+	</bean>
+	
+	<!-- Validation if the radio button "Adresse" is selected-->
+	<bean id="sokePersonAdressFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="sokePersonForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		<property name="validator">
+			<ref bean="sokePersonAdressValidator"/>
+		</property>
+	</bean>
+	<bean id="sokePersonAdressValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+		<property name="valang">
+	    	<value>
+	    		<![CDATA[
+	    			{ bostedsadresse : length(?) != 0 : 'Du må taste inn en adresse'}
+		    	]]>
+		    </value>
+		</property>
+	</bean>
+	
+	<!-- Validation if the radio button "Annen adresse" is selected-->
+	<bean id="sokePersonAnnenAdressFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="sokePersonForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		<property name="validator">
+			<ref bean="sokePersonAnnenAdressValidator"/>
+		</property>
+	</bean>
+	<bean id="sokePersonAnnenAdressValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+		<property name="valang">
+	    	<value>
+	    		<![CDATA[
+	    			{ annenAdresse : length(?) != 0 : 'Du må taste inn en adresse'}
+		    	]]>
+		    </value>
+		</property>
+	</bean>
+	
+	<!-- Validation if the radio button "Annen adresse" is selected-->
+	<bean id="sokePersonFodselsdatoFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="sokePersonForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		<property name="validator">
+			<ref bean="sokePersonFodselsdatoValidator"/>
+		</property>
+	</bean>
+	<bean id="sokePersonFodselsdatoValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+		<property name="valang">
+	    	<value>
+	    		<![CDATA[
+	    			{ fullFodselsDato : length(?) != 0 : 'Du må taste inn en fødselsdato'}
+		    	]]>
+		    </value>
+		</property>
+	</bean>
+	
+	
+	
+	<!-- Validation if the radio button "Fødselsnummer" is selected-->
+	<bean id="sokePersonFodselsnummerFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="sokePersonForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		<property name="validator">
+			<ref bean="sokePersonFodselsnummerValidator"/>
+		</property>
+	</bean>
+
+	<bean id="sokePersonFodselsnummerValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	 	<property name="customFunctions">
+			<map>
+				<entry key="modulus11">
+					<value>no.nav.presentation.pensjon.saksbehandling.stelvio.validate.Modulus11Function</value>
+				</entry>
+			</map>
+		</property>
+			 	
+		<property name="valang">
+	    	<value>
+	    		<![CDATA[
+	    			{ fnr : length(?) != 0 : 'Du må taste inn et fødselsnummer'}
+	      			{ fnr : length(?) > 10 : 'Fødselsnummer skal være 11 siffer, du har tastet inn for få'}
+	      			{ fnr : length(?) < 12 : 'Fødselsnummer skal være 11 siffer, du har tastet inn for mange'}
+	    			{ fnr : modulus11(?) == true : 'Ugyldig fødselsnummer' }
+		    	]]>
+		    </value>
+		</property>
+	</bean>
+		
+		
+		
+	<!-- Validation if the radio button "AccountNrOption" is selected-->
+	<bean id="sokePersonAccountNrOptionFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="sokePersonForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		<property name="validator">
+			<ref bean="sokePersonAccountNrOptionValidator"/>
+		</property>
+	</bean>
+
+	<bean id="sokePersonAccountNrOptionValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+		<property name="valang">
+	    	<value>
+	    		<![CDATA[
+	    			{ norskKontonummer : length(?) != 0 : 'Du må taste inn et kontonummer'}
+		    	]]>
+		    </value>
+		</property>
+	</bean>
+		
+		
+		
+	<!-- Validation if the radio button "AccountNrOption" is selected-->
+	<bean id="sokePersonAccountNrForeginOptionFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="sokePersonForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		<property name="validator">
+			<ref bean="sokePersonAccountNrForeginOptionValidator"/>
+		</property>
+	</bean>
+
+	<bean id="sokePersonAccountNrForeginOptionValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+		<property name="valang">
+	    	<value>
+	    		<![CDATA[
+	    			{ utenlandskKontonummer : length(?) != 0 : 'Du må taste inn et kontonummer'}
+		    	]]>
+		    </value>
+		</property>
+	</bean>
+		
+		
+		
+</beans>

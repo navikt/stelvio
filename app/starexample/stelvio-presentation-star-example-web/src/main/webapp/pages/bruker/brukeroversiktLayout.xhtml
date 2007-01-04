@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:stelvio="http://www.stelvio.no/jsf/core"
+      xmlns:nav="http://www.nav.no/jsf"
+      xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+
+<ui:composition>
+
+			<div id="layer_hoved" style="width: 850px; height: 500px; left: 150px; top: 100px">
+			
+			
+			
+			    <h:form id="hentPerson">
+			    <input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
+			    
+				<table class="standard_data_tabell" cellspacing="0" cellpadding="0" width="849" border="0">
+			    	<tbody> 
+			    		<tr>
+				  			<td class="standard_data_tabell_data" width="130">&#160;<h:outputText value="#{messageSource['brukeroversikt.ledetekst.fodselsnummer']}" />&#160;</td>
+				  			<td class="standard_data_tabell_data">
+
+				  				<ui:insert name="fodselsnummer">---missing fodselsnummer input---</ui:insert>
+				  				<input jsfc="h:inputText" style="display: none" value="" />
+			        			&#160;&#160;<ui:insert name="hent">---missing hent button---</ui:insert>&#160;
+			        			&#160;<ui:insert name="sok">---missing sok button---</ui:insert>
+			        			
+			        			<nav:errorMessage form="hentPerson" for="fodselsnummer" />
+			      		
+				        		<h:panelGroup rendered="#{stelvio:hasMessages('hentPerson', 'fodselsnummer')}">
+				        			<div class="errorMessage"><h:messages showSummary="true" showDetail="false" /></div>
+				        		</h:panelGroup>
+			        			
+			        		</td>
+						</tr>
+						
+						
+			    	</tbody> 
+			  	</table>
+			  	</h:form>
+			
+			
+				<!-- infoline common -->
+				<nav:infoline 	person="#{person}"
+								toRender="#{person != null}" />
+
+
+
+				<!-- brukerinfo -->
+				<h:panelGroup rendered="#{person != null}">
+				
+				  <table class="standard_data_tabell" cellspacing="0" cellpadding="0" width="849" border="0">
+				    <tbody> 
+				    <tr> 
+				      <td class="standard_data_tabell_label" width="170"><h:outputText value="#{messageSource['brukeroversikt.statisktekst.tilknyttetenhet']}" /></td>
+				      <td class="standard_data_tabell_data">TODO</td>
+				    </tr>
+				    <tr> 
+				      <td class="standard_data_tabell_label"><h:outputText value="#{messageSource['brukeroversikt.statisktekst.tilrettelagtkommunikasjon']}" /></td>
+				      <td class="standard_data_tabell_data">TODO</td>
+				    </tr>
+				    </tbody> 
+				  </table>
+				</h:panelGroup>
+
+				 					
+				 					
+				<!-- Henvendelser --> 					
+				<h:form id="myForm" rendered="#{person != null}">
+				<input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
+				
+					<h3><h:outputText value="#{messageSource['brukeroversikt.blokkoverskrift.henvendelser']}" /></h3>
+				
+					<h:dataTable 	id="henvendelser"
+									value="#{flowScope.henvendelser.list}"
+									first="#{flowScope.henvendelser.rowIndex}"
+									var="henvendelse"
+									rows="#{flowScope.henvendelser.numberOfRows}"
+									width="849"
+									footerClass="standard_data_tabell_footer"
+									headerClass="standard_data_tabell_label"
+									styleClass="standard_data_tabell"
+									columnClasses="standard_data_tabell_data"
+									cellpadding="0"
+									cellspacing="0">
+					
+						<h:column>
+							<f:facet name="header">
+								<a4j:status>
+									<f:facet name="start">
+										<h:graphicImage value="/images/ajax-loader.gif" />
+									</f:facet>
+									<f:facet name="stop">
+										<h:graphicImage value="/images/ajax-stopped.gif" />
+									</f:facet>
+								</a4j:status>
+							</f:facet>
+								<h:commandLink action="updatehenvendelse">
+									<t:updateActionListener property="#{flowScope.henvendelse}" value="#{henvendelse}" />
+									<img src="/img/icon_properties_16x16.gif" height="16" width="16" border="0"/>
+								</h:commandLink>
+						</h:column>
+					
+						<!--  Fagomrode -->
+						<nav:sortColumn header="#{messageSource['brukeroversikt.kolonneoverskrift.fagomrade']}" tableName="henvendelser" value="#{henvendelse.fagomrKode}" id="fagomrKode" list="#{flowScope.henvendelser}" />
+					
+						<!--  Reg. dato -->
+						<nav:sortColumn header="#{messageSource['brukeroversikt.kolonneoverskrift.regdato']}" tableName="henvendelser" value="--TODO--" id="opprettetDato" list="#{flowScope.henvendelser}" />
+					
+						<!--  Reg. enhet -->
+						<nav:sortColumn header="#{messageSource['brukeroversikt.kolonneoverskrift.regenhet']}" tableName="henvendelser" value="#{henvendelse.opprettetEnhet}" id="opprettetEnhet" list="#{flowScope.henvendelser}" />
+					
+						<!--  Saksnummer -->
+						<nav:sortColumn header="#{messageSource['brukeroversikt.kolonneoverskrift.saksnummer']}" tableName="henvendelser" value="#{henvendelse.sakId}" id="sakId" list="#{flowScope.henvendelser}" />
+					
+						<!--  Henvendelsen gjelder -->
+						<nav:column header="#{messageSource['brukeroversikt.kolonneoverskrift.gjelder']}" tableName="henvendelser" value="--TODO--" id="status" list="#{flowScope.henvendelser}" />
+					
+						<!--  Type henvendelse -->
+						<nav:sortColumn header="#{messageSource['brukeroversikt.kolonneoverskrift.type']}" tableName="henvendelser" value="#{henvendelse.henvtype}" id="henvtype" list="#{flowScope.henvendelser}" />
+					
+						<!--  Oppgave -->
+						<nav:column header="#{messageSource['brukeroversikt.kolonneoverskrift.oppgave']}" tableName="henvendelser" value="--TODO--" id="notat" list="#{flowScope.henvendelser}" />
+					
+						<!--  Footer -->
+						<nav:pageingFooter list="#{flowScope.henvendelser}" />
+					
+					
+					</h:dataTable>
+				
+				
+				</h:form>
+				 					
+				 					
+				 					
+				 					
+				 					
+
+				 	 
+			</div>
+
+		
+</ui:composition>
+
+</html>
+		

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+
+<ui:composition>
+	<f:facet name="footer">
+	
+		<h:panelGroup>
+		
+		<h:panelGroup rendered="#{list.listempty == 1}">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td><h:outputText value="lista inneholder ingen rader" /></td>
+			</tr>
+		</table>
+		</h:panelGroup>
+		
+		<h:outputFormat value="#{messageSource['brukeroversikt.ledetekst.viserantall']}">
+		  <f:param value="#{list.showStart}"/>
+		  <f:param value="#{list.showEnd}"/>
+		  <f:param value="#{list.numberOfEntries}"/>
+		</h:outputFormat>		
+		
+		<h:outputText value="Side " rendered="#{list.numberOfPages > 1}" />
+		<h:outputText value="#{list.pageIndex}" rendered="#{list.numberOfPages > 1}" />
+		<h:outputText value=" av " rendered="#{list.numberOfPages > 1}" />
+		<h:outputText value="#{list.numberOfPages}" rendered="#{list.numberOfPages > 1}" />
+		<h:outputText value=" " rendered="#{list.numberOfPages > 1}" />
+
+			<a4j:commandLink rendered="#{list.pageIndex > 1}">
+				<h:graphicImage url="/img/forst.gif" />
+				<a4j:support reRender="henvendelser" event="onclick" actionListener="#{list.pageing}" id="first"/>
+			</a4j:commandLink>
+			<h:graphicImage url="/img/forst_gra.gif" rendered="#{list.pageIndex &lt;= 1 and list.numberOfPages > 1}" />
+
+			<a4j:commandLink rendered="#{list.pageIndex > 1}">
+				<h:graphicImage url="/img/forrige.gif" />
+				<a4j:support reRender="henvendelser" event="onclick" actionListener="#{list.pageing}" id="previous"/>
+			</a4j:commandLink>
+			<h:graphicImage url="/img/forrige_gra.gif" rendered="#{list.pageIndex &lt;= 1 and list.numberOfPages > 1}" />
+		
+			<a4j:commandLink rendered="#{list.pageIndex != list.numberOfPages and list.numberOfPages > 1}">
+				<h:graphicImage url="/img/neste.gif" />
+				<a4j:support reRender="henvendelser" event="onclick" actionListener="#{list.pageing}" id="next"/>
+			</a4j:commandLink>
+			<h:graphicImage url="/images/neste_gra.gif" rendered="#{list.pageIndex == list.numberOfPages and list.numberOfPages > 1}" />
+			
+			<a4j:commandLink rendered="#{list.pageIndex != list.numberOfPages and list.numberOfPages > 1}">
+				<h:graphicImage url="/img/sist.gif" />
+				<a4j:support reRender="henvendelser" event="onclick" actionListener="#{list.pageing}" id="last"/>
+			</a4j:commandLink>
+			<h:graphicImage url="/images/sist_gra.gif" rendered="#{list.pageIndex == list.numberOfPages and list.numberOfPages > 1}" />
+		
+		</h:panelGroup>
+	</f:facet>
+</ui:composition>
+
+</html>

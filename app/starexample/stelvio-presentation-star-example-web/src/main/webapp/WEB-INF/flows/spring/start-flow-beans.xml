@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+
+<beans>
+
+
+	<bean class="no.nav.presentation.pensjon.saksbehandling.action.StartAction" id="startAction">
+  		<property name="saksbehandlerService" ref="saksbehandlerServiceMock"/>
+	</bean>
+	
+	
+	<bean id="startFormAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectName" value="startForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.StartForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		
+	</bean>
+	
+	
+	
+
+		
+</beans>

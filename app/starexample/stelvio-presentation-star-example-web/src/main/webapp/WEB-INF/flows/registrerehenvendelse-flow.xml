@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
+
+    <input-mapper>
+        <mapping source="henvendelse" target="flowScope.henvendelse"/>
+    </input-mapper>
+
+	<start-state idref="populateForm" />
+	
+	<action-state id="populateForm">
+	
+    	<bean-action bean="registrerHenvendelseAction" method="setupForm">
+        	<method-arguments>
+            	<argument expression="flowScope.henvendelse" />
+            	<argument expression="externalContext.sessionMap.get('saksbehandlerDO')" />
+            </method-arguments>
+            <method-result name="henvendelseForm" scope="flow" />
+        </bean-action>
+        
+        <transition on="success" to="registrerhenvendelse" />
+        
+    </action-state>
+
+
+	<view-state id="registrerhenvendelse" view="/pages/henvendelse/registrerhenvendelse.xhtml">
+		<transition on="save" to="saveHenvendelse">
+			<action bean="henvendelseFormAction" method="bindAndValidate" />	
+		</transition>
+	</view-state>
+	 
+	 
+	<action-state id="saveHenvendelse" >
+    	<bean-action bean="registrerHenvendelseAction" method="lagreHenvendelse">
+        	<method-arguments>
+            	<argument expression="flowScope.henvendelseForm" />
+            </method-arguments>
+        </bean-action>
+	
+		<!-- action bean="registrerHenvendelseAction" method="saveHenvendelse"/ -->	
+		<transition on="success" to="registrerhenvendelse" />
+	</action-state>
+
+	<end-state id="slutt" />
+		
+	<end-state id="logout" view="flowRedirect:start-flow" />
+	
+	<global-transitions>
+		<transition on="brukeroversikt" to="slutt" />
+		<transition on="logout" to="logout" />
+	</global-transitions>
+	
+	<import resource="spring/registrerehenvendelse-context.xml"/>
+	
+</flow>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:nav="http://www.nav.no/jsf">
+
+<f:loadBundle basename="resources" var="msg" />
+
+<ui:composition>
+
+<form jsfc="h:form" id="henvendelse">
+	<table class="standard_data_tabell" cellspacing="0" width="849" border="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td class="standard_data_tabell_label" width="174">Fagområde</td>
+				<td class="standard_data_tabell_label" width="191">Stønadstype</td>
+				<td class="standard_data_tabell_label" width="198">Type henvendelse</td>
+				<td class="standard_data_tabell_label" width="151">Kanal</td>
+				<td class="standard_data_tabell_label">Tidsbruk</td>
+			</tr>
+			<tr>
+				<td class="standard_data_tabell_data" nowrap="nowrap">
+					<h:selectOneMenu id="fagomrade" value="#{henvendelse.fagomrade}" tabindex="1">
+						<f:selectItem id="fagomradel" itemValue="Velg fagomrade" />
+						<f:selectItems id="fagomrader" value="#{henvendelse.fagomrader}" />
+					</h:selectOneMenu>
+					<nav:errorMessage form="henvendelse" for="fagomrade" />
+				</td>
+				<td class="standard_data_tabell_data" nowrap="nowrap">
+					<h:selectOneMenu id="stonadsType" value="#{henvendelse.stonadsType}" tabindex="2">
+						<f:selectItem itemValue="Henvendelsen gjelder" />
+						<f:selectItems value="#{henvendelse.stonadsTyper}" />
+					</h:selectOneMenu>
+					<nav:errorMessage form="henvendelse" for="stonadsType" />
+				</td>
+				<td class="standard_data_tabell_data" nowrap="nowrap">
+					<h:selectOneMenu id="henvendelsesType" value="#{henvendelse.henvendelsesType}" tabindex="3">
+						<f:selectItem itemValue="Velg type henvendelse" />
+						<f:selectItems value="#{henvendelse.henvendelsesTyper}" />
+					</h:selectOneMenu>
+					<nav:errorMessage form="henvendelse" for="henvendelsesType" />
+				</td>
+				<td class="standard_data_tabell_data" nowrap="nowrap">
+					<h:selectOneMenu id="kanal" value="#{henvendelse.kanal}" tabindex="4">
+						<f:selectItems value="#{henvendelse.kanaler}" />
+					</h:selectOneMenu>
+				</td>
+				<td class="standard_data_tabell_data">
+					<input jsfc="h:inputText" id="tidsbruk" value="#{henvendelse.tidsbruk}" size="5" tabindex="5"/> 
+					min
+					<nav:errorMessage form="henvendelse" for="tidsbruk" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p class="spacer_tabeller" />
+	<table class="standard_data_tabell" cellspacing="0" width="849" border="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td class="standard_data_tabell_label">Beskrivelse<br />
+					<textarea jsfc="h:inputTextarea" disabled="#{henvendelse.beskrivelseLagret}" id="beskrivelse" rows="6" cols="102" value="#{henvendelse.beskrivelse}" tabindex="6"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="standard_data_tabell_label">
+					<nav:errorMessage form="henvendelse" for="beskrivelse" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p class="spacer_tabeller" />
+  	<table class="standard_data_tabell" cellspacing="0" width="849" border="0">
+    	<tbody> 
+    		<tr> 
+      			<td class="standard_data_tabell_label">Oppfølging<br/>
+		        	<textarea jsfc="h:inputTextarea"  id="oppfolging" rows="6" cols="102" tabindex="7" value="#{henvendelse.oppfolging}" />
+      			</td>
+    		</tr>
+			<tr>
+				<td class="standard_data_tabell_label">
+					<nav:errorMessage form="henvendelse" for="oppfolging" />
+				</td>
+			</tr>
+    		
+    	</tbody>
+  	</table>  
+
+	<p class="spacer_tabeller" />
+	<table width="849">
+		<tbody>
+			<tr>
+				<td class="knapperad">
+					<input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}" />
+					<div align="right">
+					  
+
+						<button class="NAVbtn">
+							<img height="14" src="/img/save.gif" width="14" border="0" style="vertical-align: middle" /> 
+							Lage e-post
+						</button>
+						&#160;
+						<button class="NAVbtn">
+							<img height="14" src="/img/save.gif" width="14" border="0" style="vertical-align: middle" /> 
+							Avtale mote
+						</button>
+						&#160;
+						<button class="NAVbtn">
+							<img src="/img/save.gif" width="14" border="0" height="14" style="vertical-align: middle" /> 
+							Lag oppgave
+						</button>
+						&#160;
+						<h:commandLink action="save" tabindex="8">
+							<button class="NAVbtn">
+								<img height="14" src="/img/save.gif" width="14" style="vertical-align: middle" />
+							</button>
+						</h:commandLink>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</form>
+</ui:composition>
+</html>

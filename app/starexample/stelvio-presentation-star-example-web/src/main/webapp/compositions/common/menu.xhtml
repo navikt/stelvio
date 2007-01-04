@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition>
+	
+  <form jsfc="h:form" rendered="#{toRender}">
+  <input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
+  <ul>
+  	<h:panelGroup rendered="#{where == 'brukeroversikt'}">
+		<h2>Brukeroversikt</h2>
+	</h:panelGroup>
+  	<h:panelGroup rendered="#{where != 'brukeroversikt'}">
+		<h:commandLink class="vmlink" value="Brukeroversikt" action="brukeroversikt"/>
+	</h:panelGroup>
+	
+  	<h:panelGroup rendered="#{where == 'reghenvendelse'}">
+		<li><h2>Registrere henvendelse</h2></li>
+	</h:panelGroup>
+  	<h:panelGroup rendered="#{where != 'reghenvendelse'}">
+		<li><h:commandLink class="vmlink" value="Registrere henvendelse" action="reghenvendelse"/></li>
+	</h:panelGroup>
+	
+	<h:panelGroup rendered="#{where == 'personopplysninger'}">
+		<li><h2>Person- opplysninger</h2></li>
+	</h:panelGroup>
+  	<h:panelGroup rendered="#{where != 'personopplysninger'}">
+		<li><h:commandLink class="vmlink" value="Person-opplysninger" action="personopplysninger"/></li>
+	</h:panelGroup>
+
+  	<h:panelGroup rendered="#{where == 'oversikthenvendelse'}">
+		<li><h2>Oversikt over henvendelser</h2></li>
+	</h:panelGroup>
+  	<h:panelGroup rendered="#{where != 'oversikthenvendelse'}">
+		<li><h:commandLink class="vmlink" value="Oversikt over henvendelser" action="oversikthenvendelse"/></li>
+	</h:panelGroup>
+
+    <li><a class="vmlink" href="#">Utbetalinger</a></li>
+    <li><a class="vmlink" href="#">Familieforhold</a></li>
+	<li><a class="vmlink" href="#">Medlemskap</a></li>
+    <li><a class="vmlink" href="#">Selvbetjening</a></li>
+  </ul>
+  </form>
+  
+</ui:composition>
+
+
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+
+<beans>
+	<!-- bean id="oversiktOverHenvendelserForm" class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserForm" singleton="false"/ -->
+	<bean id="oversiktOverHenvendelserAction" class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserAction">
+		<property name="formObjectName" value="oversiktOverHenvendelserForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserForm"/>
+	    <property name="formObjectScope" value="FLOW"/>
+		<property name="validator">
+			<ref bean="hentOversiktOverHenvendelserValidator"/>
+		</property>	
+		
+		<property name="henvendelseService">
+			<ref bean="henvendelseService"/>
+		</property>
+	</bean>
+
+ 	<!--  bean def for HenvendelseService, update with real implementation class when ready -->
+	<bean id="henvendelseService" class="no.nav.service.pensjon.henvendelse.impl.HenvendelseServiceMock"/>
+	
+	<bean id="hentOversiktOverHenvendelserValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+		<property name="messageSource" ref="messageSource" />
+
+	 	<property name="customFunctions">
+			<map>
+				<entry key="checkParameters">
+					<value>no.nav.presentation.pensjon.psak.henvendelse.SpesifikasjonValidatorFunction</value>
+				</entry>
+				<entry key="checkTidsperiode">
+					<value>no.nav.presentation.pensjon.psak.henvendelse.TidsperiodeValidatorFunction</value>
+				</entry>				
+			</map>
+		</property>
+		
+		<property name="valang">
+		    <value>
+			    <![CDATA[
+			    	{ valgtTidsperiode : checkTidsperiode(?) == true : 'Ugyldig tidsperiode' : 'oversiktOverHenvendelser.ugyldigTidsperiode' }			    
+				   	{ valgtSok : checkParameters(?, valgtFagomrade) == true : 'Ugyldig sok' : 'oversiktOverHenvendelser.ugyldigSok' }
+			    ]]>
+		    </value>
+		</property>
+	</bean>
+
+<!-- validering var:
+
+			    	{ valgtTidsperiode : ? in 'Siste 4 uker', 'Siste 5 dager' : 'Ugyldig tidsperiode' : 'oversiktOverHenvendelser.ugyldigTidsperiode' }
+			    	{ valgtFagomrade : ? in 'Pensjon', 'Bidrag', 'Alle' : 'Ugyldig fagomrade' : 'oversiktOverHenvendelser.ugyldigFagomrade' }
+				   	{ valgtFagomrade : ? == 'Alle' AND valgtSok == 'antall' : 'Ugyldig sok' : 'oversiktOverHenvendelser.ugyldigSok' }
+ -->
+	
+</beans>

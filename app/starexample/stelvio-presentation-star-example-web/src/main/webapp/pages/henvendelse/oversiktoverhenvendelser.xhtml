@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:nav="http://www.nav.no/jsf"
+      xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	  xmlns:t="http://myfaces.apache.org/tomahawk">
+	  
+<f:loadBundle basename="resources" var="msg" />
+
+<ui:composition template="/templates/ramme-saksbehandling.xhtml">
+						
+	<ui:define name="pageTitle">Oversikt over henvendelser</ui:define>
+  	<ui:define name="where">Oversikt over henvendelser</ui:define>
+	<ui:define name="leftMenu"><nav:menu toRender="true" where="oversikthenvendelse" /></ui:define>
+	
+	<ui:define name="body">
+		<div id="layer_hoved" style="width: 850px; height: 500px; left: 150px; top: 100px">
+
+		    <div><form jsfc="h:form" id="hentHenvendelseStatistikk" rendered="true">
+				<input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
+				<p class="spacer_tabeller" />
+				<h3><h:outputText value="#{messageSource['oversiktOverHenvendelser.begrenseSok']}"/></h3>
+				<table class="standard_data_tabell" cellspacing="0" cellpadding="0" width="849" border="0">
+			    	<tbody> 
+			    		<tr>
+				  			<td class="standard_data_tabell_data" width="310">&#160;<h:outputText value="#{messageSource['oversiktOverHenvendelser.fagomrade']}:" />&#160;
+								<t:selectOneMenu id="valgtFagomrade" value="#{flowScope.oversiktOverHenvendelserForm.valgtFagomrade}" converter="fagomradeEnumConverter" tabindex="3">
+									<f:selectItems value="#{flowScope.oversiktOverHenvendelserForm.fagomrader}" />
+								</t:selectOneMenu>
+								<nav:errorMessage form="hentHenvendelseStatistikk" for="valgtFagomrade" />
+							</td>
+				  			<td class="standard_data_tabell_data" width="539">&#160;<h:outputText value="#{messageSource['oversiktOverHenvendelser.tidsperiode']}:" />&#160;
+								<t:selectOneMenu id="valgtTidsperiode" value="#{flowScope.oversiktOverHenvendelserForm.valgtTidsperiode}" converter="tidsperiodeEnumConverter" tabindex="3">
+									<f:selectItem itemValue="#{messageSource['oversiktOverHenvendelser.velgTidsperiode']}:"/>
+									<f:selectItems value="#{flowScope.oversiktOverHenvendelserForm.tidsperioder}" />
+								</t:selectOneMenu>
+								<nav:errorMessage form="hentHenvendelseStatistikk" for="valgtTidsperiode" />
+							</td>
+						</tr>
+			    	</tbody> 
+			  	</table>
+			  	<p class="spacer_tabeller" />
+				<h3><h:outputText value="#{messageSource['oversiktOverHenvendelser.spesifikasjon']}"/></h3>
+
+				<t:selectOneRadio id="valgtSok" layout="spread" value="#{flowScope.oversiktOverHenvendelserForm.valgtSok}" converter="spesifikasjonEnumConverter">
+					<f:selectItems value="#{flowScope.oversiktOverHenvendelserForm.sokeAlternativ}" />
+				</t:selectOneRadio>
+				<table class="standard_data_tabell" cellspacing="0" cellpadding="0" width="849" border="0">
+			    	<tbody> 
+			    		<tr>
+			    			<td class="standard_data_tabell_data" colspan="1" height="25" width="30">
+					    		<t:radio for="valgtSok" index="0" />
+			    			</td>
+				  			<td class="standard_data_tabell_label" height="25" width="180">
+				  				&#160;<h:outputText value="#{messageSource['oversiktOverHenvendelser.kunAntall']}" />&#160;
+							</td>
+							<td class="standard_data_tabell_data" colspan="1" height="25" width="30">
+					    		<t:radio for="valgtSok" index="1" />
+							</td>
+				  			<td class="standard_data_tabell_label" height="25" width="609">&#160;<h:outputText value="#{messageSource['oversiktOverHenvendelser.kanal']}" />&#160;
+							</td>
+						</tr>
+			    		<tr>
+			    			<td class="standard_data_tabell_data" colspan="1" height="25" width="30">
+					    		<t:radio for="valgtSok" index="2" />
+			    			</td>
+				  			<td class="standard_data_tabell_label" height="25" width="180">
+				  				&#160;<h:outputText value="#{messageSource['oversiktOverHenvendelser.gjelder']}" />&#160;
+							</td>
+							<td class="standard_data_tabell_data" colspan="1" height="25" width="30">
+					    		<t:radio for="valgtSok" index="3" />
+							</td>
+				  			<td class="standard_data_tabell_label" height="25" width="609">&#160;<h:outputText value="#{messageSource['oversiktOverHenvendelser.type']}" />&#160;
+							</td>
+						</tr>
+			    	</tbody> 
+			  	</table>
+			  	<p class="spacer_tabeller" />			  	
+				<table cellspacing="0" cellpadding="0" width="849" border="0">
+			    	<tbody>
+			    		<tr>
+			    			<td align="left"><nav:errorMessage form="hentHenvendelseStatistikk" for="valgtSok" /></td>
+			    		</tr> 
+			    		<tr>
+			    			<td align="right"><h:commandButton class="NAVbtn" action="hent" value="Hent" /></td>
+			    		</tr>
+			  		</tbody>
+			  	</table>
+		  	</form></div>
+  		</div>
+	</ui:define>
+
+</ui:composition>
+</html>

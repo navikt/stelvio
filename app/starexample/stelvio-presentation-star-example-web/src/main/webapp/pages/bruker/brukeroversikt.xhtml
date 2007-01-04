@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:nav="http://www.nav.no/jsf"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
+
+	<f:loadBundle basename="resources" var="msg" />
+	
+	<ui:composition template="/templates/ramme-saksbehandling.xhtml">
+							
+		<ui:define name="pageTitle">Brukeroversikt</ui:define>
+		<ui:define name="where">Brukeroversikt</ui:define>
+		
+		<ui:define name="leftMenu"><nav:menu 	toRender="#{person != null}" 
+												where="brukeroversikt" /></ui:define>
+		
+		<ui:define name="body">
+					
+			<ui:decorate template="brukeroversiktLayout.xhtml">
+			
+				<ui:define name="fodselsnummer"><h:inputText class="inputlang" id="fodselsnummer" value="#{flowScope.hentPersonForm.fodselsnummer}" maxlength="12" /></ui:define>
+				<ui:define name="hent"><h:commandButton class="NAVbtn" action="hent" value="Hent" /></ui:define>
+			
+				<ui:define name="sok"><h:commandLink action="sok" ><img src="/img/icon_search_people_16x16.gif" width="16" height="16"/></h:commandLink></ui:define>
+			
+			</ui:decorate>
+
+		</ui:define>
+		
+	</ui:composition>
+	
+</html>

@@ -1,3 +1,7 @@
+app/starexample/stelvio-domain-star-example-java/target
+app/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/classes
+app/starexample/stelvio-repository-star-example-java/target
+app/starexample/stelvio-service-star-example-ejb/target
 app/stelvio-batch-java/batch.iml
 app/stelvio-batch-java/bin
 app/stelvio-batch-java/target

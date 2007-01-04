@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+
+<ui:composition>
+	<h:column>
+			<f:facet name="header">
+				<h:panelGroup>
+					<a4j:commandLink value="#{header}">
+						<a4j:support reRender="#{tableName}" event="onclick" actionListener="#{list.sorting}" id="#{id}"/>
+					</a4j:commandLink>&#160;&#160;
+					<h:graphicImage url="/img/opp.gif" rendered="#{ ( list.sort == id ) and list.ascending }" />
+					<h:graphicImage url="/img/ned.gif" rendered="#{ ( list.sort == id ) and !list.ascending }" />
+				</h:panelGroup>
+			</f:facet>
+			<h:outputText value="#{value}" />&#160;
+	</h:column>
+</ui:composition>
+
+</html>

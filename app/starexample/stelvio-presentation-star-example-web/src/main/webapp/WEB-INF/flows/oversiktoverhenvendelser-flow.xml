@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
+
+	<start-state idref="tom" />
+
+	<!-- todo må kanskje ha en start action med setupForm for å blanke det til neste gang brukeren er innom -->
+
+	<!-- empty view -->
+	<view-state id="tom" view="/pages/henvendelse/oversiktoverhenvendelser.xhtml">
+       	<transition on="hent" to="hentStatistikk">
+       		<action bean="oversiktOverHenvendelserAction" method="bindAndValidate"/>
+       	</transition>		
+	</view-state>
+
+	<!-- action for calling back end -->
+	<action-state id="hentStatistikk">
+	    <bean-action bean="oversiktOverHenvendelserAction" method="hentStatistikk">
+	    	<method-arguments>
+        		<argument expression="flowScope.oversiktOverHenvendelserForm" />
+        		<!-- argument expression="flowScope.saksbehandlerDO.enhet"/ -->
+         	</method-arguments>
+			<method-result name="flowScope.henvendelseStatistikk"/>
+		</bean-action>
+    	<transition on="success" to="resultat"/>
+	    <!-- transition on="error" to="showError"/ -->
+	 </action-state>
+
+
+	<!-- view with results -->
+	<view-state id="resultat" view="/pages/henvendelse/oversiktoverhenvendelser.xhtml">
+	
+	</view-state>
+
+
+	<!-- Imports spring beans, and Valang stuff into this flow -->
+	<import resource="spring/oversiktoverhenvendelser-flow-beans.xml"/>
+
+</flow>

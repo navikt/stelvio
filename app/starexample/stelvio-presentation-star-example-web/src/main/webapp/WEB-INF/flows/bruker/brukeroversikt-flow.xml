@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
+
+	<!-- Defines the start-state. -->
+	<start-state idref="tom" />
+
+
+	<!-- view-state tom
+			For the moment the only view-state on this page. -->
+	<view-state id="tom" view="/pages/bruker/brukeroversikt.xhtml" />
+
+
+	<view-state id="hentetBruker" view="/pages/bruker/brukeroversikt.xhtml">
+	
+       	<transition on="reghenvendelse" to="reghenvendelse" />
+       	
+       	<transition on="updatehenvendelse" to="updatehenvendelse" />
+       	
+	</view-state>
+
+
+
+
+	<!-- action-state hentPerson
+			This action-state calls the method hentPerson on the hentPersonAction bean with
+			the hentPersonForm as a parameter. That method returns a Person which is
+			placed in the flowScope with the name person.
+			
+			If it could get a Person it sets the varibale showInfo and showMenu in the
+			flowScope to true. It then sends the user to the action-state hentHenvendelser.
+			
+			If a PersonNotFoundException is trown many variables in flowScope are set to
+			false, so that elements on the page are not rendered. It also sends the user
+			back to the enter view-state. -->
+	<action-state id="hentPerson">
+	
+    	<bean-action bean="personAction" method="hentPerson">
+        	<method-arguments>
+            	<argument expression="flowScope.hentPersonForm.fodselsnummer"/>
+            </method-arguments>
+            <method-result name="person" scope="conversation" />
+        </bean-action>
+        
+        <transition on="success" to="hentHenvendelser" />
+        
+        <transition on-exception="no.nav.service.pensjon.person.exception.PersonNotFoundException" to="tom">
+            <set attribute="person" scope="conversation" value="null"/>
+            <set attribute="henvendelser" scope="flow" value="null"/>
+        </transition>
+        
+    </action-state>
+
+
+
+	<!-- action-state hentHenvendelser
+			This action-state calls the method hentHenvendelser on the henvendelseAction
+			bean. It sends a String as a parameter. The result, which is a PagedSortableList
+			is put in flowScope with the name henvendelser.
+			
+			If everything is ok the user is sent to the enter view-state, and the flowScope
+			variable showHenvendelser is set to true. -->
+	<action-state id="hentHenvendelser">
+	
+        <bean-action bean="henvendelseAction" method="hentHenvendelser">
+        	<method-arguments>
+            	<argument expression="conversationScope.person.fodselsnummer"/>
+            </method-arguments>
+            <method-result name="henvendelser" scope="flow" />
+        </bean-action>
+        
+    	<transition on="success" to="hentetBruker" />
+    	
+    </action-state>
+
+
+
+	<!-- subflow-state sokeperson
+			This is a subflow-state which calls the sokeperson-flow flow. It maps a
+			variable from that flow to this flow. The variable localPersonDO is mapped
+			to flowScope.person.
+			
+			If the outcome of the subflow is avbryt, the user is sent to the view-state
+			enter. If the outcome is hent, the user is sent to the action-state
+			hentHenvendelser. -->
+	<subflow-state flow="sokeperson-flow" id="sokeperson">
+		
+		<!-- TODO has to check if some user still is in some scope -->
+		<transition on="avbryt" to="tom" />
+		
+		<transition on="hent" to="hentHenvendelser" />
+		
+	</subflow-state>
+
+
+	<!-- subflow-state reghenvendelse
+			This is a subflow-state used to register a new henvendelse.
+			
+			It sends two variables to the subflow, and gets one back.
+			
+			When the subflow ends on slutt, the user is sent to the view-state enter -->
+	<subflow-state flow="registrerehenvendelse-flow" id="reghenvendelse">
+		<transition on="slutt" to="hentHenvendelser"/>
+	</subflow-state>
+	
+	
+		<!-- subflow-state personopplysninger
+			This is a subflow-state used to register a persons information.
+			
+			It sends two variables to the subflow, and gets one back.
+			
+			When the subflow ends on slutt, the user is sent to the view-state enter -->
+			
+	<subflow-state flow="personopplysninger-flow" id="personopplysninger">
+		<transition on="slutt" to="enter"/> 
+	</subflow-state> 
+
+
+	<!-- subflow-state updatehenvendelse
+			This is a subflow-state used to update a henvendelse.
+			
+			It sends three variables to the subflow, and gets one back.
+			
+			When the subflow ends on slutt, the user is sent to the view-state enter -->
+	<subflow-state flow="registrerehenvendelse-flow" id="updatehenvendelse">
+		<attribute-mapper>
+        	<input-mapper>
+            	<mapping source="flowScope.henvendelse" target="henvendelse" />
+			</input-mapper>
+		</attribute-mapper>
+	
+		<transition on="slutt" to="hentHenvendelser"/>
+	</subflow-state>
+
+
+	<!-- end-state logout
+			Only used to logout the user. This will have to change at some point. -->
+	<end-state id="logout" view="flowRedirect:start-flow" />
+
+
+	<!-- global-transitions in this flow.
+			Since we only have one view-state in this flow it is actually silly
+			to have global-transitions at all in this flow. But this might very
+			well change soon. No matter what, we could no matter what use it as
+			traning :-) -->
+     <global-transitions>
+       	
+	    <transition on="hent" to="hentPerson">
+       		<action bean="brukeroversiktFormAction" method="bindAndValidate"/>
+       	</transition>
+       	
+       	
+       	<transition on="sok" to="sokeperson" />
+       	
+       	<transition on="logout" to="logout" />
+       	
+       	<transition on="personopplysninger" to="personopplysninger" />
+       	
+     </global-transitions>
+
+
+	<!-- Imports spring beans, and Valang stuff into this flow -->
+	<import resource="brukeroversikt-context.xml"/>
+
+</flow>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:nav="http://www.nav.no/jsf"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
+
+	<f:loadBundle basename="resources" var="msg" />
+	
+	<ui:composition template="/templates/ramme-saksbehandling.xhtml">
+							
+		<ui:define name="pageTitle">Oppgavelisten</ui:define>
+		<ui:define name="where">Oppgavelisten</ui:define>
+		
+		<ui:define name="body">
+			<div id="layer_hoved" style="width: 850px; height: 500px; left: 150px; top: 100px">
+
+			<form jsfc="h:form">
+				<input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
+				<ul>
+					<li>
+						<t:commandLink value="#{messageSource['oppgavelisten.brukeroversikt']}" action="velg_brukeroversikt" />
+					</li>
+					<li>
+						<t:commandLink value="#{messageSource['oppgavelisten.oversiktOverHenvendelser']}" action="velg_oversiktOverHenvendelser" />
+					</li>
+				</ul>
+			</form>
+
+			</div>
+	  	</ui:define>
+	</ui:composition>
+	
+</html>

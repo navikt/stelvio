@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
+    
+    <!-- Defines the start-state. -->
+	<start-state idref="personopplysninger" />
+	     
+    <view-state id="personopplysninger" view="/pages/person/personopplysninger.xhtml">
+	</view-state>
+
+	
+	<!-- 
+	 
+	<view-state id="vis" view="/pages/personopplysninger.xhtml"> -->
+		<!-- 
+		<transition on="personopplysninger" to="personopplysninger">
+       		<action bean="personopplysningerFormAction" method="bind"/>
+       	</transition>
+       	-->
+<!-- 
+	</view-state> -->
+<!-- 
+	<action-state id="personopplysninger">
+        <action bean="personopplysningerAction" method="setupForm"/>
+    	<transition on="success" to="slutt"/>
+    </action-state>
+-->
+
+	
+	
+	<!-- decision-state decideViewState 
+			Decides which view-state to go to -->
+	<!-- 
+	<decision-state id="decideViewState">
+	    <if test="${flowScope.myForm.chosenRadio.equals('optionOne')}" then="validateOne" />
+    	<if test="${flowScope.myForm.chosenRadio.equals('optionTwo')}" then="validateTwo" else="notChosen" />
+    </decision-state>
+ -->
+	
+	<!-- action-state populateForm
+			Populates the form with Person information -->
+<!-- 
+	<action-state id="populateForm">
+	
+    	<bean-action bean="personopplysningerAction" method="setupForm">
+        	<method-arguments>
+            	<argument expression="conversationScope.person" />
+            </method-arguments>
+            <method-result name="personopplysningerForm" scope="flow" />
+        </bean-action>
+        
+        <transition on="success" to="registrerPersonopplysninger" />
+        
+    </action-state>
+ -->
+    
+    <!-- view-state registrerPersonopplysninger
+    		  -->
+    <!-- 
+    <view-state id="registrerPersonopplysninger" view="/pages/personopplysninger.xhtml">
+		<transition on="save" to="savePersonopplysninger">
+			<action bean="personopplysningerFormAction" method="bindAndValidate" />	
+		</transition>
+		<transition on="saveAndUse" to="saveAndUsePersonopplysninger">
+			<action bean="personopplysningerFormAction" method="bindAndValidate" />	
+		</transition>
+	</view-state>
+	 -->
+
+	<end-state id="slutt" /><!-- view="flowRedirect:brukeroversikt-flow"/> -->
+
+
+	<import resource="spring/personopplysninger-context.xml"/>
+
+</flow>
