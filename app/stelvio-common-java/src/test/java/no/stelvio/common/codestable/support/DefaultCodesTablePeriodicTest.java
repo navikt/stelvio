@@ -107,7 +107,7 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 		//Test: get items in the filtered codestable
 		assertNotNull("Test 8: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));
 		
-		codesTablePeriodic.resetPrediacte();
+		codesTablePeriodic.resetPredicates();
 		
 		//Test: get the items in the codestable 
 		assertNotNull("Test 9: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));

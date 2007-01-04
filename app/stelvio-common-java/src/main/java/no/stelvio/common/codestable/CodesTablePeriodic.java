@@ -41,8 +41,12 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	 */
 	void addPredicate(Predicate predicate);
 	
-	/** Removes all of the predicates on the <code>CodesTablePeriodic</code>. */
+	/** Removes all of the predicates on the <code>CodesTablePeriodic</code>. 
+	 * @deprecated Use {@link #resetPredicates()} instead*/
 	void resetPrediacte();
+
+	/** Removes all of the predicates on the <code>CodesTablePeriodic</code>. */
+	void resetPredicates();
 	
 	/**
 	 * Returns the decode for a code in a <code>CodesTableItempPriodic</code> belonging to a <code>CodesTablePeriodic</code>.

@@ -87,8 +87,16 @@ public class DefaultCodesTablePeriodic implements CodesTablePeriodic {
 	
 	/** 
 	 * {@inheritDoc}
+	 * @deprecated Use {@link #resetPredicates()} instead
 	 */
 	public void resetPrediacte() {
+		resetPredicates();
+	}
+
+	/** 
+	 * {@inheritDoc}
+	 */
+	public void resetPredicates() {
 		this.predicates.clear();
 		this.filteredCodesTableItems.clear();
 	}
