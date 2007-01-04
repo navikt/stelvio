@@ -1,5 +1,8 @@
 * text=auto !eol
 app/pom.xml -text
+app/starexample/stelvio-app-star-example-workspace/.project -text
+app/starexample/stelvio-app-star-example-workspace/nav-app-star-example-trunk.psf -text
+app/starexample/stelvio-app-star-example-workspace/pom.xml -text
 app/stelvio-batch-java/.classpath -text
 app/stelvio-batch-java/.project -text
 app/stelvio-batch-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text

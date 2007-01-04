@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>nav.app.pensjon.main.workspace</artifactId>
+        <groupId>nav.app.pensjon</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>nav.app.star.example.workspace</artifactId>
+    <packaging>pom</packaging>
+    <name>Workspace for star example/name>
+    <version>1.0.0</version>
+    <modules>
+        <module>../nav-presentation-star-example-web</module>
+        <module>../nav-service-star-example-web</module>
+    </modules>
+</project>
