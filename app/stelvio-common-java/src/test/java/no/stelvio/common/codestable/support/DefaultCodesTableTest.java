@@ -111,7 +111,7 @@ public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringCont
 		//Test: get items in the filtered codestable
 		assertNotNull("Test 8: the item does not exist", codesTable.getCodesTableItem("t1code1"));
 		
-		codesTable.resetPrediacte();
+		codesTable.resetPredicates();
 		
 		//Test: get the items in the codestable 
 		assertNotNull("Test 9: the item does not exist", codesTable.getCodesTableItem("t1code1"));

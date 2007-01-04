@@ -85,8 +85,16 @@ public class DefaultCodesTable implements CodesTable {
 	
 	/** 
 	 * {@inheritDoc}
+	 * @deprecated Use {@link #resetPredicates()} instead
 	 */
 	public void resetPrediacte() {
+		resetPredicates();
+	}
+
+	/** 
+	 * {@inheritDoc}
+	 */
+	public void resetPredicates() {
 		this.predicates.clear();
 		this.filteredCodesTableItems.clear();
 	}

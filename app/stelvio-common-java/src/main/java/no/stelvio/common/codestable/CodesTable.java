@@ -41,8 +41,14 @@ public interface CodesTable<T extends CodesTableItem> {
 	
 	/** 
 	 * Removes all of the predicates on the <code>CodesTable</code>. 
+	 * @deprecated Use {@link #resetPredicates()} instead
 	 */
 	void resetPrediacte();
+
+	/** 
+	 * Removes all of the predicates on the <code>CodesTable</code>. 
+	 */
+	void resetPredicates();
 	
 	/**
 	 * Returns the decode for a code in a <code>CodesTableItem</code> belonging to a <code>CodesTable</code>.
