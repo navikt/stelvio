@@ -43,9 +43,9 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 		codesTablePeriodic = (CodesTablePeriodic) applicationContext.getBean("codesTablePeriodic");
 		assertNotNull("Couldn't initiate CodesTablePeriodic using standard POJO implementation.", codesTablePeriodic);
 		
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP3);
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip1());
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip2());
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip3());
 	}
 	
 	/**
@@ -135,7 +135,7 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
 		}
 
-		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItemPeriodic.CTIP1.getCode(), date), "t1decode1");
+		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItemPeriodic.getCtip1().getCode(), date), "t1decode1");
 	}
 	
 	/**
@@ -155,7 +155,7 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
 		}
 
-		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItem.CTI1.getCode(), locale, date), "t1decode1");
+		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItem.getCti1().getCode(), locale, date), "t1decode1");
 	}
 	
 	/**

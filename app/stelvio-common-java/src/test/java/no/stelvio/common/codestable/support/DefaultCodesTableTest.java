@@ -42,9 +42,9 @@ public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringCont
 		codesTable = (CodesTable) applicationContext.getBean("codesTable");
 		assertNotNull("Couldn't initiate CodesTable using standard POJO implementation.", codesTable);
 		
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI3);
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti1());
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti2());
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti3());
 		
 	}
 	
@@ -138,7 +138,7 @@ public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringCont
 		}
 
 		//Test: get a decode
-		assertEquals("Test 3: unexptected decode", codesTable.getDecode(TestCodesTableItem.CTI1.getCode()), "t1decode1");
+		assertEquals("Test 3: unexptected decode", codesTable.getDecode(TestCodesTableItem.getCti1().getCode()), "t1decode1");
 	}
 	
 	/**
@@ -158,7 +158,7 @@ public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringCont
 		}
 
 		//Test: get a decode
-		assertEquals("Test 3: unexptected decode", codesTable.getDecode(TestCodesTableItem.CTI1.getCode(), locale) , "t1decode1");
+		assertEquals("Test 3: unexptected decode", codesTable.getDecode(TestCodesTableItem.getCti1().getCode(), locale) , "t1decode1");
 	}
 	
 	/**

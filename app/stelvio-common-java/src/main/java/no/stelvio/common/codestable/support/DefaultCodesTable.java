@@ -20,7 +20,7 @@ import no.stelvio.common.context.RequestContext;
  * @version $Id$
  * @later use Commons Collection's LazyMap to initialize the filtered codes table map
  */
-public class DefaultCodesTable implements CodesTable {
+public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 
 	//List of codestableitems
 	private List<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();

@@ -37,12 +37,12 @@ public class DefaultCodesTableInitializerTest {
 		
 		//Test data
 		final CodesTable codesTable = new DefaultCodesTable();
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti1());
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti2());
 		
 		final CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic();
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip1());
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip2());
 		
 		List<Class<CodesTableItem>> cti = new ArrayList<Class<CodesTableItem>>();
 		cti.add(CodesTableItem.class);
@@ -81,8 +81,8 @@ public class DefaultCodesTableInitializerTest {
 	public void testCodesTableInitializerGetCodesTable() throws Exception {
 		//Test data
 		final CodesTable codesTable = new DefaultCodesTable();
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti1());
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti2());
 		
 		List<Class<CodesTableItem>> cti = new ArrayList<Class<CodesTableItem>>();
 		cti.add(CodesTableItem.class);
@@ -115,8 +115,8 @@ public class DefaultCodesTableInitializerTest {
 	public void testCodesTableInitializerGetCodesTablePeriodic() throws Exception{
 		//Test data		
 		final CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic();
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip1());
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip2());
 		
 		List<Class<CodesTableItemPeriodic>> ctip = new ArrayList<Class<CodesTableItemPeriodic>>();
 		ctip.add(CodesTableItemPeriodic.class);
@@ -168,12 +168,12 @@ public class DefaultCodesTableInitializerTest {
 	public void testCodesTableInitializerModifyCodesTableMangersReturnValue() throws Exception { 
 		//Test data
 		final CodesTable codesTable = new DefaultCodesTable();
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI1);
-		codesTable.addCodesTableItem(TestCodesTableItem.CTI2);
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti1());
+		codesTable.addCodesTableItem(TestCodesTableItem.getCti2());
 		
 		CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic();
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP1);
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.CTIP2);
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip1());
+		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip2());
 		
 		List<Class<CodesTableItem>> cti = new ArrayList<Class<CodesTableItem>>();
 		cti.add(null);

@@ -1,5 +1,6 @@
 package no.stelvio.common.codestable.support;
 
+import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.DecodeNotFoundException;
@@ -19,7 +20,7 @@ import java.util.Locale;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class DefaultCodesTablePeriodic implements CodesTablePeriodic {
+public class DefaultCodesTablePeriodic<T extends CodesTableItem> implements CodesTablePeriodic {
 
 	//List of codestableitemperiodics 
 	private List<CodesTableItemPeriodic> codesTableItems = new ArrayList<CodesTableItemPeriodic>();

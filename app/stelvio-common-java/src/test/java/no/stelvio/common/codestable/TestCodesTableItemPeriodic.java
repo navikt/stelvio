@@ -31,12 +31,8 @@ public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 		super(code, decode, fromDate, toDate, locale, isValid);
 	}
 
-	public static final TestCodesTableItemPeriodic CTIP1 = new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
-	public static final TestCodesTableItemPeriodic CTIP2 = new TestCodesTableItemPeriodic("t2code2", "t2decode2", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
-	public static final TestCodesTableItemPeriodic CTIP3 = new TestCodesTableItemPeriodic("t3code3", "t3decode3", getTestFromDate(), getTestToDate(), locale2, Boolean.TRUE);
-	public static final TestCodesTableItemPeriodic CTIP4 = new TestCodesTableItemPeriodic("t4code4", "t4decode4", getTestFromDate(), getTestToDate(), locale2, Boolean.TRUE);
-	public static final TestCodesTableItemPeriodic CTIP5 = new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
-
+	public TestCodesTableItemPeriodic() {}
+	
 	private static Date getTestFromDate(){
 		Calendar fromcal = Calendar.getInstance();
 		fromcal.set(106, 10, 1);	
@@ -48,4 +44,24 @@ public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 		fromcal.set(106, 10, 30);	
 		return new Date(fromcal.getTimeInMillis());
 	}
+	
+	public static TestCodesTableItemPeriodic getCtip1() {
+		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
+	}
+
+	public static TestCodesTableItemPeriodic getCtip2() {
+		return new TestCodesTableItemPeriodic("t2code2", "t2decode2", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
+	}
+
+	public static TestCodesTableItemPeriodic getCtip3() {
+		return new TestCodesTableItemPeriodic("t3code3", "t3decode3", getTestFromDate(), getTestToDate(), locale2, Boolean.TRUE);
+	}
+
+	public static TestCodesTableItemPeriodic getCtip4() {
+		return new TestCodesTableItemPeriodic("t4code4", "t4decode4", getTestFromDate(), getTestToDate(), locale2, Boolean.TRUE);
+	}
+	public static TestCodesTableItemPeriodic getCtip5() {
+		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
+	}
+	
 }

@@ -76,10 +76,10 @@ public class CodesTableItemTest {
 	 */
 	@Test
 	public void testEqualsObject() {
-		assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI1));
-		assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.CTI1.equals(null));
-		assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.CTI1.equals("String"));
-		assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI2));
+		assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.getCti1().equals(TestCodesTableItem.getCti1()));
+		assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.getCti1().equals(null));
+		assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.getCti1().equals("String"));
+		assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.getCti1().equals(TestCodesTableItem.getCti2()));
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class CodesTableItemTest {
 	public void testHashCode() {
 		assertEquals(
 			"Equals is true, then hashCode is true",
-			TestCodesTableItem.CTI1.equals(TestCodesTableItem.CTI5),
-			TestCodesTableItem.CTI1.hashCode() == TestCodesTableItem.CTI5.hashCode());
+			TestCodesTableItem.getCti1().equals(TestCodesTableItem.getCti5()),
+			TestCodesTableItem.getCti1().hashCode() == TestCodesTableItem.getCti5().hashCode());
 	}
 }

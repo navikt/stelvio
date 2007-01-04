@@ -26,9 +26,25 @@ public class TestCodesTableItem extends CodesTableItem {
 		super(code, decode, locale, isValid);
 	}
 	
-	public static final TestCodesTableItem CTI1 = new TestCodesTableItem("t1code1", "t1decode1", locale1, Boolean.TRUE);
-	public static final TestCodesTableItem CTI2 = new TestCodesTableItem("t2code2", "t2decode2", locale1, Boolean.TRUE);
-	public static final TestCodesTableItem CTI3 = new TestCodesTableItem("t3code3", "t3decode3", locale2, Boolean.TRUE);
-	public static final TestCodesTableItem CTI4 = new TestCodesTableItem("t4code4", "t4decode4", locale2, Boolean.TRUE);
-	public static final TestCodesTableItem CTI5 = new TestCodesTableItem("t1code1", "t1decode1", locale1, Boolean.TRUE);	
+	public TestCodesTableItem() {}
+	
+	public static TestCodesTableItem getCti1() {
+		return new TestCodesTableItem("t1code1", "t1decode1", locale1, Boolean.TRUE);
+	}
+	
+	public static TestCodesTableItem getCti2() {
+		return new TestCodesTableItem("t2code2", "t2decode2", locale1, Boolean.TRUE);
+	}
+
+	public static TestCodesTableItem getCti3() {
+		return new TestCodesTableItem("t3code3", "t3decode3", locale2, Boolean.TRUE);
+	}
+
+	public static TestCodesTableItem getCti4() {
+		return new TestCodesTableItem("t4code4", "t4decode4", locale2, Boolean.TRUE);
+	}
+
+	public static TestCodesTableItem getCti5() {
+		return new TestCodesTableItem("t1code1", "t1decode1", locale1, Boolean.TRUE);
+	}
 }

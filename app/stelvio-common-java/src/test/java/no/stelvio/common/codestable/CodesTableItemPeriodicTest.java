@@ -95,11 +95,11 @@ public class CodesTableItemPeriodicTest {
 	@Test
 	public void testEqualsObject() {
 	
-		assertThat(TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP1), isTrue());
-		assertThat(TestCodesTableItemPeriodic.CTIP1.equals(null), isFalse());
-		assertThat(TestCodesTableItemPeriodic.CTIP1.equals("String"), isFalse());
-		assertThat(TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP2), isFalse());
-		assertThat(TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItem.CTI2), isFalse());
+		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItemPeriodic.getCtip1()), isTrue());
+		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(null), isFalse());
+		assertThat(TestCodesTableItemPeriodic.getCtip1().equals("String"), isFalse());
+		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItemPeriodic.getCtip2()), isFalse());
+		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItem.getCti2()), isFalse());
 	}
 
 	/**
@@ -107,8 +107,8 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testHashCode() {
-		assertThat(TestCodesTableItemPeriodic.CTIP1.hashCode() == TestCodesTableItemPeriodic.CTIP5.hashCode(),
+		assertThat(TestCodesTableItemPeriodic.getCtip1().hashCode() == TestCodesTableItemPeriodic.getCtip5().hashCode(),
                 isTrue());
-		assertThat(TestCodesTableItemPeriodic.CTIP1.equals(TestCodesTableItemPeriodic.CTIP5), isTrue());
+		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItemPeriodic.getCtip5()), isTrue());
 	}
 }
