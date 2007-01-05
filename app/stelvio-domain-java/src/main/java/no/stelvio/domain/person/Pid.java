@@ -2,6 +2,7 @@ package no.stelvio.domain.person;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -54,7 +55,28 @@ public final class Pid {
 	public String getNummer() {
 		return nummer;
 	}	
+
+	/**
+	 * Method that uses the number to calculate and return the birth date for this pid
+	 * @return java.util.Date representing the birth date of person with this Pid
+	 */
+	public Date getDate(){
+		SimpleDateFormat formatter = new SimpleDateFormat("MMDDyyyy");
+
+		//Adjust bnr or dnr (for fnr return value will be equal to nummer)
+		String adjustedFnr = makeDnrOrBostnrAdjustments(nummer);
+		//Construct a date string with MMDDyyyy format
+		String dateString = adjustedFnr.substring(0,4) + get4DigitYearOfBirth(adjustedFnr);
 		
+		Date date = null;
+		try {
+			date = formatter.parse(dateString);
+		} catch (ParseException e) {
+			//This should never occur, as "nummer" has been validated by constructor
+			throw new PidValidationException(e,nummer);
+		}
+		return date;
+	}
 	
 	/**
 	 * Determines whether the specified string is a valid personal identification number.
@@ -115,38 +137,26 @@ public final class Pid {
 	
 	/**
 	 * Validates that the first six digits of a fnr represents a valid birth date
-	 * @param fnr - 11 digit fødselsnummer
+	 * @param dnrOrBnrAdjustedFnr - 11 digit fødselsnummer, ajdusted if bnr or fnr
 	 * @return <code>true</code> if fnr can be converted to a valid date, otherwise <code>false</code>
 	 */
-	private static boolean isFnrDateValid(String fnr) {
+	private static boolean isFnrDateValid(String dnrOrBnrAdjustedFnr) {
 
 		boolean validDate = true;
 
 		// fnr format is <DDMMAAXXXYY>
-		int day = Integer.parseInt(fnr.substring(0, 2));
-		int month = Integer.parseInt(fnr.substring(2, 4));
-		int year = Integer.parseInt(fnr.substring(4, 6));
-		int individnr = Integer.parseInt(fnr.substring(6, 9));
+		int day = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(0, 2));
+		int month = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(2, 4));
+		int year = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(4, 6));
+		int individnr = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(6, 9));
 
-		// stilborn baby (dødfødt barn)
-		if (Integer.parseInt(fnr.substring(6)) < 10) {
-			year += 2000;
-		} else {
-			// recalculating year		
-			if (individnr < 500) {
-				year += 1900;
-			} else if ((individnr < 750) && (54 < year)) {
-				year += 1800;
-			} else if ((individnr < 1000) && (year < 40)) {
-				year += 2000;
-			} else if ((900 <= individnr) && (individnr < 1000) && (39 < year)) {
-				year += 1900;
-			} else {
-				// invalid fnr
-				return false;
-			}
+		year = get4DigitYearOfBirth(dnrOrBnrAdjustedFnr);
+
+		//invalid birth year
+		if(year == -1){
+			return false;
 		}
-
+		
 		if (day < 1) {
 			validDate = false;
 		}
@@ -285,6 +295,35 @@ public final class Pid {
 		
 		//value was neither bostnr nor dnr
 		return value;
+	}
+	
+	/**
+	 * Returns a 4-digit birth date
+	 * @param a fnr, adjusted if it's a bnr or dnr
+	 * @return 4 digit birth date, -1 if invalid
+	 */
+	private static int get4DigitYearOfBirth(String dnrOrBnrAdjustedFnr){
+		int year = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(4, 6));
+		int individnr = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(6, 9));		
+		// stilborn baby (dødfødt barn)
+		if (Integer.parseInt(dnrOrBnrAdjustedFnr.substring(6)) < 10) {
+			year += 2000;
+		} else {
+			// recalculating year		
+			if (individnr < 500) {
+				year += 1900;
+			} else if ((individnr < 750) && (54 < year)) {
+				year += 1800;
+			} else if ((individnr < 1000) && (year < 40)) {
+				year += 2000;
+			} else if ((900 <= individnr) && (individnr < 1000) && (39 < year)) {
+				year += 1900;
+			} else {
+				// invalid fnr
+				return -1;
+			}	
+		}	
+		return year;
 	}
 	
 	
