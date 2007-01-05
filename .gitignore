@@ -5,13 +5,13 @@ app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/targ
 app/stelvio-batch-java/batch.iml
 app/stelvio-batch-java/bin
 app/stelvio-batch-java/target
-app/stelvio-business-java/bin
-app/stelvio-business-java/business.iml
-app/stelvio-business-java/target
 app/stelvio-common-java/bin
 app/stelvio-common-java/common.iml
 app/stelvio-common-java/debug.log
 app/stelvio-common-java/target
+app/stelvio-domain-java/bin
+app/stelvio-domain-java/business.iml
+app/stelvio-domain-java/target
 app/stelvio-presentation-java/bin
 app/stelvio-presentation-java/target
 app/stelvio-presentation-java/web.iml
