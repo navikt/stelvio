@@ -1,5 +1,6 @@
 * text=auto !eol
 app/pom.xml -text
+app/starexample/.project -text
 app/starexample/jee/starexample/stelvio-star-example-jee/.project -text
 app/starexample/jee/starexample/stelvio-star-example-jee/.settings/org.eclipse.jst.j2ee.ejb.annotations.xdoclet.prefs -text
 app/starexample/jee/starexample/stelvio-star-example-jee/.settings/org.eclipse.wst.common.component -text
