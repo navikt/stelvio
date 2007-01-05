@@ -10,7 +10,8 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * Class represents a personal identification number, that can be persistet into a table. 
- * Instances of this object can not exist on it's own, they must exist inside an <code>@Entity</code>-object in order to be persisted
+ * Instances of this object can not exist on it's own, they must exist inside an <code>@Entity</code>-object in order to be persisted.
+ * @see Embeddable
  * 
  * There shouldn't exist an instance of this class where getNummer doesn't return a valid fnr.
  * Class is final to avoid public implementations of the no-arg constructor
@@ -41,7 +42,7 @@ public final class Pid {
 	 * @param nummer a valid fnr
 	 * @throws PidValidationException if nummer isn't a valid Personal Identification Number
 	 */
-	public Pid(String nummer){
+	public Pid(String nummer) throws PidValidationException{
 		this.nummer = nummer;
 		validate();
 	}
@@ -79,7 +80,7 @@ public final class Pid {
 	 * Validates that <code>this</code> is a valid Pid
 	 * @return true if object is valid, otherwise false
 	 */
-	private void validate(){
+	private void validate() throws PidValidationException{
 		boolean valid = isValidPidNum(nummer);
 		if(!valid){
 			throw new PidValidationException(nummer);
