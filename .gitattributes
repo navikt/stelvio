@@ -295,8 +295,8 @@ app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/pom.
 app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/MANIFEST.MF -text
 app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/ejb-jar.xml -text
 app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/.project -text
-app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/nav-app-star-example-trunk.psf -text
 app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/pom.xml -text
+app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/stelvio-app-star-example-trunk.psf -text
 app/stelvio-batch-java/.classpath -text
 app/stelvio-batch-java/.project -text
 app/stelvio-batch-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
