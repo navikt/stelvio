@@ -39,6 +39,7 @@ public final class PidNum {
 	/**
 	 * Creates a new PidNum using the nummer
 	 * @param nummer a valid fnr
+	 * @throws PidNumException if nummer isn't a valid Personal Identification Number
 	 */
 	public PidNum(String nummer){
 		this.nummer = nummer;
@@ -59,6 +60,7 @@ public final class PidNum {
 	 * A valid PID can be: FNR, DNR or BostNr 
 	 * @param pidNum
 	 * @return <code>true</code> if the specified string is valid, otherwise <code>false</code>
+	 * @throws PidNumException if nummer isn't a valid Personal Identification Number
 	 */
 	public static boolean isValidPidNum(String pidNum){
 		String value = StringUtils.deleteWhitespace(pidNum);
