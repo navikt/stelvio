@@ -19,6 +19,7 @@ import no.stelvio.common.context.RequestContext;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  * @later use Commons Collection's LazyMap to initialize the filtered codes table map
+ * @todo why cannot List<CodesTableItem> be of type <T>? -> getting problems with addCodesTableItem(T codesTableItem)
  */
 public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 
