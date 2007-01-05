@@ -7,17 +7,13 @@
     <groupId>no.stelvio.layers</groupId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>stelvio-service-star-example-ejb</artifactId>
+  <artifactId>stelvio-domain-star-example-java</artifactId>
   <groupId>no.stelvio.star.example</groupId>
-  <packaging>ejb</packaging>
+  <packaging>java</packaging>
   <version>1.0.0-SNAPSHOT</version>
-  <name>star-example :: service</name>
-  <url>${basedir}/target/site/</url>    
-  <dependencies>
-    <dependency>
-      <groupId>javax.ejb</groupId>
-      <artifactId>ejb</artifactId>
-      <version>2.1</version>
-    </dependency>        
-  </dependencies>    
+  <name>star-example :: domain</name>
+  <url>${basedir}/target/site/</url>
+
+  <dependencies></dependencies>
+
 </project>

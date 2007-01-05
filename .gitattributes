@@ -11,6 +11,8 @@ app/starexample/jee/starexample/stelvio-star-example-jee/src/main/resources/META
 app/starexample/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/security.xml -text
 app/starexample/layers/domain/starexample/stelvio-domain-star-example-java/.classpath -text
 app/starexample/layers/domain/starexample/stelvio-domain-star-example-java/.project -text
+app/starexample/layers/domain/starexample/stelvio-domain-star-example-java/pom.xml -text
+app/starexample/layers/pom.xml -text
 app/starexample/layers/presentation/starexample/stelvio-presentation-star-example-web/.classpath -text
 app/starexample/layers/presentation/starexample/stelvio-presentation-star-example-web/.project -text
 app/starexample/layers/presentation/starexample/stelvio-presentation-star-example-web/.settings/org.eclipse.jdt.core.prefs -text
@@ -284,6 +286,7 @@ app/starexample/layers/presentation/starexample/stelvio-presentation-star-exampl
 app/starexample/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/templates/ramme-saksbehandling.xhtml -text
 app/starexample/layers/repository/starexample/stelvio-repository-star-example-java/.classpath -text
 app/starexample/layers/repository/starexample/stelvio-repository-star-example-java/.project -text
+app/starexample/layers/repository/starexample/stelvio-repository-star-example-java/pom.xml -text
 app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/.classpath -text
 app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/.project -text
 app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/.settings/.webspheredeploy -text

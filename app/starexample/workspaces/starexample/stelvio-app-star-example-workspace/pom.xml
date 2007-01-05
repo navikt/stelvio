@@ -1,17 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>nav.app.pensjon.main.workspace</artifactId>
-        <groupId>nav.app.pensjon</groupId>
-        <version>1.0.0</version>
-    </parent>
-    <artifactId>nav.app.star.example.workspace</artifactId>
-    <packaging>pom</packaging>
-    <name>Workspace for star example/name>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>no.stelvio.app.main.workspace</artifactId>
+    <groupId>no.stelvio.app</groupId>
     <version>1.0.0</version>
-    <modules>
-        <module>../nav-presentation-star-example-web</module>
-        <module>../nav-service-star-example-web</module>
-    </modules>
+  </parent>
+  <artifactId>no.stelvio.app.star.example.workspace</artifactId>
+  <packaging>pom</packaging>
+  <name>Workspace for star example</name>
+  <version>1.0.0-SNAPSHOT</version>
+  <modules>
+    <module>../stelvio-domain-star-example-java</module>
+    <module>../stelvio-presentation-star-example-web</module>
+    <module>../stelvio-service-star-example-ejb</module>
+    <module>../stelvio-repository-star-example-java</module>
+    <module>../stelvio-star-example-jee</module>
+  </modules>
 </project>
