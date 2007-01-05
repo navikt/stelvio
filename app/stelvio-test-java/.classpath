@@ -1,40 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring/2.0.1/spring-2.0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/jaxen/jaxen/1.0-FCS/jaxen-1.0-FCS.jar" sourcepath="M2_REPO/jaxen/jaxen/1.0-FCS/jaxen-1.0-FCS-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/maven/surefire/surefire-api/2.1-SNAPSHOT/surefire-api-2.1-SNAPSHOT.jar"/>
-	<classpathentry kind="var" path="M2_REPO/junit/junit/4.1/junit-4.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/hibernate/antlr/2.7.5H3/antlr-2.7.5H3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/maven/surefire/surefire-junit4/2.1-SNAPSHOT/surefire-junit4-2.1-SNAPSHOT.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate/3.0.5/hibernate-3.0.5.jar"/>
-	<classpathentry kind="var" path="M2_REPO/relaxngDatatype/relaxngDatatype/20020414/relaxngDatatype-20020414.jar" sourcepath="M2_REPO/relaxngDatatype/relaxngDatatype/20020414/relaxngDatatype-20020414-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/jmock/jmock2-nonstd/0.1/jmock2-nonstd-0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/asm/asm/1.4.3/asm-1.4.3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/ehcache/ehcache/1.1/ehcache-1.1.jar" sourcepath="M2_REPO/ehcache/ehcache/1.1/ehcache-1.1-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.0/commons-lang-2.0.jar" sourcepath="M2_REPO/commons-lang/commons-lang/2.0/commons-lang-2.0-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.4/dom4j-1.4.jar" sourcepath="M2_REPO/dom4j/dom4j/1.4/dom4j-1.4-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/2.1/cglib-nodep-2.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/jmock/jmock2-junit3/0.1/jmock2-junit3-0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/msv/msv/20020414/msv-20020414.jar" sourcepath="M2_REPO/msv/msv/20020414/msv-20020414-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar" sourcepath="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/cglib/cglib/2.0.2/cglib-2.0.2.jar"/>
-	<classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.6.1/commons-beanutils-1.6.1.jar" sourcepath="M2_REPO/commons-beanutils/commons-beanutils/1.6.1/commons-beanutils-1.6.1-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" sourcepath="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/jmock/jmock2/0.1/jmock2-0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/saxpath/saxpath/1.0-FCS/saxpath-1.0-FCS.jar" sourcepath="M2_REPO/saxpath/saxpath/1.0-FCS/saxpath-1.0-FCS-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-generator/0.1/hamcrest-generator-0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-library/0.1/hamcrest-library-0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/2.0/commons-collections-2.0.jar"/>
-	<classpathentry kind="var" path="M2_REPO/javax/transaction/jta/1.0.1B/jta-1.0.1B.jar"/>
-	<classpathentry kind="var" path="M2_REPO/isorelax/isorelax/20020414/isorelax-20020414.jar" sourcepath="M2_REPO/isorelax/isorelax/20020414/isorelax-20020414-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/net/sf/ehcache/ehcache/1.2.3/ehcache-1.2.3.jar" sourcepath="M2_REPO/net/sf/ehcache/ehcache/1.2.3/ehcache-1.2.3-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-api/0.1/hamcrest-api-0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-integration/0.1/hamcrest-integration-0.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3-sources.jar"/>
-	<classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="src" path="src/main/java"/>
+  <classpathentry kind="src" path="src/test/java" output="target/test-classes"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/org/jmock/jmock2-nonstd/0.1/jmock2-nonstd-0.1.jar" sourcepath="M2_REPO/org/jmock/jmock2-nonstd/0.1/jmock2-nonstd-0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/asm/asm/1.4.3/asm-1.4.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/isorelax/isorelax/20020414/isorelax-20020414.jar" sourcepath="M2_REPO/isorelax/isorelax/20020414/isorelax-20020414-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/jaxen/jaxen/1.0-FCS/jaxen-1.0-FCS.jar" sourcepath="M2_REPO/jaxen/jaxen/1.0-FCS/jaxen-1.0-FCS-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar" sourcepath="M2_REPO/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-api/0.1/hamcrest-api-0.1.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-api/0.1/hamcrest-api-0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/sf/ehcache/ehcache/1.2.3/ehcache-1.2.3.jar" sourcepath="M2_REPO/net/sf/ehcache/ehcache/1.2.3/ehcache-1.2.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/ehcache/ehcache/1.1/ehcache-1.1.jar" sourcepath="M2_REPO/ehcache/ehcache/1.1/ehcache-1.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring/2.0.1/spring-2.0.1.jar" sourcepath="M2_REPO/org/springframework/spring/2.0.1/spring-2.0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/hibernate/antlr/2.7.5H3/antlr-2.7.5H3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jmock/jmock2/0.1/jmock2-0.1.jar" sourcepath="M2_REPO/org/jmock/jmock2/0.1/jmock2-0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/2.1/cglib-nodep-2.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hibernate/hibernate/3.0.5/hibernate-3.0.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.1/junit-4.1.jar" sourcepath="M2_REPO/junit/junit/4.1/junit-4.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.4/dom4j-1.4.jar" sourcepath="M2_REPO/dom4j/dom4j/1.4/dom4j-1.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.0/commons-lang-2.0.jar" sourcepath="M2_REPO/commons-lang/commons-lang/2.0/commons-lang-2.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/msv/msv/20020414/msv-20020414.jar" sourcepath="M2_REPO/msv/msv/20020414/msv-20020414-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" sourcepath="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/cglib/cglib/2.0.2/cglib-2.0.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-generator/0.1/hamcrest-generator-0.1.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-generator/0.1/hamcrest-generator-0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-integration/0.1/hamcrest-integration-0.1.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-integration/0.1/hamcrest-integration-0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.6.1/commons-beanutils-1.6.1.jar" sourcepath="M2_REPO/commons-beanutils/commons-beanutils/1.6.1/commons-beanutils-1.6.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jmock/jmock2-junit3/0.1/jmock2-junit3-0.1.jar" sourcepath="M2_REPO/org/jmock/jmock2-junit3/0.1/jmock2-junit3-0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/relaxngDatatype/relaxngDatatype/20020414/relaxngDatatype-20020414.jar" sourcepath="M2_REPO/relaxngDatatype/relaxngDatatype/20020414/relaxngDatatype-20020414-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/transaction/jta/1.0.1B/jta-1.0.1B.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar" sourcepath="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/saxpath/saxpath/1.0-FCS/saxpath-1.0-FCS.jar" sourcepath="M2_REPO/saxpath/saxpath/1.0-FCS/saxpath-1.0-FCS-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-library/0.1/hamcrest-library-0.1.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-library/0.1/hamcrest-library-0.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/2.0/commons-collections-2.0.jar"/>
 </classpath>
