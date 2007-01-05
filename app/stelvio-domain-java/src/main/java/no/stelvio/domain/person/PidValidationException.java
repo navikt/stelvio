@@ -30,7 +30,7 @@ public class PidValidationException extends FunctionalUnrecoverableException {
 	 */
 	@Override
 	protected String messageTemplate(int numArgs) {
-		StringBuffer template = new StringBuffer("Pid could not be created");
+		StringBuffer template = new StringBuffer("Pid could not be created,");
 		template.append(" {0}").append(" is not a valid personal identification number");
 		return template.toString();
 	}
