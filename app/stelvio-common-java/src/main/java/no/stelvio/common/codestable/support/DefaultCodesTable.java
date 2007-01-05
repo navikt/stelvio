@@ -38,6 +38,10 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 		this.codesTableItems.add(codesTableItem);
 	}
 	
+	public List<CodesTableItem> getItems() {
+		return codesTableItems;
+	}
+
 	/** 
 	 * {@inheritDoc}
 	 */

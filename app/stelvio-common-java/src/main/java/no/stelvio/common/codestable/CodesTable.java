@@ -1,5 +1,6 @@
 package no.stelvio.common.codestable;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.collections.Predicate;
@@ -15,6 +16,11 @@ import org.apache.commons.collections.Predicate;
  * @version $Id$
  */
 public interface CodesTable<T extends CodesTableItem> {
+	
+	/**
+	 * @return the list of code table items in the table
+	 */
+	List<T> getItems();
 	
 	/**
 	 * Adds a <code>CodesTableItem</code> to the <code>CodesTable</code>.
