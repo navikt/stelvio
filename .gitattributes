@@ -5,6 +5,7 @@ app/starexample/jee/starexample/stelvio-star-example-jee/.settings/org.eclipse.j
 app/starexample/jee/starexample/stelvio-star-example-jee/.settings/org.eclipse.wst.common.component -text
 app/starexample/jee/starexample/stelvio-star-example-jee/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/starexample/jee/starexample/stelvio-star-example-jee/.settings/org.eclipse.wst.validation.prefs -text
+app/starexample/jee/starexample/stelvio-star-example-jee/pom.xml -text
 app/starexample/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/application.xml -text
 app/starexample/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/resources.xml -text
 app/starexample/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/variables.xml -text
