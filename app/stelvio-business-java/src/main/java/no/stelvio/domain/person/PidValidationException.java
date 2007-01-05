@@ -1,27 +1,27 @@
-package no.stelvio.business.model.pidnum;
+package no.stelvio.domain.person;
 
 import no.stelvio.common.error.FunctionalUnrecoverableException;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
- * Exception thrown when PidNum can't be created due to validation failure.
+ * Exception thrown when Pid can't be created due to validation failure.
  * 
  * @author person983601e0e117, Accenture
  *
- * @see PidNum
+ * @see Pid
  *
  */
-public class PidNumException extends FunctionalUnrecoverableException {
+public class PidValidationException extends FunctionalUnrecoverableException {
 
-	public PidNumException(ExceptionToCopyHolder holder) {
+	public PidValidationException(ExceptionToCopyHolder holder) {
 		super(holder);
 	}
 
-	public PidNumException(String pidNum) {
+	public PidValidationException(String pidNum) {
 		super(pidNum);
 	}
 
-	public PidNumException(Throwable cause, String pidNum) {
+	public PidValidationException(Throwable cause, String pidNum) {
 		super(cause, pidNum);
 	}
 
@@ -30,7 +30,7 @@ public class PidNumException extends FunctionalUnrecoverableException {
 	 */
 	@Override
 	protected String messageTemplate(int numArgs) {
-		StringBuffer template = new StringBuffer("PidNum could not be created");
+		StringBuffer template = new StringBuffer("Pid could not be created");
 		template.append(" {0}").append(" is not a valid personal identification number");
 		return template.toString();
 	}

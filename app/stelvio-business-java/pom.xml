@@ -7,9 +7,9 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
     <groupId>no.stelvio</groupId>
-    <artifactId>stelvio-business-java</artifactId>
+    <artifactId>stelvio-domain-java</artifactId>
     <packaging>jar</packaging>
-    <name>stelvio - business</name>
+    <name>stelvio - domain</name>
     <dependencies>
         <dependency>
             <groupId>mx4j</groupId>

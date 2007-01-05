@@ -312,14 +312,12 @@ app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchDOTest.java -t
 app/stelvio-batch-java/xdocs/index.xml -text
 app/stelvio-business-java/.classpath -text
 app/stelvio-business-java/.project -text
-app/stelvio-business-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
-app/stelvio-business-java/models/rtv-framework-business.mdx -text
 app/stelvio-business-java/pom.xml -text
 app/stelvio-business-java/project.properties -text
 app/stelvio-business-java/src/main/java/.cvsignore -text
-app/stelvio-business-java/src/main/java/no/stelvio/business/model/pidnum/PidNum.java -text
-app/stelvio-business-java/src/main/java/no/stelvio/business/model/pidnum/PidNumException.java -text
-app/stelvio-business-java/src/test/java/no/stelvio/business/model/PidNumTest.java -text
+app/stelvio-business-java/src/main/java/no/stelvio/domain/person/Pid.java -text
+app/stelvio-business-java/src/main/java/no/stelvio/domain/person/PidValidationException.java -text
+app/stelvio-business-java/src/test/java/no/stelvio/domain/person/PidTest.java -text
 app/stelvio-business-java/src/test/resources/application-services.xml -text
 app/stelvio-business-java/src/test/resources/error-handling.xml -text
 app/stelvio-business-java/src/test/resources/performance-monitoring.xml -text

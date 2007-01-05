@@ -1,4 +1,4 @@
-package no.stelvio.business.model.pidnum;
+package no.stelvio.domain.person;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,14 +15,14 @@ import org.apache.commons.lang.StringUtils;
  * There shouldn't exist an instance of this class where getNummer doesn't return a valid fnr.
  * Class is final to avoid public implementations of the no-arg constructor
  * 
- * NB! PidNum is and should always be immutable
+ * NB! Pid is and should always be immutable
  * 
  * @author person983601e0e117, Accenture
  *
  */
 
 @Embeddable
-public final class PidNum {
+public final class Pid {
 
 	@Column(name="fnr")
 	private String nummer;
@@ -32,16 +32,16 @@ public final class PidNum {
 	 * Never to be used by a client.
 	 *
 	 */
-	protected PidNum(){
+	protected Pid(){
 		
 	}
 	
 	/**
-	 * Creates a new PidNum using the nummer
+	 * Creates a new Pid using the nummer
 	 * @param nummer a valid fnr
-	 * @throws PidNumException if nummer isn't a valid Personal Identification Number
+	 * @throws PidValidationException if nummer isn't a valid Personal Identification Number
 	 */
-	public PidNum(String nummer){
+	public Pid(String nummer){
 		this.nummer = nummer;
 		validate();
 	}
@@ -60,7 +60,7 @@ public final class PidNum {
 	 * A valid PID can be: FNR, DNR or BostNr 
 	 * @param pidNum
 	 * @return <code>true</code> if the specified string is valid, otherwise <code>false</code>
-	 * @throws PidNumException if nummer isn't a valid Personal Identification Number
+	 * @throws PidValidationException if nummer isn't a valid Personal Identification Number
 	 */
 	public static boolean isValidPidNum(String pidNum){
 		String value = StringUtils.deleteWhitespace(pidNum);
@@ -76,13 +76,13 @@ public final class PidNum {
 	}
 	
 	/**
-	 * Validates that <code>this</code> is a valid PidNum
+	 * Validates that <code>this</code> is a valid Pid
 	 * @return true if object is valid, otherwise false
 	 */
 	private void validate(){
 		boolean valid = isValidPidNum(nummer);
 		if(!valid){
-			throw new PidNumException(nummer);
+			throw new PidValidationException(nummer);
 		}
 	}	
 	
