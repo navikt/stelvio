@@ -12,38 +12,47 @@ import org.apache.commons.lang.StringUtils;
  * Class represents a personal identification number, that can be persistet into a table. 
  * Instances of this object can not exist on it's own, they must exist inside an <code>@Entity</code>-object in order to be persisted
  * 
+ * There shouldn't exist an instance of this class where getNummer doesn't return a valid fnr.
+ * Class is final to avoid public implementations of the no-arg constructor
+ * 
+ * NB! PidNum is and should always be immutable
+ * 
  * @author person983601e0e117, Accenture
  *
  */
 
 @Embeddable
-public class PidNum {
+public final class PidNum {
 
 	@Column(name="fnr")
 	private String nummer;
 	
+	/**
+	 * Protected constructor, should only be used by persistence provider.
+	 * Never to be used by a client.
+	 *
+	 */
 	protected PidNum(){
 		
 	}
 	
+	/**
+	 * Creates a new PidNum using the nummer
+	 * @param nummer a valid fnr
+	 */
 	public PidNum(String nummer){
 		this.nummer = nummer;
 		validate();
 	}
 	
-	
-
 	/**
-	 * Validates that <code>this</code> is a valid PidNum
-	 * @return true if object is valid, otherwise false
+	 * Gets the personal identification number, this number should always be a valid pid..
+	 * @return nummer representing a fnr, dnr or bostnr
 	 */
-	private void validate(){
-		boolean valid = isValidPidNum(nummer);
-		if(!valid){
-			//Throw some exception
-			throw new PidNumException(nummer);
-		}
+	public String getNummer() {
+		return nummer;
 	}	
+		
 	
 	/**
 	 * Determines whether the specified string is a valid personal identification number.
@@ -63,6 +72,17 @@ public class PidNum {
 		}
 		return false;
 	}
+	
+	/**
+	 * Validates that <code>this</code> is a valid PidNum
+	 * @return true if object is valid, otherwise false
+	 */
+	private void validate(){
+		boolean valid = isValidPidNum(nummer);
+		if(!valid){
+			throw new PidNumException(nummer);
+		}
+	}	
 	
 	/**
 	 * Validates that the length of the fnr is valid.
@@ -262,7 +282,7 @@ public class PidNum {
 		
 		//value was neither bostnr nor dnr
 		return value;
-	}	
+	}
 	
 	
 }
