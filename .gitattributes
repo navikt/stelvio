@@ -324,7 +324,6 @@ app/stelvio-business-java/src/main/java/no/stelvio/business/model/PidNum.java -t
 app/stelvio-business-java/src/main/java/no/stelvio/business/model/PidNumFactory.java -text
 app/stelvio-business-java/src/main/java/no/stelvio/business/model/pidnum/PidNum.java -text
 app/stelvio-business-java/src/main/java/no/stelvio/business/model/pidnum/PidNumException.java -text
-app/stelvio-business-java/src/main/java/no/stelvio/business/model/support/DefaultPidNumFactory.java -text
 app/stelvio-business-java/src/test/java/no/stelvio/business/model/FodselsnummerTest.java -text
 app/stelvio-business-java/src/test/resources/application-services.xml -text
 app/stelvio-business-java/src/test/resources/error-handling.xml -text
