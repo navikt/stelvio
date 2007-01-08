@@ -11,7 +11,7 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 import no.nav.domain.pensjon.henvendelse.Henvendelse;
-import no.nav.domain.pensjon.henvendelse.NewHenvendelse;
+import no.nav.domain.pensjon.henvendelse.OldHenvendelse;
 import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.HenvendelseService;
 import no.nav.presentation.pensjon.saksbehandling.util.PagedSortableList;
@@ -30,10 +30,10 @@ public class HenvendelsServiceMock implements HenvendelseService {
 	 * @param fnr
 	 * @return List
 	 */
-	public List<NewHenvendelse> readHenvendelseList(Fodselsnummer fodselsnummer) {
+	public List<Henvendelse> readHenvendelseList(Fodselsnummer fodselsnummer) {
 		this.henvendelseIndex = 0;
 		
-		List<NewHenvendelse> henvendelser = new ArrayList<NewHenvendelse>();
+		List<Henvendelse> henvendelser = new ArrayList<Henvendelse>();
 		
 		String fnr = fodselsnummer.getFodselsnummer();
 		
@@ -42,7 +42,7 @@ public class HenvendelsServiceMock implements HenvendelseService {
 		if (fnr.equals("12345678901")) {
 			//TODO: riktig enehetsnr?
 			
-			NewHenvendelse h1 = new NewHenvendelse();
+			Henvendelse h1 = new Henvendelse("12345678901");
 			h1.setFagomrKode( "Pensjon" );
 			h1.setOpprettetDato( Calendar.getInstance() );
 			h1.setOpprettetEnhet( "0129 Oslo" );
@@ -54,7 +54,7 @@ public class HenvendelsServiceMock implements HenvendelseService {
 			
 			henvendelser.add( h1 );
 			
-			NewHenvendelse h2 = new NewHenvendelse();
+			Henvendelse h2 = new Henvendelse("12345678901");
 			h2.setFagomrKode( "Bidrag" );
 			h2.setOpprettetDato( Calendar.getInstance() );
 			h2.setOpprettetEnhet( "1357 Bergen" );
@@ -79,28 +79,28 @@ public class HenvendelsServiceMock implements HenvendelseService {
 	/**
 	 * TODO: Document me
 	 */
-	public List<Henvendelse> addHenvendelseToList(Henvendelse henvendelserDO, List<Henvendelse> sortableList){		
+	public List<OldHenvendelse> addHenvendelseToList(Henvendelse henvendelserDO, List<Henvendelse> sortableList){		
 		sortableList.add(henvendelserDO);
-		return sortableList;
+		return null;
 	}
 	
 	/**
 	 * TODO: Document me
 	 */
-	public List<Henvendelse> updateHenvendelseList(Henvendelse henvendelserDO, List<Henvendelse> sortableList){
+	public List<OldHenvendelse> updateHenvendelseList(Henvendelse henvendelserDO, List<Henvendelse> sortableList){
 		Integer index = 0;
 		
 		
 		
 		for(Henvendelse hDO : sortableList){
-			if(hDO.getId() == henvendelserDO.getId()){
-				break;
-			}
+//			if(hDO.getId() == henvendelserDO.getId()){
+//				break;
+//			}
 			index++;
 		}
 				
 		sortableList.set(index, henvendelserDO); 
-		return sortableList;
+		return null;
 	}
 
 	/**
@@ -109,12 +109,12 @@ public class HenvendelsServiceMock implements HenvendelseService {
 	 * @return henvendelseDO
 	 */
 	public Henvendelse readHenvendelse(Long henvendelseId, List<Henvendelse> sortableList){
-		Henvendelse henvendelseDO = new Henvendelse();
+		Henvendelse henvendelseDO = new Henvendelse("12345678901");
 		
 		for(Henvendelse hDO : sortableList){
-			if(hDO.getId() == henvendelseId){
-				henvendelseDO = hDO;
-			}
+//			if(hDO.getId() == henvendelseId){
+//				henvendelseDO = hDO;
+//			}
 		}
 		
 		return henvendelseDO;
@@ -127,7 +127,7 @@ public class HenvendelsServiceMock implements HenvendelseService {
 	 * @return Henvendelse
 	 */
 	private Henvendelse addId(Henvendelse henvendelse) {
-		henvendelse.setId(henvendelseIndex++);
+//		henvendelse.setId(henvendelseIndex++);
 		return henvendelse;
 	}
 	
@@ -141,9 +141,9 @@ public class HenvendelsServiceMock implements HenvendelseService {
 	public Henvendelse createHenvendelse(Henvendelse henvendelse) {
 		System.out.println("I createHenvendelse");
 
-		henvendelse.setSaksnummer(new Long(henvendelseIndex+1).toString());
-		henvendelse.setStatus("Mottatt");
-		henvendelse.setNotat("Nei");
+//		henvendelse.setSaksnummer(new Long(henvendelseIndex+1).toString());
+//		henvendelse.setStatus("Mottatt");
+//		henvendelse.setNotat("Nei");
 		return addId(henvendelse);	
 	}
 

@@ -134,11 +134,11 @@ public class RegistrerHenvendelseAction extends MultiAction {
 		
 		if( henvendelse.getId() != null && henvendelse.getId() > 0 )
 		{
-			henvendelseAction.updateHenvendelse( henvendelse );
+//			henvendelseAction.updateHenvendelse( henvendelse );
 		}
 		else
 		{
-			form.setHid(henvendelseAction.createHenvendelse( henvendelse ).getId());
+//			form.setHid(henvendelseAction.createHenvendelse( henvendelse ).getId());
 			form.setBeskrivelseLagret(Boolean.TRUE);
 		}
 	}

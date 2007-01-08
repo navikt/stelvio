@@ -33,12 +33,13 @@ public class OversiktOverHenvendelserAction extends FormAction {
 	 */
 	public HenvendelseStatistikk hentStatistikk(OversiktOverHenvendelserForm form) {
 		//TODO enhetId
-		HenvendelseStatistikkCriteria crit = new HenvendelseStatistikkCriteria(
-				"", 
-				form.getValgtTidsperiode(),
-				form.getValgtFagomrade(),
-				form.getValgtSok());
-		
+		HenvendelseStatistikkCriteria crit =null; 
+//			new HenvendelseStatistikkCriteria(
+//				"", 
+//				form.getValgtTidsperiode(),
+//				form.getValgtFagomrade(),
+//				form.getValgtSok());
+//		
 		return (HenvendelseStatistikk)henvendelseService.genererHenvendelseStatistikk(new HenvendelseStatistikkRequestImpl(crit)).getEntity();
 	}
 

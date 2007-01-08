@@ -5,7 +5,7 @@ import no.nav.presentation.pensjon.saksbehandling.stelvio.service.HenvendelseSer
 import no.nav.presentation.pensjon.saksbehandling.util.PagedSortableList;
 
 import no.nav.domain.pensjon.henvendelse.Henvendelse;
-import no.nav.domain.pensjon.henvendelse.NewHenvendelse;
+
 
 public class HenvendelseAction {
 	
@@ -31,9 +31,9 @@ public class HenvendelseAction {
 	
 	
 
-	public PagedSortableList<NewHenvendelse> hentHenvendelser( Fodselsnummer fodselsnummer )
+	public PagedSortableList<Henvendelse> hentHenvendelser( Fodselsnummer fodselsnummer )
 	{
-		PagedSortableList<NewHenvendelse> sortableList = new PagedSortableList<NewHenvendelse>(
+		PagedSortableList<Henvendelse> sortableList = new PagedSortableList<Henvendelse>(
 							henvendelsesService.readHenvendelseList(fodselsnummer), 10, "fagomrode" );
 		
 		return sortableList;

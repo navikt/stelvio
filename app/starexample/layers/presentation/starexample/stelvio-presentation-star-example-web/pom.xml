@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>layers</artifactId>
@@ -14,14 +15,92 @@
   <name>star-example :: presentation</name>
   <url>${basedir}/target/site/</url>
 
-  <!-- TODO: integration tests could use this method:
-    http://adminsight.de/weblog/weblog/integration-tests-with-maven2_3.html -->
   <dependencies>
+    <dependency>
+      <groupId>no.stelvio.star.example</groupId>
+      <artifactId>stelvio-domain-star-example-java</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
+    <dependency>
+    <!-- TODO common classes (interface, etc) should be in the common java project for services -->
+      <groupId>no.stelvio.star.example</groupId>
+      <artifactId>stelvio-service-star-example-ejb</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
     <dependency>
       <groupId>no.stelvio</groupId>
       <artifactId>stelvio-presentation-java</artifactId>
       <version>1.0</version>
     </dependency>
-  </dependencies>
+    <dependency>
+      <artifactId>spring-webflow</artifactId>
+      <groupId>org.springframework</groupId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>myfaces-api</artifactId>
+      <groupId>org.apache.myfaces.core</groupId>
+      <version>1.1.4</version>
+    </dependency>
+    <dependency>
+      <artifactId>myfaces-impl</artifactId>
+      <groupId>org.apache.myfaces.core</groupId>
+      <version>1.1.4</version>
+    </dependency>
+    <dependency>
+      <artifactId>jsf-facelets</artifactId>
+      <groupId>com.sun.facelets</groupId>
+      <version>1.1.11</version>
+    </dependency>
+    <dependency>
+      <artifactId>facelets-taghandlers-tomahawk</artifactId>
+      <groupId>net.sf.jsfcomp.facelets.taghandlers</groupId>
+      <version>0.9</version>
+    </dependency>
+    <dependency>
+      <artifactId>tomahawk</artifactId>
+      <groupId>org.apache.myfaces</groupId>
+      <version>1.1.3</version>
+    </dependency>
 
+    <dependency>
+      <artifactId>el</artifactId>
+      <groupId>javax.el</groupId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>el-sun</artifactId>
+      <groupId>com.sun</groupId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <artifactId>spring-modules-validation</artifactId>
+      <groupId>org.springmodules</groupId>
+      <!-- TODO: Upgrade version -->
+      <version>0.6</version>
+      <!-- We don't want v1.2.x of Spring included -->
+      <exclusions>
+        <exclusion>
+          <artifactId>spring</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spring-full</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jta</artifactId>
+          <groupId>javax.transaction</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>ejb</artifactId>
+          <groupId>javax.persistence</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>xml-apis</artifactId>
+          <groupId>xml-apis</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+  </dependencies>
 </project>
