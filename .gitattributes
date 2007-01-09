@@ -1,4 +1,5 @@
 * text=auto !eol
+/.project -text
 app/pom.xml -text
 app/starexample/.project -text
 app/starexample/jee/starexample/stelvio-star-example-jee/.project -text
