@@ -2,7 +2,8 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
 	"http://www.springframework.org/dtd/spring-beans.dtd">
 
-
+<!-- TODO use xsd -->
+<!-- TODO check if jsf- and/or swf-scopes can be used -->
 <beans>
 	<!-- bean id="oversiktOverHenvendelserForm" class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserForm" singleton="false"/ -->
 	<bean id="oversiktOverHenvendelserAction" class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserAction">
