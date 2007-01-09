@@ -1,11 +1,17 @@
 package no.stelvio.domain.person;
 
+import java.util.Date;
+
 import no.stelvio.domain.person.Pid;
 import no.stelvio.domain.person.PidValidationException;
 import junit.framework.TestCase;
 
 public class PidTest extends TestCase {
 
+	String monthAbove9BostNr = "01327200336";
+	String monthBelow10BostNr = "04250100286";
+	String normalFnr = "12345678901";
+	
 	/**
 	 * FIXME: Need valid D-number to implement this method
 	 *
@@ -18,37 +24,37 @@ public class PidTest extends TestCase {
 	}
 	
 	/**
-	 * Test to make sure validation in Pid constructor works with a valid fnr
+	 * Test to make sure validation works with a valid fnr
 	 *
 	 */
 	public void testFnr(){
-		try{
-			Pid pid = new Pid("12345678901");
-		}catch(PidValidationException e){
+			boolean valid = Pid.isValidPidNum(normalFnr);
+		if(!valid){
 			fail("Could not create Pid using Fnr");
 		}
 
 	}
 	
+	public void testGetDate(){
+		Pid pid = new Pid(monthAbove9BostNr);
+		Date date = pid.getDate();
+		pid = new Pid(monthBelow10BostNr);
+		date = pid.getDate();			
+		pid = new Pid(normalFnr);
+		date = pid.getDate();
+	}
+	
 	/**
-	 * Test to make sure validation in Pid constructor works with valid bostnrs
+	 * Test to make sure validation works with valid bostnrs
 	 *
 	 */
 	public void testBostNummer(){
-		String monthAbove9BostNr = "01327200336";
-		String monthBelow10BostNr = "04250100286";
-		try{
-			Pid pid = new Pid(monthAbove9BostNr);
-		}catch(PidValidationException e){
+		boolean valid = Pid.isValidPidNum(monthAbove9BostNr);
+		if(!valid)
 			fail("Could not create fnr using a Bostnummer with birth month > 9");
-		}
-		
-		try{	
-			Pid pid = new Pid(monthBelow10BostNr);
-		}catch(PidValidationException e){
+
+		valid = Pid.isValidPidNum(monthBelow10BostNr);
+		if(!valid)
 			fail("Could not create Pid using a Bostnummer with birth month < 10");
-		}		
-		
-	}	
-	
+	}
 }
