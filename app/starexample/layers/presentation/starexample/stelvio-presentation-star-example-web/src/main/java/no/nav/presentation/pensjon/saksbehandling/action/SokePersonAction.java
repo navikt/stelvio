@@ -21,33 +21,26 @@ public class SokePersonAction {
 	/**
 	 * TODO: Document me
 	 * 
-	 * @param context
+	 * @param form
 	 * @return
+	 * @throws DatabaseNotFoundException
 	 */
 	public PagedSortableList<PersonDO> sokPerson(SokePersonForm form) throws DatabaseNotFoundException
 	{
 		PersonSearchDO personSearch = genereateSearchObject(form);
 		
-		PagedSortableList<PersonDO> results = null;
-		
 		try {
-			results = new PagedSortableList<PersonDO>(	personService.findPerson(personSearch), 
-														"kortnavn", 
-														"sokPersonResultsForm", 
-														"minTabell");
-			
+			return new PagedSortableList<PersonDO>(personService.findPerson(personSearch), 5, "kortnavn");
 		}
 		catch (DatabaseNotFoundException e) {
 			throw e;
 			// TODO: Add error-handling 
 		}
-		
-		return results;
 	}
 	
 	/**
 	 * TODO: Document me
-	 * @param context
+	 * @param form
 	 * @return
 	 */
 	public void resetForm(SokePersonForm form) {
