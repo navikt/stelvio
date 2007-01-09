@@ -29,8 +29,8 @@
     </developers>
 
     <scm>
-        <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</connection>
-        <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</developerConnection>
+        <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio</connection>
+        <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio</developerConnection>
         <tag>HEAD</tag>
         <url>http://versjonskontroll.adeo.no/viewsvn/?root=stelvio</url>
     </scm>
