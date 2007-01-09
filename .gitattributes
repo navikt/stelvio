@@ -743,7 +743,7 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/ejb-jar.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/ibm-ejb-jar-bnd.xmi -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/beanRefContext.xml -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/moduleContext-stelvio-star-example-ejb.xml -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/modules/stelvio-star-example-ejb-context.xml -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/.project -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/pom.xml -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/stelvio-app-star-example-trunk.psf -text
