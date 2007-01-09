@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:ejbbnd="ejbbnd.xmi" xmi:id="EJBJarBinding_1168357745211">
+  <ejbJar href="/stelvio-service-star-example-ejb/src/main/resources/META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1168366725148" jndiName="ejb/no/nav/service/pensjon/JpaCodesTableFactoryLocalHome">
+    <enterpriseBean xmi:type="ejb:Session" href="/stelvio-service-star-example-ejb/src/main/resources/META-INF/ejb-jar.xml#Session_1168357743664"/>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>
