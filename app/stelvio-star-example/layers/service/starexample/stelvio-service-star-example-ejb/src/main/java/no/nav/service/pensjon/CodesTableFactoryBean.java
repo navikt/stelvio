@@ -1,13 +1,21 @@
- 
 package no.nav.service.pensjon;
-import javax.ejb.SessionContext;
+
+import java.util.List;
+
 import javax.ejb.CreateException;
 
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTableNotFoundException;
+import no.stelvio.common.codestable.factory.CodesTableFactory;
+
+import org.springframework.ejb.support.AbstractStatelessSessionBean;
+
 /**
- * Bean implementation class for Session Bean: JpaCodesTableFactory
+ * Bean implementation class for Session Bean: CodesTableFactory
  *
  * @ejb.bean
- *	name="JpaCodesTableFactory"
+ *	name="CodesTableFactory"
  *	type="Stateless"
  *	local-jndi-name="ejb/no/nav/service/pensjon/CodesTableFactoryLocalHome"
  *	view-type="local"
@@ -18,41 +26,22 @@ import javax.ejb.CreateException;
  *
  * @ejb.interface
  *	local-class="no.nav.service.pensjon.CodesTableFactoryLocal"
- *  local-extends="no.stelvio.common.codestable.factory.CodesTableFactory"
- *
+ *  local-extends="no.stelvio.common.codestable.factory.CodesTableFactory, javax.ejb.EJBLocalObject"
  */
-public class CodesTableFactoryBean implements javax.ejb.SessionBean {
-	private SessionContext mySessionCtx;
-	/**
-	 * getSessionContext
-	 */
-	public SessionContext getSessionContext() {
-		return mySessionCtx;
+public class CodesTableFactoryBean extends AbstractStatelessSessionBean implements CodesTableFactory {
+	private CodesTableFactory codesTableFactory;
+	
+	@Override
+	protected void onEjbCreate() throws CreateException {
+		// TODO what should the name of the bean be for stelvio components?
+		codesTableFactory = (CodesTableFactory) getBeanFactory().getBean("frm.codesTableFactory", CodesTableFactory.class);		
 	}
-	/**
-	 * setSessionContext
-	 */
-	public void setSessionContext(SessionContext ctx) {
-		mySessionCtx = ctx;
+
+	public <T extends CodesTableItem> List<T> retrieveCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
+		return codesTableFactory.retrieveCodesTable(codesTableClass);
 	}
-	/**
-	 * ejbCreate
-	 */
-	public void ejbCreate() throws CreateException {
-	}
-	/**
-	 * ejbActivate
-	 */
-	public void ejbActivate() {
-	}
-	/**
-	 * ejbPassivate
-	 */
-	public void ejbPassivate() {
-	}
-	/**
-	 * ejbRemove
-	 */
-	public void ejbRemove() {
+
+	public <T extends CodesTableItemPeriodic> List<T> retrieveCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
+		return codesTableFactory.retrieveCodesTablePeriodic(codesTableClass);
 	}
 }
