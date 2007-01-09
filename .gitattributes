@@ -341,6 +341,7 @@ app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/
 app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/.project -text
 app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/pom.xml -text
 app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/stelvio-app-star-example-trunk.psf -text
+app/stelvio/changelog.txt -text
 app/stelvio/pom.xml -text
 app/stelvio/stelvio-batch-java/.classpath -text
 app/stelvio/stelvio-batch-java/.project -text

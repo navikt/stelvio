@@ -1,0 +1,19 @@
+STELVIO CHANGELOG
+=================
+http://confluence.adeo.no/display/stelvio/Architecture
+
+Changes in version 1.0.1 (15.1.2007)
+------------------------------------
+
+General
+
+Package no.stelvio.common
+
+Package no.stelvio.test
+
+Package no.stelvio.domain
+
+Package no.stelvio.batch
+
+Package no.stelvio.presentation
+* Renamed package from no.stelvio.web to no.stelvio.presentation
