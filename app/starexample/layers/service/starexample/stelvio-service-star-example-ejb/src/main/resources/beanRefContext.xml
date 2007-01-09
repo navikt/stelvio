@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/schema/beans/spring-beans.dtd">
+<beans>
+    <!-- TODO use Spring's xsd -->
+   <bean id="henvendelseService.henvendelseServiceBeanFactory" class="org.springframework.context.support.ClassPathXmlApplicationContext">
+      <!-- ejb context file-->
+      <constructor-arg value="moduleContext-nav-service-sak-generellsak-henvendelse-ejb.xml" />
+   </bean>
+</beans>

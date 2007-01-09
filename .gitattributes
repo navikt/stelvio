@@ -339,6 +339,8 @@ app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/
 app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/person/impl/PersonServiceMock.java -text
 app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/MANIFEST.MF -text
 app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/ejb-jar.xml -text
+app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/beanRefContext.xml -text
+app/starexample/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/moduleContext-stelvio-star-example-ejb.xml -text
 app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/.project -text
 app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/pom.xml -text
 app/starexample/workspaces/starexample/stelvio-app-star-example-workspace/stelvio-app-star-example-trunk.psf -text
