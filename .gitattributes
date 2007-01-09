@@ -403,7 +403,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/converter/ConverterLoade
 app/stelvio-common-java/src/main/java/no/stelvio/common/converter/DateConverter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/converter/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/Behaviour.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/core/ConstantsHolder.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/DomainObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/Initializable.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/TransferObject.java -text
