@@ -4,6 +4,7 @@ import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.beans.SimpleBeanInfo;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,7 +36,7 @@ public class CTSelectTagBeanInfo extends SimpleBeanInfo {
 	 * @see CTSelectTag
 	 */
 	public PropertyDescriptor[] getPropertyDescriptors() {
-		ArrayList proplist = new ArrayList();
+		List<PropertyDescriptor> proplist = new ArrayList<PropertyDescriptor>();
 
 		try {
 			proplist.add(new PropertyDescriptor("name", CTSelectTag.class, null, "setName"));
