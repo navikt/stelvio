@@ -24,7 +24,6 @@ import java.util.List;
 
 import javax.faces.FactoryFinder;
 import javax.faces.application.ApplicationFactory;
-import javax.faces.application.ViewHandler;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.lifecycle.LifecycleFactory;
@@ -34,12 +33,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-
 import org.apache.shale.test.mock.MockApplication;
-import org.apache.shale.test.mock.MockExternalContext;
 import org.apache.shale.test.mock.MockFacesContext;
-import org.apache.shale.test.mock.MockFacesContextFactory;
-import org.apache.shale.test.mock.MockHttpServletRequest;
 import org.apache.shale.test.mock.MockHttpServletResponse;
 import org.apache.shale.test.mock.MockHttpSession;
 import org.apache.shale.test.mock.MockLifecycle;
@@ -48,7 +43,6 @@ import org.apache.shale.test.mock.MockPrincipal;
 import org.apache.shale.test.mock.MockRenderKit;
 import org.apache.shale.test.mock.MockServletConfig;
 import org.apache.shale.test.mock.MockServletContext;
-import org.apache.shale.test.mock.MockViewHandler;
 
 /**
  * <p>Abstract JUnit test case base class, which sets up the JavaServer Faces

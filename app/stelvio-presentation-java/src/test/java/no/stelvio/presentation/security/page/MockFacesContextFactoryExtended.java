@@ -7,7 +7,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.shale.test.mock.MockExternalContext;
 import org.apache.shale.test.mock.MockFacesContext;
 import org.apache.shale.test.mock.MockFacesContextFactory;
 

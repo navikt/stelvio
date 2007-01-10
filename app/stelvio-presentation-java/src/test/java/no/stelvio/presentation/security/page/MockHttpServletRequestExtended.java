@@ -16,29 +16,12 @@
 
 package no.stelvio.presentation.security.page;
 
-import java.io.BufferedReader;
 import java.security.Principal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
-import java.util.Vector;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletInputStream;
-//import javax.servlet.ServletRequestAttributeEvent;
-//import javax.servlet.ServletRequestAttributeListener;
-import javax.servlet.http.Cookie;
-//import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.apache.shale.test.mock.MockHttpServletRequest;
 
 /**

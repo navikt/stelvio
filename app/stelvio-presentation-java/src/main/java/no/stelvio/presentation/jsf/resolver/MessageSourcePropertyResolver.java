@@ -15,13 +15,13 @@
  */
 package no.stelvio.presentation.jsf.resolver;
 
-import no.stelvio.common.context.*;
-import org.springframework.context.MessageSource;
-
 import java.util.Locale;
 
-import javax.faces.context.FacesContext;
 import javax.faces.el.PropertyResolver;
+
+import no.stelvio.common.context.RequestContext;
+
+import org.springframework.context.MessageSource;
 
 /**
  * This class is a JSF <code>PropertyResolver</code> for Spring's <code>MessageSource</code>.
