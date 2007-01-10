@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.springframework.util.StringUtils;
 
 /**
  * This class is a statical helper for doing reflection tasks.
@@ -80,7 +81,7 @@ public final class ReflectUtil {
 			Object val;
 
 			if (valueIn instanceof String) {
-				String value = StringHelper.removeEndingSpaces(valueIn.toString());
+				String value = StringUtils.trimTrailingWhitespace(valueIn.toString());
 				val = ConvertUtils.convert(value, classes[0]);
 			} else {
 				val = valueIn;
