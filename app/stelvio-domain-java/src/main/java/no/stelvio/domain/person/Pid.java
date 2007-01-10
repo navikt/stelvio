@@ -68,7 +68,7 @@ public final class Pid implements Serializable {
 	 * Method that uses the number to calculate and return the birth date for this pid
 	 * @return java.util.Date representing the birth date of person with this Pid
 	 */
-	public Date getDate(){
+	public Date getFodselsdato(){
 		SimpleDateFormat formatter = new SimpleDateFormat("MMDDyyyy");
 
 		//Adjust bnr or dnr (for fnr return value will be equal to pid)
