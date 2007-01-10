@@ -1,10 +1,10 @@
 package no.stelvio.common.security.authorization.method;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import no.stelvio.common.security.authorization.method.AfterInvocationProviderManager;
-
-import org.acegisecurity.AccessDeniedException;
 import org.acegisecurity.ConfigAttributeDefinition;
 import org.acegisecurity.SecurityConfig;
 import org.acegisecurity.afterinvocation.AfterInvocationProvider;

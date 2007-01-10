@@ -1,6 +1,5 @@
 package no.stelvio.common.security.authorization.method;
 
-import org.acegisecurity.AccessDeniedException;
 import org.acegisecurity.Authentication;
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.ConfigAttributeDefinition;
