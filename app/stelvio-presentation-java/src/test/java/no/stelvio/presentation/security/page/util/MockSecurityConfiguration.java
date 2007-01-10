@@ -1,11 +1,11 @@
-package no.stelvio.web.security.page.util;
+package no.stelvio.presentation.security.page.util;
 
 import java.util.HashMap;
 
-import no.stelvio.web.security.page.parse.JSFApplication;
-import no.stelvio.web.security.page.parse.JSFPage;
-import no.stelvio.web.security.page.parse.SSLConfig;
-import no.stelvio.web.security.page.parse.SecurityConfiguration;
+import no.stelvio.presentation.security.page.parse.JSFApplication;
+import no.stelvio.presentation.security.page.parse.JSFPage;
+import no.stelvio.presentation.security.page.parse.SSLConfig;
+import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
 
 public class MockSecurityConfiguration implements SecurityConfiguration{
 

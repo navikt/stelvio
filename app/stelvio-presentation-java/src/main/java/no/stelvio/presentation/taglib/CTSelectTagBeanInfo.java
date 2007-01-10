@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib;
+package no.stelvio.presentation.taglib;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;

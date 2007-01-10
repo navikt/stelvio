@@ -1,4 +1,4 @@
-package no.stelvio.web.security.acegi;
+package no.stelvio.presentation.security.acegi;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import no.stelvio.web.filter.AbstractFilter;
+import no.stelvio.presentation.filter.AbstractFilter;
 
 import org.acegisecurity.Authentication;
 import org.acegisecurity.GrantedAuthority;

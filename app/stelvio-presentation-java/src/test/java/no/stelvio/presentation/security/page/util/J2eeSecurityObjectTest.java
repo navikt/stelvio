@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page.util;
+package no.stelvio.presentation.security.page.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +8,15 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import no.stelvio.web.security.page.AbstractPhaselistenerTestCase;
-import no.stelvio.web.security.page.MockHttpServletRequestExtended;
-import no.stelvio.web.security.page.PageAccessDeniedException;
-import no.stelvio.web.security.page.constants.Constants;
-import no.stelvio.web.security.page.parse.J2EERole;
-import no.stelvio.web.security.page.parse.J2EERoles;
-import no.stelvio.web.security.page.parse.JSFApplication;
-import no.stelvio.web.security.page.parse.JSFPage;
-import no.stelvio.web.security.page.parse.SecurityConfiguration;
+import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
+import no.stelvio.presentation.security.page.MockHttpServletRequestExtended;
+import no.stelvio.presentation.security.page.PageAccessDeniedException;
+import no.stelvio.presentation.security.page.constants.Constants;
+import no.stelvio.presentation.security.page.parse.J2EERole;
+import no.stelvio.presentation.security.page.parse.J2EERoles;
+import no.stelvio.presentation.security.page.parse.JSFApplication;
+import no.stelvio.presentation.security.page.parse.JSFPage;
+import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
 
 import org.apache.shale.test.mock.MockHttpServletResponse;
 

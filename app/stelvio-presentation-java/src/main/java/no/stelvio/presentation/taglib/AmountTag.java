@@ -1,10 +1,10 @@
-package no.stelvio.web.taglib;
+package no.stelvio.presentation.taglib;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.Tag;
 
-import no.stelvio.web.taglib.support.AmountSupport;
-import no.stelvio.web.taglib.support.ExpressionEvaluator;
+import no.stelvio.presentation.taglib.support.AmountSupport;
+import no.stelvio.presentation.taglib.support.ExpressionEvaluator;
 
 /**
  * Formats a number using the following rules:

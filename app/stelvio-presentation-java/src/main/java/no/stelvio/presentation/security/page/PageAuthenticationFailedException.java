@@ -1,7 +1,7 @@
-package no.stelvio.web.security.page;
+package no.stelvio.presentation.security.page;
 
 import no.stelvio.common.security.SecurityException;
-import no.stelvio.web.security.page.parse.JSFPage;
+import no.stelvio.presentation.security.page.parse.JSFPage;
 
 /**
  * Thrown when an attempt to authenticate the user fails.

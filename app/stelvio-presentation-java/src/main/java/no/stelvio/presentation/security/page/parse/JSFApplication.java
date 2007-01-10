@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page.parse;
+package no.stelvio.presentation.security.page.parse;
 
 import java.util.HashMap;
 

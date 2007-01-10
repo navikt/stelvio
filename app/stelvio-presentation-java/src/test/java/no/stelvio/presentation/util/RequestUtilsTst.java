@@ -1,4 +1,4 @@
-package no.stelvio.web.util;
+package no.stelvio.presentation.util;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.eq;

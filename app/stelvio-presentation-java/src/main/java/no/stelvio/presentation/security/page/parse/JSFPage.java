@@ -1,6 +1,6 @@
-package no.stelvio.web.security.page.parse;
+package no.stelvio.presentation.security.page.parse;
 
-import no.stelvio.web.security.page.constants.Constants;
+import no.stelvio.presentation.security.page.constants.Constants;
 
 /**
  * 

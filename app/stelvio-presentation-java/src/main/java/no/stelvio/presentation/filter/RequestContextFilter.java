@@ -1,4 +1,4 @@
-package no.stelvio.web.filter;
+package no.stelvio.presentation.filter;
 
 import java.io.IOException;
 import javax.faces.context.FacesContext;
@@ -13,7 +13,7 @@ import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
-import no.stelvio.web.util.RequestUtils;
+import no.stelvio.presentation.util.RequestUtils;
 
 
 /**

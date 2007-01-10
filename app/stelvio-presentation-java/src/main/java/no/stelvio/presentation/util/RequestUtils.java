@@ -1,4 +1,4 @@
-package no.stelvio.web.util;
+package no.stelvio.presentation.util;
 
 import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,7 @@ import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.web.constants.Constants;
+import no.stelvio.presentation.constants.Constants;
 
 /**
  * Utilities for handling HttpServletRequests.

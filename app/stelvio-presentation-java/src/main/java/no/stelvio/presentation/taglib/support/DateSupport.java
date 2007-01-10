@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib.support;
+package no.stelvio.presentation.taglib.support;
 
 import org.apache.commons.lang.StringUtils;
 

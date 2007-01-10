@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib.support;
+package no.stelvio.presentation.taglib.support;
 
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;

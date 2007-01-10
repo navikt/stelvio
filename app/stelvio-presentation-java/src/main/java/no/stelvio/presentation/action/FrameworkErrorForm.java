@@ -1,4 +1,4 @@
-package no.stelvio.web.action;
+package no.stelvio.presentation.action;
 
 /**
  * The form that holds the technical error details.

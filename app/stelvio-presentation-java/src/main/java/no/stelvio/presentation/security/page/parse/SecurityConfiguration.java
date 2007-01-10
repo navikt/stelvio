@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page.parse;
+package no.stelvio.presentation.security.page.parse;
 
 /**
  * Interface for SecurityConfiguration sources which parses security definitions

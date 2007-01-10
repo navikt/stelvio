@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib;
+package no.stelvio.presentation.taglib;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.codestable.CodesTableManager;
-import no.stelvio.web.taglib.support.CtTagSupport;
-import no.stelvio.web.taglib.support.ExpressionEvaluator;
+import no.stelvio.presentation.taglib.support.CtTagSupport;
+import no.stelvio.presentation.taglib.support.ExpressionEvaluator;
 
 
 /**

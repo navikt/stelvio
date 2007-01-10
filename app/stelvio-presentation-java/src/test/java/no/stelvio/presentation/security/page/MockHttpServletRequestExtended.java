@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package no.stelvio.web.security.page;
+package no.stelvio.presentation.security.page;
 
 import java.io.BufferedReader;
 import java.security.Principal;

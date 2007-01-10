@@ -1,4 +1,4 @@
-package no.stelvio.web.util;
+package no.stelvio.presentation.util;
 
 import java.security.Permission;
 import java.util.PropertyPermission;

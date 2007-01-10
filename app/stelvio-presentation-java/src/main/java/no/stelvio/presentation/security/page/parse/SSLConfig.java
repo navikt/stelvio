@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page.parse;
+package no.stelvio.presentation.security.page.parse;
 
 /**
  * Object to hold the SSL port and SSL definitions defined in the security

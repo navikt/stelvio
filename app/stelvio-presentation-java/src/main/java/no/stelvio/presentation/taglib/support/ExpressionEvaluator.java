@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib.support;
+package no.stelvio.presentation.taglib.support;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;

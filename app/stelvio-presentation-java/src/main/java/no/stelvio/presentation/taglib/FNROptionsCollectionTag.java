@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib;
+package no.stelvio.presentation.taglib;
 
 /**
  * Tag for displaying FNR in a optionsCollection. This will display on the follwoing format:

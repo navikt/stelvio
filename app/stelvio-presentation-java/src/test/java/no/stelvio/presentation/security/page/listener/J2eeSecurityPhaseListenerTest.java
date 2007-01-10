@@ -1,18 +1,18 @@
-package no.stelvio.web.security.page.listener;
+package no.stelvio.presentation.security.page.listener;
 
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.servlet.http.HttpServletResponse;
 
-import no.stelvio.web.security.page.AbstractPhaselistenerTestCase;
-import no.stelvio.web.security.page.parse.J2EERole;
-import no.stelvio.web.security.page.parse.J2EERoles;
-import no.stelvio.web.security.page.parse.JSFApplication;
-import no.stelvio.web.security.page.parse.JSFPage;
-import no.stelvio.web.security.page.parse.SecurityConfiguration;
-import no.stelvio.web.security.page.util.J2eeSecurityObject;
-import no.stelvio.web.security.page.util.MockSecurityConfiguration;
+import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
+import no.stelvio.presentation.security.page.parse.J2EERole;
+import no.stelvio.presentation.security.page.parse.J2EERoles;
+import no.stelvio.presentation.security.page.parse.JSFApplication;
+import no.stelvio.presentation.security.page.parse.JSFPage;
+import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
+import no.stelvio.presentation.security.page.util.J2eeSecurityObject;
+import no.stelvio.presentation.security.page.util.MockSecurityConfiguration;
 
 import org.apache.shale.test.mock.MockHttpServletResponse;
 

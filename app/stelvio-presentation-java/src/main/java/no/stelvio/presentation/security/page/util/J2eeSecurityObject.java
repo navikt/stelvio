@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page.util;
+package no.stelvio.presentation.security.page.util;
 
 import java.io.IOException;
 
@@ -18,17 +18,17 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.web.security.page.PageAccessDeniedException;
-import no.stelvio.web.security.page.PageAuthenticationFailedException;
-import no.stelvio.web.security.page.PageProtocolSwitchFailedException;
-import no.stelvio.web.security.page.PageSecurityFileNotFoundException;
-import no.stelvio.web.security.page.constants.Constants;
-import no.stelvio.web.security.page.parse.J2EERole;
-import no.stelvio.web.security.page.parse.J2EERoles;
-import no.stelvio.web.security.page.parse.JSFApplication;
-import no.stelvio.web.security.page.parse.JSFPage;
-import no.stelvio.web.security.page.parse.SecurityConfiguration;
-import no.stelvio.web.security.page.parse.SecurityConfigurationXML;
+import no.stelvio.presentation.security.page.PageAccessDeniedException;
+import no.stelvio.presentation.security.page.PageAuthenticationFailedException;
+import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
+import no.stelvio.presentation.security.page.PageSecurityFileNotFoundException;
+import no.stelvio.presentation.security.page.constants.Constants;
+import no.stelvio.presentation.security.page.parse.J2EERole;
+import no.stelvio.presentation.security.page.parse.J2EERoles;
+import no.stelvio.presentation.security.page.parse.JSFApplication;
+import no.stelvio.presentation.security.page.parse.JSFPage;
+import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
+import no.stelvio.presentation.security.page.parse.SecurityConfigurationXML;
 
 /**
  * This class reads in and maintains the security definitions from the

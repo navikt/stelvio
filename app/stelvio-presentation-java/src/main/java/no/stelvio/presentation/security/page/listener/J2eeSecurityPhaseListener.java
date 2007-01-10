@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page.listener;
+package no.stelvio.presentation.security.page.listener;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,13 +17,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.web.security.page.PageAccessDeniedException;
-import no.stelvio.web.security.page.PageAuthenticationFailedException;
-import no.stelvio.web.security.page.PageProtocolSwitchFailedException;
-import no.stelvio.web.security.page.PageSecurityFileNotFoundException;
-import no.stelvio.web.security.page.constants.Constants;
-import no.stelvio.web.security.page.parse.JSFPage;
-import no.stelvio.web.security.page.util.J2eeSecurityObject;
+import no.stelvio.presentation.security.page.PageAccessDeniedException;
+import no.stelvio.presentation.security.page.PageAuthenticationFailedException;
+import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
+import no.stelvio.presentation.security.page.PageSecurityFileNotFoundException;
+import no.stelvio.presentation.security.page.constants.Constants;
+import no.stelvio.presentation.security.page.parse.JSFPage;
+import no.stelvio.presentation.security.page.util.J2eeSecurityObject;
 
 /**
  * <p>

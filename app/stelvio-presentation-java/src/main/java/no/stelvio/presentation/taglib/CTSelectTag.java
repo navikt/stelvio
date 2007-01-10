@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib;
+package no.stelvio.presentation.taglib;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
@@ -8,9 +8,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.web.taglib.support.CtTagSupport;
-import no.stelvio.web.taglib.support.ExpressionEvaluator;
-import no.stelvio.web.util.RequestUtils;
+import no.stelvio.presentation.taglib.support.CtTagSupport;
+import no.stelvio.presentation.taglib.support.ExpressionEvaluator;
+import no.stelvio.presentation.util.RequestUtils;
 
 /**
  * Extension of the SelectTag by adding an attribute for determining if the field should be read-only or not.

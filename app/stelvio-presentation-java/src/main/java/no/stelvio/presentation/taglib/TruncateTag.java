@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib;
+package no.stelvio.presentation.taglib;
 
 import java.io.IOException;
 import javax.servlet.jsp.JspException;

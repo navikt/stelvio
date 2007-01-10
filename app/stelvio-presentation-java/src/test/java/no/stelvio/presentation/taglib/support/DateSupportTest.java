@@ -1,6 +1,6 @@
-package no.stelvio.web.taglib.support;
+package no.stelvio.presentation.taglib.support;
 
-import no.stelvio.web.taglib.support.DateSupport;
+import no.stelvio.presentation.taglib.support.DateSupport;
 import junit.framework.TestCase;
 
 /**

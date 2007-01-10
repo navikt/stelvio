@@ -1,10 +1,10 @@
-package no.stelvio.web.security.page.parse;
+package no.stelvio.presentation.security.page.parse;
 
 import java.io.IOException;
 import java.net.URL;
 
-import no.stelvio.web.security.page.PageSecurityFileNotFoundException;
-import no.stelvio.web.security.page.PageSecurityFileParseException;
+import no.stelvio.presentation.security.page.PageSecurityFileNotFoundException;
+import no.stelvio.presentation.security.page.PageSecurityFileParseException;
 
 import org.apache.commons.digester.Digester;
 import org.apache.commons.digester.RuleSetBase;

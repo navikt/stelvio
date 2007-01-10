@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package no.stelvio.web.jsf.resolver;
+package no.stelvio.presentation.jsf.resolver;
 
 import no.stelvio.common.context.*;
 import org.springframework.context.MessageSource;

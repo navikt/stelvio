@@ -1,4 +1,4 @@
-package no.stelvio.web.filter;
+package no.stelvio.presentation.filter;
 
 import java.io.IOException;
 import javax.servlet.FilterChain;

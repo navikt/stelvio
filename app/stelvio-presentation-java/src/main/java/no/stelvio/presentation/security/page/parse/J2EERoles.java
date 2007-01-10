@@ -1,8 +1,8 @@
-package no.stelvio.web.security.page.parse;
+package no.stelvio.presentation.security.page.parse;
 
 import java.util.ArrayList;
 import java.util.List;
-import no.stelvio.web.security.page.constants.Constants;
+import no.stelvio.presentation.security.page.constants.Constants;
 
 /**
  * Object representing a list of J2EE roles required for a page authorization.

@@ -1,4 +1,4 @@
-package no.stelvio.web.servlet;
+package no.stelvio.presentation.servlet;
 
 import java.util.Properties;
 

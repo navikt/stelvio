@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page.authentication;
+package no.stelvio.presentation.security.page.authentication;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import no.stelvio.web.security.page.constants.Constants;
+import no.stelvio.presentation.security.page.constants.Constants;
 
 /**
  * <p>

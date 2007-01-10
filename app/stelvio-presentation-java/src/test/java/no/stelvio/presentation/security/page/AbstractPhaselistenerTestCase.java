@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package no.stelvio.web.security.page;
+package no.stelvio.presentation.security.page;
 
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -132,7 +132,7 @@ public class AbstractPhaselistenerTestCase extends TestCase {
         FactoryFinder.setFactory(FactoryFinder.APPLICATION_FACTORY,
         "org.apache.shale.test.mock.MockApplicationFactory");
         FactoryFinder.setFactory(FactoryFinder.FACES_CONTEXT_FACTORY,
-        "no.stelvio.web.security.page.MockFacesContextFactoryExtended");
+        "no.stelvio.presentation.security.page.MockFacesContextFactoryExtended");
         FactoryFinder.setFactory(FactoryFinder.LIFECYCLE_FACTORY,
         "org.apache.shale.test.mock.MockLifecycleFactory");
         FactoryFinder.setFactory(FactoryFinder.RENDER_KIT_FACTORY,

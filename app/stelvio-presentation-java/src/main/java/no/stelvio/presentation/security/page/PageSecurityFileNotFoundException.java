@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page;
+package no.stelvio.presentation.security.page;
 
 import no.stelvio.common.security.SecurityException;
 

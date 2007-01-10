@@ -1,4 +1,4 @@
-package no.stelvio.web.constants;
+package no.stelvio.presentation.constants;
 
 /**
  * Constants used in the web framework.

@@ -1,4 +1,4 @@
-package no.stelvio.web.action;
+package no.stelvio.presentation.action;
 
 import junit.framework.TestCase;
 import no.stelvio.common.context.RequestContext;

@@ -1,4 +1,4 @@
-package no.stelvio.web.security.page.constants;
+package no.stelvio.presentation.security.page.constants;
 
 import java.io.Serializable;
 

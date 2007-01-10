@@ -1,4 +1,4 @@
-package no.stelvio.web.util;
+package no.stelvio.presentation.util;
 
 import no.stelvio.common.error.SystemUnrecoverableException;
 import org.apache.commons.lang.ArrayUtils;

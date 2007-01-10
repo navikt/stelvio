@@ -1,4 +1,4 @@
-package no.stelvio.web.taglib;
+package no.stelvio.presentation.taglib;
 
 import java.io.IOException;
 import java.util.Date;
@@ -6,7 +6,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import no.stelvio.common.util.DateUtil;
-import no.stelvio.web.taglib.support.DateSupport;
+import no.stelvio.presentation.taglib.support.DateSupport;
 
 /**
  * Custom tag to easy date formatting.

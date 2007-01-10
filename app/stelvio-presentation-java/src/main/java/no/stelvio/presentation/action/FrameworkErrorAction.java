@@ -1,4 +1,4 @@
-package no.stelvio.web.action;
+package no.stelvio.presentation.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
