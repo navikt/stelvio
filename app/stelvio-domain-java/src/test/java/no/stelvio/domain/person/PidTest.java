@@ -31,13 +31,22 @@ public class PidTest extends TestCase {
 
 	}
 	
+	/**
+	 * Testing the getDate method on Pid.
+	 * If no exception is thrown, it's assumed that the method is working.
+	 *
+	 */
 	public void testGetDate(){
-		Pid pid = new Pid(monthAbove9BostNr);
-		pid.getDate();
-		pid = new Pid(monthBelow10BostNr);
-		pid.getDate();			
-		pid = new Pid(normalFnr);
-		pid.getDate();
+		try{
+			Pid pid = new Pid(monthAbove9BostNr);
+			pid.getDate();
+			pid = new Pid(monthBelow10BostNr);
+			pid.getDate();			
+			pid = new Pid(normalFnr);
+			pid.getDate();
+		}catch(PidValidationException e){
+			fail("The getDate method failed during execution");
+		}
 	}
 	
 	/**
