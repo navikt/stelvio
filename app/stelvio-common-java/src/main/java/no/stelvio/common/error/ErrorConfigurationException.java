@@ -19,4 +19,18 @@ public class ErrorConfigurationException extends ErrorHandlingException {
     protected String messageTemplate(final int numArgs) {
         return "Configuration for error {0} is not defined correctly; {1} args in definition, but {2} args in exception";
     }
+
+	public int getArgsInError() {
+		return argsInError;
+	}
+
+	public int getArgsInException() {
+		return argsInException;
+	}
+
+	public Class<? extends Throwable> getClazz() {
+		return clazz;
+	}
+    
+    
 }
