@@ -148,7 +148,6 @@ public final class Pid {
 		int day = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(0, 2));
 		int month = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(2, 4));
 		int year = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(4, 6));
-		int individnr = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(6, 9));
 
 		year = get4DigitYearOfBirth(dnrOrBnrAdjustedFnr);
 
