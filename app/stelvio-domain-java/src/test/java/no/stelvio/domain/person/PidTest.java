@@ -14,8 +14,8 @@ public class PidTest extends TestCase {
 	 */
 	public void testDNummer(){
 		
-		String dayBelow10Dnr = "41...";
-		String dayAbove9Dnr = "51...";
+	//	String dayBelow10Dnr = "41...";
+	//	String dayAbove9Dnr = "51...";
 		
 	}
 	
@@ -24,7 +24,7 @@ public class PidTest extends TestCase {
 	 *
 	 */
 	public void testFnr(){
-			boolean valid = Pid.isValidPidNum(normalFnr);
+			boolean valid = Pid.isValidPid(normalFnr);
 		if(!valid){
 			fail("Could not create Pid using Fnr");
 		}
@@ -45,11 +45,11 @@ public class PidTest extends TestCase {
 	 *
 	 */
 	public void testBostNummer(){
-		boolean valid = Pid.isValidPidNum(monthAbove9BostNr);
+		boolean valid = Pid.isValidPid(monthAbove9BostNr);
 		if(!valid)
 			fail("Could not create fnr using a Bostnummer with birth month > 9");
 
-		valid = Pid.isValidPidNum(monthBelow10BostNr);
+		valid = Pid.isValidPid(monthBelow10BostNr);
 		if(!valid)
 			fail("Could not create Pid using a Bostnummer with birth month < 10");
 	}

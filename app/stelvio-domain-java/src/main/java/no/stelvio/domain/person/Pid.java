@@ -1,5 +1,6 @@
 package no.stelvio.domain.person;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,14 +21,21 @@ import org.apache.commons.lang.StringUtils;
  * NB! Pid is and should always be immutable
  * 
  * @author person983601e0e117, Accenture
+ * @author person15754a4522e7
  *
  */
 
 @Embeddable
-public final class Pid {
+public final class Pid implements Serializable {
+
+	/**
+	 * The id used to check version of object when serializing.
+	 */
+	private static final long serialVersionUID = 8098800200089499716L;
+	
 
 	@Column(name="fnr")
-	private String nummer;
+	private String pid;
 	
 	/**
 	 * Protected constructor, should only be used by persistence provider.
@@ -39,21 +47,21 @@ public final class Pid {
 	}
 	
 	/**
-	 * Creates a new Pid using the nummer
-	 * @param nummer a valid fnr
-	 * @throws PidValidationException if nummer isn't a valid Personal Identification Number
+	 * Creates a new Pid using the a pid String
+	 * @param pid a valid fnr
+	 * @throws PidValidationException if pid isn't a valid Personal Identification Number
 	 */
-	public Pid(String nummer) throws PidValidationException{
-		this.nummer = nummer;
+	public Pid(String pid) throws PidValidationException{
+		this.pid = pid;
 		validate();
 	}
 	
 	/**
 	 * Gets the personal identification number, this number should always be a valid pid..
-	 * @return nummer representing a fnr, dnr or bostnr
+	 * @return pid representing a fnr, dnr or bostnr
 	 */
-	public String getNummer() {
-		return nummer;
+	public String getPid() {
+		return pid;
 	}	
 
 	/**
@@ -63,8 +71,8 @@ public final class Pid {
 	public Date getDate(){
 		SimpleDateFormat formatter = new SimpleDateFormat("MMDDyyyy");
 
-		//Adjust bnr or dnr (for fnr return value will be equal to nummer)
-		String adjustedFnr = makeDnrOrBostnrAdjustments(nummer);
+		//Adjust bnr or dnr (for fnr return value will be equal to pid)
+		String adjustedFnr = makeDnrOrBostnrAdjustments(pid);
 		//Construct a date string with MMDDyyyy format
 		String dateString = adjustedFnr.substring(0,4) + get4DigitYearOfBirth(adjustedFnr);
 		
@@ -72,8 +80,8 @@ public final class Pid {
 		try {
 			date = formatter.parse(dateString);
 		} catch (ParseException e) {
-			//This should never occur, as "nummer" has been validated by constructor
-			throw new PidValidationException(e,nummer);
+			//This should never occur, as "pid" has been validated by constructor
+			throw new PidValidationException(e,pid);
 		}
 		return date;
 	}
@@ -81,12 +89,12 @@ public final class Pid {
 	/**
 	 * Determines whether the specified string is a valid personal identification number.
 	 * A valid PID can be: FNR, DNR or BostNr 
-	 * @param pidNum
+	 * @param pid
 	 * @return <code>true</code> if the specified string is valid, otherwise <code>false</code>
-	 * @throws PidValidationException if nummer isn't a valid Personal Identification Number
+	 * @throws PidValidationException if pid isn't a valid Personal Identification Number
 	 */
-	public static boolean isValidPidNum(String pidNum){
-		String value = StringUtils.deleteWhitespace(pidNum);
+	public static boolean isValidPid(String pid){
+		String value = StringUtils.deleteWhitespace(pid);
 		if(isValidCharacters(value) && isValidFnrLength(value)){			
 			if(isMod11Compliant(value)){
 				String fnr = makeDnrOrBostnrAdjustments(value);				
@@ -103,9 +111,9 @@ public final class Pid {
 	 * @return true if object is valid, otherwise false
 	 */
 	private void validate() throws PidValidationException{
-		boolean valid = isValidPidNum(nummer);
+		boolean valid = isValidPid(pid);
 		if(!valid){
-			throw new PidValidationException(nummer);
+			throw new PidValidationException(pid);
 		}
 	}	
 	

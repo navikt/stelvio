@@ -18,16 +18,30 @@ public class PidValidationException extends FunctionalUnrecoverableException {
 	 */
 	private static final long serialVersionUID = 6146570031382768191L;
 
+	/**
+	 * {@inheritDoc no.stelvio.common.error.FunctionalUnrecoverableException}
+	 */
 	public PidValidationException(ExceptionToCopyHolder holder) {
 		super(holder);
 	}
 
-	public PidValidationException(String pidNum) {
-		super(pidNum);
+	/**
+	 * Constructor.
+	 * @param pid Pid value that failed validation.
+	 */
+	
+	public PidValidationException(String pid) {
+		super(pid);
 	}
 
-	public PidValidationException(Throwable cause, String pidNum) {
-		super(cause, pidNum);
+	/**
+	 * Constructor.
+	 * @param cause Exception root cause
+	 * @param pid Pid value thast failed validation 
+	 */
+	
+	public PidValidationException(Throwable cause, String pid) {
+		super(cause, pid);
 	}
 
 	/**
