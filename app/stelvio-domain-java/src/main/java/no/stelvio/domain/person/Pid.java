@@ -34,7 +34,7 @@ public final class Pid implements Serializable {
 	private static final long serialVersionUID = 8098800200089499716L;
 	
 
-	@Column(name="fnr")
+	@Column(name="fnr_fk")
 	private String pid;
 	
 	/**
