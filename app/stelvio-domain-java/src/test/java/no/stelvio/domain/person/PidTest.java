@@ -1,9 +1,5 @@
 package no.stelvio.domain.person;
 
-import java.util.Date;
-
-import no.stelvio.domain.person.Pid;
-import no.stelvio.domain.person.PidValidationException;
 import junit.framework.TestCase;
 
 public class PidTest extends TestCase {
@@ -37,11 +33,11 @@ public class PidTest extends TestCase {
 	
 	public void testGetDate(){
 		Pid pid = new Pid(monthAbove9BostNr);
-		Date date = pid.getDate();
+		pid.getDate();
 		pid = new Pid(monthBelow10BostNr);
-		date = pid.getDate();			
+		pid.getDate();			
 		pid = new Pid(normalFnr);
-		date = pid.getDate();
+		pid.getDate();
 	}
 	
 	/**
