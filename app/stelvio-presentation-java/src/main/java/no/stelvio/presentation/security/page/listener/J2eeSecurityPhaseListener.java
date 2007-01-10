@@ -239,27 +239,28 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 			this.j2eeSecurityObject = new J2eeSecurityObject();
 		}
 
-		ExternalContext exctx = FacesContext.getCurrentInstance()
-				.getExternalContext();
-		String viewId = FacesContext.getCurrentInstance().getViewRoot()
-				.getViewId();
+		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
+		String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+		
 		if (viewId != null && !pageAlreadyEvaluated(viewId, exctx)) {
-
 			boolean pageAlreadyAuthorized = checkPageCache(viewId);
+			
 			if (!pageAlreadyAuthorized) {
 				boolean pageAuthorized = handleSecurity(phaseEvent);
+				
 				if (pageAuthorized) {
-					HashMap userPageCache = getUserSessionPageAuthorizationCache(this.useSessionPageCache);
+					Map<String, Boolean> userPageCache = getUserSessionPageAuthorizationCache(this.useSessionPageCache);
+					
 					if (userPageCache != null) {
-						boolean requiresSSL = this.j2eeSecurityObject
-								.getPageObject(viewId).requiresSSL();
+						boolean requiresSSL = this.j2eeSecurityObject.getPageObject(viewId).requiresSSL();
+						
 						if (log.isDebugEnabled()) {
-							log
-									.debug("Storing viewId "
+							log.debug("Storing viewId "
 											+ viewId
 											+ " as authorized view with SSL requirement = "
 											+ requiresSSL);
 						}
+						
 						userPageCache.put(viewId, requiresSSL);
 					}
 				}
@@ -298,7 +299,7 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 				.getExternalContext();
 		String initParam = exctx.getInitParameter(Constants.USE_PAGE_CACHE);
 		this.useSessionPageCache = (initParam != null && initParam.equalsIgnoreCase("FALSE")) ? false : true;
-		HashMap userPageCache = getUserSessionPageAuthorizationCache(this.useSessionPageCache);
+		Map<String, Boolean> userPageCache = getUserSessionPageAuthorizationCache(this.useSessionPageCache);
 		return isPageInCache(this.useSessionPageCache, viewId, userPageCache);
 	}
 
@@ -314,8 +315,7 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 	 *            the authorized pages cache
 	 * @return <code>true<code> if the page is found in the cache
 	 */
-	private boolean isPageInCache(boolean cacheEnabled, String viewId,
-			HashMap userPageCache) {
+	private boolean isPageInCache(boolean cacheEnabled, String viewId, Map<String, Boolean> userPageCache) {
 		if (!cacheEnabled) {
 			return false;
 		}
@@ -328,8 +328,7 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 
 		if (userPageCache != null) {
 			authorizedViewIdRequiresSSL = userPageCache.get(viewId);
-			pageAlreadyAuthorized = authorizedViewIdRequiresSSL == null ? false
-					: true;
+			pageAlreadyAuthorized = authorizedViewIdRequiresSSL == null ? false : true;
 		}
 		
 		// if page was authorized before then we don't need to access and parse
@@ -337,31 +336,24 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 		// performance, assuming that a user page authorization doesn't change
 		// while working within the application.
 		if (pageAlreadyAuthorized) {
-			boolean pageRequiresSSL = ((Boolean) authorizedViewIdRequiresSSL)
-					.booleanValue();
-			if (pageRequiresSSL) {
-				if (log.isDebugEnabled()) {
-					log.debug("Page authorization for " + viewId
-							+ " was evaluated before.");
-					log
-							.debug("User is allowed to access page but SSL is required.");
-				}
-			} else {
-				if (log.isDebugEnabled()) {
-					log.debug("Page authorization for " + viewId
-							+ " was evaluated before.");
-					log
-							.debug("User is allowed to access page. No SSL required.");
+			boolean pageRequiresSSL = ((Boolean) authorizedViewIdRequiresSSL).booleanValue();
+
+			if (log.isDebugEnabled()) {
+				log.debug("Page authorization for " + viewId + " was evaluated before.");
+
+				if (pageRequiresSSL) {
+						log.debug("User is allowed to access page but SSL is required.");
+				} else {
+						log.debug("User is allowed to access page. No SSL required.");
 				}
 			}
+			
 			// set last visited page
 			FacesContext fc = FacesContext.getCurrentInstance();
-			HttpSession session = (HttpSession) fc.getExternalContext()
-					.getSession(false);
+			HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 			session.setAttribute(Constants.PREVIOUS_JSF_PAGE_URL, viewId);
 			
-			this.j2eeSecurityObject.handleProtocolSwitch(viewId,
-					pageRequiresSSL);
+			this.j2eeSecurityObject.handleProtocolSwitch(viewId, pageRequiresSSL);
 			
 			return true;
 		} else {
@@ -379,17 +371,17 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 	 * @return the page autorization cache, <code>null</code> if the cache is
 	 *         not enabled
 	 */
-	private HashMap getUserSessionPageAuthorizationCache(boolean enabled) {
+	private Map<String, Boolean> getUserSessionPageAuthorizationCache(boolean enabled) {
 		if (enabled) {
-			ExternalContext ectx = FacesContext.getCurrentInstance()
-					.getExternalContext();
-			Map sessionScopeMap = ectx.getSessionMap();
-			HashMap userPageCache = (HashMap) sessionScopeMap
-					.get("userAccessCache");
+			ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext();
+			Map<String, Map<String, Boolean>> sessionScopeMap = ectx.getSessionMap();
+			Map<String, Boolean> userPageCache = (Map<String, Boolean>) sessionScopeMap.get("userAccessCache");
+			
 			if (userPageCache == null) {
 				userPageCache = new HashMap<String, Boolean>();
 				sessionScopeMap.put("userAccessCache", userPageCache);
 			}
+			
 			return userPageCache;
 		} else {
 			return null;
