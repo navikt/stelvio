@@ -19,7 +19,12 @@ import org.springframework.transaction.support.TransactionTemplate;
  * @see org.springframework.transaction.support.TransactionTemplate#execute(org.springframework.transaction.support.TransactionCallback)
  */
 public class MockTransactionTemplate extends TransactionTemplate {
-    private final Mockery context = new Mockery();
+    /**
+	 * The id used to check version of object when serializing.
+	 */
+	private static final long serialVersionUID = 1207560968402907790L;
+	
+	private final Mockery context = new Mockery();
     final TransactionStatus proxyTransactionStatus = context.mock(TransactionStatus.class);
 
 	/**
