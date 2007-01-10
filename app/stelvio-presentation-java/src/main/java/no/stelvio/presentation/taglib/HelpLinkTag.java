@@ -153,9 +153,12 @@ public class HelpLinkTag extends TagSupport {
 //				ErrorHandler.handleError(re); TODO: handle differently
 //			}
 		}
+		
 		html.append(url);
+		
 		if (isContextAware) {
 			html.append(RequestContext.getModuleId());
+			
 			if (null != extention) {
 				html.append(extention);
 			}
@@ -164,6 +167,7 @@ public class HelpLinkTag extends TagSupport {
 		if (null != target) {
 			html.append("\" target=\"").append(target);
 		}
+		
 		html.append("\">").append(label).append("</a>");
 
 //		ResponseUtils.write(pageContext, html.toString());
