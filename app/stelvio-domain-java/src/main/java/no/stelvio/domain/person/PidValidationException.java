@@ -13,6 +13,11 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  */
 public class PidValidationException extends FunctionalUnrecoverableException {
 
+	/**
+	 * The id used to check version of object when serializing.
+	 */
+	private static final long serialVersionUID = 6146570031382768191L;
+
 	public PidValidationException(ExceptionToCopyHolder holder) {
 		super(holder);
 	}
