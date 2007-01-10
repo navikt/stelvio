@@ -321,6 +321,7 @@ app/stelvio-presentation-java/src/main/java/.cvsignore -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/action/FrameworkErrorAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/action/FrameworkErrorForm.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/constants/Constants.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/constants/ConstantsWrapper.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/AbstractFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/PerformanceMonitorFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/RequestContextFilter.java -text
