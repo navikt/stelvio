@@ -472,12 +472,12 @@ public final class DateUtil {
 	 * @param dates a set with the <code>Date</code>s to sort.
 	 * @return a sorted list of <code>Date</code>s with the newest first.
 	 */
-	public static List sortDatesNewestFirst(Set dates) {
+	public static List sortDatesNewestFirst(Set<Date> dates) {
 		if (null == dates) {
 			throw new IllegalArgumentException("null is a not valid input date");
 		}
 
-		List sortedDates = new ArrayList(dates);
+		List<Date> sortedDates = new ArrayList<Date>(dates);
 		Collections.sort(sortedDates, Collections.reverseOrder()); // The newest date becomes the first
 
 		return sortedDates;
