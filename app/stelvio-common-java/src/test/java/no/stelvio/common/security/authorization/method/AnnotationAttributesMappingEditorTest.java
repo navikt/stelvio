@@ -1,39 +1,24 @@
 package no.stelvio.common.security.authorization.method;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
-import java.lang.reflect.Method;
-
-import no.stelvio.common.security.authorization.method.AnnotationAttributesMapping;
-import no.stelvio.common.security.authorization.method.AnnotationAttributesMappingEditor;
-
-import org.acegisecurity.ConfigAttributeDefinition;
-//import org.acegisecurity.MockJoinPoint;
-import org.acegisecurity.SecurityConfig;
-//import org.acegisecurity.TargetObject;
-import org.acegisecurity.intercept.method.MethodDefinitionMap;
-import org.acegisecurity.intercept.method.MethodDefinitionSourceEditor;
 import org.junit.Test;
 
 public class AnnotationAttributesMappingEditorTest{
 
 	@Test
 	public void testStoreMultipleLinesCorrect() {
-		
-		
-		
 		AnnotationAttributesMappingEditor editor = new AnnotationAttributesMappingEditor();
 		String s = "Id1=test.provider,test.provider2\n";
 		s += "Id2=test.provider3";
 		editor.setAsText(s);
 		AnnotationAttributesMapping map = (AnnotationAttributesMapping)editor.getValue();
 		assertEquals(2,map.getProviderMap().size());
-		
 	}
 	
 	@Test
 	public void testCommaSeparatedListIsStoredWithTheCorrectAnnotationAttribute(){
-		
 		AnnotationAttributesMappingEditor editor = new AnnotationAttributesMappingEditor();
 		String annotAtrr1 = "Id1";
 		String annotAtrr2 = "Id2";
@@ -50,7 +35,6 @@ public class AnnotationAttributesMappingEditorTest{
 	
 	@Test
 	public void testCorrectStringFormat(){
-		//String correct = "Id=test.provider,test.provider2";
 		String noEqualSign = "IdNoEqualSign\n" + "anotherline";
 		String specialCharacters = "Id=something.another*.?";
 		String startsWithDotStringAfterEqual ="Id=.something,something.again";
@@ -68,27 +52,28 @@ public class AnnotationAttributesMappingEditorTest{
 			editor.setAsText(specialCharacters);
 			fail("Line with special character other than [.] and [,]." + " Should have thrown IllegalArgumentException");
 		} catch (IllegalArgumentException expected) {
-			assertTrue(true);
+			// should happen
 		}
+		
 		try {
 			editor.setAsText(startsWithDotStringAfterEqual);
 			fail("Line that starts with a dot." + " Should have thrown IllegalArgumentException");
 		} catch (IllegalArgumentException expected) {
-			assertTrue(true);
+			// should happen
 		}
+		
 		try {
 			editor.setAsText(endsWithDotStringAfterEqual);
 			fail("Line that ends with a dot." + " Should have thrown IllegalArgumentException");
 		} catch (IllegalArgumentException expected) {
-			assertTrue(true);
+			// should happen
 		}
+		
 		try {
 			editor.setAsText(multipleEqualsOn1Line);
 			fail("Line with multiple '=' signs on 1 line." + " Should have thrown IllegalArgumentException");
 		} catch (IllegalArgumentException expected) {
-			assertTrue(true);
+			// should happen
 		}
 	}
-	
-
 }
