@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="nav-star-example-jee">
+    <wb-module deploy-name="stelvio-star-example-jee">
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
-        <dependent-module deploy-path="/" handle="module:/resource/nav-service-star-example-ejb/nav-service-star-example-ejb">
-            <dependent-object>EjbModule_1166605385546</dependent-object>
+        <dependent-module deploy-path="/" handle="module:/resource/stelvio-service-star-example-ejb/stelvio-service-star-example-ejb">
+            <dependent-object>EjbModule_1168511618125</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/resource/nav-presentation-star-example-web/nav-presentation-star-example-web">
-            <dependent-object>WebModule_1166620837781</dependent-object>
+        <dependent-module deploy-path="/" handle="module:/resource/stelvio-presentation-star-example-web/stelvio-presentation-star-example-web">
+            <dependent-object>WebModule_1168514006000</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
