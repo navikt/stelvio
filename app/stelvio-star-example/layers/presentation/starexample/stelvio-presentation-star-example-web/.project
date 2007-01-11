@@ -3,6 +3,8 @@
 	<name>stelvio-presentation-star-example-web</name>
 	<comment></comment>
 	<projects>
+		<project>stelvio-domain-star-example-java</project>
+		<project>stelvio-service-star-example-ejb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
