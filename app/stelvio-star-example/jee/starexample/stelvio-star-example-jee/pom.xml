@@ -1,25 +1,48 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <!-- what to use as parent>
-    <artifactId>layers</artifactId>
-    <groupId>no.stelvio.layers</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent-->
-  <artifactId>stelvio-star-example-jee</artifactId>
-  <groupId>no.stelvio.star.example</groupId>
-  <packaging>ear</packaging>
-  <version>1.0.0-SNAPSHOT</version>
-  <name>star-example :: application</name>
-  <url>${basedir}/target/site/</url>
-
-  <dependencies>
-    <dependency>
-      <groupId>no.stelvio</groupId>
-      <artifactId>stelvio-presentation-java</artifactId>
-      <version>1.0</version>
-    </dependency>
-  </dependencies>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- what to use as parent>
+		<artifactId>layers</artifactId>
+		<groupId>no.stelvio.layers</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+		</parent-->
+	<artifactId>stelvio-star-example-jee</artifactId>
+	<groupId>no.stelvio.star.example</groupId>
+	<packaging>ear</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>star-example :: application</name>
+	<url>${basedir}/target/site/</url>
+	<dependencies>
+		<dependency>
+			<groupId>no.stelvio</groupId>
+			<artifactId>stelvio-presentation-java</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.0-alpha-1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeType>ejb</includeType>
+							<outputDirectory>
+								${basedir}/
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
