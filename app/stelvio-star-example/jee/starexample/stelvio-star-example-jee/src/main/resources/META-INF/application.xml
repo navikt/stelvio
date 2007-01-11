@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application id="Application_ID" version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
 	<display-name>stelvio-star-example-jee</display-name>
-	<module id="EjbModule_1166605385546">
+	<module id="EjbModule_1168511618125">
 		<ejb>stelvio-service-star-example-ejb.jar</ejb>
 	</module>
-	<module id="WebModule_1166620837781">
+	<module id="WebModule_1168514006000">
 		<web>
 			<web-uri>stelvio-presentation-star-example-web.war</web-uri>
 			<context-root>starexample</context-root>
