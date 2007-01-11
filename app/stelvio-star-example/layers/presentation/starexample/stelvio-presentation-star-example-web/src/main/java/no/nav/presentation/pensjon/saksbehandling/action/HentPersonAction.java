@@ -4,12 +4,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 
+import no.nav.domain.pensjon.person.Person;
 import no.nav.presentation.pensjon.saksbehandling.form.HentPersonForm;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.PersonDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.DatabaseNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.PersonNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.TPSException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.service.PersonService;
+import no.nav.service.pensjon.exception.DatabaseNotFoundException;
+import no.nav.service.pensjon.exception.TPSException;
+import no.nav.service.pensjon.person.PersonService;
+import no.nav.service.pensjon.person.exception.PersonNotFoundException;
+
 
 public class HentPersonAction {
 	private PersonService personService;
@@ -21,9 +22,9 @@ public class HentPersonAction {
 	 * @param form
 	 * @return
 	 */
-	public PersonDO hentPerson(HentPersonForm form )throws PersonNotFoundException
+	public Person hentPerson(HentPersonForm form )throws PersonNotFoundException
 	{
-		PersonDO person = null;
+		Person person = null;
 	
 		try {
 			person = personService.readPerson(form.getFodselsnummer());
@@ -37,9 +38,7 @@ public class HentPersonAction {
 			facesContext.addMessage(null, msg);
 			throw e;
 		}
-		catch (DatabaseNotFoundException e) {
-			System.err.println(e);
-		}
+		
 		return person;
 	}
 

@@ -3,25 +3,17 @@ package no.nav.presentation.pensjon.saksbehandling.action;
 
 
 
+import java.util.Date;
+
 import no.nav.presentation.pensjon.saksbehandling.form.HenvendelseForm;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.HenvendelserDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.PersonDO;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.DatabaseNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.PersonNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.TPSException;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.HenvendelseService;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.OrgEnhetService;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.service.PersonService;
-import no.nav.presentation.pensjon.saksbehandling.util.PagedSortableList;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import no.nav.service.pensjon.person.PersonService;
 
 import org.springframework.webflow.action.MultiAction;
 import org.springframework.webflow.execution.Event;
-import org.springframework.webflow.execution.RequestContext;
 
 /**
  * 

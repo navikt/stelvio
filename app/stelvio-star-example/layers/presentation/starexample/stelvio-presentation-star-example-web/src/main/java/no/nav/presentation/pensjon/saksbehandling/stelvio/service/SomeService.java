@@ -2,35 +2,31 @@ package no.nav.presentation.pensjon.saksbehandling.stelvio.service;
 
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import no.nav.domain.pensjon.person.Fodselsnummer;
+import no.nav.domain.pensjon.person.Person;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.HenvendelserDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.PersonDO;
 
 
 public class SomeService {
 
 	
-	public PersonDO readPerson( String fnr )
+	public Person readPerson( String fnr )
 	{
-		PersonDO person = new PersonDO();
+		Person person = new Person();
 		
-		person.setFodselsNr( fnr );
+		person.setFodselsnummer(new Fodselsnummer(fnr));
 		person.setFornavn( "Petter" );
 		person.setEtternavn( "person7b6db0c03aa3" );
-		person.setKommentar( "Ansatt i nav" );
-		person.setEnhet( "Oslo" );
-		
-		person.setHenvendelser( hentHenvendelser() );
 		
 		return person;
 	}
 	
-	public List hentHenvendelser( PersonDO person )
+	public List hentHenvendelser( Person person )
 	{
 		return new ArrayList();
 	}

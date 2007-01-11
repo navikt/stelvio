@@ -1,6 +1,5 @@
 package no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl;
 
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.DatabaseNotFoundException;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.OrgEnhetService;
 
 /**
@@ -10,7 +9,7 @@ import no.nav.presentation.pensjon.saksbehandling.stelvio.service.OrgEnhetServic
  */
 public class OrgEnhetServiceMock implements OrgEnhetService{
 
-	public String getOrgEnhetNavn(String regenhetnr)throws DatabaseNotFoundException{
+	public String getOrgEnhetNavn(String regenhetnr){
 		
 		String enhetnavn = "";
 						

@@ -1,6 +1,6 @@
 package no.nav.presentation.pensjon.saksbehandling.stelvio.service;
 
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.DatabaseNotFoundException;
+import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 
 /**
  * 

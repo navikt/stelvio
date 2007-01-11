@@ -3,10 +3,11 @@
  */
 package no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl;
 
+import no.nav.domain.pensjon.person.Brukerprofil;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.BrukerprofilDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.DatabaseNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.PersonNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.service.BrukerprofilService;
+import no.nav.service.pensjon.exception.DatabaseNotFoundException;
+import no.nav.service.pensjon.person.BrukerprofilService;
+import no.nav.service.pensjon.person.exception.PersonNotFoundException;
 
 /**
  * @author person4f9bc5bd17cc
@@ -66,5 +67,10 @@ public class BrukerprofilServiceMock implements BrukerprofilService {
 		else if (brukerprofil.getFnr().equals("44444444444")) {
 			per = brukerprofil;
 		}
+	}
+
+	public Brukerprofil hentBrukerprofil(String arg0) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

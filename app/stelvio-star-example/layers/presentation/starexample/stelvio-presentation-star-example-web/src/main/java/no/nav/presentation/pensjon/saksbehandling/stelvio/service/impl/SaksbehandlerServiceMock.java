@@ -4,9 +4,9 @@
 package no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl;
 
 import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.DatabaseNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.PersonNotFoundException;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.SaksbehandlerService;
+import no.nav.service.pensjon.exception.DatabaseNotFoundException;
+import no.nav.service.pensjon.person.exception.PersonNotFoundException;
 
 /**
  * @author person4f9bc5bd17cc
@@ -43,7 +43,7 @@ public class SaksbehandlerServiceMock implements SaksbehandlerService {
 	/**
 	 * TODO: Document me
 	 */
-	public SaksbehandlerDO readSaksbehandler(Long nr) throws DatabaseNotFoundException, PersonNotFoundException {
+	public SaksbehandlerDO readSaksbehandler(Long nr) {
 		SaksbehandlerDO saksbehandler = new SaksbehandlerDO();
 		
 		if (nr == 1) {
@@ -57,9 +57,6 @@ public class SaksbehandlerServiceMock implements SaksbehandlerService {
 		}
 		else if (nr == 4) {
 			saksbehandler = per;
-		}
-		else {
-			throw new PersonNotFoundException("Fant ingen saksbehandler med nr "+nr+".");
 		}
 		
 		return saksbehandler;

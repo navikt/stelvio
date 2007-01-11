@@ -3,13 +3,13 @@
  */
 package no.nav.presentation.pensjon.saksbehandling.action;
 
+import no.nav.domain.pensjon.person.Person;
+import no.nav.domain.pensjon.person.PersonSearch;
 import no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.PersonDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.PersonSearchDO;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.enums.SokePersonOption;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.DatabaseNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.service.PersonService;
 import no.nav.presentation.pensjon.saksbehandling.util.PagedSortableList;
+import no.nav.service.pensjon.exception.DatabaseNotFoundException;
+import no.nav.service.pensjon.person.PersonService;
 
 /**
  * @author person4f9bc5bd17cc
@@ -25,12 +25,12 @@ public class SokePersonAction {
 	 * @return
 	 * @throws DatabaseNotFoundException
 	 */
-	public PagedSortableList<PersonDO> sokPerson(SokePersonForm form) throws DatabaseNotFoundException
+	public PagedSortableList<Person> sokPerson(SokePersonForm form) throws DatabaseNotFoundException
 	{
-		PersonSearchDO personSearch = genereateSearchObject(form);
+		PersonSearch personSearch = genereateSearchObject(form);
 		
 		try {
-			return new PagedSortableList<PersonDO>(personService.findPerson(personSearch), 5, "kortnavn");
+			return new PagedSortableList<Person>(personService.findPerson(personSearch), 5, "kortnavn");
 		}
 		catch (DatabaseNotFoundException e) {
 			throw e;
@@ -61,10 +61,10 @@ public class SokePersonAction {
 	 * @param form
 	 * @return
 	 */
-	private PersonSearchDO genereateSearchObject(SokePersonForm form) {
+	private PersonSearch genereateSearchObject(SokePersonForm form) {
 		System.out.println("Entering SokePersonAction.generateSearchObject()...");
 		SokePersonOption selectedOption = getSelectedOption(form.getValgtSok());
-		PersonSearchDO personSearch = new PersonSearchDO();
+		PersonSearch personSearch = new PersonSearch();
 
 		switch (selectedOption) {
 		case ADDRESS:

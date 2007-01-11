@@ -1,14 +1,11 @@
 package no.nav.presentation.pensjon.saksbehandling.action;
 
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
 import no.nav.presentation.pensjon.saksbehandling.form.StartForm;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.DatabaseNotFoundException;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.exceptions.PersonNotFoundException;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.SaksbehandlerService;
+import no.nav.service.pensjon.exception.DatabaseNotFoundException;
+import no.nav.service.pensjon.person.exception.PersonNotFoundException;
 
 import org.springframework.webflow.action.MultiAction;
 import org.springframework.webflow.execution.Event;
@@ -30,21 +27,17 @@ public class StartAction extends MultiAction {
 		System.out.println( "saksbehandlerService = " + saksbehandlerService );
 		try {
 			saksbehandler = saksbehandlerService.readSaksbehandler(form.getSaksbehandlernr());
-			
-			System.out.println( "saksbehandler = " + saksbehandler );
-			//context.getFlowScope().put( "saksbehandlerDO", saksbehandler);
-			context.getExternalContext().getSessionMap().put("saksbehandlerDO", saksbehandler);
+		} catch (PersonNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DatabaseNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		catch (PersonNotFoundException e) {
-			FacesContext facesContext = FacesContext.getCurrentInstance();
-			FacesMessage msg = new FacesMessage( "Fant ingen saksbehandler med nr " + form.getSaksbehandlernr(), "nei da igjen" );
-			facesContext.addMessage(null, msg);
-			System.err.println(e);
-			return error();
-		}
-		catch (DatabaseNotFoundException e) {
-			System.err.println(e);
-		}
+		
+		System.out.println( "saksbehandler = " + saksbehandler );
+		//context.getFlowScope().put( "saksbehandlerDO", saksbehandler);
+		context.getExternalContext().getSessionMap().put("saksbehandlerDO", saksbehandler);
 		
 		System.out.println( "-------------- end executeSearch-----------" );
 		return success();
