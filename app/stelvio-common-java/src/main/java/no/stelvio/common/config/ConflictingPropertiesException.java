@@ -9,8 +9,8 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  */
 public class ConflictingPropertiesException extends ConfigurationException {
 
-	private final String TEMPLATE_LEAD = "Properties ";
-	private final String TEMPLATE_END = " have conflicting values";	
+	private static final String TEMPLATE_LEAD = "Properties ";
+	private static final String TEMPLATE_END = " have conflicting values";	
 	
 	/**
 	 * {@inheritDoc no.stelvio.common.config.ConfigurationException#ConfigurationException(ExceptionToCopyHolder)}
