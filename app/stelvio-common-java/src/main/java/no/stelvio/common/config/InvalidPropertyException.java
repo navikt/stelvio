@@ -14,7 +14,7 @@ public class InvalidPropertyException extends ConfigurationException {
 	
 
     /**
-	 * Constructs a copy of the specified UnrecoverableException without the cause.
+	 * Constructs a copy of the specified InvalidPropertyException without the cause.
      * <p>
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.

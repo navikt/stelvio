@@ -20,7 +20,7 @@ public class ConflictingPropertiesException extends ConfigurationException {
 	private static final String TEMPLATE_END = " have conflicting values";	
 	
     /**
-	 * Constructs a copy of the specified UnrecoverableException without the cause.
+	 * Constructs a copy of the specified ConflictingPropertiesException without the cause.
      * <p>
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.

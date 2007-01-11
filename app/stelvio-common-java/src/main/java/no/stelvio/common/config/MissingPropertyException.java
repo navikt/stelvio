@@ -17,7 +17,7 @@ public class MissingPropertyException extends ConfigurationException {
 	private final static String TEMPLATE_END = " was not set by configuration";
 
 	 /**
-	 * Constructs a copy of the specified UnrecoverableException without the cause.
+	 * Constructs a copy of the specified MissingPropertyException without the cause.
      * <p>
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.

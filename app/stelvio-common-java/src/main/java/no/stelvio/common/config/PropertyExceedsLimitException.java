@@ -10,7 +10,7 @@ public class PropertyExceedsLimitException extends ConfigurationException {
 	private static final long serialVersionUID = -7112686645249634415L;
 
     /**
-	 * Constructs a copy of the specified UnrecoverableException without the cause.
+	 * Constructs a copy of the specified PropertyExceedsLimitException without the cause.
      * <p>
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.
@@ -31,9 +31,9 @@ public class PropertyExceedsLimitException extends ConfigurationException {
 	}	
 	
 	/**
-	 * Constructor that takes the property
+	 * Constructor that takes the property that exceeded the limit as parameter
 	 * @param throwable cause of this exception
-	 * @param propertyName name of property that was misconfigured
+	 * @param propertyName name of property that was exceeded limits
 	 */
 	public PropertyExceedsLimitException(Throwable cause, String propertyName) {
 		super(cause, propertyName);
