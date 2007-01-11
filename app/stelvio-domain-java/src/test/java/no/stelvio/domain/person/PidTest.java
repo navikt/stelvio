@@ -32,20 +32,20 @@ public class PidTest extends TestCase {
 	}
 	
 	/**
-	 * Testing the getDate method on Pid.
+	 * Testing the getFodselsdato method on Pid.
 	 * If no exception is thrown, it's assumed that the method is working.
 	 *
 	 */
-	public void testGetDate(){
+	public void testGetFodselsdato(){
 		try{
 			Pid pid = new Pid(monthAbove9BostNr);
-			pid.getDate();
+			pid.getFodselsdato();
 			pid = new Pid(monthBelow10BostNr);
-			pid.getDate();			
+			pid.getFodselsdato();			
 			pid = new Pid(normalFnr);
-			pid.getDate();
+			pid.getFodselsdato();
 		}catch(PidValidationException e){
-			fail("The getDate method failed during execution");
+			fail("The getFodselsdato method failed during execution");
 		}
 	}
 	
