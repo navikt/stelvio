@@ -410,6 +410,7 @@ app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resou
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/resources.xml -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/variables.xml -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/security.xml -text
+app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/stelvio-presentation-star-example-web-1.0.0-SNAPSHOT.war -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.classpath -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.project -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
