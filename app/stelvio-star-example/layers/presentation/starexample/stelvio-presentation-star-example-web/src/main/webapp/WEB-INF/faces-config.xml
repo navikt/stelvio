@@ -18,7 +18,7 @@
   <variable-resolver>org.springframework.web.jsf.WebApplicationContextVariableResolver</variable-resolver>
   
   <!-- MessageSource resolver -->
-  <property-resolver>no.stelvio.web.jsf.resolver.MessageSourcePropertyResolver</property-resolver>
+  <property-resolver>no.stelvio.presentation.jsf.resolver.MessageSourcePropertyResolver</property-resolver>
   
   
   <locale-config/>
