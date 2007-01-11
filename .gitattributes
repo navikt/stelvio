@@ -728,6 +728,9 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/.settings/org.eclipse.wst.common.component -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/pom.xml -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/META-INF/MANIFEST.MF -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/META-INF/ejb-jar.xml -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/META-INF/ibm-ejb-jar-bnd.xmi -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/CodesTableFactoryBean.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/DefaultCodesTableFactoryBean.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/exception/DatabaseNotFoundException.java -text
@@ -741,9 +744,6 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/person/exception/PersonNotFoundException.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/person/impl/BrukerprofilServiceMock.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/person/impl/PersonServiceMock.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/MANIFEST.MF -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/ejb-jar.xml -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/META-INF/ibm-ejb-jar-bnd.xmi -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/beanRefContext.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/resources/modules/stelvio-star-example-ejb-context.xml -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/.project -text
