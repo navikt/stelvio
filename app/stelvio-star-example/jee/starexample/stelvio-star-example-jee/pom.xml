@@ -7,7 +7,7 @@
 		<artifactId>layers</artifactId>
 		<groupId>no.stelvio.layers</groupId>
 		<version>1.0.0-SNAPSHOT</version>
-		</parent-->
+	</parent-->
 	<artifactId>stelvio-star-example-jee</artifactId>
 	<groupId>no.stelvio.star.example</groupId>
 	<packaging>ear</packaging>
@@ -16,9 +16,16 @@
 	<url>${basedir}/target/site/</url>
 	<dependencies>
 		<dependency>
-			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-presentation-java</artifactId>
-			<version>1.0</version>
+			<artifactId>stelvio-presentation-star-example-web</artifactId>
+			<groupId>no.stelvio.star.example</groupId>
+			<version>${pom.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<artifactId>stelvio-service-star-example-ejb</artifactId>
+			<groupId>no.stelvio.star.example</groupId>
+			<version>${pom.version}</version>
+			<type>ejb</type>
 		</dependency>
 	</dependencies>
 	<build>
