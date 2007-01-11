@@ -9,8 +9,11 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  */
 public class MissingPropertyException extends ConfigurationException {
 
-	private final String TEMPLATE_LEAD = "Required property/properties ";
-	private final String TEMPLATE_END = " was not set by configuration";
+
+	private static final long serialVersionUID = 2193502321565754897L;
+	
+	private final static String TEMPLATE_LEAD = "Required property/properties ";
+	private final static String TEMPLATE_END = " was not set by configuration";
 
 	/**
 	 * {@inheritDoc no.stelvio.common.config.ConfigurationException#ConfigurationException(ExceptionToCopyHolder)}
@@ -45,10 +48,10 @@ public class MissingPropertyException extends ConfigurationException {
      * @return the template to use for constructing the exception's messageFrom.
 	 */
 	@Override
-	protected String messageTemplate(int numberOfTemplateArguments) {
+	protected String messageTemplate(int numArgs) {
 		StringBuffer template = new StringBuffer(TEMPLATE_LEAD);
 		template.append("{0}");
-		for (int i = 1; i<numberOfTemplateArguments; i++) {
+		for (int i = 1; i < numArgs; i++) {
 			template.append(", {").append(i).append("}");
 		}
 		template.append(TEMPLATE_END);

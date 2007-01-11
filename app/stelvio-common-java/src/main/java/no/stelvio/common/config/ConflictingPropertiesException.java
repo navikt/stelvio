@@ -9,6 +9,12 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  */
 public class ConflictingPropertiesException extends ConfigurationException {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6905655613431964263L;
+	
 	private static final String TEMPLATE_LEAD = "Properties ";
 	private static final String TEMPLATE_END = " have conflicting values";	
 	
@@ -45,12 +51,12 @@ public class ConflictingPropertiesException extends ConfigurationException {
      * @return the template to use for constructing the exception's messageFrom.
 	 */
 	@Override
-	protected String messageTemplate(int numberOfTemplateArguments) {
+	protected String messageTemplate(int numArgs) {
 		StringBuffer template = new StringBuffer(TEMPLATE_LEAD);
 		template.append("{0}");
 		
-		for (int i = 1; i<numberOfTemplateArguments; i++) {
-			if((i+1) == numberOfTemplateArguments){
+		for (int i = 1; i < numArgs; i++) {
+			if((i+1) == numArgs){
 				template.append(" and");
 			}else{
 				template.append(",");
