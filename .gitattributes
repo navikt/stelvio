@@ -156,7 +156,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/D
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultEntityResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/DateUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ErrorCodesUtil.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/util/FNRUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/Log469MessageFormatterImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/MessageFormatter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ObjectUtil.java -text
@@ -261,7 +260,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/RolesUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributesTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/DateUtilTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/util/FNRUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/ReflectUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/StringHelperTest.java -text
 app/stelvio-common-java/src/test/resources/META-INF/persistence.xml -text
