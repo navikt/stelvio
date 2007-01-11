@@ -1,5 +1,6 @@
 package no.stelvio.common.config;
 
+import no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
@@ -15,9 +16,15 @@ public class MissingPropertyException extends ConfigurationException {
 	private final static String TEMPLATE_LEAD = "Required property/properties ";
 	private final static String TEMPLATE_END = " was not set by configuration";
 
-	/**
-	 * {@inheritDoc no.stelvio.common.config.ConfigurationException#ConfigurationException(ExceptionToCopyHolder)}
-	 */
+	 /**
+	 * Constructs a copy of the specified UnrecoverableException without the cause.
+     * <p>
+     * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
+     * classes that is part of the cause stack.
+	 *
+	 * @param holder
+     * @see RethrowExceptionHandlerStrategy
+     */
 	public MissingPropertyException(ExceptionToCopyHolder holder) {
 		super(holder);
 	}
