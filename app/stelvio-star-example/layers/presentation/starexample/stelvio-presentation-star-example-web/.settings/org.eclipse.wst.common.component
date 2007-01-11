@@ -9,6 +9,9 @@
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/stelvio-service-star-example-ejb/stelvio-service-star-example-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/stelvio-presentation-star-example-java/stelvio-presentation-star-example-java">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="starexample"/>
         <property name="java-output-path" value="src/main/webapp/WEB-INF/classes"/>
     </wb-module>
