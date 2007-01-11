@@ -7,7 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-domain-star-example-java"/>
 	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-common-java/1.0.1-SNAPSHOT/stelvio-common-java-1.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
-	<classpathentry kind="src" path="gen/src"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring/2.0.1/spring-2.0.1.jar" sourcepath="M2_REPO/org/springframework/spring/2.0.1/spring-2.0.1-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

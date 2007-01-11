@@ -13,20 +13,6 @@ import org.springframework.ejb.support.AbstractStatelessSessionBean;
 
 /**
  * Bean implementation class for Session Bean: CodesTableFactory
- *
- * @ejb.bean
- *	name="CodesTableFactory"
- *	type="Stateless"
- *	local-jndi-name="ejb/no/nav/service/pensjon/CodesTableFactoryLocalHome"
- *	view-type="local"
- *	transaction-type="Container"
- *
- * @ejb.home
- *	local-class="no.nav.service.pensjon.CodesTableFactoryLocalHome"
- *
- * @ejb.interface
- *	local-class="no.nav.service.pensjon.CodesTableFactoryLocal"
- *  local-extends="no.stelvio.common.codestable.factory.CodesTableFactory, javax.ejb.EJBLocalObject"
  */
 public class CodesTableFactoryBean extends AbstractStatelessSessionBean implements CodesTableFactory {
 	private CodesTableFactory codesTableFactory;

@@ -732,6 +732,8 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/META-INF/ejb-jar.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/META-INF/ibm-ejb-jar-bnd.xmi -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/CodesTableFactoryBean.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/CodesTableFactoryLocal.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/CodesTableFactoryLocalHome.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/DefaultCodesTableFactoryBean.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/exception/DatabaseNotFoundException.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/src/main/java/no/nav/service/pensjon/exception/TPSException.java -text

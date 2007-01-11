@@ -3,7 +3,6 @@
     <wb-module deploy-name="nav-service-star-example-ejb">
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/gen/src"/>
         <property name="java-output-path" value="target/classes"/>
     </wb-module>
 </project-modules>
