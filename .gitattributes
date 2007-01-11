@@ -416,6 +416,9 @@ app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resou
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/security.xml -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.classpath -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.project -text
+app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
+app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.settings/org.eclipse.wst.common.component -text
+app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/brukeroversikt/NewEndagspassord.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/codestable/FagomradeCti.java -text
