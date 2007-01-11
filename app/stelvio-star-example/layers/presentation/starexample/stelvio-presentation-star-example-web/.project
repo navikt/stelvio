@@ -5,6 +5,7 @@
 	<projects>
 		<project>stelvio-domain-star-example-java</project>
 		<project>stelvio-service-star-example-ejb</project>
+		<project>stelvio-presentation-star-example-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
