@@ -16,5 +16,7 @@
         <module>../stelvio-batch-java</module>
         <module>../stelvio-domain-java</module>
         <module>../stelvio-presentation-java</module>
+        <module>../stelvio-repository-java</module>
+        <module>../stelvio-service-java</module>
     </modules>
 </project>
