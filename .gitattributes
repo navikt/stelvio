@@ -287,6 +287,7 @@ app/stelvio-domain-java/src/main/java/no/stelvio/domain/person/Pid.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/person/PidValidationException.java -text
 app/stelvio-domain-java/src/test/java/no/stelvio/domain/person/PidTest.java -text
 app/stelvio-domain-java/src/test/resources/application-services.xml -text
+app/stelvio-domain-java/src/test/resources/common-java_test_menu_beans.xml -text
 app/stelvio-domain-java/src/test/resources/error-handling.xml -text
 app/stelvio-domain-java/src/test/resources/performance-monitoring.xml -text
 app/stelvio-domain-java/xdocs/design/BusinessDelegate.xml -text
