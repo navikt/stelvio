@@ -6,14 +6,24 @@ Changes in version 1.0.1 (15.1.2007)
 ------------------------------------
 
 General
+* Added module stelvio-star-example which will hold a complete example of an implementation of a JEE application based
+  on the stelvio application architecture
+* Added module stelvio-service-java
+* Added module stelvio-repository-java
 
-Package no.stelvio.common
+Module stelvio-common-java
 
-Package no.stelvio.test
+Module stelvio-test-java
 
-Package no.stelvio.domain
+Module stelvio-domain-java
 
-Package no.stelvio.batch
+Module stelvio-repository-java
 
-Package no.stelvio.presentation
+Module stelvio-batch-java
+
+Module stelvio-service-java
+
+Module stelvio-presentation-java
 * Renamed package from no.stelvio.web to no.stelvio.presentation
+
+Star example

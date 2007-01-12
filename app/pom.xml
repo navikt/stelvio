@@ -9,10 +9,15 @@
     <name>stelvio</name>
     <modules>
         <module>stelvio-common-java</module>
-        <module>stelvio-domain-java</module>
         <module>stelvio-test-java</module>
+        <module>stelvio-domain-java</module>
+        <module>stelvio-repository-java</module>
         <module>stelvio-batch-java</module>
+        <module>stelvio-service-java</module>
         <module>stelvio-presentation-java</module>
+		<!-- TODO include the star example when it is more complete
+        <module>stelvio-star-example</module>
+		-->
     </modules>
     <developers>
         <developer>
