@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <psf version="2.0">
 	<provider id="org.polarion.team.svn.core.svnnature">
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-domain-java,stelvio-domain-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
 		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-common-java,stelvio-common-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-batch-java,stelvio-batch-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-presentation-java,stelvio-presentation-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
 		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-test-java,stelvio-test-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-domain-java,stelvio-domain-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-repository-java,stelvio-repository-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-batch-java,stelvio-batch-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-service-java,stelvio-service-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
+		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/stelvio-presentation-java,stelvio-presentation-java,4c0f4c-10fec4bc859-4c2fe68b0300a1afd79d48b31c3140d4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
 	</provider>
 </psf>
