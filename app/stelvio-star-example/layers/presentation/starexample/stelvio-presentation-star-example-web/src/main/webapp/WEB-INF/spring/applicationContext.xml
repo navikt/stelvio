@@ -95,6 +95,11 @@
   <!-- property name="repositoryFactory" ref="repositoryFactory" / -->
  </bean>
  
+ <bean id="asdf" class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
+ 	<property name="jndiName" value="ejb/Ctf"/>
+ 	<property name="businessInterface" value="no.stelvio.common.codestable.factory.CodesTableFactory"/>
+ </bean> 
+ 
  <bean class="no.nav.service.pensjon.person.impl.PersonServiceMock" id="personServiceMock" name="no.nav.service.pensjon.person.impl.PersonServiceMock"/>
  
  <bean class="no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl.HenvendelsServiceMock" id="henvendelsServiceMock" name="no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl.HenvendelsServiceMock"/>
