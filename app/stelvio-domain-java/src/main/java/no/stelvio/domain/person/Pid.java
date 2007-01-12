@@ -13,14 +13,16 @@ import org.apache.commons.lang.StringUtils;
 /**
  * Class represents a personal identification number, that can be persistet into a table. 
  * Instances of this object can not exist on it's own, they must exist inside an <code>@Entity</code>-object in order to be persisted.
- * @see Embeddable
  * 
  * There shouldn't exist an instance of this class where getNummer doesn't return a valid fnr.
  * Class is final to avoid public implementations of the no-arg constructor
  * 
  * NB! Pid is and should always be immutable
  * 
- * @author person983601e0e117, Accenture
+ * 
+ * @see Embeddable
+ * 
+ * @author person983601e0e117 (Accenture)
  * @author person15754a4522e7
  *
  */
