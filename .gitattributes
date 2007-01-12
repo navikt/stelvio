@@ -113,9 +113,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/log/appenders/JMSQueueAp
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/Log4jLogFactory.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfig.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfigMBean.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/MenuItem.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/MenuItemPermission.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/MenuItemScreen.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/MenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/support/HibernateMenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/service/MenuItemService.java -text
