@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.TestCase;
-import no.stelvio.common.menu.domain.MenuItem;
-import no.stelvio.common.menu.domain.MenuItemPermission;
-import no.stelvio.common.menu.domain.MenuItemScreen;
 import no.stelvio.common.menu.service.MenuItemService;
+import no.stelvio.domain.menu.MenuItem;
+import no.stelvio.domain.menu.MenuItemPermission;
+import no.stelvio.domain.menu.MenuItemScreen;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

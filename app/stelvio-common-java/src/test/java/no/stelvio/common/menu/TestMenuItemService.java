@@ -6,10 +6,10 @@ package no.stelvio.common.menu;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.stelvio.common.menu.domain.MenuItem;
-import no.stelvio.common.menu.domain.MenuItemPermission;
-import no.stelvio.common.menu.domain.MenuItemScreen;
 import no.stelvio.common.menu.service.MenuItemService;
+import no.stelvio.domain.menu.MenuItem;
+import no.stelvio.domain.menu.MenuItemPermission;
+import no.stelvio.domain.menu.MenuItemScreen;
 
 
 /**
