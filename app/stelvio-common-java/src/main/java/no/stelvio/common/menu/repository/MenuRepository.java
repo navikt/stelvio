@@ -2,7 +2,7 @@ package no.stelvio.common.menu.repository;
 
 import java.util.List;
 
-import no.stelvio.common.menu.domain.MenuItem;
+import no.stelvio.domain.menu.MenuItem;
 
 /**
  * Interface used to interact with persistence store.

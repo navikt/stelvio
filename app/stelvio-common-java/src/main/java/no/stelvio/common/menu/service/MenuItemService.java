@@ -5,7 +5,7 @@ package no.stelvio.common.menu.service;
 
 import java.util.List;
 
-import no.stelvio.common.menu.domain.MenuItem;
+import no.stelvio.domain.menu.MenuItem;
 
 /**
  * Defines an interface for accessing data related to menu. 

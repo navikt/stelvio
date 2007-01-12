@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-import no.stelvio.common.menu.domain.MenuItem;
 import no.stelvio.common.menu.repository.MenuRepository;
+import no.stelvio.domain.menu.MenuItem;
 
 /**
  * Implementation of MenuRepository interface that uses Hibernate to perform CRUD operations.

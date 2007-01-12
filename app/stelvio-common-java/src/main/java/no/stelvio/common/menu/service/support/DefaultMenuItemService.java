@@ -5,9 +5,9 @@ package no.stelvio.common.menu.service.support;
 
 import java.util.List;
 
-import no.stelvio.common.menu.domain.MenuItem;
 import no.stelvio.common.menu.repository.MenuRepository;
 import no.stelvio.common.menu.service.MenuItemService;
+import no.stelvio.domain.menu.MenuItem;
 
 /**
  * Implements services for accessing data related to menu. 
