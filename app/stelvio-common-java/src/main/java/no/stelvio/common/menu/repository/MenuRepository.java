@@ -1,8 +1,5 @@
 package no.stelvio.common.menu.repository;
 
-import java.util.List;
-
-import no.stelvio.domain.menu.MenuItem;
 
 /**
  * Interface used to interact with persistence store.
@@ -13,11 +10,11 @@ import no.stelvio.domain.menu.MenuItem;
  * @version $id$
  */
 public interface MenuRepository {
-	/**
-	 * Method to retrieve MenuItem objects that has no parent (parent is <code>null</code>).
-	 * Children are retrived with eager fetching.
-	 * 
-	 * @return a list of root MenuItem objects. 
-	 */
-	public List<MenuItem> getParents();
+//	/**
+//	 * Method to retrieve MenuItem objects that has no parent (parent is <code>null</code>).
+//	 * Children are retrived with eager fetching.
+//	 * 
+//	 * @return a list of root MenuItem objects. 
+//	 */
+//	public List<MenuItem> getParents();
 }
