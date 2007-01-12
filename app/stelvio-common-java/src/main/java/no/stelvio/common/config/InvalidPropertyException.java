@@ -1,6 +1,5 @@
 package no.stelvio.common.config;
 
-import no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 public class InvalidPropertyException extends ConfigurationException {
@@ -19,8 +18,7 @@ public class InvalidPropertyException extends ConfigurationException {
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.
 	 *
-	 * @param holder
-     * @see RethrowExceptionHandlerStrategy
+	 * @param holder ExceptionToCopyHolder
      */
 	public InvalidPropertyException(ExceptionToCopyHolder holder) {
 		super(holder);

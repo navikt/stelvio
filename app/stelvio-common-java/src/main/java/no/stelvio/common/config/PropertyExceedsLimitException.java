@@ -1,6 +1,5 @@
 package no.stelvio.common.config;
 
-import no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 public class PropertyExceedsLimitException extends ConfigurationException {
@@ -15,8 +14,7 @@ public class PropertyExceedsLimitException extends ConfigurationException {
      * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
      * classes that is part of the cause stack.
 	 *
-	 * @param holder
-     * @see RethrowExceptionHandlerStrategy
+	 * @param holder ExceptionToCopyHolder
      */
 	public PropertyExceedsLimitException(ExceptionToCopyHolder holder) {
 		super(holder);
