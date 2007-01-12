@@ -13,6 +13,7 @@ app/stelvio-presentation-java/target
 app/stelvio-presentation-java/web.iml
 app/stelvio-presentation-java/web.ipr
 app/stelvio-presentation-java/web.iws
+app/stelvio-repository-java/target
 app/stelvio-service-java/target
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/*.jar
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/*.war
