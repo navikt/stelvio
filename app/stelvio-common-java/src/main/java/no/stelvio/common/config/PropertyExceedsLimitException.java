@@ -2,6 +2,12 @@ package no.stelvio.common.config;
 
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
+/**
+ * Exception used when a property in a component has been configured with values that isn't withing the allowable limits.
+ * These limits are defined by the component's business rules, and the components validation method throws this exception.
+ * @author person983601e0e117 (Accenture)
+ *
+ */
 public class PropertyExceedsLimitException extends ConfigurationException {
 
 	
@@ -30,7 +36,7 @@ public class PropertyExceedsLimitException extends ConfigurationException {
 	
 	/**
 	 * Constructor that takes the property that exceeded the limit as parameter
-	 * @param throwable cause of this exception
+	 * @param cause of this exception
 	 * @param propertyName name of property that was exceeded limits
 	 */
 	public PropertyExceedsLimitException(Throwable cause, String propertyName) {
@@ -41,7 +47,7 @@ public class PropertyExceedsLimitException extends ConfigurationException {
 	 * Constructor that takes the property and the min and max value allowed for that property
 	 * @param propertyName name of property that was misconfigured
 	 * @param minValue the minimum allowable value of property
-	 * @param minValue the maximum allowable value of property
+	 * @param maxValue the maximum allowable value of property
 	 */
 	public PropertyExceedsLimitException(String propertyName, Object minValue, Object maxValue) {
 		super(propertyName, minValue, maxValue);
@@ -52,7 +58,7 @@ public class PropertyExceedsLimitException extends ConfigurationException {
 	 * @param cause of this exception
 	 * @param propertyName name of property that was misconfigured
 	 * @param minValue the minimum allowable value of property
-	 * @param minValue the maximum allowable value of property
+	 * @param maxValue the maximum allowable value of property
 	 */
 	public PropertyExceedsLimitException(Throwable cause, String propertyName, Object minValue, Object maxValue) {
 		super(cause, propertyName, minValue, maxValue);
@@ -63,6 +69,9 @@ public class PropertyExceedsLimitException extends ConfigurationException {
 	 * and subsequently caused this exception to be thrown.
 	 * 
 	 * If the leagal limits were listed in this exception's constructor, they will be listed in the message template
+	 * 
+	 * @param numArgs number of arguments passed to constructor
+	 * @return messageTemplate for this exception
 	 */
 	@Override
 	protected String messageTemplate(int numArgs) {

@@ -12,8 +12,8 @@ public class MissingPropertyException extends ConfigurationException {
 
 	private static final long serialVersionUID = 2193502321565754897L;
 	
-	private final static String TEMPLATE_LEAD = "Required property/properties ";
-	private final static String TEMPLATE_END = " was not set by configuration";
+	private static final String TEMPLATE_LEAD = "Required property/properties ";
+	private static final String TEMPLATE_END = " was not set by configuration";
 
 	 /**
 	 * Constructs a copy of the specified MissingPropertyException without the cause.
