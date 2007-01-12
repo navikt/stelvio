@@ -283,8 +283,6 @@ app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemScreen.java
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/person/Pid.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/person/PidValidationException.java -text
 app/stelvio-domain-java/src/test/java/no/stelvio/domain/person/PidTest.java -text
-app/stelvio-domain-java/src/test/java/no/stelvio/menu/MenuTest.java -text
-app/stelvio-domain-java/src/test/java/no/stelvio/menu/TestMenuItemService.java -text
 app/stelvio-domain-java/src/test/resources/application-services.xml -text
 app/stelvio-domain-java/src/test/resources/common-java_test_menu_beans.xml -text
 app/stelvio-domain-java/src/test/resources/error-handling.xml -text
