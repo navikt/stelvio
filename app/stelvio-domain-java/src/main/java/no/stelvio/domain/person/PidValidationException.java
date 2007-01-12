@@ -4,7 +4,7 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
- * Exception thrown when Pid can't be created due to validation failure.
+ * Exception thrown when as a result of Pid validation failure.
  * 
  * @author person983601e0e117, Accenture
  *
