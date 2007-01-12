@@ -4,13 +4,15 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-/** 
+/**
  * Representation of a batch.
  * 
  * @author person356941106810, Accenture
  * @version $Id: BatchDO.java 2064 2005-03-04 09:18:15Z psa2920 $ 
  */
 public class BatchDO extends no.stelvio.common.core.DomainObject {
+
+	private static final long serialVersionUID = 6318007808581245609L;
 
 	/** identifier field */
 	private String batchname;
