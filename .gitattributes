@@ -118,7 +118,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/MenuItemPerm
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/domain/MenuItemScreen.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/MenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/support/HibernateMenuRepository.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/menu/repository/support/JpaMenuRepository.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/service/MenuItemService.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/menu/service/support/DefaultMenuItemService.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/package.html -text
