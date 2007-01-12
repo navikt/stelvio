@@ -160,6 +160,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/util/ReflectUtil.java -t
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ReflectionException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/SequenceNumberGenerator.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/package.html -text
+app/stelvio-common-java/src/main/resources/META-INF/services/org.apache.commons.logging.LogFactory -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisorTests.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheAnnotationsTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheManagementTest.java -text
