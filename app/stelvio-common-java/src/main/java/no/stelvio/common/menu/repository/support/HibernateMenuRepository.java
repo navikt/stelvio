@@ -7,6 +7,13 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import no.stelvio.common.menu.domain.MenuItem;
 import no.stelvio.common.menu.repository.MenuRepository;
 
+/**
+ * Implementation of MenuRepository interface that uses Hibernate to perform CRUD operations.
+ * Class contains a HibernateTemplate reference that must be injected.
+ * 
+ * @author person983601e0e117 (Accenture)
+ *
+ */
 public class HibernateMenuRepository implements MenuRepository {
 
 	public HibernateTemplate hibernateTemplate;
