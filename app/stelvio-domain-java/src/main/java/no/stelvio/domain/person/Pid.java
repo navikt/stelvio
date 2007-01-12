@@ -74,14 +74,14 @@ public final class Pid implements Serializable {
 		//Adjust bnr or dnr (for fnr return value will be equal to pid)
 		String adjustedFnr = makeDnrOrBostnrAdjustments(pid);
 		//Construct a date string with MMDDyyyy format
-		String dateString = adjustedFnr.substring(0,4) + get4DigitYearOfBirth(adjustedFnr);
+		String dateString = adjustedFnr.substring(0, 4) + get4DigitYearOfBirth(adjustedFnr);
 		
 		Date date = null;
 		try {
 			date = formatter.parse(dateString);
 		} catch (ParseException e) {
 			//This should never occur, as "pid" has been validated by constructor
-			throw new PidValidationException(e,pid);
+			throw new PidValidationException(e, pid);
 		}
 		return date;
 	}
@@ -89,9 +89,8 @@ public final class Pid implements Serializable {
 	/**
 	 * Determines whether the specified string is a valid personal identification number.
 	 * A valid PID can be: FNR, DNR or BostNr 
-	 * @param pid
+	 * @param pid personal identification id to validate
 	 * @return <code>true</code> if the specified string is valid, otherwise <code>false</code>
-	 * @throws PidValidationException if pid isn't a valid Personal Identification Number
 	 */
 	public static boolean isValidPid(String pid){
 		String value = StringUtils.deleteWhitespace(pid);
@@ -108,7 +107,7 @@ public final class Pid implements Serializable {
 	
 	/**
 	 * Validates that <code>this</code> is a valid Pid
-	 * @return true if object is valid, otherwise false
+	 * @throws PidValidationException if validation of <code>this</code> fails
 	 */
 	private void validate() throws PidValidationException{
 		boolean valid = isValidPid(pid);
@@ -120,7 +119,7 @@ public final class Pid implements Serializable {
 	/**
 	 * Validates that the length of the fnr is valid.
 	 * To be valid the length must be 11.
-	 * @param fnr
+	 * @param fnr personal identification number
 	 * @return <code>true</code> if valid, otherwise <code>false</code>
 	 */
 	private static boolean isValidFnrLength(String fnr){
@@ -134,7 +133,7 @@ public final class Pid implements Serializable {
 	/**
 	 * Validates that the characters that make up the fnr are valid.
 	 * To be valid, all characters must be numeric.
-	 * @param fnr
+	 * @param fnr personal identification number
 	 * @return <code>true</code> if valid, otherwise <code>false</code>
 	 */
 	private static boolean isValidCharacters(String fnr){
@@ -262,7 +261,7 @@ public final class Pid implements Serializable {
 	/**
 	 * Adjusts DNR and BostNr so that the first 6 numbers represents a valid date
 	 * In the case wher DNR or BostNr is the input, the return value will fail a modulus 11 check.
-	 * @param value
+	 * @param value a personal identification number
 	 * @return the inparam if it wasn't a DNR or BostNr, otherwise the BostNr/DNR where the 6 first digits can be converted to a valid date
 	 */
 	private static String makeDnrOrBostnrAdjustments(String value){
@@ -306,7 +305,7 @@ public final class Pid implements Serializable {
 	
 	/**
 	 * Returns a 4-digit birth date
-	 * @param a fnr, adjusted if it's a bnr or dnr
+	 * @param dnrOrBnrAdjustedFnr a fnr, adjusted if it's a bnr or dnr
 	 * @return 4 digit birth date, -1 if invalid
 	 */
 	private static int get4DigitYearOfBirth(String dnrOrBnrAdjustedFnr){

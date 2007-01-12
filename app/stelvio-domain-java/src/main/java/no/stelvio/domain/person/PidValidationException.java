@@ -18,9 +18,14 @@ public class PidValidationException extends FunctionalUnrecoverableException {
 	 */
 	private static final long serialVersionUID = 6146570031382768191L;
 
-	/**
-	 * {@inheritDoc no.stelvio.common.error.FunctionalUnrecoverableException}
-	 */
+    /**
+	 * Constructs a copy of the specified PidValidationException without the cause.
+     * <p>
+     * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
+     * classes that is part of the cause stack.
+	 *
+	 * @param holder ExceptionToCopyHolder
+     */
 	public PidValidationException(ExceptionToCopyHolder holder) {
 		super(holder);
 	}
@@ -45,7 +50,9 @@ public class PidValidationException extends FunctionalUnrecoverableException {
 	}
 
 	/**
-	 * {@inheritDoc no.stelvio.common.error.FunctionalUnrecoverableException}
+	 * Method that produces a string used as a exceptio message
+	 * @param numArgs the number of arguments passed into the constructor
+	 * @return the message template
 	 */
 	@Override
 	protected String messageTemplate(int numArgs) {
