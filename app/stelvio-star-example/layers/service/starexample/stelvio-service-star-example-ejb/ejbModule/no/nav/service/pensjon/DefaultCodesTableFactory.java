@@ -15,7 +15,7 @@ import org.springframework.ejb.support.AbstractStatelessSessionBean;
 /**
  * Bean implementation class for CodesTableFactory.
  */
-public class DefaultCodesTableFactoryBean implements CodesTableFactory {
+public class DefaultCodesTableFactory implements CodesTableFactory {
 	public <T extends CodesTableItem> List<T> retrieveCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
 		return Collections.EMPTY_LIST;
 	}

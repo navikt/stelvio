@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:ejbbnd="ejbbnd.xmi" xmi:id="EJBJarBinding_1168530399015">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1168530399031" jndiName="ejb/test/AsdfHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#Asdf"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1168530442546" jndiName="ejb/Ctf">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#Session_1168378806445"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1168530442547" jndiName="ejb/TestBb">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#TestBb"/>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <websphereDeploySettings>
-  <generationFolder name="src/main/java"/>
+  <generationFolder name="ejbModule"/>
 </websphereDeploySettings>

@@ -3,8 +3,7 @@
   <runtime name="WebSphere Application Server v6.1"/>
   <fixed facet="jst.java"/>
   <fixed facet="jst.ejb"/>
-  <fixed facet="com.ibm.websphere.extended.ejb"/>
-  <installed facet="jst.java" version="5.0"/>
   <installed facet="jst.ejb" version="2.1"/>
+  <installed facet="jst.java" version="5.0"/>
   <installed facet="com.ibm.websphere.extended.ejb" version="6.1"/>
 </faceted-project>
