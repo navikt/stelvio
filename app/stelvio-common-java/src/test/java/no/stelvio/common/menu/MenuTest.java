@@ -1,7 +1,7 @@
 /**
  * 
  */
-package no.stelvio.common.menu;
+package no.stelvio.domain.menu;
 
 import java.util.ArrayList;
 import java.util.List;
