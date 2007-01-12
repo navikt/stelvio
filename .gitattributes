@@ -407,6 +407,8 @@ app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/repository/
 app/stelvio-service-java/.classpath -text
 app/stelvio-service-java/.project -text
 app/stelvio-service-java/pom.xml -text
+app/stelvio-service-java/src/main/java/no/stelvio/refactor/menu/service/support/DefaultMenuItemService.java -text
+app/stelvio-service-java/src/main/java/no/stelvio/service/menu/service/MenuItemService.java -text
 app/stelvio-star-example/.project -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/.project -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/.settings/org.eclipse.jst.j2ee.ejb.annotations.xdoclet.prefs -text
