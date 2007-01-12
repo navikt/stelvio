@@ -398,6 +398,7 @@ app/stelvio-presentation-java/xdocs/images/design/ActionSequence.gif -text
 app/stelvio-presentation-java/xdocs/images/design/arch_components_web_overview.gif -text
 app/stelvio-presentation-java/xdocs/index.xml -text
 app/stelvio-presentation-java/xdocs/navigation.xml -text
+app/stelvio-repository-java/.classpath -text
 app/stelvio-repository-java/.project -text
 app/stelvio-repository-java/pom.xml -text
 app/stelvio-service-java/.project -text
