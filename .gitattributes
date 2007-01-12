@@ -413,6 +413,7 @@ app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/.settings/org.
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/.settings/org.eclipse.wst.validation.prefs -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/pom.xml -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/application.xml -text
+app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/deployment.xml -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/resources.xml -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/variables.xml -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/security.xml -text
