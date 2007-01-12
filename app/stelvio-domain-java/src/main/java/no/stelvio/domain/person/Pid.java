@@ -65,7 +65,7 @@ public final class Pid implements Serializable {
 	}	
 
 	/**
-	 * Method that uses the number to calculate and return the birth date for this pid
+	 * Method that calculates and returns the birth date for <code>this</code> pid
 	 * @return java.util.Date representing the birth date of person with this Pid
 	 */
 	public Date getFodselsdato(){
