@@ -321,6 +321,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/constants/Co
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/AbstractFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/PerformanceMonitorFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/RequestContextFilter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/event/RequestContextPhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolver.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/acegi/AcegiSecurityContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/PageAccessDeniedException.java -text
