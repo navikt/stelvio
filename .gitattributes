@@ -402,6 +402,7 @@ app/stelvio-presentation-java/xdocs/navigation.xml -text
 app/stelvio-repository-java/.classpath -text
 app/stelvio-repository-java/.project -text
 app/stelvio-repository-java/pom.xml -text
+app/stelvio-service-java/.classpath -text
 app/stelvio-service-java/.project -text
 app/stelvio-service-java/pom.xml -text
 app/stelvio-star-example/.project -text

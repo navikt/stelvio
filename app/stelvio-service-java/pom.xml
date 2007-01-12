@@ -12,7 +12,7 @@
     <dependencies>
         <dependency>
             <groupId>no.stelvio</groupId>
-            <artifactId>stelvio-common-java</artifactId>
+            <artifactId>stelvio-repository-java</artifactId>
             <version>${pom.version}</version>
         </dependency>
     </dependencies>
