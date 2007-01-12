@@ -283,6 +283,9 @@ app/stelvio-domain-java/.project -text
 app/stelvio-domain-java/pom.xml -text
 app/stelvio-domain-java/project.properties -text
 app/stelvio-domain-java/src/main/java/.cvsignore -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItem.java -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemPermission.java -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemScreen.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/person/Pid.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/person/PidValidationException.java -text
 app/stelvio-domain-java/src/test/java/no/stelvio/domain/person/PidTest.java -text
