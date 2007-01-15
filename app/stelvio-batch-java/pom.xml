@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>no.stelvio</groupId>
@@ -12,14 +13,20 @@
 	<name>stelvio - batch</name>
 	<dependencies>
 		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>ejb</artifactId>
-			<version>2.1</version>
-		</dependency>
-		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
 			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
