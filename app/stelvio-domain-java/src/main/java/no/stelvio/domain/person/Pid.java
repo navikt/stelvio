@@ -7,6 +7,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -33,6 +34,7 @@ public final class Pid implements Serializable {
 	/**
 	 * The id used to check version of object when serializing.
 	 */
+	@Transient
 	private static final long serialVersionUID = 8098800200089499716L;
 	
 
