@@ -20,8 +20,6 @@ import org.apache.log4j.helpers.LogLog;
 import org.apache.log4j.helpers.OptionConverter;
 import org.apache.log4j.xml.DOMConfigurator;
 
-import no.stelvio.common.log.jmx.Log4JConfig;
-
 /**
  * A commons-logging LogFactory implementation which adds support for Log4J and file watching.
  * 
