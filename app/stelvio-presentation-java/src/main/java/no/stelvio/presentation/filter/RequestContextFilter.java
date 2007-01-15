@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
-import no.stelvio.presentation.util.RequestUtils;
 
 
 /**
@@ -64,7 +63,7 @@ public class RequestContextFilter extends AbstractFilter {
 			// the JSF and SWF context. Screen id is set through a RequestContextPhaseListener
 			RequestContext.setUserId(request.getRemoteUser());
 			RequestContext.setModuleId(RequestContext.getScreenId());
-			RequestContext.setProcessId(RequestUtils.getProcessId(request));
+			RequestContext.setProcessId(null);
 			RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
 			
 			// Delegate processing to the next filter or resource in the chain
