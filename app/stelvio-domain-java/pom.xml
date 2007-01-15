@@ -11,6 +11,12 @@
     <packaging>jar</packaging>
     <name>stelvio - domain</name>
     <dependencies>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>    
         <dependency>
             <groupId>mx4j</groupId>
             <artifactId>mx4j-jmx</artifactId>
