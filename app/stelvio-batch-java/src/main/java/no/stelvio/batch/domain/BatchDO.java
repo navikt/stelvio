@@ -10,7 +10,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author person356941106810, Accenture
  * @version $Id: BatchDO.java 2064 2005-03-04 09:18:15Z psa2920 $ 
  */
-public class BatchDO extends no.stelvio.common.core.DomainObject {
+public class BatchDO {
 
 	private static final long serialVersionUID = 6318007808581245609L;
 
