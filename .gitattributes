@@ -401,8 +401,8 @@ app/stelvio-repository-java/src/main/java/no/stelvio/repository/tasklist/Tasklis
 app/stelvio-service-java/.classpath -text
 app/stelvio-service-java/.project -text
 app/stelvio-service-java/pom.xml -text
-app/stelvio-service-java/src/main/java/no/stelvio/refactor/menu/service/support/DefaultMenuItemService.java -text
-app/stelvio-service-java/src/main/java/no/stelvio/service/menu/service/MenuItemService.java -text
+app/stelvio-service-java/src/main/java/no/stelvio/service/menu/MenuItemService.java -text
+app/stelvio-service-java/src/main/java/no/stelvio/service/menu/support/DefaultMenuItemService.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/tasklist/TasklistService.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/tasklist/support/DefaultTasklistService.java -text
 app/stelvio-star-example/.project -text

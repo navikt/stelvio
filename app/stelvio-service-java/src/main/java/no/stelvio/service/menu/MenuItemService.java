@@ -1,7 +1,7 @@
 /**
  * 
  */
-package no.stelvio.service.menu.service;
+package no.stelvio.service.menu;
 
 
 /**

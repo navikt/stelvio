@@ -1,9 +1,9 @@
 /**
  * 
  */
-package no.stelvio.refactor.menu.service.support;
+package no.stelvio.service.menu.support;
 
-import no.stelvio.service.menu.service.MenuItemService;
+import no.stelvio.service.menu.MenuItemService;
 
 /**
  * Implements services for accessing data related to menu. 
