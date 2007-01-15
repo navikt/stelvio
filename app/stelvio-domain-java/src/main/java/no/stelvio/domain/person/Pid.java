@@ -34,7 +34,6 @@ public final class Pid implements Serializable {
 	/**
 	 * The id used to check version of object when serializing.
 	 */
-	@Transient
 	private static final long serialVersionUID = 8098800200089499716L;
 	
 
@@ -108,6 +107,20 @@ public final class Pid implements Serializable {
 		}
 		return false;
 	}
+	
+	/**
+	 * Method that calculates whether the this Pid is representing a Bostnummer
+	 * @return <code>true</code> if <code>this</code> is representing a bostnummer, otherwise <code>false</code>
+	 */
+	public boolean isBostnummer(){
+		// fnr format will be <DDMMAAXXXYY>
+		int month = Integer.parseInt(pid.substring(2, 4));
+
+		if (month > 20 && month <= 32) { 
+			return true;
+		}
+		return false;		
+	}	
 	
 	/**
 	 * Validates that <code>this</code> is a valid Pid
@@ -262,6 +275,7 @@ public final class Pid implements Serializable {
 		return true;
 	}	
 	
+
 	/**
 	 * Adjusts DNR and BostNr so that the first 6 numbers represents a valid date
 	 * In the case wher DNR or BostNr is the input, the return value will fail a modulus 11 check.
