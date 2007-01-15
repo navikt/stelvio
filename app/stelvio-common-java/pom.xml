@@ -40,13 +40,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
-			<scope>compile</scope>
-		</dependency>
-		<!-- END: Remove if moving menu domain and repository classes -->
-		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 			<version>3.0</version>
@@ -136,6 +129,22 @@
 					<groupId>jcs</groupId>
 				</exclusion>
 				<exclusion>
+					<artifactId>concurrent</artifactId>
+					<groupId>concurrent</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xjavadoc</artifactId>
+					<groupId>xjavadoc</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xstream</artifactId>
+					<groupId>xstream</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-attributes-compiler</artifactId>
+					<groupId>commons-attributes</groupId>
+				</exclusion>
+				<exclusion>
 					<artifactId>spring</artifactId>
 					<groupId>org.springframework</groupId>
 				</exclusion>
@@ -144,7 +153,7 @@
 		<dependency>
 			<artifactId>spring-mock</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>2.0</version>
+			<version>2.0.1</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>struts</artifactId>
