@@ -2,7 +2,7 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
-Changes in version 1.0.1 (15.1.2007)
+Changes in version 1.0.1 (17.1.2007)
 ------------------------------------
 
 General
