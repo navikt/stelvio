@@ -102,11 +102,9 @@ public abstract class AbstractFilter implements Filter {
 			if (log.isInfoEnabled()) {
 				log.info(filterConfig.getFilterName() + " initialized");
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new ServletException("An error occured while initiating the filter", e);
-		}
-		finally {
+		} finally {
 			RequestContext.remove();
 		}
 	}
@@ -204,8 +202,7 @@ public abstract class AbstractFilter implements Filter {
 			if (log.isInfoEnabled()) {
 				log.info(filterConfig.getFilterName() + " destroyed");
 			}
-		}
-		finally {
+		} finally {
 			RequestContext.remove();
 		}
 	}

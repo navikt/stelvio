@@ -231,7 +231,6 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 	 * and the <code>afterPhase()</code> methods.
 	 * 
 	 * @param phaseEvent used to get the <code>FacesContext</code> for the request being processed.
-	 * @throws the exceptions propagated from the handleSecurityMethod().
 	 */
 	private void evaluatePage(PhaseEvent phaseEvent) {
 		// initiate security objects the first time
@@ -292,6 +291,7 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 	 * 
 	 * @param viewId
 	 *            the viewId of the current page
+	 * @return <code>true<code> if the page is found in the cache, <code>false<code> if not
 	 */
 	private boolean checkPageCache(String viewId) {
 
@@ -397,15 +397,6 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 	 *            being processed
 	 * 
 	 * @return <code>true</code> if the user is authorized to view the page
-	 * 
-	 * @throws PageAccessDeniedException
-	 *             if access is denied
-	 * @throws PageAuthenticationFailedException
-	 *             if authentication redirection has failed
-	 * @throws PageSecurityFileNotFoundException
-	 *             if security config file cannot be found
-	 * @throws PageProtocolSwitchFailedException
-	 *             if protocol switch has failed
 	 */
 	private boolean handleSecurity(PhaseEvent phaseEvent) {
 		FacesContext facesContext = phaseEvent.getFacesContext();
@@ -439,7 +430,7 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 	 * 
 	 * @param statusCode
 	 *            the HttpServletResponse status code.
-	 * @param error_message
+	 * @param errorMessage
 	 *            the error message
 	 */
 	private void handleError(int statusCode, String errorMessage) {

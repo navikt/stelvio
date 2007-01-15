@@ -33,9 +33,11 @@ public class RequestContextPhaseListener implements PhaseListener {
 	 * Execute operations after the phase has finished. When the phase is over the 
 	 * RequestContext object will be updated with the current screen id. The screen id is
 	 * fetched from the flow executions current session.
+	 * @param event the PhaseEvent notifing that the phase has ended
 	 */
 	public void afterPhase(PhaseEvent event) {
-		FlowSession session =  FlowExecutionHolderUtils.getFlowExecutionHolder(FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
+		FlowSession session =  FlowExecutionHolderUtils.getFlowExecutionHolder(
+				FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
 		if (session != null) {
 			String screenId = session.getDefinition().getId()+":"+session.getState().getId();
 			RequestContext.setScreenId(screenId);
@@ -46,7 +48,7 @@ public class RequestContextPhaseListener implements PhaseListener {
 	 * Handle a notification that the procession for the phase of the request
 	 * processing lifecycle is about to begin
 	 * 
-	 * @param PhaseEvent
+	 * @param event PhaseEvent notifing that the phase is about to begin.
 	 */
 	public void beforePhase(PhaseEvent event) {
 		// nothing to do

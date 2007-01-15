@@ -74,13 +74,13 @@ public class MessageSourcePropertyResolver extends PropertyResolver {
     public Object getValue(final Object base, final Object property) {
         if (base instanceof MessageSource) {
             MessageSource messageSource = (MessageSource) base;
-            
+
             //The original code written by the author - that retrieves the locale from FacesContext
             //Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-            
+
             //Retrieves the locale set by the RequestContext module
             Locale locale = RequestContext.getLocale();
-            
+
             return messageSource.getMessage((String) property, NO_ARGS, locale);
         } else {
             return original.getValue(base, property);

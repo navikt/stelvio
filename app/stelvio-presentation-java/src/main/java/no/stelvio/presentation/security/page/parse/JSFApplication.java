@@ -14,6 +14,10 @@ public class JSFApplication {
 
 	private SSLConfig sslConfig;
 
+	/**
+	 * Default constructor 
+	 *
+	 */
 	public JSFApplication() {
 	}
 

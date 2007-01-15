@@ -14,6 +14,10 @@ public class J2EERole implements Serializable {
 
 	private String role;
 
+	/**
+	 * Default constructor for class.
+	 *
+	 */
 	public J2EERole() {
 	}
 
@@ -38,6 +42,7 @@ public class J2EERole implements Serializable {
 
 	/**
 	 * Returns string representation of this class.
+	 * @return String representation of this class
 	 */
 	@Override
 	public String toString() {

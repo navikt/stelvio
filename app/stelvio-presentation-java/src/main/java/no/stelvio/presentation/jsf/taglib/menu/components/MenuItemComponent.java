@@ -3,11 +3,18 @@ package no.stelvio.presentation.jsf.taglib.menu.components;
 import javax.faces.component.UIPanel;
 
 /**
- * TODO: Document me
+ * MenuItemComponent class is used to hold items in the menu and
+ * each items properties like style class, text to display and 
+ * which action to be invoced when the menu item is selected.
+ * 
  * @author person4f9bc5bd17cc
  * @version $id$
  */
 public class MenuItemComponent extends UIPanel {
+	
+	/**
+	 * The standard component type for this component
+	 */
 	public static final String COMPONENT_TYPE = "no.nav.MenuItem";
 
 	private String styleClass;
@@ -16,7 +23,8 @@ public class MenuItemComponent extends UIPanel {
 	private String action;
 	
 	/**
-	 * TODO: Document me
+	 * Contructor for MenuItemComponent. Sets the Renderer class of this
+	 * component
 	 *
 	 */
 	public MenuItemComponent() {

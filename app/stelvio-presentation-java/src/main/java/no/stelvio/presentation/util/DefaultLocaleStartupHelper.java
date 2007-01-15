@@ -61,6 +61,12 @@ public class DefaultLocaleStartupHelper {
         }
 	}
 
+
+    /**
+     * Private helper method to create a SystemException 
+     * @param language The language in the application
+     * @return SystemUnrecoverableException 
+     */
     private SystemUnrecoverableException createSystemException(String language) {
         // TODO create another exception to use
         return new SystemUnrecoverableException(language) {

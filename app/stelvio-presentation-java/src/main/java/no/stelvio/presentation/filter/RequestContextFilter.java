@@ -81,11 +81,9 @@ public class RequestContextFilter extends AbstractFilter {
 					}
 				}
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new ServletException("An error occured while updating the RequestContext", e);
-		}
-		finally {
+		} finally {
 			// Always reset the RequestContext, just to be on the safe side
 			RequestContext.remove();
 		}

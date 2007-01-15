@@ -90,10 +90,6 @@ public class J2eeSecurityObject {
 	 * is set a new <code>SecurityConfigurationXML</code> will be created as
 	 * default.
 	 * 
-	 * @throws PageSecurityFileNotFoundException
-	 *             if no configuration file is found when using the default
-	 *             SecurityConfiguration <code>SecurityConfigurationXML</code>.
-	 * 
 	 */
 	public void initializeSecurityDefinitions() {
 

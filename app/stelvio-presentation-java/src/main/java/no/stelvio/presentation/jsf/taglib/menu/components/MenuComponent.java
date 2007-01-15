@@ -3,11 +3,18 @@ package no.stelvio.presentation.jsf.taglib.menu.components;
 import javax.faces.component.UIPanel;
 
 /**
- * TODO: Document me
+ * The MenuComponent contains one or several MenuItem as its children. 
+ * This class holds properties for the Menu component, like style class
+ * to be used on the elements of the menu.
+ * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  */
 public class MenuComponent extends UIPanel {
+	
+	/**
+	 * The standard component type for this component.
+	 */
 	public static final String COMPONENT_TYPE = "no.nav.Menu";
 	
 	private String rootStyleClass;
@@ -16,7 +23,8 @@ public class MenuComponent extends UIPanel {
 	private String childInlineStyle;
 	
 	/**
-	 * TODO: Document me
+	 * Default constructor for this class, sets the Renderer type
+	 * of this component
 	 *
 	 */
 	public MenuComponent() {

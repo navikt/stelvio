@@ -43,7 +43,7 @@ public class ServletContextAttributeSetter implements ServletContextAware, Initi
 	/**
 	 * Sets the attributes that should be inserted into the servlet context.
 	 *
-	 * @param attributes
+	 * @param attributes the attributes to insert into the servlet context
 	 */
 	public void setAttributes(final Properties attributes) {
 		this.attributes = new Properties();
