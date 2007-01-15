@@ -32,8 +32,11 @@ import javax.persistence.Table;
 @Entity(name="MenuItem")
 @Table(name="MENU_ITEM")
 public class MenuItem implements Serializable {
-	// TODO: Remove or create generated value
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -987889062411683185L;
 
 	/**
 	 * The primary key.

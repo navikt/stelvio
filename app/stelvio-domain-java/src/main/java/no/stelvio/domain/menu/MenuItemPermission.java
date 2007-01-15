@@ -23,8 +23,8 @@ import javax.persistence.Version;
 @Entity(name="MenuItemPermission")
 @Table(name="MENU_PERMISSION")
 public class MenuItemPermission implements Serializable {
-	// TODO: Remove or create generated value
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -7769356462360967819L;
 
 	/**
 	 * The primary key.

@@ -23,8 +23,9 @@ import javax.persistence.Version;
 @Entity(name="MenuItemScreen")
 @Table(name="MENU_SCREEN")
 public class MenuItemScreen implements Serializable {
-	// TODO: Remove or create generated value
-	private static final long serialVersionUID = 1L;
+
+
+	private static final long serialVersionUID = 8436877079118486417L;
 
 	/**
 	 * The primary key.
