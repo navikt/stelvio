@@ -4,9 +4,7 @@ app/changelog.txt -text
 app/pom.xml -text
 app/stelvio-batch-java/.classpath -text
 app/stelvio-batch-java/.project -text
-app/stelvio-batch-java/models/Java[!!-~]1.4[!!-~]Code[!!-~]Model.mdx -text
 app/stelvio-batch-java/pom.xml -text
-app/stelvio-batch-java/project.properties -text
 app/stelvio-batch-java/src/main/java/.cvsignore -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/AbstractBatch.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/AbstractMessageDrivenBatch.java -text
@@ -14,7 +12,6 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/BatchStatus.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/BatchDO.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/AbstractBatchTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchDOTest.java -text
-app/stelvio-batch-java/xdocs/index.xml -text
 app/stelvio-common-java/.classpath -text
 app/stelvio-common-java/.project -text
 app/stelvio-common-java/pom.xml -text
