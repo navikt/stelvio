@@ -162,7 +162,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/context/support/ThreadLo
 app/stelvio-common-java/src/test/java/no/stelvio/common/converter/CalendarConverterTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/converter/ConverterLoaderTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/converter/DateConverterTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/core/DomainObjectTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/Bean.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/BeanOther.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/CalendarBean.java -text
