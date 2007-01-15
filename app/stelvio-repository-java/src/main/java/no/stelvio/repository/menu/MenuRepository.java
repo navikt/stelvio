@@ -1,4 +1,8 @@
-package no.stelvio.repository.menu.repository;
+package no.stelvio.repository.menu;
+
+import java.util.List;
+
+import no.stelvio.domain.menu.MenuItem;
 
 
 /**
@@ -10,11 +14,11 @@ package no.stelvio.repository.menu.repository;
  * @version $id$
  */
 public interface MenuRepository {
-//	/**
-//	 * Method to retrieve MenuItem objects that has no parent (parent is <code>null</code>).
-//	 * Children are retrived with eager fetching.
-//	 * 
-//	 * @return a list of root MenuItem objects. 
-//	 */
-//	public List<MenuItem> getParents();
+	/**
+	 * Method to retrieve MenuItem objects that has no parent (parent is <code>null</code>).
+	 * Children are retrived with eager fetching.
+	 * 
+	 * @return a list of root MenuItem objects. 
+	 */
+	public List<MenuItem> getParents();
 }
