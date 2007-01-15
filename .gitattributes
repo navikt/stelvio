@@ -302,7 +302,6 @@ app/stelvio-domain-java/xdocs/navigation.xml -text
 app/stelvio-presentation-java/.classpath -text
 app/stelvio-presentation-java/.project -text
 app/stelvio-presentation-java/pom.xml -text
-app/stelvio-presentation-java/project.properties -text
 app/stelvio-presentation-java/src/main/java/.cvsignore -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/action/FrameworkErrorAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/action/FrameworkErrorForm.java -text
@@ -364,12 +363,9 @@ app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/taglib/suppo
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/util/DefaultLocaleStartupHelperTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/util/RequestUtilsTst.java -text
 app/stelvio-presentation-java/src/test/resources/WEB-INF/web.xml -text
-app/stelvio-presentation-java/src/test/resources/distributed-services.xml -text
-app/stelvio-presentation-java/src/test/resources/error-handling.xml -text
 app/stelvio-presentation-java/src/test/resources/log4j.properties -text
 app/stelvio-presentation-java/src/test/resources/messages_en_GB.properties -text
 app/stelvio-presentation-java/src/test/resources/messages_en_US.properties -text
-app/stelvio-presentation-java/src/test/resources/presentation-services.xml -text
 app/stelvio-repository-java/.classpath -text
 app/stelvio-repository-java/.project -text
 app/stelvio-repository-java/pom.xml -text
