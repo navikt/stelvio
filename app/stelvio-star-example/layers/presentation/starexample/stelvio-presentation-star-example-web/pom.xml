@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>	
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -38,16 +38,6 @@
 			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<artifactId>myfaces-api</artifactId>
-			<groupId>org.apache.myfaces.core</groupId>
-			<version>1.1.4</version>
-		</dependency>
-		<dependency>
-			<artifactId>myfaces-impl</artifactId>
-			<groupId>org.apache.myfaces.core</groupId>
-			<version>1.1.4</version>
-		</dependency>
-		<dependency>
 			<artifactId>jsf-facelets</artifactId>
 			<groupId>com.sun.facelets</groupId>
 			<version>1.1.11</version>
@@ -67,16 +57,6 @@
             <artifactId>ajax4jsf</artifactId>
             <version>1.0.3</version>
         </dependency>
-		<dependency>
-			<artifactId>el</artifactId>
-			<groupId>javax.el</groupId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<artifactId>el-sun</artifactId>
-			<groupId>com.sun</groupId>
-			<version>1.0</version>
-		</dependency>
 		<dependency>
 			<artifactId>spring-modules-validation</artifactId>
 			<groupId>org.springmodules</groupId>
@@ -103,6 +83,22 @@
 				<exclusion>
 					<artifactId>xml-apis</artifactId>
 					<groupId>xml-apis</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>js</artifactId>
+					<groupId>rhino</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>joda-time</artifactId>
+					<groupId>joda-time</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>antlr</artifactId>
+					<groupId>antlr</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hibernate-annotations</artifactId>
+					<groupId>org.hibernate</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
