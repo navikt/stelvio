@@ -56,10 +56,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/converter/CalendarConver
 app/stelvio-common-java/src/main/java/no/stelvio/common/converter/ConverterLoader.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/converter/DateConverter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/converter/package.html -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/core/Behaviour.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/core/DomainObject.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/core/Initializable.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/core/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorConfigurationException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorDefinition.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorHandlingException.java -text
