@@ -450,8 +450,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/util/SortableList.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/web/tags/JsfCoreLibrary.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/web/tags/JsfFunctions.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/web/tags/TasklistBacker.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/web/tags/TasklistTreeModel.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/resources/formatting.properties -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/resources/resources.properties -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/resources/resources_no_NO.properties -text
