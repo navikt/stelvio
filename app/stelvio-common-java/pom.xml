@@ -145,6 +145,10 @@
 					<groupId>commons-attributes</groupId>
 				</exclusion>
 				<exclusion>
+					<artifactId>commons-attributes-api</artifactId>
+					<groupId>commons-attributes</groupId>
+				</exclusion>
+				<exclusion>
 					<artifactId>spring</artifactId>
 					<groupId>org.springframework</groupId>
 				</exclusion>
