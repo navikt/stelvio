@@ -23,11 +23,6 @@
             <version>1.1</version>
         </dependency>
         <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>1.3</version>
-        </dependency>
-        <dependency>
             <groupId>no.stelvio</groupId>
             <artifactId>stelvio-common-java</artifactId>
             <version>${pom.version}</version>
