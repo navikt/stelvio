@@ -1,7 +1,4 @@
-/**
- * 
- */
-package no.stelvio.presentation.taglib.menu.components;
+package no.stelvio.presentation.jsf.taglib.menu.components;
 
 import javax.faces.component.UIPanel;
 
