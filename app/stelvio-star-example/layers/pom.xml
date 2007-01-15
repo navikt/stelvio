@@ -44,8 +44,8 @@
 					<groupId>avalon-framework</groupId>
 				</exclusion>
 				<exclusion>
-					<artifactId>javax.servlet</artifactId>
-					<groupId>servlet-api</groupId>
+					<artifactId>servlet-api</artifactId>
+					<groupId>javax.servlet</groupId>
 				</exclusion>
 				<exclusion>
 					<artifactId>logkit</artifactId>
