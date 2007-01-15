@@ -1,8 +1,8 @@
-package no.stelvio.common.tasklist.repository;
+package no.stelvio.repository.tasklist;
 
 import java.util.List;
 
-import no.stelvio.common.tasklist.domain.Responsible;
+import no.stelvio.domain.tasklist.Responsible;
 
 /**
  * TODO: Document me

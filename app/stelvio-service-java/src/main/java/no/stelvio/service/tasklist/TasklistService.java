@@ -1,4 +1,4 @@
-package no.stelvio.common.tasklist;
+package no.stelvio.service.tasklist;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package no.stelvio.common.tasklist.support;
+package no.stelvio.service.tasklist.support;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import no.stelvio.common.tasklist.TasklistService;
+import no.stelvio.service.tasklist.TasklistService;
 
 //import no.stelvio.business.domain.Oppgave;
 

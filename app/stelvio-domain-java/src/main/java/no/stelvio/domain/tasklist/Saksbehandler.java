@@ -1,4 +1,4 @@
-package no.stelvio.common.tasklist.domain;
+package no.stelvio.domain.tasklist;
 
 /**
  * TODO: Document me 
