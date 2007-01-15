@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-repository-java/1.0.1-SNAPSHOT/stelvio-repository-java-1.0.1-SNAPSHOT.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-domain-java"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-repository-java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
