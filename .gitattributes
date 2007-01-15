@@ -59,7 +59,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/converter/package.html -
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/Behaviour.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/DomainObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/Initializable.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/core/TransferObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/core/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorConfigurationException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/ErrorDefinition.java -text
@@ -168,7 +167,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/converter/CalendarConver
 app/stelvio-common-java/src/test/java/no/stelvio/common/converter/ConverterLoaderTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/converter/DateConverterTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/core/DomainObjectTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/core/TransferObjectTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/Bean.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/BeanOther.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/dummy/CalendarBean.java -text
