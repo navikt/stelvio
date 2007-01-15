@@ -100,8 +100,6 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/event/support/CeiApplica
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/support/LoggingApplicationEventListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/appenders/JMSQueueAppender.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/Log4jLogFactory.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfig.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/log/jmx/Log4JConfigMBean.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/SecurityException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/AccessDecisionVoterNotFoundException.java -text

@@ -239,15 +239,6 @@ public class Log4jLogFactory extends LogFactory {
 				PropertyConfigurator.configureAndWatch(fileName, refreshInterval);
 			}
 
-			// create a new Log4JConfig that will register itself
-			Log4JConfig mbean = new Log4JConfig(fileName);
-
-			try {
-				mbean.load();
-			} catch (Exception e) {
-				LogLog.error("Error creating MBean for " + fileName, e);
-			}
-
 		} else {
 			LogLog.debug("Could not find resource: [" + log4jConfig + "].");
 		}
