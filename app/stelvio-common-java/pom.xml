@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>no.stelvio</groupId>
@@ -20,6 +21,20 @@
 			<artifactId>acegi-security</artifactId>
 			<groupId>org.acegisecurity</groupId>
 			<version>1.0.2</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-remoting</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-support</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-jdbc</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>hsqldb</groupId>
@@ -43,11 +58,6 @@
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 			<version>3.0</version>
-		</dependency>
-		<dependency>
-			<groupId>mx4j</groupId>
-			<artifactId>mx4j-jmx</artifactId>
-			<version>3.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -149,6 +159,18 @@
 					<groupId>commons-attributes</groupId>
 				</exclusion>
 				<exclusion>
+					<artifactId>geronimo-spec-jta</artifactId>
+					<groupId>geronimo-spec</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jgroups-all</artifactId>
+					<groupId>jgroups</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>oscache</artifactId>
+					<groupId>opensymphony</groupId>
+				</exclusion>
+				<exclusion>
 					<artifactId>spring</artifactId>
 					<groupId>org.springframework</groupId>
 				</exclusion>
@@ -158,6 +180,7 @@
 			<artifactId>spring-mock</artifactId>
 			<groupId>org.springframework</groupId>
 			<version>2.0.1</version>
+			<scope>test</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>struts</artifactId>
@@ -169,6 +192,7 @@
 			<groupId>javax.jms</groupId>
 			<artifactId>jms</artifactId>
 			<version>1.1</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
