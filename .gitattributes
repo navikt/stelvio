@@ -208,7 +208,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestQueueS
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestQueueSession.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appenders/TestTextMessage.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/factory/Log4jLogFactoryTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/log/jmx/Log4JConfigTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AccessVoterManagerTests.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AfterInvocationProviderManagerTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/AlwaysAffirmativeVoterTest.java -text
@@ -239,7 +238,6 @@ app/stelvio-common-java/src/test/resources/error-integration-test-context.xml -t
 app/stelvio-common-java/src/test/resources/integration-test-context.xml -text
 app/stelvio-common-java/src/test/resources/log4j.properties -text
 app/stelvio-common-java/src/test/resources/performance-monitoring.xml -text
-app/stelvio-common-java/src/test/resources/spring-beans.dtd -text
 app/stelvio-common-java/src/test/resources/test-bean-factory-post-processor.properties -text
 app/stelvio-common-java/src/test/resources/test-bean-factory-post-processor.xml -text
 app/stelvio-common-java/src/test/resources/test-ehcache.xml -text
