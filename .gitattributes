@@ -398,8 +398,8 @@ app/stelvio-presentation-java/xdocs/navigation.xml -text
 app/stelvio-repository-java/.classpath -text
 app/stelvio-repository-java/.project -text
 app/stelvio-repository-java/pom.xml -text
-app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu2/repository/MenuRepository.java -text
-app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu2/repository/support/HibernateMenuRepository.java -text
+app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/MenuRepository.java -text
+app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/support/HibernateMenuRepository.java -text
 app/stelvio-service-java/.classpath -text
 app/stelvio-service-java/.project -text
 app/stelvio-service-java/pom.xml -text
