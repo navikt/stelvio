@@ -19,12 +19,18 @@ Module stelvio-common-java
 Module stelvio-test-java
 
 Module stelvio-domain-java
+* Moved domain objects in common for menu here
+* Moved domain objects in common for tasklist here
 
 Module stelvio-repository-java
+* Moved repository classes in common for menu here
+* Moved repository classes in common for tasklist here 
 
 Module stelvio-batch-java
 
 Module stelvio-service-java
+* Moved service classes in common for menu here
+* Moved service classes in common for tasklist here
 
 Module stelvio-presentation-java
 * Renamed package from no.stelvio.web to no.stelvio.presentation
