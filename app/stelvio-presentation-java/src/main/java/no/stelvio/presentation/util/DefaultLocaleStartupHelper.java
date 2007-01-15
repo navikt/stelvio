@@ -54,7 +54,9 @@ public class DefaultLocaleStartupHelper {
 			LogFactory.getLog(getClass()).info("Default System Locale set to " + defaultLocale.toString());
 		} catch (SecurityException e) {
             throw new SystemUnrecoverableException(e) {
-                protected String messageTemplate(final int numArgs) {
+				private static final long serialVersionUID = 1911858905825176388L;
+
+				protected String messageTemplate(final int numArgs) {
                     return null;  // TODO: implement body
                 }
             };
@@ -70,7 +72,9 @@ public class DefaultLocaleStartupHelper {
     private SystemUnrecoverableException createSystemException(String language) {
         // TODO create another exception to use
         return new SystemUnrecoverableException(language) {
-            protected String messageTemplate(final int numArgs) {
+			private static final long serialVersionUID = 9169389372453059598L;
+
+			protected String messageTemplate(final int numArgs) {
                 return null;  // TODO: implement body
             }
         };
