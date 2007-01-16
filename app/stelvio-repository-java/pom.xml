@@ -21,5 +21,10 @@
 			<groupId>org.springframework</groupId>
 			<version>2.0.1</version>
 		</dependency>
+		<dependency>
+			<artifactId>hibernate</artifactId>
+			<groupId>org.hibernate</groupId>
+			<version>3.2.1.ga</version>
+		</dependency>		
 	</dependencies>
 </project>
