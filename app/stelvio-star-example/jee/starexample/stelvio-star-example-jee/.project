@@ -3,8 +3,8 @@
 	<name>stelvio-star-example-jee</name>
 	<comment></comment>
 	<projects>
-		<project>TestEj</project>
 		<project>stelvio-presentation-star-example-web</project>
+		<project>stelvio-service-star-example-ejb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
