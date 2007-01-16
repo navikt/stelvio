@@ -316,7 +316,7 @@ app/stelvio-repository-java/pom.xml -text
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/MenuRepository.java -text
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/support/HibernateMenuRepository.java -text
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/sak/SaksbehandlerRepository.java -text
-app/stelvio-repository-java/src/main/java/no/stelvio/repository/sak/TasklistTreeRepository.java -text
+app/stelvio-repository-java/src/main/java/no/stelvio/repository/sak/TaskRepository.java -text
 app/stelvio-service-java/.classpath -text
 app/stelvio-service-java/.project -text
 app/stelvio-service-java/pom.xml -text
