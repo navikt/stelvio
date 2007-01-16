@@ -21,7 +21,7 @@ import javax.persistence.Table;
 /**
  * Class represent a MenuItem.
  * Instances of this class are Java Persistence API Entities,
- * and may be persisted by an JPA EntityManager.
+ * and may be persisted by any ORM that support JPA Annotations table mapping.
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
@@ -33,9 +33,7 @@ import javax.persistence.Table;
 @Table(name="MENU_ITEM")
 public class MenuItem implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -987889062411683185L;
 
 	/**
@@ -99,9 +97,21 @@ public class MenuItem implements Serializable {
 	/**
 	 * Default no-arg constructor protected as it should only be used by persistence provider.
 	 */
-	public MenuItem() {}
+	protected MenuItem() {}
 	
 	/**
+	 * Constructs a new MenuItem
+	 * @param menuId uniquely identifies this menu item
+	 * @param parent this menu items parent <code>null</code> 
+	 * @param order the order of this menu item
+	 * @param leadtext the leadtext
+	 */
+	public MenuItem(int menuId, MenuItem parent, int order, String leadtext){
+		
+	}
+	
+	/**
+	 * Gets the menu items children
 	 * @return the list of children MenuItem objects.
 	 */
 	public List<MenuItem> getChildren() {
@@ -109,6 +119,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Sets the menu items chg
 	 * @param children the child MenuItem objects.
 	 */
 	public void setChildren(List<MenuItem> children) {
@@ -116,6 +127,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Gets the flow name
 	 * @return the flowName.
 	 */
 	public String getFlowName() {
@@ -123,6 +135,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Sets the flow name
 	 * @param flowName the flowName to set.
 	 */
 	public void setFlowName(String flowName) {
@@ -130,6 +143,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Gets menu idd
 	 * @return the menuId.
 	 */
 	public int getMenuId() {
@@ -137,6 +151,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Sets menu id
 	 * @param menuId the menuId to set.
 	 */
 	public void setMenuId(int id) {
@@ -144,6 +159,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Gets lead text
 	 * @return the leadtext.
 	 */
 	public String getLeadtext() {
@@ -151,6 +167,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Sets lead text
 	 * @param leadtext the leadtext to set.
 	 */
 	public void setLeadtext(String leadtext) {
@@ -158,6 +175,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Gets parent
 	 * @return the parent MenuItem object.
 	 */
 	public MenuItem getParent() {
@@ -165,13 +183,15 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Sets parent
 	 * @param parent the parent MenuItem object to set.
 	 */
-	public void setParent(MenuItem parent_id) {
-		this.parent = parent_id;
+	public void setParent(MenuItem parent) {
+		this.parent = parent;
 	}
 	
 	/**
+	 * Gets the sort order
 	 * @return the sort order.
 	 */
 	public int getOrder() {
@@ -179,6 +199,7 @@ public class MenuItem implements Serializable {
 	}
 	
 	/**
+	 * Sets the sort order
 	 * @param order the sort order to set
 	 */
 	public void setOrder(int order) {
@@ -186,6 +207,7 @@ public class MenuItem implements Serializable {
 	}
 
 	/**
+	 * Gets the permissions
 	 * @return a list of MenuItemPermission objects this menu is a part of.
 	 */
 	public List<MenuItemPermission> getPermissions() {
@@ -193,6 +215,7 @@ public class MenuItem implements Serializable {
 	}
 
 	/**
+	 * Sets the permissions
 	 * @param menuItemPermissions sets the MenuItemPermission objects this menu is a part of
 	 */
 	public void setPermissions(List<MenuItemPermission> menuItemPermissions) {
@@ -200,6 +223,7 @@ public class MenuItem implements Serializable {
 	}
 
 	/**
+	 * Gets the screens
 	 * @return a list of MenuItemScreen objects this menu is a part of.
 	 */
 	public List<MenuItemScreen> getScreens() {
@@ -207,6 +231,7 @@ public class MenuItem implements Serializable {
 	}
 
 	/**
+	 * Sets the screens
 	 * @param menuItemScreens sets the MenuItemScreen objects this menu is a part of.
 	 */
 	public void setScreens(List<MenuItemScreen> menuItemScreens) {

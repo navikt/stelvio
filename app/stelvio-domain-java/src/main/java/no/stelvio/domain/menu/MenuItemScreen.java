@@ -2,6 +2,7 @@ package no.stelvio.domain.menu;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,22 +10,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Version;
+import javax.persistence.Transient;
 
 /**
  * Class represent a MenuItemScreen.
  * Instances of this class are Java Persistence API Entities,
- * and may be persisted by an JPA EntityManager.
+ * and may be persisted by any ORM that support JPA Annotations table mapping.
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
- * @todo should not be necessary with setters at all?
  */
+
 @Entity(name="MenuItemScreen")
 @Table(name="MENU_SCREEN")
 public class MenuItemScreen implements Serializable {
 
-
+	@Transient
 	private static final long serialVersionUID = 8436877079118486417L;
 
 	/**
@@ -41,15 +42,6 @@ public class MenuItemScreen implements Serializable {
 	private List<MenuItem> menuItems;
 	
 	/**
-	 * In order to prevent "lost updates" all entities need to include a version field.
-	 * This field is used by the persistence provider to implement optimistic locking.
-	 */
-	// There shall be no setter-method for the version-field.
-	@Version
-	@Column(name="VERSION")
-	private long version;
-	
-	/**
 	 * The name of the screen.
 	 */
 	@Column(name="NAME")
@@ -58,9 +50,20 @@ public class MenuItemScreen implements Serializable {
 	/**
 	 * Default no-arg constructor protected as it should only be used by persistence provider.
 	 */
-	public MenuItemScreen() {}
+	protected MenuItemScreen() {}
 	
 	/**
+	 * Constructs a new MenuItemScreen
+	 * @param screenId screen id
+	 * @param name menu item screen name
+	 */
+	public MenuItemScreen(int screenId, String name){
+		this.screenId = screenId;
+		this.name = name;
+	}
+	
+	/**
+	 * Gets screen id
 	 * @return the screenId
 	 */
 	public int getScreenId() {
@@ -68,6 +71,7 @@ public class MenuItemScreen implements Serializable {
 	}
 
 	/**
+	 * Sets screen id
 	 * @param screenId the screenId to set
 	 */
 	public void setScreenId(int id) {
@@ -75,6 +79,7 @@ public class MenuItemScreen implements Serializable {
 	}
 
 	/**
+	 * Gets name for this menu item
 	 * @return the name of the screen.
 	 */
 	public String getName() {
@@ -82,29 +87,24 @@ public class MenuItemScreen implements Serializable {
 	}
 
 	/**
+	 * Sets the name of this menu item
 	 * @param name the screen name to set.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * In order to prevent "lost updates" all entities need to include a version field.
-	 * This field is used by the persistence provider to implement optimistic locking.
-	 * @return the version.
-	 */ 
-	public long getVersion() {
-		return version;
-	}
 
 	/**
-	 * @return a list of MenuItem objects that are a part of this screen.
+	 * Gets a list of menu items
+	 * @return list of MenuItem objects that are a part of this screen.
 	 */
 	public List<MenuItem> getMenus() {
 		return menuItems;
 	}
 
 	/**
+	 * Sets a list of menu items
 	 * @param menuItems sets the MenuItem objects that are a part of this screen.
 	 */
 	public void setMenus(List<MenuItem> menuItems) {
