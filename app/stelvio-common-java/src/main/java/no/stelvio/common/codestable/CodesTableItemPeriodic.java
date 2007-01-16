@@ -3,21 +3,31 @@ package no.stelvio.common.codestable;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
  * CodesTableItemPeriodic represents an item in a <code>CodesTable</code> with a valid period.
- * 
+
+ * This class is a MappedSuperclass, meaning that Entities that inherits from this
+ * class must map to a table that defines columns set up by this class
+
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
+@MappedSuperclass
 public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
+	
 	/** The date the item is valid from. */
+	@Column(name="FROM_DATE")
 	private Date fromDate;
 	
 	/** The date the item is valid to. */
+	@Column(name="TO_DATE")
 	private Date toDate;
 	
 	/**

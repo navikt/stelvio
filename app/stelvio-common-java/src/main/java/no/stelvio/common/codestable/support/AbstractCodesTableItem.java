@@ -3,27 +3,40 @@ package no.stelvio.common.codestable.support;
 import java.io.Serializable;
 import java.util.Locale;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Abstract class for the CodesTableItem/CodesTableItemPeriodic components.
  * 
+ * This class is a MappedSuperclass, meaning that Entities that inherits from this
+ * class must map to a table that defines columns set up by this class
+ * 
  * @author personb66fa0b5ff6e, Accenture
  * @verion $Id$
  */
+@MappedSuperclass
 public abstract class AbstractCodesTableItem implements Serializable {
+	
 	/** A codestableitem's code. */
+	@Column(name="kode")
 	private String code;
 	
 	/** A codestableitem's decode, i.e. a message. */
+	@Column(name="dekode")
 	private String decode;
 	
 	/** A codestableitem's locale that represents the country and language the items decode is defined for. */
+	@Transient
 	private Locale locale;
 	
 	/** Defines the validity of a codestableitem. */
-	private boolean isValid;
+	@Column(name="er_gyldig")
+	private boolean valid;
 		
 	/**
 	 * Constructor for <code>AbstractCodesTableItem</code>. Only available to subclasses.
@@ -43,7 +56,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 		this.code = code;
 		this.decode = decode;
 		this.locale = locale;
-		this.isValid = isValid;
+		this.valid = isValid;
 	}
 
 	/**
@@ -76,10 +89,10 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Returns the validity of this item.
 	 * 
-	 * @return isValid as true if item is valid, false otherwise.
+	 * @return valid as <code>true</code> if item is valid, false otherwise.
 	 */
-	public boolean getIsValid(){
-		return isValid;
+	public boolean isValid(){
+		return valid;
 	}
 	
 	/**
