@@ -26,7 +26,7 @@ public class CodesTableItemTest {
 		assertEquals("Test 1: Code is not set", null, cti.getCode());
 		assertEquals("Test 2: Decode is not set", null, cti.getDecode());
 		assertEquals("Test 5: Locale is not set", null, cti.getLocale());
-		assertEquals("Test 6: Validity is not set", null, cti.getIsValid());
+		assertEquals("Test 6: Validity is not set", null, cti.isValid());
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class CodesTableItemTest {
 		assertEquals("Test 1: Code is set", "t1code1", cti.getCode());
 		assertEquals("Test 2: Decode is set", "t1decode1", cti.getDecode());
 		assertEquals("Test 5: Locale is set", locale, cti.getLocale());
-		assertEquals("Test 6: Validity is set", Boolean.TRUE, cti.getIsValid());
+		assertEquals("Test 6: Validity is set", Boolean.TRUE, cti.isValid());
 	}
 
 	/**

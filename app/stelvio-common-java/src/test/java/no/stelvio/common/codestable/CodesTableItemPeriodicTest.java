@@ -31,7 +31,7 @@ public class CodesTableItemPeriodicTest {
 		assertThat(cti.getFromDate(), isNull());
 		assertThat(cti.getToDate(), isNull());
 		assertThat(cti.getLocale(), isNull());
-		assertThat(cti.getIsValid(), isNull());
+		assertThat(cti.isValid(), isNull());
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class CodesTableItemPeriodicTest {
 		assertThat(cti.getFromDate(), eq(date));
 		assertThat(cti.getToDate(), eq(date));
         assertThat(cti.getLocale(), eq(locale));
-		assertThat(cti.getIsValid(), isTrue());
+		assertThat(cti.isValid(), isTrue());
 
 	}
 
