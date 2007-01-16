@@ -32,11 +32,11 @@ public class CodesTableFactoryBean extends AbstractStatelessSessionBean implemen
 		setBeanFactoryLocatorKey("henvendelseService.henvendelseServiceBeanFactory");
 	}
 	
-	public <T extends CodesTableItem> List<T> retrieveCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return codesTableFactory.retrieveCodesTable(codesTableClass);
+	public <T extends CodesTableItem> List<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
+		return codesTableFactory.createCodesTable(codesTableClass);
 	}
 
-	public <T extends CodesTableItemPeriodic> List<T> retrieveCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return codesTableFactory.retrieveCodesTablePeriodic(codesTableClass);
+	public <T extends CodesTableItemPeriodic> List<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
+		return codesTableFactory.createCodesTablePeriodic(codesTableClass);
 	}
 }
