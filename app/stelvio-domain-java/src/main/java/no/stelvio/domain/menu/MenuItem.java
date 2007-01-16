@@ -22,15 +22,16 @@ import javax.persistence.Table;
 /**
  * Class represent a MenuItem.
  * Instances of this class are Java Persistence API Entities,
- * and may be persisted by any ORM that support JPA Annotations table mapping.
+ * and may be persisted by any ORM product that support JPA Annotations table mapping.
  * 
- * @author person4f9bc5bd17cc, Accenture
+ * @author person4f9bc5bd17cc (Accenture)
+ * @author person983601e0e117 (Accenture)
  * @version $id$
  */
 @NamedQueries({
 	@NamedQuery(name="MenuItem.findParents", query="SELECT m FROM MenuItem m WHERE m.parent is null")
 })
-@Entity(name="MenuItem")
+@Entity
 @Table(name="MENYVALG")
 public class MenuItem implements Serializable {
 
@@ -61,9 +62,9 @@ public class MenuItem implements Serializable {
 	 * List of menuItemPermissions this menu is a part of.
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="PERMISSION_MENU",
-		joinColumns=@JoinColumn(name="MENU_ITEM_ID"),
-		inverseJoinColumns=@JoinColumn(name="MENU_PERMISSION_ID")
+	@JoinTable(name="MMT_KOBLING",
+		joinColumns=@JoinColumn(name="MENYVALG_ID"),
+		inverseJoinColumns=@JoinColumn(name="MENYVALG_TLGNG_ID")
 	)
 	private List<MenuItemPermission> menuItemPermissions = new ArrayList<MenuItemPermission>();
 	
@@ -71,28 +72,28 @@ public class MenuItem implements Serializable {
 	 * List of menuItemScreens this menu is a part of.
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="SCREEN_MENU",
-		joinColumns=@JoinColumn(name="MENU_ITEM_ID"),
-		inverseJoinColumns=@JoinColumn(name="MENU_SCREEN_ID")
+	@JoinTable(name="MMS_KOBLING",
+		joinColumns=@JoinColumn(name="MENYVALG_ID"),
+		inverseJoinColumns=@JoinColumn(name="MENYVALG_SKJERM_ID")
 	)
 	private List<MenuItemScreen> menuItemScreens = new ArrayList<MenuItemScreen>();
 	
 	/**
 	 * The name of the flow to execute when clicking the menuitem.
 	 */
-	@Column(name="FLOW_NAME")
+	@Column(name="FLYTNAVN")
 	private String flowName;
 	
 	/**
 	 * The sortingorder of the menuitem.
 	 */
-	@Column(name="ORDER")
+	@Column(name="SORTERING_ORD")
 	private int order;
 	
 	/**
 	 * The text to display.
 	 */
-	@Column(name="LEAD_TEXT")
+	@Column(name="LEDETEKST")
 	private String leadtext;
 	
 	/**
@@ -103,17 +104,20 @@ public class MenuItem implements Serializable {
 	/**
 	 * Constructs a new MenuItem
 	 * @param menuId uniquely identifies this menu item
-	 * @param parent this menu items parent <code>null</code> 
+	 * @param parent this menu items parent, <code>null</code> if this is a toplevel MenuItem
 	 * @param order the order of this menu item
 	 * @param leadtext the leadtext
 	 */
 	public MenuItem(int menuId, MenuItem parent, int order, String leadtext){
-		
+		this.menuId = menuId;
+		this.parent = parent;
+		this.order = order;
+		this.leadtext = leadtext;
 	}
 	
 	/**
 	 * Gets the menu items children
-	 * @return the list of children MenuItem objects.
+	 * @return the list of children MenuItem objects, empty list if this MenuItem is a leaf.
 	 */
 	public List<MenuItem> getChildren() {
 		return children;

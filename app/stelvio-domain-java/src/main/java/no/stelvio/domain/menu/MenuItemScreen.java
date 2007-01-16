@@ -16,14 +16,15 @@ import javax.persistence.Transient;
 /**
  * Class represent a MenuItemScreen.
  * Instances of this class are Java Persistence API Entities,
- * and may be persisted by any ORM that support JPA Annotations table mapping.
+ * and may be persisted by any ORM product that support JPA Annotations table mapping.
  * 
  * @author person4f9bc5bd17cc, Accenture
+ * @author person983601e0e117 (Accenture)
  * @version $id$
  */
 
-@Entity(name="MenuItemScreen")
-@Table(name="MENU_SCREEN")
+@Entity
+@Table(name="MENYVALG_SKJERM")
 public class MenuItemScreen implements Serializable {
 
 	@Transient
@@ -32,7 +33,7 @@ public class MenuItemScreen implements Serializable {
 	/**
 	 * The primary key.
 	 */
-	@Column(name="MENU_SCREEN_ID")
+	@Column(name="MENYVALG_SKJERM_ID")
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private long screenId;
 	
@@ -45,7 +46,7 @@ public class MenuItemScreen implements Serializable {
 	/**
 	 * The name of the screen.
 	 */
-	@Column(name="NAME")
+	@Column(name="NAVN")
 	private String name;
 
 	/**
