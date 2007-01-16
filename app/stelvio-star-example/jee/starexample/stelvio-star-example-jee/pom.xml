@@ -43,9 +43,7 @@
 						</goals>
 						<configuration>
 							<includeType>ejb</includeType>
-							<outputDirectory>
-								${basedir}/
-							</outputDirectory>
+							<outputDirectory>${basedir}/</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
