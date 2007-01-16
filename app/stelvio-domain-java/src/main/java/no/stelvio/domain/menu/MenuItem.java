@@ -1,6 +1,7 @@
 package no.stelvio.domain.menu;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,7 +31,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="MenuItem.findParents", query="SELECT m FROM MenuItem m WHERE m.parent is null")
 })
 @Entity(name="MenuItem")
-@Table(name="MENU_ITEM")
+@Table(name="MENYVALG")
 public class MenuItem implements Serializable {
 
 
@@ -40,8 +41,8 @@ public class MenuItem implements Serializable {
 	 * The primary key.
 	 */
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="MENU_ITEM_ID")
-	private int menuId;
+	@Column(name="MENYVALG_ID")
+	private long menuId;
 	
 	/**
 	 * Parent menu object, <code>null</code> if it's a root menuitem.
@@ -54,7 +55,7 @@ public class MenuItem implements Serializable {
 	 * List of child MenuItem objects.
 	 */
 	@OneToMany(mappedBy="parent", fetch=FetchType.EAGER)
-	private List<MenuItem> children;
+	private List<MenuItem> children = new ArrayList<MenuItem>();
 	
 	/**
 	 * List of menuItemPermissions this menu is a part of.
@@ -64,7 +65,7 @@ public class MenuItem implements Serializable {
 		joinColumns=@JoinColumn(name="MENU_ITEM_ID"),
 		inverseJoinColumns=@JoinColumn(name="MENU_PERMISSION_ID")
 	)
-	private List<MenuItemPermission> menuItemPermissions;
+	private List<MenuItemPermission> menuItemPermissions = new ArrayList<MenuItemPermission>();
 	
 	/**
 	 * List of menuItemScreens this menu is a part of.
@@ -74,7 +75,7 @@ public class MenuItem implements Serializable {
 		joinColumns=@JoinColumn(name="MENU_ITEM_ID"),
 		inverseJoinColumns=@JoinColumn(name="MENU_SCREEN_ID")
 	)
-	private List<MenuItemScreen> menuItemScreens;
+	private List<MenuItemScreen> menuItemScreens = new ArrayList<MenuItemScreen>();
 	
 	/**
 	 * The name of the flow to execute when clicking the menuitem.
@@ -146,7 +147,7 @@ public class MenuItem implements Serializable {
 	 * Gets menu idd
 	 * @return the menuId.
 	 */
-	public int getMenuId() {
+	public long getMenuId() {
 		return menuId;
 	}
 	
@@ -176,7 +177,7 @@ public class MenuItem implements Serializable {
 	
 	/**
 	 * Gets parent
-	 * @return the parent MenuItem object.
+	 * @return the parent MenuItem object, <code>null</code> if <code>this</code> is a root menu item
 	 */
 	public MenuItem getParent() {
 		return parent;

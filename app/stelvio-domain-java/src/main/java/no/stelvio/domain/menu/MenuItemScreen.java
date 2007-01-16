@@ -1,6 +1,7 @@
 package no.stelvio.domain.menu;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -33,13 +34,13 @@ public class MenuItemScreen implements Serializable {
 	 */
 	@Column(name="MENU_SCREEN_ID")
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private int screenId;
+	private long screenId;
 	
 	/**
 	 * A list of MenuItem objects that are a part of this screen.
 	 */
 	@ManyToMany(mappedBy="screens")
-	private List<MenuItem> menuItems;
+	private List<MenuItem> menuItems = new ArrayList<MenuItem>();
 	
 	/**
 	 * The name of the screen.
@@ -66,7 +67,7 @@ public class MenuItemScreen implements Serializable {
 	 * Gets screen id
 	 * @return the screenId
 	 */
-	public int getScreenId() {
+	public long getScreenId() {
 		return screenId;
 	}
 

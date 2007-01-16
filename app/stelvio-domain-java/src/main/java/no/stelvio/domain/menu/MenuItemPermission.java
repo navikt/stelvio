@@ -1,6 +1,7 @@
 package no.stelvio.domain.menu;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -31,13 +32,13 @@ public class MenuItemPermission implements Serializable {
 	 */
 	@Column(name="MENU_PERMISSION_ID")
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private int permissionId;
+	private long permissionId;
 	
 	/**
 	 * A list of MenuItem objects that are a part of this permission.
 	 */
 	@ManyToMany(mappedBy="permissions")
-	private List<MenuItem> menuItems;
+	private List<MenuItem> menuItems = new ArrayList<MenuItem>();
 	
 	/**
 	 * The name of the role.
@@ -102,7 +103,7 @@ public class MenuItemPermission implements Serializable {
 	 * Gets the permission id
 	 * @return the permissionId.
 	 */
-	public int getPermissionId() {
+	public long getPermissionId() {
 		return permissionId;
 	}
 
