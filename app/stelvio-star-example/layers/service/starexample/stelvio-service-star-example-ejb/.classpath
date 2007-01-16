@@ -15,7 +15,7 @@
 	<classpathentry kind="var" path="M2_REPO/qdox/qdox/1.5/qdox-1.5.jar"/>
 	<classpathentry kind="var" path="M2_REPO/jgroups/jgroups-all/2.2.8/jgroups-all-2.2.8.jar"/>
 	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.4/dom4j-1.4.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/1.2.6/spring-aop-1.2.6.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/2.0.1/spring-aop-2.0.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.8/log4j-1.2.8.jar"/>
 	<classpathentry kind="var" path="M2_REPO/jboss/javassist/3.0/javassist-3.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar"/>
@@ -63,5 +63,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/2.0/spring-context-2.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/javax/transaction/jta/1.0.1B/jta-1.0.1B.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/acegisecurity/acegi-security-tiger/1.0.0/acegi-security-tiger-1.0.0.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-repository-star-example-java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
