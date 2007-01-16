@@ -49,9 +49,9 @@ public class DefaultCodesTableManagerTest {
 
 		//Mock CodesTableManger's methods
 		context.expects(new InAnyOrder() {{
-			one(codesTableFactory).retrieveCodesTable((Class<CodesTableItem>) with(IsAnything.anything()));
+			one(codesTableFactory).createCodesTable((Class<CodesTableItem>) with(IsAnything.anything()));
 			will(returnValue(codesTableItems));
-			one(codesTableFactory).retrieveCodesTablePeriodic((Class<CodesTableItemPeriodic>) with(IsAnything.anything()));
+			one(codesTableFactory).createCodesTablePeriodic((Class<CodesTableItemPeriodic>) with(IsAnything.anything()));
 			will(returnValue(codesTableItemPeriodics));
 		}});
 

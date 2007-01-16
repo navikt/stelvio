@@ -28,7 +28,7 @@ public interface CodesTableFactory{
 	 * @throws no.stelvio.common.codestable.CodesTableNotFoundException - exception thrown when a <code>CodesTable</code> couldn't be retrieved from the database.
 	 */
 	@Cacheable(modelId = "persistent")
-	<T extends CodesTableItem> List<T> retrieveCodesTable(Class<T> codesTable)
+	<T extends CodesTableItem> List<T> createCodesTable(Class<T> codesTable)
 		throws CodesTableNotFoundException;
 	
 	/**
@@ -42,6 +42,6 @@ public interface CodesTableFactory{
 	 * @throws CodesTableNotFoundException - exception thrown when a codestable couldn't be retrieved from the database.
 	 */
 	@Cacheable(modelId = "persistent")
-	<T extends CodesTableItemPeriodic> List<T> retrieveCodesTablePeriodic(Class<T> codesTablePeriodic)
+	<T extends CodesTableItemPeriodic> List<T> createCodesTablePeriodic(Class<T> codesTablePeriodic)
 		throws CodesTableNotFoundException;
 }

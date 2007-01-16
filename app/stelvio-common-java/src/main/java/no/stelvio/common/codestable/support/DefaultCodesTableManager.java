@@ -25,7 +25,7 @@ public class DefaultCodesTableManager implements CodesTableManager {
         validateCodesTableClass(codesTableItem);
 
         CodesTable<T> codesTable = (CodesTable<T>) new DefaultCodesTable();
-        List<T> codesTableItems = codesTableFactory.retrieveCodesTable(codesTableItem);
+        List<T> codesTableItems = codesTableFactory.createCodesTable(codesTableItem);
 
         for(T ct : codesTableItems){
 			codesTable.addCodesTableItem(ct);
@@ -43,7 +43,7 @@ public class DefaultCodesTableManager implements CodesTableManager {
 		validateCodesTablePeriodicClass(codesTableItem);
 		
 		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new DefaultCodesTablePeriodic();
-        List<T> codesTableItems = codesTableFactory.retrieveCodesTablePeriodic(codesTableItem);
+        List<T> codesTableItems = codesTableFactory.createCodesTablePeriodic(codesTableItem);
 
         for(T ctp : codesTableItems){
 			codesTablePeriodic.addCodesTableItem(ctp);
