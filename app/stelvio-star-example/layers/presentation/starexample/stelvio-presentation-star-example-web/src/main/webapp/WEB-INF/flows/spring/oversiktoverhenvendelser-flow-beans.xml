@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
-	"http://www.springframework.org/dtd/spring-beans.dtd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-<!-- TODO use xsd -->
 <!-- TODO check if jsf- and/or swf-scopes can be used -->
-<beans>
 	<!-- bean id="oversiktOverHenvendelserForm" class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserForm" singleton="false"/ -->
 	<bean id="oversiktOverHenvendelserAction" class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserAction">
 		<property name="formObjectName" value="oversiktOverHenvendelserForm"/>
