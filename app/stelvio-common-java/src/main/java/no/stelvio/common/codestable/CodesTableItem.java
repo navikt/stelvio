@@ -27,7 +27,7 @@ public abstract class CodesTableItem extends AbstractCodesTableItem {
 	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
 	 */
-	public CodesTableItem(String code, String decode, Locale locale, Boolean isValid){
+	public CodesTableItem(String code, String decode, Locale locale, boolean isValid){
 		super(code, decode, locale, isValid);
 	}
 	

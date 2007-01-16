@@ -23,7 +23,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	private Locale locale;
 	
 	/** Defines the validity of a codestableitem. */
-	private Boolean isValid;
+	private boolean isValid;
 		
 	/**
 	 * Constructor for <code>AbstractCodesTableItem</code>. Only available to subclasses.
@@ -39,7 +39,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
 	 */
-	protected AbstractCodesTableItem(String code, String decode, Locale locale, Boolean isValid){
+	protected AbstractCodesTableItem(String code, String decode, Locale locale, boolean isValid){
 		this.code = code;
 		this.decode = decode;
 		this.locale = locale;

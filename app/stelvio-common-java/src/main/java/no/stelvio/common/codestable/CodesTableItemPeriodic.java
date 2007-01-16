@@ -36,7 +36,7 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
 	 */
-	public CodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Locale locale, Boolean isValid){
+	public CodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean isValid){
 		super(code, decode, locale, isValid);
 		this.fromDate = fromDate;
 		this.toDate = toDate;
