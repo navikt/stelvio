@@ -84,7 +84,7 @@
 	<classpathentry kind="var" path="M2_REPO/wsdl4j/wsdl4j/1.5.2/wsdl4j-1.5.2.jar"/>
 	<classpathentry kind="lib" path="C:/apps/Java/jdk1.5.0_09/lib/tools.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/ws/commons/XmlSchema/1.1/XmlSchema-1.1.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/2.0/spring-aop-2.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/2.0.1/spring-aop-2.0.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-domain-star-example-java"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-service-star-example-ejb"/>
