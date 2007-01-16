@@ -1,7 +1,7 @@
 package no.stelvio.service.menu.support;
 
-import java.util.List;
-
+import no.stelvio.common.transferobject.EntityListResponse;
+import no.stelvio.common.transferobject.support.DefaultEntityListResponse;
 import no.stelvio.domain.menu.MenuItem;
 import no.stelvio.repository.menu.MenuRepository;
 import no.stelvio.service.menu.MenuService;
@@ -10,7 +10,7 @@ import no.stelvio.service.menu.MenuService;
  * Menu service implementation of the {@link MenuService} business interface.
  * 
  * @author person4f9bc5bd17cc, Accenture
- * @version $Id$ 
+ * @version $Id$
  */
 public class DefaultMenuService implements MenuService {
 	private MenuRepository menuRepository;
@@ -20,8 +20,9 @@ public class DefaultMenuService implements MenuService {
 	 * 
 	 * @return List of all the menu items.
 	 */
-	public List<MenuItem> getMenuItems() {
-		return menuRepository.getParents();
+	public EntityListResponse<MenuItem> getMenuItems() {
+		return new DefaultEntityListResponse<MenuItem>(menuRepository
+				.getParents());
 	}
 
 	/**

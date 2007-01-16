@@ -1,7 +1,6 @@
 package no.stelvio.service.menu;
 
-import java.util.List;
-
+import no.stelvio.common.transferobject.EntityListResponse;
 import no.stelvio.domain.menu.MenuItem;
 
 /**
@@ -34,5 +33,5 @@ public interface MenuService {
 	 * 
 	 * @return A list of all menu items for the application.
 	 */
-	public List<MenuItem> getMenuItems();
+	public EntityListResponse<MenuItem> getMenuItems();
 }
