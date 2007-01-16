@@ -26,7 +26,7 @@ public class StartAction extends MultiAction {
 	public Event executeSearch(RequestContext context)
 	{
 		log.debug( "--------------executeSearch-----------" );
-		log.debug("test: " + codesTableFactory.retrieveCodesTable(CodesTableItem.class));
+		log.debug("test: " + codesTableFactory.createCodesTable(CodesTableItem.class));
 		StartForm form =
             (StartForm)context.getFlowScope().get("startForm");
 		log.debug( "form.getSaksbehandlernr(): " + form.getSaksbehandlernr() );
