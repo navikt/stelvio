@@ -88,7 +88,7 @@
 			<url>scp://maven.adeo.no/var/maven2/internal</url>
 		</repository>
 		<snapshotRepository>
-			<id>nav-pensjon-maven2-snapshot-repo</id>
+			<id>nav-maven2-pensjon-snapshot-repo</id>
 			<name>NAV Maven2 Internal Snapshot Repository</name>
 			<url>scp://10.3.32.41/var/maven2/snapshot</url>
 		</snapshotRepository>
