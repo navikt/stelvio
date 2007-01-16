@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
-	"http://www.springframework.org/dtd/spring-beans.dtd">
-
-
-<beans>
-                       
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
                        
 <!-- Application context definition -->
 
@@ -17,15 +15,15 @@
   		<property name="basename" value="resources" />
 	</bean>
 
-	<bean class="no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO" id="saksbehandler" singleton="false"/>
+	<bean class="no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO" id="saksbehandler" scope="prototype"/>
 
-	<bean class="no.nav.presentation.pensjon.saksbehandling.form.StartForm" id="startForm" singleton="false"/>
+	<bean class="no.nav.presentation.pensjon.saksbehandling.form.StartForm" id="startForm" scope="prototype"/>
 
  	<bean class="no.nav.presentation.pensjon.saksbehandling.action.SokePersonAction" id="sokePersonAction" name="no.nav.presentation.pensjon.saksbehandling.action.SokePersonAction">
   		<property name="personService" ref="personServiceMock"/>
  	</bean>
  	
- 	<bean class="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm" id="sokePersonForm" singleton="false" />
+ 	<bean class="no.nav.presentation.pensjon.saksbehandling.form.SokePersonForm" id="sokePersonForm" scope="prototype"/>
  	
  	
  	<!-- common action classes -->
@@ -41,7 +39,7 @@
   		<property name="henvendelsesService" ref="henvendelsServiceMock"/>
  	</bean>
  	
- 	<bean class="no.nav.presentation.pensjon.saksbehandling.form.HentPersonForm" id="hentPersonForm" singleton="false" />
+ 	<bean class="no.nav.presentation.pensjon.saksbehandling.form.HentPersonForm" id="hentPersonForm" scope="prototype"/>
   
   
  <!-- Creates the registry of flow definitions for this application. -->
@@ -95,8 +93,8 @@
   <!-- property name="repositoryFactory" ref="repositoryFactory" / -->
  </bean>
  
- <bean id="asdf" class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
- 	<property name="jndiName" value="ejb/Ctf"/>
+ <bean id="ctf" class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
+ 	<property name="jndiName" value="ejb/CodesTableFactory"/>
  	<property name="businessInterface" value="no.stelvio.common.codestable.factory.CodesTableFactory"/>
  </bean> 
  
