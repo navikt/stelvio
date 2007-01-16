@@ -57,6 +57,21 @@
             <artifactId>ajax4jsf</artifactId>
             <version>1.0.3</version>
         </dependency>
+    	<dependency>
+            <groupId>com.opensymphony</groupId>
+            <artifactId>oscache</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+    	<dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>el</artifactId>
+            <version>1.0</version>
+        </dependency>
+    	<dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>el-sun</artifactId>
+            <version>1.0</version>
+        </dependency>
 		<dependency>
 			<artifactId>spring-modules-validation</artifactId>
 			<groupId>org.springmodules</groupId>
