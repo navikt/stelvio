@@ -31,8 +31,7 @@ public class MockTransactionTemplate extends TransactionTemplate {
 	 * Sets the expected number of times a method on TransactinStatus should be called. Use the returned value to set
 	 * the expected method.
 	 *
-	 * @param invocationMatcher a matcher for setting how many times a method should be called.
-     * @todo fix javadoc
+	 * @param builder a matcher for setting how many times a method should be called.
      * @todo don't need an expect method especially for TransactionStatus; doesn't give anything
 	 */
 	public void expectsOnTransactionStatus(ExpectationGroupBuilder builder) {
@@ -49,29 +48,50 @@ public class MockTransactionTemplate extends TransactionTemplate {
 	 * @see org.springframework.transaction.support.TransactionCallbackWithoutResult
 	 * @see TransactionStatus
 	 * @see TransactionTemplate#execute(org.springframework.transaction.support.TransactionCallback)
+	 * @throws TransactionException if the transaction fails
 	 */
 	public Object execute(TransactionCallback action) throws TransactionException {
 		return action.doInTransaction(proxyTransactionStatus);
 	}
 
+
+	/**
+	 * Method to set the transactionManager
+	 * @param transactionManager the TransactionManager to set
+	 */
 	public void setTransactionManager(PlatformTransactionManager transactionManager) {
 		throwUnsupportedOperationException();
 	}
 
+	/**
+	 * Method to get the TransactionManager
+	 * @return PlatformTransactionManager
+	 */
 	public PlatformTransactionManager getTransactionManager() {
 		throwUnsupportedOperationException();
         // Will never get here
         return null;
     }
 
+	/**
+	 * Mocked method, will throw an exception if it is invoced
+	 */
 	public void afterPropertiesSet() {
 		throwUnsupportedOperationException();
 	}
 
+	/**
+	 * Private helper method to throw an UnsupportedOperationException
+	 *
+	 */
 	private void throwUnsupportedOperationException() {
 		throw new UnsupportedOperationException("Should not be executed");
 	}
 
+	/***
+	 * Verifies that the template is used correctly.
+	 *
+	 */
 	public void verify() {
 		context.assertIsSatisfied();
 	}
