@@ -1,4 +1,4 @@
-package no.stelvio.common.test.spring.transaction;
+package no.stelvio.test.spring.transaction;
 
 import org.jmock.InAnyOrder;
 import org.junit.After;

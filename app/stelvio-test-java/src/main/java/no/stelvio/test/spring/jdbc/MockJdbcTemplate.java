@@ -1,4 +1,4 @@
-package no.stelvio.common.test.spring.jdbc;
+package no.stelvio.test.spring.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
