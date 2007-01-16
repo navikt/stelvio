@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1166601052171" virtualHostName="default_host">
+<webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:common="common.xmi" xmlns:webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1166601052171" virtualHostName="default_host">
   <webapp href="WEB-INF/web.xml#WebApp_ID"/>
+  <ejbRefBindings xmi:id="EjbRefBinding_1168904399031" jndiName="ejb/Ctf">
+    <bindingEjbRef xmi:type="common:EJBLocalRef" href="WEB-INF/web.xml#EJBLocalRef_1168904399031"/>
+  </ejbRefBindings>
 </webappbnd:WebAppBinding>

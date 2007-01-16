@@ -92,4 +92,13 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 	</filter-mapping>
+	<ejb-local-ref id="EJBLocalRef_1168904399031">
+		<description>
+		</description>
+		<ejb-ref-name>ejb/CodesTableFactory</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>no.nav.service.pensjon.CodesTableFactoryLocalHome</local-home>
+		<local>no.nav.service.pensjon.CodesTableFactoryLocal</local>
+		<ejb-link>stelvio-service-star-example-ejb.jar#CodesTableFactory</ejb-link>
+	</ejb-local-ref>
 </web-app>
