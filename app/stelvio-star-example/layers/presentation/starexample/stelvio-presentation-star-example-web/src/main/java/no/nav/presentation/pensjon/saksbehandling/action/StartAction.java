@@ -6,7 +6,11 @@ import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.SaksbehandlerService;
 import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 import no.nav.service.pensjon.person.exception.PersonNotFoundException;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.factory.CodesTableFactory;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.webflow.action.MultiAction;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
@@ -14,17 +18,19 @@ import org.springframework.webflow.execution.RequestContext;
 
 public class StartAction extends MultiAction {
 	private SaksbehandlerService saksbehandlerService;
+	private CodesTableFactory codesTableFactory;
+	private static final Log log = LogFactory.getLog(StartAction.class);
 	
 	SaksbehandlerDO saksbehandler;
 	
 	public Event executeSearch(RequestContext context)
 	{
-		System.out.println( "--------------executeSearch-----------" );
-		
+		log.debug( "--------------executeSearch-----------" );
+		log.debug("test: " + codesTableFactory.retrieveCodesTable(CodesTableItem.class));
 		StartForm form =
             (StartForm)context.getFlowScope().get("startForm");
-		System.out.println( "form.getSaksbehandlernr(): " + form.getSaksbehandlernr() );
-		System.out.println( "saksbehandlerService = " + saksbehandlerService );
+		log.debug( "form.getSaksbehandlernr(): " + form.getSaksbehandlernr() );
+		log.debug( "saksbehandlerService = " + saksbehandlerService );
 		try {
 			saksbehandler = saksbehandlerService.readSaksbehandler(form.getSaksbehandlernr());
 		} catch (PersonNotFoundException e) {
@@ -35,11 +41,11 @@ public class StartAction extends MultiAction {
 			e.printStackTrace();
 		}
 		
-		System.out.println( "saksbehandler = " + saksbehandler );
+		log.debug( "saksbehandler = " + saksbehandler );
 		//context.getFlowScope().put( "saksbehandlerDO", saksbehandler);
 		context.getExternalContext().getSessionMap().put("saksbehandlerDO", saksbehandler);
 		
-		System.out.println( "-------------- end executeSearch-----------" );
+		log.debug( "-------------- end executeSearch-----------" );
 		return success();
 	}
 
@@ -51,9 +57,9 @@ public class StartAction extends MultiAction {
 		this.saksbehandlerService = saksbehandlerService;
 	}
 
-
-	
-	
+	public void setCodesTableFactory(CodesTableFactory codesTableFactory) {
+		this.codesTableFactory = codesTableFactory;
+	}
 	
 	
 }
