@@ -41,7 +41,7 @@ public abstract class CodesTableItem extends AbstractCodesTableItem {
 			.append("code", getCode())
 			.append("decode", getDecode())
 			.append("locale", getLocale())
-			.append("isValid", getIsValid())
+			.append("isValid", isValid())
 			.toString();
 	}
 }

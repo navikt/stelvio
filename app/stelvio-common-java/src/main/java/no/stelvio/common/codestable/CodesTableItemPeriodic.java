@@ -90,7 +90,7 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 			.append("locale", getLocale())
 			.append("validFrom", getFromDate())
 			.append("validTo", getToDate())
-			.append("isValid", getIsValid())
+			.append("isValid", isValid())
 			.toString();
 	}
 }
