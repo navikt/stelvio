@@ -35,6 +35,151 @@
 		</developer>
 	</developers>
 
+<<<<<<< .mine
+    <scm>
+        <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/</connection>
+        <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://versjonskontroll.adeo.no/viewsvn/?root=stelvio</url>
+    </scm>
+    <dependencies>
+        <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>hibernate</groupId>
+            <artifactId>hibernate</artifactId>
+            <version>3.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-api</artifactId>
+            <version>0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-generator</artifactId>
+            <version>0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-integration</artifactId>
+            <version>0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock2</artifactId>
+            <version>0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock2-nonstd</artifactId>
+            <version>0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock2-junit3</artifactId>
+            <version>0.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <distributionManagement>
+        <repository>
+            <id>nav-maven2-internal-repo</id>
+            <name>NAV Maven2 Internal Repository</name>
+            <url>scp://maven.adeo.no/var/maven2/internal</url>
+        </repository>
+        <snapshotRepository>
+            <id>nav-pensjon-maven2-snapshot-repo</id>
+            <name>NAV Maven2 Internal Snapshot Repository</name>
+            <url>scp://10.3.32.41/var/maven2/snapshot</url>
+        </snapshotRepository>
+        <site>
+            <id>website</id>
+            <url>scp://10.33.1.53/var/www/html/project/</url>
+        </site>
+    </distributionManagement>
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
+		 <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jxr-plugin</artifactId>
+		</plugin>
+		<plugin> 
+			<artifactId>maven-checkstyle-plugin</artifactId> 
+			<configuration>
+				<configLocation>http://confluence.adeo.no/download/attachments/12007/nav_checkstyle.xml</configLocation>
+			</configuration>
+		</plugin> 
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+=======
 	<scm>
 		<connection>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/
@@ -95,6 +240,7 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib-nodep</artifactId>
+>>>>>>> .r836
 			<version>2.1</version>
 		</dependency>
 		<dependency>
