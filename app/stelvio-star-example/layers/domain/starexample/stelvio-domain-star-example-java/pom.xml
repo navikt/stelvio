@@ -18,7 +18,7 @@
   <dependencies>
     <dependency>
       <groupId>no.stelvio</groupId>
-      <artifactId>stelvio-common-java</artifactId>
+      <artifactId>stelvio-domain-java</artifactId>
       <version>1.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
