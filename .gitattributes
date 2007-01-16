@@ -256,6 +256,11 @@ app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemPermission.
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemScreen.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/person/Pid.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/person/PidValidationException.java -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/Area.java -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/Responsible.java -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/Saksbehandler.java -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/Task.java -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/TaskType.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/tasklist/Area.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/tasklist/Responsible.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/tasklist/Saksbehandler.java -text
