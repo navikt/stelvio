@@ -2,147 +2,99 @@
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="stelvio-star-example-jee">
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
-        <dependent-module deploy-path="/" handle="module:/resource/TestEj/TestEj">
-            <dependent-object>EjbModule_1168529464812</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/acegi-security-1.0.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/acegi-security-tiger-1.0.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/aopalliance-1.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/asm-1.4.3.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/avalon-framework-4.1.3.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/cglib-nodep-2.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/commons-attributes-api-2.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/commons-attributes-compiler-2.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/commons-beanutils-1.6.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/commons-codec-1.3.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/commons-collections-3.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/commons-lang-2.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/commons-logging-1.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/dom4j-1.4.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/ehcache-1.2.3.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/hibernate-3.0.5.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/isorelax-20020414.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/javassist-3.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/jaxen-1.0-FCS.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/log4j-1.2.12.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/msv-20020414.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/mx4j-jmx-3.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/oro-2.0.8.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/persistence-api-1.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/relaxngDatatype-20020414.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/saxpath-1.0-FCS.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/servlet-api-2.3.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-aop-2.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-beans-2.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-context-2.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-core-2.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-dao-2.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-jdbc-1.2.7.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-jpa-2.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-mock-2.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-modules-cache-0.6.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-remoting-2.0.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-support-1.2.7.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-web-2.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/spring-webmvc-2.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/stelvio-common-java-1.0.1-SNAPSHOT.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/stelvio-domain-star-example-java-1.0.0-SNAPSHOT.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/stelvio-service-star-example-ejb-1.0.0-SNAPSHOT.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/toplink-essentials-1.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/E:/ws/stelvio-star-example-jee/xml-apis-1.0.b2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module deploy-path="/" handle="module:/resource/stelvio-presentation-star-example-web/stelvio-presentation-star-example-web">
             <dependent-object>WebModule_1168542486796</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/resource/stelvio-service-star-example-ejb/stelvio-service-star-example-ejb">
+            <dependent-object>EjbModule_1168890021890</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/acegi-security-1.0.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/acegi-security-tiger-1.0.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/aopalliance-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/cglib-nodep-2.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/commons-beanutils-1.6.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/commons-codec-1.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/commons-collections-2.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/commons-lang-2.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/commons-logging-1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/dom4j-1.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/ehcache-1.2.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/isorelax-20020414.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/javassist-3.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/jaxen-1.0-FCS.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/log4j-1.2.12.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/msv-20020414.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/oro-2.0.8.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/persistence-api-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/relaxngDatatype-20020414.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/saxpath-1.0-FCS.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/spring-aop-2.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/spring-beans-2.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/spring-context-2.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/spring-core-2.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/spring-modules-cache-0.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/spring-remoting-2.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/stelvio-common-java-1.0.1-SNAPSHOT.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/stelvio-domain-java-1.0.1-SNAPSHOT.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/stelvio-domain-star-example-java-1.0.0-SNAPSHOT.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
