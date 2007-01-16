@@ -1,24 +1,12 @@
 package no.stelvio.common.transferobject;
 
-import java.io.Serializable;
-
-import no.stelvio.common.context.RequestContext;
-
-
 /**
- * Business requests are serializable and (may) contain a ContextContainer.
+ * Marker interface for service requests.
  * 
  * @author personff564022aedd
+ * @author person15754a4522e7
+ * @version $Id$
  */
-public interface ServiceRequest extends Serializable {
-	
-	/**
-	 * @return {@link ContextContainer}
-	 */
-	ContextContainer getContextContainer();
-	
-	/**
-	 * @param contextContainer {@link RequestContext}
-	 */
-	void setContextContainer(ContextContainer contextContainer);
+public interface ServiceRequest extends TransferObject {
+
 }

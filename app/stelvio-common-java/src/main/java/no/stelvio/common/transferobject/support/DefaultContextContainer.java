@@ -10,6 +10,7 @@ import no.stelvio.common.transferobject.ContextContainer;
  * 
  * @author personff564022aedd
  * @deprecated Use {@link RequestContext}.
+ * @version $Id$
  */
 public class DefaultContextContainer implements ContextContainer {
 
@@ -17,14 +18,19 @@ public class DefaultContextContainer implements ContextContainer {
 	 * Serial version UID.
 	 */
 	private static final long serialVersionUID = 3882317926393219867L;
-	
+
 	private Locale locale;
+
 	private String moduleId;
+
 	private String processId;
+
 	private String screenId;
+
 	private String transactionId;
+
 	private String userId;
-	
+
 	/**
 	 * {@inheritDoc ContextContainer#getLocale()()}
 	 */
