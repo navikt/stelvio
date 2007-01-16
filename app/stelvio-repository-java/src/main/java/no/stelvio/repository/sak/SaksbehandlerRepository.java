@@ -1,4 +1,4 @@
-package no.stelvio.repository.tasklist;
+package no.stelvio.repository.sak;
 
 import java.util.List;
 
