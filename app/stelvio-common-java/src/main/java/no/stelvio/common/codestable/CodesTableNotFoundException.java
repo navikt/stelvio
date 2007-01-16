@@ -2,6 +2,9 @@ package no.stelvio.common.codestable;
 
 import java.text.MessageFormat;
 
+import no.stelvio.common.codestable.support.AbstractCodesTableItem;
+import no.stelvio.common.codestable.support.CodesTableException;
+
 /**
  * Exception thrown when a <code>CodesTable</code> or <code>CodesTablePeriodic</code>
  * cannot be retrieved.

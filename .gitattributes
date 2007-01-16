@@ -21,10 +21,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterce
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/support/DefaultCacheManagement.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/AbstractCodesTableItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTable.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableConfigurationException.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItemPeriodic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManager.java -text
@@ -36,6 +34,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/Codes
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/CodesTableInitializer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/support/DefaultCodesTableInitializer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/AbstractCodesTableItem.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/CodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/DefaultCodesTable.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/DefaultCodesTableManager.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/DefaultCodesTablePeriodic.java -text

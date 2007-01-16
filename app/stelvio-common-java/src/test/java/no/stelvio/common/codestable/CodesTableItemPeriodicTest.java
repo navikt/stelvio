@@ -19,13 +19,12 @@ import org.junit.Test;
  * @version $Id$
  */
 public class CodesTableItemPeriodicTest {
-	
 	/**
 	 * Test of constructor for CodesTableItem.
 	 */
 	@Test
 	public void testCodesTableItemEmptyConstructor() {
-		CodesTableItemPeriodic cti = new CodesTableItemPeriodic();
+		CodesTableItemPeriodic cti = new Ctip();
 		
 		assertThat(cti.getCode(), isNull());
 		assertThat(cti.getDecode(), isNull());
@@ -40,11 +39,10 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testCodesTableItemConstrutor() {
-		
 		Date date = new Date();
 		Locale locale = new Locale("nb", "NO");
 		
-		CodesTableItemPeriodic cti = new CodesTableItemPeriodic("t1code1", "t1decode1", date, date, locale, Boolean.TRUE);
+		CodesTableItemPeriodic cti = new Ctip("t1code1", "t1decode1", date, date, locale, Boolean.TRUE);
 		
 		assertThat(cti.getCode(), eq("t1code1"));
 		assertThat(cti.getDecode(), eq("t1decode1"));
@@ -56,36 +54,11 @@ public class CodesTableItemPeriodicTest {
 	}
 
 	/**
-	 * Test of CodesTableItem's getters and setters.
-	 */
-	@Test
-	public void testSettersAndGetters() {
-		
-		Date date = new Date();
-		Locale locale = new Locale("nb", "NO");
-		
-		CodesTableItemPeriodic cti = new CodesTableItemPeriodic();
-		cti.setCode("t1code1");
-		cti.setDecode("t1decode1");
-		cti.setFromDate(date);
-		cti.setToDate(date);
-		cti.setLocale(locale);
-		cti.setIsValid(Boolean.TRUE);
-
-        assertThat(cti.getCode(), eq("t1code1"));
-        assertThat(cti.getDecode(), eq("t1decode1"));
-        assertThat(cti.getFromDate(), eq(date));
-        assertThat(cti.getToDate(), eq(date));
-		assertThat(cti.getLocale(), eq(locale));
-		assertThat(cti.getIsValid(), isTrue());
-	}
-
-	/**
 	 * Test toString().
 	 */
 	@Test
 	public void testToString() {
-		CodesTableItemPeriodic cti = new CodesTableItemPeriodic("t1code1", "t1decode1", new Date(), new Date(), new Locale("nb", "NO"), Boolean.TRUE);
+		CodesTableItemPeriodic cti = new Ctip("t1code1", "t1decode1", new Date(), new Date(), new Locale("nb", "NO"), Boolean.TRUE);
 		assertThat(cti.toString(), isNotNull());
 	}
 	
@@ -94,7 +67,6 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testEqualsObject() {
-	
 		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItemPeriodic.getCtip1()), isTrue());
 		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(null), isFalse());
 		assertThat(TestCodesTableItemPeriodic.getCtip1().equals("String"), isFalse());
@@ -110,5 +82,15 @@ public class CodesTableItemPeriodicTest {
 		assertThat(TestCodesTableItemPeriodic.getCtip1().hashCode() == TestCodesTableItemPeriodic.getCtip5().hashCode(),
                 isTrue());
 		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItemPeriodic.getCtip5()), isTrue());
+	}
+
+	/** Used for testing as {@link CodesTableItemPeriodic} cannot be instantiated. */
+	private static class Ctip extends CodesTableItemPeriodic {
+		public Ctip() {
+		}		
+
+		public Ctip(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean isValid) {
+			super(code, decode, fromDate, toDate, locale, isValid);
+		}
 	}
 }

@@ -1,4 +1,4 @@
-package no.stelvio.common.codestable;
+package no.stelvio.common.codestable.support;
 
 import no.stelvio.common.error.SystemUnrecoverableException;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;

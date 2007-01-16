@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import no.stelvio.common.codestable.CodesTableNotFoundException;
+import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 /**
  * @author personf8e9850ed756

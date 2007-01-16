@@ -1,5 +1,8 @@
 package no.stelvio.common.codestable;
 
+import no.stelvio.common.codestable.support.AbstractCodesTableItem;
+import no.stelvio.common.codestable.support.CodesTableException;
+
 /**
  * NotCodesTableException
  * @author personf8e9850ed756

@@ -3,31 +3,32 @@ package no.stelvio.common.codestable;
 import java.util.Date;
 import java.util.Locale;
 
+import no.stelvio.common.codestable.support.AbstractCodesTableItem;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * CodesTableItem represents an item in a <code>CodesTable</code>.
+ * CodesTableItemPeriodic represents an item in a <code>CodesTable</code> with a valid period.
  * 
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTableItemPeriodic extends AbstractCodesTableItem {
-	
-	//The date the item is valid from
+public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
+	/** The date the item is valid from. */
 	private Date fromDate;
 	
-	//The date the item is valid to
+	/** The date the item is valid to. */
 	private Date toDate;
 	
 	/**
-	 * Constructor for <code>CodesTableItemPeriodic</code>.
-     * FIXME why default constructor?
+	 * Constructor for <code>CodesTableItemPeriodic</code>. Only available to subclasses.
 	 */
-	public CodesTableItemPeriodic(){
+	protected CodesTableItemPeriodic(){
 	}
 	
 	/**
 	 * Constructor for an item, initializing all of its attributes.
+	 * 
 	 * @param code the code.
 	 * @param decode the decode.
 	 * @param fromDate the date an item is valid from.
@@ -36,10 +37,7 @@ public class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	 * @param isValid validity of the item.
 	 */
 	public CodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Locale locale, Boolean isValid){
-		this.code = code;
-		this.decode = decode;
-		this.locale = locale;
-		this.isValid = isValid;
+		super(code, decode, locale, isValid);
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 	}

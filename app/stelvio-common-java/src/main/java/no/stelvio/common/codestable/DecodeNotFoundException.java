@@ -1,5 +1,7 @@
 package no.stelvio.common.codestable;
 
+import no.stelvio.common.codestable.support.CodesTableException;
+
 /**
  * Exception thrown when <code>CodesTable</code> or a 
  * <code>CodesTablePeriodic</code> doesn't hold a requested 

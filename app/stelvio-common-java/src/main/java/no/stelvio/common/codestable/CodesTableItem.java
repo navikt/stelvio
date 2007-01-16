@@ -2,6 +2,8 @@ package no.stelvio.common.codestable;
 
 import java.util.Locale;
 
+import no.stelvio.common.codestable.support.AbstractCodesTableItem;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
@@ -10,26 +12,23 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class CodesTableItem extends AbstractCodesTableItem {
-
+public abstract class CodesTableItem extends AbstractCodesTableItem {
 	/**
-	 * Constructor for <code>CodesTableItem</code>.
+	 * Constructor for <code>CodesTableItem</code>. Only available to subclasses.
 	 */
-	public CodesTableItem(){
+	protected CodesTableItem(){
 	}
 	
 	/**
 	 * Constructor for an item, initializing its attributes.
+	 * 
 	 * @param code the code.
 	 * @param decode the decode.
 	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
 	 */
 	public CodesTableItem(String code, String decode, Locale locale, Boolean isValid){
-		this.code = code;
-		this.decode = decode;
-		this.locale = locale;
-		this.isValid = isValid;
+		super(code, decode, locale, isValid);
 	}
 	
 	/**

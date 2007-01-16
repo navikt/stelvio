@@ -1,5 +1,7 @@
 package no.stelvio.common.codestable;
 
+import no.stelvio.common.codestable.support.CodesTableException;
+
 /**
  * Exception thrown when there are problems configuring the codestable 
  * module.
