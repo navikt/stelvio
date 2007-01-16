@@ -14,6 +14,10 @@ public class Task implements Serializable {
 
 	private long taskId;
 	
+	/**
+	 * Constructs a new task
+	 * @param taskId uniquely identifies this task
+	 */
 	public Task(long taskId){
 		this.taskId = taskId;
 	}
