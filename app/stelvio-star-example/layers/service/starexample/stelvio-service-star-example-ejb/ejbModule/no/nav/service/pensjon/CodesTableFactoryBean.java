@@ -22,7 +22,7 @@ public class CodesTableFactoryBean extends AbstractStatelessSessionBean implemen
 	@Override
 	protected void onEjbCreate() throws CreateException {
 		// TODO what should the name of the bean be for stelvio components?
-		codesTableFactory = (CodesTableFactory) getBeanFactory().getBean("frm.codesTableFactory", CodesTableFactory.class);		
+		codesTableFactory = (CodesTableFactory) getBeanFactory().getBean("frm.starexample.codesTableFactory", CodesTableFactory.class);		
 	}
 
 	@Override
