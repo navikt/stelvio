@@ -18,7 +18,7 @@ import java.net.UnknownHostException;
  * 
  * @author person7553f5959484
  * @version $Revision: 916 $ $Author: psa2920 $ $Date: 2004-07-14 08:24:41 +0200 (Wed, 14 Jul 2004) $
- * @todo maybe use UUID inside here?
+ * @deprecated use {@link java.util.UUID} instead.
  */
 public final class SequenceNumberGenerator {
 
@@ -49,6 +49,7 @@ public final class SequenceNumberGenerator {
 	 * Get the next unique id in current sequence.
 	 * 
 	 * @return the next sequence number
+	 * @deprecated use {@link java.util.UUID} instead.
 	 */
 	public static long getNextId() {
 		synchronized (LOCK) {
@@ -62,6 +63,7 @@ public final class SequenceNumberGenerator {
 	 * 
 	 * @param	subsystem name of current sub system
 	 * @return 	the next sequence number
+	 * @deprecated use {@link java.util.UUID} instead.
 	 */
 	public static long getNextId(String subsystem) {
 		if (null == subsystem) {
@@ -78,6 +80,5 @@ public final class SequenceNumberGenerator {
 	 * Enforcing non instabillity using a private constructor.
 	 */
 	private SequenceNumberGenerator() {
-		super();
 	}
 }
