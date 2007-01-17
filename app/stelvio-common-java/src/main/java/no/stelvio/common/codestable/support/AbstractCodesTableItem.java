@@ -52,7 +52,6 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * 
 	 * @param code the code.
 	 * @param decode the decode.
-	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
 	 */
 	protected AbstractCodesTableItem(String code, String decode, boolean isValid){
