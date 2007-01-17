@@ -7,7 +7,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 /**
  * Representation of a batch.
  * 
- * @author person356941106810, Accenture
+ * @author person356941106810 (Accenture)
  * @version $Id: BatchDO.java 2064 2005-03-04 09:18:15Z psa2920 $ 
  */
 public class BatchDO {
