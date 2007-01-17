@@ -16,7 +16,8 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * This class is a MappedSuperclass, meaning that Entities that inherits from this
  * class must map to a table that defines columns set up by this class
  * 
- * @author personb66fa0b5ff6e, Accenture
+ * @author personb66fa0b5ff6e (Accenture)
+ * @author person983601e0e117 (Accenture)
  * @verion $Id$
  */
 @MappedSuperclass
@@ -31,6 +32,8 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	private String decode;
 	
 	/** A codestableitem's locale that represents the country and language the items decode is defined for. */
+	//Not used at the moment, this may change. If it doesn't, remove field
+	@SuppressWarnings("unused")
 	@Transient
 	private Locale locale;
 	
@@ -52,10 +55,9 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
 	 */
-	protected AbstractCodesTableItem(String code, String decode, Locale locale, boolean isValid){
+	protected AbstractCodesTableItem(String code, String decode, boolean isValid){
 		this.code = code;
 		this.decode = decode;
-		this.locale = locale;
 		this.valid = isValid;
 	}
 
@@ -75,15 +77,6 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 */
 	public String getDecode(){
 		return decode;
-	}
-
-	/**
-	 * Returns the locale of this item.
-	 * 
-	 * @return The items locale.
-	 */
-	public Locale getLocale(){
-		return locale;
 	}
 	
 	/**
@@ -117,7 +110,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 			return false;
 		} else {
 			AbstractCodesTableItem castOther = (AbstractCodesTableItem) other;
-			return new EqualsBuilder().append(this.getCode(), castOther.getCode()).append(this.getLocale(), castOther.getLocale()).isEquals();
+			return new EqualsBuilder().append(this.getCode(), castOther.getCode()).isEquals();
 		}
 	}
 
@@ -128,6 +121,6 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 */
 	public int hashCode() {
 		// Compare by class name to support multiple classloaders
-		return new HashCodeBuilder().append(this.getClass().getName()).append(getCode()).append(getLocale()).toHashCode();
+		return new HashCodeBuilder().append(this.getClass().getName()).append(getCode()).toHashCode();
 	}
 }
