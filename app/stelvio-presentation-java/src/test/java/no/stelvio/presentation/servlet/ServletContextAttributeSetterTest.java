@@ -10,7 +10,7 @@ import junit.framework.TestCase;
  * Unit test for {@link ServletContextAttributeSetter}.
  *
  * @author personf8e9850ed756
- * @version $Revision: 2598 $, $Date: 2005-10-31 13:31:23 +0100 (Mon, 31 Oct 2005) $
+ * @version $Id$
  */
 public class ServletContextAttributeSetterTest extends TestCase {
 	private ServletContextAttributeSetter servletContextAttributeSetter;

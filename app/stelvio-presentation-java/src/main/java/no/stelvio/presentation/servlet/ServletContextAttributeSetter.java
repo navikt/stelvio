@@ -14,7 +14,8 @@ import org.springframework.web.context.ServletContextAware;
  * or servlet.
  *
  * @author personf8e9850ed756
- * @version $Revision: 2650 $, $Date: 2005-11-27 08:01:09 +0100 (Sun, 27 Nov 2005) $
+ * 
+ * @version $Id$
  */
 public class ServletContextAttributeSetter implements ServletContextAware, InitializingBean {
 	private static final Log log = LogFactory.getLog(ServletContextAttributeSetter.class);

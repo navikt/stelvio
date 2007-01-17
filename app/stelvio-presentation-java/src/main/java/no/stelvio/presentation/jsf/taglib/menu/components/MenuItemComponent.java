@@ -8,7 +8,7 @@ import javax.faces.component.UIPanel;
  * which action to be invoced when the menu item is selected.
  * 
  * @author person4f9bc5bd17cc
- * @version $id$
+ * @version $Id$
  */
 public class MenuItemComponent extends UIPanel {
 	

@@ -32,6 +32,7 @@ import java.util.Locale;
  * This class tests MessageSourcePropertyResolver.
  * 
  * @author Rick Hightower
+ * @version  $Id$
  */
 public class MessageSourcePropertyResolverTest extends AbstractJsfTestCase {
 

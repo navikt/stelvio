@@ -8,7 +8,7 @@ import javax.faces.component.UIPanel;
  * to be used on the elements of the menu.
  * 
  * @author person4f9bc5bd17cc, Accenture
- * @version $id$
+ * @version $Id$
  */
 public class MenuComponent extends UIPanel {
 	

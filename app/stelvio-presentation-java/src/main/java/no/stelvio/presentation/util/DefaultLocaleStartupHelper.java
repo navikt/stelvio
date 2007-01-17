@@ -10,7 +10,7 @@ import java.util.Locale;
  * Utility for setting the system's deafult locale.
  * 
  * @author person7553f5959484, Accenture
- * @version $Revision: 2589 $ $Author: skb2930 $ $Date: 2005-10-27 08:41:29 +0200 (Thu, 27 Oct 2005) $
+ * @version $Id$
  * @todo we might need this in new framework.
  */
 public class DefaultLocaleStartupHelper {

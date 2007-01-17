@@ -10,7 +10,7 @@ import no.stelvio.common.error.SystemUnrecoverableException;
  * Unit test for DefaultLocaleStartupHelper.
  * 
  * @author person7553f5959484, Accenture
- * @version $Revision: 2185 $ $Author: skb2930 $ $Date: 2005-04-05 14:04:41 +0200 (Tue, 05 Apr 2005) $
+ * @version $Id$
  */
 public class DefaultLocaleStartupHelperTest extends TestCase {
 
