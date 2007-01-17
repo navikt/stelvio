@@ -23,9 +23,10 @@ Class-Path: acegi-security-1.0.2.jar
  spring-modules-cache-0.6.jar 
  spring-remoting-2.0.1.jar 
  stelvio-common-java-1.0.1-SNAPSHOT.jar 
- stelvio-domain-star-example-java-1.0.0-SNAPSHOT.jar 
  commons-collections-2.0.jar 
  ehcache-1.2.4.jar 
  persistence-api-1.0.jar 
- stelvio-domain-java-1.0.1-SNAPSHOT.jar
+ stelvio-domain-java-1.0.1-SNAPSHOT.jar 
+ stelvio-repository-star-example-java.jar 
+ stelvio-domain-star-example-java.jar
 
