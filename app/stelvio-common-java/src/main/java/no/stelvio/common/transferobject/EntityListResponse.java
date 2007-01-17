@@ -7,8 +7,9 @@ import java.util.List;
  * 
  * @author personff564022aedd
  * @version $Id$
+ * @deprecated extend <code>ServiceResponse</code>. 
  */
-public interface EntityListResponse<T> extends ServiceResponse {
+public interface EntityListResponse<T> {
 
 	/**
 	 * Gets a List of entitities of a generic type.

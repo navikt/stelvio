@@ -5,8 +5,9 @@ package no.stelvio.common.transferobject;
  * 
  * @author personff564022aedd
  * @version $Id$
+ * @deprecated extend <code>ServiceResponse</code>. 
  */
-public interface EntityResponse<T> extends ServiceResponse {
+public interface EntityResponse<T> {
 	
 	/**
 	 * Gets the entity contained in the response of a generic type. 
