@@ -9,6 +9,7 @@ import java.util.Hashtable;
  *
  * @author person7553f5959484
  * @version $Revision: 123 $ $Date: 2004-05-06 20:09:25 +0200 (Thu, 06 May 2004) $
+ * @deprecated should not need anything to replace this
  */
 class ThreadLocalMap extends InheritableThreadLocal {
 

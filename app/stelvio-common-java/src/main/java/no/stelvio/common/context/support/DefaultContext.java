@@ -11,6 +11,7 @@ import no.stelvio.common.context.Context;
  *
  * @author person7553f5959484
  * @version $Revision: 2001 $ $Date: 2005-03-01 14:49:06 +0100 (Tue, 01 Mar 2005) $
+ * @deprecated use a regular bean with an extern holder class for thread holding functionality  
  */
 public class DefaultContext<T> implements Context {
 

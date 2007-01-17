@@ -27,6 +27,8 @@ import no.stelvio.common.context.Context;
  *
  * @author person7553f5959484
  * @version $Revision: 123 $ $Date: 2004-05-06 20:09:25 +0200 (Thu, 06 May 2004) $
+ * @deprecated use a regular bean with an extern holder class for thread holding functionality
+ * @todo functionality connected to getting stuff into log4j's MDC should be put into an appender or something
  */
 class Log4jContext<T> implements Context {
 
