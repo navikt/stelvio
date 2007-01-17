@@ -119,7 +119,34 @@ public final class Pid implements Serializable {
 			return true;
 		}
 		return false;		
-	}	
+	}
+	
+	/**
+	 * Idicates whether some object is equals to this object.
+	 * Two Pid objects are equal if their {@link #getPid()} value are equal
+	 * @param obj the reference object with which to compare
+	 * @return <coode>true</code> it objects are equal, otherwise <code>false</code>
+	 * @see #equals(Object)
+	 */
+	@Override
+	public boolean equals(Object obj){
+		if(obj != null){
+			if (obj instanceof Pid) {
+				Pid pidObj = (Pid) obj;
+				return this.getPid().equals(pidObj.getPid());
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Returns a hash code value for the object
+	 * @return a hash code value for this object
+	 * @see #equals(Object)
+	 */
+	public int hashCode(){
+		return this.pid.hashCode();
+	}
 	
 	/**
 	 * Validates that <code>this</code> is a valid Pid
