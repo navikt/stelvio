@@ -25,7 +25,7 @@ public class HibernateMenuRepository implements MenuRepository {
 	public HibernateMenuRepository(){}
 	
 	/**
-	 * {@inheritDoc MenuRepository#getParents()}
+	 * {@inheritDoc}
 	 */	
 	@SuppressWarnings("unchecked")
 	public List<MenuItem> getParents() {
