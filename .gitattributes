@@ -344,6 +344,7 @@ app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-j
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/brukeroversikt/NewEndagspassord.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/codestable/FagomradeCti.java -text
+app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/codestable/HenvendelseTypeCti.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/henvendelse/Fagomrade.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/henvendelse/Henvendelse.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/henvendelse/HenvendelseStatistikk.java -text
