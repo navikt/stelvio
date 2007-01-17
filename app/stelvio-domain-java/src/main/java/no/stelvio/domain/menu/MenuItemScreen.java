@@ -76,8 +76,8 @@ public class MenuItemScreen implements Serializable {
 	 * Sets screen id
 	 * @param screenId the screenId to set
 	 */
-	public void setScreenId(int id) {
-		this.screenId = id;
+	public void setScreenId(int screenId) {
+		this.screenId = screenId;
 	}
 
 	/**
