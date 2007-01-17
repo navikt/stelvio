@@ -16,27 +16,19 @@ import org.apache.commons.collections.Predicate;
  * @version $Id$
  */
 public interface CodesTable<T extends CodesTableItem> {
-	
 	/**
-	 * @return the list of code table items in the table
+	 * @return the list of code table items in the table.
 	 */
 	List<T> getItems();
-	
-	/**
-	 * Adds a <code>CodesTableItem</code> to the <code>CodesTable</code>.
-	 * 
-	 * @param codesTableItem the item to add.
-     * @todo LATER: remove this and use constructor in impl instead. 
-	 */
-	void addCodesTableItem(T codesTableItem);
 	
 	/**
 	 * Returns the <code>CodesTableItem</code> in the <code>CodesTable</code> that matches the specified <code>code</code>.
 	 * 
 	 * @param code the item's code.
 	 * @return The <code>CodesTableItem</code> or <code>null</code> if the code does not exist in the <code>CodesTable</code>.
+	 * @throws ItemNotFoundException if the input code doesn't exist in the <code>CodesTable</code>.
 	 */
-	T getCodesTableItem(Object code);
+	T getCodesTableItem(Object code) throws ItemNotFoundException;
 	
 	/**
 	 * Add a predicate to the list of items in a <code>CodesTable</code>.
@@ -44,14 +36,8 @@ public interface CodesTable<T extends CodesTableItem> {
 	 * @param predicate the <code>Predicate</code> to filter the items in the <code>CodesTable</code> with.
 	 */
 	void addPredicate(Predicate predicate);
-	
-	/** 
-	 * Removes all of the predicates on the <code>CodesTable</code>. 
-	 * @deprecated Use {@link #resetPredicates()} instead
-	 */
-	void resetPrediacte();
 
-	/** 
+	/**
 	 * Removes all of the predicates on the <code>CodesTable</code>. 
 	 */
 	void resetPredicates();
@@ -61,8 +47,9 @@ public interface CodesTable<T extends CodesTableItem> {
 	 * 
 	 * @param code the items code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTable</code>.
+	 * @throws DecodeNotFoundException if the input code doesn't exist in the <code>CodesTable</code>.
 	 */
-	String getDecode(Object code);
+	String getDecode(Object code) throws DecodeNotFoundException;
 	
 	/**
 	 * Returns the decode for a code in <code>CodesTableItem</code> with a specific locale. 
@@ -72,7 +59,7 @@ public interface CodesTable<T extends CodesTableItem> {
 	 * @param code the items code.
 	 * @param locale the internationalization code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTable<code>.
-	 * @throws DecodeNotFoundException thrown if the input code doesn't exist in the <code>CodesTable</code>.
+	 * @throws DecodeNotFoundException if the input code doesn't exist in the <code>CodesTable</code>.
 	 */
 	String getDecode(Object code, Locale locale) throws DecodeNotFoundException;
 }

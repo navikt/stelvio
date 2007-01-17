@@ -1,5 +1,7 @@
 package no.stelvio.common.codestable.support;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.collections.Predicate;
@@ -20,7 +22,7 @@ import no.stelvio.common.context.RequestContext;
 public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringContextTests {
 
 	/** Implementation class to test */
-	private CodesTable codesTable;
+	private CodesTable<CodesTableItem> codesTable;
 	
 	/**
 	 * @return the location of the spring configuration xml-file.
@@ -39,13 +41,12 @@ public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringCont
 	@SuppressWarnings("unchecked")
 	@Before
 	public void onSetUp() throws Exception {
-		codesTable = (CodesTable) applicationContext.getBean("codesTable");
-		assertNotNull("Couldn't initiate CodesTable using standard POJO implementation.", codesTable);
-		
-		codesTable.addCodesTableItem(TestCodesTableItem.getCti1());
-		codesTable.addCodesTableItem(TestCodesTableItem.getCti2());
-		codesTable.addCodesTableItem(TestCodesTableItem.getCti3());
-		
+		List<CodesTableItem> list = new ArrayList<CodesTableItem>();
+		list.add(TestCodesTableItem.getCti1());
+		list.add(TestCodesTableItem.getCti2());
+		list.add(TestCodesTableItem.getCti3());
+
+		codesTable = new DefaultCodesTable<CodesTableItem>(list);
 	}
 	
 	/**

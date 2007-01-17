@@ -1,9 +1,14 @@
 package no.stelvio.common.codestable.support;
 
-import no.stelvio.common.codestable.*;
-import no.stelvio.common.codestable.factory.CodesTableFactory;
-
 import java.util.List;
+
+import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTableManager;
+import no.stelvio.common.codestable.CodesTablePeriodic;
+import no.stelvio.common.codestable.NotCodesTableException;
+import no.stelvio.common.codestable.factory.CodesTableFactory;
 
 /**
  * Implementation of CodesTableManager used for accessing and caching persistent codes tables.
@@ -12,8 +17,7 @@ import java.util.List;
  * @version $Id$
  */
 public class DefaultCodesTableManager implements CodesTableManager {
-
-	//The CodesTableFactory used for retrieval of codestables
+	/** The CodesTableFactory used for retrieval of codestables. */
 	private CodesTableFactory codesTableFactory;
 	
 	/**
@@ -23,15 +27,9 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem) {
         validateCodesTableClass(codesTableItem);
+		List<T> codesTableItems = codesTableFactory.createCodesTable(codesTableItem);
 
-        CodesTable<T> codesTable = (CodesTable<T>) new DefaultCodesTable();
-        List<T> codesTableItems = codesTableFactory.createCodesTable(codesTableItem);
-
-        for(T ct : codesTableItems){
-			codesTable.addCodesTableItem(ct);
-		}
-		
-		return codesTable;
+		return new DefaultCodesTable(codesTableItems);
 	}
 
 	/**
@@ -41,15 +39,9 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
 		validateCodesTablePeriodicClass(codesTableItem);
-		
-		CodesTablePeriodic<T> codesTablePeriodic = (CodesTablePeriodic<T>) new DefaultCodesTablePeriodic();
         List<T> codesTableItems = codesTableFactory.createCodesTablePeriodic(codesTableItem);
 
-        for(T ctp : codesTableItems){
-			codesTablePeriodic.addCodesTableItem(ctp);
-		}
-				
-		return codesTablePeriodic;
+		return new DefaultCodesTablePeriodic(codesTableItems);
 	}
 
 	/**
@@ -58,7 +50,7 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	 * @param codesTableClass the class to load a codestable for.
 	 * @throws NotCodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>
 	 */
-	private void validateCodesTableClass(final Class codesTableClass){
+	private void validateCodesTableClass(final Class<? extends AbstractCodesTableItem> codesTableClass){
 		if(null!= codesTableClass && !CodesTableItem.class.isAssignableFrom(codesTableClass)){
 			throw new NotCodesTableException(codesTableClass);
 		}
@@ -70,9 +62,9 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	 * @param codesTablePeriodicClass the class to load a codestable for.
 	 * @throws NotCodesTableException if the class to load a codestable for is not a subclass of <code>CodesTablePeriodic</code>.
 	 */
-	private void validateCodesTablePeriodicClass(final Class codesTablePeriodicClass){
+	private void validateCodesTablePeriodicClass(final Class<? extends AbstractCodesTableItem> codesTablePeriodicClass){
 		if(null!= codesTablePeriodicClass && !CodesTableItemPeriodic.class.isAssignableFrom(codesTablePeriodicClass)){
-			throw new NotCodesTableException (codesTablePeriodicClass);
+			throw new NotCodesTableException(codesTablePeriodicClass);
 		}
 	}	
 	

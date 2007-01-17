@@ -10,63 +10,74 @@ import org.apache.commons.collections.Predicate;
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.DecodeNotFoundException;
+import no.stelvio.common.codestable.ItemNotFoundException;
 import no.stelvio.common.context.RequestContext;
 
 /**
- * Implementation of CodesTable used to handle a codestable, its beloning values and add
- * predicates to filter the items in the codestable. 
+ * Implementation of CodesTable used to handle a codestable, its belonging values and predicates for filtering the items
+ * in the codestable.
  * 
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
- * @later use Commons Collection's LazyMap to initialize the filtered codes table map
- * @todo why cannot List<CodesTableItem> be of type <T>? -> getting problems with addCodesTableItem(T codesTableItem)
+ * @todo use Commons Collection's LazyMap to initialize the filtered codes table map
+ * @todo add safe copying of input/output, that is, constructor and getItems()
  */
 public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
-
-	//List of codestableitems
-	private List<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
+	/** List of <code>CodesTableItem</code>s this <code>DefaultCodesTable</code> consists of. */
+	private List<T> codesTableItems;
 	
-	//List of filtered codestableitems
-	private List<CodesTableItem> filteredCodesTableItems = new ArrayList<CodesTableItem>();
-	
-	//List of predicates added to the codestableitems
-	private List<Predicate> predicates = new ArrayList<Predicate>();
-		
 	/**
-	 * {@inheritDoc}
+	 * Holds the filtered list of <code>CodesTableItem</code>s created by taking the full list and applying the
+	 * predicates.
 	 */
-	public void addCodesTableItem(CodesTableItem codesTableItem){
-		this.codesTableItems.add(codesTableItem);
+	private List<T> filteredCodesTableItems;
+
+	/** List of predicates to use for filtering the list of <code>CodesTableItem</code>s */
+	private List<Predicate> predicates = new ArrayList<Predicate>();
+
+	/**
+	 * Creates a <code>DefaultCodesTable</code> with a list of <code>CodesTableItem</code>s.
+	 *
+	 * @param codesTableItems list of <code>CodesTableItem</code>s this <code>DefaultCodesTable</code> consists of. 
+	 */
+	public DefaultCodesTable(List<T> codesTableItems) {
+		this.codesTableItems = codesTableItems;
 	}
 	
-	public List<CodesTableItem> getItems() {
+	/** 
+	 * {@inheritDoc}
+	 */
+	public List<T> getItems() {
 		return codesTableItems;
 	}
 
 	/** 
 	 * {@inheritDoc}
 	 */
-	public CodesTableItem getCodesTableItem(Object code) {
-		
-		CodesTableItem cti = null;
+	public T getCodesTableItem(Object code) throws ItemNotFoundException {
+		T cti = null;
 								
 		//There are no predicates for the items in the codestable  
-		if(this.predicates.isEmpty()){
-			for(CodesTableItem c : this.codesTableItems){
-				if (c.getCode() == code.toString()){
+		if (this.predicates.isEmpty()){
+			for (T c : this.codesTableItems){
+				if (c.getCode().equals(code.toString())){
 					cti = c;
 					break;
 				}
 			}
-		} else if(!this.predicates.isEmpty()){ 
-			for(CodesTableItem c : this.filteredCodesTableItems){
-				if (c.getCode() == code.toString()){
+		} else { 
+			for(T c : this.filteredCodesTableItems){
+				if (c.getCode().equals(code.toString())){
 					cti = c;
 					break;
 				}
 			}
 		}
-			
+
+		if (cti == null) {
+			throw new ItemNotFoundException(code);
+		}
+		
 		return cti;
 	}
 		
@@ -78,22 +89,14 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 		//are filtered, or else the codestableitems in the filtered collection are filtered.
 		synchronized (this.filteredCodesTableItems){
 			if(this.predicates.isEmpty()){
-				this.filteredCodesTableItems = (ArrayList<CodesTableItem>) CollectionUtils.select(this.codesTableItems, predicate);
+				this.filteredCodesTableItems = (ArrayList<T>) CollectionUtils.select(this.codesTableItems, predicate);
 			} else{
-				this.filteredCodesTableItems = (ArrayList<CodesTableItem>) 
+				this.filteredCodesTableItems = (ArrayList<T>)
 						CollectionUtils.select(this.filteredCodesTableItems, predicate);
 			}
 		}
 		
 		this.predicates.add(predicate);	
-	}
-	
-	/** 
-	 * {@inheritDoc}
-	 * @deprecated Use {@link #resetPredicates()} instead
-	 */
-	public void resetPrediacte() {
-		resetPredicates();
 	}
 
 	/** 
@@ -115,25 +118,24 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code, Locale locale) {
-		
 		String decode = null;
 		String defaultDecode = null;
 
-		//If there are predicates added to the codestableitems in a codestable,
-		//getCodesTableItem() will only return an item if it belongs to the filtered collection
-		//of codestableitems
-		//TODO: optimize
-		for(CodesTableItem cti : this.codesTableItems){			
+		// If there are predicates added to the codestableitems in a codestable,
+		// getCodesTableItem() will only return an item if it belongs to the filtered collection
+		// of codestableitems
+		// TODO: optimize
+		for(T cti : this.codesTableItems){
 			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) ){
 				 decode = cti.getDecode();
 				 break;
-			} else if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(RequestContext.getLocale())){
+			} else if (cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(RequestContext.getLocale())){
 				defaultDecode = cti.getDecode();
 			}
 		}
 		
-		//If there doesn't exist a decode for the input code and locale, use the 
-		//default decode of the input code, or throw an exception
+		// If there doesn't exist a decode for the input code and locale, use the
+		// default decode of the input code, or throw an exception
 		if(decode == null){
 			if(defaultDecode != null){
 				return defaultDecode;

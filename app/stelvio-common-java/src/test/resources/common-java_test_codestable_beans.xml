@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-                       "http://www.springframework.org/schema/beans/spring-beans.dtd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 <!--
 	Springs application context used by Codestable. 
 -->
-<beans>
  <bean class="no.stelvio.common.codestable.support.DefaultCodesTableManager" id="codesTableManager"/>
- <bean class="no.stelvio.common.codestable.support.DefaultCodesTable" id="codesTable"/>
- <bean class="no.stelvio.common.codestable.support.DefaultCodesTablePeriodic" id="codesTablePeriodic"/>
  <!--  <bean class="no.stelvio.common.codestable.CodesTableFactoryImpl" id="codesTableFactory"/>-->
  <bean class="no.stelvio.common.codestable.factory.support.DefaultCodesTableInitializer" id="codesTableInitializer">
   <property name="codesTableClasses">

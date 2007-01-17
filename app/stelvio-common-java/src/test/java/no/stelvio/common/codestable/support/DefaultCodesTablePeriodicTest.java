@@ -1,8 +1,10 @@
 package no.stelvio.common.codestable.support;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.collections.Predicate;
@@ -22,7 +24,7 @@ import no.stelvio.common.context.RequestContext;
 public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSpringContextTests {
 
 	/** Implementation class to test */
-	private CodesTablePeriodic codesTablePeriodic;
+	private CodesTablePeriodic<CodesTableItemPeriodic> codesTablePeriodic;
 	
 	/**
 	 * @return the location of the spring configuration xml-file.
@@ -40,12 +42,12 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 	//TODO: FIX CASTING
 	@SuppressWarnings("unchecked")
 	public void onSetUp() throws Exception {
-		codesTablePeriodic = (CodesTablePeriodic) applicationContext.getBean("codesTablePeriodic");
-		assertNotNull("Couldn't initiate CodesTablePeriodic using standard POJO implementation.", codesTablePeriodic);
-		
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip1());
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip2());
-		codesTablePeriodic.addCodesTableItem(TestCodesTableItemPeriodic.getCtip3());
+		List<CodesTableItemPeriodic> list = new ArrayList<CodesTableItemPeriodic>();
+		list.add(TestCodesTableItemPeriodic.getCtip1());
+		list.add(TestCodesTableItemPeriodic.getCtip2());
+		list.add(TestCodesTableItemPeriodic.getCtip3());
+
+		codesTablePeriodic = new DefaultCodesTablePeriodic<CodesTableItemPeriodic>(list);
 	}
 	
 	/**

@@ -1,6 +1,7 @@
 package no.stelvio.common.codestable;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.collections.Predicate;
@@ -18,21 +19,19 @@ import org.apache.commons.collections.Predicate;
  * @version $Id$
  */
 public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
-	
 	/**
-	 * Adds a <code>CodesTableItemPeriodic</code> to the <code>CodesTablePeriodic</code>.
-	 * 
-	 * @param codesTableItemPeriodic the item to add.
+	 * @return the list of code table items in the table.
 	 */
-	void addCodesTableItem(T codesTableItemPeriodic);
-	
+	List<T> getItems();
+
 	/**
 	 * Returns the <code>CodesTableItemPeriodic</code> in the specified <code>CodesTablePeriodic</code> that matches the specified <code>code</code>.
 	 * 
 	 * @param code the item's code.
 	 * @return The <code>CodesTableItemPeriodoc</code> or <code>null</code> if the code does not exist in the codestable.
+	 * @throws ItemNotFoundException if the item doesn't exist in the <code>CodesTablePeriodic</code>.
 	 */
-	T getCodesTableItem(Object code);
+	T getCodesTableItem(Object code) throws ItemNotFoundException;
 	
 	/**
 	 * Add a predicate to the list of items in a <code>CodesTablePeriodic<code>.
@@ -40,10 +39,6 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	 * @param predicate the <code>Predicate</code> to filter the items in a <code>CodesTablePeriodic</code> with.
 	 */
 	void addPredicate(Predicate predicate);
-	
-	/** Removes all of the predicates on the <code>CodesTablePeriodic</code>. 
-	 * @deprecated Use {@link #resetPredicates()} instead*/
-	void resetPrediacte();
 
 	/** Removes all of the predicates on the <code>CodesTablePeriodic</code>. */
 	void resetPredicates();
@@ -54,8 +49,9 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
+	 * @throws DecodeNotFoundException if the input code doesn't exist in the <code>CodesTablePeriodic</code>.
 	 */
-	String getDecode(Object code, Date date);
+	String getDecode(Object code, Date date) throws DecodeNotFoundException;
 	
 	/**
 	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
@@ -63,7 +59,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	 * @param date the date the item must be valid.
 	 * @param locale the internationalization code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
-	 * @throws DecodeNotFoundException thrown if the input code doesn't exist in the <code>CodesTablePeriodic</code>.
+	 * @throws DecodeNotFoundException if the input code doesn't exist in the <code>CodesTablePeriodic</code>.
 	 */
 	String getDecode(Object code, Locale locale, Date date) throws DecodeNotFoundException;
 }
