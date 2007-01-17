@@ -655,6 +655,7 @@ app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-e
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.settings/org.eclipse.wst.common.component -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/pom.xml -text
+app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/META-INF/MANIFEST.MF -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/no/stelvio/repository/codestable/CodesTableRepository.java -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/no/stelvio/repository/codestable/support/HibernateCodesTableRepository.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/.classpath -text
