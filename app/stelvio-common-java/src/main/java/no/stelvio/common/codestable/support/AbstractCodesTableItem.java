@@ -32,8 +32,6 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	private String decode;
 	
 	/** A codestableitem's locale that represents the country and language the items decode is defined for. */
-	//Not used at the moment, this may change. If it doesn't, remove field
-	@SuppressWarnings("unused")
 	@Transient
 	private Locale locale;
 	
@@ -54,10 +52,11 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * @param decode the decode.
 	 * @param isValid validity of the item.
 	 */
-	protected AbstractCodesTableItem(String code, String decode, boolean isValid){
+	protected AbstractCodesTableItem(String code, String decode, Locale locale, boolean isValid){
 		this.code = code;
 		this.decode = decode;
 		this.valid = isValid;
+		this.locale = locale;
 	}
 
 	/**
@@ -86,6 +85,14 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	public boolean isValid(){
 		return valid;
 	}
+	
+	/**
+	 * Gets the locale
+	 * @return locale the locale of this item
+	 */
+	public Locale getLocale() {
+		return locale;
+	}	
 	
 	/**
 	 * Abstract method for toString() that must be implemented by its subclasses.
@@ -122,4 +129,5 @@ public abstract class AbstractCodesTableItem implements Serializable {
 		// Compare by class name to support multiple classloaders
 		return new HashCodeBuilder().append(this.getClass().getName()).append(getCode()).toHashCode();
 	}
+
 }
