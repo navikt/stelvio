@@ -1,16 +1,16 @@
 package no.stelvio.common.transferobject.support;
 
 import no.stelvio.common.transferobject.EntityResponse;
+import no.stelvio.common.transferobject.TransferObject;
 
 /**
  * Generic response object for services that return an entity.
  * 
  * @author personff564022aedd
  * @version $Id$
+ * @deprecated extend <code>ServiceResponse</code>.
  */
-public class DefaultEntityResponse<T> extends DefaultTransferObject implements
-		EntityResponse<T> {
-
+public class DefaultEntityResponse<T> extends TransferObject implements EntityResponse<T> {
 	/**
 	 * Serial version UID.
 	 */
@@ -19,31 +19,16 @@ public class DefaultEntityResponse<T> extends DefaultTransferObject implements
 	private T entity;
 
 	/**
-	 * Constructor.
-	 * 
-	 * @param context
-	 *            Response context.
-	 * @param entity
-	 *            Entity domain.
-	 */
-	public DefaultEntityResponse(ContextContainer context, T entity) {
-		super(context);
-		this.entity = entity;
-
-	}
-
-	/**
 	 * Constructor
 	 * 
-	 * @param entity
-	 *            Entity domain object.
+	 * @param entity Entity domain object.
 	 */
 	public DefaultEntityResponse(T entity) {
-		this(null, entity);
+		this.entity = entity;
 	}
 
 	/**
-	 * {@inheritDoc GenericEntityResponse#getEntity()}
+	 * {@inheritDoc}
 	 */
 	public T getEntity() {
 		return entity;

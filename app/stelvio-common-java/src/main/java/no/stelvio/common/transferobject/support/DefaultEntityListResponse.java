@@ -3,6 +3,7 @@ package no.stelvio.common.transferobject.support;
 import java.util.List;
 
 import no.stelvio.common.transferobject.EntityListResponse;
+import no.stelvio.common.transferobject.TransferObject;
 
 /**
  * Generic response object for services that return a <code>List</code> of
@@ -10,10 +11,9 @@ import no.stelvio.common.transferobject.EntityListResponse;
  * 
  * @author personff564022aedd
  * @version $Id$
+ * @deprecated extend <code>ServiceResponse</code>. 
  */
-public class DefaultEntityListResponse<T> extends DefaultTransferObject
-		implements EntityListResponse<T> {
-
+public class DefaultEntityListResponse<T> extends TransferObject implements EntityListResponse<T> {
 	/**
 	 * Serial version UID.
 	 */
@@ -24,32 +24,16 @@ public class DefaultEntityListResponse<T> extends DefaultTransferObject
 	/**
 	 * Constructor.
 	 * 
-	 * @param entities
-	 *            List of entities.
+	 * @param entities List of entities.
 	 */
 	public DefaultEntityListResponse(List<T> entities) {
-		this(null, entities);
-	}
-
-	/**
-	 * Constructor.
-	 * 
-	 * @param context
-	 *            Response context.
-	 * @param entities
-	 *            List of entities.
-	 */
-	public DefaultEntityListResponse(ContextContainer context, List<T> entities) {
-		super(context);
 		this.entities = entities;
 	}
 
 	/**
-	 * {@inheritDoc EntityListResponse#getEntities()}
+	 * {@inheritDoc}
 	 */
 	public List<T> getEntities() {
-
 		return entities;
 	}
-
 }
