@@ -78,7 +78,7 @@ public class CodestableComponentTest {
 	@Test
 	public void testCodesTable() throws Exception {
 
-		CodesTable codesTable = new DefaultCodesTable();
+		CodesTable codesTable = new DefaultCodesTable(new ArrayList());
 		codesTable = codesTableManager.getCodesTable(TestCodesTableItem.getCti1().getClass());
 
 		assertEquals("Con001.001 : getCodesTable failed - doesn't hold an expected value", codesTable.getCodesTableItem(code), TestCodesTableItem.getCti1());
@@ -140,7 +140,7 @@ public class CodestableComponentTest {
 	 */
 	@Test
 	public void testGetCodesTablePeriodic() {
-		CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic();
+		CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic(new ArrayList());
 		codesTablePeriodic = codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass());
 
 		assertEquals("Con007.001 : getCodesTablePeriodic failed - doesn't hold an expected value", codesTablePeriodic.getCodesTableItem(code), TestCodesTableItemPeriodic.getCtip1());
