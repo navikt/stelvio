@@ -5,6 +5,8 @@ import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
@@ -24,10 +26,12 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	
 	/** The date the item is valid from. */
 	@Column(name="FROM_DATE")
+	@Temporal(TemporalType.DATE)	
 	private Date fromDate;
 	
 	/** The date the item is valid to. */
 	@Column(name="TO_DATE")
+	@Temporal(TemporalType.DATE)
 	private Date toDate;
 	
 	/**
