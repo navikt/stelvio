@@ -18,7 +18,8 @@ public interface MenuRepository {
 	 * Method to retrieve MenuItem objects that has no parent (parent is <code>null</code>).
 	 * Children are retrived with eager fetching.
 	 * 
-	 * @return a list of root MenuItem objects. 
+	 * @return List of root MenuItem objects. 
 	 */
 	public List<MenuItem> getParents();
+	
 }

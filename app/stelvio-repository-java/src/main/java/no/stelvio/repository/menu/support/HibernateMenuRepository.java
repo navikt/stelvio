@@ -16,7 +16,7 @@ import no.stelvio.repository.menu.MenuRepository;
  */
 public class HibernateMenuRepository implements MenuRepository {
 
-	public HibernateTemplate hibernateTemplate;
+	private HibernateTemplate hibernateTemplate;
 	
 	/**
 	 * Default no-arg constructor
