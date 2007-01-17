@@ -650,6 +650,10 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/templates/ramme-saksbehandling.xhtml -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.classpath -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.project -text
+app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
+app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
+app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.settings/org.eclipse.wst.common.component -text
+app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/no/stelvio/repository/codestable/CodesTableRepository.java -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/no/stelvio/repository/codestable/support/HibernateCodesTableRepository.java -text
