@@ -24,7 +24,7 @@ import javax.persistence.Transient;
  */
 
 @Entity
-@Table(name="MENYVALG_SKJERM")
+@Table(name="T_SKJERMBILDE")
 public class MenuItemScreen implements Serializable {
 
 	@Transient
@@ -33,7 +33,7 @@ public class MenuItemScreen implements Serializable {
 	/**
 	 * The primary key.
 	 */
-	@Column(name="MENYVALG_SKJERM_ID")
+	@Column(name="SKJERMBILDE_ID")
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private long screenId;
 	

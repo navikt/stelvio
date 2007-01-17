@@ -21,7 +21,7 @@ import javax.persistence.Table;
  * @author person983601e0e117 (Accenture)
  */
 @Entity
-@Table(name="MENYVALG_TILGNG_ID")
+@Table(name="T_TILGANG")
 public class MenuItemPermission implements Serializable {
 
 	private static final long serialVersionUID = -7769356462360967819L;
@@ -29,7 +29,7 @@ public class MenuItemPermission implements Serializable {
 	/**
 	 * The primary key.
 	 */
-	@Column(name="MENYVALG_TILGNG_ID")
+	@Column(name="TILGANG_ID")
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private long permissionId;
 	

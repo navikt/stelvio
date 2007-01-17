@@ -32,7 +32,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="MenuItem.findParents", query="SELECT m FROM MenuItem m WHERE m.parent is null")
 })
 @Entity
-@Table(name="MENYVALG")
+@Table(name="T_MENYVALG")
 public class MenuItem implements Serializable {
 
 
@@ -62,9 +62,9 @@ public class MenuItem implements Serializable {
 	 * List of menuItemPermissions this menu is a part of.
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="MMT_KOBLING",
+	@JoinTable(name="T_MNYVLG_TILGNG",
 		joinColumns=@JoinColumn(name="MENYVALG_ID"),
-		inverseJoinColumns=@JoinColumn(name="MENYVALG_TLGNG_ID")
+		inverseJoinColumns=@JoinColumn(name="TILGANG_ID")
 	)
 	private List<MenuItemPermission> menuItemPermissions = new ArrayList<MenuItemPermission>();
 	
@@ -72,9 +72,9 @@ public class MenuItem implements Serializable {
 	 * List of menuItemScreens this menu is a part of.
 	 */
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="MMS_KOBLING",
+	@JoinTable(name="T_MNYVLG_SKJMBD",
 		joinColumns=@JoinColumn(name="MENYVALG_ID"),
-		inverseJoinColumns=@JoinColumn(name="MENYVALG_SKJERM_ID")
+		inverseJoinColumns=@JoinColumn(name="SKJERMBILDE_ID")
 	)
 	private List<MenuItemScreen> menuItemScreens = new ArrayList<MenuItemScreen>();
 	
