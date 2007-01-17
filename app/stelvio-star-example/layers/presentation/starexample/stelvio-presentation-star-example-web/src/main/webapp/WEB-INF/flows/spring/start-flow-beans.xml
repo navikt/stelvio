@@ -7,7 +7,7 @@
 
 	<bean class="no.nav.presentation.pensjon.saksbehandling.action.StartAction" id="startAction">
   		<property name="saksbehandlerService" ref="saksbehandlerServiceMock"/>
-  		<property name="codesTableFactory" ref="ctf"/>
+  		<property name="codesTableManager" ref="prs.starexample.codesTableManager"/>
 	</bean>
 	
 	
