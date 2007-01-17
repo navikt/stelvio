@@ -1,7 +1,7 @@
 package no.stelvio.domain.sak;
 
 /**
- * TODO: Document me 
+ * Represents a case worker
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  */
@@ -12,6 +12,7 @@ public class Saksbehandler {
 	private Long saksbehandlernr;
 	
 	/**
+	 * Gets the enhet
 	 * @return the enhet
 	 */
 	public String getEnhet() {
@@ -19,6 +20,7 @@ public class Saksbehandler {
 	}
 	
 	/**
+	 * Sets enhet
 	 * @param enhet the enhet to set
 	 */
 	public void setEnhet(String enhet) {
@@ -26,6 +28,7 @@ public class Saksbehandler {
 	}
 	
 	/**
+	 * Gets etternavn
 	 * @return the etternavn
 	 */
 	public String getEtternavn() {
@@ -33,6 +36,7 @@ public class Saksbehandler {
 	}
 	
 	/**
+	 * Sets etternavn
 	 * @param etternavn the etternavn to set
 	 */
 	public void setEtternavn(String etternavn) {
@@ -40,6 +44,7 @@ public class Saksbehandler {
 	}
 	
 	/**
+	 * Gets fornavn
 	 * @return the fornavn
 	 */
 	public String getFornavn() {
@@ -47,6 +52,7 @@ public class Saksbehandler {
 	}
 	
 	/**
+	 * Sets fornavn
 	 * @param fornavn the fornavn to set
 	 */
 	public void setFornavn(String fornavn) {
@@ -54,6 +60,7 @@ public class Saksbehandler {
 	}
 	
 	/**
+	 * Gets saksbehandler
 	 * @return the saksbehandlernr
 	 */
 	public Long getSaksbehandlernr() {
@@ -61,6 +68,7 @@ public class Saksbehandler {
 	}
 	
 	/**
+	 * Sets saksbehandler
 	 * @param saksbehandlernr the saksbehandlernr to set
 	 */
 	public void setSaksbehandlernr(Long saksbehandlernr) {

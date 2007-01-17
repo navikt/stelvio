@@ -3,7 +3,7 @@ package no.stelvio.domain.sak;
 import java.util.List;
 
 /**
- * TODO: Document me
+ * Represents an Area
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
@@ -14,6 +14,7 @@ public class Area {
 	private List<TaskType> taskTypes;
 	
 	/**
+	 * Gets description
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -21,6 +22,7 @@ public class Area {
 	}
 	
 	/**
+	 * Sets description
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
@@ -28,6 +30,7 @@ public class Area {
 	}
 	
 	/**
+	 * Gets id
 	 * @return the id
 	 */
 	public String getId() {
@@ -35,6 +38,7 @@ public class Area {
 	}
 	
 	/**
+	 * Sets the id
 	 * @param id the id to set
 	 */
 	public void setId(String id) {
@@ -42,6 +46,7 @@ public class Area {
 	}
 	
 	/**
+	 * Gets task types
 	 * @return the taskTypes
 	 */
 	public List<TaskType> getTaskTypes() {
@@ -49,6 +54,7 @@ public class Area {
 	}
 	
 	/**
+	 * Sets task types
 	 * @param taskTypes the taskTypes to set
 	 */
 	public void setTaskTypes(List<TaskType> taskTypes) {

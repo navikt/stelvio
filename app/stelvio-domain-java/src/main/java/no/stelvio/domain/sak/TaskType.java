@@ -1,7 +1,8 @@
 package no.stelvio.domain.sak;
 
 /**
- * TODO: Document me
+ * 
+ * Represents type of task
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
@@ -11,6 +12,7 @@ public class TaskType {
 	private String description;
 	
 	/**
+	 * Gets description
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -18,6 +20,7 @@ public class TaskType {
 	}
 	
 	/**
+	 * Sets description
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
@@ -25,6 +28,7 @@ public class TaskType {
 	}
 	
 	/**
+	 * Gets the id
 	 * @return the id
 	 */
 	public String getId() {
@@ -32,6 +36,7 @@ public class TaskType {
 	}
 	
 	/**
+	 * Sets the id
 	 * @param id the id to set
 	 */
 	public void setId(String id) {

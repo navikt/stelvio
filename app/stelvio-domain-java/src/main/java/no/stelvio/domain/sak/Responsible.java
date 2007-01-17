@@ -3,7 +3,7 @@ package no.stelvio.domain.sak;
 import java.util.List;
 
 /**
- * TODO: Document me
+ * Represent a responsible
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
@@ -14,6 +14,7 @@ public class Responsible {
 	private List<Area> areas;
 	
 	/**
+	 * Gets areas
 	 * @return the areas
 	 */
 	public List<Area> getAreas() {
@@ -21,6 +22,7 @@ public class Responsible {
 	}
 	
 	/**
+	 * Sets areas
 	 * @param areas the areas to set
 	 */
 	public void setAreas(List<Area> areas) {
@@ -28,6 +30,7 @@ public class Responsible {
 	}
 	
 	/**
+	 * Gets desription
 	 * @return the description
 	 */
 	public String getDescription() {
@@ -35,6 +38,7 @@ public class Responsible {
 	}
 	
 	/**
+	 * Sets description
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
@@ -42,6 +46,7 @@ public class Responsible {
 	}
 	
 	/**
+	 * Gets the id
 	 * @return the id
 	 */
 	public String getId() {
@@ -49,6 +54,7 @@ public class Responsible {
 	}
 	
 	/**
+	 * Sets the id
 	 * @param id the id to set
 	 */
 	public void setId(String id) {
