@@ -1,8 +1,8 @@
 package no.stelvio.common.context.support;
 
-import no.stelvio.common.context.Context;
-
 import java.util.Hashtable;
+
+import no.stelvio.common.context.Context;
 
 /**
  * Context implementation that uses the InheritableThreadLocal class
@@ -12,7 +12,7 @@ import java.util.Hashtable;
  * @author person7553f5959484
  * @version $Revision: 2001 $ $Date: 2005-03-01 14:49:06 +0100 (Tue, 01 Mar 2005) $
  */
-public class DefaultContext implements Context {
+public class DefaultContext<T> implements Context {
 
 	// The capasity of the user context
 	// --> Update this calue when you add/remove a field
@@ -48,10 +48,8 @@ public class DefaultContext implements Context {
 	 * 
 	 * @param key key to identify the value
 	 * @param value object to store
-	 * 
-	 * @see no.stelvio.common.context.Context#put(java.lang.String, java.lang.Object)
 	 */
-	public void put(String key, Object value) {
+	public void put(Object key, Object value) {
 		if (null != key && null != value) {
 			getHeap().put(key, value);
 		}
@@ -63,10 +61,8 @@ public class DefaultContext implements Context {
 	 * 
 	 * @param key key to identify the value
 	 * @return the value stored
-	 * 
-	 * @see no.stelvio.common.context.Context#get(java.lang.String)
 	 */
-	public Object get(String key) {
+	public Object get(Object key) {
 		if (null == key) {
 			return null;
 		} else {
@@ -87,10 +83,8 @@ public class DefaultContext implements Context {
 
 	/**
 	 * Remove all of the context values.
-	 * 
-	 * @see no.stelvio.common.context.Context#remove()
 	 */
-	public void remove() {
+	public void removeAll() {
 		heap.set(new Hashtable(CAPACITY));
 	}
 
@@ -110,7 +104,7 @@ public class DefaultContext implements Context {
 			// Now, clear the existing context and
 			// put all objects in the external hashtable 
 			// into the existing context
-			heap.set((Hashtable) o);
+			heap.set(o);
 		} else {
 			throw new ClassCastException(
 				"Can not import object of type "

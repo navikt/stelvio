@@ -2,8 +2,6 @@ package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
 
-import no.stelvio.common.context.support.Log4jContext;
-
 import junit.framework.TestCase;
 
 /**
@@ -42,7 +40,7 @@ public class Log4jContextTest extends TestCase {
 
 		assertSame("Objects should have been the same", o2, c.get("key2"));
 
-		c.remove();
+		c.removeAll();
 		assertNull("Object should have been null", c.get("key2"));
 
 		c.importContext(null);
@@ -58,7 +56,7 @@ public class Log4jContextTest extends TestCase {
 		Hashtable h2 = (Hashtable) c.exportContext();
 		assertSame("Objects should have been the same", o3, h2.get("key3"));
 
-		c.remove();
+		c.removeAll();
 		
 		c.put("key4", "value4");
 		c.importContext(h2);

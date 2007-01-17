@@ -1,7 +1,9 @@
 package no.stelvio.common.error;
 
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.error.support.ExceptionToCopyHolder;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.eq;
 import static org.hamcrest.core.IsEqual.isTrue;
@@ -10,9 +12,9 @@ import static org.hamcrest.core.IsSame.same;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * @author personf8e9850ed756
@@ -75,10 +77,7 @@ public abstract class AbstractExceptionTest<T extends StelvioException> {
 
     @Before
     public void setUpRequestContext() {
-        RequestContext.setModuleId("module");
-        RequestContext.setProcessId("process");
-        RequestContext.setScreenId("screen");
-        RequestContext.setTransactionId("transaction");
-        RequestContext.setUserId("user");
+	    RequestContext requestContext = new RequestContext("user", "screen", "module", "process", "transaction");
+	    RequestContextHolder.setRequestContext(requestContext);
     }
 }

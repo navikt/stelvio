@@ -7,12 +7,12 @@ import java.util.Locale;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
-import no.stelvio.common.context.RequestContext;
 
 /**
  * Implementation of CodesTablePeriodic for retrieving <code>CodesTable</code>s that has defined a period of validity.
@@ -113,7 +113,7 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> impleme
 	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code, Date date) throws DecodeNotFoundException {
-		return getDecode(code, RequestContext.getLocale(), date);
+		return getDecode(code, LocaleContextHolder.getLocale(), date);
 	}
 	
 	/** 
@@ -132,7 +132,7 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> impleme
 					&& cti.getFromDate().before(date) && cti.getToDate().after(date)){ 
 				decode = cti.getDecode();
 				break;
-			} else if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(RequestContext.getLocale()) 
+			} else if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(LocaleContextHolder.getLocale())
 					&& cti.getFromDate().before(date) && cti.getToDate().after(date)){
 				defaultDecode = cti.getDecode();
 			}

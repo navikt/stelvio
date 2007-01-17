@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.collections.Predicate;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.TestCodesTableItem;
 import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
-import no.stelvio.common.context.RequestContext;
 
 /**
  * Unit test of CodesTablePeriodic.
@@ -128,7 +128,7 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 		
 		//Set the locale in the RequestContext
 		Locale locale = new Locale("nb", "NO");
-		RequestContext.setLocale(locale);
+		LocaleContextHolder.setLocale(locale);
 		
 		try{
 			codesTablePeriodic.getDecode("t8code15", date);

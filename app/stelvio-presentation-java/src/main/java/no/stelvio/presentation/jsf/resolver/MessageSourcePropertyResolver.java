@@ -16,12 +16,10 @@
 package no.stelvio.presentation.jsf.resolver;
 
 import java.util.Locale;
-
 import javax.faces.el.PropertyResolver;
 
-import no.stelvio.common.context.RequestContext;
-
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 /**
  * This class is a JSF <code>PropertyResolver</code> for Spring's <code>MessageSource</code>.
@@ -78,8 +76,8 @@ public class MessageSourcePropertyResolver extends PropertyResolver {
             //The original code written by the author - that retrieves the locale from FacesContext
             //Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 
-            //Retrieves the locale set by the RequestContext module
-            Locale locale = RequestContext.getLocale();
+            //Retrieves the locale set by the Spring support classes
+            Locale locale = LocaleContextHolder.getLocale();
 
             return messageSource.getMessage((String) property, NO_ARGS, locale);
         } else {

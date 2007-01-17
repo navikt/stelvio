@@ -1,12 +1,14 @@
 package no.stelvio.common.error.support;
 
-import no.stelvio.common.context.RequestContext;
-import no.stelvio.common.util.SequenceNumberGenerator;
-import org.apache.commons.lang.StringUtils;
-
 import java.io.Serializable;
 import java.text.Format;
 import java.text.MessageFormat;
+
+import org.apache.commons.lang.StringUtils;
+
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.util.SequenceNumberGenerator;
 
 /**
  * Helper class for root exceptions.
@@ -26,8 +28,9 @@ public abstract class CommonExceptionLogic implements Serializable {
     private String message;
 
     protected CommonExceptionLogic(Object[] templateArguments) {
-        init(SequenceNumberGenerator.getNextId("ErrorId"), RequestContext.getUserId(), RequestContext.getScreenId(),
-                RequestContext.getProcessId(), RequestContext.getTransactionId(), templateArguments, false);
+	    RequestContext requestContext = RequestContextHolder.currentRequestContext();
+	    init(SequenceNumberGenerator.getNextId("ErrorId"), requestContext.getUserId(), requestContext.getScreenId(),
+                requestContext.getProcessId(), requestContext.getTransactionId(), templateArguments, false);
     }
 
     protected CommonExceptionLogic(CommonExceptionLogic cel) {

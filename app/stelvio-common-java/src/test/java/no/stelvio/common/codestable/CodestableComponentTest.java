@@ -1,25 +1,24 @@
 package no.stelvio.common.codestable;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.hamcrest.core.IsAnything;
+import org.jmock.InAnyOrder;
+import org.jmock.Mockery;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.i18n.LocaleContextHolder;
+
 import no.stelvio.common.codestable.factory.CodesTableFactory;
 import no.stelvio.common.codestable.support.DefaultCodesTable;
 import no.stelvio.common.codestable.support.DefaultCodesTableManager;
 import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
-import no.stelvio.common.context.RequestContext;
-
-import org.hamcrest.core.IsAnything;
-import org.jmock.InAnyOrder;
-import org.jmock.Mockery;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * Component test of Codestable.
@@ -93,7 +92,7 @@ public class CodestableComponentTest {
 	@Test
 	public void testGetDecode() {
 		//Sets the locale in the request context
-		RequestContext.setLocale(locale);
+		LocaleContextHolder.setLocale(locale);
 
 		assertEquals("Con004.001 : getDecode() failed ", codesTableManager.getCodesTable(TestCodesTableItem.getCti1().getClass()).getDecode(code), decode);
 		context.assertIsSatisfied();
@@ -159,7 +158,7 @@ public class CodestableComponentTest {
 		cal.set(106, 9, 15);
 		Date nonvalidDate = new Date(cal.getTimeInMillis());
 
-		RequestContext.setLocale(locale);
+		LocaleContextHolder.setLocale(locale);
 
 		try {
 			codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass()).getDecode(code, nonvalidDate);
@@ -177,7 +176,7 @@ public class CodestableComponentTest {
 	@Test
 	public void testGetDecodePeriodic() {
 		//Sets the locale in the request context
-		RequestContext.setLocale(locale);
+		LocaleContextHolder.setLocale(locale);
 
 		assertEquals("Con009.001 : getDecode() failed ", codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass()).getDecode(code, date), decode);
 		context.assertIsSatisfied();

@@ -10,7 +10,7 @@ package no.stelvio.common.context;
  * @author person7553f5959484
  * @version $Revision: 1975 $ $Date: 2005-02-16 16:57:06 +0100 (Wed, 16 Feb 2005) $
  */
-public interface Context {
+public interface Context<T> {
 
 	/**
 	 * Put a context value as identified with the key parameter 
@@ -19,7 +19,7 @@ public interface Context {
 	 * @param key key to identify the value
 	 * @param value object to store
 	 */
-	void put(String key, Object value);
+	void put(T key, Object value);
 	
 	/**
 	 * Get the context value identified by the key parameter 
@@ -28,12 +28,12 @@ public interface Context {
 	 * @param key key to identify the value
 	 * @return the value stored
 	 */
-	Object get(String key);
+	Object get(T key);
 	
 	/**
 	 * Remove all of the context values.
 	 */
-	void remove();
+	void removeAll();
 	
 	/**
 	 * Import a new context

@@ -16,8 +16,8 @@ app/stelvio-common-java/.classpath -text
 app/stelvio-common-java/.project -text
 app/stelvio-common-java/pom.xml -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/Constants.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/aop/ContextHandlerAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/aop/RequestContextHandlerAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/support/DefaultCacheManagement.java -text
@@ -118,16 +118,14 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/RolesUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecureAnnotationNotInMappingException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributes.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ContextContainer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceRequest.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceResponse.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/TransferObject.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultContextContainer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultEntityListResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultEntityResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultTransferObject.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/TransferObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/DateUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ErrorCodesUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/Log469MessageFormatterImpl.java -text

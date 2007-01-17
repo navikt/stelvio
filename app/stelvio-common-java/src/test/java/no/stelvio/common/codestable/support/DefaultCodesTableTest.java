@@ -7,12 +7,12 @@ import java.util.Locale;
 import org.apache.commons.collections.Predicate;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.TestCodesTableItem;
-import no.stelvio.common.context.RequestContext;
 
 /**
  * Unit test of CodesTable.
@@ -128,7 +128,7 @@ public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringCont
 
 		//Set the locale in the RequestContext
 		Locale locale = new Locale("nb", "NO");
-		RequestContext.setLocale(locale);
+		LocaleContextHolder.setLocale(locale);
 		
 		//Test: get a decode for a code that does not exist
 		try{

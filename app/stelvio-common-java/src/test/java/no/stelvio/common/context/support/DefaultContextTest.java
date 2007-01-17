@@ -2,8 +2,6 @@ package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
 
-import no.stelvio.common.context.support.DefaultContext;
-
 import junit.framework.TestCase;
 
 /**
@@ -32,7 +30,7 @@ public class DefaultContextTest extends TestCase {
 		c.put("key", o);
 		assertSame("Objects should have been the same", o, c.get("key"));
 
-		c.remove();
+		c.removeAll();
 		assertNull("Object should have been null", c.get("key"));
 
 		c.importContext(null);
@@ -55,7 +53,7 @@ public class DefaultContextTest extends TestCase {
 		Hashtable h2 = (Hashtable) c.exportContext();
 		assertSame("Objects should have been the same", o2, h2.get("key2"));
 
-		c.remove();
+		c.removeAll();
 		c.put("key3", "value3");
 		c.importContext(h2);
 		assertNull("Imported Hashtable should have cleared existing content", c.get("key3"));

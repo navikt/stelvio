@@ -1,5 +1,7 @@
 package no.stelvio.common.context;
 
+import java.io.Serializable;
+
 import no.stelvio.common.context.support.DefaultContext;
 
 /**
@@ -27,7 +29,7 @@ abstract class AbstractContext {
 
 	private static final String LOG4J_DETECTOR_CLASS_NAME = "org.apache.log4j.Logger";
 
-	private static Context context = null;
+	private static Context<String> context;
 
 	static {
 		init();
@@ -46,9 +48,9 @@ abstract class AbstractContext {
 	 * DefaultContext if it isn't.
 	 */
 	private static void init() {
-
 		// Determine the context to use
 		contextClass = DefaultContext.class;
+
 		try {
 			ClassLoader cl = Thread.currentThread().getContextClassLoader();
 
@@ -76,10 +78,8 @@ abstract class AbstractContext {
 	 * 
 	 * @param key key to identify the value
 	 * @param value object to store
-	 * 
-	 * @see no.stelvio.common.context.Context#put(java.lang.String, java.lang.Object)
 	 */
-	protected static final void put(String key, Object value) {
+	protected final void put(String key, Serializable value) {
 		context.put(key, value);
 	}
 
@@ -89,20 +89,18 @@ abstract class AbstractContext {
 	 * 
 	 * @param key key to identify the value
 	 * @return the value stored
-	 * 
-	 * @see no.stelvio.common.context.Context#get(java.lang.String)
 	 */
-	protected static final Object get(String key) {
+	protected final Object get(String key) {
 		return context.get(key);
 	}
 
 	/**
 	 * Remove all of the context values.
 	 * 
-	 * @see no.stelvio.common.context.Context#remove()
+	 * @see no.stelvio.common.context.Context#removeAll()
 	 */
-	public static final void remove() {
-		context.remove();
+	public final void removeAll() {
+		context.removeAll();
 	}
 
 	/**
@@ -112,7 +110,7 @@ abstract class AbstractContext {
 	 * 
 	 * @see no.stelvio.common.context.Context#exportContext()
 	 */
-	public static final Object exportContext() {
+	public final Object exportContext() {
 		return context.exportContext();
 	}
 
@@ -122,7 +120,7 @@ abstract class AbstractContext {
 	 * @param o the context to import
 	 * @see no.stelvio.common.context.Context#importContext(java.lang.Object)
 	 */
-	public static final void importContext(Object o) {
+	public final void importContext(Object o) {
 		context.importContext(o);
 	}
 }

@@ -28,7 +28,7 @@ import no.stelvio.common.context.Context;
  * @author person7553f5959484
  * @version $Revision: 123 $ $Date: 2004-05-06 20:09:25 +0200 (Thu, 06 May 2004) $
  */
-class Log4jContext implements Context {
+class Log4jContext<T> implements Context {
 
 	private static Log log = LogFactory.getLog(Log4jContext.class);
 
@@ -38,12 +38,10 @@ class Log4jContext implements Context {
 	 * 
 	 * @param key key to identify the value
 	 * @param value object to store
-	 * 
-	 * @see no.stelvio.common.context.Context#put(java.lang.String, java.lang.Object)
 	 */
-	public void put(String key, Object value) {
+	public void put(Object key, Object value) {
 		if (null != key && null != value) {
-			MDC.put(key, value);
+			MDC.put((String) key, value);
 		}
 	}
 
@@ -53,19 +51,17 @@ class Log4jContext implements Context {
 	 * 
 	 * @param key key to identify the value
 	 * @return the value stored
-	 * 
-	 * @see no.stelvio.common.context.Context#get(java.lang.String)
 	 */
-	public Object get(String key) {
-		return MDC.get(key);
+	public Object get(Object key) {
+		return MDC.get((String) key);
 	}
 
 	/**
 	 * Remove all of the context values.
 	 * 
-	 * @see no.stelvio.common.context.Context#remove()
+	 * @see no.stelvio.common.context.Context#removeAll()
 	 */
-	public void remove() {
+	public void removeAll() {
 		Hashtable ht = MDC.getContext();
 		if (ht != null) {
 			ht.clear();

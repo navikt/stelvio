@@ -2,7 +2,6 @@ package no.stelvio.common.transferobject.support;
 
 import java.util.List;
 
-import no.stelvio.common.transferobject.ContextContainer;
 import no.stelvio.common.transferobject.EntityListResponse;
 
 /**

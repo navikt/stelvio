@@ -6,12 +6,12 @@ import java.util.Locale;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
-import no.stelvio.common.context.RequestContext;
 
 /**
  * Implementation of CodesTable used to handle a codestable, its belonging values and predicates for filtering the items
@@ -111,7 +111,7 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code) {		
-		return getDecode(code, RequestContext.getLocale());
+		return getDecode(code, LocaleContextHolder.getLocale());
 	}
 
 	/** 
@@ -129,7 +129,7 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) ){
 				 decode = cti.getDecode();
 				 break;
-			} else if (cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(RequestContext.getLocale())){
+			} else if (cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(LocaleContextHolder.getLocale())){
 				defaultDecode = cti.getDecode();
 			}
 		}

@@ -15,18 +15,15 @@
  */
 package no.stelvio.presentation.jsf.resolver;
  
+import java.util.Locale;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
-import no.stelvio.common.context.RequestContext;
-
 import org.apache.shale.test.base.AbstractJsfTestCase;
 import org.apache.shale.test.mock.MockPropertyResolver;
-
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ResourceBundleMessageSource;
-
-import java.util.Locale;
 
 /**
  * This class tests MessageSourcePropertyResolver.
@@ -89,7 +86,7 @@ public class MessageSourcePropertyResolverTest extends AbstractJsfTestCase {
         this.baseResolver = new MockPropertyResolver();
         this.messageSourcePropertyResolver = new MessageSourcePropertyResolver(this.baseResolver);
         
-        RequestContext.setLocale(new Locale("en", "US"));
+        LocaleContextHolder.setLocale(new Locale("en", "US"));
     }
 
     /**
@@ -111,7 +108,7 @@ public class MessageSourcePropertyResolverTest extends AbstractJsfTestCase {
 	 * for JSF application to get their current locale.
 	 */
     public void testGetValueObjectObjectWithMessageSourceAndDifferentLocale() {
-        RequestContext.setLocale(new Locale("en", "GB"));
+        LocaleContextHolder.setLocale(new Locale("en", "GB"));
 
         Object testMessage = messageSourcePropertyResolver.getValue(this.messageSource, "testMessage");
 

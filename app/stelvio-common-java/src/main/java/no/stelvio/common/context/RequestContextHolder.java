@@ -1,5 +1,7 @@
 package no.stelvio.common.context;
 
+import org.springframework.web.filter.RequestContextFilter;
+
 /**
  * Helper class to manage a thread-bound instance of the <code>RequestContext</code> class.
  *
@@ -7,7 +9,11 @@ package no.stelvio.common.context;
  * @see RequestContext
  */
 public final class RequestContextHolder  {
-    /** Holds an instance of the <code>RequestContext</code> class. */
+    /**
+     * Holds an instance of the <code>RequestContext</code> class.
+     * TODO check if InheritableThreadLocal is safe to use; something about JVM incompatibilities
+     * (see Acegi's SecurityContextHolder)
+     */
 	private static final ThreadLocal<RequestContext> requestContextHolder = new InheritableThreadLocal<RequestContext>();
 
     /** Should not be instantiated. */
@@ -17,19 +23,10 @@ public final class RequestContextHolder  {
     /**
 	 * Bind the given <code>RequestContext</code> to the current thread.
      *
-	 * @param context the <code>RequestContext</code> to expose
+	 * @param context the <code>RequestContext</code> to expose.
 	 */
 	public static void setRequestContext(RequestContext context) {
 		requestContextHolder.set(context);
-	}
-
-	/**
-	 * Return the <code>RequestContext</code> currently bound to the thread.
-     *
-	 * @return the <code>RequestContext</code> currently bound to the thread, or <code>null</code>.
-	 */
-	public static RequestContext getRequestContext() {
-		return requestContextHolder.get();
 	}
 
 	/**
@@ -42,9 +39,18 @@ public final class RequestContextHolder  {
 		RequestContext context = requestContextHolder.get();
 
         if (context == null) {
-			throw new IllegalStateException("No thread-bound request: use RequestContextFilter");
+	        throw new IllegalStateException("No thread-bound request context found: " +
+			        "Make sure " + RequestContextFilter.class.getSimpleName() + " is setup properly for the web " +
+			        "application in front and the proper request context interceptors are setup for the layers below.");
 		}
 
         return context;
+	}
+
+	/**
+	 * Reset the <code>RequestContext</code> for the current thread.
+	 */
+	public static void resetRequestContext() {
+		requestContextHolder.set(null);
 	}
 }
