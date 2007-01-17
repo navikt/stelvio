@@ -14,6 +14,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.error.LoggableException;
 import no.stelvio.common.error.StelvioException;
 import no.stelvio.common.error.SystemUnrecoverableException;
@@ -25,6 +26,7 @@ import no.stelvio.common.util.SequenceNumberGenerator;
  * 
  * @author person7553f5959484, Accenture
  * @version $Id: AbstractFilter.java 2109 2005-03-09 10:35:40Z psa2920 $
+ * @deprecated Use Spring's OncePerRequestFilter instead.
  */
 public abstract class AbstractFilter implements Filter {
 
@@ -104,8 +106,6 @@ public abstract class AbstractFilter implements Filter {
 			}
 		} catch (Exception e) {
 			throw new ServletException("An error occured while initiating the filter", e);
-		} finally {
-			RequestContext.remove();
 		}
 	}
 
@@ -193,17 +193,16 @@ public abstract class AbstractFilter implements Filter {
 	 * @see javax.servlet.Filter#destroy()
 	 */
 	public void destroy() {
-		try {
-			setRequestContext("Shutdown");
-			if (log.isInfoEnabled()) {
-				log.info("Destroying " + filterConfig.getFilterName() + " ...");
-			}
-			doDestroy();
-			if (log.isInfoEnabled()) {
-				log.info(filterConfig.getFilterName() + " destroyed");
-			}
-		} finally {
-			RequestContext.remove();
+		setRequestContext("Shutdown");
+
+		if (log.isInfoEnabled()) {
+			log.info("Destroying " + filterConfig.getFilterName() + " ...");
+		}
+
+		doDestroy();
+
+		if (log.isInfoEnabled()) {
+			log.info(filterConfig.getFilterName() + " destroyed");
 		}
 	}
 
@@ -229,10 +228,13 @@ public abstract class AbstractFilter implements Filter {
 	 * @param processId the process id, either "Startup" or "Shutdown" is used.
 	 */
 	private void setRequestContext(String processId) {
-		RequestContext.setScreenId(filterConfig.getInitParameter("screenId"));
-		RequestContext.setModuleId(filterConfig.getInitParameter("moduleId"));
-		RequestContext.setProcessId(processId);
-		RequestContext.setTransactionId(String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
-		RequestContext.setUserId(filterConfig.getInitParameter("userId"));
+		RequestContext requestContext =
+				new RequestContext(
+						filterConfig.getInitParameter("userId"),
+						filterConfig.getInitParameter("screenId"),
+						filterConfig.getInitParameter("moduleId"),
+						processId,
+						String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
+		RequestContextHolder.setRequestContext(requestContext);
 	}
 }
