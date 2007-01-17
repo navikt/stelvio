@@ -1,7 +1,5 @@
 package no.stelvio.common.context;
 
-import org.springframework.web.filter.RequestContextFilter;
-
 /**
  * Helper class to manage a thread-bound instance of the <code>RequestContext</code> class.
  *
@@ -40,8 +38,8 @@ public final class RequestContextHolder  {
 
         if (context == null) {
 	        throw new IllegalStateException("No thread-bound request context found: " +
-			        "Make sure " + RequestContextFilter.class.getSimpleName() + " is setup properly for the web " +
-			        "application in front and the proper request context interceptors are setup for the layers below.");
+			        "Make sure filters for binding the request context is setup properly for the web application " +
+			        "in front and the proper request context interceptors are setup for the layers below.");
 		}
 
         return context;
