@@ -3,9 +3,6 @@
     <wb-module deploy-name="stelvio-presentation-star-example-web">
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/stelvio-domain-star-example-java/stelvio-domain-star-example-java">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/stelvio-service-star-example-ejb/stelvio-service-star-example-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
