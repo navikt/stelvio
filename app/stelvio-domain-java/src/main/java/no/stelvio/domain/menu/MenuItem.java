@@ -159,8 +159,8 @@ public class MenuItem implements Serializable {
 	 * Sets menu id
 	 * @param menuId the menuId to set.
 	 */
-	public void setMenuId(int id) {
-		this.menuId = id;
+	public void setMenuId(int menuId) {
+		this.menuId = menuId;
 	}
 	
 	/**

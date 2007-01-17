@@ -110,8 +110,8 @@ public class MenuItemPermission implements Serializable {
 	 * Sets the permission id
 	 * @param permissionId the permissionId to set.
 	 */
-	public void setPermissionId(int id) {
-		this.permissionId = id;
+	public void setPermissionId(int permissionId) {
+		this.permissionId = permissionId;
 	}
 
 
