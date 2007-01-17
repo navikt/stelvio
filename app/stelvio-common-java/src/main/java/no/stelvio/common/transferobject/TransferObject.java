@@ -1,4 +1,4 @@
-package no.stelvio.common.transferobject.support;
+package no.stelvio.common.transferobject;
 
 import java.io.Serializable;
 
@@ -9,6 +9,7 @@ import no.stelvio.common.context.RequestContext;
  * business services.
  * 
  * @author personff564022aedd
+ * @deprecated use <code>ServiceResponse</code> or <code>ServiceRequest</code>. 
  */
 public abstract class TransferObject implements Serializable {
 	/** The <code>RequestContext</code> instance to use. */
