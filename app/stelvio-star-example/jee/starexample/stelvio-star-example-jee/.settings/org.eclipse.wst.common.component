@@ -2,14 +2,6 @@
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="stelvio-star-example-jee">
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
-        <dependent-module deploy-path="/" handle="module:/resource/stelvio-presentation-star-example-web/stelvio-presentation-star-example-web">
-            <dependent-object>WebModule_1168542486796</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/resource/stelvio-service-star-example-ejb/stelvio-service-star-example-ejb">
-            <dependent-object>EjbModule_1168890021890</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/acegi-security-1.0.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -94,7 +86,18 @@
         <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/stelvio-domain-java-1.0.1-SNAPSHOT.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/stelvio-star-example-jee/stelvio-domain-star-example-java-1.0.0-SNAPSHOT.jar">
+        <dependent-module archiveName="stelvio-domain-star-example-java.jar" deploy-path="/" handle="module:/resource/stelvio-domain-star-example-java/stelvio-domain-star-example-java">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/resource/stelvio-presentation-star-example-web/stelvio-presentation-star-example-web">
+            <dependent-object>WebModule_1169043754843</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/resource/stelvio-service-star-example-ejb/stelvio-service-star-example-ejb">
+            <dependent-object>EjbModule_1169043798562</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="stelvio-repository-star-example-java.jar" deploy-path="/" handle="module:/resource/stelvio-repository-star-example-java/stelvio-repository-star-example-java">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
