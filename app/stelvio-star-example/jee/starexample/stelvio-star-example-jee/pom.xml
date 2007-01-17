@@ -44,6 +44,7 @@
 						<configuration>
 							<includeType>ejb</includeType>
 							<outputDirectory>${basedir}/</outputDirectory>
+							<overWriteSnapshots>true</overWriteSnapshots>
 						</configuration>
 					</execution>
 				</executions>
