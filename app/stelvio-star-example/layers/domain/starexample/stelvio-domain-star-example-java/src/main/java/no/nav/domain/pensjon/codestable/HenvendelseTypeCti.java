@@ -1,5 +1,8 @@
 package no.nav.domain.pensjon.codestable;
 
+import java.util.Date;
+import java.util.Locale;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -31,6 +34,16 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
     @AttributeOverride(name="toDate", column=@Column(name="dato_tom"))
 })
 public class HenvendelseTypeCti extends CodesTableItemPeriodic {
+
+	protected HenvendelseTypeCti() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public HenvendelseTypeCti(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean valid) {
+		super(code, decode, fromDate, toDate, locale, valid);
+		// TODO Auto-generated constructor stub
+	}
 
 	private static final long serialVersionUID = 4989579646384579677L;
 
