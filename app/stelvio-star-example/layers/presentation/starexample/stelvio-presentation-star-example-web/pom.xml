@@ -136,6 +136,7 @@
 								${basedir}/src/main/webapp/WEB-INF/lib/
 							</outputDirectory>
 							<includeScope>runtime</includeScope>
+							<overWriteSnapshots>true</overWriteSnapshots>
 						</configuration>
 					</execution>
 				</executions>
