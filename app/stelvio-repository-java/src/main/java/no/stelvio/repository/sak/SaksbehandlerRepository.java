@@ -6,24 +6,26 @@ import no.stelvio.domain.sak.Responsible;
 
 /**
  * 
+ * Calls GSAK service (Remove this and copy into implementation when ready)
+ * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  */
 public interface SaksbehandlerRepository {
 	
 	/**
-	 * TODO: Document me
+	 * Retrieves case workers based on unit id
 	 * 
 	 * @param enhetId
-	 * @return
+	 * @return List of Responsible
 	 */
 	public List<Responsible> getSaksbehandlere(String enhetId);
 	
 	/**
-	 * TODO: Document me
+	 * Retrieves case worker
 	 * 
-	 * @param saksbehandlerNr
-	 * @return
+	 * @param saksbehandlerNr id for case worker
+	 * @return Responsible
 	 */
 	public Responsible getSaksbehandler(String saksbehandlerNr);
 }
