@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
+
+	<start-state idref="enter"/>
+
+	<view-state id="enter" view="/pages/start.xhtml">
+		<transition on="hent" to="henterPerson">
+			<action bean="startFormAction" method="bind"/>
+		</transition>
+	</view-state>
+
+	<action-state id="henterPerson">
+		<action bean="startAction" method="executeSearch"/>
+		<transition on="success" to="finish"/>
+		<!-- transition on="error" to="enter" / -->
+	</action-state>
+
+	<end-state id="finish" view="flowRedirect:oppgavelisten-flow"/>
+
+
+	<import resource="start-context.xml"/>
+
+</flow>
