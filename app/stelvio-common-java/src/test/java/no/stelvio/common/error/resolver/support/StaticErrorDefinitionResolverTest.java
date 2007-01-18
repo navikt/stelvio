@@ -41,12 +41,12 @@ public class StaticErrorDefinitionResolverTest extends ErrorDefinitionResolverTe
 		new StaticErrorDefinitionResolver(errors);
 	}
 
-	@Test(expected = IllegalStateException.class) // TODO other exception
+	@Test(expected = IllegalStateException.class)
 	public void errorDefinitionWithWrongNumberOfArgumentsForStelvioExceptionThrowsException() {
 		staticErrorResolver.resolve(new TestUnrecoverableException("test"));
 	}
 
-	@Test(expected = IllegalStateException.class) // TODO other exception
+	@Test(expected = IllegalStateException.class)
 	public void errorDefinitionWithWrongNumberOfArgumentsForOtherExceptionThrowsException() {
 		staticErrorResolver.resolve(new Throwable("message"));
 	}

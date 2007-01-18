@@ -2,8 +2,7 @@ package no.stelvio.common.error.support;
 
 /**
  * @author personf8e9850ed756
- * @todo write javadoc
- * @todo Should this be the class being persisted?
+ * @todo Add Hibernate annotations
  * @todo Should this have more logic?
  * @todo Should it implement Comparable based on Severity
  */

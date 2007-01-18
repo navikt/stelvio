@@ -12,8 +12,6 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * @author person7553f5959484
  * @version $Revision: 2837 $ $Author: psa2920 $ $Date: 2006-01-09 16:12:14 +0100 (ma, 09 jan 2006) $
  * @todo change javadoc to say something about usage, see RecoverableException.
- * @todo is the name correct when the previous todo is implemented?
- * @todo should it have an abstract method, or something, maybe just use protected constructors.
  */
 abstract class UnrecoverableException extends RuntimeException implements StelvioException {
     private final CommonExceptionLogic commonExceptionLogic;

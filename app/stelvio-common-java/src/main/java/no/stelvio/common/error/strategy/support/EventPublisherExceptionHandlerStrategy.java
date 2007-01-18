@@ -11,7 +11,6 @@ import no.stelvio.common.event.audit.AuditItem;
 
 /**
  * @author personf8e9850ed756
- * @todo write javadoc
  * @todo maybe this should be in the event package so not to get circular dependencies between the event and error
  * packages
  * @todo implement this fully when we know how CEI works.

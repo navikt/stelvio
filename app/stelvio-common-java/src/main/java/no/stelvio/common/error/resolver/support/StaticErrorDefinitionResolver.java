@@ -20,8 +20,7 @@ import no.stelvio.common.error.support.ErrorDefinition;
  *
  * @author personf8e9850ed756
  * @todo better javadoc
- * @todo should check that all exception classes specified in the database can be instantiated, maybe have a set anyway  
- * @todo this class has quite a lot of aspects now; should be divided?
+ * @todo this class has quite a lot of aspects now; should it be divided?
  */
 public class StaticErrorDefinitionResolver implements ErrorDefinitionResolver {
     private final HashMap<Class, ErrorDefinition> errorMap;
@@ -40,7 +39,7 @@ public class StaticErrorDefinitionResolver implements ErrorDefinitionResolver {
      * @param throwable
      * @return
      * @todo should cache the eventual mapping between clazz and the class in the errorMap; that is, so finding super
-     * classes and interfaces don't have to be done each time.
+     * classes and interfaces don't have to be done each time. Maybe use the cache framework?
      */
     public ErrorDefinition resolve(Throwable throwable) {
         // TODO should we allow throwing IllegalArgumentException for coding errors? Maybe make our own version of Assert.x()?
@@ -108,7 +107,6 @@ public class StaticErrorDefinitionResolver implements ErrorDefinitionResolver {
      *
      * @param clazz the class to find super classes and interfaces for.
      * @return an ordered queue with all the class' super classes and interfaces.
-     * @todo remember to cache the findings; maybe using the cache framework?
      * @todo add synchronization, use some of the new Java 5 sync. functionality or just use the one provided by the
      * cache framework
      */

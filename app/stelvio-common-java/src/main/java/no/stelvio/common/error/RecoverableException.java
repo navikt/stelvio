@@ -12,7 +12,6 @@ import no.stelvio.common.error.support.ExceptionToCopyHolder;
  * @author person7553f5959484, Accenture
  * @version $Id: RecoverableException.java 2839 2006-04-25 10:23:10Z psa2920 $
  * @todo change javadoc to say something about only use it when the client MUST catch it else use UnrecoverableException.
- * @todo is the name correct when the previous todo is implemented? Maybe call it RecoverableExcpetion?
  */
 abstract class RecoverableException extends Exception implements StelvioException {
     private final CommonExceptionLogic commonExceptionLogic;

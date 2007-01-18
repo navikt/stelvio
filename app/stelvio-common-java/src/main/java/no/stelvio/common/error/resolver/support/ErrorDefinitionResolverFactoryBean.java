@@ -23,7 +23,6 @@ public class ErrorDefinitionResolverFactoryBean implements FactoryBean, Initiali
     /**
      * Default implementation of the <code>ErrorDefinitionResolver</code> is used if not specified.
      *
-     * @todo better javadoc
      * @see StaticErrorDefinitionResolver
      */
     private Class<? extends ErrorDefinitionResolver> errorResolverClass = StaticErrorDefinitionResolver.class;

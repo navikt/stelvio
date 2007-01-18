@@ -12,7 +12,6 @@ import no.stelvio.common.error.support.ErrorDefinition;
 
 /**
  * @author personf8e9850ed756
- * @todo write javadoc
  * @todo should we log to specific logs? Like ENTERPRISE_LOG / SYSTEM_LOG as were done in previous version ->
  * use a log resolver maybe? Share with event logging
  */
@@ -24,7 +23,6 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
     /**
      * <code>Extractor</code> that extracts message from the exception is used if nothing is specified.
      *
-     * @todo better javadoc
      * @see FromDatabaseExtractor
      */
     private Extractor extractor = new FromExceptionExtractor();
@@ -34,7 +32,6 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * Logs the exception.
      * 
      * {@inheritDoc}
-     * @todo javadoc
      * @todo what about the properties from StelvioException like errorId, userId, etc?
      */
     public <T extends Throwable> T handleException(T throwable) {
