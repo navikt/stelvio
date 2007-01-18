@@ -460,8 +460,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/ibm-web-bnd.xmi -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/ibm-web-ext.xmi -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/web.xml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/bruker.info.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/brukerinfo.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/column.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/errorMessage.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/globalErrorMessage.xhtml -text
@@ -471,9 +469,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/henvendelse/henvendelse.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/henvendelse/henvendelser.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/henvendelse/registrert.info.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/person/personopplysninger_input.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/person/sokperson-results.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/person/sokperson.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/Detaljer[!!-~]opptjeningsregister_modus2.htm -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/NAVgronn.gif -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/NAVlysBla.gif -text
@@ -566,14 +561,7 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/utropstegn.gif -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/yellow_14x14.GIF -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/index.jsp -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/bruker/brukeroversikt.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/bruker/brukeroversiktLayout.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/henvendelse/oversiktoverhenvendelser.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/henvendelse/registrerhenvendelse.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/oppgavelisten.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/person/layout/personopplysningerLayout.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/person/personopplysninger.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/person/sokeperson.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/start.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/scripts/javascript.js -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/styles/NAVstylesheet.css -text
