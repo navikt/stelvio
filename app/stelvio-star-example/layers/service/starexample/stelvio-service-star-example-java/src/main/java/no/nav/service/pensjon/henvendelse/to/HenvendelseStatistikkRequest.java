@@ -1,16 +1,27 @@
-package no.nav.service.pensjon.henvendelse.to;
+package no.nav.service.pensjon.henvendelse.to.impl;
 
 import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
+import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkRequest;
+import no.stelvio.common.transferobject.ServiceRequest;
 
 /**
  * Defines criteria for generating and returning {@link no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk}.
- * 
  * @author personff564022aedd
  */
-public interface HenvendelseStatistikkRequest {
+public class HenvendelseStatistikkRequest extends ServiceRequest {
+	private HenvendelseStatistikkCriteria henvendelseStatistikkCriteria;
 
 	/**
-	 * @return {@link HenvendelseStatistikkCriteria}
+	 * @param henvendelseStatistikkCriteria critera to be added in the new instance
 	 */
-	HenvendelseStatistikkCriteria getCriteria();
+	public HenvendelseStatistikkRequest(HenvendelseStatistikkCriteria henvendelseStatistikkCriteria) {
+		this.henvendelseStatistikkCriteria = henvendelseStatistikkCriteria;
+	}
+
+	/**
+	 * {@inheritDoc HenvendelseStatistikkRequest#getCriteria()}
+	 */
+	public HenvendelseStatistikkCriteria getCriteria() {
+		return henvendelseStatistikkCriteria;
+	}
 }
