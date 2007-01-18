@@ -1,7 +1,5 @@
 package no.stelvio.common.context;
 
-import org.springframework.web.filter.RequestContextFilter;
-
 /**
  * Helper class to manage a thread-bound instance of the <code>RequestContext</code> class.
  *
