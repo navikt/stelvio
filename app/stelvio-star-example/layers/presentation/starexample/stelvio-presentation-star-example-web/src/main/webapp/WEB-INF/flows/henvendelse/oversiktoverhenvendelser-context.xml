@@ -14,14 +14,13 @@
 		<property name="formObjectClass" value="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserForm"/>
 		<property name="formObjectScope" value="FLOW"/>
 		<property name="validator">
-			<ref local="hentOversiktOverHenvendelserValidator"/>
+			<ref local="prs.henvendelse.oversiktValidator"/>
 		</property>
-		<property name="henvendelseService">
-			<ref bean="prs.starexample.henvendelseService"/>
-		</property>
+		<property name="henvendelseService" ref="prs.starexample.henvendelseService"/>
+		<property name="codesTableManager" ref="prs.starexample.codesTableManager"/>
 	</bean>
 
-	<bean id="hentOversiktOverHenvendelserValidator"
+	<bean id="prs.henvendelse.oversiktValidator"
 	      class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="messageSource" ref="messageSource"/>
 		<property name="customFunctions">
