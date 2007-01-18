@@ -70,7 +70,7 @@
 	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.4/dom4j-1.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/ognl/ognl/2.6.7/ognl-2.6.7.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-domain-star-example-java"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-service-star-example-ejb"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-service-star-example-java"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>
