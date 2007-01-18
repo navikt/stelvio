@@ -4,7 +4,6 @@
 package no.nav.service.pensjon.saksbehandling.service;
 
 import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO;
 import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 import no.nav.service.pensjon.person.exception.PersonNotFoundException;
 
