@@ -19,7 +19,7 @@ public interface TaskRepository {
 	 * 
 	 * See Documents PP4C2005 (describes service) & PP4C2010 (describes ASBO)
 	 * 
-	 * @param responsibleId
+	 * @param responsibleId id for the responsible that the tasklist will be retrieved for
 	 * @return task list
 	 */
 	public List<Task> getTaskList(String responsibleId);
