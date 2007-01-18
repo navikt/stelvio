@@ -1,21 +1,19 @@
 package no.nav.service.pensjon.person.exception;
 
-public class PersonNotFoundException extends Exception {
+import no.stelvio.common.error.FunctionalUnrecoverableException;
+
+public class PersonNotFoundException extends FunctionalUnrecoverableException {
 	private static final long serialVersionUID = 1L;
-	
-	public PersonNotFoundException() {
-		super();
+
+	public PersonNotFoundException(String id) {
+		super(id);
 	}
-	
-	public PersonNotFoundException(String message) {
-		super(message);
+
+	public PersonNotFoundException(Throwable cause, String id) {
+		super(cause, id);
 	}
-	
-	public PersonNotFoundException(Exception e) {
-		super(e);
-	}
-	
-	public PersonNotFoundException(String message, Exception e) {
-		super(message, e);
+
+	protected String messageTemplate(int numArgs) {
+		return "person ble ikke funnet: {0}";
 	}
 }

@@ -1,21 +1,19 @@
 package no.nav.service.pensjon.exception;
 
-public class DatabaseNotFoundException extends Exception {
+import no.stelvio.common.error.SystemUnrecoverableException;
+
+public class DatabaseNotFoundException extends SystemUnrecoverableException {
 	private static final long serialVersionUID = 1L;
-	
-	public DatabaseNotFoundException() {
-		super();
-	}
-	
-	public DatabaseNotFoundException(String message) {
+
+	protected DatabaseNotFoundException(String message) {
 		super(message);
 	}
-	
-	public DatabaseNotFoundException(Exception e) {
-		super(e);
+
+	protected DatabaseNotFoundException(Throwable cause, String message) {
+		super(cause, message);
 	}
-	
-	public DatabaseNotFoundException(String message, Exception e) {
-		super(message, e);
+
+	protected String messageTemplate(int numArgs) {
+		return "DB is not available: {0}";
 	}
 }
