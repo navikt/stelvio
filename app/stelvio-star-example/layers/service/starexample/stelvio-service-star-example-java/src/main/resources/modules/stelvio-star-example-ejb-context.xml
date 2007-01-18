@@ -4,8 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-    <bean id="frm.starexample.codesTableFactory" class="no.stelvio.service.codestable.DefaultCodesTableFactory">
-    	<property name="codesTableRepository" ref="rep.starexample.codesTableRepository"/>
-    </bean>
-    <bean id="rep.starexample.codesTableRepository" class="no.stelvio.repository.codestable.support.HibernateCodesTableRepository"/>
+	<bean id="srv.starexample.codesTableFactory" class="no.stelvio.service.codestable.DefaultCodesTableFactory">
+		<property name="codesTableRepository" ref="rep.starexample.codesTableRepository"/>
+	</bean>
+	<bean id="rep.starexample.codesTableRepository"
+	      class="no.stelvio.repository.codestable.support.HibernateCodesTableRepository"/>
+
+	<bean id="srv.starexample.henvendelseService" class="no.nav.service.pensjon.henvendelse.support.SimpleHenvendelseService"/>
+	<bean id="srv.starexample.saksbehandlerService" class="no.nav.service.pensjon.saksbehandling.support.SimpleSaksbehandlerService"/>
 </beans>
