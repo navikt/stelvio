@@ -8,7 +8,7 @@ import no.nav.domain.pensjon.codestable.HenvendelseTypeCti;
 import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk;
 import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
 import no.nav.service.pensjon.henvendelse.HenvendelseService;
-import no.nav.service.pensjon.henvendelse.to.impl.HenvendelseStatistikkRequestImpl;
+import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkRequest;
 import no.stelvio.common.codestable.CodesTableManager;
 
 
@@ -43,7 +43,7 @@ public class OversiktOverHenvendelserAction extends FormAction {
 //
 		log.debug("CodesTable HenvendelseTypeCti: " +
 				codesTableManager.getCodesTablePeriodic(HenvendelseTypeCti.class));
-		return (HenvendelseStatistikk)henvendelseService.genererHenvendelseStatistikk(new HenvendelseStatistikkRequestImpl(crit)).getEntity();
+		return (HenvendelseStatistikk)henvendelseService.genererHenvendelseStatistikk(new HenvendelseStatistikkRequest(crit)).getCriteria();
 	}
 
 	public void setHenvendelseService(HenvendelseService henvendelseService) {
