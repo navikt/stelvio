@@ -1,7 +1,7 @@
 /**
  * 
  */
-package no.nav.service.pensjon.saksbehandling.service;
+package no.nav.service.pensjon.saksbehandling;
 
 import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
 import no.nav.service.pensjon.exception.DatabaseNotFoundException;

@@ -1,9 +1,9 @@
-package no.nav.service.pensjon.saksbehandling.service.support;
+package no.nav.service.pensjon.saksbehandling.support;
 
 import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
 import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 import no.nav.service.pensjon.person.exception.PersonNotFoundException;
-import no.nav.service.pensjon.saksbehandling.service.SaksbehandlerService;
+import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
 
 /**
  * @author personf8e9850ed756, Accenture
