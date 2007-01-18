@@ -11,21 +11,5 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>
-		<session id="TestBb">
-			<ejb-name>TestBb</ejb-name>
-			<home>test.TestBbHome</home>
-			<remote>test.TestBb</remote>
-			<ejb-class>test.TestBbBean</ejb-class>
-			<session-type>Stateless</session-type>
-			<transaction-type>Container</transaction-type>
-		</session>
-		<session id="Asdf">
-			<ejb-name>Asdf</ejb-name>
-			<home>test.AsdfHome</home>
-			<remote>test.Asdf</remote>
-			<ejb-class>test.AsdfBean</ejb-class>
-			<session-type>Stateless</session-type>
-			<transaction-type>Container</transaction-type>
-		</session>
 	</enterprise-beans>
 </ejb-jar>

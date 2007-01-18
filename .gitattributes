@@ -669,12 +669,6 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/nav/service/pensjon/CodesTableFactoryLocal.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/nav/service/pensjon/CodesTableFactoryLocalHome.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/nav/service/pensjon/DefaultCodesTableFactory.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/test/Asdf.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/test/AsdfBean.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/test/AsdfHome.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/test/TestBb.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/test/TestBbBean.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/test/TestBbHome.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/pom.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/exception/DatabaseNotFoundException.java -text
