@@ -5,15 +5,15 @@ package no.nav.presentation.pensjon.saksbehandling.action;
 
 import java.util.Date;
 
+import org.springframework.webflow.action.MultiAction;
+import org.springframework.webflow.execution.Event;
+
+import no.nav.domain.pensjon.saksbehandling.HenvendelserDO;
+import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
 import no.nav.presentation.pensjon.saksbehandling.form.HenvendelseForm;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.HenvendelserDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.HenvendelseService;
 import no.nav.presentation.pensjon.saksbehandling.stelvio.service.OrgEnhetService;
 import no.nav.service.pensjon.person.PersonService;
-
-import org.springframework.webflow.action.MultiAction;
-import org.springframework.webflow.execution.Event;
 
 /**
  * 
@@ -138,7 +138,7 @@ public class RegistrerHenvendelseAction extends MultiAction {
 	
 	private HenvendelserDO makeHenvendelseFromForm( HenvendelseForm form )
 	{
-		HenvendelserDO henvendelse = new HenvendelserDO( 	form.getHid(), 
+		HenvendelserDO henvendelse = new HenvendelserDO( 	form.getHid(),
 															form.getFagomrade(), 
 															null, 
 															null, 
