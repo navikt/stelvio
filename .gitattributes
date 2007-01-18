@@ -125,6 +125,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceRe
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/TransferObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultEntityListResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/DefaultEntityResponse.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/support/TransferObject.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/DateUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/ErrorCodesUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/util/Log469MessageFormatterImpl.java -text

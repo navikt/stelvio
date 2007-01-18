@@ -1,24 +1,19 @@
-package no.stelvio.common.transferobject;
+package no.stelvio.common.transferobject.support;
 
 import java.io.Serializable;
 
 import no.stelvio.common.context.RequestContext;
 
-
 /**
- * The base class for all service requests, which are serializable and may contain a <code>RequestContext</code>.
+ * Base class for transfer objects. Transfer objects are thought useful for wrapping parameters and return values of
+ * business services.
  * 
  * @author personff564022aedd
- * @author person15754a4522e7
- * @author personf8e9850ed756
- * @see RequestContext
- * @version $Id$
  */
-public class ServiceRequest implements Serializable {
-	/** Used to ensure backwards compatability when serializing instances. */
-	private static final long serialVersionUID = -3970002011961058329L;
+public abstract class TransferObject implements Serializable {
 	/** The <code>RequestContext</code> instance to use. */
 	private RequestContext requestContext;
+
 	/**
 	 * @return {@link RequestContext}
 	 */

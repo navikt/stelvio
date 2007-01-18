@@ -38,8 +38,8 @@ public final class RequestContextHolder  {
 
         if (context == null) {
 	        throw new IllegalStateException("No thread-bound request context found: " +
-			        "Make sure filters for binding the request context is setup properly for the web application " +
-			        "in front and the proper request context interceptors are setup for the layers below.");
+			        "Make sure " + RequestContextFilter.class.getSimpleName() + " is setup properly for the web " +
+			        "application in front and the proper request context interceptors are setup for the layers below.");
 		}
 
         return context;
