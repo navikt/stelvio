@@ -51,7 +51,7 @@
 	      class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
 		<property name="jndiName" value="ejb/SaksbehandlerService"/>
 		<property name="resourceRef" value="true"/>
-		<property name="businessInterface" value="no.nav.service.pensjon.saksbehandling.service.SaksbehandlerService"/>
+		<property name="businessInterface" value="no.nav.service.pensjon.saksbehandling.SaksbehandlerService"/>
 	</bean>
 
 	<bean id="prs.starexample.henvendelseService"
