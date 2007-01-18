@@ -56,6 +56,8 @@ public final class Pid implements Serializable {
 	public Pid(String pid) throws PidValidationException{
 		this.pid = pid;
 		validate();
+		//The validate method allows white spaces, this makes sure white spaces are not persisted
+		this.pid = StringUtils.deleteWhitespace(this.pid);
 	}
 	
 	/**
@@ -95,18 +97,20 @@ public final class Pid implements Serializable {
 	 * @return <code>true</code> if the specified string is valid, otherwise <code>false</code>
 	 */
 	public static boolean isValidPid(String pid){
-		String value = StringUtils.deleteWhitespace(pid);
-		if(isValidCharacters(value) && isValidFnrLength(value)){			
-			if(isMod11Compliant(value)){
-				String fnr = makeDnrOrBostnrAdjustments(value);				
-				if(isFnrDateValid(fnr)){
-					return true;
+		if(pid != null && isWhitespaceUsageAllowed(pid)){
+			String value = StringUtils.deleteWhitespace(pid);
+			if(isValidCharacters(value) && isValidFnrLength(value)){			
+				if(isMod11Compliant(value)){
+					String fnr = makeDnrOrBostnrAdjustments(value);				
+					if(isFnrDateValid(fnr)){
+						return true;
+					}
 				}
 			}
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Method that calculates whether the this Pid is representing a Bostnummer
 	 * @return <code>true</code> if <code>this</code> is representing a bostnummer, otherwise <code>false</code>
@@ -157,6 +161,20 @@ public final class Pid implements Serializable {
 		if(!valid){
 			throw new PidValidationException(pid);
 		}
+	}
+	
+	/**
+	 * Validates that the white space usage in the pid is valid.
+	 * Valid use of white space is ONE white space between index 5 and 6 (making the pid.length() == 12)
+	 * No spaces is also a legal "use" of white spaces
+	 * @param pid to validate against white space rule
+	 * @return <code>true</code> if usage is valid, otherwise <code>false</code>
+	 */
+	private static boolean isWhitespaceUsageAllowed(String pid) {
+		String pidWithWhitespace = "\\d\\d\\d\\d\\d\\d\\s\\d\\d\\d\\d\\d"; //DDMMYY XXXZZ
+		String pidWithoutWhitespace = "\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d"; //DDMMYYXXXZZ
+		boolean isInLegalFormat = pid.matches(pidWithWhitespace) ||  pid.matches(pidWithoutWhitespace);
+		return isInLegalFormat;
 	}	
 	
 	/**
