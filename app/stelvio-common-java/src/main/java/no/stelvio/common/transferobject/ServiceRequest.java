@@ -25,7 +25,6 @@ public class ServiceRequest implements Serializable {
 	public RequestContext getRequestContext() {
 		return requestContext;
 	}
-
 	/**
 	 * Should only be set by subclasses or by reflection through interceptors used when the transfer object goes through
 	 * layers.
