@@ -4,12 +4,11 @@ package no.nav.presentation.pensjon.saksbehandling.stelvio.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.faces.model.SelectItem;
 
 import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.domain.pensjon.person.Person;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.HenvendelserDO;
+import no.nav.domain.pensjon.saksbehandling.HenvendelserDO;
 
 
 public class SomeService {
