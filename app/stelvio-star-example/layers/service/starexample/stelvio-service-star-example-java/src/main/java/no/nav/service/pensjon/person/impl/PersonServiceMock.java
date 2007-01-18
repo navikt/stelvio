@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 
-import no.nav.domain.pensjon.person.AnnenAdresse;
 import no.nav.domain.pensjon.person.BostedsAdresse;
 import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.domain.pensjon.person.Person;
@@ -18,8 +18,6 @@ import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 import no.nav.service.pensjon.exception.TPSException;
 import no.nav.service.pensjon.person.PersonService;
 import no.nav.service.pensjon.person.exception.PersonNotFoundException;
-
-import org.apache.commons.lang.StringUtils;
 
 
 /** 

@@ -7,7 +7,6 @@ import java.util.List;
 
 import no.nav.domain.pensjon.person.Person;
 import no.nav.domain.pensjon.person.PersonSearch;
-
 import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 import no.nav.service.pensjon.exception.TPSException;
 import no.nav.service.pensjon.person.exception.PersonNotFoundException;
