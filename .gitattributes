@@ -460,15 +460,8 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/ibm-web-bnd.xmi -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/ibm-web-ext.xmi -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/web.xml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/column.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/errorMessage.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/globalErrorMessage.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/menu.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/pageingFooter.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/sortColumn.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/henvendelse/henvendelse.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/henvendelse/henvendelser.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/henvendelse/registrert.info.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/Detaljer[!!-~]opptjeningsregister_modus2.htm -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/NAVgronn.gif -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/NAVlysBla.gif -text
