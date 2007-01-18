@@ -12,11 +12,11 @@ import org.junit.Test;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 
 /**
- * Unit test for {@link ExceptionHandlerStrategyMulticaster}.
+ * Unit test for {@link ExceptionHandlerStrategyChain}.
  *
  * @author personf8e9850ed756
  */
-public class ExceptionHandlerStrategyMulticasterTest {
+public class ExceptionHandlerStrategyChainTest {
     @Test
     public void shouldCallEachMemberInTheList() {
         Mockery context = new Mockery();
@@ -33,9 +33,9 @@ public class ExceptionHandlerStrategyMulticasterTest {
         strategies.add(strategy1);
         strategies.add(strategy2);
 
-        ExceptionHandlerStrategyMulticaster strategyMulticaster = new ExceptionHandlerStrategyMulticaster();
-        strategyMulticaster.setStrategies(strategies);
-        IllegalStateException result = strategyMulticaster.handleException(exception);
+        ExceptionHandlerStrategyChain strategyChain = new ExceptionHandlerStrategyChain();
+        strategyChain.setStrategies(strategies);
+        IllegalStateException result = strategyChain.handleException(exception);
 
         assertThat(result, same(exception));
         context.assertIsSatisfied();

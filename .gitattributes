@@ -81,7 +81,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/retriever/ErrorDef
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/retriever/RetrieverFailedException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/ExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/EventPublisherExceptionHandlerStrategy.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/ExceptionHandlerStrategyMulticaster.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/ExceptionHandlerStrategyChain.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/FallbackExceptionHandlerStrategy.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/ImitatorException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategy.java -text
@@ -181,7 +181,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/error/resolver/support/E
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/resolver/support/StaticErrorDefinitionResolverTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/retriever/TestErrorDefinitionRetriever.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/EventPublisherExceptionHandlerStrategyTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/ExceptionHandlerStrategyMulticasterTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/ExceptionHandlerStrategyChainTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/FallbackExceptionHandlerStrategyTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/ImitatorExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/LoggerExceptionHandlerStrategyTest.java -text

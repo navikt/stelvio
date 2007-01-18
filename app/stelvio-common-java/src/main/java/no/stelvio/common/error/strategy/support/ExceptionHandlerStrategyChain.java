@@ -5,13 +5,11 @@ import java.util.Set;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
 
 /**
- * Will multicast to others {@link ExceptionHandlerStrategy} to do the real work.
+ * Will chain the handling of the exception through a set of {@link ExceptionHandlerStrategy}s that does the real work.
  *
  * @author personf8e9850ed756
- * @todo write javadoc
- * @todo maybe output from one should go into input to the next? maybe not call it multicast then --> chain 
  */
-public class ExceptionHandlerStrategyMulticaster implements ExceptionHandlerStrategy {
+public class ExceptionHandlerStrategyChain implements ExceptionHandlerStrategy {
     // TODO have the strategies implement Ordered from Spring so they will be ordered correctly in the chain
     private Set<ExceptionHandlerStrategy> strategies;
 
