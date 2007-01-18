@@ -10,8 +10,7 @@ import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
 import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.service.pensjon.henvendelse.HenvendelseService;
 import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkRequest;
-import no.stelvio.common.transferobject.EntityResponse;
-import no.stelvio.common.transferobject.support.DefaultEntityResponse;
+import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkResponse;
 
 /**
  * Mock impl av HenvendelseService
@@ -24,8 +23,7 @@ public class SimpleHenvendelseService implements HenvendelseService {
 	private static List<Henvendelse> ole = new ArrayList<Henvendelse>();
 	private static List<Henvendelse> kirsten = new ArrayList<Henvendelse>();
 	private static ArrayList<List<Henvendelse>> mockLists;
-	
-	
+
 	static {
 		Henvendelse h1 = new Henvendelse( "12345678901" );
 		h1.setFagomrKode( "Pensjon" );
@@ -47,8 +45,6 @@ public class SimpleHenvendelseService implements HenvendelseService {
 		ola.add( h2 );
 		
 		addHenvendelser(ola,1000, "12345678901");
-		
-		
 		
 		Henvendelse h3 = new Henvendelse( "22222222222" );
 		h3.setFagomrKode( "Bidrag" );
@@ -73,8 +69,7 @@ public class SimpleHenvendelseService implements HenvendelseService {
 		mockLists.add(ole);
 		mockLists.add(kirsten);
 	}
-	
-	
+
 	private static void addHenvendelser( List<Henvendelse> list, int count, String fodselsnummer )
 	{
 		for( int i = 0 ; i < count ; i++ )
@@ -115,11 +110,11 @@ public class SimpleHenvendelseService implements HenvendelseService {
 			
 			System.out.println( "i = " + i );
 		}
+		
 		return null;
-		//throw new Exception();
 	}
 	
-	public EntityResponse<HenvendelseStatistikk> genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest) {
+	public HenvendelseStatistikkResponse genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest) {
 		
 		HenvendelseStatistikk henvendelseStatistikk; 
 		
@@ -139,7 +134,8 @@ public class SimpleHenvendelseService implements HenvendelseService {
 			henvendelseStatistikk.addRow(new String[]{"Krigspensjon", "0", "0", "0", "1", "1"});
 			henvendelseStatistikk.addRow(new String[]{"Ikke angitt", "5", "8", "4", "2", "19"});
 		}
-		return new DefaultEntityResponse<HenvendelseStatistikk>(henvendelseStatistikk);
+
+		return new HenvendelseStatistikkResponse(henvendelseStatistikk);
 	}
 
 }

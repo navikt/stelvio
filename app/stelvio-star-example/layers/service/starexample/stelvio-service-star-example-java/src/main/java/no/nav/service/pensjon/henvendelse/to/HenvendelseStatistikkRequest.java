@@ -1,7 +1,6 @@
-package no.nav.service.pensjon.henvendelse.to.impl;
+package no.nav.service.pensjon.henvendelse.to;
 
 import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
-import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkRequest;
 import no.stelvio.common.transferobject.ServiceRequest;
 
 /**

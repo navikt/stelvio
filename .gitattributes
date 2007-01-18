@@ -589,6 +589,7 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/HenvendelseService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/support/SimpleHenvendelseService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/to/HenvendelseStatistikkRequest.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/to/HenvendelseStatistikkResponse.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/person/BrukerprofilService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/person/PersonService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/person/exception/PersonNotFoundException.java -text

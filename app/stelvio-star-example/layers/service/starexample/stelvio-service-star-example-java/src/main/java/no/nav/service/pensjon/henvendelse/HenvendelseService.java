@@ -3,10 +3,9 @@ package no.nav.service.pensjon.henvendelse;
 import java.util.List;
 
 import no.nav.domain.pensjon.henvendelse.Henvendelse;
-import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk;
 import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkRequest;
-import no.stelvio.common.transferobject.EntityResponse;
+import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkResponse;
 
 
 /**
@@ -19,8 +18,7 @@ public interface HenvendelseService {
 	/**
 	 * @return Response object containing HenvendelseStatistikk
 	 */
-	EntityResponse<HenvendelseStatistikk> genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest);
-	
-	
-	public List<Henvendelse> hentHenvendelseList(Fodselsnummer fodselsnummer) throws Exception;
+	HenvendelseStatistikkResponse genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest);
+
+	List<Henvendelse> hentHenvendelseList(Fodselsnummer fodselsnummer) throws Exception;
 }
