@@ -16,7 +16,7 @@ public interface SaksbehandlerRepository {
 	/**
 	 * Retrieves case workers based on unit id
 	 * 
-	 * @param enhetId
+	 * @param enhetId to retrieve list of Responsibles for 
 	 * @return List of Responsible
 	 */
 	public List<Responsible> getSaksbehandlere(String enhetId);
