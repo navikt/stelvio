@@ -15,7 +15,20 @@ Module stelvio-common-java
 * Added configuration (using the configuration mechanism defined by the JAR file service provider contract in JDK 1.3
   and above) in META-INF/services/org.apache.commons.logging.LogFactory to make sure commons-logging is using an
   application's log4j.properties and not Websphere's own
-* Removed remnants from rtv-framework
+* Removed remnants of rtv-framework
+* Refactored the 2 aspects of RequestContext, current thread handling and data container, into 2 new classes
+  * RequestContext -> plain POJO holding specific values, like user id, screen id, etc
+  * RequestContextHolder -> holds a RequestContext on the current thread
+* Simplified transfer object support
+  * No need for Entity(List)Response
+  * No need for interfaces
+  * 2 concrete classes, ServiceRequest and ServiceResponse, are left -> should be extended by transfer objects
+* Cleaned up codes table code
+  * Removed deprecated methods
+  * Added getItems() on CodesTablePeriodic so the interface is equal to CodesTable
+  * Improved documentation of which exceptions are thrown 
+* Improved naming and structure of Error package
+* No need to implement a constructor only used by Stelvio when removing cause; reflection is used instead
 
 Module stelvio-test-java
 * Fixed package structure (no.stelvio.common.test -> no.stelvio.test)
@@ -36,6 +49,6 @@ Module stelvio-service-java
 
 Module stelvio-presentation-java
 * Renamed package from no.stelvio.web to no.stelvio.presentation
-* Removed remnants from rtv-framework
+* Removed remnants of rtv-framework
 
 Star example
