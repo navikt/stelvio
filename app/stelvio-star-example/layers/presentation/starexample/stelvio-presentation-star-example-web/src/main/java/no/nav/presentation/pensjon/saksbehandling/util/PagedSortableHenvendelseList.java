@@ -19,12 +19,9 @@ package no.nav.presentation.pensjon.saksbehandling.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.HenvendelserDO;
+import no.nav.domain.pensjon.saksbehandling.HenvendelserDO;
 
 
 public class PagedSortableHenvendelseList extends SortableList

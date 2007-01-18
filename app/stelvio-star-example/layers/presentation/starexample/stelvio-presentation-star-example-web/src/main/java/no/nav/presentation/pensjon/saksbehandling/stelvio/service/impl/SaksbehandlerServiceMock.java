@@ -3,10 +3,8 @@
  */
 package no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl;
 
-import no.nav.presentation.pensjon.saksbehandling.stelvio.dao.SaksbehandlerDO;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.service.SaksbehandlerService;
-import no.nav.service.pensjon.exception.DatabaseNotFoundException;
-import no.nav.service.pensjon.person.exception.PersonNotFoundException;
+import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
+import no.nav.service.pensjon.saksbehandling.service.SaksbehandlerService;
 
 /**
  * @author person4f9bc5bd17cc
