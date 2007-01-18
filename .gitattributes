@@ -384,8 +384,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/src/main/java/no/nav/presentation/pensjon/common/filters/SAMLFilter.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/src/main/java/no/nav/presentation/pensjon/common/filters/SecurityFilter.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/src/main/java/no/nav/presentation/pensjon/common/validation/MyValangValidator.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/src/test/java/XFireTest.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/src/test/resources/xfire-test.context.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/.classpath -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/.project -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/.settings/org.eclipse.jdt.core.prefs -text
