@@ -1,4 +1,4 @@
-package no.nav.service.pensjon.henvendelse.impl;
+package no.nav.service.pensjon.henvendelse.support;
 
 import java.util.ArrayList;
 import java.util.Calendar;
