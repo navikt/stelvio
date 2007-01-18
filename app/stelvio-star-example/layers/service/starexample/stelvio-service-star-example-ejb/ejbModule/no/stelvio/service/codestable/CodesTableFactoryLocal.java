@@ -1,7 +1,7 @@
-package no.nav.service.pensjon;
+package no.stelvio.service.codestable;
 
 /**
- * Local interface for no.nav.service.pensjon.CodesTableFactoryBean bean.
+ * Local interface for no.stelvio.service.codestable.CodesTableFactoryBean bean.
  */
 public interface CodesTableFactoryLocal extends
 		no.stelvio.common.codestable.factory.CodesTableFactory,

@@ -1,9 +1,9 @@
-package no.nav.service.pensjon;
+package no.stelvio.service.codestable;
 
 import javax.ejb.CreateException;
 
 /**
- * Local Home interface for no.nav.service.pensjon.CodesTableFactoryBean bean
+ * Local Home interface for no.stelvio.service.codestable.CodesTableFactoryBean bean
  */
 public interface CodesTableFactoryLocalHome extends javax.ejb.EJBLocalHome {
 
@@ -12,7 +12,7 @@ public interface CodesTableFactoryLocalHome extends javax.ejb.EJBLocalHome {
 	public static final String JNDI_NAME = "ejb/no/nav/service/pensjon/CodesTableFactoryLocalHome";
 
 	/* Default create */
-	public no.nav.service.pensjon.CodesTableFactoryLocal create()
+	public CodesTableFactoryLocal create()
 			throws CreateException;
 
 }

@@ -1,4 +1,4 @@
-package no.nav.service.pensjon;
+package no.stelvio.service.codestable;
 
 import java.util.ArrayList;
 import java.util.Collections;

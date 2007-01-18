@@ -579,10 +579,10 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/META-INF/ejb-jar.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/META-INF/ibm-ejb-jar-bnd.xmi -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/META-INF/ibm_ejbext.properties -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/nav/service/pensjon/CodesTableFactoryBean.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/nav/service/pensjon/CodesTableFactoryLocal.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/nav/service/pensjon/CodesTableFactoryLocalHome.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/nav/service/pensjon/DefaultCodesTableFactory.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/codestable/CodesTableFactoryBean.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/codestable/CodesTableFactoryLocal.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/codestable/CodesTableFactoryLocalHome.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/codestable/DefaultCodesTableFactory.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/pom.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/exception/DatabaseNotFoundException.java -text
