@@ -4,7 +4,7 @@
 package no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl;
 
 import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
-import no.nav.service.pensjon.saksbehandling.service.SaksbehandlerService;
+import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
 
 /**
  * @author person4f9bc5bd17cc

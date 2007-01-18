@@ -8,7 +8,7 @@ import org.springframework.webflow.execution.RequestContext;
 
 import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
 import no.nav.presentation.pensjon.saksbehandling.form.StartForm;
-import no.nav.service.pensjon.saksbehandling.service.SaksbehandlerService;
+import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
 
 
 public class StartAction extends MultiAction {
