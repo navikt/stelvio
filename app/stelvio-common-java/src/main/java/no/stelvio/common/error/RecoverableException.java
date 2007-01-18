@@ -1,6 +1,6 @@
 package no.stelvio.common.error;
 
-import no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy;
+import no.stelvio.common.error.strategy.support.MorpherExceptionHandlerStrategy;
 import no.stelvio.common.error.support.CommonExceptionLogic;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
@@ -46,7 +46,7 @@ abstract class RecoverableException extends Exception implements StelvioExceptio
      * classes that is part of the cause stack.
 	 *
 	 * @param holder
-     * @see RethrowExceptionHandlerStrategy
+     * @see MorpherExceptionHandlerStrategy
      */
 	protected RecoverableException(ExceptionToCopyHolder holder) {
 		super();

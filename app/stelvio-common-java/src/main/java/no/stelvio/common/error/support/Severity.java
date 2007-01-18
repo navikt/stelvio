@@ -1,4 +1,4 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.support;
 
 /**
  * Error severity enumeration. The severity levels reflect 

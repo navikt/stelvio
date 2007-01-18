@@ -1,6 +1,5 @@
-package no.stelvio.common.error.support;
+package no.stelvio.common.error.resolver.support;
 
-import no.stelvio.common.error.ErrorResolver;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.isNotNull;
 import static org.hamcrest.object.IsCompatibleType.compatibleType;
@@ -12,14 +11,18 @@ import org.junit.Test;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import no.stelvio.common.error.resolver.ErrorDefinitionResolver;
+import no.stelvio.common.error.retriever.ErrorDefinitionRetriever;
+import no.stelvio.common.error.retriever.RetrieverFailedException;
+
 /**
- * Unit test for {@link ErrorResolverFactoryBean}.
+ * Unit test for {@link ErrorDefinitionResolverFactoryBean}.
  *
  * @author personf8e9850ed756
  */
-public class ErrorResolverFactoryBeanTest {
-    private ErrorsRetriever errorsRetriever;
-    private ErrorResolverFactoryBean ehfb;
+public class ErrorDefinitionResolverFactoryBeanTest {
+    private ErrorDefinitionRetriever errorDefinitionRetriever;
+    private ErrorDefinitionResolverFactoryBean ehfb;
     private Mockery mockery;
 
     @Test
@@ -27,7 +30,7 @@ public class ErrorResolverFactoryBeanTest {
         Class<?> clazz = ehfb.getObjectType();
 
         assertThat(clazz, isNotNull());
-        assertThat(clazz, compatibleType(ErrorResolver.class));
+        assertThat(clazz, compatibleType(ErrorDefinitionResolver.class));
     }
 
     @Test
@@ -35,8 +38,8 @@ public class ErrorResolverFactoryBeanTest {
         setupAndCallRetriever();
 
         @SuppressWarnings("unchecked")
-        ErrorResolver errorResolver = (ErrorResolver) ehfb.getObject();
-        assertThat(errorResolver, isNotNull());
+        ErrorDefinitionResolver errorDefinitionResolver = (ErrorDefinitionResolver) ehfb.getObject();
+        assertThat(errorDefinitionResolver, isNotNull());
     }
 
     @Test
@@ -49,22 +52,22 @@ public class ErrorResolverFactoryBeanTest {
 
     @Test
     public void shouldImplementInitializingBean() {
-        assertThat(ErrorResolverFactoryBean.class, compatibleType(InitializingBean.class));
+        assertThat(ErrorDefinitionResolverFactoryBean.class, compatibleType(InitializingBean.class));
     }
 
     @Test
     public void shouldImplementFactoryBean() {
-        assertThat(ErrorResolverFactoryBean.class, compatibleType(FactoryBean.class));
+        assertThat(ErrorDefinitionResolverFactoryBean.class, compatibleType(FactoryBean.class));
     }
 
 	/**
 	 * When the <code>ErrorDefinitionRetriever</code> fails, an exception that can be handled specifically by the facade
 	 * is thrown.
 	 */
-	@Test(expected = ErrorDefinitionRetrieverFailedException.class)
+	@Test(expected = RetrieverFailedException.class)
 	public void whenErrorDefinitionRetrieverFailsDetectableExceptionIsThrown() throws Exception {
 		mockery.expects(new InAnyOrder() {{
-		        one (errorsRetriever).retrieve(); will(throwException(new IllegalStateException("problems")));
+		        one (errorDefinitionRetriever).retrieve(); will(throwException(new IllegalStateException("problems")));
 		    }});
 
 		ehfb.afterPropertiesSet();
@@ -74,10 +77,10 @@ public class ErrorResolverFactoryBeanTest {
 	@Before
     public void setUp() throws Exception {
         mockery = new Mockery();
-        errorsRetriever = mockery.mock(ErrorsRetriever.class);
+        errorDefinitionRetriever = mockery.mock(ErrorDefinitionRetriever.class);
 
-        ehfb = new ErrorResolverFactoryBean();
-        ehfb.setErrorRetriever(errorsRetriever);
+        ehfb = new ErrorDefinitionResolverFactoryBean();
+        ehfb.setErrorRetriever(errorDefinitionRetriever);
     }
 
     @After
@@ -87,7 +90,7 @@ public class ErrorResolverFactoryBeanTest {
 
     private void setupAndCallRetriever() throws Exception {
         mockery.expects(new InAnyOrder() {{
-                exactly(1).of (errorsRetriever).retrieve();
+                exactly(1).of (errorDefinitionRetriever).retrieve();
             }});
 
         ehfb.afterPropertiesSet();

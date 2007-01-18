@@ -17,8 +17,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import no.stelvio.batch.domain.BatchDO;
 import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.common.error.Severity;
 import no.stelvio.common.error.SystemUnrecoverableException;
+import no.stelvio.common.error.support.Severity;
 import no.stelvio.common.util.MessageFormatter;
 
 /**

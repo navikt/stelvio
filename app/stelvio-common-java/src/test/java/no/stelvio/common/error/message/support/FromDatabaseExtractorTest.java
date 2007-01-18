@@ -7,12 +7,12 @@ import org.jmock.Mockery;
 import org.junit.Before;
 import org.junit.Test;
 
-import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.FunctionalRecoverableException;
 import no.stelvio.common.error.TestRecoverableException;
 import no.stelvio.common.error.TestUnrecoverableException;
 import no.stelvio.common.error.message.Extractor;
 import no.stelvio.common.error.message.ExtractorTest;
+import no.stelvio.common.error.resolver.ErrorDefinitionResolver;
 
 /**
  * Unit test for {@link FromDatabaseExtractor}.
@@ -43,21 +43,21 @@ public class FromDatabaseExtractorTest extends ExtractorTest {
     @Before
     public void setupInstance() {
         context = new Mockery();
-        final ErrorResolver errorResolver = context.mock(ErrorResolver.class);
+        final ErrorDefinitionResolver errorDefinitionResolver = context.mock(ErrorDefinitionResolver.class);
 
         context.expects(new InAnyOrder() {{
-            one (errorResolver).resolve(with(a(FunctionalRecoverableException.class)));
+            one (errorDefinitionResolver).resolve(with(a(FunctionalRecoverableException.class)));
         }});
 
         fromDatabaseExtractor = new FromDatabaseExtractor();
-        fromDatabaseExtractor.setErrorResolver(errorResolver);
+        fromDatabaseExtractor.setErrorResolver(errorDefinitionResolver);
     }
 
     private Extractor createFallbackMock() {
         final Extractor extractor = context.mock(Extractor.class);
 
         context.expects(new InAnyOrder() {{
-            allowing (extractor).messageFrom(with(an(TestRecoverableException.class))); will(returnValue("fallback"));
+            allowing (extractor).messageFor(with(an(TestRecoverableException.class))); will(returnValue("fallback"));
         }});
 
         return extractor;

@@ -1,9 +1,11 @@
 package no.stelvio.common.error;
 
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+
+import no.stelvio.common.error.retriever.TestErrorDefinitionRetriever;
 
 /**
  * Integration test for error handling.
@@ -21,7 +23,7 @@ public class ErrorHandlingIntegrationTest extends AbstractDependencyInjectionSpr
 			oldErr = System.err;
 			out = new ByteArrayOutputStream();
 			System.setErr(new PrintStream(out));
-			TestErrorsRetriever.setThrowException(true);
+			TestErrorDefinitionRetriever.setThrowException(true);
 
 			testBean.callThrower();
 			fail("ImitatorException should have been thrown");

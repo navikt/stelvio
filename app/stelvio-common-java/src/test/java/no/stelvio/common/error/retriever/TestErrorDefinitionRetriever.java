@@ -1,16 +1,17 @@
-package no.stelvio.common.error;
-
-import no.stelvio.common.error.support.ErrorsRetriever;
+package no.stelvio.common.error.retriever;
 
 import java.util.Collection;
 import java.util.HashSet;
 
+import no.stelvio.common.error.support.ErrorDefinition;
+import no.stelvio.common.error.support.Severity;
+
 /**
- * An integration test implementation of {@link ErrorsRetriever}.
+ * An integration test implementation of {@link ErrorDefinitionRetriever}.
  *
  * @author personf8e9850ed756
  */
-public class TestErrorsRetriever implements ErrorsRetriever {
+public class TestErrorDefinitionRetriever implements ErrorDefinitionRetriever {
 	private static boolean throwException = false;
 
 	public Collection<ErrorDefinition> retrieve() {
@@ -25,6 +26,6 @@ public class TestErrorsRetriever implements ErrorsRetriever {
     }
 
 	public static void setThrowException(final boolean throwException) {
-		TestErrorsRetriever.throwException = throwException;
+		TestErrorDefinitionRetriever.throwException = throwException;
 	}
 }

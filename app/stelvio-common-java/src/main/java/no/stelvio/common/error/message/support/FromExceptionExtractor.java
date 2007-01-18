@@ -11,7 +11,7 @@ public class FromExceptionExtractor implements Extractor {
     /**
      * {@inheritDoc}
      */
-    public String messageFrom(Throwable throwable) {
+    public String messageFor(Throwable throwable) {
         // TODO: is this enough or should there be some more tests?
         return throwable.getLocalizedMessage();
     }

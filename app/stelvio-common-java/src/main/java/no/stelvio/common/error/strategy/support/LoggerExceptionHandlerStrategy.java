@@ -3,12 +3,12 @@ package no.stelvio.common.error.strategy.support;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.stelvio.common.error.ErrorDefinition;
-import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.message.Extractor;
 import no.stelvio.common.error.message.support.FromDatabaseExtractor;
 import no.stelvio.common.error.message.support.FromExceptionExtractor;
+import no.stelvio.common.error.resolver.ErrorDefinitionResolver;
 import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
+import no.stelvio.common.error.support.ErrorDefinition;
 
 /**
  * @author personf8e9850ed756
@@ -28,7 +28,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @see FromDatabaseExtractor
      */
     private Extractor extractor = new FromExceptionExtractor();
-    private ErrorResolver errorResolver;
+    private ErrorDefinitionResolver errorDefinitionResolver;
 
     /**
      * Logs the exception.
@@ -38,8 +38,8 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
      * @todo what about the properties from StelvioException like errorId, userId, etc?
      */
     public <T extends Throwable> T handleException(T throwable) {
-        String message = extractor.messageFrom(throwable);
-        ErrorDefinition error = errorResolver.resolve(throwable);
+        String message = extractor.messageFor(throwable);
+        ErrorDefinition error = errorDefinitionResolver.resolve(throwable);
 
         switch (error.getSeverity()) {
             case FATAL:
@@ -62,7 +62,7 @@ public class LoggerExceptionHandlerStrategy implements ExceptionHandlerStrategy 
         this.extractor = extractor;
     }
 
-    public void setErrorResolver(ErrorResolver errorResolver) {
-        this.errorResolver = errorResolver;
+    public void setErrorResolver(ErrorDefinitionResolver errorDefinitionResolver) {
+        this.errorDefinitionResolver = errorDefinitionResolver;
     }
 }

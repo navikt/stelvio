@@ -3,7 +3,7 @@ package no.stelvio.common.util;
 import java.net.InetAddress;
 import java.util.Date;
 
-import no.stelvio.common.error.Severity;
+import no.stelvio.common.error.support.Severity;
 
 /**
  * Formats messages for the 469 Log System.

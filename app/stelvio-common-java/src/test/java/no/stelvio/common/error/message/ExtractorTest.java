@@ -18,7 +18,7 @@ public abstract class ExtractorTest {
     }
 
     protected String testMessage(final Exception exception) {
-        return extractor().messageFrom(exception);
+        return extractor().messageFor(exception);
     }
 
     protected abstract Extractor extractor();

@@ -14,11 +14,11 @@ import org.junit.Test;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.common.error.ErrorDefinition;
-import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.TestRecoverableException;
 import no.stelvio.common.error.TestUnrecoverableException;
 import no.stelvio.common.error.message.Extractor;
+import no.stelvio.common.error.resolver.ErrorDefinitionResolver;
+import no.stelvio.common.error.support.ErrorDefinition;
 
 /**
  * Unit test of {@link LoggerExceptionHandlerStrategy}.
@@ -100,22 +100,22 @@ public class LoggerExceptionHandlerStrategyTest {
         final Extractor extractor = context.mock(Extractor.class);
 
         context.expects(new InAnyOrder() {{
-            one (extractor).messageFrom(with(a(Throwable.class))); will(returnValue("test"));
+            one (extractor).messageFor(with(a(Throwable.class))); will(returnValue("test"));
         }});
 
         return extractor;
     }
 
-    private ErrorResolver createErrorResolverMock() {
-        final ErrorResolver errorResolver = context.mock(ErrorResolver.class);
+    private ErrorDefinitionResolver createErrorResolverMock() {
+        final ErrorDefinitionResolver errorDefinitionResolver = context.mock(ErrorDefinitionResolver.class);
         final ErrorDefinition result = new ErrorDefinition.Builder(String.class).message("test: {0}").build();
 
         context.expects(new InAnyOrder() {{
-            one (errorResolver).resolve(with(a(Throwable.class))); will(returnValue(result));
-            one (errorResolver).resolve(with(a(Throwable.class))); will(returnValue(result));
+            one (errorDefinitionResolver).resolve(with(a(Throwable.class))); will(returnValue(result));
+            one (errorDefinitionResolver).resolve(with(a(Throwable.class))); will(returnValue(result));
         }});
 
-        return errorResolver;
+        return errorDefinitionResolver;
     }
 
     public static class TestLogFactory extends LogFactoryImpl {

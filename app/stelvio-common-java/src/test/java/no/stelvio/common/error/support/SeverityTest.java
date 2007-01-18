@@ -1,4 +1,4 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.support;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;

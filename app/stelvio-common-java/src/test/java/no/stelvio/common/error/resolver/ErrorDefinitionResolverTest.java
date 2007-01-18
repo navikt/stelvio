@@ -1,4 +1,4 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.resolver;
 
 import static org.junit.Assert.fail;
 import org.junit.Test;
@@ -7,10 +7,10 @@ import org.junit.Test;
  * @author personf8e9850ed756
  * @todo write javadoc
  */
-public abstract class ErrorResolverTest {
-    @Test(expected = ErrorNotFoundException.class)
+public abstract class ErrorDefinitionResolverTest {
+    @Test(expected = ErrorDefinitionNotFoundException.class)
     public void throwsExceptionIfErrorDontExist() {
-        errorResolver().resolve(new Error("test"));
+        errorDefinitionResolver().resolve(new Error("test"));
     }
 
     @Test
@@ -20,5 +20,5 @@ public abstract class ErrorResolverTest {
 //            fail("Exception should have been thrown");
     }
 
-    protected abstract ErrorResolver errorResolver();
+    protected abstract ErrorDefinitionResolver errorDefinitionResolver();
 }

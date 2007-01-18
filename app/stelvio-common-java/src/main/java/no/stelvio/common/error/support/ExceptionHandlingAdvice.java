@@ -10,7 +10,7 @@ import no.stelvio.common.error.ExceptionHandlerFacade;
  * @author personf8e9850ed756
  * @todo better javadoc
  */
-public class ErrorHandlingAdvice implements ThrowsAdvice {
+public class ExceptionHandlingAdvice implements ThrowsAdvice {
     private ExceptionHandlerFacade exceptionHandlerFacade;
 
     /**

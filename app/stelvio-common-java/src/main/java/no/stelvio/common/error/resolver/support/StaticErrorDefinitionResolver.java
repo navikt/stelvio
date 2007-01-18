@@ -1,10 +1,19 @@
-package no.stelvio.common.error.support;
-
-import no.stelvio.common.error.*;
-import org.springframework.util.Assert;
+package no.stelvio.common.error.resolver.support;
 
 import java.text.MessageFormat;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import org.springframework.util.Assert;
+
+import no.stelvio.common.error.ErrorConfigurationException;
+import no.stelvio.common.error.StelvioException;
+import no.stelvio.common.error.resolver.ErrorDefinitionNotFoundException;
+import no.stelvio.common.error.resolver.ErrorDefinitionResolver;
+import no.stelvio.common.error.support.ErrorDefinition;
 
 /**
  * Returns the <code>ErrorDefinition</code> corresponding to the given class or one of its superclasses or superinterfaces.
@@ -14,15 +23,15 @@ import java.util.*;
  * @todo should check that all exception classes specified in the database can be instantiated, maybe have a set anyway  
  * @todo this class has quite a lot of aspects now; should be divided?
  */
-public class DefaultErrorResolver implements ErrorResolver {
+public class StaticErrorDefinitionResolver implements ErrorDefinitionResolver {
     private final HashMap<Class, ErrorDefinition> errorMap;
 
-    public DefaultErrorResolver(Collection<ErrorDefinition> errors) {
+    public StaticErrorDefinitionResolver(Collection<ErrorDefinition> errors) {
         errorMap = new HashMap<Class, ErrorDefinition>(errors.size());
 
         for (ErrorDefinition error : errors) {
             // TODO should another class validate that the class exist before loading the Class object here?
-            // Could really only be the ErrorResolverFactoryBean as the EJB that retrieves the errors are in another class loader
+            // Could really only be the ErrorDefinitionResolverFactoryBean as the EJB that retrieves the errors are in another class loader
             errorMap.put(loadClass(error.getClassName()), error);
         }
     }
@@ -65,11 +74,11 @@ public class DefaultErrorResolver implements ErrorResolver {
      *
      * @param error
      * @param throwable
-     * @see CommonExceptionLogic
+     * @see no.stelvio.common.error.support.CommonExceptionLogic
      */
     private void checkError(ErrorDefinition error, Throwable throwable) {
         if (null == error) {
-            throw new ErrorNotFoundException(throwable.getClass());
+            throw new ErrorDefinitionNotFoundException(throwable.getClass());
         }
 
         int argsInException;

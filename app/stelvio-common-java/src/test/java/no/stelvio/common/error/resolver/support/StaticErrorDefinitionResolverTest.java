@@ -1,25 +1,32 @@
-package no.stelvio.common.error.support;
+package no.stelvio.common.error.resolver.support;
 
-import no.stelvio.common.error.*;
+import java.util.Collection;
+import java.util.HashSet;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.isNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Collection;
-import java.util.HashSet;
+import no.stelvio.common.error.ErrorHandlingException;
+import no.stelvio.common.error.StelvioException;
+import no.stelvio.common.error.TestUnrecoverableException;
+import no.stelvio.common.error.resolver.ErrorDefinitionNotFoundException;
+import no.stelvio.common.error.resolver.ErrorDefinitionResolver;
+import no.stelvio.common.error.resolver.ErrorDefinitionResolverTest;
+import no.stelvio.common.error.support.ErrorDefinition;
 
 /**
- * Unit test for {@link DefaultErrorResolver}.
+ * Unit test for {@link StaticErrorDefinitionResolver}.
  *
  * @author personf8e9850ed756
  */
-public class DefaultErrorResolverTest extends ErrorResolverTest {
-    private DefaultErrorResolver defaultErrorResolver;
+public class StaticErrorDefinitionResolverTest extends ErrorDefinitionResolverTest {
+    private StaticErrorDefinitionResolver staticErrorResolver;
 
     @Test
     public void walkTheInheritanceHierarchyWhenFindingError() {
-        ErrorDefinition error = defaultErrorResolver.resolve(new ErrorNotFoundException(ErrorHandlingException.class));
+        ErrorDefinition error = staticErrorResolver.resolve(new ErrorDefinitionNotFoundException(ErrorHandlingException.class));
         assertThat(error, isNotNull());
     }
 
@@ -31,17 +38,17 @@ public class DefaultErrorResolverTest extends ErrorResolverTest {
 		Collection<ErrorDefinition> errors = new HashSet<ErrorDefinition>();
 		errors.add(new ErrorDefinition.Builder("not.a.class.name").message("test: {0}").build());
 
-		new DefaultErrorResolver(errors);
+		new StaticErrorDefinitionResolver(errors);
 	}
 
 	@Test(expected = IllegalStateException.class) // TODO other exception
 	public void errorDefinitionWithWrongNumberOfArgumentsForStelvioExceptionThrowsException() {
-		defaultErrorResolver.resolve(new TestUnrecoverableException("test"));
+		staticErrorResolver.resolve(new TestUnrecoverableException("test"));
 	}
 
 	@Test(expected = IllegalStateException.class) // TODO other exception
 	public void errorDefinitionWithWrongNumberOfArgumentsForOtherExceptionThrowsException() {
-		defaultErrorResolver.resolve(new Throwable("message"));
+		staticErrorResolver.resolve(new Throwable("message"));
 	}
 
 	@Before
@@ -51,10 +58,10 @@ public class DefaultErrorResolverTest extends ErrorResolverTest {
         errors.add(new ErrorDefinition.Builder(TestUnrecoverableException.class).message("test: {0}{1}").build());
         errors.add(new ErrorDefinition.Builder(Throwable.class).message("test: {0}{1}").build());
 
-        defaultErrorResolver = new DefaultErrorResolver(errors);
+        staticErrorResolver = new StaticErrorDefinitionResolver(errors);
     }
 
-    protected ErrorResolver errorResolver() {
-        return defaultErrorResolver;
+    protected ErrorDefinitionResolver errorDefinitionResolver() {
+        return staticErrorResolver;
     }
 }

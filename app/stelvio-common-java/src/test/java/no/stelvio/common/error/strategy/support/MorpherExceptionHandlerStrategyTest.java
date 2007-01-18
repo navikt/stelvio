@@ -5,16 +5,18 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import no.stelvio.common.context.RequestContext;
+import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.error.TestUnrecoverableException;
 
 /**
- * Unit test for {@link RethrowExceptionHandlerStrategy}.
+ * Unit test for {@link MorpherExceptionHandlerStrategy}.
  *
  * @author personf8e9850ed756
  * @todo now we only use UnrecoverableException in the test, should RecoverableException also be used?
  */
-public class RethrowExceptionHandlerStrategyTest {
-    private RethrowExceptionHandlerStrategy rethrower;
+public class MorpherExceptionHandlerStrategyTest {
+    private MorpherExceptionHandlerStrategy rethrower;
 
     @Test
     public void causesIsExchangedWithImitatorInRethrownException() {
@@ -44,9 +46,15 @@ public class RethrowExceptionHandlerStrategyTest {
         });
     }
 
+	@Before
+	public void setupRequestContext() {
+		RequestContextHolder.setRequestContext(
+				new RequestContext("userId", "screenId", "moduleId", "processId", "transactionId"));
+	}
+
     @Before
     public void createRethrower() {
-        rethrower = new RethrowExceptionHandlerStrategy();
+        rethrower = new MorpherExceptionHandlerStrategy();
     }
 
     private void handleException(ExceptionHandler exceptionHandler) {

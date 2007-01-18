@@ -1,10 +1,10 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.support;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * Unit test for {@link ErrorDefinition}.
+ * Unit test for {@link no.stelvio.common.error.support.ErrorDefinition}.
  *
  * @author personf8e9850ed756
  */

@@ -2,10 +2,10 @@ package no.stelvio.common.error.message.support;
 
 import java.text.MessageFormat;
 
-import no.stelvio.common.error.ErrorDefinition;
-import no.stelvio.common.error.ErrorResolver;
 import no.stelvio.common.error.StelvioException;
 import no.stelvio.common.error.message.Extractor;
+import no.stelvio.common.error.resolver.ErrorDefinitionResolver;
+import no.stelvio.common.error.support.ErrorDefinition;
 
 /**
  * Finds the message associated with the given exception by using the database provided list of <code>ErrorDefinition</code>s.
@@ -17,7 +17,7 @@ import no.stelvio.common.error.message.Extractor;
  * @todo better javadoc
  */
 public class FromDatabaseExtractor implements Extractor {
-    private ErrorResolver errorResolver;
+    private ErrorDefinitionResolver errorDefinitionResolver;
     /**
      * <code>Extractor</code> that extracts message directly from the exception is used if nothing is specified.
      *
@@ -33,11 +33,11 @@ public class FromDatabaseExtractor implements Extractor {
      * @todo now this supports having non-stelvio exceptions in the database; is this likely?
      * Otherwise we could just jump directly onto fallback if a non-stelvio exception. 
      */
-    public String messageFrom(Throwable throwable) {
-        ErrorDefinition error = errorResolver.resolve(throwable);
+    public String messageFor(Throwable throwable) {
+        ErrorDefinition error = errorDefinitionResolver.resolve(throwable);
 
         if (null == error) {
-            return fallback.messageFrom(throwable);
+            return fallback.messageFor(throwable);
         } else {
             if (throwable instanceof StelvioException) {
                 Object[] arguments = ((StelvioException) throwable).getTemplateArguments();
@@ -50,8 +50,8 @@ public class FromDatabaseExtractor implements Extractor {
         }
     }
 
-    public void setErrorResolver(ErrorResolver errorResolver) {
-        this.errorResolver = errorResolver;
+    public void setErrorResolver(ErrorDefinitionResolver errorDefinitionResolver) {
+        this.errorDefinitionResolver = errorDefinitionResolver;
     }
 
     public void setFallback(Extractor fallback) {

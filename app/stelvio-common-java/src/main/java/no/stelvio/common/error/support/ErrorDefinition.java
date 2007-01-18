@@ -1,4 +1,4 @@
-package no.stelvio.common.error;
+package no.stelvio.common.error.support;
 
 /**
  * @author personf8e9850ed756

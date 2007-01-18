@@ -14,5 +14,5 @@ public interface Extractor {
      * @param throwable the exception to retrieve a message for.
      * @return the message that describes the given exception.
      */
-    String messageFrom(Throwable throwable);
+    String messageFor(Throwable throwable);
 }

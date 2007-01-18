@@ -21,7 +21,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
     </aop:config>
 
     <!-- This makes ErrorHandlingFacade an error handler for every bean this advice is injected onto  -->
-    <bean id="error.advice" class="no.stelvio.common.error.support.ErrorHandlingAdvice" lazy-init="true">
+    <bean id="error.advice" class="no.stelvio.common.error.support.ExceptionHandlingAdvice" lazy-init="true">
         <property name="exceptionHandlerFacade" ref="error.facade"/>
     </bean>
 
@@ -38,15 +38,15 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
         </property>
     </bean>
     <bean id="error.logStrategy" class="no.stelvio.common.error.strategy.support.LoggerExceptionHandlerStrategy" lazy-init="true">
-        <property name="errorResolver" ref="error.errorResolverFb"/>
+        <property name="errorDefinitionResolver" ref="error.errorResolverFb"/>
     </bean>
-    <bean id="error.rethrowStrategy" class="no.stelvio.common.error.strategy.support.RethrowExceptionHandlerStrategy" lazy-init="true"/>
+    <bean id="error.rethrowStrategy" class="no.stelvio.common.error.strategy.support.MorpherExceptionHandlerStrategy" lazy-init="true"/>
 
 
-    <bean id="error.errorResolverFb" class="no.stelvio.common.error.support.ErrorResolverFactoryBean" lazy-init="true">
-        <property name="errorRetriever" ref="error.retriever"/>
+    <bean id="error.errorResolverFb" class="no.stelvio.common.error.resolver.support.ErrorDefinitionResolverFactoryBean" lazy-init="true">
+        <property name="errorDefinitionRetriever" ref="error.retriever"/>
     </bean>
-    <bean id="error.retriever" class="no.stelvio.common.error.TestErrorsRetriever" lazy-init="true"/>
+    <bean id="error.retriever" class="no.stelvio.common.error.retriever.TestErrorDefinitionRetriever" lazy-init="true"/>
 
     
     <bean id="error.testThrower" class="no.stelvio.common.error.TestThrower" lazy-init="true"/>

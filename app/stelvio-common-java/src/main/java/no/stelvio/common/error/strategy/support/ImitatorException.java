@@ -2,11 +2,11 @@ package no.stelvio.common.error.strategy.support;
 
 /**
  * RuntimeException that imitates another exception, that is, it looks like the other when printing it out, but doesn't
- * include any causes. This will be used by {@link RethrowExceptionHandlerStrategy} to enable rethrowing an exception
+ * include any causes. This will be used by {@link MorpherExceptionHandlerStrategy} to enable rethrowing an exception
  * onto other layers without forcing these to include exceptions included in causes in their classpath.
  *
  * @author personf8e9850ed756
- * @see RethrowExceptionHandlerStrategy
+ * @see MorpherExceptionHandlerStrategy
  * @todo better javadoc
  * @todo should it be in another package?
  * @todo This will fill in the stack trace which is quite excepensive, but this need to be performance tested.

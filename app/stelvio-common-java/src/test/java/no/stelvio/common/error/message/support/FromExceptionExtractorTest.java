@@ -18,7 +18,7 @@ public class FromExceptionExtractorTest extends ExtractorTest {
 
     @Test
     public void messageIsExtractedFromException() {
-        String message = fromExceptionExtractor.messageFrom(new TestUnrecoverableException("error"));
+        String message = fromExceptionExtractor.messageFor(new TestUnrecoverableException("error"));
 
         assertThat(message, eq("dummy: error"));
     }

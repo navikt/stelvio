@@ -10,7 +10,7 @@ import no.stelvio.common.error.ExceptionHandlerFacade;
  * @author personf8e9850ed756
  * @todo write javadoc
  */
-public class ErrorHandlingAdviceTest {
+public class ExceptionHandlingAdviceTest {
     @Test
     public void exceptionIsSentToFacade() throws Throwable {
         Mockery context = new Mockery();
@@ -21,7 +21,7 @@ public class ErrorHandlingAdviceTest {
             one (facade).handle(with(same(throwable)));
         }});
 
-        ErrorHandlingAdvice advice = new ErrorHandlingAdvice();
+        ExceptionHandlingAdvice advice = new ExceptionHandlingAdvice();
         advice.setExceptionHandlerFacade(facade);
 
         advice.afterThrowing(throwable);
