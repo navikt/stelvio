@@ -5,9 +5,9 @@
 	<enterprise-beans>
 		<session id="Session_1168378806445">
 			<ejb-name>CodesTableFactory</ejb-name>
-			<local-home>no.nav.service.pensjon.CodesTableFactoryLocalHome</local-home>
-			<local>no.nav.service.pensjon.CodesTableFactoryLocal</local>
-			<ejb-class>no.nav.service.pensjon.CodesTableFactoryBean</ejb-class>
+			<local-home>no.stelvio.service.codestable.CodesTableFactoryLocalHome</local-home>
+			<local>no.stelvio.service.codestable.CodesTableFactoryLocal</local>
+			<ejb-class>no.stelvio.service.codestable.CodesTableFactoryBean</ejb-class>
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>
