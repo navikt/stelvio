@@ -8,19 +8,16 @@
 
 	<view-state id="enter" view="/pages/start.xhtml">
 		<transition on="hent" to="henterPerson">
-			<action bean="startFormAction" method="bind"/>
+			<action bean="prs.start.form" method="bind"/>
 		</transition>
 	</view-state>
 
 	<action-state id="henterPerson">
-		<action bean="startAction" method="executeSearch"/>
+		<action bean="prs.start.action" method="executeSearch"/>
 		<transition on="success" to="finish"/>
-		<!-- transition on="error" to="enter" / -->
 	</action-state>
 
-	<end-state id="finish" view="flowRedirect:oppgavelisten-flow"/>
-
+	<end-state id="finish" view="flowRedirect:oversiktoverhenvendelser-flow"/>
 
 	<import resource="start-context.xml"/>
-
 </flow>
