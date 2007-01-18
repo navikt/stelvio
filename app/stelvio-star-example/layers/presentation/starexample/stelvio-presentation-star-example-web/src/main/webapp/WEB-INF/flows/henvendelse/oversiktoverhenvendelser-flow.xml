@@ -4,24 +4,24 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
 
-	<start-state idref="oversikt" />
+	<start-state idref="oversikt"/>
 
 	<view-state id="oversikt" view="/pages/henvendelse/oversiktoverhenvendelser.xhtml">
-       	<transition on="hent" to="hentStatistikk">
-       		<action bean="oversiktOverHenvendelserAction" method="bindAndValidate"/>
-       	</transition>		
+		<transition on="hent" to="hentStatistikk">
+			<action bean="prs.henvendelse.oversiktAction" method="bindAndValidate"/>
+		</transition>
 	</view-state>
 
 	<!-- action for calling back end -->
 	<action-state id="hentStatistikk">
-	    <bean-action bean="oversiktOverHenvendelserAction" method="hentStatistikk">
-	    	<method-arguments>
-        		<argument expression="flowScope.oversiktOverHenvendelserForm" />
-         	</method-arguments>
+		<bean-action bean="oversiktOverHenvendelserAction" method="hentStatistikk">
+			<method-arguments>
+				<argument expression="flowScope.oversiktOverHenvendelserForm"/>
+			</method-arguments>
 			<method-result name="flowScope.henvendelseStatistikk"/>
 		</bean-action>
-    	<transition on="success" to="oversikt"/>
-	 </action-state>
+		<transition on="success" to="oversikt"/>
+	</action-state>
 
 	<!-- Imports spring beans, and Valang stuff into this flow -->
 	<import resource="oversiktoverhenvendelser-context.xml"/>
