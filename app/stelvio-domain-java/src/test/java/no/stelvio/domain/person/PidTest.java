@@ -8,6 +8,16 @@ public class PidTest extends TestCase {
 	String monthBelow10BostNr = "04250100286";
 	String normalFnr = "12345678901";
 	
+	//Pids with legal whitespace
+	String monthAbove9BostNrWs = "013272 00336";
+	String monthBelow10BostNrWs = "042501 00286";
+	String normalFnrWs = "260676 37924";	
+	
+	//Pids with illeagal whitespace
+	String monthAbove9BostNrIWs = "01327 200336";
+	String monthBelow10BostNrIWs = "0425010 0286";
+	String normalFnrIWs = "260 67637924";		
+	
 	/**
 	 * FIXME: Need valid D-number to implement this method
 	 *
@@ -16,6 +26,40 @@ public class PidTest extends TestCase {
 		
 	//	String dayBelow10Dnr = "41...";
 	//	String dayAbove9Dnr = "51...";
+		
+	}
+	
+	
+	public void testWhitespaceFormats(){
+		boolean valid = true;
+		
+		//These three validations should be ok
+		valid = Pid.isValidPid(monthAbove9BostNrWs);
+		if(!valid){
+			fail("Whitespace test failed with format: "+monthAbove9BostNrWs);
+		}
+		valid = Pid.isValidPid(monthBelow10BostNrWs);
+		if(!valid){
+			fail("Whitespace test failed with format: "+monthBelow10BostNrWs);
+		}
+		valid = Pid.isValidPid(normalFnrWs);
+		if(!valid){
+			fail("Whitespace test failed with format: "+normalFnrWs);
+		}	
+		
+		//These three validations should NOT be ok
+		valid = Pid.isValidPid(monthAbove9BostNrIWs);
+		if(valid){
+			fail("Whitespace test failed with format: "+monthAbove9BostNrIWs);
+		}	
+		valid = Pid.isValidPid(monthBelow10BostNrIWs);
+		if(valid){
+			fail("Whitespace test failed with format: "+monthBelow10BostNrIWs);
+		}
+		valid = Pid.isValidPid(normalFnrIWs);
+		if(valid){
+			fail("Whitespace test failed with format: "+normalFnrIWs);
+		}		
 		
 	}
 	
