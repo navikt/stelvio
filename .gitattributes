@@ -572,6 +572,7 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/person/personopplysninger.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/person/sokeperson.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/start.xhtml -text
+app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/scripts/javascript.js -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/styles/NAVstylesheet.css -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/styles/stylesheet.css -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/templates/ramme-saksbehandling.xhtml -text
