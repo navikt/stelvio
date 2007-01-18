@@ -25,7 +25,7 @@
 			<ref bean="sokePersonNavnValidator"/>
 		</property>
 	</bean>
-	<bean id="sokePersonNavnValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="sokePersonNavnValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="valang">
 	    	<value>
 	    		<![CDATA[
@@ -44,7 +44,7 @@
 			<ref bean="sokePersonAdressValidator"/>
 		</property>
 	</bean>
-	<bean id="sokePersonAdressValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="sokePersonAdressValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="valang">
 	    	<value>
 	    		<![CDATA[
@@ -63,7 +63,7 @@
 			<ref bean="sokePersonAnnenAdressValidator"/>
 		</property>
 	</bean>
-	<bean id="sokePersonAnnenAdressValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="sokePersonAnnenAdressValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="valang">
 	    	<value>
 	    		<![CDATA[
@@ -82,7 +82,7 @@
 			<ref bean="sokePersonFodselsdatoValidator"/>
 		</property>
 	</bean>
-	<bean id="sokePersonFodselsdatoValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="sokePersonFodselsdatoValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="valang">
 	    	<value>
 	    		<![CDATA[
@@ -104,7 +104,7 @@
 		</property>
 	</bean>
 
-	<bean id="sokePersonFodselsnummerValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="sokePersonFodselsnummerValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 	 	<property name="customFunctions">
 			<map>
 				<entry key="modulus11">
@@ -137,7 +137,7 @@
 		</property>
 	</bean>
 
-	<bean id="sokePersonAccountNrOptionValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="sokePersonAccountNrOptionValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="valang">
 	    	<value>
 	    		<![CDATA[
@@ -159,7 +159,7 @@
 		</property>
 	</bean>
 
-	<bean id="sokePersonAccountNrForeginOptionValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="sokePersonAccountNrForeginOptionValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="valang">
 	    	<value>
 	    		<![CDATA[

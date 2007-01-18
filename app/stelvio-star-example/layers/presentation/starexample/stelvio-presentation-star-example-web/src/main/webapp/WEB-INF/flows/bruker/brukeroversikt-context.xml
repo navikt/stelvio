@@ -16,7 +16,7 @@
 	
 	
 	
-	<bean id="hentPersonValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="hentPersonValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="messageSource" ref="messageSource" />
 
 	 	<property name="customFunctions">

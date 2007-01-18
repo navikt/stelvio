@@ -22,7 +22,7 @@
  	<!--  bean def for HenvendelseService, update with real implementation class when ready -->
 	<bean id="henvendelseService" class="no.nav.service.pensjon.henvendelse.impl.HenvendelseServiceMock"/>
 	
-	<bean id="hentOversiktOverHenvendelserValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="hentOversiktOverHenvendelserValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 		<property name="messageSource" ref="messageSource" />
 
 	 	<property name="customFunctions">

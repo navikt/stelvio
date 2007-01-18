@@ -28,7 +28,7 @@
 	 	    feilmelding vises og beskrivelsen skal ikke lagres.
 	 	  * Sjekker ikke at tidsbruk har f.eks. registrert verdi 009.	
 	  -->
-	<bean id="henvendelseValidator" class="no.nav.presentation.pensjon.common.validation.MyValangValidator">
+	<bean id="henvendelseValidator" class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
 	  <property name="valang">
 	    <value>
 	    	<![CDATA[
