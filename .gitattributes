@@ -371,6 +371,8 @@ app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-j
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/Utbetalingsinformasjon.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/Utenlandskonto.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/Utlandskonto.java -text
+app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/saksbehandling/HenvendelserDO.java -text
+app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/saksbehandling/SaksbehandlerDO.java -text
 app/stelvio-star-example/layers/pom.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/.classpath -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/.project -text
