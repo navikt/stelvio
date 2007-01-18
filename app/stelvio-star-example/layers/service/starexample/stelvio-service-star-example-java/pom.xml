@@ -21,6 +21,11 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>no.stelvio.star.example</groupId>
+			<artifactId>stelvio-repository-star-example-java</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-remoting</artifactId>
 			<version>2.0.1</version>
