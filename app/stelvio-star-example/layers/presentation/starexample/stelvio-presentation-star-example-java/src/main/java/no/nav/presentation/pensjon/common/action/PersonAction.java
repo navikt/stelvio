@@ -6,7 +6,6 @@ import javax.faces.model.DataModel;
 
 import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.domain.pensjon.person.Person;
-import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 import no.nav.service.pensjon.exception.TPSException;
 import no.nav.service.pensjon.person.PersonService;
 import no.nav.service.pensjon.person.exception.PersonNotFoundException;
@@ -31,11 +30,11 @@ public class PersonAction {
 		catch (TPSException e) {
 			throw e;
 		}
-		catch (PersonNotFoundException e) {
+		catch (PersonNotFoundException pnfe) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			FacesMessage msg = new FacesMessage( "Fant ingen person med fødselsnummer " + fodselsnummer.getFodselsnummer(), "nei da igjen" );
 			facesContext.addMessage(null, msg);
-			throw e;
+			throw pnfe;
 		}
 		return person;
 	}

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/resources"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/2.0/spring-web-2.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/asm/asm-attrs/1.5.3/asm-attrs-1.5.3.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-attributes/commons-attributes-compiler/2.1/commons-attributes-compiler-2.1.jar"/>
@@ -87,8 +85,9 @@
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/2.0.1/spring-aop-2.0.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-domain-star-example-java"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-service-star-example-ejb"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v61/was.base.v61"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere v6.1 JRE"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-service-star-example-java"/>
+	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-common-java/1.0.1-SNAPSHOT/stelvio-common-java-1.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
