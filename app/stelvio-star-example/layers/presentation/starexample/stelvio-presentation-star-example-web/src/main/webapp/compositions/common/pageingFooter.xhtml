@@ -34,25 +34,25 @@
 		<h:outputText value=" " rendered="#{list.numberOfPages > 1}" />
 
 			<a4j:commandLink rendered="#{list.pageIndex > 1}">
-				<h:graphicImage url="/img/forst.gif" />
+				<h:graphicImage url="/images/forst.gif" />
 				<a4j:support reRender="henvendelser" event="onclick" actionListener="#{list.pageing}" id="first"/>
 			</a4j:commandLink>
-			<h:graphicImage url="/img/forst_gra.gif" rendered="#{list.pageIndex &lt;= 1 and list.numberOfPages > 1}" />
+			<h:graphicImage url="/images/forst_gra.gif" rendered="#{list.pageIndex &lt;= 1 and list.numberOfPages > 1}" />
 
 			<a4j:commandLink rendered="#{list.pageIndex > 1}">
-				<h:graphicImage url="/img/forrige.gif" />
+				<h:graphicImage url="/images/forrige.gif" />
 				<a4j:support reRender="henvendelser" event="onclick" actionListener="#{list.pageing}" id="previous"/>
 			</a4j:commandLink>
-			<h:graphicImage url="/img/forrige_gra.gif" rendered="#{list.pageIndex &lt;= 1 and list.numberOfPages > 1}" />
+			<h:graphicImage url="/images/forrige_gra.gif" rendered="#{list.pageIndex &lt;= 1 and list.numberOfPages > 1}" />
 		
 			<a4j:commandLink rendered="#{list.pageIndex != list.numberOfPages and list.numberOfPages > 1}">
-				<h:graphicImage url="/img/neste.gif" />
+				<h:graphicImage url="/images/neste.gif" />
 				<a4j:support reRender="henvendelser" event="onclick" actionListener="#{list.pageing}" id="next"/>
 			</a4j:commandLink>
 			<h:graphicImage url="/images/neste_gra.gif" rendered="#{list.pageIndex == list.numberOfPages and list.numberOfPages > 1}" />
 			
 			<a4j:commandLink rendered="#{list.pageIndex != list.numberOfPages and list.numberOfPages > 1}">
-				<h:graphicImage url="/img/sist.gif" />
+				<h:graphicImage url="/images/sist.gif" />
 				<a4j:support reRender="henvendelser" event="onclick" actionListener="#{list.pageing}" id="last"/>
 			</a4j:commandLink>
 			<h:graphicImage url="/images/sist_gra.gif" rendered="#{list.pageIndex == list.numberOfPages and list.numberOfPages > 1}" />
