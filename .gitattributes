@@ -582,7 +582,6 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/codestable/CodesTableFactoryBean.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/codestable/CodesTableFactoryLocal.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/codestable/CodesTableFactoryLocalHome.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/codestable/DefaultCodesTableFactory.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/pom.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/exception/DatabaseNotFoundException.java -text
