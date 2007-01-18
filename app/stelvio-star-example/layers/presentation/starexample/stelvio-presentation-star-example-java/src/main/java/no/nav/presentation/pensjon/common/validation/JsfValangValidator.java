@@ -3,7 +3,6 @@ package no.nav.presentation.pensjon.common.validation;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -21,7 +20,7 @@ import org.springmodules.validation.valang.ValangValidator;
  * @author personb66fa0b5ff6e, Accenture
  */
 
-public class MyValangValidator extends ValangValidator implements MessageSourceAware
+public class JsfValangValidator extends ValangValidator implements MessageSourceAware
 {
 	
     //private Map customFunctions = null;
