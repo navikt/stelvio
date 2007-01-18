@@ -484,8 +484,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/person/personopplysninger_input.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/person/sokperson-results.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/person/sokperson.xhtml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/css/NAVstylesheet.css -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/css/stylesheet.css -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/Detaljer[!!-~]opptjeningsregister_modus2.htm -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/NAVgronn.gif -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/NAVlysBla.gif -text
@@ -643,6 +641,8 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/person/personopplysninger.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/person/sokeperson.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/pages/start.xhtml -text
+app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/styles/NAVstylesheet.css -text
+app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/styles/stylesheet.css -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/templates/ramme-saksbehandling.xhtml -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.classpath -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.project -text
