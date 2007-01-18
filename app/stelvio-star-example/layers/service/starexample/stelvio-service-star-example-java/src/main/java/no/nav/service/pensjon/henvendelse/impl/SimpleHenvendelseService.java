@@ -18,7 +18,7 @@ import no.stelvio.common.transferobject.support.DefaultEntityResponse;
  * 
  * @author personff564022aedd
  */
-public class HenvendelseServiceMock implements HenvendelseService {
+public class SimpleHenvendelseService implements HenvendelseService {
 
 	private static List<Henvendelse> ola = new ArrayList<Henvendelse>();
 	private static List<Henvendelse> ole = new ArrayList<Henvendelse>();
