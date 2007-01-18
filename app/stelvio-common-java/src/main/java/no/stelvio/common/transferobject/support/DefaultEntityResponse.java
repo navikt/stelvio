@@ -1,6 +1,5 @@
 package no.stelvio.common.transferobject.support;
 
-import no.stelvio.common.transferobject.ContextContainer;
 import no.stelvio.common.transferobject.EntityResponse;
 import no.stelvio.common.transferobject.TransferObject;
 
