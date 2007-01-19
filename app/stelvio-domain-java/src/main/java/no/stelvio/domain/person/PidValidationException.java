@@ -18,18 +18,6 @@ public class PidValidationException extends FunctionalUnrecoverableException {
 	 */
 	private static final long serialVersionUID = 6146570031382768191L;
 
-    /**
-	 * Constructs a copy of the specified PidValidationException without the cause.
-     * <p>
-     * Is used by the framework to make a copy for rethrowing without getting class path problems with the exception
-     * classes that is part of the cause stack.
-	 *
-	 * @param holder ExceptionToCopyHolder
-     */
-	public PidValidationException(ExceptionToCopyHolder holder) {
-		super(holder);
-	}
-
 	/**
 	 * Constructor.
 	 * @param pid Pid value that failed validation.
