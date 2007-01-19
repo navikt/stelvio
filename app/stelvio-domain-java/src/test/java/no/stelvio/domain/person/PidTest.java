@@ -34,29 +34,29 @@ public class PidTest extends TestCase {
 		boolean valid = true;
 		
 		//These three validations should be ok
-		valid = Pid.isValidPid(monthAbove9BostNrWs);
+		valid = Pid.isWhitespaceCompliant(monthAbove9BostNrWs);
 		if(!valid){
 			fail("Whitespace test failed with format: "+monthAbove9BostNrWs);
 		}
-		valid = Pid.isValidPid(monthBelow10BostNrWs);
+		valid = Pid.isWhitespaceCompliant(monthBelow10BostNrWs);
 		if(!valid){
 			fail("Whitespace test failed with format: "+monthBelow10BostNrWs);
 		}
-		valid = Pid.isValidPid(normalFnrWs);
+		valid = Pid.isWhitespaceCompliant(normalFnrWs);
 		if(!valid){
 			fail("Whitespace test failed with format: "+normalFnrWs);
 		}	
 		
 		//These three validations should NOT be ok
-		valid = Pid.isValidPid(monthAbove9BostNrIWs);
+		valid = Pid.isWhitespaceCompliant(monthAbove9BostNrIWs);
 		if(valid){
 			fail("Whitespace test failed with format: "+monthAbove9BostNrIWs);
 		}	
-		valid = Pid.isValidPid(monthBelow10BostNrIWs);
+		valid = Pid.isWhitespaceCompliant(monthBelow10BostNrIWs);
 		if(valid){
 			fail("Whitespace test failed with format: "+monthBelow10BostNrIWs);
 		}
-		valid = Pid.isValidPid(normalFnrIWs);
+		valid = Pid.isWhitespaceCompliant(normalFnrIWs);
 		if(valid){
 			fail("Whitespace test failed with format: "+normalFnrIWs);
 		}		
@@ -84,11 +84,12 @@ public class PidTest extends TestCase {
 		try{
 			Pid pid = new Pid(monthAbove9BostNr);
 			pid.getFodselsdato();
-			pid = new Pid(monthBelow10BostNr);
+			pid = new Pid(monthBelow10BostNr);			
 			pid.getFodselsdato();			
 			pid = new Pid(normalFnr);
 			pid.getFodselsdato();
 		}catch(PidValidationException e){
+			e.printStackTrace();
 			fail("The getFodselsdato method failed during execution");
 		}
 	}
