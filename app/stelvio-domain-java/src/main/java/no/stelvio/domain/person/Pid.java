@@ -54,7 +54,7 @@ public final class Pid implements Serializable {
 	 * @throws PidValidationException if pid isn't a valid Personal Identification Number
 	 */
 	public Pid(String pid) throws PidValidationException{
-		this.pid = StringUtils.deleteWhitespace(this.pid);
+		this.pid = StringUtils.deleteWhitespace(pid);
 		validate();		
 	}
 	
