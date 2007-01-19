@@ -97,13 +97,17 @@ public class J2eeSecurityObject {
 				.getExternalContext();
 		// Access faces-security configuration, initially parse or reparse
 		if (this.securityConfiguration == null) {
-			String configFile = exctx
-					.getInitParameter(Constants.SECURITY_CONFIG_FILE);
 			try {
+				String configFile = exctx
+				.getInitParameter(Constants.SECURITY_CONFIG_FILE);
 				URL url = exctx.getResource(configFile);
 				this.securityConfiguration = new SecurityConfigurationXML(url);
+				
 			} catch (MalformedURLException e) {
-				throw new PageSecurityFileNotFoundException(e, configFile);
+				throw new PageSecurityFileNotFoundException(e, Constants.SECURITY_CONFIG_FILE);
+			} catch (NullPointerException e){
+				throw new PageSecurityFileNotFoundException(e, "Cannot find context param - " 
+															+ Constants.SECURITY_CONFIG_FILE);
 			}
 		}
 		if (this.secureJsfApplication == null) {

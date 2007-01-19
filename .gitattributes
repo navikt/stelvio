@@ -279,6 +279,10 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuItemComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/acegi/AcegiSecurityContextFilter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/filter/SecurityContextFilter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/filter/parse/SecurityRole.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/filter/parse/WebAppRoles.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/filter/parse/WebXmlParser.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/PageAccessDeniedException.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/PageAuthenticationFailedException.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/PageProtocolSwitchFailedException.java -text
