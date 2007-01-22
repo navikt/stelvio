@@ -1,10 +1,10 @@
 package no.stelvio.service.codestable;
 
-import java.util.List;
-
+import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTableNotFoundException;
+import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.factory.CodesTableFactory;
 import no.stelvio.repository.codestable.CodesTableRepository;
 
@@ -14,12 +14,12 @@ import no.stelvio.repository.codestable.CodesTableRepository;
 public class RepositoryCodesTableFactory implements CodesTableFactory {
 	private CodesTableRepository codesTableRepository;
 	
-	public <T extends CodesTableItem> List<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return codesTableRepository.fetchCodesTable(codesTableClass); 
+	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
+		return (CodesTable<T>) codesTableRepository.fetchCodesTable(codesTableClass); 
 	}
 
-	public <T extends CodesTableItemPeriodic> List<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return codesTableRepository.fetchCodesTable(codesTableClass); 
+	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
+		return (CodesTablePeriodic<T>) codesTableRepository.fetchCodesTable(codesTableClass); 
 	}
 	
 	public void setCodesTableRepository(CodesTableRepository codesTableRepository) {
