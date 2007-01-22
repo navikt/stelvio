@@ -24,11 +24,11 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 public abstract class AbstractCodesTableItem implements Serializable {
 	
 	/** A codestableitem's code. */
-	@Column(name="kode")
+	@Column(name="code")
 	private String code;
 	
 	/** A codestableitem's decode, i.e. a message. */
-	@Column(name="dekode")
+	@Column(name="decode")
 	private String decode;
 	
 	/** A codestableitem's locale that represents the country and language the items decode is defined for. */
@@ -36,7 +36,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	private Locale locale;
 	
 	/** Defines the validity of a codestableitem. */
-	@Column(name="er_gyldig")
+	@Column(name="valid")
 	private boolean valid;
 		
 	/**
