@@ -8,6 +8,7 @@ app/stelvio-common-java/target
 app/stelvio-domain-java/bin
 app/stelvio-domain-java/business.iml
 app/stelvio-domain-java/target
+app/stelvio-presentation-java/*.log.*
 app/stelvio-presentation-java/bin
 app/stelvio-presentation-java/target
 app/stelvio-presentation-java/web.iml
