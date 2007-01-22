@@ -29,6 +29,9 @@ import org.apache.commons.logging.LogFactory;
  * 3. Sjekke om bruker er gyldig ved pålogging fra pinkode, selvbetjening.
  * 4. Sjekke at SAML-token er gyldig ved pålogging fra portal, selvbetjening.
  * Filteret må initialiseres med listen av roller som applikasjonen benytter, settes i web.xml.
+ * 
+ * @todo javadoc in english
+ * @todo use Spring's filter super class 
  */ 
 
 public class SecurityContextFilter extends AbstractFilter {
