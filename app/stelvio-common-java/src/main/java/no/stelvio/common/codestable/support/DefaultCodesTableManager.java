@@ -27,9 +27,8 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem) {
         validateCodesTableClass(codesTableItem);
-		List<T> codesTableItems = codesTableFactory.createCodesTable(codesTableItem);
-
-		return new DefaultCodesTable(codesTableItems);
+        
+		return codesTableFactory.createCodesTable(codesTableItem);
 	}
 
 	/**
@@ -39,9 +38,8 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
 		validateCodesTablePeriodicClass(codesTableItem);
-        List<T> codesTableItems = codesTableFactory.createCodesTablePeriodic(codesTableItem);
-
-		return new DefaultCodesTablePeriodic(codesTableItems);
+		
+        return codesTableFactory.createCodesTablePeriodic(codesTableItem);
 	}
 
 	/**

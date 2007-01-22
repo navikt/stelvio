@@ -1,8 +1,11 @@
 package no.stelvio.common.codestable.factory;
 
+import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTableNotFoundException;
+import no.stelvio.common.codestable.CodesTablePeriodic;
+
 import org.springmodules.cache.annotations.Cacheable;
 
 import java.util.List;
@@ -16,7 +19,7 @@ import java.util.List;
  * @version $Id$
  */
 public interface CodesTableFactory{
-	
+	static final String name = "sdf";
 	/**
 	 * Retrieves a list of <code>CodesTableItem</code>s belonging to a <code>CodesTableItem</code>s.
 	 * 
@@ -26,9 +29,10 @@ public interface CodesTableFactory{
 	 * the items shall be retrieved from.
 	 * @return A list of <code>CodesTableItem</code>s belonging to a <code>CodesTable</code>.
 	 * @throws no.stelvio.common.codestable.CodesTableNotFoundException - exception thrown when a <code>CodesTable</code> couldn't be retrieved from the database.
+	 * @todo fix javadoc and cache model id
 	 */
-	@Cacheable(modelId = "persistent")
-	<T extends CodesTableItem> List<T> createCodesTable(Class<T> codesTable)
+	@Cacheable(modelId = name)
+	<T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTable)
 		throws CodesTableNotFoundException;
 	
 	/**
@@ -40,8 +44,9 @@ public interface CodesTableFactory{
 	 * the items shall be retrieved from.
 	 * @return A list of <code>CodesTableItemPeriodic</code>s belonging to a <code>CodesTablePeriodic</code>.
 	 * @throws CodesTableNotFoundException - exception thrown when a codestable couldn't be retrieved from the database.
+	 * @todo fix javadoc
 	 */
 	@Cacheable(modelId = "persistent")
-	<T extends CodesTableItemPeriodic> List<T> createCodesTablePeriodic(Class<T> codesTablePeriodic)
+	<T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTablePeriodic)
 		throws CodesTableNotFoundException;
 }
