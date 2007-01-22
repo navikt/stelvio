@@ -7,6 +7,7 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import no.stelvio.common.codestable.CodesTableItem;
@@ -17,6 +18,8 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
  * CodesTableItem for HenvendelseType
  * 
  * The tablemappings defined in the MappedSuperclasses are overridden
+ * 
+ * Defines a <code>@NamedQuery</code>, "HenvendelseTypeCti.findAll" to retrieve all instances of HenvendelseTypeCti from database
  * 
  * @author person983601e0e117 (Accenture)
  * 
@@ -33,6 +36,7 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
     @AttributeOverride(name="fromDate", column=@Column(name="dato_fom")),
     @AttributeOverride(name="toDate", column=@Column(name="dato_tom"))
 })
+@NamedQuery(name="HenvendelseTypeCti.findAll",query="select htcti from HenvendelseTypeCti htcti")
 public class HenvendelseTypeCti extends CodesTableItemPeriodic {
 
 	private static final long serialVersionUID = 4989579646384579677L;
