@@ -35,16 +35,14 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
 })
 public class HenvendelseTypeCti extends CodesTableItemPeriodic {
 
+	private static final long serialVersionUID = 4989579646384579677L;
+	
 	protected HenvendelseTypeCti() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public HenvendelseTypeCti(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean valid) {
 		super(code, decode, fromDate, toDate, locale, valid);
-		// TODO Auto-generated constructor stub
 	}
-
-	private static final long serialVersionUID = 4989579646384579677L;
 
 }
