@@ -20,6 +20,8 @@ import no.stelvio.common.codestable.ItemNotFoundException;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  * @todo add safe copying of input/output, that is, constructor and getItems()
+ * @todo should this check that the period is not overlapping for "like" rows? -> just an equal/hashcode impl that
+ * throws exception when 2 rows have wrapping periods, hashcode uses code/date_from/is_approved, equals checks for overlapping  
  */
 public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> implements CodesTablePeriodic {
 	/** List of <code>CodesTableItemPeriodic</code>s this <code>DefaultCodesTablePeriodic</code> consists of. */
