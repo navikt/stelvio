@@ -2,7 +2,6 @@ package no.stelvio.repository.codestable.support;
 
 import java.util.List;
 
-import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.repository.codestable.CodesTableRepository;
 
