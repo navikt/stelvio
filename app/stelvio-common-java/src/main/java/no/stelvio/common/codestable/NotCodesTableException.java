@@ -10,8 +10,12 @@ import no.stelvio.common.codestable.support.CodesTableException;
  * @version $Id$
  */
 public class NotCodesTableException extends CodesTableException {
-    /**
-     * 
+  
+
+	private static final long serialVersionUID = -1071348408365492500L;
+
+	/**
+     * Constructs a new NotCodesTableException 
      * @param codesTable
      */
 	public NotCodesTableException(Class<? extends AbstractCodesTableItem> codesTable) {

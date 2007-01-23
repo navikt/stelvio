@@ -11,6 +11,9 @@ import no.stelvio.common.codestable.support.CodesTableException;
  */
 public class CodesTableConfigurationException extends CodesTableException {
     
+
+	private static final long serialVersionUID = -991305077539306879L;
+
 	/**
 	 * CodesTableConfigurationException
 	 * @param message 

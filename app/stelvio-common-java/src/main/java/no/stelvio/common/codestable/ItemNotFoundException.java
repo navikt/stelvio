@@ -10,6 +10,9 @@ import no.stelvio.common.codestable.support.CodesTableException;
  * @version $Id$
  */
 public class ItemNotFoundException extends CodesTableException {
+
+	private static final long serialVersionUID = -1206901328468603479L;
+
 	/**
 	 * Creates an instance of the exception with the given code.
 	 *

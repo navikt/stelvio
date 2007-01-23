@@ -10,6 +10,9 @@ import no.stelvio.common.codestable.support.CodesTableException;
  * @version $Id$
  */
 public class DecodeNotFoundException extends CodesTableException {
+
+	private static final long serialVersionUID = 8665509491381533830L;
+
 	/**
 	 * Creates an instance of the exception with the given code.
 	 * 

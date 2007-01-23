@@ -13,12 +13,13 @@ import no.stelvio.common.codestable.support.CodesTableException;
  * @version $Id$
  */
 public class CodesTableNotFoundException extends CodesTableException {
-    private static final MessageFormat FORMAT = new MessageFormat("Codestable {0} does not exist");
+
+	private static final long serialVersionUID = -6427780265990487437L;
+	private static final MessageFormat FORMAT = new MessageFormat("Codestable {0} does not exist");
 
     /**
-     * 
-     * @param <T>
-     * @param cti
+     * Constructs a new CodesTableNotFoundException
+     * @param cti CodestableItem that was not found
      */
     public <T extends AbstractCodesTableItem> CodesTableNotFoundException(Class<T> cti) {
         super(create(cti));
