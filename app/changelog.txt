@@ -50,5 +50,10 @@ Module stelvio-service-java
 Module stelvio-presentation-java
 * Renamed package from no.stelvio.web to no.stelvio.presentation
 * Removed remnants of rtv-framework
+* Added no.stelvio.presentation.jsf.event.RequestContextPhaseListener, this phaselistener is responsible for updating 
+  the screenId in the RequestContext object. This used to be done in RequestContextFilter, but this caused a 
+  NullPointerException because the filter runs before the FacesContext and SWF Context are initialized. 
+* Added no.stelvio.presentation.constants.ConstantsWrapper. Wrapper class for handling constants in the presentation 
+  layer. Provides functionality to extract constants from a given class as a map.
 
 Star example
