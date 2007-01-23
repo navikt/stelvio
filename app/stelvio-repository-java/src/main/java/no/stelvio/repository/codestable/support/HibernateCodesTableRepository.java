@@ -2,6 +2,8 @@ package no.stelvio.repository.codestable.support;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.repository.codestable.CodesTableRepository;
 
@@ -41,10 +43,17 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 	 */
 	private <T extends AbstractCodesTableItem> String buildQuery(Class<T> codestableItem){
 		StringBuffer sb = new StringBuffer();
+		String entityName = codestableItem.getSimpleName();
+		
+		//Check if default entity name has been overridden by setting name in Entity-annotation
+		if(codestableItem.isAnnotationPresent(Entity.class)){
+			Entity entityAnnotation = codestableItem.getAnnotation(Entity.class);
+			entityName = entityAnnotation.name().equals("") ? entityName : entityAnnotation.name();
+		}
 		
 		//Building query
 		sb.append(QUERY_FIND_ALL_CODESTABLEITEMS_START);
-		sb.append(codestableItem.getSimpleName());
+		sb.append(entityName);
 		sb.append(QUERY_FIND_ALL_CODESTABLEITEMS_END);
 		
 		return sb.toString();
