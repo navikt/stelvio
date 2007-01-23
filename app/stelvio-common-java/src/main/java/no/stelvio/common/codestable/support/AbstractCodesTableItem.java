@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Locale;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
@@ -24,6 +25,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 public abstract class AbstractCodesTableItem implements Serializable {
 	
 	/** A codestableitem's code. */
+	@Id
 	@Column(name="code")
 	private String code;
 	
