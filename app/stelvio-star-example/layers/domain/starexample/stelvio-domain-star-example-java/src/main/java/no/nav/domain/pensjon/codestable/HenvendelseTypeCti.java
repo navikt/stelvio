@@ -36,7 +36,6 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
     @AttributeOverride(name="fromDate", column=@Column(name="dato_fom")),
     @AttributeOverride(name="toDate", column=@Column(name="dato_tom"))    
 })
-@NamedQuery(name="HenvendelseTypeCti.findAll",query="select htcti from HenvendelseTypeCti htcti")
 public class HenvendelseTypeCti extends CodesTableItemPeriodic {
 
 	private static final long serialVersionUID = 4989579646384579677L;
