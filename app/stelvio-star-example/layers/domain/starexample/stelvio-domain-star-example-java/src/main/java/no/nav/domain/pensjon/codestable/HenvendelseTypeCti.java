@@ -30,10 +30,10 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
 @Table(name="T_K_HENVENDELSE_T")
 @AttributeOverrides({
     @AttributeOverride(name="code", column=@Column(name="K_HENVENDELSE_T")),
-    @AttributeOverride(name="decode", column=@Column(name="dekode")),
-    @AttributeOverride(name="valid", column=@Column(name="er_gyldig")),
-    @AttributeOverride(name="fromDate", column=@Column(name="dato_fom")),
-    @AttributeOverride(name="toDate", column=@Column(name="dato_tom"))    
+    @AttributeOverride(name="decode", column=@Column(name="DEKODE")),
+    @AttributeOverride(name="valid", column=@Column(name="ER_GYLDIG")),
+    @AttributeOverride(name="fromDate", column=@Column(name="DATO_FOM")),
+    @AttributeOverride(name="toDate", column=@Column(name="DATO_TOM"))    
 })
 public class HenvendelseTypeCti extends CodesTableItemPeriodic {
 
