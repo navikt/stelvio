@@ -26,12 +26,11 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 	/**
 	 * {@inheritDoc}
 	 */
-	public <T extends AbstractCodesTableItem> List findCodesTableItems(Class<T>  codestableItem) {
+	@SuppressWarnings("unchecked")
+	public <T extends AbstractCodesTableItem> List<T> findCodesTableItems(Class<T>  codestableItem) {
 		String query = buildQuery( codestableItem);
 		
-		List codesTableItems = getHibernateTemplate().find(query);
-		
-		return codesTableItems;
+		return getHibernateTemplate().find(query);
 	}
 	
 	/**
