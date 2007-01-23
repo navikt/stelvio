@@ -1,7 +1,5 @@
 package no.stelvio.common.codestable.support;
 
-import java.util.List;
-
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
@@ -23,8 +21,6 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	/**
 	 * {@inheritDoc}
 	 */
-	//TODO: FIX CASTING
-	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem) {
         validateCodesTableClass(codesTableItem);
         
@@ -34,8 +30,6 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	/**
 	 * {@inheritDoc}
 	 */
-	//TODO: FIX CASTING
-	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItem) {
 		validateCodesTablePeriodicClass(codesTableItem);
 		
