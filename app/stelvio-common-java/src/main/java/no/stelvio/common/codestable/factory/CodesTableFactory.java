@@ -8,8 +8,6 @@ import no.stelvio.common.codestable.CodesTablePeriodic;
 
 import org.springmodules.cache.annotations.Cacheable;
 
-import java.util.List;
-
 /**
  * Interface defining functionality for retrieving a <code>CodesTable</code> from the database.
  * Must be implemented by the EJB that has responsibility for fetching the codestables
@@ -19,34 +17,34 @@ import java.util.List;
  * @version $Id$
  */
 public interface CodesTableFactory{
-	static final String name = "sdf";
+	
+	static final String CACHE_MODEL_ID = "no.stelvio.common.codestable";
+	
 	/**
-	 * Retrieves a list of <code>CodesTableItem</code>s belonging to a <code>CodesTableItem</code>s.
+	 * Retrieves a <code>CodesTable</code> containing a list of <code>CodesTableItem</code>s.
 	 * 
-	 * @param <T> <code>CodesTableItem</code>'s or subclasses of <code>CodesTableItem</code> that are valid input 
-	 * and output parameters. 
-	 * @param codesTable the class of type <code>CodesTableItem</code> that represents the <code>CodesTable</code> 
+	 * @param <T> A concrete implementation of <code>CodesTableItem</code> 
+	 * 
+	 * @param codesTableItemClass the subclass of type <code>CodesTableItem</code> that will be part of the <code>CodesTable</code> 
 	 * the items shall be retrieved from.
-	 * @return A list of <code>CodesTableItem</code>s belonging to a <code>CodesTable</code>.
-	 * @throws no.stelvio.common.codestable.CodesTableNotFoundException - exception thrown when a <code>CodesTable</code> couldn't be retrieved from the database.
-	 * @todo fix javadoc and cache model id
+	 * @return <code>CodesTable</code> containing a list of <code>CodesTableItem</code>s type of <T> 
+	 * @throws no.stelvio.common.codestable.CodesTableNotFoundException - exception thrown when a <code>CodesTable</code> couldn't be retrieved.
 	 */
-	@Cacheable(modelId = name)
-	<T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTable)
+	@Cacheable(modelId = CACHE_MODEL_ID)
+	<T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableItemClass)
 		throws CodesTableNotFoundException;
 	
 	/**
-	 * Retrieves a list of <code>CodesTableItemPeriodic</code>s belonging to a <code>CodesTableItemPeriodic</code>s.
+	 * Retrieves a <code>CodesTablePeriodic</code> containing a list of <code>CodesTableItemPeriodic</code>s.
 	 * 
-	 * @param <T> <code>CodesTableItemPeriodic</code>'s or subclasses of <code>CodesTableItemPeriodic</code> that are valid input 
-	 * and output parameters.
-	 * @param codesTablePeriodic the class of type <code>CodesTableItemPeriodic</code> that represents the <code>CodesTablePeriodic</code> 
+	 * @param <T> A concrete implementation of <code>CodesTableItem</code> 
+	 * 
+	 * @param codesTableItemPeriodicClass the subclass of type <code>CodesTableItemPeriodic</code> that will be part of the <code>CodesTablePeriodic</code> 
 	 * the items shall be retrieved from.
-	 * @return A list of <code>CodesTableItemPeriodic</code>s belonging to a <code>CodesTablePeriodic</code>.
-	 * @throws CodesTableNotFoundException - exception thrown when a codestable couldn't be retrieved from the database.
-	 * @todo fix javadoc
+	 * @return <code>CodesTablePeriodic</code> containing a list of <code>CodesTablePeriodicItem</code>s type of <T> 
+	 * @throws no.stelvio.common.codestable.CodesTableNotFoundException - exception thrown when a <code>CodesTablePeriodic</code> couldn't be retrieved.
 	 */
-	@Cacheable(modelId = "persistent")
-	<T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTablePeriodic)
+	@Cacheable(modelId = CACHE_MODEL_ID)
+	<T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass)
 		throws CodesTableNotFoundException;
 }
