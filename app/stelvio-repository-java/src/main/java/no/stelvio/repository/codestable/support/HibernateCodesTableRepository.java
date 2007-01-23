@@ -2,6 +2,7 @@ package no.stelvio.repository.codestable.support;
 
 import java.util.List;
 
+import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.repository.codestable.CodesTableRepository;
 
@@ -26,7 +27,7 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 	/**
 	 * {@inheritDoc}
 	 */
-	public List findCodesTableItems(Class<AbstractCodesTableItem>  codestableItem) {
+	public <T extends AbstractCodesTableItem> List findCodesTableItems(Class<T>  codestableItem) {
 		String query = buildQuery( codestableItem);
 		
 		List codesTableItems = getHibernateTemplate().find(query);
@@ -40,7 +41,7 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 	 * @param codestableItem Class the identifies the CodestableItem
 	 * @return query string
 	 */
-	private String buildQuery(Class<AbstractCodesTableItem> codestableItem){
+	private <T extends AbstractCodesTableItem> String buildQuery(Class<T> codestableItem){
 		StringBuffer sb = new StringBuffer();
 		
 		//Building query

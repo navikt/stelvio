@@ -11,5 +11,5 @@ public interface CodesTableRepository {
 	 * @param codestableItem AbstractCodesTableItem implementation that may be instantiated (non-abstract)
 	 * @return list of specified CodesTableItem
 	 */
-	List findCodesTableItems(Class<AbstractCodesTableItem>  codestableItem);
+	<T extends AbstractCodesTableItem> List findCodesTableItems(Class<T>  codestableItem);
 }
