@@ -15,7 +15,7 @@ public class RepositoryCodesTableFactory implements CodesTableFactory {
 	private CodesTableRepository codesTableRepository;
 	
 	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return (CodesTable<T>) codesTableRepository.findCodesTableItems(codesTableClass); 
+		return (CodesTable<T>) codesTableRepository.findCodesTableItems(codesTableClass);
 	}
 
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {

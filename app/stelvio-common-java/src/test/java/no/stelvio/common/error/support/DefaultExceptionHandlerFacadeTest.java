@@ -44,17 +44,17 @@ public class DefaultExceptionHandlerFacadeTest extends ExceptionHandlerFacadeTes
     }
 
     @Test
-    public void shouldThrowException() throws Throwable {
+    public void shouldThrowException() {
         ExceptionHandlerFacade facade = exceptionHandlerFacade();
 
-        try {
-            facade.rethrow(new IllegalStateException("test"));
-            fail("Should throw IllegalStateException");
-        } catch (IllegalStateException e) {
-            // Should happen
-        }
+	    try {
+            facade.rethrow(new IllegalAccessException("test"));
+            fail("Should throw IllegalAccessException");
+        } catch (IllegalAccessException e) {
+		    // Should happen
+	    }
 
-        try {
+	    try {
             facade.throwNew(TestSystemUnrecoverableException.class, new IllegalArgumentException("iae"), "test");
             fail("Should throw SystemUnrecoverableException");
         } catch (SystemUnrecoverableException e) {

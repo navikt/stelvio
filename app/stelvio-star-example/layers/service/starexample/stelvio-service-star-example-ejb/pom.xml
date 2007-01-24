@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>no.stelvio.star.example</groupId>
-			<artifactId>stelvio-domain-star-example-java</artifactId>
+			<artifactId>stelvio-repository-star-example-java</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>

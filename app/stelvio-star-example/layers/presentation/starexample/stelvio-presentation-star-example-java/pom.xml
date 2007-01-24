@@ -21,7 +21,7 @@
 		</dependency> 
 		<dependency>
 			<groupId>no.stelvio.star.example</groupId>
-			<artifactId>stelvio-service-star-example-ejb</artifactId>
+			<artifactId>stelvio-service-star-example-java</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>

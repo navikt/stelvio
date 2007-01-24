@@ -1,17 +1,18 @@
 package no.stelvio.common.error.support;
 
-import com.sun.beans.ObjectHandler;
-import no.stelvio.common.error.ExceptionHandlerFacade;
-import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
-import no.stelvio.common.error.strategy.support.FallbackExceptionHandlerStrategy;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Transformer;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+
+import com.sun.beans.ObjectHandler;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Transformer;
+
+import no.stelvio.common.error.ExceptionHandlerFacade;
+import no.stelvio.common.error.strategy.ExceptionHandlerStrategy;
+import no.stelvio.common.error.strategy.support.FallbackExceptionHandlerStrategy;
 
 /**
  * @author personf8e9850ed756
@@ -26,16 +27,16 @@ public class DefaultExceptionHandlerFacade implements ExceptionHandlerFacade {
         handleInternal(e);
     }
 
-    public <T extends Throwable> void rethrow(T e) throws Throwable {
+    public <T extends Throwable> void rethrow(T e) throws T {
         throw handleInternal(e);
     }
 
-    public <T extends Throwable> void throwNew(Class<T> exceptionToThrow, Throwable cause, Object... params) throws Throwable {
+    public <T extends Throwable> void throwNew(Class<T> exceptionToThrow, Throwable cause, Object... params) throws T {
         T se = createException(exceptionToThrow, cause, params);
         throw handleInternal(se);
     }
 
-    public <T extends Throwable> void throwNew(Class<T> exceptionToThrow, Object... params) throws Throwable {
+    public <T extends Throwable> void throwNew(Class<T> exceptionToThrow, Object... params) throws T {
         T se = createException(exceptionToThrow, params);
         throw handleInternal(se);
     }
