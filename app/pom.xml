@@ -33,10 +33,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.1-SNAPSHOT</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.1-SNAPSHOT</developerConnection>
-		<tag>HEAD</tag>
-		<url>https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.1-SNAPSHOT</url>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/</developerConnection>
+		<url>http://versjonskontroll.adeo.no/viewsvn/?root=stelvio</url>
 	</scm>
 	<dependencies>
 		<dependency>
