@@ -8,8 +8,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.MDC;
 
-import no.stelvio.common.context.Context;
-
 /**
  * Context implementation that uses the Log4j MDC class
  * for storing key-value pairs.
@@ -61,7 +59,7 @@ class Log4jContext<T> implements Context {
 	/**
 	 * Remove all of the context values.
 	 * 
-	 * @see no.stelvio.common.context.Context#removeAll()
+	 * @see Context#removeAll()
 	 */
 	public void removeAll() {
 		Hashtable ht = MDC.getContext();
@@ -74,7 +72,7 @@ class Log4jContext<T> implements Context {
 	 * Import a new context
 	 * 
 	 * @param o the context to import
-	 * @see no.stelvio.common.context.Context#importContext(java.lang.Object)
+	 * @see Context#importContext(java.lang.Object)
 	 */
 	public void importContext(Object o) {
 		if (null == o) {
@@ -115,7 +113,7 @@ class Log4jContext<T> implements Context {
 	 * 
 	 * @return the exported context
 	 * 
-	 * @see no.stelvio.common.context.Context#exportContext()
+	 * @see Context#exportContext()
 	 */
 	public Object exportContext() {
 		Hashtable uc = MDC.getContext();

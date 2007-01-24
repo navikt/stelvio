@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.error.TestRecoverableException;
 import no.stelvio.common.error.TestUnrecoverableException;
 import no.stelvio.common.error.message.Extractor;
@@ -85,7 +86,7 @@ public class LoggerExceptionHandlerStrategyTest {
         ((TestLogFactory) LogFactory.getFactory()).setLog(log);
         log = context.mock(Log.class);
 
-		RequestContext requestContext = new RequestContext("UserId", "ScreenId", null, "ProcessId", "TransactionId");
+		RequestContext requestContext = new SimpleRequestContext("ScreenId", null, "ProcessId", "TransactionId");
 		RequestContextHolder.setRequestContext(requestContext);
     }
 

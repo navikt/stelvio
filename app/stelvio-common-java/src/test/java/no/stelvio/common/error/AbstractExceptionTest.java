@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
@@ -77,7 +78,7 @@ public abstract class AbstractExceptionTest<T extends StelvioException> {
 
     @Before
     public void setUpRequestContext() {
-	    RequestContext requestContext = new RequestContext("user", "screen", "module", "process", "transaction");
+	    RequestContext requestContext = new SimpleRequestContext("screen", "module", "process", "transaction");
 	    RequestContextHolder.setRequestContext(requestContext);
     }
 }

@@ -1,8 +1,6 @@
-package no.stelvio.common.context;
+package no.stelvio.common.context.support;
 
 import java.io.Serializable;
-
-import no.stelvio.common.context.support.DefaultContext;
 
 /**
  * This class is used to store and retrieve information that must
@@ -97,7 +95,7 @@ abstract class AbstractContext {
 	/**
 	 * Remove all of the context values.
 	 * 
-	 * @see no.stelvio.common.context.Context#removeAll()
+	 * @see Context#removeAll()
 	 */
 	public final void removeAll() {
 		context.removeAll();
@@ -108,7 +106,7 @@ abstract class AbstractContext {
 	 * 
 	 * @return the exported context
 	 * 
-	 * @see no.stelvio.common.context.Context#exportContext()
+	 * @see Context#exportContext()
 	 */
 	public final Object exportContext() {
 		return context.exportContext();
@@ -118,7 +116,7 @@ abstract class AbstractContext {
 	 * Import a new context
 	 * 
 	 * @param o the context to import
-	 * @see no.stelvio.common.context.Context#importContext(java.lang.Object)
+	 * @see Context#importContext(java.lang.Object)
 	 */
 	public final void importContext(Object o) {
 		context.importContext(o);

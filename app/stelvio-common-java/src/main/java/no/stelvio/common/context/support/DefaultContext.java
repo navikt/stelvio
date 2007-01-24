@@ -2,8 +2,6 @@ package no.stelvio.common.context.support;
 
 import java.util.Hashtable;
 
-import no.stelvio.common.context.Context;
-
 /**
  * Context implementation that uses the InheritableThreadLocal class
  * for storing key-value pairs.
@@ -76,7 +74,7 @@ public class DefaultContext<T> implements Context {
 	 * 
 	 * @return the exported context
 	 * 
-	 * @see no.stelvio.common.context.Context#exportContext()
+	 * @see Context#exportContext()
 	 */
 	public Object exportContext() {
 		return getHeap();
@@ -94,7 +92,7 @@ public class DefaultContext<T> implements Context {
 	 * 
 	 * @param o the context to import
 	 * 
-	 * @see no.stelvio.common.context.Context#importContext(java.lang.Object)
+	 * @see Context#importContext(java.lang.Object)
 	 */
 	public void importContext(Object o) {
 		if (null == o) {

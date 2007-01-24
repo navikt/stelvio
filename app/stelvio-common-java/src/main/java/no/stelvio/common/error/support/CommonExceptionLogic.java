@@ -8,6 +8,8 @@ import org.apache.commons.lang.StringUtils;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.security.SecurityContext;
+import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.util.SequenceNumberGenerator;
 
 /**
@@ -29,7 +31,8 @@ public abstract class CommonExceptionLogic implements Serializable {
 
     protected CommonExceptionLogic(Object[] templateArguments) {
 	    RequestContext requestContext = RequestContextHolder.currentRequestContext();
-	    init(SequenceNumberGenerator.getNextId("ErrorId"), requestContext.getUserId(), requestContext.getScreenId(),
+	    SecurityContext securityContext = SecurityContextHolder.currentSecurityContext();
+	    init(SequenceNumberGenerator.getNextId("ErrorId"), securityContext.getUserId(), requestContext.getScreenId(),
                 requestContext.getProcessId(), requestContext.getTransactionId(), templateArguments, false);
     }
 

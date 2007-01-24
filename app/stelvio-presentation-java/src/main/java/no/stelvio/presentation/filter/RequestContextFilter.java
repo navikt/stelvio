@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
 
 
@@ -56,11 +57,13 @@ public class RequestContextFilter extends AbstractFilter {
 					}
 				}
 			}
-	
-			// Allways update the user, module, process and transaction id
+
+			// Always update the module, process and transaction id
+			// TODO why do we save it to session if every property is updated?
 			// The screen id can not be set here because the filter runs outside
 			// the JSF and SWF context. Screen id is set through a RequestContextPhaseListener
-			RequestContext requestContext = new RequestContext(request.getRemoteUser(), null, null, null,
+			// TODO how to find module id and process id? Are these only used when logging?
+			RequestContext requestContext = new SimpleRequestContext(null, null, null,
 					String.valueOf(SequenceNumberGenerator.getNextId("Transaction")));
 			RequestContextHolder.setRequestContext(requestContext);
 

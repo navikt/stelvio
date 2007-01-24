@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.error.TestUnrecoverableException;
 
 /**
@@ -36,7 +36,7 @@ public class MorpherExceptionHandlerStrategyTest {
                 Throwable origCause = original.getCause();
                 Throwable copyCause = copy.getCause();
 
-                // Don't need the test specifically that the copy has the same number of causes as the original
+                // Don't need to test specifically that the copy has the same number of causes as the original
                 // as we will get a NullPointerException in this for loop if this is the case
                 for (; origCause != null || copyCause != null;
                      origCause = origCause.getCause(), copyCause = copyCause.getCause()) {
@@ -49,7 +49,7 @@ public class MorpherExceptionHandlerStrategyTest {
 	@Before
 	public void setupRequestContext() {
 		RequestContextHolder.setRequestContext(
-				new RequestContext("userId", "screenId", "moduleId", "processId", "transactionId"));
+				new SimpleRequestContext("screenId", "moduleId", "processId", "transactionId"));
 	}
 
     @Before

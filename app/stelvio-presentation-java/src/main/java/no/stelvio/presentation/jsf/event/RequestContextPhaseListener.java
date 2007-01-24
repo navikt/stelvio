@@ -10,6 +10,7 @@ import org.springframework.webflow.executor.jsf.FlowExecutionHolderUtils;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
 
 /**
  * The RequestContextPhaseListener is executed during the request prosessing 
@@ -42,12 +43,7 @@ public class RequestContextPhaseListener implements PhaseListener {
 		if (session != null) {
 			String screenId = session.getDefinition().getId()+":"+session.getState().getId();
 			RequestContext requestContext = RequestContextHolder.currentRequestContext();
-			RequestContext newRequestContext =
-					new RequestContext(requestContext.getUserId(),
-							screenId,
-							requestContext.getModuleId(),
-							requestContext.getProcessId(),
-							requestContext.getTransactionId());
+			RequestContext newRequestContext = new SimpleRequestContext.Builder(requestContext).screenId(screenId).build();
 			RequestContextHolder.setRequestContext(newRequestContext);
 		}
 	}

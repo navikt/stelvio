@@ -45,13 +45,14 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/config/ConflictingProper
 app/stelvio-common-java/src/main/java/no/stelvio/common/config/InvalidPropertyException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/config/MissingPropertyException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/config/PropertyExceedsLimitException.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/context/AbstractContext.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/context/Context.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/RequestContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/RequestContextHolder.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/package.html -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/AbstractContext.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/Context.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/DefaultContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/Log4jContext.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/SimpleRequestContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/ThreadLocalMap.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/converter/CalendarConverter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/converter/ConverterLoader.java -text
@@ -120,6 +121,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/RolesUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecureAnnotationNotInMappingException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributes.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/support/SimpleSecurityContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceRequest.java -text

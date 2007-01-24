@@ -15,6 +15,7 @@ import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.error.LoggableException;
 import no.stelvio.common.error.StelvioException;
 import no.stelvio.common.error.SystemUnrecoverableException;
@@ -229,8 +230,7 @@ public abstract class AbstractFilter implements Filter {
 	 */
 	private void setRequestContext(String processId) {
 		RequestContext requestContext =
-				new RequestContext(
-						filterConfig.getInitParameter("userId"),
+				new SimpleRequestContext(
 						filterConfig.getInitParameter("screenId"),
 						filterConfig.getInitParameter("moduleId"),
 						processId,

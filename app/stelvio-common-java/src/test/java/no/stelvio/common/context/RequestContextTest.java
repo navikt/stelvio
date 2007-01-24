@@ -2,6 +2,8 @@ package no.stelvio.common.context;
 
 import junit.framework.TestCase;
 
+import no.stelvio.common.context.support.SimpleRequestContext;
+
 /**
  * RequestContext Unit Test.
  * 
@@ -11,15 +13,13 @@ import junit.framework.TestCase;
  */
 public class RequestContextTest extends TestCase {
 	public void test() {
-		String user = "user";
 		String screen = "screen";
 		String module = "module";
 		String process = "process";
 		String transaction = "transaction";
 
-		RequestContext requestContext = new RequestContext(user, screen, module, process, transaction);
+		RequestContext requestContext = new SimpleRequestContext(screen, module, process, transaction);
 
-		assertEquals("user", user, requestContext.getUserId());
 		assertEquals("screen", screen, requestContext.getScreenId());
 		assertEquals("module", module, requestContext.getModuleId());
 		assertEquals("process", process, requestContext.getProcessId());

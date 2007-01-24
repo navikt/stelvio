@@ -1,119 +1,68 @@
 package no.stelvio.common.security;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
- * Context to store security information about the logged on user.
- * 
+ * Context that has security information about the logged on user. Implementations decide how to get to/store the
+ * information necessary for providing this functionality.
+ *
  * @author personbf936f5cae20, Accenture
  * @author persondab2f89862d3, Accenture
- * @version $Id: SecurityContext.java $ 
+ * @author personf8e9850ed756, Accenture
+ * @version $Id: SecurityContext.java $
  */
-public final class SecurityContext {
-
-	private String user;
-	private List<String> roles;
-	
-	/** Default constructor */
-	public SecurityContext(String user, List<String> roles) {
-		this.user = user;
-		this.roles = roles;
-	}
-	
+public interface SecurityContext {
 	/**
-	 * Returns the logged in user's username.
-	 * 
-	 * @return user name.
+	 * Returns the logged in user's id.
+	 *
+	 * @return logged in user's id.
 	 */
-	public String getUser() {
-		return user;
-	}
+	String getUserId();
+
 	/**
 	 * Returns the user's roles.
-	 * 
-	 * @return List of the user's roles
+	 *
+	 * @return List of the user's roles.
 	 */
-	public List<String> getRoles() {
-		return roles;
-	}	
+	List<String> getRoles();
+
 	/**
 	 * Checks if the user has one role.
-	 * 
+	 *
 	 * @param role the rolename.
 	 * @return true or false.
 	 */
-	public boolean isUserInRole(String role) {
-		List<String> roleList = getRoles();
-		return (null == roleList) ? false : roleList.contains(role);
-	}
+	boolean isUserInRole(String role);
+
 	/**
 	 * Checks if the user has all the supplied roles.
-	 * 
+	 *
 	 * @param roleList the list of roles to check.
 	 * @return true if the user has all roles, false otherwise.
 	 */
-	public boolean isUserInAllRoles(List<String> roleList) {
-		List<String> userRoles = getRoles();
-		return (null == userRoles) ? false : userRoles.containsAll(roleList);
-	}
+	boolean isUserInAllRoles(List<String> roleList);
+
 	/**
 	 * Checks if the user has all the supplied roles.
-	 * 
+	 *
 	 * @param roleparams the comma separated list of roles to check.
 	 * @return true if the user has all roles, false otherwise.
 	 */
-	public boolean isUserInAllRoles(String... roleparams) {
-		
-		List<String> userRoles = getRoles();
-		Iterator<String> iter = userRoles.iterator();
-		
-		while (iter.hasNext()) {
-			String role = iter.next();
-			for (int i = 0; i < roleparams.length; i++) {
-				if(!roleparams[i].equalsIgnoreCase(role)){
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-	
+	boolean isUserInAllRoles(String... roleparams);
+
 	/**
 	 * Checks if the user has one of the supplied roles.
-	 * 
+	 *
 	 * @param roleList the list of roles to check.
 	 * @return true if the user has one of the roles, false otherwise.
 	 */
-	public boolean isUserInRoles(List<String> roleList) {
-		List<String> userRoles = getRoles();
-		Iterator<String> it = userRoles.iterator();
-		while (it.hasNext()){
-			if (userRoles.contains(it.next())){
-				return true;
-			}
-		}
-		return false;
-	}	
+	boolean isUserInRoles(List<String> roleList);
+
 	/**
 	 * Checks if the user has one of the supplied roles.
-	 * 
+	 *
 	 * @param roleparams the comma separated list of roles to check.
 	 * @return true if the user has one of the roles, false otherwise.
 	 */
-	public boolean isUserInRoles(String... roleparams) {
-		
-		List<String> userRoles = getRoles();
-		Iterator<String> iter = userRoles.iterator();
-		
-		while (iter.hasNext()) {
-			String role = iter.next();
-			for (int i = 0; i < roleparams.length; i++) {
-				if(roleparams[i].equalsIgnoreCase(role)){
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+	boolean isUserInRoles(String... roleparams);
 }

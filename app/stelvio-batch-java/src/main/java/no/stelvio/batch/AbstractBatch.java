@@ -16,9 +16,9 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import no.stelvio.batch.domain.BatchDO;
-import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.error.SystemUnrecoverableException;
 import no.stelvio.common.error.support.Severity;
+import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.util.MessageFormatter;
 
 /**
@@ -254,7 +254,7 @@ public abstract class AbstractBatch {
      * @param severity the severity of the message to log.
      */
 	private void log(String message, Severity severity) {
-		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { RequestContextHolder.currentRequestContext().getUserId(), severity, BATCH, batchName, message }));
+		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { SecurityContextHolder.currentSecurityContext().getUserId(), severity, BATCH, batchName, message }));
 	}
 
 	/**
