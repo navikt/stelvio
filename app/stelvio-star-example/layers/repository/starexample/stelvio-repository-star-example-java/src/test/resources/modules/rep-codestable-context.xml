@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- Hibernate implementation of CodestableRepository -->
+	<bean id="rep.codestable.codestableRepository" class="no.stelvio.repository.codestable.support.HibernateCodesTableRepository">
+		<property name="hibernateTemplate" ref="rep.codestable.hibernateTemplate"/>
+	</bean>
+
+	<!-- Hibernate session factory -->
+	<bean id="rep.codestable.sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="rep.codestable.dataSource"/>
+		<!-- >property name="jtaTransactionManager" ref="rep.codestable.transactionManager"/-->
+		<!-- >property name="schemaUpdate" value="true"/-->	  	
+		<property name="annotatedClasses">
+			<list>
+				<value>no.nav.domain.pensjon.codestable.HenvendelseTypeCti</value>								
+			</list>
+		</property>	  	
+		<property name="hibernateProperties">
+			<props>							
+				<prop key="hibernate.dialect">org.hibernate.dialect.DB2400Dialect</prop>								
+				<prop key="hibernate.query.jpaql_strict_compliance">true</prop>											
+			</props>
+		</property>
+	</bean>
+
+	<!-- Datasource -->
+	 <bean id="rep.codestable.dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" lazy-init="true">
+	        <property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver" />
+	        <property name="url" value="jdbc:db2://155.55.1.78:5023/TDB2" />
+	        <property name="username" value="xxx" />
+	        <property name="password" value="xxx" />
+	 </bean>
+	 
+	<!-- Hibernate template-->
+	<bean id="rep.codestable.hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+	  <property name="sessionFactory" ref="rep.codestable.sessionFactory"/>
+	</bean>
+	
+	<!-- Hibernate tx-->
+	<bean id="rep.codestable.transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	  <property name="sessionFactory" ref="rep.codestable.sessionFactory"/>
+	</bean>		 
+
+       
+</beans>
