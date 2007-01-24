@@ -1,4 +1,4 @@
-package no.stelvio.presentation.filter;
+package no.stelvio.presentation.context;
 
 import java.io.IOException;
 import javax.servlet.FilterChain;
@@ -11,6 +11,7 @@ import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
+import no.stelvio.presentation.filter.AbstractFilter;
 
 
 /**

@@ -16,7 +16,7 @@ import no.stelvio.common.context.support.SimpleRequestContext;
  * The RequestContextPhaseListener is executed during the request prosessing 
  * lifecycle. This listener updates the current RequestContext object. 
  * The RequestContext object is set through the 
- * <code>no.stelvio.presentation.filter.RequestContextFilter</code>, because the 
+ * <code>no.stelvio.presentation.context.RequestContextFilter</code>, because the
  * filter runs outside of the JSF and SWF context the screenId is not available at
  * the time the filter is run, this PhaseListener will set the screenId. 
  * 

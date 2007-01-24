@@ -274,8 +274,8 @@ app/stelvio-presentation-java/.classpath -text
 app/stelvio-presentation-java/.project -text
 app/stelvio-presentation-java/pom.xml -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/constants/ConstantsWrapper.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/RequestContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/AbstractFilter.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/RequestContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/event/RequestContextPhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolver.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuComponent.java -text
