@@ -34,6 +34,7 @@ Module stelvio-test-java
 * Fixed package structure (no.stelvio.common.test -> no.stelvio.test)
 
 Module stelvio-domain-java
+* Added domain object Pid, used to represent a Personal Identification number. Includes validation methods.
 * Moved domain objects in common for menu here
 * Moved domain objects in common for tasklist here
 
