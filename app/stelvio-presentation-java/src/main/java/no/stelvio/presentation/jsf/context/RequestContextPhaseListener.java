@@ -1,4 +1,4 @@
-package no.stelvio.presentation.jsf.event;
+package no.stelvio.presentation.jsf.context;
 
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
