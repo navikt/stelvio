@@ -15,11 +15,11 @@ public class RepositoryCodesTableFactory implements CodesTableFactory {
 	private CodesTableRepository codesTableRepository;
 	
 	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return (CodesTable<T>) codesTableRepository.fetchCodesTable(codesTableClass); 
+		return (CodesTable<T>) codesTableRepository.findCodesTableItems(codesTableClass); 
 	}
 
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return (CodesTablePeriodic<T>) codesTableRepository.fetchCodesTable(codesTableClass); 
+		return (CodesTablePeriodic<T>) codesTableRepository.findCodesTableItems(codesTableClass); 
 	}
 	
 	public void setCodesTableRepository(CodesTableRepository codesTableRepository) {
