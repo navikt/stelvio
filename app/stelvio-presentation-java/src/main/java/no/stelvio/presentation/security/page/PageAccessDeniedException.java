@@ -1,7 +1,7 @@
 package no.stelvio.presentation.security.page;
 
 import no.stelvio.common.security.SecurityException;
-import no.stelvio.presentation.security.page.parse.JSFPage;
+import no.stelvio.presentation.security.page.parse.JsfPage;
 
 /**
  * Thrown when a user is not authorized to view a page.
@@ -13,7 +13,7 @@ public class PageAccessDeniedException extends SecurityException {
 
 	private static final long serialVersionUID = 1L;
 
-	private JSFPage pageRequirements;
+	private JsfPage pageRequirements;
 
 	/**
 	 * Constructor to set the viewId of the page which the user tried to access.
@@ -31,10 +31,10 @@ public class PageAccessDeniedException extends SecurityException {
 	 * @param viewId
 	 *            the viewId.
 	 * @param page
-	 *            the JSFPage object containing the security requirements of the
+	 *            the JsfPage object containing the security requirements of the
 	 *            page.
 	 */
-	public PageAccessDeniedException(String viewId, JSFPage page) {
+	public PageAccessDeniedException(String viewId, JsfPage page) {
 		super(viewId);
 		pageRequirements = page;
 	}
@@ -58,12 +58,12 @@ public class PageAccessDeniedException extends SecurityException {
 	}
 
 	/**
-	 * Gets the JSFPage object representing the page and its security
+	 * Gets the JsfPage object representing the page and its security
 	 * requirements.
 	 * 
-	 * @return the JSFPage object.
+	 * @return the JsfPage object.
 	 */
-	public JSFPage getSecureJSFPage() {
+	public JsfPage getSecureJSFPage() {
 		return this.pageRequirements;
 	}
 

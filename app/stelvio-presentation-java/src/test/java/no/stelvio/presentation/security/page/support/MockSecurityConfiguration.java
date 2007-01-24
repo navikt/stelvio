@@ -1,16 +1,16 @@
-package no.stelvio.presentation.security.page.util;
+package no.stelvio.presentation.security.page.support;
 
-import no.stelvio.presentation.security.page.parse.JSFApplication;
+import no.stelvio.presentation.security.page.parse.JsfApplication;
 import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
 
 public class MockSecurityConfiguration implements SecurityConfiguration{
 
-	 private JSFApplication secureApp;
+	 private JsfApplication secureApp;
 	 
-	 public MockSecurityConfiguration(JSFApplication jsfApp){
+	 public MockSecurityConfiguration(JsfApplication jsfApp){
 		 secureApp = jsfApp;
 	 }
-	 public JSFApplication getJsfApplication(){
+	 public JsfApplication getJsfApplication(){
 		 return secureApp;
 	 } 
 	 public void setUpJSFApplication(){

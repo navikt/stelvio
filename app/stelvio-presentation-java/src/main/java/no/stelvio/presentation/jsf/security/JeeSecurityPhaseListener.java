@@ -19,8 +19,8 @@ import no.stelvio.presentation.security.page.PageAuthenticationFailedException;
 import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
 import no.stelvio.presentation.security.page.PageSecurityFileNotFoundException;
 import no.stelvio.presentation.security.page.constants.Constants;
-import no.stelvio.presentation.security.page.parse.JSFPage;
-import no.stelvio.presentation.security.page.util.J2eeSecurityObject;
+import no.stelvio.presentation.security.page.parse.JsfPage;
+import no.stelvio.presentation.security.page.support.J2eeSecurityObject;
 
 /**
  * <p>
@@ -413,7 +413,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 
 			if (authorizedUser) {
 				session.setAttribute(Constants.PREVIOUS_JSF_PAGE_URL, viewId);
-				JSFPage page = this.j2eeSecurityObject.getPageObject(viewId);
+				JsfPage page = this.j2eeSecurityObject.getPageObject(viewId);
 				this.j2eeSecurityObject.handleProtocolSwitch(viewId, page
 						.requiresSSL());
 				return true;

@@ -1,7 +1,6 @@
 package no.stelvio.presentation.security.page.authentication;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +23,7 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * <pre>
  *  &lt;servlet&gt;
  *  	&lt;servlet-name&gt;JsfAuthenticationServlet&lt;/servlet-name&gt;
- *  	&lt;servlet-class&gt;no.stelvio.web.security.page.authentication.J2eeAuthenticationServlet&lt;/servlet-class&gt;
+ *  	&lt;servlet-class&gt;no.stelvio.web.security.page.authentication.JeeAuthenticationServlet&lt;/servlet-class&gt;
  *  &lt;/servlet&gt;
  * </pre>
  * 
@@ -67,7 +66,7 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * @version $Id$
  */
 
-public class J2eeAuthenticationServlet extends HttpServlet {
+public class JeeAuthenticationServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 

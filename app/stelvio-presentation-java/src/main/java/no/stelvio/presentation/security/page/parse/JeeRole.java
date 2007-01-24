@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author persondab2f89862d3
  * @version $Id$
  */
-public class J2EERole implements Serializable {
+public class JeeRole implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,7 +18,7 @@ public class J2EERole implements Serializable {
 	 * Default constructor for class.
 	 *
 	 */
-	public J2EERole() {
+	public JeeRole() {
 	}
 
 	/**

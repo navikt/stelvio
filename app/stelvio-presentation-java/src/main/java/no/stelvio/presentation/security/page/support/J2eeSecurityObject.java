@@ -1,17 +1,13 @@
-package no.stelvio.presentation.security.page.util;
+package no.stelvio.presentation.security.page.support;
 
 import java.io.IOException;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import java.util.Iterator;
 import java.util.StringTokenizer;
-
 import javax.faces.application.ViewHandler;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -23,17 +19,17 @@ import no.stelvio.presentation.security.page.PageAuthenticationFailedException;
 import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
 import no.stelvio.presentation.security.page.PageSecurityFileNotFoundException;
 import no.stelvio.presentation.security.page.constants.Constants;
-import no.stelvio.presentation.security.page.parse.J2EERole;
-import no.stelvio.presentation.security.page.parse.J2EERoles;
-import no.stelvio.presentation.security.page.parse.JSFApplication;
-import no.stelvio.presentation.security.page.parse.JSFPage;
+import no.stelvio.presentation.security.page.parse.JeeRole;
+import no.stelvio.presentation.security.page.parse.JeeRoles;
+import no.stelvio.presentation.security.page.parse.JsfApplication;
+import no.stelvio.presentation.security.page.parse.JsfPage;
 import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
-import no.stelvio.presentation.security.page.parse.SecurityConfigurationXML;
+import no.stelvio.presentation.security.page.parse.SecurityConfigurationXml;
 
 /**
  * This class reads in and maintains the security definitions from the
  * <code>SecurityConfiguration</code> interface (the concrete implementation
- * <code>SecurityConfigurationXML</code> is set to default if no other source
+ * <code>SecurityConfigurationXml</code> is set to default if no other source
  * is specified) It provides methods which can handle authorization of these
  * security constraints against JEE-security and methods which can handle a
  * protocol switch for secure channel communication.
@@ -46,7 +42,7 @@ public class J2eeSecurityObject {
 
 	private SecurityConfiguration securityConfiguration = null;
 
-	private JSFApplication secureJsfApplication = null; // object that holds the
+	private JsfApplication secureJsfApplication = null; // object that holds the
 
 	// secured page
 	// definitions
@@ -75,7 +71,7 @@ public class J2eeSecurityObject {
 
 	/**
 	 * Sets the SecurityConfiguration source, if not set a
-	 * <code>SecurityConfigurationXML</code> will be set by default.
+	 * <code>SecurityConfigurationXml</code> will be set by default.
 	 * 
 	 * @param config
 	 *            the SecurityConfiguration
@@ -87,7 +83,7 @@ public class J2eeSecurityObject {
 	/**
 	 * Initializes the Security Object by obtaining the security definitions
 	 * from the <code>SecurityConfiguration</code> source. If no such source
-	 * is set a new <code>SecurityConfigurationXML</code> will be created as
+	 * is set a new <code>SecurityConfigurationXml</code> will be created as
 	 * default.
 	 * 
 	 */
@@ -101,7 +97,7 @@ public class J2eeSecurityObject {
 				String configFile = exctx
 				.getInitParameter(Constants.SECURITY_CONFIG_FILE);
 				URL url = exctx.getResource(configFile);
-				this.securityConfiguration = new SecurityConfigurationXML(url);
+				this.securityConfiguration = new SecurityConfigurationXml(url);
 				
 			} catch (MalformedURLException e) {
 				throw new PageSecurityFileNotFoundException(e, Constants.SECURITY_CONFIG_FILE);
@@ -143,7 +139,7 @@ public class J2eeSecurityObject {
 		boolean pageRequiresAuthorization = true;
 		boolean pageRequiresAuthentication = true;
 
-		JSFPage page = getPageObject(viewId);
+		JsfPage page = getPageObject(viewId);
 		pageRequiresAuthorization = page.requiresAuthorization();
 		pageRequiresAuthentication = pageRequiresAuthorization
 				|| page.requiresAuthentication();
@@ -267,11 +263,11 @@ public class J2eeSecurityObject {
 	 *            the viewId
 	 * @return object that contains all the security constraints of a ViewId
 	 */
-	public JSFPage getPageObject(String viewId) {
+	public JsfPage getPageObject(String viewId) {
 		// by default pages don't require SSL
 		this.pageRequiresSSL = false;
 		// try and find the requested page in the security settings
-		JSFPage page = this.secureJsfApplication.findJsfPageDefinition(viewId);
+		JsfPage page = this.secureJsfApplication.findJsfPageDefinition(viewId);
 
 		if (page == null) {
 			String[] wildcardAuthorization = null;
@@ -324,7 +320,7 @@ public class J2eeSecurityObject {
 		// configurationor or contained in a wildcard match are considered
 		// publicly accessible
 		if (page == null) {
-			page = new JSFPage();
+			page = new JsfPage();
 			page.setRequiresAuthentication(false);
 			page.setRequiresAuthorization(false);
 		}
@@ -340,17 +336,17 @@ public class J2eeSecurityObject {
 	 * of all the listed roles to be authorized for page access
 	 * 
 	 * @param page
-	 *            the JSFPage object containing the security constraints for one
+	 *            the JsfPage object containing the security constraints for one
 	 *            page
 	 * @return <code>true</code> if the user is authorized to view the page,
 	 *         false otherwise.
 	 */
-	private boolean checkUserAuthorization(JSFPage page) {
+	private boolean checkUserAuthorization(JsfPage page) {
 
 		ExternalContext exctx = FacesContext.getCurrentInstance()
 				.getExternalContext();
-		J2EERoles j2eeRoles = page.getRoles();
-		Iterator<J2EERole> rolesIterator = j2eeRoles.getRoles() != null ? j2eeRoles
+		JeeRoles j2eeRoles = page.getRoles();
+		Iterator<JeeRole> rolesIterator = j2eeRoles.getRoles() != null ? j2eeRoles
 				.getRoles().iterator()
 				: null;
 

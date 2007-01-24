@@ -2,6 +2,7 @@ package no.stelvio.presentation.security.page.parse;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import no.stelvio.presentation.security.page.constants.Constants;
 
 /**
@@ -10,9 +11,9 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * @author persondab2f89862d3
  * @version $Id$
  */
-public class J2EERoles {
+public class JeeRoles {
 
-	private List<J2EERole> roles = null;
+	private List<JeeRole> roles = null;
 
 	private String roleConcatinationType = Constants.J2EE_ROLE_CONCATINATION_OR;
 
@@ -22,9 +23,9 @@ public class J2EERoles {
 	 * @param role
 	 *            the role to add.
 	 */
-	public void addRole(J2EERole role) {
+	public void addRole(JeeRole role) {
 		if (this.roles == null) {
-			this.roles = new ArrayList<J2EERole>();
+			this.roles = new ArrayList<JeeRole>();
 		}
 		// add role name to list of roles
 		this.roles.add(role);
@@ -36,7 +37,7 @@ public class J2EERoles {
 	 * @param roles
 	 *            the list of roles to set.
 	 */
-	public void setRoles(List<J2EERole> roles) {
+	public void setRoles(List<JeeRole> roles) {
 		this.roles = roles;
 	}
 
@@ -45,7 +46,7 @@ public class J2EERoles {
 	 * 
 	 * @return the role list.
 	 */
-	public List<J2EERole> getRoles() {
+	public List<JeeRole> getRoles() {
 		return this.roles;
 	}
 
