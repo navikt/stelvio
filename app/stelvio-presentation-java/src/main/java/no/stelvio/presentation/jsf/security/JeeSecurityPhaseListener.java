@@ -1,16 +1,13 @@
-package no.stelvio.presentation.security.page.listener;
+package no.stelvio.presentation.jsf.security;
 
 import java.io.IOException;
 import java.util.HashMap;
-
 import java.util.Map;
-
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -85,7 +82,7 @@ import no.stelvio.presentation.security.page.util.J2eeSecurityObject;
  * </p>
  * <br>
  * <p>
- * <b>Context parameters supported by the J2eeSecurityPhaseListener</b>
+ * <b>Context parameters supported by the JeeSecurityPhaseListener</b>
  * 
  * <pre>
  *   &lt;u&gt;Optional&lt;/u&gt;
@@ -129,12 +126,12 @@ import no.stelvio.presentation.security.page.util.J2eeSecurityObject;
  * @author persondab2f89862d3
  * @version $Id$
  */
-public class J2eeSecurityPhaseListener implements PhaseListener {
+public class JeeSecurityPhaseListener implements PhaseListener {
 
 	private static final long serialVersionUID = 1L;
 
 	private static final Log log = LogFactory
-			.getLog(J2eeSecurityPhaseListener.class);
+			.getLog(JeeSecurityPhaseListener.class);
 
 	private J2eeSecurityObject j2eeSecurityObject = null;
 
@@ -497,7 +494,7 @@ public class J2eeSecurityPhaseListener implements PhaseListener {
 		} else {
 
 			log.error("Unexpected exception caught at: '"
-					+ J2eeSecurityPhaseListener.class + "' in phase '"
+					+ JeeSecurityPhaseListener.class + "' in phase '"
 					+ event.getPhaseId() + "'.", e);
 
 			handleError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, null);

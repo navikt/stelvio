@@ -1,9 +1,11 @@
-package no.stelvio.presentation.security.page.listener;
+package no.stelvio.presentation.jsf.security;
 
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.shale.test.mock.MockHttpServletResponse;
 
 import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 import no.stelvio.presentation.security.page.parse.J2EERole;
@@ -14,17 +16,15 @@ import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
 import no.stelvio.presentation.security.page.util.J2eeSecurityObject;
 import no.stelvio.presentation.security.page.util.MockSecurityConfiguration;
 
-import org.apache.shale.test.mock.MockHttpServletResponse;
-
-public class J2eeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
+public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 	
-	private J2eeSecurityPhaseListener listener;
+	private JeeSecurityPhaseListener listener;
 	
 	//private MockExternalContextExtended externalContext = null;
 	
-	public J2eeSecurityPhaseListenerTest(String name){
+	public JeeSecurityPhaseListenerTest(String name){
 		super(name);
-		listener = new J2eeSecurityPhaseListener();
+		listener = new JeeSecurityPhaseListener();
 	}
 	public void setUp()throws Exception{
 		super.setUp();
