@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio</artifactId>
@@ -36,14 +33,10 @@
 	</developers>
 
 	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/
-		</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.1-SNAPSHOT</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.1-SNAPSHOT</developerConnection>
 		<tag>HEAD</tag>
-		<url>http://versjonskontroll.adeo.no/viewsvn/?root=stelvio</url>
+		<url>https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.1-SNAPSHOT</url>
 	</scm>
 	<dependencies>
 		<dependency>
