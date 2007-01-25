@@ -6,16 +6,15 @@ package no.nav.presentation.pensjon.saksbehandling.stelvio.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.domain.pensjon.person.Person;
 import no.nav.domain.pensjon.person.PersonSearch;
-import no.nav.presentation.pensjon.saksbehandling.stelvio.enums.AddressHint;
 import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 import no.nav.service.pensjon.exception.TPSException;
 import no.nav.service.pensjon.person.PersonService;
 import no.nav.service.pensjon.person.exception.PersonNotFoundException;
-
-import org.apache.commons.lang.StringUtils;
 
 
 /**
