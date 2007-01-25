@@ -18,20 +18,30 @@ import no.stelvio.repository.codestable.CodesTableRepository;
 public class RepositoryCodesTableFactory implements CodesTableFactory {
 	private CodesTableRepository codesTableRepository;
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings("unchecked")
-	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		List<T> items = codesTableRepository.findCodesTableItems(codesTableClass);
+	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableItemClass) throws CodesTableNotFoundException {
+		List<T> list = codesTableRepository.findCodesTableItems(codesTableItemClass);
 		
-		return new DefaultCodesTable<T>(items); 
+		return new DefaultCodesTable<T>(list);  
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */	
 	@SuppressWarnings("unchecked")
-	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		List<T> items = codesTableRepository.findCodesTableItems(codesTableClass);
-
-		return new DefaultCodesTablePeriodic<T>(items); 
+	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass) throws CodesTableNotFoundException {
+		List<T> list = codesTableRepository.findCodesTableItems(codesTableItemPeriodicClass);
+		
+		return new DefaultCodesTablePeriodic<T>(list); 
 	}
 	
+	/**
+	 * Sets the repository used to retrieve codestable from persistent repository
+	 * @param codesTableRepository repository to use in thus factory
+	 */
 	public void setCodesTableRepository(CodesTableRepository codesTableRepository) {
 		this.codesTableRepository = codesTableRepository;
 	}
