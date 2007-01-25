@@ -1,4 +1,4 @@
-package no.nav.presentation.pensjon.psak.henvendelse;
+package no.nav.presentation.pensjon.saksbehandling.henvendelse;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

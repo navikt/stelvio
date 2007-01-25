@@ -1,9 +1,9 @@
-package no.nav.presentation.pensjon.psak.henvendelse;
-
-import no.nav.domain.pensjon.henvendelse.Tidsperiode;
+package no.nav.presentation.pensjon.saksbehandling.henvendelse;
 
 import org.springmodules.validation.valang.functions.AbstractFunction;
 import org.springmodules.validation.valang.functions.Function;
+
+import no.nav.domain.pensjon.henvendelse.Tidsperiode;
 
 /**
  * Usage: checkTidsperiode(Tidsperiode)

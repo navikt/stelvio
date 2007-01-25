@@ -4,13 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-	<bean id="prs.start.action" class="no.nav.presentation.pensjon.saksbehandling.action.StartAction">
+	<bean id="prs.start.action" class="no.nav.presentation.pensjon.saksbehandling.start.StartAction">
 		<property name="saksbehandlerService" ref="prs.start.saksbehandlerService"/>
 	</bean>
 
 	<bean id="prs.start.form" class="org.springframework.webflow.action.FormAction">
 		<property name="formObjectName" value="startForm"/>
-		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.form.StartForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.start.StartForm"/>
 		<property name="formObjectScope" value="FLOW"/>
 	</bean>
 </beans>

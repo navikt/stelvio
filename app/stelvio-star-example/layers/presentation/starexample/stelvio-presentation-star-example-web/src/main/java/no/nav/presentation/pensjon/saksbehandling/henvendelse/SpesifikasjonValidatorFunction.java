@@ -1,10 +1,10 @@
-package no.nav.presentation.pensjon.psak.henvendelse;
-
-import no.nav.domain.pensjon.henvendelse.Fagomrade;
-import no.nav.domain.pensjon.henvendelse.Spesifikasjon;
+package no.nav.presentation.pensjon.saksbehandling.henvendelse;
 
 import org.springmodules.validation.valang.functions.AbstractFunction;
 import org.springmodules.validation.valang.functions.Function;
+
+import no.nav.domain.pensjon.henvendelse.Fagomrade;
+import no.nav.domain.pensjon.henvendelse.Spesifikasjon;
 
 /**
  * Usage: checkParameters(Spesifikasjon, Fagomrade)

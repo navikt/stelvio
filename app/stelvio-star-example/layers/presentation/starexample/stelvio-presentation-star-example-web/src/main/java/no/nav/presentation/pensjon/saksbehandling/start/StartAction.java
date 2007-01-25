@@ -1,4 +1,4 @@
-package no.nav.presentation.pensjon.saksbehandling.action;
+package no.nav.presentation.pensjon.saksbehandling.start;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -7,7 +7,6 @@ import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 
 import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
-import no.nav.presentation.pensjon.saksbehandling.form.StartForm;
 import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
 
 

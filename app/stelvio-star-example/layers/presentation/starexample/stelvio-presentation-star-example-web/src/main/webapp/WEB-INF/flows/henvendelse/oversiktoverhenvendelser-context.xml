@@ -6,12 +6,12 @@
 
 	<!-- TODO check if jsf- and/or swf-scopes can be used -->
 	<bean id="prs.henvendelse.oversiktForm"
-	      class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserForm" scope="prototype"/>
+	      class="no.nav.presentation.pensjon.saksbehandling.henvendelse.OversiktOverHenvendelserForm" scope="prototype"/>
 
 	<bean id="prs.henvendelse.oversiktAction"
-	      class="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserAction">
+	      class="no.nav.presentation.pensjon.saksbehandling.henvendelse.OversiktOverHenvendelserAction">
 		<property name="formObjectName" value="prs.henvendelse.oversiktForm"/>
-		<property name="formObjectClass" value="no.nav.presentation.pensjon.psak.henvendelse.OversiktOverHenvendelserForm"/>
+		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.henvendelse.OversiktOverHenvendelserForm"/>
 		<property name="formObjectScope" value="FLOW"/>
 		<property name="validator">
 			<ref local="prs.henvendelse.oversiktValidator"/>
@@ -26,10 +26,10 @@
 		<property name="customFunctions">
 			<map>
 				<entry key="checkParameters">
-					<value>no.nav.presentation.pensjon.psak.henvendelse.SpesifikasjonValidatorFunction</value>
+					<value>no.nav.presentation.pensjon.saksbehandling.henvendelse.SpesifikasjonValidatorFunction</value>
 				</entry>
 				<entry key="checkTidsperiode">
-					<value>no.nav.presentation.pensjon.psak.henvendelse.TidsperiodeValidatorFunction</value>
+					<value>no.nav.presentation.pensjon.saksbehandling.henvendelse.TidsperiodeValidatorFunction</value>
 				</entry>
 			</map>
 		</property>

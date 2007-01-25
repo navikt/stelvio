@@ -1,8 +1,7 @@
-package no.nav.presentation.pensjon.psak.henvendelse;
+package no.nav.presentation.pensjon.saksbehandling.henvendelse;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.model.SelectItem;
 
 import no.nav.domain.pensjon.henvendelse.Fagomrade;

@@ -1,4 +1,4 @@
-package no.nav.presentation.pensjon.saksbehandling.form;
+package no.nav.presentation.pensjon.saksbehandling.start;
 
 public class StartForm {
 	Long saksbehandlernr;

@@ -1,4 +1,4 @@
-package no.nav.presentation.pensjon.psak.henvendelse;
+package no.nav.presentation.pensjon.saksbehandling.henvendelse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -35,15 +35,15 @@
  </converter>
  <converter>
  	<converter-id>spesifikasjonEnumConverter</converter-id>
- 	<converter-class>no.nav.presentation.pensjon.psak.henvendelse.SpesifikasjonEnumConverter</converter-class>
+ 	<converter-class>no.nav.presentation.pensjon.saksbehandling.henvendelse.SpesifikasjonEnumConverter</converter-class>
  </converter>
  <converter>
  	<converter-id>fagomradeEnumConverter</converter-id>
- 	<converter-class>no.nav.presentation.pensjon.psak.henvendelse.FagomradeEnumConverter</converter-class>
+ 	<converter-class>no.nav.presentation.pensjon.saksbehandling.henvendelse.FagomradeEnumConverter</converter-class>
  </converter>
  <converter>
  	<converter-id>tidsperiodeEnumConverter</converter-id>
- 	<converter-class>no.nav.presentation.pensjon.psak.henvendelse.TidsperiodeEnumConverter</converter-class>
+ 	<converter-class>no.nav.presentation.pensjon.saksbehandling.henvendelse.TidsperiodeEnumConverter</converter-class>
  </converter>
 
 </faces-config>
