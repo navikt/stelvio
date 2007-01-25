@@ -17,25 +17,25 @@ import no.stelvio.repository.codestable.CodesTableRepository;
  */
 public class RepositoryCodesTableFactory implements CodesTableFactory {
 	private CodesTableRepository codesTableRepository;
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableItemClass) throws CodesTableNotFoundException {
-		List<T> list = codesTableRepository.findCodesTableItems(codesTableItemClass);
-		
-		return new DefaultCodesTable<T>(list);  
+		final List<T> items = codesTableRepository.findCodesTableItems(codesTableItemClass);
+
+		return new DefaultCodesTable<T>(items);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 */	
+	 */
 	@SuppressWarnings("unchecked")
 	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass) throws CodesTableNotFoundException {
-		List<T> list = codesTableRepository.findCodesTableItems(codesTableItemPeriodicClass);
-		
-		return new DefaultCodesTablePeriodic<T>(list); 
+		final List<T> items = codesTableRepository.findCodesTableItems(codesTableItemPeriodicClass);
+
+		return new DefaultCodesTablePeriodic<T>(items);
 	}
 	
 	/**
