@@ -1,4 +1,4 @@
-package no.stelvio.presentation.security.filter.parse;
+package no.stelvio.presentation.security.context.parse;
 
 import java.io.IOException;
 import java.net.URL;

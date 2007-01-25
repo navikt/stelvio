@@ -1,4 +1,4 @@
-package no.stelvio.presentation.security.filter.parse;
+package no.stelvio.presentation.security.context.parse;
 
 /**
  * This class represent a security role from web.xml.

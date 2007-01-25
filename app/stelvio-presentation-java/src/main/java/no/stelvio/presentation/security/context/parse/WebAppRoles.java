@@ -1,4 +1,4 @@
-package no.stelvio.presentation.security.filter.parse;
+package no.stelvio.presentation.security.context.parse;
 
 import java.util.ArrayList;
 import java.util.Iterator;

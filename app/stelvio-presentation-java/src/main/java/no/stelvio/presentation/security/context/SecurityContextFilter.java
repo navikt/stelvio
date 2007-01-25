@@ -1,4 +1,4 @@
-package no.stelvio.presentation.security.filter;
+package no.stelvio.presentation.security.context;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,9 +18,9 @@ import no.stelvio.common.security.SecurityContext;
 import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.security.support.SimpleSecurityContext;
 import no.stelvio.presentation.filter.AbstractFilter;
-import no.stelvio.presentation.security.filter.parse.SecurityRole;
-import no.stelvio.presentation.security.filter.parse.WebAppRoles;
-import no.stelvio.presentation.security.filter.parse.WebXmlParser;
+import no.stelvio.presentation.security.context.parse.SecurityRole;
+import no.stelvio.presentation.security.context.parse.WebAppRoles;
+import no.stelvio.presentation.security.context.parse.WebXmlParser;
 import no.stelvio.presentation.security.page.constants.Constants;
 
 /**
