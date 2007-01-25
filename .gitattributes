@@ -16,7 +16,6 @@ app/stelvio-common-java/.classpath -text
 app/stelvio-common-java/.project -text
 app/stelvio-common-java/pom.xml -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/aop/RequestContextHandlerAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/support/DefaultCacheManagement.java -text
@@ -51,6 +50,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/Abstract
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/Context.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/DefaultContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/Log4jContext.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/RequestContextHandlerAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/SimpleRequestContext.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/context/support/ThreadLocalMap.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/converter/CalendarConverter.java -text
