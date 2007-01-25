@@ -1,15 +1,16 @@
 package no.stelvio.service.codestable;
 
-import java.util.List;
 import javax.ejb.CreateException;
 import javax.ejb.SessionContext;
 
 import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
 import org.springframework.ejb.support.AbstractStatelessSessionBean;
 
+import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTableNotFoundException;
+import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.factory.CodesTableFactory;
 
 /**
@@ -21,7 +22,7 @@ public class CodesTableFactoryBean extends AbstractStatelessSessionBean implemen
 	@Override
 	protected void onEjbCreate() throws CreateException {
 		// TODO what should the name of the bean be for stelvio components?
-		codesTableFactory = (CodesTableFactory) getBeanFactory().getBean("srv.starexample.codesTableFactory", CodesTableFactory.class);		
+		codesTableFactory = (CodesTableFactory) getBeanFactory().getBean("srv.starexample.codesTableFactory", CodesTableFactory.class);
 	}
 
 	@Override
@@ -31,11 +32,11 @@ public class CodesTableFactoryBean extends AbstractStatelessSessionBean implemen
 		setBeanFactoryLocatorKey("henvendelseService.henvendelseServiceBeanFactory");
 	}
 	
-	public <T extends CodesTableItem> List<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
+	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
 		return codesTableFactory.createCodesTable(codesTableClass);
 	}
 
-	public <T extends CodesTableItemPeriodic> List<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
+	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
 		return codesTableFactory.createCodesTablePeriodic(codesTableClass);
 	}
 }
