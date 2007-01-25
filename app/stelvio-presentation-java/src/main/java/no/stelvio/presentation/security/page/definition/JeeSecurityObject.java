@@ -19,12 +19,12 @@ import no.stelvio.presentation.security.page.PageAuthenticationFailedException;
 import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
 import no.stelvio.presentation.security.page.PageSecurityFileNotFoundException;
 import no.stelvio.presentation.security.page.constants.Constants;
-import no.stelvio.presentation.security.page.parse.JeeRole;
-import no.stelvio.presentation.security.page.parse.JeeRoles;
-import no.stelvio.presentation.security.page.parse.JsfApplication;
-import no.stelvio.presentation.security.page.parse.JsfPage;
-import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
-import no.stelvio.presentation.security.page.parse.SecurityConfigurationXml;
+import no.stelvio.presentation.security.page.definition.parse.SecurityConfiguration;
+import no.stelvio.presentation.security.page.definition.parse.support.JeeRole;
+import no.stelvio.presentation.security.page.definition.parse.support.JeeRoles;
+import no.stelvio.presentation.security.page.definition.parse.support.JsfApplication;
+import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
+import no.stelvio.presentation.security.page.definition.parse.support.SecurityConfigurationXml;
 
 /**
  * This class reads in and maintains the security definitions from the

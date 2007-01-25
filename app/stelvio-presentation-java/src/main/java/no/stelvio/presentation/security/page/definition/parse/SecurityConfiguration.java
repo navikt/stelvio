@@ -1,4 +1,6 @@
-package no.stelvio.presentation.security.page.parse;
+package no.stelvio.presentation.security.page.definition.parse;
+
+import no.stelvio.presentation.security.page.definition.parse.support.JsfApplication;
 
 /**
  * Interface for SecurityConfiguration sources which parses security definitions

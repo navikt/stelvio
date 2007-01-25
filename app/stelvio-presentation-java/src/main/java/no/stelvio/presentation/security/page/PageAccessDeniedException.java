@@ -1,7 +1,7 @@
 package no.stelvio.presentation.security.page;
 
 import no.stelvio.common.security.SecurityException;
-import no.stelvio.presentation.security.page.parse.JsfPage;
+import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
 
 /**
  * Thrown when a user is not authorized to view a page.

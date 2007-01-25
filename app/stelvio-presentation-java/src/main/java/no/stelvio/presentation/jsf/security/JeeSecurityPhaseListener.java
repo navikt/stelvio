@@ -20,7 +20,7 @@ import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
 import no.stelvio.presentation.security.page.PageSecurityFileNotFoundException;
 import no.stelvio.presentation.security.page.constants.Constants;
 import no.stelvio.presentation.security.page.definition.JeeSecurityObject;
-import no.stelvio.presentation.security.page.parse.JsfPage;
+import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
 
 /**
  * <p>

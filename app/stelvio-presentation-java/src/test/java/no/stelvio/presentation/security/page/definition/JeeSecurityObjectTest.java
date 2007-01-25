@@ -13,11 +13,11 @@ import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 import no.stelvio.presentation.security.page.MockHttpServletRequestExtended;
 import no.stelvio.presentation.security.page.PageAccessDeniedException;
 import no.stelvio.presentation.security.page.constants.Constants;
-import no.stelvio.presentation.security.page.parse.JeeRole;
-import no.stelvio.presentation.security.page.parse.JeeRoles;
-import no.stelvio.presentation.security.page.parse.JsfApplication;
-import no.stelvio.presentation.security.page.parse.JsfPage;
-import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
+import no.stelvio.presentation.security.page.definition.parse.SecurityConfiguration;
+import no.stelvio.presentation.security.page.definition.parse.support.JeeRole;
+import no.stelvio.presentation.security.page.definition.parse.support.JeeRoles;
+import no.stelvio.presentation.security.page.definition.parse.support.JsfApplication;
+import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
 
 public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 	
