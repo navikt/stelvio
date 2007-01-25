@@ -281,8 +281,8 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/security/JeeSecurityPhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuItemComponent.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/acegi/AcegiSecurityContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/SecurityContextFilter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/acegi/AcegiSecurityContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/parse/SecurityRole.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/parse/WebAppRoles.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/parse/WebXmlParser.java -text

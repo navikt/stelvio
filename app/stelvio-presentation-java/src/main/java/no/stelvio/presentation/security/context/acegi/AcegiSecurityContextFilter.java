@@ -1,4 +1,4 @@
-package no.stelvio.presentation.security.acegi;
+package no.stelvio.presentation.security.context.acegi;
 
 import java.io.IOException;
 import java.security.Principal;
