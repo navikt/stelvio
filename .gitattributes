@@ -294,13 +294,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/pag
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/authentication/JeeAuthenticationServlet.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/constants/Constants.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/JeeSecurityObject.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/JeeRole.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/JeeRoles.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/JsfApplication.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/JsfPage.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/SecurityConfiguration.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/SecurityConfigurationXml.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/SslConfig.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/support/JeeRole.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/support/JeeRoles.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/support/JsfApplication.java -text
