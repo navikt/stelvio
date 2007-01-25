@@ -7,11 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.web.filter.OncePerRequestFilter;
+
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.util.SequenceNumberGenerator;
-import no.stelvio.presentation.filter.AbstractFilter;
 
 
 /**
@@ -22,9 +25,10 @@ import no.stelvio.presentation.filter.AbstractFilter;
  * @author person7553f5959484, Accenture
  * @version $Id: RequestContextFilter.java 2574 2005-10-20 08:04:22Z psa2920 $
  */
-public class RequestContextFilter extends AbstractFilter {
+public class RequestContextFilter extends OncePerRequestFilter {
 	private static final String REQUEST_CONTEXT = RequestContext.class.getName();
-	
+	private static final Log log = LogFactory.getLog(RequestContextFilter.class);
+
 	/**
 	 * Performs the following processing steps:
 	 * <ol>
@@ -40,9 +44,9 @@ public class RequestContextFilter extends AbstractFilter {
 	 * 
 	 * {@inheritDoc}
 	 */
-	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-		throws IOException, ServletException {
-
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+			throws ServletException, IOException {
 		try {
 			// Only import the request context from session if both the session
 			// and a persisted context exists.
@@ -91,5 +95,4 @@ public class RequestContextFilter extends AbstractFilter {
 			RequestContextHolder.resetRequestContext();
 		}
 	}
-	
 }

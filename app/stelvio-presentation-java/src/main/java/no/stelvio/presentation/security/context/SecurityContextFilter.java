@@ -13,11 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import no.stelvio.common.security.SecurityContext;
 import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.security.support.SimpleSecurityContext;
-import no.stelvio.presentation.filter.AbstractFilter;
 import no.stelvio.presentation.security.context.parse.SecurityRole;
 import no.stelvio.presentation.security.context.parse.WebAppRoles;
 import no.stelvio.presentation.security.context.parse.WebXmlParser;
@@ -34,7 +34,7 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * @todo use Spring's filter super class
  */
 
-public class SecurityContextFilter extends AbstractFilter {
+public class SecurityContextFilter extends OncePerRequestFilter {
 
 	private static final String SECURITY_CONTEXT = SecurityContext.class.getName();
 	private static final String USER_ID = "USER_ID";
@@ -47,7 +47,8 @@ public class SecurityContextFilter extends AbstractFilter {
 
 	/** {@inheritDoc} */
 	@Override
-	public void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
+			throws IOException, ServletException {
 		try {
 			// Only import the security context from session if both the session
 			// and a persisted context exists.
@@ -156,15 +157,12 @@ public class SecurityContextFilter extends AbstractFilter {
 		return session != null && (session.getAttribute(Constants.JSFPAGE_TOGO_AFTER_AUTHENTICATION) != null);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	protected void doInit() {
-		super.doInit();
+	protected void initFilterBean() throws ServletException {
+		super.initFilterBean();    //To change body of overridden methods use File | Settings | File Templates.
 
 		try {
-			URL url = filterConfig.getServletContext().getResource("/WEB-INF/web.xml");
+			URL url = getFilterConfig().getServletContext().getResource("/WEB-INF/web.xml");
 			WebXmlParser parser = new WebXmlParser(url);
 			WebAppRoles roles = parser.getWebAppRoles();
 			roller = roles.getSecurityRoles();

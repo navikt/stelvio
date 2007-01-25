@@ -12,8 +12,7 @@ import org.acegisecurity.GrantedAuthority;
 import org.acegisecurity.GrantedAuthorityImpl;
 import org.acegisecurity.context.SecurityContextHolder;
 import org.acegisecurity.providers.UsernamePasswordAuthenticationToken;
-
-import no.stelvio.presentation.filter.AbstractFilter;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
  * A filter that populates the <code>org.acegisecurity.context.SecurityContext</code> in the
@@ -26,10 +25,10 @@ import no.stelvio.presentation.filter.AbstractFilter;
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
-public class AcegiSecurityContextFilter extends AbstractFilter {
+public class AcegiSecurityContextFilter extends OncePerRequestFilter {
 	/** {@inheritDoc} */
 	@Override
-	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
 		Principal principal = request.getUserPrincipal();
