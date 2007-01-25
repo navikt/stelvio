@@ -417,8 +417,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/henvendelse/TidsperiodeValidatorFunction.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/start/StartAction.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/start/StartForm.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/validate/Modulus11Function.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/validate/NorskKontonummerValidator.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/util/DataPage.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/util/FnrConverter.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/util/PagedListDataModel.java -text
