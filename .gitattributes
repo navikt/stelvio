@@ -402,13 +402,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/.settings/org.eclipse.wst.validation.prefs -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/pom.xml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/action/HenvendelseAction.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/demo/DataScrollerActionListener.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/demo/PagedSortableCarList.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/demo/PagedSortableList.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/demo/SimpleCar.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/demo/SortableList.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/form/HenvendelseForm.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/henvendelse/FagomradeEnumConverter.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/henvendelse/OversiktOverHenvendelserAction.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/henvendelse/OversiktOverHenvendelserForm.java -text
