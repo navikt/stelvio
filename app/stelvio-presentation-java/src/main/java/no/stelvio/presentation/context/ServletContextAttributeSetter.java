@@ -1,9 +1,9 @@
-package no.stelvio.presentation.servlet;
+package no.stelvio.presentation.context;
 
 import java.util.Enumeration;
 import java.util.Properties;
-
 import javax.servlet.ServletContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.InitializingBean;

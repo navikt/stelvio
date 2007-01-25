@@ -1,10 +1,9 @@
-package no.stelvio.presentation.servlet;
+package no.stelvio.presentation.context;
 
 import java.util.Properties;
 
-import org.springframework.mock.web.MockServletContext;
-
 import junit.framework.TestCase;
+import org.springframework.mock.web.MockServletContext;
 
 /**
  * Unit test for {@link ServletContextAttributeSetter}.
