@@ -37,8 +37,8 @@ import no.stelvio.presentation.security.page.parse.SecurityConfigurationXml;
  * @author persondab2f89862d3
  * @version $Id$
  */
-public class J2eeSecurityObject {
-	private static final Log log = LogFactory.getLog(J2eeSecurityObject.class);
+public class JeeSecurityObject {
+	private static final Log log = LogFactory.getLog(JeeSecurityObject.class);
 
 	private SecurityConfiguration securityConfiguration = null;
 
@@ -56,7 +56,7 @@ public class J2eeSecurityObject {
 	private String httpsPort = "443"; // default
 
 	/** Default constructor. */
-	public J2eeSecurityObject() {
+	public JeeSecurityObject() {
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class J2eeSecurityObject {
 	 * @param config
 	 *            the SecurityConfiguration
 	 */
-	public J2eeSecurityObject(SecurityConfiguration config) {
+	public JeeSecurityObject(SecurityConfiguration config) {
 		this.securityConfiguration = config;
 	}
 

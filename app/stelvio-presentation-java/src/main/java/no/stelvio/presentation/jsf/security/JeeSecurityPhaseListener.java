@@ -20,7 +20,7 @@ import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
 import no.stelvio.presentation.security.page.PageSecurityFileNotFoundException;
 import no.stelvio.presentation.security.page.constants.Constants;
 import no.stelvio.presentation.security.page.parse.JsfPage;
-import no.stelvio.presentation.security.page.support.J2eeSecurityObject;
+import no.stelvio.presentation.security.page.support.JeeSecurityObject;
 
 /**
  * <p>
@@ -133,7 +133,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 	private static final Log log = LogFactory
 			.getLog(JeeSecurityPhaseListener.class);
 
-	private J2eeSecurityObject j2eeSecurityObject = null;
+	private JeeSecurityObject jeeSecurityObject = null;
 
 	private boolean useSessionPageCache = true;
 
@@ -231,8 +231,8 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 	 */
 	private void evaluatePage(PhaseEvent phaseEvent) {
 		// initiate security objects the first time
-		if (this.j2eeSecurityObject == null) {
-			this.j2eeSecurityObject = new J2eeSecurityObject();
+		if (this.jeeSecurityObject == null) {
+			this.jeeSecurityObject = new JeeSecurityObject();
 		}
 
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
@@ -248,7 +248,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 					Map<String, Boolean> userPageCache = getUserSessionPageAuthorizationCache(this.useSessionPageCache);
 					
 					if (userPageCache != null) {
-						boolean requiresSSL = this.j2eeSecurityObject.getPageObject(viewId).requiresSSL();
+						boolean requiresSSL = this.jeeSecurityObject.getPageObject(viewId).requiresSSL();
 						
 						if (log.isDebugEnabled()) {
 							log.debug("Storing viewId "
@@ -350,7 +350,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 			HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 			session.setAttribute(Constants.PREVIOUS_JSF_PAGE_URL, viewId);
 			
-			this.j2eeSecurityObject.handleProtocolSwitch(viewId, pageRequiresSSL);
+			this.jeeSecurityObject.handleProtocolSwitch(viewId, pageRequiresSSL);
 			
 			return true;
 		} else {
@@ -402,19 +402,19 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 		if (viewId != null) {
 			ExternalContext exctx = facesContext.getExternalContext();
 			HttpSession session = (HttpSession) exctx.getSession(true);
-			this.j2eeSecurityObject.initializeSecurityDefinitions();
+			this.jeeSecurityObject.initializeSecurityDefinitions();
 			// if keep ssl mode is configured in faces-security-config.xml then
 			// SSL
 			// connection is enforced for all subsequent requests
 			boolean authorizedUser = false;
 
-			authorizedUser = this.j2eeSecurityObject.authorizePageAccess(
+			authorizedUser = this.jeeSecurityObject.authorizePageAccess(
 					viewId, session);
 
 			if (authorizedUser) {
 				session.setAttribute(Constants.PREVIOUS_JSF_PAGE_URL, viewId);
-				JsfPage page = this.j2eeSecurityObject.getPageObject(viewId);
-				this.j2eeSecurityObject.handleProtocolSwitch(viewId, page
+				JsfPage page = this.jeeSecurityObject.getPageObject(viewId);
+				this.jeeSecurityObject.handleProtocolSwitch(viewId, page
 						.requiresSSL());
 				return true;
 			}
@@ -502,26 +502,26 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 	}
 
 	/**
-	 * Gets the J2eeSecurityObject which is used to conduct the security checks
+	 * Gets the JeeSecurityObject which is used to conduct the security checks
 	 * and maintain the security definitions of the application.
 	 * 
-	 * @return the j2eeSecurityObject
+	 * @return the jeeSecurityObject
 	 * @see #setJ2eeSecurityObject()
 	 */
-	public J2eeSecurityObject getJ2eeSecurityObject() {
-		return j2eeSecurityObject;
+	public JeeSecurityObject getJ2eeSecurityObject() {
+		return jeeSecurityObject;
 	}
 
 	/**
-	 * Gets the J2eeSecurityObject which is used to conduct the security checks
+	 * Gets the JeeSecurityObject which is used to conduct the security checks
 	 * and maintain the security definitions of the application.
 	 * 
 	 * @param securityObject
-	 *            the j2eeSecurityObject to set
+	 *            the jeeSecurityObject to set
 	 * @see #getJ2eeSecurityObject()
 	 */
-	public void setJ2eeSecurityObject(J2eeSecurityObject securityObject) {
-		j2eeSecurityObject = securityObject;
+	public void setJ2eeSecurityObject(JeeSecurityObject securityObject) {
+		jeeSecurityObject = securityObject;
 	}
 
 }

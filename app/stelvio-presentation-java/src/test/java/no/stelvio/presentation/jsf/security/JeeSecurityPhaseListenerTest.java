@@ -13,7 +13,7 @@ import no.stelvio.presentation.security.page.parse.JeeRoles;
 import no.stelvio.presentation.security.page.parse.JsfApplication;
 import no.stelvio.presentation.security.page.parse.JsfPage;
 import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
-import no.stelvio.presentation.security.page.support.J2eeSecurityObject;
+import no.stelvio.presentation.security.page.support.JeeSecurityObject;
 import no.stelvio.presentation.security.page.support.MockSecurityConfiguration;
 
 public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
@@ -34,7 +34,7 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 		super.tearDown();
 	}
 	
-	private J2eeSecurityObject setupSecureApp(){
+	private JeeSecurityObject setupSecureApp(){
 		
 		JeeRole role1 = new JeeRole();
 		JeeRole role2 = new JeeRole();
@@ -75,13 +75,13 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 		secureApp.addJsfPage(page3);
 		
 		SecurityConfiguration config = new MockSecurityConfiguration(secureApp);
-		J2eeSecurityObject secObject = new J2eeSecurityObject();
+		JeeSecurityObject secObject = new JeeSecurityObject();
 		secObject.setSecurityConfiguration(config);
 		return secObject;
 	}
 	
 	public void testBeforeAndAfterPhaseUserIsAuthorized() throws Exception{
-		J2eeSecurityObject secObject = setupSecureApp();
+		JeeSecurityObject secObject = setupSecureApp();
 		listener.setJ2eeSecurityObject(secObject);
 		PhaseEvent phase = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.INVOKE_APPLICATION,super.lifecycle);
 		PhaseEvent phase2 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RESTORE_VIEW,super.lifecycle);
@@ -105,7 +105,7 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 	}
 	public void testBeforeAndAfterPhaseUserIsNotAuthorized() throws Exception{
 		
-		J2eeSecurityObject secObject = setupSecureApp();
+		JeeSecurityObject secObject = setupSecureApp();
 		listener.setJ2eeSecurityObject(secObject);
 		PhaseEvent phase = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.INVOKE_APPLICATION,super.lifecycle);
 		PhaseEvent phase2 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RESTORE_VIEW,super.lifecycle);

@@ -19,15 +19,15 @@ import no.stelvio.presentation.security.page.parse.JsfApplication;
 import no.stelvio.presentation.security.page.parse.JsfPage;
 import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
 
-public class J2eeSecurityObjectTest extends AbstractPhaselistenerTestCase{
+public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 	
-	private J2eeSecurityObject secObject;
+	private JeeSecurityObject secObject;
 	
 	//private MockExternalContextExtended externalContext = null;
 	
-	public J2eeSecurityObjectTest(String name){
+	public JeeSecurityObjectTest(String name){
 		super(name);
-		secObject = new J2eeSecurityObject();
+		secObject = new JeeSecurityObject();
 	}
 	public void setUp()throws Exception{
 		super.setUp();

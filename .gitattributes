@@ -300,7 +300,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/pag
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/parse/SecurityConfiguration.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/parse/SecurityConfigurationXml.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/parse/SslConfig.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/support/J2eeSecurityObject.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/support/JeeSecurityObject.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/servlet/ServletContextAttributeSetter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/util/DefaultLocaleStartupHelper.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolverTest.java -text
@@ -309,7 +309,7 @@ app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/pag
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/MockExternalContextExtended.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/MockFacesContextFactoryExtended.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/MockHttpServletRequestExtended.java -text
-app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/support/J2eeSecurityObjectTest.java -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/support/JeeSecurityObjectTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/support/MockSecurityConfiguration.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/servlet/ServletContextAttributeSetterTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/util/DefaultLocaleStartupHelperTest.java -text
