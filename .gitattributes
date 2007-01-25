@@ -459,7 +459,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/META-INF/MANIFEST.MF -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/applicationContext.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/ehcache.xml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/facelets/taglibs/jsf-core.taglib.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/facelets/taglibs/nav.components.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/facelets/taglibs/tomahawk.taglib.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/faces-config.xml -text
@@ -604,14 +603,8 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/support/SimpleHenvendelseService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/to/HenvendelseStatistikkRequest.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/to/HenvendelseStatistikkResponse.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/person/BrukerprofilService.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/person/PersonService.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/person/exception/PersonNotFoundException.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/person/impl/BrukerprofilServiceMock.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/person/impl/PersonServiceMock.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/saksbehandling/SaksbehandlerService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/saksbehandling/support/SimpleSaksbehandlerService.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/codestable/DefaultCodesTableFactory.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/beanRefContext.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/modules/stelvio-star-example-ejb-context.xml -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/.project -text
