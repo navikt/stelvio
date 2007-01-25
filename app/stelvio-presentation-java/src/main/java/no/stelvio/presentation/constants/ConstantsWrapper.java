@@ -11,7 +11,6 @@ import java.util.Map;
  *
  */
 public class ConstantsWrapper {
-
 	/**
 	 * Returns the constants from a given class as a Map with the constant field values as 
 	 * values and their names as the key.
@@ -19,8 +18,7 @@ public class ConstantsWrapper {
 	 * @return a Map initialized with constants from the given class
 	 */
 	public Map getConstants(Class clazz) {
-		Map constants = this.new ConstantsHolder(clazz).getValues();
-		return constants;
+		return new ConstantsHolder(clazz).values();
 	}
 
 	/**
@@ -47,9 +45,8 @@ public class ConstantsWrapper {
 		 * 
 		 * @return Map containing all the constants of the analyzed class
 		 */
-		public Map getValues() {
+		public Map values() {
 			return super.getFieldCache();
 		}
 	}
-
 }
