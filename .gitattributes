@@ -15,7 +15,6 @@ app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchDOTest.java -t
 app/stelvio-common-java/.classpath -text
 app/stelvio-common-java/.project -text
 app/stelvio-common-java/pom.xml -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/Constants.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/RequestContextHandlerAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
