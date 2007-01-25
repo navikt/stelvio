@@ -417,16 +417,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/henvendelse/TidsperiodeValidatorFunction.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/start/StartAction.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/start/StartForm.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/dao/BrukerprofilDO.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/dao/Oppgave.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/service/HenvendelseService.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/service/OrgEnhetService.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/service/SomeService.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/service/impl/BrukerprofilServiceMock.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/service/impl/HenvendelsServiceMock.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/service/impl/OrgEnhetServiceMock.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/service/impl/PersonServiceMock.java -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/service/impl/SaksbehandlerServiceMock.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/validate/Modulus11Function.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/stelvio/validate/NorskKontonummerValidator.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/java/no/nav/presentation/pensjon/saksbehandling/util/DataPage.java -text
