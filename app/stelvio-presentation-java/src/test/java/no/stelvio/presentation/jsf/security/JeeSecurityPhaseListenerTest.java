@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.shale.test.mock.MockHttpServletResponse;
 
 import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
+import no.stelvio.presentation.security.page.definition.JeeSecurityObject;
+import no.stelvio.presentation.security.page.definition.MockSecurityConfiguration;
 import no.stelvio.presentation.security.page.parse.JeeRole;
 import no.stelvio.presentation.security.page.parse.JeeRoles;
 import no.stelvio.presentation.security.page.parse.JsfApplication;
 import no.stelvio.presentation.security.page.parse.JsfPage;
 import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
-import no.stelvio.presentation.security.page.support.JeeSecurityObject;
-import no.stelvio.presentation.security.page.support.MockSecurityConfiguration;
 
 public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 	

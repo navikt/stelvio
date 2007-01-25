@@ -1,4 +1,4 @@
-package no.stelvio.presentation.security.page.support;
+package no.stelvio.presentation.security.page.definition;
 
 import java.util.ArrayList;
 import java.util.List;

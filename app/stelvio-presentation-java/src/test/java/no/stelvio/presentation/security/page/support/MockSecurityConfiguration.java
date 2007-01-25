@@ -1,4 +1,4 @@
-package no.stelvio.presentation.security.page.support;
+package no.stelvio.presentation.security.page.definition;
 
 import no.stelvio.presentation.security.page.parse.JsfApplication;
 import no.stelvio.presentation.security.page.parse.SecurityConfiguration;
