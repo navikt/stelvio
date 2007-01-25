@@ -1,10 +1,8 @@
 package no.stelvio.service.menu.support;
 
-import no.stelvio.common.transferobject.EntityListResponse;
-import no.stelvio.common.transferobject.support.DefaultEntityListResponse;
-import no.stelvio.domain.menu.MenuItem;
 import no.stelvio.repository.menu.MenuRepository;
 import no.stelvio.service.menu.MenuService;
+import no.stelvio.service.menu.to.MenuItemSerivceResponse;
 
 /**
  * Menu service implementation of the {@link MenuService} business interface.
@@ -18,11 +16,10 @@ public class DefaultMenuService implements MenuService {
 	/**
 	 * {@inheritDoc MenuService#getMenuItems()}
 	 * 
-	 * @return List of all the menu items.
+	 * @return MenuItemServiceResponse containg a List of all the menu items.
 	 */
-	public EntityListResponse<MenuItem> getMenuItems() {
-		return new DefaultEntityListResponse<MenuItem>(menuRepository
-				.getParents());
+	public MenuItemSerivceResponse getMenuItems() {
+		return new MenuItemSerivceResponse(menuRepository.getParents());
 	}
 
 	/**

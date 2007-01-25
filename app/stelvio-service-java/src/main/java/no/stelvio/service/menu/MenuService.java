@@ -1,7 +1,6 @@
 package no.stelvio.service.menu;
 
-import no.stelvio.common.transferobject.EntityListResponse;
-import no.stelvio.domain.menu.MenuItem;
+import no.stelvio.service.menu.to.MenuItemSerivceResponse;
 
 /**
  * Business interface for menu operations. This service provides an interface
@@ -31,7 +30,7 @@ public interface MenuService {
 	 * client to filter the menu items based on permission, screens, discretion
 	 * etc. before displaying them in an application.
 	 * 
-	 * @return A list of all menu items for the application.
+	 * @return a <code>MenuItemSerivceResponse</code> holding a list of all available <code>MenuItem</code>s
 	 */
-	public EntityListResponse<MenuItem> getMenuItems();
+	public MenuItemSerivceResponse getMenuItems();
 }
