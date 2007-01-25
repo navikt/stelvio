@@ -29,6 +29,20 @@ Module stelvio-common-java
   * Improved documentation of which exceptions are thrown 
 * Improved naming and structure of Error package
 * No need to implement a constructor only used by Stelvio when removing cause; reflection is used instead
+* Created a Stelvio SecurityContext which holds the user id and has methods for role checking
+* Column mapping in CodesTable domain classes changed from Norwegian to English; should be overridden using
+  AttributeOverride annotations in subclasses
+* Fixed CodesTableFactory to generate a CodesTable/CodesTablePeriodic instead of returning a list
+* Added Id annotation to indicate primary key; is placed in the top level mapped superclass as it should be the key for
+  all codestables
+* Fixed usage of serialVersionUID in CodesTable exception classes
+* Model id for the CodesTable cache is changed to enable easier separation from other caches
+* Split SecurityContext and RequestContext into interface and implementation to enable easier testing and extension
+* Removed user id from RequestContext as it is in SecurityContext
+* Added builder to RequestContext which makes it easier to build a new instance of it, especially when one should only
+  update some of the properties in the current version
+* Removed unused classes
+* Cleanup of package structure for easier use
 
 Module stelvio-test-java
 * Fixed package structure (no.stelvio.common.test -> no.stelvio.test)
@@ -37,16 +51,24 @@ Module stelvio-domain-java
 * Added domain object Pid, used to represent a Personal Identification number. Includes validation methods.
 * Moved domain objects in common for menu here
 * Moved domain objects in common for tasklist here
+* Removed constructor fron PidValidationException using deprecated ExceptionCopyholder
 
 Module stelvio-repository-java
 * Moved repository classes in common for menu here
 * Moved repository classes in common for tasklist here 
+* Added repository classes for CodesTable
+* Changed method signature in CodesTable classes, using generics to specify that the class passed as a param to the
+  fetchCodesTable method must be an AbstractCodestableItem implementation
+* Added full Hibernate implementation of CodesTableRepository
 
 Module stelvio-batch-java
 
 Module stelvio-service-java
 * Moved service classes in common for menu here
 * Moved service classes in common for tasklist here
+* Added implementation of CodesTableFactory that retrieves codes tables from a repository
+* Added MenuItemServiceResponse object to be used by MenuService
+  * Is used in MenuItemService instead of deprecated EntityListResponse as the return value
 
 Module stelvio-presentation-java
 * Renamed package from no.stelvio.web to no.stelvio.presentation
@@ -56,5 +78,18 @@ Module stelvio-presentation-java
   NullPointerException because the filter runs before the FacesContext and SWF Context are initialized. 
 * Added no.stelvio.presentation.constants.ConstantsWrapper. Wrapper class for handling constants in the presentation 
   layer. Provides functionality to extract constants from a given class as a map.
+* Added SecurityContextFilter and its parse classes; this filter initializes the SecurityContext
+* Cleanup of package structure for easier use
+* Fixed class names in security packages to support the naming standard
+  * Also changed to use Jee (earlier J2ee) in class names as Stelvio is running mostly on a JEE platform now
+* Changed all filters to inherit from Spring's OncePerRequestFilter instead of our own deprecated filter super class
+* Updated page security to use the SecurityContext instead of the HttpServletRequest for security checks
 
 Star example
+* Added namedquery to retrieve all HenvendelseTypeCti from database
+* Moved repository classes for CodesTable to stelvio-repository
+* Changed table-mapping; physical database uses T_ prefix for tables
+* Column mapping names should be in upper case
+* Added integration test of CodesTable APIs
+* Use saksbehandling as the package name, not psak; moved all code used in psak over til saksbehandling
+
