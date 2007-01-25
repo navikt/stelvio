@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import no.stelvio.common.security.SecurityContext;
+import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.presentation.security.page.PageAccessDeniedException;
 import no.stelvio.presentation.security.page.PageAuthenticationFailedException;
 import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
@@ -36,6 +38,8 @@ import no.stelvio.presentation.security.page.definition.parse.support.SecurityCo
  * 
  * @author persondab2f89862d3
  * @version $Id$
+ * @todo Divide this class into one definition class and one authenticator/authorizer. Change modifiers on some methods and do them
+ * internally (e.g. getPageObject ) so that the phaselistener only needs to invoke authorize/authenticate methods.
  */
 public class JeeSecurityObject {
 	private static final Log log = LogFactory.getLog(JeeSecurityObject.class);
@@ -203,7 +207,8 @@ public class JeeSecurityObject {
 
 		ExternalContext exctx = FacesContext.getCurrentInstance()
 				.getExternalContext();
-		String usr = exctx.getRemoteUser();
+		String usr = SecurityContextHolder.currentSecurityContext().getUserId(); 
+			
 
 		if (usr == null) {
 
@@ -343,8 +348,6 @@ public class JeeSecurityObject {
 	 */
 	private boolean checkUserAuthorization(JsfPage page) {
 
-		ExternalContext exctx = FacesContext.getCurrentInstance()
-				.getExternalContext();
 		JeeRoles j2eeRoles = page.getRoles();
 		Iterator<JeeRole> rolesIterator = j2eeRoles.getRoles() != null ? j2eeRoles
 				.getRoles().iterator()
@@ -353,10 +356,11 @@ public class JeeSecurityObject {
 		boolean authorized = false;
 		boolean concatenateRolesWithOR = j2eeRoles.getRoleConcatenationType() != Constants.J2EE_ROLE_CONCATINATION_AND ? true
 				: false;
-
+		SecurityContext context = SecurityContextHolder.currentSecurityContext();
 		while (rolesIterator != null && rolesIterator.hasNext()) {
 			String roleName = rolesIterator.next().getRole();
-			authorized = exctx.isUserInRole(roleName);
+			authorized = context.isUserInRole(roleName);
+			
 			if (authorized && concatenateRolesWithOR) {
 				break;
 			}

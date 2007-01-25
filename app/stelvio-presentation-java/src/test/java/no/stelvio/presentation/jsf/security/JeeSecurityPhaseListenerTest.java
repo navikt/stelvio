@@ -9,6 +9,7 @@ import org.apache.shale.test.mock.MockHttpServletResponse;
 
 import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 import no.stelvio.presentation.security.page.definition.JeeSecurityObject;
+import no.stelvio.presentation.security.page.definition.MockSecurityConfiguration;
 import no.stelvio.presentation.security.page.definition.parse.SecurityConfiguration;
 import no.stelvio.presentation.security.page.definition.parse.support.JeeRole;
 import no.stelvio.presentation.security.page.definition.parse.support.JeeRoles;

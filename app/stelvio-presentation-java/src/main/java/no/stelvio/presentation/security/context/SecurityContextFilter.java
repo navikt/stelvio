@@ -24,16 +24,16 @@ import no.stelvio.presentation.security.context.parse.WebXmlParser;
 import no.stelvio.presentation.security.page.constants.Constants;
 
 /**
- * PensjonSecurityFilter er en implementasjon av <i>Intercepting Filter</i> pattern, og er ansvarlig for å: 1. Sjekke
- * hvilke roller pålogget bruker har og legge rollene på SecurityContext. 2. Legge valgt enhet på SecurityContext. 3.
- * Sjekke om bruker er gyldig ved pålogging fra pinkode, selvbetjening. 4. Sjekke at SAML-token er gyldig ved pålogging
- * fra portal, selvbetjening. Filteret må initialiseres med listen av roller som applikasjonen benytter, settes i
- * web.xml.
- *
- * @todo javadoc in english
- * @todo use Spring's filter super class
- */
-
+ * Servlet-filter responsible for populating a <code>SecurityContext</code> and place it
+ * in a <code>SecurityContextHolder</code> on the current thread. This includes:
+ * 
+ * <li> Reading in all the security roles from web.xml and comparing these with the roles of the logged-in user. 
+ * These are then stored in the HttpSession and put on the context.</li>
+ * <li>Retrieving the user id of the logged-in user, place it in the HttpSession and populate the context.</li>
+ * <br>
+ * @author persondab2f89862d3, Accenture
+ * @version $Id: SecurityContextFilter.java $ 
+ */ 
 public class SecurityContextFilter extends OncePerRequestFilter {
 
 	private static final String SECURITY_CONTEXT = SecurityContext.class.getName();
@@ -44,7 +44,36 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 	protected static final String REDIRECT_TO_AFTER_LOGIN = "";
 
 	private List<SecurityRole> roller;
+	
+	/**  
+	 * Initializes the filter by reading in and parsing the security role elements
+	 * from web.xml using the <code>WebXmlParser</code>.
+	 */
+	@Override
+	protected void initFilterBean() throws ServletException {
+		super.initFilterBean();    //To change body of overridden methods use File | Settings | File Templates.
 
+		try {
+			URL url = getFilterConfig().getServletContext().getResource("/WEB-INF/web.xml");
+			WebXmlParser parser = new WebXmlParser(url);
+			WebAppRoles roles = parser.getWebAppRoles();
+			roller = roles.getSecurityRoles();
+
+			if (logger.isDebugEnabled()) {
+				Iterator iterator = roles.getSecurityRolesIterator();
+
+				while (iterator.hasNext()) {
+					SecurityRole element = (SecurityRole) iterator.next();
+					logger.debug("Get role from web.xml <security-role> element: " + element.getRoleName());
+				}
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("An error occured while initializing the filter: "
+					+ "Could not parse and retrieve the security roles from web.xml.", e);
+		}
+	}
+
+	
 	/** {@inheritDoc} */
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
@@ -65,10 +94,7 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 				}
 			}
 
-			//sjekk mot db om brukernavn og passord er korrekt hvis request kommer fra pin-pålogging (selvbetjening)
-			//TODO
-			//sjekk om SAML-token er gyldig hvis request kommer fra portal-pålogging (selvbetjening).
-			//TODO
+
 			SecurityContext securityContext = populateSecurityContext(req);
 			SecurityContextHolder.setSecurityContext(securityContext);
 
@@ -100,7 +126,12 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 			SecurityContextHolder.resetSecurityContext();
 		}
 	}
-
+	/**
+	 * Private helper method used to retrieve and set values from the HttpSession and finally create and
+	 * return a new <code>SecurityContext</code> with these values.
+	 * @param req the HttpServletRequest
+	 * @return a poulated <code>SecurityContext</code>.
+	 */
 	private SecurityContext populateSecurityContext(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		SecurityContext securityContext;
@@ -157,30 +188,6 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 		return session != null && (session.getAttribute(Constants.JSFPAGE_TOGO_AFTER_AUTHENTICATION) != null);
 	}
 
-	@Override
-	protected void initFilterBean() throws ServletException {
-		super.initFilterBean();    //To change body of overridden methods use File | Settings | File Templates.
-
-		try {
-			URL url = getFilterConfig().getServletContext().getResource("/WEB-INF/web.xml");
-			WebXmlParser parser = new WebXmlParser(url);
-			WebAppRoles roles = parser.getWebAppRoles();
-			roller = roles.getSecurityRoles();
-
-			if (logger.isDebugEnabled()) {
-				Iterator iterator = roles.getSecurityRolesIterator();
-
-				while (iterator.hasNext()) {
-					SecurityRole element = (SecurityRole) iterator.next();
-					logger.debug("Get role from web.xml <security-role> element: " + element.getRoleName());
-				}
-			}
-		} catch (Exception e) {
-			throw new RuntimeException("An error occured while initializing the filter: "
-					+ "Could not parse and retrieve the security roles from web.xml.", e);
-		}
-	}
-
 	/**
 	 * Adds the roles of the user to the session. The list with the sum of existing roles is set in web.xml.
 	 *
@@ -195,7 +202,7 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 
 			if (httpreq.isUserInRole(roleName)) {
 				if (logger.isDebugEnabled()) {
-					logger.debug("Legger til rolle: " + roleName);
+					logger.debug("Adding role: " + roleName);
 				}
 
 				rolleList.add(roleName);
