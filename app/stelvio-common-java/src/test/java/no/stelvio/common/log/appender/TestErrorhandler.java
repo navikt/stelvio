@@ -1,4 +1,4 @@
-package no.stelvio.common.log.appenders;
+package no.stelvio.common.log.appender;
 
 import org.apache.log4j.spi.LoggingEvent;
 import org.apache.log4j.varia.FallbackErrorHandler;

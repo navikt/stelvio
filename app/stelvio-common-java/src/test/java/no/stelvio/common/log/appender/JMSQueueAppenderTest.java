@@ -1,16 +1,15 @@
-package no.stelvio.common.log.appenders;
+package no.stelvio.common.log.appender;
 
 import javax.jms.JMSException;
 import javax.jms.Queue;
 import javax.jms.TextMessage;
 import javax.naming.Context;
 
+import junit.framework.TestCase;
 import org.apache.log4j.Category;
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.Priority;
 import org.apache.log4j.spi.LoggingEvent;
-
-import junit.framework.TestCase;
 
 /**
  * JMSQueueAppender unit test. 
@@ -89,7 +88,7 @@ public class JMSQueueAppenderTest extends TestCase {
 
         // test: No options are set. We should get a number of errors
         ic.setErrorOnLookup(true);
-        appender.setInitialContextFactoryName("no.stelvio.common.log.appenders.TestInitialContextFactory");
+        appender.setInitialContextFactoryName("no.stelvio.common.log.appender.TestInitialContextFactory");
         appender.setProviderURL("iiop://test:999");
         appender.activateOptions();
         assertEquals("Test 4: Unexpected number of errors", 1, handler.getNumErrors());
@@ -187,7 +186,7 @@ public class JMSQueueAppenderTest extends TestCase {
         appender.setLayout(new PatternLayout("%p - %m "));
         appender.setQueueConnectionFactoryBindingName("jms/qcf");
         appender.setQueueBindingName("jms/queue");
-        appender.setInitialContextFactoryName("no.stelvio.common.log.appenders.TestInitialContextFactory");
+        appender.setInitialContextFactoryName("no.stelvio.common.log.appender.TestInitialContextFactory");
         appender.setProviderURL("iiop://test:999");
         TestQueueConnectionFactory testFac = new TestQueueConnectionFactory();
         ic.setQcf(testFac);

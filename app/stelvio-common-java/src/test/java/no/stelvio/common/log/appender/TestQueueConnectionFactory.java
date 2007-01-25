@@ -1,4 +1,4 @@
-package no.stelvio.common.log.appenders;
+package no.stelvio.common.log.appender;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;

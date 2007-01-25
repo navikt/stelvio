@@ -1,4 +1,4 @@
-package no.stelvio.common.log.appenders;
+package no.stelvio.common.log.appender;
 
 import javax.jms.ConnectionConsumer;
 import javax.jms.ConnectionMetaData;

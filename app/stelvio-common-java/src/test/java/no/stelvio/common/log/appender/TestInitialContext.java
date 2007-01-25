@@ -1,7 +1,6 @@
-package no.stelvio.common.log.appenders;
+package no.stelvio.common.log.appender;
 
 import java.util.Hashtable;
-
 import javax.jms.Queue;
 import javax.jms.QueueConnectionFactory;
 import javax.naming.Context;

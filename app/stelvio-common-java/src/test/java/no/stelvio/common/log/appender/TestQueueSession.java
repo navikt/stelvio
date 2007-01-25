@@ -1,7 +1,6 @@
-package no.stelvio.common.log.appenders;
+package no.stelvio.common.log.appender;
 
 import java.io.Serializable;
-
 import javax.jms.BytesMessage;
 import javax.jms.Destination;
 import javax.jms.JMSException;

@@ -1,7 +1,6 @@
-package no.stelvio.common.log.appenders;
+package no.stelvio.common.log.appender;
 
 import java.util.Enumeration;
-
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
