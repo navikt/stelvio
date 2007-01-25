@@ -30,10 +30,6 @@
  </lifecycle>
  
  <converter>
- 	<converter-id>FnrConverter</converter-id>
- 	<converter-class>no.nav.presentation.pensjon.saksbehandling.util.FnrConverter</converter-class>
- </converter>
- <converter>
  	<converter-id>spesifikasjonEnumConverter</converter-id>
  	<converter-class>no.nav.presentation.pensjon.saksbehandling.henvendelse.SpesifikasjonEnumConverter</converter-class>
  </converter>
