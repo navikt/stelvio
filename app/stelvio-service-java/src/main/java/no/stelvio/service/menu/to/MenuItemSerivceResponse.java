@@ -24,9 +24,9 @@ public class MenuItemSerivceResponse extends ServiceResponse {
 	}
 	
 	/**
-	 * Constructs a new MenuItemSerivceResponse with holding the list of <code>MenuItem</code>s specified by the parameter
+	 * Constructs a new MenuItemSerivceResponse holding the list of <code>MenuItem</code>s specified by the parameter
 	 * If the parameter is <code>null</code> the MenuItemSerivceResponse will be set to hold an empty list
-	 * @param menuItemList
+	 * @param menuItemList list of <code>MenuItem</code>s
 	 */
 	public MenuItemSerivceResponse(List<MenuItem> menuItemList){
 		this();
