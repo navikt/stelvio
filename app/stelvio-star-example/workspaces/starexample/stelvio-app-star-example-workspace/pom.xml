@@ -10,14 +10,14 @@
   <artifactId>no.stelvio.app.star.example.workspace</artifactId>
   <packaging>pom</packaging>
   <name>Workspace for star example</name>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.2-SNAPSHOT</version>
   <modules>
-    <module>../stelvio-domain-star-example-java</module>
+	  <module>../stelvio-domain-star-example-java</module>
 	  <module>../stelvio-repository-star-example-java</module>
 	  <module>../stelvio-service-star-example-java</module>
 	  <module>../stelvio-service-star-example-ejb</module>
 	  <module>../stelvio-presentation-star-example-java</module>
 	  <module>../stelvio-presentation-star-example-web</module>
-    <module>../stelvio-star-example-jee</module>
+	  <module>../stelvio-star-example-jee</module>
   </modules>
 </project>

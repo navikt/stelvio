@@ -5,12 +5,11 @@
 	<parent>
 		<artifactId>layers</artifactId>
 		<groupId>no.stelvio.layers</groupId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-presentation-star-example-java</artifactId>
 	<groupId>no.stelvio.star.example</groupId>
 	<packaging>jar</packaging>
-	<version>1.0.0-SNAPSHOT</version>
 	<name>star-example :: presentation - common</name>
 	<url>${basedir}/target/site/</url>
 	<dependencies>

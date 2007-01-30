@@ -11,7 +11,7 @@
 	<artifactId>stelvio-star-example-jee</artifactId>
 	<groupId>no.stelvio.star.example</groupId>
 	<packaging>ear</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>star-example :: application</name>
 	<url>${basedir}/target/site/</url>
 	<dependencies>
