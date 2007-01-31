@@ -18,8 +18,6 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
  * 
  * The tablemappings defined in the MappedSuperclasses are overridden
  * 
- * Defines a <code>@NamedQuery</code>, "HenvendelseTypeCti.findAll" to retrieve all instances of HenvendelseTypeCti from database
- * 
  * @author person983601e0e117 (Accenture)
  * 
  * @see CodesTableItem
