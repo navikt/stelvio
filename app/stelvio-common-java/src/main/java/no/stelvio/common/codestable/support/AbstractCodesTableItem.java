@@ -6,7 +6,6 @@ import java.util.Locale;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -33,10 +32,6 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	@Column(name="decode")
 	private String decode;
 	
-	/** A codestableitem's locale that represents the country and language the items decode is defined for. */
-	@Transient
-	private Locale locale;
-	
 	/** Defines the validity of a codestableitem. */
 	@Column(name="valid")
 	private boolean valid;
@@ -54,11 +49,24 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * @param decode the decode.
 	 * @param isValid validity of the item.
 	 */
+	protected AbstractCodesTableItem(String code, String decode, boolean isValid){
+		this.code = code;
+		this.decode = decode;
+		this.valid = isValid;
+	}	
+	
+	/**
+	 * Constructor for an item, initializing its attributes.
+	 * @deprecated CodesTableItems will no longer expose Locale to client. Replaced by {@link AbstractCodesTableItem(String, String, boolean)}
+	 * @param code the code.
+	 * @param decode the decode.
+	 * @param isValid validity of the item.
+	 */
+	@Deprecated
 	protected AbstractCodesTableItem(String code, String decode, Locale locale, boolean isValid){
 		this.code = code;
 		this.decode = decode;
 		this.valid = isValid;
-		this.locale = locale;
 	}
 
 	/**
@@ -90,10 +98,14 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	
 	/**
 	 * Gets the locale
+	 * <p><strong>
+	 * DEPRECATED: CodesTableItems will no longer expose Locale to clients. Avoid using this method
+	 * </p></strong>
 	 * @return locale the locale of this item
 	 */
+	@Deprecated
 	public Locale getLocale() {
-		return locale;
+		return Locale.getDefault();
 	}	
 	
 	/**

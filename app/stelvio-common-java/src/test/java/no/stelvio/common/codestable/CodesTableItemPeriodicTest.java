@@ -1,15 +1,15 @@
 package no.stelvio.common.codestable;
 
 
-import java.util.Date;
-import java.util.Locale;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.eq;
 import static org.hamcrest.core.IsEqual.isFalse;
 import static org.hamcrest.core.IsEqual.isTrue;
 import static org.hamcrest.core.IsNull.isNotNull;
 import static org.hamcrest.core.IsNull.isNull;
+
+import java.util.Date;
+
 import org.junit.Test;
 
 /**
@@ -30,8 +30,7 @@ public class CodesTableItemPeriodicTest {
 		assertThat(cti.getDecode(), isNull());
 		assertThat(cti.getFromDate(), isNull());
 		assertThat(cti.getToDate(), isNull());
-		assertThat(cti.getLocale(), isNull());
-		assertThat(cti.isValid(), isNull());
+		assertThat(cti.isValid(), isFalse());
 	}
 
 	/**
@@ -40,15 +39,13 @@ public class CodesTableItemPeriodicTest {
 	@Test
 	public void testCodesTableItemConstrutor() {
 		Date date = new Date();
-		Locale locale = new Locale("nb", "NO");
 		
-		CodesTableItemPeriodic cti = new Ctip("t1code1", "t1decode1", date, date, locale, Boolean.TRUE);
+		CodesTableItemPeriodic cti = new Ctip("t1code1", "t1decode1", date, date, Boolean.TRUE);
 		
 		assertThat(cti.getCode(), eq("t1code1"));
 		assertThat(cti.getDecode(), eq("t1decode1"));
 		assertThat(cti.getFromDate(), eq(date));
 		assertThat(cti.getToDate(), eq(date));
-        assertThat(cti.getLocale(), eq(locale));
 		assertThat(cti.isValid(), isTrue());
 
 	}
@@ -58,7 +55,7 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testToString() {
-		CodesTableItemPeriodic cti = new Ctip("t1code1", "t1decode1", new Date(), new Date(), new Locale("nb", "NO"), Boolean.TRUE);
+		CodesTableItemPeriodic cti = new Ctip("t1code1", "t1decode1", new Date(), new Date(), Boolean.TRUE);
 		assertThat(cti.toString(), isNotNull());
 	}
 	
@@ -86,11 +83,15 @@ public class CodesTableItemPeriodicTest {
 
 	/** Used for testing as {@link CodesTableItemPeriodic} cannot be instantiated. */
 	private static class Ctip extends CodesTableItemPeriodic {
+	
+		//No real use in test, added to avoid warning
+		private static final long serialVersionUID = 7653759985312507754L;
+
 		public Ctip() {
 		}		
 
-		public Ctip(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean isValid) {
-			super(code, decode, fromDate, toDate, locale, isValid);
+		public Ctip(String code, String decode, Date fromDate, Date toDate, boolean isValid) {
+			super(code, decode, fromDate, toDate, isValid);
 		}
 	}
 }

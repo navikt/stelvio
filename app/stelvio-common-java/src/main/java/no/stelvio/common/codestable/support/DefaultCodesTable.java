@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
-import org.springframework.context.i18n.LocaleContextHolder;
-
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 
 /**
  * Implementation of CodesTable used to handle a codestable, its belonging values and predicates for filtering the items
@@ -25,6 +24,7 @@ import no.stelvio.common.codestable.ItemNotFoundException;
 public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 	/** List of <code>CodesTableItem</code>s this <code>DefaultCodesTable</code> consists of. */
 	private List<T> codesTableItems;
+	
 	
 	/**
 	 * Holds the filtered list of <code>CodesTableItem</code>s created by taking the full list and applying the
@@ -40,7 +40,7 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 	 *
 	 * @param codesTableItems list of <code>CodesTableItem</code>s this <code>DefaultCodesTable</code> consists of. 
 	 */
-	public DefaultCodesTable(List<T> codesTableItems) {
+	public DefaultCodesTable(List<T> codesTableItems) {	
 		this.codesTableItems = codesTableItems;
 	}
 	
@@ -49,6 +49,7 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 	 */
 	public List<T> getItems() {
 		return codesTableItems;
+		
 	}
 
 	/** 
@@ -111,13 +112,6 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code) {		
-		return getDecode(code, LocaleContextHolder.getLocale());
-	}
-
-	/** 
-	 * {@inheritDoc}
-	 */
-	public String getDecode(Object code, Locale locale) {
 		String decode = null;
 		String defaultDecode = null;
 
@@ -126,10 +120,10 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 		// of codestableitems
 		// TODO: optimize
 		for(T cti : this.codesTableItems){
-			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) ){
+			if(cti.equals(getCodesTableItem(code)) ){
 				 decode = cti.getDecode();
 				 break;
-			} else if (cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(LocaleContextHolder.getLocale())){
+			} else if (cti.equals(getCodesTableItem(code))){
 				defaultDecode = cti.getDecode();
 			}
 		}
@@ -145,5 +139,15 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 		}
 		
 		return decode;
+	}
+
+	/** 
+	 * {@inheritDoc}
+	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object)}
+	 */
+	@Deprecated
+	public String getDecode(Object code, Locale locale) {
+		//Locale no longer plays a part of CodesTable, call method witout locale
+		return getDecode(code);
 	}
 }

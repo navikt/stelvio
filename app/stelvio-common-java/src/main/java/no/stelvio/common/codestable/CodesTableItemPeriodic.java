@@ -43,6 +43,8 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	/**
 	 * Constructor for an item, initializing all of its attributes.
 	 * 
+	 * @deprecated CodesTableItems will no longer expose Locale to client. Replaced by {@link CodesTableItemPeriodic(String, String, Date, Date, boolean)}
+	 * 
 	 * @param code the code.
 	 * @param decode the decode.
 	 * @param fromDate the date an item is valid from.
@@ -50,11 +52,27 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
 	 */
+	@Deprecated
 	public CodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean isValid){
-		super(code, decode, locale, isValid);
+		super(code, decode, isValid);
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 	}
+	
+	/**
+	 * Constructor for an item, initializing all of its attributes.
+	 * 
+	 * @param code the code.
+	 * @param decode the decode.
+	 * @param fromDate the date an item is valid from.
+	 * @param toDate the date an item is valid to.
+	 * @param isValid validity of the item.
+	 */
+	public CodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, boolean isValid){
+		super(code, decode, isValid);
+		this.fromDate = fromDate;
+		this.toDate = toDate;
+	}	
 	
 	/**
 	 * Returns the date the item is valid from.
@@ -101,7 +119,6 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 		return new ToStringBuilder(this)
 			.append("code", getCode())
 			.append("decode", getDecode())
-			.append("locale", getLocale())
 			.append("validFrom", getFromDate())
 			.append("validTo", getToDate())
 			.append("isValid", isValid())

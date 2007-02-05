@@ -5,14 +5,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
-import org.springframework.context.i18n.LocaleContextHolder;
-
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 
 /**
  * Implementation of CodesTablePeriodic for retrieving <code>CodesTable</code>s that has defined a period of validity.
@@ -115,13 +114,6 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> impleme
 	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code, Date date) throws DecodeNotFoundException {
-		return getDecode(code, LocaleContextHolder.getLocale(), date);
-	}
-	
-	/** 
-	 * {@inheritDoc}
-	 */
-	public String getDecode(Object code, Locale locale, Date date) throws DecodeNotFoundException {
 		String decode = null;
 		String defaultDecode = null;
 		
@@ -130,11 +122,11 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> impleme
 		//of codestableitems
 		//TODO: optimize loop
 		for(T cti : codesTableItems){
-			if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(locale) 
+			if(cti.equals(getCodesTableItem(code)) 
 					&& cti.getFromDate().before(date) && cti.getToDate().after(date)){ 
 				decode = cti.getDecode();
 				break;
-			} else if(cti.equals(getCodesTableItem(code)) && cti.getLocale().equals(LocaleContextHolder.getLocale())
+			} else if(cti.equals(getCodesTableItem(code))
 					&& cti.getFromDate().before(date) && cti.getToDate().after(date)){
 				defaultDecode = cti.getDecode();
 			}
@@ -151,5 +143,14 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> impleme
 		}
 		
 		return decode;
+	}
+	
+	/** 
+	 * {@inheritDoc}
+	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object, Date)}
+	 */
+	@Deprecated
+	public String getDecode(Object code, Locale locale, Date date) throws DecodeNotFoundException {
+		return getDecode(code, date);
     }
 }

@@ -3,9 +3,6 @@ package no.stelvio.common.codestable;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
-
-import no.stelvio.common.codestable.CodesTableItemPeriodic;
 
 /**
  * Codestableitemperiodics for testing.
@@ -15,8 +12,9 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
  */
 public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 	
-	private static final Locale locale1 = new Locale("nb", "NO");
-	private static final Locale locale2 = new Locale("nn", "NO");
+	
+	//No real use in a test class, added to avoid warning
+	private static final long serialVersionUID = 2846761623694997742L;
 	
 	/**
 	 * Constructor for TestCodestableItemPeriodic.
@@ -27,8 +25,8 @@ public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 	 * @param locale the locale
 	 * @param isValid the validity of the item
 	 */
-	public TestCodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Locale locale, Boolean isValid){
-		super(code, decode, fromDate, toDate, locale, isValid);
+	public TestCodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Boolean isValid){
+		super(code, decode, fromDate, toDate, isValid);
 	}
 
 	public TestCodesTableItemPeriodic() {}
@@ -46,22 +44,22 @@ public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 	}
 	
 	public static TestCodesTableItemPeriodic getCtip1() {
-		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(),  Boolean.TRUE);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip2() {
-		return new TestCodesTableItemPeriodic("t2code2", "t2decode2", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t2code2", "t2decode2", getTestFromDate(), getTestToDate(), Boolean.TRUE);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip3() {
-		return new TestCodesTableItemPeriodic("t3code3", "t3decode3", getTestFromDate(), getTestToDate(), locale2, Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t3code3", "t3decode3", getTestFromDate(), getTestToDate(), Boolean.TRUE);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip4() {
-		return new TestCodesTableItemPeriodic("t4code4", "t4decode4", getTestFromDate(), getTestToDate(), locale2, Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t4code4", "t4decode4", getTestFromDate(), getTestToDate(), Boolean.TRUE);
 	}
 	public static TestCodesTableItemPeriodic getCtip5() {
-		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), locale1, Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), Boolean.TRUE);
 	}
 	
 }
