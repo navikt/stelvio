@@ -2,6 +2,17 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+
+Changes in version 1.0.2 (15.02.2007)
+
+------------------------------------
+
+Module stelvio-common-java
+* Methods and constructors in stelvio-common-codestable that uses Locale have been derprecated. 
+  Locale decodes should be handled by properties-files (i18n) in the web tier.
+* Changed implementations of CodesTable and CodesTablePeriodic that potentially improves performance (decreased uses of loops)
+* getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to DecodeNotFoundException
+
 Changes in version 1.0.1 (17.1.2007)
 ------------------------------------
 
