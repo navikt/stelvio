@@ -13,7 +13,7 @@ import org.apache.commons.lang.StringUtils;
  * Class represents a personal identification number, that can be persistet into a table. Instances of this object can
  * not exist on it's own, they must exist inside an <code>@Entity</code>-object in order to be persisted.
  * <p/>
- * There shouldn't exist an instance of this class where getNummer doesn't return a valid fnr. Class is final to avoid
+ * There shouldn't exist an instance of this class where <code>getPid</code> doesn't return a valid fnr. Class is final to avoid
  * public implementations of the no-arg constructor
  * <p/>
  * NB! Pid is and should always be immutable
@@ -100,7 +100,7 @@ public final class Pid implements Serializable {
 
 	/**
 	 * Validates that the white space usage in the pid is valid. Valid use of white space is ONE white space between index
-	 * 5 and 6 (making the pid.length() == 12) No spaces is also a legal "use" of white spaces
+	 * 5 and 6 (making the pid.length() == 12). No spaces is also a valid "use" of white spaces.
 	 *
 	 * @param pid to validate against white space rule
 	 * @return <code>true</code> if usage is valid, otherwise <code>false</code>
