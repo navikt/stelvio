@@ -16,7 +16,9 @@ import org.apache.commons.collections.Predicate;
  * @version $Id$
  */
 public interface CodesTable<T extends CodesTableItem> {
+	
 	/**
+	 * Returns the list of CodesTableItem, the filtered list if predicates have been added.	 * 
 	 * @return the list of code table items in the table.
 	 */
 	List<T> getItems();
@@ -46,20 +48,26 @@ public interface CodesTable<T extends CodesTableItem> {
 	 * Returns the decode for a code in a <code>CodesTableItem</code> belonging to a <code>CodesTable</code>.
 	 * 
 	 * @param code the items code.
-	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTable</code>.
-	 * @throws DecodeNotFoundException if the input code doesn't exist in the <code>CodesTable</code>.
+	 * @return The decode
+	 * @throws ItemNotFoundException if no <code>CodesTableItem</code> is found for the code
+	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItem</code> without a code 
 	 */
-	String getDecode(Object code) throws DecodeNotFoundException;
+	String getDecode(Object code) throws ItemNotFoundException, DecodeNotFoundException;
 	
 	/**
 	 * Returns the decode for a code in <code>CodesTableItem</code> with a specific locale. 
 	 * If the locale isn't supported, the decode that supports the default locale is returned - 
 	 * if it exists.
 	 * 
+	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object)} 
+	 * 
 	 * @param code the items code.
 	 * @param locale the internationalization code.
-	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTable<code>.
-	 * @throws DecodeNotFoundException if the input code doesn't exist in the <code>CodesTable</code>.
+	 * @return The decode
+	 * @throws ItemNotFoundException if no <code>CodesTableItem</code> is found for the code
+	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItem</code> without a code
+	 *  
 	 */
+	@Deprecated
 	String getDecode(Object code, Locale locale) throws DecodeNotFoundException;
 }

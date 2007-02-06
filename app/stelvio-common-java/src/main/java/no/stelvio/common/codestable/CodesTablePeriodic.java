@@ -19,7 +19,9 @@ import org.apache.commons.collections.Predicate;
  * @version $Id$
  */
 public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
+	
 	/**
+	 * Returns the list of CodesTableItemPeriodic, the filtered list if predicates have been added.
 	 * @return the list of code table items in the table.
 	 */
 	List<T> getItems();
@@ -49,17 +51,23 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
-	 * @throws DecodeNotFoundException if the input code doesn't exist in the <code>CodesTablePeriodic</code>.
+	 * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
+	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
 	 */
-	String getDecode(Object code, Date date) throws DecodeNotFoundException;
+	String getDecode(Object code, Date date) throws ItemNotFoundException, DecodeNotFoundException;
 	
 	/**
 	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
+	 *
+	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object, Date)}
+	 * 
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @param locale the internationalization code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
-	 * @throws DecodeNotFoundException if the input code doesn't exist in the <code>CodesTablePeriodic</code>.
+     * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
+	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
 	 */
+	@Deprecated
 	String getDecode(Object code, Locale locale, Date date) throws DecodeNotFoundException;
 }
