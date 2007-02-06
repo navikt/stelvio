@@ -7,14 +7,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTablePeriodic;
+import no.stelvio.common.codestable.ItemNotFoundException;
+import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
+
 import org.apache.commons.collections.Predicate;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
-
-import no.stelvio.common.codestable.CodesTableItemPeriodic;
-import no.stelvio.common.codestable.CodesTablePeriodic;
-import no.stelvio.common.codestable.TestCodesTableItem;
-import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
 
 /**
  * Unit test of CodesTablePeriodic.
@@ -69,15 +69,6 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 	 */
 	public void testAddPredicateAndRemovePredicate(){
 		
-		Predicate pred1 = new Predicate(){
-			public boolean evaluate(Object object) {
-				CodesTableItemPeriodic codesTableItemPeriodic = (CodesTableItemPeriodic)object;
-				
-				Locale locale = new Locale("nb", "NO");
-				
-				return codesTableItemPeriodic.getLocale().equals(locale);
-			}
-		};
 
 		Predicate pred2 = new Predicate(){
 			public boolean evaluate(Object object) {
@@ -92,8 +83,6 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 		assertNotNull("Test 2: the item does not exist", codesTablePeriodic.getCodesTableItem("t2code2"));
 		assertNotNull("Test 3: the item does not exist", codesTablePeriodic.getCodesTableItem("t3code3"));
 		
-		codesTablePeriodic.addPredicate(pred1);
-		
 		//Test: get an item that does not exist
 		assertNull("Test 4 : A null-value should have been returned" , codesTablePeriodic.getCodesTableItem("t3code3")); 
 		
@@ -102,6 +91,13 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 		assertNotNull("Test 6: the item does not exist", codesTablePeriodic.getCodesTableItem("t2code2"));
 		
 		codesTablePeriodic.addPredicate(pred2);
+		try{
+		//	Test: get an item that does not exist
+			codesTablePeriodic.getCodesTableItem("t2code2");
+			fail("Item "+codesTablePeriodic.getCodesTableItem("t2code2")+" should not have been found");
+		}catch(ItemNotFoundException ex){
+			//do nothing
+		}
 		
 		//Test: get an item that does not exist
 		assertNull("Test 7 : A null-value should have been returned" , codesTablePeriodic.getCodesTableItem("t2code2"));
@@ -140,25 +136,6 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItemPeriodic.getCtip1().getCode(), date), "t1decode1");
 	}
 	
-	/**
-	 * Test of getDecode(Object code, Locale locale, Date date).
-	 */
-	public void testGetDecodeWithCodeAndLocale(){
-		Locale locale = new Locale("nb", "NO");
-		
-		Calendar cal = Calendar.getInstance();
-		cal.set(106, 10, 15);
-		Date date = new Date(cal.getTimeInMillis());
-	
-		try{
-			codesTablePeriodic.getDecode("t8code15", locale, date);
-			fail("Expected exception");	
-		} catch(Exception ex){
-			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
-		}
-
-		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItem.getCti1().getCode(), locale, date), "t1decode1");
-	}
 	
 	/**
 	 * Cleans up after tests are complete.
