@@ -303,6 +303,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/pag
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/support/SecurityConfigurationXml.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/page/definition/parse/support/SslConfig.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/util/DefaultLocaleStartupHelper.java -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/action/MenuActionTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/context/ServletContextAttributeSetterTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolverTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/security/JeeSecurityPhaseListenerTest.java -text
