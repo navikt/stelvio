@@ -282,6 +282,8 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/security/JeeSecurityPhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpDisplayAreaComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpIconComponent.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/StelvioResourceHandler.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/StelvioResourceLoader.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuItemComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/AcegiSecurityContextFilter.java -text
