@@ -86,7 +86,18 @@
 		</dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
+			<artifactId>stelvio-domain-java</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-test-java</artifactId>
+			<version>${pom.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>no.stelvio</groupId>
+			<artifactId>stelvio-service-java</artifactId>
 			<version>${pom.version}</version>
 			<scope>test</scope>
 		</dependency>
