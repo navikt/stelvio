@@ -254,6 +254,7 @@ app/stelvio-domain-java/.classpath -text
 app/stelvio-domain-java/.project -text
 app/stelvio-domain-java/pom.xml -text
 app/stelvio-domain-java/src/main/java/.cvsignore -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/cm/Content.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItem.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemPermission.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemScreen.java -text
