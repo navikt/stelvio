@@ -99,7 +99,17 @@
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-service-java</artifactId>
 			<version>${pom.version}</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.gif</include>
+				</includes>	
+			</resource>
+		</resources>
+	</build>
 </project>
