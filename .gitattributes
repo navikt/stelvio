@@ -288,7 +288,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/security
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpDisplayAreaComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpIconComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/resource/hjelp.gif -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/resource/showHelpText.js -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuItemComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/AcegiSecurityContextFilter.java -text
