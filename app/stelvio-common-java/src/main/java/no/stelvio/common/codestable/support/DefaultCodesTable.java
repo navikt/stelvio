@@ -38,6 +38,18 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 	private List<Predicate> predicates = new ArrayList<Predicate>();
 
 	/**
+	 * Copy-constructor
+	 * Returns a new DefaultCodesTable, based on the codestable used as input
+	 * @param defaultCodesTable
+	 */
+	public DefaultCodesTable(DefaultCodesTable<T> defaultCodesTable){
+		this.predicates = new ArrayList<Predicate>(defaultCodesTable.predicates);
+		this.codeCodesTableItemMap = new HashMap<Object, T>(defaultCodesTable.codeCodesTableItemMap);
+		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(defaultCodesTable.filteredCodeCodesTableItemMap);
+	}
+	
+	
+	/**
 	 * Creates a <code>DefaultCodesTable</code> with a list of <code>CodesTableItem</code>s.
 	 *
 	 * @param codesTableItems list of <code>CodesTableItem</code>s this <code>DefaultCodesTable</code> consists of. 
@@ -119,6 +131,11 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 		//doing it here anyway to avoid stale version of filteredCodeCodesTableItemMap
 		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
 	}
+	
+	public CodesTable copy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -149,4 +166,5 @@ public class DefaultCodesTable<T extends CodesTableItem> implements CodesTable {
 		//Locale no longer plays a part of CodesTable, call method witout locale
 		return getDecode(code);
 	}
+
 }
