@@ -258,7 +258,7 @@ public abstract class AbstractBatch {
      * @param severity the severity of the message to log.
      */
 	private void log(String message, Severity severity) {
-		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { RequestContextHolder.currentRequestContext().getUserId(), severity, BATCH, batchName, message }));
+		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { SecurityContextHolder.currentSecurityContext().getUserId(), severity, BATCH, batchName, message }));
 	}
 
 	/**
