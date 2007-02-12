@@ -91,6 +91,10 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> impleme
 		//If there are no previous predicates added to a codestable, all of the codetableitems in a codetable
 		//are filtered, or else the codestableitems in the filtered map are filtered.
 		synchronized (this.filteredCodeCodesTableItemMap){
+			
+			//List with items that should be removed from the filtered map
+			ArrayList<Object> keysFilteredOut = new ArrayList<Object>();
+			
 			if(this.predicates.isEmpty()){
 				this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
 			}
@@ -98,8 +102,12 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> impleme
 			for (Object code : filteredCodeCodesTableItemMap.keySet()) {
 				//If CodesTableItem doesn't evaluate according to predicate, remove from filtered list
 				if(!predicate.evaluate(filteredCodeCodesTableItemMap.get(code))){
-					filteredCodeCodesTableItemMap.remove(code);
+					keysFilteredOut.add(code);
 				}
+			}
+			//Access to map is illegal while looping through it, remove items after previous loop concluded
+			for (Object key : keysFilteredOut) {
+				filteredCodeCodesTableItemMap.remove(key);
 			}
 		}		
 		
