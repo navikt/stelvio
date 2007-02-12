@@ -2,251 +2,206 @@ package no.stelvio.presentation.jsf.taglib.help;
 
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIGraphic;
-import javax.faces.component.UIViewRoot;
 import javax.faces.component.html.HtmlGraphicImage;
-import javax.faces.component.html.HtmlOutputText;
 import javax.faces.context.FacesContext;
+import javax.faces.el.ValueBinding;
+import javax.faces.webapp.UIComponentTag;
 
 import no.stelvio.domain.cm.Content;
+import no.stelvio.presentation.jsf.renderkit.StelvioResourceHandler;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.myfaces.custom.div.Div;
 import org.apache.myfaces.renderkit.html.util.AddResource;
 import org.apache.myfaces.renderkit.html.util.AddResourceFactory;
 import org.apache.myfaces.util.ViewIterator;
 
-public class HelpIconComponent extends HtmlGraphicImage {
 
-	String key;
-	private static final String JAVASCRIPT_ENCODED = "no.stelvio.presentation.jsf.taglib.help.JS_HELPICON_ENCODED";
-	private static final String DEFAULT_IMAGE_URL = "help.gif";
+/**
+ * The helpIconComponent renders an image (default is a small icon with a question mark), when the 
+ * user clicks on the icon, a help text is displayed in the page. This component requires a 
+ * HelpDisplayAreaComponent on the same page as the help icon is used.
+ * 
+ * There are three different ways to supply the help text to be displayed
+ * <ul>
+ * <li>If the key attribute is given, the key is used to look up the help text in the vertical site content
+ * management system. This feature is yet not implemented</li>
+ * <li>If a value binding expression is given in the value attribute, this value binding expression is resolved and
+ * the help text is the result of the value binding</li>
+ * <li>The value attribute may consist of a static string which will be displayed as the help text</li>
+ * </ul>
+ * 
+ * @author person6045563b8dec, Accenture
+ * @version $Id$
+ *
+ */public class HelpIconComponent extends HtmlGraphicImage {
+
+	protected final Log log = LogFactory.getLog(this.getClass());
 	public static final String COMPONENT_TYPE = "no.stelvio.HelpIconComponent";
 
-	public static final String JAVASCRIPT_ONCLICK = "javascript:document.getElementById('{0}').innerHTML = '{1}'";
+	private static final String DEFAULT_IMAGE_URL = "hjelp.gif";
+	private static final String JAVASCRIPT_ONCLICK = "javascript:document.getElementById(''{0}'').innerHTML = ''{1}''";
+
+	// attribute for this component
+	private String key;
+	private String value;
 	
-	/* (non-Javadoc)
-	 * @see javax.faces.component.UIComponentBase#encodeBegin(javax.faces.context.FacesContext)
+	/**
+	 * Render this component, before rendering, the help icon and help text
+	 * is fetched. The help text is inserted in the javascript which is executed
+	 * when the help icon is clicked.
+	 * 
+	 * @param context the current FacesContext instance
 	 */
 	@Override
 	public void encodeBegin(FacesContext context) throws IOException {
 		
+		addDefaultHelpIconUrl(context);
+		String helpText = null;
+		if(key != null) {
+			helpText = getHelpContent();
+		} else if(value != null){
+			helpText = getHelpTextValue(context);
+		}
 		
-		Content helpContent = hentHjelpetekst(this.getKey());
-
-		// TODO: gjøre dette ved hjelp av resources i stedet
-		//addScriptToPage(context);
-		//addDefaultHelpIconUrl(context);
+		String displayAreaId = findHelpDisplayAreaClientId();
 		
-		// TODO: sette id
-
-	
-		String onclick = MessageFormat.format(JAVASCRIPT_ONCLICK, 
-											new Object[]{findComponent(HelpDisplayAreaComponent.HELP_DISPLAY_AREA_ID),
-															helpContent.getText()});
-//		String onclick = "javascript:document.getElementById('id').innerHTML = '" + helpContent.getText() + "'";
-		this.setOnclick(onclick);
-		this.setUrl("/images/hjelp.gif");
-		
+		if(displayAreaId != null) {
+			this.setOnclick(MessageFormat.format(JAVASCRIPT_ONCLICK, 
+												displayAreaId,
+												helpText));
+		} else {
+			if(log.isDebugEnabled()) {
+				log.debug("The id of the display area was not found, make sure there is a display area in the page.");
+			}
+		}
 		super.encodeBegin(context);
 	}
 	
-	private String findComponentClientId(String componentId) {
-		String clientId = null;
-		UIComponent component = findComponentById(componentId);
-		if(component != null) {
-			clientId = component.getClientId(FacesContext.getCurrentInstance());
+	/**
+	 * Finds the help text from the value field of this component. The
+	 * value field can be a value-binding expression
+	 * 
+	 * @param context The current Faces context instance
+	 * @return the helpText
+	 */
+	private String getHelpTextValue(FacesContext context) {
+		String helpText = null;
+		if(UIComponentTag.isValueReference(value)) {
+			ValueBinding vb = getValueBinding(value);
+			helpText = vb != null ? (String)vb.getValue(context) : null;
+		} else {
+			helpText = value;
 		}
-		return clientId;
+		
+		return helpText;
 	}
-	
-	
-	private UIComponent findComponentById(String componentId) {
+
+	/**
+	 * Find the client id for where to place the help information. The id is used
+	 * in the javascript triggered when the help icon i clicked.
+	 * 
+	 * @return the client id of the display area of the help information
+	 */
+	private String findHelpDisplayAreaClientId() {
+		String clientId = null;
 		UIComponent component = null;
 
 		ViewIterator viewIterator = new ViewIterator(FacesContext.getCurrentInstance().getViewRoot());
 		for(; viewIterator.hasNext();) {
 			UIComponent nextComponent = (UIComponent) viewIterator.next();
-			if(componentId.equals(nextComponent.getId())) {
+			if(nextComponent instanceof HelpDisplayAreaComponent) {
 				component = nextComponent;
 				break;
 			}
 		}
-		
-		return component;
+		if(component != null) {
+			HelpDisplayAreaComponent displayComponent = (HelpDisplayAreaComponent) component;
+			List children = displayComponent.getChildren();
+			UIComponent divComponent = null;
+			for(Iterator i = children.iterator();i.hasNext();) {
+				UIComponent next = (UIComponent) i.next();
+				if(next instanceof Div) {
+					divComponent = next;
+				}
+			}
+			
+			clientId = divComponent.getClientId(FacesContext.getCurrentInstance());
+		}
+		return clientId;
 	}
+	
+
+	/**
+	 * Retrieve the help content which is going to be displayed for this
+	 * component.
+	 * 
+	 * TODO: integration towards Vertical Site
+	 * 
+	 * @return Content object containing the content to display
+	 */
+	private String getHelpContent() {
+		Content content = new Content();
+		
+		
+		
+		return content.getText();
+	}
+
 	
 	/**
-	 * Add the javascript for displaying the helpText to the page
+	 * Add default help icon url to the page. If an url is specified in the tag, that url is used, if
+	 * not the image url is set to the default image residing in the resource directory of this class. 
+	 * 
+	 * @param context the current Faces context intance
+	 * 
 	 */
-	private void addScriptToPage(FacesContext context) {
-		
-		
-		// check to see if the javascript has already been written, which could happen if
-		// more than one helpicon is on the same page
-		if(context.getExternalContext().getRequestMap().containsKey(JAVASCRIPT_ENCODED)) {
+	private void addDefaultHelpIconUrl(FacesContext context) {
+		if(!StringUtils.isEmpty(this.getUrl())) {
 			return;
 		}
-		
-		StelvioResourceHandler resourceHandler = new StelvioResourceHandler(HelpIconComponent.class, "showHelpText.js" );
-		AddResource addResource = AddResourceFactory.getInstance(context);
-		addResource.addJavaScriptAtPosition(context, 
-											AddResource.HEADER_BEGIN, 
-											resourceHandler, false);
-
-		context.getExternalContext().getRequestMap().put(JAVASCRIPT_ENCODED, Boolean.TRUE);
-	}
-
-
-	
-	private Content hentHjelpetekst(String key) {
-		// TODO: kall service-lag
-		Content testContent = new Content();
-		testContent.setContentKey("TEST_NOKKEL");
-		testContent.setText("Dette er en test...");
-		
-		return testContent;
-	}
-	
-	private void addDefaultHelpIconUrl(FacesContext context) {
-		// do not add default image if the url to the image is supplied with the tag
-//		if(this.getUrl() != null) {
-//			return;
-//		}
 		StelvioResourceHandler resourceHandler = new StelvioResourceHandler(HelpIconComponent.class, DEFAULT_IMAGE_URL );
 		AddResource addResource = AddResourceFactory.getInstance(context);
 		String uri = addResource.getResourceUri(context, resourceHandler, false);
 		this.setUrl(uri);
 	}
-	
-	
-	
+
+
 	/**
-	 * 
+	 * @return the key
 	 */
-	public HelpIconComponent() {
-		
-	}
-	
 	public String getKey() {
 		return key;
 	}
 
+
+	/**
+	 * @param key the key to set
+	 */
 	public void setKey(String key) {
 		this.key = key;
 	}
+
+	/**
+	 * @return the value
+	 */
+	public String getValue() {
+		return value;
+	}
+
+	/**
+	 * @param value the value to set
+	 */
+	public void setValue(String value) {
+		this.value = value;
+	}
 	
 	
-//	
-//	String key;
-//	private static final String JAVASCRIPT_ENCODED = "no.stelvio.presentation.jsf.taglib.help.JS_HELPICON_ENCODED";
-//	private static final String DEFAULT_IMAGE_URL = "help.gif";
-//	public static final String COMPONENT_TYPE = "no.stelvio.HelpIconComponent";
-//
-//	/* (non-Javadoc)
-//	 * @see javax.faces.component.UIComponentBase#encodeBegin(javax.faces.context.FacesContext)
-//	 */
-//	@Override
-//	public void encodeBegin(FacesContext context) throws IOException {
-//		// todo: legge inn javascript i side hvis det ikke finnes
-//		
-//		
-//		System.out.println("*************** i encodeBegin i renderen ************");
-//		Content helpContent = hentHjelpetekst(this.getKey());
-//
-//		// legg inn javascript
-//		//addScriptToPage(context);
-//		//addDefaultHelpIconUrl(context);
-//		
-//		this.setUrl("/images/hjelp.gif");
-//		
-//		// TODO: sette id
-//		this.setOnclick("javascript:showHelp('" + helpContent.getText() + "', 'id')");
-//		// TODO Auto-generated method stub
-//		super.encodeBegin(context);
-//	}
-//	
-//	@Override
-//	public void encodeEnd(FacesContext context) throws IOException {
-//		// todo: legge inn javascript i side hvis det ikke finnes
-//		
-//			
-//			System.out.println("*************** i encodeEnd i renderen ************");
-//			Content helpContent = hentHjelpetekst(this.getKey());
-//
-//			// legg inn javascript
-//			//addScriptToPage(context);
-//			//addDefaultHelpIconUrl(context);
-//			
-//			// TODO: sette id
-//			this.setOnclick("javascript:showHelp('" + helpContent.getText() + "', 'id')");
-//		
-//		
-//		super.encodeEnd(context);
-//		HtmlOutputText tekst = new HtmlOutputText();
-//		tekst.setValue("tekst fra hjelpekomponent");
-//		tekst.encodeBegin(context);
-//		tekst.encodeEnd(context);
-//		
-//	}
-//	
-//	/**
-//	 * Add the javascript for displaying the helpText to the page
-//	 */
-//	private void addScriptToPage(FacesContext context) {
-//		
-//		
-//		// check to see if the javascript has already been written, which could happen if
-//		// more than one helpicon is on the same page
-//		if(context.getExternalContext().getRequestMap().containsKey(JAVASCRIPT_ENCODED)) {
-//			return;
-//		}
-//		
-//		AddResource addResource = AddResourceFactory.getInstance(context);
-//		addResource.addJavaScriptAtPosition(context, 
-//											AddResource.HEADER_BEGIN, 
-//											HelpIconComponent.class, 
-//											"showHelpText.js");
-//
-//		context.getExternalContext().getRequestMap().put(JAVASCRIPT_ENCODED, Boolean.TRUE);
-//	}
-//
-//
-//	
-//	private Content hentHjelpetekst(String key) {
-//		// TODO: kall service-lag
-//		Content testContent = new Content();
-//		testContent.setContentKey("TEST_NOKKEL");
-//		testContent.setText("Dette er en test...");
-//		
-//		return testContent;
-//	}
-//	
-//	private void addDefaultHelpIconUrl(FacesContext context) {
-//		// do not add default image if the url to the image is supplied with the tag
-////		if(this.getUrl() != null) {
-////			return;
-////		}
-//		AddResource addResource = AddResourceFactory.getInstance(context);
-//		String uri = addResource.getResourceUri(context, HelpIconRenderer.class, DEFAULT_IMAGE_URL);
-//		this.setUrl(uri);
-//	}
-//	
-//	
-//	
-//	/**
-//	 * 
-//	 */
-//	public HelpIconComponent() {
-//		
-//	}
-//	
-//	public String getKey() {
-//		return key;
-//	}
-//
-//	public void setKey(String key) {
-//		this.key = key;
-//	}
-//	
+	
 }

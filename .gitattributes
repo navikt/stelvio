@@ -279,12 +279,12 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/Requ
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/ServletContextAttributeSetter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/AbstractFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/context/RequestContextPhaseListener.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/StelvioResourceHandler.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/StelvioResourceLoader.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolver.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/security/JeeSecurityPhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpDisplayAreaComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpIconComponent.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/StelvioResourceHandler.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/StelvioResourceLoader.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/resource/hjelp.gif -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/resource/showHelpText.js -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuComponent.java -text

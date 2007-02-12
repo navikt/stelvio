@@ -1,77 +1,63 @@
-/**
- * 
- */
 package no.stelvio.presentation.jsf.taglib.help;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.faces.component.UIColumn;
-import javax.faces.component.UIComponent;
 import javax.faces.component.html.HtmlOutputText;
 import javax.faces.component.html.HtmlPanelGrid;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.webapp.FacetTag;
 
-import org.apache.myfaces.shared_impl.renderkit.html.HTML;
+import org.apache.myfaces.custom.div.Div;
 
 /**
- * @author utvikler
+ * Component for the display area of the help text functionality. When a user clicks on a
+ * HelpIconComponent in the page, this component is used to display the help text to 
+ * the user. 
+ * <br>
+ * The component is a subclass of HtmlPanelGrid, and all attributes from the HtmlPanelGrid
+ * component can be applied to this component as well.
+ * <br>
+ * This component has two optional attributes:
+ * <ul>
+ * <li>headingText: use this attribute to supply a heading to the display area</li>
+ * <li>defaultText: use this attribute to supply a default text to be displayed in the
+ * area when the page is rendered and no help icon has been clicked.</li>
+ * </ul>
+ * 
+ * @author person6045563b8dec, Accenture
+ * @version $Id$
  *
  */
-public class HelpDisplayAreaComponent extends HtmlPanelGrid {
+public class HelpDisplayAreaComponent extends  HtmlPanelGrid {
 
-	public static final String HELP_DISPLAY_AREA_ID = "no.stelvio.HelpDisplayAreaComponent.ID";
+	private static final String FACET_HEADER = "header";
+	private static final String HELP_DISPLAY_AREA_ID = "no_stelvio_HelpDisplayAreaComponent_ID";
+
 	private String headingText = null;
+	private String defaultText = null;
 	
-	/* (non-Javadoc)
-	 * @see javax.faces.component.UIComponentBase#encodeEnd(javax.faces.context.FacesContext)
-	 */
-	@Override
-	public void encodeBegin(FacesContext context) throws IOException {
-		createChildren(context);
-		ResponseWriter writer = context.getResponseWriter();
-		writer.startElement(HTML.DIV_ELEM, this);
-		writer.writeAttribute("id", HELP_DISPLAY_AREA_ID, null);
-		super.encodeBegin(context);
-	}
-
-	/* (non-Javadoc)
-	 * @see javax.faces.component.UIComponentBase#encodeEnd(javax.faces.context.FacesContext)
-	 */
-	@Override
-	public void encodeEnd(FacesContext context) throws IOException {
-		super.encodeEnd(context);
-		ResponseWriter writer = context.getResponseWriter();
-		writer.endElement(HTML.DIV_ELEM);
-	}
 	/**
-	 * @param context
+	 * Default constructor, add the children of this component. 
+	 * The component is a panelgrid consisting of a header text
+	 * and a area for displaying the help text.
+	 *
+	 */
+	public HelpDisplayAreaComponent() {
+		createChildren();
+	}
+	
+	/**
+	 * Creates the children of this component. 
 	 */
 	@SuppressWarnings("unchecked")
-	private void createChildren(FacesContext context) {
-		this.setId("help");
-		
-//		UIComponent header = this.getFacet("header");
-		
-//		List<UIComponent> children = this.getChildren();
+	private void createChildren() {
 		HtmlOutputText headerText = new HtmlOutputText();
 		HtmlOutputText helpText = new HtmlOutputText();
-//		UIColumn column = new UIColumn();
+		Div div = new Div();
+		div.setId(HELP_DISPLAY_AREA_ID);
+		helpText.setValue(defaultText);
+		
 		headerText.setValue(this.getHeadingText());
-//		column.setHeader(headerText);
-		helpText.setValue("");
-		helpText.setId("hjelpeteksten");
-//		column.getChildren().add(headerText);
-//		column.getChildren().add(helpText);
-//		children.add(column);
-
-		this.getFacets().put("header", headerText);
-		this.getChildren().add(helpText);
-
+		this.getFacets().put(FACET_HEADER, headerText);
+		this.getChildren().add(headerText);
+		div.getChildren().add(helpText);
+		this.getChildren().add(div);
 	}
 
 	/**
@@ -86,6 +72,20 @@ public class HelpDisplayAreaComponent extends HtmlPanelGrid {
 	 */
 	public void setHeadingText(String headingText) {
 		this.headingText = headingText;
+	}
+
+	/**
+	 * @return the defaultText
+	 */
+	public String getDefaultText() {
+		return defaultText;
+	}
+
+	/**
+	 * @param defaultText the defaultText to set
+	 */
+	public void setDefaultText(String defaultText) {
+		this.defaultText = defaultText;
 	}
 	
 }
