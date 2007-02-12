@@ -16,6 +16,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import no.stelvio.batch.domain.BatchDO;
+import no.stelvio.batch.repository.BatchRepository;
 import no.stelvio.common.error.SystemUnrecoverableException;
 import no.stelvio.common.error.support.Severity;
 import no.stelvio.common.security.SecurityContextHolder;
@@ -27,8 +28,8 @@ import no.stelvio.common.util.MessageFormatter;
  * @author person356941106810, Accenture
  * @author person1f201b37d484, Accenture
  * @author personf8e9850ed756, Accenture
+ * @author person983601e0e117 (Accenture)
  * @version $Id: AbstractBatch.java 2834 2006-03-10 10:41:36Z skb2930 $
- * @todo should be using JpaTemplate
  */
 public abstract class AbstractBatch {
 
@@ -58,6 +59,9 @@ public abstract class AbstractBatch {
 
 	/** The name of the batch to run. */
 	private String batchName;
+	
+	/** Repository class used to update BatchDO status*/
+	private BatchRepository batchRepository;
 
 	/**
 	 * Fetch Size for statements. Default value (0) means fetch size hint will be ignored and default db value will be used.
@@ -192,7 +196,7 @@ public abstract class AbstractBatch {
 	 * @param batchDO the batch to update
 	 */
 	protected void updateBatchStatus(BatchDO batchDO) {
-		getHibernateTemplate().saveOrUpdate(batchDO);
+		getBatchRepository().updateBatch(batchDO);
 	}
 
 	/**
@@ -254,7 +258,7 @@ public abstract class AbstractBatch {
      * @param severity the severity of the message to log.
      */
 	private void log(String message, Severity severity) {
-		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { SecurityContextHolder.currentSecurityContext().getUserId(), severity, BATCH, batchName, message }));
+		ENTERPRISE_LOG.info(msgFormatter.formatMessage(new Object[] { RequestContextHolder.currentRequestContext().getUserId(), severity, BATCH, batchName, message }));
 	}
 
 	/**
@@ -413,5 +417,13 @@ public abstract class AbstractBatch {
 	 */
 	protected String getNamedQueryString(final String queryName) throws IllegalStateException {
 		throw new IllegalStateException("deprecated usage: " + queryName);
+	}
+
+	public BatchRepository getBatchRepository() {
+		return batchRepository;
+	}
+
+	public void setBatchRepository(BatchRepository batchRepository) {
+		this.batchRepository = batchRepository;
 	}
 }
