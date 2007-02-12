@@ -1,5 +1,10 @@
 package no.stelvio.batch.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -10,17 +15,23 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * @author person356941106810 (Accenture)
  * @version $Id: BatchDO.java 2064 2005-03-04 09:18:15Z psa2920 $ 
  */
+@Entity
+@Table(name="T_BATCH")
 public class BatchDO {
 
 	private static final long serialVersionUID = 6318007808581245609L;
 
 	/** identifier field */
+	@Id
+	@Column(name="BATCHNAME")
 	private String batchname;
 
 	/** nullable persistent field */
+	@Column(name="PARAMETERS")
 	private String parameters;
 
 	/** nullable persistent field */
+	@Column(name="STATUS")
 	private String status;
 
 	/** default constructor */
