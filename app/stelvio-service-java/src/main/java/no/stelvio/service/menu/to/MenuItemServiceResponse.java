@@ -11,7 +11,7 @@ import no.stelvio.domain.menu.MenuItem;
  * @author person983601e0e117 (Accenture)
  *
  */
-public class MenuItemSerivceResponse extends ServiceResponse {
+public class MenuItemServiceResponse extends ServiceResponse {
 
 
 	private static final long serialVersionUID = 2721957614150130964L;
@@ -23,7 +23,7 @@ public class MenuItemSerivceResponse extends ServiceResponse {
 	 * The MenuItemSerivceResponse will be set to hold an empty list of <code>MenuItem</code>s
 	 *
 	 */
-	public MenuItemSerivceResponse(){
+	public MenuItemServiceResponse(){
 		super();
 		this.menuItemList = new ArrayList<MenuItem>();
 	}
@@ -33,7 +33,7 @@ public class MenuItemSerivceResponse extends ServiceResponse {
 	 * If the parameter is <code>null</code> the MenuItemSerivceResponse will be set to hold an empty list
 	 * @param menuItemList list of <code>MenuItem</code>s
 	 */
-	public MenuItemSerivceResponse(List<MenuItem> menuItemList){
+	public MenuItemServiceResponse(List<MenuItem> menuItemList){
 		this();
 		//Only set a list if it's not null
 		if(menuItemList != null){

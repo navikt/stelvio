@@ -2,7 +2,7 @@ package no.stelvio.service.menu.support;
 
 import no.stelvio.repository.menu.MenuRepository;
 import no.stelvio.service.menu.MenuService;
-import no.stelvio.service.menu.to.MenuItemSerivceResponse;
+import no.stelvio.service.menu.to.MenuItemServiceResponse;
 
 /**
  * Menu service implementation of the {@link MenuService} business interface.
@@ -18,8 +18,8 @@ public class DefaultMenuService implements MenuService {
 	 * 
 	 * @return MenuItemServiceResponse containg a List of all the menu items.
 	 */
-	public MenuItemSerivceResponse getMenuItems() {
-		return new MenuItemSerivceResponse(menuRepository.getParents());
+	public MenuItemServiceResponse getMenuItems() {
+		return new MenuItemServiceResponse(menuRepository.getParents());
 	}
 
 	/**

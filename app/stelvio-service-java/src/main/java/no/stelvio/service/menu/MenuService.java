@@ -1,6 +1,6 @@
 package no.stelvio.service.menu;
 
-import no.stelvio.service.menu.to.MenuItemSerivceResponse;
+import no.stelvio.service.menu.to.MenuItemServiceResponse;
 
 /**
  * Business interface for menu operations. This service provides an interface
@@ -32,5 +32,5 @@ public interface MenuService {
 	 * 
 	 * @return a <code>MenuItemSerivceResponse</code> holding a list of all available <code>MenuItem</code>s
 	 */
-	public MenuItemSerivceResponse getMenuItems();
+	public MenuItemServiceResponse getMenuItems();
 }

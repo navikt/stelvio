@@ -20,7 +20,7 @@ import no.stelvio.domain.menu.MenuItemScreen;
 import no.stelvio.presentation.security.page.MockExternalContextExtended;
 import no.stelvio.presentation.security.page.MockHttpServletRequestExtended;
 import no.stelvio.service.menu.MenuService;
-import no.stelvio.service.menu.to.MenuItemSerivceResponse;
+import no.stelvio.service.menu.to.MenuItemServiceResponse;
 
 import org.apache.myfaces.custom.navmenu.NavigationMenuItem;
 import org.apache.shale.test.base.AbstractJsfTestCase;
@@ -166,13 +166,13 @@ public class MenuActionTest {
 		 * Gets a set of mocked menu items
 		 * @return MenuItemServiceResponse
 		 */
-		public MenuItemSerivceResponse getMenuItems() {
-			MenuItemSerivceResponse serviceResponse = getMockMenuWithChildren2();
+		public MenuItemServiceResponse getMenuItems() {
+			MenuItemServiceResponse serviceResponse = getMockMenuWithChildren2();
 			return serviceResponse;
 		}
 
 		
-		private MenuItemSerivceResponse getMockMenuWithChildren() {
+		private MenuItemServiceResponse getMockMenuWithChildren() {
 			// PERMISSIONS
 			MenuItemPermission admin1 = new MenuItemPermission("admin", false);
 			
@@ -269,13 +269,13 @@ public class MenuActionTest {
 			menus.add(mI1);
 			menus.add(mI2);
 			
-			MenuItemSerivceResponse response = new MenuItemSerivceResponse();
+			MenuItemServiceResponse response = new MenuItemServiceResponse();
 			response.setMenuItemList(menus);
 			
 			return response;
 		}
 		
-		private MenuItemSerivceResponse getMockMenuWithChildren2() {
+		private MenuItemServiceResponse getMockMenuWithChildren2() {
 			// PERMISSIONS
 			MenuItemPermission admin1 = new MenuItemPermission("admin", false);
 			
@@ -377,7 +377,7 @@ public class MenuActionTest {
 			menus.add(mI1);
 			menus.add(mI2);
 			
-			MenuItemSerivceResponse response = new MenuItemSerivceResponse();
+			MenuItemServiceResponse response = new MenuItemServiceResponse();
 			response.setMenuItemList(menus);
 			
 			return response;
