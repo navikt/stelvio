@@ -98,10 +98,14 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response2.getStatus());
 		
-		listener.beforePhase(phase3);
+		listener.afterPhase(phase3);
 		MockHttpServletResponse response3 = 
 			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response3.getStatus());	
+		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response3.getStatus());
+		/*listener.beforePhase(phase3);
+		MockHttpServletResponse response3 = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response3.getStatus());*/	
 	}
 	public void testBeforeAndAfterPhaseUserIsNotAuthorized() throws Exception{
 		
@@ -123,9 +127,14 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response2.getStatus());
 		
-		listener.beforePhase(phase3);
+		listener.afterPhase(phase3);
 		MockHttpServletResponse response3 = 
 			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response3.getStatus());	
+		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response3.getStatus());
+		
+		/*listener.beforePhase(phase3);
+		MockHttpServletResponse response3 = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response3.getStatus());*/	
 	}
 }

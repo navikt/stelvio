@@ -33,6 +33,11 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
+import no.stelvio.common.security.SecurityContextHolder;
+import no.stelvio.common.security.support.SimpleSecurityContext;
+
 import org.apache.shale.test.mock.MockApplication;
 import org.apache.shale.test.mock.MockFacesContext;
 import org.apache.shale.test.mock.MockHttpServletResponse;
@@ -110,6 +115,9 @@ public class AbstractPhaselistenerTestCase extends TestCase {
 		this.roles = new ArrayList<String>();
 		this.roles.add("role1");
 		this.roles.add("role2");
+		RequestContextHolder.setRequestContext(new SimpleRequestContext("","","",""));
+		SecurityContextHolder.setSecurityContext(new SimpleSecurityContext(principal.getName(),roles));
+		
 		 // Set up Servlet API Objects
         servletContext = new MockServletContext();
         

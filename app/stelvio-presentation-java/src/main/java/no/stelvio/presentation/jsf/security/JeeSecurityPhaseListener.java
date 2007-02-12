@@ -3,6 +3,8 @@ package no.stelvio.presentation.jsf.security;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import no.stelvio.common.error.ExceptionHandlerFacade;
 import no.stelvio.presentation.security.page.PageAccessDeniedException;
 import no.stelvio.presentation.security.page.PageAuthenticationFailedException;
 import no.stelvio.presentation.security.page.PageProtocolSwitchFailedException;
@@ -134,7 +137,8 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 			.getLog(JeeSecurityPhaseListener.class);
 
 	private JeeSecurityObject jeeSecurityObject = null;
-
+	private ExceptionHandlerFacade exceptionHandler;
+	
 	private boolean useSessionPageCache = true;
 
 	/**
@@ -157,10 +161,17 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 	public void beforePhase(PhaseEvent phaseEvent) {
 		PhaseId phaseid = phaseEvent.getPhaseId();
 
-		if (phaseid == PhaseId.RENDER_RESPONSE) {
+		if(log.isDebugEnabled()){
+			UIViewRoot root = FacesContext.getCurrentInstance().getViewRoot(); 
+			String viewId = root != null ? root.getViewId() : "A view is not set yet.";
+			log.debug("Entering before phase: " + phaseid + " for page '" + viewId  +"'.");
+		}
+		
+		/*if (phaseid == PhaseId.RENDER_RESPONSE || 
+				phaseid == PhaseId.INVOKE_APPLICATION ) {
 
 			try {
-
+				
 				evaluatePage(phaseEvent);
 
 			} catch (Exception e) {
@@ -168,7 +179,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 				exceptionHandler(e, phaseEvent);
 
 			}
-		}
+		}*/
 	}
 
 	/**
@@ -191,11 +202,17 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 	public void afterPhase(PhaseEvent phaseEvent) {
 
 		PhaseId phaseid = phaseEvent.getPhaseId();
-		if (phaseid == PhaseId.RESTORE_VIEW
-				|| phaseid == PhaseId.INVOKE_APPLICATION) {
+		if(log.isDebugEnabled()){
+			UIViewRoot root = FacesContext.getCurrentInstance().getViewRoot(); 
+			String viewId = root != null ? root.getViewId() : "A view is not set yet.";
+			log.debug("Entering after phase: " + phaseid + " for page '" + viewId  +"'.");
+		}
+		
+		if (phaseid == PhaseId.RENDER_RESPONSE || phaseid == PhaseId.RESTORE_VIEW
+				|| phaseid == PhaseId.INVOKE_APPLICATION){
 
 			try {
-
+		
 				evaluatePage(phaseEvent);
 
 			} catch (Exception e) {
@@ -236,7 +253,8 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 		}
 
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
-		String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+		UIViewRoot root = FacesContext.getCurrentInstance().getViewRoot();
+		String viewId = root != null ? root.getViewId() : null;
 		
 		if (viewId != null && !pageAlreadyEvaluated(viewId, exctx)) {
 			boolean pageAlreadyAuthorized = checkPageCache(viewId);
@@ -522,6 +540,20 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 	 */
 	public void setJ2eeSecurityObject(JeeSecurityObject securityObject) {
 		jeeSecurityObject = securityObject;
+	}
+
+	/**
+	 * @return the exceptionHandler
+	 */
+	public ExceptionHandlerFacade getExceptionHandler() {
+		return exceptionHandler;
+	}
+
+	/**
+	 * @param exceptionHandler the exceptionHandler to set
+	 */
+	public void setExceptionHandler(ExceptionHandlerFacade exceptionHandler) {
+		this.exceptionHandler = exceptionHandler;
 	}
 
 }

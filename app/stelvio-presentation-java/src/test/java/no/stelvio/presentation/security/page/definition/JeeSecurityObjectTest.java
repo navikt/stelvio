@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.shale.test.mock.MockHttpServletResponse;
 
+import no.stelvio.common.security.SecurityContextHolder;
+import no.stelvio.common.security.support.SimpleSecurityContext;
 import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 import no.stelvio.presentation.security.page.MockHttpServletRequestExtended;
 import no.stelvio.presentation.security.page.PageAccessDeniedException;
@@ -110,6 +112,7 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
 		MockHttpServletRequestExtended request = (MockHttpServletRequestExtended)exctx.getRequest();
 		request.setUserPrincipal(null);
+		SecurityContextHolder.setSecurityContext(new SimpleSecurityContext(null,null));
 		
 		String servletPath = "/test/page1.jsf";
 		String queryString = "start=start&something=another";
@@ -124,7 +127,7 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		HttpSession session = (HttpSession)exctx.getSession(true);
 		secObject.authorizePageAccess(viewId, session);
 		MockHttpServletResponse response = (MockHttpServletResponse)exctx.getResponse();
-		
+		//MockHttpServletRequestExtended request = (MockHttpServletRequestExtended)exctx.getRequest(); 
 		assertEquals(HttpServletResponse.SC_MOVED_TEMPORARILY,response.getStatus());
 		assertEquals("/jsfauthentication",response.getMessage());
 		//check session for the viewId requested

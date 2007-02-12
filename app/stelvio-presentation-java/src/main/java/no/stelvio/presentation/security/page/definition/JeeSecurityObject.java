@@ -249,9 +249,11 @@ public class JeeSecurityObject {
 							+ authenticationEnforcerURL);
 				}
 				exctx.redirect(authenticationEnforcerURL);
+				return false;
 			} else {
 				// page does not require https or is in https mode already
 				exctx.redirect(j2eeContextPath + "/jsfauthentication");
+				return false;
 			}
 		}
 		return true;
