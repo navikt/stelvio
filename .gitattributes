@@ -286,7 +286,9 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderki
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolver.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/security/JeeSecurityPhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpDisplayAreaComponent.java -text
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpIconComponent.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpInPageComponent.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpPopUpComponent.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/HelpUtils.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/help/resource/hjelp.gif -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuComponent.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/taglib/menu/components/MenuItemComponent.java -text

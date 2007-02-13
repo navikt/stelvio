@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.html.HtmlGraphicImage;
+import javax.faces.component.html.HtmlOutputLink;
 import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
 import javax.faces.webapp.UIComponentTag;
@@ -40,17 +41,17 @@ import org.apache.myfaces.util.ViewIterator;
  * @author person6045563b8dec, Accenture
  * @version $Id$
  *
- */public class HelpIconComponent extends HtmlGraphicImage {
+ */public class HelpInPageComponent extends HtmlGraphicImage {
 
 	protected final Log log = LogFactory.getLog(this.getClass());
-	public static final String COMPONENT_TYPE = "no.stelvio.HelpIconComponent";
+	public static final String COMPONENT_TYPE = "no.stelvio.HelpInPageComponent";
 
-	private static final String DEFAULT_IMAGE_URL = "hjelp.gif";
-	private static final String JAVASCRIPT_ONCLICK = "javascript:document.getElementById(''{0}'').innerHTML = ''{1}''";
+	private static final String JS_ONCLICK_INPAGE_HELP = "javascript:document.getElementById(''{0}'').innerHTML = ''{1}'';";
 
+	
 	// attribute for this component
 	private String key;
-	private String value;
+	private String text;
 	
 	/**
 	 * Render this component, before rendering, the help icon and help text
@@ -62,26 +63,36 @@ import org.apache.myfaces.util.ViewIterator;
 	@Override
 	public void encodeBegin(FacesContext context) throws IOException {
 		
-		addDefaultHelpIconUrl(context);
+		HelpUtils.addHelpIconUrl(context, this, getUrl());
+		createInPageLink(HelpUtils.getHelpContent(key));
+
+		super.encodeBegin(context);
+	}
+
+
+	
+	/**
+	 * @param helpText
+	 */
+	private void createInPageLink(Content helpContent) {
 		String helpText = null;
-		if(key != null) {
-			helpText = getHelpContent();
-		} else if(value != null){
-			helpText = getHelpTextValue(context);
+		if(helpContent != null) {
+			helpText = helpContent.getText();
+		} else if(text != null) {
+			helpText = getHelpTextValue();
 		}
 		
 		String displayAreaId = findHelpDisplayAreaClientId();
-		
+
 		if(displayAreaId != null) {
-			this.setOnclick(MessageFormat.format(JAVASCRIPT_ONCLICK, 
-												displayAreaId,
-												helpText));
+			this.setOnclick(MessageFormat.format(JS_ONCLICK_INPAGE_HELP, 
+											displayAreaId,
+											helpText));
 		} else {
 			if(log.isDebugEnabled()) {
 				log.debug("The id of the display area was not found, make sure there is a display area in the page.");
 			}
 		}
-		super.encodeBegin(context);
 	}
 	
 	/**
@@ -91,13 +102,14 @@ import org.apache.myfaces.util.ViewIterator;
 	 * @param context The current Faces context instance
 	 * @return the helpText
 	 */
-	private String getHelpTextValue(FacesContext context) {
+	private String getHelpTextValue() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		String helpText = null;
-		if(UIComponentTag.isValueReference(value)) {
-			ValueBinding vb = getValueBinding(value);
+		if(UIComponentTag.isValueReference(text)) {
+			ValueBinding vb = getValueBinding(text);
 			helpText = vb != null ? (String)vb.getValue(context) : null;
 		} else {
-			helpText = value;
+			helpText = text;
 		}
 		
 		return helpText;
@@ -138,39 +150,6 @@ import org.apache.myfaces.util.ViewIterator;
 	}
 	
 
-	/**
-	 * Retrieve the help content which is going to be displayed for this
-	 * component.
-	 * 
-	 * TODO: integration towards Vertical Site
-	 * 
-	 * @return Content object containing the content to display
-	 */
-	private String getHelpContent() {
-		Content content = new Content();
-		
-		
-		
-		return content.getText();
-	}
-
-	
-	/**
-	 * Add default help icon url to the page. If an url is specified in the tag, that url is used, if
-	 * not the image url is set to the default image residing in the resource directory of this class. 
-	 * 
-	 * @param context the current Faces context intance
-	 * 
-	 */
-	private void addDefaultHelpIconUrl(FacesContext context) {
-		if(!StringUtils.isEmpty(this.getUrl())) {
-			return;
-		}
-		StelvioResourceHandler resourceHandler = new StelvioResourceHandler(HelpIconComponent.class, DEFAULT_IMAGE_URL );
-		AddResource addResource = AddResourceFactory.getInstance(context);
-		String uri = addResource.getResourceUri(context, resourceHandler, false);
-		this.setUrl(uri);
-	}
 
 
 	/**
@@ -179,7 +158,6 @@ import org.apache.myfaces.util.ViewIterator;
 	public String getKey() {
 		return key;
 	}
-
 
 	/**
 	 * @param key the key to set
@@ -191,17 +169,16 @@ import org.apache.myfaces.util.ViewIterator;
 	/**
 	 * @return the value
 	 */
-	public String getValue() {
-		return value;
+	public String getText() {
+		return text;
 	}
 
 	/**
-	 * @param value the value to set
+	 * @param text the value to set
 	 */
-	public void setValue(String value) {
-		this.value = value;
+	public void setText(String text) {
+		this.text = text;
 	}
-	
-	
+
 	
 }
