@@ -18,7 +18,8 @@ import no.stelvio.service.menu.MenuService;
 import org.apache.myfaces.custom.navmenu.NavigationMenuItem;
 
 /**
- * Action-class for menu-related actions.
+ * Action-class for menu-related actions. The MenuService to be used
+ * must be injected.
  * 
  * @author person6045563b8dec
  *
@@ -26,8 +27,6 @@ import org.apache.myfaces.custom.navmenu.NavigationMenuItem;
 public class MenuAction {
 	
 	private MenuService menuService;
-
-	
 
 	/**
 	 * Menu items are retrieved by the <code>MenuService<code> service. A menu structure
@@ -63,25 +62,24 @@ public class MenuAction {
 	 * represent the menu item object. If a menu item has children, this method
 	 * is called recursively to create all children and the children of the children.
 	 * 
-	 * @param menu, a <code>MenuItem<code> 
+	 * @param menu  a <code>MenuItem<code> 
 	 * @return a <code>NavigationMenuItem<code> representing the <code>MenuItem<code>
 	 */
 	private NavigationMenuItem createComponents(MenuItem menu) {
 		NavigationMenuItem menuItem = null;
-		List<MenuItemPermission> permissions = menu.getPermissions() == null || menu.getPermissions().size() <= 0 ? null : menu.getPermissions();
-		List<MenuItemScreen> screens = menu.getScreens() == null || menu.getScreens().size() <= 0 ? null : menu.getScreens();
+		List<MenuItemPermission> permissions = menu.getPermissions() == null 
+										|| menu.getPermissions().size() <= 0 ? null : menu.getPermissions();
+		List<MenuItemScreen> screens = menu.getScreens() == null  
+										|| menu.getScreens().size() <= 0 ? null : menu.getScreens();
 		
 		boolean createMenuItem = false;
 		if (permissions == null && screens == null) {
 			createMenuItem = true;
-		}
-		else if (permissions == null && (screens != null && inScreen(screens))) {
+		} else if (permissions == null && (screens != null && inScreen(screens))) {
 			createMenuItem = true;
-		}
-		else if ((permissions != null && checkPermission(permissions)) && screens == null) {
+		} else if ((permissions != null && checkPermission(permissions)) && screens == null) {
 			createMenuItem = true;
-		}
-		else if ((permissions != null && checkPermission(permissions)) && (screens != null && inScreen(screens))) {
+		} else if ((permissions != null && checkPermission(permissions)) && (screens != null && inScreen(screens))) {
 			createMenuItem = true;
 		}
 		

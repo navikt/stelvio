@@ -13,14 +13,14 @@ import org.apache.myfaces.renderkit.html.util.ResourceHandler;
  * @author person6045563b8dec, Accenture
  */
 public class StelvioResourceHandler implements ResourceHandler {
-	private final Class _stelvioCustomComponent;
+	private final Class stelvioCustomComponent;
 
-	private final String _resource;
+	private final String resource;
 
 	/**
 	 * Constructor.
 	 * 
-	 * @param stelvioCustomComponent
+	 * @param customComponent
 	 *            is a class that must be in package org.apache.myfaces.custom.
 	 *            The resource to be served will be located relative to this
 	 *            class in the classpath. Note that code wishing to serve
@@ -32,11 +32,11 @@ public class StelvioResourceHandler implements ResourceHandler {
 	 *            "resource/{resourceName} relative to the location of the
 	 *            specified component class in the classpath.
 	 */
-	public StelvioResourceHandler(Class stelvioCustomComponent,
+	public StelvioResourceHandler(Class customComponent,
 			String resourceName) {
-		validateCustomComponent(stelvioCustomComponent);
-		_stelvioCustomComponent = stelvioCustomComponent;
-		_resource = resourceName;
+		validateCustomComponent(customComponent);
+		stelvioCustomComponent = customComponent;
+		resource = resourceName;
 	}
 
 	/**
@@ -45,6 +45,7 @@ public class StelvioResourceHandler implements ResourceHandler {
 	 * represented by this object.
 	 * 
 	 * @see ResourceHandler#getResourceLoaderClass()
+	 * @return the class name
 	 */
 	public Class getResourceLoaderClass() {
 		return StelvioResourceLoader.class;
@@ -54,10 +55,9 @@ public class StelvioResourceHandler implements ResourceHandler {
 	 * Verify that the base class for the resource lookup is in the
 	 * no.stelvio.presentation.jsf.taglib package.
 	 * 
-	 * @param stelvioCustomComponent
-	 *            is the base component for the lookup.
-	 * @throws IllegalArgumentException
-	 *             if the class is not in the expected package.
+	 * @param stelvioCustomComponent is the base component for the lookup.
+	 * @throws IllegalArgumentException if the class is not in the 
+	 * expected package.
 	 */
 	protected void validateCustomComponent(Class stelvioCustomComponent) {
 		if (!stelvioCustomComponent.getName().startsWith(
@@ -82,17 +82,20 @@ public class StelvioResourceHandler implements ResourceHandler {
 	 * constructor, and resourceName is the resource specified in the
 	 * constructor.
 	 * 
+	 * 
+	 * @param context the current Faces Context instance
+	 * @return the uri of the resource
 	 * @see org.apache.myfaces.shared.renderkit.html.util.ResourceHandler#getResourceUri(javax.faces.context.FacesContext)
 	 */
 	public String getResourceUri(FacesContext context) {
-		String className = _stelvioCustomComponent.getName();
+		String className = stelvioCustomComponent.getName();
 		StringBuffer sb = new StringBuffer();
 		sb.append(className
 				.substring(StelvioResourceLoader.NO_STELVIO_PRESENTATION_JSF_TAGLIB
 						.length() + 1));
 		sb.append("/");
-		if (_resource != null) {
-			sb.append(_resource);
+		if (resource != null) {
+			sb.append(resource);
 		}
 		return sb.toString();
 	}

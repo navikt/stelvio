@@ -50,6 +50,8 @@ public class StelvioResourceLoader implements ResourceLoader {
 	 * values by the AddResource class, nor does it affect the caching behaviour
 	 * of web browsers. This value simply goes into the http headers as the
 	 * last-modified time of the specified resource.
+	 * 
+	 * @return last modified time 
 	 */
 	private static long getLastModified() {
 		if (lastModified == 0) {
@@ -86,13 +88,20 @@ public class StelvioResourceLoader implements ResourceLoader {
 	 * the resource.
 	 * <p>
 	 * 
+	 * @param context the servlet context
+	 * @param request the current http request
+	 * @param response the current http response
+	 * @param resourceUri the uri of the resource to locate
+	 * @throws IOException if an error occurs during input/output
+	 * 
 	 * @see org.apache.myfaces.renderkit.html.util.ResourceLoader#serveResource(javax.servlet.ServletContext,
 	 *      javax.servlet.http.HttpServletRequest,
 	 *      javax.servlet.http.HttpServletResponse, java.lang.String)
 	 */
 	public void serveResource(ServletContext context,
-			HttpServletRequest request, HttpServletResponse response,
-			String resourceUri) throws IOException {
+								HttpServletRequest request, 
+								HttpServletResponse response,
+								String resourceUri) throws IOException {
 		String[] uriParts = resourceUri.split("/", 2);
 
 		String component = uriParts[0];
@@ -152,16 +161,23 @@ public class StelvioResourceLoader implements ResourceLoader {
 				writeResource(request, response, is);
 			}
 		} finally {
-			if (is != null)
+			if (is != null) {
 				is.close();
+			}
 		}
 	}
 
 	/**
 	 * Copy the content of the specified input stream to the servlet response.
+	 * 
+	 * @param request the current http request
+	 * @param response the current http response object
+	 * @param in the inputstream to write the resource to
+	 * @throws IOException if an error occurs when the resource is written 
 	 */
 	protected void writeResource(HttpServletRequest request,
-			HttpServletResponse response, InputStream in) throws IOException {
+								 HttpServletResponse response, 
+								 InputStream in) throws IOException {
 		ServletOutputStream out = response.getOutputStream();
 		try {
 			byte[] buffer = new byte[1024];
@@ -181,9 +197,14 @@ public class StelvioResourceLoader implements ResourceLoader {
 	 * problem as the overall URI contains a "cache key" that changes whenever
 	 * the webapp is redeployed (see AddResource.getCacheKey), meaning that all
 	 * browsers will effectively reload files on webapp redeploy.
+	 * 
+	 * @param request the current http request object
+	 * @param response the current http response object
+	 * @param resource the resource which is beeing loaded
 	 */
 	protected void defineCaching(HttpServletRequest request,
-			HttpServletResponse response, String resource) {
+								HttpServletResponse response, 
+								String resource) {
 		response.setDateHeader("Last-Modified", getLastModified());
 
 		Calendar expires = Calendar.getInstance();
@@ -198,9 +219,16 @@ public class StelvioResourceLoader implements ResourceLoader {
 	/**
 	 * Output http headers indicating the mime-type of the content being served.
 	 * The mime-type output is determined by the resource filename suffix.
+	 * 
+	 * @param request the current http request object
+	 * @param response the current http response object
+	 * @param resource the resource beeing loaded
+	 * @param contentLength the length of the resource beeing loaded
 	 */
 	protected void defineContentHeaders(HttpServletRequest request,
-			HttpServletResponse response, String resource, int contentLength) {
+										HttpServletResponse response, 
+										String resource, 
+										int contentLength) {
 		if (contentLength > -1) {
 			response.setContentLength(contentLength);
 		}
@@ -228,30 +256,20 @@ public class StelvioResourceLoader implements ResourceLoader {
 	 * 
 	 * @param componentClass
 	 *            the class to be loaded
-	 * @return
-	 * @throws ClassNotFoundException
+	 * @return the Class loaded
+	 * @throws ClassNotFoundException if the component class is not found
 	 */
 	protected Class loadComponentClass(String componentClass)
 			throws ClassNotFoundException {
 		return ClassUtils.classForName(componentClass);
 	}
 
-	/**
-	 * 
-	 * @param resource
-	 * @return
-	 */
-	public static InputStream getResourceAsStream(String resource) {
-		InputStream stream = Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream(resource);
-		if (stream == null) {
-			// fallback
-			stream = ClassUtils.class.getClassLoader().getResourceAsStream(
-					resource);
-		}
-		return stream;
-	}
 
+	/**
+	 * Gets the current class loader
+	 * @param defaultObject the default object
+	 * @return the ClassLoader
+	 */
 	protected static ClassLoader getCurrentLoader(Object defaultObject) {
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		if (loader == null) {

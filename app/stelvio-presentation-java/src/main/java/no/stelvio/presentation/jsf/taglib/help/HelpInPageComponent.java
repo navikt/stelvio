@@ -7,25 +7,20 @@ import java.util.List;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.html.HtmlGraphicImage;
-import javax.faces.component.html.HtmlOutputLink;
 import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
 import javax.faces.webapp.UIComponentTag;
 
 import no.stelvio.domain.cm.Content;
-import no.stelvio.presentation.jsf.renderkit.StelvioResourceHandler;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.myfaces.custom.div.Div;
-import org.apache.myfaces.renderkit.html.util.AddResource;
-import org.apache.myfaces.renderkit.html.util.AddResourceFactory;
 import org.apache.myfaces.util.ViewIterator;
 
 
 /**
- * The helpIconComponent renders an image (default is a small icon with a question mark), when the 
+ * The helpInPageComponent renders an image (default is a small icon with a question mark), when the 
  * user clicks on the icon, a help text is displayed in the page. This component requires a 
  * HelpDisplayAreaComponent on the same page as the help icon is used.
  * 
@@ -41,11 +36,17 @@ import org.apache.myfaces.util.ViewIterator;
  * @author person6045563b8dec, Accenture
  * @version $Id$
  *
- */public class HelpInPageComponent extends HtmlGraphicImage {
+ */
+public class HelpInPageComponent extends HtmlGraphicImage {
 
 	protected final Log log = LogFactory.getLog(this.getClass());
+	
+	/**
+	 * the component type
+	 */
 	public static final String COMPONENT_TYPE = "no.stelvio.HelpInPageComponent";
 
+	// the javascript to add to the onclick of the image
 	private static final String JS_ONCLICK_INPAGE_HELP = "javascript:document.getElementById(''{0}'').innerHTML = ''{1}'';";
 
 	
@@ -59,6 +60,7 @@ import org.apache.myfaces.util.ViewIterator;
 	 * when the help icon is clicked.
 	 * 
 	 * @param context the current FacesContext instance
+	 * @throws IOException if input/output error occurs while rendering
 	 */
 	@Override
 	public void encodeBegin(FacesContext context) throws IOException {
@@ -72,7 +74,11 @@ import org.apache.myfaces.util.ViewIterator;
 
 	
 	/**
-	 * @param helpText
+	 * Create the onclick event to happen when the user clicks on 
+	 * the icon
+	 * 
+	 * @param helpContent the Content to display, if null, the text
+	 * is fetched from local attribute values 
 	 */
 	private void createInPageLink(Content helpContent) {
 		String helpText = null;
@@ -82,6 +88,7 @@ import org.apache.myfaces.util.ViewIterator;
 			helpText = getHelpTextValue();
 		}
 		
+		// the id of the display area is required for the getElementById() javascript function
 		String displayAreaId = findHelpDisplayAreaClientId();
 
 		if(displayAreaId != null) {
@@ -99,7 +106,6 @@ import org.apache.myfaces.util.ViewIterator;
 	 * Finds the help text from the value field of this component. The
 	 * value field can be a value-binding expression
 	 * 
-	 * @param context The current Faces context instance
 	 * @return the helpText
 	 */
 	private String getHelpTextValue() {
@@ -107,7 +113,7 @@ import org.apache.myfaces.util.ViewIterator;
 		String helpText = null;
 		if(UIComponentTag.isValueReference(text)) {
 			ValueBinding vb = getValueBinding(text);
-			helpText = vb != null ? (String)vb.getValue(context) : null;
+			helpText = vb != null ? (String) vb.getValue(context) : null;
 		} else {
 			helpText = text;
 		}
@@ -126,7 +132,7 @@ import org.apache.myfaces.util.ViewIterator;
 		UIComponent component = null;
 
 		ViewIterator viewIterator = new ViewIterator(FacesContext.getCurrentInstance().getViewRoot());
-		for(; viewIterator.hasNext();) {
+		while(viewIterator.hasNext()) {
 			UIComponent nextComponent = (UIComponent) viewIterator.next();
 			if(nextComponent instanceof HelpDisplayAreaComponent) {
 				component = nextComponent;
@@ -137,7 +143,7 @@ import org.apache.myfaces.util.ViewIterator;
 			HelpDisplayAreaComponent displayComponent = (HelpDisplayAreaComponent) component;
 			List children = displayComponent.getChildren();
 			UIComponent divComponent = null;
-			for(Iterator i = children.iterator();i.hasNext();) {
+			for(Iterator i = children.iterator(); i.hasNext();) {
 				UIComponent next = (UIComponent) i.next();
 				if(next instanceof Div) {
 					divComponent = next;

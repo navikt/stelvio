@@ -1,7 +1,10 @@
 package no.stelvio.presentation.jsf.taglib.help;
 
+import java.io.IOException;
+
 import javax.faces.component.html.HtmlOutputText;
 import javax.faces.component.html.HtmlPanelGrid;
+import javax.faces.context.FacesContext;
 
 import org.apache.myfaces.custom.div.Div;
 
@@ -32,6 +35,10 @@ public class HelpDisplayAreaComponent extends  HtmlPanelGrid {
 	private String headingText = null;
 	private String defaultText = null;
 	
+
+	HtmlOutputText headerTextComponent = new HtmlOutputText();
+	HtmlOutputText helpTextComponent = new HtmlOutputText();
+
 	/**
 	 * Default constructor, add the children of this component. 
 	 * The component is a panelgrid consisting of a header text
@@ -43,28 +50,39 @@ public class HelpDisplayAreaComponent extends  HtmlPanelGrid {
 	}
 	
 	/**
+	 * Encodes this component. Sets the header and default text
+	 * 
+	 * @param context the current Faces context instance 
+	 * @see javax.faces.component.UIComponentBase#encodeBegin(javax.faces.context.FacesContext)
+	 */
+	@Override
+	public void encodeBegin(FacesContext context) throws IOException {
+		headerTextComponent.setValue(headingText);
+		helpTextComponent.setValue(defaultText);
+		super.encodeBegin(context);
+	}
+	
+	/**
 	 * Creates the children of this component. 
 	 */
 	@SuppressWarnings("unchecked")
 	private void createChildren() {
-		HtmlOutputText headerText = new HtmlOutputText();
-		HtmlOutputText helpText = new HtmlOutputText();
+		headerTextComponent = new HtmlOutputText();
+		helpTextComponent = new HtmlOutputText();
 		Div div = new Div();
 		div.setId(HELP_DISPLAY_AREA_ID);
-		helpText.setValue(defaultText);
 		
-		headerText.setValue(this.getHeadingText());
-		this.getFacets().put(FACET_HEADER, headerText);
-		this.getChildren().add(headerText);
-		div.getChildren().add(helpText);
+		this.getFacets().put(FACET_HEADER, headerTextComponent);
+		this.getChildren().add(headerTextComponent);
+		div.getChildren().add(helpTextComponent);
 		this.getChildren().add(div);
 	}
 
 	/**
 	 * @return the headingText
 	 */
-	public String getHeadingText() {
-		return headingText;
+	public String getHeadingText() { 
+		return headingText; 
 	}
 
 	/**

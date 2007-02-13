@@ -108,9 +108,10 @@ public class PagedSortableList<T> {
 	 */
 	public PagedSortableList(List<T> list, int numberOfRowsOnEachPage,
 			String defaultSortColumn) {
-		if (list == null)
+		if (list == null) {
 			list = new ArrayList<T>();
-
+		}
+		
 		this.list = list;
 		this.numberOfRowsOnEachPage = numberOfRowsOnEachPage;
 		ascending = true;
@@ -132,7 +133,7 @@ public class PagedSortableList<T> {
 	/**
 	 * Handles the paging of the list.
 	 * 
-	 * @param event
+	 * @param event the event that has occured
 	 */
 	public void pageing(ActionEvent event) {
 		String way = event.getComponent().getId();
@@ -155,6 +156,10 @@ public class PagedSortableList<T> {
 
 	}
 
+	/**
+	 * Sets the show end attribute
+	 *
+	 */
 	private void setShowEnd() {
 		showEnd = numberOfRowsOnEachPage * pageIndex;
 		if (showEnd > numberOfItems) {
@@ -167,7 +172,7 @@ public class PagedSortableList<T> {
 	 * it should be sorted. It then calls the sort method, which does the actual
 	 * sorting.
 	 * 
-	 * @param event
+	 * @param event the event that has occured
 	 */
 	public void sorting(ActionEvent event) {
 		String column = event.getComponent().getId();
@@ -179,18 +184,15 @@ public class PagedSortableList<T> {
 		}
 
 		lastSortColumn = column;
-
 		setSortColumn(column);
-
 		sort(column, ascending);
-
 	}
 
 	/**
 	 * Sorts the list based on which column and which direction.
 	 * 
-	 * @param column
-	 * @param ascending
+	 * @param column the column to sort
+	 * @param ascending indicates if the column should be sorted ascending or descending
 	 */
 	private void sort(final String column, final boolean ascending) {
 		Comparator comparator = new Comparator() {
@@ -215,8 +217,11 @@ public class PagedSortableList<T> {
 							.compareTo(res1);
 
 				} catch (IllegalAccessException illegalAccess) {
+					// do nothing
 				} catch (InvocationTargetException invocTarget) {
+					// do nothing
 				} catch (Exception general) {
+					// do nothing
 				}
 				return 0;
 			}
@@ -225,61 +230,145 @@ public class PagedSortableList<T> {
 
 	}
 
+	/**
+	 * @return the ascending
+	 */
 	public boolean isAscending() {
 		return ascending;
 	}
 
+	/**
+	 * @param ascending the ascending to set
+	 */
 	public void setAscending(boolean ascending) {
 		this.ascending = ascending;
 	}
 
-	public String getSortColumn() {
-		return sortColumn;
+	/**
+	 * @return the lastSortColumn
+	 */
+	public String getLastSortColumn() {
+		return lastSortColumn;
 	}
 
-	public void setSortColumn(String sortColumn) {
-		this.sortColumn = sortColumn;
+	/**
+	 * @param lastSortColumn the lastSortColumn to set
+	 */
+	public void setLastSortColumn(String lastSortColumn) {
+		this.lastSortColumn = lastSortColumn;
 	}
 
+	/**
+	 * @return the list
+	 */
 	public List<T> getList() {
 		return list;
 	}
 
-	public int getNumberOfRowsOnEachPage() {
-		return numberOfRowsOnEachPage;
+	/**
+	 * @param list the list to set
+	 */
+	public void setList(List<T> list) {
+		this.list = list;
 	}
 
+	/**
+	 * @return the numberOfItems
+	 */
 	public long getNumberOfItems() {
 		return numberOfItems;
 	}
 
-	public int getShowEnd() {
-		return showEnd;
-
+	/**
+	 * @param numberOfItems the numberOfItems to set
+	 */
+	public void setNumberOfItems(long numberOfItems) {
+		this.numberOfItems = numberOfItems;
 	}
 
-	public int getPageIndex() {
-		return pageIndex;
-	}
-
-	public void setPageIndex(int pageIndex) {
-		this.pageIndex = pageIndex;
-	}
-
-	public int getRowIndex() {
-		return rowIndex;
-	}
-
-	public void setRowIndex(int rowIndex) {
-		this.rowIndex = rowIndex;
-	}
-
+	/**
+	 * @return the numberOfPages
+	 */
 	public long getNumberOfPages() {
 		return numberOfPages;
 	}
 
+	/**
+	 * @param numberOfPages the numberOfPages to set
+	 */
 	public void setNumberOfPages(long numberOfPages) {
 		this.numberOfPages = numberOfPages;
 	}
+
+	/**
+	 * @return the numberOfRowsOnEachPage
+	 */
+	public int getNumberOfRowsOnEachPage() {
+		return numberOfRowsOnEachPage;
+	}
+
+	/**
+	 * @param numberOfRowsOnEachPage the numberOfRowsOnEachPage to set
+	 */
+	public void setNumberOfRowsOnEachPage(int numberOfRowsOnEachPage) {
+		this.numberOfRowsOnEachPage = numberOfRowsOnEachPage;
+	}
+
+	/**
+	 * @return the pageIndex
+	 */
+	public int getPageIndex() {
+		return pageIndex;
+	}
+
+	/**
+	 * @param pageIndex the pageIndex to set
+	 */
+	public void setPageIndex(int pageIndex) {
+		this.pageIndex = pageIndex;
+	}
+
+	/**
+	 * @return the rowIndex
+	 */
+	public int getRowIndex() {
+		return rowIndex;
+	}
+
+	/**
+	 * @param rowIndex the rowIndex to set
+	 */
+	public void setRowIndex(int rowIndex) {
+		this.rowIndex = rowIndex;
+	}
+
+	/**
+	 * @return the showEnd
+	 */
+	public int getShowEnd() {
+		return showEnd;
+	}
+
+	/**
+	 * @param showEnd the showEnd to set
+	 */
+	public void setShowEnd(int showEnd) {
+		this.showEnd = showEnd;
+	}
+
+	/**
+	 * @return the sortColumn
+	 */
+	public String getSortColumn() {
+		return sortColumn;
+	}
+
+	/**
+	 * @param sortColumn the sortColumn to set
+	 */
+	public void setSortColumn(String sortColumn) {
+		this.sortColumn = sortColumn;
+	}
+
 
 }
