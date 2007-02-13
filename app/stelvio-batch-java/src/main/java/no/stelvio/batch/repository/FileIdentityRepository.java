@@ -18,8 +18,9 @@ public interface FileIdentityRepository {
 	
 	/**
 	 * Persists a <code>FileIdentity</code> in the underlying persistence store
-	 * @param fileIdentity an instance of a <code>FileIdentity</code> 
+	 * @param fileIdentity an instance of a <code>FileIdentity</code>
+	 * @return the id that uniquely identifies the persisted fileIdentity 
 	 */
-	void save(FileIdentity fileIdentity);
+	long save(FileIdentity fileIdentity);
 	
 }

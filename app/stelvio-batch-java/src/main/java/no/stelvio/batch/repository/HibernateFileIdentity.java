@@ -26,12 +26,15 @@ public class HibernateFileIdentity implements FileIdentityRepository {
 	/**
 	 * {@inheritDoc}
 	 */	
-	public void save(FileIdentity fileIdentity) {
+	public long save(FileIdentity fileIdentity) {
 		if(fileIdentity.getFileIdentityId() != 0){
 			getHibernateTemplate().persist(fileIdentity);
 		}else{
 			getHibernateTemplate().merge(fileIdentity);
-		}		
+		}
+		//Flush to force database update, and consequent primary key generation
+		getHibernateTemplate().flush();
+		return fileIdentity.getFileIdentityId();
 	}
 
 	/**
