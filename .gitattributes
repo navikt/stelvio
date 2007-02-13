@@ -10,8 +10,11 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/AbstractBatch.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/AbstractMessageDrivenBatch.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/BatchStatus.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/BatchDO.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/FileIdentity.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/BatchRepository.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/FileIdentityRepository.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/HibernateBatchRepository.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/HibernateFileIdentity.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/AbstractBatchTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchDOTest.java -text
 app/stelvio-common-java/.classpath -text
