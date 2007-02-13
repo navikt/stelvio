@@ -1,8 +1,11 @@
 package no.stelvio.batch.repository;
 
+import java.util.List;
+
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import no.stelvio.batch.domain.BatchDO;
+import no.stelvio.batch.exception.InvalidBatchEntryException;
 
 /**
  * Implementation of the BatchRepository that uses Hibernate to update the BatchDO.
@@ -24,6 +27,17 @@ public class HibernateBatchRepository implements BatchRepository {
 			getHibernateTemplate().merge(batch);
 		}
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */	
+	public BatchDO findByName(String batchName) throws InvalidBatchEntryException {
+		List batchDos = getHibernateTemplate().findByNamedQueryAndNamedParam("BatchDO.findByName", "batchname", batchName);
+		if(batchDos.size() != 1){
+			throw new InvalidBatchEntryException(batchName);
+		}
+		return (BatchDO) batchDos.get(1);
+	}	
 	
 	/**
 	 * Flushes the changes made through the hibernate template to the database

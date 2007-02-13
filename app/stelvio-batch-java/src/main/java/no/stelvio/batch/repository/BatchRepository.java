@@ -1,6 +1,7 @@
 package no.stelvio.batch.repository;
 
 import no.stelvio.batch.domain.BatchDO;
+import no.stelvio.batch.exception.InvalidBatchEntryException;
 
 /**
  * The BatchRepository is used by batch jobs to update the BatchDO.
@@ -19,4 +20,13 @@ public interface BatchRepository {
 	 *
 	 */
 	public void updateBatch(BatchDO batch);
+	
+	/**
+	 * Retrieves a BatchDO by the unique name
+	 * @param batchName
+	 * @return the BatchDO
+	 * @throws InvalidBatchEntryException if zero, or more than one BatchDO is returned from persistence store
+	 */
+	public BatchDO findByName(String batchName) throws InvalidBatchEntryException;
+	
 }
