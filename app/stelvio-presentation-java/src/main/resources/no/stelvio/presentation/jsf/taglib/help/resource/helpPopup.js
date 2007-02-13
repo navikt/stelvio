@@ -1,9 +1,15 @@
+var win = '';
 function openWindow(url, name, width, height) {
-	// window decoration space
-	width += 32;
-	height += 96;
-	var win = window.open(url, name, 'width=' + width + ', height=' + height +
-				'location=no, menubar=no, status=no, toolbar=no, scrollbars=no, resizable=yes');
-	win.resizeTo(width, height);
-	win.focus();
-};
+	if(!win.closed && win.location) {
+		win.location.href = url;
+	} else {
+		win = window.open(url, name, 'width=' + width + ', height=' + height);
+		if(!win.opener) win.opener = self;
+	}
+	if(win.focus) {
+		win.focus();
+	}
+	return false;
+}
+//
+//	
