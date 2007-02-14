@@ -1,7 +1,6 @@
 package no.nav.domain.pensjon.codestable;
 
 import java.util.Date;
-import java.util.Locale;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -51,11 +50,10 @@ public class HenvendelseTypeCti extends CodesTableItemPeriodic {
 	 * @param decode the decode
 	 * @param fromDate valid from date
 	 * @param toDate valid to date
-	 * @param locale locale for this instance
 	 * @param valid <code>true</code> if this item is valid, <code>false</code> if it's invalid
 	 */
-	public HenvendelseTypeCti(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean valid) {
-		super(code, decode, fromDate, toDate, locale, valid);
+	public HenvendelseTypeCti(String code, String decode, Date fromDate, Date toDate, boolean valid) {
+		super(code, decode, fromDate, toDate, valid);
 	}
 
 }
