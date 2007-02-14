@@ -9,10 +9,11 @@
 	<version>1.0.2-SNAPSHOT</version>
 	<name>stelvio</name>
 	<modules>
-		<module>domain</module>
-		<module>service</module>
 		<module>presentation</module>
+		<module>batch</module>
+		<module>service</module>
 		<module>repository</module>
+		<module>domain</module>
 	</modules>
 
 	<scm>
