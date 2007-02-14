@@ -3,6 +3,7 @@ package no.stelvio.batch.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -17,6 +18,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  */
 @Entity
 @Table(name="T_BATCH")
+@NamedQuery(name="BatchDO.findByName", query="SELECT b FROM BatchDO where b.batchname=:batchname")
 public class BatchDO {
 
 	private static final long serialVersionUID = 6318007808581245609L;
