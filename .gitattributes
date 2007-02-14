@@ -11,6 +11,10 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/AbstractMessageDrivenBatch
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/BatchStatus.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/BatchDO.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/FileIdentity.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/BatchException.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/InvalidBatchEntryException.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/InvalidParameterFormatException.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/NullBatchException.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/BatchRepository.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/FileIdentityRepository.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/HibernateBatchRepository.java -text
