@@ -73,7 +73,6 @@ public class HelpDisplayAreaComponent extends  HtmlPanelGrid {
 		div.setId(HELP_DISPLAY_AREA_ID);
 		
 		this.getFacets().put(FACET_HEADER, headerTextComponent);
-		this.getChildren().add(headerTextComponent);
 		div.getChildren().add(helpTextComponent);
 		this.getChildren().add(div);
 	}
