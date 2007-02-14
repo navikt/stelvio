@@ -321,8 +321,8 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/util/PagedSo
 app/stelvio-presentation-java/src/main/resources/META-INF/faces-config.xml -text
 app/stelvio-presentation-java/src/main/resources/no/stelvio/presentation/jsf/taglib/help/resource/helpPopup.js -text
 app/stelvio-presentation-java/src/main/resources/no/stelvio/presentation/jsf/taglib/help/resource/hjelp.gif -text
-app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/action/MenuActionTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/context/ServletContextAttributeSetterTest.java -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/action/MenuActionTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolverTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/security/JeeSecurityPhaseListenerTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/AbstractPhaselistenerTestCase.java -text

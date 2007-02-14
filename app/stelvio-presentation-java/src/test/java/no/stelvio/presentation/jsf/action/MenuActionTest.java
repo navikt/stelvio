@@ -1,7 +1,7 @@
 /**
  * 
  */
-package no.stelvio.presentation.action;
+package no.stelvio.presentation.jsf.action;
 
 import java.security.Principal;
 import java.util.ArrayList;
