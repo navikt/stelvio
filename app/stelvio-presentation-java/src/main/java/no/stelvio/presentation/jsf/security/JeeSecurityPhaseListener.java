@@ -137,8 +137,8 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 			.getLog(JeeSecurityPhaseListener.class);
 
 	private JeeSecurityObject jeeSecurityObject = null;
-	private ExceptionHandlerFacade exceptionHandler;
 	
+	private ExceptionHandlerFacade exceptionHandler;	
 	private boolean useSessionPageCache = true;
 
 	/**
@@ -176,7 +176,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 
 			} catch (Exception e) {
 
-				exceptionHandler(e, phaseEvent);
+				handleExceptions(e, phaseEvent);
 
 			}
 		}*/
@@ -217,7 +217,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 
 			} catch (Exception e) {
 
-				exceptionHandler(e, phaseEvent);
+				handleExceptions(e, phaseEvent);
 
 			}
 		}
@@ -475,8 +475,12 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 	 *            the PhaseEvent used to obtain information about current
 	 *            request.
 	 */
-	private void exceptionHandler(Exception e, PhaseEvent event) {
-
+	private void handleExceptions(Exception e, PhaseEvent event) {
+		//Notify the architecture that an exception has been caught.
+		if(this.exceptionHandler != null){
+			this.exceptionHandler.handle(e);
+		}
+		
 		if (e instanceof PageSecurityFileNotFoundException) {
 
 			if (log.isDebugEnabled()) {

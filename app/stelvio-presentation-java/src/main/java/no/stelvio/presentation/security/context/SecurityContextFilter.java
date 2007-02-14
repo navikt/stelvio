@@ -41,8 +41,11 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 	private static final String USER_ROLES = "USER_ROLES";
 
 	protected static final Log logger = LogFactory.getLog(SecurityContextFilter.class);
-	protected static final String REDIRECT_TO_AFTER_LOGIN = "";
-
+	protected String startPage;
+	private boolean allowURLManipulation;
+	protected static final String START_PAGE_AFTER_LOGIN = "no.stelvio.presentation.security.START_PAGE"; 
+	protected static final String ALLOW_URL_MANIPULATION = "no.stelvio.presentation.security.ALLOW_URL_MANIPULATION"; 
+	
 	private List<SecurityRole> roller;
 	
 	/**  
@@ -54,14 +57,20 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 		super.initFilterBean();    //To change body of overridden methods use File | Settings | File Templates.
 
 		try {
+			this.startPage = getFilterConfig().getInitParameter(START_PAGE_AFTER_LOGIN);
+			this.allowURLManipulation = getFilterConfig().getInitParameter(ALLOW_URL_MANIPULATION) != null ?
+			getFilterConfig().getInitParameter(ALLOW_URL_MANIPULATION).equalsIgnoreCase("true") : false;
+			
 			URL url = getFilterConfig().getServletContext().getResource("/WEB-INF/web.xml");
 			WebXmlParser parser = new WebXmlParser(url);
 			WebAppRoles roles = parser.getWebAppRoles();
 			roller = roles.getSecurityRoles();
 
 			if (logger.isDebugEnabled()) {
+				logger.debug("Initparameter " + ALLOW_URL_MANIPULATION + " has been set to:" + this.allowURLManipulation);
+				logger.debug("Initparameter " + START_PAGE_AFTER_LOGIN + " has been set to:" + this.startPage);
+				
 				Iterator iterator = roles.getSecurityRolesIterator();
-
 				while (iterator.hasNext()) {
 					SecurityRole element = (SecurityRole) iterator.next();
 					logger.debug("Get role from web.xml <security-role> element: " + element.getRoleName());
@@ -100,7 +109,9 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 
 			if (logger.isDebugEnabled()) {
 				logger.debug("User on request:" + req.getRemoteUser());
-				logger.debug("User on SecurityContext:" + SecurityContextHolder.currentSecurityContext().getUserId());
+				if(SecurityContextHolder.currentSecurityContext() != null){
+					logger.debug("User on SecurityContext:" + SecurityContextHolder.currentSecurityContext().getUserId());
+				}
 			}
 
 			// Delegate processing to the next filter or resource in the chain
@@ -173,8 +184,9 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 	 * @param session the HttpSession with attribute describing where to redirect to after authentication
 	 */
 	private void redirectAfterLogin(HttpSession session) {
-		if (session != null) {
-			session.setAttribute(Constants.JSFPAGE_TOGO_AFTER_AUTHENTICATION, REDIRECT_TO_AFTER_LOGIN);
+		if (session != null && !this.allowURLManipulation) {
+			this.startPage = this.startPage == null ? "" : this.startPage;
+			session.setAttribute(Constants.JSFPAGE_TOGO_AFTER_AUTHENTICATION, this.startPage);
 		}
 	}
 
