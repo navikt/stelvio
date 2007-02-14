@@ -13,6 +13,18 @@ Module stelvio-common-java
 * Changed implementations of CodesTable and CodesTablePeriodic that potentially improves performance (decreased uses of loops)
 * getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to DecodeNotFoundException
 
+Module stelvio-presentation-java
+* Components for help taglib has been added. The taglib consist of three components: HelpDisplayAreaComponent,
+  HelpInPageComponent and HelpPopUpComponent. These components also have a common HelpUtils class, with package locale
+  utility metodes used by the help components. Resources for these components has been added to src/main/resources. 
+* Added two classes for handling resources in pages, StelvioResourceHandler and StelvioResourceLoader. These are used by
+  the help components.
+* Added a faces-config.xml with definitions of the custom stelvio components under src/main/resources/META-INF
+* Removed MenuComponent and MenuItemComponent. The menus used in stelvio should be based on the tomahawk panelNavigation2 
+  component.
+* Added a custom action class for fetching menu items and convert them into panelnavigation items used by the 
+  panelNavigation2 component.
+
 Changes in version 1.0.1 (17.1.2007)
 ------------------------------------
 
