@@ -29,6 +29,10 @@ import org.apache.myfaces.custom.div.Div;
  */
 public class HelpDisplayAreaComponent extends  HtmlPanelGrid {
 
+	// 
+	private static final String ATTRIBUTE_HEADING_TEXT = "headingText";
+	private static final String ATTRIBUTE_DEFAULT_TEXT = "defaultText";
+
 	private static final String FACET_HEADER = "header";
 	private static final String HELP_DISPLAY_AREA_ID = "no_stelvio_HelpDisplayAreaComponent_ID";
 
@@ -57,8 +61,8 @@ public class HelpDisplayAreaComponent extends  HtmlPanelGrid {
 	 */
 	@Override
 	public void encodeBegin(FacesContext context) throws IOException {
-		headerTextComponent.setValue(headingText);
-		helpTextComponent.setValue(defaultText);
+		headerTextComponent.setValue(getHeadingText());
+		helpTextComponent.setValue(getDefaultText());
 		super.encodeBegin(context);
 	}
 	
@@ -81,6 +85,9 @@ public class HelpDisplayAreaComponent extends  HtmlPanelGrid {
 	 * @return the headingText
 	 */
 	public String getHeadingText() { 
+		if(getValueBinding(ATTRIBUTE_HEADING_TEXT) != null) {
+			headingText = (String) getValueBinding(ATTRIBUTE_HEADING_TEXT).getValue(FacesContext.getCurrentInstance()); 
+		}
 		return headingText; 
 	}
 
@@ -95,6 +102,9 @@ public class HelpDisplayAreaComponent extends  HtmlPanelGrid {
 	 * @return the defaultText
 	 */
 	public String getDefaultText() {
+		if(getValueBinding(ATTRIBUTE_DEFAULT_TEXT) != null) {
+			defaultText = (String) getValueBinding(ATTRIBUTE_DEFAULT_TEXT).getValue(FacesContext.getCurrentInstance()); 
+		}
 		return defaultText;
 	}
 

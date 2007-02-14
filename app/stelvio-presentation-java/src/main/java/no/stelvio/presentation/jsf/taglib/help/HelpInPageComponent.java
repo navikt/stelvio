@@ -8,8 +8,6 @@ import java.util.List;
 import javax.faces.component.UIComponent;
 import javax.faces.component.html.HtmlGraphicImage;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
-import javax.faces.webapp.UIComponentTag;
 
 import no.stelvio.domain.cm.Content;
 
@@ -39,6 +37,16 @@ import org.apache.myfaces.util.ViewIterator;
  */
 public class HelpInPageComponent extends HtmlGraphicImage {
 
+	/**
+	 * 
+	 */
+	private static final String ATTRIBUTE_KEY = "key";
+
+	/**
+	 * 
+	 */
+	private static final String ATTRIBUTE_TEXT = "text";
+
 	protected final Log log = LogFactory.getLog(this.getClass());
 	
 	/**
@@ -66,7 +74,7 @@ public class HelpInPageComponent extends HtmlGraphicImage {
 	public void encodeBegin(FacesContext context) throws IOException {
 		
 		HelpUtils.addHelpIconUrl(context, this, getUrl());
-		createInPageLink(HelpUtils.getHelpContent(key));
+		createInPageLink(HelpUtils.getHelpContent(getKey()));
 
 		super.encodeBegin(context);
 	}
@@ -81,11 +89,11 @@ public class HelpInPageComponent extends HtmlGraphicImage {
 	 * is fetched from local attribute values 
 	 */
 	private void createInPageLink(Content helpContent) {
-		String helpText = null;
+		String helpText = "";
 		if(helpContent != null) {
 			helpText = helpContent.getText();
-		} else if(text != null) {
-			helpText = getHelpTextValue();
+		} else {
+			helpText = getText();
 		}
 		
 		// the id of the display area is required for the getElementById() javascript function
@@ -102,24 +110,6 @@ public class HelpInPageComponent extends HtmlGraphicImage {
 		}
 	}
 	
-	/**
-	 * Finds the help text from the value field of this component. The
-	 * value field can be a value-binding expression
-	 * 
-	 * @return the helpText
-	 */
-	private String getHelpTextValue() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		String helpText = null;
-		if(UIComponentTag.isValueReference(text)) {
-			ValueBinding vb = getValueBinding(text);
-			helpText = vb != null ? (String) vb.getValue(context) : null;
-		} else {
-			helpText = text;
-		}
-		
-		return helpText;
-	}
 
 	/**
 	 * Find the client id for where to place the help information. The id is used
@@ -162,6 +152,9 @@ public class HelpInPageComponent extends HtmlGraphicImage {
 	 * @return the key
 	 */
 	public String getKey() {
+		if(getValueBinding(ATTRIBUTE_KEY) != null) {
+			key = (String) getValueBinding(ATTRIBUTE_KEY).getValue(FacesContext.getCurrentInstance());
+		}
 		return key;
 	}
 
@@ -176,6 +169,10 @@ public class HelpInPageComponent extends HtmlGraphicImage {
 	 * @return the value
 	 */
 	public String getText() {
+
+		if(getValueBinding(ATTRIBUTE_TEXT) != null ) {
+			text = (String) getValueBinding(ATTRIBUTE_TEXT).getValue(FacesContext.getCurrentInstance());
+		}
 		return text;
 	}
 

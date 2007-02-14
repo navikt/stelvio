@@ -46,22 +46,34 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 
 	protected final Log log = LogFactory.getLog(this.getClass());
 
-	// constant values used in this component
+	// name of target used for popup window
 	private static final String HELP_TARGET = "helpTarget";
+	
+	// name of file where the javascript is located
 	private static final String JS_POPUP_HELP = "helpPopup.js";
+	
+	// 
 	private static final String JS_ONCLICK_POPUP_HELP = "javascript:openWindow(''{0}'', ''{1}'', {2}, {3});";
 	private static final String JAVASCRIPT_ENCODED = 
 							"no.stelvio.presentation.jsf.taglib.help.HelpPopUpLinkComponent.JAVASCRIPT_ENCODED";
 	
 	private static final String DEFAULT_WINDOW_WIDTH = "800";
 	private static final String DEFAULT_WINDOW_HEIGHT = "540";
+
+	// Attribute names
+	private static final String ATTRIBUTE_HELP_URL 		= "helpUrl";
+	private static final String ATTRIBUTE_IMAGE_URL 	= "imageUrl";
+	private static final String ATTRIBUTE_TEXT_ONLY 	= "textOnly";
+	private static final String ATTRIBUTE_KEY 			= "key";
+	private static final String ATTRIBUTE_LINK_TEXT 	= "linkText";
 	
-	// attribute for this component
+	// attributes for this component
 	private String key;
 	private String helpUrl;
 	private String imageUrl;
 	private boolean textOnly;
 	private String linkText;
+	
 	
 	/**
 	 * Render this component, before rendering, the help icon and url
@@ -75,16 +87,16 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 	@Override
 	public void encodeBegin(FacesContext context) throws IOException {
 		
-		if(!textOnly) {
+		if(!isTextOnly()) {
 			HtmlGraphicImage image = new HtmlGraphicImage();
-			HelpUtils.addHelpIconUrl(context, image, imageUrl);
+			HelpUtils.addHelpIconUrl(context, image, getImageUrl());
 			this.getChildren().add(image);
 		} else {
 			HtmlOutputText text = new HtmlOutputText();
-			text.setValue(linkText);
+			text.setValue(getLinkText());
 			this.getChildren().add(text);
 		}
-		createPopupLink(HelpUtils.getHelpContent(key));
+		createPopupLink(HelpUtils.getHelpContent(getKey()));
 		super.encodeBegin(context);
 	}
 
@@ -95,20 +107,25 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 	 * @param helpContent The Content object to use for the link
 	 */
 	private void createPopupLink(Content helpContent) {
+		String url = null;
 		if(helpContent != null) {
-			helpUrl = helpContent.getUrl();
-		} 
+			url = helpContent.getUrl();
+		} else {
+			url = getHelpUrl();
+		}
 		addPopupScriptToPage();
 		
-		this.setValue(helpUrl);
+		this.setValue(url);
 		this.setTarget(HELP_TARGET);
 		this.setOnclick(MessageFormat.format(JS_ONCLICK_POPUP_HELP, 
-											helpUrl, 
+											url, 
 											HELP_TARGET, 
 											DEFAULT_WINDOW_WIDTH, 
 											DEFAULT_WINDOW_HEIGHT));
 	}
 
+	
+	
 	
 	/**
 	 * A resource handler is used to queue the javascript for inclusion in the
@@ -129,8 +146,8 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 		AddResource addResource = AddResourceFactory.getInstance(context);
 		addResource.addJavaScriptAtPosition(context, 
 											AddResource.HEADER_BEGIN, 
-											resourceHandler, false);
-
+											resourceHandler, true);
+		
 		context.getExternalContext().getRequestMap().put(JAVASCRIPT_ENCODED, Boolean.TRUE);
 	}
 
@@ -140,6 +157,9 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 	 * @return the key
 	 */
 	public String getKey() {
+		if(getValueBinding(ATTRIBUTE_KEY) != null) {
+			key = (String) getValueBinding(ATTRIBUTE_KEY).getValue(FacesContext.getCurrentInstance()); 
+		}
 		return key;
 	}
 
@@ -156,6 +176,10 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 	 * @return the helpUrl
 	 */
 	public String getHelpUrl() {
+		if(getValueBinding(ATTRIBUTE_HELP_URL) != null) {
+			helpUrl = (String) getValueBinding(ATTRIBUTE_HELP_URL).getValue(FacesContext.getCurrentInstance()); 
+		}
+
 		return helpUrl;
 	}
 
@@ -170,6 +194,9 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 	 * @return the imageUrl
 	 */
 	public String getImageUrl() {
+		if(getValueBinding(ATTRIBUTE_IMAGE_URL) != null) {
+			imageUrl = (String) getValueBinding(ATTRIBUTE_IMAGE_URL).getValue(FacesContext.getCurrentInstance()); 
+		}
 		return imageUrl;
 	}
 
@@ -184,6 +211,9 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 	 * @return the linkText
 	 */
 	public String getLinkText() {
+		if(getValueBinding(ATTRIBUTE_LINK_TEXT) != null) {
+			linkText = (String) getValueBinding(ATTRIBUTE_LINK_TEXT).getValue(FacesContext.getCurrentInstance()); 
+		}
 		return linkText;
 	}
 
@@ -198,6 +228,10 @@ public class HelpPopUpComponent extends HtmlOutputLink {
 	 * @return the textOnly
 	 */
 	public boolean isTextOnly() {
+		if(getValueBinding(ATTRIBUTE_TEXT_ONLY) != null) {
+			textOnly = ((Boolean) getValueBinding(ATTRIBUTE_TEXT_ONLY).getValue(FacesContext.getCurrentInstance())).booleanValue(); 
+		}
+
 		return textOnly;
 	}
 
