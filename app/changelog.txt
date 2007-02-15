@@ -7,9 +7,9 @@ Changes in version 1.0.2 (15.2.2007)
 ------------------------------------
 
 General
-* Upgraded Spring to 2.0.2
-* Upgraded Spring WebFlow to 1.0.1
-* Upgraded Spring Modules Validation to 0.7
+* Upgraded Spring to version 2.0.2
+* Upgraded Spring WebFlow to version 1.0.1
+* Upgraded Spring Modules Cache to version 0.7
 
 Module stelvio-common-java
 * Added support for validating that a code is present in a codes table [Defect #265]
@@ -36,6 +36,7 @@ Module stelvio-batch-java
 Module stelvio-service-java
 
 Module stelvio-presentation-java
+* Upgraded Spring Modules Validation to version 0.7
 * Components for help taglib has been added. The taglib consist of three components: HelpDisplayAreaComponent,
   HelpInPageComponent and HelpPopUpComponent. These components also have a common HelpUtils class, with package locale
   utility metodes used by the help components. Resources for these components has been added to src/main/resources. 
@@ -50,6 +51,7 @@ Module stelvio-presentation-java
 Star example
 * Corrected package structure (no.nav... -> no.stelvio.star.example...)
 * Added consumer layer
+
 
 Changes in version 1.0.1 (17.1.2007)
 ------------------------------------
