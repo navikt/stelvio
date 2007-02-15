@@ -17,9 +17,9 @@ public class HenvendelseStatisticsResponse extends ServiceResponse {
 	}
 
 	/**
-	 * {@inheritDoc HenvendelseStatisticsRequest#getCriteria()}
+	 * {@inheritDoc HenvendelseStatisticsRequest#getStatistics()}
 	 */
-	public HenvendelseStatistics getCriteria() {
+	public HenvendelseStatistics getStatistics() {
 		return henvendelseStatistics;
 	}
 }
