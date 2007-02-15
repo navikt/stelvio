@@ -96,7 +96,7 @@ public final class ErrorCodesUtil {
 			if (start == -1) {
 				return null;
 			} else {
-				start = start + 3;
+				start += 3;
 				int end = line.indexOf("*/");
 				if (end == -1) {
 					return null;
