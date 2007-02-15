@@ -1,6 +1,5 @@
 package no.stelvio.common.util;
 
-import no.stelvio.common.util.ReflectUtil;
 import junit.framework.TestCase;
 
 /**

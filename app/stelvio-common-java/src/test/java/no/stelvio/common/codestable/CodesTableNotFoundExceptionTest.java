@@ -3,7 +3,6 @@ package no.stelvio.common.codestable;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import no.stelvio.common.codestable.CodesTableNotFoundException;
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 /**

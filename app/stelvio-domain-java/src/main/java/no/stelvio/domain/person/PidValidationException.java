@@ -1,7 +1,6 @@
 package no.stelvio.domain.person;
 
 import no.stelvio.common.error.FunctionalUnrecoverableException;
-import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * Exception thrown as a result of Pid validation failure.

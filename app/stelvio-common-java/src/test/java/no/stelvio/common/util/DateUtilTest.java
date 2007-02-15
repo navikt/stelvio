@@ -6,8 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import no.stelvio.common.util.DateUtil;
-
 import junit.framework.TestCase;
 
 /**

@@ -1,14 +1,13 @@
 package no.stelvio.common.security.authorization.method;
 
-import static org.junit.Assert.*;
-
-import no.stelvio.common.security.authorization.method.AlwaysAffirmativeVoter;
-
-import org.acegisecurity.vote.AccessDecisionVoter;
-import org.junit.Before;
-import org.junit.Test;
 import org.acegisecurity.ConfigAttributeDefinition;
 import org.acegisecurity.SecurityConfig;
+import org.acegisecurity.vote.AccessDecisionVoter;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+
 public class AlwaysAffirmativeVoterTest {
 
 	private AccessDecisionVoter voter;

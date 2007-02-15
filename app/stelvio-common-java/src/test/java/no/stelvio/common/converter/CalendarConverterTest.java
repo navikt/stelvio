@@ -3,11 +3,8 @@ package no.stelvio.common.converter;
 import java.util.Calendar;
 import java.util.Date;
 
-import no.stelvio.common.converter.CalendarConverter;
-
-import org.apache.commons.beanutils.ConversionException;
-
 import junit.framework.TestCase;
+import org.apache.commons.beanutils.ConversionException;
 
 /**
  * 

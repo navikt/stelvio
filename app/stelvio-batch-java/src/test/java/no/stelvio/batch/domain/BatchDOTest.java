@@ -1,6 +1,5 @@
 package no.stelvio.batch.domain;
 
-import no.stelvio.batch.domain.BatchDO;
 import junit.framework.TestCase;
 
 /**

@@ -1,14 +1,11 @@
 package no.stelvio.common.security.authorization.method;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
 import java.util.ArrayList;
-
-import no.stelvio.common.security.authorization.method.AnnotationAttributesMapping;
+import java.util.List;
 
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.SecurityConfig;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class AnnotationAttributesMappingTest {

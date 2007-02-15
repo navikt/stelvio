@@ -6,9 +6,6 @@ import java.net.URL;
 import java.util.Properties;
 
 import junit.framework.TestCase;
-
-import no.stelvio.common.log.factory.Log4jLogFactory;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.impl.Log4JLogger;
