@@ -11,11 +11,11 @@ package no.nav.domain.pensjon.henvendelse;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import no.nav.domain.pensjon.person.Fodselsnummer;
+import no.stelvio.domain.person.Pid;
 
 public class Henvendelse implements Serializable  {
 	
-	private Fodselsnummer fodselsnummer;
+	private Pid fodselsnummer;
 	
     private String beskrivelse;
     private String enhetstype;
@@ -56,12 +56,11 @@ public class Henvendelse implements Serializable  {
     }
     
     public Henvendelse( String fodselsnummer ) {
-    	this.fodselsnummer = new Fodselsnummer( fodselsnummer );
+    	this.fodselsnummer = new Pid( fodselsnummer );
     }
 
-    public Fodselsnummer getFodselsnummer()
-    {
-    	return fodselsnummer;
+    public Pid getFodselsnummer() {
+	    return fodselsnummer;
     }
     
     public String getBeskrivelse() {

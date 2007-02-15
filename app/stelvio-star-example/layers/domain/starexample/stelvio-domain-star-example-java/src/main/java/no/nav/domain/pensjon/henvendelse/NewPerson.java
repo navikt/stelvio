@@ -11,10 +11,10 @@ package no.nav.domain.pensjon.henvendelse;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import no.nav.domain.pensjon.person.Fodselsnummer;
+import no.stelvio.domain.person.Pid;
 
 public class NewPerson implements Serializable {
-    private Fodselsnummer fnr;
+    private Pid fnr;
     private String kommentar;
     private Calendar kommentarDato;
     private String kommentarIdent;
@@ -23,11 +23,11 @@ public class NewPerson implements Serializable {
     public NewPerson() {
     }
 
-    public Fodselsnummer getFnr() {
+    public Pid getPid() {
         return fnr;
     }
 
-    public void setFnr(Fodselsnummer fnr) {
+    public void setPid(Pid fnr) {
         this.fnr = fnr;
     }
 
