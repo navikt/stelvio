@@ -9,7 +9,7 @@
 	</bean>
 
 	<bean id="prs.start.form" class="org.springframework.webflow.action.FormAction">
-		<property name="formObjectName" value="prsStartForm"/>
+		<property name="formObjectName" value="startForm"/>
 		<property name="formObjectClass" value="no.stelvio.presentation.star.example.start.StartForm"/>
 	</bean>
 </beans>

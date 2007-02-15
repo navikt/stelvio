@@ -19,7 +19,7 @@
 	<action-state id="retrieveStatistics">
 		<bean-action bean="prs.henvendelse.overviewAction" method="hentStatistikk">
 			<method-arguments>
-				<argument expression="flowScope.prsHenvendelseOverviewForm"/>
+				<argument expression="flowScope.overviewOfHenvendelserForm"/>
 			</method-arguments>
 			<method-result name="flowScope.henvendelseStatistics"/>
 		</bean-action>

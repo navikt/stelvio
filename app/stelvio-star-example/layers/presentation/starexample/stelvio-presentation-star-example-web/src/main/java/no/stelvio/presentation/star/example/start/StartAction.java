@@ -26,7 +26,7 @@ public class StartAction extends MultiAction {
 	 * @return success if everything works ok, throws exception otherwise.
 	 */
 	public Event search(RequestContext context) {
-		StartForm form = (StartForm) context.getFlowScope().get("prsStartForm");
+		StartForm form = (StartForm) context.getFlowScope().get("startForm");
 		log.debug("form.getSaksbehandlernr(): " + form.getSaksbehandlernr());
 		log.debug("saksbehandlerService = " + saksbehandlerService);
 

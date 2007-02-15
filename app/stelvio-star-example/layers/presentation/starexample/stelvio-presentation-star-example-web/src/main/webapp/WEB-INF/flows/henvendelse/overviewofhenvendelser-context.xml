@@ -7,7 +7,7 @@
 	<!-- TODO check if jsf- and/or swf-scopes can be used -->
 	<bean id="prs.henvendelse.overviewAction"
 	      class="no.stelvio.presentation.star.example.henvendelse.OverviewOfHenvendelserAction">
-		<property name="formObjectName" value="prsHenvendelseOverviewForm"/>
+		<property name="formObjectName" value="overviewOfHenvendelserForm"/>
 		<property name="formObjectClass" value="no.stelvio.presentation.star.example.henvendelse.OverviewOfHenvendelserForm"/>
 		<property name="validator">
 			<ref local="prs.henvendelse.overviewValidator"/>
@@ -32,8 +32,8 @@
 		<property name="valang">
 			<value>
 				<![CDATA[
-			    	{ valgtTidsperiode : checkTidsperiode(?) == true : 'Ugyldig tidsperiode' : 'oversiktOverHenvendelser.ugyldigTidsperiode' }			    
-				   	{ valgtSok : checkParameters(?, valgtFagomrade) == true : 'Ugyldig sok' : 'oversiktOverHenvendelser.ugyldigSok' }
+			    	{ chosenTidsperiode : checkTidsperiode(?) == true : 'Ugyldig tidsperiode' : 'overviewOfHenvendelser.illegalTidsperiode' }
+				   	{ chosenSearch : checkParameters(?, chosenFagomrade) == true : 'Ugyldig sok' : 'overviewOfHenvendelser.illegalSearch' }
 			    ]]>
 			</value>
 		</property>

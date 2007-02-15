@@ -38,7 +38,7 @@ public class OverviewOfHenvendelserAction extends FormAction {
 		return searchHenvendelseService.genererHenvendelseStatistikk(new SearchHenvendelseRequest(crit)).getCriteria();
 	}
 
-	public void setSokHenvendelse(SearchHenvendelseServiceBi searchHenvendelseService) {
+	public void setSearchHenvendelseService(SearchHenvendelseServiceBi searchHenvendelseService) {
 		this.searchHenvendelseService = searchHenvendelseService;
 	}
 

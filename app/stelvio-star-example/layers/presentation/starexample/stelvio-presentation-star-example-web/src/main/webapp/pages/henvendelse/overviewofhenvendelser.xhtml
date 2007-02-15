@@ -17,7 +17,7 @@
 	<ui:define name="body">
 		<div id="layer_hoved" style="width: 850px; height: 500px; left: 150px; top: 100px">
 			<div>
-				<form jsfc="h:form" id="retrieveHenvendelseStatistics" rendered="true" action="submit">
+				<form jsfc="h:form" id="retrieveHenvendelseStatistics" rendered="true">
 					<input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
 					<p class="spacer_tabeller"/>
 					<h3>
@@ -29,9 +29,9 @@
 								<td class="standard_data_tabell_data" width="310">&#160;
 									<h:outputText value="#{messageSource['overviewOfHenvendelser.fagomrade']}:"/>
 									&#160;
-									<t:selectOneMenu id="chosenFagomrade" value="#{flowScope.prsHenvendelseOverviewForm.chosenFagomrade}"
+									<t:selectOneMenu id="chosenFagomrade" value="#{flowScope.overviewOfHenvendelserForm.chosenFagomrade}"
 																	 converter="fagomradeEnumConverter" tabindex="3">
-										<f:selectItems value="#{flowScope.prsHenvendelseOverviewForm.fagomrader}"/>
+										<f:selectItems value="#{flowScope.overviewOfHenvendelserForm.fagomrader}"/>
 									</t:selectOneMenu>
 									<nav:errorMessage form="retrieveHenvendelseStatistics" for="chosenFagomrade"/>
 								</td>
@@ -39,10 +39,10 @@
 									<h:outputText value="#{messageSource['overviewOfHenvendelser.tidsperiode']}:"/>
 									&#160;
 									<t:selectOneMenu id="chosenTidsperiode"
-																	 value="#{flowScope.prsHenvendelseOverviewForm.chosenTidsperiode}"
+																	 value="#{flowScope.overviewOfHenvendelserForm.chosenTidsperiode}"
 																	 converter="tidsperiodeEnumConverter" tabindex="3">
 										<f:selectItem itemValue="#{messageSource['overviewOfHenvendelser.chooseTidsperiode']}:"/>
-										<f:selectItems value="#{flowScope.prsHenvendelseOverviewForm.tidsperioder}"/>
+										<f:selectItems value="#{flowScope.overviewOfHenvendelserForm.tidsperioder}"/>
 									</t:selectOneMenu>
 									<nav:errorMessage form="retrieveHenvendelseStatistics" for="chosenTidsperiode"/>
 								</td>
@@ -56,9 +56,9 @@
 					</h3>
 
 					<t:selectOneRadio id="chosenSearch" layout="spread"
-														value="#{flowScope.prsHenvendelseOverviewForm.chosenSearch}"
+														value="#{flowScope.overviewOfHenvendelserForm.chosenSearch}"
 														converter="spesifikasjonEnumConverter">
-						<f:selectItems value="#{flowScope.prsHenvendelseOverviewForm.searchAlternative}"/>
+						<f:selectItems value="#{flowScope.overviewOfHenvendelserForm.searchAlternative}"/>
 					</t:selectOneRadio>
 					<table class="standard_data_tabell" cellspacing="0" cellpadding="0" width="849" border="0">
 						<tbody>
@@ -75,7 +75,7 @@
 									<t:radio for="chosenSearch" index="1"/>
 								</td>
 								<td class="standard_data_tabell_label" height="25" width="609">&#160;
-									<h:outputText value="#{messageSource['oversiktOverHenvendelser.channel']}"/>
+									<h:outputText value="#{messageSource['overviewOfHenvendelser.channel']}"/>
 									&#160;
 								</td>
 							</tr>
