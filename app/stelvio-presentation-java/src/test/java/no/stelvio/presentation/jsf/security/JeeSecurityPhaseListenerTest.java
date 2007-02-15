@@ -22,14 +22,11 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 	
 	//private MockExternalContextExtended externalContext = null;
 	
-	public JeeSecurityPhaseListenerTest(String name){
-		super(name);
-		listener = new JeeSecurityPhaseListener();
-	}
 	public void setUp()throws Exception{
 		super.setUp();
-		 
+		listener = new JeeSecurityPhaseListener();
 	}
+	
 	public void tearDown()throws Exception{
 		super.tearDown();
 	}

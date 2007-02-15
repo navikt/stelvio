@@ -27,14 +27,11 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 	
 	//private MockExternalContextExtended externalContext = null;
 	
-	public JeeSecurityObjectTest(String name){
-		super(name);
-		secObject = new JeeSecurityObject();
-	}
 	public void setUp()throws Exception{
 		super.setUp();
-		 
+		secObject = new JeeSecurityObject();
 	}
+	
 	public void tearDown()throws Exception{
 		super.tearDown();
 	}
