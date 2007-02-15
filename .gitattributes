@@ -571,6 +571,7 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/META-INF/ejb-jar.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/META-INF/ibm-ejb-jar-bnd.xmi -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/META-INF/ibm_ejbext.properties -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/log4j.properties -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/star/example/codestable/CodesTableFactoryBean.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/star/example/codestable/CodesTableFactoryLocal.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/ejbModule/no/stelvio/service/star/example/codestable/CodesTableFactoryLocalHome.java -text
