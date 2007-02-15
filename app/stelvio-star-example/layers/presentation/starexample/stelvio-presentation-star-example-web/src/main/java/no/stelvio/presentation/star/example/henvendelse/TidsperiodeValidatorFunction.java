@@ -7,10 +7,10 @@ import no.stelvio.domain.star.example.henvendelse.Tidsperiode;
 
 /**
  * Usage: checkTidsperiode(Tidsperiode)
+ * 
  * @author personff564022aedd
  */
 public class TidsperiodeValidatorFunction extends AbstractFunction {
-
 	public TidsperiodeValidatorFunction(Function[] args, int line, int column) {
 		super(args, line, column);
 		definedExactNumberOfArguments(1);
@@ -18,6 +18,6 @@ public class TidsperiodeValidatorFunction extends AbstractFunction {
 
 	@Override
 	protected Object doGetResult(Object target) throws Exception {
-		return Boolean.valueOf(!Tidsperiode.IKKE_SATT.equals((Tidsperiode)getArguments()[0].getResult(target)));
+		return !Tidsperiode.IKKE_SATT.equals(getArguments()[0].getResult(target));
 	}
 }

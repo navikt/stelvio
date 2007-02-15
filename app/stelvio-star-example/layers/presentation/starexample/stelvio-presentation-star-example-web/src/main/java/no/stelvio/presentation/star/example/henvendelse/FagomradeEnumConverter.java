@@ -13,16 +13,16 @@ import no.stelvio.domain.star.example.henvendelse.Fagomrade;
 public class FagomradeEnumConverter implements Converter {
 
 	/**
-	 * @see javax.faces.convert.Converter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)
+	 * Converts from a String to a Fagomrade.
 	 */
 	public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
 		return Fagomrade.valueOf(value);
 	}
 
 	/**
-	 * @see javax.faces.convert.Converter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)
+	 * Converts from a Fagomrade to a String.
 	 */
 	public String getAsString(FacesContext context, UIComponent component, Object value) throws ConverterException {
-		return ((Fagomrade)value).toString();
+		return value.toString();
 	}
 }

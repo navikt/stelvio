@@ -11,5 +11,5 @@ import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerResponse;
  *
  */
 public interface SaksbehandlerServiceBi {
-	SaksbehandlerResponse hentSaksbehandler(SaksbehandlerRequest request) throws PersonNotFoundException;
+	SaksbehandlerResponse hentSaksbehandler(SaksbehandlerRequest request) throws SaksbehandlerNotFoundException;
 }

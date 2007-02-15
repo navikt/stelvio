@@ -11,11 +11,20 @@ import no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi;
 import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerRequest;
 import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerResponse;
 
-
+/**
+ * Starts up by loading the saksbehandler chosen on the web page.
+ */
 public class StartAction extends MultiAction {
 	private static final Log log = LogFactory.getLog(StartAction.class);
 	private SaksbehandlerServiceBi saksbehandlerService;
 
+	/**
+	 * Searches for the saksbehandler chosen on the web page and sets it in the session.
+	 * TODO: should not be set on session directly; use architecture component for this.
+	 *
+	 * @param context the RequestContext.
+	 * @return success if everything works ok, throws exception otherwise.
+	 */
 	public Event search(RequestContext context) {
 		StartForm form = (StartForm) context.getFlowScope().get("prsStartForm");
 		log.debug("form.getSaksbehandlernr(): " + form.getSaksbehandlernr());

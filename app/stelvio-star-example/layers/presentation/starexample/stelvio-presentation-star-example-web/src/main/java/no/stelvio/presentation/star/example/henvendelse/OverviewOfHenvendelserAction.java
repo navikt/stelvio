@@ -31,7 +31,7 @@ public class OverviewOfHenvendelserAction extends FormAction {
 		// TODO enhetId
 		HenvendelseStatisticsCriteria crit =
 				new HenvendelseStatisticsCriteria(
-						"enhetsid", form.getValgtTidsperiode(), form.getValgtFagomrade(), form.getValgtSok());
+						"enhetsid", form.getChosenTidsperiode(), form.getChosenFagomrade(), form.getChosenSearch());
 
 		log.debug("CodesTable HenvendelseTypeCti: " +
 				codesTableManager.getCodesTablePeriodic(HenvendelseTypeCti.class));

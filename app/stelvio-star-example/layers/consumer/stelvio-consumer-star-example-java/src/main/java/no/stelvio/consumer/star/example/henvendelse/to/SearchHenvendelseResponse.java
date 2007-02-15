@@ -4,12 +4,16 @@ import no.stelvio.common.transferobject.ServiceResponse;
 import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistics;
 
 /**
+ * The response from calling search henvendelse.
+ * 
  * @author personf8e9850ed756, Accenture
  */
 public class SearchHenvendelseResponse extends ServiceResponse {
 	private HenvendelseStatistics henvendelseStatistics;
 
 	/**
+	 * Constructs a new instance.
+	 * 
 	 * @param henvendelseStatisticsCriteria critera to be added in the new instance
 	 */
 	public SearchHenvendelseResponse(HenvendelseStatistics henvendelseStatisticsCriteria) {
@@ -17,7 +21,9 @@ public class SearchHenvendelseResponse extends ServiceResponse {
 	}
 
 	/**
-	 * {@inheritDoc SearchHenvendelseRequest#getCriteria()}
+	 * Returns the value of criteria.
+	 *
+	 * @return value for criteria.
 	 */
 	public HenvendelseStatistics getCriteria() {
 		return henvendelseStatistics;

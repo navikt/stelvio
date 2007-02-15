@@ -15,39 +15,39 @@ import no.stelvio.domain.star.example.henvendelse.Tidsperiode;
  */
 public class OverviewOfHenvendelserForm {
 
-	private Fagomrade valgtFagomrade;
+	private Fagomrade chosenFagomrade;
 	private List<SelectItem> fagomrader;
-	private Tidsperiode valgtTidsperiode;
+	private Tidsperiode chosenTidsperiode;
 	private List<SelectItem> tidsperioder;
-	private Spesifikasjon valgtSok;
-	private List<SelectItem> sokeAlternativ;
+	private Spesifikasjon chosenSearch;
+	private List<SelectItem> searchAlternative;
 	
 	public OverviewOfHenvendelserForm() {
-		sokeAlternativ = new ArrayList<SelectItem>();
-		sokeAlternativ.add(new SelectItem(Spesifikasjon.ANTALL, ""));
-		sokeAlternativ.add(new SelectItem(Spesifikasjon.GRUNN, ""));
-		sokeAlternativ.add(new SelectItem(Spesifikasjon.KANAL, ""));
-		sokeAlternativ.add(new SelectItem(Spesifikasjon.TYPE, ""));
-		valgtSok = Spesifikasjon.ANTALL;
+		searchAlternative = new ArrayList<SelectItem>();
+		searchAlternative.add(new SelectItem(Spesifikasjon.ANTALL, ""));
+		searchAlternative.add(new SelectItem(Spesifikasjon.GRUNN, ""));
+		searchAlternative.add(new SelectItem(Spesifikasjon.KANAL, ""));
+		searchAlternative.add(new SelectItem(Spesifikasjon.TYPE, ""));
+		chosenSearch = Spesifikasjon.ANTALL;
 		
 		fagomrader = new ArrayList<SelectItem>();
 		fagomrader.add(new SelectItem(Fagomrade.PENSJON, Fagomrade.PENSJON.getValue()));
 		fagomrader.add(new SelectItem(Fagomrade.BIDRAG, Fagomrade.BIDRAG.getValue()));
 		fagomrader.add(new SelectItem(Fagomrade.ALLE, Fagomrade.ALLE.getValue()));
-		valgtFagomrade = Fagomrade.PENSJON;
+		chosenFagomrade = Fagomrade.PENSJON;
 
 		tidsperioder = new ArrayList<SelectItem>();
 		tidsperioder.add(new SelectItem(Tidsperiode.SISTE_4_UKER, Tidsperiode.SISTE_4_UKER.getValue()));
 		tidsperioder.add(new SelectItem(Tidsperiode.SISTE_5_DAGER, Tidsperiode.SISTE_5_DAGER.getValue()));
-		valgtTidsperiode = Tidsperiode.IKKE_SATT; 
+		chosenTidsperiode = Tidsperiode.IKKE_SATT;
 	}
 	
-	public Spesifikasjon getValgtSok() {
-		return valgtSok;
+	public Spesifikasjon getChosenSearch() {
+		return chosenSearch;
 	}
 
-	public void setValgtSok(Spesifikasjon valgtSok) {
-		this.valgtSok = valgtSok;
+	public void setChosenSearch(Spesifikasjon chosenSearch) {
+		this.chosenSearch = chosenSearch;
 	}
 
 	public List<SelectItem> getFagomrader() {
@@ -66,23 +66,23 @@ public class OverviewOfHenvendelserForm {
 		this.tidsperioder = tidsperioder;
 	}
 
-	public List<SelectItem> getSokeAlternativ() {
-		return sokeAlternativ;
+	public List<SelectItem> getSearchAlternative() {
+		return searchAlternative;
 	}
 
-	public Fagomrade getValgtFagomrade() {
-		return valgtFagomrade;
+	public Fagomrade getChosenFagomrade() {
+		return chosenFagomrade;
 	}
 
-	public void setValgtFagomrade(Fagomrade valgtFagomrade) {
-		this.valgtFagomrade = valgtFagomrade;
+	public void setChosenFagomrade(Fagomrade chosenFagomrade) {
+		this.chosenFagomrade = chosenFagomrade;
 	}
 
-	public Tidsperiode getValgtTidsperiode() {
-		return valgtTidsperiode;
+	public Tidsperiode getChosenTidsperiode() {
+		return chosenTidsperiode;
 	}
 
-	public void setValgtTidsperiode(Tidsperiode valgtTidsperiode) {
-		this.valgtTidsperiode = valgtTidsperiode;
+	public void setChosenTidsperiode(Tidsperiode chosenTidsperiode) {
+		this.chosenTidsperiode = chosenTidsperiode;
 	}	
 }

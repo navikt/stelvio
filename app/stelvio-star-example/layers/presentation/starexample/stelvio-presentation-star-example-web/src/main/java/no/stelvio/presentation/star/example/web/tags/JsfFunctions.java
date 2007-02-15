@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 
 /**
  * Functions to aid developing JSF applications.
+ *
+ * @todo clean up code
  */
 public final class JsfFunctions {
 	/**
@@ -15,7 +17,6 @@ public final class JsfFunctions {
 	 */
 	private JsfFunctions() {
 	}
-
 	
 	public static boolean hasMessage( String form, String id )
 	{

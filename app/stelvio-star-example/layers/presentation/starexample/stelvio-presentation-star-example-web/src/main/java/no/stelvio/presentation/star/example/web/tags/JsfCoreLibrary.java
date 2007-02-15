@@ -9,9 +9,10 @@ import com.sun.facelets.tag.AbstractTagLibrary;
 /**
  * JsfCoreLibrary is an example for IBM developerWorks (c).
  * @author Rick Hightower from ArcMind Inc. http://www.arc-mind.com
+ * @todo clean up code
  */
 public final class JsfCoreLibrary extends AbstractTagLibrary {
-    /** Namespace used to import this library in Facelets pages  */
+    /** Namespace used to import this library in Facelets pages.  */
     public static final String NAMESPACE = "http://www.stelvio.no/jsf/core";
 
     /**  Current instance of library. */
@@ -19,7 +20,6 @@ public final class JsfCoreLibrary extends AbstractTagLibrary {
 
     /**
      * Creates a new JstlCoreLibrary object.
-     *
      */
     public JsfCoreLibrary() {
         super(NAMESPACE);
@@ -27,11 +27,11 @@ public final class JsfCoreLibrary extends AbstractTagLibrary {
         try {
             Method[] methods = JsfFunctions.class.getMethods();
 
-            for (int i = 0; i < methods.length; i++) {
-                if (Modifier.isStatic(methods[i].getModifiers())) {
-                    this.addFunction(methods[i].getName(), methods[i]);
-                }
-            }
+	        for (Method method : methods) {
+		        if (Modifier.isStatic(method.getModifiers())) {
+			        this.addFunction(method.getName(), method);
+		        }
+	        }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

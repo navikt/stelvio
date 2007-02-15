@@ -12,7 +12,7 @@
 		<ui:insert name="pageTitle">Page Title</ui:insert>
 	</title>
 
-	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/styles/NAVstylesheet.css"/>
+	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/styles/starexample-stylesheet.css"/>
 	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/styles/stylesheet.css"/>
 	<script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/scripts/javascript.js"/>
 </head>
@@ -29,11 +29,11 @@
 																					 alt="Dobbelklikk p&aring; logoen for &aring; komme til NAV sin hjemmeside"/>
 					</td>
 					<td colspan="2" class="global_tool" align="right"><strong>Du er logget inn som:</strong>&#160;
-						<h:outputText value="#{saksbehandlerDO.fornavn}"/>
+						<h:outputText value="#{saksbehandler.fornavn}"/>
 						&#160;
-						<h:outputText value="#{saksbehandlerDO.etternavn}"/>
+						<h:outputText value="#{saksbehandler.etternavn}"/>
 						// <strong>Enhet:</strong>&#160;
-						<h:outputText value="#{saksbehandlerDO.enhet}"/>
+						<h:outputText value="#{saksbehandler.enhet}"/>
 						. <input class="NAVbtn" type="submit" jsfc="h:commandButton" action="logout" value="Logg ut"/></td>
 				</tr>
 				<tr>

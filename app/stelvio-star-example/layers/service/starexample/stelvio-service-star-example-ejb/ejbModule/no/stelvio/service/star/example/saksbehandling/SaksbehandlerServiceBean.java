@@ -17,7 +17,7 @@ public class SaksbehandlerServiceBean extends AbstractStatelessSessionBean imple
 	private SaksbehandlerServiceBi saksbehandlerService;
 
 	/** {@inheritDoc} */
-	public SaksbehandlerResponse hentSaksbehandler(SaksbehandlerRequest request) throws PersonNotFoundException {
+	public SaksbehandlerResponse hentSaksbehandler(SaksbehandlerRequest request) throws SaksbehandlerNotFoundException {
 		return saksbehandlerService.hentSaksbehandler(request);
 	}
 

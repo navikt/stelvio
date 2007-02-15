@@ -13,23 +13,27 @@ import no.stelvio.domain.star.example.henvendelse.Tidsperiode;
 public class TidsperiodeEnumConverter implements Converter {
 
 	/**
-	 * @see javax.faces.convert.Converter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)
+	 * Converts from a String to a Tidsperiode.
 	 */
 	public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
+		// TODO i18n
 		if (value == null || value.equals("Velg tidsperiode:")) {
 			return Tidsperiode.IKKE_SATT;
 		}
+		
 		return Tidsperiode.valueOf(value);
 	}
 
 	/**
-	 * @see javax.faces.convert.Converter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)
+	 * Converts from a Tidsperiode to a String.
 	 */
 	public String getAsString(FacesContext context, UIComponent component, Object value) throws ConverterException {
 		// hack to support enums in form
+		// TODO i18n
 		if (value == null || value instanceof String) {
 			return "Velg tidsperiode:";
 		}
-		return ((Tidsperiode)value).toString();
+
+		return value.toString();
 	}
 }

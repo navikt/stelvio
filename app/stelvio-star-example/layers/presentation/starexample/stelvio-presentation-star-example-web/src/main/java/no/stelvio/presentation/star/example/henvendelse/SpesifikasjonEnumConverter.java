@@ -13,17 +13,17 @@ import no.stelvio.domain.star.example.henvendelse.Spesifikasjon;
 public class SpesifikasjonEnumConverter implements Converter {
 
 	/**
-	 * @see javax.faces.convert.Converter#getAsObject(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.String)
+	 * Converts from a String to a Spesifikasjon.
 	 */
 	public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
 		return Spesifikasjon.valueOf(value);
 	}
 
 	/**
-	 * @see javax.faces.convert.Converter#getAsString(javax.faces.context.FacesContext, javax.faces.component.UIComponent, java.lang.Object)
+	 * Converts from a Spesifikasjon to a String.
 	 */
 	public String getAsString(FacesContext context, UIComponent component, Object value) throws ConverterException {
-		return ((Spesifikasjon)value).toString();
+		return value.toString();
 	}
 
 }
