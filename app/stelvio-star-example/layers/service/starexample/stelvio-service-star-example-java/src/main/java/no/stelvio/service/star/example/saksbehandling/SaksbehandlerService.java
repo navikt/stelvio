@@ -1,9 +1,9 @@
 /**
  * 
  */
-package no.nav.service.pensjon.saksbehandling;
+package no.stelvio.service.star.example.saksbehandling;
 
-import no.nav.service.pensjon.exception.DatabaseNotFoundException;
+import no.stelvio.service.star.example.exception.DatabaseNotFoundException;
 import no.stelvio.star.example.saksbehandling.Saksbehandler;
 
 /**

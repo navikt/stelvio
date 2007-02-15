@@ -7,7 +7,7 @@ import org.springframework.webflow.context.ExternalContextHolder;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 
-import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
+import no.stelvio.service.star.example.saksbehandling.SaksbehandlerService;
 import no.stelvio.star.example.saksbehandling.Saksbehandler;
 
 

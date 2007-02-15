@@ -1,4 +1,4 @@
-package no.nav.service.pensjon.saksbehandling;
+package no.stelvio.service.star.example.saksbehandling;
 
 import no.stelvio.common.error.FunctionalUnrecoverableException;
 import no.stelvio.domain.person.Pid;

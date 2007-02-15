@@ -9,7 +9,7 @@ public interface CodesTableFactoryLocalHome extends javax.ejb.EJBLocalHome {
 
 	public static final String COMP_NAME = "java:comp/env/ejb/CodesTableFactoryBean";
 
-	public static final String JNDI_NAME = "ejb/no/nav/service/pensjon/CodesTableFactoryLocalHome";
+	public static final String JNDI_NAME = "ejb/no/nav/service/example/CodesTableFactoryLocalHome";
 
 	/* Default create */
 	public CodesTableFactoryLocal create()

@@ -9,6 +9,6 @@
 		<property name="codesTableRepository" ref="rep.starexample.codesTableRepository"/>
 	</bean>
 
-	<bean id="srv.starexample.henvendelseService" class="no.nav.service.pensjon.henvendelse.support.SimpleHenvendelseService"/>
-	<bean id="srv.starexample.saksbehandlerService" class="no.nav.service.pensjon.saksbehandling.support.SimpleSaksbehandlerService"/>
+	<bean id="srv.starexample.henvendelseService" class="no.stelvio.service.star.example.henvendelse.support.SimpleHenvendelseService"/>
+	<bean id="srv.starexample.saksbehandlerService" class="no.stelvio.service.star.example.saksbehandling.support.SimpleSaksbehandlerService"/>
 </beans>

@@ -1,4 +1,4 @@
-package no.nav.service.pensjon.henvendelse.to;
+package no.stelvio.service.star.example.henvendelse.to;
 
 import no.stelvio.common.transferobject.ServiceRequest;
 import no.stelvio.star.example.henvendelse.HenvendelseStatistikkCriteria;

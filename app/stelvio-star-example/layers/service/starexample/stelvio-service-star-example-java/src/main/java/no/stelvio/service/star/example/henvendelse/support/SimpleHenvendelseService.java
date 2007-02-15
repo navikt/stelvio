@@ -1,12 +1,12 @@
-package no.nav.service.pensjon.henvendelse.support;
+package no.stelvio.service.star.example.henvendelse.support;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import no.nav.service.pensjon.henvendelse.HenvendelseService;
-import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkRequest;
-import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkResponse;
+import no.stelvio.service.star.example.henvendelse.HenvendelseService;
+import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
+import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;
 import no.stelvio.star.example.henvendelse.Henvendelse;
 import no.stelvio.star.example.henvendelse.HenvendelseStatistikk;
 import no.stelvio.star.example.henvendelse.HenvendelseStatistikkCriteria;
