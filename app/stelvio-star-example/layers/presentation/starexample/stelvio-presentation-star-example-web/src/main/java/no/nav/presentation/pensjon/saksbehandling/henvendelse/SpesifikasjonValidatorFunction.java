@@ -3,8 +3,8 @@ package no.nav.presentation.pensjon.saksbehandling.henvendelse;
 import org.springmodules.validation.valang.functions.AbstractFunction;
 import org.springmodules.validation.valang.functions.Function;
 
-import no.nav.domain.pensjon.henvendelse.Fagomrade;
-import no.nav.domain.pensjon.henvendelse.Spesifikasjon;
+import no.stelvio.star.example.henvendelse.Fagomrade;
+import no.stelvio.star.example.henvendelse.Spesifikasjon;
 
 /**
  * Usage: checkParameters(Spesifikasjon, Fagomrade)

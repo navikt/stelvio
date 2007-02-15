@@ -4,12 +4,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.webflow.action.FormAction;
 
-import no.nav.domain.pensjon.codestable.HenvendelseTypeCti;
-import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk;
-import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.consumer.star.example.henvendelse.SokHenvendelse;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseRequest;
+import no.stelvio.star.example.codestable.HenvendelseTypeCti;
+import no.stelvio.star.example.henvendelse.HenvendelseStatistikk;
+import no.stelvio.star.example.henvendelse.HenvendelseStatistikkCriteria;
 
 
 /**

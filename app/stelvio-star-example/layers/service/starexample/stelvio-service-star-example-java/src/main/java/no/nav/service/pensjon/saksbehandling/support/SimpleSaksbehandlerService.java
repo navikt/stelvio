@@ -3,10 +3,10 @@ package no.nav.service.pensjon.saksbehandling.support;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import no.nav.domain.pensjon.saksbehandling.Saksbehandler;
 import no.nav.service.pensjon.exception.DatabaseNotFoundException;
 import no.nav.service.pensjon.saksbehandling.PersonNotFoundException;
 import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
+import no.stelvio.star.example.saksbehandling.Saksbehandler;
 
 /**
  * @author personf8e9850ed756, Accenture

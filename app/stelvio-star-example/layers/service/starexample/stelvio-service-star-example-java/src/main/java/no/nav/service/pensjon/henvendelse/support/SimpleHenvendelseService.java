@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import no.nav.domain.pensjon.henvendelse.Henvendelse;
-import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk;
-import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
-import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.service.pensjon.henvendelse.HenvendelseService;
 import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkRequest;
 import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkResponse;
+import no.stelvio.star.example.henvendelse.Henvendelse;
+import no.stelvio.star.example.henvendelse.HenvendelseStatistikk;
+import no.stelvio.star.example.henvendelse.HenvendelseStatistikkCriteria;
+import no.stelvio.star.example.person.Fodselsnummer;
 
 /**
  * Mock impl av HenvendelseService

@@ -7,8 +7,8 @@ import org.springframework.webflow.context.ExternalContextHolder;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 
-import no.nav.domain.pensjon.saksbehandling.Saksbehandler;
 import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
+import no.stelvio.star.example.saksbehandling.Saksbehandler;
 
 
 public class StartAction extends MultiAction {

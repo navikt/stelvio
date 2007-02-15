@@ -1,6 +1,6 @@
 package no.stelvio.consumer.star.example.henvendelse.map;
 
-import no.nav.domain.pensjon.henvendelse.Henvendelse;
+import no.stelvio.star.example.henvendelse.Henvendelse;
 
 /**
  * @author personf8e9850ed756, Accenture

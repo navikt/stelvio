@@ -1,10 +1,10 @@
 package no.stelvio.consumer.star.example.henvendelse.to;
 
-import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
 import no.stelvio.common.transferobject.ServiceRequest;
+import no.stelvio.star.example.henvendelse.HenvendelseStatistikkCriteria;
 
 /**
- * Defines criteria for generating and returning {@link no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk}.
+ * Defines criteria for generating and returning {@link no.stelvio.star.example.henvendelse.HenvendelseStatistikk}.
  * @author personff564022aedd
  */
 public class SokHenvendelseRequest extends ServiceRequest {

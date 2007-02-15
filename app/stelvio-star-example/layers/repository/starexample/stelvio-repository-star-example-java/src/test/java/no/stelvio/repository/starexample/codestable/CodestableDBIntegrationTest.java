@@ -1,10 +1,11 @@
 package no.stelvio.repository.starexample.codestable;
-import junit.framework.TestCase;
-import no.nav.domain.pensjon.codestable.HenvendelseTypeCti;
-import no.stelvio.repository.codestable.CodesTableRepository;
 
+import junit.framework.TestCase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import no.stelvio.repository.codestable.CodesTableRepository;
+import no.stelvio.star.example.codestable.HenvendelseTypeCti;
 
 
 public class CodestableDBIntegrationTest extends TestCase {

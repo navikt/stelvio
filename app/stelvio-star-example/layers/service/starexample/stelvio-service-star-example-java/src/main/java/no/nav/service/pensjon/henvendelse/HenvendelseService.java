@@ -2,10 +2,10 @@ package no.nav.service.pensjon.henvendelse;
 
 import java.util.List;
 
-import no.nav.domain.pensjon.henvendelse.Henvendelse;
-import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkRequest;
 import no.nav.service.pensjon.henvendelse.to.HenvendelseStatistikkResponse;
+import no.stelvio.star.example.henvendelse.Henvendelse;
+import no.stelvio.star.example.person.Fodselsnummer;
 
 
 /**
