@@ -29,7 +29,7 @@
 		</property>
 	</bean>
 
-	<bean id="IncompleteConfiguredFacade" class="no.stelvio.common.ejb.RemoteServiceDescription"></bean>
+	<bean id="IncompleteConfiguredFacade" class="no.stelvio.common.ejb.RemoteServiceDescription"/>
 
 </beans>
 
