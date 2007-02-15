@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import no.stelvio.consumer.star.example.henvendelse.SokHenvendelse;
+import no.stelvio.consumer.star.example.henvendelse.SokHenvendelseServiceBi;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseRequest;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseResponse;
 import no.stelvio.domain.star.example.henvendelse.Henvendelse;
@@ -12,11 +12,11 @@ import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikk;
 import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
 
 /**
- * Mock impl av SokHenvendelse
+ * Mock impl av SokHenvendelseService
  *
  * @author personff564022aedd
  */
-public class SimpleSokHenvendelse implements SokHenvendelse {
+public class SimpleSokHenvendelseService implements SokHenvendelseServiceBi {
 
 	private static List<Henvendelse> ola = new ArrayList<Henvendelse>();
 	private static List<Henvendelse> ole = new ArrayList<Henvendelse>();

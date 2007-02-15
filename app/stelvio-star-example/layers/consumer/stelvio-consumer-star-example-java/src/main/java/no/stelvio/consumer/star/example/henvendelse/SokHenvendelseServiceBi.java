@@ -8,7 +8,7 @@ import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseResponse;
  *
  * @author personff564022aedd
  */
-public interface SokHenvendelse {
+public interface SokHenvendelseServiceBi {
 
 	/**
 	 * @return Response object containing HenvendelseStatistikk
