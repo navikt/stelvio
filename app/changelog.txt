@@ -23,7 +23,6 @@ Module stelvio-common-java
   loops)
 * getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to
   DecodeNotFoundException
-* Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
 
 Module stelvio-test-java
 

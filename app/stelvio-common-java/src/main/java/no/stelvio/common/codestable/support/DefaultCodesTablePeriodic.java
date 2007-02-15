@@ -39,6 +39,3 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> extends
 	 * {@inheritDoc}
 	 */
 	public String getDecode(Object code, Locale locale, Date date) throws DecodeNotFoundException {
-		return super.getDecode(code, locale, date);
-	}
-}

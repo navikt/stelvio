@@ -21,18 +21,6 @@ import no.stelvio.common.codestable.ItemNotFoundException;
  */
 public class DefaultCodesTable<T extends CodesTableItem> extends AbstractCodesTable<T> implements CodesTable {
 	/**
-	 * Copy-constructor
-	 * Returns a new DefaultCodesTable, based on the codestable used as input
-	 * @param defaultCodesTable
-	 */
-	public DefaultCodesTable(DefaultCodesTable<T> defaultCodesTable){
-		this.predicates = new ArrayList<Predicate>(defaultCodesTable.predicates);
-		this.codeCodesTableItemMap = new HashMap<Object, T>(defaultCodesTable.codeCodesTableItemMap);
-		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(defaultCodesTable.filteredCodeCodesTableItemMap);
-	}
-	
-	
-	/**
 	 * Creates a <code>DefaultCodesTable</code> with a list of <code>CodesTableItem</code>s.
 	 *
 	 * @param codesTableItems list of <code>CodesTableItem</code>s this <code>DefaultCodesTable</code> consists of.
