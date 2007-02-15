@@ -1,11 +1,14 @@
 package no.stelvio.common.codestable.support;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -17,8 +20,10 @@ import no.stelvio.common.codestable.ItemNotFoundException;
  * @author personf8e9850ed756, Accenture
  * @todo write javadoc
  */
-class AbstractCodesTable<T extends AbstractCodesTableItem> {
-	/** Map containing Codes-CodesTableItemPeriodic pairs*/
+abstract class AbstractCodesTable<T extends AbstractCodesTableItem> implements Serializable {
+	private static final long serialVersionUID = -4072918237022568146L;
+
+	/** Map containing Codes-AbstractCodesTableItem pairs */
 	private Map<Object, T> codeCodesTableItemMap;
 	/**
 	 * Holds the filtered map of <code>CodesTableItemPeriodic</code>s created by taking the full list and applying the
@@ -31,7 +36,7 @@ class AbstractCodesTable<T extends AbstractCodesTableItem> {
 	protected void init(List<T> codesTableItems) {
 		codeCodesTableItemMap = new HashMap<Object, T>();
 
-		if(codesTableItems != null){
+		if (codesTableItems != null) {
 			for (T codesTableItem : codesTableItems) {
 				codeCodesTableItemMap.put(codesTableItem.getCode(), codesTableItem);
 			}
@@ -40,16 +45,28 @@ class AbstractCodesTable<T extends AbstractCodesTableItem> {
 		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public List<T> getItems() {
-		return new ArrayList<T>(filteredCodeCodesTableItemMap.values());
+	/** {@inheritDoc} */
+	public Set<T> getCodeTableItems() {
+		return new HashSet<T>(filteredCodeCodesTableItemMap.values());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
+	public List<T> getItems() {
+		return new ArrayList<T>(getCodeTableItems());
+	}
+
+	/** {@inheritDoc} */
+	public T getCodesTableItem(Enum code) throws ItemNotFoundException {
+		T cti = findCodesTableItem(code.name());
+
+		if (cti == null) {
+			throw new ItemNotFoundException(code);
+		}
+
+		return cti;
+	}
+
+	/** {@inheritDoc} */
 	public T getCodesTableItem(Object code) throws ItemNotFoundException {
 		T cti = findCodesTableItem(code);
 
@@ -60,14 +77,12 @@ class AbstractCodesTable<T extends AbstractCodesTableItem> {
 		return cti;
 	}
 
-	/**
-	 * {@inheritDoc)}
-	 */
+	/** {@inheritDoc)} */
 	public void addPredicate(Predicate predicate) {
 		//If there are no previous predicates added to a codestable, all of the codetableitems in a codetable
 		//are filtered, or else the codestableitems in the filtered map are filtered.
-		synchronized (filteredCodeCodesTableItemMap){
-			if(predicates.isEmpty()){
+		synchronized (filteredCodeCodesTableItemMap) {
+			if (predicates.isEmpty()) {
 				filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
 			}
 
@@ -81,16 +96,14 @@ class AbstractCodesTable<T extends AbstractCodesTableItem> {
 					keysFilteredOut.add(code);
 				}
 			}
-			
+
 			for (Object filteredOutKey : keysFilteredOut) {
 				filteredCodeCodesTableItemMap.remove(filteredOutKey);
 			}
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public void resetPredicates() {
 		predicates.clear();
 		//This is done in addPredicate if no predicates exists,
@@ -99,11 +112,10 @@ class AbstractCodesTable<T extends AbstractCodesTableItem> {
 	}
 
 	/**
-	 * FIXME: This method doesn't use the input Date to retrieve decode.
-	 * FIXME: Method should probably change implementation or signature in the future.
-	 * {@inheritDoc}
+	 * FIXME: This method doesn't use the input Date to retrieve decode. FIXME: Method should probably change
+	 * implementation or signature in the future. {@inheritDoc}
 	 */
-	protected String getDecode(Object code, Date... date) throws ItemNotFoundException, DecodeNotFoundException {
+	protected String decode(Object code, Date... date) throws ItemNotFoundException, DecodeNotFoundException {
 		// If there are predicates added to the codestable,
 		// getCodesTableItem() will only return an item if it belongs to the filtered collection
 		// of codestableitems, otherwise it will throw an exception
@@ -111,19 +123,17 @@ class AbstractCodesTable<T extends AbstractCodesTableItem> {
 		String decode = codesTableItem.getDecode();
 
 		// If for some reason a code in the map maps to a null value, throw exception
-		if(decode == null){
-			throw new DecodeNotFoundException(code.toString());
+		if (decode == null) {
+			throw new DecodeNotFoundException(code);
 		}
 
 		return decode;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected String getDecode(Object code, Locale locale, Date... date) throws DecodeNotFoundException {
-		return getDecode(code, date);
-    }
+	/** {@inheritDoc} */
+	protected String decode(Object code, Locale locale, Date... date) throws DecodeNotFoundException {
+		return decode(code, date);
+	}
 
 	/** {@inheritDoc} */
 	public boolean validateCode(String code) {

@@ -3,8 +3,6 @@ package no.stelvio.common.codestable.support;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.commons.collections.Predicate;
-
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.DecodeNotFoundException;
@@ -19,7 +17,9 @@ import no.stelvio.common.codestable.ItemNotFoundException;
  * @todo use Commons Collection's LazyMap to initialize the filtered codes table map
  * @todo add safe copying of input/output, that is, constructor and getItems()
  */
-public class DefaultCodesTable<T extends CodesTableItem> extends AbstractCodesTable<T> implements CodesTable {
+public class DefaultCodesTable<T extends CodesTableItem> extends AbstractCodesTable<T> implements CodesTable<T> {
+	private static final long serialVersionUID = -1882474781384872740L;
+
 	/**
 	 * Creates a <code>DefaultCodesTable</code> with a list of <code>CodesTableItem</code>s.
 	 *
@@ -30,40 +30,23 @@ public class DefaultCodesTable<T extends CodesTableItem> extends AbstractCodesTa
 	}
 
 	/** {@inheritDoc} */
-	public List<T> getItems() {
-		return super.getItems();
+	public String getDecode(Enum code) throws ItemNotFoundException, DecodeNotFoundException {
+		return decode(code.name());
 	}
 
 	/** {@inheritDoc} */
-	public T getCodesTableItem(Object code) throws ItemNotFoundException {
-		return super.getCodesTableItem(code);
-	}
-
-	/** {@inheritDoc} */
-	public void addPredicate(Predicate predicate) {
-		super.addPredicate(predicate);
-	}
-
-	/** {@inheritDoc} */
-	public void resetPredicates() {
-		super.resetPredicates();
-	}
-	
-	public CodesTable copy() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getDecode(Enum code, Locale locale) throws DecodeNotFoundException {
+		return decode(code.name(), locale);
 	}
 
 	/** {@inheritDoc} */
 	public String getDecode(Object code) throws ItemNotFoundException, DecodeNotFoundException {
-		return super.getDecode(code);
+		return decode(code);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public String getDecode(Object code, Locale locale) {
-		return super.getDecode(code, locale);
+		return decode(code, locale);
 	}
 
 	/** {@inheritDoc} */
