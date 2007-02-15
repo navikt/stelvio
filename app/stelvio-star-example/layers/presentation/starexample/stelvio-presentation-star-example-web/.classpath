@@ -21,7 +21,6 @@
 	<classpathentry kind="var" path="M2_REPO/jaxen/jaxen/1.0-FCS/jaxen-1.0-FCS.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/2.0/spring-web-2.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-common-java/1.0.2-SNAPSHOT/stelvio-common-java-1.0.2-SNAPSHOT.jar"/>
-	<classpathentry kind="var" path="M2_REPO/no/stelvio/star/example/stelvio-domain-star-example-java/1.0.0-SNAPSHOT/stelvio-domain-star-example-java-1.0.0-SNAPSHOT.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/myfaces/core/myfaces-impl/1.1.4/myfaces-impl-1.1.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.0/commons-lang-2.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/opensymphony/oscache/2.1.1/oscache-2.1.1.jar"/>
@@ -72,5 +71,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-domain-star-example-java"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-service-star-example-java"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-consumer-star-example-java"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>

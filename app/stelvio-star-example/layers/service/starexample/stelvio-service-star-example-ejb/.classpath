@@ -11,7 +11,6 @@
 	<classpathentry kind="var" path="M2_REPO/cglib/cglib/2.0.2/cglib-2.0.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.1/junit-4.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/javax/persistence/toplink-essentials/1.0/toplink-essentials-1.0.jar"/>
-	<classpathentry kind="var" path="M2_REPO/no/stelvio/star/example/stelvio-domain-star-example-java/1.0.0-SNAPSHOT/stelvio-domain-star-example-java-1.0.0-SNAPSHOT.jar"/>
 	<classpathentry kind="var" path="M2_REPO/qdox/qdox/1.5/qdox-1.5.jar"/>
 	<classpathentry kind="var" path="M2_REPO/jgroups/jgroups-all/2.2.8/jgroups-all-2.2.8.jar"/>
 	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.4/dom4j-1.4.jar"/>
@@ -65,5 +64,6 @@
 	<classpathentry kind="var" path="M2_REPO/org/acegisecurity/acegi-security-tiger/1.0.0/acegi-security-tiger-1.0.0.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-repository-star-example-java"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-service-star-example-java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

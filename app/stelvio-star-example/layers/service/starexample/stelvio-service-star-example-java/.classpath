@@ -13,7 +13,6 @@
 	<classpathentry kind="var" path="M2_REPO/cglib/cglib/2.0.2/cglib-2.0.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.1/junit-4.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/javax/persistence/toplink-essentials/1.0/toplink-essentials-1.0.jar"/>
-	<classpathentry kind="var" path="M2_REPO/no/stelvio/star/example/stelvio-domain-star-example-java/1.0.0-SNAPSHOT/stelvio-domain-star-example-java-1.0.0-SNAPSHOT.jar"/>
 	<classpathentry kind="var" path="M2_REPO/qdox/qdox/1.5/qdox-1.5.jar"/>
 	<classpathentry kind="var" path="M2_REPO/jgroups/jgroups-all/2.2.8/jgroups-all-2.2.8.jar"/>
 	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.4/dom4j-1.4.jar"/>
@@ -30,7 +29,7 @@
 	<classpathentry kind="var" path="M2_REPO/javax/ejb/ejb/2.1/ejb-2.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/concurrent/concurrent/1.3.4/concurrent-1.3.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/ant/ant/1.5/ant-1.5.jar"/>
-	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-common-java/1.0.1-SNAPSHOT/stelvio-common-java-1.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-common-java/1.0.2-SNAPSHOT/stelvio-common-java-1.0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/2.0.1/spring-core-2.0.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-beans/2.0/spring-beans-2.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/msv/msv/20020414/msv-20020414.jar"/>
