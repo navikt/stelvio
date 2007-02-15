@@ -582,8 +582,6 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/.project -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/.settings/org.eclipse.wst.common.component -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/pom.xml -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/exception/DatabaseNotFoundException.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/exception/TPSException.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/HenvendelseService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/support/SimpleHenvendelseService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/to/HenvendelseStatistikkRequest.java -text
