@@ -13,6 +13,12 @@ import org.springframework.ejb.support.AbstractStatelessSessionBean;
 import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerRequest;
 import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerResponse;
 
+/**
+ * EJB implementation of the <code>SaksbehandlerServiceBi</code> interface which acts as a thin facade over the POJO
+ * containing the business logic.
+ *
+ * @author personf8e9850ed756, Accenture
+ */
 public class SaksbehandlerServiceBean extends AbstractStatelessSessionBean implements SaksbehandlerServiceBi {
 	private SaksbehandlerServiceBi saksbehandlerService;
 
