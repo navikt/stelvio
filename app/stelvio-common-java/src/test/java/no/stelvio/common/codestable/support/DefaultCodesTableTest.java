@@ -121,7 +121,12 @@ public class DefaultCodesTableTest {
 
 	@Test
 	public void canValidateThatCodeExists() {
-		assertTrue("Should exist", codesTable.validateCode("t1code1"));
-		assertFalse("Should not exist", codesTable.validateCode("existsNot"));
+		assertTrue("Should exist", codesTable.validateCode(TestEnum.t1code1));
+		assertFalse("Should not exist", codesTable.validateCode(TestEnum.existsNot));
+	}
+	
+	public static enum TestEnum {
+		t1code1,
+		existsNot
 	}
 }
