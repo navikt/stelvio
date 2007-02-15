@@ -21,7 +21,6 @@ import java.net.URLClassLoader;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.FactoryFinder;
 import javax.faces.application.ApplicationFactory;
 import javax.faces.component.UIViewRoot;
@@ -29,10 +28,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.render.RenderKitFactory;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.security.SecurityContextHolder;
@@ -79,38 +75,22 @@ import org.apache.shale.test.mock.MockServletContext;
  * the test methods for your test case.</p>
  */
 public class AbstractPhaselistenerTestCase extends TestCase {
-
 	protected Principal principal;
 	protected List<String> roles;
-    // ------------------------------------------------------------ Constructors
-
-
-    /**
-     * <p>Construct a new instance of this test case.</p>
-     *
-     * @param name Name of this test case
-     */
-    public AbstractPhaselistenerTestCase(String name) {
-        super(name);
-    }
-
 
     // ---------------------------------------------------- Overall Test Methods
-
 
     /**
      * <p>Set up instance variables required by this test case.</p>
      */
     protected void setUp() throws Exception {
-
         // Set up a new thread context class loader
         threadContextClassLoader = Thread.currentThread().getContextClassLoader();
         Thread.currentThread().setContextClassLoader(new URLClassLoader(new URL[0],
                 this.getClass().getClassLoader()));
         
         //MockViewHandler viewHandler = new MockViewHandler();
-        
-        
+
         this.principal = new MockPrincipal("TestUser");
 		this.roles = new ArrayList<String>();
 		this.roles.add("role1");
@@ -120,8 +100,7 @@ public class AbstractPhaselistenerTestCase extends TestCase {
 		
 		 // Set up Servlet API Objects
         servletContext = new MockServletContext();
-        
-        
+
         config = new MockServletConfig(servletContext);
         session = new MockHttpSession();
         session.setServletContext(servletContext);
@@ -149,11 +128,8 @@ public class AbstractPhaselistenerTestCase extends TestCase {
         facesContextFactory = (MockFacesContextFactoryExtended)
         FactoryFinder.getFactory(FactoryFinder.FACES_CONTEXT_FACTORY);
         facesContext = (MockFacesContext)
-        facesContextFactory.getFacesContext(servletContext,
-                request,
-                response,
-                lifecycle);
-        externalContext = (MockExternalContextExtended) facesContext.getExternalContext();
+        facesContextFactory.getFacesContext(servletContext, request, response, lifecycle);
+	    externalContext = (MockExternalContextExtended) facesContext.getExternalContext();
         UIViewRoot root = new UIViewRoot();
         root.setViewId("/viewId");
         root.setRenderKitId(RenderKitFactory.HTML_BASIC_RENDER_KIT);
@@ -182,23 +158,11 @@ public class AbstractPhaselistenerTestCase extends TestCase {
         root.setRenderKitId(RenderKitFactory.HTML_BASIC_RENDER_KIT);
         FacesContext.getCurrentInstance().setViewRoot(root);
 	}
-    
-
-    /**
-     * <p>Return the tests included in this test case.</p>
-     */
-    public static Test suite() {
-
-        return (new TestSuite());
-
-    }
-
 
     /**
      * <p>Tear down instance variables required by this test case.</p>
      */
     protected void tearDown() throws Exception {
-
         application = null;
         config = null;
         externalContext = null;
@@ -218,25 +182,23 @@ public class AbstractPhaselistenerTestCase extends TestCase {
 
     }
 
-
     // ------------------------------------------------------ Instance Variables
 
-
     // Mock object instances for our tests
-    protected MockApplication         			application = null;
-    protected MockServletConfig       			config = null;
-    protected MockExternalContextExtended     	externalContext = null;
-    protected MockFacesContext        			facesContext = null;
-    protected MockFacesContextFactoryExtended	facesContextFactory = null;
-    protected MockLifecycle           			lifecycle = null;
-    protected MockLifecycleFactory    			lifecycleFactory = null;
-    protected MockRenderKit           			renderKit = null;
-    protected MockHttpServletRequestExtended	request = null;
-    protected MockHttpServletResponse 			response = null;
-    protected MockServletContext      			servletContext = null;
-    protected MockHttpSession         			session = null;
+    protected MockApplication         			application;
+    protected MockServletConfig       			config;
+    protected MockExternalContextExtended     	externalContext;
+    protected MockFacesContext        			facesContext;
+    protected MockFacesContextFactoryExtended	facesContextFactory;
+    protected MockLifecycle           			lifecycle;
+    protected MockLifecycleFactory    			lifecycleFactory;
+    protected MockRenderKit           			renderKit;
+    protected MockHttpServletRequestExtended	request;
+    protected MockHttpServletResponse 			response;
+    protected MockServletContext      			servletContext;
+    protected MockHttpSession         			session;
 
     // Thread context class loader saved and restored after each test
-    private ClassLoader threadContextClassLoader = null;
+    private ClassLoader threadContextClassLoader;
 
 }
