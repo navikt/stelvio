@@ -18,10 +18,9 @@ public class HenvendelseStatistikkCriteria {
 	public static final String FAGOMRADE_ALLE    = "Alle";
 
 	private String enhetId;
-	private String tidsperiode;
-	private String fagomrade;
-	
-	private Enum<Spesifikasjon> spesifikasjon;
+	private Tidsperiode tidsperiode;
+	private Fagomrade fagomrade;
+	private Spesifikasjon spesifikasjon;
 	
 	/**
 	 * 
@@ -30,14 +29,16 @@ public class HenvendelseStatistikkCriteria {
 	 * @param fagomrade
 	 * @param spesifikasjon
 	 */
-	public HenvendelseStatistikkCriteria(String enhetId, Tidsperiode tidsperiode, String fagomrade, Enum<Spesifikasjon> spesifikasjon) {
+	public HenvendelseStatistikkCriteria(String enhetId, Tidsperiode tidsperiode, Fagomrade fagomrade, Spesifikasjon spesifikasjon) {
 		if (enhetId == null || tidsperiode == null || fagomrade == null || spesifikasjon == null) {
 			throw new IllegalArgumentException("One or more parameters null.");
 		}
-		if (fagomrade.equals(FAGOMRADE_ALLE) && spesifikasjon != Spesifikasjon.ANTALL) {
+
+		if (fagomrade == Fagomrade.ALLE && spesifikasjon != Spesifikasjon.ANTALL) {
 			throw new IllegalArgumentException("Spesifikasjon must be ANTALL when fagområde is set to ALLE.");
 		}
-		this.tidsperiode = tidsperiode.getValue();
+
+		this.tidsperiode = tidsperiode;
 		this.fagomrade = fagomrade;
 		this.spesifikasjon = spesifikasjon;
 	}
@@ -52,21 +53,21 @@ public class HenvendelseStatistikkCriteria {
 	/**
 	 * @return fagomrade (Pensjon, Bidrag, Alle) is a search restriction
 	 */
-	public String getFagomrade() {
+	public Fagomrade getFagomrade() {
 		return fagomrade;
 	}
 
 	/**
 	 * @return {@link Spesifikasjon} specifies the statistics returned
 	 */
-	public Enum<Spesifikasjon> getSpesifikasjon() {
+	public Spesifikasjon getSpesifikasjon() {
 		return spesifikasjon;
 	}
 
 	/**
 	 * @return tidsperiode (Siste 5 dager, Siste 4 uker) restricts the search to the last five days or last four weeks from todays date
 	 */
-	public String getTidsperiode() {
+	public Tidsperiode getTidsperiode() {
 		return tidsperiode;
 	}
 	
