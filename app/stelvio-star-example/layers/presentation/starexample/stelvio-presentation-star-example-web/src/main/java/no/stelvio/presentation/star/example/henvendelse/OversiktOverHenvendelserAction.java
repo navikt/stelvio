@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.webflow.action.FormAction;
 
 import no.stelvio.common.codestable.CodesTableManager;
-import no.stelvio.consumer.star.example.henvendelse.SokHenvendelse;
+import no.stelvio.consumer.star.example.henvendelse.SokHenvendelseServiceBi;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseRequest;
 import no.stelvio.domain.star.example.codestable.HenvendelseTypeCti;
 import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikk;
@@ -20,7 +20,7 @@ import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
 public class OversiktOverHenvendelserAction extends FormAction {
 	private static final Log log = LogFactory.getLog(OversiktOverHenvendelserAction.class);
 
-	private SokHenvendelse sokHenvendelse;
+	private SokHenvendelseServiceBi sokHenvendelseService;
 	private CodesTableManager codesTableManager;
 
 	/**
@@ -35,11 +35,11 @@ public class OversiktOverHenvendelserAction extends FormAction {
 
 		log.debug("CodesTable HenvendelseTypeCti: " +
 				codesTableManager.getCodesTablePeriodic(HenvendelseTypeCti.class));
-		return sokHenvendelse.genererHenvendelseStatistikk(new SokHenvendelseRequest(crit)).getCriteria();
+		return sokHenvendelseService.genererHenvendelseStatistikk(new SokHenvendelseRequest(crit)).getCriteria();
 	}
 
-	public void setSokHenvendelse(SokHenvendelse sokHenvendelse) {
-		this.sokHenvendelse = sokHenvendelse;
+	public void setSokHenvendelse(SokHenvendelseServiceBi sokHenvendelseService) {
+		this.sokHenvendelseService = sokHenvendelseService;
 	}
 
 	public void setCodesTableManager(CodesTableManager codesTableManager) {
