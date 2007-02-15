@@ -85,35 +85,7 @@ public class SimpleHenvendelseService implements HenvendelseServiceBi {
 			
 		}
 	}
-	
-	
-	
-	public List<Henvendelse> hentHenvendelseList( Fodselsnummer fodselsnummer )
-		throws Exception
-		
-	{
-		System.out.println( "mockLists.size() = " + mockLists.size() );
-		for( int i = 0 ; i < mockLists.size() ; i ++ )
-		{
-			System.out.println( "i = " + i );
-			
-			if( mockLists.get( i ).size() == 0 )
-			{
-				System.out.println( "returning null" );
-				return null;
-			}
-			else if( mockLists.get( i ).get( 0 ).getFodselsnummer().getFodselsnummer().equals( fodselsnummer.getFodselsnummer() ) )
-			{
-				System.out.println( "returning list" );
-				return mockLists.get( i );
-			}
-			
-			System.out.println( "i = " + i );
-		}
-		
-		return null;
-	}
-	
+
 	public HenvendelseStatistikkResponse genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest) {
 		
 		HenvendelseStatistikk henvendelseStatistikk; 
