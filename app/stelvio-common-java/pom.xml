@@ -79,6 +79,10 @@
 			<version>0.7</version>
 			<exclusions>
 				<exclusion>
+					<artifactId>cglib-nodep</artifactId>
+					<groupId>cglib</groupId>
+				</exclusion>
+				<exclusion>
 					<artifactId>ehcache</artifactId>
 					<groupId>ehcache</groupId>
 				</exclusion>
