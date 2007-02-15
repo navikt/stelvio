@@ -59,15 +59,19 @@ public interface CodesTable<T extends CodesTableItem> {
 	 * If the locale isn't supported, the decode that supports the default locale is returned - 
 	 * if it exists.
 	 * 
-	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object)} 
-	 * 
 	 * @param code the items code.
 	 * @param locale the internationalization code.
 	 * @return The decode
 	 * @throws ItemNotFoundException if no <code>CodesTableItem</code> is found for the code
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItem</code> without a code
-	 *  
 	 */
-	@Deprecated
 	String getDecode(Object code, Locale locale) throws DecodeNotFoundException;
+
+	/**
+	 * Checks that the code exists in the codes table.
+	 *
+	 * @param code the code to check for existence in the codes table.
+	 * @return true if the code exists, false otherwise.
+	 */
+	boolean validateCode(String code);
 }

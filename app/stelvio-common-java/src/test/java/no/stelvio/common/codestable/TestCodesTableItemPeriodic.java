@@ -22,10 +22,9 @@ public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 	 * @param decode the decode
 	 * @param fromDate the valid from date
 	 * @param toDate the valid to date
-	 * @param locale the locale
 	 * @param isValid the validity of the item
 	 */
-	public TestCodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Boolean isValid){
+	public TestCodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, boolean isValid){
 		super(code, decode, fromDate, toDate, isValid);
 	}
 
@@ -44,22 +43,26 @@ public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 	}
 	
 	public static TestCodesTableItemPeriodic getCtip1() {
-		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(),  Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(),  true);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip2() {
-		return new TestCodesTableItemPeriodic("t2code2", "t2decode2", getTestFromDate(), getTestToDate(), Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t2code2", "t2decode2", getTestFromDate(), getTestToDate(), true);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip3() {
-		return new TestCodesTableItemPeriodic("t3code3", "t3decode3", getTestFromDate(), getTestToDate(), Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t3code3", "t3decode3", getTestFromDate(), getTestToDate(), true);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip4() {
-		return new TestCodesTableItemPeriodic("t4code4", "t4decode4", getTestFromDate(), getTestToDate(), Boolean.TRUE);
-	}
-	public static TestCodesTableItemPeriodic getCtip5() {
-		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), Boolean.TRUE);
+		return new TestCodesTableItemPeriodic("t4code4", "t4decode4", getTestFromDate(), getTestToDate(), true);
 	}
 	
+	public static TestCodesTableItemPeriodic getCtip5() {
+		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), true);
+	}
+
+	public static TestCodesTableItemPeriodic getCtiWithEmptyDecode() {
+		return new TestCodesTableItemPeriodic("emptyDecode", null, getTestFromDate(), getTestToDate(), true);
+	}
 }

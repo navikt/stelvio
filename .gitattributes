@@ -42,6 +42,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/Codes
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/CodesTableInitializer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/support/DefaultCodesTableInitializer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/AbstractCodesTable.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/AbstractCodesTableItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/CodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/DefaultCodesTable.java -text

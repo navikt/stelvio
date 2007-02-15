@@ -7,141 +7,131 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.collections.Predicate;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.i18n.LocaleContextHolder;
+
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTablePeriodic;
+import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
 import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
-
-import org.apache.commons.collections.Predicate;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
 
 /**
  * Unit test of CodesTablePeriodic.
+ *
  * @author personb66fa0b5ff6e
  * @version $Id$
  */
-public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSpringContextTests {
+public class DefaultCodesTablePeriodicTest {
 
 	/** Implementation class to test */
 	private CodesTablePeriodic<CodesTableItemPeriodic> codesTablePeriodic;
-	
-	/**
-	 * @return the location of the spring configuration xml-file.
-	 */
-	@Override
-	protected String[] getConfigLocations() {
-		return new String[] {
-				"common-java_test_codestable_beans.xml"
-		};
-	}
 
-	/**
-	 * Initialize components prior to running tests.
-	 */
+	/** Initialize components prior to running tests. */
 	//TODO: FIX CASTING
 	@SuppressWarnings("unchecked")
-	public void onSetUp() throws Exception {
+	@Before
+	public void setupDefaultCodesTablePeriodic() {
+		RequestContextHolder.
+				setRequestContext(new SimpleRequestContext("screenId", "moduleId", "processId", "transactionId"));
+
 		List<CodesTableItemPeriodic> list = new ArrayList<CodesTableItemPeriodic>();
 		list.add(TestCodesTableItemPeriodic.getCtip1());
 		list.add(TestCodesTableItemPeriodic.getCtip2());
 		list.add(TestCodesTableItemPeriodic.getCtip3());
+		list.add(TestCodesTableItemPeriodic.getCtiWithEmptyDecode());
 
 		codesTablePeriodic = new DefaultCodesTablePeriodic<CodesTableItemPeriodic>(list);
 	}
-	
-	/**
-	 * Test of getCodesTableItem().
-	 */
-	public void testGetCodesTableItem(){
+
+	/** Test of getCodesTableItem(). */
+	@Test
+	public void getCodesTableItem() {
 		//Test: get an item that does not exist
-		assertNull("Test 1 : A null-value should have been returned" , codesTablePeriodic.getCodesTableItem("t8code15"));
+		try {
+			codesTablePeriodic.getCodesTableItem("t8code15");
+			fail("ItemNotFoundException should have been thrown");
+		} catch (ItemNotFoundException e) {
+			// should happen
+		}
 
 		//Test: get an item
 		CodesTableItemPeriodic itemExist = codesTablePeriodic.getCodesTableItem("t1code1");
 		assertNotNull("Test 2: the item does not exist", itemExist);
 		assertEquals("Test 3: Unexpected code", "t1code1", itemExist.getCode());
-		assertEquals("Test 4: Unexpected decode", "t1decode1", itemExist.getDecode());	
+		assertEquals("Test 4: Unexpected decode", "t1decode1", itemExist.getDecode());
 	}
-	
-	/**
-	 * Test of addPredicate(Predicate predicate).
-	 */
-	public void testAddPredicateAndRemovePredicate(){
-		
 
-		Predicate pred2 = new Predicate(){
+	/** Test of addPredicate(Predicate predicate). */
+	@Test
+	public void addPredicateAndRemovePredicate() {
+		Predicate predicate = new Predicate() {
 			public boolean evaluate(Object object) {
-				CodesTableItemPeriodic codesTableItemPeriodic = (CodesTableItemPeriodic)object;
-				
-				return codesTableItemPeriodic.getCode().toString().startsWith("t1");
+				CodesTableItemPeriodic codesTableItemPeriodic = (CodesTableItemPeriodic) object;
+
+				return codesTableItemPeriodic.getCode().startsWith("t1");
 			}
 		};
-		
+
 		//Test: get the items in the codestable 
 		assertNotNull("Test 1: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));
 		assertNotNull("Test 2: the item does not exist", codesTablePeriodic.getCodesTableItem("t2code2"));
 		assertNotNull("Test 3: the item does not exist", codesTablePeriodic.getCodesTableItem("t3code3"));
-		
-		//Test: get an item that does not exist
-		assertNull("Test 4 : A null-value should have been returned" , codesTablePeriodic.getCodesTableItem("t3code3")); 
-		
-		//Test: get items in the filtered codestable
+
+		codesTablePeriodic.addPredicate(predicate);
+
+		// Test: get items from the filtered codestable
 		assertNotNull("Test 5: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));
-		assertNotNull("Test 6: the item does not exist", codesTablePeriodic.getCodesTableItem("t2code2"));
-		
-		codesTablePeriodic.addPredicate(pred2);
-		try{
-		//	Test: get an item that does not exist
+
+		try {
+			// Test: get an item that does not exist in the filtered code stable
 			codesTablePeriodic.getCodesTableItem("t2code2");
-			fail("Item "+codesTablePeriodic.getCodesTableItem("t2code2")+" should not have been found");
-		}catch(ItemNotFoundException ex){
-			//do nothing
+			fail("ItemNotFoundException should have been thrown");
+		} catch (ItemNotFoundException e) {
+			// should happen
 		}
-		
-		//Test: get an item that does not exist
-		assertNull("Test 7 : A null-value should have been returned" , codesTablePeriodic.getCodesTableItem("t2code2"));
-		
-		//Test: get items in the filtered codestable
-		assertNotNull("Test 8: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));
-		
+
+		try {
+			// Test: get an item that does not exist in the filtered code stable
+			codesTablePeriodic.getCodesTableItem("t3code3");
+			fail("ItemNotFoundException should have been thrown");
+		} catch (ItemNotFoundException e) {
+			// should happen
+		}
+
 		codesTablePeriodic.resetPredicates();
-		
+
 		//Test: get the items in the codestable 
 		assertNotNull("Test 9: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));
 		assertNotNull("Test 10: the item does not exist", codesTablePeriodic.getCodesTableItem("t2code2"));
 		assertNotNull("Test 11: the item does not exist", codesTablePeriodic.getCodesTableItem("t3code3"));
 	}
-	
-	/**
-	 * Test of getDecode(Object code, Date date).
-	 */
-	public void testGetDecodeWithCode(){
-		
+
+	/** Test of getDecode(Object code, Date date). */
+	@Test
+	public void getDecodeWithCode() {
 		Calendar cal = Calendar.getInstance();
 		cal.set(106, 10, 15);
 		Date date = new Date(cal.getTimeInMillis());
-		
+
 		//Set the locale in the RequestContext
 		Locale locale = new Locale("nb", "NO");
 		LocaleContextHolder.setLocale(locale);
-		
-		try{
-			codesTablePeriodic.getDecode("t8code15", date);
-			fail("Expected exception");	
-		} catch(Exception ex){
-			assertEquals("Test 1: getDecode() should have thrown exception",ex.getClass().getSimpleName(), "DecodeNotFoundException");
+
+		try {
+			codesTablePeriodic.getDecode("emptyDecode", date);
+			fail("DecodeNotFoundException should have been thrown because decode should be null");
+		} catch (DecodeNotFoundException ex) {
+			// should happen
 		}
 
 		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItemPeriodic.getCtip1().getCode(), date), "t1decode1");
 	}
-	
-	
-	/**
-	 * Cleans up after tests are complete.
-	 */
-	@Override
-	public void onTearDown() {
-		setDirty();
-	}	
 }

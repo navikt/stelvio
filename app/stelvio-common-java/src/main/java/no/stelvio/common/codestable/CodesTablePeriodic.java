@@ -59,8 +59,6 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
 	/**
 	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
 	 *
-	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object, Date)}
-	 * 
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @param locale the internationalization code.
@@ -68,6 +66,13 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> {
      * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
 	 */
-	@Deprecated
 	String getDecode(Object code, Locale locale, Date date) throws DecodeNotFoundException;
+
+	/**
+	 * Checks that the code exists in the codes table.
+	 *
+	 * @param code the code to check for existence in the codes table.
+	 * @return true if the code exists, false otherwise.
+	 */
+	boolean validateCode(String code);
 }
