@@ -7,6 +7,8 @@ import java.util.List;
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
+ * @deprecated use <code>no.nav.domain.pensjon.generellsak.Omrade<code>
+ * 
  */
 public class Area {
 	private String id;
