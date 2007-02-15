@@ -7,7 +7,6 @@ import java.util.List;
 import no.nav.domain.pensjon.henvendelse.Henvendelse;
 import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk;
 import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
-import no.nav.domain.pensjon.person.Fodselsnummer;
 import no.stelvio.consumer.star.example.henvendelse.SokHenvendelse;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseRequest;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseResponse;
@@ -84,34 +83,6 @@ public class SimpleSokHenvendelse implements SokHenvendelse {
 			list.add( h );
 
 		}
-	}
-
-
-
-	public List<Henvendelse> hentHenvendelseList( Fodselsnummer fodselsnummer )
-		throws Exception
-
-	{
-		System.out.println( "mockLists.size() = " + mockLists.size() );
-		for( int i = 0 ; i < mockLists.size() ; i ++ )
-		{
-			System.out.println( "i = " + i );
-
-			if( mockLists.get( i ).size() == 0 )
-			{
-				System.out.println( "returning null" );
-				return null;
-			}
-			else if( mockLists.get( i ).get( 0 ).getFodselsnummer().getFodselsnummer().equals( fodselsnummer.getFodselsnummer() ) )
-			{
-				System.out.println( "returning list" );
-				return mockLists.get( i );
-			}
-
-			System.out.println( "i = " + i );
-		}
-
-		return null;
 	}
 
 	public SokHenvendelseResponse genererHenvendelseStatistikk(SokHenvendelseRequest sokHenvendelseRequest) {
