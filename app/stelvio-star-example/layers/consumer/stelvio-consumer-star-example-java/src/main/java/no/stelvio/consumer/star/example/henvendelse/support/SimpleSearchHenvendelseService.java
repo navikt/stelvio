@@ -24,7 +24,7 @@ public class SimpleSearchHenvendelseService implements SearchHenvendelseServiceB
 	private static ArrayList<List<Henvendelse>> mockLists;
 
 	static {
-		Henvendelse h1 = new Henvendelse( "12345678901" );
+		Henvendelse h1 = new Henvendelse( "01327200336" );
 		h1.setFagomrKode( "Pensjon" );
 		h1.setOpprettetDato( Calendar.getInstance() );
 		h1.setOpprettetEnhet( "0129 Oslo" );
@@ -34,7 +34,7 @@ public class SimpleSearchHenvendelseService implements SearchHenvendelseServiceB
 
 		ola.add( h1 );
 
-		Henvendelse h2 = new Henvendelse( "12345678901" );
+		Henvendelse h2 = new Henvendelse( "04250100286" );
 		h2.setFagomrKode( "Bidrag" );
 		h2.setOpprettetDato( Calendar.getInstance() );
 		h2.setOpprettetEnhet( "1357 Bergen" );
@@ -45,7 +45,7 @@ public class SimpleSearchHenvendelseService implements SearchHenvendelseServiceB
 
 		addHenvendelser(ola,1000, "12345678901");
 
-		Henvendelse h3 = new Henvendelse( "22222222222" );
+		Henvendelse h3 = new Henvendelse( "12345678901" );
 		h3.setFagomrKode( "Bidrag" );
 		h3.setOpprettetDato( Calendar.getInstance() );
 		h3.setOpprettetEnhet( "1357 Bergen" );
@@ -54,7 +54,7 @@ public class SimpleSearchHenvendelseService implements SearchHenvendelseServiceB
 
 		ole.add( h3 );
 
-		Henvendelse h4 = new Henvendelse( "22222222222" );
+		Henvendelse h4 = new Henvendelse( "04250100286" );
 		h4.setFagomrKode( "Pensjon" );
 		h4.setOpprettetDato( Calendar.getInstance() );
 		h4.setOpprettetEnhet( "1357 Bergen" );
