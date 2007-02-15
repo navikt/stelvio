@@ -7,17 +7,22 @@ Changes in version 1.0.2 (15.2.2007)
 ------------------------------------
 
 General
+* Upgraded Spring to 2.0.2
+* Upgraded Spring WebFlow to 1.0.1
+* Upgraded Spring Modules Validation to 0.7
 
 Module stelvio-common-java
-* Methods and constructors in stelvio-common-codestable that uses Locale have been deprecated. 
+* Added support for validating that a code is present in a codes table [Defect #265]
+* Usage of Locale in codes table items have been deprecated; internationalization of decodes will be handled by standard
+  jdk support (properties files)
 * Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
 * Methods on ServiceRequest for setting/retrieving RequestContext are deprecated as client code should not work with
   RequestContext directly; access it through RequestContextHolder instead
 * Deprecated TransferObject in favour of ServiceRequest/ServiceResponse
-* Methods and constructors in stelvio-common-codestable that uses Locale have been deprecated. 
-  Locale decodes should be handled by properties-files (i18n) in the web tier.
-* Changed implementations of CodesTable and CodesTablePeriodic that potentially improves performance (decreased uses of loops)
-* getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to DecodeNotFoundException
+* Changed implementations of CodesTable and CodesTablePeriodic that potentially improves performance (decreased uses of
+  loops)
+* getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to
+  DecodeNotFoundException
 * Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
 
 Module stelvio-test-java
@@ -43,7 +48,8 @@ Module stelvio-presentation-java
   panelNavigation2 component.
 
 Star example
-
+* Corrected package structure (no.nav... -> no.stelvio.star.example...)
+* Added consumer layer
 
 Changes in version 1.0.1 (17.1.2007)
 ------------------------------------
