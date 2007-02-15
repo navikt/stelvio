@@ -4,14 +4,29 @@ http://confluence.adeo.no/display/stelvio/Architecture
 
 
 Changes in version 1.0.2 (15.02.2007)
-
 ------------------------------------
 
+General
+
 Module stelvio-common-java
-* Methods and constructors in stelvio-common-codestable that uses Locale have been derprecated. 
+* Methods and constructors in stelvio-common-codestable that uses Locale have been deprecated. 
   Locale decodes should be handled by properties-files (i18n) in the web tier.
 * Changed implementations of CodesTable and CodesTablePeriodic that potentially improves performance (decreased uses of loops)
 * getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to DecodeNotFoundException
+* Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
+* Methods on ServiceRequest for setting/retrieving RequestContext are deprecated as client code should not work with
+  RequestContext directly; access it through RequestContextHolder instead
+* Deprecated TransferObject in favour of ServiceRequest/ServiceResponse
+
+Module stelvio-test-java
+
+Module stelvio-domain-java
+
+Module stelvio-repository-java
+
+Module stelvio-batch-java
+
+Module stelvio-service-java
 
 Module stelvio-presentation-java
 * Components for help taglib has been added. The taglib consist of three components: HelpDisplayAreaComponent,
@@ -25,6 +40,9 @@ Module stelvio-presentation-java
 * Added a custom action class for fetching menu items and convert them into panelnavigation items used by the 
   panelNavigation2 component.
 
+Star example
+
+
 Changes in version 1.0.1 (17.1.2007)
 ------------------------------------
 
@@ -35,7 +53,6 @@ General
 * Added module stelvio-repository-java
 
 Module stelvio-common-java
-* Deprecated TransferObject in favour of ServiceRequest/ServiceResponse
 * Added configuration (using the configuration mechanism defined by the JAR file service provider contract in JDK 1.3
   and above) in META-INF/services/org.apache.commons.logging.LogFactory to make sure commons-logging is using an
   application's log4j.properties and not Websphere's own
