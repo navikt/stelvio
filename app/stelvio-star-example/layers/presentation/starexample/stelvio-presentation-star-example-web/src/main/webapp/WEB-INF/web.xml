@@ -97,11 +97,38 @@
 	<ejb-local-ref id="EJBLocalRef_1168904399031">
 		<description>
 		</description>
-		<ejb-ref-name>ejb/CodesTableFactory</ejb-ref-name>
+		<ejb-ref-name>ejb/ref/CodesTableFactory</ejb-ref-name>
 		<ejb-ref-type>Session</ejb-ref-type>
 		<local-home>no.stelvio.service.star.example.codestable.CodesTableFactoryLocalHome</local-home>
 		<local>no.stelvio.service.star.example.codestable.CodesTableFactoryLocaleFactoryLocal</local>
 		<ejb-link>stelvio-service-star-example-ejb.jar#CodesTableFactory</ejb-link>
+	</ejb-local-ref>
+	<ejb-local-ref id="EJBLocalRef_1171547274609">
+		<description>
+		</description>
+		<ejb-ref-name>ejb/ref/ErrorDefinitionRetriever</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>no.stelvio.service.star.example.error.ErrorDefinitionRetrieverLocalHome</local-home>
+		<local>no.stelvio.service.star.example.error.ErrorDefinitionRetrieverLocal</local>
+		<ejb-link>stelvio-service-star-example-ejb.jar#ErrorDefinitionRetriever</ejb-link>
+	</ejb-local-ref>
+	<ejb-local-ref id="EJBLocalRef_1171547274610">
+		<description>
+		</description>
+		<ejb-ref-name>ejb/ref/HenvendelseService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>no.stelvio.service.star.example.henvendelse.HenvendelseServiceLocalHome</local-home>
+		<local>no.stelvio.service.star.example.henvendelse.HenvendelseServiceLocal</local>
+		<ejb-link>stelvio-service-star-example-ejb.jar#HenvendelseService</ejb-link>
+	</ejb-local-ref>
+	<ejb-local-ref id="EJBLocalRef_1171547274611">
+		<description>
+		</description>
+		<ejb-ref-name>ejb/ref/SaksbehandlerService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceLocalHome</local-home>
+		<local>no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceLocal</local>
+		<ejb-link>stelvio-service-star-example-ejb.jar#SaksbehandlerService</ejb-link>
 	</ejb-local-ref>
 
 	<error-page id="errorPage">
