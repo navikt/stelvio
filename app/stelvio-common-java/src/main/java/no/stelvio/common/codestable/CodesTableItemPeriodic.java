@@ -2,15 +2,14 @@ package no.stelvio.common.codestable;
 
 import java.util.Date;
 import java.util.Locale;
-
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import no.stelvio.common.codestable.support.AbstractCodesTableItem;
-
 import org.apache.commons.lang.builder.ToStringBuilder;
+
+import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 /**
  * CodesTableItemPeriodic represents an item in a <code>CodesTable</code> with a valid period.
@@ -76,40 +75,22 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	
 	/**
 	 * Returns the date the item is valid from.
+	 * 
 	 * @return The date the item is valid from.
-	 * @see #setFromDate
 	 */
 	public Date getFromDate(){
 		return fromDate;
 	}
-	
-	/**
-	 * Sets the date the item is valid from.
-	 * @param date the date the item is valid.
-	 * @see #getFromDate
-	 */
-	public void setFromDate(Date date){
-		this.fromDate = date;
-	}
-	
+
 	/**
 	 * Returns the date the item is valid to.
+	 * 
 	 * @return The date the item is valid to.
-	 * @see #setToDate
 	 */
 	public Date getToDate(){
 		return toDate;
 	}
 
-	/**
-	 * Sets the date the item is valid to.
-	 * @param date the date the item is valid to.
-	 * @see #getToDate
-	 */
-	public void setToDate(Date date){
-		this.toDate = date;
-	}
-	
 	/**
 	 * Returns a String representation of this object.
 	 * 
