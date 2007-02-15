@@ -1,6 +1,7 @@
 package no.nav.domain.pensjon.codestable;
 
 import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -16,6 +17,8 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
  * CodesTableItem for HenvendelseType
  * 
  * The tablemappings defined in the MappedSuperclasses are overridden
+ * 
+ * Defines a <code>@NamedQuery</code>, "HenvendelseTypeCti.findAll" to retrieve all instances of HenvendelseTypeCti from database
  * 
  * @author person983601e0e117 (Accenture)
  * 
@@ -50,10 +53,11 @@ public class HenvendelseTypeCti extends CodesTableItemPeriodic {
 	 * @param decode the decode
 	 * @param fromDate valid from date
 	 * @param toDate valid to date
+	 * @param locale locale for this instance
 	 * @param valid <code>true</code> if this item is valid, <code>false</code> if it's invalid
 	 */
-	public HenvendelseTypeCti(String code, String decode, Date fromDate, Date toDate, boolean valid) {
-		super(code, decode, fromDate, toDate, valid);
+	public HenvendelseTypeCti(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean valid) {
+		super(code, decode, fromDate, toDate, locale, valid);
 	}
 
 }
