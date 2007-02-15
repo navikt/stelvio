@@ -1,7 +1,7 @@
 package no.stelvio.common.error.retriever;
 
-import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 import no.stelvio.common.error.support.ErrorDefinition;
 import no.stelvio.common.error.support.Severity;
@@ -14,7 +14,7 @@ import no.stelvio.common.error.support.Severity;
 public class TestErrorDefinitionRetriever implements ErrorDefinitionRetriever {
 	private static boolean throwException = false;
 
-	public Collection<ErrorDefinition> retrieve() {
+	public Set<ErrorDefinition> retrieve() {
         HashSet<ErrorDefinition> errors = new HashSet<ErrorDefinition>();
         errors.add(new ErrorDefinition.Builder(Throwable.class.getName()).message("error: {0}").severity(Severity.FATAL).build());
 

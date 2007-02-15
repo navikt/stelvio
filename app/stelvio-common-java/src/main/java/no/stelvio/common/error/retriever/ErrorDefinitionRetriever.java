@@ -1,6 +1,6 @@
 package no.stelvio.common.error.retriever;
 
-import java.util.Collection;
+import java.util.Set;
 
 import no.stelvio.common.error.support.ErrorDefinition;
 
@@ -9,5 +9,5 @@ import no.stelvio.common.error.support.ErrorDefinition;
  * @todo write javadoc
  */
 public interface ErrorDefinitionRetriever {
-    Collection<ErrorDefinition> retrieve() throws RetrieverFailedException;
+    Set<ErrorDefinition> retrieve() throws RetrieverFailedException;
 }
