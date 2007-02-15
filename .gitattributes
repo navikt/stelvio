@@ -369,6 +369,12 @@ app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resou
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/resources.xml -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/variables.xml -text
 app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/security.xml -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.classpath -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.project -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.settings/org.eclipse.wst.common.component -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/SearchHenvendelseServiceBi.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/HenvendelseMapper.java -text
@@ -376,6 +382,12 @@ app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/support/SimpleSearchHenvendelseService.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/to/SearchHenvendelseRequest.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/to/SearchHenvendelseResponse.java -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/.classpath -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/.project -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/.settings/org.eclipse.jdt.core.prefs -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/.settings/org.eclipse.wst.common.component -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/pom.xml -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/ASBOPenHenvendelse.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/historikk/ASBOPenHenvendelseHistory.java -text
