@@ -19,7 +19,7 @@
 		<property name="dataSource" ref="rep.starexample.dataSource"/>
 		<property name="annotatedClasses">
 			<list>
-				<value>no.nav.domain.pensjon.codestable.HenvendelseTypeCti</value>
+				<value>no.stelvio.star.example.codestable.HenvendelseTypeCti</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

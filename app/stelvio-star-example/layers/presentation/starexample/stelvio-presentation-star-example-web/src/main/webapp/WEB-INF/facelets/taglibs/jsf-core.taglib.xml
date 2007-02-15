@@ -5,5 +5,5 @@
   "facelet-taglib_1_0.dtd">
 
 <facelet-taglib>
-	<library-class>no.nav.presentation.pensjon.saksbehandling.web.tags.JsfCoreLibrary</library-class>
+	<library-class>no.stelvio.presentation.star.example.web.tags.JsfCoreLibrary</library-class>
 </facelet-taglib>

@@ -1,4 +1,4 @@
-package no.nav.presentation.pensjon.saksbehandling.start;
+package no.stelvio.presentation.star.example.start;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

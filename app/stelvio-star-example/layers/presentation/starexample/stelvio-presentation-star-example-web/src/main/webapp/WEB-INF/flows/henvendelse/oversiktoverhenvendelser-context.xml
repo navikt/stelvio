@@ -6,9 +6,9 @@
 
 	<!-- TODO check if jsf- and/or swf-scopes can be used -->
 	<bean id="prs.henvendelse.oversiktAction"
-	      class="no.nav.presentation.pensjon.saksbehandling.henvendelse.OversiktOverHenvendelserAction">
+	      class="no.stelvio.presentation.star.example.henvendelse.OversiktOverHenvendelserAction">
 		<property name="formObjectName" value="prsHenvendelseOversiktForm"/>
-		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.henvendelse.OversiktOverHenvendelserForm"/>
+		<property name="formObjectClass" value="no.stelvio.presentation.star.example.henvendelse.OversiktOverHenvendelserForm"/>
 		<property name="validator">
 			<ref local="prs.henvendelse.oversiktValidator"/>
 		</property>
@@ -22,10 +22,10 @@
 		<property name="customFunctions">
 			<map>
 				<entry key="checkParameters">
-					<value>no.nav.presentation.pensjon.saksbehandling.henvendelse.SpesifikasjonValidatorFunction</value>
+					<value>no.stelvio.presentation.star.example.henvendelse.SpesifikasjonValidatorFunction</value>
 				</entry>
 				<entry key="checkTidsperiode">
-					<value>no.nav.presentation.pensjon.saksbehandling.henvendelse.TidsperiodeValidatorFunction</value>
+					<value>no.stelvio.presentation.star.example.henvendelse.TidsperiodeValidatorFunction</value>
 				</entry>
 			</map>
 		</property>

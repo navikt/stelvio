@@ -1,9 +1,9 @@
-package no.nav.presentation.pensjon.saksbehandling.web.tags;
-
-import com.sun.facelets.tag.AbstractTagLibrary;
+package no.stelvio.presentation.star.example.web.tags;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+
+import com.sun.facelets.tag.AbstractTagLibrary;
 
 
 /**

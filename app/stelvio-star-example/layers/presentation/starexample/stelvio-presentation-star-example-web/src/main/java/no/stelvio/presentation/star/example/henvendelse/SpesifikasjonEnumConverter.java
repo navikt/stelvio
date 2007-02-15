@@ -1,4 +1,4 @@
-package no.nav.presentation.pensjon.saksbehandling.henvendelse;
+package no.stelvio.presentation.star.example.henvendelse;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

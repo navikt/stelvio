@@ -1,9 +1,8 @@
-package no.nav.presentation.pensjon.saksbehandling.web.tags;
+package no.stelvio.presentation.star.example.web.tags;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-
 import javax.faces.context.FacesContext;
 
 

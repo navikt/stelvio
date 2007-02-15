@@ -1,4 +1,4 @@
-package no.nav.presentation.pensjon.saksbehandling.henvendelse;
+package no.stelvio.presentation.star.example.henvendelse;
 
 import org.springmodules.validation.valang.functions.AbstractFunction;
 import org.springmodules.validation.valang.functions.Function;

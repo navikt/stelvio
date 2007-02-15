@@ -4,12 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-	<bean id="prs.start.action" class="no.nav.presentation.pensjon.saksbehandling.start.StartAction">
+	<bean id="prs.start.action" class="no.stelvio.presentation.star.example.start.StartAction">
 		<property name="saksbehandlerService" ref="srv.starexample.saksbehandlerService"/>
 	</bean>
 
 	<bean id="prs.start.form" class="org.springframework.webflow.action.FormAction">
 		<property name="formObjectName" value="prsStartForm"/>
-		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.start.StartForm"/>
+		<property name="formObjectClass" value="no.stelvio.presentation.star.example.start.StartForm"/>
 	</bean>
 </beans>
