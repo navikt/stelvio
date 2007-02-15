@@ -24,15 +24,15 @@
 			    	<tbody> 
 			    		<tr>
 				  			<td class="standard_data_tabell_data" width="310">&#160;<h:outputText value="#{messageSource['oversiktOverHenvendelser.fagomrade']}:" />&#160;
-								<t:selectOneMenu id="valgtFagomrade" value="#{flowScope.oversiktOverHenvendelserForm.valgtFagomrade}" converter="fagomradeEnumConverter" tabindex="3">
-									<f:selectItems value="#{flowScope.oversiktOverHenvendelserForm.fagomrader}" />
+								<t:selectOneMenu id="valgtFagomrade" value="#{flowScope.prsHenvendelseOversiktForm.valgtFagomrade}" converter="fagomradeEnumConverter" tabindex="3">
+									<f:selectItems value="#{flowScope.prsHenvendelseOversiktForm.fagomrader}" />
 								</t:selectOneMenu>
 								<nav:errorMessage form="hentHenvendelseStatistikk" for="valgtFagomrade" />
 							</td>
 				  			<td class="standard_data_tabell_data" width="539">&#160;<h:outputText value="#{messageSource['oversiktOverHenvendelser.tidsperiode']}:" />&#160;
-								<t:selectOneMenu id="valgtTidsperiode" value="#{flowScope.oversiktOverHenvendelserForm.valgtTidsperiode}" converter="tidsperiodeEnumConverter" tabindex="3">
+								<t:selectOneMenu id="valgtTidsperiode" value="#{flowScope.prsHenvendelseOversiktForm.valgtTidsperiode}" converter="tidsperiodeEnumConverter" tabindex="3">
 									<f:selectItem itemValue="#{messageSource['oversiktOverHenvendelser.velgTidsperiode']}:"/>
-									<f:selectItems value="#{flowScope.oversiktOverHenvendelserForm.tidsperioder}" />
+									<f:selectItems value="#{flowScope.prsHenvendelseOversiktForm.tidsperioder}" />
 								</t:selectOneMenu>
 								<nav:errorMessage form="hentHenvendelseStatistikk" for="valgtTidsperiode" />
 							</td>
@@ -42,8 +42,8 @@
 			  	<p class="spacer_tabeller" />
 				<h3><h:outputText value="#{messageSource['oversiktOverHenvendelser.spesifikasjon']}"/></h3>
 
-				<t:selectOneRadio id="valgtSok" layout="spread" value="#{flowScope.oversiktOverHenvendelserForm.valgtSok}" converter="spesifikasjonEnumConverter">
-					<f:selectItems value="#{flowScope.oversiktOverHenvendelserForm.sokeAlternativ}" />
+				<t:selectOneRadio id="valgtSok" layout="spread" value="#{flowScope.prsHenvendelseOversiktForm.valgtSok}" converter="spesifikasjonEnumConverter">
+					<f:selectItems value="#{flowScope.prsHenvendelseOversiktForm.sokeAlternativ}" />
 				</t:selectOneRadio>
 				<table class="standard_data_tabell" cellspacing="0" cellpadding="0" width="849" border="0">
 			    	<tbody> 

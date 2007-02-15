@@ -10,8 +10,8 @@
 </head>
 <body>
 
-<form jsfc="h:form">
-	Saksbehandlernr: <h:inputText id="saksbehandlernr" value="#{flowScope.startForm.saksbehandlernr}" maxlength="1" size="1"/>
+<form jsfc="h:form" action="submit">
+	Saksbehandlernr: <h:inputText id="saksbehandlernr" value="#{flowScope.prsStartForm.saksbehandlernr}" maxlength="1" size="1"/>
 	<input class="NAVbtn" type="submit" jsfc="h:commandButton" action="hent" value="Hent"/>
 	<br/>
 	<h:message showSummary="true" showDetail="false" style="color: red; font-weight: bold;" for="saksbehandlernr"/>
