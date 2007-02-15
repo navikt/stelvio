@@ -1,9 +1,9 @@
-package no.stelvio.service.codestable;
+package no.stelvio.service.star.example.codestable;
 
 import javax.ejb.CreateException;
 
 /**
- * Local Home interface for no.stelvio.service.codestable.CodesTableFactoryBean bean
+ * Local Home interface for no.stelvio.service.star.example.codestable.CodesTableFactoryBean bean
  */
 public interface CodesTableFactoryLocalHome extends javax.ejb.EJBLocalHome {
 

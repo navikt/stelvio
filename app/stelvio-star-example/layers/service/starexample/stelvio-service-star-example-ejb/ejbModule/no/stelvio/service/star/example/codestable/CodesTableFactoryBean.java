@@ -1,4 +1,4 @@
-package no.stelvio.service.codestable;
+package no.stelvio.service.star.example.codestable;
 
 import javax.ejb.CreateException;
 import javax.ejb.SessionContext;
