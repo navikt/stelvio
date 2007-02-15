@@ -1,5 +1,8 @@
 package no.stelvio.consumer.star.example.henvendelse.to;
 
+import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk;
+import no.stelvio.common.transferobject.ServiceResponse;
+
 /**
  * @author personf8e9850ed756, Accenture
  */

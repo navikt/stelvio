@@ -1,5 +1,8 @@
 package no.stelvio.consumer.star.example.henvendelse.to;
 
+import no.nav.domain.pensjon.henvendelse.HenvendelseStatistikkCriteria;
+import no.stelvio.common.transferobject.ServiceRequest;
+
 /**
  * Defines criteria for generating and returning {@link no.nav.domain.pensjon.henvendelse.HenvendelseStatistikk}.
  * @author personff564022aedd
