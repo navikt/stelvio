@@ -16,8 +16,8 @@ import no.stelvio.common.cache.CacheTest;
 public class DefaultCacheTest implements CacheTest {
 	private Logger log = Logger.getLogger(CacheManagementTest.class);
 	private final String initialString = "This is a cacheable string";
-	private String cachedString = new String(initialString);
-	private int cnt = 0;
+	private String cachedString = initialString;
+	private int cnt;
 	
 	/**
 	 * {@inheritDoc CacheTest#getStringCached()}
@@ -34,7 +34,8 @@ public class DefaultCacheTest implements CacheTest {
 	@CacheFlush(modelId = "flushingModel")
 	public void updateStringAndFlush() {
 		log.debug("DEBUG: Entering updateStringAndFlush()...");
-		cachedString = initialString+(++cnt);
+		cnt++;
+		cachedString = initialString + cnt;
 		
 	}
 
@@ -43,6 +44,7 @@ public class DefaultCacheTest implements CacheTest {
 	 */
 	public void updateStringNoFlush() {
 		log.debug("DEBUG: Entering updateStringNoFlush()...");
-		cachedString = initialString+(++cnt);
+		cnt++;
+		cachedString = initialString + cnt;
 	}
 }
