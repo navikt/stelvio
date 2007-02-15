@@ -7,6 +7,8 @@ import no.stelvio.domain.star.example.saksbehandling.Saksbehandler;
 import no.stelvio.service.star.example.exception.DatabaseNotFoundException;
 import no.stelvio.service.star.example.saksbehandling.PersonNotFoundException;
 import no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi;
+import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerRequest;
+import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerResponse;
 
 /**
  * @author personf8e9850ed756, Accenture
@@ -15,13 +17,13 @@ import no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi;
 public class SimpleSaksbehandlerService implements SaksbehandlerServiceBi {
 	private static final Log log = LogFactory.getLog(SimpleSaksbehandlerService.class);
 
-	public Saksbehandler readSaksbehandler(Long saksbehandlernr) throws PersonNotFoundException, DatabaseNotFoundException {
+	public SaksbehandlerResponse hentSaksbehandler(SaksbehandlerRequest request) throws PersonNotFoundException {
 		Saksbehandler saksbehandler = new Saksbehandler("fornavn", "etternavn", "enhet", 12345678L);
 
 		if (log.isDebugEnabled()) {
 			log.debug("saksbehandler = " + saksbehandler);
 		}
-		
-		return saksbehandler;
+
+		return new SaksbehandlerResponse(saksbehandler);
 	}
 }

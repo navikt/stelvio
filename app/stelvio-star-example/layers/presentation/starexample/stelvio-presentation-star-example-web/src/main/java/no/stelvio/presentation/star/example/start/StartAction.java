@@ -7,8 +7,9 @@ import org.springframework.webflow.context.ExternalContextHolder;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 
-import no.stelvio.domain.star.example.saksbehandling.Saksbehandler;
 import no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi;
+import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerRequest;
+import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerResponse;
 
 
 public class StartAction extends MultiAction {
@@ -20,10 +21,11 @@ public class StartAction extends MultiAction {
 		log.debug("form.getSaksbehandlernr(): " + form.getSaksbehandlernr());
 		log.debug("saksbehandlerService = " + saksbehandlerService);
 
-		Saksbehandler saksbehandler = saksbehandlerService.readSaksbehandler(form.getSaksbehandlernr());
-		log.debug("saksbehandler = " + saksbehandler);
-		context.getExternalContext().getSessionMap().put("saksbehandlerDO", saksbehandler);
-		ExternalContextHolder.getExternalContext().getSessionMap().put("saksbehandlerDO", saksbehandler);
+		SaksbehandlerResponse saksbehandlerResponse =
+				saksbehandlerService.hentSaksbehandler(new SaksbehandlerRequest(form.getSaksbehandlernr()));
+		log.debug("saksbehandler = " + saksbehandlerResponse.getSaksbehandler());
+		ExternalContextHolder.getExternalContext().getSessionMap().
+				put("saksbehandlerDO", saksbehandlerResponse.getSaksbehandler());
 
 		return success();
 	}
