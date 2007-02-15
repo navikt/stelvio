@@ -4,11 +4,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
+	<bean id="rep.starexample.saksbehandlerRepository"
+	      class="no.stelvio.repositor.star.example.saksbehandling.support.HibernateSaksbehandlerRepository">
+		<property name="hibernateTemplate" ref="rep.starexample.hibernateTemplate"/>
+	</bean>
+
 	<bean id="rep.starexample.codesTableRepository"
 	      class="no.stelvio.repository.codestable.support.HibernateCodesTableRepository">
 		<property name="hibernateTemplate" ref="rep.starexample.hibernateTemplate"/>
 	</bean>
-
+	
 	<bean id="rep.starexample.hibernateTemplate"
 	      class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="rep.starexample.sessionFactory"/>
@@ -20,6 +25,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>no.stelvio.domain.star.example.codestable.HenvendelseTypeCti</value>
+				<value>no.stelvio.domain.star.example.saksbehandling.Saksbehandler</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
