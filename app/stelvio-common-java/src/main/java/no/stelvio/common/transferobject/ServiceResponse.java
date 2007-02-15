@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author personf8e9850ed756
  * @version $Id$
  */
-public class ServiceResponse implements Serializable {
+public abstract class ServiceResponse implements Serializable {
 	/** Used to ensure backwards compatability when serializing instances. */
 	private static final long serialVersionUID = 8537404654247801408L;
 }
