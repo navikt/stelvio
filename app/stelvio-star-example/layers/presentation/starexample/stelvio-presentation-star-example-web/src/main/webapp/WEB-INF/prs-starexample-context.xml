@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/jee
+                           http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+                           http://www.springframework.org/schema/webflow-config
+                           http://www.springframework.org/schema/webflow-config/spring-webflow-config-1.0.xsd">
+
+	<!-- Creates the registry of flow definitions for this application. -->
+
+	<!-- Launches new flow executions and resumes existing executions: Spring 1.2 config version -->
+	<!-- TODO: what about continuation? -->
+	<flow:executor id="flowExecutor" registry-ref="flowDefinitionLocator"/>
+
+	<!-- Creates the registry of flow definitions for this application: Spring 1.2 config version -->
+	<flow:registry id="flowDefinitionLocator">
+		<flow:location path="/WEB-INF/flows/**/*-flow.xml"/>
+	</flow:registry>
+
+	<!--
+		Spring configured flow navigation handler delegate, allowing for custom configuration
+		using standard dependency injection techniques.
+		
+		Note: this definition is optional; you may choose to simply specify your FlowNavigationHandler
+		in your faces-config.xml if its defaults meet your needs.
+	-->
+	<bean id="jsfNavigationHandler" class="org.springframework.webflow.executor.jsf.FlowNavigationHandler"/>
+
+	<!--
+		Spring configured flow phase listener delegate, allowing for custom configuration using
+		standard dependency injection techniques.
+		
+		Note: this definition is optional; you may choose to simply specify your FlowPhaseListener
+		in your faces-config.xml if its defaults meet your needs.
+	-->
+	<bean id="flowPhaseListener" class="org.springframework.webflow.executor.jsf.FlowPhaseListener"/>
+
+	<aop:config>
+		<aop:aspect ref="prs.starexample.errorAdvice">
+			<aop:pointcut id="methodToHandleErrorsOn" expression="execution(* *Service(..))"/>
+			<aop:after-throwing pointcut-ref="methodToHandleErrorsOn" throwing="throwable" method="afterThrowing"/>
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="prs.starexample.saksbehandlerService"
+	      class="no.stelvio.service.star.example.saksbehandling.support.RepositorySaksbehandlerService"/>
+	<!--
+	 <bean id="prs.starexample.saksbehandlerService"
+				 class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
+		 <property name="jndiName" value="ejb/SaksbehandlerService"/>
+		 <property name="resourceRef" value="true"/>
+		 <property name="businessInterface" value="no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi"/>
+	 </bean>
+ -->
+
+	<bean id="prs.starexample.searchHenvendelseService"
+	      class="no.stelvio.consumer.star.example.henvendelse.support.SimpleSearchHenvendelseService"/>
+
+<!--
+	<jee:local-slsb id="prs.starexample.searchHenvendelseService"
+	                jndi-name="ejb/SokHenvendelse"
+	                resource-ref="true"
+	                business-interface="no.stelvio.consumer.star.example.henvendelse.SearchHenvendelseServiceBi"/>
+-->
+
+	<!-- CodesTable setup -->
+	<bean id="prs.starexample.codesTableManager" class="no.stelvio.common.codestable.support.DefaultCodesTableManager">
+		<property name="codesTableFactory" ref="srv.starexample.codesTableFactory"/>
+	</bean>
+	<bean id="prs.starexample.codesTableInitializer"
+	      class="no.stelvio.common.codestable.factory.support.DefaultCodesTableInitializer">
+		<property name="codesTableManager" ref="prs.starexample.codesTableManager"/>
+		<property name="codesTablePeriodicClasses">
+			<list>
+				<value>no.stelvio.domain.star.example.codestable.HenvendelseTypeCti</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--	<bean id="prs.starexample.codesTableFactory" class="no.stelvio.service.codestable.RepositoryCodesTableFactory">
+		<property name="codesTableRepository" ref="prs.starexample.codesTableRepository"/>
+	</bean>
+	<bean id="prs.starexample.codesTableRepository"
+				class="no.stelvio.repository.codestable.support.HibernateCodesTableRepository">
+		<property name="hibernateTemplate" ref="prs.starexample.codesTableRepository"/>
+	</bean>-->
+
+	<!--
+	 <bean id="prs.starexample.codesTableFactory"
+				 class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
+		 <property name="jndiName" value="ejb/CodesTableFactory"/>
+		 <property name="resourceRef" value="true"/>
+		 <property name="businessInterface" value="no.stelvio.common.codestable.factory.CodesTableFactory"/>
+	 </bean>
+ -->
+
+	<bean id="prs.starexample.errorAdvice" class="no.stelvio.common.error.support.RethrowExceptionHandlingAdvice">
+		<property name="exceptionHandlerFacade" ref="prs.starexample.errorFacade"/>
+	</bean>
+	<bean id="prs.starexample.errorFacade" class="no.stelvio.common.error.support.DefaultExceptionHandlerFacade">
+		<property name="defaultStrategy" ref="prs.starexample.errorStrategy"/>
+	</bean>
+	<bean id="prs.starexample.errorStrategy"
+	      class="no.stelvio.common.error.strategy.support.ExceptionHandlerStrategyChain">
+		<property name="strategies">
+			<set>
+				<ref local="prs.starexample.error.LogStrategy"/>
+				<ref local="prs.starexample.error.MorpherStrategy"/>
+			</set>
+		</property>
+	</bean>
+	<bean id="prs.starexample.error.LogStrategy"
+	      class="no.stelvio.common.error.strategy.support.LoggerExceptionHandlerStrategy">
+		<property name="errorResolver" ref="prs.starexample.errorResolver"/>
+	</bean>
+	<bean id="prs.starexample.error.MorpherStrategy"
+	      class="no.stelvio.common.error.strategy.support.MorpherExceptionHandlerStrategy"/>
+	<bean id="prs.starexample.errorResolver"
+	      class="no.stelvio.common.error.resolver.support.ErrorDefinitionResolverFactoryBean">
+		<property name="errorDefinitionRetriever" ref="srv.starexample.errorDefinitionRetriever"/>
+	</bean>
+
+<!--
+	<jee:local-slsb id="prs.starexample.errorDefinitionRetriever"
+	                jndi-name="ejb/errorRetriever"
+	                resource-ref="true"
+	                business-interface="no.stelvio.common.error.retriever.ErrorDefinitionRetriever"/>
+-->
+
+	<!-- TODO message source must have this name, probably; investigate Spring's application context classes -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="resources"/>
+	</bean>
+</beans>

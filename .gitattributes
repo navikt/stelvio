@@ -430,7 +430,6 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/resources/log4j.properties -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/resources/resources.properties -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/META-INF/MANIFEST.MF -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/applicationContext.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/ehcache.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/facelets/taglibs/jsf-core.taglib.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/facelets/taglibs/starexample.components.xml -text
@@ -442,9 +441,11 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/flows/start/start-flow.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/ibm-web-bnd.xmi -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/ibm-web-ext.xmi -text
+app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/prs-starexample-context.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/web.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/errorMessage.xhtml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/compositions/common/menu.xhtml -text
+app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/error.jsp -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/Detaljer[!!-~]opptjeningsregister_modus2.htm -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/NAVgronn.gif -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/images/NAVlysBla.gif -text

@@ -46,7 +46,9 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			/WEB-INF/applicationContext.xml
+			/WEB-INF/prs-starexample-context.xml
+			classpath:/modules/srv-starexample-context.xml
+			classpath:/modules/rep-starexample-context.xml
 		</param-value>
 	</context-param>
 
@@ -101,4 +103,9 @@
 		<local>no.stelvio.service.star.example.codestable.CodesTableFactoryLocaleFactoryLocal</local>
 		<ejb-link>stelvio-service-star-example-ejb.jar#CodesTableFactory</ejb-link>
 	</ejb-local-ref>
+
+	<error-page id="errorPage">
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
 </web-app>
