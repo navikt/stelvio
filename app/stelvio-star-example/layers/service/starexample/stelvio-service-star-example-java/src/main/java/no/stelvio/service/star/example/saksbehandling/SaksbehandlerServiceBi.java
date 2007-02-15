@@ -3,7 +3,6 @@
  */
 package no.stelvio.service.star.example.saksbehandling;
 
-import no.stelvio.service.star.example.exception.DatabaseNotFoundException;
 import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerRequest;
 import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerResponse;
 

@@ -4,7 +4,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.domain.star.example.saksbehandling.Saksbehandler;
-import no.stelvio.service.star.example.exception.DatabaseNotFoundException;
 import no.stelvio.service.star.example.saksbehandling.PersonNotFoundException;
 import no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi;
 import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerRequest;

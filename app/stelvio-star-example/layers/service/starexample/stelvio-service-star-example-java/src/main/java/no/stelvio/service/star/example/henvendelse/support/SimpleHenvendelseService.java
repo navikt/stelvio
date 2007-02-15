@@ -7,7 +7,6 @@ import java.util.List;
 import no.stelvio.domain.star.example.henvendelse.Henvendelse;
 import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikk;
 import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
-import no.stelvio.domain.star.example.person.Fodselsnummer;
 import no.stelvio.service.star.example.henvendelse.HenvendelseServiceBi;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;

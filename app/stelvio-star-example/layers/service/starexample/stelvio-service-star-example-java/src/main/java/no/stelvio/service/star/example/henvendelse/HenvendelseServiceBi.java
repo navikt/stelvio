@@ -1,6 +1,5 @@
 package no.stelvio.service.star.example.henvendelse;
 
-import no.stelvio.domain.star.example.person.Fodselsnummer;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;
 
