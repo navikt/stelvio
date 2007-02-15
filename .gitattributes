@@ -98,8 +98,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/error/strategy/support/M
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/CommonExceptionLogic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacade.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ErrorDefinition.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ExceptionHandlingAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/ExceptionToCopyHolder.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/RethrowExceptionHandlingAdvice.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/Severity.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/error/support/SimpleExceptionWrapper.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/event/ApplicationEvent.java -text
@@ -201,8 +201,8 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/error/strategy/support/M
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/CommonExceptionLogicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/DefaultExceptionHandlerFacadeTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ErrorDefinitionTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ExceptionHandlingAdviceTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/ExceptionToCopyHolderTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/RethrowExceptionHandlingAdviceTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/support/SeverityTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/event/ApplicationEventListenerTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/event/ApplicationEventTest.java -text
