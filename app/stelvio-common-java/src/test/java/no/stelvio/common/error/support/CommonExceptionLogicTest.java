@@ -67,7 +67,7 @@ public class CommonExceptionLogicTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void exceptionIsThrownWhenArgsIsEmpty() {
-        createDummy("test", new Object[] {});
+        createDummy("test");
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -54,11 +54,11 @@ public final class ReflectUtil {
 		} catch (IllegalAccessException e) {
 			throw new ReflectionException(
                     e,
-				new String[] { prop, instance.getClass().getName()});
+					prop, instance.getClass().getName());
 		} catch (InvocationTargetException e) {
 			throw new ReflectionException(
                     e,
-				new String[] { prop, instance.getClass().getName()});
+					prop, instance.getClass().getName());
 		} catch (NoSuchMethodException e) {
 			throw new ReflectionException(
                     e,
@@ -95,11 +95,11 @@ public final class ReflectUtil {
 		} catch (InvocationTargetException e) {
 			throw new ReflectionException(
                     e,
-				new String[] { property, instance.getClass().getName()});
+					property, instance.getClass().getName());
 		} catch (NoSuchMethodException e) {
 			throw new ReflectionException(
                     e,
-				new String[] { property, instance.getClass().getName()});
+					property, instance.getClass().getName());
 		}
 	}
 

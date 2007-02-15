@@ -1,10 +1,13 @@
 package no.stelvio.common.security.authorization.method;
 
-import static org.junit.Assert.*;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +22,7 @@ public class RolesUtilTest {
 		Method method = null;
 
         try {
-            	method = MockService.class.getMethod("someProtectedMethod", new Class[] {});
+            	method = MockService.class.getMethod("someProtectedMethod");
         } catch (NoSuchMethodException unexpected) {
             	fail("Should be a method called 'someProtectedMethod' on class!");
         }
@@ -42,7 +45,7 @@ public class RolesUtilTest {
 		Method method = null;
 
         try {
-            	method = MockService2.class.getMethod("someProtectedMethod", new Class[] {});
+            	method = MockService2.class.getMethod("someProtectedMethod");
         } catch (NoSuchMethodException unexpected) {
             	fail("Should be a method called 'someProtectedMethod' on class!");
         }

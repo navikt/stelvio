@@ -8,7 +8,10 @@ import java.util.List;
 
 import org.acegisecurity.ConfigAttribute;
 import org.acegisecurity.SecurityConfig;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -80,7 +83,7 @@ public class SecurityAnnotationsAttributesTest {
 		 Method method = null;
 
 	        try {
-	            method = MockService.class.getMethod("someProtectedMethod", new Class[] {});
+	            method = MockService.class.getMethod("someProtectedMethod");
 	        } catch (NoSuchMethodException unexpected) {
 	            fail("Should be a method called 'someProtectedMethod' on class!");
 	        }
@@ -104,7 +107,7 @@ public class SecurityAnnotationsAttributesTest {
 		Method method = null;
 
         try {
-            method = MockService2.class.getMethod("someProtectedMethod", new Class[] {});
+            method = MockService2.class.getMethod("someProtectedMethod");
         } catch (NoSuchMethodException unexpected) {
             fail("Should be a method called 'someProtectedMethod' on class!");
         }   
@@ -123,7 +126,7 @@ public class SecurityAnnotationsAttributesTest {
 		Method method = null;
 
         try {
-            method = MockService2.class.getMethod("someProtectedMethod", new Class[] {});
+            method = MockService2.class.getMethod("someProtectedMethod");
         } catch (NoSuchMethodException unexpected) {
             fail("Should be a method called 'someProtectedMethod' on class!");
         }
