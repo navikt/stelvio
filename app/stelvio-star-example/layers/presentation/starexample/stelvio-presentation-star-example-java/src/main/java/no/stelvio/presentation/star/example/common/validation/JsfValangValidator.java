@@ -18,24 +18,13 @@ import org.springmodules.validation.valang.ValangValidator;
  * @author persond3cb2ee15f42, Accenture
  * @author personb66fa0b5ff6e, Accenture
  */
-
-public class JsfValangValidator extends ValangValidator implements MessageSourceAware
-{
+public class JsfValangValidator extends ValangValidator implements MessageSourceAware {
 	//MessageSource that holds the internationalized messages
     private MessageSource messageSource;
-    
+
     /**
-     * Sets the messageSource for use in this class.
-     * @param messageSource the messageSource to set
-     */
-    public void setMessageSource(MessageSource messageSource){
-    	if( this.messageSource == null )
-    		this.messageSource = messageSource;
-    }
-        
-    /**
-     * Method that is called when a validation for an object results 
-     * in an error that requires that the user is notified.
+     * Method that is called when a validation for an object results in an error that requires that the user is
+     * notified.
      * 
      * @param target the object the valdidations has been performed for. 
      * @param errors the errors that the validation of the object resulted in.
@@ -51,7 +40,8 @@ public class JsfValangValidator extends ValangValidator implements MessageSource
 		    Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 
 		    // Retrieves an internationalized message from the messageSource
-		    String message = this.messageSource.getMessage(fieldError.getCode(), fieldError.getArguments(), fieldError.getDefaultMessage(), locale);
+		    String message = this.messageSource.
+				    getMessage(fieldError.getCode(), fieldError.getArguments(), fieldError.getDefaultMessage(), locale);
 
 		    for (UIComponent component : components) {
 			    List children = component.getChildren();
@@ -68,4 +58,13 @@ public class JsfValangValidator extends ValangValidator implements MessageSource
 		    }
 	    }
     }
+
+	/**
+	 * Sets the messageSource for use in this class.
+	 * @param messageSource the messageSource to set
+	 */
+	public void setMessageSource(MessageSource messageSource){
+		if( this.messageSource == null )
+			this.messageSource = messageSource;
+	}
 }
