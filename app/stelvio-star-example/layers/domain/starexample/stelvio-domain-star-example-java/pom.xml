@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>layers</artifactId>
-    <groupId>no.stelvio.layers</groupId>
-	<version>1.0.2-SNAPSHOT</version>
-  </parent>
-  <artifactId>stelvio-domain-star-example-java</artifactId>
-  <groupId>no.stelvio.star.example</groupId>
-  <packaging>jar</packaging>
-  <name>star-example :: domain</name>
-  <url>${basedir}/target/site/</url>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>layers</artifactId>
+		<groupId>no.stelvio.layers</groupId>
+		<version>1.0.2-SNAPSHOT</version>
+	</parent>
+	<artifactId>stelvio-domain-star-example-java</artifactId>
+	<groupId>no.stelvio.star.example</groupId>
+	<packaging>jar</packaging>
+	<name>star-example :: domain</name>
+	<url>${basedir}/target/site/</url>
 
-  <dependencies>
-    <dependency>
-      <groupId>no.stelvio</groupId>
-      <artifactId>stelvio-domain-java</artifactId>
-      <version>${pom.version}</version>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>no.stelvio</groupId>
+			<artifactId>stelvio-domain-java</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+	</dependencies>
 </project>
