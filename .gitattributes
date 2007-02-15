@@ -582,9 +582,10 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/henvendelse/support/SimpleHenvendelseService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/henvendelse/to/HenvendelseStatisticsRequest.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/henvendelse/to/HenvendelseStatisticsResponse.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/PersonNotFoundException.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/SaksbehandlerNotFoundException.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/SaksbehandlerServiceBi.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/support/RepositorySaksbehandlerService.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/support/SaksbehandlingException.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/support/SimpleSaksbehandlerService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/to/SaksbehandlerRequest.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/to/SaksbehandlerResponse.java -text
