@@ -3,7 +3,7 @@ package no.stelvio.repository.star.example.saksbehandling;
 import no.stelvio.domain.star.example.saksbehandling.Saksbehandler;
 
 /**
- * Actions for working with saksbehandler against a repository.
+ * Defines the methods for working with saksbehandler against a repository.
  *
  * @author personf8e9850ed756, Accenture
  */
