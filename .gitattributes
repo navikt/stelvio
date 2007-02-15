@@ -407,7 +407,7 @@ app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-j
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/Utbetalingsinformasjon.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/Utenlandskonto.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/Utlandskonto.java -text
-app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/saksbehandling/SaksbehandlerDO.java -text
+app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/saksbehandling/Saksbehandler.java -text
 app/stelvio-star-example/layers/pom.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/.classpath -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/.project -text
@@ -588,6 +588,7 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/support/SimpleHenvendelseService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/to/HenvendelseStatistikkRequest.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/henvendelse/to/HenvendelseStatistikkResponse.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/saksbehandling/PersonNotFoundException.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/saksbehandling/SaksbehandlerService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/saksbehandling/support/SimpleSaksbehandlerService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/beanRefContext.xml -text

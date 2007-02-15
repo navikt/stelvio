@@ -1,8 +1,11 @@
 package no.nav.service.pensjon.saksbehandling.support;
 
-import no.nav.domain.pensjon.saksbehandling.SaksbehandlerDO;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import no.nav.domain.pensjon.saksbehandling.Saksbehandler;
 import no.nav.service.pensjon.exception.DatabaseNotFoundException;
-import no.nav.service.pensjon.person.exception.PersonNotFoundException;
+import no.nav.service.pensjon.saksbehandling.PersonNotFoundException;
 import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
 
 /**
@@ -10,7 +13,15 @@ import no.nav.service.pensjon.saksbehandling.SaksbehandlerService;
  * @todo write javadoc
  */
 public class SimpleSaksbehandlerService implements SaksbehandlerService {
-	public SaksbehandlerDO readSaksbehandler(Long saksbehandlernr) throws PersonNotFoundException, DatabaseNotFoundException {
-		return new SaksbehandlerDO();
+	private static final Log log = LogFactory.getLog(SimpleSaksbehandlerService.class);
+
+	public Saksbehandler readSaksbehandler(Long saksbehandlernr) throws PersonNotFoundException, DatabaseNotFoundException {
+		Saksbehandler saksbehandler = new Saksbehandler("fornavn", "etternavn", "enhet", 12345678L);
+
+		if (log.isDebugEnabled()) {
+			log.debug("saksbehandler = " + saksbehandler);
+		}
+		
+		return saksbehandler;
 	}
 }
