@@ -4,7 +4,7 @@ import no.stelvio.common.error.FunctionalUnrecoverableException;
 import no.stelvio.domain.person.Pid;
 
 public class PersonNotFoundException extends FunctionalUnrecoverableException {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4349385568920627868L;
 
 	public PersonNotFoundException(Pid pid) {
 		super(pid);
@@ -15,6 +15,6 @@ public class PersonNotFoundException extends FunctionalUnrecoverableException {
 	}
 
 	protected String messageTemplate(final int numArgs) {
-		return "Fant ikke personen med fødselsnummer: {0}";
+		return "Did not find the person with pid: {0}";
 	}
 }
