@@ -1,4 +1,4 @@
-package no.nav.domain.pensjon.saksbehandling;
+package no.stelvio.star.example.saksbehandling;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
