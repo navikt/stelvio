@@ -47,8 +47,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/prs-starexample-context.xml
-			classpath:/modules/srv-starexample-context.xml
-			classpath:/modules/rep-starexample-context.xml
 		</param-value>
 	</context-param>
 
