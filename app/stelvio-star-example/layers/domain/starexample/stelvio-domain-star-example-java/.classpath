@@ -2,10 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
-	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-common-java/1.0.1-SNAPSHOT/stelvio-common-java-1.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-common-java/1.0.2-SNAPSHOT/stelvio-common-java-1.0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="var" path="M2_REPO/javax/persistence/persistence-api/1.0/persistence-api-1.0.jar" sourcepath="M2_REPO/javax/persistence/persistence-api/1.0/persistence-api-1.0-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v61/was.base.v61"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere v6.1 JRE"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-domain-java"/>
 	<classpathentry kind="output" path="target"/>
 </classpath>
