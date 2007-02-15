@@ -1,4 +1,4 @@
-package no.stelvio.star.example.saksbehandling;
+package no.stelvio.domain.star.example.saksbehandling;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 

@@ -1,4 +1,4 @@
-package no.stelvio.star.example.henvendelse.historikk;
+package no.stelvio.domain.star.example.henvendelse.historikk;
 
 /**
  * @author personf8e9850ed756, Accenture

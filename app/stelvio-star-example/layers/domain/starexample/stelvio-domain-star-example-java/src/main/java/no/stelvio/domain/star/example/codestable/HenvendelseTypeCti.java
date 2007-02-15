@@ -1,4 +1,4 @@
-package no.stelvio.star.example.codestable;
+package no.stelvio.domain.star.example.codestable;
 
 import java.util.Date;
 import java.util.Locale;

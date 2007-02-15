@@ -3,7 +3,7 @@ package no.stelvio.presentation.star.example.henvendelse;
 import org.springmodules.validation.valang.functions.AbstractFunction;
 import org.springmodules.validation.valang.functions.Function;
 
-import no.stelvio.star.example.henvendelse.Tidsperiode;
+import no.stelvio.domain.star.example.henvendelse.Tidsperiode;
 
 /**
  * Usage: checkTidsperiode(Tidsperiode)

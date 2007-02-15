@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
-import no.stelvio.star.example.henvendelse.Tidsperiode;
+import no.stelvio.domain.star.example.henvendelse.Tidsperiode;
 
 /**
  * @author personff564022aedd

@@ -2,10 +2,10 @@ package no.stelvio.service.star.example.henvendelse;
 
 import java.util.List;
 
+import no.stelvio.domain.star.example.henvendelse.Henvendelse;
+import no.stelvio.domain.star.example.person.Fodselsnummer;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;
-import no.stelvio.star.example.henvendelse.Henvendelse;
-import no.stelvio.star.example.person.Fodselsnummer;
 
 
 /**

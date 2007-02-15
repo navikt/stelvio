@@ -1,4 +1,4 @@
-package no.stelvio.star.example.henvendelse;
+package no.stelvio.domain.star.example.henvendelse;
 
 /**
  * Spesifikasjon is part of the criteria for getting {@link HenvendelseStatistikk}.  It is populated by a radio button choice

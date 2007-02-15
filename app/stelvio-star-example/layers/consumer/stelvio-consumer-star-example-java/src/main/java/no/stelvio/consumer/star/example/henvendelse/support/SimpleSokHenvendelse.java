@@ -7,9 +7,9 @@ import java.util.List;
 import no.stelvio.consumer.star.example.henvendelse.SokHenvendelse;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseRequest;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseResponse;
-import no.stelvio.star.example.henvendelse.Henvendelse;
-import no.stelvio.star.example.henvendelse.HenvendelseStatistikk;
-import no.stelvio.star.example.henvendelse.HenvendelseStatistikkCriteria;
+import no.stelvio.domain.star.example.henvendelse.Henvendelse;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikk;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
 
 /**
  * Mock impl av SokHenvendelse

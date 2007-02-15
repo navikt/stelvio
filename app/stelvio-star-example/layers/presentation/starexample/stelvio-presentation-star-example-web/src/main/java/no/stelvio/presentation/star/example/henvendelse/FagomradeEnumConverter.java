@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
-import no.stelvio.star.example.henvendelse.Fagomrade;
+import no.stelvio.domain.star.example.henvendelse.Fagomrade;
 
 /**
  * @author personff564022aedd

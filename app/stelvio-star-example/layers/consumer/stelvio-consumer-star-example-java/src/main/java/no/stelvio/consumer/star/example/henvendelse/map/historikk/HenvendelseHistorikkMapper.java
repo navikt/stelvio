@@ -1,6 +1,6 @@
 package no.stelvio.consumer.star.example.henvendelse.map.historikk;
 
-import no.stelvio.star.example.henvendelse.historikk.HenvendelseHistorikk;
+import no.stelvio.domain.star.example.henvendelse.historikk.HenvendelseHistorikk;
 
 /**
  * @author personf8e9850ed756, Accenture

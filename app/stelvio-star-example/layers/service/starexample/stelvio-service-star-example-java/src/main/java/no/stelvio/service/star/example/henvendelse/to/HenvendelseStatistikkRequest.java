@@ -1,10 +1,10 @@
 package no.stelvio.service.star.example.henvendelse.to;
 
 import no.stelvio.common.transferobject.ServiceRequest;
-import no.stelvio.star.example.henvendelse.HenvendelseStatistikkCriteria;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
 
 /**
- * Defines criteria for generating and returning {@link no.stelvio.star.example.henvendelse.HenvendelseStatistikk}.
+ * Defines criteria for generating and returning {@link no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikk}.
  * @author personff564022aedd
  */
 public class HenvendelseStatistikkRequest extends ServiceRequest {

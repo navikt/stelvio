@@ -1,31 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   xmlns:flow="http://www.springframework.org/schema/webflow-config"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/webflow-config
+                           http://www.springframework.org/schema/webflow-config/spring-webflow-config-1.0.xsd">
 
 	<!-- Creates the registry of flow definitions for this application. -->
 
 	<!-- Launches new flow executions and resumes existing executions: Spring 1.2 config version -->
-	<bean id="flowExecutor" class="org.springframework.webflow.config.FlowExecutorFactoryBean">
-		<property name="definitionLocator" ref="flowDefinitionLocator"/>
-		<property name="repositoryType">
-			<bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
-				<property name="staticField" value="org.springframework.webflow.config.RepositoryType.CONTINUATION"/>
-			</bean>
-		</property>
-	</bean>
+	<!-- TODO: what about continuation? -->
+	<flow:executor id="flowExecutor" registry-ref="flowDefinitionLocator"/>
 
 	<!-- Creates the registry of flow definitions for this application: Spring 1.2 config version -->
-	<bean id="flowDefinitionLocator" class="org.springframework.webflow.engine.builder.xml.XmlFlowRegistryFactoryBean">
-		<property name="flowLocations">
-			<list>
-				<value>/WEB-INF/flows/*-flow.xml</value>
-				<value>/WEB-INF/flows/**/*-flow.xml</value>
-			</list>
-		</property>
-	</bean>
-
-	<!-- Creates, saves, and restores managed flow executions -->
+	<flow:registry id="flowDefinitionLocator">
+		<flow:location path="/WEB-INF/flows/**/*-flow.xml"/>
+	</flow:registry>
 
 	<!--
 		Spring configured flow navigation handler delegate, allowing for custom configuration
@@ -48,39 +38,57 @@
 	<!-- property name="repositoryFactory" ref="repositoryFactory" / -->
 
 	<bean id="prs.starexample.saksbehandlerService"
+	      class="no.stelvio.service.star.example.saksbehandling.support.SimpleSaksbehandlerService"/>
+<!--
+	<bean id="prs.starexample.saksbehandlerService"
 	      class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
 		<property name="jndiName" value="ejb/SaksbehandlerService"/>
 		<property name="resourceRef" value="true"/>
-		<property name="businessInterface" value="no.nav.service.pensjon.saksbehandling.SaksbehandlerService"/>
+		<property name="businessInterface" value="no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi"/>
 	</bean>
+-->
 
-	<bean id="prs.starexample.henvendelseService"
+	<bean id="prs.starexample.sokHenvendelse"
+	      class="no.stelvio.consumer.star.example.henvendelse.support.SimpleSokHenvendelse"/>
+<!--
+	<bean id="prs.starexample.sokHenvendelse"
 	      class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
-		<property name="jndiName" value="ejb/HenvendelseService"/>
+		<property name="jndiName" value="ejb/SokHenvendelse"/>
 		<property name="resourceRef" value="true"/>
-		<property name="businessInterface" value="no.nav.service.pensjon.henvendelse.HenvendelseService"/>
+		<property name="businessInterface" value="no.stelvio.consumer.star.example.henvendelse.SokHenvendelse"/>
 	</bean>
+-->
 
 	<!-- CodesTable setup -->
 	<bean id="prs.starexample.codesTableManager" class="no.stelvio.common.codestable.support.DefaultCodesTableManager">
-		<property name="codesTableFactory" ref="prs.starexample.codesTableFactory"/>
+		<property name="codesTableFactory" ref="srv.starexample.codesTableFactory"/>
 	</bean>
 	<bean id="prs.starexample.codesTableInitializer"
 	      class="no.stelvio.common.codestable.factory.support.DefaultCodesTableInitializer">
 		<property name="codesTableManager" ref="prs.starexample.codesTableManager"/>
 		<property name="codesTablePeriodicClasses">
 			<list>
-				<value>no.nav.domain.pensjon.codestable.HenvendelseTypeCti</value>
+				<value>no.stelvio.domain.star.example.codestable.HenvendelseTypeCti</value>
 			</list>
 		</property>
 	</bean>
 
+<!--	<bean id="prs.starexample.codesTableFactory" class="no.stelvio.service.codestable.RepositoryCodesTableFactory">
+		<property name="codesTableRepository" ref="prs.starexample.codesTableRepository"/>
+	</bean>
+	<bean id="prs.starexample.codesTableRepository"
+	      class="no.stelvio.repository.codestable.support.HibernateCodesTableRepository">
+		<property name="hibernateTemplate" ref="prs.starexample.codesTableRepository"/>
+	</bean>-->
+
+<!--
 	<bean id="prs.starexample.codesTableFactory"
 	      class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
 		<property name="jndiName" value="ejb/CodesTableFactory"/>
 		<property name="resourceRef" value="true"/>
 		<property name="businessInterface" value="no.stelvio.common.codestable.factory.CodesTableFactory"/>
 	</bean>
+-->
 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="resources"/>

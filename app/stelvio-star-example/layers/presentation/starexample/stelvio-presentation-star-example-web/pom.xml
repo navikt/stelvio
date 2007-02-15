@@ -16,6 +16,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-domain-star-example-java</artifactId>
 			<version>${pom.version}</version>
@@ -23,6 +28,11 @@
 		<dependency>
 			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-consumer-star-example-java</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>no.stelvio.star.example</groupId>
+			<artifactId>stelvio-repository-star-example-java</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
@@ -40,6 +50,16 @@
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-presentation-java</artifactId>
 			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>hibernate-annotations</artifactId>
+			<groupId>org.hibernate</groupId>
+			<version>3.2.1.ga</version>
+		</dependency>
+		<dependency>
+			<artifactId>spring-jmx</artifactId>
+			<groupId>org.springframework</groupId>
+			<version>2.0.2</version>
 		</dependency>
 		<dependency>
 			<artifactId>spring-webflow</artifactId>
@@ -129,6 +149,20 @@
 	</dependencies>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<jettyConfig>jetty-jmx-platform.xml</jettyConfig>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>80</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>

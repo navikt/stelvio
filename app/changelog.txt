@@ -49,7 +49,7 @@ Module stelvio-presentation-java
   panelNavigation2 component.
 
 Star example
-* Corrected package structure (no.nav... -> no.stelvio.star.example...)
+* Corrected package structure (no.nav.<x>.. -> no.stelvio.<x>.star.example...)
 * Added consumer layer
 
 

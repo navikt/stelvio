@@ -15,7 +15,7 @@
 		<!-- >property name="schemaUpdate" value="true"/-->	  	
 		<property name="annotatedClasses">
 			<list>
-				<value>no.stelvio.star.example.codestable.HenvendelseTypeCti</value>
+				<value>no.stelvio.domain.star.example.codestable.HenvendelseTypeCti</value>
 			</list>
 		</property>	  	
 		<property name="hibernateProperties">

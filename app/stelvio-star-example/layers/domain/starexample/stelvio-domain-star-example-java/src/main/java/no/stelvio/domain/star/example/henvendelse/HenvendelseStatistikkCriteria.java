@@ -1,4 +1,4 @@
-package no.stelvio.star.example.henvendelse;
+package no.stelvio.domain.star.example.henvendelse;
 
 /**
  * Criteria for finding statistics for Henvendelse.

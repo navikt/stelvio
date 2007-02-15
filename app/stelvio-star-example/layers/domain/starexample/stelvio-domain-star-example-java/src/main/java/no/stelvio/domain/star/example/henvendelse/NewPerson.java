@@ -6,7 +6,7 @@
  * cf10631.06 v81706232132
  */
 
-package no.stelvio.star.example.henvendelse;
+package no.stelvio.domain.star.example.henvendelse;
 
 import java.io.Serializable;
 import java.util.Calendar;

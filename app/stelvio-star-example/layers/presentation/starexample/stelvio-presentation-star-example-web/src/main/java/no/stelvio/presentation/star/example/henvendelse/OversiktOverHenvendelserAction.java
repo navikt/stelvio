@@ -7,9 +7,9 @@ import org.springframework.webflow.action.FormAction;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.consumer.star.example.henvendelse.SokHenvendelse;
 import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseRequest;
-import no.stelvio.star.example.codestable.HenvendelseTypeCti;
-import no.stelvio.star.example.henvendelse.HenvendelseStatistikk;
-import no.stelvio.star.example.henvendelse.HenvendelseStatistikkCriteria;
+import no.stelvio.domain.star.example.codestable.HenvendelseTypeCti;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikk;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
 
 
 /**

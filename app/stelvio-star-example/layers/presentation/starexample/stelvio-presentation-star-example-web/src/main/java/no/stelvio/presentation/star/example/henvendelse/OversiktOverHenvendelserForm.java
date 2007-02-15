@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.model.SelectItem;
 
-import no.stelvio.star.example.henvendelse.Fagomrade;
-import no.stelvio.star.example.henvendelse.Spesifikasjon;
-import no.stelvio.star.example.henvendelse.Tidsperiode;
+import no.stelvio.domain.star.example.henvendelse.Fagomrade;
+import no.stelvio.domain.star.example.henvendelse.Spesifikasjon;
+import no.stelvio.domain.star.example.henvendelse.Tidsperiode;
 
 /**
  * Form used in oversiktoverhenvendelser.xhtml.

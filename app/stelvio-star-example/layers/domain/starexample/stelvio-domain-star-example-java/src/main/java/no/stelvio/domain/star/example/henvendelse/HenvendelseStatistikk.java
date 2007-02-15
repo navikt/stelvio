@@ -1,4 +1,4 @@
-package no.stelvio.star.example.henvendelse;
+package no.stelvio.domain.star.example.henvendelse;
 
 import java.util.ArrayList;
 import java.util.Calendar;
