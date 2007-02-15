@@ -5,18 +5,18 @@
                            http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<!-- TODO check if jsf- and/or swf-scopes can be used -->
-	<bean id="prs.henvendelse.oversiktAction"
-	      class="no.stelvio.presentation.star.example.henvendelse.OversiktOverHenvendelserAction">
-		<property name="formObjectName" value="prsHenvendelseOversiktForm"/>
-		<property name="formObjectClass" value="no.stelvio.presentation.star.example.henvendelse.OversiktOverHenvendelserForm"/>
+	<bean id="prs.henvendelse.overviewAction"
+	      class="no.stelvio.presentation.star.example.henvendelse.OverviewOfHenvendelserAction">
+		<property name="formObjectName" value="prsHenvendelseOverviewForm"/>
+		<property name="formObjectClass" value="no.stelvio.presentation.star.example.henvendelse.OverviewOfHenvendelserForm"/>
 		<property name="validator">
-			<ref local="prs.henvendelse.oversiktValidator"/>
+			<ref local="prs.henvendelse.overviewValidator"/>
 		</property>
 		<property name="searchHenvendelseService" ref="prs.starexample.searchHenvendelseService"/>
 		<property name="codesTableManager" ref="prs.starexample.codesTableManager"/>
 	</bean>
 
-	<bean id="prs.henvendelse.oversiktValidator"
+	<bean id="prs.henvendelse.overviewValidator"
 	      class="no.stelvio.presentation.star.example.common.validation.JsfValangValidator">
 		<property name="messageSource" ref="messageSource"/>
 		<property name="customFunctions">

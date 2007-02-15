@@ -1,7 +1,7 @@
 package no.stelvio.service.star.example.henvendelse;
 
-import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
-import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;
+import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatisticsRequest;
+import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatisticsResponse;
 
 
 /**
@@ -13,5 +13,5 @@ public interface HenvendelseServiceBi {
 	/**
 	 * @return Response object containing HenvendelseStatistics
 	 */
-	HenvendelseStatistikkResponse genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest);
+	HenvendelseStatisticsResponse genererHenvendelseStatistikk(HenvendelseStatisticsRequest henvendelseStatisticsRequest);
 }

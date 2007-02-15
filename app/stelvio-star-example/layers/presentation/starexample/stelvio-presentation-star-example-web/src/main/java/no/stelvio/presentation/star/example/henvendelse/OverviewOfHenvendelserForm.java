@@ -9,11 +9,11 @@ import no.stelvio.domain.star.example.henvendelse.Spesifikasjon;
 import no.stelvio.domain.star.example.henvendelse.Tidsperiode;
 
 /**
- * Form used in oversiktoverhenvendelser.xhtml.
+ * Form used in overviewofhenvendelser.xhtml.
  * 
  * @author personff564022aedd
  */
-public class OversiktOverHenvendelserForm {
+public class OverviewOfHenvendelserForm {
 
 	private Fagomrade valgtFagomrade;
 	private List<SelectItem> fagomrader;
@@ -22,7 +22,7 @@ public class OversiktOverHenvendelserForm {
 	private Spesifikasjon valgtSok;
 	private List<SelectItem> sokeAlternativ;
 	
-	public OversiktOverHenvendelserForm() {
+	public OverviewOfHenvendelserForm() {
 		sokeAlternativ = new ArrayList<SelectItem>();
 		sokeAlternativ.add(new SelectItem(Spesifikasjon.ANTALL, ""));
 		sokeAlternativ.add(new SelectItem(Spesifikasjon.GRUNN, ""));

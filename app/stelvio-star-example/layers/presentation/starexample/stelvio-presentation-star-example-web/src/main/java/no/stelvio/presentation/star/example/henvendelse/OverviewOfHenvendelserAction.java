@@ -17,8 +17,8 @@ import no.stelvio.domain.star.example.henvendelse.HenvendelseStatisticsCriteria;
  * 
  * @author personff564022aedd
  */
-public class OversiktOverHenvendelserAction extends FormAction {
-	private static final Log log = LogFactory.getLog(OversiktOverHenvendelserAction.class);
+public class OverviewOfHenvendelserAction extends FormAction {
+	private static final Log log = LogFactory.getLog(OverviewOfHenvendelserAction.class);
 
 	private SearchHenvendelseServiceBi searchHenvendelseService;
 	private CodesTableManager codesTableManager;
@@ -27,7 +27,7 @@ public class OversiktOverHenvendelserAction extends FormAction {
 	 * @param form contains input data for backend request
 	 * @return {@link HenvendelseStatistics}
 	 */
-	public HenvendelseStatistics hentStatistikk(OversiktOverHenvendelserForm form) {
+	public HenvendelseStatistics hentStatistikk(OverviewOfHenvendelserForm form) {
 		// TODO enhetId
 		HenvendelseStatisticsCriteria crit =
 				new HenvendelseStatisticsCriteria(

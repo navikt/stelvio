@@ -216,4 +216,4 @@ ul.NAVsquarelist li { margin-bottom: 0.2em; }
 #NAVtjenesterHeaderContainer h1 { float: left; color: #675C53;}
 #NAVtjenesterHeaderContainer .NAVtjenesteLoginContainer { float: right; margin-right: 3em;}
 #NAVtjenesterHeaderContainer .NAVtjenesteLoginContainer strong { margin-left: 0.2em; margin-right: 1em;}
-#NAVtjenesterHeaderContainer .NAVbackground { float: left; width: 100%; background-image: url('../images/tjenester/headerbackground.gif'); background-repeat: repeat-x; background-position: bottom left;}
+#NAVtjenesterHeaderContainer .NAVbackground { float: left; width: 100%; background-image: url( '../images/service/headerbackground.gif' ); background-repeat: repeat-x; background-position: bottom left;}

@@ -4,7 +4,7 @@
 		"facelet-taglib_1_0.dtd">
 
 <facelet-taglib>
-	<namespace>http://www.nav.no/jsf</namespace>
+	<namespace>http://www.stelvio.no/jsf</namespace>
 
 	<!-- common -->
 	<tag>

@@ -10,17 +10,17 @@
 		<render-actions>
 			<action bean="prs.start.form" method="setupForm"/>
 		</render-actions>
-		<transition on="hent" to="henterPerson">
+		<transition on="retrieve" to="retrievePerson">
 			<action bean="prs.start.form" method="bind"/>
 		</transition>
 	</view-state>
 
-	<action-state id="henterPerson">
+	<action-state id="retrievePerson">
 		<action bean="prs.start.action" method="search"/>
 		<transition on="success" to="finish"/>
 	</action-state>
 
-	<end-state id="finish" view="flowRedirect:oversiktoverhenvendelser-flow"/>
+	<end-state id="finish" view="flowRedirect:overviewofhenvendelser-flow"/>
 
 	<import resource="start-context.xml"/>
 </flow>

@@ -8,8 +8,8 @@ import no.stelvio.domain.star.example.henvendelse.Henvendelse;
 import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistics;
 import no.stelvio.domain.star.example.henvendelse.HenvendelseStatisticsCriteria;
 import no.stelvio.service.star.example.henvendelse.HenvendelseServiceBi;
-import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
-import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;
+import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatisticsRequest;
+import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatisticsResponse;
 
 /**
  * Mock impl av HenvendelseService
@@ -85,11 +85,11 @@ public class SimpleHenvendelseService implements HenvendelseServiceBi {
 		}
 	}
 
-	public HenvendelseStatistikkResponse genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest) {
+	public HenvendelseStatisticsResponse genererHenvendelseStatistikk(HenvendelseStatisticsRequest henvendelseStatisticsRequest) {
 		
 		HenvendelseStatistics henvendelseStatistics;
 		
-		HenvendelseStatisticsCriteria crit = henvendelseStatistikkRequest.getCriteria();
+		HenvendelseStatisticsCriteria crit = henvendelseStatisticsRequest.getCriteria();
 		if (crit.getTidsperiode().equals("Siste 5 dager")) {
 			henvendelseStatistics = new HenvendelseStatistics(7, HenvendelseStatistics.TIDSENHET_DAG);
 			
@@ -106,7 +106,7 @@ public class SimpleHenvendelseService implements HenvendelseServiceBi {
 			henvendelseStatistics.addRow(new String[]{"Ikke angitt", "5", "8", "4", "2", "19"});
 		}
 
-		return new HenvendelseStatistikkResponse(henvendelseStatistics);
+		return new HenvendelseStatisticsResponse(henvendelseStatistics);
 	}
 
 }

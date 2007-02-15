@@ -10,14 +10,14 @@ import javax.ejb.SessionContext;
 import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
 import org.springframework.ejb.support.AbstractStatelessSessionBean;
 
-import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
-import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;
+import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatisticsRequest;
+import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatisticsResponse;
 
 public class HenvendelseServiceBean extends AbstractStatelessSessionBean implements HenvendelseServiceBi {
 	private HenvendelseServiceBi henvendelseService;
 
-	public HenvendelseStatistikkResponse genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest) {
-		return henvendelseService.genererHenvendelseStatistikk(henvendelseStatistikkRequest);
+	public HenvendelseStatisticsResponse genererHenvendelseStatistikk(HenvendelseStatisticsRequest henvendelseStatisticsRequest) {
+		return henvendelseService.genererHenvendelseStatistikk(henvendelseStatisticsRequest);
 	}
 
 	@Override

@@ -6,18 +6,18 @@ import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistics;
 /**
  * @author personf8e9850ed756, Accenture
  */
-public class HenvendelseStatistikkResponse extends ServiceResponse {
+public class HenvendelseStatisticsResponse extends ServiceResponse {
 	private HenvendelseStatistics henvendelseStatistics;
 
 	/**
 	 * @param henvendelseStatisticsCriteria critera to be added in the new instance
 	 */
-	public HenvendelseStatistikkResponse(HenvendelseStatistics henvendelseStatisticsCriteria) {
+	public HenvendelseStatisticsResponse(HenvendelseStatistics henvendelseStatisticsCriteria) {
 		this.henvendelseStatistics = henvendelseStatisticsCriteria;
 	}
 
 	/**
-	 * {@inheritDoc HenvendelseStatistikkRequest#getCriteria()}
+	 * {@inheritDoc HenvendelseStatisticsRequest#getCriteria()}
 	 */
 	public HenvendelseStatistics getCriteria() {
 		return henvendelseStatistics;

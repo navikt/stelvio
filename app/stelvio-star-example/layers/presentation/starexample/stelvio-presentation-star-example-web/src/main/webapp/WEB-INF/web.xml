@@ -38,7 +38,7 @@
 		<param-name>facelets.LIBRARIES</param-name>
 		<param-value>
 			/WEB-INF/facelets/taglibs/tomahawk.taglib.xml;
-			/WEB-INF/facelets/taglibs/nav.components.xml;
+			/WEB-INF/facelets/taglibs/starexample.components.xml;
 			/WEB-INF/facelets/taglibs/jsf-core.taglib.xml
 		</param-value>
 	</context-param>
