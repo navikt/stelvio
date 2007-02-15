@@ -10,5 +10,21 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>
+		<session>
+			<ejb-name>HenvendelseService</ejb-name>
+			<local-home>no.stelvio.service.star.example.henvendelse.HenvendelseServiceLocalHome</local-home>
+			<local>no.stelvio.service.star.example.henvendelse.HenvendelseServiceLocal</local>
+			<ejb-class>no.stelvio.service.star.example.henvendelse.HenvendelseServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session>
+			<ejb-name>SaksbehandlerService</ejb-name>
+			<local-home>no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceLocalHome</local-home>
+			<local>no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceLocal</local>
+			<ejb-class>no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
 	</enterprise-beans>
 </ejb-jar>
