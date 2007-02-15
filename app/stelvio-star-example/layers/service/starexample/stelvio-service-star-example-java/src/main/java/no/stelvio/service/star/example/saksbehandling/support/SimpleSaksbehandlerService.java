@@ -10,14 +10,16 @@ import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerRequest;
 import no.stelvio.service.star.example.saksbehandling.to.SaksbehandlerResponse;
 
 /**
+ * Stub implementation of service for working with saksbehandler.
+ * 
  * @author personf8e9850ed756, Accenture
- * @todo write javadoc
  */
 public class SimpleSaksbehandlerService implements SaksbehandlerServiceBi {
 	private static final Log log = LogFactory.getLog(SimpleSaksbehandlerService.class);
 
+	/** {@inheritDoc} */
 	public SaksbehandlerResponse hentSaksbehandler(SaksbehandlerRequest request) throws PersonNotFoundException {
-		Saksbehandler saksbehandler = new Saksbehandler("fornavn", "etternavn", "enhet", 12345678L);
+		Saksbehandler saksbehandler = new Saksbehandler(12345678L, "fornavn", "etternavn", "enhet");
 
 		if (log.isDebugEnabled()) {
 			log.debug("saksbehandler = " + saksbehandler);
