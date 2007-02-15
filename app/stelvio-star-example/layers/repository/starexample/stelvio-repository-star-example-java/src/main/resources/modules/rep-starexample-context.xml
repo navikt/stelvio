@@ -26,6 +26,7 @@
 			<list>
 				<value>no.stelvio.domain.star.example.codestable.HenvendelseTypeCti</value>
 				<value>no.stelvio.domain.star.example.saksbehandling.Saksbehandler</value>
+				<value>no.stelvio.common.error.support.ErrorDefinition</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
