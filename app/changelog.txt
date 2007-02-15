@@ -3,20 +3,22 @@ STELVIO CHANGELOG
 http://confluence.adeo.no/display/stelvio/Architecture
 
 
-Changes in version 1.0.2 (15.02.2007)
+Changes in version 1.0.2 (15.2.2007)
 ------------------------------------
 
 General
 
 Module stelvio-common-java
 * Methods and constructors in stelvio-common-codestable that uses Locale have been deprecated. 
-  Locale decodes should be handled by properties-files (i18n) in the web tier.
-* Changed implementations of CodesTable and CodesTablePeriodic that potentially improves performance (decreased uses of loops)
-* getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to DecodeNotFoundException
 * Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
 * Methods on ServiceRequest for setting/retrieving RequestContext are deprecated as client code should not work with
   RequestContext directly; access it through RequestContextHolder instead
 * Deprecated TransferObject in favour of ServiceRequest/ServiceResponse
+* Methods and constructors in stelvio-common-codestable that uses Locale have been deprecated. 
+  Locale decodes should be handled by properties-files (i18n) in the web tier.
+* Changed implementations of CodesTable and CodesTablePeriodic that potentially improves performance (decreased uses of loops)
+* getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to DecodeNotFoundException
+* Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
 
 Module stelvio-test-java
 

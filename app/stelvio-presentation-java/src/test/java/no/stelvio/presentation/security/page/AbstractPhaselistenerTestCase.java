@@ -29,6 +29,7 @@ import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.render.RenderKitFactory;
 
 import junit.framework.TestCase;
+
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.security.SecurityContextHolder;
