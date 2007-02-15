@@ -1,5 +1,7 @@
 package no.stelvio.consumer.star.example.henvendelse.map.historikk;
 
+import no.nav.domain.pensjon.henvendelse.historikk.HenvendelseHistorikk;
+
 /**
  * @author personf8e9850ed756, Accenture
  * @todo write javadoc
