@@ -57,6 +57,41 @@
 			<version>3.2.1.ga</version>
 		</dependency>
 		<dependency>
+			<artifactId>cglib</artifactId>
+			<groupId>cglib</groupId>
+			<version>2.2_beta1</version>
+		</dependency>
+		<dependency>
+			<artifactId>asm</artifactId>
+			<groupId>asm</groupId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<artifactId>asm-commons</artifactId>
+			<groupId>asm</groupId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<artifactId>asm-util</artifactId>
+			<groupId>asm</groupId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<artifactId>asm-attrs</artifactId>
+			<groupId>asm</groupId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<artifactId>aspectjrt</artifactId>
+			<groupId>aspectj</groupId>
+			<version>1.5.3</version>
+		</dependency>
+		<dependency>
+			<artifactId>aspectjweaver</artifactId>
+			<groupId>aspectj</groupId>
+			<version>1.5.3</version>
+		</dependency>
+		<dependency>
 			<artifactId>spring-jmx</artifactId>
 			<groupId>org.springframework</groupId>
 			<version>2.0.2</version>
