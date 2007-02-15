@@ -369,7 +369,6 @@ app/stelvio-star-example/jee/starexample/stelvio-star-example-jee/src/main/resou
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/SokHenvendelse.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/HenvendelseMapper.java -text
-app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/historikk/HenvendelseHistorikk.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/historikk/HenvendelseHistorikkMapper.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/support/SimpleSokHenvendelse.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/to/SokHenvendelseRequest.java -text
