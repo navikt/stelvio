@@ -18,19 +18,21 @@ import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.util.Assert;
 
 /**
- * This class is an implementation of {@link AccessDecisionManager}.
+ * This class is an implementation of <code>AccessDecisionManager</code>.
  * <p>
- * Handles configuration of a bean context defined list of
- * {@link AccessDecisionVoter}s and the access control behaviour if all voters
- * abstain from voting (defaults to deny access).
- * </p>
- * The list of {@link AccessDecisionVoter}s is retrieved from a
- * {@link ConfigAttributeDefinition} which is derived from a
- * {@link ObjectDefinitionSource}. The {@link ObjectDefinitionSource} is
- * defined in a bean context and injected into a security interceptor.
+ * Handles configuration of a bean context defined list of <code>AccessDecisionVoter</code>s and the access control
+ * behaviour if all voters abstain from voting (defaults to deny access).
+ * <p>
+ * The list of <code>AccessDecisionVoter</code>s is retrieved from a <code>ConfigAttributeDefinition</code> which is
+ * derived from a <code>ObjectDefinitionSource</code>. The <code>ObjectDefinitionSource</code> is defined in a bean
+ * context and injected into a security interceptor.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
+ * @see AccessDecisionManager
+ * @see AccessDecisionVoter
+ * @see ConfigAttributeDefinition
+ * @see org.acegisecurity.intercept.ObjectDefinitionSource
  */
 public class AccessVoterManager implements AccessDecisionManager,
 		InitializingBean, MessageSourceAware {

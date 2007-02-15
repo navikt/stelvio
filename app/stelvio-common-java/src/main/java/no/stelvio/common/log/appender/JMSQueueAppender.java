@@ -429,11 +429,9 @@ public class JMSQueueAppender extends AppenderSkeleton {
 	}
 
 	/**
-	 * Setting the <b>InitialContextFactoryName</b> method will cause
-	 * this <code>JMSQueueAppender</code> instance to use the {@link
-	 * InitialContext#InitialContext(Hashtable)} method instead of the
-	 * no-argument constructor. If you set this option, you should also
-	 * at least set the <b>ProviderURL</b> option.
+	 * Setting the <b>InitialContextFactoryName</b> method will cause this <code>JMSQueueAppender</code> instance to use
+	 * the {@link javax.naming.InitialContext#InitialContext(java.util.Hashtable)} method instead of the no-argument
+	 * constructor. If you set this option, you should also at least set the <b>ProviderURL</b> option.
 	 *
 	 * @param initialContextFactoryName the name of the InitialContextFactory to use.
 	 * @see #setProviderURL(String)

@@ -13,26 +13,27 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Provider-based implementation of {@link AfterInvocationManager}.
+ * Provider-based implementation of <code>AfterInvocationManager</code>.
  * <p>
- * Handles configuration of a bean context defined list of
- * {@link AfterInvocationProvider}s. The list of
- * {@link AfterInvocationProvider}s is retrieved from a
- * {@link ConfigAttributeDefinition} which is derived from an
- * {@link ObjectDefinitionSource}. The {@link ObjectDefinitionSource} is
- * defined in a bean context and injected into a security interceptor.
+ * Handles configuration of a bean context defined list of <code>AfterInvocationProvider</code>s. The list of
+ * <code>AfterInvocationProvider</code>s is retrieved from a <code>ConfigAttributeDefinition</code> which is derived
+ * from an <code>ObjectDefinitionSource</code>. The <code>ObjectDefinitionSource</code> is defined in a bean context and
+ * injected into a security interceptor.
  * </p>
  * <p>
- * Every <code>AfterInvocationProvider</code> will be polled when the
- * {@link #decide(Authentication, Object, ConfigAttributeDefinition, Object)}
- * method is called. The <code>Object</code> returned from each provider will
- * be presented to the successive provider for processing. This means each
- * provider <b>must</b> ensure they return the <code>Object</code>, even if
- * they are not interested in the "after invocation" decision.
+ * Every <code>AfterInvocationProvider</code> will be polled when the <code>decide(...)</code> method is called. The
+ * <code>Object</code> returned from each provider will be presented to the successive provider for processing. This
+ * means each provider <b>must</b> ensure they return the <code>Object</code>, even if they are not interested in the
+ * "after invocation" decision.
  * </p>
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
+ * @see AfterInvocationManager
+ * @see AfterInvocationProvider
+ * @see ConfigAttributeDefinition
+ * @see org.acegisecurity.intercept.ObjectDefinitionSource
+ * @see #decide(Authentication, Object, ConfigAttributeDefinition, Object) 
  */
 public class AfterInvocationProviderManager implements AfterInvocationManager {
 
