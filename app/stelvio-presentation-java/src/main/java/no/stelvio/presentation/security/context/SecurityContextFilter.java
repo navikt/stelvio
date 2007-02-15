@@ -223,4 +223,4 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 
 		session.setAttribute(USER_ROLES, rolleList);
 	}
-}==== ORIGINAL VERSION app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/security/context/SecurityContextFilter.java 117153390531912
+}
