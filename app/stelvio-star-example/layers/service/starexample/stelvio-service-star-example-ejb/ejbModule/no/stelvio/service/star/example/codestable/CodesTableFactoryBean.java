@@ -18,7 +18,15 @@ import no.stelvio.common.codestable.factory.CodesTableFactory;
  */
 public class CodesTableFactoryBean extends AbstractStatelessSessionBean implements CodesTableFactory {
 	private CodesTableFactory codesTableFactory;
-	
+
+	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
+		return codesTableFactory.createCodesTable(codesTableClass);
+	}
+
+	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
+		return codesTableFactory.createCodesTablePeriodic(codesTableClass);
+	}
+
 	@Override
 	protected void onEjbCreate() throws CreateException {
 		// TODO what should the name of the bean be for stelvio components?
@@ -29,14 +37,6 @@ public class CodesTableFactoryBean extends AbstractStatelessSessionBean implemen
 	public void setSessionContext(SessionContext sessionContext) {
 		super.setSessionContext(sessionContext);
 		setBeanFactoryLocator(ContextSingletonBeanFactoryLocator.getInstance());
-		setBeanFactoryLocatorKey("henvendelseService.henvendelseServiceBeanFactory");
-	}
-	
-	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return codesTableFactory.createCodesTable(codesTableClass);
-	}
-
-	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass) throws CodesTableNotFoundException {
-		return codesTableFactory.createCodesTablePeriodic(codesTableClass);
+		setBeanFactoryLocatorKey("star.example.beanFactory");
 	}
 }
