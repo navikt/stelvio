@@ -58,7 +58,5 @@
 	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-library/0.1/hamcrest-library-0.1.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-domain-java"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-service-java"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/utvikler/.m2/repository/no/stelvio/stelvio-service-java/1.0.2-SNAPSHOT/stelvio-service-java-1.0.2-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/utvikler/.m2/repository/no/stelvio/stelvio-domain-java/1.0.2-SNAPSHOT/stelvio-domain-java-1.0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
