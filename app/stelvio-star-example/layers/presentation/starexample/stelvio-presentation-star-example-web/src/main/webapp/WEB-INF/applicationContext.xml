@@ -48,14 +48,14 @@
 	</bean>
 -->
 
-	<bean id="prs.starexample.sokHenvendelseService"
-	      class="no.stelvio.consumer.star.example.henvendelse.support.SimpleSokHenvendelseService"/>
+	<bean id="prs.starexample.searchHenvendelseService"
+	      class="no.stelvio.consumer.star.example.henvendelse.support.SimpleSearchHenvendelseService"/>
 <!--
-	<bean id="prs.starexample.sokHenvendelseService"
+	<bean id="prs.starexample.searchHenvendelseService"
 	      class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
 		<property name="jndiName" value="ejb/SokHenvendelse"/>
 		<property name="resourceRef" value="true"/>
-		<property name="businessInterface" value="no.stelvio.consumer.star.example.henvendelse.SokHenvendelseServiceBi"/>
+		<property name="businessInterface" value="no.stelvio.consumer.star.example.henvendelse.SearchHenvendelseServiceBi"/>
 	</bean>
 -->
 
