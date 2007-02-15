@@ -142,7 +142,6 @@ public class DefaultCodesTablePeriodicTest extends AbstractDependencyInjectionSp
 	 */
 	@Override
 	public void onTearDown() {
-		codesTablePeriodic = null;
 		setDirty();
 	}	
 }

@@ -60,12 +60,4 @@ public class CacheAnnotationsTest extends AbstractDependencyInjectionSpringConte
 		log.debug("DEBUG: String="+cachedString);
 		assertFalse("String retrieved from cache. Cache was not flushed.", cachedString.equals(initialString));
 	}
-	
-	/**
-	 * Cleans up after tests are complete.
-	 */
-	@Override
-	public void onTearDown() {
-		cacheTest = null;
-	}
 }

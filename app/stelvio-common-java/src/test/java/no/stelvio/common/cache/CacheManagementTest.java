@@ -2,7 +2,6 @@ package no.stelvio.common.cache;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
@@ -99,6 +98,5 @@ public class CacheManagementTest extends AbstractDependencyInjectionSpringContex
 	@Override
 	public void onTearDown() {
 		cacheManagement.getCacheManager().shutdown();
-		cacheManagement = null;
 	}
 }

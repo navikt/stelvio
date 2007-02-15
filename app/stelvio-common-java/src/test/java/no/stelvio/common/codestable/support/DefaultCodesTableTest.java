@@ -137,7 +137,6 @@ public class DefaultCodesTableTest extends AbstractDependencyInjectionSpringCont
 	 */
 	@Override
 	public void onTearDown() {
-		codesTable = null;
 		setDirty();
 	}	
 }
