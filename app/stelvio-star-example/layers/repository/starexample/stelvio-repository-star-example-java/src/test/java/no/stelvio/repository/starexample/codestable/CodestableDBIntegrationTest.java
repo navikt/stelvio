@@ -9,9 +9,6 @@ import no.stelvio.repository.codestable.CodesTableRepository;
 
 
 public class CodestableDBIntegrationTest extends TestCase {
-	
-	
-	
 	public void testFetchAllHenvendelseTypeCti(){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("modules/rep-codestable-context.xml");
 		CodesTableRepository repository = (CodesTableRepository) ctx.getBean("rep.codestable.codestableRepository");
