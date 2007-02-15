@@ -2,6 +2,8 @@ package no.stelvio.common.error.support;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -15,74 +17,75 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 @Entity
 public class ErrorDefinition implements Serializable {
 	private static final long serialVersionUID = -2350211506640790245L;
-	
+
 	/** A short identification string. */
 	@Id
-    private String id;
+	private String id;
 
 	/** The class name of the error's exception. */
-    private String className;
+	private String className;
 
 	/** The message template for this error that is shown to the user. */
-    private String message;
+	private String message;
 
 	/** The error's severity. */
-    private Severity severity;
+	@Enumerated(EnumType.STRING)
+	private Severity severity;
 
 	/** The error's short description which is used by first line of support. */
-    private String shortDescription;
+	private String shortDescription;
 
 	/** The error's long description which is used by second line of support. */
-    private String longDescription;
+	private String longDescription;
 
 	/** Constructor used by orm. */
 	protected ErrorDefinition() {
 	}
 
-    public ErrorDefinition(String id,
-               String className,
-               String message,
-               Severity severity,
-               String shortDescription,
-               String longDescription) {
-        this.id = id;
-        this.className = className;
-        this.message = message;
-        this.severity = severity;
-        this.shortDescription = shortDescription;
-        this.longDescription = longDescription;
-    }
+	public ErrorDefinition(String id,
+	                       String className,
+	                       String message,
+	                       Severity severity,
+	                       String shortDescription,
+	                       String longDescription) {
+		this.id = id;
+		this.className = className;
+		this.message = message;
+		this.severity = severity;
+		this.shortDescription = shortDescription;
+		this.longDescription = longDescription;
+	}
 
 	public String getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public String getClassName() {
-        return className;
-    }
+	public String getClassName() {
+		return className;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public Severity getSeverity() {
-        return severity;
-    }
+	public Severity getSeverity() {
+		return severity;
+	}
 
-    public String getShortDescription() {
-        return shortDescription;
-    }
+	public String getShortDescription() {
+		return shortDescription;
+	}
 
-    public String getLongDescription() {
-        return longDescription;
-    }
+	public String getLongDescription() {
+		return longDescription;
+	}
 
-    public String toString() {
-        return "ErrorDefinition{" +
-                "className='" + className + '\'' +
-                ", message='" + message + '\'' +
-                '}';
-    }
+	public String toString() {
+		return "ErrorDefinition{" +
+				"className='" + className + '\'' +
+				", message='" + message + '\'' +
+				'}';
+	}
 
 	public boolean equals(Object other) {
 		if (null == other) {
@@ -101,42 +104,42 @@ public class ErrorDefinition implements Serializable {
 
 	// TODO should this be here?
 	// TODO test this
-    public static class Builder {
-        private ErrorDefinition errorDefinition;
+	public static class Builder {
+		private ErrorDefinition errorDefinition;
 
-        public Builder(String className) {
-            errorDefinition = new ErrorDefinition();
-	        errorDefinition.className = className;
-        }
+		public Builder(String className) {
+			errorDefinition = new ErrorDefinition();
+			errorDefinition.className = className;
+		}
 
-        // TODO is this correct? Cannot use Class<? extends Throwable> when using StelvioException
-        public Builder(Class<? extends Object> clazz) {
-            errorDefinition = new ErrorDefinition();
-	        errorDefinition.className = clazz.getName();
-        }
+		// TODO is this correct? Cannot use Class<? extends Throwable> when using StelvioException
+		public Builder(Class<? extends Object> clazz) {
+			errorDefinition = new ErrorDefinition();
+			errorDefinition.className = clazz.getName();
+		}
 
-        public ErrorDefinition build() {
-            return errorDefinition;
-        }
+		public ErrorDefinition build() {
+			return errorDefinition;
+		}
 
-        public Builder message(String message) {
-            errorDefinition.message = message;
-            return this;
-        }
+		public Builder message(String message) {
+			errorDefinition.message = message;
+			return this;
+		}
 
-        public Builder severity(Severity severity) {
-            errorDefinition.severity = severity;
-            return this;
-        }
+		public Builder severity(Severity severity) {
+			errorDefinition.severity = severity;
+			return this;
+		}
 
-        public Builder shortDescription(String description) {
-            errorDefinition.shortDescription = description;
-            return this;
-        }
+		public Builder shortDescription(String description) {
+			errorDefinition.shortDescription = description;
+			return this;
+		}
 
-        public Builder longDescription(String description) {
-            errorDefinition.longDescription = description;
-            return this;
-        }
-    }
+		public Builder longDescription(String description) {
+			errorDefinition.longDescription = description;
+			return this;
+		}
+	}
 }
