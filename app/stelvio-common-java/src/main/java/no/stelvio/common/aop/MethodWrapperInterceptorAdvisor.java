@@ -52,8 +52,8 @@ public class MethodWrapperInterceptorAdvisor extends AdvisedSupport
 
 		//  TODO use AopProxyFactory().createAopProxy(this); for creating the proxy; see ProxyFactoryBean
 		final Advisor[] advisors = getAdvisors();
-		for (int i = 0; i < advisors.length; i++) {
-			Advisor advisor = advisors[i];
+
+		for (Advisor advisor : advisors) {
 			proxyFactory.addAdvisor(advisor);
 		}
 
@@ -111,9 +111,7 @@ public class MethodWrapperInterceptorAdvisor extends AdvisedSupport
 		*/
 
 		// materialize interceptor chain from bean names
-		for (int i = 0; i < this.interceptorNames.length; i++) {
-			final String name = this.interceptorNames[i];
-
+		for (final String name : this.interceptorNames) {
 			if (log.isDebugEnabled()) {
 				log.debug("Configuring advisor or advice '" + name + "'");
 			}
