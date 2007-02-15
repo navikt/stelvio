@@ -21,9 +21,19 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>no.stelvio.star.example</groupId>
+			<artifactId>stelvio-consumer-star-example-java</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
 			<!-- TODO common classes (interface, etc) should be in the common java project for services -->
 			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-service-star-example-ejb</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>no.stelvio.star.example</groupId>
+			<artifactId>stelvio-presentation-star-example-java</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
@@ -34,7 +44,7 @@
 		<dependency>
 			<artifactId>spring-webflow</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>1.0</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<artifactId>jsf-facelets</artifactId>
@@ -75,8 +85,7 @@
 			<!-- TODO extract exclusions and version into common pom on level over pres-java and pres-web -->
 			<artifactId>spring-modules-validation</artifactId>
 			<groupId>org.springmodules</groupId>
-			<!-- TODO: Upgrade version -->
-			<version>0.6</version>
+			<version>0.7</version>
 			<!-- We don't want v1.2.x of Spring included -->
 			<exclusions>
 				<exclusion>
