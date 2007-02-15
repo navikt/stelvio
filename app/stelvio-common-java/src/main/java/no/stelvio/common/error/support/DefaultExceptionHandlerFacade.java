@@ -86,8 +86,6 @@ public class DefaultExceptionHandlerFacade implements ExceptionHandlerFacade {
 
     /**
      * Return a constructor on the class with the arguments.
-     *
-     * @throws exception if the method is ambiguios.
      */
     private static Constructor getConstructor(Class cls, Class[] args) {
         Constructor constructor = null;
@@ -99,6 +97,7 @@ public class DefaultExceptionHandlerFacade implements ExceptionHandlerFacade {
                 constructor = ctor;
             }
         }
+
         return constructor;
     }
 
