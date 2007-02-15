@@ -8,7 +8,6 @@ package no.stelvio.common.codestable;
  * @version $Id $
  */
 public interface CodesTableManager {
-
 	/**
 	 * Retrieves a <code>CodesTable</code> from the database by using <code>CodesTableFactory</code>. The
 	 * <code>CodesTable</code> that the input <code>CodesTableItem</code> belongs to, is the <code>CodesTable</code> that

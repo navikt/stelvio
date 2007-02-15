@@ -117,5 +117,5 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 * @param code the code to check for existence in the codes table.
 	 * @return true if the code exists, false otherwise.
 	 */
-	boolean validateCode(String code);
+	boolean validateCode(Enum code);
 }

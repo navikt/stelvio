@@ -136,8 +136,8 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem> implements S
 	}
 
 	/** {@inheritDoc} */
-	public boolean validateCode(String code) {
-		T codesTableItem = findCodesTableItem(code);
+	public boolean validateCode(Enum code) {
+		T codesTableItem = findCodesTableItem(code.name());
 
 		return codesTableItem != null;
 	}

@@ -121,5 +121,5 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	 * @param code the code to check for existence in the codes table.
 	 * @return true if the code exists, false otherwise.
 	 */
-	boolean validateCode(String code);
+	boolean validateCode(Enum code);
 }

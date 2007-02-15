@@ -48,15 +48,4 @@ public class DefaultCodesTable<T extends CodesTableItem> extends AbstractCodesTa
 	public String getDecode(Object code, Locale locale) {
 		return decode(code, locale);
 	}
-
-	/** {@inheritDoc} */
-	public boolean validateCode(String code) {
-		return super.validateCode(code);
-	}
-}==== ORIGINAL VERSION app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/DefaultCodesTable.java 117153772439361
-}==== THEIR VERSION app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/DefaultCodesTable.java (/mirror/ud/stelvio) 117153772439361
-	/** {@inheritDoc} */
-	public boolean validateCode(String code) {
-		return super.validateCode(code);
-	}
 }
