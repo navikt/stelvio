@@ -590,7 +590,7 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/saksbehandling/SaksbehandlerService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/nav/service/pensjon/saksbehandling/support/SimpleSaksbehandlerService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/beanRefContext.xml -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/modules/stelvio-star-example-ejb-context.xml -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/modules/srv-starexample-context.xml -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/.project -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/pom.xml -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/stelvio-app-star-example-trunk.psf -text
