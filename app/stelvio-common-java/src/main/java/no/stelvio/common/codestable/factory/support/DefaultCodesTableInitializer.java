@@ -3,6 +3,8 @@ package no.stelvio.common.codestable.factory.support;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.InitializingBean;
 
 import no.stelvio.common.codestable.CodesTable;
@@ -21,15 +23,16 @@ import no.stelvio.common.codestable.NotCodesTableException;
  * @version $Id$
  */
 public class DefaultCodesTableInitializer implements InitializingBean {
+	private static final Log log = LogFactory.getLog(DefaultCodesTableInitializer.class);
+
 	// The CodesTableManager
 	private CodesTableManager codesTableManager;
-	
+
 	// A list of codestableclasses - defined in the application context
 	private List<Class<CodesTableItem>> codesTableClasses = new ArrayList<Class<CodesTableItem>>();
-	
-	// A list of codestableclasses - defined in the application context
+	// A list of codestableperiodicclasses - defined in the application context
 	private List<Class<CodesTableItemPeriodic>> codesTablePeriodicClasses = new ArrayList<Class<CodesTableItemPeriodic>>();
-	
+
 	/**
 	 * Uses CodesTableManager to load all of the <code>CodesTable</code>s and <code>CodesTablePeriodic</code>s from
 	 * the database into the cache.
@@ -44,9 +47,13 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 		if(codesTableClasses.isEmpty() && codesTablePeriodicClasses.isEmpty()){
 			throw new CodesTableConfigurationException("No CodesTables or CodesTablePeriodics have been set");
 		}
-		
+
+		if (log.isInfoEnabled()) {
+			log.info("Preloading " + codesTableClasses.size() + " CodesTable classes");
+		}                                                                   
+
 		//CodesTableItem's
-		for(Class<CodesTableItem> ct : codesTableClasses){			
+		for(Class<CodesTableItem> ct : codesTableClasses){
 			validateCodesTableItemClass(ct);
 								
 			CodesTable cTable = codesTableManager.getCodesTable(ct);
@@ -54,6 +61,10 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 			if(null == cTable){
 				throw new CodesTableNotFoundException(ct);
 			}
+		}
+
+		if (log.isInfoEnabled()) {
+			log.info("Preloading " + codesTablePeriodicClasses.size() + " CodesTablePeriodic classes");
 		}
 
 		//CodesTableItemPeriodic's
