@@ -1,9 +1,9 @@
-package no.stelvio.repositor.star.example.saksbehandling.support;
+package no.stelvio.repository.star.example.saksbehandling.support;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import no.stelvio.domain.star.example.saksbehandling.Saksbehandler;
-import no.stelvio.repositor.star.example.saksbehandling.SaksbehandlerRepository;
+import no.stelvio.repository.star.example.saksbehandling.SaksbehandlerRepository;
 
 /**
  * Using Hibernate to work with saksbehandler against a database.

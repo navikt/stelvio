@@ -548,8 +548,8 @@ app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-e
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.settings/org.eclipse.wst.common.component -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/pom.xml -text
-app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/no/stelvio/repositor/star/example/saksbehandling/SaksbehandlerRepository.java -text
-app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/no/stelvio/repositor/star/example/saksbehandling/support/HibernateSaksbehandlerRepository.java -text
+app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/no/stelvio/repository/star/example/saksbehandling/SaksbehandlerRepository.java -text
+app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/java/no/stelvio/repository/star/example/saksbehandling/support/HibernateSaksbehandlerRepository.java -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/main/resources/modules/rep-starexample-context.xml -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/test/java/no/stelvio/repository/starexample/codestable/CodestableDBIntegrationTest.java -text
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/src/test/resources/modules/rep-codestable-context.xml -text

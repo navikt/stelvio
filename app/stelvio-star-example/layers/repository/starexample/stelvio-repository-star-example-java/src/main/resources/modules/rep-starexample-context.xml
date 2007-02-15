@@ -5,7 +5,7 @@
                            http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<bean id="rep.starexample.saksbehandlerRepository"
-	      class="no.stelvio.repositor.star.example.saksbehandling.support.HibernateSaksbehandlerRepository">
+	      class="no.stelvio.repository.star.example.saksbehandling.support.HibernateSaksbehandlerRepository">
 		<property name="hibernateTemplate" ref="rep.starexample.hibernateTemplate"/>
 	</bean>
 

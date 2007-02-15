@@ -1,4 +1,4 @@
-package no.stelvio.repositor.star.example.saksbehandling;
+package no.stelvio.repository.star.example.saksbehandling;
 
 import no.stelvio.domain.star.example.saksbehandling.Saksbehandler;
 
