@@ -70,7 +70,7 @@ public class DefaultCodesTableInitializerTest {
 		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
 		//Test the test objects method
-		codesTableInitializer.init();
+		codesTableInitializer.afterPropertiesSet();
 		context.assertIsSatisfied();
 	}
 
@@ -105,7 +105,7 @@ public class DefaultCodesTableInitializerTest {
 		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
 		//Test the test objects method
-		codesTableInitializer.init();
+		codesTableInitializer.afterPropertiesSet();
 		context.assertIsSatisfied();
 	}
 	
@@ -140,7 +140,7 @@ public class DefaultCodesTableInitializerTest {
 		codesTableInitializer.setCodesTableManager(codesTableManager);
 		
 		//Test the test objects method
-		codesTableInitializer.init();
+		codesTableInitializer.afterPropertiesSet();
 		context.assertIsSatisfied();
 	}
 	
@@ -154,7 +154,7 @@ public class DefaultCodesTableInitializerTest {
 		DefaultCodesTableInitializer codesTableInitializer = new DefaultCodesTableInitializer();
 
 		try{
-			codesTableInitializer.init();
+			codesTableInitializer.afterPropertiesSet();
 			fail("Expected exception");
 		} catch(Exception ex){
 			assertEquals("Test 1: Expected exception ", ex.getClass().getSimpleName(), "CodesTableConfigurationException" );
@@ -206,7 +206,7 @@ public class DefaultCodesTableInitializerTest {
 		
 		//Test the test objects method
 		try{
-			codesTableInitializer.init();
+			codesTableInitializer.afterPropertiesSet();
 			fail("Exptected exception");
 		} catch(Exception ex){
 			assertEquals("Test 1: Expected exception ", ex.getClass().getSimpleName(), "CodesTableNotFoundException");
