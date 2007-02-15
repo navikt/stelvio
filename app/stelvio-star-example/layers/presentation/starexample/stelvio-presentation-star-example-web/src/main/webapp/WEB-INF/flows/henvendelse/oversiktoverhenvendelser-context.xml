@@ -5,18 +5,14 @@
                            http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<!-- TODO check if jsf- and/or swf-scopes can be used -->
-	<bean id="prs.henvendelse.oversiktForm"
-	      class="no.nav.presentation.pensjon.saksbehandling.henvendelse.OversiktOverHenvendelserForm" scope="prototype"/>
-
 	<bean id="prs.henvendelse.oversiktAction"
 	      class="no.nav.presentation.pensjon.saksbehandling.henvendelse.OversiktOverHenvendelserAction">
-		<property name="formObjectName" value="prs.henvendelse.oversiktForm"/>
+		<property name="formObjectName" value="prsHenvendelseOversiktForm"/>
 		<property name="formObjectClass" value="no.nav.presentation.pensjon.saksbehandling.henvendelse.OversiktOverHenvendelserForm"/>
-		<property name="formObjectScope" value="FLOW"/>
 		<property name="validator">
 			<ref local="prs.henvendelse.oversiktValidator"/>
 		</property>
-		<property name="henvendelseService" ref="prs.starexample.henvendelseService"/>
+		<property name="sokHenvendelse" ref="prs.starexample.sokHenvendelse"/>
 		<property name="codesTableManager" ref="prs.starexample.codesTableManager"/>
 	</bean>
 
