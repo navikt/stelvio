@@ -404,7 +404,7 @@ app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-st
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/.settings/org.eclipse.wst.common.component -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/pom.xml -text
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/src/main/java/no/nav/presentation/pensjon/common/validation/JsfValangValidator.java -text
+app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/src/main/java/no/stelvio/presentation/star/example/common/validation/JsfValangValidator.java -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/.classpath -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/.project -text
 app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/.settings/org.eclipse.jdt.core.prefs -text

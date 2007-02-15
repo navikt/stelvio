@@ -17,7 +17,7 @@
 	</bean>
 
 	<bean id="prs.henvendelse.oversiktValidator"
-	      class="no.nav.presentation.pensjon.common.validation.JsfValangValidator">
+	      class="no.stelvio.presentation.star.example.common.validation.JsfValangValidator">
 		<property name="messageSource" ref="messageSource"/>
 		<property name="customFunctions">
 			<map>
