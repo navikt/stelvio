@@ -395,6 +395,7 @@ app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-j
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/henvendelse/Spesifikasjon.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/henvendelse/StatistikkRad.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/henvendelse/Tidsperiode.java -text
+app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/henvendelse/historikk/HenvendelseHistorikk.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/AnnenAdresse.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/BostedsAdresse.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/src/main/java/no/nav/domain/pensjon/person/Brukerprofil.java -text
