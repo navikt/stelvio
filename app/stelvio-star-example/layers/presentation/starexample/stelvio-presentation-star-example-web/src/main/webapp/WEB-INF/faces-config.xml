@@ -31,15 +31,15 @@
  
  <converter>
  	<converter-id>spesifikasjonEnumConverter</converter-id>
- 	<converter-class>no.stelvio.presentation.star.saksbehandlingg.henvendelse.SpesifikasjonEnumConverter</converter-class>
+ 	<converter-class>no.stelvio.presentation.star.example.henvendelse.SpesifikasjonEnumConverter</converter-class>
  </converter>
  <converter>
  	<converter-id>fagomradeEnumConverter</converter-id>
- 	<converter-class>no.stelvio.presentation.star.saksbehandlingg.henvendelse.FagomradeEnumConverter</converter-class>
+ 	<converter-class>no.stelvio.presentation.star.example.henvendelse.FagomradeEnumConverter</converter-class>
  </converter>
  <converter>
  	<converter-id>tidsperiodeEnumConverter</converter-id>
- 	<converter-class>no.stelvio.presentation.star.saksbehandlingg.henvendelse.TidsperiodeEnumConverter</converter-class>
+ 	<converter-class>no.stelvio.presentation.star.example.henvendelse.TidsperiodeEnumConverter</converter-class>
  </converter>
 
 </faces-config>
