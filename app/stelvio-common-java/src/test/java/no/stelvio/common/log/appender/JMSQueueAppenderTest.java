@@ -104,7 +104,7 @@ public class JMSQueueAppenderTest extends TestCase {
         testFac.setErrorOnCreate(true);
         ic.setQcf(testFac);
         ic.setQ(new Queue() {
-            public String getQueueName() throws JMSException {
+            public String getQueueName() {
                 return "Q";
             }
         });
@@ -191,7 +191,7 @@ public class JMSQueueAppenderTest extends TestCase {
         TestQueueConnectionFactory testFac = new TestQueueConnectionFactory();
         ic.setQcf(testFac);
         ic.setQ(new Queue() {
-            public String getQueueName() throws JMSException {
+            public String getQueueName() {
                 return "Q";
             }
         });
