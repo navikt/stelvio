@@ -14,16 +14,16 @@ import no.stelvio.common.error.support.Severity;
 public class TestErrorDefinitionRetriever implements ErrorDefinitionRetriever {
 	private static boolean throwException = false;
 
-	public Set<ErrorDefinition> retrieve() {
-        HashSet<ErrorDefinition> errors = new HashSet<ErrorDefinition>();
-        errors.add(new ErrorDefinition.Builder(Throwable.class.getName()).message("error: {0}").severity(Severity.FATAL).build());
+	public Set<ErrorDefinition> retrieveAll() {
+		HashSet<ErrorDefinition> errors = new HashSet<ErrorDefinition>();
+		errors.add(new ErrorDefinition.Builder(Throwable.class.getName()).message("error: {0}").severity(Severity.FATAL).build());
 
-	    if (throwException) {
-		    throw new IllegalStateException("illegal state");
-	    }
+		if (throwException) {
+			throw new IllegalStateException("illegal state");
+		}
 
-        return errors;
-    }
+		return errors;
+	}
 
 	public static void setThrowException(final boolean throwException) {
 		TestErrorDefinitionRetriever.throwException = throwException;

@@ -21,78 +21,83 @@ import no.stelvio.common.error.retriever.RetrieverFailedException;
  * @author personf8e9850ed756
  */
 public class ErrorDefinitionResolverFactoryBeanTest {
-    private ErrorDefinitionRetriever errorDefinitionRetriever;
-    private ErrorDefinitionResolverFactoryBean ehfb;
-    private Mockery mockery;
+	private ErrorDefinitionRetriever errorDefinitionRetriever;
+	private ErrorDefinitionResolverFactoryBean ehfb;
+	private Mockery mockery;
 
-    @Test
-    public void returnsCorrectType() throws Exception {
-        Class<?> clazz = ehfb.getObjectType();
+	@Test
+	public void returnsCorrectType() throws Exception {
+		Class<?> clazz = ehfb.getObjectType();
 
-        assertThat(clazz, isNotNull());
-        assertThat(clazz, compatibleType(ErrorDefinitionResolver.class));
-    }
+		assertThat(clazz, isNotNull());
+		assertThat(clazz, compatibleType(ErrorDefinitionResolver.class));
+	}
 
-    @Test
-    public void returnsMapWithErrors() throws Exception {
-        setupAndCallRetriever();
+	@Test
+	public void returnsMapWithErrors() throws Exception {
+		setupAndCallRetriever();
 
-        @SuppressWarnings("unchecked")
-        ErrorDefinitionResolver errorDefinitionResolver = (ErrorDefinitionResolver) ehfb.getObject();
-        assertThat(errorDefinitionResolver, isNotNull());
-    }
+		@SuppressWarnings("unchecked")
+		ErrorDefinitionResolver errorDefinitionResolver = (ErrorDefinitionResolver) ehfb.getObject();
+		assertThat(errorDefinitionResolver, isNotNull());
+	}
 
-    @Test
-    public void callsRetrieveOnlyWhenInitialized() throws Exception {
-        setupAndCallRetriever();
+	@Test
+	public void callsRetrieveOnlyWhenInitialized() throws Exception {
+		setupAndCallRetriever();
 
-        // Should not make calls to retriever
-        ehfb.getObject();
-    }
+		// Should not make calls to retriever
+		ehfb.getObject();
+	}
 
-    @Test
-    public void shouldImplementInitializingBean() {
-        assertThat(ErrorDefinitionResolverFactoryBean.class, compatibleType(InitializingBean.class));
-    }
+	@Test
+	public void shouldImplementInitializingBean() {
+		assertThat(ErrorDefinitionResolverFactoryBean.class, compatibleType(InitializingBean.class));
+	}
 
-    @Test
-    public void shouldImplementFactoryBean() {
-        assertThat(ErrorDefinitionResolverFactoryBean.class, compatibleType(FactoryBean.class));
-    }
+	@Test
+	public void shouldImplementFactoryBean() {
+		assertThat(ErrorDefinitionResolverFactoryBean.class, compatibleType(FactoryBean.class));
+	}
 
 	/**
-	 * When the <code>ErrorDefinitionRetriever</code> fails, an exception that can be handled specifically by the facade
-	 * is thrown.
+	 * When the <code>ErrorDefinitionRetriever</code> fails, an exception that can be handled specifically by the facade is
+	 * thrown.
 	 */
 	@Test(expected = RetrieverFailedException.class)
 	public void whenErrorDefinitionRetrieverFailsDetectableExceptionIsThrown() throws Exception {
-		mockery.expects(new InAnyOrder() {{
-		        one (errorDefinitionRetriever).retrieve(); will(throwException(new IllegalStateException("problems")));
-		    }});
+		mockery.expects(new InAnyOrder() {
+			{
+				one(errorDefinitionRetriever).retrieveAll();
+				will(throwException(new IllegalStateException("problems")));
+			}
+		});
 
 		ehfb.afterPropertiesSet();
 	}
 
 
 	@Before
-    public void setUp() throws Exception {
-        mockery = new Mockery();
-        errorDefinitionRetriever = mockery.mock(ErrorDefinitionRetriever.class);
+	public void setUp() throws Exception {
+		mockery = new Mockery();
+		errorDefinitionRetriever = mockery.mock(ErrorDefinitionRetriever.class);
 
-        ehfb = new ErrorDefinitionResolverFactoryBean();
-        ehfb.setErrorRetriever(errorDefinitionRetriever);
-    }
+		ehfb = new ErrorDefinitionResolverFactoryBean();
+		ehfb.setErrorDefinitionRetriever(errorDefinitionRetriever);
+	}
 
-    @After
-    public void checkInvariants() {
-        mockery.assertIsSatisfied();
-    }
+	@After
+	public void checkInvariants() {
+		mockery.assertIsSatisfied();
+	}
 
-    private void setupAndCallRetriever() throws Exception {
-        mockery.expects(new InAnyOrder() {{
-                exactly(1).of (errorDefinitionRetriever).retrieve();
-            }});
+	private void setupAndCallRetriever() throws Exception {
+		mockery.expects(new InAnyOrder() {
+			{
+				exactly(1).of(errorDefinitionRetriever).retrieveAll();
+			}
+		});
 
-        ehfb.afterPropertiesSet();
-    }
+		ehfb.afterPropertiesSet();
+	}
 }

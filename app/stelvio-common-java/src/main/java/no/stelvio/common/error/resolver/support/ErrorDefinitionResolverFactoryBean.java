@@ -17,38 +17,38 @@ import no.stelvio.common.error.retriever.ErrorDefinitionRetriever;
  * @todo more javadoc
  */
 public class ErrorDefinitionResolverFactoryBean implements FactoryBean, InitializingBean {
-    private ErrorDefinitionRetriever errorDefinitionRetriever;
-    private ErrorDefinitionResolver errorDefinitionResolver;
+	private ErrorDefinitionRetriever errorDefinitionRetriever;
+	private ErrorDefinitionResolver errorDefinitionResolver;
 
-    /**
-     * Default implementation of the <code>ErrorDefinitionResolver</code> is used if not specified.
-     *
-     * @see StaticErrorDefinitionResolver
-     */
-    private Class<? extends ErrorDefinitionResolver> errorResolverClass = StaticErrorDefinitionResolver.class;
+	/**
+	 * Default implementation of the <code>ErrorDefinitionResolver</code> is used if not specified.
+	 *
+	 * @see StaticErrorDefinitionResolver
+	 */
+	private Class<? extends ErrorDefinitionResolver> errorResolverClass = StaticErrorDefinitionResolver.class;
 
-    public Object getObject() throws Exception {
-        return errorDefinitionResolver;
-    }
+	public Object getObject() throws Exception {
+		return errorDefinitionResolver;
+	}
 
-    public Class getObjectType() {
-        return ErrorDefinitionResolver.class;
-    }
+	public Class getObjectType() {
+		return ErrorDefinitionResolver.class;
+	}
 
-    public boolean isSingleton() {
-        return true;
-    }
+	public boolean isSingleton() {
+		return true;
+	}
 
-    public void afterPropertiesSet() throws Exception {
-        Constructor<? extends ErrorDefinitionResolver> constructor = errorResolverClass.getConstructor(Collection.class);
-        errorDefinitionResolver = constructor.newInstance(errorDefinitionRetriever.retrieve());
-    }
+	public void afterPropertiesSet() throws Exception {
+		Constructor<? extends ErrorDefinitionResolver> constructor = errorResolverClass.getConstructor(Collection.class);
+		errorDefinitionResolver = constructor.newInstance(errorDefinitionRetriever.retrieveAll());
+	}
 
-    public void setErrorRetriever(ErrorDefinitionRetriever errorDefinitionRetriever) {
-        this.errorDefinitionRetriever = errorDefinitionRetriever;
-    }
+	public void setErrorDefinitionRetriever(ErrorDefinitionRetriever errorDefinitionRetriever) {
+		this.errorDefinitionRetriever = errorDefinitionRetriever;
+	}
 
-    public void setErrorResolverClass(Class<? extends ErrorDefinitionResolver> errorResolverClass) {
-        this.errorResolverClass = errorResolverClass;
-    }
+	public void setErrorResolverClass(Class<? extends ErrorDefinitionResolver> errorResolverClass) {
+		this.errorResolverClass = errorResolverClass;
+	}
 }

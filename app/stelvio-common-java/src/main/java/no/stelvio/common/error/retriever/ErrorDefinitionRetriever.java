@@ -17,5 +17,5 @@ public interface ErrorDefinitionRetriever {
 	 * @throws RetrieverFailedException if retrieving error definitions failed.
 	 * @see ErrorDefinition
 	 */
-    Set<ErrorDefinition> retrieve() throws RetrieverFailedException;
+	Set<ErrorDefinition> retrieveAll() throws RetrieverFailedException;
 }
