@@ -5,7 +5,7 @@ package no.stelvio.domain.star.example.henvendelse;
  * 
  * @author personff564022aedd
  */
-public class HenvendelseStatistikkCriteria {
+public class HenvendelseStatisticsCriteria {
 
 	// Todo: må ha med enhet id  - det er denne statistikk hentes opp for
 	
@@ -29,7 +29,7 @@ public class HenvendelseStatistikkCriteria {
 	 * @param fagomrade
 	 * @param spesifikasjon
 	 */
-	public HenvendelseStatistikkCriteria(String enhetId, Tidsperiode tidsperiode, Fagomrade fagomrade, Spesifikasjon spesifikasjon) {
+	public HenvendelseStatisticsCriteria(String enhetId, Tidsperiode tidsperiode, Fagomrade fagomrade, Spesifikasjon spesifikasjon) {
 		if (enhetId == null || tidsperiode == null || fagomrade == null || spesifikasjon == null) {
 			throw new IllegalArgumentException("One or more parameters null.");
 		}

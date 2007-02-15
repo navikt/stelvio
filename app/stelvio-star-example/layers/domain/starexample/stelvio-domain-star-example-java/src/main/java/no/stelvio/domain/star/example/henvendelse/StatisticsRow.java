@@ -2,11 +2,11 @@ package no.stelvio.domain.star.example.henvendelse;
 
 
 /**
- * Represents a row in the HenvendelseStatistikk result table.
+ * Represents a row in the HenvendelseStatistics result table.
  * 
  * @author personff564022aedd
  */
-public class StatistikkRad {
+public class StatisticsRow {
 
 //	private List<StatistikkKolonne> columns;
 	
@@ -14,9 +14,9 @@ public class StatistikkRad {
 	
 	// parent is a special row where the fields represents column labels
 	// it is added to easy rendering of result table
-	private HenvendelseStatistikk parent;
+	private HenvendelseStatistics parent;
 	
-	public StatistikkRad(String[] columns, HenvendelseStatistikk parent) {
+	public StatisticsRow(String[] columns, HenvendelseStatistics parent) {
 		this.columnValues = columns;
 		this.parent = parent;
 //		this.columns = new ArrayList<StatistikkKolonne>();

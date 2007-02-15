@@ -21,7 +21,7 @@
 			<method-arguments>
 				<argument expression="flowScope.prsHenvendelseOversiktForm"/>
 			</method-arguments>
-			<method-result name="flowScope.henvendelseStatistikk"/>
+			<method-result name="flowScope.henvendelseStatistics"/>
 		</bean-action>
 		<transition on="success" to="oversikt"/>
 	</action-state>

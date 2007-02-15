@@ -12,7 +12,7 @@
 		<property name="validator">
 			<ref local="prs.henvendelse.oversiktValidator"/>
 		</property>
-		<property name="sokHenvendelseService" ref="prs.starexample.sokHenvendelseService"/>
+		<property name="searchHenvendelseService" ref="prs.starexample.searchHenvendelseService"/>
 		<property name="codesTableManager" ref="prs.starexample.codesTableManager"/>
 	</bean>
 

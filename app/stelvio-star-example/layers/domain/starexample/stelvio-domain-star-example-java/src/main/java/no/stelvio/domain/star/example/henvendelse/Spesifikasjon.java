@@ -1,7 +1,7 @@
 package no.stelvio.domain.star.example.henvendelse;
 
 /**
- * Spesifikasjon is part of the criteria for getting {@link HenvendelseStatistikk}.  It is populated by a radio button choice
+ * Spesifikasjon is part of the criteria for getting {@link HenvendelseStatistics}.  It is populated by a radio button choice
  * used in the search window.
  * 
  * @author personff564022aedd

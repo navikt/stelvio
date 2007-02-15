@@ -35,15 +35,12 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
     @AttributeOverride(name="toDate", column=@Column(name="DATO_TOM"))    
 })
 public class HenvendelseTypeCti extends CodesTableItemPeriodic {
-
 	private static final long serialVersionUID = 4989579646384579677L;
 	
 	/**
-	 * Default no-arg constructor.
-	 * Should only be called by persistence provider
+	 * Default no-arg constructor. Should only be called by persistence provider.
 	 */
 	protected HenvendelseTypeCti() {
-		super();
 	}
 
 	/**

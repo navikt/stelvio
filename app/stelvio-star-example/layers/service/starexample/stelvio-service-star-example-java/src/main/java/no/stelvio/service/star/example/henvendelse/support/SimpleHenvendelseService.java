@@ -5,8 +5,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import no.stelvio.domain.star.example.henvendelse.Henvendelse;
-import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikk;
-import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistics;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatisticsCriteria;
 import no.stelvio.service.star.example.henvendelse.HenvendelseServiceBi;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;
@@ -87,26 +87,26 @@ public class SimpleHenvendelseService implements HenvendelseServiceBi {
 
 	public HenvendelseStatistikkResponse genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest) {
 		
-		HenvendelseStatistikk henvendelseStatistikk; 
+		HenvendelseStatistics henvendelseStatistics;
 		
-		HenvendelseStatistikkCriteria crit = henvendelseStatistikkRequest.getCriteria();
+		HenvendelseStatisticsCriteria crit = henvendelseStatistikkRequest.getCriteria();
 		if (crit.getTidsperiode().equals("Siste 5 dager")) {
-			henvendelseStatistikk = new HenvendelseStatistikk(7, HenvendelseStatistikk.TIDSENHET_DAG);
+			henvendelseStatistics = new HenvendelseStatistics(7, HenvendelseStatistics.TIDSENHET_DAG);
 			
-			henvendelseStatistikk.addRow(new String[]{"Antall", "246", "302", "198", "265" ,"10", "1021"});
-			henvendelseStatistikk.addRow(new String[]{"Krigspensjon", "0", "0", "0", "1", "99", "100"});
-			henvendelseStatistikk.addRow(new String[]{"Ikke angitt", "5", "8", "4", "2", "24", "43"});
+			henvendelseStatistics.addRow(new String[]{"Antall", "246", "302", "198", "265" ,"10", "1021"});
+			henvendelseStatistics.addRow(new String[]{"Krigspensjon", "0", "0", "0", "1", "99", "100"});
+			henvendelseStatistics.addRow(new String[]{"Ikke angitt", "5", "8", "4", "2", "24", "43"});
 			
 		} else {
 		
-			henvendelseStatistikk = new HenvendelseStatistikk(6, HenvendelseStatistikk.TIDSENHET_UKE);
+			henvendelseStatistics = new HenvendelseStatistics(6, HenvendelseStatistics.TIDSENHET_UKE);
 	
-			henvendelseStatistikk.addRow(new String[]{"Antall", "246", "302", "198", "265", "1011"});
-			henvendelseStatistikk.addRow(new String[]{"Krigspensjon", "0", "0", "0", "1", "1"});
-			henvendelseStatistikk.addRow(new String[]{"Ikke angitt", "5", "8", "4", "2", "19"});
+			henvendelseStatistics.addRow(new String[]{"Antall", "246", "302", "198", "265", "1011"});
+			henvendelseStatistics.addRow(new String[]{"Krigspensjon", "0", "0", "0", "1", "1"});
+			henvendelseStatistics.addRow(new String[]{"Ikke angitt", "5", "8", "4", "2", "19"});
 		}
 
-		return new HenvendelseStatistikkResponse(henvendelseStatistikk);
+		return new HenvendelseStatistikkResponse(henvendelseStatistics);
 	}
 
 }

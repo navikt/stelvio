@@ -1,7 +1,7 @@
 package no.stelvio.domain.star.example.henvendelse;
 
 /**
- * Tidsperiode is part of the criteria for getting {@link HenvendelseStatistikk}.  It is populated by a select menu
+ * Tidsperiode is part of the criteria for getting {@link HenvendelseStatistics}.  It is populated by a select menu
  * in the search window.
  * 
  * @author personff564022aedd

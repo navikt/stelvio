@@ -11,7 +11,7 @@ import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRespo
  */
 public interface HenvendelseServiceBi {
 	/**
-	 * @return Response object containing HenvendelseStatistikk
+	 * @return Response object containing HenvendelseStatistics
 	 */
 	HenvendelseStatistikkResponse genererHenvendelseStatistikk(HenvendelseStatistikkRequest henvendelseStatistikkRequest);
 }

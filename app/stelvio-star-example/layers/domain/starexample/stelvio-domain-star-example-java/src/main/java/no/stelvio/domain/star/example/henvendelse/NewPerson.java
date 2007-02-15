@@ -14,13 +14,15 @@ import java.util.Calendar;
 import no.stelvio.domain.person.Pid;
 
 public class NewPerson implements Serializable {
-    private Pid fnr;
-    private String kommentar;
-    private Calendar kommentarDato;
-    private String kommentarIdent;
-    private String personId;
+	private static final long serialVersionUID = -2342087840104401329L;
+	
+	private Pid fnr;
+	private String kommentar;
+	private Calendar kommentarDato;
+	private String kommentarIdent;
+	private String personId;
 
-    public NewPerson() {
+	public NewPerson() {
     }
 
     public Pid getPid() {

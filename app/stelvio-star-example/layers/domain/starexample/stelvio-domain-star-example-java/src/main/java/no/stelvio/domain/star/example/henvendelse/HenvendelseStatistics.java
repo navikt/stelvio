@@ -13,7 +13,7 @@ import java.util.List;
  * 
  * @author personff564022aedd
  */
-public class HenvendelseStatistikk {
+public class HenvendelseStatistics {
 
 	// TODO: i18n på labels..
 	private static final String SUM_LABEL = "Sum";
@@ -23,9 +23,9 @@ public class HenvendelseStatistikk {
 	public static final boolean TIDSENHET_DAG = false;	
 	
 	// 2d "array" that contains the statistics results including labels 
-	private List<StatistikkRad> resultRows = new ArrayList<StatistikkRad>();
+	private List<StatisticsRow> resultRows = new ArrayList<StatisticsRow>();
 
-	private StatistikkRad header;
+	private StatisticsRow header;
 	
 	// todo fjerne denne...
 	private int noOfColumns;
@@ -33,16 +33,12 @@ public class HenvendelseStatistikk {
 	/* if true, each number in tabell is per week (uke), else per day (dag) */
 	private boolean tidsenhetUke;
 	
-	private HenvendelseStatistikk() {
-		System.out.println("empty constructor called..");
-	}
-	
 	/**
 	 * 
 	 * @param antallKolonner
-	 * @param antallRader
+	 * @param tidsenhetUke
 	 */
-	public HenvendelseStatistikk(int antallKolonner, boolean tidsenhetUke) {
+	public HenvendelseStatistics(int antallKolonner, boolean tidsenhetUke) {
 		if (antallKolonner < 1) {
 			throw new IllegalArgumentException("Invalid dimension for result table");
 		}
@@ -74,7 +70,7 @@ public class HenvendelseStatistikk {
 		labels[antallKolonner - 1] = SUM_LABEL;
 		
 		// Set row containing labels
-		header = new StatistikkRad(labels, null);
+		header = new StatisticsRow(labels, null);
 		
 		addRow(labels);
 	}
@@ -95,13 +91,13 @@ public class HenvendelseStatistikk {
 		if (entries == null || entries.length != noOfColumns) {
 			throw new IllegalArgumentException("Entries must fit table dimension, required noOfColoumns is: " + noOfColumns);
 		}
-		resultRows.add(new StatistikkRad(entries, this));
+		resultRows.add(new StatisticsRow(entries, this));
 	}
 	
 	public String toString() {
 		StringBuffer stringBuffer = new StringBuffer();
 		if (resultRows != null) {
-			for(StatistikkRad row : resultRows) {
+			for(StatisticsRow row : resultRows) {
 				for(String entry : row.getColumns()) {
 					stringBuffer.append(entry);
 					stringBuffer.append("\t");
@@ -111,15 +107,15 @@ public class HenvendelseStatistikk {
 		return stringBuffer.toString();
 	}
 
-	public StatistikkRad getColumnHeaders() {
+	public StatisticsRow getColumnHeaders() {
 		return resultRows.get(0);
 	}
 	
-	public List<StatistikkRad> getResultRows() {
+	public List<StatisticsRow> getResultRows() {
 		return resultRows.subList(1, resultRows.size());
 	}
 
-	public StatistikkRad getHeader() {
+	public StatisticsRow getHeader() {
 		return header;
 	}
 	

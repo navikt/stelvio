@@ -5,11 +5,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.webflow.action.FormAction;
 
 import no.stelvio.common.codestable.CodesTableManager;
-import no.stelvio.consumer.star.example.henvendelse.SokHenvendelseServiceBi;
-import no.stelvio.consumer.star.example.henvendelse.to.SokHenvendelseRequest;
+import no.stelvio.consumer.star.example.henvendelse.SearchHenvendelseServiceBi;
+import no.stelvio.consumer.star.example.henvendelse.to.SearchHenvendelseRequest;
 import no.stelvio.domain.star.example.codestable.HenvendelseTypeCti;
-import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikk;
-import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistics;
+import no.stelvio.domain.star.example.henvendelse.HenvendelseStatisticsCriteria;
 
 
 /**
@@ -20,26 +20,26 @@ import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistikkCriteria;
 public class OversiktOverHenvendelserAction extends FormAction {
 	private static final Log log = LogFactory.getLog(OversiktOverHenvendelserAction.class);
 
-	private SokHenvendelseServiceBi sokHenvendelseService;
+	private SearchHenvendelseServiceBi searchHenvendelseService;
 	private CodesTableManager codesTableManager;
 
 	/**
 	 * @param form contains input data for backend request
-	 * @return {@link HenvendelseStatistikk}
+	 * @return {@link HenvendelseStatistics}
 	 */
-	public HenvendelseStatistikk hentStatistikk(OversiktOverHenvendelserForm form) {
+	public HenvendelseStatistics hentStatistikk(OversiktOverHenvendelserForm form) {
 		// TODO enhetId
-		HenvendelseStatistikkCriteria crit = 
-				new HenvendelseStatistikkCriteria(
+		HenvendelseStatisticsCriteria crit =
+				new HenvendelseStatisticsCriteria(
 						"enhetsid", form.getValgtTidsperiode(), form.getValgtFagomrade(), form.getValgtSok());
 
 		log.debug("CodesTable HenvendelseTypeCti: " +
 				codesTableManager.getCodesTablePeriodic(HenvendelseTypeCti.class));
-		return sokHenvendelseService.genererHenvendelseStatistikk(new SokHenvendelseRequest(crit)).getCriteria();
+		return searchHenvendelseService.genererHenvendelseStatistikk(new SearchHenvendelseRequest(crit)).getCriteria();
 	}
 
-	public void setSokHenvendelse(SokHenvendelseServiceBi sokHenvendelseService) {
-		this.sokHenvendelseService = sokHenvendelseService;
+	public void setSokHenvendelse(SearchHenvendelseServiceBi searchHenvendelseService) {
+		this.searchHenvendelseService = searchHenvendelseService;
 	}
 
 	public void setCodesTableManager(CodesTableManager codesTableManager) {

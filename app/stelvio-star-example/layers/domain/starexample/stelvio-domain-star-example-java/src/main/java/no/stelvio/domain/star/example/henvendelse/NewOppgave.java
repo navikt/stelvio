@@ -11,9 +11,11 @@ package no.stelvio.domain.star.example.henvendelse;
 import java.io.Serializable;
 
 public class NewOppgave implements Serializable {
-    private String oppgaveId;
+	private static final long serialVersionUID = 4093999052490123135L;
+	
+	private String oppgaveId;
 
-    public NewOppgave() {
+	public NewOppgave() {
     }
 
     public String getOppgaveId() {

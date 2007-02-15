@@ -6,6 +6,7 @@ import java.util.Calendar;
 import no.stelvio.domain.person.Pid;
 
 public class Henvendelse implements Serializable  {
+	private static final long serialVersionUID = 5824426981800510724L;
 	
 	private Pid fodselsnummer;
 	
@@ -31,7 +32,7 @@ public class Henvendelse implements Serializable  {
     private String tidsbruk;
     private String aapenOpgKode;
 
-    public String getFlereOppgaver()
+	public String getFlereOppgaver()
     {
     	if( oppgaver == null )
     	{
