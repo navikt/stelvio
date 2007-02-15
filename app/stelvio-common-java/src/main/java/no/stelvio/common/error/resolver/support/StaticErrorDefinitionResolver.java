@@ -39,7 +39,7 @@ public class StaticErrorDefinitionResolver implements ErrorDefinitionResolver {
 		for (ErrorDefinition error : errors) {
 			// TODO should another class validate that the class exist before loading the Class object here?
 			// Could really only be the ErrorDefinitionResolverFactoryBean as the EJB that retrieves the errors are in another class loader
-			errorMap.put(loadClass(error.getClassName()), error);
+			errorMap.put(loadThrowableClass(error.getClassName()), error);
 		}
 	}
 
@@ -159,15 +159,23 @@ public class StaticErrorDefinitionResolver implements ErrorDefinitionResolver {
 		}
 	}
 
-	private Class<?> loadClass(String className) throws IllegalStateException {
-		try {
-			if (log.isDebugEnabled()) {
-				log.debug("Trying to load class [" + className + "]");
-			}
-
-			return Class.forName(className);
-		} catch (ClassNotFoundException e) {
-			throw new IllegalStateException("Definition of error has the wrong class name", e);
+	private Class<?> loadThrowableClass(String className) throws IllegalStateException {
+		Class<?> throwableClass;
+        
+		if (log.isDebugEnabled()) {
+			log.debug("Trying to load class [" + className + "]");
 		}
+
+		try {
+            throwableClass = Class.forName(className, true, Thread.currentThread().getContextClassLoader());
+		} catch (ClassNotFoundException e) {
+			throw new IllegalStateException("Definition of error has non-existing class name", e);
+		}
+
+        if (!Throwable.class.isAssignableFrom(throwableClass)) {
+        	throw new IllegalStateException("Definition of error has the wrong class name [" + className + "]");
+        }
+        
+        return throwableClass;
 	}
 }
