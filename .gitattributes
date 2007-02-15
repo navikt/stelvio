@@ -349,6 +349,7 @@ app/stelvio-service-java/.classpath -text
 app/stelvio-service-java/.project -text
 app/stelvio-service-java/pom.xml -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/codestable/RepositoryCodesTableFactory.java -text
+app/stelvio-service-java/src/main/java/no/stelvio/service/error/RepositoryErrorDefinitionRetriever.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/menu/MenuService.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/menu/support/DefaultMenuService.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/menu/to/MenuItemServiceResponse.java -text

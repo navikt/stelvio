@@ -22,7 +22,8 @@ public class RepositoryCodesTableFactory implements CodesTableFactory {
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableItemClass) throws CodesTableNotFoundException {
+	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableItemClass)
+			throws CodesTableNotFoundException {
 		final List<T> items = codesTableRepository.findCodesTableItems(codesTableItemClass);
 
 		return new DefaultCodesTable<T>(items);
@@ -32,7 +33,9 @@ public class RepositoryCodesTableFactory implements CodesTableFactory {
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass) throws CodesTableNotFoundException {
+	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T>
+	                                       createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass)
+			throws CodesTableNotFoundException {
 		final List<T> items = codesTableRepository.findCodesTableItems(codesTableItemPeriodicClass);
 
 		return new DefaultCodesTablePeriodic<T>(items);
