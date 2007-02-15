@@ -7,13 +7,16 @@
 	<start-state idref="enter"/>
 
 	<view-state id="enter" view="/pages/start.xhtml">
+		<render-actions>
+			<action bean="prs.start.form" method="setupForm"/>
+		</render-actions>
 		<transition on="hent" to="henterPerson">
 			<action bean="prs.start.form" method="bind"/>
 		</transition>
 	</view-state>
 
 	<action-state id="henterPerson">
-		<action bean="prs.start.action" method="executeSearch"/>
+		<action bean="prs.start.action" method="search"/>
 		<transition on="success" to="finish"/>
 	</action-state>
 
