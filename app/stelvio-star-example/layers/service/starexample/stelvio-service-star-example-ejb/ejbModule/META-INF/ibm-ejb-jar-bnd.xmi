@@ -4,10 +4,19 @@
   <ejbBindings xmi:id="EnterpriseBeanBinding_1168530399031" jndiName="ejb/test/AsdfHome">
     <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#Asdf"/>
   </ejbBindings>
-  <ejbBindings xmi:id="EnterpriseBeanBinding_1168530442546" jndiName="ejb/Ctf">
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1168530442546" jndiName="ejb/CodesTableFactory">
     <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#Session_1168378806445"/>
   </ejbBindings>
   <ejbBindings xmi:id="EnterpriseBeanBinding_1168530442547" jndiName="ejb/TestBb">
     <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#TestBb"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1171546587984" jndiName="ejb/ErrorDefinitionRetriever">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#Session_1171546587984"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1171547302890" jndiName="ejb/HenvendelseService">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#Session_1171547302890"/>
+  </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1171547407593" jndiName="ejb/SaksbehandlerService">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#Session_1171547407593"/>
   </ejbBindings>
 </ejbbnd:EJBJarBinding>

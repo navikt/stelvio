@@ -10,7 +10,7 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>
-		<session>
+		<session id="Session_1171547302890">
 			<ejb-name>HenvendelseService</ejb-name>
 			<local-home>no.stelvio.service.star.example.henvendelse.HenvendelseServiceLocalHome</local-home>
 			<local>no.stelvio.service.star.example.henvendelse.HenvendelseServiceLocal</local>
@@ -18,7 +18,7 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>
-		<session>
+		<session id="Session_1171547407593">
 			<ejb-name>SaksbehandlerService</ejb-name>
 			<local-home>no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceLocalHome</local-home>
 			<local>no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceLocal</local>
@@ -26,7 +26,7 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>
-		<session>
+		<session id="Session_1171546587984">
 			<ejb-name>ErrorDefinitionRetriever</ejb-name>
 			<local-home>no.stelvio.service.star.example.error.ErrorDefinitionRetrieverLocalHome</local-home>
 			<local>no.stelvio.service.star.example.error.ErrorDefinitionRetrieverLocal</local>
