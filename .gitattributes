@@ -372,6 +372,8 @@ app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/to/HenvendelseStatistikkRequest.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/src/main/java/no/stelvio/consumer/star/example/henvendelse/to/HenvendelseStatistikkResponse.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/pom.xml -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/ASBOPenHenvendelse.java -text
+app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/historikk/ASBOPenHenvendelseHistorikk.java -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.classpath -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.project -text
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
