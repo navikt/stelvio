@@ -15,8 +15,7 @@ import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.NotCodesTableException;
 
 /**
- * Implementation of CodesTableInitializer for initialization of the codestables and loading them into the cache for
- * the codestables.
+ * Initializes the specified codes tables and loads them into their cache.
  * 
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
