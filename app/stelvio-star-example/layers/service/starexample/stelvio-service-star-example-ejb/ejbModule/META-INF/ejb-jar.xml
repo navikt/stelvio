@@ -26,5 +26,13 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>
+		<session>
+			<ejb-name>ErrorDefinitionRetriever</ejb-name>
+			<local-home>no.stelvio.service.star.example.error.ErrorDefinitionRetrieverLocalHome</local-home>
+			<local>no.stelvio.service.star.example.error.ErrorDefinitionRetrieverLocal</local>
+			<ejb-class>no.stelvio.service.star.example.error.ErrorDefinitionRetrieverBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
 	</enterprise-beans>
 </ejb-jar>
