@@ -1,8 +1,7 @@
-package no.nav.domain.pensjon.codestable;
+package no.stelvio.star.example.codestable;
 
 import java.util.Date;
 import java.util.Locale;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;

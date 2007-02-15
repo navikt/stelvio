@@ -1,4 +1,4 @@
-package no.nav.domain.pensjon.henvendelse;
+package no.stelvio.star.example.henvendelse;
 
 /**
  * Fagomrade is part of the criteria for getting {@link HenvendelseStatistikk}.  It is populated by a select menu

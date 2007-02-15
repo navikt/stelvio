@@ -1,12 +1,4 @@
-/**
- * GBOHenvendelse.java
- *
- * This file was auto-generated from WSDL
- * by the IBM Web services WSDL2Java emitter.
- * cf10631.06 v81706232132
- */
-
-package no.nav.domain.pensjon.henvendelse;
+package no.stelvio.star.example.henvendelse;
 
 import java.io.Serializable;
 import java.util.Calendar;

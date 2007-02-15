@@ -1,4 +1,4 @@
-package no.nav.domain.pensjon.henvendelse;
+package no.stelvio.star.example.henvendelse;
 
 import java.util.ArrayList;
 import java.util.Calendar;
