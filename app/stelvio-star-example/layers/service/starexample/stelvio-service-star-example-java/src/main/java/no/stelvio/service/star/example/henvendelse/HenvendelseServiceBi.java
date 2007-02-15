@@ -13,7 +13,7 @@ import no.stelvio.star.example.person.Fodselsnummer;
  * 
  * @author personff564022aedd
  */
-public interface HenvendelseService {
+public interface HenvendelseServiceBi {
 
 	/**
 	 * @return Response object containing HenvendelseStatistikk

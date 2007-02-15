@@ -571,12 +571,12 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/.project -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/.settings/org.eclipse.wst.common.component -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/pom.xml -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/henvendelse/HenvendelseService.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/henvendelse/HenvendelseServiceBi.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/henvendelse/support/SimpleHenvendelseService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/henvendelse/to/HenvendelseStatistikkRequest.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/henvendelse/to/HenvendelseStatistikkResponse.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/PersonNotFoundException.java -text
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/SaksbehandlerService.java -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/SaksbehandlerServiceBi.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/support/SimpleSaksbehandlerService.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/beanRefContext.xml -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/modules/srv-starexample-context.xml -text

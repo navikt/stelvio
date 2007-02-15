@@ -5,14 +5,14 @@ import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.service.star.example.exception.DatabaseNotFoundException;
 import no.stelvio.service.star.example.saksbehandling.PersonNotFoundException;
-import no.stelvio.service.star.example.saksbehandling.SaksbehandlerService;
+import no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi;
 import no.stelvio.star.example.saksbehandling.Saksbehandler;
 
 /**
  * @author personf8e9850ed756, Accenture
  * @todo write javadoc
  */
-public class SimpleSaksbehandlerService implements SaksbehandlerService {
+public class SimpleSaksbehandlerService implements SaksbehandlerServiceBi {
 	private static final Log log = LogFactory.getLog(SimpleSaksbehandlerService.class);
 
 	public Saksbehandler readSaksbehandler(Long saksbehandlernr) throws PersonNotFoundException, DatabaseNotFoundException {

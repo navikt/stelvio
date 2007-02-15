@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import no.stelvio.service.star.example.henvendelse.HenvendelseService;
+import no.stelvio.service.star.example.henvendelse.HenvendelseServiceBi;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkRequest;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatistikkResponse;
 import no.stelvio.star.example.henvendelse.Henvendelse;
@@ -17,7 +17,7 @@ import no.stelvio.star.example.person.Fodselsnummer;
  * 
  * @author personff564022aedd
  */
-public class SimpleHenvendelseService implements HenvendelseService {
+public class SimpleHenvendelseService implements HenvendelseServiceBi {
 
 	private static List<Henvendelse> ola = new ArrayList<Henvendelse>();
 	private static List<Henvendelse> ole = new ArrayList<Henvendelse>();

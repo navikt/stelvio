@@ -7,13 +7,13 @@ import org.springframework.webflow.context.ExternalContextHolder;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 
-import no.stelvio.service.star.example.saksbehandling.SaksbehandlerService;
+import no.stelvio.service.star.example.saksbehandling.SaksbehandlerServiceBi;
 import no.stelvio.star.example.saksbehandling.Saksbehandler;
 
 
 public class StartAction extends MultiAction {
 	private static final Log log = LogFactory.getLog(StartAction.class);
-	private SaksbehandlerService saksbehandlerService;
+	private SaksbehandlerServiceBi saksbehandlerService;
 
 	public Event search(RequestContext context) {
 		StartForm form = (StartForm) context.getFlowScope().get("prsStartForm");
@@ -28,7 +28,7 @@ public class StartAction extends MultiAction {
 		return success();
 	}
 
-	public void setSaksbehandlerService(SaksbehandlerService saksbehandlerService) {
+	public void setSaksbehandlerService(SaksbehandlerServiceBi saksbehandlerService) {
 		this.saksbehandlerService = saksbehandlerService;
 	}
 }
