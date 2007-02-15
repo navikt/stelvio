@@ -9,7 +9,9 @@ import no.stelvio.common.context.RequestContext;
  * business services.
  * 
  * @author personff564022aedd
+ * @deprecated Use <code>ServiceRequest</code>/<code>ServiceResponse</code>.
  */
+@Deprecated
 public abstract class TransferObject implements Serializable {
 	/** The <code>RequestContext</code> instance to use. */
 	private RequestContext requestContext;
