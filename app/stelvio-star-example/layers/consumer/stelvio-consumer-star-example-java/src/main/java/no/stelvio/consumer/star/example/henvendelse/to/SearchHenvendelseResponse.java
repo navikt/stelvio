@@ -9,6 +9,8 @@ import no.stelvio.domain.star.example.henvendelse.HenvendelseStatistics;
  * @author personf8e9850ed756, Accenture
  */
 public class SearchHenvendelseResponse extends ServiceResponse {
+	private static final long serialVersionUID = 246870219293724483L;
+
 	private HenvendelseStatistics henvendelseStatistics;
 
 	/**

@@ -10,6 +10,8 @@ import no.stelvio.domain.star.example.henvendelse.HenvendelseStatisticsCriteria;
  * @author personff564022aedd
  */
 public class SearchHenvendelseRequest extends ServiceRequest {
+	private static final long serialVersionUID = 1767552155276239399L;
+
 	private HenvendelseStatisticsCriteria henvendelseStatisticsCriteria;
 
 	/**
