@@ -18,7 +18,6 @@ import no.stelvio.common.codestable.DecodeNotFoundException;
  * throws exception when 2 rows have wrapping periods, hashcode uses code/date_from/is_approved, equals checks for overlapping  
  */
 public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> extends AbstractCodesTable<T> implements CodesTablePeriodic {
-
 	/**
 	 * Creates a <code>DefaultCodesTablePeriodic</code> with a list of <code>CodesTableItemPeriodic</code>s.
 	 *
