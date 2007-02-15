@@ -11,6 +11,8 @@ import no.stelvio.domain.sak.Task;
  * @author personb66fa0b5ff6e, Accenture
  * @author person15754a4522e7
  * @version $Id$
+ * @deprecated use <code>no.nav.service.pensjon.saksbehandling.SakService<code>
+ * 
  */
 public interface TasklistService {
 
