@@ -6,18 +6,18 @@ import no.stelvio.common.transferobject.ServiceResponse;
 /**
  * @author personf8e9850ed756, Accenture
  */
-public class HenvendelseStatistikkResponse extends ServiceResponse {
+public class SokHenvendelseResponse extends ServiceResponse {
 	private HenvendelseStatistikk henvendelseStatistikk;
 
 	/**
 	 * @param henvendelseStatistikkCriteria critera to be added in the new instance
 	 */
-	public HenvendelseStatistikkResponse(HenvendelseStatistikk henvendelseStatistikkCriteria) {
+	public SokHenvendelseResponse(HenvendelseStatistikk henvendelseStatistikkCriteria) {
 		this.henvendelseStatistikk = henvendelseStatistikkCriteria;
 	}
 
 	/**
-	 * {@inheritDoc HenvendelseStatistikkRequest#getCriteria()}
+	 * {@inheritDoc SokHenvendelseRequest#getCriteria()}
 	 */
 	public HenvendelseStatistikk getCriteria() {
 		return henvendelseStatistikk;
