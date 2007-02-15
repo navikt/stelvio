@@ -82,7 +82,7 @@ public class MethodWrapperInterceptorAdvisor extends AdvisedSupport
 	}
 
 	public void setInterceptorNames(final String[] interceptorNames) {
-		this.interceptorNames = (String[]) interceptorNames.clone();
+		this.interceptorNames = interceptorNames.clone();
 	}
 
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {

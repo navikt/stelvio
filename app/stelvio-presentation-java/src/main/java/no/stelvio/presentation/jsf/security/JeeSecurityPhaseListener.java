@@ -390,7 +390,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 		if (enabled) {
 			ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext();
 			Map<String, Map<String, Boolean>> sessionScopeMap = ectx.getSessionMap();
-			Map<String, Boolean> userPageCache = (Map<String, Boolean>) sessionScopeMap.get("userAccessCache");
+			Map<String, Boolean> userPageCache = sessionScopeMap.get("userAccessCache");
 			
 			if (userPageCache == null) {
 				userPageCache = new HashMap<String, Boolean>();
