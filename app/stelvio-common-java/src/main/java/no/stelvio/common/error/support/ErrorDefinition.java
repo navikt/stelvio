@@ -1,6 +1,6 @@
 package no.stelvio.common.error.support;
 
-import javax.persistence.Column;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,30 +13,26 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * @todo Should it implement Comparable based on Severity
  */
 @Entity
-public class ErrorDefinition {
+public class ErrorDefinition implements Serializable {
+	private static final long serialVersionUID = -2350211506640790245L;
+	
 	/** A short identification string. */
 	@Id
-	@Column(name="id")
     private String id;
 
 	/** The class name of the error's exception. */
-	@Column(name="className")
     private String className;
 
 	/** The message template for this error that is shown to the user. */
-	@Column(name="message")
     private String message;
 
 	/** The error's severity. */
-	@Column(name="severity")
     private Severity severity;
 
 	/** The error's short description which is used by first line of support. */
-	@Column(name="shortDescription")
     private String shortDescription;
 
 	/** The error's long description which is used by second line of support. */
-	@Column(name="longDescription")
     private String longDescription;
 
 	/** Constructor used by orm. */
