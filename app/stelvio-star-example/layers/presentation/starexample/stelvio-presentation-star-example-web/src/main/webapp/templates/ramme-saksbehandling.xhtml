@@ -12,20 +12,20 @@
 		<ui:insert name="pageTitle">Page Title</ui:insert>
 	</title>
 
-	<link rel="stylesheet" href="/styles/NAVstylesheet.css"/>
-	<link rel="stylesheet" href="/styles/stylesheet.css"/>
-	<script src="/scripts/javascript.js"></script>
+	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/styles/NAVstylesheet.css"/>
+	<link rel="stylesheet" href="#{facesContext.externalContext.requestContextPath}/styles/stylesheet.css"/>
+	<script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/scripts/javascript.js"/>
 </head>
 
 <body>
 
 <div id="layer_logo_topp">
-	<form jsfc="h:form">
+	<form jsfc="h:form" action="submit">
 		<input type="hidden" name="_flowExecutionKey" value="#{flowExecutionKey}"/>
 		<table cellspacing="0" cellpadding="0" width="993" border="0">
 			<tbody>
 				<tr>
-					<td width="130" rowspan="2"><img src="/images/global/navlogo.gif"
+					<td width="130" rowspan="2"><img src="#{facesContext.externalContext.requestContextPath}/images/global/navlogo.gif"
 																					 alt="Dobbelklikk p&aring; logoen for &aring; komme til NAV sin hjemmeside"/>
 					</td>
 					<td colspan="2" class="global_tool" align="right"><strong>Du er logget inn som:</strong>&#160;
@@ -55,7 +55,7 @@
 
 <div id="layer_ramme_lys_venstre">&nbsp;</div>
 <div id="layer_ramme_mork_venstre">&nbsp;</div>
-<div id="layer_ramme_mork_topp"><img src="../images/spacer.gif" width="1" height="1"/></div>
+<div id="layer_ramme_mork_topp"><img src="#{facesContext.externalContext.requestContextPath}/images/spacer.gif" width="1" height="1" alt="spacer"/></div>
 <div id="layer_meny">
 	<ui:insert name="leftMenu"></ui:insert>
 </div>
