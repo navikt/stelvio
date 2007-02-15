@@ -1,5 +1,10 @@
 package no.stelvio.common.codestable.factory.support;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.InitializingBean;
+
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableConfigurationException;
 import no.stelvio.common.codestable.CodesTableItem;
@@ -8,33 +13,35 @@ import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.CodesTableNotFoundException;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.NotCodesTableException;
-import no.stelvio.common.codestable.factory.CodesTableInitializer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Implementation of CodesTableInitializer for initialization of the codestables 
- * and loading them into the cache for the codestables.
+ * Implementation of CodesTableInitializer for initialization of the codestables and loading them into the cache for
+ * the codestables.
  * 
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public class DefaultCodesTableInitializer implements CodesTableInitializer {
-	
-	//The CodesTableManager
+public class DefaultCodesTableInitializer implements InitializingBean {
+	// The CodesTableManager
 	private CodesTableManager codesTableManager;
 	
-	//A list of codestableclasses - defined in the application context
+	// A list of codestableclasses - defined in the application context
 	private List<Class<CodesTableItem>> codesTableClasses = new ArrayList<Class<CodesTableItem>>();
 	
-	//A list of codestableclasses - defined in the application context
+	// A list of codestableclasses - defined in the application context
 	private List<Class<CodesTableItemPeriodic>> codesTablePeriodicClasses = new ArrayList<Class<CodesTableItemPeriodic>>();
 	
 	/**
-	 * {@inheritDoc}
+	 * Uses CodesTableManager to load all of the <code>CodesTable</code>s and <code>CodesTablePeriodic</code>s from
+	 * the database into the cache.
+	 *
+	 * @throws CodesTableNotFoundException if the desired <code>CodesTable</code>/<code>CodesTablePeriodic</code>
+	 * cannot be retrieved from the database.
+	 * @throws no.stelvio.common.codestable.CodesTableConfigurationException if there haven't been defined
+	 * any <code>CodesTableItem</code>'s or <code>CodesTableItemPeriodic</code> in the configuration, used to load
+	 * the application's needed <code>CodesTable</code>'s and <code>CodesTablePeriodic</code>.
 	 */
-	public void init() {
+	public void afterPropertiesSet() throws CodesTableNotFoundException, CodesTableConfigurationException {
 		if(codesTableClasses.isEmpty() && codesTablePeriodicClasses.isEmpty()){
 			throw new CodesTableConfigurationException("No CodesTables or CodesTablePeriodics have been set");
 		}
