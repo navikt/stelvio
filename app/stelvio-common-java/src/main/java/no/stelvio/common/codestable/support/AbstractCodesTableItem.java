@@ -2,7 +2,6 @@ package no.stelvio.common.codestable.support;
 
 import java.io.Serializable;
 import java.util.Locale;
-
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -97,11 +96,10 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	}
 	
 	/**
-	 * Gets the locale
-	 * <p><strong>
-	 * DEPRECATED: CodesTableItems will no longer expose Locale to clients. Avoid using this method
-	 * </p></strong>
+	 * Gets the locale.
+	 *
 	 * @return locale the locale of this item
+	 * @deprecated CodesTableItems will no longer expose Locale to clients.
 	 */
 	@Deprecated
 	public Locale getLocale() {
