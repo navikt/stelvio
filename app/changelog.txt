@@ -7,9 +7,19 @@ Changes in version 1.0.2 (15.2.2007)
 ------------------------------------
 
 General
+* Consumer integration is now in a separate stelvio-consumer layer. Updates and additions to 
+  architecture documentation, guidelines and naming standards regarding this layer.
+* Added version history and roadmap pages to Confluence
+* Menu- and tasklist- taglibs have been moved out of Stelvio into pension project modules.
+* Updates to guideline for stelvio-service with regards to use of transfer objects and configuring EJBs.
+* Additions to stelvio-service naming standards with regards to naming of EJB classes and interfaces.
+
+Library updates:
 * Upgraded Spring to version 2.0.2
 * Upgraded Spring WebFlow to version 1.0.1
 * Upgraded Spring Modules Cache to version 0.7
+* Upgraded Spring Modules Validation to version 0.7
+
 
 Module stelvio-common-java
 * Added support for validating that a code is present in a codes table [Defect #265]
@@ -25,6 +35,7 @@ Module stelvio-common-java
   DecodeNotFoundException
 * getItems, getCodesTableItem, getDecode(Object) and getDecode(Object, Locale) in CodesTable have been deprecated
 * Added the methods getDecode(Enum), getDecode(Enum, Locale) and validateCode(Enum) in CodesTable
+* User id moved from RequestContext to SecurityContext.
 
 Module stelvio-test-java
 
@@ -39,12 +50,12 @@ Module stelvio-batch-java
 * Created new Exceptions to be used by Batch. [Defect #53]
 * Batch now throws subclasses of BatchException [Defect #53]
 
-
 Module stelvio-service-java
-* Deprecated TasklistService and DefaultTasklistService. These have been added to the pensjon project
+* Deprecated TasklistService and DefaultTasklistService. These have been moved to the pensjon project
+
 
 Module stelvio-presentation-java
-* Upgraded Spring Modules Validation to version 0.7
+* The menu taglib has been moved moved to the pension project application framework.
 * Removed MenuComponent and MenuItemComponent. The menus used in stelvio should be based on the tomahawk panelNavigation2 
   component.
 * Added a custom action class for fetching menu items and convert them into panelnavigation items used by the 
