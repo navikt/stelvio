@@ -6,7 +6,7 @@ package no.stelvio.domain.sak;
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
- * @deprecated use <code>no.nav.domain.pensjon.saksbehandling.OppgaveType<code>
+ * @deprecated use <code>no.nav.domain.pensjon.common.saksbehandling.OppgaveType<code>
  * 
  */
 public class TaskType {

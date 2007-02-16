@@ -7,7 +7,7 @@ import java.util.List;
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
- * @deprecated use <code>no.nav.domain.pensjon.generellsak.Ansvarlig<code>
+ * @deprecated use <code>no.nav.domain.pensjon.common.generellsak.Ansvarlig<code>
  * 
  */
 public class Responsible {

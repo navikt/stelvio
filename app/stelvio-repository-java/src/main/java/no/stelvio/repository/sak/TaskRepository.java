@@ -12,7 +12,7 @@ import no.stelvio.domain.sak.Task;
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
- * @deprecated use <code>no.nav.repository.pensjon.saksbehandling.SakRepository<code>
+ * @deprecated use <code>no.nav.consumer.pensjon.psak.saksbehandling.SakService<code>
  */
 public interface TaskRepository {
 	/**

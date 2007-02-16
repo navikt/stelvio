@@ -4,7 +4,7 @@ package no.stelvio.domain.sak;
  * Represents a case worker
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
- * @deprecated use <code>no.nav.domain.pensjon.generellsak.Saksbehandler<code>
+ * @deprecated use <code>no.nav.domain.pensjon.common.generellsak.Saksbehandler<code>
  */
 public class Saksbehandler {
 	private String fornavn;

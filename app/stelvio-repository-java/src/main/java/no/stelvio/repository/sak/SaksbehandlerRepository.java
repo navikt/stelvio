@@ -10,7 +10,7 @@ import no.stelvio.domain.sak.Responsible;
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
- * @deprecated use <code>no.nav.repository.pensjon.genrellsak.SaksbehandlerRepository<code>
+ * @deprecated use <code>no.nav.consumer.pensjon.psak.genrellsak.SaksbehandlerService<code>
  * 
  */
 public interface SaksbehandlerRepository {

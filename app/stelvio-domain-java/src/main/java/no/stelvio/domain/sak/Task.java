@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Domain object representing a Task
  * @author person983601e0e117 (Accenture)
  *
- * @deprecated use <code>no.nav.domain.pensjon.saksbehandling.Oppgave<code>
+ * @deprecated use <code>no.nav.domain.pensjon.common.saksbehandling.Oppgave<code>
  */
 public class Task implements Serializable {
 	
