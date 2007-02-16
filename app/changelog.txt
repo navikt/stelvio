@@ -14,7 +14,7 @@ General
 Module stelvio-common-java
 * Added support for validating that a code is present in a codes table [Defect #265]
 * Usage of Locale in codes table items have been deprecated; internationalization of decodes will be handled by standard
-  jdk support (properties files)
+  jdk support (properties files) [Defect #217]
 * Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
 * Methods on ServiceRequest for setting/retrieving RequestContext are deprecated as client code should not work with
   RequestContext directly; access it through RequestContextHolder instead
@@ -31,6 +31,10 @@ Module stelvio-domain-java
 Module stelvio-repository-java
 
 Module stelvio-batch-java
+* AbstractBatch implementation changed; retrival and update of BatchDO is now done through BatchRepository [Defect #55]
+* Created new Exceptions to be used by Batch. [Defect #53]
+* Batch now throws subclasses of BatchException [Defect #53]
+
 
 Module stelvio-service-java
 
