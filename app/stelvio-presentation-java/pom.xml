@@ -11,6 +11,11 @@
 	<name>stelvio - presentation</name>
 	<dependencies>
 		<dependency>
+			<groupId>com.groundside</groupId>
+			<artifactId>jsf-security</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
 			<artifactId>myfaces-api</artifactId>
 			<groupId>org.apache.myfaces.core</groupId>
 			<version>1.1.4</version>
