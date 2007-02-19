@@ -49,6 +49,7 @@ Module stelvio-batch-java
 * AbstractBatch implementation changed; retrival and update of BatchDO is now done through BatchRepository [Defect #55]
 * Created new Exceptions to be used by Batch. [Defect #53]
 * Batch now throws subclasses of BatchException [Defect #53]
+* Added FileIdentity component to the batch framework [Defect #99]
 
 Module stelvio-service-java
 * Deprecated TasklistService and DefaultTasklistService. These have been moved to the pensjon project
