@@ -601,6 +601,7 @@ app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/to/SaksbehandlerRequest.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/java/no/stelvio/service/star/example/saksbehandling/to/SaksbehandlerResponse.java -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/beanRefContext.xml -text
+app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/environment.properties -text
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-java/src/main/resources/modules/srv-starexample-context.xml -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/.project -text
 app/stelvio-star-example/workspaces/starexample/stelvio-app-star-example-workspace/pom.xml -text
