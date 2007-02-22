@@ -94,7 +94,7 @@ public class CopyDependenciesMojo
     protected void copyArtifact( Artifact artifact, boolean removeVersion )
         throws MojoExecutionException
     {
-
+    	
         String destFileName = DependencyUtil.getFormattedFileName( artifact, removeVersion );
         
         File destDir = DependencyUtil.getFormattedOutputDirectory( this.useSubDirectoryPerType,

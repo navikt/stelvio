@@ -62,7 +62,7 @@ public class ScopeFilter
         {
             if ( !Artifact.SCOPE_COMPILE.equals( includeScope ) && !Artifact.SCOPE_TEST.equals( includeScope )
                 && !Artifact.SCOPE_PROVIDED.equals( includeScope ) && !Artifact.SCOPE_RUNTIME.equals( includeScope )
-                && !Artifact.SCOPE_SYSTEM.equals( includeScope ) )
+                && !Artifact.SCOPE_SYSTEM.equals( includeScope ) && !"eclipse".equals(includeScope) )
             {
                 throw new MojoExecutionException( "Invalid Scope in includeScope: " + includeScope );
             }
@@ -92,7 +92,7 @@ public class ScopeFilter
         {
             if ( !Artifact.SCOPE_COMPILE.equals( excludeScope ) && !Artifact.SCOPE_TEST.equals( excludeScope )
                 && !Artifact.SCOPE_PROVIDED.equals( excludeScope ) && !Artifact.SCOPE_RUNTIME.equals( excludeScope )
-                && !Artifact.SCOPE_SYSTEM.equals( excludeScope ) )
+                && !Artifact.SCOPE_SYSTEM.equals( excludeScope ) && !"eclipse".equals(excludeScope))
             {
                 throw new MojoExecutionException( "Invalid Scope in excludeScope: " + excludeScope );
             }
