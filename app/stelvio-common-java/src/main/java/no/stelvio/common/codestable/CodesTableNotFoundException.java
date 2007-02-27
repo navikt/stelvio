@@ -32,7 +32,9 @@ public class CodesTableNotFoundException extends CodesTableException {
         super(cti);
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     protected String messageTemplate(final int numArgs) {
         return "Codestable {0} does not exist";
     }
