@@ -1,7 +1,6 @@
 package no.stelvio.common.codestable.support;
 
 import no.stelvio.common.error.SystemUnrecoverableException;
-import no.stelvio.common.error.support.ExceptionToCopyHolder;
 
 /**
  * CodesTableException
@@ -16,9 +15,5 @@ public abstract class CodesTableException extends SystemUnrecoverableException {
 
     protected CodesTableException(Throwable cause, Object... templateArguments) {
         super(cause, templateArguments);
-    }
-
-    protected CodesTableException(ExceptionToCopyHolder holder) {
-        super(holder);
     }
 }
