@@ -154,7 +154,7 @@
 		</snapshotRepository>
 		<site>
 			<id>website</id>
-			<url>scp://10.33.1.53/var/www/html/project/</url>
+			<url>scp://10.33.1.53/var/www/html/project/stelvio</url>
 		</site>
 	</distributionManagement>
 	<reporting>
