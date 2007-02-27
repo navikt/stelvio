@@ -39,6 +39,8 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/DecodeNotFoun
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/ItemNotFoundException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/NotCodesTableException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/CodesTableFactory.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/NoGenericsCodesTableFactory.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/adapter/NoGenericsCodesTableAdapter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/factory/support/DefaultCodesTableInitializer.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/package.html -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/support/AbstractCodesTable.java -text
