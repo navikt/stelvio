@@ -9,7 +9,7 @@
     <artifactId>no-stelvio-app-workspace</artifactId>
     <packaging>pom</packaging>
     <name>Workspace for stelvio app</name>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <modules>
         <module>../stelvio-common-java</module>
         <module>../stelvio-test-java</module>
