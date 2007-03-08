@@ -294,6 +294,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/Serv
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/AbstractFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/action/MenuAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/context/RequestContextPhaseListener.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/locale/LocalePhaseListener.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/StelvioResourceHandler.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/StelvioResourceLoader.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolver.java -text
@@ -323,6 +324,7 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/util/Default
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/util/PagedSortableList.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/context/ServletContextAttributeSetterTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/action/MenuActionTest.java -text
+app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/locale/LocalePhaseListenerTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolverTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/jsf/security/JeeSecurityPhaseListenerTest.java -text
 app/stelvio-presentation-java/src/test/java/no/stelvio/presentation/security/page/AbstractPhaselistenerTestCase.java -text
