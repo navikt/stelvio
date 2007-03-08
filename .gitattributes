@@ -269,7 +269,6 @@ app/stelvio-domain-java/.classpath -text
 app/stelvio-domain-java/.project -text
 app/stelvio-domain-java/pom.xml -text
 app/stelvio-domain-java/src/main/java/.cvsignore -text
-app/stelvio-domain-java/src/main/java/no/stelvio/domain/audit/Audit.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItem.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemPermission.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItemScreen.java -text
@@ -280,6 +279,7 @@ app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/Responsible.java -te
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/Saksbehandler.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/Task.java -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/sak/TaskType.java -text
+app/stelvio-domain-java/src/main/java/no/stelvio/domain/time/ChangeStamp.java -text
 app/stelvio-domain-java/src/test/java/no/stelvio/domain/person/PidTest.java -text
 app/stelvio-domain-java/src/test/resources/application-services.xml -text
 app/stelvio-domain-java/src/test/resources/common-java_test_menu_beans.xml -text

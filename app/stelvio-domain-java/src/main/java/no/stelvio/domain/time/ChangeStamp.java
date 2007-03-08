@@ -1,4 +1,4 @@
-package no.stelvio.domain.audit;
+package no.stelvio.domain.time;
 
 
 import java.io.Serializable;
@@ -10,23 +10,24 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * Class used to represent Audit information. This object is embeddedable, meaning it can be used inside a JPA Entity.
- * 
+ * Class used to represent audit information for an entity in the database. 
+ * This object is embeddedable, meaning it can be used inside a JPA Entity.
+ * <p>
  * This object is used by embedding it in the object that contains the maps to a 
  * table that contains audit columns. Objects that embed this object should have a parameterized
- * constructor that takes a new <code>Audit</code>. After an <code>Audit</code> has been created
+ * constructor that takes a new <code>ChangeStamp</code>. After an <code>ChangeStamp</code> has been created
  * for an object it should never be replaced by a new one and only be modified by the {@link #updatedBy(String)} method. 
- * 
+ * </p>
  * <p><em>
  * It's the responsibility of the application developer to ensure that {@link #updatedBy(String)} is being called when changes are made.
  * </em></p>
  * 
  * This class holds information about:
  * <ul>
- * <li>Who created the object embedding this <code>Audit</code> object</li>
- * <li>When was the object embedding this <code>Audit</code> object created</li>
- * <li>Who made changes to the object embedding this <code>Audit</code> object</li>
- * <li>When was the changes made to the object embedding this <code>Audit</code> object</li>
+ * <li>Who created the object embedding this <code>ChangeStamp</code> object</li>
+ * <li>When was the object embedding this <code>ChangeStamp</code> object created</li>
+ * <li>Who made changes to the object embedding this <code>ChangeStamp</code> object</li>
+ * <li>When was the changes made to the object embedding this <code>ChangeStamp</code> object</li>
  * </ul>
  * 
  *  
@@ -34,7 +35,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Embeddable
-public class Audit implements Serializable {
+public class ChangeStamp implements Serializable {
 
 
 	private static final long serialVersionUID = 61541164562562288L;
@@ -45,7 +46,7 @@ public class Audit implements Serializable {
 	
 	@Column(name="created_at")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdAt;
+	private Date createdDate;
 	
 	@Column(name="updated_by")
 	private String updatedBy;
@@ -53,24 +54,24 @@ public class Audit implements Serializable {
 	
 	@Column(name="updated_at")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date updatedAt;	
+	private Date updatedDate;	
 	
 	/**
-	 * Constructs a new Audit. 
+	 * Constructs a new ChangeStamp. 
 	 * The constructor should only be called once, 
-	 * when the object embedding this <code>Audit</code> object 
+	 * when the object embedding this <code>ChangeStamp</code> object 
 	 * is actually created for the first time.
 	 * 
-	 * @param userId the user id that creates object embedding this <code>Audit</code> object
+	 * @param userId the user id that creates object embedding this <code>ChangeStamp</code> object
 	 */
-	public Audit(String userId){
+	public ChangeStamp(String userId){
 		this.createdBy = userId;
 		this.updatedBy = userId;
 		
 		//Updated and Created times are equal at first
-		Date createdDate = new Date();		
-		this.createdAt = createdDate;
-		this.updatedAt = createdDate;
+		Date now = new Date();		
+		this.createdDate = now;
+		this.updatedDate = now;
 	}
 	
 	/**
@@ -78,15 +79,15 @@ public class Audit implements Serializable {
 	 * The application should use the parameterized constructor.
 	 *
 	 */
-	protected Audit(){}
+	protected ChangeStamp(){}
 	
 	/**
-	 * Method called whenever the object embedding this <code>Audit</code> object has been updated
+	 * Method called whenever the object embedding this <code>ChangeStamp</code> object has been updated
 	 * @param userId user id that made the update
 	 */
 	public void updatedBy(String userId){
 		updatedBy = userId;
-		updatedAt = new Date();
+		updatedDate = new Date();
 	}
 	
 
@@ -102,16 +103,16 @@ public class Audit implements Serializable {
 	 * Gets created at date
 	 * @return sql timestamp for the creation of the object embedding <code>this</code>
 	 */
-	public Date getCreatedAt() {
-		return createdAt;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
 	/**
 	 * Gets changed at date
 	 * @return sql timestamp for the most recent change to the object embedding <code>this</code>
 	 */	
-	public Date getUpdatedAt() {
-		return updatedAt;
+	public Date getUpdatedDate() {
+		return updatedDate;
 	}
 
 	/**
