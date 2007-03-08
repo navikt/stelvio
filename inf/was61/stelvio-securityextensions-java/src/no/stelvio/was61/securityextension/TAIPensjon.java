@@ -79,8 +79,8 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 			return false;
 		}			
 		
-		//Pinkodepålogging type
-		if ( logon_type.equals( "PIN" ) ) {
+		//Endagspassord
+		if ( logon_type.equals( "ENDAGSPASSORD" ) ) {
 			return true;
 		}		
 
@@ -118,7 +118,7 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 				 return returnToLogon( session, "No logon type", req, res);
 			}
 			
-			if ( logon_type.equals("PIN") ) {
+			if ( logon_type.equals("ENDAGSPASSORD") ) {
 				if (session.getAttribute("level") != null){
 					String tmp_level = (String) session.getAttribute("level");
 					grupper.add(rollePrefix + tmp_level);
@@ -130,7 +130,7 @@ public class TAIPensjon implements TrustAssociationInterceptor {
 				} else {
 					userid = tmp_id;
 				}
-				grupper.add(rollePrefix + "PIN");
+				grupper.add(rollePrefix + "EKSTERN");
 				
 			} else if ( logon_type.equals("EKSTERN") ){
 				//TODO: sjekk saml-token og legg til roller
