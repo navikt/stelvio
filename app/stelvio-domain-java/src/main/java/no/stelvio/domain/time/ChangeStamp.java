@@ -44,7 +44,7 @@ public class ChangeStamp implements Serializable {
 	private String createdBy;
 	
 	
-	@Column(name="created_at")
+	@Column(name="created_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
 	
@@ -52,7 +52,7 @@ public class ChangeStamp implements Serializable {
 	private String updatedBy;
 	
 	
-	@Column(name="updated_at")
+	@Column(name="updated_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedDate;	
 	
