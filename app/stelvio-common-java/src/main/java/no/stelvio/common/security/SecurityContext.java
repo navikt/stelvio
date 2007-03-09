@@ -2,6 +2,8 @@ package no.stelvio.common.security;
 
 import java.util.List;
 
+import no.stelvio.common.security.support.RolesEnum;
+
 /**
  * Context that has security information about the logged on user. Implementations decide how to get to/store the
  * information necessary for providing this functionality.
@@ -33,7 +35,7 @@ public interface SecurityContext {
 	 * @return true or false.
 	 */
 	boolean isUserInRole(String role);
-
+	
 	/**
 	 * Checks if the user has all the supplied roles.
 	 *
