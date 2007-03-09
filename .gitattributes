@@ -244,6 +244,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/RoleAccessDecisionVoterTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/RolesUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributesTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/security/support/SimpleSecurityContextTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/DateUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/ReflectUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/validation/TestBbanValidator.java -text

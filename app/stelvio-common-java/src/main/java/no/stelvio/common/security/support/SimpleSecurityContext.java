@@ -1,7 +1,9 @@
 package no.stelvio.common.security.support;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import no.stelvio.common.security.RoleName;
 import no.stelvio.common.security.SecurityContext;
 
 /**
@@ -28,7 +30,6 @@ public final class SimpleSecurityContext implements SecurityContext {
 		this.userId = userId;
 		this.roles = roles;
 	}
-	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -51,7 +52,6 @@ public final class SimpleSecurityContext implements SecurityContext {
 
 		return (null != roleList) && roleList.contains(role);
 	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -65,14 +65,11 @@ public final class SimpleSecurityContext implements SecurityContext {
 	 * {@inheritDoc}
 	 */
 	public boolean isUserInAllRoles(String... roleparams) {
-		for (String role : getRoles()) {
-			for (String roleparam : roleparams) {
-				if (!roleparam.equalsIgnoreCase(role)) {
-					return false;
-				}
+		for (String roleparam : roleparams) {
+			if (!isUserInRole(roleparam)) {
+				return false;
 			}
 		}
-
 		return true;
 	}
 	
@@ -80,14 +77,11 @@ public final class SimpleSecurityContext implements SecurityContext {
 	 * {@inheritDoc}
 	 */
 	public boolean isUserInRoles(List<String> roleList) {
-		List<String> userRoles = getRoles();
-
-		for (String userRole : userRoles) {
-			if (userRoles.contains(userRole)) {
+		for (String userRole : roleList) {
+			if(isUserInRole(userRole)){
 				return true;
 			}
 		}
-
 		return false;
 	}
 
@@ -95,14 +89,11 @@ public final class SimpleSecurityContext implements SecurityContext {
 	 * {@inheritDoc}
 	 */
 	public boolean isUserInRoles(String... roleparams) {
-		for (String role : getRoles()) {
 			for (String roleparam : roleparams) {
-				if (roleparam.equalsIgnoreCase(role)) {
+				if (isUserInRole(roleparam)) {
 					return true;
 				}
 			}
-		}
-
 		return false;
 	}
 }
