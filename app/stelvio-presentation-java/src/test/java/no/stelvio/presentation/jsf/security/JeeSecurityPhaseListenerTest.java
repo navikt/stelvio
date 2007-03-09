@@ -1,11 +1,13 @@
 package no.stelvio.presentation.jsf.security;
 
+import static org.junit.Assert.*;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shale.test.mock.MockHttpServletResponse;
+import org.junit.Test;
 
 import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 import no.stelvio.presentation.security.page.definition.JeeSecurityObject;
@@ -15,20 +17,20 @@ import no.stelvio.presentation.security.page.definition.parse.support.JeeRole;
 import no.stelvio.presentation.security.page.definition.parse.support.JeeRoles;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfApplication;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
+import no.stelvio.test.context.StelvioContextSetter;
 
-public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
+public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase {
 	
 	private JeeSecurityPhaseListener listener;
 	
 	//private MockExternalContextExtended externalContext = null;
-	
-	public void setUp()throws Exception{
-		super.setUp();
+	@Override
+	public void onSetUp()throws Exception{
 		listener = new JeeSecurityPhaseListener();
 	}
-	
-	public void tearDown()throws Exception{
-		super.tearDown();
+	@Override
+	public void onTearDown()throws Exception{
+		
 	}
 	
 	private JeeSecurityObject setupSecureApp(){
@@ -76,7 +78,7 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 		secObject.setSecurityConfiguration(config);
 		return secObject;
 	}
-	
+	@Test
 	public void testBeforeAndAfterPhaseUserIsAuthorized() throws Exception{
 		JeeSecurityObject secObject = setupSecureApp();
 		listener.setJ2eeSecurityObject(secObject);
@@ -104,6 +106,7 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase{
 			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response3.getStatus());*/	
 	}
+	@Test
 	public void testBeforeAndAfterPhaseUserIsNotAuthorized() throws Exception{
 		
 		JeeSecurityObject secObject = setupSecureApp();

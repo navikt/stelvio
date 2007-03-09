@@ -1,5 +1,7 @@
 package no.stelvio.presentation.security.page.definition;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.context.ExternalContext;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shale.test.mock.MockHttpServletResponse;
+import org.junit.Test;
 
 import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.security.support.SimpleSecurityContext;
@@ -20,20 +23,20 @@ import no.stelvio.presentation.security.page.definition.parse.support.JeeRole;
 import no.stelvio.presentation.security.page.definition.parse.support.JeeRoles;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfApplication;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
+import no.stelvio.test.context.StelvioContextSetter;
 
 public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 	
 	private JeeSecurityObject secObject;
 	
-	//private MockExternalContextExtended externalContext = null;
 	
-	public void setUp()throws Exception{
-		super.setUp();
+	@Override
+	public void onSetUp()throws Exception{
 		secObject = new JeeSecurityObject();
 	}
-	
-	public void tearDown()throws Exception{
-		super.tearDown();
+	@Override
+	public void onTearDown()throws Exception{
+		
 	}
 	
 	private JsfApplication setupSecureApp(){
@@ -84,6 +87,7 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 	 * the other uses AND and should deny access
 	 * @throws Exception
 	 */
+	@Test
 	public void testAuthorizePageAccess()throws Exception{
 		JsfApplication app = setupSecureApp();
 		
@@ -104,12 +108,14 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 			assertTrue(true);
 		}	
 	}
+	@Test
 	public void testAuthorizePageAccessWhenNotAuthenticated()throws Exception{
 		
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
 		MockHttpServletRequestExtended request = (MockHttpServletRequestExtended)exctx.getRequest();
 		request.setUserPrincipal(null);
-		SecurityContextHolder.setSecurityContext(new SimpleSecurityContext(null,null));
+		//SecurityContextHolder.setSecurityContext(new SimpleSecurityContext(null,null));
+		StelvioContextSetter.setSecurityContext(new SimpleSecurityContext(null,null));
 		
 		String servletPath = "/test/page1.jsf";
 		String queryString = "start=start&something=another";
@@ -133,6 +139,7 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		assertEquals(viewId + "?" + queryString,jsfPageToGo);
 		
 	}
+	@Test
 	public void testAuthorizePageNoAuthenticationORAuthorizationRequired() throws Exception{
 		
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
@@ -151,6 +158,7 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		HttpSession session = (HttpSession)exctx.getSession(true);
 		assertTrue(secObject.authorizePageAccess("/somepage.xhtml", session));
 	}
+	@Test
 	public void testAuthorizePageAuthenticationOnlyRequired() throws Exception{
 		
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
@@ -171,7 +179,7 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		HttpSession session = (HttpSession)exctx.getSession(true);
 		assertTrue(secObject.authorizePageAccess("/test/page3.xhtml", session));
 	}
-
+	@Test
 	public void testGetPageObject()throws  Exception{
 		
 		JsfApplication app = setupSecureApp();
@@ -189,7 +197,7 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		JsfPage page2 = secObject.getPageObject(viewId2);
 		assertEquals(viewId2,page2.getPageName());
 	}
-	
+	@Test
 	public void testHandleProtocolSwitchToHttps()throws  Exception{
 		
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
@@ -211,6 +219,7 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		assertEquals(https,response.getMessage());
 		
 	}
+	@Test
 	public void testHandleProtocolSwitchToHttp()throws  Exception{
 		
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();

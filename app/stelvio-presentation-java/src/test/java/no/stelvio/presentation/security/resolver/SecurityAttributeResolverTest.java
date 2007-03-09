@@ -19,6 +19,7 @@ import javax.faces.render.RenderKit;
 import no.stelvio.common.security.SecurityContext;
 import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.security.support.SimpleSecurityContext;
+import no.stelvio.test.context.StelvioContextSetter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -157,10 +158,10 @@ public class SecurityAttributeResolverTest {
 			List<String> roles3 = new ArrayList<String>();
 			ctx = new SimpleSecurityContext(userId,roles3);
 		}
-		SecurityContextHolder.setSecurityContext(ctx);
+		StelvioContextSetter.setSecurityContext(ctx);
 	}
 	private void logoutUser(){
-		SecurityContextHolder.setSecurityContext(new SimpleSecurityContext(null,new ArrayList<String>()));
+		StelvioContextSetter.setSecurityContext(new SimpleSecurityContext(null,new ArrayList<String>()));
 	}
 
 	@Test

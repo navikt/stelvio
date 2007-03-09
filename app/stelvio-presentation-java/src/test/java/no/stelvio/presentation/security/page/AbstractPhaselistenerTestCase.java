@@ -33,6 +33,7 @@ import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
 import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.security.support.SimpleSecurityContext;
+import no.stelvio.test.context.StelvioContextSetter;
 
 import org.apache.shale.test.mock.MockApplication;
 import org.apache.shale.test.mock.MockFacesContext;
@@ -44,6 +45,8 @@ import org.apache.shale.test.mock.MockPrincipal;
 import org.apache.shale.test.mock.MockRenderKit;
 import org.apache.shale.test.mock.MockServletConfig;
 import org.apache.shale.test.mock.MockServletContext;
+import org.junit.After;
+import org.junit.Before;
 
 /**
  * <p>Abstract JUnit test case base class, which sets up the JavaServer Faces
@@ -65,26 +68,36 @@ import org.apache.shale.test.mock.MockServletContext;
  * <p>In addition, appropriate factory classes will have been registered with
  * <code>javax.faces.FactoryFinder</code> for <code>Application</code> and
  * <code>RenderKit</code> instances.  The created <code>FacesContext</code>
- * instance will also have been registered in the apppriate thread local
+ * instance will also have been registered in the appropriate thread local
  * variable, to simulate what a servlet container would do.</p>
  *
- * <p><strong>WARNING</strong> - If you choose to subclass this class, be sure
- * your <code>setUp()</code> and <code>tearDown()</code> methods call
- * <code>super.setUp()</code> and <code>super.tearDown()</code> respectively,
- * and that you implement your own <code>suite()</code> method that exposes
- * the test methods for your test case.</p>
  */
-public class AbstractPhaselistenerTestCase extends TestCase {
+public class AbstractPhaselistenerTestCase {
+	
 	protected Principal principal;
 	protected List<String> roles;
 
-    // ---------------------------------------------------- Overall Test Methods
+    // Mock object instances for our tests
+    protected MockApplication         			application;
+    protected MockServletConfig       			config;
+    protected MockExternalContextExtended     	externalContext;
+    protected MockFacesContext        			facesContext;
+    protected MockFacesContextFactoryExtended	facesContextFactory;
+    protected MockLifecycle           			lifecycle;
+    protected MockLifecycleFactory    			lifecycleFactory;
+    protected MockRenderKit           			renderKit;
+    protected MockHttpServletRequestExtended	request;
+    protected MockHttpServletResponse 			response;
+    protected MockServletContext      			servletContext;
+    protected MockHttpSession         			session;
 
-    /**
-     * <p>Set up instance variables required by this test case.</p>
-     */
-    protected void setUp() throws Exception {
-        // Set up a new thread context class loader
+    // Thread context class loader saved and restored after each test
+    private ClassLoader threadContextClassLoader;
+
+    @Before
+    public final void setUp() throws Exception {
+    	
+    	//Set up a new thread context class loader
         threadContextClassLoader = Thread.currentThread().getContextClassLoader();
         Thread.currentThread().setContextClassLoader(new URLClassLoader(new URL[0],
                 this.getClass().getClassLoader()));
@@ -95,8 +108,8 @@ public class AbstractPhaselistenerTestCase extends TestCase {
 		this.roles = new ArrayList<String>();
 		this.roles.add("role1");
 		this.roles.add("role2");
-		RequestContextHolder.setRequestContext(new SimpleRequestContext("","","",""));
-		SecurityContextHolder.setSecurityContext(new SimpleSecurityContext(principal.getName(),roles));
+		StelvioContextSetter.setRequestContext(new SimpleRequestContext("","","",""));
+		StelvioContextSetter.setSecurityContext(new SimpleSecurityContext(principal.getName(),roles));
 		
 		 // Set up Servlet API Objects
         servletContext = new MockServletContext();
@@ -146,24 +159,13 @@ public class AbstractPhaselistenerTestCase extends TestCase {
 		
 		//Principal principal = new Principal();
 		//super.request.setUserPrincipal(principal)
-
+    	
+    	this.onSetUp();
     }
-    /**
-     * Set the FacesContext viewRoot with param viewId
-     * @param viewId
-     */
-    protected void setView(String viewId){
-		UIViewRoot root = new UIViewRoot();
-        root.setViewId(viewId);
-        root.setRenderKitId(RenderKitFactory.HTML_BASIC_RENDER_KIT);
-        FacesContext.getCurrentInstance().setViewRoot(root);
-	}
-
-    /**
-     * <p>Tear down instance variables required by this test case.</p>
-     */
-    protected void tearDown() throws Exception {
-        application = null;
+    @After
+    public final void tearDown() throws Exception {
+    	this.onTearDown();
+    	application = null;
         config = null;
         externalContext = null;
         facesContext.release();
@@ -178,27 +180,24 @@ public class AbstractPhaselistenerTestCase extends TestCase {
         FactoryFinder.releaseFactories();
 
         Thread.currentThread().setContextClassLoader(threadContextClassLoader);
-        threadContextClassLoader = null;
-
+        threadContextClassLoader = null;	
     }
-
-    // ------------------------------------------------------ Instance Variables
-
-    // Mock object instances for our tests
-    protected MockApplication         			application;
-    protected MockServletConfig       			config;
-    protected MockExternalContextExtended     	externalContext;
-    protected MockFacesContext        			facesContext;
-    protected MockFacesContextFactoryExtended	facesContextFactory;
-    protected MockLifecycle           			lifecycle;
-    protected MockLifecycleFactory    			lifecycleFactory;
-    protected MockRenderKit           			renderKit;
-    protected MockHttpServletRequestExtended	request;
-    protected MockHttpServletResponse 			response;
-    protected MockServletContext      			servletContext;
-    protected MockHttpSession         			session;
-
-    // Thread context class loader saved and restored after each test
-    private ClassLoader threadContextClassLoader;
-
+    
+    protected void onSetUp() throws Exception {
+    	
+    }
+    
+    protected void onTearDown() throws Exception {
+    	
+    }
+    /**
+     * Set the FacesContext viewRoot with param viewId
+     * @param viewId
+     */
+    protected final void setView(String viewId){
+		UIViewRoot root = new UIViewRoot();
+        root.setViewId(viewId);
+        root.setRenderKitId(RenderKitFactory.HTML_BASIC_RENDER_KIT);
+        FacesContext.getCurrentInstance().setViewRoot(root);
+	}
 }
