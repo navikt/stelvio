@@ -5,31 +5,24 @@
   <buildSpec>
     <buildCommand>
       <name>com.ibm.etools.common.migration.MigrationBuilder</name>
-      <arguments/>
     </buildCommand>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>
-      <arguments/>
     </buildCommand>
     <buildCommand>
       <name>com.ibm.etools.j2ee.LibCopyBuilder</name>
-      <arguments/>
     </buildCommand>
     <buildCommand>
       <name>com.ibm.etools.ctc.serviceprojectbuilder</name>
-      <arguments/>
     </buildCommand>
     <buildCommand>
       <name>com.ibm.wtp.j2ee.LibCopyBuilder</name>
-      <arguments/>
     </buildCommand>
     <buildCommand>
       <name>com.ibm.sse.model.structuredbuilder</name>
-      <arguments/>
     </buildCommand>
     <buildCommand>
       <name>org.eclipse.jst.j2ee.LibCopyBuilder</name>
-      <arguments/>
     </buildCommand>
   </buildSpec>
   <natures>

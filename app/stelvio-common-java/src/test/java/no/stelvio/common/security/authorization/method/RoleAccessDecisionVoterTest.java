@@ -5,11 +5,6 @@ import static org.junit.Assert.*;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import no.stelvio.common.error.StelvioException;
-import no.stelvio.common.security.RoleName;
-import no.stelvio.common.security.SecurityContextHolder;
-import no.stelvio.common.security.support.RolesEnum;
-import no.stelvio.common.security.support.SimpleSecurityContext;
 import no.stelvio.test.context.*;
 import org.acegisecurity.SecurityConfig;
 import org.acegisecurity.vote.AccessDecisionVoter;
@@ -18,6 +13,7 @@ import org.junit.Test;
 import org.springframework.aop.framework.ReflectiveMethodInvocation;
 
 /**
+ * Test class for the RoleAccessDecisionVoter.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$

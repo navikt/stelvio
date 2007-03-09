@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-
+/**
+ * Test class for the SimpleSecurityContext class.
+ * 
+ * @author persondab2f89862d3, Accenture
+ * @version $Id$ 
+ */
 public class SimpleSecurityContextTest {
 
 	private SecurityContext getSecurityContext(String userId, String... roles){
