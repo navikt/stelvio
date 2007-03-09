@@ -1,6 +1,7 @@
 package no.stelvio.presentation.security.context;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import no.stelvio.common.security.SecurityContext;
@@ -47,6 +49,15 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 	protected static final String ALLOW_URL_MANIPULATION = "no.stelvio.presentation.security.ALLOW_URL_MANIPULATION"; 
 	
 	private List<SecurityRole> roller;
+	private static Method setSecurityContextMethod;
+	private static Method resetSecurityContextMethod;
+	
+	static {
+		setSecurityContextMethod = ReflectionUtils.findMethod(SecurityContextHolder.class, "setSecurityContext", new Class[]{SecurityContext.class});
+		setSecurityContextMethod.setAccessible(true);
+		resetSecurityContextMethod = ReflectionUtils.findMethod(SecurityContextHolder.class, "resetSecurityContext", new Class[]{});
+		resetSecurityContextMethod.setAccessible(true);
+	}
 	
 	/**  
 	 * Initializes the filter by reading in and parsing the security role elements
@@ -55,7 +66,7 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 	@Override
 	protected void initFilterBean() throws ServletException {
 		super.initFilterBean();    //To change body of overridden methods use File | Settings | File Templates.
-
+		
 		try {
 			this.startPage = getFilterConfig().getInitParameter(START_PAGE_AFTER_LOGIN);
 			this.allowURLManipulation = getFilterConfig().getInitParameter(ALLOW_URL_MANIPULATION) != null ?
@@ -95,7 +106,8 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 			if (null != session) {
 				Object context = session.getAttribute(SECURITY_CONTEXT);
 				if (null != context) {
-					SecurityContextHolder.setSecurityContext((SecurityContext) context);
+					setSecurityContext((SecurityContext) context); 
+					//SecurityContextHolder.setSecurityContext((SecurityContext) context);
 				} else {
 					if (logger.isInfoEnabled()) {
 						logger.info("Session exists, but SecurityContext was not persisted");
@@ -105,8 +117,9 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 
 
 			SecurityContext securityContext = populateSecurityContext(req);
-			SecurityContextHolder.setSecurityContext(securityContext);
-
+			setSecurityContext(securityContext);
+			//SecurityContextHolder.setSecurityContext(securityContext);
+			
 			if (logger.isDebugEnabled()) {
 				logger.debug("User on request:" + req.getRemoteUser());
 				if(SecurityContextHolder.currentSecurityContext() != null){
@@ -130,12 +143,16 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 					}
 				}
 			}
-		} catch (Exception e) {
-			throw new ServletException("An error occured while updating the SecurityContext", e);
 		} finally {
 			// Always reset the SecurityContext, just to be on the safe side
-			SecurityContextHolder.resetSecurityContext();
+			resetSecurityContext();
 		}
+	}
+	private void setSecurityContext(SecurityContext securityContext){
+		ReflectionUtils.invokeMethod(setSecurityContextMethod, null, new Object[]{ securityContext });
+	}
+	private void resetSecurityContext(){
+		ReflectionUtils.invokeMethod(resetSecurityContextMethod, null);
 	}
 	/**
 	 * Private helper method used to retrieve and set values from the HttpSession and finally create and
