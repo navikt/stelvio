@@ -854,10 +854,3 @@ dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-test/plugin-c
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
-stelvio-consumer-java/.classpath -text
-stelvio-consumer-java/.project -text
-stelvio-consumer-java/pom.xml -text
-stelvio-consumer-java/src/main/java/no/stelvio/consumer/ConsumerContextHandler.java -text
-stelvio-consumer-java/src/main/java/no/stelvio/consumer/ConsumerFacadeBase.java -text
-stelvio-consumer-java/src/main/java/no/stelvio/consumer/LTPASecurityHandler.java -text
-stelvio-consumer-java/src/main/java/no/stelvio/consumer/SecurityHeader.java -text
