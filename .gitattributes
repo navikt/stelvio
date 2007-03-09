@@ -268,6 +268,13 @@ app/stelvio-common-java/src/test/resources/test-log4j.properties -text
 app/stelvio-common-java/src/test/resources/test-services.xml -text
 app/stelvio-common-java/src/test/resources/test-services2.xml -text
 app/stelvio-common-java/src/test/resources/test-services3.xml -text
+app/stelvio-consumer-java/.classpath -text
+app/stelvio-consumer-java/.project -text
+app/stelvio-consumer-java/pom.xml -text
+app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ConsumerContextHandler.java -text
+app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ConsumerFacadeBase.java -text
+app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/LTPASecurityHandler.java -text
+app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/SecurityHeader.java -text
 app/stelvio-domain-java/.classpath -text
 app/stelvio-domain-java/.project -text
 app/stelvio-domain-java/pom.xml -text
