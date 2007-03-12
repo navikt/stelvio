@@ -20,10 +20,10 @@ app/stelvio-star-example/jee/stelvio-star-example-jee/*.jar
 app/stelvio-star-example/jee/stelvio-star-example-jee/*.war
 app/stelvio-star-example/jee/stelvio-star-example-jee/target
 app/stelvio-star-example/layers/domain/starexample/stelvio-domain-star-example-java/target
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-java/target
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/classes
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/lib
-app/stelvio-star-example/layers/presentation/starexample/stelvio-presentation-star-example-web/target
+app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-java/target
+app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/classes
+app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/lib
+app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/target
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/target
 app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/target
 app/stelvio-test-java/common-test.iml
