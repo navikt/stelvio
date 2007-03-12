@@ -78,10 +78,8 @@ Module stelvio-presentation-java
 * Added a custom action class for fetching menu items and convert them into panelnavigation items used by the 
   panelNavigation2 component.
 
-Star example
 * Corrected package structure (no.nav.<x>.. -> no.stelvio.<x>.star.example...)
 * Added consumer layer
-
 
 Changes in version 1.0.1 (17.1.2007)
 ------------------------------------
