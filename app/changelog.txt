@@ -2,6 +2,22 @@ STELVIO CHANGELOG
 =================
 http://confluence.adeo.no/display/stelvio/Architecture
 
+Changes in version 1.0.3 (15.3.2007)
+------------------------------------
+
+General
+
+
+Module stelvio-common-java
+* Introduced NoGenericsCodesTableFactory to be used by EJBs that can't expose Generic types in component interface
+* Introduced new component, NoGenericsCodesTableAdapter used to bridge the CodesTableFactory/NoGenericsCodesTableFactory gap
+* Introduced IbanValidator used to validate Internation Bank Account Numbers
+* Introduced BbanValidator used to validate Basic Bank Account Numbers (only supports Norwegian BBANs at the moment)
+
+Module stelvio-domain-java
+
+
+
 
 Changes in version 1.0.2 (15.2.2007)
 ------------------------------------
