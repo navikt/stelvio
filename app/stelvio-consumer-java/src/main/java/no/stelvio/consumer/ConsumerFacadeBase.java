@@ -102,8 +102,8 @@ public abstract class ConsumerFacadeBase<T> {
 			}
 			if (isSecurityEnabled()){
 				Map<String,String> config=new HashMap<String,String>();
-				config.put("userName", this.serviceUsername);
-				config.put("password", this.servicePassword);
+				config.put(LTPASecurityHandler.userNameConfigString, this.serviceUsername);
+				config.put(LTPASecurityHandler.passwordConfigString, this.servicePassword);
 				HandlerInfo securityHInfo=new HandlerInfo(LTPASecurityHandler.class,config,null);
 				handlerList.add(securityHInfo);
 			}

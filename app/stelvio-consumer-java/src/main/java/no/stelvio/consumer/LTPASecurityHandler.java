@@ -5,12 +5,18 @@ import javax.xml.rpc.handler.GenericHandler;
 import javax.xml.rpc.handler.HandlerInfo;
 import javax.xml.rpc.handler.MessageContext;
 import javax.xml.rpc.handler.soap.SOAPMessageContext;
+import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPHeader;
 
 public class LTPASecurityHandler extends GenericHandler {
 
+	static final String userNameConfigString="userName";
+	static final String passwordConfigString="password";
+	
 	protected HandlerInfo info = null;
+	String serviceUsername=null;
+	String servicePassword=null;
 
 	/* (non-Javadoc)
 	 * @see javax.xml.rpc.handler.Handler#getHeaders()
@@ -20,6 +26,12 @@ public class LTPASecurityHandler extends GenericHandler {
 	}
 	public void init(HandlerInfo arg) {
 		info = arg;
+		//System.out.println("LTPASecurityhandler INIT");
+		if (arg.getHandlerConfig().get(userNameConfigString)!=null){			
+			serviceUsername=(String)arg.getHandlerConfig().get(userNameConfigString);
+			//System.out.println("LTPASecurityhandler using username "+serviceUsername);
+			servicePassword=(String)arg.getHandlerConfig().get(passwordConfigString);
+		}
 	}
 
 	public boolean handleRequest(MessageContext context) {
@@ -27,11 +39,16 @@ public class LTPASecurityHandler extends GenericHandler {
 			  SOAPMessageContext smc = (SOAPMessageContext)context;
 			  SOAPEnvelope se = smc.getMessage().getSOAPPart().getEnvelope();
 			  SOAPHeader sh = se.getHeader();
-			  sh.addChildElement(SecurityHeader.createLTPAHeader("srvpensjon","Test1234"));
+			  SOAPElement ltpaHeader;
+			  if (serviceUsername!=null){
+				  ltpaHeader=SecurityHeader.createLTPAHeader(serviceUsername, servicePassword);
+			  }else{
+				  ltpaHeader=SecurityHeader.createLTPAHeader();
+			  }
+			  sh.addChildElement(ltpaHeader);
 			  
 		}catch (Exception x) {
-			// insert error handling here
-			x.printStackTrace();
+			throw new RuntimeException("Error while adding LTPA header "+x.getMessage(),x);
 		}
 		return true;
 	}

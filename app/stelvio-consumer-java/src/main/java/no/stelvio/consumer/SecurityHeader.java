@@ -331,7 +331,7 @@ public class SecurityHeader {
         catch (Exception se) {
 
             log.error("Cannot create LoginContext." + se.getMessage(),se);
-            return;
+            throw new RuntimeException("Failed to create login context for user "+user+" message: "+se.getMessage(),se);
         }
 
         // Login with the new context
@@ -340,7 +340,7 @@ public class SecurityHeader {
         } 
         catch(LoginException le){
             log.error("Fails to Login. " + le.getMessage(),le);
-            return;
+            throw new RuntimeException("Failed to login user "+user+" message: "+le.getMessage(),le);
         }
 
         // Get security subject
@@ -352,6 +352,7 @@ public class SecurityHeader {
         }
         catch (Exception e){
             log.error("Error Setting security credentials. " + e.getMessage(),e);
+            throw new RuntimeException("Unable to set security credentials for user "+user,e);
         }
 
     }
