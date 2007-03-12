@@ -19,6 +19,7 @@ import org.apache.commons.collections.Predicate;
  * <code>CodesTablePeriodic</code> can hold values of.
  */
 public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Serializable {
+	
 	/**
 	 * Returns the set of CodesTableItemPeriodic, the filtered list if predicates have been added.
 	 *

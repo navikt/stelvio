@@ -17,6 +17,7 @@ import org.apache.commons.collections.Predicate;
  * <code>CodesTable</code> can hold values of.
  */
 public interface CodesTable<T extends CodesTableItem> extends Serializable {
+	
 	/**
 	 * Returns the set of CodesTableItem, the filtered list if predicates have been added.
 	 *
