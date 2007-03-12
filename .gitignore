@@ -25,6 +25,6 @@ app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-w
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/WEB-INF/lib
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/target
 app/stelvio-star-example/layers/repository/starexample/stelvio-repository-star-example-java/target
-app/stelvio-star-example/layers/service/starexample/stelvio-service-star-example-ejb/target
+app/stelvio-star-example/layers/service/stelvio-service-star-example-ejb/target
 app/stelvio-test-java/common-test.iml
 app/stelvio-test-java/target
