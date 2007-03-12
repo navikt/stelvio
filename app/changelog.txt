@@ -46,6 +46,8 @@ Module stelvio-common-java
 * getItems, getCodesTableItem, getDecode(Object) and getDecode(Object, Locale) in CodesTable have been deprecated
 * Added the methods getDecode(Enum), getDecode(Enum, Locale) and validateCode(Enum) in CodesTable
 * User id moved from RequestContext to SecurityContext.
+* Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
+* Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
 
 Module stelvio-test-java
 

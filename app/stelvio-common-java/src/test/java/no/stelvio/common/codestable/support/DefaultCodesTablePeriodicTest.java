@@ -7,21 +7,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.commons.collections.Predicate;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.context.i18n.LocaleContextHolder;
-
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTablePeriodic;
-import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
 import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
+
+import org.apache.commons.collections.Predicate;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 /**
  * Unit test of CodesTablePeriodic.
@@ -68,6 +63,12 @@ public class DefaultCodesTablePeriodicTest {
 		assertEquals("Test 3: Unexpected code", "t1code1", itemExist.getCode());
 		assertEquals("Test 4: Unexpected decode", "t1decode1", itemExist.getDecode());
 	}
+	
+	/**
+	 * Test of addPredicate(Predicate predicate).
+	 */
+	public void testAddPredicateAndRemovePredicate(){
+		
 
 	/** Test of addPredicate(Predicate predicate). */
 	@Test
@@ -84,28 +85,29 @@ public class DefaultCodesTablePeriodicTest {
 		assertNotNull("Test 1: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));
 		assertNotNull("Test 2: the item does not exist", codesTablePeriodic.getCodesTableItem("t2code2"));
 		assertNotNull("Test 3: the item does not exist", codesTablePeriodic.getCodesTableItem("t3code3"));
-
-		codesTablePeriodic.addPredicate(predicate);
-
-		// Test: get items from the filtered codestable
+		
+		//Test: get an item that does not exist
+		assertNull("Test 4 : A null-value should have been returned" , codesTablePeriodic.getCodesTableItem("t3code3")); 
+		
+		//Test: get items in the filtered codestable
 		assertNotNull("Test 5: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));
-
-		try {
-			// Test: get an item that does not exist in the filtered code stable
+		assertNotNull("Test 6: the item does not exist", codesTablePeriodic.getCodesTableItem("t2code2"));
+		
+		codesTablePeriodic.addPredicate(pred2);
+		try{
+		//	Test: get an item that does not exist
 			codesTablePeriodic.getCodesTableItem("t2code2");
-			fail("ItemNotFoundException should have been thrown");
-		} catch (ItemNotFoundException e) {
-			// should happen
+			fail("Item "+codesTablePeriodic.getCodesTableItem("t2code2")+" should not have been found");
+		}catch(ItemNotFoundException ex){
+			//do nothing
 		}
-
-		try {
-			// Test: get an item that does not exist in the filtered code stable
-			codesTablePeriodic.getCodesTableItem("t3code3");
-			fail("ItemNotFoundException should have been thrown");
-		} catch (ItemNotFoundException e) {
-			// should happen
-		}
-
+		
+		//Test: get an item that does not exist
+		assertNull("Test 7 : A null-value should have been returned" , codesTablePeriodic.getCodesTableItem("t2code2"));
+		
+		//Test: get items in the filtered codestable
+		assertNotNull("Test 8: the item does not exist", codesTablePeriodic.getCodesTableItem("t1code1"));
+		
 		codesTablePeriodic.resetPredicates();
 
 		//Test: get the items in the codestable 
@@ -134,4 +136,14 @@ public class DefaultCodesTablePeriodicTest {
 
 		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCodesTableItemPeriodic.getCtip1().getCode(), date), "t1decode1");
 	}
+	
+	
+	/**
+	 * Cleans up after tests are complete.
+	 */
+	@Override
+	public void onTearDown() {
+		codesTablePeriodic = null;
+		setDirty();
+	}	
 }

@@ -105,6 +105,8 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 * Returns the decode for a code in <code>CodesTableItem</code> with a specific locale. If the locale isn't supported,
 	 * the decode that supports the default locale is returned - if it exists.
 	 *
+	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object)} 
+	 * 
 	 * @param code the items code.
 	 * @param locale the internationalization code.
 	 * @return The decode
@@ -112,6 +114,7 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItem</code> without a code
 	 * @deprecated use {@link #getDecode(Enum,Locale)}
 	 */
+	@Deprecated
 	String getDecode(Object code, Locale locale) throws DecodeNotFoundException;
 
 	/**

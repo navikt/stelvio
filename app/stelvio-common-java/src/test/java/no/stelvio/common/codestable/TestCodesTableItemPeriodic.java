@@ -24,7 +24,7 @@ public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 	 * @param toDate the valid to date
 	 * @param isValid the validity of the item
 	 */
-	public TestCodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, boolean isValid){
+	public TestCodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Boolean isValid){
 		super(code, decode, fromDate, toDate, isValid);
 	}
 
@@ -43,23 +43,23 @@ public class TestCodesTableItemPeriodic extends CodesTableItemPeriodic {
 	}
 	
 	public static TestCodesTableItemPeriodic getCtip1() {
-		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(),  true);
+		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(),  Boolean.TRUE);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip2() {
-		return new TestCodesTableItemPeriodic("t2code2", "t2decode2", getTestFromDate(), getTestToDate(), true);
+		return new TestCodesTableItemPeriodic("t2code2", "t2decode2", getTestFromDate(), getTestToDate(), Boolean.TRUE);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip3() {
-		return new TestCodesTableItemPeriodic("t3code3", "t3decode3", getTestFromDate(), getTestToDate(), true);
+		return new TestCodesTableItemPeriodic("t3code3", "t3decode3", getTestFromDate(), getTestToDate(), Boolean.TRUE);
 	}
 
 	public static TestCodesTableItemPeriodic getCtip4() {
-		return new TestCodesTableItemPeriodic("t4code4", "t4decode4", getTestFromDate(), getTestToDate(), true);
+		return new TestCodesTableItemPeriodic("t4code4", "t4decode4", getTestFromDate(), getTestToDate(), Boolean.TRUE);
 	}
 	
 	public static TestCodesTableItemPeriodic getCtip5() {
-		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), true);
+		return new TestCodesTableItemPeriodic("t1code1", "t1decode1", getTestFromDate(), getTestToDate(), Boolean.TRUE);
 	}
 
 	public static TestCodesTableItemPeriodic getCtiWithEmptyDecode() {

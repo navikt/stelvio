@@ -108,6 +108,8 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	/**
 	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
 	 *
+	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object, Date)}
+	 * 
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @param locale the internationalization code.
@@ -116,6 +118,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
 	 * @deprecated use {@link #getDecode(Enum,Locale,Date)}
 	 */
+	@Deprecated
 	String getDecode(Object code, Locale locale, Date date) throws DecodeNotFoundException;
 
 	/**
