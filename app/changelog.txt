@@ -5,9 +5,6 @@ http://confluence.adeo.no/display/stelvio/Architecture
 Changes in version 1.0.3 (15.3.2007)
 ------------------------------------
 
-General
-
-
 Module stelvio-common-java
 * Introduced NoGenericsCodesTableFactory to be used by EJBs that can't expose Generic types in component interface
 * Introduced new component, NoGenericsCodesTableAdapter used to bridge the CodesTableFactory/NoGenericsCodesTableFactory gap
@@ -15,8 +12,6 @@ Module stelvio-common-java
 * Introduced BbanValidator used to validate Basic Bank Account Numbers (only supports Norwegian BBANs at the moment)
 
 Module stelvio-domain-java
-
-
 
 
 Changes in version 1.0.2 (15.2.2007)
@@ -35,7 +30,6 @@ Library updates:
 * Upgraded Spring WebFlow to version 1.0.1
 * Upgraded Spring Modules Cache to version 0.7
 * Upgraded Spring Modules Validation to version 0.7
-
 
 Module stelvio-common-java
 * Added support for validating that a code is present in a codes table [Defect #265]
@@ -70,9 +64,15 @@ Module stelvio-batch-java
 Module stelvio-service-java
 * Deprecated TasklistService and DefaultTasklistService. These have been moved to the pensjon project
 
-
 Module stelvio-presentation-java
 * The menu taglib has been moved moved to the pension project application framework.
+* Upgraded Spring Modules Validation to 0.7
+* Components for help taglib has been added. The taglib consist of three components: HelpDisplayAreaComponent,
+  HelpInPageComponent and HelpPopUpComponent. These components also have a common HelpUtils class, with package locale
+  utility metodes used by the help components. Resources for these components has been added to src/main/resources. 
+* Added two classes for handling resources in pages, StelvioResourceHandler and StelvioResourceLoader. These are used by
+  the help components.
+* Added a faces-config.xml with definitions of the custom stelvio components under src/main/resources/META-INF
 * Removed MenuComponent and MenuItemComponent. The menus used in stelvio should be based on the tomahawk panelNavigation2 
   component.
 * Added a custom action class for fetching menu items and convert them into panelnavigation items used by the 

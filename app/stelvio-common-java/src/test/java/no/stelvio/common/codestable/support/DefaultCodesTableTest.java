@@ -19,6 +19,22 @@ import no.stelvio.common.codestable.TestCodesTableItem;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
 
+import org.apache.commons.collections.Predicate;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
+
+import no.stelvio.common.codestable.CodesTable;
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.ItemNotFoundException;
+import no.stelvio.common.codestable.TestCodesTableItem;
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.SimpleRequestContext;
+
 /**
  * Unit test of CodesTable.
  *
@@ -121,12 +137,7 @@ public class DefaultCodesTableTest {
 
 	@Test
 	public void canValidateThatCodeExists() {
-		assertTrue("Should exist", codesTable.validateCode(TestEnum.t1code1));
-		assertFalse("Should not exist", codesTable.validateCode(TestEnum.existsNot));
-	}
-	
-	public static enum TestEnum {
-		t1code1,
-		existsNot
+		assertTrue("Should exist", codesTable.validateCode("t1code1"));
+		assertFalse("Should not exist", codesTable.validateCode("existsNot"));
 	}
 }

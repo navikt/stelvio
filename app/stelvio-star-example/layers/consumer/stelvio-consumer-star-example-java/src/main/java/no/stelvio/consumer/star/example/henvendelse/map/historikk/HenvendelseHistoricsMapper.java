@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import no.stelvio.domain.star.example.henvendelse.Henvendelse;
 import no.stelvio.domain.star.example.henvendelse.historikk.HenvendelseHistory;
-import no.stelvio.consumer.star.example.henvendelse.map.historikk.ASBOPenHenvendelseHistory;
 
 /**
  * Maps from an ASBO version of henvendelse history to a local version.

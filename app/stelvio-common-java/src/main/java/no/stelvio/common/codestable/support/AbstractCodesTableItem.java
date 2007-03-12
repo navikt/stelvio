@@ -37,7 +37,10 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	private boolean valid;
 
 	/** Constructor for <code>AbstractCodesTableItem</code>. Only available to subclasses. */
-	protected AbstractCodesTableItem() {
+	protected AbstractCodesTableItem(String code, String decode, boolean isValid) {
+		this.code = code;
+		this.decode = decode;
+		this.valid = isValid;
 	}
 
 	/**
@@ -46,6 +49,8 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * @param code the code.
 	 * @param decode the decode.
 	 * @param isValid validity of the item.
+	 * @deprecated CodesTableItems will no longer expose Locale to client. Replaced by {@link
+	 *             AbstractCodesTableItem(String, String, boolean)}
 	 */
 	protected AbstractCodesTableItem(String code, String decode, boolean isValid) {
 		this.code = code;

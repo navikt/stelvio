@@ -24,7 +24,6 @@ public abstract class CodesTableItem extends AbstractCodesTableItem {
 	 *
 	 * @param code the code.
 	 * @param decode the decode.
-	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
 	 * @deprecated CodesTableItems will no longer expose Locale to client. Replaced by {@link CodesTableItem(String,
 	 *             String, boolean)}
