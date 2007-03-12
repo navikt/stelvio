@@ -100,6 +100,7 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> extends
 	 * FIXME: This method doesn't use the input Date to retrieve decode. 
 	 * FIXME: Method should probably change implementation or signature in the future.
 	 * {@inheritDoc}
+	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object, Date)}
 	 */
 	public String getDecode(Object code, Date date) throws ItemNotFoundException, DecodeNotFoundException {
 		String decode = null;
