@@ -7,6 +7,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 /**

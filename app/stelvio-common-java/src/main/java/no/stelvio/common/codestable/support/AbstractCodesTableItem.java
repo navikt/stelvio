@@ -107,6 +107,12 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * <p><strong>
 	 * DEPRECATED: CodesTableItems will no longer expose Locale to clients. Avoid using this method
 	 * </p></strong>
+	 * <p><strong>
+	 * DEPRECATED: CodesTableItems will no longer expose Locale to clients. Avoid using this method
+	 * </p></strong>
+	 * <p><strong>
+	 * DEPRECATED: CodesTableItems will no longer expose Locale to clients. Avoid using this method
+	 * </p></strong>
 	 * @return locale the locale of this item
 	 * @deprecated CodesTableItems will no longer expose Locale to clients.
 	 */

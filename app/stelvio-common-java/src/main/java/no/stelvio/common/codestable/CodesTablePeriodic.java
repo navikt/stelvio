@@ -20,6 +20,8 @@ import org.apache.commons.collections.Predicate;
  */
 public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Serializable {
 	
+	
+	
 	/**
 	 * Returns the set of CodesTableItemPeriodic, the filtered list if predicates have been added.
 	 *
