@@ -27,6 +27,18 @@ public class DefaultCodesTable<T extends CodesTableItem> extends AbstractCodesTa
 	private static final long serialVersionUID = -1882474781384872740L;
 
 	/**
+	 * Copy-constructor
+	 * Returns a new DefaultCodesTable, based on the codestable used as input
+	 * @param defaultCodesTable
+	 */
+	public DefaultCodesTable(DefaultCodesTable<T> defaultCodesTable){
+		this.predicates = new ArrayList<Predicate>(defaultCodesTable.predicates);
+		this.codeCodesTableItemMap = new HashMap<Object, T>(defaultCodesTable.codeCodesTableItemMap);
+		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(defaultCodesTable.filteredCodeCodesTableItemMap);
+	}
+	
+	
+	/**
 	 * Creates a <code>DefaultCodesTable</code> with a list of <code>CodesTableItem</code>s.
 	 *
 	 * @param codesTableItems list of <code>CodesTableItem</code>s this <code>DefaultCodesTable</code> consists of.
