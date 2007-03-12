@@ -77,7 +77,25 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> extends
 		//doing it here anyway to avoid stale version of filteredCodeCodesTableItemMap
 		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public T getCodesTableItem(Object code) throws ItemNotFoundException {
+		T cti = null;
+		
+		//There are no predicates for the items in the codestable  
+		if (this.predicates.isEmpty()){
+			cti = this.codeCodesTableItemMap.get(code);
+		} else { 
+			cti = this.filteredCodeCodesTableItemMap.get(code);
+		}
 
+	/** {@inheritDoc} */
+	public String getDecode(Enum code, Locale locale, Date date) throws DecodeNotFoundException {
+		return decode(code.name(), locale, date);
+	}
+		
 	/**
 	 * FIXME: This method doesn't use the input Date to retrieve decode. 
 	 * FIXME: Method should probably change implementation or signature in the future.

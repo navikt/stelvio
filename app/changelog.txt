@@ -39,10 +39,6 @@ Module stelvio-common-java
 * Methods on ServiceRequest for setting/retrieving RequestContext are deprecated as client code should not work with
   RequestContext directly; access it through RequestContextHolder instead
 * Deprecated TransferObject in favour of ServiceRequest/ServiceResponse
-* Changed implementations of CodesTable and CodesTablePeriodic that potentially improves performance (decreased uses of
-  loops)
-* getDecode in CodesTable and CodesTablePeriodic may now throw ItemNotFoundException in addition to
-  DecodeNotFoundException
 * getItems, getCodesTableItem, getDecode(Object) and getDecode(Object, Locale) in CodesTable have been deprecated
 * Added the methods getDecode(Enum), getDecode(Enum, Locale) and validateCode(Enum) in CodesTable
 * User id moved from RequestContext to SecurityContext.

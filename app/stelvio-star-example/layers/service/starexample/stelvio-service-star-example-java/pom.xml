@@ -31,7 +31,7 @@
 		</dependency>
 		<dependency>
 			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-service-java</artifactId>
+			<artifactId>stelvio-common</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>

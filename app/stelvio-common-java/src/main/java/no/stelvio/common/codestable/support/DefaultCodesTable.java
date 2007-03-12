@@ -62,7 +62,9 @@ public class DefaultCodesTable<T extends CodesTableItem> extends AbstractCodesTa
 		return decode(code);
 	}
 
-	/** {@inheritDoc} */
+	/** 
+	 * {@inheritDoc}
+	 */
 	public String getDecode(Object code) throws ItemNotFoundException, DecodeNotFoundException{		
 		String decode = null;
 

@@ -107,6 +107,8 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 *
 	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object)} 
 	 * 
+	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object)} 
+	 * 
 	 * @param code the items code.
 	 * @param locale the internationalization code.
 	 * @return The decode
