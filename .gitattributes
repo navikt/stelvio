@@ -2,8 +2,6 @@
 /.project -text
 app/changelog.txt -text
 app/pom.xml -text
-app/stelvio-batch-java/.classpath -text
-app/stelvio-batch-java/.project -text
 app/stelvio-batch-java/pom.xml -text
 app/stelvio-batch-java/src/main/java/.cvsignore -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/AbstractBatch.java -text
@@ -21,8 +19,6 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/HibernateBatchR
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/HibernateFileIdentity.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/AbstractBatchTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchDOTest.java -text
-app/stelvio-common-java/.classpath -text
-app/stelvio-common-java/.project -text
 app/stelvio-common-java/pom.xml -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/MethodWrapperInterceptorAdvisor.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/aop/package.html -text
@@ -275,15 +271,11 @@ app/stelvio-common-java/src/test/resources/test-log4j.properties -text
 app/stelvio-common-java/src/test/resources/test-services.xml -text
 app/stelvio-common-java/src/test/resources/test-services2.xml -text
 app/stelvio-common-java/src/test/resources/test-services3.xml -text
-app/stelvio-consumer-java/.classpath -text
-app/stelvio-consumer-java/.project -text
 app/stelvio-consumer-java/pom.xml -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ConsumerContextHandler.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ConsumerFacadeBase.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/LTPASecurityHandler.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/SecurityHeader.java -text
-app/stelvio-domain-java/.classpath -text
-app/stelvio-domain-java/.project -text
 app/stelvio-domain-java/pom.xml -text
 app/stelvio-domain-java/src/main/java/.cvsignore -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItem.java -text
@@ -302,8 +294,6 @@ app/stelvio-domain-java/src/test/resources/application-services.xml -text
 app/stelvio-domain-java/src/test/resources/common-java_test_menu_beans.xml -text
 app/stelvio-domain-java/src/test/resources/error-handling.xml -text
 app/stelvio-domain-java/src/test/resources/performance-monitoring.xml -text
-app/stelvio-presentation-java/.classpath -text
-app/stelvio-presentation-java/.project -text
 app/stelvio-presentation-java/pom.xml -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/constants/ConstantsWrapper.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/RequestContextFilter.java -text
@@ -356,8 +346,6 @@ app/stelvio-presentation-java/src/test/resources/WEB-INF/web.xml -text
 app/stelvio-presentation-java/src/test/resources/log4j.properties -text
 app/stelvio-presentation-java/src/test/resources/messages_en_GB.properties -text
 app/stelvio-presentation-java/src/test/resources/messages_en_US.properties -text
-app/stelvio-repository-java/.classpath -text
-app/stelvio-repository-java/.project -text
 app/stelvio-repository-java/pom.xml -text
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/codestable/CodesTableRepository.java -text
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/codestable/support/HibernateCodesTableRepository.java -text
@@ -367,8 +355,6 @@ app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/MenuReposit
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/menu/support/HibernateMenuRepository.java -text
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/sak/SaksbehandlerRepository.java -text
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/sak/TaskRepository.java -text
-app/stelvio-service-java/.classpath -text
-app/stelvio-service-java/.project -text
 app/stelvio-service-java/pom.xml -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/codestable/RepositoryCodesTableFactory.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/error/RepositoryErrorDefinitionRetriever.java -text
@@ -650,8 +636,6 @@ app/stelvio-star-example/workspaces/pom.xml -text
 app/stelvio-star-example/workspaces/stelvio-app-star-example-workspace/.project -text
 app/stelvio-star-example/workspaces/stelvio-app-star-example-workspace/pom.xml -text
 app/stelvio-star-example/workspaces/stelvio-app-star-example-workspace/stelvio-app-star-example-trunk.psf -text
-app/stelvio-test-java/.classpath -text
-app/stelvio-test-java/.project -text
 app/stelvio-test-java/pom.xml -text
 app/stelvio-test-java/src/main/java/no/stelvio/test/spring/jdbc/MockJdbcTemplate.java -text
 app/stelvio-test-java/src/main/java/no/stelvio/test/spring/transaction/MockTransactionTemplate.java -text
