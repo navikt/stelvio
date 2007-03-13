@@ -13,6 +13,7 @@
 		<module>stelvio-repository-java</module>
 		<module>stelvio-batch-java</module>
 		<module>stelvio-service-java</module>
+		<module>stelvio-consumer-java</module>
 		<module>stelvio-presentation-java</module>
 		<module>workspaces</module>
 		<module>stelvio-star-example</module>
