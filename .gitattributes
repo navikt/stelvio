@@ -572,6 +572,13 @@ app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-w
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/styles/stylesheet.css -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/templates/frame-starexample.xhtml -text
 app/stelvio-star-example/layers/provider/pom.xml -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.classpath -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.project -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.settings/.webspheredeploy -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.settings/org.eclipse.jdt.core.prefs -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.settings/org.eclipse.wst.common.project.facet.core.xml -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/ejbModule/log4j.properties -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/.classpath -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/.project -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/pom.xml -text
