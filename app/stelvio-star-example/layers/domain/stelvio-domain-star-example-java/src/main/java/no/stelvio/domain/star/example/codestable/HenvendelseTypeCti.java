@@ -34,7 +34,7 @@ import no.stelvio.common.codestable.CodesTableItemPeriodic;
     @AttributeOverride(name="fromDate", column=@Column(name="DATO_FOM")),
     @AttributeOverride(name="toDate", column=@Column(name="DATO_TOM"))    
 })
-public class HenvendelseTypeCti extends CodesTableItemPeriodic {
+public class HenvendelseTypeCti extends CodesTableItemPeriodic<HenvendelseTypeCode, String> {
 	private static final long serialVersionUID = 4989579646384579677L;
 	
 	/**
@@ -52,7 +52,7 @@ public class HenvendelseTypeCti extends CodesTableItemPeriodic {
 	 * @param locale locale for this instance
 	 * @param valid <code>true</code> if this item is valid, <code>false</code> if it's invalid
 	 */
-	public HenvendelseTypeCti(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean valid) {
+	public HenvendelseTypeCti(HenvendelseTypeCode code, String decode, Date fromDate, Date toDate, Locale locale, boolean valid) {
 		super(code, decode, fromDate, toDate, locale, valid);
 	}
 

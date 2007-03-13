@@ -1,13 +1,12 @@
 package no.stelvio.repository.codestable.support;
 
 import java.util.List;
-
 import javax.persistence.Entity;
+
+import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 import no.stelvio.repository.codestable.CodesTableRepository;
-
-import org.springframework.orm.hibernate3.HibernateTemplate;
 
 /**
  * Hibernate implementation of the CodesTableRepository. 
@@ -29,7 +28,7 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends AbstractCodesTableItem> List<T> findCodesTableItems(Class<T>  codestableItem) {
+	public <T extends AbstractCodesTableItem<? extends Enum, V>, V> List<T> findCodesTableItems(Class<T>  codestableItem) {
 		String query = buildQuery( codestableItem);
 		
 		return getHibernateTemplate().find(query);
@@ -41,7 +40,7 @@ public class HibernateCodesTableRepository implements CodesTableRepository {
 	 * @param codestableItem Class the identifies the CodestableItem
 	 * @return query string
 	 */
-	private <T extends AbstractCodesTableItem> String buildQuery(Class<T> codestableItem){
+	private <T extends AbstractCodesTableItem<? extends Enum, V>, V> String buildQuery(Class<T> codestableItem){
 		StringBuffer sb = new StringBuffer();
 		String entityName = codestableItem.getSimpleName();
 		

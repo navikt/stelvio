@@ -22,23 +22,23 @@ public class RepositoryCodesTableFactory implements CodesTableFactory {
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableItemClass)
+	public <T extends CodesTableItem<K, V>, K extends Enum, V> CodesTable<T, K, V> createCodesTable(Class<T> codesTableItemClass)
 			throws CodesTableNotFoundException {
 		final List<T> items = codesTableRepository.findCodesTableItems(codesTableItemClass);
 
-		return new DefaultCodesTable<T>(items);
+		return new DefaultCodesTable<T, K, V>(items);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T>
+	public <T extends CodesTableItemPeriodic<K, V>, K extends Enum, V> CodesTablePeriodic<T, K, V>
 	                                       createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass)
 			throws CodesTableNotFoundException {
 		final List<T> items = codesTableRepository.findCodesTableItems(codesTableItemPeriodicClass);
 
-		return new DefaultCodesTablePeriodic<T>(items);
+		return new DefaultCodesTablePeriodic<T, K, V>(items);
 	}
 	
 	/**

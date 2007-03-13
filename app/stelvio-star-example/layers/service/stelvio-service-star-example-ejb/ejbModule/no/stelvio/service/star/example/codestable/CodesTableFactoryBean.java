@@ -22,12 +22,12 @@ import no.stelvio.common.codestable.factory.CodesTableFactory;
 public class CodesTableFactoryBean extends AbstractStatelessSessionBean implements CodesTableFactory {
 	private CodesTableFactory codesTableFactory;
 
-	public <T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableClass)
+	public <T extends CodesTableItem<String, String>> CodesTable<T> createCodesTable(Class<T> codesTableClass)
 			throws CodesTableNotFoundException {
 		return codesTableFactory.createCodesTable(codesTableClass);
 	}
 
-	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass)
+	public <T extends CodesTableItemPeriodic<String, String>> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass)
 			throws CodesTableNotFoundException {
 		return codesTableFactory.createCodesTablePeriodic(codesTableClass);
 	}

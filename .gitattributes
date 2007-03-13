@@ -423,6 +423,7 @@ app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/.setting
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/.settings/org.eclipse.wst.common.component -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/pom.xml -text
+app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/codestable/HenvendelseTypeCode.java -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/codestable/HenvendelseTypeCti.java -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/henvendelse/Fagomrade.java -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/henvendelse/Henvendelse.java -text
