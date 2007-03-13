@@ -16,23 +16,21 @@ import org.apache.commons.collections.Predicate;
  * @param <T> <code>CodesTableItem</code>'s or subclasses of <code>CodesTableItem</code> that the
  * <code>CodesTable</code> can hold values of.
  */
-public interface CodesTable<T extends CodesTableItem> extends Serializable {
-	
-	
-	
+public interface CodesTable<T extends CodesTableItem<K, V>, K extends Enum, V> extends Serializable {
 	/**
-	 * Returns the set of CodesTableItem, the filtered list if predicates have been added.
+	 * Returns the set of CodesTableItem which is filtered with the current list of predicates.
 	 *
 	 * @return the set of code table items in the table.
 	 */
 	Set<T> getCodeTableItems();
 
 	/**
-	 * Returns the list of CodesTableItem, the filtered list if predicates have been added.
+	 * Returns the list of CodesTableItem which is filtered with the current list of predicates.
 	 *
 	 * @return the list of code table items in the table.
 	 * @deprecated use {@link #getCodeTableItems()}
 	 */
+	@Deprecated
 	List<T> getItems();
 
 	/**
@@ -44,7 +42,7 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 *         <code>CodesTable</code>.
 	 * @throws ItemNotFoundException if the input code doesn't exist in the <code>CodesTable</code>.
 	 */
-	T getCodesTableItem(Enum code) throws ItemNotFoundException;
+	T getCodesTableItem(K code) throws ItemNotFoundException;
 
 	/**
 	 * Returns the <code>CodesTableItem</code> in the <code>CodesTable</code> that matches the specified
@@ -56,6 +54,7 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 * @throws ItemNotFoundException if the input code doesn't exist in the <code>CodesTable</code>.
 	 * @deprecated use {@link #getCodesTableItem(Enum)}
 	 */
+	@Deprecated
 	T getCodesTableItem(Object code) throws ItemNotFoundException;
 
 	/**
@@ -76,7 +75,7 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 * @throws ItemNotFoundException if no <code>CodesTableItem</code> is found for the code
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItem</code> without a code
 	 */
-	String getDecode(Enum code) throws ItemNotFoundException, DecodeNotFoundException;
+	V getDecode(K code) throws ItemNotFoundException, DecodeNotFoundException;
 
 	/**
 	 * Returns the decode for a code in <code>CodesTableItem</code> with a specific locale. If the locale isn't supported,
@@ -88,7 +87,7 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 * @throws ItemNotFoundException if no <code>CodesTableItem</code> is found for the code
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItem</code> without a code
 	 */
-	String getDecode(Enum code, Locale locale) throws DecodeNotFoundException;
+	V getDecode(K code, Locale locale) throws DecodeNotFoundException;
 
 	/**
 	 * Returns the decode for a code in a <code>CodesTableItem</code> belonging to a <code>CodesTable</code>.
@@ -99,16 +98,13 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItem</code> without a code
 	 * @deprecated use {@link #getDecode(Enum)}
 	 */
+	@Deprecated
 	String getDecode(Object code) throws ItemNotFoundException, DecodeNotFoundException;
 
 	/**
 	 * Returns the decode for a code in <code>CodesTableItem</code> with a specific locale. If the locale isn't supported,
 	 * the decode that supports the default locale is returned - if it exists.
 	 *
-	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object)} 
-	 * 
-	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object)} 
-	 * 
 	 * @param code the items code.
 	 * @param locale the internationalization code.
 	 * @return The decode
@@ -126,4 +122,12 @@ public interface CodesTable<T extends CodesTableItem> extends Serializable {
 	 * @return true if the code exists, false otherwise.
 	 */
 	boolean validateCode(Enum code);
+
+	/**
+	 * Checks that the code exists in the codes table.
+	 *
+	 * @param code the code to check for existence in the codes table.
+	 * @return true if the code exists, false otherwise.
+	 */
+	boolean validateCode(String code);
 }

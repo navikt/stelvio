@@ -16,9 +16,7 @@ import org.junit.Test;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 import no.stelvio.common.codestable.factory.CodesTableFactory;
-import no.stelvio.common.codestable.support.DefaultCodesTable;
 import no.stelvio.common.codestable.support.DefaultCodesTableManager;
-import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
 
 /**
  * Component test of Codestable.
@@ -28,9 +26,9 @@ import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
  */
 public class CodestableComponentTest {
 	//
-	private final String code = TestCodesTableItem.getCti1().getCode();
+	private final TestCtiCode code = TestCti.getCti1().getCode();
 	//
-	private final String decode = TestCodesTableItem.getCti1().getDecode();
+	private final Integer decode = TestCti.getCti1().getDecode();
 	//
 	private final Locale locale = new Locale("nb", "NO");
 	//
@@ -42,24 +40,24 @@ public class CodestableComponentTest {
 	@Before
 	public void setUp() {
 		//Test data			
-		final List<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
-		codesTableItems.add(TestCodesTableItem.getCti1());
-		codesTableItems.add(TestCodesTableItem.getCti2());
-		codesTableItems.add(TestCodesTableItem.getCti3());
+		final List<TestCti> codesTableItems = new ArrayList<TestCti>();
+		codesTableItems.add(TestCti.getCti1());
+		codesTableItems.add(TestCti.getCti2());
+		codesTableItems.add(TestCti.getCti3());
 
-		final List<CodesTableItemPeriodic> codesTableItemPeriodics = new ArrayList<CodesTableItemPeriodic>();
-		codesTableItemPeriodics.add(TestCodesTableItemPeriodic.getCtip1());
-		codesTableItemPeriodics.add(TestCodesTableItemPeriodic.getCtip2());
-		codesTableItemPeriodics.add(TestCodesTableItemPeriodic.getCtip3());
+		final List<TestCtiPeriodic> codesTableItemPeriodics = new ArrayList<TestCtiPeriodic>();
+		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip1());
+		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip2());
+		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip3());
 
 		//Mock CodesTableManger's methods
 		context = new Mockery();
 		final CodesTableFactory codesTableFactory = context.mock(CodesTableFactory.class);
 
 		context.expects(new InAnyOrder() {{
-			one(codesTableFactory).createCodesTable((Class<CodesTableItem>) with(IsAnything.anything()));
+			one(codesTableFactory).createCodesTable((Class<TestCti>) with(IsAnything.anything()));
 			will(returnValue(codesTableItems));
-			one(codesTableFactory).createCodesTablePeriodic((Class<CodesTableItemPeriodic>) with(IsAnything.anything()));
+			one(codesTableFactory).createCodesTablePeriodic((Class<TestCtiPeriodic>) with(IsAnything.anything()));
 			will(returnValue(codesTableItemPeriodics));
 		}});
 
@@ -76,12 +74,11 @@ public class CodestableComponentTest {
 	 */
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testCodesTable() throws Exception {
+	public void testCodesTable() {
+		CodesTable<TestCti, TestCtiCode, Integer> codesTable = codesTableManager.getCodesTable(TestCti.class);
 
-		CodesTable codesTable = new DefaultCodesTable(new ArrayList());
-		codesTable = codesTableManager.getCodesTable(TestCodesTableItem.getCti1().getClass());
-
-		assertEquals("Con001.001 : getCodesTable failed - doesn't hold an expected value", codesTable.getCodesTableItem(code), TestCodesTableItem.getCti1());
+		assertEquals("Con001.001 : getCodesTable failed - doesn't hold an expected value",
+				codesTable.getCodesTableItem(code), TestCti.getCti1());
 		context.assertIsSatisfied();
 	}
 
@@ -94,7 +91,8 @@ public class CodestableComponentTest {
 		//Sets the locale in the request context
 		LocaleContextHolder.setLocale(locale);
 
-		assertEquals("Con004.001 : getDecode() failed ", codesTableManager.getCodesTable(TestCodesTableItem.getCti1().getClass()).getDecode(code), decode);
+		assertEquals("Con004.001 : getDecode() failed ",
+				codesTableManager.getCodesTable(TestCti.class).getDecode(code), decode);
 		context.assertIsSatisfied();
 	}
 
@@ -103,13 +101,12 @@ public class CodestableComponentTest {
 	 */
 	@Test
 	public void testGetDecodeWithNonexistingCode() {
-		String nonExistingCode = "t12code";
-
 		try {
-			codesTableManager.getCodesTable(TestCodesTableItem.getCti1().getClass()).getDecode(nonExistingCode);
+			codesTableManager.getCodesTable(TestCti.class).getDecode(TestCtiCode.EXISTS_NOT);
 			fail("Con003.001 : Expected exception for getDecode()");
 		} catch (Exception ex) {
-			assertEquals("Con003.01 : getDecode() should have thrown exception", ex.getClass().getSimpleName(), "DecodeNotFoundException");
+			assertEquals("Con003.01 : getDecode() should have thrown exception",
+					ex.getClass().getSimpleName(), "DecodeNotFoundException");
 		}
 
 		context.assertIsSatisfied();
@@ -120,7 +117,8 @@ public class CodestableComponentTest {
 	 */
 	@Test
 	public void testGetDecodeWithLocale() {
-		assertEquals("Con004.001 : getDecode() with locale failed ", codesTableManager.getCodesTable(TestCodesTableItem.getCti1().getClass()).getDecode(code, locale), decode);
+		assertEquals("Con004.001 : getDecode() with locale failed ",
+				codesTableManager.getCodesTable(TestCti.class).getDecode(code, locale), decode);
 		context.assertIsSatisfied();
 	}
 
@@ -131,7 +129,8 @@ public class CodestableComponentTest {
 	public void testGetDecodeWithNonexistingLocale() {
 		Locale nonSupportedLocale = new Locale("en", "GB");
 
-		assertEquals("Con005.001 : getDecode() with non-existing locale failed ", codesTableManager.getCodesTable(TestCodesTableItem.getCti1().getClass()).getDecode(code, nonSupportedLocale), decode);
+		assertEquals("Con005.001 : getDecode() with non-existing locale failed ",
+				codesTableManager.getCodesTable(TestCti.class).getDecode(code, nonSupportedLocale), decode);
 		context.assertIsSatisfied();
 	}
 
@@ -140,10 +139,11 @@ public class CodestableComponentTest {
 	 */
 	@Test
 	public void testGetCodesTablePeriodic() {
-		CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic(new ArrayList());
-		codesTablePeriodic = codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass());
+		CodesTablePeriodic<TestCtiPeriodic, TestCtiCode, String> codesTablePeriodic =
+				codesTableManager.getCodesTablePeriodic(TestCtiPeriodic.class);
 
-		assertEquals("Con007.001 : getCodesTablePeriodic failed - doesn't hold an expected value", codesTablePeriodic.getCodesTableItem(code), TestCodesTableItemPeriodic.getCtip1());
+		assertEquals("Con007.001 : getCodesTablePeriodic failed - doesn't hold an expected value",
+				codesTablePeriodic.getCodesTableItem(code), TestCtiPeriodic.getCtip1());
 		context.assertIsSatisfied();
 	}
 
@@ -161,10 +161,11 @@ public class CodestableComponentTest {
 		LocaleContextHolder.setLocale(locale);
 
 		try {
-			codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass()).getDecode(code, nonvalidDate);
+			codesTableManager.getCodesTablePeriodic(TestCtiPeriodic.class).getDecode(code, nonvalidDate);
 			fail("Con008.001 : Expected exception for getDecode()");
 		} catch (Exception ex) {
-			assertEquals("Con008.01 : getDecode() should have thrown exception", ex.getClass().getSimpleName(), "DecodeNotFoundException");
+			assertEquals("Con008.01 : getDecode() should have thrown exception",
+					ex.getClass().getSimpleName(), "DecodeNotFoundException");
 		}
 
 		context.assertIsSatisfied();
@@ -178,7 +179,8 @@ public class CodestableComponentTest {
 		//Sets the locale in the request context
 		LocaleContextHolder.setLocale(locale);
 
-		assertEquals("Con009.001 : getDecode() failed ", codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass()).getDecode(code, date), decode);
+		assertEquals("Con009.001 : getDecode() failed ",
+				codesTableManager.getCodesTablePeriodic(TestCtiPeriodic.class).getDecode(code, date), decode);
 		context.assertIsSatisfied();
 	}
 
@@ -190,10 +192,11 @@ public class CodestableComponentTest {
 		String nonExistingCode = "t12code";
 
 		try {
-			codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass()).getDecode(nonExistingCode, date);
+			codesTableManager.getCodesTablePeriodic(TestCtiPeriodic.class).getDecode(nonExistingCode, date);
 			fail("Con010.001 : Expected exception for getDecode()");
 		} catch (Exception ex) {
-			assertEquals("Con010.001 : getDecode() should have thrown exception", ex.getClass().getSimpleName(), "DecodeNotFoundException");
+			assertEquals("Con010.001 : getDecode() should have thrown exception",
+					ex.getClass().getSimpleName(), "DecodeNotFoundException");
 		}
 
 		context.assertIsSatisfied();
@@ -204,7 +207,8 @@ public class CodestableComponentTest {
 	 */
 	@Test
 	public void testGetDecodePeriodicWithLocale() {
-		assertEquals("Test : getDecode() with locale failed ", codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass()).getDecode(code, locale, date), decode);
+		assertEquals("Test : getDecode() with locale failed ",
+				codesTableManager.getCodesTablePeriodic(TestCtiPeriodic.class).getDecode(code, locale, date), decode);
 		context.assertIsSatisfied();
 	}
 
@@ -215,7 +219,9 @@ public class CodestableComponentTest {
 	public void testGetDecodePeriodicWithNonexistingLocale() {
 		Locale nonSupportedLocale = new Locale("en", "GB");
 
-		assertEquals("Test : getDecode() with locale failed ", codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass()).getDecode(code, nonSupportedLocale, date), decode);
+		assertEquals("Test : getDecode() with locale failed ",
+				codesTableManager.getCodesTablePeriodic(TestCtiPeriodic.class).
+						getDecode(code, nonSupportedLocale, date), decode);
 		context.assertIsSatisfied();
 	}
 }

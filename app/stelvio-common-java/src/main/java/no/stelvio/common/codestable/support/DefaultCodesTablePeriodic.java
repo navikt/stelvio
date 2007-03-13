@@ -1,16 +1,12 @@
 package no.stelvio.common.codestable.support;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.DecodeNotFoundException;
-
-import org.apache.commons.collections.Predicate;
 
 /**
  * Implementation of CodesTablePeriodic for retrieving <code>CodesTable</code>s that has defined a period of validity.
@@ -22,7 +18,7 @@ import org.apache.commons.collections.Predicate;
  * throws exception when 2 rows have wrapping periods, hashcode uses code/date_from/is_approved, equals checks for
  * overlapping
  */
-public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> extends AbstractCodesTable<T> implements CodesTablePeriodic<T> {
+public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic<K, V>, K extends Enum, V> extends AbstractCodesTable<T, K, V> implements CodesTablePeriodic<T, K, V> {
 	private static final long serialVersionUID = 6455631274807017184L;
 
 	/**
@@ -32,99 +28,26 @@ public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic> extends
 	 * consists of.
 	 */
 	public DefaultCodesTablePeriodic(List<T> codesTableItems) {
-		this.codeCodesTableItemMap = new HashMap<Object, T>();
-		if(codesTableItems != null){
-			for (T codesTableItem : codesTableItems) {
-				codeCodesTableItemMap.put(codesTableItem.getCode(), codesTableItem);
-			}
-		}
-		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
-		
+		init(codesTableItems);
 	}
 
 	/** {@inheritDoc} */
-	public String getDecode(Enum code, Date date) throws DecodeNotFoundException {
+	public V getDecode(Enum code, Date date) throws DecodeNotFoundException {
 		return decode(code.name(), date);
 	}
 
 	/** {@inheritDoc} */
-	public String getDecode(Enum code, Locale locale, Date date) throws DecodeNotFoundException {
+	public V getDecode(Enum code, Locale locale, Date date) throws DecodeNotFoundException {
 		return decode(code.name(), locale, date);
 	}
 
 	/** {@inheritDoc} */
 	public String getDecode(Object code, Date date) throws DecodeNotFoundException {
-		return decode(code, date);
+		return (String) decode(code, date);
 	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public T getCodesTableItem(Object code) throws ItemNotFoundException {
-		T cti = null;
-		
-		//There are no predicates for the items in the codestable  
-		if (this.predicates.isEmpty()){
-			cti = this.codeCodesTableItemMap.get(code);
-		} else { 
-			cti = this.filteredCodeCodesTableItemMap.get(code);
-		}
 
 	/** {@inheritDoc} */
-	public void resetPredicates() {
-		this.predicates.clear();
-		//This is done in addPredicate if no predicates exists, 
-		//doing it here anyway to avoid stale version of filteredCodeCodesTableItemMap
-		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public T getCodesTableItem(Object code) throws ItemNotFoundException {
-		T cti = null;
-		
-		//There are no predicates for the items in the codestable  
-		if (this.predicates.isEmpty()){
-			cti = this.codeCodesTableItemMap.get(code);
-		} else { 
-			cti = this.filteredCodeCodesTableItemMap.get(code);
-		}
-
-	/** {@inheritDoc} */
-	public String getDecode(Enum code, Locale locale, Date date) throws DecodeNotFoundException {
-		return decode(code.name(), locale, date);
-	}
-		
-	/**
-	 * FIXME: This method doesn't use the input Date to retrieve decode. 
-	 * FIXME: Method should probably change implementation or signature in the future.
-	 * {@inheritDoc}
-	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object, Date)}
-	 */
-	public String getDecode(Object code, Date date) throws ItemNotFoundException, DecodeNotFoundException {
-		String decode = null;
-
-		// If there are predicates added to the codestable,
-		// getCodesTableItem() will only return an item if it belongs to the filtered collection
-		// of codestableitems, otherwise it will throw an exception
-		T codesTableItem = getCodesTableItem(code);
-		decode = codesTableItem.getDecode();
-		
-		//If for some reason a code in the map maps to a null value, throw exception
-		if(decode == null){
-			throw new DecodeNotFoundException(code.toString());
-		}
-		
-		return decode;
-	}
-	
-	/** 
-	 * {@inheritDoc}
-	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object, Date)}
-	 */
-	@Deprecated
 	public String getDecode(Object code, Locale locale, Date date) throws DecodeNotFoundException {
-		return decode(code, locale, date);
+		return (String) decode(code, locale, date);
 	}
 }

@@ -18,23 +18,21 @@ import org.apache.commons.collections.Predicate;
  * @param <T> <code>CodesTableItemPeriodic</code>'s or subclasses of <code>CodesTableItemPeriodic</code> that the
  * <code>CodesTablePeriodic</code> can hold values of.
  */
-public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Serializable {
-	
-	
-	
+public interface CodesTablePeriodic<T extends CodesTableItemPeriodic<K, V>, K extends Enum, V> extends Serializable {
 	/**
-	 * Returns the set of CodesTableItemPeriodic, the filtered list if predicates have been added.
+	 * Returns the set of CodesTableItemPeriodic which is filtered with the current list of predicates.
 	 *
 	 * @return the set of code table items in the table.
 	 */
 	Set<T> getCodeTableItems();
 
 	/**
-	 * Returns the list of CodesTableItemPeriodic, the filtered list if predicates have been added.
+	 * Returns the list of CodesTableItemPeriodic which is filtered with the current list of predicates.
 	 *
 	 * @return the list of code table items in the table.
 	 * @deprecated use {@link #getCodeTableItems()}
 	 */
+	@Deprecated
 	List<T> getItems();
 
 	/**
@@ -45,7 +43,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	 * @return The <code>CodesTableItemPeriodoc</code> or <code>null</code> if the code does not exist in the codestable.
 	 * @throws ItemNotFoundException if the item doesn't exist in the <code>CodesTablePeriodic</code>.
 	 */
-	T getCodesTableItem(Enum code) throws ItemNotFoundException;
+	T getCodesTableItem(K code) throws ItemNotFoundException;
 
 	/**
 	 * Returns the <code>CodesTableItemPeriodic</code> in the specified <code>CodesTablePeriodic</code> that matches the
@@ -56,6 +54,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	 * @throws ItemNotFoundException if the item doesn't exist in the <code>CodesTablePeriodic</code>.
 	 * @deprecated use {@link #getCodesTableItem(Enum)}
 	 */
+	@Deprecated
 	T getCodesTableItem(Object code) throws ItemNotFoundException;
 
 	/**
@@ -78,7 +77,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	 * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
 	 */
-	String getDecode(Enum code, Date date) throws ItemNotFoundException, DecodeNotFoundException;
+	V getDecode(K code, Date date) throws ItemNotFoundException, DecodeNotFoundException;
 
 	/**
 	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
@@ -90,7 +89,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	 * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
 	 */
-	String getDecode(Enum code, Locale locale, Date date) throws DecodeNotFoundException;
+	V getDecode(K code, Locale locale, Date date) throws DecodeNotFoundException;
 
 	/**
 	 * Returns the decode for a code in a <code>CodesTableItempPriodic</code> belonging to a
@@ -103,13 +102,12 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
 	 * @deprecated use {@link #getDecode(Enum,Date)}
 	 */
+	@Deprecated
 	String getDecode(Object code, Date date) throws ItemNotFoundException, DecodeNotFoundException;
 
 	/**
 	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
 	 *
-	 * @Depricated CodesTables no longer exposes locale. Use {@link getDecode(Object, Date)}
-	 * 
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @param locale the internationalization code.
@@ -128,4 +126,12 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic> extends Se
 	 * @return true if the code exists, false otherwise.
 	 */
 	boolean validateCode(Enum code);
+
+	/**
+	 * Checks that the code exists in the codes table.
+	 *
+	 * @param code the code to check for existence in the codes table.
+ 	 * @return true if the code exists, false otherwise.
+	 */
+	boolean validateCode(String code);
 }

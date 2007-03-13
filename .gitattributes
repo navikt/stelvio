@@ -30,6 +30,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/cache/CacheManagement.ja
 app/stelvio-common-java/src/main/java/no/stelvio/common/cache/support/DefaultCacheManagement.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTable.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableConfigurationException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableEmptyException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItem.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableItemPeriodic.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/codestable/CodesTableManager.java -text
@@ -159,12 +160,16 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheManagementTes
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CacheTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/CustomCachingListener.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/cache/support/DefaultCacheTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableIntegrationTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemPeriodicTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableItemTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodesTableNotFoundExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/CodestableComponentTest.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestCodesTableItem.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestCodesTableItemPeriodic.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestCti.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestCtiCode.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestCtiPeriodic.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestIntegration.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/TestPersistenceWithEnums.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/factory/support/DefaultCodesTableInitializerTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/support/DefaultCodesTableManagerTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/codestable/support/DefaultCodesTablePeriodicTest.java -text
@@ -261,6 +266,7 @@ app/stelvio-common-java/src/test/resources/log4j.properties -text
 app/stelvio-common-java/src/test/resources/performance-monitoring.xml -text
 app/stelvio-common-java/src/test/resources/test-bean-factory-post-processor.properties -text
 app/stelvio-common-java/src/test/resources/test-bean-factory-post-processor.xml -text
+app/stelvio-common-java/src/test/resources/test-codestable-context.xml -text
 app/stelvio-common-java/src/test/resources/test-ehcache.xml -text
 app/stelvio-common-java/src/test/resources/test-event.xml -text
 app/stelvio-common-java/src/test/resources/test-local-service-locator.xml -text

@@ -15,8 +15,7 @@ import no.stelvio.common.codestable.factory.NoGenericsCodesTableFactory;
  * 
  * @author person983601e0e117 (Accenture)
  */
-public class NoGenericsCodesTableAdapter implements CodesTableFactory{
-	
+public class NoGenericsCodesTableAdapter implements CodesTableFactory {
 	
 	private NoGenericsCodesTableFactory noGenenericsFactory;
 	
@@ -24,11 +23,11 @@ public class NoGenericsCodesTableAdapter implements CodesTableFactory{
 	 * {@inheritDoc}
 	 */	
 	@SuppressWarnings("unchecked")
-	public <T extends CodesTableItem> CodesTable<T> createCodesTable(
-			Class<T> codesTableItemClass) throws CodesTableNotFoundException {
-		
+	public <T extends CodesTableItem<K, V>, K extends Enum, V>
+				CodesTable<T, K, V> createCodesTable(Class<T> codesTableItemClass) throws CodesTableNotFoundException {
+
 		Object codesTableObject = noGenenericsFactory.createCodesTable(codesTableItemClass);
-		CodesTable<T> codeTable = (CodesTable<T>) codesTableObject;
+		CodesTable<T, K, V> codeTable = (CodesTable<T, K, V>) codesTableObject;
 		
 		return codeTable;
 	}
@@ -37,12 +36,12 @@ public class NoGenericsCodesTableAdapter implements CodesTableFactory{
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(
-			Class<T> codesTableItemPeriodicClass)
+	public <T extends CodesTableItemPeriodic<K, V>, K extends Enum, V>
+				CodesTablePeriodic<T, K, V> createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass)
 			throws CodesTableNotFoundException {
 		
 		Object codesTableObject = noGenenericsFactory.createCodesTablePeriodic(codesTableItemPeriodicClass);
-		CodesTablePeriodic<T> codeTable = (CodesTablePeriodic<T>) codesTableObject;
+		CodesTablePeriodic<T, K, V> codeTable = (CodesTablePeriodic<T, K, V>) codesTableObject;
 		
 		return codeTable;
 	}

@@ -18,7 +18,7 @@ public interface CodesTableManager {
 	 * @param codesTableItem the <code>CodesTable</code> to retieve - represented by a <code>CodesTableItem</code>s class.
 	 * @return The fetched <code>CodesTable</code>.
 	 */
-	<T extends CodesTableItem> CodesTable<T> getCodesTable(Class<T> codesTableItem);
+	<T extends CodesTableItem<K, V>, K extends Enum, V> CodesTable<T, K, V> getCodesTable(Class<T> codesTableItem);
 
 	/**
 	 * Retrieves a <code>CodesTablePeriodic</code> from the database by using <code>CodesTableFactory</code>. The
@@ -31,5 +31,6 @@ public interface CodesTableManager {
 	 * <code>CodesTableItemPeriodic</code>s class.
 	 * @return The fetched <code>CodesTablePeriodic</code>.
 	 */
-	<T extends CodesTableItemPeriodic> CodesTablePeriodic<T> getCodesTablePeriodic(Class<T> codesTableItemPeriodic);
+	<T extends CodesTableItemPeriodic<K, V>, K extends Enum, V>
+			CodesTablePeriodic<T, K, V> getCodesTablePeriodic(Class<T> codesTableItemPeriodic);
 }

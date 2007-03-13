@@ -1,10 +1,12 @@
 package no.stelvio.common.codestable.support;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.Locale;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -20,7 +22,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * @verion $Id$
  */
 @MappedSuperclass
-public abstract class AbstractCodesTableItem implements Serializable {
+public abstract class AbstractCodesTableItem<K extends Enum, V> implements Serializable {
 	private static final long serialVersionUID = -131941273891433404L;
 
 	/** A codestableitem's code. */
@@ -30,17 +32,18 @@ public abstract class AbstractCodesTableItem implements Serializable {
 
 	/** A codestableitem's decode, i.e. a message. */
 	@Column(name = "decode")
-	private String decode;
+	private V decode;
+
+	/** Holds the looked up enum value for the code as a string. Should not be persisted. */
+	@Transient
+	private K codeAsEnum;
 
 	/** Defines the validity of a codestableitem. */
 	@Column(name = "valid")
 	private boolean valid;
 
 	/** Constructor for <code>AbstractCodesTableItem</code>. Only available to subclasses. */
-	protected AbstractCodesTableItem(String code, String decode, boolean isValid) {
-		this.code = code;
-		this.decode = decode;
-		this.valid = isValid;
+	protected AbstractCodesTableItem() {
 	}
 
 	/**
@@ -49,11 +52,9 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * @param code the code.
 	 * @param decode the decode.
 	 * @param isValid validity of the item.
-	 * @deprecated CodesTableItems will no longer expose Locale to client. Replaced by {@link
-	 *             AbstractCodesTableItem(String, String, boolean)}
 	 */
-	protected AbstractCodesTableItem(String code, String decode, boolean isValid) {
-		this.code = code;
+	protected AbstractCodesTableItem(K code, V decode, boolean isValid) {
+		this.code = code.name();
 		this.decode = decode;
 		this.valid = isValid;
 	}
@@ -65,11 +66,11 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 * @param decode the decode.
 	 * @param isValid validity of the item.
 	 * @deprecated CodesTableItems will no longer expose Locale to client. Replaced by {@link
-	 *             AbstractCodesTableItem(String, String, boolean)}
+	 *             AbstractCodesTableItem(K, V, boolean)}
 	 */
 	@Deprecated
-	protected AbstractCodesTableItem(String code, String decode, Locale locale, boolean isValid) {
-		this.code = code;
+	protected AbstractCodesTableItem(K code, V decode, Locale locale, boolean isValid) {
+		this.code = code.name();
 		this.decode = decode;
 		this.valid = isValid;
 	}
@@ -79,8 +80,14 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 *
 	 * @return The items code.
 	 */
-	public String getCode() {
-		return code;
+	public K getCode() {
+		// Cache the lookup
+		if (codeAsEnum == null) {
+			Class<K> genericType = (Class<K>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+			codeAsEnum = (K) Enum.valueOf(genericType, code);
+		}
+
+		return codeAsEnum;
 	}
 
 	/**
@@ -88,7 +95,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	 *
 	 * @return The items decode.
 	 */
-	public String getDecode() {
+	public V getDecode() {
 		return decode;
 	}
 
@@ -104,15 +111,6 @@ public abstract class AbstractCodesTableItem implements Serializable {
 	/**
 	 * Gets the locale.
 	 *
-	 * <p><strong>
-	 * DEPRECATED: CodesTableItems will no longer expose Locale to clients. Avoid using this method
-	 * </p></strong>
-	 * <p><strong>
-	 * DEPRECATED: CodesTableItems will no longer expose Locale to clients. Avoid using this method
-	 * </p></strong>
-	 * <p><strong>
-	 * DEPRECATED: CodesTableItems will no longer expose Locale to clients. Avoid using this method
-	 * </p></strong>
 	 * @return locale the locale of this item
 	 * @deprecated CodesTableItems will no longer expose Locale to clients.
 	 */
@@ -140,7 +138,7 @@ public abstract class AbstractCodesTableItem implements Serializable {
 		} else if (!this.getClass().equals(other.getClass())) {
 			return false;
 		} else {
-			AbstractCodesTableItem castOther = (AbstractCodesTableItem) other;
+			AbstractCodesTableItem<K, V> castOther = (AbstractCodesTableItem<K, V>) other;
 			return new EqualsBuilder().append(this.getCode(), castOther.getCode()).isEquals();
 		}
 	}

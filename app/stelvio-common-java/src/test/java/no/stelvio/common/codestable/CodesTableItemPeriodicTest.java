@@ -1,15 +1,14 @@
 package no.stelvio.common.codestable;
 
 
+import java.util.Date;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.eq;
 import static org.hamcrest.core.IsEqual.isFalse;
 import static org.hamcrest.core.IsEqual.isTrue;
 import static org.hamcrest.core.IsNull.isNotNull;
 import static org.hamcrest.core.IsNull.isNull;
-
-import java.util.Date;
-
 import org.junit.Test;
 
 /**
@@ -24,8 +23,8 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testCodesTableItemEmptyConstructor() {
-		CodesTableItemPeriodic cti = new Ctip();
-		
+		Ctip cti = new Ctip();
+
 		assertThat(cti.getCode(), isNull());
 		assertThat(cti.getDecode(), isNull());
 		assertThat(cti.getFromDate(), isNull());
@@ -39,10 +38,10 @@ public class CodesTableItemPeriodicTest {
 	@Test
 	public void testCodesTableItemConstrutor() {
 		Date date = new Date();
-		
-		CodesTableItemPeriodic cti = new Ctip("t1code1", "t1decode1", date, date, Boolean.TRUE);
-		
-		assertThat(cti.getCode(), eq("t1code1"));
+
+		Ctip cti = new Ctip(TestCtiCode.EXISTS_1, "t1decode1", date, date, Boolean.TRUE);
+
+		assertThat(cti.getCode(), eq(TestCtiCode.EXISTS_1));
 		assertThat(cti.getDecode(), eq("t1decode1"));
 		assertThat(cti.getFromDate(), eq(date));
 		assertThat(cti.getToDate(), eq(date));
@@ -55,7 +54,7 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testToString() {
-		CodesTableItemPeriodic cti = new Ctip("t1code1", "t1decode1", new Date(), new Date(), Boolean.TRUE);
+		Ctip cti = new Ctip(TestCtiCode.EXISTS_1, "t1decode1", new Date(), new Date(), Boolean.TRUE);
 		assertThat(cti.toString(), isNotNull());
 	}
 	
@@ -64,11 +63,11 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testEqualsObject() {
-		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItemPeriodic.getCtip1()), isTrue());
-		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(null), isFalse());
-		assertThat(TestCodesTableItemPeriodic.getCtip1().equals("String"), isFalse());
-		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItemPeriodic.getCtip2()), isFalse());
-		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItem.getCti2()), isFalse());
+		assertThat(TestCtiPeriodic.getCtip1().equals(TestCtiPeriodic.getCtip1()), isTrue());
+		assertThat(TestCtiPeriodic.getCtip1().equals(null), isFalse());
+		assertThat(TestCtiPeriodic.getCtip1().equals("String"), isFalse());
+		assertThat(TestCtiPeriodic.getCtip1().equals(TestCtiPeriodic.getCtip2()), isFalse());
+		assertThat(TestCtiPeriodic.getCtip1().equals(TestCti.getCti2()), isFalse());
 	}
 
 	/**
@@ -76,13 +75,13 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testHashCode() {
-		assertThat(TestCodesTableItemPeriodic.getCtip1().hashCode() == TestCodesTableItemPeriodic.getCtip5().hashCode(),
+		assertThat(TestCtiPeriodic.getCtip1().hashCode() == TestCtiPeriodic.getCtip5().hashCode(),
                 isTrue());
-		assertThat(TestCodesTableItemPeriodic.getCtip1().equals(TestCodesTableItemPeriodic.getCtip5()), isTrue());
+		assertThat(TestCtiPeriodic.getCtip1().equals(TestCtiPeriodic.getCtip5()), isTrue());
 	}
 
 	/** Used for testing as {@link CodesTableItemPeriodic} cannot be instantiated. */
-	private static class Ctip extends CodesTableItemPeriodic {
+	private static class Ctip extends CodesTableItemPeriodic<TestCtiCode, String> {
 	
 		//No real use in test, added to avoid warning
 		private static final long serialVersionUID = 7653759985312507754L;
@@ -90,7 +89,7 @@ public class CodesTableItemPeriodicTest {
 		public Ctip() {
 		}		
 
-		public Ctip(String code, String decode, Date fromDate, Date toDate, boolean isValid) {
+		public Ctip(TestCtiCode code, String decode, Date fromDate, Date toDate, boolean isValid) {
 			super(code, decode, fromDate, toDate, isValid);
 		}
 	}

@@ -12,37 +12,41 @@ import java.util.Set;
 
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.springframework.util.CollectionUtils;
 
+import no.stelvio.common.codestable.CodesTableEmptyException;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
 
 /**
- * @author personf8e9850ed756, Accenture
  * @todo write javadoc
+ * @author personf8e9850ed756, Accenture
  */
-abstract class AbstractCodesTable<T extends AbstractCodesTableItem> implements Serializable {
+abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K extends Enum, V> implements Serializable {
 	private static final long serialVersionUID = -4072918237022568146L;
 
 	/** Map containing Codes-AbstractCodesTableItem pairs */
-	private Map<Object, T> codeCodesTableItemMap;
+	private Map<K, T> codeCodesTableItemMap;
 	/**
 	 * Holds the filtered map of <code>CodesTableItemPeriodic</code>s created by taking the full list and applying the
 	 * predicates.
 	 */
-	private Map<Object, T> filteredCodeCodesTableItemMap;
+	private Map<K, T> filteredCodeCodesTableItemMap;
 	/** List of predicates to use for filtering the list of <code>CodesTableItemPeriodic</code>s */
 	private List<Predicate> predicates = new ArrayList<Predicate>();
 
 	protected void init(List<T> codesTableItems) {
-		codeCodesTableItemMap = new HashMap<Object, T>();
-
-		if (codesTableItems != null) {
-			for (T codesTableItem : codesTableItems) {
-				codeCodesTableItemMap.put(codesTableItem.getCode(), codesTableItem);
-			}
+		if (CollectionUtils.isEmpty(codesTableItems)) {
+			throw new CodesTableEmptyException(codesTableItems.getClass().getTypeParameters()[0].getName());
 		}
 
-		this.filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
+		codeCodesTableItemMap = new HashMap<K, T>(codesTableItems.size());
+
+		for (T codesTableItem : codesTableItems) {
+			codeCodesTableItemMap.put(codesTableItem.getCode(), codesTableItem);
+		}
+
+		this.filteredCodeCodesTableItemMap = new HashMap<K, T>(codeCodesTableItemMap);
 	}
 
 	/** {@inheritDoc} */
@@ -56,7 +60,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem> implements S
 	}
 
 	/** {@inheritDoc} */
-	public T getCodesTableItem(Enum code) throws ItemNotFoundException {
+	public T getCodesTableItem(K code) throws ItemNotFoundException {
 		T cti = findCodesTableItem(code.name());
 
 		if (cti == null) {
@@ -83,21 +87,21 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem> implements S
 		//are filtered, or else the codestableitems in the filtered map are filtered.
 		synchronized (filteredCodeCodesTableItemMap) {
 			if (predicates.isEmpty()) {
-				filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
+				filteredCodeCodesTableItemMap = new HashMap<K, T>(codeCodesTableItemMap);
 			}
 
 			predicates.add(predicate);
-			ArrayList<Object> keysFilteredOut = new ArrayList<Object>();
+			List<K> keysFilteredOut = new ArrayList<K>();
 
 			//Loop through filter map and remove items that fails eval of filter rules
-			for (Object code : filteredCodeCodesTableItemMap.keySet()) {
+			for (K code : filteredCodeCodesTableItemMap.keySet()) {
 				//If CodesTableItem doesn't evaluate according to predicate, remove from filtered list
 				if (!predicate.evaluate(filteredCodeCodesTableItemMap.get(code))) {
 					keysFilteredOut.add(code);
 				}
 			}
 
-			for (Object filteredOutKey : keysFilteredOut) {
+			for (K filteredOutKey : keysFilteredOut) {
 				filteredCodeCodesTableItemMap.remove(filteredOutKey);
 			}
 		}
@@ -108,19 +112,19 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem> implements S
 		predicates.clear();
 		//This is done in addPredicate if no predicates exists,
 		//doing it here anyway to avoid stale version of filteredCodeCodesTableItemMap
-		filteredCodeCodesTableItemMap = new HashMap<Object, T>(codeCodesTableItemMap);
+		filteredCodeCodesTableItemMap = new HashMap<K, T>(codeCodesTableItemMap);
 	}
 
 	/**
 	 * FIXME: This method doesn't use the input Date to retrieve decode. FIXME: Method should probably change
 	 * implementation or signature in the future. {@inheritDoc}
 	 */
-	protected String decode(Object code, Date... date) throws ItemNotFoundException, DecodeNotFoundException {
+	protected V decode(Object code, Date... date) throws ItemNotFoundException, DecodeNotFoundException {
 		// If there are predicates added to the codestable,
 		// getCodesTableItem() will only return an item if it belongs to the filtered collection
 		// of codestableitems, otherwise it will throw an exception
 		T codesTableItem = getCodesTableItem(code);
-		String decode = codesTableItem.getDecode();
+		V decode = codesTableItem.getDecode();
 
 		// If for some reason a code in the map maps to a null value, throw exception
 		if (decode == null) {
@@ -131,13 +135,18 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem> implements S
 	}
 
 	/** {@inheritDoc} */
-	protected String decode(Object code, Locale locale, Date... date) throws DecodeNotFoundException {
+	protected V decode(Object code, Locale locale, Date... date) throws DecodeNotFoundException {
 		return decode(code, date);
 	}
 
 	/** {@inheritDoc} */
 	public boolean validateCode(Enum code) {
-		T codesTableItem = findCodesTableItem(code.name());
+		return validateCode(code.name());
+	}
+
+	/** {@inheritDoc} */
+	public boolean validateCode(String code) {
+		T codesTableItem = findCodesTableItem(code);
 
 		return codesTableItem != null;
 	}

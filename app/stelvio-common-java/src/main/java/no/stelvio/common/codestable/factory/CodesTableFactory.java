@@ -1,12 +1,12 @@
 package no.stelvio.common.codestable.factory;
 
+import org.springmodules.cache.annotations.Cacheable;
+
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
 import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTableNotFoundException;
 import no.stelvio.common.codestable.CodesTablePeriodic;
-
-import org.springmodules.cache.annotations.Cacheable;
 
 /**
  * Interface defining functionality for retrieving a <code>CodesTable</code> from the database.
@@ -31,8 +31,8 @@ public interface CodesTableFactory{
 	 * @throws no.stelvio.common.codestable.CodesTableNotFoundException - exception thrown when a <code>CodesTable</code> couldn't be retrieved.
 	 */
 	@Cacheable(modelId = CACHE_MODEL_ID)
-	<T extends CodesTableItem> CodesTable<T> createCodesTable(Class<T> codesTableItemClass)
-		throws CodesTableNotFoundException;
+	<T extends CodesTableItem<K, V>, K extends Enum, V>
+		CodesTable<T, K, V> createCodesTable(Class<T> codesTableItemClass) throws CodesTableNotFoundException;
 	
 	/**
 	 * Retrieves a <code>CodesTablePeriodic</code> containing a list of <code>CodesTableItemPeriodic</code>s.
@@ -45,6 +45,7 @@ public interface CodesTableFactory{
 	 * @throws no.stelvio.common.codestable.CodesTableNotFoundException - exception thrown when a <code>CodesTablePeriodic</code> couldn't be retrieved.
 	 */
 	@Cacheable(modelId = CACHE_MODEL_ID)
-	<T extends CodesTableItemPeriodic> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass)
-		throws CodesTableNotFoundException;
+	<T extends CodesTableItemPeriodic<K, V>, K extends Enum, V>
+		CodesTablePeriodic<T, K, V> createCodesTablePeriodic(Class<T> codesTableItemPeriodicClass)
+			throws CodesTableNotFoundException;
 }

@@ -3,8 +3,6 @@ package no.stelvio.common.codestable;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import no.stelvio.common.codestable.support.AbstractCodesTableItem;
-
 /**
  * @author personf8e9850ed756
  * @todo add javadoc
@@ -17,7 +15,7 @@ public class CodesTableNotFoundExceptionTest {
         assertEquals("Not the correct message; ", "Codestable x not found", ctnf.getMessage());
     }
 
-    private static class Cti extends AbstractCodesTableItem {
+    private static class Cti extends CodesTableItem<TestCtiCode, String> {
         public String toString() {
             return "cti";
         }

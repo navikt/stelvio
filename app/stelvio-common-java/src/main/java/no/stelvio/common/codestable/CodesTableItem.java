@@ -12,7 +12,7 @@ import no.stelvio.common.codestable.support.AbstractCodesTableItem;
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
  */
-public abstract class CodesTableItem extends AbstractCodesTableItem {
+public abstract class CodesTableItem<K extends Enum, V> extends AbstractCodesTableItem<K, V> {
 	private static final long serialVersionUID = 8512658758978068886L;
 
 	/** Constructor for <code>CodesTableItem</code>. Only available to subclasses. */
@@ -24,12 +24,12 @@ public abstract class CodesTableItem extends AbstractCodesTableItem {
 	 *
 	 * @param code the code.
 	 * @param decode the decode.
+	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
-	 * @deprecated CodesTableItems will no longer expose Locale to client. Replaced by {@link CodesTableItem(String,
-	 *             String, boolean)}
+	 * @deprecated Should not be possible to construct new instances of CodesTableItems; only through ORM
 	 */
 	@Deprecated
-	public CodesTableItem(String code, String decode, Locale locale, boolean isValid) {
+	public CodesTableItem(K code, V decode, Locale locale, boolean isValid) {
 		super(code, decode, isValid);
 	}
 
@@ -39,8 +39,10 @@ public abstract class CodesTableItem extends AbstractCodesTableItem {
 	 * @param code the code.
 	 * @param decode the decode.
 	 * @param isValid validity of the item.
+	 * @deprecated Should not be possible to construct new instances of CodesTableItems; only through ORM
 	 */
-	public CodesTableItem(String code, String decode, boolean isValid) {
+	@Deprecated
+	public CodesTableItem(K code, V decode, boolean isValid) {
 		super(code, decode, isValid);
 	}
 

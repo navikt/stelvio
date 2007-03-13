@@ -11,15 +11,15 @@ import org.jmock.InAnyOrder;
 import org.jmock.Mockery;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import no.stelvio.common.codestable.CodesTable;
-import no.stelvio.common.codestable.CodesTableItem;
-import no.stelvio.common.codestable.CodesTableItemPeriodic;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.CodesTablePeriodic;
-import no.stelvio.common.codestable.TestCodesTableItem;
-import no.stelvio.common.codestable.TestCodesTableItemPeriodic;
+import no.stelvio.common.codestable.TestCti;
+import no.stelvio.common.codestable.TestCtiCode;
+import no.stelvio.common.codestable.TestCtiPeriodic;
 import no.stelvio.common.codestable.factory.CodesTableFactory;
 
 /**
@@ -29,7 +29,6 @@ import no.stelvio.common.codestable.factory.CodesTableFactory;
  * @version $Id$
  */
 public class DefaultCodesTableManagerTest {
-	private Mockery context;
 
 	/**
 	 * Tests CodesTableManager's methods for retrieval of <code>CodesTable</code>.
@@ -37,27 +36,26 @@ public class DefaultCodesTableManagerTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void testCodesTableManager() throws Exception {
+	public void codesTableManager() {
 		//Test data
-		final List<CodesTableItem> codesTableItems = new ArrayList<CodesTableItem>();
-		codesTableItems.add(TestCodesTableItem.getCti1());
-		codesTableItems.add(TestCodesTableItem.getCti2());
-		codesTableItems.add(TestCodesTableItem.getCti3());
+		final List<TestCti> codesTableItems = new ArrayList<TestCti>();
+		codesTableItems.add(TestCti.getCti1());
+		codesTableItems.add(TestCti.getCti2());
+		codesTableItems.add(TestCti.getCti3());
 
-		final List<CodesTableItemPeriodic> codesTableItemPeriodics = new ArrayList<CodesTableItemPeriodic>();
-		codesTableItemPeriodics.add(TestCodesTableItemPeriodic.getCtip1());
-		codesTableItemPeriodics.add(TestCodesTableItemPeriodic.getCtip2());
-		codesTableItemPeriodics.add(TestCodesTableItemPeriodic.getCtip3());
+		final List<TestCtiPeriodic> codesTableItemPeriodics = new ArrayList<TestCtiPeriodic>();
+		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip1());
+		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip2());
+		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip3());
 
-		context = new Mockery();
+		Mockery context = new Mockery();
 		final CodesTableFactory codesTableFactory = context.mock(CodesTableFactory.class);
 
 		//Mock CodesTableManger's methods
-		context.expects(new InAnyOrder() {
-			{
-				one(codesTableFactory).createCodesTable((Class<CodesTableItem>) with(IsAnything.anything()));
+		context.expects(new InAnyOrder() {{
+				one(codesTableFactory).createCodesTable((Class<TestCti>) with(IsAnything.anything()));
 				will(returnValue(codesTableItems));
-				one(codesTableFactory).createCodesTablePeriodic((Class<CodesTableItemPeriodic>) with(IsAnything.anything()));
+				one(codesTableFactory).createCodesTablePeriodic((Class<TestCtiPeriodic>) with(IsAnything.anything()));
 				will(returnValue(codesTableItemPeriodics));
 			}
 		});
@@ -67,51 +65,52 @@ public class DefaultCodesTableManagerTest {
 		codesTableManager.setCodesTableFactory(codesTableFactory);
 
 		//Test the test objects method getCodesTable
-		CodesTable codesTable = codesTableManager.getCodesTable(TestCodesTableItem.getCti1().getClass());
+		CodesTable<TestCti, TestCtiCode, Integer> codesTable = codesTableManager.getCodesTable(TestCti.class);
 		Set tableItems = codesTable.getCodeTableItems();
 
-		assertEquals("Test 1 : Codestable holds correct codestableitem 1", codesTable.getCodesTableItem(TestCodesTableItem.getCti1().getCode()).getCode(), TestCodesTableItem.getCti1().getCode());
-		assertEquals("Test 2 : Codestable holds correct codestableitem 2", codesTable.getCodesTableItem(TestCodesTableItem.getCti2().getCode()).getCode(), TestCodesTableItem.getCti2().getCode());
-		assertEquals("Test 3 : Codestable holds correct codestableitem 3", codesTable.getCodesTableItem(TestCodesTableItem.getCti3().getCode()).getCode(), TestCodesTableItem.getCti3().getCode());
-		assertNull("Test 4 : Codestable shouldn't hold this codestableitem", codesTable.getCodesTableItem(TestCodesTableItem.getCti4().getCode()));
+		assertEquals("Test 1 : Codestable holds correct codestableitem 1",
+				codesTable.getCodesTableItem(TestCti.getCti1().getCode()).getCode(), TestCti.getCti1().getCode());
+		assertEquals("Test 2 : Codestable holds correct codestableitem 2",
+				codesTable.getCodesTableItem(TestCti.getCti2().getCode()).getCode(), TestCti.getCti2().getCode());
+		assertEquals("Test 3 : Codestable holds correct codestableitem 3",
+				codesTable.getCodesTableItem(TestCti.getCti3().getCode()).getCode(), TestCti.getCti3().getCode());
+		assertNull("Test 4 : Codestable shouldn't hold this codestableitem",
+				codesTable.getCodesTableItem(TestCti.getCti4().getCode()));
 
 		//Test the test objects method getCodesTablePeriodic
-		CodesTablePeriodic codesTablePeriodic = codesTableManager.getCodesTablePeriodic(TestCodesTableItemPeriodic.getCtip1().getClass());
+		CodesTablePeriodic<TestCtiPeriodic, TestCtiCode, String> codesTablePeriodic =
+				codesTableManager.getCodesTablePeriodic(TestCtiPeriodic.class);
 
-		assertEquals("Test 5 : Codestableperiodic holds correct codestableitemperiodic 1", codesTablePeriodic.getCodesTableItem(TestCodesTableItemPeriodic.getCtip1().getCode()).getCode(), TestCodesTableItemPeriodic.getCtip1().getCode());
-		assertEquals("Test 6 : Codestableperiodic holds correct codestableitemperiodic 2", codesTablePeriodic.getCodesTableItem(TestCodesTableItemPeriodic.getCtip2().getCode()).getCode(), TestCodesTableItemPeriodic.getCtip2().getCode());
-		assertEquals("Test 7 : Codestableperiodic holds correct codestableitemperiodic 3", codesTablePeriodic.getCodesTableItem(TestCodesTableItemPeriodic.getCtip3().getCode()).getCode(), TestCodesTableItemPeriodic.getCtip3().getCode());
-		assertNull("Test 8 : Codestableperiodic shouldn't hold this codestableitemperiodic", codesTablePeriodic.getCodesTableItem(TestCodesTableItemPeriodic.getCtip4().getCode()));
+		assertEquals("Test 5 : Codestableperiodic holds correct codestableitemperiodic 1",
+				codesTablePeriodic.getCodesTableItem(TestCtiPeriodic.getCtip1().getCode()).getCode(), TestCtiPeriodic.getCtip1().getCode());
+		assertEquals("Test 6 : Codestableperiodic holds correct codestableitemperiodic 2",
+				codesTablePeriodic.getCodesTableItem(TestCtiPeriodic.getCtip2().getCode()).getCode(), TestCtiPeriodic.getCtip2().getCode());
+		assertEquals("Test 7 : Codestableperiodic holds correct codestableitemperiodic 3",
+				codesTablePeriodic.getCodesTableItem(TestCtiPeriodic.getCtip3().getCode()).getCode(), TestCtiPeriodic.getCtip3().getCode());
+		assertNull("Test 8 : Codestableperiodic shouldn't hold this codestableitemperiodic",
+				codesTablePeriodic.getCodesTableItem(TestCtiPeriodic.getCtip4().getCode()));
 
 		context.assertIsSatisfied();
 	}
 
-	public void testUsage() {
+	@Ignore("Not ready yet")
+	@Test
+	public void shouldMakeACopyOfCodesTableReturnedFromFactory() {
+		DefaultCodesTableManager ctm = new DefaultCodesTableManager();
+	}
+
+	@Test
+	public void usage() {
 		CodesTableManager codesTableManager = new DefaultCodesTableManager();
-
-		CodesTable<TestCti> table = codesTableManager.getCodesTable(TestCti.class);
+		CodesTable<TestCti, TestCtiCode, Integer> table = codesTableManager.getCodesTable(TestCti.class);
 		Set<TestCti> testCtis = table.getCodeTableItems();
-		TestCti item = table.getCodesTableItem(TestEnum.ENUM_1);
-		String decode = table.getDecode(TestEnum.ENUM_2);
+		TestCti item = table.getCodesTableItem(TestCtiCode.EXISTS_1);
+		Integer decode = table.getDecode(TestCtiCode.EXISTS_2);
 
-		CodesTablePeriodic<TestPeriodicCti> tablePeriodic = codesTableManager.getCodesTablePeriodic(TestPeriodicCti.class);
-		Set<TestPeriodicCti> periodicCtis = tablePeriodic.getCodeTableItems();
-		TestPeriodicCti codesTableItemPer = tablePeriodic.getCodesTableItem(TestEnum.ENUM_1);
-		String decodePer = tablePeriodic.getDecode(TestEnum.ENUM_2, new Date());
-	}
-
-
-	public static class TestCti extends CodesTableItem {
-
-	}
-
-	public static class TestPeriodicCti extends CodesTableItemPeriodic {
-
-	}
-
-	public static enum TestEnum {
-		ENUM_1,
-		ENUM_2,
-		ENUM_3;
+		CodesTablePeriodic<TestCtiPeriodic, TestCtiCode, String> tablePeriodic =
+				codesTableManager.getCodesTablePeriodic(TestCtiPeriodic.class);
+		Set<TestCtiPeriodic> periodicCtis = tablePeriodic.getCodeTableItems();
+		TestCtiPeriodic codesTableItemPer = tablePeriodic.getCodesTableItem(TestCtiCode.EXISTS_1);
+		String decodePer = tablePeriodic.getDecode(TestCtiCode.EXISTS_2, new Date());
 	}
 }

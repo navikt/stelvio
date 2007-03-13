@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 /**
@@ -20,7 +19,7 @@ public class CodesTableItemTest {
 	 */
 	@Test
 	public void testCodesTableItemEmptyConstructor() {
-		CodesTableItem cti = new Cti();
+		TestCti cti = new TestCti();
 		
 		assertEquals("Test 1: Code is not set", null, cti.getCode());
 		assertEquals("Test 2: Decode is not set", null, cti.getDecode());
@@ -32,9 +31,10 @@ public class CodesTableItemTest {
 	 */
 	@Test
 	public void testCodesTableItemConstrutor() {
-		CodesTableItem cti = new Cti("t1code1", "t1decode1",  Boolean.TRUE);
-		
-		assertEquals("Test 1: Code is set", "t1code1", cti.getCode());
+		TestCti cti = new TestCti(TestCtiCode.EXISTS_1, 1, true);
+
+		TestCtiCode itemCode = cti.getCode();
+		assertEquals("Test 1: Code is set", "t1code1", itemCode);
 		assertEquals("Test 2: Decode is set", "t1decode1", cti.getDecode());
 		assertEquals("Test 6: Validity is set", Boolean.TRUE, cti.isValid());
 	}
@@ -44,7 +44,7 @@ public class CodesTableItemTest {
 	 */
 	@Test
 	public void testToString() {
-		CodesTableItem cti = new Cti("t1code1", "t1decode1", Boolean.TRUE);
+		Cti cti = new Cti(Code.TEST_1, "t1decode1", true);
 		assertNotNull("Test 1: toString is not null", cti.toString());
 	}
 	
@@ -53,10 +53,10 @@ public class CodesTableItemTest {
 	 */
 	@Test
 	public void testEqualsObject() {
-		assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCodesTableItem.getCti1().equals(TestCodesTableItem.getCti1()));
-		assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCodesTableItem.getCti1().equals(null));
-		assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCodesTableItem.getCti1().equals("String"));
-		assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCodesTableItem.getCti1().equals(TestCodesTableItem.getCti2()));
+		assertTrue("Test 1: CodesTableItem.equals(CodesTableItem) should have matched", TestCti.getCti1().equals(TestCti.getCti1()));
+		assertFalse("Test 2: CodesTableItem.equals(null) should not have matched", TestCti.getCti1().equals(null));
+		assertFalse("Test 3: CodesTableItem.equals(Object) should not have matched", TestCti.getCti1().equals("String"));
+		assertFalse("Test 4: CodesTableItem1.equals(CodesTableItem2) should not have matched", TestCti.getCti1().equals(TestCti.getCti2()));
 	}
 
 	/**
@@ -66,20 +66,26 @@ public class CodesTableItemTest {
 	public void testHashCode() {
 		assertEquals(
 			"Equals is true, then hashCode is true",
-			TestCodesTableItem.getCti1().equals(TestCodesTableItem.getCti5()),
-			TestCodesTableItem.getCti1().hashCode() == TestCodesTableItem.getCti5().hashCode());
+			TestCti.getCti1().equals(TestCti.getCti5()),
+			TestCti.getCti1().hashCode() == TestCti.getCti5().hashCode());
 	}
 
 	/** Used for testing as {@link CodesTableItem} cannot be instantiated. */
-	private static class Cti extends CodesTableItem {
+	private static class Cti extends CodesTableItem<Code, String> {
 		//Serialversionuid added to avoid annoying warning, no real use in this code
 		private static final long serialVersionUID = -5569246412564620535L;
 
 		public Cti() {
 		}		
 
-		public Cti(String code, String decode, boolean isValid) {
+		public Cti(Code code, String decode, boolean isValid) {
 			super(code, decode, isValid);
 		}
+	}
+
+	private static enum Code {
+		TEST_1,
+		TEST_2,
+		TEST_3
 	}
 }

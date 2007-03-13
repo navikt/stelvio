@@ -15,6 +15,7 @@ import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.CodesTableNotFoundException;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.NotCodesTableException;
+import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 /**
  * Initializes the specified codes tables and loads them into their cache.
@@ -25,13 +26,15 @@ import no.stelvio.common.codestable.NotCodesTableException;
 public class DefaultCodesTableInitializer implements InitializingBean {
 	private static final Log log = LogFactory.getLog(DefaultCodesTableInitializer.class);
 
-	// The CodesTableManager
+	/** The CodesTableManager */
 	private CodesTableManager codesTableManager;
 
-	// A list of codestableclasses - defined in the application context
-	private List<Class<CodesTableItem>> codesTableClasses = new ArrayList<Class<CodesTableItem>>();
-	// A list of codestableperiodicclasses - defined in the application context
-	private List<Class<CodesTableItemPeriodic>> codesTablePeriodicClasses = new ArrayList<Class<CodesTableItemPeriodic>>();
+	/** A list of codestableclasses - defined in the application context */
+	private List<Class<? extends CodesTableItem<? extends Enum, ?>>> codesTableClasses =
+			new ArrayList<Class<? extends CodesTableItem<? extends Enum, ?>>>();
+	/** A list of codestableperiodicclasses - defined in the application context */
+	private List<Class<? extends CodesTableItemPeriodic<? extends Enum, ?>>> codesTablePeriodicClasses =
+			new ArrayList<Class<? extends CodesTableItemPeriodic<? extends Enum, ?>>>();
 
 	/**
 	 * Uses CodesTableManager to load all of the <code>CodesTable</code>s and <code>CodesTablePeriodic</code>s from
@@ -53,7 +56,7 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 		}                                                                   
 
 		//CodesTableItem's
-		for(Class<CodesTableItem> ct : codesTableClasses){
+		for(Class ct : codesTableClasses){
 			validateCodesTableItemClass(ct);
 								
 			CodesTable cTable = codesTableManager.getCodesTable(ct);
@@ -68,39 +71,39 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 		}
 
 		//CodesTableItemPeriodic's
-		for(Class<CodesTableItemPeriodic> ctp : codesTablePeriodicClasses){
+		for(Class ctp : codesTablePeriodicClasses){
 			validateCodesTableItemPeriodicClass(ctp);
 
 			CodesTablePeriodic cTablePeriodic = codesTableManager.getCodesTablePeriodic(ctp);
-				
+
 			if(null == cTablePeriodic){
 				throw new CodesTableNotFoundException(ctp);
 			}
 		}
 	}
-	
+
+	/**
+	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItemPeriodic</>.
+	 *
+	 * @param codesTablePeriodicClass the class to load a codestable for.
+	 * @throws no.stelvio.common.codestable.NotCodesTableException if the class to load a codestable for is not a subclass of
+	 * <code>CodesTablePeriodic</code>.
+	 */
+	private void validateCodesTableItemPeriodicClass(final Class<? extends AbstractCodesTableItem<?, ?>> codesTablePeriodicClass) {
+		if (null != codesTablePeriodicClass && !CodesTableItemPeriodic.class.isAssignableFrom(codesTablePeriodicClass)) {
+			throw new NotCodesTableException(codesTablePeriodicClass);
+		}
+	}
+
 	/**
 	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItem</>.
-	 * 
-	 * @param codesTableItemClass the class to load a codes table for.
-	 * @throws NotCodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>.
+	 *
+	 * @param codesTableClass the class to load a codestable for.
+	 * @throws NotCodesTableException if the class to load a codestable for is not a subclass of <code>CodesTable</code>
 	 */
-	private void validateCodesTableItemClass(final Class<CodesTableItem> codesTableItemClass){
-	
-		if(null!= codesTableItemClass && !CodesTableItem.class.isAssignableFrom(codesTableItemClass)){
-			throw new NotCodesTableException(codesTableItemClass);
-		}
-	}	
-	
-	/**
-	 * Checks that the class to load a codes table for is a subclass of <code>CodesTableItemPeriodic</>.
-	 * 
-	 * @param codesTableItemPeriodicClass the class to load a codes table for.
-	 * @throws NotCodesTableException if the class to load a codes table for is not a subclass of <code>CodesTablePeriodic</code>.
-	 */
-	private void validateCodesTableItemPeriodicClass(final Class<CodesTableItemPeriodic> codesTableItemPeriodicClass){
-		if(null!= codesTableItemPeriodicClass && !CodesTableItemPeriodic.class.isAssignableFrom(codesTableItemPeriodicClass)){
-			throw new NotCodesTableException(codesTableItemPeriodicClass);
+	private void validateCodesTableItemClass(final Class codesTableClass) {
+		if (null != codesTableClass && !CodesTableItem.class.isAssignableFrom(codesTableClass)) {
+			throw new NotCodesTableException(codesTableClass);
 		}
 	}
 	
@@ -118,7 +121,7 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 	 * 
 	 * @param codesTableClasses the <code>CodesTableClasses</code> that shall be retrieved from the database.
 	 */
-	public void setCodesTableClasses(List<Class<CodesTableItem>> codesTableClasses){
+	public void setCodesTableClasses(List<Class<? extends CodesTableItem<? extends Enum, ?>>> codesTableClasses){
 		this.codesTableClasses = codesTableClasses;
 	}
 	
@@ -127,7 +130,7 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 	 * 
 	 * @param codesTablePeriodicClasses the <code>CodesTablePeriodicClasses</code> that shall be retrieved from the database.
 	 */
-	public void setCodesTablePeriodicClasses(List<Class<CodesTableItemPeriodic>> codesTablePeriodicClasses){
+	public void setCodesTablePeriodicClasses(List<Class<? extends CodesTableItemPeriodic<? extends Enum, ?>>> codesTablePeriodicClasses){
 		this.codesTablePeriodicClasses = codesTablePeriodicClasses;
 	}
 }

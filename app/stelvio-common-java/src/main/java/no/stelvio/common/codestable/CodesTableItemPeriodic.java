@@ -7,6 +7,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 /**
@@ -19,7 +21,7 @@ import no.stelvio.common.codestable.support.AbstractCodesTableItem;
  * @version $Id$
  */
 @MappedSuperclass
-public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
+public abstract class CodesTableItemPeriodic<K extends Enum, V> extends AbstractCodesTableItem<K, V> {
 	private static final long serialVersionUID = 5966326178149304963L;
 
 	/** The date the item is valid from. */
@@ -43,12 +45,12 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	 * @param decode the decode.
 	 * @param fromDate the date an item is valid from.
 	 * @param toDate the date an item is valid to.
+	 * @param locale the locale of the item.
 	 * @param isValid validity of the item.
-	 * @deprecated CodesTableItems will no longer expose Locale to client. Replaced by {@link
-	 *             CodesTableItemPeriodic(String, String, Date, Date, boolean)}
+	 * @deprecated Should not be possible to construct new instances of CodesTableItems; only through ORM
 	 */
 	@Deprecated
-	public CodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, Locale locale, boolean isValid) {
+	public CodesTableItemPeriodic(K code, V decode, Date fromDate, Date toDate, Locale locale, boolean isValid) {
 		super(code, decode, isValid);
 		this.fromDate = fromDate;
 		this.toDate = toDate;
@@ -62,8 +64,10 @@ public abstract class CodesTableItemPeriodic extends AbstractCodesTableItem {
 	 * @param fromDate the date an item is valid from.
 	 * @param toDate the date an item is valid to.
 	 * @param isValid validity of the item.
+	 * @deprecated Should not be possible to construct new instances of CodesTableItems; only through ORM
 	 */
-	public CodesTableItemPeriodic(String code, String decode, Date fromDate, Date toDate, boolean isValid) {
+	@Deprecated
+	public CodesTableItemPeriodic(K code, V decode, Date fromDate, Date toDate, boolean isValid) {
 		super(code, decode, isValid);
 		this.fromDate = fromDate;
 		this.toDate = toDate;
