@@ -583,6 +583,10 @@ app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-w
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/styles/starexample-stylesheet.css -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/styles/stylesheet.css -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/templates/frame-starexample.xhtml -text
+app/stelvio-star-example/layers/provider/pom.xml -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/.classpath -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/.project -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/repository/pom.xml -text
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/.classpath -text
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/.project -text
