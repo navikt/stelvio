@@ -27,7 +27,6 @@
 	<classpathentry kind="var" path="M2_REPO/javax/ejb/ejb/2.1/ejb-2.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/concurrent/concurrent/1.3.4/concurrent-1.3.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/ant/ant/1.5/ant-1.5.jar"/>
-	<classpathentry kind="var" path="M2_REPO/no/stelvio/stelvio-common-java/1.0.2-SNAPSHOT/stelvio-common-java-1.0.2-SNAPSHOT.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/2.0.2/spring-core-2.0.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-beans/2.0.2/spring-beans-2.0.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/msv/msv/20020414/msv-20020414.jar"/>
@@ -59,5 +58,6 @@
 	<classpathentry kind="var" path="M2_REPO/javax/transaction/jta/1.0.1B/jta-1.0.1B.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/acegisecurity/acegi-security-tiger/1.0.0/acegi-security-tiger-1.0.0.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/stelvio-common-java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
