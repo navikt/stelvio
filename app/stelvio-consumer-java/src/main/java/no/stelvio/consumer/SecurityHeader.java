@@ -53,8 +53,8 @@ public class SecurityHeader {
 			}    	
 			return createLTPAHeaderFromToken(tokenCache.get(userName+password));
     	}catch(Exception e){
-    		log.warn("Error while setting RunAs subject for soap header. Using empty security header",e);    		
-    		return null;
+    		//log.warn("Error while setting RunAs subject for soap header. Using empty security header",e);    		
+    		throw new RuntimeException ("Error while setting RunAs subject for soap header.",e); 
     	}
     }
     
@@ -102,7 +102,7 @@ public class SecurityHeader {
 
         }
         catch(Exception e){
-            log.error("Error building LTPA security header", e);            
+            throw new RuntimeException("Error building LTPA security header", e);            
         }
         return header;
 
@@ -260,7 +260,8 @@ public class SecurityHeader {
             }
         }
         catch (Exception e){
-            log.error("Error obtaining token", e);
+            //log.error("Error obtaining token", e);
+            throw new RuntimeException("Error getting token",e);
         }
         return token;
     }
@@ -268,9 +269,8 @@ public class SecurityHeader {
     public static void setSecurityContext(byte[] token){
 	
         if(token == null){
-            System.out.println("Cannot create LoginContext. No token");
+            throw new RuntimeException("Cannot create LoginContext. No token");
 
-            return;
         }
         LoginContext lc = null;
             
@@ -280,13 +280,12 @@ public class SecurityHeader {
 
         } 
         catch (LoginException le) {
-            System.out.println("Cannot create LoginContext. " + le.getMessage());
-            return;
+            throw new RuntimeException("Cannot create LoginContext. " ,le);
+
         } 
         catch(SecurityException se) {
 
-            System.out.println("Cannot create LoginContext." + se.getMessage());
-            return;
+           throw new RuntimeException("Cannot create LoginContext.",se);            
         }
 
         // Login with the new context
@@ -294,8 +293,7 @@ public class SecurityHeader {
             lc.login(); 
         } 
         catch(LoginException le){
-            System.out.println("Fails to Login. " + le.getMessage());
-            return;
+           throw new RuntimeException("Fails to Login. " + le.getMessage(),le);            
         }
 
         // Get security subject
@@ -304,12 +302,9 @@ public class SecurityHeader {
         // Set security suject
         try{
             WSSubject.setRunAsSubject(security_subject);
-        }
-        catch (WSSecurityException e){
-            System.out.println("Error Setting security credentials. " + e.getMessage());
-        }
+        }        
         catch (Exception e){
-            System.out.println("Error Setting security credentials. " + e.getMessage());
+            throw new RuntimeException("Error Setting security credentials. " + e.getMessage(),e);
         }
 
     }
@@ -317,9 +312,7 @@ public class SecurityHeader {
     public static void setSecurityContext(String user, String password){
 	
         if((user == null) || (password == null)){
-            log.warn("Cannot create LoginContext. No token");
-
-            return;
+            throw new RuntimeException("Cannot create LoginContext. No token");           
         }
         LoginContext lc = null;
             
@@ -330,7 +323,7 @@ public class SecurityHeader {
         } 
         catch (Exception se) {
 
-            log.error("Cannot create LoginContext." + se.getMessage(),se);
+            //log.error("Cannot create LoginContext." + se.getMessage(),se);
             throw new RuntimeException("Failed to create login context for user "+user+" message: "+se.getMessage(),se);
         }
 
@@ -339,7 +332,7 @@ public class SecurityHeader {
             lc.login(); 
         } 
         catch(LoginException le){
-            log.error("Fails to Login. " + le.getMessage(),le);
+            //log.error("Fails to Login. " + le.getMessage(),le);
             throw new RuntimeException("Failed to login user "+user+" message: "+le.getMessage(),le);
         }
 
@@ -351,7 +344,7 @@ public class SecurityHeader {
             WSSubject.setRunAsSubject(security_subject);
         }
         catch (Exception e){
-            log.error("Error Setting security credentials. " + e.getMessage(),e);
+            //log.error("Error Setting security credentials. " + e.getMessage(),e);
             throw new RuntimeException("Unable to set security credentials for user "+user,e);
         }
 

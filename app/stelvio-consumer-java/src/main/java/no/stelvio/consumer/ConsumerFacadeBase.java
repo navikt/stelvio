@@ -83,10 +83,8 @@ public abstract class ConsumerFacadeBase<T> {
 				throw new NullPointerException("Empty result from getServicePortMethod");
 			return res;
 		}catch(Exception e) {
-			log.error("",e);
-			RuntimeException re=new RuntimeException("Error while getting service port using service locator class "+serviceLocatorClass.getName()+" and port address "+portFullAddress,e);
-			
-			throw re;
+			//log.error("",e);
+			throw new RuntimeException("Error while getting service port using service locator class "+serviceLocatorClass.getName()+" and port address "+portFullAddress,e);					
 		}
 	}
 	
