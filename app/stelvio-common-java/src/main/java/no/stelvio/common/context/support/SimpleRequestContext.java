@@ -24,15 +24,11 @@ import no.stelvio.common.context.RequestContext;
  * this class.
  */
 public final class SimpleRequestContext extends AbstractContext implements RequestContext {
-
-	// Internal constants to be used as keys for accessing the heap
-	private static final String USER_ID = "user";
 	private static final String SCREEN_ID = "screen";
 	private static final String MODULE_ID = "module";
 	private static final String PROCESS_ID = "process";
 	private static final String TRANSACTION_ID = "transaction";
-	private static final String LOCALE = "locale";
-
+	
 	/**
 	 * Initializes the instance with the context specified.
 	 *
