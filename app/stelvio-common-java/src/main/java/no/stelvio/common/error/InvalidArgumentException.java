@@ -8,8 +8,8 @@ package no.stelvio.common.error;
 public class InvalidArgumentException extends SystemUnrecoverableException {
 	private static final long serialVersionUID = 123345612346L;
 
-	protected InvalidArgumentException(String argumentname, Object argument) {
-        super(argumentname, argument);
+	protected InvalidArgumentException(String argumentName, Object argument) {
+        super(argumentName, argument);
     }
 
 	@Override
