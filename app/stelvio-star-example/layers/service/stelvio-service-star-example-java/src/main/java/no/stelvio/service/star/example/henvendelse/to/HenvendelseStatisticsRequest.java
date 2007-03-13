@@ -5,9 +5,11 @@ import no.stelvio.domain.star.example.henvendelse.HenvendelseStatisticsCriteria;
 
 /**
  * Defines criteria for generating and returning {@link no.stelvio.domain.star.example.henvendelse.HenvendelseStatistics}.
+ * 
  * @author personff564022aedd
  */
 public class HenvendelseStatisticsRequest extends ServiceRequest {
+	private static final long serialVersionUID = 4890318586138308581L;
 	private HenvendelseStatisticsCriteria henvendelseStatisticsCriteria;
 
 	/**
