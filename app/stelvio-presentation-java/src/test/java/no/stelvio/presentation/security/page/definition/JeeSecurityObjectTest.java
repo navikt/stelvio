@@ -1,18 +1,17 @@
 package no.stelvio.presentation.security.page.definition;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.shale.test.mock.MockHttpServletResponse;
-import org.junit.Test;
-
-import no.stelvio.common.security.SecurityContextHolder;
+import no.stelvio.common.security.support.SecurityContextSetter;
 import no.stelvio.common.security.support.SimpleSecurityContext;
 import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 import no.stelvio.presentation.security.page.MockHttpServletRequestExtended;
@@ -23,24 +22,19 @@ import no.stelvio.presentation.security.page.definition.parse.support.JeeRole;
 import no.stelvio.presentation.security.page.definition.parse.support.JeeRoles;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfApplication;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
-import no.stelvio.test.context.StelvioContextSetter;
+
+import org.apache.shale.test.mock.MockHttpServletResponse;
+import org.junit.Test;
 
 public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
-	
 	private JeeSecurityObject secObject;
-	
 	
 	@Override
 	public void onSetUp()throws Exception{
 		secObject = new JeeSecurityObject();
 	}
-	@Override
-	public void onTearDown()throws Exception{
-		
-	}
 	
 	private JsfApplication setupSecureApp(){
-		
 		JeeRole role1 = new JeeRole();
 		JeeRole role2 = new JeeRole();
 		JeeRole role3 = new JeeRole();
@@ -81,14 +75,12 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		return secureApp;
 	}
 	
-	
 	/**
 	 * Tests the authorization on two pages. One uses OR concatenation and should allow access
-	 * the other uses AND and should deny access
-	 * @throws Exception
+	 * the other uses AND and should deny access.
 	 */
-	@Test
-	public void testAuthorizePageAccess()throws Exception{
+	@Test(expected = PageAccessDeniedException.class)
+	public void authorizePageAccess() {
 		JsfApplication app = setupSecureApp();
 		
 		SecurityConfiguration config = new MockSecurityConfiguration(app);
@@ -100,22 +92,17 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		super.setView("/test/page1.xhtml");
 		
 		assertTrue(secObject.authorizePageAccess("/test/page1.xhtml", session));
-		
-		try {
-			secObject.authorizePageAccess("/test/page2.xhtml", session);
-			fail("Should have thrown PageAccessDeniedException.");
-		} catch (PageAccessDeniedException expected) {
-			assertTrue(true);
-		}	
+
+		// Should throw exception
+		secObject.authorizePageAccess("/test/page2.xhtml", session);
 	}
+	
 	@Test
-	public void testAuthorizePageAccessWhenNotAuthenticated()throws Exception{
-		
+	public void authorizePageAccessWhenNotAuthenticated() {
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
 		MockHttpServletRequestExtended request = (MockHttpServletRequestExtended)exctx.getRequest();
 		request.setUserPrincipal(null);
-		//SecurityContextHolder.setSecurityContext(new SimpleSecurityContext(null,null));
-		StelvioContextSetter.setSecurityContext(new SimpleSecurityContext(null,null));
+		SecurityContextSetter.setSecurityContext(new SimpleSecurityContext(null,null));
 		
 		String servletPath = "/test/page1.jsf";
 		String queryString = "start=start&something=another";
@@ -137,11 +124,10 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		HttpSession s = (HttpSession)exctx.getSession(false);
 		String jsfPageToGo = (String)s.getAttribute(Constants.JSFPAGE_TOGO_AFTER_AUTHENTICATION);
 		assertEquals(viewId + "?" + queryString,jsfPageToGo);
-		
 	}
+	
 	@Test
-	public void testAuthorizePageNoAuthenticationORAuthorizationRequired() throws Exception{
-		
+	public void authorizePageNoAuthenticationORAuthorizationRequired() {
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
 		MockHttpServletRequestExtended request = (MockHttpServletRequestExtended)exctx.getRequest();
 		request.setUserPrincipal(null);
@@ -158,9 +144,9 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		HttpSession session = (HttpSession)exctx.getSession(true);
 		assertTrue(secObject.authorizePageAccess("/somepage.xhtml", session));
 	}
+	
 	@Test
-	public void testAuthorizePageAuthenticationOnlyRequired() throws Exception{
-		
+	public void authorizePageAuthenticationOnlyRequired() {
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
 		MockHttpServletRequestExtended request = (MockHttpServletRequestExtended)exctx.getRequest();
 		List<String> roles = new ArrayList<String>();
@@ -179,8 +165,9 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		HttpSession session = (HttpSession)exctx.getSession(true);
 		assertTrue(secObject.authorizePageAccess("/test/page3.xhtml", session));
 	}
+	
 	@Test
-	public void testGetPageObject()throws  Exception{
+	public void getPageObject() {
 		
 		JsfApplication app = setupSecureApp();
 		JsfPage wildcard = new JsfPage();
@@ -197,9 +184,9 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		JsfPage page2 = secObject.getPageObject(viewId2);
 		assertEquals(viewId2,page2.getPageName());
 	}
+	
 	@Test
-	public void testHandleProtocolSwitchToHttps()throws  Exception{
-		
+	public void handleProtocolSwitchToHttps() {
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
 		MockHttpServletRequestExtended request = (MockHttpServletRequestExtended)exctx.getRequest();
 		StringBuffer requestURL = new StringBuffer();
@@ -217,11 +204,10 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		MockHttpServletResponse response = (MockHttpServletResponse)exctx.getResponse();
 		assertEquals(HttpServletResponse.SC_MOVED_TEMPORARILY,response.getStatus());
 		assertEquals(https,response.getMessage());
-		
 	}
+	
 	@Test
-	public void testHandleProtocolSwitchToHttp()throws  Exception{
-		
+	public void handleProtocolSwitchToHttp() {
 		ExternalContext exctx = FacesContext.getCurrentInstance().getExternalContext();
 		MockHttpServletRequestExtended request = (MockHttpServletRequestExtended)exctx.getRequest();
 		StringBuffer requestURL = new StringBuffer();
@@ -239,6 +225,5 @@ public class JeeSecurityObjectTest extends AbstractPhaselistenerTestCase{
 		MockHttpServletResponse response = (MockHttpServletResponse)exctx.getResponse();
 		assertEquals(HttpServletResponse.SC_MOVED_TEMPORARILY,response.getStatus());
 		assertEquals(http,response.getMessage());
-	}
-	
+	}	
 }

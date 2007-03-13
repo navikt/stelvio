@@ -1,13 +1,11 @@
 package no.stelvio.presentation.jsf.security;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.shale.test.mock.MockHttpServletResponse;
-import org.junit.Test;
 
 import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 import no.stelvio.presentation.security.page.definition.JeeSecurityObject;
@@ -17,24 +15,79 @@ import no.stelvio.presentation.security.page.definition.parse.support.JeeRole;
 import no.stelvio.presentation.security.page.definition.parse.support.JeeRoles;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfApplication;
 import no.stelvio.presentation.security.page.definition.parse.support.JsfPage;
-import no.stelvio.test.context.StelvioContextSetter;
+
+import org.apache.shale.test.mock.MockHttpServletResponse;
+import org.junit.Test;
 
 public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase {
-	
 	private JeeSecurityPhaseListener listener;
 	
-	//private MockExternalContextExtended externalContext = null;
-	@Override
-	public void onSetUp()throws Exception{
-		listener = new JeeSecurityPhaseListener();
-	}
-	@Override
-	public void onTearDown()throws Exception{
+	@Test
+	public void beforeAndAfterPhaseUserIsAuthorized() {
+		JeeSecurityObject secObject = setupSecureApp();
+		listener.setJ2eeSecurityObject(secObject);
+		PhaseEvent phase = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.INVOKE_APPLICATION,super.lifecycle);
+		PhaseEvent phase2 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RESTORE_VIEW,super.lifecycle);
+		PhaseEvent phase3 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RENDER_RESPONSE,super.lifecycle);
+		super.setView("/test/page1.xhtml");
 		
+		listener.afterPhase(phase);
+		MockHttpServletResponse response = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response.getStatus());
+		
+		listener.afterPhase(phase2);
+		MockHttpServletResponse response2 = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response2.getStatus());
+		
+		listener.afterPhase(phase3);
+		MockHttpServletResponse response3 = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response3.getStatus());
+		/*listener.beforePhase(phase3);
+		MockHttpServletResponse response3 = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response3.getStatus());*/	
+	}
+	
+	@Test
+	public void beforeAndAfterPhaseUserIsNotAuthorized() {
+		JeeSecurityObject secObject = setupSecureApp();
+		listener.setJ2eeSecurityObject(secObject);
+		PhaseEvent phase = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.INVOKE_APPLICATION,super.lifecycle);
+		PhaseEvent phase2 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RESTORE_VIEW,super.lifecycle);
+		PhaseEvent phase3 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RENDER_RESPONSE,super.lifecycle);
+		
+		super.setView("/test/page2.xhtml");
+		
+		listener.afterPhase(phase);
+		MockHttpServletResponse response = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response.getStatus());
+		
+		listener.afterPhase(phase2);
+		MockHttpServletResponse response2 = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response2.getStatus());
+		
+		listener.afterPhase(phase3);
+		MockHttpServletResponse response3 = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response3.getStatus());
+		
+		/*listener.beforePhase(phase3);
+		MockHttpServletResponse response3 = 
+			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response3.getStatus());*/	
+	}
+	
+	@Override
+	public void onSetUp() {
+		listener = new JeeSecurityPhaseListener();
 	}
 	
 	private JeeSecurityObject setupSecureApp(){
-		
 		JeeRole role1 = new JeeRole();
 		JeeRole role2 = new JeeRole();
 		JeeRole role3 = new JeeRole();
@@ -77,64 +130,5 @@ public class JeeSecurityPhaseListenerTest extends AbstractPhaselistenerTestCase 
 		JeeSecurityObject secObject = new JeeSecurityObject();
 		secObject.setSecurityConfiguration(config);
 		return secObject;
-	}
-	@Test
-	public void testBeforeAndAfterPhaseUserIsAuthorized() throws Exception{
-		JeeSecurityObject secObject = setupSecureApp();
-		listener.setJ2eeSecurityObject(secObject);
-		PhaseEvent phase = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.INVOKE_APPLICATION,super.lifecycle);
-		PhaseEvent phase2 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RESTORE_VIEW,super.lifecycle);
-		PhaseEvent phase3 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RENDER_RESPONSE,super.lifecycle);
-		super.setView("/test/page1.xhtml");
-		
-		listener.afterPhase(phase);
-		MockHttpServletResponse response = 
-			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response.getStatus());
-		
-		listener.afterPhase(phase2);
-		MockHttpServletResponse response2 = 
-			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response2.getStatus());
-		
-		listener.afterPhase(phase3);
-		MockHttpServletResponse response3 = 
-			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response3.getStatus());
-		/*listener.beforePhase(phase3);
-		MockHttpServletResponse response3 = 
-			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should succeed with status code 200.",HttpServletResponse.SC_OK,response3.getStatus());*/	
-	}
-	@Test
-	public void testBeforeAndAfterPhaseUserIsNotAuthorized() throws Exception{
-		
-		JeeSecurityObject secObject = setupSecureApp();
-		listener.setJ2eeSecurityObject(secObject);
-		PhaseEvent phase = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.INVOKE_APPLICATION,super.lifecycle);
-		PhaseEvent phase2 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RESTORE_VIEW,super.lifecycle);
-		PhaseEvent phase3 = new PhaseEvent(FacesContext.getCurrentInstance(),PhaseId.RENDER_RESPONSE,super.lifecycle);
-		
-		super.setView("/test/page2.xhtml");
-		
-		listener.afterPhase(phase);
-		MockHttpServletResponse response = 
-			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response.getStatus());
-		
-		listener.afterPhase(phase2);
-		MockHttpServletResponse response2 = 
-			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response2.getStatus());
-		
-		listener.afterPhase(phase3);
-		MockHttpServletResponse response3 = 
-			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response3.getStatus());
-		
-		/*listener.beforePhase(phase3);
-		MockHttpServletResponse response3 = 
-			(MockHttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
-		assertEquals("Request should not succeed. Status code should be 403.",HttpServletResponse.SC_FORBIDDEN,response3.getStatus());*/	
 	}
 }

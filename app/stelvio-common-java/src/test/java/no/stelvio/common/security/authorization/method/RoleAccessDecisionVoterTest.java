@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.springframework.aop.framework.ReflectiveMethodInvocation;
 
 import no.stelvio.common.security.SecurityContextHolder;
-import no.stelvio.test.context.StelvioContextSetter;
+import no.stelvio.common.security.support.SecurityContextSetter;
 
 /**
  * Test class for the RoleAccessDecisionVoter.
@@ -53,7 +53,7 @@ public class RoleAccessDecisionVoterTest {
 	@Test
 	public void voteAccessGranted() {
 		// TODO stelvio-common should not be dependent on stelvio-test as this is a recursive dependency
-		StelvioContextSetter.setSecurityContext("User", "ROLE1", "ROLE3");
+		SecurityContextSetter.setSecurityContext("User", "ROLE1", "ROLE3");
 		
 		assertTrue(SecurityContextHolder.currentSecurityContext().isUserInRoles("ROLE1", "ROLE3"));
 		assertFalse(SecurityContextHolder.currentSecurityContext().isUserInRoles("ROL1", "ROL3"));
@@ -62,7 +62,7 @@ public class RoleAccessDecisionVoterTest {
 
 	@Test
 	public void voteAccessDenied() {
-		StelvioContextSetter.setSecurityContext("User", "someRole", "someRole2");
+		SecurityContextSetter.setSecurityContext("User", "someRole", "someRole2");
 		List<String> roles = SecurityContextHolder.currentSecurityContext().getRoles();
 
 		for (String string : roles) {

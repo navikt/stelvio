@@ -21,6 +21,7 @@ import java.net.URLClassLoader;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.FactoryFinder;
 import javax.faces.application.ApplicationFactory;
 import javax.faces.component.UIViewRoot;
@@ -28,12 +29,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.render.RenderKitFactory;
 
-import junit.framework.TestCase;
-import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
-import no.stelvio.common.security.SecurityContextHolder;
+import no.stelvio.common.security.support.SecurityContextSetter;
 import no.stelvio.common.security.support.SimpleSecurityContext;
-import no.stelvio.test.context.StelvioContextSetter;
 
 import org.apache.shale.test.mock.MockApplication;
 import org.apache.shale.test.mock.MockFacesContext;
@@ -96,7 +95,6 @@ public class AbstractPhaselistenerTestCase {
 
     @Before
     public final void setUp() throws Exception {
-    	
     	//Set up a new thread context class loader
         threadContextClassLoader = Thread.currentThread().getContextClassLoader();
         Thread.currentThread().setContextClassLoader(new URLClassLoader(new URL[0],
@@ -108,8 +106,8 @@ public class AbstractPhaselistenerTestCase {
 		this.roles = new ArrayList<String>();
 		this.roles.add("role1");
 		this.roles.add("role2");
-		StelvioContextSetter.setRequestContext(new SimpleRequestContext("","","",""));
-		StelvioContextSetter.setSecurityContext(new SimpleSecurityContext(principal.getName(),roles));
+		RequestContextSetter.setRequestContext(new SimpleRequestContext("","","",""));
+		SecurityContextSetter.setSecurityContext(new SimpleSecurityContext(principal.getName(),roles));
 		
 		 // Set up Servlet API Objects
         servletContext = new MockServletContext();
@@ -162,6 +160,7 @@ public class AbstractPhaselistenerTestCase {
     	
     	this.onSetUp();
     }
+    
     @After
     public final void tearDown() throws Exception {
     	this.onTearDown();
@@ -190,6 +189,7 @@ public class AbstractPhaselistenerTestCase {
     protected void onTearDown() throws Exception {
     	
     }
+    
     /**
      * Set the FacesContext viewRoot with param viewId
      * @param viewId
