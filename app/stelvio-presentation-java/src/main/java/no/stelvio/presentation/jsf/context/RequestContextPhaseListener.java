@@ -38,6 +38,11 @@ public class RequestContextPhaseListener implements PhaseListener {
 	 * @param event the PhaseEvent notifing that the phase has ended
 	 */
 	public void afterPhase(PhaseEvent event) {
+		// do not perform any actions if it is in the first phase of the lifecycle
+		if(PhaseId.RESTORE_VIEW.equals(event.getPhaseId())) {
+			return;
+		}
+		
 		FlowSession session =  FlowExecutionHolderUtils.getFlowExecutionHolder(
 				FacesContext.getCurrentInstance()).getFlowExecution().getActiveSession();
 		if (session != null) {
