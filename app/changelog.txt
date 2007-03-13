@@ -43,7 +43,6 @@ Module stelvio-common-java
 * Added the methods getDecode(Enum), getDecode(Enum, Locale) and validateCode(Enum) in CodesTable
 * User id moved from RequestContext to SecurityContext.
 * Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
-* Made ServiceRequest and ServiceResponse abstract to explicitly state that they are base classes that must be extended
 
 Module stelvio-test-java
 
@@ -76,6 +75,7 @@ Module stelvio-presentation-java
 * Added a custom action class for fetching menu items and convert them into panelnavigation items used by the 
   panelNavigation2 component.
 
+Star example
 * Corrected package structure (no.nav.<x>.. -> no.stelvio.<x>.star.example...)
 * Added consumer layer
 
