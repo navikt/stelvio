@@ -42,6 +42,7 @@ app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-w
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/target
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/target
 app/stelvio-star-example/layers/service/stelvio-service-star-example-ejb/target
+app/stelvio-star-example/layers/service/stelvio-service-star-example-java/target
 app/stelvio-test-java/.classpath
 app/stelvio-test-java/.project
 app/stelvio-test-java/common-test.iml
