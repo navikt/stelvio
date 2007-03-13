@@ -2,14 +2,17 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+<!-- TODO should we have a parent? implies making a workspaces/parent/pom.xml maybe
   <parent>
     <artifactId>no.stelvio.app.main.workspace</artifactId>
     <groupId>no.stelvio.app</groupId>
     <version>1.0.0</version>
   </parent>
-  <artifactId>no.stelvio.app.star.example.workspace</artifactId>
+-->
+  <artifactId>stelvio-app-star-example-workspace</artifactId>
+	<groupId>no.stelvio.starexample.workspaces</groupId>
   <packaging>pom</packaging>
-  <name>Workspace for star example</name>
+  <name>Workspace for Stelvio Star Example</name>
   <version>1.0.3-SNAPSHOT</version>
   <modules>
 	  <module>../stelvio-domain-star-example-java</module>

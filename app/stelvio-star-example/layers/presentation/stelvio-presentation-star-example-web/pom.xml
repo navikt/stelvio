@@ -4,51 +4,46 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>layers</artifactId>
-		<groupId>no.stelvio.layers</groupId>
-		<version>1.0.2-SNAPSHOT</version>
+		<artifactId>presentation</artifactId>
+		<groupId>no.stelvio.starexample.layers</groupId>
+		<version>1.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-presentation-star-example-web</artifactId>
-	<groupId>no.stelvio.star.example</groupId>
+	<groupId>no.stelvio.starexample.layers.presentation</groupId>
 	<packaging>war</packaging>
 	<name>star-example :: presentation</name>
 	<url>${basedir}/target/site/</url>
 
 	<dependencies>
 		<dependency>
-			<groupId>hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>1.8.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-domain-star-example-java</artifactId>
+			<groupId>no.stelvio.starexample.layers.domain</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-consumer-star-example-java</artifactId>
+			<groupId>no.stelvio.starexample.layers.consumer</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-repository-star-example-java</artifactId>
+			<groupId>no.stelvio.starexample.layers.repository</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
 			<!-- TODO common classes (interface, etc) should be in the common java project for services -->
-			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-service-star-example-ejb</artifactId>
+			<groupId>no.stelvio.starexample.layers.service</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-presentation-star-example-java</artifactId>
+			<groupId>no.stelvio.starexample.layers.presentation</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-presentation-java</artifactId>
+			<groupId>no.stelvio</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>

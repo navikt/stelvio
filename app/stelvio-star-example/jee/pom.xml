@@ -7,15 +7,10 @@
 		<groupId>no.stelvio.starexample</groupId>
 		<version>1.0.3-SNAPSHOT</version>
 	</parent>
-	<artifactId>layers</artifactId>
+	<artifactId>jee</artifactId>
 	<packaging>pom</packaging>
-	<name>Layers for Stelvio Star Example</name>
+	<name>JEE applications for Stelvio Star Example</name>
 	<modules>
-		<module>presentation</module>
-		<module>consumer</module>
-		<module>batch</module>
-		<module>service</module>
-		<module>repository</module>
-		<module>domain</module>
+		<module>stelvio-star-example-jee</module>
 	</modules>
 </project>

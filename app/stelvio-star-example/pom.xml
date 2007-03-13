@@ -3,19 +3,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>starexample</artifactId>
-		<groupId>no.stelvio.starexample</groupId>
+		<!-- TODO should star example have a parent? -->
+		<artifactId>stelvio</artifactId>
+		<groupId>no.stelvio</groupId>
 		<version>1.0.3-SNAPSHOT</version>
 	</parent>
-	<artifactId>layers</artifactId>
+	<artifactId>starexample</artifactId>
+	<groupId>no.stelvio.starexample</groupId>
 	<packaging>pom</packaging>
-	<name>Layers for Stelvio Star Example</name>
+	<name>Stelvio Star Example</name>
 	<modules>
-		<module>presentation</module>
-		<module>consumer</module>
-		<module>batch</module>
-		<module>service</module>
-		<module>repository</module>
-		<module>domain</module>
+		<module>jee</module>
+		<module>layers</module>
+		<!-- TODO look into including workspaces in build
+		<module>workspaces</module>
+		-->
 	</modules>
 </project>

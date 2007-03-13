@@ -3,19 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>starexample</artifactId>
+		<artifactId>layers</artifactId>
 		<groupId>no.stelvio.starexample</groupId>
 		<version>1.0.3-SNAPSHOT</version>
 	</parent>
-	<artifactId>layers</artifactId>
+	<artifactId>presentation</artifactId>
+	<groupId>no.stelvio.starexample.layers</groupId>
 	<packaging>pom</packaging>
-	<name>Layers for Stelvio Star Example</name>
+	<name>Presentation layer for Stelvio Star Example</name>
 	<modules>
-		<module>presentation</module>
-		<module>consumer</module>
-		<module>batch</module>
-		<module>service</module>
-		<module>repository</module>
-		<module>domain</module>
+		<module>stelvio-presentation-star-example-java</module>
+		<module>stelvio-presentation-star-example-web</module>
 	</modules>
 </project>

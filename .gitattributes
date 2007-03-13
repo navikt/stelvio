@@ -377,6 +377,7 @@ app/stelvio-service-java/src/main/java/no/stelvio/service/menu/to/MenuItemServic
 app/stelvio-service-java/src/main/java/no/stelvio/service/tasklist/TasklistService.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/tasklist/support/DefaultTasklistService.java -text
 app/stelvio-star-example/.project -text
+app/stelvio-star-example/jee/pom.xml -text
 app/stelvio-star-example/jee/stelvio-star-example-jee/.project -text
 app/stelvio-star-example/jee/stelvio-star-example-jee/.settings/org.eclipse.jst.j2ee.ejb.annotations.xdoclet.prefs -text
 app/stelvio-star-example/jee/stelvio-star-example-jee/.settings/org.eclipse.wst.common.component -text
@@ -388,6 +389,10 @@ app/stelvio-star-example/jee/stelvio-star-example-jee/src/main/resources/META-IN
 app/stelvio-star-example/jee/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/resources.xml -text
 app/stelvio-star-example/jee/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/applications/defaultApp/deployments/defaultApp/variables.xml -text
 app/stelvio-star-example/jee/stelvio-star-example-jee/src/main/resources/META-INF/ibmconfig/cells/defaultCell/security.xml -text
+app/stelvio-star-example/layers/batch/pom.xml -text
+app/stelvio-star-example/layers/batch/stelvio-batch-star-example-ejb/pom.xml -text
+app/stelvio-star-example/layers/batch/stelvio-batch-star-example-java/pom.xml -text
+app/stelvio-star-example/layers/consumer/pom.xml -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.classpath -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.project -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
@@ -410,6 +415,7 @@ app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/pom.xml -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/ASBOPenHenvendelse.java -text
 app/stelvio-star-example/layers/consumer/stelvio-consumer-star-example-wsclient/src/main/java/no/stelvio/consumer/star/example/henvendelse/map/historikk/ASBOPenHenvendelseHistory.java -text
+app/stelvio-star-example/layers/domain/pom.xml -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/.classpath -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/.project -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
@@ -430,6 +436,7 @@ app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/henvendelse/historikk/HenvendelseHistory.java -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/saksbehandling/Saksbehandler.java -text
 app/stelvio-star-example/layers/pom.xml -text
+app/stelvio-star-example/layers/presentation/pom.xml -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-java/.classpath -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-java/.project -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
@@ -575,6 +582,7 @@ app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-w
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/styles/starexample-stylesheet.css -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/styles/stylesheet.css -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-web/src/main/webapp/templates/frame-starexample.xhtml -text
+app/stelvio-star-example/layers/repository/pom.xml -text
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/.classpath -text
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/.project -text
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/.settings/org.eclipse.jdt.core.prefs -text
@@ -587,6 +595,7 @@ app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/src/main/resources/modules/rep-starexample-context.xml -text
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/src/test/java/no/stelvio/repository/starexample/codestable/CodestableDBIntegrationTest.java -text
 app/stelvio-star-example/layers/repository/stelvio-repository-star-example-java/src/test/resources/modules/rep-codestable-context.xml -text
+app/stelvio-star-example/layers/service/pom.xml -text
 app/stelvio-star-example/layers/service/stelvio-service-star-example-ejb/.classpath -text
 app/stelvio-star-example/layers/service/stelvio-service-star-example-ejb/.project -text
 app/stelvio-star-example/layers/service/stelvio-service-star-example-ejb/.settings/.webspheredeploy -text
@@ -630,6 +639,8 @@ app/stelvio-star-example/layers/service/stelvio-service-star-example-java/src/ma
 app/stelvio-star-example/layers/service/stelvio-service-star-example-java/src/main/resources/beanRefContext.xml -text
 app/stelvio-star-example/layers/service/stelvio-service-star-example-java/src/main/resources/environment.properties -text
 app/stelvio-star-example/layers/service/stelvio-service-star-example-java/src/main/resources/modules/srv-starexample-context.xml -text
+app/stelvio-star-example/pom.xml -text
+app/stelvio-star-example/workspaces/pom.xml -text
 app/stelvio-star-example/workspaces/stelvio-app-star-example-workspace/.project -text
 app/stelvio-star-example/workspaces/stelvio-app-star-example-workspace/pom.xml -text
 app/stelvio-star-example/workspaces/stelvio-app-star-example-workspace/stelvio-app-star-example-trunk.psf -text

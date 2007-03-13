@@ -4,29 +4,29 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>layers</artifactId>
-		<groupId>no.stelvio.layers</groupId>
-		<version>1.0.2-SNAPSHOT</version>
+		<artifactId>service</artifactId>
+		<groupId>no.stelvio.starexample.layers</groupId>
+		<version>1.0.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-service-star-example-ejb</artifactId>
-	<groupId>no.stelvio.star.example</groupId>
+	<groupId>no.stelvio.starexample.layers.service</groupId>
 	<packaging>ejb</packaging>
 	<name>star-example :: service</name>
 	<url>${basedir}/target/site/</url>
 	<dependencies>
 		<dependency>
-			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-repository-star-example-java</artifactId>
+			<groupId>no.stelvio.starexample.layers.repository</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>no.stelvio.star.example</groupId>
 			<artifactId>stelvio-service-star-example-java</artifactId>
+			<groupId>no.stelvio.starexample.layers.service</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-remoting</artifactId>
+			<groupId>org.springframework</groupId>
 			<version>2.0.2</version>
 		</dependency>
 		<dependency>
