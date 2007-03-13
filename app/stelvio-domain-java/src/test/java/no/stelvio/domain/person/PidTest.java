@@ -68,7 +68,7 @@ public class PidTest {
 	@Test
 	public void bostNummerCanBeValidated() {
 		assertTrue("Could not create fnr using a Bostnummer with birth month > 9", Pid.isValidPid(monthAbove9BostNr));
-		assertTrue("Could not create fnr using a Bostnummer with birth month > 10", Pid.isValidPid(monthAbove10BostNr));
+		assertTrue("Could not create fnr using a Bostnummer with birth month < 10", Pid.isValidPid(monthBelow10BostNrWs));
 	}
 
 	private void checkWhitespaceCompliance(String pid, boolean isCompliant) {
