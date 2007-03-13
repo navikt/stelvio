@@ -34,20 +34,6 @@ public class CodesTableIntegrationTest extends AbstractDependencyInjectionSpring
 		assertEquals("Wrong number of rows in db", 2, testCodesTableItems.size());
 	}
 
-	public void tstEnum() {
-		HibernateTemplate hibernateTemplate = beanFactoryAccessor.getBean("rep.inttest.hibernateTemplate");
-		List oldEnums = hibernateTemplate.loadAll(TestPersistenceWithEnums.class);
-		hibernateTemplate.deleteAll(oldEnums);
-
-		hibernateTemplate.save(new TestPersistenceWithEnums(1, TestCtiCode.EXISTS_1));
-		hibernateTemplate.save(new TestPersistenceWithEnums(2, TestCtiCode.EXISTS_2));
-
-		List enums = hibernateTemplate.loadAll(TestPersistenceWithEnums.class);
-
-		assertEquals("Wrong number of rows in db", 2, enums.size());
-	}
-
-
 	protected void onSetUp() throws Exception {
 		super.onSetUp();
 		beanFactoryAccessor = new GenericBeanFactoryAccessor(applicationContext);
