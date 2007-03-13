@@ -1,9 +1,7 @@
 package no.stelvio.common.security.support;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import no.stelvio.common.security.RoleName;
 import no.stelvio.common.security.SecurityContext;
 
 /**
