@@ -25,23 +25,18 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-remoting</artifactId>
+			<groupId>org.springframework</groupId>
 			<version>2.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-common</artifactId>
-			<version>${pom.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
+			<groupId>no.stelvio</groupId>
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.ejb</groupId>
 			<artifactId>ejb</artifactId>
+			<groupId>javax.ejb</groupId>
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
