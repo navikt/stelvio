@@ -20,14 +20,16 @@ import no.stelvio.common.codestable.factory.CodesTableFactory;
  * @author personf8e9850ed756, Accenture
  */
 public class CodesTableFactoryBean extends AbstractStatelessSessionBean implements CodesTableFactory {
+	private static final long serialVersionUID = 234987123498L;
 	private CodesTableFactory codesTableFactory;
 
-	public <T extends CodesTableItem<String, String>> CodesTable<T> createCodesTable(Class<T> codesTableClass)
+	public <T extends CodesTableItem<K, V>, K extends Enum, V> CodesTable<T, K, V> createCodesTable(Class<T> codesTableClass)
 			throws CodesTableNotFoundException {
 		return codesTableFactory.createCodesTable(codesTableClass);
 	}
 
-	public <T extends CodesTableItemPeriodic<String, String>> CodesTablePeriodic<T> createCodesTablePeriodic(Class<T> codesTableClass)
+	public <T extends CodesTableItemPeriodic<K, V>, K extends Enum, V> CodesTablePeriodic<T, K, V>
+		createCodesTablePeriodic(Class<T> codesTableClass)
 			throws CodesTableNotFoundException {
 		return codesTableFactory.createCodesTablePeriodic(codesTableClass);
 	}
