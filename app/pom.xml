@@ -10,6 +10,7 @@
 		<module>stelvio-common-java</module>
 		<module>stelvio-test-java</module>
 		<module>stelvio-domain-java</module>
+		<module>stelvio-dto-java</module>
 		<module>stelvio-repository-java</module>
 		<module>stelvio-batch-java</module>
 		<module>stelvio-service-java</module>
@@ -17,7 +18,6 @@
 		<module>stelvio-presentation-java</module>
 		<module>workspaces</module>
 		<module>stelvio-star-example</module>
-		<!--  TODO include later: <module>stelvio-consumer-java</module>-->
 	</modules>
 	<developers>
 		<developer>
