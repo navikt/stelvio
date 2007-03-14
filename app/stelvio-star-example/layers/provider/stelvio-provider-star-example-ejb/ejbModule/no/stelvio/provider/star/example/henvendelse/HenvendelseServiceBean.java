@@ -2,7 +2,7 @@
  * @author personf8e9850ed756, Accenture
  * @todo write javadoc
  */
-package no.stelvio.service.star.example.henvendelse;
+package no.stelvio.provider.star.example.henvendelse;
 
 import javax.ejb.CreateException;
 import javax.ejb.SessionContext;
