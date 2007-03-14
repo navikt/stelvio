@@ -38,6 +38,20 @@ public class RequestContextSetter {
 	}
 
 	/**
+	 * Sets a new <code>RequestContext</code> for use in unit tests. The <code>RequestContext</code> is hardcoded with
+	 * the following values:
+	 * <ul>
+	 *   <li>processId - "processId"</li>
+	 *   <li>screenId - "screenId"</li>
+	 *   <li>moduleId - "moduleId"</li>
+	 *   <li>transactionId - "transactionId"</li>
+	 * </ul> 
+	 */
+	public static void setRequestContextForUnitTest() {
+		setRequestContext(new SimpleRequestContext("one", "two", "three", "four"));
+	}
+
+	/**
 	 * Resets the RequestContext.
 	 */
 	public static void resetRequestContext(){
