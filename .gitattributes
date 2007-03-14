@@ -131,8 +131,14 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/RolesUtil.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecureAnnotationNotInMappingException.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributes.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/definition/Role.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/definition/support/DefaultRole.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/support/SecurityContextSetter.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/security/support/SimpleSecurityContext.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/validation/RoleNotValidException.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/validation/RoleValidator.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/validation/ValidRole.java -text
+app/stelvio-common-java/src/main/java/no/stelvio/common/security/validation/support/DefaultRoleValidator.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityListResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/EntityResponse.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/transferobject/ServiceRequest.java -text
@@ -248,6 +254,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/m
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/SecurityAnnotationsAttributesTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/support/SecurityContextSetterTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/support/SimpleSecurityContextTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/security/validation/support/DefaultRoleValidatorTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/DateUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/util/ReflectUtilTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/validation/TestBbanValidator.java -text
