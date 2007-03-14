@@ -17,6 +17,7 @@ public interface StelvioException extends LoggableException {
 	 * Get the unique id of this exception.
      *
      * @return The unique id of this exception
+     * @todo not a good name as it can be mistaken for the id of the error inside the error db table; should be deprecated and renamed
      */
     long getErrorId();
 
