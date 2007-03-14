@@ -285,6 +285,7 @@ app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/support/ConsumerCont
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/support/ConsumerFacadeBase.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/support/LTPASecurityHandler.java -text
 app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/support/SecurityHeader.java -text
+app/stelvio-consumer-java/src/test/java/no/stelvio/consumer/ConsumerSystemExceptionTest.java -text
 app/stelvio-domain-java/pom.xml -text
 app/stelvio-domain-java/src/main/java/.cvsignore -text
 app/stelvio-domain-java/src/main/java/no/stelvio/domain/menu/MenuItem.java -text
