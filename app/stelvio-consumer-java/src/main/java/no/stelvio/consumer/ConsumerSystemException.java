@@ -14,9 +14,10 @@ public class ConsumerSystemException extends SystemUnrecoverableException {
 	 * Creates an instance with the given cause.
 	 * 
 	 * @param cause the cause for throwing this exception.
+	 * @param serviceId the id of the service called when it failed.
 	 */
-	public ConsumerSystemException(Throwable cause) {
-		super(cause);
+	public ConsumerSystemException(Throwable cause, String serviceId) {
+		super(cause, serviceId);
 	}
 
 	/**
@@ -24,6 +25,6 @@ public class ConsumerSystemException extends SystemUnrecoverableException {
 	 */
 	@Override
 	protected String messageTemplate(int numArgs) {
-		return "Technical error while invoking service: {0}";
+		return "Technical error while invoking service with id {0}";
 	}
 }
