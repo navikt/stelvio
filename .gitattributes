@@ -595,7 +595,13 @@ app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.sett
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.settings/org.eclipse.jdt.core.prefs -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/.settings/org.eclipse.wst.common.project.facet.core.xml -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/ejbModule/META-INF/MANIFEST.MF -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/ejbModule/META-INF/ejb-jar.xml -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/ejbModule/META-INF/ibm_ejbext.properties -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/ejbModule/log4j.properties -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/ejbModule/no/stelvio/provider/star/example/henvendelse/HenvendelseServiceBean.java -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/ejbModule/no/stelvio/provider/star/example/henvendelse/HenvendelseServiceLocal.java -text
+app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/ejbModule/no/stelvio/provider/star/example/henvendelse/HenvendelseServiceLocalHome.java -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-ejb/pom.xml -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/.classpath -text
 app/stelvio-star-example/layers/provider/stelvio-provider-star-example-java/.project -text
