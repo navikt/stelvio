@@ -302,6 +302,9 @@ app/stelvio-domain-java/src/test/resources/application-services.xml -text
 app/stelvio-domain-java/src/test/resources/common-java_test_menu_beans.xml -text
 app/stelvio-domain-java/src/test/resources/error-handling.xml -text
 app/stelvio-domain-java/src/test/resources/performance-monitoring.xml -text
+app/stelvio-dto-java/.classpath -text
+app/stelvio-dto-java/.project -text
+app/stelvio-dto-java/pom.xml -text
 app/stelvio-presentation-java/pom.xml -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/constants/ConstantsWrapper.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/RequestContextFilter.java -text
