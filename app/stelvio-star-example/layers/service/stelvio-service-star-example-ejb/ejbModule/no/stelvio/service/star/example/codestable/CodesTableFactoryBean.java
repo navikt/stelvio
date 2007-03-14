@@ -1,17 +1,17 @@
 package no.stelvio.service.star.example.codestable;
 
+import java.util.List;
+
 import javax.ejb.CreateException;
 import javax.ejb.SessionContext;
 
+import no.stelvio.common.codestable.CodesTableItem;
+import no.stelvio.common.codestable.CodesTableNotFoundException;
+import no.stelvio.common.codestable.CodesTablePeriodicItem;
+import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
+
 import org.springframework.context.access.ContextSingletonBeanFactoryLocator;
 import org.springframework.ejb.support.AbstractStatelessSessionBean;
-
-import no.stelvio.common.codestable.CodesTable;
-import no.stelvio.common.codestable.CodesTableItem;
-import no.stelvio.common.codestable.CodesTableItemPeriodic;
-import no.stelvio.common.codestable.CodesTableNotFoundException;
-import no.stelvio.common.codestable.CodesTablePeriodic;
-import no.stelvio.common.codestable.factory.CodesTableFactory;
 
 /**
  * EJB implementation of the <code>CodesTableFactory</code> interface which acts as a thin facade over the POJO
@@ -19,26 +19,27 @@ import no.stelvio.common.codestable.factory.CodesTableFactory;
  *
  * @author personf8e9850ed756, Accenture
  */
-public class CodesTableFactoryBean extends AbstractStatelessSessionBean implements CodesTableFactory {
+public class CodesTableFactoryBean extends AbstractStatelessSessionBean implements CodesTableItemsFactory {
 	private static final long serialVersionUID = 234987123498L;
-	private CodesTableFactory codesTableFactory;
+	private CodesTableItemsFactory codesTableItemsFactory;
 
-	public <T extends CodesTableItem<K, V>, K extends Enum, V> CodesTable<T, K, V> createCodesTable(Class<T> codesTableClass)
+	public <T extends CodesTableItem<K, V>, K extends Enum, V> 
+		List<T> createCodesTableItems(Class<T> codesTableItemClass)
 			throws CodesTableNotFoundException {
-		return codesTableFactory.createCodesTable(codesTableClass);
+		return codesTableItemsFactory.createCodesTableItems(codesTableItemClass);
 	}
 
-	public <T extends CodesTableItemPeriodic<K, V>, K extends Enum, V> CodesTablePeriodic<T, K, V>
-		createCodesTablePeriodic(Class<T> codesTableClass)
+	public <T extends CodesTablePeriodicItem<K, V>, K extends Enum, V> 
+		List<T> createCodesTablePeriodicItems(Class<T> codesTableItemClass)
 			throws CodesTableNotFoundException {
-		return codesTableFactory.createCodesTablePeriodic(codesTableClass);
+		return codesTableItemsFactory.createCodesTablePeriodicItems(codesTableItemClass);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	protected void onEjbCreate() throws CreateException {
-		codesTableFactory = (CodesTableFactory)
-				getBeanFactory().getBean("srv.starexample.codesTableFactory", CodesTableFactory.class);
+		codesTableItemsFactory = (CodesTableItemsFactory)
+				getBeanFactory().getBean("srv.starexample.codesTableFactory", CodesTableItemsFactory.class);
 	}
 
 	/** {@inheritDoc} */
