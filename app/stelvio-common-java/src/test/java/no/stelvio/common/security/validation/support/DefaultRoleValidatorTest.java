@@ -70,7 +70,8 @@ public class DefaultRoleValidatorTest {
 		assertFalse("Should return false as the string is not a valid rolename.", validator.isValid("SomeRole"));
 		assertFalse("Should return false as the Role is not a valid role.", validator.isValid(new DefaultRole("SomeRole")));
 		
-		assertTrue("Should return true as the Role is a valid role.", validator.isValid(DefaultRoles.ROLE1));//new DefaultRole("ROLE1")));
+		assertTrue("Should return true as the Role is a valid role.", validator.isValid(new DefaultRole("ROLE1")));
+		assertTrue("Should return true as the Role is a valid role.", validator.isValid(DefaultRoles.ROLE1));
 		assertTrue("Should return true as the String is a valid rolename.", validator.isValid("ROLE1"));
 	}
 }
