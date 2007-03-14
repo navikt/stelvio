@@ -374,6 +374,7 @@ app/stelvio-repository-java/src/main/java/no/stelvio/repository/sak/Saksbehandle
 app/stelvio-repository-java/src/main/java/no/stelvio/repository/sak/TaskRepository.java -text
 app/stelvio-service-java/pom.xml -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/codestable/RepositoryCodesTableFactory.java -text
+app/stelvio-service-java/src/main/java/no/stelvio/service/codestable/RepositoryCodesTableItemsFactory.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/error/RepositoryErrorDefinitionRetriever.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/menu/MenuService.java -text
 app/stelvio-service-java/src/main/java/no/stelvio/service/menu/support/DefaultMenuService.java -text
