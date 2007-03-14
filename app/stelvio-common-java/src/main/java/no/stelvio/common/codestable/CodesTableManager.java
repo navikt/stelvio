@@ -10,27 +10,28 @@ package no.stelvio.common.codestable;
 public interface CodesTableManager {
 	/**
 	 * Retrieves a <code>CodesTable</code> from the database by using <code>CodesTableFactory</code>. The
-	 * <code>CodesTable</code> that the input <code>CodesTableItem</code> belongs to, is the <code>CodesTable</code> that
-	 * shall be retrieved.
+	 * <code>CodesTable</code> that the input <code>CodesTableItem</code> belongs to, is the <code>CodesTable</code>
+	 * that shall be retrieved.
 	 *
 	 * @param <T> <code>CodesTableItem</code>'s or subclasses of <code>CodesTableItem</code> that are valid input
 	 * parameters, and that the <code>CodesTable</code> returned by the method holds values of.
-	 * @param codesTableItem the <code>CodesTable</code> to retieve - represented by a <code>CodesTableItem</code>s class.
+	 * @param codesTableItemClass the <code>CodesTable</code> to retieve - represented by a <code>CodesTableItem</code>s
+	 * class.
 	 * @return The fetched <code>CodesTable</code>.
 	 */
-	<T extends CodesTableItem<K, V>, K extends Enum, V> CodesTable<T, K, V> getCodesTable(Class<T> codesTableItem);
+	<T extends CodesTableItem<K, V>, K extends Enum, V> CodesTable<T, K, V> getCodesTable(Class<T> codesTableItemClass);
 
 	/**
 	 * Retrieves a <code>CodesTablePeriodic</code> from the database by using <code>CodesTableFactory</code>. The
-	 * <code>CodesTablePeriodic</code> that the input <code>CodesTableItemPeriodic</code> belongs to, is the
+	 * <code>CodesTablePeriodic</code> that the input <code>CodesTablePeriodicItem</code> belongs to, is the
 	 * <code>CodesTablePeriodic</code> that shall be retrieved.
 	 *
-	 * @param <T> <code>CodesTableItemPeriodic</code>'s or subclasses of <code>CodesTableItemPeriodic</code> that are valid
-	 * input parameters, and that the <code>CodesTablePeriodic</code> returned by the method holds values of.
-	 * @param codesTableItemPeriodic the <code>CodesTablePeriodic</code> to retieve - represented by a
-	 * <code>CodesTableItemPeriodic</code>s class.
+	 * @param <T> <code>CodesTablePeriodicItem</code>'s or subclasses of <code>CodesTablePeriodicItem</code> that are
+	 * valid input parameters, and that the <code>CodesTablePeriodic</code> returned by the method holds values of.
+	 * @param codesTableItemPeriodicClass the <code>CodesTablePeriodic</code> to retieve - represented by a
+	 * <code>CodesTablePeriodicItem</code>s class.
 	 * @return The fetched <code>CodesTablePeriodic</code>.
 	 */
-	<T extends CodesTableItemPeriodic<K, V>, K extends Enum, V>
-			CodesTablePeriodic<T, K, V> getCodesTablePeriodic(Class<T> codesTableItemPeriodic);
+	<T extends CodesTablePeriodicItem<K, V>, K extends Enum, V>
+			CodesTablePeriodic<T, K, V> getCodesTablePeriodic(Class<T> codesTableItemPeriodicClass);
 }

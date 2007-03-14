@@ -16,7 +16,7 @@
   </property>
   <property name="codesTablePeriodicClasses">
    <list>
-    <value>no.stelvio.common.codestable.CodesTableItemPeriodic</value>
+    <value>no.stelvio.common.codestable.CodesTablePeriodicItem</value>
    </list>
   </property>
  </bean>

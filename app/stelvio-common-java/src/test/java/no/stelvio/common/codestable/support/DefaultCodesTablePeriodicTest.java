@@ -19,7 +19,7 @@ import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
 import no.stelvio.common.codestable.TestCtiCode;
-import no.stelvio.common.codestable.TestCtiPeriodic;
+import no.stelvio.common.codestable.TestCtpi;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
 
@@ -32,7 +32,7 @@ import no.stelvio.common.context.support.SimpleRequestContext;
 public class DefaultCodesTablePeriodicTest {
 
 	/** Implementation class to test */
-	private CodesTablePeriodic<TestCtiPeriodic, TestCtiCode, String> codesTablePeriodic;
+	private CodesTablePeriodic<TestCtpi, TestCtiCode, String> codesTablePeriodic;
 
 	/** Initialize components prior to running tests. */
 	//TODO: FIX CASTING
@@ -42,13 +42,13 @@ public class DefaultCodesTablePeriodicTest {
 		RequestContextHolder.
 				setRequestContext(new SimpleRequestContext("screenId", "moduleId", "processId", "transactionId"));
 
-		List<TestCtiPeriodic> list = new ArrayList<TestCtiPeriodic>();
-		list.add(TestCtiPeriodic.getCtip1());
-		list.add(TestCtiPeriodic.getCtip2());
-		list.add(TestCtiPeriodic.getCtip3());
-		list.add(TestCtiPeriodic.getCtiWithEmptyDecode());
+		List<TestCtpi> list = new ArrayList<TestCtpi>();
+		list.add(TestCtpi.getCtip1());
+		list.add(TestCtpi.getCtip2());
+		list.add(TestCtpi.getCtip3());
+		list.add(TestCtpi.getCtiWithEmptyDecode());
 
-		codesTablePeriodic = new DefaultCodesTablePeriodic<TestCtiPeriodic, TestCtiCode, String>(list);
+		codesTablePeriodic = new DefaultCodesTablePeriodic<TestCtpi, TestCtiCode, String>(list);
 	}
 
 	/** Test of getCodesTableItem(). */
@@ -63,7 +63,7 @@ public class DefaultCodesTablePeriodicTest {
 		}
 
 		//Test: get an item
-		TestCtiPeriodic itemExist = codesTablePeriodic.getCodesTableItem(TestCtiCode.EXISTS_1);
+		TestCtpi itemExist = codesTablePeriodic.getCodesTableItem(TestCtiCode.EXISTS_1);
 		assertNotNull("Test 2: the item does not exist", itemExist);
 		assertEquals("Test 3: Unexpected code", "t1code1", itemExist.getCode());
 		assertEquals("Test 4: Unexpected decode", "t1decode1", itemExist.getDecode());
@@ -74,7 +74,7 @@ public class DefaultCodesTablePeriodicTest {
 	public void addPredicateAndRemovePredicate() {
 		Predicate predicate = new Predicate() {
 			public boolean evaluate(Object object) {
-				TestCtiPeriodic codesTableItemPeriodic = (TestCtiPeriodic) object;
+				TestCtpi codesTableItemPeriodic = (TestCtpi) object;
 
 				return codesTableItemPeriodic.getCode() == TestCtiCode.EXISTS_1;
 			}
@@ -132,6 +132,6 @@ public class DefaultCodesTablePeriodicTest {
 			// should happen
 		}
 
-		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCtiPeriodic.getCtip1().getCode(), date), "t1decode1");
+		assertEquals("Test 3: unexptected decode", codesTablePeriodic.getDecode(TestCtpi.getCtip1().getCode(), date), "t1decode1");
 	}
 }

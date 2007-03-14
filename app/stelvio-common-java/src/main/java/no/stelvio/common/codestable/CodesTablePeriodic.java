@@ -15,19 +15,19 @@ import org.apache.commons.collections.Predicate;
  *
  * @author personb66fa0b5ff6e, Accenture
  * @version $Id$
- * @param <T> <code>CodesTableItemPeriodic</code>'s or subclasses of <code>CodesTableItemPeriodic</code> that the
+ * @param <T> <code>CodesTablePeriodicItem</code>'s or subclasses of <code>CodesTablePeriodicItem</code> that the
  * <code>CodesTablePeriodic</code> can hold values of.
  */
-public interface CodesTablePeriodic<T extends CodesTableItemPeriodic<K, V>, K extends Enum, V> extends Serializable {
+public interface CodesTablePeriodic<T extends CodesTablePeriodicItem<K, V>, K extends Enum, V> extends Serializable {
 	/**
-	 * Returns the set of CodesTableItemPeriodic which is filtered with the current list of predicates.
+	 * Returns the set of CodesTablePeriodicItem which is filtered with the current list of predicates.
 	 *
 	 * @return the set of code table items in the table.
 	 */
 	Set<T> getCodeTableItems();
 
 	/**
-	 * Returns the list of CodesTableItemPeriodic which is filtered with the current list of predicates.
+	 * Returns the list of CodesTablePeriodicItem which is filtered with the current list of predicates.
 	 *
 	 * @return the list of code table items in the table.
 	 * @deprecated use {@link #getCodeTableItems()}
@@ -36,7 +36,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic<K, V>, K ex
 	List<T> getItems();
 
 	/**
-	 * Returns the <code>CodesTableItemPeriodic</code> in the specified <code>CodesTablePeriodic</code> that matches the
+	 * Returns the <code>CodesTablePeriodicItem</code> in the specified <code>CodesTablePeriodic</code> that matches the
 	 * specified <code>code</code>.
 	 *
 	 * @param code the item's code.
@@ -46,7 +46,7 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic<K, V>, K ex
 	T getCodesTableItem(K code) throws ItemNotFoundException;
 
 	/**
-	 * Returns the <code>CodesTableItemPeriodic</code> in the specified <code>CodesTablePeriodic</code> that matches the
+	 * Returns the <code>CodesTablePeriodicItem</code> in the specified <code>CodesTablePeriodic</code> that matches the
 	 * specified <code>code</code>.
 	 *
 	 * @param code the item's code.
@@ -74,20 +74,20 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic<K, V>, K ex
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
-	 * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
-	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
+	 * @throws ItemNotFoundException if no <code>CodesTablePeriodicItem</code> is found for the code
+	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTablePeriodicItem</code> without a code
 	 */
 	V getDecode(K code, Date date) throws ItemNotFoundException, DecodeNotFoundException;
 
 	/**
-	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
+	 * Returns the decode for a code in <code>CodesTablePeriodicItem</code> with a specific locale.
 	 *
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @param locale the internationalization code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
-	 * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
-	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
+	 * @throws ItemNotFoundException if no <code>CodesTablePeriodicItem</code> is found for the code
+	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTablePeriodicItem</code> without a code
 	 */
 	V getDecode(K code, Locale locale, Date date) throws DecodeNotFoundException;
 
@@ -98,22 +98,22 @@ public interface CodesTablePeriodic<T extends CodesTableItemPeriodic<K, V>, K ex
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
-	 * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
-	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
+	 * @throws ItemNotFoundException if no <code>CodesTablePeriodicItem</code> is found for the code
+	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTablePeriodicItem</code> without a code
 	 * @deprecated use {@link #getDecode(Enum,Date)}
 	 */
 	@Deprecated
 	String getDecode(Object code, Date date) throws ItemNotFoundException, DecodeNotFoundException;
 
 	/**
-	 * Returns the decode for a code in <code>CodesTableItemPeriodic</code> with a specific locale.
+	 * Returns the decode for a code in <code>CodesTablePeriodicItem</code> with a specific locale.
 	 *
 	 * @param code the items code.
 	 * @param date the date the item must be valid.
 	 * @param locale the internationalization code.
 	 * @return The decode or <code>null</code> if the code doesn't exist in the <code>CodesTablePeriodic</code>.
-	 * @throws ItemNotFoundException if no <code>CodesTableItemPeriodic</code> is found for the code
-	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTableItemPeriodic</code> without a code
+	 * @throws ItemNotFoundException if no <code>CodesTablePeriodicItem</code> is found for the code
+	 * @throws DecodeNotFoundException if the input code maps to a <code>CodesTablePeriodicItem</code> without a code
 	 * @deprecated use {@link #getDecode(Enum,Locale,Date)}
 	 */
 	@Deprecated

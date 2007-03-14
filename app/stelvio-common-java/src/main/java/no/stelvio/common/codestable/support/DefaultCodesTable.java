@@ -17,7 +17,8 @@ import no.stelvio.common.codestable.ItemNotFoundException;
  * @todo use Commons Collection's LazyMap to initialize the filtered codes table map
  * @todo add safe copying of input/output, that is, constructor and getItems()
  */
-public class DefaultCodesTable<T extends CodesTableItem<K, V>, K extends Enum, V> extends AbstractCodesTable<T, K, V> implements CodesTable<T, K, V> {
+public class DefaultCodesTable<T extends CodesTableItem<K, V>, K extends Enum, V>
+		extends AbstractCodesTable<T, K, V> implements CodesTable<T, K, V> {
 	private static final long serialVersionUID = -1882474781384872740L;
 
 	/**

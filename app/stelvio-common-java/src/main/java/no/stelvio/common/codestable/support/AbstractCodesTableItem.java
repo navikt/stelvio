@@ -12,7 +12,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
- * Abstract class for the CodesTableItem/CodesTableItemPeriodic components.
+ * Abstract class for the CodesTableItem/CodesTablePeriodicItem components.
  * <p/>
  * This class is a MappedSuperclass, meaning that Entities that inherits from this class must map to a table that
  * defines columns set up by this class
@@ -83,7 +83,8 @@ public abstract class AbstractCodesTableItem<K extends Enum, V> implements Seria
 	public K getCode() {
 		// Cache the lookup
 		if (codeAsEnum == null) {
-			Class<K> genericType = (Class<K>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+			Class<K> genericType =
+					(Class<K>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 			codeAsEnum = (K) Enum.valueOf(genericType, code);
 		}
 
@@ -152,5 +153,4 @@ public abstract class AbstractCodesTableItem<K extends Enum, V> implements Seria
 		// Compare by class name to support multiple classloaders
 		return new HashCodeBuilder().append(this.getClass().getName()).append(getCode()).toHashCode();
 	}
-
 }

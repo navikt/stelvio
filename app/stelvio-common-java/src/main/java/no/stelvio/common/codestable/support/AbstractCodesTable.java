@@ -19,7 +19,8 @@ import no.stelvio.common.codestable.DecodeNotFoundException;
 import no.stelvio.common.codestable.ItemNotFoundException;
 
 /**
- * @todo write javadoc
+ * Holds common functionality for <code>CodesTable</code> and <code>CodesTablePeriodic</code>.
+ *
  * @author personf8e9850ed756, Accenture
  */
 abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K extends Enum, V> implements Serializable {
@@ -28,11 +29,11 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	/** Map containing Codes-AbstractCodesTableItem pairs */
 	private Map<K, T> codeCodesTableItemMap;
 	/**
-	 * Holds the filtered map of <code>CodesTableItemPeriodic</code>s created by taking the full list and applying the
+	 * Holds the filtered map of <code>AbstractCodesTableItem</code>s created by taking the full list and applying the
 	 * predicates.
 	 */
 	private Map<K, T> filteredCodeCodesTableItemMap;
-	/** List of predicates to use for filtering the list of <code>CodesTableItemPeriodic</code>s */
+	/** List of predicates to use for filtering the list of <code>AbstractCodesTableItem</code>s */
 	private List<Predicate> predicates = new ArrayList<Predicate>();
 
 	protected void init(List<T> codesTableItems) {
@@ -116,8 +117,10 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	}
 
 	/**
-	 * FIXME: This method doesn't use the input Date to retrieve decode. FIXME: Method should probably change
-	 * implementation or signature in the future. {@inheritDoc}
+	 * {@inheritDoc}
+	 *
+	 * FIXME: This method doesn't use the input Date to retrieve decode.
+	 * FIXME: Method should probably change implementation or signature in the future.
 	 */
 	protected V decode(Object code, Date... date) throws ItemNotFoundException, DecodeNotFoundException {
 		// If there are predicates added to the codestable,

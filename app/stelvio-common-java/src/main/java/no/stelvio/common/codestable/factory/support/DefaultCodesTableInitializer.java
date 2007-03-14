@@ -10,7 +10,7 @@ import org.springframework.beans.factory.InitializingBean;
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableConfigurationException;
 import no.stelvio.common.codestable.CodesTableItem;
-import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTablePeriodicItem;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.CodesTableNotFoundException;
 import no.stelvio.common.codestable.CodesTablePeriodic;
@@ -33,8 +33,8 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 	private List<Class<? extends CodesTableItem<? extends Enum, ?>>> codesTableClasses =
 			new ArrayList<Class<? extends CodesTableItem<? extends Enum, ?>>>();
 	/** A list of codestableperiodicclasses - defined in the application context */
-	private List<Class<? extends CodesTableItemPeriodic<? extends Enum, ?>>> codesTablePeriodicClasses =
-			new ArrayList<Class<? extends CodesTableItemPeriodic<? extends Enum, ?>>>();
+	private List<Class<? extends CodesTablePeriodicItem<? extends Enum, ?>>> codesTablePeriodicClasses =
+			new ArrayList<Class<? extends CodesTablePeriodicItem<? extends Enum, ?>>>();
 
 	/**
 	 * Uses CodesTableManager to load all of the <code>CodesTable</code>s and <code>CodesTablePeriodic</code>s from
@@ -43,7 +43,7 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 	 * @throws CodesTableNotFoundException if the desired <code>CodesTable</code>/<code>CodesTablePeriodic</code>
 	 * cannot be retrieved from the database.
 	 * @throws no.stelvio.common.codestable.CodesTableConfigurationException if there haven't been defined
-	 * any <code>CodesTableItem</code>'s or <code>CodesTableItemPeriodic</code> in the configuration, used to load
+	 * any <code>CodesTableItem</code>'s or <code>CodesTablePeriodicItem</code> in the configuration, used to load
 	 * the application's needed <code>CodesTable</code>'s and <code>CodesTablePeriodic</code>.
 	 */
 	public void afterPropertiesSet() throws CodesTableNotFoundException, CodesTableConfigurationException {
@@ -70,7 +70,7 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 			log.info("Preloading " + codesTablePeriodicClasses.size() + " CodesTablePeriodic classes");
 		}
 
-		//CodesTableItemPeriodic's
+		//CodesTablePeriodicItem's
 		for(Class ctp : codesTablePeriodicClasses){
 			validateCodesTableItemPeriodicClass(ctp);
 
@@ -83,14 +83,14 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 	}
 
 	/**
-	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItemPeriodic</>.
+	 * Checks that the class to load a codestable for is a subclass of <code>CodesTablePeriodicItem</>.
 	 *
 	 * @param codesTablePeriodicClass the class to load a codestable for.
 	 * @throws no.stelvio.common.codestable.NotCodesTableException if the class to load a codestable for is not a subclass of
 	 * <code>CodesTablePeriodic</code>.
 	 */
 	private void validateCodesTableItemPeriodicClass(final Class<? extends AbstractCodesTableItem<?, ?>> codesTablePeriodicClass) {
-		if (null != codesTablePeriodicClass && !CodesTableItemPeriodic.class.isAssignableFrom(codesTablePeriodicClass)) {
+		if (null != codesTablePeriodicClass && !CodesTablePeriodicItem.class.isAssignableFrom(codesTablePeriodicClass)) {
 			throw new NotCodesTableException(codesTablePeriodicClass);
 		}
 	}
@@ -130,7 +130,7 @@ public class DefaultCodesTableInitializer implements InitializingBean {
 	 * 
 	 * @param codesTablePeriodicClasses the <code>CodesTablePeriodicClasses</code> that shall be retrieved from the database.
 	 */
-	public void setCodesTablePeriodicClasses(List<Class<? extends CodesTableItemPeriodic<? extends Enum, ?>>> codesTablePeriodicClasses){
+	public void setCodesTablePeriodicClasses(List<Class<? extends CodesTablePeriodicItem<? extends Enum, ?>>> codesTablePeriodicClasses){
 		this.codesTablePeriodicClasses = codesTablePeriodicClasses;
 	}
 }

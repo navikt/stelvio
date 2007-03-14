@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTablePeriodicItem;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.DecodeNotFoundException;
 
@@ -18,13 +18,14 @@ import no.stelvio.common.codestable.DecodeNotFoundException;
  * throws exception when 2 rows have wrapping periods, hashcode uses code/date_from/is_approved, equals checks for
  * overlapping
  */
-public class DefaultCodesTablePeriodic<T extends CodesTableItemPeriodic<K, V>, K extends Enum, V> extends AbstractCodesTable<T, K, V> implements CodesTablePeriodic<T, K, V> {
+public class DefaultCodesTablePeriodic<T extends CodesTablePeriodicItem<K, V>, K extends Enum, V>
+		extends AbstractCodesTable<T, K, V> implements CodesTablePeriodic<T, K, V> {
 	private static final long serialVersionUID = 6455631274807017184L;
 
 	/**
-	 * Creates a <code>DefaultCodesTablePeriodic</code> with a list of <code>CodesTableItemPeriodic</code>s.
+	 * Creates a <code>DefaultCodesTablePeriodic</code> with a list of <code>CodesTablePeriodicItem</code>s.
 	 *
-	 * @param codesTableItems list of <code>CodesTableItemPeriodic</code>s this <code>DefaultCodesTablePeriodic</code>
+	 * @param codesTableItems list of <code>CodesTablePeriodicItem</code>s this <code>DefaultCodesTablePeriodic</code>
 	 * consists of.
 	 */
 	public DefaultCodesTablePeriodic(List<T> codesTableItems) {

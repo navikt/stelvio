@@ -17,7 +17,7 @@ import org.junit.Test;
  * @author personb66fa0b5ff6e
  * @version $Id$
  */
-public class CodesTableItemPeriodicTest {
+public class CodesTablePeriodicItemTest {
 	/**
 	 * Test of constructor for CodesTableItem.
 	 */
@@ -63,11 +63,11 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testEqualsObject() {
-		assertThat(TestCtiPeriodic.getCtip1().equals(TestCtiPeriodic.getCtip1()), isTrue());
-		assertThat(TestCtiPeriodic.getCtip1().equals(null), isFalse());
-		assertThat(TestCtiPeriodic.getCtip1().equals("String"), isFalse());
-		assertThat(TestCtiPeriodic.getCtip1().equals(TestCtiPeriodic.getCtip2()), isFalse());
-		assertThat(TestCtiPeriodic.getCtip1().equals(TestCti.getCti2()), isFalse());
+		assertThat(TestCtpi.getCtip1().equals(TestCtpi.getCtip1()), isTrue());
+		assertThat(TestCtpi.getCtip1().equals(null), isFalse());
+		assertThat(TestCtpi.getCtip1().equals("String"), isFalse());
+		assertThat(TestCtpi.getCtip1().equals(TestCtpi.getCtip2()), isFalse());
+		assertThat(TestCtpi.getCtip1().equals(TestCti.getCti2()), isFalse());
 	}
 
 	/**
@@ -75,13 +75,13 @@ public class CodesTableItemPeriodicTest {
 	 */
 	@Test
 	public void testHashCode() {
-		assertThat(TestCtiPeriodic.getCtip1().hashCode() == TestCtiPeriodic.getCtip5().hashCode(),
+		assertThat(TestCtpi.getCtip1().hashCode() == TestCtpi.getCtip5().hashCode(),
                 isTrue());
-		assertThat(TestCtiPeriodic.getCtip1().equals(TestCtiPeriodic.getCtip5()), isTrue());
+		assertThat(TestCtpi.getCtip1().equals(TestCtpi.getCtip5()), isTrue());
 	}
 
-	/** Used for testing as {@link CodesTableItemPeriodic} cannot be instantiated. */
-	private static class Ctip extends CodesTableItemPeriodic<TestCtiCode, String> {
+	/** Used for testing as {@link CodesTablePeriodicItem} cannot be instantiated. */
+	private static class Ctip extends CodesTablePeriodicItem<TestCtiCode, String> {
 	
 		//No real use in test, added to avoid warning
 		private static final long serialVersionUID = 7653759985312507754L;

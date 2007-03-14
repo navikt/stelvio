@@ -3,9 +3,9 @@ package no.stelvio.common.codestable.support;
 import no.stelvio.common.error.SystemUnrecoverableException;
 
 /**
- * CodesTableException
+ * Super class for exceptions thrown when handling codes tables.
+ *
  * @author personf8e9850ed756
- * @todo write javadoc
  * @version $Id$
  */
 public abstract class CodesTableException extends SystemUnrecoverableException {

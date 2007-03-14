@@ -2,37 +2,13 @@ package no.stelvio.common.codestable;
 
 import java.util.Date;
 import java.util.Locale;
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.apache.commons.lang.builder.ToStringBuilder;
-
-import no.stelvio.common.codestable.support.AbstractCodesTableItem;
 
 /**
- * CodesTableItemPeriodic represents an item in a <code>CodesTable</code> with a valid period.
- * <p/>
- * This class is a MappedSuperclass, meaning that Entities that inherits from this class must map to a table that
- * defines columns set up by this class
- *
- * @author personb66fa0b5ff6e, Accenture
- * @version $Id$
+ * @deprecated Use <code>CodesTablePeriodicItem</code> instead.
+ * @see CodesTablePeriodicItem
  */
-@MappedSuperclass
-public abstract class CodesTableItemPeriodic<K extends Enum, V> extends AbstractCodesTableItem<K, V> {
-	private static final long serialVersionUID = 5966326178149304963L;
-
-	/** The date the item is valid from. */
-	@Column(name = "FROM_DATE")
-	@Temporal(TemporalType.DATE)
-	private Date fromDate;
-
-	/** The date the item is valid to. */
-	@Column(name = "TO_DATE")
-	@Temporal(TemporalType.DATE)
-	private Date toDate;
+public abstract class CodesTableItemPeriodic<K extends Enum, V> extends CodesTablePeriodicItem<K, V> {
+	private static final long serialVersionUID = -7207635739439965031L;
 
 	/** Constructor for <code>CodesTableItemPeriodic</code>. Only available to subclasses. */
 	protected CodesTableItemPeriodic() {
@@ -51,9 +27,7 @@ public abstract class CodesTableItemPeriodic<K extends Enum, V> extends Abstract
 	 */
 	@Deprecated
 	public CodesTableItemPeriodic(K code, V decode, Date fromDate, Date toDate, Locale locale, boolean isValid) {
-		super(code, decode, isValid);
-		this.fromDate = fromDate;
-		this.toDate = toDate;
+		super(code, decode, fromDate, toDate, locale, isValid);
 	}
 
 	/**
@@ -68,41 +42,6 @@ public abstract class CodesTableItemPeriodic<K extends Enum, V> extends Abstract
 	 */
 	@Deprecated
 	public CodesTableItemPeriodic(K code, V decode, Date fromDate, Date toDate, boolean isValid) {
-		super(code, decode, isValid);
-		this.fromDate = fromDate;
-		this.toDate = toDate;
-	}
-
-	/**
-	 * Returns the date the item is valid from.
-	 *
-	 * @return The date the item is valid from.
-	 */
-	public Date getFromDate() {
-		return fromDate;
-	}
-
-	/**
-	 * Returns the date the item is valid to.
-	 *
-	 * @return The date the item is valid to.
-	 */
-	public Date getToDate() {
-		return toDate;
-	}
-
-	/**
-	 * Returns a String representation of this object.
-	 * <p/>
-	 * {@inheritDoc}
-	 */
-	public String toString() {
-		return new ToStringBuilder(this)
-				.append("code", getCode())
-				.append("decode", getDecode())
-				.append("validFrom", getFromDate())
-				.append("validTo", getToDate())
-				.append("isValid", isValid())
-				.toString();
+		super(code, decode, fromDate, toDate, isValid);
 	}
 }

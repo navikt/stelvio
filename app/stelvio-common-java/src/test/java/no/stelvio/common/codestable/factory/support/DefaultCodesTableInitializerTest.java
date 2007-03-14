@@ -14,7 +14,7 @@ import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.TestCti;
-import no.stelvio.common.codestable.TestCtiPeriodic;
+import no.stelvio.common.codestable.TestCtpi;
 import no.stelvio.common.codestable.support.DefaultCodesTable;
 import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
 
@@ -26,7 +26,7 @@ import no.stelvio.common.codestable.support.DefaultCodesTablePeriodic;
 public class DefaultCodesTableInitializerTest {
 
 	/**
-	 * Tests CodesTableInitializer with both <code>CodesTableItem</code>'s and <code>CodesTableItemPeriodic</code>'s.
+	 * Tests CodesTableInitializer with both <code>CodesTableItem</code>'s and <code>CodesTablePeriodicItem</code>'s.
 	 * @throws Exception
 	 */
 	//TODO: FIX CASTING
@@ -39,16 +39,16 @@ public class DefaultCodesTableInitializerTest {
 		codesTableItems.add(TestCti.getCti2());
 		final CodesTable codesTable = new DefaultCodesTable(codesTableItems);
 
-		List<TestCtiPeriodic> codesTableItemPeriodics = new ArrayList<TestCtiPeriodic>();
-		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip1());
-		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip2());
+		List<TestCtpi> codesTableItemPeriodics = new ArrayList<TestCtpi>();
+		codesTableItemPeriodics.add(TestCtpi.getCtip1());
+		codesTableItemPeriodics.add(TestCtpi.getCtip2());
 		final CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic(codesTableItemPeriodics);
 		
 		List<Class<TestCti>> cti = new ArrayList<Class<TestCti>>();
 		cti.add(TestCti.class);
 		
-		List<Class<TestCtiPeriodic>> ctip = new ArrayList<Class<TestCtiPeriodic>>();
-		ctip.add(TestCtiPeriodic.class);
+		List<Class<TestCtpi>> ctip = new ArrayList<Class<TestCtpi>>();
+		ctip.add(TestCtpi.class);
 
 		Mockery context = new Mockery();
 		final CodesTableManager codesTableManager = context.mock(CodesTableManager.class);
@@ -57,7 +57,7 @@ public class DefaultCodesTableInitializerTest {
 		context.expects(new InAnyOrder() {{
 			one(codesTableManager).getCodesTable((Class<TestCti>) with(IsAnything.anything()));
 			will(returnValue(codesTable));
-			one(codesTableManager).getCodesTablePeriodic((Class<TestCtiPeriodic>) with(IsAnything.anything()));
+			one(codesTableManager).getCodesTablePeriodic((Class<TestCtpi>) with(IsAnything.anything()));
 			will(returnValue(codesTablePeriodic));
 		}});
 
@@ -110,27 +110,27 @@ public class DefaultCodesTableInitializerTest {
 	}
 	
 	/**
-	 * Tests CodesTableInitializer with both only <code>CodesTableItemPeriodic</code>'s.
+	 * Tests CodesTableInitializer with both only <code>CodesTablePeriodicItem</code>'s.
 	 * @throws Exception
 	 */
 	//TODO: FIX CASTING
 	@SuppressWarnings("unchecked")
 	public void testCodesTableInitializerGetCodesTablePeriodic() throws Exception {
 		//Test data
-		List<TestCtiPeriodic> codesTableItemPeriodics = new ArrayList<TestCtiPeriodic>();
-		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip1());
-		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip2());
+		List<TestCtpi> codesTableItemPeriodics = new ArrayList<TestCtpi>();
+		codesTableItemPeriodics.add(TestCtpi.getCtip1());
+		codesTableItemPeriodics.add(TestCtpi.getCtip2());
 		final CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic(codesTableItemPeriodics);
 		
-		List<Class<TestCtiPeriodic>> ctip = new ArrayList<Class<TestCtiPeriodic>>();
-		ctip.add(TestCtiPeriodic.class);
+		List<Class<TestCtpi>> ctip = new ArrayList<Class<TestCtpi>>();
+		ctip.add(TestCtpi.class);
 
 		Mockery context = new Mockery();
 		final CodesTableManager codesTableManager = context.mock(CodesTableManager.class);
 
 		//Mock CodesTableManger's methods
 		context.expects(new InAnyOrder() {{
-			one(codesTableManager).getCodesTablePeriodic((Class<TestCtiPeriodic>) with(IsAnything.anything()));
+			one(codesTableManager).getCodesTablePeriodic((Class<TestCtpi>) with(IsAnything.anything()));
 			will(returnValue(codesTablePeriodic));
 		}});
 
@@ -177,16 +177,16 @@ public class DefaultCodesTableInitializerTest {
 		codesTableItems.add(TestCti.getCti2());
 		final CodesTable codesTable = new DefaultCodesTable(codesTableItems);
 		
-		ArrayList<TestCtiPeriodic> codesTableItemPeriodics = new ArrayList<TestCtiPeriodic>();
-		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip1());
-		codesTableItemPeriodics.add(TestCtiPeriodic.getCtip2());
+		ArrayList<TestCtpi> codesTableItemPeriodics = new ArrayList<TestCtpi>();
+		codesTableItemPeriodics.add(TestCtpi.getCtip1());
+		codesTableItemPeriodics.add(TestCtpi.getCtip2());
 		CodesTablePeriodic codesTablePeriodic = new DefaultCodesTablePeriodic(codesTableItemPeriodics);
 		
 		List<Class<TestCti>> cti = new ArrayList<Class<TestCti>>();
 		cti.add(null);
 		
-		List<Class<TestCtiPeriodic>> ctip = new ArrayList<Class<TestCtiPeriodic>>();
-		ctip.add(TestCtiPeriodic.class);
+		List<Class<TestCtpi>> ctip = new ArrayList<Class<TestCtpi>>();
+		ctip.add(TestCtpi.class);
 
 		Mockery context = new Mockery();
 		final CodesTableManager codesTableManager = context.mock(CodesTableManager.class);
@@ -195,7 +195,7 @@ public class DefaultCodesTableInitializerTest {
 		context.expects(new InAnyOrder() {{
 			one(codesTableManager).getCodesTable((Class<TestCti>) with(IsAnything.anything()));
 			will(returnValue(codesTable));
-			one(codesTableManager).getCodesTablePeriodic((Class<TestCtiPeriodic>) with(IsAnything.anything()));
+			one(codesTableManager).getCodesTablePeriodic((Class<TestCtpi>) with(IsAnything.anything()));
 			will(returnValue(null));
 		}});
 

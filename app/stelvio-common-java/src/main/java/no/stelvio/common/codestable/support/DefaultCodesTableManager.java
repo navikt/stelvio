@@ -5,11 +5,12 @@ import org.apache.commons.logging.LogFactory;
 
 import no.stelvio.common.codestable.CodesTable;
 import no.stelvio.common.codestable.CodesTableItem;
-import no.stelvio.common.codestable.CodesTableItemPeriodic;
+import no.stelvio.common.codestable.CodesTablePeriodicItem;
 import no.stelvio.common.codestable.CodesTableManager;
 import no.stelvio.common.codestable.CodesTablePeriodic;
 import no.stelvio.common.codestable.NotCodesTableException;
 import no.stelvio.common.codestable.factory.CodesTableFactory;
+import no.stelvio.common.codestable.factory.CodesTableItemsFactory;
 
 /**
  * Implementation of CodesTableManager used for accessing and caching persistent codes tables.
@@ -20,8 +21,10 @@ import no.stelvio.common.codestable.factory.CodesTableFactory;
 public class DefaultCodesTableManager implements CodesTableManager {
 	private Log log = LogFactory.getLog(DefaultCodesTableManager.class);
 
-	/** The CodesTableFactory used for retrieval of codestables. */
+	/** The CodesTableFactory used for retrieval of codes tables. */
 	private CodesTableFactory codesTableFactory;
+	/** The CodesTableItemsFactory used for retrieval of codes table items. */
+	private CodesTableItemsFactory codesTableItemsFactory;
 
 	/** {@inheritDoc} */
 	public <T extends CodesTableItem<K, V>, K extends Enum, V>
@@ -32,19 +35,28 @@ public class DefaultCodesTableManager implements CodesTableManager {
 			log.debug("Creating a normal codes table for " + codesTableItem);
 		}
 
-		return codesTableFactory.createCodesTable(codesTableItem);
+		if (codesTableItemsFactory != null) {
+			return new DefaultCodesTable<T, K, V>(codesTableItemsFactory.createCodesTableItems(codesTableItem));
+		} else {
+			return codesTableFactory.createCodesTable(codesTableItem);
+		}
 	}
 
 	/** {@inheritDoc} */
-	public <T extends CodesTableItemPeriodic<K, V>, K extends Enum, V>
-			CodesTablePeriodic<T, K, V> getCodesTablePeriodic(Class<T> codesTableItem) {
-		validateCodesTableItemPeriodicClass(codesTableItem);
+	public <T extends CodesTablePeriodicItem<K, V>, K extends Enum, V>
+			CodesTablePeriodic<T, K, V> getCodesTablePeriodic(Class<T> codesTablePeriodicItemClass) {
+		validateCodesTableItemPeriodicClass(codesTablePeriodicItemClass);
 
 		if (log.isDebugEnabled()) {
-			log.debug("Creating a periodic codes table for " + codesTableItem);
+			log.debug("Creating a periodic codes table for " + codesTablePeriodicItemClass);
 		}
 
-		return codesTableFactory.createCodesTablePeriodic(codesTableItem);
+		if (codesTableItemsFactory != null) {
+			return new DefaultCodesTablePeriodic<T, K, V>(
+					codesTableItemsFactory.createCodesTablePeriodicItems(codesTablePeriodicItemClass));
+		} else {
+			return codesTableFactory.createCodesTablePeriodic(codesTablePeriodicItemClass);
+		}
 	}
 
 	/**
@@ -60,7 +72,7 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	}
 
 	/**
-	 * Checks that the class to load a codestable for is a subclass of <code>CodesTableItemPeriodic</>.
+	 * Checks that the class to load a codestable for is a subclass of <code>CodesTablePeriodicItem</>.
 	 *
 	 * @param codesTablePeriodicClass the class to load a codestable for.
 	 * @throws no.stelvio.common.codestable.NotCodesTableException if the class to load a codestable for is not a subclass of
@@ -69,9 +81,18 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	private void validateCodesTableItemPeriodicClass(
 			final Class<? extends AbstractCodesTableItem<?, ?>> codesTablePeriodicClass) {
 		if (null != codesTablePeriodicClass &&
-				!CodesTableItemPeriodic.class.isAssignableFrom(codesTablePeriodicClass)) {
+				!CodesTablePeriodicItem.class.isAssignableFrom(codesTablePeriodicClass)) {
 			throw new NotCodesTableException(codesTablePeriodicClass);
 		}
+	}
+
+	/**
+	 * Sets the <code>CodesTableItemsFactory</code> that is used to retrieve the codes table items from the database.
+	 *
+	 * @param codesTableItemsFactory a reference to the interface for retrieving codes table items from the database.
+	 */
+	public void setCodesTableItemsFactory(CodesTableItemsFactory codesTableItemsFactory) {
+		this.codesTableItemsFactory = codesTableItemsFactory;
 	}
 
 	/**
@@ -80,6 +101,8 @@ public class DefaultCodesTableManager implements CodesTableManager {
 	 * @param codesTableFactory a reference to the interface for retrieving codestables from the database.
 	 */
 	public void setCodesTableFactory(CodesTableFactory codesTableFactory) {
+		log.warn("DEPRECATED - Use CodesTableItemsFactory instead - DEPRECATED");
+
 		this.codesTableFactory = codesTableFactory;
 	}
 }
