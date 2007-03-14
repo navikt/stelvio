@@ -4,7 +4,7 @@
  * TODO To change the template for this generated file go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-package no.stelvio.consumer;
+package no.stelvio.consumer.support;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

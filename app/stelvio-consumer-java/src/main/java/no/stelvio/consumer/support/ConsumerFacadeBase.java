@@ -1,4 +1,4 @@
-package no.stelvio.consumer;
+package no.stelvio.consumer.support;
 
 import java.lang.reflect.Method;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package no.stelvio.consumer;
+package no.stelvio.consumer.support;
 
 import javax.xml.namespace.QName;
 import javax.xml.rpc.handler.GenericHandler;
