@@ -19,6 +19,8 @@
 	  <module>../stelvio-repository-star-example-java</module>
 	  <module>../stelvio-service-star-example-java</module>
 	  <module>../stelvio-service-star-example-ejb</module>
+	  <module>../stelvio-provider-star-example-java</module>
+	  <module>../stelvio-provider-star-example-ejb</module>
 	  <module>../stelvio-consumer-star-example-wsclient</module>
 	  <module>../stelvio-consumer-star-example-java</module>
 	  <module>../stelvio-presentation-star-example-java</module>
