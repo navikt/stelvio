@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.presentation.security.page.constants.Constants;
 
 /**
@@ -64,24 +65,32 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
+ * @todo add possibility to add the message as a servlet parameter and use internationalization.
  */
 
 public class JeeAuthenticationServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	private static String defaultSecurityMessage = 
+		"An error occured after attempting to log in. You are not authorized to view this page.";
+	
 	/**
 	 * Redirects the response to the page stored in the session attribute
-	 * specified by constant <code>JSFPAGE_TOGO_AFTER_AUTHENTICATION</code>.
+	 * specified by the constant <code>JSFPAGE_TOGO_AFTER_AUTHENTICATION</code>.
 	 * 
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = response.encodeRedirectURL((String) request.getSession(
-				false)
-				.getAttribute(Constants.JSFPAGE_TOGO_AFTER_AUTHENTICATION));
-		response.sendRedirect(url);
+		//Check if the user has logged in.
+		if(SecurityContextHolder.currentSecurityContext().getUserId() != null){
+			String url = response.encodeRedirectURL((String) request.getSession(
+					false)
+					.getAttribute(Constants.JSFPAGE_TOGO_AFTER_AUTHENTICATION));
+			response.sendRedirect(url);
+		} else {
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, defaultSecurityMessage);
+		}
 	}
 }
