@@ -12,6 +12,8 @@ import java.util.Date;
  */
 public class ChangeStampDto implements Serializable {
 
+	private static final long serialVersionUID = -5331617955168131234L;
+
 	private String createdBy;
 
 	private Date createdDate;
