@@ -22,7 +22,10 @@ public final class RequestContextHolder  {
 	 * Bind the given <code>RequestContext</code> to the current thread.
      *
 	 * @param context the <code>RequestContext</code> to expose.
+	 * @deprecated Should not be set from client code. Method will soon be inaccessible. 
+	 * Use reflection if it is absolutely neccessary to explicitly set the RequestContext.
 	 */
+	@Deprecated
 	public static void setRequestContext(RequestContext context) {
 		requestContextHolder.set(context);
 	}
@@ -47,7 +50,10 @@ public final class RequestContextHolder  {
 
 	/**
 	 * Reset the <code>RequestContext</code> for the current thread.
+	 * @deprecated Should not be reset from client code. Method will soon be inaccessible. 
+	 * Use reflection if it is absolutely neccessary to explicitly reset the RequestContext.
 	 */
+	@Deprecated
 	public static void resetRequestContext() {
 		requestContextHolder.set(null);
 	}
