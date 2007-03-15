@@ -25,11 +25,14 @@ public class SecurityContextHolder {
 	 * Bind the given <code>SecurityContext</code> to the current thread.
 	 *
 	 * @param context the <code>SecurityContext</code> to expose.
+	 * @deprecated Should not be set from client code. Method will soon be inaccessible. 
+	 * Use reflection if it is absolutely neccessary to explicitly set the SecurityContext.
 	 */
+	@Deprecated
 	public static void setSecurityContext(SecurityContext context) {
 		securityContextHolder.set(context);
 	}
-
+	
 	/**
 	 * Return the <code>SecurityContext</code> currently bound to the thread.
 	 *
@@ -49,7 +52,12 @@ public class SecurityContextHolder {
 		return context;
 	}
 
-	/** Reset the <code>SecurityContext</code> for the current thread. */
+	/** 
+	 * Reset the <code>SecurityContext</code> for the current thread. 
+	 * @deprecated Should not be reset from client code. Method will soon be inaccessible. 
+	 * Use reflection if it is absolutely neccessary to explicitly reset the SecurityContext.
+	 */
+	@Deprecated
 	public static void resetSecurityContext() {
 		securityContextHolder.set(null);
 	}
