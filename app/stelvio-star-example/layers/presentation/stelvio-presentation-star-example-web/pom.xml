@@ -30,12 +30,12 @@
 			<groupId>no.stelvio.starexample.layers.repository</groupId>
 			<version>${pom.version}</version>
 		</dependency>
-		<dependency>
+		<!-- dependency -->
 			<!-- TODO common classes (interface, etc) should be in the common java project for services -->
-			<artifactId>stelvio-service-star-example-ejb</artifactId>
+			<!-- artifactId>stelvio-service-star-example-ejb</artifactId>
 			<groupId>no.stelvio.starexample.layers.service</groupId>
 			<version>${pom.version}</version>
-		</dependency>
+		</dependency -->
 		<dependency>
 			<artifactId>stelvio-presentation-star-example-java</artifactId>
 			<groupId>no.stelvio.starexample.layers.presentation</groupId>
