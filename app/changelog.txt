@@ -13,6 +13,9 @@ Module stelvio-common-java
 
 Module stelvio-domain-java
 
+Module stelvio-dto-java
+* New module added. No content in this release
+
 
 Changes in version 1.0.2 (15.2.2007)
 ------------------------------------
