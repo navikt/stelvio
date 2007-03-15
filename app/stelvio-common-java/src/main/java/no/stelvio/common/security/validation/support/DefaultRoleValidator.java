@@ -13,6 +13,7 @@ import no.stelvio.common.security.validation.ValidRole;
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
+ * @see RoleValidator
  */
 public class DefaultRoleValidator implements RoleValidator {
 

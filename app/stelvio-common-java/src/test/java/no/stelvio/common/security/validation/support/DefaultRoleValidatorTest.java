@@ -1,6 +1,9 @@
 package no.stelvio.common.security.validation.support;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +40,7 @@ public class DefaultRoleValidatorTest {
 	}
 	
 	@Test
-	public void testGetValidRoles() {
+	public void getValidRoles() {
 		List<ValidRole> roles = validator.getValidRoles();
 		DefaultRoles[] defRoles = DefaultRoles.values();
 		for (DefaultRoles role : defRoles) {
@@ -48,7 +51,7 @@ public class DefaultRoleValidatorTest {
 	}
 
 	@Test
-	public void testSetValidRolesListOfValidRole() {
+	public void setValidRolesListOfValidRole() {
 		List<ValidRole> validRoles = new ArrayList<ValidRole>();
 		validRoles.add(DefaultRoles2.ROLE3);
 		validRoles.add(DefaultRoles2.ROLE4);	
@@ -57,7 +60,7 @@ public class DefaultRoleValidatorTest {
 	}
 
 	@Test
-	public void testSetValidRolesValidRoleArray() {
+	public void setValidRolesValidRoleArray() {
 		validator.setValidRoles(DefaultRoles2.ROLE3, DefaultRoles2.ROLE4);
 		List<ValidRole> roles = validator.getValidRoles();
 		assertTrue("List of roles returned should include DefaultRoles2.ROLE3", roles.contains(DefaultRoles2.ROLE3));
@@ -65,7 +68,7 @@ public class DefaultRoleValidatorTest {
 	}
 
 	@Test
-	public void testIsValid() {
+	public void isValid() {
 		assertFalse("Should return false as the parameter is neither a Role or a String.", validator.isValid(new Object()));
 		assertFalse("Should return false as the string is not a valid rolename.", validator.isValid("SomeRole"));
 		assertFalse("Should return false as the Role is not a valid role.", validator.isValid(new DefaultRole("SomeRole")));
