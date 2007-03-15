@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.3</version>
 	<name>stelvio</name>
 	<modules>
 		<module>stelvio-common-java</module>
@@ -35,9 +34,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/</developerConnection>
-		<url>http://versjonskontroll.adeo.no/viewsvn/?root=stelvio</url>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.3</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.3</developerConnection>
+		<url>https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.3</url>
 	</scm>
 	<dependencies>
 		<dependency>
