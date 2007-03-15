@@ -5,7 +5,7 @@
     <groupId>no.stelvio.app</groupId>
     <packaging>pom</packaging>
     <name>Stelvio workspace parent</name>
-    <version>1.0.0</version>
+    <version>1.0.3-SNAPSHOT</version>
     <distributionManagement>
         <repository>
             <id>nav-maven2-internal-repo</id>
