@@ -386,6 +386,7 @@ public class JeeSecurityPhaseListener implements PhaseListener {
 	 * @return the page autorization cache, <code>null</code> if the cache is
 	 *         not enabled
 	 */
+	@SuppressWarnings(value={"unchecked"})
 	private Map<String, Boolean> getUserSessionPageAuthorizationCache(boolean enabled) {
 		if (enabled) {
 			ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext();
