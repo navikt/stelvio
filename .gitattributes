@@ -313,6 +313,8 @@ app/stelvio-domain-java/src/test/resources/performance-monitoring.xml -text
 app/stelvio-dto-java/.classpath -text
 app/stelvio-dto-java/.project -text
 app/stelvio-dto-java/pom.xml -text
+app/stelvio-dto-java/src/main/java/no/stelvio/dto/person/PidDto.java -text
+app/stelvio-dto-java/src/main/java/no/stelvio/dto/time/ChangeStampDto.java -text
 app/stelvio-presentation-java/pom.xml -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/constants/ConstantsWrapper.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/RequestContextFilter.java -text
