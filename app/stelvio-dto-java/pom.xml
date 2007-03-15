@@ -3,7 +3,7 @@
   <parent>
     <artifactId>stelvio</artifactId>
     <groupId>no.stelvio</groupId>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
   </parent>
   <groupId>no.stelvio</groupId>
   <artifactId>stelvio-dto-java</artifactId>

@@ -3,7 +3,7 @@
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.3</version>
+	<version>1.0.4-SNAPSHOT</version>
 	<name>stelvio</name>
 	<modules>
 		<module>stelvio-common-java</module>
@@ -34,9 +34,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.3</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.3</developerConnection>
-		<url>https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-1.0.3</url>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app/</developerConnection>
+		<url>http://versjonskontroll.adeo.no/viewsvn/?root=stelvio</url>
 	</scm>
 	<dependencies>
 		<dependency>
