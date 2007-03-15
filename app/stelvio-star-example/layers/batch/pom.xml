@@ -13,6 +13,6 @@
 	<name>Batch layer for Stelvio Star Example</name>
 	<modules>
 		<module>stelvio-batch-star-example-java</module>
-		<module>stelvio-batch-star-example-ejb</module>
+		<!-- module>stelvio-batch-star-example-ejb</module -->
 	</modules>
 </project>
