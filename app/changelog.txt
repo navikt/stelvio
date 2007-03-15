@@ -10,11 +10,39 @@ Module stelvio-common-java
 * Introduced new component, NoGenericsCodesTableAdapter used to bridge the CodesTableFactory/NoGenericsCodesTableFactory gap
 * Introduced IbanValidator used to validate Internation Bank Account Numbers
 * Introduced BbanValidator used to validate Basic Bank Account Numbers (only supports Norwegian BBANs at the moment)
+* Introduced RoleValidator and role definitions used to validate the roles sent in to rolechecks.
+* Added a RoleValidator util which can create a RoleValidator on the basis of an enumeration of roles implementing
+  the ValidRole interface.
+* Added the possibility to use enumerations containing roles in the SecurityContext and the possibility to use
+  a RoleValidator in the SimpleSecurityContext so that input parameters can be validated.
+* Deprecated the set and reset methods of the SecurityContextHolder and RequestContextHolder as these methods
+  should not be called from client code. Added setter classes in the support package which through reflection
+  can invoke these. Intended for unit-testing only.
 
 Module stelvio-domain-java
 
 Module stelvio-dto-java
 * New module added. No content in this release
+
+Module stelvio-presentation-java
+* Deprecated MenuAction, when descretion is to be implemented, this class will need to reside in the pensjon project. Defect #5
+* Added LocalePhaseListener, a phaselistener that retrieves the current locale from FacesContext and sets it in the
+  Spring LocaleContextHolder. Defect #342
+* Changed RequestContextPhaseListener to avoid nullpointerexception. The phaselistener is no longer executed in the
+  first phase of the lifecycle.
+* Guideline for message now includes guidelines for the usage of text elments across funtional areas. Defect #408
+* Errors in helpPopUp component has been corrected. Defect #485 and #486
+* Architectural principles for the usage of the Valang validation framework has been added to the development handbook
+  in the pension project. Defect #544
+* Error handling component for the presentation layer for use in error pages has been added. Defect #33
+* Implemented optional RoleValidation in the setup of the SecurityContext in the SecurityContextFilter. 
+  An optional init parameter can be set specifying an enumeration containing the valid roles of the application.
+  This will then be injected into the SecurityContext meaning that all components using the SecurityContext
+  will be subject to rolevalidation against application-specific roles.
+
+
+Module stelvio-consumer-java
+* Contains support classes for creating consumer services. See the Guideline - Stelvio - Consumer for more information.
 
 
 Changes in version 1.0.2 (15.2.2007)
