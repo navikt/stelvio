@@ -17,7 +17,7 @@
 		<module>stelvio-consumer-java</module>
 		<module>stelvio-presentation-java</module>
 		<module>workspaces</module>
-		<module>stelvio-star-example</module>
+		<!-- module>stelvio-star-example</module -->
 	</modules>
 	<developers>
 		<developer>
