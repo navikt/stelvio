@@ -22,6 +22,7 @@ import org.apache.myfaces.custom.navmenu.NavigationMenuItem;
  * must be injected.
  * 
  * @author person6045563b8dec
+ * @deprecated use no.nav.presentation.pensjon.common.menu.MenuAction 
  *
  */
 public class MenuAction {
@@ -95,7 +96,7 @@ public class MenuAction {
 					}
 				}
 			}
-		}
+		} 
 		return menuItem;
 	}
 	
