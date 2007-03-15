@@ -2,6 +2,7 @@ package no.stelvio.presentation.security.context;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,10 +17,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.xml.sax.SAXException;
 
 import no.stelvio.common.security.SecurityContext;
 import no.stelvio.common.security.SecurityContextHolder;
 import no.stelvio.common.security.support.SimpleSecurityContext;
+import no.stelvio.common.security.validation.RoleValidator;
+import no.stelvio.common.security.validation.support.RoleValidatorUtil;
 import no.stelvio.presentation.security.context.parse.SecurityRole;
 import no.stelvio.presentation.security.context.parse.WebAppRoles;
 import no.stelvio.presentation.security.context.parse.WebXmlParser;
@@ -32,31 +36,113 @@ import no.stelvio.presentation.security.page.constants.Constants;
  * <li> Reading in all the security roles from web.xml and comparing these with the roles of the logged-in user. 
  * These are then stored in the HttpSession and put on the context.</li>
  * <li>Retrieving the user id of the logged-in user, place it in the HttpSession and populate the context.</li>
+ * <li>Optionally inject a RoleValidator into the SecurityContext which can validate the roles sent in 
+ * to rolechecks against a ValidRole enumeration implementation.</li>
  * <br>
+ * <br>
+ * The following optional initparameters are available to this filter:
+ * <br>
+ * <br>
+ * <li><b>no.stelvio.presentation.security.START_PAGE</b> - Specifies the page to go to after login. Value: relative path to page. </li>
+ * <br>
+ * <br>
+ * <li><b>no.stelvio.presentation.security.ALLOW_URL_MANIPULATION</b> - Specifies wheter or not the users should be allowed to go to the requested
+ * page suggested by the URL after they have logged in (If this page is protected). Value: true or false</li>
+ * <br>
+ * <br>
+ * <li><b>no.stelvio.presentation.security.context.VALID_ROLES_ENUM</b> - Specifies that the rolenames used in rolechecks should be evaluated against
+ * the enumeration represented by this value (The enumeration must be defined by its fully qualified class name
+ * and it must be a ValidRole implementation). The enumaration will be used to create a RoleValidator that will be
+ * set into the SecurityContext. Value: fully qualified classname to a ValidRole enumeration.</li>
+ * <br>
+ * <br>
+ * 
  * @author persondab2f89862d3, Accenture
  * @version $Id: SecurityContextFilter.java $ 
+ * @see SecurityContext
+ * @see RoleValidator
+ * @see ValidRole
  */ 
 public class SecurityContextFilter extends OncePerRequestFilter {
 
+	private static final Log logger = LogFactory.getLog(SecurityContextFilter.class);
+	//Session constants
 	private static final String SECURITY_CONTEXT = SecurityContext.class.getName();
 	private static final String USER_ID = "USER_ID";
 	private static final String USER_ROLES = "USER_ROLES";
-
-	protected static final Log logger = LogFactory.getLog(SecurityContextFilter.class);
-	protected String startPage;
-	private boolean allowURLManipulation;
-	protected static final String START_PAGE_AFTER_LOGIN = "no.stelvio.presentation.security.START_PAGE"; 
-	protected static final String ALLOW_URL_MANIPULATION = "no.stelvio.presentation.security.ALLOW_URL_MANIPULATION"; 
+	//Init parameter constants
+	private static final String VALID_ROLES_ENUM = "no.stelvio.presentation.security.context.VALID_ROLES_ENUM";
+	private static final String START_PAGE_AFTER_LOGIN = "no.stelvio.presentation.security.START_PAGE"; 
+	private static final String ALLOW_URL_MANIPULATION = "no.stelvio.presentation.security.ALLOW_URL_MANIPULATION";
 	
-	private List<SecurityRole> roller;
+	private RoleValidator validator;
+	private String startPage;
+	private boolean allowURLManipulation;
+	 
+	private List<SecurityRole> securityRoles;
 	private static Method setSecurityContextMethod;
 	private static Method resetSecurityContextMethod;
 	
+	/**
+	 *	Finds and creates the methods for setting and resetting the SecurityContext through reflection.  
+	 */
 	static {
 		setSecurityContextMethod = ReflectionUtils.findMethod(SecurityContextHolder.class, "setSecurityContext", new Class[]{SecurityContext.class});
 		setSecurityContextMethod.setAccessible(true);
 		resetSecurityContextMethod = ReflectionUtils.findMethod(SecurityContextHolder.class, "resetSecurityContext", new Class[]{});
 		resetSecurityContextMethod.setAccessible(true);
+	}
+	
+	/**
+	 * Gets the optional init parameters for this filter:
+	 * <li>START_PAGE_AFTER_LOGIN - Specifies the page to go to after login. (Relative path)</li>
+	 * <br>
+	 * <br>
+	 * <li>ALLOW_URL_MANIPULATION - Specifies wheter or not the users should be allowed to go to the requested
+	 * page suggested by the URL after they have logged in (If this page is protected).</li>
+	 * <br>
+	 * <br>
+	 * <li>VALID_ROLES_ENUM - Specifies that the rolenames used in rolechecks should be evaluated against
+	 * the enumeration represented by this value (The enumeration must be defined by its fully qualified class name
+	 * and it must be a ValidRole implementation). The enumaration will be used to create a RoleValidator that will be
+	 * set into the SecurityContext.</li>
+	 * <br>
+	 * <br>
+	 * @throws ClassNotFoundException if the value of the VALID_ROLES_ENUM parameter does not represent a valid class. 
+	 */
+	private void getInitParameters() throws ClassNotFoundException {
+		this.startPage = getFilterConfig().getInitParameter(START_PAGE_AFTER_LOGIN);
+		this.allowURLManipulation = getFilterConfig().getInitParameter(ALLOW_URL_MANIPULATION) != null ?
+		getFilterConfig().getInitParameter(ALLOW_URL_MANIPULATION).equalsIgnoreCase("true") : false;
+		
+		//initialize and set the validator
+		String enumName = getFilterConfig().getInitParameter(VALID_ROLES_ENUM);
+		Class enumClass = RoleValidatorUtil.getClassFromString(enumName);
+		this.validator = RoleValidatorUtil.createValidatorFromEnum(enumClass);
+	}
+	
+	/**
+	 * Reads in and parses the security role elements from web.xml using the <code>WebXmlParser</code>.
+	 * @throws MalformedURLException if the URL to web.xml is invalid
+	 * @throws SAXException if parsing of the xml file fails
+	 * @throws IOException if an input/output error occurs
+	 */
+	private void getRolesFromWebXml() throws MalformedURLException, SAXException, IOException {
+		URL url = getFilterConfig().getServletContext().getResource("/WEB-INF/web.xml");
+		WebXmlParser parser = new WebXmlParser(url);
+		WebAppRoles roles = parser.getWebAppRoles();
+		securityRoles = roles.getSecurityRoles();
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("Initparameter " + ALLOW_URL_MANIPULATION + " has been set to:" + this.allowURLManipulation);
+			logger.debug("Initparameter " + START_PAGE_AFTER_LOGIN + " has been set to:" + this.startPage);
+			
+			Iterator iterator = roles.getSecurityRolesIterator();
+			while (iterator.hasNext()) {
+				SecurityRole element = (SecurityRole) iterator.next();
+				logger.debug("Get role from web.xml <security-role> element: " + element.getRoleName());
+			}
+		}
 	}
 	
 	/**  
@@ -65,28 +151,11 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 	 */
 	@Override
 	protected void initFilterBean() throws ServletException {
-		super.initFilterBean();    //To change body of overridden methods use File | Settings | File Templates.
+		super.initFilterBean();    
 		
 		try {
-			this.startPage = getFilterConfig().getInitParameter(START_PAGE_AFTER_LOGIN);
-			this.allowURLManipulation = getFilterConfig().getInitParameter(ALLOW_URL_MANIPULATION) != null ?
-			getFilterConfig().getInitParameter(ALLOW_URL_MANIPULATION).equalsIgnoreCase("true") : false;
-			
-			URL url = getFilterConfig().getServletContext().getResource("/WEB-INF/web.xml");
-			WebXmlParser parser = new WebXmlParser(url);
-			WebAppRoles roles = parser.getWebAppRoles();
-			roller = roles.getSecurityRoles();
-
-			if (logger.isDebugEnabled()) {
-				logger.debug("Initparameter " + ALLOW_URL_MANIPULATION + " has been set to:" + this.allowURLManipulation);
-				logger.debug("Initparameter " + START_PAGE_AFTER_LOGIN + " has been set to:" + this.startPage);
-				
-				Iterator iterator = roles.getSecurityRolesIterator();
-				while (iterator.hasNext()) {
-					SecurityRole element = (SecurityRole) iterator.next();
-					logger.debug("Get role from web.xml <security-role> element: " + element.getRoleName());
-				}
-			}
+			getInitParameters();
+			getRolesFromWebXml();
 		} catch (Exception e) {
 			throw new RuntimeException("An error occured while initializing the filter: "
 					+ "Could not parse and retrieve the security roles from web.xml.", e);
@@ -160,22 +229,24 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 	 * @param req the HttpServletRequest
 	 * @return a poulated <code>SecurityContext</code>.
 	 */
+	@SuppressWarnings(value={"unchecked"})
 	private SecurityContext populateSecurityContext(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		SecurityContext securityContext;
-
+		//Checks if the user has logged in.
 		if (req.getRemoteUser() != null) {
+			//Set the user id in session if not already there
 			if (session.getAttribute(USER_ID) == null) {
 				session.setAttribute(USER_ID, req.getRemoteUser());
 			} else {
 				String user = (String) session.getAttribute(USER_ID);
-
+				//Set userid on session if it is not equal to the one already there.
 				if (!user.equals(req.getRemoteUser())) {
 					session.setAttribute(USER_ID, req.getRemoteUser());
 				}
 			}
 
-			//legger roller på sesjonen hvis de ikke ligger der fra før
+			//put roles in session if they are not already there
 			if (session.getAttribute(USER_ROLES) == null || ((List) session.getAttribute(USER_ROLES)).size() == 0) {
 				addRoles(session, req);
 
@@ -184,12 +255,18 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 				}
 			}
 		}
-
-		securityContext = new SimpleSecurityContext((String) session.getAttribute(USER_ID),
-				(List<String>) session.getAttribute(USER_ROLES));
-
+		//If a role-enumeration has been specified in the initparams a role-validator 
+		//will be created and added to the securitycontext.
+		if(this.validator != null){
+			securityContext = new SimpleSecurityContext((String) session.getAttribute(USER_ID),
+					(List<String>) session.getAttribute(USER_ROLES), validator);
+		} else {
+			securityContext = new SimpleSecurityContext((String) session.getAttribute(USER_ID),
+					(List<String>) session.getAttribute(USER_ROLES));
+		}
+			
 		if (logger.isDebugEnabled()) {
-			logger.debug("Roller i sesjonen: " + session.getAttribute(USER_ROLES));
+			logger.debug("Roles in session: " + session.getAttribute(USER_ROLES));
 		}
 
 		return securityContext;
@@ -224,9 +301,9 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 	 * @param httpreq the HttpServletRequest to be processed
 	 */
 	private void addRoles(HttpSession session, HttpServletRequest httpreq) {
-		List<String> rolleList = new ArrayList<String>();
+		List<String> roleList = new ArrayList<String>();
 
-		for (SecurityRole securityRole : roller) {
+		for (SecurityRole securityRole : securityRoles) {
 			String roleName = securityRole.getRoleName();
 
 			if (httpreq.isUserInRole(roleName)) {
@@ -234,10 +311,10 @@ public class SecurityContextFilter extends OncePerRequestFilter {
 					logger.debug("Adding role: " + roleName);
 				}
 
-				rolleList.add(roleName);
+				roleList.add(roleName);
 			}
 		}
 
-		session.setAttribute(USER_ROLES, rolleList);
+		session.setAttribute(USER_ROLES, roleList);
 	}
 }

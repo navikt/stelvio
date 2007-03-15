@@ -1,12 +1,14 @@
 package no.stelvio.presentation.security.context.parse;
 
+import no.stelvio.common.security.definition.Role;
+
 /**
  * This class represent a security role from web.xml.
  * 
  * @author persondab2f89862d3, Accenture
  * @version $Id$
  */
-public class SecurityRole {
+public class SecurityRole implements Role{
 	
 	/** The name of the security role */
 	private String roleName;

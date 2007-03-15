@@ -7,7 +7,6 @@ import javax.faces.context.FacesContext;
 import no.stelvio.common.security.SecurityContextHolder;
 
 import com.groundside.jsf.securityresolver.adapter.AbstractAttributeResolver;
-import com.groundside.jsf.securityresolver.adapter.AttributeResolver;
 
 /**
  * Implementation of a security resolver that hooks into
@@ -15,8 +14,10 @@ import com.groundside.jsf.securityresolver.adapter.AttributeResolver;
  * JSF security EL-extensions (com.groundside) package.
  * @author persondab2f89862d3, Accenture
  * @version $Id$
+ * @see no.stelvio.common.security.SecurityContext
  */
 public class SecurityAttributeResolver extends AbstractAttributeResolver{
+	
 	/**
      * Indicate the list of supported functions
      * @param function to check for support as defined by a constant in the <code>AttributeResolver</code>
@@ -86,8 +87,8 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver{
      */
     @SuppressWarnings(value={"unchecked"})
     public boolean isUserInAllRoles(FacesContext ctx, List roleDefinitions) {
-        return SecurityContextHolder.currentSecurityContext().isUserInAllRoles(roleDefinitions) ;
-    }
+    	return SecurityContextHolder.currentSecurityContext().isUserInAllRoles(roleDefinitions) ;
+    }     
     /**
      * Indicates wheter or not the user is a member of <b>one</b> of the supplied roles.
      * @param ctx FacesContext, currently not used but is required by the <code>AttributeResolver</code> interface.
@@ -96,6 +97,6 @@ public class SecurityAttributeResolver extends AbstractAttributeResolver{
      */
     @SuppressWarnings(value={"unchecked"})
     public boolean isUserInRole(FacesContext ctx, List roleDefinitions) {
-        return SecurityContextHolder.currentSecurityContext().isUserInRoles(roleDefinitions) ;
-    }
+    	return SecurityContextHolder.currentSecurityContext().isUserInRoles(roleDefinitions) ;
+    }   
 }

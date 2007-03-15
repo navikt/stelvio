@@ -20,6 +20,9 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.FactoryFinder;
@@ -28,6 +31,7 @@ import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.render.RenderKitFactory;
+import javax.servlet.ServletContext;
 
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
@@ -110,9 +114,20 @@ public class AbstractPhaselistenerTestCase {
 		SecurityContextSetter.setSecurityContext(new SimpleSecurityContext(principal.getName(),roles));
 		
 		 // Set up Servlet API Objects
-        servletContext = new MockServletContext();
-
+        servletContext = new MockServletContext(); 
+        
+        HashMap<String, String> map = getInitParameters();
+        if(map != null){
+        	Iterator<String> iter = map.keySet().iterator();
+            while(iter.hasNext()){
+            	String key = iter.next();
+            	String value = map.get(key);
+            	servletContext.addInitParameter(key, value);
+            }
+        }
+              		
         config = new MockServletConfig(servletContext);
+        
         session = new MockHttpSession();
         session.setServletContext(servletContext);
         request = new MockHttpServletRequestExtended(session, principal, roles);
@@ -188,6 +203,10 @@ public class AbstractPhaselistenerTestCase {
     
     protected void onTearDown() throws Exception {
     	
+    }
+    
+    protected HashMap<String, String> getInitParameters(){
+    	return null;
     }
     
     /**

@@ -28,6 +28,4 @@ public class MockExternalContextExtended extends MockExternalContext {
     	
     	((HttpServletResponse)this.getResponse()).sendRedirect(requestURI);
     }
-   
-    
 }
