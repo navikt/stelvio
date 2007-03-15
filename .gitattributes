@@ -319,6 +319,7 @@ app/stelvio-presentation-java/pom.xml -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/constants/ConstantsWrapper.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/RequestContextFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/context/ServletContextAttributeSetter.java -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/error/ErrorAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/filter/AbstractFilter.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/action/MenuAction.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/context/RequestContextPhaseListener.java -text
