@@ -21,7 +21,6 @@ import java.net.URLClassLoader;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,7 +30,6 @@ import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.render.RenderKitFactory;
-import javax.servlet.ServletContext;
 
 import no.stelvio.common.context.support.RequestContextSetter;
 import no.stelvio.common.context.support.SimpleRequestContext;
