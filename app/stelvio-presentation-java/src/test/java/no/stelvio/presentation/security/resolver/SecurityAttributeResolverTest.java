@@ -6,22 +6,44 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.faces.context.FacesContext;
 
 import no.stelvio.common.security.SecurityContext;
+
 import no.stelvio.common.security.support.SecurityContextSetter;
 import no.stelvio.common.security.support.SimpleSecurityContext;
+import no.stelvio.common.security.validation.RoleNotValidException;
+import no.stelvio.common.security.validation.RoleValidator;
+import no.stelvio.common.security.validation.support.RoleValidatorUtil;
+import no.stelvio.common.security.validation.ValidRole;
 
-import org.junit.Test;
+import no.stelvio.presentation.security.page.AbstractPhaselistenerTestCase;
 
 import com.groundside.jsf.securityresolver.adapter.AttributeResolver;
 
-public class SecurityAttributeResolverTest {
-	private FacesContext faces;	
-	private SecurityAttributeResolver resolver = new SecurityAttributeResolver();
+public class SecurityAttributeResolverTest extends AbstractPhaselistenerTestCase{
+	
+	private FacesContext faces;
+	private SecurityAttributeResolver resolver;
+	private enum ValidRolesEnum implements ValidRole {	
+		ROLE1,
+		ROLE2;
+		
+		public String getRoleName(){
+			return name();
+		}
+	}
+	
+	@Override
+	public void onSetUp() throws Exception {
+		resolver = new SecurityAttributeResolver();
+	}
 	
 	@Test
 	public void isSupported() {
@@ -82,35 +104,53 @@ public class SecurityAttributeResolverTest {
 		loginUser("Test");
 		assertFalse("Should return false, user 'Test' does not have any of the roles.",resolver.isUserInRole(faces,roles));
 	}
+	@Test(expected = RoleNotValidException.class)
+	public void roleNameInValidIsUserInRole() {
+		loginUser("Donald");
+		
+		List<String> roles = new ArrayList<String>();
+		roles.add("something");
+		roles.add("none");
+		//Should throw exception
+		resolver.isUserInRole(faces, roles);
+	}
+	
+	@Test(expected = RoleNotValidException.class)
+	public void roleNameInValidIsUserInAllRoles() {
+		loginUser("Donald");
+		
+		List<String> roles = new ArrayList<String>();
+		roles.add("something");
+		roles.add("none");
+		//Should throw exception
+		resolver.isUserInAllRoles(faces, roles);
+	}
 	
 	/**
-	 * Creates a SecurityContext corresponding to the supplied userId and adds it to the current thread.
-	 *  
+	 * Creates a SecurityContext corresponding to the supplied userId and adds it to the current thread. 
 	 * @param userId the userId
 	 * @return a SecurityContext
 	 */
 	private void loginUser(String userId){
 		SecurityContext ctx;
-		
+		RoleValidator validator = RoleValidatorUtil.createValidatorFromEnum(ValidRolesEnum.class);
 		if(userId.equalsIgnoreCase("Donald")){
 			List<String> roles1 = new ArrayList<String>();
 			roles1.add("ROLE1");
 			roles1.add("ROLE2");
-			ctx = new SimpleSecurityContext(userId,roles1);
+			ctx = new SimpleSecurityContext(userId, roles1, validator);
 		} else if (userId.equalsIgnoreCase("Dolly")){
 			List<String> roles2 = new ArrayList<String>();
 			roles2.add("ROLE1");
 			roles2.add("ROLE3");
-			ctx = new SimpleSecurityContext(userId,roles2);
+			ctx = new SimpleSecurityContext(userId, roles2, validator);
 		} else {
 			List<String> roles3 = new ArrayList<String>();
-			ctx = new SimpleSecurityContext(userId,roles3);
+			ctx = new SimpleSecurityContext(userId, roles3, validator);
 		}
-		
 		SecurityContextSetter.setSecurityContext(ctx);
 	}
-	
 	private void logoutUser(){
-		SecurityContextSetter.setSecurityContext(new SimpleSecurityContext(null,new ArrayList<String>()));
+		SecurityContextSetter.setSecurityContext(new SimpleSecurityContext(null, new ArrayList<String>()));
 	}
 }
