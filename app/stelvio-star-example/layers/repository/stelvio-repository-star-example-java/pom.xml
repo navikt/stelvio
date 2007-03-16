@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>repository</artifactId>
 		<groupId>no.stelvio.starexample.layers</groupId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-repository-star-example-java</artifactId>
 	<groupId>no.stelvio.starexample.layers.repository</groupId>

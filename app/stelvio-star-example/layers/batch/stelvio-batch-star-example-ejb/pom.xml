@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>batch</artifactId>
 		<groupId>no.stelvio.starexample.layers</groupId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-batch-star-example-ejb</artifactId>
 	<groupId>no.stelvio.starexample.layers.batch</groupId>

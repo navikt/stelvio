@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>consumer</artifactId>
 		<groupId>no.stelvio.starexample.layers</groupId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-consumer-star-example-java</artifactId>
 	<groupId>no.stelvio.starexample.layers.consumer</groupId>

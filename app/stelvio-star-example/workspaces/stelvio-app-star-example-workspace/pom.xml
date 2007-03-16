@@ -13,7 +13,7 @@
 	<groupId>no.stelvio.starexample.workspaces</groupId>
   <packaging>pom</packaging>
   <name>Workspace for Stelvio Star Example</name>
-  <version>1.0.3-SNAPSHOT</version>
+  <version>1.0.4-SNAPSHOT</version>
   <modules>
 	  <module>../stelvio-domain-star-example-java</module>
 	  <module>../stelvio-repository-star-example-java</module>

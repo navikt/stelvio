@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>starexample</artifactId>
 		<groupId>no.stelvio.starexample</groupId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>workspaces</artifactId>
 	<packaging>pom</packaging>

@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>presentation</artifactId>
 		<groupId>no.stelvio.starexample.layers</groupId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>stelvio-presentation-star-example-java</artifactId>
 	<groupId>no.stelvio.starexample.layers.presentation</groupId>
