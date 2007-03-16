@@ -17,5 +17,6 @@
 		<module>service</module>
 		<module>repository</module>
 		<module>domain</module>
+		<module>provider</module>
 	</modules>
 </project>
