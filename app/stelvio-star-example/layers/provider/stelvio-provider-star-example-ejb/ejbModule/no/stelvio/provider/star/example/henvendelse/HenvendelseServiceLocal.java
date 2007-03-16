@@ -5,6 +5,7 @@
 package no.stelvio.provider.star.example.henvendelse;
 
 import javax.ejb.EJBLocalObject;
+import no.stelvio.service.star.example.henvendelse.HenvendelseServiceBi;
 
 public interface HenvendelseServiceLocal extends HenvendelseServiceBi, EJBLocalObject {
 }

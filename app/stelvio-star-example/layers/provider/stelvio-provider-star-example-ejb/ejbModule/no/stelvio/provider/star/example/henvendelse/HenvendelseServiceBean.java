@@ -12,6 +12,7 @@ import org.springframework.ejb.support.AbstractStatelessSessionBean;
 
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatisticsRequest;
 import no.stelvio.service.star.example.henvendelse.to.HenvendelseStatisticsResponse;
+import no.stelvio.service.star.example.henvendelse.HenvendelseServiceBi;
 
 /**
  * EJB implementation of the <code>HenvendelseServiceBi</code> interface which acts as a thin facade over the POJO
