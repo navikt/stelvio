@@ -20,6 +20,11 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
+			<artifactId>stelvio-service-star-example-java</artifactId>
+			<groupId>no.stelvio.starexample.layers.service</groupId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
 			<artifactId>spring-remoting</artifactId>
 			<groupId>org.springframework</groupId>
 			<version>2.0.2</version>
@@ -35,46 +40,31 @@
 			<groupId>com.ibm.websphere.csi</groupId>
 			<artifactId>ecutils</artifactId>
 			<version>6.1</version>
-			<scope>system</scope>
-			<systemPath>
-				C:/Programfiler/IBM/SDP70/runtimes/base_v6/lib/ecutils.jar
-			</systemPath>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.ejs.container</groupId>
 			<artifactId>ejb-portable</artifactId>
 			<version>6.1</version>
-			<scope>system</scope>
-			<systemPath>
-				C:/Programfiler/IBM/SDP70/runtimes/base_v6/lib/ejbportable.jar
-			</systemPath>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.ejs.container</groupId>
 			<artifactId>ejb-container</artifactId>
 			<version>6.1</version>
-			<scope>system</scope>
-			<systemPath>
-				C:/Programfiler/IBM/SDP70/runtimes/base_v6/lib/ejbcontainer.jar
-			</systemPath>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.ejs.container</groupId>
 			<artifactId>ejb-container-impl</artifactId>
 			<version>6.1</version>
-			<scope>system</scope>
-			<systemPath>
-				C:/Programfiler/IBM/SDP70/runtimes/base_v6/lib/ejbcontainerImpl.jar
-			</systemPath>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.ejs.ras</groupId>
 			<artifactId>ras</artifactId>
 			<version>6.1</version>
-			<scope>system</scope>
-			<systemPath>
-				C:/Programfiler/IBM/SDP70/runtimes/base_v6/lib/ras.jar
-			</systemPath>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
