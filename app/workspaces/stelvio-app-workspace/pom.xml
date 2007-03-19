@@ -18,5 +18,7 @@
         <module>../stelvio-presentation-java</module>
         <module>../stelvio-repository-java</module>
         <module>../stelvio-service-java</module>
+        <module>../stelvio-dto-java</module>
+        <module>../stelvio-consumer-java</module>
     </modules>
 </project>
