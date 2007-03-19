@@ -446,6 +446,9 @@ app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/henvendelse/Tidsperiode.java -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/henvendelse/historikk/HenvendelseHistory.java -text
 app/stelvio-star-example/layers/domain/stelvio-domain-star-example-java/src/main/java/no/stelvio/domain/star/example/saksbehandling/Saksbehandler.java -text
+app/stelvio-star-example/layers/dto/stelvio-dto-star-example-java/.classpath -text
+app/stelvio-star-example/layers/dto/stelvio-dto-star-example-java/.project -text
+app/stelvio-star-example/layers/dto/stelvio-dto-star-example-java/pom.xml -text
 app/stelvio-star-example/layers/pom.xml -text
 app/stelvio-star-example/layers/presentation/pom.xml -text
 app/stelvio-star-example/layers/presentation/stelvio-presentation-star-example-java/.classpath -text
