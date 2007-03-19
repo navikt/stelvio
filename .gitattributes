@@ -198,6 +198,7 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/error/AbstractExceptionT
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/AllExceptionsTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ErrorHandlingIntegrationTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/ExceptionHandlerFacadeTest.java -text
+app/stelvio-common-java/src/test/java/no/stelvio/common/error/InvalidArgumentExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/RecoverableExceptionTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/TestBean.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/error/TestRecoverableException.java -text
