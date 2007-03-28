@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+
+<project name="masterBuild" default="build-all">
+
+	<target name="test" depends="init">
+
+     	<projectImport ProjectName="nav-cons-pen-psak-tjenestepensjon"/>
+     	<projectImport ProjectName="nav-lib-cons-pen-psakpselv"/>
+     	<projectImport ProjectName="nav-lib-frg"/>
+     	<projectImport ProjectName="stelvio-commons-lib"/>
+     	<projectImport ProjectName="nav-lib-commons-lang-2.1"/>
+
+        <moduleExport project="${workspace}/nav-cons-pen-psak-tjenestepensjon" output="${output.dir.zip}/nav-cons-pen-psak-tjenestepensjon.zip" />
+  	<echo message="ferdig med zip generering. Lager ear ..."/>
+
+	<exec dir="${buildscripts.dir}" executable="${service.deploy}" output="${log.dir}\nav-cons-pen-psak-tjenestepensjon.log" failonerror="false" resultproperty="servicedeploy.rc" >
+        	<arg line=" ${output.dir.zip}/nav-cons-pen-psak-tjenestepensjon.zip -outputApplication ${output.dir.ear}/nav-cons-pen-psak-tjenestepensjon.ear -cleanStagingModules -noj2eedeploy -progressMonitor none" />
+  	</exec>
+	</target>
+
+
+	<target name="init" unless="build.time">
+		<echo>test= ${test}</echo>
+		<tstamp>
+			<format property="build.time" pattern="yyyy-MM-dd.HH.mm.ss" />
+		</tstamp>
+		<echo>Build started at ${build.time}...</echo>
+		<echo>Adding ant-contrib</echo>
+		<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement
+					location="${buildscripts.dir}\ant-contrib.jar" />
+			</classpath>
+		</taskdef>
+		<echo>ant-contrib added</echo>
+		<taskdef resource="svntask.properties"
+			classpath="${buildscripts.dir}/svnant.jar:${buildscripts.dir}/svnClientAdapter.jar:${buildscripts.dir}/svnjavahl.jar" />
+		<taskdef name="moduleExport"
+			classname="com.ibm.wbit.anttasks.IntegrationModuleExport"
+			classpath="${buildscripts.dir}/IntegrationModuleExport.jar:${wid.home}/eclipse/plugins/org.eclipse.ui.ide_3.0.1/ide.jar" />
+
+		<delete dir="${output.dir.zip}" />
+		<delete dir="${output.dir.ear}" />
+		<delete dir="${log.dir}" />
+		<delete dir="${output.dir.wsdl.zip}" />
+		
+		<mkdir dir="${output.dir.zip}" />
+		<mkdir dir="${output.dir.ear}" />
+		<mkdir dir="${log.dir}" />
+		<mkdir dir="${output.dir.wsdl.zip}" />
+
+	</target>
+
+	<target name="clean">
+		<delete verbose="false" includeEmptyDirs="true">
+			<fileset defaultexcludes="no" dir="${workspace}"
+				includes="**/.svn/**" />
+			<fileset defaultexcludes="no" dir="${workspace}"
+				includes="**/.svn" />
+		</delete>
+	</target>
+
+	<target name="build-all" depends="init">
+		<echo>henter ned kildekode</echo>
+
+		<property name="svnurl"
+			value="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces" />
+		<property name="svnWorkspaceFolder" value="nav-int-workspaces"/>
+
+		<if>
+			<available file="${workspace}/${svnWorkspaceFolder}" />
+			<then>
+				<svn username="svnguest" password="Subversion01">
+					<update dir="${workspace}/${svnWorkspaceFolder}" />
+				</svn>
+			</then>
+			<else>
+				<svn username="svnguest" password="Subversion01">
+					<checkout destPath="${workspace}" url="${svnurl}" />
+				</svn>			
+			</else>
+		</if>
+		<foreach target="getWorkspaces" param="fileName"
+			inheritall="true" inheritrefs="true">
+			<path>
+				<fileset dir="${workspace}/${svnWorkspaceFolder}">
+					<include name="**/nav-frg-tjenestepensjon.psf" />
+					<include name="**/nav-frg-arbeidsforhold.psf" />
+					<exclude name=".metadata" />
+					<exclude name="*/**/*" />
+				</fileset>
+			</path>
+		</foreach>
+
+
+	</target>
+
+
+	<target name="getWorkspaces">
+		<property name="delimiter" value=";" />
+		<basename file="${fileName}" property="workSpaceName" suffix=".psf"/>
+		<echo>sjekker ut prosjekter for workspace ${workSpaceName} </echo>
+		<taskdef name="projectSetTask"
+			classname="no.navn.ant.ProjectSetTask"
+			classpath="${buildscripts.dir}/ant-projectSetTask-1.0.jar" />
+		<!--  Dette er en egenutviklet task som henter ut alle refererte prosjekter. Returnerer en property med navn = <resultPropertyName> med url til svn  -->
+		<projectSetTask projectSetFile="${fileName}"
+			delimiter="${delimiter}" resultPropertyName="refProjects" />
+
+		<foreach list="${refProjects}" delimiter="${delimiter}"
+			target="getReferencedProjects" param="url" inheritall="true"
+			inheritrefs="true">
+		</foreach>
+
+		<foreach list="${refProjects}" delimiter="${delimiter}"
+			target="importProjects" param="url" inheritall="true"
+			inheritrefs="true">
+		</foreach>
+		<!-- <antcallback target="clean"/> -->
+		<foreach list="${refProjects}" delimiter="${delimiter}"
+			target="buildProjects" param="url" inheritall="true"
+			inheritrefs="true">
+		</foreach>
+		<echo>Ferdig med workspace ${workSpaceName} </echo>
+
+	</target>
+
+	<target name="getReferencedProjects">
+		<basename file="${url}" property="moduleName" />
+		<if>
+			<available property="isloaded" file="${workspace}/${moduleName}" type="dir" />
+			<then>
+				<svn username="svnguest" password="Subversion01">
+					<update dir="${workspace}/${moduleName}"/>
+				</svn>
+			</then>
+			<else>
+				<svn username="svnguest" password="Subversion01">
+					<checkout destPath="${workspace}/${moduleName}" url="${url}"/>
+				</svn>
+			</else>
+		</if>
+	</target>
+
+	<target name="importProjects">
+		<!-- importerer prosjektet inn i eclipse workspace -->
+		<basename file="${url}" property="moduleName" />
+		<projectImport ProjectName="${moduleName}" />
+	</target>
+
+	<target name="buildProjects">
+
+		<basename file="${url}" property="moduleName" />
+		<if>
+			<contains string="${url}" substring="/lib/"
+				casesensitive="false" />
+			<then>
+				<echo>bygger ikke modul ${moduleName} med url ${url}</echo>
+			</then>
+			<else>
+				<echo>bygger ${moduleName} med url ${url}</echo>
+				<moduleExport project="${workspace}/${moduleName}"
+					output="${output.dir.zip}/${moduleName}.zip" />
+				<echo>Lager ear</echo>
+				<exec dir="${buildscripts.dir}"
+					executable="${service.deploy}"
+					output="${log.dir}\${moduleName}.log" failonerror="false"
+					resultproperty="servicedeploy.rc">
+					<arg
+						line=" ${output.dir.zip}/${moduleName}.zip -outputApplication ${output.dir.ear}/${moduleName}.ear -cleanStagingModules -noj2eedeploy -progressMonitor none" />
+				</exec>
+				<if>
+					<and>
+						<equals arg1="${servicedeploy.rc}" arg2="0" />
+						<available file="${moduleName}.ear"
+							filepath="${output.dir.ear}" />
+					</and>
+					<then>
+						<echo
+							message="${moduleName}.ear was created without error" />
+						<echo
+							message="${moduleName}.ear was created without error ${line.separator}"
+							file="${log.dir}\results.log" append="true" />
+					</then>
+					<else>
+						<echo
+							message="${moduleName}.ear has a problem refer to ${log.dir}\${moduleName}.log for details of the problem " />
+						<echo
+							message="${moduleName}.ear has a problem refer to ${log.dir}\${moduleName}.log for details of the problem ${line.separator}"
+							file="${log.dir}\results.log" append="true" />
+						<fail message="${moduleName}.ear has a problem refer to ${log.dir}\${moduleName}.log for details of the problem "/>
+
+					</else>
+				</if>
+				<echo>Lager wsdl zipfil</echo>
+				<antcallback target="zipWsdlFiles"/>				
+			</else>
+		</if>
+		
+	</target>
+
+	<target name="zipWsdlFiles">
+		<if>
+			<contains string="${url}" substring="/cons/"
+				casesensitive="false" />
+			<then>
+				<unzip src="${output.dir.ear}/${moduleName}.ear" dest="${output.dir.wsdl.zip}">
+					<patternset>
+						<include name="${moduleName}Web.war"/>
+					</patternset>
+				</unzip>
+				<unzip src="${output.dir.wsdl.zip}/${moduleName}Web.war" dest="${output.dir.wsdl.zip}">
+					<patternset>
+						<include name="META-INF/**"/>
+					</patternset>
+				</unzip>
+				<delete file="${output.dir.wsdl.zip}/${moduleName}Web.war" />
+				<if>
+					<contains string="${url}" substring="psak" casesensitive="false"/>
+					<then>
+						<zip destfile="${output.dir.wsdl.zip}/psak.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf"/>
+					</then>
+				<elseif>
+					<contains string="${url}" substring="pselv" casesensitive="false"/>
+					<then>
+						<zip destfile="${output.dir.wsdl.zip}/pselv.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf" />					
+					</then>
+				</elseif>
+				<else>
+				<echo>Ikke PSak eller PSelv. Navnestandard ikke fulgt</echo>
+				</else>
+				</if>
+				<delete dir="${output.dir.wsdl.zip}/META-INF" />
+			</then>
+			<else>
+				<echo>bygger ikke zipfil for modul med url ${url}</echo>
+			</else>
+		</if>
+	
+	</target>
+
+
+</project>

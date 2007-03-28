@@ -1,3 +1,5 @@
+BuildIntProjects/eclipse.log
+BuildIntProjects/standard-targets.xml
 app/stelvio-batch-java/.classpath
 app/stelvio-batch-java/.project
 app/stelvio-batch-java/batch.iml
