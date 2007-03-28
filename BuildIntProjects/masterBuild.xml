@@ -2,25 +2,11 @@
 
 <project name="masterBuild" default="build-all">
 
-	<target name="test" depends="init">
-
-     	<projectImport ProjectName="nav-cons-pen-psak-tjenestepensjon"/>
-     	<projectImport ProjectName="nav-lib-cons-pen-psakpselv"/>
-     	<projectImport ProjectName="nav-lib-frg"/>
-     	<projectImport ProjectName="stelvio-commons-lib"/>
-     	<projectImport ProjectName="nav-lib-commons-lang-2.1"/>
-
-        <moduleExport project="${workspace}/nav-cons-pen-psak-tjenestepensjon" output="${output.dir.zip}/nav-cons-pen-psak-tjenestepensjon.zip" />
-  	<echo message="ferdig med zip generering. Lager ear ..."/>
-
-	<exec dir="${buildscripts.dir}" executable="${service.deploy}" output="${log.dir}\nav-cons-pen-psak-tjenestepensjon.log" failonerror="false" resultproperty="servicedeploy.rc" >
-        	<arg line=" ${output.dir.zip}/nav-cons-pen-psak-tjenestepensjon.zip -outputApplication ${output.dir.ear}/nav-cons-pen-psak-tjenestepensjon.ear -cleanStagingModules -noj2eedeploy -progressMonitor none" />
-  	</exec>
-	</target>
-
-
 	<target name="init" unless="build.time">
-		<echo>test= ${test}</echo>
+		<fail unless="eclipseWorkSpace">
+			parameteren eclipseWorkSpace må være satt. 
+			Usage: build.bat -DeclipseWorkSpace=nav-frg-tjenestepensjon.psf		
+		</fail>		
 		<tstamp>
 			<format property="build.time" pattern="yyyy-MM-dd.HH.mm.ss" />
 		</tstamp>
@@ -51,14 +37,6 @@
 
 	</target>
 
-	<target name="clean">
-		<delete verbose="false" includeEmptyDirs="true">
-			<fileset defaultexcludes="no" dir="${workspace}"
-				includes="**/.svn/**" />
-			<fileset defaultexcludes="no" dir="${workspace}"
-				includes="**/.svn" />
-		</delete>
-	</target>
 
 	<target name="build-all" depends="init">
 		<echo>henter ned kildekode</echo>
@@ -80,24 +58,15 @@
 				</svn>			
 			</else>
 		</if>
-		<foreach target="getWorkspaces" param="fileName"
-			inheritall="true" inheritrefs="true">
-			<path>
-				<fileset dir="${workspace}/${svnWorkspaceFolder}">
-					<include name="**/nav-frg-tjenestepensjon.psf" />
-					<include name="**/nav-frg-arbeidsforhold.psf" />
-					<exclude name=".metadata" />
-					<exclude name="*/**/*" />
-				</fileset>
-			</path>
-		</foreach>
 
+		<antcallback target="getWorkspaces"/>
 
 	</target>
 
 
 	<target name="getWorkspaces">
 		<property name="delimiter" value=";" />
+		<property name="fileName" value="${workspace}/${svnWorkspaceFolder}/${eclipseWorkSpace}" />
 		<basename file="${fileName}" property="workSpaceName" suffix=".psf"/>
 		<echo>sjekker ut prosjekter for workspace ${workSpaceName} </echo>
 		<taskdef name="projectSetTask"
@@ -116,7 +85,6 @@
 			target="importProjects" param="url" inheritall="true"
 			inheritrefs="true">
 		</foreach>
-		<!-- <antcallback target="clean"/> -->
 		<foreach list="${refProjects}" delimiter="${delimiter}"
 			target="buildProjects" param="url" inheritall="true"
 			inheritrefs="true">
@@ -241,3 +209,6 @@
 
 
 </project>
+
+
+"dailybuilds/20072803/workspace/nav-int-workspaces/nav-sak-oppgave.psf"
