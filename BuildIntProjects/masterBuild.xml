@@ -1,12 +1,8 @@
 <?xml version="1.0"?>
 
-<project name="masterBuild" default="build-all">
+<project name="masterBuild" default="build-single">
 
 	<target name="init" unless="build.time">
-		<fail unless="eclipseWorkSpace">
-			parameteren eclipseWorkSpace må være satt. 
-			Usage: build.bat -DeclipseWorkSpace=nav-frg-tjenestepensjon.psf		
-		</fail>		
 		<tstamp>
 			<format property="build.time" pattern="yyyy-MM-dd.HH.mm.ss" />
 		</tstamp>
@@ -41,10 +37,45 @@
 	<target name="build-all" depends="init">
 		<echo>henter ned kildekode</echo>
 
-		<property name="svnurl"
-			value="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces" />
+		<property name="svnurl" value="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces" />
 		<property name="svnWorkspaceFolder" value="nav-int-workspaces"/>
 
+
+		<antcallback target="checkoutWorkSpace"/>
+		
+		<foreach target="readWorkSpaceFile" param="eclipseWorkSpace"
+			inheritall="true" inheritrefs="true">
+			<path>
+				<fileset dir="${workspace}/${svnWorkspaceFolder}">
+					<include name="**/nav-frg-tjenestepensjon.psf" />
+					<include name="**/nav-frg-arbeidsforhold.psf" />
+					<exclude name=".metadata" />
+					<exclude name="*/**/*" />
+				</fileset>
+			</path>
+		</foreach>
+		
+
+	</target>
+
+	<target name="build-single" depends="init">
+		<fail unless="eclipseWorkSpace">
+			parameteren eclipseWorkSpace må være satt. 
+			Usage: build.bat -DeclipseWorkSpace=nav-frg-tjenestepensjon.psf		
+		</fail>		
+	
+		<echo>henter ned kildekode</echo>
+
+		<property name="svnurl" value="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces" />
+		<property name="svnWorkspaceFolder" value="nav-int-workspaces"/>
+
+
+		<antcallback target="checkoutWorkSpace"/>
+		<antcallback target="readWorkSpaceFile"/>
+
+	</target>
+
+	<target name="checkoutWorkSpace">
 		<if>
 			<available file="${workspace}/${svnWorkspaceFolder}" />
 			<then>
@@ -57,14 +88,10 @@
 					<checkout destPath="${workspace}" url="${svnurl}" />
 				</svn>			
 			</else>
-		</if>
-
-		<antcallback target="getWorkspaces"/>
-
+		</if>	
 	</target>
 
-
-	<target name="getWorkspaces">
+	<target name="readWorkSpaceFile">
 		<property name="delimiter" value=";" />
 		<property name="fileName" value="${workspace}/${svnWorkspaceFolder}/${eclipseWorkSpace}" />
 		<basename file="${fileName}" property="workSpaceName" suffix=".psf"/>
@@ -160,8 +187,6 @@
 
 					</else>
 				</if>
-				<echo>Lager wsdl zipfil</echo>
-				<antcallback target="zipWsdlFiles"/>				
 			</else>
 		</if>
 		
@@ -207,5 +232,10 @@
 	
 	</target>
 
+	<target name="buildWSDLZipFiles" depends="init">
+		<echo>Lager wsdl zipfil</echo>
+		<antcallback target="zipWsdlFiles"/>				
+	
+	</target>
 
 </project>

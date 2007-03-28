@@ -94,6 +94,6 @@ if "%ERRORLEVEL%"=="13" echo ERROR runAnt BUILD FAILED
 if NOT "%ERRORLEVEL%"=="0" echo ERROR runAnt BUILD FAILED. ErrorCode = "%ERRORLEVEL%"
 
 :done
-endlocal
+exit "%ERRORLEVEL%"
 
 
