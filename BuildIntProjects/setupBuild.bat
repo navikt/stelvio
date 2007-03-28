@@ -13,7 +13,7 @@ rem WID installation directory - use back slashes
 SET WID_HOME=C:\IBM\WID6
 
 rem Root directory of the automation scripts and workspaces (usually /Automation) - use back slashes
-SET AUTOMATION_HOME=E:\ws-test\BuildIntProjects
+SET AUTOMATION_HOME=.
 
 
 rem Rational Software Development Platform Directory (install directory of the first RSDP product installed locally)
