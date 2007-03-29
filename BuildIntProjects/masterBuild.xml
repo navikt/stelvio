@@ -43,18 +43,27 @@
 
 		<antcallback target="checkoutWorkSpace"/>
 		
-		<foreach target="readWorkSpaceFile" param="eclipseWorkSpace"
+		<foreach target="readWorkSpaceFile" param="fileName"
 			inheritall="true" inheritrefs="true">
 			<path>
 				<fileset dir="${workspace}/${svnWorkspaceFolder}">
 					<include name="**/nav-frg-tjenestepensjon.psf" />
-					<include name="**/nav-frg-arbeidsforhold.psf" />
+					<include name="**/nav-sak-henvendelse.psf" />
 					<exclude name=".metadata" />
 					<exclude name="*/**/*" />
 				</fileset>
 			</path>
 		</foreach>
 		
+		<foreach target="zipWsdlFiles" param="url"
+			inheritall="true" inheritrefs="true">
+			<path>
+				<fileset dir="${output.dir.ear}">
+					<include name="**/*.ear" />
+				</fileset>
+			</path>
+		</foreach>
+		<antcallback target="zipWsdlFiles"/>				
 
 	</target>
 
@@ -71,6 +80,7 @@
 
 
 		<antcallback target="checkoutWorkSpace"/>
+		<property name="fileName" value="${workspace}/${svnWorkspaceFolder}/${eclipseWorkSpace}" />
 		<antcallback target="readWorkSpaceFile"/>
 
 	</target>
@@ -93,7 +103,6 @@
 
 	<target name="readWorkSpaceFile">
 		<property name="delimiter" value=";" />
-		<property name="fileName" value="${workspace}/${svnWorkspaceFolder}/${eclipseWorkSpace}" />
 		<basename file="${fileName}" property="workSpaceName" suffix=".psf"/>
 		<echo>sjekker ut prosjekter for workspace ${workSpaceName} </echo>
 		<taskdef name="projectSetTask"
@@ -147,12 +156,11 @@
 
 		<basename file="${url}" property="moduleName" />
 		<if>
-			<contains string="${url}" substring="/lib/"
-				casesensitive="false" />
+			<and>
+				<not><contains string="${moduleName}" substring="lib-" casesensitive="false" /></not>
+				<contains string="${moduleName}" substring="nav-" casesensitive="false" />
+			</and>
 			<then>
-				<echo>bygger ikke modul ${moduleName} med url ${url}</echo>
-			</then>
-			<else>
 				<echo>bygger ${moduleName} med url ${url}</echo>
 				<moduleExport project="${workspace}/${moduleName}"
 					output="${output.dir.zip}/${moduleName}.zip" />
@@ -187,17 +195,22 @@
 
 					</else>
 				</if>
+			</then>
+			<else>
+				<echo>bygger ikke modul ${moduleName} med url ${url}</echo>
 			</else>
 		</if>
 		
 	</target>
 
 	<target name="zipWsdlFiles">
+
+		<basename file="${url}" property="moduleName" suffix=".ear"/>
 		<if>
-			<contains string="${url}" substring="/cons/"
+			<contains string="${url}" substring="-cons-"
 				casesensitive="false" />
 			<then>
-				<unzip src="${output.dir.ear}/${moduleName}.ear" dest="${output.dir.wsdl.zip}">
+				<unzip src="${url}" dest="${output.dir.wsdl.zip}">
 					<patternset>
 						<include name="${moduleName}Web.war"/>
 					</patternset>
@@ -209,12 +222,12 @@
 				</unzip>
 				<delete file="${output.dir.wsdl.zip}/${moduleName}Web.war" />
 				<if>
-					<contains string="${url}" substring="psak" casesensitive="false"/>
+					<contains string="${url}" substring="-psak-" casesensitive="false"/>
 					<then>
 						<zip destfile="${output.dir.wsdl.zip}/psak.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf"/>
 					</then>
 				<elseif>
-					<contains string="${url}" substring="pselv" casesensitive="false"/>
+					<contains string="${url}" substring="-pselv-" casesensitive="false"/>
 					<then>
 						<zip destfile="${output.dir.wsdl.zip}/pselv.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf" />					
 					</then>
@@ -232,10 +245,5 @@
 	
 	</target>
 
-	<target name="buildWSDLZipFiles" depends="init">
-		<echo>Lager wsdl zipfil</echo>
-		<antcallback target="zipWsdlFiles"/>				
-	
-	</target>
 
 </project>
