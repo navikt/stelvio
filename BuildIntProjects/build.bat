@@ -83,7 +83,7 @@ rem ============================================================================
 
 :run
 rmdir /S /Q %WORKSPACE%\.metadata
-%JAVA_HOME%\bin\java -Xms100M -Xmx500M -Dwid.home=%WID_HOME% -Dworkspace=%WORKSPACE% -Dlog.dir=%LOGDIR% -Doutput.dir.wsdl.zip=%OUTPUT_WSDL_DIR_ZIP% -Doutput.dir.ear=%OUTPUT_DIR_EAR% -Doutput.dir.zip=%OUTPUT_DIR_ZIP% -Dbuildscripts.dir=%AUTOMATION_HOME% -Dservice.deploy=%ServiceDeploy% -cp %WID_LIB%\sca-style.jar;%WID_LIB%\wsanttasks.jar;%WID_LIB%\wsprofile.jar;%ECLIPSE_HOME%\startup.jar org.eclipse.core.launcher.Main -logfile eclipse.log  -application com.ibm.etools.j2ee.ant.RunAnt  -buildfile %AUTOMATION_HOME%\masterBuild.xml -data "%WORKSPACE%" %*
+%JAVA_HOME%\bin\java -Dwid.home=%WID_HOME% -Dworkspace=%WORKSPACE% -Dlog.dir=%LOGDIR% -Doutput.dir.wsdl.zip=%OUTPUT_WSDL_DIR_ZIP% -Doutput.dir.ear=%OUTPUT_DIR_EAR% -Doutput.dir.zip=%OUTPUT_DIR_ZIP% -Dbuildscripts.dir=%AUTOMATION_HOME% -Dservice.deploy=%ServiceDeploy% -cp %WID_LIB%\sca-style.jar;%WID_LIB%\wsanttasks.jar;%WID_LIB%\wsprofile.jar;%ECLIPSE_HOME%\startup.jar org.eclipse.core.launcher.Main -logfile eclipse.log  -application com.ibm.etools.j2ee.ant.RunAnt  -buildfile %AUTOMATION_HOME%\masterBuild.xml -data "%WORKSPACE%" %*
 
 
 echo RunAnt returned %ERRORLEVEL%

@@ -24,17 +24,17 @@
 		<delete dir="${output.dir.zip}" />
 		<delete dir="${output.dir.ear}" />
 		<delete dir="${log.dir}" />
-		<delete dir="${output.dir.wsdl.zip}" />
 		
 		<mkdir dir="${output.dir.zip}" />
 		<mkdir dir="${output.dir.ear}" />
 		<mkdir dir="${log.dir}" />
-		<mkdir dir="${output.dir.wsdl.zip}" />
 
 	</target>
 
 
 	<target name="build-all" depends="init">
+		<delete dir="${output.dir.wsdl.zip}" />
+		<mkdir dir="${output.dir.wsdl.zip}" />
 		<echo>henter ned kildekode</echo>
 
 		<property name="svnurl" value="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces" />
