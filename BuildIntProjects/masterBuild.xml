@@ -47,8 +47,7 @@
 			inheritall="true" inheritrefs="true">
 			<path>
 				<fileset dir="${workspace}/${svnWorkspaceFolder}">
-					<include name="**/nav-frg-tjenestepensjon.psf" />
-					<include name="**/nav-sak-henvendelse.psf" />
+					<include name="**/nav-*.psf" />
 					<exclude name=".metadata" />
 					<exclude name="*/**/*" />
 				</fileset>
