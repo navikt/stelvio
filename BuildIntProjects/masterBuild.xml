@@ -3,7 +3,6 @@
 <project name="masterBuild" default="build-single">
 
 	<target name="init" unless="build.time">
-		<stopwatch name="stoppeklokke"/>
 		<tstamp>
 			<format property="build.time" pattern="yyyy-MM-dd.HH.mm.ss" />
 		</tstamp>
@@ -16,6 +15,7 @@
 			</classpath>
 		</taskdef>
 		<echo>ant-contrib added</echo>
+		<stopwatch name="stoppeklokke"/>
 		<taskdef resource="svntask.properties"
 			classpath="${buildscripts.dir}/svnant.jar:${buildscripts.dir}/svnClientAdapter.jar:${buildscripts.dir}/svnjavahl.jar" />
 		<taskdef name="moduleExport"
