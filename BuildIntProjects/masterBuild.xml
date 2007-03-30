@@ -21,7 +21,10 @@
 		<taskdef name="moduleExport"
 			classname="com.ibm.wbit.anttasks.IntegrationModuleExport"
 			classpath="${buildscripts.dir}/IntegrationModuleExport.jar:${wid.home}/eclipse/plugins/org.eclipse.ui.ide_3.0.1/ide.jar" />
+	</target>
 
+
+	<target name="build-all" depends="init">
 		<delete dir="${output.dir.zip}" />
 		<delete dir="${output.dir.ear}" />
 		<delete dir="${log.dir}" />
@@ -29,11 +32,6 @@
 		<mkdir dir="${output.dir.zip}" />
 		<mkdir dir="${output.dir.ear}" />
 		<mkdir dir="${log.dir}" />
-
-	</target>
-
-
-	<target name="build-all" depends="init">
 		<delete dir="${output.dir.wsdl.zip}" />
 		<mkdir dir="${output.dir.wsdl.zip}" />
 		<echo>henter ned kildekode</echo>
@@ -55,23 +53,35 @@
 			</path>
 		</foreach>
 		
-		<foreach target="zipWsdlFiles" param="url"
-			inheritall="true" inheritrefs="true">
-			<path>
-				<fileset dir="${output.dir.ear}">
-					<include name="**/*.ear" />
-				</fileset>
-			</path>
-		</foreach>
-		<antcallback target="zipWsdlFiles"/>				
+		<antcallback target="zipit"/>						
+
 		<stopwatch name="stoppeklokke" action="total"/>
 	</target>
+
+		<target name="zipit">
+			<foreach target="zipWsdlFiles" param="url"
+				inheritall="true" inheritrefs="true">
+				<path>
+					<fileset dir="${output.dir.ear}">
+						<include name="**/*.ear" />
+					</fileset>
+				</path>
+			</foreach>
+			<antcallback target="zipWsdlFiles"/>						
+		</target>
 
 	<target name="build-single" depends="init">
 		<fail unless="eclipseWorkSpace">
 			parameteren eclipseWorkSpace må være satt. 
 			Usage: build.bat -DeclipseWorkSpace=nav-frg-tjenestepensjon.psf		
 		</fail>		
+		<delete dir="${output.dir.zip}" />
+		<delete dir="${output.dir.ear}" />
+		<delete dir="${log.dir}" />
+		
+		<mkdir dir="${output.dir.zip}" />
+		<mkdir dir="${output.dir.ear}" />
+		<mkdir dir="${log.dir}" />
 	
 		<echo>henter ned kildekode</echo>
 
