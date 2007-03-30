@@ -3,6 +3,7 @@
 <project name="masterBuild" default="build-single">
 
 	<target name="init" unless="build.time">
+		<stopwatch name="stoppeklokke"/>
 		<tstamp>
 			<format property="build.time" pattern="yyyy-MM-dd.HH.mm.ss" />
 		</tstamp>
@@ -63,7 +64,7 @@
 			</path>
 		</foreach>
 		<antcallback target="zipWsdlFiles"/>				
-
+		<stopwatch name="stoppeklokke" action="total"/>
 	</target>
 
 	<target name="build-single" depends="init">
@@ -81,7 +82,7 @@
 		<antcallback target="checkoutWorkSpace"/>
 		<property name="fileName" value="${workspace}/${svnWorkspaceFolder}/${eclipseWorkSpace}" />
 		<antcallback target="readWorkSpaceFile"/>
-
+		<stopwatch name="stoppeklokke" action="total"/>
 	</target>
 
 	<target name="checkoutWorkSpace">
