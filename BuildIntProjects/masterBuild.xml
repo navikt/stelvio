@@ -234,22 +234,22 @@
 				<if>
 					<contains string="${url}" substring="-pen-psak-" casesensitive="false"/>
 					<then>
-						<zip destfile="${output.dir.wsdl.zip}/psak.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf"/>
+						<zip destfile="${output.dir.wsdl.zip}/psak-wsdl.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf"/>
 					</then>
 				<elseif>
 					<contains string="${url}" substring="-pen-pselv-" casesensitive="false"/>
 					<then>
-						<zip destfile="${output.dir.wsdl.zip}/pselv.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf" />					
+						<zip destfile="${output.dir.wsdl.zip}/pselv-wsdl.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf" />					
 					</then>
 				</elseif>
 				<elseif>
 					<contains string="${url}" substring="-pen-pen-" casesensitive="false"/>
 					<then>
-						<zip destfile="${output.dir.wsdl.zip}/pen.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf" />					
+						<zip destfile="${output.dir.wsdl.zip}/pen-wsdl.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf" />					
 					</then>
 				</elseif>
 				<else>
-				<echo>Ikke PSak eller PSelv. Navnestandard ikke fulgt</echo>
+				<echo>Ikke Psak, Pselv eller Pen. Navnestandard ikke fulgt</echo>
 				</else>
 				</if>
 				<delete dir="${output.dir.wsdl.zip}/META-INF" />
