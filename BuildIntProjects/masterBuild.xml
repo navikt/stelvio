@@ -232,14 +232,20 @@
 				</unzip>
 				<delete file="${output.dir.wsdl.zip}/${moduleName}Web.war" />
 				<if>
-					<contains string="${url}" substring="-psak-" casesensitive="false"/>
+					<contains string="${url}" substring="-pen-psak-" casesensitive="false"/>
 					<then>
 						<zip destfile="${output.dir.wsdl.zip}/psak.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf"/>
 					</then>
 				<elseif>
-					<contains string="${url}" substring="-pselv-" casesensitive="false"/>
+					<contains string="${url}" substring="-pen-pselv-" casesensitive="false"/>
 					<then>
 						<zip destfile="${output.dir.wsdl.zip}/pselv.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf" />					
+					</then>
+				</elseif>
+				<elseif>
+					<contains string="${url}" substring="-pen-pen-" casesensitive="false"/>
+					<then>
+						<zip destfile="${output.dir.wsdl.zip}/pen.zip" basedir="${output.dir.wsdl.zip}/META-INF" update="true" excludes="**/Manifest.mf" />					
 					</then>
 				</elseif>
 				<else>
