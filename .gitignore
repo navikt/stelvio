@@ -54,3 +54,6 @@ app/stelvio-test-java/.classpath
 app/stelvio-test-java/.project
 app/stelvio-test-java/common-test.iml
 app/stelvio-test-java/target
+dev/ant-projectSetTask/.classpath
+dev/ant-projectSetTask/.project
+dev/ant-projectSetTask/target

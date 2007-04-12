@@ -695,6 +695,10 @@ app/workspaces/pom.xml -text
 app/workspaces/stelvio-app-workspace/.project -text
 app/workspaces/stelvio-app-workspace/pom.xml -text
 app/workspaces/stelvio-app-workspace/stelvio-app-trunk.psf -text
+dev/ant-projectSetTask/pom.xml -text
+dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
+dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
+dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
 dev/maven2/maven-dependency-plugin/pom.xml -text
