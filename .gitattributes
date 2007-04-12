@@ -918,6 +918,13 @@ dev/maven2/maven-dependency-plugin/target/test-classes/unit/resolve-test/plugin-
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-dependencies-test/plugin-config.xml -text
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-dependencies-test/test.txt -text
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-test/plugin-config.xml -text
+dev/maven2/maven-ejb-plugin/.classpath -text
+dev/maven2/maven-ejb-plugin/.project -text
+dev/maven2/maven-ejb-plugin/META-INF/LICENSE.txt -text
+dev/maven2/maven-ejb-plugin/META-INF/MANIFEST.MF -text
+dev/maven2/maven-ejb-plugin/META-INF/NOTICE.txt -text
+dev/maven2/maven-ejb-plugin/pom.xml -text
+dev/maven2/maven-ejb-plugin/src/main/java/org/apache/maven/plugin/ejb/EjbMojo.java -text
 dev/maven2/maven-war-plugin/.classpath -text
 dev/maven2/maven-war-plugin/.project -text
 dev/maven2/maven-war-plugin/META-INF/LICENSE.txt -text
