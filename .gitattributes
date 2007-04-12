@@ -918,6 +918,14 @@ dev/maven2/maven-dependency-plugin/target/test-classes/unit/resolve-test/plugin-
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-dependencies-test/plugin-config.xml -text
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-dependencies-test/test.txt -text
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-test/plugin-config.xml -text
+dev/maven2/nav-copy-plugin/.classpath -text
+dev/maven2/nav-copy-plugin/.project -text
+dev/maven2/nav-copy-plugin/META-INF/MANIFEST.MF -text
+dev/maven2/nav-copy-plugin/pom.xml -text
+dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/AbstractCopyMojo.java -text
+dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/CopyFileMojo.java -text
+dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/CopyMojo.java -text
+dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/SourceFile.java -text
 dev/maven2/nav-maven-common/.classpath -text
 dev/maven2/nav-maven-common/.project -text
 dev/maven2/nav-maven-common/pom.xml -text
