@@ -918,6 +918,12 @@ dev/maven2/maven-dependency-plugin/target/test-classes/unit/resolve-test/plugin-
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-dependencies-test/plugin-config.xml -text
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-dependencies-test/test.txt -text
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-test/plugin-config.xml -text
+dev/maven2/nav-maven-common/.classpath -text
+dev/maven2/nav-maven-common/.project -text
+dev/maven2/nav-maven-common/pom.xml -text
+dev/maven2/nav-maven-common/src/main/java/no/nav/maven/common/ArtifactItem.java.old -text
+dev/maven2/nav-maven-common/src/main/java/no/nav/maven/common/NavMavenArchiver.java.old -text
+dev/maven2/nav-maven-common/src/main/java/no/nav/maven/common/ProjectUtil.java -text
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
