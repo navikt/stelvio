@@ -19,11 +19,11 @@ package org.apache.maven.plugin.war;
  * under the License.
  */
 
-import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.introspection.ReflectionValueExtractor;
-
 import java.util.AbstractMap;
 import java.util.Set;
+
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.introspection.ReflectionValueExtractor;
 
 /**
  * @version $Id: ReflectionProperties.java 480784 2006-11-30 00:07:45Z jvanzyl $

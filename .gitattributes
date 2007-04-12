@@ -934,7 +934,9 @@ dev/maven2/maven-war-plugin/META-INF/MANIFEST.MF -text
 dev/maven2/maven-war-plugin/META-INF/NOTICE.txt -text
 dev/maven2/maven-war-plugin/pom.xml -text
 dev/maven2/maven-war-plugin/src/main/java/org/apache/maven/plugin/war/AbstractWarMojo.java -text
+dev/maven2/maven-war-plugin/src/main/java/org/apache/maven/plugin/war/ArtifactItem.java -text
 dev/maven2/maven-war-plugin/src/main/java/org/apache/maven/plugin/war/CompositeMap.java -text
+dev/maven2/maven-war-plugin/src/main/java/org/apache/maven/plugin/war/NavMavenArchiver.java -text
 dev/maven2/maven-war-plugin/src/main/java/org/apache/maven/plugin/war/PropertyUtils.java -text
 dev/maven2/maven-war-plugin/src/main/java/org/apache/maven/plugin/war/ReflectionProperties.java -text
 dev/maven2/maven-war-plugin/src/main/java/org/apache/maven/plugin/war/WarExplodedMojo.java -text

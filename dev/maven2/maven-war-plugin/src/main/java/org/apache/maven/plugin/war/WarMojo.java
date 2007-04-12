@@ -19,7 +19,13 @@ package org.apache.maven.plugin.war;
  * under the License.
  */
 
-import org.apache.maven.archiver.MavenArchiver;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import no.nav.maven.common.ProjectUtil;
+
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -28,9 +34,6 @@ import org.apache.maven.project.MavenProjectHelper;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.jar.ManifestException;
 import org.codehaus.plexus.archiver.war.WarArchiver;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Build a war/webapp.
@@ -41,9 +44,20 @@ import java.io.IOException;
  * @phase package
  * @requiresDependencyResolution runtime
  */
-public class WarMojo
-    extends AbstractWarMojo
-{
+public class WarMojo extends AbstractWarMojo {
+	/**
+     * A list of custom classpath entries
+     * 
+     * @parameter
+     */
+    private List<String> customClasspathEntries;
+    
+	/**
+	 * List of artifacts to include in WEB-INF/lib
+	 * @parameter
+	 */
+	private List<ArtifactItem> libraryArtifactItems;
+	
     /**
      * The directory for the generated WAR.
      *
@@ -75,7 +89,6 @@ public class WarMojo
      */
     private WarArchiver warArchiver;
 
-
     /**
      * @component
      */
@@ -92,7 +105,20 @@ public class WarMojo
     // ----------------------------------------------------------------------
     // Implementation
     // ----------------------------------------------------------------------
-
+    private String[] getLibraryIncludes() {
+        List<String> includes = new ArrayList<String>();
+        
+        for (ArtifactItem item : libraryArtifactItems) {
+            Artifact artifact = ProjectUtil.getArtifact(getProject(), item.getGroupId(), item.getArtifactId()); 
+            if(artifact != null) {
+            	includes.add("WEB-INF/lib/"+item.getArtifactId()+"*.jar");
+            	getLog().info("Adding artifact "+artifact.getGroupId()+":"+artifact.getArtifactId()+":"+artifact.getVersion()+" to WEB-INF/lib");
+            }
+        }
+        
+        return (String[]) includes.toArray(new String[0]);
+    }
+    
     /**
      * Overload this to produce a test-war, for example.
      */
@@ -123,6 +149,8 @@ public class WarMojo
     public void execute()
         throws MojoExecutionException, MojoFailureException
     {
+    	getLog().info("TEST ARTIFACT: "+ProjectUtil.getArtifact(getProject(), "jfree", "jfreechart"));
+    	
         File warFile = getWarFile( new File( outputDirectory ), warName, classifier );
 
         try
@@ -166,18 +194,22 @@ public class WarMojo
         //generate war file
         getLog().info( "Generating war " + warFile.getAbsolutePath() );
 
-        MavenArchiver archiver = new MavenArchiver();
+        NavMavenArchiver archiver = new NavMavenArchiver();
 
         archiver.setArchiver( warArchiver );
 
         archiver.setOutputFile( warFile );
 
+        // Add libraries to include before excluding others
+        if(libraryArtifactItems != null)
+            warArchiver.addDirectory(getWebappDirectory(), getLibraryIncludes(), null);
+        
         warArchiver.addDirectory( getWebappDirectory(), getIncludes(), getExcludes() );
 
         warArchiver.setWebxml( new File( getWebappDirectory(), "WEB-INF/web.xml" ) );
 
         // create archive
-        archiver.createArchive( getProject(), archive );
+        archiver.createArchive( getProject(), archive, getCustomClasspathEntries(), getClasspathExcludes() );
 
         String classifier = this.classifier;
         if ( classifier != null )
@@ -197,4 +229,18 @@ public class WarMojo
             }
         }
     }
+
+	/**
+	 * @return the customClasspathEntries
+	 */
+	public List<String> getCustomClasspathEntries() {
+		return customClasspathEntries;
+	}
+
+	/**
+	 * @param customClasspathEntries the customClasspathEntries to set
+	 */
+	public void setCustomClasspathEntries(List<String> customClasspathEntries) {
+		this.customClasspathEntries = customClasspathEntries;
+	}
 }

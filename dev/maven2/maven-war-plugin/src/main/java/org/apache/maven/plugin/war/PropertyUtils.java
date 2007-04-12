@@ -19,14 +19,14 @@ package org.apache.maven.plugin.war;
  * under the License.
  */
 
-import org.codehaus.plexus.util.IOUtil;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Properties;
+
+import org.codehaus.plexus.util.IOUtil;
 
 /**
  * @author <a href="mailto:test@example.com">Kenney Westerhof</a>

@@ -19,18 +19,19 @@ package org.apache.maven.plugin.war;
  * under the License.
  */
 
-import org.apache.maven.archiver.MavenArchiver;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.codehaus.plexus.archiver.jar.Manifest;
 import org.codehaus.plexus.archiver.jar.ManifestException;
 import org.codehaus.plexus.archiver.war.WarArchiver;
 import org.codehaus.plexus.util.IOUtil;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Generate a manifest for this WAR.
@@ -41,9 +42,14 @@ import java.io.PrintWriter;
  * @phase process-resources
  * @requiresDependencyResolution runtime
  */
-public class WarManifestMojo
-    extends AbstractWarMojo
-{
+public class WarManifestMojo extends AbstractWarMojo {
+	/**
+     * A list of custom classpath entries
+     * 
+     * @parameter
+     */
+    private List<String> customClasspathEntries;
+    
     /**
      * The Jar archiver.
      *
@@ -52,7 +58,15 @@ public class WarManifestMojo
      */
     private WarArchiver warArchiver;
 
-
+    private String stripBlankLineStarts(String text) {
+    	StringBuffer buffer = new StringBuffer("");
+    	String[] lines = text.split("\n");
+    	for (String line : lines) {
+    		buffer.append(line.trim()+"\n");
+    	}
+    	return buffer.toString();
+    }
+    
     /**
      * Executes the WarMojo on the current project.
      *
@@ -66,15 +80,19 @@ public class WarManifestMojo
         {
             manifestDir.mkdirs();
         }
+        
         File manifestFile = new File( manifestDir, "MANIFEST.MF" );
-        MavenArchiver ma = new MavenArchiver();
+        NavMavenArchiver ma = new NavMavenArchiver();
         ma.setArchiver( warArchiver );
         ma.setOutputFile( manifestFile );
-
+        
         PrintWriter printWriter = null;
-        try
-        {
-            Manifest mf = ma.getManifest( getProject(), archive.getManifest() );
+        try {
+        	Manifest mf = ma.getManifest( 	getProject(),
+        									archive.getManifest(),
+        									Collections.EMPTY_MAP,
+        									getClasspathExcludes(),
+        									getCustomClasspathEntries());
             printWriter = new PrintWriter( new FileWriter( manifestFile ) );
             mf.write( printWriter );
         }
@@ -95,4 +113,18 @@ public class WarManifestMojo
             IOUtil.close( printWriter );
         }
     }
+
+	/**
+	 * @return the customClasspathEntries
+	 */
+	public List<String> getCustomClasspathEntries() {
+		return customClasspathEntries;
+	}
+
+	/**
+	 * @param customClasspathEntries the customClasspathEntries to set
+	 */
+	public void setCustomClasspathEntries(List<String> customClasspathEntries) {
+		this.customClasspathEntries = customClasspathEntries;
+	}
 }

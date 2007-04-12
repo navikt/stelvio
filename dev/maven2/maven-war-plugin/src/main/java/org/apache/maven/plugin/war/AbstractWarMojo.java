@@ -19,6 +19,25 @@ package org.apache.maven.plugin.war;
  * under the License.
  */
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
 import org.apache.maven.archiver.MavenArchiveConfiguration;
 import org.apache.maven.archiver.MavenArchiver;
 import org.apache.maven.artifact.Artifact;
@@ -39,28 +58,14 @@ import org.codehaus.plexus.util.IOUtil;
 import org.codehaus.plexus.util.InterpolationFilterReader;
 import org.codehaus.plexus.util.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
-public abstract class AbstractWarMojo
-    extends AbstractMojo
-{
+public abstract class AbstractWarMojo extends AbstractMojo {
+    /**
+     * The list of artifacts to exclude from manifest.
+     *
+     * @parameter
+     */
+    private List<ArtifactItem> classpathExcludes;
+    
     /**
      * The maven project.
      *
@@ -202,8 +207,7 @@ public abstract class AbstractWarMojo
     protected MavenArchiveConfiguration archive = new MavenArchiveConfiguration();
 
     private static final String[] EMPTY_STRING_ARRAY = {};
-
-
+    
     public MavenProject getProject()
     {
         return project;
@@ -1039,5 +1043,19 @@ public abstract class AbstractWarMojo
         finalName =  finalName + "." + artifact.getArtifactHandler().getExtension();
         return finalName;
     }
+
+	/**
+	 * @return the classpathExcludes
+	 */
+	public List<ArtifactItem> getClasspathExcludes() {
+		return classpathExcludes;
+	}
+
+	/**
+	 * @param classpathExcludes the classpathExcludes to set
+	 */
+	public void setClasspathExcludes(List<ArtifactItem> classpathExcludes) {
+		this.classpathExcludes = classpathExcludes;
+	}
 
 }
