@@ -19,6 +19,12 @@ package org.apache.maven.plugin.ejb;
  * under the License.
  */
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
+
 import org.apache.maven.archiver.MavenArchiveConfiguration;
 import org.apache.maven.archiver.MavenArchiver;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
@@ -28,11 +34,8 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.jar.JarArchiver;
+import org.codehaus.plexus.archiver.jar.Manifest;
 import org.codehaus.plexus.archiver.jar.ManifestException;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Build an EJB (and optional client) from the current project.
@@ -42,9 +45,35 @@ import java.util.List;
  * @goal ejb
  * @phase package
  */
-public class EjbMojo
-    extends AbstractMojo
-{
+public class EjbMojo extends AbstractMojo {
+	/**
+     * A list of custom classpath entries in the IDE manifest.
+     * 
+     * @parameter
+     */
+    private List<String> customIdeClasspathEntries;
+    
+	/**
+     * A list of custom classpath entries in the target manifest.
+     * 
+     * @parameter
+     */
+    private List<String> customClasspathEntries;
+    
+    /**
+     * The list of artifacts to exclude from IDE manifest.
+     *
+     * @parameter
+     */
+    private List<ArtifactItem> ideClasspathExcludes;
+    
+    /**
+     * The list of artifacts to exclude from target manifest.
+     *
+     * @parameter
+     */
+    private List<ArtifactItem> classpathExcludes;
+    
     // TODO: will null work instead?
     private static final String[] DEFAULT_INCLUDES = new String[]{"**/**"};
 
@@ -54,7 +83,16 @@ public class EjbMojo
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
 
     private static final String EJB_JAR_XML = "META-INF/ejb-jar.xml";
+    
+    private static final String MANIFEST_FILE = "MANIFEST.MF";
 
+    /**
+     * The directory to export the generated manifest file to.
+     *
+     * @parameter
+     */
+    private File exportManifestToDir;
+    
     /**
      * The directory for the generated EJB.
      *
@@ -195,7 +233,7 @@ public class EjbMojo
      */
     public void execute()
         throws MojoExecutionException
-    {
+    {    	
         if ( getLog().isInfoEnabled() )
         {
             getLog().info( "Building ejb " + jarName + " with ejbVersion " + ejbVersion );
@@ -203,7 +241,7 @@ public class EjbMojo
 
         File jarFile = getEJBJarFile( basedir, jarName, classifier );
 
-        MavenArchiver archiver = new MavenArchiver();
+        NavMavenArchiver archiver = new NavMavenArchiver();
 
         archiver.setArchiver( jarArchiver );
 
@@ -235,7 +273,7 @@ public class EjbMojo
             }
 
             // create archive
-            archiver.createArchive( project, archive );
+            archiver.createArchive(project, archive, getCustomClasspathEntries(), getClasspathExcludes());
         }
         catch ( ArchiverException e )
         {
@@ -253,7 +291,31 @@ public class EjbMojo
         {
             throw new MojoExecutionException( "There was a problem creating the EJB archive: " + e.getMessage(), e );
         }
-
+        
+        // Export the manifest file if specified
+        if (exportManifestToDir != null) {
+        	if (!exportManifestToDir.exists()) {
+        		exportManifestToDir.mkdirs();
+        	}
+        	
+        	PrintWriter manifestWriter = null;
+        	try {				
+				Manifest manifest = archiver.getManifest(project, archive.getManifest(), Collections.EMPTY_MAP, getIdeClasspathExcludes(), getCustomIdeClasspathEntries());
+				manifestWriter = new PrintWriter(new File(exportManifestToDir, MANIFEST_FILE));
+				manifest.write(manifestWriter);
+				getLog().info("Manifest file exported to "+exportManifestToDir+File.separator+MANIFEST_FILE);
+				
+			} catch (IOException e) {
+				throw new MojoExecutionException("Could not copy manifest file to "+exportManifestToDir, e);
+			} catch (DependencyResolutionRequiredException e) {
+				throw new MojoExecutionException("Could not copy manifest file to "+exportManifestToDir, e);
+			} catch (ManifestException e) {
+				throw new MojoExecutionException("Could not copy manifest file to "+exportManifestToDir, e);
+			} finally {
+				manifestWriter.close();
+			}
+        }
+        
         // Handle the classifier if necessary
         if ( classifier != null )
         {
@@ -345,4 +407,59 @@ public class EjbMojo
         return new File( basedir, finalName + classifier + ".jar" );
     }
 
+	/**
+	 * @return the customClasspathEntries
+	 */
+	public List<String> getCustomClasspathEntries() {
+		return customClasspathEntries;
+	}
+
+	/**
+	 * @param customClasspathEntries the customClasspathEntries to set
+	 */
+	public void setCustomClasspathEntries(List<String> customClasspathEntries) {
+		this.customClasspathEntries = customClasspathEntries;
+	}
+
+	/**
+	 * @return the classpathExcludes
+	 */
+	public List<ArtifactItem> getClasspathExcludes() {
+		return classpathExcludes;
+	}
+
+	/**
+	 * @param classpathExcludes the classpathExcludes to set
+	 */
+	public void setClasspathExcludes(List<ArtifactItem> classpathExcludes) {
+		this.classpathExcludes = classpathExcludes;
+	}
+
+	/**
+	 * @return the customIdeClasspathEntries
+	 */
+	public List<String> getCustomIdeClasspathEntries() {
+		return customIdeClasspathEntries;
+	}
+
+	/**
+	 * @param customIdeClasspathEntries the customIdeClasspathEntries to set
+	 */
+	public void setCustomIdeClasspathEntries(List<String> customIDEClasspathEntries) {
+		this.customIdeClasspathEntries = customIDEClasspathEntries;
+	}
+
+	/**
+	 * @return the ideClasspathExcludes
+	 */
+	public List<ArtifactItem> getIdeClasspathExcludes() {
+		return ideClasspathExcludes;
+	}
+
+	/**
+	 * @param ideClasspathExcludes the ideClasspathExcludes to set
+	 */
+	public void setIdeClasspathExcludes(List<ArtifactItem> ideClasspathExcludes) {
+		this.ideClasspathExcludes = ideClasspathExcludes;
+	}
 }
