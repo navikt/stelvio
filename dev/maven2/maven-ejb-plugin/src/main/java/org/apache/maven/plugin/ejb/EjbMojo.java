@@ -19,14 +19,27 @@ package org.apache.maven.plugin.ejb;
  * under the License.
  */
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+import java.util.jar.JarInputStream;
+
+import no.nav.maven.common.ProjectUtil;
 
 import org.apache.maven.archiver.MavenArchiveConfiguration;
 import org.apache.maven.archiver.MavenArchiver;
+import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -36,6 +49,7 @@ import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.jar.JarArchiver;
 import org.codehaus.plexus.archiver.jar.Manifest;
 import org.codehaus.plexus.archiver.jar.ManifestException;
+import org.codehaus.plexus.util.FileUtils;
 
 /**
  * Build an EJB (and optional client) from the current project.
@@ -170,6 +184,16 @@ public class EjbMojo extends AbstractMojo {
     private List clientIncludes;
 
     /**
+     * @parameter
+     */
+    private List<Project> clientIncludeProjects;
+    
+    /**
+     * @parameter
+     */
+    private List<ArtifactItem> clientIncludeDependencyResources;
+    
+    /**
      * The maven project.
      *
      * @parameter expression="${project}"
@@ -226,6 +250,33 @@ public class EjbMojo extends AbstractMojo {
      */
     private MavenArchiveConfiguration archive = new MavenArchiveConfiguration();
 
+    private File unzipJarEntries(Artifact artifact) throws FileNotFoundException, IOException {
+    	File unzipTempFolder = new File(System.getProperty("java.io.tmpdir")+project.getArtifactId()+"_"+artifact.getArtifactId()+"_"+System.currentTimeMillis());
+    	JarInputStream jis = new JarInputStream(new FileInputStream(artifact.getFile()));
+		JarEntry je = null;
+		while ((je = jis.getNextJarEntry()) != null) {
+			if (je.isDirectory()) {
+				continue;
+			}
+			
+			int bytes = 0;
+			File unzippedFile = new File(unzipTempFolder, je.getName());
+			getLog().info("Unpacking "+je.getName()+" to "+unzippedFile);
+			new File(unzippedFile.getParent()).mkdirs();
+			FileOutputStream fos = new FileOutputStream(unzippedFile);
+			byte[] buffer = new byte[10];
+			while ((bytes = jis.read(buffer, 0, buffer.length)) > 0) {
+				for (int i = 0; i < bytes; i++) {
+					fos.write((byte) buffer[i]);
+				}
+			}
+			fos.close();
+		}
+		jis.close();
+		
+		return unzipTempFolder;
+    }
+    
     /**
      * Generates an ejb jar and optionnaly an ejb-client jar.
      *
@@ -355,6 +406,32 @@ public class EjbMojo extends AbstractMojo {
             {
                 clientArchiver.getArchiver().addDirectory( new File( outputDirectory ), includes, excludes );
 
+                // Add resources from other projects
+                if (clientIncludeProjects != null) {
+                	for (Project clientProject : clientIncludeProjects) {
+                		getLog().info("Adding client resources from project \""+clientProject.getProjectName()+"\"");
+                		clientArchiver.getArchiver().addDirectory(clientProject.getBasedir(), (String[]) clientProject.getIncludes().toArray(EMPTY_STRING_ARRAY), (String[]) Collections.EMPTY_LIST.toArray(EMPTY_STRING_ARRAY));
+                	}
+                }
+                
+                // Add resources from project dependency
+                if (clientIncludeDependencyResources != null) {
+                	for (ArtifactItem artifactItem : clientIncludeDependencyResources) {
+                		Artifact artifact = ProjectUtil.getArtifact(project, artifactItem.getGroupId(), artifactItem.getArtifactId());
+                		if (artifact != null) {
+                			File unzipTempFolder = unzipJarEntries(artifact);
+                			
+                			clientArchiver.getArchiver().addDirectory(unzipTempFolder, (String[]) artifactItem.getIncludes().toArray(EMPTY_STRING_ARRAY), (String[]) Collections.EMPTY_LIST.toArray(EMPTY_STRING_ARRAY));
+                			
+                			getLog().debug("Deleting temporary folder "+unzipTempFolder);
+                			FileUtils.deleteDirectory(unzipTempFolder);
+                			continue;
+                		}
+                		
+                		getLog().warn("Artifact "+artifact+" is not attached to this project. Dependency-resources will not be added to client.");
+                	}
+                }
+                
                 // create archive
                 clientArchiver.createArchive( project, archive );
 

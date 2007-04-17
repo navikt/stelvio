@@ -927,6 +927,7 @@ dev/maven2/maven-ejb-plugin/pom.xml -text
 dev/maven2/maven-ejb-plugin/src/main/java/org/apache/maven/plugin/ejb/ArtifactItem.java -text
 dev/maven2/maven-ejb-plugin/src/main/java/org/apache/maven/plugin/ejb/EjbMojo.java -text
 dev/maven2/maven-ejb-plugin/src/main/java/org/apache/maven/plugin/ejb/NavMavenArchiver.java -text
+dev/maven2/maven-ejb-plugin/src/main/java/org/apache/maven/plugin/ejb/Project.java -text
 dev/maven2/maven-war-plugin/.classpath -text
 dev/maven2/maven-war-plugin/.project -text
 dev/maven2/maven-war-plugin/META-INF/LICENSE.txt -text
