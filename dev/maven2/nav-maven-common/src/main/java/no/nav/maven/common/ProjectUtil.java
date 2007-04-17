@@ -19,7 +19,7 @@ public class ProjectUtil {
 	
     /**
      * Method to get Artifact-object based on artifactitems groupId and artifactId.
-     * Searches to all artifacts in a project and returns a match.
+     * Searches through all artifacts in a project and returns a match.
      * 
      * @param project
      * @param groupId
@@ -28,6 +28,7 @@ public class ProjectUtil {
      */
     public static Artifact getArtifact(MavenProject project, String groupId, String artifactId) {
     	Iterator iterator = project.getArtifacts().iterator();
+    	
     	while (iterator.hasNext()) {
     		Artifact artifact = (Artifact) iterator.next();
     		if (artifact.getGroupId().equals(groupId) && artifact.getArtifactId().equals(artifactId)) {
