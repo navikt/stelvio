@@ -261,7 +261,7 @@ public class EjbMojo extends AbstractMojo {
 			
 			int bytes = 0;
 			File unzippedFile = new File(unzipTempFolder, je.getName());
-			getLog().info("Unpacking "+je.getName()+" to "+unzippedFile);
+			getLog().info("Unpacking jar entry to "+unzippedFile);
 			new File(unzippedFile.getParent()).mkdirs();
 			FileOutputStream fos = new FileOutputStream(unzippedFile);
 			byte[] buffer = new byte[10];
