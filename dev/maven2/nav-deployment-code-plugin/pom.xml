@@ -14,14 +14,7 @@
     <maven>2.0.1</maven>
   </prerequisites>
   
-  <dependencies>
-  	<!-- NAV spesific dependencies -->
-    <dependency>
-      <groupId>no.nav.maven</groupId>
-      <artifactId>nav-maven-common</artifactId>
-      <version>1.0</version>
-    </dependency>
-    
+  <dependencies>    
     <!-- Maven plugin dependencies -->
     <dependency>
       <groupId>org.apache.maven</groupId>
@@ -54,13 +47,6 @@
       <version>1.0-beta-1</version>
       <scope>test</scope>
     </dependency>
-    
-    <!-- Stub-generating dependencies -->
-    <dependency>
-		<groupId>com.ibm.etools</groupId>
-		<artifactId>batch2</artifactId>
-		<version>1.0</version>
-	</dependency>
   </dependencies>
   
   	<developers>

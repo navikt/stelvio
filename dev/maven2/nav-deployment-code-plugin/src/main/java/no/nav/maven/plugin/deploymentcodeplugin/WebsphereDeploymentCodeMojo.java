@@ -14,7 +14,20 @@ import org.codehaus.plexus.util.FileUtils;
 
 /**
  * Mojo that generates EJB deployment code using IBM Websphere 6.1 deploy tool.
- * Some variables use default values that should be defined in "settings.xml".
+ * The following variables use default values that should be defined in "settings.xml":
+ * <table>
+ * 	<tr>
+ *   <td style="font-weight: bold">Maven Pom property</td><td style="font-weight: bold">settings.xml property</td>
+ *  </tr>
+ *  <tr>
+ *   <td>was61Home</td></td>was.home</td>
+ *   <td>itpLoc</td></td>itp.loc</td>
+ *   <td>javaHome</td></td>was.java.home</td>
+ *   <td>bootPath</td></td>boot.path</td>
+ *   <td>ejbdCp</td></td>ejbd.cp</td>
+ *   <td>wasExtDirs</td></td>was.ext.dirs</td>
+ *  </tr>
+ * </table>
  * 
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
@@ -22,63 +35,85 @@ import org.codehaus.plexus.util.FileUtils;
  */
 public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	/**
+	 * Source jar needed to generate deployment code.
+	 * 
 	 * @parameter
 	 */
 	private File inputJar;
 	
 	/**
+	 * Temporary output jar file with deployment code.
 	 * @parameter
 	 */
 	private File outputJar;
 	
 	/**
+	 * Folder the ejb deploy tool will generate work files under.
 	 * @parameter
 	 */
 	private File workingDir;
 	
 	/**
+	 * Default value should be specified as a property ('was.home') in settings.xml.
 	 * 
 	 * @parameter expression="${was.home}"
 	 */
 	private File was61Home;
 	
 	/**
+	 * Default value should be specified as a property ('itp.loc') in settings.xml.
+	 * 
 	 * @parameter expression="${itp.loc}"
 	 */
 	private File itpLoc;
 	
 	/**
+	 * Default value should be specified as a property ('was.java.home') in settings.xml.
+	 * 
 	 * @parameter expression="${was.java.home}"
 	 */
 	private File javaHome;
 	
 	/**
+	 * Default value should be specified as a property ('boot.path') in settings.xml.
+	 * 
 	 * @parameter expression="${boot.path}"
 	 */
 	private String bootPath;
 	
 	/**
+	 * Default value should be specified as a property ('ejbd.cp') in settings.xml.
+	 * 
 	 * @parameter expression="${ejbd.cp}"
 	 */
 	private String ejbdCp;
 	
 	/**
+	 * Default value should be specified as a property ('was.ext.dirs') in settings.xml.
+	 * 
 	 * @parameter expression="${was.ext.dirs}"
 	 */
 	private String wasExtDirs;
 	
 	/**
+	 * Set to true if the ejb deploy working folder shouldn't be deleted after finish.
+	 *  
 	 * @parameter
 	 */
 	private boolean keepEjbDeployDir;
 	
 	/**
+	 * Set to true if the resulting artifact should be unpacked after finsish.
+	 * 
 	 * @parameter
 	 */
 	private boolean unpackCode;
 	
 	/**
 	 * Method that is executed when plugin is started.
+	 * 
+	 * @throws MojoExecutionException
+	 * @throws MojoFailureException
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		init();
@@ -103,8 +138,14 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	
 	/**
 	 * Initiates variables.
+	 * 
+	 * @throws MojoExecutionException 
 	 */
-	private void init() {
+	private void init() throws MojoExecutionException {
+		// Check that all required argument are populated with standard or custom values.
+		checkArguments();
+		
+		// Set default values, if noe specified.
 		if (inputJar == null) {
 			inputJar = new File(getProject().getBuild().getDirectory()+
 								File.separatorChar+
@@ -125,7 +166,41 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	}
 	
 	/**
+	 * Check that all required arguments are specified.
+	 * If any default values retrived from settings.xml are null or invalid, throw an exception.
+	 * 
+	 * @throws MojoExecutionException 
+	 */
+	private void checkArguments() throws MojoExecutionException {
+		if (was61Home == null || !was61Home.exists()) {
+			throw new MojoExecutionException("The argument 'was61Home' is not specified or specified as an invalid value (folder does not exists). "+
+							"A possible cause is that the property 'was.home' is missing in your settings.xml file.");
+		}
+		if (itpLoc == null || !itpLoc.exists()) {
+			throw new MojoExecutionException("The argument 'itpLoc' is not specified or specified as an invalid value (folder does not exists). "+
+							"A possible cause is that the property 'itp.loc' is missing in your settings.xml file.");
+		}
+		if (javaHome == null || !javaHome.exists()) {
+			throw new MojoExecutionException("The argument 'javaHome' is not specified or specified as an invalid value (folder does not exists). "+
+							"A possible cause is that the property 'was.java.home' is missing in your settings.xml file.");
+		}
+		if (bootPath == null) {
+			throw new MojoExecutionException("The argument 'bootPath' is not specified. "+
+							"A possible cause is that the property 'boot.path' is missing in your settings.xml file.");
+		}
+		if (ejbdCp == null) {
+			throw new MojoExecutionException("The argument 'ejbdCp' is not specified. "+
+							"A possible cause is that the property 'ejbd.cp' is missing in your settings.xml file.");
+		}
+		if (wasExtDirs == null) {
+			throw new MojoExecutionException("The argument 'wasExtDirs' is not specified. "+
+							"A possible cause is that the property 'was.ext.dirs' is missing in your settings.xml file.");
+		}
+	}
+	
+	/**
 	 * Make final preperations to the resulting artifacts.
+	 * 
 	 * @throws MojoExecutionException 
 	 * @throws IOException 
 	 */
@@ -212,6 +287,7 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	
 	/**
 	 * Returns a String containing the Java VM argument line
+	 * 
 	 * @return
 	 * @throws DependencyResolutionRequiredException
 	 */
@@ -233,6 +309,7 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	
 	/**
 	 * Returns a String containing the ejb deploy tool argument line. 
+	 * 
 	 * @return String
 	 * @throws DependencyResolutionRequiredException
 	 */
