@@ -952,6 +952,10 @@ dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/Abst
 dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/CopyFileMojo.java -text
 dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/CopyMojo.java -text
 dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/SourceFile.java -text
+dev/maven2/nav-deployment-code-plugin/.project -text
+dev/maven2/nav-deployment-code-plugin/pom.xml -text
+dev/maven2/nav-deployment-code-plugin/src/main/java/no/nav/maven/plugin/deploymentcodeplugin/AbstractDeploymentCodeMojo.java -text
+dev/maven2/nav-deployment-code-plugin/src/main/java/no/nav/maven/plugin/deploymentcodeplugin/WebsphereDeploymentCodeMojo.java -text
 dev/maven2/nav-maven-common/.classpath -text
 dev/maven2/nav-maven-common/.project -text
 dev/maven2/nav-maven-common/pom.xml -text
