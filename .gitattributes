@@ -695,6 +695,7 @@ app/workspaces/pom.xml -text
 app/workspaces/stelvio-app-workspace/.project -text
 app/workspaces/stelvio-app-workspace/pom.xml -text
 app/workspaces/stelvio-app-workspace/stelvio-app-trunk.psf -text
+cruisecontrol/config.xml -text
 dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
