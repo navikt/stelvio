@@ -45,8 +45,6 @@ public class MyMojo extends AbstractMojo {
 	 */
 	private File earDirectory;
 
-	private ZipUtils zipUtils = new ZipUtils();
-
 	public void execute() throws MojoExecutionException {
 
 		String unpackDir;
@@ -56,12 +54,13 @@ public class MyMojo extends AbstractMojo {
 			for (int i = 0; i < files.length; i++) {
 				File file = files[i];
 				if (file.getName().startsWith("nav-cons")) {
-					unpackDir = TEMP_OUTPUT + file.separator + "ear" + file.separator + file.getName();
+					unpackDir = TEMP_OUTPUT + file.separator + "ear" + file.separator + file.getName().substring(0, file.getName().length() - 4);
 					final File destination = new File(unpackDir);
 					destination.mkdirs();
-					zipUtils.extract(file, destination);
+					ZipUtils.extract(file, destination);
 					getLog().info("\tdone unpacking ear files");
 					extraxtEJBJarFiles(unpackDir);
+					ZipUtils.compress(destination, file);
 				}
 			}
 		} catch (IOException e) {
@@ -83,12 +82,12 @@ public class MyMojo extends AbstractMojo {
 		for (int i = 0; i < files.length; i++) {
 			File file = files[i];
 			if (file.getName().startsWith("nav-cons") && file.getName().endsWith("EJB.jar")) {
-				final String outputDir = TEMP_OUTPUT + file.separator + "jar" + file.separator + file.getName();
+				final String outputDir = TEMP_OUTPUT + file.separator + "jar" + file.separator + file.getName().substring(0, file.getName().length() - 4);
 				final File jarDir = new File(outputDir);
-				zipUtils.extract(file, jarDir);
+				ZipUtils.extract(file, jarDir);
 				File settings = new File(outputDir + file.separator + "META-INF" + file.separator + "webservices.xml");
 				addHandler(settings);
-				zipUtils.compress(jarDir, new File(TEMP_OUTPUT+file.separator+"test.jar"));
+				ZipUtils.compress(jarDir, file);
 			}
 
 		}

@@ -1,7 +1,7 @@
 package no.nav.maven.plugins;
 
 import java.io.*;
-import java.util.Enumeration;
+import java.util.*;
 import java.util.jar.JarFile;
 import java.util.jar.JarOutputStream;
 import java.util.zip.*;
@@ -9,32 +9,27 @@ import java.util.zip.*;
 public class ZipUtils {
 
 	public static void compress(File source, File destination) throws IOException {
-		//
-		// if the source is a directory, simply add all of its files
-		//
+		Map files = new HashMap();
+		addFiles(source, files,"",source.getName());
+		System.out.println("zipper " + files.size() + " filer");
+		compress(files, destination);
+
+	}
+
+	private static void addFiles(File source, Map files, String path, String basedir) throws IOException {
 		if (source.isDirectory()) {
-			//
-			// we need to create an array that has the files AND the
-			// directory, otherwise we won't be able to accurately
-			// extract the files
-			//
-			File[] files = source.listFiles();
-			File[] toBeArchived = new File[files.length + 1];
-
-			//
-			// the containing directory goes before its files
-			//
-			toBeArchived[0] = destination;
-			System.arraycopy(files, 0, toBeArchived, 1, files.length);
-
-			compress(toBeArchived, destination);
+			File[] subfiles = source.listFiles();
+			for (int i = 0; i < subfiles.length; i++) {
+				if (source.getName().equals(basedir)) {
+					addFiles(subfiles[i], files, path, basedir);					
+				} else {
+					addFiles(subfiles[i], files, path+source.separator+source.getName(), basedir);
+				}
+			}
+		} else {
+			files.put(path+source.separator+source.getName(),source);
+			System.out.println("legger til fil " + path+source.separator+source.getName());
 		}
-
-		//
-		// compressing one file - make a File[] with the one item
-		//
-		else
-			compress(new File[] { source }, destination);
 	}
 
 	/**
@@ -43,22 +38,33 @@ public class ZipUtils {
 	 * destination.
 	 * 
 	 */
-	public static void compress(File[] sourceFiles, File destination) throws IOException {
+	private static void compress(Map sourceFiles, File destination) throws IOException {
+		System.out.println("kaller compress");
 		ZipOutputStream output = null;
 
-		try {
-			output = getArchiveOutputStream(destination);
+		output = getArchiveOutputStream(destination);
 
-			for (int n = 0; n < sourceFiles.length; ++n) {
-				ZipEntry entry = new ZipEntry(sourceFiles[n].getAbsolutePath());
-				output.putNextEntry(entry);
-			}
-		}
+		Set keys = sourceFiles.keySet();
+		for (Iterator iter = keys.iterator(); iter.hasNext();) {
+			String path = (String) iter.next();
+			File file = (File) sourceFiles.get(path);
+			
+			final String filename = path;
+			System.out.println("zipper "+filename);
+			ZipEntry entry = new ZipEntry(filename);
+			output.putNextEntry(entry);			
+			byte[] buffer = new byte[10];
+			int bytes = 0;
+			FileInputStream str = new FileInputStream(file);
+			while ((bytes = str.read(buffer, 0, buffer.length)) > 0) {
+				for (int i = 0; i < bytes; i++) {
+					output.write((byte) buffer[i]);
+				}			
+			}		
+		}		
+		
+		output.close();
 
-		finally {
-			if (output != null)
-				output.close();
-		}
 	}
 
 	/**
@@ -129,7 +135,7 @@ public class ZipUtils {
 	 * returns the appropriate ZipFile instance.
 	 * 
 	 */
-	public static ZipFile getArchiveFile(File file) throws IOException {
+	private static ZipFile getArchiveFile(File file) throws IOException {
 		String path = file.getAbsolutePath();
 		ZipFile archive = null;
 
@@ -154,7 +160,7 @@ public class ZipUtils {
 	 * already exists, the stream appends new entries to the end of the file.
 	 * 
 	 */
-	public static ZipOutputStream getArchiveOutputStream(File file) throws IOException {
+	private static ZipOutputStream getArchiveOutputStream(File file) throws IOException {
 		//
 		// check the extension to see what kind of archive it is
 		//
@@ -166,7 +172,7 @@ public class ZipUtils {
 		//
 		// we want to append to the archive if it already exists
 		//
-		output = new FileOutputStream(file, true);
+		output = new FileOutputStream(file);
 
 		//
 		// we can support either jar or zip files. if the extension is
@@ -181,5 +187,6 @@ public class ZipUtils {
 
 		return archive;
 	}
+
 
 }
