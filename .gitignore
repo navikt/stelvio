@@ -57,3 +57,6 @@ app/stelvio-test-java/target
 dev/ant-projectSetTask/.classpath
 dev/ant-projectSetTask/.project
 dev/ant-projectSetTask/target
+maven-jaxhandler-plugin/.classpath
+maven-jaxhandler-plugin/.project
+maven-jaxhandler-plugin/target
