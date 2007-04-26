@@ -33,7 +33,7 @@ import org.dom4j.io.*;
  * 
  * @goal touch
  * 
- * @phase process-sources
+ 
  */
 public class MyMojo extends AbstractMojo {
 
