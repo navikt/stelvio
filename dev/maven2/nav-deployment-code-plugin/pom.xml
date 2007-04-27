@@ -10,6 +10,7 @@
   <packaging>maven-plugin</packaging>
   <name>NAV Maven Deployment Code Plugin</name>
   <version>1.0</version>
+  <url>http://10.33.1.53/project/maven/plugins/nav-deployment-code-plugin</url>
   <prerequisites>
     <maven>2.0.1</maven>
   </prerequisites>
@@ -119,4 +120,21 @@
             </plugins>
         </pluginManagement>
 	</build>
+	
+	<distributionManagement>
+       	<repository>
+            <id>nav-maven2-internal-repo</id>
+            <name>NAV Maven2 Internal Repository</name>
+            <url>scp://maven.adeo.no/var/maven2/internal</url>
+        </repository>
+        <snapshotRepository>
+            <id>nav-pensjon-maven2-snapshot-repo</id>
+            <name>NAV Maven2 Internal Snapshot Repository</name>
+            <url>scp://maven.adeo.no/var/maven2/snapshot</url>
+        </snapshotRepository>
+        <site>
+            <id>website</id>
+            <url>scp://10.33.1.53/var/www/html/project/maven/plugins/nav-deployment-code-plugin</url>
+        </site>
+    </distributionManagement>
 </project>

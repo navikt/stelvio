@@ -2,10 +2,15 @@ package no.nav.maven.plugin.deploymentcodeplugin;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.jar.JarEntry;
+import java.util.jar.JarInputStream;
 
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -32,6 +37,7 @@ import org.codehaus.plexus.util.FileUtils;
  * @author person4f9bc5bd17cc, Accenture
  * @version $id$
  * @goal websphere-deployment-code
+ * @phase package
  */
 public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	/**
@@ -43,12 +49,14 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	
 	/**
 	 * Temporary output jar file with deployment code.
+	 * 
 	 * @parameter
 	 */
 	private File outputJar;
 	
 	/**
 	 * Folder the ejb deploy tool will generate work files under.
+	 * 
 	 * @parameter
 	 */
 	private File workingDir;
@@ -110,10 +118,18 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	private boolean unpackCode;
 	
 	/**
+	 * Directory to unpack the finished jar file.
+	 * 
+	 * @parameter expression="${project.build.directory}/classes"
+	 */
+	private File unpackDir;
+	
+	/**
 	 * Method that is executed when plugin is started.
 	 * 
 	 * @throws MojoExecutionException
 	 * @throws MojoFailureException
+	 * @throws  
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		init();
@@ -124,7 +140,7 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 			
 			// Print ejb deploy tool log
 			logStreams(process.getInputStream(), process.getErrorStream());
-
+	
 			// Make final preperations to the resulting artifacts
 			finalizeArtifacts();
 		}
@@ -232,8 +248,43 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 		
 		// Unpack jar file if specified
 		if (unpackCode) {
-			// TODO: Unpack files here
+			unpack(generatedJarFilename);
 		}
+	}
+	
+	/**
+	 * Method to unpack generated code to a specified folder.
+	 * 
+	 * @param inputJar
+	 * @throws MojoExecutionException if unpackDir is not specified.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 */
+	private void unpack(String inputJar) throws MojoExecutionException, FileNotFoundException, IOException {
+		if (unpackDir == null || !unpackDir.isDirectory()) {
+			throw new MojoExecutionException("'unpackDir' needs to be specified as a valid directory.");
+		}
+		
+    	JarInputStream jis = new JarInputStream(new FileInputStream(new File(inputJar)));
+		JarEntry je = null;
+		while ((je = jis.getNextJarEntry()) != null) {
+			if (je.isDirectory()) {
+				continue;
+			}
+			
+			int bytes = 0;
+			File unzippedFile = new File(unpackDir, je.getName());
+			new File(unzippedFile.getParent()).mkdirs();
+			FileOutputStream fos = new FileOutputStream(unzippedFile);
+			byte[] buffer = new byte[10];
+			while ((bytes = jis.read(buffer, 0, buffer.length)) > 0) {
+				for (int i = 0; i < bytes; i++) {
+					fos.write((byte) buffer[i]);
+				}
+			}
+			fos.close();
+		}
+		jis.close();
 	}
 	
 	/**
