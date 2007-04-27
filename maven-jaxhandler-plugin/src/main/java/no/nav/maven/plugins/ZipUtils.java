@@ -22,11 +22,11 @@ public class ZipUtils {
 				if (source.getName().equals(basedir)) {
 					addFiles(subfiles[i], files, path, basedir);					
 				} else {
-					addFiles(subfiles[i], files, path+source.separator+source.getName(), basedir);
+					addFiles(subfiles[i], files, path+File.separator+source.getName(), basedir);
 				}
 			}
 		} else {
-			files.put(path+source.separator+source.getName(),source);
+			files.put(path+File.separator+source.getName(),source);
 		}
 	}
 

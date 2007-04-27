@@ -5,6 +5,8 @@ import java.util.Iterator;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.MavenProjectHelper;
 import org.dom4j.*;
 import org.dom4j.io.*;
 
@@ -25,7 +27,26 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 	 * @required
 	 */
 	private File earDirectory;
+	
+	/**
+     * The maven project's helper.
+     *
+     * @parameter expression="${component.org.apache.maven.project.MavenProjectHelper}"
+     * @required
+     * @readonly
+     */
+    private MavenProjectHelper projectHelper;
+	
+	/**
+     * The maven project.
+     *
+     * @parameter expression="${project}"
+     * @required
+     * @readonly
+     */
+    private MavenProject project;
 
+    
 	public void execute() throws MojoExecutionException {
 
 		String unpackDir;
@@ -35,7 +56,7 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 			for (int i = 0; i < files.length; i++) {
 				File file = files[i];
 				if (file.getName().startsWith("nav-cons")) {
-					unpackDir = TEMP_OUTPUT + file.separator + "ear" + file.separator + file.getName().substring(0, file.getName().length() - 4);
+					unpackDir = TEMP_OUTPUT + File.separator + "ear" + File.separator + file.getName().substring(0, file.getName().length() - 4);
 					final File destination = new File(unpackDir);
 					destination.mkdirs();
 					ZipUtils.extract(file, destination);
@@ -47,6 +68,15 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 		} catch (IOException e) {
 			throw new MojoExecutionException("Error parsing inputfile", e);
 		}
+
+		// adds the altered ear files as artifacts
+		File[] files = earDirectory.listFiles();
+		for (int i = 0; i < files.length; i++) {
+			File file = files[i];
+			if (!file.isDirectory()) {
+				projectHelper.attachArtifact(project,"ear","",file);
+			}
+		}		
 	}
 
 	/*
@@ -59,10 +89,10 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 		for (int i = 0; i < files.length; i++) {
 			File file = files[i];
 			if (file.getName().startsWith("nav-cons") && file.getName().endsWith("EJB.jar")) {
-				final String outputDir = TEMP_OUTPUT + file.separator + "jar" + file.separator + file.getName().substring(0, file.getName().length() - 4);
+				final String outputDir = TEMP_OUTPUT + File.separator + "jar" + File.separator + file.getName().substring(0, file.getName().length() - 4);
 				final File jarDir = new File(outputDir);
 				ZipUtils.extract(file, jarDir);
-				File settings = new File(outputDir + file.separator + "META-INF" + file.separator + "webservices.xml");
+				File settings = new File(outputDir + File.separator + "META-INF" + File.separator + "webservices.xml");
 				addHandler(settings);
 				ZipUtils.compress(jarDir, file);
 			}
