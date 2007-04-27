@@ -4,12 +4,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="projects/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -20,24 +21,25 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="600">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
     </listeners>
   </project>
-  <project name="build wsdl">
+  <project name="build_wsdl">
     <modificationset QuietPeriod="0">
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
     <schedule>
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -Dant-target=build-all" time="0200" pomfile="e:/builds/${project.name}/pom.xml" />
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -Dant.target=build-all" time="0200" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
@@ -53,12 +55,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -69,12 +72,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -85,12 +89,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -101,12 +106,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -117,12 +123,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" pomfile="projects/${project.name}/pom.xml" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" pomfile="projects/${project.name}/pom.xml" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -133,12 +140,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -149,12 +157,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="projects/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -165,12 +174,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -181,12 +191,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -197,12 +208,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -213,12 +225,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -229,12 +242,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
@@ -245,12 +259,13 @@
       <svn Username="svnguest" Password="Subversion01" RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/workspaces/nav-int-workspaces" />
       <svn RepositoryLocation="https://versjonskontroll.adeo.no/svn/nav-test/pensjon/trunk/int/layers" Username="svnguest" Password="Subversion01" />
     </modificationset>
-    <schedule Interval="7200">
-      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean test -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
+    <schedule Interval="10800">
+      <maven2 mvnhome="C:/apps/maven-2.0.4" goal="scm:update clean install -DeclipseWorkSpace=${project.name}.psf" pomfile="e:/builds/${project.name}/pom.xml" />
     </schedule>
     <log LogDir="logs/${project.name}" />
     <publishers>
       <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/logs" Dest="artifacts/${project.name}" PublishOnFailure="false" />
+      <artifactspublisher Dir="e:/builds/${project.name}/target/classes/builds/ear" PublishOnFailure="false" Dest="artifacts/${project.name}" />
     </publishers>
     <listeners>
       <currentbuildstatuslistener File="logs/${project.name}/status.txt" />
