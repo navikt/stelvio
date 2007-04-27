@@ -64,12 +64,8 @@ public class MyMojo extends AbstractMojo {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoExecutionException("Error parsing inputfile", e);
 		}
-
-		// addHandler();
-
 	}
 
 	/*
