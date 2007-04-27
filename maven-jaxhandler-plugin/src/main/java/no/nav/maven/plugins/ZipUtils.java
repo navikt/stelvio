@@ -11,7 +11,6 @@ public class ZipUtils {
 	public static void compress(File source, File destination) throws IOException {
 		Map files = new HashMap();
 		addFiles(source, files,"",source.getName());
-		System.out.println("zipper " + files.size() + " filer");
 		compress(files, destination);
 
 	}
@@ -28,7 +27,6 @@ public class ZipUtils {
 			}
 		} else {
 			files.put(path+source.separator+source.getName(),source);
-			System.out.println("legger til fil " + path+source.separator+source.getName());
 		}
 	}
 
@@ -39,7 +37,6 @@ public class ZipUtils {
 	 * 
 	 */
 	private static void compress(Map sourceFiles, File destination) throws IOException {
-		System.out.println("kaller compress");
 		ZipOutputStream output = null;
 
 		output = getArchiveOutputStream(destination);
@@ -50,7 +47,6 @@ public class ZipUtils {
 			File file = (File) sourceFiles.get(path);
 			
 			final String filename = path;
-			System.out.println("zipper "+filename);
 			ZipEntry entry = new ZipEntry(filename);
 			output.putNextEntry(entry);			
 			byte[] buffer = new byte[10];
