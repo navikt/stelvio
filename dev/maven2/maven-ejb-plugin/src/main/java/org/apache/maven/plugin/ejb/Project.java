@@ -5,7 +5,11 @@ package org.apache.maven.plugin.ejb;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import org.codehaus.plexus.util.DirectoryScanner;
 
 /**
  * @author person4f9bc5bd17cc, Accenture
@@ -29,6 +33,11 @@ public class Project {
 	 * @parameter
 	 */
 	private List<String> includes;
+	
+	/**
+	 * @parameter
+	 */
+	private List<String> excludes;
 
 	/**
 	 * @return the basedir
@@ -80,5 +89,24 @@ public class Project {
 	 */
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
+	}
+
+	/**
+	 * @return the excludes
+	 */
+	public List<String> getExcludes() {
+		if (excludes == null) {
+			excludes = new ArrayList<String>();
+			excludes.addAll(Arrays.asList(DirectoryScanner.DEFAULTEXCLUDES));
+		}
+		
+		return excludes;
+	}
+
+	/**
+	 * @param excludes the excludes to set
+	 */
+	public void setExcludes(List<String> excludes) {
+		this.excludes = excludes;
 	}
 }
