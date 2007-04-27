@@ -5,6 +5,7 @@
   <packaging>jar</packaging>
   <name>NAV Maven Common</name>
   <version>1.0</version>
+  <url>http://10.33.1.53/project/maven/nav-maven-common</url>
   
   <dependencies>
     <dependency>
@@ -76,6 +77,20 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>eclipse:eclipse</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>eclipse</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 		
         <pluginManagement>
@@ -99,4 +114,21 @@
             </plugins>
         </pluginManagement>
 	</build>
+	
+	<distributionManagement>
+       	<repository>
+            <id>nav-maven2-internal-repo</id>
+            <name>NAV Maven2 Internal Repository</name>
+            <url>scp://maven.adeo.no/var/maven2/internal</url>
+        </repository>
+        <snapshotRepository>
+            <id>nav-pensjon-maven2-snapshot-repo</id>
+            <name>NAV Maven2 Internal Snapshot Repository</name>
+            <url>scp://maven.adeo.no/var/maven2/snapshot</url>
+        </snapshotRepository>
+        <site>
+            <id>website</id>
+            <url>scp://10.33.1.53/var/www/html/project/maven/nav-maven-common</url>
+        </site>
+    </distributionManagement>
 </project>
