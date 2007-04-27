@@ -971,5 +971,5 @@ inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
 maven-jaxhandler-plugin/pom.xml -text
-maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/MyMojo.java -text
+maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/JaxRPCHandlerMojo.java -text
 maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
