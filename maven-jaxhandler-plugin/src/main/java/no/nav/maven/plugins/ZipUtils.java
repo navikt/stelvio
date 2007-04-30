@@ -10,7 +10,9 @@ public class ZipUtils {
 
 	public static void compress(File source, File destination) throws IOException {
 		Map files = new HashMap();
-		addFiles(source, files,"",source.getName());
+		final String basedir = source.getName();
+		addFiles(source, files, "", basedir);
+		System.out.println("basedir: " + basedir);
 		compress(files, destination);
 
 	}
@@ -20,13 +22,21 @@ public class ZipUtils {
 			File[] subfiles = source.listFiles();
 			for (int i = 0; i < subfiles.length; i++) {
 				if (source.getName().equals(basedir)) {
-					addFiles(subfiles[i], files, path, basedir);					
+					addFiles(subfiles[i], files, path, basedir);
 				} else {
-					addFiles(subfiles[i], files, path+File.separator+source.getName(), basedir);
+					if (path.equals("")) {
+						addFiles(subfiles[i], files, source.getName(), basedir);
+					} else {
+						addFiles(subfiles[i], files, path + source.separator + source.getName(), basedir);
+					}
 				}
 			}
 		} else {
-			files.put(path+File.separator+source.getName(),source);
+			if (path.equals("")) {
+				files.put(source.getName(), source);
+			} else {
+				files.put(path + source.separator + source.getName(), source);
+			}
 		}
 	}
 
@@ -45,20 +55,20 @@ public class ZipUtils {
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
 			String path = (String) iter.next();
 			File file = (File) sourceFiles.get(path);
-			
 			final String filename = path;
+			System.out.println("zipentry: " + filename);
 			ZipEntry entry = new ZipEntry(filename);
-			output.putNextEntry(entry);			
+			output.putNextEntry(entry);
 			byte[] buffer = new byte[10];
 			int bytes = 0;
 			FileInputStream str = new FileInputStream(file);
 			while ((bytes = str.read(buffer, 0, buffer.length)) > 0) {
 				for (int i = 0; i < bytes; i++) {
 					output.write((byte) buffer[i]);
-				}			
-			}		
-		}		
-		
+				}
+			}
+		}
+
 		output.close();
 
 	}
@@ -183,6 +193,5 @@ public class ZipUtils {
 
 		return archive;
 	}
-
 
 }
