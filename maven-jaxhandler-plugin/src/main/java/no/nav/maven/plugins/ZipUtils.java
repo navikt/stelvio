@@ -12,7 +12,6 @@ public class ZipUtils {
 		Map files = new HashMap();
 		final String basedir = source.getName();
 		addFiles(source, files, "", basedir);
-		System.out.println("basedir: " + basedir);
 		compress(files, destination);
 
 	}
@@ -27,7 +26,7 @@ public class ZipUtils {
 					if (path.equals("")) {
 						addFiles(subfiles[i], files, source.getName(), basedir);
 					} else {
-						addFiles(subfiles[i], files, path + source.separator + source.getName(), basedir);
+						addFiles(subfiles[i], files, path + "/" + source.getName(), basedir);
 					}
 				}
 			}
@@ -35,7 +34,7 @@ public class ZipUtils {
 			if (path.equals("")) {
 				files.put(source.getName(), source);
 			} else {
-				files.put(path + source.separator + source.getName(), source);
+				files.put(path + "/" + source.getName(), source);
 			}
 		}
 	}

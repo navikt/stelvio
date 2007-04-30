@@ -56,7 +56,7 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 			for (int i = 0; i < files.length; i++) {
 				File file = files[i];
 				if (file.getName().startsWith("nav-cons")) {
-					unpackDir = TEMP_OUTPUT + File.separator + "ear" + File.separator + file.getName().substring(0, file.getName().length() - 4);
+					unpackDir = TEMP_OUTPUT + "/" + "ear" + "/" + file.getName().substring(0, file.getName().length() - 4);
 					getLog().info("pakker ut i dir: "+unpackDir);
 					final File destination = new File(unpackDir);
 					destination.mkdirs();
@@ -75,7 +75,8 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 		File[] files = earDirectory.listFiles();
 		for (int i = 0; i < files.length; i++) {
 			File file = files[i];
-			if (!file.isDirectory()) {
+			if (file.isFile()) {
+				getLog().info("added "+file.getName()+" as artifact");
 				projectHelper.attachArtifact(project,"ear","",file);
 			}
 		}		
@@ -91,10 +92,10 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 		for (int i = 0; i < files.length; i++) {
 			File file = files[i];
 			if (file.getName().startsWith("nav-cons") && file.getName().endsWith("EJB.jar")) {
-				final String outputDir = TEMP_OUTPUT + File.separator + "jar" + File.separator + file.getName().substring(0, file.getName().length() - 4);
+				final String outputDir = TEMP_OUTPUT + "/" + "jar" + "/" + file.getName().substring(0, file.getName().length() - 4);
 				final File jarDir = new File(outputDir);
 				ZipUtils.extract(file, jarDir);
-				File settings = new File(outputDir + File.separator + "META-INF" + File.separator + "webservices.xml");
+				File settings = new File(outputDir + "/" + "META-INF" + "/" + "webservices.xml");
 				addHandler(settings);
 				ZipUtils.compress(jarDir, file);
 			}
