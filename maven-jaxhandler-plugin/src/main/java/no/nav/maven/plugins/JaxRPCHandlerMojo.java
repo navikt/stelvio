@@ -57,11 +57,13 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 				File file = files[i];
 				if (file.getName().startsWith("nav-cons")) {
 					unpackDir = TEMP_OUTPUT + File.separator + "ear" + File.separator + file.getName().substring(0, file.getName().length() - 4);
+					getLog().info("pakker ut i dir: "+unpackDir);
 					final File destination = new File(unpackDir);
 					destination.mkdirs();
 					ZipUtils.extract(file, destination);
 					getLog().info("\tdone unpacking ear files");
 					extraxtEJBJarFiles(unpackDir);
+					getLog().info("\tdone unpacking and repackinbg jar files");
 					ZipUtils.compress(destination, file);
 				}
 			}
