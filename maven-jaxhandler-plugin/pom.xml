@@ -4,7 +4,7 @@
   <groupId>no.nav.maven.plugins</groupId>
   <artifactId>maven-jaxhandler-plugin</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>1.0</version>
+  <version>1.1</version>
   <name>NAV Maven JAXRPC Handler plugin</name>
   <url>http://10.33.1.53/project/maven/plugins/jaxrpc</url>
   <dependencies>
