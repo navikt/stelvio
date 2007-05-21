@@ -149,18 +149,19 @@ public class ArtifactBuilderMojo extends AbstractMojo {
             }
             
             // Add dependencies to artifact
+            List<File> unzipTempFolders = new ArrayList<File>();
             if (dependencies != null) {
             	for (ArtifactItem artifactItem : dependencies) {
             		Artifact artifact = ProjectUtil.getArtifact(project, artifactItem.getGroupId(), artifactItem.getArtifactId());
             		if (artifact != null) {
             			File unzipTempFolder = unpackJarEntries(artifact);
+            			unzipTempFolders.add(unzipTempFolder);
             			
             			getLog().info("Adding resources from artifact \""+artifact.getFile().getName()+"\"");
             			artifactItem.getIncludes().addAll(globalIncludes);
             			artifactItem.getExcludes().addAll(globalExcludes);
             			archiver.getArchiver().addDirectory(unzipTempFolder, (String[]) artifactItem.getIncludes().toArray(EMPTY_STRING_ARRAY), (String[]) artifactItem.getExcludes().toArray(EMPTY_STRING_ARRAY));
             			
-            			FileUtils.deleteDirectory(unzipTempFolder);
             			continue;
             		}
             		
@@ -169,6 +170,11 @@ public class ArtifactBuilderMojo extends AbstractMojo {
             }
 			
 			archiver.createArchive(project, archive);
+			
+			// Delete all temporary folders
+			for (File unzipTempFolder : unzipTempFolders) {
+				FileUtils.deleteDirectory(unzipTempFolder);
+			}
 			
 			// Attach resulting jar-file to project in order for it to be installed and deployed
 			projectHelper.attachArtifact(project, artifactType, artifactClassifier, archiver.getArchiver().getDestFile());
