@@ -700,6 +700,7 @@ dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
+dev/maven2/deploy.txt -text
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
 dev/maven2/maven-dependency-plugin/pom.xml -text
@@ -969,6 +970,7 @@ dev/maven2/nav-maven-common/pom.xml -text
 dev/maven2/nav-maven-common/src/main/java/no/nav/maven/common/ArtifactItem.java.old -text
 dev/maven2/nav-maven-common/src/main/java/no/nav/maven/common/NavMavenArchiver.java.old -text
 dev/maven2/nav-maven-common/src/main/java/no/nav/maven/common/ProjectUtil.java -text
+dev/maven2/pom.xml -text
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
