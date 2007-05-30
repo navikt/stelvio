@@ -15,7 +15,7 @@ import org.apache.maven.project.MavenProject;
  * @version $id$
  */
 public class ProjectUtil {
-	private static Log log = new SystemStreamLog();;
+	private static Log log = new SystemStreamLog();
 	
     /**
      * Method to get Artifact-object based on artifactitems groupId and artifactId.
