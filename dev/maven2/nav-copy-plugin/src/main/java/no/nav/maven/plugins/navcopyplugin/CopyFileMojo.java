@@ -23,7 +23,6 @@ public class CopyFileMojo extends AbstractCopyMojo {
 	private List<SourceFile> sourceFiles;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
-    	getLog().info("SourceFiles: "+sourceFiles);
         if(sourceFiles != null && sourceFiles.size() > 0)
             try {
             	for (SourceFile sourceFile : sourceFiles) {
