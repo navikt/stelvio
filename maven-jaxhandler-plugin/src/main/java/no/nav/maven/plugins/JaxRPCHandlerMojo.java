@@ -2,6 +2,7 @@ package no.nav.maven.plugins;
 
 import java.io.*;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -46,6 +47,13 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
      */
     private MavenProject project;
 
+	/**
+     * List of consumer modules without webservice interface
+     *
+     * @parameter
+     * @required
+     */
+    private Set exceptionModules;
     
 	public void execute() throws MojoExecutionException {
 
@@ -55,15 +63,19 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 			File[] files = earDirectory.listFiles();
 			for (int i = 0; i < files.length; i++) {
 				File file = files[i];
-				if (file.getName().startsWith("nav-cons")) {
-					unpackDir = TEMP_OUTPUT + "/" + "ear" + "/" + file.getName().substring(0, file.getName().length() - 4);
-					getLog().info("pakker ut i dir: "+unpackDir);
+				String fileName = file.getName();
+				String moduleName = fileName.substring(0,fileName.length()-4);
+				if (exceptionModules.contains(moduleName)) {
+					System.out.println("skipper modul med navn "+moduleName);				
+				} else if (fileName.startsWith("nav-cons")) {
+					unpackDir = TEMP_OUTPUT + "/" + "ear" + "/" + fileName.substring(0, fileName.length() - 4);
+					getLog().info("pakker: "+moduleName);
 					final File destination = new File(unpackDir);
 					destination.mkdirs();
 					ZipUtils.extract(file, destination);
 					getLog().info("\tdone unpacking ear files");
 					extraxtEJBJarFiles(unpackDir);
-					getLog().info("\tdone unpacking and repackinbg jar files");
+					getLog().info("\tdone unpacking and repacking jar files");
 					ZipUtils.compress(destination, file);
 				}
 			}

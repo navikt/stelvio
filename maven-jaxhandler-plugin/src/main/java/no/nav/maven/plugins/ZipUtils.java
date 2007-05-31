@@ -55,7 +55,6 @@ public class ZipUtils {
 			String path = (String) iter.next();
 			File file = (File) sourceFiles.get(path);
 			final String filename = path;
-			System.out.println("zipentry: " + filename);
 			ZipEntry entry = new ZipEntry(filename);
 			output.putNextEntry(entry);
 			byte[] buffer = new byte[10];
