@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -155,7 +156,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			String dirName=getDirectory(operationType);
 			try {
 				File dir=new File(dirName);
-				File[] files=dir.listFiles();
+				File[] files=listFilesAlphabetical(dir);
 				File foundMatch=null;
 				for (int i=0;i<files.length;i++){
 					if (files[i].getName().endsWith("_Request.xml")){
@@ -343,6 +344,20 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			dir.mkdirs();
 		return dirName;
 	}
+	
+	
+	public File[] listFilesAlphabetical(File dir) {
+		String[] ss = dir.list();
+		Arrays.sort(ss);
+		if (ss == null) return null;
+		int n = ss.length;
+		File[] fs = new File[n];
+		for (int i = 0; i < n; i++) {
+		    fs[i] = new File(dir.getPath(), ss[i]);
+		}
+		return fs;
+		}
+
 
 	/* (non-Javadoc)
 	 * @see com.ibm.websphere.sca.ServiceImplAsync#invokeAsync(com.ibm.websphere.sca.scdl.OperationType, java.lang.Object, com.ibm.websphere.sca.ServiceCallback, com.ibm.websphere.sca.Ticket)
