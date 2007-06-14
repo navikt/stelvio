@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:bo="http://stelvio-commons-lib/no/stelvio/common/systemavailability" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://stelvio-commons-lib/no/stelvio/common/systemavailability">
-  <xsd:annotation>
-    <xsd:appinfo source="wid.federated.schema"/>
-  </xsd:annotation>
-  <xsd:include schemaLocation="../no/stelvio/common/systemavailability/SystemAvailabilityRecord.xsd"/>
-  <xsd:include schemaLocation="../no/stelvio/common/systemavailability/OperationAvailabilityRecord.xsd"/>
-</xsd:schema>

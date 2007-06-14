@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry excluding="gen/|gen/src/" kind="src" path=""/>
-	<classpathentry kind="src" path="gen/src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WPS Server v6.0 JRE"/>
-	<classpathentry kind="con" path="com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60.wbi/wbi.v6"/>
-	<classpathentry kind="output" path=""/>
-</classpath>
