@@ -16,15 +16,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.impl.EStructuralFeatureImpl;
-import org.eclipse.emf.ecore.sdo.util.SDOUtil;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-
-
-
 
 import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.bo.BOXMLDocument;
@@ -32,19 +24,14 @@ import com.ibm.websphere.bo.BOXMLSerializer;
 import com.ibm.websphere.sca.Service;
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceCallback;
-import com.ibm.websphere.sca.ServiceRuntimeException;
+import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.Ticket;
 import com.ibm.websphere.sca.scdl.OperationType;
-import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.ws.bo.impl.BusObjImpl;
-import com.ibm.ws.bo.impl.BusinessObjectPropertyImpl;
 import com.ibm.ws.bo.impl.BusinessObjectTypeImpl;
-import com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartFactoryImpl;
 import com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartImpl;
 import com.ibm.ws.sca.internal.scdl.impl.ManagedReferenceImpl;
-import com.ibm.wsspi.sca.multipart.MultipartFactory;
-
 import commonj.sdo.DataObject;
 import commonj.sdo.Property;
 
@@ -98,7 +85,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		/*if (new Random().nextFloat()>(.5f)){
 			throw new ServiceBusinessException("Sorry dude, System \""+systemName+"\" is now unavailable!");
 		}*/
-		//System.err.println("invoking "+arg0.getName());
 		if (interceptorEnabled){
 			OperationAvailabilityRecord availRec=null;
 			try{
@@ -125,11 +111,11 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					if (availRec.recordStubData){
 						try{
 							Object ret=partnerService.invoke(arg0,arg1); 
-							System.err.println("Normal");
+							//System.err.println("Normal");
 							recordStubData(arg0,(ManagedMultipartImpl)arg1,(ManagedMultipartImpl)ret);
 							return ret;
 						}catch(ServiceBusinessException sbe){
-							System.err.println("Exception");
+							//System.err.println("Exception");
 							recordStubDataException(arg0,(ManagedMultipartImpl)arg1,sbe);
 							throw sbe;
 						}
@@ -275,7 +261,13 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 * @param ret
 	 */
 	private void recordStubData(OperationType arg0, ManagedMultipartImpl request, ManagedMultipartImpl response) {
-		recordStubData(arg0,request,(DataObject)response.get(0),false);
+		DataObject respObject=null;
+		if (response!=null){
+			try{
+				respObject=(DataObject) response.get(0);
+			}catch(Throwable t){}		
+		} 
+		recordStubData(arg0,request,respObject,false);
 	}
 	
 	/**
@@ -300,8 +292,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			//((BusinessObjectTypeImpl)request.getType()).eContents().listIterator().next()
 			FileOutputStream requestfile=new FileOutputStream(dirName+"/Stub_"+tmstamp+"_Request.xml");
 			xmlSerializerService.writeDataObject(requestObject,"http://no.stelvio.stubdata/",requestObjectName,requestfile);
-			BusinessObjectTypeImpl impl;
-			if (exception || ((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().hasNext()){
+			BusinessObjectTypeImpl impl;			
+			if (exception || response!=null){ //((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().hasNext()){
 				String responseObjectName;
 				DataObject responseObject=response;
 				String responseTypeString;
@@ -327,8 +319,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		System.out.println("Yo!");
+		}		
 		
 		
 	}
@@ -357,7 +348,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		}
 		return fs;
 		}
-
 
 	/* (non-Javadoc)
 	 * @see com.ibm.websphere.sca.ServiceImplAsync#invokeAsync(com.ibm.websphere.sca.scdl.OperationType, java.lang.Object, com.ibm.websphere.sca.ServiceCallback, com.ibm.websphere.sca.Ticket)
