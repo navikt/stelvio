@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bons0="http://stelvio-commons-lib/no/nav/gbo" targetNamespace="http://stelvio-commons-lib/no/nav/gbo">
+    <xsd:include schemaLocation="GBOStelvioFrg.xsd"/>
+    <xsd:include schemaLocation="GBOStelvioFault.xsd"/>
+    <xsd:complexType name="GBOStelvioContext">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="serviceName" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="sendingSystem" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="receivingSystem" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="componentName" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="interfaceName" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="operationName" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="userId" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="messageId" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="correlationId" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="transactionId" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="languageId" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="timestamp" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="stelvioFault" type="bons0:GBOStelvioFault"/>
+            <xsd:element minOccurs="0" name="frgContext" type="bons0:GBOStelvioFrg"/>
+        </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
