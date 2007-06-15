@@ -116,7 +116,10 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 	}
 
 	private void addHandler(File inputFile) throws MojoExecutionException {
+		
+		// Detter litt klønete, men jeg får ikke x-path til å fungere.
 		SAXReader reader = new SAXReader();
+		final String HANDLER_NAME = "no.stelvio.common.bus.handlers.jaxrpc.StelvioCommonContextHandler";
 		try {
 			Document doc = reader.read(inputFile);
 
@@ -125,10 +128,25 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 			while (iter.hasNext()) {
 				Element elem = (Element) iter.next();
 				Element elem2 = elem.element("port-component");
+				
+				Iterator portIterator = elem2.elementIterator();
+				boolean funnet = false;
+				while (portIterator.hasNext()) {
+					Element sub = (Element) portIterator.next();
+					if (sub.getName().equals("handler")) {
+						Element handlerName = sub.element("handler-name");
+						if (handlerName != null && handlerName.getData().equals(HANDLER_NAME)) {
+							funnet = true;
+						}
+					} 
+				}
 
-				Element handler = elem2.addElement("handler");
-				handler.addElement("handler-name").addText("no.stelvio.common.bus.handlers.jaxrpc.StelvioCommonContextHandler");
-				handler.addElement("handler-class").addText("no.stelvio.common.bus.handlers.jaxrpc.StelvioCommonContextHandler");
+				if (!funnet) {
+					System.out.println("ikke funnet handler, legger til");
+					Element handler = elem2.addElement("handler");
+					handler.addElement("handler-name").addText(HANDLER_NAME);
+					handler.addElement("handler-class").addText(HANDLER_NAME);
+				}
 
 				XMLWriter writer;
 				OutputFormat format = OutputFormat.createPrettyPrint();
