@@ -1078,6 +1078,12 @@ int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/.class
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/.project -text
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/stelvio/systemavailability/AvailabilityRecord.java -text
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/stelvio/systemavailability/StaticSystemAvailabilityStorage.java -text
+int/stelvio-sibus-mediation/MediationEAR/.j2ee -text
+int/stelvio-sibus-mediation/MediationEAR/.project -text
+int/stelvio-sibus-mediation/MediationEAR/.runtime -text
+int/stelvio-sibus-mediation/MediationEAR/META-INF/.modulemaps -text
+int/stelvio-sibus-mediation/MediationEAR/META-INF/MANIFEST.MF -text
+int/stelvio-sibus-mediation/MediationEAR/META-INF/application.xml -text
 maven-jaxhandler-plugin/pom.xml -text
 maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/JaxRPCHandlerMojo.java -text
 maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
