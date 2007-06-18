@@ -49,7 +49,8 @@ public class JMSPropertyMediation implements MediationHandler {
 							+ "****** Mediation ended! ******* ");
 		} catch (Exception ex) {
 			log.logp(Level.SEVERE, className, "handle()", "CatchedError: "+ ex.getMessage());
-			return false;
+			// message should be ikke discarded
+			return true;
 		}
 
 		return true;
