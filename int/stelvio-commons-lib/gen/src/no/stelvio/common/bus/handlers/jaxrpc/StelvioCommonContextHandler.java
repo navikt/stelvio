@@ -299,27 +299,19 @@ public class StelvioCommonContextHandler extends GenericHandler {
 			workArea.begin(workAreaName);
 
 			// userId
-			if (userId==null)
-				workArea.set("userId", null);
-			else	
+			if (userId!=null)
 				workArea.set("userId", userId);
 
 			// correlationId			
-			if (correlationId==null)
-				workArea.set("correlationId", null);
-			else	
+			if (correlationId!=null)
 				workArea.set("correlationId", correlationId);
 			
 			// languageId			
-			if (languageId==null)
-				workArea.set("languageId", null);
-			else	
+			if (languageId!=null)
 				workArea.set("languageId", languageId);
 			
 			// applicationId			
-			if (applicationId==null)
-				workArea.set("applicationId", null);
-			else	
+			if (applicationId!=null)
 				workArea.set("applicationId", applicationId);
 
 			log.logp(Level.FINE, className, "createWorkArea()", "-- BUS_STELVIO_CONTEXT: userId="+userId +" correlationId="+correlationId+" languageId="+languageId+" applicationId="+applicationId);
