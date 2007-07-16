@@ -83,15 +83,6 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 			throw new MojoExecutionException("Error parsing inputfile", e);
 		}
 
-		// adds the altered ear files as artifacts
-		File[] files = earDirectory.listFiles();
-		for (int i = 0; i < files.length; i++) {
-			File file = files[i];
-			if (file.isFile()) {
-				getLog().info("added "+file.getName()+" as artifact");
-				projectHelper.attachArtifact(project,"ear","",file);
-			}
-		}		
 	}
 
 	/*
