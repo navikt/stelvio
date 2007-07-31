@@ -132,23 +132,26 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	 * @throws  
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		init();
+		boolean skip = init();
 		
-		try {
-			// Execute the ejb deploy tool in a separate JVM
-			Process process = Runtime.getRuntime().exec(getJavaExecutable());
-			
-			// Print ejb deploy tool log
-			logStreams(process.getInputStream(), process.getErrorStream());
-	
-			// Make final preperations to the resulting artifacts
-			finalizeArtifacts();
-		}
-		catch (DependencyResolutionRequiredException e) {
-			throw new MojoExecutionException("An error occured while setting ejbdeploy arguments.", e);
-		}
-		catch (IOException e) {
-			throw new MojoExecutionException("An error occured while executing process", e);
+		if (!skip) {
+		
+			try {
+				// Execute the ejb deploy tool in a separate JVM
+				Process process = Runtime.getRuntime().exec(getJavaExecutable());
+				
+				// Print ejb deploy tool log
+				logStreams(process.getInputStream(), process.getErrorStream());
+		
+				// Make final preperations to the resulting artifacts
+				finalizeArtifacts();
+			}
+			catch (DependencyResolutionRequiredException e) {
+				throw new MojoExecutionException("An error occured while setting ejbdeploy arguments.", e);
+			}
+			catch (IOException e) {
+				throw new MojoExecutionException("An error occured while executing process", e);
+			}
 		}
 	}
 	
@@ -157,15 +160,21 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	 * 
 	 * @throws MojoExecutionException 
 	 */
-	private void init() throws MojoExecutionException {
+	private boolean init() throws MojoExecutionException {
 		// Check that all required argument are populated with standard or custom values.
 		checkArguments();
 		
+		boolean skip = false;
 		// Set default values, if noe specified.
 		if (inputJar == null) {
 			inputJar = new File(getProject().getBuild().getDirectory()+
 								File.separatorChar+
 								getProject().getArtifactId()+"-"+getProject().getVersion()+".jar");
+		}
+		
+		// clover lager sin egen jarfil som ikke skal pludres med
+		if (inputJar.getAbsolutePath().indexOf(File.separatorChar+"clover"+File.separatorChar) != -1) {
+			skip=true;
 		}
 		
 		if (outputJar == null) {
@@ -179,6 +188,7 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 								File.separatorChar+
 								"ejbdeploy-working");
 		}
+		return skip;
 	}
 	
 	/**
