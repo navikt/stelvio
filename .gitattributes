@@ -970,6 +970,7 @@ dev/maven2/nav-eclipse-plugin/.classpath -text
 dev/maven2/nav-eclipse-plugin/.compatibility -text
 dev/maven2/nav-eclipse-plugin/.project -text
 dev/maven2/nav-eclipse-plugin/.settings/org.eclipse.jdt.core.prefs -text
+dev/maven2/nav-eclipse-plugin/readme.txt -text
 dev/maven2/nav-eclipse-plugin/src/main/java/org/apache/maven/plugin/eclipse/AddMavenRepoMojo.java -text
 dev/maven2/nav-eclipse-plugin/src/main/java/org/apache/maven/plugin/eclipse/BuildCommand.java -text
 dev/maven2/nav-eclipse-plugin/src/main/java/org/apache/maven/plugin/eclipse/Constants.java -text
@@ -1322,7 +1323,6 @@ dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarInPlaceMojo.
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarManifestMojo.java -text
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarMojo.java -text
 dev/maven2/pom.xml -text
-dev/maven2/readme.txt -text
 dev/maven2/target/classes/META-INF/plexus/components.xml -text
 dev/maven2/target/classes/org/apache/maven/plugin/eclipse/AddMavenRepoMojo.class -text
 dev/maven2/target/classes/org/apache/maven/plugin/eclipse/BuildCommand.class -text
