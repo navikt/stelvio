@@ -700,7 +700,6 @@ dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
-dev/maven2/.compatibility -text
 dev/maven2/.project -text
 dev/maven2/deploy.txt -text
 dev/maven2/maven-dependency-plugin/.classpath -text
@@ -969,6 +968,7 @@ dev/maven2/nav-deployment-code-plugin/pom.xml -text
 dev/maven2/nav-deployment-code-plugin/src/main/java/no/nav/maven/plugin/deploymentcodeplugin/AbstractDeploymentCodeMojo.java -text
 dev/maven2/nav-deployment-code-plugin/src/main/java/no/nav/maven/plugin/deploymentcodeplugin/WebsphereDeploymentCodeMojo.java -text
 dev/maven2/nav-eclipse-plugin/.classpath -text
+dev/maven2/nav-eclipse-plugin/.compatibility -text
 dev/maven2/nav-eclipse-plugin/.settings/org.eclipse.jdt.core.prefs -text
 dev/maven2/nav-eclipse-plugin/src/main/java/org/apache/maven/plugin/eclipse/AddMavenRepoMojo.java -text
 dev/maven2/nav-eclipse-plugin/src/main/java/org/apache/maven/plugin/eclipse/BuildCommand.java -text
