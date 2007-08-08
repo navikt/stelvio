@@ -86,24 +86,7 @@ public class AddMavenRepoMojo
         throws MojoExecutionException
     {
 
-    	File metaDir = new File( workspace, DIR_ECLIPSE_PLUGINS_METADATA );
-    	File wspace = new File(workspace);
-    	if( !metaDir.exists() ) {
-    		boolean found = false;
-    		while(!found){
-    			wspace = wspace.getParentFile();
-    			metaDir = new File(wspace.getParent(), DIR_ECLIPSE_PLUGINS_METADATA);
-    			if( metaDir.exists() ) {
-    				found = true;
-    				wspace = wspace.getParentFile();
-    			}
-    		}
-    		
-    	}
-    	workspace = wspace.getAbsolutePath();
-    	
         File workDir = new File( workspace, DIR_ECLIPSE_CORE_RUNTIME_SETTINGS );
-        
         workDir.mkdirs();
 
         Properties props = new Properties();
