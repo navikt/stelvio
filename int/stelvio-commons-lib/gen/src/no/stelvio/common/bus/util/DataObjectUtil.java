@@ -68,6 +68,9 @@ public class DataObjectUtil {
 								(DataObject) object, ((DataObject) target)
 										.createDataObject(property));
 					}
+					if(object instanceof String){
+						object = ((String)object).trim();
+					}
 				}
 				target.set(property, object);
 			}
