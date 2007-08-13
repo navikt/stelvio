@@ -6,11 +6,13 @@
  */
 package no.stelvio.common.systemavailability;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
@@ -32,6 +34,8 @@ import com.ibm.ws.bo.impl.BusObjImpl;
 import com.ibm.ws.bo.impl.BusinessObjectTypeImpl;
 import com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartImpl;
 import com.ibm.ws.sca.internal.scdl.impl.ManagedReferenceImpl;
+import com.ibm.wsspi.sca.multipart.impl.MultipartImpl;
+
 import commonj.sdo.DataObject;
 import commonj.sdo.Property;
 
@@ -109,14 +113,19 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					
 				}else{
 					if (availRec.recordStubData){
+						long timestamp=System.currentTimeMillis();
+						String requestID=Long.toString(timestamp);
 						try{
+							String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
+							recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
 							Object ret=partnerService.invoke(arg0,arg1); 
+							String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
 							//System.err.println("Normal");
-							recordStubData(arg0,(ManagedMultipartImpl)arg1,(ManagedMultipartImpl)ret);
+							recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
 							return ret;
 						}catch(ServiceBusinessException sbe){
 							//System.err.println("Exception");
-							recordStubDataException(arg0,(ManagedMultipartImpl)arg1,sbe);
+							recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
 							throw sbe;
 						}
 						
@@ -130,7 +139,154 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		return partnerService.invoke(arg0,arg1);		
 	}
 
+
+
+	/**
+	 * @param arg0
+	 * @param impl
+	 * @param sbe
+	 */
+	private void recordStubDataException(OperationType arg0, String requestID,ManagedMultipartImpl impl, ServiceBusinessException sbe) {
+		try {
+			storeObjectOrPrimitive(arg0,sbe,"exception",requestID,"Exception");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+
+	/**
+	 * @param impl
+	 * @param requestObjectName
+	 * @param string
+	 */
+	private void recordStubData(OperationType arg0,String requestID,ManagedMultipartImpl impl, String requestObjectName, String fileSuffix) {		
+		try {
+			//((BusinessObjectTypeImpl)request.getType()).eContents().listIterator().next()
+			
+			storeObjectOrPrimitive(arg0,impl,requestObjectName,requestID,fileSuffix);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+//	private void recordStubData(OperationType arg0, ManagedMultipartImpl request, ManagedMultipartImpl response) {
+//		DataObject respObject=null;
+//		if (response!=null){
+//			try{
+//				respObject=(DataObject) response.get(0);
+//			}catch(Throwable t){}		
+//		} 
+//		recordStubData(arg0,request,respObject,false);
+//	}
 	
+	
+//	private void recordStubDataException(OperationType arg0, ManagedMultipartImpl impl, ServiceBusinessException sre) {
+//		recordStubData(arg0,impl,(BusObjImpl)sre.getData(),true);
+//		
+//	}
+//	
+//	private void recordStubData(OperationType arg0,ManagedMultipartImpl request,DataObject response, boolean exception){	
+//		try {
+//			//BOXMLDocument doc=xmlSerializerService.createXMLDocument(input,null,null);
+//			long tmstamp=System.currentTimeMillis();
+//			System.out.println("Recording stubdata "+tmstamp);
+//					
+//			String dirName = getDirectory(arg0);		
+//			
+//			
+//				
+//			//((BusinessObjectTypeImpl)request.getType()).eContents().listIterator().next()
+//			FileOutputStream requestfile=new FileOutputStream(dirName+"/Stub_"+tmstamp+"_Request.xml");
+//			
+//			BOXMLSerializer xmlSerializerService = storeObjectOrPrimitive(request, requestObjectName, requestfile);
+//			BusinessObjectTypeImpl impl;			
+//			if (exception || response!=null){ //((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().hasNext()){
+//				String responseObjectName;
+//				DataObject responseObject=response;
+//				String responseTypeString;
+//				if (exception){
+//					responseObjectName="exception";
+//					responseTypeString="Exception";
+//				}else{
+//					responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
+//					responseTypeString="Response";	
+//				}
+//				//MultipartFactory.eINSTANCE.convertToString((BusinessObjectTypeImpl)request.getType(),request);								
+//				FileOutputStream responseFile=new FileOutputStream(dirName+"/Stub_"+tmstamp+"_"+responseTypeString+".xml");
+//				storeObjectOrPrimitive(responseObject,responseObjectName,responseFile);
+//				xmlSerializerService.writeDataObject(responseObject,"http://no.stelvio.stubdata/",responseObjectName,responseFile);
+//				responseFile.close();
+//			 }
+//			
+//			System.out.println("Recorded stubdata "+dirName+"/Stub_"+tmstamp);
+//			requestfile.close();
+//			
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}		
+//		
+//		
+//	}
+
+	/**
+	 * @param request
+	 * @param requestObjectName
+	 * @param requestfile
+	 * @return
+	 * @throws IOException
+	 */
+	private void storeObjectOrPrimitive(OperationType arg0,Object object, String requestObjectName, String requestID,String fileSuffix) throws IOException {
+		String dirName = getDirectory(arg0);
+		FileOutputStream objectFile=new FileOutputStream(dirName+"/Stub_"+requestID+"_"+fileSuffix+".xml");
+		if (object instanceof MultipartImpl){
+			if (((ManagedMultipartImpl)object).get(0) instanceof DataObject){
+				DataObject requestDataObject= (DataObject)((ManagedMultipartImpl) object).get(0);
+				BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");
+				xmlSerializerService.writeDataObject(requestDataObject,"http://no.stelvio.stubdata/",requestObjectName,objectFile);
+			}
+			else{					
+				BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");
+				xmlSerializerService.writeDataObject((ManagedMultipartImpl)object,"http://no.stelvio.stubdata/",requestObjectName,objectFile);
+
+/*				PrintWriter pw=new PrintWriter(objectFile);
+				pw.println("PRIMITIVE");
+				((ManagedMultipartImpl)pw).get
+				pw.close();*/
+			}
+		}
+		else{
+			if (object instanceof ServiceBusinessException){
+				BusObjImpl requestDataObject= (BusObjImpl)((ServiceBusinessException) object).getData();
+				BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");
+				xmlSerializerService.writeDataObject(requestDataObject,"http://no.stelvio.stubdata/",requestObjectName,objectFile);
+			}
+		}
+		System.out.println("Recorded stubdata "+dirName+"/Stub_"+requestID+"_"+fileSuffix+".xml");
+		
+		objectFile.close();
+		
+	}
+
+	/**
+	 * @param arg0
+	 * @return
+	 */
+	private String getDirectory(OperationType arg0) {
+		String dirName=new SystemAvailabilityStorage().getSystemAvailabilityDirectory()+"/"+this.systemName+"/"+arg0.getName();
+		File dir=new File(dirName);
+		if (!dir.exists())
+			dir.mkdirs();
+		return dirName;
+	}
 
 	/**
 	 * @param operationType
@@ -146,16 +302,23 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				File foundMatch=null;
 				for (int i=0;i<files.length;i++){
 					if (files[i].getName().endsWith("_Request.xml")){
-						FileInputStream fis=new FileInputStream(files[i]);
-						BOXMLDocument criteriaDoc=xmlSerializerService.readXMLDocument(fis);
-	
-							fis.close();
 						
-						DataObject storedInput=criteriaDoc.getDataObject();
-						if (match(storedInput,(DataObject)request.get(0))){
+						FileInputStream fis=new FileInputStream(files[i]);
+						Object obj=readObjectOrPrimitive(fis);
+						fis.close();
+						
+						DataObject storedInput=(DataObject)obj;
+						if (request.get(0) instanceof DataObject){
+							if (match(storedInput,(DataObject)request.get(0))){
+								foundMatch=files[i];
+								break;
+							}
+						}else //Primitive interface
+						if (match(storedInput,request)){
 							foundMatch=files[i];
 							break;
 						}
+							
 					}
 				}
 				if (foundMatch==null){
@@ -183,11 +346,16 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					FileInputStream fis=new FileInputStream(responseFile);
 					BOXMLDocument responseObjectDoc=xmlSerializerService.readXMLDocument(fis);
 					fis.close();
-					String responseFeatureName=responseObjectDoc.getRootElementName();
-					DataObject responseObject=responseObjectDoc.getDataObject();
-		         	BOFactory dataFactory = (BOFactory)ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
-		         	response=dataFactory.createByType(operationType.getOutputType());
-		         	response.set(0,responseObject);
+					//String responseFeatureName=responseObjectDoc.getRootElementName();
+					
+						Object responseObject=responseObjectDoc.getDataObject();
+					if ((!(responseObject instanceof ManagedMultipartImpl)) || responseObject==null){
+			         	BOFactory dataFactory = (BOFactory)ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
+			         	response=dataFactory.createByType(operationType.getOutputType());
+			         	response.set(0,responseObject);
+					}else{ //Assume MultipartImpl, because use of primitives in interface
+						response=(ManagedMultipartImpl)responseObject;
+					}
 				}
 				//operationType.getOutputType()
 				//ManagedMultipartFactoryImpl mmfi=new ManagedMultipartFactoryImpl();
@@ -209,6 +377,25 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	}
 	
 	
+	/**
+	 * @param fis
+	 * @return
+	 */
+	private Object readObjectOrPrimitive(FileInputStream fis) {
+		//TODO: check start of inputstream for primitive
+		BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");				
+		BOXMLDocument criteriaDoc;
+		try {
+			criteriaDoc = xmlSerializerService.readXMLDocument(fis);
+			return criteriaDoc.getDataObject();
+		} catch (IOException e) {
+		
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
 	private boolean match(DataObject criteriaObject, DataObject testObject){		
 		
 		for (Iterator i = criteriaObject.getType().getProperties().iterator(); i.hasNext();) {
@@ -239,104 +426,35 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					}
 				}
 				else
-			    if (testSubObject instanceof Date && criteriaSubObject instanceof Date){
-					if (!(Math.abs(((Date)testSubObject).getTime() -((Date)criteriaSubObject).getTime())<1000*4000)) //Accept up to an hour difference, due to problems with time zone/DST and serialization'
-						return false;					
-				}else 
-				if(!testSubObject.equals(criteriaSubObject)){									
-						return false;				
-				}
-					
+					if (!matchPrimitive(testSubObject,criteriaSubObject))
+						return false;			   			
 				
 			}
 			
 		}
-		return true;
-		
-	}
-
-	/**
-	 * @param arg0
-	 * @param impl
-	 * @param ret
-	 */
-	private void recordStubData(OperationType arg0, ManagedMultipartImpl request, ManagedMultipartImpl response) {
-		DataObject respObject=null;
-		if (response!=null){
-			try{
-				respObject=(DataObject) response.get(0);
-			}catch(Throwable t){}		
-		} 
-		recordStubData(arg0,request,respObject,false);
+		return true;		
 	}
 	
-	/**
-	 * @param arg0
-	 * @param impl
-	 * @param sre
-	 */
-	private void recordStubDataException(OperationType arg0, ManagedMultipartImpl impl, ServiceBusinessException sre) {
-		recordStubData(arg0,impl,(BusObjImpl)sre.getData(),true);
-		
-	}
-	
-	private void recordStubData(OperationType arg0,ManagedMultipartImpl request,DataObject response, boolean exception){	
-		try {
-			//BOXMLDocument doc=xmlSerializerService.createXMLDocument(input,null,null);
-			long tmstamp=System.currentTimeMillis();
-			System.out.println("Recording stubdata "+tmstamp);
-			BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");		
-			String dirName = getDirectory(arg0);		
-			String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
-			DataObject requestObject= (DataObject) request.get(0);	
-			//((BusinessObjectTypeImpl)request.getType()).eContents().listIterator().next()
-			FileOutputStream requestfile=new FileOutputStream(dirName+"/Stub_"+tmstamp+"_Request.xml");
-			xmlSerializerService.writeDataObject(requestObject,"http://no.stelvio.stubdata/",requestObjectName,requestfile);
-			BusinessObjectTypeImpl impl;			
-			if (exception || response!=null){ //((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().hasNext()){
-				String responseObjectName;
-				DataObject responseObject=response;
-				String responseTypeString;
-				if (exception){
-					responseObjectName="exception";
-					responseTypeString="Exception";
-				}else{
-					responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
-					responseTypeString="Response";	
-				}
-				//MultipartFactory.eINSTANCE.convertToString((BusinessObjectTypeImpl)request.getType(),request);								
-				FileOutputStream responseFile=new FileOutputStream(dirName+"/Stub_"+tmstamp+"_"+responseTypeString+".xml");
-				xmlSerializerService.writeDataObject(responseObject,"http://no.stelvio.stubdata/",responseObjectName,responseFile);
-				responseFile.close();
-			 }
-			
-			System.out.println("Recorded stubdata "+dirName+"/Stub_"+tmstamp);
-			requestfile.close();
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		
-		
-	}
 
+	
+	
+	
 	/**
-	 * @param arg0
+	 * @param testSubObject
+	 * @param criteriaSubObject
 	 * @return
 	 */
-	private String getDirectory(OperationType arg0) {
-		String dirName=new SystemAvailabilityStorage().getSystemAvailabilityDirectory()+"/"+this.systemName+"/"+arg0.getName();
-		File dir=new File(dirName);
-		if (!dir.exists())
-			dir.mkdirs();
-		return dirName;
+	private boolean matchPrimitive(Object testSubObject, Object criteriaSubObject) {
+		if (testSubObject instanceof Date && criteriaSubObject instanceof Date){
+			if (!(Math.abs(((Date)testSubObject).getTime() -((Date)criteriaSubObject).getTime())<1000*4000)) //Accept up to an hour difference, due to problems with time zone/DST and serialization'
+				return false;					
+		}else 
+		if(!testSubObject.equals(criteriaSubObject)){									
+				return false;				
+		}
+		return true;
 	}
-	
-	
+
 	public File[] listFilesAlphabetical(File dir) {
 		String[] ss = dir.list();
 		Arrays.sort(ss);
