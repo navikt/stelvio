@@ -57,10 +57,22 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
     
 	public void execute() throws MojoExecutionException {
 
-		String unpackDir;
 
+		// kjører først på rotdirectory, så alle underdirectory
+		doDirecotry(earDirectory);
+		File[] fileNames = earDirectory.listFiles();
+		for (int i = 0; i < fileNames.length; i++) {
+			File filElem = fileNames[i];
+			if (filElem.isDirectory()) {
+				doDirecotry(filElem);
+			}
+		}
+
+	}
+
+	private void doDirecotry(File directory) throws MojoExecutionException {
 		try {
-			File[] files = earDirectory.listFiles();
+			File[] files = directory.listFiles();
 			for (int i = 0; i < files.length; i++) {
 				File file = files[i];
 				String fileName = file.getName();
@@ -68,7 +80,7 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 				if (exceptionModules.contains(moduleName)) {
 					System.out.println("skipper modul med navn "+moduleName);				
 				} else if (fileName.startsWith("nav-cons")) {
-					unpackDir = TEMP_OUTPUT + "/" + "ear" + "/" + fileName.substring(0, fileName.length() - 4);
+					String unpackDir = TEMP_OUTPUT + "/" + "ear" + "/" + fileName.substring(0, fileName.length() - 4);
 					getLog().info("pakker: "+moduleName);
 					final File destination = new File(unpackDir);
 					destination.mkdirs();
@@ -82,7 +94,6 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 		} catch (IOException e) {
 			throw new MojoExecutionException("Error parsing inputfile", e);
 		}
-
 	}
 
 	/*
