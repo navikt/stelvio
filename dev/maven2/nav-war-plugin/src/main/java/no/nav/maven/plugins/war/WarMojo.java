@@ -35,6 +35,16 @@ import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.jar.ManifestException;
 import org.codehaus.plexus.archiver.war.WarArchiver;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collections;
+
+
+import org.codehaus.plexus.archiver.jar.Manifest;
+import org.codehaus.plexus.archiver.jar.ManifestException;
+import org.codehaus.plexus.util.IOUtil;
+
 /**
  * Build a war/webapp.
  *
@@ -45,12 +55,43 @@ import org.codehaus.plexus.archiver.war.WarArchiver;
  * @requiresDependencyResolution runtime
  */
 public class WarMojo extends AbstractWarMojo {
+	
+	private static final String MANIFEST_FILE = "MANIFEST.MF";
+	
 	/**
-     * A list of custom classpath entries
+     * The directory to export the generated manifest file to.
+     *
+     * @parameter
+     */
+    private File exportManifestToDir;
+	
+	/**
+     * A list of custom classpath entries in the IDE manifest.
+     * 
+     * @parameter
+     */
+    private List<String> customIdeClasspathEntries;
+    
+	/**
+     * A list of custom classpath entries in the target manifest.
      * 
      * @parameter
      */
     private List<String> customClasspathEntries;
+    
+    /**
+     * The list of artifacts to exclude from IDE manifest.
+     *
+     * @parameter
+     */
+    private List<ArtifactItem> ideClasspathExcludes;
+    
+    /**
+     * The list of artifacts to exclude from target manifest.
+     *
+     * @parameter
+     */
+    private List<ArtifactItem> classpathExcludes;
     
 	/**
 	 * List of artifacts to include in WEB-INF/lib
@@ -199,6 +240,30 @@ public class WarMojo extends AbstractWarMojo {
 
         NavMavenArchiver archiver = new NavMavenArchiver();
 
+//      Export the manifest file if specified
+        if (exportManifestToDir != null) {
+        	if (!exportManifestToDir.exists()) {
+        		exportManifestToDir.mkdirs();
+        	}
+
+        	PrintWriter manifestWriter = null;
+        	try {				
+				Manifest manifest = archiver.getManifest(getProject(), archive.getManifest(), Collections.EMPTY_MAP, getIdeClasspathExcludes(), getCustomIdeClasspathEntries());
+				manifestWriter = new PrintWriter(new File(exportManifestToDir, MANIFEST_FILE));
+				manifest.write(manifestWriter);
+				getLog().info("Manifest file exported to "+exportManifestToDir+File.separator+MANIFEST_FILE);
+				
+			} catch (IOException e) {
+				throw new MojoExecutionException("Could not copy manifest file to "+exportManifestToDir, e);
+			} catch (DependencyResolutionRequiredException e) {
+				throw new MojoExecutionException("Could not copy manifest file to "+exportManifestToDir, e);
+			} catch (ManifestException e) {
+				throw new MojoExecutionException("Could not copy manifest file to "+exportManifestToDir, e);
+			} finally {
+				manifestWriter.close();
+			}
+        }
+        
         archiver.setArchiver( warArchiver );
 
         archiver.setOutputFile( warFile );
@@ -233,7 +298,7 @@ public class WarMojo extends AbstractWarMojo {
         }
     }
 
-	/**
+    /**
 	 * @return the customClasspathEntries
 	 */
 	public List<String> getCustomClasspathEntries() {
@@ -245,5 +310,47 @@ public class WarMojo extends AbstractWarMojo {
 	 */
 	public void setCustomClasspathEntries(List<String> customClasspathEntries) {
 		this.customClasspathEntries = customClasspathEntries;
+	}
+
+	/**
+	 * @return the classpathExcludes
+	 */
+	public List<ArtifactItem> getClasspathExcludes() {
+		return classpathExcludes;
+	}
+
+	/**
+	 * @param classpathExcludes the classpathExcludes to set
+	 */
+	public void setClasspathExcludes(List<ArtifactItem> classpathExcludes) {
+		this.classpathExcludes = classpathExcludes;
+	}
+
+	/**
+	 * @return the customIdeClasspathEntries
+	 */
+	public List<String> getCustomIdeClasspathEntries() {
+		return customIdeClasspathEntries;
+	}
+
+	/**
+	 * @param customIdeClasspathEntries the customIdeClasspathEntries to set
+	 */
+	public void setCustomIdeClasspathEntries(List<String> customIDEClasspathEntries) {
+		this.customIdeClasspathEntries = customIDEClasspathEntries;
+	}
+
+	/**
+	 * @return the ideClasspathExcludes
+	 */
+	public List<ArtifactItem> getIdeClasspathExcludes() {
+		return ideClasspathExcludes;
+	}
+
+	/**
+	 * @param ideClasspathExcludes the ideClasspathExcludes to set
+	 */
+	public void setIdeClasspathExcludes(List<ArtifactItem> ideClasspathExcludes) {
+		this.ideClasspathExcludes = ideClasspathExcludes;
 	}
 }

@@ -9,7 +9,7 @@
   <artifactId>nav-war-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>Maven Nav War Plugin</name>
-  <version>1.1</version>
+  <version>1.2</version>
   <url>http://10.33.1.53/project/maven/plugins/nav-war-plugin</url>
   <prerequisites>
     <maven>2.0.1</maven>
