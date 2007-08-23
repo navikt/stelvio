@@ -100,6 +100,24 @@ public class NavMavenArchiver extends MavenArchiver {
             StringBuffer classpath = new StringBuffer();
             List artifacts = project.getRuntimeClasspathElements();
             String classpathPrefix = config.getClasspathPrefix();
+            
+           
+            //          Add custom classpath entries if specified
+            if (customClasspathEntries != null && customClasspathEntries.size() > 0) {
+            	StringBuffer customs = new StringBuffer(classpath.length() > 0 ? " " : "");
+            	for (String entry : customClasspathEntries) {
+            		getLog().info("Adding "+entry+" as custom classpath entry in manifest.");
+
+            		if (customs.length() > 1) {
+            			customs.append(" ");
+            		}
+            		
+            		customs.append(entry);
+            	}
+            	
+            	classpath.append(customs.toString());
+            }
+            
 
             for ( Iterator iter = artifacts.iterator(); iter.hasNext(); ) {
                 File f = new File( (String) iter.next() );
@@ -131,21 +149,7 @@ public class NavMavenArchiver extends MavenArchiver {
                 }
             }
 
-            // Add custom classpath entries if specified
-            if (customClasspathEntries != null && customClasspathEntries.size() > 0) {
-            	StringBuffer customs = new StringBuffer(classpath.length() > 0 ? " " : "");
-            	for (String entry : customClasspathEntries) {
-            		getLog().info("Adding "+entry+" as custom classpath entry in manifest.");
 
-            		if (customs.length() > 1) {
-            			customs.append(" ");
-            		}
-            		
-            		customs.append(entry);
-            	}
-            	
-            	classpath.append(customs.toString());
-            }
             
             if ( classpath.length() > 0 )
             {
