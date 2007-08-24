@@ -461,7 +461,10 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		}else
 		if (criteriaSubObject instanceof Float && ((Float)criteriaSubObject).floatValue()==0){
 			return true;
-		}else			
+		}else		
+		if (criteriaSubObject instanceof Double&& ((Double)criteriaSubObject).doubleValue()==0){
+			return true;
+		}
 		if(!testSubObject.equals(criteriaSubObject)){									
 			return false;				
 		}
