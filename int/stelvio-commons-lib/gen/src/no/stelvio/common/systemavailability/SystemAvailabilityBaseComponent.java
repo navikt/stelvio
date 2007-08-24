@@ -381,8 +381,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 * @param fis
 	 * @return
 	 */
-	private Object readObjectOrPrimitive(FileInputStream fis) {
-		//TODO: check start of inputstream for primitive
+	private Object readObjectOrPrimitive(FileInputStream fis) {		
 		BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");				
 		BOXMLDocument criteriaDoc;
 		try {
@@ -449,8 +448,22 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			if (!(Math.abs(((Date)testSubObject).getTime() -((Date)criteriaSubObject).getTime())<1000*4000)) //Accept up to an hour difference, due to problems with time zone/DST and serialization'
 				return false;					
 		}else 
+		if (criteriaSubObject instanceof Integer && ((Integer)criteriaSubObject).intValue()==0){ 
+								//When criteria of these types are removed,
+								//they are still read up as 0 values (or false). This is a hack so that criteria value 0 matches everything
+			return true;			
+		}else
+		if (criteriaSubObject instanceof Short && ((Short)criteriaSubObject).shortValue()==0){
+			return true;
+		}else
+		if (criteriaSubObject instanceof Boolean && ((Boolean)criteriaSubObject).booleanValue()==false){
+			return true;
+		}else
+		if (criteriaSubObject instanceof Float && ((Float)criteriaSubObject).floatValue()==0){
+			return true;
+		}else			
 		if(!testSubObject.equals(criteriaSubObject)){									
-				return false;				
+			return false;				
 		}
 		return true;
 	}
