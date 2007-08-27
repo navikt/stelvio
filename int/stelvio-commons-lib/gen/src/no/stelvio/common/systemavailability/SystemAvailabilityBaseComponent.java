@@ -453,6 +453,9 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 								//they are still read up as 0 values (or false). This is a hack so that criteria value 0 matches everything
 			return true;			
 		}else
+		if (criteriaSubObject instanceof Long && ((Long)criteriaSubObject).longValue()==0){
+			return true;
+		}else	
 		if (criteriaSubObject instanceof Short && ((Short)criteriaSubObject).shortValue()==0){
 			return true;
 		}else
