@@ -2,8 +2,10 @@ package nav.maven.plugins;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.InputStream;
+import java.nio.channels.FileChannel;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
@@ -120,21 +122,20 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 			for (int i = 0; i < templates.length; i++) {
 				File template = templates[i];
 				String name = template.getName();
-				if (name.endsWith(".vm")){
-					String newName = name.substring(0,name.length()-3)+".properties";
-					String newOut = outputDir+"/"+environmentName;
-					File tmp = new File(newOut);
-					tmp.mkdirs();
-					FileWriter fileWriter = new FileWriter(newOut+"/"+newName);
-					Velocity.mergeTemplate(name, context, fileWriter);
-					fileWriter.flush();
-					fileWriter.close();
-				} else if (name.endsWith(".properties")) {
-					String newOut = outputDir+"/"+environmentName;
-					File tmp = new File(newOut);
-					tmp.mkdirs();
-					template.renameTo(new File(newOut+"/"+name));
+				String newName;
+				if (name.endsWith(".vm")) {
+					newName = name.substring(0,name.length()-3)+".properties";
+				} else {
+					newName = name;
 				}
+				String newOut = outputDir+"/"+environmentName;
+				File tmp = new File(newOut);
+				tmp.mkdirs();
+				FileWriter fileWriter = new FileWriter(newOut+"/"+newName);
+				System.out.println("parset filen "+name);
+				Velocity.mergeTemplate(name, context, fileWriter);
+				fileWriter.flush();
+				fileWriter.close();
 			}							
 		} catch (Exception e) {
 			e.printStackTrace();
