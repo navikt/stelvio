@@ -122,20 +122,21 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 			for (int i = 0; i < templates.length; i++) {
 				File template = templates[i];
 				String name = template.getName();
-				String newName;
-				if (name.endsWith(".vm")) {
-					newName = name.substring(0,name.length()-3)+".properties";
-				} else {
-					newName = name;
+				if (template.isFile() && (name.endsWith(".vm") || name.endsWith(".properties"))) {
+					String newName;
+					if (name.endsWith(".vm")) {
+						newName = name.substring(0,name.length()-3)+".properties";
+					} else {
+						newName = name;
+					}
+					String newOut = outputDir+"/"+environmentName;
+					File tmp = new File(newOut);
+					tmp.mkdirs();
+					FileWriter fileWriter = new FileWriter(newOut+"/"+newName);
+					Velocity.mergeTemplate(name, context, fileWriter);
+					fileWriter.flush();
+					fileWriter.close();
 				}
-				String newOut = outputDir+"/"+environmentName;
-				File tmp = new File(newOut);
-				tmp.mkdirs();
-				FileWriter fileWriter = new FileWriter(newOut+"/"+newName);
-				System.out.println("parset filen "+name);
-				Velocity.mergeTemplate(name, context, fileWriter);
-				fileWriter.flush();
-				fileWriter.close();
 			}							
 		} catch (Exception e) {
 			e.printStackTrace();
