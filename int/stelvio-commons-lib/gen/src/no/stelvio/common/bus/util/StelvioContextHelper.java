@@ -278,6 +278,15 @@ public class StelvioContextHelper {
 			correlationId = getWBISessionId();
 		}
 
+		setNavUserId();
+
+	}
+
+	/**
+	 * 
+	 */
+	private void setNavUserId() {
+		log.logp(Level.FINE, className, "setNAVUser", "start");
 		//Set NAV-user from security-credential
 		try {
 			Subject security_subject = WSSubject.getRunAsSubject();
@@ -289,7 +298,9 @@ public class StelvioContextHelper {
 				WSCredential security_credential = (WSCredential) security_credentials
 						.iterator().next();
 				navUserId = (String) security_credential.getSecurityName();
-			}
+			} else{
+				navUserId = DEFAULT_USER_NAME;
+			}			
 			//Set user = Default if failed.
 		} catch (CredentialDestroyedException e) {
 			navUserId = DEFAULT_USER_NAME;
@@ -298,7 +309,12 @@ public class StelvioContextHelper {
 		} catch (WSSecurityException e) {
 			navUserId = DEFAULT_USER_NAME;
 		}
-
+		
+		if(navUserId == null){
+			navUserId = DEFAULT_USER_NAME;
+		}
+		log.logp(Level.FINE, className, "setNAVUser", "navUser:" + navUserId);
+		log.logp(Level.FINE, className, "setNAVUser", "stop");
 	}
 
 	/**
