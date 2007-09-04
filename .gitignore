@@ -61,6 +61,9 @@ dev/ant-projectSetTask/target
 dev/maven2/ant-versionExtracter/trunk/.classpath
 dev/maven2/ant-versionExtracter/trunk/.project
 dev/maven2/ant-versionExtracter/trunk/target
+dev/maven2/maven-appXml-plugin/trunk/.classpath
+dev/maven2/maven-appXml-plugin/trunk/.project
+dev/maven2/maven-appXml-plugin/trunk/target
 dev/maven2/nav-deployment-code-plugin/.classpath
 dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
