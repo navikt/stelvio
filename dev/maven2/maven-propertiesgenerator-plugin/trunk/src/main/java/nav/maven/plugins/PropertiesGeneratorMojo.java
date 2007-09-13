@@ -34,7 +34,6 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 	/**
 	 * This is used to decide which subfolder to put the created properties in.
 	 * @parameter
-	 * @required
 	 */
 	private String environmentName;
 	
@@ -100,7 +99,11 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 		this.templateDir = templateDir;
 	}
 	public void execute() throws MojoExecutionException {
-
+		System.out.println("envir= "+environmentName);
+		if (environmentName == null) {
+			getLog().warn("\tEnvironmentName er ikke satt. Dette er ok saa lenge du ikke deployer ressurseer");
+			return;
+		}
 		try {
 			
 			Properties p = new Properties();
