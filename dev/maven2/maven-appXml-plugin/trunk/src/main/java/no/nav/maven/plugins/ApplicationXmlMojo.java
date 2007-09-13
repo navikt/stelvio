@@ -50,7 +50,6 @@ public class ApplicationXmlMojo extends AbstractMojo {
 	 */
 	private MavenProject project;
 
-
 	public void execute() throws MojoExecutionException {
 
 		// kjører først på rotdirectory, så alle underdirectory
@@ -62,7 +61,9 @@ public class ApplicationXmlMojo extends AbstractMojo {
 				doDirecotry(filElem);
 			}
 		}
-		
+		File out = new File(WORKING_DIR);
+		out.delete();
+
 	}
 
 	private void doDirecotry(File directory) throws MojoExecutionException {
@@ -70,10 +71,10 @@ public class ApplicationXmlMojo extends AbstractMojo {
 			File[] files = directory.listFiles();
 			for (int i = 0; i < files.length; i++) {
 				File file = files[i];
-				if (file.isFile()) {
+				if (file.isFile() && file.getName().endsWith(".ear")) {
 					String fileName = file.getName();
-					String moduleName = fileName
-							.substring(0, fileName.length() - 4);
+					String moduleName = fileName.substring(0,
+							fileName.length() - 4);
 					String unpackDir = WORKING_DIR + "/"
 							+ fileName.substring(0, fileName.length() - 4);
 					getLog().info("pakker ut: " + moduleName);
@@ -82,8 +83,11 @@ public class ApplicationXmlMojo extends AbstractMojo {
 					ZipUtils.extract(file, destination);
 					getLog().info("\tdone unpacking ear files");
 					String tag = getTagName(file);
-					changeDisplayName(new File(WORKING_DIR+"/"+moduleName+"/"+"/META-INF"+"/"+"application.xml"), tag);
-					ZipUtils.compress(destination, file);
+					boolean lagtTil = changeDisplayName(new File(WORKING_DIR + "/" + moduleName
+							+ "/" + "/META-INF" + "/" + "application.xml"), tag);
+					if (lagtTil) {
+						ZipUtils.compress(destination, file);
+					}
 				}
 			}
 		} catch (IOException e) {
@@ -92,7 +96,6 @@ public class ApplicationXmlMojo extends AbstractMojo {
 		}
 	}
 
-
 	/**
 	 * @param file
 	 */
@@ -100,19 +103,20 @@ public class ApplicationXmlMojo extends AbstractMojo {
 		String path = file.getAbsolutePath();
 		String sep = File.separator;
 		int last = path.lastIndexOf(sep);
-		int tmp = path.substring(0,last-1).lastIndexOf(sep);
-		String tag = path.substring(tmp+1,last);
-		if (earDirectory.getAbsolutePath().indexOf(sep+tag) != -1) {
+		int tmp = path.substring(0, last - 1).lastIndexOf(sep);
+		String tag = path.substring(tmp + 1, last);
+		if (earDirectory.getAbsolutePath().indexOf(sep + tag) != -1) {
 			return "";
 		} else {
 			return tag;
 		}
 	}
 
-	private void changeDisplayName(File inputFile, String tagName) throws MojoExecutionException {
+	private boolean changeDisplayName(File inputFile, String tagName) throws MojoExecutionException {
 
 		// Dett er litt klønete, men jeg får ikke x-path til å fungere.
 		SAXReader reader = new SAXReader();
+		boolean lagtTil = false;
 		try {
 			Document doc = reader.read(inputFile);
 
@@ -120,31 +124,36 @@ public class ApplicationXmlMojo extends AbstractMojo {
 			Iterator iter = root.elementIterator();
 			while (iter.hasNext()) {
 				Element elem = (Element) iter.next();
-				if (elem.getName().equals("display-name")) {
+				if (elem.getName().equals("description")) {
 					String oldValue = elem.getStringValue();
 					if (oldValue.indexOf(tagName) == -1) {
-						String newVal = oldValue+" "+tagName;
-						System.out.println("\tTag ikke satt, setter til: "+newVal);
+						String newVal =  tagName;
+						System.out.println("\tTag ikke satt, setter til: "
+								+ newVal);
 						elem.clearContent();
 						List tmp = new ArrayList();
 						tmp.add(newVal);
 						elem.setContent(tmp);
+						lagtTil = true;
 					}
 				}
 
-				}
-
-			XMLWriter writer;
-			OutputFormat format = OutputFormat.createPrettyPrint();
-			writer = new XMLWriter(new FileWriter(inputFile), format);
-			writer.write(doc);
-			writer.close();
+			}
+			if (lagtTil) {
+				XMLWriter writer;
+				OutputFormat format = OutputFormat.createPrettyPrint();
+				writer = new XMLWriter(new FileWriter(inputFile), format);
+				writer.write(doc);
+				writer.close();
+			}
 			
+
 		} catch (DocumentException e) {
 			throw new MojoExecutionException("Error parsing inputfile", e);
 		} catch (IOException e) {
 			throw new MojoExecutionException("Error writing outputfile", e);
 		}
+		return lagtTil;
 	}
 
 }
