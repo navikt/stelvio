@@ -1,15 +1,17 @@
 package no.nav.maven.plugins;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Iterator;
-import java.util.Set;
 
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.project.MavenProject;
-import org.apache.maven.project.MavenProjectHelper;
-import org.dom4j.*;
-import org.dom4j.io.*;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 
 /**
  * Goal which that adds the Stelvio jaxrpc handler to webservices.xml
@@ -18,112 +20,41 @@ import org.dom4j.io.*;
  * 
  * 
  */
-public class JaxRPCHandlerMojo extends AbstractMojo {
+public class JaxRPCHandlerMojo extends EarExtractor {
 
-	private final String TEMP_OUTPUT = "target";
+	public void execute() throws MojoExecutionException {
+
+
+		// kjører først på rotdirectory, så alle underdirectory
+		getLog().info("eardir: "+earDirectory);
+		doDirectory(earDirectory);
+		File[] fileNames = earDirectory.listFiles();
+		for (int i = 0; i < fileNames.length; i++) {
+			File filElem = fileNames[i];
+			if (filElem.isDirectory()) {
+				doDirectory(filElem);
+			}
+		}
+
+	}
 
 	/**
 	 * This parameter is the directory where the wid ear files are placed.
 	 * @parameter
 	 * @required
 	 */
-	private File earDirectory;
+	protected File earDirectory;
 	
-	/**
-     * The maven project's helper.
-     *
-     * @parameter expression="${component.org.apache.maven.project.MavenProjectHelper}"
-     * @required
-     * @readonly
-     */
-    private MavenProjectHelper projectHelper;
-	
-	/**
-     * The maven project.
-     *
-     * @parameter expression="${project}"
-     * @required
-     * @readonly
-     */
-    private MavenProject project;
-
-	/**
-     * List of consumer modules without webservice interface
-     *
-     * @parameter
-     * @required
-     */
-    private Set exceptionModules;
-    
-	public void execute() throws MojoExecutionException {
-
-
-		// kjører først på rotdirectory, så alle underdirectory
-		doDirecotry(earDirectory);
-		File[] fileNames = earDirectory.listFiles();
-		for (int i = 0; i < fileNames.length; i++) {
-			File filElem = fileNames[i];
-			if (filElem.isDirectory()) {
-				doDirecotry(filElem);
-			}
-		}
-
-	}
-
-	private void doDirecotry(File directory) throws MojoExecutionException {
-		try {
-			File[] files = directory.listFiles();
-			for (int i = 0; i < files.length; i++) {
-				File file = files[i];
-				String fileName = file.getName();
-				String moduleName = fileName.substring(0,fileName.length()-4);
-				if (exceptionModules.contains(moduleName)) {
-					System.out.println("skipper modul med navn "+moduleName);				
-				} else if (fileName.startsWith("nav-cons")) {
-					String unpackDir = TEMP_OUTPUT + "/" + "ear" + "/" + fileName.substring(0, fileName.length() - 4);
-					getLog().info("pakker: "+moduleName);
-					final File destination = new File(unpackDir);
-					destination.mkdirs();
-					ZipUtils.extract(file, destination);
-					getLog().info("\tdone unpacking ear files");
-					extraxtEJBJarFiles(unpackDir);
-					getLog().info("\tdone unpacking and repacking jar files");
-					ZipUtils.compress(destination, file);
-				}
-			}
-		} catch (IOException e) {
-			throw new MojoExecutionException("Error parsing inputfile", e);
-		}
-	}
-
-	/*
-	 * This method extracts the EJB jar files, and adds the handler element to
-	 * webservices.xml
-	 */
-	private void extraxtEJBJarFiles(String unpackDir) throws MojoExecutionException, IOException {
-		File dir = new File(unpackDir);
-		File[] files = dir.listFiles();
-		for (int i = 0; i < files.length; i++) {
-			File file = files[i];
-			if (file.getName().startsWith("nav-cons") && file.getName().endsWith("EJB.jar")) {
-				final String outputDir = TEMP_OUTPUT + "/" + "jar" + "/" + file.getName().substring(0, file.getName().length() - 4);
-				final File jarDir = new File(outputDir);
-				ZipUtils.extract(file, jarDir);
-				File settings = new File(outputDir + "/" + "META-INF" + "/" + "webservices.xml");
-				addHandler(settings);
-				ZipUtils.compress(jarDir, file);
-			}
-
-		}
-	}
-
-	private void addHandler(File inputFile) throws MojoExecutionException {
+	protected boolean changeFile(String outputDir) throws MojoExecutionException {
 		
+		File settings = new File(outputDir + "/" + "META-INF" + "/" + "webservices.xml");
+
 		// Detter litt klønete, men jeg får ikke x-path til å fungere.
 		SAXReader reader = new SAXReader();
 		final String HANDLER_NAME = "no.stelvio.common.bus.handlers.jaxrpc.StelvioCommonContextHandler";
+		boolean funnet = false;
 		try {
-			Document doc = reader.read(inputFile);
+			Document doc = reader.read(settings);
 
 			Element root = doc.getRootElement();
 			Iterator iter = root.elementIterator("webservice-description");
@@ -132,7 +63,6 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 				Element elem2 = elem.element("port-component");
 				
 				Iterator portIterator = elem2.elementIterator();
-				boolean funnet = false;
 				while (portIterator.hasNext()) {
 					Element sub = (Element) portIterator.next();
 					if (sub.getName().equals("handler")) {
@@ -148,19 +78,21 @@ public class JaxRPCHandlerMojo extends AbstractMojo {
 					Element handler = elem2.addElement("handler");
 					handler.addElement("handler-name").addText(HANDLER_NAME);
 					handler.addElement("handler-class").addText(HANDLER_NAME);
+
+					XMLWriter writer;
+					OutputFormat format = OutputFormat.createPrettyPrint();
+					writer = new XMLWriter(new FileWriter(settings), format);
+					writer.write(doc);
+					writer.close();
 				}
 
-				XMLWriter writer;
-				OutputFormat format = OutputFormat.createPrettyPrint();
-				writer = new XMLWriter(new FileWriter(inputFile), format);
-				writer.write(doc);
-				writer.close();
 			}
 		} catch (DocumentException e) {
 			throw new MojoExecutionException("Error parsing inputfile", e);
 		} catch (IOException e) {
 			throw new MojoExecutionException("Error writing outputfile", e);
 		}
+		return !funnet;
 	}
 
 }
