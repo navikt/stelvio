@@ -20,7 +20,7 @@ package no.stelvio.common.bus.util;
  * <p>
  * Note: This version of StringUtils.java is stripped for
  * no.stelvio.commons.bus.util and contains only the methods needed by
- * no.stelvio.commons.bus.util.DateUtils.
+ * no.stelvio.common.bus.util.DateUtils.
  * </p>
  * 
  * <p>
