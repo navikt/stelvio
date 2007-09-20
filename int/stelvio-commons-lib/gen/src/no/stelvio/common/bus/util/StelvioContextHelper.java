@@ -208,15 +208,14 @@ public class StelvioContextHelper {
 				WSCredential security_credential = (WSCredential) security_credentials
 						.iterator().next();
 				sysUser = (String) security_credential.getSecurityName();
-			} else
-				sysUser = DEFAULT_USER_NAME;
-
+				
+				log.logp(Level.FINE, className, "getInternIdentity()", "return "+ sysUser);
+			} 
 		} catch (Exception e) {
 			log.logp(Level.SEVERE, className, "getInternIdentity()",
 					"CatchedError: " + getExceptionTrace(e));
 		}
-		log.logp(Level.FINE, className, "getInternIdentity()", "return "
-				+ sysUser);
+
 		return sysUser;
 	}
 
@@ -237,7 +236,7 @@ public class StelvioContextHelper {
 
 				userId = (String) workArea.get("userId");
 				if (userId == null || userId.length() <= 0) {
-					userId = getSecurityIdentity();
+					userId = DEFAULT_USER_NAME;
 				}
 
 				languageId = (String) workArea.get("languageId");
@@ -259,7 +258,7 @@ public class StelvioContextHelper {
 			// another WorkArea
 			else {
 				log
-						.logp(Level.FINE, className, "setStelvioBusContext()",
+						.logp(Level.WARNING, className, "setStelvioBusContext()",
 								"StelvioContext doesn't exists within WorkArea - use default values");
 				userId = DEFAULT_USER_NAME;
 				languageId = DEFAULT_LANGUAGE;
@@ -269,52 +268,19 @@ public class StelvioContextHelper {
 		}
 		// set the default values in general
 		else {
-			log
-					.logp(Level.FINE, className, "setStelvioBusContext()",
-							"StelvioContext doesn't exists within WorkArea - use default values");
+			log.logp(Level.WARNING, className, "setStelvioBusContext()", "StelvioContext doesn't exists within WorkArea - use default values");
 			userId = DEFAULT_USER_NAME;
 			languageId = DEFAULT_LANGUAGE;
 			applicationId = DEFAULT_APPLICATION_NAME;
 			correlationId = getWBISessionId();
 		}
 
-		setNavUserId();
-
-	}
-
-	/**
-	 * 
-	 */
-	private void setNavUserId() {
-		log.logp(Level.FINE, className, "setNAVUser", "start");
 		//Set NAV-user from security-credential
-		try {
-			Subject security_subject = WSSubject.getRunAsSubject();
-			if (security_subject != null) {
-				// Get all security credentials from the security subject
-				Set security_credentials = security_subject
-						.getPublicCredentials(WSCredential.class);
-				// Get the first credential
-				WSCredential security_credential = (WSCredential) security_credentials
-						.iterator().next();
-				navUserId = (String) security_credential.getSecurityName();
-			} else{
-				navUserId = DEFAULT_USER_NAME;
-			}			
-			//Set user = Default if failed.
-		} catch (CredentialDestroyedException e) {
-			navUserId = DEFAULT_USER_NAME;
-		} catch (CredentialExpiredException e1) {
-			navUserId = DEFAULT_USER_NAME;
-		} catch (WSSecurityException e) {
+		navUserId = getSecurityIdentity();
+		if(navUserId == null || navUserId.length() <= 0){
 			navUserId = DEFAULT_USER_NAME;
 		}
-		
-		if(navUserId == null){
-			navUserId = DEFAULT_USER_NAME;
-		}
-		log.logp(Level.FINE, className, "setNAVUser", "navUser:" + navUserId);
-		log.logp(Level.FINE, className, "setNAVUser", "stop");
+
 	}
 
 	/**
