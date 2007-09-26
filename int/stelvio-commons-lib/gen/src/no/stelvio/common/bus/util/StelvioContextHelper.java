@@ -112,6 +112,7 @@ public class StelvioContextHelper {
 	public String getApplicationId() {
 		return applicationId;
 	}
+	
 
 	/**
 	 * @param applicationId
@@ -157,7 +158,7 @@ public class StelvioContextHelper {
 	public String getUserId() {
 		return userId;
 	}
-
+	
 	/**
 	 * @param userId
 	 *            The userId to set.
@@ -301,6 +302,8 @@ public class StelvioContextHelper {
 					"--- NameWorkArea:" + workArea.getName());
 			log.logp(Level.INFO, className, "printStelvioContext()",
 					"--- userId:" + userId);
+			log.logp(Level.INFO, className, "printStelvioContext()",
+					"--- navUserId:" + navUserId);
 			log.logp(Level.INFO, className, "printStelvioContext()",
 					"--- correlationId:" + correlationId);
 			log.logp(Level.INFO, className, "printStelvioContext()",
