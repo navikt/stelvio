@@ -275,7 +275,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 				sName = child.getElementName();
 
 				// get the value of userId element
-				if (sName.getLocalName().equalsIgnoreCase("endUserId")) {
+				if (sName.getLocalName().equalsIgnoreCase("userId")) {
 					log.logp(Level.FINE, className, "processSOAPHeaderInfo",
 							"---\t\tElement=userId=" + child.getValue());
 					userId = child.getValue();
