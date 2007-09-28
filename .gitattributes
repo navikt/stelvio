@@ -706,6 +706,13 @@ dev/maven2/deploy.txt -text
 dev/maven2/maven-appXml-plugin/trunk/pom.xml -text
 dev/maven2/maven-appXml-plugin/trunk/src/main/java/no/nav/maven/plugins/ApplicationXmlMojo.java -text
 dev/maven2/maven-appXml-plugin/trunk/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
+dev/maven2/maven-config-fixer-plugin/.classpath -text
+dev/maven2/maven-config-fixer-plugin/.project -text
+dev/maven2/maven-config-fixer-plugin/pom.xml -text
+dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/BasicAuthMojo.java -text
+dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/EarExtractor.java -text
+dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/JaxRPCHandlerMojo.java -text
+dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
 dev/maven2/maven-dependency-plugin/pom.xml -text
