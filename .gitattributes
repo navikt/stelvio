@@ -1341,6 +1341,17 @@ dev/maven2/pom.xml -text
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.classpath -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.j2ee -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.project -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.runtime -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/connectorModule/CWYBS_AdapterFoundation.jar -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/connectorModule/CWYFF_FlatFile.jar -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/connectorModule/FlatFileASI.xsd -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/connectorModule/META-INF/MANIFEST.MF -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/connectorModule/META-INF/discovery-service.xml -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/connectorModule/META-INF/ra.xml -text
+int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/connectorModule/nav-lib-flatfile-datahandler.zip -text
 int/stelvio-commons-lib/.classpath -text
 int/stelvio-commons-lib/.project -text
 int/stelvio-commons-lib/.runtime -text
