@@ -1360,6 +1360,7 @@ int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/handlers/jaxrpc/StelvioCom
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/DataObjectUtil.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/DateUtil.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/ErrorHelperUtil.java -text
+int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/FGSAKCredentials.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/FnrUtil.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/IAugmentCondition.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/SDOInspector.java -text
