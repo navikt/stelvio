@@ -1,0 +1,10 @@
+log4j.debug=true
+log4j.rootLogger=ERROR, Debuglog
+### The Debug Log File Appender
+log4j.appender.Debuglog=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.Debuglog.File=C:/IBM/WID6/pf/wps01/logs/esb/CEI.log
+log4j.appender.Debuglog.DatePattern='.'yyyy-MM-dd
+log4j.appender.Debuglog.Append=true
+log4j.appender.Debuglog.layout=org.apache.log4j.PatternLayout
+log4j.appender.Debuglog.layout.ConversionPattern=[%d, %-5p, %c:%L] %m%n
+

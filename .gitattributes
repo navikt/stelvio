@@ -1341,6 +1341,17 @@ dev/maven2/pom.xml -text
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
+int/CEILogger/CEIEventConsumer/.j2ee -text
+int/CEILogger/CEIEventConsumer/.project -text
+int/CEILogger/CEIEventConsumer/.runtime -text
+int/CEILogger/CEIEventConsumer/META-INF/.modulemaps -text
+int/CEILogger/CEIEventConsumer/META-INF/MANIFEST.MF -text
+int/CEILogger/CEIEventConsumer/META-INF/application.xml -text
+int/CEILogger/CEIEventConsumer/commons-jxpath.jar -text
+int/CEILogger/CEIEventConsumer/config/log4j.properties.template -text
+int/CEILogger/CEIEventConsumer/events-client.jar -text
+int/CEILogger/CEIEventConsumer/events-messages.jar -text
+int/CEILogger/CEIEventConsumer/log4j-1.2.14.jar -text
 int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.classpath -text
 int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.j2ee -text
 int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.project -text
