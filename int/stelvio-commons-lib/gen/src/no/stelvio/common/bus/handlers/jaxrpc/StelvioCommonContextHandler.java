@@ -103,7 +103,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 			SOAPHeader sh = se.getHeader();
 
 			if (sh == null) {
-				log.logp(Level.INFO, className, "handleFault()",
+				log.logp(Level.WARNING, className, "handleFault()",
 						"No SOAP headers found in the SOAP request message");
 				exit = false;
 			} else
@@ -136,7 +136,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 			SOAPHeader sh = se.getHeader();
 
 			if (sh == null) {
-				log.logp(Level.INFO, className, "handleRequest()",
+				log.logp(Level.WARNING, className, "handleRequest()",
 						"No SOAP headers found in the SOAP request message");
 				exit = false;
 			} else
@@ -201,7 +201,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 
 		// if there are no headers
 		if (sh == null) {
-			log.logp(Level.INFO, className, "processSOAPHeader",
+			log.logp(Level.WARNING, className, "processSOAPHeader",
 					"-- No SOAP headers within request message");
 		} else {
 			// process header
