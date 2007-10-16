@@ -232,7 +232,7 @@ public class StelvioContextHelper {
 				wName = DEFAULT_NO_WA;
 
 			if (wName.equalsIgnoreCase(workAreaName)) {
-				log.logp(Level.INFO, className, "setStelvioBusContext()",
+				log.logp(Level.FINE, className, "setStelvioBusContext()",
 						"StelvioContext exists in WorkArea");
 
 				userId = (String) workArea.get("userId");
@@ -296,24 +296,24 @@ public class StelvioContextHelper {
 	 */
 	public void printStelvioContext(String sModulIdent) {
 		if (workArea != null) {
-			log.logp(Level.INFO, className, "printStelvioContext()", "-- "
+			log.logp(Level.FINE, className, "printStelvioContext()", "-- "
 					+ sModulIdent + ": " + workAreaName);
-			log.logp(Level.INFO, className, "printStelvioContext()",
+			log.logp(Level.FINE, className, "printStelvioContext()",
 					"--- NameWorkArea:" + workArea.getName());
-			log.logp(Level.INFO, className, "printStelvioContext()",
+			log.logp(Level.FINE, className, "printStelvioContext()",
 					"--- userId:" + userId);
-			log.logp(Level.INFO, className, "printStelvioContext()",
+			log.logp(Level.FINE, className, "printStelvioContext()",
 					"--- navUserId:" + navUserId);
-			log.logp(Level.INFO, className, "printStelvioContext()",
+			log.logp(Level.FINE, className, "printStelvioContext()",
 					"--- correlationId:" + correlationId);
-			log.logp(Level.INFO, className, "printStelvioContext()",
+			log.logp(Level.FINE, className, "printStelvioContext()",
 					"--- languageId:" + languageId);
-			log.logp(Level.INFO, className, "printStelvioContext()",
+			log.logp(Level.FINE, className, "printStelvioContext()",
 					"--- applicationId:" + applicationId);
-			log.logp(Level.INFO, className, "printStelvioContext()", "-- "
+			log.logp(Level.FINE, className, "printStelvioContext()", "-- "
 					+ sModulIdent + ": " + workAreaName);
 		} else
-			log.logp(Level.INFO, className, "printStelvioContext()", "-- "
+			log.logp(Level.FINE, className, "printStelvioContext()", "-- "
 					+ sModulIdent + ": Work Area <" + workAreaName
 					+ "> doesn't exists");
 	}
