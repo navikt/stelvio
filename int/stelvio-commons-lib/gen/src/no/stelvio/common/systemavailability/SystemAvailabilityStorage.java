@@ -146,7 +146,10 @@ public class SystemAvailabilityStorage{
 	
 	
 	public OperationAvailabilityRecord calculateOperationAvailability(String systemName, String operationName){
-		AvailabilityRecord sRec=findOrCreateSystemRecord(systemName);
+		AvailabilityRecord sRec=findSystemRecord(systemName);
+		if (sRec==null){
+			return null;
+		}
 		OperationAvailabilityRecord opRec=sRec.findOrCreateOperation(operationName);
 		OperationAvailabilityRecord allOpRec=sRec.findOrCreateOperation("ALL");
 		OperationAvailabilityRecord resultRec=new OperationAvailabilityRecord();
@@ -173,6 +176,10 @@ public class SystemAvailabilityStorage{
 			rec.findOrCreateOperation("ALL");
 			storeAvailabilityRecord(rec);
 		}
+		return rec;
+	}
+	public AvailabilityRecord findSystemRecord(String systemName){
+		AvailabilityRecord rec=this.getAvailabilityRecord(systemName);		
 		return rec;
 	}
 	

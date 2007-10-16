@@ -97,44 +97,45 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				System.err.println("AvailabilityCheck: got exception "+t.getMessage()+". Make sure that the stelvio-common-lib is available, and that the version of the StelvioSystemAvailabilityFramework config files matches the stelvio-lib version. Now disabling system availability check...");
 				interceptorEnabled=false;
 			}
-			if (interceptorEnabled){
-				if (availRec.unAvailable){			
-					throw new ServiceUnavailableException("The system "+systemName+" is currently not available. Reason: "+availRec.unavailableReason+".");// Expected timeframe for downtime: "+availRec.unavailableFrom.toString()+" to "+availRec.unavailableTo.toString());
-				}
-				
-				/*if (availRec.stubbed){
-					StubObjectTemplate template=StaticSystemAvailabilityStorage.getInstance().getStubObjectTemplate(systemName, arg0, arg1);
-				}*/
-				
-				
-				if (availRec.stubbed){
-					DataObject ret=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
-					return ret;
-					
-				}else{
-					if (availRec.recordStubData){
-						long timestamp=System.currentTimeMillis();
-						String requestID=Long.toString(timestamp);
-						try{
-							String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
-							recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
-							Object ret=partnerService.invoke(arg0,arg1); 
-							String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
-							//System.err.println("Normal");
-							recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
-							return ret;
-						}catch(ServiceBusinessException sbe){
-							//System.err.println("Exception");
-							recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
-							throw sbe;
-						}
-						
-						
+			if (availRec != null){
+				if (interceptorEnabled){
+					if (availRec.unAvailable){			
+						throw new ServiceUnavailableException("The system "+systemName+" is currently not available. Reason: "+availRec.unavailableReason+".");// Expected timeframe for downtime: "+availRec.unavailableFrom.toString()+" to "+availRec.unavailableTo.toString());
 					}
+					
+					/*if (availRec.stubbed){
+						StubObjectTemplate template=StaticSystemAvailabilityStorage.getInstance().getStubObjectTemplate(systemName, arg0, arg1);
+					}*/
+					
+					
+					if (availRec.stubbed){
+						DataObject ret=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
+						return ret;
+						
+					}else{
+						if (availRec.recordStubData){
+							long timestamp=System.currentTimeMillis();
+							String requestID=Long.toString(timestamp);
+							try{
+								String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
+								recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
+								Object ret=partnerService.invoke(arg0,arg1); 
+								String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
+								//System.err.println("Normal");
+								recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
+								return ret;
+							}catch(ServiceBusinessException sbe){
+								//System.err.println("Exception");
+								recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
+								throw sbe;
+							}
+							
+							
+						}
+					}
+					
 				}
-				
 			}
-
 		}
 		return partnerService.invoke(arg0,arg1);		
 	}
