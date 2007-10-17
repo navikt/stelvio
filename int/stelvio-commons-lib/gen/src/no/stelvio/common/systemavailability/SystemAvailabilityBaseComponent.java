@@ -114,20 +114,31 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						
 					}else{
 						if (availRec.recordStubData){
-							long timestamp=System.currentTimeMillis();
-							String requestID=Long.toString(timestamp);
+							DataObject preRecorded=null;
 							try{
-								String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
-								recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
-								Object ret=partnerService.invoke(arg0,arg1); 
-								String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
-								//System.err.println("Normal");
-								recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
-								return ret;
-							}catch(ServiceBusinessException sbe){
-								//System.err.println("Exception");
-								recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
-								throw sbe;
+								preRecorded=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
+							}catch(Throwable t){								
+							}
+							if (preRecorded==null){
+							
+								long timestamp=System.currentTimeMillis();
+								String requestID=Long.toString(timestamp);
+								try{
+									String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
+									recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
+									Object ret=partnerService.invoke(arg0,arg1); 
+									String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
+									//System.err.println("Normal");
+									recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
+									return ret;
+								}catch(ServiceBusinessException sbe){
+									//System.err.println("Exception");
+									recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
+									throw sbe;
+								}
+							}else{
+								System.out.println("Found prerecorded matching stub data for "+systemName+"."+arg0.getName()+". Ignoring.");
+								return partnerService.invoke(arg0,arg1);
 							}
 							
 							
