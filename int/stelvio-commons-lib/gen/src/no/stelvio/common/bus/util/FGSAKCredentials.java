@@ -93,21 +93,36 @@ public class FGSAKCredentials {
 	 * @throws WSSecurityException, LoginException, NamingException
 	 */
 	public void changeRunAsSubject() throws WSSecurityException, LoginException, NamingException {
-		log.logp(Level.FINE, className, "changeRunAsSubject()", "-> Call getNameSpace() with " + FGSAKRUNAS_CONTEXT + " to get the context.");
-		getNameSpace();
-		log.logp(Level.FINE, className, "changeRunAsSubject()", "-> Set new loginContext based on targetRealm="+getTargetRealm()+" and securityName="+getUsername()+ " values.");
 		originalRunAsSubject = WSSubject.getRunAsSubject();
-		//CallbackHandler loginCallbackHandler = new WSCallbackHandlerImpl("srvPensjon", "10.80.5.2:389", "pwd");
-		CallbackHandler loginCallbackHandler = new WSCallbackHandlerImpl(username, targetRealm, password);
-		LoginContext lc = new LoginContext("WSLogin",loginCallbackHandler);
-		lc.login();
-		WSSubject.setRunAsSubject(lc.getSubject());
-		log.logp(Level.FINE, className, "changeRunAsSubject()", "-> Login with new subject based on targetRealm="+getTargetRealm()+" and securityName="+getUsername()+ " succeeds.");
+		if (originalRunAsSubject != null)
+		{	
+			log.logp(Level.FINE, className, "changeRunAsSubject()", "-> Call getNameSpace() with " + FGSAKRUNAS_CONTEXT + " to get the context.");
+			getNameSpace();
+			log.logp(Level.FINE, className, "changeRunAsSubject()", "-> Set new loginContext based on targetRealm="+getTargetRealm()+" and securityName="+getUsername()+ " values.");
+			//CallbackHandler loginCallbackHandler = new WSCallbackHandlerImpl("srvPensjon", "10.80.5.2:389", "pwd");
+			CallbackHandler loginCallbackHandler = new WSCallbackHandlerImpl(username, targetRealm, password);
+			LoginContext lc = new LoginContext("WSLogin",loginCallbackHandler);
+			lc.login();
+			WSSubject.setRunAsSubject(lc.getSubject());
+			log.logp(Level.INFO, className, "changeRunAsSubject()", "-> Login with new subject based on targetRealm="+getTargetRealm()+" and securityName="+getUsername()+ " succeeds.");
+		}
+		else
+		{
+			log.logp(Level.FINE, className, "changeRunAsSubject()", "-> No security enabled on server. Don't excecute implementation.");
+		}
+		 	
 	}
 	
 	public void restoreRunAsSubject() throws WSSecurityException {
-		WSSubject.setRunAsSubject(originalRunAsSubject);
-		log.logp(Level.FINE, className, "restoreRunAsSubject()", "-> Restore original login context succeeds.");		
+		if (originalRunAsSubject != null)
+		{
+				WSSubject.setRunAsSubject(originalRunAsSubject);
+				log.logp(Level.FINE, className, "restoreRunAsSubject()", "-> Restore original login context succeeds.");
+		}
+		else
+		{
+			log.logp(Level.FINE, className, "restoreRunAsSubject()", "-> No security enabled on server. Don't excecute implementation.");
+		}
 	}
 
 	/**
