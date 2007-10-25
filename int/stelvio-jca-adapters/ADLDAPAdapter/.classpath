@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="connectorModule"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WPS Server v6.0 JRE"/>
+	<classpathentry kind="con" path="com.ibm.wtp.server.java.core.container/com.ibm.ws.ast.st.runtime.core.runtimeTarget.v60.wbi/wbi.v6"/>
+	<classpathentry kind="lib" path="C:/IBM/WID6/eclipse/plugins/org.eclipse.emf.commonj.sdo_2.0.0/runtime/commonj.sdo.jar"/>
+	<classpathentry kind="lib" path="C:/IBM/WID6/wstools/eclipse/plugins/connector.metadata_1.0.1.200/runtime/commonj.connector.jar"/>
+	<classpathentry kind="lib" path="connectorModule/CWYBS_AdapterFoundation.jar"/>
+	<classpathentry kind="output" path="connectorModule"/>
+</classpath>
