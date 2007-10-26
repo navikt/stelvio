@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<handler:EJBHandlerDD xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:handler="http://www.ibm.com/websphere/appserver/schemas/6.0/handler.xmi" xmi:id="EJBHandlerDD_1181911111390" name="JMSPropertyMediaton" description="Set JMS properties for MQ messages where this properties not can be delivered" critical="true">
+  <lists xmi:id="HandlerListRef_1193389737196" listName="JMSPropertyMediaton" description="" sequence="1"/>
+  <ejb xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#JMSPropertyMediaton"/>
+</handler:EJBHandlerDD>
