@@ -2,7 +2,7 @@ log4j.debug=true
 log4j.rootLogger=ERROR, Systemlog
 ### The Systemlog File Appender
 log4j.appender.Systemlog=org.apache.log4j.RollingFileAppender
-log4j.appender.Systemlog.File=C:/IBM/WID6/pf/wps01/logs/esb/CEI.log
+log4j.appender.Systemlog.File=/was_apps/logs/esb/System.log
 log4j.appender.Systemlog.MaxFileSize=10MB
 log4j.appender.Systemlog.MaxBackupIndex=10
 log4j.appender.Systemlog.Append=true
