@@ -1,10 +1,10 @@
 log4j.debug=true
-log4j.rootLogger=ERROR, Debuglog
-### The Debug Log File Appender
-log4j.appender.Debuglog=org.apache.log4j.DailyRollingFileAppender
-log4j.appender.Debuglog.File=C:/IBM/WID6/pf/wps01/logs/esb/CEI.log
-log4j.appender.Debuglog.DatePattern='.'yyyy-MM-dd
-log4j.appender.Debuglog.Append=true
-log4j.appender.Debuglog.layout=org.apache.log4j.PatternLayout
-log4j.appender.Debuglog.layout.ConversionPattern=[%d, %-5p, %c:%L] %m%n
-
+log4j.rootLogger=ERROR, Systemlog
+### The Systemlog File Appender
+log4j.appender.Systemlog=org.apache.log4j.RollingFileAppender
+log4j.appender.Systemlog.File=C:/IBM/WID6/pf/wps01/logs/esb/CEI.log
+log4j.appender.Systemlog.MaxFileSize=10MB
+log4j.appender.Systemlog.MaxBackupIndex=10
+log4j.appender.Systemlog.Append=true
+log4j.appender.Systemlog.layout=org.apache.log4j.PatternLayout
+log4j.appender.Systemlog.layout.ConversionPattern=[%t, %d, %-5p, %X{module}, %X{component}, %X{interface}, %X{method}] - %m%n
