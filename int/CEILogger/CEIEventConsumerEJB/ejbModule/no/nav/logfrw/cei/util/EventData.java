@@ -26,6 +26,8 @@ public class EventData {
 	private String targetMethod = null;
 	private String targetModule = null;
 	private String creationTime = null;
+	private String localInstanceId = null;
+	private String globalInstanceId = null;
 	
 
 	
@@ -173,5 +175,29 @@ public class EventData {
 	 */
 	public String getCreationTime() {
 		return creationTime;
+	}
+	/**
+	 * @param localInstanceId
+	 */
+	public void setLocaleInstanceId(String localInstanceId) {
+		this.localInstanceId = localInstanceId;
+	}
+	/**
+	 * @param globalInstanceId
+	 */
+	public void setGlobaleInstanceId(String globalInstanceId) {
+		this.globalInstanceId = globalInstanceId;		
+	}
+	/**
+	 * @return Returns the globalInstanceId.
+	 */
+	public String getGlobalInstanceId() {
+		return globalInstanceId;
+	}
+	/**
+	 * @return Returns the localInstanceId.
+	 */
+	public String getLocalInstanceId() {
+		return localInstanceId;
 	}
 }

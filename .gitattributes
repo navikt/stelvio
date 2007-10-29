@@ -1368,7 +1368,6 @@ int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/services/org.apache.commons
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/CEIConsumerMDBBean.java -text
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventData.java -text
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventDataConstant.java -text
-int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/LogMessage.java -text
 int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.classpath -text
 int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.j2ee -text
 int/flatfile-customdatahandler/CWYFF_FlatFile/trunk/CWYFF_FlatFile/.project -text
