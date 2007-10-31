@@ -946,6 +946,9 @@ dev/maven2/maven-fix-ear-plugin/pom.xml -text
 dev/maven2/maven-fix-ear-plugin/src/main/java/no/nav/maven/plugins/EarFixer.java -text
 dev/maven2/maven-fix-ear-plugin/src/main/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-fix-ear-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
+dev/maven2/maven-ltpa-plugin/pom.xml -text
+dev/maven2/maven-ltpa-plugin/src/main/java/no/nav/maven/plugins/SetupLTPA.java -text
+dev/maven2/maven-ltpa-plugin/src/main/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-propertiesgenerator-plugin/trunk/pom.xml -text
 dev/maven2/maven-propertiesgenerator-plugin/trunk/src/main/java/nav/maven/plugins/PropertiesGeneratorMojo.java -text
 dev/maven2/maven-war-plugin/.classpath -text
