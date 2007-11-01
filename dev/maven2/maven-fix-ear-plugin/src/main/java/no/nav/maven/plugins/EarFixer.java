@@ -57,21 +57,21 @@ public class EarFixer
 	 * @parameter expression="${workingarea}"
 	 * @required
 	 */
-	private File workingArea = new File("F:\\Temp");
+	private File workingArea; // = new File("F:\\Temp");
 	
 	/**
 	 * This parameter is the ear source file
 	 * @parameter expression="${earfile}"
 	 * @required
 	 */
-	private File earFile = new File("F:\\mojo\\nav-pensjon-pselv-jee-1.0.29.D3.ear");
+	private File earFile; // = new File("F:\\mojo\\nav-pensjon-pselv-jee-1.0.29.D3.ear");
 	
 	/**
 	 * This parameter is the environment file containing environment properties
 	 * @parameter expression="${envfile}"
 	 * @required
 	 */
-	private File environFile = new File("F:\\mojo\\10.51.9.62.xml");
+	private File environFile; // = new File("F:\\mojo\\10.51.9.62.xml");
 	
 	private Dictionary environment;
 	
