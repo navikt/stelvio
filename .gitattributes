@@ -932,6 +932,14 @@ dev/maven2/maven-dependency-plugin/target/test-classes/unit/resolve-test/plugin-
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-dependencies-test/plugin-config.xml -text
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-dependencies-test/test.txt -text
 dev/maven2/maven-dependency-plugin/target/test-classes/unit/unpack-test/plugin-config.xml -text
+dev/maven2/maven-deploy-fix-scripts/fixear/pom.xml -text
+dev/maven2/maven-deploy-fix-scripts/fixear/src/main/java/no/nav/maven/plugins/EarFixer.java -text
+dev/maven2/maven-deploy-fix-scripts/fixear/src/main/java/no/nav/maven/plugins/Test.java -text
+dev/maven2/maven-deploy-fix-scripts/fixear/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
+dev/maven2/maven-deploy-fix-scripts/pom.xml -text
+dev/maven2/maven-deploy-fix-scripts/setupltpa/pom.xml -text
+dev/maven2/maven-deploy-fix-scripts/setupltpa/src/main/java/no/nav/maven/plugins/SetupLTPA.java -text
+dev/maven2/maven-deploy-fix-scripts/setupltpa/src/main/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-ejb-plugin/.classpath -text
 dev/maven2/maven-ejb-plugin/.project -text
 dev/maven2/maven-ejb-plugin/META-INF/LICENSE.txt -text

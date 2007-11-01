@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>no.nav.build</groupId>
+	<artifactId>ear-configurer</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>Kontroller prosjekt for konfigurering</name>
+
+	<!-- NO DEPENDENCIES -->
+
+	<profiles>
+		<profile>
+			<id>fixear</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>no.nav.maven.plugins</groupId>
+						<artifactId>maven-fix-ear-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>process-sources</phase>
+								<id>fixear</id>
+								<configuration>
+									<tasks>
+										<echo>-----------------------------------------------------------------------------------------------</echo>
+										<echo>- Kontroller prosjekt for oppsett av diverse pensjonsprosjektets applikasjoner for deployment -</echo>
+										<echo>-   										  													-</echo>
+										<echo>-                                                  										    -</echo>
+										<echo>- OPERASJONER:				                    										    -</echo>
+										<echo>-                                                  										    -</echo>
+										<echo>- 1. fixear (tirgger=fixear)                         										    -</echo>
+										<echo>-	   		parameters:																		    -</echo>
+										<echo>-				earfile=			path to ear file including filename                         -</echo>
+										<echo>-				envfile=			path to environment file containing properties for module   -</echo>		
+										<echo>-				workingarea=		path to temporary working area 							    -</echo>
+										<echo>- 2. ltpa security fix (trigger=ltpa)                        									-</echo>
+										<echo>-	   		parameters:																		    -</echo>
+										<echo>-				workingarea=		path to where the modules are checked out from subversion   -</echo>
+										<echo>-----------------------------------------------------------------------------------------------</echo>						
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>fixear</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<activation>
+				<property>
+					<name>fixear</name>
+				</property>
+			</activation>
+		</profile>
+		<profile>
+			<id>ltpa</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>no.nav.maven.plugins</groupId>
+						<artifactId>maven-ltpa-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>process-sources</phase>
+								<id>ltpa</id>
+								<configuration>
+									<tasks>
+										<echo>-----------------------------------------------------------------------------------------------</echo>
+										<echo>- Kontroller prosjekt for oppsett av diverse pensjonsprosjektets applikasjoner for deployment -</echo>
+										<echo>-   										  													-</echo>
+										<echo>-                                                  										    -</echo>
+										<echo>- OPERASJONER:				                    										    -</echo>
+										<echo>-                                                  										    -</echo>
+										<echo>- 1. fixear (tirgger=fixear)                         										    -</echo>
+										<echo>-	   		parameters:																		    -</echo>
+										<echo>-				earfile=			path to ear file including filename                         -</echo>
+										<echo>-				envfile=			path to environment file containing properties for module   -</echo>		
+										<echo>-				workingarea=		path to temporary working area 							    -</echo>
+										<echo>- 2. ltpa security fix (trigger=ltpa)                        									-</echo>
+										<echo>-	   		parameters:																		    -</echo>
+										<echo>-				workingarea=		path to where the modules are checked out from subversion   -</echo>
+										<echo>-----------------------------------------------------------------------------------------------</echo>						
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>setupLTPA</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<activation>
+				<property>
+					<name>ltpa</name>
+				</property>
+			</activation>
+		</profile>
+	</profiles>
+</project>
