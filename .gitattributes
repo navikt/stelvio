@@ -1402,6 +1402,7 @@ int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/OperationAv
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemAvailabilityBaseComponent.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemAvailabilityStorage.java -text
 int/stelvio-commons-lib/no/nav/gbo/FaultTeknisk.xsd -text
+int/stelvio-commons-lib/no/nav/gbo/GBOEndringsInfo.xsd -text
 int/stelvio-commons-lib/no/nav/gbo/GBOStelvioContext.xsd -text
 int/stelvio-commons-lib/no/nav/gbo/GBOStelvioFault.xsd -text
 int/stelvio-commons-lib/no/nav/gbo/GBOStelvioFrg.xsd -text
