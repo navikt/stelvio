@@ -312,7 +312,7 @@ public class SetupLTPA
 			"<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n" +
 			  "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n" +
 			    "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n" +
-				  "<users xmi:id=\"User_#ROLEID#\" name=\"#USERNAME#\"" + 
+				  "<users xmi:id=\"User_#ROLEID#\" name=\"#USERNAME#\"/>\n" + 
 			      "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n" +
 			      "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n" +
 			    "</authorizations>\n" +
