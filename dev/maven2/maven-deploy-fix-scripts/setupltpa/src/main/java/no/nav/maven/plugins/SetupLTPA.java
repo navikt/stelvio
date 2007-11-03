@@ -60,20 +60,27 @@ public class SetupLTPA
 	 * @parameter expression="${workingarea}"
 	 * @required
 	 */
-	private File workingArea;
+	private File workingArea = new File("F:\\moose_deployment\\services\\rekrutten\\target\\classes\\builds\\ear\\temp");
 	
 	/**
 	 * This parameter is the workingarea where the modules are extracted from subversion.
 	 * @parameter expression="${envfile}"
 	 * @required
 	 */
-	private File envFile;
+	private File envFile = new File("F:\\moose_deployment\\services\\rekrutten\\src\\main\\resources\\scripts\\environments\\KompRek.properties");
+	
+	/**
+	 * This parameter is the workingarea where the modules are extracted from subversion.
+	 * @parameter expression="${ispsak}"
+	 * @required
+	 */
+	private boolean isPSAK = true;
+	
 	
 	private Properties props;
 	
 	private String roleId;
 	
-	private boolean isPSAK;
 	
 	/* (non-Javadoc)
 	 * @see org.apache.maven.plugin.Mojo#execute()
@@ -92,9 +99,7 @@ public class SetupLTPA
 		}
 		getLog().info("All ibm-deploy.sca2jee files generated successfully!");*/
 		
-		try {
-			isPSAK = workingArea.getAbsolutePath().matches(".*psak.*");
-			
+		try {			
 			readEnvFile();
 			
 			if(isPSAK){
@@ -298,6 +303,10 @@ public class SetupLTPA
 				  "</authorizationTable>\n" +
 				  "<application href=\"META-INF/application.xml#Application_ID\"/>\n" +
 				"</applicationbnd:ApplicationBinding>";
+		
+		content = content.replaceAll("#ROLEID#",roleId);
+		content = content.replaceAll("#GRPNAME#", props.getProperty("groupNamePSAK"));
+		content = content.replaceAll("#USERNAME#", props.getProperty("usernamePSELV"));
 		}else{
 			content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 			"<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n" +
@@ -310,11 +319,13 @@ public class SetupLTPA
 			  "</authorizationTable>\n" +
 			  "<application href=\"META-INF/application.xml#Application_ID\"/>\n" +
 			"</applicationbnd:ApplicationBinding>";
+			
+			content = content.replaceAll("#ROLEID#",roleId);
+			content = content.replaceAll("#GRPNAME#", props.getProperty("groupNamePSELV"));
+			content = content.replaceAll("#USERNAME#", props.getProperty("usernamePSELV"));
 		}
 		
-		content = content.replaceAll("#ROLEID#",roleId);
-		content = content.replaceAll("#GRPNAME#", props.getProperty("groupName"));
-		content = content.replaceAll("#USERNAME#", props.getProperty("usernamePSELV"));
+		
 		
 		getLog().info("Writing ibm-application-bnd.xml");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi")));
