@@ -19,19 +19,18 @@ package no.nav.maven.plugins;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Enumeration;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -46,8 +45,6 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-import sun.misc.CompoundEnumeration;
-
 /**
  * Goal which touches a timestamp file.
  *
@@ -59,18 +56,28 @@ public class SetupLTPA
     extends AbstractMojo
 {
 	/**
-	 * This parameter is the temporary directory where the files are unpacked.
+	 * This parameter is the workingarea where the modules are extracted from subversion.
 	 * @parameter expression="${workingarea}"
 	 * @required
 	 */
-	private File workingArea; // = new File("F:\\moose_deployment\\services\\rekrutten\\target\\classes\\builds\\workspace");
+	private File workingArea;
 	
-
+	/**
+	 * This parameter is the workingarea where the modules are extracted from subversion.
+	 * @parameter expression="${envfile}"
+	 * @required
+	 */
+	private File envFile;
+	
+	private Properties props;
+	
+	private String roleId;
+	
 	/* (non-Javadoc)
 	 * @see org.apache.maven.plugin.Mojo#execute()
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {	
-		getLog().info("Scanning for consumer modules...");
+		/*getLog().info("Scanning for consumer modules...");
 		File[] cons = getConsModules();
 		for(int i = 0; i < cons.length; i++){
 			getLog().info("Found " + cons[i].getName() + ", scanning content...");
@@ -81,7 +88,20 @@ public class SetupLTPA
 				e.printStackTrace();
 			}
 		}
-		getLog().info("All ibm-deploy.sca2jee files generated successfully!");
+		getLog().info("All ibm-deploy.sca2jee files generated successfully!");*/
+		
+		try {
+			readEnvFile();
+			
+			createAppXml(props.getProperty("roleName"),props.getProperty("roleName"));
+			
+			createBndFile();
+			
+			getLog().info("All Done!");
+		} catch (Exception e) {
+			getLog().error("Error performing security setup:");
+			e.printStackTrace();
+		}
 	}
 	
 	private String[] processExportFile(File export) throws Exception{
@@ -222,4 +242,69 @@ public class SetupLTPA
 			throw new IOException("Error writing ibm-deploy.sca2jee to disk: \n\n" + e.getMessage());
 		}
 	}
+
+	private void readEnvFile() throws IOException{
+		BufferedReader reader = new BufferedReader(new FileReader(envFile));
+		props = new Properties();
+		props.load(new FileInputStream(envFile));
+	}
+	
+	private void createAppXml(String strDesc, String strRoleName) throws DocumentException, IOException{
+		Document doc;
+		SAXReader reader;
+		Element root, role, desc, name;
+
+		
+		reader = new SAXReader();
+		doc = reader.read(new File(workingArea.getAbsolutePath() + "/META-INF/application.xml"));
+		
+		root = doc.getRootElement();
+		role = root.addElement("security-role");
+		roleId = (new Date()).getTime() + "";
+		role.addAttribute("id","SecurityRole_" + roleId);
+		desc = role.addElement("description");
+		name = role.addElement("role-name");
+		desc.addText(strDesc);
+		name.addText(strRoleName);
+		
+		getLog().info("Editing application.xml");
+		writeXml(doc, new File(workingArea.getAbsolutePath() + "/META-INF/application.xml"));
+	}
+
+	private void createBndFile() throws IOException, DocumentException{
+		Document doc;
+		SAXReader reader;
+		Element root, table, auths, role, groups;
+		
+		/**
+		 * writing application-bnd basic structure
+		 */
+		String content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+				"<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n" +
+				  "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n" +
+				    "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n" +
+				      "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n" +
+				      "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n" +
+				    "</authorizations>\n" +
+				  "</authorizationTable>\n" +
+				  "<application href=\"META-INF/application.xml#Application_ID\"/>\n" +
+				"</applicationbnd:ApplicationBinding>";
+
+		content = content.replaceAll("#ROLEID#",roleId);
+		content = content.replaceAll("#GRPNAME#", props.getProperty("groupName"));
+		
+		getLog().info("Writing ibm-application-bnd.xml");
+		BufferedWriter writer = new BufferedWriter(new FileWriter(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi")));
+		writer.write(content);
+		writer.close();
+	}
+	
+	private void writeXml(Document doc, File out) throws IOException
+	{
+		out.delete();
+		XMLWriter writer = new XMLWriter(new FileWriter(out.getAbsoluteFile()),OutputFormat.createPrettyPrint());
+		writer.write(doc.getRootElement());
+		writer.close();
+	}
+	
 }

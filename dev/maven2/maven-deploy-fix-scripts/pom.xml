@@ -8,7 +8,31 @@
 	<name>Kontroller prosjekt for konfigurering</name>
 
 	<!-- NO DEPENDENCIES -->
-
+	<!--
+	- Kontroller prosjekt for oppsett av diverse pensjonsprosjektets applikasjoner for deployment -
+	-   										  													-
+	-                                                  										    -
+	- OPERASJONER:				                    										    -
+	-                                                  										    -
+	- 1. fixear (trigger=fixear)                         										    -
+	-	   		parameters:																		    -
+	-				earfile=			path to ear file including filename                         -
+	-				envfile=			path to environment file containing properties for module   -		
+	-				workingarea=		path to temporary working area 							    -
+	- 2. ltpa security fix (trigger=ltpa)                        									-
+	-	   		parameters:																		    -
+	-				workingarea=		path to where the modules are checked out from subversion   -
+	- 3. wasdeploy (trigger=wasdeploy)                         								    -
+	-	   		parameters:																		    -
+	-				host=				machine to deploy to (default localhost)					-
+	-				port=				SOAP port (default 8880)									-
+	-				username=			websphere username											-
+	-				password=			websphere password											-
+	-				ear=				path to ear file											-
+	-				cluster=			cluster name if deploying to cluster environment			-
+	-				module=				module being deployed (pen, psak, pselv, popp, medl, preg)	-
+	-				module.version=		version of module to deploy									-
+	-->
 	<profiles>
 		<profile>
 			<id>fixear</id>
@@ -21,25 +45,6 @@
 							<execution>
 								<phase>process-sources</phase>
 								<id>fixear</id>
-								<configuration>
-									<tasks>
-										<echo>-----------------------------------------------------------------------------------------------</echo>
-										<echo>- Kontroller prosjekt for oppsett av diverse pensjonsprosjektets applikasjoner for deployment -</echo>
-										<echo>-   										  													-</echo>
-										<echo>-                                                  										    -</echo>
-										<echo>- OPERASJONER:				                    										    -</echo>
-										<echo>-                                                  										    -</echo>
-										<echo>- 1. fixear (tirgger=fixear)                         										    -</echo>
-										<echo>-	   		parameters:																		    -</echo>
-										<echo>-				earfile=			path to ear file including filename                         -</echo>
-										<echo>-				envfile=			path to environment file containing properties for module   -</echo>		
-										<echo>-				workingarea=		path to temporary working area 							    -</echo>
-										<echo>- 2. ltpa security fix (trigger=ltpa)                        									-</echo>
-										<echo>-	   		parameters:																		    -</echo>
-										<echo>-				workingarea=		path to where the modules are checked out from subversion   -</echo>
-										<echo>-----------------------------------------------------------------------------------------------</echo>						
-									</tasks>
-								</configuration>
 								<goals>
 									<goal>fixear</goal>
 								</goals>
@@ -65,25 +70,6 @@
 							<execution>
 								<phase>process-sources</phase>
 								<id>ltpa</id>
-								<configuration>
-									<tasks>
-										<echo>-----------------------------------------------------------------------------------------------</echo>
-										<echo>- Kontroller prosjekt for oppsett av diverse pensjonsprosjektets applikasjoner for deployment -</echo>
-										<echo>-   										  													-</echo>
-										<echo>-                                                  										    -</echo>
-										<echo>- OPERASJONER:				                    										    -</echo>
-										<echo>-                                                  										    -</echo>
-										<echo>- 1. fixear (tirgger=fixear)                         										    -</echo>
-										<echo>-	   		parameters:																		    -</echo>
-										<echo>-				earfile=			path to ear file including filename                         -</echo>
-										<echo>-				envfile=			path to environment file containing properties for module   -</echo>		
-										<echo>-				workingarea=		path to temporary working area 							    -</echo>
-										<echo>- 2. ltpa security fix (trigger=ltpa)                        									-</echo>
-										<echo>-	   		parameters:																		    -</echo>
-										<echo>-				workingarea=		path to where the modules are checked out from subversion   -</echo>
-										<echo>-----------------------------------------------------------------------------------------------</echo>						
-									</tasks>
-								</configuration>
 								<goals>
 									<goal>setupLTPA</goal>
 								</goals>
@@ -95,6 +81,135 @@
 			<activation>
 				<property>
 					<name>ltpa</name>
+				</property>
+			</activation>
+		</profile>
+		<profile>
+			<id>wasdeploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>validate</phase>
+								<id>build</id>
+								<configuration>
+									<tasks>	  							
+										<property name="compile.classpath" refid="maven.compile.classpath" />
+										<taskdef resource="net/sf/antcontrib/antlib.xml">
+											<classpath>
+												<pathelement path="${compile.classpath}" />
+											</classpath>
+										</taskdef>
+										<condition property="host" value="localhost">
+											<not>
+												<isset property="host" />
+											</not>
+										</condition>
+										<condition property="port" value="8880">
+											<not>
+												<isset property="port" />
+											</not>
+										</condition>
+										<condition property="username" value="EMPTY">
+											<not>
+												<isset property="username" />
+											</not>
+										</condition>
+										<condition property="password" value="EMPTY">
+											<not>
+												<isset property="password" />
+											</not>
+										</condition>
+										<condition property="layers" value="all">
+											<not>
+												<isset property="layers" />
+											</not>
+										</condition>
+
+										<echo>host=				machine to deploy to (default localhost)</echo>
+										<echo>port=				SOAP port (default 8880)</echo>
+										<echo>username=				websphere username</echo>
+										<echo>password=				websphere password</echo>
+										<echo>ear=				path to ear file</echo>
+										<echo>cluster=				cluster name if deploying to cluster environment</echo>
+										<echo>module=				module being deployed (pen, psak, pselv, popp, medl, preg)</echo>
+										<echo>module.version=			version of module to deploy</echo>
+										<echo/>
+										<if>
+											<isset property="cluster" />
+											<then>
+												<exec dir="."
+												executable="${wid.home}/runtimes/bi_v6/bin/ws_ant.bat"
+												failonerror="false"
+												errorproperty="error"
+												>
+													<arg
+													line="  -Dhost=${host}
+												-Dport=${port}
+												-Dusername=${username}
+												-Dpassword=${password}
+												-Dwas.home=${wid.home}/runtimes/bi_v6 
+												-Dwid.lib=${wid.home}/runtimes/bi_v6/lib 
+												-Dmaven.compile.classpath='${compile.classpath}' 
+												-Dear=${ear}	
+												-Dmodule=${module}
+												-Dmodule.version=${module.version}
+												-Dcluster=${cluster}
+												-buildfile was-deploy.xml" />																 
+												</exec>
+
+
+											</then>
+											<else>
+												<exec dir="."
+												executable="${wid.home}/runtimes/bi_v6/bin/ws_ant.bat"
+												failonerror="false"
+												errorproperty="error"
+												>
+													<arg
+													line="  -Dhost=${host}
+												-Dport=${port}
+												-Dusername=${username}
+												-Dpassword=${password}
+												-Dwas.home=${wid.home}/runtimes/bi_v6 
+												-Dwid.lib=${wid.home}/runtimes/bi_v6/lib 
+												-Dmaven.compile.classpath='${compile.classpath}' 
+												-Dear=${ear}	
+												-Dmodule=${module}
+												-Dmodule.version=${module.version}
+												-buildfile was-deploy.xml" />																 
+												</exec>
+											</else>
+										</if>
+
+										<if>
+											<length string="${error}" when="greater" length="0" />
+											<then>
+												<fail message="Feil under deploymasjon: ${error}"/>																
+											</then>
+										</if>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>net.sf.antcontrib</groupId>
+								<artifactId>ant-contrib</artifactId>
+								<version>1.0b3</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+			<activation>
+				<property>
+					<name>wasdeploy</name>
 				</property>
 			</activation>
 		</profile>

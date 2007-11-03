@@ -1537,6 +1537,7 @@ dev/maven2/maven-deploy-fix-scripts/pom.xml -text
 dev/maven2/maven-deploy-fix-scripts/setupltpa/pom.xml -text
 dev/maven2/maven-deploy-fix-scripts/setupltpa/src/main/java/no/nav/maven/plugins/SetupLTPA.java -text
 dev/maven2/maven-deploy-fix-scripts/setupltpa/src/main/java/no/nav/maven/plugins/Test.java -text
+dev/maven2/maven-deploy-fix-scripts/was-deploy.xml -text
 dev/maven2/maven-ejb-plugin/.classpath -text
 dev/maven2/maven-ejb-plugin/.project -text
 dev/maven2/maven-ejb-plugin/META-INF/LICENSE.txt -text

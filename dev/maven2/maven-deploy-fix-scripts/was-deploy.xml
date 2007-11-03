@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<project name="masterBuild" default="start">
+			
+	<!-- Import all the required ANT libraries -->
+	<target name="init">			
+		<taskdef name="wsInstallApp" classname="com.ibm.websphere.ant.tasks.InstallApplication">
+			<classpath>
+				<pathelement path="${wid.lib}/wsanttasks.jar" />
+			</classpath>
+		</taskdef>
+		<taskdef name="wsListApp" classname="com.ibm.websphere.ant.tasks.ListApplications">
+			<classpath>
+				<pathelement path="${wid.lib}/wsanttasks.jar" />
+			</classpath>
+		</taskdef>		
+		<taskdef name="wsUnInstallApp" classname="com.ibm.websphere.ant.tasks.UninstallApplication">
+			<classpath>
+				<pathelement path="E:/ws-test/nav-int-workspaces/was-deploy/wsanttasks.jar" />
+			</classpath>
+		</taskdef>
+		<taskdef name="wsStartApp" classname="com.ibm.websphere.ant.tasks.StartApplication">
+			<classpath>
+				<pathelement path="${wid.lib}/wsanttasks.jar" />
+			</classpath>
+		</taskdef>
+		<taskdef name="wsStopApp" classname="com.ibm.websphere.ant.tasks.StopApplication">
+			<classpath>
+				<pathelement path="${wid.lib}/wsanttasks.jar" />
+			</classpath>
+		</taskdef>
+		<taskdef name="wsAdmin" classname="com.ibm.websphere.ant.tasks.WsAdmin">
+			<classpath>
+				<pathelement path="${wid.lib}/wsanttasks.jar" />
+			</classpath>
+		</taskdef>
+		
+		<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+			<classpath>
+				<pathelement path="${maven.compile.classpath}" />
+			</classpath>
+		</taskdef>
+		
+		<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement path="${compile.classpath}" />
+			</classpath>
+		</taskdef>
+	</target>
+
+	<target name="uninstall">
+		<echo>Uninstalling ${oldApp}...</echo>
+		<wsUnInstallApp
+			wasHome="${was.home}"
+			application="${oldApp}"			
+			conntype="SOAP"
+			host="${host}"
+			port="${port}"
+			user="${username}"
+			password="${password}"			
+		/>
+	</target>
+	
+	<target name="install">
+		<echo>Installing nav-pensjon-${module}-jee-${module.version}...</echo>
+		<wsInstallApp 
+			ear="${ear}"
+			options="${options}"
+			wasHome="${was.home}"
+			failonerror="true"
+			conntype="SOAP"
+			host="${host}"
+			port="${port}"
+			user="${username}"
+			password="${password}"			
+		/>
+	</target>
+	
+	<target name="installCluster">
+		<echo>Installing nav-pensjon-${module}-jee-${module.version} to clustered environment...</echo>
+		<wsInstallApp 
+			ear="${ear}"
+			options="${options} ${clusteroptions}"
+			wasHome="${was.home}"
+			failonerror="true"
+			conntype="SOAP"
+			host="${host}"
+			port="${port}"
+			user="${username}"
+			password="${password}"			
+		/>
+	</target>
+	
+	
+	<!-- Deploy the application to the application server -->
+	<target name="deploy" depends="init">
+		<echo>------------------------</echo>
+		<echo>Deploying application...</echo>
+		<echo>------------------------</echo>
+		<echo>Host: 			${host}</echo>
+		<echo>Port: 			${port}</echo>
+		<echo>Username: 		${username}</echo>
+		<echo>was.home: 		${was.home}</echo>
+		<echo>ear:			${ear}</echo>
+		<echo>module: 		${module}</echo>
+		<echo>module.version:		${module.version}</echo>
+		<echo>cluster:		${cluster}</echo>
+		<echo/>
+
+		<record name="listapp.txt" action="start" loglevel="info" append="false"/>
+		<echo>Checking if application already installed...</echo>
+		<wsListApp 
+				wasHome="${was.home}"
+				conntype="SOAP"
+				host="${host}"
+				port="${port}"
+				user="${username}"
+				password="${password}"/>
+		<record name="listapp.txt" action="stop"/>
+		<loadfile property="apps" srcfile="listapp.txt" failonerror="true" />
+		<propertyregex 	property="oldApp" 
+						input="${apps}" 
+						regexp=".*(nav-pensjon-${module}-jee-.*)${line.separator}" 
+						select="\1" 
+						casesensitive="false" />
+		<if>
+			<isset property="oldApp" />
+			<then>
+				<antcall target="uninstall" />
+			</then>
+		</if>				
+	
+		<if>
+			<not><equals arg1="${module}" arg2="pen" /></not>
+			<then>
+				<property name="options" value="-appname nav-pensjon-${module}-jee-${module.version} -usedefaultbindings -defaultbinding.virtual.host default_host" />
+			</then>
+			<else>
+				<property name="options" value="-appname nav-pensjon-${module}-jee-${module.version}" />
+			</else>
+		</if>
+		
+		<echo/>
+		<if>
+			<isset property="cluster" />
+			<then>
+				<property name="clusteroptions" value="-cluster ${cluster} -distributeApp" />
+				<antcall target="installCluster" />
+			</then>
+			<else>
+				<antcall target="install" />
+			</else>
+		</if>
+	</target>
+	
+	<!-- Start the application at the web server -->
+	<target name="start" depends="deploy">
+		<echo>-----------------------</echo>
+		<echo>Starting application...</echo>
+		<echo>-----------------------</echo>
+		<echo>Host: ${host}</echo>
+		<echo>Port: ${port}</echo>
+		<echo>Username: ${username}</echo>
+		<echo>was.home: ${was.home}</echo>
+		<echo>appName: nav-pensjon-${module}-jee-${module.version}</echo>
+
+		<wsStartApp
+			wasHome="${was.home}"
+			application="nav-pensjon-${module}-jee-${module.version}"			
+			conntype="SOAP"
+			host="${host}"
+			port="${port}"
+			user="${username}"
+			password="${password}"			
+		/>
+	</target>
+</project>
