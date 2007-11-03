@@ -73,6 +73,8 @@ public class SetupLTPA
 	
 	private String roleId;
 	
+	private boolean isPSAK;
+	
 	/* (non-Javadoc)
 	 * @see org.apache.maven.plugin.Mojo#execute()
 	 */
@@ -91,9 +93,15 @@ public class SetupLTPA
 		getLog().info("All ibm-deploy.sca2jee files generated successfully!");*/
 		
 		try {
+			isPSAK = workingArea.getAbsolutePath().matches(".*psak.*");
+			
 			readEnvFile();
 			
-			createAppXml(props.getProperty("roleName"),props.getProperty("roleName"));
+			if(isPSAK){
+				createAppXml(props.getProperty("roleNamePSAK"),props.getProperty("roleNamePSAK"));
+			}else{
+				createAppXml(props.getProperty("roleNamePSELV"),props.getProperty("roleNamePSELV"));
+			}
 			
 			createBndFile();
 			
@@ -275,11 +283,12 @@ public class SetupLTPA
 		Document doc;
 		SAXReader reader;
 		Element root, table, auths, role, groups;
-		
+		String content = null;
 		/**
 		 * writing application-bnd basic structure
 		 */
-		String content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+		if(isPSAK){
+		content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 				"<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n" +
 				  "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n" +
 				    "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n" +
@@ -289,9 +298,23 @@ public class SetupLTPA
 				  "</authorizationTable>\n" +
 				  "<application href=\"META-INF/application.xml#Application_ID\"/>\n" +
 				"</applicationbnd:ApplicationBinding>";
-
+		}else{
+			content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+			"<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n" +
+			  "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n" +
+			    "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n" +
+				  "<users xmi:id=\"User_#ROLEID#\" name=\"#USERNAME#\"" + 
+			      "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n" +
+			      "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n" +
+			    "</authorizations>\n" +
+			  "</authorizationTable>\n" +
+			  "<application href=\"META-INF/application.xml#Application_ID\"/>\n" +
+			"</applicationbnd:ApplicationBinding>";
+		}
+		
 		content = content.replaceAll("#ROLEID#",roleId);
 		content = content.replaceAll("#GRPNAME#", props.getProperty("groupName"));
+		content = content.replaceAll("#USERNAME#", props.getProperty("usernamePSELV"));
 		
 		getLog().info("Writing ibm-application-bnd.xml");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi")));
