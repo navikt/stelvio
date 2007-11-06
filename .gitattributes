@@ -192,6 +192,8 @@ app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/con
 app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/conversation/impl/ConversationContainer.java -text
 app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/conversation/impl/ConversationLock.java -text
 app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/conversation/impl/ConversationLockFactory.java -text
+app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/conversation/impl/DebuggingJdkConcurrentConversationLock.java -text
+app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/conversation/impl/DebuggingLockManager.java -text
 app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/conversation/impl/JdkConcurrentConversationLock.java -text
 app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/conversation/impl/NoOpConversationLock.java -text
 app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/conversation/impl/SessionBindingConversationManager.java -text

@@ -31,6 +31,7 @@ public class ConversationLockFactory {
 	private static final Log logger = LogFactory.getLog(ConversationLockFactory.class);
 
 	private static boolean utilConcurrentPresent;
+	public static final boolean USE_DEBUG_LOCKING = true;
 
 	static {
 		try {
@@ -48,6 +49,13 @@ public class ConversationLockFactory {
 	 * In all other cases a "no-op" lock is returned.
 	 */
 	public static ConversationLock createLock() {
+		
+		if( USE_DEBUG_LOCKING ) {
+			DebuggingJdkConcurrentConversationLock lock = new DebuggingJdkConcurrentConversationLock();
+			DebuggingLockManager.getInstance().registerLock(lock);
+			return lock;
+		}
+		
 		if (JdkVersion.getMajorJavaVersion() >= JdkVersion.JAVA_15) {
 			return new JdkConcurrentConversationLock();
 		}
