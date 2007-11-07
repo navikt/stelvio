@@ -129,8 +129,8 @@ app/incubator/trunk/spring-webflow/changelog.txt -text
 app/incubator/trunk/spring-webflow/ivy.xml -text
 app/incubator/trunk/spring-webflow/license.txt -text
 app/incubator/trunk/spring-webflow/notice.txt -text
+app/incubator/trunk/spring-webflow/old.project.properties -text
 app/incubator/trunk/spring-webflow/pom.xml -text
-app/incubator/trunk/spring-webflow/project.properties -text
 app/incubator/trunk/spring-webflow/readme.txt -text
 app/incubator/trunk/spring-webflow/src/etc/filter.properties -text
 app/incubator/trunk/spring-webflow/src/etc/test-resources/log4j.properties -text
@@ -430,6 +430,10 @@ app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/uti
 app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/util/UidGenerator.java -text
 app/incubator/trunk/spring-webflow/src/main/java/org/springframework/webflow/util/package.html -text
 app/incubator/trunk/spring-webflow/src/main/java/overview.html -text
+app/incubator/trunk/spring-webflow/src/main/resources/META-INF/spring.handlers -text
+app/incubator/trunk/spring-webflow/src/main/resources/META-INF/spring.schemas -text
+app/incubator/trunk/spring-webflow/src/main/resources/org/springframework/webflow/config/spring-webflow-config-1.0.xsd -text
+app/incubator/trunk/spring-webflow/src/main/resources/org/springframework/webflow/engine/builder/xml/spring-webflow-1.0.xsd -text
 app/incubator/trunk/spring-webflow/src/test/java/org/springframework/webflow/TestBean.java -text
 app/incubator/trunk/spring-webflow/src/test/java/org/springframework/webflow/TestBeanWithMap.java -text
 app/incubator/trunk/spring-webflow/src/test/java/org/springframework/webflow/TestException.java -text

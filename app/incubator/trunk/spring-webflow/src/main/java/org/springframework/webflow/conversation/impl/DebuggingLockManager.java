@@ -7,7 +7,7 @@ public class DebuggingLockManager {
 	private static final DebuggingLockManager instance = new DebuggingLockManager();
 	private Map<DebuggingJdkConcurrentConversationLock, Object> locks = new WeakHashMap<DebuggingJdkConcurrentConversationLock, Object>();
 	private Thread reporterThread;
-	
+
 	private class LockReporter implements Runnable {
 		public void run() {
 			while (true) {
@@ -25,6 +25,16 @@ public class DebuggingLockManager {
 						long lockTime = System.currentTimeMillis() - lock.getLockTime();
 						System.err.println("Lock: " + lock + ", locked for " + lockTime + " ms by thread="
 								+ lock.getLockingThread());
+
+						if (lockTime > 120000L) {
+							StringBuilder builder = new StringBuilder();
+							for( StackTraceElement elem : lock.getStackTraceForLockingThread() ) {
+								builder.append(elem.toString() + "\n");
+							}
+							System.err.println("Lock: " + lock + ", locked for " + lockTime + " ms by thread="
+									+ lock.getLockingThread()+ " stack:" + builder.toString());
+						}
+
 					}
 				}
 				System.err.println("== End of conversation locks ==");
