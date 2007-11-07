@@ -26,7 +26,8 @@ public class DebuggingLockManager {
 						System.err.println("Lock: " + lock + ", locked for " + lockTime + " ms by thread="
 								+ lock.getLockingThread());
 
-						if (lockTime > 120000L) {
+						if (lockTime > 120000L && !lock.isFullyLogged()) {
+							lock.setFullyLogged(true);
 							StringBuilder builder = new StringBuilder();
 							for( StackTraceElement elem : lock.getStackTraceForLockingThread() ) {
 								builder.append(elem.toString() + "\n");

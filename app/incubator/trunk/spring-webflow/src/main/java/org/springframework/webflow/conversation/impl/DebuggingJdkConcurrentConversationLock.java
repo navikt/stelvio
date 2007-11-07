@@ -10,7 +10,8 @@ public class DebuggingJdkConcurrentConversationLock implements ConversationLock,
 	private Thread lockingThread;
 	private StackTraceElement[] stackTraceForLockingThread = null;
 	private long lockTime;
-
+	private boolean isFullyLogged = false;
+	
 	public void lock() {
 		Exception e = new Exception();
 		e.fillInStackTrace();
@@ -53,4 +54,14 @@ public class DebuggingJdkConcurrentConversationLock implements ConversationLock,
 	public long getLockTime() {
 		return lockTime;
 	}
+
+	public boolean isFullyLogged() {
+		return isFullyLogged;
+	}
+
+	public void setFullyLogged(boolean isFullyLogged) {
+		this.isFullyLogged = isFullyLogged;
+	}
+	
+	
 }
