@@ -67,37 +67,25 @@ public class SetupLTPA
 	 * @parameter expression="${envfile}"
 	 * @required
 	 */
-	private File envFile = new File("F:\\moose_deployment\\services\\rekrutten\\src\\main\\resources\\scripts\\environments\\KompRek.properties");
+	private File envFile = new File("F:\\moose_deployment\\services\\rekrutten\\src\\main\\resources\\scripts\\environments\\preprodRek.properties");
 	
 	/**
 	 * This parameter is the workingarea where the modules are extracted from subversion.
 	 * @parameter expression="${ispsak}"
 	 * @required
 	 */
-	private boolean isPSAK = true;
+	private boolean isPSAK = false;
 	
 	
 	private Properties props;
 	
-	private String roleId;
+	private String roleId = null;
 	
 	
 	/* (non-Javadoc)
 	 * @see org.apache.maven.plugin.Mojo#execute()
 	 */
-	public void execute() throws MojoExecutionException, MojoFailureException {	
-		/*getLog().info("Scanning for consumer modules...");
-		File[] cons = getConsModules();
-		for(int i = 0; i < cons.length; i++){
-			getLog().info("Found " + cons[i].getName() + ", scanning content...");
-			try {
-				createSca2Jee(cons[i]);
-			} catch (Exception e) {
-				getLog().error("Error while scanning consumer module:");
-				e.printStackTrace();
-			}
-		}
-		getLog().info("All ibm-deploy.sca2jee files generated successfully!");*/
+	public void execute() throws MojoExecutionException, MojoFailureException {
 		
 		try {			
 			readEnvFile();
@@ -266,22 +254,49 @@ public class SetupLTPA
 		Document doc;
 		SAXReader reader;
 		Element root, role, desc, name;
-
+		Attribute id;
+		XPath search;
+		Map uris = new HashMap();
+		
+		getLog().info("Editing application.xml");
 		
 		reader = new SAXReader();
 		doc = reader.read(new File(workingArea.getAbsolutePath() + "/META-INF/application.xml"));
 		
-		root = doc.getRootElement();
-		role = root.addElement("security-role");
-		roleId = (new Date()).getTime() + "";
-		role.addAttribute("id","SecurityRole_" + roleId);
-		desc = role.addElement("description");
-		name = role.addElement("role-name");
-		desc.addText(strDesc);
-		name.addText(strRoleName);
+		//checking if role already defined
+		uris = new HashMap();
+		uris.put("ns","http://java.sun.com/xml/ns/j2ee");
+		search = DocumentHelper.createXPath("/ns:application/ns:security-role");
+		search.setNamespaceURIs(uris);
+		List roles = search.selectNodes(doc);
+		if(!roles.isEmpty()){
+			for(Iterator iter = roles.iterator(); iter.hasNext();){
+				role = (Element)iter.next();
+				name = role.element("role-name");
+				if(name != null && name.getText().compareTo(strRoleName) == 0){
+					id = role.attribute("id");
+					if(id == null){
+						throw new DocumentException("Invalid role defined in application.xml (contains no id attribute!)");
+					}
+					roleId = id.getValue().replaceAll("SecurityRole_","");
+					getLog().info(strRoleName + " already defined in application.xml, storing role id: " + roleId);
+					break;
+				}
+			}
+		}
 		
-		getLog().info("Editing application.xml");
-		writeXml(doc, new File(workingArea.getAbsolutePath() + "/META-INF/application.xml"));
+		if(roleId == null){
+			root = doc.getRootElement();
+			role = root.addElement("security-role");
+			roleId = (new Date()).getTime() + "";
+			role.addAttribute("id","SecurityRole_" + roleId);
+			desc = role.addElement("description");
+			name = role.addElement("role-name");
+			desc.addText(strDesc);
+			name.addText(strRoleName);
+			getLog().info("Created new security role (" + roleId + ") for " + strRoleName);
+			writeXml(doc, new File(workingArea.getAbsolutePath() + "/META-INF/application.xml"));
+		}
 	}
 
 	private void createBndFile() throws IOException, DocumentException{
