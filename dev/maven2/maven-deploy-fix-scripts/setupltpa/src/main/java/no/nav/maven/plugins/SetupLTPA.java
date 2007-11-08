@@ -74,7 +74,7 @@ public class SetupLTPA
 	 * @parameter expression="${ispsak}"
 	 * @required
 	 */
-	private boolean isPSAK = false;
+	private boolean isPSAK = true;
 	
 	
 	private Properties props;
