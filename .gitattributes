@@ -2117,6 +2117,7 @@ int/stelvio-sibus-mediation/MediationEAR/.runtime -text
 int/stelvio-sibus-mediation/MediationEAR/META-INF/.modulemaps -text
 int/stelvio-sibus-mediation/MediationEAR/META-INF/MANIFEST.MF -text
 int/stelvio-sibus-mediation/MediationEAR/META-INF/application.xml -text
+int/workspaces/nav-int-stelvio-workspaces/nav-stelvio-ceilogger.psf -text
 maven-jaxhandler-plugin/pom.xml -text
 maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/JaxRPCHandlerMojo.java -text
 maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
