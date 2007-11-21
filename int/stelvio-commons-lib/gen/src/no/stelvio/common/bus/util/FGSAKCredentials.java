@@ -104,7 +104,7 @@ public class FGSAKCredentials {
 			LoginContext lc = new LoginContext("WSLogin",loginCallbackHandler);
 			lc.login();
 			WSSubject.setRunAsSubject(lc.getSubject());
-			log.logp(Level.INFO, className, "changeRunAsSubject()", "-> Login with new subject based on targetRealm="+getTargetRealm()+" and securityName="+getUsername()+ " succeeds.");
+			log.logp(Level.FINE, className, "changeRunAsSubject()", "-> Login with new subject based on targetRealm="+getTargetRealm()+" and securityName="+getUsername()+ " succeeds.");
 		}
 		else
 		{
