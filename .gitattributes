@@ -2031,6 +2031,7 @@ int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAP
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterConnectionFailedException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/lib/sik/ad/fault/FaultADNAVAnsattIkkeFunnet.xsd -text
+int/stelvio-jca-adapters/NAVFlatFileAdapter/CWYFF_NAVFlatFile6021.rar -text
 int/stelvio-operation-systemavailability/.project -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.classpath -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.compatibility -text
