@@ -28,6 +28,9 @@ public class EventData {
 	private String creationTime = null;
 	private String localInstanceId = null;
 	private String globalInstanceId = null;
+	private String wbiSessionId = null;
+	private String ecsCurrentId = null;
+	private String ecsParrentId = null;
 	
 
 	
@@ -199,5 +202,41 @@ public class EventData {
 	 */
 	public String getLocalInstanceId() {
 		return localInstanceId;
+	}
+	/**
+	 * @return Returns the ecsCurrentId.
+	 */
+	public String getEcsCurrentId() {
+		return ecsCurrentId;
+	}
+	/**
+	 * @param ecsCurrentId The ecsCurrentId to set.
+	 */
+	public void setEcsCurrentId(String ecsCurrentId) {
+		this.ecsCurrentId = ecsCurrentId;
+	}
+	/**
+	 * @return Returns the ecsParrentId.
+	 */
+	public String getEcsParrentId() {
+		return ecsParrentId;
+	}
+	/**
+	 * @param ecsParrentId The ecsParrentId to set.
+	 */
+	public void setEcsParrentId(String ecsParrentId) {
+		this.ecsParrentId = ecsParrentId;
+	}
+	/**
+	 * @return Returns the wbiSessionId.
+	 */
+	public String getWbiSessionId() {
+		return wbiSessionId;
+	}
+	/**
+	 * @param wbiSessionId The wbiSessionId to set.
+	 */
+	public void setWbiSessionId(String wbiSessionId) {
+		this.wbiSessionId = wbiSessionId;
 	}
 }

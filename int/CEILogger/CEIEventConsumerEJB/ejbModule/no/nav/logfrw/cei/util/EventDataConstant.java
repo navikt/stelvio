@@ -36,4 +36,11 @@ public class EventDataConstant {
 
 	public static final String TARGET_MODULE = "TARGET MODULE";
 
+	public static final String WBISESSION_ID = "WBISESSION_ID";
+		
+	public static final String 	ECS_CURRENT_ID = "ECSCurrentID";
+
+	public static final String 	ECS_PARENT_ID = "ECSParentID";
+
+	
 }

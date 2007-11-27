@@ -16,6 +16,7 @@ import javax.jms.ObjectMessage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC;
 import org.eclipse.hyades.logging.events.cbe.CommonBaseEvent;
+import org.eclipse.hyades.logging.events.cbe.ContextDataElement;
 import org.eclipse.hyades.logging.events.cbe.ExtendedDataElement;
 import org.eclipse.hyades.logging.events.cbe.util.EventFormatter;
 
@@ -79,10 +80,22 @@ public class CEIConsumerMDBBean implements javax.ejb.MessageDrivenBean,	javax.jm
 			EventData eventData = generateEventData(CBEmsg);
 			
 			//Put info in log-signature
-			MDC.put("module", eventData.getSourceModule());
-			MDC.put("component", eventData.getSourceComponent());
-			MDC.put("interface", eventData.getSourceInterface());
-			MDC.put("method", eventData.getSourceMethod());
+			if(eventData.getSourceModule() != null)
+				MDC.put("module", eventData.getSourceModule());
+			if(eventData.getSourceComponent() != null)
+				MDC.put("component", eventData.getSourceComponent());
+			if(eventData.getSourceInterface() != null)
+				MDC.put("interface", eventData.getSourceInterface());
+			if(eventData.getSourceMethod() != null)
+				MDC.put("method", eventData.getSourceMethod());
+			if(eventData.getGlobalInstanceId() != null)
+				MDC.put("globalInstanceId", eventData.getGlobalInstanceId());
+			if(eventData.getWbiSessionId() != null)
+				MDC.put("wbiSessionId", eventData.getWbiSessionId());
+			if(eventData.getEcsCurrentId() != null)
+				MDC.put("ecsCurrentId", eventData.getEcsCurrentId());
+			if(eventData.getEcsParrentId() != null)
+				MDC.put("ecsParrentId", eventData.getEcsParrentId());
 			
 			//Get message from hex-XML, convert and log
 			logMessage(getCBEmsgXML(), eventData.isError());
@@ -128,6 +141,19 @@ public class CEIConsumerMDBBean implements javax.ejb.MessageDrivenBean,	javax.jm
 				eventData.setTargetMethod(ede.getValuesAsString());
 			} else if (name.equals(EventDataConstant.TARGET_MODULE)) {
 				eventData.setTargetModule(ede.getValuesAsString());
+			}
+		}
+		List cdeList = new ArrayList(CBEmsg.getContextDataElements());
+		Iterator cdeIterator = cdeList.iterator();
+		while(cdeIterator.hasNext()){
+			ContextDataElement cde = (ContextDataElement) cdeIterator.next();
+			String cdeName = cde.getName();
+			if(cdeName.equals(EventDataConstant.WBISESSION_ID)){
+				eventData.setWbiSessionId(cde.getContextValue());
+			} else if(cdeName.equals(EventDataConstant.ECS_CURRENT_ID)){
+				eventData.setEcsCurrentId(cde.getContextValue());
+			} else if(cdeName.equals(EventDataConstant.ECS_PARENT_ID)){
+				eventData.setEcsParrentId(cde.getContextValue());
 			}
 		}
 		eventData.setCreationTime(CBEmsg.getCreationTime());
