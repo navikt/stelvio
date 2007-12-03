@@ -6,34 +6,52 @@
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>Kontroller prosjekt for konfigurering</name>
-
-	<!-- NO DEPENDENCIES -->
-	<!--
-	- Kontroller prosjekt for oppsett av diverse pensjonsprosjektets applikasjoner for deployment -
-	-   										  													-
-	-                                                  										    -
-	- OPERASJONER:				                    										    -
-	-                                                  										    -
-	- 1. fixear (trigger=fixear)                         										    -
-	-	   		parameters:																		    -
-	-				earfile=			path to ear file including filename                         -
-	-				envfile=			path to environment file containing properties for module   -		
-	-				workingarea=		path to temporary working area 							    -
-	- 2. ltpa security fix (trigger=ltpa)                        									-
-	-	   		parameters:																		    -
-	-				workingarea=		path to where the modules are checked out from subversion   -
-	- 3. wasdeploy (trigger=wasdeploy)                         								    -
-	-	   		parameters:																		    -
-	-				host=				machine to deploy to (default localhost)					-
-	-				port=				SOAP port (default 8880)									-
-	-				username=			websphere username											-
-	-				password=			websphere password											-
-	-				ear=				path to ear file											-
-	-				cluster=			cluster name if deploying to cluster environment			-
-	-				module=				module being deployed (pen, psak, pselv, popp, medl, preg)	-
-	-				module.version=		version of module to deploy									-
-	-->
 	<profiles>
+		<profile>
+			<id>usage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>process-sources</phase>
+								<configuration>
+									<tasks>	  							
+										<echo>------------------------------------------- USAGE --------------------------------------------------------------------</echo>
+										<echo>----------------------------------------------------------------------------------------------------------------------</echo>
+										<echo>-                                                                                                                    -</echo>
+										<echo>- 1. fixear (trigger=fixear)                         										                           -</echo>
+										<echo>-				mappingfile=		path to ear file including filename                                                -</echo>
+										<echo>-									defaults to M:\DevArch_Tools_Shared\DevArch\tools\moose\build_version_mapping.txt  -</echo>
+										<echo>-				mooseid=			moose build id to fix                                                              -</echo>
+										<echo>-				envfile=			path to environment file containing properties for module                          -</echo>
+										<echo>-				workingarea=		path to temporary working area (defaults to D:\Deploy_Temp)                        -</echo>
+										<echo>-                                                                                                                    -</echo>
+										<echo>- 2. ltpa security fix (trigger=ltpa)                        									                       -</echo>
+										<echo>-				workingarea=		path to temporary working area (defaults to D:\Deploy_Temp)                        -</echo>
+										<echo>-                                                                                                                    -</echo>
+										<echo>- 3. wasdeploy (trigger=wasdeploy)                         								                           -</echo>
+										<echo>-				host=				machine to deploy to (default localhost)					                       -</echo>
+										<echo>-				port=				SOAP port (default 8880)									                       -</echo>
+										<echo>-				username=			websphere username											                       -</echo>
+										<echo>-				password=			websphere password											                       -</echo>
+										<echo>-				mooseid=			moose build id to fix                                                              -</echo>
+										<echo>-				cluster=			cluster name if deploying to cluster environment			                       -</echo>
+										<echo>-				module=				module being deployed (pen, psak, pselv, popp, medl, preg)	                       -</echo>
+										<echo>-				module.version=		version of module to deploy                                                        -</echo>
+										<echo>----------------------------------------------------------------------------------------------------------------------</echo>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>fixear</id>
 			<build>
@@ -45,6 +63,10 @@
 							<execution>
 								<phase>process-sources</phase>
 								<id>fixear</id>
+								<configuration>
+									<mappingFile>M:\DevArch_Tools_Shared\DevArch\tools\moose\build_version_mapping.txt</mappingFile>
+									<workingArea>D:\Deploy_Temp</workingArea>
+								</configuration>
 								<goals>
 									<goal>fixear</goal>
 								</goals>
@@ -127,67 +149,48 @@
 												<isset property="layers" />
 											</not>
 										</condition>
-
-										<echo>host=				machine to deploy to (default localhost)</echo>
-										<echo>port=				SOAP port (default 8880)</echo>
-										<echo>username=				websphere username</echo>
-										<echo>password=				websphere password</echo>
-										<echo>ear=				path to ear file</echo>
-										<echo>cluster=				cluster name if deploying to cluster environment</echo>
-										<echo>module=				module being deployed (pen, psak, pselv, popp, medl, preg)</echo>
-										<echo>module.version=			version of module to deploy</echo>
-										<echo/>
+										<condition property="mappingFile" value="M:\DevArch_Tools_Shared\DevArch\tools\moose\build_version_mapping.txt">
+											<not>
+												<isset property="mappingFile" />
+											</not>
+										</condition>
+										<condition property="workingArea" value="D:\Deploy_Temp">
+											<not>
+												<isset property="workingArea" />
+											</not>
+										</condition>
 										<if>
-											<isset property="cluster" />
+											<not><isset property="mooseid"/></not>
 											<then>
-												<exec dir="."
-												executable="${wid.home}/runtimes/bi_v6/bin/ws_ant.bat"
-												failonerror="false"
-												errorproperty="error"
-												>
-													<arg
-													line="  -Dhost=${host}
-												-Dport=${port}
-												-Dusername=${username}
-												-Dpassword=${password}
-												-Dwas.home=${wid.home}/runtimes/bi_v6 
-												-Dwid.lib=${wid.home}/runtimes/bi_v6/lib 
-												-Dmaven.compile.classpath='${compile.classpath}' 
-												-Dear=${ear}	
-												-Dmodule=${module}
-												-Dmodule.version=${module.version}
-												-Dcluster=${cluster}
-												-buildfile was-deploy.xml" />																 
-												</exec>
-
-
+												<fail message="mooseid not specified!" />
 											</then>
-											<else>
-												<exec dir="."
-												executable="${wid.home}/runtimes/bi_v6/bin/ws_ant.bat"
-												failonerror="false"
-												errorproperty="error"
-												>
-													<arg
-													line="  -Dhost=${host}
-												-Dport=${port}
-												-Dusername=${username}
-												-Dpassword=${password}
-												-Dwas.home=${wid.home}/runtimes/bi_v6 
-												-Dwid.lib=${wid.home}/runtimes/bi_v6/lib 
-												-Dmaven.compile.classpath='${compile.classpath}' 
-												-Dear=${ear}	
-												-Dmodule=${module}
-												-Dmodule.version=${module.version}
-												-buildfile was-deploy.xml" />																 
-												</exec>
-											</else>
 										</if>
+									
+										<exec dir="."
+										executable="${wid.home}/runtimes/bi_v6/bin/ws_ant.bat"
+										failonerror="false"
+										errorproperty="error"
+										>
+											<arg
+											line="  
+										-Dhost=${host}
+										-Dport=${port}
+										-Dusername=${username}
+										-Dpassword=${password}
+										-Dwas.home=${wid.home}/runtimes/bi_v6 
+										-Dwid.lib=${wid.home}/runtimes/bi_v6/lib 
+										-Dmaven.compile.classpath='${compile.classpath}' 
+										-DmooseId=${mooseid}
+										-DmappingFile=${mappingFile}
+										-DworkingArea=${workingArea}
+										-Dcluster=${cluster}
+										-buildfile was-deploy.xml" />																 
+										</exec>
 
 										<if>
-											<length string="${error}" when="greater" length="0" />
+											<not><equals arg1="${error}" arg2="" /></not>
 											<then>
-												<fail message="Feil under deploymasjon: ${error}"/>																
+												<fail message="Feil under deploy: [${error}]"/>																
 											</then>
 										</if>
 									</tasks>
@@ -197,13 +200,6 @@
 								</goals>
 							</execution>
 						</executions>
-						<dependencies>
-							<dependency>
-								<groupId>net.sf.antcontrib</groupId>
-								<artifactId>ant-contrib</artifactId>
-								<version>1.0b3</version>
-							</dependency>
-						</dependencies>
 					</plugin>
 				</plugins>
 			</build>
@@ -214,4 +210,17 @@
 			</activation>
 		</profile>
 	</profiles>
+
+	<dependencies>
+		<!--<dependency>
+			<groupId>net.sf.antcontrib</groupId>
+			<artifactId>ant-contrib</artifactId>
+			<version>1.0b3</version>
+		</dependency>-->
+		<dependency>
+			<groupId>net.sf.antcontrib</groupId>
+			<artifactId>ant-contrib</artifactId>
+			<version>1.0b3</version>
+		</dependency>
+	</dependencies>
 </project>
