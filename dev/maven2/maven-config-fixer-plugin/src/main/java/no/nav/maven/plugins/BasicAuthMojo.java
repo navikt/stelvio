@@ -16,13 +16,11 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-
 /**
- * Goal which that adds the Stelvio jaxrpc handler to webservices.xml
- * 
- * @goal addAuthentication
- * 
+ * Maven Goal that alters the META-INF/ibm-webservicesclient-bnd.xmi file and adds the following tag:
+ * <basicAuth xmi:id="BasicAuth_1187868680921" userid="perskort" password="{xor}LzotLDQwLSs="/>
  *  
+ * @goal addAuthentication
  */
 public class BasicAuthMojo extends EarExtractor {
 
@@ -32,7 +30,7 @@ public class BasicAuthMojo extends EarExtractor {
      * @parameter
      * @required
      */
-    private Set modules;
+    protected Set modules;
 
 	/**
 	 * This parameter is the directory where the wid ear files are placed.
@@ -41,7 +39,26 @@ public class BasicAuthMojo extends EarExtractor {
 	 * @required
 	 */
 	protected File earDirectory;
-    
+
+	
+	/**
+	 * Invoked when maven executes the goal defined on top of this class 
+	 */
+	public void execute() throws MojoExecutionException {
+
+		// kjører først på rotdirectory, så alle underdirectory
+		getLog().info("EARdir: "+earDirectory);		
+		doDirectory(earDirectory);
+		File[] fileNames = earDirectory.listFiles();
+		for (int i = 0; i < fileNames.length; i++) {
+			File filElem = fileNames[i];
+			if (filElem.isDirectory()) {
+				doDirectory(filElem);
+			}
+		}
+	}
+
+	
 	
 	protected boolean changeFile(String outputDir) throws MojoExecutionException {
 		File settings = new File(outputDir + "/" + "META-INF" + "/" + "ibm-webservicesclient-bnd.xmi");
@@ -62,15 +79,16 @@ public class BasicAuthMojo extends EarExtractor {
 				Iterator portIterator = elem3.elementIterator();
 				while (portIterator.hasNext()) {
 					Element sub = (Element) portIterator.next();
-					if (sub.getName().equals("BasicAuth_1187868680921")) {
+					if (sub.getName().equals("basicAuth")) {
 							funnet = true;
 					}
 				}
 
 				if (!funnet) {
-					getLog().info("ikke funnet basic-auth, legger til");
-					Element auth = elem3.addElement("BasicAuth_1187868680921");
-					
+					getLog().info("Did not find basicAuth, adding it now..");
+					Element auth = elem3.addElement("basicAuth");
+									
+					auth.addAttribute("xmi:id","BasicAuth_1187868680921");
 					auth.addAttribute("userid","perskort");
 					auth.addAttribute("password","{xor}LzotLDQwLSs=");
 					XMLWriter writer;
@@ -79,10 +97,8 @@ public class BasicAuthMojo extends EarExtractor {
 					writer.write(doc);
 					writer.close();
 				} else {
-					getLog().info("Basic-auth allerede lagt til.");
-					
+					getLog().info("basicAuth was already added.");					
 				}
-
 			}
 		} catch (DocumentException e) {
 			throw new MojoExecutionException("Error parsing inputfile", e);
@@ -93,38 +109,19 @@ public class BasicAuthMojo extends EarExtractor {
 		return !funnet;
 	}
 
-	public void execute() throws MojoExecutionException {
 
-
-		// kjører først på rotdirectory, så alle underdirectory
-		getLog().info("eardir: "+earDirectory);
-		doDirectory(earDirectory);
-		File[] fileNames = earDirectory.listFiles();
-		for (int i = 0; i < fileNames.length; i++) {
-			File filElem = fileNames[i];
-			if (filElem.isDirectory()) {
-				doDirectory(filElem);
-			}
-		}
-
-	}
-
-
-
-	/* (non-Javadoc)
-	 * @see no.nav.maven.plugins.EarExtractor#isValidFile(java.lang.String, boolean)
+	/**
+	 * Checks if the file is supposed to be altered.
 	 */
 	protected boolean isValidFile(String fileName, boolean isFile) {
 		String moduleName = fileName.substring(0, fileName.length() - 4);
 		boolean valid = false;
 		if (modules.contains(moduleName) && isFile) {
 			valid = true;
-			getLog().info("legger til autentisering i modul "+moduleName);
+			getLog().info("Adds authentication to module "+moduleName);
 		} else {
-			getLog().debug("skipper modul "+moduleName);
+			getLog().debug("Skipping module "+moduleName);
 		}
 		return valid;
-	}
-	
-	
+	}	
 }
