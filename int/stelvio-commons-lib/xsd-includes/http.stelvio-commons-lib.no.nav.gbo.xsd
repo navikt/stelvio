@@ -8,4 +8,5 @@
   <xsd:include schemaLocation="../no/nav/gbo/GBOStelvioFault.xsd"/>
     <xsd:include schemaLocation="../no/nav/gbo/StandardFaultType.xsd"/>
     <xsd:include schemaLocation="../no/nav/gbo/FaultTeknisk.xsd"/>
+    <xsd:include schemaLocation="../no/nav/gbo/GBOEndringsInfo.xsd"/>
 </xsd:schema>
