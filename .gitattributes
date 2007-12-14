@@ -2112,3 +2112,14 @@ int/workspaces/nav-int-stelvio-workspaces/nav-stelvio-ceilogger.psf -text
 maven-jaxhandler-plugin/pom.xml -text
 maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/JaxRPCHandlerMojo.java -text
 maven-jaxhandler-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
+nav-mqmovefix-java/.classpath -text
+nav-mqmovefix-java/.compatibility -text
+nav-mqmovefix-java/.project -text
+nav-mqmovefix-java/libs/com.ibm.mq.jar -text
+nav-mqmovefix-java/libs/com.ibm.mqjms.jar -text
+nav-mqmovefix-java/libs/j2ee.jar -text
+nav-mqmovefix-java/libs/jms.jar -text
+nav-mqmovefix-java/libs/jta.jar -text
+nav-mqmovefix-java/src/nav/pp/mqmovefix/MQMoveFix.java -text
+nav-mqmovefix-java/src/nav/pp/mqmovefix/WSMQQueueAccessor.java -text
+nav-mqmovefix-java/src/nav/pp/mqmovefix/XMLUtils.java -text
