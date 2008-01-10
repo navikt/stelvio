@@ -28,17 +28,20 @@ import org.dom4j.XPath;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -54,34 +57,52 @@ public class EarFixer
 {
 	/**
 	 * This parameter is the temporary directory where the files are unpacked.
-	 * @parameter expression="${workingarea}"
+	 * @parameter expression="${workingArea}"
 	 * @required
 	 */
-	private File workingArea; // = new File("F:\\Temp");
+	private File workingArea = new File("D:\\Deploy_Temp");
 	
 	/**
 	 * This parameter is the ear source file
-	 * @parameter expression="${earfile}"
+	 * @parameter mappingfile="${mappingFile}"
 	 * @required
 	 */
-	private File earFile; // = new File("F:\\mojo\\nav-pensjon-pselv-jee-1.0.29.D3.ear");
+	private File mappingFile = new File("M:\\DevArch_Tools_Shared\\DevArch\\tools\\moose\\build_version_mapping.txt");
 	
 	/**
 	 * This parameter is the environment file containing environment properties
-	 * @parameter expression="${envfile}"
+	 * @parameter expression="${envFile}"
 	 * @required
 	 */
-	private File environFile; // = new File("F:\\mojo\\10.51.9.62.xml");
+	private File environFile = new File("M:\\DevArch_Tools_Shared\\DevArch\\tools\\moose\\environments\\KompTestKjempen.xml");
 	
-	private Dictionary environment;
+	/**
+	 * What module is being edited
+	 * @parameter expression="${mooseId}"
+	 * @required
+	 */
+	private String mooseId = "PSAK_K_D3_0007";
+	
 	
 	private String module;
+	private File earFile;
+	private Dictionary environment;
 
 	/* (non-Javadoc)
 	 * @see org.apache.maven.plugin.Mojo#execute()
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {	
+		try {
+			earFile = resolveEarFile();
+		} catch (IOException e) {
+			throw new MojoExecutionException("Error resolving application version from moose id!", e);
+		}finally{
+			if(earFile == null) throw new MojoExecutionException("MooseID '" + mooseId + "' not found in mapping file!");
+			if(!earFile.exists()) throw new MojoExecutionException(earFile.getAbsolutePath() + " does not exist!");
+		}
+		
 		module = earFile.getName().split("-")[2].toLowerCase();
+		
 		try {
 			
 			parseEnvironFile();
@@ -90,6 +111,7 @@ public class EarFixer
 			
 			if(((String)environment.get("server.domain")).toUpperCase().compareTo("SENSITIVSONE") == 0 &&
 					module.toUpperCase().compareTo("PSELV")==0){
+				getLog().info("Configuring PSELV for SENSITIVSONE...");
 				
 				fixWebXml(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/web.xml"));
 				
@@ -99,9 +121,7 @@ public class EarFixer
 				
 				fixFacesSecurity(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/security/faces-security-config.xml"));
 				
-			}else{
-				getLog().info("No tweaking needed for " + module + " in internsone");
-			}
+			}else getLog().info("No configuration needed for " + module + " in INTERNSONE");
 			
 			if(module.toUpperCase().compareTo("PSAK") == 0){
 				fixResources(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/resources.properties"));
@@ -119,10 +139,31 @@ public class EarFixer
 		}
 	}
 	
+	private File resolveEarFile() throws IOException{
+		if(!mappingFile.exists()) throw new IOException("Mapping file not found!");
+		BufferedReader reader = new BufferedReader(new FileReader(mappingFile));
+		String line;
+		while((line = reader.readLine()) != null){
+			if(line.startsWith(mooseId) && line.split("\\|").length == 2){
+				String version = line.split("\\|")[1];
+				getLog().info("Resolved MooseID '" + mooseId + "' to version '" + version + "'");
+				if(mooseId.startsWith("PEN")){
+					return new File(workingArea.getAbsolutePath(), "nav-pensjon-pen-jee-" + version + ".ear");
+				}else if(mooseId.startsWith("PSAK")){
+					return new File(workingArea.getAbsolutePath(), "nav-pensjon-psak-jee-" + version + ".ear");
+				}else if(mooseId.startsWith("PSELV")){
+					return new File(workingArea.getAbsolutePath(),"nav-pensjon-pselv-jee-" + version + ".ear");
+				}				
+			}
+		}
+		return null;		
+	}
+	
 	public void extractEarFile(File earFile) throws IOException {
 		//extracting ear file
 		getLog().info("Extracting ear file...");
-		workingArea = new File(workingArea.getAbsolutePath() + "\\" + earFile.getName());
+		//creating unique temp folder for unpacking ear content
+		workingArea = new File(workingArea.getAbsolutePath() + "/" + (new Date()).getTime() + "_" + earFile.getName());	
 		workingArea.mkdirs();
 		ZipUtils.extract(earFile,workingArea);
 
@@ -133,7 +174,7 @@ public class EarFixer
 		}
 		File warFile = new File(workingArea.getAbsolutePath() + "/nav-presentation-pensjon-" + temp[2] + "-web-" + temp[4].substring(0,temp[4].length()-4) + ".war");
 		ZipUtils.extract(warFile,new File(workingArea.getAbsolutePath() + "/war"));
-		if(!delete(warFile)) getLog().warn("Unable to delete war file after extracting war content");
+		//if(!delete(warFile)) getLog().warn("Unable to delete war file after extracting war content");
 		getLog().info("Done!");
 	}
 	
@@ -192,8 +233,23 @@ public class EarFixer
 		search = doc.createXPath("/environment/server");
 		server = (Element)search.selectSingleNode(doc);
 		for(int i = 0;i < server.elements().size();i++){
-			
-			environment.put("server." + ((Element)server.elements().get(i)).getName(),((Element)server.elements().get(i)).getText());
+			if(!(((Element)server.elements().get(i)).getName().compareTo("ad-mappings")== 0)){
+				environment.put("server." + ((Element)server.elements().get(i)).getName(),((Element)server.elements().get(i)).getText());
+			}
+		}
+		
+		search = doc.createXPath("/environment/server/ad-mappings/psak");
+		server = (Element)search.selectSingleNode(doc);
+		for(int i = 0;i < server.elements().size();i++){
+			Element mapping = (Element)server.elements().get(i);
+			environment.put("server.mapping.psak." + mapping.attributeValue("role-id"), mapping.attributeValue("name"));
+		}
+		
+		search = doc.createXPath("/environment/server/ad-mappings/pselv");
+		server = (Element)search.selectSingleNode(doc);
+		for(int i = 0;i < server.elements().size();i++){
+			Element mapping = (Element)server.elements().get(i);
+			environment.put("server.mapping.pselv." + mapping.attributeValue("role-id"), mapping.attributeValue("name"));
 		}
 		
 		search = doc.createXPath("/environment/websphere");
@@ -219,7 +275,7 @@ public class EarFixer
 	public void fixWebXml(File webXml) throws DocumentException, IOException{
 		Document doc;
 		SAXReader reader;
-		Element filter, mapping, servlet, config, role, child;
+		Element filter, mapping, servlet, config, role, child, session;
 		XPath search;
 		boolean filterFound = false;
 		Map uris = new HashMap();
@@ -348,8 +404,8 @@ public class EarFixer
 			{
 				((Element)config.elements().get(0)).clearContent();
 				((Element)config.elements().get(1)).clearContent();
-				((Element)config.elements().get(0)).addText("/pages/tekniskfeilside.jsf");
-				((Element)config.elements().get(1)).addText("/pages/tekniskfeilside.jsf");
+				((Element)config.elements().get(0)).addText("/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow");
+				((Element)config.elements().get(1)).addText("/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow");
 				getLog().info("Changed 'login-config'");
 			}
 		}
@@ -384,6 +440,29 @@ public class EarFixer
 			role.add(child);
 			getLog().info("Added 'VEILEDER' security-role");
 		}	
+		
+		/**
+		 * change session timeout
+		 **/
+		
+		search = doc.createXPath("/ns:web-app/ns:session-config");
+		search.setNamespaceURIs(uris);
+		session = (Element)search.selectSingleNode(doc);
+		if (session != null)
+		{
+			Element timeout = (Element)session.elements().get(0);
+			if(timeout == null) throw new DocumentException("Invalid session timeout config (unable to load timeout element)!");
+			if(((String)environment.get("server.domain")).toUpperCase().compareTo("SENSITIVSONE") == 0){ //SENSITIVSONE
+				timeout.setText("60");
+				getLog().info("Session timeout set to 60 minutes (SENSITIVSONE)");
+			}else{ //INTERNSONE
+				timeout.setText("30");
+				getLog().info("Session timeout set to 30 minutes (INTERNSONE)");
+			}
+		}else{
+			getLog().warn("Session timeout config not found!");
+		}
+		
 		writeXml(doc,webXml);
 		getLog().info("Finished web.xml!");
 	}
@@ -657,8 +736,9 @@ public class EarFixer
 	private void writeXml(Document doc, File out) throws IOException
 	{
 		out.delete();
-		XMLWriter writer = new XMLWriter(new FileWriter(out.getAbsoluteFile()),OutputFormat.createPrettyPrint());
-		writer.write(doc.getRootElement());
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(out), "UTF-8"));
+		XMLWriter writer = new XMLWriter(bw ,OutputFormat.createPrettyPrint());
+		writer.write(doc);
 		writer.close();
 	}
 
@@ -675,9 +755,9 @@ public class EarFixer
 		for(int i = 0; i < content.size();i++){
 			if(((String)content.get(i)).startsWith("pageid.selvbetjening.externalLink")){
 				if(environment.get("websphere.app_port") != null && ((String)environment.get("websphere.app_port")).compareTo("") == 0){
-					line = "pageid.selvbetjening.externalLink=http://" + environment.get("server.machine_name") + "/{0}?_flowId={1}&_brukerId={2}&_loggedOnName={3}\n";
+					line = "pageid.selvbetjening.externalLink=http://" + environment.get("server.machine_name") + "/pselv/{0}?_flowId={1}&_brukerId={2}&_loggedOnName={3}&_erEgenAnsatt={4}\n";
 				}else{
-					line = "pageid.selvbetjening.externalLink=http://" + environment.get("server.machine_name") + ":" + environment.get("websphere.app_port") + "/{0}?_flowId={1}&_brukerId={2}&_loggedOnName={3}\n";
+					line = "pageid.selvbetjening.externalLink=http://" + environment.get("server.machine_name") + ":" + environment.get("websphere.app_port") + "/pselv/{0}?_flowId={1}&_brukerId={2}&_loggedOnName={3}&_erEgenAnsatt={4}\n";
 				}
 				
 				getLog().info("Updated to " + line);
@@ -694,29 +774,64 @@ public class EarFixer
 		Document doc;
 		SAXReader reader;
 		XPath search;
+		Element table, auth, role, grp, subj;
 		Map uris = new HashMap();
-	
-		getLog().info("Scanning ibm-application-bnd.xmi...");
-	
+		
+		getLog().info("Creating ibm-application-bnd.xmi...");
+		//	creating basic binding file
+		String content = "<applicationbnd:ApplicationBinding xmlns:applicationbnd=\"applicationbnd.xmi\" xmlns:xmi=\"http://www.omg.org/XMI\" xmi:version=\"2.0\" xmi:id=\"ApplicationBinding_1171012982796\">\n" +  
+		  "<authorizationTable xmi:id=\"AuthorizationTable_1171012982796\"></authorizationTable>\n" +
+		  "<application href=\"META-INF/application.xml#Application_ID\"/>\n" + 
+		  "</applicationbnd:ApplicationBinding>";
+		bndFile.delete();
+		FileWriter writer = new FileWriter(bndFile);
+		writer.write(content);
+		writer.close();
+		
 		uris.put("ns","applicationbnd.xmi");
 		reader = new SAXReader();
 		doc = reader.read(bndFile);
 		
-		search = DocumentHelper.createXPath("/ns:ApplicationBinding/authorizationTable/authorizations/groups");
-		search.setNamespaceURIs(uris);
-		List auths = search.selectNodes(doc);
-		Element grp;
-		Attribute attrib;
-		for(Iterator iter = auths.iterator();iter.hasNext();){
-			grp = (Element)iter.next();
-			attrib = grp.attribute("name");
-			attrib.setValue((String)environment.get("server.security-roles"));
+		search = DocumentHelper.createXPath("/ns:ApplicationBinding/authorizationTable");
+		search.setNamespaceURIs(uris);	
+		table = (Element)search.selectSingleNode(doc);
+		
+		Enumeration enum = environment.keys();
+		String prefix = "";
+		if(module.compareTo("psak") == 0) prefix = "server.mapping.psak.";
+		else if(module.compareTo("pselv") == 0) prefix = "server.mapping.pselv.";
+		while(enum.hasMoreElements()){
+			String key = (String)enum.nextElement();
+			if(key.startsWith(prefix)){
+				if(((String)environment.get(key))
+						.indexOf("AllAuthenticated") >= 0) //AllAuthenticated user special mapping
+					
+				{
+					String id = new Date().getTime() + "";
+					auth = table.addElement("authorizations");
+					auth.addAttribute("xmi:id","RoleAssignment_" + id);
+					subj = auth.addElement("specialSubjects");
+					subj.addAttribute("xmi:type","applicationbnd:AllAuthenticatedUsers");
+					subj.addAttribute("xmi:id","AllAuthenticatedUsers_" + id);
+					subj.addAttribute("name","AllAuthenticatedUsers");
+					role = auth.addElement("role");
+					role.addAttribute("href","META-INF/application.xml#SecurityRole_" + key.replaceAll(prefix, ""));
+					
+				}else //all other mappings are standard
+				{
+					auth = table.addElement("authorizations");
+					auth.addAttribute("xmi:id","RoleAssignment_" + new Date().getTime());
+					role = auth.addElement("role");
+					role.addAttribute("href","META-INF/application.xml#SecurityRole_" + key.replaceAll(prefix, ""));
+					grp = auth.addElement("groups");
+					grp.addAttribute("xmi:id","Group_" + new Date().getTime());
+					grp.addAttribute("name",(String)environment.get(key));
+				}
+				getLog().info("Added role mapping for '" + environment.get(key) + "'");
+			}
 		}
-		
+
 		writeXml(doc,bndFile);
-		
-		getLog().info("Updated " + auths.size() + " security roles");
 		getLog().info("Done!");
-		
 	}
 }

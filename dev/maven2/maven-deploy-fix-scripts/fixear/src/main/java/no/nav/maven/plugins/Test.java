@@ -19,13 +19,13 @@ public class Test {
 	public static void main(String[] args) throws Exception{
 		EarFixer fixer = new EarFixer();
 
-		fixer.parseEnvironFile();
+		//fixer.parseEnvironFile();
 		
 		fixer.execute();
 		
 		//fixer.extractEarFile(new File("F:/mojo/nav-pensjon-pselv-jee-1.0.29.D3.ear"));
 		
-		fixer.fixBndFile(new File("F:\\Temp\\nav-pensjon-pselv-jee-1.0.29.D3.ear\\META-INF\\ibm-application-bnd.xmi"));
+		//fixer.fixBndFile(new File("F:\\mvn_scripts\\ibm-application-bnd.xmi"));
 		
 		/*fixer.fixWebXml(new File("E:/Temp/war/WEB-INF/web.xml"));
 		
