@@ -1950,6 +1950,41 @@ dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarInPlaceMojo.
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarManifestMojo.java -text
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarMojo.java -text
 dev/maven2/pom.xml -text
+incubator/wid61-stelvio/stelvio-commons-lib/.classpath -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/.project -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/.runtime -text
+incubator/wid61-stelvio/stelvio-commons-lib/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-stelvio/stelvio-commons-lib/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/handlers/jaxrpc/StelvioCommonContextHandler.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/DataObjectUtil.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/DateUtil.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/ErrorHelperUtil.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/FGSAKCredentials.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/FnrUtil.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/IAugmentCondition.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/SDOInspector.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/StelvioContextHelper.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/StringUtils.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/AvailabilityRecord.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/OperationAvailabilityRecord.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemAvailabilityBaseComponent.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemAvailabilityStorage.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/no/nav/gbo/FaultTeknisk.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/no/nav/gbo/GBOEndringsInfo.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/no/nav/gbo/GBOStelvioContext.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/no/nav/gbo/GBOStelvioFault.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/no/nav/gbo/GBOStelvioFrg.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/no/nav/gbo/StandardFaultType.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/no/stelvio/common/systemavailability/OperationAvailabilityRecord.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/no/stelvio/common/systemavailability/SystemAvailabilityRecord.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/xsd-includes/http.stelvio-commons-lib.no.nav.gbo.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-commons-lib/xsd-includes/http.stelvio-commons-lib.no.stelvio.common.systemavailability.xsd -text svneol=unset#text/plain
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
