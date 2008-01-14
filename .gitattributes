@@ -1966,6 +1966,10 @@ incubator/wid61-stelvio/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.ws
 incubator/wid61-stelvio/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wid61-stelvio/StelvioSystemAvailabilityWebEAR/META-INF/.modulemaps -text
 incubator/wid61-stelvio/StelvioSystemAvailabilityWebEAR/META-INF/application.xml -text svneol=unset#text/plain
+incubator/wid61-stelvio/WpsCoreSystemAvailability/.classpath -text svneol=unset#text/plain
+incubator/wid61-stelvio/WpsCoreSystemAvailability/.project -text svneol=unset#text/plain
+incubator/wid61-stelvio/WpsCoreSystemAvailability/stelvio/systemavailability/AvailabilityRecord.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/WpsCoreSystemAvailability/stelvio/systemavailability/StaticSystemAvailabilityStorage.java -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/.classpath -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/.project -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/.runtime -text
