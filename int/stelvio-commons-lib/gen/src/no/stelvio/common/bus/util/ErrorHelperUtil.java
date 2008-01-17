@@ -139,6 +139,49 @@ public class ErrorHelperUtil {
 	
 	/**
 	 * 
+	 * Method used to create a fault object. 
+	 * 
+	 * @param sre					the catched ServiceRuntimeException
+	 * @param module				the name of the module that initiated the fault generation
+	 * @param faultBONamespace		the namespace of the fault object 
+	 * @param faultBOName			the name of the fault object 
+	 * @param errorType				indicates whether the fault is a ServiceBusinessException or ServiceRuntimeException
+	 * @param errorMessage			enables the user to provide an errorMessage in case a SRE is not available
+	 * @param rootCause				enables the user to provide a rootCause in case a SRE is not available
+	 * @return						the fault business object created from the ServiceRuntimeException
+	 */
+	private static DataObject getSAMFaultBO(Exception sre, String module, String faultBONamespace, String faultBOName, String errorType, String errorMessage, String rootCause) {
+		
+		DataObject faultBo = DataFactory.INSTANCE.create(faultBONamespace, faultBOName);
+
+		
+		faultBo.setString("errorSource", getSCAContext(module));
+		faultBo.setString("errorType", errorType);
+		faultBo.setDate("dateTimeStamp", new Date());
+		if(errorMessage!=null)
+		{
+			faultBo.setString("errorMessage", errorMessage);
+		}
+		else if (sre!=null)
+		{
+			faultBo.setString("errorMessage", sre.getMessage());
+		}
+		
+		if(rootCause!=null)
+		{
+			faultBo.setString("rootCause", rootCause);
+		}
+		else if(sre!=null)
+		{
+			faultBo.setString("rootCause", getRootCause(sre).toString());
+		}
+		
+
+		return faultBo;
+	}
+	
+	/**
+	 * 
 	 * Method used to create a fault object when a ServiceRuntimeException does exist. 
 	 * 
 	 * @param sre					the ServiceRuntimeException
