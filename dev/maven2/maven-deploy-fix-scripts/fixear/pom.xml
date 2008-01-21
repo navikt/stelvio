@@ -34,4 +34,20 @@
       <version>2.0.1</version>
     </dependency>
   </dependencies>
+  <distributionManagement>
+		<repository>
+			<id>nav-maven2-internal-repo</id>
+			<name>NAV Maven2 Internal Repository</name>
+			<url>scp://maven.adeo.no/var/maven2/internal</url>
+		</repository>
+		<snapshotRepository>
+			<id>nav-pensjon-maven2-snapshot-repo</id>
+			<name>NAV Maven2 Internal Snapshot Repository</name>
+			<url>scp://10.33.1.53/var/maven2/snapshot</url>
+		</snapshotRepository>
+		<site>
+			<id>website</id>
+			<url>scp://10.33.1.53/var/www/html/project/pcom_k_d2/</url>
+		</site>
+	</distributionManagement>
 </project>
