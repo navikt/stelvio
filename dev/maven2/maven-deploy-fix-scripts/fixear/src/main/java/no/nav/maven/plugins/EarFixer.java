@@ -124,7 +124,7 @@ public class EarFixer
 			}else getLog().info("No configuration needed for " + module + " in INTERNSONE");
 			
 			if(module.toUpperCase().compareTo("PSAK") == 0){
-				fixResources(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/resources.properties"));
+				fixResources(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/resources_nb_NO.properties"));
 			}
 			
 			fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
