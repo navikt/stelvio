@@ -34,7 +34,7 @@ extends AbstractMojo
 {
 	/**
 	 * Location of the file.
-	 * @parameter expression="${project.build.directory}"
+	 * @parameter expression="${outDir}"
 	 * @required
 	 */
 	private File outputDirectory; //= new File("E:/maven-plugins/maven-datapower-configurer/target");
@@ -207,6 +207,8 @@ extends AbstractMojo
 		XMLWriter writer = new XMLWriter(bw,OutputFormat.createPrettyPrint());
 		writer.write(doc);
 		writer.close();
+		
+		getLog().info("\n\n\t\tWritten configuration to " + configFile.getAbsolutePath());
 	}
 	
 }
