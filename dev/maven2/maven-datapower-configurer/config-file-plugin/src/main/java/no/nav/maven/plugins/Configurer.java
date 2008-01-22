@@ -26,9 +26,8 @@ import java.util.Date;
 /**
  * Goal which touches a timestamp file.
  *
- * @goal touch
+ * @goal configure
  * 
- * @phase process-sources
  */
 public class Configurer
 extends AbstractMojo
