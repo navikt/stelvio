@@ -1320,6 +1320,7 @@ dev/maven2/maven-datapower-configurer/pom.xml -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Configurer.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
+dev/maven2/maven-datapower-configurer/src/main/resources/template.xcfg -text
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
 dev/maven2/maven-dependency-plugin/pom.xml -text
