@@ -38,21 +38,21 @@ extends AbstractMojo
 	 * @parameter expression="${project.build.directory}"
 	 * @required
 	 */
-	private File outputDirectory = new File("E:/maven-datapower-configurer/target");
+	private File outputDirectory; //= new File("E:/maven-plugins/maven-datapower-configurer/target");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${wsdl.zip}"
 	 * @required
 	 */
-	private File wsdlFile = new File("E:/maven-datapower-configurer/wsdl-psak.zip");
+	private File wsdlFile; // = new File("E:/maven-plugins/maven-datapower-configurer/wsdl-pselv.zip");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${template}"
 	 * @required
 	 */
-	private File template = new File("E:/maven-datapower-configurer/template.xcfg");
+	private File template; // = new File("E:/maven-plugins/maven-datapower-configurer/template.xcfg");
 	
 	/**
 	 * Private variables
@@ -80,7 +80,9 @@ extends AbstractMojo
 			xpath = doc.createXPath("//files");
 			files = (Element)xpath.selectSingleNode(doc);
 			if(files == null) throw new DocumentException("Unable to find files node in template!");
+			getLog().info("Adding wsdl archive content to configuration file...");
 			addFilesToTemplate(tmpFolder);
+			getLog().info("Done!");
 			
 			//writing merged template
 			writeXML();
@@ -88,7 +90,7 @@ extends AbstractMojo
 			//cleaning up temporary files
 			cleanUp(tmpFolder);
 		} catch (DocumentException e) {
-			throw new MojoExecutionException("Error reading template file!",e);
+			throw new MojoExecutionException("",e);
 		} catch (IOException e) {			
 			throw new MojoExecutionException("Error extracting wsdl files!",e);
 		}
@@ -96,17 +98,17 @@ extends AbstractMojo
 	
 	private void extract() throws IOException
 	{
-		getLog().info("------------ Extracting wsdl archive ------------");
+		getLog().info("Extracting wsdl archive...");
 		tmpFolder.mkdirs();
 		ZipUtils.extract2(wsdlFile,tmpFolder);
-		getLog().info("---------------------- Done ---------------------");
+		getLog().info("Done!");
 	}
 	
 	private void readTemplate() throws DocumentException{
-		getLog().info("------------- Reading template file -------------");
+		getLog().info("Reading template file...");
 		SAXReader reader = new SAXReader();
 		doc = reader.read(template);    	
-		getLog().info("---------------------- Done ---------------------");
+		getLog().info("Done!");
 	}
 	
 	private void addFilesToTemplate(File root) throws DocumentException{
@@ -118,13 +120,14 @@ extends AbstractMojo
 			child = children[i];
 			if(child.isDirectory()) addFilesToTemplate(child);
 			else{
+				if(child.getName().toLowerCase().compareTo("manifest.mf") == 0) continue;
 				String path = getSubPath(child);
 				file = files.addElement("file");
 				
 				file.addAttribute("name","local:///" + path);
 				file.addAttribute("src","local/" + path);
 				file.addAttribute("location","local");
-				
+				getLog().info("Adding " + path);
 				try {
 					file.addAttribute("hash",getHash(child));
 					file.setText(base64Encode(child));
