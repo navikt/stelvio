@@ -49,22 +49,22 @@ public class SetupConfig extends AbstractMojo{
 	 * @parameter expression="${propertyFile}"
 	 * @required
 	 */
-	private String appPropsPath = "E:\\DevArch\\WAS_Environment\\cfg-psak-environment.properties" ;
+	private String appPropsPath  ;
 	/**
 	 * This parameter is the temporary directory where the files are unpacked.
 	 * @parameter expression="${envFile}"
 	 * @required
 	 */
-	private String envPropsPath = "E:\\DevArch\\WAS_Environment\\54-Server.xml" ;
+	private String envPropsPath  ;
 	/**
 	 * This parameter is the temporary directory where the files are unpacked.
 	 * @parameter expression="${module}"
 	 * @required
 	 */
-	private String moduleName = "psak" ;
+	private String moduleName  ;
 	
 	
-	private String [] propArray = {moduleName, appPropsPath, envPropsPath} ;
+	//private  String [] propArray = {moduleName, appPropsPath, envPropsPath} ;
 	private  Dictionary appProps = null;
 	private  Dictionary envProps = null;
 	private  Dictionary newProps = null;
@@ -76,10 +76,8 @@ public class SetupConfig extends AbstractMojo{
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// TODO Auto-generated method stub
-		if (parseArgs(propArray))
-		{
-			
-			
+		if (parseArgs(appPropsPath,envPropsPath))
+		{		
 			try {
 				module = moduleName ;
 				appProps = readProperties(appPropsPath);
@@ -100,21 +98,7 @@ public class SetupConfig extends AbstractMojo{
 		}
 		
 	}
-	public void testClass(String []args) throws IOException, DocumentException {
-		
-		if (parseArgs(args))
-		{
-			
-			module = args[0];
-			appProps = readProperties(args[1]);
-			envProps = readXmlProperties(args[2]);
-			if (containsNewProperties())
-			{
-				throw new IOException("Property file contains new properties!\n\n" + dictToString(newProps));
-			}
-			createPropertyFile(args[1]);
-		}
-	}
+	
 	private  String dictToString(Dictionary dict){
 		String ret = "";
 		String key = "";
@@ -125,22 +109,22 @@ public class SetupConfig extends AbstractMojo{
 		return ret ;
 	}
 	
-	private  boolean parseArgs(String[] args){
-		if (args.length != 3)
-		{
-			getLog().info("Invalid arguments passed!\n\nUsage: SetupConfig module appPropertyFilePath envPropertyFilePath ");
-			return false;
-		}
-		File file = new File(args[1]);
+	private  boolean parseArgs(String appFile, String envFile){
+//		if (args.length != 3)
+//		{
+//			getLog().info("Invalid arguments passed!\n\nUsage: SetupConfig module appPropertyFilePath envPropertyFilePath ");
+//			return false;
+//		}
+		File file = new File(appFile);
 		if (!file.exists())
 		{
-			getLog().info(args[1] + " does not exist!");
+			getLog().info(appFile + " does not exist!");
 			return false;
 		}
-		File file2 = new File(args[2]);
+		File file2 = new File(envFile);
 		if (!file2.exists())
 		{
-			getLog().info(args[2] + " does not exist!");
+			getLog().info(envFile + " does not exist!");
 			return false;
 		}
 		return true;
