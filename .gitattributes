@@ -1317,7 +1317,9 @@ dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/EarExtra
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/JaxRPCHandlerMojo.java -text
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
 dev/maven2/maven-datapower-configurer/pom.xml -text
+dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Base64Codec.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Configurer.java -text
+dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/DataPowerRequest.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
 dev/maven2/maven-datapower-configurer/src/main/resources/template.xcfg -text
