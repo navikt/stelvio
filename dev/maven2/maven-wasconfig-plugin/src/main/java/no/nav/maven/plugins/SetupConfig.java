@@ -351,7 +351,7 @@ public class SetupConfig extends AbstractMojo{
 		getLog().info("Done!");
 		if(host!=null){
 			//send opp config-filene til server.
-			boolean status = UploadConfig.uploadConfigFilesToHost(host, username, password, new File(outputPath).getParent(), module);
+			boolean status = UploadConfig.uploadConfigFilesToHost(host, username, password, new File(outputPath).getParent(), module, getLog());
 			
 			if(status){
 				getLog().info("Configfiles upload complete");

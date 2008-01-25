@@ -15,6 +15,8 @@ package no.nav.maven.plugins;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.maven.plugin.logging.Log;
+
 import com.sshtools.j2ssh.ScpClient;
 import com.sshtools.j2ssh.SshClient;
 import com.sshtools.j2ssh.authentication.AuthenticationProtocolState;
@@ -38,9 +40,10 @@ public class UploadConfig {
 	 * @param pwd the password for the server
 	 * @param sourcePath the sourcepath for the files you want to upload.
 	 * @param module the name of the module you want to upload files from/to.
+	 * @param logger the maven.plugin.logging class, to enable logging in this class.
 	 * @return boolen
 	 */
-	public static boolean uploadConfigFilesToHost(String host, String usr, String pwd, String sourcePath, String module){
+	public static boolean uploadConfigFilesToHost(String host, String usr, String pwd, String sourcePath, String module, Log logger){
 		
 		UploadConfig.destPath = "/was_app/config/"+module;
 		
@@ -66,12 +69,14 @@ public class UploadConfig {
 					throw new IOException("Login to "+host+":"+port+ " "+usr+" " +pwd +" failed");
 					
 				}else{
-					System.out.println("Connection comlete!\nTransfering files");
+					logger.info("Connection comlete!\nTransfering files");
 					SessionChannelClient session = ssh.openSessionChannel();
 					String cmd = "rm -f "+destPath+"/*";
 					session.executeCommand(cmd);
 					ScpClient scp = ssh.openScpClient();
 					for(int i=0;i<allSourceFiles.length;i++){
+						//System.out.println("Uploading file: "+allSourceFiles[i].getAbsolutePath());
+						logger.info("Uploading file: "+allSourceFiles[i].getAbsolutePath());
 						scp.put(allSourceFiles[i].getAbsolutePath(), destPath, true);
 					}					
 					session.close();
