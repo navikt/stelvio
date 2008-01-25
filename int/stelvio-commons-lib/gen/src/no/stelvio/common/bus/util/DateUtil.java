@@ -40,6 +40,7 @@ public final class DateUtil {
 	private static final String TPS_BORN_DATE_FORMAT = "ddMMyy";
 	private static final String MONTHLY_PERIOD_FORMAT = "MM.yyyy";
 	private static final String TIME_OF_DAY_FORMAT = "HHmmss";
+	private static final String BREVGRRUPPE_DATA_FORMAT = "ddMMyyyy";
 
 	/** Representation of ETERNITY (31.12.9999). */
 	public static final Date ETERNITY = java.sql.Date.valueOf("9999-12-31");
@@ -277,6 +278,19 @@ public final class DateUtil {
 			return null;
 		}
 		return createDateFormat(CICS_DATE_FORMAT).format(input);
+	}
+	
+	/**
+	 * Formats a Date into Brevgruppe format (ddMMyyyy).
+	 *
+	 * @param input the date to format.
+	 * @return the formatted date.
+	 */
+	public static String formatBrevgruppeString(final Date input) {
+		if(input == null){
+			return null;
+		}
+		return createDateFormat(BREVGRRUPPE_DATA_FORMAT).format(input);
 	}
 
 	/**
