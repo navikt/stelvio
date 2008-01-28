@@ -24,61 +24,52 @@ import java.util.List;
  * Goal which touches a timestamp file.
  *
  * @goal configure
- * 
+ * @phase install
  */
 public class Configurer
 extends AbstractMojo
 {
-	
-	private static char[] map1 = new char[64];
-	   static {
-	      int i=0;
-	      for (char c='A'; c<='Z'; c++) map1[i++] = c;
-	      for (char c='a'; c<='z'; c++) map1[i++] = c;
-	      for (char c='0'; c<='9'; c++) map1[i++] = c;
-	      map1[i++] = '+'; map1[i++] = '/'; }
-
 	/**
 	 * Location of the file.
 	 * @parameter expression="${outDir}"
 	 * @required
 	 */
-	private File outputDirectory; // = new File("E:/maven-plugins/maven-datapower-configurer/target");
+	private File outputDirectory = new File("E:/maven-plugins/maven-datapower-configurer/target");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${wsdl.zip}"
 	 * @required
 	 */
-	private File wsdlFile; // = new File("E:/deploy_scripts/kjempen/target/classes/builds/wsdl/wsdl-pselv.zip");
+	private File wsdlFile = new File("E:/deploy_scripts/kjempen/target/classes/builds/wsdl/wsdl-pselv.zip");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${template}"
 	 * @required
 	 */
-	private File template; // = new File("E:/maven-plugins/maven-datapower-configurer/src/main/resources/template.xcfg");
+	private File template = new File("E:/maven-plugins/maven-datapower-configurer/src/main/resources/template.xcfg");
 	
 	/**
 	 * Location of the file.
-	 * @parameter expression="${WSHost}"
+	 * @parameter expression="${host}"
 	 * @required
 	 */
-	private String WSHost; // = "https://secgw-01.utv.internsone.local:5550/service/mgmt/current";
+	private String host = "https://secgw-01.utv.internsone.local:5550";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${user}"
 	 * @required
 	 */
-	private String user = "";
+	private String user = "petterasskildt";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${password}"
 	 * @required
 	 */
-	private String password = "";
+	private String password = "gy59inku";
 	
 	/**
 	 * Private variables
@@ -90,6 +81,14 @@ extends AbstractMojo
 	private XPath xpath;
 	
 	private int retries = 0;
+	
+	private static char[] map1 = new char[64];
+	   static {
+	      int i=0;
+	      for (char c='A'; c<='Z'; c++) map1[i++] = c;
+	      for (char c='a'; c<='z'; c++) map1[i++] = c;
+	      for (char c='0'; c<='9'; c++) map1[i++] = c;
+	      map1[i++] = '+'; map1[i++] = '/'; }
 	
 	public void execute() throws MojoExecutionException
 	{
@@ -186,7 +185,7 @@ extends AbstractMojo
 		
 		
 		try {
-			gatewayURL = new URL(WSHost);
+			gatewayURL = new URL(host);
 			
 			getLog().info("Connecting to datapower...");
 			conn = (HttpURLConnection)gatewayURL.openConnection();
