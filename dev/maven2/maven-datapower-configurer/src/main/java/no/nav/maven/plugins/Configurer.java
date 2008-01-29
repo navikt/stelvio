@@ -1,10 +1,13 @@
-package no.nav.maven.plugins;
+package no.nav.maven.plugins;  
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.Element;
 import org.dom4j.XPath;
+import org.dom4j.dom.DOMElement;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
@@ -15,16 +18,18 @@ import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Dictionary;
 import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 
 /**
  * Goal which touches a timestamp file.
  *
  * @goal configure
- * @phase install
  */
 public class Configurer
 extends AbstractMojo
@@ -34,7 +39,7 @@ extends AbstractMojo
 	 * @parameter expression="${outDir}"
 	 * @required
 	 */
-	private File outputDirectory = new File("E:/maven-plugins/maven-datapower-configurer/target");
+	private File outputDirectory = new File("E:\\maven-plugins\\maven-datapower-configurer\\target");
 	
 	/**
 	 * Location of the file.
@@ -49,6 +54,13 @@ extends AbstractMojo
 	 * @required
 	 */
 	private File template = new File("E:/maven-plugins/maven-datapower-configurer/src/main/resources/template.xcfg");
+	
+	/**
+	 * Location of the file.
+	 * @parameter expression="${environment}"
+	 * @required
+	 */
+	private File environment = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2.properties");
 	
 	/**
 	 * Location of the file.
@@ -74,11 +86,15 @@ extends AbstractMojo
 	/**
 	 * Private variables
 	 */
-	private File tmpFolder;
+	private File tmpFolder, configFile;
 	
 	private Document doc;
 	
+	private String templateContent;
+	
 	private XPath xpath;
+	
+	private Properties env;
 	
 	private int retries = 0;
 	
@@ -95,24 +111,24 @@ extends AbstractMojo
 		tmpFolder = new File(outputDirectory.getAbsolutePath() + "/" + new Date().getTime());
 		
 		try {
-			//reading template file
+			
 			readTemplate();
 			
-			//extracting wsdl files
+			readEnvironment();
+			
 			extract();
+			
+			generateDataPowerConfig();
 		
-			//String test = new Base64Codec(null,"").encodeBase64(user + ":" + password);
+			writeConfig();
+			
 			uploadFilesAndFolders(tmpFolder);
 			
-			//writing merged template
-			//writeXML();
-			
-			//cleaning up temporary files
 			cleanUp(tmpFolder);
 		} catch (DocumentException e) {
 			throw new MojoExecutionException("",e);
 		} catch (IOException e) {			
-			throw new MojoExecutionException("Error extracting wsdl files!",e);
+			throw new MojoExecutionException("Error setting up datapower configuration", e);
 		}
 	}
 	
@@ -124,13 +140,88 @@ extends AbstractMojo
 		getLog().info("Done!");
 	}
 	
-	private void readTemplate() throws DocumentException{
+	private void readTemplate() throws DocumentException, IOException{
 		getLog().info("Reading template file...");
-		SAXReader reader = new SAXReader();
-		doc = reader.read(template);    	
+		
+		BufferedReader reader = new BufferedReader(new FileReader(template));
+		templateContent = new String();
+		String line = null;
+		while((line = reader.readLine()) != null){
+			templateContent += line + System.getProperty("line.separator");
+		}
+		reader.close();
 		getLog().info("Done!");
 	}
 
+	private void readEnvironment() throws IOException{
+		env = new Properties();
+		env.load(new FileInputStream(environment));
+	}
+	
+	private void generateDataPowerConfig() throws DocumentException{
+		String key = null;
+		Enumeration enum = null;
+		
+		getLog().info("Merging " + environment.getName() + " with template configuration...");
+		enum = env.keys();
+		getLog().info("Merging " + env.size() + " variables");
+		while(enum.hasMoreElements()){
+			key = enum.nextElement().toString();
+			templateContent = replace(templateContent,"${" + key + "}",env.get(key).toString());
+			getLog().info(key + " => " + env.get(key));
+		}
+		getLog().info("Done!");
+	}
+	
+	private String replace(String source, String pattern, String replace){
+		String retval = "";
+		int startIndex, endIndex;
+		if (source.indexOf(pattern) >= 0){
+			startIndex = source.indexOf(pattern);
+			endIndex = startIndex + pattern.length();
+			retval += source.substring(0,startIndex);
+			retval += replace;
+			retval += source.substring(endIndex);
+			return retval;
+		}
+		return source;
+	}
+	
+	private String getRequest(Element elem){
+		String ret = null;
+		ret = 	"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:man=\"http://www.datapower.com/schemas/management\">\n" +
+				"<soapenv:Header/>\n" +
+				"<soapenv:Body>" + 
+				"<man:request domain=\"" + env.get("domain") + "\">";
+		ret += elementToString(elem);
+		ret += 	"</man:set-config>\n" +
+				"</man:request>\n" +
+				"</soapenv:Body>\n" +
+				"</soapenv:Envelope>\n";
+		return ret;
+	}
+	
+	private String elementToString(Element elem){
+		Attribute attrib = null;
+		Iterator iter = null;
+		String retval = null;
+		
+		retval = "<";
+		retval += elem.getName() + " ";
+		iter = elem.attributeIterator();
+		while(iter.hasNext()){
+			attrib = (Attribute)iter.next();
+			retval += attrib.getName() + "=\"" + attrib.getValue() + "\" ";
+		}
+		retval += ">\n";
+		iter = elem.elementIterator();
+		while(iter.hasNext()){
+			retval += elementToString((Element)iter.next());
+		}
+		retval += "</" + elem.getName() + ">\n";
+		return retval;
+	}
+	
 	private void uploadFilesAndFolders(File root) throws IOException{
 		List folders = new ArrayList();
 		List files = new ArrayList();
@@ -156,6 +247,17 @@ extends AbstractMojo
 		iter = files.iterator();
 		while(iter.hasNext()) getLog().info(getSubPath(new File(iter.next().toString())));
 		sendHTTPSRequest(request2);
+		
+		//importing config file
+		request = new DataPowerRequest();
+		request2.setContent(getSOAPEnvelope_doimport(configFile));
+		request2.getHTTPHeader().put("Authorization",AuthString);
+		getLog().info("Importing merged configuration file to datapower...");
+		sendHTTPSRequest(request2);
+		getLog().info("Done!");
+		getLog().info("");
+		getLog().info("");
+		getLog().info("All operations successful!");
 	}
 	
 	private void scanFilesAndFolders(File root, List folders, List files){
@@ -183,7 +285,7 @@ extends AbstractMojo
 		StringBuffer response = null;
 		int character;
 		
-		
+		 
 		try {
 			gatewayURL = new URL(host);
 			
@@ -205,7 +307,7 @@ extends AbstractMojo
 			
 			getLog().info("Sending request...");
 			out = conn.getOutputStream();
-			//write headr info as well??????
+			
 			out.write(request.getContent().getBytes("UTF-8"));
 
 			in = new BufferedInputStream(conn.getInputStream(),32 * 1024);
@@ -272,6 +374,22 @@ extends AbstractMojo
 		   			"</soapenv:Body>\n" +
 				"</soapenv:Envelope>";
 		return env;
+	}
+	
+	private String getSOAPEnvelope_doimport(File configFile) throws IOException{
+		
+		return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:man=\"http://www.datapower.com/schemas/management\">" +
+		"<soapenv:Header/>" +
+		"<soapenv:Body>" +
+		"<man:request domain=\"test-config\">" +
+		"<man:do-import source-type=\"xcfg\" dry-run=\"true\" overwrite-files=\"true\" overwrite-objects=\"true\">" +
+		"<man:input-file>" + 
+		base64Encode(configFile) + 
+		"</man:input-file>" +
+		"</man:do-import>" +
+		"</man:request>" +
+		"</soapenv:Body>" +
+		"</soapenv:Envelope>";
 	}
 	
 	private String getHash(File file) throws IOException{
@@ -360,17 +478,17 @@ extends AbstractMojo
 		}
 	}
 	
-	private void writeXML() throws IOException{
-		String strDateTime = new SimpleDateFormat("dd-MM-yy").format(new Date());
-		File configFile = new File(outputDirectory + "/" + strDateTime + "." + template.getName());
+	private void writeConfig() throws IOException{
+		String strDateTime = new SimpleDateFormat("dd.MM.yy").format(new Date());
+		configFile = new File(outputDirectory + "/" + environment.getName().split("\\.")[0] + "-" + strDateTime + ".xcfg");
 		configFile.delete();
 		
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(configFile),"UTF-8"));
-		XMLWriter writer = new XMLWriter(bw,OutputFormat.createPrettyPrint());
-		writer.write(doc.getRootElement());
+		BufferedWriter writer = new BufferedWriter(new FileWriter(configFile));
+		writer.write(templateContent,0,templateContent.length());
+		writer.flush();
 		writer.close();
 		
-		getLog().info("\n\n\t\tWritten configuration to " + configFile.getAbsolutePath());
+		getLog().info("Written configuration to " + configFile.getAbsolutePath());
 	}
 	
 }

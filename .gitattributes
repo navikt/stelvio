@@ -1322,6 +1322,7 @@ dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Configu
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/DataPowerRequest.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
+dev/maven2/maven-datapower-configurer/src/main/resources/environments/Systemtest2.properties -text
 dev/maven2/maven-datapower-configurer/src/main/resources/template.xcfg -text
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
