@@ -125,6 +125,7 @@ public class SetupConfig extends AbstractMojo{
 				envProps = readXmlProperties(envPropsPath);
 				if (containsNewProperties())
 				{
+					getLog().warn("Property file contains new properties!\n\n" + dictToString(newProps)) ;
 					throw new IOException("Property file contains new properties!\n\n" + dictToString(newProps));
 				}
 				createPropertyFile(appPropsPath);
