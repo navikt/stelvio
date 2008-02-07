@@ -32,7 +32,7 @@ extends AbstractMojo
 	 * @parameter expression="${outDir}"
 	 * @required
 	 */
-	private File outputDirectory = new File("E:\\maven-plugins\\maven-datapower-configurer\\target");
+	private File outputDirectory; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\target");
 	
 	/**
 	 * Location of the file.
@@ -45,54 +45,54 @@ extends AbstractMojo
 	 * @parameter expression="${configTemplate}"
 	 * @required
 	 */
-	private File configTemplate = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-config.xcfg");
+	private File configTemplate; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-config.xcfg");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${mapTemplate}"
 	 * @required
 	 */ 
-	private File mapTemplate = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-mapper.xml");
+	private File mapTemplate; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-mapper.xml");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${importConfig}"
 	 */
-	private boolean importConfig = true;
+	private boolean importConfig; // = true;
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${environment}"
 	 */
-	private File environment = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2\\Systemtest2.properties");
+	private File environment; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2\\Systemtest2.properties");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${host}"
 	 * @required
 	 */
-	private String host = "https://secgw-01.utv.internsone.local:5550";
+	private String host; // = "https://secgw-01.utv.internsone.local:5550";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${domain}"
 	 * @required
 	 */
-	private String domain = "test-config";
+	private String domain; // = "test-config";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${user}"
 	 * @required
 	 */
-	private String user = "mavendeployer";
+	private String user; // = "mavendeployer";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${password}"
 	 * @required
 	 */
-	private String password = "Test1234";
+	private String password; // = "Test1234";
 	
 	/**
 	 * Private variables
@@ -123,7 +123,10 @@ extends AbstractMojo
 				getLog().info("Creating request...");
 				dp.importFiles(tmpFolder, DeviceFileStore.LOCAL);
 				getLog().info("Files successfully imported...");
+				getLog().info("Cleaning up temporary files...");
+				tmpFolder.delete();
 				getLog().info("-----------------------------------------");
+				
 			} catch (IOException e) {			
 				throw new MojoExecutionException("Error importing files to datapower!", e);
 			}
