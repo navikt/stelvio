@@ -3,8 +3,13 @@ package no.nav.maven.plugins.datapower;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.commons.codec.binary.Base64;
 
 import no.nav.maven.plugins.datapower.command.DoImportCommand;
+import no.nav.maven.plugins.datapower.command.SetFileCommand;
 import no.nav.maven.plugins.datapower.config.ImportFormat;
 import no.nav.maven.plugins.datapower.util.FileUtils;
 import no.nav.maven.plugins.datapower.util.HttpUtils;
@@ -41,17 +46,28 @@ public class XMLMgmtInterface {
 		return new XMLMgmtRequest(domain);
 	}
 	
-	public String importFiles(File source) {
+	public String importFiles(File source, DeviceFileStore location) throws IOException {
 		XMLMgmtRequest request = createRequest();
 		System.out.println("Scanning archive for files and folders");
-		try {
-			FileUtils.scanFilesAndFolders(source, source, request);
-			System.out.println("Connecting to datapower...");
-			return doRequest(request);
-		} catch (Exception e) {
-			System.out.println("Error occured when importing files");
+		FileUtils.scanFilesAndFolders(source, source, request, location);
+		System.out.println("Connecting to datapower...");
+		return doRequest(request);
+	}
+	 
+	public String importFiles(List fileList, DeviceFileStore location) throws IOException {
+		XMLMgmtRequest request = createRequest();
+		Iterator fileItr = fileList.iterator();
+		while (fileItr.hasNext()) {
+			File file = (File)fileItr.next();
+			request.addCommand(new SetFileCommand(location, file.getName(), FileUtils.base64EncodeFile(file)));
 		}
-		return null;
+		return doRequest(request);
+	}
+	
+	public String importFile(String fileName, String fileContent, DeviceFileStore location) throws IOException {
+		XMLMgmtRequest request = createRequest();
+		request.addCommand(new SetFileCommand(location, fileName, new String(Base64.encodeBase64(fileContent.getBytes("UTF-8")))));
+		return doRequest(request);
 	}
 
 	public String importConfig(String base64Config, ImportFormat format) {

@@ -79,7 +79,7 @@ public class FileUtils {
 			}
 		}
 	}
-	public static void scanFilesAndFolders(File root, File parent, XMLMgmtRequest request) throws IOException {
+	public static void scanFilesAndFolders(File root, File parent, XMLMgmtRequest request, DeviceFileStore location) throws IOException {
 		File[] children = parent.listFiles();
 		File child;
 
@@ -88,12 +88,12 @@ public class FileUtils {
 			if (child.isDirectory()) {
 				String folderPath = getRelativePath(child, root);
 				System.out.println("Folder path = " + folderPath);
-				request.addCommand(new CreateDirCommand(DeviceFileStore.LOCAL, folderPath));
-				scanFilesAndFolders(root, child, request);
+				request.addCommand(new CreateDirCommand(location, folderPath));
+				scanFilesAndFolders(root, child, request, location);
 			} else if (child.getName().toLowerCase().compareTo("manifest.mf") != 0) {
 				String filePath = getRelativePath(child, root);
 				System.out.println("File path = " + filePath);
-				request.addCommand(new SetFileCommand(DeviceFileStore.LOCAL, filePath, base64EncodeFile(child)));
+				request.addCommand(new SetFileCommand(location, filePath, base64EncodeFile(child)));
 			}
 		}
 	}

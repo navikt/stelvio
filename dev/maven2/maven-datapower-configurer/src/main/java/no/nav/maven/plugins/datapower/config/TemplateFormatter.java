@@ -3,11 +3,11 @@ package no.nav.maven.plugins.datapower.config;
 import java.util.Enumeration;
 import java.util.Properties;
 
-public class XCFGFormatter {
+public class TemplateFormatter {
 
 	private String template;
 	
-	public XCFGFormatter(String template) {
+	public TemplateFormatter(String template) {
 		this.template = template;
 	}
 	
@@ -19,7 +19,7 @@ public class XCFGFormatter {
 		envVar = envProps.keys();
 		while (envVar.hasMoreElements()) {
 			key = envVar.nextElement().toString();
-			myTemplate = replace(myTemplate, "${" + key + "}", envProps.get(key).toString());
+			myTemplate = myTemplate.replaceAll("\\$\\{" + key + "\\}", envProps.get(key).toString());
 		}
 		return myTemplate;
 	}

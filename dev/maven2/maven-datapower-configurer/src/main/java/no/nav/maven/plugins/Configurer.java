@@ -1,35 +1,22 @@
 package no.nav.maven.plugins;  
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Properties;
+
+import no.nav.maven.plugins.datapower.DeviceFileStore;
 import no.nav.maven.plugins.datapower.XMLMgmtInterface;
 import no.nav.maven.plugins.datapower.config.ImportFormat;
-import no.nav.maven.plugins.datapower.config.XCFGFormatter;
+import no.nav.maven.plugins.datapower.config.TemplateFormatter;
 import no.nav.maven.plugins.datapower.util.FileUtils;
+import no.nav.maven.plugins.datapower.util.StreamUtils;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.dom4j.Attribute;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.XPath;
-import org.dom4j.dom.DOMElement;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.security.MessageDigest;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
 
 
 /**
@@ -45,7 +32,7 @@ extends AbstractMojo
 	 * @parameter expression="${outDir}"
 	 * @required
 	 */
-	private File outputDirectory; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\target");
+	private File outputDirectory = new File("E:\\maven-plugins\\maven-datapower-configurer\\target");
 	
 	/**
 	 * Location of the file.
@@ -55,88 +42,93 @@ extends AbstractMojo
 	
 	/**
 	 * Location of the file.
-	 * @parameter expression="${importConfig}"
+	 * @parameter expression="${configTemplate}"
+	 * @required
 	 */
-	private boolean importConfig; // = true;
+	private File configTemplate = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-config.xcfg");
 	
 	/**
 	 * Location of the file.
-	 * @parameter expression="${template}"
+	 * @parameter expression="${mapTemplate}"
+	 * @required
+	 */ 
+	private File mapTemplate = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-mapper.xml");
+	
+	/**
+	 * Location of the file.
+	 * @parameter expression="${importConfig}"
 	 */
-	private File template; // = new File("E:/maven-plugins/maven-datapower-configurer/src/main/resources/template.xcfg");
+	private boolean importConfig = true;
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${environment}"
 	 */
-	private File environment; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2.properties");
+	private File environment = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2\\Systemtest2.properties");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${host}"
 	 * @required
 	 */
-	private String host; // = "https://secgw-01.utv.internsone.local:5550";
+	private String host = "https://secgw-01.utv.internsone.local:5550";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${domain}"
 	 * @required
 	 */
-	private String domain; // = "test-config";
+	private String domain = "test-config";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${user}"
 	 * @required
 	 */
-	private String user; // = "petterasskildt";
+	private String user = "mavendeployer";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${password}"
 	 * @required
 	 */
-	private String password; // = "gy59inku";
+	private String password = "Test1234";
 	
 	/**
 	 * Private variables
 	 */
 	private File tmpFolder, configFile;
 	
-	private Document doc;
-	
-	private String templateContent;
-	
-	private XPath xpath;
+	private String mergedContent;
 	
 	private Properties env;
 	
 	public void execute() throws MojoExecutionException
 	{
 		tmpFolder = new File(outputDirectory.getAbsolutePath() + "/" + new Date().getTime());
-		
+		XMLMgmtInterface dp = new XMLMgmtInterface.Builder(host)
+												  .domain(domain)
+												  .user(user)
+												  .password(password)
+												  .build();
 		//uploading files to datapower
+		//getLog().info("name: " + fileArchive.getName() + " tostring: " + fileArchive.toString());
 		if(fileArchive != null){
 			try {
 				getLog().info("------------- File Import -------------");
 				getLog().info("Opening connection to DataPower device...");
-				XMLMgmtInterface dp = new XMLMgmtInterface.Builder(host)
-														  .domain(domain)
-														  .user(user)
-														  .password(password)
-														  .build();
+				
 				getLog().info("Extracting ZIP archive...");
 				FileUtils.extractArchive(fileArchive, tmpFolder);
 				getLog().info("Creating request...");
-				dp.importFiles(tmpFolder);
+				dp.importFiles(tmpFolder, DeviceFileStore.LOCAL);
 				getLog().info("Files successfully imported...");
 				getLog().info("-----------------------------------------");
 			} catch (IOException e) {			
 				throw new MojoExecutionException("Error importing files to datapower!", e);
 			}
 		}
-		
+		 
 		//importing config to datapower
 		if(importConfig){
 			try {
@@ -145,23 +137,31 @@ extends AbstractMojo
 				getLog().info("Reading environment file...");
 				readEnvironment();
 				getLog().info("Loading template file...");
-				readTemplate();
 				
-				//Create config formatter
-				getLog().info("Reformatting config...");
-				XCFGFormatter cfgFormatter = new XCFGFormatter(templateContent);
-				String newConfig = cfgFormatter.format(env);
-
-				//ZipUtils.compress(source, destination
+				
+				getLog().info("Merging configuration with templates ...");
+				
+				//creating map formatter
+				TemplateFormatter mapFormatter = new TemplateFormatter(readTemplate(mapTemplate));
+				mergedContent = mapFormatter.format(env);
+				String filename = env.getProperty("mapping.filename").toString();
+				filename = filename.substring(filename.lastIndexOf("/") + 1);
+				dp.importFile(filename,mergedContent,DeviceFileStore.LOCAL);
+				
+				//creating config formatter
+				TemplateFormatter cfgFormatter = new TemplateFormatter(readTemplate(configTemplate));
+				mergedContent = cfgFormatter.format(env);
 				getLog().info("Adding config to zip file...");
-				byte[] zipBytes = FileUtils.createZipArchive(newConfig.getBytes("UTF-8"), "export.xml");
+				byte[] zipBytes = FileUtils.createZipArchive(mergedContent.getBytes("UTF-8"), "export.xml");
 				
 				// Open connection to DataPower device
 				getLog().info("Opening connection to DataPower device...");
-				XMLMgmtInterface dp = new XMLMgmtInterface.Builder(host).domain(domain).user(user).password(password).build();
 				getLog().info("Importing configuration...");
 				String compressedData = new String(Base64.encodeBase64(zipBytes));
 				dp.importConfig(compressedData, ImportFormat.ZIP);
+				
+				//importing LTPA keys to DataPower device
+				importLTPAKeys(dp);
 				
 				getLog().info("Done!");
 				getLog().info("-----------------------------------------");
@@ -171,6 +171,15 @@ extends AbstractMojo
 		}
 	}	
 	
+	private void importLTPAKeys(XMLMgmtInterface dp) throws IOException{
+		File LTPAFolder = new File(environment.getAbsolutePath().replaceAll(environment.getName(), "") + "/ltpa-keys");
+		File[] keys = LTPAFolder.listFiles();
+		getLog().info("Importing " + keys.length + " LTPA keys to DataPower...");
+		for (int i = 0; i < keys.length; i++) {
+			dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.CERT);
+		}
+	}
+	
 	private void readEnvironment() throws IOException{
 		env = new Properties();
 		
@@ -178,22 +187,16 @@ extends AbstractMojo
 		env.load(new FileInputStream(environment));
 		
 		//manually trimming properties
-		Enumeration enum = env.keys();
+		Enumeration envProps = env.keys();
 		String key;
-		while(enum.hasMoreElements()){
-			key = enum.nextElement().toString();
+		while(envProps.hasMoreElements()){
+			key = envProps.nextElement().toString();
 			env.setProperty(key,env.getProperty(key).trim());
 		}
 	}
 
-	private void readTemplate() throws IOException{
+	private String readTemplate(File template) throws IOException{
 		if(template == null) throw new IOException("Template must be set when importing config!");
-		BufferedReader reader = new BufferedReader(new FileReader(template));
-		StringBuffer buffer = new StringBuffer();
-		String line;
-		while((line = reader.readLine()) != null){
-			buffer.append(line + System.getProperty("line.separator"));
-		}
-		templateContent = buffer.toString();
+		return StreamUtils.getInputStreamAsString(new FileInputStream(template), true);
 	}
 }
