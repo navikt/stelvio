@@ -62,6 +62,12 @@ extends AbstractMojo
 	
 	/**
 	 * Location of the file.
+	 * @parameter expression="${importFiles}"
+	 */
+	private boolean importFiles; // = true;
+	
+	/**
+	 * Location of the file.
 	 * @parameter expression="${environment}"
 	 */
 	private File environment; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2\\Systemtest2.properties");
@@ -113,8 +119,10 @@ extends AbstractMojo
 												  .build();
 		//uploading files to datapower
 		//getLog().info("name: " + fileArchive.getName() + " tostring: " + fileArchive.toString());
-		if(fileArchive != null){
+		if(importFiles){
 			try {
+				if(!fileArchive.exists()) throw new MojoExecutionException("Specified file archive invalid: File not found!");
+				
 				getLog().info("------------- File Import -------------");
 				getLog().info("Opening connection to DataPower device...");
 				
