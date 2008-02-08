@@ -32,66 +32,66 @@ extends AbstractMojo
 	 * @parameter expression="${outDir}"
 	 * @required
 	 */
-	private File outputDirectory; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\target");
+	private File outputDirectory = new File("E:\\maven-plugins\\maven-datapower-configurer\\target");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${archive}"
 	 */
-	private File fileArchive; // = new File("E:/deploy_scripts/kjempen/target/classes/builds/wsdl/wsdl-pselv.zip");
+	private File fileArchive = new File("E:/deploy_scripts/kjempen/target/classes/builds/wsdl/wsdl-pselv.zip");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${configTemplate}"
 	 * @required
 	 */
-	private File configTemplate; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-config.xcfg");
+	private File configTemplate = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-config.xcfg");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${mapTemplate}"
 	 * @required
 	 */ 
-	private File mapTemplate; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-mapper.xml");
+	private File mapTemplate = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-mapper.xml");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${importConfig}"
 	 */
-	private boolean importConfig; // = true;
+	private boolean importConfig = true;
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${importFiles}"
 	 */
-	private boolean importFiles; // = true;
+	private boolean importFiles = true;
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${environment}"
 	 */
-	private File environment; // = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2\\Systemtest2.properties");
+	private File environment = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2\\Systemtest2.properties");
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${host}"
 	 * @required
 	 */
-	private String host; // = "https://secgw-01.utv.internsone.local:5550";
+	private String host = "https://secgw-01.utv.internsone.local:5550";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${user}"
 	 * @required
 	 */
-	private String user; // = "mavendeployer";
+	private String user = "mavendeployer";
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${password}"
 	 * @required
 	 */
-	private String password; // = "Test1234";
+	private String password = "Test1234";
 	
 	/**
 	 * Private variables
@@ -179,6 +179,10 @@ extends AbstractMojo
 				//importing LTPA keys to DataPower device
 				importLTPAKeys(dp);
 				
+				//Saving imported configuration and restarting dp
+				getLog().info("Saving configuration and restarting domain...");
+				dp.saveConfigAndRestartDomain();
+				
 				getLog().info("Done!");
 				getLog().info("-----------------------------------------");
 			} catch (IOException e) {
@@ -194,10 +198,9 @@ extends AbstractMojo
 		for (int i = 0; i < keys.length; i++) {
 			if(keys[i].isFile()){
 				getLog().info("Importing " + keys[i].getName());
-				dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.CERT);
+				dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.LOCAL);
 			}
 		}
-		getLog().info("Done!");
 		getLog().info("-----------------------------------------");
 	}
 	

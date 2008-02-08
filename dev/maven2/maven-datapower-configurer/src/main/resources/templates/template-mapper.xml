@@ -1,4 +1,4 @@
-﻿<aaa:AAAInfo xmlns:aaa="http://www.datapower.com/AAAInfo">
+<aaa:AAAInfo xmlns:aaa="http://www.datapower.com/AAAInfo">
     <aaa:FormatVersion>1</aaa:FormatVersion>
     <aaa:Filename>${mapping.filename}</aaa:Filename>
     <aaa:Summary/>

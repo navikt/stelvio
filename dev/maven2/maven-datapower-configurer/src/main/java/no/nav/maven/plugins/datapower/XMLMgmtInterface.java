@@ -9,6 +9,8 @@ import java.util.List;
 import org.apache.commons.codec.binary.Base64;
 
 import no.nav.maven.plugins.datapower.command.DoImportCommand;
+import no.nav.maven.plugins.datapower.command.RestartThisDomainCommand;
+import no.nav.maven.plugins.datapower.command.SaveConfigCommand;
 import no.nav.maven.plugins.datapower.command.SetFileCommand;
 import no.nav.maven.plugins.datapower.config.ImportFormat;
 import no.nav.maven.plugins.datapower.util.FileUtils;
@@ -97,6 +99,13 @@ public class XMLMgmtInterface {
 		} catch (IOException e) {
 			return "Failed to import " + format.toString() + " configuration!";
 		}		
+	}
+	
+	public String saveConfigAndRestartDomain() throws IOException {
+		XMLMgmtRequest request = createRequest();
+		request.addCommand( new SaveConfigCommand());
+		request.addCommand(new RestartThisDomainCommand());
+		return doRequest(request);
 	}
 	
 	public String importZIPConfig(File configFile) {

@@ -1327,6 +1327,8 @@ dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapow
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/XMLMgmtRequest.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/command/CreateDirCommand.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/command/DoImportCommand.java -text
+dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/command/RestartThisDomainCommand.java -text
+dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/command/SaveConfigCommand.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/command/SetFileCommand.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/command/XMLMgmtCommand.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/config/ImportFormat.java -text
