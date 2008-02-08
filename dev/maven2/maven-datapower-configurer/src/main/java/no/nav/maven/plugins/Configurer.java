@@ -160,6 +160,8 @@ extends AbstractMojo
 				mergedContent = mapFormatter.format(env);
 				String filename = env.getProperty("mapping.filename").toString();
 				filename = filename.substring(filename.lastIndexOf("/") + 1);
+				getLog().info("Opening connection to DataPower device...");
+				getLog().info("Importing " + filename + "...");
 				dp.importFile(filename,mergedContent,DeviceFileStore.LOCAL);
 				
 				//creating config formatter
@@ -188,12 +190,15 @@ extends AbstractMojo
 	private void importLTPAKeys(XMLMgmtInterface dp) throws IOException{
 		File LTPAFolder = new File(environment.getAbsolutePath().replaceAll(environment.getName(), "") + "/ltpa-keys");
 		File[] keys = LTPAFolder.listFiles();
-		getLog().info("Importing " + keys.length + " LTPA keys to DataPower...");
+		getLog().info("------------- LTPA Keys Import -------------");
 		for (int i = 0; i < keys.length; i++) {
 			if(keys[i].isFile()){
+				getLog().info("Importing " + keys[i].getName());
 				dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.CERT);
 			}
 		}
+		getLog().info("Done!");
+		getLog().info("-----------------------------------------");
 	}
 	
 	private void readEnvironment() throws IOException{
