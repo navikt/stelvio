@@ -114,6 +114,7 @@ extends AbstractMojo
 			e1.printStackTrace();
 			throw new MojoExecutionException("Error reading environment file!");
 		}
+		getLog().info("Done!\n");
 		
 		dp = new XMLMgmtInterface.Builder(host)
 								  .domain(env.getProperty("domain"))
@@ -189,7 +190,9 @@ extends AbstractMojo
 		File[] keys = LTPAFolder.listFiles();
 		getLog().info("Importing " + keys.length + " LTPA keys to DataPower...");
 		for (int i = 0; i < keys.length; i++) {
-			dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.CERT);
+			if(keys[i].isFile()){
+				dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.CERT);
+			}
 		}
 	}
 	
