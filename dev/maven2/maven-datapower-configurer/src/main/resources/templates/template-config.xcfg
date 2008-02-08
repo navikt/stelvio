@@ -2,7 +2,7 @@
 	<export-details>
 		<description>Exported Configuration </description>
 		<user>admin</user>
-		<domain>secgw-t2</domain>
+		<domain>${domain}</domain>
 		<comment/>
 		<product-id>9003-XS40-03</product-id>
 		<product>XS40</product>
@@ -23,7 +23,7 @@
 		<interface name="eth2" ip-addr="10.33.1.190"/>
 		<interface name="mgt0" ip-addr="10.1.10.140"/>
 	</interface-data>
-	<configuration domain="secgw-t2">
+	<configuration domain="${domain}">
 		<AAAPolicy name="LTPAMapping_Intern2Sensitiv" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<ExtractIdentity>
