@@ -1336,7 +1336,7 @@ dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapow
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/util/StreamUtils.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/datapower/util/ZipUtils.java -text
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/Systemtest2/Systemtest2.properties -text
-dev/maven2/maven-datapower-configurer/src/main/resources/environments/Systemtest2/ltpa-keys/5d10apvl005.test.internsone.local.ltpa -text
+dev/maven2/maven-datapower-configurer/src/main/resources/environments/Systemtest2/ltpa-keys/d10apvl005.test.internsone.local.ltpa -text
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/Systemtest2/ltpa-keys/d15apvl006.trygdeetaten2.local.ltpa -text
 dev/maven2/maven-datapower-configurer/src/main/resources/templates/template-config.xcfg -text
 dev/maven2/maven-datapower-configurer/src/main/resources/templates/template-mapper.xml -text

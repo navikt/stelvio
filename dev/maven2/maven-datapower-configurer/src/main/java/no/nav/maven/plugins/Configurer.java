@@ -194,7 +194,7 @@ extends AbstractMojo
 		for (int i = 0; i < keys.length; i++) {
 			if(keys[i].isFile()){
 				getLog().info("Importing " + keys[i].getName());
-				dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.CERT);
+				dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.LOCAL);
 			}
 		}
 		getLog().info("Done!");
