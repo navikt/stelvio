@@ -81,13 +81,6 @@ extends AbstractMojo
 	
 	/**
 	 * Location of the file.
-	 * @parameter expression="${domain}"
-	 * @required
-	 */
-	private String domain; // = "test-config";
-	
-	/**
-	 * Location of the file.
 	 * @parameter expression="${user}"
 	 * @required
 	 */
@@ -112,13 +105,23 @@ extends AbstractMojo
 	public void execute() throws MojoExecutionException
 	{
 		tmpFolder = new File(outputDirectory.getAbsolutePath() + "/" + new Date().getTime());
-		XMLMgmtInterface dp = new XMLMgmtInterface.Builder(host)
-												  .domain(domain)
-												  .user(user)
-												  .password(password)
-												  .build();
+		XMLMgmtInterface dp = null;
+		
+		getLog().info("Reading environment file...");
+		try {
+			readEnvironment();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			throw new MojoExecutionException("Error reading environment file!");
+		}
+		
+		dp = new XMLMgmtInterface.Builder(host)
+								  .domain(env.getProperty("domain"))
+								  .user(user)
+								  .password(password)
+								  .build();
+		
 		//uploading files to datapower
-		//getLog().info("name: " + fileArchive.getName() + " tostring: " + fileArchive.toString());
 		if(importFiles){
 			try {
 				if(!fileArchive.exists()) throw new MojoExecutionException("Specified file archive invalid: File not found!");
@@ -139,14 +142,13 @@ extends AbstractMojo
 				throw new MojoExecutionException("Error importing files to datapower!", e);
 			}
 		}
-		 
+		
 		//importing config to datapower
 		if(importConfig){
 			try {
 				getLog().info("------------- Config Import -------------");
 				//reading environment and template file
-				getLog().info("Reading environment file...");
-				readEnvironment();
+				
 				getLog().info("Loading template file...");
 				
 				
