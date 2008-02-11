@@ -1602,6 +1602,7 @@
 		</WSGateway>
 		<WSGateway name="PSELVPerson" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
+			<UserSummary>${BUSTAG}</UserSummary>
 			<Priority>normal</Priority>
 			<XMLManager class="XMLManager">default</XMLManager>
 			<SSLProxy class="SSLProxyProfile">tjenestebuss_SSLProxyProfile</SSLProxy>
