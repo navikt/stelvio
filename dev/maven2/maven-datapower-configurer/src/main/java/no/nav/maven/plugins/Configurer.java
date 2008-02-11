@@ -32,66 +32,66 @@ extends AbstractMojo
 	 * @parameter expression="${outDir}"
 	 * @required
 	 */
-	private File outputDirectory = new File("E:\\maven-plugins\\maven-datapower-configurer\\target");
+	private File outputDirectory;
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${archive}"
 	 */
-	private File fileArchive = new File("E:/deploy_scripts/kjempen/target/classes/builds/wsdl/wsdl-pselv.zip");
+	private File fileArchive; 
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${configTemplate}"
 	 * @required
 	 */
-	private File configTemplate = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-config.xcfg");
+	private File configTemplate; 
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${mapTemplate}"
 	 * @required
 	 */ 
-	private File mapTemplate = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\templates\\template-mapper.xml");
+	private File mapTemplate; 
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${importConfig}"
 	 */
-	private boolean importConfig = true;
+	private boolean importConfig; 
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${importFiles}"
 	 */
-	private boolean importFiles = true;
+	private boolean importFiles; 
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${environment}"
 	 */
-	private File environment = new File("E:\\maven-plugins\\maven-datapower-configurer\\src\\main\\resources\\environments\\Systemtest2\\Systemtest2.properties");
+	private File environment; 
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${host}"
 	 * @required
 	 */
-	private String host = "https://secgw-01.utv.internsone.local:5550";
+	private String host; 
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${user}"
 	 * @required
 	 */
-	private String user = "mavendeployer";
+	private String user; 
 	
 	/**
 	 * Location of the file.
 	 * @parameter expression="${password}"
 	 * @required
 	 */
-	private String password = "Test1234";
+	private String password; 
 	
 	/**
 	 * Private variables
