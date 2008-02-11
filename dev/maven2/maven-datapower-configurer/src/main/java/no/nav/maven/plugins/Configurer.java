@@ -2,6 +2,7 @@ package no.nav.maven.plugins;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Enumeration;
@@ -94,6 +95,13 @@ extends AbstractMojo
 	private String password; 
 	
 	/**
+	 * Location of the file.
+	 * @parameter expression="${bustag}"
+	 * @required
+	 */
+	private String bustag; 
+	
+	/**
 	 * Private variables
 	 */
 	private File tmpFolder, configFile;
@@ -164,6 +172,18 @@ extends AbstractMojo
 				getLog().info("Importing " + filename + "...");
 				dp.importFile(filename,mergedContent,DeviceFileStore.LOCAL);
 				
+				//writing merged config to outDir
+				try {
+					File localmap = new File(outputDirectory.getAbsolutePath() + "/" + mapTemplate.getName());
+					localmap.delete();
+					FileWriter writer = new FileWriter(localmap);
+					writer.write(mergedContent);
+					writer.close();
+				} catch (IOException e) {
+					getLog().warn("Unable to write local copy of imported map file!");
+				}
+				
+				
 				//creating config formatter
 				TemplateFormatter cfgFormatter = new TemplateFormatter(readTemplate(configTemplate));
 				mergedContent = cfgFormatter.format(env);
@@ -175,6 +195,18 @@ extends AbstractMojo
 				getLog().info("Importing configuration...");
 				String compressedData = new String(Base64.encodeBase64(zipBytes));
 				dp.importConfig(compressedData, ImportFormat.ZIP);
+				
+				//writing merged config to outDir
+				try {
+					File localConfig = new File(outputDirectory.getAbsolutePath() + "/dp-plugin-config.xcfg");
+					localConfig.delete();
+					FileWriter writer = new FileWriter(localConfig);
+					writer.write(mergedContent);
+					writer.close();
+				} catch (IOException e) {
+					getLog().warn("Unable to write local copy of imported config file!");
+				}
+				
 				
 				//importing LTPA keys to DataPower device
 				importLTPAKeys(dp);
@@ -217,6 +249,9 @@ extends AbstractMojo
 			key = envProps.nextElement().toString();
 			env.setProperty(key,env.getProperty(key).trim());
 		}
+		
+		//adding bus_tag to environment
+		env.setProperty("BUSTAG",bustag.trim());
 	}
 
 	private String readTemplate(File template) throws IOException{
