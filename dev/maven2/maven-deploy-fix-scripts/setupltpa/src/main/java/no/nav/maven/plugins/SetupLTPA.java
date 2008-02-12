@@ -90,7 +90,9 @@ public class SetupLTPA
 		
 		try {			
 			readEnvFile();
-			
+			if(!(props.containsKey("roleNamePSAK") && props.containsKey("roleNamePSELV"))){
+				throw new MojoExecutionException("Environment doesn't contain definition for roleNamePSAK or roleNamePSELV, update environment file!");
+			}
 			if(isPSAK){
 				createAppXml(props.getProperty("roleNamePSAK"),props.getProperty("roleNamePSAK"));
 			}else{
