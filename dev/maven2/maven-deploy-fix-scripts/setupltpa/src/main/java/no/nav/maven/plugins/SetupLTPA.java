@@ -26,6 +26,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -100,8 +101,7 @@ public class SetupLTPA
 			
 			getLog().info("All Done!");
 		} catch (Exception e) {
-			getLog().error("Error performing security setup:");
-			e.printStackTrace();
+			throw new MojoExecutionException("Error performing security setup!", e);
 		}
 	}
 	
@@ -248,6 +248,14 @@ public class SetupLTPA
 		BufferedReader reader = new BufferedReader(new FileReader(envFile));
 		props = new Properties();
 		props.load(new FileInputStream(envFile));
+		
+		//Properties class doesn't trim property values, need to do manual trimming
+		Enumeration enum = props.keys();
+		String key = null;
+		while(enum.hasMoreElements()){
+			key = enum.nextElement().toString();
+			props.setProperty(key,props.getProperty(key).trim());
+		}
 	}
 	
 	private void createAppXml(String strDesc, String strRoleName) throws DocumentException, IOException{
