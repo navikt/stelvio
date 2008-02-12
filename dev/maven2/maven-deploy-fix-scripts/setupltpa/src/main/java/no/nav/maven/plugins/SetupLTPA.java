@@ -101,6 +101,7 @@ public class SetupLTPA
 			
 			getLog().info("All Done!");
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new MojoExecutionException("Error performing security setup!", e);
 		}
 	}
