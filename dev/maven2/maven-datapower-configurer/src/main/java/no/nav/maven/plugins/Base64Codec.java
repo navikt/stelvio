@@ -1,6 +1,5 @@
 package no.nav.maven.plugins;
 
-import java.io.ByteArrayInputStream;
 
 public class Base64Codec extends java.util.prefs.AbstractPreferences {
 	//keep the key state
@@ -30,10 +29,10 @@ public class Base64Codec extends java.util.prefs.AbstractPreferences {
 			java.lang.String decoded_ = ((no.nav.maven.plugins.Base64Codec)myprefs).decodeBase64(key_,base64_);
 			java.lang.System.out.println("DECODED STRING TO: " + decoded_);
 			java.lang.System.out.println("\n");
-			java.util.Enumeration enum = ((no.nav.maven.plugins.Base64Codec)myprefs).encodedStore.keys();
+			java.util.Enumeration prefs = ((no.nav.maven.plugins.Base64Codec)myprefs).encodedStore.keys();
 			java.lang.String enumKey = null;
-			while(enum.hasMoreElements()){
-				enumKey = (java.lang.String)enum.nextElement();
+			while(prefs.hasMoreElements()){
+				enumKey = (java.lang.String)prefs.nextElement();
 				java.lang.System.out.print(enumKey);
 				java.lang.System.out.println(" : " +((no.nav.maven.plugins.Base64Codec)myprefs).encodedStore.get(enumKey).toString());
 			}

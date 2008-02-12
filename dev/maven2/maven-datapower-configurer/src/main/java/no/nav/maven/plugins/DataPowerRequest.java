@@ -18,7 +18,7 @@ import java.util.Hashtable;
 public class DataPowerRequest {
 
 	private String content;
-	private Dictionary HTTPHeader = new Hashtable();
+	private Dictionary HTTPHeaders = new Hashtable();
 	
 	public String getContent() {
 		return content;
@@ -26,10 +26,10 @@ public class DataPowerRequest {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Dictionary getHTTPHeader() {
-		return HTTPHeader;
+	public Dictionary getHTTPHeaders() {
+		return HTTPHeaders;
 	}
-	public void setHTTPHeader(Dictionary header) {
-		HTTPHeader = header;
+	public void setHTTPHeaders(Dictionary header) {
+		HTTPHeaders = header;
 	}
 }

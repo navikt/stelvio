@@ -2,6 +2,7 @@ package no.nav.maven.plugins;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
+
 /**
  * @author utvikler
  *

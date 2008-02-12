@@ -136,13 +136,27 @@ public class ZipUtils {
 	public static void extract2(File inputFile, File outDir) throws ZipException, IOException{
 		ZipFile zipFile = new ZipFile(inputFile);
 		Enumeration enumeration = zipFile.entries();
-		while (enumeration.hasMoreElements()) {
+		/*while (enumeration.hasMoreElements()) {
 			ZipEntry zipEntry = (ZipEntry)enumeration.nextElement();
 			String zipFileName = zipEntry.getName();
-			if(zipEntry.isDirectory()) new File(outDir + "/" + zipFileName).mkdirs();
+			if (zipEntry.isDirectory()) new File(outDir + "/" + zipFileName).mkdirs();
 			else{
 				InputStream inputStream = zipFile.getInputStream(zipEntry);
 				OutputStream out = new FileOutputStream(outDir + "/" + zipFileName);
+				writeInputStreamToOutputStream(inputStream, out);
+				out.close();
+				inputStream.close();
+			}
+		}*/
+		while (enumeration.hasMoreElements()) {
+			ZipEntry zipEntry = (ZipEntry)enumeration.nextElement();
+			File zipFileName = new File(outDir + "/" + zipEntry.getName());
+			if (zipEntry.isDirectory()) {
+				zipFileName.mkdirs();
+			}
+			else{
+				InputStream inputStream = zipFile.getInputStream(zipEntry);
+				OutputStream out = new FileOutputStream(zipFileName);
 				writeInputStreamToOutputStream(inputStream, out);
 				out.close();
 				inputStream.close();
