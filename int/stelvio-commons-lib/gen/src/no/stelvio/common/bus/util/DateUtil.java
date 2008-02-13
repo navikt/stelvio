@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.TimeZone;
 
 /**
  * Utility for localized parsing and formatting of dates.
@@ -181,14 +182,31 @@ public final class DateUtil {
 	}
 	
 	/**
-	 * Parse a string in format yyyy-MM-dd HH:mm:ss into a Date
+	 * Parse a string in format yyyy-MM-dd'T'HH:mm:ss'Z' GMT-time into a Date locale time
 	 *
 	 * @param input the String to parse
 	 * @return a Date, null if input is null or an empty String
 	 * @throws IllegalArgumentException if input is not legal.
 	 */
 	public static Date parseWIDString(final String input) throws IllegalArgumentException {
-		return parseCommon(input, true, WID_DATE_FORMAT, true, false, false);
+
+		Date output = null;
+
+		if (StringUtils.isBlank(input)) {
+			return output;
+		} else {
+			try {
+				//parse to a date in GMT-time, then change to local-time through calendar.
+				DateFormat dateFormat = createDateFormat(WID_DATE_FORMAT);
+				dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+				Date gmtDate = dateFormat.parse(input);
+				Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+				cal.setTime(gmtDate);
+				return cal.getTime();
+			} catch (ParseException pe) {
+				throw new IllegalArgumentException("Failed to parse " + input + ": " + pe);
+			}
+		}
 	}
 
 	/**
@@ -240,16 +258,20 @@ public final class DateUtil {
 	}
 	
 	/**
-	 * Formats a Date into WID format (yyyy-MM-dd HH:mm:ss).
+	 * Formats a Date into WID format, in GMT-time (XSD-DateTime: yyyy-MM-dd'T'HH:mm:ss'Z').
 	 *
 	 * @param input the date to format.
 	 * @return the formatted date.
+	 *  
+	 * 
 	 */
 	public static String formatWIDString(final Date input) {
 		if(input == null){
 			return null;
 		}
-		return createDateFormat(WID_DATE_FORMAT).format(input);
+		DateFormat dateFormat = createDateFormat(WID_DATE_FORMAT);
+		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+		return dateFormat.format(input);
 	}
 
 	/**
