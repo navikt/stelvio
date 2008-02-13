@@ -150,7 +150,7 @@ public class ErrorHelperUtil {
 	 * @param rootCause				enables the user to provide a rootCause in case a SRE is not available
 	 * @return						the fault business object created from the ServiceRuntimeException
 	 */
-	private static DataObject getSAMFaultBO(Exception sre, String module, String faultBONamespace, String faultBOName, String errorType, String errorMessage, String rootCause) {
+	public static DataObject getSAMFaultBO(Exception sre, String module, String faultBONamespace, String faultBOName, String errorType, String errorMessage, String rootCause) {
 		
 		DataObject faultBo = DataFactory.INSTANCE.create(faultBONamespace, faultBOName);
 
