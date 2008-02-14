@@ -209,7 +209,7 @@ extends AbstractMojo
 				
 				
 				//importing LTPA keys to DataPower device
-				importLTPAKeys(dp);
+				importLTPAKeys(dp,"ltpa");
 				
 				//Saving imported configuration and restarting dp
 				getLog().info("Saving configuration and restarting domain...");
@@ -223,17 +223,18 @@ extends AbstractMojo
 		}
 	}	
 	
-	private void importLTPAKeys(XMLMgmtInterface dp) throws IOException{
+	private void importLTPAKeys(XMLMgmtInterface dp, String path) throws IOException{
 		File LTPAFolder = new File(environment.getAbsolutePath().replaceAll(environment.getName(), "") + "/ltpa-keys");
 		File[] keys = LTPAFolder.listFiles();
 		getLog().info("------------- LTPA Keys Import -------------");
 		getLog().info("Searching for keys in " + LTPAFolder.getAbsolutePath());
 		if(keys == null) getLog().info("No keys to import...");
 		else{
+			dp.createDir(path,DeviceFileStore.LOCAL);
 			for (int i = 0; i < keys.length; i++) {
 				if(keys[i].isFile()){
 					getLog().info("Importing " + keys[i].getName());
-					dp.importFile(keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.LOCAL);
+					dp.importFile(path + "/" + keys[i].getName(),StreamUtils.getInputStreamAsString(new FileInputStream(keys[i]),true),DeviceFileStore.LOCAL);
 				}
 			}
 		}

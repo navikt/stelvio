@@ -5,9 +5,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.apache.commons.codec.binary.Base64;
 
+import no.nav.maven.plugins.datapower.command.CreateDirCommand;
 import no.nav.maven.plugins.datapower.command.DoImportCommand;
 import no.nav.maven.plugins.datapower.command.RestartThisDomainCommand;
 import no.nav.maven.plugins.datapower.command.SaveConfigCommand;
@@ -46,6 +48,19 @@ public class XMLMgmtInterface {
 	
 	public XMLMgmtRequest createRequest() {
 		return new XMLMgmtRequest(domain);
+	}
+	
+	public String createDir(String path, DeviceFileStore location) throws IOException {
+		XMLMgmtRequest request = createRequest();
+		String[] dirs = path.split("/");
+		String dirPath = null; 
+		for (int i = 0; i < dirs.length; i++) {
+			if (dirPath != null)
+				dirPath += "/";
+			dirPath += dirs[i];
+			request.addCommand(new CreateDirCommand(location,dirPath));
+		}
+		return doRequest(request);
 	}
 	
 	public String importFiles(File source, DeviceFileStore location) throws IOException {
