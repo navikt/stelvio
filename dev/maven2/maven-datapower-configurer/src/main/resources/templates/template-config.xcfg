@@ -1270,7 +1270,7 @@
 			<UserSummary>${BUSTAG}</UserSummary>
 			<Priority>normal</Priority>
 			<XMLManager class="XMLManager">default</XMLManager>
-			<SSLProxy class="SSLProxyProfile">secgw_SSLProxyProfile</SSLProxy>
+			<SSLProxy class="SSLProxyProfile">tjenestebuss_SSLProxyProfile</SSLProxy>
 			<DefaultParamNamespace>http://www.datapower.com/param/config</DefaultParamNamespace>
 			<QueryParamNamespace>http://www.datapower.com/param/query</QueryParamNamespace>
 			<PropagateURI>off</PropagateURI>
