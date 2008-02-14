@@ -134,7 +134,7 @@ public class XMLMgmtInterface {
 	private String doRequest(XMLMgmtRequest request) throws IOException {
 		String content = request.toString();
 		try {
-			return HttpUtils.doPostRequest(host, user, password, content);
+			return HttpUtils.doPostRequest(host, user, password, content, 10);
 		} catch (IOException e) {
 			System.out.println("Request:\n" + content);
 			throw e;
