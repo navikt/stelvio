@@ -53,9 +53,9 @@ public class XMLMgmtInterface {
 	public String createDir(String path, DeviceFileStore location) throws IOException {
 		XMLMgmtRequest request = createRequest();
 		String[] dirs = path.split("/");
-		String dirPath = null; 
+		String dirPath = ""; 
 		for (int i = 0; i < dirs.length; i++) {
-			if (dirPath != null)
+			if (dirPath.compareTo("") != 0)
 				dirPath += "/";
 			dirPath += dirs[i];
 			request.addCommand(new CreateDirCommand(location,dirPath));
