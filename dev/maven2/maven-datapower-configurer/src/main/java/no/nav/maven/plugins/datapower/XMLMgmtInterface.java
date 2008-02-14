@@ -132,12 +132,12 @@ public class XMLMgmtInterface {
 	}
 
 	private String doRequest(XMLMgmtRequest request) throws IOException {
+		String content = request.toString();
 		try {
-			String content = request.toString();
 			return HttpUtils.doPostRequest(host, user, password, content);
 		} catch (IOException e) {
-			System.out.println("XMLManagementConnection.doRequest(), caught IOException...");
-			return "IOException occurred during HTTP request";
+			System.out.println("Request:\n" + content);
+			throw e;
 		}
 	}	
 }
