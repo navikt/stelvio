@@ -37,12 +37,19 @@ public class HttpUtils {
 		return null;
 	}
 
-	public static String doPostRequest(String host, String user, String password, String data) throws IOException {
-		HttpURLConnection conn = openPostRequestConnection(host, user, password);
-		StreamUtils.writeStringToOutputStream(data, conn.getOutputStream(), true);
-		String response = getResponse(conn);
-		conn.disconnect();
-		return response;
+	public static String doPostRequest(String host, String user, String password, String data, int retries) throws IOException {
+		try {
+			HttpURLConnection conn = openPostRequestConnection(host, user, password);
+			StreamUtils.writeStringToOutputStream(data, conn.getOutputStream(), true);
+			String response = getResponse(conn);
+			conn.disconnect();
+			return response;
+		} catch (IOException e) {
+			if(retries > 1){
+				System.out.println("Retrying..., " + retries + " retries left!");
+				return doPostRequest(host,user,password,data,--retries);
+			}else throw e;
+		}
 	}
 	
 	public static String getResponse(HttpURLConnection conn) throws IOException {
