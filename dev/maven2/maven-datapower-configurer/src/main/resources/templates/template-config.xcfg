@@ -1182,6 +1182,27 @@
 				<RemoteEndpointURI>/nav-cons-pen-pselv-navorgenhetWeb/sca/PSELVNAVOrgEnhetWSEXP</RemoteEndpointURI>
 			</WSEndpointRemoteRewriteRule>
 		</WSEndpointRewritePolicy>
+		<WSEndpointRewritePolicy name="PSELVOppgave" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<WSEndpointLocalRewriteRule>
+				<ServicePortMatchRegexp>^{http://nav-cons-pen-pselv-oppgave/no/nav/inf/PSELVOppgave/Binding}PSELVOppgaveWSEXP_PSELVOppgaveHttpPort$</ServicePortMatchRegexp>
+				<LocalEndpointProtocol>default</LocalEndpointProtocol>
+				<LocalEndpointHostname>0.0.0.0</LocalEndpointHostname>
+				<LocalEndpointPort>0</LocalEndpointPort>
+				<LocalEndpointURI>/nav-cons-pen-pselv-oppgaveWeb/sca/PSELVOppgaveWSEXP</LocalEndpointURI>
+				<FrontProtocol class="HTTPSSourceProtocolHandler">secgw_HTTPS_9443</FrontProtocol>
+				<UseFrontProtocol>on</UseFrontProtocol>
+				<WSDLBindingProtocol>soap-11</WSDLBindingProtocol>
+				<FrontsidePortSuffix/>
+			</WSEndpointLocalRewriteRule>
+			<WSEndpointRemoteRewriteRule>
+				<ServicePortMatchRegexp>^{http://nav-cons-pen-pselv-oppgave/no/nav/inf/PSELVOppgave/Binding}PSELVOppgaveWSEXP_PSELVOppgaveHttpPort$</ServicePortMatchRegexp>
+				<RemoteEndpointProtocol>https</RemoteEndpointProtocol>
+				<RemoteEndpointHostname>tjenestebuss-t2.adeo.no</RemoteEndpointHostname>
+				<RemoteEndpointPort>443</RemoteEndpointPort>
+				<RemoteEndpointURI>/nav-cons-pen-pselv-oppgaveWeb/sca/PSELVOppgaveWSEXP</RemoteEndpointURI>
+			</WSEndpointRemoteRewriteRule>
+		</WSEndpointRewritePolicy>
 		<WSEndpointRewritePolicy name="PSELVOpptjening" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<WSEndpointLocalRewriteRule>
@@ -1272,7 +1293,7 @@
 			<ParserLimitsForbidExternalReferences>on</ParserLimitsForbidExternalReferences>
 			<ParserLimitsExternalReferences>forbid</ParserLimitsExternalReferences>
 			<ParserLimitsAttachmentByteCount>2000000000</ParserLimitsAttachmentByteCount>
-			<DebugMode persisted="false">on</DebugMode>
+			<DebugMode persisted="false">off</DebugMode>
 			<DebuggerType>internal</DebuggerType>
 			<DebugHistory>25</DebugHistory>
 			<RequestType>soap</RequestType>
@@ -1385,7 +1406,7 @@
 			<ParserLimitsForbidExternalReferences>on</ParserLimitsForbidExternalReferences>
 			<ParserLimitsExternalReferences>forbid</ParserLimitsExternalReferences>
 			<ParserLimitsAttachmentByteCount>2000000000</ParserLimitsAttachmentByteCount>
-			<DebugMode persisted="false">off</DebugMode>
+			<DebugMode persisted="false">on</DebugMode>
 			<DebuggerType>internal</DebuggerType>
 			<DebugHistory>25</DebugHistory>
 			<RequestType>soap</RequestType>
@@ -1724,7 +1745,7 @@
 			<ParserLimitsForbidExternalReferences>on</ParserLimitsForbidExternalReferences>
 			<ParserLimitsExternalReferences>forbid</ParserLimitsExternalReferences>
 			<ParserLimitsAttachmentByteCount>2000000000</ParserLimitsAttachmentByteCount>
-			<DebugMode persisted="false">on</DebugMode>
+			<DebugMode persisted="false">off</DebugMode>
 			<DebuggerType>internal</DebuggerType>
 			<DebugHistory>25</DebugHistory>
 			<RequestType>soap</RequestType>
@@ -1923,6 +1944,119 @@
 			</UserToggles>
 			<SOAPActionPolicy>lax</SOAPActionPolicy>
 		</WSGateway>
+		<WSGateway name="PSELVOppgave" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<UserSummary>${BUSTAG}</UserSummary>
+			<Priority>normal</Priority>
+			<XMLManager class="XMLManager">default</XMLManager>
+			<SSLProxy class="SSLProxyProfile">tjenestebuss_SSLProxyProfile</SSLProxy>
+			<DefaultParamNamespace>http://www.datapower.com/param/config</DefaultParamNamespace>
+			<QueryParamNamespace>http://www.datapower.com/param/query</QueryParamNamespace>
+			<PropagateURI>off</PropagateURI>
+			<MonitorProcessingPolicy>terminate-at-first-throttle</MonitorProcessingPolicy>
+			<RequestAttachments>strip</RequestAttachments>
+			<ResponseAttachments>strip</ResponseAttachments>
+			<RootPartNotFirstAction>process-in-order</RootPartNotFirstAction>
+			<FrontAttachmentFormat>dynamic</FrontAttachmentFormat>
+			<BackAttachmentFormat>dynamic</BackAttachmentFormat>
+			<MIMEFrontHeaders>on</MIMEFrontHeaders>
+			<MIMEBackHeaders>on</MIMEBackHeaders>
+			<StreamOutputToBack>buffer-until-verification</StreamOutputToBack>
+			<StreamOutputToFront>buffer-until-verification</StreamOutputToFront>
+			<MaxMessageSize>0</MaxMessageSize>
+			<GatewayParserLimits>off</GatewayParserLimits>
+			<ParserLimitsElementDepth>512</ParserLimitsElementDepth>
+			<ParserLimitsAttributeCount>128</ParserLimitsAttributeCount>
+			<ParserLimitsMaxNodeSize>33554432</ParserLimitsMaxNodeSize>
+			<ParserLimitsForbidExternalReferences>on</ParserLimitsForbidExternalReferences>
+			<ParserLimitsExternalReferences>forbid</ParserLimitsExternalReferences>
+			<ParserLimitsAttachmentByteCount>2000000000</ParserLimitsAttachmentByteCount>
+			<DebugMode persisted="false">off</DebugMode>
+			<DebuggerType>internal</DebuggerType>
+			<DebugHistory>25</DebugHistory>
+			<RequestType>soap</RequestType>
+			<ResponseType>soap</ResponseType>
+			<SOAPSchemaURL>store:///schemas/soap-envelope.xsd</SOAPSchemaURL>
+			<FrontTimeout>120</FrontTimeout>
+			<BackTimeout>120</BackTimeout>
+			<FrontPersistentTimeout>180</FrontPersistentTimeout>
+			<BackPersistentTimeout>180</BackPersistentTimeout>
+			<IncludeResponseTypeEncoding>off</IncludeResponseTypeEncoding>
+			<BackHTTPVersion>HTTP/1.1</BackHTTPVersion>
+			<AllowCompression>off</AllowCompression>
+			<PersistentConnections>on</PersistentConnections>
+			<LoopDetection>off</LoopDetection>
+			<FollowRedirects>on</FollowRedirects>
+			<DoHostRewriting>on</DoHostRewriting>
+			<DoChunkedUpload>off</DoChunkedUpload>
+			<ProcessHTTPErrors>on</ProcessHTTPErrors>
+			<HTTPClientIPLabel>X-Client-IP</HTTPClientIPLabel>
+			<WSAMode>sync2sync</WSAMode>
+			<WSARequireAAA>on</WSARequireAAA>
+			<WSAStrip>on</WSAStrip>
+			<WSADefaultReplyTo>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</WSADefaultReplyTo>
+			<WSADefaultFaultTo>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</WSADefaultFaultTo>
+			<WSAForce>off</WSAForce>
+			<WSAGenStyle>sync</WSAGenStyle>
+			<WSAHTTPAsyncResponseCode>204</WSAHTTPAsyncResponseCode>
+			<WSATimeout>120</WSATimeout>
+			<WSRMEnabled>off</WSRMEnabled>
+			<WSRMSequenceExpiration>3600</WSRMSequenceExpiration>
+			<WSRMDestinationAcceptCreateSequence>on</WSRMDestinationAcceptCreateSequence>
+			<WSRMDestinationMaximumSequences>400</WSRMDestinationMaximumSequences>
+			<WSRMDestinationInOrder>off</WSRMDestinationInOrder>
+			<WSRMDestinationMaximumInOrderQueueLength>10</WSRMDestinationMaximumInOrderQueueLength>
+			<WSRMDestinationAcceptOffers>off</WSRMDestinationAcceptOffers>
+			<WSRMFrontForce>off</WSRMFrontForce>
+			<WSRMBackForce>off</WSRMBackForce>
+			<WSRMBackCreateSequence>off</WSRMBackCreateSequence>
+			<WSRMFrontCreateSequence>off</WSRMFrontCreateSequence>
+			<WSRMSourceMakeOffer>off</WSRMSourceMakeOffer>
+			<WSRMUsesSequenceSSL>off</WSRMUsesSequenceSSL>
+			<WSRMSourceMaximumSequences>400</WSRMSourceMaximumSequences>
+			<WSRMSourceRetransmissionInterval>10</WSRMSourceRetransmissionInterval>
+			<WSRMSourceExponentialBackoff>on</WSRMSourceExponentialBackoff>
+			<WSRMSourceMaximumRetransmissions>4</WSRMSourceMaximumRetransmissions>
+			<WSRMSourceMaximumQueueLength>30</WSRMSourceMaximumQueueLength>
+			<WSRMSourceRequestAckCount>1</WSRMSourceRequestAckCount>
+			<WSRMSourceInactivityClose>360</WSRMSourceInactivityClose>
+			<Type>static-from-wsdl</Type>
+			<AutoCreateSources>off</AutoCreateSources>
+			<EndpointRewritePolicy class="WSEndpointRewritePolicy">PSELVOppgave</EndpointRewritePolicy>
+			<StylePolicy class="WSStylePolicy">PSELVOppgave</StylePolicy>
+			<RemoteFetchRetry>
+				<AutomaticRetry>off</AutomaticRetry>
+				<RetryInterval>1</RetryInterval>
+				<ReportingInterval>1</ReportingInterval>
+				<TotalRetries>1</TotalRetries>
+			</RemoteFetchRetry>
+			<BaseWSDL>
+				<WSDLSourceLocation>local:///wsdl/PSELVOppgaveWSEXP_PSELVOppgaveHttp_Service.wsdl</WSDLSourceLocation>
+				<WSDLName>PSELVOppgaveWSEXP_PSELVOppgaveHttp_Service.wsdl</WSDLName>
+				<PolicyAttachments class="PolicyAttachments">PSELVOppgave_PSELVOppgaveWSEXP_PSELVOppgaveHttp_Service.wsdl</PolicyAttachments>
+			</BaseWSDL>
+			<UserToggles>
+				<WSDLName>PSELVOppgaveWSEXP_PSELVOppgaveHttp_Service.wsdl</WSDLName>
+				<ServiceName>*</ServiceName>
+				<ServicePortName>*</ServicePortName>
+				<PortTypeName>*</PortTypeName>
+				<BindingName>*</BindingName>
+				<OperationName>*</OperationName>
+				<Toggles>
+					<Enable>on</Enable>
+					<Publish>on</Publish>
+					<VerifyFaults>off</VerifyFaults>
+					<VerifyHeaders>off</VerifyHeaders>
+					<NoRequestValidation>off</NoRequestValidation>
+					<NoResponseValidation>off</NoResponseValidation>
+					<SuppressFaultsElementsForRPCWrappers>off</SuppressFaultsElementsForRPCWrappers>
+					<NoWSA>on</NoWSA>
+					<NoWSRM>on</NoWSRM>
+				</Toggles>
+				<Subscription/>
+			</UserToggles>
+			<SOAPActionPolicy>lax</SOAPActionPolicy>
+		</WSGateway>
 		<WSStylePolicy name="PSELVBrukerprofil" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
@@ -1977,6 +2111,25 @@
 				<WSDLComponentValue/>
 				<Match class="Matching">PSELVNAVOrgEnhet_match_all</Match>
 				<Rule class="WSStylePolicyRule">PSELVNAVOrgEnhet_default_response-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+		</WSStylePolicy>
+		<WSStylePolicy name="PSELVOppgave" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
+			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVOppgave_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVOppgave_default_request-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVOppgave_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVOppgave_default_response-rule</Rule>
 				<Subscription/>
 			</PolicyMaps>
 		</WSStylePolicy>
@@ -2097,6 +2250,26 @@
 			<Unprocessed>off</Unprocessed>
 			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_response-rule_defaultaction_result</Actions>
 		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVOppgave_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>request-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_defaultaction_slm</Actions>
+			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_aaa_0</Actions>
+			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVOppgave_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>response-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVOppgave_default_response-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
 		<WSStylePolicyRule name="PSELVOpptjening_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<Direction>request-rule</Direction>
@@ -2158,12 +2331,4 @@
 			<Actions class="StylePolicyAction">PSELVUtbetaling_default_response-rule_defaultaction_result</Actions>
 		</WSStylePolicyRule>
 	</configuration>
-	<files>
-		<file name="webgui:///clixform.xsl" src="dp-aux/clixform.xsl" location="dp-aux" internal="true" hash="FqH/EiRQc9G4KCxNYzDc3vdKa8c=">ERROR</file>
-		<file name="webgui:///SchemaUtil.xsl" src="dp-aux/SchemaUtil.xsl" location="dp-aux" internal="true" hash="s28JDdDjrCrEQMXWe7at20JukyI=">ERROR</file>
-		<file name="webgui:///management.xsl" src="dp-aux/management.xsl" location="dp-aux" internal="true" hash="f/KttLrDejw6ktn0M+hmgQwfbwk=">ERROR</file>
-		<file name="webgui:///map-dmz.xsl" src="dp-aux/map-dmz.xsl" location="dp-aux" internal="true" hash="uGg9nNtMFGvcAh7wlcXTOew1gBQ=">ERROR</file>
-		<file name="webgui:///drMgmt.xml" src="dp-aux/drMgmt.xml" location="dp-aux" internal="true" hash="DN9G1ds4/hOAXxIRsX0rP8+foGA=">ERROR</file>
-		<file name="webgui:///basetypes.xml" src="dp-aux/basetypes.xml" location="dp-aux" internal="true" hash="CfSA4UF85LZ2JF3fh0+rTzTzEi8=">ERROR</file>
-	</files>
 </datapower-configuration>
