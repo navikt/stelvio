@@ -125,19 +125,44 @@ public class SetupConfig extends AbstractMojo{
 				envProps = readXmlProperties(envPropsPath);
 				if (containsNewProperties())
 				{
-					getLog().warn("Property file contains new properties!\n\n" + dictToString(newProps)) ;
 					throw new IOException("Property file contains new properties!\n\n" + dictToString(newProps));
 				}
 				createPropertyFile(appPropsPath);
+				
+				getLog().info("Cleaning up temporary files...");
+				delete(new File(appPropsPath));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				throw new MojoExecutionException("IOException occured while executing plugin!",e);
 			} catch (DocumentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				throw new MojoExecutionException("DocumentException occured while executing plugin!",e);
 			}			
 		}		
 	}
+	
+	/**
+	 * Deletes a path structure recursively
+	 * @param path path to delete
+	 * @return true if path was successfully deleted, otherwise false
+	 */
+	private boolean delete(File path){
+		if(path.isDirectory()){
+			File[] children = path.listFiles();
+			for(int i = 0; i < children.length; i++){
+				boolean success = delete(children[i]);
+				if(!success){
+					return false;
+				}
+			}
+		}
+		System.gc();
+		return path.delete();
+		
+	}
+	
 	/**
 	 * Searches through the mapping file, and returns the correct Maven version id 
 	 * based on the parameter bid (Moose's build id).

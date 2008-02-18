@@ -4,7 +4,7 @@
   <groupId>no.nav.maven.plugins</groupId>
   <artifactId>maven-wasconfig-plugin</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <name>Maven Mojo Archetype</name>
   <url>http://maven.apache.org</url>
   
@@ -21,7 +21,7 @@
 					<plugin>
 						<groupId>no.nav.maven.plugins</groupId>
 						<artifactId>maven-wasconfig-plugin</artifactId>
-						<version>1.0-SNAPSHOT</version>
+						<version>1.0</version>
 						<executions>
 							<execution>
 								<phase>install</phase>
@@ -76,14 +76,18 @@ Index of /m2mirror/sshtools/j2ssh-core/0.2.2
   </dependencies>
   <distributionManagement>
 		<repository>
-			<id>nav-maven2-mirror</id>
-			<name>NAV Maven2 Mirror Repository</name>
-			<url>scp:///maven.adeo.no/m2mirror/</url>
+			<id>nav-maven2-internal-repo</id>
+			<name>NAV Maven2 Internal Repository</name>
+			<url>scp://maven.adeo.no/var/maven2/internal</url>
 		</repository>
 		<snapshotRepository>
 			<id>nav-pensjon-maven2-snapshot-repo</id>
 			<name>NAV Maven2 Internal Snapshot Repository</name>
 			<url>scp://10.33.1.53/var/maven2/snapshot</url>
 		</snapshotRepository>
+		<site>
+			<id>website</id>
+			<url>scp://10.33.1.53/var/www/html/project/pcom_k_d2/</url>
+		</site>
 	</distributionManagement>
 </project>
