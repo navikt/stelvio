@@ -384,6 +384,19 @@
 			<MatchWithPCRE>off</MatchWithPCRE>
 			<CombineWithOr>off</CombineWithOr>
 		</Matching>
+		<Matching name="PSELVOppgave_match_all" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<MatchRules>
+				<Type>url</Type>
+				<HttpTag/>
+				<HttpValue/>
+				<Url>*</Url>
+				<ErrorCode/>
+				<XPATHExpression/>
+			</MatchRules>
+			<MatchWithPCRE>off</MatchWithPCRE>
+			<CombineWithOr>off</CombineWithOr>
+		</Matching>
 		<Matching name="PSELVOpptjening_match_all" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<MatchRules>
@@ -438,6 +451,11 @@
 			<EnforcementMode>enforce</EnforcementMode>
 			<PolicyReferences>on</PolicyReferences>
 		</PolicyAttachments>
+		<PolicyAttachments name="PSELVOppgave_PSELVOppgaveWSEXP_PSELVOppgaveHttp_Service.wsdl" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<EnforcementMode>enforce</EnforcementMode>
+			<PolicyReferences>on</PolicyReferences>
+		</PolicyAttachments>
 		<PolicyAttachments name="PSELVOpptjening_PSELVOpptjeningWSEXP_PSELVOpptjeningHttp_Service.wsdl" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<EnforcementMode>enforce</EnforcementMode>
@@ -460,6 +478,9 @@
 			<mAdminState>enabled</mAdminState>
 		</SLMPolicy>
 		<SLMPolicy name="PSELVNAVOrgEnhet" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+		</SLMPolicy>
+		<SLMPolicy name="PSELVOppgave" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 		</SLMPolicy>
 		<SLMPolicy name="PSELVOpptjening" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
@@ -742,6 +763,78 @@
 			<Timeout>0</Timeout>
 		</StylePolicyAction>
 		<StylePolicyAction name="PSELVNAVOrgEnhet_default_response-rule_defaultaction_result" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Type>results</Type>
+			<Input>INPUT</Input>
+			<Output>OUTPUT</Output>
+			<NamedInOutLocationType>default</NamedInOutLocationType>
+			<OutputType>default</OutputType>
+			<Transactional>off</Transactional>
+			<SOAPValidation>body</SOAPValidation>
+			<SQLSourceType>static</SQLSourceType>
+			<Asynchronous>off</Asynchronous>
+			<ResultsMode>first-available</ResultsMode>
+			<RetryCount>0</RetryCount>
+			<RetryInterval>1000</RetryInterval>
+			<MultipleOutputs>off</MultipleOutputs>
+			<IteratorType>XPATH</IteratorType>
+			<Timeout>0</Timeout>
+		</StylePolicyAction>
+		<StylePolicyAction name="PSELVOppgave_default_request-rule_aaa_0" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Type>aaa</Type>
+			<Input>INPUT</Input>
+			<Output>PIPE</Output>
+			<NamedInOutLocationType>default</NamedInOutLocationType>
+			<AAA class="AAAPolicy">LTPAMapping_Intern2Sensitiv</AAA>
+			<Transactional>off</Transactional>
+			<SOAPValidation>body</SOAPValidation>
+			<SQLSourceType>static</SQLSourceType>
+			<Asynchronous>off</Asynchronous>
+			<ResultsMode>first-available</ResultsMode>
+			<RetryCount>0</RetryCount>
+			<RetryInterval>1000</RetryInterval>
+			<MultipleOutputs>off</MultipleOutputs>
+			<IteratorType>XPATH</IteratorType>
+			<Timeout>0</Timeout>
+		</StylePolicyAction>
+		<StylePolicyAction name="PSELVOppgave_default_request-rule_defaultaction_result" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Type>results</Type>
+			<Input>PIPE</Input>
+			<Output>OUTPUT</Output>
+			<NamedInOutLocationType>default</NamedInOutLocationType>
+			<OutputType>default</OutputType>
+			<Transactional>off</Transactional>
+			<SOAPValidation>body</SOAPValidation>
+			<SQLSourceType>static</SQLSourceType>
+			<Asynchronous>off</Asynchronous>
+			<ResultsMode>first-available</ResultsMode>
+			<RetryCount>0</RetryCount>
+			<RetryInterval>1000</RetryInterval>
+			<MultipleOutputs>off</MultipleOutputs>
+			<IteratorType>XPATH</IteratorType>
+			<Timeout>0</Timeout>
+		</StylePolicyAction>
+		<StylePolicyAction name="PSELVOppgave_default_request-rule_defaultaction_slm" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Type>slm</Type>
+			<Input>INPUT</Input>
+			<Output>Ignore</Output>
+			<NamedInOutLocationType>default</NamedInOutLocationType>
+			<Transactional>off</Transactional>
+			<SLMPolicy class="SLMPolicy">PSELVOppgave</SLMPolicy>
+			<SOAPValidation>body</SOAPValidation>
+			<SQLSourceType>static</SQLSourceType>
+			<Asynchronous>off</Asynchronous>
+			<ResultsMode>first-available</ResultsMode>
+			<RetryCount>0</RetryCount>
+			<RetryInterval>1000</RetryInterval>
+			<MultipleOutputs>off</MultipleOutputs>
+			<IteratorType>XPATH</IteratorType>
+			<Timeout>0</Timeout>
+		</StylePolicyAction>
+		<StylePolicyAction name="PSELVOppgave_default_response-rule_defaultaction_result" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<Type>results</Type>
 			<Input>INPUT</Input>
