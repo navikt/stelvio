@@ -1163,6 +1163,279 @@
 				<RemoteEndpointURI>/nav-cons-pen-pselv-utbetalingWeb/sca/PSELVUtbetalingWSEXP</RemoteEndpointURI>
 			</WSEndpointRemoteRewriteRule>
 		</WSEndpointRewritePolicy>
+		<WSStylePolicy name="PSELVBrukerprofil" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
+			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVBrukerprofil_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVBrukerprofil_default_request-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVBrukerprofil_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVBrukerprofil_default_response-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+		</WSStylePolicy>
+		<WSStylePolicy name="PSELVHenvendelse" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
+			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVHenvendelse_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVHenvendelse_default_request-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVHenvendelse_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVHenvendelse_default_response-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+		</WSStylePolicy>
+		<WSStylePolicy name="PSELVNAVOrgEnhet" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
+			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVNAVOrgEnhet_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVNAVOrgEnhet_default_request-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVNAVOrgEnhet_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVNAVOrgEnhet_default_response-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+		</WSStylePolicy>
+		<WSStylePolicy name="PSELVOppgave" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
+			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVOppgave_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVOppgave_default_request-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVOppgave_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVOppgave_default_response-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+		</WSStylePolicy>
+		<WSStylePolicy name="PSELVOpptjening" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
+			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVOpptjening_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVOpptjening_default_request-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVOpptjening_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVOpptjening_default_response-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+		</WSStylePolicy>
+		<WSStylePolicy name="PSELVPerson" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
+			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVPerson_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVPerson_default_request-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVPerson_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVPerson_default_response-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+		</WSStylePolicy>
+		<WSStylePolicy name="PSELVUtbetaling" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
+			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVUtbetaling_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVUtbetaling_default_request-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+			<PolicyMaps>
+				<WSDLComponentType>all</WSDLComponentType>
+				<WSDLComponentValue/>
+				<Match class="Matching">PSELVUtbetaling_match_all</Match>
+				<Rule class="WSStylePolicyRule">PSELVUtbetaling_default_response-rule</Rule>
+				<Subscription/>
+			</PolicyMaps>
+		</WSStylePolicy>
+		<WSStylePolicyRule name="PSELVBrukerprofil_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>request-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVBrukerprofil_default_request-rule_defaultaction_slm</Actions>
+			<Actions class="StylePolicyAction">PSELVBrukerprofil_default_request-rule_aaa_0</Actions>
+			<Actions class="StylePolicyAction">PSELVBrukerprofil_default_request-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVBrukerprofil_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>response-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVBrukerprofil_default_response-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVHenvendelse_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>request-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVHenvendelse_default_request-rule_defaultaction_slm</Actions>
+			<Actions class="StylePolicyAction">PSELVHenvendelse_default_request-rule_aaa_0</Actions>
+			<Actions class="StylePolicyAction">PSELVHenvendelse_default_request-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVHenvendelse_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>response-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVHenvendelse_default_response-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVNAVOrgEnhet_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>request-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_request-rule_defaultaction_slm</Actions>
+			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_request-rule_aaa_0</Actions>
+			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_request-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVNAVOrgEnhet_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>response-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_response-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVOppgave_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>request-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_defaultaction_slm</Actions>
+			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_aaa_0</Actions>
+			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVOppgave_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>response-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVOppgave_default_response-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVOpptjening_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>request-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVOpptjening_default_request-rule_defaultaction_slm</Actions>
+			<Actions class="StylePolicyAction">PSELVOpptjening_default_request-rule_aaa_0</Actions>
+			<Actions class="StylePolicyAction">PSELVOpptjening_default_request-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVOpptjening_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>response-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVOpptjening_default_response-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVPerson_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>request-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVPerson_default_request-rule_defaultaction_slm</Actions>
+			<Actions class="StylePolicyAction">PSELVPerson_default_request-rule_aaa_0</Actions>
+			<Actions class="StylePolicyAction">PSELVPerson_default_request-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVPerson_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>response-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVPerson_default_response-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVUtbetaling_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>request-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVUtbetaling_default_request-rule_defaultaction_slm</Actions>
+			<Actions class="StylePolicyAction">PSELVUtbetaling_default_request-rule_aaa_0</Actions>
+			<Actions class="StylePolicyAction">PSELVUtbetaling_default_request-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
+		<WSStylePolicyRule name="PSELVUtbetaling_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Direction>response-rule</Direction>
+			<InputFormat>none</InputFormat>
+			<OutputFormat>none</OutputFormat>
+			<NonXMLProcessing>off</NonXMLProcessing>
+			<Unprocessed>off</Unprocessed>
+			<Actions class="StylePolicyAction">PSELVUtbetaling_default_response-rule_defaultaction_result</Actions>
+		</WSStylePolicyRule>
 		<WSGateway name="PSELVBrukerprofil" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<UserSummary>${BUSTAG}</UserSummary>
@@ -1954,278 +2227,5 @@
 			</UserToggles>
 			<SOAPActionPolicy>lax</SOAPActionPolicy>
 		</WSGateway>
-		<WSStylePolicy name="PSELVBrukerprofil" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
-			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVBrukerprofil_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVBrukerprofil_default_request-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVBrukerprofil_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVBrukerprofil_default_response-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-		</WSStylePolicy>
-		<WSStylePolicy name="PSELVHenvendelse" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
-			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVHenvendelse_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVHenvendelse_default_request-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVHenvendelse_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVHenvendelse_default_response-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-		</WSStylePolicy>
-		<WSStylePolicy name="PSELVNAVOrgEnhet" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
-			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVNAVOrgEnhet_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVNAVOrgEnhet_default_request-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVNAVOrgEnhet_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVNAVOrgEnhet_default_response-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-		</WSStylePolicy>
-		<WSStylePolicy name="PSELVOppgave" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
-			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVOppgave_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVOppgave_default_request-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVOppgave_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVOppgave_default_response-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-		</WSStylePolicy>
-		<WSStylePolicy name="PSELVOpptjening" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
-			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVOpptjening_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVOpptjening_default_request-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVOpptjening_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVOpptjening_default_response-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-		</WSStylePolicy>
-		<WSStylePolicy name="PSELVPerson" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
-			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVPerson_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVPerson_default_request-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVPerson_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVPerson_default_response-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-		</WSStylePolicy>
-		<WSStylePolicy name="PSELVUtbetaling" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<DefStylesheetForSoap>store:///filter-reject-all.xsl</DefStylesheetForSoap>
-			<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVUtbetaling_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVUtbetaling_default_request-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-			<PolicyMaps>
-				<WSDLComponentType>all</WSDLComponentType>
-				<WSDLComponentValue/>
-				<Match class="Matching">PSELVUtbetaling_match_all</Match>
-				<Rule class="WSStylePolicyRule">PSELVUtbetaling_default_response-rule</Rule>
-				<Subscription/>
-			</PolicyMaps>
-		</WSStylePolicy>
-		<WSStylePolicyRule name="PSELVBrukerprofil_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>request-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVBrukerprofil_default_request-rule_defaultaction_slm</Actions>
-			<Actions class="StylePolicyAction">PSELVBrukerprofil_default_request-rule_aaa_0</Actions>
-			<Actions class="StylePolicyAction">PSELVBrukerprofil_default_request-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVBrukerprofil_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>response-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVBrukerprofil_default_response-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVHenvendelse_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>request-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVHenvendelse_default_request-rule_defaultaction_slm</Actions>
-			<Actions class="StylePolicyAction">PSELVHenvendelse_default_request-rule_aaa_0</Actions>
-			<Actions class="StylePolicyAction">PSELVHenvendelse_default_request-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVHenvendelse_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>response-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVHenvendelse_default_response-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVNAVOrgEnhet_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>request-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_request-rule_defaultaction_slm</Actions>
-			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_request-rule_aaa_0</Actions>
-			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_request-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVNAVOrgEnhet_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>response-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVNAVOrgEnhet_default_response-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVOppgave_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>request-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_defaultaction_slm</Actions>
-			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_aaa_0</Actions>
-			<Actions class="StylePolicyAction">PSELVOppgave_default_request-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVOppgave_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>response-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVOppgave_default_response-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVOpptjening_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>request-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVOpptjening_default_request-rule_defaultaction_slm</Actions>
-			<Actions class="StylePolicyAction">PSELVOpptjening_default_request-rule_aaa_0</Actions>
-			<Actions class="StylePolicyAction">PSELVOpptjening_default_request-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVOpptjening_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>response-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVOpptjening_default_response-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVPerson_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>request-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVPerson_default_request-rule_defaultaction_slm</Actions>
-			<Actions class="StylePolicyAction">PSELVPerson_default_request-rule_aaa_0</Actions>
-			<Actions class="StylePolicyAction">PSELVPerson_default_request-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVPerson_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>response-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVPerson_default_response-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVUtbetaling_default_request-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>request-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVUtbetaling_default_request-rule_defaultaction_slm</Actions>
-			<Actions class="StylePolicyAction">PSELVUtbetaling_default_request-rule_aaa_0</Actions>
-			<Actions class="StylePolicyAction">PSELVUtbetaling_default_request-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
-		<WSStylePolicyRule name="PSELVUtbetaling_default_response-rule" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
-			<mAdminState>enabled</mAdminState>
-			<Direction>response-rule</Direction>
-			<InputFormat>none</InputFormat>
-			<OutputFormat>none</OutputFormat>
-			<NonXMLProcessing>off</NonXMLProcessing>
-			<Unprocessed>off</Unprocessed>
-			<Actions class="StylePolicyAction">PSELVUtbetaling_default_response-rule_defaultaction_result</Actions>
-		</WSStylePolicyRule>
 	</configuration>
 </datapower-configuration>
