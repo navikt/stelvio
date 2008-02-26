@@ -39,7 +39,7 @@ public class ErrorHelperUtil {
 	/**
 	 * Default date pattern used within integration
 	 */
-	private final static String DEFAULT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+	private final static String DEFAULT_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 	private final static String FAULT_NAMESPACE = "http://nav-lib-cons-pen-psakpselv/no/nav/lib/pen/psakpselv/fault";
 	private final static String FAULT_ASBO_NAME = "FaultPenGenerisk";
 	
@@ -108,9 +108,8 @@ public class ErrorHelperUtil {
 	private static DataObject getFaultBO(Exception sre, String module, String faultBONamespace, String faultBOName, String errorType, String errorMessage, String rootCause) {
 		
 		DataObject faultBo = DataFactory.INSTANCE.create(faultBONamespace, faultBOName);
-		String datePattern = "yyyy-MM-dd HH:mm:ss";
 		Date date = new Date();
-		SimpleDateFormat formater = new SimpleDateFormat(datePattern);
+		SimpleDateFormat formater = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
 		
 		faultBo.setString("errorSource", getSCAContext(module));
 		faultBo.setString("errorType", errorType);
