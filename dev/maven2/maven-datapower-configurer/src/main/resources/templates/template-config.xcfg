@@ -248,6 +248,12 @@
 			<PasswordAlias>off</PasswordAlias>
 			<IgnoreExpiration>off</IgnoreExpiration>
 		</CryptoCertificate>
+		<CryptoCertificate name="NAVTestCA" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
+			<mAdminState>enabled</mAdminState>
+			<Filename>pubcert:///NAV-test-ca.cer</Filename>
+			<PasswordAlias>off</PasswordAlias>
+			<IgnoreExpiration>off</IgnoreExpiration>
+		</CryptoCertificate>
 		<CryptoCertificate name="${CryptoCertificate.name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
 			<Filename>${CryptoCertificate.Filename}</Filename>
@@ -1068,7 +1074,7 @@
 			<WSEndpointRemoteRewriteRule>
 				<ServicePortMatchRegexp>^{http://nav-cons-pen-pselv-navorgenhet/no/nav/inf/Binding}PSELVNAVOrgEnhetWSEXP_PSELVNAVOrgEnhetHttpPort$</ServicePortMatchRegexp>
 				<RemoteEndpointProtocol>${WSEndpointRemoteRewriteRule.RemoteEndpointProtocol}</RemoteEndpointProtocol>
-				<RemoteEndpointHostname>tjenestebuss-t2.adeo.no</RemoteEndpointHostname>
+				<RemoteEndpointHostname>${WSEndpointRemoteRewriteRule.RemoteEndpointHostname}</RemoteEndpointHostname>
 				<RemoteEndpointPort>${WSEndpointRemoteRewriteRule.RemoteEndpointPort}</RemoteEndpointPort>
 				<RemoteEndpointURI>/nav-cons-pen-pselv-navorgenhetWeb/sca/PSELVNAVOrgEnhetWSEXP</RemoteEndpointURI>
 			</WSEndpointRemoteRewriteRule>
