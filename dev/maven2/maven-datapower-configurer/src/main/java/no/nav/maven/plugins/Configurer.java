@@ -93,7 +93,19 @@ extends AbstractMojo
 	 * @required
 	 */
 	private String password; 
-	
+
+	/**
+	 * Location of the file.
+	 * @parameter expression="${ltpaPwdWAS}"
+	 */
+	private String ltpaPwdWAS; 
+
+	/**
+	 * Location of the file.
+	 * @parameter expression="${ltpaPwdWPS}"
+	 */
+	private String ltpaPwdWPS; 
+
 	/**
 	 * Location of the file.
 	 * @parameter expression="${bustag}"
@@ -131,99 +143,105 @@ extends AbstractMojo
 								  .build();
 		
 		//uploading files to datapower
-		if(importFiles){
+		if (importFiles) {
 			try {
-				if(!fileArchive.exists()) throw new MojoExecutionException("Specified file archive invalid: File not found!");
-				
-				getLog().info("------------- File Import -------------");
-				getLog().info("Opening connection to DataPower device...");
-				
-				getLog().info("Extracting ZIP archive...");
-				FileUtils.extractArchive(fileArchive, tmpFolder);
-				getLog().info("Creating request...");
-				dp.importFiles(tmpFolder, DeviceFileStore.LOCAL);
-				getLog().info("Files successfully imported...");
-				getLog().info("Cleaning up temporary files...");
-				tmpFolder.delete();
-				getLog().info("-----------------------------------------");
-				
+				doImportFiles(dp);
 			} catch (IOException e) {			
 				throw new MojoExecutionException("Error importing files to datapower!", e);
 			}
 		}
 		
 		//importing config to datapower
-		if(importConfig){
+		if (importConfig) {
 			try {
-				getLog().info("------------- Config Import -------------");
-				//reading environment and template file
-				
-				getLog().info("Loading template file...");
-				
-				
-				getLog().info("Merging configuration with templates ...");
-				
-				//creating map formatter
-				TemplateFormatter mapFormatter = new TemplateFormatter(readTemplate(mapTemplate));
-				mergedContent = mapFormatter.format(env);
-				String filename = env.getProperty("mapping.filename").toString();
-				filename = filename.substring(filename.lastIndexOf("/") + 1);
-				getLog().info("Opening connection to DataPower device...");
-				getLog().info("Importing " + filename + "...");
-				dp.importFile(filename,mergedContent,DeviceFileStore.LOCAL);
-				
-				//writing merged config to outDir
-				try {
-					File localmap = new File(outputDirectory.getAbsolutePath() + "/" + mapTemplate.getName());
-					localmap.delete();
-					FileWriter writer = new FileWriter(localmap);
-					writer.write(mergedContent);
-					writer.close();
-				} catch (IOException e) {
-					getLog().warn("Unable to write local copy of imported map file!");
-				}
-				
-				
-				//creating config formatter
-				TemplateFormatter cfgFormatter = new TemplateFormatter(readTemplate(configTemplate));
-				mergedContent = cfgFormatter.format(env);
-				getLog().info("Adding config to zip file...");
-				byte[] zipBytes = FileUtils.createZipArchive(mergedContent.getBytes("UTF-8"), "export.xml");
-				
-				// Open connection to DataPower device
-				getLog().info("Opening connection to DataPower device...");
-				getLog().info("Importing configuration...");
-				String compressedData = new String(Base64.encodeBase64(zipBytes));
-				dp.importConfig(compressedData, ImportFormat.ZIP);
-				
-				//writing merged config to outDir
-				try {
-					File localConfig = new File(outputDirectory.getAbsolutePath() + "/dp-plugin-config.xcfg");
-					localConfig.delete();
-					FileWriter writer = new FileWriter(localConfig);
-					writer.write(mergedContent);
-					writer.close();
-				} catch (IOException e) {
-					getLog().warn("Unable to write local copy of imported config file!");
-				}
-				
-				
-				//importing LTPA keys to DataPower device
-				importLTPAKeys(dp,"ltpa");
-				
-				//Saving imported configuration and restarting dp
-				getLog().info("Saving configuration and restarting domain...");
-				dp.saveConfigAndRestartDomain();
-				
-				getLog().info("Done!");
-				getLog().info("-----------------------------------------");
+				doImportConfig(dp);
 			} catch (IOException e) {
 				throw new MojoExecutionException("Error importing config to datapower!", e);
 			}
 		}
-	}	
+	}
 	
-	private void importLTPAKeys(XMLMgmtInterface dp, String path) throws IOException{
+	private void doImportFiles(XMLMgmtInterface dp) throws IOException {
+		if(!fileArchive.exists())
+			throw new IOException("Specified file archive invalid: File not found!");		
+		getLog().info("------------- File Import -------------");
+		getLog().info("Opening connection to DataPower device...");
+		getLog().info("Extracting ZIP archive...");
+		FileUtils.extractArchive(fileArchive, tmpFolder);
+		getLog().info("Creating request...");
+		dp.importFiles(tmpFolder, DeviceFileStore.LOCAL);
+		getLog().info("Files successfully imported...");
+		getLog().info("Cleaning up temporary files...");
+		tmpFolder.delete();
+		getLog().info("-----------------------------------------");
+	}
+	
+	private void doImportConfig(XMLMgmtInterface dp) throws IOException {
+		getLog().info("------------- Config Import -------------");
+		//reading environment and template file
+		
+		getLog().info("Loading template file...");
+		
+		
+		getLog().info("Merging configuration with templates ...");
+		
+		//creating map formatter
+		TemplateFormatter mapFormatter = new TemplateFormatter(readTemplate(mapTemplate));
+		mergedContent = mapFormatter.format(env);
+		String filename = env.getProperty("mapping.filename").toString();
+		filename = filename.substring(filename.lastIndexOf("/") + 1);
+		getLog().info("Opening connection to DataPower device...");
+		getLog().info("Importing " + filename + "...");
+		dp.importFile(filename,mergedContent,DeviceFileStore.LOCAL);
+		
+		//writing merged config to outDir
+		try {
+			File localmap = new File(outputDirectory.getAbsolutePath() + "/" + mapTemplate.getName());
+			localmap.delete();
+			FileWriter writer = new FileWriter(localmap);
+			writer.write(mergedContent);
+			writer.close();
+		} catch (IOException e) {
+			getLog().warn("Unable to write local copy of imported map file!");
+		}
+		
+		
+		//creating config formatter
+		TemplateFormatter cfgFormatter = new TemplateFormatter(readTemplate(configTemplate));
+		mergedContent = cfgFormatter.format(env);
+		getLog().info("Adding config to zip file...");
+		byte[] zipBytes = FileUtils.createZipArchive(mergedContent.getBytes("UTF-8"), "export.xml");
+		
+		// Open connection to DataPower device
+		getLog().info("Opening connection to DataPower device...");
+		getLog().info("Importing configuration...");
+		String compressedData = new String(Base64.encodeBase64(zipBytes));
+		dp.importConfig(compressedData, ImportFormat.ZIP);
+		
+		//writing merged config to outDir
+		try {
+			File localConfig = new File(outputDirectory.getAbsolutePath() + "/dp-plugin-config.xcfg");
+			localConfig.delete();
+			FileWriter writer = new FileWriter(localConfig);
+			writer.write(mergedContent);
+			writer.close();
+		} catch (IOException e) {
+			getLog().warn("Unable to write local copy of imported config file!");
+		}
+		
+		
+		//importing LTPA keys to DataPower device
+		doImportLTPAKeys(dp,"ltpa");
+		
+		//Saving imported configuration and restarting dp
+		getLog().info("Saving configuration and restarting domain...");
+		dp.saveConfigAndRestartDomain();
+		
+		getLog().info("Done!");
+		getLog().info("-----------------------------------------");
+	}
+	
+	private void doImportLTPAKeys(XMLMgmtInterface dp, String path) throws IOException{
 		File LTPAFolder = new File(environment.getAbsolutePath().replaceAll(environment.getName(), "") + "/ltpa-keys");
 		File[] keys = LTPAFolder.listFiles();
 		getLog().info("------------- LTPA Keys Import -------------");
@@ -241,11 +259,22 @@ extends AbstractMojo
 		getLog().info("-----------------------------------------");
 	}
 	
-	private void readEnvironment() throws IOException{
+	private void readEnvironment() throws IOException {
 		env = new Properties();
 		
-		if(environment == null) throw new IOException("Environment must be set when importing config!");
+		if (environment == null)
+			throw new IOException("Environment must be set when importing config!");
 		env.load(new FileInputStream(environment));
+		
+		// Check for properties overridden by command line arguments
+		if (ltpaPwdWAS != null && !ltpaPwdWAS.equals("")) {
+			getLog().info("Command line override property ltpaPwdWAS = " + ltpaPwdWAS);
+			env.put("AULTPAKeyFilePassword.WAS", ltpaPwdWAS);
+		}
+		if (ltpaPwdWPS != null && !ltpaPwdWPS.equals("")) {
+			getLog().info("Command line override property ltpaPwdWPS = " + ltpaPwdWPS);
+			env.put("PPLTPAKeyFilePassword.WPS", ltpaPwdWPS);
+		}
 		
 		//manually trimming properties
 		Enumeration envProps = env.keys();
@@ -257,10 +286,11 @@ extends AbstractMojo
 		
 		//adding bus_tag to environment
 		env.setProperty("BUSTAG",bustag.trim());
-	}
+	}	
 
 	private String readTemplate(File template) throws IOException{
-		if(template == null) throw new IOException("Template must be set when importing config!");
+		if (template == null)
+			throw new IOException("Template must be set when importing config!");
 		return StreamUtils.getInputStreamAsString(new FileInputStream(template), true);
 	}
 }

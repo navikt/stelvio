@@ -5,9 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-import java.util.StringTokenizer;
-
-import org.apache.commons.codec.binary.Base64;
 
 import no.nav.maven.plugins.datapower.command.CreateDirCommand;
 import no.nav.maven.plugins.datapower.command.DoImportCommand;
@@ -18,6 +15,8 @@ import no.nav.maven.plugins.datapower.config.ImportFormat;
 import no.nav.maven.plugins.datapower.util.FileUtils;
 import no.nav.maven.plugins.datapower.util.HttpUtils;
 import no.nav.maven.plugins.datapower.util.StreamUtils;
+
+import org.apache.commons.codec.binary.Base64;
 
 public class XMLMgmtInterface {
 
