@@ -267,11 +267,11 @@ extends AbstractMojo
 		env.load(new FileInputStream(environment));
 		
 		// Check for properties overridden by command line arguments
-		if (ltpaPwdWAS != null && !ltpaPwdWAS.equals("")) {
+		if (checkCommandlinePropertyOverride(ltpaPwdWAS)) {
 			getLog().info("Command line override property ltpaPwdWAS = " + ltpaPwdWAS);
 			env.put("AULTPAKeyFilePassword.WAS", ltpaPwdWAS);
 		}
-		if (ltpaPwdWPS != null && !ltpaPwdWPS.equals("")) {
+		if (checkCommandlinePropertyOverride(ltpaPwdWPS)) {
 			getLog().info("Command line override property ltpaPwdWPS = " + ltpaPwdWPS);
 			env.put("PPLTPAKeyFilePassword.WPS", ltpaPwdWPS);
 		}
@@ -287,6 +287,10 @@ extends AbstractMojo
 		//adding bus_tag to environment
 		env.setProperty("BUSTAG",bustag.trim());
 	}	
+	
+	private boolean checkCommandlinePropertyOverride(String property) {
+		return (property != null && !property.equals("")) ? true : false;
+	}
 
 	private String readTemplate(File template) throws IOException{
 		if (template == null)
