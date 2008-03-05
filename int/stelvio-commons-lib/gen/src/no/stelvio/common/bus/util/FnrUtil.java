@@ -8,6 +8,7 @@ package no.stelvio.common.bus.util;
  * @author person983601e0e117 (Accenture)
  * @author person15754a4522e7
  * @author Fredrik Dahl-Jørgensen (Accenture)
+ * @author Jonny Mauland (Accenture)
  * @see Embeddable
  */
 
@@ -50,7 +51,42 @@ public final class FnrUtil{
 		return false;
 	}
 	
+	/**
+	 * Determines if a Norwegian social security number belongs to a male or a female 
+	 * 
+	 * @param pid Pid to check if belongs to male or female 
+	 * @return <code>true</code> if social security no belongs to male, <code>false</code> if it
+	 * belongs to female and null if input is empty
+	 */
+	public static Boolean pidBelongsToMale(String pid) {
+		Boolean response = null;
+		if(pid!=null && !"".equals(pid)){
+			int ninthDigit = Integer.parseInt(pid.substring(8,9));
+			if(!isEven(ninthDigit)){
+				return Boolean.TRUE;
+			}
+			else{
+				return Boolean.FALSE;
+			}
+		}
+		return response;
+		
+	}
 	
+	/**
+	 * Checks if a digit is odd or even
+	 * 
+	 * @param digit The digit to determine if is odd or even 
+	 * @return <code>true</code> if digit is even, <code>false</code> if odd
+	 */
+	private static boolean isEven(int digit) {
+		if (digit % 2 == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	
 	/**
 	 * Validates that the white space usage in the pid is valid. Valid use of white space is ONE white space between index 5 and
