@@ -50,7 +50,7 @@ import java.util.Map;
  *
  * @goal fixear
  * 
- * @phase process-sources
+ * @phase process-sources 
  */
 public class EarFixer
     extends AbstractMojo
@@ -81,10 +81,11 @@ public class EarFixer
 	 * @parameter expression="${mooseId}"
 	 * @required
 	 */
-	private String mooseId = "PSAK_K_D3_0007";
+	private String mooseId = "PSELV_R_D3_0071";
 	
 	
 	private String module;
+	private String version;
 	private File earFile;
 	private Dictionary environment;
 
@@ -109,9 +110,27 @@ public class EarFixer
 			
 			extractEarFile(earFile);
 			
-			if(((String)environment.get("server.domain")).toUpperCase().compareTo("SENSITIVSONE") == 0 &&
-					module.toUpperCase().compareTo("PSELV")==0){
-				getLog().info("Configuring PSELV for SENSITIVSONE...");
+			if(mooseId.startsWith("PSAK")) fixPSAK();
+			
+			if(mooseId.startsWith("PSELV")) fixPSELV();
+						
+			compressEarFile();
+			
+			getLog().info("Cleaning up temporary files...");
+			delete(workingArea);
+			
+			getLog().info("Ear editing completed successfully!");
+			
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			throw new MojoExecutionException("Error editing files! See above for details...", e1);
+		}
+	}
+	
+	private void fixPSELV() throws IOException, DocumentException{
+		if(isSensitiveZone()){
+			if(isGiant()){
+				getLog().info("Configuring PSELV KJEMPEN for SENSITIVSONE...");
 				
 				fixWebXml(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/web.xml"));
 				
@@ -120,23 +139,97 @@ public class EarFixer
 				fixPrsSecurity(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/security/prs-security-context.xml"));
 				
 				fixFacesSecurity(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/security/faces-security-config.xml"));
-				
-			}else getLog().info("No configuration needed for " + module + " in INTERNSONE");
 			
-			if(module.toUpperCase().compareTo("PSAK") == 0){
-				fixResources(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/resources_nb_NO.properties"));
+			}else{
+				getLog().info("Configuring PSELV REKRUTTEN for SENSITIVSONE...");
+				
+				fixWebXml(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/web.xml"));
+				
+				fixPrsCommon(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/spring/prs-common-context.xml"));
+				
+				fixPrsSecurity(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/security/prs-security-context.xml"));
+				
+				fixFacesSecurity(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/security/faces-security-config.xml"));
+			
 			}
+		}else{
+			getLog().info("Configuring PSELV for INTERNSONE...");
 			
 			fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
-			
-			delete(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties"));
-			
-			compressEarFile();
-			
-		} catch (Exception e1) {
-			e1.printStackTrace();
-			throw new MojoExecutionException("Error editing files! See above for details...", e1);
 		}
+		
+		
+		
+		
+		getLog().info("Done!");
+	}
+	
+	private void fixPSAK() throws IOException, DocumentException{
+		File log4j, penConfig, psakConfig;
+		
+		if(isSensitiveZone()){			//SENSITIVSONE
+			
+			if(isGiant()){				//KJEMPEN
+				getLog().info("Configuring PSAK KJEMPEN for SENSITIVSONE...");
+
+				//delete log4j.properties
+				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
+				if(log4j.exists()){
+					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
+					log4j.delete();
+				}
+				
+				//fix pselv link in resource.properties
+				fixResources(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/resources_nb_NO.properties"));
+			}else{						//REKRUTTEN
+				getLog().info("Configuring PSAK REKRUTTEN for SENSITIVSONE...");
+
+				//delete log4j.properties
+				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
+				if(log4j.exists()){
+					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
+					log4j.delete();
+				}
+			}
+			
+		}else{							//INTERNSONE
+			if(isGiant()){ 				//KJEMPEN
+				getLog().info("Configuring PSAK KJEMPEN for INTERNSONE...");
+				
+				//delete config dependencies
+				penConfig = new File(workingArea.getAbsolutePath() + "/lib/nav-config-pensjon-pen-" + version + ".jar");
+				psakConfig = new File(workingArea.getAbsolutePath() + "/lib/nav-config-pensjon-psak-" + version + ".jar");
+				if(penConfig.exists()){
+					getLog().info(penConfig.getName() + " found in lib, deleting...");
+					penConfig.delete();
+				}
+				if(psakConfig.exists()){
+					getLog().info(psakConfig.getName() + " found in lib, deleting...");
+					psakConfig.delete();
+				}
+				
+				//delete log4j.properties
+				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
+				if(log4j.exists()){
+					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
+					log4j.delete();
+				}
+				
+				//Setting up role binding
+				getLog().info("Setting up role binding for INTERNSONE...");
+				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
+			}else{						//REKRUTTEN
+				getLog().info("Configuring PSAK REKRUTTEN for INTERNSONE...");
+				
+				//delete log4j.properties
+				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
+				if(log4j.exists()){
+					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
+					log4j.delete();
+				}
+			}
+		}
+		getLog().info("Done!");
 	}
 	
 	private File resolveEarFile() throws IOException{
@@ -145,7 +238,7 @@ public class EarFixer
 		String line;
 		while((line = reader.readLine()) != null){
 			if(line.startsWith(mooseId) && line.split("\\|").length == 2){
-				String version = line.split("\\|")[1];
+				version = line.split("\\|")[1];
 				getLog().info("Resolved MooseID '" + mooseId + "' to version '" + version + "'");
 				if(mooseId.startsWith("PEN")){
 					return new File(workingArea.getAbsolutePath(), "nav-pensjon-pen-jee-" + version + ".ear");
@@ -159,13 +252,21 @@ public class EarFixer
 		return null;		
 	}
 	
+	private boolean isGiant(){
+		return mooseId.indexOf("_K_") >= 0;
+	}
+	
+	private boolean isSensitiveZone(){
+		return ((String)environment.get("server.domain")).toUpperCase().compareTo("SENSITIVSONE") == 0;
+	}
+	
 	public void extractEarFile(File earFile) throws IOException {
 		//extracting ear file
 		getLog().info("Extracting ear file...");
 		//creating unique temp folder for unpacking ear content
 		workingArea = new File(workingArea.getAbsolutePath() + "/" + (new Date()).getTime() + "_" + earFile.getName());	
 		workingArea.mkdirs();
-		ZipUtils.extract(earFile,workingArea);
+		ZipUtils.extract2(earFile,workingArea);
 
 		//extracting inner war file
 		String[] temp = earFile.getName().split("-");
@@ -173,7 +274,7 @@ public class EarFixer
 			throw new IOException("Unexpected ear file name pattern, expected nav-pensjon-[module]-[version].ear, got " + earFile.getName());
 		}
 		File warFile = new File(workingArea.getAbsolutePath() + "/nav-presentation-pensjon-" + temp[2] + "-web-" + temp[4].substring(0,temp[4].length()-4) + ".war");
-		ZipUtils.extract(warFile,new File(workingArea.getAbsolutePath() + "/war"));
+		ZipUtils.extract2(warFile,new File(workingArea.getAbsolutePath() + "/war"));
 		//if(!delete(warFile)) getLog().warn("Unable to delete war file after extracting war content");
 		getLog().info("Done!");
 	}
@@ -271,7 +372,7 @@ public class EarFixer
 		}
 		getLog().info("Done!");
 	}
-	
+
 	public void fixWebXml(File webXml) throws DocumentException, IOException{
 		Document doc;
 		SAXReader reader;
@@ -677,6 +778,22 @@ public class EarFixer
 		}
 		
 		writeXml(doc,prsSecurity);
+		
+		//handling weird multiline demand of security.filterChainProxy bean
+		BufferedReader textReader = new BufferedReader(new FileReader(prsSecurity));
+		String line = null, content = null;
+		StringBuilder bldr = new StringBuilder();
+		while((line = textReader.readLine()) != null){
+			bldr.append(line + System.getProperty("line.separator"));
+		}
+		textReader.close();
+		content = bldr.toString();
+		content = content.replaceAll("CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON ", "CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON" + System.getProperty("line.separator") + "\t\t\t");
+		content = content.replaceAll("PATTERN_TYPE_APACHE_ANT ", "PATTERN_TYPE_APACHE_ANT" + System.getProperty("line.separator") + "\t\t\t");
+		
+		FileWriter writer = new FileWriter(prsSecurity);
+		writer.write(content);
+		writer.close();
 		getLog().info("Finished prs-security-context.xml!");
 	}
 	
@@ -796,12 +913,12 @@ public class EarFixer
 		search.setNamespaceURIs(uris);	
 		table = (Element)search.selectSingleNode(doc);
 		
-		Enumeration enum = environment.keys();
+		Enumeration enumeration = environment.keys();
 		String prefix = "";
 		if(module.compareTo("psak") == 0) prefix = "server.mapping.psak.";
 		else if(module.compareTo("pselv") == 0) prefix = "server.mapping.pselv.";
-		while(enum.hasMoreElements()){
-			String key = (String)enum.nextElement();
+		while(enumeration.hasMoreElements()){
+			String key = (String)enumeration.nextElement();
 			if(key.startsWith(prefix)){
 				if(((String)environment.get(key))
 						.indexOf("AllAuthenticated") >= 0) //AllAuthenticated user special mapping
