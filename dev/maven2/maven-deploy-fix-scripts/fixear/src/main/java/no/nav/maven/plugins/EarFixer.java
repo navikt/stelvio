@@ -60,28 +60,28 @@ public class EarFixer
 	 * @parameter expression="${workingArea}"
 	 * @required
 	 */
-	private File workingArea = new File("D:\\Deploy_Temp");
+	private File workingArea; // = new File("D:\\Deploy_Temp");
 	
 	/**
 	 * This parameter is the ear source file
 	 * @parameter mappingfile="${mappingFile}"
 	 * @required
 	 */
-	private File mappingFile = new File("M:\\DevArch_Tools_Shared\\DevArch\\tools\\moose\\build_version_mapping.txt");
+	private File mappingFile; // = new File("M:\\DevArch_Tools_Shared\\DevArch\\tools\\moose\\build_version_mapping.txt");
 	
 	/**
 	 * This parameter is the environment file containing environment properties
 	 * @parameter expression="${envFile}"
 	 * @required
 	 */
-	private File environFile = new File("M:\\DevArch_Tools_Shared\\DevArch\\tools\\moose\\environments\\KompTestKjempen.xml");
+	private File environFile; // = new File("M:\\DevArch_Tools_Shared\\DevArch\\tools\\moose\\environments\\KompTestKjempen.xml");
 	
 	/**
 	 * What module is being edited
 	 * @parameter expression="${mooseId}"
 	 * @required
 	 */
-	private String mooseId = "PSELV_R_D3_0071";
+	private String mooseId; // = "PSELV_R_D3_0071";
 	
 	
 	private String module;
