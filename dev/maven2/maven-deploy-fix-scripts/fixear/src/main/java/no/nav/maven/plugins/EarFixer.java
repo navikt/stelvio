@@ -128,8 +128,8 @@ public class EarFixer
 	}
 	
 	private void fixPSELV() throws IOException, DocumentException{
-		if(isSensitiveZone()){
-			if(isGiant()){
+		if(isSensitiveZone()){ //SENSITIVSONE
+			if(isGiant()){ //KJEMPEN
 				getLog().info("Configuring PSELV KJEMPEN for SENSITIVSONE...");
 				
 				fixWebXml(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/web.xml"));
@@ -140,7 +140,7 @@ public class EarFixer
 				
 				fixFacesSecurity(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/security/faces-security-config.xml"));
 			
-			}else{
+			}else{  //REKRUTTEN
 				getLog().info("Configuring PSELV REKRUTTEN for SENSITIVSONE...");
 				
 				fixWebXml(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/web.xml"));
@@ -150,12 +150,17 @@ public class EarFixer
 				fixPrsSecurity(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/security/prs-security-context.xml"));
 				
 				fixFacesSecurity(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/security/faces-security-config.xml"));
-			
+				
+				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 			}
-		}else{
-			getLog().info("Configuring PSELV for INTERNSONE...");
-			
-			fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
+		}else{ //INTERNSONE
+			if(isGiant()){ //KJEMPEN
+				getLog().info("Configuring PSELV KJEMPEN for INTERNSONE...");
+				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
+			}else{ //REKRUTTEN
+				getLog().info("Configuring PSELV REKRUTTEN for INTERNSONE...");
+				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
+			}
 		}
 		
 		
@@ -181,6 +186,7 @@ public class EarFixer
 				
 				//fix pselv link in resource.properties
 				fixResources(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/resources_nb_NO.properties"));
+				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 			}else{						//REKRUTTEN
 				getLog().info("Configuring PSAK REKRUTTEN for SENSITIVSONE...");
 
@@ -190,6 +196,7 @@ public class EarFixer
 					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
 					log4j.delete();
 				}
+				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 			}
 			
 		}else{							//INTERNSONE
@@ -227,6 +234,7 @@ public class EarFixer
 					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
 					log4j.delete();
 				}
+				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 			}
 		}
 		getLog().info("Done!");
@@ -401,43 +409,43 @@ public class EarFixer
 			getLog().info("Removed 'InnloggingFilter' filter");
 		}else getLog().info("'InnloggingFilter' not found in web.xml");
 		
-		/**
-		 * searching for InnloggingPSAKFilter and updates it
-		 */
-		search = doc.createXPath("/ns:web-app/ns:filter[ns:filter-name='InnloggingPSAKFilter']");
-		search.setNamespaceURIs(uris);
-		results = search.selectNodes(doc);
-		if(results.size() >= 1)
-		{
-			filter = (Element)results.get(0);
-			getLog().info("InnloggingPSAKFilter filter already defined, updating filter...");
-			filter.clearContent();
-			Element child1 = filter.addElement("display-name");
-			Element child2 = filter.addElement("filter-name");
-			Element child3 = filter.addElement("filter-class");
-			Element child4 = filter.addElement("init-param");
-			Element subChild1 = child4.addElement("param-name");
-			Element subChild2 = child4.addElement("param-value");
-			child1.setText("InnloggingPSAKFilter");
-			child2.setText("InnloggingPSAKFilter");
-			child3.setText("no.nav.presentation.pensjon.pselv.tilleggsfunksjonalitet.InnloggingPSAKFilter");
-			subChild1.setText("no.nav.presentation.pensjon.pselv.tilleggsfunksjonalitet.InnloggingPSAKFilter.ALLOW_ACCESS");
-			subChild2.setText("VEILEDER");
-		}else{
-			filter = doc.getRootElement().addElement("filter");
-			Element child1 = filter.addElement("display-name");
-			Element child2 = filter.addElement("filter-name");
-			Element child3 = filter.addElement("filter-class");
-			Element child4 = filter.addElement("init-param");
-			Element subChild1 = child4.addElement("param-name");
-			Element subChild2 = child4.addElement("param-value");
-			child1.addText("InnloggingPSAKFilter");
-			child2.addText("InnloggingPSAKFilter");
-			child3.addText("no.nav.presentation.pensjon.pselv.tilleggsfunksjonalitet.InnloggingPSAKFilter");
-			subChild1.addText("no.nav.presentation.pensjon.pselv.tilleggsfunksjonalitet.InnloggingPSAKFilter.ALLOW_ACCESS");
-			subChild2.addText("VEILEDER");
-			getLog().info("InnloggingPSAKFilter not found, created new filter");
-		}
+//		/**
+//		 * searching for InnloggingPSAKFilter and updates it
+//		 */
+//		search = doc.createXPath("/ns:web-app/ns:filter[ns:filter-name='InnloggingPSAKFilter']");
+//		search.setNamespaceURIs(uris);
+//		results = search.selectNodes(doc);
+//		if(results.size() >= 1)
+//		{
+//			filter = (Element)results.get(0);
+//			getLog().info("InnloggingPSAKFilter filter already defined, updating filter...");
+//			filter.clearContent();
+//			Element child1 = filter.addElement("display-name");
+//			Element child2 = filter.addElement("filter-name");
+//			Element child3 = filter.addElement("filter-class");
+//			Element child4 = filter.addElement("init-param");
+//			Element subChild1 = child4.addElement("param-name");
+//			Element subChild2 = child4.addElement("param-value");
+//			child1.setText("InnloggingPSAKFilter");
+//			child2.setText("InnloggingPSAKFilter");
+//			child3.setText("no.nav.presentation.pensjon.pselv.tilleggsfunksjonalitet.InnloggingPSAKFilter");
+//			subChild1.setText("no.nav.presentation.pensjon.pselv.tilleggsfunksjonalitet.InnloggingPSAKFilter.ALLOW_ACCESS");
+//			subChild2.setText("VEILEDER");
+//		}else{
+//			filter = doc.getRootElement().addElement("filter");
+//			Element child1 = filter.addElement("display-name");
+//			Element child2 = filter.addElement("filter-name");
+//			Element child3 = filter.addElement("filter-class");
+//			Element child4 = filter.addElement("init-param");
+//			Element subChild1 = child4.addElement("param-name");
+//			Element subChild2 = child4.addElement("param-value");
+//			child1.addText("InnloggingPSAKFilter");
+//			child2.addText("InnloggingPSAKFilter");
+//			child3.addText("no.nav.presentation.pensjon.pselv.tilleggsfunksjonalitet.InnloggingPSAKFilter");
+//			subChild1.addText("no.nav.presentation.pensjon.pselv.tilleggsfunksjonalitet.InnloggingPSAKFilter.ALLOW_ACCESS");
+//			subChild2.addText("VEILEDER");
+//			getLog().info("InnloggingPSAKFilter not found, created new filter");
+//		}
 
 		/**
 		 * removing InnloggingFilter mapping
