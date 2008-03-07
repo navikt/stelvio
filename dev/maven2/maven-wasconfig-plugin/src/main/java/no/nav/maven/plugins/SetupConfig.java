@@ -125,17 +125,16 @@ public class SetupConfig extends AbstractMojo{
 				envProps = readXmlProperties(envPropsPath);
 				if (containsNewProperties())
 				{
-					
 					throw new MojoExecutionException("Property file contains new properties!\n\n" + dictToString(newProps));
 				}
 				createPropertyFile(appPropsPath);
 				
 				getLog().info("Cleaning up temporary files...");
 				delete(new File(appPropsPath));
-			} catch (DocumentException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				throw new MojoExecutionException("DocumentException occured while executing plugin!",e);
+				throw new MojoExecutionException("Exception occured while executing plugin!",e);
 			}			
 		}		
 	}
