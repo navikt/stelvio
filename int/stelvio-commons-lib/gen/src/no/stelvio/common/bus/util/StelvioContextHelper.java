@@ -19,10 +19,6 @@ import java.util.logging.Logger;
 
 import javax.naming.InitialContext;
 import javax.security.auth.Subject;
-import javax.security.auth.login.CredentialExpiredException;
-
-import com.ibm.websphere.security.WSSecurityException;
-import com.ibm.websphere.security.auth.CredentialDestroyedException;
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.cred.WSCredential;
 import com.ibm.websphere.workarea.UserWorkArea;
