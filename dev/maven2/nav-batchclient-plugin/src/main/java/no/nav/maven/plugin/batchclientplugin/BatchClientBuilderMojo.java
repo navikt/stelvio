@@ -1,11 +1,12 @@
 package no.nav.maven.plugin.batchclientplugin;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.versioning.OverConstrainedVersionException;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
@@ -111,14 +112,21 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 	private void writeStartBatchFile() throws MojoFailureException {
 		
 		try{
-			PrintWriter pw = new PrintWriter(outputStartFile);
-			pw.println("#!/bin/bash");
-			pw.println("source " + outputConfigFile.getName());
-			pw.println("");
-			pw.println("${JAVA_HOME}/bin/java ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p" + delimiter + "${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $1 $2");
-			pw.flush();
-			pw.close();
-		} catch( FileNotFoundException fe){
+			if(outputStartFile.getParent() != null){
+				File f = new File(outputStartFile.getParent());
+				if(!f.exists()){
+					f.mkdir();
+				}
+			}
+			FileWriter fw = new FileWriter(outputStartFile);
+			fw.write("#!/bin/bash\n");
+			fw.write("source " + outputConfigFile.getName() + "\n");
+			fw.write("\n");
+			fw.write("${JAVA_HOME}/bin/java ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p" + delimiter + "${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $1 $2\n");
+			fw.flush();
+			fw.close();
+			
+		} catch( IOException fe){
 			fe.printStackTrace();
 			throw new MojoFailureException("Could not create StartBatch File:" + outputStartFile);
 		}
@@ -126,36 +134,45 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 	
 	private void writeConfigFile() throws MojoFailureException {
 		try{
-			PrintWriter pw = new PrintWriter(outputConfigFile);
-			pw.println("#!/bin/bash");
-			pw.println("");
-			pw.println("WAS_HOME=" + wasHome);
-			pw.println("JAVA_JRE=\"${WAS_HOME}/java/jre\"");
-			pw.println("JAVA_JDK=\"${WAS_HOME}/java\"");
-			pw.println("");
-			pw.println("echo \"WAS_HOME: ${WAS_HOME}\"");
-			pw.println("echo \"JAVA_JRE: ${JAVA_JRE}\"");
-			pw.println("echo \"JAVA_JDK: ${JAVA_JDK}\"");
-			pw.println("");
-			pw.println("JAVA_HOME=$JAVA_JRE");
-			pw.println("WAS_EXT_DIRS=\"${JAVA_HOME}/lib/ext" + delimiter + "${JAVA_HOME}/lib" + delimiter + "${WAS_HOME}/lib" + delimiter + "${WAS_HOME}/lib/ext" + delimiter + "${WAS_HOME}/properties" + delimiter + "${WAS_HOME}/plugins\"");
-			pw.println("WAS_BOOTCLASSPATH=\"${JAVA_HOME}/lib/ibmorb.jar" + delimiter + "${WAS_HOME}/properties" + delimiter + "${JAVA_HOME}/lib/core.jar" + delimiter + "${JAVA_JDK}/src.jar\"");
-			pw.println("CONSOLE_ENCODING=" + consoleEncoding);
-			pw.println("");
-			pw.println("CONFIG_PATH=" + configPath);
-			pw.println("CLIENT_CLASSPATH=" + getClasspathString());
-			pw.println("");
-			pw.println("APP_CLASSPATH=\"${CONFIG_PATH}" + delimiter + "${CLIENT_CLASSPATH}\"");
-			pw.println("");
-			pw.println("echo \"JAVA_HOME: ${JAVA_HOME}\"");
-			pw.println("echo \"WAS_EXT_DIRS: ${WAS_EXT_DIRS}\"");
-			pw.println("echo \"WAS_BOOTCLASSPATH: ${WAS_BOOTCLASSPATH}\"");
-			pw.println("echo \"APP_CLASSPATH: ${APP_CLASSPATH}\"");
+			
+			if(outputConfigFile.getParent() != null){
+				File f = new File(outputConfigFile.getParent());
+				if(!f.exists()){
+					f.mkdir();
+				}
+			}
+			FileWriter fw = new FileWriter(outputConfigFile);
+			
+			fw.write("#!/bin/bash\n");
+			fw.write("\n");
+			fw.write("WAS_HOME=" + wasHome + "\n");
+			fw.write("JAVA_JRE=\"${WAS_HOME}/java/jre\"\n");
+			fw.write("JAVA_JDK=\"${WAS_HOME}/java\"");
+			fw.write("");
+			fw.write("echo \"WAS_HOME: ${WAS_HOME}\"\n");
+			fw.write("echo \"JAVA_JRE: ${JAVA_JRE}\"\n");
+			fw.write("echo \"JAVA_JDK: ${JAVA_JDK}\"\n");
+			fw.write("\n");
+			fw.write("JAVA_HOME=$JAVA_JRE\n");
+			fw.write("WAS_EXT_DIRS=\"${JAVA_HOME}/lib/ext" + delimiter + "${JAVA_HOME}/lib" + delimiter + "${WAS_HOME}/lib" + delimiter + "${WAS_HOME}/lib/ext" + delimiter + "${WAS_HOME}/properties" + delimiter + "${WAS_HOME}/plugins\"\n");
+			fw.write("WAS_BOOTCLASSPATH=\"${JAVA_HOME}/lib/ibmorb.jar" + delimiter + "${WAS_HOME}/properties" + delimiter + "${JAVA_HOME}/lib/core.jar" + delimiter + "${JAVA_JDK}/src.jar\"\n");
+			fw.write("CONSOLE_ENCODING=" + consoleEncoding + "\n");
+			fw.write("\n");
+			fw.write("CONFIG_PATH=" + configPath +"\n");
+			fw.write("CLIENT_CLASSPATH=" + getClasspathString() + "\n");
+			fw.write("\n");
+			fw.write("APP_CLASSPATH=\"${CONFIG_PATH}" + delimiter + "${CLIENT_CLASSPATH}\"\n");
+			fw.write("\n");
+			fw.write("echo \"JAVA_HOME: ${JAVA_HOME}\"\n");
+			fw.write("echo \"WAS_EXT_DIRS: ${WAS_EXT_DIRS}\"\n");
+			fw.write("echo \"WAS_BOOTCLASSPATH: ${WAS_BOOTCLASSPATH}\"\n");
+			fw.write("echo \"APP_CLASSPATH: ${APP_CLASSPATH}\"\n");
 			
 		
-			pw.flush();
-			pw.close();
-		} catch( FileNotFoundException fe){
+			fw.flush();
+			fw.close();
+	
+		} catch( IOException fe){
 			fe.printStackTrace();
 			throw new MojoFailureException("Could not create config File:" + outputConfigFile);
 		}
@@ -183,9 +200,23 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 		for (Object object : runtimeArtifacts) {
 			if (object instanceof Artifact) {
 				Artifact a = (Artifact)object;
-				String classpathElement = clientClasspathPrefix + a.getArtifactId() + "-" + a.getVersion() + "." + a.getType();
+				String classpathElement;				
+				try{
+				if(a.isSnapshot()){
+					classpathElement = clientClasspathPrefix + a.getArtifactId() + "-" + a.getSelectedVersion() + "." + a.getType();
+				}else {
+					classpathElement = clientClasspathPrefix + a.getArtifactId() + "-" + a.getVersion() + "." + a.getType();	
+				}
 				buffer.append(classpathElement);
 				buffer.append(delimiter);
+				} catch (OverConstrainedVersionException e){
+					System.out.println("Problems when running getSelectedVersion on Artifact:" + a.getArtifactId());
+					e.printStackTrace();
+				} catch (Exception e){
+					System.out.println("Problems when running getSelectedVersion on Artifact:" + a.getArtifactId());
+					e.printStackTrace();
+				}
+				
 			}		
 		}
 		buffer = buffer.deleteCharAt(buffer.length()-1);
