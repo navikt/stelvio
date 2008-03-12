@@ -2093,6 +2093,7 @@ int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/SDOInspector.java -te
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/StelvioContextHelper.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/StringUtils.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/WSAddressing.java -text svneol=unset#text/plain
+int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/WSSecurityHeader.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/AvailabilityRecord.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/OperationAvailabilityRecord.java -text
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemAvailabilityBaseComponent.java -text
