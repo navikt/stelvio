@@ -195,7 +195,7 @@ public class WSAddressing {
 		 * @return
 		 */
 		public SOAPHeaderType createWSAMessageIDHeader(String uuid) {
-			return createWSAAttributedURIHeader(Header.ACTION, URI.create(uuid));
+			return createWSAAttributedURIHeader(Header.MESSAGEID, URI.create(uuid));
 		}
 	}	
 }
