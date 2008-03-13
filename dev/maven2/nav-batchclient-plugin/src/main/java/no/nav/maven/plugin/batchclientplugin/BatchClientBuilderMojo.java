@@ -202,9 +202,11 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 				Artifact a = (Artifact)object;
 				String classpathElement;				
 				try{
-				if(a.isSnapshot()){
+				if(a.isSnapshot() && (a.getType().equals("ejb-client"))){
+					classpathElement = clientClasspathPrefix + a.getArtifactId() + "-" + a.getSelectedVersion() + "-client.jar";
+				} else if( a.isSnapshot()){
 					classpathElement = clientClasspathPrefix + a.getArtifactId() + "-" + a.getSelectedVersion() + "." + a.getType();
-				}else {
+				} else {
 					classpathElement = clientClasspathPrefix + a.getArtifactId() + "-" + a.getVersion() + "." + a.getType();	
 				}
 				buffer.append(classpathElement);
