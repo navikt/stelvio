@@ -71,7 +71,8 @@ public class SetupLTPA
 	private File envFile = new File("F:\\moose_deployment\\services\\rekrutten\\src\\main\\resources\\scripts\\environments\\preprodRek.properties");
 	
 	/**
-	 * This parameter is the workingarea where the modules are extracted from subversion.
+	 * This parameter is the workingarea where the modules are extracted from subversion. Valid values
+	 * are PSAK, PSELV, TRAFIKANTEN
 	 * @parameter expression="${ispsak}"
 	 * @required
 	 */
@@ -79,8 +80,8 @@ public class SetupLTPA
 	
 	
 	private Properties props;
-	
 	private String roleId = null;
+	private String roleIdTraf = null;
 	
 	
 	/* (non-Javadoc)
@@ -90,8 +91,8 @@ public class SetupLTPA
 		
 		try {			
 			readEnvFile();
-			if(!(props.containsKey("roleNamePSAK") && props.containsKey("roleNamePSELV"))){
-				throw new MojoExecutionException("Environment doesn't contain definition for roleNamePSAK or roleNamePSELV, update environment file!");
+			if(!(props.containsKey("roleNamePSAK") && props.containsKey("roleNamePSELV") && props.containsKey("usernameTrafikanten"))){
+				throw new MojoExecutionException("Environment doesn't contain definition for roleNamePSAK, roleNamePSELV or usernameTrafikanten, update environment file!");
 			}
 			if(isPSAK){
 				createAppXml(props.getProperty("roleNamePSAK"),props.getProperty("roleNamePSAK"));
@@ -253,10 +254,10 @@ public class SetupLTPA
 		props.load(new FileInputStream(envFile));
 		
 		//Properties class doesn't trim property values, need to do manual trimming
-		Enumeration enum = props.keys();
+		Enumeration enumeration = props.keys();
 		String key = null;
-		while(enum.hasMoreElements()){
-			key = enum.nextElement().toString();
+		while(enumeration.hasMoreElements()){
+			key = enumeration.nextElement().toString();
 			props.setProperty(key,props.getProperty(key).trim());
 		}
 	}
@@ -292,6 +293,14 @@ public class SetupLTPA
 					roleId = id.getValue().replaceAll("SecurityRole_","");
 					getLog().info(strRoleName + " already defined in application.xml, storing role id: " + roleId);
 					break;
+				}else if(name != null && name.getText().compareTo(props.getProperty("roleNameTrafikanten")) == 0){
+					id = role.attribute("id");
+					if(id == null){
+						throw new DocumentException("Invalid role defined in application.xml (contains no id attribute!)");
+					}
+					roleIdTraf = id.getValue().replaceAll("SecurityRole_","");
+					getLog().info(props.getProperty("roleNameTrafikanten") + " already defined in application.xml, storing role id: " + roleIdTraf);
+					break;
 				}
 			}
 		}
@@ -306,8 +315,21 @@ public class SetupLTPA
 			desc.addText(strDesc);
 			name.addText(strRoleName);
 			getLog().info("Created new security role (" + roleId + ") for " + strRoleName);
-			writeXml(doc, new File(workingArea.getAbsolutePath() + "/META-INF/application.xml"));
 		}
+		
+		if(roleIdTraf == null){
+			root = doc.getRootElement();
+			role = root.addElement("security-role");
+			roleIdTraf = (new Date()).getTime() + "";
+			role.addAttribute("id","SecurityRole_" + roleIdTraf);
+			desc = role.addElement("description");
+			name = role.addElement("role-name");
+			desc.addText(props.getProperty("roleNameTrafikanten"));
+			name.addText(props.getProperty("roleNameTrafikanten"));
+			getLog().info("Created new security role (" + roleIdTraf + ") for " + props.getProperty("roleNameTrafikanten"));
+		}
+		
+		writeXml(doc, new File(workingArea.getAbsolutePath() + "/META-INF/application.xml"));
 	}
 
 	private void createBndFile() throws IOException, DocumentException{
@@ -326,6 +348,10 @@ public class SetupLTPA
 				      "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n" +
 				      "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n" +
 				    "</authorizations>\n" +
+				    "<authorizations xmi:id=\"RoleAssignment_#TRAF_ROLEID#\">\n" +
+					  "<users xmi:id=\"User_#TRAF_ROLEID#\" name=\"#TRAF_USERNAME#\"/>\n" + 
+				      "<role href=\"META-INF/application.xml#SecurityRole_#TRAF_ROLEID#\"/>\n" +
+				    "</authorizations>\n" +
 				  "</authorizationTable>\n" +
 				  "<application href=\"META-INF/application.xml#Application_ID\"/>\n" +
 				"</applicationbnd:ApplicationBinding>";
@@ -333,6 +359,9 @@ public class SetupLTPA
 		content = content.replaceAll("#ROLEID#",roleId);
 		content = content.replaceAll("#GRPNAME#", props.getProperty("groupNamePSAK"));
 		content = content.replaceAll("#USERNAME#", props.getProperty("usernamePSELV"));
+		
+		content = content.replaceAll("#TRAF_ROLEID#",roleIdTraf);
+		content = content.replaceAll("#TRAF_USERNAME#", props.getProperty("usernameTrafikanten"));
 		}else{
 			content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 			"<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n" +
@@ -342,6 +371,10 @@ public class SetupLTPA
 			      "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n" +
 			      "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n" +
 			    "</authorizations>\n" +
+			    "<authorizations xmi:id=\"RoleAssignment_#TRAF_ROLEID#\">\n" +
+				  "<users xmi:id=\"User_#TRAF_ROLEID#\" name=\"#TRAF_USERNAME#\"/>\n" + 
+			      "<role href=\"META-INF/application.xml#SecurityRole_#TRAF_ROLEID#\"/>\n" +
+			    "</authorizations>\n" +
 			  "</authorizationTable>\n" +
 			  "<application href=\"META-INF/application.xml#Application_ID\"/>\n" +
 			"</applicationbnd:ApplicationBinding>";
@@ -349,10 +382,11 @@ public class SetupLTPA
 			content = content.replaceAll("#ROLEID#",roleId);
 			content = content.replaceAll("#GRPNAME#", props.getProperty("groupNamePSELV"));
 			content = content.replaceAll("#USERNAME#", props.getProperty("usernamePSELV"));
+			
+			content = content.replaceAll("#TRAF_ROLEID#",roleIdTraf);
+			content = content.replaceAll("#TRAF_USERNAME#", props.getProperty("usernameTrafikanten"));
 		}
-		
-		
-		
+
 		getLog().info("Writing ibm-application-bnd.xml");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi")));
 		writer.write(content);
