@@ -40,353 +40,471 @@ import org.w3c.dom.NodeList;
  */
 /**
  * Goal which touches a timestamp file.
- *
- * @goal setupconfig
  * 
+ * @goal setupconfig
+ *  
  */
-public class SetupConfig extends AbstractMojo{
-	
+public class SetupConfig extends AbstractMojo {
+
 	/**
 	 * This parameter is the directory where work is being done.
+	 * 
 	 * @parameter expression="${workingDir}"
 	 * @required
 	 */
-	private File workingDir ;
+	private File workingDir;
+
 	/**
-	 * This parameter is the directory where the version mapping file is located.
+	 * This parameter is the directory where the version mapping file is
+	 * located.
+	 * 
 	 * @parameter expression="${mapFile}"
 	 * @required
 	 */
-	private String versionMapFile  ;
+	private String versionMapFile;
+
 	/**
-	 * This parameter is the directory where the environment xml file is located.
+	 * This parameter is the directory where the environment xml file is
+	 * located.
+	 * 
 	 * @parameter expression="${envFile}"
 	 * @required
 	 */
-	private String envPropsPath  ;
+	private String envPropsPath;
 
 	/**
 	 * This parameter is the name of the module being deployed.
+	 * 
 	 * @parameter expression="${module}"
 	 * @required
 	 */
-	private String moduleName  ;
-	
+	private String moduleName;
+
 	/**
 	 * This parameter is the build ID from moose.
+	 * 
 	 * @parameter expression="${buildId}"
 	 * @required
 	 */
-	private String buildId ;
+	private String buildId;
+
 	/**
 	 * This parameter is the host IP for the server you want to deploy to.
+	 * 
 	 * @parameter expression="${host}"
 	 */
 	private String host;
 
 	/**
 	 * This parameter is the username for the host.
+	 * 
 	 * @parameter expression="${username}"
 	 */
-	private String username ; 
+	private String username;
+
 	/**
 	 * This parameter is the password for the host.
+	 * 
 	 * @parameter expression="${password}"
 	 */
-	private String password ;
-	
-	private Dictionary appProps = null;
-	private Dictionary envProps = null;
-	private Dictionary newProps = null;
-	private String module = null;
-	private String version = null ;
-	private String appPropsPath = null ;
+	private String password;
 
-	
-	/* (non-Javadoc)
+	private Dictionary appProps = null;
+
+	private Dictionary envProps = null;
+
+	private Dictionary newProps = null;
+
+	private String module = null;
+
+	private String version = null;
+
+	private String[] appPropsPath = null;
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.apache.maven.plugin.Mojo#execute()
 	 */
-	public void execute() throws MojoExecutionException, MojoFailureException{
+	public void execute() throws MojoExecutionException, MojoFailureException {
 		// TODO Auto-generated method stub
-		if(buildId!=null && versionMapFile!=null){
+		if (buildId != null && versionMapFile != null) {
 			try {
-				version = getVersionId(buildId,versionMapFile);
+				version = getVersionId(buildId, versionMapFile);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}		
-		if (parseArgs(versionMapFile,envPropsPath))
-		{		
+		}
+		if (parseArgs(versionMapFile, envPropsPath)) {
 			try {
-				module = moduleName ;
-				appPropsPath = download(module, version); 
-				appProps = readProperties(appPropsPath);
-				envProps = readXmlProperties(envPropsPath);
-				if (containsNewProperties())
-				{
-					throw new MojoExecutionException("Property file contains new properties!\n\n" + dictToString(newProps));
-				}
-				createPropertyFile(appPropsPath);
+				module = moduleName;
 				
-				getLog().info("Cleaning up temporary files...");
-				delete(new File(appPropsPath));
+				if (module.equalsIgnoreCase("psak")|| module.equalsIgnoreCase("pselv")) {
+					appPropsPath[0] = download(module, version);
+					appPropsPath[1] = downloadPENConfig(version);
+				}
+				for (int i = 0; i < appPropsPath.length; i++) {
+
+					appProps = readProperties(appPropsPath[i].toString());
+					envProps = readXmlProperties(envPropsPath);
+					if (containsNewProperties()) {
+						throw new MojoExecutionException(
+								"Property file contains new properties!\n\n"
+										+ dictToString(newProps));
+					}
+					createPropertyFile(appPropsPath[i]);
+
+					getLog().info("Cleaning up temporary files...");
+					delete(new File(appPropsPath[i]));
+				}
+
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				throw new MojoExecutionException("Exception occured while executing plugin!",e);
-			}			
-		}		
+				throw new MojoExecutionException(
+						"Exception occured while executing plugin!", e);
+			}
+		}
 	}
-	
+
 	/**
 	 * Deletes a path structure recursively
-	 * @param path path to delete
+	 * 
+	 * @param path
+	 *            path to delete
 	 * @return true if path was successfully deleted, otherwise false
 	 */
-	private boolean delete(File path){
-		if(path.isDirectory()){
+	private boolean delete(File path) {
+		if (path.isDirectory()) {
 			File[] children = path.listFiles();
-			for(int i = 0; i < children.length; i++){
+			for (int i = 0; i < children.length; i++) {
 				boolean success = delete(children[i]);
-				if(!success){
+				if (!success) {
 					return false;
 				}
 			}
 		}
 		System.gc();
 		return path.delete();
-		
+
 	}
-	
+
 	/**
-	 * Searches through the mapping file, and returns the correct Maven version id 
-	 * based on the parameter bid (Moose's build id).
+	 * Searches through the mapping file, and returns the correct Maven version
+	 * id based on the parameter bid (Moose's build id).
 	 * 
-	 * @param bid the BuildId from Moose
-	 * @param mapFile The path of the version-mapping file
+	 * @param bid
+	 *            the BuildId from Moose
+	 * @param mapFile
+	 *            The path of the version-mapping file
 	 * @return A String representing the maven version Id for the build
 	 * @throws IOException
 	 */
-	public String getVersionId(String bid, String mapFile) throws IOException{
-		if(!new File(mapFile).exists()){
-			getLog().info("The Version Map File '"+mapFile+"' can not be found");
-			throw new IOException("The Version Map File '"+mapFile+"' can not be found");
+	public String getVersionId(String bid, String mapFile) throws IOException {
+		if (!new File(mapFile).exists()) {
+			getLog().info(
+					"The Version Map File '" + mapFile + "' can not be found");
+			throw new IOException("The Version Map File '" + mapFile
+					+ "' can not be found");
 		}
 		BufferedReader reader = new BufferedReader(new FileReader(mapFile));
-		String line ;
-		while((line=reader.readLine())!=null){
-			if(line.startsWith(bid)){
-				version = line.substring(bid.length()+1);
+		String line;
+		while ((line = reader.readLine()) != null) {
+			if (line.startsWith(bid)) {
+				version = line.substring(bid.length() + 1);
 			}
 		}
-		return version ;
+		return version;
 	}
-	
+
 	/**
-	 * Download the config-jar for the module and version you provide, and extracts the content to the $workingDir
+	 * Download the config-jar for the module and version you provide, and
+	 * extracts the content to the $workingDir
 	 * 
-	 * @param module The name of the module for which to download the confg-jar.
-	 * @param version The Maven version of the config-jar to download
-	 * @return A string representing the path to the environmentproperties for the module.
+	 * @param module
+	 *            The name of the module for which to download the confg-jar.
+	 * @param version
+	 *            The Maven version of the config-jar to download
+	 * @return A string representing the path to the environmentproperties for
+	 *         the module.
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 */
-	public String download(String module, String version) throws MalformedURLException, IOException{
-		String repo = "http://maven.adeo.no/m2internal/no/nav/" + module + "-layers/config/nav-config-pensjon-" 
-						+ module + "/" + version + "/nav-config-pensjon-" + module + "-" + version + ".jar";
-		File inputFile = new File(workingDir.getAbsolutePath()+"\\nav-config-pensjon-" + module + "-" + version + ".jar");
-		File outputFile = new File(workingDir.getAbsolutePath()+"\\nav-config-pensjon-" + module + "-" + version);
-		BufferedInputStream bis = null ;
-		BufferedOutputStream bos = null ;
-		try{
+	public String download(String module, String version)
+			throws MalformedURLException, IOException {
+
+		String repo = "http://maven.adeo.no/m2internal/no/nav/" + module
+				+ "-layers/config/nav-config-pensjon-" + module + "/" + version
+				+ "/nav-config-pensjon-" + module + "-" + version + ".jar";
+		File inputFile = new File(workingDir.getAbsolutePath()
+				+ "\\nav-config-pensjon-" + module + "-" + version + ".jar");
+		File outputFile = new File(workingDir.getAbsolutePath()
+				+ "\\nav-config-pensjon-" + module + "-" + version);
+		BufferedInputStream bis = null;
+		BufferedOutputStream bos = null;
+		try {
 			URL url = new URL(repo);
 			URLConnection urlc = url.openConnection();
-			
+
 			bis = new BufferedInputStream(urlc.getInputStream());
 			bos = new BufferedOutputStream(new FileOutputStream(inputFile));
-			
-			int i ;
-			while((i=bis.read())!=-1){
+
+			int i;
+			while ((i = bis.read()) != -1) {
 				bos.write(i);
 			}
-			
-		}finally{
-			if(bis!=null){
+
+		} finally {
+			if (bis != null) {
 				bis.close();
 			}
-			if(bos!=null){
+			if (bos != null) {
 				bos.close();
 			}
 			getLog().info("Download Done!");
 		}
-		
-		ZipUtils.extract2(inputFile,outputFile );
-		getLog().info(outputFile.toString()+"\\cfg-"+module+"-environment.properties");
-		return outputFile.toString()+"\\cfg-"+module+"-environment.properties" ;
+
+		ZipUtils.extract2(inputFile, outputFile);
+		getLog().info(
+				outputFile.toString() + "\\cfg-" + module
+						+ "-environment.properties");
+		return outputFile.toString() + "\\cfg-" + module
+				+ "-environment.properties";
 	}
+	
 	/**
-	 * Strictly for error logging.
-	 * If the environment properties contains new properties, a new collection is being 
-	 * populated. The content of this collection is printed here.
+	 * Download the config-jar for the PEN-module and version you provide, and
+	 * extracts the content to the $workingDir
 	 * 
-	 * @param dict The collection containing the new properties
+	 * @param version  The Maven version of the config-jar to download
+	 * @return A string representing the path to the environmentproperties for PEN
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
+	public String downloadPENConfig(String version) throws MalformedURLException, IOException {
+		String repo = "http://maven.adeo.no/m2internal/no/nav/pen-layers/config/nav-config-pensjon-pen/"
+						+ version + "/nav-config-pensjon-pen-" + version + ".jar";
+		File inputFile = new File(workingDir.getAbsolutePath()+ "\\nav-config-pensjon-pen-" + version + ".jar");
+		File outputFile = new File(workingDir.getAbsolutePath()+ "\\nav-config-pensjon-pen-" + version);
+		BufferedInputStream bis = null;
+		BufferedOutputStream bos = null;
+		try {
+			URL url = new URL(repo);
+			URLConnection urlc = url.openConnection();
+
+			bis = new BufferedInputStream(urlc.getInputStream());
+			bos = new BufferedOutputStream(new FileOutputStream(inputFile));
+
+			int i;
+			while ((i = bis.read()) != -1) {
+				bos.write(i);
+			}
+
+		} finally {
+			if (bis != null) {
+				bis.close();
+			}
+			if (bos != null) {
+				bos.close();
+			}
+			getLog().info("Download Done!");
+		}
+
+		ZipUtils.extract2(inputFile, outputFile);
+		getLog().info(outputFile.toString() + "\\cfg-pen-environment.properties");
+		
+		return outputFile.toString() + "\\cfg-pen-environment.properties";
+	}
+
+	/**
+	 * Strictly for error logging. If the environment properties contains new
+	 * properties, a new collection is being populated. The content of this
+	 * collection is printed here.
+	 * 
+	 * @param dict
+	 *            The collection containing the new properties
 	 * @return A string representation of the new properties
 	 */
-	private  String dictToString(Dictionary dict){
+	private String dictToString(Dictionary dict) {
 		String ret = "";
 		String key = "";
-		for(Enumeration e = dict.keys(); e.hasMoreElements();){
+		for (Enumeration e = dict.keys(); e.hasMoreElements();) {
 			key = (String) e.nextElement();
-			ret+= key + "=" + dict.get(key)+ System.getProperty("line.separator");
+			ret += key + "=" + dict.get(key)
+					+ System.getProperty("line.separator");
 		}
-		return ret ;
+		return ret;
 	}
+
 	/**
 	 * The method checks if the files needed exists.
 	 * 
-	 * @param appFile the path to the application properties file
-	 * @param mapFile the path to the version mapping file.
+	 * @param appFile
+	 *            the path to the application properties file
+	 * @param mapFile
+	 *            the path to the version mapping file.
 	 * @return boolean
 	 */
-	private  boolean parseArgs(String appFile, String mapFile){
+	private boolean parseArgs(String appFile, String mapFile) {
 		File file = new File(appFile);
-		if (!file.exists())
-		{
+		if (!file.exists()) {
 			getLog().info(appFile + " does not exist!");
 			return false;
 		}
 		File file2 = new File(mapFile);
-		if (!file2.exists())
-		{
+		if (!file2.exists()) {
 			getLog().info(mapFile + " does not exist!");
 			return false;
 		}
 		return true;
 	}
+
 	/**
-	 * Reads all the properties in the application environment file, and puts them in a collection
+	 * Reads all the properties in the application environment file, and puts
+	 * them in a collection
 	 * 
-	 * @param path the path to the application properties file
-	 * @return Dictionary - a collection containing the properties for the application
+	 * @param path
+	 *            the path to the application properties file
+	 * @return Dictionary - a collection containing the properties for the
+	 *         application
 	 * @throws IOException
 	 */
-	private  Dictionary readProperties(String path) throws IOException
-	{
+	private Dictionary readProperties(String path) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		String line;
 		Dictionary props = new Hashtable();
-		
-		while((line=reader.readLine())!=null)
-		{
+
+		while ((line = reader.readLine()) != null) {
 			line = line.trim();
-			if (!line.startsWith("#") && line.split("=").length == 2) // ignore empty line and comment lines
+			if (!line.startsWith("#") && line.split("=").length == 2) // ignore
+			// empty
+			// line
+			// and
+			// comment
+			// lines
 			{
 				props.put(line.split("=".trim())[0], line.split("=".trim())[1]);
 			}
 		}
 		reader.close();
 		return props;
-		
+
 	}
+
 	/**
-	 * Reads the environment properties from an xml-file, and puts them in a collection.
+	 * Reads the environment properties from an xml-file, and puts them in a
+	 * collection.
 	 * 
-	 * @param path the path to the environment properties xml-file to be parsed
+	 * @param path
+	 *            the path to the environment properties xml-file to be parsed
 	 * @return a collection containing the properties in the xml file
 	 * @throws IOException
 	 * @throws DocumentException
 	 */
-	private  Dictionary readXmlProperties(String path) throws IOException, DocumentException
-	{
+	private Dictionary readXmlProperties(String path) throws IOException,
+			DocumentException {
 		File xmlPath = new File(path);
 		NodeList list = null;
-		Element prop = null ;
+		Element prop = null;
 		Dictionary props = new Hashtable();
-		
-		XPath search ;
+
+		XPath search;
 		Map uris = new HashMap();
-		uris.put("ns","");
+		uris.put("ns", "");
 
 		SAXReader reader = new SAXReader();
 		Document doc = reader.read(path);
-		
-		
-		search = doc.createXPath("/ns:environment/ns:config/ns:" + module + "-properties/ns:property");
+
+		search = doc.createXPath("/ns:environment/ns:config/ns:" + module
+				+ "-properties/ns:property");
 		search.setNamespaceURIs(uris);
 		List results = search.selectNodes(doc);
-		Iterator it = results.iterator() ;
-		while(it.hasNext()){
-			prop = (Element)it.next();
-			
-			if(prop.attributeValue("name") !=null && prop.attributeValue("value") !=null){
-				props.put(prop.attributeValue("name"), prop.attributeValue("value")) ;
-			}else{
-				throw new DocumentException("Invalid attributes on node '" +prop.getName()+"'") ;
+		Iterator it = results.iterator();
+		while (it.hasNext()) {
+			prop = (Element) it.next();
+
+			if (prop.attributeValue("name") != null
+					&& prop.attributeValue("value") != null) {
+				props.put(prop.attributeValue("name"), prop
+						.attributeValue("value"));
+			} else {
+				throw new DocumentException("Invalid attributes on node '"
+						+ prop.getName() + "'");
 			}
-			
-			
+
 		}
 		return props;
 	}
+
 	/**
-	 * The method compares the to environment files, to check if there is 
-	 * a mismatch between the two. If the application properties contains more, or different, elements
-	 * than the environment property, a new collection is created containing these new properties.
+	 * The method compares the to environment files, to check if there is a
+	 * mismatch between the two. If the application properties contains more, or
+	 * different, elements than the environment property, a new collection is
+	 * created containing these new properties.
+	 * 
 	 * @return boolean
 	 */
-	private  boolean containsNewProperties()
-	{
+	private boolean containsNewProperties() {
 		newProps = new Hashtable();
 		String key = "";
-		for(Enumeration e = appProps.keys(); e.hasMoreElements();){
+		for (Enumeration e = appProps.keys(); e.hasMoreElements();) {
 			key = (String) e.nextElement();
-			if(!((Hashtable)envProps).containsKey(key)){
+			if (!((Hashtable) envProps).containsKey(key)) {
 				newProps.put(key, appProps.get(key));
 			}
 		}
 		return newProps.size() > 0;
 	}
-	
+
 	/**
-	 * Writes a new environment property file, and, if the host parameter is set, uploads the
-	 * config files for the module to the server provided in the host-parameter. 
-	 * If the host param is not set, the config-files are compressed into a new jar-file.
+	 * Writes a new environment property file, and, if the host parameter is
+	 * set, uploads the config files for the module to the server provided in
+	 * the host-parameter. If the host param is not set, the config-files are
+	 * compressed into a new jar-file.
 	 * 
-	 * @param outputPath the path to where the environment property file is to be saved.
+	 * @param outputPath
+	 *            the path to where the environment property file is to be
+	 *            saved.
 	 * @throws IOException
 	 */
-	private  void createPropertyFile(String outputPath) throws IOException
-	{
+	private void createPropertyFile(String outputPath) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath));
 		writer.write("####################################################\n");
 		writer.write("#####      Moose generated property file      ######\n");
 		writer.write("####################################################\n");
 		getLog().info("Writing current properties to '" + outputPath + "'");
 		String key = "";
-		for(Enumeration e = envProps.keys(); e.hasMoreElements();){
+		for (Enumeration e = envProps.keys(); e.hasMoreElements();) {
 			key = (String) e.nextElement();
 			getLog().info(key + "=" + envProps.get(key));
-			writer.write(key + "=" + envProps.get(key)+System.getProperty("line.separator"));
+			writer.write(key + "=" + envProps.get(key)
+					+ System.getProperty("line.separator"));
 		}
 		writer.close();
 		getLog().info("Done!");
-		if(host!=null){
+		if (host != null) {
 			//send opp config-filene til server.
-			boolean status = UploadConfig.uploadConfigFilesToHost(host, username, password, new File(outputPath).getParent(), module, getLog());
-			
-			if(status){
+			boolean status = UploadConfig.uploadConfigFilesToHost(host,
+					username, password, new File(outputPath).getParent(),
+					module, getLog());
+
+			if (status) {
 				getLog().info("Configfiles upload complete");
-			}else{
+			} else {
 				getLog().info("Configfiles upload failed");
 			}
-		}else{
-			//pakk sammen Jar-filen igjen.
-			ZipUtils.compress(new File(new File(appPropsPath).getParent()), new File(new File(appPropsPath).getParent()+".jar"));
-			getLog().info("Config-Jar made");
+		} else {
+			for (int i = 0; i < appPropsPath.length; i++) {
+				//				pakk sammen Jar-filen igjen.
+				ZipUtils.compress(new File(new File(appPropsPath[i])
+						.getParent()), new File(new File(appPropsPath[i])
+						.getParent()
+						+ ".jar"));
+				getLog().info("Config-Jar made");
+			}
+
 		}
 	}
-	
-	
 
 }

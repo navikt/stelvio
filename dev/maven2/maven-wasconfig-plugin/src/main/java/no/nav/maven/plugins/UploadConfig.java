@@ -71,8 +71,8 @@ public class UploadConfig {
 				}else{
 					logger.info("Connection comlete!\nTransfering files");
 					SessionChannelClient session = ssh.openSessionChannel();
-					String cmd = "rm -f "+destPath+"/*";
-					session.executeCommand(cmd);
+//					String cmd = "rm -f "+destPath+"/*";
+//					session.executeCommand(cmd);
 					ScpClient scp = ssh.openScpClient();
 					for(int i=0;i<allSourceFiles.length;i++){
 						//System.out.println("Uploading file: "+allSourceFiles[i].getAbsolutePath());
