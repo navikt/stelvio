@@ -119,7 +119,7 @@ public class SetupConfig extends AbstractMojo {
 
 	private String version = null;
 
-	private String[] appPropsPath = null;
+	private String[] appPropsPath = new String[2];
 
 	/*
 	 * (non-Javadoc)
