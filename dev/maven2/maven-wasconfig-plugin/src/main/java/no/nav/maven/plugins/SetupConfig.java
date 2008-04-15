@@ -81,6 +81,13 @@ public class SetupConfig extends AbstractMojo {
 	 * @required
 	 */
 	private String moduleName;
+	
+	/**
+	 * This parameter is the name of the module being deployed.
+	 * 
+	 * @parameter expression="${propertyFile}"
+	 */
+	private String propertyFile = null;
 
 	/**
 	 * This parameter is the build ID from moose.
@@ -130,6 +137,11 @@ public class SetupConfig extends AbstractMojo {
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// TODO Auto-generated method stub
+		if(propertyFile == null){
+			getLog().info("No property file specified, exiting...");
+			return;
+		}
+		
 		if (buildId != null && versionMapFile != null) {
 			try {
 				version = getVersionId(buildId, versionMapFile);
@@ -277,11 +289,9 @@ public class SetupConfig extends AbstractMojo {
 		}
 
 		ZipUtils.extract2(inputFile, outputFile);
-		getLog().info(
-				outputFile.toString() + "\\cfg-" + module
-						+ "-environment.properties");
-		return outputFile.toString() + "\\cfg-" + module
-				+ "-environment.properties";
+		
+		propertyFile = outputFile.toString() + "/" + propertyFile;
+		return propertyFile;
 	}
 
 	/**
