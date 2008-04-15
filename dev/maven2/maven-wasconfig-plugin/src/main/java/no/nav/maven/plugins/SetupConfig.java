@@ -142,14 +142,13 @@ public class SetupConfig extends AbstractMojo {
 			return;
 		}
 		
-		if (buildId != null && versionMapFile != null) {
-			try {
-				version = getVersionId(buildId, versionMapFile);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		
+		try {
+			version = getVersionId(buildId, versionMapFile);
+		} catch (IOException e) {
+			throw new MojoExecutionException("An error occured while resolving version number: " + e.getMessage());
 		}
+		
 		if (parseArgs(versionMapFile, envPropsPath)) {
 			try {
 				module = moduleName;
