@@ -54,56 +54,44 @@ public class UploadConfig {
 		SshClient ssh = new SshClient();
 		SessionChannelClient session = null ;
 		ScpClient scp = null ;
-			try {
-				HostKeyVerification hkv = new HostKeyVerification(){
-					public boolean verifyHost(String arg0, SshPublicKey arg1) throws TransportProtocolException {
-						// TODO Auto-generated method stub
-						return true;
-					}
-				};
-				ssh.connect(host, port, hkv );
-				PasswordAuthenticationClient pwdAutClient = new PasswordAuthenticationClient();
-				pwdAutClient.setUsername(usr);
-				pwdAutClient.setPassword(pwd);
-				
-				int result = ssh.authenticate(pwdAutClient);
-				
-				if(result != AuthenticationProtocolState.COMPLETE){
-					throw new IOException("Login to "+host+":"+port+ " "+usr+" " +pwd +" failed");
-					
-				}else{
-					logger.info("Connection complete!\nTransfering files");
-					session = ssh.openSessionChannel();
-					scp = ssh.openScpClient();
-					for(int i=0;i<allSourceFiles.length;i++){
-						//System.out.println("Uploading file: "+allSourceFiles[i].getAbsolutePath());
-						logger.info("Uploading file: "+allSourceFiles[i].getAbsolutePath());
-						scp.put(allSourceFiles[i].getAbsolutePath(), destPath, true);
-					}					
-					
-					
-					
-					return true ;
-					
-										
+		try {
+			HostKeyVerification hkv = new HostKeyVerification(){
+				public boolean verifyHost(String arg0, SshPublicKey arg1) throws TransportProtocolException {
+					// TODO Auto-generated method stub
+					return true;
 				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				throw new IOException("An error occured during filetransfer! ");
+			};
+			ssh.connect(host, port, hkv );
+			PasswordAuthenticationClient pwdAutClient = new PasswordAuthenticationClient();
+			pwdAutClient.setUsername(usr);
+			pwdAutClient.setPassword(pwd);
+			
+			int result = ssh.authenticate(pwdAutClient);
+
+			if(result != AuthenticationProtocolState.COMPLETE){
+				throw new IOException("Login to "+host+":"+port+ " "+usr+" " +pwd +" failed");
 				
-			}finally{
-				try {
-					session.close();
-					ssh.disconnect();
-				} catch (IOException e1) {
-					throw new IOException("Could not close session to remote server!") ;
-				}
+			}else{
+				logger.info("Connection complete!\nTransfering files");
+				session = ssh.openSessionChannel();
+				scp = ssh.openScpClient();
+				for(int i=0;i<allSourceFiles.length;i++){
+					//System.out.println("Uploading file: "+allSourceFiles[i].getAbsolutePath());
+					logger.info("Uploading file: "+allSourceFiles[i].getAbsolutePath());
+					scp.put(allSourceFiles[i].getAbsolutePath(), destPath, true);
+				}					
 				
 				
+				
+				return true ;
+				
+									
 			}
-		
-		
-		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			throw new IOException("An error occured during filetransfer: " + e.getMessage());
+			
+		}
 	}
 
 }
