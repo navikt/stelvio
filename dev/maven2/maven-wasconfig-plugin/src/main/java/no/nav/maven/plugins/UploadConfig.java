@@ -42,8 +42,9 @@ public class UploadConfig {
 	 * @param module the name of the module you want to upload files from/to.
 	 * @param logger the maven.plugin.logging class, to enable logging in this class.
 	 * @return boolen
+	 * @throws IOException
 	 */
-	public static boolean uploadConfigFilesToHost(String host, String usr, String pwd, String sourcePath, String module, Log logger){
+	public static boolean uploadConfigFilesToHost(String host, String usr, String pwd, String sourcePath, String module, Log logger) throws IOException{
 		
 		UploadConfig.destPath = "/was_app/config/"+module;
 		
@@ -73,8 +74,6 @@ public class UploadConfig {
 				}else{
 					logger.info("Connection complete!\nTransfering files");
 					session = ssh.openSessionChannel();
-//					String cmd = "rm -f "+destPath+"/*";
-//					session.executeCommand(cmd);
 					scp = ssh.openScpClient();
 					for(int i=0;i<allSourceFiles.length;i++){
 						//System.out.println("Uploading file: "+allSourceFiles[i].getAbsolutePath());
@@ -90,18 +89,14 @@ public class UploadConfig {
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				logger.error("An error occured during filetransfer!") ;
-				e.printStackTrace();
-				return false;
+				throw new IOException("An error occured during filetransfer! ");
+				
 			}finally{
 				try {
 					session.close();
 					ssh.disconnect();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					logger.error("Could not close session to remote server!");
-					e1.printStackTrace();
-					return false;
+					throw new IOException("Could not close session to remote server!") ;
 				}
 				
 				
