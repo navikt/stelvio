@@ -138,7 +138,7 @@ public class SetupConfig extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// TODO Auto-generated method stub
 		if(propertyFile == null || propertyFile.compareTo("") == 0){
-			getLog().info("No property file specified (this project doesn't have a config module), exiting...");
+			getLog().info("\n\nNo property file specified (this project doesn't have a config module), exiting...\n\n");
 			return;
 		}
 		
