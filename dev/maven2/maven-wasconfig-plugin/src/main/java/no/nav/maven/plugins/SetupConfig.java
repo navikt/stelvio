@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -119,7 +121,7 @@ public class SetupConfig extends AbstractMojo {
 
 	private String version = null;
 
-	private String[] appPropsPath = new String[2];
+	private ArrayList appPropsPath = new ArrayList();
 
 	/*
 	 * (non-Javadoc)
@@ -139,24 +141,28 @@ public class SetupConfig extends AbstractMojo {
 		if (parseArgs(versionMapFile, envPropsPath)) {
 			try {
 				module = moduleName;
-				
-				if (module.equalsIgnoreCase("psak")|| module.equalsIgnoreCase("pselv")) {
-					appPropsPath[0] = download(module, version);
-					appPropsPath[1] = downloadPENConfig(version);
-				}
-				for (int i = 0; i < appPropsPath.length; i++) {
 
-					appProps = readProperties(appPropsPath[i].toString());
+				if (module.equalsIgnoreCase("psak")
+						|| module.equalsIgnoreCase("pselv")) {
+					appPropsPath.add(download(module, version));
+					appPropsPath.add(downloadPENConfig(version));
+				} else {
+					appPropsPath.add(download(module, version));
+				}
+				for (int i = 0; i < appPropsPath.size(); i++) {
+					//					getLog().info("The path of the prop-file: "+ new
+					// File(appPropsPath[i]).getAbsolutePath());
+					appProps = readProperties(appPropsPath.get(i).toString());
 					envProps = readXmlProperties(envPropsPath);
 					if (containsNewProperties()) {
 						throw new MojoExecutionException(
 								"Property file contains new properties!\n\n"
 										+ dictToString(newProps));
 					}
-					createPropertyFile(appPropsPath[i]);
+					createPropertyFile(appPropsPath.get(i).toString());
 
 					getLog().info("Cleaning up temporary files...");
-					delete(new File(appPropsPath[i]));
+					delete(new File(appPropsPath.get(i).toString()).getParent());
 				}
 
 			} catch (Exception e) {
@@ -171,15 +177,19 @@ public class SetupConfig extends AbstractMojo {
 	/**
 	 * Deletes a path structure recursively
 	 * 
-	 * @param path
-	 *            path to delete
+	 * @param delMe the path of the config-folder to delete.
+	 * 
 	 * @return true if path was successfully deleted, otherwise false
 	 */
-	private boolean delete(File path) {
+	public boolean delete(String delMe) {
+
+		File path = new File(delMe) ;
+		getLog().info("SLETTER PATH: " + path);
 		if (path.isDirectory()) {
 			File[] children = path.listFiles();
 			for (int i = 0; i < children.length; i++) {
-				boolean success = delete(children[i]);
+				System.gc();
+				boolean success = delete(children[i].getAbsolutePath());
 				if (!success) {
 					return false;
 				}
@@ -215,6 +225,7 @@ public class SetupConfig extends AbstractMojo {
 				version = line.substring(bid.length() + 1);
 			}
 		}
+		reader.close();
 		return version;
 	}
 
@@ -246,7 +257,6 @@ public class SetupConfig extends AbstractMojo {
 		try {
 			URL url = new URL(repo);
 			URLConnection urlc = url.openConnection();
-
 			bis = new BufferedInputStream(urlc.getInputStream());
 			bos = new BufferedOutputStream(new FileOutputStream(inputFile));
 
@@ -262,6 +272,7 @@ public class SetupConfig extends AbstractMojo {
 			if (bos != null) {
 				bos.close();
 			}
+
 			getLog().info("Download Done!");
 		}
 
@@ -272,21 +283,26 @@ public class SetupConfig extends AbstractMojo {
 		return outputFile.toString() + "\\cfg-" + module
 				+ "-environment.properties";
 	}
-	
+
 	/**
 	 * Download the config-jar for the PEN-module and version you provide, and
 	 * extracts the content to the $workingDir
 	 * 
-	 * @param version  The Maven version of the config-jar to download
-	 * @return A string representing the path to the environmentproperties for PEN
+	 * @param version
+	 *            The Maven version of the config-jar to download
+	 * @return A string representing the path to the environmentproperties for
+	 *         PEN
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 */
-	public String downloadPENConfig(String version) throws MalformedURLException, IOException {
+	public String downloadPENConfig(String version)
+			throws MalformedURLException, IOException {
 		String repo = "http://maven.adeo.no/m2internal/no/nav/pen-layers/config/nav-config-pensjon-pen/"
-						+ version + "/nav-config-pensjon-pen-" + version + ".jar";
-		File inputFile = new File(workingDir.getAbsolutePath()+ "\\nav-config-pensjon-pen-" + version + ".jar");
-		File outputFile = new File(workingDir.getAbsolutePath()+ "\\nav-config-pensjon-pen-" + version);
+				+ version + "/nav-config-pensjon-pen-" + version + ".jar";
+		File inputFile = new File(workingDir.getAbsolutePath()
+				+ "\\nav-config-pensjon-pen-" + version + ".jar");
+		File outputFile = new File(workingDir.getAbsolutePath()
+				+ "\\nav-config-pensjon-pen-" + version);
 		BufferedInputStream bis = null;
 		BufferedOutputStream bos = null;
 		try {
@@ -312,8 +328,9 @@ public class SetupConfig extends AbstractMojo {
 		}
 
 		ZipUtils.extract2(inputFile, outputFile);
-		getLog().info(outputFile.toString() + "\\cfg-pen-environment.properties");
-		
+		getLog().info(
+				outputFile.toString() + "\\cfg-pen-environment.properties");
+
 		return outputFile.toString() + "\\cfg-pen-environment.properties";
 	}
 
@@ -495,11 +512,11 @@ public class SetupConfig extends AbstractMojo {
 				getLog().info("Configfiles upload failed");
 			}
 		} else {
-			for (int i = 0; i < appPropsPath.length; i++) {
+			for (int i = 0; i < appPropsPath.size(); i++) {
 				//				pakk sammen Jar-filen igjen.
-				ZipUtils.compress(new File(new File(appPropsPath[i])
-						.getParent()), new File(new File(appPropsPath[i])
-						.getParent()
+				ZipUtils.compress(new File(new File(appPropsPath.get(i)
+						.toString()).getParent()), new File(new File(
+						appPropsPath.get(i).toString()).getParent()
 						+ ".jar"));
 				getLog().info("Config-Jar made");
 			}

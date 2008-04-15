@@ -50,7 +50,9 @@ public class UploadConfig {
 		File tempSource = new File(sourcePath);
 		File[] allSourceFiles = tempSource.listFiles();
 		
-		SshClient ssh = new SshClient();	
+		SshClient ssh = new SshClient();
+		SessionChannelClient session = null ;
+		ScpClient scp = null ;
 			try {
 				HostKeyVerification hkv = new HostKeyVerification(){
 					public boolean verifyHost(String arg0, SshPublicKey arg1) throws TransportProtocolException {
@@ -69,18 +71,18 @@ public class UploadConfig {
 					throw new IOException("Login to "+host+":"+port+ " "+usr+" " +pwd +" failed");
 					
 				}else{
-					logger.info("Connection comlete!\nTransfering files");
-					SessionChannelClient session = ssh.openSessionChannel();
+					logger.info("Connection complete!\nTransfering files");
+					session = ssh.openSessionChannel();
 //					String cmd = "rm -f "+destPath+"/*";
 //					session.executeCommand(cmd);
-					ScpClient scp = ssh.openScpClient();
+					scp = ssh.openScpClient();
 					for(int i=0;i<allSourceFiles.length;i++){
 						//System.out.println("Uploading file: "+allSourceFiles[i].getAbsolutePath());
 						logger.info("Uploading file: "+allSourceFiles[i].getAbsolutePath());
 						scp.put(allSourceFiles[i].getAbsolutePath(), destPath, true);
 					}					
-					session.close();
-					ssh.disconnect();
+					
+					
 					
 					return true ;
 					
@@ -88,8 +90,21 @@ public class UploadConfig {
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				logger.error("An error occured during filetransfer!") ;
 				e.printStackTrace();
 				return false;
+			}finally{
+				try {
+					session.close();
+					ssh.disconnect();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					logger.error("Could not close session to remote server!");
+					e1.printStackTrace();
+					return false;
+				}
+				
+				
 			}
 		
 		
