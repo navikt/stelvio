@@ -1314,6 +1314,7 @@ dev/maven2/maven-config-fixer-plugin/.project -text
 dev/maven2/maven-config-fixer-plugin/pom.xml -text
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/BasicAuthMojo.java -text
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/EarExtractor.java -text
+dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/FixArenaSak.java -text
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/JaxRPCHandlerMojo.java -text
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
 dev/maven2/maven-datapower-configurer/pom.xml -text

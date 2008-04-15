@@ -132,6 +132,41 @@ public class ZipUtils {
 			}
 		}
 	}
+	
+	public static void extract2(File inputFile, File outDir) throws ZipException, IOException{
+		ZipFile zipFile = new ZipFile(inputFile);
+		Enumeration enumeration = zipFile.entries();
+		boolean complexFile;
+		while (enumeration.hasMoreElements()) {
+			complexFile = false;
+			ZipEntry zipEntry = (ZipEntry)enumeration.nextElement();
+			String zipFileName = zipEntry.getName();
+			if(zipEntry.isDirectory()){
+				new File(outDir + "/" + zipEntry.getName()).mkdirs();
+			}else{
+				//check for complex path entry
+				if(zipFileName.lastIndexOf("/") >= 0){
+					String fName = zipFileName.substring(zipFileName.lastIndexOf("/") + 1);
+					String path = zipFileName.substring(0, zipFileName.lastIndexOf("/"));
+					new File(outDir + "/" + path).mkdirs();
+				}
+				
+				InputStream inputStream = zipFile.getInputStream(zipEntry);
+				OutputStream out = new FileOutputStream(outDir + "/" + zipFileName);
+				writeInputStreamToOutputStream(inputStream, out);
+				out.close();
+				inputStream.close();
+			}
+		}
+	}
+	
+	private static void writeInputStreamToOutputStream(InputStream in, OutputStream out) throws IOException{
+		byte[] buf = new byte[10240];
+		int len;
+		while((len=in.read(buf))>0){
+			out.write(buf,0,len);
+		}
+	}
 
 	/**
 	 * 
