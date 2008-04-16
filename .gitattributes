@@ -1998,6 +1998,14 @@ dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarInPlaceMojo.
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarManifestMojo.java -text
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarMojo.java -text
 dev/maven2/pom.xml -text
+incubator/wid61-mess_provider/websphere_default_messaging_provider/.classpath -text svneol=unset#text/plain
+incubator/wid61-mess_provider/websphere_default_messaging_provider/.project -text svneol=unset#text/plain
+incubator/wid61-mess_provider/websphere_default_messaging_provider/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-mess_provider/websphere_default_messaging_provider/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-mess_provider/websphere_default_messaging_provider/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-mess_provider/websphere_default_messaging_provider/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-mess_provider/websphere_default_messaging_provider/connectorModule/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-mess_provider/websphere_default_messaging_provider/connectorModule/META-INF/ra.xml -text svneol=unset#text/plain
 incubator/wid61-stelvio/StelvioSystemAvailabilityWeb/.classpath -text svneol=unset#text/plain
 incubator/wid61-stelvio/StelvioSystemAvailabilityWeb/.compatibility -text
 incubator/wid61-stelvio/StelvioSystemAvailabilityWeb/.j2ee -text

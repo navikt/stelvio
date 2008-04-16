@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Specification-Version: 1.0.0
+Specification-Title: sib.api.jmsra.rar
+Implementation-Version: WAS61.SIB [o0741.21]
+Implementation-Title: sib.api.jmsra.rar
+Created-By: 2.3 (IBM Corporation)
+Implementation-Vendor: IBM Corp.
+Specification-Vendor: IBM Corp.
+Ant-Version: Apache Ant 1.6.5
+
