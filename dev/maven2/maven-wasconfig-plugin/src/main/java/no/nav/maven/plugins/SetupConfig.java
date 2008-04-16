@@ -195,7 +195,6 @@ public class SetupConfig extends AbstractMojo {
 	public boolean delete(String delMe) {
 
 		File path = new File(delMe) ;
-		getLog().info("SLETTER PATH: " + path);
 		if (path.isDirectory()) {
 			File[] children = path.listFiles();
 			for (int i = 0; i < children.length; i++) {
