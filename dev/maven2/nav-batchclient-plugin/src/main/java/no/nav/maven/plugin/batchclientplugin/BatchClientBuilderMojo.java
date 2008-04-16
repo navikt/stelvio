@@ -3,7 +3,10 @@ package no.nav.maven.plugin.batchclientplugin;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+
+import no.nav.maven.common.ProjectUtil;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.versioning.OverConstrainedVersionException;
@@ -78,6 +81,14 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 	private String configPath;
 	
 	/**
+	 * The Depenendcies folder for WAS_BOOTCLASSPATH
+	 * 
+	 * @parameter
+	 * @required
+	 */
+	private List dependencies;
+	
+	/**
 	 * The client classpath prefix. Used to construct the classpath.
 	 * 	 * 
 	 * @parameter
@@ -132,6 +143,30 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 		}
 	}
 	
+	private String getAddtionalBootString(){
+		StringBuffer buffer = new StringBuffer();
+		buffer.append(":");
+		  if(dependencies != null)
+          {
+              for(Iterator i = dependencies.iterator(); i.hasNext();)
+              {
+            	  
+                  ArtifactItem artifactItem = (ArtifactItem)i.next();
+                  Artifact artifact = ProjectUtil.getArtifact(project, artifactItem.getGroupId(), artifactItem.getArtifactId());
+                  if(artifact != null)
+                  {
+                	  buffer.append(clientClasspathPrefix + artifact.getArtifactId() + "-" + artifact.getVersion() + "." + artifact.getType() + ":");
+                  	} else
+                  {
+                  		
+                  }
+              }
+          }
+		  buffer = buffer.deleteCharAt(buffer.length()-1);
+		return buffer.toString();
+
+	}
+	
 	private void writeConfigFile() throws MojoFailureException {
 		try{
 			
@@ -147,15 +182,15 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 			fw.write("\n");
 			fw.write("WAS_HOME=" + wasHome + "\n");
 			fw.write("JAVA_JRE=\"${WAS_HOME}/java/jre\"\n");
-			fw.write("JAVA_JDK=\"${WAS_HOME}/java\"");
-			fw.write("");
+			fw.write("JAVA_JDK=\"${WAS_HOME}/java\"\n");
+			fw.write("\n");
 			fw.write("echo \"WAS_HOME: ${WAS_HOME}\"\n");
 			fw.write("echo \"JAVA_JRE: ${JAVA_JRE}\"\n");
 			fw.write("echo \"JAVA_JDK: ${JAVA_JDK}\"\n");
 			fw.write("\n");
 			fw.write("JAVA_HOME=$JAVA_JRE\n");
 			fw.write("WAS_EXT_DIRS=\"${JAVA_HOME}/lib/ext" + delimiter + "${JAVA_HOME}/lib" + delimiter + "${WAS_HOME}/lib" + delimiter + "${WAS_HOME}/lib/ext" + delimiter + "${WAS_HOME}/properties" + delimiter + "${WAS_HOME}/plugins\"\n");
-			fw.write("WAS_BOOTCLASSPATH=\"${JAVA_HOME}/lib/ibmorb.jar" + delimiter + "${WAS_HOME}/properties" + delimiter + "${JAVA_HOME}/lib/core.jar" + delimiter + "${JAVA_JDK}/src.jar\"\n");
+			fw.write("WAS_BOOTCLASSPATH=\"${JAVA_HOME}/lib/ibmorb.jar" + delimiter + "${WAS_HOME}/properties" + delimiter + "${JAVA_HOME}/lib/core.jar" + delimiter + "${JAVA_JDK}/src.jar" + getAddtionalBootString() +  "\"\n");
 			fw.write("CONSOLE_ENCODING=" + consoleEncoding + "\n");
 			fw.write("\n");
 			fw.write("CONFIG_PATH=" + configPath +"\n");
