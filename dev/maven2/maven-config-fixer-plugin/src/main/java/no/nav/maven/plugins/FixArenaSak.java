@@ -170,7 +170,8 @@ public class FixArenaSak extends AbstractMojo {
 		});
 		
 		if(arenaFolder != null && arenaFolder.length == 1){
-			return arenaFolder[0];
+			File arenaSak = new File(arenaFolder[0].getAbsolutePath() + "/nav-prod-sak-arena.ear");
+			if(arenaSak.exists()) return arenaSak;
 		}
 		
 		return null;
