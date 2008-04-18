@@ -62,7 +62,7 @@ public class FixArenaSak extends AbstractMojo {
 		//checking if arenasak is present
 		File arenasak = findArenaSak();
 		if(arenasak != null){
-			getLog().info("Fixing nav-prod-sak-arenaApp before deploying...");
+			getLog().info("Fixing nav-prod-sak-arenaApp...");
 			
 			//extracting ear
 			File tmp = new File(earDirectory.getAbsolutePath() + "/" + new Date().getTime());
