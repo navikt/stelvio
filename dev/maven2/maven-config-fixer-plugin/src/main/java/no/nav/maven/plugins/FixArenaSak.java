@@ -34,7 +34,7 @@ public class FixArenaSak extends AbstractMojo {
 	/**
 	 * This parameter is the directory where the wid ear files are placed.
 	 * 
-	 * @parameter
+	 * @parameter expression="${handlerName}"
 	 * @required
 	 */
 	protected String handlerName; // = "ArenaResponseHandler";
@@ -42,7 +42,7 @@ public class FixArenaSak extends AbstractMojo {
 	/**
 	 * This parameter is the directory where the wid ear files are placed.
 	 * 
-	 * @parameter
+	 * @parameter expression="${handlerClass}"
 	 * @required
 	 */
 	protected String handlerClass; // = "no.nav.java.ArenaResponseHandler";
@@ -50,7 +50,7 @@ public class FixArenaSak extends AbstractMojo {
 	/**
 	 * This parameter is the directory where the wid ear files are placed.
 	 * 
-	 * @parameter
+	 * @parameter expression="${earDirectory}"
 	 * @required
 	 */
 	protected File earDirectory; // = new File("E:/ControllerScript/kjempen/target/classes/builds/eardist");
@@ -60,8 +60,8 @@ public class FixArenaSak extends AbstractMojo {
 		File ejb = null;
 		
 		//checking if arenasak is present
-		File arenasak = new File(earDirectory.getAbsolutePath() + "/nav-prod-sak-arena.ear");
-		if(arenasak.exists()){
+		File arenasak = findArenaSak();
+		if(arenasak != null){
 			getLog().info("Fixing nav-prod-sak-arenaApp before deploying...");
 			
 			//extracting ear
@@ -104,7 +104,7 @@ public class FixArenaSak extends AbstractMojo {
 		SAXReader reader;
 		Element handler;
 		XPath search;
-		HashMap<String, String> uris = new HashMap<String, String>();
+		HashMap uris = new HashMap();
 		
 		getLog().info("Opening ejb-jar.xml...");
 		
@@ -156,5 +156,9 @@ public class FixArenaSak extends AbstractMojo {
 		XMLWriter writer = new XMLWriter(bw ,OutputFormat.createPrettyPrint());
 		writer.write(doc);
 		writer.close();
+	}
+
+	private File findArenaSak(){
+		return null;
 	}
 }
