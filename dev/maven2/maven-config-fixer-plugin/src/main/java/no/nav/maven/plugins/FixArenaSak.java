@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Date;
@@ -159,6 +160,19 @@ public class FixArenaSak extends AbstractMojo {
 	}
 
 	private File findArenaSak(){
+		File[] arenaFolder = earDirectory.listFiles(new FilenameFilter() {
+		
+			public boolean accept(File dir, String name) {
+				// TODO Auto-generated method stub
+				return name.endsWith("sah_arenasak");
+			}
+		
+		});
+		
+		if(arenaFolder != null && arenaFolder.length == 1){
+			return arenaFolder[0];
+		}
+		
 		return null;
 	}
 }
