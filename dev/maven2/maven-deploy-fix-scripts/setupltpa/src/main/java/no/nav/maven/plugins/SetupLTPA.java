@@ -320,7 +320,7 @@ public class SetupLTPA
 		if(roleIdTraf == null){
 			root = doc.getRootElement();
 			role = root.addElement("security-role");
-			roleIdTraf = (new Date()).getTime() + "";
+			roleIdTraf = (new Date()).getTime() + 1 + "";
 			role.addAttribute("id","SecurityRole_" + roleIdTraf);
 			desc = role.addElement("description");
 			name = role.addElement("role-name");
