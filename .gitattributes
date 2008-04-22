@@ -2071,6 +2071,15 @@ incubator/wps61-fgsak-libs/nav-lib-fgsak-bprof-common-public-java-1.0.0/.setting
 incubator/wps61-fgsak-libs/nav-lib-fgsak-bprof-common-public-java-1.0.0/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wps61-fgsak-libs/nav-lib-fgsak-bprof-common-public-java-1.0.0/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/wps61-fgsak-libs/nav-lib-fgsak-bprof-common-public-java-1.0.0/nav-fgsak-bprof-common-public-java-1.0.0.jar -text
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/.classpath -text svneol=unset#text/plain
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/.project -text svneol=unset#text/plain
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/.runtime -text
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/.settings/org.eclipse.wst.common.component -text
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wps61-fgsak-libs/nav-lib-fgsak-common-public-java-1.0.0/nav-fgsak-common-public-java-1.0.0.jar -text
 incubator/wps61-fgsak-libs/nav-lib-fgsak-gsak-common-public-java-1.0.0/.classpath -text svneol=unset#text/plain
 incubator/wps61-fgsak-libs/nav-lib-fgsak-gsak-common-public-java-1.0.0/.project -text svneol=unset#text/plain
 incubator/wps61-fgsak-libs/nav-lib-fgsak-gsak-common-public-java-1.0.0/.runtime -text
