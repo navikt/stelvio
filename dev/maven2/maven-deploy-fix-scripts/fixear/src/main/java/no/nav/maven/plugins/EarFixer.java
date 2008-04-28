@@ -34,6 +34,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -60,33 +61,33 @@ public class EarFixer
 	 * @parameter expression="${workingArea}"
 	 * @required
 	 */
-	private File workingArea; // = new File("D:\\Deploy_Temp");
+	private File workingArea = new File("E:\\Deploy_Temp");
 	
 	/**
 	 * This parameter is the ear source file
 	 * @parameter mappingfile="${mappingFile}"
 	 * @required
 	 */
-	private File mappingFile; // = new File("M:\\DevArch_Tools_Shared\\DevArch\\tools\\moose\\build_version_mapping.txt");
+	private File mappingFile = new File("E:\\cc\\DevArch\\DevArch\\tools\\moose\\build_version_mapping.txt");
 	
 	/**
 	 * This parameter is the environment file containing environment properties
 	 * @parameter expression="${envFile}"
 	 * @required
 	 */
-	private File environFile; // = new File("M:\\DevArch_Tools_Shared\\DevArch\\tools\\moose\\environments\\KompTestKjempen.xml");
+	private File environFile = new File("E:\\cc\\DevArch\\DevArch\\tools\\moose\\environments\\KompTestKjempen.xml");
 	
 	/**
 	 * What module is being edited
 	 * @parameter expression="${mooseId}"
 	 * @required
 	 */
-	private String mooseId; // = "PSELV_R_D3_0071";
+	private String mooseId = "PSELV_K_D3_0079";
 	
 	
 	private String module;
 	private String version;
-	private File earFile;
+	private File earFile, warFile;
 	private Dictionary environment;
 
 	/* (non-Javadoc)
@@ -113,7 +114,9 @@ public class EarFixer
 			if(mooseId.startsWith("PSAK")) fixPSAK();
 			
 			if(mooseId.startsWith("PSELV")) fixPSELV();
-						
+				
+			deleteFiles();
+			
 			compressEarFile();
 			
 			getLog().info("Cleaning up temporary files...");
@@ -162,10 +165,7 @@ public class EarFixer
 				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 			}
 		}
-		
-		
-		
-		
+	
 		getLog().info("Done!");
 	}
 	
@@ -176,13 +176,6 @@ public class EarFixer
 			
 			if(isGiant()){				//KJEMPEN
 				getLog().info("Configuring PSAK KJEMPEN for SENSITIVSONE...");
-
-				//delete log4j.properties
-				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
-				if(log4j.exists()){
-					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
-					log4j.delete();
-				}
 				
 				//fix pselv link in resource.properties
 				fixResources(new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/resources_nb_NO.properties"));
@@ -190,12 +183,6 @@ public class EarFixer
 			}else{						//REKRUTTEN
 				getLog().info("Configuring PSAK REKRUTTEN for SENSITIVSONE...");
 
-				//delete log4j.properties
-				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
-				if(log4j.exists()){
-					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
-					log4j.delete();
-				}
 				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 			}
 			
@@ -203,37 +190,12 @@ public class EarFixer
 			if(isGiant()){ 				//KJEMPEN
 				getLog().info("Configuring PSAK KJEMPEN for INTERNSONE...");
 				
-				//delete config dependencies
-				penConfig = new File(workingArea.getAbsolutePath() + "/lib/nav-config-pensjon-pen-" + version + ".jar");
-				psakConfig = new File(workingArea.getAbsolutePath() + "/lib/nav-config-pensjon-psak-" + version + ".jar");
-				if(penConfig.exists()){
-					getLog().info(penConfig.getName() + " found in lib, deleting...");
-					penConfig.delete();
-				}
-				if(psakConfig.exists()){
-					getLog().info(psakConfig.getName() + " found in lib, deleting...");
-					psakConfig.delete();
-				}
-				
-				//delete log4j.properties
-				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
-				if(log4j.exists()){
-					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
-					log4j.delete();
-				}
-				
 				//Setting up role binding
 				getLog().info("Setting up role binding for INTERNSONE...");
 				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 			}else{						//REKRUTTEN
 				getLog().info("Configuring PSAK REKRUTTEN for INTERNSONE...");
 				
-				//delete log4j.properties
-				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
-				if(log4j.exists()){
-					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
-					log4j.delete();
-				}
 				fixBndFile(new File(workingArea.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 			}
 		}
@@ -277,13 +239,14 @@ public class EarFixer
 		ZipUtils.extract2(earFile,workingArea);
 
 		//extracting inner war file
-		String[] temp = earFile.getName().split("-");
-		if (temp.length != 5) {
-			throw new IOException("Unexpected ear file name pattern, expected nav-pensjon-[module]-[version].ear, got " + earFile.getName());
-		}
-		File warFile = new File(workingArea.getAbsolutePath() + "/nav-presentation-pensjon-" + temp[2] + "-web-" + temp[4].substring(0,temp[4].length()-4) + ".war");
-		ZipUtils.extract2(warFile,new File(workingArea.getAbsolutePath() + "/war"));
-		//if(!delete(warFile)) getLog().warn("Unable to delete war file after extracting war content");
+		File[] wars = workingArea.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".war");
+			}
+		});
+		if(wars.length > 0) warFile = wars[0];
+		if(warFile != null && warFile.exists()) ZipUtils.extract2(warFile,new File(workingArea.getAbsolutePath() + "/war"));
+		
 		getLog().info("Done!");
 	}
 	
@@ -293,13 +256,19 @@ public class EarFixer
 		getLog().info("Compressing ear file back together...");
 		
 		//compressing inner war file
-		ZipUtils.compress(new File(workingArea.getAbsolutePath() + "/war"),new File(workingArea.getAbsolutePath() + "/nav-presentation-pensjon-" + temp[2] + "-web-" + temp[4].substring(0,temp[4].length()-4) + ".war"));
+		if(new File(workingArea.getAbsolutePath() + "/war").exists()){
+			ZipUtils.compress(new File(workingArea.getAbsolutePath() + "/war"),warFile);
+		}
+		
 	
 		//removing temporary war content
 		System.gc();
-		if(!delete(new File(workingArea.getAbsolutePath() + "\\war"))){
-			getLog().warn("Unable to delete temporary files!");
+		if(new File(workingArea.getAbsolutePath() + "/war").exists()){
+			if(!delete(new File(workingArea.getAbsolutePath() + "\\war"))){
+				getLog().warn("Unable to delete temporary files!");
+			}
 		}
+		
 		
 		//compressing outer ear file
 		ZipUtils.compress(new File(workingArea.getAbsolutePath()),earFile);
@@ -327,6 +296,70 @@ public class EarFixer
 		
 	}
 
+	/*
+	 * Delete unecessary files from ear 
+	 */
+	public void deleteFiles(){
+		File log4j, xalan, xerces, xmlApi;
+		
+		if(isGiant()){
+			if(module.compareTo("pen") == 0){
+				
+			}else if(module.compareTo("psak") == 0){
+				//delete log4j.properties
+				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
+				if(log4j.exists()){
+					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
+					log4j.delete();
+				}
+				
+				
+			}else if(module.compareTo("pselv") == 0){
+				//delete log4j.properties
+				log4j = new File(workingArea.getAbsolutePath() + "/war/WEB-INF/classes/log4j.properties");
+				if(log4j.exists()){
+					getLog().info("Found /WEB-INF/classes/log4j.properties, deleting");
+					log4j.delete();
+				}
+				
+				//delete xalan-2.7.0.jar
+				xalan = new File(workingArea.getAbsolutePath() + "/lib/xalan-2.7.0.jar");
+				if(xalan.exists()){
+					getLog().info("/lib/xalan-2.7.0.jar, deleting");
+					xalan.delete();
+				}
+				
+				//delete xercesImpl
+				xerces = new File(workingArea.getAbsolutePath() + "/lib/xercesImpl-2.6.2.jar");
+				if(xerces.exists()){
+					getLog().info("/lib/xercesImpl-2.6.2.jar, deleting");
+					xerces.delete();
+				}
+				
+				//delete xml-api
+				xmlApi = new File(workingArea.getAbsolutePath() + "/lib/xml-apis-1.0.b2.jar");
+				if(xmlApi.exists()){
+					getLog().info("/lib/xml-apis-1.0.b2.jar, deleting");
+					xmlApi.delete();
+				}
+			}
+		}
+		
+		//deleting any nav-config jars in lib
+		File[] configs = new File(workingArea.getAbsolutePath() + "/lib").listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.contains("nav-config");
+			}
+		});
+		if(configs != null && configs.length > 0){
+			getLog().info("Deleting config jars...");
+			for(File config : configs){
+				getLog().info("Deleting " + config.getName());
+				config.delete();
+			}
+		}
+	}
+	
 	public void parseEnvironFile() throws DocumentException, IOException{ 
 		Document doc;
 		SAXReader reader;
