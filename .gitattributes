@@ -1343,6 +1343,7 @@ dev/maven2/maven-datapower-configurer/src/main/resources/environments/Prod/Prod.
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/Q1/Q1.properties -text
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/Q1/ltpa-keys/b08apvl001.preprod.internsone.local.ltpa -text
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/Q1/ltpa-keys/d15apvl007.trygdeetaten2.local.ltpa -text
+dev/maven2/maven-datapower-configurer/src/main/resources/environments/Q2/Q2.properties -text
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/Systemtest1/Systemtest1.properties -text
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/Systemtest1/ltpa-keys/d10apvl002.test.internsone.local.ltpa -text
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/Systemtest1/ltpa-keys/d15apvl004.trygdeetaten2.local.ltpa -text
