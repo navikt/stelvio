@@ -77,7 +77,36 @@ public class DataObjectUtil {
 		}
 		return target;
 	}
-
+	
+	/**
+	 * <p>
+	 * Copy the SDO properties from SourceToTarget without NS DataObject (SDO)
+	 * </p>
+	 * 
+	 * @param source
+	 *            The SDO object to copy
+	 * @param target
+	 *            The target SDO object
+	 */
+	public static DataObject deepCopyDataObjectNoNS(DataObject source,	DataObject target) {
+		if ((source != null) && (target != null)) {
+			for (Iterator i = source.getType().getProperties().iterator(); i.hasNext();) {
+				Property property = (Property) i.next();
+				Object object = source.get(property);
+				if (object != null) {
+					if (object instanceof DataObject) {
+						object = deepCopyDataObjectNoNS((DataObject) object, ((DataObject) target).createDataObject(property.getName()));
+					}
+					if(object instanceof String){
+						object = ((String)object).trim();
+					}
+				}
+				target.set(property.getName(), object);
+			}
+		}
+		return target;
+	}
+	
 	/**
 	 * <p>
 	 * Copy the SDO object from SourceToTarget DataObject (SDO)
