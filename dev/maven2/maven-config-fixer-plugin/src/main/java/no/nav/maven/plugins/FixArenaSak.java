@@ -84,9 +84,13 @@ public class FixArenaSak extends AbstractMojo {
 						getLog().info("Compressing nav-prod-sak-arena.ear...");
 						delete(new File(tmp.getAbsolutePath() + "/nav-prod-sak-arenaEJB.jar"));
 						ZipUtils.compress(ejb, new File(tmp.getAbsolutePath() + "/nav-prod-sak-arenaEJB.jar"));
-					
+						
+						delete(ejb);
 						delete(new File(earDirectory.getAbsolutePath() + "/nav-prod-sak-arena.ear"));
-						ZipUtils.compress(tmp, new File(earDirectory.getAbsolutePath() + "/nav-prod-sak-arena.ear"));
+						delete(arenasak);
+						
+						ZipUtils.compress(tmp, arenasak);
+						
 						delete(tmp);
 					} catch (IOException e) {
 						throw new MojoExecutionException("Error compressing nav-prod-sak-arenaApp.ear: " + e.getMessage());
