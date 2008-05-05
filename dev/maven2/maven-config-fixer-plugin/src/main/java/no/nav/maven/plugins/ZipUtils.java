@@ -70,70 +70,8 @@ public class ZipUtils {
 		output.close();
 
 	}
-
-	/**
-	 * 
-	 * Decompresses an archive's contents into the given destination.
-	 * 
-	 */
-	public static void extract(File source, File destination) throws IOException {
-		String destinationPath = destination.getAbsolutePath();
-		ZipFile archive = getArchiveFile(source);
-
-		Enumeration zipFiles = archive.entries();
-
-		//
-		// for each file in the archive, copy it onto disk
-		//
-		while (zipFiles.hasMoreElements()) {
-			//
-			// create the path for the new file/directory
-			//
-			ZipEntry entry = (ZipEntry) zipFiles.nextElement();
-			File entryFile = new File(destinationPath, entry.getName());
-
-			//
-			// if it's a directory, simply create an empty directory - it
-			// will be filled later by other entries
-			//
-			new File(entryFile.getParent()).mkdirs();
-			InputStream input = null;
-			FileOutputStream output = null;
-
-			try {
-				input = archive.getInputStream(entry);
-				output = new FileOutputStream(entryFile);
-
-				//
-				// we can't reliably get the uncompressed size of
-				// a zip entry, so just use a moderately-sized
-				// buffer to do the copying
-				//
-				byte[] buffer = new byte[2048];
-				int bytesRead = input.read(buffer);
-
-				//
-				// make the copy!
-				//
-				while (bytesRead >= 0) {
-					output.write(buffer, 0, bytesRead);
-					output.flush();
-
-					bytesRead = input.read(buffer);
-				}
-			}
-
-			finally {
-				if (input != null)
-					input.close();
-
-				if (output != null)
-					output.close();
-			}
-		}
-	}
 	
-	public static void extract2(File inputFile, File outDir) throws ZipException, IOException{
+	public static void extract(File inputFile, File outDir) throws ZipException, IOException{
 		ZipFile zipFile = new ZipFile(inputFile);
 		Enumeration enumeration = zipFile.entries();
 		boolean complexFile;

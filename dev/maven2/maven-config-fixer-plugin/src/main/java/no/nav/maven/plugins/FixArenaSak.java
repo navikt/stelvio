@@ -69,11 +69,11 @@ public class FixArenaSak extends AbstractMojo {
 			File tmp = new File(earDirectory.getAbsolutePath() + "/" + new Date().getTime());
 			tmp.mkdirs();
 			try {
-				ZipUtils.extract2(arenasak, tmp);
+				ZipUtils.extract(arenasak, tmp);
 				
 				ejb = new File(tmp + "/ejb");
 				ejb.mkdirs();
-				ZipUtils.extract2(new File(tmp + "/nav-prod-sak-arenaEJB.jar"), ejb);
+				ZipUtils.extract(new File(tmp + "/nav-prod-sak-arenaEJB.jar"), ejb);
 			} catch (IOException e) {
 				throw new MojoExecutionException("Error extracting nav-prod-sak-arenaApp: " + e.getMessage());
 			}
