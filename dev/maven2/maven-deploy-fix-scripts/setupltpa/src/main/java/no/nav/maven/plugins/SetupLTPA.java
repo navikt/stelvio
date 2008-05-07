@@ -70,14 +70,14 @@ public class SetupLTPA extends AbstractMojo {
 	 * @parameter expression="${envfile}"
 	 * @required
 	 */
-	private File envFile; //= new File("E:\\tmp2\\src\\main\\resources\\scripts\\environments\\SystestKjempen.properties");
+	private File envFile; // = new File("E:\\tmp2\\src\\main\\resources\\scripts\\environments\\SystestKjempen.properties");
 
 	/**
 	 * 
 	 * @parameter expression="${module}"
 	 * @required
 	 */
-	private String module; // = "pkort";
+	private String module; // = "psak";
 
 	private Properties props;
 
@@ -388,8 +388,8 @@ public class SetupLTPA extends AbstractMojo {
 						+ "<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
 						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
-						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_1210146126606\" name=\"Everyone\"/>"
-						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>"
+						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_1210146126606\" name=\"Everyone\"/>\n"
+						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
 						+ "</authorizations>\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#TRAF_ROLEID#\">\n"
 						+ "<users xmi:id=\"User_#TRAF_ROLEID#\" name=\"#TRAF_USERNAME#\"/>\n"
@@ -431,8 +431,8 @@ public class SetupLTPA extends AbstractMojo {
 						+ "<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
 						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
-						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_1210146126606\" name=\"Everyone\"/>"
-						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>"
+						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_1210146126606\" name=\"Everyone\"/>\n"
+						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
 						+ "</authorizations>\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#TRAF_ROLEID#\">\n"
 						+ "<users xmi:id=\"User_#TRAF_ROLEID#\" name=\"#TRAF_USERNAME#\"/>\n"
@@ -473,8 +473,8 @@ public class SetupLTPA extends AbstractMojo {
 						+ "<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
 						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
-						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_1210146126606\" name=\"Everyone\"/>"
-						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>"
+						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_1210146126606\" name=\"Everyone\"/>\n"
+						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
 						+ "</authorizations>\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#TRAF_ROLEID#\">\n"
 						+ "<users xmi:id=\"User_#TRAF_ROLEID#\" name=\"#TRAF_USERNAME#\"/>\n"
