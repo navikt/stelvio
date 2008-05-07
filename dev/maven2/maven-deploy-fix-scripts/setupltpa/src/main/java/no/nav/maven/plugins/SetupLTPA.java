@@ -385,7 +385,7 @@ public class SetupLTPA extends AbstractMojo {
 			// checking if roles are mapped to special case EVERYONE
 			if (props.getProperty("groupNamePSAK").contains("Everyone")) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
+						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
 						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
 						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_#ROLEID#\" name=\"Everyone\"/>\n"
@@ -400,8 +400,8 @@ public class SetupLTPA extends AbstractMojo {
 						+ "</com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding>";
 			} else { // normal group mapping
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
-						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
+						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
+						+ "<authorizationTable xmi:id=\"AuthorizationTable_#ROLEID#\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
 						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
 						+ "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n"
@@ -428,8 +428,8 @@ public class SetupLTPA extends AbstractMojo {
 			// checking if roles are mapped to special case EVERYONE
 			if (props.getProperty("groupNamePSELV").contains("\"Everyone\"")) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
-						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
+						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
+						+ "<authorizationTable xmi:id=\"AuthorizationTable_#ROLEID#\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
 						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_#ROLEID#\" name=\"Everyone\"/>\n"
 						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
@@ -443,8 +443,8 @@ public class SetupLTPA extends AbstractMojo {
 						+ "</com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding>";
 			} else {	//normal group mapping
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
-						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
+						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
+						+ "<authorizationTable xmi:id=\"AuthorizationTable_#ROLEID#\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
 						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
 						+ "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n"
@@ -470,8 +470,8 @@ public class SetupLTPA extends AbstractMojo {
 			//checking if roles are mapped to special case EVERYONE
 			if (props.getProperty("groupNamePKORT").contains("\"Everyone\"")) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
-						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
+						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
+						+ "<authorizationTable xmi:id=\"AuthorizationTable_#ROLEID#\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
 						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_#ROLEID#\" name=\"Everyone\"/>\n"
 						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
@@ -485,8 +485,8 @@ public class SetupLTPA extends AbstractMojo {
 						+ "</com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding>";
 			} else {	//normal group mapping
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
-						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
+						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
+						+ "<authorizationTable xmi:id=\"AuthorizationTable_#ROLEID#\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
 						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
 						+ "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n"
