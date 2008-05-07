@@ -61,7 +61,7 @@ public class SetupLTPA extends AbstractMojo {
 	 * @parameter expression="${workingarea}"
 	 * @required
 	 */
-	private File workingArea; // = new File("E:\\tmp2\\target\\classes\\builds\\eardist\\temp");
+	private File workingArea = new File("E:\\tmp2\\target\\classes\\builds\\eardist\\temp");
 
 	/**
 	 * This parameter is the workingarea where the modules are extracted from
@@ -70,14 +70,14 @@ public class SetupLTPA extends AbstractMojo {
 	 * @parameter expression="${envfile}"
 	 * @required
 	 */
-	private File envFile; //= new File("E:\\tmp2\\src\\main\\resources\\scripts\\environments\\SystestKjempen.properties");
+	private File envFile= new File("E:\\tmp2\\src\\main\\resources\\scripts\\environments\\SystestKjempen.properties");
 
 	/**
 	 * 
 	 * @parameter expression="${module}"
 	 * @required
 	 */
-	private String module; // = "pkort";
+	private String module = "pkort";
 
 	private Properties props;
 
@@ -97,7 +97,7 @@ public class SetupLTPA extends AbstractMojo {
 			if (!(props.containsKey("roleNamePSAK") && 
 				  props.containsKey("roleNamePSELV") && 
 				  props.containsKey("usernameTrafikanten") && 
-				  props.contains("roleNamePKORT"))) {
+				  props.containsKey("roleNamePKORT"))) {
 				throw new MojoExecutionException(
 						"Environment doesn't contain definition for roleNamePSAK, roleNamePSELV or usernameTrafikanten, update environment file!");
 			}
