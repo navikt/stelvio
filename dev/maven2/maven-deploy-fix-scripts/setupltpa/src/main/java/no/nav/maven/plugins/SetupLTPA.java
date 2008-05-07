@@ -75,13 +75,11 @@ public class SetupLTPA extends AbstractMojo {
 			"F:\\moose_deployment\\services\\rekrutten\\src\\main\\resources\\scripts\\environments\\preprodRek.properties");
 
 	/**
-	 * This parameter is the workingarea where the modules are extracted from
-	 * subversion. Valid values are PSAK, PSELV, TRAFIKANTEN
 	 * 
-	 * @parameter expression="${ispsak}"
+	 * @parameter expression="${module}"
 	 * @required
 	 */
-	private boolean isPSAK = true;
+	private String module = null;
 
 	private Properties props;
 
@@ -104,12 +102,15 @@ public class SetupLTPA extends AbstractMojo {
 				throw new MojoExecutionException(
 						"Environment doesn't contain definition for roleNamePSAK, roleNamePSELV or usernameTrafikanten, update environment file!");
 			}
-			if (isPSAK) {
+			if (module.compareToIgnoreCase("psak") == 0) {
 				createAppXml(props.getProperty("roleNamePSAK"), props
 						.getProperty("roleNamePSAK"));
-			} else {
+			} else if (module.compareToIgnoreCase("pselv") == 0){
 				createAppXml(props.getProperty("roleNamePSELV"), props
 						.getProperty("roleNamePSELV"));
+			} else if (module.compareToIgnoreCase("pkort") == 0){
+				createAppXml(props.getProperty("roleNamePKORT"), props
+						.getProperty("roleNamePKORT"));
 			}
 
 			createBndFile();
@@ -383,7 +384,7 @@ public class SetupLTPA extends AbstractMojo {
 		/**
 		 * writing application-bnd basic structure
 		 */
-		if (isPSAK) {
+		if (module.compareToIgnoreCase("psak") == 0) {
 			// checking if roles are mapped to special case EVERYONE
 			if (props.getProperty("groupNamePSAK").contains("\"Everyone\"")) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -426,7 +427,7 @@ public class SetupLTPA extends AbstractMojo {
 			content = content.replaceAll("#TRAF_ROLEID#", roleIdTraf);
 			content = content.replaceAll("#TRAF_USERNAME#", props
 					.getProperty("usernameTrafikanten"));
-		} else {
+		} else if (module.compareToIgnoreCase("pselv") == 0){
 			// checking if roles are mapped to special case EVERYONE
 			if (props.getProperty("groupNamePSELV").contains("\"Everyone\"")) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -464,6 +465,48 @@ public class SetupLTPA extends AbstractMojo {
 					.getProperty("groupNamePSELV"));
 			content = content.replaceAll("#USERNAME#", props
 					.getProperty("usernamePSELV"));
+
+			content = content.replaceAll("#TRAF_ROLEID#", roleIdTraf);
+			content = content.replaceAll("#TRAF_USERNAME#", props
+					.getProperty("usernameTrafikanten"));
+		} else if (module.compareToIgnoreCase("pkort") == 0){
+			//checking if roles are mapped to special case EVERYONE
+			if (props.getProperty("groupNamePKORT").contains("\"Everyone\"")) {
+				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+						+ "<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
+						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
+						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
+						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_1210146126606\" name=\"Everyone\"/>"
+						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>"
+						+ "</authorizations>\n"
+						+ "<authorizations xmi:id=\"RoleAssignment_#TRAF_ROLEID#\">\n"
+						+ "<users xmi:id=\"User_#TRAF_ROLEID#\" name=\"#TRAF_USERNAME#\"/>\n"
+						+ "<role href=\"META-INF/application.xml#SecurityRole_#TRAF_ROLEID#\"/>\n"
+						+ "</authorizations>\n"
+						+ "</authorizationTable>\n"
+						+ "<application href=\"META-INF/application.xml#Application_ID\"/>\n"
+						+ "</applicationbnd:ApplicationBinding>";
+			} else {	//normal group mapping
+				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+						+ "<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
+						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
+						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
+						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
+						+ "<groups xmi:id=\"Group_1189082314109\" name=\"#GRPNAME#\"/>\n"
+						+ "</authorizations>\n"
+						+ "<authorizations xmi:id=\"RoleAssignment_#TRAF_ROLEID#\">\n"
+						+ "<users xmi:id=\"User_#TRAF_ROLEID#\" name=\"#TRAF_USERNAME#\"/>\n"
+						+ "<role href=\"META-INF/application.xml#SecurityRole_#TRAF_ROLEID#\"/>\n"
+						+ "</authorizations>\n"
+						+ "</authorizationTable>\n"
+						+ "<application href=\"META-INF/application.xml#Application_ID\"/>\n"
+						+ "</applicationbnd:ApplicationBinding>";
+			}
+			content = content.replaceAll("#ROLEID#", roleId);
+			content = content.replaceAll("#GRPNAME#", props
+					.getProperty("groupNamePKORT"));
+			content = content.replaceAll("#USERNAME#", props
+					.getProperty("usernamePKORT"));
 
 			content = content.replaceAll("#TRAF_ROLEID#", roleIdTraf);
 			content = content.replaceAll("#TRAF_USERNAME#", props
