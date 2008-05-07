@@ -62,7 +62,7 @@ public class SetupLTPA extends AbstractMojo {
 	 * @required
 	 */
 	private File workingArea = new File(
-			"F:\\moose_deployment\\services\\rekrutten\\target\\classes\\builds\\ear\\temp");
+			"E:\\tmp2\\target\\classes\\builds\\eardist\\temp");
 
 	/**
 	 * This parameter is the workingarea where the modules are extracted from
@@ -72,14 +72,14 @@ public class SetupLTPA extends AbstractMojo {
 	 * @required
 	 */
 	private File envFile = new File(
-			"F:\\moose_deployment\\services\\rekrutten\\src\\main\\resources\\scripts\\environments\\preprodRek.properties");
+			"E:\\tmp2\\src\\main\\resources\\scripts\\environments\\SystestKjempen.properties");
 
 	/**
 	 * 
 	 * @parameter expression="${module}"
 	 * @required
 	 */
-	private String module = null;
+	private String module = "pkort";
 
 	private Properties props;
 
@@ -96,9 +96,10 @@ public class SetupLTPA extends AbstractMojo {
 
 		try {
 			readEnvFile();
-			if (!(props.containsKey("roleNamePSAK")
-					&& props.containsKey("roleNamePSELV") && props
-					.containsKey("usernameTrafikanten"))) {
+			if (!(props.containsKey("roleNamePSAK") && 
+				  props.containsKey("roleNamePSELV") && 
+				  props.containsKey("usernameTrafikanten") && 
+				  props.contains("roleNamePKORT"))) {
 				throw new MojoExecutionException(
 						"Environment doesn't contain definition for roleNamePSAK, roleNamePSELV or usernameTrafikanten, update environment file!");
 			}
@@ -386,7 +387,7 @@ public class SetupLTPA extends AbstractMojo {
 		 */
 		if (module.compareToIgnoreCase("psak") == 0) {
 			// checking if roles are mapped to special case EVERYONE
-			if (props.getProperty("groupNamePSAK").contains("\"Everyone\"")) {
+			if (props.getProperty("groupNamePSAK").contains("Everyone")) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 						+ "<applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_1188827937406\">\n"
 						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
