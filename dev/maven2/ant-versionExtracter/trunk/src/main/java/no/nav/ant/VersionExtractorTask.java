@@ -2,7 +2,8 @@ package no.nav.ant;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  * @author personcca3f1d5452e
  * Created on Aug 15, 2007
@@ -58,15 +59,20 @@ public class VersionExtractorTask extends Task {
 		if (url == null) {
 			throw new BuildException("parameter url er ikke satt");
 		}
-		int pos = url.indexOf("/tags/");
+		/*int pos = url.indexOf("/tags/");
 		if (pos == -1) {
 			tag = "";
 		} else if ((url.indexOf("/stelvio/") != -1)) {
 			tag = "";
 		} else {
 			tag = url.substring(pos+"/tags/".length(),url.indexOf("/",pos+"/tags/".length()));
-		}
+		}*/
+		Matcher m = Pattern.compile(".*/([RKM]_\\d_.+?)/.*").matcher(url);
+		if(m.find()){
+			tag = m.group(1);
+			log("Found tag_id: " + tag);
+		}else log("tag_id not found in this module!");
+		
 		getProject().setNewProperty(propertyName,tag);
-
 	}
 }
