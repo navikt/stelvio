@@ -29,6 +29,58 @@ public class Configurer
 extends AbstractMojo
 {
 	/**
+	 * Helper class to simplify testing and programmatic configuration of the plugin.
+	 * 
+	 * @author Torbjørn Staff, Accenture
+	 */
+	public static class Builder {
+		private File fileArchive; 
+		private File configTemplate; 
+		private File mapTemplate; 
+		private File outputDirectory;
+		private File environment; 
+		private String host; 
+		private String user; 
+		private String password; 
+		private String ltpaPwdWAS; 
+		private String ltpaPwdWPS; 
+		private String bustag; 
+		private boolean importConfig; 
+		private boolean importFiles; 
+		
+		public Builder() {}
+		public Builder fileArchive(File fileArchive) { this.fileArchive = fileArchive; return this;}
+		public Builder configTemplate(File configTemplate) { this.configTemplate = configTemplate; return this; }
+		public Builder mapTemplate(File mapTemplate) { this.mapTemplate = mapTemplate; return this; }
+		public Builder outputDirectory(File outputDirectory) { this.outputDirectory = outputDirectory; return this; }
+		public Builder environment(File environment) { this.environment = environment; return this; }
+		public Builder host(String host) { this.host = host; return this; }
+		public Builder user(String user) { this.user = user; return this; }
+		public Builder password(String password) { this.password = password; return this; }
+		public Builder ltpaPwdWAS(String ltpaPwdWAS) { this.ltpaPwdWAS = ltpaPwdWAS; return this; }
+		public Builder ltpaPwdWPS(String ltpaPwdWPS) { this.ltpaPwdWPS = ltpaPwdWPS; return this; }
+		public Builder bustag(String bustag) { this.bustag = bustag; return this; }
+		public Builder importConfig(boolean importConfig) { this.importConfig = importConfig; return this; }
+		public Builder importFiles(boolean importFiles) { this.importFiles = importFiles; return this; }
+		public Configurer build() { return new Configurer(this); }
+	}
+	
+	private Configurer(Builder builder) {
+		this.bustag = builder.bustag;
+		this.configTemplate = builder.configTemplate;
+		this.environment = builder.environment;
+		this.fileArchive = builder.fileArchive;
+		this.host = builder.host;
+		this.importConfig = builder.importConfig;
+		this.importFiles = builder.importFiles;
+		this.ltpaPwdWAS = builder.ltpaPwdWAS;
+		this.ltpaPwdWPS = builder.ltpaPwdWPS;
+		this.mapTemplate = builder.mapTemplate;
+		this.outputDirectory = builder.outputDirectory;
+		this.password = builder.password;
+		this.user = builder.user;
+	}
+	/**
 	 * Location of the file.
 	 * @parameter expression="${outDir}"
 	 * @required
@@ -116,7 +168,7 @@ extends AbstractMojo
 	/**
 	 * Private variables
 	 */
-	private File tmpFolder, configFile;
+	private File tmpFolder/*, configFile*/;
 	
 	private String mergedContent;
 	
