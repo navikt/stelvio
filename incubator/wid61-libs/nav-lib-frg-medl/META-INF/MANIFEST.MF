@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Created-By: 1.5.0 (IBM Corporation)
+Class-Path: copiedjars/nav-lib-provider-fellesregister-medl-ejb-1.0.9.
+ D2-client/nav-provider-fellesregister-medl-ejb-1.0.9.D2-client.jar 
+
+  nav-lib-provider-fellesregister-medl-ejb-1.0.9.D2-client.jar
+ServiceLibrary: true
+

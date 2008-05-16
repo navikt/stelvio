@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://nav-ent-frg-medlemskapsunntak" xmlns:bons2="http://nav-lib-frg-medl/no/nav/lib/frg/medl/asbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg-medl/no/nav/lib/frg/medl/asbo">
+    <xsd:include schemaLocation="medlMedlemskapsunntak.xsd"/>
+    <xsd:complexType name="medlMedlemskapsunntakListe">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="medlemskapsunntak" type="bons2:medlMedlemskapsunntak"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons1="http://nav-lib-frg-medl/no/nav/lib/frg/medl/asbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg-medl/no/nav/lib/frg/medl/asbo">
+    <xsd:include schemaLocation="medlPersonIdentifikator.xsd"/>
+    <xsd:complexType name="medlPersonIdentifikatorListe">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="personer" type="bons1:medlPersonIdentifikator"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
