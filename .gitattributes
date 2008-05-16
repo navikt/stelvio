@@ -2043,6 +2043,15 @@ incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/.settings
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/nav-fgsak-norg-common-public-java-1.0.0.jar -text
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.classpath -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.project -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.runtime -text
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/nav-provider-fellesregister-inst-ejb-2.0.3.D1-client.jar -text
 incubator/wid61-mess_provider/websphere_default_messaging_provider/.classpath -text svneol=unset#text/plain
 incubator/wid61-mess_provider/websphere_default_messaging_provider/.project -text svneol=unset#text/plain
 incubator/wid61-mess_provider/websphere_default_messaging_provider/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
