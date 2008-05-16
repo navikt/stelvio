@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:impl="http://ejb.inst.fellesreg.provider.nav.no" xmlns:intf="http://ejb.inst.fellesreg.provider.nav.no" xmlns:tns10="http://exception.dto.stelvio.no" xmlns:tns11="http://fellesreg.dto.nav.no" xmlns:tns2="http://to.inst.fellesreg.provider.nav.no" xmlns:tns3="http://transferobject.dto.stelvio.no" xmlns:tns4="http://context.dto.stelvio.no" xmlns:tns5="http://person.dto.stelvio.no" xmlns:tns6="http://inst.fellesreg.dto.nav.no" xmlns:tns7="http://time.dto.stelvio.no" xmlns:tns8="http://codestable.inst.fellesreg.dto.nav.no" xmlns:tns9="http://inst.fellesreg.provider.nav.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ejb.inst.fellesreg.provider.nav.no">
+ <wsdl:types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://to.inst.fellesreg.provider.nav.no" xmlns:impl="http://ejb.inst.fellesreg.provider.nav.no" xmlns:tns11="http://fellesreg.dto.nav.no" xmlns:tns3="http://transferobject.dto.stelvio.no" xmlns:tns5="http://person.dto.stelvio.no" xmlns:tns6="http://inst.fellesreg.dto.nav.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://fellesreg.dto.nav.no"/>
+   <import namespace="http://ejb.inst.fellesreg.provider.nav.no"/>
+   <import namespace="http://inst.fellesreg.dto.nav.no"/>
+   <import namespace="http://person.dto.stelvio.no"/>
+   <import namespace="http://transferobject.dto.stelvio.no"/>
+   <complexType name="LagreInstitusjonsoppholdRequestDto">
+    <complexContent>
+     <extension base="tns3:ServiceRequestDto">
+      <sequence>
+       <element name="fnr" nillable="true" type="tns5:PidDto"/>
+       <element name="institusjonsopphold" nillable="true" type="tns6:InstitusjonsoppholdInstitusjonsoppholdDto"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="LagreInstitusjonsoppholdResponseDto">
+    <complexContent>
+     <extension base="tns3:ServiceResponseDto">
+      <sequence>
+       <element name="institusjonsopphold" nillable="true" type="tns6:InstitusjonsoppholdInstitusjonsoppholdDto"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="HentInstitusjonsoppholdListeRequestDto">
+    <complexContent>
+     <extension base="tns3:ServiceRequestDto">
+      <sequence>
+       <element name="erGyldig" nillable="true" type="xsd:boolean"/>
+       <element name="fnr" nillable="true" type="tns5:PidDto"/>
+       <element name="forDato" nillable="true" type="xsd:dateTime"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="HentInstitusjonsoppholdListeResponseDto">
+    <complexContent>
+     <extension base="tns3:ServiceResponseDto">
+      <sequence>
+       <element name="personInstitusjonsopphold" nillable="true" type="tns6:PersonInstitusjonsoppholdDto"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="SlettInstitusjonsoppholdRequestDto">
+    <complexContent>
+     <extension base="tns3:ServiceRequestDto">
+      <sequence>
+       <element name="oppholdPeriodeId" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AldersOgSykehjemsListeRequestDto">
+    <complexContent>
+     <extension base="tns3:ServiceRequestDto">
+      <sequence>
+       <element name="datoForUtplukk" nillable="true" type="xsd:dateTime"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AldersOgSykehjemsListeResponseDto">
+    <complexContent>
+     <extension base="tns3:ServiceResponseDto">
+      <sequence>
+       <element name="personInstitusjonsopphold" nillable="true" type="impl:ArrayOf_tns6_nillable_PersonInstitusjonsoppholdDto"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="OppdaterFodselsnummerRequestDto">
+    <complexContent>
+     <extension base="tns3:ServiceRequestDto">
+      <sequence>
+       <element name="personOppdatert" nillable="true" type="tns11:PersonOppdatertEsbDto"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="OpprettFodselsnummerRequestDto">
+    <complexContent>
+     <extension base="tns3:ServiceRequestDto">
+      <sequence>
+       <element name="personOppdatert" nillable="true" type="tns11:PersonOppdatertEsbDto"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://transferobject.dto.stelvio.no" xmlns:tns4="http://context.dto.stelvio.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://context.dto.stelvio.no"/>
+   <complexType name="ServiceRequestDto">
+    <sequence>
+     <element name="requestContextDto" nillable="true" type="tns4:RequestContextDto"/>
+    </sequence>
+   </complexType>
+   <complexType name="ServiceResponseDto">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://context.dto.stelvio.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="RequestContextDto">
+    <sequence>
+     <element name="moduleId" nillable="true" type="xsd:string"/>
+     <element name="processId" nillable="true" type="xsd:string"/>
+     <element name="screenId" nillable="true" type="xsd:string"/>
+     <element name="transactionId" nillable="true" type="xsd:string"/>
+     <element name="componentId" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://person.dto.stelvio.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="PidDto">
+    <sequence>
+     <element name="pid" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://inst.fellesreg.dto.nav.no" xmlns:impl="http://ejb.inst.fellesreg.provider.nav.no" xmlns:tns5="http://person.dto.stelvio.no" xmlns:tns7="http://time.dto.stelvio.no" xmlns:tns8="http://codestable.inst.fellesreg.dto.nav.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://ejb.inst.fellesreg.provider.nav.no"/>
+   <import namespace="http://person.dto.stelvio.no"/>
+   <import namespace="http://codestable.inst.fellesreg.dto.nav.no"/>
+   <import namespace="http://time.dto.stelvio.no"/>
+   <complexType name="InstitusjonsoppholdInstitusjonsoppholdDto">
+    <sequence>
+     <element name="changeStamp" nillable="true" type="tns7:ChangeStampDto"/>
+     <element name="datoFom" nillable="true" type="xsd:dateTime"/>
+     <element name="datoForventetTom" nillable="true" type="xsd:dateTime"/>
+     <element name="datoTom" nillable="true" type="xsd:dateTime"/>
+     <element name="erGyldig" nillable="true" type="xsd:boolean"/>
+     <element name="kildeType" nillable="true" type="tns8:KildeTypeCtiDto"/>
+     <element name="oppholdPeriodeId" nillable="true" type="xsd:long"/>
+     <element name="oppholdType" nillable="true" type="tns8:OppholdTypeCtiDto"/>
+     <element name="overfort" nillable="true" type="xsd:boolean"/>
+     <element name="pasientKategoriType" nillable="true" type="tns8:PasientKategoriTypeCtiDto"/>
+     <element name="tssEksternId" nillable="true" type="xsd:string"/>
+     <element name="varighetType" nillable="true" type="tns8:VarighetTypeCtiDto"/>
+     <element name="version" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="PersonInstitusjonsoppholdDto">
+    <sequence>
+     <element name="changeStamp" nillable="true" type="tns7:ChangeStampDto"/>
+     <element name="fnr" nillable="true" type="tns5:PidDto"/>
+     <element name="institusjonsopphold" nillable="true" type="impl:ArrayOf_tns6_nillable_InstitusjonsoppholdInstitusjonsoppholdDto"/>
+     <element name="personId" nillable="true" type="xsd:long"/>
+     <element name="version" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://time.dto.stelvio.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="ChangeStampDto">
+    <sequence>
+     <element name="createdBy" nillable="true" type="xsd:string"/>
+     <element name="createdDate" nillable="true" type="xsd:dateTime"/>
+     <element name="updatedBy" nillable="true" type="xsd:string"/>
+     <element name="updatedDate" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://codestable.inst.fellesreg.dto.nav.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="KildeTypeCtiDto">
+    <complexContent>
+     <extension base="tns8:AbstractCtiDto">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType abstract="true" name="AbstractCtiDto">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="OppholdTypeCtiDto">
+    <complexContent>
+     <extension base="tns8:AbstractCtiDto">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="PasientKategoriTypeCtiDto">
+    <complexContent>
+     <extension base="tns8:AbstractCtiDto">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="VarighetTypeCtiDto">
+    <complexContent>
+     <extension base="tns8:AbstractCtiDto">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ejb.inst.fellesreg.provider.nav.no" xmlns:tns2="http://to.inst.fellesreg.provider.nav.no" xmlns:tns6="http://inst.fellesreg.dto.nav.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://inst.fellesreg.dto.nav.no"/>
+   <import namespace="http://to.inst.fellesreg.provider.nav.no"/>
+   <element name="lagreInstitusjonsoppholdResponse">
+    <complexType>
+     <sequence>
+      <element name="lagreInstitusjonsoppholdReturn" nillable="true" type="tns2:LagreInstitusjonsoppholdResponseDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="hentInstitusjonsoppholdListe">
+    <complexType>
+     <sequence>
+      <element name="hentinstitusjonsoppholdlisterequestdto" nillable="true" type="tns2:HentInstitusjonsoppholdListeRequestDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="hentInstitusjonsoppholdListeResponse">
+    <complexType>
+     <sequence>
+      <element name="hentInstitusjonsoppholdListeReturn" nillable="true" type="tns2:HentInstitusjonsoppholdListeResponseDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="slettInstitusjonsopphold">
+    <complexType>
+     <sequence>
+      <element name="slettinstitusjonsoppholdrequestdto" nillable="true" type="tns2:SlettInstitusjonsoppholdRequestDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="slettInstitusjonsoppholdResponse">
+    <complexType>
+     <sequence/>
+    </complexType>
+   </element>
+   <element name="aldersOgSykehjemsliste">
+    <complexType>
+     <sequence>
+      <element name="aldersogsykehjemslisterequestdto" nillable="true" type="tns2:AldersOgSykehjemsListeRequestDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="aldersOgSykehjemslisteResponse">
+    <complexType>
+     <sequence>
+      <element name="aldersOgSykehjemslisteReturn" nillable="true" type="tns2:AldersOgSykehjemsListeResponseDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="oppdaterFodselsnummer">
+    <complexType>
+     <sequence>
+      <element name="oppdaterfodselsnummerrequestdto" nillable="true" type="tns2:OppdaterFodselsnummerRequestDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="oppdaterFodselsnummerResponse">
+    <complexType>
+     <sequence/>
+    </complexType>
+   </element>
+   <element name="opprettFodselsnummer">
+    <complexType>
+     <sequence>
+      <element name="opprettfodselsnummerrequestdto" nillable="true" type="tns2:OpprettFodselsnummerRequestDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="opprettFodselsnummerResponse">
+    <complexType>
+     <sequence/>
+    </complexType>
+   </element>
+   <element name="lagreInstitusjonsopphold">
+    <complexType>
+     <sequence>
+      <element name="lagreinstitusjonsoppholdrequestdto" nillable="true" type="tns2:LagreInstitusjonsoppholdRequestDto"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOfXSDAnyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="anyType" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns6_nillable_InstitusjonsoppholdInstitusjonsoppholdDto">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="InstitusjonsoppholdInstitusjonsoppholdDto" nillable="true" type="tns6:InstitusjonsoppholdInstitusjonsoppholdDto"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns6_nillable_PersonInstitusjonsoppholdDto">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="PersonInstitusjonsoppholdDto" nillable="true" type="tns6:PersonInstitusjonsoppholdDto"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://inst.fellesreg.provider.nav.no" xmlns:tns10="http://exception.dto.stelvio.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exception.dto.stelvio.no"/>
+   <complexType name="InstitusjonsoppholdDoesNotExistExceptionDto">
+    <complexContent>
+     <extension base="tns10:RecoverableDtoException">
+      <sequence>
+       <element name="oppholdPeriodeId" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="InstitusjonsoppholdDoesNotExistExceptionDto" nillable="true" type="tns9:InstitusjonsoppholdDoesNotExistExceptionDto"/>
+   <complexType name="PersonDoesNotExistExceptionDto">
+    <complexContent>
+     <extension base="tns10:RecoverableDtoException">
+      <sequence>
+       <element name="pid" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="PersonDoesNotExistExceptionDto" nillable="true" type="tns9:PersonDoesNotExistExceptionDto"/>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://exception.dto.stelvio.no" xmlns:impl="http://ejb.inst.fellesreg.provider.nav.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://ejb.inst.fellesreg.provider.nav.no"/>
+   <complexType abstract="true" name="RecoverableDtoException">
+    <sequence>
+     <element name="errorId" type="xsd:long"/>
+     <element name="processId" nillable="true" type="xsd:string"/>
+     <element name="screenId" nillable="true" type="xsd:string"/>
+     <element name="transactionId" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="templateArguments" nillable="true" type="impl:ArrayOfXSDAnyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fellesreg.dto.nav.no" xmlns:tns5="http://person.dto.stelvio.no" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://person.dto.stelvio.no"/>
+   <complexType name="PersonOppdatertEsbDto">
+    <sequence>
+     <element name="gamlePersonData" nillable="true" type="tns11:PersonEsbDto"/>
+     <element name="meldingsKode" nillable="true" type="xsd:string"/>
+     <element name="nyePersonData" nillable="true" type="tns11:PersonEsbDto"/>
+     <element name="registreringsDato" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+   <complexType name="PersonEsbDto">
+    <sequence>
+     <element name="diskresjonsKode" nillable="true" type="xsd:string"/>
+     <element name="fnr" nillable="true" type="tns5:PidDto"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="opprettFodselsnummerResponse">
+     <wsdl:part element="impl:opprettFodselsnummerResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="hentInstitusjonsoppholdListeRequest">
+     <wsdl:part element="impl:hentInstitusjonsoppholdListe" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="aldersOgSykehjemslisteResponse">
+     <wsdl:part element="impl:aldersOgSykehjemslisteResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="opprettFodselsnummerRequest">
+     <wsdl:part element="impl:opprettFodselsnummer" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="hentInstitusjonsoppholdListeResponse">
+     <wsdl:part element="impl:hentInstitusjonsoppholdListeResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="aldersOgSykehjemslisteRequest">
+     <wsdl:part element="impl:aldersOgSykehjemsliste" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="PersonDoesNotExistExceptionDto">
+     <wsdl:part element="tns9:PersonDoesNotExistExceptionDto" name="fault"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="slettInstitusjonsoppholdRequest">
+     <wsdl:part element="impl:slettInstitusjonsopphold" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="InstitusjonsoppholdDoesNotExistExceptionDto">
+     <wsdl:part element="tns9:InstitusjonsoppholdDoesNotExistExceptionDto" name="fault"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="slettInstitusjonsoppholdResponse">
+     <wsdl:part element="impl:slettInstitusjonsoppholdResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="oppdaterFodselsnummerRequest">
+     <wsdl:part element="impl:oppdaterFodselsnummer" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="oppdaterFodselsnummerResponse">
+     <wsdl:part element="impl:oppdaterFodselsnummerResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="lagreInstitusjonsoppholdRequest">
+     <wsdl:part element="impl:lagreInstitusjonsopphold" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:message name="lagreInstitusjonsoppholdResponse">
+     <wsdl:part element="impl:lagreInstitusjonsoppholdResponse" name="parameters"/>
+
+  </wsdl:message>
+
+   <wsdl:portType name="InstitusjonsoppholdService">
+     <wsdl:operation name="lagreInstitusjonsopphold">
+       <wsdl:input message="impl:lagreInstitusjonsoppholdRequest" name="lagreInstitusjonsoppholdRequest"/>
+
+       <wsdl:output message="impl:lagreInstitusjonsoppholdResponse" name="lagreInstitusjonsoppholdResponse"/>
+
+       <wsdl:fault message="impl:InstitusjonsoppholdDoesNotExistExceptionDto" name="InstitusjonsoppholdDoesNotExistExceptionDto"/>
+
+       <wsdl:fault message="impl:PersonDoesNotExistExceptionDto" name="PersonDoesNotExistExceptionDto"/>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="hentInstitusjonsoppholdListe">
+       <wsdl:input message="impl:hentInstitusjonsoppholdListeRequest" name="hentInstitusjonsoppholdListeRequest"/>
+
+       <wsdl:output message="impl:hentInstitusjonsoppholdListeResponse" name="hentInstitusjonsoppholdListeResponse"/>
+
+       <wsdl:fault message="impl:PersonDoesNotExistExceptionDto" name="PersonDoesNotExistExceptionDto"/>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="slettInstitusjonsopphold">
+       <wsdl:input message="impl:slettInstitusjonsoppholdRequest" name="slettInstitusjonsoppholdRequest"/>
+
+       <wsdl:output message="impl:slettInstitusjonsoppholdResponse" name="slettInstitusjonsoppholdResponse"/>
+
+       <wsdl:fault message="impl:InstitusjonsoppholdDoesNotExistExceptionDto" name="InstitusjonsoppholdDoesNotExistExceptionDto"/>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="aldersOgSykehjemsliste">
+       <wsdl:input message="impl:aldersOgSykehjemslisteRequest" name="aldersOgSykehjemslisteRequest"/>
+
+       <wsdl:output message="impl:aldersOgSykehjemslisteResponse" name="aldersOgSykehjemslisteResponse"/>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="oppdaterFodselsnummer">
+       <wsdl:input message="impl:oppdaterFodselsnummerRequest" name="oppdaterFodselsnummerRequest"/>
+
+       <wsdl:output message="impl:oppdaterFodselsnummerResponse" name="oppdaterFodselsnummerResponse"/>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="opprettFodselsnummer">
+       <wsdl:input message="impl:opprettFodselsnummerRequest" name="opprettFodselsnummerRequest"/>
+
+       <wsdl:output message="impl:opprettFodselsnummerResponse" name="opprettFodselsnummerResponse"/>
+
+    </wsdl:operation>
+
+  </wsdl:portType>
+
+   <wsdl:binding name="InstitusjonsoppholdServiceSoapBinding" type="impl:InstitusjonsoppholdService">
+     <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+     <wsdl:operation name="lagreInstitusjonsopphold">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="lagreInstitusjonsoppholdRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="lagreInstitusjonsoppholdResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+       <wsdl:fault name="InstitusjonsoppholdDoesNotExistExceptionDto">
+         <wsdlsoap:fault name="InstitusjonsoppholdDoesNotExistExceptionDto" use="literal"/>
+
+      </wsdl:fault>
+
+       <wsdl:fault name="PersonDoesNotExistExceptionDto">
+         <wsdlsoap:fault name="PersonDoesNotExistExceptionDto" use="literal"/>
+
+      </wsdl:fault>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="hentInstitusjonsoppholdListe">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="hentInstitusjonsoppholdListeRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="hentInstitusjonsoppholdListeResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+       <wsdl:fault name="PersonDoesNotExistExceptionDto">
+         <wsdlsoap:fault name="PersonDoesNotExistExceptionDto" use="literal"/>
+
+      </wsdl:fault>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="slettInstitusjonsopphold">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="slettInstitusjonsoppholdRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="slettInstitusjonsoppholdResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+       <wsdl:fault name="InstitusjonsoppholdDoesNotExistExceptionDto">
+         <wsdlsoap:fault name="InstitusjonsoppholdDoesNotExistExceptionDto" use="literal"/>
+
+      </wsdl:fault>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="aldersOgSykehjemsliste">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="aldersOgSykehjemslisteRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="aldersOgSykehjemslisteResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="oppdaterFodselsnummer">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="oppdaterFodselsnummerRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="oppdaterFodselsnummerResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+     <wsdl:operation name="opprettFodselsnummer">
+       <wsdlsoap:operation soapAction=""/>
+
+       <wsdl:input name="opprettFodselsnummerRequest">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:input>
+
+       <wsdl:output name="opprettFodselsnummerResponse">
+         <wsdlsoap:body use="literal"/>
+
+      </wsdl:output>
+
+    </wsdl:operation>
+
+  </wsdl:binding>
+
+   <wsdl:service name="InstitusjonsoppholdServiceService">
+     <wsdl:port binding="impl:InstitusjonsoppholdServiceSoapBinding" name="InstitusjonsoppholdService">
+       <wsdlsoap:address location="file:undefined_location"/>
+
+    </wsdl:port>
+
+  </wsdl:service>
+
+</wsdl:definitions>

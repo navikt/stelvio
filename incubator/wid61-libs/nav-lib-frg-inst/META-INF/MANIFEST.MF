@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: 1.5.0 (IBM Corporation)
+ServiceLibrary: true
+Class-Path: stelvio-commons-lib.jar
+ nav-lib-provider-fellesregister-inst-ejb-2.0.3.D1-client.jar

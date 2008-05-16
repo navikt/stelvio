@@ -2043,6 +2043,30 @@ incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/.settings
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/nav-fgsak-norg-common-public-java-1.0.0.jar -text
+incubator/wid61-libs/nav-lib-frg-inst/.classpath -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/.project -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/.runtime -text
+incubator/wid61-libs/nav-lib-frg-inst/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-libs/nav-lib-frg-inst/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/nav/provider/fellesreg/inst/ejb/InstitusjonsoppholdService.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/nav/provider/fellesreg/inst/ejb/InstitusjonsoppholdServicemapper.wsdl -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/.copyarea.db -text
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/.copyarea.db -text
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/.copyarea.db -text
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/FunctionalRecoverableDtoException.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/FunctionalUnrecoverableDtoException.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/RecoverableDtoException.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/SystemUnrecoverableDtoException.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/UnrecoverableDtoException.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/mapping/.copyarea.db -text
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/mapping/AbstractMappingDtoException.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/mapping/MappingDtoException.java -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.classpath -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.project -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.runtime -text
