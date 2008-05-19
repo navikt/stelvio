@@ -80,6 +80,10 @@ extends AbstractMojo
 		this.password = builder.password;
 		this.user = builder.user;
 	}
+	
+	public Configurer(){
+	
+	}
 	/**
 	 * Location of the file.
 	 * @parameter expression="${outDir}"
