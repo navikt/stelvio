@@ -1,5 +1,8 @@
 Manifest-Version: 1.0
 Created-By: 1.5.0 (IBM Corporation)
+Class-Path: nav-lib-provider-frg-inst-ejb-2.0.3.D1-client.jar 
+ copiedjars/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/nav-provider
+ -frg-inst-ejb-2.0.3.D1-client.jar 
+ stelvio-commons-lib.jar
 ServiceLibrary: true
-Class-Path: stelvio-commons-lib.jar
- nav-lib-provider-fellesregister-inst-ejb-2.0.3.D1-client.jar
+
