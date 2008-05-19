@@ -12,11 +12,11 @@ import org.apache.maven.plugin.MojoExecutionException;
 public class Test {
 
 	public static void main(String[] args) {
-		Configurer config = new Configurer();
+		/*Configurer config = new Configurer();
 		try {
 			config.execute();
 		} catch (MojoExecutionException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
