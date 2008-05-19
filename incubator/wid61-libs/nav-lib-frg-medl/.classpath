@@ -8,7 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere Process Server v6.1 JRE"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v61.bi/wps.v61"/>
-	<classpathentry kind="lib" path="/nav-lib-provider-frg-medl-ejb-1.0.9.D2-client/nav-provider-fellesregister-medl-ejb-1.0.9.D2-client.jar"/>
 	<classpathentry exported="true" kind="src" path="/nav-lib-provider-frg-medl-ejb-1.0.9.D2-client"/>
+	<classpathentry exported="true" kind="src" path="/stelvio-commons-lib"/>
+	<classpathentry kind="lib" path="/nav-lib-provider-frg-medl-ejb-1.0.9.D2-client/nav-provider-fellesregister-medl-ejb-1.0.9.D2-client.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

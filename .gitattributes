@@ -2077,7 +2077,7 @@ incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.jst.common.project.f
 incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.wst.common.component -text
 incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
-incubator/wid61-libs/nav-lib-frg-medl/META-INF/MANIFEST.MF -text
+incubator/wid61-libs/nav-lib-frg-medl/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlContext.xsd -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlFault.xsd -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlGrunnlag.xsd -text svneol=unset#text/plain

@@ -3,6 +3,8 @@
 	<name>nav-lib-frg-medl</name>
 	<comment></comment>
 	<projects>
+		<project>nav-lib-provider-frg-medl-ejb-1.0.9.D2-client</project>
+		<project>stelvio-commons-lib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
