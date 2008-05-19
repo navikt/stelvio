@@ -2110,7 +2110,7 @@ incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.settings/org
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.settings/org.eclipse.wst.common.component -text
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/nav-provider-fellesregister-inst-ejb-2.0.3.D1-client.jar -text
+incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/nav-provider-frg-inst-ejb-2.0.3.D1-client.jar -text
 incubator/wid61-libs/nav-lib-provider-frg-medl-ejb-1.0.9.D2-client/.classpath -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-provider-frg-medl-ejb-1.0.9.D2-client/.project -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-provider-frg-medl-ejb-1.0.9.D2-client/.runtime -text
