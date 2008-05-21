@@ -2165,6 +2165,15 @@ incubator/wid61-stelvio/stelvio-commons-lib/no/stelvio/common/systemavailability
 incubator/wid61-stelvio/stelvio-commons-lib/no/stelvio/common/systemavailability/SystemAvailabilityRecord.xsd -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/xsd-includes/http.stelvio-commons-lib.no.nav.gbo.xsd -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/xsd-includes/http.stelvio-commons-lib.no.stelvio.common.systemavailability.xsd -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/.compatibility -text
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/.j2ee -text
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/.project -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/.runtime -text
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/META-INF/.modulemaps -text
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/META-INF/application.xml -text svneol=unset#text/plain
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
