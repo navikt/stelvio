@@ -2225,6 +2225,10 @@ incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvaila
 incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/.modulemaps -text
 incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/application.xml -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.classpath -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.project -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-operation-systemavailability/WpsCoreSystemAvailability/stelvio/systemavailability/AvailabilityRecord.java -text svneol=unset#text/plain
+incubator/wid61-stelvio/stelvio-operation-systemavailability/WpsCoreSystemAvailability/stelvio/systemavailability/StaticSystemAvailabilityStorage.java -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-sibus-mediation/JMSPropertyMediation/.classpath -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-sibus-mediation/JMSPropertyMediation/.compatibility -text
 incubator/wid61-stelvio/stelvio-sibus-mediation/JMSPropertyMediation/.j2ee -text
