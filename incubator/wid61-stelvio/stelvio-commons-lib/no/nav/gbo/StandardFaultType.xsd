@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://stelvio-commons-lib/no/nav/gbo">
+  <xsd:complexType name="StandardFaultType">
+        <xsd:annotation>
+      <xsd:documentation>This is a fault-object necessary for catching runtime-errors in BPEL's, see http://confluence.adeo.no/display/stelvio/Business+Process+Components. The name is decided by the tools, and does therefore not follow the applicable naming standard.</xsd:documentation>
+    </xsd:annotation>
+        <xsd:sequence>
+      <xsd:element minOccurs="0" name="faultName" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="faultNameUri" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="messageText" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="rootException" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

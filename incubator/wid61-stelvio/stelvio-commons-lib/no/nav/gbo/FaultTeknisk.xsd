@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://stelvio-commons-lib/no/nav/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://stelvio-commons-lib/no/nav/gbo">
+  <xsd:include schemaLocation="GBOStelvioFault.xsd"/>
+  <xsd:complexType name="FaultTeknisk">
+    <xsd:complexContent>
+      <xsd:extension base="bons0:GBOStelvioFault">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>
