@@ -74,7 +74,7 @@ public class SetupLTPA extends AbstractMojo {
 
 	/**
 	 * 
-	 * @parameter expression="${module}"
+	 * @parameter expression="${module}" 
 	 * @required
 	 */
 	private String module; // = "psak";
@@ -99,7 +99,7 @@ public class SetupLTPA extends AbstractMojo {
 				  props.containsKey("usernameTrafikanten") && 
 				  props.containsKey("roleNamePKORT"))) {
 				throw new MojoExecutionException(
-						"Environment doesn't contain definition for roleNamePSAK, roleNamePSELV or usernameTrafikanten, update environment file!");
+						"Environment doesn't contain definition for roleNamePSAK, roleNamePSELV, roleNamePKORT or usernameTrafikanten, update environment file!");
 			}
 			if (module.compareToIgnoreCase("psak") == 0) {
 				createAppXml(props.getProperty("roleNamePSAK"), props
@@ -122,52 +122,6 @@ public class SetupLTPA extends AbstractMojo {
 		}
 	}
 
-	private String[] processExportFile(File export) throws Exception {
-		Document doc;
-		SAXReader reader;
-		XPath search;
-		Map uris = new HashMap();
-		String wsDescNameLink, pcNameLink;
-
-		uris.put("scdl", "http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0");
-		uris.put("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-		uris
-				.put("_",
-						"http://nav-cons-pen-psak-henvendelse/no/nav/inf/Binding");
-		reader = new SAXReader();
-		doc = reader.read(export);
-
-		/**
-		 * extracting service and port attributes from export file
-		 */
-		search = DocumentHelper
-				.createXPath("/scdl:export/esbBinding[@xsi:type='webservice:WebServiceExportBinding']");
-		search.setNamespaceURIs(uris);
-		Element binding = (Element) search.selectSingleNode(doc);
-
-		if (binding != null) {
-			Attribute attr = binding.attribute("service");
-			if (attr != null) {
-				wsDescNameLink = attr.getValue().split(":")[1];
-			} else {
-				throw new DocumentException(
-						"Could not find service name attribute in webservice:WebServiceExportBinding!");
-			}
-			attr = binding.attribute("port");
-			if (attr != null) {
-				pcNameLink = attr.getValue().split(":")[1];
-			} else {
-				throw new DocumentException(
-						"Could not find port name attribute in webservice:WebServiceExportBinding!");
-			}
-		} else {
-			throw new DocumentException(
-					"Could not find webservice:WebServiceExportBinding in export file!");
-		}
-
-		return new String[] { wsDescNameLink, pcNameLink };
-	}
-
 	private File[] getConsModules() {
 		FilenameFilter filter = new FilenameFilter() {
 			public boolean accept(File dir, String name) {
@@ -175,100 +129,6 @@ public class SetupLTPA extends AbstractMojo {
 			}
 		};
 		return workingArea.listFiles(filter);
-	}
-
-	private File[] getExportFiles(File path) {
-		FilenameFilter filter = new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				// TODO Auto-generated method stub
-				return name.endsWith(".export");
-			}
-		};
-		return path.listFiles(filter);
-	}
-
-	private String getExportString(String wsDescNameLink, String PcNameLink) {
-		String exportString;
-		exportString = "<wsDescExtensions>\n"
-				+ "<wsDescExt wsDescNameLink=\"#WSDESCNAMELINK#\">\n"
-				+ "<pcBinding pcNameLink=\"#PCNAMELINK#\">\n"
-				+ "<serverServiceConfig>\n"
-				+ "<securityRequestConsumerServiceConfig>\n"
-				+ "<caller name=\"LTPA_Caller\" part=\"\" uri=\"http://www.ibm.com/websphere/appserver/tokentype/5.0.2\" localName=\"LTPA\"/>\n"
-				+ "<requiredSecurityToken name=\"LTPA\" uri=\"http://www.ibm.com/websphere/appserver/tokentype/5.0.2\" localName=\"LTPA\" usage=\"Required\"/>\n"
-				+ "</securityRequestConsumerServiceConfig>\n"
-				+ "</serverServiceConfig>\n"
-				+ "</pcBinding>\n"
-				+ "</wsDescExt>\n"
-				+ "</wsDescExtensions>\n"
-				+ "<wsDescBindings>\n"
-				+ "<wsdescBindings wsDescNameLink=\"#WSDESCNAMELINK#\">\n"
-				+ "<pcBindings pcNameLink=\"#PCNAMELINK#\">\n"
-				+ "<securityRequestConsumerBindingConfig>\n"
-				+ "<tokenConsumer classname=\"com.ibm.wsspi.wssecurity.token.LTPATokenConsumer\" name=\"LTPA_Token_Con\">\n"
-				+ "<valueType localName=\"LTPA\" uri=\"http://www.ibm.com/websphere/appserver/tokentype/5.0.2\" name=\"LTPA Token\"/>\n"
-				+ "<partReference part=\"LTPA\"/>\n" + "</tokenConsumer>\n"
-				+ "</securityRequestConsumerBindingConfig>\n"
-				+ "</pcBindings>\n" + "</wsdescBindings>\n"
-				+ "</wsDescBindings>\n";
-		return exportString.replaceAll("#WSDESCNAMELINK#", wsDescNameLink)
-				.replaceAll("#PCNAMELINK#", PcNameLink);
-	}
-
-	private void createSca2Jee(File consModulePath) throws Exception {
-		BufferedWriter writer;
-		String content = "", line = "";
-		List exports = new ArrayList();
-
-		/**
-		 * searching through export files and extracting wsdescnamelink and
-		 * pcnamelink
-		 */
-		File[] exportFiles = getExportFiles(consModulePath);
-		getLog().info("found " + exportFiles.length + " export file(s).");
-		for (int i = 0; i < exportFiles.length; i++) {
-			try {
-				getLog().info("processing " + exportFiles[i].getName() + "...");
-				String[] result = processExportFile(exportFiles[i]);
-				exports.add(getExportString(result[0], result[1]));
-				getLog().info("Done!");
-			} catch (Exception e) {
-				throw new Exception("Error processing export files!", e);
-			}
-		}
-
-		/**
-		 * constructing ibm-deploy.sca2jee content
-		 */
-		content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-				+ "<scaj2ee:IntegrationModuleDeploymentConfiguration xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:scaj2ee=\"http://www.ibm.com/xmlns/prod/websphere/sca/j2ee/6.0.2\">\n"
-				+ "<wsExports>\n";
-		for (Iterator iter = exports.iterator(); iter.hasNext();) {
-			content += (String) iter.next();
-		}
-		content += "</wsExports>\n</scaj2ee:IntegrationModuleDeploymentConfiguration>";
-
-		File sca2jee = new File(consModulePath.getAbsolutePath()
-				+ "/ibm-deploy.sca2jee");
-		try {
-			writer = new BufferedWriter(new FileWriter(sca2jee));
-			writer.write(content);
-			writer.close();
-
-			// configuring xml layout
-			SAXReader reader = new SAXReader();
-			Document doc = reader.read(sca2jee);
-			sca2jee.delete();
-
-			XMLWriter xmlwriter = new XMLWriter(new FileWriter(sca2jee
-					.getAbsoluteFile()), OutputFormat.createPrettyPrint());
-			xmlwriter.write(doc.getRootElement());
-			xmlwriter.close();
-		} catch (Exception e) {
-			throw new IOException(
-					"Error writing ibm-deploy.sca2jee to disk: \n\n"
-							+ e.getMessage());
-		}
 	}
 
 	private void readEnvFile() throws IOException {
@@ -429,7 +289,7 @@ public class SetupLTPA extends AbstractMojo {
 			if (props.getProperty("groupNamePSELV").contains("\"Everyone\"")) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
-						+ "<authorizationTable xmi:id=\"AuthorizationTable_#ROLEID#\">\n"
+						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
 						+ "<authorizations xmi:id=\"RoleAssignment_#ROLEID#\">\n"
 						+ "<specialSubjects xmi:type=\"com.ibm.ejs.models.base.bindings.applicationbnd:Everyone\" xmi:id=\"Everyone_#ROLEID#\" name=\"Everyone\"/>\n"
 						+ "<role href=\"META-INF/application.xml#SecurityRole_#ROLEID#\"/>\n"
