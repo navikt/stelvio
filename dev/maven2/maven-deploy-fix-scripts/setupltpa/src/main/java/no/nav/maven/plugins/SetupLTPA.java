@@ -243,7 +243,7 @@ public class SetupLTPA extends AbstractMojo {
 		 */
 		if (module.compareToIgnoreCase("psak") == 0) {
 			// checking if roles are mapped to special case EVERYONE
-			if (props.getProperty("groupNamePSAK").contains("Everyone")) {
+			if (props.getProperty("groupNamePSAK").compareToIgnoreCase("Everyone") == 0) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
 						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
@@ -286,7 +286,7 @@ public class SetupLTPA extends AbstractMojo {
 					.getProperty("usernameTrafikanten"));
 		} else if (module.compareToIgnoreCase("pselv") == 0){
 			// checking if roles are mapped to special case EVERYONE
-			if (props.getProperty("groupNamePSELV").contains("\"Everyone\"")) {
+			if (props.getProperty("groupNamePSELV").compareToIgnoreCase("Everyone") == 0) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
 						+ "<authorizationTable xmi:id=\"AuthorizationTable_1188827937406\">\n"
@@ -328,7 +328,7 @@ public class SetupLTPA extends AbstractMojo {
 					.getProperty("usernameTrafikanten"));
 		} else if (module.compareToIgnoreCase("pkort") == 0){
 			//checking if roles are mapped to special case EVERYONE
-			if (props.getProperty("groupNamePKORT").contains("\"Everyone\"")) {
+			if (props.getProperty("groupNamePKORT").compareToIgnoreCase("Everyone") == 0) {
 				content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 						+ "<com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:com.ibm.ejs.models.base.bindings.applicationbnd=\"applicationbnd.xmi\" xmi:id=\"ApplicationBinding_#ROLEID#\">\n"
 						+ "<authorizationTable xmi:id=\"AuthorizationTable_#ROLEID#\">\n"
