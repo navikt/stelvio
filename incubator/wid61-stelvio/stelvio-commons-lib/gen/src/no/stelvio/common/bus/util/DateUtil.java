@@ -29,6 +29,7 @@ public final class DateUtil {
 
 	/** Legal date formats */
 	private static final String WID_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+	private static final String WID_DATE_FORMAT_NO_MILLIS = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 	private static final String DATE_FORMAT = "dd.MM.yyyy";
 	private static final String SHORT_DATE_FORMAT = "dd.MM.yy";
 	private static final String DB2_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -196,8 +197,15 @@ public final class DateUtil {
 			return output;
 		} else {
 			try {
+				//Workaround for handling datetime's without milliseconds (.SSS)
+				//checks if '.' is part of the input datestring
+				String format = WID_DATE_FORMAT;
+				if(input.length()>19 && !".".equalsIgnoreCase(input.substring(19,20))){
+					format = WID_DATE_FORMAT_NO_MILLIS;
+				}
 				//parse to a date in GMT-time, then change to local-time through calendar.
-				DateFormat dateFormat = createDateFormat(WID_DATE_FORMAT);
+				DateFormat dateFormat = createDateFormat(format);
+				
 				dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 				Date gmtDate = dateFormat.parse(input);
 				Calendar cal = Calendar.getInstance(TimeZone.getDefault());
