@@ -107,7 +107,6 @@
 			<FORM action="oprec.jsp" METHOD="POST"><input type="hidden"
 				name="systemName" value="<%=rec.systemName%>"> <input
 				type="hidden" name="operationName" value="<%=opRec.operationName%>">
-			</FORM>
 			<TR>
 				<TD><%=opRec.operationName%></TD>
 				<TD><%=opRec.getUnavailableString()%></TD>
@@ -117,7 +116,7 @@
 				<TD><input type="submit" value="Edit"><input
 					type="submit" value="Delete"></TD>
 			</TR>
-			<FORM action=""></FORM>
+			</FORM>
 
 			<%	
 		}%>
