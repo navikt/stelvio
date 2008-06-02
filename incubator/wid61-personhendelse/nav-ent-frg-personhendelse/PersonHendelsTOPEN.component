@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mediation="http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0" xmlns:ns1="http://nav-lib-frg/no/nav/lib/frg/inf/PersonHendelse" xmlns:ns2="http://ejb.vedlikehold.pensjon.provider.nav.no" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="PersonHendelsTOPEN" name="PersonHendelsTOPEN">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonHendelse"/>
+  </interfaces>
+  <references>
+    <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+    <reference name="VedlikeholdServicePartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:VedlikeholdService"/>
+      <wire target="SetContextData"/>
+    </reference>
+  </references>
+  <implementation xsi:type="mediation:MediationImplementation" ifmFile="no/nav/infmap/PersonHendelseTOPEN.ifm">
+    <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
+  </implementation>
+</scdl:component>

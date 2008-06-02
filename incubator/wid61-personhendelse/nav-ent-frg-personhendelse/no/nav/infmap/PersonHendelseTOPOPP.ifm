@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<med:interfaceMediation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GBOPersonOppdatertTOpoppOppdaterFodselsnummerRequest="http://nav-ent-frg-personhendelse/no/nav/map" xmlns:gboPersonOppdatertTOpoppPersonOppdatert="http://nav-ent-frg-personhendelse/no/nav/map" xmlns:POPP="http://nav-lib-pen-popp/no/nav/lib/pen/popp/inf" xmlns:PersonHendelse="http://nav-lib-frg/no/nav/lib/frg/inf/PersonHendelse" xmlns:med="http://www.ibm.com/xmlns/prod/websphere/wbiserver/ifm/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" name="PersonHendelseTOPOPP" targetNamespace="http://nav-ent-frg-personhendelse/no/nav/infmap">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="PersonHendelse:PersonHendelse"/>
+  </interfaces>
+  <references>
+    <reference name="POPPPartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="POPP:POPP"/>
+    </reference>
+  </references>
+  <operationBinding source="fodselsnummerOppdatert" target="oppdaterFodselsnummer">
+    <parameterMediation xsi:type="med:boTransform" mapname="GBOPersonOppdatertTOpoppOppdaterFodselsnummerRequest:gboPersonOppdatertTOpoppPersonOppdatert">
+      <parameterBinding>
+        <from location="source" param="fodselsnummerOppdatertRequest" paramType="input"/>
+        <to location="intermediate" param="GBOPersonOppdatert" paramType="input"/>
+      </parameterBinding>
+      <parameterBinding>
+        <from location="intermediate" param="poppPersonOppdatert" paramType="output"/>
+        <to location="target" param="oppdaterFodselsnummerRequest" paramType="input"/>
+      </parameterBinding>
+    </parameterMediation>
+  </operationBinding>
+</med:interfaceMediation>

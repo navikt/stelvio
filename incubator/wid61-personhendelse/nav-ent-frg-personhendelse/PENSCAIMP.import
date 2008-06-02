@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://DefaultNamespace" xmlns:ns2="http://ejb.vedlikehold.pensjon.provider.nav.no" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="PENSCAIMP" name="PENSCAIMP">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns2:VedlikeholdService"/>
+  </interfaces>
+  <esbBinding xsi:type="scdl:SCAImportBinding" module="nav-prod-pen-pen" export="PENSCAEXP"/>
+</scdl:import>

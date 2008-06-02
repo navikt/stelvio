@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://nav-lib-frg-medl/no/nav/lib/frg/medl/inf" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="MEDLSCAIMP" name="MEDLSCAIMP">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:MEDL"/>
+  </interfaces>
+  <esbBinding xsi:type="scdl:SCAImportBinding" module="nav-prod-frg-medl" export="MedlSCAEXP"/>
+</scdl:import>
