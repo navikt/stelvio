@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:eis="http://www.ibm.com/xmlns/prod/websphere/scdl/eis/6.0.0" xmlns:ns1="http://nav-lib-frg/no/nav/lib/frg/inf" xmlns:ns2="http://nav-lib-frg/no/nav/lib/frg/inf/PersonHendelse" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="PersonHendelseJMSIMP" name="PersonHendelseJMSIMP">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns2:PersonHendelse"/>
+  </interfaces>
+  <esbBinding xsi:type="eis:JMSImportBinding" dataBindingType="com.ibm.websphere.sca.jms.data.impl.JMSDataBindingImplXML">
+    <resourceAdapter type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaResourceAdapterImpl"/>
+    <connection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl">
+      <properties>
+        <nonPersistentMapping>AsBusDestination</nonPersistentMapping>
+      </properties>
+      <authentication resAuthAlias="SCA_Auth_Alias"/>
+    </connection>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsTopicImpl" target="jms/PersonHendelseTopic" type="javax.jms.Topic" usage="send"/>
+    <methodBinding method="fodselsnummerOppdatert">
+      <interaction>
+        <properties>
+          <TargetFunctionName>fodselsnummerOppdatert</TargetFunctionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding method="adresseOppdatert">
+      <interaction>
+        <properties>
+          <TargetFunctionName>adresseOppdatert</TargetFunctionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding method="fodselsnummerOpprettet">
+      <interaction>
+        <properties>
+          <TargetFunctionName>fodselsnummerOpprettet</TargetFunctionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+  </esbBinding>
+</scdl:import>
