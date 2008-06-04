@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBOPersonListe.xsd"/>
+    <xsd:complexType name="GBOFinnPersonResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="flereTreff" type="xsd:boolean"/>
+      <xsd:element minOccurs="0" name="buffNr" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="personListe" type="bons0:GBOPersonListe"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

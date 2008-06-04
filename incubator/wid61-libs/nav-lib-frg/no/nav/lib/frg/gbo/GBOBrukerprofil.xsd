@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBOEnkeltbehov.xsd"/>
+    <xsd:complexType name="GBOBrukerprofil">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="brukerprioritertAdresse" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="informasjonskanal" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="varsling" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="varslingskanal" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="datoFom" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="datoTom" type="xsd:string"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="behov" type="bons0:GBOEnkeltbehov"/>
+        </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBOOffentligAdresse.xsd"/>
+    <xsd:include schemaLocation="GBOMatrikkelAdresse.xsd"/>
+    <xsd:complexType name="GBOBostedsAdresse">
+    <xsd:sequence>
+            <xsd:element minOccurs="0" name="boadresse1" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="boadresse2" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="bolignr" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="postnr" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="poststed" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="kommunenr" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="navEnhet" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="adresseType" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="adresseTypeBeskrivelse" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="fom" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="tom" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="offentligAdresse" type="bons0:GBOOffentligAdresse"/>
+            <xsd:element minOccurs="0" name="matrikkelAdresse" type="bons0:GBOMatrikkelAdresse"/>
+        </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

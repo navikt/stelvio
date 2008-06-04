@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBOUtlandskonto.xsd"/>
+    <xsd:include schemaLocation="GBONorskKonto.xsd"/>
+    <xsd:complexType name="GBOUtbetalingsinformasjon">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="utbetalingsType" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="norskKonto" type="bons0:GBONorskKonto"/>
+            <xsd:element minOccurs="0" name="utlandsKonto" type="bons0:GBOUtlandskonto"/>
+        </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

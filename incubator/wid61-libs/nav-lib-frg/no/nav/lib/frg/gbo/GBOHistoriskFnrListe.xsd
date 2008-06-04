@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBOHistoriskFnr.xsd"/>
+    <xsd:complexType name="GBOHistoriskFnrListe">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="historiskeFnr" type="bons0:GBOHistoriskFnr"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

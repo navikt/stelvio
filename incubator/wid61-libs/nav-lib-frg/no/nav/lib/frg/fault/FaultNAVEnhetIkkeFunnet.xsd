@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://stelvio-commons-lib/no/nav/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/fault">
+  <xsd:import namespace="http://stelvio-commons-lib/no/nav/gbo" schemaLocation="../../../../../xsd-includes/http.stelvio-commons-lib.no.nav.gbo.xsd"/>
+  <xsd:complexType name="FaultNAVEnhetIkkeFunnet">
+    <xsd:complexContent>
+      <xsd:extension base="bons0:GBOStelvioFault">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

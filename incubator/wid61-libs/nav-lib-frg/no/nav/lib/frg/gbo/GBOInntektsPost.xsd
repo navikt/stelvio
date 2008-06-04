@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+  <xsd:complexType name="GBOInntektsPost">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="kode" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="beskrivelse" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="belop" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

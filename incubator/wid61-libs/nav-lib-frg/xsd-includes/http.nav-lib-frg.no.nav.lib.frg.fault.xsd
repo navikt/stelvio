@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bo="http://nav-lib-frg/no/nav/lib/frg/fault" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/fault">
+  <xsd:annotation>
+    <xsd:appinfo source="wid.federated.schema"/>
+  </xsd:annotation>
+  <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultFagomradeIkkeFunnet.xsd"/>
+  <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultNAVEnhetIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultPersonIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultSamboerIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultBrukerprofilIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultMedlemskapsunntakIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultFnrForUtenlandskIdIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultNAVAnsattIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultFnrIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultOppholdPeriodeIdIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultInstitusjonsoppholdIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultSamhandlerIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultSamhandlerIkkeOpprettet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultSamhandlerIkkeLagret.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultTjenestepensjonForholdIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultFinnPerson.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultSamboerDod.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultSamboerIFamilie.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultInntektAlleredeRegistrert.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultInntektIkkeFunnet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultAlleredeRegistrertSamboerforhold.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultSamboerValideringFeilet.xsd"/>
+    <xsd:include schemaLocation="../no/nav/lib/frg/fault/FaultOffentligIdIkkeFunnet.xsd"/>
+</xsd:schema>

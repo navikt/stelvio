@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:Q1="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBONavnEndring.xsd"/>
+    <xsd:complexType name="GBONavnEndringListe">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="navnEndringer" type="Q1:GBONavnEndring"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

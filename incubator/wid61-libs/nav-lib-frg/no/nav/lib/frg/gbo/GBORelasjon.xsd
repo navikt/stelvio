@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBOPerson.xsd"/>
+    <xsd:complexType name="GBORelasjon">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="relasjonsType" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="adresseStatus" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="person" type="bons0:GBOPerson"/>
+        </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

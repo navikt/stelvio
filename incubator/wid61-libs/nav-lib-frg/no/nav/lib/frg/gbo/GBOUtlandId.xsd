@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+  <xsd:complexType name="GBOUtlandId">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="utlandId" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="land" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="kilde" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="skjema" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="identUtland" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="erGyldig" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="opprettetAv" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="datoOpprettet" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="endretAv" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="datoEndret" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="versjon" type="xsd:string"/>
+        </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons1="no/nav/lib/gbo" xmlns:bons2="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons3="http://stelvio-commons-lib/no/nav/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">  
+    <xsd:include schemaLocation="GBOSamboer.xsd"/>
+    <xsd:include schemaLocation="GBOBrukerprofil.xsd"/>
+    <xsd:include schemaLocation="GBORelasjonListe.xsd"/>
+    <xsd:include schemaLocation="GBOMedlemskapsunntakListe.xsd"/>
+    <xsd:include schemaLocation="GBOMedlemskapsunntak.xsd"/>
+    <xsd:include schemaLocation="GBOHistorikk.xsd"/>
+    <xsd:include schemaLocation="GBORelasjon.xsd"/>
+    <xsd:include schemaLocation="GBOPersonUtland.xsd"/>
+    <xsd:include schemaLocation="GBOUtbetalingsinformasjon.xsd"/>
+    <xsd:import namespace="http://stelvio-commons-lib/no/nav/gbo" schemaLocation="../../../../../xsd-includes/http.stelvio-commons-lib.no.nav.gbo.xsd"/>
+    <xsd:include schemaLocation="GBOUtlandskonto.xsd"/>
+    <xsd:include schemaLocation="GBONorskKonto.xsd"/>
+    <xsd:include schemaLocation="GBOAnnenAdresse.xsd"/>
+    <xsd:include schemaLocation="GBOBostedsAdresse.xsd"/>
+    <xsd:complexType name="GBOPerson">
+    <xsd:sequence>
+            <xsd:element minOccurs="0" name="fodselsnummer" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="kortnavn" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="fornavn" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="mellomnavn" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="etternavn" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="status" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="diskresjonskode" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="dodsdato" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="umyndiggjortDato" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sivilstand" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sivilstandDato" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="tlfPrivat" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="tlfJobb" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="tlfMobil" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="epost" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sprakKode" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sprakBeskrivelse" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sprakDatoFom" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="navEnhet" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="erEgenansatt" type="xsd:boolean"/>
+            <xsd:element minOccurs="0" name="bostedsAdresse" type="bons2:GBOBostedsAdresse"/>
+            <xsd:element minOccurs="0" name="postAdresse" type="bons2:GBOAnnenAdresse"/>
+            <xsd:element minOccurs="0" name="tilleggsAdresse" type="bons2:GBOAnnenAdresse"/>
+            <xsd:element minOccurs="0" name="utenlandsAdresse" type="bons2:GBOAnnenAdresse"/>
+            <xsd:element minOccurs="0" name="utbetalingsinformasjon" type="bons2:GBOUtbetalingsinformasjon"/>
+            <xsd:element minOccurs="0" name="personUtland" type="bons2:GBOPersonUtland"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="relasjoner" type="bons2:GBORelasjonListe"/>
+            <xsd:element minOccurs="0" name="historikk" type="bons2:GBOHistorikk"/>
+            <xsd:element minOccurs="0" name="brukerprofil" type="bons2:GBOBrukerprofil"/>
+            <xsd:element minOccurs="0" name="samboer" type="bons2:GBOSamboer"/>
+            <xsd:element minOccurs="0" name="kontekstData" type="bons3:GBOStelvioContext"/>
+        </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

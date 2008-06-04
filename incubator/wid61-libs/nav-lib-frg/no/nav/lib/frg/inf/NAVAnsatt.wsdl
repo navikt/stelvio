@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:bons1="http://stelvio-commons-lib/no/nav/gbo" xmlns:bons2="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons3="http://nav-lib-frg-norg/no/nav/lib/frg/norg/asbo" xmlns:bons4="http://nav-lib-frg/no/nav/lib/frg/fault" xmlns:tns="http://nav-lib-frg/no/nav/lib/frg/inf" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NAVAnsatt" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/inf">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nav-lib-frg/no/nav/lib/frg/inf" xmlns:bons1="http://stelvio-commons-lib/no/nav/gbo" xmlns:bons2="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons3="http://nav-lib-frg-norg/no/nav/lib/frg/norg/asbo" xmlns:bons4="http://nav-lib-frg/no/nav/lib/frg/fault" xmlns:tns="http://nav-lib-frg/no/nav/lib/frg/inf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://stelvio-commons-lib/no/nav/gbo" schemaLocation="../../../../../xsd-includes/http.stelvio-commons-lib.no.nav.gbo.xsd"/>
+            <xsd:import namespace="http://nav-lib-frg/no/nav/lib/frg/gbo" schemaLocation="../../../../../xsd-includes/http.nav-lib-frg.no.nav.lib.frg.gbo.xsd"/>
+           
+            <xsd:import namespace="http://nav-lib-frg/no/nav/lib/frg/fault" schemaLocation="../../../../../xsd-includes/http.nav-lib-frg.no.nav.lib.frg.fault.xsd"/>
+            <xsd:element name="hentNAVAnsattListe">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentNAVAnsattListeRequest" nillable="true" type="bons2:GBONAVEnhet"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentNAVAnsattListeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentNAVAnsattListeResponse" nillable="true" type="bons2:GBONAVAnsattListe"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentNAVAnsattListe_faultNAVEnhetIkkeFunneth" type="bons4:FaultNAVEnhetIkkeFunnet"/>
+      <xsd:element name="hentNAVAnsattEnhetListe">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentNAVAnsattEnhetListeRequest" nillable="true" type="bons2:GBONAVAnsatt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentNAVAnsattEnhetListeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentNAVAnsattEnhetListeResponse" nillable="true" type="bons2:GBONAVEnhetListe"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentNAVAnsattEnhetListe_faultNAVAnsattIkkeFunnet" type="bons4:FaultNAVAnsattIkkeFunnet"/>
+      <xsd:element name="hentNAVAnsattFagomradeListe">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentNAVAnsattFagomradeListeRequest" nillable="true" type="bons2:GBONAVAnsatt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentNAVAnsattFagomradeListeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentNAVAnsattFagomradeListeResponse" nillable="true" type="bons2:GBOFagomradeListe"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentNAVAnsattFagomradeListe_faultNAVAnsattIkkeFunnetserviceFault" type="bons4:FaultNAVAnsattIkkeFunnet"/>
+            <xsd:element name="hentNAVAnsatt">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentNAVAnsattRequest" nillable="true" type="bons2:GBONAVAnsatt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="hentNAVAnsattResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentNavAnsattResponse" nillable="true" type="bons2:GBONAVAnsatt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="hentNAVAnsatt_faultNAVAnsattIkkeFunnet" type="bons4:FaultNAVAnsattIkkeFunnet"/>
+        </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="hentNAVAnsattListeRequestMsg">
+    <wsdl:part element="tns:hentNAVAnsattListe" name="hentNAVAnsattListeParameters"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattListeResponseMsg">
+    <wsdl:part element="tns:hentNAVAnsattListeResponse" name="hentNAVAnsattListeResult"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattListe_faultNAVEnhetIkkeFunnethMsg">
+    <wsdl:part element="tns:hentNAVAnsattListe_faultNAVEnhetIkkeFunneth" name="faultNAVEnhetIkkeFunneth"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattEnhetListeRequestMsg">
+    <wsdl:part element="tns:hentNAVAnsattEnhetListe" name="hentNAVAnsattEnhetListeParameters"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattEnhetListeResponseMsg">
+    <wsdl:part element="tns:hentNAVAnsattEnhetListeResponse" name="hentNAVAnsattEnhetListeResult"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattEnhetListe_faultNAVAnsattIkkeFunnetMsg">
+    <wsdl:part element="tns:hentNAVAnsattEnhetListe_faultNAVAnsattIkkeFunnet" name="faultNAVAnsattIkkeFunnet"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattFagomradeListeRequestMsg">
+    <wsdl:part element="tns:hentNAVAnsattFagomradeListe" name="hentNAVAnsattFagomradeListeParameters"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattFagomradeListeResponseMsg">
+    <wsdl:part element="tns:hentNAVAnsattFagomradeListeResponse" name="hentNAVAnsattFagomradeListeResult"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattFagomradeListe_faultNAVAnsattIkkeFunnetserviceFaultMsg">
+    <wsdl:part element="tns:hentNAVAnsattFagomradeListe_faultNAVAnsattIkkeFunnetserviceFault" name="faultNAVAnsattIkkeFunnetserviceFault"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattRequestMsg">
+    <wsdl:part element="tns:hentNAVAnsatt" name="hentNAVAnsattParameters"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsattResponseMsg">
+    <wsdl:part element="tns:hentNAVAnsattResponse" name="hentNAVAnsattResult"/>
+  </wsdl:message>
+    <wsdl:message name="hentNAVAnsatt_faultNAVAnsattIkkeFunnetMsg">
+    <wsdl:part element="tns:hentNAVAnsatt_faultNAVAnsattIkkeFunnet" name="faultNAVAnsattIkkeFunnet"/>
+  </wsdl:message>
+    <wsdl:portType name="NAVAnsatt">
+    <wsdl:operation name="hentNAVAnsattListe">
+      <wsdl:input message="tns:hentNAVAnsattListeRequestMsg" name="hentNAVAnsattListeRequest"/>
+      <wsdl:output message="tns:hentNAVAnsattListeResponseMsg" name="hentNAVAnsattListeResponse"/>
+      <wsdl:fault message="tns:hentNAVAnsattListe_faultNAVEnhetIkkeFunnethMsg" name="faultNAVEnhetIkkeFunnet"/>
+    </wsdl:operation>
+    <wsdl:operation name="hentNAVAnsattEnhetListe">
+      <wsdl:input message="tns:hentNAVAnsattEnhetListeRequestMsg" name="hentNAVAnsattEnhetListeRequest"/>
+      <wsdl:output message="tns:hentNAVAnsattEnhetListeResponseMsg" name="hentNAVAnsattEnhetListeResponse"/>
+      <wsdl:fault message="tns:hentNAVAnsattEnhetListe_faultNAVAnsattIkkeFunnetMsg" name="faultNAVAnsattIkkeFunnet"/>
+    </wsdl:operation>
+    <wsdl:operation name="hentNAVAnsattFagomradeListe">
+      <wsdl:input message="tns:hentNAVAnsattFagomradeListeRequestMsg" name="hentNAVAnsattFagomradeListeRequest"/>
+      <wsdl:output message="tns:hentNAVAnsattFagomradeListeResponseMsg" name="hentNAVAnsattFagomradeListeResponse"/>
+      <wsdl:fault message="tns:hentNAVAnsattFagomradeListe_faultNAVAnsattIkkeFunnetserviceFaultMsg" name="faultNAVAnsattIkkeFunnet"/>
+    </wsdl:operation>
+        <wsdl:operation name="hentNAVAnsatt">
+      <wsdl:input message="tns:hentNAVAnsattRequestMsg" name="hentNAVAnsattRequest"/>
+      <wsdl:output message="tns:hentNAVAnsattResponseMsg" name="hentNAVAnsattResponse"/>
+      <wsdl:fault message="tns:hentNAVAnsatt_faultNAVAnsattIkkeFunnetMsg" name="faultNAVAnsattIkkeFunnet"/>
+    </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

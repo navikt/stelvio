@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBONAVEnhet.xsd"/>
+    <xsd:complexType name="GBOHentNAVEnhetListeRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="NAVEnhet" type="bons0:GBONAVEnhet"/>
+      <xsd:element minOccurs="0" name="typeOrganiserer" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="typeOrganisertUnder" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

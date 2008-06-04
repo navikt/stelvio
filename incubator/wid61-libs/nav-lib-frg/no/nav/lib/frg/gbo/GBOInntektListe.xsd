@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBOInntekt.xsd"/>
+    <xsd:complexType name="GBOInntektListe">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="inntekter" type="bons0:GBOInntekt" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

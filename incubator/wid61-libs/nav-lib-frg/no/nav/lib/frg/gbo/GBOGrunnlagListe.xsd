@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBOGrunnlag.xsd"/>
+    <xsd:complexType name="GBOGrunnlagListe">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="grunnlag" type="Q1:GBOGrunnlag" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

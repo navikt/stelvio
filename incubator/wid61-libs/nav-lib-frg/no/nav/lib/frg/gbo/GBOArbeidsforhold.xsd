@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+  <xsd:complexType name="GBOArbeidsforhold">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arbeidsgiver" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Navnet til arbeidsgiver</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="organisasjonsNr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Organisasjons nummeret til arbeidsgiver</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="juridiskOrgNr" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Juridisk organisasjonsnummer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="juridiskOrgNavn" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Den juridisk organisasjons navn</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="yrkesKode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Beskrivelse av stillingen fra tabellverk</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="startDato" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Startdato for arbeidsforholdet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="sluttDato" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Sluttdato for arbeidsforholdet</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="arbeidsTid" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Stillingsandel i antall timer pr/uke</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="erIABedrift" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Arbeidsgiver er IA-bedrift = kode ’J’</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

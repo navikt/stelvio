@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:bons1="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons2="http://nav-lib-frg/no/nav/lib/frg/fault" xmlns:tns="http://nav-lib-frg/no/nav/lib/frg/inf/PersonHendelse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PersonHendelse" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/inf/PersonHendelse">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nav-lib-frg/no/nav/lib/frg/inf/PersonHendelse" xmlns:bons1="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons2="http://nav-lib-frg/no/nav/lib/frg/fault" xmlns:tns="http://nav-lib-frg/no/nav/lib/frg/inf/PersonHendelse" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://nav-lib-frg/no/nav/lib/frg/gbo" schemaLocation="../../../../../xsd-includes/http.nav-lib-frg.no.nav.lib.frg.gbo.xsd"/>
+            <xsd:import namespace="http://nav-lib-frg/no/nav/lib/frg/fault" schemaLocation="../../../../../xsd-includes/http.nav-lib-frg.no.nav.lib.frg.fault.xsd"/>
+            <xsd:element name="fodselsnummerOppdatert">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="fodselsnummerOppdatertRequest" nillable="true" type="bons1:GBOPersonOppdatert"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="adresseOppdatert">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="adresseOppdatertRequest" nillable="true" type="bons1:GBOPersonOppdatert"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="fodselsnummerOpprettet">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="fodselsnummerOpprettetRequest" nillable="true" type="bons1:GBOPersonOppdatert"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+        </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="fodselsnummerOppdatertRequestMsg">
+    <wsdl:part element="tns:fodselsnummerOppdatert" name="fodselsnummerOppdatertParameters"/>
+  </wsdl:message>
+    <wsdl:message name="adresseOppdatertRequestMsg">
+    <wsdl:part element="tns:adresseOppdatert" name="adresseOppdatertParameters"/>
+  </wsdl:message>
+    <wsdl:message name="fodselsnummerOpprettetRequestMsg">
+    <wsdl:part element="tns:fodselsnummerOpprettet" name="fodselsnummerOpprettetParameters"/>
+  </wsdl:message>
+    <wsdl:portType name="PersonHendelse">
+        <wsdl:operation name="fodselsnummerOppdatert">
+            <wsdl:input message="tns:fodselsnummerOppdatertRequestMsg" name="fodselsnummerOppdatertRequest"/>                    </wsdl:operation>
+        <wsdl:operation name="adresseOppdatert">
+      <wsdl:input message="tns:adresseOppdatertRequestMsg" name="adresseOppdatertRequest"/>
+    </wsdl:operation>
+        <wsdl:operation name="fodselsnummerOpprettet">
+            <wsdl:input message="tns:fodselsnummerOpprettetRequestMsg" name="fodselsnummerOpprettetRequest"/>    </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

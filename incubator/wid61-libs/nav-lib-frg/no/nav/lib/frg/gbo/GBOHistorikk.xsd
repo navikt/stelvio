@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/gbo">
+    <xsd:include schemaLocation="GBONavnEndringListe.xsd"/>
+    <xsd:include schemaLocation="GBOHistoriskFnrListe.xsd"/>
+    <xsd:include schemaLocation="GBOBostedsadresseListe.xsd"/>
+    <xsd:include schemaLocation="GBOAnnenAdresseListe.xsd"/>
+    <xsd:complexType name="GBOHistorikk">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="bostedsadresser" type="bons0:GBOBostedsadresseListe"/>
+      <xsd:element minOccurs="0" name="adresseLinjer" type="bons0:GBOAnnenAdresseListe"/>
+      <xsd:element minOccurs="0" name="historiskeFnr" type="bons0:GBOHistoriskFnrListe"/>
+      <xsd:element minOccurs="0" name="navnEndringer" type="bons0:GBONavnEndringListe"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

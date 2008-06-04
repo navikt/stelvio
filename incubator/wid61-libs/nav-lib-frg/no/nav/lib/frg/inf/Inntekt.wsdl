@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:bons1="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons2="http://nav-lib-frg/no/nav/lib/frg/inf" xmlns:bons3="http://nav-lib-frg/no/nav/lib/frg/fault" xmlns:tns="http://nav-lib-frg/no/nav/lib/frg/inf/Inntekt" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Inntekt" targetNamespace="http://nav-lib-frg/no/nav/lib/frg/inf/Inntekt">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nav-lib-frg/no/nav/lib/frg/inf/Inntekt" xmlns:bons1="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:bons2="http://nav-lib-frg/no/nav/lib/frg/inf" xmlns:bons3="http://nav-lib-frg/no/nav/lib/frg/fault" xmlns:tns="http://nav-lib-frg/no/nav/lib/frg/inf/Inntekt" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://nav-lib-frg/no/nav/lib/frg/gbo" schemaLocation="../../../../../xsd-includes/http.nav-lib-frg.no.nav.lib.frg.gbo.xsd"/>
+      <xsd:import namespace="http://nav-lib-frg/no/nav/lib/frg/inf" schemaLocation="../../../../../xsd-includes/http.nav-lib-frg.no.nav.lib.frg.inf.xsd"/>
+            <xsd:import namespace="http://nav-lib-frg/no/nav/lib/frg/fault" schemaLocation="../../../../../xsd-includes/http.nav-lib-frg.no.nav.lib.frg.fault.xsd"/>
+            <xsd:element name="opprettBrukerOppgittInntekt">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="opprettBrukerOppgittInntektRequest" nillable="true" type="bons1:GBOInntekt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="opprettBrukerOppgittInntektResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="opprettBrukerOppgittInntektResponse" nillable="true" type="bons1:GBOInntekt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentInntektListe">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentInntektListeRequest" nillable="true" type="bons1:GBOHentInntektListeRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentInntektListeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentInntektListeResponse" nillable="true" type="bons1:GBOInntektListe"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="hentDetaljertInntekt">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentDetaljertInntektRequest" nillable="true" type="bons1:GBOInntekt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="hentDetaljertInntektResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentDetlajertInntektResponse" nillable="true" type="bons1:GBOInntekt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="SlettBrukerOppgittInntekt">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="slettBrukerOppgittInntektRequest" nillable="true" type="bons1:GBOInntekt"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="SlettBrukerOppgittInntektResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+                    </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="opprettBrukerOppgittInntekt_faultInntektAlleredeRegistret" type="bons3:FaultInntektAlleredeRegistrert"/>
+            <xsd:element name="hentInntektListe_faultInntektIkkeFunnet" type="bons3:FaultInntektIkkeFunnet"/>
+            <xsd:element name="hentDetaljertInntekt_faultInntektIkkeFunnet" type="bons3:FaultInntektIkkeFunnet"/>
+            <xsd:element name="SlettBrukerOppgittInntekt_faultInntektIkkeFunnet" type="bons3:FaultInntektIkkeFunnet"/>
+        </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="opprettBrukerOppgittInntektRequestMsg">
+    <wsdl:part element="tns:opprettBrukerOppgittInntekt" name="opprettBrukerOppgittInntektParameters"/>
+  </wsdl:message>
+    <wsdl:message name="opprettBrukerOppgittInntektResponseMsg">
+    <wsdl:part element="tns:opprettBrukerOppgittInntektResponse" name="opprettBrukerOppgittInntektResult"/>
+  </wsdl:message>
+    <wsdl:message name="hentInntektListeRequestMsg">
+    <wsdl:part element="tns:hentInntektListe" name="hentInntektListeParameters"/>
+  </wsdl:message>
+    <wsdl:message name="hentInntektListeResponseMsg">
+    <wsdl:part element="tns:hentInntektListeResponse" name="hentInntektListeResult"/>
+  </wsdl:message>
+    <wsdl:message name="hentDetaljertInntektRequestMsg">
+    <wsdl:part element="tns:hentDetaljertInntekt" name="hentDetaljertInntektParameters"/>
+  </wsdl:message>
+    <wsdl:message name="hentDetaljertInntektResponseMsg">
+    <wsdl:part element="tns:hentDetaljertInntektResponse" name="hentDetaljertInntektResult"/>
+  </wsdl:message>
+    <wsdl:message name="SlettBrukerOppgittInntektRequestMsg">
+    <wsdl:part element="tns:SlettBrukerOppgittInntekt" name="SlettBrukerOppgittInntektParameters"/>
+  </wsdl:message>
+    <wsdl:message name="SlettBrukerOppgittInntektResponseMsg">
+    <wsdl:part element="tns:SlettBrukerOppgittInntektResponse" name="SlettBrukerOppgittInntektResult"/>
+  </wsdl:message>
+    <wsdl:message name="opprettBrukerOppgittInntekt_faultInntektAlleredeRegistretMsg">
+    <wsdl:part element="tns:opprettBrukerOppgittInntekt_faultInntektAlleredeRegistret" name="faultInntektAlleredeRegistret"/>
+  </wsdl:message>
+    <wsdl:message name="hentInntektListe_faultInntektIkkeFunnetMsg">
+    <wsdl:part element="tns:hentInntektListe_faultInntektIkkeFunnet" name="faultInntektIkkeFunnet"/>
+  </wsdl:message>
+    <wsdl:message name="hentDetaljertInntekt_faultInntektIkkeFunnetMsg">
+    <wsdl:part element="tns:hentDetaljertInntekt_faultInntektIkkeFunnet" name="faultInntektIkkeFunnet"/>
+  </wsdl:message>
+    <wsdl:message name="SlettBrukerOppgittInntekt_faultInntektIkkeFunnetMsg">
+    <wsdl:part element="tns:SlettBrukerOppgittInntekt_faultInntektIkkeFunnet" name="faultInntektIkkeFunnet"/>
+  </wsdl:message>
+    <wsdl:portType name="Inntekt">
+    <wsdl:operation name="opprettBrukerOppgittInntekt">
+      <wsdl:input message="tns:opprettBrukerOppgittInntektRequestMsg" name="opprettBrukerOppgittInntektRequest"/>
+      <wsdl:output message="tns:opprettBrukerOppgittInntektResponseMsg" name="opprettBrukerOppgittInntektResponse"/>
+            <wsdl:fault message="tns:opprettBrukerOppgittInntekt_faultInntektAlleredeRegistretMsg" name="faultInntektAlleredeRegistret"/>
+        </wsdl:operation>
+    <wsdl:operation name="hentInntektListe">
+      <wsdl:input message="tns:hentInntektListeRequestMsg" name="hentInntektListeRequest"/>
+      <wsdl:output message="tns:hentInntektListeResponseMsg" name="hentInntektListeResponse"/>
+            <wsdl:fault message="tns:hentInntektListe_faultInntektIkkeFunnetMsg" name="faultInntektIkkeFunnet"/>
+        </wsdl:operation>
+        <wsdl:operation name="hentDetaljertInntekt">
+      <wsdl:input message="tns:hentDetaljertInntektRequestMsg" name="hentDetaljertInntektRequest"/>
+      <wsdl:output message="tns:hentDetaljertInntektResponseMsg" name="hentDetaljertInntektResponse"/>
+      <wsdl:fault message="tns:hentDetaljertInntekt_faultInntektIkkeFunnetMsg" name="faultInntektIkkeFunnet"/>
+    </wsdl:operation>
+        <wsdl:operation name="SlettBrukerOppgittInntekt">
+      <wsdl:input message="tns:SlettBrukerOppgittInntektRequestMsg" name="SlettBrukerOppgittInntektRequest"/>
+            <wsdl:output message="tns:SlettBrukerOppgittInntektResponseMsg" name="SlettBrukerOppgittInntektResponse"/>
+            <wsdl:fault message="tns:SlettBrukerOppgittInntekt_faultInntektIkkeFunnetMsg" name="faultInntektIkkeFunnet"/>
+    </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
