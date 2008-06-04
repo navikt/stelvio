@@ -2302,6 +2302,32 @@ incubator/wid61-mess_provider/websphere_default_messaging_provider/.settings/org
 incubator/wid61-mess_provider/websphere_default_messaging_provider/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wid61-mess_provider/websphere_default_messaging_provider/connectorModule/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/wid61-mess_provider/websphere_default_messaging_provider/connectorModule/META-INF/ra.xml -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.classpath -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.project -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.runtime -text
+incubator/wid61-person/nav-prod-frg-tps/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.settings/nav-prod-frg-tps.prefs -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.settings/nav-producer-frg-tps.prefs -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-person/nav-prod-frg-tps/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/TPSAvailabilityCheck.component -text
+incubator/wid61-person/nav-prod-frg-tps/TPSAvailabilityCheck_component.mon -text
+incubator/wid61-person/nav-prod-frg-tps/TPSNoNSJMSIMP.import -text
+incubator/wid61-person/nav-prod-frg-tps/TPSSCAEXP.export -text
+incubator/wid61-person/nav-prod-frg-tps/invokeTPSNoNS.component -text
+incubator/wid61-person/nav-prod-frg-tps/invokeTPSNoNS_component.mon -text
+incubator/wid61-person/nav-prod-frg-tps/no/nav/asbo/TPSdataNoNS.xsd -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/no/nav/inf/TPSNoNS.wsdl -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/no/nav/java/InvoketpsNoNSImpl.java -text svneol=unset#text/plain
+incubator/wid61-person/nav-prod-frg-tps/sca.module -text
+incubator/wid61-person/nav-prod-frg-tps/sca.modulex -text
+incubator/wid61-person/nav-prod-frg-tps/test/hentperson.wbiexetrace -text
+incubator/wid61-person/nav-prod-frg-tps/test/normal.wbiexetrace -text
 incubator/wid61-personhendelse/nav-cons-frg-tps/.classpath -text svneol=unset#text/plain
 incubator/wid61-personhendelse/nav-cons-frg-tps/.project -text svneol=unset#text/plain
 incubator/wid61-personhendelse/nav-cons-frg-tps/.runtime -text

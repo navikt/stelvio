@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:_="http://nav-prod-frg-tps/no/nav/inf/S004NoNS" xmlns:__1="http://nav-prod-frg-tps/no/nav/inf/" xmlns:__2="no/nav/inf/" xmlns:__3="http://nav-prod-fgr-tps/no/nav/inf/" xmlns:__4="http://nav-prod-fgr-tps/no/nav/inf" xmlns:__5="http://nav-prod-frg-tps/no/nav/inf" xmlns:eis="http://www.ibm.com/xmlns/prod/websphere/scdl/eis/6.0.0" xmlns:ns1="http://nav-producer-frg-tps/no/nav/inf/S004" xmlns:ns2="http://nav-producer-frg-tps/no/nav/inf/S004Wrapper" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="TPSNoNSJMSIMP" name="TPSNoNSJMSIMP">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="__5:TPSNoNS">
+      <method name="hentTPSData"/>
+    </interface>
+  </interfaces>
+  <esbBinding xsi:type="eis:JMSImportBinding" dataBindingType="com.ibm.websphere.sca.jms.data.impl.JMSDataBindingImplXML">
+    <resourceAdapter type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaResourceAdapterImpl"/>
+    <connection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl">
+      <properties>
+        <nonPersistentMapping>BestEffortNonPersistent</nonPersistentMapping>
+        <persistentMapping>BestEffortNonPersistent</persistentMapping>
+      </properties>
+    </connection>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" target="jms/TPS_FORESPORSEL_XML_O" type="javax.jms.Queue" usage="send"/>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" target="jms/TPS_SVAR_XML_O" type="javax.jms.Queue" usage="receive"/>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="callback"/>
+    <methodBinding method="hentTPSData">
+      <interaction>
+        <properties>
+          <TargetFunctionName>A0</TargetFunctionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+  </esbBinding>
+</scdl:import>

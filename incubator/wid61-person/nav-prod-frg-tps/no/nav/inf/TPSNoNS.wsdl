@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:bons1="http://nav-lib-frg-tps/no/nav/asbo" xmlns:tns="http://nav-prod-frg-tps/no/nav/inf" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="S004Wrapper" targetNamespace="http://nav-prod-frg-tps/no/nav/inf">
+  <wsdl:types>
+    <xsd:schema xmlns:bons0="http://nav-lib-frg-tps/no/nav/lib/frg/asbo" targetNamespace="http://nav-prod-frg-tps/no/nav/inf" xmlns:tns="http://nav-prod-frg-tps/no/nav/inf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://nav-lib-frg-tps/no/nav/lib/frg/asbo" schemaLocation="../../../../nav-lib-frg-tps/no/nav/lib/frg/asbo/tpsFault.xsd"/>
+            <xsd:import schemaLocation="../asbo/TPSdataNoNS.xsd"/>
+            <xsd:element name="hentTPSData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="tpsPersonDataReq" nillable="true" type="tpsPersonDataType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentTPSDataResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="tpsPersonDataRes" nillable="true" type="tpsPersonDataType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+        </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="hentTPSDataRequestMsg">
+    <wsdl:part element="tns:hentTPSData" name="hentTPSDataParameters"/>
+  </wsdl:message>
+    <wsdl:message name="hentTPSDataResponseMsg">
+    <wsdl:part element="tns:hentTPSDataResponse" name="hentTPSDataResult"/>
+  </wsdl:message>
+    <wsdl:portType name="TPSNoNS">
+    <wsdl:operation name="hentTPSData">
+      <wsdl:input message="tns:hentTPSDataRequestMsg" name="hentTPSDataRequest"/>
+      <wsdl:output message="tns:hentTPSDataResponseMsg" name="hentTPSDataResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

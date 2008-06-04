@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0" xmlns:ns1="http://nav-lib-frg-tps/no/nav/lib/frg/inf" xmlns:ns2="http://nav-prod-frg-tps/no/nav/inf" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="invokeTPSNoNS" name="invokeTPSNoNS">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:TPS"/>
+  </interfaces>
+  <references>
+    <reference name="TPSNoNSPartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:TPSNoNS"/>
+      <wire target="TPSNoNSJMSIMP"/>
+    </reference>
+  </references>
+  <implementation xsi:type="java:JavaImplementation" class="no.nav.java.InvoketpsNoNSImpl"/>
+</scdl:component>
