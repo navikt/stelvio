@@ -2061,6 +2061,24 @@ incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/.settings
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/wid61-fgsak-libs/nav-lib-fgsak-norg-common-public-java-1.0.0/nav-fgsak-norg-common-public-java-1.0.0.jar -text
+incubator/wid61-libs/nav-lib-frg-aa/.classpath -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/.project -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/.runtime -text
+incubator/wid61-libs/nav-lib-frg-aa/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-libs/nav-lib-frg-aa/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/aa/frg/lib/nav/no/nav/inf/k268SR03/K268SR03.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/no/nav/lib/frg/aa/asbo/K268SR03INPUT.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/no/nav/lib/frg/aa/asbo/K268SR03OUTPUT.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/no/nav/lib/frg/aa/fault/FaultAABase.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/no/nav/lib/frg/aa/inf/K268SR03.wsdl -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/xsd-includes/http.nav-lib-frg-aa.no.nav.lib.frg.aa.fault.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-aa/xsd-includes/http.nav-lib-frg-aa.no.nav.lib.frg.asbo.xsd -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg-inst/.classpath -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg-inst/.project -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg-inst/.runtime -text
