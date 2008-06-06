@@ -10,6 +10,8 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.Set;
 
+import no.nav.maven.plugins.common.utils.FileUtils;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.velocity.VelocityContext;
@@ -134,6 +136,7 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 					}
 					String newOut = outputDir+"/"+environmentName;
 					File tmp = new File(newOut);
+					if(tmp.exists()) FileUtils.recursiveDelete(tmp);
 					tmp.mkdirs();
 					FileWriter fileWriter = new FileWriter(newOut+"/"+newName);
 					Velocity.mergeTemplate(name, context, fileWriter);
