@@ -71,7 +71,7 @@ public class FixArenaSak extends AbstractMojo {
 			try {
 				ZipUtils.extract(arenasak, tmp);
 				
-				ejb = new File(tmp + "/ejb");
+				ejb = new File(tmp + "/ejbjar");
 				ejb.mkdirs();
 				ZipUtils.extract(new File(tmp + "/nav-prod-sak-arenaEJB.jar"), ejb);
 			} catch (IOException e) {
