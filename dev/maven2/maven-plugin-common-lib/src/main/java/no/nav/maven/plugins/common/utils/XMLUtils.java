@@ -1,7 +1,5 @@
 package no.nav.maven.plugins.common.utils;
 
-
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,7 +21,7 @@ public class XMLUtils {
 		targetFile.delete();
 		XMLWriter writer = new XMLWriter(new FileWriter(targetFile.getAbsoluteFile()),
 				OutputFormat.createPrettyPrint());
-		writer.write(doc.getRootElement());
-		writer.close();
+		writer.write(doc);
+		writer.close(); 
 	}
 }

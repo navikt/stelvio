@@ -2,14 +2,27 @@ package no.nav.maven.plugins.common.utils;
 
 
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.jar.JarFile;
 import java.util.jar.JarOutputStream;
-import java.util.zip.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 public class ZipUtils {
-
+	private static final int BUF_SIZE = 2048;
+	
 	public static void compress(File source, File destination) throws IOException {
 		Map files = new HashMap();
 		final String basedir = source.getName();
@@ -17,7 +30,32 @@ public class ZipUtils {
 		compress(files, destination);
 
 	}
-
+	
+	public static void systemCompress(File source, File destination) throws IOException{
+		if(System.getProperty("os.name").compareToIgnoreCase("Linux") == 0){
+			Process p = Runtime.getRuntime().exec("zip -u -r " + destination.getAbsolutePath(),null,source);
+			try {
+				p.waitFor();
+				
+				if(p.exitValue() != 0){
+					String err = streamToString(p.getErrorStream());
+					throw new IOException(err);
+				}
+			} catch (InterruptedException e) {
+				throw new IOException(e.getMessage());
+			}
+			
+		}else{
+			compress(source, destination);
+		}
+		
+	}
+	
+	private static String streamToString(InputStream stream) throws IOException{
+		byte[] content = new byte[stream.available()];
+		stream.read(content, 0, content.length);
+		return new String(content);
+	}
 	private static void addFiles(File source, Map files, String path, String basedir) throws IOException {
 		if (source.isDirectory()) {
 			File[] subfiles = source.listFiles();
@@ -59,7 +97,7 @@ public class ZipUtils {
 			final String filename = path;
 			ZipEntry entry = new ZipEntry(filename);
 			output.putNextEntry(entry);
-			byte[] buffer = new byte[10];
+			byte[] buffer = new byte[BUF_SIZE];
 			int bytes = 0;
 			FileInputStream str = new FileInputStream(file);
 			while ((bytes = str.read(buffer, 0, buffer.length)) > 0) {
@@ -76,9 +114,7 @@ public class ZipUtils {
 	public static void extract(File inputFile, File outDir) throws ZipException, IOException{
 		ZipFile zipFile = new ZipFile(inputFile);
 		Enumeration enumeration = zipFile.entries();
-		boolean complexFile;
 		while (enumeration.hasMoreElements()) {
-			complexFile = false;
 			ZipEntry zipEntry = (ZipEntry)enumeration.nextElement();
 			String zipFileName = zipEntry.getName();
 			if(zipEntry.isDirectory()){
@@ -86,7 +122,6 @@ public class ZipUtils {
 			}else{
 				//check for complex path entry
 				if(zipFileName.lastIndexOf("/") >= 0){
-					String fName = zipFileName.substring(zipFileName.lastIndexOf("/") + 1);
 					String path = zipFileName.substring(0, zipFileName.lastIndexOf("/"));
 					new File(outDir + "/" + path).mkdirs();
 				}
@@ -101,7 +136,7 @@ public class ZipUtils {
 	}
 	
 	private static void writeInputStreamToOutputStream(InputStream in, OutputStream out) throws IOException{
-		byte[] buf = new byte[10240];
+		byte[] buf = new byte[BUF_SIZE];
 		int len;
 		while((len=in.read(buf))>0){
 			out.write(buf,0,len);

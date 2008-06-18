@@ -15,9 +15,13 @@ import java.util.Map;
 import java.util.zip.ZipException;
 
 public class EarUtils {
+	public static final String EJB_SUBPATH = "/ejbjar";
+	
 	private static Map<String, String> flattenLog;
 
 	private static Map<String, String> tagLog;
+	
+	public static boolean useSystemCompress = true;
 
 	/**
 	 * Extracts an ear file to a target directory appended with the ear file
@@ -48,7 +52,7 @@ public class EarUtils {
 		});
 
 		if (ejb != null && ejb.length == 1) {
-			ejbDir = new File(earExtractDir.getAbsolutePath()	+ "/ejb");
+			ejbDir = new File(earExtractDir.getAbsolutePath() + EJB_SUBPATH);
 			ejbDir.delete();
 			ejbDir.mkdirs();
 			ZipUtils.extract(ejb[0], ejbDir);
@@ -69,16 +73,22 @@ public class EarUtils {
 	public static void compressEarAndInnerModule(File extractDir,
 			File outputFile) throws IOException {
 		// searching for inner EJB module
-		File ejbFolder = new File(extractDir.getAbsolutePath() + "/ejb");
+		File ejbFolder = new File(extractDir.getAbsolutePath() + EJB_SUBPATH);
 		if (ejbFolder.exists()) {
 			File ejbModule = new File(extractDir + "/" + extractDir.getName()
 					+ "EJB.jar");
-			ejbModule.delete();
-			ZipUtils.compress(ejbFolder, ejbModule);
+			if(useSystemCompress){
+				ZipUtils.systemCompress(ejbFolder, ejbModule);
+			}else{
+				ZipUtils.compress(ejbFolder, ejbModule);
+			}
 			FileUtils.recursiveDelete(ejbFolder);
 		}
-		outputFile.delete();
-		ZipUtils.compress(extractDir, outputFile);
+		if(useSystemCompress){
+			ZipUtils.systemCompress(extractDir, outputFile);
+		}else{
+			ZipUtils.compress(extractDir, outputFile);
+		}
 	}
 
 	public static void flattenEarStructure(File earFolder, File targetFolder)

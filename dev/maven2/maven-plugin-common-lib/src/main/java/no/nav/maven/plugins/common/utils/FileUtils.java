@@ -4,6 +4,11 @@ package no.nav.maven.plugins.common.utils;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +65,15 @@ public class FileUtils {
 		System.gc();
 		return path.delete();
 
+	}
+	
+	public static void copyFile(File src, File dest) throws IOException {
+		FileChannel in = new FileInputStream(src).getChannel();
+		FileChannel out = new FileOutputStream(dest).getChannel();
+
+		long size = in.size();
+		MappedByteBuffer buf = in.map(FileChannel.MapMode.READ_ONLY, 0, size);
+		out.write(buf);
 	}
 	
 	private static List<File> toList(File[] paths){
