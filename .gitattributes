@@ -2110,6 +2110,41 @@ incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/UnrecoverableDtoE
 incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/mapping/.copyarea.db -text
 incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/mapping/AbstractMappingDtoException.java -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg-inst/no/stelvio/dto/exception/mapping/MappingDtoException.java -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/.classpath -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/.project -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/.runtime -text
+incubator/wid61-libs/nav-lib-frg-medl/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlContext.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlFault.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlGrunnlag.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlGrunnlagListe.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlHentMedlemskapsInfoListeRequest.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlMedlemskapsunntak.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlMedlemskapsunntakListe.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlPeriode.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlPeriodeListe.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlPerson.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlPersonIdentifikator.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlPersonIdentifikatorListe.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlPersonOppdatert.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlPersonOpprettet.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlUtenlandskId.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/asbo/medlUtenlandskIdListe.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/fault/FaultMEDLBase.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/fault/FaultMEDLFnrForUtenlandskIdIkkeFunnet.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/fault/FaultMEDLMedlemskapsunntakIkkeFunnet.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/fault/FaultMEDLPersonAlreadyExsits.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/fault/FaultMEDLPersonIkkeFunnet.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/no/nav/lib/frg/medl/inf/MEDL.wsdl -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/xsd-includes/http.nav-lib-frg-medl.no.nav.lib.frg.medl.asbo.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-frg-medl/xsd-includes/http.nav-lib-frg-medl.no.nav.lib.frg.medl.fault.xsd -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg/.classpath -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg/.project -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg/.runtime -text
