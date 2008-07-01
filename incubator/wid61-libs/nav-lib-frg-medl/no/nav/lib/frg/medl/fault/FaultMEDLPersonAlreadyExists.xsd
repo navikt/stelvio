@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:bons0="http://nav-lib-frg-medl/no/nav/lib/frg/medl/fault" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg-medl/no/nav/lib/frg/medl/fault">
+  <xsd:include schemaLocation="FaultMEDLBase.xsd"/>
+  <xsd:complexType name="FaultMEDLPersonAlreadyExists">
+    <xsd:complexContent>
+      <xsd:extension base="bons0:FaultMEDLBase">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

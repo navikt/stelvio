@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bons0="http://nav-lib-frg-medl/no/nav/lib/frg/medl/asbo" targetNamespace="http://nav-lib-frg-medl/no/nav/lib/frg/medl/asbo">
+    <xsd:include schemaLocation="medlPerson.xsd"/>
+    <xsd:complexType name="medlPersonOppdatert">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="meldingsKode" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="registreringsDato" type="xsd:date"/>
+      <xsd:element minOccurs="0" name="nyePersondata" type="bons0:medlPerson"/>
+      <xsd:element minOccurs="0" name="gamlePersondata" type="bons0:medlPerson"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
