@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import no.nav.maven.utils.EarUtils;
-import no.nav.maven.utils.XMLUtils;
+import no.nav.maven.plugins.common.utils.EarUtils;
+import no.nav.maven.plugins.common.utils.XMLUtils;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -60,7 +60,7 @@ public class ChangeDisplayName extends AbstractMojo {
 		SAXReader reader;
 		Element app, desc;
 		XPath search;
-		HashMap uris = new HashMap();
+		Map<String, String> uris = new HashMap<String, String>();
 
 		appxml = new File(module.getAbsolutePath()
 				+ "/META-INF/application.xml");
@@ -73,7 +73,6 @@ public class ChangeDisplayName extends AbstractMojo {
 			search.setNamespaceURIs(uris);
 			desc = (Element) search.selectSingleNode(doc);
 			if (desc != null) {
-				Map<String, String> test = EarUtils.getTagLog();
 				String value = EarUtils.getTagLog().get(module.getName() + ".ear");
 				if(value == null) throw new IOException("Unable to determine tag for '" + module.getName() + "'");
 				desc.setText(value);
@@ -82,7 +81,7 @@ public class ChangeDisplayName extends AbstractMojo {
 				app = doc.getRootElement();
 				desc = app.addElement("description");
 				desc.setText(EarUtils.getTagLog().get(module.getName() + ".ear"));
-				getLog().info("[" + module.getName() + "] description element with text '" + EarUtils.getTagLog().get(module.getName()) + "' added");
+				getLog().info("[" + module.getName() + "] description element with text '" + EarUtils.getTagLog().get(module.getName() + ".ear") + "' added");
 			}
 			
 			XMLUtils.writeXMLDocument(doc, appxml);

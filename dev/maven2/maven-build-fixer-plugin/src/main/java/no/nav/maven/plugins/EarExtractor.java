@@ -2,14 +2,11 @@ package no.nav.maven.plugins;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Set;
 
-import no.nav.maven.utils.ZipUtils;
+import no.nav.maven.plugins.common.utils.ZipUtils;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.project.MavenProject;
-import org.apache.maven.project.MavenProjectHelper;
 
 /**
  * @author utvikler
@@ -25,23 +22,6 @@ public abstract class EarExtractor extends AbstractMojo {
 	 * @required
 	 */
 	private File workingArea;
-	/**
-     * The maven project's helper.
-     *
-     * @parameter expression="${component.org.apache.maven.project.MavenProjectHelper}"
-     * @required
-     * @readonly
-     */
-    private MavenProjectHelper projectHelper;
-	
-	/**
-     * The maven project.
-     *
-     * @parameter expression="${project}"
-     * @required
-     * @readonly
-     */
-    private MavenProject project;
 
     
     protected abstract boolean isValidFile(String fileName, boolean isFile); 

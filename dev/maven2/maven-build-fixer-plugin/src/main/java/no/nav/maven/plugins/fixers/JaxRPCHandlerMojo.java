@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import no.nav.maven.plugins.EarExtractor;
+import no.nav.maven.plugins.common.utils.EarUtils;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.dom4j.Document;
@@ -84,9 +85,9 @@ public class JaxRPCHandlerMojo extends EarExtractor {
 			}
 		});
 		for(File targetModule : tmp){
-			if(new File(targetModule.getAbsolutePath() + "/ejb/META-INF/webservices.xml").exists()){
+			if(new File(targetModule.getAbsolutePath() + EarUtils.EJB_SUBPATH + "/META-INF/webservices.xml").exists()){
 				getLog().info("Editing '" + targetModule.getName() + "'");
-				changeFile(targetModule.getAbsolutePath() + "/ejb");
+				changeFile(targetModule.getAbsolutePath() + EarUtils.EJB_SUBPATH);
 			}else{
 				getLog().info("'" + targetModule.getName() + "' inneholder ikke webservices.xml, skipper...");
 			}

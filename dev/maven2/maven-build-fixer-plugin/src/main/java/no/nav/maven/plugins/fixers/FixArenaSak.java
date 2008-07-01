@@ -1,27 +1,24 @@
 package no.nav.maven.plugins.fixers;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.Date;
 import java.util.HashMap;
 
-import no.nav.maven.utils.XMLUtils;
-import no.nav.maven.utils.ZipUtils;
+import no.nav.maven.plugins.common.utils.EarUtils;
+import no.nav.maven.plugins.common.utils.XMLUtils;
+import no.nav.maven.plugins.common.utils.ZipUtils;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.XPath;
-import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 
 /**
  * Maven Goal that alters the META-INF/ejb-jar.xml file by changing handler-name and handler-class:
@@ -36,7 +33,7 @@ public class FixArenaSak extends AbstractMojo {
 	 * @parameter expression="${handlerName}"
 	 * @required
 	 */
-	protected String handlerName; // = "ArenaResponseHandler";
+	protected String handlerName;
 
 	/**
 	 * This parameter is the directory where the wid ear files are placed.
@@ -44,7 +41,7 @@ public class FixArenaSak extends AbstractMojo {
 	 * @parameter expression="${handlerClass}"
 	 * @required
 	 */
-	protected String handlerClass; // = "no.nav.java.ArenaResponseHandler";
+	protected String handlerClass;
 	
 	/**
 	 * This parameter is the directory where the wid ear files are placed.
@@ -52,8 +49,32 @@ public class FixArenaSak extends AbstractMojo {
 	 * @parameter expression="${earDirectory}" 
 	 * @required
 	 */
-	protected File earDirectory; // = new File("E:/ControllerScript/kjempen/target/classes/builds/eardist");
+	protected File earDirectory;
 
+	/**
+	 * This parameter is the directory where the wid ear files are placed.
+	 * 
+	 * @parameter expression="${overriddenEndpointURI}" 
+	 * @required
+	 */
+	protected String overriddenEndpointURI;
+	
+	/**
+	 * This parameter is the directory where the wid ear files are placed.
+	 * 
+	 * @parameter expression="${basicAuthUserid}" 
+	 * @required
+	 */
+	protected String basicAuthUserid;
+	
+	/**
+	 * This parameter is the directory where the wid ear files are placed.
+	 * 
+	 * @parameter expression="${basicAuthPassword}" 
+	 * @required
+	 */
+	protected String basicAuthPassword;
+	
 	/**
 	 * This parameter is needed to support old deployment scripts, can be removed when all scripts have been updated.
 	 * 
@@ -66,10 +87,13 @@ public class FixArenaSak extends AbstractMojo {
 		
 	}
 	
-	public FixArenaSak(File flattenEarDirectory, String handlerName, String handlerClass){
+	public FixArenaSak(File flattenEarDirectory, String handlerName, String handlerClass, String overriddenEndpointURI, String basicAuthUserid, String basicAuthPassword){
 		this.earDirectory = flattenEarDirectory;
 		this.handlerClass = handlerClass;
 		this.handlerName = handlerName;
+		this.basicAuthUserid = basicAuthUserid;
+		this.basicAuthPassword = basicAuthPassword;
+		this.overriddenEndpointURI = overriddenEndpointURI;
 		isSubGoal = true;
 	}
 	
@@ -94,7 +118,7 @@ public class FixArenaSak extends AbstractMojo {
 			try {
 				ZipUtils.extract(arenasak, tmp);
 				
-				ejb = new File(tmp + "/ejb");
+				ejb = new File(tmp + EarUtils.EJB_SUBPATH);
 				ejb.mkdirs();
 				ZipUtils.extract(new File(tmp + "/nav-prod-sak-arenaEJB.jar"), ejb);
 			} catch (IOException e) {
@@ -102,7 +126,8 @@ public class FixArenaSak extends AbstractMojo {
 			}
 			
 			try {
-				if(changeEjbJar(new File(ejb.getAbsolutePath() + "/META-INF/ejb-jar.xml"))){ //true if changes made
+				if(changeEjbJar(new File(ejb.getAbsolutePath() + "/META-INF/ejb-jar.xml")) ||
+				   changeWebservicesClientBnd(new File(ejb.getAbsolutePath() + "/META-INF/ibm-webservicesclient-bnd.xmi"))){ //true if changes made
 					try {
 						getLog().info("Compressing nav-prod-sak-arena.ear...");
 						delete(new File(tmp.getAbsolutePath() + "/nav-prod-sak-arenaEJB.jar"));
@@ -138,9 +163,11 @@ public class FixArenaSak extends AbstractMojo {
 		if(tmp != null && tmp.length >= 1){
 			getLog().info("Found nav-prod-sak-arena...editing");
 			try {
-				changeEjbJar(new File(tmp[0].getAbsolutePath() + "/ejb/META-INF/ejb-jar.xml"));
+				changeEjbJar(new File(tmp[0].getAbsolutePath() + EarUtils.EJB_SUBPATH + "/META-INF/ejb-jar.xml"));
+				
+				changeWebservicesClientBnd(new File(tmp[0].getAbsolutePath() + EarUtils.EJB_SUBPATH + "/META-INF/ibm-webservicesclient-bnd.xmi"));
 			} catch (Exception e) {
-				throw new MojoExecutionException("Error editing ejb-jar.xml",e);
+				throw new MojoExecutionException("Error editing xml files",e);
 			}
 			getLog().info("Done!");
 		}
@@ -152,7 +179,7 @@ public class FixArenaSak extends AbstractMojo {
 		SAXReader reader;
 		Element handler;
 		XPath search;
-		HashMap uris = new HashMap();
+		HashMap<String, String> uris = new HashMap<String, String>();
 		
 		getLog().info("Opening ejb-jar.xml...");
 		
@@ -161,7 +188,7 @@ public class FixArenaSak extends AbstractMojo {
 		uris.put("ns","http://java.sun.com/xml/ns/j2ee");
 		
 		search = doc.createXPath("/ns:ejb-jar/ns:enterprise-beans/ns:session[@id='Module']/ns:service-ref/ns:handler");
-		//search = doc.createXPath("/ns:ejb-jar/ns:enterprise-beans/ns:session");
+		
 		search.setNamespaceURIs(uris);
 		handler = (Element)search.selectSingleNode(doc);
 		if(handler != null){
@@ -182,6 +209,44 @@ public class FixArenaSak extends AbstractMojo {
 		}
 	}
 	
+	
+	private boolean changeWebservicesClientBnd(File ws) throws DocumentException{
+		Document doc;
+		SAXReader reader;
+		Element binding, basicAuth;
+		Attribute endpoint;
+		XPath search;
+		HashMap<String, String> uris = new HashMap<String, String>();
+		
+		getLog().info("Opening ibm-webservicesclient-bnd.xmi...");
+		
+		reader = new SAXReader();
+		doc = reader.read(ws);
+		uris.put("ns","http://www.ibm.com/websphere/appserver/schemas/5.0.2/wscbnd.xmi");
+		
+		search = doc.createXPath("//portQnameBindings");
+		search.setNamespaceURIs(uris);
+		binding = (Element)search.selectSingleNode(doc);
+		if(binding != null){
+			endpoint = binding.attribute("overriddenEndpointURI");
+			if(endpoint != null) endpoint.setText(overriddenEndpointURI);
+			else binding.addAttribute("overriddenEndpointURI", overriddenEndpointURI);
+			
+			
+			getLog().info("[" + ws.getName() + "] Changed overriddenEndpointURI to '" + overriddenEndpointURI + "'");
+			
+			basicAuth = binding.addElement("basicAuth");
+			basicAuth.addAttribute("xmi:id", "BasicAuth_1187868680921");
+			basicAuth.addAttribute("userid", basicAuthUserid);
+			basicAuth.addAttribute("password", basicAuthPassword);
+			getLog().info("[" + ws.getName() + "] added basic authentication with userid=" + basicAuthUserid + " password=" + basicAuthPassword);
+			
+			return true;
+		}
+		
+		
+		return false;
+	}
 	private boolean delete(File path){
 		if(path.isDirectory()){
 			File[] children = path.listFiles();
@@ -195,15 +260,6 @@ public class FixArenaSak extends AbstractMojo {
 		System.gc();
 		return path.delete();
 		
-	}
-
-	private void writeXml(Document doc, File out) throws IOException
-	{
-		out.delete();
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(out), "UTF-8"));
-		XMLWriter writer = new XMLWriter(bw ,OutputFormat.createPrettyPrint());
-		writer.write(doc);
-		writer.close();
 	}
 
 	private File findArenaSak(){
