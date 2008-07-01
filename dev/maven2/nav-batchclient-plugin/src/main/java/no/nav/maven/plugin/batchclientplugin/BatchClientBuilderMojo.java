@@ -57,6 +57,20 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 	private File outputStartFile;
 	
 	/**
+	 * The resulting stopbatch file.
+	 * 
+	 * @parameter
+	 */
+	private File outputStopFile;
+	
+	/**
+	 * The resulting stopbatch file.
+	 * 
+	 * @parameter
+	 */
+	private Boolean createStopFile;
+	
+	/**
 	 * The WAS_HOME folder for client classpath
 	 * 
 	 * @parameter
@@ -117,6 +131,9 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 		printInput();
 		writeConfigFile();
 		writeStartBatchFile();
+		if(createStopFile != null && createStopFile == true) {
+			writeStopBatchFile();
+		}
 			
 	}
 	
@@ -140,6 +157,29 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 		} catch( IOException fe){
 			fe.printStackTrace();
 			throw new MojoFailureException("Could not create StartBatch File:" + outputStartFile);
+		}
+	}
+	
+	private void writeStopBatchFile() throws MojoFailureException {
+		
+		try{
+			if(outputStopFile.getParent() != null){
+				File f = new File(outputStopFile.getParent());
+				if(!f.exists()){
+					f.mkdir();
+				}
+			}
+			FileWriter fw = new FileWriter(outputStopFile);
+			fw.write("#!/bin/bash\n");
+			fw.write("source " + outputConfigFile.getName() + "\n");
+			fw.write("\n");
+			fw.write("${JAVA_HOME}/bin/java ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p" + delimiter + "${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $1 $2 stop\n");
+			fw.flush();
+			fw.close();
+			
+		} catch( IOException fe){
+			fe.printStackTrace();
+			throw new MojoFailureException("Could not create StopBatch File:" + outputStopFile);
 		}
 	}
 	
