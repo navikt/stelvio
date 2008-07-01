@@ -2343,6 +2343,28 @@ incubator/wid61-person/nav-prod-frg-tps/sca.module -text
 incubator/wid61-person/nav-prod-frg-tps/sca.modulex -text
 incubator/wid61-person/nav-prod-frg-tps/test/hentperson.wbiexetrace -text
 incubator/wid61-person/nav-prod-frg-tps/test/normal.wbiexetrace -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/.classpath -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/.project -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/.runtime -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/.settings/nav-cons-frg-tps.prefs -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/PersonHendelseSCAIMP.import -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/RouteCall.component -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/TPSPersonHendelseJMSEXP.export -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/TPSPersonHendelseTOPersonHendelse.component -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/no/nav/inf/TPSPersonHendelse.wsdl -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/no/nav/infmap/TPSPersonHendelseTOPersonHendelse.ifm -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/no/nav/infmap/TPSPersonHendelseTOPersonHendelse_ifm.mon -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/no/nav/java/RouteCallImpl.java -text svneol=unset#text/plain
+incubator/wid61-personhendelse/nav-cons-frg-tps/sca.module -text
+incubator/wid61-personhendelse/nav-cons-frg-tps/sca.modulex -text
 incubator/wid61-stelvio/stelvio-commons-lib/.classpath -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/.project -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/.runtime -text

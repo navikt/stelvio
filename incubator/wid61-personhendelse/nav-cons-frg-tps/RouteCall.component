@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0" xmlns:ns1="http://nav-lib-frg/no/nav/lib/frg/inf/PersonHendelse" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="RouteCall" name="RouteCall">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonHendelse"/>
+  </interfaces>
+  <references>
+    <reference name="PersonHendelsePartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonHendelse"/>
+      <wire target="PersonHendelseSCAIMP"/>
+    </reference>
+  </references>
+  <implementation xsi:type="java:JavaImplementation" class="no.nav.java.RouteCallImpl"/>
+</scdl:component>
