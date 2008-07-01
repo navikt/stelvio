@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GBOPerson="http://nav-lib-frg/no/nav/lib/frg/gbo" xmlns:GBOPersonTOpoppPerson="http://nav-ent-frg-personhendelse/no/nav/map" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" xmlns:poppPerson="http://nav-lib-pen-popp/no/nav/lib/pen/popp/asbo" targetNamespace="http://nav-ent-frg-personhendelse/no/nav/map">
+  <map:name>GBOPersonTOpoppPerson</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GBOPerson:GBOPerson" name="GBOPerson"/>
+  <map:outputBusinessObjectVariable businessObjectRef="poppPerson:poppPerson" name="poppPerson"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="GBOPerson" property="fodselsnummer"/>
+      <map:output businessObjectVariableRef="poppPerson" property="fnr"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extensionmodel:ExtensionMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.wiring.ui.ext.model="http:///com/ibm/wbit/wiring/ui/ext/model.ecore" xmlns:extensionmodel="http:///extensionmodel.ecore" xmi:id="ExtensionMap_1179303395625" namespace="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0">
+  <extensions xmi:id="Extension_1179303395643">
+    <extendedObject href="MEDLSCAIMP.import#//@import"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1179303395642" x="1000" y="44" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding"/>
+  </extensions>
+  <extensions xmi:id="Extension_1179303395650">
+    <extendedObject href="PersonHendelseTOMEDL.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1179303395646" x="518" y="47" unknown="false" type="{http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0}MediationImplementation"/>
+  </extensions>
+  <extensions xmi:id="Extension_1179304789203">
+    <extendedObject href="ReliableServiceInvocation.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1179304789203" x="266" y="84" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0}JavaImplementation"/>
+  </extensions>
+  <extensions xmi:id="Extension_1193047976781">
+    <extendedObject href="PersonHendelseTOPOPP.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1193047976781" x="518" y="105" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0}MediationImplementation"/>
+  </extensions>
+  <extensions xmi:id="Extension_1193047976782">
+    <extendedObject href="POPPSCAIMP.import#//@import"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1193047976782" x="764" y="103" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding"/>
+  </extensions>
+  <extensions xmi:id="Extension_1193047976783">
+    <extendedObject href="PENSCAIMP.import#//@import"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1193047976783" x="1214" y="159" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding"/>
+  </extensions>
+  <extensions xmi:id="Extension_1193126583437">
+    <extendedObject href="sca.module#//@module"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" xmi:id="ModuleExtension_1193126583437"/>
+  </extensions>
+  <extensions xmi:id="Extension_1210752649934">
+    <extendedObject href="HandleExceptions.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1210752649934" x="1000" y="160" unknown="false" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0}JavaImplementation"/>
+  </extensions>
+  <extensions xmi:id="Extension_1210752649935">
+    <extendedObject href="SetContextData.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1210752649935" x="764" y="161" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0}JavaImplementation"/>
+  </extensions>
+  <extensions xmi:id="Extension_1210752649936">
+    <extendedObject href="PersonHendelsTOPEN.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1210752649936" x="518" y="163" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0}MediationImplementation"/>
+  </extensions>
+  <extensions xmi:id="Extension_1210752649937">
+    <extendedObject href="HandleMedlExceptions.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1210752649937" x="764" y="45" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0}JavaImplementation"/>
+  </extensions>
+  <extensions xmi:id="Extension_1210752649938">
+    <extendedObject href="PersonHendelseSCAEXP.export#//@export"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" xmi:id="ExportExtension_1210752649934" x="20" y="105" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ExportBinding" bound="true"/>
+  </extensions>
+</extensionmodel:ExtensionMap>
