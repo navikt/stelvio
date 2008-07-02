@@ -21,8 +21,6 @@ public class EarUtils {
 
 	private static Map<String, String> tagLog;
 	
-	public static boolean useSystemCompress = true;
-
 	/**
 	 * Extracts an ear file to a target directory appended with the ear file
 	 * name, and searches for an inner EJB module and extracts that as well
@@ -77,18 +75,15 @@ public class EarUtils {
 		if (ejbFolder.exists()) {
 			File ejbModule = new File(extractDir + "/" + extractDir.getName()
 					+ "EJB.jar");
-			if(useSystemCompress){
-				ZipUtils.systemCompress(ejbFolder, ejbModule);
-			}else{
-				ZipUtils.compress(ejbFolder, ejbModule);
-			}
+			ejbModule.delete();
+			
+			
+			ZipUtils.compress(ejbFolder, ejbModule);
+			
 			FileUtils.recursiveDelete(ejbFolder);
 		}
-		if(useSystemCompress){
-			ZipUtils.systemCompress(extractDir, outputFile);
-		}else{
-			ZipUtils.compress(extractDir, outputFile);
-		}
+		
+		ZipUtils.compress(extractDir, outputFile);
 	}
 
 	public static void flattenEarStructure(File earFolder, File targetFolder)

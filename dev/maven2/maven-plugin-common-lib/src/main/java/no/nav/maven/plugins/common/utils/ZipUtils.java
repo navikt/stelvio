@@ -1,7 +1,5 @@
 package no.nav.maven.plugins.common.utils;
 
-
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -31,31 +29,20 @@ public class ZipUtils {
 
 	}
 	
-	public static void systemCompress(File source, File destination) throws IOException{
-		if(System.getProperty("os.name").compareToIgnoreCase("Linux") == 0){
-			Process p = Runtime.getRuntime().exec("zip -u -r " + destination.getAbsolutePath(),null,source);
-			try {
-				p.waitFor();
-				
-				if(p.exitValue() != 0){
-					String err = streamToString(p.getErrorStream());
-					throw new IOException(err);
-				}
-			} catch (InterruptedException e) {
-				throw new IOException(e.getMessage());
-			}
-			
-		}else{
-			compress(source, destination);
-		}
-		
-	}
+	/*public static void compress(File source, File destination) throws IOException {
+		de.schlichtherle.io.File zip = new de.schlichtherle.io.File(destination);
+		zip.copyAllFrom(source,ArchiveDetector.ALL);
+		zip.umount();
+	}*/
+	
+	
 	
 	private static String streamToString(InputStream stream) throws IOException{
 		byte[] content = new byte[stream.available()];
 		stream.read(content, 0, content.length);
 		return new String(content);
 	}
+	
 	private static void addFiles(File source, Map files, String path, String basedir) throws IOException {
 		if (source.isDirectory()) {
 			File[] subfiles = source.listFiles();

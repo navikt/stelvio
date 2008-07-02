@@ -1,9 +1,6 @@
 package no.nav.maven.plugins.common.utils;
 
-
-
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,14 +52,14 @@ public class FileUtils {
 		if (path.isDirectory()) {
 			File[] children = path.listFiles();
 			for (int i = 0; i < children.length; i++) {
-				System.gc();
+				//System.gc();
 				boolean success = recursiveDelete(children[i]);
 				if (!success) {
 					return false;
 				}
 			}
 		}
-		System.gc();
+		//System.gc();
 		return path.delete();
 
 	}
