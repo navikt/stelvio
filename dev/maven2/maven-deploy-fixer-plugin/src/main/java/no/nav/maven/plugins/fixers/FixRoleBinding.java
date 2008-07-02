@@ -112,6 +112,8 @@ public class FixRoleBinding extends AbstractMojo{
 			}
 		}
 		if(roleNames != null && roleNames.size() > 0){
+			//adding Trafikanten
+			
 			getLog().info("Found following roles in module:");
 			for(String roleName : roleNames) getLog().info(roleName);
 			

@@ -5,6 +5,7 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
@@ -19,6 +20,7 @@ import no.nav.maven.plugins.fixers.FixRoleBinding;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.logging.Log;
 
 /**
  * Goal which that adds the Stelvio jaxrpc handler to webservices.xml
@@ -199,6 +201,63 @@ public class ConfigFixer extends AbstractMojo {
 			}
 		});
 		getLog().info("-------------------- Start Compressing ears --------------------");
+		
+		//threading the compressing process to increase performance
+		RunnableEarCompressor compressor;
+		List<RunnableEarCompressor> compressors = new ArrayList<RunnableEarCompressor>();
+		List<Thread> compressorThreads = new ArrayList<Thread>();
+		int threadNo = 0;
+		getLog().info(extractedModules.length + " threads started on " + Runtime.getRuntime().availableProcessors() + " CPUs");
+		for(File extractedModule : extractedModules){
+			String moduleName = extractedModule.getName();
+			
+			File targetEar = new File(flattenedFolder.getAbsolutePath() + "/" + moduleName + ".ear");
+			
+			targetEar.mkdirs();
+			targetEar.delete();
+			compressor = new RunnableEarCompressor(extractedModule, targetEar, getLog());
+			compressors.add(compressor);
+			Thread t = new Thread(compressor,"compressor " + threadNo++);
+			compressorThreads.add(t);
+			t.start();
+			//EarUtils.compressEarAndInnerModule(extractedModule, targetEar);
+		}
+
+		while(true){
+			try {
+				Thread.sleep(5000); //polling every 5 seconds
+
+				//checking state of threads
+				boolean allDone = true;
+				for(Thread t : compressorThreads){
+					if(t.getState() != Thread.State.TERMINATED){
+						allDone = false;
+						break;
+					}
+				}
+				if(allDone){
+					//checking for errors
+					for(RunnableEarCompressor comp : compressors){
+						if(comp.failed()){
+							comp.exception.printStackTrace();
+							throw new Exception("At least one error occured while compressing ears (showing only first): " + comp.exception.getMessage());
+						}
+					}
+					break;
+				}
+			} catch (Exception e) {
+				throw new IOException("Error occured: " + e.getMessage());
+			} 
+		}
+		
+		getLog().info("-------------------- End Compressing ears --------------------");
+		/*
+		File[] extractedModules = workingFolder.listFiles(new FileFilter(){
+			public boolean accept(File pathname) {
+				return (pathname.isDirectory() && pathname.getName().startsWith("nav-"));
+			}
+		});
+		getLog().info("-------------------- Start Compressing ears --------------------");
 		for(File extractedModule : extractedModules){
 			String moduleName = extractedModule.getName();
 			
@@ -209,9 +268,40 @@ public class ConfigFixer extends AbstractMojo {
 			targetEar.delete();
 			EarUtils.compressEarAndInnerModule(extractedModule, targetEar);
 		}
-		
 		FileUtils.recursiveDelete(workingFolder);
-		getLog().info("-------------------- End Compressing ears --------------------");
+		getLog().info("-------------------- End Compressing ears --------------------");*/
+	}
+	
+	private class RunnableEarCompressor implements Runnable{
+		private File source;
+		private File target;
+		private Log logger;
+		private Exception exception;
+		
+		public RunnableEarCompressor(File source, File target, Log logger){
+			if(source == null) throw new IllegalArgumentException("Source cannot be null!");
+			if(target == null) throw new IllegalArgumentException("Target cannot be null!");
+			this.source = source;
+			this.target = target;
+			this.logger = logger;
+		}
+		
+		public void run(){
+			try {
+				EarUtils.compressEarAndInnerModule(source, target);
+				logger.info(source.getName());
+			} catch (IOException e) {
+				exception = e;
+			}
+		}
+		
+		public boolean failed(){
+			return exception != null;
+		}
+
+		public Exception getException() {
+			return exception;
+		}
 	}
 
 

@@ -1,6 +1,5 @@
 package no.nav.maven.plugins.fixers;
 
-import java.util.Date;
 import java.util.List;
 
 import no.nav.maven.plugins.common.utils.Random;
