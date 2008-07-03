@@ -1309,6 +1309,9 @@ dev/maven2/deploy.txt -text
 dev/maven2/maven-appXml-plugin/trunk/pom.xml -text
 dev/maven2/maven-appXml-plugin/trunk/src/main/java/no/nav/maven/plugins/ApplicationXmlMojo.java -text
 dev/maven2/maven-appXml-plugin/trunk/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
+dev/maven2/maven-bpel-plugin/pom.xml -text
+dev/maven2/maven-bpel-plugin/src/main/java/no/nav/maven/plugins/ConfigFixer.java -text
+dev/maven2/maven-bpel-plugin/src/test/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-build-fixer-plugin/pom.xml -text
 dev/maven2/maven-build-fixer-plugin/src/main/java/no/nav/maven/plugins/ConfigFixer.java -text
 dev/maven2/maven-build-fixer-plugin/src/main/java/no/nav/maven/plugins/EarExtractor.java -text
