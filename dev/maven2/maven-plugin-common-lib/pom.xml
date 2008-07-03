@@ -4,7 +4,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-plugin-common-lib</artifactId>
 	<packaging>jar</packaging>
-	<version>1.2</version>
+	<version>1.3-SNAPSHOT</version>
 	<name>maven-plugin-common-lib</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
