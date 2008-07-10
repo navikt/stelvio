@@ -2280,6 +2280,15 @@ incubator/wid61-libs/nav-lib-frg/no/nav/lib/frg/inf/Samhandler.wsdl -text svneol
 incubator/wid61-libs/nav-lib-frg/no/nav/lib/frg/inf/Tjenestepensjon.wsdl -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg/xsd-includes/http.nav-lib-frg.no.nav.lib.frg.fault.xsd -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-frg/xsd-includes/http.nav-lib-frg.no.nav.lib.frg.gbo.xsd -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/.classpath -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/.project -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/.runtime -text
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/.settings/org.eclipse.wst.common.component -text
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/wid61-libs/nav-lib-provider-fellesregister-medl-ejb-1.0.15.D2-client/nav-provider-fellesregister-medl-ejb-1.0.15.D2-client.jar -text
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.classpath -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.project -text svneol=unset#text/plain
 incubator/wid61-libs/nav-lib-provider-frg-inst-ejb-2.0.3.D1-client/.runtime -text
