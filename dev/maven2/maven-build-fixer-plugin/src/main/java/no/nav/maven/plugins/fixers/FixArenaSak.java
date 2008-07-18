@@ -210,7 +210,7 @@ public class FixArenaSak extends AbstractMojo {
 	}
 	
 	
-	private boolean changeWebservicesClientBnd(File ws) throws DocumentException{
+	private boolean changeWebservicesClientBnd(File ws) throws DocumentException, IOException {
 		Document doc;
 		SAXReader reader;
 		Element binding, basicAuth;
