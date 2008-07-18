@@ -241,6 +241,7 @@ public class FixArenaSak extends AbstractMojo {
 			basicAuth.addAttribute("password", basicAuthPassword);
 			getLog().info("[" + ws.getName() + "] added basic authentication with userid=" + basicAuthUserid + " password=" + basicAuthPassword);
 			
+			XMLUtils.writeXMLDocument(doc, ws);
 			return true;
 		}
 		
