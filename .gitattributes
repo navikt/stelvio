@@ -1305,12 +1305,8 @@ dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
 dev/datapower/datapower-deployer/pom.xml -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/config/WSProxy.java -text
-dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/CompoundDeploymentUnit.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/Config.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/DeploymentManager.java -text
-dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/DeploymentUnit.java -text
-dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/FileSetUnit.java -text
-dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/WSProxyConfigurationUnit.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/AAAAction.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/AAAPolicy.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/CryptoCertificate.ftl -text
