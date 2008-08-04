@@ -1,0 +1,70 @@
+package no.nav.datapower.templates.freemarker;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Hashtable;
+import java.util.List;
+
+import no.nav.datapower.config.WSProxy;
+import no.nav.datapower.util.DPCollectionUtils;
+import freemarker.cache.ClassTemplateLoader;
+import freemarker.cache.FileTemplateLoader;
+import freemarker.cache.MultiTemplateLoader;
+import freemarker.cache.TemplateLoader;
+import freemarker.template.Configuration;
+import freemarker.template.DefaultObjectWrapper;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+
+public class FreemarkerConfigBuilder {
+
+	private Configuration freemarker;
+
+	private static final TemplateLoader DEFAULT_TEMPLATE_LOADER = new ClassTemplateLoader(FreemarkerConfigBuilder.class, "");
+	
+	public FreemarkerConfigBuilder() {
+//		freemarker = configureFreemarker(DEFAULT_TEMPLATE_LOADER);
+		freemarker = configureFreemarker(DEFAULT_TEMPLATE_LOADER);
+	}
+	
+	public FreemarkerConfigBuilder(File templateDir) {
+		FileTemplateLoader ftl = null;
+		try {
+			ftl = new FileTemplateLoader(templateDir);
+		} catch (IOException e) {
+			throw new IllegalArgumentException();
+		}
+//		freemarker = configureFreemarker(DEFAULT_TEMPLATE_LOADER, ftl);
+		freemarker = configureFreemarker(new ClassTemplateLoader(FreemarkerConfigBuilder.class, ""), ftl);
+	}
+	
+	public FreemarkerConfigBuilder(TemplateLoader... loaders) {
+		freemarker = configureFreemarker(loaders);
+	}
+	
+	private Configuration configureFreemarker(TemplateLoader... loaders) {
+		Configuration cfg = new Configuration();		
+		cfg.setTemplateLoader(new MultiTemplateLoader(loaders));
+		cfg.setWhitespaceStripping(true);
+		cfg.setObjectWrapper(new DefaultObjectWrapper());			
+		return cfg;
+	}
+
+	public void buildConfig(String templateFile, Hashtable props, List<File> wsdlFiles, Writer writer) throws IOException, TemplateException {
+		Template template = null;
+		//template = freemarker.getTemplate("secgw-configuration.ftl");
+		template = freemarker.getTemplate(templateFile);
+		props.put("wsdls", getWSProxyList(wsdlFiles));
+		template.process(props, writer);
+		writer.flush();
+	}
+	
+	private List<WSProxy> getWSProxyList(List<File> wsdlFiles) {
+		List<WSProxy> proxyList = DPCollectionUtils.newArrayList();
+		for (File wsdl : wsdlFiles) {
+			proxyList.add(new WSProxy(wsdl));
+		}
+		return proxyList;
+	}
+}
