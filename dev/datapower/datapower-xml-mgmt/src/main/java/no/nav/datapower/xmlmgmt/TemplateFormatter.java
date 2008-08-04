@@ -24,18 +24,18 @@ public class TemplateFormatter {
 		return myTemplate;
 	}
 	
-	private String replace(String source, String pattern, String replace) {
-		String retval = "";
-		int startIndex, endIndex;
-		if (source.indexOf(pattern) >= 0) {
-			startIndex = source.indexOf(pattern);
-			endIndex = startIndex + pattern.length();
-			retval += source.substring(0, startIndex);
-			retval += replace;
-			retval += source.substring(endIndex);
-			return retval;
-		}
-		return source;
-	}
+//	private String replace(String source, String pattern, String replace) {
+//		String retval = "";
+//		int startIndex, endIndex;
+//		if (source.indexOf(pattern) >= 0) {
+//			startIndex = source.indexOf(pattern);
+//			endIndex = startIndex + pattern.length();
+//			retval += source.substring(0, startIndex);
+//			retval += replace;
+//			retval += source.substring(endIndex);
+//			return retval;
+//		}
+//		return source;
+//	}
 
 }

@@ -31,7 +31,7 @@ public class ImportFilesTester {
 			DPFileUtils.extractArchive(wsdlFile, tmpFolder);
 			
 			System.out.println("Creating request...");
-			//dp.importFiles(tmpFolder, DeviceFileStore.LOCAL);
+			dp.importFiles(tmpFolder, DeviceFileStore.LOCAL);
 			System.out.println("Files successfully imported...");
 	
 		} catch (IOException e) {

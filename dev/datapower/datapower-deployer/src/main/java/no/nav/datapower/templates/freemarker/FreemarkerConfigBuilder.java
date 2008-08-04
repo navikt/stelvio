@@ -6,7 +6,7 @@ import java.io.Writer;
 import java.util.Hashtable;
 import java.util.List;
 
-import no.nav.datapower.config.WSProxy;
+import no.nav.datapower.config.WSDLFile;
 import no.nav.datapower.util.DPCollectionUtils;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.FileTemplateLoader;
@@ -60,10 +60,10 @@ public class FreemarkerConfigBuilder {
 		writer.flush();
 	}
 	
-	private List<WSProxy> getWSProxyList(List<File> wsdlFiles) {
-		List<WSProxy> proxyList = DPCollectionUtils.newArrayList();
+	private List<WSDLFile> getWSProxyList(List<File> wsdlFiles) {
+		List<WSDLFile> proxyList = DPCollectionUtils.newArrayList();
 		for (File wsdl : wsdlFiles) {
-			proxyList.add(new WSProxy(wsdl));
+			proxyList.add(new WSDLFile(wsdl));
 		}
 		return proxyList;
 	}

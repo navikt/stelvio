@@ -49,18 +49,6 @@ public class DeploymentManager {
 		return new FreemarkerConfigBuilder(new File("E:/Develop/wdp/datapower-deployer/src/main/resources"));
 	}
 
-	public CompoundDeploymentUnit newCompoundUnit(String domain, boolean clean) {
-		return null;
-	}
-
-	public DeploymentUnit newFileSetUnit(String domain, boolean clean) {
-		return null;
-	}
-
-	public DeploymentUnit newConfigUnit(String domain, boolean clean) {
-		return null;
-	}
-
 //	public void importFilesFromDirectory(String domain, File importDirectory) {
 //		if (!importDirectory.isDirectory())
 //			throw new IllegalArgumentException("Specified path is not a directory");

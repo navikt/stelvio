@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPHttpUtils;
 import no.nav.datapower.xmlmgmt.command.AddHostAliasCommand;
@@ -19,7 +18,6 @@ import no.nav.datapower.xmlmgmt.command.SaveConfigCommand;
 import no.nav.datapower.xmlmgmt.command.SetFileCommand;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
