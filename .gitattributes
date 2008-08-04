@@ -1304,6 +1304,7 @@ dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
 dev/datapower/datapower-deployer/pom.xml -text
+dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/config/WSDLFile.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/config/WSProxy.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/Config.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/DeploymentManager.java -text
@@ -1337,6 +1338,7 @@ dev/datapower/datapower-deployer/src/main/resources/cfg-secgw-u1.properties -tex
 dev/datapower/datapower-deployer/src/main/resources/cfg-secgw-utv.properties -text
 dev/datapower/datapower-deployer/src/main/resources/secgw-configuration.ftl -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/DeploymentManagerTester.java -text
+dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSDLFileTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSProxyTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/templates/freemarker/FreemarkerConfigBuilderTester.java -text
 dev/datapower/datapower-utils/pom.xml -text
