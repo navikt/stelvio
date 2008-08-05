@@ -1340,8 +1340,6 @@ dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/Deploym
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSDLFileTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSProxyTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/templates/freemarker/FreemarkerConfigBuilderTester.java -text
-dev/datapower/datapower-utils/.classpath -text svneol=unset#text/plain
-dev/datapower/datapower-utils/.project -text svneol=unset#text/plain
 dev/datapower/datapower-utils/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 dev/datapower/datapower-utils/pom.xml -text
 dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/DPCollectionUtils.java -text
