@@ -11,22 +11,24 @@
 
 <#macro FrontsideSSL name keystoreName keystoreFile keystorePwd>
 	<#local sslIdCred="${name}_CryptoIdCred"/>
-	<#local cryptoProfile="${name}_SSLCryptoProfile"/>
+	<#local sslCryptoProfile="${name}_SSLCryptoProfile"/>
+	<#local sslProxyProfile="${name}_SSLProxyProfile"/>
 	<@SSLCertificate name="${keystoreName}" file="${keystoreFile}" password="${keystorePwd}"/>
 	<@CryptoKey name="${keystoreName}" file="${keystoreFile}" password="${keystorePwd}"/>
 	<@CryptoIdentCred name="${sslIdCred}" key="${keystoreName}" cert="${keystoreName}"/>
-	<@ReverseCryptoProfile name="${cryptoProfile}" identCred="${sslIdCred}"/>
-	<@ReverseSSLProxy name="${name}_SSLProxyProfile" cryptoProfile="${cryptoProfile}"/>
+	<@ReverseCryptoProfile name="${sslCryptoProfile}" identCred="${sslIdCred}"/>
+	<@ReverseSSLProxy name="${sslProxyProfile}" cryptoProfile="${sslCryptoProfile}"/>
 </#macro>
 
 <#macro BacksideSSL name trustedCerts>
 	<#local sslValCred="${name}_CryptoValCred">
-	<#local cryptoProfile="${name}_SSLCryptoProfile">
+	<#local sslCryptoProfile="${name}_SSLCryptoProfile">
+	<#local sslProxyProfile="${name}_SSLProxyProfile">
 	<#list trustedCerts as cert>
 	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
 	</#list>
 	<@CryptoValCred name="${sslValCred}" trustedCerts=trustedCerts/>
-	<@ForwardCryptoProfile name="${cryptoProfile}" valCred="${sslValCred}"/>
-	<@ForwardSSLProxy name="${name}_SSLProxyProfile" cryptoProfile="${cryptoProfile}"/>
+	<@ForwardCryptoProfile name="${sslCryptoProfile}" valCred="${sslValCred}"/>
+	<@ForwardSSLProxy name="${sslProxyProfile}" cryptoProfile="${sslCryptoProfile}"/>
 </#macro>
 

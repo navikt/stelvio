@@ -15,6 +15,16 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class DPPropertiesUtils {
 	
+	public static Set<String> keySet(Properties props) {
+		Set<String> keys = DPCollectionUtils.newHashSet();
+		for (Object key : props.keySet()) {
+			if (!(key instanceof String))
+				throw new IllegalArgumentException("Key '" + key + "' is not of type String");
+			keys.add((String)key);
+		}
+		return keys;
+	}
+	
 	public static Properties stripWhiteSpaces(Properties properties) {
 		//manually trimming properties for white spaces
 		Enumeration keys = properties.keys();
@@ -97,11 +107,32 @@ public class DPPropertiesUtils {
 	}
 	
 	public static Properties convertToNestedSubsets(Properties props, String... subsetKeys) {
-		return convertToNestedSubsets(ExtendedProperties.convertProperties(props), subsetKeys);
+		Properties nestedProps = new Properties();
+		for (String subsetName : subsetKeys) {
+			nestedProps.put(subsetName, subset(props, subsetName));			
+		}
+		return nestedProps;
+		
+	}
+	
+	public static Map<String,String> validate(Properties props, Properties required) {
+		Map<String, String> invalid = DPCollectionUtils.newHashMap();
+		for (String requiredKey : keySet(required)) {
+			if (!props.containsKey(requiredKey)) {
+				invalid.put(requiredKey, "Key '" + requiredKey + "' is not present if the specified properties collection");
+			}
+			else {
+				String value = (String) props.get(requiredKey);
+				if (value.contains("${") && value.contains("}")) {
+					invalid.put(requiredKey, "Value of '" + requiredKey + "' contains unresolved variables. Please interpolate properties!");
+				}
+			}
+		}
+		return invalid;
 	}
 
-	public static Properties convertToNestedSubsets(ExtendedProperties props, String... subsetKeys) {
-		Properties nestedProps = new Properties();
+	public static ExtendedProperties convertToNestedSubsets(ExtendedProperties props, String... subsetKeys) {
+		ExtendedProperties nestedProps = new ExtendedProperties();
 		for (String subsetName : subsetKeys) {
 			nestedProps.put(subsetName, props.subset(subsetName));			
 		}
@@ -116,13 +147,14 @@ public class DPPropertiesUtils {
 		
 		public Builder() {
 			config = new CompositeConfiguration();
+			interpolate = false;
 		}
 		
-		public Builder add(Properties props) {
+		public Builder properties(Properties props) {
 			config.addConfiguration(ConfigurationConverter.getConfiguration(props)); return this;
 		}
 		
-		public Builder add(String propFile) {
+		public Builder properties(String propFile) {
 			Configuration cfg;
 			try {
 				cfg = new PropertiesConfiguration(propFile);
@@ -133,12 +165,24 @@ public class DPPropertiesUtils {
 			return this;
 		}
 		
-		public Builder interpolate(boolean interpolate) {
-			this.interpolate = interpolate;
+		public Builder interpolate() {
+			this.interpolate = true;
+			return this;
+		}
+		
+		public Builder listDelimiter(char delimiter) {
+			config.setListDelimiter(delimiter);
 			return this;
 		}
 		
 		private Configuration getConfiguration() {
+//			System.out.println("interpolate = " + interpolate);
+//			if (interpolate) {
+//				System.out.println("Returning interpolated configuration");
+//				return config.interpolatedConfiguration();
+//			}
+//			System.out.println("Returning non-interpolated configuration");
+//			return config;
 			return interpolate ? config.interpolatedConfiguration() : config;
 		}
 		

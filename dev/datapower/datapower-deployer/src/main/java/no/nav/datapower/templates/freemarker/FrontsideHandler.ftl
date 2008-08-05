@@ -1,5 +1,5 @@
-<#macro FrontsideHandler protocol address port sslProxy>
-	<#local name="${protocol?lower_case}_${address}_${port}"/>
+<#macro FrontsideHandler name protocol address port sslProxy>
+	<#--<#local name="${protocol?lower_case}_${address}_${port}"/>-->
 	<${protocol?upper_case}SourceProtocolHandler name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<LocalAddress>${address}</LocalAddress>

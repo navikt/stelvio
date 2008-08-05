@@ -2,8 +2,8 @@
 	<StylePolicyAction name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>results</Type>
-		<Input>PIPE</Input>
-		<Output>OUTPUT</Output>
+		<Input>${input}</Input>
+		<Output>${output}</Output>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
 		<OutputType>default</OutputType>
 		<Transactional>off</Transactional>

@@ -102,6 +102,7 @@ public class XMLMgmtSession {
 		System.out.println("Scanning archive for files and folders");
 		List<File> directories = DPFileUtils.getFolderListExcludeRoot(rootDir);
 		List<File> relativePaths = DPFileUtils.getRelativePathList(directories, rootDir);
+		System.out.println("XMLMgmtSession.createDirs(), list of directories:");
 		IOUtils.writeLines(directories, IOUtils.LINE_SEPARATOR, System.out);
 		for (File dirPath : relativePaths) {
 			request.addCommand(new CreateDirCommand(location,DPFileUtils.replaceSeparator(dirPath,'/')));			
@@ -132,6 +133,7 @@ public class XMLMgmtSession {
 	
 	public String importFiles(File source, DeviceFileStore location) throws IOException {
 		List<File> fileList = DPFileUtils.getFileList(source);
+		System.out.println("XMLMgmtSession.importFiles(), list of files:");
 		IOUtils.writeLines(fileList, IOUtils.LINE_SEPARATOR, System.out);
 		return importFiles(fileList, source, location);
 	}

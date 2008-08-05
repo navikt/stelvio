@@ -24,7 +24,6 @@ public class FreemarkerConfigBuilder {
 	private static final TemplateLoader DEFAULT_TEMPLATE_LOADER = new ClassTemplateLoader(FreemarkerConfigBuilder.class, "");
 	
 	public FreemarkerConfigBuilder() {
-//		freemarker = configureFreemarker(DEFAULT_TEMPLATE_LOADER);
 		freemarker = configureFreemarker(DEFAULT_TEMPLATE_LOADER);
 	}
 	
@@ -35,8 +34,7 @@ public class FreemarkerConfigBuilder {
 		} catch (IOException e) {
 			throw new IllegalArgumentException();
 		}
-//		freemarker = configureFreemarker(DEFAULT_TEMPLATE_LOADER, ftl);
-		freemarker = configureFreemarker(new ClassTemplateLoader(FreemarkerConfigBuilder.class, ""), ftl);
+		freemarker = configureFreemarker(DEFAULT_TEMPLATE_LOADER, ftl);
 	}
 	
 	public FreemarkerConfigBuilder(TemplateLoader... loaders) {
@@ -52,15 +50,21 @@ public class FreemarkerConfigBuilder {
 	}
 
 	public void buildConfig(String templateFile, Hashtable props, List<File> wsdlFiles, Writer writer) throws IOException, TemplateException {
-		Template template = null;
-		//template = freemarker.getTemplate("secgw-configuration.ftl");
-		template = freemarker.getTemplate(templateFile);
-		props.put("wsdls", getWSProxyList(wsdlFiles));
-		template.process(props, writer);
-		writer.flush();
+		props.put("wsdls", getWsdlFileList(wsdlFiles));
+		processTemplate(templateFile, props, writer);
 	}
 	
-	private List<WSDLFile> getWSProxyList(List<File> wsdlFiles) {
+	public void buildAAAInfoFile(String templateFile, Hashtable props, Writer writer) throws IOException, TemplateException {
+		processTemplate(templateFile, props, writer);
+	}
+	
+	private void processTemplate(String templateFile, Hashtable props, Writer writer) throws IOException, TemplateException {
+		Template template = freemarker.getTemplate(templateFile);
+		template.process(props, writer);
+		writer.flush();				
+	}
+	
+	private List<WSDLFile> getWsdlFileList(List<File> wsdlFiles) {
 		List<WSDLFile> proxyList = DPCollectionUtils.newArrayList();
 		for (File wsdl : wsdlFiles) {
 			proxyList.add(new WSDLFile(wsdl));

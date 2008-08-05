@@ -6,23 +6,26 @@
 		wsdlName
 		wsdlPortBinding
 		policy
-		frontside
-		backside
+		frontsideHandler
+		frontsideProtocol
+		backsideProtocol
+		backsideHost
+		backsidePort
 		endpointUri>
 	<@WSEndpointRewritePolicy
 		name="${name}"
 		wsdlPortBinding="${wsdlPortBinding}"
-		frontsideProtocol="${frontside.Protocol}"
-		frontsideHandler="${frontside.Handler}"
+		frontsideProtocol="${frontsideProtocol}"
+		frontsideHandler="${frontsideHandler}"
 		frontsideUri="${endpointUri}"
-		backsideProtocol="${backside.Protocol}"
-		backsideHost="${backside.Host}"
-		backsidePort="${backside.Port}"
+		backsideProtocol="${backsideProtocol}"
+		backsideHost="${backsideHost}"
+		backsidePort="${backsidePort}"
 		backsideUri="${endpointUri}"/>
 	<@WSGateway
 		name="${name}"
 		version="${version}"
-		sslProxy="${backside.Host}_SSLProxy"
+		sslProxy="${backsideHost}_SSLProxyProfile"
 		wsdlName="${wsdlName}"
 		rewritePolicy="${name}"
 		stylePolicy="${policy}"/>

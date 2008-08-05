@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.zip.ZipOutputStream;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.DirectoryWalker;
+import org.apache.commons.io.filefilter.FileFilterUtils;
 
 public class DPFileUtils {
 	
@@ -34,10 +36,41 @@ public class DPFileUtils {
 	}
 	private static abstract class RecursiveLister extends DirectoryWalker {
 	
-		public List<File> list(File dir) throws IOException {
+		public List<File> list(File root) throws IOException {
 			List<File> list = DPCollectionUtils.newArrayList();
-			walk(dir, list);
+			walk(root, list);
 			return list;
+		}
+	}
+	
+	private static class DirectoryFinder extends DirectoryWalker {
+		private final String directoryName;
+		public DirectoryFinder(final String directoryName) {
+			//super(FileFilterUtils.nameFileFilter(directoryName),-1);
+			this.directoryName = directoryName;
+//			super(new FileFilter() {
+//
+//				public boolean accept(File pathname) {
+//					return pathname.isDirectory() && pathname.getName().equals(directoryName);
+//				}				
+//			}, FileFilterUtils.falseFileFilter(),-1);
+		}
+		@Override
+		protected boolean handleDirectory(File directory, int depth, Collection results) {
+			if (directory.getName().equals(directoryName)) {
+				System.out.println("DirectoryFinder.handleDirectory(), dir = " + directory);
+				results.add(directory);
+				return false;
+			}
+			return true;
+		}
+		
+		public File getDirectory(File root) throws IOException {
+			List<File> list = DPCollectionUtils.newArrayList();
+			walk(root, list);
+			if (list.isEmpty())
+				throw new IllegalArgumentException("The File specified as root is not a directory");
+			return list.get(0);
 		}
 	}
 
@@ -47,7 +80,7 @@ public class DPFileUtils {
 	public static File getRelativePath(File file, File relativeTo) {
 		//return new File(DPFilenameUtils.getRelativePath(file.getPath(), relativeTo.getPath()));
 		if (!relativeTo.isDirectory())
-			throw new IllegalArgumentException("the File specified as relativeTo is not a directory");
+			throw new IllegalArgumentException("The File specified as relativeTo is not a directory");
 		String fileAbsPath = file.getAbsolutePath();
 		String relativeToAbsPath = relativeTo.getAbsolutePath();
 		return new File(fileAbsPath.substring(relativeToAbsPath.length()+1));
@@ -134,18 +167,19 @@ public class DPFileUtils {
 		return new String(Base64.encodeBase64(buf));
 	}
 	
-	public static File findDirectory(File rootDir, String dirToFind) {
+	public static File findDirectory(File rootDir, String dirToFind) throws IOException {
 		if(!rootDir.isDirectory())
 			throw new IllegalArgumentException("Specified path is not a directory");
-		File[] children = rootDir.listFiles();
-		for (File child : children) {
-			if (child.isDirectory() && child.getName().equals(dirToFind))
-				return child;
-		}
-		for (File child : children) {
-			if (child.isDirectory())
-				return findDirectory(rootDir, dirToFind);
-		}
-		throw new IllegalArgumentException("Specified directory tree does not contain a '" + dirToFind + "' directory");
+//		File[] children = rootDir.listFiles();
+//		for (File child : children) {
+//			if (child.isDirectory() && child.getName().equals(dirToFind))
+//				return child;
+//		}
+//		for (File child : children) {
+//			if (child.isDirectory())
+//				return findDirectory(rootDir, dirToFind);
+//		}
+//		throw new IllegalArgumentException("Specified directory tree does not contain a '" + dirToFind + "' directory");
+		return new DirectoryFinder("wsdl").getDirectory(rootDir);
 	}
 }
