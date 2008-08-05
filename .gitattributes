@@ -1340,7 +1340,6 @@ dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/Deploym
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSDLFileTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSProxyTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/templates/freemarker/FreemarkerConfigBuilderTester.java -text
-dev/datapower/datapower-utils/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 dev/datapower/datapower-utils/pom.xml -text
 dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/DPCollectionUtils.java -text
 dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/DPFileUtils.java -text
@@ -1367,12 +1366,6 @@ dev/datapower/datapower-utils/src/test/resources/files/b/1/file3.txt -text svneo
 dev/datapower/datapower-utils/src/test/resources/files/b/1/file4.txt -text svneol=unset#text/plain
 dev/datapower/datapower-utils/src/test/resources/files/b/2/file5.txt -text svneol=unset#text/plain
 dev/datapower/datapower-utils/src/test/resources/files/c/file6.txt -text
-dev/datapower/datapower-utils/target/surefire-reports/TEST-no.nav.datapower.util.DPFileUtilsTest.xml -text svneol=unset#text/plain
-dev/datapower/datapower-utils/target/surefire-reports/TEST-no.nav.datapower.util.DPPropertiesUtilsTest.xml -text svneol=unset#text/plain
-dev/datapower/datapower-utils/target/surefire-reports/TEST-no.nav.datapower.util.PropertiesValidatorTest.xml -text svneol=unset#text/plain
-dev/datapower/datapower-utils/target/surefire-reports/no.nav.datapower.util.DPFileUtilsTest.txt -text svneol=unset#text/plain
-dev/datapower/datapower-utils/target/surefire-reports/no.nav.datapower.util.DPPropertiesUtilsTest.txt -text svneol=unset#text/plain
-dev/datapower/datapower-utils/target/surefire-reports/no.nav.datapower.util.PropertiesValidatorTest.txt -text svneol=unset#text/plain
 dev/datapower/datapower-xml-mgmt/pom.xml -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DeviceFileStore.java -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/ImportFormat.java -text
