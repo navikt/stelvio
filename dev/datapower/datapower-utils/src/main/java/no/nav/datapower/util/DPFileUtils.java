@@ -4,9 +4,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -14,7 +14,8 @@ import java.util.zip.ZipOutputStream;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.DirectoryWalker;
-import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 
 public class DPFileUtils {
 	
@@ -58,7 +59,7 @@ public class DPFileUtils {
 		@Override
 		protected boolean handleDirectory(File directory, int depth, Collection results) {
 			if (directory.getName().equals(directoryName)) {
-				System.out.println("DirectoryFinder.handleDirectory(), dir = " + directory);
+//				System.out.println("DirectoryFinder.handleDirectory(), dir = " + directory);
 				results.add(directory);
 				return false;
 			}
@@ -76,6 +77,25 @@ public class DPFileUtils {
 
 	
 	private DPFileUtils() {}
+
+	public static <T> File getResource(Class<T> clazz, String resource) {
+		return FileUtils.toFile(clazz.getResource(resource));
+	}
+	
+	public static List<File> createSubDirectories(File rootDir, String... dirs) {
+		List<File> subDirs = DPCollectionUtils.newArrayList();
+		rootDir.mkdirs();
+		for (String dir : dirs) {
+			File subDir = append(rootDir, dir);
+			subDir.mkdir();
+			subDirs.add(subDir);
+		}
+		return subDirs;
+	}
+	
+	public static File append(File directory, String path) {
+		return new File(directory.getAbsolutePath() + File.separator + path);
+	}
 	
 	public static File getRelativePath(File file, File relativeTo) {
 		//return new File(DPFilenameUtils.getRelativePath(file.getPath(), relativeTo.getPath()));
@@ -180,6 +200,6 @@ public class DPFileUtils {
 //				return findDirectory(rootDir, dirToFind);
 //		}
 //		throw new IllegalArgumentException("Specified directory tree does not contain a '" + dirToFind + "' directory");
-		return new DirectoryFinder("wsdl").getDirectory(rootDir);
+		return new DirectoryFinder(dirToFind).getDirectory(rootDir);
 	}
 }

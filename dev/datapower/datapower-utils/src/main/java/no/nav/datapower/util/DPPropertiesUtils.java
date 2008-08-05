@@ -7,11 +7,6 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.collections.ExtendedProperties;
-import org.apache.commons.configuration.CompositeConfiguration;
-import org.apache.commons.configuration.Configuration;
-import org.apache.commons.configuration.ConfigurationConverter;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class DPPropertiesUtils {
 	
@@ -114,22 +109,6 @@ public class DPPropertiesUtils {
 		return nestedProps;
 		
 	}
-	
-	public static Map<String,String> validate(Properties props, Properties required) {
-		Map<String, String> invalid = DPCollectionUtils.newHashMap();
-		for (String requiredKey : keySet(required)) {
-			if (!props.containsKey(requiredKey)) {
-				invalid.put(requiredKey, "Key '" + requiredKey + "' is not present if the specified properties collection");
-			}
-			else {
-				String value = (String) props.get(requiredKey);
-				if (value.contains("${") && value.contains("}")) {
-					invalid.put(requiredKey, "Value of '" + requiredKey + "' contains unresolved variables. Please interpolate properties!");
-				}
-			}
-		}
-		return invalid;
-	}
 
 	public static ExtendedProperties convertToNestedSubsets(ExtendedProperties props, String... subsetKeys) {
 		ExtendedProperties nestedProps = new ExtendedProperties();
@@ -138,60 +117,5 @@ public class DPPropertiesUtils {
 		}
 		return nestedProps;
 		
-	}
-	
-	public static class Builder {
-		
-		protected CompositeConfiguration config;
-		protected boolean interpolate;
-		
-		public Builder() {
-			config = new CompositeConfiguration();
-			interpolate = false;
-		}
-		
-		public Builder properties(Properties props) {
-			config.addConfiguration(ConfigurationConverter.getConfiguration(props)); return this;
-		}
-		
-		public Builder properties(String propFile) {
-			Configuration cfg;
-			try {
-				cfg = new PropertiesConfiguration(propFile);
-			} catch (ConfigurationException e) {
-				throw new IllegalArgumentException(e);
-			}
-			config.addConfiguration(cfg);
-			return this;
-		}
-		
-		public Builder interpolate() {
-			this.interpolate = true;
-			return this;
-		}
-		
-		public Builder listDelimiter(char delimiter) {
-			config.setListDelimiter(delimiter);
-			return this;
-		}
-		
-		private Configuration getConfiguration() {
-//			System.out.println("interpolate = " + interpolate);
-//			if (interpolate) {
-//				System.out.println("Returning interpolated configuration");
-//				return config.interpolatedConfiguration();
-//			}
-//			System.out.println("Returning non-interpolated configuration");
-//			return config;
-			return interpolate ? config.interpolatedConfiguration() : config;
-		}
-		
-		public Properties buildProperties() {
-			return ConfigurationConverter.getProperties(getConfiguration());
-		}
-
-		public ExtendedProperties buildExtendedProperties() {
-			return ConfigurationConverter.getExtendedProperties(getConfiguration());
-		}
-	}
+	}	
 }

@@ -5,11 +5,11 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
-public class PropertiesUtilsTest extends TestCase {
+public class DPPropertiesUtilsTest extends TestCase {
 
 	private Properties props;
 
-	public PropertiesUtilsTest(String arg0) {
+	public DPPropertiesUtilsTest(String arg0) {
 		super(arg0);
 	}
 
