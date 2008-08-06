@@ -2110,20 +2110,6 @@ dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarInPlaceMojo.
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarManifestMojo.java -text
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarMojo.java -text
 dev/maven2/pom.xml -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/.compatibility -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/.j2ee -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/.project -text svneol=unset#text/plain
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/.runtime -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/.settings/org.eclipse.wst.common.component -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/META-INF/.modulemaps -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/META-INF/application.xml -text svneol=unset#text/plain
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/commons-jxpath.jar -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/config/log4j.properties.template -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/events-client.jar -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/events-messages.jar -text
-incubator/wid61-ceilogger/CEIEventConsumer/trunk/log4j-1.2.14.jar -text
 incubator/wid61-ceilogger/CEIEventConsumerEJB/.classpath -text svneol=unset#text/plain
 incubator/wid61-ceilogger/CEIEventConsumerEJB/.compatibility -text
 incubator/wid61-ceilogger/CEIEventConsumerEJB/.j2ee -text
