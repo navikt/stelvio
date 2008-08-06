@@ -4,8 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>CEIEventConsumerEJB</project>
-		<project>CBEPurger</project>
-		<project>nav-ejb-mock-java-impl</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
