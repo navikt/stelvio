@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="CEIEventConsumer">
+        <module-type module-type-id="jst.ear">
+            <version>1.4</version>
+        </module-type>
+        <wb-resource deploy-path="/" source-path="/"/>
+        <dependent-module deploy-path="/" handle="module:/resource/CEIEventConsumerEJB/CEIEventConsumerEJB">
+            <dependent-object>EjbModule_1122049553762</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CBEPurger.jar" deploy-path="/" handle="module:/resource/CBEPurger/CBEPurger">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="nav-ejb-mock-java-impl.jar" deploy-path="/" handle="module:/resource/nav-ejb-mock-java-impl/nav-ejb-mock-java-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
