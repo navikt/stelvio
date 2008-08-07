@@ -1303,9 +1303,6 @@ dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
-dev/datapower/datapower-deployer/.classpath -text svneol=unset#text/plain
-dev/datapower/datapower-deployer/.project -text svneol=unset#text/plain
-dev/datapower/datapower-deployer/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 dev/datapower/datapower-deployer/pom.xml -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/config/WSDLFile.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/Config.java -text
