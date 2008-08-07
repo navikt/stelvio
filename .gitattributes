@@ -2709,6 +2709,12 @@ int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyMapper.java -tex
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyUtil.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/Queries.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/src/main/resources/fem.properties -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClientEAR/.checkstyle -text
+int/FEMCommandLine/FEMGRAppClientEAR/.project -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.common.component -text
+int/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset#text/plain
 int/stelvio-commons-lib/.classpath -text
 int/stelvio-commons-lib/.project -text
 int/stelvio-commons-lib/.runtime -text
