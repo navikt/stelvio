@@ -66,7 +66,7 @@ public class PropertiesValidatorTest extends TestCase {
 	}
 
 	private PropertiesValidator getValidator(Properties props) {
-		return new PropertiesValidator(required, props);
+		return new PropertiesValidator(props, required);
 	}
 	public void testHasInvalidProperties() {
 		assertTrue("Missing validator should have invalid properties", missingValidator.hasInvalidProperties());

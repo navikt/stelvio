@@ -4,9 +4,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -15,7 +17,8 @@ import java.util.zip.ZipOutputStream;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.DirectoryWalker;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.apache.commons.lang.Validate;
 
 public class DPFileUtils {
 	
@@ -75,11 +78,36 @@ public class DPFileUtils {
 		}
 	}
 
-	
 	private DPFileUtils() {}
 
+
+	public static boolean containsFiles(File root) {
+		return root.listFiles((FileFilter) FileFilterUtils.fileFileFilter()).length > 0;
+	}
+
+	public static boolean containsDirectories(File root) {
+		return root.listFiles((FileFilter) FileFilterUtils.directoryFileFilter()).length > 0;
+	}
+
+	public static List<File> listFiles(File root) {
+		return Arrays.asList(root.listFiles((FileFilter) FileFilterUtils.fileFileFilter()));
+	}
+	
+	public static List<File> listDirectories(File root) {
+		return Arrays.asList(root.listFiles((FileFilter) FileFilterUtils.directoryFileFilter()));
+	}
+
+	public static void deleteFilesFromDirectory(File root) {
+		for (File file : listFiles(root)) {
+			file.delete();
+		}
+	}
+	
 	public static <T> File getResource(Class<T> clazz, String resource) {
-		return FileUtils.toFile(clazz.getResource(resource));
+		URL url = clazz.getResource(resource);
+		File file = FileUtils.toFile(url);
+		Validate.notNull(file, "The specified resource was not found");
+		return file;
 	}
 	
 	public static List<File> createSubDirectories(File rootDir, String... dirs) {

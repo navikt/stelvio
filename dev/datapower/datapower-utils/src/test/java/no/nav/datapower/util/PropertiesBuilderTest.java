@@ -28,8 +28,8 @@ public class PropertiesBuilderTest extends TestCase {
 		props3 = new Properties();
 		props3.put("prop1", "valueA");
 		props3.put("prop2", "valueB");
-		props3.put("prop3", "valueC");
-		props3.put("prop4", "${prop1}");
+		props3.put("prop3", "${prop1}");
+		props3.put("prop4", "${prop2}_${prop3}");
 	}
 
 	protected void tearDown() throws Exception {
@@ -37,23 +37,24 @@ public class PropertiesBuilderTest extends TestCase {
 	}
 
 	public void testBuildProperties() {
-		Properties props = new PropertiesBuilder().properties(props1).buildProperties();
+		Properties props = new PropertiesBuilder().putAll(props1).buildProperties();
 		assertNotNull(props);
 		assertEquals(4, props.size());
 	}
 	
 	public void testBuildOverriddenProperties() {
-		Properties props = new PropertiesBuilder().properties(props1).properties(props2).buildProperties();
+		Properties props = new PropertiesBuilder().putAll(props1).putAll(props2).buildProperties();
 		assertNotNull(props);
 		assertEquals(4, props.size());
 		assertEquals("valueE", props.get("prop4"));
 	}
 
 	public void testBuildInterpolatedProperties() {
-		Properties props = new PropertiesBuilder().properties(props3).interpolate().buildProperties();
+		Properties props = new PropertiesBuilder().putAll(props3).interpolate().buildProperties();
 		assertNotNull(props);
 		assertEquals(4, props.size());
-		assertEquals("valueA", props.get("prop4"));
+		assertEquals("valueA", props.get("prop3"));
+		assertEquals("valueB_valueA", props.get("prop4"));
 	}
 
 	public void testBuildExtendedProperties() {

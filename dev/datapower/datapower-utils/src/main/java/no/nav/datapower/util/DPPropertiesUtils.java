@@ -1,5 +1,10 @@
 package no.nav.datapower.util;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
@@ -7,8 +12,41 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.collections.ExtendedProperties;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.text.StrSubstitutor;
 
 public class DPPropertiesUtils {
+	
+	public static Properties load(String propertiesFileName) {
+		return load(new File(propertiesFileName));
+	}
+
+	public static Properties load(File propertiesFile) {
+		Properties properties = new Properties();
+		try {
+			properties.load(new FileInputStream(propertiesFile));
+			return properties;
+		} catch (FileNotFoundException e) {
+			throw new IllegalArgumentException("Specified properties file not found",e);
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Caught IOException while loading the specified properties file",e);
+		}
+	}
+	
+	public static Properties interpolateProps(Properties props) {
+		for (String key : DPPropertiesUtils.keySet(props)) {
+			String value = (String)props.get(key);
+			if (value.contains("${") && value.contains("}")) {
+				String newValue = new StrSubstitutor(props).replace(value);
+				props.put(key, newValue);
+			}
+		}
+		return props;
+	}
+	
+	public static boolean hasUnresolvedProperties(Properties props) {
+		return new PropertiesValidator(props).hasUnresolvedProperties();
+	}
 	
 	public static Set<String> keySet(Properties props) {
 		Set<String> keys = DPCollectionUtils.newHashSet();
@@ -116,6 +154,23 @@ public class DPPropertiesUtils {
 			nestedProps.put(subsetName, props.subset(subsetName));			
 		}
 		return nestedProps;
-		
-	}	
+	}
+	
+	public static String toString(Properties props) {
+		StringWriter writer = new StringWriter();
+		try {
+			IOUtils.writeLines(list(props), IOUtils.LINE_SEPARATOR, writer);
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Caught IOException while writing Properties to String", e);
+		}
+		return writer.getBuffer().toString();
+	}
+	
+	public static List<String> list(Properties props) {
+		List<String> list = DPCollectionUtils.newArrayList();
+		for (String key : keySet(props)) {
+			list.add("Property: " + key + "=" + props.get(key));
+		}
+		return list;
+	}
 }

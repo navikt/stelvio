@@ -17,7 +17,12 @@ public class PropertiesValidator {
 	Map<String, String> unresolvedPropertiesMap;
 	List<String> unknownProperties;
 	
-	public PropertiesValidator(Properties required, Properties toValidate) {
+	public PropertiesValidator(Properties toValidate) {
+		this(toValidate, null);
+	}
+	
+	
+	public PropertiesValidator(Properties toValidate, Properties required) {
 		this.required = required;
 		this.toValidate = toValidate;
 		validate(toValidate, required);
@@ -64,18 +69,23 @@ public class PropertiesValidator {
 	}
 	
 	private void validate(Properties props, Properties required) {
-		for (String requiredKey : DPPropertiesUtils.keySet(required)) {
-			if (!props.containsKey(requiredKey)) {
-				getMissingProperties().add(requiredKey);
-			}
-			else {
-				String value = (String) props.get(requiredKey);
-				if (value.contains("${") && value.contains("}")) {
-					getUnresolvedProperties().add(requiredKey);
-					getUnresolvedPropertiesMap().put(requiredKey, (String)props.get(requiredKey));
+		// Find missing properties
+		if (required != null) {
+			for (String requiredKey : DPPropertiesUtils.keySet(required)) {
+				if (!props.containsKey(requiredKey)) {
+					getMissingProperties().add(requiredKey);
 				}
 			}
 		}
+		// Find unresolved properties
+		for (String key : DPPropertiesUtils.keySet(props)) {
+			String value = (String) props.get(key);
+			if (value.contains("${") && value.contains("}")) {
+				getUnresolvedProperties().add(key);
+				getUnresolvedPropertiesMap().put(key, value);
+			}
+		}		
+		// Find unknown properties
 		for (String key : DPPropertiesUtils.keySet(props)) {
 			if (!required.containsKey(key)) {
 				getUnknownProperties().add(key);
@@ -87,15 +97,15 @@ public class PropertiesValidator {
 		StringWriter writer = new StringWriter();
 		try {
 			if (hasMissingProperties()) {
-				IOUtils.write("Missing Properties:", writer);
+				IOUtils.write("Missing Properties:" + IOUtils.LINE_SEPARATOR, writer);
 				IOUtils.writeLines(getMissingProperties(), IOUtils.LINE_SEPARATOR, writer);
 			}
 			if (hasUnknownProperties()) {
-				IOUtils.write("Unkown Properties:", writer);
+				IOUtils.write("Unkown Properties:" + IOUtils.LINE_SEPARATOR, writer);
 				IOUtils.writeLines(getUnknownProperties(), IOUtils.LINE_SEPARATOR, writer);
 			}
 			if (hasUnresolvedProperties()) {
-				IOUtils.write("Unresolved Properties values:", writer);
+				IOUtils.write("Unresolved Properties values:"  + IOUtils.LINE_SEPARATOR, writer);
 				IOUtils.writeLines(getUnresolvedProperties(), IOUtils.LINE_SEPARATOR, writer);
 			}
 		} catch (IOException e) {
