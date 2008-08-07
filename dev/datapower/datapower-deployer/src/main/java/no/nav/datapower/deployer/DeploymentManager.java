@@ -7,7 +7,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import no.nav.datapower.templates.freemarker.FreemarkerConfigBuilder;
+import no.nav.datapower.config.WSDLFile;
+import no.nav.datapower.templates.freemarker.ConfigBuilder;
 import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.xmlmgmt.DeviceFileStore;
@@ -45,8 +46,12 @@ public class DeploymentManager {
 		return session;
 	}
 
-	public FreemarkerConfigBuilder getConfigBuilder() {
-		return new FreemarkerConfigBuilder(new File("E:/Develop/ws-datapower-tools/datapower-deployer/src/main/resources"));
+//	public FreemarkerConfigBuilder getConfigBuilder() {
+//		return new FreemarkerConfigBuilder(new File("E:/Develop/ws-datapower-tools/datapower-deployer/src/main/resources"));
+//	}
+
+	public ConfigBuilder getConfigBuilder(String templateName) {
+		return ConfigBuilder.FACTORY.newConfigBuilder(templateName);
 	}
 
 	public void importFilesFromDirectory(String domain, File importDirectory) {
@@ -57,12 +62,13 @@ public class DeploymentManager {
 			try {
 				DeviceFileStore childLocation = DeviceFileStore.fromString(child.getName());
 				DeviceFileStore location = childLocation != null ? childLocation : DeviceFileStore.LOCAL;
-				if (location == DeviceFileStore.LOCAL)
+				if (location == DeviceFileStore.LOCAL) {
+					DPFileUtils.deleteFilesFromDirectory(child); // make sure local directory only contains subsirectories and no immediate files
 					getXMLMgmtSession(domain).createDirs(child, DeviceFileStore.LOCAL);
+				}
 				getXMLMgmtSession(domain).importFiles(child, location);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new IllegalStateException(e);
 			}
 		}
 	}
@@ -72,8 +78,7 @@ public class DeploymentManager {
 			try {
 				getXMLMgmtSession(domain).removeDirs(DeviceFileStore.LOCAL, "wsdl", "aaa", "ltpa", "xslt");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new IllegalStateException(e);
 			}
 		}
 		importFilesFromDirectory(domain, importDirectory);
@@ -83,26 +88,26 @@ public class DeploymentManager {
 		StringWriter writer = new StringWriter();
 //		OutputStreamWriter writer = new OutputStreamWriter(System.out);
 		try {
-			getConfigBuilder().buildConfig(configTemplate, properties, getWsdlFiles(wsdlDirectory), writer);
+			List<WSDLFile> wsdlFiles = getWsdlFiles(wsdlDirectory);
+			properties.put("wsdls", wsdlFiles);
+			getConfigBuilder(configTemplate).build(properties, writer);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new IllegalStateException(e);
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new IllegalStateException(e);
 		}
 		System.out.println("Configuration = " + writer.getBuffer().toString());
 		byte[] base64Config = Base64.encodeBase64(writer.getBuffer().toString().getBytes());
 		getXMLMgmtSession(domain).importConfig(new String(base64Config), ImportFormat.XML);
 	}
 
-	private List<File> getWsdlFiles(File directory) throws IOException {
-		List<File> wsdlFiles = DPCollectionUtils.newArrayList();
+	private List<WSDLFile> getWsdlFiles(File directory) throws IOException {
+		List<WSDLFile> wsdlFiles = DPCollectionUtils.newArrayList();
 		File wsdlDirectory = DPFileUtils.findDirectory(directory, "wsdl");
 		System.out.println("DeploymentManager.getWsdlFiles(), wsdlDirectory = " + wsdlDirectory);
 		for (File wsdlFile : wsdlDirectory.listFiles()) {
 			if (wsdlFile.isFile() && wsdlFile.getName().endsWith(".wsdl")) {
-				wsdlFiles.add(wsdlFile);
+				wsdlFiles.add(new WSDLFile(wsdlFile));
 			}
 		}
 		return wsdlFiles;
@@ -117,16 +122,12 @@ public class DeploymentManager {
 				System.out.println("Creating domain '" + domain + "'");
 				getXMLMgmtSession(domain).createDomain(domain);
 			}
-			//getXMLMgmtSession(domain).createDirs(wsdlDirectory, DeviceFileStore.LOCAL);	
-			//getXMLMgmtSession(domain).importFiles(wsdlDirectory, DeviceFileStore.LOCAL);
 			importFilesFromDirectory(domain, importDirectory);
 			File wsdlDirectory = DPFileUtils.findDirectory(importDirectory, "wsdl");
-			System.out.println("DeploymentManager.importFilesAndDeployCOnfiguration(), wsdlDirectory = " + wsdlDirectory);
 			deployConfiguration(domain, configTemplate, properties, wsdlDirectory);
 			getXMLMgmtSession(domain).saveConfigAndRestartDomain();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new IllegalStateException(e);
 		}
 	}
 }

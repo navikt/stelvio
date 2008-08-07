@@ -1303,12 +1303,17 @@ dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
+dev/datapower/datapower-deployer/.classpath -text svneol=unset#text/plain
+dev/datapower/datapower-deployer/.project -text svneol=unset#text/plain
+dev/datapower/datapower-deployer/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 dev/datapower/datapower-deployer/pom.xml -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/config/WSDLFile.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/Config.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/deployer/DeploymentManager.java -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/AAAAction.ftl -text
+dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/AAAInfo.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/AAAPolicy.ftl -text
+dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/ConfigBuilder.java -text svneol=unset#text/plain
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/CryptoCertificate.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/CryptoIdentCred.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/CryptoKey.ftl -text
@@ -1333,9 +1338,11 @@ dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freema
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/WSProxyStaticBackend.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/datapower-config.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/datapower-crypto.ftl -text
-dev/datapower/datapower-deployer/src/main/resources/cfg-secgw-u1.properties -text
-dev/datapower/datapower-deployer/src/main/resources/cfg-secgw-utv.properties -text
-dev/datapower/datapower-deployer/src/main/resources/secgw-configuration.ftl -text
+dev/datapower/datapower-deployer/src/main/resources/properties/cfg-secgw-required.properties -text svneol=unset#text/plain
+dev/datapower/datapower-deployer/src/main/resources/properties/cfg-secgw-u1.properties -text svneol=unset#text/plain
+dev/datapower/datapower-deployer/src/main/resources/properties/cfg-secgw-utv.properties -text svneol=unset#text/plain
+dev/datapower/datapower-deployer/src/main/resources/templates/aaa-mapping-file.ftl -text
+dev/datapower/datapower-deployer/src/main/resources/templates/secgw-configuration.ftl -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/DeploymentManagerTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSDLFileTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSProxyTester.java -text

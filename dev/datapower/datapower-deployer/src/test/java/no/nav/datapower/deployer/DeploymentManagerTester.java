@@ -1,80 +1,104 @@
 package no.nav.datapower.deployer;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Map;
+import java.net.URL;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.Validate;
+
+import no.nav.datapower.templates.freemarker.ConfigBuilder;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
-
-import org.apache.commons.io.FilenameUtils;
-
+import no.nav.datapower.util.PropertiesBuilder;
+import no.nav.datapower.util.PropertiesValidator;
 import freemarker.template.TemplateException;
 
 public class DeploymentManagerTester {
 
+	private File wsdlArchive;
+	private File outputDirectory;
+	private File importDirectory;
+	private File dpLocalDirectory;
+	private File dpLocalAaaDirectory;
+	private File dpLocalWsdlDirectory;
+	private File dpLocalXsltDirectory;
+	private Properties requiredProperties;
+	private Properties envProperties;
+	
+	public DeploymentManagerTester() {
+		// Set up parameters for Test
+		this.wsdlArchive 			= new File("E:\\Develop\\wsdl\\wsdl-pselv-kjempen.zip");
+		this.outputDirectory 		= new File("E:\\Develop\\wsdl\\tmp\\");
+		this.importDirectory 		= new File("E:\\Develop\\wsdl\\pselv-kjempen\\");
+		this.dpLocalDirectory 		= DPFileUtils.append(importDirectory, "local");
+		this.dpLocalAaaDirectory 	= DPFileUtils.append(dpLocalDirectory, "aaa");
+		this.dpLocalWsdlDirectory 	= DPFileUtils.append(dpLocalDirectory, "wsdl");
+		this.dpLocalXsltDirectory 	= DPFileUtils.append(dpLocalDirectory, "xslt");
+		this.requiredProperties = DPPropertiesUtils.load(getResource("/properties/cfg-secgw-required.properties"));
+
+		// Build environment properties
+		envProperties = new PropertiesBuilder().
+								loadAndPutAll(getResource("/properties/cfg-secgw-utv.properties")).
+								loadAndPutAll(getResource("/properties/cfg-secgw-u1.properties")).
+								interpolate().
+								buildProperties();
+		System.out.println("Properties:");
+		envProperties.list(System.out);
+		
+		// Validate environment properties
+		PropertiesValidator validator = new PropertiesValidator(requiredProperties, envProperties);
+		if (validator.hasInvalidProperties()) {
+			throw new IllegalArgumentException("Configuration contains invalid Properties:\r\n" + validator.getErrorMessage());
+			//DPCollectionUtils.printLines(invalidProperties.values(), System.err, "ERROR: Invalid Property: ");
+		}
+		
+		// Extract wsdl archives
+		try {
+			DPFileUtils.extractArchive(wsdlArchive, dpLocalDirectory);
+		} catch (IOException e1) {
+			throw new IllegalStateException("Caught IOException while extracting WSDL archive");
+		}
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		File wsdlArchive = new File("E:\\Develop\\wsdl\\wsdl-pselv-kjempen.zip");
-		File outputDirectory = new File("E:\\Develop\\wsdl\\tmp\\");
-		File importDirectory = new File("E:\\Develop\\wsdl\\pselv-kjempen\\");
-		File dpLocalDirectory = new File(importDirectory.getAbsolutePath() + "\\local\\");
-		File dpLocalAaaDirectory = new File(dpLocalDirectory.getAbsolutePath() + "\\aaa\\");
-		File dpLocalWsdlDirectory = new File(dpLocalDirectory.getAbsolutePath() + "\\wsdl\\");
-		File dpLocalXsltDirectory = new File(dpLocalDirectory.getAbsolutePath() + "\\xslt\\");
-		Properties requiredProperties = new Properties();
-//		File wsdlDirectory = new File(outputDirectory.getAbsolutePath() + "\\" + new Date().getTime());
-		try {
-			//deviceProps.load(new FileInputStream(new File("")));
-			//envProps.load(new FileInputStream(new File("")));
-			requiredProperties.load(new FileInputStream("E:\\Develop\\ws-datapower-tools\\datapower-deployer\\src\\main\\resources\\cfg-secgw-required.properties"));
-			System.out.println("Extracting ZIP archive to directory '" + dpLocalWsdlDirectory + "'");
-			DPFileUtils.extractArchive(wsdlArchive, dpLocalDirectory);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		Properties props = new DPPropertiesUtils.Builder().add("cfg-secgw-utv.properties").add("cfg-secgw-u1.properties").listDelimiter(',').interpolate(true).buildProperties();				
-		Properties props = new DPPropertiesUtils.Builder().
-								properties("cfg-secgw-utv.properties").
-								properties("cfg-secgw-u1.properties").
-								interpolate().
-								buildProperties();
-		System.out.println("Properties:");
-		props.list(System.out);
+		File resource = getResource(Thread.currentThread().getContextClassLoader(), "templates/aaa-mapping-file.ftl");
+		System.out.println("Resource = " + resource);
 		
-		Map<String, String> invalidProperties = DPPropertiesUtils.validate(props, requiredProperties);
-		if (!invalidProperties.isEmpty()) {
-			throw new IllegalArgumentException("Configuration contains invalid Properties:\r\n" + invalidProperties.values());
-			//DPCollectionUtils.printLines(invalidProperties.values(), System.err, "ERROR: Invalid Property: ");
-		}
+		DeploymentManagerTester tester = new DeploymentManagerTester();
+		tester.testImportFilesAndDeployConfiguration();
 		
+	}
+	
+	private void testImportFilesAndDeployConfiguration() {
 		DeploymentManager deployer = new DeploymentManager("https://secgw-01.utv.internsone.local:5550", "mavendeployer", "Test1234");
 		try {
-			String aaaMappingFilename = FilenameUtils.concat(dpLocalAaaDirectory.getAbsolutePath(), (String) props.getProperty("aaaFileName"));
-			System.out.println("AAAInfo file = " + aaaMappingFilename);
-			File aaaMappingFile = new File(aaaMappingFilename);
+			File aaaMappingFile = DPFileUtils.append(dpLocalAaaDirectory, (String) envProperties.getProperty("aaaFileName"));
 			FileWriter aaaWriter = new FileWriter(aaaMappingFile);
-			deployer.getConfigBuilder().buildAAAInfoFile("aaa-mapping-file.ftl", props, aaaWriter);
+			ConfigBuilder aaaBuilder = ConfigBuilder.FACTORY.newConfigBuilder("/templates/aaa-mapping-file.ftl");
+			aaaBuilder.build(envProperties, aaaWriter);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new IllegalStateException("Caught IOException while building AAAInfo file", e);
 		} catch (TemplateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new IllegalStateException("Template processing failed for AAAInfo file", e);
 		}
-		deployer.importFilesAndDeployConfiguration("secgw-configuration.ftl", props, importDirectory, true);
-//		deployer.importFilesAndDeployConfiguration("secgw-configuration.ftl", cfg, wsdlDirectory, true);
-//		deployer.importFilesFromDirectory("test-config", importDirectory, true);
-//		deployer.deployConfiguration("secgw-configuration.ftl", cfg, wsdlDirectory);
+		deployer.importFilesAndDeployConfiguration("secgw-configuration.ftl", envProperties, importDirectory, true);		
+	}
+	
+	private File getResource(String resource) {
+		return DPFileUtils.getResource(DeploymentManagerTester.class.getClass(), resource);
+	}
+	
+	private static File getResource(ClassLoader clazzLoader, String resource) {
+		URL resourceUrl = clazzLoader.getResource(resource);
+		File file = FileUtils.toFile(resourceUrl);
+		Validate.notNull(file, "Resource '" + resource + "'not found using ClassLoader '" + clazzLoader.toString() +"'");
+		return file;
 	}
 }

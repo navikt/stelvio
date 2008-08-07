@@ -1,7 +1,5 @@
 package no.nav.datapower.templates.freemarker;
 
-import org.apache.commons.configuration.ConfigurationException;
-
 public class FreemarkerConfigBuilderTester {
 
 	/**
