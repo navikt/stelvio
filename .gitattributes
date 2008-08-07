@@ -2686,6 +2686,29 @@ int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/services/org.apache.commons
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/CEIConsumerMDBBean.java -text
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventData.java -text
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventDataConstant.java -text
+int/FEMCommandLine/FEMGRAppClient/.checkstyle -text
+int/FEMCommandLine/FEMGRAppClient/.classpath -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/.compatibility -text
+int/FEMCommandLine/FEMGRAppClient/.j2ee -text
+int/FEMCommandLine/FEMGRAppClient/.project -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/.runtime -text
+int/FEMCommandLine/FEMGRAppClient/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/.settings/org.eclipse.jdt.ui.prefs -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/.settings/org.eclipse.wst.common.component -text
+int/FEMCommandLine/FEMGRAppClient/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/EventClient.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/EventFileWriter.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/META-INF/application-client.xml -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/Main.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/SDOFormatter.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/Constants.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyMapper.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyUtil.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/Queries.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/src/main/resources/fem.properties -text svneol=unset#text/plain
 int/stelvio-commons-lib/.classpath -text
 int/stelvio-commons-lib/.project -text
 int/stelvio-commons-lib/.runtime -text
