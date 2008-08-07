@@ -31,7 +31,6 @@
 			</plugin>
 		</plugins>
 	</build>
-<!--
 	<distributionManagement>
 		<repository>
 			<id>nav-maven2-internal-repo</id>
@@ -43,10 +42,5 @@
 			<name>NAV Maven2 Internal Snapshot Repository</name>
 			<url>scp://maven.adeo.no/var/maven2/snapshot</url>
 		</snapshotRepository>
-		<site>
-			<id>website</id>
-			<url>scp://10.33.1.53/var/www/html/project/maven/plugins/configfixer/</url>
-		</site>
 	</distributionManagement>
--->
 </project>
