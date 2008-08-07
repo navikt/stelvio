@@ -51,7 +51,7 @@ public class DeploymentManager {
 //	}
 
 	public ConfigBuilder getConfigBuilder(String templateName) {
-		return ConfigBuilder.FACTORY.newConfigBuilder(templateName);
+		return new ConfigBuilder.Factory().newConfigBuilder(templateName);
 	}
 
 	public void importFilesFromDirectory(String domain, File importDirectory) {

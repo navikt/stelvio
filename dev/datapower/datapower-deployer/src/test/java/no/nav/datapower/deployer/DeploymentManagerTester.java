@@ -6,15 +6,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.Validate;
-
 import no.nav.datapower.templates.freemarker.ConfigBuilder;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
 import no.nav.datapower.util.PropertiesBuilder;
 import no.nav.datapower.util.PropertiesValidator;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.Validate;
+
 import freemarker.template.TemplateException;
 
 public class DeploymentManagerTester {
@@ -28,8 +28,12 @@ public class DeploymentManagerTester {
 	private File dpLocalXsltDirectory;
 	private Properties requiredProperties;
 	private Properties envProperties;
+
+	private DeploymentManager deployer;
 	
 	public DeploymentManagerTester() {
+		deployer = new DeploymentManager("https://secgw-01.utv.internsone.local:5550", "mavendeployer", "Test1234");
+	
 		// Set up parameters for Test
 		this.wsdlArchive 			= new File("E:\\Develop\\wsdl\\wsdl-pselv-kjempen.zip");
 		this.outputDirectory 		= new File("E:\\Develop\\wsdl\\tmp\\");
@@ -38,12 +42,14 @@ public class DeploymentManagerTester {
 		this.dpLocalAaaDirectory 	= DPFileUtils.append(dpLocalDirectory, "aaa");
 		this.dpLocalWsdlDirectory 	= DPFileUtils.append(dpLocalDirectory, "wsdl");
 		this.dpLocalXsltDirectory 	= DPFileUtils.append(dpLocalDirectory, "xslt");
-		this.requiredProperties = DPPropertiesUtils.load(getResource("/properties/cfg-secgw-required.properties"));
-
+//		this.requiredProperties = DPPropertiesUtils.load(DPFileUtils.getResource(deployer.getClass(),"cfg-secgw-required.properties"));
+		this.requiredProperties = DPPropertiesUtils.load(getResource(Thread.currentThread().getContextClassLoader(), "cfg-secgw-required.properties"));
+		
+		
 		// Build environment properties
 		envProperties = new PropertiesBuilder().
-								loadAndPutAll(getResource("/properties/cfg-secgw-utv.properties")).
-								loadAndPutAll(getResource("/properties/cfg-secgw-u1.properties")).
+								loadAndPutAll(DPFileUtils.getResource(this.getClass(), "cfg-secgw-utv.properties")).
+								loadAndPutAll(getResource("cfg-secgw-u1.properties")).
 								interpolate().
 								buildProperties();
 		System.out.println("Properties:");
@@ -68,8 +74,8 @@ public class DeploymentManagerTester {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		File resource = getResource(Thread.currentThread().getContextClassLoader(), "templates/aaa-mapping-file.ftl");
-		System.out.println("Resource = " + resource);
+//		File resource = getResource(Thread.currentThread().getContextClassLoader(), "aaa-mapping-file.ftl");
+//		System.out.println("Resource = " + resource);
 		
 		DeploymentManagerTester tester = new DeploymentManagerTester();
 		tester.testImportFilesAndDeployConfiguration();
@@ -77,11 +83,12 @@ public class DeploymentManagerTester {
 	}
 	
 	private void testImportFilesAndDeployConfiguration() {
-		DeploymentManager deployer = new DeploymentManager("https://secgw-01.utv.internsone.local:5550", "mavendeployer", "Test1234");
 		try {
 			File aaaMappingFile = DPFileUtils.append(dpLocalAaaDirectory, (String) envProperties.getProperty("aaaFileName"));
 			FileWriter aaaWriter = new FileWriter(aaaMappingFile);
-			ConfigBuilder aaaBuilder = ConfigBuilder.FACTORY.newConfigBuilder("/templates/aaa-mapping-file.ftl");
+			File resources = getResource("/");
+			System.out.println("Resources = " + resources);
+			ConfigBuilder aaaBuilder = new ConfigBuilder.Factory().newConfigBuilder("aaa-mapping-file.ftl");
 			aaaBuilder.build(envProperties, aaaWriter);
 		} catch (IOException e) {
 			throw new IllegalStateException("Caught IOException while building AAAInfo file", e);
@@ -92,13 +99,14 @@ public class DeploymentManagerTester {
 	}
 	
 	private File getResource(String resource) {
-		return DPFileUtils.getResource(DeploymentManagerTester.class.getClass(), resource);
+		return DPFileUtils.getResource(DeploymentManager.class.getClass(), resource);
 	}
 	
 	private static File getResource(ClassLoader clazzLoader, String resource) {
 		URL resourceUrl = clazzLoader.getResource(resource);
 		File file = FileUtils.toFile(resourceUrl);
-		Validate.notNull(file, "Resource '" + resource + "'not found using ClassLoader '" + clazzLoader.toString() +"'");
+//		Validate.notNull(file, "Resource '" + resource + "'not found using ClassLoader '" + clazzLoader.toString() +"'");
+		Validate.notNull(file, "Resource '" + resource + "'not found in '" + clazzLoader.getResource("/") +"'");
 		return file;
 	}
 }

@@ -1338,11 +1338,11 @@ dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freema
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/WSProxyStaticBackend.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/datapower-config.ftl -text
 dev/datapower/datapower-deployer/src/main/java/no/nav/datapower/templates/freemarker/datapower-crypto.ftl -text
-dev/datapower/datapower-deployer/src/main/resources/properties/cfg-secgw-required.properties -text svneol=unset#text/plain
-dev/datapower/datapower-deployer/src/main/resources/properties/cfg-secgw-u1.properties -text svneol=unset#text/plain
-dev/datapower/datapower-deployer/src/main/resources/properties/cfg-secgw-utv.properties -text svneol=unset#text/plain
-dev/datapower/datapower-deployer/src/main/resources/templates/aaa-mapping-file.ftl -text
-dev/datapower/datapower-deployer/src/main/resources/templates/secgw-configuration.ftl -text
+dev/datapower/datapower-deployer/src/main/resources/aaa-mapping-file.ftl -text
+dev/datapower/datapower-deployer/src/main/resources/cfg-secgw-required.properties -text svneol=unset#text/plain
+dev/datapower/datapower-deployer/src/main/resources/cfg-secgw-u1.properties -text svneol=unset#text/plain
+dev/datapower/datapower-deployer/src/main/resources/cfg-secgw-utv.properties -text svneol=unset#text/plain
+dev/datapower/datapower-deployer/src/main/resources/secgw-configuration.ftl -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/DeploymentManagerTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSDLFileTester.java -text
 dev/datapower/datapower-deployer/src/test/java/no/nav/datapower/deployer/WSProxyTester.java -text
