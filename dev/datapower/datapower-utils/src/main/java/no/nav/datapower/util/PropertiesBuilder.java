@@ -12,8 +12,13 @@ public class PropertiesBuilder {
 	private Properties properties;
 	
 	public PropertiesBuilder() {
-		interpolate = false;
-		properties = new Properties();
+		this.interpolate = false;
+		this.properties = new Properties();
+	}
+
+	public PropertiesBuilder(Properties properties ) {
+		this.interpolate = false;
+		this.properties = properties;
 	}
 
 	public PropertiesBuilder put(Object key, Object value) {

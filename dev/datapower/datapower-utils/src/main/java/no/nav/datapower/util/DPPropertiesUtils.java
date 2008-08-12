@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.collections.ExtendedProperties;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.text.StrSubstitutor;
 
@@ -21,6 +24,21 @@ public class DPPropertiesUtils {
 		return load(new File(propertiesFileName));
 	}
 
+	public static Properties load(Class clazz, String propertiesPath) {
+		try {
+			InputStream stream = clazz.getResourceAsStream(propertiesPath);
+			Properties properties = new Properties();
+			properties.load(stream);
+			return properties;
+		} catch (IOException e) {
+			throw new IllegalArgumentException("Caught IOException while loading the specified properties file",e);			
+		}
+	}
+	
+	public static Properties load(URL propertiesUrl) {
+		return load(FileUtils.toFile(propertiesUrl));
+	}
+	
 	public static Properties load(File propertiesFile) {
 		Properties properties = new Properties();
 		try {

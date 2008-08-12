@@ -103,10 +103,12 @@ public class DPFileUtils {
 		}
 	}
 	
-	public static <T> File getResource(Class<T> clazz, String resource) {
+//	public static <T> File getResource(Class<T> clazz, String resource) {
+	public static File getResource(Class clazz, String resource) {
 		URL url = clazz.getResource(resource);
 		File file = FileUtils.toFile(url);
-		Validate.notNull(file, "The specified resource was not found");
+//		Validate.notNull(file, "Resource '" + resource + "' was not found using ClassLoader for class '" + clazz.getName() + "'");
+		Validate.notNull(file, "Resource '" + resource + "' was not found in '" + clazz.getResource("/") + "' using ClassLoader for class '" + clazz.getName() + "'");
 		return file;
 	}
 	
@@ -123,6 +125,12 @@ public class DPFileUtils {
 	
 	public static File append(File directory, String path) {
 		return new File(directory.getAbsolutePath() + File.separator + path);
+	}
+
+	public static File mkdirs(File directory, String path) {
+		File newDir = append(directory, path);
+		newDir.mkdirs();
+		return newDir;
 	}
 	
 	public static File getRelativePath(File file, File relativeTo) {
