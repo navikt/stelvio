@@ -17,10 +17,10 @@
 		frontsideProtocol="${frontsideProtocol}"
 		frontsideHandler="${frontsideHandler}"
 		frontsideUri="${endpointUri}"
-		backsideProtocol=""
-		backsideHost=""
-		backsidePort=""
-		backsideUri=""/>
+		backsideProtocol="https"
+		backsideHost="localhost"
+		backsidePort="1234"
+		backsideUri="/ERROR-should-be-used-with-dynamic-backends-ERROR"/>
 <#--	backsideProtocol="${backsideProtocol}"
 		backsideHost="${backsideHost}"
 		backsidePort="${backsidePort}"
