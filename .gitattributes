@@ -2758,6 +2758,34 @@ int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/services/org.apache.commons
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/CEIConsumerMDBBean.java -text
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventData.java -text
 int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventDataConstant.java -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.classpath -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.project -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/nav-cons-deploy-verifikasjon.prefs -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/org.eclipse.wst.common.component -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/VerfikasjonWSExp.export -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/VerifikasjonMock.component -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/VerifikasjonMock_component.mon -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/VerifikasjonPoJo.component -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/catchSREToFault.component -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/deploy/asbo/ASBOVerifikasjonReq.xsd -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/deploy/asbo/ASBOVerifikasjonRes.xsd -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/deploy/fault/FaultVerifikasjon.xsd -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/deploy/fault/FaultVerifikasjonGenerisk.xsd -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/deploy/inf/Verifikasjon.wsdl -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/deploy/inf/nav-cons-deploy-verifikasjon_VerfikasjonWSExp.wsdl -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/java/ErrorHelperUtil.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/java/VerifikasjonMockImpl.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/java/VerifikasjonPoJoImpl.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/java/catchSREToFaultImpl.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/sca.module -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjon/sca.modulex -text
 int/FEMCommandLine/FEMGRAppClient/.checkstyle -text
 int/FEMCommandLine/FEMGRAppClient/.classpath -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/.compatibility -text
