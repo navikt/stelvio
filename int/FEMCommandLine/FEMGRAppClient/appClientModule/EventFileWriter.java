@@ -198,10 +198,15 @@ public class EventFileWriter  {
 	 * @return fixed string
 	 */
 	private String getEscapedString(String s) {
-		String result = s.replaceAll(";", "#"); 
-		//double tegn we don't need
-		result = result.replaceAll("##", "#");
-		return result;
+		if (s != null)
+		{	
+			String result = s.replaceAll(";", "#"); 
+			//double tegn we don't need
+			result = result.replaceAll("##", "#");
+			return result;
+		}
+		else
+			return s;
 	}
 
 	/**
