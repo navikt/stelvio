@@ -2786,6 +2786,55 @@ int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/java/VerifikasjonPoJo
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/nav/no/java/catchSREToFaultImpl.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/sca.module -text
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/sca.modulex -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/.classpath -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/.project -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/.settings/org.eclipse.wst.common.component -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/ibm-web-bnd.xmi -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/ibm-web-ext.xmi -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/ibm-webservicesclient-bnd.xmi -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/ibm-webservicesclient-ext.xmi -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/lib/webserviceutils.jar -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/nav-cons-deploy-verifikasjon_VerfikasjonWSExp_mapping.xml -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/web.xml -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/wsdl/asbo/ASBOVerifikasjonReq.xsd -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/wsdl/asbo/ASBOVerifikasjonRes.xsd -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/wsdl/fault/FaultVerifikasjon.xsd -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/wsdl/fault/FaultVerifikasjonGenerisk.xsd -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/wsdl/inf/Verifikasjon.wsdl -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/WEB-INF/wsdl/inf/nav-cons-deploy-verifikasjon_VerfikasjonWSExp.wsdl -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/jsp/Input.jsp -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/jsp/Method.jsp -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/jsp/Result.jsp -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebContent/jsp/TestClient.jsp -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/WebDiagram.gph -text
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/ASBOVerifikasjonReq.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/ASBOVerifikasjonReq_Deser.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/ASBOVerifikasjonReq_Helper.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/ASBOVerifikasjonReq_Ser.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/ASBOVerifikasjonRes.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/ASBOVerifikasjonRes_Deser.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/ASBOVerifikasjonRes_Helper.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/ASBOVerifikasjonRes_Ser.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjon.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjonGenerisk.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjonGenerisk_Deser.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjonGenerisk_DeserProxy.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjonGenerisk_Helper.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjonGenerisk_Ser.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjon_Deser.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjon_DeserProxy.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjon_Helper.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/FaultVerifikasjon_Ser.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerfikasjonWSExp_VerifikasjonHttpBindingStub.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerfikasjonWSExp_VerifikasjonHttpService.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerfikasjonWSExp_VerifikasjonHttpServiceInformation.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerfikasjonWSExp_VerifikasjonHttpServiceLocator.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/Verifikasjon.java -text svneol=unset#text/plain
+int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerifikasjonProxy.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/.checkstyle -text
 int/FEMCommandLine/FEMGRAppClient/.classpath -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/.compatibility -text
