@@ -40,6 +40,8 @@ public class DPHttpUtils {
 	public static String doPostRequest(String host, String user, String password, String data, int retries) throws IOException {
 		try {
 			HttpURLConnection conn = openPostRequestConnection(host, user, password);
+//			System.out.println("Executing HTTP POST, request data: \n");
+//			System.out.println(data);
 			DPStreamUtils.writeStringToOutputStream(data, conn.getOutputStream(), true);
 			String response = getResponse(conn);
 			conn.disconnect();

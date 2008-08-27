@@ -2,6 +2,7 @@ package no.nav.datapower.util;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,6 +10,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
 
 public class DPCollectionUtils {
 
@@ -44,5 +48,54 @@ public class DPCollectionUtils {
 		for (K key : map.keySet()) {
 			out.println(key.toString() + separator + map.get(key));
 		}
+	}
+	/**
+	 *	Syntax:	
+	 *	
+	 *	{"mapEntry1Key":"mapEntry1Value","mapEntry2key":"mapEntry2Value"}
+	 *
+	 */
+	public static Map<String, String> mapFromString(String mapString) {
+		Map<String,String> map = newHashMap();
+		Validate.isTrue(mapString.startsWith("{"), "Syntax error in map string: missing enclosing start character '{'");
+		Validate.isTrue(mapString.endsWith("}"), "Syntax error in map string: missing enclosing end character '}'");
+		String[] mapEntries = StringUtils.split(trimStartEnd(mapString, "{", "}"), ',');
+		for (String entry : mapEntries) {
+			Validate.isTrue(entry.contains(":"), "Sytax error in map entry string: missing character ':'");
+			String[] keyValue = StringUtils.split(entry, ':');
+			String key = trimStartEnd(keyValue[0],"'", "'"); 
+			String value = trimStartEnd(keyValue[1],"'", "'");
+			map.put(key, value);
+		}		
+		return map;
+	}
+	
+	private static String trimStartEnd(String str, String start, String end) {
+		if (str.startsWith(start) && str.endsWith(end));
+		 	str = StringUtils.substringBetween(str, start, end);
+		 return str.trim();
+	}
+	
+	/**
+	 * Syntax:
+	 * 
+	 *	["listEntry1", "listEntry2"]
+	 *
+	 */
+	public static List<String> listFromString(String listString) {
+		List<String> list = newArrayList();
+		Validate.isTrue(listString.startsWith("["), "Syntax error in list string: missing enclosing start character '['");
+		Validate.isTrue(listString.endsWith("]"), "Syntax error in list string: missing enclosing end character ']'");
+		String[] listEntries = StringUtils.split(trimStartEnd(listString, "[", "]"), ',');
+		for (String entry : listEntries) {
+			entry = entry.trim();
+			if (entry.startsWith("'"))
+				list.add(trimStartEnd(entry, "'", "'"));
+			else if (entry.startsWith("\""))
+				list.add(trimStartEnd(entry, "\"", "\""));		
+			else
+				list.add(entry);
+		}
+		return list;
 	}
 }

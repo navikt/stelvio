@@ -26,4 +26,13 @@ public class DPStreamUtils {
 		if (closeStream)
 			output.close();
 	}
+	
+	public static void pump(InputStream in, OutputStream out) throws IOException{
+		byte[] buf = new byte[10240];
+		int len;
+		while((len=in.read(buf))>0){
+			out.write(buf,0,len);
+		}
+	}
+
 }

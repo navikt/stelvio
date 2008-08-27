@@ -6,6 +6,8 @@ import java.util.jar.JarFile;
 import java.util.jar.JarOutputStream;
 import java.util.zip.*;
 
+import org.apache.commons.io.filefilter.IOFileFilter;
+
 public class DPZipUtils {
 	
 	public static void compress(File source, File destination) throws IOException {
@@ -38,7 +40,7 @@ public class DPZipUtils {
 			}
 		}
 	}
-	
+		
 	/**
 	 * 
 	 * Zips up the source files provided and creates an archive using the given
@@ -68,6 +70,10 @@ public class DPZipUtils {
 		}
 		
 		output.close();
+		
+	}
+	
+	public static void extractExclude(File source, File dest, IOFileFilter filter) {
 		
 	}
 	
@@ -131,6 +137,13 @@ public class DPZipUtils {
 					output.close();
 			}
 		}
+	}
+	
+	public static void writeZipEntryToOutputStream(ZipFile zipFile, ZipEntry zipEntry, OutputStream outStream) throws IOException {
+		InputStream inStream = zipFile.getInputStream(zipEntry);
+		writeInputStreamToOutputStream(inStream, outStream);
+		outStream.close();
+		inStream.close();
 	}
 	
 	public static void extract2(File inputFile, File outDir) throws ZipException, IOException{

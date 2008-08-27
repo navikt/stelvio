@@ -6,18 +6,27 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.DirectoryWalker;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.apache.commons.io.filefilter.IOFileFilter;
+import org.apache.commons.io.filefilter.OrFileFilter;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.commons.lang.Validate;
 
 public class DPFileUtils {
@@ -186,7 +195,30 @@ public class DPFileUtils {
 		DPZipUtils.extract2(archive, destinationFolder);
 	}
 
-
+	public static void extractArchiveFiltered(File inputFile, File outDir, IOFileFilter filter) throws IOException {
+		System.out.println("Filter.toString = " + filter.toString());
+		outDir.mkdirs();
+		ZipFile zipFile = new ZipFile(inputFile);
+		Enumeration<? extends ZipEntry> enumeration = zipFile.entries();
+		while (enumeration.hasMoreElements()) {
+			ZipEntry zipEntry = enumeration.nextElement();
+			String zipEntryName = zipEntry.getName();
+			System.out.println("zipEntryName =: " + zipEntryName);
+			File zipFileName = new File(outDir + "/" + zipEntryName.substring(zipEntryName.indexOf('/')));
+			System.out.println("zipFileName =: " + zipFileName);
+//			if (FilenameUtils.wildcardMatch(zipEntry.getName(), "nav-cons-pen-pen-navorgenhet/*.wsdl") ||
+//					   FilenameUtils.wildcardMatch(zipEntry.getName(), "nav-cons-pen-pen-navorgenhet/*.xsd")) {
+			if (filter.accept(new File(zipEntryName))) {
+				zipFileName.getParentFile().mkdirs();
+				InputStream inputStream = zipFile.getInputStream(zipEntry);
+				OutputStream out = new FileOutputStream(zipFileName);
+				DPStreamUtils.pump(inputStream, out);
+				out.close();
+				inputStream.close();
+			}
+		}
+	}
+	
 	public static String replaceSeparator(File file, char newSeparator) {
 		return file.getPath().replace(file.separatorChar, newSeparator);
 	}
@@ -238,4 +270,10 @@ public class DPFileUtils {
 //		throw new IllegalArgumentException("Specified directory tree does not contain a '" + dirToFind + "' directory");
 		return new DirectoryFinder(dirToFind).getDirectory(rootDir);
 	}
+	
+
+	public static List<File> getFileListFiltered(File dir, FileFilter filter) {
+		return Arrays.asList(dir.listFiles(filter));
+	}
+
 }
