@@ -1416,9 +1416,13 @@ dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/DPZipUtils.jav
 dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/NestedProperties.java -text
 dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/PropertiesBuilder.java -text svneol=unset#text/plain
 dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/PropertiesValidator.java -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/ServiceConfigurationError.java -text
+dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/ServiceLoader.java -text
+dev/datapower/datapower-utils/src/main/java/no/nav/datapower/util/WildcardPathFilter.java -text
 dev/datapower/datapower-utils/src/main/resources/datapower-request.xml -text
 dev/datapower/datapower-utils/src/main/resources/environment.properties -text
 dev/datapower/datapower-utils/src/main/resources/template.xcfg -text
+dev/datapower/datapower-utils/src/test/java/no/nav/datapower/util/DPCollectionUtilsTest.java -text svneol=unset#text/plain
 dev/datapower/datapower-utils/src/test/java/no/nav/datapower/util/DPFileUtilsTest.java -text svneol=unset#text/plain
 dev/datapower/datapower-utils/src/test/java/no/nav/datapower/util/DPPropertiesUtilsTest.java -text
 dev/datapower/datapower-utils/src/test/java/no/nav/datapower/util/FileUtilsTester.java -text
