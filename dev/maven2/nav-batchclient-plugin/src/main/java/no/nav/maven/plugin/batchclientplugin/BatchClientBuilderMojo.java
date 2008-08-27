@@ -150,7 +150,7 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 			fw.write("#!/bin/bash\n");
 			fw.write("source " + outputConfigFile.getName() + "\n");
 			fw.write("\n");
-			fw.write("${JAVA_HOME}/bin/java ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p" + delimiter + "${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $1 $2\n");
+			fw.write("${JAVA_HOME}/bin/java ${SECURITY_JVM_PARAMS} ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p:${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $*\n");
 			fw.flush();
 			fw.close();
 			
@@ -173,7 +173,7 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 			fw.write("#!/bin/bash\n");
 			fw.write("source " + outputConfigFile.getName() + "\n");
 			fw.write("\n");
-			fw.write("${JAVA_HOME}/bin/java ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p" + delimiter + "${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $1 $2 stop\n");
+			fw.write("${JAVA_HOME}/bin/java ${SECURITY_JVM_PARAMS} ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p:${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $* stop\n");
 			fw.flush();
 			fw.close();
 			
@@ -185,7 +185,7 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 	
 	private String getAddtionalBootString(){
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(":");
+		buffer.append(delimiter);
 		  if(dependencies != null)
           {
               for(Iterator i = dependencies.iterator(); i.hasNext();)
@@ -195,7 +195,7 @@ public class BatchClientBuilderMojo extends AbstractMojo {
                   Artifact artifact = ProjectUtil.getArtifact(project, artifactItem.getGroupId(), artifactItem.getArtifactId());
                   if(artifact != null)
                   {
-                	  buffer.append(clientClasspathPrefix + artifact.getArtifactId() + "-" + artifact.getVersion() + "." + artifact.getType() + ":");
+                	  buffer.append(clientClasspathPrefix + artifact.getArtifactId() + "-" + artifact.getVersion() + "." + artifact.getType() + delimiter);
                   	} else
                   {
                   		
@@ -221,6 +221,7 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 			fw.write("#!/bin/bash\n");
 			fw.write("\n");
 			fw.write("WAS_HOME=" + wasHome + "\n");
+			fw.write("PROFILE_PROPS=\"${WAS_HOME}/profiles/AppSrv01/properties\"\n");
 			fw.write("JAVA_JRE=\"${WAS_HOME}/java/jre\"\n");
 			fw.write("JAVA_JDK=\"${WAS_HOME}/java\"\n");
 			fw.write("\n");
@@ -241,7 +242,48 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 			fw.write("echo \"JAVA_HOME: ${JAVA_HOME}\"\n");
 			fw.write("echo \"WAS_EXT_DIRS: ${WAS_EXT_DIRS}\"\n");
 			fw.write("echo \"WAS_BOOTCLASSPATH: ${WAS_BOOTCLASSPATH}\"\n");
-			fw.write("echo \"APP_CLASSPATH: ${APP_CLASSPATH}\"\n");
+			fw.write("\n");
+			fw.write("#######################\n");
+			fw.write("# SECURITY PARAMETERS #\n");
+			fw.write("#######################\n");
+			fw.write("CLIENTSAS=\"-Dcom.ibm.CORBA.ConfigURL=file${PROFILE_PROPS}/sas.client.props\"\n");
+			fw.write("CORBA_LOGIN_SOURCE=\"-Dcom.ibm.CORBA.loginSource=properties\"\n");
+			fw.write("CLIENTSSL=\"-Dcom.ibm.SSL.ConfigURL=file:${PROFILE_PROPS}/ssl.client.props\"\n");
+			fw.write("JAASSOAP=\"-Djava.security.auth.login.config=file:${PROFILE_PROPS}/wsjaas_client.conf\"\n");
+			fw.write("SSL_LIB=\"${JAVA_JRE}/lib/ext\"\n");
+			fw.write("WAS_EXT_DIRS=\"${WAS_EXT_DIRS}" + delimiter + "${SSL_LIB}\"\n");
+			fw.write("\n");
+			fw.write("counter=0\n");
+			fw.write("userNameArg=\"\"\n");
+			fw.write("args=(\"$@\")\n");
+			fw.write("\n");
+			fw.write("for arg in $*;\n");
+			fw.write("do\n");
+			fw.write("\n");
+			fw.write("if [ \"$arg\" = \"-username\" ]\n");	
+			fw.write("then\n");	
+			fw.write("userNameArg=${args[$counter + 1]}\n");	
+			fw.write("fi\n");	
+			fw.write("if [ \"$arg\" = \"-password\" ]\n");	
+			fw.write("then\n");
+			fw.write("pwdArg=${args[$counter + 1]}\n");	
+			fw.write("fi\n");	
+			fw.write("((counter++))\n");	
+			fw.write("done\n");	
+			fw.write("\n");	
+			fw.write("if [ \"$userNameArg\" = \"\" ]\n");	
+			fw.write("then\n");	
+			fw.write("echo \"WARNING: No username or password supplied. Invocation will not succeed if security is enabled on the target server.\"\n");	
+			fw.write("echo \"Security options: -username <username> -password <password>\"\n");	
+			fw.write("else\n");	
+			fw.write("echo \"Starting script with user: $userNameArg\"\n");	
+			fw.write("fi\n");
+			fw.write("\n");
+			fw.write("CORBA_USERNAME=\"-Dcom.ibm.CORBA.loginUserid=${userNameArg}\"\n");
+			fw.write("CORBA_PWD=\"-Dcom.ibm.CORBA.loginPassword=${pwdArg}\"\n");
+			fw.write("\n");
+			fw.write("SECURITY_JVM_PARAMS=\"${JAASSOAP} ${CLIENTSSL} ${CLIENTSAS} ${CORBA_USERNAME} ${CORBA_PWD} ${CORBA_LOGIN_SOURCE}\"\n");
+			
 			
 		
 			fw.flush();
