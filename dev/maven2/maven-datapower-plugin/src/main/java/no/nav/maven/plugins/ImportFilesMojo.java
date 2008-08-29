@@ -1,5 +1,12 @@
 package no.nav.maven.plugins;
 
+import java.io.File;
+import java.io.FileFilter;
+
+import no.nav.datapower.xmlmgmt.DeviceFileStore;
+import no.nav.datapower.xmlmgmt.XMLMgmtException;
+
+import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
@@ -9,10 +16,29 @@ import org.apache.maven.plugin.MojoFailureException;
  * @goal importFiles
  * 
  */
-public class ImportFilesMojo extends AbstractDataPowerMojo {
+public class ImportFilesMojo extends AbstractDeviceMgmtMojo {
 
-	public void execute() throws MojoExecutionException, MojoFailureException {
-		// TODO Auto-generated method stub
-		getLog().info("Executing ImportFilesMojo, domain = " + getDomain());
+	/**
+	 * @parameter expression="${importDir}" alias="importDir"
+	 */
+	private File importDirectory;
+
+	protected void doExecute() throws MojoExecutionException, MojoFailureException {
+		if (!importDirectory.isDirectory())
+			throw new IllegalArgumentException("Specified path '" + importDirectory + "'is not a directory");
+		File[] children = importDirectory.listFiles((FileFilter)FileFilterUtils.directoryFileFilter());
+		for (File child : children) {
+			getLog().info("File = " + child);
+			try {
+				DeviceFileStore childLocation = DeviceFileStore.fromString(child.getName());
+				DeviceFileStore location = childLocation != null ? childLocation : DeviceFileStore.LOCAL;
+				if (location == DeviceFileStore.LOCAL) {
+					getXMLMgmtSession().createDirs(child, DeviceFileStore.LOCAL);
+				}
+				getXMLMgmtSession().importFiles(child, location);
+			} catch (XMLMgmtException e) {
+				throw new MojoExecutionException("Failed to import files from directory '" + importDirectory + "' to domain '" + getDomain() + "'", e);
+			}
+		}
 	}
 }

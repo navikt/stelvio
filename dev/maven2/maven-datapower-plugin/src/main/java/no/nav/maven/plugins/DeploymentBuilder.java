@@ -12,6 +12,7 @@ import no.nav.datapower.config.ConfigResources;
 import no.nav.datapower.config.ConfigUnit;
 import no.nav.datapower.xmlmgmt.DeviceFileStore;
 import no.nav.datapower.xmlmgmt.ImportFormat;
+import no.nav.datapower.xmlmgmt.XMLMgmtException;
 import no.nav.datapower.xmlmgmt.XMLMgmtSession;
 
 import org.apache.commons.codec.binary.Base64;
@@ -114,9 +115,7 @@ public class DeploymentBuilder {
 			byte[] base64Config = Base64.encodeBase64(config.getBytes());
 			getXMLMgmtSession(unit.getImportDomain()).importConfig(new String(base64Config), ImportFormat.XML);
 			getXMLMgmtSession(unit.getImportDomain()).saveConfigAndRestartDomain();
-		} catch (FileNotFoundException e) {
-			throw new IllegalArgumentException(e);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			throw new IllegalArgumentException(e);
 		}
 	}
@@ -133,7 +132,7 @@ public class DeploymentBuilder {
 					getXMLMgmtSession(domain).createDirs(child, DeviceFileStore.LOCAL);
 				}
 				getXMLMgmtSession(domain).importFiles(child, location);
-			} catch (IOException e) {
+			} catch (Exception e) {
 				throw new IllegalStateException(e);
 			}
 		}
@@ -145,9 +144,8 @@ public class DeploymentBuilder {
 			getXMLMgmtSession(domain).deleteDomain(domain);
 			log.info("Creating domain '" + domain + "'");
 			getXMLMgmtSession(domain).createDomain(domain);
-		} catch (IOException e) {
-			throw new IllegalStateException("Caught IOException while cleaning domain '" + domain + "'", e);
+		} catch (Exception e) {
+			throw new IllegalStateException("Caught Exception while cleaning domain '" + domain + "'", e);
 		}		
 	}
-
 }

@@ -2,6 +2,8 @@ package no.nav.maven.plugins;
 
 import java.net.URL;
 
+import no.nav.datapower.xmlmgmt.XMLMgmtSession;
+
 
 public abstract class AbstractDeviceMgmtMojo extends AbstractDataPowerMojo {
 
@@ -13,8 +15,38 @@ public abstract class AbstractDeviceMgmtMojo extends AbstractDataPowerMojo {
      * @required
      */
     private URL deviceUrl;
+
+    /**
+     * The device username used to authenticate the XML Management Interface
+     * 
+     * @parameter expression="${user}" alias="user"
+     * @required
+     */    
+    private String username;
+
+    /**
+     * The device password used to authenticate the XML Management Interface
+     * 
+     * @parameter expression="${pwd}" alias="pwd"
+     * @required
+     */    
+    private String password;
+
+    private XMLMgmtSession mgmtSession;
     
-    public URL getDeviceUrl() {
+    protected URL getDeviceUrl() {
     	return deviceUrl;
     }
+    
+//    public void setDeviceUrl(URL deviceUrl) {
+//    	this._deviceUrl = deviceUrl;
+//    }
+    
+	protected XMLMgmtSession getXMLMgmtSession() {
+		if (mgmtSession == null) {
+			getLog().info("Creating new XMLMgmtSession, host = " + getDeviceUrl() + ", user = " + username + ", pwd = " + password);	
+			mgmtSession = new XMLMgmtSession.Builder(getDeviceUrl().toString()).user(username).password(password).domain(getDomain()).build();
+		}
+		return mgmtSession;
+	}
 }

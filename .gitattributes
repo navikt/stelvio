@@ -1566,6 +1566,12 @@ dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/DeploymentB
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigMojo.java -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportConfigMojo.java -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportFilesMojo.java -text
+dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/RestartDomainMojo.java -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/SaveConfigMojo.java -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/src/test/java/no/nav/maven/plugins/DataPowerPluginIntegrationTest.java -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/src/test/resources/test-generateConfig-pom.xml -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/src/test/resources/test-importConfig-pom.xml -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/src/test/resources/test-importFiles-pom.xml -text svneol=unset#text/plain
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
 dev/maven2/maven-dependency-plugin/pom.xml -text

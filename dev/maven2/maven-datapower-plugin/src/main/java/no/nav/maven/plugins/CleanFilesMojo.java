@@ -1,5 +1,8 @@
 package no.nav.maven.plugins;
 
+import no.nav.datapower.xmlmgmt.DeviceFileStore;
+import no.nav.datapower.xmlmgmt.XMLMgmtException;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
@@ -14,10 +17,12 @@ import org.apache.maven.plugin.MojoFailureException;
  */
 public class CleanFilesMojo extends AbstractDeviceMgmtMojo {
 	
-	public void execute() throws MojoExecutionException, MojoFailureException {
-		// TODO Auto-generated method stub
+	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 		getLog().info("Executing CleanFilesMojo");
-		getLog().info("DataPower deviceUrl = " + getDeviceUrl());
-		getLog().info("DataPower domain = " + getDomain());
+		try {
+			getXMLMgmtSession().removeDirs(DeviceFileStore.LOCAL, "aaa", "wsdl", "xslt");
+		} catch (XMLMgmtException e) {
+			throw new MojoExecutionException("Failed to delete files in the local:/// directory on the DataPower device",e);
+		}
 	}
 }

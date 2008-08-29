@@ -1,6 +1,10 @@
 package no.nav.maven.plugins;
 
 import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+
+import com.pyx4j.log4j.MavenLogAppender;
 
 public abstract class AbstractDataPowerMojo extends AbstractMojo {
 
@@ -10,10 +14,21 @@ public abstract class AbstractDataPowerMojo extends AbstractMojo {
      * @parameter expression="${domain}"
      * @required
      */
-    private String domain;
+    private String domain;    
     
-    
-    public String getDomain() {
+    protected String getDomain() {
     	return domain;
     }
+    
+    public void execute() throws MojoExecutionException, MojoFailureException {
+		MavenLogAppender.startPluginLog(this);		
+		try {
+			doExecute();
+		}
+		finally {
+			MavenLogAppender.endPluginLog(this);
+		}
+    }
+    
+    protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 }
