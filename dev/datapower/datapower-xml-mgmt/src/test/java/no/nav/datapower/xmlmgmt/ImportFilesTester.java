@@ -35,6 +35,9 @@ public class ImportFilesTester {
 			System.out.println("Files successfully imported...");
 	
 		} catch (IOException e) {
+			System.out.println("Failed to extract ZIP archive '" + wsdlFile + "' to folder '" + tmpFolder + "'");
+			e.printStackTrace();			
+		} catch (XMLMgmtException e) {
 			System.out.println("Failed to import files...");			
 			e.printStackTrace();
 		}

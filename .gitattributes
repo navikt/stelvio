@@ -1474,6 +1474,7 @@ dev/datapower/datapower-xml-mgmt/pom.xml -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DeviceFileStore.java -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/ImportFormat.java -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/TemplateFormatter.java -text
+dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtException.java -text svneol=unset#text/plain
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtRequest.java -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtSession.java -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractBaseCommand.java -text

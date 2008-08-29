@@ -43,17 +43,17 @@ public class XMLMgmtSessionTester {
 		try {
 			tester.testCreateDirs();
 			tester.testImportFiles();
-		} catch (IOException e) {
+		} catch (XMLMgmtException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private void testImportFiles() throws IOException {
+	private void testImportFiles() throws XMLMgmtException {
 		getXMLMgmtSession(domain).importFiles(wsdlDirectory, DeviceFileStore.LOCAL);				
 	}
 	
-	public void testCreateDirs() throws IOException {
+	public void testCreateDirs() throws XMLMgmtException {
 		getXMLMgmtSession(domain).createDirs(wsdlDirectory, DeviceFileStore.LOCAL);				
 	}
 	
