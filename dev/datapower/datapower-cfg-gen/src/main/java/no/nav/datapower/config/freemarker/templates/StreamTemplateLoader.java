@@ -5,10 +5,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import org.apache.log4j.Logger;
+
 import freemarker.cache.TemplateLoader;
 
 public class StreamTemplateLoader implements TemplateLoader {
 
+	private static final Logger LOG = Logger.getLogger(StreamTemplateLoader.class);
 	private Class loaderClass;
 	private String path;
 
@@ -19,23 +22,23 @@ public class StreamTemplateLoader implements TemplateLoader {
 	
 	
 	public void closeTemplateSource(Object templateSource) throws IOException {
-		//System.out.println("StreamTemplateLoader.closeTemplateSource(Object)");
+		LOG.trace("closeTemplateSource(Object)");
 		InputStream src = (InputStream) templateSource;
 		src.close();
 	}
 
 	public Object findTemplateSource(String name) throws IOException {
-		//System.out.println("StreamTemplateLoader.findTemplateSource(String), name = " + name);
+		LOG.trace("findTemplateSource(String), name = " + name);
 		return loaderClass.getResourceAsStream(path + name);
 	}
 
 	public long getLastModified(Object templateSource) {
-		//System.out.println("StreamTemplateLoader.getLastModified(Object)");
+		LOG.trace("getLastModified(Object)");
 		return -1;
 	}
 
 	public Reader getReader(Object templateSource, String encoding) throws IOException {
-		//System.out.println("StreamTemplateLoader.getReader(Object, String)");
+		LOG.trace("getReader(Object, String)");
 		return new InputStreamReader((InputStream) templateSource, encoding);
 	}
 	

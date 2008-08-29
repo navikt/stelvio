@@ -8,14 +8,20 @@ public abstract class ConfigGenerator {
 	private ConfigResources configResources;
 	private File outputDirectory;
 	private Properties requiredProperties;
+	private String name;
 	
 	public ConfigGenerator() {}
 	
-	public ConfigGenerator(Properties requiredProperties) {
+	public ConfigGenerator(String name, Properties requiredProperties) {
+		this.name = name;
 		this.requiredProperties = requiredProperties;
 	}
 	
-	protected Properties getRequiredProperties() {
+	public String getName() {
+		return name;
+	}
+	
+	public Properties getRequiredProperties() {
 		return requiredProperties;
 	}
 

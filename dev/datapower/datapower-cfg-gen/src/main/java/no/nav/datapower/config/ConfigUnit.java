@@ -11,6 +11,8 @@ public class ConfigUnit {
 	private File importConfigDir;
 	private File importConfigFile;
 	private File filesDir;
+	private File filesCertDir;
+	private File filesPubcertDir;
 	private File filesLocalDir;
 	private File filesLocalAaaDir;
 	private File filesLocalWsdlDir;
@@ -19,8 +21,10 @@ public class ConfigUnit {
 	public ConfigUnit(String domain, File rootDirectory) {
 		this.importDomain = domain;
 		this.rootDir = rootDirectory;
-		this.importConfigDir 	= DPFileUtils.mkdirs(rootDirectory, "import-config");
-		this.filesDir 			= DPFileUtils.mkdirs(rootDirectory, "files");
+		this.importConfigDir 	= DPFileUtils.mkdirs(rootDirectory, "import-xcfg");
+		this.filesDir 			= DPFileUtils.mkdirs(rootDirectory, "import-files");
+		this.filesCertDir 		= DPFileUtils.mkdirs(filesDir, "cert");
+		this.filesPubcertDir 	= DPFileUtils.mkdirs(filesDir, "pubcert");
 		this.filesLocalDir 		= DPFileUtils.mkdirs(filesDir, "local");
 		this.filesLocalAaaDir 	= DPFileUtils.mkdirs(filesLocalDir, "aaa");
 		this.filesLocalWsdlDir 	= DPFileUtils.mkdirs(filesLocalDir, "wsdl");
@@ -65,5 +69,13 @@ public class ConfigUnit {
 
 	public File getFilesDir() {
 		return filesDir;
+	}
+
+	public File getFilesCertDir() {
+		return filesCertDir;
+	}
+
+	public File getFilesPubcertDir() {
+		return filesPubcertDir;
 	}
 }

@@ -26,12 +26,12 @@ public abstract class FreemarkerConfigGenerator extends ConfigGenerator {
 		super();
 	}
 	
-	public FreemarkerConfigGenerator(Properties requiredProperties, TemplateLoader templateLoader) {
-		this(requiredProperties, DPLIB_TEMPLATE_LOADER, templateLoader);
+	public FreemarkerConfigGenerator(String name, Properties requiredProperties, TemplateLoader templateLoader) {
+		this(name, requiredProperties, DPLIB_TEMPLATE_LOADER, templateLoader);
 	}
 	
-	public FreemarkerConfigGenerator(Properties requiredProperties, TemplateLoader... templateLoaders) {
-		super(requiredProperties);
+	public FreemarkerConfigGenerator(String name, Properties requiredProperties, TemplateLoader... templateLoaders) {
+		super(name, requiredProperties);
 		getFreemarker().setTemplateLoader(new MultiTemplateLoader(templateLoaders));
 	}	
 	

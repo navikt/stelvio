@@ -11,62 +11,45 @@ public class ConfigResources {
 
 	private Properties properties;
 	private List<File> wsdlArchives;
+	private List<File> aaaFiles;
 	private List<File> certFiles;
-	private List<File> pubCertFiles;
-	private List<File> localFiles;
+	private List<File> pubcertFiles;
+	private File moduleDirectory;
 	private File importDirectory;
 //	private File outputDirectory;
 
 	public ConfigResources() {}
 
-	public String getProperty(String key) {
-		return properties.getProperty(key);
-	}
+	public String getProperty(String key) { return properties.getProperty(key); }
+	public Properties getProperties() { if (properties == null) properties = new Properties(); return properties; }
+	public void addProperties(Properties props) { this.properties = new PropertiesBuilder(getProperties()).putAll(props).interpolate().buildProperties(); }
 
-	public Properties getProperties() {
-		if (properties == null)
-			properties = new Properties();
-		return properties;
-	}
+	public List<File> getWsdlArchives() { if (wsdlArchives == null) wsdlArchives = DPCollectionUtils.newArrayList(); return wsdlArchives; }
+	public void setWsdlArchives(List<File> wsdlArchives) { this.wsdlArchives = wsdlArchives; }
+	public void addWsdlArchive(File wsdlArchive) { getWsdlArchives().add(wsdlArchive); }
 
-	public void addProperties(Properties props) {
-		this.properties = new PropertiesBuilder(getProperties()).putAll(props).interpolate().buildProperties();
-	}
+	public List<File> getCertFiles() { if (certFiles == null) certFiles = DPCollectionUtils.newArrayList(); return certFiles; }
+	public void setCertFiles(List<File> certs) { this.certFiles = certs; }
+	public void addCertFile(File cert) { getCertFiles().add(cert); }
+	public void addCertFiles(List<File> certs) { getCertFiles().addAll(certs); }
 
-	public List<File> getWsdlArchives() {
-		if (wsdlArchives == null)
-			wsdlArchives = DPCollectionUtils.newArrayList();
-		return wsdlArchives;
-	}
+	public List<File> getPubcertFiles() { if (pubcertFiles == null) pubcertFiles = DPCollectionUtils.newArrayList(); return pubcertFiles; }
+	public void setPubcertFiles(List<File> pubcerts) { this.pubcertFiles = pubcerts; }
+	public void addPubcertFile(File pubcert) { getPubcertFiles().add(pubcert); }
+	public void addPubcertFiles(List<File> pubcerts) { getPubcertFiles().addAll(pubcerts); }
 
-	public void setWsdlArchives(List<File> wsdlArchives) {
-		this.wsdlArchives = wsdlArchives;
-	}
+	public List<File> getAaaFiles() { if (aaaFiles == null) aaaFiles = DPCollectionUtils.newArrayList(); return aaaFiles; }
+	public void setAaaFiles(List<File> aaaFiles) { this.aaaFiles = aaaFiles; }
+	public void addAaaFile(File aaaFile) { getAaaFiles().add(aaaFile); }	
+	public void addAaaFiles(List<File> aaaFiles) { getAaaFiles().addAll(aaaFiles); }
 
-	public void addWsdlArchive(File wsdlArchive) {
-		getWsdlArchives().add(wsdlArchive);
-	}
+	public File getImportDirectory() { return importDirectory; }
+	public void setImportDirectory(File importDirectory) { this.importDirectory = importDirectory; }
 
-	public List<File> getCertFiles() {
-		if (certFiles == null)
-			certFiles = DPCollectionUtils.newArrayList();
-		return certFiles;
-	}
-
-	public void setCertFiles(List<File> certFiles) {
-		this.certFiles = certFiles;
-	}
+	public File getModuleDirectory() { return moduleDirectory; }
+	public void setModuleDirectory(File moduleDirectory) { this.moduleDirectory = moduleDirectory; }
 	
-	public void addCertFile(File certFile) {
-		getCertFiles().add(certFile);
-	}
-
-	public File getImportDirectory() {
-		return importDirectory;
-	}
-
-	public void setImportDirectory(File importDirectory) {
-		this.importDirectory = importDirectory;
-	}
+	public String getDomain() { return getProperty("cfgDomain"); }
 	
+	public String getConfigFilename() { return getDomain() + ".xcfg"; }
 }

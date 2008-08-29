@@ -21,10 +21,6 @@
 		backsideHost="localhost"
 		backsidePort="1234"
 		backsideUri="/ERROR-should-be-used-with-dynamic-backends-ERROR"/>
-<#--	backsideProtocol="${backsideProtocol}"
-		backsideHost="${backsideHost}"
-		backsidePort="${backsidePort}"
-		backsideUri="${endpointUri}"/>-->
 	<@WSGateway
 		name="${name}"
 		version="${version}"
