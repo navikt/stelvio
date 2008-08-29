@@ -110,24 +110,19 @@ public class DPFileUtilsTest extends TestCase {
 		}
 	}
 	
-	public void testExtractArchiveFiltered() {
-		File archive = FileUtils.toFile(getClass().getClassLoader().getResource("nav-cons-pen-pen-navorgenhet.zip"));
-		System.out.println("Archive = " + archive);
-		String archiveStr = archive.getPath();
-		System.out.println("Archive Str= " + archiveStr);
-//		File outDir = new File(archiveStr.substring(0, archiveStr.lastIndexOf(File.separatorChar)));
-		File outDir = new File("E:\\data\\builds\\wsdl");
-		System.out.println("OutDir = " + outDir);
-		try {
-			DPFileUtils.extractArchiveFiltered(archive, outDir, new OrFileFilter(
-									new WildcardPathFilter("*nav-cons-pen-pen-navorgenhet\\*.wsdl"),
-									new WildcardPathFilter("*nav-lib-cons*.xsd")));
-//			DPFileUtils.extractArchiveFiltered(archive, outDir, new NotFileFilter(new WildcardFileFilter("*\\.*")));
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail("Caught IOException while extracting ZIP archive");
-		}
-	}
+//	public void testExtractArchiveFiltered() {
+//		File archive = FileUtils.toFile(getClass().getClassLoader().getResource("nav-cons-pen-pen-navorgenhet.zip"));
+//		String archiveStr = archive.getPath();
+//		File outDir = new File("E:\\data\\builds\\wsdl");
+//		try {
+//			DPFileUtils.extractArchiveFiltered(archive, outDir, new OrFileFilter(
+//									new WildcardPathFilter("*nav-cons-pen-pen-navorgenhet\\*.wsdl"),
+//									new WildcardPathFilter("*nav-lib-cons*.xsd")));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			fail("Caught IOException while extracting ZIP archive");
+//		}
+//	}
 
 	private File getFile(String resource) {
 		return FileUtils.toFile(getClass().getResource(resource));

@@ -5,7 +5,7 @@
 	<artifactId>datapower-utils</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>datapower-utils</name>
+	<name>DataPower Utilities Library</name>
 	<dependencies>
 		<dependency>
 	        <groupId>commons-codec</groupId>
@@ -31,6 +31,11 @@
 	        <groupId>commons-configuration</groupId>
 	        <artifactId>commons-configuration</artifactId>
 	        <version>1.5</version>
+	    </dependency>
+		<dependency>
+	        <groupId>log4j</groupId>
+	        <artifactId>log4j</artifactId>
+	        <version>1.2.12</version>
 	    </dependency>
 		<dependency>
 	        <groupId>wsdl4j</groupId>

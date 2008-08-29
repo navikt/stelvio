@@ -485,6 +485,6 @@ public final class ServiceLoader<S> implements Iterable<S> {
      * @return A descriptive string
      */
     public String  toString() {
-    	return "java.util.ServiceLoader[" + service.getName() + "]";
+    	return "no.nav.datapower.util.ServiceLoader[" + service.getName() + "]";
     }   
 }

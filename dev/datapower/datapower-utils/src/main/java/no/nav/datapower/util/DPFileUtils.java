@@ -22,15 +22,13 @@ import java.util.zip.ZipOutputStream;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.DirectoryWalker;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
-import org.apache.commons.io.filefilter.OrFileFilter;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.commons.lang.Validate;
+import org.apache.log4j.Logger;
 
 public class DPFileUtils {
-	
+		
 	private static class FileLister extends RecursiveLister {
 		
 		@Override
@@ -135,6 +133,12 @@ public class DPFileUtils {
 	public static File append(File directory, String path) {
 		return new File(directory.getAbsolutePath() + File.separator + path);
 	}
+	
+	public static void copyFilesToDirectory(List<File> files, File targetDir) throws IOException {
+		for (File file : files) {
+			FileUtils.copyFileToDirectory(file, targetDir);
+		}
+	}
 
 	public static File mkdirs(File directory, String path) {
 		File newDir = append(directory, path);
@@ -196,18 +200,13 @@ public class DPFileUtils {
 	}
 
 	public static void extractArchiveFiltered(File inputFile, File outDir, IOFileFilter filter) throws IOException {
-		System.out.println("Filter.toString = " + filter.toString());
 		outDir.mkdirs();
 		ZipFile zipFile = new ZipFile(inputFile);
 		Enumeration<? extends ZipEntry> enumeration = zipFile.entries();
 		while (enumeration.hasMoreElements()) {
 			ZipEntry zipEntry = enumeration.nextElement();
 			String zipEntryName = zipEntry.getName();
-			System.out.println("zipEntryName =: " + zipEntryName);
 			File zipFileName = new File(outDir + "/" + zipEntryName.substring(zipEntryName.indexOf('/')));
-			System.out.println("zipFileName =: " + zipFileName);
-//			if (FilenameUtils.wildcardMatch(zipEntry.getName(), "nav-cons-pen-pen-navorgenhet/*.wsdl") ||
-//					   FilenameUtils.wildcardMatch(zipEntry.getName(), "nav-cons-pen-pen-navorgenhet/*.xsd")) {
 			if (filter.accept(new File(zipEntryName))) {
 				zipFileName.getParentFile().mkdirs();
 				InputStream inputStream = zipFile.getInputStream(zipEntry);

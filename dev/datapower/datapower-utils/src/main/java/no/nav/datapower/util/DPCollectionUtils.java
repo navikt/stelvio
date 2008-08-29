@@ -2,7 +2,6 @@ package no.nav.datapower.util;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,6 +12,8 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 public class DPCollectionUtils {
 
@@ -43,6 +44,13 @@ public class DPCollectionUtils {
 			out.println(linePrefix + element);
 		}
 	}
+
+	public static <T> void printLines(Collection<T> collection, Logger log, Level level, String linePrefix) {
+		for (T element : collection) {
+			log.log(level, linePrefix + element);
+		}
+	}
+
 	
 	public static <K,V> void printLines(Map<K,V> map, PrintStream out, CharSequence separator) {
 		for (K key : map.keySet()) {

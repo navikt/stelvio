@@ -13,15 +13,10 @@ public class WildcardPathFilter implements IOFileFilter {
 		this.filter = filter;
 	}
 	public boolean accept(File file) {
-//		System.out.println("WildcardPathFilter.accept(File), file = " + file.getPath());
-//		System.out.println("WildcardPathFilter.accept(File), filter = " + filter);
-		boolean returnValue = FilenameUtils.wildcardMatch(file.getPath(), filter);
-//		System.out.println("WildcardPathFilter.accept(File), returnValue = " + returnValue);
-		return returnValue;
+		return FilenameUtils.wildcardMatch(file.getPath(), filter);
 	}
 
 	public boolean accept(File file, String name) {
-		System.out.println("WildcardPathFilter.accept(File, String), file = " + file + ", name = " + name);
 		return false;
 	}
 

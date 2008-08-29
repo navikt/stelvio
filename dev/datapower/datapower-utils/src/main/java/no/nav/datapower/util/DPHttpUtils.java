@@ -8,9 +8,12 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.Logger;
 
 public class DPHttpUtils {
 
+	private static final Logger LOG = Logger.getLogger(DPHttpUtils.class);
+	
 	public static HttpURLConnection openPostRequestConnection(String host, String user, String password) {
 		try {
 			URL deviceURL = new URL(host);
@@ -22,22 +25,23 @@ public class DPHttpUtils {
 			conn.connect();
 			return conn;
 		} catch (MalformedURLException e) {
-			System.out.println("HttpUtils.openHttpPostRequest(), caught MalformedURLException...");
+			LOG.fatal("openHttpPostRequest(), caught MalformedURLException...");
 			e.printStackTrace();
 		} catch (ProtocolException e) {
-			System.out.println("HttpUtils.openHttpPostRequest(), caught ProtocolException...");
+			LOG.fatal("HttpUtils.openHttpPostRequest(), caught ProtocolException...");
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
-			System.out.println("HttpUtils.openHttpPostRequest(), caught UnsupportedEncodingException...");
+			LOG.fatal("HttpUtils.openHttpPostRequest(), caught UnsupportedEncodingException...");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("HttpUtils.openHttpPostRequest(), caught IOException...");
+			LOG.fatal("HttpUtils.openHttpPostRequest(), caught IOException...");
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public static String doPostRequest(String host, String user, String password, String data, int retries) throws IOException {
+		LOG.debug("doPostRequest(), host=" + host + ", user=" + user);
 		try {
 			HttpURLConnection conn = openPostRequestConnection(host, user, password);
 //			System.out.println("Executing HTTP POST, request data: \n");
@@ -48,7 +52,7 @@ public class DPHttpUtils {
 			return response;
 		} catch (IOException e) {
 			if(retries > 1){
-				System.out.println("Retrying..., " + retries + " retries left!");
+				LOG.error("doPostRequest(), Retrying..., " + retries + " retries left!");
 				return doPostRequest(host,user,password,data,--retries);
 			}else throw e;
 		}
@@ -56,7 +60,7 @@ public class DPHttpUtils {
 	
 	public static String getResponse(HttpURLConnection conn) throws IOException {
 		int httpResponseCode = conn.getResponseCode();
-		System.out.println("HTTP Response code = " + httpResponseCode);
+		LOG.info("getResponse(), HTTP Response code = " + httpResponseCode);
 		if (httpResponseCode == 200)
 			return DPStreamUtils.getInputStreamAsString(conn.getInputStream(), true);
 		else
