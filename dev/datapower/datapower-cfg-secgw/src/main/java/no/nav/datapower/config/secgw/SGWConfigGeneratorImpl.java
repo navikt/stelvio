@@ -1,0 +1,195 @@
+package no.nav.datapower.config.secgw;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Properties;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+
+import no.nav.datapower.config.ConfigResources;
+import no.nav.datapower.config.ConfigUnit;
+import no.nav.datapower.config.WSDLFile;
+import no.nav.datapower.config.freemarker.FreemarkerConfigGenerator;
+import no.nav.datapower.config.freemarker.templates.StreamTemplateLoader;
+import no.nav.datapower.util.DPCollectionUtils;
+import no.nav.datapower.util.DPFileUtils;
+import no.nav.datapower.util.DPPropertiesUtils;
+import no.nav.datapower.util.DPZipUtils;
+import no.nav.datapower.util.PropertiesBuilder;
+import no.nav.datapower.util.PropertiesValidator;
+import no.nav.datapower.util.WildcardPathFilter;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.OrFileFilter;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.apache.log4j.Logger;
+import org.eclipse.jst.j2ee.commonarchivecore.internal.exception.OpenFailureException;
+
+import com.ibm.etools.commonarchive.CommonarchiveFactory;
+import com.ibm.etools.commonarchive.EARFile;
+import com.ibm.etools.commonarchive.WARFile;
+import com.ibm.etools.commonarchive.impl.CommonarchiveFactoryImpl;
+
+import freemarker.cache.TemplateLoader;
+import freemarker.template.TemplateException;
+
+
+public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
+
+	private static final Logger LOG = Logger.getLogger(SGWConfigGeneratorImpl.class);
+	private static final String GENERATOR_NAME = "secgw";
+	private static final String TEMPLATE_CFG = "secgw-configuration.ftl";
+	private static final String TEMPLATE_AAA = "aaa-mapping-file.ftl";
+	private static final String REQUIRED_PROPERTIES_NAME = "/cfg-secgw-required.properties";
+	private static final Properties REQUIRED_PROPERTIES = DPPropertiesUtils.load(SGWConfigGeneratorImpl.class,REQUIRED_PROPERTIES_NAME);
+	private static final TemplateLoader SECGW_TEMPLATE_LOADER = new StreamTemplateLoader(SGWConfigGeneratorImpl.class, "/");
+	
+	
+	public SGWConfigGeneratorImpl() {		
+		super(GENERATOR_NAME, REQUIRED_PROPERTIES, SECGW_TEMPLATE_LOADER);
+	}
+	
+	@Override
+	public ConfigUnit generate() {
+		ConfigResources cfg = getConfigResources();
+		Properties props = cfg.getProperties();
+//		System.out.println("Properties:\r\n" + DPPropertiesUtils.toString(props));
+		props = new PropertiesBuilder(props).interpolate().buildProperties();
+		LOG.debug("Properties:\r\n" + DPPropertiesUtils.toString(props));
+		PropertiesValidator validator = new PropertiesValidator(cfg.getProperties(), getRequiredProperties());
+		if (validator.hasInvalidProperties()) {
+			throw new IllegalArgumentException("Configuration contains invalid Properties:\r\n" + validator.getErrorMessage());
+		}
+		LOG.debug("Output directory = " + getOutputDirectory());
+		ConfigUnit unit = new ConfigUnit(cfg.getProperty("cfgDomain"), getOutputDirectory());
+		LOG.debug("Root directory = " + unit.getRootDir());
+		LOG.debug("Files local directory = " + unit.getFilesLocalDir());
+		LOG.debug("Files local wsdl directory = " + unit.getFilesLocalWsdlDir());
+		
+		// Extract wsdl from EAR archives
+		List<File> earFiles = getEarFiles(cfg.getModuleDirectory());
+		try {
+			extractWsdlFiles(earFiles, unit.getFilesLocalDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), unit.getFilesLocalAaaDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), unit.getFilesCertDir());
+		} catch (IOException e) {
+			throw new IllegalStateException("Caught IOException while extracting WSDL files from EAR archives",e);
+		}
+
+		// Generate AAAInfo file
+		try {
+			String aaaFilename = cfg.getProperty("aaaFileName");
+			LOG.debug("Generating AAA file " + aaaFilename);
+			File aaaMappingFile = DPFileUtils.append(unit.getFilesLocalAaaDir(), aaaFilename);
+			FileWriter aaaWriter = new FileWriter(aaaMappingFile);
+			processTemplate(TEMPLATE_AAA, cfg.getProperties(), aaaWriter);
+			aaaWriter.close();
+			LOG.debug("Done generating AAA file " + aaaFilename);
+		} catch (IOException e) {
+			throw new IllegalStateException("Caught IOException while building AAAInfo file", e);
+		} catch (TemplateException e) {
+			throw new IllegalStateException("Template processing failed for AAAInfo file", e);
+		}
+
+		// Generate XCFG configuration
+		try {
+			File cfgFile = DPFileUtils.append(unit.getImportConfigDir(), cfg.getConfigFilename());
+			LOG.debug("Config file " + cfgFile);
+			unit.setImportConfigFile(cfgFile);
+			FileWriter cfgWriter = new FileWriter(cfgFile);
+			List<WSDLFile> wsdlFiles = WSDLFile.getWsdlFiles(unit.getFilesLocalWsdlDir());
+			cfg.getProperties().put("wsdls", wsdlFiles);
+			LOG.debug("Processing template");
+			processTemplate(TEMPLATE_CFG, cfg.getProperties(), cfgWriter);
+			LOG.debug("Done processing template");
+			cfgWriter.flush();
+			cfgWriter.close();
+			LOG.debug("Done generating config file " + cfg.getConfigFilename());
+		} catch (IOException e) {
+			throw new IllegalStateException("Caught IOException while generating DataPower configuration", e);
+		} catch (TemplateException e) {
+			throw new IllegalStateException("Caught IllegalStateException while generating DataPower configuration", e);
+		}
+		return unit;
+	}
+	
+	public static List<WSDLFile> getWsdlFiles(File directory) throws IOException {
+		List<WSDLFile> wsdlFiles = DPCollectionUtils.newArrayList();
+		for (File wsdlFile : directory.listFiles()) {
+			if (wsdlFile.isFile() && wsdlFile.getName().endsWith(".wsdl")) {
+				wsdlFiles.add(new WSDLFile(wsdlFile));
+			}
+		}
+		return wsdlFiles;
+	}
+
+	
+	private List<File> getWsdlArchives(File wsdlDir) {
+		return getFileList(wsdlDir, "cfgWsdlArchiveFilter", ".zip");
+	}
+
+	private List<File> getEarFiles(File earDir) {
+		LOG.trace("getEarFiles(), earDir = " + earDir);
+		List<File> earList = DPCollectionUtils.newArrayList();
+		for (File dir : earDir.listFiles()) {
+			if (dir.isDirectory()) {
+				earList.addAll(getFileList(dir, "cfgConsumerModuleFilter", ".ear"));
+			}
+		}
+		return earList;
+	}
+
+	
+	private List<File> getFileList(File dir, String filterProperty, String fileExt) {
+		String filterString = getConfigResources().getProperty(filterProperty);
+//		String filterString = getConfigResources().getProperty("cfgConsumerModuleFilter");
+		LOG.trace("getFileList(), dir = " + dir + ",  filterString = " + filterString + ", fileExt = " + fileExt);
+		List<String> filters = DPCollectionUtils.listFromString(filterString);
+		OrFileFilter orFilter = new OrFileFilter();
+		for (String filter : filters) {
+			orFilter.addFileFilter(new WildcardFileFilter(filter + fileExt));
+		}
+		return DPFileUtils.getFileListFiltered(dir, orFilter);		
+	}
+
+	
+	private void extractWsdlFiles(List<File> ears, File localFilesWsdlDir) throws IOException {
+		LOG.trace("extractWsdlFiles(), localFilesWsdlDir = " + localFilesWsdlDir);
+		DPCollectionUtils.printLines(ears, System.out);
+		for (File ear : ears) {
+			JarFile earArchive = new JarFile(ear);
+			Enumeration<JarEntry> entries = earArchive.entries();
+			while (entries.hasMoreElements()) {
+				JarEntry jarEntry = entries.nextElement();
+				LOG.trace("extractWsdlFiles(), jarEntry = " + jarEntry);
+				if (jarEntry.getName().endsWith(".war")) {
+					File warFile = DPFileUtils.append(localFilesWsdlDir.getParentFile(), jarEntry.getName());
+					DPZipUtils.writeZipEntryToOutputStream(earArchive, jarEntry, new FileOutputStream(warFile));
+					DPFileUtils.extractArchiveFiltered(warFile, localFilesWsdlDir,
+							new OrFileFilter(new WildcardPathFilter("*.wsdl"), new WildcardPathFilter("*.xsd")));
+					FileUtils.deleteQuietly(warFile);
+				}
+			}
+//			WARFile warFile = getWarFile(ear);
+//	        ResourceSetImpl resourcesetimpl = new ResourceSetImpl();
+//	        ArchiveURIConverterImpl archiveuriconverterimpl = new ArchiveURIConverterImpl(warFile, null);
+//	        String resourceString = Utils.getModulePath(warFile, "META-INF/wsdl");
+//	        resourcesetimpl.setResourceFactoryRegistry(J2EEResourceFactoryRegistry.INSTANCE);
+//	        resourcesetimpl.setURIConverter(archiveuriconverterimpl);
+//	    	URI resourceURI = URI.createURI(resourceString);
+//	    	Resource resource = resourcesetimpl.getResource(resourceURI, true);
+//	    	System.out.println("resource = " + resource);
+		}
+//		DPFileUtils.extractArchive(wsdlArchive, unit.getFilesLocalWsdlDir());
+	}
+	
+	private WARFile getWarFile(File ear) throws OpenFailureException {
+		CommonarchiveFactory archiveFactory = new CommonarchiveFactoryImpl();
+		EARFile earFile = archiveFactory.openEARFile(ear.getAbsolutePath());
+		return (WARFile) earFile.getWARFiles().get(0);
+	}
+}

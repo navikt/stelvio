@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite time="0.031" errors="0" name="no.nav.datapower.config.secgw.ConfigGeneratorImplTest" failures="0" tests="1" skipped="0">
+  <properties>
+    <property name="java.assistive" value="ON"/>
+    <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition"/>
+    <property name="ibm.signalhandling.rs" value="false"/>
+    <property name="sun.boot.library.path" value="C:\IBM\WID61\jdk\jre\bin"/>
+    <property name="java.vm.version" value="2.3"/>
+    <property name="com.ibm.oti.configuration" value="scar"/>
+    <property name="java.vm.vendor" value="IBM Corporation"/>
+    <property name="java.vendor.url" value="http://www.ibm.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="IBM J9 VM"/>
+    <property name="user.country" value="NO"/>
+    <property name="console.encoding" value="Cp850"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\Develop\ws-datapower-tools\datapower-cfg-secgw"/>
+    <property name="java.runtime.version" value="pwi32devifx-20070323 (ifix 117674: SR4 + 116644 + 114941 + 116110 + 114881)"/>
+    <property name="java.fullversion" value="J2RE 1.5.0 IBM J9 2.3 Windows XP x86-32 j9vmwi3223ifx-20070323 (JIT enabled)
+J9VM - 20070322_12058_lHdSMR
+JIT  - 20070109_1805ifx3_r8
+GC   - WASIFIX_2007"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="basedir" value="E:\Develop\ws-datapower-tools\datapower-cfg-secgw"/>
+    <property name="os.arch" value="x86"/>
+    <property name="com.ibm.vm.bitmode" value="32"/>
+    <property name="java.io.tmpdir" value="C:\DOCUME~1\utvikler\LOKALE~1\Temp\"/>
+    <property name="com.ibm.util.extralibs.properties" value=""/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.variant" value=""/>
+    <property name="java.awt.fonts" value=""/>
+    <property name="os.name" value="Windows XP"/>
+    <property name="sun.java2d.fontpath" value=""/>
+    <property name="java.jcl.version" value="20070131"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\IBM\WID61\jdk\jre\bin;.;C:\IBM\MQ6CL\Java\lib;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\PROGRA~1\CA\SHARED~1\SCANEN~1;C:\PROGRA~1\CA\ETRUST~1;C:\apps\Maven1.0.2\bin;C:\apps\GTK\2.0\bin;C:\apps\Subversion\bin;C:\IBM\MQ6CL\bin;C:\IBM\MQ6CL\tools\c\samples\bin;C:\IBM\common;C:\IBM\ClearCase\bin;C:\apps\maven-2.0.6\bin;C:\IBM\Installation Manager\eclipse\lib"/>
+    <property name="jxe.current.romimage.version" value="9"/>
+    <property name="com.ibm.oti.vm.bootstrap.library.path" value="C:\IBM\WID61\jdk\jre\bin"/>
+    <property name="java.class.version" value="49.0"/>
+    <property name="com.ibm.cpu.endian" value="little"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="ibm.system.encoding" value="Cp1252"/>
+    <property name="invokedviajava" value=""/>
+    <property name="java.util.prefs.PreferencesFactory" value="java.util.prefs.WindowsPreferencesFactory"/>
+    <property name="os.version" value="5.1 build 2600 Service Pack 2"/>
+    <property name="com.ibm.oti.vm.library.version" value="23"/>
+    <property name="user.home" value="C:\Documents and Settings\utvikler"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.5"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Documents and Settings\utvikler\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Documents and Settings\utvikler\.m2\repository\org\apache\maven\surefire\surefire-booter\2.3.1\surefire-booter-2.3.1.jar;C:\Documents and Settings\utvikler\.m2\repository\commons-lang\commons-lang\2.1\commons-lang-2.1.jar;C:\Documents and Settings\utvikler\.m2\repository\org\codehaus\plexus\plexus-archiver\1.0-alpha-7\plexus-archiver-1.0-alpha-7.jar;C:\Documents and Settings\utvikler\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar;C:\Documents and Settings\utvikler\.m2\repository\org\codehaus\plexus\plexus-utils\1.1\plexus-utils-1.1.jar;C:\Documents and Settings\utvikler\.m2\repository\org\apache\maven\surefire\surefire-api\2.3.1\surefire-api-2.3.1.jar;C:\Documents and Settings\utvikler\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-8\plexus-container-default-1.0-alpha-8.jar"/>
+    <property name="user.name" value="utvikler"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="java.home" value="C:\IBM\WID61\jdk\jre"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="ibm.signalhandling.sigint" value="true"/>
+    <property name="user.language" value="nb"/>
+    <property name="com.ibm.oti.jcl.build" value="20070221_1314"/>
+    <property name="os.encoding" value="UTF8"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="J2RE 1.5.0 IBM J9 2.3 Windows XP x86-32 j9vmwi3223ifx-20070323 (JIT enabled)
+J9VM - 20070322_12058_lHdSMR
+JIT  - 20070109_1805ifx3_r8
+GC   - WASIFIX_2007"/>
+    <property name="java.version" value="1.5.0"/>
+    <property name="java.ext.dirs" value="C:\IBM\WID61\jdk\jre\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\IBM\WID61\jdk\jre\lib\vm.jar;C:\IBM\WID61\jdk\jre\lib\core.jar;C:\IBM\WID61\jdk\jre\lib\charsets.jar;C:\IBM\WID61\jdk\jre\lib\graphics.jar;C:\IBM\WID61\jdk\jre\lib\security.jar;C:\IBM\WID61\jdk\jre\lib\ibmpkcs.jar;C:\IBM\WID61\jdk\jre\lib\ibmorb.jar;C:\IBM\WID61\jdk\jre\lib\ibmcfw.jar;C:\IBM\WID61\jdk\jre\lib\ibmorbapi.jar;C:\IBM\WID61\jdk\jre\lib\ibmjcefw.jar;C:\IBM\WID61\jdk\jre\lib\ibmjgssprovider.jar;C:\IBM\WID61\jdk\jre\lib\ibmjsseprovider2.jar;C:\IBM\WID61\jdk\jre\lib\ibmjaaslm.jar;C:\IBM\WID61\jdk\jre\lib\ibmjaasactivelm.jar;C:\IBM\WID61\jdk\jre\lib\ibmcertpathprovider.jar;C:\IBM\WID61\jdk\jre\lib\server.jar;C:\IBM\WID61\jdk\jre\lib\xml.jar"/>
+    <property name="jxe.lowest.romimage.version" value="9"/>
+    <property name="java.vendor" value="IBM Corporation"/>
+    <property name="localRepository" value="C:\Documents and Settings\utvikler\.m2\repository"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.compiler" value="j9jit23"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="ibm.signalhandling.sigchain" value="true"/>
+  </properties>
+  <testcase time="0" name="testGenerate"/>
+</testsuite>
