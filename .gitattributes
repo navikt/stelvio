@@ -1538,10 +1538,6 @@ dev/maven2/maven-datapower-configurer/src/main/resources/environments/TestConfig
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/TestConfig/ltpa-keys/d15apvl007.trygdeetaten2.local.ltpa -text
 dev/maven2/maven-datapower-configurer/src/main/resources/templates/template-config.xcfg -text
 dev/maven2/maven-datapower-configurer/src/main/resources/templates/template-mapper.xml -text
-dev/maven2/maven-datapower-plugin/.classpath -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/.project -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/.settings/org.maven.ide.eclipse.prefs -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/pom.xml -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDataPowerMojo.java -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDeviceMgmtMojo.java -text
@@ -1557,18 +1553,6 @@ dev/maven2/maven-datapower-plugin/src/test/resources/test-generateConfig-secgw-p
 dev/maven2/maven-datapower-plugin/src/test/resources/test-importConfig-secgw-pom.xml -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/src/test/resources/test-importFiles-secgw-pom.xml -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/src/test/resources/test-partnergw-generateConfig-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/maven-datapower-plugin-1.0-SNAPSHOT.jar -text
-dev/maven2/maven-datapower-plugin/target/surefire-reports/TEST-no.nav.maven.plugins.DataPowerPluginIntegrationTest.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/surefire-reports/TEST-no.nav.maven.plugins.GenerateConfigMojoTest.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/surefire-reports/no.nav.maven.plugins.DataPowerPluginIntegrationTest.txt -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/surefire-reports/no.nav.maven.plugins.GenerateConfigMojoTest.txt -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/test-classes/test-generateConfig-partnergw-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/test-classes/test-generateConfig-secgw-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/test-classes/test-importConfig-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/test-classes/test-importConfig-secgw-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/test-classes/test-importFiles-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/test-classes/test-importFiles-secgw-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/target/test-classes/test-partnergw-generateConfig-pom.xml -text svneol=unset#text/plain
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
 dev/maven2/maven-dependency-plugin/pom.xml -text
