@@ -130,7 +130,7 @@ public class Main {
 			}
 			
 			// DISCARD
-			if (sEdaTypeAction.equalsIgnoreCase(Constants.FEM_EDA_TYPE_ACTION_OPTIONS[1]))
+			else if (sEdaTypeAction.equalsIgnoreCase(Constants.FEM_EDA_TYPE_ACTION_OPTIONS[1]))
 			{
 				// build output file
 				sPath = connectProps.getProperty(Constants.LOGFILE_PATH);
@@ -150,6 +150,27 @@ public class Main {
 					//test
 					//eventClient.discardEvents(sPath, sFilename, "mod-test-CEI-FEM", bPaging, lTotalEvents, lPagesize);
 					eventClient.discardEvents(sPath, sFilename, sEdaType, bPaging, lTotalEvents, lPagesize);
+				}
+			}
+			
+			// RESUBMIT
+			else if (sEdaTypeAction.equalsIgnoreCase(Constants.FEM_EDA_TYPE_ACTION_OPTIONS[2])) {
+				// build output file
+				sPath = connectProps.getProperty(Constants.LOGFILE_PATH);
+				SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
+				Calendar cal = GregorianCalendar.getInstance();
+				Date lastEventDate = cal.getTime();
+				sFilename = Constants.FILE_PREFIX + "_" + sEdaTypeAction + "_" + sEdaType  +"_"+ sdf.format(lastEventDate) + ".csv";
+				
+				//ALL
+				if (sEdaType.equalsIgnoreCase(Constants.FEM_EDA_TYPE_OPTIONS[0]))
+				{
+					eventClient.resubmitEvents(sPath, sFilename, null, bPaging, lTotalEvents, lPagesize);						
+				}
+				//BASED on FILTER
+				else
+				{
+					eventClient.resubmitEvents(sPath, sFilename, sEdaType, bPaging, lTotalEvents, lPagesize);
 				}
 			}
 			
