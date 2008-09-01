@@ -63,15 +63,15 @@ public class DataPowerPluginIntegrationTest extends AbstractMojoTestCase {
 		}		
 	}
 	
-	public void testGenerateConfigMojo() {
+	public void test_secgw_GenerateConfigMojo() {
 		executeMojo(MojoTest.GENERATE_CONFIG);
 	}
 
-	public void testImportFilesMojo() {
+	public void test_secgw_ImportFilesMojo() {
 		executeMojo(MojoTest.IMPORT_FILES);		
 	}
 
-//	public void testImportConfigMojo() {
-//		executeMojo(MojoTest.IMPORT_CONFIG);		
-//	}
+	public void test_secgw_ImportConfigMojo() {
+		executeMojo(MojoTest.IMPORT_CONFIG);		
+	}
 }

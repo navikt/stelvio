@@ -62,12 +62,6 @@
 						<artifactId>datapower-cfg-secgw</artifactId>
 						<version>1.0-SNAPSHOT</version>
 					</dependency>
-					<!--<dependency>
-						<groupId>no.nav.datapower</groupId>
-						<artifactId>datapower-cfg-partnergw</artifactId>
-						<version>1.0-SNAPSHOT</version>
-						<scope>compile</scope>
-					</dependency>-->
 				</dependencies>
 			</plugin>
 		</plugins>
