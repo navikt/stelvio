@@ -45,6 +45,12 @@ This plugin provides goals for:
       		<artifactId>datapower-cfg-secgw</artifactId>
       		<version>1.0-SNAPSHOT</version>
     	</dependency>
+    	<!-- This dependency should be specified with the plugin configuration when using the plugin. However, this requires Maven 2.0.9 -->
+    	<dependency>
+      		<groupId>no.nav.datapower</groupId>
+      		<artifactId>datapower-cfg-partnergw</artifactId>
+      		<version>1.0-SNAPSHOT</version>
+    	</dependency>
 
     	<!-- Test scoped dependencies -->
     	<dependency>

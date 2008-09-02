@@ -1549,10 +1549,10 @@ dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportFiles
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/RestartDomainMojo.java -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/SaveConfigMojo.java -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/src/test/java/no/nav/maven/plugins/DataPowerPluginIntegrationTest.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/src/test/resources/test-generateConfig-secgw-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/src/test/resources/test-importConfig-secgw-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/src/test/resources/test-importFiles-secgw-pom.xml -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/src/test/resources/test-partnergw-generateConfig-pom.xml -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/src/test/resources/test-secgw-generateConfig-pom.xml -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/src/test/resources/test-secgw-importConfig-pom.xml -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/src/test/resources/test-secgw-importFiles-pom.xml -text svneol=unset#text/plain
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
 dev/maven2/maven-dependency-plugin/pom.xml -text
