@@ -27,7 +27,7 @@
 		sslProxy="${backsideSSLProxy}"
 <#--	sslProxy="${backside}_SSLProxyProfile"-->
 		wsdlName="${wsdlName}"
-		wsdlLocation="${wsdlName}"
+		wsdlLocation="${wsdlLocation}"
 		rewritePolicy="${name}"
 		stylePolicy="${policy}"
 		type="dynamic-backend"

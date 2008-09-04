@@ -1,9 +1,11 @@
 <#include "CryptoCertificate.ftl">
 <#include "CryptoKey.ftl">
 <#include "SSLCertificate.ftl">
+<#include "SigningCertificate.ftl">
 <#include "TrustedCertificate.ftl">
 <#include "CryptoIdentCred.ftl">
 <#include "CryptoValCred.ftl">
+<#include "CryptoValCredPKIX.ftl">
 <#include "ForwardCryptoProfile.ftl">
 <#include "ForwardSSLProxy.ftl">
 <#include "ReverseCryptoProfile.ftl">
@@ -36,7 +38,8 @@
 	<#list trustedCerts as cert>
 	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
 	</#list>
-	<@CryptoValCred name="${sslValCred}" trustedCerts=trustedCerts/>
+<#--	<@CryptoValCred name="${sslValCred}" trustedCerts=trustedCerts/>-->
+	<@CryptoValCredPKIX name="${sslValCred}" trustedCerts=trustedCerts/>
 	<@ReverseCryptoProfile name="${sslCryptoProfile}" identCred="${sslIdCred}"/>
 	<@ReverseSSLProxy name="${sslProxyProfile}" cryptoProfile="${sslCryptoProfile}"/>
 </#macro>

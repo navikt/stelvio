@@ -12,6 +12,7 @@ public class ConfigResources {
 	private Properties properties;
 	private List<File> wsdlArchives;
 	private List<File> aaaFiles;
+	private List<File> xsltFiles;
 	private List<File> certFiles;
 	private List<File> pubcertFiles;
 	private File moduleDirectory;
@@ -42,6 +43,11 @@ public class ConfigResources {
 	public void setAaaFiles(List<File> aaaFiles) { this.aaaFiles = aaaFiles; }
 	public void addAaaFile(File aaaFile) { getAaaFiles().add(aaaFile); }	
 	public void addAaaFiles(List<File> aaaFiles) { getAaaFiles().addAll(aaaFiles); }
+
+	public List<File> getXsltFiles() { if (xsltFiles == null) xsltFiles = DPCollectionUtils.newArrayList(); return xsltFiles; }
+	public void setXsltFiles(List<File> xsltFiles) { this.xsltFiles = xsltFiles; }
+	public void addXsltFile(File xsltFile) { getXsltFiles().add(xsltFile); }	
+	public void addXsltFiles(List<File> xsltFiles) { getXsltFiles().addAll(xsltFiles); }
 
 	public File getImportDirectory() { return importDirectory; }
 	public void setImportDirectory(File importDirectory) { this.importDirectory = importDirectory; }

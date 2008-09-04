@@ -12,6 +12,7 @@
 <#include "FrontsideHandler.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
+<#include "NFSStaticMount.ftl">
 <#include "RequestResponseRuleProcessingPolicy.ftl">
 <#include "RequestResponseErrorRuleProcessingPolicy.ftl">
 <#include "SLMPolicy.ftl">
@@ -20,6 +21,7 @@
 <#include "StylePolicyActionResult.ftl">
 <#include "StylePolicyActionSLM.ftl">
 <#include "StylePolicyActionTransform.ftl">
+<#include "StylePolicyActionTransformParameterized.ftl">
 <#include "StylePolicyActionVerify.ftl">
 <#include "StylePolicyActionSign.ftl">
 <#include "WSStylePolicy.ftl">

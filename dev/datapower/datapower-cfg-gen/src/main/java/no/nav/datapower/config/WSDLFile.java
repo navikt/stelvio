@@ -44,6 +44,7 @@ public class WSDLFile {
 	public WSDLFile(File wsdlFile, File root) {
 		this(wsdlFile);
 		this.relativePath = DPFileUtils.replaceSeparator(DPFileUtils.getRelativePath(wsdlFile, root), '/');
+		System.out.println("WSDLFile.relativePath = " + relativePath);
 	}
 	
 	public String getRelativePath() {
