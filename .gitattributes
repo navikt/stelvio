@@ -2877,6 +2877,12 @@ int/FEMCommandLine/FEMGRAppClient/appClientModule/META-INF/MANIFEST.MF -text svn
 int/FEMCommandLine/FEMGRAppClient/appClientModule/META-INF/application-client.xml -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/Main.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/SDOFormatter.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/AbstractAction.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/ActionFactory.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/DeleteAction.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/ReportAction.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/ResubmitAction.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/StatusAction.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/Constants.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyMapper.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyUtil.java -text svneol=unset#text/plain
