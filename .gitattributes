@@ -2881,6 +2881,7 @@ int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/Delet
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/ReportAction.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/ResubmitAction.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/StatusAction.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/cmdoptions/CommandOptionsBuilder.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/filewriters/EventFileWriter.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/ArgumentValitator.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/Constants.java -text svneol=unset#text/plain
