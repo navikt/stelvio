@@ -2886,10 +2886,8 @@ int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/common/Consta
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/common/Queries.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/filewriters/EventFileWriter.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/ArgumentValitator.java -text svneol=unset#text/plain
-int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/Constants.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyMapper.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyUtil.java -text svneol=unset#text/plain
-int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/Queries.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/SDOFormatter.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/src/main/resources/fem.properties -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClientEAR/.checkstyle -text

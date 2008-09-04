@@ -2,6 +2,8 @@ package utils;
 
 import java.util.Properties;
 
+import no.nav.femhelper.common.Constants;
+
 import com.ibm.websphere.management.AdminClient;
 
 /**
