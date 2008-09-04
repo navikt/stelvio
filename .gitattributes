@@ -1359,6 +1359,7 @@ dev/datapower/datapower-cfg-gen/src/test/java/no/nav/datapower/config/partnergw/
 dev/datapower/datapower-cfg-gen/src/test/java/no/nav/datapower/config/secgw/SecgwConfigGeneratorTest.java -text
 dev/datapower/datapower-cfg-partnergw/pom.xml -text
 dev/datapower/datapower-cfg-partnergw/src/main/java/no/nav/datapower/config/partnergw/PGWConfigGeneratorImpl.java -text
+dev/datapower/datapower-cfg-partnergw/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/aaa-partnergw-dnmapping.ftl -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/cfg-partnergw-domain.ftl -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/cfg-partnergw-required.properties -text

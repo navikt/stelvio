@@ -7,6 +7,7 @@
 {"name":"${partnerTrustCert_VeriSignPrimary}","file":"pubcert:///${partnerTrustCert_VeriSignPrimary}.pem"},
 {"name":"${partnerTrustCert_VeriSignIntermediate}","file":"pubcert:///${partnerTrustCert_VeriSignIntermediate}.pem"},
 {"name":"${partnerTrustCert_Thawte}","file":"pubcert:///${partnerTrustCert_Thawte}.pem"}
+{"name":"soapui.developer.local","file":"cert:///soapui.developer.local.pem"}
 ]/>
 <#assign inboundBacksideTrustedCerts=[
 {"name":"${inboundBacksideTrustCertName}","file":"pubcert:///${inboundBacksideTrustCertName}.pem"}
@@ -63,9 +64,13 @@
 	<@dp.BacksideSSL
 			name="${inboundBacksideHost}"
 			trustedCerts=[{"name":"${inboundBacksideTrustCertName}","file":"pubcert:///${inboundBacksideTrustCertName}.pem"}]/>
-	<@dp.CryptoValCred
+	<@dp.CryptoValCredPKIX
 			name="${signatureValCred}"
 			trustedCerts=partnerTrustedCerts/>
+	<@dp.SigningCertificate
+			name="${navSigningKeystoreName}"
+			file="${navSigningKeystoreFile}"
+			password="${navSigningKeystorePwd}"/>
 	<#-- HTTPSFrontsideProtocolHandler for Inbound calls -->
 	<@dp.FrontsideHandler
 			name="${inboundFrontsideHandler}"
@@ -86,6 +91,9 @@
 			aaaFileName="local:///aaa/${inboundAaaFileName}"
 			ppLtpaKeyFile="local:///aaa/${inboundBacksideLTPAKeyFile}"
 			ppLtpaKeyFilePwd="${inboundBacksideLTPAKeyPwd}"/>
+	<@dp.NFSStaticMount
+			name="${nfsLogTargetName}"
+			uri="${nfsLogTargetUri}"/>
 	<@dp.MatchingRuleURL
 			name="${matchingRuleAll}"
 			urlMatch="*"/>
@@ -98,11 +106,13 @@
 			aaaPolicy="${inboundAaaPolicyName}"
 			input="INPUT"
 			output="NULL"/>
-	<@dp.StylePolicyActionTransform
+	<#--stylesheetName="local:///xslt/set-log-destination.xsl"-->
+	<@dp.StylePolicyActionTransformParameterized
 			name="${defaultSetLogDestAction}"
-			stylesheetName="local:///xslt/set-log-destination.xsl"
+			stylesheetName="local:///xslt/nfs-message-logger.xsl"
 			input="INPUT"
-			output="NULL"/>
+			output="NULL"
+			params=[{"name":"log-store","value":"${nfsLogTargetName}"}]/>
 	<@dp.StylePolicyActionVerify
 			name="${defaultVerifySignatureAction}"
 			input="INPUT"
@@ -110,8 +120,8 @@
 	<@dp.StylePolicyActionSign
 			name="${defaultSignMessageBodyAction}"
 			input="INPUT"
-			signCert="NAV_Partner_Gateway-TEST"
-			signKey="NAV_Partner_Gateway-TEST"/>
+			signCert="${navSigningKeystoreName}"
+			signKey="${navSigningKeystoreName}"/>
 	<@dp.StylePolicyActionLog
 			name="${defaultLogMessageAction}"
 			destination="var://context/log/destination"
@@ -123,7 +133,7 @@
 			output="result"/>
 	<@dp.StylePolicyActionTransform
 			name="${defaultErrorAction}"
-			stylesheetName="local:///faultgenerisk.xsl"
+			stylesheetName="local:///xslt/faultgenerisk.xsl"
 			input="INPUT"
 			output="result"/>
 	<@dp.StylePolicyActionResult
@@ -210,7 +220,7 @@
 			name="${inboundWsdl.proxyName}Inbound"
 			version="${cfgVersion}"
 			wsdlName="${inboundWsdl.fileName}"
-			wsdlLocation="local:///wsdl/${inboundWsdl.relativePath}"
+			wsdlLocation="local:///${inboundWsdl.relativePath}"
 			wsdlPortBinding="${inboundWsdl.portBinding}"
 			policy="${inboundProcessingPolicy}"
 			frontsideHandler="${inboundFrontsideHandler}"
@@ -226,7 +236,7 @@
 			name="${outboundWsdl.proxyName}Outbound"
 			version="${cfgVersion}"
 			wsdlName="${outboundWsdl.fileName}"
-			wsdlLocation="local:///wsdl/${outboundWsdl.relativePath}"
+			wsdlLocation="local:///${outboundWsdl.relativePath}"
 			wsdlPortBinding="${outboundWsdl.portBinding}"
 			policy="${outboundProcessingPolicy}"
 			frontsideHandler="${outboundFrontsideHandler}"
