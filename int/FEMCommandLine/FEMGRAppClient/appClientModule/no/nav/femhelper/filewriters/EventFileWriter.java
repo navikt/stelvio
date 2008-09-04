@@ -1,3 +1,4 @@
+package no.nav.femhelper.filewriters;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -8,7 +9,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import utils.Constants;
+import utils.SDOFormatter;
+
+import no.nav.femhelper.common.Constants;
+
 
 import com.ibm.wbiserver.manualrecovery.FailedEventParameter;
 import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
@@ -19,6 +23,7 @@ import commonj.sdo.DataObject;
 /**
  * This class that writes events to file
  * 
+ * @author Andreas Røe
  */
 
 public class EventFileWriter  {
@@ -135,7 +140,14 @@ public class EventFileWriter  {
 				LOGGER.log(Level.FINEST, "getPosition: " + failedEventParameter.getPosition());
 				LOGGER.log(Level.FINEST, "getValue: " + failedEventParameter.getValue());
 		 	   
-		 	    String prettyPrint = sdoppt.sdoPrettyPrint((DataObject)failedEventParameter.getValue()); 
+		 	    String prettyPrint = null;
+		 	    if (failedEventParameter.getValue() instanceof DataObject) {
+		 	    	sdoppt.sdoPrettyPrint((DataObject)failedEventParameter.getValue()); 
+		 	    } else if (failedEventParameter.getValue() instanceof String) {
+		 	    	prettyPrint = (String) failedEventParameter.getValue();
+		 	    } else {
+		 	    	prettyPrint = "Unable to convert";
+		 	    }
 		 	    writer.write(getEscapedString("DataObject:" + prettyPrint));
 		 	    writer.write(EMPTY); // Ensure all 'cells' are filled to improve make the view even more easy to read
 		 	}
