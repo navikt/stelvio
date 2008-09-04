@@ -2894,6 +2894,9 @@ int/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.common.component 
 int/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClientEAR/commons-cli-1.1.jar -text
+int/FEMCommandLine/FEMGRAppClientEAR/commons-collections-3.2.jar -text
+int/FEMCommandLine/FEMGRAppClientEAR/commons-lang-2.1.jar -text
 int/stelvio-commons-lib/.classpath -text
 int/stelvio-commons-lib/.project -text
 int/stelvio-commons-lib/.runtime -text
