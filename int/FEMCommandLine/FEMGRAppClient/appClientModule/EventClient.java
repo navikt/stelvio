@@ -18,9 +18,11 @@ import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import javax.management.ReflectionException;
 
-import utils.Constants;
+import no.nav.femhelper.common.Constants;
+import no.nav.femhelper.common.Queries;
+import no.nav.femhelper.filewriters.EventFileWriter;
+
 import utils.PropertyMapper;
-import utils.Queries;
 
 import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.wbiserver.manualrecovery.FailedEventExceptionReport;
@@ -33,6 +35,7 @@ import com.ibm.websphere.management.exception.ConnectorException;
 /**
  * @author Andreas Røe
  * @author persona2c5e3b49756 Schnell
+ * @deprecated Action classes should be used instead
  */
 public class EventClient {
 
@@ -41,7 +44,7 @@ public class EventClient {
 	
 	//adminClient instance
 	private AdminClient adminClient=null;
-	ObjectName nodeAgent = null;
+	ObjectName failEventManager = null;
 	
 	private static Logger LOGGER = Logger.getLogger(EventClient.class.getName());
 
@@ -59,7 +62,7 @@ public class EventClient {
 	public EventClient(Properties properties) {
 		super();
 		adminClient = null;
-		nodeAgent=null;	
+		failEventManager=null;	
 		this.properties = properties;
 		logProperties();
 	}
@@ -67,6 +70,7 @@ public class EventClient {
 	/**
 	 * <p>Connect to FEM</p>
 	 * @return true or false if connect was working
+	 * @deprecated Action classes should be used instead
 	 */
 	public boolean connect() 
 	{
@@ -80,7 +84,7 @@ public class EventClient {
 		 	ObjectName queryName = new ObjectName("WebSphere:*,type=FailedEventManager");
 		 	Set s = adminClient.queryNames(queryName, null);
 		 	if (!s.isEmpty()) {
-				nodeAgent = (ObjectName) s.iterator().next();
+				failEventManager = (ObjectName) s.iterator().next();
 				LOGGER.log(Level.FINE, "Connected to Failed Event Manager MBean.");
 			 	return true;
 			} else {
@@ -104,14 +108,15 @@ public class EventClient {
 	}
 	
 	/**
-	 * @return number of total failed events 
+	 * @return number of total failed events
+	 * @deprecated Action classes should be used instead 
 	 */
-	public long getTotalFailedEvents() {
+	public long getTotalFailedEvents()  {
 		try {
 			// Printing the total number of failed events
 			Long lnr = Long.decode("0");
 			String countQuery = Queries.QUERY_COUNT_EVENTS;
-			lnr = (Long) adminClient.invoke(nodeAgent, countQuery, null, null);
+			lnr = (Long) adminClient.invoke(failEventManager, countQuery, null, null);
 			LOGGER.log(Level.INFO, "Current total number of events: #" + lnr);
 			return lnr; 
 		} catch (InstanceNotFoundException e) {
@@ -140,6 +145,7 @@ public class EventClient {
 	 * @param paging
 	 * @param totalevents
 	 * @param maxresultset
+	 * @deprecated Action classes should be used instead
 	 */
 	public void reportEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset ) {
 
@@ -164,7 +170,7 @@ public class EventClient {
 					String femQuery = Queries.QUERY_EVENT_WITH_PARAMETERS;
 					Object[] BOparams = new Object[] { new String((String)itreport.next()) };
 					String[] BOsignature = new String[] { "java.lang.String" };
-					FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(nodeAgent, femQuery, BOparams, BOsignature);
+					FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(failEventManager, femQuery, BOparams, BOsignature);
 					fileWriter.writeCSVEvent(failedEventWithParameters, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
 					
 					// test after 1 take to much time
@@ -211,6 +217,7 @@ public class EventClient {
 	 * @param paging
 	 * @param totalevents
 	 * @param maxresultset
+	 * @deprecated Action classes should be used instead
 	 */
 	public void discardEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset) {
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "EventClient.reportEvents");
@@ -257,7 +264,7 @@ public class EventClient {
 						Object[] para = new Object[] {passIn};  
 					 	String[] sig = new String[] {"[Ljava.lang.String;"};
 					 	try {
-							adminClient.invoke(nodeAgent, opDelete, para, sig);
+							adminClient.invoke(failEventManager, opDelete, para, sig);
 							// no exception update hashtable for reporting
 							for (int d = 0; d < passIn.length; d++) {
 								if (reportEvents.containsKey(passIn[d])) {
@@ -302,7 +309,7 @@ public class EventClient {
 						Object[] para = new Object[] {passIn};  
 					 	String[] sig = new String[] {"[Ljava.lang.String;"};
 					 	try {
-							adminClient.invoke(nodeAgent, opDelete, para, sig);
+							adminClient.invoke(failEventManager, opDelete, para, sig);
 							// no exception update hashtable for reporting
 							for (int d = 0; d < passIn.length; d++) {
 								if (reportEvents.containsKey(passIn[d])) {
@@ -383,6 +390,7 @@ public class EventClient {
 	 * @param paging
 	 * @param totalevents
 	 * @param maxresultset
+	 * @deprecated Action classes should be used instead
 	 */
 	public void resubmitEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset) {
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "EventClient.reportEvents");
@@ -427,7 +435,7 @@ public class EventClient {
 						Object[] para = new Object[] {passIn};  
 					 	String[] sig = new String[] {"[Ljava.lang.String;"};
 					 	try {
-							adminClient.invoke(nodeAgent, opDelete, para, sig);
+							adminClient.invoke(failEventManager, opDelete, para, sig);
 							// no exception update hashtable for reporting
 							for (int d = 0; d < passIn.length; d++) {
 								if (reportEvents.containsKey(passIn[d])) {
@@ -472,7 +480,7 @@ public class EventClient {
 						Object[] para = new Object[] {passIn};  
 					 	String[] sig = new String[] {"[Ljava.lang.String;"};
 					 	try {
-							adminClient.invoke(nodeAgent, opDelete, para, sig);
+							adminClient.invoke(failEventManager, opDelete, para, sig);
 							// no exception update hashtable for reporting
 							for (int d = 0; d < passIn.length; d++) {
 								if (reportEvents.containsKey(passIn[d])) {
@@ -551,6 +559,7 @@ public class EventClient {
 	 * Private method that make use of the class member variable
 	 * <code>properties</code> to debug log all input parameters
 	 * (excluding the password) 
+	 * @deprecated Action classes should be used instead
 	 */
 	private void logProperties() {
 		LOGGER.log(Level.FINE, "Initializing admin client with the following properties:");
@@ -575,6 +584,7 @@ public class EventClient {
 	 * @param totalevents -> number of totalevents
 	 * @param maxresultset -> what are the result size
 	 * @return
+	 * @deprecated Action classes should be used instead
 	 */
 	private ArrayList <String> collectEvents (String criteria, boolean paging, long totalevents, int maxresultset) {
 
@@ -596,7 +606,7 @@ public class EventClient {
 		
 			Object[] params = new Object[] { new Integer(maxresultset) }; 
 			String[] signature = new String[] { "int" };
-			List failedEventList = (List) adminClient.invoke(nodeAgent, femQuery, params, signature);
+			List failedEventList = (List) adminClient.invoke(failEventManager, femQuery, params, signature);
 			Iterator it = failedEventList.iterator();
 		
 			// first result set
@@ -648,7 +658,7 @@ public class EventClient {
 				
 				Object[] pagepar = new Object[] { begin, end, new Integer(maxresultset)};
 				String[] pagesig = new String[] { "java.util.Date", "java.util.Date", "int"};
-				failedEventList = (List) adminClient.invoke(nodeAgent, femQuery, pagepar, pagesig);
+				failedEventList = (List) adminClient.invoke(failEventManager, femQuery, pagepar, pagesig);
 				Iterator pgit = failedEventList.iterator(); 
 
 				LOGGER.log(Level.INFO,"Collect events is working for result set #" + pagecount + "...please wait!");
