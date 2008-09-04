@@ -11,7 +11,7 @@ public abstract class AbstractDeviceMgmtMojo extends AbstractDataPowerMojo {
      * The URL of the DataPower device to manage. Note: HTTPS required:
      * 		https://hostname:5550
      * 
-     * @parameter expression="${deviceUrl}"
+     * @parameter expression="${host}"
      * @required
      */
     private URL deviceUrl;

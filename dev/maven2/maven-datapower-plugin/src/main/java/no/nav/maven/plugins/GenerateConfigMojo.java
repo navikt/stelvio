@@ -73,15 +73,21 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		
 		private File propertiesFile;
 		private File localAaaDir;
+		private File localXsltDir;
 		private File certDir;
+		private File pubcertDir;
 		
 		public Overrides(File overridesDir) {
 			this.propertiesFile = DPFileUtils.append(overridesDir, "overrides.properties");
 			this.localAaaDir = DPFileUtils.append(overridesDir, "local/aaa");
+			this.localXsltDir = DPFileUtils.append(overridesDir, "local/xslt");
 			this.certDir = DPFileUtils.append(overridesDir, "cert");
+			this.pubcertDir = DPFileUtils.append(overridesDir, "pubcert");
 		}
 		protected File getLocalAaaDir() { return localAaaDir; }
+		protected File getLocalXsltDir() { return localXsltDir; }
 		protected File getCertDir() { return certDir; }
+		protected File getPubcertDir() { return pubcertDir; }
 		protected File getPropertiesFile() { return propertiesFile; }
 	}
 	
@@ -105,10 +111,17 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 //		return Arrays.asList(getOverrides().getLocalAaaDir().listFiles());
 		return getFileList(getOverrides().getLocalAaaDir());
 	}
+	private List<File> getOverriddenLocalXsltFiles() {
+		return getFileList(getOverrides().getLocalXsltDir());
+	}
 	
 	private List<File> getOverriddenCertFiles() {
 //		return Arrays.asList(getOverrides().getCertDir().listFiles());
 		return getFileList(getOverrides().getCertDir());
+ 	}
+	private List<File> getOverriddenPubcertFiles() {
+//		return Arrays.asList(getOverrides().getCertDir().listFiles());
+		return getFileList(getOverrides().getPubcertDir());
  	}
 	
 	private List<File> getFileList(File dir) {
@@ -124,7 +137,9 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		if (getOverrides() != null) {
 			cfg.addProperties(getOverriddenProperties());
 			cfg.addAaaFiles(getOverriddenLocalAaaFiles());
+			cfg.addXsltFiles(getOverriddenLocalXsltFiles());
 			cfg.addCertFiles(getOverriddenCertFiles());		
+			cfg.addPubcertFiles(getOverriddenPubcertFiles());		
 		}
 	}
 	
@@ -148,13 +163,13 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		getLog().info("END config generation");				
 	}
 	
-	
-	
 	private File getPropertiesFile(File dir) {
+		getLog().info("getPropertiesFile(), dir = " + dir);
 		final String propsFilename = "cfg-" + getDomain() + ".properties";
 		getLog().debug("Properties filename = " + propsFilename);
 		return dir.listFiles((FileFilter) new NameFileFilter(propsFilename))[0];
 	}
+	
 	private ConfigGenerator getConfigGenerator(ConfigResources cfg) throws MojoExecutionException {
 		String generatorName = cfg.getProperty("cfgGeneratorName");
 		ConfigGenerator generator = getConfigGeneratorByName(generatorName);

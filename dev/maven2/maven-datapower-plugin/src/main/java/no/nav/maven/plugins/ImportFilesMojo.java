@@ -35,6 +35,7 @@ public class ImportFilesMojo extends AbstractDeviceMgmtMojo {
 				if (location == DeviceFileStore.LOCAL) {
 					getXMLMgmtSession().createDirs(child, DeviceFileStore.LOCAL);
 				}
+				getLog().info("Importing files to device location '" + location + "'");
 				getXMLMgmtSession().importFiles(child, location);
 			} catch (XMLMgmtException e) {
 				throw new MojoExecutionException("Failed to import files from directory '" + importDirectory + "' to domain '" + getDomain() + "'", e);
