@@ -10,6 +10,8 @@
 <#include "ForwardSSLProxy.ftl">
 <#include "ReverseCryptoProfile.ftl">
 <#include "ReverseSSLProxy.ftl">
+<#include "TwoWaySSLProxy.ftl">
+<#include "TwoWayCryptoProfile.ftl">
 
 <#macro FrontsideSSL name keystoreName keystoreFile keystorePwd>
 	<#local sslIdCred="${name}_CryptoIdCred"/>
@@ -40,8 +42,8 @@
 	</#list>
 <#--	<@CryptoValCred name="${sslValCred}" trustedCerts=trustedCerts/>-->
 	<@CryptoValCredPKIX name="${sslValCred}" trustedCerts=trustedCerts/>
-	<@ReverseCryptoProfile name="${sslCryptoProfile}" identCred="${sslIdCred}"/>
-	<@ReverseSSLProxy name="${sslProxyProfile}" cryptoProfile="${sslCryptoProfile}"/>
+	<@TwoWayCryptoProfile name="${sslCryptoProfile}" identCred="${sslIdCred}" valCred="${sslValCred}"/>
+	<@TwoWaySSLProxy name="${sslProxyProfile}" forwardCryptoProfile="${sslCryptoProfile}" reverseCryptoProfile="${sslCryptoProfile}"/>
 </#macro>
 
 

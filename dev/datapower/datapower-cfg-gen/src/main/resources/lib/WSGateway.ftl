@@ -7,7 +7,9 @@
 		rewritePolicy
 		stylePolicy
 		type
-		wsaMode>
+		toggleNoWsa
+		wsaMode
+		wsaRequireAaa>
 	<WSGateway name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<UserSummary>${version}</UserSummary>
@@ -56,7 +58,7 @@
 		<ProcessHTTPErrors>on</ProcessHTTPErrors>
 		<HTTPClientIPLabel>X-Client-IP</HTTPClientIPLabel>
 		<WSAMode>${wsaMode}</WSAMode>
-		<WSARequireAAA>on</WSARequireAAA>
+		<WSARequireAAA>${wsaRequireAaa}</WSARequireAAA>
 		<WSAStrip>on</WSAStrip>
 		<WSADefaultReplyTo>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</WSADefaultReplyTo>
 		<WSADefaultFaultTo>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</WSADefaultFaultTo>
@@ -113,7 +115,7 @@
 				<NoRequestValidation>off</NoRequestValidation>
 				<NoResponseValidation>off</NoResponseValidation>
 				<SuppressFaultsElementsForRPCWrappers>off</SuppressFaultsElementsForRPCWrappers>
-				<NoWSA>on</NoWSA>
+				<NoWSA>${toggleNoWsa}</NoWSA>
 				<NoWSRM>on</NoWSRM>
 			</Toggles>
 			<Subscription/>

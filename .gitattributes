@@ -1343,6 +1343,8 @@ dev/datapower/datapower-cfg-gen/src/main/resources/lib/StylePolicyActionTransfor
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/StylePolicyActionTransformParameterized.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/StylePolicyActionVerify.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/TrustedCertificate.ftl -text
+dev/datapower/datapower-cfg-gen/src/main/resources/lib/TwoWayCryptoProfile.ftl -text
+dev/datapower/datapower-cfg-gen/src/main/resources/lib/TwoWaySSLProxy.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSEndpointRewritePolicy.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSGateway.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSGateway.ftl.bak -text

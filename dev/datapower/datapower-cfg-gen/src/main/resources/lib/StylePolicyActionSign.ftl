@@ -1,10 +1,10 @@
-<#macro StylePolicyActionSign name input signCert signKey>
+<#macro StylePolicyActionSign name input output signCert signKey>
 	<StylePolicyAction name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>xform</Type>
 		<Input>${input}</Input>
 		<Transform>store:///sign-wssec.xsl</Transform>
-		<Output>result</Output>
+		<Output>${output}</Output>
 		<NamedInOutLocationType>default</NamedInOutLocationType>
 		<StylesheetParameters>
 			<ParameterName>{http://www.datapower.com/param/config}include-timestamp</ParameterName>

@@ -33,5 +33,7 @@
 		rewritePolicy="${name}"
 		stylePolicy="${policy}"
 		type="static-from-wsdl"
-		wsaMode="sync2sync"/>
+		toggleNoWsa="on"
+		wsaMode="sync2sync"
+		wsaRequireAaa="off"/>
 </#macro>

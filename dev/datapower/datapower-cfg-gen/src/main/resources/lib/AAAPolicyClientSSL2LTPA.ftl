@@ -185,7 +185,7 @@
 			<PPKerberosBstValueType>http://docs.oasis-open.org/wss/oasis-wss-kerberos-token-profile-1.1#GSS_Kerberosv5_AP_REQ</PPKerberosBstValueType>
 			<PPSAMLUseWSSec>off</PPSAMLUseWSSec>
 			<PPKerberosClientKeytab/>
-			<PPUseWSSec>off</PPUseWSSec>
+			<PPUseWSSec>on</PPUseWSSec>
 			<PPActorRoleID/>
 			<PPTFIMTokenMapping>off</PPTFIMTokenMapping>
 			<PPTFIMEndpoint/>
