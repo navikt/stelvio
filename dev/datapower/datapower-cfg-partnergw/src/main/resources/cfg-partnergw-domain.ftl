@@ -17,10 +17,17 @@
 <#-- Default processing rules -->
 <#assign defaultSetLogDestAction="ELSAMDefault_setlogdestAction"/>
 <#assign defaultSignMessageBodyAction="ELSAMDefault_signAction"/>
+<#assign defaultSignRequestBodyAction="ELSAMDefault_signRequestAction"/>
+<#assign defaultSignResponseBodyAction="ELSAMDefault_signResponseAction"/>
 <#assign defaultVerifySignatureAction="ELSAMDefault_verifyAction"/>
 <#assign defaultLogMessageAction="ELSAMDefault_logmsgAction"/>
 <#assign defaultStripWSSHeaderAction="ELSAMDefault_stripwssAction"/>
+<#assign defaultStripSignatureAction="ELSAMDefault_stripSignatureAction"/>
 <#assign defaultResultAction="ELSAMDefault_resultAction"/>
+<#assign propagateLtpaResultAction="ELSAMDefault_propagateLtpaResultAction"/>
+<#assign defaultRequestResultAction="ELSAMDefault_requestResultAction"/>
+<#assign defaultResponseResultAction="ELSAMDefault_responseResultAction"/>
+<#assign defaultErrorResultAction="ELSAMDefault_errorResultAction"/>
 <#assign defaultErrorAction="ELSAMDefault_errorAction"/>
 
 
@@ -101,18 +108,31 @@
 			name="${matchingRuleAllErrors}"
 			errorCodeMatch="*"/>
 	<#-- Inbound request rule processiong actions -->
+	<#--<@dp.StylePolicyActionAAA
+			name="${inboundAAAAction}"
+			aaaPolicy="${inboundAaaPolicyName}"
+			input="INPUT"
+			output="NULL"/>-->
 	<@dp.StylePolicyActionAAA
 			name="${inboundAAAAction}"
 			aaaPolicy="${inboundAaaPolicyName}"
 			input="INPUT"
-			output="NULL"/>
+			output="ltpapropagateResult"/>
 	<#--stylesheetName="local:///xslt/set-log-destination.xsl"-->
 	<@dp.StylePolicyActionTransformParameterized
 			name="${defaultSetLogDestAction}"
 			stylesheetName="local:///xslt/nfs-message-logger.xsl"
 			input="INPUT"
 			output="NULL"
-			params=[{"name":"log-store","value":"${nfsLogTargetName}"}]/>
+			params=[
+				{"name":"log-store","value":"${nfsLogTargetName}"}	
+				{"name":"domain","value":"on"}	
+				{"name":"policy","value":"on"}	
+				{"name":"operation","value":"on"}	
+				{"name":"user","value":"on"}	
+				{"name":"transaction","value":"on"}
+				{"name":"rule","value":"on"}	
+			]/>
 	<@dp.StylePolicyActionVerify
 			name="${defaultVerifySignatureAction}"
 			input="INPUT"
@@ -120,6 +140,19 @@
 	<@dp.StylePolicyActionSign
 			name="${defaultSignMessageBodyAction}"
 			input="INPUT"
+			output="result"
+			signCert="${navSigningKeystoreName}"
+			signKey="${navSigningKeystoreName}"/>
+	<@dp.StylePolicyActionSign
+			name="${defaultSignRequestBodyAction}"
+			input="INPUT"
+			output="requestResult"
+			signCert="${navSigningKeystoreName}"
+			signKey="${navSigningKeystoreName}"/>
+	<@dp.StylePolicyActionSign
+			name="${defaultSignResponseBodyAction}"
+			input="INPUT"
+			output="responseResult"
 			signCert="${navSigningKeystoreName}"
 			signKey="${navSigningKeystoreName}"/>
 	<@dp.StylePolicyActionLog
@@ -130,16 +163,38 @@
 			name="${defaultStripWSSHeaderAction}"
 			stylesheetName="store:///strip-security-header.xsl"
 			input="INPUT"
-			output="result"/>
+			output="responseResult"/>
+	<@dp.StylePolicyActionTransform
+			name="${defaultStripSignatureAction}"
+			stylesheetName="store:///strip-wssec-signature.xsl"
+			input="INPUT"
+			output="signaturestripped"/>
 	<@dp.StylePolicyActionTransform
 			name="${defaultErrorAction}"
 			stylesheetName="local:///xslt/faultgenerisk.xsl"
 			input="INPUT"
-			output="result"/>
+			output="errorResult"/>
+	<@dp.StylePolicyActionResult
+			name="${propagateLtpaResultAction}"
+			input="ltpapropagateResult"
+			output="OUTPUT"/>
 	<@dp.StylePolicyActionResult
 			name="${defaultResultAction}"
 			input="result"
 			output="OUTPUT"/>
+	<@dp.StylePolicyActionResult
+			name="${defaultRequestResultAction}"
+			input="requestResult"
+			output="OUTPUT"/>
+	<@dp.StylePolicyActionResult
+			name="${defaultResponseResultAction}"
+			input="responseResult"
+			output="OUTPUT"/>
+	<@dp.StylePolicyActionResult
+			name="${defaultErrorResultAction}"
+			input="errorResult"
+			output="OUTPUT"/>
+
 
 	<#-- Inbound processing rules-->
 	<@dp.WSStylePolicyRuleRequest
@@ -149,9 +204,16 @@
 				"${defaultSetLogDestAction}",
 				"${defaultVerifySignatureAction}",
 				"${defaultLogMessageAction}",
-				"${defaultStripWSSHeaderAction}",
-				"${defaultResultAction}"
+				"${propagateLtpaResultAction}"
 			]/>
+<#--	actions=[
+				"${defaultSetLogDestAction}",
+				"${defaultVerifySignatureAction}",
+				"${defaultStripSignatureAction}",
+				"${inboundAAAAction}",
+				"${defaultLogMessageAction}",
+				"${propagateLtpaResultAction}"
+			]/>-->
 <#--			"${inboundRequestAAAAction}",
 				"${inboundRequestSetLogDestAction}",
 				"${inboundRequestVerifySignatureAction}",
@@ -162,15 +224,15 @@
 			name="${inboundResponseRule}"
 			actions=[
 				"${defaultSetLogDestAction}"
-				"${defaultSignMessageBodyAction}"
+				"${defaultSignResponseBodyAction}"
 				"${defaultLogMessageAction}"
-				"${defaultResultAction}"
+				"${defaultResponseResultAction}"
 			]/>
 	<@dp.WSStylePolicyRuleError
 			name="${inboundErrorRule}"
 			actions=[
 				"${defaultErrorAction}",
-				"${defaultResultAction}"
+				"${defaultErrorResultAction}"
 			]/>
 	<@dp.WSStylePolicy
 			name="${inboundProcessingPolicy}"
@@ -185,15 +247,15 @@
 			name="${outboundRequestRule}"
 			actions=[
 				<#--"${outboundAAAAction}",-->
-				"${defaultSignMessageBodyAction}"
-				"${defaultResultAction}"
+				"${defaultSignRequestBodyAction}"
+				"${defaultRequestResultAction}"
 			]/>
 	<@dp.WSStylePolicyRuleResponse
 			name="${outboundResponseRule}"
 			actions=[
 				"${defaultVerifySignatureAction}",
 				"${defaultStripWSSHeaderAction}",
-				"${defaultResultAction}"
+				"${defaultResponseResultAction}"
 			]/>
 	<@dp.WSStylePolicy
 			name="${outboundProcessingPolicy}"
@@ -242,6 +304,7 @@
 			frontsideHandler="${outboundFrontsideHandler}"
 			frontsideProtocol="${outboundFrontsideProtocol}"
 			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
-			endpointUri="${outboundWsdl.endpointURI}"/>
+			endpointUri="${outboundWsdl.endpointURI}"
+			wsaRequireAaa="off"/>
 	</#list>
 </@dp.configuration>
