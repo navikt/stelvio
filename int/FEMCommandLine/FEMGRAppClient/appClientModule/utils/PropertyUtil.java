@@ -49,7 +49,9 @@ public class PropertyUtil {
 		
 		// Validate property USERNAME.
 		// Criterias: present if CONNECTOR_SECURITY_ENABLED is true
-		if (("".equals(properties.getProperty(Constants.USERNAME)) || properties.getProperty(Constants.USERNAME) == null) && properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED).trim().equals("true")) {
+		String userName = properties.getProperty(Constants.USERNAME);
+		String securityEnabled = properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED);
+		if (StringUtils.isEmpty(userName) && "true".equals(securityEnabled)) {
 			result.add("Property " + Constants.USERNAME + " must be present if " + Constants.CONNECTOR_SECURITY_ENABLED + " is true");
 		}	
 

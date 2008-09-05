@@ -1,6 +1,8 @@
 package utils;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -89,6 +91,33 @@ public class ArgumentValitator {
 			if (!found) {
 				result.add("Property " + Constants.action + " value supplied is not a valid option.");
 			}
+		}
+		
+		// timeFrame is validated againts the '-' separator, 
+		// and the date values on both sides are validated against
+		// the ssmm.MMyyyy pattern.
+		String timeFrame = cl.getOptionValue(Constants.timeFrame);
+		if (StringUtils.isEmpty(timeFrame)) {
+			result.add("Property " + Constants.timeFrame + " is empty");
+		} else {
+			
+				// Validate that the String has one, and only one '-'
+				// sign to separate the to- and from date.
+				String times[] = StringUtils.split(timeFrame, "-");
+				if (null == times || times.length != 2) {
+					result.add("Property " + Constants.timeFrame + " is not correct formatted. " +
+							"The pattern is " + Constants.TIME_FRAME_FORMAT);
+				}
+				
+				// Validate the pattern
+				try {
+					SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
+					sdf.parse(times[0]);
+					sdf.parse(times[1]);
+				} catch (ParseException e) {
+					result.add("Property " + Constants.timeFrame + " is not correct formatted. " +
+							"The pattern is " + Constants.TIME_FRAME_FORMAT);
+				}
 		}
 		
 		return result;

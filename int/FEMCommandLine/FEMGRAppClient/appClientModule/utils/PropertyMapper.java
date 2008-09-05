@@ -4,6 +4,8 @@ import java.util.Properties;
 
 import no.nav.femhelper.common.Constants;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.ibm.websphere.management.AdminClient;
 
 /**
@@ -39,28 +41,45 @@ public class PropertyMapper {
 	public Properties getMappedProperties(Properties src) {
 		Properties result = new Properties();
 
-		result.setProperty(AdminClient.CONNECTOR_HOST, src.getProperty(Constants.CONNECTOR_HOST));
-		result.setProperty(AdminClient.CONNECTOR_PORT, src.getProperty(Constants.CONNECTOR_PORT));
-		result.setProperty(AdminClient.CONNECTOR_TYPE, src.getProperty(Constants.CONNECTOR_TYPE));
-		result.setProperty(AdminClient.CONNECTOR_SECURITY_ENABLED, src.getProperty(Constants.CONNECTOR_SECURITY_ENABLED));
-		result.setProperty(AdminClient.USERNAME, src.getProperty(Constants.USERNAME));
-		result.setProperty(AdminClient.PASSWORD, src.getProperty(Constants.PASSWORD));
+		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_HOST))) {
+			result.setProperty(AdminClient.CONNECTOR_HOST, src.getProperty(Constants.CONNECTOR_HOST));
+		}
+		
+		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_PORT))) {
+			result.setProperty(AdminClient.CONNECTOR_PORT, src.getProperty(Constants.CONNECTOR_PORT));
+		}
+		
+		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_TYPE))) {
+			result.setProperty(AdminClient.CONNECTOR_TYPE, src.getProperty(Constants.CONNECTOR_TYPE));
+		}
+		
+		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_SECURITY_ENABLED))) {
+			result.setProperty(AdminClient.CONNECTOR_SECURITY_ENABLED, src.getProperty(Constants.CONNECTOR_SECURITY_ENABLED));
+		}
+		
+		if (!StringUtils.isEmpty(src.getProperty(Constants.USERNAME))) {
+			result.setProperty(AdminClient.USERNAME, src.getProperty(Constants.USERNAME));
+		}
+		
+		if (!StringUtils.isEmpty(src.getProperty(Constants.PASSWORD))) {
+			result.setProperty(AdminClient.PASSWORD, src.getProperty(Constants.PASSWORD));
+		}
 		
 		if (!"RMI".equals(src.getProperty(Constants.CONNECTOR_TYPE))) 
 		{
-				if (!"".equals(src.getProperty(Constants.SSL_KEYSTORE))) {
+				if (!StringUtils.isEmpty(src.getProperty(Constants.SSL_KEYSTORE))) {
 					result.setProperty("javax.net.ssl.keyStore", src.getProperty(Constants.SSL_KEYSTORE));
 				}
 		
-				if (!"".equals(src.getProperty(Constants.SSL_KEYSTORE_PASSWORD))) {
+				if (!StringUtils.isEmpty(src.getProperty(Constants.SSL_KEYSTORE_PASSWORD))) {
 					result.setProperty("javax.net.ssl.keyStorePassword", src.getProperty(Constants.SSL_KEYSTORE_PASSWORD));
 				}
 		
-				if (!"".equals(src.getProperty(Constants.SSL_TRUSTSTORE))) {
+				if (!StringUtils.isEmpty(src.getProperty(Constants.SSL_TRUSTSTORE))) {
 					result.setProperty("javax.net.ssl.trustStore", src.getProperty(Constants.SSL_TRUSTSTORE));
 				}
 		
-				if (!"".equals(src.getProperty(Constants.SSL_TRUSTSTORE_PASSWORD))) {
+				if (!StringUtils.isEmpty(src.getProperty(Constants.SSL_TRUSTSTORE_PASSWORD))) {
 					result.setProperty("javax.net.ssl.trustStorePassword", src.getProperty(Constants.SSL_TRUSTSTORE_PASSWORD));
 				}
 		}
