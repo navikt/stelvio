@@ -1,16 +1,7 @@
 package no.nav.datapower.config.secgw;
 
-import java.io.File;
-import java.util.Date;
-
-import org.apache.commons.io.FileUtils;
-
 import junit.framework.TestCase;
 import no.nav.datapower.config.ConfigGenerator;
-import no.nav.datapower.config.ConfigResources;
-import no.nav.datapower.config.ConfigUnit;
-import no.nav.datapower.util.DPFileUtils;
-import no.nav.datapower.util.DPPropertiesUtils;
 
 public class ConfigGeneratorImplTest extends TestCase {
 
