@@ -119,13 +119,15 @@ public class Main {
 //			}
 
 			// Get the total number of events to match with the page size to avoid hughe amount of retrieving
-			Long numberOfEvents = (Long) statusAction.process(null, null, null, false, 0, 0);
+			Long numberOfEvents = (Long) statusAction.process(null, null, null, false, 0, 0, cl);
 			if (numberOfEvents.intValue() < 1) {
 				LOGGER.log(Level.SEVERE, "The is no events on this Fail Event Manager. The application will terminat");
 				System.exit(0);
+			} else {
+				LOGGER.log(Level.INFO, "ACTION REQUIERED! There is events on Fail Event Manager");
 			}
 			
-			// set to max. fem entries if pagsizse is greater
+			// Set to max. fem entries if pagsizse is greater
 			int lPagesize = Integer.valueOf(cl.getOptionValue(Constants.maxResultSet));
 			if (lPagesize > numberOfEvents)
 			{
@@ -146,7 +148,7 @@ public class Main {
 			sFilename = Constants.FILE_PREFIX + "_" + sEdaTypeAction + "_" + sEdaType  +"_"+ sdf.format(currentTime) + ".csv";
 			
 			AbstractAction action = ActionFactory.getAction(sEdaTypeAction, connectProps);
-			action.process(sPath, sFilename, sEdaType, bPaging, numberOfEvents, lPagesize);
+			action.process(sPath, sFilename, sEdaType, bPaging, numberOfEvents, lPagesize, cl);
 			
 						
 		} catch (Exception e) {

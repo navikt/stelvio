@@ -11,6 +11,8 @@ import javax.management.ReflectionException;
 
 import no.nav.femhelper.common.Queries;
 
+import org.apache.commons.cli.CommandLine;
+
 import com.ibm.websphere.management.exception.ConnectorException;
 
 public class StatusAction extends AbstractAction {
@@ -25,7 +27,10 @@ public class StatusAction extends AbstractAction {
 	}
 
 	@Override
-	Object processEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset) throws IOException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException {
+	Object processEvents(String path, String filename, String criteria,
+			boolean paging, long totalevents, int maxresultset, CommandLine cl)
+			throws IOException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException {
 		Long lnr = new Long(-1);
 		String countQuery = Queries.QUERY_COUNT_EVENTS;
 		lnr = (Long) adminClient.invoke(failEventManager, countQuery, null, null);

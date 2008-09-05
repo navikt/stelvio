@@ -19,6 +19,7 @@ import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import javax.management.ReflectionException;
 
+import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
 import utils.PropertyMapper;
@@ -49,6 +50,11 @@ public abstract class AbstractAction {
 	 * Properties from config file
 	 */
 	protected Properties properties;
+
+	/**
+	 * Properties from command line options
+	 */
+	protected CommandLine cl;
 	
 	/**
 	 * AdminClient instance
@@ -101,10 +107,16 @@ public abstract class AbstractAction {
 
 	}
 	
-	abstract Object processEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset) throws IOException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException;
+	abstract Object processEvents(String path, String filename,
+			String criteria, boolean paging, long totalevents,
+			int maxresultset, CommandLine cl) throws IOException,
+			InstanceNotFoundException, MBeanException, ReflectionException,
+			ConnectorException;
 	
-	public Object process(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset) 
-		throws MalformedObjectNameException, ConnectorException, NullPointerException {
+	public Object process(String path, String filename, String criteria,
+			boolean paging, long totalevents, int maxresultset, CommandLine cl)
+			throws MalformedObjectNameException, ConnectorException,
+			NullPointerException {
 		
 		// Log properties before creation of the AdminClient objects
 		this.logProperties();
@@ -113,7 +125,7 @@ public abstract class AbstractAction {
 		
 		Object result = null;
 		try {
-			result = this.processEvents(path, filename, criteria, paging, totalevents, maxresultset);
+			result = this.processEvents(path, filename, criteria, paging, totalevents, maxresultset, cl);
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, Constants.METHOD_ERROR + "IOException:StackTrace:");			
 			e.printStackTrace();

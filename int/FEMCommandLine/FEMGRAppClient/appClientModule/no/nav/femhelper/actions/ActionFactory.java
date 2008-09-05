@@ -9,22 +9,22 @@ public class ActionFactory {
 	
 	public static AbstractAction getAction (String actionType, Properties properties) {
 
-		if (Constants.actionOptions[0].equalsIgnoreCase(actionType)) {
-			AbstractAction action = new ReportAction(properties);
-			return action; 
-		} else if (Constants.actionOptions[1].equalsIgnoreCase(actionType)) {
-			AbstractAction action = new DeleteAction(properties);
-			return action;
-		} else if (Constants.actionOptions[2].equalsIgnoreCase(actionType)) {
-			AbstractAction action = new ResubmitAction(properties);
-			return action;
-		} else if (Constants.actionOptions[3].equalsIgnoreCase(actionType)) {
-			AbstractAction action = new StatusAction(properties);
-			return action;
-		}
+		AbstractAction action= null;
 		
-		// This will never occur. The input will be validated before this method
-		// TODO AR Evaluate if it's functionaly correct to just return a ReportAction by default
-		return null;
+		if (Constants.actionOptions[0].equalsIgnoreCase(actionType)) {
+			action = new ReportAction(properties);
+		} else if (Constants.actionOptions[1].equalsIgnoreCase(actionType)) {
+			action = new DeleteAction(properties);
+		} else if (Constants.actionOptions[2].equalsIgnoreCase(actionType)) {
+			action = new ResubmitAction(properties);
+		} else if (Constants.actionOptions[3].equalsIgnoreCase(actionType)) {
+			action = new StatusAction(properties);
+		} else if (Constants.actionOptions[4].equalsIgnoreCase(actionType)) {
+			action = new TimeFrameAction(properties);
+		}
+
+		// Since the input allready is validated to be a valid option 
+		// based on these constants
+		return action;
 	}
 }

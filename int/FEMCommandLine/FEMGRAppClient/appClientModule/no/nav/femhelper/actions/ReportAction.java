@@ -11,6 +11,8 @@ import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
+import org.apache.commons.cli.CommandLine;
+
 import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Queries;
 import no.nav.femhelper.filewriters.EventFileWriter;
@@ -30,7 +32,7 @@ public class ReportAction extends AbstractAction {
 	private Logger LOGGER = Logger.getLogger(ReportAction.class.getName());
 	
 	@Override
-	Object processEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset) throws IOException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException {
+	Object processEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset, CommandLine cl) throws IOException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException {
 		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
 		EventFileWriter fileWriter = new EventFileWriter(path, filename);
 		
@@ -40,27 +42,19 @@ public class ReportAction extends AbstractAction {
 		ArrayList <String> events = new ArrayList<String>();
 		events = collectEvents(criteria, paging, totalevents, maxresultset);
 		
-		if (events.size() > 0) {
+		Iterator it = events.iterator();
+		while (it.hasNext()) {
 			LOGGER.log(Level.INFO,"Reporting events...please wait!");
-			Iterator itreport = events.iterator();
-			//report
-			while (itreport.hasNext()) {
-				// report the result
-				String femQuery = Queries.QUERY_EVENT_WITH_PARAMETERS;
-				Object[] BOparams = new Object[] { new String((String)itreport.next()) };
-				String[] BOsignature = new String[] { "java.lang.String" };
-				FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(failEventManager, femQuery, BOparams, BOsignature);
-				fileWriter.writeCSVEvent(failedEventWithParameters, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
-				
-				// test after 1 take to much time
-				//break;
-			}
-			LOGGER.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
+			
+			// Write the report
+			String femQuery = Queries.QUERY_EVENT_WITH_PARAMETERS;
+			Object[] BOparams = new Object[] { new String((String) it.next()) };
+			String[] BOsignature = new String[] { "java.lang.String" };
+			FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(failEventManager, femQuery, BOparams, BOsignature);
+			fileWriter.writeCSVEvent(failedEventWithParameters, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
 		}
-		else
-		{
-			LOGGER.log(Level.WARNING, "No events found to report!");
-		}
+		
+		LOGGER.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
 		
 		fileWriter.close();
 		return events;

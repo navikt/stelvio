@@ -17,6 +17,8 @@ import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Queries;
 import no.nav.femhelper.filewriters.EventFileWriter;
 
+import org.apache.commons.cli.CommandLine;
+
 import com.ibm.wbiserver.manualrecovery.FailedEventExceptionReport;
 import com.ibm.wbiserver.manualrecovery.exceptions.DiscardFailedException;
 import com.ibm.websphere.management.exception.ConnectorException;
@@ -33,16 +35,20 @@ public class DeleteAction extends AbstractAction {
 	private Logger LOGGER = Logger.getLogger(DeleteAction.class.getName());
 	
 	@Override
-	Object processEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset) throws IOException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException {
+	Object processEvents(String path, String filename, String criteria,
+			boolean paging, long totalevents, int maxresultset, CommandLine cl)
+			throws IOException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException {
+		
+		
 		EventFileWriter fileWriter=null;
 		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
 		fileWriter = new EventFileWriter(path, filename);
 		LOGGER.log(Level.FINE, "Write discard header part.");
 		fileWriter.writeDiscardHeader();
 	
-		ArrayList <String> events = new ArrayList<String>();
 		// collect events before delete
-		events = collectEvents(criteria, paging, totalevents, maxresultset);
+		ArrayList <String> events = collectEvents(criteria, paging, totalevents, maxresultset);
 		
 		// for test purpose to simulate failure from FEM
 		/*
