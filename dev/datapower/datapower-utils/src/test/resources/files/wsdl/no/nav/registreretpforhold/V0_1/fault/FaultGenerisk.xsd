@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav.no/elsam/registreretpforhold/V0_1">
+  <xsd:complexType name="FaultGenerisk">
+    <xsd:sequence>
+      <xsd:element name="errorCode" type="xsd:string"/>
+      <xsd:element minOccurs="1" name="errorDescription" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="errorDetails" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

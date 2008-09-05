@@ -3,6 +3,7 @@ package no.nav.datapower.util;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -109,6 +110,17 @@ public class DPFileUtilsTest extends TestCase {
 			fail("Caught IOException while searching for directory");
 		}
 	}
+	
+//	public void testFindFilesRecursively() {
+//		File rootDir = getFile("/files/wsdl/");
+//		try {
+//			List<File> files = DPFileUtils.findFilesRecursively(rootDir, "*Http_Service.wsdl");
+//			DPCollectionUtils.printLines(files, System.out);
+//			assertNotNull("File list should not be null", files);
+//		} catch (IOException e) {
+//			fail("Caught IOException while traversing directory tree");
+//		}
+//	}
 	
 //	public void testExtractArchiveFiltered() {
 //		File archive = FileUtils.toFile(getClass().getClassLoader().getResource("nav-cons-pen-pen-navorgenhet.zip"));

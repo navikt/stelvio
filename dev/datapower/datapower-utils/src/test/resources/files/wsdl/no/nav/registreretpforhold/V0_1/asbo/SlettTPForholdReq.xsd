@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav.no/elsam/registreretpforhold/V0_1">
+  <xsd:complexType name="SlettTPForholdReq">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="tpnr">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="4"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="fnr">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="11"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

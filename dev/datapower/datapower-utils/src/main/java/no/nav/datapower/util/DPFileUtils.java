@@ -36,6 +36,21 @@ public class DPFileUtils {
 			results.add(file);
 		}
 	}
+
+	private static class FileFinder extends RecursiveLister {
+		
+		private FileFilter filter;
+		public FileFinder(String filterString) {
+			this.filter = new WildcardPathFilter(filterString);
+		}
+		
+		@Override
+		protected void handleFile(File file, int depth, Collection results) {
+			if (filter.accept(file))
+				results.add(file);
+		}
+	}
+
 	
 	private static class FolderLister extends RecursiveLister {
 				
@@ -257,20 +272,16 @@ public class DPFileUtils {
 	public static File findDirectory(File rootDir, String dirToFind) throws IOException {
 		if(!rootDir.isDirectory())
 			throw new IllegalArgumentException("Specified path is not a directory");
-//		File[] children = rootDir.listFiles();
-//		for (File child : children) {
-//			if (child.isDirectory() && child.getName().equals(dirToFind))
-//				return child;
-//		}
-//		for (File child : children) {
-//			if (child.isDirectory())
-//				return findDirectory(rootDir, dirToFind);
-//		}
-//		throw new IllegalArgumentException("Specified directory tree does not contain a '" + dirToFind + "' directory");
 		return new DirectoryFinder(dirToFind).getDirectory(rootDir);
 	}
 	
+	public static List<File> findFilesRecursively(File rootDir, String filterString) throws IOException {
+		if(!rootDir.isDirectory())
+			throw new IllegalArgumentException("Specified path is not a directory");
+		return new FileFinder(filterString).list(rootDir);
+	}
 
+	
 	public static List<File> getFileListFiltered(File dir, FileFilter filter) {
 		return Arrays.asList(dir.listFiles(filter));
 	}

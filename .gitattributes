@@ -1448,6 +1448,47 @@ dev/datapower/datapower-utils/src/test/resources/files/b/1/file3.txt -text svneo
 dev/datapower/datapower-utils/src/test/resources/files/b/1/file4.txt -text svneol=unset#text/plain
 dev/datapower/datapower-utils/src/test/resources/files/b/2/file5.txt -text svneol=unset#text/plain
 dev/datapower/datapower-utils/src/test/resources/files/c/file6.txt -text
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/RegistrereTPForholdWSEXP_RegistrereTPForholdHttp_Service.wsdl -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/HentTPForholdListeReq.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/HentTPForholdListeResp.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/OpprettTPForholdReq.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/SlettTPForholdReq.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/TPForhold.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultBase.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultGenerisk.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultKanIkkeSlettes.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultPersonIkkeFunnet.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultTjenestepensjonForholdIkkeFunnet.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/inf/RegistrereTPForhold.wsdl -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Adresse.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Beregning.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/BeregningNokkelinfo.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/HentSamordningsdataReq.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/HentSamordningsdataResp.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/KrigOgGammelYrkesskade.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/LagreTPYtelseReq.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/LagreTPYtelseResp.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/OpprettRefusjonskravReq.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/PeriodisertBelop.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Person.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Poengrekke.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/SlettTPYtelseReq.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Sluttpoengtall.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/TPYtelse.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Vedtak.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Vilkarsvedtak.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultAlleredeMottattRefusjonskrav.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultBase.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultGenerisk.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultRefusjonskravUtenforSamordningspliktigPeriode.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultRefusjonskravUtenforTidsfrist.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultSamordningsIdIkkeFunnet.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultSamordningsIdOgPersonKorrelererIkke.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPForholdIkkeIverksatt.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPYtelseAlleredeRegistrert.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPYtelseIkkeFunnet.xsd -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/inf/TPSamordningRegistrering.wsdl -text svneol=unset#text/plain
+dev/datapower/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/ws/TPSamordningRegistreringWSEXP_TPSamordningRegistreringHttp_Service.wsdl -text svneol=unset#text/plain
 dev/datapower/datapower-xml-mgmt/pom.xml -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DeviceFileStore.java -text
 dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/ImportFormat.java -text
