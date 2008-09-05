@@ -84,48 +84,54 @@ public class Constants {
 	public static final String SSL_TRUSTSTORE_PASSWORD = "SSL_TRUSTSTORE_PASSWORD";
 	
 	/**
+	 * Public constant to represent the 'help' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String help = "help";
+	
+	/**
 	 * Public constant to represent the 'configFile' string from
-	 * the configuration file and properties related to that
+	 * <code>CommandLine</code> object
 	 */
 	public static final String configFile = "configFile";
 	
 	/**
-	 * Public constant to represent the 'LOGFILE_PATH' string from
-	 * the configuration file and properties related to that
+	 * Public constant to represent the 'logFilePath' string from
+	 * <code>CommandLine</code> object
 	 */
 	public static final String logFilePath = "logFilePath";
 	
 	/**
-	 * Public constant to represent the 'LOGFILE_FILENAME' string from
-	 * the configuration file and properties related to that
+	 * Public constant to represent the 'logFileName' string from
+	 * <code>CommandLine</code> object
 	 */
 	public static final String logFileName = "logFileName";
 	
 	/**
-	 * Public constant to represent the 'MAX_RESULT_SET' string from
-	 * the configuration file and properties related to that
+	 * Public constant to represent the 'maxResultSet' string from
+	 * <code>CommandLine</code> object
 	 */
 	public static final String maxResultSet = "maxResultSet";
 
 	/**
-	 * Public constant to represent the 'MAX_RESULT_SET_PAGING' string from
-	 * the configuration file and properties related to that
+	 * Public constant to represent the 'maxResultSetPaging' string from
+	 * <code>CommandLine</code> object
 	 */
 	public static final String maxResultSetPaging = "maxResultSetPaging";
 
 	/**
 	 * Public constant to represent the 'messageType' string from
-	 * the configuration file and properties related to that
+	 * <code>CommandLine</code> object
 	 */
 	public static final String messageType = "messageType";
 	public static final String[] messageTypeOptions = {"ALL", "TPSEndringsmelding"};
 
 	/**
 	 * Public constant to represent the 'action' string from
-	 * the configuration file and properties related to that
+	 * <code>CommandLine</code> object
 	 */
 	public static final String action = "action";
-	public static final String[] actionOptions = {"REPORT", "DISCARD", "RESUBMIT", "STATUS"};
+	public static final String[] actionOptions = {"REPORT", "DISCARD", "RESUBMIT", "STATUS", "TIMEFRAME"};
 	
 	/**
 	 * Public constant to represent the 'FEM_EDA_TYPE_ACTION_PARAM' string from
@@ -134,8 +140,17 @@ public class Constants {
 	public static final String FEM_EDA_TYPE_ACTION_PARAM = "FEM_EDA_TYPE_ACTION_PARAM";
 	public static final String[] FEM_EDA_TYPE_PARAM_OPTIONS = {"GENERIC"};
 	
+	/**
+	 * Public constant to represent the 'timeFrame' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String timeFrame = "timeFrame";
 	
-	
+	/**
+	 * Public constant to represent the formatter pattern to be used
+	 * together with <code>Constants.timeFrame</code> operation
+	 */
+	public static final String TIME_FRAME_FORMAT = "dd.MM.yyyy:mmss";
 	
 	/**
 	 * Public constant to represent the Date operation and parameter string from
