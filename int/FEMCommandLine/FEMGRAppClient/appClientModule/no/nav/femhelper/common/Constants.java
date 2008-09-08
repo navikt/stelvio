@@ -150,7 +150,7 @@ public class Constants {
 	 * Public constant to represent the formatter pattern to be used
 	 * together with <code>Constants.timeFrame</code> operation
 	 */
-	public static final String TIME_FRAME_FORMAT = "dd.MM.yyyy:mmss";
+	public static final String TIME_FRAME_FORMAT = "dd.MM.yyyy:hhmm";
 	
 	/**
 	 * Public constant to represent the Date operation and parameter string from

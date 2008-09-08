@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.StringUtils;
+
 import utils.SDOFormatter;
 
 import no.nav.femhelper.common.Constants;
@@ -85,7 +87,8 @@ public class EventFileWriter  {
 		writer.write("DestinationMethod" + separator);
 		writer.write("FailureDate" + separator);
 		writer.write("FailureMessage" + separator);
-		writer.write("DataObject");
+		writer.write("DataObject" + separator);
+		writer.write("CorrelationId");
 		writer.newLine();
 	}
 	
@@ -153,8 +156,12 @@ public class EventFileWriter  {
 		 	}
 		 	
 		 	// Write quotes end
-		 	writer.write("\"");
+		 	writer.write("\"" + separator);
 	 	}
+	 	
+	 	// Write PIID / CorrelationId
+	 	writer.write(getEscapedString(parameters.getCorrelationId()));
+
 	 	
 	 	// Write a empty line the end of this entry and close the writer
 	 	writer.newLine();
@@ -210,15 +217,14 @@ public class EventFileWriter  {
 	 * @return fixed string
 	 */
 	private String getEscapedString(String s) {
-		if (s != null)
-		{	
+		if (s != null) {	
 			String result = s.replaceAll(";", "#"); 
 			//double tegn we don't need
 			result = result.replaceAll("##", "#");
 			return result;
+		} else {
+			return "";
 		}
-		else
-			return s;
 	}
 
 	/**

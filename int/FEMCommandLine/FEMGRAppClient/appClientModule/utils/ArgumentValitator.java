@@ -94,12 +94,11 @@ public class ArgumentValitator {
 		}
 		
 		// timeFrame is validated againts the '-' separator, 
-		// and the date values on both sides are validated against
-		// the ssmm.MMyyyy pattern.
+		// and the date values on both sides are validated against the pattern.
 		String timeFrame = cl.getOptionValue(Constants.timeFrame);
-		if (StringUtils.isEmpty(timeFrame)) {
+		if (Constants.actionOptions[4].equals(action) && StringUtils.isEmpty(timeFrame)) {
 			result.add("Property " + Constants.timeFrame + " is empty");
-		} else {
+		} else if (Constants.actionOptions[4].equals(action)) {
 			
 				// Validate that the String has one, and only one '-'
 				// sign to separate the to- and from date.
@@ -107,16 +106,17 @@ public class ArgumentValitator {
 				if (null == times || times.length != 2) {
 					result.add("Property " + Constants.timeFrame + " is not correct formatted. " +
 							"The pattern is " + Constants.TIME_FRAME_FORMAT);
-				}
+				} else {
 				
-				// Validate the pattern
-				try {
-					SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
-					sdf.parse(times[0]);
-					sdf.parse(times[1]);
-				} catch (ParseException e) {
-					result.add("Property " + Constants.timeFrame + " is not correct formatted. " +
-							"The pattern is " + Constants.TIME_FRAME_FORMAT);
+					// Validate the pattern
+					try {
+						SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
+						sdf.parse(times[0]);
+						sdf.parse(times[1]);
+					} catch (ParseException e) {
+						result.add("Property " + Constants.timeFrame + " is not correct formatted. " +
+								"The pattern is " + Constants.TIME_FRAME_FORMAT);
+					}
 				}
 		}
 		

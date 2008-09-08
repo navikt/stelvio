@@ -54,7 +54,7 @@ public class CommandOptionsBuilder {
 		// This option is requiered
 		Option maxResultSet = OptionBuilder.withLongOpt(Constants.maxResultSet).withValueSeparator().hasArg().create();
 		maxResultSet.setArgName("integer");
-		maxResultSet.setDescription("Default value is xxx. Recommended to use range between x and y ");
+		maxResultSet.setDescription("Recommended to use range between x and y ");
 		
 		// Create command line option for 'maxResultSetPaging'
 		// This option is requiered
@@ -65,7 +65,8 @@ public class CommandOptionsBuilder {
 		// Create command line option for 'timeFrame'
 		Option timeFrame = OptionBuilder.withLongOpt(Constants.timeFrame).withValueSeparator().hasArgs().create();
 		timeFrame.setArgName("timeframe");
-		timeFrame.setDescription("Pattern: ssmm.MMyyyy-ssmm.MMyyyy");
+		timeFrame.setRequired(false);
+		timeFrame.setDescription("Pattern:" + Constants.TIME_FRAME_FORMAT);
 		
 		Options options = new Options();
 		options.addOption(help);

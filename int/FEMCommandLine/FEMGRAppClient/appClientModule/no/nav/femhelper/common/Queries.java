@@ -22,6 +22,9 @@ public class Queries {
 	/** Public constant to represent the query to all failed events from the failure event manager (FEM)in detail */
 	public static final String QUERY_EVENT_WITH_SESSIONID = "getFailedEventsBySessionId";
 	
+	/** Public constant to represent the query to all failed events from the failure event manager (FEM)in detail */
+	public static final String QUERY_EVENT_WITH_MESSAGEID = "getFailedEventsByMessageId";
+	
 	/** Public constant to represent the discard of failed events from the failure event manager (FEM) */
 	public static final String QUERY_DISCARD_FAILED_EVENTS = "discardFailedEvents";
 	

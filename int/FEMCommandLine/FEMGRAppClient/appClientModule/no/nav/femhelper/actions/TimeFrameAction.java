@@ -21,6 +21,7 @@ import no.nav.femhelper.filewriters.EventFileWriter;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
+import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
 import com.ibm.websphere.management.exception.ConnectorException;
 
@@ -45,7 +46,7 @@ public class TimeFrameAction extends AbstractAction {
 		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
 		fileWriter = new EventFileWriter(path, filename);
 		LOGGER.log(Level.FINE, "Write discard header part.");
-		fileWriter.writeDiscardHeader();
+		fileWriter.writeHeader();
 		
 		// Parse the date objects. The values are allready validated
 		// agains the pattern defined in Constants.TIME_FRAME_FORMAT
@@ -70,16 +71,25 @@ public class TimeFrameAction extends AbstractAction {
 		List events = (List) adminClient.invoke(failEventManager, timeQuery, pagepar, pagesig);
 		Iterator it = events.iterator();
 		
+		
+		
 		while (it.hasNext()) {
 			LOGGER.log(Level.INFO,"Reporting events...please wait!");
 			
+			FailedEvent failedEvent = (FailedEvent) it.next();
+			String messageID[] = new String[]{failedEvent.getMsgId()};
+			
 			// Write the report
-			String femQuery = Queries.QUERY_EVENT_WITH_PARAMETERS;
-			Object[] BOparams = new Object[] { new String((String) it.next()) };
+			String query = Queries.QUERY_EVENT_WITH_PARAMETERS;
 			String[] BOsignature = new String[] { "java.lang.String" };
-			FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(failEventManager, femQuery, BOparams, BOsignature);
-			fileWriter.writeCSVEvent(failedEventWithParameters, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
+			
+			// Write the report
+			FailedEventWithParameters p = (FailedEventWithParameters) adminClient.invoke(failEventManager, query, messageID, BOsignature);
+			fileWriter.writeCSVEvent(p, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
 		}
+		
+		LOGGER.log(Level.INFO,"Closing filewriter");
+		fileWriter.close();
 		
 		LOGGER.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
 		
