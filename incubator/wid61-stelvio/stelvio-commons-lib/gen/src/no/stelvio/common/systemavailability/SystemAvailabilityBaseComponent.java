@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
@@ -22,6 +23,7 @@ import com.ibm.websphere.sca.Service;
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceCallback;
 import com.ibm.websphere.sca.ServiceManager;
+import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.Ticket;
 import com.ibm.websphere.sca.scdl.OperationType;
@@ -112,36 +114,49 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 							DataObject preRecorded=null;
 							try{
 								preRecorded=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
-							}catch(Throwable t){								
+							}catch(ServiceBusinessException sbe){
+							    //This is OK, as it is a prerecorded SBE
 							}
-							if (preRecorded==null){
+							catch(ServiceRuntimeException sre){
+							    //This is also OK as it is a prerecorded SRE
+							}
+							catch(RuntimeException re){
+								//No prerecorded stub found
+														
 							
 								long timestamp=System.currentTimeMillis();
 								String requestID=Long.toString(timestamp);
+								
+								//LS
+								//String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
+								Type sdoTypeReq = ((DataObject)arg1).getType();
+								String requestObjectName=sdoTypeReq.getName();
+								recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
+								Object ret;
 								try{
-									//LS
-									//String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
-									Type sdoTypeReq = ((DataObject)arg1).getType();
-									String requestObjectName=sdoTypeReq.getName();
-									recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
-									Object ret=partnerService.invoke(arg0,arg1); 
-									//LS 
-									//String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
-									Type sdoTypeRes = ((DataObject)arg1).getType();
-									String responseObjectName=sdoTypeRes.getName();
-									
-									//System.err.println("Normal");
-									recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
-									return ret;
+									ret=partnerService.invoke(arg0,arg1); 
 								}catch(ServiceBusinessException sbe){
 									//System.err.println("Exception");
 									recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
 									throw sbe;
 								}
-							}else{
-								System.out.println("Found prerecorded matching stub data for "+systemName+"."+arg0.getName()+". Ignoring.");
-								return partnerService.invoke(arg0,arg1);
+								catch(ServiceRuntimeException sre){
+								    recordStubDataRuntimeException(arg0,requestID,(ManagedMultipartImpl)arg1,sre);
+									throw sre;
+								}
+								//LS 
+								//String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
+								Type sdoTypeRes = ((DataObject)arg1).getType();
+								String responseObjectName=sdoTypeRes.getName();
+								
+								//System.err.println("Normal");
+								recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
+								return ret;
+								
 							}
+							System.out.println("Found prerecorded matching stub data for "+systemName+"."+arg0.getName()+". Ignoring.");
+							return partnerService.invoke(arg0,arg1);
+							
 							
 							
 						}
@@ -160,9 +175,18 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 * @param impl
 	 * @param sbe
 	 */
-	private void recordStubDataException(OperationType arg0, String requestID,ManagedMultipartImpl impl, ServiceBusinessException sbe) {
+	private void recordStubDataException(OperationType arg0, String requestID,ManagedMultipartImpl impl, Throwable sbe) {
 		try {
 			storeObjectOrPrimitive(arg0,sbe,"exception",requestID,"Exception");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	private void recordStubDataRuntimeException(OperationType arg0, String requestID,ManagedMultipartImpl impl, Throwable sbe) {
+		try {
+			storeObjectOrPrimitive(arg0,sbe,"exception",requestID,"RuntimeException");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -284,7 +308,12 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				DataObject requestDataObject= (DataObject) ((ServiceBusinessException)object).getData();
 				BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");
 				xmlSerializerService.writeDataObject(requestDataObject,"http://no.stelvio.stubdata/",requestObjectName,objectFile);
-			}
+			}else 
+			    if (object instanceof ServiceRuntimeException){
+			        PrintWriter pw=new PrintWriter(objectFile);
+			        pw.println(((ServiceRuntimeException)object).getMessage());
+			        pw.close();
+			    }
 		}
 		System.out.println("Recorded stubdata "+dirName+"/Stub_"+requestID+"_"+fileSuffix+".xml");
 		
@@ -354,6 +383,11 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						fis.close();
 						DataObject responseObject=responseObjectDoc.getDataObject();
 						throw new ServiceBusinessException(responseObject);
+					}else{
+					    File runtimeExceptionFile=new File(dirName,tmStamp+"_RuntimeException.xml");
+					    if (runtimeExceptionFile.exists()){
+					        throw new ServiceRuntimeException("A ServiceRuntimeException was recorded, but unfortunately I'm not able yet to provide the original message. It can maybe be found in the recorded data, but I'm pretty dumb.");
+					    }
 					}
 				}
 				
@@ -431,13 +465,22 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					if (!(testSubObject instanceof EObjectContainmentEList)){
 						return false;
 					}
-					if (((EObjectContainmentEList)testSubObject).basicList().size() != ((EObjectContainmentEList)criteriaSubObject).basicList().size())
-						return false;
-					Iterator criteriaIterator=((EObjectContainmentEList)criteriaSubObject).basicList().iterator();
-					Iterator testIterator=((EObjectContainmentEList)testSubObject).basicList().iterator();
-					while (criteriaIterator.hasNext()){
-						if (!match((DataObject)criteriaIterator.next(),(DataObject)testIterator.next()))
-							return false;
+					if (((EObjectContainmentEList)criteriaSubObject).basicList().size()!=0) //The list in criteria has size 0 if nothing is provided. This should match always.
+					{
+//						if (((EObjectContainmentEList)testSubObject).basicList().size() != ((EObjectContainmentEList)criteriaSubObject).basicList().size())
+//							return false;
+						Iterator criteriaIterator=((EObjectContainmentEList)criteriaSubObject).basicList().iterator();						
+						while (criteriaIterator.hasNext()){
+						    boolean foundmatchingelement=false;
+						    DataObject criteriaElement=(DataObject) criteriaIterator.next();
+						    Iterator testIterator=((EObjectContainmentEList)testSubObject).basicList().iterator();
+						    while (testIterator.hasNext()){
+						        if (match(criteriaElement,(DataObject)testIterator.next()))
+						            foundmatchingelement=true;
+						    }
+						    if (!foundmatchingelement)
+						        return false;
+						}
 					}
 				}
 				else
@@ -475,7 +518,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		if (criteriaSubObject instanceof Short && ((Short)criteriaSubObject).shortValue()==0){
 			return true;
 		}else
-		if (criteriaSubObject instanceof Boolean && ((Boolean)criteriaSubObject).booleanValue()==false){
+		if (criteriaSubObject instanceof Boolean && ((Boolean)criteriaSubObject).booleanValue()==false){  //Special case: Booleans that are not included in the Stored Criteria are not Null, they are recorded as false. So we must accept this as always match until further notice
 			return true;
 		}else
 		if (criteriaSubObject instanceof Float && ((Float)criteriaSubObject).floatValue()==0){
