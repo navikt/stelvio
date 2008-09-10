@@ -15,7 +15,6 @@ import javax.management.ReflectionException;
 
 import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Queries;
-import no.nav.femhelper.filewriters.EventFileWriter;
 
 import org.apache.commons.cli.CommandLine;
 
@@ -40,18 +39,21 @@ public class ResubmitAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
-		fileWriter = new EventFileWriter(path, filename);
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
 		
 		LOGGER.log(Level.FINE, "Write header part.");
-		fileWriter.writeDiscardHeader();
+		fileWriter.writeShortHeader();
 	
+		logFileWriter.log("Starting to collect events");
+		
 		ArrayList <String> events = collectEvents(criteria, paging, totalevents, maxresultset);
 		String opResubmit = Queries.QUERY_RESUBMIT_FAILED_EVENTS;
 		
+		logFileWriter.log("Collected " + events.size() + " events");
 		
 		if (!events.isEmpty()) {
 			LOGGER.log(Level.INFO,"Resubmiting #" + events.size() + " events...please wait!");
+			logFileWriter.log("Staring to resubmit " + events.size() + " events");
 			int j = 1;
 			ArrayList <String> chunk = new ArrayList<String>();
 			HashMap<String, String> reportEvents = new HashMap<String, String>();
@@ -148,6 +150,7 @@ public class ResubmitAction extends AbstractAction {
 			
 			LOGGER.log(Level.INFO,"Resubmit of #" + events.size() + " events...done!");
 			LOGGER.log(Level.INFO,"Reporting status of events...please wait!");
+			logFileWriter.log("Completed resubmit of " + events.size() + " events");
 			Iterator it = reportEvents.keySet().iterator();
 			while (it.hasNext()) {
 				String key = (String) it.next();
@@ -155,7 +158,7 @@ public class ResubmitAction extends AbstractAction {
 				String status = values[0];
 				String fdate = values[1];
 				String fmsg = values[2];
-				fileWriter.writeDISCARDEvent(key, status, fdate, fmsg);
+				fileWriter.writeShortEvent(key, status, fdate, fmsg);
 			}
 		}
 		else
@@ -163,10 +166,7 @@ public class ResubmitAction extends AbstractAction {
 			LOGGER.log(Level.WARNING, "No events found to resubmit!");
 		}
 
-
-		
-		fileWriter.close();
-
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		return null;
 
 	}
