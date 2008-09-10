@@ -23,7 +23,6 @@ import org.apache.commons.cli.PosixParser;
 import utils.ArgumentValitator;
 import utils.PropertyUtil;
 
-
 /**
  *  
  * @author persona2c5e3b49756 Schnell
@@ -35,9 +34,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 
-		String sPath = "/tmp"; 
-		String sFilename = "default_events.txt";
-		
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "main");
 		LOGGER.log(Level.INFO, "FEMGRAppClient for WPS 6.1 - Version 0.9");
 		
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
@@ -113,48 +110,45 @@ public class Main {
 		try {
 			LOGGER.log(Level.FINE, "Get instance of EventClient.");
 			AbstractAction statusAction = ActionFactory.getAction(Constants.actionOptions[3], connectProps);
-//			if (!statusAction.isConnected()) {
-//				LOGGER.log(Level.SEVERE, "FEMGRAppClient will now end due to issues with connecting to Failed Event Manager - logged above!");
-//				return;
-//			}
 
 			// Get the total number of events to match with the page size to avoid hughe amount of retrieving
 			Long numberOfEvents = (Long) statusAction.process(null, null, null, false, 0, 0, cl);
 			if (numberOfEvents.intValue() < 1) {
-				LOGGER.log(Level.SEVERE, "The is no events on this Fail Event Manager. The application will terminat");
+				LOGGER.log(Level.INFO, "The is no events on this Fail Event Manager. The application will terminate");
 				System.exit(0);
 			} else {
 				LOGGER.log(Level.INFO, "ACTION REQUIERED! There is events on Fail Event Manager");
 			}
 			
 			// Set to max. fem entries if pagsizse is greater
-			int lPagesize = Integer.valueOf(cl.getOptionValue(Constants.maxResultSet));
-			if (lPagesize > numberOfEvents)
+			int pagesize = Integer.valueOf(cl.getOptionValue(Constants.maxResultSet));
+			if (pagesize > numberOfEvents)
 			{
-				lPagesize = numberOfEvents.intValue();
-				LOGGER.log(Level.INFO, "Set working result set to total number of events (" + lPagesize + ") because MAX_RESULT_SET > TotalEvents.");
+				pagesize = numberOfEvents.intValue();
+				LOGGER.log(Level.INFO, "Set working result set to total number of events (" + pagesize + ") because MAX_RESULT_SET > TotalEvents.");
 			}
 			
 			// Determine paging
-			boolean bPaging = Boolean.parseBoolean(cl.getOptionValue(Constants.maxResultSetPaging).toLowerCase());
+			boolean paging = Boolean.parseBoolean(cl.getOptionValue(Constants.maxResultSetPaging).toLowerCase());
 			
-			String sEdaType = cl.getOptionValue(Constants.messageType);
-			String sEdaTypeAction = cl.getOptionValue(Constants.action);
-			LOGGER.log(Level.INFO, "Running scenario " + sEdaTypeAction + " with filter option " + sEdaType + " and paging option is set to " + bPaging);
-
-			sPath = cl.getOptionValue(Constants.logFilePath);
+			String edaType = cl.getOptionValue(Constants.messageType);
+			String edaTypeAction = cl.getOptionValue(Constants.action);
+			LOGGER.log(Level.INFO, "Running scenario " + edaTypeAction + " with filter option " + edaType + " and paging option is set to " + paging);
+			
 			SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 			Date currentTime = GregorianCalendar.getInstance().getTime();
-			sFilename = Constants.FILE_PREFIX + "_" + sEdaTypeAction + "_" + sEdaType  +"_"+ sdf.format(currentTime) + ".csv";
+			String filename = Constants.FILE_PREFIX + "_" + edaTypeAction + "_" + edaType  +"_"+ sdf.format(currentTime);
+			String path = cl.getOptionValue(Constants.logFilePath);
 			
-			AbstractAction action = ActionFactory.getAction(sEdaTypeAction, connectProps);
-			action.process(sPath, sFilename, sEdaType, bPaging, numberOfEvents, lPagesize, cl);
-			
+			AbstractAction action = ActionFactory.getAction(edaTypeAction, connectProps);
+			action.process(path, filename, edaType, paging, numberOfEvents, pagesize, cl);
 						
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, Constants.METHOD_ERROR + "Exception:StackTrace:");
 			e.printStackTrace();
 		}
+		
 		LOGGER.log(Level.INFO, "FEMGRAppClient done...Thx for using it!");
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "main");
 	}
 }
