@@ -1,6 +1,10 @@
 package no.nav.femhelper.cmdoptions;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import no.nav.femhelper.common.Constants;
+import no.nav.femhelper.filewriters.AbstractFileWriter;
 
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
@@ -9,12 +13,13 @@ import org.apache.commons.lang.ArrayUtils;
 
 public class CommandOptionsBuilder {
 	
-	// Default constructor
-	public CommandOptionsBuilder() {
-		
-	}
+	/**
+	 * Logger instance
+	 */
+	private Logger LOGGER = Logger.getLogger(AbstractFileWriter.class.getName());
 	
 	public Options getOptions() {
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "getOptions");
 		
 		// Create command line option for 'help'
 		Option help = OptionBuilder.withLongOpt(Constants.help).create();
@@ -78,6 +83,8 @@ public class CommandOptionsBuilder {
 		options.addOption(maxResultSet);
 		options.addOption(maxResultSetPaging);
 		options.addOption(timeFrame);
+		
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "getOptions");
 		return options;
 	}
 	
