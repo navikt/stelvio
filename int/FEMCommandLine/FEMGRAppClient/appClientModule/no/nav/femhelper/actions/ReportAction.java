@@ -34,7 +34,7 @@ public class ReportAction extends AbstractAction {
 	@Override
 	Object processEvents(String path, String filename, String criteria, boolean paging, long totalevents, int maxresultset, CommandLine cl) throws IOException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException {
 		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
-		EventFileWriter fileWriter = new EventFileWriter(path, filename);
+		fileWriter = new EventFileWriter(path, filename);
 		
 		LOGGER.log(Level.FINE, "Write CSV header part.");
 		fileWriter.writeHeader();
@@ -42,13 +42,12 @@ public class ReportAction extends AbstractAction {
 		ArrayList <String> events = new ArrayList<String>();
 		events = collectEvents(criteria, paging, totalevents, maxresultset);
 		
-		Iterator it = events.iterator();
-		while (it.hasNext()) {
-			LOGGER.log(Level.INFO,"Reporting events...please wait!");
+		for (int i = 0; i < events.size(); i++) {
+		LOGGER.log(Level.INFO,"Reporting events (" + (i+1) + " of " + events.size() + "). Please wait!");
 			
 			// Write the report
 			String femQuery = Queries.QUERY_EVENT_WITH_PARAMETERS;
-			Object[] BOparams = new Object[] { new String((String) it.next()) };
+			Object[] BOparams = new Object[] { new String((String) events.get(i)) };
 			String[] BOsignature = new String[] { "java.lang.String" };
 			FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(failEventManager, femQuery, BOparams, BOsignature);
 			fileWriter.writeCSVEvent(failedEventWithParameters, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);

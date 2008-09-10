@@ -38,7 +38,7 @@ public class Main {
 		String sPath = "/tmp"; 
 		String sFilename = "default_events.txt";
 		
-		LOGGER.log(Level.INFO, "FEMGRAppClient for WPS 6.1 - Version 1.0");
+		LOGGER.log(Level.INFO, "FEMGRAppClient for WPS 6.1 - Version 0.9");
 		
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
 		Options options = optionsBuilder.getOptions();
@@ -57,11 +57,11 @@ public class Main {
 			formatter.setWidth(500);
 			
 			System.out.println("============================================================");
-			System.out.println("Fail Event Manager (FEM) Helper");
+			System.out.println("Fail Event Manager (FEM) Helper - Version 0.9");
 			System.out.println("============================================================");
-			System.out.println("Sample usage: launchClient.sh FEMGRAppClientEAR.ear " +
+			System.out.println("Sample usage: launchClient.sh FEMHelper.ear " +
 					"--configFile=/was_app/config/fem/fem.properties " +
-					"--logFilePath=/was_app/logs/fem --maxResultSet=10 " +
+					"--logFilePath=/was_app/logs/fem --maxResultSet=1000 " +
 					"--maxResultSetPaging=false --messageType=ALL --action=REPORT");		
 			formatter.printHelp("FEM HELPER", options);
 			System.exit(0);
@@ -75,7 +75,7 @@ public class Main {
 		String configFilePath = cl.getOptionValue(Constants.configFile);
 		File propertyFile = new File(configFilePath);
 		if (!propertyFile.exists()) {
-			LOGGER.log(Level.WARNING, Constants.METHOD_ERROR + "The property file does not exist");
+			LOGGER.log(Level.WARNING, Constants.METHOD_ERROR + "The property file does not exist (" + configFilePath + ")");
 			System.exit(0);
 		}
 		

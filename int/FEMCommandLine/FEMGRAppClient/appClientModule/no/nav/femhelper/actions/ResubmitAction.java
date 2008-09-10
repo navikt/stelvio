@@ -32,7 +32,7 @@ public class ResubmitAction extends AbstractAction {
 	/**
 	 * Logger instance
 	 */
-	private Logger LOGGER = Logger.getLogger(DeleteAction.class.getName());
+	private Logger LOGGER = Logger.getLogger(ResubmitAction.class.getName());
 	
 	@Override
 	Object processEvents(String path, String filename, String criteria,
@@ -40,50 +40,41 @@ public class ResubmitAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		EventFileWriter fileWriter=null;
 		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
 		fileWriter = new EventFileWriter(path, filename);
-		LOGGER.log(Level.FINE, "Write discard header part.");
+		
+		LOGGER.log(Level.FINE, "Write header part.");
 		fileWriter.writeDiscardHeader();
 	
 		ArrayList <String> events = collectEvents(criteria, paging, totalevents, maxresultset);
+		String opResubmit = Queries.QUERY_RESUBMIT_FAILED_EVENTS;
 		
-		// for test purpose to simulate failure from FEM
-		/*
-		try {
-			LOGGER.log(Level.WARNING, "SLLLLLLLLLLLLLLEEEEEEEPING!!!!");
-			Thread.sleep(30000);
-		} catch (InterruptedException ie) {
-			ie.printStackTrace();
-		}
-		*/
 		
 		if (!events.isEmpty()) {
-			LOGGER.log(Level.INFO,"Discarding #" + events.size() + " events...please wait!");
+			LOGGER.log(Level.INFO,"Resubmiting #" + events.size() + " events...please wait!");
 			int j = 1;
-			ArrayList <String> deleteChunk = new ArrayList<String>();
+			ArrayList <String> chunk = new ArrayList<String>();
 			HashMap<String, String> reportEvents = new HashMap<String, String>();
 			for (int i = 0; i < events.size(); i++) {
-				deleteChunk.add(events.get(i));
+				chunk.add(events.get(i));
 				reportEvents.put(events.get(i), new String("MARKED~ ~ "));
 
 				// for each result set
 				if (j==Constants.MAX_DELETE)
 				{
-					LOGGER.log(Level.INFO, "Discard result set of events fra #" + ((i+1)-Constants.MAX_DELETE) + " to #" + (i+1));
-					String passIn[] = new String[deleteChunk.size()];
+					LOGGER.log(Level.INFO, "Resubmited result set of events from #" + ((i+1)-Constants.MAX_DELETE) + " to #" + (i+1));
+					String passIn[] = new String[chunk.size()];
 				 	for (int d = 0; d < passIn.length; d++) {
-						passIn[d] = deleteChunk.get(d);
+						passIn[d] = chunk.get(d);
 					}
-					String opDelete = Queries.QUERY_RESUBMIT_FAILED_EVENTS;
 					Object[] para = new Object[] {passIn};  
 				 	String[] sig = new String[] {"[Ljava.lang.String;"};
 				 	try {
-						adminClient.invoke(failEventManager, opDelete, para, sig);
+						adminClient.invoke(failEventManager, opResubmit, para, sig);
 						// no exception update hashtable for reporting
 						for (int d = 0; d < passIn.length; d++) {
 							if (reportEvents.containsKey(passIn[d])) {
-								reportEvents.put(passIn[d], "DELETED~ ~ ");
+								reportEvents.put(passIn[d], "RESUBMITED~ ~ ");
 							}
 						}
 					} catch (MBeanException e) {
@@ -99,36 +90,35 @@ public class ResubmitAction extends AbstractAction {
 							//UPDATE ALL the rest to DELETED
 							for (int d = 0; d < passIn.length; d++) {
 								if (reportEvents.get(passIn[d]).indexOf("FAILURE")==-1) {
-									reportEvents.put(passIn[d], "DELETED~ ~ ");
+									reportEvents.put(passIn[d], "RESUBMITED~ ~ ");
 								}
 							}	
 						}
 					}
 					// reset chunk iterator
 					j=1;
-					deleteChunk.clear();
+					chunk.clear();
 				}
 				// the last chunk
 				else if ((events.size()-i) < Constants.MAX_DELETE && events.size()==(i+1)) {
 					
 					if (events.size() < Constants.MAX_DELETE)
-						LOGGER.log(Level.INFO, "Delete result set of #" + (i+1) + " events" );
+						LOGGER.log(Level.INFO, "Resubmit result set of #" + (i+1) + " events" );
 					else
-						LOGGER.log(Level.INFO, "Delete final result set of #" + deleteChunk.size() + " events" );
+						LOGGER.log(Level.INFO, "Resubmit final result set of #" + chunk.size() + " events" );
 
-					String passIn[] = new String[deleteChunk.size()];
+					String passIn[] = new String[chunk.size()];
 				 	for (int d = 0; d < passIn.length; d++) {
-						passIn[d] = deleteChunk.get(d);
+						passIn[d] = chunk.get(d);
 					}
-					String opDelete = Queries.QUERY_DISCARD_FAILED_EVENTS;
 					Object[] para = new Object[] {passIn};  
 				 	String[] sig = new String[] {"[Ljava.lang.String;"};
 				 	try {
-						adminClient.invoke(failEventManager, opDelete, para, sig);
+						adminClient.invoke(failEventManager, opResubmit, para, sig);
 						// no exception update hashtable for reporting
 						for (int d = 0; d < passIn.length; d++) {
 							if (reportEvents.containsKey(passIn[d])) {
-								reportEvents.put(passIn[d], "DELETE~ ~ ");
+								reportEvents.put(passIn[d], "RESUBMIT~ ~ ");
 							}
 						}
 					} catch (MBeanException e) {
@@ -144,20 +134,20 @@ public class ResubmitAction extends AbstractAction {
 							//UPDATE ALL the rest to DELETED
 							for (int d = 0; d < passIn.length; d++) {
 								if (reportEvents.get(passIn[d]).indexOf("FAILURE")==-1) {
-									reportEvents.put(passIn[d], "DELETED~ ~ ");
+									reportEvents.put(passIn[d], "RESUBMITED~ ~ ");
 								}
 							}	
 						}
 					}
 					// reset chunk iterator
 					j=1;
-					deleteChunk.clear();
+					chunk.clear();
 				}
 				j++;
 			} // event for
 			
-			LOGGER.log(Level.INFO,"Discarding of #" + events.size() + " events...done!");
-			LOGGER.log(Level.INFO,"Reporting status of discard events...please wait!");
+			LOGGER.log(Level.INFO,"Resubmit of #" + events.size() + " events...done!");
+			LOGGER.log(Level.INFO,"Reporting status of events...please wait!");
 			Iterator it = reportEvents.keySet().iterator();
 			while (it.hasNext()) {
 				String key = (String) it.next();
@@ -170,14 +160,13 @@ public class ResubmitAction extends AbstractAction {
 		}
 		else
 		{
-			LOGGER.log(Level.WARNING, "No events found to discard!");
+			LOGGER.log(Level.WARNING, "No events found to resubmit!");
 		}
 
 
 		
 		fileWriter.close();
 
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "EventClient.reportEvents");
 		return null;
 
 	}

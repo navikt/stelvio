@@ -54,7 +54,7 @@ public class CommandOptionsBuilder {
 		// This option is requiered
 		Option maxResultSet = OptionBuilder.withLongOpt(Constants.maxResultSet).withValueSeparator().hasArg().create();
 		maxResultSet.setArgName("integer");
-		maxResultSet.setDescription("Recommended to use range between x and y ");
+		maxResultSet.setDescription("Recommended to use range between 100 and 1000. This is a restriction due to JVM memory limitations");
 		
 		// Create command line option for 'maxResultSetPaging'
 		// This option is requiered

@@ -29,7 +29,7 @@ public class Queries {
 	public static final String QUERY_DISCARD_FAILED_EVENTS = "discardFailedEvents";
 	
 	/** Public constant to represent the resubmit of failed events from the failure event manager (FEM) */
-	public static final String QUERY_RESUBMIT_FAILED_EVENTS = "discardFailedEvents";
+	public static final String QUERY_RESUBMIT_FAILED_EVENTS = "resubmitFailedEvents";
 	
 	/** Public constant to represent the discard of all failed events from the failure event manager (FEM) */
 	public static final String QUERY_DISCARD_ALL_FAILED_EVENTS = "discardAll";

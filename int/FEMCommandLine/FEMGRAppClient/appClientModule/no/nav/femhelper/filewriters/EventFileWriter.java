@@ -90,6 +90,7 @@ public class EventFileWriter  {
 		writer.write("DataObject" + separator);
 		writer.write("CorrelationId");
 		writer.newLine();
+		writer.flush();
 	}
 	
 	/**
@@ -165,6 +166,9 @@ public class EventFileWriter  {
 	 	
 	 	// Write a empty line the end of this entry and close the writer
 	 	writer.newLine();
+	 	
+	 	writer.flush();
+	 	
 	 	LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "method writeEvent2");
 	}
 
@@ -178,6 +182,7 @@ public class EventFileWriter  {
 		writer.write("FailureDate" + separator);
 		writer.write("FailureMessage");
 		writer.newLine();
+		writer.flush();
 	}
 
 	/**
@@ -206,6 +211,9 @@ public class EventFileWriter  {
 
 	 	// Write a empty line the end of this entry and close the writer
 	 	writer.newLine();
+	 	
+	 	writer.flush();
+	 	
 	 	LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "method writeDISCARDEvent");
 	}
 	
@@ -232,7 +240,9 @@ public class EventFileWriter  {
 	 */
 	public void close() {
 		try {
-			writer.flush();
+			if (null != writer) {
+				writer.flush();
+			}
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, "ERROR: Might not all reported due to IOException : StackTrace:");
 			e.printStackTrace();

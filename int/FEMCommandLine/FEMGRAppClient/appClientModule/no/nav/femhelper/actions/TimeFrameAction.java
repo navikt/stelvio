@@ -42,7 +42,6 @@ public class TimeFrameAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		EventFileWriter fileWriter=null;
 		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
 		fileWriter = new EventFileWriter(path, filename);
 		LOGGER.log(Level.FINE, "Write discard header part.");

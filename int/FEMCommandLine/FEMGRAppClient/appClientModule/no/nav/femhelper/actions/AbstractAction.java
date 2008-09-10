@@ -26,6 +26,7 @@ import utils.PropertyMapper;
 
 import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Queries;
+import no.nav.femhelper.filewriters.EventFileWriter;
 
 import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.websphere.management.AdminClient;
@@ -59,13 +60,15 @@ public abstract class AbstractAction {
 	/**
 	 * AdminClient instance
 	 */
-	protected AdminClient adminClient = null;
+	protected AdminClient adminClient;
 	
 	/**
 	 * ObjectName object to represent the FEM Bean
 	 */
-	protected ObjectName failEventManager = null;
+	protected ObjectName failEventManager;
 	
+	protected EventFileWriter fileWriter;
+		
 	private boolean connected;
 	
 	/**
@@ -142,6 +145,8 @@ public abstract class AbstractAction {
 			LOGGER.log(Level.SEVERE, Constants.METHOD_ERROR + "ConnectorException:StackTrace:");
 			e.printStackTrace();
 		}
+		
+		LOGGER.log(Level.INFO, "Closing FileWriter if open");
 		
 		this.disconnect();
 		
@@ -260,12 +265,16 @@ public abstract class AbstractAction {
 				if (!lastEventId.equals(currEventId)) {
 
 					// if criteria == null all event id's put into ArrayList
-					if (criteria == null) {
+					if (criteria == null || "ALL".equals(criteria.toUpperCase())) {
 						events.add(currEventId);	
 					} else {
 						// only with criteria -> what kind of interface
-						if (failedEvent.getSessionId().toLowerCase().indexOf(criteria.toLowerCase()) != -1)	{
-							events.add(currEventId);	
+						if (StringUtils.contains(failedEvent.getSessionId(), criteria))	{
+							events.add(currEventId);
+						} else if (StringUtils.contains(failedEvent.getSourceModuleName(), criteria)) {
+							events.add(currEventId);
+						} else if (StringUtils.contains(failedEvent.getDestinationModuleName(), criteria)) {
+							events.add(currEventId);
 						}
 					}
 				}
