@@ -2928,7 +2928,9 @@ int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/actions/TimeF
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/cmdoptions/CommandOptionsBuilder.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/common/Constants.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/common/Queries.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/filewriters/AbstractFileWriter.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/filewriters/EventFileWriter.java -text svneol=unset#text/plain
+int/FEMCommandLine/FEMGRAppClient/appClientModule/no/nav/femhelper/filewriters/LogFileWriter.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/ArgumentValitator.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyMapper.java -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClient/appClientModule/utils/PropertyUtil.java -text svneol=unset#text/plain

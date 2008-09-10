@@ -28,35 +28,12 @@ import commonj.sdo.DataObject;
  * @author Andreas Røe
  */
 
-public class EventFileWriter  {
+public class EventFileWriter extends AbstractFileWriter {
 	
 	/**
 	 * Logger instance
 	 */
 	private Logger LOGGER = Logger.getLogger(EventFileWriter.class.getName());
-	
-	/**
-	 * Private constant for this class to organize the content properly
-	 * in the output file
-	 */
-	@SuppressWarnings("unused")
-	private static final String TABULATOR = "\t\t";
-	
-	/**
-	 * Separator to use in CSV file
-	 */
-	private static final String separator = ";";
-	
-	/**
-	 * TODO AR Replace with a Apache Commons StringUtils.EMPTY
-	 */
-	private static final String EMPTY = " ";
-	
-	/**
-	 * Used to do all the printing. Declared as BufferedWriter and not
-	 * just Writer to inherit the <code>newLine()</code> method
-	 */
-	private BufferedWriter writer;
 	
 	/**
 	 * Default parameterized constructor
@@ -67,6 +44,13 @@ public class EventFileWriter  {
 	 */
 	public EventFileWriter(String path, String filename) throws IOException {
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "EventFileWriter()");
+		
+		if (StringUtils.isEmpty(path)) {
+			String tempFolderProperty = "java.io.tmpdir";
+			String tempFolder = System.getProperty(tempFolderProperty);
+			path = tempFolder;
+		}
+		
 		String completePath = path + File.separatorChar + filename;
 		LOGGER.log(Level.FINE, "Creating instance of BufferedWriter with path: " + completePath);
 		writer = new BufferedWriter(new FileWriter(completePath, true));
@@ -77,6 +61,8 @@ public class EventFileWriter  {
 	 * write the header in the csv file
 	 */
 	public void writeHeader () throws IOException {
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "writeHeader");
+		
 		writer.write("MessageId" + separator);
 		writer.write("SessionId" + separator);
 		writer.write("InteractionType" + separator);
@@ -91,6 +77,8 @@ public class EventFileWriter  {
 		writer.write("CorrelationId");
 		writer.newLine();
 		writer.flush();
+		
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "writeHeader");
 	}
 	
 	/**
@@ -102,7 +90,7 @@ public class EventFileWriter  {
 	 */
 	public void writeCSVEvent (FailedEventWithParameters parameters, AdminClient adminClient, String dateFormat) throws IOException {
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "method writeEvent2");
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "writeCSVEvent");
 		
 		// Write information about this event
 		writer.write(getEscapedString(parameters.getMsgId()) + separator);
@@ -169,20 +157,22 @@ public class EventFileWriter  {
 	 	
 	 	writer.flush();
 	 	
-	 	LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "method writeEvent2");
+	 	LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "writeCSVEvent");
 	}
 
 	
 	/**
 	 * write the discard header in the csv file
 	 */
-	public void writeDiscardHeader () throws IOException {
+	public void writeShortHeader () throws IOException {
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "writeShortHeader");
 		writer.write("MessageId" + separator);
 		writer.write("Status" + separator);
 		writer.write("FailureDate" + separator);
 		writer.write("FailureMessage");
 		writer.newLine();
 		writer.flush();
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "writeShortHeader");
 	}
 
 	/**
@@ -192,9 +182,9 @@ public class EventFileWriter  {
 	 * @param adminClient
 	 * @throws IOException
 	 */
-	public void writeDISCARDEvent (String MsgId, String Status, String fDate, String fMsg) throws IOException {
+	public void writeShortEvent (String MsgId, String Status, String fDate, String fMsg) throws IOException {
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "method writeDISCARDEvent");
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "writeShortEvent");
 		
 		// Write information about this event
 		writer.write(getEscapedString(MsgId) + separator);
@@ -214,7 +204,7 @@ public class EventFileWriter  {
 	 	
 	 	writer.flush();
 	 	
-	 	LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "method writeDISCARDEvent");
+	 	LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "writeShortEvent");
 	}
 	
 	/**
@@ -225,28 +215,14 @@ public class EventFileWriter  {
 	 * @return fixed string
 	 */
 	private String getEscapedString(String s) {
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "getEscapedString");
 		if (s != null) {	
 			String result = s.replaceAll(";", "#"); 
 			//double tegn we don't need
 			result = result.replaceAll("##", "#");
 			return result;
-		} else {
-			return "";
-		}
-	}
-
-	/**
-	 * Close the EventWriterFile and flush all
-	 */
-	public void close() {
-		try {
-			if (null != writer) {
-				writer.flush();
-			}
-		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "ERROR: Might not all reported due to IOException : StackTrace:");
-			e.printStackTrace();
-		}
-		
+		} 
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "getEscapedString");
+		return StringUtils.EMPTY;
 	}
 }
