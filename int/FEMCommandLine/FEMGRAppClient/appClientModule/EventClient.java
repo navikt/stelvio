@@ -227,7 +227,7 @@ public class EventClient {
 			LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
 			fileWriter = new EventFileWriter(path, filename);
 			LOGGER.log(Level.FINE, "Write discard header part.");
-			fileWriter.writeDiscardHeader();
+			fileWriter.writeShortHeader();
 		
 			ArrayList <String> events = new ArrayList<String>();
 			// collect events before delete
@@ -350,7 +350,7 @@ public class EventClient {
 					String status = values[0];
 					String fdate = values[1];
 					String fmsg = values[2];
-					fileWriter.writeDISCARDEvent(key, status, fdate, fmsg);
+					fileWriter.writeShortEvent(key, status, fdate, fmsg);
 				}
 			}
 			else
@@ -400,7 +400,7 @@ public class EventClient {
 			LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
 			fileWriter = new EventFileWriter(path, filename);
 			LOGGER.log(Level.FINE, "Write discard header part.");
-			fileWriter.writeDiscardHeader();
+			fileWriter.writeShortHeader();
 		
 			ArrayList <String> events = collectEvents(criteria, paging, totalevents, maxresultset);
 			
@@ -521,7 +521,7 @@ public class EventClient {
 					String status = values[0];
 					String fdate = values[1];
 					String fmsg = values[2];
-					fileWriter.writeDISCARDEvent(key, status, fdate, fmsg);
+					fileWriter.writeShortEvent(key, status, fdate, fmsg);
 				}
 			}
 			else
