@@ -3,6 +3,8 @@ package utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -16,7 +18,14 @@ import no.nav.femhelper.common.Constants;
  */
 public class PropertyUtil {
 	
+	/**
+	 * Logger instance
+	 */
+	private static Logger LOGGER = Logger.getLogger(PropertyUtil.class.getName());
+	
 	public List validateProperties(Properties properties) {
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "validateProperties");
+		
 		List<String> result = new ArrayList<String>();
 
 		// Validate property CONNECTOR_HOST.
@@ -55,6 +64,7 @@ public class PropertyUtil {
 			result.add("Property " + Constants.USERNAME + " must be present if " + Constants.CONNECTOR_SECURITY_ENABLED + " is true");
 		}	
 
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT+ "validateProperties");
 		return result;
 	}
 }

@@ -25,6 +25,8 @@ public class ArgumentValitator {
 	private static Logger LOGGER = Logger.getLogger(ArgumentValitator.class.getName());
 	
 	public List validate(CommandLine cl) {
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "validate");
+		
 		List <String> result = new ArrayList<String>();
 		
 		// logFilePath
@@ -120,6 +122,7 @@ public class ArgumentValitator {
 				}
 		}
 		
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT+ "validate");
 		return result;
 	}
 }

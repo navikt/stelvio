@@ -1,6 +1,8 @@
 package utils;
 
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import no.nav.femhelper.common.Constants;
 
@@ -23,6 +25,11 @@ import com.ibm.websphere.management.AdminClient;
 public class PropertyMapper {
 	
 	/**
+	 * Logger instance
+	 */
+	private static Logger LOGGER = Logger.getLogger(PropertyMapper.class.getName());
+	
+	/**
 	 * Default constructor
 	 */
 	public PropertyMapper() {
@@ -39,6 +46,8 @@ public class PropertyMapper {
 	 * @return a properly mapped set of properties
 	 */
 	public Properties getMappedProperties(Properties src) {
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "getMappedProperties");
+		
 		Properties result = new Properties();
 
 		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_HOST))) {
@@ -84,6 +93,7 @@ public class PropertyMapper {
 				}
 		}
 	
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT+ "getMappedProperties");
 		return result;
 	}
 }
