@@ -19,14 +19,15 @@ import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import javax.management.ReflectionException;
 
+import no.nav.femhelper.common.Constants;
+import no.nav.femhelper.common.Queries;
+import no.nav.femhelper.filewriters.EventFileWriter;
+import no.nav.femhelper.filewriters.LogFileWriter;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
 import utils.PropertyMapper;
-
-import no.nav.femhelper.common.Constants;
-import no.nav.femhelper.common.Queries;
-import no.nav.femhelper.filewriters.EventFileWriter;
 
 import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.websphere.management.AdminClient;
@@ -68,6 +69,8 @@ public abstract class AbstractAction {
 	protected ObjectName failEventManager;
 	
 	protected EventFileWriter fileWriter;
+	
+	protected LogFileWriter logFileWriter;
 		
 	private boolean connected;
 	
@@ -85,6 +88,9 @@ public abstract class AbstractAction {
 	 * @return true or false if connect was working
 	 */
 	private boolean connect () throws ConnectorException, MalformedObjectNameException, NullPointerException {
+		
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "connect");
+		
 		// Map configuration to ensure additional parameters not are added to 
 		// the configuration file. We do not want those to be provided directly
 		// to the AdminClientFactory.
@@ -96,18 +102,23 @@ public abstract class AbstractAction {
 	 	// Testing connection with query to FailedEventManager
 		ObjectName queryName = new ObjectName("WebSphere:*,type=FailedEventManager");
 	 	Set s = adminClient.queryNames(queryName, null);
+	 	boolean result = false;
 	 	if (!s.isEmpty()) {
 			failEventManager = (ObjectName) s.iterator().next();
 			LOGGER.log(Level.FINE, "Connected to Failed Event Manager MBean.");
-		 	return true;
+			result = true;
 		} else {
 			LOGGER.log(Level.WARNING, "Failed Event Manager MBean was not found");
-			return false;
+			result = false;
 		}
+
+	 	LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "connect");
+	 	return result;
 	}
 	
 	private void disconnect() {
-
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "disconnect");
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "disconnect");
 	}
 	
 	abstract Object processEvents(String path, String filename,
@@ -121,13 +132,21 @@ public abstract class AbstractAction {
 			throws MalformedObjectNameException, ConnectorException,
 			NullPointerException {
 		
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
+		
 		// Log properties before creation of the AdminClient objects
 		this.logProperties();
 		
 		this.connected = this.connect();
 		
+		// Create file writer instances
+		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
+		
 		Object result = null;
 		try {
+			fileWriter = new EventFileWriter(path, filename + ".csv");
+			logFileWriter = new LogFileWriter(path, filename + ".log");
+			
 			result = this.processEvents(path, filename, criteria, paging, totalevents, maxresultset, cl);
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, Constants.METHOD_ERROR + "IOException:StackTrace:");			
@@ -146,9 +165,18 @@ public abstract class AbstractAction {
 			e.printStackTrace();
 		}
 		
-		LOGGER.log(Level.INFO, "Closing FileWriter if open");
+		// Close writers. (The close() method handles if the writer allready have been closed)
+		if (null != filename) {
+			fileWriter.close();
+		}
+		
+		if (null != logFileWriter) {
+			logFileWriter.close();
+		}
 		
 		this.disconnect();
+		
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
 		
 		return result;
 	}
@@ -159,6 +187,8 @@ public abstract class AbstractAction {
 	 * (excluding the password) 
 	 */
 	private void logProperties() {
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "logProperties");
+		
 		LOGGER.log(Level.FINE, "Initializing admin client with the following properties:");
 		LOGGER.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(Constants.CONNECTOR_HOST));
 		LOGGER.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(Constants.CONNECTOR_PORT));
@@ -172,6 +202,8 @@ public abstract class AbstractAction {
 		if (!"".equals(properties.getProperty(Constants.SSL_TRUSTSTORE))) {
 			LOGGER.log(Level.FINE, Constants.SSL_TRUSTSTORE + ": " + properties.getProperty(Constants.SSL_TRUSTSTORE));
 		}
+		
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "logProperties");
 	}
 	
 	/**
@@ -184,9 +216,11 @@ public abstract class AbstractAction {
 	 * @return a filtered list of failed events
 	 */
 	protected ArrayList <String> collectEvents (String criteria, boolean paging, long totalevents, int maxresultset) 
-		throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException{
+		throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, IOException{
 
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "EventClient.collectEvents");
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
+		
+		logFileWriter.log("Starting to collect events");
 		
 		// Method level variables
 		int iEvents=1;
@@ -295,7 +329,9 @@ public abstract class AbstractAction {
 		if (events.size() > 0) {
 			LOGGER.log(Level.INFO, "Collect events is done with result of event(s): #" + events.size());			
 		}
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "EventClient.collectEvents");
+		
+		logFileWriter.log("Collected " + events.size() + " events");
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "collectEvents");
 		return events;		
 	}
 	

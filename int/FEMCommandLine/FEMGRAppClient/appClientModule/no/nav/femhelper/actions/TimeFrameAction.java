@@ -16,7 +16,6 @@ import javax.management.ReflectionException;
 
 import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Queries;
-import no.nav.femhelper.filewriters.EventFileWriter;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
@@ -42,8 +41,8 @@ public class TimeFrameAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		LOGGER.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
-		fileWriter = new EventFileWriter(path, filename);
+		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
+		
 		LOGGER.log(Level.FINE, "Write discard header part.");
 		fileWriter.writeHeader();
 		
@@ -70,8 +69,6 @@ public class TimeFrameAction extends AbstractAction {
 		List events = (List) adminClient.invoke(failEventManager, timeQuery, pagepar, pagesig);
 		Iterator it = events.iterator();
 		
-		
-		
 		while (it.hasNext()) {
 			LOGGER.log(Level.INFO,"Reporting events...please wait!");
 			
@@ -80,18 +77,16 @@ public class TimeFrameAction extends AbstractAction {
 			
 			// Write the report
 			String query = Queries.QUERY_EVENT_WITH_PARAMETERS;
-			String[] BOsignature = new String[] { "java.lang.String" };
+			String[] BOsignature = new String[] {"java.lang.String"};
 			
 			// Write the report
 			FailedEventWithParameters p = (FailedEventWithParameters) adminClient.invoke(failEventManager, query, messageID, BOsignature);
 			fileWriter.writeCSVEvent(p, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
 		}
 		
-		LOGGER.log(Level.INFO,"Closing filewriter");
-		fileWriter.close();
-		
 		LOGGER.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
-		
+		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
+
 		return null;
 	}
 
