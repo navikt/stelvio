@@ -9,12 +9,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import no.nav.femhelper.common.Constants;
+
 import org.apache.commons.lang.StringUtils;
 
 import utils.SDOFormatter;
-
-import no.nav.femhelper.common.Constants;
-
 
 import com.ibm.wbiserver.manualrecovery.FailedEventParameter;
 import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
@@ -116,13 +115,12 @@ public class EventFileWriter extends AbstractFileWriter {
 	 	if (parameters instanceof FailedEventWithParameters) {
 	 		
 	 		List paramList = parameters.getFailedEventParameters(adminClient.getConnectorProperties());
-		 	Iterator itBO = paramList.iterator();
 		 	
 		 	// Write quotes start. This is needed to get all values within
 		 	// the same cell if and when this data is imported in Excel.
 		 	writer.write("\"");
 		 	
-		 	for (int i = 0; itBO.hasNext(); i++) {
+		 	for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
 		 	    // Each parameter is know as a type of FailedEventParameter.
 		 	    FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
 		 	    SDOFormatter sdoppt = new SDOFormatter(2, " ");
@@ -143,7 +141,7 @@ public class EventFileWriter extends AbstractFileWriter {
 		 	    writer.write(getEscapedString("DataObject:" + prettyPrint));
 		 	    writer.write(EMPTY); // Ensure all 'cells' are filled to improve make the view even more easy to read
 		 	}
-		 	
+		 			 	
 		 	// Write quotes end
 		 	writer.write("\"" + separator);
 	 	}
