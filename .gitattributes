@@ -2812,6 +2812,15 @@ int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/MANIFEST.MF -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/application-client.xml -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/ibm-application-client-bnd.xmi -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/Main.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/Action.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ActionFactory.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/StatusAction.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/ActionOptionValues.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionOpts.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionsBuilder.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/service/BusinessFlowManagerService.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/service/BusinessFlowManagerServiceImpl.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/service/ServiceFactory.java -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.project -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.component -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
@@ -2820,6 +2829,9 @@ int/BPCCommandLine/BPCHelperAppClientEAR/bfmclientmodel.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/bpcclientcore.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/bpe137650.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/bpeapi.jar -text
+int/BPCCommandLine/BPCHelperAppClientEAR/commons-cli-1.1.jar -text
+int/BPCCommandLine/BPCHelperAppClientEAR/commons-collections-3.2.jar -text
+int/BPCCommandLine/BPCHelperAppClientEAR/commons-lang-2.1.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/htmclientmodel.jar -text
 int/CEILogger/CEIEventConsumer/.j2ee -text
 int/CEILogger/CEIEventConsumer/.project -text

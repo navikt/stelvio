@@ -4,5 +4,8 @@ Class-Path: bfmclientmodel.jar
  bpcclientcore.jar 
  bpe137650.jar 
  bpeapi.jar 
- htmclientmodel.jar
+ htmclientmodel.jar 
+ commons-cli-1.1.jar 
+ commons-collections-3.2.jar 
+ commons-lang-2.1.jar
 
