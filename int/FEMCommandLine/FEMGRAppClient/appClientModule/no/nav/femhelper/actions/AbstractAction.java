@@ -227,6 +227,7 @@ public abstract class AbstractAction {
 		
 		// Method level variables
 		ArrayList <String> events = new ArrayList<String>();
+		int iEvents = 1;
 		String lastEventId = null;
 		Date lastEventDate = null;
 		
@@ -251,15 +252,19 @@ public abstract class AbstractAction {
 			if (isEventApplicable(failedEvent, agruments)) {
 				events.add(lastEventId);
 			}
+			
+			iEvents++;
 		}
 
+		
+		
 		// clean up list for re-use
 		failedEventList.clear();
 		
 		int pagecount = 1;
 		int current = 1;
 
-		int iEvents = events.size();
+		
 		
 		while (paging && iEvents < totalevents) {
 			LOGGER.log(Level.INFO, "Paging is activated: collected LastEventId: " + lastEventId + " LastEventDate: " + sdfm.format(lastEventDate) + " Events collected: #" + events.size());
