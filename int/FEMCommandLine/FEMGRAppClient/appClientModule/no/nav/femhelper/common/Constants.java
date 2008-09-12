@@ -120,6 +120,42 @@ public class Constants {
 	public static final String maxResultSetPaging = "maxResultSetPaging";
 
 	/**
+	 * Public constant to represent the 'sourceModule' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String sourceModule = "sourceModule";
+	
+	/**
+	 * Public constant to represent the 'sourceComponent' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String sourceComponent = "sourceComponent";
+	
+	/**
+	 * Public constant to represent the 'destinationModule' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String destinationModule = "destinationModule";
+	
+	/**
+	 * Public constant to represent the 'destinationComponent' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String destinationComponent = "destinationComponent";
+	
+	/**
+	 * Public constant to represent the 'failureMessage' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String failureMessage = "failureMessage";
+	
+	/**
+	 * Public constant to represent the 'dataObject' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String dataObject = "dataObject";
+	
+	/**
 	 * Public constant to represent the 'messageType' string from
 	 * <code>CommandLine</code> object
 	 */
