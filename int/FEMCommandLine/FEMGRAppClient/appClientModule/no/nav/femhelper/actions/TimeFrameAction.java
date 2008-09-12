@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +25,9 @@ import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
 import com.ibm.websphere.management.exception.ConnectorException;
 
+/**
+ * @deprecated The parameter -timeFrame will be used in collectEvents instead 
+ */
 public class TimeFrameAction extends AbstractAction {
 
 	/**
@@ -36,7 +40,7 @@ public class TimeFrameAction extends AbstractAction {
 	}
 
 	@Override
-	Object processEvents(String path, String filename, String criteria,
+	Object processEvents(String path, String filename, Map arguments,
 			boolean paging, long totalevents, int maxresultset, CommandLine cl)
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
