@@ -1,6 +1,7 @@
 package no.nav.femhelper.actions;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,6 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
@@ -122,12 +124,12 @@ public abstract class AbstractAction {
 	}
 	
 	abstract Object processEvents(String path, String filename,
-			String criteria, boolean paging, long totalevents,
+			Map arguments, boolean paging, long totalevents,
 			int maxresultset, CommandLine cl) throws IOException,
 			InstanceNotFoundException, MBeanException, ReflectionException,
 			ConnectorException;
 	
-	public Object process(String path, String filename, String criteria,
+	public Object process(String path, String filename, Map arguments,
 			boolean paging, long totalevents, int maxresultset, CommandLine cl)
 			throws MalformedObjectNameException, ConnectorException,
 			NullPointerException {
@@ -147,7 +149,7 @@ public abstract class AbstractAction {
 			fileWriter = new EventFileWriter(path, filename + ".csv");
 			logFileWriter = new LogFileWriter(path, filename + ".log");
 			
-			result = this.processEvents(path, filename, criteria, paging, totalevents, maxresultset, cl);
+			result = this.processEvents(path, filename, arguments, paging, totalevents, maxresultset, cl);
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, Constants.METHOD_ERROR + "IOException:StackTrace:");			
 			e.printStackTrace();
@@ -215,56 +217,50 @@ public abstract class AbstractAction {
 	 * @param maxresultset -> what are the result size
 	 * @return a filtered list of failed events
 	 */
-	protected ArrayList <String> collectEvents (String criteria, boolean paging, long totalevents, int maxresultset) 
+	protected ArrayList <String> collectEvents (Map <String, String> agruments, boolean paging, long totalevents, int maxresultset) 
 		throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, IOException{
 
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
 		
 		logFileWriter.log("Starting to collect events");
 		
+		
 		// Method level variables
-		int iEvents=1;
 		ArrayList <String> events = new ArrayList<String>();
 		String lastEventId = null;
 		Date lastEventDate = null;
 		
-		// Get all events from fem based on maxresultset
-		String femQuery = Queries.QUERY_ALL_EVENTS;
 		SimpleDateFormat sdfm = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 		Calendar cal = GregorianCalendar.getInstance();
 		lastEventDate = cal.getTime();
-	
+
+		// Get all events from fem based on maxresultset
 		Object[] params = new Object[] { new Integer(maxresultset) }; 
-		String[] signature = new String[] { "int" };
+		String[] signature = new String[] {"int"};
+		String femQuery = Queries.QUERY_ALL_EVENTS;
 		List failedEventList = (List) adminClient.invoke(failEventManager, femQuery, params, signature);
-		Iterator it = failedEventList.iterator();
 	
 		// first result set
 		LOGGER.log(Level.INFO,"Collect events is working for first result set...please wait!");
 		
-		while (it.hasNext()) {
-			
-			FailedEvent failedEvent = (FailedEvent) it.next();
+		for (int i = 0; i < failedEventList.size(); i++) {
+			FailedEvent failedEvent = (FailedEvent) failedEventList.get(i);
 			lastEventDate = failedEvent.getFailureDateTime();
 			lastEventId = failedEvent.getMsgId();
 		
-			// if criteria == null all event id's put into ArrayList
-			if (StringUtils.equalsIgnoreCase(Constants.messageTypeOptions[0], criteria)) {
-				events.add(lastEventId);	
-			} else if (StringUtils.contains(failedEvent.getSessionId().toLowerCase(), criteria.toLowerCase())) {
-				// only with criteria -> what kind of interface
-				events.add(lastEventId);	
+			if (isEventApplicable(failedEvent, agruments)) {
+				events.add(lastEventId);
 			}
-			// increment the eventcounter
-			iEvents++;
 		}
+
 		// clean up list for re-use
 		failedEventList.clear();
 		
 		int pagecount = 1;
 		int current = 1;
 
-		// if paging enabled
+		int iEvents = events.size();
+		
 		while (paging && iEvents < totalevents) {
 			LOGGER.log(Level.INFO, "Paging is activated: collected LastEventId: " + lastEventId + " LastEventDate: " + sdfm.format(lastEventDate) + " Events collected: #" + events.size());
 
@@ -297,22 +293,8 @@ public abstract class AbstractAction {
 
 				// check id from last loop and skip if we have a double entry because on milli can include the last id (better than don't select events)
 				if (!lastEventId.equals(currEventId)) {
-
-					// if criteria == null all event id's put into ArrayList
-					if (criteria == null || "ALL".equals(criteria.toUpperCase())) {
-						events.add(currEventId);	
-					} else {
-						// only with criteria -> what kind of interface
-						if (StringUtils.contains(failedEvent.getSessionId(), criteria))	{
-							events.add(currEventId);
-						} else if (StringUtils.contains(failedEvent.getSourceModuleName(), criteria)) {
-							events.add(currEventId);
-						} else if (StringUtils.contains(failedEvent.getDestinationModuleName(), criteria)) {
-							events.add(currEventId);
-						}
-					}
-				}
-				else {	
+					isEventApplicable(failedEvent, agruments);
+				} else {	
 				  LOGGER.log(Level.FINE,"Collect events detect on result set #" + pagecount + " that the event with the id " + currEventId + " is allready collected!");
 				}
 				current++;
@@ -339,6 +321,73 @@ public abstract class AbstractAction {
 
 	public boolean isConnected() {
 		return connected;
+	}
+
+	/**
+	 * Method that evaluate if a single event matches one or more search criterias
+	 * 
+	 * @param event to evaluate
+	 * @param arguments to evaluate against. This is collected from the <code>CommandLing </code> object
+	 * @return
+	 */
+	private boolean isEventApplicable(FailedEvent event, Map <String, String> arguments) {
+		
+		// Default true. If no criterias are listed the 'ALL events' apply.
+		boolean match = true;
+
+		// Make use of the generic validate method for arguments that validate attributes of datatype 
+		match = match && validate(event.getSourceModuleName(), arguments.get(Constants.sourceModule)) ? true : false; 
+		match = match && validate(event.getSourceComponentName(), arguments.get(Constants.sourceComponent)) ? true : false;
+		match = match && validate(event.getDestinationModuleName(), arguments.get(Constants.destinationModule)) ? true : false;
+		match = match && validate(event.getDestinationComponentName(), arguments.get(Constants.destinationComponent)) ? true : false;
+		match = match && validate(event.getFailureMessage(), arguments.get(Constants.failureMessage)) ? true : false;
+
+		String timeFrame = arguments.get(Constants.timeFrame);
+		if (!StringUtils.isEmpty(timeFrame)) {
+			
+			// The time / date format is allready validated, and can be parsed without 
+			// handling ParseException
+			String dates[] = StringUtils.split(timeFrame, "-");
+			try {
+				SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
+				Date fromDate = sdf.parse(dates[0]);
+				Date toDate = sdf.parse(dates[1]);
+				Date failureDate = event.getFailureDateTime();
+				
+				match = match && null != failureDate && failureDate.after(fromDate) && failureDate.before(toDate) ? true : false;
+				
+			} catch (ParseException e) {
+				// Will never occur here. 
+			}
+		}
+		
+		return match;
+	}
+	
+	/**
+	 * Generic method to validate a attribute on the <code>FailedEvent</code> event
+	 * against values in the argument list.
+	 * 
+	 * The rules are the following
+	 * <li>TRUE If the criteria is empty</li>
+	 * <li>TRUE If the criteria is a part of the value</li>
+	 * <li>FALSE If the event's value is empty while the criteria not is</li>
+	 * <li>FALSE If the criteria not is a part of the value</li>
+	 * 
+	 * @param eventValue
+	 * @param criteria
+	 * @return 
+	 */
+	private boolean validate(String eventValue, String criteria) {
+		
+		if (!StringUtils.isEmpty(criteria)) {
+			if (!StringUtils.isEmpty(eventValue) && StringUtils.contains(eventValue, criteria)) {
+				return true;
+			} else {
+				return false;
+			}
+		} 
+		return true;
 	}
 
 	
