@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Main-Class: Main
+Class-Path: bfmclientmodel.jar 
+ bpcclientcore.jar 
+ bpe137650.jar 
+ bpeapi.jar 
+ htmclientmodel.jar
+
