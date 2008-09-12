@@ -1,6 +1,7 @@
 package no.nav.femhelper.actions;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,7 @@ public class StatusAction extends AbstractAction {
 	}
 
 	@Override
-	Object processEvents(String path, String filename, String criteria,
+	Object processEvents(String path, String filename, Map argument,
 			boolean paging, long totalevents, int maxresultset, CommandLine cl)
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {

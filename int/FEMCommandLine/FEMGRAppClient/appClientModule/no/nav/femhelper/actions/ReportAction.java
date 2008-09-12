@@ -2,6 +2,7 @@ package no.nav.femhelper.actions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +31,7 @@ public class ReportAction extends AbstractAction {
 	private Logger LOGGER = Logger.getLogger(ReportAction.class.getName());
 	
 	@Override
-	Object processEvents(String path, String filename, String criteria,
+	Object processEvents(String path, String filename, Map arguments,
 			boolean paging, long totalevents, int maxresultset, CommandLine cl)
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
@@ -41,7 +42,7 @@ public class ReportAction extends AbstractAction {
 		fileWriter.writeHeader();
 	
 		ArrayList <String> events = new ArrayList<String>();
-		events = collectEvents(criteria, paging, totalevents, maxresultset);
+		events = collectEvents(arguments, paging, totalevents, maxresultset);
 		
 		for (int i = 0; i < events.size(); i++) {
 		LOGGER.log(Level.INFO,"Reporting events (" + (i+1) + " of " + events.size() + "). Please wait!");
