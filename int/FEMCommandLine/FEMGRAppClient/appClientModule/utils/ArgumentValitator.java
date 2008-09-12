@@ -54,27 +54,6 @@ public class ArgumentValitator {
 			result.add("Property " + Constants.maxResultSetPaging + " must be 'true' or 'false'");
 		}
 
-		// messageType
-		// TODO AR Rewrite this to use toMap or something like that
-		String messageType = cl.getOptionValue(Constants.messageType);
-		if (StringUtils.isEmpty(messageType)) {
-			result.add("Property " + Constants.messageType + " is missing or empty");
-			
-		} else {
-			boolean found = false;
-			for (int i = 0; i < Constants.messageTypeOptions.length; i++) {
-				if (Constants.messageTypeOptions[i].equals(messageType)) {
-					found = true;
-					break;
-				}
-			}
-			
-			if (!found) {
-				result.add("Property " + Constants.messageType + " value supplied is not a valid option.");
-			}
-		}
-		
-		
 		// action
 		// TODO AR Rewrite this to use toMap or something like that
 		String action = cl.getOptionValue(Constants.action);
