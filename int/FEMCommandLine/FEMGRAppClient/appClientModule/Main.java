@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 
+import utils.ArgumentUtil;
 import utils.ArgumentValitator;
 import utils.PropertyUtil;
 
@@ -108,7 +110,7 @@ public class Main {
 		}
 
 		try {
-			LOGGER.log(Level.FINE, "Get instance of EventClient.");
+			LOGGER.log(Level.FINE, "Create status action instance");
 			AbstractAction statusAction = ActionFactory.getAction(Constants.actionOptions[3], connectProps);
 
 			// Get the total number of events to match with the page size to avoid hughe amount of retrieving
@@ -131,17 +133,16 @@ public class Main {
 			// Determine paging
 			boolean paging = Boolean.parseBoolean(cl.getOptionValue(Constants.maxResultSetPaging).toLowerCase());
 			
-			String edaType = cl.getOptionValue(Constants.messageType);
-			String edaTypeAction = cl.getOptionValue(Constants.action);
-			LOGGER.log(Level.INFO, "Running scenario " + edaTypeAction + " with filter option " + edaType + " and paging option is set to " + paging);
-			
 			SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 			Date currentTime = GregorianCalendar.getInstance().getTime();
-			String filename = Constants.FILE_PREFIX + "_" + edaTypeAction + "_" + edaType  +"_"+ sdf.format(currentTime);
+			String edaTypeAction = cl.getOptionValue(Constants.action);
+			String filename = Constants.FILE_PREFIX + "_" + edaTypeAction + "_"+ sdf.format(currentTime);
 			String path = cl.getOptionValue(Constants.logFilePath);
 			
+			Map arguments = ArgumentUtil.getArguments(cl);
+			
 			AbstractAction action = ActionFactory.getAction(edaTypeAction, connectProps);
-			action.process(path, filename, edaType, paging, numberOfEvents, pagesize, cl);
+			action.process(path, filename, arguments, paging, numberOfEvents, pagesize, cl);
 						
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, Constants.METHOD_ERROR + "Exception:StackTrace:");
