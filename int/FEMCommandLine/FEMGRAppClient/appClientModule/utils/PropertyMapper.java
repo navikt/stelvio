@@ -27,15 +27,8 @@ public class PropertyMapper {
 	/**
 	 * Logger instance
 	 */
-	private static Logger LOGGER = Logger.getLogger(PropertyMapper.class.getName());
-	
-	/**
-	 * Default constructor
-	 */
-	public PropertyMapper() {
+	private static Logger logger = Logger.getLogger(PropertyMapper.class.getName());
 		
-	}
-	
 	/**
 	 * <p>This method perfomes the actual mapping. No validation of the content
 	 * and consistency of the configuration here. This is allready performed in
@@ -46,7 +39,7 @@ public class PropertyMapper {
 	 * @return a properly mapped set of properties
 	 */
 	public Properties getMappedProperties(Properties src) {
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "getMappedProperties");
+		logger.log(Level.FINE, Constants.METHOD_ENTER + "getMappedProperties");
 		
 		Properties result = new Properties();
 
@@ -93,7 +86,7 @@ public class PropertyMapper {
 				}
 		}
 	
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT+ "getMappedProperties");
+		logger.log(Level.FINE, Constants.METHOD_EXIT+ "getMappedProperties");
 		return result;
 	}
 }
