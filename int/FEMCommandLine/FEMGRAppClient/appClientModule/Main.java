@@ -22,7 +22,7 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 
 import utils.ArgumentUtil;
-import utils.ArgumentValitator;
+import utils.ArgumentValidator;
 import utils.PropertyUtil;
 
 /**
@@ -78,7 +78,7 @@ public class Main {
 			System.exit(0);
 		}
 		
-		ArgumentValitator argumentValidator = new ArgumentValitator();
+		ArgumentValidator argumentValidator = new ArgumentValidator();
 		List validatedArguments = argumentValidator.validate(cl);
 		if (!validatedArguments.isEmpty()) {
 			// Log all errors that occured in validation
