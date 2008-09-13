@@ -32,7 +32,7 @@ public class ResubmitAction extends AbstractAction {
 	/**
 	 * Logger instance
 	 */
-	private Logger LOGGER = Logger.getLogger(ResubmitAction.class.getName());
+	private Logger logger = Logger.getLogger(ResubmitAction.class.getName());
 	
 	@Override
 	Object processEvents(String path, String filename, Map arguments,
@@ -40,9 +40,9 @@ public class ResubmitAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
+		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
 		
-		LOGGER.log(Level.FINE, "Write header part.");
+		logger.log(Level.FINE, "Write header part.");
 		fileWriter.writeShortHeader();
 	
 		logFileWriter.log("Starting to collect events");
@@ -53,7 +53,7 @@ public class ResubmitAction extends AbstractAction {
 		logFileWriter.log("Collected " + events.size() + " events");
 		
 		if (!events.isEmpty()) {
-			LOGGER.log(Level.INFO,"Resubmiting #" + events.size() + " events...please wait!");
+			logger.log(Level.INFO,"Resubmiting #" + events.size() + " events...please wait!");
 			logFileWriter.log("Staring to resubmit " + events.size() + " events");
 			int j = 1;
 			ArrayList <String> chunk = new ArrayList<String>();
@@ -65,7 +65,7 @@ public class ResubmitAction extends AbstractAction {
 				// for each result set
 				if (j==Constants.MAX_DELETE)
 				{
-					LOGGER.log(Level.INFO, "Resubmited result set of events from #" + ((i+1)-Constants.MAX_DELETE) + " to #" + (i+1));
+					logger.log(Level.INFO, "Resubmited result set of events from #" + ((i+1)-Constants.MAX_DELETE) + " to #" + (i+1));
 					String passIn[] = new String[chunk.size()];
 				 	for (int d = 0; d < passIn.length; d++) {
 						passIn[d] = chunk.get(d);
@@ -73,7 +73,7 @@ public class ResubmitAction extends AbstractAction {
 					Object[] para = new Object[] {passIn};  
 				 	String[] sig = new String[] {"[Ljava.lang.String;"};
 				 	try {
-						adminClient.invoke(failEventManager, opResubmit, para, sig);
+						adminClient.invoke(faildEventManager, opResubmit, para, sig);
 						// no exception update hashtable for reporting
 						for (int d = 0; d < passIn.length; d++) {
 							if (reportEvents.containsKey(passIn[d])) {
@@ -106,9 +106,9 @@ public class ResubmitAction extends AbstractAction {
 				else if ((events.size()-i) < Constants.MAX_DELETE && events.size()==(i+1)) {
 					
 					if (events.size() < Constants.MAX_DELETE)
-						LOGGER.log(Level.INFO, "Resubmit result set of #" + (i+1) + " events" );
+						logger.log(Level.INFO, "Resubmit result set of #" + (i+1) + " events" );
 					else
-						LOGGER.log(Level.INFO, "Resubmit final result set of #" + chunk.size() + " events" );
+						logger.log(Level.INFO, "Resubmit final result set of #" + chunk.size() + " events" );
 
 					String passIn[] = new String[chunk.size()];
 				 	for (int d = 0; d < passIn.length; d++) {
@@ -117,7 +117,7 @@ public class ResubmitAction extends AbstractAction {
 					Object[] para = new Object[] {passIn};  
 				 	String[] sig = new String[] {"[Ljava.lang.String;"};
 				 	try {
-						adminClient.invoke(failEventManager, opResubmit, para, sig);
+						adminClient.invoke(faildEventManager, opResubmit, para, sig);
 						// no exception update hashtable for reporting
 						for (int d = 0; d < passIn.length; d++) {
 							if (reportEvents.containsKey(passIn[d])) {
@@ -149,8 +149,8 @@ public class ResubmitAction extends AbstractAction {
 				j++;
 			} // event for
 			
-			LOGGER.log(Level.INFO,"Resubmit of #" + events.size() + " events...done!");
-			LOGGER.log(Level.INFO,"Reporting status of events...please wait!");
+			logger.log(Level.INFO,"Resubmit of #" + events.size() + " events...done!");
+			logger.log(Level.INFO,"Reporting status of events...please wait!");
 			logFileWriter.log("Completed resubmit of " + events.size() + " events");
 			Iterator it = reportEvents.keySet().iterator();
 			while (it.hasNext()) {
@@ -164,10 +164,10 @@ public class ResubmitAction extends AbstractAction {
 		}
 		else
 		{
-			LOGGER.log(Level.WARNING, "No events found to resubmit!");
+			logger.log(Level.WARNING, "No events found to resubmit!");
 		}
 
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
+		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		return null;
 
 	}

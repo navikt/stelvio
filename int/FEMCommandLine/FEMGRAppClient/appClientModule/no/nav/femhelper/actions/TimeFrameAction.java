@@ -33,7 +33,7 @@ public class TimeFrameAction extends AbstractAction {
 	/**
 	 * Logger instance
 	 */
-	private Logger LOGGER = Logger.getLogger(ReportAction.class.getName());
+	private Logger logger = Logger.getLogger(ReportAction.class.getName());
 	
 	public TimeFrameAction(Properties properties) {
 		super(properties);
@@ -45,9 +45,9 @@ public class TimeFrameAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
+		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
 		
-		LOGGER.log(Level.FINE, "Write discard header part.");
+		logger.log(Level.FINE, "Write discard header part.");
 		fileWriter.writeHeader();
 		
 		// Parse the date objects. The values are allready validated
@@ -70,11 +70,11 @@ public class TimeFrameAction extends AbstractAction {
 		Object[] pagepar = new Object[] { fromDate, toDate, new Integer(maxresultset)};
 		String[] pagesig = new String[] { "java.util.Date", "java.util.Date", "int"};
 		
-		List events = (List) adminClient.invoke(failEventManager, timeQuery, pagepar, pagesig);
+		List events = (List) adminClient.invoke(faildEventManager, timeQuery, pagepar, pagesig);
 		Iterator it = events.iterator();
 		
 		while (it.hasNext()) {
-			LOGGER.log(Level.INFO,"Reporting events...please wait!");
+			logger.log(Level.INFO,"Reporting events...please wait!");
 			
 			FailedEvent failedEvent = (FailedEvent) it.next();
 			String messageID[] = new String[]{failedEvent.getMsgId()};
@@ -84,12 +84,12 @@ public class TimeFrameAction extends AbstractAction {
 			String[] BOsignature = new String[] {"java.lang.String"};
 			
 			// Write the report
-			FailedEventWithParameters p = (FailedEventWithParameters) adminClient.invoke(failEventManager, query, messageID, BOsignature);
+			FailedEventWithParameters p = (FailedEventWithParameters) adminClient.invoke(faildEventManager, query, messageID, BOsignature);
 			fileWriter.writeCSVEvent(p, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
 		}
 		
-		LOGGER.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
+		logger.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
+		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 
 		return null;
 	}

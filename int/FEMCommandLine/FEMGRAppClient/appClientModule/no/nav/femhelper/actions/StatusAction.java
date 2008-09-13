@@ -22,7 +22,7 @@ public class StatusAction extends AbstractAction {
 	/**
 	 * Logger instance
 	 */
-	private Logger LOGGER = Logger.getLogger(ReportAction.class.getName());
+	private Logger logger = Logger.getLogger(ReportAction.class.getName());
 	
 	public StatusAction(Properties properties) {
 		super(properties);
@@ -34,13 +34,13 @@ public class StatusAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
+		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
 		Long lnr = new Long(-1);
 		String countQuery = Queries.QUERY_COUNT_EVENTS;
-		lnr = (Long) adminClient.invoke(failEventManager, countQuery, null, null);
-		LOGGER.log(Level.INFO, "Current total number of events: #" + lnr);
+		lnr = (Long) adminClient.invoke(faildEventManager, countQuery, null, null);
+		logger.log(Level.INFO, "Current total number of events: #" + lnr);
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
+		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
 		return lnr; 
 	}
 

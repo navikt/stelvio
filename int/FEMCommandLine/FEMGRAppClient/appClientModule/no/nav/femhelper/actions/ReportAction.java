@@ -28,7 +28,7 @@ public class ReportAction extends AbstractAction {
 	/**
 	 * Logger instance
 	 */
-	private Logger LOGGER = Logger.getLogger(ReportAction.class.getName());
+	private Logger logger = Logger.getLogger(ReportAction.class.getName());
 	
 	@Override
 	Object processEvents(String path, String filename, Map arguments,
@@ -36,27 +36,27 @@ public class ReportAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
+		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
 		
-		LOGGER.log(Level.FINE, "Write CSV header part.");
+		logger.log(Level.FINE, "Write CSV header part.");
 		fileWriter.writeHeader();
 	
 		ArrayList <String> events = new ArrayList<String>();
 		events = collectEvents(arguments, paging, totalevents, maxresultset);
 		
 		for (int i = 0; i < events.size(); i++) {
-		LOGGER.log(Level.INFO,"Reporting events (" + (i+1) + " of " + events.size() + "). Please wait!");
+		logger.log(Level.INFO,"Reporting events (" + (i+1) + " of " + events.size() + "). Please wait!");
 			
 			// Write the report
 			String femQuery = Queries.QUERY_EVENT_WITH_PARAMETERS;
 			Object[] BOparams = new Object[] { new String((String) events.get(i)) };
 			String[] BOsignature = new String[] { "java.lang.String" };
-			FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(failEventManager, femQuery, BOparams, BOsignature);
+			FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(faildEventManager, femQuery, BOparams, BOsignature);
 			fileWriter.writeCSVEvent(failedEventWithParameters, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
 		}
 		
-		LOGGER.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
+		logger.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
+		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		
 		return events;
 	}

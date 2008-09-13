@@ -32,7 +32,7 @@ public class DeleteAction extends AbstractAction {
 	/**
 	 * Logger instance
 	 */
-	private Logger LOGGER = Logger.getLogger(DeleteAction.class.getName());
+	private Logger logger = Logger.getLogger(DeleteAction.class.getName());
 	
 	@Override
 	Object processEvents(String path, String filename, Map arguments,
@@ -40,8 +40,8 @@ public class DeleteAction extends AbstractAction {
 			throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
-		LOGGER.log(Level.FINE, "Write discard header part.");
+		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
+		logger.log(Level.FINE, "Write discard header part.");
 		
 		fileWriter.writeShortHeader();
 	
@@ -59,7 +59,7 @@ public class DeleteAction extends AbstractAction {
 		*/
 		
 		if (events.size() > 0) {
-			LOGGER.log(Level.INFO,"Discarding #" + events.size() + " events...please wait!");
+			logger.log(Level.INFO,"Discarding #" + events.size() + " events...please wait!");
 			int j = 1;
 			ArrayList <String> deleteChunk = new ArrayList<String>();
 			HashMap<String, String> reportEvents = new HashMap<String, String>();
@@ -70,7 +70,7 @@ public class DeleteAction extends AbstractAction {
 				// for each result set
 				if (j==Constants.MAX_DELETE)
 				{
-					LOGGER.log(Level.INFO, "Discard result set of events fra #" + ((i+1)-Constants.MAX_DELETE) + " to #" + (i+1));
+					logger.log(Level.INFO, "Discard result set of events fra #" + ((i+1)-Constants.MAX_DELETE) + " to #" + (i+1));
 					String passIn[] = new String[deleteChunk.size()];
 				 	for (int d = 0; d < passIn.length; d++) {
 						passIn[d] = deleteChunk.get(d);
@@ -79,7 +79,7 @@ public class DeleteAction extends AbstractAction {
 					Object[] para = new Object[] {passIn};  
 				 	String[] sig = new String[] {"[Ljava.lang.String;"};
 				 	try {
-						adminClient.invoke(failEventManager, opDelete, para, sig);
+						adminClient.invoke(faildEventManager, opDelete, para, sig);
 						// no exception update hashtable for reporting
 						for (int d = 0; d < passIn.length; d++) {
 							if (reportEvents.containsKey(passIn[d])) {
@@ -112,9 +112,9 @@ public class DeleteAction extends AbstractAction {
 				else if ((events.size()-i) < Constants.MAX_DELETE && events.size()==(i+1)) {
 					
 					if (events.size() < Constants.MAX_DELETE)
-						LOGGER.log(Level.INFO, "Delete result set of #" + (i+1) + " events" );
+						logger.log(Level.INFO, "Delete result set of #" + (i+1) + " events" );
 					else
-						LOGGER.log(Level.INFO, "Delete final result set of #" + deleteChunk.size() + " events" );
+						logger.log(Level.INFO, "Delete final result set of #" + deleteChunk.size() + " events" );
 
 					String passIn[] = new String[deleteChunk.size()];
 				 	for (int d = 0; d < passIn.length; d++) {
@@ -124,7 +124,7 @@ public class DeleteAction extends AbstractAction {
 					Object[] para = new Object[] {passIn};  
 				 	String[] sig = new String[] {"[Ljava.lang.String;"};
 				 	try {
-						adminClient.invoke(failEventManager, opDelete, para, sig);
+						adminClient.invoke(faildEventManager, opDelete, para, sig);
 						// no exception update hashtable for reporting
 						for (int d = 0; d < passIn.length; d++) {
 							if (reportEvents.containsKey(passIn[d])) {
@@ -156,8 +156,8 @@ public class DeleteAction extends AbstractAction {
 				j++;
 			} // event for
 			
-			LOGGER.log(Level.INFO,"Discarding of #" + events.size() + " events...done!");
-			LOGGER.log(Level.INFO,"Reporting status of discard events...please wait!");
+			logger.log(Level.INFO,"Discarding of #" + events.size() + " events...done!");
+			logger.log(Level.INFO,"Reporting status of discard events...please wait!");
 			Iterator it = reportEvents.keySet().iterator();
 			while (it.hasNext()) {
 				String key = (String) it.next();
@@ -168,14 +168,12 @@ public class DeleteAction extends AbstractAction {
 				fileWriter.writeShortEvent(key, status, fdate, fmsg);
 			}
 		}
-		else
-		{
-			LOGGER.log(Level.WARNING, "No events found to discard!");
+		else {
+			logger.log(Level.WARNING, "No events found to discard!");
 		}
 
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
+		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		return null;
-
 	}
 
 }
