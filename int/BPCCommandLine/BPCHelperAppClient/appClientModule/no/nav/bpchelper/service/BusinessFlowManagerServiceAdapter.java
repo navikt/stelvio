@@ -20,4 +20,14 @@ public class BusinessFlowManagerServiceAdapter implements BusinessFlowManagerSer
 			throw new RuntimeException(e);
 		}
 	}
+
+	public QueryResultSet queryAll(String selectClause, String whereClause, String orderByClause, Integer threshold) {
+		try {
+			return adaptee.queryAll(selectClause, whereClause, orderByClause, null, threshold, null);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
 }
