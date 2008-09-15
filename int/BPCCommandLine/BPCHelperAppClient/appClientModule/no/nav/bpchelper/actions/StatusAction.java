@@ -5,7 +5,7 @@ import no.nav.bpchelper.service.ServiceFactory;
 
 import com.ibm.bpe.api.QueryResultSet;
 
-public class StatusAction implements Action {
+public class StatusAction extends AbstractAction {
 	public void process() {
 		BusinessFlowManagerService bfms = ServiceFactory.getBusinessFlowManagerService();
 		

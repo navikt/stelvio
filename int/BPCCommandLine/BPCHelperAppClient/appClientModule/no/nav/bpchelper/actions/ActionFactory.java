@@ -8,10 +8,10 @@ import org.apache.commons.cli.CommandLine;
 public class ActionFactory {
 	public static Action getAction(CommandLine commandLine) {
 		String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
-		if (ActionOptionValues.STATUS.equals(actionValue)) {
-			return new StatusAction();
-		} else {
-			throw new RuntimeException("Unknown action");
-		}
+		AbstractAction action = ActionOptionValues.valueOf(actionValue).getAction();
+		
+		String filterValue = commandLine.getOptionValue(OptionOpts.FILTER);
+		
+		return action;
 	}
 }

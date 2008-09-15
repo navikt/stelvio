@@ -1,5 +1,25 @@
 package no.nav.bpchelper.cmdoptions;
 
-public interface ActionOptionValues {
-	String STATUS = "STATUS";
+import no.nav.bpchelper.actions.AbstractAction;
+import no.nav.bpchelper.actions.ReportAction;
+import no.nav.bpchelper.actions.StatusAction;
+
+public enum ActionOptionValues {
+	STATUS {
+		@Override
+		public AbstractAction getAction() {
+			return new StatusAction();
+		}
+		
+	},
+	
+	REPORT {
+		@Override
+		public AbstractAction getAction() {
+			return new ReportAction();
+		}
+		
+	};
+	
+	public abstract AbstractAction getAction();
 }
