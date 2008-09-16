@@ -2822,7 +2822,11 @@ int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/ActionOptionValues.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionOpts.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionsBuilder.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/MinStartedFilter.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Criteria.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Criterion.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/LogicalExpression.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Restrictions.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/SimpleExpression.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/writers/ReportWriter.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClientEAR/.project -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.component -text

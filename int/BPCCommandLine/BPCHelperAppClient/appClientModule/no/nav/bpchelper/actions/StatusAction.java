@@ -10,11 +10,11 @@ public class StatusAction extends AbstractAction {
 		
 		// TODO: Can we use constants for any of the clause fragments?
 		String selectClause = "COUNT(DISTINCT PROCESS_INSTANCE.PIID)";
-		String whereClause = "PROCESS_INSTANCE.STATE=PROCESS_INSTANCE.STATE.STATE_FAILED";
+		String whereClause = getCriteria().toSqlString();
 		
 		// TODO: Is query the correct service to use, or should queryAll be used? 
 		QueryResultSet rs = bfmConnection.getBusinessFlowManagerService().query(selectClause, whereClause, null, null);
 		rs.next();
-		System.out.println("Number of process instances in state FAILED: " + rs.getLong(1));
+		System.out.println("Number of stopped process instances: " + rs.getLong(1));
 	}
 }

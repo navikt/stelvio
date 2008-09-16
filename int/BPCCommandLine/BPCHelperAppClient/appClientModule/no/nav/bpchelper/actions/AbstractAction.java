@@ -1,15 +1,16 @@
 package no.nav.bpchelper.actions;
 
-import java.util.Map;
+import no.nav.bpchelper.query.Criteria;
+
 
 public abstract class AbstractAction implements Action {
-	private Map<String, String> filter;
+	private Criteria criteria;
 
-	public Map<String, String> getFilter() {
-		return filter;
+	public Criteria getCriteria() {
+		return criteria;
 	}
 
-	public void setFilter(Map<String, String> filter) {
-		this.filter = filter;
+	public void setCriteria(Criteria criteria) {
+		this.criteria = criteria;
 	}
 }
