@@ -1,4 +1,8 @@
 package no.nav.femhelper.common;
+
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Class to keep common contants
  * 
@@ -167,7 +171,20 @@ public class Constants {
 	 * <code>CommandLine</code> object
 	 */
 	public static final String action = "action";
+	
+	/**
+	 * ActionOptions are 0:REPORT, 1:DISCARD, 2:RESUBMIT, 3:STATUS, 4:TIMEFRAME. 
+	 */
 	public static final String[] actionOptions = {"REPORT", "DISCARD", "RESUBMIT", "STATUS", "TIMEFRAME"};
+
+	public static final String ACTION_REPORT = "REPORT";
+	public static final String ACTION_DISCARD = "DISCARD";
+	public static final String ACTION_RESUBMIT = "RESUBMIT";
+	public static final String ACTION_STATUS = "STATUS";
+	public static final String ACTION_TIMEFRAME = "TIMEFRAME";
+	
+	public static final List ACTIONS = Arrays.asList(ACTION_REPORT, ACTION_DISCARD, ACTION_RESUBMIT, ACTION_STATUS, ACTION_TIMEFRAME);
+	
 	
 	/**
 	 * Public constant to represent the 'FEM_EDA_TYPE_ACTION_PARAM' string from

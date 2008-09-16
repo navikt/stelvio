@@ -11,15 +11,15 @@ public class ActionFactory {
 
 		AbstractAction action= null;
 		
-		if (Constants.actionOptions[0].equalsIgnoreCase(actionType)) {
+		if (Constants.ACTION_REPORT.equalsIgnoreCase(actionType)) {
 			action = new ReportAction(properties);
-		} else if (Constants.actionOptions[1].equalsIgnoreCase(actionType)) {
+		} else if (Constants.ACTION_DISCARD.equalsIgnoreCase(actionType)) {
 			action = new DeleteAction(properties);
-		} else if (Constants.actionOptions[2].equalsIgnoreCase(actionType)) {
+		} else if (Constants.ACTION_RESUBMIT.equalsIgnoreCase(actionType)) {
 			action = new ResubmitAction(properties);
-		} else if (Constants.actionOptions[3].equalsIgnoreCase(actionType)) {
+		} else if (Constants.ACTION_STATUS.equalsIgnoreCase(actionType)) {
 			action = new StatusAction(properties);
-		} else if (Constants.actionOptions[4].equalsIgnoreCase(actionType)) {
+		} else if (Constants.ACTION_TIMEFRAME.equalsIgnoreCase(actionType)) {
 			action = new TimeFrameAction(properties);
 		}
 

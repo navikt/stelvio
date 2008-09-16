@@ -27,17 +27,10 @@ public class ArgumentValidator {
 	public List validate(CommandLine cl) {
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "validate");
 		
-		List <String> result = new ArrayList<String>();
+		List<String> result = new ArrayList<String>();
 		
 		// logFilePath
-		String logFilePath = cl.getOptionValue(Constants.logFilePath);
-		if (!StringUtils.isEmpty(logFilePath)) {
-			LOGGER.log(Level.FINE, "Using '" + logFilePath + " as logfile location");
-		} else {
-			String tempFolderProperty = "java.io.tmpdir";
-			String tempFolder = System.getProperty(tempFolderProperty); 
-			LOGGER.log(Level.WARNING, Constants.logFilePath + " is not declared. " + tempFolder + " will be used");
-		}
+		validateLogPath(cl.getOptionValue(Constants.logFilePath));
 		
 		// maxResultSet
 		if (StringUtils.isEmpty(cl.getOptionValue(Constants.maxResultSet))) {
@@ -57,51 +50,59 @@ public class ArgumentValidator {
 		// action
 		// TODO AR Rewrite this to use toMap or something like that
 		String action = cl.getOptionValue(Constants.action);
-		if (StringUtils.isEmpty(action)) {
-			result.add("Property " + Constants.action + " is missing or empty");
-		} else {
-			
-			boolean found = false;
-			for (int i = 0; i < Constants.actionOptions.length; i++) {
-				if (Constants.actionOptions[i].equals(action)) {
-					found = true;
-					break;
-				}
-			}
-			
-			if (!found) {
-				result.add("Property " + Constants.action + " value supplied is not a valid option.");
-			}
+		String actionValidationMessage = validateAction(action);
+		if (!"".equals(actionValidationMessage)) {
+			result.add(actionValidationMessage);
 		}
-		
+				
 		// timeFrame is validated againts the '-' separator, 
 		// and the date values on both sides are validated against the pattern.
 		String timeFrame = cl.getOptionValue(Constants.timeFrame);
-		if (Constants.actionOptions[4].equals(action) && StringUtils.isEmpty(timeFrame)) {
+		if (Constants.ACTION_TIMEFRAME.equals(action) && StringUtils.isEmpty(timeFrame)) {
 			result.add("Property " + Constants.timeFrame + " is empty");
-		} else if (Constants.actionOptions[4].equals(action)) {
-			
-				// Validate that the String has one, and only one '-'
-				// sign to separate the to- and from date.
-				String times[] = StringUtils.split(timeFrame, "-");
-				if (null == times || times.length != 2) {
-					result.add("Property " + Constants.timeFrame + " is not correct formatted. " +
-							"The pattern is " + Constants.TIME_FRAME_FORMAT);
-				} else {
-				
-					// Validate the pattern
-					try {
-						SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
-						sdf.parse(times[0]);
-						sdf.parse(times[1]);
-					} catch (ParseException e) {
-						result.add("Property " + Constants.timeFrame + " is not correct formatted. " +
-								"The pattern is " + Constants.TIME_FRAME_FORMAT);
-					}
+		} else if (Constants.ACTION_TIMEFRAME.equals(action)) {
+
+			// Validate that the String has one, and only one '-'
+			// sign to separate the to- and from date.
+			String times[] = StringUtils.split(timeFrame, "-");
+			if (null == times || times.length != 2) {
+				result.add("Property " + Constants.timeFrame + " is not correct formatted. " + "The pattern is "
+						+ Constants.TIME_FRAME_FORMAT);
+			} else {
+
+				// Validate the pattern
+				try {
+					SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
+					sdf.parse(times[0]);
+					sdf.parse(times[1]);
+				} catch (ParseException e) {
+					result.add("Property " + Constants.timeFrame + " is not correctly formatted. Expected pattern is "
+							+ Constants.TIME_FRAME_FORMAT);
 				}
-		}
-		
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT+ "validate");
+			}
+		}		
 		return result;
+	}
+
+	private String validateAction(String action) {
+		String validationMessage = "";
+		if (StringUtils.isEmpty(action)) {
+			validationMessage = "Property " + Constants.action + " is missing or empty";
+		} else {	
+			if (!Constants.ACTIONS.contains(action)) {
+				validationMessage = "Property " + Constants.action + " value supplied is not a valid option.";
+			} 	
+		}		
+		return validationMessage;
+	}
+
+	private void validateLogPath(String logFilePath) {
+		if (!StringUtils.isEmpty(logFilePath)) {
+			LOGGER.log(Level.FINE, "Using '" + logFilePath + " as logfile location");
+		} else {
+			String tempFolderProperty = "java.io.tmpdir";
+			String tempFolder = System.getProperty(tempFolderProperty); 
+			LOGGER.log(Level.WARNING, Constants.logFilePath + " is not declared. Using " + tempFolder + ".");
+		}
 	}
 }

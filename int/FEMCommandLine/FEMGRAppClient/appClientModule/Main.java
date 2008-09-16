@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -36,7 +37,6 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "main");
 		logger.log(Level.INFO, "FEMGRAppClient for WPS 6.1 - Version 0.9");
 		
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
@@ -81,11 +81,9 @@ public class Main {
 		ArgumentValidator argumentValidator = new ArgumentValidator();
 		List validatedArguments = argumentValidator.validate(cl);
 		if (!validatedArguments.isEmpty()) {
-			// Log all errors that occured in validation
-			for (int i = 0; i < validatedArguments.size(); i++) {
-				logger.log(Level.WARNING, (String) validatedArguments.get(i));
+			for (Iterator argumentIter = validatedArguments.iterator(); argumentIter.hasNext();) {
+				logger.log(Level.WARNING, (String) argumentIter.next());			
 			}
-			
 			logger.log(Level.WARNING, "Exiting due to insufficient number of arguments. See details listed above");
 			System.exit(0);
 		}
@@ -102,16 +100,16 @@ public class Main {
 		List validatedProperties = propertyUtil.validateProperties(connectProps);
 		
 		if (!validatedProperties.isEmpty()) {
-			for (int i = 0; i < validatedProperties.size(); i++) {
-				logger.log(Level.WARNING, (String) validatedProperties.get(i));
-			}
-			logger.log(Level.SEVERE, "FEMGRAppClient terminating due to issues with missing or invalid parameters in configuration file - logged above!");
+			for (Iterator propertyIter = validatedProperties.iterator(); propertyIter.hasNext();) {
+				logger.log(Level.WARNING, (String) propertyIter.next());
+			}			
+			logger.log(Level.SEVERE, "FEMGRAppClient terminating due to missing or invalid parameters in configuration file - logged above!");
 			System.exit(0);
 		}
 
 		try {
 			logger.log(Level.FINE, "Create status action instance");
-			AbstractAction statusAction = ActionFactory.getAction(Constants.actionOptions[3], connectProps);
+			AbstractAction statusAction = ActionFactory.getAction(Constants.ACTION_STATUS, connectProps);
 
 			// Get the total number of events to match with the page size to avoid hughe amount of retrieving
 			Long numberOfEvents = (Long) statusAction.process(null, null, null, false, 0, 0, cl);
@@ -124,8 +122,7 @@ public class Main {
 			
 			// Set to max. fem entries if pagsizse is greater
 			int pagesize = Integer.valueOf(cl.getOptionValue(Constants.maxResultSet));
-			if (pagesize > numberOfEvents)
-			{
+			if (pagesize > numberOfEvents){
 				pagesize = numberOfEvents.intValue();
 				logger.log(Level.INFO, "Set working result set to total number of events (" + pagesize + ") because MAX_RESULT_SET > TotalEvents.");
 			}
