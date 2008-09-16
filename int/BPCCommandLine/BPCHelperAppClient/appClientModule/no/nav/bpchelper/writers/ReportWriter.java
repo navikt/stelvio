@@ -43,7 +43,6 @@ public class ReportWriter {
 	}
 	
 	public void writeProcessInstance(ProcessInstanceBean processInstanceBean) {
-		System.out.println(processInstanceBean.getNamesOfCustomProperties());
 		appender.write(processInstanceBean.getName());
 		appender.write(processInstanceBean.getProcessTemplateName());
 		appender.write(ProcessInstanceBean.getConverter(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY).getAsString(processInstanceBean.getExecutionState(), locale));

@@ -2822,6 +2822,7 @@ int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/ActionOptionValues.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionOpts.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionsBuilder.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/MinStartedFilter.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/writers/ReportWriter.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClientEAR/.project -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.component -text

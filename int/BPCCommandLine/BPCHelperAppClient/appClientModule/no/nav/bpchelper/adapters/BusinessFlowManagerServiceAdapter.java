@@ -1,5 +1,7 @@
 package no.nav.bpchelper.adapters;
 
+import java.util.TimeZone;
+
 import com.ibm.bpe.api.QueryResultSet;
 
 public class BusinessFlowManagerServiceAdapter {
@@ -15,7 +17,7 @@ public class BusinessFlowManagerServiceAdapter {
 	
 	public QueryResultSet query(String selectClause, String whereClause, String orderByClause, Integer threshold) {
 		try {
-			return adaptee.query(selectClause, whereClause, orderByClause, threshold, null);
+			return adaptee.query(selectClause, whereClause, orderByClause, threshold, TimeZone.getDefault());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -23,7 +25,7 @@ public class BusinessFlowManagerServiceAdapter {
 
 	public QueryResultSet queryAll(String selectClause, String whereClause, String orderByClause, Integer threshold) {
 		try {
-			return adaptee.queryAll(selectClause, whereClause, orderByClause, null, threshold, null);
+			return adaptee.queryAll(selectClause, whereClause, orderByClause, null, threshold, TimeZone.getDefault());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
