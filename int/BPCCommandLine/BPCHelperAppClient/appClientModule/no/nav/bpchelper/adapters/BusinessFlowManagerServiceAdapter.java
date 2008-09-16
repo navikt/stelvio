@@ -1,8 +1,8 @@
-package no.nav.bpchelper.service;
+package no.nav.bpchelper.adapters;
 
 import com.ibm.bpe.api.QueryResultSet;
 
-public class BusinessFlowManagerServiceAdapter implements BusinessFlowManagerService {
+public class BusinessFlowManagerServiceAdapter {
 	private com.ibm.bpe.api.BusinessFlowManagerService adaptee;
 
 	public BusinessFlowManagerServiceAdapter(com.ibm.bpe.api.BusinessFlowManagerService adaptee) {
