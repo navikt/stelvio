@@ -20,15 +20,13 @@ public class CommandOptionsBuilder {
 	/**
 	 * Logger instance
 	 */
-	private Logger LOGGER = Logger.getLogger(AbstractFileWriter.class.getName());
+	private Logger logger = Logger.getLogger(AbstractFileWriter.class.getName());
 	
 	/**
 	 * Method that gather all options
 	 * @return all options
 	 */
-	public Options getOptions() {
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "getOptions");
-		
+	public Options getOptions() {	
 		Options options = new Options();
 		options.addOption(getHelpOption());
 		options.addOption(getConfigFileOption());
@@ -45,7 +43,7 @@ public class CommandOptionsBuilder {
 		options.addOption(getFailureMessageOption());
 		options.addOption(getDataObjectOption());
 		
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "getOptions");
+		logger.log(Level.FINE, Constants.METHOD_EXIT + "getOptions");
 		return options;
 	}
 
@@ -56,7 +54,7 @@ public class CommandOptionsBuilder {
 	private Option getSourceModuleOption() {
 		Option sourceModule = getGeneralOption(Constants.sourceModule);
 		sourceModule.setArgName("String");
-		sourceModule.setDescription("This attribute might in certain circumstances be empty. If this occur you might make use of the --sessionIdWildCard parameter");
+		sourceModule.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
 		return sourceModule;
 	}
 	
@@ -66,7 +64,7 @@ public class CommandOptionsBuilder {
 	 */
 	private Option getSourceComponentOption() {
 		Option sourceComponent = getGeneralOption(Constants.sourceComponent);
-		sourceComponent.setDescription("This attribute might in certain circumstances be empty. If this occur you might make use of the --sessionIdWildCard parameter");
+		sourceComponent.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
 		return sourceComponent;
 	}
 	
@@ -76,7 +74,7 @@ public class CommandOptionsBuilder {
 	 */
 	private Option getDestinationModule() {
 		Option destinationModule = getGeneralOption(Constants.destinationModule);
-		destinationModule.setDescription("This attribute might in certain circumstances be empty. If this occur you might make use of the --sessionIdWildCard parameter");
+		destinationModule.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
 		return destinationModule;
 	}
 	
@@ -86,7 +84,7 @@ public class CommandOptionsBuilder {
 	 */
 	private Option getDestinationComponent() {
 		Option destinationComponent = getGeneralOption(Constants.destinationComponent);
-		destinationComponent.setDescription("This attribute might in certain circumstances be empty. If this occur you might make use of the --sessionIdWildCard parameter");
+		destinationComponent.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
 		return destinationComponent;
 	}
 	
