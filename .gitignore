@@ -69,6 +69,7 @@ dev/maven2/nav-deployment-code-plugin/.classpath
 dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
+int/FEMCommandLine/FEMGRAppClient/target
 maven-jaxhandler-plugin/.classpath
 maven-jaxhandler-plugin/.project
 maven-jaxhandler-plugin/target
