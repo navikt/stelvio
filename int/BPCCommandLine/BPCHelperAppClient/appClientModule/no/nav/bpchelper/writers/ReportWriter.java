@@ -3,24 +3,14 @@ package no.nav.bpchelper.writers;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.Ostermiller.util.CSVPrinter;
-import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public class ReportWriter {
-    /**
-         * Locale used to format labels
-         */
-    private static final Locale LOCALE = Locale.getDefault();
-
     /**
          * Delimiter to use in CSV file
          */
@@ -66,6 +56,6 @@ public class ReportWriter {
 	    csvPrinter.writeln(values.toArray(new String[values.size()]));
 	} catch (Exception e) {
 	    throw new RuntimeException(e);
-	}	
+	}
     }
 }
