@@ -21,7 +21,7 @@ public class SimpleExpression implements Criterion {
     }
 
     public String toSqlString() {
-	StringBuffer sb = new StringBuffer();
+	StringBuilder sb = new StringBuilder();
 	sb.append(columnName);
 	sb.append(operator);
 	if (value instanceof String) {

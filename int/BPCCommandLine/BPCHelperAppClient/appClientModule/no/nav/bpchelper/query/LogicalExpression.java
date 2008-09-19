@@ -15,7 +15,7 @@ public class LogicalExpression implements Criterion {
     }
 
     public String toSqlString() {
-	StringBuffer sb = new StringBuffer();
+	StringBuilder sb = new StringBuilder();
 	sb.append("(").append(lhs.toSqlString()).append(")");
 	sb.append(" ").append(operator).append(" ");
 	sb.append("(").append(rhs.toSqlString()).append(")");

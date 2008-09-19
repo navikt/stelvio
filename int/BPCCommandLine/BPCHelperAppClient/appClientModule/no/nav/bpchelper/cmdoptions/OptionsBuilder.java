@@ -18,7 +18,7 @@ public class OptionsBuilder {
 
 	Option actionOption = OptionBuilder.withLongOpt(OptionOpts.ACTION).hasArg().create();
 	actionOption.setDescription("action to perform (mandatory)");
-	StringBuffer argName = new StringBuffer();
+	StringBuilder argName = new StringBuilder();
 	for (ActionOptionValues actionOptionValues : ActionOptionValues.values()) {
 	    if (argName.length() > 0) {
 		argName.append("|");

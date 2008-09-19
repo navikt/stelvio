@@ -12,7 +12,7 @@ public class Criteria {
     }
 
     public String toSqlString() {
-	StringBuffer sb = new StringBuffer();
+	StringBuilder sb = new StringBuilder();
 	for (Criterion criterion : criterions) {
 	    if (sb.length() > 0) {
 		sb.append(" AND ");
