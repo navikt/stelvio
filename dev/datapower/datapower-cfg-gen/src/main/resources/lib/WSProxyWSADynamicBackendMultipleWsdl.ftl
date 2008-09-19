@@ -1,34 +1,28 @@
-<#include "WSEndpointRewritePolicy.ftl"/>
-<#include "WSGateway.ftl"/>
-<#macro WSProxyWSADynamicBackend
+<#include "WSEndpointRewritePolicyMultipleWsdl.ftl"/>
+<#include "WSGatewayMultipleWsdl.ftl"/>
+<#macro WSProxyWSADynamicBackendMultipleWsdl
 		name
 		version
-		wsdlName
-		wsdlLocation
-		wsdlPortBinding
+		wsdls
 		policy
 		frontsideHandler
 		frontsideProtocol
 		backsideSSLProxy
-		endpointUri
 		wsaRequireAaa>
-	<@WSEndpointRewritePolicy
+	<@WSEndpointRewritePolicyMultipleWsdl
 		name="${name}"
-		wsdlPortBinding="${wsdlPortBinding}"
+		wsdls=wsdls
 		frontsideProtocol="${frontsideProtocol}"
 		frontsideHandler="${frontsideHandler}"
-		frontsideUri="${endpointUri}"
 		backsideProtocol="https"
 		backsideHost="localhost"
-		backsidePort="1234"
-		backsideUri="/ERROR-should-be-used-with-dynamic-backends-ERROR"/>
-	<@WSGateway
+		backsidePort="1234"/>
+		<#--backsideUri="/ERROR-should-be-used-with-dynamic-backends-ERROR"/>-->
+	<@WSGatewayMultipleWsdl
 		name="${name}"
 		version="${version}"
+		wsdls=wsdls
 		sslProxy="${backsideSSLProxy}"
-<#--	sslProxy="${backside}_SSLProxyProfile"-->
-		wsdlName="${wsdlName}"
-		wsdlLocation="${wsdlLocation}"
 		rewritePolicy="${name}"
 		stylePolicy="${policy}"
 		type="dynamic-backend"

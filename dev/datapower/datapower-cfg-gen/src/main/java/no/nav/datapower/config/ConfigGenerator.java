@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public abstract class ConfigGenerator {
 
-	private ConfigResources configResources;
+	private EnvironmentResources environmentResources;
 	private File outputDirectory;
 	private Properties requiredProperties;
 	private String name;
@@ -29,12 +29,20 @@ public abstract class ConfigGenerator {
 		this.requiredProperties = props;
 	}
 	
-	public ConfigResources getConfigResources() {
-		return configResources;
+	public EnvironmentResources getEnvironmentResources() {
+		return environmentResources;
 	}	
 	
-	public void setConfigResources(ConfigResources configResources) {
-		this.configResources = configResources;
+	public void setEnvironmentResources(EnvironmentResources resources) {
+		this.environmentResources = resources;
+	}
+	
+	public String getEnvironmentProperty(String property) {
+		return getEnvironmentResources().getProperty(property);
+	}
+
+	public void setEnvironmentProperty(String property, Object value) {
+		getEnvironmentResources().getProperties().put(property, value);
 	}
 
 	public File getOutputDirectory() {
@@ -45,5 +53,5 @@ public abstract class ConfigGenerator {
 		this.outputDirectory = outputDirectory;
 	}	
 
-	public abstract ConfigUnit generate();
+	public abstract ConfigPackage generate();
 }

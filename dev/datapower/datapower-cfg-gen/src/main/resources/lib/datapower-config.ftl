@@ -13,6 +13,7 @@
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
 <#include "NFSStaticMount.ftl">
+<#include "ProcessingRules.ftl">
 <#include "RequestResponseRuleProcessingPolicy.ftl">
 <#include "RequestResponseErrorRuleProcessingPolicy.ftl">
 <#include "SLMPolicy.ftl">
@@ -29,4 +30,6 @@
 <#include "WSStylePolicyRuleRequest.ftl">
 <#include "WSStylePolicyRuleResponse.ftl">
 <#include "WSProxyStaticBackend.ftl">
+<#include "WSProxyStaticBackendMultipleWsdl.ftl">
 <#include "WSProxyWSADynamicBackend.ftl">
+<#include "WSProxyWSADynamicBackendMultipleWsdl.ftl">

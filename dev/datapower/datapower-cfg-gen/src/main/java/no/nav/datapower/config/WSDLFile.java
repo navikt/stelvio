@@ -29,6 +29,7 @@ public class WSDLFile {
 	private SOAPAddress soapAddress;
 	private String relativePath;
 	private String frontsideURI;
+	private WSProxy proxy;
 
 	public WSDLFile(File wsdlFile) {
 		this.fileName = wsdlFile.getName();
@@ -39,6 +40,7 @@ public class WSDLFile {
 		this.port = (Port) service.getPorts().values().iterator().next();
 		this.soapAddress = (SOAPAddress) port.getExtensibilityElements().get(0);
 		this.location = URI.create(soapAddress.getLocationURI());
+		this.frontsideURI = getEndpointURI();
 	}
 
 	public WSDLFile(File wsdlFile, File root) {
@@ -81,6 +83,11 @@ public class WSDLFile {
 	}
 
 	public String getFrontsideURI() {
+		if (proxy != null && proxy.hasMultipleWsdls()) {
+			String version = getVersion();
+			if (!version.equals("") && !frontsideURI.contains(version))
+				return frontsideURI + version;
+		}
 		return frontsideURI;
 	}
 	
@@ -108,10 +115,29 @@ public class WSDLFile {
 		return wsdlFile;
 	}
 	
+	public String getVersion() {
+		String version = "";
+		String namespaceURI = portType.getQName().getNamespaceURI();
+		System.out.println("Namespace URI = " + namespaceURI);
+		if ((namespaceURI.length() - namespaceURI.lastIndexOf('/')) == 5) {
+			version = namespaceURI.substring(namespaceURI.lastIndexOf('/') + 1);
+		}
+		System.out.println("Version = " + version);		
+		return version;		
+	}
+	
 	protected static String getVersion(String namespaceURI) {
 		System.out.println("Namespace URI = " + namespaceURI);
 		String version = namespaceURI.substring(namespaceURI.lastIndexOf('/') + 1);
 		System.out.println("Version = " + version);		
 		return version;
+	}
+
+	protected WSProxy getProxy() {
+		return proxy;
+	}
+
+	protected void setProxy(WSProxy proxy) {
+		this.proxy = proxy;
 	}
 }

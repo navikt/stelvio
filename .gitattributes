@@ -1305,7 +1305,10 @@ dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
 dev/datapower/datapower-cfg-gen/pom.xml -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigGenerator.java -text
+dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigPackage.java -text
+dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/EnvironmentResources.java -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/WSDLFile.java -text
+dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/WSProxy.java -text svneol=unset#text/plain
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/FreemarkerConfigGenerator.java -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/DPTemplateLib.java -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/StreamTemplateLoader.java -text
@@ -1325,6 +1328,8 @@ dev/datapower/datapower-cfg-gen/src/main/resources/lib/FrontsideHandler.ftl -tex
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/MatchingRuleErrorCode.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/MatchingRuleURL.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/NFSStaticMount.ftl -text
+dev/datapower/datapower-cfg-gen/src/main/resources/lib/ProcessingRule.ftl -text
+dev/datapower/datapower-cfg-gen/src/main/resources/lib/ProcessingRules.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/RequestResponseErrorRuleProcessingPolicy.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/RequestResponseRuleProcessingPolicy.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/ReverseCryptoProfile.ftl -text
@@ -1344,10 +1349,14 @@ dev/datapower/datapower-cfg-gen/src/main/resources/lib/TrustedCertificate.ftl -t
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/TwoWayCryptoProfile.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/TwoWaySSLProxy.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSEndpointRewritePolicy.ftl -text
+dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSEndpointRewritePolicyMultipleWsdl.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSGateway.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSGateway.ftl.bak -text
+dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSGatewayMultipleWsdl.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSProxyStaticBackend.ftl -text
+dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSProxyStaticBackendMultipleWsdl.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSProxyWSADynamicBackend.ftl -text
+dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSProxyWSADynamicBackendMultipleWsdl.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSStylePolicy.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSStylePolicyRuleError.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSStylePolicyRuleRequest.ftl -text
