@@ -1,10 +1,15 @@
 package no.nav.bpchelper.actions;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import no.nav.bpchelper.adapters.BFMConnectionAdapter;
 
 import com.ibm.bpe.api.QueryResultSet;
 
 public class StatusAction extends AbstractAction {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+    
     public void process() {
 	BFMConnectionAdapter bfmConnection = BFMConnectionAdapter.getInstance();
 
@@ -15,6 +20,6 @@ public class StatusAction extends AbstractAction {
 	// TODO: Is query the correct service to use, or should queryAll be used?
 	QueryResultSet rs = bfmConnection.getBusinessFlowManagerService().query(selectClause, whereClause, null, null);
 	rs.next();
-	System.out.println("Number of stopped process instances: " + rs.getLong(1));
+	logger.info("Number of stopped process instances: " + rs.getLong(1));
     }
 }
