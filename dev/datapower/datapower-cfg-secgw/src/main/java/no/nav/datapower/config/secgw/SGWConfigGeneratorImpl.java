@@ -10,8 +10,8 @@ import java.util.Properties;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import no.nav.datapower.config.ConfigResources;
-import no.nav.datapower.config.ConfigUnit;
+import no.nav.datapower.config.ConfigPackage;
+import no.nav.datapower.config.EnvironmentResources;
 import no.nav.datapower.config.WSDLFile;
 import no.nav.datapower.config.freemarker.FreemarkerConfigGenerator;
 import no.nav.datapower.config.freemarker.templates.StreamTemplateLoader;
@@ -27,12 +27,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.OrFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.log4j.Logger;
-import org.eclipse.jst.j2ee.commonarchivecore.internal.exception.OpenFailureException;
-
-import com.ibm.etools.commonarchive.CommonarchiveFactory;
-import com.ibm.etools.commonarchive.EARFile;
-import com.ibm.etools.commonarchive.WARFile;
-import com.ibm.etools.commonarchive.impl.CommonarchiveFactoryImpl;
 
 import freemarker.cache.TemplateLoader;
 import freemarker.template.TemplateException;
@@ -54,8 +48,8 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	}
 	
 	@Override
-	public ConfigUnit generate() {
-		ConfigResources cfg = getConfigResources();
+	public ConfigPackage generate() {
+		EnvironmentResources cfg = getEnvironmentResources();
 		Properties props = cfg.getProperties();
 //		System.out.println("Properties:\r\n" + DPPropertiesUtils.toString(props));
 		props = new PropertiesBuilder(props).interpolate().buildProperties();
@@ -65,7 +59,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			throw new IllegalArgumentException("Configuration contains invalid Properties:\r\n" + validator.getErrorMessage());
 		}
 		LOG.debug("Output directory = " + getOutputDirectory());
-		ConfigUnit unit = new ConfigUnit(cfg.getProperty("cfgDomain"), getOutputDirectory());
+		ConfigPackage unit = new ConfigPackage(cfg.getProperty("cfgDomain"), getOutputDirectory());
 		LOG.debug("Root directory = " + unit.getRootDir());
 		LOG.debug("Files local directory = " + unit.getFilesLocalDir());
 		LOG.debug("Files local wsdl directory = " + unit.getFilesLocalWsdlDir());
@@ -76,6 +70,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			extractWsdlFiles(earFiles, unit.getFilesLocalDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), unit.getFilesLocalAaaDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), unit.getFilesCertDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), unit.getFilesLocalXsltDir());
 		} catch (IOException e) {
 			throw new IllegalStateException("Caught IOException while extracting WSDL files from EAR archives",e);
 		}
@@ -145,8 +140,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 
 	
 	private List<File> getFileList(File dir, String filterProperty, String fileExt) {
-		String filterString = getConfigResources().getProperty(filterProperty);
-//		String filterString = getConfigResources().getProperty("cfgConsumerModuleFilter");
+		String filterString = getEnvironmentResources().getProperty(filterProperty);
 		LOG.trace("getFileList(), dir = " + dir + ",  filterString = " + filterString + ", fileExt = " + fileExt);
 		List<String> filters = DPCollectionUtils.listFromString(filterString);
 		OrFileFilter orFilter = new OrFileFilter();
@@ -174,22 +168,6 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 					FileUtils.deleteQuietly(warFile);
 				}
 			}
-//			WARFile warFile = getWarFile(ear);
-//	        ResourceSetImpl resourcesetimpl = new ResourceSetImpl();
-//	        ArchiveURIConverterImpl archiveuriconverterimpl = new ArchiveURIConverterImpl(warFile, null);
-//	        String resourceString = Utils.getModulePath(warFile, "META-INF/wsdl");
-//	        resourcesetimpl.setResourceFactoryRegistry(J2EEResourceFactoryRegistry.INSTANCE);
-//	        resourcesetimpl.setURIConverter(archiveuriconverterimpl);
-//	    	URI resourceURI = URI.createURI(resourceString);
-//	    	Resource resource = resourcesetimpl.getResource(resourceURI, true);
-//	    	System.out.println("resource = " + resource);
 		}
-//		DPFileUtils.extractArchive(wsdlArchive, unit.getFilesLocalWsdlDir());
-	}
-	
-	private WARFile getWarFile(File ear) throws OpenFailureException {
-		CommonarchiveFactory archiveFactory = new CommonarchiveFactoryImpl();
-		EARFile earFile = archiveFactory.openEARFile(ear.getAbsolutePath());
-		return (WARFile) earFile.getWARFiles().get(0);
-	}
+	}	
 }

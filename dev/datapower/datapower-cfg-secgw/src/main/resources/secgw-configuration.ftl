@@ -1,10 +1,7 @@
 <#import "datapower-config.ftl" as dp>
 
-<#assign defaultRequestSLMAction="PSELVDefault_request-rule_slmAction"/>
-<#assign defaultRequestAAAAction="PSELVDefault_request-rule_aaaAction"/>
-<#assign defaultRequestResultAction="PSELVDefault_request-rule_resultAction"/>
-<#assign defaultResponseResultAction="PSELVDefault_response-rule_resultAction"/>
-
+<#assign defaultMatchAll="PSELVDefault_match_all"/>
+<#assign defaultMatchAllErrors="PSELVDefault_match_allErrors"/>
 
 <@dp.configuration domain="${cfgDomain}">
 	<@dp.FrontsideSSL
@@ -31,35 +28,46 @@
 	<@dp.SLMPolicy
 			name="PSELVDefaultSLMPolicy"/>
 	<@dp.MatchingRuleURL
-			name="PSELVDefault_match_all"
+			name="${defaultMatchAll}"
 			urlMatch="*"/>
-	<@dp.StylePolicyActionSLM
-			name="${defaultRequestSLMAction}"
-			input="INPUT"/>
-	<@dp.StylePolicyActionAAA
-			name="${defaultRequestAAAAction}"
-			aaaPolicy="${aaaPolicyName}"
-			input="INPUT"
-			output="PIPE"/>
-	<@dp.StylePolicyActionResult
-			name="${defaultRequestResultAction}"
-			input="PIPE"
-			output="OUTPUT"/>
-	<@dp.StylePolicyActionResult
-			name="${defaultResponseResultAction}"
-			input="INPUT"
-			output="OUTPUT"/>
-	<@dp.WSStylePolicyRuleRequest
-			name="PSELVDefault_request-rule"
-			actions=["${defaultRequestSLMAction}","${defaultRequestAAAAction}","${defaultRequestResultAction}"]/>
-	<@dp.WSStylePolicyRuleResponse
-			name="PSELVDefault_response-rule"
-			actions=["${defaultResponseResultAction}"]/>
+	<@dp.MatchingRuleErrorCode
+			name="${defaultMatchAllErrors}"
+			errorCodeMatch="*"/>
+
+	<@dp.ProcessingRequestRule
+			name="${cfgProcessingPolicy}"
+			actions=[
+				{"type":"slm",	"name":"slmAction",	
+						"input":"INPUT",	"output":"NULL"},
+				{"type":"aaa",	"name":"aaaAction",	
+						"input":"INPUT",	"output":"PIPE",
+						"policy":"${aaaPolicyName}"}, 
+				{"type":"result", "name":"resultAction",
+					"input":"PIPE","output":"OUTPUT"}
+			]/>
+	<@dp.ProcessingResponseRule
+			name="${cfgProcessingPolicy}"
+			actions=[
+				{"type":"result", "name":"resultAction",
+					"input":"INPUT","output":"OUTPUT"}
+			]/>
+	<@dp.ProcessingErrorRule
+			name="${cfgProcessingPolicy}"
+			actions=[
+				{"type":"xform", "name":"createFaultAction",
+						"input":"INPUT",	"output":"faultGenerisk", "async":"off",
+						"stylesheet":"local:///xslt/faultgenerisk.xsl",
+						"params":[]},
+				{"type":"result", "name":"resultAction",
+					"input":"faultGenerisk","output":"OUTPUT"}
+			]/>
+			
 	<@dp.WSStylePolicy
 			name="${cfgProcessingPolicy}"
 			policyMapsList=[
-				{"matchingRule":"PSELVDefault_match_all","processingRule":"PSELVDefault_request-rule"},
-				{"matchingRule":"PSELVDefault_match_all","processingRule":"PSELVDefault_response-rule"}
+				{"matchingRule":"${defaultMatchAll}","processingRule":"${cfgProcessingPolicy}_request-rule"},
+				{"matchingRule":"${defaultMatchAll}","processingRule":"${cfgProcessingPolicy}_response-rule"}
+				{"matchingRule":"${defaultMatchAllErrors}","processingRule":"${cfgProcessingPolicy}_error-rule"}
 			]/>
 	<#-- Loop through the specified list of WSDLs and create one WSproxy for each WSDL -->
 	<#list wsdls as wsdl>
