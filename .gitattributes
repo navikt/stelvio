@@ -1305,8 +1305,6 @@ dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
 dev/datapower/datapower-cfg-gen/pom.xml -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigGenerator.java -text
-dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigResources.java -text
-dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigUnit.java -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/WSDLFile.java -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/FreemarkerConfigGenerator.java -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/DPTemplateLib.java -text
