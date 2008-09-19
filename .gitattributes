@@ -2805,6 +2805,7 @@ inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension
 int/BPCCommandLine/BPCHelperAppClient/.classpath -text
 int/BPCCommandLine/BPCHelperAppClient/.project -text
 int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.jdt.core.prefs -text
+int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.jdt.ui.prefs -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.wst.common.component -text
 int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.wst.common.project.facet.core.xml -text

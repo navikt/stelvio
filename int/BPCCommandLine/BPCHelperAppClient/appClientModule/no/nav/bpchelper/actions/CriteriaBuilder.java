@@ -14,7 +14,6 @@ import org.apache.commons.cli.CommandLine;
 import com.ibm.bpe.api.ActivityInstanceData;
 import com.ibm.bpe.api.ProcessInstanceData;
 
-
 public class CriteriaBuilder {
     public static Criteria build(CommandLine commandLine) {
 	Criteria criteria = new Criteria();
@@ -49,7 +48,7 @@ public class CriteriaBuilder {
 		criteria.add(Restrictions.eq("ACTIVITY.TEMPLATE_NAME", activityName));
 	    }
 	}
-	
+
 	return criteria;
     }
 
