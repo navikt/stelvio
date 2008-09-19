@@ -4,23 +4,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Collection;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import org.apache.commons.io.DirectoryWalker;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.IOFileFilter;
-import org.apache.commons.io.filefilter.OrFileFilter;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.apache.log4j.Logger;
-
-import no.nav.datapower.config.ConfigResources;
-import no.nav.datapower.config.ConfigUnit;
+import no.nav.datapower.config.ConfigPackage;
+import no.nav.datapower.config.EnvironmentResources;
 import no.nav.datapower.config.WSDLFile;
+import no.nav.datapower.config.WSProxy;
 import no.nav.datapower.config.freemarker.FreemarkerConfigGenerator;
 import no.nav.datapower.config.freemarker.templates.StreamTemplateLoader;
 import no.nav.datapower.util.DPCollectionUtils;
@@ -30,6 +25,12 @@ import no.nav.datapower.util.DPZipUtils;
 import no.nav.datapower.util.PropertiesBuilder;
 import no.nav.datapower.util.PropertiesValidator;
 import no.nav.datapower.util.WildcardPathFilter;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.OrFileFilter;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.apache.log4j.Logger;
+
 import freemarker.cache.TemplateLoader;
 import freemarker.template.TemplateException;
 
@@ -42,6 +43,7 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	private static final String REQUIRED_PROPERTIES_NAME = "/cfg-partnergw-required.properties";
 	private static final Properties REQUIRED_PROPERTIES = DPPropertiesUtils.load(PGWConfigGeneratorImpl.class,REQUIRED_PROPERTIES_NAME);
 	private static final TemplateLoader PARTNERGW_TEMPLATE_LOADER = new StreamTemplateLoader(PGWConfigGeneratorImpl.class, "/");
+	private static final OrFileFilter WSDL_OR_XSD_FILENAME_FILTER = new OrFileFilter(new WildcardPathFilter("*.wsdl"), new WildcardPathFilter("*.xsd"));
 	
 	public PGWConfigGeneratorImpl() {		
 		super(GENERATOR_NAME, REQUIRED_PROPERTIES, PARTNERGW_TEMPLATE_LOADER);
@@ -49,63 +51,49 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 
 	
 	@Override
-	public ConfigUnit generate() {
+	public ConfigPackage generate() {
 		LOG.info("Executing PGWConfigGeneratorImpl.generate()");
-		ConfigResources cfg = getConfigResources();
+		EnvironmentResources cfg = getEnvironmentResources();
 		Properties props = cfg.getProperties();
-//		LOG.trace("Properties:\r\n" + DPPropertiesUtils.toString(props));
 		props = new PropertiesBuilder(props).interpolate().buildProperties();
 		LOG.info("Properties:\r\n" + DPPropertiesUtils.toString(props));
 		LOG.info("Required Properties:\r\n" + DPPropertiesUtils.toString(getRequiredProperties()));
-//		PropertiesValidator validator = new PropertiesValidator(cfg.getProperties(), getRequiredProperties());
 		PropertiesValidator validator = new PropertiesValidator(props, getRequiredProperties());
 		if (validator.hasInvalidProperties()) {
 			throw new IllegalArgumentException("Configuration contains invalid Properties:\r\n" + validator.getErrorMessage());
 		}
-		ConfigUnit unit = new ConfigUnit(cfg.getDomain(), getOutputDirectory());
+		ConfigPackage cfgPackage = new ConfigPackage(cfg.getDomain(), getOutputDirectory());
 		
 		// Extract wsdl archives
-		File tmpDir = DPFileUtils.append(unit.getRootDir(), "tmp");
+		File tmpDir = DPFileUtils.append(cfgPackage.getRootDir(), "tmp");
 		File tmpDirInbound = DPFileUtils.append(tmpDir, "inbound");
 		tmpDirInbound.mkdirs();
 		File tmpDirOutbound = DPFileUtils.append(tmpDir, "outbound");
 		tmpDirOutbound.mkdirs();
 		try {
-			extractWsdlFiles(getConsumerEarFiles(cfg.getModuleDirectory()), tmpDirInbound, "Web.war");
-			FileUtils.copyDirectory(tmpDirInbound, unit.getFilesLocalDir());
-			extractWsdlFiles(getProducerEarFiles(cfg.getModuleDirectory()), tmpDirOutbound, "EJB.jar");
-			FileUtils.copyDirectory(tmpDirOutbound, unit.getFilesLocalDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), unit.getFilesLocalAaaDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), unit.getFilesLocalXsltDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), unit.getFilesCertDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getPubcertFiles(), unit.getFilesPubcertDir());
+			extractWsdlsFromConsumerModules(cfg, tmpDirInbound);
+			extractWsdlsFromProducerModules(cfg, tmpDirOutbound);
+			FileUtils.copyDirectory(tmpDirInbound, cfgPackage.getFilesLocalDir());
+			FileUtils.copyDirectory(tmpDirOutbound, cfgPackage.getFilesLocalDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), cfgPackage.getFilesLocalAaaDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), cfgPackage.getFilesLocalXsltDir());
+			DPFileUtils.copyFilesToDirectory(getLocalXslt(), cfgPackage.getFilesLocalXsltDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), cfgPackage.getFilesCertDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getPubcertFiles(), cfgPackage.getFilesPubcertDir());
 
 		} catch (IOException e1) {
 			throw new IllegalStateException("Caught IOException while extracting WSDL archive");
 		}
 		
-		// Generate AAAInfo file
-//		try {
-//			File aaaMappingFile = DPFileUtils.append(unit.getFilesLocalAaaDir(), cfg.getProperty("aaaFileName"));
-//			FileWriter aaaWriter = new FileWriter(aaaMappingFile);
-//			processTemplate(TEMPLATE_AAA, cfg.getProperties(), aaaWriter);
-//			aaaWriter.close();
-//		} catch (IOException e) {
-//			throw new IllegalStateException("Caught IOException while building AAAInfo file", e);
-//		} catch (TemplateException e) {
-//			throw new IllegalStateException("Template processing failed for AAAInfo file", e);
-//		}
-
 		// Generate XCFG configuration
 		try {
-//			File cfgFile = DPFileUtils.append(unit.getImportConfigDir(), cfg.getProperty("cfgDomain") + "-configuration.xcfg");
-			File cfgFile = DPFileUtils.append(unit.getImportConfigDir(), cfg.getConfigFilename());
-			unit.setImportConfigFile(cfgFile);
+			File cfgFile = DPFileUtils.append(cfgPackage.getImportConfigDir(), cfg.getConfigFilename());
+			cfgPackage.setImportConfigFile(cfgFile);
 			FileWriter cfgWriter = new FileWriter(cfgFile);
-//			File wsdlDirectory = DPFileUtils.findDirectory(unit.getRootDir(), "wsdl");
-			File wsdlDirectory = unit.getFilesLocalWsdlDir();
-			cfg.getProperties().put("inboundWsdls", getInboundWsdls(tmpDirInbound));
-			cfg.getProperties().put("outboundWsdls", getOutboundWsdls(tmpDirOutbound));
+			setEnvironmentProperty("inboundWsdls", getInboundWsdls(tmpDirInbound));
+			setEnvironmentProperty("outboundWsdls", getOutboundWsdls(tmpDirOutbound));
+			setEnvironmentProperty("inboundProxies", getInboundProxies(tmpDirInbound));
+			setEnvironmentProperty("outboundProxies", getOutboundProxies(tmpDirOutbound));
 			FileUtils.deleteDirectory(tmpDir);
 			processTemplate(TEMPLATE_CFG, cfg.getProperties(), cfgWriter);
 			cfgWriter.flush();
@@ -115,20 +103,76 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		} catch (TemplateException e) {
 			throw new IllegalStateException(e);
 		}
-		return unit;
+		return cfgPackage;
 	}
+
+	private List<File> getLocalXslt() {
+		File localDir = DPFileUtils.getResource(getClass(), "/local/xslt");
+		return getFileList(localDir);
+	}
+
+	private List<File> getFileList(File dir) {
+		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
+	}
+
+	private void extractWsdlsFromProducerModules(EnvironmentResources cfg, File outputDir) throws IOException {
+		extractWsdlFiles(getProducerEarFiles(cfg.getModuleDirectory()), outputDir, "EJB.jar");
+	}
+
+
+	private void extractWsdlsFromConsumerModules(EnvironmentResources cfg, File outputDir) throws IOException {
+		extractWsdlFiles(getConsumerEarFiles(cfg.getModuleDirectory()), outputDir, "Web.war");
+	}
+
 	
 	private List<WSDLFile> getInboundWsdls(File wsdlDirectory) throws IOException {
 		List<WSDLFile> inboundWsdls = DPCollectionUtils.newArrayList();
-		for (File wsdlFile : DPFileUtils.findFilesRecursively(wsdlDirectory, "*Service.wsdl")) {
-			inboundWsdls.add(WSDLFile.createMappedUri(wsdlFile, wsdlDirectory, "/elsam/tptilb/"));			
+		String wsdlFilter = getEnvironmentProperty("cfgInboundWsdlFilter");
+		String uriMapping = getEnvironmentProperty("cfgInboundUriMapping");
+		for (File wsdlFile : DPFileUtils.findFilesRecursively(wsdlDirectory, wsdlFilter)) {
+			inboundWsdls.add(WSDLFile.createMappedUri(wsdlFile, wsdlDirectory, uriMapping));			
 		}
 		return inboundWsdls;
 	}
 
+	private List<WSProxy> getInboundProxies(File wsdlDirectory) throws IOException {
+		List<WSProxy> proxies = DPCollectionUtils.newArrayList();
+		List<WSDLFile> wsdls = getInboundWsdls(wsdlDirectory);
+		for (WSDLFile wsdl : wsdls) {
+			System.out.println("getInboundWsdl(), proxyName = " + wsdl.getProxyName());
+			getProxyByName(proxies, wsdl.getProxyName()).addWsdl(wsdl);
+		}
+		return proxies;
+	}
+
+	
+	private List<WSProxy> getOutboundProxies(File wsdlDirectory) throws IOException {
+		List<WSProxy> proxies = DPCollectionUtils.newArrayList();
+		List<WSDLFile> wsdls = getOutboundWsdls(wsdlDirectory);
+		for (WSDLFile wsdl : wsdls) {
+			getProxyByName(proxies, wsdl.getProxyName()).addWsdl(wsdl);
+		}
+		return proxies;
+	}
+	
+	private WSProxy getProxyByName(List<WSProxy> proxies, String name) {
+		WSProxy proxy = null;
+		for (WSProxy p : proxies) {
+			if (p.getName().equals(name)) {
+				proxy = p;
+			}
+		}
+		if (proxy == null) {
+			proxy = new WSProxy(name);
+			proxies.add(proxy);
+		}
+		return proxy;
+	}
+
 	private List<WSDLFile> getOutboundWsdls(File wsdlDirectory) throws IOException {
 		List<WSDLFile> outboundWsdls = DPCollectionUtils.newArrayList();
-		for (File wsdlFile : DPFileUtils.findFilesRecursively(wsdlDirectory, "*Service.wsdl")) {
+		String wsdlFilter = getEnvironmentResources().getProperty("cfgOutboundWsdlFilter");
+		for (File wsdlFile : DPFileUtils.findFilesRecursively(wsdlDirectory, wsdlFilter)) {
 			outboundWsdls.add(new WSDLFile(wsdlFile, wsdlDirectory));
 		}
 		return outboundWsdls;
@@ -158,8 +202,7 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 
 	
 	private List<File> getFileList(File dir, String filterProperty, String fileExt) {
-		String filterString = getConfigResources().getProperty(filterProperty);
-//		String filterString = getConfigResources().getProperty("cfgConsumerModuleFilter");
+		String filterString = getEnvironmentResources().getProperty(filterProperty);
 		LOG.info("getFileList(), dir = " + dir + ",  filterString = " + filterString + ", fileExt = " + fileExt);
 		List<String> filters = DPCollectionUtils.listFromString(filterString);
 		OrFileFilter orFilter = new OrFileFilter();
@@ -182,8 +225,7 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 				if (jarEntry.getName().endsWith(wsdlSourceFilter)) {
 					File warFile = DPFileUtils.append(dir.getParentFile(), jarEntry.getName());
 					DPZipUtils.writeZipEntryToOutputStream(earArchive, jarEntry, new FileOutputStream(warFile));
-					DPFileUtils.extractArchiveFiltered(warFile, dir,
-							new OrFileFilter(new WildcardPathFilter("*.wsdl"), new WildcardPathFilter("*.xsd")));
+					DPFileUtils.extractArchiveFiltered(warFile, dir, WSDL_OR_XSD_FILENAME_FILTER);
 					FileUtils.deleteQuietly(warFile);
 				}
 			}

@@ -14,39 +14,15 @@
 ]/>
 
 
-<#-- Default processing rules -->
-<#assign defaultSetLogDestAction="ELSAMDefault_setlogdestAction"/>
-<#assign defaultSignMessageBodyAction="ELSAMDefault_signAction"/>
-<#assign defaultSignRequestBodyAction="ELSAMDefault_signRequestAction"/>
-<#assign defaultSignResponseBodyAction="ELSAMDefault_signResponseAction"/>
-<#assign defaultVerifySignatureAction="ELSAMDefault_verifyAction"/>
-<#assign defaultLogMessageAction="ELSAMDefault_logmsgAction"/>
-<#assign defaultStripWSSHeaderAction="ELSAMDefault_stripwssAction"/>
-<#assign defaultStripSignatureAction="ELSAMDefault_stripSignatureAction"/>
-<#assign defaultResultAction="ELSAMDefault_resultAction"/>
-<#assign propagateLtpaResultAction="ELSAMDefault_propagateLtpaResultAction"/>
-<#assign defaultRequestResultAction="ELSAMDefault_requestResultAction"/>
-<#assign defaultResponseResultAction="ELSAMDefault_responseResultAction"/>
-<#assign defaultErrorResultAction="ELSAMDefault_errorResultAction"/>
-<#assign defaultErrorAction="ELSAMDefault_errorAction"/>
-
-
-<#-- Inbound request variables -->
-<#assign inboundRequestRule="ELSAMInbound_request-rule"/>
-<#assign inboundAAAAction="ELSAMInbound_aaaAction"/>
-
-<#-- Inbound response variables -->
-<#assign inboundResponseRule="ELSAMInbound_response-rule"/>
-
-<#-- Inbound error variables -->
-<#assign inboundErrorRule="ELSAMInbound_error-rule"/>
-
-<#-- Outbound request variables -->
-<#assign outboundRequestRule="ELSAMOutbound_request-rule"/>
-<#assign outboundAAAAction="ELSAMOutbound_aaaAction"/>
-
-<#-- Outbound response variables -->
-<#assign outboundResponseRule="ELSAMOutbound_response-rule"/>
+<#assign logActionParams=[
+	{"name":"log-store",	"value":"${nfsLogTargetName}"},	
+	{"name":"domain",		"value":"on"},	
+	{"name":"proxy",		"value":"on"},	
+	{"name":"operation",	"value":"on"},	
+	{"name":"user",			"value":"on"},	
+	{"name":"transaction",	"value":"on"},
+	{"name":"rule",			"value":"on"}	
+]/>
 
 <#assign signatureValCred="messageSignature_CryptoValCred"/>
 <#assign matchingRuleAll="ELSAMDefault_match_all"/>
@@ -107,204 +83,145 @@
 	<@dp.MatchingRuleErrorCode
 			name="${matchingRuleAllErrors}"
 			errorCodeMatch="*"/>
-	<#-- Inbound request rule processiong actions -->
-	<#--<@dp.StylePolicyActionAAA
-			name="${inboundAAAAction}"
-			aaaPolicy="${inboundAaaPolicyName}"
-			input="INPUT"
-			output="NULL"/>-->
-	<@dp.StylePolicyActionAAA
-			name="${inboundAAAAction}"
-			aaaPolicy="${inboundAaaPolicyName}"
-			input="INPUT"
-			output="ltpapropagateResult"/>
-	<#--stylesheetName="local:///xslt/set-log-destination.xsl"-->
-	<@dp.StylePolicyActionTransformParameterized
-			name="${defaultSetLogDestAction}"
-			stylesheetName="local:///xslt/nfs-message-logger.xsl"
-			input="INPUT"
-			output="NULL"
-			params=[
-				{"name":"log-store","value":"${nfsLogTargetName}"}	
-				{"name":"domain","value":"on"}	
-				{"name":"policy","value":"on"}	
-				{"name":"operation","value":"on"}	
-				{"name":"user","value":"on"}	
-				{"name":"transaction","value":"on"}
-				{"name":"rule","value":"on"}	
-			]/>
-	<@dp.StylePolicyActionVerify
-			name="${defaultVerifySignatureAction}"
-			input="INPUT"
-			valCred="${signatureValCred}"/>
-	<@dp.StylePolicyActionSign
-			name="${defaultSignMessageBodyAction}"
-			input="INPUT"
-			output="result"
-			signCert="${navSigningKeystoreName}"
-			signKey="${navSigningKeystoreName}"/>
-	<@dp.StylePolicyActionSign
-			name="${defaultSignRequestBodyAction}"
-			input="INPUT"
-			output="requestResult"
-			signCert="${navSigningKeystoreName}"
-			signKey="${navSigningKeystoreName}"/>
-	<@dp.StylePolicyActionSign
-			name="${defaultSignResponseBodyAction}"
-			input="INPUT"
-			output="responseResult"
-			signCert="${navSigningKeystoreName}"
-			signKey="${navSigningKeystoreName}"/>
-	<@dp.StylePolicyActionLog
-			name="${defaultLogMessageAction}"
-			destination="var://context/log/destination"
-			input="INPUT"/>
-	<@dp.StylePolicyActionTransform
-			name="${defaultStripWSSHeaderAction}"
-			stylesheetName="store:///strip-security-header.xsl"
-			input="INPUT"
-			output="responseResult"/>
-	<@dp.StylePolicyActionTransform
-			name="${defaultStripSignatureAction}"
-			stylesheetName="store:///strip-wssec-signature.xsl"
-			input="INPUT"
-			output="signaturestripped"/>
-	<@dp.StylePolicyActionTransform
-			name="${defaultErrorAction}"
-			stylesheetName="local:///xslt/faultgenerisk.xsl"
-			input="INPUT"
-			output="errorResult"/>
-	<@dp.StylePolicyActionResult
-			name="${propagateLtpaResultAction}"
-			input="ltpapropagateResult"
-			output="OUTPUT"/>
-	<@dp.StylePolicyActionResult
-			name="${defaultResultAction}"
-			input="result"
-			output="OUTPUT"/>
-	<@dp.StylePolicyActionResult
-			name="${defaultRequestResultAction}"
-			input="requestResult"
-			output="OUTPUT"/>
-	<@dp.StylePolicyActionResult
-			name="${defaultResponseResultAction}"
-			input="responseResult"
-			output="OUTPUT"/>
-	<@dp.StylePolicyActionResult
-			name="${defaultErrorResultAction}"
-			input="errorResult"
-			output="OUTPUT"/>
-
 
 	<#-- Inbound processing rules-->
-	<@dp.WSStylePolicyRuleRequest
-			name="${inboundRequestRule}"
+	<@dp.ProcessingRequestRule
+		name="${inboundProcessingPolicy}"
+		actions=[
+				{"type":"aaa",	"name":"aaaAction",	
+						"input":"INPUT",	"output":"aaaOutput",
+						"policy":"${inboundAaaPolicyName}"}, 
+				{"type":"verify", "name":"verifiyAction",
+						"input":"INPUT",	"output":"NULL",
+						"valCred":"${signatureValCred}"},
+				{"type":"xform", "name":"logAction", "async":"on",
+						"input":"INPUT",	"output":"NULL",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"xform", "name":"addStelvioCtxAction", "async":"off",
+						"input":"aaaOutput",	"output":"stelvioContextIncluded",
+						"stylesheet":"local:///xslt/add-stelvio-context.xsl",
+						"params":[]},
+				{"type":"result", "name":"resultAction",
+					"input":"stelvioContextIncluded","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingResponseRule
+		name="${inboundProcessingPolicy}"
+		actions=[
+				{"type":"sign", "name":"signAction",
+						"input":"INPUT",	"output":"signedResponse",
+						"signCert":"${navSigningKeystoreName}",
+						"signKey":"${navSigningKeystoreName}"}
+				{"type":"xform", "name":"logAction", "async":"on",
+						"input":"signedResponse",	"output":"NULL",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"signedResponse","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingErrorRule
+			name="${inboundProcessingPolicy}"
 			actions=[
-				"${inboundAAAAction}",
-				"${defaultSetLogDestAction}",
-				"${defaultVerifySignatureAction}",
-				"${defaultLogMessageAction}",
-				"${propagateLtpaResultAction}"
+				{"type":"xform", "name":"createFaultAction", "async":"off",
+						"input":"INPUT",	"output":"faultGenerisk",
+						"stylesheet":"local:///xslt/faultgenerisk.xsl",
+						"params":[]},
+				{"type":"xform", "name":"logAction", "async":"on",
+						"input":"faultGenerisk",	"output":"NULL",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"faultGenerisk","output":"OUTPUT"}
 			]/>
-<#--	actions=[
-				"${defaultSetLogDestAction}",
-				"${defaultVerifySignatureAction}",
-				"${defaultStripSignatureAction}",
-				"${inboundAAAAction}",
-				"${defaultLogMessageAction}",
-				"${propagateLtpaResultAction}"
-			]/>-->
-<#--			"${inboundRequestAAAAction}",
-				"${inboundRequestSetLogDestAction}",
-				"${inboundRequestVerifySignatureAction}",
-				"${inboundRequestLogMessageAction}",
-				"${inboundRequestStripWSSHeaderAction}",
-				"${inboundRequestResultAction}"]/>-->
-	<@dp.WSStylePolicyRuleResponse
-			name="${inboundResponseRule}"
-			actions=[
-				"${defaultSetLogDestAction}"
-				"${defaultSignResponseBodyAction}"
-				"${defaultLogMessageAction}"
-				"${defaultResponseResultAction}"
-			]/>
-	<@dp.WSStylePolicyRuleError
-			name="${inboundErrorRule}"
-			actions=[
-				"${defaultErrorAction}",
-				"${defaultErrorResultAction}"
-			]/>
+
 	<@dp.WSStylePolicy
 			name="${inboundProcessingPolicy}"
 			policyMapsList=[
-				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundRequestRule}"}, 
-				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundResponseRule}"},
-				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundErrorRule}"}
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicy}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicy}_response-rule"},
+				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicy}_error-rule"}
 			]/>
 			
 	<#-- Outbound processing rules-->
-	<@dp.WSStylePolicyRuleRequest
-			name="${outboundRequestRule}"
-			actions=[
-				<#--"${outboundAAAAction}",-->
-				"${defaultSignRequestBodyAction}"
-				"${defaultRequestResultAction}"
+	<@dp.ProcessingRequestRule
+		name="${outboundProcessingPolicy}"
+		actions=[
+				{"type":"sign", "name":"signAction",
+						"input":"INPUT",	"output":"signedRequest",
+						"signCert":"${navSigningKeystoreName}",
+						"signKey":"${navSigningKeystoreName}"}
+				{"type":"xform", "name":"logAction", "async":"on",
+						"input":"signedRequest",	"output":"NULL",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"signedRequest","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingResponseRule
+		name="${outboundProcessingPolicy}"
+		actions=[
+				{"type":"verify", "name":"verifiyAction",
+						"input":"INPUT",	"output":"NULL",
+						"valCred":"${signatureValCred}"},
+				{"type":"xform", "name":"logAction",
+						"input":"INPUT",	"output":"NULL", "async":"on",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"xform", "name":"stripWssAction", "async":"off",
+						"input":"INPUT",	"output":"wssHeaderRemoved",
+						"stylesheet":"store:///strip-security-header.xsl",
+						"params":[]},
+				{"type":"result", "name":"resultAction",
+					"input":"wssHeaderRemoved","output":"OUTPUT"}
 			]/>
-	<@dp.WSStylePolicyRuleResponse
-			name="${outboundResponseRule}"
-			actions=[
-				"${defaultVerifySignatureAction}",
-				"${defaultStripWSSHeaderAction}",
-				"${defaultResponseResultAction}"
+	<@dp.ProcessingErrorRule
+		name="${outboundProcessingPolicy}"
+		actions=[
+				{"type":"xform", "name":"createFaultAction",
+						"input":"INPUT",	"output":"faultGenerisk", "async":"off",
+						"stylesheet":"local:///xslt/faultgenerisk.xsl",
+						"params":[]},
+				{"type":"xform", "name":"logAction",
+						"input":"faultGenerisk",	"output":"NULL", "async":"on",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"faultGenerisk","output":"OUTPUT"}
 			]/>
+			
 	<@dp.WSStylePolicy
 			name="${outboundProcessingPolicy}"
 			policyMapsList=[
-				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundRequestRule}"}, 
-				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundResponseRule}"}
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicy}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicy}_response-rule"},
+				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicy}_error-rule"}
 			]/>
-	
-<#--	<@dp.WSProxyStaticBackend
-			name="TPSamordningRegistreringInbound"
+
+	<#-- Generate Inbound proxies -->			
+	<#list inboundProxies as proxy>
+	<@dp.WSProxyStaticBackendMultipleWsdl
+			name="${proxy.name}Inbound"
 			version="${cfgVersion}"
-			wsdlName="Port.wsdl"
-			wsdlLocation="local:///wsdl/no/nav/tpsamordningregistrering/V0_2/ws/Port.wsdl"
-			wsdlPortBinding="{http://nav.no/elsam/tpsamordningregistrering/V0_2/Binding}TPSamordningRegistreringWSEXP_TPSamordningRegistreringHttpPort"
+			wsdls=proxy.wsdls
 			policy="${inboundProcessingPolicy}"
 			frontsideHandler="${inboundFrontsideHandler}"
 			frontsideProtocol="${inboundFrontsideProtocol}"
+			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
 			backsideProtocol="${inboundBacksideProtocol}"
 			backsideHost="${inboundBacksideHost}"
-			backsidePort="${inboundBacksidePort}"
-			endpointUri="/nav-cons-elsam-tptilb-tpsamordningregistreringV0_2Web/sca/TPSamordningRegistreringWSEXP"/>-->
-	<#list inboundWsdls as inboundWsdl>
-	<@dp.WSProxyStaticBackend
-			name="${inboundWsdl.proxyName}Inbound"
+			backsidePort="${inboundBacksidePort}"/>
+	</#list>	
+
+	<#-- Generate Outbound proxies -->			
+	<#list outboundProxies as proxy>
+	<@dp.WSProxyWSADynamicBackendMultipleWsdl
+			name="${proxy.name}Outbound"
 			version="${cfgVersion}"
-			wsdlName="${inboundWsdl.fileName}"
-			wsdlLocation="local:///${inboundWsdl.relativePath}"
-			wsdlPortBinding="${inboundWsdl.portBinding}"
-			policy="${inboundProcessingPolicy}"
-			frontsideHandler="${inboundFrontsideHandler}"
-			frontsideProtocol="${inboundFrontsideProtocol}"
-			frontsideUri="${inboundWsdl.frontsideURI}"
-			backsideProtocol="${inboundBacksideProtocol}"
-			backsideHost="${inboundBacksideHost}"
-			backsidePort="${inboundBacksidePort}"
-			backsideUri="${inboundWsdl.endpointURI}"/>
-	</#list>
-	<#list outboundWsdls as outboundWsdl>
-	<@dp.WSProxyWSADynamicBackend
-			name="${outboundWsdl.proxyName}Outbound"
-			version="${cfgVersion}"
-			wsdlName="${outboundWsdl.fileName}"
-			wsdlLocation="local:///${outboundWsdl.relativePath}"
-			wsdlPortBinding="${outboundWsdl.portBinding}"
+			wsdls=proxy.wsdls
 			policy="${outboundProcessingPolicy}"
 			frontsideHandler="${outboundFrontsideHandler}"
 			frontsideProtocol="${outboundFrontsideProtocol}"
 			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
-			endpointUri="${outboundWsdl.endpointURI}"
 			wsaRequireAaa="off"/>
 	</#list>
 </@dp.configuration>
