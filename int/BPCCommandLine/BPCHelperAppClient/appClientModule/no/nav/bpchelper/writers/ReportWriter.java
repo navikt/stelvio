@@ -3,8 +3,10 @@ package no.nav.bpchelper.writers;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -59,22 +61,11 @@ public class ReportWriter {
 	csvPrinter = null;
     }
 
-    public void writeHeader() {
-	Collection<String> line = new ArrayList<String>();
-	line.add(ProcessInstanceBean.getLabel(ProcessInstanceBean.NAME_PROPERTY, LOCALE));
-	line.add(ProcessInstanceBean.getLabel(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY, LOCALE));
-	line.add(ProcessInstanceBean.getLabel(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY, LOCALE));
-	line.add(ProcessInstanceBean.getLabel(ProcessInstanceBean.STARTTIME_PROPERTY, LOCALE));
-	csvPrinter.println(line.toArray(new String[line.size()]));
-    }
-
-    public void writeProcessInstance(ProcessInstanceBean processInstanceBean) {
-	Collection<String> line = new ArrayList<String>();
-	line.add(processInstanceBean.getName());
-	line.add(processInstanceBean.getProcessTemplateName());
-	line.add(ProcessInstanceBean.getConverter(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY).getAsString(processInstanceBean.getExecutionState(),
-		LOCALE));
-	line.add(ProcessInstanceBean.getConverter(ProcessInstanceBean.STARTTIME_PROPERTY).getAsString(processInstanceBean.getStartTime(), LOCALE));
-	csvPrinter.println(line.toArray(new String[line.size()]));
+    public void writeln(Collection<String> values) {
+	try {
+	    csvPrinter.writeln(values.toArray(new String[values.size()]));
+	} catch (Exception e) {
+	    throw new RuntimeException(e);
+	}	
     }
 }
