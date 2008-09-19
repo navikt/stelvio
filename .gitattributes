@@ -2844,6 +2844,7 @@ int/BPCCommandLine/BPCHelperAppClientEAR/commons-lang-2.1.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/htmclientmodel.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/slf4j-api-1.5.2.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/slf4j-jdk14-1.5.2.jar -text
+int/BPCCommandLine/BPCHelperAppClientEAR/utils-1.07.00.jar -text
 int/CEILogger/CEIEventConsumer/.j2ee -text
 int/CEILogger/CEIEventConsumer/.project -text
 int/CEILogger/CEIEventConsumer/.runtime -text
