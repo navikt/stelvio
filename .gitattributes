@@ -2820,6 +2820,7 @@ int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/C
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ProcessInstancePropertyAccessor.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ReportAction.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/StatusAction.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/TerminateAction.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/BFMConnectionAdapter.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/BusinessFlowManagerServiceAdapter.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/ActionOptionValues.java -text

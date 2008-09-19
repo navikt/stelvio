@@ -3,20 +3,15 @@ package no.nav.bpchelper.actions;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import no.nav.bpchelper.adapters.BFMConnectionAdapter;
 import no.nav.bpchelper.writers.ReportWriter;
 
 import com.ibm.bpe.api.QueryResultSet;
 import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public class ReportAction extends AbstractAction {
-    private final BFMConnectionAdapter bfmConnection;
-
     private final Collection<ProcessInstancePropertyAccessor> propertyAccessors;
 
     public ReportAction() {
-	bfmConnection = BFMConnectionAdapter.getInstance();
-
 	propertyAccessors = new ArrayList<ProcessInstancePropertyAccessor>();
 	propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.NAME_PROPERTY));
 	propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY));
@@ -38,7 +33,7 @@ public class ReportAction extends AbstractAction {
 	writer.close();
     }
 
-    private Collection<String> getRow(ProcessInstanceBean processInstanceBean) {
+    protected Collection<String> getRow(ProcessInstanceBean processInstanceBean) {
 	Collection<String> row = new ArrayList<String>();
 	for (ProcessInstancePropertyAccessor propertyAccessor : propertyAccessors) {
 	    row.add(propertyAccessor.getValue(processInstanceBean));
