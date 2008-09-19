@@ -26,7 +26,7 @@
 				<configuration>
 					<filesets>
 						<fileset>
-							<directory>E:/data/builds/BUSTAG_K_2_19_2_Full/target/datapower-config/partner-gw-t2</directory>
+							<directory>E:/data/builds/BUSTAG_K_2_19_6/target/datapower-config/partner-gw-u1</directory>
 						</fileset>
 					</filesets>					
 				</configuration>
@@ -43,11 +43,11 @@
 				<artifactId>maven-datapower-plugin</artifactId>
 				<version>1.0-SNAPSHOT</version>
 				<configuration>
-					<domain>partner-gw-t2</domain>
-					<outputDirectory>E:/data/builds/BUSTAG_K_2_19_2_Full/target/datapower-config/partner-gw-t2</outputDirectory>
-					<moduleDirectory>E:/data/builds/BUSTAG_K_2_19_2_Full/target/classes/builds/ear</moduleDirectory>
-					<propertiesDirectory>E:/data/builds/BUSTAG_K_2_19_2_Full/src/main/resources/scripts/environments</propertiesDirectory>
-					<overridesDirectory>E:/data/datapower/overrides/partner-gw-t2</overridesDirectory>
+					<domain>partner-gw-u1</domain>
+					<outputDirectory>E:/data/builds/BUSTAG_K_2_19_6/target/datapower-config/partner-gw-u1</outputDirectory>
+					<moduleDirectory>E:/data/builds/BUSTAG_K_2_19_6/target/classes/builds/ear</moduleDirectory>
+					<propertiesDirectory>E:/data/builds/BUSTAG_K_2_19_6/src/main/resources/scripts/environments</propertiesDirectory>
+					<overridesDirectory>E:/data/datapower/overrides/partner-gw-u1</overridesDirectory>
 				</configuration>
 				<executions>
 					<execution>

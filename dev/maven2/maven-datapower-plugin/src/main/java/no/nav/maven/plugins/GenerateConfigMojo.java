@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Properties;
 
 import no.nav.datapower.config.ConfigGenerator;
-import no.nav.datapower.config.ConfigResources;
-import no.nav.datapower.config.ConfigUnit;
+import no.nav.datapower.config.ConfigPackage;
+import no.nav.datapower.config.EnvironmentResources;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
 import no.nav.datapower.util.ServiceLoader;
@@ -69,6 +69,9 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 	 */
 	private MavenProject project;
 
+	private Overrides overrides = null;
+
+	
 	private static class Overrides {
 		
 		private File propertiesFile;
@@ -90,64 +93,13 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		protected File getPubcertDir() { return pubcertDir; }
 		protected File getPropertiesFile() { return propertiesFile; }
 	}
-	
-	private Overrides overrides = null;
-	
-	private Overrides getOverrides() {
-		if (overrides == null && overridesDirectory != null) {
-			overrides = new Overrides(overridesDirectory);
-		}
-		return overrides;
-	}
-	
-	private Properties getOverriddenProperties() {
-		File propsFile = getOverrides().getPropertiesFile();
-		if (propsFile.exists())
-			return DPPropertiesUtils.load(propsFile);
-		return new Properties();
-	}
-	
-	private List<File> getOverriddenLocalAaaFiles() {
-//		return Arrays.asList(getOverrides().getLocalAaaDir().listFiles());
-		return getFileList(getOverrides().getLocalAaaDir());
-	}
-	private List<File> getOverriddenLocalXsltFiles() {
-		return getFileList(getOverrides().getLocalXsltDir());
-	}
-	
-	private List<File> getOverriddenCertFiles() {
-//		return Arrays.asList(getOverrides().getCertDir().listFiles());
-		return getFileList(getOverrides().getCertDir());
- 	}
-	private List<File> getOverriddenPubcertFiles() {
-//		return Arrays.asList(getOverrides().getCertDir().listFiles());
-		return getFileList(getOverrides().getPubcertDir());
- 	}
-	
-	private List<File> getFileList(File dir) {
-//		return dir == null ? Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
-		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
-	}
-	
-//	private List<File> getFileList(File[] files) {
-//		return files == null ? Collections.EMPTY_LIST : Arrays.asList(files);
-//	}
-
-	private void addLocalOverrides(ConfigResources cfg) {
-		if (getOverrides() != null) {
-			cfg.addProperties(getOverriddenProperties());
-			cfg.addAaaFiles(getOverriddenLocalAaaFiles());
-			cfg.addXsltFiles(getOverriddenLocalXsltFiles());
-			cfg.addCertFiles(getOverriddenCertFiles());		
-			cfg.addPubcertFiles(getOverriddenPubcertFiles());		
-		}
-	}
+		
 	
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 		getLog().info("PropertiesDirectory = " + propertiesDirectory);
 		getLog().info("OutputDirectory = " + outputDirectory);
 		getLog().info("ModuleDirectory = " + moduleDirectory);
-		ConfigResources cfg = new ConfigResources();
+		EnvironmentResources cfg = new EnvironmentResources();
 		cfg.addProperties(DPPropertiesUtils.load(getPropertiesFile(propertiesDirectory)));
 		addLocalOverrides(cfg);
 		if (project != null) {
@@ -159,7 +111,7 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		cfg.setModuleDirectory(moduleDirectory);
 		ConfigGenerator gen = getConfigGenerator(cfg);
 		getLog().info("START config generation");				
-		ConfigUnit unit = gen.generate();
+		ConfigPackage unit = gen.generate();
 		getLog().info("END config generation");				
 	}
 	
@@ -170,10 +122,10 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		return dir.listFiles((FileFilter) new NameFileFilter(propsFilename))[0];
 	}
 	
-	private ConfigGenerator getConfigGenerator(ConfigResources cfg) throws MojoExecutionException {
+	private ConfigGenerator getConfigGenerator(EnvironmentResources cfg) throws MojoExecutionException {
 		String generatorName = cfg.getProperty("cfgGeneratorName");
 		ConfigGenerator generator = getConfigGeneratorByName(generatorName);
-		generator.setConfigResources(cfg);
+		generator.setEnvironmentResources(cfg);
 		getLog().debug("Setting output directory for config generation '" + outputDirectory + "'");				
 		generator.setOutputDirectory(outputDirectory);
 		return generator;		
@@ -190,17 +142,45 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		throw new MojoExecutionException("Unkown ConfigGenerator '" + name + "'");		
 	}
 	
-	private ConfigGenerator getConfigGeneratorByClassName(String generatorClassName) {
-//		String generatorClassName = SECGW_CFG_GEN_CLASS;
-		try {
-			getLog().info("Instantiating ConfigGenerator '" + generatorClassName + "'");
-			return (ConfigGenerator) Class.forName(generatorClassName).newInstance();
-		} catch (IllegalAccessException e) {
-			throw new IllegalArgumentException("Caught '" + e.getClass().getName() + "' when instantiating ConfigGenerator '" + generatorClassName + "'", e);
-		} catch (InstantiationException e) {
-			throw new IllegalArgumentException("Caught '" + e.getClass().getName() + "' when instantiating ConfigGenerator '" + generatorClassName + "'", e);
-		} catch (ClassNotFoundException e) {
-			throw new IllegalArgumentException("Caught '" + e.getClass().getName() + "' when instantiating ConfigGenerator '" + generatorClassName + "'", e);
+	private Overrides getOverrides() {
+		if (overrides == null && overridesDirectory != null) {
+			overrides = new Overrides(overridesDirectory);
+		}
+		return overrides;
+	}
+	
+	private Properties getOverriddenProperties() {
+		File propsFile = getOverrides().getPropertiesFile();
+		if (propsFile.exists())
+			return DPPropertiesUtils.load(propsFile);
+		return new Properties();
+	}
+	
+	private List<File> getOverriddenLocalAaaFiles() {
+		return getFileList(getOverrides().getLocalAaaDir());
+	}
+	private List<File> getOverriddenLocalXsltFiles() {
+		return getFileList(getOverrides().getLocalXsltDir());
+	}
+	
+	private List<File> getOverriddenCertFiles() {
+		return getFileList(getOverrides().getCertDir());
+ 	}
+	private List<File> getOverriddenPubcertFiles() {
+		return getFileList(getOverrides().getPubcertDir());
+ 	}
+	
+	private List<File> getFileList(File dir) {
+		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
+	}
+
+	private void addLocalOverrides(EnvironmentResources cfg) {
+		if (getOverrides() != null) {
+			cfg.addProperties(getOverriddenProperties());
+			cfg.addAaaFiles(getOverriddenLocalAaaFiles());
+			cfg.addXsltFiles(getOverriddenLocalXsltFiles());
+			cfg.addCertFiles(getOverriddenCertFiles());		
+			cfg.addPubcertFiles(getOverriddenPubcertFiles());		
 		}
 	}
 

@@ -1588,7 +1588,6 @@ dev/maven2/maven-datapower-plugin/pom.xml -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDataPowerMojo.java -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDeviceMgmtMojo.java -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/CleanFilesMojo.java -text
-dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/DeploymentBuilder.java -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigMojo.java -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportConfigMojo.java -text
 dev/maven2/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportFilesMojo.java -text
