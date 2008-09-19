@@ -1312,8 +1312,6 @@ dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/WSProxy.ja
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/FreemarkerConfigGenerator.java -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/DPTemplateLib.java -text
 dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/StreamTemplateLoader.java -text
-dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/partnergw/PartnerGWConfigGenerator.java -text
-dev/datapower/datapower-cfg-gen/src/main/java/no/nav/datapower/config/secgw/SecGWConfigGenerator.java -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/AAAInfo.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/AAAPolicyClientSSL2LTPA.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/AAAPolicyLTPA2LTPA.ftl -text
@@ -1364,8 +1362,6 @@ dev/datapower/datapower-cfg-gen/src/main/resources/lib/WSStylePolicyRuleResponse
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/datapower-config.ftl -text
 dev/datapower/datapower-cfg-gen/src/main/resources/lib/datapower-crypto.ftl -text
 dev/datapower/datapower-cfg-gen/src/test/java/no/nav/datapower/config/WSDLFileTest.java -text
-dev/datapower/datapower-cfg-gen/src/test/java/no/nav/datapower/config/partnergw/PartnerGWConfigGeneratorTest.java -text
-dev/datapower/datapower-cfg-gen/src/test/java/no/nav/datapower/config/secgw/SecgwConfigGeneratorTest.java -text
 dev/datapower/datapower-cfg-partnergw/pom.xml -text
 dev/datapower/datapower-cfg-partnergw/src/main/java/no/nav/datapower/config/partnergw/PGWConfigGeneratorImpl.java -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
