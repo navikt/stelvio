@@ -6,7 +6,6 @@ import java.util.Hashtable;
 import java.util.Properties;
 
 import no.nav.datapower.config.ConfigGenerator;
-import no.nav.datapower.config.ConfigPackage;
 import no.nav.datapower.config.freemarker.templates.DPTemplateLib;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
@@ -60,6 +59,6 @@ public abstract class FreemarkerConfigGenerator extends ConfigGenerator {
 		writer.flush();				
 	}
 
-	public abstract ConfigPackage generate();
+	//public abstract ConfigPackage generate();
 
 }
