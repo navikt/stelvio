@@ -3,8 +3,10 @@ package no.nav.datapower.config.secgw;
 import java.io.File;
 import java.io.FileFilter;
 
-import no.nav.datapower.util.DPFileUtils;
-import no.nav.datapower.util.DPPropertiesUtils;
+import junit.framework.TestCase;
+import no.nav.datapower.config.ConfigGenerator;
+
+import org.apache.commons.io.filefilter.NameFileFilter;
 
 public class SGWConfigGeneratorImplTest extends TestCase {
 
