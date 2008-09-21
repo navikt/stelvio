@@ -2840,6 +2840,7 @@ int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Res
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/SimpleExpression.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/ReflectionUtils.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/writers/ReportWriter.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/pom.xml -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClientEAR/.project -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.component -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
