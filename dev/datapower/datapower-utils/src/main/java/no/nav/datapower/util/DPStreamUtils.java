@@ -27,7 +27,7 @@ public class DPStreamUtils {
 			output.close();
 	}
 	
-	public static void pump(InputStream in, OutputStream out) throws IOException{
+	public static void pump(InputStream in, OutputStream out) throws IOException {
 		byte[] buf = new byte[10240];
 		int len;
 		while((len=in.read(buf))>0){
@@ -35,4 +35,9 @@ public class DPStreamUtils {
 		}
 	}
 
+	public static void pumpAndClose(InputStream in, OutputStream out) throws IOException {
+		pump(in,out);
+		in.close();
+		out.close();
+	}
 }
