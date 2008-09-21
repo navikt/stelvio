@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>nav.int.appclient.bpchelper</groupId>
+	<artifactId>bpchelper-ear</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>ear</packaging>
+	<name>BPC-Helper EAR</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<displayName>BPCGRAppClientEAR</displayName>
+					<version>1.4</version>
+					<modules>
+						<jarModule>
+							<groupId>
+								nav.int.appclient.bpchelper
+							</groupId>
+							<artifactId>bpchelper-client</artifactId>
+							<includeInApplicationXml>
+								true
+							</includeInApplicationXml>
+						</jarModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>nav.int.appclient.bpchelper</groupId>
+			<artifactId>bpchelper-client</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+</project>

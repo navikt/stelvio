@@ -2853,6 +2853,7 @@ int/BPCCommandLine/BPCHelperAppClientEAR/commons-cli-1.1.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/commons-collections-3.2.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/commons-lang-2.1.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/htmclientmodel.jar -text
+int/BPCCommandLine/BPCHelperAppClientEAR/pom.xml -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClientEAR/slf4j-api-1.5.2.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/slf4j-jdk14-1.5.2.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/utils-1.07.00.jar -text
