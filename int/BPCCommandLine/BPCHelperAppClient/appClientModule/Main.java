@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+
 import no.nav.bpchelper.actions.Action;
 import no.nav.bpchelper.actions.ActionFactory;
 import no.nav.bpchelper.cmdoptions.OptionOpts;
@@ -13,9 +18,15 @@ import org.slf4j.LoggerFactory;
 
 public class Main {
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     public static void main(String[] args) {
-	new Main().run(args);
+	Collection<String> argsCollection = new ArrayList<String>(Arrays.asList(args));
+	for (Iterator<String> it = argsCollection.iterator(); it.hasNext();) {
+	    if (it.next().startsWith("-CC")) {
+		it.remove();
+	    }
+	}
+	new Main().run(argsCollection.toArray(new String[argsCollection.size()]));
     }
 
     private void run(String[] args) {
