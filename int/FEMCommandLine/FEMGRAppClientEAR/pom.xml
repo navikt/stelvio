@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>femhelper-pom</artifactId>
 		<groupId>nav.int.appclient.femhelper</groupId>
+		<artifactId>nav-int-appclient-fem-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
@@ -22,11 +22,33 @@
 		</developerConnection>
 	</scm>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<displayName>FEMGRAppClientEAR</displayName>
+					<version>1.4</version>
+					<modules>
+						<jarModule>
+							<groupId>nav.int.appclient.femhelper</groupId>
+							<artifactId>femhelper-client</artifactId>
+							<includeInApplicationXml>
+								true
+							</includeInApplicationXml>
+						</jarModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>nav.int.appclient.femhelper</groupId>
 			<artifactId>femhelper-client</artifactId>
-  			<version>${project.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>
