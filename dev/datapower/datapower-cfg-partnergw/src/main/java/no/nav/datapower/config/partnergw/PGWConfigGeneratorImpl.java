@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.JarURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -21,12 +26,15 @@ import no.nav.datapower.config.freemarker.templates.StreamTemplateLoader;
 import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
+import no.nav.datapower.util.DPStreamUtils;
 import no.nav.datapower.util.DPZipUtils;
 import no.nav.datapower.util.PropertiesBuilder;
 import no.nav.datapower.util.PropertiesValidator;
 import no.nav.datapower.util.WildcardPathFilter;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.filefilter.OrFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.log4j.Logger;
@@ -44,6 +52,8 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	private static final Properties REQUIRED_PROPERTIES = DPPropertiesUtils.load(PGWConfigGeneratorImpl.class,REQUIRED_PROPERTIES_NAME);
 	private static final TemplateLoader PARTNERGW_TEMPLATE_LOADER = new StreamTemplateLoader(PGWConfigGeneratorImpl.class, "/");
 	private static final OrFileFilter WSDL_OR_XSD_FILENAME_FILTER = new OrFileFilter(new WildcardPathFilter("*.wsdl"), new WildcardPathFilter("*.xsd"));
+	
+	private File tmpDir;
 	
 	public PGWConfigGeneratorImpl() {		
 		super(GENERATOR_NAME, REQUIRED_PROPERTIES, PARTNERGW_TEMPLATE_LOADER);
@@ -65,7 +75,7 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		ConfigPackage cfgPackage = new ConfigPackage(cfg.getDomain(), getOutputDirectory());
 		
 		// Extract wsdl archives
-		File tmpDir = DPFileUtils.append(cfgPackage.getRootDir(), "tmp");
+		tmpDir = DPFileUtils.append(cfgPackage.getRootDir(), "tmp");
 		File tmpDirInbound = DPFileUtils.append(tmpDir, "inbound");
 		tmpDirInbound.mkdirs();
 		File tmpDirOutbound = DPFileUtils.append(tmpDir, "outbound");
@@ -76,8 +86,8 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			FileUtils.copyDirectory(tmpDirInbound, cfgPackage.getFilesLocalDir());
 			FileUtils.copyDirectory(tmpDirOutbound, cfgPackage.getFilesLocalDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), cfgPackage.getFilesLocalAaaDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), cfgPackage.getFilesLocalXsltDir());
 			DPFileUtils.copyFilesToDirectory(getLocalXslt(), cfgPackage.getFilesLocalXsltDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), cfgPackage.getFilesLocalXsltDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), cfgPackage.getFilesCertDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getPubcertFiles(), cfgPackage.getFilesPubcertDir());
 
@@ -107,9 +117,41 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	}
 
 	private List<File> getLocalXslt() {
-		File localDir = DPFileUtils.getResource(getClass(), "/local/xslt");
-		return getFileList(localDir);
+		URL localDirUrl = getClass().getClassLoader().getResource("local/xslt/");
+		List<File> fileList = null;
+		if (localDirUrl.getProtocol().equals("file")) {
+			fileList = getFileList(FileUtils.toFile(localDirUrl);			
+		}
+		else if (localDirUrl.getProtocol().equals("jar")) {
+			fileList = getFileListFromJarClasspath(localDirUrl);
+		}
+		DPCollectionUtils.printLines(fileList, System.out, "File");
+		return fileList;
 	}
+	
+	private List<File> getFileListFromJarClasspath(URL url) {
+		List<File> fileList = DPCollectionUtils.newArrayList();
+		JarURLConnection conn;
+		try {
+			conn = (JarURLConnection)url.openConnection();
+			JarEntry directory = conn.getJarEntry();
+			DPFileUtils.append(tmpDir, directory.getName()).mkdirs();
+			JarFile jarFile = conn.getJarFile();
+			Enumeration<JarEntry> entries = jarFile.entries();
+			while (entries.hasMoreElements()) {
+				JarEntry entry = entries.nextElement();
+				if (!entry.isDirectory() && entry.getName().startsWith(directory.getName())) {
+					File file = DPFileUtils.append(tmpDir, entry.getName());
+					DPStreamUtils.pumpAndClose(jarFile.getInputStream(entry), new FileOutputStream(file));
+					fileList.add(file);
+				}
+			}			
+		} catch (IOException e) {
+			throw new IllegalStateException(e);
+		}
+		return fileList;
+	}
+	
 
 	private List<File> getFileList(File dir) {
 		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
