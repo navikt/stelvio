@@ -19,8 +19,13 @@ public class ReportAction extends AbstractAction {
 	propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.STARTTIME_PROPERTY));
     }
 
+    @Override
+    public String getName() {
+	return "report";
+    }
+    
     public void process() {
-	ReportWriter writer = new ReportWriter();
+	ReportWriter writer = new ReportWriter(getReportFile());
 
 	writer.writeln(getHeader());
 

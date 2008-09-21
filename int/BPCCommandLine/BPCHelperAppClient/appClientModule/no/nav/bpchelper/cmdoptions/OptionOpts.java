@@ -4,6 +4,10 @@ public interface OptionOpts {
     String HELP = "help";
 
     String ACTION = "action";
+    
+    String REPORT_DIR = "reportDirectory";
+    
+    String REPORT_FILENAME = "reportFilename";
 
     String FILTER_STARTED_BEFORE = "FstartedBefore";
 

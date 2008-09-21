@@ -7,6 +7,11 @@ import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public class TerminateAction extends ReportAction {
     @Override
+    public String getName() {
+	return "terminate";
+    }
+
+    @Override
     protected Collection<String> getHeader() {
 	Collection<String> header = super.getHeader();
 	header.add("Result");
