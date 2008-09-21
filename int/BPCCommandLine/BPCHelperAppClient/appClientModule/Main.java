@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import no.nav.bpchelper.actions.Action;
 import no.nav.bpchelper.actions.ActionFactory;
+import no.nav.bpchelper.cmdoptions.ActionOptionValues;
 import no.nav.bpchelper.cmdoptions.OptionOpts;
 import no.nav.bpchelper.cmdoptions.OptionsBuilder;
 
@@ -13,11 +14,12 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Main {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+    private static final int WIDTH = 500;
+    private static final String CMD_LINE_SYNTAX = "launchClient <BPCHelper application> [args]";
+    
+    private static final Options OPTIONS = new OptionsBuilder().getOptions();
 
     public static void main(String[] args) {
 	Collection<String> argsCollection = new ArrayList<String>(Arrays.asList(args));
@@ -26,28 +28,48 @@ public class Main {
 		it.remove();
 	    }
 	}
-	new Main().run(argsCollection.toArray(new String[argsCollection.size()]));
+	
+	int returnCode = new Main().run(argsCollection.toArray(new String[argsCollection.size()]));
+	System.exit(returnCode);
     }
 
-    private void run(String[] args) {
-	OptionsBuilder optionsBuilder = new OptionsBuilder();
-	Options options = optionsBuilder.getOptions();
-
-	CommandLine cl = null;
+    private int run(String[] args) {
+	CommandLine commandLine;
 	try {
-	    cl = new PosixParser().parse(options, args);
-	} catch (ParseException parseEx) {
-	    logger.error("Error parsing command line. The application now terminate", parseEx);
-	    System.exit(-1); // TODO AR Find correct return code for error
+	    commandLine = new PosixParser().parse(OPTIONS, args);
+	} catch (ParseException e) {
+	    printHelp(e.getMessage());
+	    return ReturnCodes.ERROR;
 	}
 
-	if (cl.hasOption(OptionOpts.HELP)) {
-	    HelpFormatter formatter = new HelpFormatter();
-	    formatter.printHelp("BPCHelper", "Sample usage: launchClient BPCHelper", options, null);
-	    System.exit(0);
+	if (commandLine.hasOption(OptionOpts.HELP)) {
+	    printHelp(null);
+	    return ReturnCodes.OK;
+	}
+	
+	// Would love to set action-option to required, but then help-option does not work anymore.
+	if (!commandLine.hasOption(OptionOpts.ACTION)) {
+	    printHelp("Missing required option: action");
+	    return ReturnCodes.ERROR;
+	} else {
+	    String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
+	    try {
+		ActionOptionValues.valueOf(actionValue);
+	    } catch (IllegalArgumentException e) {
+		printHelp("Illegal argument for option:action <" + actionValue + ">");
+		return ReturnCodes.ERROR;
+	    }	    
 	}
 
-	Action action = ActionFactory.getAction(cl);
+	Action action = ActionFactory.getAction(commandLine);
+	
 	action.process();
+	
+	return ReturnCodes.OK;
+    }
+
+    private void printHelp(String footer) {
+	HelpFormatter helpFormatter = new HelpFormatter();
+	helpFormatter.printHelp(WIDTH, CMD_LINE_SYNTAX, null, OPTIONS, footer);
     }
 }

@@ -24,24 +24,24 @@ public class CriteriaBuilder {
 	criteria.add(Restrictions.or(processStateFailedCriterion, activityStateFailedCriterion));
 
 	// Dynamic criteria added if options specified
-	if (commandLine.hasOption(OptionOpts.STARTED_AFTER)) {
-	    Date date = parseDate(commandLine.getOptionValue(OptionOpts.STARTED_AFTER));
+	if (commandLine.hasOption(OptionOpts.FILTER_STARTED_AFTER)) {
+	    Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_STARTED_AFTER));
 	    criteria.add(Restrictions.ge("PROCESS_INSTANCE.STARTED", date));
 	}
-	if (commandLine.hasOption(OptionOpts.STARTED_BEFORE)) {
-	    Date date = parseDate(commandLine.getOptionValue(OptionOpts.STARTED_BEFORE));
+	if (commandLine.hasOption(OptionOpts.FILTER_STARTED_BEFORE)) {
+	    Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_STARTED_BEFORE));
 	    criteria.add(Restrictions.le("PROCESS_INSTANCE.STARTED", date));
 	}
-	if (commandLine.hasOption(OptionOpts.PROCESS_TEMPLATE_NAME)) {
-	    String processTemplateName = commandLine.getOptionValue(OptionOpts.PROCESS_TEMPLATE_NAME);
+	if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME)) {
+	    String processTemplateName = commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME);
 	    if (processTemplateName.contains("%")) {
 		criteria.add(Restrictions.like("PROCESS_INSTANCE.TEMPLATE_NAME", processTemplateName));
 	    } else {
 		criteria.add(Restrictions.eq("PROCESS_INSTANCE.TEMPLATE_NAME", processTemplateName));
 	    }
 	}
-	if (commandLine.hasOption(OptionOpts.ACTIVITY_NAME)) {
-	    String activityName = commandLine.getOptionValue(OptionOpts.ACTIVITY_NAME);
+	if (commandLine.hasOption(OptionOpts.FILTER_ACTIVITY_NAME)) {
+	    String activityName = commandLine.getOptionValue(OptionOpts.FILTER_ACTIVITY_NAME);
 	    if (activityName.contains("%")) {
 		criteria.add(Restrictions.like("ACTIVITY.TEMPLATE_NAME", activityName));
 	    } else {

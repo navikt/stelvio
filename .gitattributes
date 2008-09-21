@@ -2819,6 +2819,7 @@ int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/MANIFEST.MF -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/application-client.xml -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/ibm-application-client-bnd.xmi -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/Main.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/ReturnCodes.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/AbstractAction.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/Action.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ActionFactory.java -text

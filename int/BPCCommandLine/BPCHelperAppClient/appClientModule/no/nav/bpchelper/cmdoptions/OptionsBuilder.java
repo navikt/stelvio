@@ -2,6 +2,8 @@ package no.nav.bpchelper.cmdoptions;
 
 import java.text.SimpleDateFormat;
 
+import no.nav.bpchelper.actions.CriteriaBuilder;
+
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
@@ -13,7 +15,7 @@ public class OptionsBuilder {
 	Options options = new Options();
 
 	Option helpOption = OptionBuilder.withLongOpt(OptionOpts.HELP).create();
-	helpOption.setDescription("print this message");
+	helpOption.setDescription("print usage information");
 	options.addOption(helpOption);
 
 	Option actionOption = OptionBuilder.withLongOpt(OptionOpts.ACTION).hasArg().create();
@@ -28,23 +30,23 @@ public class OptionsBuilder {
 	actionOption.setArgName(argName.toString());
 	options.addOption(actionOption);
 
-	Option startedBeforeOption = OptionBuilder.withLongOpt(OptionOpts.STARTED_BEFORE).hasArg().create();
-	startedBeforeOption.setDescription("Filter by started before");
+	Option startedBeforeOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_STARTED_BEFORE).hasArg().create();
+	startedBeforeOption.setDescription("filter by started before");
 	startedBeforeOption.setArgName("timeStamp [" + TIMESTAMP_FORMAT.toPattern() + "]");
 	options.addOption(startedBeforeOption);
 
-	Option startedAfterOption = OptionBuilder.withLongOpt(OptionOpts.STARTED_AFTER).hasArg().create();
-	startedAfterOption.setDescription("Filter by started after");
+	Option startedAfterOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_STARTED_AFTER).hasArg().create();
+	startedAfterOption.setDescription("filter by started after");
 	startedAfterOption.setArgName("timeStamp [" + TIMESTAMP_FORMAT.toPattern() + "]");
 	options.addOption(startedAfterOption);
 
-	Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.PROCESS_TEMPLATE_NAME).hasArg().create();
-	processTemplateNameOption.setDescription("Filter by process template name");
+	Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME).hasArg().create();
+	processTemplateNameOption.setDescription("filter by process template name");
 	processTemplateNameOption.setArgName("processTemplateName");
 	options.addOption(processTemplateNameOption);
 
-	Option activityNameOption = OptionBuilder.withLongOpt(OptionOpts.ACTIVITY_NAME).hasArg().create();
-	activityNameOption.setDescription("Filter by activity name");
+	Option activityNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_ACTIVITY_NAME).hasArg().create();
+	activityNameOption.setDescription("filter by activity name");
 	activityNameOption.setArgName("activityName");
 	options.addOption(activityNameOption);
 

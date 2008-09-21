@@ -5,13 +5,11 @@ public interface OptionOpts {
 
     String ACTION = "action";
 
-    // Filter options start
-    String STARTED_BEFORE = "startedBefore";
+    String FILTER_STARTED_BEFORE = "FstartedBefore";
 
-    String STARTED_AFTER = "startedAfter";
+    String FILTER_STARTED_AFTER = "FstartedAfter";
 
-    String PROCESS_TEMPLATE_NAME = "processTemplateName";
+    String FILTER_PROCESS_TEMPLATE_NAME = "FprocessTemplateName";
 
-    String ACTIVITY_NAME = "activityName";
-    // Filter options end
+    String FILTER_ACTIVITY_NAME = "FactivityName";
 }
