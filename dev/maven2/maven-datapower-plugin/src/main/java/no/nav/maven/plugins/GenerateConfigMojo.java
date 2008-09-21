@@ -2,6 +2,7 @@ package no.nav.maven.plugins;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +15,7 @@ import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
 import no.nav.datapower.util.ServiceLoader;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.NameFileFilter;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -99,6 +101,11 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		getLog().info("PropertiesDirectory = " + propertiesDirectory);
 		getLog().info("OutputDirectory = " + outputDirectory);
 		getLog().info("ModuleDirectory = " + moduleDirectory);
+		try {
+			cleanDirectory(outputDirectory);
+		} catch (IOException e) {
+			throw new MojoExecutionException("Failed to clean outputDirectory", e);
+		}
 		EnvironmentResources cfg = new EnvironmentResources();
 		cfg.addProperties(DPPropertiesUtils.load(getPropertiesFile(propertiesDirectory)));
 		addLocalOverrides(cfg);
@@ -113,6 +120,16 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		getLog().info("START config generation");				
 		ConfigPackage unit = gen.generate();
 		getLog().info("END config generation");				
+	}
+	
+	private void cleanDirectory(File directory) throws IOException {
+		if (directory.exists()) {
+			for (File file : directory.listFiles()) {
+//				if (file.isDirectory())
+				System.out.println("Deleting: " + file);
+				FileUtils.deleteDirectory(file);
+			}
+		}
 	}
 	
 	private File getPropertiesFile(File dir) {

@@ -67,7 +67,7 @@ public class DataPowerPluginIntegrationTest extends AbstractMojoTestCase {
 	}
 	
 	public void test_partnergw_GenerateConfigMojo() {
-//		executeMojo(MojoTest.PARTNERGW_GENERATE_CONFIG);
+		executeMojo(MojoTest.PARTNERGW_GENERATE_CONFIG);
 	}
 
 	public void test_secgw_GenerateConfigMojo() {
