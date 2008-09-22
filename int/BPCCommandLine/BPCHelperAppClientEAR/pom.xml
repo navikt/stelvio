@@ -9,6 +9,15 @@
 	<packaging>ear</packaging>
 	<name>BPC-Helper EAR</name>
 
+	<scm>
+		<connection>
+			https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/BPCCommandLine/BPCHelperAppClientEAR
+		</connection>
+		<developerConnection>
+			https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/BPCCommandLine/BPCHelperAppClientEAR
+		</developerConnection>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>
