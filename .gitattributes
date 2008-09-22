@@ -2857,6 +2857,8 @@ int/BPCCommandLine/BPCHelperAppClientEAR/pom.xml -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClientEAR/slf4j-api-1.5.2.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/slf4j-jdk14-1.5.2.jar -text
 int/BPCCommandLine/BPCHelperAppClientEAR/utils-1.07.00.jar -text
+int/BPCCommandLine/nav-int-appclient-bpc-pom/.project -text svneol=unset#text/plain
+int/BPCCommandLine/nav-int-appclient-bpc-pom/pom.xml -text svneol=unset#text/plain
 int/CEILogger/CEIEventConsumer/.j2ee -text
 int/CEILogger/CEIEventConsumer/.project -text
 int/CEILogger/CEIEventConsumer/.runtime -text
