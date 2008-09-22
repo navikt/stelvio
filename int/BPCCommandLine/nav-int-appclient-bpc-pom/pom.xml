@@ -8,6 +8,15 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>BPC-Helper Packaging</name>
 
+	<scm>
+		<connection>
+			https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/BPCCommandLine/nav-int-appclient-bpc-pom
+		</connection>
+		<developerConnection>
+			https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/BPCCommandLine/nav-int-appclient-bpc-pom
+		</developerConnection>
+	</scm>
+
 	<modules>
 		<module>../BPCHelperAppClient</module>
 		<module>../BPCHelperAppClientEAR</module>
