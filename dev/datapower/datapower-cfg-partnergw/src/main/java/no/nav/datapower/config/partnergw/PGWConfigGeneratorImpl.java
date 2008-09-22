@@ -120,12 +120,11 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		URL localDirUrl = getClass().getClassLoader().getResource("local/xslt/");
 		List<File> fileList = null;
 		if (localDirUrl.getProtocol().equals("file")) {
-			fileList = getFileList(FileUtils.toFile(localDirUrl);			
+			fileList = getFileList(FileUtils.toFile(localDirUrl));			
 		}
 		else if (localDirUrl.getProtocol().equals("jar")) {
 			fileList = getFileListFromJarClasspath(localDirUrl);
 		}
-		DPCollectionUtils.printLines(fileList, System.out, "File");
 		return fileList;
 	}
 	
