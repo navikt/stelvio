@@ -69,6 +69,7 @@ dev/maven2/nav-deployment-code-plugin/.classpath
 dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
+int/BPCCommandLine/BPCHelperAppClient/target
 int/FEMCommandLine/FEMGRAppClient/target
 int/FEMCommandLine/FEMGRAppClientEAR/target
 int/FEMCommandLine/nav-int-appclient-fem-pom/.project
