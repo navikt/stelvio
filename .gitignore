@@ -74,6 +74,7 @@ int/BPCCommandLine/BPCHelperAppClientEAR/target
 int/FEMCommandLine/FEMGRAppClient/target
 int/FEMCommandLine/FEMGRAppClientEAR/target
 int/FEMCommandLine/nav-int-appclient-fem-pom/.project
+int/stelvio-commons-lib/.settings
 maven-jaxhandler-plugin/.classpath
 maven-jaxhandler-plugin/.project
 maven-jaxhandler-plugin/target
