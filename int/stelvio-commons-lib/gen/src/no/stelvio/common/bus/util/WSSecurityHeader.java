@@ -42,7 +42,8 @@ public class WSSecurityHeader {
 	private final static Logger log = Logger.getLogger(className);
     
     // Create LTPA token header
-    public static Object createLTPAHeader(String userName, String password){
+    @SuppressWarnings("unchecked")
+	public static Object createLTPAHeader(String userName, String password){
     	try {
     		if (!tokenCache.containsKey(userName+password)){
 	    		Subject currentSubject;

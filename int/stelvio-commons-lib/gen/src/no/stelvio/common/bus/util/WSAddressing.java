@@ -25,6 +25,7 @@ public class WSAddressing {
 	
 	// Logger - Sample - log.logp(Level.FINEST, className, <yourMethod>, <yourText>);
 	private final static String className = WSAddressing.class.getName();
+	@SuppressWarnings("unused")
 	private final Logger log = Logger.getLogger(className);
 
 	public static final URI DEFAULT_NAMESPACEURI = URI.create("http://schemas.xmlsoap.org/ws/2004/08/addressing");

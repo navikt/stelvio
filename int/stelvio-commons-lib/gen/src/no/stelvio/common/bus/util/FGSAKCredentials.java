@@ -48,6 +48,7 @@ public class FGSAKCredentials {
 	/**
 	 * @return Returns the password.
 	 */
+	@SuppressWarnings("unused")
 	private String getPassword() {
 		log.logp(Level.FINE, className, "getPassword()", "->" + password);
 		return password;

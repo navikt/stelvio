@@ -58,6 +58,7 @@ public class StelvioContextHelper {
 	// initial UserWorkArea
 	private UserWorkArea workArea = null;
 
+	@SuppressWarnings("unused")
 	private InitialContext workAreaCtx = null;
 
 	private WBISessionManager sessionManager = null;

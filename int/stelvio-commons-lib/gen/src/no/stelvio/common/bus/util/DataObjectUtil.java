@@ -173,6 +173,7 @@ public class DataObjectUtil {
 	 * @param condition This condition is called for each property to evaluate if it should be copied or not
 	 * @return returns the target object
 	 */
+	@SuppressWarnings("unchecked")
 	public static DataObject deepCopyDataObject(DataObject source, DataObject target, int exactProps, boolean createProps, IAugmentCondition condition) {
 		if(source!=null) {
 			if((target!=null)||createProps) {

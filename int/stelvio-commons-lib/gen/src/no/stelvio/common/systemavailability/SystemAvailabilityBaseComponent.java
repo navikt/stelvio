@@ -1,15 +1,11 @@
 /*
  * Created on Mar 26, 2007
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * Update persona2c5e3b49756 Schnell, WPS 6.1 , 21.05.2008 -> check //LS for updates
  */
 package no.stelvio.common.systemavailability;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,14 +27,12 @@ import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.Ticket;
 import com.ibm.websphere.sca.scdl.OperationType;
-import com.ibm.ws.bo.impl.BusObjImpl;
-import com.ibm.ws.bo.impl.BusinessObjectTypeImpl;
 import com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartImpl;
 import com.ibm.ws.sca.internal.scdl.impl.ManagedReferenceImpl;
 import com.ibm.wsspi.sca.multipart.impl.MultipartImpl;
-
 import commonj.sdo.DataObject;
 import commonj.sdo.Property;
+import commonj.sdo.Type;
 
 /**
  * @author utvikler
@@ -51,6 +45,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	Service partnerService=null;
 	String systemName=null;
 	boolean interceptorEnabled=true;
+	//LS
+	@SuppressWarnings("unused")
 	private com.ibm.websphere.bo.BOFactory boFactory = null;
 	
 	public SystemAvailabilityBaseComponent(){
@@ -126,36 +122,41 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 							}
 							catch(RuntimeException re){
 								//No prerecorded stub found
+														
 							
-								long timestamp=System.currentTimeMillis(); 
+								long timestamp=System.currentTimeMillis();
 								String requestID=Long.toString(timestamp);
 								
-									String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
-									recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
-									Object ret;
-									try{
-									    ret=partnerService.invoke(arg0,arg1); 
-									}catch(ServiceBusinessException sbe){
-										//System.err.println("Exception");
-										recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
-										throw sbe;
-									}
-									catch(ServiceRuntimeException sre){
-									    recordStubDataRuntimeException(arg0,requestID,(ManagedMultipartImpl)arg1,sre);
-										throw sre;
-									}
-									if (((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType())!=null && ((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().hasNext()){
-										String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
-										//System.err.println("Normal");							
-										recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
-									}
-									return ret;
+								//LS
+								//String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
+								Type sdoTypeReq = ((DataObject)arg1).getType();
+								String requestObjectName=sdoTypeReq.getName();
+								recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
+								Object ret;
+								try{
+									ret=partnerService.invoke(arg0,arg1); 
+								}catch(ServiceBusinessException sbe){
+									//System.err.println("Exception");
+									recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
+									throw sbe;
+								}
+								catch(ServiceRuntimeException sre){
+								    recordStubDataRuntimeException(arg0,requestID,(ManagedMultipartImpl)arg1,sre);
+									throw sre;
+								}
+								//LS 
+								//String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
+								Type sdoTypeRes = ((DataObject)arg1).getType();
+								String responseObjectName=sdoTypeRes.getName();
+								
+								//System.err.println("Normal");
+								recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
+								return ret;
 								
 							}
-
 							System.out.println("Found prerecorded matching stub data for "+systemName+"."+arg0.getName()+". Ignoring.");
 							return partnerService.invoke(arg0,arg1);
-						
+							
 							
 							
 						}
@@ -182,7 +183,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			e.printStackTrace();
 		}	
 	}
-
+	
 	private void recordStubDataRuntimeException(OperationType arg0, String requestID,ManagedMultipartImpl impl, Throwable sbe) {
 		try {
 			storeObjectOrPrimitive(arg0,sbe,"exception",requestID,"RuntimeException");
@@ -302,11 +303,12 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		}
 		else{
 			if (object instanceof ServiceBusinessException){
-				BusObjImpl requestDataObject= (BusObjImpl)((ServiceBusinessException) object).getData();
+				// LS
+				//BusObjImpl requestDataObject= (BusObjImpl)((ServiceBusinessException) object).getData();
+				DataObject requestDataObject= (DataObject) ((ServiceBusinessException)object).getData();
 				BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");
 				xmlSerializerService.writeDataObject(requestDataObject,"http://no.stelvio.stubdata/",requestObjectName,objectFile);
-			}
-			else 
+			}else 
 			    if (object instanceof ServiceRuntimeException){
 			        PrintWriter pw=new PrintWriter(objectFile);
 			        pw.println(((ServiceRuntimeException)object).getMessage());
@@ -387,7 +389,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					        throw new ServiceRuntimeException("A ServiceRuntimeException was recorded, but unfortunately I'm not able yet to provide the original message. It can maybe be found in the recorded data, but I'm pretty dumb.");
 					    }
 					}
-					    
 				}
 				
 				if (responseFile.exists())

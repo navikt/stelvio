@@ -7,25 +7,15 @@
 package no.stelvio.common.systemavailability;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-
-
-
-import com.ibm.wbiserver.migration.ics.bodo.utils.BODOLoader;
 import com.ibm.websphere.bo.BOXMLDocument;
 import com.ibm.websphere.bo.BOXMLSerializer;
 import com.ibm.websphere.sca.ServiceManager;
-
 import commonj.sdo.DataObject;
-
-
-
 
 
 /**
@@ -65,7 +55,7 @@ public class SystemAvailabilityStorage{
 	}
 	
 	public List listAvailabilityRecordSystemNames(){
-		ArrayList ret=new ArrayList();
+		ArrayList<String> ret=new ArrayList<String>();
 		File dir=new File(saDirName);
 		File[] sysList=dir.listFiles();
 		for (int i=0;i<sysList.length;i++){
@@ -80,7 +70,7 @@ public class SystemAvailabilityStorage{
 			DataObject obj=	 boFactory.create("http://stelvio-commons-lib/no/stelvio/common/systemavailability", "SystemAvailabilityRecord");
 			obj.setString("SystemName",record.systemName);
 			
-			List operationList=new ArrayList();
+			List<DataObject> operationList=new ArrayList<DataObject>();
 			int i;
 			if (record.operations==null)
 				record.operations=new ArrayList();
@@ -108,6 +98,7 @@ public class SystemAvailabilityStorage{
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public AvailabilityRecord getAvailabilityRecord(String systemName){
 		
 		try {

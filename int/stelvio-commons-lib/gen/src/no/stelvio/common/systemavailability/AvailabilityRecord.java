@@ -7,7 +7,6 @@
 package no.stelvio.common.systemavailability;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -56,6 +55,7 @@ public class AvailabilityRecord {
 		}
 		return foundRec;
 	}
+	@SuppressWarnings("unchecked")
 	public OperationAvailabilityRecord findOrCreateOperation(String operationName) {
 		OperationAvailabilityRecord foundRec=findOperation(operationName);	
 		if (foundRec==null){
@@ -65,7 +65,7 @@ public class AvailabilityRecord {
 			foundRec.stubbed=false;
 			foundRec.recordStubData=false;
 			foundRec.operationName=operationName;
-			this.operations.add(foundRec);
+			boolean add = this.operations.add(foundRec);
 			new SystemAvailabilityStorage().storeAvailabilityRecord(this);
 		}
 		return foundRec;
