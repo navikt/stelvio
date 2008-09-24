@@ -396,7 +396,7 @@ public class StringUtils {
      * @param in The String whose non-valid characters we want to remove.
      * @return The in String, stripped of non-valid characters.
      */
-    public String stripNonValidXMLCharacters(String in) {
+    public static String stripNonValidXMLCharacters(String in) {
         StringBuffer out = new StringBuffer(); // Used to hold the output.
         char current; // Used to reference the current character.
  
