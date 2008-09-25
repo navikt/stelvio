@@ -1,12 +1,18 @@
 package no.nav.bpchelper.actions;
 
 import java.util.Collection;
+import java.util.Properties;
 
 import com.ibm.bpe.api.PIID;
 import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public class TerminateAction extends ReportAction {
-    @Override
+    
+	public TerminateAction(Properties properties) {
+		super(properties);
+	}
+
+	@Override
     public String getName() {
 	return "terminate";
     }

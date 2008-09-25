@@ -1,22 +1,40 @@
 package no.nav.bpchelper.actions;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Properties;
 
 import no.nav.bpchelper.cmdoptions.ActionOptionValues;
 import no.nav.bpchelper.cmdoptions.OptionOpts;
+import no.nav.bpchelper.utils.PropertyMapper;
 
 import org.apache.commons.cli.CommandLine;
-import org.apache.commons.lang.time.DateFormatUtils;
-import org.apache.commons.lang.time.FastDateFormat;
 
 public class ActionFactory {
     private static final DateFormat REPORT_FILENAME_DATEFORMAT = new SimpleDateFormat("yyyyddMMHHmmssSSS");
     
     public static Action getAction(CommandLine commandLine) {
-	String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
-	AbstractAction action = ActionOptionValues.valueOf(actionValue).getAction();
+    	
+    	// It is more or less okay to catch FileNotFound exceptions from 
+		// this method as we have give the user a log entry about
+		// this and simultainisly abort the program before this
+		// will occur.
+    	Properties connectProps;
+		try {
+			String configFilePath = commandLine.getOptionValue(OptionOpts.CONFIG_FILE);
+			connectProps = new Properties();
+			connectProps.load(new FileInputStream(configFilePath));
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+    	
+		PropertyMapper mapper = new PropertyMapper();
+		Properties properties = mapper.getMappedProperties(connectProps);
+    	String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
+    	AbstractAction action = ActionOptionValues.valueOf(actionValue).getAction(properties);
 	
 	action.setCriteria(CriteriaBuilder.build(commandLine));
 	

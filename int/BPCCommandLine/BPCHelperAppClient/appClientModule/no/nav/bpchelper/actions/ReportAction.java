@@ -2,6 +2,7 @@ package no.nav.bpchelper.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Properties;
 
 import no.nav.bpchelper.writers.ReportWriter;
 
@@ -11,12 +12,13 @@ import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 public class ReportAction extends AbstractAction {
     private final Collection<ProcessInstancePropertyAccessor> propertyAccessors;
 
-    public ReportAction() {
-	propertyAccessors = new ArrayList<ProcessInstancePropertyAccessor>();
-	propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.NAME_PROPERTY));
-	propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY));
-	propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY));
-	propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.STARTTIME_PROPERTY));
+    public ReportAction(Properties properties) {
+    	super(properties);
+		propertyAccessors = new ArrayList<ProcessInstancePropertyAccessor>();
+		propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.NAME_PROPERTY));
+		propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY));
+		propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY));
+		propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.STARTTIME_PROPERTY));
     }
 
     @Override

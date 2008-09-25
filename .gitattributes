@@ -2830,6 +2830,7 @@ int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/S
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/TerminateAction.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/BFMConnectionAdapter.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/BusinessFlowManagerServiceAdapter.java -text
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/SecuredBFMConnection.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/ActionOptionValues.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionOpts.java -text
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionsBuilder.java -text
@@ -2838,6 +2839,9 @@ int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Cri
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/LogicalExpression.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Restrictions.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/SimpleExpression.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/ConnectorProperties.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/LogStrings.java -text svneol=unset#text/plain
+int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/PropertyMapper.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/ReflectionUtils.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/writers/ReportWriter.java -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClient/pom.xml -text svneol=unset#text/plain

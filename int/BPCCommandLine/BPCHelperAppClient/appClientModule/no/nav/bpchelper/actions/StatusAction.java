@@ -1,13 +1,20 @@
 package no.nav.bpchelper.actions;
 
+import java.util.Properties;
+
 import com.ibm.bpe.api.QueryResultSet;
 
 public class StatusAction extends AbstractAction {
-    @Override
+    
+	public StatusAction(Properties properties) {
+    	super(properties);
+	}
+
+	@Override
     public String getName() {
 	return "status";
     }
-
+    
     public void process() {
 	// TODO: Can we use constants for any of the clause fragments?
 	String selectClause = "COUNT(DISTINCT PROCESS_INSTANCE.PIID)";

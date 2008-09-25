@@ -16,4 +16,6 @@ public interface OptionOpts {
     String FILTER_PROCESS_TEMPLATE_NAME = "FprocessTemplateName";
 
     String FILTER_ACTIVITY_NAME = "FactivityName";
+    
+    String CONFIG_FILE = "configFile";
 }

@@ -56,6 +56,12 @@ public class OptionsBuilder {
 	activityNameOption.setArgName("activityName");
 	options.addOption(activityNameOption);
 
+	Option configFile = OptionBuilder.withLongOpt(OptionOpts.CONFIG_FILE).hasArg().create("cf");
+	configFile.setDescription("config file with env info");
+	configFile.setArgName("configFile");
+	options.addOption(configFile);
+	
+	
 	return options;
     }
 }

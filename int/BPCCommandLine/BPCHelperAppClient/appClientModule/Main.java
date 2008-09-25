@@ -9,6 +9,7 @@ import no.nav.bpchelper.actions.ActionFactory;
 import no.nav.bpchelper.cmdoptions.ActionOptionValues;
 import no.nav.bpchelper.cmdoptions.OptionOpts;
 import no.nav.bpchelper.cmdoptions.OptionsBuilder;
+import no.nav.bpchelper.utils.LogStrings;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
@@ -89,9 +90,15 @@ public class Main {
 		return ReturnCodes.ERROR;
 	    }
 	}
+	
+	String configFilePath = commandLine.getOptionValue(OptionOpts.CONFIG_FILE);
+	File propertyFile = new File(configFilePath);
+	if (!propertyFile.exists()) {
+		System.out.println(LogStrings.METHOD_ERROR + "The property file does not exist (" + configFilePath + ")");
+		return ReturnCodes.ERROR;
+	}
 
 	Action action = ActionFactory.getAction(commandLine);
-
 	action.process();
 
 	return ReturnCodes.OK;
