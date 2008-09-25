@@ -44,6 +44,14 @@ public class ReportAction extends AbstractAction {
 		ArrayList <String> events = new ArrayList<String>();
 		events = collectEvents(arguments, paging, totalevents, maxresultset);
 		
+//		if (!cl.hasOption(Constants.noStop)) {
+//			String q = "Do you want to continue and write " + events.size() + " events?";
+//			boolean result = askYesNo(q);
+//			if (!result) {
+//				return null;
+//			}
+//		}
+		
 		for (int i = 0; i < events.size(); i++) {
 		logger.log(Level.INFO,"Reporting events (" + (i+1) + " of " + events.size() + "). Please wait!");
 			

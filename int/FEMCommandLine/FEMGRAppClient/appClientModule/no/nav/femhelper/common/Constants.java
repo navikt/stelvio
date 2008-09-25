@@ -173,6 +173,12 @@ public class Constants {
 	public static final String action = "action";
 	
 	/**
+	 * Public constant to represent the 'noStop' parameter from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String noStop = "noStop";
+	
+	/**
 	 * ActionOptions are 0:REPORT, 1:DISCARD, 2:RESUBMIT, 3:STATUS, 4:TIMEFRAME. 
 	 */
 	public static final String[] actionOptions = {"REPORT", "DISCARD", "RESUBMIT", "STATUS", "TIMEFRAME"};

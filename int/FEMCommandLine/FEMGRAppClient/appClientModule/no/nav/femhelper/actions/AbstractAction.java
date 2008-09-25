@@ -1,6 +1,8 @@
 package no.nav.femhelper.actions;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -393,6 +395,24 @@ public abstract class AbstractAction {
 			return true;
 		} 
 		return false;
+	}
+	
+	protected boolean askYesNo(String question) {
+		String answer = "";
+		
+		try {
+			System.out.println(question + "(y/n)");
+			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			answer = in.readLine();
+			while (!answer.equals("y") || !answer.equals("n")) {
+				System.out.println(answer + " is not a valid option");
+				System.out.println(question + "(y/n)");
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return "y".equals(answer) ? true : false;
 	}
 	
 

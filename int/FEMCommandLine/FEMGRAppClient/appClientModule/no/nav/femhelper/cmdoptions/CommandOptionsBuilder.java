@@ -42,6 +42,7 @@ public class CommandOptionsBuilder {
 		options.addOption(getDestinationComponent());
 		options.addOption(getFailureMessageOption());
 		options.addOption(getDataObjectOption());
+		options.addOption(getNoStopOption());
 		
 		logger.log(Level.FINE, Constants.METHOD_EXIT + "getOptions");
 		return options;
@@ -191,6 +192,18 @@ public class CommandOptionsBuilder {
 		configFile.setArgName("full path");
 		configFile.setDescription("Mandatory. Full path to configuration file for system environment spesifications (hostname etc.).");
 		return configFile;
+	}
+	
+	/**
+	 * Create command line option for 'noStop'. 
+	 * This paramater is used if actions not shal prompt 
+	 * before executing the action
+	 * @return
+	 */
+	private Option getNoStopOption() {
+		Option noStop = OptionBuilder.withLongOpt(Constants.noStop).create();
+		noStop.setDescription("Runs the action without prompting between collecting the msgids and the action");
+		return noStop;
 	}
 	
 	/**
