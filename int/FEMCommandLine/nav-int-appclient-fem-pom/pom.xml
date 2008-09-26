@@ -3,19 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nav.int.appclient.femhelper</groupId>
-	<artifactId>nav-int-appclient-fem-pom</artifactId>
+	<artifactId>nav-int-appclient-femhelper-pom</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>FEM-Helper Packaging</name>
 
 	<scm>
-		<connection>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/FEMCommandLine/nav-int-appclient-fem-pom</connection>
-		<developerConnection>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/FEMCommandLine/nav-int-appclient-fem-pom</developerConnection>
+		<connection>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient-femhelper/nav-int-appclient-fem-pom</connection>
+		<developerConnection>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient-femhelper/nav-int-appclient-fem-pom</developerConnection>
 	</scm>
 
 	<modules>
-		<module>../FEMGRAppClient</module>
-		<module>../FEMGRAppClientEAR</module>
+		<module>../nav-int-appclient-femhelper-java</module>
+		<module>../nav-int-appclient-femhelper-ear</module>
 	</modules>
 
 	<build>
@@ -35,7 +35,7 @@
 				<configuration>
 					<archive>
 						<manifestFile>
-							src/main/resources/META-INF/MANIFEST.MF
+							src/main/java/META-INF/MANIFEST.MF
 						</manifestFile>
 					</archive>
 				</configuration>
