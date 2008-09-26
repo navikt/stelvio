@@ -4,7 +4,7 @@
   	<groupId>no.nav.maven.plugins</groupId>
   	<artifactId>maven-deployment-descriptor-common</artifactId>
   	<packaging>jar</packaging>
-  	<version>1.0.0</version>
+  	<version>1.0.1-SNAPSHOT</version>
   	<name>Maven WebSphere Deployment Descriptor Common library</name>
   	<description>
   	</description>
