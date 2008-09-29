@@ -5,7 +5,6 @@ import java.util.Properties;
 
 import no.nav.bpchelper.adapters.BFMConnectionAdapter;
 import no.nav.bpchelper.query.Criteria;
-import no.nav.bpchelper.utils.PropertyMapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +22,7 @@ public abstract class AbstractAction implements Action {
 	 * Keeping connection URLs etc.
 	 */
 	private Properties properties;
-	
+
 	public abstract String getName();
 
 	public AbstractAction(Properties properties) {
