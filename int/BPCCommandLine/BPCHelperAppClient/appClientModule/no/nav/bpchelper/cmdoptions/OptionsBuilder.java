@@ -57,7 +57,7 @@ public class OptionsBuilder {
 	options.addOption(activityNameOption);
 
 	Option configFile = OptionBuilder.withLongOpt(OptionOpts.CONFIG_FILE).hasArg().create("cf");
-	configFile.setDescription("config file with env info");
+	configFile.setDescription("config file with env info (mandatory)");
 	configFile.setArgName("configFile");
 	options.addOption(configFile);
 	
