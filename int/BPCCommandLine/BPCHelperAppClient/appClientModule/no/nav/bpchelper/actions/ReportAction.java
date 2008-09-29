@@ -61,7 +61,6 @@ public class ReportAction extends AbstractAction {
 	String selectClause = "DISTINCT PROCESS_INSTANCE.PIID,PROCESS_INSTANCE.NAME,PROCESS_INSTANCE.TEMPLATE_NAME,PROCESS_INSTANCE.STATE,PROCESS_INSTANCE.STARTED";
 	String whereClause = getCriteria().toSqlString();
 
-	// TODO: Is query the correct service to use, or should queryAll be used?
-	return bfmConnection.getBusinessFlowManagerService().query(selectClause, whereClause, null, null);
+	return bfmConnection.getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
     }
 }
