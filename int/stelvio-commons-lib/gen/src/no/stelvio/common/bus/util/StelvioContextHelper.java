@@ -1,14 +1,3 @@
-/*
- * StelvioConctextHelper.java Created on Feb 26, 2006 Author: persona2c5e3b49756 Schnell
- * (test@example.com)
- * 
- * This is a utility class that provides context information from StelvioContext
- * or
- * 
- * @Updated: 26-02-2006 -> initial Version 08-03-2006 -> fixed
- * NullPointerException WBISessionManager - CC NAV00000491
- *  
- */
 package no.stelvio.common.bus.util;
 
 import java.io.PrintWriter;
@@ -24,17 +13,22 @@ import com.ibm.websphere.security.cred.WSCredential;
 import com.ibm.websphere.workarea.UserWorkArea;
 import com.ibm.ws.session.WBISessionManager;
 
-/*
- * <p> This is a utility class that provides helper methods around
- * StelvioContext, useful for different purpose as get an userId or the
- * WBISessionId or other funtionality around StelvioContext </p>
+/**
+ * <p>
+ * This is a utility class that provides helper methods around StelvioContext,
+ * useful for different purposes, such as getting a userId, the WBISessionId or other
+ * funtionality around StelvioContext
+ * </p>
  * 
- * @usage <p> no.stelvio.common.bus.util.StelvioContextHelper stelvioCtx = new
- * StelvioContextHelper(); String myUserId = stelvioCtx.getUserId();
+ * @usage
+ * <p>
+ * no.stelvio.common.bus.util.StelvioContextHelper stelvioCtx = new StelvioContextHelper(); 
+ * String myUserId = stelvioCtx.getUserId();
+ * </p>
  * 
- * Don't use System.out it is only an example. * @author persona2c5e3b49756 Schnell,
- * test@example.com
- *  
+ * Don't use System.out it is only an example.
+ * @author persona2c5e3b49756 Schnell, test@example.com
+ * 
  */
 public class StelvioContextHelper {
 
@@ -120,14 +114,14 @@ public class StelvioContextHelper {
 	}
 
 	/**
-	 * @return Returns the corrleationId.
+	 * @return Returns the correlationId.
 	 */
 	public String getCorrelationId() {
 		return correlationId;
 	}
 
 	/**
-	 * @param corrleationId
+	 * @param correlationId
 	 *            The corrleationId to set.
 	 */
 	public void setCorrelationId(String correlationId) {
