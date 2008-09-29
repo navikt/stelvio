@@ -255,9 +255,8 @@ public class StelvioContextHelper {
 			}
 			// another WorkArea
 			else {
-				log
-						.logp(Level.WARNING, className, "setStelvioBusContext()",
-								"StelvioContext doesn't exists within WorkArea - use default values");
+				log.logp(Level.FINE, className, "setStelvioBusContext()",
+						"StelvioContext doesn't exists within WorkArea - use default values");
 				userId = DEFAULT_USER_NAME;
 				languageId = DEFAULT_LANGUAGE;
 				applicationId = DEFAULT_APPLICATION_NAME;
@@ -266,7 +265,7 @@ public class StelvioContextHelper {
 		}
 		// set the default values in general
 		else {
-			log.logp(Level.WARNING, className, "setStelvioBusContext()", "StelvioContext doesn't exists within WorkArea - use default values");
+			log.logp(Level.FINE, className, "setStelvioBusContext()", "StelvioContext doesn't exists within WorkArea - use default values");
 			userId = DEFAULT_USER_NAME;
 			languageId = DEFAULT_LANGUAGE;
 			applicationId = DEFAULT_APPLICATION_NAME;
