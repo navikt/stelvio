@@ -20,8 +20,8 @@ public class CriteriaBuilder {
 
 	// Static criteria added to all queries
 	Criterion processStateFailedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceData.STATE_FAILED);
-	Criterion activityStateFailedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_FAILED);
-	criteria.add(Restrictions.or(processStateFailedCriterion, activityStateFailedCriterion));
+	Criterion processStateTerminatedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceData.STATE_TERMINATED);
+	criteria.add(Restrictions.or(processStateFailedCriterion, processStateTerminatedCriterion));
 
 	// Dynamic criteria added if options specified
 	if (commandLine.hasOption(OptionOpts.FILTER_STARTED_AFTER)) {
