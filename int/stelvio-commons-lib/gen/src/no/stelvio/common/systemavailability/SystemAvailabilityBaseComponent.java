@@ -122,53 +122,47 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						DataObject ret=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
 						return ret;
 						
-					}else{
-						if (availRec.recordStubData){
-							DataObject preRecorded=null;
+					} else if (availRec.recordStubData){
+						DataObject preRecorded=null;
+						try {
+							preRecorded=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
+						}catch(ServiceBusinessException sbe){
+						    //This is OK, as it is a prerecorded SBE
+						}
+						catch(ServiceRuntimeException sre){
+						    //This is also OK as it is a prerecorded SRE
+						}
+						catch(RuntimeException re){
+							//No prerecorded stub found
+													
+						
+							long timestamp=System.currentTimeMillis();
+							String requestID=Long.toString(timestamp);
+							
+							Type sdoTypeReq = ((DataObject)arg1).getType();
+							String requestObjectName=sdoTypeReq.getName();
+							recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
+							Object ret;
 							try{
-								preRecorded=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
+								ret=partnerService.invoke(arg0,arg1); 
 							}catch(ServiceBusinessException sbe){
-							    //This is OK, as it is a prerecorded SBE
+								recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
+								throw sbe;
 							}
 							catch(ServiceRuntimeException sre){
-							    //This is also OK as it is a prerecorded SRE
+							    recordStubDataRuntimeException(arg0,requestID,(ManagedMultipartImpl)arg1,sre);
+								throw sre;
 							}
-							catch(RuntimeException re){
-								//No prerecorded stub found
-														
+							Type sdoTypeRes = ((DataObject)arg1).getType();
+							String responseObjectName=sdoTypeRes.getName();
 							
-								long timestamp=System.currentTimeMillis();
-								String requestID=Long.toString(timestamp);
-								
-								Type sdoTypeReq = ((DataObject)arg1).getType();
-								String requestObjectName=sdoTypeReq.getName();
-								recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
-								Object ret;
-								try{
-									ret=partnerService.invoke(arg0,arg1); 
-								}catch(ServiceBusinessException sbe){
-									recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
-									throw sbe;
-								}
-								catch(ServiceRuntimeException sre){
-								    recordStubDataRuntimeException(arg0,requestID,(ManagedMultipartImpl)arg1,sre);
-									throw sre;
-								}
-								Type sdoTypeRes = ((DataObject)arg1).getType();
-								String responseObjectName=sdoTypeRes.getName();
-								
-								recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
-								return ret;
-								
-							}
-							System.out.println("Found prerecorded matching stub data for "+systemName+"."+arg0.getName()+". Ignoring.");
-							return partnerService.invoke(arg0,arg1);
-							
-							
+							recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
+							return ret;
 							
 						}
-					}
-					
+						System.out.println("Found prerecorded matching stub data for "+systemName+"."+arg0.getName()+". Ignoring.");
+						return partnerService.invoke(arg0,arg1);
+					}				
 				}
 			}
 		}
@@ -420,11 +414,10 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						fis.close();
 						DataObject responseObject=responseObjectDoc.getDataObject();
 						throw new ServiceBusinessException(responseObject);
-					}else{
-					    File runtimeExceptionFile=new File(dirName,tmStamp+"_RuntimeException.xml");
-					    if (runtimeExceptionFile.exists()){
-					        throw new ServiceRuntimeException("A ServiceRuntimeException was recorded, but unfortunately I'm not able yet to provide the original message. It can maybe be found in the recorded data, but I'm pretty dumb.");
-					    }
+					}
+					File runtimeExceptionFile=new File(dirName,tmStamp+"_RuntimeException.xml");
+					if (runtimeExceptionFile.exists()){
+					    throw new ServiceRuntimeException("A ServiceRuntimeException was recorded, but unfortunately I'm not able yet to provide the original message. It can maybe be found in the recorded data, but I'm pretty dumb.");
 					}
 				}
 				
