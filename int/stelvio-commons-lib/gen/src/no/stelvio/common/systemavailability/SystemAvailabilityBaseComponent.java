@@ -1,7 +1,3 @@
-/*
- * Created on Mar 26, 2007
- * Update persona2c5e3b49756 Schnell, WPS 6.1 , 21.05.2008 -> check //LS for updates
- */
 package no.stelvio.common.systemavailability;
 
 import java.io.File;
@@ -38,17 +34,15 @@ import commonj.sdo.Property;
 import commonj.sdo.Type;
 
 /**
- * @author utvikler
+ * @author person73874c7d71f8
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.ServiceImplSync{
 
 	Service partnerService=null;
 	String systemName=null;
 	boolean interceptorEnabled=true;
-	//LS
+
 	@SuppressWarnings("unused")
 	private com.ibm.websphere.bo.BOFactory boFactory = null;
 	
@@ -146,8 +140,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 								long timestamp=System.currentTimeMillis();
 								String requestID=Long.toString(timestamp);
 								
-								//LS
-								//String requestObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getInputType()).eAllContents().next()).getName();
 								Type sdoTypeReq = ((DataObject)arg1).getType();
 								String requestObjectName=sdoTypeReq.getName();
 								recordStubData(arg0,requestID,(ManagedMultipartImpl)arg1,requestObjectName,"Request");
@@ -155,7 +147,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 								try{
 									ret=partnerService.invoke(arg0,arg1); 
 								}catch(ServiceBusinessException sbe){
-									//System.err.println("Exception");
 									recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
 									throw sbe;
 								}
@@ -163,12 +154,9 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 								    recordStubDataRuntimeException(arg0,requestID,(ManagedMultipartImpl)arg1,sre);
 									throw sre;
 								}
-								//LS 
-								//String responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
 								Type sdoTypeRes = ((DataObject)arg1).getType();
 								String responseObjectName=sdoTypeRes.getName();
 								
-								//System.err.println("Normal");
 								recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
 								return ret;
 								
@@ -232,7 +220,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		try {
 			storeObjectOrPrimitive(arg0,sbe,"exception",requestID,"Exception");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
@@ -241,7 +228,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		try {
 			storeObjectOrPrimitive(arg0,sbe,"exception",requestID,"RuntimeException");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
@@ -356,8 +342,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		}
 		else{
 			if (object instanceof ServiceBusinessException){
-				// LS
-				//BusObjImpl requestDataObject= (BusObjImpl)((ServiceBusinessException) object).getData();
 				DataObject requestDataObject= (DataObject) ((ServiceBusinessException)object).getData();
 				BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");
 				xmlSerializerService.writeDataObject(requestDataObject,"http://no.stelvio.stubdata/",requestObjectName,objectFile);
