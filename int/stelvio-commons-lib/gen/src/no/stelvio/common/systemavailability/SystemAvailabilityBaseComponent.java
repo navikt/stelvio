@@ -8,11 +8,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 
@@ -49,6 +52,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	@SuppressWarnings("unused")
 	private com.ibm.websphere.bo.BOFactory boFactory = null;
 	
+	static Properties unavailableExceptionProperties=null;
+	
 	public SystemAvailabilityBaseComponent(){
 		
 		boFactory = (com.ibm.websphere.bo.BOFactory)ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
@@ -71,7 +76,21 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			throw new RuntimeException("AvailabilityCheck: Unable to extract the backend system name from the component name \""+componentName+"\". Make sure that the component name is on the form \"<SystemName>AvailabilityCheck\"");
 		}
 		systemName=componentName.substring(0,componentName.indexOf("Avail"));
-		
+	
+		if (unavailableExceptionProperties==null){
+			synchronized(SystemAvailabilityBaseComponent.class){
+				if (unavailableExceptionProperties==null){
+					unavailableExceptionProperties=new Properties();
+					try {
+						InputStream propertyFile = this.getClass().getResourceAsStream("SystemUnavailableExceptionList.properties");
+						unavailableExceptionProperties.load(propertyFile);
+					} catch (Exception e) {
+						System.err.println(componentName+ ":Unable to read SystemUnavailableExceptionList.properties from classpath. Will continue with no automatic resubmit flagging for this component");						
+					}
+					
+				}
+			}
+		}
 		
 	}
 	
@@ -165,7 +184,41 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				}
 			}
 		}
-		return partnerService.invoke(arg0,arg1);		
+		
+		try{
+			return partnerService.invoke(arg0,arg1);
+		}catch (RuntimeException re){
+			boolean wrapInServiceUnavailableException=false;
+			String decidingToken="";
+			StringWriter sw=new StringWriter();
+			PrintWriter pw=new PrintWriter(sw,true);
+			re.printStackTrace(pw);
+			String stackTrace=sw.toString();
+			for (Object key:unavailableExceptionProperties.keySet()){
+				String keyString=(String) key;
+				if (keyString.startsWith("SUBSTRING")){   //This is a substring match
+					String token=unavailableExceptionProperties.getProperty(keyString);
+					if (stackTrace.indexOf(token)!=-1){
+						wrapInServiceUnavailableException=true;
+						decidingToken=token;
+					}
+				}else{
+					if (keyString.startsWith("EXCEPTION")){
+						String exceptionName=unavailableExceptionProperties.getProperty(keyString);
+						if (exceptionName.equals(re.getClass().getPackage()+re.getClass().getName())){
+							wrapInServiceUnavailableException=true;
+							decidingToken=exceptionName;
+						}
+						
+					}
+				}
+			}
+			
+			if (wrapInServiceUnavailableException){ 
+				throw new ServiceUnavailableException("System "+systemName+" received an exception:"+re.getMessage()+". This was automatically flagged as a temporary unavailability due to the presence of the token '"+decidingToken+"' :", re);				
+			}
+			else throw re;  //This was not an unavailable-exception, just rethrow the original exception.
+		}
 	}
 
 
