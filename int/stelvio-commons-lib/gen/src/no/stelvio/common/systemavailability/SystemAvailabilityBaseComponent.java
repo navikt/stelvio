@@ -205,7 +205,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				}else{
 					if (keyString.startsWith("EXCEPTION")){
 						String exceptionName=unavailableExceptionProperties.getProperty(keyString);
-						if (exceptionName.equals(re.getClass().getPackage()+re.getClass().getName())){
+						if (exceptionName.equals(re.getClass().getName())){
 							wrapInServiceUnavailableException=true;
 							decidingToken=exceptionName;
 						}
