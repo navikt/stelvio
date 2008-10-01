@@ -4,7 +4,7 @@
 	<groupId>no.nav.datapower</groupId>
 	<artifactId>datapower-cfg-secgw</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>Configuration Generator for the 'secgw' DataPower module</name>
 	<dependencies>
 		<dependency>
@@ -21,12 +21,12 @@
 		<dependency>
 	        <groupId>no.nav.datapower</groupId>
 	        <artifactId>datapower-utils</artifactId>
-	        <version>1.0.0</version>
+	        <version>1.0.1-SNAPSHOT</version>
 	    </dependency>
 		<dependency>
 	        <groupId>no.nav.datapower</groupId>
 	        <artifactId>datapower-cfg-gen</artifactId>
-	        <version>1.0.0</version>
+	        <version>1.0.1-SNAPSHOT</version>
 	    </dependency>
     	<!--  
     	<dependency>

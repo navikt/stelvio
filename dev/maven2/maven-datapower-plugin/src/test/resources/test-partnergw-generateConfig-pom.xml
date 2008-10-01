@@ -4,7 +4,7 @@
   	<groupId>no.nav.maven.plugins</groupId>
   	<artifactId>maven-datapower-plugin-test</artifactId>
   	<packaging>jar</packaging>
-  	<version>1.0.0</version>
+  	<version>1.0.1-SNAPSHOT</version>
   	<name>Test Maven DataPower Plugin</name>
 
 	
@@ -41,7 +41,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-datapower-plugin</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.1-SNAPSHOT</version>
 				<configuration>
 					<domain>partner-gw-u1</domain>
 					<outputDirectory>E:/data/builds/BUSTAG_K_2_19_6/target/datapower-config/partner-gw-u1</outputDirectory>
@@ -60,7 +60,7 @@
 					<dependency>
 						<groupId>no.nav.datapower</groupId>
 						<artifactId>datapower-cfg-partnergw</artifactId>
-						<version>1.0.0</version>
+						<version>1.0.1-SNAPSHOT</version>
 					</dependency>
 				</dependencies>
 			</plugin>

@@ -4,7 +4,7 @@
   	<groupId>no.nav.maven.plugins</groupId>
   	<artifactId>maven-datapower-plugin-test</artifactId>
   	<packaging>jar</packaging>
-  	<version>1.0.0</version>
+  	<version>1.0.1-SNAPSHOT</version>
   	<name>Test Maven DataPower Plugin</name>
 
   	<dependencies>
@@ -21,7 +21,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-datapower-plugin</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.1-SNAPSHOT</version>
 				<configuration>
 					<domain>secgw-u1</domain>
 					<deviceUrl>https://secgw-01.utv.internsone.local:5550</deviceUrl>
