@@ -4,7 +4,7 @@
   	<groupId>no.nav.maven.plugins</groupId>
   	<artifactId>maven-datapower-plugin</artifactId>
   	<packaging>maven-plugin</packaging>
-  	<version>1.0-SNAPSHOT</version>
+  	<version>1.0.0</version>
   	<name>Maven DataPower Plugin</name>
   	<description>
 This plugin provides goals for:
@@ -32,29 +32,29 @@ This plugin provides goals for:
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-utils</artifactId>
-      		<version>1.0-SNAPSHOT</version>
+      		<version>1.0.0</version>
     	</dependency>
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-xml-mgmt</artifactId>
-      		<version>1.0-SNAPSHOT</version>
+      		<version>1.0.0</version>
     	</dependency>
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-cfg-gen</artifactId>
-      		<version>1.0-SNAPSHOT</version>
+      		<version>1.0.0</version>
     	</dependency>
     	<!-- This dependency should be specified with the plugin configuration when using the plugin. However, this requires Maven 2.0.9 -->
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-cfg-secgw</artifactId>
-      		<version>1.0-SNAPSHOT</version>
+      		<version>1.0.0</version>
     	</dependency>
     	<!-- This dependency should be specified with the plugin configuration when using the plugin. However, this requires Maven 2.0.9 -->
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-cfg-partnergw</artifactId>
-      		<version>1.0-SNAPSHOT</version>
+      		<version>1.0.0</version>
     	</dependency>
 
     	<!-- Test scoped dependencies -->

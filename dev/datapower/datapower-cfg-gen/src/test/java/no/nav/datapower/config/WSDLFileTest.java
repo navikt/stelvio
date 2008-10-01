@@ -60,11 +60,12 @@ public class WSDLFileTest extends TestCase {
 	}
 
 	public void testCreateMappedUri() {
-		File root = new File("E:/Develop/wsdl/wsdl-tptilb/wsdl/");
-		File wsdlFile = DPFileUtils.append(root, "/no/nav/tpsamordningregistrering/V0_2/ws/TPSamordningRegistreringWSEXP_TPSamordningRegistreringHttp_Service.wsdl");
-		WSDLFile wsdl = WSDLFile.createMappedUri(wsdlFile, root, "/elsam/tptilb/");
-		String frontsideURI = wsdl.getFrontsideURI();
-		System.out.println("version = " + wsdl.getVersion());
+		
+//		File root = new File("E:/Develop/wsdl/wsdl-tptilb/wsdl/");
+//		File wsdlFile = DPFileUtils.append(root, "/no/nav/tpsamordningregistrering/V0_2/ws/TPSamordningRegistreringWSEXP_TPSamordningRegistreringHttp_Service.wsdl");
+//		WDLFile wsdl = WSDLFile.createMappedUri(wsdlFile, root, "/elsam/tptilb/");
+//		String frontsideURI = wsdl.getFrontsideURI();
+//		System.out.println("version = " + wsdl.getVersion());
 //		assertEquals("", "/elsam/tptilb/TPSamordningRegistreringV0_2", frontsideURI);
 	}
 }
