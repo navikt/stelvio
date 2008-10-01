@@ -6,6 +6,7 @@ package no.stelvio.common.bus.handlers.jaxrpc;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -210,7 +211,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 							+ sh.getLocalName());
 
 			//look for StelvioContext header element inside the HEADER
-			java.util.Iterator childElems = sh.getChildElements();
+			Iterator childElems = sh.getChildElements();
 			SOAPElement child;
 
 			// iterate through child elements
@@ -261,7 +262,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 				"--- \tElementTag=" + e.getElementName().getQualifiedName());
 
 		// get an iterator on child elements of SOAP element
-		java.util.Iterator childElems = e.getChildElements();
+		Iterator childElems = e.getChildElements();
 
 		SOAPElement child;
 		// loop through child elements
