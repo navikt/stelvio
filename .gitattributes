@@ -3227,6 +3227,8 @@ int/stelvio-sibus-mediation/MediationEAR/META-INF/MANIFEST.MF -text
 int/stelvio-sibus-mediation/MediationEAR/META-INF/application.xml -text
 int/trunk/nav-int-appclient-femhelper/.project -text svneol=unset#text/plain
 int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/.project -text svneol=unset#text/plain
+int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.component -text
+int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/META-INF/application.xml -text svneol=unset#text/plain
 int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/commons-cli-1.1.jar -text
 int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/commons-collections-3.2.jar -text
