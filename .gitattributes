@@ -2889,8 +2889,6 @@ incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/META-INF/applicatio
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
-int/BPCCommandLine/nav-int-appclient-bpc-pom/.project -text svneol=unset#text/plain
-int/BPCCommandLine/nav-int-appclient-bpc-pom/pom.xml -text svneol=unset#text/plain
 int/CEILogger/CEIEventConsumer/.j2ee -text
 int/CEILogger/CEIEventConsumer/.project -text
 int/CEILogger/CEIEventConsumer/.runtime -text
@@ -3091,6 +3089,8 @@ int/nav-int-appclient/BPCHelperAppClientEAR/pom.xml -text svneol=unset#text/plai
 int/nav-int-appclient/BPCHelperAppClientEAR/slf4j-api-1.5.2.jar -text
 int/nav-int-appclient/BPCHelperAppClientEAR/slf4j-jdk14-1.5.2.jar -text
 int/nav-int-appclient/BPCHelperAppClientEAR/utils-1.07.00.jar -text
+int/nav-int-appclient/nav-int-appclient-bpc-pom/.project -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-bpc-pom/pom.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-fem-pom/pom.xml -text
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/.project -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.component -text
