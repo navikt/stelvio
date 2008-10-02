@@ -49,17 +49,15 @@ public class SecuredBFMConnection extends BFMConnection {
 		String password = properties.getProperty(Constants.password);
 
 		// Build context
-		Hashtable<String, String> ctxProps = new Hashtable<String, String>();
-		ctxProps.put(Context.INITIAL_CONTEXT_FACTORY, "com.ibm.websphere.naming.WsnInitialContextFactory");
-		ctxProps.put("java.naming.provider.url", properties.getProperty("java.naming.provider.url"));
-		ctxProps.put(Context.PROVIDER_URL, properties.getProperty("providerURL"));
-
+		Context ctx;
 		if (!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password)) {
+			Hashtable<String, String> ctxProps = new Hashtable<String, String>();
 			ctxProps.put(Context.SECURITY_PRINCIPAL, username);
 			ctxProps.put(Context.SECURITY_CREDENTIALS, password);
+			ctx = new InitialContext(ctxProps);
+		} else {
+			ctx = new InitialContext();
 		}
-
-		Context ctx = new InitialContext(ctxProps);
 
 		// Lookup the BusinessFlowManager bean
 		LOGGER.info("Looking up BusinessFlowManager bean with JNDI '" + getJndiName() + "'");
