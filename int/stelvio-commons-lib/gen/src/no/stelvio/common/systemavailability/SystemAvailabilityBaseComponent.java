@@ -103,9 +103,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 * @see com.ibm.websphere.sca.ServiceImplSync#invoke(com.ibm.websphere.sca.scdl.OperationType, java.lang.Object)
 	 */
 	public Object invoke(OperationType arg0, Object arg1) throws ServiceBusinessException {
-		/*if (new Random().nextFloat()>(.5f)){
-			throw new ServiceBusinessException("Sorry dude, System \""+systemName+"\" is now unavailable!");
-		}*/
+
 		if (interceptorEnabled){
 			OperationAvailabilityRecord availRec=null;
 			try{
@@ -120,12 +118,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					if (availRec.unAvailable){			
 						throw new ServiceUnavailableException("The system "+systemName+" is currently not available. Reason: "+availRec.unavailableReason+".");// Expected timeframe for downtime: "+availRec.unavailableFrom.toString()+" to "+availRec.unavailableTo.toString());
 					}
-					
-					/*if (availRec.stubbed){
-						StubObjectTemplate template=StaticSystemAvailabilityStorage.getInstance().getStubObjectTemplate(systemName, arg0, arg1);
-					}*/
-					
-					
+										
 					if (availRec.stubbed){
 						DataObject ret=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
 						return ret;
@@ -242,10 +235,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 */
 	private void recordStubData(OperationType arg0,String requestID,ManagedMultipartImpl impl, String requestObjectName, String fileSuffix) {		
 		try {
-			//((BusinessObjectTypeImpl)request.getType()).eContents().listIterator().next()
-			
-			storeObjectOrPrimitive(arg0,impl,requestObjectName,requestID,fileSuffix);
-			
+			storeObjectOrPrimitive(arg0,impl,requestObjectName,requestID,fileSuffix);		
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -253,69 +243,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		}
 		
 	}
-
-//	private void recordStubData(OperationType arg0, ManagedMultipartImpl request, ManagedMultipartImpl response) {
-//		DataObject respObject=null;
-//		if (response!=null){
-//			try{
-//				respObject=(DataObject) response.get(0);
-//			}catch(Throwable t){}		
-//		} 
-//		recordStubData(arg0,request,respObject,false);
-//	}
-	
-	
-//	private void recordStubDataException(OperationType arg0, ManagedMultipartImpl impl, ServiceBusinessException sre) {
-//		recordStubData(arg0,impl,(BusObjImpl)sre.getData(),true);
-//		
-//	}
-//	
-//	private void recordStubData(OperationType arg0,ManagedMultipartImpl request,DataObject response, boolean exception){	
-//		try {
-//			//BOXMLDocument doc=xmlSerializerService.createXMLDocument(input,null,null);
-//			long tmstamp=System.currentTimeMillis();
-//			log.logp(Level.FINE, className, "recordStubData", "Recording stubdata " + tmstamp);
-//					
-//			String dirName = getDirectory(arg0);		
-//			
-//			
-//				
-//			//((BusinessObjectTypeImpl)request.getType()).eContents().listIterator().next()
-//			FileOutputStream requestfile=new FileOutputStream(dirName+"/Stub_"+tmstamp+"_Request.xml");
-//			
-//			BOXMLSerializer xmlSerializerService = storeObjectOrPrimitive(request, requestObjectName, requestfile);
-//			BusinessObjectTypeImpl impl;			
-//			if (exception || response!=null){ //((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().hasNext()){
-//				String responseObjectName;
-//				DataObject responseObject=response;
-//				String responseTypeString;
-//				if (exception){
-//					responseObjectName="exception";
-//					responseTypeString="Exception";
-//				}else{
-//					responseObjectName=((com.ibm.ws.bo.impl.BusinessObjectPropertyImpl)((com.ibm.ws.bo.impl.BusinessObjectTypeImpl)arg0.getOutputType()).eAllContents().next()).getName();
-//					responseTypeString="Response";	
-//				}
-//				//MultipartFactory.eINSTANCE.convertToString((BusinessObjectTypeImpl)request.getType(),request);								
-//				FileOutputStream responseFile=new FileOutputStream(dirName+"/Stub_"+tmstamp+"_"+responseTypeString+".xml");
-//				storeObjectOrPrimitive(responseObject,responseObjectName,responseFile);
-//				xmlSerializerService.writeDataObject(responseObject,"http://no.stelvio.stubdata/",responseObjectName,responseFile);
-//				responseFile.close();
-//			 }
-//           String logMessage = "Recorded stubdata " + dirName + "/Stub_" + tmstamp;
-//			 log.logp(Level.FINE, className, "recordStubData", logMessage);
-//			 requestfile.close();
-//			
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}		
-//		
-//		
-//	}
 
 	/**
 	 * @param request
@@ -336,11 +263,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			else{					
 				BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");
 				xmlSerializerService.writeDataObject((ManagedMultipartImpl)object,"http://no.stelvio.stubdata/",requestObjectName,objectFile);
-
-/*				PrintWriter pw=new PrintWriter(objectFile);
-				pw.println("PRIMITIVE");
-				((ManagedMultipartImpl)pw).get
-				pw.close();*/
 			}
 		}
 		else{
@@ -358,7 +280,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		String logMessage = "Recorded stubdata " + dirName + "/Stub_" + requestID + "_" + fileSuffix + ".xml";
 		log.logp(Level.FINE, className, "storeObjectOrPrimitive", logMessage);
 		objectFile.close();
-		
 	}
 
 	/**
@@ -403,7 +324,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 							foundMatch=files[i];
 							break;
 						}
-							
 					}
 				}
 				if (foundMatch==null){
@@ -413,8 +333,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				String logMessage = "Found matching test data " + dirName + "/" + foundMatch.getName();
 				log.logp(Level.FINE, className, "findMatchingTestData", logMessage);
 				String tmStamp=foundMatch.getName().substring(0,foundMatch.getName().length()-12);  // Deduct "_Request.xml"
-	//			BOXMLDocument responseDoc=xmlSerializerService.readXMLDocument(new FileInputStream(new File(dirName,tmStamp+"_ResponseMultipart.xml")));		
-	//			DataObject response=responseDoc.getDataObject();	
 				File responseFile=new File(dirName,tmStamp+"_Response.xml");
 				if (!responseFile.exists()){
 					File exceptionFile=new File(dirName,tmStamp+"_Exception.xml");
@@ -436,7 +354,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					FileInputStream fis=new FileInputStream(responseFile);
 					BOXMLDocument responseObjectDoc=xmlSerializerService.readXMLDocument(fis);
 					fis.close();
-					//String responseFeatureName=responseObjectDoc.getRootElementName();
 					
 						Object responseObject=responseObjectDoc.getDataObject();
 					if ((!(responseObject instanceof ManagedMultipartImpl)) || responseObject==null){
@@ -447,23 +364,11 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						response=(ManagedMultipartImpl)responseObject;
 					}
 				}
-				//operationType.getOutputType()
-				//ManagedMultipartFactoryImpl mmfi=new ManagedMultipartFactoryImpl();
-				//MultipartFactory.eINSTANCE.
-				//TypeHelper th;
-				//mmfi.create(TypeHelper )
 					
-				//ManagedMultipartImpl response=(ManagedMultipartImpl) MultipartFactory.eINSTANCE.createFromString((EDataType) operationType.getOutputType(),"");//boFactory.createByClass(ManagedMultipartImpl.class);  //("http://stelvio-commons-lib/no/stelvio/common/systemavailability", "SystemAvailabilityRecord");boFactory.create("http://stelvio-commons-lib/no/stelvio/common/systemavailability", "SystemAvailabilityRecord");
-	
-				//response.//set(0,responseObject);
-				//f.setName(responseFeatureName);
-	
-				
 				return response;	
 			} catch (IOException e) {
 				throw new RuntimeException("Error while finding test data",e);
-			}
-					
+			}				
 	}
 	
 	
@@ -507,8 +412,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					}
 					if (((EObjectContainmentEList)criteriaSubObject).basicList().size()!=0) //The list in criteria has size 0 if nothing is provided. This should match always.
 					{
-//						if (((EObjectContainmentEList)testSubObject).basicList().size() != ((EObjectContainmentEList)criteriaSubObject).basicList().size())
-//							return false;
 						Iterator criteriaIterator=((EObjectContainmentEList)criteriaSubObject).basicList().iterator();						
 						while (criteriaIterator.hasNext()){
 						    boolean foundmatchingelement=false;
@@ -532,11 +435,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		}
 		return true;		
 	}
-	
 
-	
-	
-	
 	/**
 	 * @param testSubObject
 	 * @param criteriaSubObject
@@ -548,8 +447,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				return false;					
 		}else 
 		if (criteriaSubObject instanceof Integer && ((Integer)criteriaSubObject).intValue()==0){ 
-								//When criteria of these types are removed,
-								//they are still read up as 0 values (or false). This is a hack so that criteria value 0 matches everything
+			//When criteria of these types are removed,
+			//they are still read up as 0 values (or false). This is a hack so that criteria value 0 matches everything
 			return true;			
 		}else
 		if (criteriaSubObject instanceof Long && ((Long)criteriaSubObject).longValue()==0){
@@ -589,20 +488,14 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 * @see com.ibm.websphere.sca.ServiceImplAsync#invokeAsync(com.ibm.websphere.sca.scdl.OperationType, java.lang.Object, com.ibm.websphere.sca.ServiceCallback, com.ibm.websphere.sca.Ticket)
 	 */
 	public void invokeAsync(OperationType arg0, Object arg1, ServiceCallback arg2, Ticket arg3) {
-		throw new RuntimeException("Dont know async yet.");
-		/*if (new Random().nextFloat()>.5){
-			throw new ServiceBusinessException("Sorry dude, System is now unavailable!");
-		}	    
-		partnerService.invokeAsync(arg0,arg1);*/
-		
+		throw new RuntimeException("Dont know async yet.");		
 	}
 
 	/* (non-Javadoc)
 	 * @see com.ibm.websphere.sca.ServiceCallback#onInvokeResponse(com.ibm.websphere.sca.Ticket, java.lang.Object, java.lang.Exception)
 	 */
 	public void onInvokeResponse(Ticket arg0, Object arg1, Exception arg2) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 }
