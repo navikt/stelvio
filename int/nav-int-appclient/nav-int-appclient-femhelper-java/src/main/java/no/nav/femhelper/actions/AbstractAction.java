@@ -32,6 +32,7 @@ import no.nav.femhelper.filewriters.LogFileWriter;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
+import utils.PasswordEncodeDelegate;
 
 import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.websphere.management.AdminClient;
@@ -103,7 +104,13 @@ public abstract class AbstractAction {
 		// to the AdminClientFactory.
 		PropertyMapper mapper = new PropertyMapper();
 		Properties mappedProperties = mapper.getMappedProperties(properties);
-
+		
+		// Decode password
+		String encodedPass = mappedProperties.getProperty(Constants.password);
+		PasswordEncodeDelegate encode = new PasswordEncodeDelegate();
+		String decodedPassword = encode.getDecryptedPassword(encodedPass);
+		mappedProperties.setProperty(Constants.password, decodedPassword);
+		
 		adminClient = AdminClientFactory.createAdminClient(mappedProperties);
 
 		// Testing connection with query to FailedEventManager
