@@ -33,7 +33,7 @@
 	</build>
 
 	<modules>
-		<module>../BPCHelperAppClient</module>
-		<module>../BPCHelperAppClientEAR</module>
+		<module>../nav-int-appclient-bpchelper-java</module>
+		<module>../nav-int-appclient-bpchelper-ear</module>
 	</modules>
 </project>
