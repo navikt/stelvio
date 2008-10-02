@@ -45,12 +45,12 @@ public class PropertyMapper {
 
 		Properties result = new Properties();
 
-		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_HOST))) {
-			result.setProperty(AdminClient.CONNECTOR_HOST, src.getProperty(Constants.CONNECTOR_HOST));
+		if (!StringUtils.isEmpty(src.getProperty(Constants.BootstrapHost))) {
+			result.setProperty(AdminClient.CONNECTOR_HOST, src.getProperty(Constants.BootstrapHost));
 		}
 
-		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_PORT))) {
-			result.setProperty(AdminClient.CONNECTOR_PORT, src.getProperty(Constants.CONNECTOR_PORT));
+		if (!StringUtils.isEmpty(src.getProperty(Constants.BootstrapPort))) {
+			result.setProperty(AdminClient.CONNECTOR_PORT, src.getProperty(Constants.BootstrapPort));
 		}
 
 		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_TYPE))) {
@@ -61,12 +61,12 @@ public class PropertyMapper {
 			result.setProperty(AdminClient.CONNECTOR_SECURITY_ENABLED, src.getProperty(Constants.CONNECTOR_SECURITY_ENABLED));
 		}
 
-		if (!StringUtils.isEmpty(src.getProperty(Constants.USERNAME))) {
-			result.setProperty(AdminClient.USERNAME, src.getProperty(Constants.USERNAME));
+		if (!StringUtils.isEmpty(src.getProperty(Constants.username))) {
+			result.setProperty(AdminClient.USERNAME, src.getProperty(Constants.username));
 		}
 
-		if (!StringUtils.isEmpty(src.getProperty(Constants.PASSWORD))) {
-			result.setProperty(AdminClient.PASSWORD, src.getProperty(Constants.PASSWORD));
+		if (!StringUtils.isEmpty(src.getProperty(Constants.password))) {
+			result.setProperty(AdminClient.PASSWORD, src.getProperty(Constants.password));
 		}
 
 		if (!"RMI".equals(src.getProperty(Constants.CONNECTOR_TYPE))) {

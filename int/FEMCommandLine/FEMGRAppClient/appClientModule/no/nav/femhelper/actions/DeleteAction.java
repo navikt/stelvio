@@ -48,15 +48,13 @@ public class DeleteAction extends AbstractAction {
 		// collect events before delete
 		ArrayList <String> events = collectEvents(arguments, paging, totalevents, maxresultset);
 		
-		// for test purpose to simulate failure from FEM
-		/*
-		try {
-			LOGGER.log(Level.WARNING, "SLLLLLLLLLLLLLLEEEEEEEPING!!!!");
-			Thread.sleep(30000);
-		} catch (InterruptedException ie) {
-			ie.printStackTrace();
+		if (!cl.hasOption(Constants.noStop)) {
+			String q = "Do you want to continue and delete " + events.size() + " events?";
+			boolean result = askYesNo(q);
+			if (!result) {
+				return null;
+			}
 		}
-		*/
 		
 		if (events.size() > 0) {
 			logger.log(Level.INFO,"Discarding #" + events.size() + " events...please wait!");

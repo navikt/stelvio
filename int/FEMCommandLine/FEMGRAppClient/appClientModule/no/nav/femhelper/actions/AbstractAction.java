@@ -193,11 +193,11 @@ public abstract class AbstractAction {
 		logger.log(Level.FINE, Constants.METHOD_ENTER + "logProperties");
 
 		logger.log(Level.FINE, "Initializing admin client with the following properties:");
-		logger.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(Constants.CONNECTOR_HOST));
-		logger.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(Constants.CONNECTOR_PORT));
+		logger.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(Constants.BootstrapHost));
+		logger.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(Constants.BootstrapPort));
 		logger.log(Level.FINE, "CONNECTOR_TYPE: " + properties.getProperty(Constants.CONNECTOR_TYPE));
 		logger.log(Level.FINE, "CONNECTOR_SECURITY_ENABLED: " + properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED));
-		logger.log(Level.FINE, "USERNAME: " + properties.getProperty(Constants.USERNAME));
+		logger.log(Level.FINE, "USERNAME: " + properties.getProperty(Constants.username));
 		logger.log(Level.FINE, "PASSWORD: ****");
 		if (!"".equals(properties.getProperty(Constants.SSL_KEYSTORE))) {
 			logger.log(Level.FINE, Constants.SSL_KEYSTORE + ": " + properties.getProperty(Constants.SSL_KEYSTORE));
@@ -300,8 +300,8 @@ public abstract class AbstractAction {
 
 				// check id from last loop and skip if we have a double entry because on milli can include the last id (better
 				// than don't select events)
-				if (!lastEventId.equals(currEventId)) {
-					isEventApplicable(failedEvent, agruments);
+				if (!lastEventId.equals(currEventId) && isEventApplicable(failedEvent, agruments)) {
+					events.add(currEventId);
 				} else {
 					logger.log(Level.FINE, "Collect events detect on result set #" + pagecount + " that the event with the id "
 							+ currEventId + " is allready collected!");
@@ -350,8 +350,7 @@ public abstract class AbstractAction {
 		match = match && validate(event.getSourceModuleName(), arguments.get(Constants.sourceModule)) ? true : false;
 		match = match && validate(event.getSourceComponentName(), arguments.get(Constants.sourceComponent)) ? true : false;
 		match = match && validate(event.getDestinationModuleName(), arguments.get(Constants.destinationModule)) ? true : false;
-		match = match && validate(event.getDestinationComponentName(), arguments.get(Constants.destinationComponent)) ? true
-				: false;
+		match = match && validate(event.getDestinationComponentName(), arguments.get(Constants.destinationComponent)) ? true : false;
 		match = match && validate(event.getFailureMessage(), arguments.get(Constants.failureMessage)) ? true : false;
 
 		String timeFrame = arguments.get(Constants.timeFrame);
@@ -366,8 +365,7 @@ public abstract class AbstractAction {
 				Date toDate = sdf.parse(dates[1]);
 				Date failureDate = event.getFailureDateTime();
 
-				match = match && null != failureDate && failureDate.after(fromDate) && failureDate.before(toDate) ? true
-						: false;
+				match = match && null != failureDate && failureDate.after(fromDate) && failureDate.before(toDate) ? true : false;
 
 			} catch (ParseException e) {
 				// Will never occur here.
@@ -404,9 +402,10 @@ public abstract class AbstractAction {
 			System.out.println(question + "(y/n)");
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			answer = in.readLine();
-			while (!answer.equals("y") || !answer.equals("n")) {
+			while (!answer.equals("y") && !answer.equals("n")) {
 				System.out.println(answer + " is not a valid option");
 				System.out.println(question + "(y/n)");
+				answer = in.readLine();
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);

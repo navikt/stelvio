@@ -44,16 +44,18 @@ public class ReportAction extends AbstractAction {
 		ArrayList <String> events = new ArrayList<String>();
 		events = collectEvents(arguments, paging, totalevents, maxresultset);
 		
-//		if (!cl.hasOption(Constants.noStop)) {
-//			String q = "Do you want to continue and write " + events.size() + " events?";
-//			boolean result = askYesNo(q);
-//			if (!result) {
-//				return null;
-//			}
-//		}
+		if (!cl.hasOption(Constants.noStop)) {
+			String q = "Do you want to continue and write " + totalevents + " events?";
+			boolean result = askYesNo(q);
+			if (!result) {
+				return null;
+			}
+		}
 		
+		logFileWriter.log("Starting to report " + events.size() + " events");
+		logger.log(Level.INFO,"Reporting of #" + events.size() + " events in progress...!");
 		for (int i = 0; i < events.size(); i++) {
-		logger.log(Level.INFO,"Reporting events (" + (i+1) + " of " + events.size() + "). Please wait!");
+			logger.log(Level.FINE,"Reporting events (" + (i+1) + " of " + events.size() + "). Please wait!");
 			
 			// Write the report
 			String femQuery = Queries.QUERY_EVENT_WITH_PARAMETERS;
@@ -63,6 +65,7 @@ public class ReportAction extends AbstractAction {
 			fileWriter.writeCSVEvent(failedEventWithParameters, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
 		}
 		
+		logFileWriter.log("Reported " + events.size() + " events");
 		logger.log(Level.INFO,"Reporting of #" + events.size() + " events...done!");
 		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		

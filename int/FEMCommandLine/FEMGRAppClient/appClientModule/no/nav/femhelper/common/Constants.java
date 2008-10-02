@@ -27,16 +27,16 @@ public class Constants {
 	public static final String METHOD_ERROR = "ERROR - ";
 	
 	/**
-	 * Public constant to represent the 'CONNECTOR_HOST' string from
+	 * Public constant to represent the 'BootstrapHost' string from
 	 * the configuration file and properties related to that
 	 */
-	public static final String CONNECTOR_HOST = "CONNECTOR_HOST";
+	public static final String BootstrapHost = "BootstrapHost";
 	
 	/**
-	 * Public constant to represent the 'CONNECTOR_PORT' string from
+	 * Public constant to represent the 'BootstrapPort' string from
 	 * the configuration file and properties related to that
 	 */
-	public static final String CONNECTOR_PORT = "CONNECTOR_PORT"; 
+	public static final String BootstrapPort = "BootstrapPort"; 
 	
 	/**
 	 * Public constant to represent the 'CONNECTOR_TYPE' string from
@@ -55,13 +55,13 @@ public class Constants {
 	 * Public constant to represent the 'USERNAME' string from
 	 * the configuration file and properties related to that
 	 */
-	public static final String USERNAME = "USERNAME";
+	public static final String username = "username";
 		
 	/**
 	 * Public constant to represent the 'PASSWORD' string from
 	 * the configuration file and properties related to that
 	 */
-	public static final String PASSWORD = "PASSWORD";
+	public static final String password = "password";
 	
 	/**
 	 * Public constant to represent the 'SSL_KEYSTORE' string from

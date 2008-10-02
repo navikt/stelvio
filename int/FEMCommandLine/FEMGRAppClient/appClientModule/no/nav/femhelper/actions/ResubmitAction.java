@@ -48,6 +48,15 @@ public class ResubmitAction extends AbstractAction {
 		logFileWriter.log("Starting to collect events");
 		
 		ArrayList <String> events = collectEvents(arguments, paging, totalevents, maxresultset);
+		
+		if (!cl.hasOption(Constants.noStop)) {
+			String q = "Do you want to continue and resubmit " + events.size() + " events?";
+			boolean result = askYesNo(q);
+			if (!result) {
+				return null;
+			}
+		}
+		
 		String opResubmit = Queries.QUERY_RESUBMIT_FAILED_EVENTS;
 		
 		logFileWriter.log("Collected " + events.size() + " events");
