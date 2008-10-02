@@ -3036,24 +3036,24 @@ int/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.validation.prefs 
 int/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClientEAR/pom.xml -text svneol=unset#text/plain
 int/FEMCommandLine/nav-int-appclient-fem-pom/pom.xml -text
-int/nav-int-appclient/BPCHelperAppClientEAR/.project -text
-int/nav-int-appclient/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.component -text
-int/nav-int-appclient/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
-int/nav-int-appclient/BPCHelperAppClientEAR/META-INF/application.xml -text
-int/nav-int-appclient/BPCHelperAppClientEAR/bfmclientmodel.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/bpcclientcore.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/bpe137650.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/bpeapi.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/commons-cli-1.1.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/commons-collections-3.2.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/commons-lang-2.1.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/htmclientmodel.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/pom.xml -text svneol=unset#text/plain
-int/nav-int-appclient/BPCHelperAppClientEAR/slf4j-api-1.5.2.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/slf4j-jdk14-1.5.2.jar -text
-int/nav-int-appclient/BPCHelperAppClientEAR/utils-1.07.00.jar -text
 int/nav-int-appclient/nav-int-appclient-bpc-pom/.project -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-bpc-pom/pom.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/.project -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/.settings/org.eclipse.wst.common.component -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/.settings/org.eclipse.wst.common.project.facet.core.xml -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/META-INF/application.xml -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/bfmclientmodel.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/bpcclientcore.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/bpe137650.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/bpeapi.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/commons-cli-1.1.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/commons-collections-3.2.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/commons-lang-2.1.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/htmclientmodel.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/pom.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/slf4j-api-1.5.2.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/slf4j-jdk14-1.5.2.jar -text
+int/nav-int-appclient/nav-int-appclient-bpchelper-ear/utils-1.07.00.jar -text
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/.classpath -text
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/.project -text
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/.settings/org.eclipse.jdt.core.prefs -text
