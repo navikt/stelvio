@@ -7,9 +7,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 
+import no.nav.appclient.util.PropertyMapper;
 import no.nav.bpchelper.cmdoptions.ActionOptionValues;
 import no.nav.bpchelper.cmdoptions.OptionOpts;
-import no.nav.bpchelper.utils.PropertyMapper;
 
 import org.apache.commons.cli.CommandLine;
 

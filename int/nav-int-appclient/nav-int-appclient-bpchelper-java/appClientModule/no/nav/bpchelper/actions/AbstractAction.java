@@ -3,7 +3,7 @@ package no.nav.bpchelper.actions;
 import java.io.File;
 import java.util.Properties;
 
-import no.nav.bpchelper.adapters.BFMConnectionAdapter;
+import no.nav.appclient.adapter.BFMConnectionAdapter;
 import no.nav.bpchelper.query.Criteria;
 
 import org.slf4j.Logger;
