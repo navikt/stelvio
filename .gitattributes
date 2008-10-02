@@ -3245,26 +3245,6 @@ int/stelvio-sibus-mediation/MediationEAR/.runtime -text
 int/stelvio-sibus-mediation/MediationEAR/META-INF/.modulemaps -text
 int/stelvio-sibus-mediation/MediationEAR/META-INF/MANIFEST.MF -text
 int/stelvio-sibus-mediation/MediationEAR/META-INF/application.xml -text
-int/trunk/nav-int-appclient-femhelper/.project -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/.project -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.component -text
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/META-INF/application.xml -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/commons-cli-1.1.jar -text
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/commons-collections-3.2.jar -text
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/commons-lang-2.1.jar -text
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-ear/pom.xml -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/.classpath -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/.project -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/.settings/org.eclipse.wst.common.component -text
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/pom.xml -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/src/main/java/EventClient.java -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/src/main/java/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/src/main/java/META-INF/application-client.xml -text svneol=unset#text/plain
-int/trunk/nav-int-appclient-femhelper/nav-int-appclient-femhelper-java/src/main/java/Main.java -text svneol=unset#text/plain
 int/workspaces/nav-int-stelvio-workspaces/nav-steilvio-ceilogger-1.0.2.psf -text
 int/workspaces/nav-int-stelvio-workspaces/nav-stelvio-ceilogger.psf -text
 maven-jaxhandler-plugin/pom.xml -text
