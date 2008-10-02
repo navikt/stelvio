@@ -2889,43 +2889,6 @@ incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/META-INF/applicatio
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
-int/BPCCommandLine/BPCHelperAppClient/.classpath -text
-int/BPCCommandLine/BPCHelperAppClient/.project -text
-int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.jdt.core.prefs -text
-int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.jdt.ui.prefs -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
-int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.wst.common.component -text
-int/BPCCommandLine/BPCHelperAppClient/.settings/org.eclipse.wst.common.project.facet.core.xml -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/MANIFEST.MF -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/application-client.xml -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/META-INF/ibm-application-client-bnd.xmi -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/Main.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/ReturnCodes.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/AbstractAction.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/Action.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ActionFactory.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/CriteriaBuilder.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ProcessInstancePropertyAccessor.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ReportAction.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/StatusAction.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/TerminateAction.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/BFMConnectionAdapter.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/BusinessFlowManagerServiceAdapter.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/SecuredBFMConnection.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/ActionOptionValues.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionOpts.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionsBuilder.java -text
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Criteria.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Criterion.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/LogicalExpression.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Restrictions.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/SimpleExpression.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/ConnectorProperties.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/LogStrings.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/PropertyMapper.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/ReflectionUtils.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/appClientModule/no/nav/bpchelper/writers/ReportWriter.java -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClient/pom.xml -text svneol=unset#text/plain
 int/BPCCommandLine/BPCHelperAppClientEAR/.project -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.component -text
 int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
@@ -3091,6 +3054,43 @@ int/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.validation.prefs 
 int/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset#text/plain
 int/FEMCommandLine/FEMGRAppClientEAR/pom.xml -text svneol=unset#text/plain
 int/FEMCommandLine/nav-int-appclient-fem-pom/pom.xml -text
+int/nav-int-appclient/BPCHelperAppClient/.classpath -text
+int/nav-int-appclient/BPCHelperAppClient/.project -text
+int/nav-int-appclient/BPCHelperAppClient/.settings/org.eclipse.jdt.core.prefs -text
+int/nav-int-appclient/BPCHelperAppClient/.settings/org.eclipse.jdt.ui.prefs -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
+int/nav-int-appclient/BPCHelperAppClient/.settings/org.eclipse.wst.common.component -text
+int/nav-int-appclient/BPCHelperAppClient/.settings/org.eclipse.wst.common.project.facet.core.xml -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/META-INF/MANIFEST.MF -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/META-INF/application-client.xml -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/META-INF/ibm-application-client-bnd.xmi -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/Main.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/ReturnCodes.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/AbstractAction.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/Action.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ActionFactory.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/CriteriaBuilder.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ProcessInstancePropertyAccessor.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/ReportAction.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/StatusAction.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/actions/TerminateAction.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/BFMConnectionAdapter.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/BusinessFlowManagerServiceAdapter.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/adapters/SecuredBFMConnection.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/ActionOptionValues.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionOpts.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/cmdoptions/OptionsBuilder.java -text
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Criteria.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Criterion.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/LogicalExpression.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/Restrictions.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/query/SimpleExpression.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/ConnectorProperties.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/LogStrings.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/PropertyMapper.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/ReflectionUtils.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/writers/ReportWriter.java -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClient/pom.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-fem-pom/pom.xml -text
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/.project -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.component -text
