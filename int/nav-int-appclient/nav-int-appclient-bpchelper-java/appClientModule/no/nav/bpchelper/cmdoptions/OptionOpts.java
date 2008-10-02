@@ -1,21 +1,21 @@
 package no.nav.bpchelper.cmdoptions;
 
 public interface OptionOpts {
-    String HELP = "help";
+	String HELP = "help";
 
-    String ACTION = "action";
-    
-    String REPORT_DIR = "reportDirectory";
-    
-    String REPORT_FILENAME = "reportFilename";
+	String ACTION = "action";
 
-    String FILTER_STARTED_BEFORE = "FstartedBefore";
+	String REPORT_DIR = "reportDirectory";
 
-    String FILTER_STARTED_AFTER = "FstartedAfter";
+	String REPORT_FILENAME = "reportFilename";
 
-    String FILTER_PROCESS_TEMPLATE_NAME = "FprocessTemplateName";
+	String FILTER_STARTED_BEFORE = "FstartedBefore";
 
-    String FILTER_ACTIVITY_NAME = "FactivityName";
-    
-    String CONFIG_FILE = "configFile";
+	String FILTER_STARTED_AFTER = "FstartedAfter";
+
+	String FILTER_PROCESS_TEMPLATE_NAME = "FprocessTemplateName";
+
+	String FILTER_ACTIVITY_NAME = "FactivityName";
+
+	String CONFIG_FILE = "configFile";
 }

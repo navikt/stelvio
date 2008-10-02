@@ -31,7 +31,7 @@ public class ActionFactory {
 		}
 		PropertyMapper mapper = new PropertyMapper();
 		Properties properties = mapper.getMappedProperties(connectProps);
-		
+
 		String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
 		AbstractAction action = ActionOptionValues.valueOf(actionValue).getAction(properties);
 

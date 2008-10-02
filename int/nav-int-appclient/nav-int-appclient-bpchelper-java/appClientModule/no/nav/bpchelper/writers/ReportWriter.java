@@ -11,51 +11,51 @@ import org.slf4j.LoggerFactory;
 import com.Ostermiller.util.CSVPrinter;
 
 public class ReportWriter {
-    /**
-         * Delimiter to use in CSV file
-         */
-    private static final char DELIMITER = ';';
+	/**
+	 * Delimiter to use in CSV file
+	 */
+	private static final char DELIMITER = ';';
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private CSVPrinter csvPrinter;
+	private CSVPrinter csvPrinter;
 
-    public ReportWriter() {
-	this(createDefaultFile());
-    }
-
-    public ReportWriter(File file) {
-	try {
-	    this.csvPrinter = new CSVPrinter(new BufferedWriter(new FileWriter(file)));
-	    this.csvPrinter.changeDelimiter(DELIMITER);
-	} catch (Exception e) {
-	    throw new RuntimeException(e);
+	public ReportWriter() {
+		this(createDefaultFile());
 	}
-	logger.info("Writing report to file: " + file.getAbsolutePath());
-    }
 
-    private static File createDefaultFile() {
-	try {
-	    return File.createTempFile("report", ".csv");
-	} catch (Exception e) {
-	    throw new RuntimeException(e);
+	public ReportWriter(File file) {
+		try {
+			this.csvPrinter = new CSVPrinter(new BufferedWriter(new FileWriter(file)));
+			this.csvPrinter.changeDelimiter(DELIMITER);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		logger.info("Writing report to file: " + file.getAbsolutePath());
 	}
-    }
 
-    public void close() {
-	try {
-	    csvPrinter.close();
-	} catch (Exception e) {
-	    logger.warn("Error closing writer", e);
+	private static File createDefaultFile() {
+		try {
+			return File.createTempFile("report", ".csv");
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
-	csvPrinter = null;
-    }
 
-    public void writeln(Collection<String> values) {
-	try {
-	    csvPrinter.writeln(values.toArray(new String[values.size()]));
-	} catch (Exception e) {
-	    throw new RuntimeException(e);
+	public void close() {
+		try {
+			csvPrinter.close();
+		} catch (Exception e) {
+			logger.warn("Error closing writer", e);
+		}
+		csvPrinter = null;
 	}
-    }
+
+	public void writeln(Collection<String> values) {
+		try {
+			csvPrinter.writeln(values.toArray(new String[values.size()]));
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

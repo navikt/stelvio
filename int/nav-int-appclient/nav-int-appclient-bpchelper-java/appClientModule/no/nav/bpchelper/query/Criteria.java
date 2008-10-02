@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Criteria {
-    private List<Criterion> criterions = new ArrayList<Criterion>();
+	private List<Criterion> criterions = new ArrayList<Criterion>();
 
-    public Criteria add(Criterion criterion) {
-	criterions.add(criterion);
-	return this;
-    }
-
-    public String toSqlString() {
-	StringBuilder sb = new StringBuilder();
-	for (Criterion criterion : criterions) {
-	    if (sb.length() > 0) {
-		sb.append(" AND ");
-	    }
-	    sb.append("(").append(criterion.toSqlString()).append(")");
+	public Criteria add(Criterion criterion) {
+		criterions.add(criterion);
+		return this;
 	}
-	return sb.toString();
-    }
+
+	public String toSqlString() {
+		StringBuilder sb = new StringBuilder();
+		for (Criterion criterion : criterions) {
+			if (sb.length() > 0) {
+				sb.append(" AND ");
+			}
+			sb.append("(").append(criterion.toSqlString()).append(")");
+		}
+		return sb.toString();
+	}
 }

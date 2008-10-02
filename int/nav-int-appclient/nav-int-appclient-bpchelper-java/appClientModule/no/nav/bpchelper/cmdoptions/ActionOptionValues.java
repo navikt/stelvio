@@ -8,29 +8,29 @@ import no.nav.bpchelper.actions.StatusAction;
 import no.nav.bpchelper.actions.TerminateAction;
 
 public enum ActionOptionValues {
-    STATUS {
-	@Override
-	public AbstractAction getAction(Properties properties) {
-	    return new StatusAction(properties);
-	}
+	STATUS {
+		@Override
+		public AbstractAction getAction(Properties properties) {
+			return new StatusAction(properties);
+		}
 
-    },
+	},
 
-    REPORT {
-	@Override
-	public AbstractAction getAction(Properties properties) {
-	    return new ReportAction(properties);
-	}
+	REPORT {
+		@Override
+		public AbstractAction getAction(Properties properties) {
+			return new ReportAction(properties);
+		}
 
-    },
-    
-    TERMINATE {
-	@Override
-	public AbstractAction getAction(Properties properties) {
-	    return new TerminateAction(properties);
-	}
+	},
 
-    };
+	TERMINATE {
+		@Override
+		public AbstractAction getAction(Properties properties) {
+			return new TerminateAction(properties);
+		}
 
-    public abstract AbstractAction getAction(Properties properties);
+	};
+
+	public abstract AbstractAction getAction(Properties properties);
 }
