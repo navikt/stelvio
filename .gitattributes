@@ -2889,22 +2889,6 @@ incubator/wid61-stelvio/stelvio-sibus-mediation/MediationEAR/META-INF/applicatio
 inf/was61/stelvio-securityextensions-java/.classpath -text
 inf/was61/stelvio-securityextensions-java/.project -text
 inf/was61/stelvio-securityextensions-java/src/no/stelvio/was61/securityextension/TAIPensjon.java -text
-int/BPCCommandLine/BPCHelperAppClientEAR/.project -text
-int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.component -text
-int/BPCCommandLine/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
-int/BPCCommandLine/BPCHelperAppClientEAR/META-INF/application.xml -text
-int/BPCCommandLine/BPCHelperAppClientEAR/bfmclientmodel.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/bpcclientcore.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/bpe137650.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/bpeapi.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/commons-cli-1.1.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/commons-collections-3.2.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/commons-lang-2.1.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/htmclientmodel.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/pom.xml -text svneol=unset#text/plain
-int/BPCCommandLine/BPCHelperAppClientEAR/slf4j-api-1.5.2.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/slf4j-jdk14-1.5.2.jar -text
-int/BPCCommandLine/BPCHelperAppClientEAR/utils-1.07.00.jar -text
 int/BPCCommandLine/nav-int-appclient-bpc-pom/.project -text svneol=unset#text/plain
 int/BPCCommandLine/nav-int-appclient-bpc-pom/pom.xml -text svneol=unset#text/plain
 int/CEILogger/CEIEventConsumer/.j2ee -text
@@ -3091,6 +3075,22 @@ int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/
 int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/utils/ReflectionUtils.java -text svneol=unset#text/plain
 int/nav-int-appclient/BPCHelperAppClient/appClientModule/no/nav/bpchelper/writers/ReportWriter.java -text svneol=unset#text/plain
 int/nav-int-appclient/BPCHelperAppClient/pom.xml -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClientEAR/.project -text
+int/nav-int-appclient/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.component -text
+int/nav-int-appclient/BPCHelperAppClientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
+int/nav-int-appclient/BPCHelperAppClientEAR/META-INF/application.xml -text
+int/nav-int-appclient/BPCHelperAppClientEAR/bfmclientmodel.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/bpcclientcore.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/bpe137650.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/bpeapi.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/commons-cli-1.1.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/commons-collections-3.2.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/commons-lang-2.1.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/htmclientmodel.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/pom.xml -text svneol=unset#text/plain
+int/nav-int-appclient/BPCHelperAppClientEAR/slf4j-api-1.5.2.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/slf4j-jdk14-1.5.2.jar -text
+int/nav-int-appclient/BPCHelperAppClientEAR/utils-1.07.00.jar -text
 int/nav-int-appclient/nav-int-appclient-fem-pom/pom.xml -text
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/.project -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.component -text
