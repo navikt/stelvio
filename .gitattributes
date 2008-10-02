@@ -3086,11 +3086,15 @@ int/nav-int-appclient/nav-int-appclient-bpchelper-java/pom.xml -text svneol=unse
 int/nav-int-appclient/nav-int-appclient-bpchelper-pom/.project -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-bpchelper-pom/pom.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/.classpath -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-common-java/.compatibility -text
 int/nav-int-appclient/nav-int-appclient-common-java/.externalToolBuilders/Maven_Ant_Builder.launch -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/.project -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-common-java/.settings/org.eclipse.wst.common.component -text
+int/nav-int-appclient/nav-int-appclient-common-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/maven-eclipse.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/pom.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/BFMConnectionAdapter.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/BusinessFlowManagerServiceAdapter.java -text
 int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/SecuredBFMConnection.java -text svneol=unset#text/plain
