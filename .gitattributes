@@ -3092,6 +3092,14 @@ int/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset
 int/FEMCommandLine/FEMGRAppClientEAR/pom.xml -text svneol=unset#text/plain
 int/FEMCommandLine/nav-int-appclient-fem-pom/pom.xml -text
 int/nav-int-appclient/nav-int-appclient-fem-pom/pom.xml -text
+int/nav-int-appclient/nav-int-appclient-femhelper-ear/.project -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.component -text
+int/nav-int-appclient/nav-int-appclient-femhelper-ear/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-femhelper-ear/META-INF/application.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-femhelper-ear/commons-cli-1.1.jar -text
+int/nav-int-appclient/nav-int-appclient-femhelper-ear/commons-collections-3.2.jar -text
+int/nav-int-appclient/nav-int-appclient-femhelper-ear/commons-lang-2.1.jar -text
+int/nav-int-appclient/nav-int-appclient-femhelper-ear/pom.xml -text svneol=unset#text/plain
 int/stelvio-commons-lib/.classpath -text svneol=unset#text/plain
 int/stelvio-commons-lib/.project -text svneol=unset#text/plain
 int/stelvio-commons-lib/.runtime -text
