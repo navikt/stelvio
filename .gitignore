@@ -72,8 +72,8 @@ dev/maven2/nav-deployment-code-plugin/target
 int/FEMCommandLine/FEMGRAppClient/target
 int/FEMCommandLine/FEMGRAppClientEAR/target
 int/FEMCommandLine/nav-int-appclient-fem-pom/.project
-int/nav-int-appclient/BPCHelperAppClient/target
 int/nav-int-appclient/BPCHelperAppClientEAR/target
+int/nav-int-appclient/nav-int-appclient-bpchelper-java/target
 int/nav-int-appclient/nav-int-appclient-fem-pom/.project
 int/stelvio-commons-lib/.settings
 maven-jaxhandler-plugin/.classpath
