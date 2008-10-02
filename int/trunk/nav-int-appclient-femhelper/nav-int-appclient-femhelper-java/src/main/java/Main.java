@@ -21,6 +21,9 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
+import org.apache.commons.lang.StringUtils;
+
+import com.ibm.ws.security.util.PropFilePasswordEncoder;
 
 import utils.ArgumentUtil;
 import utils.ArgumentValidator;
@@ -38,7 +41,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		logger.log(Level.INFO, "FEMGRAppClient for WPS 6.1 - Version 0.9");
-		
+		Properties props = System.getProperties();
 		
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
 		Options options = optionsBuilder.getOptions();
@@ -46,6 +49,7 @@ public class Main {
 		
 		try {
 			cl = new PosixParser().parse(options, args);
+			
 		} catch (ParseException parseEx) {
 			System.out.println("Incorrect arguments (listed below) - application will terminate.");
 			System.out.println(parseEx.getMessage());
@@ -72,10 +76,9 @@ public class Main {
 			System.exit(0);
 		} 
 		
-		String configFilePath = cl.getOptionValue(Constants.configFile);
-		File propertyFile = new File(configFilePath);
+		File propertyFile = new File(cl.getOptionValue(Constants.configFile));
 		if (!propertyFile.exists()) {
-			logger.log(Level.WARNING, Constants.METHOD_ERROR + "The property file does not exist (" + configFilePath + ")");
+			logger.log(Level.WARNING, Constants.METHOD_ERROR + "The property file does not exist (" + cl.getOptionValue(Constants.configFile) + ")");
 			System.exit(0);
 		}
 		
@@ -94,11 +97,17 @@ public class Main {
 		// this and simultainisly abort the program before this
 		// will occur.
 		Properties connectProps = new Properties();
-		connectProps.load(new FileInputStream(configFilePath));
+		connectProps.load(new FileInputStream(propertyFile));
 		
 		// Log warnings from property validation if any violations and exit
 		PropertyUtil propertyUtil = new PropertyUtil(); 
 		List validatedProperties = propertyUtil.validateProperties(connectProps);
+		
+		// Do XOR encryption of the password in present in the propfile
+//		if (!StringUtils.isEmpty(connectProps.getProperty(Constants.password))) {
+//			PropFilePasswordEncoder encoder = new PropFilePasswordEncoder();
+//			encoder.main(new String[] {cl.getOptionValue(Constants.configFile), Constants.password});
+//		}
 		
 		if (!validatedProperties.isEmpty()) {
 			for (Iterator propertyIter = validatedProperties.iterator(); propertyIter.hasNext();) {

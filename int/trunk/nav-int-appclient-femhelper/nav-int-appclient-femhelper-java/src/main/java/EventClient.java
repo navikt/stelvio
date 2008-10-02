@@ -563,11 +563,11 @@ public class EventClient {
 	 */
 	private void logProperties() {
 		LOGGER.log(Level.FINE, "Initializing admin client with the following properties:");
-		LOGGER.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(Constants.CONNECTOR_HOST));
-		LOGGER.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(Constants.CONNECTOR_PORT));
+		LOGGER.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(Constants.BootstrapHost));
+		LOGGER.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(Constants.BootstrapPort));
 		LOGGER.log(Level.FINE, "CONNECTOR_TYPE: " + properties.getProperty(Constants.CONNECTOR_TYPE));
 		LOGGER.log(Level.FINE, "CONNECTOR_SECURITY_ENABLED: " + properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED));
-		LOGGER.log(Level.FINE, "USERNAME: " + properties.getProperty(Constants.USERNAME));
+		LOGGER.log(Level.FINE, "USERNAME: " + properties.getProperty(Constants.username));
 		LOGGER.log(Level.FINE, "PASSWORD: ****");
 		if (!"".equals(properties.getProperty(Constants.SSL_KEYSTORE))) {
 			LOGGER.log(Level.FINE, Constants.SSL_KEYSTORE + ": " + properties.getProperty(Constants.SSL_KEYSTORE));
