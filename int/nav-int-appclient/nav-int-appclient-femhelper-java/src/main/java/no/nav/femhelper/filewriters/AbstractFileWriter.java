@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.appclient.util.Constants;
 
 public class AbstractFileWriter {
 

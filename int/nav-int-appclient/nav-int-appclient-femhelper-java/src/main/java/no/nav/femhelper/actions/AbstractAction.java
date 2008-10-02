@@ -23,7 +23,8 @@ import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import javax.management.ReflectionException;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.appclient.util.Constants;
+import no.nav.appclient.util.PropertyMapper;
 import no.nav.femhelper.common.Queries;
 import no.nav.femhelper.filewriters.EventFileWriter;
 import no.nav.femhelper.filewriters.LogFileWriter;
@@ -31,7 +32,6 @@ import no.nav.femhelper.filewriters.LogFileWriter;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
-import utils.PropertyMapper;
 
 import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.websphere.management.AdminClient;

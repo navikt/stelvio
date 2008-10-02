@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.appclient.util.Constants;
 
 import org.apache.commons.lang.StringUtils;
 

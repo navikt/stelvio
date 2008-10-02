@@ -2,7 +2,7 @@ package no.nav.femhelper.actions;
 
 import java.util.Properties;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.appclient.util.Constants;
 
 
 public class ActionFactory {

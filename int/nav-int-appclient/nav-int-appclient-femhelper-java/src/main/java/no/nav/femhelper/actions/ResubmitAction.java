@@ -14,7 +14,7 @@ import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.appclient.util.Constants;
 import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;

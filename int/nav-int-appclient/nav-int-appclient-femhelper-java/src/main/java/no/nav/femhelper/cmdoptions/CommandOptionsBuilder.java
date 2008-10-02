@@ -3,7 +3,7 @@ package no.nav.femhelper.cmdoptions;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.appclient.util.Constants;
 import no.nav.femhelper.filewriters.AbstractFileWriter;
 
 import org.apache.commons.cli.Option;

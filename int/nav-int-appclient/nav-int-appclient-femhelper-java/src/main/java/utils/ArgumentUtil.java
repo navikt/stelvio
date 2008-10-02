@@ -3,7 +3,7 @@ package utils;
 import java.util.HashMap;
 import java.util.Map;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.appclient.util.Constants;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;

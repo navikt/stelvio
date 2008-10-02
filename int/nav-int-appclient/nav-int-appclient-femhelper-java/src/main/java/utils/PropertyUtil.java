@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.appclient.util.Constants;
 
 /**
  * Class to perform utility operations in connection with properties
