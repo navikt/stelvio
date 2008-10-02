@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 
@@ -48,6 +50,10 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	
 	static Properties unavailableExceptionProperties=null;
 	
+	private final static String className = SystemAvailabilityBaseComponent.class.getName();
+
+	private final Logger log = Logger.getLogger(className);
+	
 	public SystemAvailabilityBaseComponent(){
 		
 		boFactory = (com.ibm.websphere.bo.BOFactory)ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
@@ -79,7 +85,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						InputStream propertyFile = this.getClass().getResourceAsStream("SystemUnavailableExceptionList.properties");
 						unavailableExceptionProperties.load(propertyFile);
 					} catch (Exception e) {
-						System.err.println(componentName+ ":Unable to read SystemUnavailableExceptionList.properties from classpath. Will continue with no automatic resubmit flagging for this component");						
+						String logMessage = componentName + ": Unable to read SystemUnavailableExceptionList.properties from classpath. Will continue with no automatic resubmit flagging for this component";
+						log.logp(Level.WARNING, className, "ServiceAvailabilityBaseComponent", logMessage);
 					}
 					
 				}
@@ -104,7 +111,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			try{
 				availRec=new SystemAvailabilityStorage().calculateOperationAvailability(systemName, arg0.getName());
 			}catch(Throwable t){
-				System.err.println("AvailabilityCheck: got exception "+t.getMessage()+". Make sure that the stelvio-common-lib is available, and that the version of the StelvioSystemAvailabilityFramework config files matches the stelvio-lib version. Now disabling system availability check...");
+				String logMessage = "AvailabilityCheck: got exception " + t.getMessage() + ". Make sure that the stelvio-commons-lib is available, and that the version of the StelvioSystemAvailabilityFramework config files matches the stelvio-lib version. Now disabling system availability check...";
+				log.logp(Level.WARNING, className, "getMyService", logMessage);				
 				interceptorEnabled=false;
 			}
 			if (availRec != null){
@@ -160,7 +168,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 							return ret;
 							
 						}
-						System.out.println("Found prerecorded matching stub data for "+systemName+"."+arg0.getName()+". Ignoring.");
+						String logMessage = "Found prerecorded matching stub data for " + systemName + "." + arg0.getName() + ". Ignoring.";
+						log.logp(Level.FINE, className, "invoke", logMessage);
 						return partnerService.invoke(arg0,arg1);
 					}				
 				}
@@ -265,7 +274,7 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 //		try {
 //			//BOXMLDocument doc=xmlSerializerService.createXMLDocument(input,null,null);
 //			long tmstamp=System.currentTimeMillis();
-//			System.out.println("Recording stubdata "+tmstamp);
+//			log.logp(Level.FINE, className, "recordStubData", "Recording stubdata " + tmstamp);
 //					
 //			String dirName = getDirectory(arg0);		
 //			
@@ -293,9 +302,9 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 //				xmlSerializerService.writeDataObject(responseObject,"http://no.stelvio.stubdata/",responseObjectName,responseFile);
 //				responseFile.close();
 //			 }
-//			
-//			System.out.println("Recorded stubdata "+dirName+"/Stub_"+tmstamp);
-//			requestfile.close();
+//           String logMessage = "Recorded stubdata " + dirName + "/Stub_" + tmstamp;
+//			 log.logp(Level.FINE, className, "recordStubData", logMessage);
+//			 requestfile.close();
 //			
 //		} catch (FileNotFoundException e) {
 //			// TODO Auto-generated catch block
@@ -346,8 +355,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			        pw.close();
 			    }
 		}
-		System.out.println("Recorded stubdata "+dirName+"/Stub_"+requestID+"_"+fileSuffix+".xml");
-		
+		String logMessage = "Recorded stubdata " + dirName + "/Stub_" + requestID + "_" + fileSuffix + ".xml";
+		log.logp(Level.FINE, className, "storeObjectOrPrimitive", logMessage);
 		objectFile.close();
 		
 	}
@@ -398,10 +407,11 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					}
 				}
 				if (foundMatch==null){
-					throw new RuntimeException("No matching stub found for system "+systemName+", operation "+operationType.getName()+" in path "+dirName);
+					throw new RuntimeException("No matching stub found for system " + systemName + ", operation " + operationType.getName() + " in path " + dirName);
 				}
 				DataObject response=null;
-				System.out.println("Found matching test data "+dirName+"/"+foundMatch.getName());
+				String logMessage = "Found matching test data " + dirName + "/" + foundMatch.getName();
+				log.logp(Level.FINE, className, "findMatchingTestData", logMessage);
 				String tmStamp=foundMatch.getName().substring(0,foundMatch.getName().length()-12);  // Deduct "_Request.xml"
 	//			BOXMLDocument responseDoc=xmlSerializerService.readXMLDocument(new FileInputStream(new File(dirName,tmStamp+"_ResponseMultipart.xml")));		
 	//			DataObject response=responseDoc.getDataObject();	
