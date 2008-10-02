@@ -54,11 +54,13 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 
 	private final Logger log = Logger.getLogger(className);
 	
+	/**
+	 * 
+	 */
 	public SystemAvailabilityBaseComponent(){
 		
 		boFactory = (com.ibm.websphere.bo.BOFactory)ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
-	
-		
+
 		List references=ServiceManager.INSTANCE.getComponent().getReferences();
 		String partnerServiceName=null;
 		if (references.size()!=2)
@@ -88,11 +90,9 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						String logMessage = componentName + ": Unable to read SystemUnavailableExceptionList.properties from classpath. Will continue with no automatic resubmit flagging for this component";
 						log.logp(Level.WARNING, className, "ServiceAvailabilityBaseComponent", logMessage);
 					}
-					
 				}
 			}
 		}
-		
 	}
 	
 	protected final Object getMyService() {
@@ -118,7 +118,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 					if (availRec.unAvailable){			
 						throw new ServiceUnavailableException("The system "+systemName+" is currently not available. Reason: "+availRec.unavailableReason+".");// Expected timeframe for downtime: "+availRec.unavailableFrom.toString()+" to "+availRec.unavailableTo.toString());
 					}
-										
 					if (availRec.stubbed){
 						DataObject ret=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
 						return ret;
@@ -127,15 +126,12 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						DataObject preRecorded=null;
 						try {
 							preRecorded=findMatchingTestData(arg0,(ManagedMultipartImpl)arg1);
-						}catch(ServiceBusinessException sbe){
+						} catch(ServiceBusinessException sbe){
 						    //This is OK, as it is a prerecorded SBE
-						}
-						catch(ServiceRuntimeException sre){
+						} catch(ServiceRuntimeException sre){
 						    //This is also OK as it is a prerecorded SRE
-						}
-						catch(RuntimeException re){
-							//No prerecorded stub found
-													
+						} catch(RuntimeException re){
+							//No prerecorded stub found						
 						
 							long timestamp=System.currentTimeMillis();
 							String requestID=Long.toString(timestamp);
@@ -146,11 +142,10 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 							Object ret;
 							try{
 								ret=partnerService.invoke(arg0,arg1); 
-							}catch(ServiceBusinessException sbe){
+							} catch(ServiceBusinessException sbe){
 								recordStubDataException(arg0,requestID,(ManagedMultipartImpl)arg1,sbe);
 								throw sbe;
-							}
-							catch(ServiceRuntimeException sre){
+							} catch(ServiceRuntimeException sre){
 							    recordStubDataRuntimeException(arg0,requestID,(ManagedMultipartImpl)arg1,sre);
 								throw sre;
 							}
@@ -159,7 +154,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 							
 							recordStubData(arg0,requestID,(ManagedMultipartImpl)ret,responseObjectName,"Response");
 							return ret;
-							
 						}
 						String logMessage = "Found prerecorded matching stub data for " + systemName + "." + arg0.getName() + ". Ignoring.";
 						log.logp(Level.FINE, className, "invoke", logMessage);
@@ -168,10 +162,10 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				}
 			}
 		}
-		
+
 		try{
 			return partnerService.invoke(arg0,arg1);
-		}catch (RuntimeException re){
+		} catch (RuntimeException re){
 			boolean wrapInServiceUnavailableException=false;
 			String decidingToken="";
 			StringWriter sw=new StringWriter();
@@ -186,14 +180,13 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 						wrapInServiceUnavailableException=true;
 						decidingToken=token;
 					}
-				}else{
+				} else {
 					if (keyString.startsWith("EXCEPTION")){
 						String exceptionName=unavailableExceptionProperties.getProperty(keyString);
 						if (exceptionName.equals(re.getClass().getName())){
 							wrapInServiceUnavailableException=true;
 							decidingToken=exceptionName;
 						}
-						
 					}
 				}
 			}
@@ -204,8 +197,6 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 			else throw re;  //This was not an unavailable-exception, just rethrow the original exception.
 		}
 	}
-
-
 
 	/**
 	 * @param arg0
@@ -235,13 +226,11 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 */
 	private void recordStubData(OperationType arg0,String requestID,ManagedMultipartImpl impl, String requestObjectName, String fileSuffix) {		
 		try {
-			storeObjectOrPrimitive(arg0,impl,requestObjectName,requestID,fileSuffix);		
-			
+			storeObjectOrPrimitive(arg0,impl,requestObjectName,requestID,fileSuffix);	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	/**
@@ -270,12 +259,11 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				DataObject requestDataObject= (DataObject) ((ServiceBusinessException)object).getData();
 				BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");
 				xmlSerializerService.writeDataObject(requestDataObject,"http://no.stelvio.stubdata/",requestObjectName,objectFile);
-			}else 
-			    if (object instanceof ServiceRuntimeException){
-			        PrintWriter pw=new PrintWriter(objectFile);
-			        pw.println(((ServiceRuntimeException)object).getMessage());
-			        pw.close();
-			    }
+			} else if (object instanceof ServiceRuntimeException){
+				PrintWriter pw=new PrintWriter(objectFile);
+				pw.println(((ServiceRuntimeException)object).getMessage());
+				pw.close();
+			}
 		}
 		String logMessage = "Recorded stubdata " + dirName + "/Stub_" + requestID + "_" + fileSuffix + ".xml";
 		log.logp(Level.FINE, className, "storeObjectOrPrimitive", logMessage);
@@ -300,78 +288,75 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 * @return
 	 */
 	private DataObject findMatchingTestData(OperationType operationType, ManagedMultipartImpl request) throws ServiceBusinessException {	
-			BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");				
-			String dirName=getDirectory(operationType);
-			try {
-				File dir=new File(dirName);
-				File[] files=listFilesAlphabetical(dir);
-				File foundMatch=null;
-				for (int i=0;i<files.length;i++){
-					if (files[i].getName().endsWith("_Request.xml")){
+		BOXMLSerializer xmlSerializerService=(BOXMLSerializer)new ServiceManager().locateService("com/ibm/websphere/bo/BOXMLSerializer");				
+		String dirName=getDirectory(operationType);
+		try {
+			File dir=new File(dirName);
+			File[] files=listFilesAlphabetical(dir);
+			File foundMatch=null;
+			for (int i=0;i<files.length;i++){
+				if (files[i].getName().endsWith("_Request.xml")){
 						
-						FileInputStream fis=new FileInputStream(files[i]);
-						Object obj=readObjectOrPrimitive(fis);
-						fis.close();
+					FileInputStream fis=new FileInputStream(files[i]);
+					Object obj=readObjectOrPrimitive(fis);
+					fis.close();
 						
-						DataObject storedInput=(DataObject)obj;
-						if (request.get(0) instanceof DataObject){
-							if (match(storedInput,(DataObject)request.get(0))){
-								foundMatch=files[i];
-								break;
-							}
-						}else //Primitive interface
+					DataObject storedInput=(DataObject)obj;
+					if (request.get(0) instanceof DataObject){
+						if (match(storedInput,(DataObject)request.get(0))){
+							foundMatch=files[i];
+							break;
+						}
+					} else //Primitive interface
 						if (match(storedInput,request)){
 							foundMatch=files[i];
 							break;
 						}
-					}
 				}
-				if (foundMatch==null){
-					throw new RuntimeException("No matching stub found for system " + systemName + ", operation " + operationType.getName() + " in path " + dirName);
-				}
-				DataObject response=null;
-				String logMessage = "Found matching test data " + dirName + "/" + foundMatch.getName();
-				log.logp(Level.FINE, className, "findMatchingTestData", logMessage);
-				String tmStamp=foundMatch.getName().substring(0,foundMatch.getName().length()-12);  // Deduct "_Request.xml"
-				File responseFile=new File(dirName,tmStamp+"_Response.xml");
-				if (!responseFile.exists()){
-					File exceptionFile=new File(dirName,tmStamp+"_Exception.xml");
-					if (exceptionFile.exists()){
-						FileInputStream fis=new FileInputStream(exceptionFile);
-						BOXMLDocument responseObjectDoc=xmlSerializerService.readXMLDocument(fis);
-						fis.close();
-						DataObject responseObject=responseObjectDoc.getDataObject();
-						throw new ServiceBusinessException(responseObject);
-					}
-					File runtimeExceptionFile=new File(dirName,tmStamp+"_RuntimeException.xml");
-					if (runtimeExceptionFile.exists()){
-					    throw new ServiceRuntimeException("A ServiceRuntimeException was recorded, but unfortunately I'm not able yet to provide the original message. It can maybe be found in the recorded data, but I'm pretty dumb.");
-					}
-				}
-				
-				if (responseFile.exists())
-				{
-					FileInputStream fis=new FileInputStream(responseFile);
+			}
+			if (foundMatch==null){
+				throw new RuntimeException("No matching stub found for system " + systemName + ", operation " + operationType.getName() + " in path " + dirName);
+			}
+			DataObject response=null;
+			String logMessage = "Found matching test data " + dirName + "/" + foundMatch.getName();
+			log.logp(Level.FINE, className, "findMatchingTestData", logMessage);
+			String tmStamp=foundMatch.getName().substring(0,foundMatch.getName().length()-12);  // Deduct "_Request.xml"
+			File responseFile=new File(dirName,tmStamp+"_Response.xml");
+			if (!responseFile.exists()){
+				File exceptionFile=new File(dirName,tmStamp+"_Exception.xml");
+				if (exceptionFile.exists()){
+					FileInputStream fis=new FileInputStream(exceptionFile);
 					BOXMLDocument responseObjectDoc=xmlSerializerService.readXMLDocument(fis);
 					fis.close();
-					
-						Object responseObject=responseObjectDoc.getDataObject();
-					if ((!(responseObject instanceof ManagedMultipartImpl)) || responseObject==null){
-			         	BOFactory dataFactory = (BOFactory)ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
-			         	response=dataFactory.createByType(operationType.getOutputType());
-			         	response.set(0,responseObject);
-					}else{ //Assume MultipartImpl, because use of primitives in interface
-						response=(ManagedMultipartImpl)responseObject;
-					}
+					DataObject responseObject=responseObjectDoc.getDataObject();
+					throw new ServiceBusinessException(responseObject);
 				}
+				File runtimeExceptionFile=new File(dirName,tmStamp+"_RuntimeException.xml");
+				if (runtimeExceptionFile.exists()){
+					throw new ServiceRuntimeException("A ServiceRuntimeException was recorded, but unfortunately I'm not able yet to provide the original message. It can maybe be found in the recorded data, but I'm pretty dumb.");
+				}
+			}
+				
+			if (responseFile.exists()) {
+				FileInputStream fis=new FileInputStream(responseFile);
+				BOXMLDocument responseObjectDoc=xmlSerializerService.readXMLDocument(fis);
+				fis.close();
 					
-				return response;	
-			} catch (IOException e) {
-				throw new RuntimeException("Error while finding test data",e);
-			}				
+				Object responseObject=responseObjectDoc.getDataObject();
+				if ((!(responseObject instanceof ManagedMultipartImpl)) || responseObject==null){
+					BOFactory dataFactory = (BOFactory)ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
+					response=dataFactory.createByType(operationType.getOutputType());
+					response.set(0,responseObject);
+				} else{ //Assume MultipartImpl, because use of primitives in interface
+					response=(ManagedMultipartImpl)responseObject;
+				}
+			}
+			return response;
+		} catch (IOException e) {
+			throw new RuntimeException("Error while finding test data",e);
+		}
 	}
-	
-	
+
 	/**
 	 * @param fis
 	 * @return
@@ -382,12 +367,10 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 		try {
 			criteriaDoc = xmlSerializerService.readXMLDocument(fis);
 			return criteriaDoc.getDataObject();
-		} catch (IOException e) {
-		
+		} catch (IOException e) {	
 			e.printStackTrace();
 			return null;
 		}
-		
 	}
 
 	private boolean match(DataObject criteriaObject, DataObject testObject){		
@@ -428,10 +411,8 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 				}
 				else
 					if (!matchPrimitive(testSubObject,criteriaSubObject))
-						return false;			   			
-				
+						return false;
 			}
-			
 		}
 		return true;		
 	}
@@ -442,32 +423,32 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	 * @return
 	 */
 	private boolean matchPrimitive(Object testSubObject, Object criteriaSubObject) {
-		if (testSubObject instanceof Date && criteriaSubObject instanceof Date){
-			if (!(Math.abs(((Date)testSubObject).getTime() -((Date)criteriaSubObject).getTime())<1000*4000)) //Accept up to an hour difference, due to problems with time zone/DST and serialization'
-				return false;					
-		}else 
-		if (criteriaSubObject instanceof Integer && ((Integer)criteriaSubObject).intValue()==0){ 
-			//When criteria of these types are removed,
-			//they are still read up as 0 values (or false). This is a hack so that criteria value 0 matches everything
-			return true;			
-		}else
-		if (criteriaSubObject instanceof Long && ((Long)criteriaSubObject).longValue()==0){
+		if (testSubObject instanceof Date && criteriaSubObject instanceof Date) {
+			// Accept up to an hour difference, due to problems with time
+			// zone/DST and serialization'
+			if (!(Math.abs(((Date) testSubObject).getTime() - ((Date) criteriaSubObject).getTime()) < 1000 * 4000))
+				return false;
+		} else if (criteriaSubObject instanceof Integer && ((Integer) criteriaSubObject).intValue() == 0) {
+			// When criteria of these types are removed,
+			// they are still read up as 0 values (or false). This is a hack so
+			// that criteria value 0 matches everything
 			return true;
-		}else	
-		if (criteriaSubObject instanceof Short && ((Short)criteriaSubObject).shortValue()==0){
+		} else if (criteriaSubObject instanceof Long && ((Long) criteriaSubObject).longValue() == 0) {
 			return true;
-		}else
-		if (criteriaSubObject instanceof Boolean && ((Boolean)criteriaSubObject).booleanValue()==false){  //Special case: Booleans that are not included in the Stored Criteria are not Null, they are recorded as false. So we must accept this as always match until further notice
+		} else if (criteriaSubObject instanceof Short && ((Short) criteriaSubObject).shortValue() == 0) {
 			return true;
-		}else
-		if (criteriaSubObject instanceof Float && ((Float)criteriaSubObject).floatValue()==0){
+		} else if (criteriaSubObject instanceof Boolean && ((Boolean) criteriaSubObject).booleanValue() == false) {
+			// Special case: Booleans that are not included in the Stored
+			// Criteria are not Null, they are recorded as false. So we must
+			// accept this as always match until further notice
 			return true;
-		}else		
-		if (criteriaSubObject instanceof Double&& ((Double)criteriaSubObject).doubleValue()==0){
+		} else if (criteriaSubObject instanceof Float && ((Float) criteriaSubObject).floatValue() == 0) {
+			return true;
+		} else if (criteriaSubObject instanceof Double && ((Double) criteriaSubObject).doubleValue() == 0) {
 			return true;
 		}
-		if(!testSubObject.equals(criteriaSubObject)){									
-			return false;				
+		if (!testSubObject.equals(criteriaSubObject)) {
+			return false;
 		}
 		return true;
 	}
@@ -475,14 +456,15 @@ public class SystemAvailabilityBaseComponent implements com.ibm.websphere.sca.Se
 	public File[] listFilesAlphabetical(File dir) {
 		String[] ss = dir.list();
 		Arrays.sort(ss);
-		if (ss == null) return null;
+		if (ss == null)
+			return null;
 		int n = ss.length;
 		File[] fs = new File[n];
 		for (int i = 0; i < n; i++) {
-		    fs[i] = new File(dir.getPath(), ss[i]);
+			fs[i] = new File(dir.getPath(), ss[i]);
 		}
 		return fs;
-		}
+	}
 
 	/* (non-Javadoc)
 	 * @see com.ibm.websphere.sca.ServiceImplAsync#invokeAsync(com.ibm.websphere.sca.scdl.OperationType, java.lang.Object, com.ibm.websphere.sca.ServiceCallback, com.ibm.websphere.sca.Ticket)
