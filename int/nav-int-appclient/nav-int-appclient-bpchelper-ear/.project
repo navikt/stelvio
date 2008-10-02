@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>BPCHelperAppClientEAR</name>
+	<name>nav-int-appclient-bpchelper-ear</name>
 	<comment></comment>
 	<projects>
-		<project>BPCHelperAppClient</project>
+		<project>nav-int-appclient-bpchelper-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
