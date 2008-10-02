@@ -28,7 +28,7 @@ public class BusinessFlowManagerServiceAdapter {
 			}
 			return adaptee.query(selectClause, whereClause, orderByClause, threshold, TimeZone.getDefault());
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new ServiceException(e);
 		}
 	}
 
@@ -40,7 +40,7 @@ public class BusinessFlowManagerServiceAdapter {
 			}
 			return adaptee.queryAll(selectClause, whereClause, orderByClause, null, threshold, TimeZone.getDefault());
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			throw new ServiceException(e);
 		}
 	}
 

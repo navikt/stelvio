@@ -31,7 +31,7 @@ public class BFMConnectionAdapter {
 			try {
 				businessFlowManagerService = new BusinessFlowManagerServiceAdapter(adaptee.getBusinessFlowManagerService());
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				throw new ServiceException(e);
 			}
 		}
 		return businessFlowManagerService;

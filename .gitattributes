@@ -3094,6 +3094,7 @@ int/nav-int-appclient/nav-int-appclient-common-java/pom.xml -text svneol=unset#t
 int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/BFMConnectionAdapter.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/BusinessFlowManagerServiceAdapter.java -text
 int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/SecuredBFMConnection.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/ServiceException.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/util/Constants.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-common-java/src/main/java/no/nav/appclient/util/PropertyMapper.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/.project -text svneol=unset#text/plain
