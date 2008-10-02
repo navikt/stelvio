@@ -21,12 +21,10 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
-import org.apache.commons.lang.StringUtils;
-
-import com.ibm.ws.security.util.PropFilePasswordEncoder;
 
 import utils.ArgumentUtil;
 import utils.ArgumentValidator;
+import utils.PasswordEncodeDelegate;
 import utils.PropertyUtil;
 
 /**
@@ -41,8 +39,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		logger.log(Level.INFO, "FEMGRAppClient for WPS 6.1 - Version 0.9");
-		Properties props = System.getProperties();
-		
+
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
 		Options options = optionsBuilder.getOptions();
 		CommandLine cl = null;
@@ -76,11 +73,14 @@ public class Main {
 			System.exit(0);
 		} 
 		
-		File propertyFile = new File(cl.getOptionValue(Constants.configFile));
+		String propertyFileName = cl.getOptionValue(Constants.configFile);
+		File propertyFile = new File(propertyFileName);
 		if (!propertyFile.exists()) {
 			logger.log(Level.WARNING, Constants.METHOD_ERROR + "The property file does not exist (" + cl.getOptionValue(Constants.configFile) + ")");
 			System.exit(0);
 		}
+		
+		// 
 		
 		ArgumentValidator argumentValidator = new ArgumentValidator();
 		List validatedArguments = argumentValidator.validate(cl);
@@ -92,22 +92,23 @@ public class Main {
 			System.exit(0);
 		}
 		
+		// Do XOR encryption of the password in present in the propfile
+		PasswordEncodeDelegate encoder = new PasswordEncodeDelegate();
+		encoder.encode(propertyFileName);
+		
 		// It is more or less okay to throw these exceptions from 
 		// this method as we have give the user a log entry about
 		// this and simultainisly abort the program before this
 		// will occur.
+		FileInputStream in = new FileInputStream(propertyFileName); 
 		Properties connectProps = new Properties();
-		connectProps.load(new FileInputStream(propertyFile));
+		connectProps.load(in);
+		in.close();
 		
 		// Log warnings from property validation if any violations and exit
 		PropertyUtil propertyUtil = new PropertyUtil(); 
 		List validatedProperties = propertyUtil.validateProperties(connectProps);
 		
-		// Do XOR encryption of the password in present in the propfile
-//		if (!StringUtils.isEmpty(connectProps.getProperty(Constants.password))) {
-//			PropFilePasswordEncoder encoder = new PropFilePasswordEncoder();
-//			encoder.main(new String[] {cl.getOptionValue(Constants.configFile), Constants.password});
-//		}
 		
 		if (!validatedProperties.isEmpty()) {
 			for (Iterator propertyIter = validatedProperties.iterator(); propertyIter.hasNext();) {
