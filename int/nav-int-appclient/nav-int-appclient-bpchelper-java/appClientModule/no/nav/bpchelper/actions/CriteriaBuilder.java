@@ -7,10 +7,12 @@ import no.nav.bpchelper.cmdoptions.OptionOpts;
 import no.nav.bpchelper.cmdoptions.OptionsBuilder;
 import no.nav.bpchelper.query.Criteria;
 import no.nav.bpchelper.query.Criterion;
+import no.nav.bpchelper.query.LogicalExpression;
 import no.nav.bpchelper.query.Restrictions;
 
 import org.apache.commons.cli.CommandLine;
 
+import com.ibm.bpe.api.ActivityInstanceData;
 import com.ibm.bpe.api.ProcessInstanceData;
 
 public class CriteriaBuilder {
@@ -21,7 +23,13 @@ public class CriteriaBuilder {
 		Criterion processStateFailedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceData.STATE_FAILED);
 		Criterion processStateTerminatedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE",
 				ProcessInstanceData.STATE_TERMINATED);
-		criteria.add(Restrictions.or(processStateFailedCriterion, processStateTerminatedCriterion));
+		LogicalExpression processStateCriterion = Restrictions.or(processStateFailedCriterion, processStateTerminatedCriterion);
+		
+		Criterion activityStateFailedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_FAILED);
+		Criterion activityStateStoppedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_STOPPED);
+		LogicalExpression activityStateCriterion = Restrictions.or(activityStateFailedCriterion, activityStateStoppedCriterion);
+		
+		criteria.add(Restrictions.or(processStateCriterion, activityStateCriterion));
 
 		// Dynamic criteria added if options specified
 		if (commandLine.hasOption(OptionOpts.FILTER_STARTED_AFTER)) {
