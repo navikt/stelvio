@@ -246,7 +246,7 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 			fw.write("#######################\n");
 			fw.write("# SECURITY PARAMETERS #\n");
 			fw.write("#######################\n");
-			fw.write("CLIENTSAS=\"-Dcom.ibm.CORBA.ConfigURL=file${PROFILE_PROPS}/sas.client.props\"\n");
+			fw.write("CLIENTSAS=\"-Dcom.ibm.CORBA.ConfigURL=file:${PROFILE_PROPS}/sas.client.props\"\n");
 			fw.write("CORBA_LOGIN_SOURCE=\"-Dcom.ibm.CORBA.loginSource=properties\"\n");
 			fw.write("CLIENTSSL=\"-Dcom.ibm.SSL.ConfigURL=file:${PROFILE_PROPS}/ssl.client.props\"\n");
 			fw.write("JAASSOAP=\"-Djava.security.auth.login.config=file:${PROFILE_PROPS}/wsjaas_client.conf\"\n");
