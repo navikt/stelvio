@@ -20,10 +20,6 @@ public class ReportWriter {
 
 	private CSVPrinter csvPrinter;
 
-	public ReportWriter() {
-		this(createDefaultFile());
-	}
-
 	public ReportWriter(File file) {
 		try {
 			this.csvPrinter = new CSVPrinter(new BufferedWriter(new FileWriter(file)));
@@ -32,14 +28,6 @@ public class ReportWriter {
 			throw new RuntimeException(e);
 		}
 		logger.info("Writing report to file: " + file.getAbsolutePath());
-	}
-
-	private static File createDefaultFile() {
-		try {
-			return File.createTempFile("report", ".csv");
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
 	}
 
 	public void close() {
