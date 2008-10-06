@@ -8,7 +8,7 @@ public class StatusAction extends AbstractAction {
 		return "status";
 	}
 
-	public void process() {
+	public int execute() {
 		// TODO: Can we use constants for any of the clause fragments?
 		String selectClause = "COUNT(DISTINCT PROCESS_INSTANCE.PIID)";
 		String whereClause = getCriteria().toSqlString();
@@ -16,6 +16,8 @@ public class StatusAction extends AbstractAction {
 		QueryResultSet rs = getBFMConnection().getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
 
 		rs.next();
-		logger.info("Number of stopped process instances: " + rs.getLong(1));
+		int stoppedProcessCount = rs.getInteger(1);
+		logger.info("Status reported {} qualifying processes", new Object[] { stoppedProcessCount });
+		return stoppedProcessCount;
 	}
 }

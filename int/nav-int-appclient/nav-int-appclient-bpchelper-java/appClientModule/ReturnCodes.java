@@ -4,5 +4,5 @@ public interface ReturnCodes {
 	/*
 	 * TODO: Find correct return code for error
 	 */
-	int ERROR = 1;
+	int ERROR = -1;
 }

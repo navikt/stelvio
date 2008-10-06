@@ -109,9 +109,7 @@ public class Main {
 		}
 
 		Action action = ActionFactory.getAction(commandLine);
-		action.process();
-
-		return ReturnCodes.OK;
+		return action.execute();
 	}
 
 	private void printHelp(String footer) {

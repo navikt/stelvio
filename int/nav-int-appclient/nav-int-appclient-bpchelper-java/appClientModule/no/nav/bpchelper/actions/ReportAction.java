@@ -24,18 +24,20 @@ public class ReportAction extends AbstractAction {
 		return "report";
 	}
 
-	public void process() {
-		ReportWriter writer = new ReportWriter(getReportFile());
-
-		writer.writeln(getHeader());
-
+	public int execute() {
 		QueryResultSet queryResultSet = executeQuery();
+		int stoppedProcessCount = queryResultSet.size();
+		logger.info("{} qualifying processes", new Object[] { stoppedProcessCount });
+
+		ReportWriter writer = new ReportWriter(getReportFile());
+		writer.writeln(getHeader());
 		while (queryResultSet.next()) {
 			ProcessInstanceBean processInstanceBean = new ProcessInstanceBean(queryResultSet, getBFMConnection().getAdaptee());
 			writer.writeln(getRow(processInstanceBean));
 		}
-
 		writer.close();
+
+		return stoppedProcessCount;
 	}
 
 	protected Collection<String> getRow(ProcessInstanceBean processInstanceBean) {
