@@ -12,21 +12,31 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractAction implements Action {
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-	protected final BFMConnectionAdapter bfmConnection;
-
-	private Criteria criteria;
-
-	private File reportFile;
-
 	/**
 	 * Keeping connection URLs etc.
 	 */
 	private Properties properties;
 
+	private Criteria criteria;
+
+	private File reportFile;
+
+	private BFMConnectionAdapter bfmConnection;
+
 	public abstract String getName();
 
-	public AbstractAction(Properties properties) {
-		bfmConnection = BFMConnectionAdapter.getInstance(properties);
+	protected BFMConnectionAdapter getBFMConnection() {
+		if (bfmConnection == null) {
+			bfmConnection = BFMConnectionAdapter.getInstance(getProperties());
+		}
+		return bfmConnection;
+	}
+
+	public Properties getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Properties properties) {
 		this.properties = properties;
 	}
 

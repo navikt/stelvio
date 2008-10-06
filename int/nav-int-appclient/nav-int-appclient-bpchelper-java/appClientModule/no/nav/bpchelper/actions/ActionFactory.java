@@ -17,13 +17,48 @@ public class ActionFactory {
 	private static final DateFormat REPORT_FILENAME_DATEFORMAT = new SimpleDateFormat("yyyyddMMHHmmssSSS");
 
 	public static Action getAction(CommandLine commandLine) {
+		String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
+		AbstractAction action = ActionOptionValues.valueOf(actionValue).getAction();
+
+		String configFilePath = commandLine.getOptionValue(OptionOpts.CONFIG_FILE);
+		Properties properties = getProperties(configFilePath);
+		action.setProperties(properties);
+
+		action.setCriteria(CriteriaBuilder.build(commandLine));
+
+		String actionName = action.getName();
+		String reportFilename = commandLine.getOptionValue(OptionOpts.REPORT_FILENAME);
+		String reportDirectory = commandLine.getOptionValue(OptionOpts.REPORT_DIR);
+		File reportFile = getReportFile(actionName, reportFilename, reportDirectory);
+		action.setReportFile(reportFile);
+		
+		return action;
+	}
+
+	private static File getReportFile(String actionName, String reportFilename, String reportDirectory) {
+		File reportFile;
+		if (reportFilename == null) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(actionName);
+			sb.append('_').append(REPORT_FILENAME_DATEFORMAT.format(System.currentTimeMillis()));
+			sb.append(".csv");
+			reportFilename = sb.toString();
+		}
+		if (reportDirectory != null) {
+			reportFile = new File(reportDirectory, reportFilename);
+		} else {
+			reportFile = new File(reportFilename);
+		}
+		return reportFile;
+	}
+
+	private static Properties getProperties(String configFilePath) {
 		// It is more or less okay to catch FileNotFound exceptions from
 		// this method as we have give the user a log entry about
 		// this and simultainisly abort the program before this
 		// will occur.
 		Properties connectProps;
 		try {
-			String configFilePath = commandLine.getOptionValue(OptionOpts.CONFIG_FILE);
 			connectProps = new Properties();
 			connectProps.load(new FileInputStream(configFilePath));
 		} catch (IOException e) {
@@ -31,28 +66,6 @@ public class ActionFactory {
 		}
 		PropertyMapper mapper = new PropertyMapper();
 		Properties properties = mapper.getMappedProperties(connectProps);
-
-		String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
-		AbstractAction action = ActionOptionValues.valueOf(actionValue).getAction(properties);
-
-		action.setCriteria(CriteriaBuilder.build(commandLine));
-
-		File reportFile;
-		String reportFilename = commandLine.getOptionValue(OptionOpts.REPORT_FILENAME);
-		if (reportFilename == null) {
-			StringBuilder sb = new StringBuilder();
-			sb.append(action.getName());
-			sb.append('_').append(REPORT_FILENAME_DATEFORMAT.format(System.currentTimeMillis()));
-			sb.append(".csv");
-			reportFilename = sb.toString();
-		}
-		String reportDirectory = commandLine.getOptionValue(OptionOpts.REPORT_DIR);
-		if (reportDirectory != null) {
-			reportFile = new File(reportDirectory, reportFilename);
-		} else {
-			reportFile = new File(reportFilename);
-		}
-		action.setReportFile(reportFile);
-		return action;
+		return properties;
 	}
 }

@@ -2,7 +2,6 @@ package no.nav.bpchelper.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Properties;
 
 import no.nav.bpchelper.writers.ReportWriter;
 
@@ -12,8 +11,7 @@ import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 public class ReportAction extends AbstractAction {
 	private final Collection<ProcessInstancePropertyAccessor> propertyAccessors;
 
-	public ReportAction(Properties properties) {
-		super(properties);
+	public ReportAction() {
 		propertyAccessors = new ArrayList<ProcessInstancePropertyAccessor>();
 		propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.NAME_PROPERTY));
 		propertyAccessors.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY));
@@ -33,7 +31,7 @@ public class ReportAction extends AbstractAction {
 
 		QueryResultSet queryResultSet = executeQuery();
 		while (queryResultSet.next()) {
-			ProcessInstanceBean processInstanceBean = new ProcessInstanceBean(queryResultSet, bfmConnection.getAdaptee());
+			ProcessInstanceBean processInstanceBean = new ProcessInstanceBean(queryResultSet, getBFMConnection().getAdaptee());
 			writer.writeln(getRow(processInstanceBean));
 		}
 
@@ -61,6 +59,6 @@ public class ReportAction extends AbstractAction {
 		String selectClause = "DISTINCT PROCESS_INSTANCE.PIID,PROCESS_INSTANCE.NAME,PROCESS_INSTANCE.TEMPLATE_NAME,PROCESS_INSTANCE.STATE,PROCESS_INSTANCE.STARTED";
 		String whereClause = getCriteria().toSqlString();
 
-		return bfmConnection.getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
+		return getBFMConnection().getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
 	}
 }
