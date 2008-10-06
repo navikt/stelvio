@@ -34,6 +34,23 @@ public class ActionFactory {
 		
 		return action;
 	}
+	
+	private static Properties getProperties(String configFilePath) {
+		// It is more or less okay to catch FileNotFound exceptions from
+		// this method as we have give the user a log entry about
+		// this and simultainisly abort the program before this
+		// will occur.
+		Properties connectProps;
+		try {
+			connectProps = new Properties();
+			connectProps.load(new FileInputStream(configFilePath));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		PropertyMapper mapper = new PropertyMapper();
+		Properties properties = mapper.getMappedProperties(connectProps);
+		return properties;
+	}
 
 	private static File getReportFile(String actionName, String reportFilename, String reportDirectory) {
 		File reportFile;
@@ -50,22 +67,5 @@ public class ActionFactory {
 			reportFile = new File(reportFilename);
 		}
 		return reportFile;
-	}
-
-	private static Properties getProperties(String configFilePath) {
-		// It is more or less okay to catch FileNotFound exceptions from
-		// this method as we have give the user a log entry about
-		// this and simultainisly abort the program before this
-		// will occur.
-		Properties connectProps;
-		try {
-			connectProps = new Properties();
-			connectProps.load(new FileInputStream(configFilePath));
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-		PropertyMapper mapper = new PropertyMapper();
-		Properties properties = mapper.getMappedProperties(connectProps);
-		return properties;
 	}
 }
