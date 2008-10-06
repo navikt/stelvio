@@ -11,7 +11,7 @@ import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 public class RestartAction extends AbstractReportAction {
 	@Override
 	public String getName() {
-		return "terminate";
+		return "restart";
 	}
 
 	@Override
