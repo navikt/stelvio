@@ -33,7 +33,7 @@ public abstract class AbstractReportAction extends AbstractAction {
 
 		QueryResultSet queryResultSet = executeQuery();
 		int stoppedProcessCount = queryResultSet.size();
-		logger.info("{} qualifying processes", new Object[] { stoppedProcessCount });
+		logger.info("{} qualifying processes", stoppedProcessCount);
 
 		while (queryResultSet.next()) {
 			ProcessInstanceBean processInstanceBean = new ProcessInstanceBean(queryResultSet, getBFMConnection().getAdaptee());
