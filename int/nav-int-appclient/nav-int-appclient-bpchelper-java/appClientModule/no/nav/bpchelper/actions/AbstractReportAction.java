@@ -37,6 +37,9 @@ public abstract class AbstractReportAction extends AbstractAction {
 
 		while (queryResultSet.next()) {
 			ProcessInstanceBean processInstanceBean = new ProcessInstanceBean(queryResultSet, getBFMConnection().getAdaptee());
+			if (logger.isDebugEnabled()) {
+				logger.debug("Processing process with id=<{}>.", processInstanceBean.getID());
+			}
 			writer.writeln(buildRow(processInstanceBean));
 		}
 		writer.close();
