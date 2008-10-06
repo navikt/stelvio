@@ -5,7 +5,6 @@ import java.util.TimeZone;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ibm.bpe.api.BusinessFlowManagerService;
 import com.ibm.bpe.api.QueryResultSet;
 
 public class BusinessFlowManagerServiceAdapter {
@@ -44,29 +43,42 @@ public class BusinessFlowManagerServiceAdapter {
 			throw new ServiceException(e);
 		}
 	}
-	
+
 	public void forceTerminate(String identifier) {
 		forceTerminate(identifier, true);
 	}
 
 	public void forceTerminate(String identifier, boolean delete) {
 		try {
-			BusinessFlowManagerService businessFlowManagerService = adaptee;
 			if (logger.isDebugEnabled()) {
-				logger.debug("Attempting to terminate process instance with id=<" + identifier + ">");
+				logger.debug("Attempting to terminate process instance with id=<{}>", identifier);
 			}
-			businessFlowManagerService.forceTerminate(identifier);
+			adaptee.forceTerminate(identifier);
 			if (logger.isDebugEnabled()) {
-				logger.debug("Successfully terminated process instance with id=<" + identifier + ">");
+				logger.debug("Successfully terminated process instance with id=<{}>", identifier);
 			}
 			if (delete) {
 				if (logger.isDebugEnabled()) {
-					logger.debug("Attempting to delete process instance with id=<" + identifier + ">");
+					logger.debug("Attempting to delete process instance with id=<{}>", identifier);
 				}
-				businessFlowManagerService.delete(identifier);
+				adaptee.delete(identifier);
 				if (logger.isDebugEnabled()) {
-					logger.debug("Successfully deleted process instance with id=<" + identifier + ">");
+					logger.debug("Successfully deleted process instance with id=<{}>", identifier);
 				}
+			}
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+	}
+
+	public void restart(String identifier) {
+		try {
+			if (logger.isDebugEnabled()) {
+				logger.debug("Attempting to restart process instance with id=<{}>", identifier);
+			}
+			adaptee.restart(identifier);
+			if (logger.isDebugEnabled()) {
+				logger.debug("Successfully restarted process instance with id=<{}>", identifier);
 			}
 		} catch (Exception e) {
 			throw new ServiceException(e);
