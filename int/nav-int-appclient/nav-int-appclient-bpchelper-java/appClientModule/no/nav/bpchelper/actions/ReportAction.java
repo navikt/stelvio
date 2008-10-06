@@ -25,12 +25,13 @@ public class ReportAction extends AbstractAction {
 	}
 
 	public int execute() {
+		ReportWriter writer = new ReportWriter(getReportFile());
+		writer.writeln(getHeader());
+		
 		QueryResultSet queryResultSet = executeQuery();
 		int stoppedProcessCount = queryResultSet.size();
 		logger.info("{} qualifying processes", new Object[] { stoppedProcessCount });
 
-		ReportWriter writer = new ReportWriter(getReportFile());
-		writer.writeln(getHeader());
 		while (queryResultSet.next()) {
 			ProcessInstanceBean processInstanceBean = new ProcessInstanceBean(queryResultSet, getBFMConnection().getAdaptee());
 			writer.writeln(getRow(processInstanceBean));
