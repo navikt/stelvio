@@ -1,4 +1,5 @@
-import java.io.File;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -6,9 +7,9 @@ import java.util.Iterator;
 
 import no.nav.bpchelper.actions.Action;
 import no.nav.bpchelper.actions.ActionFactory;
-import no.nav.bpchelper.cmdoptions.ActionOptionValues;
 import no.nav.bpchelper.cmdoptions.OptionOpts;
 import no.nav.bpchelper.cmdoptions.OptionsBuilder;
+import no.nav.bpchelper.cmdoptions.OptionsValidator;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
@@ -49,63 +50,15 @@ public class Main {
 			return ReturnCodes.OK;
 		}
 
-		// Would love to set action-option to required, but then help-option
-		// does not work anymore.
-		if (commandLine.hasOption(OptionOpts.ACTION)) {
-			String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
-			try {
-				ActionOptionValues.valueOf(actionValue);
-			} catch (IllegalArgumentException e) {
-				printHelp("Illegal argument for option:" + OptionOpts.ACTION + " <" + actionValue + ">");
-				return ReturnCodes.ERROR;
+		Collection<String> validationErrors = OptionsValidator.validate(commandLine);
+		if (!validationErrors.isEmpty()) {
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw, true);
+			for (String validationError: validationErrors) {
+				pw.println(validationError);
 			}
-		} else {
-			printHelp("Missing required option:" + OptionOpts.ACTION);
+			printHelp(sw.toString());
 			return ReturnCodes.ERROR;
-		}
-
-		// Would love to set configFile-option to required, but then help-option
-		// does not work anymore.
-		if (commandLine.hasOption(OptionOpts.CONFIG_FILE)) {
-			String configFilePath = commandLine.getOptionValue(OptionOpts.CONFIG_FILE);
-			File propertyFile = new File(configFilePath);
-			if (!propertyFile.exists()) {
-				printHelp("Illegal argument for option:" + OptionOpts.CONFIG_FILE + " (" + configFilePath + ") does not exist");
-				return ReturnCodes.ERROR;
-			}
-		} else {
-			printHelp("Missing required option:" + OptionOpts.CONFIG_FILE);
-			return ReturnCodes.ERROR;
-		}
-
-		if (commandLine.hasOption(OptionOpts.REPORT_DIR)) {
-			String reportDirectoryPath = commandLine.getOptionValue(OptionOpts.REPORT_DIR);
-			File reportDirectory = new File(reportDirectoryPath);
-			if (!reportDirectory.exists()) {
-				printHelp("Illegal argument for option:" + OptionOpts.REPORT_DIR + " (" + reportDirectoryPath
-						+ ") does not exist");
-				return ReturnCodes.ERROR;
-			}
-			if (!reportDirectory.isDirectory()) {
-				printHelp("Illegal argument for option:" + OptionOpts.REPORT_DIR + " (" + reportDirectoryPath
-						+ ") is not a directory");
-				return ReturnCodes.ERROR;
-			}
-		}
-
-		if (commandLine.hasOption(OptionOpts.REPORT_FILENAME)) {
-			String reportFilenameString = commandLine.getOptionValue(OptionOpts.REPORT_FILENAME);
-			File reportFile;
-			if (commandLine.hasOption(OptionOpts.REPORT_DIR)) {
-				reportFile = new File(commandLine.getOptionValue(OptionOpts.REPORT_DIR), reportFilenameString);
-			} else {
-				reportFile = new File(reportFilenameString);
-			}
-			if (reportFile.exists()) {
-				printHelp("Illegal argument for option:" + OptionOpts.REPORT_FILENAME + " (" + reportFile.getAbsolutePath()
-						+ ") already exists");
-				return ReturnCodes.ERROR;
-			}
 		}
 
 		Action action = ActionFactory.getAction(commandLine);
