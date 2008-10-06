@@ -44,7 +44,15 @@ public abstract class AbstractReportAction extends AbstractAction {
 		return stoppedProcessCount;
 	}
 
-	protected Collection<String> buildHeader() {
+	protected QueryResultSet executeQuery() {
+		// TODO: Can we use constants for any of the clause fragments?
+		String selectClause = "DISTINCT PROCESS_INSTANCE.PIID,PROCESS_INSTANCE.NAME,PROCESS_INSTANCE.TEMPLATE_NAME,PROCESS_INSTANCE.STATE,PROCESS_INSTANCE.STARTED";
+		String whereClause = getCriteria().toSqlString();
+
+		return getBFMConnection().getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
+	}
+
+	private Collection<String> buildHeader() {
 		Collection<String> header = new ArrayList<String>();
 		for (ReportColumnSpec<ProcessInstanceBean> reportColumn : reportColumns) {
 			header.add(reportColumn.getLabel());
@@ -52,19 +60,11 @@ public abstract class AbstractReportAction extends AbstractAction {
 		return header;
 	}
 
-	protected Collection<String> buildRow(ProcessInstanceBean processInstanceBean) {
+	private Collection<String> buildRow(ProcessInstanceBean processInstanceBean) {
 		Collection<String> row = new ArrayList<String>();
 		for (ReportColumnSpec<ProcessInstanceBean> reportColumn : reportColumns) {
 			row.add(reportColumn.getValue(processInstanceBean));
 		}
 		return row;
-	}
-
-	protected QueryResultSet executeQuery() {
-		// TODO: Can we use constants for any of the clause fragments?
-		String selectClause = "DISTINCT PROCESS_INSTANCE.PIID,PROCESS_INSTANCE.NAME,PROCESS_INSTANCE.TEMPLATE_NAME,PROCESS_INSTANCE.STATE,PROCESS_INSTANCE.STARTED";
-		String whereClause = getCriteria().toSqlString();
-
-		return getBFMConnection().getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
 	}
 }
