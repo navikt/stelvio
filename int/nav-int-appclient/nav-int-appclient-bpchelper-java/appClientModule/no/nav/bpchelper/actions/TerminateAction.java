@@ -14,15 +14,15 @@ public class TerminateAction extends ReportAction {
 	}
 
 	@Override
-	protected Collection<String> getHeader() {
-		Collection<String> header = super.getHeader();
+	protected Collection<String> buildHeader() {
+		Collection<String> header = super.buildHeader();
 		header.add("Result");
 		return header;
 	}
 
 	@Override
-	protected Collection<String> getRow(ProcessInstanceBean processInstanceBean) {
-		Collection<String> row = super.getRow(processInstanceBean);
+	protected Collection<String> buildRow(ProcessInstanceBean processInstanceBean) {
+		Collection<String> row = super.buildRow(processInstanceBean);
 		PIID id = processInstanceBean.getID();
 		String result;
 		try {

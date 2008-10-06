@@ -8,7 +8,7 @@ import no.nav.bpchelper.utils.ReflectionUtils;
 import com.ibm.bpc.clientcore.converter.SimpleConverter;
 import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
-public class ProcessInstancePropertyAccessor {
+public class ProcessInstancePropertyAccessor implements ReportColumnSpec<ProcessInstanceBean> {
 	private static final Locale LOCALE = Locale.getDefault();
 
 	private final String propertyName;
