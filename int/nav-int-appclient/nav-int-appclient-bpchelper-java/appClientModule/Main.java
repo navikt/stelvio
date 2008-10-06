@@ -1,9 +1,6 @@
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 
 import no.nav.bpchelper.actions.Action;
 import no.nav.bpchelper.actions.ActionFactory;
@@ -25,14 +22,7 @@ public class Main {
 	private static final Options OPTIONS = new OptionsBuilder().getOptions();
 
 	public static void main(String[] args) {
-		Collection<String> argsCollection = new ArrayList<String>(Arrays.asList(args));
-		for (Iterator<String> it = argsCollection.iterator(); it.hasNext();) {
-			if (it.next().startsWith("-CC")) {
-				it.remove();
-			}
-		}
-
-		int returnCode = new Main().run(argsCollection.toArray(new String[argsCollection.size()]));
+		int returnCode = new Main().run(args);
 		System.exit(returnCode);
 	}
 
@@ -54,7 +44,7 @@ public class Main {
 		if (!validationErrors.isEmpty()) {
 			StringWriter sw = new StringWriter();
 			PrintWriter pw = new PrintWriter(sw, true);
-			for (String validationError: validationErrors) {
+			for (String validationError : validationErrors) {
 				pw.println(validationError);
 			}
 			printHelp(sw.toString());
