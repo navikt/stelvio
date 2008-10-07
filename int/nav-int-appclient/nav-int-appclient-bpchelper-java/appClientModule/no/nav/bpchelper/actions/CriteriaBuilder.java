@@ -24,11 +24,11 @@ public class CriteriaBuilder {
 		Criterion processStateTerminatedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE",
 				ProcessInstanceData.STATE_TERMINATED);
 		LogicalExpression processStateCriterion = Restrictions.or(processStateFailedCriterion, processStateTerminatedCriterion);
-		
+
 		Criterion activityStateFailedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_FAILED);
 		Criterion activityStateStoppedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_STOPPED);
 		LogicalExpression activityStateCriterion = Restrictions.or(activityStateFailedCriterion, activityStateStoppedCriterion);
-		
+
 		criteria.add(Restrictions.or(processStateCriterion, activityStateCriterion));
 
 		// Dynamic criteria added if options specified
@@ -46,6 +46,27 @@ public class CriteriaBuilder {
 				criteria.add(Restrictions.like("PROCESS_INSTANCE.TEMPLATE_NAME", processTemplateName));
 			} else {
 				criteria.add(Restrictions.eq("PROCESS_INSTANCE.TEMPLATE_NAME", processTemplateName));
+			}
+		}
+		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_CUSTOM_PROPERTY)) {
+			String[] customPropertiesFilterArgs = commandLine.getOptionValues(OptionOpts.FILTER_PROCESS_CUSTOM_PROPERTY);
+			int propertyCount = customPropertiesFilterArgs.length / 2;
+			for (int i = 0; i < propertyCount; i++) {
+				String viewName = "PROCESS_ATTRIBUTE" + (i + 1);
+
+				String propertyName = customPropertiesFilterArgs[i * 2];
+				if (propertyName.contains("%")) {
+					criteria.add(Restrictions.like(viewName + ".NAME", propertyName));
+				} else {
+					criteria.add(Restrictions.eq(viewName + ".NAME", propertyName));
+				}
+
+				String propertyValue = customPropertiesFilterArgs[i * 2 + 1];
+				if (propertyValue.contains("%")) {
+					criteria.add(Restrictions.like(viewName + ".VALUE", propertyValue));
+				} else {
+					criteria.add(Restrictions.eq(viewName + ".VALUE", propertyValue));
+				}
 			}
 		}
 		if (commandLine.hasOption(OptionOpts.FILTER_ACTIVITY_NAME)) {

@@ -63,6 +63,13 @@ public class OptionsValidator {
 			}
 		}
 
+		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_CUSTOM_PROPERTY)) {
+			String[] customPropertiesFilterArgs = commandLine.getOptionValues(OptionOpts.FILTER_PROCESS_CUSTOM_PROPERTY);
+			if (customPropertiesFilterArgs.length % 2 != 0) {
+				validationErrors.add("Illegal argument for option:" + OptionOpts.FILTER_PROCESS_CUSTOM_PROPERTY);
+			}
+		}
+
 		return validationErrors;
 	}
 }

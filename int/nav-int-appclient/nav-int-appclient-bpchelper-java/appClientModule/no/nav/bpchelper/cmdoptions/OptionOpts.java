@@ -14,6 +14,8 @@ public interface OptionOpts {
 	String FILTER_PROCESS_STARTED_AFTER = "FprocessStartedAfter";
 
 	String FILTER_PROCESS_TEMPLATE_NAME = "FprocessTemplateName";
+	
+	String FILTER_PROCESS_CUSTOM_PROPERTY = "FprocessCustomProperty";
 
 	String FILTER_ACTIVITY_NAME = "FactivityName";
 

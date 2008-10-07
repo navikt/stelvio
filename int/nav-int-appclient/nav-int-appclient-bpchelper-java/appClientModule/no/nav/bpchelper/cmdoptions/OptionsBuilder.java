@@ -53,6 +53,12 @@ public class OptionsBuilder {
 		processTemplateNameOption.setArgName("processTemplateName");
 		options.addOption(processTemplateNameOption);
 
+		Option processCustomPropertyOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_CUSTOM_PROPERTY).hasArgs()
+				.withValueSeparator().create("Fpcp");
+		processCustomPropertyOption.setDescription("filter by process custom properties");
+		processCustomPropertyOption.setArgName("custom property name=custom property value");
+		options.addOption(processCustomPropertyOption);
+
 		Option activityNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_ACTIVITY_NAME).hasArg().create("Fan");
 		activityNameOption.setDescription("filter by activity name");
 		activityNameOption.setArgName("activityName");
