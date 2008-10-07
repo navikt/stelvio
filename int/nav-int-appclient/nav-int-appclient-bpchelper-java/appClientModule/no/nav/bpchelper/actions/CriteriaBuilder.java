@@ -32,16 +32,16 @@ public class CriteriaBuilder {
 		criteria.add(Restrictions.or(processStateCriterion, activityStateCriterion));
 
 		// Dynamic criteria added if options specified
-		if (commandLine.hasOption(OptionOpts.FILTER_STARTED_AFTER)) {
-			Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_STARTED_AFTER));
+		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_STARTED_AFTER)) {
+			Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_STARTED_AFTER));
 			criteria.add(Restrictions.ge("PROCESS_INSTANCE.STARTED", date));
 		}
-		if (commandLine.hasOption(OptionOpts.FILTER_STARTED_BEFORE)) {
-			Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_STARTED_BEFORE));
+		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_STARTED_BEFORE)) {
+			Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_STARTED_BEFORE));
 			criteria.add(Restrictions.le("PROCESS_INSTANCE.STARTED", date));
 		}
-		if (commandLine.hasOption(OptionOpts.FILTER_TEMPLATE_NAME)) {
-			String processTemplateName = commandLine.getOptionValue(OptionOpts.FILTER_TEMPLATE_NAME);
+		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME)) {
+			String processTemplateName = commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME);
 			if (processTemplateName.contains("%")) {
 				criteria.add(Restrictions.like("PROCESS_INSTANCE.TEMPLATE_NAME", processTemplateName));
 			} else {

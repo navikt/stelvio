@@ -36,18 +36,19 @@ public class OptionsBuilder {
 		reportFilenameOption.setDescription("report filename");
 		options.addOption(reportFilenameOption);
 
-		Option startedBeforeOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_STARTED_BEFORE).hasArg().create("Fsb");
-		startedBeforeOption.setDescription("filter by started before");
+		Option startedBeforeOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_STARTED_BEFORE).hasArg()
+				.create("Fpsb");
+		startedBeforeOption.setDescription("filter by process started before");
 		startedBeforeOption.setArgName("timeStamp [" + TIMESTAMP_FORMAT.toPattern() + "]");
 		options.addOption(startedBeforeOption);
 
-		Option startedAfterOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_STARTED_AFTER).hasArg().create("Fsa");
-		startedAfterOption.setDescription("filter by started after");
+		Option startedAfterOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_STARTED_AFTER).hasArg().create("Fpsa");
+		startedAfterOption.setDescription("filter by process started after");
 		startedAfterOption.setArgName("timeStamp [" + TIMESTAMP_FORMAT.toPattern() + "]");
 		options.addOption(startedAfterOption);
 
-		Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_TEMPLATE_NAME).hasArg().create(
-				"Ftn");
+		Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME).hasArg().create(
+				"Fptn");
 		processTemplateNameOption.setDescription("filter by process template name");
 		processTemplateNameOption.setArgName("processTemplateName");
 		options.addOption(processTemplateNameOption);

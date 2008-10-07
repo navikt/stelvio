@@ -9,11 +9,11 @@ public interface OptionOpts {
 
 	String REPORT_FILENAME = "reportFilename";
 
-	String FILTER_STARTED_BEFORE = "FstartedBefore";
+	String FILTER_PROCESS_STARTED_BEFORE = "FprocessStartedBefore";
 
-	String FILTER_STARTED_AFTER = "FstartedAfter";
+	String FILTER_PROCESS_STARTED_AFTER = "FprocessStartedAfter";
 
-	String FILTER_TEMPLATE_NAME = "FtemplateName";
+	String FILTER_PROCESS_TEMPLATE_NAME = "FprocessTemplateName";
 
 	String FILTER_ACTIVITY_NAME = "FactivityName";
 
