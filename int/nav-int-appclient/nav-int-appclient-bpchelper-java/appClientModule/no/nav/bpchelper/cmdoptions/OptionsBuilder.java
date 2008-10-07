@@ -46,7 +46,7 @@ public class OptionsBuilder {
 		startedAfterOption.setArgName("timeStamp [" + TIMESTAMP_FORMAT.toPattern() + "]");
 		options.addOption(startedAfterOption);
 
-		Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME).hasArg().create(
+		Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_TEMPLATE_NAME).hasArg().create(
 				"Fptn");
 		processTemplateNameOption.setDescription("filter by process template name");
 		processTemplateNameOption.setArgName("processTemplateName");

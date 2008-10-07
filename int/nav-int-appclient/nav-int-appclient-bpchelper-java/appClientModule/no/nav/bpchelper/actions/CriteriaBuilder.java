@@ -40,8 +40,8 @@ public class CriteriaBuilder {
 			Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_STARTED_BEFORE));
 			criteria.add(Restrictions.le("PROCESS_INSTANCE.STARTED", date));
 		}
-		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME)) {
-			String processTemplateName = commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME);
+		if (commandLine.hasOption(OptionOpts.FILTER_TEMPLATE_NAME)) {
+			String processTemplateName = commandLine.getOptionValue(OptionOpts.FILTER_TEMPLATE_NAME);
 			if (processTemplateName.contains("%")) {
 				criteria.add(Restrictions.like("PROCESS_INSTANCE.TEMPLATE_NAME", processTemplateName));
 			} else {

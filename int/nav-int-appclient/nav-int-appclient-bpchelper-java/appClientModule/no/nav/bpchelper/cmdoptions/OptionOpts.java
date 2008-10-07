@@ -13,7 +13,7 @@ public interface OptionOpts {
 
 	String FILTER_STARTED_AFTER = "FstartedAfter";
 
-	String FILTER_PROCESS_TEMPLATE_NAME = "FprocessTemplateName";
+	String FILTER_TEMPLATE_NAME = "FtemplateName";
 
 	String FILTER_ACTIVITY_NAME = "FactivityName";
 
