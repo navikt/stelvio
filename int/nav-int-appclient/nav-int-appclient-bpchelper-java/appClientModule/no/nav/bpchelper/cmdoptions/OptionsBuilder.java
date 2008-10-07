@@ -47,7 +47,7 @@ public class OptionsBuilder {
 		options.addOption(startedAfterOption);
 
 		Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_TEMPLATE_NAME).hasArg().create(
-				"Fptn");
+				"Ftn");
 		processTemplateNameOption.setDescription("filter by process template name");
 		processTemplateNameOption.setArgName("processTemplateName");
 		options.addOption(processTemplateNameOption);
