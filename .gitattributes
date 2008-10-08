@@ -2352,6 +2352,7 @@ incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL.bpel -text
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL.bpelex -text
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL.component -text
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPELArtifacts.wsdl -text svneol=unset#text/plain
+incubator/nav-int-fault-test/nav-broc-fault-test/LRBPELWSEXP.export -text
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL_bpel.mon -text
 incubator/nav-int-fault-test/nav-broc-fault-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/SCAFaultHandlerImport.import -text
