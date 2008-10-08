@@ -2395,6 +2395,7 @@ incubator/nav-int-fault-test/nav-lib-fault-test/FaultTwoWayFault.xsd -text svneo
 incubator/nav-int-fault-test/nav-lib-fault-test/GBOTwoWayRequest.xsd -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-lib-fault-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-lib-fault-test/ProducerInterface.wsdl -text svneol=unset#text/plain
+incubator/nav-int-fault-test/nav-lib-fault-test/nav-broc-fault-test_LRBPELWSEXP.wsdl -text svneol=unset#text/plain
 incubator/wid61-ceilogger/CEIEventConsumer/.compatibility -text
 incubator/wid61-ceilogger/CEIEventConsumer/.j2ee -text
 incubator/wid61-ceilogger/CEIEventConsumer/.project -text svneol=unset#text/plain
