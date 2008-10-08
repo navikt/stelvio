@@ -6,5 +6,8 @@
             <dependent-object>JavaClientModule_1222430474944</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="nav-int-appclient-common-java.jar" deploy-path="/" handle="module:/resource/nav-int-appclient-common-java/nav-int-appclient-common-java">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
