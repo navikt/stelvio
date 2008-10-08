@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>nav-int-appclient-femhelper-java</project>
+		<project>nav-int-appclient-common-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
