@@ -7,16 +7,6 @@
     </interface>
   </interfaces>
   <references>
-    <reference name="JMSFaultHandlerImport">
-      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
-      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
-      <wire target="JMSFaultHandlerImport"/>
-    </reference>
-    <reference name="JMSProducerImport">
-      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
-      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
-      <wire target="JMSProducerImport"/>
-    </reference>
     <reference name="SCAProducerImport">
       <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
@@ -26,11 +16,6 @@
       <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
       <wire target="SCAFaultHandlerImport"/>
-    </reference>
-    <reference name="UnknownModuleImport">
-      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
-      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
-      <wire target="UnknownModuleImport"/>
     </reference>
   </references>
   <implementation xsi:type="process:ProcessImplementation">

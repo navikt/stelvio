@@ -2340,6 +2340,7 @@ incubator/nav-int-fault-test/nav-broc-fault-test/.classpath -text svneol=unset#t
 incubator/nav-int-fault-test/nav-broc-fault-test/.project -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/myConsumerModule.prefs -text svneol=unset#text/plain
+incubator/nav-int-fault-test/nav-broc-fault-test/.settings/nav-broc-fault-test.prefs -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/nav-broc-test-fault.prefs -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
@@ -2347,8 +2348,6 @@ incubator/nav-int-fault-test/nav-broc-fault-test/.settings/org.eclipse.jst.commo
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/org.eclipse.wst.common.component -text
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
-incubator/nav-int-fault-test/nav-broc-fault-test/JMSFaultHandlerImport.import -text
-incubator/nav-int-fault-test/nav-broc-fault-test/JMSProducerImport.import -text
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL.bpel -text
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL.bpelex -text
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL.component -text
@@ -2357,7 +2356,6 @@ incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL_bpel.mon -text
 incubator/nav-int-fault-test/nav-broc-fault-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/SCAFaultHandlerImport.import -text
 incubator/nav-int-fault-test/nav-broc-fault-test/SCAProducerImport.import -text
-incubator/nav-int-fault-test/nav-broc-fault-test/UnknownModuleImport.import -text
 incubator/nav-int-fault-test/nav-broc-fault-test/sca.module -text
 incubator/nav-int-fault-test/nav-broc-fault-test/sca.modulex -text
 incubator/nav-int-fault-test/nav-ent-fault-test/.classpath -text svneol=unset#text/plain
