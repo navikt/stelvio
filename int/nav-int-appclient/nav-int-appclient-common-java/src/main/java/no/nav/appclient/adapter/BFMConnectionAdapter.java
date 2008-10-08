@@ -21,7 +21,7 @@ public class BFMConnectionAdapter {
 	public static BFMConnectionAdapter getInstance(Properties properties) {
 		BFMConnection bfmConnection = new SecuredBFMConnection(properties);
 		bfmConnection.setRemote(Boolean.TRUE.toString());
-		bfmConnection.setJndiName("java:comp/env/ejb/BusinessFlowManagerHome");
+		bfmConnection.setJndiName("com/ibm/bpe/api/BusinessFlowManagerHome");
 		BFMConnectionAdapter adapter = new BFMConnectionAdapter(bfmConnection);
 		return adapter;
 	}
