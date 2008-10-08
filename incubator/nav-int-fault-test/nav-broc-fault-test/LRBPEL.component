@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://myLibrary/ConsumerInterface" xmlns:ns2="http://myLibrary/ProducerInterface" xmlns:process="http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="LRBPEL" name="LRBPEL">
+  <interfaces>
+    <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="async" portType="ns1:ConsumerInterface">
+      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
+    </interface>
+  </interfaces>
+  <references>
+    <reference name="JMSFaultHandlerImport">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="JMSFaultHandlerImport"/>
+    </reference>
+    <reference name="JMSProducerImport">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="JMSProducerImport"/>
+    </reference>
+    <reference name="SCAProducerImport">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="SCAProducerImport"/>
+    </reference>
+    <reference name="SCAFaultHandlerImport">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="SCAFaultHandlerImport"/>
+    </reference>
+    <reference name="UnknownModuleImport">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="UnknownModuleImport"/>
+    </reference>
+  </references>
+  <implementation xsi:type="process:ProcessImplementation">
+    <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
+    <process bpel="/LRBPEL.bpel"/>
+  </implementation>
+</scdl:component>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://myConsumerModule/LRBPELArtifacts" xmlns:ns0="http://myLibrary" xmlns:ns1="http://myLibrary/ConsumerInterface" xmlns:ns2="http://myLibrary/ProducerInterface" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="LRBPEL" suppressJoinFailure="yes" targetNamespace="http://myConsumerModule" wpc:autonomy="peer" wpc:displayName="LRBPEL" wpc:id="6" wpc:validFrom="2008-06-18T13:31:34">
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ConsumerInterface.wsdl" namespace="http://myLibrary/ConsumerInterface"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="LRBPELArtifacts.wsdl" namespace="http://myConsumerModule/LRBPELArtifacts"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ConsumerInterface.wsdl" namespace="http://myLibrary/ConsumerInterface"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="GBOTwoWayRequest.xsd" namespace="http://myLibrary"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="Interface" name="ConsumerInterface" partnerLinkType="ns:ConsumerInterfacePLT"/>
+    <bpws:partnerLink name="JMSFaultHandlerImport" partnerLinkType="ns:ProducerInterfacePLT" partnerRole="Interface"/>
+    <bpws:partnerLink name="JMSProducerImport" partnerLinkType="ns:ProducerInterfacePLT1" partnerRole="Interface"/>
+    <bpws:partnerLink name="SCAProducerImport" partnerLinkType="ns:ProducerInterfacePLT2" partnerRole="Interface"/>
+    <bpws:partnerLink name="SCAFaultHandlerImport" partnerLinkType="ns:ProducerInterfacePLT3" partnerRole="Interface"/>
+    <bpws:partnerLink name="UnknownModuleImport" partnerLinkType="ns:ProducerInterfacePLT4" partnerRole="Interface"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable name="twoWayRequest" type="ns0:GBOTwoWayRequest" wpc:id="4"/>
+    <bpws:variable name="twoWayResponse" type="xsd:string" wpc:id="5"/>
+    <bpws:variable name="JMSFaultHandlerRequest" type="xsd:string" wpc:id="7"/>
+    <bpws:variable name="JMSProducerRequest" type="xsd:string" wpc:id="8"/>
+    <bpws:variable name="SCAFaultHandlerRequest" type="xsd:string" wpc:id="9"/>
+    <bpws:variable name="SCAProducerRequest" type="xsd:string" wpc:id="10"/>
+  </bpws:variables>
+  <bpws:sequence name="HiddenSequence" wpc:id="1073741825">
+    <bpws:receive createInstance="yes" name="Receive" operation="twoWay" partnerLink="ConsumerInterface" portType="ns1:ConsumerInterface" wpc:displayName="Receive" wpc:id="2">
+      <wpc:output>
+        <wpc:parameter name="twoWayRequest" variable="twoWayRequest"/>
+      </wpc:output>
+    </bpws:receive>
+    <bpws:assign name="Assignprocessinputtovariables" wpc:displayName="Assign processinput to variables" wpc:id="11">
+      <bpws:copy>
+        <bpws:from variable="twoWayRequest">
+          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[jmsProducerInput]]></bpws:query>
+        </bpws:from>
+        <bpws:to variable="JMSProducerRequest"/>
+      </bpws:copy>
+      <bpws:copy>
+        <bpws:from variable="twoWayRequest">
+          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[scaProducerInput]]></bpws:query>
+        </bpws:from>
+        <bpws:to variable="SCAProducerRequest"/>
+      </bpws:copy>
+      <bpws:copy>
+        <bpws:from variable="twoWayRequest">
+          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[jmsFaultHandlerInput]]></bpws:query>
+        </bpws:from>
+        <bpws:to variable="JMSFaultHandlerRequest"/>
+      </bpws:copy>
+      <bpws:copy>
+        <bpws:from variable="twoWayRequest">
+          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[scaFaultHandlerInput]]></bpws:query>
+        </bpws:from>
+        <bpws:to variable="SCAFaultHandlerRequest"/>
+      </bpws:copy>
+    </bpws:assign>
+    <bpws:invoke name="Statusprinter" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="13">
+      <wpc:script>
+        <wpc:javaCode><![CDATA[System.out.println("Before Invoke SCA Producer");]]></wpc:javaCode>
+      </wpc:script>
+    </bpws:invoke>
+    <bpws:invoke name="InvokeSCAProducer" operation="twoWay" partnerLink="SCAProducerImport" portType="ns2:ProducerInterface" wpc:continueOnError="no" wpc:displayName="Invoke SCA Producer" wpc:id="12">
+      <wpc:input>
+        <wpc:parameter name="twoWayRequest" variable="SCAProducerRequest"/>
+      </wpc:input>
+      <wpc:output>
+        <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
+      </wpc:output>
+      <bpws:catch faultMessageType="ns2:twoWay_twoWayFaultMsg" faultName="ns2:twoWayFault" faultVariable="twoWayFaultVariable" wpc:variableId="14">
+        <bpws:sequence name="HiddenSequence3" wpc:id="1073741851">
+          <bpws:invoke name="Statusprinter1" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="15">
+            <wpc:script>
+              <wpc:javaCode><![CDATA[System.out.println("Caught twowayFault after SCA Invoke, ErrorMessage was: "+twoWayFaultVariable.get("faultMessage"));
+]]></wpc:javaCode>
+            </wpc:script>
+          </bpws:invoke>
+          <bpws:invoke name="InvokeSCAFaultHandler" operation="twoWay" partnerLink="SCAFaultHandlerImport" portType="ns2:ProducerInterface" wpc:continueOnError="no" wpc:displayName="Invoke SCAFaultHandler" wpc:id="28">
+            <wpc:input>
+              <wpc:parameter name="twoWayRequest" variable="SCAFaultHandlerRequest"/>
+            </wpc:input>
+            <wpc:output>
+              <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
+            </wpc:output>
+          </bpws:invoke>
+        </bpws:sequence>
+      </bpws:catch>
+      <bpws:catchAll>
+        <bpws:sequence name="HiddenSequence1" wpc:id="1073741841">
+          <bpws:invoke name="Statusprinter2" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="16">
+            <wpc:script>
+              <wpc:javaCode><![CDATA[
+System.out.println("Caught generic fault after SCA Invoke");
+
+]]></wpc:javaCode>
+            </wpc:script>
+          </bpws:invoke>
+          <bpws:invoke name="InvokeSCAFaultHandler1" operation="twoWay" partnerLink="SCAFaultHandlerImport" portType="ns2:ProducerInterface" wpc:continueOnError="no" wpc:displayName="Invoke SCAFaultHandler" wpc:id="18">
+            <wpc:input>
+              <wpc:parameter name="twoWayRequest" variable="SCAFaultHandlerRequest"/>
+            </wpc:input>
+            <wpc:output>
+              <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
+            </wpc:output>
+          </bpws:invoke>
+        </bpws:sequence>
+      </bpws:catchAll>
+    </bpws:invoke>
+    <bpws:invoke name="Statusprinter3" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="19">
+      <wpc:script>
+        <wpc:javaCode><![CDATA[System.out.println("Before Invoke JMS Producer");]]></wpc:javaCode>
+      </wpc:script>
+    </bpws:invoke>
+    <bpws:invoke name="InvokeJMSProducer" operation="twoWay" partnerLink="JMSProducerImport" portType="ns2:ProducerInterface" wpc:continueOnError="no" wpc:displayName="Invoke JMS Producer" wpc:id="20">
+      <wpc:input>
+        <wpc:parameter name="twoWayRequest" variable="JMSProducerRequest"/>
+      </wpc:input>
+      <wpc:output>
+        <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
+      </wpc:output>
+      <bpws:catch faultMessageType="ns2:twoWay_twoWayFaultMsg" faultName="ns2:twoWayFault" faultVariable="twoWayFaultVariable1" wpc:variableId="21">
+        <bpws:sequence name="HiddenSequence4" wpc:id="1073741853">
+          <bpws:invoke name="Statusprinter4" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="22">
+            <wpc:script>
+              <wpc:javaCode><![CDATA[System.out.println("Caught twowayFault after JMS, ErrorMessage was: "+twoWayFaultVariable1.get("faultMessage"));
+]]></wpc:javaCode>
+            </wpc:script>
+          </bpws:invoke>
+          <bpws:invoke name="InvokeJMSFaultHandler1" operation="twoWay" partnerLink="SCAFaultHandlerImport" portType="ns2:ProducerInterface" wpc:continueOnError="no" wpc:displayName="Invoke JMSFaultHandler" wpc:id="30">
+            <wpc:input>
+              <wpc:parameter name="twoWayRequest" variable="JMSFaultHandlerRequest"/>
+            </wpc:input>
+            <wpc:output>
+              <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
+            </wpc:output>
+          </bpws:invoke>
+        </bpws:sequence>
+      </bpws:catch>
+      <bpws:catchAll>
+        <bpws:sequence name="HiddenSequence2" wpc:id="1073741847">
+          <bpws:invoke name="Statusprinter5" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="24">
+            <wpc:script>
+              <wpc:javaCode><![CDATA[
+System.out.println("Caught generic fault after JMS invoke");
+
+]]></wpc:javaCode>
+            </wpc:script>
+          </bpws:invoke>
+          <bpws:invoke name="InvokeJMSFaultHandler" operation="twoWay" partnerLink="JMSFaultHandlerImport" portType="ns2:ProducerInterface" wpc:continueOnError="no" wpc:displayName="Invoke JMSFaultHandler" wpc:id="25">
+            <wpc:input>
+              <wpc:parameter name="twoWayRequest" variable="JMSFaultHandlerRequest"/>
+            </wpc:input>
+            <wpc:output>
+              <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
+            </wpc:output>
+          </bpws:invoke>
+        </bpws:sequence>
+      </bpws:catchAll>
+    </bpws:invoke>
+    <bpws:invoke name="Statusprinter6" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="26">
+      <wpc:script>
+        <wpc:javaCode><![CDATA[System.out.println("Before Ending Process");]]></wpc:javaCode>
+      </wpc:script>
+    </bpws:invoke>
+    <bpws:switch name="CallunknownModule" wpc:displayName="Call unknown Module" wpc:id="31">
+      <bpws:case wpc:id="32">
+        <bpws:condition><![CDATA[boolean __result__1 = twoWayRequest.getBoolean("callUnknownModule");
+return __result__1;
+]]></bpws:condition>
+        <bpws:invoke name="InvokeUnknownModule" operation="twoWay" partnerLink="UnknownModuleImport" portType="ns2:ProducerInterface" wpc:continueOnError="no" wpc:displayName="Invoke Unknown Module" wpc:id="33">
+          <wpc:input>
+            <wpc:parameter name="twoWayRequest" variable="SCAProducerRequest"/>
+          </wpc:input>
+          <wpc:output>
+            <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
+          </wpc:output>
+        </bpws:invoke>
+      </bpws:case>
+    </bpws:switch>
+    <bpws:reply name="Reply" operation="twoWay" partnerLink="ConsumerInterface" portType="ns1:ConsumerInterface" wpc:displayName="Reply" wpc:id="3">
+      <wpc:input>
+        <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
+      </wpc:input>
+    </bpws:reply>
+  </bpws:sequence>
+</bpws:process>
