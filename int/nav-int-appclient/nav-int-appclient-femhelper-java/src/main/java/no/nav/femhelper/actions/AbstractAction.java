@@ -23,6 +23,8 @@ import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import javax.management.ReflectionException;
 
+import no.nav.appclient.adapter.BFMConnectionAdapter;
+import no.nav.appclient.adapter.BusinessFlowManagerServiceAdapter;
 import no.nav.appclient.util.Constants;
 import no.nav.appclient.util.PropertyMapper;
 import no.nav.femhelper.common.Queries;
@@ -66,6 +68,8 @@ public abstract class AbstractAction {
 	 * AdminClient instance
 	 */
 	protected AdminClient adminClient;
+	
+	protected BusinessFlowManagerServiceAdapter bfmConnection;
 
 	/**
 	 * ObjectName object to represent the FEM Bean
@@ -81,8 +85,7 @@ public abstract class AbstractAction {
 	/**
 	 * Default contructor
 	 * 
-	 * @param must
-	 *            be an instance TODO AR This should not be necessary
+	 * @param must be an instance TODO AR This should not be necessary
 	 */
 	public AbstractAction(Properties properties) {
 		this.properties = properties;
@@ -112,6 +115,8 @@ public abstract class AbstractAction {
 		mappedProperties.setProperty(Constants.password, decodedPassword);
 		
 		adminClient = AdminClientFactory.createAdminClient(mappedProperties);
+		BFMConnectionAdapter adapter = BFMConnectionAdapter.getInstance(mappedProperties);
+		BusinessFlowManagerServiceAdapter bfmConnection = adapter.getBusinessFlowManagerService();
 
 		// Testing connection with query to FailedEventManager
 		ObjectName queryName = new ObjectName("WebSphere:*,type=FailedEventManager");
