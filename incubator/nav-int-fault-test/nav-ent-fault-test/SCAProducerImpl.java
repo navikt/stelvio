@@ -1,4 +1,3 @@
-
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceRuntimeException;
@@ -14,10 +13,11 @@ public class SCAProducerImpl {
 	}
 
 	/**
-	 * Return a reference to the component service instance for this implementation
-	 * class.  This method should be used when passing this service to a partner reference
-	 * or if you want to invoke this component service asynchronously.    
-	 *
+	 * Return a reference to the component service instance for this
+	 * implementation class. This method should be used when passing this
+	 * service to a partner reference or if you want to invoke this component
+	 * service asynchronously.
+	 * 
 	 * @generated (com.ibm.wbit.java)
 	 */
 	@SuppressWarnings("unused")
@@ -26,50 +26,44 @@ public class SCAProducerImpl {
 	}
 
 	/**
-	 * Method generated to support implemention of operation "twoWay" defined for WSDL port type 
-	 * named "ProducerInterface".
+	 * Method generated to support implemention of operation "twoWay" defined
+	 * for WSDL port type named "ProducerInterface".
 	 * 
-	 * Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
+	 * Please refer to the WSDL Definition for more information on the type of
+	 * input, output and fault(s).
 	 */
 	public String twoWay(String twoWayRequest) {
 		System.out.println("Into SCAProducer:twoWay");
-		if ((twoWayRequest).equalsIgnoreCase("sre"))
-			throw new ServiceRuntimeException("SRE thrown in SCAProducer");
-		else if ((twoWayRequest).equalsIgnoreCase("sbe"))
-		{
-			DataObject sbe =DataFactory.INSTANCE.create("http://myLibrary","FaultTwoWayFault");
-			sbe.setString("faultMessage", "SRE thrown in SCAProducer");
+		if (twoWayRequest.equalsIgnoreCase("sre")) {
+			throw new ServiceRuntimeException("SRE thrown in SCAProducer:twoWay");
+		} else if (twoWayRequest.equalsIgnoreCase("sbe")) {
+			DataObject sbe = DataFactory.INSTANCE.create("http://myLibrary", "FaultTwoWayFault");
+			sbe.setString("faultMessage", "Declared SBE thrown in SCAProducer:twoWay");
 			throw new ServiceBusinessException(sbe);
-		}
-		else if ((twoWayRequest).equalsIgnoreCase("sbeND"))
-		{
-			DataObject sbe =DataFactory.INSTANCE.create("http://myLibrary","FaultNotDeclaredFault");
-			sbe.setString("faultMessage", "SRE thrown in SCAProducer");
+		} else if ((twoWayRequest).equalsIgnoreCase("sbeND")) {
+			DataObject sbe = DataFactory.INSTANCE.create("http://myLibrary", "FaultNotDeclaredFault");
+			sbe.setString("faultMessage", "Non declared SBE thrown in SCAProducer:twoWay");
 			throw new ServiceBusinessException(sbe);
-		}
-		else
+		} else {
 			return "Returning from SCAProducer:twoWay";
+		}
 	}
 
 	/**
-	 * Method generated to support implemention of operation "oneWay" defined for WSDL port type 
-	 * named "ProducerInterface".
+	 * Method generated to support implemention of operation "oneWay" defined
+	 * for WSDL port type named "ProducerInterface".
 	 * 
-	 * Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
+	 * Please refer to the WSDL Definition for more information on the type of
+	 * input, output and fault(s).
 	 */
 	public void oneWay(String oneWayRequest) {
 		System.out.println("Into SCAProducer:oneWay");
-		if ((oneWayRequest).equalsIgnoreCase("sre"))
+		if ((oneWayRequest).equalsIgnoreCase("sre")) {
 			throw new ServiceRuntimeException("SRE thrown in SCAProducer:oneWay");
-		else if ((oneWayRequest).equalsIgnoreCase("sbeND"))
-		{
-			DataObject sbe =DataFactory.INSTANCE.create("http://myLibrary","FaultNotDeclaredFault");
-			sbe.setString("faultMessage", "SRE thrown in SCAProducer:oneWay");
+		} else if ((oneWayRequest).equalsIgnoreCase("sbeND")) {
+			DataObject sbe = DataFactory.INSTANCE.create("http://myLibrary", "FaultNotDeclaredFault");
+			sbe.setString("faultMessage", "Non declared SBE thrown in SCAProducer:oneWay");
 			throw new ServiceBusinessException(sbe);
 		}
-		
 	}
-
 }

@@ -2370,11 +2370,7 @@ incubator/nav-int-fault-test/nav-ent-fault-test/.settings/org.eclipse.jst.common
 incubator/nav-int-fault-test/nav-ent-fault-test/.settings/org.eclipse.wst.common.component -text
 incubator/nav-int-fault-test/nav-ent-fault-test/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-ent-fault-test/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
-incubator/nav-int-fault-test/nav-ent-fault-test/JMSFaultHandler.component -text
-incubator/nav-int-fault-test/nav-ent-fault-test/JMSFaultHandlerExport.export -text
 incubator/nav-int-fault-test/nav-ent-fault-test/JMSFaultHandlerImpl.java -text svneol=unset#text/plain
-incubator/nav-int-fault-test/nav-ent-fault-test/JMSProducer.component -text
-incubator/nav-int-fault-test/nav-ent-fault-test/JMSProducerExport.export -text
 incubator/nav-int-fault-test/nav-ent-fault-test/JMSProducerImpl.java -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-ent-fault-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-ent-fault-test/SCAFaultHandler.component -text
