@@ -19,9 +19,7 @@ public class ActionFactory {
 			action = new ResubmitAction(properties);
 		} else if (Constants.ACTION_STATUS.equalsIgnoreCase(actionType)) {
 			action = new StatusAction(properties);
-		} else if (Constants.ACTION_TIMEFRAME.equalsIgnoreCase(actionType)) {
-			action = new TimeFrameAction(properties);
-		}
+		} 
 
 		// Since the input allready is validated to be a valid option 
 		// based on these constants
