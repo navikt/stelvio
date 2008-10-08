@@ -2355,6 +2355,10 @@ incubator/nav-int-fault-test/nav-broc-fault-test/LRBPELArtifacts.wsdl -text svne
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPELWSEXP.export -text
 incubator/nav-int-fault-test/nav-broc-fault-test/LRBPEL_bpel.mon -text
 incubator/nav-int-fault-test/nav-broc-fault-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceAsync.component -text
+incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceAsync.ifm -text
+incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceAsync.wsdl -text svneol=unset#text/plain
+incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceAsync_ifm.mon -text
 incubator/nav-int-fault-test/nav-broc-fault-test/SCAFaultHandlerImport.import -text
 incubator/nav-int-fault-test/nav-broc-fault-test/SCAProducerImport.import -text
 incubator/nav-int-fault-test/nav-broc-fault-test/sca.module -text
