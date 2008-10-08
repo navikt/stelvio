@@ -70,7 +70,7 @@ public class PasswordEncodeDelegate {
 	 */
 	public String getDecryptedPassword(String password) {
 		
-		if (password.startsWith("{xor}")) {
+		if (null != password && password.startsWith("{xor}")) {
 			try {
 				return PasswordUtil.decode(password);
 			} catch (Exception e) {
@@ -78,7 +78,7 @@ public class PasswordEncodeDelegate {
 			}
 		}
 	
-		return password;
+		return "";
 	}
 	
 }
