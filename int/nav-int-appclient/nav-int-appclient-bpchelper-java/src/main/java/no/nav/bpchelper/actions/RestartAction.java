@@ -24,12 +24,12 @@ public class RestartAction extends AbstractReportAction {
 			}
 
 			public String getValue(ProcessInstanceBean instance) {
-				PIID id = instance.getID();
+				PIID piid = instance.getID();
 				try {
-					getBFMConnection().getBusinessFlowManagerService().restart(id.toString());
+					getBFMConnection().getBusinessFlowManagerService().restart(piid);
 					return "OK";
 				} catch (ServiceException e) {
-					logger.warn("Error terminating/deleting process instance with id=<" + id + ">", e);
+					logger.warn("Error terminating/deleting process instance with id=<" + piid + ">", e);
 					return e.getMessage();
 				}
 			}
