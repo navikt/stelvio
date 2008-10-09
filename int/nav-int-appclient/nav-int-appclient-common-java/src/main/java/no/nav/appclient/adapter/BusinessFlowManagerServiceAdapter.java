@@ -5,8 +5,6 @@ import java.util.TimeZone;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ibm.bpe.api.ActivityInstanceData;
-import com.ibm.bpe.api.OID;
 import com.ibm.bpe.api.PIID;
 import com.ibm.bpe.api.QueryResultSet;
 
@@ -47,54 +45,55 @@ public class BusinessFlowManagerServiceAdapter {
 		}
 	}
 
-	public void forceTerminate(String identifier) {
-		forceTerminate(identifier, true);
+	public void forceTerminate(PIID piid) {
+		forceTerminate(piid, true);
 	}
 
-	public void forceTerminate(String identifier, boolean delete) {
+	public void forceTerminate(PIID piid, boolean delete) {
 		try {
 			if (logger.isDebugEnabled()) {
-				logger.debug("Attempting to terminate process instance with id=<{}>", identifier);
+				logger.debug("Attempting to terminate process instance with id=<{}>", piid);
 			}
-			adaptee.forceTerminate(identifier);
+			adaptee.forceTerminate(piid);
 			if (logger.isDebugEnabled()) {
-				logger.debug("Successfully terminated process instance with id=<{}>", identifier);
+				logger.debug("Successfully terminated process instance with id=<{}>", piid);
 			}
 			if (delete) {
 				if (logger.isDebugEnabled()) {
-					logger.debug("Attempting to delete process instance with id=<{}>", identifier);
+					logger.debug("Attempting to delete process instance with id=<{}>", piid);
 				}
-				adaptee.delete(identifier);
+				adaptee.delete(piid);
 				if (logger.isDebugEnabled()) {
-					logger.debug("Successfully deleted process instance with id=<{}>", identifier);
+					logger.debug("Successfully deleted process instance with id=<{}>", piid);
 				}
 			}
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
 	}
-	
+
 	public void forceTerminateFromActivity(String aiid) {
 		String selectClause = "ACTIVITY.PIID";
 		StringBuilder whereClause = new StringBuilder("ACTIVITY.AIID=");
 		whereClause.append("ID('").append(aiid).append("')");
 		QueryResultSet rs = queryAll(selectClause, whereClause.toString(), null, null);
 		if (rs.next()) {
-			OID piid = rs.getOID(1);
-			forceTerminate(piid.toString());
+			PIID piid = (PIID) rs.getOID(1);
+			forceTerminate(piid);
 		} else {
-			throw new ServiceException("Activity with id=<" + aiid + "> not found. Process already deleted? Nothing to terminate.");
+			throw new ServiceException("Activity with id=<" + aiid
+					+ "> not found. Process already deleted? Nothing to terminate.");
 		}
 	}
 
-	public void restart(String identifier) {
+	public void restart(PIID piid) {
 		try {
 			if (logger.isDebugEnabled()) {
-				logger.debug("Attempting to restart process instance with id=<{}>", identifier);
+				logger.debug("Attempting to restart process instance with id=<{}>", piid);
 			}
-			adaptee.restart(identifier);
+			adaptee.restart(piid);
 			if (logger.isDebugEnabled()) {
-				logger.debug("Successfully restarted process instance with id=<{}>", identifier);
+				logger.debug("Successfully restarted process instance with id=<{}>", piid);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
