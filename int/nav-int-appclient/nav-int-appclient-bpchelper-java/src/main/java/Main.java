@@ -16,10 +16,20 @@ import org.apache.commons.cli.PosixParser;
 
 public class Main {
 	private static final int WIDTH = 200;
-
-	private static final String CMD_LINE_SYNTAX = "launchClient <BPCHelper application> [args]";
-
+	private static final String CMD_LINE_SYNTAX = "launchClient <BPCHelper application> [-CC<name>=<value>] [app args]";
+	private static final String HEADER;
 	private static final Options OPTIONS = new OptionsBuilder().getOptions();
+	
+	static {
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		pw.println("where");
+		pw.print("    ");
+		pw.println("-CC<name>=<value> are the client container (launchClient) name-value pair arguments");
+		pw.println("app args are application client arguments.");
+		pw.println("sample usage: launchClient.sh bpchelper.ear -CCpropfile=host_config.properties -cf host_config.properties -a STATUS");
+		HEADER = sw.toString();
+	}
 
 	public static void main(String[] args) {
 		int returnCode = new Main().run(args);
@@ -57,6 +67,6 @@ public class Main {
 
 	private void printHelp(String footer) {
 		HelpFormatter helpFormatter = new HelpFormatter();
-		helpFormatter.printHelp(WIDTH, CMD_LINE_SYNTAX, null, OPTIONS, footer);
+		helpFormatter.printHelp(WIDTH, CMD_LINE_SYNTAX, HEADER, OPTIONS, footer);
 	}
 }
