@@ -9,8 +9,12 @@
 	<name>FEM-Helper Packaging</name>
 
 	<scm>
-		<connection>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient-femhelper/nav-int-appclient-fem-pom</connection>
-		<developerConnection>https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient-femhelper/nav-int-appclient-fem-pom</developerConnection>
+		<connection>
+			https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient-femhelper/nav-int-appclient-fem-pom
+		</connection>
+		<developerConnection>
+			https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient-femhelper/nav-int-appclient-fem-pom
+		</developerConnection>
 	</scm>
 
 	<modules>
@@ -50,6 +54,17 @@
 				<groupId>nav.int.appclient.common</groupId>
 				<artifactId>nav-int-appclient-common-java</artifactId>
 				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.5.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-jdk14</artifactId>
+				<version>1.5.2</version>
+				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>commons-cli</groupId>
@@ -96,5 +111,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 </project>
