@@ -5,16 +5,17 @@ import java.util.Collection;
 
 import no.nav.bpchelper.writers.ReportWriter;
 
+import com.ibm.bpe.api.ProcessInstanceData;
 import com.ibm.bpe.api.QueryResultSet;
 import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public abstract class AbstractReportAction extends AbstractAction {
-	protected static final Collection<ReportColumnSpec<ProcessInstanceBean>> DATA_COLUMNS;
+	protected static final Collection<ReportColumnSpec<ProcessInstanceData>> DATA_COLUMNS;
 
-	private final Collection<ReportColumnSpec<ProcessInstanceBean>> reportColumns;
+	private final Collection<ReportColumnSpec<ProcessInstanceData>> reportColumns;
 
 	static {
-		DATA_COLUMNS = new ArrayList<ReportColumnSpec<ProcessInstanceBean>>();
+		DATA_COLUMNS = new ArrayList<ReportColumnSpec<ProcessInstanceData>>();
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.NAME_PROPERTY));
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY));
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY));
@@ -25,7 +26,7 @@ public abstract class AbstractReportAction extends AbstractAction {
 		this.reportColumns = getReportColumns();
 	}
 
-	protected abstract Collection<ReportColumnSpec<ProcessInstanceBean>> getReportColumns();
+	protected abstract Collection<ReportColumnSpec<ProcessInstanceData>> getReportColumns();
 
 	public int execute() {
 		ReportWriter writer = new ReportWriter(getReportFile());
@@ -36,11 +37,11 @@ public abstract class AbstractReportAction extends AbstractAction {
 		logger.info("{} qualifying processes", stoppedProcessCount);
 
 		while (queryResultSet.next()) {
-			ProcessInstanceBean processInstanceBean = new ProcessInstanceBean(queryResultSet, getBFMConnection().getAdaptee());
+			ProcessInstanceData processInstance = new ProcessInstanceBean(queryResultSet, getBFMConnection().getAdaptee());
 			if (logger.isDebugEnabled()) {
-				logger.debug("Processing process with id=<{}>.", processInstanceBean.getID());
+				logger.debug("Processing process with id=<{}>.", processInstance.getID());
 			}
-			writer.writeln(buildRow(processInstanceBean));
+			writer.writeln(buildRow(processInstance));
 		}
 		writer.close();
 
@@ -57,16 +58,16 @@ public abstract class AbstractReportAction extends AbstractAction {
 
 	private Collection<String> buildHeader() {
 		Collection<String> header = new ArrayList<String>();
-		for (ReportColumnSpec<ProcessInstanceBean> reportColumn : reportColumns) {
+		for (ReportColumnSpec<ProcessInstanceData> reportColumn : reportColumns) {
 			header.add(reportColumn.getLabel());
 		}
 		return header;
 	}
 
-	private Collection<String> buildRow(ProcessInstanceBean processInstanceBean) {
+	private Collection<String> buildRow(ProcessInstanceData processInstance) {
 		Collection<String> row = new ArrayList<String>();
-		for (ReportColumnSpec<ProcessInstanceBean> reportColumn : reportColumns) {
-			row.add(reportColumn.getValue(processInstanceBean));
+		for (ReportColumnSpec<ProcessInstanceData> reportColumn : reportColumns) {
+			row.add(reportColumn.getValue(processInstance));
 		}
 		return row;
 	}

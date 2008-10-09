@@ -6,7 +6,7 @@ import java.util.Collection;
 import no.nav.appclient.adapter.ServiceException;
 
 import com.ibm.bpe.api.PIID;
-import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
+import com.ibm.bpe.api.ProcessInstanceData;
 
 public class RestartAction extends AbstractReportAction {
 	@Override
@@ -15,16 +15,16 @@ public class RestartAction extends AbstractReportAction {
 	}
 
 	@Override
-	protected Collection<ReportColumnSpec<ProcessInstanceBean>> getReportColumns() {
-		Collection<ReportColumnSpec<ProcessInstanceBean>> reportColumns = new ArrayList<ReportColumnSpec<ProcessInstanceBean>>(
+	protected Collection<ReportColumnSpec<ProcessInstanceData>> getReportColumns() {
+		Collection<ReportColumnSpec<ProcessInstanceData>> reportColumns = new ArrayList<ReportColumnSpec<ProcessInstanceData>>(
 				DATA_COLUMNS);
-		reportColumns.add(new ReportColumnSpec<ProcessInstanceBean>() {
+		reportColumns.add(new ReportColumnSpec<ProcessInstanceData>() {
 			public String getLabel() {
 				return "Result";
 			}
 
-			public String getValue(ProcessInstanceBean instance) {
-				PIID piid = instance.getID();
+			public String getValue(ProcessInstanceData processInstance) {
+				PIID piid = processInstance.getID();
 				try {
 					getBFMConnection().getBusinessFlowManagerService().restart(piid);
 					return "OK";

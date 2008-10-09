@@ -2,7 +2,7 @@ package no.nav.bpchelper.actions;
 
 import java.util.Collection;
 
-import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
+import com.ibm.bpe.api.ProcessInstanceData;
 
 public class ReportAction extends AbstractReportAction {
 	@Override
@@ -11,7 +11,7 @@ public class ReportAction extends AbstractReportAction {
 	}
 
 	@Override
-	protected Collection<ReportColumnSpec<ProcessInstanceBean>> getReportColumns() {
+	protected Collection<ReportColumnSpec<ProcessInstanceData>> getReportColumns() {
 		return DATA_COLUMNS;
 	}
 }
