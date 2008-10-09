@@ -24,11 +24,11 @@
 	</scm>
 
 	<build>
-		<sourceDirectory>appClientModule</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
 			<resource>
 				<targetPath>META-INF</targetPath>
-				<directory>appClientModule/META-INF</directory>
+				<directory>src/main/java/META-INF</directory>
 			</resource>
 		</resources>
 		<plugins>
