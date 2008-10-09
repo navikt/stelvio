@@ -1,5 +1,9 @@
 package no.nav.bpchelper.actions;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -12,6 +16,8 @@ import com.ibm.bpe.api.QueryResultSet;
 import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public abstract class AbstractReportAction extends AbstractAction {
+	private static final MessageFormat CONFIRM_MESSAGE_FORMAT = new MessageFormat(
+			"Do you want to continue and {0} {1} qualifying processes (y/n)?");
 	protected static final Collection<ReportColumnSpec<ProcessInstanceData>> DATA_COLUMNS;
 
 	private final Collection<ReportColumnSpec<ProcessInstanceData>> reportColumns;
@@ -35,6 +41,10 @@ public abstract class AbstractReportAction extends AbstractAction {
 		int stoppedProcessCount = piidCollection.size();
 		logger.info("{} qualifying processes", stoppedProcessCount);
 
+		if (stoppedProcessCount > 0 && isInteractiveMode() && !confirm(stoppedProcessCount)) {
+			return stoppedProcessCount;
+		}
+
 		ReportWriter writer = new ReportWriter(getReportFile());
 		writer.writeln(buildHeader());
 
@@ -50,6 +60,27 @@ public abstract class AbstractReportAction extends AbstractAction {
 		writer.close();
 
 		return stoppedProcessCount;
+	}
+
+	private boolean confirm(int stoppedProcessCount) {
+		StringBuffer question = CONFIRM_MESSAGE_FORMAT.format(new Object[] { getName(), stoppedProcessCount },
+				new StringBuffer(), null);
+
+		String answer = null;
+		try {
+			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			while (!"y".equalsIgnoreCase(answer) && !"n".equalsIgnoreCase(answer)) {
+				if (answer != null) {
+					System.out.println(answer + " is not a valid answer");
+				}
+				System.out.print(question + " ");
+				answer = in.readLine();
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		return "y".equalsIgnoreCase(answer);
 	}
 
 	protected Collection<PIID> executeQuery() {
