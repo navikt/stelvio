@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<clientbnd:ApplicationClientBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:clientbnd="clientbnd.xmi" xmi:id="ApplicationClientBinding_1220968219547">
-  <applicationClient href="META-INF/application-client.xml#Application-client_ID"/>
-  <ejbRefs xmi:id="EjbRefBinding_1220968219547" jndiName="com/ibm/bpe/api/BusinessFlowManagerHome">
-    <bindingEjbRef href="META-INF/application-client.xml#EjbRef_1220968219547"/>
-  </ejbRefs>
-</clientbnd:ApplicationClientBinding>

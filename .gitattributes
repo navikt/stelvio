@@ -3125,7 +3125,6 @@ int/nav-int-appclient/nav-int-appclient-bpchelper-java/.settings/org.eclipse.wst
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/appClientModule/META-INF/MANIFEST.MF -text
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/appClientModule/META-INF/application-client.xml -text
-int/nav-int-appclient/nav-int-appclient-bpchelper-java/appClientModule/META-INF/ibm-application-client-bnd.xmi -text
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/appClientModule/Main.java -text
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/appClientModule/ReturnCodes.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/appClientModule/no/nav/bpchelper/actions/AbstractAction.java -text

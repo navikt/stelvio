@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application-client id="Application-client_ID" version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application-client_1_4.xsd">
-	<display-name>
-	BPCHelperAppClient</display-name>
-	<ejb-ref id="EjbRef_1220968219547">
-		<description>
-		</description>
-		<ejb-ref-name>ejb/BusinessFlowManagerHome</ejb-ref-name>
-		<ejb-ref-type>Session</ejb-ref-type>
-		<home>com.ibm.bpe.api.BusinessFlowManagerHome</home>
-		<remote>com.ibm.bpe.api.BusinessFlowManager</remote>
-	</ejb-ref>
+	<display-name>nav-int-appclient-bpchelper-java</display-name>
 </application-client>
