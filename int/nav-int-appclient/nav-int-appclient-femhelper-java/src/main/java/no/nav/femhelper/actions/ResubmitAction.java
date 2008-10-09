@@ -15,6 +15,7 @@ import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
 import no.nav.appclient.util.Constants;
+import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;
@@ -47,7 +48,7 @@ public class ResubmitAction extends AbstractAction {
 	
 		logFileWriter.log("Starting to collect events");
 		
-		ArrayList <String> events = collectEvents(arguments, paging, totalevents, maxresultset);
+		ArrayList <Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
 		
 		if (!cl.hasOption(Constants.noStop)) {
 			String q = "Do you want to continue and resubmit " + events.size() + " events?";
@@ -68,8 +69,8 @@ public class ResubmitAction extends AbstractAction {
 			ArrayList <String> chunk = new ArrayList<String>();
 			HashMap<String, String> reportEvents = new HashMap<String, String>();
 			for (int i = 0; i < events.size(); i++) {
-				chunk.add(events.get(i));
-				reportEvents.put(events.get(i), new String("MARKED~ ~ "));
+				chunk.add(events.get(i).getMessageID());
+				reportEvents.put(events.get(i).getMessageID(), new String("MARKED~ ~ "));
 
 				// for each result set
 				if (j==Constants.MAX_DELETE)
@@ -168,7 +169,7 @@ public class ResubmitAction extends AbstractAction {
 				String status = values[0];
 				String fdate = values[1];
 				String fmsg = values[2];
-				fileWriter.writeShortEvent(key, status, fdate, fmsg);
+//				fileWriter.writeShortEvent(key, status, fdate, fmsg);
 			}
 		}
 		else
