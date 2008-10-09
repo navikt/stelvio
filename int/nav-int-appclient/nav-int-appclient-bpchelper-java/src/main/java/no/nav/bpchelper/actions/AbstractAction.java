@@ -12,14 +12,10 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractAction implements Action {
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-	/**
-	 * Keeping connection URLs etc.
-	 */
 	private Properties properties;
-
 	private Criteria criteria;
-
 	private File reportFile;
+	private boolean interactiveMode = true;
 
 	private BFMConnectionAdapter bfmConnection;
 
@@ -54,5 +50,13 @@ public abstract class AbstractAction implements Action {
 
 	public void setReportFile(File reportFile) {
 		this.reportFile = reportFile;
+	}
+
+	public boolean isInteractiveMode() {
+		return interactiveMode;
+	}
+
+	public void setInteractiveMode(boolean interactiveMode) {
+		this.interactiveMode = interactiveMode;
 	}
 }

@@ -32,6 +32,10 @@ public class ActionFactory {
 		File reportFile = getReportFile(actionName, reportFilename, reportDirectory);
 		action.setReportFile(reportFile);
 		
+		if (commandLine.hasOption(OptionOpts.NO_STOP)) {
+			action.setInteractiveMode(false);
+		}
+		
 		return action;
 	}
 	

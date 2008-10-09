@@ -11,6 +11,11 @@ public class OptionsBuilder {
 
 	public Options getOptions() {
 		Options options = new Options();
+		
+		Option configFile = OptionBuilder.withLongOpt(OptionOpts.CONFIG_FILE).hasArg().create("cf");
+		configFile.setDescription("config file with env info (mandatory)");
+		configFile.setArgName("configFile");
+		options.addOption(configFile);
 
 		Option helpOption = OptionBuilder.withLongOpt(OptionOpts.HELP).create("h");
 		helpOption.setDescription("print usage information");
@@ -35,6 +40,10 @@ public class OptionsBuilder {
 		Option reportFilenameOption = OptionBuilder.withLongOpt(OptionOpts.REPORT_FILENAME).hasArg().create("rf");
 		reportFilenameOption.setDescription("report filename");
 		options.addOption(reportFilenameOption);
+		
+		Option noStopOption = OptionBuilder.withLongOpt(OptionOpts.NO_STOP).create("ns");
+		noStopOption.setDescription("Runs the action without prompting after collecting process instance ids");
+		options.addOption(noStopOption);
 
 		Option startedBeforeOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_STARTED_BEFORE).hasArg()
 				.create("Fpsb");
@@ -63,11 +72,6 @@ public class OptionsBuilder {
 		activityNameOption.setDescription("filter by activity name");
 		activityNameOption.setArgName("activityName");
 		options.addOption(activityNameOption);
-
-		Option configFile = OptionBuilder.withLongOpt(OptionOpts.CONFIG_FILE).hasArg().create("cf");
-		configFile.setDescription("config file with env info (mandatory)");
-		configFile.setArgName("configFile");
-		options.addOption(configFile);
 
 		return options;
 	}
