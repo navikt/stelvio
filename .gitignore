@@ -74,6 +74,7 @@ int/FEMCommandLine/FEMGRAppClientEAR/target
 int/FEMCommandLine/nav-int-appclient-fem-pom/.project
 int/nav-int-appclient/nav-int-appclient-bpchelper-ear/target
 int/nav-int-appclient/nav-int-appclient-bpchelper-java/target
+int/nav-int-appclient/nav-int-appclient-common-java/bin
 int/nav-int-appclient/nav-int-appclient-common-java/target
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/target
 int/nav-int-appclient/nav-int-appclient-femhelper-java/target

@@ -12,5 +12,5 @@
 	<classpathentry kind="var" path="M2_REPO/com/ibm/wps/htmlclientmodel/6.1.0.1/htmlclientmodel-6.1.0.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.5.2/slf4j-api-1.5.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="output" path="target/classes"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
