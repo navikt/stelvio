@@ -3,7 +3,6 @@ package no.nav.femhelper.actions;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -17,14 +16,14 @@ import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
+import no.nav.appclient.adapter.ServiceException;
 import no.nav.appclient.util.Constants;
+import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;
-import org.apache.commons.lang.StringUtils;
 
 import com.ibm.wbiserver.manualrecovery.FailedEventExceptionReport;
-import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
 import com.ibm.wbiserver.manualrecovery.exceptions.DiscardFailedException;
 import com.ibm.websphere.management.exception.ConnectorException;
 
@@ -38,8 +37,7 @@ public class DeleteAction extends AbstractAction {
 	 * Logger instance
 	 */
 	private Logger logger = Logger.getLogger(DeleteAction.class.getName());
-	
-	HashMap<String, String> reportEvents = new HashMap<String, String>();
+	private Set <Event> reportedEvents = new LinkedHashSet<Event>();
 	
 	@Override
 	Object processEvents(String path, String filename, Map arguments,
@@ -53,12 +51,9 @@ public class DeleteAction extends AbstractAction {
 		fileWriter.writeShortHeader();
 	
 		// Collect events to stop processes and delete events
-		ArrayList <String> events = collectEvents(arguments, paging, totalevents, maxresultset);
+		ArrayList <Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
 		
-		// Stop all process that are correlated to any of the events collected
-		stopProcesses(events);
-		
-		
+		// Check if the commandline has a --noStop option
 		if (!cl.hasOption(Constants.noStop)) {
 			String q = "Do you want to continue and delete " + events.size() + " events?";
 			boolean result = askYesNo(q);
@@ -70,37 +65,28 @@ public class DeleteAction extends AbstractAction {
 		if (events.size() > 0) {
 			logger.log(Level.INFO,"Discarding #" + events.size() + " events...please wait!");
 			int j = 1;
-			ArrayList <String> deleteChunk = new ArrayList<String>();
+			ArrayList<Event> deleteChunk = new ArrayList<Event>();
 			
 			for (int i = 0; i < events.size(); i++) {
-				deleteChunk.add(events.get(i));
-				reportEvents.put(events.get(i), new String("MARKED~ ~ "));
+				Event event = events.get(i);
+				
+				deleteChunk.add(event);
+				event.setEventStatus("MARKED");
+				reportedEvents.add(event);
 
 				// for each result set
 				if (j==Constants.MAX_DELETE) {
 					logger.log(Level.INFO, "Discard result set of events fra #" + ((i+1)-Constants.MAX_DELETE) + " to #" + (i+1));
-					String passIn[] = new String[deleteChunk.size()];
-				 	for (int d = 0; d < passIn.length; d++) {
-						passIn[d] = deleteChunk.get(d);
-					}
-				 	deleteEvents(passIn);
+				 	deleteEvents(deleteChunk);
 					// reset chunk iterator
 					j=1;
 					deleteChunk.clear();
-				} else if ((events.size()-i) < Constants.MAX_DELETE && events.size()==(i+1)) {
-					// the last chunk
-					
-					if (events.size() < Constants.MAX_DELETE) {
-						logger.log(Level.INFO, "Delete result set of #" + (i+1) + " events" );
-					} else {
-						logger.log(Level.INFO, "Delete final result set of #" + deleteChunk.size() + " events" );
-					}
-
-					String passIn[] = new String[deleteChunk.size()];
-				 	for (int d = 0; d < passIn.length; d++) {
-						passIn[d] = deleteChunk.get(d);
-					}
-				 	deleteEvents(passIn);
+				} 
+				
+				// The last chunk
+				else if ((events.size()-i) < Constants.MAX_DELETE && events.size()==(i+1)) {
+					logger.log(Level.INFO, "Delete final result set of #" + deleteChunk.size() + " events" );
+				 	deleteEvents(deleteChunk);
 					
 					// reset chunk iterator
 					j=1;
@@ -112,14 +98,9 @@ public class DeleteAction extends AbstractAction {
 			// Update the status map after all deleting are completed
 			logger.log(Level.INFO,"Discarding of #" + events.size() + " events...done!");
 			logger.log(Level.INFO,"Reporting status of discard events...please wait!");
-			Iterator it = reportEvents.keySet().iterator();
+			Iterator <Event> it = reportedEvents.iterator();
 			while (it.hasNext()) {
-				String key = (String) it.next();
-				String[] values = (reportEvents.get(key)).split("~");
-				String status = values[0];
-				String fdate = values[1];
-				String fmsg = values[2];
-				fileWriter.writeShortEvent(key, status, fdate, fmsg);
+				fileWriter.writeShortEvent(it.next());
 			}
 		}
 		else {
@@ -130,64 +111,72 @@ public class DeleteAction extends AbstractAction {
 		return null;
 	}
 	
-	private void deleteEvents(String events[]) throws InstanceNotFoundException, ReflectionException, ConnectorException {
-		String opDelete = Queries.QUERY_DISCARD_FAILED_EVENTS;
-		String[] sig = new String[] {"[Ljava.lang.String;"};
-		Object[] para = new Object[] {events};
+	private void deleteEvents(List <Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException {
+
+		// Delete processes connected to this chunk of events
+		for (Event event : events) {
+			try {
+				bfmConnection.forceTerminateFromActivity(event.getCorrelationID());
+				event.setProcessStatus("TERMINATED");
+			} catch (ServiceException se) {
+				event.setProcessStatus("FAILED");
+				event.setProcessFailureMessage(se.getMessage());
+			}
+		}
+		
+		// Map event id for events where stopping the process not is 
+		// in FAILED status.
+		List <String> eventIds = new ArrayList<String> ();
+		for (Event event : events) {
+			if (event.getProcessStatus().equals("TERMINATED")) {
+				eventIds.add(event.getMessageID());
+			}
+		}
 		
 		try {
-			adminClient.invoke(faildEventManager, opDelete, para, sig);
-			// no exception update hashtable for reporting
-			for (int d = 0; d < events.length; d++) {
-				if (reportEvents.containsKey(events[d])) {
-					reportEvents.put(events[d], "DELETED~ ~ ");
-				}
+			// Map events to correct String array
+			String opDelete = Queries.QUERY_DISCARD_FAILED_EVENTS;
+			String[] sig = new String[] {"[Ljava.lang.String;"};
+			String[] ids = new String[eventIds.size()];
+			for (int i = 0; i < ids.length; i++) {
+				ids[i] = events.get(i).getMessageID();
 			}
+			Object[] parameters = new Object[] {ids};
+			
+			// Delete events in this chunk
+			adminClient.invoke(faildEventManager, opDelete, parameters, sig);
+			
+			// Update the reported events with event status deleted
+			for (Event event : events) {
+				event.setEventStatus("DELETED");
+			}
+			
 		} catch (MBeanException e) {
 			//REPORT not deleted events
 			if (e.getTargetException() instanceof DiscardFailedException) {
-				FailedEventExceptionReport[] exRep = ((DiscardFailedException) e.getTargetException()).getFailedEventExceptionReports();
+				FailedEventExceptionReport[] re = ((DiscardFailedException) e.getTargetException()).getFailedEventExceptionReports();
 				SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
-				for (int r = 0; r < exRep.length; r++) {
-					if (reportEvents.containsKey(exRep[r].getMsgId())) {
-						reportEvents.put(exRep[r].getMsgId(), "FAILURE" + "~" + sdf.format(exRep[r].getExceptionTime()) + "~" +  exRep[r].getExceptionDetail());
-					}	
+				
+				// Update with failure status and set failureinformation to the failed events
+				for (FailedEventExceptionReport report : re) {
+					if (reportedEvents.contains(report.getMsgId())) {
+						for (Event event : reportedEvents) {
+							if (event.getMessageID().equals(report.getMsgId())) {
+								event.setEventStatus("FAILURE");
+								event.setEventFailureDate(sdf.format(report.getExceptionTime()));
+								event.setEventFailureMessage(report.getExceptionDetail());
+							}
+						}
+					}
 				}
-				//UPDATE ALL the rest to DELETED
-				for (int d = 0; d < events.length; d++) {
-					if (reportEvents.get(events[d]).indexOf("FAILURE")==-1) {
-						reportEvents.put(events[d], "DELETED~ ~ ");
+				
+				// Update the reported events with event status deleted
+				for (Event event : events) {
+					if (event.getEventStatus().equals("FAILURE")) {
+						event.setEventStatus("DELETED");
 					}
 				}	
 			}
 		}
-	}
-	
-	private void stopProcesses(List <String> eventIds) throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException {
-		String query = Queries.QUERY_EVENT_WITH_PARAMETERS;
-		
-		// Temporarily variable to keep process ids (PIIDs) to stop afterwards
-		Set <String> processIds = new LinkedHashSet<String>();
-		
-		for (int i = 0; i < eventIds.size(); i++) {
-			Object[] BOparams = new Object[] { new String((String) eventIds.get(i)) };
-			String[] BOsignature = new String[] { "java.lang.String" };
-			FailedEventWithParameters event = (FailedEventWithParameters) adminClient.invoke(faildEventManager, query, BOparams, BOsignature);
-			if (!StringUtils.isEmpty(event.getCorrelationId())) {
-				processIds.add(event.getCorrelationId());
-				logger.fine("Adding process " + event.getCorrelationId() + " to the list of processes to stop");
-			} else {
-				logger.fine("Event " + event.getMsgId() + " don't hava a correlation id. No process is handled as a matter of deleting this event");
-			}
-			
-		}
-		
-		logger.fine("The failed events are in total correlated to " + processIds.size() + " processes");
-		logger.fine("Forcing " + processIds.size() + " to terminate");
-		
-		for (String piid : processIds) {
-			bfmConnection.forceTerminate(piid);
-		}
-		 
 	}
 }

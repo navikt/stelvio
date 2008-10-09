@@ -12,6 +12,7 @@ import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
 import no.nav.appclient.util.Constants;
+import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;
@@ -41,7 +42,7 @@ public class ReportAction extends AbstractAction {
 		logger.log(Level.FINE, "Write CSV header part.");
 		fileWriter.writeHeader();
 	
-		ArrayList <String> events = new ArrayList<String>();
+		ArrayList <Event> events = new ArrayList<Event>();
 		events = collectEvents(arguments, paging, totalevents, maxresultset);
 		
 		if (!cl.hasOption(Constants.noStop)) {
@@ -56,13 +57,16 @@ public class ReportAction extends AbstractAction {
 		logger.log(Level.INFO,"Reporting of #" + events.size() + " events in progress...!");
 		for (int i = 0; i < events.size(); i++) {
 			logger.log(Level.FINE,"Reporting events (" + (i+1) + " of " + events.size() + "). Please wait!");
+			Event event = events.get(i);
 			
 			// Write the report
-			String femQuery = Queries.QUERY_EVENT_WITH_PARAMETERS;
-			Object[] BOparams = new Object[] { new String((String) events.get(i)) };
+			String eventWithParameter = Queries.QUERY_EVENT_WITH_PARAMETERS;
+			Object[] BOparams = new Object[] { new String((String) event.getMessageID()) };
 			String[] BOsignature = new String[] { "java.lang.String" };
-			FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(faildEventManager, femQuery, BOparams, BOsignature);
-			fileWriter.writeCSVEvent(failedEventWithParameters, adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
+			FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient
+					.invoke(faildEventManager, eventWithParameter, BOparams, BOsignature);
+			fileWriter.writeCSVEvent(failedEventWithParameters, event
+					.getCorrelationID(), adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
 		}
 		
 		logFileWriter.log("Reported " + events.size() + " events");

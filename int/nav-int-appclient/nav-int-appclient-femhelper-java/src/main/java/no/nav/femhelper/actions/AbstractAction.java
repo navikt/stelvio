@@ -27,6 +27,7 @@ import no.nav.appclient.adapter.BFMConnectionAdapter;
 import no.nav.appclient.adapter.BusinessFlowManagerServiceAdapter;
 import no.nav.appclient.util.Constants;
 import no.nav.appclient.util.PropertyMapper;
+import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.Queries;
 import no.nav.femhelper.filewriters.EventFileWriter;
 import no.nav.femhelper.filewriters.LogFileWriter;
@@ -101,7 +102,8 @@ public abstract class AbstractAction {
 	private boolean connect() throws ConnectorException, MalformedObjectNameException{ //NullPointerException {
 
 		logger.log(Level.FINE, Constants.METHOD_ENTER + "connect");
-
+		boolean result = false;
+		
 		// Map configuration to ensure additional parameters not are added to
 		// the configuration file. We do not want those to be provided directly
 		// to the AdminClientFactory.
@@ -114,20 +116,26 @@ public abstract class AbstractAction {
 		String decodedPassword = encode.getDecryptedPassword(encodedPass);
 		mappedProperties.setProperty(Constants.password, decodedPassword);
 		
+		// Create Business Flow Manager instance
+		try {
+			BFMConnectionAdapter adapter = BFMConnectionAdapter.getInstance(mappedProperties);
+			bfmConnection = adapter.getBusinessFlowManagerService();
+		} catch (RuntimeException re) {
+			result = false;
+			logger.log(Level.SEVERE, "Could not connect to the BFM", re);
+		}
+		
+		// Setup and test the connection with FailedEventManager MBean
 		adminClient = AdminClientFactory.createAdminClient(mappedProperties);
-		BFMConnectionAdapter adapter = BFMConnectionAdapter.getInstance(mappedProperties);
-		BusinessFlowManagerServiceAdapter bfmConnection = adapter.getBusinessFlowManagerService();
-
-		// Testing connection with query to FailedEventManager
 		ObjectName queryName = new ObjectName("WebSphere:*,type=FailedEventManager");
 		Set s = adminClient.queryNames(queryName, null);
-		boolean result = false;
+		
 		if (!s.isEmpty()) {
 			faildEventManager = (ObjectName) s.iterator().next();
 			logger.log(Level.FINE, "Connected to Failed Event Manager MBean.");
 			result = true;
 		} else {
-			logger.log(Level.WARNING, "Failed Event Manager MBean was not found");
+			logger.log(Level.SEVERE, "Failed Event Manager MBean was not found");
 			result = false;
 		}
 
@@ -166,19 +174,14 @@ public abstract class AbstractAction {
 			result = this.processEvents(path, filename, arguments, paging, totalevents, maxresultset, cl);
 		} catch (IOException e) {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "IOException:StackTrace:");
-			e.printStackTrace();
 		} catch (InstanceNotFoundException e) {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "InstanceNotFoundException:StackTrace:");
-			e.printStackTrace();
 		} catch (MBeanException e) {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "MBeanException:StackTrace:");
-			e.printStackTrace();
 		} catch (ReflectionException e) {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ReflectionException:StackTrace:");
-			e.printStackTrace();
 		} catch (ConnectorException e) {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ConnectorException:StackTrace:");
-			e.printStackTrace();
 		}
 
 		// Close writers. (The close() method handles if the writer allready have been closed)
@@ -234,7 +237,7 @@ public abstract class AbstractAction {
 	 *            what are the result size
 	 * @return a filtered list of failed events
 	 */
-	protected ArrayList<String> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
+	protected ArrayList<Event> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
 			throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, IOException {
 
 		logger.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
@@ -242,7 +245,7 @@ public abstract class AbstractAction {
 		logFileWriter.log("Starting to collect events");
 
 		// Method level variables
-		ArrayList<String> events = new ArrayList<String>();
+		ArrayList<Event> events = new ArrayList<Event>();
 		int iEvents = 1;
 		String lastEventId = null;
 		Date lastEventDate = null;
@@ -266,7 +269,8 @@ public abstract class AbstractAction {
 			lastEventId = failedEvent.getMsgId();
 
 			if (isEventApplicable(failedEvent, agruments)) {
-				events.add(lastEventId);
+				Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
+				events.add(event);
 			}
 
 			iEvents++;
@@ -313,7 +317,8 @@ public abstract class AbstractAction {
 				// check id from last loop and skip if we have a double entry because on milli can include the last id (better
 				// than don't select events)
 				if (!lastEventId.equals(currEventId) && isEventApplicable(failedEvent, agruments)) {
-					events.add(currEventId);
+					Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
+					events.add(event);
 				} else {
 					logger.log(Level.FINE, "Collect events detect on result set #" + pagecount + " that the event with the id "
 							+ currEventId + " is allready collected!");
@@ -423,7 +428,7 @@ public abstract class AbstractAction {
 			throw new RuntimeException(e);
 		}
 		
-		return "y".equals(answer) ? true : false;
+		return "y".equals(answer) || "yes".equals(answer) ? true : false;
 	}
 	
 
