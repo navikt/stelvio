@@ -3,8 +3,10 @@ package no.nav.bpchelper.actions;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import no.nav.appclient.adapter.BusinessFlowManagerServiceAdapter;
 import no.nav.bpchelper.writers.ReportWriter;
 
+import com.ibm.bpe.api.PIID;
 import com.ibm.bpe.api.ProcessInstanceData;
 import com.ibm.bpe.api.QueryResultSet;
 import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
@@ -29,31 +31,38 @@ public abstract class AbstractReportAction extends AbstractAction {
 	protected abstract Collection<ReportColumnSpec<ProcessInstanceData>> getReportColumns();
 
 	public int execute() {
+		Collection<PIID> piidCollection = executeQuery();
+		int stoppedProcessCount = piidCollection.size();
+		logger.info("{} qualifying processes", stoppedProcessCount);
+
 		ReportWriter writer = new ReportWriter(getReportFile());
 		writer.writeln(buildHeader());
 
-		QueryResultSet queryResultSet = executeQuery();
-		int stoppedProcessCount = queryResultSet.size();
-		logger.info("{} qualifying processes", stoppedProcessCount);
-
-		while (queryResultSet.next()) {
-			ProcessInstanceData processInstance = new ProcessInstanceBean(queryResultSet, getBFMConnection().getAdaptee());
+		BusinessFlowManagerServiceAdapter businessFlowManagerService = getBFMConnection().getBusinessFlowManagerService();
+		for (PIID piid : piidCollection) {
 			if (logger.isDebugEnabled()) {
-				logger.debug("Processing process with id=<{}>.", processInstance.getID());
+				logger.debug("Processing process with id=<{}>.", piid);
 			}
+			ProcessInstanceData processInstance = businessFlowManagerService.getProcessInstance(piid);
 			writer.writeln(buildRow(processInstance));
 		}
+
 		writer.close();
 
 		return stoppedProcessCount;
 	}
 
-	protected QueryResultSet executeQuery() {
-		// TODO: Can we use constants for any of the clause fragments?
-		String selectClause = "DISTINCT PROCESS_INSTANCE.PIID,PROCESS_INSTANCE.NAME,PROCESS_INSTANCE.TEMPLATE_NAME,PROCESS_INSTANCE.STATE,PROCESS_INSTANCE.STARTED";
+	protected Collection<PIID> executeQuery() {
+		String selectClause = "DISTINCT PROCESS_INSTANCE.PIID";
 		String whereClause = getCriteria().toSqlString();
 
-		return getBFMConnection().getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
+		QueryResultSet rs = getBFMConnection().getBusinessFlowManagerService().queryAll(selectClause, whereClause, null, null);
+
+		Collection<PIID> result = new ArrayList<PIID>(rs.size());
+		while (rs.next()) {
+			result.add((PIID) rs.getOID(1));
+		}
+		return result;
 	}
 
 	private Collection<String> buildHeader() {
