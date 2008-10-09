@@ -9,7 +9,6 @@ public class StatusAction extends AbstractAction {
 	}
 
 	public int execute() {
-		// TODO: Can we use constants for any of the clause fragments?
 		String selectClause = "COUNT(DISTINCT PROCESS_INSTANCE.PIID)";
 		String whereClause = getCriteria().toSqlString();
 
