@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import no.nav.appclient.util.Constants;
+import no.nav.femhelper.common.Event;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -87,7 +88,7 @@ public class EventFileWriter extends AbstractFileWriter {
 	 * @param adminClient
 	 * @throws IOException
 	 */
-	public void writeCSVEvent (FailedEventWithParameters parameters, AdminClient adminClient, String dateFormat) throws IOException {
+	public void writeCSVEvent (FailedEventWithParameters parameters, String correlationId, AdminClient adminClient, String dateFormat) throws IOException {
 		
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "writeCSVEvent");
 		
@@ -147,7 +148,7 @@ public class EventFileWriter extends AbstractFileWriter {
 	 	}
 	 	
 	 	// Write PIID / CorrelationId
-	 	writer.write(getEscapedString(parameters.getCorrelationId()));
+	 	writer.write(getEscapedString(correlationId));
 
 	 	
 	 	// Write a empty line the end of this entry and close the writer
@@ -165,9 +166,11 @@ public class EventFileWriter extends AbstractFileWriter {
 	public void writeShortHeader () throws IOException {
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "writeShortHeader");
 		writer.write("MessageId" + separator);
-		writer.write("Status" + separator);
+		writer.write("Event Status" + separator);
 		writer.write("FailureDate" + separator);
-		writer.write("FailureMessage");
+		writer.write("FailureMessage" + separator);
+		writer.write("Process Status" + separator);
+		writer.write("FailureMessage" + separator);
 		writer.newLine();
 		writer.flush();
 		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "writeShortHeader");
@@ -180,21 +183,26 @@ public class EventFileWriter extends AbstractFileWriter {
 	 * @param adminClient
 	 * @throws IOException
 	 */
-	public void writeShortEvent (String MsgId, String Status, String fDate, String fMsg) throws IOException {
+	public void writeShortEvent(Event event) throws IOException {
 		
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "writeShortEvent");
 		
 		// Write information about this event
-		writer.write(getEscapedString(MsgId) + separator);
-		writer.write(getEscapedString(Status) + separator);
-		writer.write(getEscapedString(fDate) + separator);
+		writer.write(getEscapedString(event.getMessageID()) + separator);
+		writer.write(getEscapedString(event.getEventStatus()) + separator);
+		writer.write(getEscapedString(event.getEventFailureDate()) + separator);
 		
 		// Write quotes start. This is needed to get all values within
 	 	// the same cell if and when this data is imported in Excel.
 	 	writer.write("\"");
-
-		writer.write(getEscapedString(fMsg));
-	 	// Write quotes end plus separator
+	 	writer.write(getEscapedString(event.getEventFailureMessage()));
+		// Write quotes end plus separator
+	 	writer.write("\"" + separator);
+	 	
+	 	writer.write(getEscapedString(event.getProcessStatus()) + separator);
+	 	
+	 	writer.write("\"");
+	 	writer.write(getEscapedString(event.getProcessFailureMessage()));
 	 	writer.write("\"");
 
 	 	// Write a empty line the end of this entry and close the writer
