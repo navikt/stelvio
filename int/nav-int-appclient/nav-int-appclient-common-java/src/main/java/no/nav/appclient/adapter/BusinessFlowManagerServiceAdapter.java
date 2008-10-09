@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ibm.bpe.api.ActivityInstanceData;
+import com.ibm.bpe.api.OID;
 import com.ibm.bpe.api.PIID;
 import com.ibm.bpe.api.QueryResultSet;
 
@@ -74,12 +75,15 @@ public class BusinessFlowManagerServiceAdapter {
 	}
 	
 	public void forceTerminateFromActivity(String aiid) {
-		try {
-			ActivityInstanceData activity = adaptee.getActivityInstance(aiid);
-			PIID piid = activity.getProcessInstanceID();
+		String selectClause = "ACTIVITY.PIID";
+		StringBuilder whereClause = new StringBuilder("ACTIVITY.AIID=");
+		whereClause.append("ID('").append(aiid).append("')");
+		QueryResultSet rs = queryAll(selectClause, whereClause.toString(), null, null);
+		if (rs.next()) {
+			OID piid = rs.getOID(1);
 			forceTerminate(piid.toString());
-		} catch (Exception e) {
-			throw new ServiceException(e);
+		} else {
+			throw new ServiceException("Activity with id=<" + aiid + "> not found. Process already deleted? Nothing to terminate.");
 		}
 	}
 
