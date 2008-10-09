@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="/websphere_default_messaging_provider"/>
 	<classpathentry excluding="gen/|gen/src/" kind="src" path=""/>
 	<classpathentry kind="src" path="gen/src">
 		<attributes>
