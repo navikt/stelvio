@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ibm.bpe.api.PIID;
+import com.ibm.bpe.api.ProcessInstanceData;
 import com.ibm.bpe.api.QueryResultSet;
 
 public class BusinessFlowManagerServiceAdapter {
@@ -45,6 +46,27 @@ public class BusinessFlowManagerServiceAdapter {
 		}
 	}
 
+	public PIID getProcessInstanceID(String activityID) {
+		String selectClause = "ACTIVITY.PIID";
+		StringBuilder whereClause = new StringBuilder("ACTIVITY.AIID=");
+		whereClause.append("ID('").append(activityID).append("')");
+		QueryResultSet rs = queryAll(selectClause, whereClause.toString(), null, null);
+		if (rs.next()) {
+			return (PIID) rs.getOID(1);
+		} else {
+			throw new ServiceException("Activity with id=<" + activityID
+					+ "> not found. Process already deleted? Nothing to terminate.");
+		}
+	}
+
+	public ProcessInstanceData getProcessInstance(PIID piid) {
+		try {
+			return adaptee.getProcessInstance(piid);
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+	}
+
 	public void forceTerminate(PIID piid) {
 		forceTerminate(piid, true);
 	}
@@ -73,17 +95,8 @@ public class BusinessFlowManagerServiceAdapter {
 	}
 
 	public void forceTerminateFromActivity(String aiid) {
-		String selectClause = "ACTIVITY.PIID";
-		StringBuilder whereClause = new StringBuilder("ACTIVITY.AIID=");
-		whereClause.append("ID('").append(aiid).append("')");
-		QueryResultSet rs = queryAll(selectClause, whereClause.toString(), null, null);
-		if (rs.next()) {
-			PIID piid = (PIID) rs.getOID(1);
-			forceTerminate(piid);
-		} else {
-			throw new ServiceException("Activity with id=<" + aiid
-					+ "> not found. Process already deleted? Nothing to terminate.");
-		}
+		PIID piid = getProcessInstanceID(aiid);
+		forceTerminate(piid);
 	}
 
 	public void restart(PIID piid) {
