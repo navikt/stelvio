@@ -29,7 +29,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ear-plugin</artifactId>
 				<configuration>
-					<displayName>BPCGRAppClientEAR</displayName>
+					<displayName>nav-int-appclient-bpchelper-ear</displayName>
 					<version>1.4</version>
 					<modules>
 						<jarModule>
