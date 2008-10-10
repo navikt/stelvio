@@ -8,10 +8,10 @@ import no.nav.appclient.adapter.ServiceException;
 import com.ibm.bpe.api.PIID;
 import com.ibm.bpe.api.ProcessInstanceData;
 
-public class TerminateAction extends AbstractReportAction {
+public class DeleteAction extends AbstractReportAction {
 	@Override
 	public String getName() {
-		return "terminate";
+		return "delete";
 	}
 
 	@Override

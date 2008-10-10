@@ -3,7 +3,7 @@ package no.nav.bpchelper.cmdoptions;
 import no.nav.bpchelper.actions.AbstractAction;
 import no.nav.bpchelper.actions.ReportAction;
 import no.nav.bpchelper.actions.StatusAction;
-import no.nav.bpchelper.actions.TerminateAction;
+import no.nav.bpchelper.actions.DeleteAction;
 
 public enum ActionOptionValues {
 	STATUS {
@@ -22,10 +22,10 @@ public enum ActionOptionValues {
 
 	},
 
-	TERMINATE {
+	DELETE {
 		@Override
 		public AbstractAction getAction() {
-			return new TerminateAction();
+			return new DeleteAction();
 		}
 
 	};
