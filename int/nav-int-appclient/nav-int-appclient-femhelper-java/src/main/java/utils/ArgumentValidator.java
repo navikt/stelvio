@@ -95,9 +95,7 @@ public class ArgumentValidator {
 		if (!StringUtils.isEmpty(logFilePath)) {
 			LOGGER.log(Level.FINE, "Using '" + logFilePath + " as logfile location");
 		} else {
-			String tempFolderProperty = "java.io.tmpdir";
-			String tempFolder = System.getProperty(tempFolderProperty); 
-			LOGGER.log(Level.WARNING, Constants.reportDirectory + " is not declared. Using " + tempFolder + ".");
+			LOGGER.log(Level.WARNING, Constants.reportDirectory + " is not declared. Using current folder.");
 		}
 	}
 }
