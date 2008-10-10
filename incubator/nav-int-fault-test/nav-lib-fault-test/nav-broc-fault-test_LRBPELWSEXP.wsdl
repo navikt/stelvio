@@ -15,6 +15,12 @@
         <soap:fault name="twoWayFault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="oneWay">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="oneWayRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="LRBPELWSEXP_ConsumerInterfaceHttpService">
     <wsdl:port binding="this:LRBPELWSEXP_ConsumerInterfaceHttpBinding" name="LRBPELWSEXP_ConsumerInterfaceHttpPort">
