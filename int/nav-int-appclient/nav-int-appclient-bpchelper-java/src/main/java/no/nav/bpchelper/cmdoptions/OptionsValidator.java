@@ -65,17 +65,17 @@ public class OptionsValidator {
 			}
 		}
 		
-		if (commandLine.hasOption(OptionOpts.FILTER_STARTED_TIME_FRAME)) {
-			String startedTimeFrameFilterArg = commandLine.getOptionValue(OptionOpts.FILTER_STARTED_TIME_FRAME);
+		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME)) {
+			String startedTimeFrameFilterArg = commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME);
 			StringTokenizer st = new StringTokenizer(startedTimeFrameFilterArg, "-");
 			if (st.countTokens() != 2) {
-				validationErrors.add("Illegal argument for option:" + OptionOpts.FILTER_STARTED_TIME_FRAME);
+				validationErrors.add("Illegal argument for option:" + OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME);
 			} else {
 				while (st.hasMoreTokens()) {
 					try {
 						OptionsBuilder.TIMESTAMP_FORMAT.parse(st.nextToken());
 					} catch (ParseException e) {
-						validationErrors.add("Illegal argument for option:" + OptionOpts.FILTER_STARTED_TIME_FRAME);
+						validationErrors.add("Illegal argument for option:" + OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME);
 						break;
 					}					
 				}

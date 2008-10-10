@@ -11,7 +11,7 @@ public class OptionsBuilder {
 
 	public Options getOptions() {
 		Options options = new Options();
-		
+
 		Option configFile = OptionBuilder.withLongOpt(OptionOpts.CONFIG_FILE).hasArg().create("cf");
 		configFile.setDescription("config file with env info (mandatory)");
 		configFile.setArgName("configFile");
@@ -42,16 +42,17 @@ public class OptionsBuilder {
 		reportFilenameOption.setDescription("report filename");
 		reportFilenameOption.setArgName("filename");
 		options.addOption(reportFilenameOption);
-		
+
 		Option noStopOption = OptionBuilder.withLongOpt(OptionOpts.NO_STOP).create("ns");
 		noStopOption.setDescription("Runs the action without prompting after collecting process instance ids");
 		options.addOption(noStopOption);
-		
-		Option startedTimeFrameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_STARTED_TIME_FRAME).hasArg().create("tf");
-		startedTimeFrameOption.setDescription("filter by process started time frame");
+
+		Option processStartedTimeFrameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME).hasArg()
+				.create("tf");
+		processStartedTimeFrameOption.setDescription("filter by process started time frame");
 		String timestampPattern = TIMESTAMP_FORMAT.toPattern();
-		startedTimeFrameOption.setArgName("time frame [" + timestampPattern + "-" + timestampPattern + "]");
-		options.addOption(startedTimeFrameOption);
+		processStartedTimeFrameOption.setArgName("time frame [" + timestampPattern + "-" + timestampPattern + "]");
+		options.addOption(processStartedTimeFrameOption);
 
 		Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME).hasArg().create(
 				"ptn");

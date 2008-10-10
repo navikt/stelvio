@@ -13,7 +13,7 @@ public interface OptionOpts {
 	
 	String NO_STOP = "noStop";
 	
-	String FILTER_STARTED_TIME_FRAME = "timeFrame";
+	String FILTER_PROCESS_STARTED_TIME_FRAME = "timeFrame";
 
 	String FILTER_PROCESS_TEMPLATE_NAME = "processTemplateName";
 	
