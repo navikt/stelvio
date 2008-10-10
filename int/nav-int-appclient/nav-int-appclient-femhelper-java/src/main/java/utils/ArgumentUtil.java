@@ -56,6 +56,28 @@ public class ArgumentUtil {
 			result.put(Constants.timeFrame, timeFrame);
 		}
 		
+		String maxResultSet = cl.getOptionValue(Constants.maxResultSet);
+		// Default value 1000
+		if (StringUtils.isEmpty(maxResultSet)) {
+			result.put(Constants.maxResultSet, "1000");
+		} else {
+			result.put(Constants.maxResultSet, maxResultSet);
+		}
+		
+		String maxResultSetPaging = cl.getOptionValue(Constants.maxResultSetPaging);
+		if (StringUtils.isEmpty(maxResultSetPaging)) {
+			result.put(Constants.maxResultSetPaging, "true");
+		}  else {
+			result.put(Constants.maxResultSetPaging, maxResultSetPaging);
+		}
+		
+		String reportDirectory = cl.getOptionValue(Constants.reportDirectory);
+		if (StringUtils.isEmpty(reportDirectory)) {
+			result.put(Constants.reportDirectory, ".");
+		} else {
+			result.put(Constants.reportDirectory, reportDirectory);
+		}
+		
 		return result;
 	}
 }

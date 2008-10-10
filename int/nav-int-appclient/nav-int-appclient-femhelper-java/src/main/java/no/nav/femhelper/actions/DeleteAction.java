@@ -134,9 +134,9 @@ public class DeleteAction extends AbstractAction {
 		// in FAILED status.
 		List <String> eventIds = new ArrayList<String> ();
 		for (Event event : events) {
-//			if (!event.getProcessStatus().equals(ProcessStatus.FAILED)) {
+			if (!event.getProcessStatus().equals(ProcessStatus.FAILED)) {
 				eventIds.add(event.getMessageID());
-//			}
+			}
 		}
 		
 		try {

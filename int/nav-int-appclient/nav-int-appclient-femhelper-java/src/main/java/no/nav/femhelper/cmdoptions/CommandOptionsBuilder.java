@@ -32,18 +32,17 @@ public class CommandOptionsBuilder {
 		options.addOption(getHelpOption());
 		options.addOption(getConfigFileOption());
 		options.addOption(getLogFilePathOption());
-		options.addOption(getLogFileNameOption());
 		options.addOption(getActionOption());
 		options.addOption(getMaxResultSetOption());
 		options.addOption(getMaxResultSetPagingOption());
+		options.addOption(getFailureMessageOption());
+		options.addOption(getDataObjectOption());
+		options.addOption(getNoStopOption());
 		options.addOption(getTimeFrameOption());
 		options.addOption(getSourceModuleOption());
 		options.addOption(getSourceComponentOption());
 		options.addOption(getDestinationModule());
 		options.addOption(getDestinationComponent());
-		options.addOption(getFailureMessageOption());
-		options.addOption(getDataObjectOption());
-		options.addOption(getNoStopOption());
 		
 		logger.log(Level.FINE, Constants.METHOD_EXIT + "getOptions");
 		return options;
@@ -56,7 +55,7 @@ public class CommandOptionsBuilder {
 	private Option getSourceModuleOption() {
 		Option sourceModule = getGeneralOption(Constants.sourceModule, "sm");
 		sourceModule.setArgName("String");
-		sourceModule.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
+		sourceModule.setDescription("Filter by Source Module");
 		return sourceModule;
 	}
 	
@@ -66,7 +65,7 @@ public class CommandOptionsBuilder {
 	 */
 	private Option getSourceComponentOption() {
 		Option sourceComponent = getGeneralOption(Constants.sourceComponent, "sc");
-		sourceComponent.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
+		sourceComponent.setDescription("Filter by Source Component");
 		return sourceComponent;
 	}
 	
@@ -76,7 +75,7 @@ public class CommandOptionsBuilder {
 	 */
 	private Option getDestinationModule() {
 		Option destinationModule = getGeneralOption(Constants.destinationModule, "dm");
-		destinationModule.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
+		destinationModule.setDescription("Filter by Destination Module");
 		return destinationModule;
 	}
 	
@@ -86,7 +85,7 @@ public class CommandOptionsBuilder {
 	 */
 	private Option getDestinationComponent() {
 		Option destinationComponent = getGeneralOption(Constants.destinationComponent, "dc");
-		destinationComponent.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
+		destinationComponent.setDescription("Filter by Destination Component");
 		return destinationComponent;
 	}
 	
@@ -117,7 +116,7 @@ public class CommandOptionsBuilder {
 		Option timeFrame = getGeneralOption(Constants.timeFrame, "tf");
 		timeFrame.setArgName("timeframe");
 		timeFrame.setRequired(false);
-		timeFrame.setDescription("Pattern:" + Constants.TIME_FRAME_FORMAT + "-" + Constants.TIME_FRAME_FORMAT);
+		timeFrame.setDescription("Filter by time. Pattern:" + Constants.TIME_FRAME_FORMAT + "-" + Constants.TIME_FRAME_FORMAT);
 		return timeFrame;
 	}
 
@@ -130,7 +129,7 @@ public class CommandOptionsBuilder {
 	private Option getMaxResultSetPagingOption() {
 		Option maxResultSetPaging = getGeneralOption(Constants.maxResultSetPaging, "mrsp");
 		maxResultSetPaging.setArgName("boolean");
-		maxResultSetPaging.setDescription("Mandatory");
+		maxResultSetPaging.setDescription("Default is 'true'");
 		return maxResultSetPaging;
 	}
 
@@ -143,7 +142,7 @@ public class CommandOptionsBuilder {
 	private Option getMaxResultSetOption() {
 		Option maxResultSet = getGeneralOption(Constants.maxResultSet, "mrs");
 		maxResultSet.setArgName("integer");
-		maxResultSet.setDescription("Recommended to use range between 100 and 1000. This is a restriction due to JVM memory limitations");
+		maxResultSet.setDescription("Default value is '1000'. Recommended to use range between 100 and 1000. This is a restriction due to JVM memory limitations");
 		return maxResultSet;
 	}
 
@@ -160,26 +159,14 @@ public class CommandOptionsBuilder {
 	}
 	
 	/**
-	 * Create command line option for 'logFileName'.
-	 * This option is requiered
-	 * @return
-	 */
-	private Option getLogFileNameOption() {
-		Option logFileName = getGeneralOption(Constants.logFileName, "lfn");
-		logFileName.setArgName("filename");
-		logFileName.setDescription("Name of output log file. Default value is xxx");
-		return logFileName;
-	}
-
-	/**
 	 * Create command line option for 'logFilePath'.
 	 * This option is requiered
 	 * @return
 	 */
 	private Option getLogFilePathOption() {
-		Option logFilePath = getGeneralOption(Constants.logFilePath, "lfp");
+		Option logFilePath = getGeneralOption(Constants.reportDirectory, "lfp");
 		logFilePath.setArgName("path");
-		logFilePath.setDescription("Path for directory where the output file will be located.");
+		logFilePath.setDescription("Default is current Path for directory where the output file will be located.");
 		return logFilePath;
 	}
 
@@ -202,7 +189,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getNoStopOption() {
-		Option noStop = OptionBuilder.withLongOpt(Constants.noStop).create();
+		Option noStop = OptionBuilder.withLongOpt(Constants.noStop).create("ns");
 		noStop.setDescription("Runs the action without prompting between collecting the msgids and the action");
 		return noStop;
 	}

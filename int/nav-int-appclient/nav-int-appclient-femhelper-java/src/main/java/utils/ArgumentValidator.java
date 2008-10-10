@@ -30,21 +30,18 @@ public class ArgumentValidator {
 		List<String> result = new ArrayList<String>();
 		
 		// logFilePath
-		validateLogPath(cl.getOptionValue(Constants.logFilePath));
+		validateLogPath(cl.getOptionValue(Constants.reportDirectory));
 		
 		// maxResultSet
-		if (StringUtils.isEmpty(cl.getOptionValue(Constants.maxResultSet))) {
-			result.add("Property " + Constants.maxResultSet + " is missing or empty");
-		} else if (Integer.parseInt(cl.getOptionValue(Constants.maxResultSet)) > 9999) {
+		String maxResultSet = cl.getOptionValue(Constants.maxResultSet);
+		if (!StringUtils.isEmpty(maxResultSet) && Integer.parseInt(maxResultSet) > 9999) {
 			result.add("Property " + Constants.maxResultSet + " is to large. Possible values is 1 >= 9999");
 		}
 		
 		// maxResultSetPaging
 		String maxResultSetPaging = cl.getOptionValue(Constants.maxResultSetPaging);
-		if (StringUtils.isEmpty(maxResultSetPaging)) {
-			result.add("Property " + Constants.maxResultSetPaging + " is missing or empty");
-		} else if (!maxResultSetPaging.equals(Boolean.TRUE.toString()) && !maxResultSetPaging.equals(Boolean.FALSE.toString())) {
-			result.add("Property " + Constants.maxResultSetPaging + " must be 'true' or 'false'");
+		if (!StringUtils.isEmpty(maxResultSetPaging) &&  !maxResultSetPaging.equals(Boolean.TRUE.toString()) && !maxResultSetPaging.equals(Boolean.FALSE.toString())) {
+			result.add("Property " + Constants.maxResultSetPaging + " is set must be 'true' or 'false'");
 		}
 
 		// action
@@ -100,7 +97,7 @@ public class ArgumentValidator {
 		} else {
 			String tempFolderProperty = "java.io.tmpdir";
 			String tempFolder = System.getProperty(tempFolderProperty); 
-			LOGGER.log(Level.WARNING, Constants.logFilePath + " is not declared. Using " + tempFolder + ".");
+			LOGGER.log(Level.WARNING, Constants.reportDirectory + " is not declared. Using " + tempFolder + ".");
 		}
 	}
 }

@@ -21,6 +21,7 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
+import org.apache.commons.lang.StringUtils;
 
 import utils.ArgumentUtil;
 import utils.ArgumentValidator;
@@ -36,9 +37,13 @@ public class Main {
 
 	private static Logger logger = Logger.getLogger(Main.class.getName());
 	
+	private static final int screenWidth = 500;
+	
 	public static void main(String[] args) throws IOException {
 
-		logger.log(Level.INFO, "FEMGRAppClient for WPS 6.1 - Version 0.9");
+		System.out.println(getSeparatorLine(100));
+		System.out.println("Failed Event Manager (FEM) Helper for WPS 6.1 - Version 0.9");
+		System.out.println(getSeparatorLine(100));
 
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
 		Options options = optionsBuilder.getOptions();
@@ -55,16 +60,22 @@ public class Main {
 		
 		if (cl.hasOption("help")) {
 			HelpFormatter formatter = new HelpFormatter();
-			formatter.setWidth(500);
+			formatter.setWidth(screenWidth);
 			
-			System.out.println("============================================================");
-			System.out.println("Failed Event Manager (FEM) Helper - Version 0.9");
-			System.out.println("============================================================");
-			System.out.println("Sample usage: launchClient.sh FEMHelper.ear " +
-					"--configFile=/was_app/config/fem/fem.properties " +
-					"--logFilePath=/was_app/logs/fem --maxResultSet=1000 " +
-					"--maxResultSetPaging=false --messageType=ALL --action=REPORT");		
+			System.out.println("Usage:");
+			System.out.println("launchClient <FEMHelper application> [-CC<name>=<value>] [app args]");
+			System.out.println("where -CC<name>=<value> are the client container (launchClient) name-value pair arguments app args are application client arguments.");
+			System.out.println(StringUtils.EMPTY);
+			System.out.println("Sample usage:");
+			System.out.println("launchClient.sh <FEMHelper application> --configFile=/was_app/config/fem/fem.properties --action=REPORT");		
+			System.out.println(StringUtils.EMPTY);
+			System.out.println("All filter by attributes might in certain circumstances be empty. " +
+					"If this occurs you might make use of the --sessionIdWildCard parameter");
+			
+			
 			formatter.printHelp("FEM HELPER", options);
+			
+			
 			System.exit(0);
 		}
 		
@@ -131,23 +142,25 @@ public class Main {
 				logger.log(Level.INFO, "ACTION REQUIERED! There are events on Failed Event Manager");
 			}
 			
+			Map <String, String> arguments = ArgumentUtil.getArguments(cl);
+			
 			// Set to max. fem entries if pagsizse is greater
-			int pagesize = Integer.valueOf(cl.getOptionValue(Constants.maxResultSet));
+			int pagesize = Integer.parseInt(arguments.get(Constants.maxResultSet));
 			if (pagesize > numberOfEvents){
 				pagesize = numberOfEvents.intValue();
 				logger.log(Level.INFO, "Set working result set to total number of events (" + pagesize + ") because MAX_RESULT_SET > TotalEvents.");
 			}
 			
 			// Determine paging
-			boolean paging = Boolean.parseBoolean(cl.getOptionValue(Constants.maxResultSetPaging).toLowerCase());
+			boolean paging = Boolean.parseBoolean(arguments.get(Constants.maxResultSetPaging));
 			
 			SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 			Date currentTime = GregorianCalendar.getInstance().getTime();
 			String edaTypeAction = cl.getOptionValue(Constants.action);
 			String filename = Constants.FILE_PREFIX + "_" + edaTypeAction + "_"+ sdf.format(currentTime);
-			String path = cl.getOptionValue(Constants.logFilePath);
+			String path = arguments.get(Constants.reportDirectory);
 			
-			Map arguments = ArgumentUtil.getArguments(cl);
+			
 			
 			AbstractAction action = ActionFactory.getAction(edaTypeAction, connectProps);
 			action.process(path, filename, arguments, paging, numberOfEvents, pagesize, cl);
@@ -156,6 +169,14 @@ public class Main {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "Exception:StackTrace:");
 			e.printStackTrace();
 		}		
-		logger.log(Level.INFO, "FEMGRAppClient done.");
+		logger.log(Level.INFO, "FEM Helper is done.");
+	}
+	
+	private static String getSeparatorLine(int width) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < width; i++) {
+			sb.append("=");
+		}
+		return sb.toString();
 	}
 }
