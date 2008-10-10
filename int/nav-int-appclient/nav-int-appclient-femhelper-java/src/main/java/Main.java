@@ -63,7 +63,7 @@ public class Main {
 			formatter.setWidth(screenWidth);
 			
 			System.out.println("Usage:");
-			System.out.println("launchClient <FEMHelper application> [-CC<name>=<value>] [app args]");
+			System.out.println("launchClient <FEMHelper application> -CCpropfile=<configFile> [-CC<name>=<value>] [app args]");
 			System.out.println("where -CC<name>=<value> are the client container (launchClient) name-value pair arguments app args are application client arguments.");
 			System.out.println(StringUtils.EMPTY);
 			System.out.println("Sample usage:");
