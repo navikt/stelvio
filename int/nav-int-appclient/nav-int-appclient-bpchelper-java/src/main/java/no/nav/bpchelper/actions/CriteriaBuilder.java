@@ -2,6 +2,7 @@ package no.nav.bpchelper.actions;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 import no.nav.bpchelper.cmdoptions.OptionOpts;
 import no.nav.bpchelper.cmdoptions.OptionsBuilder;
@@ -32,13 +33,12 @@ public class CriteriaBuilder {
 		criteria.add(Restrictions.or(processStateCriterion, activityStateCriterion));
 
 		// Dynamic criteria added if options specified
-		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_STARTED_AFTER)) {
-			Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_STARTED_AFTER));
-			criteria.add(Restrictions.ge("PROCESS_INSTANCE.STARTED", date));
-		}
-		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_STARTED_BEFORE)) {
-			Date date = parseDate(commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_STARTED_BEFORE));
-			criteria.add(Restrictions.le("PROCESS_INSTANCE.STARTED", date));
+		if (commandLine.hasOption(OptionOpts.FILTER_STARTED_TIME_FRAME)) {
+			StringTokenizer st = new StringTokenizer(commandLine.getOptionValue(OptionOpts.FILTER_STARTED_TIME_FRAME), "-");
+			Date startedAfterDate = parseDate(st.nextToken());
+			criteria.add(Restrictions.ge("PROCESS_INSTANCE.STARTED", startedAfterDate));
+			Date startedBeforeDate = parseDate(st.nextToken());
+			criteria.add(Restrictions.le("PROCESS_INSTANCE.STARTED", startedBeforeDate));
 		}
 		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME)) {
 			String processTemplateName = commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME);

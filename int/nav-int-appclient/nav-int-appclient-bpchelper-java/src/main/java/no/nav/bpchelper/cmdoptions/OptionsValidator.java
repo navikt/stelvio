@@ -1,8 +1,10 @@
 package no.nav.bpchelper.cmdoptions;
 
 import java.io.File;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.StringTokenizer;
 
 import org.apache.commons.cli.CommandLine;
 
@@ -60,6 +62,23 @@ public class OptionsValidator {
 			if (reportFile.exists()) {
 				validationErrors.add("Illegal argument for option:" + OptionOpts.REPORT_FILENAME + " ("
 						+ reportFile.getAbsolutePath() + ") already exists");
+			}
+		}
+		
+		if (commandLine.hasOption(OptionOpts.FILTER_STARTED_TIME_FRAME)) {
+			String startedTimeFrameFilterArg = commandLine.getOptionValue(OptionOpts.FILTER_STARTED_TIME_FRAME);
+			StringTokenizer st = new StringTokenizer(startedTimeFrameFilterArg, "-");
+			if (st.countTokens() != 2) {
+				validationErrors.add("Illegal argument for option:" + OptionOpts.FILTER_STARTED_TIME_FRAME);
+			} else {
+				while (st.hasMoreTokens()) {
+					try {
+						OptionsBuilder.TIMESTAMP_FORMAT.parse(st.nextToken());
+					} catch (ParseException e) {
+						validationErrors.add("Illegal argument for option:" + OptionOpts.FILTER_STARTED_TIME_FRAME);
+						break;
+					}					
+				}
 			}
 		}
 

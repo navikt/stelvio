@@ -12,14 +12,12 @@ public interface OptionOpts {
 	String REPORT_FILENAME = "reportFilename";
 	
 	String NO_STOP = "noStop";
-
-	String FILTER_PROCESS_STARTED_BEFORE = "FprocessStartedBefore";
-
-	String FILTER_PROCESS_STARTED_AFTER = "FprocessStartedAfter";
-
-	String FILTER_PROCESS_TEMPLATE_NAME = "FprocessTemplateName";
 	
-	String FILTER_PROCESS_CUSTOM_PROPERTY = "FprocessCustomProperty";
+	String FILTER_STARTED_TIME_FRAME = "timeFrame";
 
-	String FILTER_ACTIVITY_NAME = "FactivityName";
+	String FILTER_PROCESS_TEMPLATE_NAME = "processTemplateName";
+	
+	String FILTER_PROCESS_CUSTOM_PROPERTY = "processCustomProperty";
+
+	String FILTER_ACTIVITY_NAME = "activityName";
 }

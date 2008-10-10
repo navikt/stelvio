@@ -35,40 +35,37 @@ public class OptionsBuilder {
 
 		Option reportDirectoryOption = OptionBuilder.withLongOpt(OptionOpts.REPORT_DIR).hasArg().create("rd");
 		reportDirectoryOption.setDescription("directory to put report");
+		reportDirectoryOption.setArgName("path");
 		options.addOption(reportDirectoryOption);
 
 		Option reportFilenameOption = OptionBuilder.withLongOpt(OptionOpts.REPORT_FILENAME).hasArg().create("rf");
 		reportFilenameOption.setDescription("report filename");
+		reportFilenameOption.setArgName("filename");
 		options.addOption(reportFilenameOption);
 		
 		Option noStopOption = OptionBuilder.withLongOpt(OptionOpts.NO_STOP).create("ns");
 		noStopOption.setDescription("Runs the action without prompting after collecting process instance ids");
 		options.addOption(noStopOption);
-
-		Option startedBeforeOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_STARTED_BEFORE).hasArg()
-				.create("Fpsb");
-		startedBeforeOption.setDescription("filter by process started before");
-		startedBeforeOption.setArgName("timeStamp [" + TIMESTAMP_FORMAT.toPattern() + "]");
-		options.addOption(startedBeforeOption);
-
-		Option startedAfterOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_STARTED_AFTER).hasArg().create("Fpsa");
-		startedAfterOption.setDescription("filter by process started after");
-		startedAfterOption.setArgName("timeStamp [" + TIMESTAMP_FORMAT.toPattern() + "]");
-		options.addOption(startedAfterOption);
+		
+		Option startedTimeFrameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_STARTED_TIME_FRAME).hasArg().create("tf");
+		startedTimeFrameOption.setDescription("filter by process started time frame");
+		String timestampPattern = TIMESTAMP_FORMAT.toPattern();
+		startedTimeFrameOption.setArgName("time frame [" + timestampPattern + "-" + timestampPattern + "]");
+		options.addOption(startedTimeFrameOption);
 
 		Option processTemplateNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_TEMPLATE_NAME).hasArg().create(
-				"Fptn");
+				"ptn");
 		processTemplateNameOption.setDescription("filter by process template name");
 		processTemplateNameOption.setArgName("processTemplateName");
 		options.addOption(processTemplateNameOption);
 
 		Option processCustomPropertyOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_PROCESS_CUSTOM_PROPERTY).hasArgs()
-				.withValueSeparator().create("Fpcp");
+				.withValueSeparator().create("pcp");
 		processCustomPropertyOption.setDescription("filter by process custom properties");
 		processCustomPropertyOption.setArgName("custom property name=custom property value");
 		options.addOption(processCustomPropertyOption);
 
-		Option activityNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_ACTIVITY_NAME).hasArg().create("Fan");
+		Option activityNameOption = OptionBuilder.withLongOpt(OptionOpts.FILTER_ACTIVITY_NAME).hasArg().create("an");
 		activityNameOption.setDescription("filter by activity name");
 		activityNameOption.setArgName("activityName");
 		options.addOption(activityNameOption);
