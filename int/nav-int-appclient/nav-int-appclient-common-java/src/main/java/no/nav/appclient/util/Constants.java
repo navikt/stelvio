@@ -103,13 +103,7 @@ public class Constants {
 	 * Public constant to represent the 'logFilePath' string from
 	 * <code>CommandLine</code> object
 	 */
-	public static final String logFilePath = "logFilePath";
-	
-	/**
-	 * Public constant to represent the 'logFileName' string from
-	 * <code>CommandLine</code> object
-	 */
-	public static final String logFileName = "logFileName";
+	public static final String reportDirectory = "reportDirectory";
 	
 	/**
 	 * Public constant to represent the 'maxResultSet' string from
@@ -181,15 +175,14 @@ public class Constants {
 	/**
 	 * ActionOptions are 0:REPORT, 1:DISCARD, 2:RESUBMIT, 3:STATUS, 4:TIMEFRAME. 
 	 */
-	public static final String[] actionOptions = {"REPORT", "DISCARD", "RESUBMIT", "STATUS", "TIMEFRAME"};
+	public static final String[] actionOptions = {"REPORT", "DISCARD", "RESUBMIT", "STATUS"};
 
 	public static final String ACTION_REPORT = "REPORT";
 	public static final String ACTION_DISCARD = "DISCARD";
 	public static final String ACTION_RESUBMIT = "RESUBMIT";
 	public static final String ACTION_STATUS = "STATUS";
-	public static final String ACTION_TIMEFRAME = "TIMEFRAME";
 	
-	public static final List ACTIONS = Arrays.asList(ACTION_REPORT, ACTION_DISCARD, ACTION_RESUBMIT, ACTION_STATUS, ACTION_TIMEFRAME);
+	public static final List ACTIONS = Arrays.asList(ACTION_REPORT, ACTION_DISCARD, ACTION_RESUBMIT, ACTION_STATUS);
 	
 	
 	/**
