@@ -119,7 +119,7 @@ public class DeleteAction extends AbstractAction {
 		for (Event event : events) {
 			try {
 				if (!StringUtils.isEmpty(event.getCorrelationID())) {
-					bfmConnection.forceTerminateFromActivity(event.getCorrelationID());
+					bfmConnection.deleteProcessInstanceByActivityId(event.getCorrelationID());
 					event.setProcessStatus(ProcessStatus.TERMINATED);
 				} else {
 					event.setProcessStatus(ProcessStatus.NOPROCESS);
