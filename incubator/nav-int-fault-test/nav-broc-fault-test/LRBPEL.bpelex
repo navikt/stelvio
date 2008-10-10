@@ -2,7 +2,7 @@
 <extensionmodel:ExtensionMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.bpel.ui.uiextensionmodel="http:///com/ibm/wbit/bpel/ui/uiextensionmodel.ecore" xmlns:extensionmodel="http:///extensionmodel.ecore" namespace="http://com.ibm.wbit.bpel.ui/">
   <extensions>
     <extendedObject href="LRBPEL.bpel#/"/>
-    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1223627830703"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1223634513593"/>
   </extensions>
   <extensions>
     <extendedObject href="LRBPEL.bpel#//@variables/@children.0"/>
@@ -135,5 +135,65 @@
   <extensions>
     <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.3"/>
     <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.0/@copy.0"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.0/@activity/@activities.2/@faultHandler/@catch.1"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CatchExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.0/@activity/@activities.2/@faultHandler/@catch.1/@activity/@activities.0/@eExtensibilityElements.0"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.0/@activity/@activities.2/@faultHandler/@catch.1/@activity/@activities.0"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.0/@activity/@activities.2/@faultHandler/@catch.1/@activity"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" implicit="true"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.0/@activity/@activities.2/@faultHandler/@catch.1/@activity/@activities.1"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.2/@faultHandler/@catch.0"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CatchExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.2/@faultHandler"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:FaultHandlerExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.2/@faultHandler/@catch.0/@faultVariable"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@eExtensibilityElements.0"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.2/@faultHandler/@catch.0/@activity"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" implicit="true"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.1"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.2"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="LRBPEL.bpel#//@activity/@messages.1/@activity/@activities.0/@copy.1"/>
+    <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
   </extensions>
 </extensionmodel:ExtensionMap>
