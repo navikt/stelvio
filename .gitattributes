@@ -3203,6 +3203,8 @@ int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femh
 int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femhelper/actions/StatusAction.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femhelper/cmdoptions/CommandOptionsBuilder.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femhelper/common/Event.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femhelper/common/EventStatus.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femhelper/common/ProcessStatus.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femhelper/common/Queries.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femhelper/filewriters/AbstractFileWriter.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-appclient-femhelper-java/src/main/java/no/nav/femhelper/filewriters/EventFileWriter.java -text svneol=unset#text/plain

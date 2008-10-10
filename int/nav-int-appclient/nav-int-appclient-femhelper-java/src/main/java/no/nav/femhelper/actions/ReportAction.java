@@ -65,8 +65,7 @@ public class ReportAction extends AbstractAction {
 			String[] BOsignature = new String[] { "java.lang.String" };
 			FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient
 					.invoke(faildEventManager, eventWithParameter, BOparams, BOsignature);
-			fileWriter.writeCSVEvent(failedEventWithParameters, event
-					.getCorrelationID(), adminClient, Constants.DEFAULT_DATE_FORMAT_MILLS);
+			fileWriter.writeCSVEvent(failedEventWithParameters, event, adminClient);
 		}
 		
 		logFileWriter.log("Reported " + events.size() + " events");

@@ -10,6 +10,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Utility class to build options to the <code>CommandLine</code> parser
@@ -53,7 +54,7 @@ public class CommandOptionsBuilder {
 	 * @return sourceModule option
 	 */
 	private Option getSourceModuleOption() {
-		Option sourceModule = getGeneralOption(Constants.sourceModule);
+		Option sourceModule = getGeneralOption(Constants.sourceModule, "sm");
 		sourceModule.setArgName("String");
 		sourceModule.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
 		return sourceModule;
@@ -64,7 +65,7 @@ public class CommandOptionsBuilder {
 	 * @return sourceComponent option
 	 */
 	private Option getSourceComponentOption() {
-		Option sourceComponent = getGeneralOption(Constants.sourceComponent);
+		Option sourceComponent = getGeneralOption(Constants.sourceComponent, "sc");
 		sourceComponent.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
 		return sourceComponent;
 	}
@@ -74,7 +75,7 @@ public class CommandOptionsBuilder {
 	 * @return destinationModule option
 	 */
 	private Option getDestinationModule() {
-		Option destinationModule = getGeneralOption(Constants.destinationModule);
+		Option destinationModule = getGeneralOption(Constants.destinationModule, "dm");
 		destinationModule.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
 		return destinationModule;
 	}
@@ -84,7 +85,7 @@ public class CommandOptionsBuilder {
 	 * @return destinationComponent option
 	 */
 	private Option getDestinationComponent() {
-		Option destinationComponent = getGeneralOption(Constants.destinationComponent);
+		Option destinationComponent = getGeneralOption(Constants.destinationComponent, "dc");
 		destinationComponent.setDescription("This attribute might in certain circumstances be empty. If this occurs you might make use of the --sessionIdWildCard parameter");
 		return destinationComponent;
 	}
@@ -94,7 +95,7 @@ public class CommandOptionsBuilder {
 	 * @return failureMessage option
 	 */
 	private Option getFailureMessageOption() {
-		Option failureMessage = getGeneralOption(Constants.failureMessage);
+		Option failureMessage = getGeneralOption(Constants.failureMessage, "fm");
 		failureMessage.setDescription("Wild card search in the failure message. Might be used to drill down a given exception etc.");
 		return failureMessage;
 	}
@@ -104,7 +105,7 @@ public class CommandOptionsBuilder {
 	 * @return dataObject option
 	 */
 	private Option getDataObjectOption() {
-		Option dataObject = getGeneralOption(Constants.dataObject);
+		Option dataObject = getGeneralOption(Constants.dataObject, "do");
 		return dataObject;
 	}
 	
@@ -113,10 +114,10 @@ public class CommandOptionsBuilder {
 	 * @return timeFrame option
 	 */
 	private Option getTimeFrameOption() {
-		Option timeFrame = getGeneralOption(Constants.timeFrame);
+		Option timeFrame = getGeneralOption(Constants.timeFrame, "tf");
 		timeFrame.setArgName("timeframe");
 		timeFrame.setRequired(false);
-		timeFrame.setDescription("Pattern:" + Constants.TIME_FRAME_FORMAT);
+		timeFrame.setDescription("Pattern:" + Constants.TIME_FRAME_FORMAT + "-" + Constants.TIME_FRAME_FORMAT);
 		return timeFrame;
 	}
 
@@ -127,7 +128,7 @@ public class CommandOptionsBuilder {
 	 * @TODO AR This could have a default value
 	 */
 	private Option getMaxResultSetPagingOption() {
-		Option maxResultSetPaging = getGeneralOption(Constants.maxResultSetPaging);
+		Option maxResultSetPaging = getGeneralOption(Constants.maxResultSetPaging, "mrsp");
 		maxResultSetPaging.setArgName("boolean");
 		maxResultSetPaging.setDescription("Mandatory");
 		return maxResultSetPaging;
@@ -140,7 +141,7 @@ public class CommandOptionsBuilder {
 	 * @TODO AR This could have a default value
 	 */
 	private Option getMaxResultSetOption() {
-		Option maxResultSet = getGeneralOption(Constants.maxResultSet);
+		Option maxResultSet = getGeneralOption(Constants.maxResultSet, "mrs");
 		maxResultSet.setArgName("integer");
 		maxResultSet.setDescription("Recommended to use range between 100 and 1000. This is a restriction due to JVM memory limitations");
 		return maxResultSet;
@@ -152,7 +153,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getActionOption() {
-		Option action = getGeneralOption(Constants.action);
+		Option action = getGeneralOption(Constants.action, "a");
 		action.setArgName(ArrayUtils.toString(Constants.actionOptions));
 		action.setDescription("Mandatory");
 		return action;
@@ -164,7 +165,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getLogFileNameOption() {
-		Option logFileName = getGeneralOption(Constants.logFileName);
+		Option logFileName = getGeneralOption(Constants.logFileName, "lfn");
 		logFileName.setArgName("filename");
 		logFileName.setDescription("Name of output log file. Default value is xxx");
 		return logFileName;
@@ -176,7 +177,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getLogFilePathOption() {
-		Option logFilePath = getGeneralOption(Constants.logFilePath);
+		Option logFilePath = getGeneralOption(Constants.logFilePath, "lfp");
 		logFilePath.setArgName("path");
 		logFilePath.setDescription("Path for directory where the output file will be located.");
 		return logFilePath;
@@ -188,7 +189,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getConfigFileOption() {
-		Option configFile = getGeneralOption(Constants.configFile);		
+		Option configFile = getGeneralOption(Constants.configFile, "cf");
 		configFile.setArgName("full path");
 		configFile.setDescription("Mandatory. Full path to configuration file for system environment spesifications (hostname etc.).");
 		return configFile;
@@ -211,7 +212,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getHelpOption() {
-		Option help = OptionBuilder.withLongOpt(Constants.help).create();
+		Option help = OptionBuilder.withLongOpt(Constants.help).create("h");
 		help.setDescription("This help index");
 		return help;
 	}
@@ -223,11 +224,11 @@ public class CommandOptionsBuilder {
 	 * @param optionName
 	 * @return
 	 */
-	private Option getGeneralOption(String optionName) {
+	private Option getGeneralOption(String optionName, String shortOption) {
 		Option option = OptionBuilder.withLongOpt(optionName)
 									 .withValueSeparator()
 									 .hasArg()
-									 .create();
+									 .create(StringUtils.isEmpty(shortOption) ? null : shortOption);
 		return option;
 	}
 }

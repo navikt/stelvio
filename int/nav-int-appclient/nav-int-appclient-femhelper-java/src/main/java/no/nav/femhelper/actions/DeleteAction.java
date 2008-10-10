@@ -19,9 +19,12 @@ import javax.management.ReflectionException;
 import no.nav.appclient.adapter.ServiceException;
 import no.nav.appclient.util.Constants;
 import no.nav.femhelper.common.Event;
+import no.nav.femhelper.common.EventStatus;
+import no.nav.femhelper.common.ProcessStatus;
 import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;
+import org.apache.commons.lang.StringUtils;
 
 import com.ibm.wbiserver.manualrecovery.FailedEventExceptionReport;
 import com.ibm.wbiserver.manualrecovery.exceptions.DiscardFailedException;
@@ -69,9 +72,8 @@ public class DeleteAction extends AbstractAction {
 			
 			for (int i = 0; i < events.size(); i++) {
 				Event event = events.get(i);
-				
 				deleteChunk.add(event);
-				event.setEventStatus("MARKED");
+				event.setEventStatus(EventStatus.MARKED);
 				reportedEvents.add(event);
 
 				// for each result set
@@ -116,10 +118,14 @@ public class DeleteAction extends AbstractAction {
 		// Delete processes connected to this chunk of events
 		for (Event event : events) {
 			try {
-				bfmConnection.forceTerminateFromActivity(event.getCorrelationID());
-				event.setProcessStatus("TERMINATED");
+				if (!StringUtils.isEmpty(event.getCorrelationID())) {
+					bfmConnection.forceTerminateFromActivity(event.getCorrelationID());
+					event.setProcessStatus(ProcessStatus.TERMINATED);
+				} else {
+					event.setProcessStatus(ProcessStatus.NOPROCESS);
+				}
 			} catch (ServiceException se) {
-				event.setProcessStatus("FAILED");
+				event.setProcessStatus(ProcessStatus.FAILED);
 				event.setProcessFailureMessage(se.getMessage());
 			}
 		}
@@ -128,9 +134,9 @@ public class DeleteAction extends AbstractAction {
 		// in FAILED status.
 		List <String> eventIds = new ArrayList<String> ();
 		for (Event event : events) {
-			if (event.getProcessStatus().equals("TERMINATED")) {
+//			if (!event.getProcessStatus().equals(ProcessStatus.FAILED)) {
 				eventIds.add(event.getMessageID());
-			}
+//			}
 		}
 		
 		try {
@@ -148,7 +154,7 @@ public class DeleteAction extends AbstractAction {
 			
 			// Update the reported events with event status deleted
 			for (Event event : events) {
-				event.setEventStatus("DELETED");
+				event.setEventStatus(EventStatus.DELETED);
 			}
 			
 		} catch (MBeanException e) {
@@ -162,7 +168,7 @@ public class DeleteAction extends AbstractAction {
 					if (reportedEvents.contains(report.getMsgId())) {
 						for (Event event : reportedEvents) {
 							if (event.getMessageID().equals(report.getMsgId())) {
-								event.setEventStatus("FAILURE");
+								event.setEventStatus(EventStatus.FAILED);
 								event.setEventFailureDate(sdf.format(report.getExceptionTime()));
 								event.setEventFailureMessage(report.getExceptionDetail());
 							}
@@ -172,8 +178,8 @@ public class DeleteAction extends AbstractAction {
 				
 				// Update the reported events with event status deleted
 				for (Event event : events) {
-					if (event.getEventStatus().equals("FAILURE")) {
-						event.setEventStatus("DELETED");
+					if (event.getEventStatus().equals(EventStatus.FAILED)) {
+						event.setEventStatus(EventStatus.DELETED);
 					}
 				}	
 			}

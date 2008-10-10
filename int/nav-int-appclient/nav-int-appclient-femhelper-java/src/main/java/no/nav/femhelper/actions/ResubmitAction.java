@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,6 +18,7 @@ import javax.management.ReflectionException;
 
 import no.nav.appclient.util.Constants;
 import no.nav.femhelper.common.Event;
+import no.nav.femhelper.common.EventStatus;
 import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;
@@ -35,6 +38,8 @@ public class ResubmitAction extends AbstractAction {
 	 */
 	private Logger logger = Logger.getLogger(ResubmitAction.class.getName());
 	
+	private Set <Event> reportedEvents = new LinkedHashSet<Event>();
+	
 	@Override
 	Object processEvents(String path, String filename, Map arguments,
 			boolean paging, long totalevents, int maxresultset, CommandLine cl)
@@ -47,8 +52,8 @@ public class ResubmitAction extends AbstractAction {
 		fileWriter.writeShortHeader();
 	
 		logFileWriter.log("Starting to collect events");
-		
 		ArrayList <Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
+		logFileWriter.log("Collected " + events.size() + " events");
 		
 		if (!cl.hasOption(Constants.noStop)) {
 			String q = "Do you want to continue and resubmit " + events.size() + " events?";
@@ -58,101 +63,30 @@ public class ResubmitAction extends AbstractAction {
 			}
 		}
 		
-		String opResubmit = Queries.QUERY_RESUBMIT_FAILED_EVENTS;
-		
-		logFileWriter.log("Collected " + events.size() + " events");
-		
 		if (!events.isEmpty()) {
 			logger.log(Level.INFO,"Resubmiting #" + events.size() + " events...please wait!");
 			logFileWriter.log("Staring to resubmit " + events.size() + " events");
 			int j = 1;
-			ArrayList <String> chunk = new ArrayList<String>();
-			HashMap<String, String> reportEvents = new HashMap<String, String>();
+			ArrayList <Event> chunk = new ArrayList<Event>();
 			for (int i = 0; i < events.size(); i++) {
-				chunk.add(events.get(i).getMessageID());
-				reportEvents.put(events.get(i).getMessageID(), new String("MARKED~ ~ "));
+				Event event = events.get(i);
+				event.setEventStatus(EventStatus.MARKED);
+				chunk.add(event);
+				reportedEvents.add(event);
 
 				// for each result set
 				if (j==Constants.MAX_DELETE)
 				{
 					logger.log(Level.INFO, "Resubmited result set of events from #" + ((i+1)-Constants.MAX_DELETE) + " to #" + (i+1));
-					String passIn[] = new String[chunk.size()];
-				 	for (int d = 0; d < passIn.length; d++) {
-						passIn[d] = chunk.get(d);
-					}
-					Object[] para = new Object[] {passIn};  
-				 	String[] sig = new String[] {"[Ljava.lang.String;"};
-				 	try {
-						adminClient.invoke(faildEventManager, opResubmit, para, sig);
-						// no exception update hashtable for reporting
-						for (int d = 0; d < passIn.length; d++) {
-							if (reportEvents.containsKey(passIn[d])) {
-								reportEvents.put(passIn[d], "RESUBMITED~ ~ ");
-							}
-						}
-					} catch (MBeanException e) {
-						//REPORT not deleted events
-						if (e.getTargetException() instanceof DiscardFailedException) {
-							FailedEventExceptionReport[] exRep = ((DiscardFailedException) e.getTargetException()).getFailedEventExceptionReports();
-							SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
-							for (int r = 0; r < exRep.length; r++) {
-								if (reportEvents.containsKey(exRep[r].getMsgId())) {
-									reportEvents.put(exRep[r].getMsgId(), "FAILURE" + "~" + sdf.format(exRep[r].getExceptionTime()) + "~" +  exRep[r].getExceptionDetail());
-								}	
-							}
-							//UPDATE ALL the rest to DELETED
-							for (int d = 0; d < passIn.length; d++) {
-								if (reportEvents.get(passIn[d]).indexOf("FAILURE")==-1) {
-									reportEvents.put(passIn[d], "RESUBMITED~ ~ ");
-								}
-							}	
-						}
-					}
-					// reset chunk iterator
+					resubmitEvents(chunk);
 					j=1;
 					chunk.clear();
 				}
 				// the last chunk
 				else if ((events.size()-i) < Constants.MAX_DELETE && events.size()==(i+1)) {
 					
-					if (events.size() < Constants.MAX_DELETE)
-						logger.log(Level.INFO, "Resubmit result set of #" + (i+1) + " events" );
-					else
-						logger.log(Level.INFO, "Resubmit final result set of #" + chunk.size() + " events" );
-
-					String passIn[] = new String[chunk.size()];
-				 	for (int d = 0; d < passIn.length; d++) {
-						passIn[d] = chunk.get(d);
-					}
-					Object[] para = new Object[] {passIn};  
-				 	String[] sig = new String[] {"[Ljava.lang.String;"};
-				 	try {
-						adminClient.invoke(faildEventManager, opResubmit, para, sig);
-						// no exception update hashtable for reporting
-						for (int d = 0; d < passIn.length; d++) {
-							if (reportEvents.containsKey(passIn[d])) {
-								reportEvents.put(passIn[d], "RESUBMIT~ ~ ");
-							}
-						}
-					} catch (MBeanException e) {
-						//REPORT not deleted events
-						if (e.getTargetException() instanceof DiscardFailedException) {
-							FailedEventExceptionReport[] exRep = ((DiscardFailedException) e.getTargetException()).getFailedEventExceptionReports();
-							SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
-							for (int r = 0; r < exRep.length; r++) {
-								if (reportEvents.containsKey(exRep[r].getMsgId())) {
-									reportEvents.put(exRep[r].getMsgId(), "FAILURE" + "~" + sdf.format(exRep[r].getExceptionTime()) + "~" +  exRep[r].getExceptionDetail());
-								}	
-							}
-							//UPDATE ALL the rest to DELETED
-							for (int d = 0; d < passIn.length; d++) {
-								if (reportEvents.get(passIn[d]).indexOf("FAILURE")==-1) {
-									reportEvents.put(passIn[d], "RESUBMITED~ ~ ");
-								}
-							}	
-						}
-					}
-					// reset chunk iterator
+					logger.log(Level.INFO, "Resubmit final result set of #" + chunk.size() + " events" );
+					resubmitEvents(chunk);
 					j=1;
 					chunk.clear();
 				}
@@ -162,15 +96,10 @@ public class ResubmitAction extends AbstractAction {
 			logger.log(Level.INFO,"Resubmit of #" + events.size() + " events...done!");
 			logger.log(Level.INFO,"Reporting status of events...please wait!");
 			logFileWriter.log("Completed resubmit of " + events.size() + " events");
-			Iterator it = reportEvents.keySet().iterator();
-			while (it.hasNext()) {
-				String key = (String) it.next();
-				String[] values = (reportEvents.get(key)).split("~");
-				String status = values[0];
-				String fdate = values[1];
-				String fmsg = values[2];
-//				fileWriter.writeShortEvent(key, status, fdate, fmsg);
+			for (Event event : events) {
+				fileWriter.writeShortEvent(event);
 			}
+			
 		}
 		else
 		{
@@ -180,6 +109,56 @@ public class ResubmitAction extends AbstractAction {
 		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		return null;
 
+	}
+	
+	private void resubmitEvents(List <Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException {
+		
+
+	 	try {
+	 		// Map events to correct String array
+	 		String opResubmit = Queries.QUERY_RESUBMIT_FAILED_EVENTS;
+		 	String[] sig = new String[] {"[Ljava.lang.String;"};
+		 	String[] ids = new String[events.size()];
+			for (int i = 0; i < ids.length; i++) {
+				ids[i] = events.get(i).getMessageID();
+			}
+			Object[] para = new Object[] {ids};
+	 		
+			// Resubmit events in this chunk
+			adminClient.invoke(faildEventManager, opResubmit, para, sig);
+			
+			// Update the reported events with event status deleted
+			for (Event event : events) {
+				event.setEventStatus(EventStatus.RESUBMITED);
+			}
+			
+		} catch (MBeanException e) {
+			//REPORT not deleted events
+			if (e.getTargetException() instanceof DiscardFailedException) {
+				FailedEventExceptionReport[] re = ((DiscardFailedException) e.getTargetException()).getFailedEventExceptionReports();
+				SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
+
+				// Update with failure status and set failureinformation to the failed events
+				for (FailedEventExceptionReport report : re) {
+					if (reportedEvents.contains(report.getMsgId())) {
+						for (Event event : reportedEvents) {
+							if (event.getMessageID().equals(report.getMsgId())) {
+								event.setEventStatus(EventStatus.FAILED);
+								event.setEventFailureDate(sdf.format(report.getExceptionTime()));
+								event.setEventFailureMessage(report.getExceptionDetail());
+							}
+						}
+					}
+				}
+				
+				// Update the reported events with event status deleted
+				for (Event event : events) {
+					if (!event.getEventStatus().equals(EventStatus.FAILED)) {
+						event.setEventStatus(EventStatus.RESUBMITED);
+					}
+				}	
+			}
+		}
 	}
 
 }

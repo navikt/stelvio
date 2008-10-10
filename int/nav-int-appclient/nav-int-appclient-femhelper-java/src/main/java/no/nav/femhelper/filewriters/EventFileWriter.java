@@ -88,7 +88,7 @@ public class EventFileWriter extends AbstractFileWriter {
 	 * @param adminClient
 	 * @throws IOException
 	 */
-	public void writeCSVEvent (FailedEventWithParameters parameters, String correlationId, AdminClient adminClient, String dateFormat) throws IOException {
+	public void writeCSVEvent (FailedEventWithParameters parameters, Event event, AdminClient adminClient) throws IOException {
 		
 		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "writeCSVEvent");
 		
@@ -101,7 +101,7 @@ public class EventFileWriter extends AbstractFileWriter {
 		writer.write(getEscapedString(parameters.getDestinationModuleName()) + separator);
 		writer.write(getEscapedString(parameters.getDestinationComponentName()) + separator);
 		writer.write(getEscapedString(parameters.getDestinationMethodName()) + separator);
-		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 		writer.write(getEscapedString(sdf.format(parameters.getFailureDateTime())) + separator);
 		
 		// Write quotes start. This is needed to get all values within
@@ -125,12 +125,8 @@ public class EventFileWriter extends AbstractFileWriter {
 		 	    // Each parameter is know as a type of FailedEventParameter.
 		 	    FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
 		 	    SDOFormatter sdoppt = new SDOFormatter(2, " ");
-
-				LOGGER.log(Level.FINEST, "getName: " + failedEventParameter.getName());
-				LOGGER.log(Level.FINEST, "getType: " + failedEventParameter.getType());
-				LOGGER.log(Level.FINEST, "getPosition: " + failedEventParameter.getPosition());
-				LOGGER.log(Level.FINEST, "getValue: " + failedEventParameter.getValue());
-		 	   
+		 	    
+		 	    // Probing in data type
 		 	    String prettyPrint = null;
 		 	    if (failedEventParameter.getValue() instanceof DataObject) {
 		 	    	sdoppt.sdoPrettyPrint((DataObject)failedEventParameter.getValue()); 
@@ -148,7 +144,7 @@ public class EventFileWriter extends AbstractFileWriter {
 	 	}
 	 	
 	 	// Write PIID / CorrelationId
-	 	writer.write(getEscapedString(correlationId));
+	 	writer.write(getEscapedString(event.getCorrelationID()));
 
 	 	
 	 	// Write a empty line the end of this entry and close the writer
@@ -169,6 +165,7 @@ public class EventFileWriter extends AbstractFileWriter {
 		writer.write("Event Status" + separator);
 		writer.write("FailureDate" + separator);
 		writer.write("FailureMessage" + separator);
+		writer.write("CorrelationId" + separator);
 		writer.write("Process Status" + separator);
 		writer.write("FailureMessage" + separator);
 		writer.newLine();
@@ -199,6 +196,7 @@ public class EventFileWriter extends AbstractFileWriter {
 		// Write quotes end plus separator
 	 	writer.write("\"" + separator);
 	 	
+	 	writer.write(getEscapedString(event.getCorrelationID()) + separator);
 	 	writer.write(getEscapedString(event.getProcessStatus()) + separator);
 	 	
 	 	writer.write("\"");

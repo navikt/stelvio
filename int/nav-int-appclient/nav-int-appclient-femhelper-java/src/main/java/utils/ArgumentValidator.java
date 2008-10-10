@@ -58,9 +58,7 @@ public class ArgumentValidator {
 		// timeFrame is validated againts the '-' separator, 
 		// and the date values on both sides are validated against the pattern.
 		String timeFrame = cl.getOptionValue(Constants.timeFrame);
-		if (Constants.ACTION_TIMEFRAME.equals(action) && StringUtils.isEmpty(timeFrame)) {
-			result.add("Property " + Constants.timeFrame + " is empty");
-		} else if (Constants.ACTION_TIMEFRAME.equals(action)) {
+		if (!StringUtils.isEmpty(timeFrame)) {
 
 			// Validate that the String has one, and only one '-'
 			// sign to separate the to- and from date.
