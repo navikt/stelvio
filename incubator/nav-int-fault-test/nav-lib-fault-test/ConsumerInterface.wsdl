@@ -19,6 +19,13 @@
         </xsd:complexType>
       </xsd:element>
             <xsd:element name="FaultTwoWayFault_element" nillable="true" type="bons1:FaultTwoWayFault"/>
+            <xsd:element name="oneWay">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="oneWayRequest" nillable="true" type="bons1:GBOTwoWayRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
         </xsd:schema>
   </wsdl:types>
     <wsdl:message name="twoWayRequestMsg">
@@ -30,11 +37,17 @@
     <wsdl:message name="twoWay_twoWayFaultMsg">
     <wsdl:part element="tns:FaultTwoWayFault_element" name="twoWayFault"/>
   </wsdl:message>
+    <wsdl:message name="oneWayRequestMsg">
+    <wsdl:part element="tns:oneWay" name="oneWayParameters"/>
+  </wsdl:message>
     <wsdl:portType name="ConsumerInterface">
     <wsdl:operation name="twoWay">
       <wsdl:input message="tns:twoWayRequestMsg" name="twoWayRequest"/>
       <wsdl:output message="tns:twoWayResponseMsg" name="twoWayResponse"/>
       <wsdl:fault message="tns:twoWay_twoWayFaultMsg" name="twoWayFault"/>
     </wsdl:operation>
-  </wsdl:portType>
+        <wsdl:operation name="oneWay">
+      <wsdl:input message="tns:oneWayRequestMsg" name="oneWayRequest"/>
+    </wsdl:operation>
+    </wsdl:portType>
 </wsdl:definitions>
