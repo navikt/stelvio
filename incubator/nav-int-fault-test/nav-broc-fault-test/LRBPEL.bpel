@@ -11,6 +11,7 @@
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterfaceAsync.wsdl" namespace="http://nav-broc-fault-test/ProducerInterfaceAsync"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="FaultTwoWayFault.xsd" namespace="http://myLibrary"/>
   <bpws:partnerLinks>
     <bpws:partnerLink myRole="Interface" name="ConsumerInterface" partnerLinkType="ns:ConsumerInterfacePLT"/>
     <bpws:partnerLink name="SCAProducerImport" partnerLinkType="ns:ProducerInterfacePLT2" partnerRole="Interface"/>
@@ -55,7 +56,7 @@
       <wpc:output>
         <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
       </wpc:output>
-      <bpws:catch faultMessageType="ns2:twoWay_twoWayFaultMsg" faultName="ns2:twoWayFault" faultVariable="twoWayFaultVariable" wpc:variableId="14">
+      <bpws:catch faultName="ns3:twoWayFault" faultVariable="twoWayFaultVariable" wpc:faultType="ns0:FaultTwoWayFault" wpc:variableId="14">
         <bpws:sequence name="HiddenSequence3" wpc:id="1073741851">
           <bpws:invoke name="Statusprinter1" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="15">
             <wpc:script>
@@ -71,28 +72,9 @@
               <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
             </wpc:output>
           </bpws:invoke>
+          <bpws:terminate name="Terminate" wpc:displayName="Terminate" wpc:id="29"/>
         </bpws:sequence>
       </bpws:catch>
-      <bpws:catchAll>
-        <bpws:sequence name="HiddenSequence1" wpc:id="1073741841">
-          <bpws:invoke name="Statusprinter2" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="16">
-            <wpc:script>
-              <wpc:javaCode><![CDATA[
-System.out.println("Caught generic fault after SCA Invoke");
-
-]]></wpc:javaCode>
-            </wpc:script>
-          </bpws:invoke>
-          <bpws:invoke name="InvokeSCAFaultHandler1" operation="twoWay" partnerLink="SCAFaultHandlerImport" portType="ns2:ProducerInterface" wpc:continueOnError="no" wpc:displayName="Invoke SCAFaultHandler" wpc:id="18">
-            <wpc:input>
-              <wpc:parameter name="twoWayRequest" variable="SCAFaultHandlerRequest"/>
-            </wpc:input>
-            <wpc:output>
-              <wpc:parameter name="twoWayResponse" variable="twoWayResponse"/>
-            </wpc:output>
-          </bpws:invoke>
-        </bpws:sequence>
-      </bpws:catchAll>
     </bpws:invoke>
     <bpws:invoke name="Statusprinter6" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="26">
       <wpc:script>
