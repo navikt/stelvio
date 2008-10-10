@@ -26,10 +26,10 @@ public class TerminateAction extends AbstractReportAction {
 			public String getValue(ProcessInstanceData processInstance) {
 				PIID piid = processInstance.getID();
 				try {
-					getBFMConnection().getBusinessFlowManagerService().forceTerminate(piid);
+					getBFMConnection().getBusinessFlowManagerService().delete(piid);
 					return "OK";
 				} catch (ServiceException e) {
-					logger.warn("Error terminating/deleting process instance with id=<" + piid + ">", e);
+					logger.warn("Error deleting process instance with id=<" + piid + ">", e);
 					return e.getMessage();
 				}
 			}
