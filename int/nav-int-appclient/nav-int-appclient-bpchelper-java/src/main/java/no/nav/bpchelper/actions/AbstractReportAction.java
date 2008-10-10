@@ -24,10 +24,17 @@ public abstract class AbstractReportAction extends AbstractAction {
 
 	static {
 		DATA_COLUMNS = new ArrayList<ReportColumnSpec<ProcessInstanceData>>();
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.ID_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.COMPLETIONTIME_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.CREATIONTIME_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.DESCRIPTION_PROPERTY));
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.NAME_PROPERTY));
-		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY));
-		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PARENTPROCESSINSTANCENAME_PROPERTY));
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.STARTTIME_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.STARTER_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.TOPLEVELPROCESSINSTANCENAME_PROPERTY));
 	}
 
 	public AbstractReportAction() {
