@@ -1,5 +1,7 @@
 package no.nav.maven.plugins.descriptor.websphere.bnd;
 
+import java.net.URI;
+import java.net.URL;
 import java.util.Iterator;
 
 import no.nav.maven.plugins.descriptor.jee.EjbJarEditor;
@@ -36,60 +38,132 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
 		return WscbndFactory.eINSTANCE.createClientBinding();
 	}
     
-    private EList getComponentScopedRefs() {
-    	return clientBinding.getComponentScopedRefs();
-    }
-    
+   
     public void setSslConfig(String name) {
-		PortQnameBinding portQNBnd = getPortQnameBinding();
-		SSLConfig sslConfig = portQNBnd.getSslConfig();
-		sslConfig.setName(name);		
-    }
-    
-    private PortQnameBinding getPortQnameBinding() {
-		ComponentScopedRefs compScopedRefs = (ComponentScopedRefs)getComponentScopedRefs().get(0);
-		ServiceRef serviceRef = (ServiceRef) compScopedRefs.getServiceRefs().get(0);
-		return (PortQnameBinding) serviceRef.getPortQnameBindings().get(0);   	
-    }
-    
-    private SecurityRequestGeneratorBindingConfig getSecurityRequestGeneratorBindingConfig() {
-    	return getPortQnameBinding().getSecurityRequestGeneratorBindingConfig();
-    }
-       
-    public void setEndpointUri(String uri) {
-		PortQnameBinding portQNBnd = getPortQnameBinding();
-		portQNBnd.setOverriddenEndpointURI(uri);
-    }
-    
-    public void addRequestTokenGeneratorLTPA(String partRef) {
-		TokenType tokenType = TokenType.createLTPA();
-		addRequestTokenGenerator(tokenType, partRef);
-    }
-    
-    public void addRequestTokenGenerator(TokenType tokenType, String partRef) {
-		SecurityRequestGeneratorBindingConfig requestGenBnd = getSecurityRequestGeneratorBindingConfig();
-		EList tokenGenerators = requestGenBnd.getTokenGenerator();
-		Iterator tokenGenIter = tokenGenerators.iterator();
-		while (tokenGenIter.hasNext()) {
-			TokenGenerator tokenGen = (TokenGenerator) tokenGenIter.next();
-			System.out.println("TokenGenerator: " + tokenGen);
-			if (tokenGen != null && !ValueTypes.equals(tokenGen.getValueType(), tokenType.valueType())) {
-				System.out.println("Adding TokenGenerator: " + tokenType.tokenGenerator());
-				TokenGenerator newTokenGen = tokenType.tokenGenerator();
-				PartReference partReference = WebSphereFactories.getWscommonbndFactory().createPartReference();
-				partReference.setPart(partRef);
-				newTokenGen.setPartReference(partReference);
-				tokenGenerators.add(newTokenGen);
-			}
-			System.out.println("ValueType: " + tokenGen.getValueType());
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+			setSslConfig(name, serviceRef);
 		}
     }
     
+    private void setSslConfig(String name, ServiceRef serviceRef){
+    	PortQnameBinding portQNBnd = getPortQnameBinding(serviceRef);
+    	SSLConfig sslConfig = portQNBnd.getSslConfig();
+		sslConfig.setName(name);		
+    }
+    
+    public void setEndpointUri(String newPortServerAddress) {
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+			setEndpointUri(newPortServerAddress, serviceRef);
+    	}
+    }
+    private void setEndpointUri(String newPortServerAddress, ServiceRef serviceRef) {
+		PortQnameBinding portQNBnd = getPortQnameBinding(serviceRef);
+		String endpoint = portQNBnd.getOverriddenEndpointURI();
+		if(endpoint != null){
+			if(newPortServerAddress != null){
+				portQNBnd.setOverriddenEndpointURI(createNewEndpointURI(endpoint, newPortServerAddress));
+			}
+		}
+    }
+    
+    private String createNewEndpointURI(String fullUrl, String newPortServerAddress){
+    	URI url = URI.create(fullUrl);
+		String uri = url.getPath();
+		newPortServerAddress = newPortServerAddress.endsWith("/") ? 
+				newPortServerAddress.substring(0, newPortServerAddress.length() - 1) :
+					newPortServerAddress;
+		
+		String endpointURI = newPortServerAddress + uri;
+    	return endpointURI;
+    }
+    
     public void addBasicAuth(String username, String password) {
-		PortQnameBinding portQNBnd = getPortQnameBinding();
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+			addBasicAuth(username, password, serviceRef);
+    	}
+    }
+    
+    private void addBasicAuth(String username, String password, ServiceRef serviceRef) {
+		PortQnameBinding portQNBnd = getPortQnameBinding(serviceRef);
 		BasicAuth basicAuth = WebSphereFactories.getWscbndFactory().createBasicAuth();
 		basicAuth.setUserid(username);
 		basicAuth.setPassword(password);
 		portQNBnd.setBasicAuth(basicAuth);
     }
+    
+    public void addRequestTokenGeneratorLTPA(String partRef) {
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+			addRequestTokenGeneratorLTPA(partRef, serviceRef);
+    	}
+    }
+    
+    private void addRequestTokenGeneratorLTPA(String partRef, ServiceRef serviceRef) {
+		TokenType tokenType = TokenType.createLTPA();
+		addRequestTokenGenerator(tokenType, partRef, serviceRef);
+    }
+    
+    private void addRequestTokenGenerator(TokenType tokenType, String partRef, ServiceRef serviceRef) {
+		SecurityRequestGeneratorBindingConfig requestGenBnd = 
+			getSecurityRequestGeneratorBindingConfig(getPortQnameBinding(serviceRef));
+		EList tokenGenerators = requestGenBnd.getTokenGenerator();
+		Iterator tokenGenIter = tokenGenerators.iterator();
+		if(!isTokenGeneratorPresent(tokenGenerators, tokenType)){
+			TokenGenerator newTokenGen = createTokenGenerator(tokenType, partRef);
+			System.out.println("TokenGenerator is not present. Adding new generator with TokenType:" + newTokenGen.getValueType());
+			tokenGenerators.add(newTokenGen);
+		}
+    }
+    
+    private EList getComponentScopedRefs() {
+    	return clientBinding.getComponentScopedRefs();
+    }
+    
+    private PortQnameBinding getPortQnameBinding(ServiceRef serviceRef) {
+		return (PortQnameBinding) serviceRef.getPortQnameBindings().get(0);   	
+    }
+    
+    private Iterator getServiceRefs() {
+		ComponentScopedRefs compScopedRefs = (ComponentScopedRefs)getComponentScopedRefs().get(0);
+		return compScopedRefs.getServiceRefs().iterator();	
+    }
+    
+    private SecurityRequestGeneratorBindingConfig getSecurityRequestGeneratorBindingConfig(PortQnameBinding portQNBnd) {  	
+    	SecurityRequestGeneratorBindingConfig cfg = portQNBnd.getSecurityRequestGeneratorBindingConfig();
+    	if(cfg == null){
+    		cfg = WebSphereFactories.getWscbndFactory().createSecurityRequestGeneratorBindingConfig();
+    		portQNBnd.setSecurityRequestGeneratorBindingConfig(cfg);
+    	}
+    	return portQNBnd.getSecurityRequestGeneratorBindingConfig();
+    }
+       
+ 
+    
+    private boolean isTokenGeneratorPresent(EList tokenGenerators, TokenType tokenType){
+    	Iterator tokenGenIter = tokenGenerators.iterator();
+    	while (tokenGenIter.hasNext()) {
+			TokenGenerator tokenGen = (TokenGenerator) tokenGenIter.next();
+			if (tokenGen != null && ValueTypes.equals(tokenGen.getValueType(), tokenType.valueType())) {
+				return true;
+			}
+		}
+    	return false;
+    }
+    
+    private TokenGenerator createTokenGenerator(TokenType tokenType, String partRef){
+    	TokenGenerator newTokenGen = tokenType.tokenGenerator();
+		PartReference partReference = WebSphereFactories.getWscommonbndFactory().createPartReference();
+		partReference.setPart(partRef);
+		newTokenGen.setPartReference(partReference);
+		return newTokenGen;
+    }
+    
+   
 }
