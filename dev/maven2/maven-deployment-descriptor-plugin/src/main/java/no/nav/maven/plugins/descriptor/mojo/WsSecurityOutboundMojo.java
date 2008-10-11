@@ -34,7 +34,7 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	/**
 	 * @parameter
 	 */
-	private String endpoint;
+	private String endpointPortServerAddress;
 	
 	/**
 	 * @parameter
@@ -63,9 +63,9 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 			setupSslConfig(ejbJarFile, sslConfig);	
 		}
 		// Configure overridden endpoint URI
-		if (endpoint != null && !endpoint.equals("")) {
-			getLog().info("Setting up endpoint: '" + endpoint + "'");
-			setupOverriddenEndpoint(ejbJarFile, endpoint);
+		if (endpointPortServerAddress != null && !endpointPortServerAddress.equals("")) {
+			getLog().info("Setting up endpoint with portServerAddress: '" + endpointPortServerAddress + "'");
+			setupOverriddenEndpoint(ejbJarFile, endpointPortServerAddress);
 		}
 		// Set up Authentication mechanisms
 		if (authList != null) {
@@ -90,10 +90,10 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		
 	}
 	
-	private void setupOverriddenEndpoint(Archive archive, String overriddenEndpoint) throws MojoExecutionException {
+	private void setupOverriddenEndpoint(Archive archive, String portServerAddress) throws MojoExecutionException {
 		try {
 			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);
-			wscBnd.setEndpointUri(overriddenEndpoint);
+			wscBnd.setEndpointUri(portServerAddress);
 			wscBnd.save();
 		} catch (IOException e) {
 			throw new MojoExecutionException("Caught IOException while setting up overriddenEndpoint", e);
