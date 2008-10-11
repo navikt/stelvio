@@ -35,20 +35,16 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
     protected WsClientExtension createDescriptorContent(){		
 		return WscextFactory.eINSTANCE.createWsClientExtension();
 	}
- 
-    private EList getComponentScopedRefs() {
-    	return clientExtension.getComponentScopedRefs();
-    }
-    
-    private PortQnameBinding getPortQnameBinding() {
-    	ComponentScopedRefs compScopedRefs = (ComponentScopedRefs)getComponentScopedRefs().get(0);
-    	EList serviceRefs = compScopedRefs.getServiceRefs();
-    	ServiceRef serviceRef = (ServiceRef)serviceRefs.get(0);
-    	return (PortQnameBinding)serviceRef.getPortQnameBindings().get(0);
-    }
     
     public void addRequestGeneratorLTPA(String partRef) {
-    	ClientServiceConfig clientSrvCfg = getPortQnameBinding().getClientServiceConfig();
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+    		addRequestGeneratorLTPA(partRef, serviceRef);
+    	}
+    }
+    private void addRequestGeneratorLTPA(String partRef, ServiceRef serviceRef) {
+    	ClientServiceConfig clientSrvCfg = getClientServiceConfig(getPortQnameBinding(serviceRef));
     	System.out.println("ClientServiceConfig: " + clientSrvCfg);
     	SecurityRequestGeneratorServiceConfig requestGenCfg = clientSrvCfg.getSecurityRequestGeneratorServiceConfig();
     	if (requestGenCfg == null) {
@@ -56,20 +52,55 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
     		clientSrvCfg.setSecurityRequestGeneratorServiceConfig(requestGenCfg);
     	}
     	EList securityTokens = requestGenCfg.getSecurityToken();
+    	if(!isLTPASecurityTokenPresent(securityTokens)){
+    		SecurityToken ltpaToken = createLTPASecurityToken(partRef);
+    		securityTokens.add(ltpaToken);
+    	}
+    }
+    
+    private PortQnameBinding getPortQnameBinding(ServiceRef serviceRef) {
+		return (PortQnameBinding) serviceRef.getPortQnameBindings().get(0);   	
+    }
+    
+    private Iterator getServiceRefs() {
+		ComponentScopedRefs compScopedRefs = (ComponentScopedRefs)getComponentScopedRefs().get(0);
+		return compScopedRefs.getServiceRefs().iterator();	
+    }
+    
+    
+    private EList getComponentScopedRefs() {
+    	return clientExtension.getComponentScopedRefs();
+    }
+    
+    
+    private ClientServiceConfig getClientServiceConfig(PortQnameBinding portQNbnd){
+    	ClientServiceConfig clientSrvCfg = portQNbnd.getClientServiceConfig();
+    	if(clientSrvCfg == null){
+    		clientSrvCfg = WebSphereFactories.getWscextFactory().createClientServiceConfig();
+    		portQNbnd.setClientServiceConfig(clientSrvCfg);
+    	}
+    	return portQNbnd.getClientServiceConfig();
+    }
+    
+    private SecurityToken createLTPASecurityToken(String partRef){
+    	SecurityToken ltpaToken = WebSphereFactories.getWscommonextFactory().createSecurityToken();
+		ltpaToken.setLocalName("LTPA");
+		ltpaToken.setName(partRef);
+		ltpaToken.setUri(LTPA_URI);
+		return ltpaToken;
+    }
+    
+    private boolean isLTPASecurityTokenPresent(EList securityTokens){
     	Iterator securityTokensIter = securityTokens.iterator();
     	while (securityTokensIter.hasNext()) {
     		SecurityToken securityToken = (SecurityToken) securityTokensIter.next();
-    		System.out.println("SecurityToken: " + securityToken);
     		if (securityToken.getUri().equals(LTPA_URI)) {
-    			securityTokens.remove(securityToken);
-    			SecurityToken ltpaToken = WebSphereFactories.getWscommonextFactory().createSecurityToken();
-    			securityTokens.add(ltpaToken);
-    			ltpaToken.setLocalName("LTPA");
-    			ltpaToken.setName(partRef);
-    			ltpaToken.setUri(LTPA_URI);
+    			return true;
     		}
     	}
+    	return false;
     }
+    
     
     public void addRequestGeneratorUsername() {
     	
