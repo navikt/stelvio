@@ -39,6 +39,18 @@ public class Constants {
 	public static final String BootstrapPort = "BootstrapPort"; 
 	
 	/**
+	 * Public constant to represent the 'CONNECTOR_HOST' string from
+	 * the configuration file and properties related to that
+	 */
+	public static final String CONNECTOR_HOST = "CONNECTOR_HOST"; 
+	
+	/**
+	 * Public constant to represent the 'CONNECTOR_PORT' string from
+	 * the configuration file and properties related to that
+	 */
+	public static final String CONNECTOR_PORT = "CONNECTOR_PORT"; 
+	
+	/**
 	 * Public constant to represent the 'CONNECTOR_TYPE' string from
 	 * the configuration file and properties related to that
 	 */

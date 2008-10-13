@@ -43,12 +43,12 @@ public class PropertyMapper {
 
 		Properties result = new Properties();
 
-		if (!StringUtils.isEmpty(src.getProperty(Constants.BootstrapHost))) {
-			result.setProperty(AdminClient.CONNECTOR_HOST, src.getProperty(Constants.BootstrapHost));
+		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_HOST))) {
+			result.setProperty(AdminClient.CONNECTOR_HOST, src.getProperty(Constants.CONNECTOR_HOST));
 		}
 
-		if (!StringUtils.isEmpty(src.getProperty(Constants.BootstrapPort))) {
-			result.setProperty(AdminClient.CONNECTOR_PORT, src.getProperty(Constants.BootstrapPort));
+		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_HOST))) {
+			result.setProperty(AdminClient.CONNECTOR_PORT, src.getProperty(Constants.CONNECTOR_PORT));
 		}
 
 		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_TYPE))) {
