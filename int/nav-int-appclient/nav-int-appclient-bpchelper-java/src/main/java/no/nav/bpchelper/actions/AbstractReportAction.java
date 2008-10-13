@@ -17,7 +17,7 @@ import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public abstract class AbstractReportAction extends AbstractAction {
 	private static final MessageFormat CONFIRM_MESSAGE_FORMAT = new MessageFormat(
-			"Do you want to continue and {0} {1} qualifying processes (y/n)?");
+			"Do you want to continue and {0} {1} qualifying process(es) (y/n)?");
 	protected static final Collection<ReportColumnSpec<ProcessInstanceData>> DATA_COLUMNS;
 
 	private final Collection<ReportColumnSpec<ProcessInstanceData>> reportColumns;
@@ -46,7 +46,7 @@ public abstract class AbstractReportAction extends AbstractAction {
 	public int execute() {
 		Collection<PIID> piidCollection = executeQuery();
 		int stoppedProcessCount = piidCollection.size();
-		logger.info("{} qualifying processes", stoppedProcessCount);
+		logger.info("{} qualifying process(es)", stoppedProcessCount);
 
 		if (stoppedProcessCount > 0 && isInteractiveMode() && !confirm(stoppedProcessCount)) {
 			return stoppedProcessCount;

@@ -16,7 +16,7 @@ public class StatusAction extends AbstractAction {
 
 		rs.next();
 		int stoppedProcessCount = rs.getInteger(1);
-		logger.info("Status reported {} qualifying processes", stoppedProcessCount);
+		logger.info("{} qualifying process(es)", stoppedProcessCount);
 		return stoppedProcessCount;
 	}
 }
