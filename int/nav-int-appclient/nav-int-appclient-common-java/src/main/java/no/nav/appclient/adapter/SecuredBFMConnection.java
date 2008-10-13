@@ -31,11 +31,7 @@ import com.ibm.bpe.clientmodel.BFMConnection;
  * @author Andreas Roe
  */
 public class SecuredBFMConnection extends BFMConnection {
-
-	/**
-	 * Logger instance
-	 */
-	private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private Properties properties = null;
 
@@ -60,13 +56,15 @@ public class SecuredBFMConnection extends BFMConnection {
 		}
 
 		// Lookup the BusinessFlowManager bean
-		LOGGER.info("Looking up BusinessFlowManager bean with JNDI '" + getJndiName() + "'");
+		if (logger.isDebugEnabled()) {
+			logger.info("Looking up BusinessFlowManager bean with JNDI '{}'", getJndiName());
+		}
 		BusinessFlowManager bfm = ((BusinessFlowManagerHome) PortableRemoteObject.narrow(ctx.lookup(getJndiName()),
 				BusinessFlowManagerHome.class)).create();
 
 		// Report possible issues with the lookup
 		if (null == bfm) {
-			LOGGER.error("Error with EJB lookup. The response object is 'null'");
+			logger.error("Error with EJB lookup. The response object is 'null'");
 		}
 
 		return bfm;
