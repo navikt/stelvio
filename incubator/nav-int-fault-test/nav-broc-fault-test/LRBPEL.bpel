@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://myConsumerModule/LRBPELArtifacts" xmlns:ns0="http://myLibrary" xmlns:ns1="http://myLibrary/ConsumerInterface" xmlns:ns2="http://myLibrary/ProducerInterface" xmlns:ns3="http://nav-broc-fault-test/ProducerInterfaceAsync" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="LRBPEL" suppressJoinFailure="yes" targetNamespace="http://myConsumerModule" wpc:autonomy="peer" wpc:displayName="LRBPEL" wpc:id="6" wpc:validFrom="2008-06-18T13:31:34">
+  <wpc:customProperty name="terminatedSuccessfully">
+    <wpc:value>false</wpc:value>
+  </wpc:customProperty>
   <wpc:customProperty name="randomProperty">
     <wpc:value>undefined</wpc:value>
   </wpc:customProperty>
@@ -61,7 +64,8 @@
     </bpws:invoke>
     <bpws:switch name="Choice" wpc:displayName="Choice" wpc:id="51">
       <bpws:case wpc:id="52">
-        <bpws:condition expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/"><![CDATA[return Boolean.valueOf(getProcessCustomProperty("randomProperty"));]]></bpws:condition>
+        <bpws:condition expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/"><![CDATA[return Boolean.valueOf(getProcessCustomProperty("randomProperty"));
+]]></bpws:condition>
         <bpws:invoke name="InvokeSCAProducertwoWay" operation="twoWay" partnerLink="ProducerInterfaceAsyncPartner" portType="ns3:ProducerInterfaceAsync" wpc:continueOnError="no" wpc:displayName="Invoke SCAProducer:twoWay" wpc:id="37">
           <wpc:input>
             <wpc:parameter name="twoWayRequest" variable="SCAProducerRequest"/>
