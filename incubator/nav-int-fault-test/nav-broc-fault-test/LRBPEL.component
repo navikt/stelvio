@@ -7,11 +7,6 @@
     </interface>
   </interfaces>
   <references>
-    <reference name="SCAProducerImport">
-      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
-      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
-      <wire target="SCAProducerImport"/>
-    </reference>
     <reference name="SCAFaultHandlerImport">
       <interface xsi:type="wsdl:WSDLPortType" portType="ns2:ProducerInterface"/>
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>

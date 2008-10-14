@@ -5,11 +5,6 @@
       <plnk:portType name="wsdl0:ConsumerInterface"/>
     </plnk:role>
   </plnk:partnerLinkType>
-  <plnk:partnerLinkType name="ProducerInterfacePLT2">
-    <plnk:role name="Interface">
-      <plnk:portType name="wsdl1:ProducerInterface"/>
-    </plnk:role>
-  </plnk:partnerLinkType>
   <plnk:partnerLinkType name="ProducerInterfacePLT3">
     <plnk:role name="Interface">
       <plnk:portType name="wsdl1:ProducerInterface"/>
