@@ -35,6 +35,7 @@ public abstract class AbstractReportAction extends AbstractAction {
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.EXECUTIONSTATE_PROPERTY));
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.PROCESSTEMPLATENAME_PROPERTY));
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.TOPLEVELPROCESSINSTANCENAME_PROPERTY));
+		DATA_COLUMNS.add(new ProcessInstanceCustomPropertiesAccessor());
 	}
 
 	public AbstractReportAction() {
