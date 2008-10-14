@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://myConsumerModule/LRBPELArtifacts" xmlns:ns0="http://myLibrary" xmlns:ns1="http://myLibrary/ConsumerInterface" xmlns:ns2="http://myLibrary/ProducerInterface" xmlns:ns3="http://nav-broc-fault-test/ProducerInterfaceAsync" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="LRBPEL" suppressJoinFailure="yes" targetNamespace="http://myConsumerModule" wpc:autonomy="peer" wpc:displayName="LRBPEL" wpc:id="6" wpc:validFrom="2008-06-18T13:31:34">
+  <wpc:customProperty name="randomProperty">
+    <wpc:value>undefined</wpc:value>
+  </wpc:customProperty>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ConsumerInterface.wsdl" namespace="http://myLibrary/ConsumerInterface"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
@@ -44,6 +47,11 @@
         <bpws:to variable="SCAFaultHandlerRequest"/>
       </bpws:copy>
     </bpws:assign>
+    <bpws:invoke name="AssignValueToRandomProperty1" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Assign value to random property" wpc:id="50">
+      <wpc:script>
+        <wpc:javaCode><![CDATA[setProcessCustomProperty("randomProperty", Boolean.toString(Math.round(Math.random()) > 0));]]></wpc:javaCode>
+      </wpc:script>
+    </bpws:invoke>
     <bpws:invoke name="Statusprinter2" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Statusprinter" wpc:id="36">
       <wpc:script>
         <wpc:javaCode><![CDATA[System.out.println("Before invoke SCAProducer:twoWay");]]></wpc:javaCode>
