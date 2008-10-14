@@ -15,6 +15,11 @@
       <plnk:portType name="wsdl2:ProducerInterfaceAsync"/>
     </plnk:role>
   </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="ProducerInterfaceAsyncPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl2:ProducerInterfaceAsync"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
     <wsdl:import location="ConsumerInterface.wsdl" namespace="http://myLibrary/ConsumerInterface"/>
     <wsdl:import location="ProducerInterface.wsdl" namespace="http://myLibrary/ProducerInterface"/>
     <wsdl:import location="ProducerInterfaceAsync.wsdl" namespace="http://nav-broc-fault-test/ProducerInterfaceAsync"/>

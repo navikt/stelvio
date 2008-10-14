@@ -6,7 +6,7 @@
   </extensions>
   <extensions>
     <extendedObject href="SCAProducerImport.import#//@import"/>
-    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="619" y="100" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="654" y="129" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding"/>
   </extensions>
   <extensions>
     <extendedObject href="sca.module#//@module"/>
@@ -14,14 +14,18 @@
   </extensions>
   <extensions>
     <extendedObject href="LRBPEL.component#//@Component"/>
-    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="209" y="63" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="209" y="81" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation"/>
   </extensions>
   <extensions>
     <extendedObject href="LRBPELWSEXP.export#//@export"/>
-    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" x="20" y="74" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0}WebServiceExportBinding" bound="true"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" x="20" y="102" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0}WebServiceExportBinding" bound="true"/>
   </extensions>
   <extensions>
     <extendedObject href="ProducerInterfaceAsync.component#//@Component"/>
     <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="373" y="102" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0}MediationImplementation"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="ProducerInterfaceSecondAsync.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="373" y="160" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0}MediationImplementation"/>
   </extensions>
 </extensionmodel:ExtensionMap>

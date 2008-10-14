@@ -2359,6 +2359,9 @@ incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceAsync.componen
 incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceAsync.ifm -text
 incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceAsync.wsdl -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceAsync_ifm.mon -text
+incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceSecondAsync.component -text
+incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceSecondAsync.ifm -text
+incubator/nav-int-fault-test/nav-broc-fault-test/ProducerInterfaceSecondAsync_ifm.mon -text
 incubator/nav-int-fault-test/nav-broc-fault-test/SCAFaultHandlerImport.import -text
 incubator/nav-int-fault-test/nav-broc-fault-test/SCAProducerImport.import -text
 incubator/nav-int-fault-test/nav-broc-fault-test/sca.module -text

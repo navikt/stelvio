@@ -17,6 +17,11 @@
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
       <wire target="ProducerInterfaceAsync"/>
     </reference>
+    <reference name="ProducerInterfaceAsyncPartner1">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns3:ProducerInterfaceAsync"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="ProducerInterfaceSecondAsync"/>
+    </reference>
   </references>
   <implementation xsi:type="process:ProcessImplementation">
     <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
