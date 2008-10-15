@@ -164,7 +164,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getLogFilePathOption() {
-		Option logFilePath = getGeneralOption(Constants.reportDirectory, "lfp");
+		Option logFilePath = getGeneralOption(Constants.reportDirectory, "rd");
 		logFilePath.setArgName("path");
 		logFilePath.setDescription("Default is current Path for directory where the output file will be located.");
 		return logFilePath;
