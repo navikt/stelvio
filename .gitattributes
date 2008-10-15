@@ -2403,6 +2403,8 @@ incubator/nav-int-fault-test/nav-lib-fault-test/GBOTwoWayRequest.xsd -text svneo
 incubator/nav-int-fault-test/nav-lib-fault-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-lib-fault-test/ProducerInterface.wsdl -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-lib-fault-test/nav-broc-fault-test_LRBPELWSEXP.wsdl -text svneol=unset#text/plain
+incubator/release-test/nav-int-appclient-bpchelper-ear/META-INF/application.xml -text
+incubator/release-test/nav-int-appclient-bpchelper-ear/pom.xml -text
 incubator/release-test/nav-int-appclient-common-java/.externalToolBuilders/Maven_Ant_Builder.launch -text
 incubator/release-test/nav-int-appclient-common-java/maven-eclipse.xml -text
 incubator/release-test/nav-int-appclient-common-java/pom.xml -text
