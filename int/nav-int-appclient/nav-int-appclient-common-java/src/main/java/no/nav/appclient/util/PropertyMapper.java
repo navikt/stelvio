@@ -47,7 +47,7 @@ public class PropertyMapper {
 			result.setProperty(AdminClient.CONNECTOR_HOST, src.getProperty(Constants.CONNECTOR_HOST));
 		}
 
-		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_HOST))) {
+		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_PORT))) {
 			result.setProperty(AdminClient.CONNECTOR_PORT, src.getProperty(Constants.CONNECTOR_PORT));
 		}
 
