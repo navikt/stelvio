@@ -42,4 +42,11 @@
 		<module>../nav-int-appclient-bpchelper-java</module>
 		<module>../nav-int-appclient-bpchelper-ear</module>
 	</modules>
+	
+	<distributionManagement>
+		<repository>
+			<id>nav-maven2-internal-repo</id>
+			<url>scp://maven.adeo.no/var/maven2/internal</url>
+		</repository>		
+	</distributionManagement>
 </project>
