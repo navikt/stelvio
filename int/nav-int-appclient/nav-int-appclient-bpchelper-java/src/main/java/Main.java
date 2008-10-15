@@ -1,7 +1,10 @@
+import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Collection;
 
+import no.nav.appclient.util.Constants;
+import no.nav.appclient.util.PasswordEncodeDelegate;
 import no.nav.bpchelper.actions.Action;
 import no.nav.bpchelper.actions.ActionFactory;
 import no.nav.bpchelper.cmdoptions.OptionOpts;
@@ -19,7 +22,7 @@ public class Main {
 	private static final String CMD_LINE_SYNTAX = "launchClient <BPCHelper application> [-CC<name>=<value>] [app args]";
 	private static final String HEADER;
 	private static final Options OPTIONS = new OptionsBuilder().getOptions();
-	
+
 	static {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
@@ -27,7 +30,8 @@ public class Main {
 		pw.print("    ");
 		pw.println("-CC<name>=<value> are the client container (launchClient) name-value pair arguments");
 		pw.println("app args are application client arguments.");
-		pw.println("sample usage: launchClient.sh bpchelper.ear -CCpropfile=host_config.properties -cf host_config.properties -a STATUS");
+		pw
+				.println("sample usage: launchClient.sh bpchelper.ear -CCpropfile=host_config.properties -cf host_config.properties -a STATUS");
 		HEADER = sw.toString();
 	}
 
@@ -60,6 +64,10 @@ public class Main {
 			printHelp(sw.toString());
 			return ReturnCodes.ERROR;
 		}
+
+		String configFilename = commandLine.getOptionValue(Constants.configFile);
+		File configFile = new File(configFilename);
+		new PasswordEncodeDelegate().encodePassword(configFile);
 
 		Action action = ActionFactory.getAction(commandLine);
 		return action.execute();
