@@ -3,7 +3,6 @@ package no.nav.appclient.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.Date;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
@@ -39,7 +38,7 @@ public class PasswordEncodeDelegate {
 					String encodedPassword = PasswordUtil.encode(password);
 					properties.setProperty(Constants.password, encodedPassword);
 					FileOutputStream out = new FileOutputStream(propertiesFile);
-					properties.store(out, new Date() + ": encoded password");
+					properties.store(out, "Encoded password");
 					out.close();
 				}
 			}
