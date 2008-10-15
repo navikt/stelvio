@@ -1,8 +1,10 @@
 package utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -22,38 +24,33 @@ import com.ibm.ws.security.util.PasswordUtil;
  * @author Andreas Roe
  */
 public class PasswordEncodeDelegate {
-
 	private static Logger LOGGER = Logger.getLogger(PasswordEncodeDelegate.class.getName());
 	
 	
 	/**
 	 * This method manipulate the property file with an xor encoded password
 	 * 
-	 * @param filename
+	 * @param propertiesFile
 	 * @throws IOException 
 	 */
-	public void encode(String filename) throws IOException {
-		
-		FileInputStream in = new FileInputStream(filename);
+	public void encodePassword(File propertiesFile) throws IOException {
+		FileInputStream in = new FileInputStream(propertiesFile);
 		Properties properties = new Properties();
 		properties.load(in);
 		in.close();
 		
 		// Check is password is defined
 		if (!StringUtils.isEmpty(properties.getProperty(Constants.password))) {
-			
 			// Check if password allready is encrypted
 			String password = properties.getProperty(Constants.password);
 			if (!password.startsWith("{xor}")) {
-				
 				try {
 					// Write encoded password back to the property file
-					String encoded = PasswordUtil.encode(password);
-					properties.setProperty(Constants.password, encoded);
-					FileOutputStream out = new FileOutputStream(filename);
-					properties.store(out, "Encoded password");
+					String encodedPassword = PasswordUtil.encode(password);
+					properties.setProperty(Constants.password, encodedPassword);
+					FileOutputStream out = new FileOutputStream(propertiesFile);
+					properties.store(out, new Date() + ": encoded password");
 					out.close();
-					
 				} catch (Exception e) {
 					LOGGER.warning("Password not encrypted due to " + e.getClass());
 				}

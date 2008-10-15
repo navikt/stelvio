@@ -105,13 +105,13 @@ public class Main {
 		
 		// Do XOR encryption of the password in present in the propfile
 		PasswordEncodeDelegate encoder = new PasswordEncodeDelegate();
-		encoder.encode(propertyFileName);
+		encoder.encodePassword(propertyFile);
 		
 		// It is more or less okay to throw these exceptions from 
 		// this method as we have give the user a log entry about
 		// this and simultainisly abort the program before this
 		// will occur.
-		FileInputStream in = new FileInputStream(propertyFileName); 
+		FileInputStream in = new FileInputStream(propertyFile); 
 		Properties connectProps = new Properties();
 		connectProps.load(in);
 		in.close();
