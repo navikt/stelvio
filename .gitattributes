@@ -2434,6 +2434,8 @@ incubator/release-test/nav-int-appclient-bpchelper-java/src/main/java/no/nav/bpc
 incubator/release-test/nav-int-appclient-bpchelper-java/src/main/java/no/nav/bpchelper/query/SimpleExpression.java -text
 incubator/release-test/nav-int-appclient-bpchelper-java/src/main/java/no/nav/bpchelper/utils/ReflectionUtils.java -text
 incubator/release-test/nav-int-appclient-bpchelper-java/src/main/java/no/nav/bpchelper/writers/ReportWriter.java -text
+incubator/release-test/nav-int-appclient-bpchelper-pom/.project -text
+incubator/release-test/nav-int-appclient-bpchelper-pom/pom.xml -text
 incubator/release-test/nav-int-appclient-common-java/.externalToolBuilders/Maven_Ant_Builder.launch -text
 incubator/release-test/nav-int-appclient-common-java/maven-eclipse.xml -text
 incubator/release-test/nav-int-appclient-common-java/pom.xml -text
