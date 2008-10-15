@@ -26,6 +26,7 @@ import javax.management.ReflectionException;
 import no.nav.appclient.adapter.BFMConnectionAdapter;
 import no.nav.appclient.adapter.BusinessFlowManagerServiceAdapter;
 import no.nav.appclient.util.Constants;
+import no.nav.appclient.util.PasswordEncodeDelegate;
 import no.nav.appclient.util.PropertyMapper;
 import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.Queries;
@@ -35,7 +36,6 @@ import no.nav.femhelper.filewriters.LogFileWriter;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
-import utils.PasswordEncodeDelegate;
 
 import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.websphere.management.AdminClient;

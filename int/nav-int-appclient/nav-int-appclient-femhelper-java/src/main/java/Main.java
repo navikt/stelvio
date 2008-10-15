@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import no.nav.appclient.util.Constants;
+import no.nav.appclient.util.PasswordEncodeDelegate;
 import no.nav.femhelper.actions.AbstractAction;
 import no.nav.femhelper.actions.ActionFactory;
 import no.nav.femhelper.cmdoptions.CommandOptionsBuilder;
@@ -25,7 +26,6 @@ import org.apache.commons.lang.StringUtils;
 
 import utils.ArgumentUtil;
 import utils.ArgumentValidator;
-import utils.PasswordEncodeDelegate;
 import utils.PropertyUtil;
 
 /**
