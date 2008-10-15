@@ -2403,6 +2403,17 @@ incubator/nav-int-fault-test/nav-lib-fault-test/GBOTwoWayRequest.xsd -text svneo
 incubator/nav-int-fault-test/nav-lib-fault-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-lib-fault-test/ProducerInterface.wsdl -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-lib-fault-test/nav-broc-fault-test_LRBPELWSEXP.wsdl -text svneol=unset#text/plain
+incubator/release-test/nav-int-appclient-common-java/.externalToolBuilders/Maven_Ant_Builder.launch -text
+incubator/release-test/nav-int-appclient-common-java/maven-eclipse.xml -text
+incubator/release-test/nav-int-appclient-common-java/pom.xml -text
+incubator/release-test/nav-int-appclient-common-java/src/main/java/META-INF/MANIFEST.MF -text
+incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/BFMConnectionAdapter.java -text
+incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/BusinessFlowManagerServiceAdapter.java -text
+incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/SecuredBFMConnection.java -text
+incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/adapter/ServiceException.java -text
+incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/util/Constants.java -text
+incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/util/PasswordEncodeDelegate.java -text
+incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/util/PropertyMapper.java -text
 incubator/wid61-ceilogger/CEIEventConsumer/.compatibility -text
 incubator/wid61-ceilogger/CEIEventConsumer/.j2ee -text
 incubator/wid61-ceilogger/CEIEventConsumer/.project -text svneol=unset#text/plain
