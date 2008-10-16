@@ -43,6 +43,8 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<configuration>
 					<preparationGoals>clean install</preparationGoals>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/int/</tagBase>
 				</configuration>
 			</plugin>
 		</plugins>
