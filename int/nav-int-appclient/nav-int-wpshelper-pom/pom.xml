@@ -44,7 +44,7 @@
 				<configuration>
 					<preparationGoals>clean install</preparationGoals>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/int/</tagBase>
+					<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/int/${project.artifactId}</tagBase>
 				</configuration>
 			</plugin>
 		</plugins>
