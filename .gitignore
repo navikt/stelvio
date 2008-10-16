@@ -78,7 +78,7 @@ int/nav-int-appclient/nav-int-appclient-common-java/bin
 int/nav-int-appclient/nav-int-appclient-common-java/target
 int/nav-int-appclient/nav-int-appclient-femhelper-ear/target
 int/nav-int-appclient/nav-int-appclient-femhelper-java/target
-int/nav-int-appclient/nav-int-appclient-femhelper-pom/.project
+int/nav-int-appclient/nav-int-wpshelper-pom/.project
 int/stelvio-commons-lib/.settings
 maven-jaxhandler-plugin/.classpath
 maven-jaxhandler-plugin/.project
