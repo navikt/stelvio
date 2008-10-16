@@ -16,10 +16,10 @@
 
 	<scm>
 		<connection>
-			https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/BPCCommandLine/BPCHelperAppClientEAR
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-pom/bpchelper-ear/
 		</connection>
 		<developerConnection>
-			https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/BPCCommandLine/BPCHelperAppClientEAR
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-pom/bpchelper-ear/
 		</developerConnection>
 	</scm>
 

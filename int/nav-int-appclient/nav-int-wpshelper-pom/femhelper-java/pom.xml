@@ -13,6 +13,15 @@
 	<artifactId>femhelper-client</artifactId>
 	<packaging>jar</packaging>
 	<name>FEM Helper Application Client</name>
+	
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-pom/femhelper-java/
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-pom/femhelper-java/
+		</developerConnection>
+	</scm>
 
 	<build>
 		<resources>
