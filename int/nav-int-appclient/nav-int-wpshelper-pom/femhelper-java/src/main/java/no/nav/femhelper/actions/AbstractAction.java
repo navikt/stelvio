@@ -36,15 +36,15 @@ import no.nav.femhelper.filewriters.LogFileWriter;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
-
 import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.websphere.management.AdminClient;
 import com.ibm.websphere.management.AdminClientFactory;
 import com.ibm.websphere.management.exception.ConnectorException;
 
 /**
- * Super class for all Action classes. This class shall be inherited for all functional areas, such as finding all failed
- * events, deleting events, or just getting the current depth of FEM
+ * Super class for all Action classes. This class shall be inherited for all
+ * functional areas, such as finding all failed events, deleting events, or just
+ * getting the current depth of FEM
  * 
  * @author Andreas Roe
  */
@@ -69,7 +69,7 @@ public abstract class AbstractAction {
 	 * AdminClient instance
 	 */
 	protected AdminClient adminClient;
-	
+
 	protected BusinessFlowManagerServiceAdapter bfmConnection;
 
 	/**
@@ -86,7 +86,8 @@ public abstract class AbstractAction {
 	/**
 	 * Default contructor
 	 * 
-	 * @param must be an instance TODO AR This should not be necessary
+	 * @param must
+	 *            be an instance TODO AR This should not be necessary
 	 */
 	public AbstractAction(Properties properties) {
 		this.properties = properties;
@@ -99,23 +100,24 @@ public abstract class AbstractAction {
 	 * 
 	 * @return true or false if connect was working
 	 */
-	private boolean connect() throws ConnectorException, MalformedObjectNameException{ //NullPointerException {
+	private boolean connect() throws ConnectorException, MalformedObjectNameException { // NullPointerException
+		// {
 
 		logger.log(Level.FINE, Constants.METHOD_ENTER + "connect");
 		boolean result = false;
-		
+
 		// Map configuration to ensure additional parameters not are added to
 		// the configuration file. We do not want those to be provided directly
 		// to the AdminClientFactory.
 		PropertyMapper mapper = new PropertyMapper();
 		Properties mappedProperties = mapper.getMappedProperties(properties);
-		
+
 		// Decode password
 		String encodedPass = mappedProperties.getProperty(Constants.password);
 		PasswordEncodeDelegate encode = new PasswordEncodeDelegate();
 		String decodedPassword = encode.getDecryptedPassword(encodedPass);
 		mappedProperties.setProperty(Constants.password, decodedPassword);
-		
+
 		// Create Business Flow Manager instance
 		try {
 			BFMConnectionAdapter adapter = BFMConnectionAdapter.getInstance(mappedProperties);
@@ -124,12 +126,12 @@ public abstract class AbstractAction {
 			result = false;
 			logger.log(Level.SEVERE, "Could not connect to the BFM", re);
 		}
-		
+
 		// Setup and test the connection with FailedEventManager MBean
 		adminClient = AdminClientFactory.createAdminClient(mappedProperties);
 		ObjectName queryName = new ObjectName("WebSphere:*,type=FailedEventManager");
 		Set s = adminClient.queryNames(queryName, null);
-		
+
 		if (!s.isEmpty()) {
 			faildEventManager = (ObjectName) s.iterator().next();
 			logger.log(Level.FINE, "Connected to Failed Event Manager MBean.");
@@ -149,12 +151,12 @@ public abstract class AbstractAction {
 		logger.log(Level.FINE, Constants.METHOD_EXIT + "disconnect");
 	}
 
-	abstract Object processEvents(String path, String filename, Map arguments, boolean paging, long totalevents,
-			int maxresultset, CommandLine cl) throws IOException, InstanceNotFoundException, MBeanException,
+	abstract Object processEvents(String path, String filename, Map<String, String> arguments, boolean paging,
+			long totalevents, int maxresultset, CommandLine cl) throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException;
 
-	public Object process(String path, String filename, Map arguments, boolean paging, long totalevents, int maxresultset,
-			CommandLine cl) throws MalformedObjectNameException, ConnectorException, NullPointerException {
+	public Object process(String path, String filename, Map<String, String> arguments, boolean paging, long totalevents,
+			int maxresultset, CommandLine cl) throws MalformedObjectNameException, ConnectorException, NullPointerException {
 
 		logger.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
 
@@ -184,7 +186,8 @@ public abstract class AbstractAction {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ConnectorException:StackTrace:");
 		}
 
-		// Close writers. (The close() method handles if the writer allready have been closed)
+		// Close writers. (The close() method handles if the writer allready
+		// have been closed)
 		if (null != filename) {
 			fileWriter.close();
 		}
@@ -201,8 +204,9 @@ public abstract class AbstractAction {
 	}
 
 	/**
-	 * Private method that make use of the class member variable <code>properties</code> to debug log all input parameters
-	 * (excluding the password)
+	 * Private method that make use of the class member variable
+	 * <code>properties</code> to debug log all input parameters (excluding
+	 * the password)
 	 */
 	private void logProperties() {
 		logger.log(Level.FINE, Constants.METHOD_ENTER + "logProperties");
@@ -314,7 +318,8 @@ public abstract class AbstractAction {
 				lastEventDate = failedEvent.getFailureDateTime();
 				String currEventId = failedEvent.getMsgId();
 
-				// check id from last loop and skip if we have a double entry because on milli can include the last id (better
+				// check id from last loop and skip if we have a double entry
+				// because on milli can include the last id (better
 				// than don't select events)
 				if (!lastEventId.equals(currEventId) && isEventApplicable(failedEvent, agruments)) {
 					Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
@@ -350,12 +355,14 @@ public abstract class AbstractAction {
 	}
 
 	/**
-	 * Method that evaluate if a single event matches one or more search criterias
+	 * Method that evaluate if a single event matches one or more search
+	 * criterias
 	 * 
 	 * @param event
 	 *            to evaluate
 	 * @param arguments
-	 *            to evaluate against. This is collected from the <code>CommandLing </code> object
+	 *            to evaluate against. This is collected from the
+	 *            <code>CommandLing </code> object
 	 * @return
 	 */
 	private boolean isEventApplicable(FailedEvent event, Map<String, String> arguments) {
@@ -363,17 +370,20 @@ public abstract class AbstractAction {
 		// Default true. If no criterias are listed the 'ALL events' apply.
 		boolean match = true;
 
-		// Make use of the generic validate method for arguments that validate attributes of datatype
+		// Make use of the generic validate method for arguments that validate
+		// attributes of datatype
 		match = match && validate(event.getSourceModuleName(), arguments.get(Constants.sourceModule)) ? true : false;
 		match = match && validate(event.getSourceComponentName(), arguments.get(Constants.sourceComponent)) ? true : false;
 		match = match && validate(event.getDestinationModuleName(), arguments.get(Constants.destinationModule)) ? true : false;
-		match = match && validate(event.getDestinationComponentName(), arguments.get(Constants.destinationComponent)) ? true : false;
+		match = match && validate(event.getDestinationComponentName(), arguments.get(Constants.destinationComponent)) ? true
+				: false;
 		match = match && validate(event.getFailureMessage(), arguments.get(Constants.failureMessage)) ? true : false;
 
 		String timeFrame = arguments.get(Constants.timeFrame);
 		if (!StringUtils.isEmpty(timeFrame)) {
 
-			// The time / date format is already validated, and can be parsed without
+			// The time / date format is already validated, and can be parsed
+			// without
 			// handling ParseException
 			String dates[] = StringUtils.split(timeFrame, "-");
 			try {
@@ -382,7 +392,8 @@ public abstract class AbstractAction {
 				Date toDate = sdf.parse(dates[1]);
 				Date failureDate = event.getFailureDateTime();
 
-				match = match && null != failureDate && failureDate.after(fromDate) && failureDate.before(toDate) ? true : false;
+				match = match && null != failureDate && failureDate.after(fromDate) && failureDate.before(toDate) ? true
+						: false;
 
 			} catch (ParseException e) {
 				// Will never occur here.
@@ -393,7 +404,8 @@ public abstract class AbstractAction {
 	}
 
 	/**
-	 * Generic method to validate a attribute on the <code>FailedEvent</code> event against values in the argument list.
+	 * Generic method to validate a attribute on the <code>FailedEvent</code>
+	 * event against values in the argument list.
 	 * 
 	 * The rules are the following
 	 * <li>TRUE If the criteria is empty</li>
@@ -406,15 +418,15 @@ public abstract class AbstractAction {
 	 * @return
 	 */
 	protected boolean validate(String eventValue, String criteria) {
-		if (StringUtils.isEmpty(criteria) || StringUtils.contains(eventValue, criteria) ) {
+		if (StringUtils.isEmpty(criteria) || StringUtils.contains(eventValue, criteria)) {
 			return true;
-		} 
+		}
 		return false;
 	}
-	
+
 	protected boolean askYesNo(String question) {
 		String answer = "";
-		
+
 		try {
 			System.out.println(question + "(y/n)");
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -427,9 +439,8 @@ public abstract class AbstractAction {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 		return "y".equals(answer) || "yes".equals(answer) ? true : false;
 	}
-	
 
 }

@@ -14,20 +14,23 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * Utility class to build options to the <code>CommandLine</code> parser
+ * 
  * @author Andreas Roe
  */
+@SuppressWarnings("static-access")
 public class CommandOptionsBuilder {
-	
+
 	/**
 	 * Logger instance
 	 */
 	private Logger logger = Logger.getLogger(AbstractFileWriter.class.getName());
-	
+
 	/**
 	 * Method that gather all options
+	 * 
 	 * @return all options
 	 */
-	public Options getOptions() {	
+	public Options getOptions() {
 		Options options = new Options();
 		options.addOption(getHelpOption());
 		options.addOption(getConfigFileOption());
@@ -43,13 +46,14 @@ public class CommandOptionsBuilder {
 		options.addOption(getSourceComponentOption());
 		options.addOption(getDestinationModule());
 		options.addOption(getDestinationComponent());
-		
+
 		logger.log(Level.FINE, Constants.METHOD_EXIT + "getOptions");
 		return options;
 	}
 
 	/**
 	 * Create command line option for 'sourceModule'
+	 * 
 	 * @return sourceModule option
 	 */
 	private Option getSourceModuleOption() {
@@ -58,9 +62,10 @@ public class CommandOptionsBuilder {
 		sourceModule.setDescription("Filter by Source Module");
 		return sourceModule;
 	}
-	
+
 	/**
 	 * Create command line option for 'sourceComponent'
+	 * 
 	 * @return sourceComponent option
 	 */
 	private Option getSourceComponentOption() {
@@ -68,9 +73,10 @@ public class CommandOptionsBuilder {
 		sourceComponent.setDescription("Filter by Source Component");
 		return sourceComponent;
 	}
-	
+
 	/**
 	 * Create command line option for 'destinationModule'
+	 * 
 	 * @return destinationModule option
 	 */
 	private Option getDestinationModule() {
@@ -78,9 +84,10 @@ public class CommandOptionsBuilder {
 		destinationModule.setDescription("Filter by Destination Module");
 		return destinationModule;
 	}
-	
+
 	/**
 	 * Create command line option for 'destinationComponent'
+	 * 
 	 * @return destinationComponent option
 	 */
 	private Option getDestinationComponent() {
@@ -88,28 +95,32 @@ public class CommandOptionsBuilder {
 		destinationComponent.setDescription("Filter by Destination Component");
 		return destinationComponent;
 	}
-	
+
 	/**
 	 * Create command line option for 'failureMessage'
+	 * 
 	 * @return failureMessage option
 	 */
 	private Option getFailureMessageOption() {
 		Option failureMessage = getGeneralOption(Constants.failureMessage, "fm");
-		failureMessage.setDescription("Wild card search in the failure message. Might be used to drill down a given exception etc.");
+		failureMessage
+				.setDescription("Wild card search in the failure message. Might be used to drill down a given exception etc.");
 		return failureMessage;
 	}
-	
+
 	/**
 	 * Create command line option for 'dataObject'
+	 * 
 	 * @return dataObject option
 	 */
 	private Option getDataObjectOption() {
 		Option dataObject = getGeneralOption(Constants.dataObject, "do");
 		return dataObject;
 	}
-	
+
 	/**
 	 * Create command line option for 'timeFrame'
+	 * 
 	 * @return timeFrame option
 	 */
 	private Option getTimeFrameOption() {
@@ -121,8 +132,9 @@ public class CommandOptionsBuilder {
 	}
 
 	/**
-	 * Create command line option for 'maxResultSetPaging'.
-	 * This option is requiered
+	 * Create command line option for 'maxResultSetPaging'. This option is
+	 * requiered
+	 * 
 	 * @return the mandatory option maxResultSetPaging
 	 * @TODO AR This could have a default value
 	 */
@@ -134,21 +146,22 @@ public class CommandOptionsBuilder {
 	}
 
 	/**
-	 * Create command line option for 'maxResultSet'.
-	 * This option is requiered
+	 * Create command line option for 'maxResultSet'. This option is requiered
+	 * 
 	 * @return
 	 * @TODO AR This could have a default value
 	 */
 	private Option getMaxResultSetOption() {
 		Option maxResultSet = getGeneralOption(Constants.maxResultSet, "mrs");
 		maxResultSet.setArgName("integer");
-		maxResultSet.setDescription("Default value is '1000'. Recommended to use range between 100 and 1000. This is a restriction due to JVM memory limitations");
+		maxResultSet
+				.setDescription("Default value is '1000'. Recommended to use range between 100 and 1000. This is a restriction due to JVM memory limitations");
 		return maxResultSet;
 	}
 
 	/**
-	 * Create command line option for 'action'.
-	 * This option is requiered
+	 * Create command line option for 'action'. This option is requiered
+	 * 
 	 * @return
 	 */
 	private Option getActionOption() {
@@ -157,10 +170,10 @@ public class CommandOptionsBuilder {
 		action.setDescription("Mandatory");
 		return action;
 	}
-	
+
 	/**
-	 * Create command line option for 'logFilePath'.
-	 * This option is requiered
+	 * Create command line option for 'logFilePath'. This option is requiered
+	 * 
 	 * @return
 	 */
 	private Option getLogFilePathOption() {
@@ -171,21 +184,22 @@ public class CommandOptionsBuilder {
 	}
 
 	/**
-	 * Create command line option for 'configFile'.
-	 * This option is requiered
+	 * Create command line option for 'configFile'. This option is requiered
+	 * 
 	 * @return
 	 */
 	private Option getConfigFileOption() {
 		Option configFile = getGeneralOption(Constants.configFile, "cf");
 		configFile.setArgName("full path");
-		configFile.setDescription("Mandatory. Full path to configuration file for system environment spesifications (hostname etc.).");
+		configFile
+				.setDescription("Mandatory. Full path to configuration file for system environment spesifications (hostname etc.).");
 		return configFile;
 	}
-	
+
 	/**
-	 * Create command line option for 'noStop'. 
-	 * This paramater is used if actions not shal prompt 
-	 * before executing the action
+	 * Create command line option for 'noStop'. This paramater is used if
+	 * actions not shal prompt before executing the action
+	 * 
 	 * @return
 	 */
 	private Option getNoStopOption() {
@@ -193,9 +207,10 @@ public class CommandOptionsBuilder {
 		noStop.setDescription("Runs the action without prompting between collecting the msgids and the action");
 		return noStop;
 	}
-	
+
 	/**
 	 * Create command line option for 'help'
+	 * 
 	 * @return
 	 */
 	private Option getHelpOption() {
@@ -203,7 +218,7 @@ public class CommandOptionsBuilder {
 		help.setDescription("This help index");
 		return help;
 	}
-	
+
 	/**
 	 * Method that builds a often used <code>Option</code> with long desc,
 	 * value separator and has arguments
@@ -212,10 +227,8 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getGeneralOption(String optionName, String shortOption) {
-		Option option = OptionBuilder.withLongOpt(optionName)
-									 .withValueSeparator()
-									 .hasArg()
-									 .create(StringUtils.isEmpty(shortOption) ? null : shortOption);
+		Option option = OptionBuilder.withLongOpt(optionName).withValueSeparator().hasArg().create(
+				StringUtils.isEmpty(shortOption) ? null : shortOption);
 		return option;
 	}
 }
