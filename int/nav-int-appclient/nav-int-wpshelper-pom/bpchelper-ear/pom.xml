@@ -4,15 +4,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>nav.int.appclient.bpchelper</groupId>
-		<artifactId>nav-int-appclient-bpc-pom</artifactId>
+		<groupId>nav.int.appclient.wpshelper</groupId>
+		<artifactId>wpshelper-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
 	</parent>
 	
-	<groupId>nav.int.appclient.bpchelper</groupId>
 	<artifactId>bpchelper-ear</artifactId>
 	<packaging>ear</packaging>
-	<name>BPC-Helper EAR</name>
+	<name>BPC Helper Application Client EAR</name>
 
 	<scm>
 		<connection>
@@ -33,13 +33,9 @@
 					<version>1.4</version>
 					<modules>
 						<jarModule>
-							<groupId>
-								nav.int.appclient.bpchelper
-							</groupId>
+							<groupId>${project.groupId}</groupId>
 							<artifactId>bpchelper-client</artifactId>
-							<includeInApplicationXml>
-								true
-							</includeInApplicationXml>
+							<includeInApplicationXml>true</includeInApplicationXml>
 						</jarModule>
 					</modules>
 				</configuration>
@@ -49,9 +45,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>nav.int.appclient.bpchelper</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>bpchelper-client</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>

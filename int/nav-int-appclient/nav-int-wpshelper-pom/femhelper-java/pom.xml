@@ -1,21 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>nav.int.appclient.femhelper</groupId>
-		<artifactId>nav-int-appclient-femhelper-pom</artifactId>
+		<groupId>nav.int.appclient.wpshelper</groupId>
+		<artifactId>wpshelper-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
 	</parent>
 
 	<artifactId>femhelper-client</artifactId>
 	<packaging>jar</packaging>
-	<name>FEM-Helper Appclient</name>
+	<name>FEM Helper Application Client</name>
 
 	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
 			<resource>
 				<targetPath>META-INF</targetPath>
@@ -40,20 +39,13 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>nav.int.appclient.common</groupId>
-			<artifactId>nav-int-appclient-common-java</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>wpshelper-common-java</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.5.2</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-jdk14</artifactId>
-			<version>1.5.2</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>
@@ -67,26 +59,18 @@
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.ibm.wps</groupId>
 			<artifactId>com.ibm.wps.runtime</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.ws</groupId>
 			<artifactId>admin-client</artifactId>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf.commonj</groupId>
 			<artifactId>org.eclipse.emf.commonj.sdo</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 </project>

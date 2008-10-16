@@ -4,14 +4,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>nav.int.appclient.femhelper</groupId>
-		<artifactId>nav-int-appclient-femhelper-pom</artifactId>
+		<groupId>nav.int.appclient.wpshelper</groupId>
+		<artifactId>wpshelper-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
 	</parent>
 
 	<artifactId>femhelper-ear</artifactId>
 	<packaging>ear</packaging>
-	<name>FEM-Helper EAR</name>
+	<name>FEM Helper Application Client EAR</name>
 
 	<scm>
 		<connection>
@@ -32,11 +33,9 @@
 					<version>1.4</version>
 					<modules>
 						<jarModule>
-							<groupId>nav.int.appclient.femhelper</groupId>
+							<groupId>${project.groupId}</groupId>
 							<artifactId>femhelper-client</artifactId>
-							<includeInApplicationXml>
-								true
-							</includeInApplicationXml>
+							<includeInApplicationXml>true</includeInApplicationXml>
 						</jarModule>
 					</modules>
 				</configuration>
@@ -46,9 +45,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>nav.int.appclient.femhelper</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>femhelper-client</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>
