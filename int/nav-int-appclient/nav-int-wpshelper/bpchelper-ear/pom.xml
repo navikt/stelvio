@@ -5,7 +5,7 @@
 
 	<parent>
 		<groupId>nav.int.appclient.wpshelper</groupId>
-		<artifactId>wpshelper-pom</artifactId>
+		<artifactId>wpshelper</artifactId>
 		<version>0.9-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
@@ -16,10 +16,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-pom/bpchelper-ear
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-pom/bpchelper-ear
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear
 		</developerConnection>
 	</scm>
 

@@ -4,17 +4,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>nav.int.appclient.wpshelper</groupId>
-	<artifactId>wpshelper-pom</artifactId>
+	<artifactId>wpshelper</artifactId>
 	<packaging>pom</packaging>
 	<version>0.9-SNAPSHOT</version>
 	<name>WPS Helper POM Module</name>
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper
 		</developerConnection>
 	</scm>
 
