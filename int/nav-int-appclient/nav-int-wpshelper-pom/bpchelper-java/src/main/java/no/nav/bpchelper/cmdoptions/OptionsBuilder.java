@@ -9,6 +9,7 @@ import org.apache.commons.cli.Options;
 public class OptionsBuilder {
 	public static final SimpleDateFormat TIMESTAMP_FORMAT = new SimpleDateFormat("dd.MM.yyyy:hhmm");
 
+	@SuppressWarnings("static-access")
 	public Options getOptions() {
 		Options options = new Options();
 
