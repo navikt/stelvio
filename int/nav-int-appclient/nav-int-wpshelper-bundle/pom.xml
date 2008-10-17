@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>nav.int.appclient.wpshelper</groupId>
+	<artifactId>wpshelpers</artifactId>
+	<packaging>pom</packaging>
+	<version>0.9-SNAPSHOT</version>
+	<name>WPS Helper Bundle Module</name>
+
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle
+		</developerConnection>
+	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorSourceDirectory>
+						src/main/assembly
+					</descriptorSourceDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>nav.int.appclient.wpshelper</groupId>
+			<artifactId>femhelper-ear</artifactId>
+			<version>0.9</version>
+			<type>ear</type>
+		</dependency>
+		<dependency>
+			<groupId>nav.int.appclient.wpshelper</groupId>
+			<artifactId>bpchelper-ear</artifactId>
+			<version>0.9</version>
+			<type>ear</type>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>nav-maven2-internal-repo</id>
+			<url>scp://maven.adeo.no/var/maven2/internal</url>
+		</repository>
+	</distributionManagement>
+</project>
