@@ -129,7 +129,7 @@ public class EventFileWriter extends AbstractFileWriter {
 		 	    // Probing in data type
 		 	    String prettyPrint = null;
 		 	    if (failedEventParameter.getValue() instanceof DataObject) {
-		 	    	sdoppt.sdoPrettyPrint((DataObject)failedEventParameter.getValue()); 
+		 	    	prettyPrint = sdoppt.sdoPrettyPrint((DataObject)failedEventParameter.getValue()); 
 		 	    } else if (failedEventParameter.getValue() instanceof String) {
 		 	    	prettyPrint = (String) failedEventParameter.getValue();
 		 	    } else {
