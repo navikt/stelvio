@@ -24,7 +24,6 @@ import no.nav.femhelper.common.ProcessStatus;
 import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;
-import org.apache.commons.lang.StringUtils;
 
 import com.ibm.wbiserver.manualrecovery.FailedEventExceptionReport;
 import com.ibm.wbiserver.manualrecovery.exceptions.DiscardFailedException;
@@ -113,28 +112,22 @@ public class DeleteAction extends AbstractAction {
 	}
 
 	private void deleteEvents(List<Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException {
-
 		// Delete processes connected to this chunk of events
+		// Collect event id for events where stopping the process not failing
+		List<String> eventIds = new ArrayList<String>();
 		for (Event event : events) {
+			String correlationId = event.getCorrelationID();
 			try {
-				if (!StringUtils.isEmpty(event.getCorrelationID())) {
-					bfmConnection.deleteProcessInstanceByActivityId(event.getCorrelationID());
+				if (correlationId != null && correlationId.startsWith("_AI:")) {
+					bfmConnection.deleteProcessInstanceByActivityId(correlationId);
 					event.setProcessStatus(ProcessStatus.DELETED);
 				} else {
 					event.setProcessStatus(ProcessStatus.NOPROCESS);
 				}
+				eventIds.add(event.getMessageID());
 			} catch (ServiceException se) {
 				event.setProcessStatus(ProcessStatus.FAILED);
 				event.setProcessFailureMessage(se.getMessage());
-			}
-		}
-
-		// Map event id for events where stopping the process not is
-		// in FAILED status.
-		List<String> eventIds = new ArrayList<String>();
-		for (Event event : events) {
-			if (!event.getProcessStatus().equals(ProcessStatus.FAILED)) {
-				eventIds.add(event.getMessageID());
 			}
 		}
 
