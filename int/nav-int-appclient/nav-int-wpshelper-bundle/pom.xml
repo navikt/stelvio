@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>nav.int.appclient.wpshelper</groupId>
-	<artifactId>wpshelpers</artifactId>
+	<artifactId>wpshelper-bundle</artifactId>
 	<packaging>pom</packaging>
 	<version>0.9-SNAPSHOT</version>
 	<name>WPS Helper Bundle Module</name>
@@ -19,6 +19,7 @@
 	</scm>
 
 	<build>
+		<finalName>wpshelpers-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
