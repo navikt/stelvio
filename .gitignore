@@ -72,6 +72,7 @@ dev/maven2/nav-deployment-code-plugin/target
 int/FEMCommandLine/FEMGRAppClient/target
 int/FEMCommandLine/FEMGRAppClientEAR/target
 int/FEMCommandLine/nav-int-appclient-fem-pom/.project
+int/nav-int-appclient/nav-int-wpshelper-bundle/target
 int/nav-int-appclient/nav-int-wpshelper/.project
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/target
