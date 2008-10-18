@@ -4,7 +4,7 @@
   	<groupId>no.nav.maven.plugins</groupId>
   	<artifactId>maven-moose-earfile-retriever</artifactId>
   	<packaging>jar</packaging>
-  	<version>1.0.0-SNAPSHOT</version>
+  	<version>1.0.0</version>
   	<name>Maven Moose Ear file retriever. Utility Jar to retrieve the ear file from a moose ID and a moose mapping file</name>
   	<description>
   	</description>>
