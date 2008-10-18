@@ -2336,6 +2336,14 @@ dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarInPlaceMojo.
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarManifestMojo.java -text
 dev/maven2/nav-war-plugin/src/main/java/no/nav/maven/plugins/war/WarMojo.java -text
 dev/maven2/pom.xml -text
+dev/maven2/tags/maven-moose-earfile-retriever/maven-moose-earfile-retriever/.project -text
+dev/maven2/tags/maven-moose-earfile-retriever/maven-moose-earfile-retriever/pom.xml -text
+dev/maven2/tags/maven-moose-earfile-retriever/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/EarFileRetriever.java -text
+dev/maven2/tags/maven-moose-earfile-retriever/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/VersionRetriever.java -text
+dev/maven2/tags/maven-moose-earfile-retriever/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseClasspathSpringConfigLoader.java -text
+dev/maven2/tags/maven-moose-earfile-retriever/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
+dev/maven2/tags/maven-moose-earfile-retriever/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
+dev/maven2/tags/maven-moose-earfile-retriever/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/.project -text
 dev/maven2/trunk/maven-moose-earfile-retriever/pom.xml -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/EarFileRetriever.java -text
