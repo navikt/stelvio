@@ -33,13 +33,16 @@ public class FixRoleBinding extends AbstractMojo{
 	
 	private Properties properties = null;
 	private List<RoleBinding> roleBindings = null;
+	private List<RunAsValues> runAsValues = null ;
 	private File consModuleFolder = null;
 	private boolean foundBindings = false;
+	private boolean foundRunAsValues = false ;
 	
 	public void execute() throws MojoExecutionException{
 		try {
 			getLog().info("-------------------- Start Role Binding for [" + consModuleFolder.getName() + "]");
 			setupRoleBindings();
+			setupRunAsBindings();
 			
 			if(foundBindings){
 				getLog().info("Found following bindings:");
@@ -83,6 +86,32 @@ public class FixRoleBinding extends AbstractMojo{
 				}
 			}
 		}
+	}
+	
+	private void setupRunAsBindings() throws DocumentException  {
+		String userName, passwd ;
+		List<String> roles ;
+		RunAsValues runAs ;
+		runAsValues = new ArrayList<RunAsValues>();
+		roles = getDeclaredRoles(consModuleFolder);
+		
+		if(roles!=null){
+			for(String role : roles){
+				userName = properties.getProperty(role+"UserName");
+				passwd = properties.getProperty(role+"Password") ;
+				
+				if(userName!=null || passwd != null){
+					runAs = new RunAsValues();
+					
+					if(userName != null) runAs.setUserName(userName) ;
+					if(passwd != null) runAs.setPasswd(passwd) ;
+					
+					runAsValues.add(runAs);
+					foundRunAsValues = true ;
+				}
+			}
+		}
+		
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -164,7 +193,7 @@ public class FixRoleBinding extends AbstractMojo{
 	
 	private void createBindingFile() throws IOException {
 		Document doc;
-		Element root, authTable, appNode;
+		Element root, authTable, appNode, runAsMap;
 		
 		root = DocumentHelper.createElement("com.ibm.ejs.models.base.bindings.applicationbnd:ApplicationBinding");
 		root.addAttribute("xmi:version", "2.0");
@@ -183,6 +212,16 @@ public class FixRoleBinding extends AbstractMojo{
 		}
 		appNode = root.addElement("application");
 		appNode.addAttribute("href", "META-INF/application.xml#Application_ID");
+		
+		if(foundRunAsValues){
+			runAsMap = root.addElement("runAsMap");
+			runAsMap.addAttribute("xmi:id","RunAsMap_"+new Date().getTime() + 1);
+			
+			for(RunAsValues value : runAsValues){
+				runAsMap.add(value.getAuthenticationNode());
+			}
+		}	
+		
 		XMLUtils.writeXMLDocument(doc, new File(consModuleFolder.getAbsolutePath() + "/META-INF/ibm-application-bnd.xmi"));
 	}
 

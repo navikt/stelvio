@@ -1831,6 +1831,7 @@ dev/maven2/maven-deploy-fixer-plugin/src/main/java/no/nav/maven/plugins/ConfigFi
 dev/maven2/maven-deploy-fixer-plugin/src/main/java/no/nav/maven/plugins/fixers/AddUsernameToken.java -text
 dev/maven2/maven-deploy-fixer-plugin/src/main/java/no/nav/maven/plugins/fixers/FixRoleBinding.java -text
 dev/maven2/maven-deploy-fixer-plugin/src/main/java/no/nav/maven/plugins/fixers/RoleBinding.java -text
+dev/maven2/maven-deploy-fixer-plugin/src/main/java/no/nav/maven/plugins/fixers/RunAsValues.java -text
 dev/maven2/maven-deploy-fixer-plugin/src/test/java/no/nav/maven/plugins/Test.java -text
 dev/maven2/maven-deployment-descriptor-common/.compatibility -text
 dev/maven2/maven-deployment-descriptor-common/.project -text
