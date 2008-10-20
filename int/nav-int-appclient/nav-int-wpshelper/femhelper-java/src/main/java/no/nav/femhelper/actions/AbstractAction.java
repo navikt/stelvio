@@ -95,9 +95,7 @@ public abstract class AbstractAction {
 	 * 
 	 * @return true or false if connect was working
 	 */
-	private boolean connect() throws ConnectorException, MalformedObjectNameException {
-		boolean result = false;
-
+	private void connect() throws ConnectorException, MalformedObjectNameException {
 		// Map configuration to ensure additional parameters not are added to
 		// the configuration file. We do not want those to be provided directly
 		// to the AdminClientFactory.
@@ -111,13 +109,8 @@ public abstract class AbstractAction {
 		mappedProperties.setProperty(ConfigPropertyNames.password, decodedPassword);
 
 		// Create Business Flow Manager instance
-		try {
-			BFMConnectionAdapter adapter = BFMConnectionAdapter.getInstance(mappedProperties);
-			bfmConnection = adapter.getBusinessFlowManagerService();
-		} catch (ServiceException se) {
-			result = false;
-			logger.log(Level.SEVERE, "Could not connect to the BFM", se);
-		}
+		BFMConnectionAdapter adapter = BFMConnectionAdapter.getInstance(mappedProperties);
+		bfmConnection = adapter.getBusinessFlowManagerService();
 
 		// Setup and test the connection with FailedEventManager MBean
 		adminClient = AdminClientFactory.createAdminClient(mappedProperties);
@@ -127,16 +120,9 @@ public abstract class AbstractAction {
 		if (!s.isEmpty()) {
 			failedEventManager = (ObjectName) s.iterator().next();
 			logger.log(Level.FINE, "Connected to Failed Event Manager MBean.");
-			result = true;
 		} else {
-			logger.log(Level.SEVERE, "Failed Event Manager MBean was not found");
-			result = false;
+			throw new ServiceException("Failed Event Manager MBean was not found");
 		}
-		return result;
-	}
-
-	// TODO: SEB: Hva gjør denne her?
-	private void disconnect() {
 	}
 
 	abstract Object processEvents(String path, String filename, Map<String, String> arguments, boolean paging,
@@ -180,8 +166,6 @@ public abstract class AbstractAction {
 		if (null != logFileWriter) {
 			logFileWriter.close();
 		}
-
-		this.disconnect();
 		return result;
 	}
 
@@ -352,8 +336,7 @@ public abstract class AbstractAction {
 		match = match && validate(event.getFailureMessage(), arguments.get(CommandOptions.failureMessage)) ? true : false;
 
 		String timeFrame = arguments.get(CommandOptions.timeFrame);
-		if (!StringUtils.isEmpty(timeFrame)) {
-
+		if (match && !StringUtils.isEmpty(timeFrame)) {
 			// The time / date format is already validated, and can be parsed
 			// without
 			// handling ParseException
@@ -389,7 +372,7 @@ public abstract class AbstractAction {
 	 * @param criteria
 	 * @return
 	 */
-	protected boolean validate(String eventValue, String criteria) {
+	private boolean validate(String eventValue, String criteria) {
 		if (StringUtils.isEmpty(criteria) || StringUtils.contains(eventValue, criteria)) {
 			return true;
 		}
