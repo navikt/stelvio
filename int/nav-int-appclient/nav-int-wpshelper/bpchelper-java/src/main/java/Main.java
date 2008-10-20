@@ -3,7 +3,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Collection;
 
-import no.nav.appclient.util.Constants;
 import no.nav.appclient.util.PasswordEncodeDelegate;
 import no.nav.bpchelper.actions.Action;
 import no.nav.bpchelper.actions.ActionFactory;
