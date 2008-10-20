@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import no.nav.appclient.util.Constants;
+import no.nav.appclient.util.ConfigPropertyNames;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -20,37 +20,37 @@ public class PropertyUtil {
 
 		// Validate property BootstrapHost.
 		// Criterias: present
-		if (StringUtils.isEmpty(properties.getProperty(Constants.BootstrapHost))) {
-			result.add("Property " + Constants.BootstrapHost + " is missing or empty");
+		if (StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.BootstrapHost))) {
+			result.add("Property " + ConfigPropertyNames.BootstrapHost + " is missing or empty");
 		}
 
 		// Validate property CONNECTOR_PORT.
 		// Criterias: present
-		if (StringUtils.isEmpty(properties.getProperty(Constants.BootstrapPort))) {
-			result.add("Property " + Constants.BootstrapPort + " is missing or empty");
+		if (StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.BootstrapPort))) {
+			result.add("Property " + ConfigPropertyNames.BootstrapPort + " is missing or empty");
 		}
 
 		// Validate property CONNECTOR_TYPE.
 		// Criterias: present
-		if (StringUtils.isEmpty(properties.getProperty(Constants.CONNECTOR_TYPE))) {
-			result.add("Property " + Constants.CONNECTOR_TYPE + " is missing or empty");
+		if (StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.CONNECTOR_TYPE))) {
+			result.add("Property " + ConfigPropertyNames.CONNECTOR_TYPE + " is missing or empty");
 		}
 
 		// Validate property CONNECTOR_SECURITY_ENABLED.
 		// Criterias: present and 'true' or 'false'
-		if (StringUtils.isEmpty(properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED))) {
-			result.add("Property " + Constants.CONNECTOR_SECURITY_ENABLED + " is missing or empty");
-		} else if (!properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED).trim().equals("true")
-				&& !properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED).trim().equals("false")) {
-			result.add("Property " + Constants.CONNECTOR_SECURITY_ENABLED + " must be 'true' or 'false'");
+		if (StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED))) {
+			result.add("Property " + ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED + " is missing or empty");
+		} else if (!properties.getProperty(ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED).trim().equals("true")
+				&& !properties.getProperty(ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED).trim().equals("false")) {
+			result.add("Property " + ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED + " must be 'true' or 'false'");
 		}
 
 		// Validate property USERNAME.
 		// Criterias: present if CONNECTOR_SECURITY_ENABLED is true
-		String userName = properties.getProperty(Constants.username);
-		String securityEnabled = properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED);
+		String userName = properties.getProperty(ConfigPropertyNames.username);
+		String securityEnabled = properties.getProperty(ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED);
 		if (StringUtils.isEmpty(userName) && "true".equals(securityEnabled)) {
-			result.add("Property " + Constants.username + " must be present if " + Constants.CONNECTOR_SECURITY_ENABLED
+			result.add("Property " + ConfigPropertyNames.username + " must be present if " + ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED
 					+ " is true");
 		}
 		return result;

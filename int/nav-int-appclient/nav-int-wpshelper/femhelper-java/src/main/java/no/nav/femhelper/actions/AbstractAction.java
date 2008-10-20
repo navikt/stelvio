@@ -25,6 +25,7 @@ import javax.management.ReflectionException;
 
 import no.nav.appclient.adapter.BFMConnectionAdapter;
 import no.nav.appclient.adapter.BusinessFlowManagerServiceAdapter;
+import no.nav.appclient.util.ConfigPropertyNames;
 import no.nav.appclient.util.Constants;
 import no.nav.appclient.util.PasswordEncodeDelegate;
 import no.nav.appclient.util.PropertyMapper;
@@ -109,10 +110,10 @@ public abstract class AbstractAction {
 		Properties mappedProperties = mapper.getMappedProperties(properties);
 
 		// Decode password
-		String encodedPass = mappedProperties.getProperty(Constants.password);
+		String encodedPass = mappedProperties.getProperty(ConfigPropertyNames.password);
 		PasswordEncodeDelegate encode = new PasswordEncodeDelegate();
 		String decodedPassword = encode.getDecryptedPassword(encodedPass);
-		mappedProperties.setProperty(Constants.password, decodedPassword);
+		mappedProperties.setProperty(ConfigPropertyNames.password, decodedPassword);
 
 		// Create Business Flow Manager instance
 		try {
@@ -196,17 +197,17 @@ public abstract class AbstractAction {
 	 */
 	private void logProperties() {
 		logger.log(Level.FINE, "Initializing admin client with the following properties:");
-		logger.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(Constants.BootstrapHost));
-		logger.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(Constants.BootstrapPort));
-		logger.log(Level.FINE, "CONNECTOR_TYPE: " + properties.getProperty(Constants.CONNECTOR_TYPE));
-		logger.log(Level.FINE, "CONNECTOR_SECURITY_ENABLED: " + properties.getProperty(Constants.CONNECTOR_SECURITY_ENABLED));
-		logger.log(Level.FINE, "USERNAME: " + properties.getProperty(Constants.username));
+		logger.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(ConfigPropertyNames.BootstrapHost));
+		logger.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(ConfigPropertyNames.BootstrapPort));
+		logger.log(Level.FINE, "CONNECTOR_TYPE: " + properties.getProperty(ConfigPropertyNames.CONNECTOR_TYPE));
+		logger.log(Level.FINE, "CONNECTOR_SECURITY_ENABLED: " + properties.getProperty(ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED));
+		logger.log(Level.FINE, "USERNAME: " + properties.getProperty(ConfigPropertyNames.username));
 		logger.log(Level.FINE, "PASSWORD: ****");
-		if (!"".equals(properties.getProperty(Constants.SSL_KEYSTORE))) {
-			logger.log(Level.FINE, Constants.SSL_KEYSTORE + ": " + properties.getProperty(Constants.SSL_KEYSTORE));
+		if (!"".equals(properties.getProperty(ConfigPropertyNames.SSL_KEYSTORE))) {
+			logger.log(Level.FINE, ConfigPropertyNames.SSL_KEYSTORE + ": " + properties.getProperty(ConfigPropertyNames.SSL_KEYSTORE));
 		}
-		if (!"".equals(properties.getProperty(Constants.SSL_TRUSTSTORE))) {
-			logger.log(Level.FINE, Constants.SSL_TRUSTSTORE + ": " + properties.getProperty(Constants.SSL_TRUSTSTORE));
+		if (!"".equals(properties.getProperty(ConfigPropertyNames.SSL_TRUSTSTORE))) {
+			logger.log(Level.FINE, ConfigPropertyNames.SSL_TRUSTSTORE + ": " + properties.getProperty(ConfigPropertyNames.SSL_TRUSTSTORE));
 		}
 	}
 
