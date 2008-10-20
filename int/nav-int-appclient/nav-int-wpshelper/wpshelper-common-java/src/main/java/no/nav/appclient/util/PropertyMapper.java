@@ -1,8 +1,6 @@
 package no.nav.appclient.util;
 
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -10,8 +8,8 @@ import com.ibm.websphere.management.AdminClient;
 
 /**
  * <p>
- * Mapper class to ensure consistency of the <code>java.util.Properties</code> object passed to
- * <code>AdminClientFactory.createAdminClient().<p>
+ * Mapper class to ensure consistency of the <code>java.util.Properties</code>
+ * object passed to <code>AdminClientFactory.createAdminClient().<p>
  * 
  * <p>Without this mapper the properties are read directly from the 
  * <code>.properties</code> file, and that may cause a runtime exception of 
@@ -22,16 +20,12 @@ import com.ibm.websphere.management.AdminClient;
  * @author Andreas Røe
  */
 public class PropertyMapper {
-
-	/**
-	 * Logger instance
-	 */
-	private static Logger logger = Logger.getLogger(PropertyMapper.class.getName());
-
 	/**
 	 * <p>
-	 * This method perfomes the actual mapping. No validation of the content and consistency of the configuration here. This is
-	 * allready performed in <code>PropertyUtil.validateProperties()</code>. See class documentation for the purpose of this.
+	 * This method perfomes the actual mapping. No validation of the content and
+	 * consistency of the configuration here. This is allready performed in
+	 * <code>PropertyUtil.validateProperties()</code>. See class
+	 * documentation for the purpose of this.
 	 * </p>
 	 * 
 	 * @param src
@@ -39,8 +33,6 @@ public class PropertyMapper {
 	 * @return a properly mapped set of properties
 	 */
 	public Properties getMappedProperties(Properties src) {
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "getMappedProperties");
-
 		Properties result = new Properties();
 
 		if (!StringUtils.isEmpty(src.getProperty(Constants.CONNECTOR_HOST))) {
@@ -84,8 +76,6 @@ public class PropertyMapper {
 				result.setProperty("javax.net.ssl.trustStorePassword", src.getProperty(Constants.SSL_TRUSTSTORE_PASSWORD));
 			}
 		}
-
-		logger.log(Level.FINE, Constants.METHOD_EXIT + "getMappedProperties");
 		return result;
 	}
 }
