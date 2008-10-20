@@ -56,35 +56,16 @@ public class DeleteAction extends AbstractAction {
 			}
 
 			logger.log(Level.INFO, "Discarding #" + events.size() + " events...please wait!");
-			int j = 1;
-			ArrayList<Event> deleteChunk = new ArrayList<Event>();
-
-			for (int i = 0; i < events.size(); i++) {
-				Event event = events.get(i);
-				deleteChunk.add(event);
-				event.setEventStatus(EventStatus.MARKED);
-
-				// for each result set
-				if (j == Constants.MAX_DELETE) {
-					logger.log(Level.INFO, "Discard result set of events fra #" + ((i + 1) - Constants.MAX_DELETE) + " to #"
-							+ (i + 1));
-					deleteEvents(deleteChunk);
-					// reset chunk iterator
-					j = 1;
-					deleteChunk.clear();
+			for (int startIndex = 0; startIndex < events.size();) {
+				int endIndex = Math.min(startIndex + Constants.MAX_DELETE, events.size());
+				List<Event> chunk = events.subList(startIndex, endIndex);
+				for (Event event : chunk) {
+					event.setEventStatus(EventStatus.MARKED);
 				}
-
-				// The last chunk
-				else if ((events.size() - i) < Constants.MAX_DELETE && events.size() == (i + 1)) {
-					logger.log(Level.INFO, "Delete final result set of #" + deleteChunk.size() + " events");
-					deleteEvents(deleteChunk);
-
-					// reset chunk iterator
-					j = 1;
-					deleteChunk.clear();
-				}
-				j++;
-			} // event for
+				logger.log(Level.INFO, "Discard result set of events fra #" + (startIndex + 1) + " to #" + endIndex);
+				deleteEvents(chunk);
+				startIndex = endIndex;
+			}
 
 			// Update the status map after all deleting are completed
 			logger.log(Level.INFO, "Discarding of #" + events.size() + " events...done!");

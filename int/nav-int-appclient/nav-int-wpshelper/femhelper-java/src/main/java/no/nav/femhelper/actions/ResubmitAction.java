@@ -53,31 +53,16 @@ public class ResubmitAction extends AbstractAction {
 
 			logger.log(Level.INFO, "Resubmiting #" + events.size() + " events...please wait!");
 			logFileWriter.log("Staring to resubmit " + events.size() + " events");
-			int j = 1;
-			ArrayList<Event> chunk = new ArrayList<Event>();
-			for (int i = 0; i < events.size(); i++) {
-				Event event = events.get(i);
-				event.setEventStatus(EventStatus.MARKED);
-				chunk.add(event);
-
-				// for each result set
-				if (j == Constants.MAX_DELETE) {
-					logger.log(Level.INFO, "Resubmited result set of events from #" + ((i + 1) - Constants.MAX_DELETE)
-							+ " to #" + (i + 1));
-					resubmitEvents(chunk);
-					j = 1;
-					chunk.clear();
+			for (int startIndex = 0; startIndex < events.size();) {
+				int endIndex = Math.min(startIndex + Constants.MAX_DELETE, events.size());
+				List<Event> chunk = events.subList(startIndex, endIndex);
+				for (Event event : chunk) {
+					event.setEventStatus(EventStatus.MARKED);
 				}
-				// the last chunk
-				else if ((events.size() - i) < Constants.MAX_DELETE && events.size() == (i + 1)) {
-
-					logger.log(Level.INFO, "Resubmit final result set of #" + chunk.size() + " events");
-					resubmitEvents(chunk);
-					j = 1;
-					chunk.clear();
-				}
-				j++;
-			} // event for
+				logger.log(Level.INFO, "Resubmitted result set of events from #" + (startIndex + 1) + " to #" + endIndex);
+				resubmitEvents(chunk);
+				startIndex = endIndex;
+			}
 
 			logger.log(Level.INFO, "Resubmit of #" + events.size() + " events...done!");
 			logger.log(Level.INFO, "Reporting status of events...please wait!");
