@@ -36,7 +36,6 @@ public class ResubmitAction extends AbstractAction {
 	Object processEvents(String path, String filename, Map<String, String> arguments, boolean paging, long totalevents,
 			int maxresultset, CommandLine cl) throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
-
 		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
 
 		logger.log(Level.FINE, "Write header part.");
@@ -46,15 +45,15 @@ public class ResubmitAction extends AbstractAction {
 		ArrayList<Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
 		logFileWriter.log("Collected " + events.size() + " events");
 
-		if (!cl.hasOption(Constants.noStop)) {
-			String q = "Do you want to continue and resubmit " + events.size() + " events?";
-			boolean result = askYesNo(q);
-			if (!result) {
-				return null;
-			}
-		}
-
 		if (!events.isEmpty()) {
+			if (!cl.hasOption(Constants.noStop)) {
+				String q = "Do you want to continue and resubmit " + events.size() + " events?";
+				boolean result = askYesNo(q);
+				if (!result) {
+					return null;
+				}
+			}
+			
 			logger.log(Level.INFO, "Resubmiting #" + events.size() + " events...please wait!");
 			logFileWriter.log("Staring to resubmit " + events.size() + " events");
 			int j = 1;
@@ -90,7 +89,6 @@ public class ResubmitAction extends AbstractAction {
 			for (Event event : events) {
 				fileWriter.writeShortEvent(event);
 			}
-
 		} else {
 			logger.log(Level.WARNING, "No events found to resubmit!");
 		}

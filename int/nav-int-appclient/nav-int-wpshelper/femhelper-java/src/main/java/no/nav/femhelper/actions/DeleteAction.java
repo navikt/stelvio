@@ -48,16 +48,16 @@ public class DeleteAction extends AbstractAction {
 		// Collect events to stop processes and delete events
 		ArrayList<Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
 
-		// Check if the commandline has a --noStop option
-		if (!cl.hasOption(Constants.noStop)) {
-			String q = "Do you want to continue and delete " + events.size() + " events?";
-			boolean result = askYesNo(q);
-			if (!result) {
-				return null;
+		if (!events.isEmpty()) {
+			// Check if the commandline has a --noStop option
+			if (!cl.hasOption(Constants.noStop)) {
+				String q = "Do you want to continue and delete " + events.size() + " events?";
+				boolean result = askYesNo(q);
+				if (!result) {
+					return null;
+				}
 			}
-		}
-
-		if (events.size() > 0) {
+			
 			logger.log(Level.INFO, "Discarding #" + events.size() + " events...please wait!");
 			int j = 1;
 			ArrayList<Event> deleteChunk = new ArrayList<Event>();
