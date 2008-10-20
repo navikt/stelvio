@@ -10,7 +10,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
-import no.nav.appclient.util.Constants;
+import no.nav.appclient.util.ConfigPropertyNames;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -41,8 +41,8 @@ public class SecuredBFMConnection extends BFMConnection {
 
 	@Override
 	public BusinessFlowManagerService getBusinessFlowManagerService() throws NamingException, CreateException, RemoteException {
-		String username = properties.getProperty(Constants.username);
-		String password = properties.getProperty(Constants.password);
+		String username = properties.getProperty(ConfigPropertyNames.username);
+		String password = properties.getProperty(ConfigPropertyNames.password);
 
 		// Build context
 		Context ctx;

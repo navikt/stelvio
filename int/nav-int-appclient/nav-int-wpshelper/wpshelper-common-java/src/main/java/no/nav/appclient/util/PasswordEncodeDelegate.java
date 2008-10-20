@@ -30,13 +30,13 @@ public class PasswordEncodeDelegate {
 			properties.load(in);
 			in.close();
 			// Check is password is defined
-			if (!StringUtils.isEmpty(properties.getProperty(Constants.password))) {
+			if (!StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.password))) {
 				// Check if password allready is encrypted
-				String password = properties.getProperty(Constants.password);
+				String password = properties.getProperty(ConfigPropertyNames.password);
 				if (!password.startsWith("{xor}")) {
 					// Write encoded password back to the property file
 					String encodedPassword = PasswordUtil.encode(password);
-					properties.setProperty(Constants.password, encodedPassword);
+					properties.setProperty(ConfigPropertyNames.password, encodedPassword);
 					FileOutputStream out = new FileOutputStream(propertiesFile);
 					properties.store(out, "Encoded password");
 					out.close();
