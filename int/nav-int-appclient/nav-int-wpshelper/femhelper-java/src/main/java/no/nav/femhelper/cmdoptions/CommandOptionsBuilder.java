@@ -1,10 +1,6 @@
 package no.nav.femhelper.cmdoptions;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import no.nav.appclient.util.Constants;
-import no.nav.femhelper.filewriters.AbstractFileWriter;
 
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
@@ -19,12 +15,6 @@ import org.apache.commons.lang.StringUtils;
  */
 @SuppressWarnings("static-access")
 public class CommandOptionsBuilder {
-
-	/**
-	 * Logger instance
-	 */
-	private Logger logger = Logger.getLogger(AbstractFileWriter.class.getName());
-
 	/**
 	 * Method that gather all options
 	 * 
@@ -46,8 +36,6 @@ public class CommandOptionsBuilder {
 		options.addOption(getSourceComponentOption());
 		options.addOption(getDestinationModule());
 		options.addOption(getDestinationComponent());
-
-		logger.log(Level.FINE, Constants.METHOD_EXIT + "getOptions");
 		return options;
 	}
 

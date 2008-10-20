@@ -5,18 +5,15 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import no.nav.appclient.util.Constants;
-
 public class AbstractFileWriter {
-
 	/**
 	 * Logger instance
 	 */
 	private Logger LOGGER = Logger.getLogger(AbstractFileWriter.class.getName());
-	
+
 	/**
-	 * Private constant for this class to organize the content properly
-	 * in the output file
+	 * Private constant for this class to organize the content properly in the
+	 * output file
 	 */
 	@SuppressWarnings("unused")
 	protected static final String TABULATOR = "\t\t";
@@ -29,8 +26,8 @@ public class AbstractFileWriter {
 	 */
 	protected static final String EMPTY = " ";
 	/**
-	 * Used to do all the printing. Declared as BufferedWriter and not
-	 * just Writer to inherit the <code>newLine()</code> method
+	 * Used to do all the printing. Declared as BufferedWriter and not just
+	 * Writer to inherit the <code>newLine()</code> method
 	 */
 	protected BufferedWriter writer;
 
@@ -38,7 +35,6 @@ public class AbstractFileWriter {
 	 * Close the EventWriterFile and flush all
 	 */
 	public void close() {
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "close");
 		try {
 			if (null != writer) {
 				writer.flush();
@@ -48,7 +44,5 @@ public class AbstractFileWriter {
 			LOGGER.log(Level.SEVERE, "ERROR: Might not all reported due to IOException : StackTrace:");
 			e.printStackTrace();
 		}
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "close");
 	}
-
 }

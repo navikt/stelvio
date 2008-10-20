@@ -1,6 +1,5 @@
 package utils;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,33 +13,31 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * Class with responsibility for validating command line inputs.
- * This might be performed with Apache CLI as well, but that
- * will just not list the erros in a properly way.
+ * Class with responsibility for validating command line inputs. This might be
+ * performed with Apache CLI as well, but that will just not list the erros in a
+ * properly way.
  * 
  * @author Andreas Røe
  */
 public class ArgumentValidator {
-	
 	private static Logger LOGGER = Logger.getLogger(ArgumentValidator.class.getName());
-	
+
 	public List validate(CommandLine cl) {
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "validate");
-		
 		List<String> result = new ArrayList<String>();
-		
+
 		// logFilePath
 		validateLogPath(cl.getOptionValue(Constants.reportDirectory));
-		
+
 		// maxResultSet
 		String maxResultSet = cl.getOptionValue(Constants.maxResultSet);
 		if (!StringUtils.isEmpty(maxResultSet) && Integer.parseInt(maxResultSet) > 9999) {
 			result.add("Property " + Constants.maxResultSet + " is to large. Possible values is 1 >= 9999");
 		}
-		
+
 		// maxResultSetPaging
 		String maxResultSetPaging = cl.getOptionValue(Constants.maxResultSetPaging);
-		if (!StringUtils.isEmpty(maxResultSetPaging) &&  !maxResultSetPaging.equals(Boolean.TRUE.toString()) && !maxResultSetPaging.equals(Boolean.FALSE.toString())) {
+		if (!StringUtils.isEmpty(maxResultSetPaging) && !maxResultSetPaging.equals(Boolean.TRUE.toString())
+				&& !maxResultSetPaging.equals(Boolean.FALSE.toString())) {
 			result.add("Property " + Constants.maxResultSetPaging + " is set must be 'true' or 'false'");
 		}
 
@@ -51,8 +48,8 @@ public class ArgumentValidator {
 		if (!"".equals(actionValidationMessage)) {
 			result.add(actionValidationMessage);
 		}
-				
-		// timeFrame is validated againts the '-' separator, 
+
+		// timeFrame is validated againts the '-' separator,
 		// and the date values on both sides are validated against the pattern.
 		String timeFrame = cl.getOptionValue(Constants.timeFrame);
 		if (!StringUtils.isEmpty(timeFrame)) {
@@ -75,7 +72,7 @@ public class ArgumentValidator {
 							+ Constants.TIME_FRAME_FORMAT);
 				}
 			}
-		}		
+		}
 		return result;
 	}
 
@@ -83,11 +80,11 @@ public class ArgumentValidator {
 		String validationMessage = "";
 		if (StringUtils.isEmpty(action)) {
 			validationMessage = "Property " + Constants.action + " is missing or empty";
-		} else {	
+		} else {
 			if (!Constants.ACTIONS.contains(action)) {
 				validationMessage = "Property " + Constants.action + " value supplied is not a valid option.";
-			} 	
-		}		
+			}
+		}
 		return validationMessage;
 	}
 

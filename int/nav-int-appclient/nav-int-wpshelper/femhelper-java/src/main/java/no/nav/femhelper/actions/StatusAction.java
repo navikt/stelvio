@@ -9,7 +9,6 @@ import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
-import no.nav.appclient.util.Constants;
 import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;
@@ -25,13 +24,9 @@ public class StatusAction extends AbstractAction {
 	Object processEvents(String path, String filename, Map argument, boolean paging, long totalevents, int maxresultset,
 			CommandLine cl) throws IOException, InstanceNotFoundException, MBeanException, ReflectionException,
 			ConnectorException {
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
-		
 		String countQuery = Queries.QUERY_COUNT_EVENTS;
 		Long lnr = (Long) adminClient.invoke(faildEventManager, countQuery, null, null);
 		logger.log(Level.INFO, "Current total number of events: #" + lnr);
-
-		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		return lnr;
 	}
 }

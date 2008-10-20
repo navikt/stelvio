@@ -100,7 +100,6 @@ public abstract class AbstractAction {
 	 * @return true or false if connect was working
 	 */
 	private boolean connect() throws ConnectorException, MalformedObjectNameException {
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "connect");
 		boolean result = false;
 
 		// Map configuration to ensure additional parameters not are added to
@@ -137,15 +136,11 @@ public abstract class AbstractAction {
 			logger.log(Level.SEVERE, "Failed Event Manager MBean was not found");
 			result = false;
 		}
-
-		logger.log(Level.FINE, Constants.METHOD_EXIT + "connect");
 		return result;
 	}
 
 	// TODO: SEB: Hva gjør denne her?
 	private void disconnect() {
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "disconnect");
-		logger.log(Level.FINE, Constants.METHOD_EXIT + "disconnect");
 	}
 
 	abstract Object processEvents(String path, String filename, Map<String, String> arguments, boolean paging,
@@ -154,9 +149,6 @@ public abstract class AbstractAction {
 
 	public Object process(String path, String filename, Map<String, String> arguments, boolean paging, long totalevents,
 			int maxresultset, CommandLine cl) throws MalformedObjectNameException, ConnectorException, NullPointerException {
-
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
-
 		// Log properties before creation of the AdminClient objects
 		this.logProperties();
 
@@ -194,9 +186,6 @@ public abstract class AbstractAction {
 		}
 
 		this.disconnect();
-
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
-
 		return result;
 	}
 
@@ -206,8 +195,6 @@ public abstract class AbstractAction {
 	 * the password)
 	 */
 	private void logProperties() {
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "logProperties");
-
 		logger.log(Level.FINE, "Initializing admin client with the following properties:");
 		logger.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(Constants.BootstrapHost));
 		logger.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(Constants.BootstrapPort));
@@ -221,8 +208,6 @@ public abstract class AbstractAction {
 		if (!"".equals(properties.getProperty(Constants.SSL_TRUSTSTORE))) {
 			logger.log(Level.FINE, Constants.SSL_TRUSTSTORE + ": " + properties.getProperty(Constants.SSL_TRUSTSTORE));
 		}
-
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "logProperties");
 	}
 
 	/**
@@ -240,9 +225,6 @@ public abstract class AbstractAction {
 	 */
 	protected ArrayList<Event> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
 			throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, IOException {
-
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "collectEvents");
-
 		logFileWriter.log("Starting to collect events");
 
 		// Method level variables
@@ -341,7 +323,6 @@ public abstract class AbstractAction {
 		}
 
 		logFileWriter.log("Collected " + events.size() + " events");
-		logger.log(Level.FINE, Constants.METHOD_EXIT + "collectEvents");
 		return events;
 	}
 

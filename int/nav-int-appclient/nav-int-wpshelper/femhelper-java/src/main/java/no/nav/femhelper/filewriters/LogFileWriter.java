@@ -14,37 +14,34 @@ import no.nav.appclient.util.Constants;
 import org.apache.commons.lang.StringUtils;
 
 public class LogFileWriter extends AbstractFileWriter {
-	
+
 	/**
 	 * Logger instance
 	 */
 	private Logger LOGGER = Logger.getLogger(LogFileWriter.class.getName());
-	
+
 	/**
 	 * Default parameterized constructor
 	 * 
-	 * @param path path
-	 * @param filename filename
-	 * @throws IOException 
+	 * @param path
+	 *            path
+	 * @param filename
+	 *            filename
+	 * @throws IOException
 	 */
 	public LogFileWriter(String path, String filename) throws IOException {
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "LogFileWriter()");
-		
 		if (StringUtils.isEmpty(path)) {
 			String tempFolderProperty = "java.io.tmpdir";
 			String tempFolder = System.getProperty(tempFolderProperty);
 			path = tempFolder;
 		}
-		
+
 		String completePath = path + File.separatorChar + filename;
 		LOGGER.log(Level.FINE, "Creating instance of BufferedWriter with path: " + completePath);
 		writer = new BufferedWriter(new FileWriter(completePath, true));
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "LogFileWriter()");
 	}
-	
+
 	public void log(String string) {
-		LOGGER.log(Level.FINE, Constants.METHOD_ENTER + "log");
-		
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 		String date = sdf.format(Calendar.getInstance().getTime());
 		try {
@@ -54,8 +51,5 @@ public class LogFileWriter extends AbstractFileWriter {
 		} catch (IOException e) {
 			LOGGER.log(Level.ALL, "Cannot write to log file");
 		}
-		
-		LOGGER.log(Level.FINE, Constants.METHOD_EXIT + "log");
 	}
-	
 }

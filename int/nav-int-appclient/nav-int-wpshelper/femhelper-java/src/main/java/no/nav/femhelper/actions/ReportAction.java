@@ -28,8 +28,6 @@ public class ReportAction extends AbstractAction {
 	Object processEvents(String path, String filename, Map<String, String> arguments, boolean paging, long totalevents,
 			int maxresultset, CommandLine cl) throws IOException, InstanceNotFoundException, MBeanException,
 			ReflectionException, ConnectorException {
-		logger.log(Level.FINE, Constants.METHOD_ENTER + "processEvents");
-
 		logger.log(Level.FINE, "Write CSV header part.");
 		fileWriter.writeHeader();
 
@@ -64,8 +62,6 @@ public class ReportAction extends AbstractAction {
 		} else {
 			logger.log(Level.WARNING, "No events found to report!");
 		}
-
-		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		return events;
 	}
 }
