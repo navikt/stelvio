@@ -3,11 +3,10 @@ package no.nav.femhelper.actions;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 import java.util.logging.Level;
 
 import javax.management.InstanceNotFoundException;
@@ -26,8 +25,6 @@ import com.ibm.wbiserver.manualrecovery.exceptions.ResubmissionFailedException;
 import com.ibm.websphere.management.exception.ConnectorException;
 
 public class ResubmitAction extends AbstractAction {
-	private Set<Event> reportedEvents = new LinkedHashSet<Event>();
-
 	public ResubmitAction(Properties properties) {
 		super(properties);
 	}
@@ -62,7 +59,6 @@ public class ResubmitAction extends AbstractAction {
 				Event event = events.get(i);
 				event.setEventStatus(EventStatus.MARKED);
 				chunk.add(event);
-				reportedEvents.add(event);
 
 				// for each result set
 				if (j == Constants.MAX_DELETE) {
@@ -112,35 +108,32 @@ public class ResubmitAction extends AbstractAction {
 			// Resubmit events in this chunk
 			adminClient.invoke(faildEventManager, opResubmit, para, sig);
 
-			// Update the reported events with event status deleted
+			// Update the reported events with event status resubmitted
 			for (Event event : events) {
 				event.setEventStatus(EventStatus.RESUBMITED);
 			}
-
 		} catch (MBeanException e) {
-			// REPORT not deleted events
 			if (e.getTargetException() instanceof ResubmissionFailedException) {
 				FailedEventExceptionReport[] re = ((ResubmissionFailedException) e.getTargetException())
 						.getFailedEventExceptionReports();
+
+				Map<String, FailedEventExceptionReport> reportMap = new LinkedHashMap<String, FailedEventExceptionReport>(
+						re.length);
+				for (FailedEventExceptionReport report : re) {
+					reportMap.put(report.getMsgId(), report);
+				}
+
 				SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 
 				// Update with failure status and set failureinformation to the
 				// failed events
-				for (FailedEventExceptionReport report : re) {
-					if (reportedEvents.contains(report.getMsgId())) {
-						for (Event event : reportedEvents) {
-							if (event.getMessageID().equals(report.getMsgId())) {
-								event.setEventStatus(EventStatus.FAILED);
-								event.setEventFailureDate(sdf.format(report.getExceptionTime()));
-								event.setEventFailureMessage(report.getExceptionDetail());
-							}
-						}
-					}
-				}
-
-				// Update the reported events with event status deleted
 				for (Event event : events) {
-					if (!event.getEventStatus().equals(EventStatus.FAILED)) {
+					if (reportMap.containsKey(event.getMessageID())) {
+						FailedEventExceptionReport report = reportMap.get(event.getMessageID());
+						event.setEventStatus(EventStatus.FAILED);
+						event.setEventFailureDate(sdf.format(report.getExceptionTime()));
+						event.setEventFailureMessage(report.getExceptionDetail());
+					} else {
 						event.setEventStatus(EventStatus.RESUBMITED);
 					}
 				}

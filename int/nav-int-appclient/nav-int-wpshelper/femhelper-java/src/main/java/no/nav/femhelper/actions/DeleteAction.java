@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 import java.util.logging.Level;
 
 import javax.management.InstanceNotFoundException;
@@ -29,8 +28,6 @@ import com.ibm.wbiserver.manualrecovery.exceptions.DiscardFailedException;
 import com.ibm.websphere.management.exception.ConnectorException;
 
 public class DeleteAction extends AbstractAction {
-	private Set<Event> reportedEvents = new LinkedHashSet<Event>();
-
 	public DeleteAction(Properties properties) {
 		super(properties);
 	}
@@ -66,7 +63,6 @@ public class DeleteAction extends AbstractAction {
 				Event event = events.get(i);
 				deleteChunk.add(event);
 				event.setEventStatus(EventStatus.MARKED);
-				reportedEvents.add(event);
 
 				// for each result set
 				if (j == Constants.MAX_DELETE) {
@@ -93,9 +89,8 @@ public class DeleteAction extends AbstractAction {
 			// Update the status map after all deleting are completed
 			logger.log(Level.INFO, "Discarding of #" + events.size() + " events...done!");
 			logger.log(Level.INFO, "Reporting status of discard events...please wait!");
-			Iterator<Event> it = reportedEvents.iterator();
-			while (it.hasNext()) {
-				fileWriter.writeShortEvent(it.next());
+			for (Event event : events) {
+				fileWriter.writeShortEvent(event);
 			}
 		} else {
 			logger.log(Level.WARNING, "No events found to discard!");
@@ -107,10 +102,13 @@ public class DeleteAction extends AbstractAction {
 
 	private void deleteEvents(List<Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException,
 			MBeanException {
+		// Create a local collection that will allow me to remove elements
+		List<Event> eventsToDelete = new ArrayList<Event>(events);
 		// Delete processes connected to this chunk of events
 		// Collect event id for events where stopping the process not failing
-		List<String> eventIds = new ArrayList<String>();
-		for (Event event : events) {
+		Iterator<Event> eventsToDeleteIterator = eventsToDelete.iterator();
+		while (eventsToDeleteIterator.hasNext()) {
+			Event event = eventsToDeleteIterator.next();
 			String correlationId = event.getCorrelationID();
 			try {
 				if (correlationId != null && correlationId.startsWith("_AI:")) {
@@ -119,10 +117,11 @@ public class DeleteAction extends AbstractAction {
 				} else {
 					event.setProcessStatus(ProcessStatus.NOPROCESS);
 				}
-				eventIds.add(event.getMessageID());
 			} catch (ServiceException se) {
 				event.setProcessStatus(ProcessStatus.FAILED);
 				event.setProcessFailureMessage(se.getMessage());
+				// Remove event from events to delete
+				eventsToDeleteIterator.remove();
 			}
 		}
 
@@ -130,9 +129,9 @@ public class DeleteAction extends AbstractAction {
 			// Map events to correct String array
 			String opDelete = Queries.QUERY_DISCARD_FAILED_EVENTS;
 			String[] sig = new String[] { "[Ljava.lang.String;" };
-			String[] ids = new String[eventIds.size()];
+			String[] ids = new String[eventsToDelete.size()];
 			for (int i = 0; i < ids.length; i++) {
-				ids[i] = events.get(i).getMessageID();
+				ids[i] = eventsToDelete.get(i).getMessageID();
 			}
 			Object[] parameters = new Object[] { ids };
 
@@ -140,34 +139,31 @@ public class DeleteAction extends AbstractAction {
 			adminClient.invoke(faildEventManager, opDelete, parameters, sig);
 
 			// Update the reported events with event status deleted
-			for (Event event : events) {
+			for (Event event : eventsToDelete) {
 				event.setEventStatus(EventStatus.DELETED);
 			}
-
 		} catch (MBeanException e) {
-			// REPORT not deleted events
 			if (e.getTargetException() instanceof DiscardFailedException) {
 				FailedEventExceptionReport[] re = ((DiscardFailedException) e.getTargetException())
 						.getFailedEventExceptionReports();
+
+				Map<String, FailedEventExceptionReport> reportMap = new LinkedHashMap<String, FailedEventExceptionReport>(
+						re.length);
+				for (FailedEventExceptionReport report : re) {
+					reportMap.put(report.getMsgId(), report);
+				}
+
 				SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 
 				// Update with failure status and set failureinformation to the
 				// failed events
-				for (FailedEventExceptionReport report : re) {
-					if (reportedEvents.contains(report.getMsgId())) {
-						for (Event event : reportedEvents) {
-							if (event.getMessageID().equals(report.getMsgId())) {
-								event.setEventStatus(EventStatus.FAILED);
-								event.setEventFailureDate(sdf.format(report.getExceptionTime()));
-								event.setEventFailureMessage(report.getExceptionDetail());
-							}
-						}
-					}
-				}
-
-				// Update the reported events with event status deleted
-				for (Event event : events) {
-					if (event.getEventStatus().equals(EventStatus.FAILED)) {
+				for (Event event : eventsToDelete) {
+					if (reportMap.containsKey(event.getMessageID())) {
+						FailedEventExceptionReport report = reportMap.get(event.getMessageID());
+						event.setEventStatus(EventStatus.FAILED);
+						event.setEventFailureDate(sdf.format(report.getExceptionTime()));
+						event.setEventFailureMessage(report.getExceptionDetail());
+					} else {
 						event.setEventStatus(EventStatus.DELETED);
 					}
 				}
