@@ -88,7 +88,7 @@ public class ResubmitAction extends AbstractAction {
 			Object[] para = new Object[] { ids };
 
 			// Resubmit events in this chunk
-			adminClient.invoke(faildEventManager, opResubmit, para, sig);
+			adminClient.invoke(failedEventManager, opResubmit, para, sig);
 
 			// Update the reported events with event status resubmitted
 			for (Event event : events) {

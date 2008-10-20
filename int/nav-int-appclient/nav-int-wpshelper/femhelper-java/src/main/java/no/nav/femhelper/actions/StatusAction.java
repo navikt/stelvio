@@ -25,7 +25,7 @@ public class StatusAction extends AbstractAction {
 			CommandLine cl) throws IOException, InstanceNotFoundException, MBeanException, ReflectionException,
 			ConnectorException {
 		String countQuery = Queries.QUERY_COUNT_EVENTS;
-		Long lnr = (Long) adminClient.invoke(faildEventManager, countQuery, null, null);
+		Long lnr = (Long) adminClient.invoke(failedEventManager, countQuery, null, null);
 		logger.log(Level.INFO, "Current total number of events: #" + lnr);
 		return lnr;
 	}

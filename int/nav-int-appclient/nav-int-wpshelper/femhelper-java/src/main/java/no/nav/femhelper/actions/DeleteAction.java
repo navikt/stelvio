@@ -114,7 +114,7 @@ public class DeleteAction extends AbstractAction {
 			Object[] parameters = new Object[] { ids };
 
 			// Delete events in this chunk
-			adminClient.invoke(faildEventManager, opDelete, parameters, sig);
+			adminClient.invoke(failedEventManager, opDelete, parameters, sig);
 
 			// Update the reported events with event status deleted
 			for (Event event : eventsToDelete) {

@@ -57,16 +57,6 @@ public abstract class AbstractAction {
 	protected final Logger logger = Logger.getLogger(getClass().getName());
 
 	/**
-	 * Properties from config file
-	 */
-	protected Properties properties;
-
-	/**
-	 * Properties from command line options
-	 */
-	protected CommandLine cl;
-
-	/**
 	 * AdminClient instance
 	 */
 	protected AdminClient adminClient;
@@ -76,13 +66,16 @@ public abstract class AbstractAction {
 	/**
 	 * ObjectName object to represent the FEM Bean
 	 */
-	protected ObjectName faildEventManager;
+	protected ObjectName failedEventManager;
 
 	protected EventFileWriter fileWriter;
 
 	protected LogFileWriter logFileWriter;
 
-	private boolean connected;
+	/**
+	 * Properties from config file
+	 */
+	private Properties properties;
 
 	/**
 	 * Default contructor
@@ -131,7 +124,7 @@ public abstract class AbstractAction {
 		Set s = adminClient.queryNames(queryName, null);
 
 		if (!s.isEmpty()) {
-			faildEventManager = (ObjectName) s.iterator().next();
+			failedEventManager = (ObjectName) s.iterator().next();
 			logger.log(Level.FINE, "Connected to Failed Event Manager MBean.");
 			result = true;
 		} else {
@@ -154,7 +147,7 @@ public abstract class AbstractAction {
 		// Log properties before creation of the AdminClient objects
 		this.logProperties();
 
-		this.connected = this.connect();
+		this.connect();
 
 		// Create file writer instances
 		logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
@@ -246,7 +239,7 @@ public abstract class AbstractAction {
 		Object[] params = new Object[] { new Integer(maxresultset) };
 		String[] signature = new String[] { "int" };
 		String femQuery = Queries.QUERY_ALL_EVENTS;
-		List failedEventList = (List) adminClient.invoke(faildEventManager, femQuery, params, signature);
+		List failedEventList = (List) adminClient.invoke(failedEventManager, femQuery, params, signature);
 
 		// first result set
 		logger.log(Level.INFO, "Collect events is working for first result set...please wait!");
@@ -292,7 +285,7 @@ public abstract class AbstractAction {
 
 			Object[] pagepar = new Object[] { begin, end, new Integer(maxresultset) };
 			String[] pagesig = new String[] { "java.util.Date", "java.util.Date", "int" };
-			failedEventList = (List) adminClient.invoke(faildEventManager, femQuery, pagepar, pagesig);
+			failedEventList = (List) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
 			Iterator pgit = failedEventList.iterator();
 
 			logger.log(Level.INFO, "Collect events is working for result set #" + pagecount + "...please wait!");
@@ -329,12 +322,6 @@ public abstract class AbstractAction {
 
 		logFileWriter.log("Collected " + events.size() + " events");
 		return events;
-	}
-
-	// Getters and setters
-
-	public boolean isConnected() {
-		return connected;
 	}
 
 	/**
@@ -426,5 +413,4 @@ public abstract class AbstractAction {
 
 		return "y".equals(answer) || "yes".equals(answer) ? true : false;
 	}
-
 }
