@@ -1,6 +1,6 @@
 package no.nav.femhelper.cmdoptions;
 
-import no.nav.appclient.util.Constants;
+import no.nav.femhelper.common.Constants;
 
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;

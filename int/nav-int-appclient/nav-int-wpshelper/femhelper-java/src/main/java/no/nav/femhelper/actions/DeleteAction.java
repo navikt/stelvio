@@ -15,7 +15,7 @@ import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
 import no.nav.appclient.adapter.ServiceException;
-import no.nav.appclient.util.Constants;
+import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.EventStatus;
 import no.nav.femhelper.common.ProcessStatus;
