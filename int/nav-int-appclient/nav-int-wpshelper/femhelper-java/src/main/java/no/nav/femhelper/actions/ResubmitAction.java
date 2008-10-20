@@ -22,7 +22,7 @@ import no.nav.femhelper.common.Queries;
 import org.apache.commons.cli.CommandLine;
 
 import com.ibm.wbiserver.manualrecovery.FailedEventExceptionReport;
-import com.ibm.wbiserver.manualrecovery.exceptions.DiscardFailedException;
+import com.ibm.wbiserver.manualrecovery.exceptions.ResubmissionFailedException;
 import com.ibm.websphere.management.exception.ConnectorException;
 
 public class ResubmitAction extends AbstractAction {
@@ -119,8 +119,8 @@ public class ResubmitAction extends AbstractAction {
 
 		} catch (MBeanException e) {
 			// REPORT not deleted events
-			if (e.getTargetException() instanceof DiscardFailedException) {
-				FailedEventExceptionReport[] re = ((DiscardFailedException) e.getTargetException())
+			if (e.getTargetException() instanceof ResubmissionFailedException) {
+				FailedEventExceptionReport[] re = ((ResubmissionFailedException) e.getTargetException())
 						.getFailedEventExceptionReports();
 				SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 
