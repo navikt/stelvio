@@ -10,7 +10,7 @@ import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
-import no.nav.femhelper.common.Constants;
+import no.nav.femhelper.cmdoptions.CommandOptions;
 import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.Queries;
 
@@ -35,7 +35,7 @@ public class ReportAction extends AbstractAction {
 		events = collectEvents(arguments, paging, totalevents, maxresultset);
 
 		if (!events.isEmpty()) {
-			if (!cl.hasOption(Constants.noStop)) {
+			if (!cl.hasOption(CommandOptions.noStop)) {
 				String q = "Do you want to continue and write " + totalevents + " events?";
 				boolean result = askYesNo(q);
 				if (!result) {

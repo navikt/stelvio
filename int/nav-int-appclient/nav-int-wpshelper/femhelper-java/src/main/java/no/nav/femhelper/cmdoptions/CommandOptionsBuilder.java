@@ -5,7 +5,6 @@ import no.nav.femhelper.common.Constants;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -45,7 +44,7 @@ public class CommandOptionsBuilder {
 	 * @return sourceModule option
 	 */
 	private Option getSourceModuleOption() {
-		Option sourceModule = getGeneralOption(Constants.sourceModule, "sm");
+		Option sourceModule = getGeneralOption(CommandOptions.sourceModule, "sm");
 		sourceModule.setArgName("String");
 		sourceModule.setDescription("Filter by Source Module");
 		return sourceModule;
@@ -57,7 +56,7 @@ public class CommandOptionsBuilder {
 	 * @return sourceComponent option
 	 */
 	private Option getSourceComponentOption() {
-		Option sourceComponent = getGeneralOption(Constants.sourceComponent, "sc");
+		Option sourceComponent = getGeneralOption(CommandOptions.sourceComponent, "sc");
 		sourceComponent.setDescription("Filter by Source Component");
 		return sourceComponent;
 	}
@@ -68,7 +67,7 @@ public class CommandOptionsBuilder {
 	 * @return destinationModule option
 	 */
 	private Option getDestinationModule() {
-		Option destinationModule = getGeneralOption(Constants.destinationModule, "dm");
+		Option destinationModule = getGeneralOption(CommandOptions.destinationModule, "dm");
 		destinationModule.setDescription("Filter by Destination Module");
 		return destinationModule;
 	}
@@ -79,7 +78,7 @@ public class CommandOptionsBuilder {
 	 * @return destinationComponent option
 	 */
 	private Option getDestinationComponent() {
-		Option destinationComponent = getGeneralOption(Constants.destinationComponent, "dc");
+		Option destinationComponent = getGeneralOption(CommandOptions.destinationComponent, "dc");
 		destinationComponent.setDescription("Filter by Destination Component");
 		return destinationComponent;
 	}
@@ -90,7 +89,7 @@ public class CommandOptionsBuilder {
 	 * @return failureMessage option
 	 */
 	private Option getFailureMessageOption() {
-		Option failureMessage = getGeneralOption(Constants.failureMessage, "fm");
+		Option failureMessage = getGeneralOption(CommandOptions.failureMessage, "fm");
 		failureMessage
 				.setDescription("Wild card search in the failure message. Might be used to drill down a given exception etc.");
 		return failureMessage;
@@ -102,7 +101,7 @@ public class CommandOptionsBuilder {
 	 * @return dataObject option
 	 */
 	private Option getDataObjectOption() {
-		Option dataObject = getGeneralOption(Constants.dataObject, "do");
+		Option dataObject = getGeneralOption(CommandOptions.dataObject, "do");
 		return dataObject;
 	}
 
@@ -112,7 +111,7 @@ public class CommandOptionsBuilder {
 	 * @return timeFrame option
 	 */
 	private Option getTimeFrameOption() {
-		Option timeFrame = getGeneralOption(Constants.timeFrame, "tf");
+		Option timeFrame = getGeneralOption(CommandOptions.timeFrame, "tf");
 		timeFrame.setArgName("timeframe");
 		timeFrame.setRequired(false);
 		timeFrame.setDescription("Filter by time. Pattern:" + Constants.TIME_FRAME_FORMAT + "-" + Constants.TIME_FRAME_FORMAT);
@@ -127,7 +126,7 @@ public class CommandOptionsBuilder {
 	 * @TODO AR This could have a default value
 	 */
 	private Option getMaxResultSetPagingOption() {
-		Option maxResultSetPaging = getGeneralOption(Constants.maxResultSetPaging, "mrsp");
+		Option maxResultSetPaging = getGeneralOption(CommandOptions.maxResultSetPaging, "mrsp");
 		maxResultSetPaging.setArgName("boolean");
 		maxResultSetPaging.setDescription("Default is 'true'");
 		return maxResultSetPaging;
@@ -140,7 +139,7 @@ public class CommandOptionsBuilder {
 	 * @TODO AR This could have a default value
 	 */
 	private Option getMaxResultSetOption() {
-		Option maxResultSet = getGeneralOption(Constants.maxResultSet, "mrs");
+		Option maxResultSet = getGeneralOption(CommandOptions.maxResultSet, "mrs");
 		maxResultSet.setArgName("integer");
 		maxResultSet
 				.setDescription("Default value is '1000'. Recommended to use range between 100 and 1000. This is a restriction due to JVM memory limitations");
@@ -153,8 +152,8 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getActionOption() {
-		Option action = getGeneralOption(Constants.action, "a");
-		action.setArgName(ArrayUtils.toString(Constants.actionOptions));
+		Option action = getGeneralOption(CommandOptions.action, "a");
+		action.setArgName(Constants.ACTIONS.toString());
 		action.setDescription("Mandatory");
 		return action;
 	}
@@ -165,7 +164,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getLogFilePathOption() {
-		Option logFilePath = getGeneralOption(Constants.reportDirectory, "rd");
+		Option logFilePath = getGeneralOption(CommandOptions.reportDirectory, "rd");
 		logFilePath.setArgName("path");
 		logFilePath.setDescription("Default is current Path for directory where the output file will be located.");
 		return logFilePath;
@@ -177,7 +176,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getConfigFileOption() {
-		Option configFile = getGeneralOption(Constants.configFile, "cf");
+		Option configFile = getGeneralOption(CommandOptions.configFile, "cf");
 		configFile.setArgName("full path");
 		configFile
 				.setDescription("Mandatory. Full path to configuration file for system environment spesifications (hostname etc.).");
@@ -191,7 +190,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getNoStopOption() {
-		Option noStop = OptionBuilder.withLongOpt(Constants.noStop).create("ns");
+		Option noStop = OptionBuilder.withLongOpt(CommandOptions.noStop).create("ns");
 		noStop.setDescription("Runs the action without prompting between collecting the msgids and the action");
 		return noStop;
 	}
@@ -202,7 +201,7 @@ public class CommandOptionsBuilder {
 	 * @return
 	 */
 	private Option getHelpOption() {
-		Option help = OptionBuilder.withLongOpt(Constants.help).create("h");
+		Option help = OptionBuilder.withLongOpt(CommandOptions.help).create("h");
 		help.setDescription("This help index");
 		return help;
 	}

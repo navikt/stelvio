@@ -13,6 +13,7 @@ import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
+import no.nav.femhelper.cmdoptions.CommandOptions;
 import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.EventStatus;
@@ -41,7 +42,7 @@ public class ResubmitAction extends AbstractAction {
 		logFileWriter.log("Collected " + events.size() + " events");
 
 		if (!events.isEmpty()) {
-			if (!cl.hasOption(Constants.noStop)) {
+			if (!cl.hasOption(CommandOptions.noStop)) {
 				String q = "Do you want to continue and resubmit " + events.size() + " events?";
 				boolean result = askYesNo(q);
 				if (!result) {

@@ -28,6 +28,7 @@ import no.nav.appclient.adapter.BusinessFlowManagerServiceAdapter;
 import no.nav.appclient.util.ConfigPropertyNames;
 import no.nav.appclient.util.PasswordEncodeDelegate;
 import no.nav.appclient.util.PropertyMapper;
+import no.nav.femhelper.cmdoptions.CommandOptions;
 import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.Queries;
@@ -200,14 +201,17 @@ public abstract class AbstractAction {
 		logger.log(Level.FINE, "CONNECTOR_HOST: " + properties.getProperty(ConfigPropertyNames.BootstrapHost));
 		logger.log(Level.FINE, "CONNECTOR_PORT: " + properties.getProperty(ConfigPropertyNames.BootstrapPort));
 		logger.log(Level.FINE, "CONNECTOR_TYPE: " + properties.getProperty(ConfigPropertyNames.CONNECTOR_TYPE));
-		logger.log(Level.FINE, "CONNECTOR_SECURITY_ENABLED: " + properties.getProperty(ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED));
+		logger.log(Level.FINE, "CONNECTOR_SECURITY_ENABLED: "
+				+ properties.getProperty(ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED));
 		logger.log(Level.FINE, "USERNAME: " + properties.getProperty(ConfigPropertyNames.username));
 		logger.log(Level.FINE, "PASSWORD: ****");
 		if (!"".equals(properties.getProperty(ConfigPropertyNames.SSL_KEYSTORE))) {
-			logger.log(Level.FINE, ConfigPropertyNames.SSL_KEYSTORE + ": " + properties.getProperty(ConfigPropertyNames.SSL_KEYSTORE));
+			logger.log(Level.FINE, ConfigPropertyNames.SSL_KEYSTORE + ": "
+					+ properties.getProperty(ConfigPropertyNames.SSL_KEYSTORE));
 		}
 		if (!"".equals(properties.getProperty(ConfigPropertyNames.SSL_TRUSTSTORE))) {
-			logger.log(Level.FINE, ConfigPropertyNames.SSL_TRUSTSTORE + ": " + properties.getProperty(ConfigPropertyNames.SSL_TRUSTSTORE));
+			logger.log(Level.FINE, ConfigPropertyNames.SSL_TRUSTSTORE + ": "
+					+ properties.getProperty(ConfigPropertyNames.SSL_TRUSTSTORE));
 		}
 	}
 
@@ -351,14 +355,15 @@ public abstract class AbstractAction {
 
 		// Make use of the generic validate method for arguments that validate
 		// attributes of datatype
-		match = match && validate(event.getSourceModuleName(), arguments.get(Constants.sourceModule)) ? true : false;
-		match = match && validate(event.getSourceComponentName(), arguments.get(Constants.sourceComponent)) ? true : false;
-		match = match && validate(event.getDestinationModuleName(), arguments.get(Constants.destinationModule)) ? true : false;
-		match = match && validate(event.getDestinationComponentName(), arguments.get(Constants.destinationComponent)) ? true
+		match = match && validate(event.getSourceModuleName(), arguments.get(CommandOptions.sourceModule)) ? true : false;
+		match = match && validate(event.getSourceComponentName(), arguments.get(CommandOptions.sourceComponent)) ? true : false;
+		match = match && validate(event.getDestinationModuleName(), arguments.get(CommandOptions.destinationModule)) ? true
 				: false;
-		match = match && validate(event.getFailureMessage(), arguments.get(Constants.failureMessage)) ? true : false;
+		match = match && validate(event.getDestinationComponentName(), arguments.get(CommandOptions.destinationComponent)) ? true
+				: false;
+		match = match && validate(event.getFailureMessage(), arguments.get(CommandOptions.failureMessage)) ? true : false;
 
-		String timeFrame = arguments.get(Constants.timeFrame);
+		String timeFrame = arguments.get(CommandOptions.timeFrame);
 		if (!StringUtils.isEmpty(timeFrame)) {
 
 			// The time / date format is already validated, and can be parsed

@@ -15,6 +15,7 @@ import javax.management.MBeanException;
 import javax.management.ReflectionException;
 
 import no.nav.appclient.adapter.ServiceException;
+import no.nav.femhelper.cmdoptions.CommandOptions;
 import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.EventStatus;
@@ -45,7 +46,7 @@ public class DeleteAction extends AbstractAction {
 
 		if (!events.isEmpty()) {
 			// Check if the commandline has a --noStop option
-			if (!cl.hasOption(Constants.noStop)) {
+			if (!cl.hasOption(CommandOptions.noStop)) {
 				String q = "Do you want to continue and delete " + events.size() + " events?";
 				boolean result = askYesNo(q);
 				if (!result) {

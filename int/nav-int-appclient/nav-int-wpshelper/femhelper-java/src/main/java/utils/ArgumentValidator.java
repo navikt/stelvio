@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import no.nav.femhelper.cmdoptions.CommandOptions;
 import no.nav.femhelper.common.Constants;
 
 import org.apache.commons.cli.CommandLine;
@@ -26,24 +27,24 @@ public class ArgumentValidator {
 		List<String> result = new ArrayList<String>();
 
 		// logFilePath
-		validateLogPath(cl.getOptionValue(Constants.reportDirectory));
+		validateLogPath(cl.getOptionValue(CommandOptions.reportDirectory));
 
 		// maxResultSet
-		String maxResultSet = cl.getOptionValue(Constants.maxResultSet);
+		String maxResultSet = cl.getOptionValue(CommandOptions.maxResultSet);
 		if (!StringUtils.isEmpty(maxResultSet) && Integer.parseInt(maxResultSet) > 9999) {
-			result.add("Property " + Constants.maxResultSet + " is to large. Possible values is 1 >= 9999");
+			result.add("Property " + CommandOptions.maxResultSet + " is to large. Possible values is 1 >= 9999");
 		}
 
 		// maxResultSetPaging
-		String maxResultSetPaging = cl.getOptionValue(Constants.maxResultSetPaging);
+		String maxResultSetPaging = cl.getOptionValue(CommandOptions.maxResultSetPaging);
 		if (!StringUtils.isEmpty(maxResultSetPaging) && !maxResultSetPaging.equals(Boolean.TRUE.toString())
 				&& !maxResultSetPaging.equals(Boolean.FALSE.toString())) {
-			result.add("Property " + Constants.maxResultSetPaging + " is set must be 'true' or 'false'");
+			result.add("Property " + CommandOptions.maxResultSetPaging + " is set must be 'true' or 'false'");
 		}
 
 		// action
 		// TODO AR Rewrite this to use toMap or something like that
-		String action = cl.getOptionValue(Constants.action);
+		String action = cl.getOptionValue(CommandOptions.action);
 		String actionValidationMessage = validateAction(action);
 		if (!"".equals(actionValidationMessage)) {
 			result.add(actionValidationMessage);
@@ -51,14 +52,14 @@ public class ArgumentValidator {
 
 		// timeFrame is validated againts the '-' separator,
 		// and the date values on both sides are validated against the pattern.
-		String timeFrame = cl.getOptionValue(Constants.timeFrame);
+		String timeFrame = cl.getOptionValue(CommandOptions.timeFrame);
 		if (!StringUtils.isEmpty(timeFrame)) {
 
 			// Validate that the String has one, and only one '-'
 			// sign to separate the to- and from date.
 			String times[] = StringUtils.split(timeFrame, "-");
 			if (null == times || times.length != 2) {
-				result.add("Property " + Constants.timeFrame + " is not correct formatted. " + "The pattern is "
+				result.add("Property " + CommandOptions.timeFrame + " is not correct formatted. " + "The pattern is "
 						+ Constants.TIME_FRAME_FORMAT);
 			} else {
 
@@ -68,7 +69,7 @@ public class ArgumentValidator {
 					sdf.parse(times[0]);
 					sdf.parse(times[1]);
 				} catch (ParseException e) {
-					result.add("Property " + Constants.timeFrame + " is not correctly formatted. Expected pattern is "
+					result.add("Property " + CommandOptions.timeFrame + " is not correctly formatted. Expected pattern is "
 							+ Constants.TIME_FRAME_FORMAT);
 				}
 			}
@@ -79,10 +80,10 @@ public class ArgumentValidator {
 	private String validateAction(String action) {
 		String validationMessage = "";
 		if (StringUtils.isEmpty(action)) {
-			validationMessage = "Property " + Constants.action + " is missing or empty";
+			validationMessage = "Property " + CommandOptions.action + " is missing or empty";
 		} else {
 			if (!Constants.ACTIONS.contains(action)) {
-				validationMessage = "Property " + Constants.action + " value supplied is not a valid option.";
+				validationMessage = "Property " + CommandOptions.action + " value supplied is not a valid option.";
 			}
 		}
 		return validationMessage;
@@ -92,7 +93,7 @@ public class ArgumentValidator {
 		if (!StringUtils.isEmpty(logFilePath)) {
 			LOGGER.log(Level.FINE, "Using '" + logFilePath + " as logfile location");
 		} else {
-			LOGGER.log(Level.WARNING, Constants.reportDirectory + " is not declared. Using current folder.");
+			LOGGER.log(Level.WARNING, CommandOptions.reportDirectory + " is not declared. Using current folder.");
 		}
 	}
 }
