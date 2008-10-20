@@ -57,7 +57,7 @@ public class DeleteAction extends AbstractAction {
 					return null;
 				}
 			}
-			
+
 			logger.log(Level.INFO, "Discarding #" + events.size() + " events...please wait!");
 			int j = 1;
 			ArrayList<Event> deleteChunk = new ArrayList<Event>();
@@ -105,7 +105,8 @@ public class DeleteAction extends AbstractAction {
 		return null;
 	}
 
-	private void deleteEvents(List<Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException {
+	private void deleteEvents(List<Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException,
+			MBeanException {
 		// Delete processes connected to this chunk of events
 		// Collect event id for events where stopping the process not failing
 		List<String> eventIds = new ArrayList<String>();
@@ -170,6 +171,8 @@ public class DeleteAction extends AbstractAction {
 						event.setEventStatus(EventStatus.DELETED);
 					}
 				}
+			} else {
+				throw e;
 			}
 		}
 	}

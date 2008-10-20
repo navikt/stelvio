@@ -53,7 +53,7 @@ public class ResubmitAction extends AbstractAction {
 					return null;
 				}
 			}
-			
+
 			logger.log(Level.INFO, "Resubmiting #" + events.size() + " events...please wait!");
 			logFileWriter.log("Staring to resubmit " + events.size() + " events");
 			int j = 1;
@@ -97,7 +97,8 @@ public class ResubmitAction extends AbstractAction {
 		return null;
 	}
 
-	private void resubmitEvents(List<Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException {
+	private void resubmitEvents(List<Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException,
+			MBeanException {
 		try {
 			// Map events to correct String array
 			String opResubmit = Queries.QUERY_RESUBMIT_FAILED_EVENTS;
@@ -143,6 +144,8 @@ public class ResubmitAction extends AbstractAction {
 						event.setEventStatus(EventStatus.RESUBMITED);
 					}
 				}
+			} else {
+				throw e;
 			}
 		}
 	}
