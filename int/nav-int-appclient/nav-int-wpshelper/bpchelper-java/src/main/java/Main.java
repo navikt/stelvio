@@ -65,7 +65,7 @@ public class Main {
 			return ReturnCodes.ERROR;
 		}
 
-		String configFilename = commandLine.getOptionValue(Constants.configFile);
+		String configFilename = commandLine.getOptionValue(OptionOpts.CONFIG_FILE);
 		File configFile = new File(configFilename);
 		new PasswordEncodeDelegate().encodePassword(configFile);
 
