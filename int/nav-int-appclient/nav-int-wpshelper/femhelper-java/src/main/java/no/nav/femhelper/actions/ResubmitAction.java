@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
@@ -27,17 +26,11 @@ import com.ibm.wbiserver.manualrecovery.exceptions.DiscardFailedException;
 import com.ibm.websphere.management.exception.ConnectorException;
 
 public class ResubmitAction extends AbstractAction {
+	private Set<Event> reportedEvents = new LinkedHashSet<Event>();
 
 	public ResubmitAction(Properties properties) {
 		super(properties);
 	}
-
-	/**
-	 * Logger instance
-	 */
-	private Logger logger = Logger.getLogger(ResubmitAction.class.getName());
-
-	private Set<Event> reportedEvents = new LinkedHashSet<Event>();
 
 	@Override
 	Object processEvents(String path, String filename, Map<String, String> arguments, boolean paging, long totalevents,
@@ -104,11 +97,9 @@ public class ResubmitAction extends AbstractAction {
 
 		logger.log(Level.FINE, Constants.METHOD_EXIT + "processEvents");
 		return null;
-
 	}
 
 	private void resubmitEvents(List<Event> events) throws InstanceNotFoundException, ReflectionException, ConnectorException {
-
 		try {
 			// Map events to correct String array
 			String opResubmit = Queries.QUERY_RESUBMIT_FAILED_EVENTS;
@@ -157,5 +148,4 @@ public class ResubmitAction extends AbstractAction {
 			}
 		}
 	}
-
 }

@@ -49,11 +49,10 @@ import com.ibm.websphere.management.exception.ConnectorException;
  * @author Andreas Roe
  */
 public abstract class AbstractAction {
-
 	/**
 	 * Logger instance
 	 */
-	private Logger logger = Logger.getLogger(AbstractAction.class.getName());
+	protected final Logger logger = Logger.getLogger(getClass().getName());
 
 	/**
 	 * Properties from config file
@@ -100,9 +99,7 @@ public abstract class AbstractAction {
 	 * 
 	 * @return true or false if connect was working
 	 */
-	private boolean connect() throws ConnectorException, MalformedObjectNameException { // NullPointerException
-		// {
-
+	private boolean connect() throws ConnectorException, MalformedObjectNameException {
 		logger.log(Level.FINE, Constants.METHOD_ENTER + "connect");
 		boolean result = false;
 

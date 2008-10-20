@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
@@ -21,15 +20,9 @@ import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
 import com.ibm.websphere.management.exception.ConnectorException;
 
 public class ReportAction extends AbstractAction {
-
 	public ReportAction(Properties properties) {
 		super(properties);
 	}
-
-	/**
-	 * Logger instance
-	 */
-	private Logger logger = Logger.getLogger(ReportAction.class.getName());
 
 	@Override
 	Object processEvents(String path, String filename, Map<String, String> arguments, boolean paging, long totalevents,
@@ -73,5 +66,4 @@ public class ReportAction extends AbstractAction {
 
 		return events;
 	}
-
 }
