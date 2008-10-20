@@ -4,7 +4,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-deploy-fixer-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.5-SNAPSHOT</version>
+	<version>1.6-SNAPSHOT</version>
 	<name>Deploy fixer plugin</name>
 	<dependencies>
 		<dependency>
