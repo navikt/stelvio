@@ -150,7 +150,7 @@ public abstract class AbstractAction {
 			ReflectionException, ConnectorException;
 
 	public Object process(String path, String filename, Map<String, String> arguments, boolean paging, long totalevents,
-			int maxresultset, CommandLine cl) throws MalformedObjectNameException, ConnectorException, NullPointerException {
+			int maxresultset, CommandLine cl) throws MalformedObjectNameException, ConnectorException {
 		// Log properties before creation of the AdminClient objects
 		this.logProperties();
 
