@@ -25,6 +25,7 @@ import javax.management.ReflectionException;
 
 import no.nav.appclient.adapter.BFMConnectionAdapter;
 import no.nav.appclient.adapter.BusinessFlowManagerServiceAdapter;
+import no.nav.appclient.adapter.ServiceException;
 import no.nav.appclient.util.ConfigPropertyNames;
 import no.nav.appclient.util.PasswordEncodeDelegate;
 import no.nav.appclient.util.PropertyMapper;
@@ -113,9 +114,9 @@ public abstract class AbstractAction {
 		try {
 			BFMConnectionAdapter adapter = BFMConnectionAdapter.getInstance(mappedProperties);
 			bfmConnection = adapter.getBusinessFlowManagerService();
-		} catch (RuntimeException re) {
+		} catch (ServiceException se) {
 			result = false;
-			logger.log(Level.SEVERE, "Could not connect to the BFM", re);
+			logger.log(Level.SEVERE, "Could not connect to the BFM", se);
 		}
 
 		// Setup and test the connection with FailedEventManager MBean
@@ -396,21 +397,20 @@ public abstract class AbstractAction {
 	}
 
 	protected boolean askYesNo(String question) {
-		String answer = "";
-
+		String answer = null;
 		try {
-			System.out.println(question + "(y/n)");
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			answer = in.readLine();
-			while (!answer.equals("y") && !answer.equals("n")) {
-				System.out.println(answer + " is not a valid option");
-				System.out.println(question + "(y/n)");
+			while (!"y".equalsIgnoreCase(answer) && !"n".equalsIgnoreCase(answer)) {
+				if (answer != null) {
+					System.out.println(answer + " is not a valid answer");
+				}
+				System.out.print(question + " ");
 				answer = in.readLine();
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 
-		return "y".equals(answer) || "yes".equals(answer) ? true : false;
+		return "y".equalsIgnoreCase(answer);
 	}
 }
