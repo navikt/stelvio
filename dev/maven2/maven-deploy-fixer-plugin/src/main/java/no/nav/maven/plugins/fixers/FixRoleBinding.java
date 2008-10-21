@@ -199,6 +199,7 @@ public class FixRoleBinding extends AbstractMojo{
 		root.addAttribute("xmi:version", "2.0");
 		root.addAttribute("xmlns:xmi", "http://www.omg.org/XMI");
 		root.addAttribute("xmlns:com.ibm.ejs.models.base.bindings.applicationbnd", "applicationbnd.xmi");
+		root.addAttribute("xmlns:com.ibm.ejs.models.base.bindings.commonbnd","commonbnd.xmi");
 		root.addAttribute("xmi:id", "ApplicationBinding_" + new Date().getTime());
 		
 		doc = DocumentHelper.createDocument(root);
