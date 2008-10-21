@@ -17,7 +17,7 @@ public class ActionFactory {
 	private static final DateFormat REPORT_FILENAME_DATEFORMAT = new SimpleDateFormat("yyyyddMMHHmmssSSS");
 
 	public static Action getAction(CommandLine commandLine) {
-		String actionValue = commandLine.getOptionValue(OptionOpts.ACTION);
+		String actionValue = commandLine.getOptionValue(OptionOpts.ACTION).toUpperCase();
 		AbstractAction action = ActionOptionValues.valueOf(actionValue).getAction();
 
 		String configFilePath = commandLine.getOptionValue(OptionOpts.CONFIG_FILE);
