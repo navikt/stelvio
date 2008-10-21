@@ -3168,6 +3168,7 @@ int/nav-int-appclient/nav-int-wpshelper-bundle/.project -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/README.txt -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/pom.xml -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/assembly/assembly.xml -text
+int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/bin/femstatus.sh -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/BPCHelper.doc -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/FEMHelper.doc -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/SIBusHelper.doc -text
