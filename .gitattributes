@@ -3310,6 +3310,7 @@ int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/OperationAv
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemAvailabilityBaseComponent.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemAvailabilityStorage.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/FaultTeknisk.xsd -text svneol=unset#text/plain
+int/stelvio-commons-lib/no/nav/gbo/GBOEierKomponent.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/GBOEndringsInfo.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/GBOStelvioContext.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/GBOStelvioFault.xsd -text svneol=unset#text/plain
