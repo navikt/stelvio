@@ -1,4 +1,4 @@
-***Leveranse av støtteverktøy for WPS versjon 0.9.1***
+***Leveranse av støtteverktøy for WPS versjon 1.0-SNAPSHOT***
 
 Filen inneholder følgende:
 * Dokumentasjon av FEM Helper
@@ -6,7 +6,7 @@ Filen inneholder følgende:
 * Dokumentasjon av SiBus Helper
 * Presentasjonen "NAV Operational Considerations", Alan Hopkins, IBM
   - Oppsummering av gjennomgang av driftbarhetskonsepter for WPS
-* wpshelpers-0.9.1.zip
+* wpshelpers-<VERSION>.zip
   - FEM Helper
   - BPC Helper
   - localhost_helper.properties
