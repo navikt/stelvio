@@ -25,6 +25,7 @@ public class RoleBinding {
 
 	public RoleBinding(){
 		id = Random.getUniqueId();
+		RunAsValues.setId(id);
 	}
 	
 	public boolean isMapToEveryone() {

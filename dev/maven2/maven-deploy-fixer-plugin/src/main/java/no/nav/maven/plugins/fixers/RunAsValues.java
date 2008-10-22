@@ -3,26 +3,24 @@ package no.nav.maven.plugins.fixers;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
-import no.nav.maven.plugins.common.utils.Random;
-
 public class RunAsValues {
 
 	private String userName = null;
 
 	private String passwd = null;
 
-	private String id = null;
+	private static String id = null;
 
 	public RunAsValues() {
-		id = Random.getUniqueId();
+
 	}
 
-	public String getId() {
+	public static String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public static void setId(String id) {
+		RunAsValues.id = id;
 	}
 
 	public String getPasswd() {
@@ -57,6 +55,7 @@ public class RunAsValues {
 		role.addAttribute("href", "META-INF/application.xml#SecurityRole_"+ id);
 
 		return runAsBindings;
+		
 	}
 
 }

@@ -216,7 +216,7 @@ public class FixRoleBinding extends AbstractMojo{
 		
 		if(foundRunAsValues){
 			runAsMap = root.addElement("runAsMap");
-			runAsMap.addAttribute("xmi:id","RunAsMap_"+new Date().getTime() + 1);
+			runAsMap.addAttribute("xmi:id","RunAsMap_"+RunAsValues.getId());
 			
 			for(RunAsValues value : runAsValues){
 				runAsMap.add(value.getAuthenticationNode());
@@ -249,6 +249,14 @@ public class FixRoleBinding extends AbstractMojo{
 
 	public void setRoleBindings(List<RoleBinding> roleBindings) {
 		this.roleBindings = roleBindings;
+	}
+
+	public List<RunAsValues> getRunAsValues() {
+		return runAsValues;
+	}
+
+	public void setRunAsValues(List<RunAsValues> runAsValues) {
+		this.runAsValues = runAsValues;
 	}
 	
 }
