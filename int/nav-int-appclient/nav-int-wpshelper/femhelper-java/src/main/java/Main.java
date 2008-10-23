@@ -42,7 +42,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		System.out.println(getSeparatorLine(100));
-		System.out.println("Failed Event Manager (FEM) Helper for WPS 6.1 - Version 0.9");
+		System.out.println("FEM Helper for WPS 6.1");
 		System.out.println(getSeparatorLine(100));
 
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
@@ -92,8 +92,6 @@ public class Main {
 			System.exit(0);
 		}
 
-		// 
-
 		ArgumentValidator argumentValidator = new ArgumentValidator();
 		List validatedArguments = argumentValidator.validate(cl);
 		if (!validatedArguments.isEmpty()) {
@@ -126,7 +124,7 @@ public class Main {
 				logger.log(Level.WARNING, (String) propertyIter.next());
 			}
 			logger.log(Level.SEVERE,
-					"FEMGRAppClient terminating due to missing or invalid parameters in configuration file - logged above!");
+					"FEM Helper terminating due to missing or invalid parameters in configuration file");
 			System.exit(0);
 		}
 
@@ -135,18 +133,18 @@ public class Main {
 			AbstractAction statusAction = ActionFactory.getAction(Constants.ACTION_STATUS, connectProps);
 
 			// Get the total number of events to match with the page size to
-			// avoid hughe amount of retrieving
+			// avoid huge amount of retrieving
 			Long numberOfEvents = (Long) statusAction.process(null, null, null, false, 0, 0, cl);
 			if (numberOfEvents.intValue() < 1) {
 				logger.log(Level.INFO, "There are no events on Failed Event Manager. The application will terminate");
 				System.exit(0);
 			} else {
-				logger.log(Level.INFO, "ACTION REQUIERED! There are events on Failed Event Manager");
+				logger.log(Level.INFO, "ACTION REQUIRED! There are events on Failed Event Manager");
 			}
 
 			Map<String, String> arguments = ArgumentUtil.getArguments(cl);
 
-			// Set to max. fem entries if pagsizse is greater
+			// Set to max. fem entries if pagesize is greater
 			int pagesize = Integer.parseInt(arguments.get(CommandOptions.maxResultSet));
 			if (pagesize > numberOfEvents) {
 				pagesize = numberOfEvents.intValue();
@@ -170,7 +168,7 @@ public class Main {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "Exception:StackTrace:");
 			e.printStackTrace();
 		}
-		logger.log(Level.INFO, "FEM Helper is done.");
+		logger.log(Level.INFO, "FEM Helper finished.");
 	}
 
 	private static String getSeparatorLine(int width) {
