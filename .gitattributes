@@ -3407,15 +3407,6 @@ int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/.class
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/.project -text
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/stelvio/systemavailability/AvailabilityRecord.java -text
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/stelvio/systemavailability/StaticSystemAvailabilityStorage.java -text
-int/stelvio-sibus-mediation/.classpath -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/.runtime -text
-int/stelvio-sibus-mediation/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/.settings/org.eclipse.wst.common.component -text
-int/stelvio-sibus-mediation/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/no/nav/java/mediation/handlers/OppdragMediation.java -text svneol=unset#text/plain
 int/workspaces/nav-int-stelvio-workspaces/nav-steilvio-ceilogger-1.0.2.psf -text
 int/workspaces/nav-int-stelvio-workspaces/nav-stelvio-ceilogger.psf -text
 maven-jaxhandler-plugin/pom.xml -text
