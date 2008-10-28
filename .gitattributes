@@ -3416,6 +3416,14 @@ int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/no/nav/java/mediation/handlers/DebugMediation.java -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.compatibility -text
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.j2ee -text
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.project -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.runtime -text
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.settings/org.eclipse.wst.common.component -text
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/META-INF/.modulemaps -text
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/META-INF/application.xml -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.project -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.runtime -text
