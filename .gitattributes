@@ -3407,30 +3407,6 @@ int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/.class
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/.project -text
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/stelvio/systemavailability/AvailabilityRecord.java -text
 int/stelvio-operation-systemavailability/StelvioWpsCoreSystemAvailability/stelvio/systemavailability/StaticSystemAvailabilityStorage.java -text
-int/stelvio-sibus-mediation/OppdragMediation/.classpath -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/.runtime -text
-int/stelvio-sibus-mediation/OppdragMediation/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/.settings/org.eclipse.wst.common.component -text
-int/stelvio-sibus-mediation/OppdragMediation/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/no/nav/java/mediation/handlers/OppdragMediation.java -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/.classpath -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/.compatibility -text
-int/stelvio-sibus-mediation/OppdragMediationEJB/.j2ee -text
-int/stelvio-sibus-mediation/OppdragMediationEJB/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/.runtime -text
-int/stelvio-sibus-mediation/OppdragMediationEJB/.settings/.webspheredeploy -text
-int/stelvio-sibus-mediation/OppdragMediationEJB/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/.settings/org.eclipse.wst.common.component -text
-int/stelvio-sibus-mediation/OppdragMediationEJB/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/ejbModule/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/ejbModule/META-INF/ejb-jar.xml -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/ejbModule/META-INF/ibm-ejb-jar-bnd.xmi -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/ejbModule/META-INF/ibm-ejb-jar-ext.xmi -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediationEJB/ejbModule/META-INF/ws-handler.xmi -text svneol=unset#text/plain
 int/workspaces/nav-int-stelvio-workspaces/nav-steilvio-ceilogger-1.0.2.psf -text
 int/workspaces/nav-int-stelvio-workspaces/nav-stelvio-ceilogger.psf -text
 maven-jaxhandler-plugin/pom.xml -text
