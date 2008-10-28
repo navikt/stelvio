@@ -47,7 +47,7 @@ public class DeleteAction extends AbstractAction {
 		if (!events.isEmpty()) {
 			// Check if the commandline has a --noStop option
 			if (!cl.hasOption(CommandOptions.noStop)) {
-				String q = "Do you want to continue and delete " + events.size() + " events?";
+				String q = "Do you want to continue and delete " + events.size() + " events (y/n)?";
 				boolean result = askYesNo(q);
 				if (!result) {
 					return null;

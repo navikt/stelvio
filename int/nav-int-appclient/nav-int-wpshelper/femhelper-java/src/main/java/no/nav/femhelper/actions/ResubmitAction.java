@@ -43,7 +43,7 @@ public class ResubmitAction extends AbstractAction {
 
 		if (!events.isEmpty()) {
 			if (!cl.hasOption(CommandOptions.noStop)) {
-				String q = "Do you want to continue and resubmit " + events.size() + " events?";
+				String q = "Do you want to continue and resubmit " + events.size() + " events (y/n)?";
 				boolean result = askYesNo(q);
 				if (!result) {
 					return null;
