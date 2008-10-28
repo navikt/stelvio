@@ -3416,6 +3416,14 @@ int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.settings/org.ecli
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/no/nav/java/mediation/handlers/OppdragMediation.java -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.compatibility -text
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.j2ee -text
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.project -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.runtime -text
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.settings/org.eclipse.wst.common.component -text
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/META-INF/.modulemaps -text
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/META-INF/application.xml -text svneol=unset#text/plain
 int/workspaces/nav-int-stelvio-workspaces/nav-steilvio-ceilogger-1.0.2.psf -text
 int/workspaces/nav-int-stelvio-workspaces/nav-stelvio-ceilogger.psf -text
 maven-jaxhandler-plugin/pom.xml -text
