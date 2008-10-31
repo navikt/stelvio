@@ -6,22 +6,27 @@
  */
 package no.nav.j2ca.adldap;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.resource.cci.Record;
 
 import com.ibm.j2ca.base.UnstructuredRecord;
-import com.ibm.j2ca.base.WBIRecord;
+import com.ibm.j2ca.base.DataObjectRecord;
 import commonj.sdo.DataObject;
 
 /**
  * @author lsb2812
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * Record To BO class
  */
 public class ADLDAPAdapterRecord extends UnstructuredRecord {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	//	for logging
 	private static Logger log = Logger.getLogger(ADLDAPAdapterRecord.class.getName());
 	private static final String CLASSNAME = "ADLDAPAdapterRecord"; 
@@ -35,8 +40,7 @@ public class ADLDAPAdapterRecord extends UnstructuredRecord {
 	/**
 	 * @BO attributer
 	 */
-	private String boName;
-	private String boNamespace;
+
 	private String sAMAccountName;
 	private String displayName;
 	private String givenName;
@@ -48,13 +52,15 @@ public class ADLDAPAdapterRecord extends UnstructuredRecord {
 	 */
 	private String ADobjectClass = "objectClass=user";
 
+	
 	/**
 	 * to get the request BO 
 	 */
 	public ADLDAPAdapterRecord(Record record) 
 	{
-		DataObject dataobject = ((WBIRecord)record).getDataObject();
+		DataObject dataobject= ((DataObjectRecord)record).getDataObject();
 		setDataObject(dataobject);
+		log.logp(Level.FINE, CLASSNAME, "ADLDAPAdapterRecord()", "ADLDAPAdapter requestObject: " + dataobject.toString());
 	}
 	
 	/**
@@ -62,6 +68,7 @@ public class ADLDAPAdapterRecord extends UnstructuredRecord {
 	 */
 	public ADLDAPAdapterRecord() 
 	{
+		// which isn't done here --> ADLDAPAdapterInteraction
 	}
 	
 	/**

@@ -16,6 +16,10 @@ import com.ibm.j2ca.base.WBIInteractionSpec;
  */
 public class ADLDAPAdapterInteractionSpec extends WBIInteractionSpec {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1368795244484718621L;
 	// ra definition
 	public String serverUserId;
 	public String serverUserIdPassword;

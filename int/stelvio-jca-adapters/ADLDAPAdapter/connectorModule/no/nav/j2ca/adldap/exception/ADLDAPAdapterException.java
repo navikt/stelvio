@@ -5,7 +5,11 @@ import javax.resource.ResourceException;
 
 public class ADLDAPAdapterException extends ResourceException
 {
-    private Exception rootCause;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3502378000448387480L;
+	private Exception rootCause;
     private boolean isCommException;
 
 	public ADLDAPAdapterException(String message)

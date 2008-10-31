@@ -43,7 +43,7 @@ public class ADLDAPAdapterResourceAdapter extends WBIResourceAdapter implements
 	 */
 	public void start(BootstrapContext bootstrapCtx) throws ResourceAdapterInternalException
 	{
-		log.logp(Level.INFO, CLASSNAME, "start()", " ADLDAPAdapter received start request.");
+		log.logp(Level.INFO, CLASSNAME, "start()", "NAV ADLDAP adapter received start request.");
 		super.start(bootstrapCtx);
 	}
 	
@@ -53,7 +53,7 @@ public class ADLDAPAdapterResourceAdapter extends WBIResourceAdapter implements
      */
     public void stop()
     {
-    	log.logp(Level.INFO, CLASSNAME, "start()", " ADLDAPAdapter received stop request.");
+    	log.logp(Level.INFO, CLASSNAME, "start()", "NAV ADLDAP adapter received stop request.");
     	super.stop();
     }
     
@@ -65,23 +65,12 @@ public class ADLDAPAdapterResourceAdapter extends WBIResourceAdapter implements
     	super.validate();
 	}
 
-    /**
-     * @return
-     */
-    public boolean isBiDiOff()
-    {
-        Boolean biDiContextTurnBiDiOff = super.getBiDiContextTurnBiDiOff();
-        return biDiContextTurnBiDiOff.booleanValue();
-    }    
-    
     /* (non-Javadoc)
      * @see javax.resource.spi.ResourceAdapter#endpointActivation(javax.resource.spi.endpoint.MessageEndpointFactory, javax.resource.spi.ActivationSpec)
      */
     public void endpointActivation(MessageEndpointFactory mef, ActivationSpec aspec) throws ResourceException
 	{
-    	String methodName = "endpointActivation";
-    	log.logp(Level.INFO, CLASSNAME, "endpointActivation()", " ADLDAPAdapter activating endPoint configuration.");
-        //TODO no AS as functionality at the adapter build in 
+    	log.logp(Level.INFO, CLASSNAME, "endpointActivation()", "NAV ADLDAP adapter activating endPoint configuration.");
     	endpointActivationCompleted = true;
     }
 
@@ -107,7 +96,9 @@ public class ADLDAPAdapterResourceAdapter extends WBIResourceAdapter implements
     public WBIResourceAdapterMetadata getResourceAdapterMetadata() throws ResourceException
 	{
     	ADLDAPAdapterPrivilegedExceptionAction lpea = new ADLDAPAdapterPrivilegedExceptionAction();
-    	ADLDAPAdapterResourceAdapterMetaData adldapMetadata = null;
+    	WBIResourceAdapterMetadata adldapMetadata = null;
+    	adldapMetadata = new WBIResourceAdapterMetadata("NAV ADLDAP Adapter", "NAV", "6.1.0", false);
+
     	try
 		{
     		lpea.setActionName("GET_LDAP_METADATA");

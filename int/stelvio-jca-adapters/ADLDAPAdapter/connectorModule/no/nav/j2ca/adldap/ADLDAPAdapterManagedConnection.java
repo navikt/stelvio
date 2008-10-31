@@ -29,12 +29,14 @@ public class ADLDAPAdapterManagedConnection extends WBIManagedConnection {
 	private static final String CLASSNAME = "ADLDAPAdapterManagedConnection"; 
 	
 	// parameter
+	/*
 	private String serverURL;
 	private String adminName;
 	private String adminPassword;
 	private String searchBase;
 	private String domainLockoutDurationPolicy;
 	private static final String DOMAIN = "DC=test,DC=local";
+	*/
 	
 	// persona2c5e3b49756 new
 	private ADLDAPAdapterManagedConnectionFactory adldapmcf;

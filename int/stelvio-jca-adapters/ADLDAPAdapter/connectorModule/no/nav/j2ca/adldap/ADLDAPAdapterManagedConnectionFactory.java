@@ -16,6 +16,10 @@ import javax.security.auth.Subject;
  */
 public class ADLDAPAdapterManagedConnectionFactory extends WBIManagedConnectionFactory {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5980426091808443427L;
 	// for logging
 	private static Logger log = Logger.getLogger(ADLDAPAdapterManagedConnectionFactory.class.getName());
 	private static final String CLASSNAME = "ADLDAPAdapterManagedConnectionFactory"; 
@@ -59,8 +63,6 @@ public class ADLDAPAdapterManagedConnectionFactory extends WBIManagedConnectionF
 		ADLDAPAdapterManagedConnection managedConnection = null;
 		ADLDAPAdapterResourceAdapter ra = (ADLDAPAdapterResourceAdapter)getResourceAdapter();
 		log.logp(Level.FINE, CLASSNAME, "createManagedConnection()","Got resource adapter meta data for ID=" + ra.getAdapterID());
-		if (ra!= null && !ra.getBiDiContextTurnBiDiOff().booleanValue())
-			verifyBiDiFormatValues();
 		managedConnection = new ADLDAPAdapterManagedConnection(this,subject, (ADLDAPAdapterConnectionRequestInfo)conReqInfo);
 		log.logp(Level.FINE, CLASSNAME, "createManagedConnection()","Instanced managedConnection=" + managedConnection.toString());
 		log.logp(Level.FINE, CLASSNAME, "createManagedConnection()","Managed connection exit.");

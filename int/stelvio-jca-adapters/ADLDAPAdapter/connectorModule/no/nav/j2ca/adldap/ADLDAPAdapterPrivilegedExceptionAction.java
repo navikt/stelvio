@@ -98,7 +98,6 @@ public class ADLDAPAdapterPrivilegedExceptionAction implements PrivilegedExcepti
 
             	log.logp(Level.FINE, CLASSNAME, "run", "CREATE_LDAP_SESSION metadata entered.");
             	ADLDAPAdapterManagedConnectionFactory adldapmcf = (ADLDAPAdapterManagedConnectionFactory)actionParams[0];
-                boolean auth = ((Boolean)actionParams[1]).booleanValue();
                 ADLDAPAdapterPhysicalConnection phyCon = new ADLDAPAdapterPhysicalConnection();
                 LdapContext session = phyCon.createSession(adldapmcf.getServerURL(), adldapmcf.getServerUserId(), adldapmcf.getServerUserIdPassword(), adldapmcf.getServerAuthenticationMode(), adldapmcf.getServerBasedDistinguishedName(),adldapmcf.getServerBindDistinguishedName(),adldapmcf.getServerConnectionPooling());
                 log.logp(Level.FINE, CLASSNAME, "run", "CREATE_LDAP_SESSION metadata exit.");

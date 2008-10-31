@@ -16,10 +16,8 @@ import javax.resource.cci.Record;
 
 import no.nav.j2ca.adldap.exception.ADLDAPAdapterConnectionFailedException;
 
-import com.ibm.j2ca.base.WBIConnection;
 import com.ibm.j2ca.base.WBIInteraction;
-import com.ibm.j2ca.base.WBIRecord;
-import com.ibm.j2ca.base.WBIResourceAdapter;
+import com.ibm.j2ca.base.DataObjectRecord;
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.sdo.DataFactory;
@@ -42,15 +40,12 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 	public ADLDAPAdapterInteraction(com.ibm.j2ca.base.WBIConnection connection)throws ResourceException {
 		
         super(connection);
-        WBIConnection wbiconnection = connection;		
-        
         adldapMngConn = null;
         adldapMngConnFac = null;
         
 		log.logp(Level.FINE, CLASSNAME, "ADLDAPAdapterInteraction()", "Initialize managed connection for ADLDAPAdapter.");
 		adldapMngConn = (ADLDAPAdapterManagedConnection) connection.getManagedConnection();
 		adldapMngConnFac = (ADLDAPAdapterManagedConnectionFactory) adldapMngConn.getManagedConnectionFactory();
-		isBiDi = !((WBIResourceAdapter)adldapMngConnFac.getResourceAdapter()).getBiDiContextTurnBiDiOff().booleanValue();
 		log.logp(Level.FINE, CLASSNAME, "ADLDAPAdapterInteraction()", "Done initialize managed connection for ADLDAPAdapter.");
 	}
 
@@ -67,10 +62,8 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 	 */
 	public javax.resource.cci.Record execute(InteractionSpec ispec, Record inRecord) throws javax.resource.ResourceException 
 	{
-		InteractionSpec interactionspec = ispec;
 		Record record = inRecord;
-		boolean fromMngConn = false;
-		WBIRecord outRecord = new WBIRecord();
+		DataObjectRecord outRecord = new DataObjectRecord();
 		
 		log.logp(Level.FINE, CLASSNAME, "execute()", "Entering.");			
 		
@@ -93,26 +86,21 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 		}
         else
         {
-			fromMngConn = false;
-        	log.logp(Level.FINE, CLASSNAME, "execute()", "No managed connection is available or the adapter connection factory definition is setup wrong. Check the connection parameter!");
+			log.logp(Level.FINE, CLASSNAME, "execute()", "No managed connection is available or the adapter connection factory definition is setup wrong. Check the connection parameter!");
         	throw new ADLDAPAdapterConnectionFailedException(ADLDAPAdapterConstants.ERR_MSG04);
         }
 
 		//check once again that we have a connection because getSession might be returned null
 		if (session != null)
         {	
- 			fromMngConn = true;
  			log.logp(Level.FINE, CLASSNAME, "execute()", "Use connection for server=" + adldapMngConnFac.getServerURL() + " and connectioncontext=" + adldapMngConnFac.hashCode() + ".");
         }
         else
         {
-			fromMngConn = false;
-        	log.logp(Level.FINE, CLASSNAME, "execute()", "No connection or might be timeout connection for server=" + adldapMngConnFac.getServerURL() + ".");
+			log.logp(Level.FINE, CLASSNAME, "execute()", "No connection or might be timeout connection for server=" + adldapMngConnFac.getServerURL() + ".");
         	throw new ADLDAPAdapterConnectionFailedException(ADLDAPAdapterConstants.ERR_MSG01);
         }
-
-		
-		
+	
 		log.logp(Level.FINE, CLASSNAME, "execute()", "Got request record with name=" + boInRecord.getRecordName());
         
         String s1 = boInRecord.getSAMAccountName();
@@ -218,11 +206,7 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 		
 		outRecord.setDataObject(boOutRecord.getDataObject());
 
-		if (log.getLevel().equals(Level.FINE))
-		{
-			log.logp(Level.FINE, CLASSNAME, "execute()", "Succesfully queryed LDAP server return boReResult to caller boOutRecord="+boOutRecord.toString());
-		}	
-		
+		log.logp(Level.FINE, CLASSNAME, "execute()", "Succesfully queryed LDAP server return boReResult to caller boOutRecord="+boOutRecord.toString());
 		log.logp(Level.FINE, CLASSNAME, "execute()", "Exit.");
 		return outRecord;
 	}

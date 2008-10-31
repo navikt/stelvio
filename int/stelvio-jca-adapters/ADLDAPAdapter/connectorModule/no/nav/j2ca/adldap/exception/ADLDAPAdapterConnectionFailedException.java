@@ -5,6 +5,11 @@ import javax.resource.ResourceException;
 public class ADLDAPAdapterConnectionFailedException extends ResourceException
 {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1518664606847936618L;
+
+	/**
      * @param message
      * @param ex
      */
