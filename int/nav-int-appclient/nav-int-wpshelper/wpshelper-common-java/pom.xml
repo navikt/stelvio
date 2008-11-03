@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>nav.int.appclient.wpshelper</groupId>
 		<artifactId>wpshelper</artifactId>
-		<version>0.9.2</version>
+		<version>1.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 	
@@ -13,8 +13,8 @@
 	<name>WPS Helper Common Library</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-0.9.2/wpshelper-common-java</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-0.9.2/wpshelper-common-java</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java</developerConnection>
 	</scm>
 
 	<dependencies>
