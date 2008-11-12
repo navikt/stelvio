@@ -1,7 +1,21 @@
 package no.stelvio.common.bus.util;
 
+import java.util.Calendar;
+
 
 /**
+ * 
+ * The six first digits of fødselsnummer (personal identification number) 
+ * normally represents the birth date: day (dd), month
+ * (mm) and year (yy). However, the two digit representation of the year has
+ * caused many problem (read the Y2k-problem) and isn't sufficent to decide
+ * the century. Therefore, the three next digits that are the individsifre,
+ * are categorized to represent time periods. Fødselsnummer: ddmmyyiiicc (d
+ * day, m month, y year, i individsiffer, c checksum)
+ * 
+ * (http://no.wikipedia.org/wiki/F%C3%B8dselsnummer)
+ * (http://no.wikipedia.org/wiki/Personnummer)
+ *
  * Class is a utility-class to check if fnr is valid
  * <p/>
  * 
@@ -9,16 +23,13 @@ package no.stelvio.common.bus.util;
  * @author person15754a4522e7
  * @author Fredrik Dahl-Jørgensen (Accenture)
  * @author Jonny Mauland (Accenture)
+ * @author Ismar Slomic (Accenture)
  * @see Embeddable
  */
 
 public final class FnrUtil{
-
-
-
-
 	/**
-	 * Determines whether the specified string is a valid personal identification number. A valid PID can be: FNR, DNR or BostNr. 
+	 * Determines whether the specified string is a valid personal identification number. A valid PID can be: FNR, DNR, HNR or BostNr. 
 	 * This method does not check for special circumstances i.e. where the personnummer has a specific value like 00000 or 000001.
 	 * 
 	 * @param fnr personal identification id to validate
@@ -79,7 +90,7 @@ public final class FnrUtil{
 	 * @param digit The digit to determine if is odd or even 
 	 * @return <code>true</code> if digit is even, <code>false</code> if odd
 	 */
-	private static boolean isEven(int digit) {
+	protected static boolean isEven(int digit) {
 		if (digit % 2 == 0){
 			return true;
 		}
@@ -110,7 +121,7 @@ public final class FnrUtil{
 	 * @param fnr personal identification number
 	 * @return <code>true</code> if valid, otherwise <code>false</code>
 	 */
-	private static boolean isValidFnrLength(String fnr) {
+	protected static boolean isValidFnrLength(String fnr) {
 		return fnr != null && (fnr.length() == 11);
 	}
 
@@ -120,7 +131,7 @@ public final class FnrUtil{
 	 * @param fnr personal identification number
 	 * @return <code>true</code> if valid, otherwise <code>false</code>
 	 */
-	private static boolean isValidCharacters(String fnr) {
+	protected static boolean isValidCharacters(String fnr) {
 		return StringUtils.isNumeric(fnr);
 	}
 
@@ -130,7 +141,7 @@ public final class FnrUtil{
 	 * @param fnr fodselsnummer
 	 * @return true if fnr is valid, otherwise false
 	 */
-	private static boolean isMod11Compliant(String fnr) {
+	protected static boolean isMod11Compliant(String fnr) {
 		// FORMAT: DDMMYYXXXYY
 		int d1 = Integer.parseInt(fnr.substring(0, 1));
 		int d2 = Integer.parseInt(fnr.substring(1, 2));
@@ -169,7 +180,7 @@ public final class FnrUtil{
 	 * @param fnr fodselsnummer
 	 * @return true if fnr is valid, otherwise false
 	 */
-	private static boolean isSpecialCircumstance(String fnr) {
+	protected static boolean isSpecialCircumstance(String fnr) {
 		int val = Integer.parseInt(fnr.substring(6));
 		
 		return val == 0 || val == 1;
@@ -182,7 +193,7 @@ public final class FnrUtil{
 	 * @return <code>true</code> if fnr can be converted to a valid date, otherwise <code>false</code>
 	 * @todo why not use DateFormat to check it?
 	 */
-	private static boolean isFnrDateValid(String dnrOrBnrAdjustedFnr) {
+	protected static boolean isFnrDateValid(String dnrOrBnrAdjustedFnr) {
 		boolean validDate = true;
 
 		// fnr format is <DDMMAAXXXYY>
@@ -245,14 +256,14 @@ public final class FnrUtil{
 	}
 
 	/**
-	 * Adjusts DNR and BostNr so that the first 6 numbers represents a valid date In the case wher DNR or BostNr is the input,
+	 * Adjusts DNR, HNR and BostNr so that the first 6 numbers represents a valid date. In the case where DNR or BostNr is the input,
 	 * the return value will fail a modulus 11 check.
 	 * 
 	 * @param value a personal identification number
-	 * @return the inparam if it wasn't a DNR or BostNr, otherwise the BostNr/DNR where the 6 first digits can be converted to a
+	 * @return the inparam if it wasn't a DNR or BostNr, otherwise the BostNr/DNR/HNR where the 6 first digits can be converted to a
 	 * valid date
 	 */
-	private static String makeDnrOrBostnrAdjustments(String value) {
+	protected static String makeDnrOrBostnrAdjustments(String value) {
 		if (StringUtils.isBlank(value)) {
 			return value;
 		}
@@ -285,9 +296,22 @@ public final class FnrUtil{
 			}
 
 			return fnr.toString();
-		}
+		} else if(month > 40 && month <=52 ) {
+			// H-Nummer adjustment
+			month -= 40;
+			StringBuffer fnr = new StringBuffer(value);
 
-		// value was neither bostnr nor dnr
+			if (month < 10) {
+				fnr.replace(2, 4, "0" + Integer.toString(month));
+			} else {
+				fnr.replace(2, 4, Integer.toString(month));
+			}
+
+			return fnr.toString();
+		}
+		
+
+		// value was neither bostnr nor dnr nor hnr
 		return value;
 	}
 
@@ -297,7 +321,7 @@ public final class FnrUtil{
 	 * @param dnrOrBnrAdjustedFnr a fnr, adjusted if it's a bnr or dnr
 	 * @return 4 digit birth date, -1 if invalid
 	 */
-	private static int get4DigitYearOfBirth(String dnrOrBnrAdjustedFnr) {
+	protected static int get4DigitYearOfBirth(String dnrOrBnrAdjustedFnr) {
 		int year = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(4, 6));
 		int individnr = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(6, 9));
 		// stilborn baby (dødfødt barn)
@@ -319,5 +343,69 @@ public final class FnrUtil{
 			}
 		}
 		return year;
+	}
+	
+	/**
+	 * Returns day of birth
+	 * 
+	 * @param dnrOrBnrAdjustedFnr a fnr, adjusted if it's a bnr, dnr or hnr
+	 * @return 2 digit day of date
+	 */
+	protected static int getDayOfBirth(String dnrOrBnrAdjustedFnr)
+	{
+		// dnrOrBnrAdjustedFnr format will be ddmmyyiiicc
+		int day = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(0, 2));
+		return day;
+	}
+	
+	/**
+	 * Returns month of birth
+	 * 
+	 * @param dnrOrBnrAdjustedFnr a fnr, adjusted if it's a bnr, dnr or hnr
+	 * @return 2 digit month of date
+	 */
+	protected static int getMonthOfBirth(String dnrOrBnrAdjustedFnr)
+	{
+		// dnrOrBnrAdjustedFnr format will be ddmmyyiiicc
+		int month = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(2, 4));
+		return month;
+	}
+	
+	/**
+	 * Returns age of the person at certain date
+	 * 
+	 * @param fnr personal identification of the person
+	 * @param atDate at which date to calculate the person's age
+	 * @return age of person at certain date, -1 if fnr is invalid (not fnr,dnr,bostnr,hnr)
+	 */
+	public static int getAgeAtDateForFnr(String fnr, Calendar atDate)
+	{
+		// needs to validate first because get4DigitYearOfBirth returns year of birth even if the pid is not valid
+		boolean valid = isValidFnr(fnr);
+		int age = -1;
+		if( valid )
+		{
+			String adjustedFnr = makeDnrOrBostnrAdjustments(fnr);
+			
+			int yearOfBirth = get4DigitYearOfBirth(adjustedFnr);
+			int monthOfBirth = getMonthOfBirth(adjustedFnr);
+			int dayOfBirth = getDayOfBirth(adjustedFnr);
+
+			int atYear = atDate.get(Calendar.YEAR);
+			int atMonth = atDate.get(Calendar.MONTH);
+			int atDay = atDate.get(Calendar.DAY_OF_MONTH);
+			
+			age = atYear - yearOfBirth;
+			
+			/* Has the persons month and day of birth passed. */
+			if ((monthOfBirth > atMonth) || (monthOfBirth == atMonth && dayOfBirth > atDay))
+				age--; // day of birth not yet passed
+			
+			/* Age can not be less than 0 years. */
+			if (age < 0) 
+				age = -1;
+		}
+		
+		return age;
 	}
 }
