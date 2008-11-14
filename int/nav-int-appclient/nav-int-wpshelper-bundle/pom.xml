@@ -11,6 +11,10 @@
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle</connection>
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle</developerConnection>
 	</scm>
+	
+	<properties>
+		<launchClient.home>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin</launchClient.home>
+	</properties>
 
 	<build>
 		<finalName>wpshelpers-${project.version}</finalName>

@@ -1,18 +1,16 @@
-***Leveranse av støtteverktøy for WPS versjon 1.0-SNAPSHOT***
+***Leveranse av støtteverktøy for WPS versjon ${project.version}***
 
 Filen inneholder følgende:
 * Dokumentasjon av FEM Helper
 * Dokumentasjon av BPC Helper
 * Dokumentasjon av SiBus Helper
-* Presentasjonen "NAV Operational Considerations", Alan Hopkins, IBM
-  - Oppsummering av gjennomgang av driftbarhetskonsepter for WPS
 * wpshelpers-<VERSION>.zip
   - FEM Helper
   - BPC Helper
   - localhost_helper.properties
   - SiBus Helper (SibusQueuesDepth.py)
   
-  * zip-filen skal pakkes ut på WPS deployment manager, i katalogen /was_app/tools/esb/ - helperverktøyene havner da i underkatalogen wpshelpers.
-  * Kontroller at ear-filer er eksekverbare
+  * zip-filen skal pakkes ut på WPS deployment manager, i katalogen /was_app/tools/esb/ - helperverktøyene havner da i underkatalogen ${project.build.finalName}.
+  * Kontroller at shell-skript er eksekverbare
   
-22.10.2008
+14.11.2008
