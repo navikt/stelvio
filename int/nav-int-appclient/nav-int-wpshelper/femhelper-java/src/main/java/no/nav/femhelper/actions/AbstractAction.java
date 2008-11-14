@@ -214,18 +214,19 @@ public abstract class AbstractAction {
 		ArrayList<Event> events = new ArrayList<Event>();
 		int iEvents = 1;
 		String lastEventId = null;
-		Date lastEventDate = null;
 
 		SimpleDateFormat sdfm = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
-		Calendar cal = GregorianCalendar.getInstance();
-		lastEventDate = cal.getTime();
+		Date lastEventDate = new Date();
 
 		// Get all events from fem based on maxresultset
 		Object[] params = new Object[] { new Integer(maxresultset) };
 		String[] signature = new String[] { "int" };
 		String femQuery = Queries.QUERY_ALL_EVENTS;
 		List failedEventList = (List) adminClient.invoke(failedEventManager, femQuery, params, signature);
-
+		
+		// Decalare infinite end date
+		Date end = new Date();
+		
 		// first result set
 		logger.log(Level.INFO, "Collect events is working for first result set...please wait!");
 
@@ -253,18 +254,10 @@ public abstract class AbstractAction {
 					+ sdfm.format(lastEventDate) + " Events collected: #" + events.size());
 
 			femQuery = Queries.QUERY_EVENT_WITH_TIMEPERIOD;
-
-			// FEM API deliver last current to oldest
-			Date end = new Date(lastEventDate.getTime() + Constants.ONE_MILLI);
-
-			// midnight + Constants.MONTH_RANGE
-			cal.setTime(lastEventDate);
-			cal.set(Calendar.HOUR_OF_DAY, 0);
-			cal.set(Calendar.MINUTE, 0);
-			cal.set(Calendar.SECOND, 0);
-			cal.set(Calendar.MILLISECOND, 0);
-			Date begin = new Date(cal.getTimeInMillis() - (Constants.MONTH_RANGE * Constants.ONE_WEEK));
-
+			
+			// Declare begin to be the previous event plus one ms.
+			Date begin = new Date(lastEventDate.getTime() + 1);
+			
 			logger.log(Level.INFO, "New collection start from EventDate: " + sdfm.format(begin) + " to EventDate: "
 					+ sdfm.format(end) + " with max. result set of #" + maxresultset);
 
