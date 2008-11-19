@@ -11,12 +11,15 @@
 		<file>
 			<source>README.txt</source>
 			<outputDirectory>/</outputDirectory>
+			<fileMode>0644</fileMode>
+			<lineEnding>unix</lineEnding>
 			<filtered>true</filtered>
 		</file>
 	</files>
 	<fileSets>
 		<fileSet>
 			<directory>src/main/bin</directory>
+			<lineEnding>unix</lineEnding>
 			<outputDirectory>/</outputDirectory>
 			<filtered>true</filtered>
 			<fileMode>0755</fileMode>
