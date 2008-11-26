@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import no.nav.appclient.util.PasswordEncodeDelegate;
 import no.nav.femhelper.actions.AbstractAction;
 import no.nav.femhelper.actions.ActionFactory;
+import no.nav.femhelper.actions.StatusAction;
 import no.nav.femhelper.cmdoptions.CommandOptions;
 import no.nav.femhelper.cmdoptions.CommandOptionsBuilder;
 import no.nav.femhelper.common.Constants;
@@ -162,13 +163,40 @@ public class Main {
 			String path = arguments.get(CommandOptions.reportDirectory);
 
 			AbstractAction action = ActionFactory.getAction(edaTypeAction, connectProps);
-			action.process(path, filename, arguments, paging, numberOfEvents, pagesize, cl);
-
+			Object result = action.process(path, filename, arguments, paging, numberOfEvents, pagesize, cl);
+			logger.log(Level.INFO, "FEM Helper finished.");
+			
+			try {
+				// The action's process method is some kind of number 
+				// wrapper class, and the application will exit with this code.
+				// E.g. for the STATUS action this will be the current 
+				// total number of events on FEM.
+				int returnCode = Integer.parseInt(result.toString());
+				
+				// Set return code to 255 is the number is higher.
+				// This 255 code represent exit code out of range
+				if (returnCode > 255) {
+					returnCode = 255;
+				}
+				
+				// Spesific exit code for each action
+				if (action instanceof StatusAction && returnCode > 0) {
+					returnCode = 8; // Error
+				}
+				
+				System.exit(returnCode);
+			} catch (NumberFormatException nfe) {
+				// The action's process method did not return 
+				// a number kind of result. Doing exit with default ('0') value
+				System.exit(0);
+			} 
+			
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "Exception:StackTrace:");
 			e.printStackTrace();
 		}
-		logger.log(Level.INFO, "FEM Helper finished.");
+		
+		
 	}
 
 	private static String getSeparatorLine(int width) {
