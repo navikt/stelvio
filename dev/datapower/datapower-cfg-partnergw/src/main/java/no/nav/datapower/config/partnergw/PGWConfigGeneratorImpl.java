@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -37,6 +38,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.filefilter.OrFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import freemarker.cache.TemplateLoader;
@@ -105,6 +107,7 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			setEnvironmentProperty("inboundProxies", getInboundProxies(tmpDirInbound));
 			setEnvironmentProperty("outboundProxies", getOutboundProxies(tmpDirOutbound));
 			FileUtils.deleteDirectory(tmpDir);
+			addTrustCerts(cfg.getProperties());
 			processTemplate(TEMPLATE_CFG, cfg.getProperties(), cfgWriter);
 			cfgWriter.flush();
 			cfgWriter.close();
@@ -114,6 +117,19 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			throw new IllegalStateException(e);
 		}
 		return cfgPackage;
+	}
+	
+	private void addTrustCerts(Properties props) {
+		List<String> trustCertList = DPCollectionUtils.listFromString(props.getProperty("partnerTrustCerts"));
+		List<Map<String, String>> trustCertMapList = DPCollectionUtils.newArrayList();
+		for (String trustCert : trustCertList) {
+			Map<String,String> cert = DPCollectionUtils.newHashMap();
+			cert.put("name", trustCert.substring(trustCert.lastIndexOf("/")+1));
+//			cert.put("name", StringUtils.substringBetween(trustCert, ":///", "."));
+			cert.put("file", trustCert);
+			trustCertMapList.add(cert);
+		}
+		setEnvironmentProperty("partnerTrustedCerts", trustCertMapList);
 	}
 
 	private List<File> getLocalXslt() {

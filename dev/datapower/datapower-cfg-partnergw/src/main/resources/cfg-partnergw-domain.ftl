@@ -1,14 +1,18 @@
 <#import "datapower-config.ftl" as dp>
 
+<#--
 <#assign partnerSPK={"tpNr":"3010","sslCertDN":"${inboundFrontsideUserDN_SPK}","srvElsamDN":"${inboundBacksideUserDN_SPK}"}/>
 <#assign partnerKLP={"tpNr":"3200","sslCertDN":"${inboundFrontsideUserDN_KLP}","srvElsamDN":"${inboundBacksideUserDN_KLP}"}/>
+-->
 
-<#assign partnerTrustedCerts=[
+<#--<#assign partnerTrustedCerts=[
 {"name":"${partnerTrustCert_VeriSignPrimary}","file":"pubcert:///${partnerTrustCert_VeriSignPrimary}.pem"},
 {"name":"${partnerTrustCert_VeriSignIntermediate}","file":"pubcert:///${partnerTrustCert_VeriSignIntermediate}.pem"},
-{"name":"${partnerTrustCert_Thawte}","file":"pubcert:///${partnerTrustCert_Thawte}.pem"}
+{"name":"${partnerTrustCert_Thawte}","file":"pubcert:///${partnerTrustCert_Thawte}.pem"},
 {"name":"soapui.developer.local","file":"cert:///soapui.developer.local.pem"}
-]/>
+]/>-->
+
+
 <#assign inboundBacksideTrustedCerts=[
 {"name":"${inboundBacksideTrustCertName}","file":"pubcert:///${inboundBacksideTrustCertName}.pem"}
 ]/>
