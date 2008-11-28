@@ -3273,6 +3273,16 @@ int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/Argum
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/PropertyUtil.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/SDOFormatter.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/pom.xml -text
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/.project -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/.settings/org.eclipse.wst.common.component -text
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/META-INF/application.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/commons-cli-1.1.jar -text
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/commons-collections-3.2.jar -text
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/commons-lang-2.1.jar -text
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/slf4j-api-1.5.2.jar -text
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/slf4j-jdk14-1.5.2.jar -text
+int/nav-int-appclient/nav-int-wpshelper/trunk/sibushelper-ear/utils-1.07.00.jar -text
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.classpath -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.compatibility -text
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.externalToolBuilders/Maven_Ant_Builder.launch -text svneol=unset#text/plain
