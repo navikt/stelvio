@@ -78,6 +78,8 @@ int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/target
 int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/target
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/target
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/target
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/target
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/bin
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/target
 int/stelvio-commons-lib/.settings
