@@ -3283,6 +3283,52 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/commons-lang-2.1.jar -te
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/slf4j-api-1.5.2.jar -text
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/slf4j-jdk14-1.5.2.jar -text
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/utils-1.07.00.jar -text
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.classpath -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.project -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.wst.common.component -text
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/META-INF/application-client.xml -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/Main.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/Q3sibus.properties -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/Q5sibus.properties -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/S3sibus.properties -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/T6sibus.properties -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/SIBUSHelper.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/ArgumentUtil.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/ArgumentValidator.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/CommandOptions.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/CommandOptionsBuilder.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/PropertyUtil.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/common/Constants.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/common/HashTableLogger.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/filewriters/AbstractFileWriter.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/filewriters/LogFileWriter.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/filewriters/MessageFileWriter.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/AdminHelper.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/BusInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/BusMemberInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/Configuration.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/DestinationInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/DestinationNotFoundException.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MEInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MQClientLinkInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MQLinkInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MQLinkReceiverChannelInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MQLinkSenderChannelInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MediationPointInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MessageInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MessagingHelper.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MessagingHelperImpl.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MessagingOperationFailedException.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/MessagingServiceNotAvailableException.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/PublicationPointInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/QueuePointInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/ServerConfigurationProperties.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/ServerInfo.java -text svneol=unset#text/plain
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/sibus.properties -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.classpath -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.compatibility -text
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.externalToolBuilders/Maven_Ant_Builder.launch -text svneol=unset#text/plain
