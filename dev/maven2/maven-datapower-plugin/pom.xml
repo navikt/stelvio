@@ -4,14 +4,14 @@
   	<groupId>no.nav.maven.plugins</groupId>
   	<artifactId>maven-datapower-plugin</artifactId>
   	<packaging>maven-plugin</packaging>
-  	<version>1.0.1-SNAPSHOT</version>
+  	<version>1.0.1</version>
   	<name>Maven DataPower Plugin</name>
   	<description>
 This plugin provides goals for:
 - Generating DataPower configuration based on predefined templates and specified WSDL files.
 - Importing files to a DataPower device.
 - Importing a pre-generated configuration to a DataPower device.
-  	</description>>
+  	</description>
   	<url>http://maven.apache.org</url>
   	<dependencies>
     	<dependency>
@@ -32,29 +32,29 @@ This plugin provides goals for:
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-utils</artifactId>
-      		<version>1.0.1-SNAPSHOT</version>
+      		<version>1.0.1</version>
     	</dependency>
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-xml-mgmt</artifactId>
-      		<version>1.0.1-SNAPSHOT</version>
+      		<version>1.0.1</version>
     	</dependency>
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-cfg-gen</artifactId>
-      		<version>1.0.1-SNAPSHOT</version>
+      		<version>1.0.1</version>
     	</dependency>
     	<!-- This dependency should be specified with the plugin configuration when using the plugin. However, this requires Maven 2.0.9 -->
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-cfg-secgw</artifactId>
-      		<version>1.0.1-SNAPSHOT</version>
+      		<version>1.0.1</version>
     	</dependency>
     	<!-- This dependency should be specified with the plugin configuration when using the plugin. However, this requires Maven 2.0.9 -->
     	<dependency>
       		<groupId>no.nav.datapower</groupId>
       		<artifactId>datapower-cfg-partnergw</artifactId>
-      		<version>1.0.1-SNAPSHOT</version>
+      		<version>1.0.1</version>
     	</dependency>
 
     	<!-- Test scoped dependencies -->
