@@ -7,6 +7,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import no.nav.appclient.util.ConfigPropertyNames;
 import no.nav.sibushelper.SIBUSHelper;
 import no.nav.sibushelper.common.Constants;
 
@@ -169,7 +170,7 @@ public class Configuration {
 
 	private void readServerConfiguration(String serverId)
 	{
-		if(confFile.getProperty(Constants.PROP_SERVER_HOST_NAME) == null)
+		if(confFile.getProperty(ConfigPropertyNames.CONNECTOR_HOST) == null)
 		{
 			logger.logp(Level.SEVERE, className, "readServerConfiguration", "No servers exist!");
 		} else
@@ -182,10 +183,10 @@ public class Configuration {
 			else
 				serverName = "SIBUSHelperServer";
 			
-			String serverHostName = confFile.getProperty(Constants.PROP_SERVER_HOST_NAME);
+			String serverHostName = confFile.getProperty(ConfigPropertyNames.CONNECTOR_HOST);
 			if(!"".equals(serverHostName) && serverHostName != null) serverProps.setServerHostName(serverHostName);
 			
-			String soapPort = confFile.getProperty(Constants.PROP_SERVER_PORT);
+			String soapPort = confFile.getProperty(ConfigPropertyNames.CONNECTOR_PORT);
 			if(!"".equals(soapPort) && soapPort != null) serverProps.setServerPort(Integer.parseInt(soapPort));
 			
 			String meEngineHost = confFile.getProperty(Constants.PROP_MSGING_HOST);
@@ -200,10 +201,10 @@ public class Configuration {
 			String meEngineUserName = confFile.getProperty(Constants.PROP_MSGING_USER_NAME);
 			if(!"".equals(meEngineUserName) && meEngineUserName != null) serverProps.setMessagingUserName(meEngineUserName);
 			
-			String protocol = confFile.getProperty(Constants.PROP_SERVER_PROTOCOL);
+			String protocol = confFile.getProperty(ConfigPropertyNames.CONNECTOR_TYPE);
 			if(!"".equals(protocol) && protocol != null) serverProps.setProtocol(protocol);
 			
-			String userName = confFile.getProperty(Constants.PROP_USER_NAME);
+			String userName = confFile.getProperty(ConfigPropertyNames.username);
 			if(!"".equals(userName) && userName != null) serverProps.setUserName(userName);
 			
 			String useAlternateMsgingCred = confFile.getProperty(Constants.PROP_MSGING_ALTERNATE_CRED);
@@ -212,15 +213,15 @@ public class Configuration {
 			else
 				serverProps.setMessagingUseAlternateUserId(false);
 			
-			String trustLocation = confFile.getProperty(Constants.PROP_TRUST_LOCATION);
+			String trustLocation = confFile.getProperty(ConfigPropertyNames.SSL_TRUSTSTORE);
 			if(!"".equals(trustLocation) && trustLocation != null) 
 				serverProps.setTrustStoreLocation(trustLocation);
 			
-			String keyLocation = confFile.getProperty(Constants.PROP_KEY_LOCATION);
+			String keyLocation = confFile.getProperty(ConfigPropertyNames.SSL_KEYSTORE);
 			if(!"".equals(keyLocation) && keyLocation != null)	
 				serverProps.setKeyStoreLocation(keyLocation);
 			
-			String securityEnabled = confFile.getProperty(Constants.PROP_SECURITY_ENABLED);
+			String securityEnabled = confFile.getProperty(ConfigPropertyNames.CONNECTOR_SECURITY_ENABLED);
 			if((!"".equals(securityEnabled) && securityEnabled != null) && "true".equals(securityEnabled) ) 
 				serverProps.setSecurityEnabled(securityEnabled.equals("true"));
 			else
@@ -244,7 +245,7 @@ public class Configuration {
 				serverProps.setMessagingPassword(meEnginePassword);
 			}
 			
-			String password = confFile.getProperty(Constants.PROP_PASSWORD);
+			String password = confFile.getProperty(ConfigPropertyNames.password);
 			try
 			{
 				if(!"".equals(password) && password != null)
@@ -256,7 +257,7 @@ public class Configuration {
 				serverProps.setPassword(password);
 			}
 			
-			String trustPassword = confFile.getProperty(Constants.PROP_TRUST_PASSWORD);
+			String trustPassword = confFile.getProperty(ConfigPropertyNames.SSL_TRUSTSTORE_PASSWORD);
 			try
 			{
 				if(!"".equals(trustPassword) && trustPassword != null)
@@ -267,7 +268,7 @@ public class Configuration {
 				logger.logp(Level.SEVERE, className, "readServerConfiguration",  "Password decoding failed", e);
 				serverProps.setTrustStorePassword(trustPassword);
 			}
-			String keyPassword = confFile.getProperty(Constants.PROP_KEY_PASSWORD);
+			String keyPassword = confFile.getProperty(ConfigPropertyNames.SSL_KEYSTORE_PASSWORD);
 			try
 			{
 				if(!"".equals(keyPassword) && keyPassword != null)
