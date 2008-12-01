@@ -21,7 +21,7 @@ public class ServiceRuntimeExceptionToFaultConverter {
 	public static DataObject convert(ServiceRuntimeException sre, String faultBONamespace, String faultBOName) {
 		DataObject faultBo = DataFactory.INSTANCE.create(faultBONamespace, faultBOName);
 		faultBo.setString("errorSource", buildErrorSource(sre));
-		faultBo.setString("errorType", "Runtime");
+		faultBo.setString("errorType", ErrorTypes.RUNTIME);
 		faultBo.setDate("dateTimeStamp", new Date());
 		faultBo.setString("errorMessage", buildErrorMessage(sre));
 		faultBo.setString("rootCause", buildRootCause(sre));

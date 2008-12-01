@@ -12,6 +12,7 @@ import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import no.stelvio.common.exception.ErrorTypes;
 import no.stelvio.common.exception.ServiceRuntimeExceptionToFaultConverter;
 
 import com.ibm.websphere.sca.ServiceManager;
@@ -22,120 +23,77 @@ import com.ibm.wsspi.sca.scdl.OperationType;
 import com.ibm.wsspi.sca.scdl.Reference;
 import commonj.sdo.DataObject;
 
-/*
- * <p> This is a utility class that provides helper methods around common error
+/**
+ * <p>
+ * This is a utility class that provides helper methods around common error
  * handling with WPS, useful for different purpose as convert
- * ServiceBusinessException or ServiceRuntimeExcpetion to string </p>
- * 
- * @usage <p>
- * 
+ * ServiceBusinessException or ServiceRuntimeExcpetion to faults.
  * </p>
  * 
- * @author persona2c5e3b49756 Schnell, test@example.com, and Andre Rakvåg,
- * test@example.com.
+ * @author persona2c5e3b49756 Schnell, test@example.com
+ * @author Andre Rakvåg, test@example.com
+ * @author test@example.com
  * 
  */
 public class ErrorHelperUtil {
-
 	/**
 	 * Default date pattern used within integration
 	 */
-	private final static String DEFAULT_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-	private final static String FAULT_NAMESPACE = "http://nav-lib-cons-pen-psakpselv/no/nav/lib/pen/psakpselv/fault";
-	private final static String FAULT_ASBO_NAME = "FaultPenGenerisk";
+	public final static String DEFAULT_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
 	/**
 	 * <p>
-	 * provides current timestamp based on new Date with standard default format
-	 * yyyy-MM-dd HH:mm:ss
+	 * Provides current timestamp based on new Date with standard default format
 	 * </p>
 	 * 
-	 * @param
-	 * 
-	 * 
 	 * @return String
-	 * 
+	 * @see ErrorHelperUtil#DEFAULT_DATE_PATTERN
 	 */
 	public static String getTimestamp() {
 		Date date = new Date();
-		SimpleDateFormat formater = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
-		return formater.format(date);
-	}
-
-	/**
-	 * <p>
-	 * provides current timestamp based on new Date with custom input format
-	 * pattern
-	 * </p>
-	 * 
-	 * @param sbe
-	 *            valid java DateTime pattern as yyy-MM-dd
-	 * 
-	 * @return String
-	 * 
-	 */
-	public static String getTimestamp(String datePattern) {
-		Date date = null;
-		SimpleDateFormat formater = null;
-
-		try {
-			date = new Date();
-			formater = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
-			return formater.format(date);
-		} catch (Exception e) {
-			date = new Date();
-			formater = new SimpleDateFormat(datePattern);
-			return formater.format(date);
-		}
-
+		SimpleDateFormat dateFormat = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
+		return dateFormat.format(date);
 	}
 
 	/**
 	 * 
 	 * Method used to create a fault object.
 	 * 
-	 * @param sre
-	 *            the catched ServiceRuntimeException
+	 * @param e
+	 *            the caught exception
 	 * @param module
-	 *            the name of the module that initiated the fault generation
+	 *            the name of the module that caught the exception
 	 * @param faultBONamespace
 	 *            the namespace of the fault object
 	 * @param faultBOName
 	 *            the name of the fault object
 	 * @param errorType
-	 *            indicates whether the fault is a ServiceBusinessException or
-	 *            ServiceRuntimeException
+	 *            indicates whether the fault is a ServiceBusinessException
+	 *            (Business) or ServiceRuntimeException (Runtime)
 	 * @param errorMessage
-	 *            enables the user to provide an errorMessage in case a SRE is
-	 *            not available
+	 *            enables the user to provide an errorMessage in case an
+	 *            exception is not available
 	 * @param rootCause
-	 *            enables the user to provide a rootCause in case a SRE is not
-	 *            available
-	 * @return the fault business object created from the
-	 *         ServiceRuntimeException
+	 *            enables the user to provide a rootCause in case an exception
+	 *            is not available
+	 * @return the fault business object
 	 */
-	private static DataObject getFaultBO(Exception sre, String module, String faultBONamespace, String faultBOName,
+	private static DataObject getFaultBO(Exception e, String module, String faultBONamespace, String faultBOName,
 			String errorType, String errorMessage, String rootCause) {
-
 		DataObject faultBo = DataFactory.INSTANCE.create(faultBONamespace, faultBOName);
-		Date date = new Date();
-		SimpleDateFormat formater = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
-
 		faultBo.setString("errorSource", getSCAContext(module));
 		faultBo.setString("errorType", errorType);
-		faultBo.setString("dateTimeStamp", formater.format(date));
+		faultBo.setString("dateTimeStamp", getTimestamp());
 		if (errorMessage != null) {
 			faultBo.setString("errorMessage", errorMessage);
-		} else if (sre != null) {
-			faultBo.setString("errorMessage", sre.getMessage());
+		} else if (e != null) {
+			faultBo.setString("errorMessage", e.getMessage());
 		}
-
 		if (rootCause != null) {
 			faultBo.setString("rootCause", rootCause);
-		} else if (sre != null) {
-			faultBo.setString("rootCause", getRootCause(sre).toString());
+		} else if (e != null) {
+			faultBo.setString("rootCause", getRootCause(e).toString());
 		}
-
 		return faultBo;
 	}
 
@@ -144,9 +102,9 @@ public class ErrorHelperUtil {
 	 * Method used to create a fault object.
 	 * 
 	 * @param sre
-	 *            the catched ServiceRuntimeException
+	 *            the caught ServiceRuntimeException
 	 * @param module
-	 *            the name of the module that initiated the fault generation
+	 *            the name of the module that caught the exception
 	 * @param faultBONamespace
 	 *            the namespace of the fault object
 	 * @param faultBOName
@@ -160,8 +118,7 @@ public class ErrorHelperUtil {
 	 * @param rootCause
 	 *            enables the user to provide a rootCause in case a SRE is not
 	 *            available
-	 * @return the fault business object created from the
-	 *         ServiceRuntimeException
+	 * @return the fault business object
 	 */
 	public static DataObject getSAMFaultBO(Exception sre, String module, String faultBONamespace, String faultBOName,
 			String errorType, String errorMessage, String rootCause) {
@@ -192,29 +149,14 @@ public class ErrorHelperUtil {
 	 * exist.
 	 * 
 	 * @param sre
-	 *            the ServiceRuntimeException
+	 *            the caught ServiceRuntimeException
 	 * @param module
-	 *            the name of the module that caught the sre
-	 * @return the fault business object created
-	 */
-	public static DataObject getRuntimeFaultBO(ServiceRuntimeException sre, String module) {
-		return getRuntimeFaultBO(sre, module, FAULT_NAMESPACE, FAULT_ASBO_NAME);
-	}
-
-	/**
-	 * 
-	 * Method used to create a fault object when a ServiceRuntimeException does
-	 * exist.
-	 * 
-	 * @param sre
-	 *            the ServiceRuntimeException
-	 * @param module
-	 *            the name of the module that caught the sre
+	 *            the name of the module that caught the exception
 	 * @param faultBONamespace
 	 *            the namespace of the fault object
 	 * @param faultBOName
 	 *            the name of the fault object
-	 * @return the fault business object created
+	 * @return the fault business object
 	 */
 	public static DataObject getRuntimeFaultBO(ServiceRuntimeException sre, String module, String faultBONamespace,
 			String faultBOName) {
@@ -224,35 +166,12 @@ public class ErrorHelperUtil {
 	/**
 	 * 
 	 * Method used to create a fault object when a ServiceRuntimeException does
-	 * not exist.
-	 * 
-	 * @param module
-	 *            the name of the module that caught the sre
-	 * @param faultBONamespace
-	 *            the namespace of the fault object
-	 * @param faultBOName
-	 *            the name of the fault object
-	 * @param errorMessage
-	 *            enables the user to provide an errorMessage as there is no SRE
-	 *            available
-	 * @param rootCause
-	 *            enables the user to provide an rootCause as there is no SRE
-	 *            available
-	 * @return the fault business object created
-	 */
-	public static DataObject getRuntimeFaultBO(String module, String errorMessage, String rootCause) {
-		return getRuntimeFaultBO(null, module, FAULT_NAMESPACE, FAULT_ASBO_NAME, errorMessage, rootCause);
-	}
-
-	/**
-	 * 
-	 * Method used to create a fault object when a ServiceRuntimeException does
 	 * exist.
 	 * 
 	 * @param sre
-	 *            the ServiceRuntimeException
+	 *            the caught ServiceRuntimeException
 	 * @param module
-	 *            the name of the module that caught the sre
+	 *            the name of the module that caught the exception
 	 * @param faultBONamespace
 	 *            the namespace of the fault object
 	 * @param faultBOName
@@ -263,7 +182,7 @@ public class ErrorHelperUtil {
 	 * @param rootCause
 	 *            enables the user to provide an rootCause as there is no SRE
 	 *            available
-	 * @return the fault business object created
+	 * @return the fault business object
 	 */
 	public static DataObject getRuntimeFaultBO(ServiceRuntimeException sre, String module, String faultBONamespace,
 			String faultBOName, String errorMessage, String rootCause) {
@@ -271,31 +190,28 @@ public class ErrorHelperUtil {
 	}
 
 	/**
+	 * Method used to create a fault object when an exception does exist.
 	 * 
-	 * Method used to create a fault object when a ServiceRuntimeException does
-	 * exist.
-	 * 
-	 * @param sre
-	 *            the ServiceRuntimeException
+	 * @param e
+	 *            the exception
 	 * @param module
-	 *            the name of the module that caught the sre
+	 *            the name of the module that caught the exception
 	 * @param faultBONamespace
 	 *            the namespace of the fault object
 	 * @param faultBOName
 	 *            the name of the fault object
-	 * @return the fault business object created
+	 * @return the fault business object
 	 */
-	public static DataObject getBusinessFaultBO(Exception sre, String module, String faultBONamespace, String faultBOName) {
-		return getFaultBO(sre, module, faultBONamespace, faultBOName, "Business", null, null);
+	public static DataObject getBusinessFaultBO(Exception e, String module, String faultBONamespace, String faultBOName) {
+		return getFaultBO(e, module, faultBONamespace, faultBOName, ErrorTypes.BUSINESS, null, null);
 	}
 
 	/**
 	 * 
-	 * Method used to create a fault object when a ServiceRuntimeException does
-	 * not exist.
+	 * Method used to create a fault object when an exception does not exist.
 	 * 
 	 * @param module
-	 *            the name of the module that caught the sre
+	 *            the name of the module that creates the fault
 	 * @param faultBONamespace
 	 *            the namespace of the fault object
 	 * @param faultBOName
@@ -306,11 +222,11 @@ public class ErrorHelperUtil {
 	 * @param rootCause
 	 *            enables the user to provide an rootCause as there is no SRE
 	 *            available
-	 * @return the fault business object created
+	 * @return the fault business object
 	 */
 	public static DataObject getBusinessFaultBO(String module, String faultBONamespace, String faultBOName,
 			String errorMessage, String rootCause) {
-		return getFaultBO(null, module, faultBONamespace, faultBOName, "Business", errorMessage, rootCause);
+		return getFaultBO(null, module, faultBONamespace, faultBOName, ErrorTypes.BUSINESS, errorMessage, rootCause);
 	}
 
 	/**
@@ -373,26 +289,23 @@ public class ErrorHelperUtil {
 	 * @return the string representation of the ServiceRunTimeException
 	 */
 	public static String getSRETrace(ServiceRuntimeException sre) {
-		StringWriter sw = new StringWriter();
-		sre.printStackTrace(new PrintWriter(sw));
-		return sw.toString();
+		return convertSBEStackTrace(sre);
 	}
 
 	/**
 	 * <p>
-	 * Convert SBE exception stacktrace to string
+	 * Convert exception stacktrace to string
 	 * </p>
 	 * 
-	 * @param sbe
-	 *            The SBE exception
+	 * @param e
+	 *            The exception
 	 * 
 	 * @return String
 	 * 
 	 */
-	public static String convertSBEStackTrace(Exception sbe) {
+	public static String convertSBEStackTrace(Exception e) {
 		StringWriter sw = new StringWriter();
-		sbe.printStackTrace(new PrintWriter(sw));
+		e.printStackTrace(new PrintWriter(sw));
 		return sw.toString();
 	}
-
 }

@@ -3366,6 +3366,7 @@ int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/StringUtils.java -tex
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/WSAddressing.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/WSSecurityHeader.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/exception/CatchServiceRuntimeExceptionInterceptor.java -text svneol=unset#text/plain
+int/stelvio-commons-lib/gen/src/no/stelvio/common/exception/ErrorTypes.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/exception/RuntimeFault.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/exception/ServiceRuntimeExceptionToFaultConverter.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/exception/ThrowableInfo.java -text svneol=unset#text/plain
