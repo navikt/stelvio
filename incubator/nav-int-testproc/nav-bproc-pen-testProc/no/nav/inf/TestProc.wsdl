@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bons1="http://nav-bproc-pen-testProc/no/nav/gbo" xmlns:tns="http://nav-bproc-pen-testProc/no/nav/inf/TestProc" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TestProc" targetNamespace="http://nav-bproc-pen-testProc/no/nav/inf/TestProc">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://nav-bproc-pen-testProc/no/nav/inf/TestProc" xmlns:bons1="http://nav-bproc-pen-testProc/no/nav/gbo" xmlns:tns="http://nav-bproc-pen-testProc/no/nav/inf/TestProc" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://nav-bproc-pen-testProc/no/nav/gbo" schemaLocation="../gbo/GBOTestProcRequest.xsd"/>
+      <xsd:element name="invokeTestProc">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testProcRequest" nillable="true" type="bons1:GBOTestProcRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="finishProc">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="finishString" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="invokeTestProcRequestMsg">
+    <wsdl:part element="tns:invokeTestProc" name="invokeTestProcParameters"/>
+  </wsdl:message>
+    <wsdl:message name="finishProcRequestMsg">
+    <wsdl:part element="tns:finishProc" name="finishProcParameters"/>
+  </wsdl:message>
+    <wsdl:portType name="TestProc">
+    <wsdl:operation name="invokeTestProc">
+      <wsdl:input message="tns:invokeTestProcRequestMsg" name="invokeTestProcRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="finishProc">
+      <wsdl:input message="tns:finishProcRequestMsg" name="finishProcRequest"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

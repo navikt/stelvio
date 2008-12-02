@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts" xmlns:ns0="http://nav-bproc-pen-testProc/no/nav/gbo" xmlns:ns1="http://nav-bproc-pen-testProc/no/nav/inf/TestProc" xmlns:ns2="http://nav-lib-pen/no/nav/lib/pen/gbo" xmlns:ns3="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak" xmlns:tel="http://nav-bproc-pen-testProc/no/nav/bpel/Task1" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="TestBPEL" suppressJoinFailure="yes" targetNamespace="http://nav-bproc-pen-testProc/no/nav/bpel" wpc:autoDelete="no" wpc:autonomy="peer" wpc:displayName="TestBPEL" wpc:id="4" wpc:validFrom="2008-10-03T08:10:13">
+  <wpc:customProperty name="terminatedSuccessful">
+    <wpc:value>false</wpc:value>
+  </wpc:customProperty>
+  <wpc:javaGlobals>
+    <wpc:import packages="java.util.Date"/>
+    <wpc:import packages="java.util.GregorianCalendar"/>
+    <wpc:import packages="no.stelvio.common.bus.util.DateUtil"/>
+  </wpc:javaGlobals>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/TestProc.wsdl" namespace="http://nav-bproc-pen-testProc/no/nav/inf/TestProc"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="/resource/nav-lib-pen/no/nav/lib/pen/inf/Vedtak.wsdl" namespace="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="TestBPELArtifacts.wsdl" namespace="http://nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../gbo/GBOTestProcRequest.xsd" namespace="http://nav-bproc-pen-testProc/no/nav/gbo"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/pen/inf/Vedtak.wsdl" namespace="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentVedtakListeRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/TestProc.wsdl" namespace="http://nav-bproc-pen-testProc/no/nav/inf/TestProc"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOVedtak.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentVedtakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOVedtakListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="Interface" name="TestProc" partnerLinkType="ns:TestProcPLT"/>
+    <bpws:partnerLink name="VedtakPartner" partnerLinkType="ns:VedtakPLT" partnerRole="Interface"/>
+    <bpws:partnerLink name="TestProcPartner" partnerLinkType="ns:TestProcPLT1" partnerRole="Interface"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable name="testProcRequest" type="ns0:GBOTestProcRequest" wpc:id="3"/>
+    <bpws:variable name="hentVedtakListeRequest" type="ns2:GBOHentVedtakListeRequest" wpc:id="7"/>
+    <bpws:variable name="hentVedtakRequest" type="ns2:GBOHentVedtakRequest" wpc:id="10"/>
+    <bpws:variable name="hentVedtakResponse" type="ns2:GBOVedtak" wpc:id="11"/>
+    <bpws:variable name="hentVedtakListeResponse" type="ns2:GBOVedtakListe" wpc:id="16"/>
+    <bpws:variable name="vedtakId" type="xsd:string" wpc:id="18"/>
+    <bpws:variable name="virkningBefore" type="xsd:boolean" wpc:id="28"/>
+  </bpws:variables>
+  <bpws:correlationSets>
+    <bpws:correlationSet name="VedtakIdCorrelation" properties="ns:vedtakId"/>
+  </bpws:correlationSets>
+  <bpws:sequence name="HiddenSequence" wpc:id="1073741825">
+    <bpws:receive createInstance="yes" name="Receive" operation="invokeTestProc" partnerLink="TestProc" portType="ns1:TestProc" wpc:displayName="Receive" wpc:id="2">
+      <wpc:output>
+        <wpc:parameter name="testProcRequest" variable="testProcRequest"/>
+      </wpc:output>
+      <bpws:correlations>
+        <bpws:correlation initiate="yes" set="VedtakIdCorrelation"/>
+      </bpws:correlations>
+    </bpws:receive>
+    <bpws:scope name="Scope" wpc:displayName="Scope" wpc:id="5">
+      <bpws:sequence name="HiddenSequence1" wpc:id="1073741832">
+        <bpws:assign name="AssignhentVedtakRequest" wpc:displayName="Assign hentVedtakRequest" wpc:id="9">
+          <bpws:copy>
+            <bpws:from variable="testProcRequest">
+              <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[vedtakId]]></bpws:query>
+            </bpws:from>
+            <bpws:to variable="hentVedtakRequest">
+              <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[vedtakId]]></bpws:query>
+            </bpws:to>
+          </bpws:copy>
+        </bpws:assign>
+        <bpws:invoke name="InvokehentVedtak" operation="hentVedtak" partnerLink="VedtakPartner" portType="ns3:Vedtak" wpc:continueOnError="no" wpc:displayName="Invoke hentVedtak" wpc:id="6">
+          <wpc:input>
+            <wpc:parameter name="hentVedtakRequest" variable="hentVedtakRequest"/>
+          </wpc:input>
+          <wpc:output>
+            <wpc:parameter name="hentVedtakResponse" variable="hentVedtakResponse"/>
+          </wpc:output>
+        </bpws:invoke>
+        <bpws:invoke name="Snippet" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="Snippet" wpc:id="26">
+          <wpc:script>
+            <wpc:javaCode><![CDATA[//@generated:com.ibm.wbit.activity.ui]]></wpc:javaCode>
+          </wpc:script>
+        </bpws:invoke>
+        <bpws:switch name="VirkningFom" wpc:displayName="VirkningFom" wpc:id="19">
+          <bpws:case wpc:id="20">
+            <bpws:condition expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/"><![CDATA[Date virkningFom = DateUtil.parseWIDString(hentVedtakResponse.getString("virkningFom"));
+
+Date dato = new GregorianCalendar(2008,10,10).getTime();
+
+if (virkningFom.before(dato))
+	return true;
+else
+	return false;]]></bpws:condition>
+            <bpws:sequence name="HiddenSequence3" wpc:id="1073741845">
+              <bpws:assign name="AssignVedtakId" wpc:displayName="AssignVedtakId" wpc:id="22">
+                <bpws:copy>
+                  <bpws:from variable="testProcRequest">
+                    <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[vedtakId]]></bpws:query>
+                  </bpws:from>
+                  <bpws:to variable="vedtakId"/>
+                </bpws:copy>
+              </bpws:assign>
+              <bpws:invoke name="InvokeFinishProc" operation="finishProc" partnerLink="TestProcPartner" portType="ns1:TestProc" wpc:continueOnError="no" wpc:displayName="InvokeFinishProc" wpc:id="23">
+                <wpc:input>
+                  <wpc:parameter name="finishString" variable="vedtakId"/>
+                </wpc:input>
+              </bpws:invoke>
+              <bpws:terminate name="Terminate" wpc:displayName="Terminate" wpc:id="27"/>
+            </bpws:sequence>
+          </bpws:case>
+        </bpws:switch>
+      </bpws:sequence>
+    </bpws:scope>
+    <bpws:scope name="Scope1" wpc:displayName="Scope1" wpc:id="12">
+      <bpws:sequence name="HiddenSequence2" wpc:id="1073741837">
+        <bpws:assign name="AssignhentVedtakListeRequest" wpc:displayName="Assign hentVedtakListeRequest" wpc:id="14">
+          <bpws:copy>
+            <bpws:from variable="hentVedtakResponse">
+              <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[gjelderFnr]]></bpws:query>
+            </bpws:from>
+            <bpws:to variable="hentVedtakListeRequest">
+              <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[fnr]]></bpws:query>
+            </bpws:to>
+          </bpws:copy>
+        </bpws:assign>
+        <bpws:invoke name="InvokehentVedtakListe" operation="hentVedtakListe" partnerLink="VedtakPartner" portType="ns3:Vedtak" wpc:continueOnError="no" wpc:displayName="Invoke hentVedtakListe" wpc:id="15">
+          <wpc:input>
+            <wpc:parameter name="hentVedtakListeRequest" variable="hentVedtakListeRequest"/>
+          </wpc:input>
+          <wpc:output>
+            <wpc:parameter name="hentVedtakListeResponse" variable="hentVedtakListeResponse"/>
+          </wpc:output>
+        </bpws:invoke>
+        <bpws:assign name="AssignVedtakId1" wpc:displayName="AssignVedtakId" wpc:id="24">
+          <bpws:copy>
+            <bpws:from variable="testProcRequest">
+              <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[vedtakId]]></bpws:query>
+            </bpws:from>
+            <bpws:to variable="vedtakId"/>
+          </bpws:copy>
+        </bpws:assign>
+        <bpws:invoke name="InvokeFinishProc1" operation="finishProc" partnerLink="TestProcPartner" portType="ns1:TestProc" wpc:continueOnError="no" wpc:displayName="InvokeFinishProc" wpc:id="25">
+          <wpc:input>
+            <wpc:parameter name="finishString" variable="vedtakId"/>
+          </wpc:input>
+        </bpws:invoke>
+      </bpws:sequence>
+    </bpws:scope>
+    <bpws:receive name="ReceiveFinsihProc" operation="finishProc" partnerLink="TestProc" portType="ns1:TestProc" wpc:displayName="ReceiveFinsihProc" wpc:id="17">
+      <wpc:output>
+        <wpc:parameter name="finishString" variable="vedtakId"/>
+      </wpc:output>
+      <bpws:correlations>
+        <bpws:correlation initiate="no" set="VedtakIdCorrelation"/>
+      </bpws:correlations>
+    </bpws:receive>
+  </bpws:sequence>
+</bpws:process>

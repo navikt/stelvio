@@ -2420,6 +2420,27 @@ incubator/nav-int-fault-test/nav-lib-fault-test/GBOTwoWayRequest.xsd -text svneo
 incubator/nav-int-fault-test/nav-lib-fault-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-lib-fault-test/ProducerInterface.wsdl -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-lib-fault-test/nav-broc-fault-test_LRBPELWSEXP.wsdl -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.classpath -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.project -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/nav-bproc-pen-testProc.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/org.eclipse.wst.common.component -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/TestBPEL.component -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/TestProcSCAEXP.export -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/VedtakSCAIMP.import -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPEL.bpel -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPEL.bpelex -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts.wsdl -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPEL_bpel.mon -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/gbo/GBOTestProcRequest.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/inf/TestProc.wsdl -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/sca.module -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/sca.modulex -text
 incubator/release-test/nav-int-appclient-bpchelper-ear/META-INF/application.xml -text
 incubator/release-test/nav-int-appclient-bpchelper-ear/pom.xml -text
 incubator/release-test/nav-int-appclient-bpchelper-java/.classpath -text
