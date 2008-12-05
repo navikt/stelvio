@@ -171,7 +171,10 @@ public class Main {
 				// wrapper class, and the application will exit with this code.
 				// E.g. for the STATUS action this will be the current 
 				// total number of events on FEM.
-				int returnCode = Integer.parseInt(result.toString());
+				int returnCode = 0;
+				if (null != result) {
+					Integer.parseInt(result.toString());
+				}
 				
 				// Set return code to 255 is the number is higher.
 				// This 255 code represent exit code out of range
