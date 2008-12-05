@@ -208,8 +208,8 @@ public class EventFileWriter extends AbstractFileWriter {
 	private String getEscapedString(String s) {
 		if (s != null) {
 			String result = s.replaceAll(";", "#");
-			// double tegn we don't need
 			result = result.replaceAll("##", "#");
+			result = result.replaceAll("\"", StringUtils.EMPTY);
 			return result;
 		}
 		return StringUtils.EMPTY;
