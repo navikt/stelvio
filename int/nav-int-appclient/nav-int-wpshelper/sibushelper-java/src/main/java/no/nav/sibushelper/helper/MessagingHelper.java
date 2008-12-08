@@ -33,19 +33,37 @@ public interface MessagingHelper {
 	/**
 	 * @param busName
 	 * @param meName
-	 * @param queueName
+	 * @param seQueue
+	 * @param msgSelector
+	 * @param maxMesg
 	 * @return
-	 * @throws MessagingOperationFailedException
 	 */
-	public int queueMessages(String busName, String meName, String queueName) throws MessagingOperationFailedException;
+	public List<MessageInfo> moveExceptionToDestination(String busName, String meName, String seQueue, String msgSelector, long maxMesg);
 	
+
+	/**
+	 * @param busName
+	 * @param meName
+	 * @param srcQueue
+	 * @param trgQueue
+	 * @param msgSelector
+	 * @param maxMesg
+	 * @return
+	 */
+	public long moveMessages(String busName, String meName, String srcQueue, String trgQueue, String msgSelector, long maxMesg);
+
 	/**
 	 * @param busName
 	 * @param meName
 	 * @param queueName
+	 * @param msgSelector
+	 * @param maxMesg
 	 * @return
 	 * @throws MessagingOperationFailedException
 	 * @throws DestinationNotFoundException
 	 */
-	public int clearQueue(String busName, String meName, String queueName) throws MessagingOperationFailedException, DestinationNotFoundException;
+	public long clearQueue(String busName, String meName, String queueName, String msgSelector, long maxMesg) throws MessagingOperationFailedException, DestinationNotFoundException;
+
+
+
 }

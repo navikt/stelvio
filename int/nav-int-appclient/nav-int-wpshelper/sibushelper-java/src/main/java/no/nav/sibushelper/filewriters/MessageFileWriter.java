@@ -21,7 +21,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * This class that writes events to file
  * 
- * @author Andreas Røe
+ * @author persona2c5e3b49756 Schnell
  */
 
 public class MessageFileWriter extends AbstractFileWriter {
@@ -79,6 +79,37 @@ public class MessageFileWriter extends AbstractFileWriter {
 		writer.flush();
 	}
 
+	
+	/**
+	 * write the header in the csv file
+	 */
+	public void writeSEHeader() throws IOException {
+		writer.write("Queue" + separator);
+		writer.write("Status" + separator);
+		writer.write("BusName" + separator);
+		writer.write("MessageId" + separator);
+		writer.write("ApplicationMessageId" + separator);
+		writer.write("CorrelationId" + separator);
+		writer.write("ApiUserId" + separator);
+		writer.write("SysUserId" + separator);
+		writer.write("RedeliveredCount" + separator);
+		writer.write("Reliability" + separator);
+		writer.write("MessageType" + separator);
+		writer.write("MessageBodyType" + separator);
+		writer.write("ExceptionMessage" + separator);
+		writer.write("ExceptionTimestamp" + separator);
+		writer.write("ExceptionReason" + separator);
+		writer.write("ProblemDestination" + separator);
+		writer.write("ProblemDestinationBus" + separator);
+		writer.write("ApproximateLength" + separator);
+		writer.write("MessageTimestamp" + separator);
+		writer.write("MessageMEArrivalTimestamp" + separator);
+		writer.write("MessageWaitTimestamp" + separator);
+		writer.write("MessageData");
+		writer.newLine();
+		writer.flush();
+	}	
+	
 	/**
 	 * Format from Message format to CSV and write
 	 * 
@@ -122,6 +153,50 @@ public class MessageFileWriter extends AbstractFileWriter {
 		writer.flush();
 	}
 
+	/**
+	 * Format from Message format to CSV and write
+	 * 
+	 * @param event
+	 * @param parameters
+	 * @param adminClient
+	 * @throws IOException
+	 */
+	public void writeCSVSEMessage(MessageInfo message, String queueName) throws IOException {
+
+		// Write information about this event
+		writer.write(getEscapedString(queueName) + separator);
+		writer.write(getEscapedString(message.getStatus()) + separator);
+		writer.write(getEscapedString(message.getBusName()) + separator);
+		writer.write(getEscapedString(message.getSystemMessageId()) + separator);
+		writer.write(getEscapedString(message.getApiMessageId()) + separator);
+		writer.write(getEscapedString(message.getCorrelationId()) + separator);
+		writer.write(getEscapedString(message.getApiUserId()) + separator);
+		writer.write(getEscapedString(message.getSysUserId()) + separator);
+		writer.write(getEscapedString(new Integer(message.getRedeliveredCount()).toString()) + separator);
+		writer.write(getEscapedString(message.getReliability()) + separator);
+		writer.write(getEscapedString(message.getMessageType()) + separator);
+		writer.write(getEscapedString(message.getMessageBodyType()) + separator);
+		writer.write(getEscapedString(message.getExceptionMessage()) + separator);
+		writer.write(getEscapedString(getTimestamp(message.getExceptionTimestamp(), Constants.DEFAULT_DATE_FORMAT_TZ)) + separator);
+		writer.write(getEscapedString(new Integer(message.getExceptionReason()).toString()) + separator);
+		writer.write(getEscapedString(message.getOrigDestination()) + separator);
+		writer.write(getEscapedString(message.getOrigDestinationBus()) + separator);
+		writer.write(getEscapedString(new Integer(message.getApproximateLength()).toString()) + separator);
+		writer.write(getEscapedString(getTimestamp(message.getCurrentTimestamp(), Constants.DEFAULT_DATE_FORMAT_TZ)) + separator);
+		writer.write(getEscapedString(getTimestamp(message.getCurrentMEArrivalTimestamp(), Constants.DEFAULT_DATE_FORMAT_TZ)) + separator);
+		long elapsed = message.getCurrentMEArrivalTimestamp()+message.getCurrentMessageWaitTimestamp();
+		writer.write(getEscapedString(getElapsedTime(elapsed)) + separator);
+		// Write quotes start. This is needed to get all values within
+		// the same cell if and when this data is imported in Excel.
+		writer.write("\"");
+		writer.write(getEscapedString(message.getMsgStringBuffer().toString()));
+		// Write quotes end plus separator
+		writer.write("\"" + separator);
+		// Write a empty line the end of this entry and close the writer
+		writer.newLine();
+		writer.flush();
+	}	
+	
 	/**
 	 * TODO: might be more complexity is necessary to filter out other chars tha
 	 * sep. Returns a string with all <code>;</code> characters replace it

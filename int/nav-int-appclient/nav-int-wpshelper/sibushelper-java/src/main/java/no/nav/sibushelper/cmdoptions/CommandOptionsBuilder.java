@@ -29,9 +29,9 @@ public class CommandOptionsBuilder {
 			options.addOption(getLogFilePathOption());
 			options.addOption(getActionOption());
 			options.addOption(getNoStopOption());
-			options.addOption(getTimeFrameOption());
-			options.addOption(getFailureMessageOption());
-			options.addOption(getMaxResultSetOption());
+//			options.addOption(getTimeFrameOption());
+//			options.addOption(getFailureMessageOption());
+//			options.addOption(getMaxResultSetOption());
 			options.addOption(getComponentOption());			
 			return options;
 		}
@@ -41,6 +41,7 @@ public class CommandOptionsBuilder {
 		 * 
 		 * @return failureMessage option
 		 */
+		@SuppressWarnings("unused")
 		private Option getFailureMessageOption() {
 			Option failureMessage = getGeneralOption(CommandOptions.failureMessage, "fm");
 			failureMessage.setDescription("Wild card search in the failure message. Might be used to drill down a given exception etc.");
@@ -52,6 +53,7 @@ public class CommandOptionsBuilder {
 		 * 
 		 * @return timeFrame option
 		 */
+		@SuppressWarnings("unused")
 		private Option getTimeFrameOption() {
 			Option timeFrame = getGeneralOption(CommandOptions.timeFrame, "tf");
 			timeFrame.setArgName("timeframe");
@@ -66,6 +68,7 @@ public class CommandOptionsBuilder {
 		 * @return
 		 * @TODO This could have a default value
 		 */
+		@SuppressWarnings("unused")
 		private Option getMaxResultSetOption() {
 			Option maxResultSet = getGeneralOption(CommandOptions.maxResultSet, "mrs");
 			maxResultSet.setArgName("integer");
@@ -117,7 +120,7 @@ public class CommandOptionsBuilder {
 		 */
 		private Option getNoStopOption() {
 			Option noStop = OptionBuilder.withLongOpt(CommandOptions.noStop).create("ns");
-			noStop.setDescription("Runs the action without prompting between collecting the msgids and the action");
+			noStop.setDescription("Runs the action without prompting of move, resubmit and delete actions");
 			return noStop;
 		}
 
@@ -138,7 +141,7 @@ public class CommandOptionsBuilder {
 		 */
 		private Option getComponentOption() {
 			Option component = getGeneralOption(CommandOptions.component, "co");
-			component.setDescription("Component options {server, bus, mqlink, queue <arg>}");
+			component.setDescription("Component options {server, sibus, wmqlink, queue <arg>}" + "\n" + "arg <[SIBUSNAME:QUEUE:FILTER]>");
 			return component;
 		}
 

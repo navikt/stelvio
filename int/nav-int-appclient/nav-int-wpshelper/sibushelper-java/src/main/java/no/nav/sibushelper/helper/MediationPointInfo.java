@@ -54,6 +54,22 @@ public class MediationPointInfo {
     }
 
     /**
+     * 
+     */
+    public MediationPointInfo()
+    {
+        medPointName = null;
+        state = null;
+        this.currentDepth = 0L;
+        this.highMessageThreshold = 0L;
+        this.sendAllowed = null;
+        this.id = null;
+        this.reason = null;
+        this.mBean = null;
+    }
+
+    
+    /**
      * @return
      */
     public String getName()
@@ -123,5 +139,61 @@ public class MediationPointInfo {
     public boolean isStarted()
     {
         return state.equals(MediationState.STARTED.toString());
-    }    
+    }
+
+	/**
+	 * @param currentDepth the currentDepth to set
+	 */
+	public void setCurrentDepth(Long currentDepth) {
+		this.currentDepth = currentDepth;
+	}
+
+	/**
+	 * @param highMessageThreshold the highMessageThreshold to set
+	 */
+	public void setHighMessageThreshold(Long highMessageThreshold) {
+		this.highMessageThreshold = highMessageThreshold;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param bean the mBean to set
+	 */
+	public void setMBean(ObjectName bean) {
+		mBean = bean;
+	}
+
+	/**
+	 * @param medPointName the medPointName to set
+	 */
+	public void setName(String medPointName) {
+		this.medPointName = medPointName;
+	}
+
+	/**
+	 * @param reason the reason to set
+	 */
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	/**
+	 * @param sendAllowed the sendAllowed to set
+	 */
+	public void setSendAllowed(Boolean sendAllowed) {
+		this.sendAllowed = sendAllowed;
+	}
+
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(String state) {
+		this.state = state;
+	}    
 }

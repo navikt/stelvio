@@ -39,8 +39,9 @@ public class MessageInfo  {
 	private String messageBodyType;
 	
 	private byte[] msgContent;
-	
 	private StringBuffer msgStringBuffer;
+	
+	private String status;
 	
 
 	/**
@@ -65,7 +66,7 @@ public class MessageInfo  {
 	 * @param messageBodyType
 	 * @param msgContent
 	 */
-	public MessageInfo(String systemMessageId, String apiMessageId, String correlationId, int approximateLength, String apiUserId, String sysUserId, Long currentTimestamp, Long currentMEArrivalTimestamp, Long currentMessageWaitTimestamp, String busName, Integer redeliveredCount, String reliability, String problemDestination, String origDestinationBus, String origDestination, String exceptionMessage, Long exceptionTimestamp, int exceptionReason, String messageType, String messageBodyType, byte[] msgContent) {
+	public MessageInfo(String systemMessageId, String apiMessageId, String correlationId, int approximateLength, String apiUserId, String sysUserId, Long currentTimestamp, Long currentMEArrivalTimestamp, Long currentMessageWaitTimestamp, String busName, Integer redeliveredCount, String reliability, String problemDestination, String origDestinationBus, String origDestination, String exceptionMessage, Long exceptionTimestamp, int exceptionReason, String messageType, String messageBodyType, byte[] msgContent, String status) {
 
 		this.systemMessageId = "";
 		this.apiMessageId = "";
@@ -89,6 +90,7 @@ public class MessageInfo  {
 		this.messageBodyType = "";
 		this.msgContent = null;
 		this.msgStringBuffer = null;
+		this.status = null;
 		
 		this.systemMessageId = systemMessageId;
 		this.apiMessageId = apiMessageId;
@@ -111,6 +113,7 @@ public class MessageInfo  {
 		this.messageType = messageType;
 		this.messageBodyType = messageBodyType;
 		this.msgContent = msgContent;
+		this.status = status;
 	}
 
 	/**
@@ -140,6 +143,7 @@ public class MessageInfo  {
 		this.messageBodyType = "";
 		this.msgContent = null;
 		this.msgStringBuffer = null;
+		this.status="";
 	}
 
 	
@@ -505,7 +509,21 @@ public class MessageInfo  {
 	public void setMsgStringBuffer(StringBuffer msgStringBuffer) {
 		this.msgStringBuffer = msgStringBuffer;
 	}
-	
+
+	/**
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -513,5 +531,6 @@ public class MessageInfo  {
 	{
 		return "MessageInfo@" + java.lang.Integer.toHexString(java.lang.System.identityHashCode(this)) + ": " + "{ ID=" + systemMessageId + ", busName=" + busName + ", API_ID=" + apiMessageId + ", correlationId=" + correlationId + ", approximateLength=" + approximateLength + ", messageType=" + messageType + ", messageBodyType=" + messageBodyType + ", apiUserId=" + apiUserId + ", sysUserId=" + sysUserId + ", redeliveredCount=" + redeliveredCount + ", currentTimestamp=" + currentTimestamp + ", currentMEArrivalTimestamp=" + currentMEArrivalTimestamp + ", currentMessageWaitTimestamp=" + currentMessageWaitTimestamp + ", reliability=" + reliability + ", problemDestination=" + problemDestination + ", origDestinationBus=" + origDestinationBus + ", exceptionMessage=" + exceptionMessage + ", exceptionTimestamp=" + exceptionTimestamp + ", exceptionReason=" + exceptionReason + ", message=" + msgStringBuffer + "}";
 	}
+
 	
 }

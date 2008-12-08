@@ -4,7 +4,9 @@
 package no.nav.sibushelper.helper;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -33,9 +35,13 @@ import com.ibm.ws.sib.mfp.JsJmsMessage;
 import com.ibm.ws.sib.mfp.JsJmsTextMessage;
 import com.ibm.wsspi.sib.core.BrowserSession;
 import com.ibm.wsspi.sib.core.ConsumerSession;
+import com.ibm.wsspi.sib.core.DestinationType;
+import com.ibm.wsspi.sib.core.OrderingContext;
+import com.ibm.wsspi.sib.core.ProducerSession;
 import com.ibm.wsspi.sib.core.SIBusMessage;
 import com.ibm.wsspi.sib.core.SICoreConnection;
 import com.ibm.wsspi.sib.core.SICoreConnectionFactory;
+import com.ibm.wsspi.sib.core.SIUncoordinatedTransaction;
 import com.ibm.wsspi.sib.core.SelectionCriteria;
 import com.ibm.wsspi.sib.core.SelectionCriteriaFactory;
 import com.ibm.wsspi.sib.core.SelectorDomain;
@@ -238,7 +244,7 @@ public class MessagingHelperImpl implements MessagingHelper {
         	   
         	   if(msg == null) 
         	   {
-        		   logger.logp(Level.INFO, className, "browseSingleMessage()", "NO MESSAGE FOUND for " + msgId);
+        		   logger.logp(Level.INFO, className, "browseSingleMessage()", "NO MESSAGE FOUND for selection criteria " + msgId);
         		   return null;
         	   }
         		   
@@ -269,7 +275,7 @@ public class MessagingHelperImpl implements MessagingHelper {
         		   
         		   // length + redelivery + reliability
         		   singlemesg.setApproximateLength(jmsmsg.getApproximateLength());
-        		   singlemesg.setRedeliveredCount(jmsmsg.getRedeliveredCount());
+        		   singlemesg.setRedeliveredCount(jmsmsg.getJmsxDeliveryCount());
         		   if (jmsmsg.getReliability() != null)
         			   singlemesg.setReliability(jmsmsg.getReliability().toString());
 	        		   
@@ -323,7 +329,7 @@ public class MessagingHelperImpl implements MessagingHelper {
         		   singlemesg.setBusName(busName);
 	        	   logger.logp(Level.SEVERE, className, "browseSingleMessage()", "Does not support this kind of message: " + msg.getSystemMessageId());
         	   }
-        	   logger.logp(Level.INFO, className, "browseSingleMessage()", singlemesg.getApiMessageId());
+        	   logger.logp(Level.FINE, className, "browseSingleMessage()", singlemesg.getApiMessageId());
 	           browserSession.close();
 		       conn.close();
        } catch (SIException e) {
@@ -394,7 +400,7 @@ public class MessagingHelperImpl implements MessagingHelper {
 	        		   
 	        		   // length + redelivery + reliability
 	        		   msginfo.setApproximateLength(jmsmsg.getApproximateLength());
-	        		   msginfo.setRedeliveredCount(jmsmsg.getRedeliveredCount());
+	        		   msginfo.setRedeliveredCount(jmsmsg.getJmsxDeliveryCount());
 	        		   if (jmsmsg.getReliability() != null)
 	        			   msginfo.setReliability(jmsmsg.getReliability().toString());
 	        		   
@@ -473,62 +479,16 @@ public class MessagingHelperImpl implements MessagingHelper {
 	    	   logger.logp(Level.FINE, className, "browseQueue()", "End browse queue " + queueName + " return: no message in queue");
 	       return browsedMsg;
 	}
-
-	
-	/**
-	 * @param busName
-	 * @param meName
-	 * @param queueName
-	 * @return
-	 * @throws MessagingOperationFailedException
-	 */
-	public int queueMessages(String busName, String meName, String queueName) throws MessagingOperationFailedException
-	{
-	       SICoreConnection conn=null;
-	       BrowserSession browserSession=null;
-	       int numberOfMessagesBrowsed=0;
-	       try {
-	    	   logger.logp(Level.FINE, className, "queueMessages()", "Connect to " + busName+":"+meName);
-	    	   conn = getConnectionToME(meName,busName);
-	    	   logger.logp(Level.FINE, className, "queueMessages()", "Connect to " + busName+":"+meName+ " done.");
-	    	   SIDestinationAddressFactory addrFact = SIDestinationAddressFactory.getInstance();
-	           com.ibm.websphere.sib.SIDestinationAddress addr = addrFact.createSIDestinationAddress(queueName, false);
-	           logger.logp(Level.FINE, className, "queueMessages()", "Start browse queue " + queueName);
-	           browserSession = conn.createBrowserSession(addr, null, null, null);
-	           do
-	           {
-	        	   SIBusMessage msg = browserSession.next();
-	        	   if(msg == null) break;
-	        	   numberOfMessagesBrowsed++;
-		           logger.logp(Level.FINE, className, "queueMessages()", "#" + numberOfMessagesBrowsed);
-	        	   
-              } while(true);
-	           browserSession.close();
-		       conn.close();
-	       } catch (SIException e) {
-				try 
-				{
-					if (browserSession!= null)	browserSession.close();
-					if (conn!= null) conn.close();
-					
-				} catch (Exception e1) {}
-				logger.logp(Level.SEVERE, className, "queueMessages()", Constants.METHOD_ERROR + e.getMessage());
-				e.printStackTrace();
-				throw new MessagingOperationFailedException(e);
-	       }	
-    	   logger.logp(Level.FINE, className, "queueMessages()", "End browse queue " + queueName + " return queueMessages #" + numberOfMessagesBrowsed);
-	       return numberOfMessagesBrowsed;
-	}
 	
 	/* (non-Javadoc)
 	 * @see no.nav.sibushelper.helper.MessagingHelper#clearQueue(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public int clearQueue(String busName, String meName, String queueName) throws MessagingOperationFailedException, DestinationNotFoundException 
+	public long clearQueue(String busName, String meName, String queueName, String msgSelector, long maxMesg) throws MessagingOperationFailedException, DestinationNotFoundException 
 	{
-		int ret=0;
+		long ret=0;
 		try
         {
-            ret = _clearQueue(busName, meName, queueName);
+            ret = _clearQueue(busName, meName, queueName, msgSelector, maxMesg);
         }
         catch(SIException e)
         {
@@ -540,18 +500,233 @@ public class MessagingHelperImpl implements MessagingHelper {
         return ret;
 	}
 
-	public int moveToQueue(String s, String s1, String s2)
-			throws MessagingOperationFailedException {
-		// TODO Auto-generated method stub
-		return 0;
+	/**
+	 * @param busName
+	 * @param meName
+	 * @param srcQueue
+	 * @param trgQueue
+	 * @param msgSelector
+	 * @return
+	 */
+	public long moveMessages(String busName, String meName, String srcQueue, String trgQueue, String msgSelector, long maxMessages) {
+		
+		SICoreConnection conn=null;
+		ConsumerSession consumerSession=null;
+		ProducerSession producerSession=null;
+		SIUncoordinatedTransaction trans=null;
+		SelectionCriteria seCrit=null;
+		long numberOfMessagesMoved=1;
+		
+		if (msgSelector!=null)
+		{	
+			msgSelector = "JMSMessageID = 'ID:" + msgSelector + "'";
+			SelectionCriteriaFactory selcFact =  SelectionCriteriaFactory.getInstance();
+			seCrit = selcFact.createSelectionCriteria(null, msgSelector, SelectorDomain.JMS);
+		}
+	    try {
+	    		conn = getConnectionToME(meName,busName);
+	    		boolean enableReadAhead = false;
+	            boolean noLocal = false;
+	            boolean deliverImmediately = true;
+	            Reliability unrecoverableReliability = null;
+	    		SIDestinationAddressFactory addrFact = SIDestinationAddressFactory.getInstance();
+	    		SIDestinationAddress srcaddr = addrFact.createSIDestinationAddress(srcQueue, true);
+	    		consumerSession = conn.createConsumerSession(srcaddr, null, seCrit, null, enableReadAhead, noLocal, unrecoverableReliability, false, null);
+	    		SIDestinationAddress trgaddr = addrFact.createSIDestinationAddress(trgQueue, true);
+	    		producerSession = conn.createProducerSession(trgaddr, null, null, null);
+	    		consumerSession.start(deliverImmediately);
+				do
+				{
+					trans = conn.createUncoordinatedTransaction(false);
+					SIBusMessage msg = consumerSession.receiveNoWait(trans);
+					if(msg == null)
+						break;
+					producerSession.send(msg, trans);
+					if (numberOfMessagesMoved > maxMessages)
+					{	
+						trans.rollback();
+						numberOfMessagesMoved--;
+						logger.logp(Level.WARNING, className, "moveMessages", "During moving of messages new messages arrived on queue " + srcQueue + " but only moved the snapshot selected message number of #" + numberOfMessagesMoved);
+						break;
+					}
+					numberOfMessagesMoved++;
+					trans.commit();
+					
+				} while(true);
+				
+				consumerSession.stop();
+				consumerSession.close();
+				producerSession.close();
+				conn.close();
+			
+	       } catch (SIException e) {
+	    	   	logger.logp(Level.SEVERE, className, "moveExceptionToDestination()", Constants.METHOD_ERROR + e.getMessage());	
+	    	   	e.printStackTrace();
+	    	   	try 
+				{
+	    	   		trans.rollback();
+	    	   		if (consumerSession!= null)	consumerSession.close();
+					if (producerSession!= null)	producerSession.close();
+					if (conn!= null) conn.close();
+				} catch (Exception e1) {}
+				
+				return numberOfMessagesMoved;
+	       }	
+    	logger.logp(Level.FINE, className, "moveExceptionToDestination()", "End moveToQueue " + " return moveToQueue #" + numberOfMessagesMoved);
+		return numberOfMessagesMoved;
 	}
 
-	public void putTestMessage(String s, String s1, String s2, String s3)
-			throws MessagingOperationFailedException {
-		// TODO Auto-generated method stub
+	/**
+	 * @param busName
+	 * @param meName
+	 * @param seQueue
+	 * @param msgSelector
+	 * @return
+	 * @throws ClassNotFoundException 
+	 * @throws IOException 
+	 */
+	public List<MessageInfo> moveExceptionToDestination(String busName, String meName, String seQueue, String msgSelector, long maxMessages) 
+	{
+		SICoreConnection conn=null;
+		ConsumerSession consumerSession=null;
+		ProducerSession producerSession=null;
+		SIUncoordinatedTransaction trans=null;
+		SelectionCriteria seCrit=null;
+		List<MessageInfo> movedMsg = new ArrayList<MessageInfo>();
+		long numberOfMessagesMoved=0;
+		long numberOfMessages=1;
+		
+		if (msgSelector!=null)
+		{	
+			msgSelector = "JMSMessageID = 'ID:" + msgSelector + "'";
+			SelectionCriteriaFactory selcFact =  SelectionCriteriaFactory.getInstance();
+			seCrit = selcFact.createSelectionCriteria(null, msgSelector, SelectorDomain.JMS);
+		}
+	    try {
+	    		conn = getConnectionToME(meName,busName);
+	    		SIDestinationAddressFactory addrFact = SIDestinationAddressFactory.getInstance();
+	    		SIDestinationAddress srcaddr = addrFact.createSIDestinationAddress(seQueue, true);
+	    		
+	    		boolean enableReadAhead = true;
+	            boolean noLocal = false;
+	            boolean deliverImmediately = true;
+	            Reliability unrecoverableReliability = null;
+	    		consumerSession = conn.createConsumerSession(srcaddr, null, seCrit, null, enableReadAhead, noLocal, unrecoverableReliability, false, null);
+	    		consumerSession.start(deliverImmediately);
+				do
+				{
+					trans = conn.createUncoordinatedTransaction(false);
+					
+					SIBusMessage msg = consumerSession.receiveNoWait(trans);
+					if(msg == null) 
+						break;
+					
+					if (numberOfMessages > maxMessages)
+					{	
+						trans.rollback();
+						numberOfMessages--;
+						logger.logp(Level.WARNING, className, "moveMessages", "During moving of messages new messages arrived on queue " + seQueue + " but only moved the snapshot selected message number of #" + numberOfMessages);
+						break;
+					}
+					
+					MessageInfo singlemesg = _setMessageInfo(msg, busName);
+					
+					// getRedeliveryCount -> base on the real header which you can't set or on the user prop if we touch first time 
+					int redcnt = singlemesg.getRedeliveredCount();
+		    		JsJmsMessage jsmsg = (JsJmsMessage) msg;
+		    		// check if we have set our footprint insside, because setting of Message RedeliveryCount seems not to work
+		    		Serializable prop = jsmsg.getUserProperty(Constants.JS_SIBHELP_REDELIVERY);
+    				if (prop != null)
+    				{	
+    					redcnt = new Integer(prop.toString());
+    					logger.logp(Level.INFO, className, "moveToQueue()", "RedeliveryCount for message " + singlemesg.getApiMessageId() + " determined from SIBUSHelper jms property " + Constants.JS_SIBHELP_REDELIVERY + " current value #" + redcnt);
+    				}
+    				else
+    				{	
+    					logger.logp(Level.INFO, className, "moveToQueue()", "RedeliveryCount for message " + singlemesg.getApiMessageId() + " determined from message header and current value #" + redcnt);
+    				}	
+					
+    				// set the right redelivery count
+    				singlemesg.setRedeliveredCount(redcnt);
+    				
+					if (redcnt > Constants.JS_MAX_REDELIVERY)
+					{	
+						logger.logp(Level.WARNING, className, "moveToQueue()", "Skipping Message " + singlemesg.getApiMessageId() + " due to that redelivery was done more than " +  Constants.JS_MAX_REDELIVERY +" times");
+						singlemesg.setStatus("NOT DONE - Skipped due to that message redelivery count > " +  Constants.JS_MAX_REDELIVERY + " - ACTION: SOA Operator (Report and delete afterwards)");
+						trans.rollback();
+					}
+					// we don't know where to forward
+					else if (singlemesg.getProblemDestination().equals(""))
+					{
+						logger.logp(Level.WARNING, className, "moveToQueue()", "Skipping Message " + singlemesg.getApiMessageId() + " due to that message doesn't include the original message destination.");
+						singlemesg.setStatus("NOT DONE - Skipped due to that message doesn't include the original message destination - ACTION: SOA operator (Report and delete afterwards)");
+						trans.rollback();
+					}
+					// message queuepoint was deleted and therfore we don't reply the message
+					else if (singlemesg.getExceptionMessage().indexOf("deleted") > 1)
+					{
+						logger.logp(Level.WARNING, className, "moveToQueue()", "Skipping Message " + singlemesg.getApiMessageId() + " due to that message queue point was deleted");
+						singlemesg.setStatus("NOT DONE - Skipped due to that message queue point was deleted - ACTION: SOA operator (Report and delete afterwards)");
+						trans.rollback();
+					}
+					else
+					{	
+						singlemesg.setStatus("NOT DONE - IN PROGRESS");
+						SIDestinationAddress trgaddr = addrFact.createSIDestinationAddress(singlemesg.getOrigDestination(), true);
+						DestinationType producerDestinationType = DestinationType.QUEUE;
+				        OrderingContext orderingContext = null;
+				        String alternateUser = null;
+			    		producerSession = conn.createProducerSession(trgaddr, producerDestinationType, orderingContext, alternateUser);
+			    		
+			    		if (redcnt > 0)
+			    		{	
+			    			jsmsg.clearProperties();
+			    			redcnt++;
+			    			jsmsg.setObjectProperty(Constants.JS_SIBHELP_REDELIVERY, redcnt);
+						}
 
+						producerSession.send((SIBusMessage) jsmsg, trans);
+						singlemesg.setStatus("DONE");
+						numberOfMessagesMoved++;
+						trans.commit();
+					}
+					numberOfMessages++;
+					movedMsg.add(singlemesg);
+				} while(true);
+
+				
+				if (consumerSession != null)
+				{
+					consumerSession.stop();
+					consumerSession.close();					
+				}
+
+				
+				if (producerSession != null)
+					producerSession.close();
+				
+				if (conn != null)
+					conn.close();
+			
+	       } catch (Exception e) {
+	    	   	logger.logp(Level.SEVERE, className, "moveExceptionToDestination()", Constants.METHOD_ERROR + e.getMessage());	
+	    	   	e.printStackTrace();
+	    	   	try 
+				{
+					trans.rollback();
+	    	   		if (consumerSession!= null)	consumerSession.close();
+					if (producerSession!= null)	producerSession.close();
+					if (conn!= null) conn.close();
+				} catch (Exception e1) {}
+				
+				return movedMsg;
+	       }	
+	       logger.logp(Level.FINE, className, "moveExceptionToDestination()", "End moveToQueue " + " return moveToQueue #" + numberOfMessagesMoved);
+	       return movedMsg;
 	}
-
+	
+	
+	
 	/**
 	 * formatJMSMessage
 	 * 
@@ -712,42 +887,154 @@ public class MessagingHelperImpl implements MessagingHelper {
      * @return
      * @throws MessagingOperationFailedException
      */
-    private int _clearQueue(String busName, String meName, String queueName) throws SIException
+    private long _clearQueue(String busName, String meName, String queueName, String msgId, long maxMessages) throws SIException
     {
     	SICoreConnection conn=null;
     	ConsumerSession consumerSession=null;
-    	int numberOfMessagesCleared=0;
+    	long numberOfMessagesCleared=1;
+    	SIUncoordinatedTransaction trans=null;
+    	String msgSelector = "JMSMessageID = 'ID:" + msgId + "'";
+    	SelectionCriteria seCrit=null;
+    	
     	logger.logp(Level.FINE, className, "_clearQueue", "{ busName=" + busName + ", meName=" + meName + ", queueName=" + queueName + "}");
     	try {
 			conn = getConnectionToME(meName, busName);
 			numberOfMessagesCleared = 0;
 			SIDestinationAddressFactory addrFact = SIDestinationAddressFactory.getInstance();
 			SIDestinationAddress addr = addrFact.createSIDestinationAddress(queueName, false);
-			consumerSession = conn.createConsumerSession(addr, null, null, null, true, false, Reliability.ASSURED_PERSISTENT, false, null);
-			consumerSession.start(false);
+	        SelectionCriteriaFactory selcFact =  SelectionCriteriaFactory.getInstance();
+	        
+	        if (msgId!=null)
+	        	seCrit = selcFact.createSelectionCriteria(null, msgSelector, SelectorDomain.JMS);
+	
+    		boolean enableReadAhead = true;
+            boolean noLocal = false;
+            boolean deliverImmediately = true;
+            Reliability unrecoverableReliability = null;
+    		consumerSession = conn.createConsumerSession(addr, null, seCrit, null, enableReadAhead, noLocal, unrecoverableReliability, false, null);
+			consumerSession.start(deliverImmediately);
 			do
 			{
-				SIBusMessage msg = consumerSession.receiveWithWait(null, 1000L);
+				trans = conn.createUncoordinatedTransaction(false);
+				SIBusMessage msg = consumerSession.receiveNoWait(trans);
 				if(msg == null)
 					break;
+				if (numberOfMessagesCleared > maxMessages)
+				{	
+					trans.rollback();
+					numberOfMessagesCleared--;
+					logger.logp(Level.WARNING, className, "_clearQueue", "During deletion of messages new messages arrived on queue " + queueName + " but only deleted the snapshot selected message number of #" + numberOfMessagesCleared);
+					break;
+				}
 				numberOfMessagesCleared++;
+				trans.commit();
+				logger.logp(Level.FINE, className, "_clearQueue", "Deleted # " + numberOfMessagesCleared);				
 			} while(true);
+			consumerSession.stop();
 			consumerSession.close();
 			conn.close();
 		} catch (SIException e) {
 			try 
 			{
+				trans.rollback();
 				if (consumerSession!= null)	consumerSession.close();
 				if (conn!= null) conn.close();
 					
 			} catch (Exception e1){}
 			logger.logp(Level.SEVERE, className, "_clearQueue()", Constants.METHOD_ERROR + e.getMessage());
 			e.printStackTrace();
+	/*
 			throw new SIException(e){
 				private static final long serialVersionUID = -1602574733872920210L;};
-			}
-    	logger.logp(Level.FINE, className, "_clearQueue()", new Integer(numberOfMessagesCleared).toString());
+	*/
+	    	logger.logp(Level.FINE, className, "_clearQueue()", new Long(numberOfMessagesCleared).toString());
+	    	return numberOfMessagesCleared;
+		}
+    	logger.logp(Level.FINE, className, "_clearQueue()", new Long(numberOfMessagesCleared).toString());
     	return numberOfMessagesCleared;
     }
 	
+    
+    /**
+     * @param msg
+     * @param busName
+     * @return
+     */
+    private MessageInfo _setMessageInfo(SIBusMessage msg, String busName)
+    {
+    	MessageInfo singlemesg = new MessageInfo(); 
+    	if (msg instanceof JsJmsMessage) 
+    	{
+		   JsJmsMessage jmsmsg = (JsJmsMessage) msg;
+    		   
+		   // basics
+		   singlemesg.setApiMessageId(jmsmsg.getApiMessageId());
+		   singlemesg.setSystemMessageId(jmsmsg.getSystemMessageId());
+		   singlemesg.setCorrelationId(jmsmsg.getCorrelationId());
+		   singlemesg.setApiUserId(jmsmsg.getApiUserId());
+		   singlemesg.setSysUserId(jmsmsg.getSecurityUserid());
+		   
+		   // type
+		   singlemesg.setBusName(busName);
+		   if (jmsmsg.getJsMessageType() != null)
+			   singlemesg.setMessageType(jmsmsg.getJsMessageType().toString());
+		   JmsBodyType bdtype = jmsmsg.getBodyType();
+		   if (bdtype != null)
+			   singlemesg.setMessageBodyType(bdtype.toString());
+    		   
+		   // exception
+		   singlemesg.setExceptionMessage(jmsmsg.getExceptionMessage());
+		   singlemesg.setExceptionReason(jmsmsg.getExceptionReason());
+		   singlemesg.setExceptionTimestamp(jmsmsg.getExceptionTimestamp());
+		   
+		   // length + redelivery + reliability
+		   singlemesg.setApproximateLength(jmsmsg.getApproximateLength());
+		   singlemesg.setRedeliveredCount(jmsmsg.getJmsxDeliveryCount());
+		   if (jmsmsg.getReliability() != null)
+			   singlemesg.setReliability(jmsmsg.getReliability().toString());
+    		   
+		   // timing
+		   singlemesg.setCurrentMEArrivalTimestamp(jmsmsg.getCurrentMEArrivalTimestamp());
+		   singlemesg.setCurrentMessageWaitTimestamp(jmsmsg.getMessageWaitTime());
+		   singlemesg.setCurrentTimestamp(jmsmsg.getTimestamp());
+
+		   // routing path for re-send
+		   singlemesg.setProblemDestination(jmsmsg.getExceptionProblemDestination());
+		   if (jmsmsg.getExceptionInserts() != null)
+           {
+        	   String[] detail = jmsmsg.getExceptionInserts();
+        	   // queue and busname is delivered on the last elements
+        	   int posDest=0;
+        	   int posBus=1;
+
+        	   if (detail.length > 2) {
+        		   posBus = detail.length;
+        		   posDest = detail.length-1;
+        	   }
+        	   for(int y = 0; y < detail.length; y++)
+        	   {
+        		   
+        		   if (posDest == y) {
+        		   		// queue point
+        		   		singlemesg.setOrigDestination(detail[y]);
+        		   }
+        		   if (posBus == y) {
+        			   	// bus
+        		   		singlemesg.setOrigDestinationBus(detail[y]);
+        		   }
+            	}
+             }
+    		   
+		   // content
+		   StringBuffer data = new StringBuffer();
+		   formatMessage(data, jmsmsg, "");
+		   singlemesg.setMsgStringBuffer(data);
+	   }
+	   else 
+	   {
+		   singlemesg.setSystemMessageId(msg.getSystemMessageId());
+		   singlemesg.setBusName(busName);
+	   }
+    	return singlemesg;
+    }
 }

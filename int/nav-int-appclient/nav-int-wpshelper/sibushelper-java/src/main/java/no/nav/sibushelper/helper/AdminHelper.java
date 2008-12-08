@@ -317,61 +317,6 @@ public class AdminHelper {
 
     /**
      * @param meName
-     * @param greaterzero
-     * @return
-     * @throws MalformedObjectNameException
-     * @throws InstanceNotFoundException
-     * @throws ReflectionException
-     * @throws ConnectorException
-     */
-    public List getQueuePoints(String meName, boolean greaterzero) throws MalformedObjectNameException, InstanceNotFoundException, ReflectionException, ConnectorException
-    {
-    	logger.logp(Level.FINE, className, "getQueuePoints",  meName);
-    	ObjectName queuePoints = new ObjectName("WebSphere:type=SIBQueuePoint,SIBMessagingEngine=" + meName + ",*");
-    	Set queueNameSet = ac.queryNames(queuePoints, null);
-    	ArrayList<QueuePointInfo> queueList = new ArrayList<QueuePointInfo>();
-    	Long depth;
-    	String state;
-    	String id;
-    	Long highMessageThreshold;
-    	Boolean sendAllowed;
-    	String name;
-    	Iterator i = queueNameSet.iterator();
-    	while (i.hasNext())
-    	{
-    		ObjectName obj = (ObjectName)i.next();
-    		logger.logp(Level.FINE, className, "getQueuePoints", "Found Queue M-Bean:", obj);
-    		AttributeList attribList = ac.getAttributes(obj, new String[] { "depth", "state", "id", "highMessageThreshold", "sendAllowed"});
-    		depth = null;
-    		state = "";
-    		id = "";
-    		highMessageThreshold = null;
-    		sendAllowed = null;
-    		name = obj.getKeyProperty("name");
-    		for(Iterator j = attribList.iterator(); j.hasNext();)
-    		{
-    			Attribute a = (Attribute)j.next();
-    			if(a.getName().equals("depth")) depth = (Long)a.getValue();
-    			else
-    			if(a.getName().equals("state"))	state = (String)a.getValue();
-    			else
-    			if(a.getName().equals("id")) id = (String)a.getValue();
-    			else
-    			if(a.getName().equals("highMessageThreshold")) highMessageThreshold = (Long)a.getValue();
-    			else
-    			if(a.getName().equals("sendAllowed")) sendAllowed = (Boolean)a.getValue();
-    		}
-    		if (greaterzero && depth > 0) 
-    			queueList.add(new QueuePointInfo(name, depth, state, highMessageThreshold, sendAllowed, id));
-    	}
-    	
-    	logger.logp(Level.FINE, className, "getQueuePoints", new Integer(queueList.size()).toString());
-    	return queueList;
-    }
-    
-  
-    /**
-     * @param meName
      * @param queuePoint
      * @return
      * @throws MalformedObjectNameException
@@ -429,8 +374,6 @@ public class AdminHelper {
     	return queuePoint;
     }
 
-    
-    
     /**
      * @param busName
      * @return
@@ -438,7 +381,7 @@ public class AdminHelper {
      * @throws ConnectorException
      * @throws MalformedObjectNameException
      */
-    public List getDestinations(String busName)  throws ConfigServiceException, ConnectorException, MalformedObjectNameException
+    public List <DestinationInfo> getDestinations(String busName)  throws ConfigServiceException, ConnectorException, MalformedObjectNameException
     {
     	Set queuePointsSet;
     	Set mediationPointsSet;
@@ -446,17 +389,20 @@ public class AdminHelper {
     	ArrayList<DestinationInfo> destList;
     	Session session;
     	logger.logp(Level.FINE, className, "getDestinations", busName);
+    	destList = new ArrayList<DestinationInfo>();
+    	session = getConfigSession();
+    	ObjectName scopeArray[] = configService.resolve(session, "SIBus=" + busName);
+    	if(scopeArray.length != 1)
+    		throw new ConfigServiceException("Bus " + busName + " not found in the configuration");
+
     	ObjectName queuePointsObjs = new ObjectName("WebSphere:type=SIBQueuePoint,*");
     	queuePointsSet = ac.queryNames(queuePointsObjs, null);
     	ObjectName mediationPointsObjs = new ObjectName("WebSphere:type=SIBMediationPoint,*");
     	mediationPointsSet = ac.queryNames(mediationPointsObjs, null);
     	ObjectName publicationPointsObjs = new ObjectName("WebSphere:type=SIBPublicationPoint,*");
     	publicationPointsSet = ac.queryNames(publicationPointsObjs, null);
-    	destList = new ArrayList<DestinationInfo>();
-    	session = getConfigSession();
-    	ObjectName scopeArray[] = configService.resolve(session, "SIBus=" + busName);
-    	if(scopeArray.length != 1)
-    		throw new ConfigServiceException("Bus " + busName + " not found in the configuration");
+
+    	
     	ObjectName pattern = ConfigServiceHelper.createObjectName(null, "SIBAbstractDestination");
     	ObjectName destConfig[] = configService.queryConfigObjects(session, scopeArray[0], pattern, null);
 
@@ -510,6 +456,102 @@ public class AdminHelper {
         return destList;
     }
 
+    
+    /**
+     * @param busName
+     * @return
+     * @throws ConfigServiceException
+     * @throws ConnectorException
+     * @throws MalformedObjectNameException
+     */
+    public List <DestinationInfo>  getDestinations(String busName, String queuename)  throws ConfigServiceException, ConnectorException, MalformedObjectNameException
+    {
+    	Set queuePointsSet;
+    	Set mediationPointsSet;
+    	Set publicationPointsSet;
+    	ArrayList<DestinationInfo> destList;
+    	Session session;
+    	boolean stopIterate = false;
+    	logger.logp(Level.FINE, className, "getDestinations", busName);
+    	destList = new ArrayList<DestinationInfo>();
+    	session = getConfigSession();
+    	ObjectName scopeArray[] = configService.resolve(session, "SIBus=" + busName);
+    	if(scopeArray.length != 1)
+    		throw new ConfigServiceException("Bus " + busName + " not found in the configuration");
+
+    	ObjectName queuePointsObjs = new ObjectName("WebSphere:name=" + queuename + ",type=SIBQueuePoint,*");
+    	queuePointsSet = ac.queryNames(queuePointsObjs, null);
+    	ObjectName mediationPointsObjs = new ObjectName("WebSphere:type=SIBMediationPoint,*");
+    	mediationPointsSet = ac.queryNames(mediationPointsObjs, null);
+    	ObjectName publicationPointsObjs = new ObjectName("WebSphere:type=SIBPublicationPoint,*");
+    	publicationPointsSet = ac.queryNames(publicationPointsObjs, null);
+    	
+    	// use of quename doesn't work DisplayName therfore we have to get all queues
+    	ObjectName pattern = ConfigServiceHelper.createObjectName(null, "SIBAbstractDestination", null);
+    	//ObjectName destConfig[] = configService.queryConfigObjects(session, scopeArray[0], pattern, null);
+    	
+    	//QueryExp query = Query.eq(Query.attr("identifier"), Query.value(queuename));
+    	//ObjectName destConfig[] = configService.queryConfigObjects(session, scopeArray[0], pattern, query);
+    	ObjectName destConfig[] = configService.queryConfigObjects(session, scopeArray[0], pattern, null);
+
+    	for(int x = 0; x < destConfig.length; x++)
+    	{
+    		String type = destConfig[x].getKeyProperty("_Websphere_Config_Data_Type");
+    		AttributeList attribList = configService.getAttributes(session, destConfig[x], new String[] {"identifier", "description", "uuid"}, false);
+    		String destName = (String)((Attribute)attribList.get(0)).getValue();
+    		String description = (String)((Attribute)attribList.get(1)).getValue();
+    		String destUuid = (String)((Attribute)attribList.get(2)).getValue();
+    		String targetIdentifier = null;
+    		String targetBus = null;
+    		
+    		if (destName.equalsIgnoreCase(queuename))
+    			stopIterate = true;
+    		
+    		if(type.equals("SIBDestinationAlias"))
+    		{
+    			AttributeList attribList2 = configService.getAttributes(session, destConfig[x], new String[] {"targetIdentifier", "targetBus"}, false);
+    			targetIdentifier = (String)((Attribute)attribList2.get(0)).getValue();
+    			targetBus = (String)((Attribute)attribList2.get(1)).getValue();
+    		}
+    		
+    		
+    		DestinationInfo destInfo = new DestinationInfo(destName, type, description, destUuid, targetIdentifier, targetBus);
+    		for(Iterator i = queuePointsSet.iterator(); i.hasNext();)
+    		{
+    			ObjectName objName = (ObjectName)i.next();
+    			if(objName.getKeyProperty("name").equals(destName) && objName.getKeyProperty("SIBus").equals(busName))
+    				//destInfo.addQueuePoint(objName.getKeyProperty("name") + "@" + objName.getKeyProperty("SIBMessagingEngine"));
+    				destInfo.addQueuePoint(objName.getKeyProperty("name"));
+    		}
+
+    		for(Iterator i = mediationPointsSet.iterator(); i.hasNext();)
+    		{
+    			ObjectName objName = (ObjectName)i.next();
+    			if(objName.getKeyProperty("name").equals(destName) && objName.getKeyProperty("SIBus").equals(busName))
+    				//destInfo.addMediationPoint(objName.getKeyProperty("name") + "@" + objName.getKeyProperty("SIBMessagingEngine"));
+    				destInfo.addMediationPoint(objName.getKeyProperty("name"));
+    		}
+
+    		for(Iterator i = publicationPointsSet.iterator(); i.hasNext();)
+    		{
+    			ObjectName objName = (ObjectName)i.next();
+    			if(objName.getKeyProperty("name").equals(destName) && objName.getKeyProperty("SIBus").equals(busName))
+    				//destInfo.addPublicationPoint(objName.getKeyProperty("name") + "@" + objName.getKeyProperty("SIBMessagingEngine"));
+    				destInfo.addPublicationPoint(objName.getKeyProperty("name"));
+    		}
+    		
+    		if (stopIterate)
+    		{	
+    			destList.add(destInfo);
+    			break;
+    		}	
+    	}
+
+    	logger.logp(Level.FINE, className, "getDestinations", new Integer(destList.size()).toString());
+        return destList;
+    }
+    
+    
     /**
      * @param meName
      * @return
@@ -552,6 +594,58 @@ public class AdminHelper {
         return medPointList;
     }
 
+    /**
+     * @param meName
+     * @return
+     * @throws MalformedObjectNameException
+     * @throws InstanceNotFoundException
+     * @throws MBeanException
+     * @throws ReflectionException
+     * @throws ConnectorException
+     */
+    public MediationPointInfo getMediationPoints(String meName, String medname) throws MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException
+    {
+    	logger.logp(Level.FINE, className, "getMediationPoints", meName);
+    	ObjectName medPoints = new ObjectName("WebSphere:name=" + medname + ",type=SIBMediationPoint,SIBMessagingEngine=" + meName + ",*");
+    	Set medPointNameSet = ac.queryNames(medPoints, null);
+    	MediationPointInfo medPointInfo = new MediationPointInfo();
+    	ObjectName obj;
+    	String state;
+    	String id;
+    	Long highMessageThreshold;
+    	Boolean sendAllowed;
+    	Long currentDepth;
+    	String reason;
+    	String name;
+    	Iterator i = medPointNameSet.iterator();
+    	while (i.hasNext())
+    	{
+    		obj = (ObjectName)i.next();
+    		logger.logp(Level.FINE, className,"getMediationPoints", "Found Mediation M-Bean:", obj);
+    		AttributeList attribList = ac.getAttributes(obj, new String[] {"currentState", "id", "highMessageThreshold", "sendAllowed", "depth"});
+    		state = (String)((Attribute)attribList.get(0)).getValue();
+    		id = (String)((Attribute)attribList.get(1)).getValue();
+    		highMessageThreshold = (Long)((Attribute)attribList.get(2)).getValue();
+    		sendAllowed = (Boolean)((Attribute)attribList.get(3)).getValue();
+    		currentDepth = null;
+    		if(attribList.size() == 5)
+    			currentDepth = (Long)((Attribute)attribList.get(4)).getValue();
+    		reason = (String)ac.invoke(obj, "getReason", null, null);
+    		name = obj.getKeyProperty("name");
+    		
+    		medPointInfo.setId(id);
+    		medPointInfo.setHighMessageThreshold(highMessageThreshold);
+    		medPointInfo.setReason(reason);
+    		medPointInfo.setName(name);
+    		medPointInfo.setCurrentDepth(currentDepth);
+    		medPointInfo.setState(state);
+    		medPointInfo.setSendAllowed(sendAllowed);
+    	}
+    	logger.logp(Level.FINE, className, "getMediationPoints", "Done");
+        return medPointInfo;
+    }
+    
+    
     
     /**
      * @param meName
