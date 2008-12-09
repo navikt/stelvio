@@ -2441,6 +2441,27 @@ incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/gbo/GBOTestProcRequest.
 incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/inf/TestProc.wsdl -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-bproc-pen-testProc/sca.module -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/sca.modulex -text
+incubator/nav-int-testproc/nav-lib-test/.classpath -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/.project -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.wst.common.component -text
+incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultFeilStatusForVedtak.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultStatusForVedtakAlleredeSatt.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultVedtakIkkeFunnet.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOHentVedtakListeRequest.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOHentVedtakRequest.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOLagreVedtakStatusRequest.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOTestProcRequest.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOVedtak.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOVedtakListe.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/TestProc.wsdl -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/Vedtak.wsdl -text svneol=unset#text/plain
 incubator/release-test/nav-int-appclient-bpchelper-ear/META-INF/application.xml -text
 incubator/release-test/nav-int-appclient-bpchelper-ear/pom.xml -text
 incubator/release-test/nav-int-appclient-bpchelper-java/.classpath -text
