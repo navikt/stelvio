@@ -20,7 +20,17 @@ public class Constants {
 	public static final String ACTION_MOVE = "MOVE";
 	public static final String ACTION_STATUS = "STATUS";
 
+	/*
+	 * COMPONENT Options
+	 */
+	public static final String HELPER_COMPONENT_SERVER = "server";
+	public static final String HELPER_COMPONENT_BUS = "sibus";
+	public static final String HELPER_COMPONENT_MQLINK = "wmqlink";
+	public static final String HELPER_COMPONENT_QUEUE = "queue";
+
+	
 	public static final List<String> ACTIONS = Arrays.asList(ACTION_REPORT, ACTION_DISCARD, ACTION_RESUBMIT, ACTION_MOVE,ACTION_STATUS);
+	public static final List<String> COMPONENTS = Arrays.asList(HELPER_COMPONENT_SERVER, HELPER_COMPONENT_BUS, HELPER_COMPONENT_MQLINK, HELPER_COMPONENT_QUEUE);
 
 	/**
 	 * Public constant to represent the formatter pattern to be used together
@@ -37,14 +47,6 @@ public class Constants {
 	public static String DEFAULT_DATE_FORMAT_TZ = "dd-MM-yyyy HH:mm:ss:SSS zzz";
 	public static final int MAX_MOVE = 50;
 	public static final String FILE_PREFIX = "LOG";
-	
-	/*
-	 * COMPONENT Options
-	 */
-	public static final String HELPER_COMPONENT_SERVER = "server";
-	public static final String HELPER_COMPONENT_BUS = "sibus";
-	public static final String HELPER_COMPONENT_MQLINK = "wmqlink";
-	public static final String HELPER_COMPONENT_QUEUE = "queue";
 		
 	/**
 	 * SIBUS internal properties we need to get it work 

@@ -48,6 +48,13 @@ public class ArgumentValidator {
 			result.add(actionValidationMessage);
 		}
 
+		// component
+		String component = cl.getOptionValue(CommandOptions.component);
+		String componentValidationMessage = validateComponent(component);
+		if (!"".equals(componentValidationMessage)) {
+			result.add(componentValidationMessage);
+		}
+		
 		// timeFrame is validated againts the '-' separator,
 		// and the date values on both sides are validated against the pattern.
 		String timeFrame = cl.getOptionValue(CommandOptions.timeFrame);
@@ -91,6 +98,23 @@ public class ArgumentValidator {
 		return validationMessage;
 	}
 
+	
+	/**
+	 * @param action
+	 * @return
+	 */
+	private String validateComponent(String component) {
+		String validationMessage = "";
+		if (StringUtils.isEmpty(component)) {
+			validationMessage = "Property " + CommandOptions.component + " is missing or empty";
+		} else {
+			if (!Constants.COMPONENTS.contains(component)) {
+				validationMessage = "Property " + CommandOptions.component + " value supplied is not a valid option.";
+			}
+		}
+		return validationMessage;
+	}
+	
 	/**
 	 * @param logFilePath
 	 */
