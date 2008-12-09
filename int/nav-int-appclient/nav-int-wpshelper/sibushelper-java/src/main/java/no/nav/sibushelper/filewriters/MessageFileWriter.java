@@ -42,8 +42,14 @@ public class MessageFileWriter extends AbstractFileWriter {
 	public MessageFileWriter(String path, String filename) throws IOException {
 		if (StringUtils.isEmpty(path)) {
 			String tempFolderProperty = "java.io.tmpdir";
-			String tempFolder = System.getProperty(tempFolderProperty);
-			path = tempFolder;
+			String userFolderProperty = "user.dir";
+			String userFolder = System.getProperty(userFolderProperty);
+			if (StringUtils.isEmpty(userFolder))
+			{
+				userFolder = System.getProperty(tempFolderProperty);
+			}
+			
+			path = userFolder;
 		}
 		String completePath = path + File.separatorChar + filename;
 		LOGGER.log(Level.FINE, "Creating instance of BufferedWriter with path: " + completePath);
