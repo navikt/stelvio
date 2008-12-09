@@ -572,7 +572,7 @@ public class MessagingHelperImpl implements MessagingHelper {
 					if (producerSession!= null)	producerSession.close();
 					if (conn!= null) conn.close();
 				} catch (Exception e1) {}
-				
+				numberOfMessagesMoved--;
 				return numberOfMessagesMoved;
 	       }	
     	logger.logp(Level.FINE, className, "moveExceptionToDestination()", "End moveToQueue " + " return moveToQueue #" + numberOfMessagesMoved);
@@ -957,6 +957,7 @@ public class MessagingHelperImpl implements MessagingHelper {
 				private static final long serialVersionUID = -1602574733872920210L;};
 	*/
 	    	logger.logp(Level.FINE, className, "_clearQueue()", new Long(numberOfMessagesCleared).toString());
+	    	numberOfMessagesCleared--;
 	    	return numberOfMessagesCleared;
 		}
     	logger.logp(Level.FINE, className, "_clearQueue()", new Long(numberOfMessagesCleared).toString());

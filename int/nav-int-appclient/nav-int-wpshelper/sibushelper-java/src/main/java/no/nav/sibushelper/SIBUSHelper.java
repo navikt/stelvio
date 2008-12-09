@@ -1109,6 +1109,7 @@ public class SIBUSHelper {
 	{
     	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
     	String queuename = null;
+    	String queuename1 = null;
     	for(int x = 0; x < mesInfo.length; x++)
         {
             BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
@@ -1118,7 +1119,12 @@ public class SIBUSHelper {
             	queuename = Constants.SE_QUEUE+meInfo.getName();
             else
             	queuename = argqueue;
-            
+
+            if (argqueue1.equals("SE")) 
+            	queuename1 = Constants.SE_QUEUE+meInfo.getName();
+            else
+            	queuename1 = argqueue1;
+
         	if (busInfo.getName().equalsIgnoreCase(argsibus))
         	{	
         		System.out.println();
@@ -1135,7 +1141,7 @@ public class SIBUSHelper {
         				System.out.println();
         				System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
         				System.out.println("  MESSAGE TO MOVE(" +  toMove + ")");
-        				System.out.println(" QUEUEPOINT TARGET(" + argqueue1 + ")");
+        				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
         				System.out.println("  MESSAGE MOVED(" +  toMove + ")");
         				return 0;
         			}
@@ -1148,11 +1154,11 @@ public class SIBUSHelper {
         				if (!result) return 0;
         			}
         			logger.log(Level.INFO, "Moving data to queue "+ argqueue1 + ". Please wait can take time!");
-        			long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, argqueue1, null, toMove);
+        			long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1, null, toMove);
         			System.out.println();
     				System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
     				System.out.println("  MESSAGE TO MOVE(" +  toMove + ")");
-    				System.out.println(" QUEUEPOINT TARGET(" + argqueue1 + ")");
+    				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
     				System.out.println("  MESSAGE MOVED(" +  moved + ")");
     				return moved;
         		}
@@ -1166,7 +1172,7 @@ public class SIBUSHelper {
         				System.out.println("  MESSAGE TO MOVE(" +  0 + ")");
         				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");        				
         				System.out.println("  MESSAGE FOUND(" +  0 + ")");
-        				System.out.println(" QUEUEPOINT TARGET(" + argqueue1 + ")");
+        				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
         				System.out.println("  MESSAGE MOVED(" +  0 + ")");
         				return 0;
         			}
@@ -1179,7 +1185,7 @@ public class SIBUSHelper {
         				System.out.println("  MESSAGE TO MOVE(" +  0 + ")");
         				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");
         				System.out.println("  MESSAGE FOUND(" +  0 + ")");
-        				System.out.println(" QUEUEPOINT TARGET(" + argqueue1 + ")");
+        				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
         				System.out.println("  MESSAGE MOVED(" +  0 + ")");
         				return 0;
             		}
@@ -1192,14 +1198,14 @@ public class SIBUSHelper {
         				if (!result) return 0;
         			}
         			logger.log(Level.INFO, "Moving data to queue "+ argqueue1 + ". Please wait can take time!");
-        			long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, argqueue1, argfilter, 1);
+        			long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1, argfilter, 1);
         			
         			System.out.println();
         			System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
     				System.out.println("  MESSAGE COUNT(" +  toMove + ")");
     				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");
     				System.out.println("  MESSAGE TO MOVE(" +  1 + ")");
-    				System.out.println(" QUEUEPOINT TARGET(" + argqueue1 + ")");
+    				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
     				System.out.println("  MESSAGE MOVED(" +  moved + ")");
     				System.out.println();
     				return moved;
