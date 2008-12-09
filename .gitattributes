@@ -3418,6 +3418,7 @@ int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemAvail
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemStubbingComponent.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemStubbingInterceptor.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/systemavailability/SystemUnavailableInterceptor.java -text svneol=unset#text/plain
+int/stelvio-commons-lib/gen/src/no/stelvio/common/webservices/JMSListenerMDB.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/FaultTeknisk.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/GBOEierKomponent.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/GBOEndringsInfo.xsd -text svneol=unset#text/plain
