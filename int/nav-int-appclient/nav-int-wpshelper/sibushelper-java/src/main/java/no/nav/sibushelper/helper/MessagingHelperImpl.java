@@ -905,7 +905,7 @@ public class MessagingHelperImpl implements MessagingHelper {
     	logger.logp(Level.FINE, className, "_clearQueue", "{ busName=" + busName + ", meName=" + meName + ", queueName=" + queueName + "}");
     	try {
 			conn = getConnectionToME(meName, busName);
-			numberOfMessagesCleared = 0;
+			numberOfMessagesCleared = 1;
 			SIDestinationAddressFactory addrFact = SIDestinationAddressFactory.getInstance();
 			SIDestinationAddress addr = addrFact.createSIDestinationAddress(queueName, false);
 	        SelectionCriteriaFactory selcFact =  SelectionCriteriaFactory.getInstance();
