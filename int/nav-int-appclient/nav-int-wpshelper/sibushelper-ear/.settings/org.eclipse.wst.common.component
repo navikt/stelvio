@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="nav-int-appclient-sibushelper-ear">
-        <dependent-module archiveName="nav-int-appclient-common-java.jar" deploy-path="/" handle="module:/resource/nav-int-appclient-common-java/nav-int-appclient-common-java">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/resource/nav-int-appclient-sibushelper-java/nav-int-appclient-sibushelper-java">
-            <dependent-object>JavaClientModule_1225799399985</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-sibushelper-ear/commons-cli-1.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -17,13 +10,8 @@
         <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-sibushelper-ear/commons-lang-2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-sibushelper-ear/slf4j-api-1.5.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-sibushelper-ear/slf4j-jdk14-1.5.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-sibushelper-ear/utils-1.07.00.jar">
+        <dependent-module deploy-path="/" handle="module:/resource/nav-int-appclient-sibushelper-java/nav-int-appclient-sibushelper-java">
+            <dependent-object>JavaClientModule_1228805567812</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

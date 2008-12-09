@@ -3,7 +3,6 @@
 	<name>nav-int-appclient-sibushelper-ear</name>
 	<comment></comment>
 	<projects>
-		<project>nav-int-appclient-common-java</project>
 		<project>nav-int-appclient-sibushelper-java</project>
 	</projects>
 	<buildSpec>
