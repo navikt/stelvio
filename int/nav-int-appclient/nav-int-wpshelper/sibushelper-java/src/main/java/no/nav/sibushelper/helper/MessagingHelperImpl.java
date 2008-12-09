@@ -540,7 +540,10 @@ public class MessagingHelperImpl implements MessagingHelper {
 					trans = conn.createUncoordinatedTransaction(false);
 					SIBusMessage msg = consumerSession.receiveNoWait(trans);
 					if(msg == null)
+					{	
+						numberOfMessagesMoved--;
 						break;
+					}	
 					producerSession.send(msg, trans);
 					if (numberOfMessagesMoved > maxMessages)
 					{	
@@ -618,8 +621,11 @@ public class MessagingHelperImpl implements MessagingHelper {
 					trans = conn.createUncoordinatedTransaction(false);
 					
 					SIBusMessage msg = consumerSession.receiveNoWait(trans);
-					if(msg == null) 
+					if(msg == null)
+					{	
+						numberOfMessages--;
 						break;
+					}	
 					
 					if (numberOfMessages > maxMessages)
 					{	
@@ -918,7 +924,10 @@ public class MessagingHelperImpl implements MessagingHelper {
 				trans = conn.createUncoordinatedTransaction(false);
 				SIBusMessage msg = consumerSession.receiveNoWait(trans);
 				if(msg == null)
+				{	
+					numberOfMessagesCleared--;
 					break;
+				}	
 				if (numberOfMessagesCleared > maxMessages)
 				{	
 					trans.rollback();
