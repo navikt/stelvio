@@ -1009,7 +1009,9 @@ public class MessagingHelperImpl implements MessagingHelper {
 		   singlemesg.setCurrentTimestamp(jmsmsg.getTimestamp());
 
 		   // routing path for re-send
-		   singlemesg.setProblemDestination(jmsmsg.getExceptionProblemDestination());
+		   if (jmsmsg.getExceptionProblemDestination() != null)
+			   singlemesg.setProblemDestination(jmsmsg.getExceptionProblemDestination());
+			   
 		   if (jmsmsg.getExceptionInserts() != null)
            {
         	   String[] detail = jmsmsg.getExceptionInserts();
