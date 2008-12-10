@@ -98,7 +98,7 @@ public class Constants {
 	public final static String ARG_QUEUE_DEL = ",";
 	
 	public final static String JS_SIBHELP_REDELIVERY = "SIBHELP_REDELIVERY";
-	public final static Integer JS_MAX_REDELIVERY  = 4;
+	public final static Integer JS_MAX_REDELIVERY  = 6;
 	
 	
 	

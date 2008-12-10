@@ -114,7 +114,7 @@ public class SIBUSHelper {
 	{
 		System.out.println();
 		System.out.println(getSeparatorLine(112));
-		System.out.println(" SIBUS Helper for WPS 6.1 (c) IBM Corp., 1997-2008");
+		System.out.println(" SIBUS Helper for WPS 6.1 (c) IBM Corp., 1997-2008 Version 1.0");
 		System.out.println(getSeparatorLine(112));
 
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
@@ -559,6 +559,7 @@ public class SIBUSHelper {
                     
                     if ( destList.isEmpty() ||  destList == null)
                     {
+                    	System.out.println();
                     	System.out.println(" DESTINATION(" + "NONE" + ")");
                     }
                     else
@@ -566,7 +567,7 @@ public class SIBUSHelper {
                         Iterator iter = destList.iterator();
                         while (iter.hasNext()) {
                         	DestinationInfo dest = (DestinationInfo) iter.next();
-    						//System.out.println(que.toString());
+                        	System.out.println();
     	                	System.out.println(" DESTINATION(" + dest.getDestinationName() + ")");
     	                    System.out.println("  TYPE(" + dest.getType() + ")");
     	                    System.out.println("  DESCRIPTION(" + dest.getDescription() + ")");
@@ -597,8 +598,6 @@ public class SIBUSHelper {
         	                    System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
         	                    System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
     	                    }
-
-    	                    System.out.println();
                         }
                     }
                     System.out.println(); 
@@ -618,6 +617,7 @@ public class SIBUSHelper {
                     
                     if ( destList.isEmpty() || destList == null)
                     {
+                    	System.out.println();
                     	System.out.println(" DESTINATION(" + "NONE" + ")");
                     }
                     else
@@ -625,8 +625,8 @@ public class SIBUSHelper {
                         Iterator iter = destList.iterator();
                         while (iter.hasNext()) {
                         	DestinationInfo dest = (DestinationInfo) iter.next();
-    						//System.out.println(que.toString());
-    	                	System.out.println(" DESTINATION(" + dest.getDestinationName() + ")");
+                        	System.out.println();
+                        	System.out.println(" DESTINATION(" + dest.getDestinationName() + ")");
     	                    System.out.println("  TYPE(" + dest.getType() + ")");
     	                    System.out.println("  DESCRIPTION(" + dest.getDescription() + ")");
     	                    System.out.println("  TARGET NAME(" + dest.getTargetName() + ")");
@@ -657,9 +657,6 @@ public class SIBUSHelper {
         	                    System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
         	                    System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
     	                    }
-    	                    
-    	                    
-    	                    System.out.println();
                         }
                     }
                     System.out.println(); 
