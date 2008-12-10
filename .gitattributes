@@ -2452,14 +2452,23 @@ incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.wst.common.project
 incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultFeilStatusForVedtak.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultKravIkkeFunnet.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultSakIkkeFunnet.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultStatusForVedtakAlleredeSatt.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultVedtakIkkeFunnet.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOHentPensjonssakListeRequest.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOHentPensjonssakRequest.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOHentVedtakListeRequest.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOHentVedtakRequest.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOKontrollpunkt.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOKontrollpunktListe.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOLagreVedtakStatusRequest.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOPensjonssak.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOPensjonssakListe.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOTestProcRequest.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOVedtak.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOVedtakListe.xsd -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/Pensjonssak.wsdl -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/TestProc.wsdl -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/Vedtak.wsdl -text svneol=unset#text/plain
 incubator/release-test/nav-int-appclient-bpchelper-ear/META-INF/application.xml -text
