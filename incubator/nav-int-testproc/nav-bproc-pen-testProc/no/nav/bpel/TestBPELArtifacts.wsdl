@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts" xmlns:wsdl0="http://nav-bproc-pen-testProc/no/nav/inf/TestProc" xmlns:wsdl1="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TestBPEL" targetNamespace="http://nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts" xmlns:wsdl0="http://nav-bproc-pen-testProc/no/nav/inf/TestProc" xmlns:wsdl1="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak" xmlns:wsdl2="http://nav-lib-pen/no/nav/lib/pen/inf/Pensjonssak" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TestBPEL" targetNamespace="http://nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts">
   <plnk:partnerLinkType name="TestProcPLT">
     <plnk:role name="Interface">
       <plnk:portType name="wsdl0:TestProc"/>
@@ -10,11 +10,6 @@
       <plnk:portType name="wsdl1:Vedtak"/>
     </plnk:role>
   </plnk:partnerLinkType>
-    <plnk:partnerLinkType name="TestProcPLT1">
-    <plnk:role name="Interface">
-      <plnk:portType name="wsdl0:TestProc"/>
-    </plnk:role>
-  </plnk:partnerLinkType>
     <bpws:property name="vedtakId" type="xsd:string"/>
     <bpws:propertyAlias messageType="wsdl0:invokeTestProcRequestMsg" part="invokeTestProcParameters" propertyName="tns:vedtakId">
     <bpws:query><![CDATA[/testProcRequest/vedtakId]]></bpws:query>
@@ -22,6 +17,12 @@
     <bpws:propertyAlias messageType="wsdl0:finishProcRequestMsg" part="finishProcParameters" propertyName="tns:vedtakId">
     <bpws:query><![CDATA[/finishString]]></bpws:query>
   </bpws:propertyAlias>
-    <wsdl:import location="../inf/TestProc.wsdl" namespace="http://nav-bproc-pen-testProc/no/nav/inf/TestProc"/>
-    <wsdl:import location="../lib/pen/inf/Vedtak.wsdl" namespace="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak"/>
+    <plnk:partnerLinkType name="PensjonssakPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl2:Pensjonssak"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="../lib/test/inf/TestProc.wsdl" namespace="http://nav-bproc-pen-testProc/no/nav/inf/TestProc"/>
+    <wsdl:import location="../lib/test/inf/Vedtak.wsdl" namespace="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak"/>
+    <wsdl:import location="../lib/test/inf/Pensjonssak.wsdl" namespace="http://nav-lib-pen/no/nav/lib/pen/inf/Pensjonssak"/>
 </wsdl:definitions>

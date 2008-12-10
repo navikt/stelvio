@@ -3,5 +3,5 @@
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Vedtak"/>
   </interfaces>
-  <esbBinding xsi:type="scdl:SCAImportBinding" module="nav-ent-pen-vedtak" export="VedtakSCAEXP"/>
+  <esbBinding xsi:type="scdl:SCAImportBinding" module="nav-ent-test-proctest" export="VedtakSCAEXP"/>
 </scdl:import>

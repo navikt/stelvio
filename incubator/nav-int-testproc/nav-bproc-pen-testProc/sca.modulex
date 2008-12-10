@@ -16,4 +16,8 @@
     <extendedObject href="TestProcSCAEXP.export#//@export"/>
     <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" x="142" y="148" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ExportBinding" bound="true"/>
   </extensions>
+  <extensions>
+    <extendedObject href="PensjonssakSCAIMP.import#//@import"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="566" y="197" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding"/>
+  </extensions>
 </extensionmodel:ExtensionMap>

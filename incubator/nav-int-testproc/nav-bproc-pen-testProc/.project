@@ -3,7 +3,7 @@
 	<name>nav-bproc-pen-testProc</name>
 	<comment></comment>
 	<projects>
-		<project>nav-lib-pen</project>
+		<project>nav-lib-test</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

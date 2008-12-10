@@ -2430,15 +2430,15 @@ incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/org.eclipse.wst.comm
 incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-bproc-pen-testProc/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-bproc-pen-testProc/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-bproc-pen-testProc/PensjonssakSCAIMP.import -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/TestBPEL.component -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/TestProcSCAEXP.export -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/VedtakSCAIMP.import -text
+incubator/nav-int-testproc/nav-bproc-pen-testProc/nav-bproc-pen-testProc_Test.wbiexetrace -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPEL.bpel -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPEL.bpelex -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts.wsdl -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPEL_bpel.mon -text
-incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/gbo/GBOTestProcRequest.xsd -text svneol=unset#text/plain
-incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/inf/TestProc.wsdl -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-bproc-pen-testProc/sca.module -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/sca.modulex -text
 incubator/nav-int-testproc/nav-lib-test/.classpath -text svneol=unset#text/plain
