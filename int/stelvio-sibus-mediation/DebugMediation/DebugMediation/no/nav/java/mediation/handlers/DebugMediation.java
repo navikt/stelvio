@@ -113,7 +113,7 @@ public class DebugMediation implements MediationHandler {
 					log.info("Message Context Info: " + msgCnt);
 				}
 				
-				if (match == MATCH_FILE)
+				if (match == MATCH_FILE || match==MATCH_BOTH)
 				{
 					Date now = new Date();
 					String id = siMsgCtx.getSIMessage().getApiMessageId();
