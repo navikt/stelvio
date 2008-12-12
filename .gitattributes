@@ -2363,6 +2363,7 @@ incubator/maven-plugins/maven-service-deploy-assembly/src/main/resources/assembl
 incubator/maven-plugins/maven-service-deploy-plugin/pom.xml -text
 incubator/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
 incubator/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
+incubator/maven-plugins/pom.xml -text
 incubator/maven-poms/maven-root-pom/.project -text
 incubator/maven-poms/maven-root-pom/pom.xml -text
 incubator/maven-poms/maven-sca-library-pom/.project -text
