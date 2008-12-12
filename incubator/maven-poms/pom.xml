@@ -3,15 +3,21 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-poms</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 
 	<modules>
-		<module>../maven-root-pom</module>
-		<module>../maven-sca-root-pom</module>
-		<module>../maven-sca-library-pom</module>
-		<module>../maven-sca-module-pom</module>
+		<module>maven-root-pom</module>
+		<module>maven-sca-root-pom</module>
+		<module>maven-sca-library-pom</module>
+		<module>maven-sca-module-pom</module>
 	</modules>
 </project>

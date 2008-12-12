@@ -224,12 +224,6 @@ incubator/maven-plugins/maven-service-deploy-plugin/src/main/target
 incubator/maven-plugins/maven-service-deploy-plugin/src/target
 incubator/maven-plugins/maven-service-deploy-plugin/target
 incubator/maven-plugins/target
-incubator/maven-poms/.project
-incubator/maven-poms/maven-poms/.project
-incubator/maven-poms/maven-root-pom/.project
-incubator/maven-poms/maven-sca-library-pom/.project
-incubator/maven-poms/maven-sca-module-pom/.project
-incubator/maven-poms/maven-sca-root-pom/.project
 int/FEMCommandLine/FEMGRAppClient/target
 int/FEMCommandLine/FEMGRAppClientEAR/target
 int/FEMCommandLine/nav-int-appclient-fem-pom/.project
