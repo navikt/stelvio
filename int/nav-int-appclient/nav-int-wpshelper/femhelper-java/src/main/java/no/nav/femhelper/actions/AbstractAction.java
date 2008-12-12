@@ -14,6 +14,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
@@ -324,7 +326,7 @@ public abstract class AbstractAction {
 				: false;
 		match = match && validate(event.getDestinationComponentName(), arguments.get(CommandOptions.destinationComponent)) ? true
 				: false;
-		match = match && validate(event.getFailureMessage(), arguments.get(CommandOptions.failureMessage)) ? true : false;
+		match = match && isMatchWildCard(event.getFailureMessage(), arguments.get(CommandOptions.failureMessage));
 
 		String timeFrame = arguments.get(CommandOptions.timeFrame);
 		if (match && !StringUtils.isEmpty(timeFrame)) {
@@ -349,6 +351,12 @@ public abstract class AbstractAction {
 		return match;
 	}
 
+	private boolean isMatchWildCard (String input, String regex) {
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(input);
+		return m.find();
+	}
+	
 	/**
 	 * Generic method to validate a attribute on the <code>FailedEvent</code>
 	 * event against values in the argument list.
