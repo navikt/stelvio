@@ -1,6 +1,3 @@
-/**
- * 
- */
 package no.nav.sibushelper;
 
 import java.io.BufferedReader;
@@ -63,10 +60,6 @@ import com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus;
 
 /**
  * @author persona2c5e3b49756 Schnell
- *
- */
-/**
- * @author wpsadmin
  *
  */
 public class SIBUSHelper {
