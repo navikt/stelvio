@@ -91,7 +91,7 @@ public class CommandOptionsBuilder {
 	private Option getFailureMessageOption() {
 		Option failureMessage = getGeneralOption(CommandOptions.failureMessage, "fm");
 		failureMessage
-				.setDescription("Wild card search in the failure message. Might be used to drill down a given exception etc.");
+				.setDescription("Regular expression search in the failure message. Might be used to drill down a given exception etc. E.g. \"Person [0-9]* eksisterer ikke\"");
 		return failureMessage;
 	}
 
