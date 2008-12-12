@@ -3266,6 +3266,8 @@ int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/bin/femstatus.sh -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/BPCHelper.doc -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/FEMHelper.doc -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/SIBusHelper.doc -text
+int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/SIBusKoedybde.doc -text
+int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/WPSHelpers.doc -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/python/SibusQueuesDepth.py -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/resources/localhost_helper.properties -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/.project -text
