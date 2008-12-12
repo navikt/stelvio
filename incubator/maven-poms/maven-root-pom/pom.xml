@@ -21,6 +21,9 @@
 				<plugin>
 					<artifactId>maven-eclipse-plugin</artifactId>
 					<configuration>
+						<workspaceCodeStylesURL>
+							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
+						</workspaceCodeStylesURL>
 						<buildOutputDirectory>bin</buildOutputDirectory>
 						<downloadJavadocs>true</downloadJavadocs>
 						<downloadSources>true</downloadSources>
