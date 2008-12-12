@@ -225,6 +225,7 @@ incubator/maven/maven-plugins/maven-service-deploy-plugin/src/target
 incubator/maven/maven-plugins/maven-service-deploy-plugin/target
 incubator/maven/maven-plugins/target
 incubator/maven/maven-poms/maven-sca-library-pom/target
+incubator/maven/maven-poms/maven-sca-module-pom/target
 int/FEMCommandLine/FEMGRAppClient/target
 int/FEMCommandLine/FEMGRAppClientEAR/target
 int/FEMCommandLine/nav-int-appclient-fem-pom/.project
