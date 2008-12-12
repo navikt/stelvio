@@ -4,12 +4,12 @@
 	<groupId>no.nav.int.appclient.wpshelper</groupId>
 	<artifactId>wpshelper-bundle</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<name>WPS Helper Bundle Module</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-bundle-1.0</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-bundle-1.0</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle</developerConnection>
 	</scm>
 
 	<properties>
