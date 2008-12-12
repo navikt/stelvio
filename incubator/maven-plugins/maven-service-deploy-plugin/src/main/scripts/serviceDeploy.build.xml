@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project>
+	<target name="serviceDeploy">
+		<echo>${project.build.directory}</echo>
+		<echo>${project.build.finalName}</echo>
+		<echo>${wid.runtime}</echo>
+		<exec dir="${project.build.directory}" executable="${wid.runtime}/bin/serviceDeploy.bat">
+			<arg value="${project.build.directory}/${project.build.finalName}.zip" />
+			<arg line="-outputApplication ${project.build.finalName}.ear" />
+			<arg value="-keep" />
+			<arg value="-cleanStagingModules" />
+			<arg line="-skipXsdValidate true" />
+			<arg line="-progressMonitor none" />
+		</exec>
+	</target>
+</project>
