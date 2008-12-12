@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>maven-sca-root-pom</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<build>
+		<directory>${target.dir}</directory>
+		<outputDirectory>${target.dir}/classes</outputDirectory>
+		<testOutputDirectory>
+			${target.dir}/test-classes
+		</testOutputDirectory>
+		<finalName>${artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<!-- TODO: Review which files to exclude/include -->
+				<directory>${basedir}</directory>
+				<excludes>
+					<exclude>${project.build.directory}/**</exclude>
+					<exclude>bin/**</exclude>
+				</excludes>
+				<includes>
+					<include>**/*.wsdl</include>
+					<include>**/*.xsd</include>
+					<include>**/*.module</include>
+					<include>**/*.modulex</include>
+					<include>**/*.component</include>
+					<include>**/*.import</include>
+					<include>**/*.export</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+	<dependencies>
+		<!-- TODO: Find a better way to include IBM runtime in compile path -->
+		<dependency>
+			<groupId>org.eclipse.emf.commonj</groupId>
+			<artifactId>org.eclipse.emf.commonj.sdo</artifactId>
+			<version>2.1.0.v200609210005</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.soacore</groupId>
+			<artifactId>sca</artifactId>
+			<version>6.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<properties>
+		<!-- TODO: Review this setting -->
+		<target.dir>${user.home}/maven-build/${artifactId}</target.dir>
+	</properties>
+</project>
