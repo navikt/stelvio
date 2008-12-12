@@ -2461,6 +2461,25 @@ incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPELArtifacts.
 incubator/nav-int-testproc/nav-bproc-pen-testProc/no/nav/bpel/TestBPEL_bpel.mon -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/sca.module -text
 incubator/nav-int-testproc/nav-bproc-pen-testProc/sca.modulex -text
+incubator/nav-int-testproc/nav-ent-test-proctest/.classpath -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/.project -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/.settings/nav-ent-test-proctest.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/.settings/org.eclipse.wst.common.component -text
+incubator/nav-int-testproc/nav-ent-test-proctest/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/PensjonssakSCAEXP.export -text
+incubator/nav-int-testproc/nav-ent-test-proctest/PensjonssakStub.component -text
+incubator/nav-int-testproc/nav-ent-test-proctest/VedtakSCAEXP.export -text
+incubator/nav-int-testproc/nav-ent-test-proctest/VedtakStub.component -text
+incubator/nav-int-testproc/nav-ent-test-proctest/no/nav/java/PensjonssakStubImpl.java -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/no/nav/java/VedtakStubImpl.java -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/sca.module -text
+incubator/nav-int-testproc/nav-ent-test-proctest/sca.modulex -text
 incubator/nav-int-testproc/nav-lib-test/.classpath -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/.project -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
