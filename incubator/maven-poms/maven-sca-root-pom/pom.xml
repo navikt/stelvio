@@ -19,7 +19,6 @@
 		<testOutputDirectory>
 			${target.dir}/test-classes
 		</testOutputDirectory>
-		<finalName>${artifactId}</finalName>
 		<resources>
 			<resource>
 				<directory>${basedir}/src/main/resources</directory>

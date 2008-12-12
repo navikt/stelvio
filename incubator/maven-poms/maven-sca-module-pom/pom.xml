@@ -19,6 +19,7 @@
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<configuration>
+						<finalName>${artifactId}</finalName>
 						<archive>
 							<manifestEntries>
 								<Class-Path>
