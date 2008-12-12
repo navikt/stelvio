@@ -2353,6 +2353,7 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
+incubator/maven-poms/maven-poms/pom.xml -text
 incubator/maven-poms/maven-root-pom/pom.xml -text
 incubator/maven-poms/maven-sca-library-pom/pom.xml -text
 incubator/maven-poms/maven-sca-module-pom/pom.xml -text

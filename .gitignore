@@ -70,6 +70,7 @@ dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
 incubator/maven-poms/.project
+incubator/maven-poms/maven-poms/.project
 incubator/maven-poms/maven-root-pom/.project
 incubator/maven-poms/maven-sca-library-pom/.project
 incubator/maven-poms/maven-sca-module-pom/.project
