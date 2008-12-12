@@ -107,7 +107,7 @@ public class SIBUSHelper {
 	{
 		System.out.println();
 		System.out.println(getSeparatorLine(112));
-		System.out.println(" SIBUS Helper for WPS 6.1 (c) IBM Corp., 1997-2008 Version 1.0");
+		System.out.println(" SIBUS Helper for WPS 6.1 (c) IBM Corp., 1997-2008");
 		System.out.println(getSeparatorLine(112));
 
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
