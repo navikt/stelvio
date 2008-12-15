@@ -9,7 +9,7 @@
   	<name>Maven WebSphere Deployment Descriptor Plugin</name>
   	
   	<description>
-  	</description>>
+  	</description>
   	<url>http://maven.apache.org</url>
   	<dependencies>
     	<dependency>
