@@ -1,11 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   	<modelVersion>4.0.0</modelVersion>
+  	
   	<groupId>no.nav.maven.plugins</groupId>
   	<artifactId>maven-deployment-descriptor-plugin</artifactId>
   	<packaging>maven-plugin</packaging>
   	<version>1.0.2-SNAPSHOT</version>
   	<name>Maven WebSphere Deployment Descriptor Plugin</name>
+  	
   	<description>
   	</description>>
   	<url>http://maven.apache.org</url>
@@ -40,7 +42,18 @@
       		<scope>test</scope>
     	</dependency>
   	</dependencies>
+  	
+  	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-deployment-descriptor-plugin
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-deployment-descriptor-plugin
+		</developerConnection>
+	</scm>
+  	
   	<build>
+<!-- 
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -51,6 +64,34 @@
 				</configuration>
 			</plugin>
 		</plugins>
+ -->		
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<configuration>
+						<preparationGoals>
+							clean install
+						</preparationGoals>
+						<autoVersionSubmodules>
+							true
+						</autoVersionSubmodules>
+						<tagBase>
+							https://versjonskontroll.adeo.no/svn/stelvio/tags
+						</tagBase>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 	
 	<distributionManagement>
