@@ -1881,9 +1881,6 @@ dev/maven2/maven-deployment-descriptor-common/src/test/resources/ejb-security-co
 dev/maven2/maven-deployment-descriptor-common/src/test/resources/ejb-security-config.xml -text
 dev/maven2/maven-deployment-descriptor-common/src/test/resources/security-rolebinding-config.xml -text
 dev/maven2/maven-deployment-descriptor-common/src/test/resources/tempBeans.xml -text
-dev/maven2/maven-deployment-descriptor-plugin/.compatibility -text
-dev/maven2/maven-deployment-descriptor-plugin/.project -text
-dev/maven2/maven-deployment-descriptor-plugin/.settings/org.eclipse.jdt.core.prefs -text
 dev/maven2/maven-deployment-descriptor-plugin/pom.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/src/main/java/no/nav/maven/plugins/descriptor/mojo/AbstractDeploymentDescriptorMojo.java -text
 dev/maven2/maven-deployment-descriptor-plugin/src/main/java/no/nav/maven/plugins/descriptor/mojo/EjbSecurityMojo.java -text
