@@ -32,7 +32,7 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.impl.CommonarchiveFactory
 public abstract class AbstractDeploymentDescriptorMojo extends AbstractMojo{
 	
 	/**
-	 * @parameter
+	 * @parameter expression="${ear}"
 	 */
 	private File ear;
 	/**

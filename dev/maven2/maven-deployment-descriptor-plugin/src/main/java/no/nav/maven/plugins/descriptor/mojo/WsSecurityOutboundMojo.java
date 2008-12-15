@@ -27,9 +27,10 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	private static final String AUTH_HTTP_BASIC = "HTTPBasicAuth";
 	
 	/**
-	 * @parameter
+	 * @parameter expression="${authMechanism}"
 	 */
-	private String[] authMechanisms;		
+	//private String[] authMechanisms;		
+	private String authMechanism;		
 
 	/**
 	 * @parameter
@@ -54,7 +55,7 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	
 	public void executeDescriptorOperations(EARFile earFile, EarConfig earConfig) throws MojoExecutionException {
 		
-		List<String> authList = authMechanisms != null ? Arrays.asList(authMechanisms) : null;
+		//List<String> authList = authMechanisms != null ? Arrays.asList(authMechanisms) : null;
 		EJBJarFile ejbJarFile = (EJBJarFile) earFile.getEJBJarFiles().get(0);
 		
 		// Configure Client SSL transport security
@@ -68,25 +69,29 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 			setupOverriddenEndpoint(ejbJarFile, endpointPortServerAddress);
 		}
 		// Set up Authentication mechanisms
-		if (authList != null) {
-			// Configure message layer authentication using WS-Security BinarySecurityToken LTPA
-			if (authList.contains(AUTH_WSS_LTPATOKEN)) {
-				getLog().info("Setting up LTPATokenGenerator");
-				setupLtpaTokenGenerator(ejbJarFile);
-			}
-			// Configure message layer authentication using WS-Security UsernameToken
-			if (authList.contains(AUTH_WSS_USERNAMETOKEN)) {
-				getLog().info("Setting up UsernameTokenGenerator: '" + username + ":" + password + "'");
-				//TODO: not yet implemented
-				throw new MojoExecutionException("UsernameToken setup is not yet implemented");
-			}
-			// Configure transport layer authentication using HTTP Basic (HTTP Authorization header)
-			if (authList.contains(AUTH_HTTP_BASIC)) {
-				getLog().info("Setting up HTTP Basic Authentication: '" + username + ":" + password + "'");
-				//TODO: not yet implemented
-				throw new MojoExecutionException("UsernameToken setup is not yet implemented");
-			}			
+		if (authMechanism != null && authMechanism.equals(AUTH_WSS_LTPATOKEN)){
+			getLog().info("Setting up LTPATokenGenerator");
+			setupLtpaTokenGenerator(ejbJarFile);
 		}
+//		if (authList != null) {
+//			// Configure message layer authentication using WS-Security BinarySecurityToken LTPA
+//			if (authList.contains(AUTH_WSS_LTPATOKEN)) {
+//				getLog().info("Setting up LTPATokenGenerator");
+//				setupLtpaTokenGenerator(ejbJarFile);
+//			}
+//			// Configure message layer authentication using WS-Security UsernameToken
+//			if (authList.contains(AUTH_WSS_USERNAMETOKEN)) {
+//				getLog().info("Setting up UsernameTokenGenerator: '" + username + ":" + password + "'");
+//				//TODO: not yet implemented
+//				throw new MojoExecutionException("UsernameToken setup is not yet implemented");
+//			}
+//			// Configure transport layer authentication using HTTP Basic (HTTP Authorization header)
+//			if (authList.contains(AUTH_HTTP_BASIC)) {
+//				getLog().info("Setting up HTTP Basic Authentication: '" + username + ":" + password + "'");
+//				//TODO: not yet implemented
+//				throw new MojoExecutionException("UsernameToken setup is not yet implemented");
+//			}			
+//		}
 		
 	}
 	
