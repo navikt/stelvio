@@ -235,6 +235,8 @@ incubator/maven/maven-poms/maven-sca-library-pom/target
 incubator/maven/maven-poms/maven-sca-module-pom/target
 incubator/maven/maven-poms/maven-sca-root-pom/target
 incubator/maven/maven-poms/target
+incubator/maven/runtimes/target[!!-~]bin[!!-~].classpath[!!-~].project[!!-~].settings
+incubator/maven/runtimes/wps-runtime/target[!!-~]bin[!!-~].classpath[!!-~].project[!!-~].settings
 int/FEMCommandLine/FEMGRAppClient/target
 int/FEMCommandLine/FEMGRAppClientEAR/target
 int/FEMCommandLine/nav-int-appclient-fem-pom/.project
