@@ -28,7 +28,7 @@
 					<username>mavendeployer</username>
 					<password>Test1234</password>
 					<importFormat>XML</importFormat>
-					<configFile>E:/data/builds/BUSTAG_K_2_19_2_Full/target/datapower-config/test-config/import-xcfg/secgw-u1.xcfg</configFile>
+					<configFile>E:/data/builds/BUSTAG_K_2_27_2_FULL/target/datapower-config/test-config/import-xcfg/secgw-u1.xcfg</configFile>
 				</configuration>
 				<executions>
 					<execution>

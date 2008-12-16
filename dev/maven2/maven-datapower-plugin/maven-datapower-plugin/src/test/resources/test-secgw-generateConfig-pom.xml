@@ -17,7 +17,7 @@
     	</dependency>
   	</dependencies>
 	<properties>
-		<bustag.basedir>E:\data\builds\BUSTAG_K_2_19_2_Full</bustag.basedir>
+		<bustag.basedir>E:\data\builds\BUSTAG_K_2_27_2_FULL</bustag.basedir>
 	</properties>
 	<build>
 		<plugins>
@@ -26,7 +26,7 @@
 				<configuration>
 					<filesets>
 						<fileset>
-							<directory>E:/data/builds/BUSTAG_K_2_19_2_Full/target/datapower-config/secgw-u1</directory>
+							<directory>E:/data/builds/BUSTAG_K_2_27_2_FULL/target/datapower-config/secgw-u1</directory>
 						</fileset>
 					</filesets>					
 				</configuration>
@@ -44,9 +44,9 @@
 				<version>1.0.1-SNAPSHOT</version>
 				<configuration>
 					<domain>secgw-u1</domain>
-					<outputDirectory>E:/data/builds/BUSTAG_K_2_19_2_Full/target/datapower-config/secgw-u1</outputDirectory>
-					<moduleDirectory>E:/data/builds/BUSTAG_K_2_19_2_Full/target/classes/builds/ear</moduleDirectory>
-					<propertiesDirectory>E:/data/builds/BUSTAG_K_2_19_2_Full/src/main/resources/scripts/environments</propertiesDirectory>
+					<outputDirectory>E:/data/builds/BUSTAG_K_2_27_2_FULL/target/datapower-config/secgw-u1</outputDirectory>
+					<moduleDirectory>E:/data/builds/BUSTAG_K_2_27_2_FULL/target/classes/builds/ear</moduleDirectory>
+					<propertiesDirectory>E:/data/builds/BUSTAG_K_2_27_2_FULL/src/main/resources/scripts/environments</propertiesDirectory>
 					<overridesDirectory>E:/data/datapower/overrides/secgw-u1</overridesDirectory>
 				</configuration>
 				<executions>
