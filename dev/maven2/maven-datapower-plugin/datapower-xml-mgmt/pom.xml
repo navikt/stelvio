@@ -1,28 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>no.nav.datapower</groupId>
+
+	<parent>
+		<groupId>no.nav.maven.plugins</groupId>
+		<artifactId>maven-datapower-plugin-project</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven2/maven-datapower-plugin/datapower-xml-mgmt
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/datapower-xml-mgmt
+		</developerConnection>
+	</scm>
+
 	<artifactId>datapower-xml-mgmt</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.2-SNAPSHOT</version>
+
 	<name>DataPower XML Management Interface Library</name>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>datapower-utils</artifactId>
 		</dependency>
-		<dependency>
-	        <groupId>log4j</groupId>
-	        <artifactId>log4j</artifactId>
-	        <version>1.2.12</version>
-	    </dependency>
-		<dependency>
-	        <groupId>no.nav.datapower</groupId>
-	        <artifactId>datapower-utils</artifactId>
-	        <version>1.0.2-SNAPSHOT</version>
-	    </dependency>
 	</dependencies>
 	<build>
 		<plugins>
