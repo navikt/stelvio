@@ -1325,34 +1325,6 @@ dev/datapower/datapower-cfg-secgw/src/main/resources/secgw-configuration.ftl -te
 dev/datapower/datapower-cfg-secgw/src/test/java/no/nav/datapower/config/secgw/SGWConfigGeneratorImplTest.java -text
 dev/datapower/datapower-cfg-secgw/src/test/resources/cfg-secgw-u1.properties -text
 dev/datapower/datapower-cfg-secgw/src/test/resources/cfg-secgw-utv.properties -text
-dev/datapower/datapower-xml-mgmt/pom.xml -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DeviceFileStore.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/ImportFormat.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/TemplateFormatter.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtException.java -text svneol=unset#text/plain
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtRequest.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtSession.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractBaseCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractDeleteConfigCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractDoActionCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractModifyConfigCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractSetConfigCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AddHostAliasCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AddStaticRouteCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDirCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDomainCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DeleteDomainCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DoImportCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/FetchFileCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GenerateCSRCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RemoveDirCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RestartThisDomainCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SaveConfigCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SetFileCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/XMLMgmtCommand.java -text
-dev/datapower/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportConfigTester.java -text
-dev/datapower/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportFilesTester.java -text
-dev/datapower/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/XMLMgmtSessionTester.java -text
 dev/maven2/ant-versionExtracter/trunk/pom.xml -text
 dev/maven2/ant-versionExtracter/trunk/src/main/java/no/nav/ant/VersionExtractorTask.java -text
 dev/maven2/deploy.txt -text
@@ -1543,6 +1515,34 @@ dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/
 dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPYtelseIkkeFunnet.xsd -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/inf/TPSamordningRegistrering.wsdl -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/ws/TPSamordningRegistreringWSEXP_TPSamordningRegistreringHttp_Service.wsdl -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/pom.xml -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DeviceFileStore.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/ImportFormat.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/TemplateFormatter.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtException.java -text svneol=unset#text/plain
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtRequest.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtSession.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractBaseCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractDeleteConfigCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractDoActionCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractModifyConfigCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractSetConfigCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AddHostAliasCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AddStaticRouteCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDirCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDomainCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DeleteDomainCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DoImportCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/FetchFileCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GenerateCSRCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RemoveDirCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RestartThisDomainCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SaveConfigCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SetFileCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/XMLMgmtCommand.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportConfigTester.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportFilesTester.java -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/XMLMgmtSessionTester.java -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/pom.xml -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDataPowerMojo.java -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDeviceMgmtMojo.java -text
