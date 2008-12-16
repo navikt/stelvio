@@ -1385,7 +1385,6 @@ dev/maven2/maven-datapower-configurer/src/main/resources/environments/TestConfig
 dev/maven2/maven-datapower-configurer/src/main/resources/environments/TestConfig/ltpa-keys/d15apvl007.trygdeetaten2.local.ltpa -text
 dev/maven2/maven-datapower-configurer/src/main/resources/templates/template-config.xcfg -text
 dev/maven2/maven-datapower-configurer/src/main/resources/templates/template-mapper.xml -text
-dev/maven2/maven-datapower-plugin/.project -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/pom.xml -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigGenerator.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigPackage.java -text
