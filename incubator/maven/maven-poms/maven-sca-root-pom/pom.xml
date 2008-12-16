@@ -29,6 +29,7 @@
 				<excludes>
 					<exclude>${project.build.directory}/**</exclude>
 					<exclude>bin/**</exclude>
+					<exclude>.settings/**</exclude>
 				</excludes>
 				<includes>
 					<include>**/*.wsdl</include>
@@ -38,9 +39,25 @@
 					<include>**/*.component</include>
 					<include>**/*.import</include>
 					<include>**/*.export</include>
+					<include>**/*.ifm</include>
+					<include>**/*.map</include>
+					<include>**/*.scaj2ee</include>
 				</includes>
 			</resource>
 		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<verbose>true</verbose>
+					<fork>true</fork>
+					<executable>
+						${wid.runtime}\java\bin\javac
+					</executable>
+					<compilerVersion>1.5</compilerVersion>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 	<dependencies>
 		<dependency>
