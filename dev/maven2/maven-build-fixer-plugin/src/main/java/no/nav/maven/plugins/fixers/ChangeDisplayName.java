@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import no.nav.maven.plugins.common.utils.EarUtils;
@@ -14,8 +15,10 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.XPath;
+import org.dom4j.dom.DOMDocumentFactory;
 import org.dom4j.io.SAXReader;
 
 /**
@@ -79,8 +82,10 @@ public class ChangeDisplayName extends AbstractMojo {
 				getLog().info("[" + module.getName() + "] description element changed to " + EarUtils.getTagLog().get(module.getName() + ".ear"));
 			}else{
 				app = doc.getRootElement();
-				desc = app.addElement("description");
-				desc.setText(EarUtils.getTagLog().get(module.getName() + ".ear"));
+				desc = DOMDocumentFactory.getInstance().createElement("description", "http://java.sun.com/xml/ns/j2ee");
+				desc.setText(EarUtils.getTagLog().get(module.getName() + ".ear"));				
+				List list = app.content();
+				list.add(0, desc);	
 				getLog().info("[" + module.getName() + "] description element with text '" + EarUtils.getTagLog().get(module.getName() + ".ear") + "' added");
 			}
 			
