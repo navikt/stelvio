@@ -138,7 +138,7 @@ public class ConfigFixer extends AbstractMojo {
 			}
 			if(fixArenaSak){
 				FixArenaSak fax = new FixArenaSak(flattenFolder, handlerName, 
-						handlerClass, overriddenEndpointURI, basicAuthUserid, basicAuthPassword);
+						handlerClass, overriddenEndpointURI, basicAuthUserid, basicAuthPassword, addAuthentication);
 				fax.execute();
 			}
 			if(addHandler){

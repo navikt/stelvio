@@ -36,6 +36,14 @@ public class FixArenaSak extends AbstractMojo {
 	protected String handlerName;
 
 	/**
+	 * This parameter is a boolean to choose wether authentication should or should not be added..
+	 * 
+	 * @parameter expression="${isAddAuthentication}"
+	 * @required
+	 */
+	protected final boolean isAddAuthentication;
+	
+	/**
 	 * This parameter is the directory where the wid ear files are placed.
 	 * 
 	 * @parameter expression="${handlerClass}"
@@ -84,16 +92,17 @@ public class FixArenaSak extends AbstractMojo {
 	protected boolean isSubGoal;
 	
 	public FixArenaSak(){
-		
+		this.isAddAuthentication=false;
 	}
 	
-	public FixArenaSak(File flattenEarDirectory, String handlerName, String handlerClass, String overriddenEndpointURI, String basicAuthUserid, String basicAuthPassword){
+	public FixArenaSak(File flattenEarDirectory, String handlerName, String handlerClass, String overriddenEndpointURI, String basicAuthUserid, String basicAuthPassword, final boolean addAuthentication){
 		this.earDirectory = flattenEarDirectory;
 		this.handlerClass = handlerClass;
 		this.handlerName = handlerName;
 		this.basicAuthUserid = basicAuthUserid;
 		this.basicAuthPassword = basicAuthPassword;
 		this.overriddenEndpointURI = overriddenEndpointURI;
+		this.isAddAuthentication = addAuthentication;
 		isSubGoal = true;
 	}
 	
@@ -232,14 +241,18 @@ public class FixArenaSak extends AbstractMojo {
 			if(endpoint != null) endpoint.setText(overriddenEndpointURI);
 			else binding.addAttribute("overriddenEndpointURI", overriddenEndpointURI);
 			
-			
 			getLog().info("[" + ws.getName() + "] Changed overriddenEndpointURI to '" + overriddenEndpointURI + "'");
 			
-			basicAuth = binding.addElement("basicAuth");
-			basicAuth.addAttribute("xmi:id", "BasicAuth_1187868680921");
-			basicAuth.addAttribute("userid", basicAuthUserid);
-			basicAuth.addAttribute("password", basicAuthPassword);
-			getLog().info("[" + ws.getName() + "] added basic authentication with userid=" + basicAuthUserid + " password=" + basicAuthPassword);
+			if(isAddAuthentication==true) {
+				getLog().info("[" + ws.getName() + "] Authentication is added. isAddAuthentication flag is true");
+				basicAuth = binding.addElement("basicAuth");
+				basicAuth.addAttribute("xmi:id", "BasicAuth_1187868680921");
+				basicAuth.addAttribute("userid", basicAuthUserid);
+				basicAuth.addAttribute("password", basicAuthPassword);
+				getLog().info("[" + ws.getName() + "] added basic authentication with userid=" + basicAuthUserid + " password=" + basicAuthPassword);
+			} else {
+				getLog().info("[" + ws.getName() + "] Authentication is not added. isAddAuthentication flag is false");
+			}
 			
 			XMLUtils.writeXMLDocument(doc, ws);
 			return true;
