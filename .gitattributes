@@ -2313,6 +2313,7 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 incubator/maven/maven-base-poms/maven-root-pom/.project -text
 incubator/maven/maven-base-poms/maven-root-pom/pom.xml -text
 incubator/maven/maven-base-poms/pom.xml -text
+incubator/maven/maven-bundle/.project -text svneol=unset#text/plain
 incubator/maven/maven-bundle/pom.xml -text
 incubator/maven/maven-extension-plugins/maven-sca-module-plugin/pom.xml -text
 incubator/maven/maven-extension-plugins/maven-sca-module-plugin/src/main/java/no/nav/maven/plugin/sca/ScaModuleArtifactMojo.java -text

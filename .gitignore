@@ -72,7 +72,6 @@ dev/maven2/nav-deployment-code-plugin/target
 incubator/maven/maven-base-poms/.project
 incubator/maven/maven-base-poms/maven-root-pom/target
 incubator/maven/maven-base-poms/target
-incubator/maven/maven-bundle/.project
 incubator/maven/maven-extension-plugins/.classpath
 incubator/maven/maven-extension-plugins/.project
 incubator/maven/maven-extension-plugins/.settings
