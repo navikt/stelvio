@@ -7,7 +7,7 @@
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>maven-base-poms/maven-root-pom</relativePath>
+		<relativePath>../maven-base-poms/maven-root-pom</relativePath>
 	</parent>
 
 	<groupId>no.nav.maven.poms</groupId>
@@ -20,6 +20,8 @@
 		<module>../maven-extension-plugins</module>
 		<module>../maven-plugins</module>
 		<module>../maven-poms</module>
-		<module>../runtimes</module>
+		<!-- Do not include this by defualt - it takes for ever to build...
+			<module>../runtimes</module>
+		-->
 	</modules>
 </project>
