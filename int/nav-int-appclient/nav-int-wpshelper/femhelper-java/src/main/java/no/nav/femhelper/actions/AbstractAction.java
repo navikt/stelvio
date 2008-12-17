@@ -352,9 +352,13 @@ public abstract class AbstractAction {
 	}
 
 	private boolean isMatchWildCard (String input, String regex) {
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(input);
-		return m.find();
+		if (!StringUtils.isEmpty(regex)) {
+			Pattern p = Pattern.compile(regex);
+			Matcher m = p.matcher(input);
+			return m.find();
+		} else {
+			return true;
+		}
 	}
 	
 	/**
