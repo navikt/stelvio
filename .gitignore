@@ -69,6 +69,7 @@ dev/maven2/nav-deployment-code-plugin/.classpath
 dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
+incubator/maven/maven-base-poms/.project
 incubator/maven/maven-base-poms/maven-root-pom/target
 incubator/maven/maven-base-poms/target
 incubator/maven/maven-extension-plugins/.classpath
