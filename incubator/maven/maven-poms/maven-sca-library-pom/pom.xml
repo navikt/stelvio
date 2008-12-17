@@ -44,5 +44,11 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-sca-manifest-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
 </project>
