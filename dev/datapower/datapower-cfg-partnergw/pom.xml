@@ -1,11 +1,48 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>no.nav.datapower</groupId>
 	<artifactId>datapower-cfg-partnergw</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.2-SNAPSHOT</version>
 	<name>Configuration Generator for the 'partner-gw' DataPower module</name>
+	
+	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/datapower/datapower-cfg-partnergw</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/datapower/datapower-cfg-partnergw</developerConnection>
+	</scm>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<configuration>
+						<preparationGoals>
+							clean install
+						</preparationGoals>
+						<autoVersionSubmodules>
+							true
+						</autoVersionSubmodules>
+						<tagBase>
+							https://versjonskontroll.adeo.no/svn/stelvio/tags
+						</tagBase>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -19,28 +56,17 @@
 	        <version>1.2.12</version>
 	    </dependency>
 		<dependency>
-	        <groupId>no.nav.datapower</groupId>
+	        <groupId>no.nav.maven.plugins</groupId>
 	        <artifactId>datapower-utils</artifactId>
-	        <version>1.0.2-SNAPSHOT</version>
+	        <version>1.1.0</version>
 	    </dependency>
 		<dependency>
-	        <groupId>no.nav.datapower</groupId>
+	        <groupId>no.nav.maven.plugins</groupId>
 	        <artifactId>datapower-cfg-gen</artifactId>
-	        <version>1.0.2-SNAPSHOT</version>
+	        <version>1.1.0</version>
 	    </dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>	
+	
 	<distributionManagement>
 		<repository>
 			<id>nav-maven2-internal-repo</id>
