@@ -1,8 +1,12 @@
 package no.nav.maven.plugin.sca;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
@@ -40,14 +44,28 @@ public class ManifestClasspathMojo extends AbstractMojo {
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
 		StringBuilder classPath = new StringBuilder();
-		List<Artifact> runtimeArtifacts = project.getRuntimeArtifacts();
-		for (Artifact runtimeArtifact : runtimeArtifacts) {
-			if (classPath.length() > 0) {
-				classPath.append(" ");
+		List<Dependency> dependencies = project.getDependencies();// getCompileDependencies();//getRuntimeDependencies();
+		// Sort to get consistent behavior
+		Collections.sort(dependencies, new Comparator<Dependency>() {
+			public int compare(Dependency o1, Dependency o2) {
+				return o1.getArtifactId().compareTo(o2.getArtifactId());
 			}
-			classPath.append(runtimeArtifact.getArtifactId()).append(".").append(runtimeArtifact.getType());
+		});
+		for (Dependency dependency : dependencies) {
+			String scope = dependency.getScope();
+			if (Artifact.SCOPE_COMPILE.equals(scope) || Artifact.SCOPE_RUNTIME.equals(scope)) {
+				if (classPath.length() > 0) {
+					classPath.append(" ").append("\r\n");
+				}
+				classPath.append(dependency.getArtifactId()).append(".").append(dependency.getType());
+			}
 		}
 		getLog().info("Setting property <" + propertyName + "> to value <" + classPath + ">");
-		project.getProperties().put(propertyName, classPath.toString());
+		try {
+			project.getProperties().put(propertyName, new String(classPath.toString().getBytes("UTF8"), "UTF8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
