@@ -17,6 +17,18 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-sca-manifest-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>manifest-classpath</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<configuration>
 						<finalName>${artifactId}</finalName>
@@ -58,6 +70,10 @@
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-sca-module-plugin</artifactId>
 				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-sca-manifest-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
