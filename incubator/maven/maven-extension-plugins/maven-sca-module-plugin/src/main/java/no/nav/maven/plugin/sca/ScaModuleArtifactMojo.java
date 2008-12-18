@@ -13,8 +13,9 @@ import org.apache.maven.project.MavenProject;
  * Goal which sets the main artifact file, and sets the artifact handler. The
  * latter is a bug in Maven Core.
  * 
+ * @author test@example.com
+ * 
  * @goal sca-module-artifact
- * @requiresProject
  */
 public class ScaModuleArtifactMojo extends AbstractMojo {
 	/**
@@ -29,13 +30,16 @@ public class ScaModuleArtifactMojo extends AbstractMojo {
 	 * @required
 	 * @readonly
 	 */
-	private ArtifactHandler artifactHandler;
+	private ArtifactHandler scaModuleArtifactHandler;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void execute() throws MojoExecutionException {
 		Build build = project.getBuild();
 		Artifact artifact = project.getArtifact();
 		File earFile = new File(build.getDirectory(), build.getFinalName() + ".ear");
 		artifact.setFile(earFile);
-		artifact.setArtifactHandler(artifactHandler);
+		artifact.setArtifactHandler(scaModuleArtifactHandler);
 	}
 }
