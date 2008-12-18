@@ -3,16 +3,24 @@
 	<target name="serviceDeploy">
 		<property name="serviceDeploy.dir" value="${project.build.directory}" />
 		<condition property="serviceDeploy.executable" value="${wid.runtime}/bin/serviceDeploy.bat" else="${wid.runtime}/bin/serviceDeploy.sh">
-			<os family="windows"/>
+			<os family="windows" />
 		</condition>
 		<property name="serviceDeploy.outputApplication" value="${project.build.finalName}.ear" />
+
+		<delete file="${serviceDeploy.dir}/${serviceDeploy.outputApplication}" quiet="true" />
+
 		<exec dir="${serviceDeploy.dir}" executable="${serviceDeploy.executable}" failonerror="true">
-			<arg path="${project.build.directory}/${project.build.finalName}.zip" />
+			<arg path="${serviceDeploy.dir}/${project.build.finalName}.zip" />
 			<arg line="-outputApplication ${serviceDeploy.outputApplication}" />
 			<arg value="-keep" />
 			<arg value="-cleanStagingModules" />
 			<arg line="-skipXsdValidate true" />
 			<arg line="-progressMonitor none" />
 		</exec>
+
+		<condition property="serviceDeploy.outputApplication.exists">
+			<available file="${serviceDeploy.outputApplication}" filepath="${serviceDeploy.dir}" />
+		</condition>
+		<fail unless="serviceDeploy.outputApplication.exists" message="ServiceDeploy failed, no EAR file created" />
 	</target>
 </project>
