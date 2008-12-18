@@ -1,60 +1,67 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   	<modelVersion>4.0.0</modelVersion>
-  	<groupId>no.nav.maven.plugins</groupId>
+  	
   	<artifactId>maven-deployment-descriptor-common</artifactId>
   	<packaging>jar</packaging>
-  	<version>1.0.1-SNAPSHOT</version>
+  	
   	<name>Maven WebSphere Deployment Descriptor Common library</name>
   	<description>
   	</description>
   	<url>http://maven.apache.org</url>
+  	
+  	
+	<parent>
+		<groupId>no.nav.maven.plugins</groupId>
+		<artifactId>maven-deployment-descriptor-pom</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>../maven-deployment-descriptor-pom</relativePath>
+	</parent>
+  	
+  	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven2/maven-datapower-plugin/datapower-cfg-gen
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/datapower-cfg-gen
+		</developerConnection>
+	</scm>
   	<dependencies>
     	<dependency>
       		<groupId>org.apache.maven</groupId>
       		<artifactId>maven-plugin-api</artifactId>
-      		<version>2.0</version>
     	</dependency>
     	<dependency>
       		<groupId>no.nav.maven</groupId>
       		<artifactId>maven-deployment-descriptor-common-deps</artifactId>
-      		<version>1.0.0</version>
     	</dependency>
     	<dependency>
 			<artifactId>spring-core</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>2.0.4</version>
 		</dependency>
 		<dependency>
 			<!-- spring-beans is a Spring core library used for manipulating Java beans. This is the most basic Spring library. -->
 			<artifactId>spring-beans</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>2.0.4</version>
 		</dependency>
 		<dependency>
 			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
 			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
-			<version>2.0.4</version>
 		</dependency>
     	<dependency>
 			<artifactId>commons-logging</artifactId>
 			<groupId>commons-logging</groupId>
-			<version>1.1</version>
 		</dependency>
     	
     	<!-- Test scoped dependencies -->
     	<dependency>
       		<groupId>junit</groupId>
       		<artifactId>junit</artifactId>
-      		<version>3.8.1</version>
-      		<scope>test</scope>
     	</dependency>
     	<dependency>
       		<groupId>org.apache.maven.plugin-testing</groupId>
       		<artifactId>maven-plugin-testing-harness</artifactId>
-      		<version>1.2</version>
-      		<scope>test</scope>
     	</dependency>
   	</dependencies>
   	<build>

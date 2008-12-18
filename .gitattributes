@@ -1868,6 +1868,7 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/ear/test-prod-oppkoblingstestApp.ear -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ejb-security-pom.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ws-security-outbound-pom.xml -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/pom.xml -text
 dev/maven2/maven-ejb-plugin/.classpath -text
 dev/maven2/maven-ejb-plugin/.project -text
 dev/maven2/maven-ejb-plugin/META-INF/LICENSE.txt -text

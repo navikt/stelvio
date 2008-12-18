@@ -1,44 +1,48 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   	<modelVersion>4.0.0</modelVersion>
   	
-  	<groupId>no.nav.maven.plugins</groupId>
+  	
   	<artifactId>maven-deployment-descriptor-plugin</artifactId>
   	<packaging>maven-plugin</packaging>
-  	<version>1.0.3-SNAPSHOT</version>
-  	<name>Maven WebSphere Deployment Descriptor Plugin</name>
   	
+  	<name>Maven WebSphere Deployment Descriptor Plugin</name>  	  	  	
   	<description>
   	</description>
   	<url>http://maven.apache.org</url>
+  	
+  	
+	<parent>
+		<groupId>no.nav.maven.plugins</groupId>
+		<artifactId>maven-deployment-descriptor-pom</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>../maven-deployment-descriptor-pom</relativePath>
+	</parent>
+  	
   	<dependencies>
+ 
+     	<dependency>
+    		<groupId>${project.groupId}</groupId>
+      		<artifactId>maven-deployment-descriptor-common</artifactId>
+    	</dependency>
+    	
     	<dependency>
       		<groupId>org.apache.maven</groupId>
       		<artifactId>maven-plugin-api</artifactId>
-      		<version>2.0</version>
     	</dependency>
-    	<dependency>
-    		<groupId>no.nav.maven.plugins</groupId>
-      		<artifactId>maven-deployment-descriptor-common</artifactId>
-      		<version>1.0.0</version>
-    	</dependency>
+
     	<dependency>
     		<groupId>no.nav.maven.plugins</groupId>
   			<artifactId>maven-moose-earfile-retriever</artifactId>
-  			<version>1.0.0</version>
     	</dependency>
     	
     	<!-- Test scoped dependencies -->
     	<dependency>
       		<groupId>junit</groupId>
       		<artifactId>junit</artifactId>
-      		<version>3.8.1</version>
-      		<scope>test</scope>
     	</dependency>
     	<dependency>
       		<groupId>org.apache.maven.plugin-testing</groupId>
       		<artifactId>maven-plugin-testing-harness</artifactId>
-      		<version>1.2</version>
-      		<scope>test</scope>
     	</dependency>
   	</dependencies>
   	

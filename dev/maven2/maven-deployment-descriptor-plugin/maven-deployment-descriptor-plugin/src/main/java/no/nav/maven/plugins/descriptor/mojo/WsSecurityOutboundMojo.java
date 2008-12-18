@@ -18,6 +18,7 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
 /**
  * 
  * @goal addWsSecurityOutbound
+ * @requiresProject false
  *
  */
 public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
@@ -33,7 +34,7 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	private String authMechanism;		
 
 	/**
-	 * @parameter
+	 * @parameter expression="${endpointPortServerAddress}"
 	 */
 	private String endpointPortServerAddress;
 	
