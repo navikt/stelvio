@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>no.nav.maven.plugins</groupId>
-	<artifactId>maven-deployment-descriptor-pom</artifactId>
+	<artifactId>maven-deployment-descriptor-project</artifactId>
 	<packaging>pom</packaging>
 	<version>1.1.0-SNAPSHOT</version>
 	<name>Maven WebSphere Deployment Descriptor Plugin Project</name>
@@ -19,16 +19,16 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-deployment-descriptor-plugin/
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-deployment-descriptor-plugin/
 		</developerConnection>
 	</scm>
 
 	<modules>
-		<module>../maven-deployment-descriptor-common</module>
-		<module>../maven-deployment-descriptor-plugin</module>
+		<module>maven-deployment-descriptor-common</module>
+		<module>maven-deployment-descriptor-plugin</module>
 	</modules>
 
 	<build>
