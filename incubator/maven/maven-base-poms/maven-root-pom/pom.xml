@@ -43,6 +43,11 @@
 				<plugin>
 					<artifactId>maven-plugin-plugin</artifactId>
 					<dependencies>
+						<!--  
+							TODO: This dependency should ideally not be here, but in the plugins that are implemented i ANT.
+							I tried it, but somehow the configuration is not taken into account when building these plugins as 
+							part of an aggreation Maven module.
+						-->
 						<dependency>
 							<groupId>org.apache.maven</groupId>
 							<artifactId>
