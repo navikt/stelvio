@@ -83,7 +83,6 @@ incubator/maven/.project
 incubator/maven/maven-base-poms/.project
 incubator/maven/maven-base-poms/maven-root-pom/target
 incubator/maven/maven-base-poms/target
-incubator/maven/maven-bundle/target
 incubator/maven/maven-extension-plugins/.classpath
 incubator/maven/maven-extension-plugins/.project
 incubator/maven/maven-extension-plugins/.settings
