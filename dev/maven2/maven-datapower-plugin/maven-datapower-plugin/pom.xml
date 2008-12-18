@@ -10,7 +10,7 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven2/maven-datapower-plugin/maven-datapower-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/maven-datapower-plugin
 		</connection>
 		<developerConnection>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/maven-datapower-plugin
