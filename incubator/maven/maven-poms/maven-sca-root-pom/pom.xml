@@ -24,6 +24,7 @@
 				<directory>${basedir}/src/main/resources</directory>
 			</resource>
 			<resource>
+				<!-- TODO: This is here because WID insists on having the root folder as a source folder -->
 				<!-- TODO: Review which files to exclude/include -->
 				<directory>${basedir}</directory>
 				<excludes>
@@ -70,6 +71,10 @@
 		</dependency>
 	</dependencies>
 	<properties>
+		<!-- 
+			TODO: WID goes bananas if the Maven build is using the default target folder as output. 
+			As a workaround we are changing the target folder to a folder outside the project		
+		-->
 		<!-- TODO: Review this setting -->
 		<target.dir>${user.home}/maven-build/${artifactId}</target.dir>
 	</properties>
