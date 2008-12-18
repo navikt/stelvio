@@ -1,6 +1,5 @@
 package no.nav.maven.plugin.sca;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -20,6 +19,8 @@ import org.apache.maven.project.MavenProject;
  * The classpath is based on runtime (and compile-time) dependencies using the
  * following customized pattern (for each applicable artifact):
  * ${artifactId}.${type} (i.e. myLibrary.jar)
+ * 
+ * @author test@example.com
  * 
  * @goal manifest-classpath
  * @requiresDependencyResolution
@@ -41,10 +42,13 @@ public class ManifestClasspathMojo extends AbstractMojo {
 	 */
 	private String propertyName;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
 		StringBuilder classPath = new StringBuilder();
-		List<Dependency> dependencies = project.getDependencies();// getCompileDependencies();//getRuntimeDependencies();
+		List<Dependency> dependencies = project.getDependencies();
 		// Sort to get consistent behavior
 		Collections.sort(dependencies, new Comparator<Dependency>() {
 			public int compare(Dependency o1, Dependency o2) {
@@ -60,12 +64,7 @@ public class ManifestClasspathMojo extends AbstractMojo {
 				classPath.append(dependency.getArtifactId()).append(".").append(dependency.getType());
 			}
 		}
-		getLog().info("Setting property <" + propertyName + "> to value <" + classPath + ">");
-		try {
-			project.getProperties().put(propertyName, new String(classPath.toString().getBytes("UTF8"), "UTF8"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		getLog().debug("Setting property <" + propertyName + "> to value <" + classPath + ">");
+		project.getProperties().put(propertyName, classPath.toString());
 	}
 }
