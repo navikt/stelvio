@@ -8,25 +8,36 @@
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 
+	<developers>
+		<developer>
+			<name>Erik Godding Boye</name>
+			<id>ebf2812</id>
+			<email>test@example.com</email>
+			<organization>Zenior AS</organization>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<artifactId>maven-scm-plugin</artifactId>
+					<configuration>
+						<username>svnguest</username>
+						<password>Subversion01</password>
+					</configuration>
+				</plugin>
+
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
 						<source>1.5</source>
 						<target>1.5</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-eclipse-plugin</artifactId>
-					<configuration>
-						<workspaceCodeStylesURL>
-							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
-						</workspaceCodeStylesURL>
-						<buildOutputDirectory>bin</buildOutputDirectory>
-						<downloadJavadocs>true</downloadJavadocs>
-						<downloadSources>true</downloadSources>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -40,6 +51,18 @@
 							<version>2.0.5</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<configuration>
+						<workspaceCodeStylesURL>
+							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
+						</workspaceCodeStylesURL>
+						<buildOutputDirectory>bin</buildOutputDirectory>
+						<downloadJavadocs>true</downloadJavadocs>
+						<downloadSources>true</downloadSources>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -58,6 +81,78 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>
+					maven-project-info-reports-plugin
+				</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<configuration>
+					<configLocation>
+						http://confluence.adeo.no/download/attachments/12007/nav_checkstyle.xml
+					</configLocation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.1</version>
+				<reportSets>
+					<reportSet>
+						<id>html</id>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>doccheck</id>
+						<configuration>
+							<name>DocCheck</name>
+							<description>
+								DocCheck documentation
+							</description>
+							<doclet>
+								com.sun.tools.doclets.doccheck.DocCheck
+							</doclet>
+							<docletArtifact>
+								<groupId>com.sun.tools.doclets</groupId>
+								<artifactId>doccheck</artifactId>
+								<version>1.2b2</version>
+							</docletArtifact>
+							<additionalparam>-d .</additionalparam>
+							<destDir>doccheck</destDir>
+						</configuration>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<configuration>
+					<targetJdk>1.5</targetJdk>
+					<rulesets>
+						<ruleset>
+							http://confluence.adeo.no/download/attachments/12007/nav_pmd.xml
+						</ruleset>
+					</rulesets>
+					<format>xml</format>
+					<linkXref>true</linkXref>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<distributionManagement>
 		<repository>
