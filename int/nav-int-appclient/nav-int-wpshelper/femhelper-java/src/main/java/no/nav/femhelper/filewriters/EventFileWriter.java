@@ -14,11 +14,13 @@ import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Event;
 
 import org.apache.commons.lang.StringUtils;
+import org.python.modules.thread;
 
 import utils.SDOFormatter;
 
 import com.ibm.wbiserver.manualrecovery.FailedEventParameter;
 import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
+import com.ibm.wbiserver.manualrecovery.exceptions.FailedEventRuntimeException;
 import com.ibm.websphere.management.AdminClient;
 import commonj.sdo.DataObject;
 
@@ -108,30 +110,38 @@ public class EventFileWriter extends AbstractFileWriter {
 		// Write parameters from the failed event
 		if (parameters instanceof FailedEventWithParameters) {
 
-			List paramList = parameters.getFailedEventParameters(adminClient.getConnectorProperties());
-
 			// Write quotes start. This is needed to get all values within
 			// the same cell if and when this data is imported in Excel.
 			writer.write("\"");
+			
+			try {
+				List paramList = parameters.getFailedEventParameters(adminClient.getConnectorProperties());
 
-			for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
-				// Each parameter is know as a type of FailedEventParameter.
-				FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
-				SDOFormatter sdoppt = new SDOFormatter(2, " ");
+				for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
+					// Each parameter is know as a type of FailedEventParameter.
+					FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
+					SDOFormatter sdoppt = new SDOFormatter(2, " ");
 
-				// Probing in data type
-				String prettyPrint = null;
-				if (failedEventParameter.getValue() instanceof DataObject) {
-					prettyPrint = sdoppt.sdoPrettyPrint((DataObject) failedEventParameter.getValue());
-				} else if (failedEventParameter.getValue() instanceof String) {
-					prettyPrint = (String) failedEventParameter.getValue();
-				} else {
-					prettyPrint = "Unable to convert";
+					// Probing in data type
+					String prettyPrint = null;
+					if (failedEventParameter.getValue() instanceof DataObject) {
+						prettyPrint = sdoppt.sdoPrettyPrint((DataObject) failedEventParameter.getValue());
+					} else if (failedEventParameter.getValue() instanceof String) {
+						prettyPrint = (String) failedEventParameter.getValue();
+					} else {
+						prettyPrint = "Unable to convert";
+					}
+					writer.write(getEscapedString("DataObject:" + prettyPrint));
+					writer.write(EMPTY); // Ensure all 'cells' are filled to
+											// improve make the view even more easy
+											// to read
 				}
-				writer.write(getEscapedString("DataObject:" + prettyPrint));
-				writer.write(EMPTY); // Ensure all 'cells' are filled to
-										// improve make the view even more easy
-										// to read
+			} catch (RuntimeException e) {
+				String errormsg = "RuntimeException caught during retrieval of business object" + e.getClass().getName();
+				writer.write(errormsg);
+				writer.write(EMPTY);
+				LOGGER.log(Level.SEVERE, errormsg, e);
+				
 			}
 
 			// Write quotes end
