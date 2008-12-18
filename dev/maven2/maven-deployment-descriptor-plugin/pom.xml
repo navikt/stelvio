@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>no.nav.maven.plugins</groupId>
-	<artifactId>maven-deployment-descriptor-project</artifactId>
+	<artifactId>maven-deployment-descriptor-plugin-project</artifactId>
 	<packaging>pom</packaging>
 	<version>1.1.1-SNAPSHOT</version>
 	<name>Maven WebSphere Deployment Descriptor Plugin Project</name>
@@ -51,7 +51,7 @@
 							true
 						</autoVersionSubmodules>
 						<tagBase>
-							https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deployment-descriptor-plugin
+							https://versjonskontroll.adeo.no/svn/stelvio/tags
 						</tagBase>
 					</configuration>
 				</plugin>
