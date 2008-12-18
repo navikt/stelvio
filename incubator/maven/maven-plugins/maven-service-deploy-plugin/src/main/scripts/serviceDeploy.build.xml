@@ -7,7 +7,7 @@
 		</condition>
 		<property name="serviceDeploy.outputApplication" value="${project.build.finalName}.ear" />
 
-		<delete file="${serviceDeploy.dir}/${serviceDeploy.outputApplication}" quiet="true" />
+		<delete file="${serviceDeploy.dir}/${serviceDeploy.outputApplication}" verbose="true" quiet="true" />
 
 		<exec dir="${serviceDeploy.dir}" executable="${serviceDeploy.executable}" failonerror="true">
 			<arg path="${serviceDeploy.dir}/${project.build.finalName}.zip" />
