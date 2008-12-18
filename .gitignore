@@ -70,6 +70,11 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/.settings
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/bin
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/target
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/.classpath
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/.project
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/.settings
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/bin
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/target
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/.classpath
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/.project
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/.settings
