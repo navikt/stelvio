@@ -34,4 +34,13 @@
 			<version>2.0.7</version>
 		</dependency>
 	</dependencies>
+
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-plugins/maven-sca-manifest-plugin
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-plugins/maven-sca-manifest-plugin
+		</developerConnection>
+	</scm>
 </project>
