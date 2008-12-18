@@ -65,6 +65,11 @@ dev/maven2/ant-versionExtracter/trunk/target
 dev/maven2/maven-appXml-plugin/trunk/.classpath
 dev/maven2/maven-appXml-plugin/trunk/.project
 dev/maven2/maven-appXml-plugin/trunk/target
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/.classpath
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/.project
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/.settings
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/bin
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/target
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/.classpath
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/.project
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-pom/.settings
