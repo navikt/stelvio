@@ -1793,9 +1793,6 @@ dev/maven2/maven-deploy-fixer-plugin/src/main/java/no/nav/maven/plugins/fixers/F
 dev/maven2/maven-deploy-fixer-plugin/src/main/java/no/nav/maven/plugins/fixers/RoleBinding.java -text
 dev/maven2/maven-deploy-fixer-plugin/src/main/java/no/nav/maven/plugins/fixers/RunAsValues.java -text
 dev/maven2/maven-deploy-fixer-plugin/src/test/java/no/nav/maven/plugins/Test.java -text
-dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/.compatibility -text
-dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/.project -text
-dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/.settings/org.eclipse.jdt.core.prefs -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/pom.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/common/DeploymentDescriptorEditor.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/config/DeploymentDescriptorMojoConfig.java -text
