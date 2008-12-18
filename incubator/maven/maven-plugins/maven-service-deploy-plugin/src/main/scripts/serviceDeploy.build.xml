@@ -21,6 +21,6 @@
 		<condition property="serviceDeploy.outputApplication.exists">
 			<available file="${serviceDeploy.outputApplication}" filepath="${serviceDeploy.dir}" />
 		</condition>
-		<fail unless="serviceDeploy.outputApplication.exists" message="ServiceDeploy failed, no EAR file created" />
+		<fail unless="serviceDeploy.outputApplication.exists" message="EAR-file does not exist - serviceDeploy probably failed." />
 	</target>
 </project>
