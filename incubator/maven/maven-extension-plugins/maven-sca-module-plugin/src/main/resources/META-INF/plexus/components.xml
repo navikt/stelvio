@@ -5,6 +5,51 @@
 			<role>
 				org.apache.maven.lifecycle.mapping.LifecycleMapping
 			</role>
+			<role-hint>sca-library-jar</role-hint>
+			<implementation>
+				org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping
+			</implementation>
+			<configuration>
+				<lifecycles>
+					<lifecycle>
+						<id>default</id>
+						<phases>
+							<initialize>
+								no.nav.maven.plugins:maven-sca-module-plugin:set-artifact-handler
+							</initialize>
+							<process-resources>
+								org.apache.maven.plugins:maven-resources-plugin:resources
+							</process-resources>
+							<compile>
+								org.apache.maven.plugins:maven-compiler-plugin:compile
+							</compile>
+							<process-test-resources>
+								org.apache.maven.plugins:maven-resources-plugin:testResources
+							</process-test-resources>
+							<test-compile>
+								org.apache.maven.plugins:maven-compiler-plugin:testCompile
+							</test-compile>
+							<test>
+								org.apache.maven.plugins:maven-surefire-plugin:test
+							</test>
+							<package>
+								org.apache.maven.plugins:maven-jar-plugin:jar
+							</package>
+							<install>
+								org.apache.maven.plugins:maven-install-plugin:install
+							</install>
+							<deploy>
+								org.apache.maven.plugins:maven-deploy-plugin:deploy
+							</deploy>
+						</phases>
+					</lifecycle>
+				</lifecycles>
+			</configuration>
+		</component>
+		<component>
+			<role>
+				org.apache.maven.lifecycle.mapping.LifecycleMapping
+			</role>
 			<role-hint>sca-module-ear</role-hint>
 			<implementation>
 				org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping
@@ -30,7 +75,7 @@
 								org.apache.maven.plugins:maven-surefire-plugin:test
 							</test>
 							<package>
-								org.apache.maven.plugins:maven-jar-plugin:jar,org.apache.maven.plugins:maven-assembly-plugin:single,no.nav.maven.plugins:maven-service-deploy-plugin:service-deploy,no.nav.maven.plugins:maven-sca-module-plugin:sca-module-artifact
+								org.apache.maven.plugins:maven-jar-plugin:jar,org.apache.maven.plugins:maven-assembly-plugin:single,no.nav.maven.plugins:maven-service-deploy-plugin:service-deploy,no.nav.maven.plugins:maven-sca-module-plugin:sca-artifact
 							</package>
 							<install>
 								org.apache.maven.plugins:maven-install-plugin:install
@@ -41,6 +86,20 @@
 						</phases>
 					</lifecycle>
 				</lifecycles>
+			</configuration>
+		</component>
+		<component>
+			<role>
+				org.apache.maven.artifact.handler.ArtifactHandler
+			</role>
+			<role-hint>sca-library-jar</role-hint>
+			<implementation>
+				org.apache.maven.artifact.handler.DefaultArtifactHandler
+			</implementation>
+			<configuration>
+				<type>jar</type>
+				<language>java</language>
+				<addedToClasspath>true</addedToClasspath>
 			</configuration>
 		</component>
 		<component>
