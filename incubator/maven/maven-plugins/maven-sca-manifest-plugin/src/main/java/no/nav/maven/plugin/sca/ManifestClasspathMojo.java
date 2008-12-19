@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -26,6 +27,11 @@ import org.apache.maven.project.MavenProject;
  * @requiresDependencyResolution
  */
 public class ManifestClasspathMojo extends AbstractMojo {
+	/**
+	 * @component
+	 */
+	private ArtifactHandlerManager artifactHandlerManager;
+
 	/**
 	 * @parameter expression="${project}"
 	 * @required
@@ -57,14 +63,22 @@ public class ManifestClasspathMojo extends AbstractMojo {
 		});
 		for (Dependency dependency : dependencies) {
 			String scope = dependency.getScope();
-			if (Artifact.SCOPE_COMPILE.equals(scope) || Artifact.SCOPE_RUNTIME.equals(scope)) {
+			if (Artifact.SCOPE_COMPILE.equals(scope)
+					|| Artifact.SCOPE_RUNTIME.equals(scope)) {
 				if (classPath.length() > 0) {
 					classPath.append(" ").append("\r\n");
 				}
-				classPath.append(dependency.getArtifactId()).append(".").append(dependency.getType());
+				String dependencyExtension = artifactHandlerManager
+						.getArtifactHandler(dependency.getType())
+						.getExtension();
+
+				classPath.append(dependency.getArtifactId()).append(".")
+						.append(dependencyExtension);
 			}
 		}
-		getLog().debug("Setting property <" + propertyName + "> to value <" + classPath + ">");
+		getLog().debug(
+				"Setting property <" + propertyName + "> to value <"
+						+ classPath + ">");
 		project.getProperties().put(propertyName, classPath.toString());
 	}
 }
