@@ -14,9 +14,6 @@
 					<lifecycle>
 						<id>default</id>
 						<phases>
-							<initialize>
-								no.nav.maven.plugins:maven-sca-module-plugin:set-artifact-handler
-							</initialize>
 							<process-resources>
 								org.apache.maven.plugins:maven-resources-plugin:resources
 							</process-resources>
@@ -75,7 +72,7 @@
 								org.apache.maven.plugins:maven-surefire-plugin:test
 							</test>
 							<package>
-								org.apache.maven.plugins:maven-jar-plugin:jar,org.apache.maven.plugins:maven-assembly-plugin:single,no.nav.maven.plugins:maven-service-deploy-plugin:service-deploy,no.nav.maven.plugins:maven-sca-module-plugin:sca-artifact
+								org.apache.maven.plugins:maven-jar-plugin:jar,org.apache.maven.plugins:maven-assembly-plugin:single,no.nav.maven.plugins:maven-service-deploy-plugin:service-deploy,no.nav.maven.plugins:maven-sca-module-plugin:set-artifact-file
 							</package>
 							<install>
 								org.apache.maven.plugins:maven-install-plugin:install
@@ -97,7 +94,9 @@
 				org.apache.maven.artifact.handler.DefaultArtifactHandler
 			</implementation>
 			<configuration>
-				<type>jar</type>
+				<type>sca-library-jar</type>
+				<packaging>sca-library-jar</packaging>
+				<extension>jar</extension>
 				<language>java</language>
 				<addedToClasspath>true</addedToClasspath>
 			</configuration>
@@ -111,7 +110,8 @@
 				org.apache.maven.artifact.handler.DefaultArtifactHandler
 			</implementation>
 			<configuration>
-				<type>ear</type>
+				<type>sca-module-ear</type>
+				<packaging>sca-module-ear</packaging>
 				<extension>ear</extension>
 				<includesDependencies>true</includesDependencies>
 				<language>java</language>
