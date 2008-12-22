@@ -2330,6 +2330,8 @@ incubator/maven/maven-poms/maven-sca-module-pom/pom.xml -text
 incubator/maven/maven-poms/maven-sca-root-pom/.project -text
 incubator/maven/maven-poms/maven-sca-root-pom/pom.xml -text
 incubator/maven/maven-poms/pom.xml -text
+incubator/maven/poc-not-working/poc-bundle/.project -text svneol=unset#text/plain
+incubator/maven/poc-not-working/poc-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-lib1/.classpath -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-lib1/.project -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-lib1/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
