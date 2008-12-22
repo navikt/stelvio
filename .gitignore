@@ -248,15 +248,6 @@ incubator/maven/maven-poms/maven-sca-library-pom/target
 incubator/maven/maven-poms/maven-sca-module-pom/target
 incubator/maven/maven-poms/maven-sca-root-pom/target
 incubator/maven/maven-poms/target
-incubator/maven/poc-working/.classpath
-incubator/maven/poc-working/.project
-incubator/maven/poc-working/.settings
-incubator/maven/poc-working/bin
-incubator/maven/poc-working/poc-lib/bin
-incubator/maven/poc-working/poc-lib/target
-incubator/maven/poc-working/poc-module/bin
-incubator/maven/poc-working/poc-module/target
-incubator/maven/poc-working/target
 incubator/maven/runtimes/.classpath
 incubator/maven/runtimes/.project
 incubator/maven/runtimes/.settings
