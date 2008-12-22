@@ -28,7 +28,6 @@
 				<!-- TODO: Review which files to exclude/include -->
 				<directory>${basedir}</directory>
 				<excludes>
-					<exclude>${project.build.directory}/**</exclude>
 					<exclude>bin/**</exclude>
 					<exclude>.settings/**</exclude>
 				</excludes>
