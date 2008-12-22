@@ -2337,6 +2337,13 @@ incubator/maven/poc-working/poc-lib/pom.xml -text
 incubator/maven/poc-working/poc-lib/src/main/java/no/nav/util/LoggerUtil.java -text
 incubator/maven/poc-working/poc-module/.classpath -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/.project -text svneol=unset#text/plain
+incubator/maven/poc-working/poc-module/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/maven/poc-working/poc-module/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/maven/poc-working/poc-module/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/maven/poc-working/poc-module/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/maven/poc-working/poc-module/.settings/org.eclipse.wst.common.component -text
+incubator/maven/poc-working/poc-module/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/maven/poc-working/poc-module/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/EchoService.component -text
 incubator/maven/poc-working/poc-module/EchoServiceWSEXP.export -text
 incubator/maven/poc-working/poc-module/no/nav/inf/EchoService.wsdl -text
