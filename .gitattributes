@@ -2359,6 +2359,7 @@ incubator/maven/poc-working/poc-module/META-INF/MANIFEST.MF -text svneol=unset#t
 incubator/maven/poc-working/poc-module/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/no/nav/inf/poc-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
+incubator/maven/poc-working/poc-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/sca.module -text
 incubator/maven/poc-working/poc-module/sca.modulex -text
 incubator/maven/pom.xml -text
