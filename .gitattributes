@@ -2340,8 +2340,8 @@ incubator/maven/poc-working/poc-lib/.settings/org.eclipse.wst.common.component -
 incubator/maven/poc-working/poc-lib/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-lib/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-lib/META-INF/MANIFEST.MF -text
-incubator/maven/poc-working/poc-lib/gen/src/no/nav/util/LoggerUtil.java -text
 incubator/maven/poc-working/poc-lib/no/nav/gbo/StringBO.xsd -text
+incubator/maven/poc-working/poc-lib/no/nav/util/LoggerUtil.java -text
 incubator/maven/poc-working/poc-lib/pom.xml -text
 incubator/maven/poc-working/poc-module/.classpath -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/.project -text svneol=unset#text/plain
