@@ -2333,6 +2333,8 @@ incubator/maven/maven-poms/pom.xml -text
 incubator/maven/poc-working/poc-lib/no/nav/gbo/StringBO.xsd -text
 incubator/maven/poc-working/poc-lib/pom.xml -text
 incubator/maven/poc-working/poc-lib/src/main/java/no/nav/util/LoggerUtil.java -text
+incubator/maven/poc-working/poc-module/.classpath -text svneol=unset#text/plain
+incubator/maven/poc-working/poc-module/.project -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/EchoService.component -text
 incubator/maven/poc-working/poc-module/EchoServiceWSEXP.export -text
 incubator/maven/poc-working/poc-module/no/nav/inf/EchoService.wsdl -text
