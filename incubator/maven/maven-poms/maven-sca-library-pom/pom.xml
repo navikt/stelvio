@@ -41,6 +41,70 @@
 						</archive>
 					</configuration>
 				</plugin>
+
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<configuration>
+						<workspaceCodeStylesURL>
+							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
+						</workspaceCodeStylesURL>
+						<buildOutputDirectory>bin</buildOutputDirectory>
+						<downloadJavadocs>true</downloadJavadocs>
+						<downloadSources>true</downloadSources>
+						<buildcommands>
+							<buildCommand>
+								<name>
+									com.ibm.wbit.project.wbimodulebuilder_prejdt
+								</name>
+							</buildCommand>
+							<buildCommand>
+								<name>
+									org.eclipse.jdt.core.javabuilder
+								</name>
+							</buildCommand>
+							<buildCommand>
+								<name>
+									com.ibm.wbit.project.wbimodulebuilder_postjdt
+								</name>
+							</buildCommand>
+						</buildcommands>
+						<projectnatures>
+							<projectnature>
+								org.eclipse.wst.common.project.facet.core.nature
+							</projectnature>
+							<projectnature>
+								org.eclipse.jdt.core.javanature
+							</projectnature>
+							<projectnature>
+								org.eclipse.wst.common.modulecore.ModuleCoreNature
+							</projectnature>
+							<projectnature>
+								org.eclipse.jem.workbench.JavaEMFNature
+							</projectnature>
+							<projectnature>
+								com.ibm.ws.sca.rapiddeploy.style.SCAProjectNature
+							</projectnature>
+							<projectnature>
+								com.ibm.wbit.project.sharedartifactmodulenature
+							</projectnature>
+						</projectnatures>
+						<classpathContainers>
+							<classpathContainer>
+								<![CDATA[
+								org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere Process Server v6.1 JRE
+								]]>
+							</classpathContainer>
+							<classpathContainer>
+								org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v61.bi/wps.v61
+							</classpathContainer>
+						</classpathContainers>
+						<excludes>
+							<exclude>
+								com.ibm.maven.runtimes:wps-runtime
+							</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -48,9 +112,12 @@
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-sca-manifest-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
-	
+
 	<scm>
 		<connection>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms/maven-sca-library-pom
