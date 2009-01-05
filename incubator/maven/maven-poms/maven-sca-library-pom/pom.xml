@@ -112,9 +112,6 @@
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-sca-manifest-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<artifactId>maven-eclipse-plugin</artifactId>
-			</plugin>
 		</plugins>
 	</build>
 
