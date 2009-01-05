@@ -18,12 +18,6 @@
 			<plugins>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>maven-sca-module-plugin</artifactId>
-					<extensions>true</extensions>
-				</plugin>
-
-				<plugin>
-					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-sca-manifest-plugin</artifactId>
 					<executions>
 						<execution>
