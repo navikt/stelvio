@@ -2308,6 +2308,8 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
+incubator/maven/maven-assemblies/maven-service-deploy-assembly/pom.xml -text
+incubator/maven/maven-assemblies/maven-service-deploy-assembly/src/main/resources/assemblies/service-deploy-assembly.xml -text
 incubator/maven/maven-base-poms/maven-root-pom/.project -text
 incubator/maven/maven-base-poms/maven-root-pom/pom.xml -text
 incubator/maven/maven-base-poms/pom.xml -text
@@ -2317,8 +2319,6 @@ incubator/maven/maven-extension-plugins/maven-sca-artifact-plugin/src/main/resou
 incubator/maven/maven-extension-plugins/pom.xml -text
 incubator/maven/maven-plugins/maven-sca-manifest-plugin/pom.xml -text
 incubator/maven/maven-plugins/maven-sca-manifest-plugin/src/main/java/no/nav/maven/plugin/sca/ManifestClasspathMojo.java -text
-incubator/maven/maven-plugins/maven-service-deploy-assembly/pom.xml -text
-incubator/maven/maven-plugins/maven-service-deploy-assembly/src/main/resources/assemblies/service-deploy-assembly.xml -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/pom.xml -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
