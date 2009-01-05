@@ -27,7 +27,7 @@
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-sca-module-plugin</artifactId>
+				<artifactId>maven-sca-artifact-plugin</artifactId>
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
