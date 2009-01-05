@@ -16,7 +16,6 @@
 
 	<modules>
 		<module>maven-sca-manifest-plugin</module>
-		<module>maven-service-deploy-assembly</module>
 		<module>maven-service-deploy-plugin</module>
 	</modules>
 </project>

@@ -18,6 +18,7 @@
 	<modules>
 		<module>maven-base-poms</module>
 		<module>maven-extension-plugins</module>
+		<module>maven-assemblies</module>
 		<module>maven-plugins</module>
 		<module>maven-poms</module>
 		<!-- Do not include this by defualt - it takes for ever to build...
