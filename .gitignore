@@ -80,6 +80,10 @@ dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
 incubator/maven/.project
+incubator/maven/maven-assemblies/maven-project-interexchange-assembly/.classpath
+incubator/maven/maven-assemblies/maven-project-interexchange-assembly/.project
+incubator/maven/maven-assemblies/maven-project-interexchange-assembly/.settings
+incubator/maven/maven-assemblies/maven-project-interexchange-assembly/bin
 incubator/maven/maven-assemblies/maven-service-deploy-assembly/.classpath
 incubator/maven/maven-assemblies/maven-service-deploy-assembly/.project
 incubator/maven/maven-assemblies/maven-service-deploy-assembly/.settings

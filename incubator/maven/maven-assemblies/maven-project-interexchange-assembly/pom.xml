@@ -8,14 +8,18 @@
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	
-	<groupId>no.nav.maven.assemblies</groupId>
-	<artifactId>maven-assemblies</artifactId>
-	<packaging>pom</packaging>
-	<version>1.0-SNAPSHOT</version>
 
-	<modules>
-		<module>maven-service-deploy-assembly</module>
-		<module>maven-project-interexchange-assembly</module>
-	</modules>
+	<groupId>no.nav.maven.assemblies</groupId>
+	<artifactId>maven-project-interexchange-assembly</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-assemblies/maven-project-interexchange-assembly
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-assemblies/maven-project-interexchange-assembly
+		</developerConnection>
+	</scm>
 </project>

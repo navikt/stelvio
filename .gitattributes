@@ -2308,6 +2308,8 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
+incubator/maven/maven-assemblies/maven-project-interexchange-assembly/pom.xml -text
+incubator/maven/maven-assemblies/maven-project-interexchange-assembly/src/main/resources/assemblies/project-interexchange-assembly.xml -text
 incubator/maven/maven-assemblies/maven-service-deploy-assembly/pom.xml -text
 incubator/maven/maven-assemblies/maven-service-deploy-assembly/src/main/resources/assemblies/service-deploy-assembly.xml -text
 incubator/maven/maven-assemblies/pom.xml -text
