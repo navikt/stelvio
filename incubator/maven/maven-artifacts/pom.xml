@@ -21,8 +21,5 @@
 		<module>maven-assemblies</module>
 		<module>maven-plugins</module>
 		<module>maven-poms</module>
-		<!-- Do not include this by defualt - it takes for ever to build...
-			<module>../runtimes</module>
-		-->
 	</modules>
 </project>
