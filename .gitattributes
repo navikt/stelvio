@@ -2321,9 +2321,9 @@ incubator/maven/maven-artifacts/maven-assemblies/maven-project-interexchange-ass
 incubator/maven/maven-artifacts/maven-assemblies/maven-service-deploy-assembly/pom.xml -text
 incubator/maven/maven-artifacts/maven-assemblies/maven-service-deploy-assembly/src/main/resources/assemblies/service-deploy-assembly.xml -text
 incubator/maven/maven-artifacts/maven-assemblies/pom.xml -text
-incubator/maven/maven-base-poms/maven-root-pom/.project -text
-incubator/maven/maven-base-poms/maven-root-pom/pom.xml -text
-incubator/maven/maven-base-poms/pom.xml -text
+incubator/maven/maven-artifacts/maven-base-poms/maven-root-pom/.project -text
+incubator/maven/maven-artifacts/maven-base-poms/maven-root-pom/pom.xml -text
+incubator/maven/maven-artifacts/maven-base-poms/pom.xml -text
 incubator/maven/maven-extension-plugins/maven-sca-artifact-plugin/pom.xml -text
 incubator/maven/maven-extension-plugins/maven-sca-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/SetArtifactFileMojo.java -text
 incubator/maven/maven-extension-plugins/maven-sca-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text

@@ -110,9 +110,9 @@ incubator/maven/maven-artifacts/maven-assemblies/maven-service-deploy-assembly/s
 incubator/maven/maven-artifacts/maven-assemblies/maven-service-deploy-assembly/src/main/target
 incubator/maven/maven-artifacts/maven-assemblies/maven-service-deploy-assembly/src/target
 incubator/maven/maven-artifacts/maven-assemblies/maven-service-deploy-assembly/target
-incubator/maven/maven-base-poms/.project
-incubator/maven/maven-base-poms/maven-root-pom/target
-incubator/maven/maven-base-poms/target
+incubator/maven/maven-artifacts/maven-base-poms/.project
+incubator/maven/maven-artifacts/maven-base-poms/maven-root-pom/target
+incubator/maven/maven-artifacts/maven-base-poms/target
 incubator/maven/maven-extension-plugins/.classpath
 incubator/maven/maven-extension-plugins/.project
 incubator/maven/maven-extension-plugins/.settings
