@@ -81,6 +81,19 @@ public class DeploymentDescriptorMojoTest extends AbstractMojoTestCase{
 	public void testExecuteDeploymentDescriptorMojo(){
 		executeEjbSecurityMojo();
 		//executeWsSecurityOutboundMojo();
+		//executeWsSecurityInboundMojo();
+	}
+	
+	public void executeWsSecurityInboundMojo(){
+		File pom = getTestPom(TEST_POM_DIRECTORY + "ws-security-inbound-pom.xml");
+		File earFile = getEar("/ear/nav-cons-pen-pselv-person-NOTOKENS.ear");
+		File testEarFile = getTestEar(earFile); 
+		Mojo mojo = getMojo("addWsSecurityInbound", pom);
+		try {	
+			mojo.execute();
+		} catch (Throwable t){
+			t.printStackTrace();
+		}	
 	}
 	
 

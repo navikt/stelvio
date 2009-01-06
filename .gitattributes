@@ -1847,6 +1847,7 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/main/java/no/nav/maven/plugins/descriptor/mojo/AbstractDeploymentDescriptorMojo.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/main/java/no/nav/maven/plugins/descriptor/mojo/EjbSecurityMojo.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/main/java/no/nav/maven/plugins/descriptor/mojo/SecurityRoleBindingMojo.java -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/main/java/no/nav/maven/plugins/descriptor/mojo/WsSecurityInboundMojo.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/main/java/no/nav/maven/plugins/descriptor/mojo/WsSecurityOutboundMojo.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/main/resources/application-client_1_4.xsd -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/main/resources/application_1_3.dtd -text
@@ -1870,8 +1871,10 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/config/ejb-security-config-t2.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/config/ejb-security-config.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/config/security-rolebinding-config.xml -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/ear/nav-cons-pen-pselv-person-NOTOKENS.ear -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/ear/test-prod-oppkoblingstestApp.ear -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ejb-security-pom.xml -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ws-security-inbound-pom.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ws-security-outbound-pom.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/pom.xml -text
 dev/maven2/maven-ejb-plugin/.classpath -text
