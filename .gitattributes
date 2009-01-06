@@ -2342,6 +2342,8 @@ incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/.project -text
 incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/pom.xml -text
 incubator/maven/maven-artifacts/maven-poms/pom.xml -text
 incubator/maven/maven-artifacts/pom.xml -text
+incubator/maven/maven-poc/poc-not-working-bundle/.project -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-lib1/.classpath -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-lib1/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-lib1/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
@@ -2368,8 +2370,6 @@ incubator/maven/maven-poc/poc-not-working/poc-lib2/META-INF/MANIFEST.MF -text sv
 incubator/maven/maven-poc/poc-not-working/poc-lib2/gen/src/no/nav/util/LoggerUtil2.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-lib2/no/nav/gbo/StringBO2.xsd -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-lib2/pom.xml -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working/poc-not-working-bundle/.project -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working/poc-not-working-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-not-working-module/.classpath -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-not-working-module/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-not-working-module/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
