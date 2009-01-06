@@ -2407,8 +2407,8 @@ incubator/maven/maven-poc/poc-not-working/poc-lib1/META-INF/MANIFEST.MF -text sv
 incubator/maven/maven-poc/poc-not-working/poc-lib1/gen/src/no/nav/util/LoggerUtil1.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-lib1/no/nav/gbo/StringBO1.xsd -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working/poc-lib1/pom.xml -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-working/poc-working-bundle/.project -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-working/poc-working-bundle/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-working-bundle/.project -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-working-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working/poc-working-module/.classpath -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working/poc-working-module/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working/poc-working-module/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
