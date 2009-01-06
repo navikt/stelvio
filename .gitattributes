@@ -2394,42 +2394,42 @@ incubator/maven/maven-pocs/poc-not-working/poc-module/no/nav/java/Main.java -tex
 incubator/maven/maven-pocs/poc-not-working/poc-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-pocs/poc-not-working/poc-module/sca.module -text
 incubator/maven/maven-pocs/poc-not-working/poc-module/sca.modulex -text
+incubator/maven/maven-pocs/poc-working/poc-bundle/.project -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-bundle/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/.classpath -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/.project -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/.settings/org.eclipse.wst.common.component -text
+incubator/maven/maven-pocs/poc-working/poc-lib/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/gen/src/no/nav/util/LoggerUtil.java -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/no/nav/gbo/StringBO.xsd -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-lib/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/.classpath -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/.project -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/.settings/org.eclipse.wst.common.component -text
+incubator/maven/maven-pocs/poc-working/poc-module/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/EchoService.component -text
+incubator/maven/maven-pocs/poc-working/poc-module/EchoServiceWSEXP.export -text
+incubator/maven/maven-pocs/poc-working/poc-module/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/no/nav/inf/poc-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-pocs/poc-working/poc-module/sca.module -text
+incubator/maven/maven-pocs/poc-working/poc-module/sca.modulex -text
 incubator/maven/maven-runtimes/pom.xml -text
 incubator/maven/maven-runtimes/wps-runtime/files.txt -text
 incubator/maven/maven-runtimes/wps-runtime/pom.xml -text
-incubator/maven/poc-working/poc-bundle/.project -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-bundle/pom.xml -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/.classpath -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/.project -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/.settings/org.eclipse.wst.common.component -text
-incubator/maven/poc-working/poc-lib/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/gen/src/no/nav/util/LoggerUtil.java -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/no/nav/gbo/StringBO.xsd -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-lib/pom.xml -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/.classpath -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/.project -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/.settings/org.eclipse.wst.common.component -text
-incubator/maven/poc-working/poc-module/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/EchoService.component -text
-incubator/maven/poc-working/poc-module/EchoServiceWSEXP.export -text
-incubator/maven/poc-working/poc-module/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/no/nav/inf/poc-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/pom.xml -text svneol=unset#text/plain
-incubator/maven/poc-working/poc-module/sca.module -text
-incubator/maven/poc-working/poc-module/sca.modulex -text
 incubator/nav-int-fault-test/nav-broc-fault-test/.classpath -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.project -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
