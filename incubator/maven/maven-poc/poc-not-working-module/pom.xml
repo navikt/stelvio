@@ -9,20 +9,20 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>poc-not-working</groupId>
-	<artifactId>poc-module</artifactId>
+	<groupId>no.nav.maven.poc</groupId>
+	<artifactId>poc-not-working-module</artifactId>
 	<packaging>sca-module-ear</packaging>
 	<version>1.0-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
-			<groupId>poc-not-working</groupId>
-			<artifactId>poc-lib1</artifactId>
+			<groupId>no.nav.maven.poc</groupId>
+			<artifactId>poc-lib</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>sca-library-jar</type>
 		</dependency>
 		<dependency>
-			<groupId>poc-not-working</groupId>
+			<groupId>no.nav.maven.poc</groupId>
 			<artifactId>poc-lib2</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>sca-library-jar</type>
