@@ -2342,6 +2342,9 @@ incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/.project -text
 incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/pom.xml -text
 incubator/maven/maven-artifacts/maven-poms/pom.xml -text
 incubator/maven/maven-artifacts/pom.xml -text
+incubator/maven/maven-runtimes/pom.xml -text
+incubator/maven/maven-runtimes/wps-runtime/files.txt -text
+incubator/maven/maven-runtimes/wps-runtime/pom.xml -text
 incubator/maven/poc-not-working/poc-bundle/.project -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-lib1/.classpath -text svneol=unset#text/plain
@@ -2427,9 +2430,6 @@ incubator/maven/poc-working/poc-module/no/nav/java/EchoServiceImpl.java -text sv
 incubator/maven/poc-working/poc-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/sca.module -text
 incubator/maven/poc-working/poc-module/sca.modulex -text
-incubator/maven/runtimes/pom.xml -text
-incubator/maven/runtimes/wps-runtime/files.txt -text
-incubator/maven/runtimes/wps-runtime/pom.xml -text
 incubator/nav-int-fault-test/nav-broc-fault-test/.classpath -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.project -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
