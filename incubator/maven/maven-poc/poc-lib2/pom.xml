@@ -9,7 +9,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>poc-not-working</groupId>
+	<groupId>no.nav.maven.poc</groupId>
 	<artifactId>poc-lib2</artifactId>
 	<packaging>sca-library-jar</packaging>
 	<version>1.0-SNAPSHOT</version>
