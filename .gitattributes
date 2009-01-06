@@ -2350,16 +2350,16 @@ incubator/maven/maven-poc/poc-lib2/no/nav/gbo/StringBO2.xsd -text svneol=unset#t
 incubator/maven/maven-poc/poc-lib2/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-bundle/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-bundle/pom.xml -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working-module/EchoService1.component -text
-incubator/maven/maven-poc/poc-not-working-module/EchoService1WSEXP.export -text
+incubator/maven/maven-poc/poc-not-working-module/EchoService.component -text
 incubator/maven/maven-poc/poc-not-working-module/EchoService2.component -text
 incubator/maven/maven-poc/poc-not-working-module/EchoService2WSEXP.export -text
-incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService1.wsdl -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/EchoServiceWSEXP.export -text
+incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService2.wsdl -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-module_EchoService1WSEXP.wsdl -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-module_EchoService2WSEXP.wsdl -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working-module/no/nav/java/EchoService1Impl.java -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoService2WSEXP.wsdl -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/java/EchoService2Impl.java -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/java/Main.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/sca.module -text

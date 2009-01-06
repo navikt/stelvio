@@ -15,7 +15,7 @@
   </wsdl:binding>
   <wsdl:service name="EchoService2WSEXP_EchoService2HttpService">
     <wsdl:port binding="this:EchoService2WSEXP_EchoService2HttpBinding" name="EchoService2WSEXP_EchoService2HttpPort">
-      <soap:address location="http://localhost:9080/poc-moduleWeb/sca/EchoService2WSEXP"/>
+      <soap:address location="http://localhost:9080/poc-not-working-moduleWeb/sca/EchoService2WSEXP"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

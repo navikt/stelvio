@@ -1,15 +1,15 @@
 package no.nav.java;
 
-import no.nav.util.LoggerUtil1;
+import no.nav.util.LoggerUtil;
 
 import com.ibm.websphere.sca.ServiceManager;
 import commonj.sdo.DataObject;
 
-public class EchoService1Impl {
+public class EchoServiceImpl {
 	/**
 	 * Default constructor.
 	 */
-	public EchoService1Impl() {
+	public EchoServiceImpl() {
 		super();
 	}
 
@@ -36,7 +36,7 @@ public class EchoService1Impl {
 	 * fault(s).
 	 */
 	public DataObject echo(DataObject input) {
-		LoggerUtil1.log(input);
+		LoggerUtil.log(input);
 		return input;
 	}
 }
