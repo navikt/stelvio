@@ -2334,13 +2334,13 @@ incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/pom.xm
 incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
 incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
 incubator/maven/maven-artifacts/maven-plugins/pom.xml -text
-incubator/maven/maven-poms/maven-sca-library-pom/.project -text
-incubator/maven/maven-poms/maven-sca-library-pom/pom.xml -text
-incubator/maven/maven-poms/maven-sca-module-pom/.project -text
-incubator/maven/maven-poms/maven-sca-module-pom/pom.xml -text
-incubator/maven/maven-poms/maven-sca-root-pom/.project -text
-incubator/maven/maven-poms/maven-sca-root-pom/pom.xml -text
-incubator/maven/maven-poms/pom.xml -text
+incubator/maven/maven-artifacts/maven-poms/maven-sca-library-pom/.project -text
+incubator/maven/maven-artifacts/maven-poms/maven-sca-library-pom/pom.xml -text
+incubator/maven/maven-artifacts/maven-poms/maven-sca-module-pom/.project -text
+incubator/maven/maven-artifacts/maven-poms/maven-sca-module-pom/pom.xml -text
+incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/.project -text
+incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/pom.xml -text
+incubator/maven/maven-artifacts/maven-poms/pom.xml -text
 incubator/maven/poc-not-working/poc-bundle/.project -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-lib1/.classpath -text svneol=unset#text/plain
