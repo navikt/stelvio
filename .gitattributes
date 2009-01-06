@@ -1836,6 +1836,7 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/web-jsptaglibrary_2_0.xsd -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/xml.xsd -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/xml.xsd.bak -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/java/no/nav/maven/plugins/descriptor/websphere/AbstractDeploymentDescriptorTestCase.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/java/no/nav/maven/plugins/descriptor/websphere/bnd/IbmWebServiceBndEditorTest.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/java/no/nav/maven/plugins/descriptor/websphere/ext/IbmWebServiceExtEditorTest.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/resources/ejb-security-config-t2.xml -text
