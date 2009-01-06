@@ -21,9 +21,8 @@
 					<artifactId>maven-sca-manifest-plugin</artifactId>
 					<executions>
 						<execution>
-							<phase>generate-resources</phase>
 							<goals>
-								<goal>manifest-classpath</goal>
+								<goal>build-manifest-classpath</goal>
 							</goals>
 						</execution>
 					</executions>
