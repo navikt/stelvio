@@ -14,6 +14,9 @@
 					<lifecycle>
 						<id>default</id>
 						<phases>
+							<generate-resources>
+								no.nav.maven.plugins:maven-sca-manifest-plugin:build-manifest-classpath
+							</generate-resources>
 							<process-resources>
 								org.apache.maven.plugins:maven-resources-plugin:resources
 							</process-resources>
@@ -56,6 +59,9 @@
 					<lifecycle>
 						<id>default</id>
 						<phases>
+							<generate-resources>
+								no.nav.maven.plugins:maven-sca-manifest-plugin:build-manifest-classpath
+							</generate-resources>
 							<process-resources>
 								org.apache.maven.plugins:maven-resources-plugin:resources
 							</process-resources>
