@@ -17,31 +17,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>maven-sca-manifest-plugin</artifactId>
-					<executions>
-						<execution>
-							<goals>
-								<goal>build-manifest-classpath</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<configuration>
-						<archive>
-							<manifestEntries>
-								<Class-Path>
-									${manifest.classpath}
-								</Class-Path>
-								<ServiceLibrary>true</ServiceLibrary>
-							</manifestEntries>
-						</archive>
-					</configuration>
-				</plugin>
-
-				<plugin>
 					<artifactId>maven-eclipse-plugin</artifactId>
 					<configuration>
 						<workspaceCodeStylesURL>
@@ -110,6 +85,26 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-sca-manifest-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-manifest-classpath</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Class-Path>
+								${manifest.classpath}
+							</Class-Path>
+							<ServiceLibrary>true</ServiceLibrary>
+						</manifestEntries>
+					</archive>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
