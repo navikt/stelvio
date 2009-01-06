@@ -9,13 +9,13 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>poc-working</groupId>
-	<artifactId>poc-bundle</artifactId>
+	<groupId>no.nav.maven.poc</groupId>
+	<artifactId>poc-working-bundle</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 
 	<modules>
 		<module>../poc-lib</module>
-		<module>../poc-module</module>
+		<module>../poc-working-module</module>
 	</modules>
 </project>

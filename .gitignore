@@ -253,6 +253,8 @@ incubator/maven/maven-artifacts/maven-poms/maven-sca-library-pom/target
 incubator/maven/maven-artifacts/maven-poms/maven-sca-module-pom/target
 incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/target
 incubator/maven/maven-artifacts/maven-poms/target
+incubator/maven/maven-poc/poc-lib/bin
+incubator/maven/maven-poc/poc-working-module/bin
 incubator/maven/maven-runtimes/.classpath
 incubator/maven/maven-runtimes/.project
 incubator/maven/maven-runtimes/.settings
