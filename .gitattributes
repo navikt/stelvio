@@ -2341,6 +2341,7 @@ incubator/maven/maven-artifacts/maven-poms/maven-sca-module-pom/pom.xml -text
 incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/.project -text
 incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/pom.xml -text
 incubator/maven/maven-artifacts/maven-poms/pom.xml -text
+incubator/maven/maven-artifacts/pom.xml -text
 incubator/maven/poc-not-working/poc-bundle/.project -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/poc-not-working/poc-lib1/.classpath -text svneol=unset#text/plain
@@ -2426,7 +2427,6 @@ incubator/maven/poc-working/poc-module/no/nav/java/EchoServiceImpl.java -text sv
 incubator/maven/poc-working/poc-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/poc-working/poc-module/sca.module -text
 incubator/maven/poc-working/poc-module/sca.modulex -text
-incubator/maven/pom.xml -text
 incubator/maven/runtimes/pom.xml -text
 incubator/maven/runtimes/wps-runtime/files.txt -text
 incubator/maven/runtimes/wps-runtime/pom.xml -text
