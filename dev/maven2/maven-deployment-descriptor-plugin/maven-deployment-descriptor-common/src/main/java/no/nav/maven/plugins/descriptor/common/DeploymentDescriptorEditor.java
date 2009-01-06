@@ -23,6 +23,7 @@ import org.eclipse.jst.j2ee.common.DescriptionGroup;
 import org.eclipse.jst.j2ee.common.internal.impl.J2EEResourceFactoryRegistry;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.exception.ReopenException;
+import org.eclipse.jst.j2ee.commonarchivecore.internal.exception.SaveFailureException;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.helpers.ArchiveURIConverterImpl;
 import org.eclipse.jst.j2ee.ejb.EJBJar;
 
@@ -103,6 +104,10 @@ public abstract class DeploymentDescriptorEditor<T> {
 		public void save() throws IOException {
 	    	getArchive().addOrReplaceMofResource(getResource());
 	    }    
+		
+		public void saveAs(String filename) throws IOException,  SaveFailureException, ReopenException{
+			getArchive().saveAs(filename);
+		}
 		
 		
 		protected abstract T createDescriptorContent();

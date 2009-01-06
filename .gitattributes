@@ -1814,8 +1814,10 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/WebSphereFactories.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/WebSphereUtils.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/bnd/IbmApplicationBndEditor.java -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/bnd/IbmWebServiceBndEditor.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/bnd/IbmWebServiceClientBndEditor.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/ext/IbmWebServiceClientExtEditor.java -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/ext/IbmWebServiceExtEditor.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/application-client_1_4.xsd -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/application_1_3.dtd -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/application_1_4.xsd -text
@@ -1834,8 +1836,11 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/web-jsptaglibrary_2_0.xsd -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/xml.xsd -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/resources/xml.xsd.bak -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/java/no/nav/maven/plugins/descriptor/websphere/bnd/IbmWebServiceBndEditorTest.java -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/java/no/nav/maven/plugins/descriptor/websphere/ext/IbmWebServiceExtEditorTest.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/resources/ejb-security-config-t2.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/resources/ejb-security-config.xml -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/resources/nav-cons-pen-pselv-person-NOTOKENS.ear -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/resources/security-rolebinding-config.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/test/resources/tempBeans.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/pom.xml -text
