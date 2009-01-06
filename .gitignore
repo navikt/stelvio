@@ -259,7 +259,9 @@ incubator/maven/maven-poc/poc-lib/.settings
 incubator/maven/maven-poc/poc-lib/META-INF
 incubator/maven/maven-poc/poc-lib/bin
 incubator/maven/maven-poc/poc-lib2/.project
+incubator/maven/maven-poc/poc-not-working-module/.classpath
 incubator/maven/maven-poc/poc-not-working-module/.project
+incubator/maven/maven-poc/poc-not-working-module/.settings
 incubator/maven/maven-poc/poc-working-module/.classpath
 incubator/maven/maven-poc/poc-working-module/.project
 incubator/maven/maven-poc/poc-working-module/.settings
