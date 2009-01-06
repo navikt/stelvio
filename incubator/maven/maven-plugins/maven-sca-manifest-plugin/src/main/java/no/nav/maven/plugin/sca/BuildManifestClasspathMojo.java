@@ -23,10 +23,11 @@ import org.apache.maven.project.MavenProject;
  * 
  * @author test@example.com
  * 
- * @goal manifest-classpath
+ * @goal build-manifest-classpath
+ * @phase generate-resources
  * @requiresDependencyResolution
  */
-public class ManifestClasspathMojo extends AbstractMojo {
+public class BuildManifestClasspathMojo extends AbstractMojo {
 	/**
 	 * @component
 	 */
