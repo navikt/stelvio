@@ -15,7 +15,6 @@
 		<groupId>no.nav.maven.plugins</groupId>
 		<artifactId>maven-deployment-descriptor-plugin-project</artifactId>
 		<version>1.1.2-SNAPSHOT</version>
-		<relativePath>../maven-deployment-descriptor-project</relativePath>
 	</parent>
   	
   	<dependencies>
