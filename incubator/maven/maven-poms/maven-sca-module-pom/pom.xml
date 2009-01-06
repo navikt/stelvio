@@ -17,31 +17,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>maven-sca-manifest-plugin</artifactId>
-					<executions>
-						<execution>
-							<goals>
-								<goal>build-manifest-classpath</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<configuration>
-						<finalName>${artifactId}</finalName>
-						<archive>
-							<manifestEntries>
-								<Class-Path>
-									${manifest.classpath}
-								</Class-Path>
-							</manifestEntries>
-						</archive>
-					</configuration>
-				</plugin>
-
-				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<dependencies>
 						<dependency>
@@ -132,6 +107,26 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-sca-manifest-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-manifest-classpath</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<finalName>${artifactId}</finalName>
+					<archive>
+						<manifestEntries>
+							<Class-Path>
+								${manifest.classpath}
+							</Class-Path>
+						</manifestEntries>
+					</archive>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
