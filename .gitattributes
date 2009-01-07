@@ -2396,6 +2396,9 @@ incubator/maven/maven-poc/poc-not-working-module/no/nav/java/Main.java -text svn
 incubator/maven/maven-poc/poc-not-working-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/sca.module -text
 incubator/maven/maven-poc/poc-not-working-module/sca.modulex -text
+incubator/maven/maven-poc/poc-not-working-module/src/main/java/no/nav/java/EchoService2Impl.java -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/src/main/java/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/src/main/java/no/nav/java/Main.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working-bundle/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working-module/.classpath -text

@@ -2,6 +2,6 @@
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="poc-not-working-module">
         <wb-resource deploy-path="/" source-path="/"/>
-        <wb-resource deploy-path="/" source-path="/gen/src"/>
+        <wb-resource deploy-path="/" source-path="/src/main/java"/>
     </wb-module>
 </project-modules>

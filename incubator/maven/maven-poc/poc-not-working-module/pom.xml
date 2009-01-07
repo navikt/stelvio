@@ -29,7 +29,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<sourceDirectory>${basedir}</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
