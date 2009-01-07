@@ -2390,9 +2390,6 @@ incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService.wsdl -te
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService2.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoService2WSEXP.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working-module/no/nav/java/EchoService2Impl.java -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working-module/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-not-working-module/no/nav/java/Main.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/sca.module -text
 incubator/maven/maven-poc/poc-not-working-module/sca.modulex -text
