@@ -152,6 +152,11 @@ incubator/maven/maven-artifacts/maven-plugins/.classpath
 incubator/maven/maven-artifacts/maven-plugins/.project
 incubator/maven/maven-artifacts/maven-plugins/.settings
 incubator/maven/maven-artifacts/maven-plugins/bin
+incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/.classpath
+incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/.project
+incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/.settings
+incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/bin
+incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/target
 incubator/maven/maven-artifacts/maven-plugins/maven-sca-manifest-plugin/.classpath
 incubator/maven/maven-artifacts/maven-plugins/maven-sca-manifest-plugin/.project
 incubator/maven/maven-artifacts/maven-plugins/maven-sca-manifest-plugin/.settings
