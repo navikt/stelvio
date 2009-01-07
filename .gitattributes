@@ -2370,6 +2370,7 @@ incubator/maven/maven-poc/poc-lib2/META-INF/MANIFEST.MF -text
 incubator/maven/maven-poc/poc-lib2/gen/src/no/nav/util/LoggerUtil2.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-lib2/no/nav/gbo/StringBO2.xsd -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-lib2/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-lib2/src/main/java/no/nav/util/LoggerUtil2.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-bundle/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/.classpath -text
