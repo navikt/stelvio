@@ -163,8 +163,8 @@ public class BPELHelperUtil {
 
 						if (bo != null) 
 						{
-							log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="+ piResult.getOID(1) + " Analyze BO against tagName="+ boTagName + " and tagValue=" + boTagValue);							
 							finish = hasMatchingProperty(bo, boTagName, boTagValue, true);
+							log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="+ piResult.getOID(1) + " Analyze BO against tagName="+ boTagName + " and tagValue=" + boTagValue+ " return=" + finish);
 							if (finish)
 								break;
 						}
@@ -298,7 +298,7 @@ public class BPELHelperUtil {
 	 */
 	private static boolean hasMatchingProperty(DataObject bo, String nameRegex, String nameValueRegex, Boolean childBo) {
 
-		log.logp(Level.FINE, className, "hasMatchingProperty()", "PARAM: nameRegex="+ nameRegex+ " nameValueRegex="+ nameValueRegex+ " childBo="+ childBo );						
+		log.logp(Level.FINEST, className, "hasMatchingProperty()", "PARAM: nameRegex="+ nameRegex+ " nameValueRegex="+ nameValueRegex+ " childBo="+ childBo );						
 		
 		for(Iterator i=bo.getType().getProperties().iterator();i.hasNext();) 
 		{ 
