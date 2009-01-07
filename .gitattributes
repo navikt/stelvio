@@ -2416,6 +2416,7 @@ incubator/maven/maven-poc/poc-working-module/no/nav/java/EchoServiceImpl.java -t
 incubator/maven/maven-poc/poc-working-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working-module/sca.module -text
 incubator/maven/maven-poc/poc-working-module/sca.modulex -text
+incubator/maven/maven-poc/poc-working-module/src/main/java/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
 incubator/maven/maven-runtimes/pom.xml -text
 incubator/maven/maven-runtimes/wps-runtime/files.txt -text
 incubator/maven/maven-runtimes/wps-runtime/pom.xml -text
