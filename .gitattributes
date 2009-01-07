@@ -2332,6 +2332,7 @@ incubator/maven/maven-artifacts/maven-extension-plugins/pom.xml -text
 incubator/maven/maven-artifacts/maven-plugins/maven-sca-manifest-plugin/pom.xml -text
 incubator/maven/maven-artifacts/maven-plugins/maven-sca-manifest-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
 incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/pom.xml -text
+incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssemblyMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
 incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
 incubator/maven/maven-artifacts/maven-plugins/pom.xml -text

@@ -25,11 +25,21 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>2.0.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+			<version>2.0.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-script-ant</artifactId>
 			<version>2.0.7</version>
 		</dependency>
 	</dependencies>
-	
+
 	<scm>
 		<connection>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-plugins/maven-service-deploy-plugin
