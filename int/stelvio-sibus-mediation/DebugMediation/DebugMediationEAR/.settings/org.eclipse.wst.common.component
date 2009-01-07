@@ -12,5 +12,9 @@
         <dependent-module archiveName="DebugMediation.jar" deploy-path="/" handle="module:/resource/DebugMediation/DebugMediation">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/resource/websphere_default_messaging_provider/websphere_default_messaging_provider">
+            <dependent-object>ConnectorModule_1231240333868</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

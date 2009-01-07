@@ -5,6 +5,7 @@
 	<projects>
 		<project>DebugMediationEJB</project>
 		<project>DebugMediation</project>
+		<project>websphere_default_messaging_provider</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

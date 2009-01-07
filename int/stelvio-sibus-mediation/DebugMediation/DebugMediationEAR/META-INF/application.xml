@@ -5,4 +5,7 @@
 	<module id="EjbModule_1211796869218">
 		<ejb>DebugMediationEJB.jar</ejb>
 	</module>
+	<module id="ConnectorModule_1231240333868">
+		<connector>websphere_default_messaging_provider.rar</connector>
+	</module>
 </application>
