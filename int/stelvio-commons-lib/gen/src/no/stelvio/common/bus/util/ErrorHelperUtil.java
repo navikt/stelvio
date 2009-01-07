@@ -15,6 +15,7 @@ import java.util.Date;
 import no.stelvio.common.exception.ErrorTypes;
 import no.stelvio.common.exception.ServiceRuntimeExceptionToFaultConverter;
 
+import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.sdo.DataFactory;
@@ -260,5 +261,21 @@ public class ErrorHelperUtil {
 		StringWriter sw = new StringWriter();
 		e.printStackTrace(new PrintWriter(sw));
 		return sw.toString();
+	}
+	
+	/**
+	 * <p>
+	 * Return  the business fault name of the sbe
+	 * </p>
+	 * 
+	 * @param sbe
+	 *			The business exception
+	 * @return 
+	 * 			Fault name of the SBE
+	 */
+	public static String getFaultName(ServiceBusinessException sbe)
+	{
+		DataObject dao = (DataObject)sbe.getData();
+		return dao.getType().getName();
 	}
 }
