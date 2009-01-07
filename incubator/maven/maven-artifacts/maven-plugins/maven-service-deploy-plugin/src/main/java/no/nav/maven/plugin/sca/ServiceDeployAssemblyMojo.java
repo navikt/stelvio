@@ -19,14 +19,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
 
 /**
- * This is plugin is used as a workaround for a bug in Maven when generating a
- * manifest classpath based on artifacts from the repository. See Maven JAR JIRA
- * for more details (MJAR-61).
- * 
- * The plugin computes a string that can be added explicitly to the manifest.
- * The classpath is based on runtime (and compile-time) dependencies using the
- * following customized pattern (for each applicable artifact):
- * ${artifactId}.${type} (i.e. myLibrary.jar)
+ * This plugin builds a zip-file that can be used as input to serviceDeploy.
  * 
  * @author test@example.com
  * 
