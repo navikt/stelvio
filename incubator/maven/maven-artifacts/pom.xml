@@ -18,7 +18,6 @@
 	<modules>
 		<module>maven-base-poms</module>
 		<module>maven-extension-plugins</module>
-		<module>maven-assemblies</module>
 		<module>maven-plugins</module>
 		<module>maven-poms</module>
 	</modules>
