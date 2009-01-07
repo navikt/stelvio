@@ -46,7 +46,7 @@
 						<!--  
 							TODO: This dependency should ideally not be here, but in the plugins that are implemented i ANT.
 							I tried it, but somehow the configuration is not taken into account when building these plugins as 
-							part of an aggreation Maven module.
+							part of an aggreation Maven module. See Maven bugs MPLUGIN-37 and MNG-1323 for more details.
 						-->
 						<dependency>
 							<groupId>org.apache.maven</groupId>
