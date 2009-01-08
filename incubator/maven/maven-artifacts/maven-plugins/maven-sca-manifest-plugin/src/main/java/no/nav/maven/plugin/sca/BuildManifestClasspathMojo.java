@@ -1,12 +1,11 @@
 package no.nav.maven.plugin.sca;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
-import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
-import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
@@ -29,11 +28,6 @@ import org.apache.maven.project.MavenProject;
  */
 public class BuildManifestClasspathMojo extends AbstractMojo {
 	/**
-	 * @component
-	 */
-	private ArtifactHandlerManager artifactHandlerManager;
-
-	/**
 	 * @parameter expression="${project}"
 	 * @required
 	 * @readonly
@@ -55,31 +49,26 @@ public class BuildManifestClasspathMojo extends AbstractMojo {
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
 		StringBuilder classPath = new StringBuilder();
-		List<Dependency> dependencies = project.getDependencies();
-		// Sort to get consistent behavior
-		Collections.sort(dependencies, new Comparator<Dependency>() {
-			public int compare(Dependency o1, Dependency o2) {
+
+		// Sort artifacts to get consistent behavior
+		List<Artifact> dependencyArtifacts = new ArrayList<Artifact>(project.getDependencyArtifacts());
+		Collections.sort(dependencyArtifacts, new Comparator<Artifact>() {
+			public int compare(Artifact o1, Artifact o2) {
 				return o1.getArtifactId().compareTo(o2.getArtifactId());
 			}
 		});
-		for (Dependency dependency : dependencies) {
-			String scope = dependency.getScope();
-			if (Artifact.SCOPE_COMPILE.equals(scope)
-					|| Artifact.SCOPE_RUNTIME.equals(scope)) {
+
+		for (Artifact dependencyArtifact : dependencyArtifacts) {
+			String scope = dependencyArtifact.getScope();
+			if (Artifact.SCOPE_COMPILE.equals(scope) || Artifact.SCOPE_RUNTIME.equals(scope)) {
 				if (classPath.length() > 0) {
 					classPath.append(" ").append("\r\n");
 				}
-				String dependencyExtension = artifactHandlerManager
-						.getArtifactHandler(dependency.getType())
-						.getExtension();
-
-				classPath.append(dependency.getArtifactId()).append(".")
-						.append(dependencyExtension);
+				String dependencyArtifactExtension = dependencyArtifact.getArtifactHandler().getExtension();
+				classPath.append(dependencyArtifact.getArtifactId()).append(".").append(dependencyArtifactExtension);
 			}
 		}
-		getLog().debug(
-				"Setting property <" + propertyName + "> to value <"
-						+ classPath + ">");
+		getLog().debug("Setting property <" + propertyName + "> to value <" + classPath + ">");
 		project.getProperties().put(propertyName, classPath.toString());
 	}
 }
