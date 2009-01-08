@@ -31,6 +31,10 @@
 				</plugin>
 
 				<plugin>
+					<!-- 
+						TODO: This is just an experimental configuration. It does not currently work. 
+						The current show-stopper is that WID sometimes decides to regenerate the project files....
+					-->
 					<artifactId>maven-eclipse-plugin</artifactId>
 					<configuration>
 						<workspaceCodeStylesURL>
