@@ -3496,7 +3496,6 @@ int/stelvio-commons-lib/.project -text svneol=unset#text/plain
 int/stelvio-commons-lib/.runtime -text
 int/stelvio-commons-lib/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/handlers/jaxrpc/StelvioCommonContextHandler.java -text svneol=unset#text/plain
-int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/BPELHelperUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/DataObjectUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/DateUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/gen/src/no/stelvio/common/bus/util/ErrorHelperUtil.java -text svneol=unset#text/plain
