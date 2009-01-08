@@ -9,6 +9,7 @@ import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.artifact.resolver.AbstractArtifactResolutionException;
 import org.apache.maven.artifact.resolver.ArtifactResolver;
+import org.apache.maven.model.Build;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -17,7 +18,8 @@ import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 
 /**
- * This plugin builds a zip-file that can be used as input to serviceDeploy.
+ * This plugin builds a zip-file (Project Interchange) that can be used as input
+ * to serviceDeploy.
  * 
  * @author test@example.com
  * 
@@ -25,6 +27,9 @@ import org.codehaus.plexus.archiver.ArchiverException;
  * @requiresDependencyResolution
  */
 public class ServiceDeployProjectInterchangeAssemblyMojo extends AbstractMojo {
+	private static final String PROJECT_INTERCHANGE_ARTIFACT_TYPE = "project-interchange";
+	private static final String PROJECT_INTERCHANGE_CLASSIFIER = "pi";
+
 	/**
 	 * @component
 	 */
@@ -57,28 +62,17 @@ public class ServiceDeployProjectInterchangeAssemblyMojo extends AbstractMojo {
 	private MavenProject project;
 
 	/**
-	 * @parameter expression="${project.build.finalName}"
-	 * @required
-	 * @readonly
-	 */
-	private String finalName;
-
-	/**
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	private File outputDirectory;
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
 		try {
+			Build build = project.getBuild();
+			File outputFile = new File(build.getDirectory(), build.getFinalName() + ".zip");
+			archiver.setDestFile(outputFile);
+
 			new ServiceDeployAssemblyBuilder(archiver).build();
 
-			File outputFile = new File(outputDirectory, finalName + ".zip");
-			archiver.setDestFile(outputFile);
 			archiver.createArchive();
 		} catch (ArchiverException e) {
 			throw new MojoExecutionException("Error creating service deploy assembly", e);
@@ -94,8 +88,13 @@ public class ServiceDeployProjectInterchangeAssemblyMojo extends AbstractMojo {
 			this.archiver = archiver;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void build() throws ArchiverException, MojoExecutionException {
+			addProjectArtifact();
+			addDependencyArtifacts();
+		}
+
+		@SuppressWarnings("unchecked")
+		private void addProjectArtifact() throws ArchiverException {
 			Collection<Artifact> attachedArtifacts = project.getAttachedArtifacts();
 			for (Artifact attachedArtifact : attachedArtifacts) {
 				if ("pi".equals(attachedArtifact.getClassifier())) {
@@ -103,10 +102,15 @@ public class ServiceDeployProjectInterchangeAssemblyMojo extends AbstractMojo {
 					break;
 				}
 			}
+		}
+
+		@SuppressWarnings("unchecked")
+		private void addDependencyArtifacts() throws MojoExecutionException, ArchiverException {
 			Collection<Dependency> runtimeDependencies = project.getRuntimeDependencies();
 			for (Dependency runtimeDependency : runtimeDependencies) {
 				Artifact artifact = artifactFactory.createArtifactWithClassifier(runtimeDependency.getGroupId(),
-						runtimeDependency.getArtifactId(), runtimeDependency.getVersion(), "project-interchange", "pi");
+						runtimeDependency.getArtifactId(), runtimeDependency.getVersion(), PROJECT_INTERCHANGE_ARTIFACT_TYPE,
+						PROJECT_INTERCHANGE_CLASSIFIER);
 				try {
 					artifactResolver.resolve(artifact, project.getRemoteArtifactRepositories(), localRepository);
 				} catch (AbstractArtifactResolutionException e) {

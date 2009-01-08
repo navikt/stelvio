@@ -5,23 +5,32 @@ import java.io.IOException;
 import java.util.Collection;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.model.Build;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
-import org.codehaus.plexus.archiver.zip.ZipArchiver;
 
 /**
- * This plugin builds a zip-file that can be used as input to serviceDeploy.
+ * This plugin builds a zip-file (containing jar-files) that can be used as
+ * input to serviceDeploy.
  * 
  * @author test@example.com
  * 
  * @goal service-deploy-assembly
- * @phase package
  * @requiresDependencyResolution
  */
 public class ServiceDeployAssemblyMojo extends AbstractMojo {
+	private static final String JAR_CLASSIFIER = "jar";
+
+	/**
+	 * @component roleHint="zip"
+	 * @required
+	 * @readonly
+	 */
+	private Archiver archiver;
+
 	/**
 	 * @parameter expression="${project}"
 	 * @required
@@ -30,30 +39,17 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 	private MavenProject project;
 
 	/**
-	 * @parameter expression="${project.build.finalName}"
-	 * @required
-	 * @readonly
-	 */
-	private String finalName;
-
-	/**
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	private File outputDirectory;
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
 		try {
-			Archiver archiver = new ZipArchiver();
+			Build build = project.getBuild();
+			File outputFile = new File(build.getDirectory(), build.getFinalName() + ".zip");
+			archiver.setDestFile(outputFile);
 
 			new ServiceDeployAssemblyBuilder(archiver).build();
 
-			File outputFile = new File(outputDirectory, finalName + ".zip");
-			archiver.setDestFile(outputFile);
 			archiver.createArchive();
 		} catch (ArchiverException e) {
 			throw new MojoExecutionException("Error creating service deploy assembly", e);
@@ -69,15 +65,24 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 			this.archiver = archiver;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void build() throws ArchiverException {
+			addProjectArtifact();
+			addDependencyArtifacts();
+		}
+
+		@SuppressWarnings("unchecked")
+		private void addProjectArtifact() throws ArchiverException {
 			Collection<Artifact> attachedArtifacts = project.getAttachedArtifacts();
 			for (Artifact attachedArtifact : attachedArtifacts) {
-				if ("jar".equals(attachedArtifact.getClassifier())) {
+				if (JAR_CLASSIFIER.equals(attachedArtifact.getClassifier())) {
 					addArtifact(attachedArtifact);
 					break;
 				}
 			}
+		}
+
+		@SuppressWarnings("unchecked")
+		private void addDependencyArtifacts() throws ArchiverException {
 			Collection<Artifact> runtimeArtifacts = project.getRuntimeArtifacts();
 			for (Artifact runtimeArtifact : runtimeArtifacts) {
 				addArtifact(runtimeArtifact);
