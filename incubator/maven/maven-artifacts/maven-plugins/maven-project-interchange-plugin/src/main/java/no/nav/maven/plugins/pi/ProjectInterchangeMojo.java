@@ -8,6 +8,7 @@ import java.util.Collections;
 
 import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
+import org.apache.maven.model.Build;
 import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -15,11 +16,10 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
-import org.codehaus.plexus.archiver.zip.ZipArchiver;
 import org.codehaus.plexus.util.FileUtils;
 
 /**
- * Goal that generates a project interchange zip-file for the current project
+ * Mojo that generates a project interchange zip-file for the current project
  * 
  * @author test@example.com
  * 
@@ -27,16 +27,10 @@ import org.codehaus.plexus.util.FileUtils;
  */
 public class ProjectInterchangeMojo extends AbstractMojo {
 	private static final String PROJECT_INTERCHANGE_ARTIFACT_TYPE = "project-interchange";
+	private static final String PROJECT_INTERCHANGE_CLASSIFIER = "pi";
 
 	private static final String[] DEFAULT_INCLUDES = { "**/*" };
 	private static final String[] ECLIPSE_PROJECT_INCLUDES = { ".project", ".classpath", ".settings/**" };
-
-	/**
-	 * @parameter expression="${project}"
-	 * @required
-	 * @readonly
-	 */
-	private MavenProject project;
 
 	/**
 	 * @component
@@ -54,29 +48,18 @@ public class ProjectInterchangeMojo extends AbstractMojo {
 	private ArtifactHandler projectInterchangeArtifactHandler;
 
 	/**
-	 * @parameter expression="${project.build.finalName}"
+	 * @component roleHint="zip"
 	 * @required
 	 * @readonly
 	 */
-	private String finalName;
+	private Archiver archiver;
 
 	/**
-	 * @parameter expression="${baseDirectory}"
-	 *            default-value="${project.artifactId}"
+	 * @parameter expression="${project}"
 	 * @required
+	 * @readonly
 	 */
-	private String baseDirectory;
-
-	/**
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	private File outputDirectory;
-
-	/**
-	 * @parameter expression="${classifier}" default-value="pi"
-	 */
-	private String classifier;
+	private MavenProject project;
 
 	public void execute() throws MojoExecutionException {
 		// TODO: The following must be done because of one (or more) bug(s) in
@@ -89,15 +72,16 @@ public class ProjectInterchangeMojo extends AbstractMojo {
 		}
 
 		try {
-			Archiver archiver = new ZipArchiver();
-
 			new ProjectInterchangeBuilder(archiver).build();
 
-			File outputFile = new File(outputDirectory, finalName + "-" + classifier + ".zip");
+			Build build = project.getBuild();
+			File outputFile = new File(build.getDirectory(), build.getFinalName() + "-" + PROJECT_INTERCHANGE_CLASSIFIER
+					+ ".zip");
 			archiver.setDestFile(outputFile);
 			archiver.createArchive();
 
-			projectHelper.attachArtifact(project, PROJECT_INTERCHANGE_ARTIFACT_TYPE, classifier, outputFile);
+			projectHelper
+					.attachArtifact(project, PROJECT_INTERCHANGE_ARTIFACT_TYPE, PROJECT_INTERCHANGE_CLASSIFIER, outputFile);
 		} catch (ArchiverException e) {
 			throw new MojoExecutionException("Error creating project interchange", e);
 		} catch (IOException e) {
@@ -106,6 +90,8 @@ public class ProjectInterchangeMojo extends AbstractMojo {
 	}
 
 	private class ProjectInterchangeBuilder {
+		private String baseDirectory = project.getArtifactId();
+
 		private Archiver archiver;
 
 		public ProjectInterchangeBuilder(Archiver archiver) {

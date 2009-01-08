@@ -13,8 +13,6 @@
 				<classifier>pi</classifier>
 				<type>project-interchange</type>
 				<extension>zip</extension>
-				<language>java</language>
-				<addedToClasspath>false</addedToClasspath>
 			</configuration>
 		</component>
 	</components>
