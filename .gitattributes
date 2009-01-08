@@ -3482,6 +3482,8 @@ int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/n
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/util/PropertyMapper.java -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/.classpath -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/.project -text svneol=unset#text/plain
+int/stelvio-commons-bpc-lib/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
+int/stelvio-commons-bpc-lib/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/.settings/org.eclipse.wst.common.component -text
@@ -3491,6 +3493,7 @@ int/stelvio-commons-bpc-lib/bfmclientmodel.jar -text
 int/stelvio-commons-bpc-lib/bpcclientcore.jar -text
 int/stelvio-commons-bpc-lib/bpe137650.jar -text
 int/stelvio-commons-bpc-lib/bpeapi.jar -text
+int/stelvio-commons-bpc-lib/gen/src/no/stelvio/common/bpel/BPELHelperUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/.classpath -text svneol=unset#text/plain
 int/stelvio-commons-lib/.project -text svneol=unset#text/plain
 int/stelvio-commons-lib/.runtime -text
