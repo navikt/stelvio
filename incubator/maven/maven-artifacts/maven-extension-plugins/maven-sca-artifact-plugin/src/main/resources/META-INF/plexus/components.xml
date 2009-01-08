@@ -78,7 +78,7 @@
 								org.apache.maven.plugins:maven-surefire-plugin:test
 							</test>
 							<package>
-								org.apache.maven.plugins:maven-jar-plugin:jar,no.nav.maven.plugins:maven-project-interchange-plugin:project-interchange,no.nav.maven.plugins:maven-service-deploy-plugin:service-deploy-assembly,no.nav.maven.plugins:maven-service-deploy-plugin:service-deploy,no.nav.maven.plugins:maven-sca-artifact-plugin:set-artifact-file
+								org.apache.maven.plugins:maven-jar-plugin:jar,no.nav.maven.plugins:maven-project-interchange-plugin:project-interchange,no.nav.maven.plugins:maven-service-deploy-plugin:service-deploy-project-interchange-assembly,no.nav.maven.plugins:maven-service-deploy-plugin:service-deploy,no.nav.maven.plugins:maven-sca-artifact-plugin:set-artifact-file
 							</package>
 							<install>
 								org.apache.maven.plugins:maven-install-plugin:install
