@@ -3701,3 +3701,14 @@ nav-mqmovefix-java/libs/jta.jar -text
 nav-mqmovefix-java/src/nav/pp/mqmovefix/MQMoveFix.java -text
 nav-mqmovefix-java/src/nav/pp/mqmovefix/WSMQQueueAccessor.java -text
 nav-mqmovefix-java/src/nav/pp/mqmovefix/XMLUtils.java -text
+stelvio-commons-bpc-lib/.classpath -text svneol=unset#text/plain
+stelvio-commons-bpc-lib/.project -text svneol=unset#text/plain
+stelvio-commons-bpc-lib/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+stelvio-commons-bpc-lib/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+stelvio-commons-bpc-lib/.settings/org.eclipse.wst.common.component -text
+stelvio-commons-bpc-lib/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+stelvio-commons-bpc-lib/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+stelvio-commons-bpc-lib/bfmclientmodel.jar -text
+stelvio-commons-bpc-lib/bpcclientcore.jar -text
+stelvio-commons-bpc-lib/bpe137650.jar -text
+stelvio-commons-bpc-lib/bpeapi.jar -text
