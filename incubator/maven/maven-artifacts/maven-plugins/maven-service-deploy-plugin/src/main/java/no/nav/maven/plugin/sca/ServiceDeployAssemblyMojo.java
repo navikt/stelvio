@@ -48,7 +48,7 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 			ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(assemblyFile)));
 			out.setLevel(0);
 
-			new ServiceDeployAssemblyBuilder(project, out).build();
+			new ServiceDeployAssemblyBuilder(out).build();
 
 			out.close();
 			getLog().info("Successfully created assembly: " + assemblyFile);
@@ -60,14 +60,11 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 	private class ServiceDeployAssemblyBuilder {
 		private static final int BUFFER_SIZE = 2048;
 
-		private MavenProject project;
-
 		private ZipOutputStream out;
 
 		private byte[] data = new byte[BUFFER_SIZE];
 
-		public ServiceDeployAssemblyBuilder(MavenProject project, ZipOutputStream out) {
-			this.project = project;
+		public ServiceDeployAssemblyBuilder(ZipOutputStream out) {
 			this.out = out;
 		}
 
