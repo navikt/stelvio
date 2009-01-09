@@ -13,6 +13,7 @@
 	<artifactId>maven-sca-artifact-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<name>SCA Artifact Plugin</name>
 
 	<build>
 		<plugins>
