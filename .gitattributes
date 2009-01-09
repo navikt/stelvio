@@ -2325,7 +2325,6 @@ incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/java/no/nav/mav
 incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/SetArtifactFileMojo.java -text
 incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-plugins/maven-sca-manifest-plugin/pom.xml -text
-incubator/maven/maven-plugins/maven-sca-manifest-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/pom.xml -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssemblyMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployProjectInterchangeAssemblyMojo.java -text svneol=unset#text/plain
