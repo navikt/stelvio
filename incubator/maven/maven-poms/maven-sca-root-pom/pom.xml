@@ -76,7 +76,7 @@
 			As a workaround we are changing the target folder to a folder outside the project		
 		-->
 		<!-- TODO: Review this setting -->
-		<target.dir>${user.home}/maven-build/${artifactId}</target.dir>
+		<target.dir>${user.home}/maven-target/${groupId}/${artifactId}/${version}</target.dir>
 	</properties>
 	
 	<scm>
