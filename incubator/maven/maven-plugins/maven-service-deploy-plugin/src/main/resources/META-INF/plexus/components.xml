@@ -1,0 +1,25 @@
+<component-set>
+	<components>
+		<component>
+			<role>no.nav.maven.plugin.sca.ServiceDeployAssembly</role>
+			<role-hint>jar</role-hint>
+			<implementation>
+				no.nav.maven.plugin.sca.JarServiceDeployAssembly
+			</implementation>
+		</component>
+		<component>
+			<role>no.nav.maven.plugin.sca.ServiceDeployAssembly</role>
+			<role-hint>pi</role-hint>
+			<implementation>
+				no.nav.maven.plugin.sca.ProjectInterchangeServiceDeployAssembly
+			</implementation>
+			<requirements>
+				<requirement>
+					<role>
+						org.apache.maven.artifact.factory.ArtifactFactory
+					</role>
+				</requirement>
+			</requirements>
+		</component>
+	</components>
+</component-set>
