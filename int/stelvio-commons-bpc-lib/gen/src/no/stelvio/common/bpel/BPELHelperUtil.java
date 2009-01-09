@@ -154,8 +154,19 @@ public class BPELHelperUtil {
 					whereClause = "PROCESS_INSTANCE.STATE = " + ProcessInstanceData.STATE_RUNNING + " AND PROCESS_INSTANCE.PTID = ID('"	+ data.getID() + "')";
 					orderClause = "PROCESS_INSTANCE.CREATED ASC";
 
-					// queryALL trenger BPESYSMON
-					QueryResultSet piResult = bfm.queryAll(selectClause, whereClause, orderClause, (Integer) null, (Integer) null, (TimeZone) null);
+					QueryResultSet piResult = null;
+					// query if security not enabled because than everyone see the instances with api and queryAll doesn't work without security
+					if (WSSubject.getCallerPrincipal() == null)
+					{
+						log.logp(Level.FINEST, className, "getBprocModuleEndpoint()", "Execute query method because server security is diasbled." );
+						piResult = bfm.query(selectClause, whereClause, orderClause, (Integer) null, (Integer) null, (TimeZone) null);						
+					}
+					else
+					{
+						// queryALL trenger BPESYSMON otherwise CWWBE0027E: No authorization for the requested action.
+						piResult = bfm.queryAll(selectClause, whereClause, orderClause, (Integer) null, (Integer) null, (TimeZone) null);
+					}
+					
 					while (piResult.next()) 
 					{
 						log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="+ piResult.getOID(1) + " IDATE: " + piResult.getString(2));
