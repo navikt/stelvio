@@ -21,7 +21,7 @@
 		<module>maven-sca-library-pom</module>
 		<module>maven-sca-module-pom</module>
 	</modules>
-	
+
 	<scm>
 		<connection>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms
