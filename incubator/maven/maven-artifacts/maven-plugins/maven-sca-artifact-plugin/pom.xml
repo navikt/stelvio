@@ -37,10 +37,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-extension-plugins/maven-sca-artifact-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-plugins/maven-sca-artifact-plugin
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-extension-plugins/maven-sca-artifact-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-plugins/maven-sca-artifact-plugin
 		</developerConnection>
 	</scm>
 </project>

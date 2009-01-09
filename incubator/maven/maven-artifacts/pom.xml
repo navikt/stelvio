@@ -7,7 +7,7 @@
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>maven-base-poms/maven-root-pom</relativePath>
+		<relativePath>maven-poms/maven-root-pom</relativePath>
 	</parent>
 
 	<groupId>no.nav.maven.poms</groupId>
@@ -16,9 +16,16 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<modules>
-		<module>maven-base-poms</module>
-		<module>maven-extension-plugins</module>
 		<module>maven-plugins</module>
 		<module>maven-poms</module>
 	</modules>
+	
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven
+		</developerConnection>
+	</scm>
 </project>
