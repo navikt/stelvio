@@ -80,13 +80,6 @@ dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
 incubator/maven/.project
-incubator/maven/maven-artifacts/maven-base-poms/.project
-incubator/maven/maven-artifacts/maven-base-poms/target
-incubator/maven/maven-artifacts/maven-extension-plugins/.classpath
-incubator/maven/maven-artifacts/maven-extension-plugins/.project
-incubator/maven/maven-artifacts/maven-extension-plugins/.settings
-incubator/maven/maven-artifacts/maven-extension-plugins/bin
-incubator/maven/maven-artifacts/maven-extension-plugins/target
 incubator/maven/maven-artifacts/maven-plugins/.classpath
 incubator/maven/maven-artifacts/maven-plugins/.project
 incubator/maven/maven-artifacts/maven-plugins/.settings

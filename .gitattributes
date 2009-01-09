@@ -2317,8 +2317,6 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
-incubator/maven/maven-artifacts/maven-base-poms/pom.xml -text
-incubator/maven/maven-artifacts/maven-extension-plugins/pom.xml -text
 incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/pom.xml -text
 incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
 incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
