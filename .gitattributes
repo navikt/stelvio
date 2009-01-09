@@ -2326,6 +2326,7 @@ incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/resources/META-
 incubator/maven/maven-plugins/maven-service-deploy-plugin/pom.xml -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssemblyMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployProjectInterchangeAssemblyMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/SetArtifactFileMojo.java -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
 incubator/maven/maven-plugins/pom.xml -text
