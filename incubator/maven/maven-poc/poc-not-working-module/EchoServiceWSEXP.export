@@ -3,5 +3,5 @@
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" portType="ns1:EchoService1"/>
   </interfaces>
-  <esbBinding xsi:type="webservice:WebServiceExportBinding" port="Binding2:EchoServiceWSEXP_EchoService1HttpPort" service="Binding2:EchoServiceWSEXP_EchoService1HttpService"/>
+  <esbBinding xsi:type="webservice:WebServiceExportBinding" port="Binding:EchoServiceWSEXP_EchoService1HttpPort" service="Binding:EchoServiceWSEXP_EchoService1HttpService"/>
 </scdl:export>
