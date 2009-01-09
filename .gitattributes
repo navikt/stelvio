@@ -2317,20 +2317,6 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
-incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/pom.xml -text
-incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
-incubator/maven/maven-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
-incubator/maven/maven-artifacts/maven-plugins/maven-sca-artifact-plugin/pom.xml -text
-incubator/maven/maven-artifacts/maven-plugins/maven-sca-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/SetArtifactFileMojo.java -text
-incubator/maven/maven-artifacts/maven-plugins/maven-sca-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
-incubator/maven/maven-artifacts/maven-plugins/maven-sca-manifest-plugin/pom.xml -text
-incubator/maven/maven-artifacts/maven-plugins/maven-sca-manifest-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
-incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/pom.xml -text
-incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssemblyMojo.java -text svneol=unset#text/plain
-incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployProjectInterchangeAssemblyMojo.java -text svneol=unset#text/plain
-incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
-incubator/maven/maven-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
-incubator/maven/maven-artifacts/maven-plugins/pom.xml -text
 incubator/maven/maven-artifacts/maven-poms/maven-root-pom/.project -text
 incubator/maven/maven-artifacts/maven-poms/maven-root-pom/pom.xml -text
 incubator/maven/maven-artifacts/maven-poms/maven-sca-library-pom/.project -text
@@ -2341,6 +2327,20 @@ incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/.project -text
 incubator/maven/maven-artifacts/maven-poms/maven-sca-root-pom/pom.xml -text
 incubator/maven/maven-artifacts/maven-poms/pom.xml -text
 incubator/maven/maven-artifacts/pom.xml -text
+incubator/maven/maven-plugins/maven-project-interchange-plugin/pom.xml -text
+incubator/maven/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
+incubator/maven/maven-plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
+incubator/maven/maven-plugins/maven-sca-artifact-plugin/pom.xml -text
+incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/SetArtifactFileMojo.java -text
+incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
+incubator/maven/maven-plugins/maven-sca-manifest-plugin/pom.xml -text
+incubator/maven/maven-plugins/maven-sca-manifest-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
+incubator/maven/maven-plugins/maven-service-deploy-plugin/pom.xml -text
+incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssemblyMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployProjectInterchangeAssemblyMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
+incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
+incubator/maven/maven-plugins/pom.xml -text
 incubator/maven/maven-poc/poc-bundle/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-lib/.classpath -text
