@@ -2321,6 +2321,7 @@ incubator/maven/maven-plugins/maven-project-interchange-plugin/pom.xml -text
 incubator/maven/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
 incubator/maven/maven-plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-plugins/maven-sca-artifact-plugin/pom.xml -text
+incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
 incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/SetArtifactFileMojo.java -text
 incubator/maven/maven-plugins/maven-sca-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-plugins/maven-sca-manifest-plugin/pom.xml -text
