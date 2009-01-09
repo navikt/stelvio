@@ -2,16 +2,19 @@
 <project>
 	<target name="serviceDeploy">
 		<property name="serviceDeploy.dir" value="${project.build.directory}" />
+		<property name="serviceDeploy.input" value="${project.build.finalName}-sd.zip" />
 		<condition property="serviceDeploy.executable" value="${wid.runtime}/bin/serviceDeploy.bat" else="${wid.runtime}/bin/serviceDeploy.sh">
 			<os family="windows" />
 		</condition>
 		<property name="serviceDeploy.outputApplication" value="${project.build.finalName}.ear" />
+		<property name="serviceDeploy.workingDirectory" value="${project.build.directory}/service-deploy" />
 
 		<delete file="${serviceDeploy.dir}/${serviceDeploy.outputApplication}" verbose="true" quiet="true" />
 
 		<exec dir="${serviceDeploy.dir}" executable="${serviceDeploy.executable}" failonerror="true">
-			<arg path="${serviceDeploy.dir}/${project.build.finalName}.zip" />
+			<arg value="${serviceDeploy.input}" />
 			<arg line="-outputApplication ${serviceDeploy.outputApplication}" />
+			<arg line="-workingDirectory '${serviceDeploy.workingDirectory}'" />
 			<arg value="-keep" />
 			<arg value="-cleanStagingModules" />
 			<arg line="-skipXsdValidate true" />

@@ -45,7 +45,7 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException {
 		try {
 			Build build = project.getBuild();
-			File outputFile = new File(build.getDirectory(), build.getFinalName() + ".zip");
+			File outputFile = new File(build.getDirectory(), build.getFinalName() + "-sd" + ".zip");
 			archiver.setDestFile(outputFile);
 
 			new ServiceDeployAssemblyBuilder(archiver).build();
