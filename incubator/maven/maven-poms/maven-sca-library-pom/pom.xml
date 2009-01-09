@@ -12,6 +12,7 @@
 	<artifactId>maven-sca-library-pom</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<name>SCA Library Master POM</name>
 
 	<build>
 		<pluginManagement>
