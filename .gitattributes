@@ -2396,7 +2396,6 @@ incubator/maven/maven-poc/poc-working-module/.settings/org.eclipse.wst.common.pr
 incubator/maven/maven-poc/poc-working-module/.settings/org.eclipse.wst.validation.prefs -text
 incubator/maven/maven-poc/poc-working-module/EchoService.component -text
 incubator/maven/maven-poc/poc-working-module/EchoServiceWSEXP.export -text
-incubator/maven/maven-poc/poc-working-module/META-INF/MANIFEST.MF -text
 incubator/maven/maven-poc/poc-working-module/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working-module/no/nav/inf/poc-working-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-working-module/pom.xml -text svneol=unset#text/plain
