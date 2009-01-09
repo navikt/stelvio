@@ -30,6 +30,17 @@
 						</archive>
 					</configuration>
 				</plugin>
+				<!-- 
+					TODO: Setting assembly type to pi (Project Interchange) because of what appears to be a bug in WID ServiceDeploy.
+					Remove this setting to revert to the default (jar) when the appearent bug is resolved.
+				-->
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-service-deploy-plugin</artifactId>
+					<configuration>
+						<assemblyType>pi</assemblyType>
+					</configuration>
+				</plugin>
 
 				<plugin>
 					<!-- 
