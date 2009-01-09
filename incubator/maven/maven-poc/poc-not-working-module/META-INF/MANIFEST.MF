@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: poc-lib.jar 
- poc-lib2.jar
-

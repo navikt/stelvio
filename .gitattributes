@@ -2373,7 +2373,6 @@ incubator/maven/maven-poc/poc-not-working-module/EchoService.component -text
 incubator/maven/maven-poc/poc-not-working-module/EchoService2.component -text
 incubator/maven/maven-poc/poc-not-working-module/EchoService2WSEXP.export -text
 incubator/maven/maven-poc/poc-not-working-module/EchoServiceWSEXP.export -text
-incubator/maven/maven-poc/poc-not-working-module/META-INF/MANIFEST.MF -text
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService2.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoService2WSEXP.wsdl -text svneol=unset#text/plain
