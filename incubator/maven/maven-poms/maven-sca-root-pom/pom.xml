@@ -29,8 +29,9 @@
 				<!-- TODO: Review which files to exclude/include -->
 				<directory>${basedir}</directory>
 				<excludes>
-					<exclude>bin/**</exclude>
 					<exclude>.settings/**</exclude>
+					<exclude>bin/**</exclude>
+					<exclude>gen/**</exclude>
 				</excludes>
 				<includes>
 					<include>**/*.wsdl</include>
@@ -76,9 +77,11 @@
 			As a workaround we are changing the target folder to a folder outside the project		
 		-->
 		<!-- TODO: Review this setting -->
-		<target.dir>${user.home}/maven-target/${groupId}/${artifactId}/${version}</target.dir>
+		<target.dir>
+			${user.home}/maven-target/${groupId}/${artifactId}/${version}
+		</target.dir>
 	</properties>
-	
+
 	<scm>
 		<connection>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms/maven-sca-root-pom
