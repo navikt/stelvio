@@ -2372,12 +2372,21 @@ incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.wst.commo
 incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.wst.validation.prefs -text
 incubator/maven/maven-poc/poc-not-working-module/EchoService.component -text
 incubator/maven/maven-poc/poc-not-working-module/EchoService2.component -text
+incubator/maven/maven-poc/poc-not-working-module/EchoService2MapWSEXP.export -text
+incubator/maven/maven-poc/poc-not-working-module/EchoService2TOEchoService.component -text
 incubator/maven/maven-poc/poc-not-working-module/EchoService2WSEXP.export -text
 incubator/maven/maven-poc/poc-not-working-module/EchoServiceWSEXP.export -text
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/EchoService2.wsdl -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoService2MapWSEXP.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoService2WSEXP.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/no/nav/infmap/EchoService2TOEchoService.ifm -text
+incubator/maven/maven-poc/poc-not-working-module/no/nav/infmap/EchoService2TOEchoService_ifm.mon -text
+incubator/maven/maven-poc/poc-not-working-module/no/nav/map/StringBO2TOStringBO.map -text
+incubator/maven/maven-poc/poc-not-working-module/no/nav/map/StringBO2TOStringBO_map.mon -text
+incubator/maven/maven-poc/poc-not-working-module/no/nav/map/StringBOTOStringBO2.map -text
+incubator/maven/maven-poc/poc-not-working-module/no/nav/map/StringBOTOStringBO2_map.mon -text
 incubator/maven/maven-poc/poc-not-working-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/sca.module -text
 incubator/maven/maven-poc/poc-not-working-module/sca.modulex -text
