@@ -4,6 +4,7 @@ import commonj.sdo.DataObject;
 
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
+import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.sdo.DataFactory;
 
 public class PensjonssakStubImpl {
@@ -40,7 +41,12 @@ public class PensjonssakStubImpl {
 	 */
 	public DataObject opprettKontrollpunkt(
 			DataObject opprettKontrollpunktRequest) {
-		//TODO Needs to be implemented.
+		if (opprettKontrollpunktRequest.getBoolean("triggerSbe"))
+		{
+			DataObject faultSakIkkeFunnet = DataFactory.INSTANCE.create(faultNameSpace, "FaultSakIkkeFunnet");
+			faultSakIkkeFunnet.setString("errorMessage", "Simulerer feil faultSakIkkeFunnet i opprettKontrollpunkt" );
+			throw new ServiceBusinessException(faultSakIkkeFunnet);
+		}
 		return null;
 	}
 
@@ -68,7 +74,7 @@ public class PensjonssakStubImpl {
 	 */
 	public DataObject hentPensjonssakListe(
 			DataObject hentPensjonssakListeRequest) {
-		//TODO Needs to be implemented.
+		
 		return null;
 	}
 
@@ -84,8 +90,12 @@ public class PensjonssakStubImpl {
 		if (hentPensjonssakRequest.getBoolean("triggerSbe"))
 		{
 			DataObject faultSakIkkeFunnet = DataFactory.INSTANCE.create(faultNameSpace, "FaultSakIkkeFunnet");
-			faultSakIkkeFunnet.setString("errorMessage", "Simulerer feil i hentPensjonssak" );
+			faultSakIkkeFunnet.setString("errorMessage", "Simulerer feil faultSakIkkeFunnet i hentPensjonssak" );
 			throw new ServiceBusinessException(faultSakIkkeFunnet);
+		}
+		if (hentPensjonssakRequest.getBoolean("triggerSre"))
+		{
+			throw new ServiceRuntimeException("Simulerer runtime feil i hentPensjonssak");
 		}
 		DataObject gboPensjonssak = createGboPensjonssak();
 		return gboPensjonssak;

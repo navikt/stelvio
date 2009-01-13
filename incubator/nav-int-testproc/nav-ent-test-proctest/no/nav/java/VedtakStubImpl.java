@@ -8,6 +8,7 @@ import commonj.sdo.DataObject;
 import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
+import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.sdo.DataFactory;
 
 public class VedtakStubImpl {
@@ -42,25 +43,29 @@ public class VedtakStubImpl {
 	 * type conveys that its a complex type. Please refer to the WSDL Definition for more information 
 	 * on the type of input, output and fault(s).
 	 */
-	public DataObject hentVedtakListe(DataObject hentVedtakListeRequest) {
-		if (hentVedtakListeRequest.getBoolean("returnTomVedtakListe"))
-			return null;
-		
-		List<DataObject> vedtakListe = new ArrayList<DataObject>();
-		DataObject gboVedtak = createGboVedtak(true);
-		vedtakListe.add(gboVedtak);
+	public DataObject hentVedtakListe(DataObject hentVedtakListeRequest) {				
 		DataObject gboVedtakListe = DataFactory.INSTANCE.create(nameSpace, "GBOVedtakListe");
-		gboVedtakListe.setList("vedtakListe", vedtakListe);
-		return gboVedtakListe;
+		if (hentVedtakListeRequest.getBoolean("returnTomVedtakListe"))
+		{
+			return gboVedtakListe;
+		}else
+		{ 
+			List<DataObject> vedtakListe = new ArrayList<DataObject>();
+			DataObject gboVedtak = createGboVedtak(true);
+			vedtakListe.add(gboVedtak);		
+			gboVedtakListe.setList("vedtakListe", vedtakListe);
+			return gboVedtakListe;
+		}		
+		
 	}
 
 	/**
-	 * Method generated to support implemention of operation "hentVedtak" defined for WSDL port type 
-	 * named "Vedtak".
-	 * 
-	 * The presence of commonj.sdo.DataObject as the return type and/or as a parameter 
-	 * type conveys that its a complex type. Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
+	 * Simulerer kall hentVedtak.
+	 * Man kan manipulere resultat ved å bruke følgende inputparametre i request:
+	 * 1. setDatoBefore - Dersom denne er true, settes dato til en dato før 10.10.2008 for å trigge DatoFor10102008 case.
+	 * 2. triggerSbe - Dersom denne er true, vil koden kaste ServiceBusinessException som er definert for kallet (faultVedtakIkkeFunnet).
+	 * 3. triggerSre - Dersom denne er true, vil koden kaste en ServiceRuntimeException.
+	 * @param hentVedtakRequest
 	 */
 	public DataObject hentVedtak(DataObject hentVedtakRequest) {
 		if(hentVedtakRequest.getBoolean("triggerSbe"))
@@ -69,16 +74,17 @@ public class VedtakStubImpl {
 			faultVedtakIkkeFunnet.setString("errorMessage", "Simulerer feil faultVedtakIkkeFunnet");
 			throw new ServiceBusinessException(faultVedtakIkkeFunnet);
 		}
+		if(hentVedtakRequest.getBoolean("triggerSre"))
+		{
+			throw new ServiceRuntimeException("Simulererer runtime feil i hentVedtak");
+		}
 		DataObject gboVedtak = createGboVedtak(hentVedtakRequest.getBoolean("setDatoBefore"));
 		return gboVedtak;
 	}
 
 	/**
-	 * Bygger en stub av GBOVedtak. Man kan manipulere resultat ved å bruke følgende inputparametre i request:
-	 * 1. setDatoBefore - Dersom denne er true, settes dato til en dato før 10.10.2008 for å trigge DatoFor10102008 case.
-	 * 2. triggerSbe - Dersom denne er true, vil koden kaste ServiceBusinessException som er definert for kallet (faultVedtakIkkeFunnet).
-	 * 3. triggerSre - Dersom denne er true, vil koden kaste en ServiceRuntimeException.
-	 * @param hentVedtakRequest
+	 * Bygger en stub av GBOVedtak. 
+	 * @param setDatoBefore - hvis true, settes dato til før 10102008, ellers til en dato etter dette.
 	 * @return
 	 */
 	private DataObject createGboVedtak(boolean setDatoBefore) {
@@ -104,7 +110,7 @@ public class VedtakStubImpl {
 	 * on the type of input, output and fault(s).
 	 */
 	public String lagreVedtakStatus(DataObject lagreVedtakStatusRequest) {
-		//TODO Needs to be implemented.
+		
 		return null;
 	}
 
@@ -117,7 +123,7 @@ public class VedtakStubImpl {
 	 * on the type of input, output and fault(s).
 	 */
 	public String lagreVedtak(DataObject lagreVedtakRequest) {
-		//TODO Needs to be implemented.
+		
 		return null;
 	}
 

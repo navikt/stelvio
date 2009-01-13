@@ -2535,6 +2535,10 @@ incubator/nav-int-testproc/nav-ent-test-proctest/PensjonssakSCAEXP.export -text
 incubator/nav-int-testproc/nav-ent-test-proctest/PensjonssakStub.component -text
 incubator/nav-int-testproc/nav-ent-test-proctest/VedtakSCAEXP.export -text
 incubator/nav-int-testproc/nav-ent-test-proctest/VedtakStub.component -text
+incubator/nav-int-testproc/nav-ent-test-proctest/no/nav/inf/EntVedtak.wsdl -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-ent-test-proctest/no/nav/infmap/VedtakToEntVedtak.component -text
+incubator/nav-int-testproc/nav-ent-test-proctest/no/nav/infmap/VedtakToEntVedtak.ifm -text
+incubator/nav-int-testproc/nav-ent-test-proctest/no/nav/infmap/VedtakToEntVedtak_ifm.mon -text
 incubator/nav-int-testproc/nav-ent-test-proctest/no/nav/java/PensjonssakStubImpl.java -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-ent-test-proctest/no/nav/java/VedtakStubImpl.java -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-ent-test-proctest/sca.module -text
