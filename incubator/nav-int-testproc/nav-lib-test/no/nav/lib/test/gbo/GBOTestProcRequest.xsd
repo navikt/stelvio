@@ -8,12 +8,42 @@
 			</xsd:element>
 			<xsd:element minOccurs="0" name="setDatoBefore"
 				type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>Dersom feltet har verdien true, skal vedtakVirkningFom feltet settes til en dato før 10.10.2008. Dette for å manipulere vei i Choice 'vedtakVirkningFom' i prosess.</xsd:documentation>
+        </xsd:annotation>
 			</xsd:element>
-			<xsd:element minOccurs="0" name="triggerSbeHV"
+			<xsd:element minOccurs="0" name="triggerSbeHentVedtak"
+				type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>Dersom feltet har verdien true, skal det kastes en ServiceBusinessException fra ent laget ved hentVedtak kall.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="triggerSreHentVedtak"
+				type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>Dersom feltet har verdien true, skal det kastes en ServiceRuntimeException fra ent laget ved hentVedtak kall.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="triggerSbeHentPensjonssak"
+				type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>Dersom feltet har verdien true, skal det kastes en ServiceBusinessException fra ent laget ved hentPensjonssak kall.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="triggerSreHentPensjonssak"
+				type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>Dersom feltet har verdien true, skal det kastes en ServiceRuntimeException fra ent laget ved hentPensjonssak kall.</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="returnTomVedtakListe"
 				type="xsd:boolean">
 			</xsd:element>
-			<xsd:element minOccurs="0" name="triggerSreHV"
-				type="xsd:boolean">
+			<xsd:element minOccurs="0"
+				name="triggerSbeOpprettKontrollpunkt" type="xsd:boolean">
+				<xsd:annotation>
+          <xsd:documentation>Dersom feltet har verdien true, skal det kastes en ServiceBusinessException fra ent laget ved opprettKontrollpunktKall.</xsd:documentation>
+        </xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>

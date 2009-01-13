@@ -2544,11 +2544,12 @@ incubator/nav-int-testproc/nav-lib-test/.project -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.wst.common.component -text
 incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultFeilOppstattIProsess.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultFeilStatusForVedtak.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultKravIkkeFunnet.xsd -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/fault/FaultSakIkkeFunnet.xsd -text svneol=unset#text/plain
@@ -2569,6 +2570,8 @@ incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/gbo/GBOVedtakListe.xsd -
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/Pensjonssak.wsdl -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/TestProc.wsdl -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/Vedtak.wsdl -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/pen/lib/nav/no/nav/lib/pen/inf/pensjonssak/Pensjonssak.java -text svneol=unset#text/plain
+incubator/nav-int-testproc/nav-lib-test/pen/lib/nav/no/nav/lib/pen/inf/vedtak/Vedtak.java -text svneol=unset#text/plain
 incubator/release-test/nav-int-appclient-bpchelper-ear/META-INF/application.xml -text
 incubator/release-test/nav-int-appclient-bpchelper-ear/pom.xml -text
 incubator/release-test/nav-int-appclient-bpchelper-java/.classpath -text

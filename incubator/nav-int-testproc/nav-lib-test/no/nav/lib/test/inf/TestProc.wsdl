@@ -10,7 +10,7 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-    </xsd:schema>
+        </xsd:schema>
   </wsdl:types>
     <wsdl:message name="invokeTestProcRequestMsg">
     <wsdl:part element="tns:invokeTestProc" name="invokeTestProcParameters"/>
@@ -19,5 +19,5 @@
     <wsdl:operation name="invokeTestProc">
       <wsdl:input message="tns:invokeTestProcRequestMsg" name="invokeTestProcRequest"/>
     </wsdl:operation>
-  </wsdl:portType>
+    </wsdl:portType>
 </wsdl:definitions>
