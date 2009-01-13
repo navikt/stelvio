@@ -11,8 +11,6 @@ import javax.security.auth.Subject;
 /**
  * @author lsb2812
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ADLDAPAdapterManagedConnectionFactory extends WBIManagedConnectionFactory {
 
@@ -36,6 +34,8 @@ public class ADLDAPAdapterManagedConnectionFactory extends WBIManagedConnectionF
 	private String serverBasedDistinguishedName;
 	private String serverBindDistinguishedName;
 	private String serverSearchBaseContext;
+	private String directoryProvider;
+	private String ssl;
 	
 	/**
 	 * 
@@ -221,4 +221,39 @@ public class ADLDAPAdapterManagedConnectionFactory extends WBIManagedConnectionF
 		this.serverURL = "ldap://" + getServerHost() + ":" + getServerPort();
 		return serverURL;
 	}
+
+	/**
+	 * @return the directoryProvider
+	 */
+	public String getDirectoryProvider() {
+		return directoryProvider;
+	}
+
+	/**
+	 * @param directoryProvider the directoryProvider to set
+	 */
+	public void setDirectoryProvider(String directoryProvider) {
+		String oldValue = this.directoryProvider;
+		this.directoryProvider = directoryProvider;
+		super.getPropertyChangeSupport().firePropertyChange("directoryProvider", oldValue, directoryProvider);
+	}
+
+	/**
+	 * @return the s
+	 */
+	public String getSsl() {
+		return ssl;
+	}
+
+	/**
+	 * @param ssl the ssl to set
+	 */
+	public void setSsl(String ssl) {
+		String oldValue = this.ssl;
+		this.ssl = ssl;
+		super.getPropertyChangeSupport().firePropertyChange("ssl", oldValue, ssl);
+	}
+
+	
+	
 }

@@ -9,8 +9,6 @@ import javax.naming.ldap.LdapContext;
 /**
  * @author LSB2812
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ADLDAPAdapterPrivilegedExceptionAction implements PrivilegedExceptionAction
 {
@@ -99,7 +97,7 @@ public class ADLDAPAdapterPrivilegedExceptionAction implements PrivilegedExcepti
             	log.logp(Level.FINE, CLASSNAME, "run", "CREATE_LDAP_SESSION metadata entered.");
             	ADLDAPAdapterManagedConnectionFactory adldapmcf = (ADLDAPAdapterManagedConnectionFactory)actionParams[0];
                 ADLDAPAdapterPhysicalConnection phyCon = new ADLDAPAdapterPhysicalConnection();
-                LdapContext session = phyCon.createSession(adldapmcf.getServerURL(), adldapmcf.getServerUserId(), adldapmcf.getServerUserIdPassword(), adldapmcf.getServerAuthenticationMode(), adldapmcf.getServerBasedDistinguishedName(),adldapmcf.getServerBindDistinguishedName(),adldapmcf.getServerConnectionPooling());
+                LdapContext session = phyCon.createSession(adldapmcf.getServerURL(), adldapmcf.getServerUserId(), adldapmcf.getServerUserIdPassword(), adldapmcf.getServerAuthenticationMode(), adldapmcf.getServerBasedDistinguishedName(),adldapmcf.getServerBindDistinguishedName(),adldapmcf.getServerConnectionPooling(), adldapmcf.getSsl());
                 log.logp(Level.FINE, CLASSNAME, "run", "CREATE_LDAP_SESSION metadata exit.");
                 return session;
             }

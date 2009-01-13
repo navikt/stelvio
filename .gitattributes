@@ -3590,6 +3590,7 @@ int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAP
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAPAdapterRecord.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAPAdapterResourceAdapter.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/ADLDAPAdapterResourceAdapterMetaData.java -text
+int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/MinsideAdapterRecord.java -text svneol=unset#text/plain
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterConnectionFailedException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/lib/sik/ad/fault/FaultADNAVAnsattIkkeFunnet.xsd -text

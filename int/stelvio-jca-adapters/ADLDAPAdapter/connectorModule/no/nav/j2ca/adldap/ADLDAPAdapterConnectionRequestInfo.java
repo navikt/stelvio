@@ -15,6 +15,8 @@ public class ADLDAPAdapterConnectionRequestInfo extends WBIConnectionRequestInfo
 	private String serverBasedDistinguishedName;
 	private String serverBindDistinguishedName;
 	private String serverSearchBaseContext;
+	private String directoryProvider;
+	private String ssl;
 	
 	/**
 	 * 
@@ -146,4 +148,38 @@ public class ADLDAPAdapterConnectionRequestInfo extends WBIConnectionRequestInfo
 	public void setServerUserIdPassword(String serverUserIdPassword) {
 		this.serverUserIdPassword = serverUserIdPassword;
 	}
+
+	/**
+	 * @return the directoryProvider
+	 */
+	public String getDirectoryProvider() {
+		return directoryProvider;
+	}
+
+
+	/**
+	 * @param directoryProvider the directoryProvider to set
+	 */
+	public void setDirectoryProvider(String directoryProvider) {
+		this.directoryProvider = directoryProvider;
+	}
+
+
+	/**
+	 * @return the ssl
+	 */
+	public String getSsl() {
+		return ssl;
+	}
+
+
+	/**
+	 * @param ssl the ssl to set
+	 */
+	public void setSsl(String ssl) {
+		this.ssl = ssl;
+	}
+	
+	
+	
 }

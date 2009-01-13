@@ -81,6 +81,20 @@
 					<config-property-type>java.lang.String</config-property-type>
 					<config-property-value>DC=*,DC=*</config-property-value>
 				</config-property>
+				
+				<config-property>
+					<description>Directory provider [ndu | minside]</description>
+					<config-property-name>directoryProvider</config-property-name>
+					<config-property-type>java.lang.String</config-property-type>
+					<config-property-value></config-property-value>
+				</config-property>
+				
+				<config-property>
+					<description>Enable SSL</description>
+					<config-property-name>ssl</config-property-name>
+					<config-property-type>java.lang.String</config-property-type>
+					<config-property-value>false</config-property-value>
+				</config-property>
 
 				<!-- Connection factory properties -->
 				<connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>

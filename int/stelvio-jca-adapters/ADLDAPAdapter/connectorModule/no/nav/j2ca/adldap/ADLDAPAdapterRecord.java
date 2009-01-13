@@ -1,8 +1,6 @@
 /*
  * Created on Oct 19, 2007
  *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 package no.nav.j2ca.adldap;
 
@@ -83,14 +81,14 @@ public class ADLDAPAdapterRecord extends UnstructuredRecord {
 	 * @return Returns the boName.
 	 */
 	public String getBoName() {
-		return ADLDAPAdapterConstants.BO_NAME;
+		return ADLDAPAdapterConstants.NDU_BO_NAME;
 	}
 
 	/**
 	 * @return Returns the boNamespace.
 	 */
 	public String getBoNamespace() {
-		return ADLDAPAdapterConstants.BO_NAMESPACE;
+		return ADLDAPAdapterConstants.NDU_BO_NAMESPACE;
 	}
 	
 	/**
@@ -167,13 +165,12 @@ public class ADLDAPAdapterRecord extends UnstructuredRecord {
 			BOfactory_ = (com.ibm.websphere.bo.BOFactory)serviceManager.locateService("com/ibm/websphere/bo/BOFactory");
 		}
 
-		DataObject dataObject = BOfactory_.create(ADLDAPAdapterConstants.BO_NAMESPACE, ADLDAPAdapterConstants.BO_NAME);
-		dataObject.setString (ADLDAPAdapterConstants.BO_SAMACCOUNTNAME, getSAMAccountName());
-		dataObject.setString (ADLDAPAdapterConstants.BO_DISPLAYNAME, getDisplayName());
-		dataObject.setString (ADLDAPAdapterConstants.BO_GIVENNAME, getGivenName());
-		dataObject.setString (ADLDAPAdapterConstants.BO_SN, getSn());
-		dataObject.setString (ADLDAPAdapterConstants.BO_MAIL, getMail());
-	
+		DataObject dataObject = BOfactory_.create(ADLDAPAdapterConstants.NDU_BO_NAMESPACE, ADLDAPAdapterConstants.NDU_BO_NAME);
+		dataObject.setString (ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME, getSAMAccountName());
+		dataObject.setString (ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME, getDisplayName());
+		dataObject.setString (ADLDAPAdapterConstants.NDU_BO_GIVENNAME, getGivenName());
+		dataObject.setString (ADLDAPAdapterConstants.NDU_BO_SN, getSn());
+		dataObject.setString (ADLDAPAdapterConstants.NDU_BO_MAIL, getMail());
 		return (dataObject);
 	}
 	
@@ -182,11 +179,11 @@ public class ADLDAPAdapterRecord extends UnstructuredRecord {
 	 */
 	public void setDataObject (DataObject dataObject)
 	{
-		setSAMAccountName(dataObject.getString(ADLDAPAdapterConstants.BO_SAMACCOUNTNAME));
-		setDisplayName(dataObject.getString(ADLDAPAdapterConstants.BO_DISPLAYNAME));
-		setGivenName(dataObject.getString(ADLDAPAdapterConstants.BO_GIVENNAME));
-		setSn(dataObject.getString(ADLDAPAdapterConstants.BO_SN));
-		setMail(dataObject.getString(ADLDAPAdapterConstants.BO_MAIL));
+		setSAMAccountName(dataObject.getString(ADLDAPAdapterConstants.NDU_BO_SAMACCOUNTNAME));
+		setDisplayName(dataObject.getString(ADLDAPAdapterConstants.NDU_BO_DISPLAYNAME));
+		setGivenName(dataObject.getString(ADLDAPAdapterConstants.NDU_BO_GIVENNAME));
+		setSn(dataObject.getString(ADLDAPAdapterConstants.NDU_BO_SN));
+		setMail(dataObject.getString(ADLDAPAdapterConstants.NDU_BO_MAIL));
 	}	
 
 	/**

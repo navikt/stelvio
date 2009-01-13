@@ -16,8 +16,6 @@ import no.nav.j2ca.adldap.exception.ADLDAPAdapterConnectionFailedException;
 /**
  * @author lsb2812
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ADLDAPAdapterPhysicalConnection
 {
@@ -74,7 +72,7 @@ public class ADLDAPAdapterPhysicalConnection
      * @return LDAPConnection
      * @throws ADLDAPAdapterConnectionFailedException
      */
-    public LdapContext createSession(String serverURL, String username, String password, String authentication, String serverbaseddistinguishedname, String serverbinddistinguishedname,String pooling ) throws ADLDAPAdapterConnectionFailedException
+    public LdapContext createSession(String serverURL, String username, String password, String authentication, String serverbaseddistinguishedname, String serverbinddistinguishedname,String pooling, String ssl) throws ADLDAPAdapterConnectionFailedException
     {
     	LdapContext session = null;
     	log.logp(Level.FINE, CLASSNAME, "createSession()","Entering");
@@ -86,8 +84,16 @@ public class ADLDAPAdapterPhysicalConnection
 		//set security credentials, note using simple cleartext authentication
 		env.put(Context.SECURITY_AUTHENTICATION, authentication);
 		
+		if ("true".equals(ssl)) {
+			env.put(Context.SECURITY_PROTOCOL, "ssl");
+			log.logp(Level.FINE, CLASSNAME, "createSession()","SSL is enabled");
+		} else {
+			log.logp(Level.FINE, CLASSNAME, "createSession()","SSL is disabled");
+		}
+		
 		// username format CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local
-		String principal = "CN="+username+","+serverbinddistinguishedname;
+		String principal = username+","+serverbinddistinguishedname;
+		log.logp(Level.FINE, CLASSNAME, "createSession()","Setting BaseDN '" + principal + "'");
 		env.put(Context.SECURITY_PRINCIPAL,principal);
 		env.put(Context.SECURITY_CREDENTIALS,password);
 		

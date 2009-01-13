@@ -5,14 +5,6 @@ import com.ibm.j2ca.base.WBIInteractionSpec;
 /**
  * @author utvikler
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
-/**
- * @author utvikler
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ADLDAPAdapterInteractionSpec extends WBIInteractionSpec {
 	
@@ -31,6 +23,8 @@ public class ADLDAPAdapterInteractionSpec extends WBIInteractionSpec {
 	public String serverBasedDistinguishedName;
 	public String serverBindDistinguishedName;
 	public String serverSearchBaseContext;
+	public String directoryProvider;
+	public String ssl;
 
 	//basic authentication
     public String username;
@@ -206,4 +200,33 @@ public class ADLDAPAdapterInteractionSpec extends WBIInteractionSpec {
         this.username = username;
     }
 
+	/**
+	 * @return the directoryProvider
+	 */
+	public String getDirectoryProvider() {
+		return directoryProvider;
+	}
+
+	/**
+	 * @param directoryProvider the directoryProvider to set
+	 */
+	public void setDirectoryProvider(String directoryProvider) {
+		this.directoryProvider = directoryProvider;
+	}
+
+	/**
+	 * @return the ssl
+	 */
+	public String getSsl() {
+		return ssl;
+	}
+
+	/**
+	 * @param ssl the ssl to set
+	 */
+	public void setSsl(String ssl) {
+		this.ssl = ssl;
+	}
+	
+	
 }
