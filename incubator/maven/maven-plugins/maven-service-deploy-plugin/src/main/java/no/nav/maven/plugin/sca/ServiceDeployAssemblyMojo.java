@@ -3,6 +3,8 @@ package no.nav.maven.plugin.sca;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.repository.ArtifactRepository;
@@ -67,6 +69,8 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextua
 
 	private PlexusContainer container;
 
+	private Map<String, MavenProject> projectReferences;
+
 	public void contextualize(Context context) throws ContextException {
 		container = (PlexusContainer) context.get(PlexusConstants.PLEXUS_KEY);
 	}
@@ -86,7 +90,7 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextua
 			for (Artifact artifact : artifacts) {
 				File artifactFile = artifact.getFile();
 				if (artifactFile == null) {
-					resolveArtifact(artifact);
+					artifact = resolveArtifact(artifact);
 				}
 
 				getLog().debug("Adding artifact " + artifact + " to assembly");
@@ -112,11 +116,70 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextua
 		}
 	}
 
-	private void resolveArtifact(Artifact artifact) throws MojoExecutionException {
+	private Artifact resolveArtifact(Artifact artifact) throws MojoExecutionException {
+		// Trying to resolve artifact from project references first. This will
+		// work if the artifact to resolve is built as part of this
+		// (multi-module) build.
+		Artifact resolvedArtifact = resolveArtifactFromProjectReferences(artifact);
+		if (resolvedArtifact != null) {
+			return resolvedArtifact;
+		}
+		return resolveArtifactFromRepositories(artifact);
+	}
+
+	@SuppressWarnings("unchecked")
+	private Artifact resolveArtifactFromProjectReferences(Artifact artifact) throws MojoExecutionException {
+		MavenProject projectReference = getProjectReference(artifact);
+		if (projectReference != null) {
+			getLog().info("Matching project reference found: " + projectReference.getBasedir());
+			Artifact projectReferenceArtifact = projectReference.getArtifact();
+			if (projectReferenceArtifact.equals(artifact)) {
+				getLog().debug("Matching artifact found in project reference: " + projectReferenceArtifact);
+				return projectReferenceArtifact;
+			}
+			for (Artifact attachedArtifact : (Collection<Artifact>) projectReference.getAttachedArtifacts()) {
+				if (attachedArtifact.equals(artifact)) {
+					getLog().debug("Matching artifact found in project reference: " + projectReferenceArtifact);
+					return attachedArtifact;
+				}
+			}
+			throw new MojoExecutionException(
+					"Matching project reference found, but a matching artifact was not found in matching project reference.");
+		} else {
+			return null;
+		}
+	}
+
+	private Artifact resolveArtifactFromRepositories(Artifact artifact) throws MojoExecutionException {
 		try {
 			artifactResolver.resolve(artifact, project.getRemoteArtifactRepositories(), localRepository);
+			return artifact;
 		} catch (AbstractArtifactResolutionException e) {
 			throw new MojoExecutionException("Error resolving artifact", e);
 		}
+	}
+
+	private MavenProject getProjectReference(Artifact artifact) {
+		if (projectReferences == null) {
+			projectReferences = new HashMap<String, MavenProject>();
+			addProjectReferences(projectReferences, project);
+		}
+		String projectReferenceId = getProjectReferenceId(artifact.getGroupId(), artifact.getArtifactId(), artifact
+				.getVersion());
+		return projectReferences.get(projectReferenceId);
+	}
+
+	@SuppressWarnings("unchecked")
+	private static void addProjectReferences(Map<String, MavenProject> projectReferences, MavenProject project) {
+		for (MavenProject projectReference : ((Map<String, MavenProject>) project.getProjectReferences()).values()) {
+			String projectReferenceId = getProjectReferenceId(projectReference.getGroupId(), projectReference.getArtifactId(),
+					projectReference.getVersion());
+			projectReferences.put(projectReferenceId, projectReference);
+			addProjectReferences(projectReferences, projectReference);
+		}
+	}
+
+	private static String getProjectReferenceId(String groupId, String artifactId, String version) {
+		return groupId + ":" + artifactId + ":" + version;
 	}
 }
