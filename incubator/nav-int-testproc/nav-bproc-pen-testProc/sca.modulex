@@ -18,6 +18,14 @@
   </extensions>
   <extensions>
     <extendedObject href="PensjonssakSCAIMP.import#//@import"/>
-    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="566" y="197" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="871" y="191" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="AsynkPensjonssakToPensjonssak.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="441" y="191" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0}MediationImplementation"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="PensjonssakFaultToSRE.component#//@Component"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="671" y="191" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0}JavaImplementation"/>
   </extensions>
 </extensionmodel:ExtensionMap>
