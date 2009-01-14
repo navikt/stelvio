@@ -66,7 +66,8 @@
         <bpws:correlation initiate="yes" set="VedtakIdCorrelation"/>
       </bpws:correlations>
     </bpws:receive>
-    <bpws:scope name="Scope" wpc:displayName="Scope" wpc:id="55">
+    <bpws:scope name="TestBPEL" wpc:displayName="TestBPEL" wpc:id="55">
+      <wpc:documentation>Ytre scope for hele BPEL som eksisterer for å kunne ha felles feilhåndtering som fanger opp FaultFeilOppstattIProsess.</wpc:documentation>
       <bpws:faultHandlers>
         <bpws:catch faultName="ns6:FaultFeilOppstattIProsess" faultVariable="faultFeilOppstattIprosess" wpc:faultType="ns6:FaultFeilOppstattIProsess" wpc:variableId="62">
           <bpws:invoke name="HandterFeil" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="no" wpc:displayName="HandterFeil" wpc:id="58">
@@ -253,7 +254,10 @@ else
                               </bpws:to>
                             </bpws:copy>
                           </bpws:assign>
-                          <bpws:throw faultName="ns6:FaultFeilOppstattIProsess" faultVariable="faultFeilOppstattIProsess" name="ThrowFaultFeilOppstattIProsess1" wpc:displayName="ThrowFaultFeilOppstattIProsess" wpc:id="70"/>
+                          <bpws:throw faultName="ns6:FaultFeilOppstattIProsess" faultVariable="faultFeilOppstattIProsess" name="ThrowFaultFeilOppstattIProsess1" wpc:displayName="ThrowFaultFeilOppstattIProsess" wpc:id="70">
+                            <wpc:documentation>Dette er et eksempel på feilhåndtering i en long running prosess. Feil kastes for så å fanges opp av ytre scope, på denne måten kan&#13;
+prosessinstans fullføres uten å bruke terminate action. Feil som kastes skal være av type FaultFeilOppstattIProsess.</wpc:documentation>
+                          </bpws:throw>
                         </bpws:sequence>
                       </bpws:catch>
                     </bpws:invoke>

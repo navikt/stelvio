@@ -7,7 +7,13 @@ import commonj.sdo.DataObject;
 import pen.lib.nav.no.nav.lib.pen.inf.pensjonssak.Pensjonssak;
 import com.ibm.websphere.sca.ServiceManager;
 
-public class PensjonssakFaultToSREImpl {
+/**
+ * Klassen skal fange business faults som ikke skal håndteres av prosess og
+ * pakke disse inn i en runtime fault. Dette for at feil ikke skal nå prosess, men havne på FEM.
+ * Merk at dette forutsetter at det finnes et asynk steg mellom BPEL og denne klassen.
+ * @author person2f8774420f39
+ *
+ */public class PensjonssakFaultToSREImpl {
 	/**
 	 * Default constructor.
 	 */
@@ -71,7 +77,7 @@ public class PensjonssakFaultToSREImpl {
 	 */
 	public DataObject hentKontrollpunktListe(
 			DataObject hentKontrollpunktListeRequest) {
-		//TODO Needs to be implemented.
+		
 		return null;
 	}
 
@@ -85,7 +91,7 @@ public class PensjonssakFaultToSREImpl {
 	 */
 	public DataObject hentPensjonssakListe(
 			DataObject hentPensjonssakListeRequest) {
-		//TODO Needs to be implemented.
+		
 		return null;
 	}
 
@@ -98,12 +104,8 @@ public class PensjonssakFaultToSREImpl {
 	 * on the type of input, output and fault(s).
 	 */
 	public DataObject hentPensjonssak(DataObject hentPensjonssakRequest) {
-//		try{
+
 			return locateService_PensjonssakPartner().hentPensjonssak(hentPensjonssakRequest);
-//		}catch(ServiceBusinessException sbe){
-//			throw new ServiceRuntimeException(sbe);
-//			
-//		}
 
 	}
 
@@ -115,7 +117,7 @@ public class PensjonssakFaultToSREImpl {
 	 */
 	public void onOpprettKontrollpunktResponse(Ticket __ticket,
 			DataObject returnValue, Exception exception) {
-		//TODO Needs to be implemented.
+		
 	}
 
 	/**
@@ -126,7 +128,7 @@ public class PensjonssakFaultToSREImpl {
 	 */
 	public void onHentKontrollpunktListeResponse(Ticket __ticket,
 			DataObject returnValue, Exception exception) {
-		//TODO Needs to be implemented.
+		
 	}
 
 	/**
@@ -137,7 +139,7 @@ public class PensjonssakFaultToSREImpl {
 	 */
 	public void onHentPensjonssakListeResponse(Ticket __ticket,
 			DataObject returnValue, Exception exception) {
-		//TODO Needs to be implemented.
+		
 	}
 
 	/**
@@ -148,7 +150,7 @@ public class PensjonssakFaultToSREImpl {
 	 */
 	public void onHentPensjonssakResponse(Ticket __ticket,
 			DataObject returnValue, Exception exception) {
-		//TODO Needs to be implemented.
+		
 	}
 
 }
