@@ -14,13 +14,12 @@ import no.nav.femhelper.common.Constants;
 import no.nav.femhelper.common.Event;
 
 import org.apache.commons.lang.StringUtils;
-import org.python.modules.thread;
 
 import utils.SDOFormatter;
 
+import com.Ostermiller.util.CSVPrinter;
 import com.ibm.wbiserver.manualrecovery.FailedEventParameter;
 import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
-import com.ibm.wbiserver.manualrecovery.exceptions.FailedEventRuntimeException;
 import com.ibm.websphere.management.AdminClient;
 import commonj.sdo.DataObject;
 
@@ -30,11 +29,20 @@ import commonj.sdo.DataObject;
  * @author Andreas Røe
  */
 
-public class EventFileWriter extends AbstractFileWriter {
+public class EventFileWriter {
+	private static final String EMPTY = " ";
+
+	/**
+	 * Delimiter to use in CSV file
+	 */
+	private static final char DELIMITER = ';';
+
 	/**
 	 * Logger instance
 	 */
 	private Logger LOGGER = Logger.getLogger(EventFileWriter.class.getName());
+
+	private CSVPrinter csvPrinter;
 
 	/**
 	 * Default parameterized constructor
@@ -52,29 +60,41 @@ public class EventFileWriter extends AbstractFileWriter {
 			path = tempFolder;
 		}
 
-		String completePath = path + File.separatorChar + filename;
-		LOGGER.log(Level.FINE, "Creating instance of BufferedWriter with path: " + completePath);
-		writer = new BufferedWriter(new FileWriter(completePath, true));
+		File file = new File(path, filename);
+		LOGGER.log(Level.FINE, "Creating writer with path: " + file.getAbsolutePath());
+		this.csvPrinter = new CSVPrinter(new BufferedWriter(new FileWriter(file, true)));
+		this.csvPrinter.changeDelimiter(DELIMITER);
+	}
+
+	/**
+	 * Close the EventWriterFile and flush all
+	 */
+	public void close() {
+		try {
+			csvPrinter.close();
+			csvPrinter = null;
+		} catch (IOException e) {
+			LOGGER.log(Level.SEVERE, "ERROR: Might not all reported due to IOException : StackTrace:");
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * write the header in the csv file
 	 */
 	public void writeHeader() throws IOException {
-		writer.write("MessageId" + separator);
-		writer.write("SessionId" + separator);
-		writer.write("InteractionType" + separator);
-		writer.write("SourceModule" + separator);
-		writer.write("SourceComponent" + separator);
-		writer.write("DestinationModule" + separator);
-		writer.write("DestinationComponent" + separator);
-		writer.write("DestinationMethod" + separator);
-		writer.write("FailureDate" + separator);
-		writer.write("FailureMessage" + separator);
-		writer.write("DataObject" + separator);
-		writer.write("CorrelationId");
-		writer.newLine();
-		writer.flush();
+		csvPrinter.write("MessageId");
+		csvPrinter.write("SessionId");
+		csvPrinter.write("InteractionType");
+		csvPrinter.write("SourceModule");
+		csvPrinter.write("SourceComponent");
+		csvPrinter.write("DestinationModule");
+		csvPrinter.write("DestinationComponent");
+		csvPrinter.write("DestinationMethod");
+		csvPrinter.write("FailureDate");
+		csvPrinter.write("FailureMessage");
+		csvPrinter.write("DataObject");
+		csvPrinter.writeln("CorrelationId");
 	}
 
 	/**
@@ -87,33 +107,24 @@ public class EventFileWriter extends AbstractFileWriter {
 	 */
 	public void writeCSVEvent(FailedEventWithParameters parameters, Event event, AdminClient adminClient) throws IOException {
 		// Write information about this event
-		writer.write(getEscapedString(parameters.getMsgId()) + separator);
-		writer.write(getEscapedString(parameters.getSessionId()) + separator);
-		writer.write(getEscapedString(parameters.getInteractionType()) + separator);
-		writer.write(getEscapedString(parameters.getSourceModuleName()) + separator);
-		writer.write(getEscapedString(parameters.getSourceComponentName()) + separator);
-		writer.write(getEscapedString(parameters.getDestinationModuleName()) + separator);
-		writer.write(getEscapedString(parameters.getDestinationComponentName()) + separator);
-		writer.write(getEscapedString(parameters.getDestinationMethodName()) + separator);
+		csvPrinter.write(parameters.getMsgId());
+		csvPrinter.write(parameters.getSessionId());
+		csvPrinter.write(parameters.getInteractionType());
+		csvPrinter.write(parameters.getSourceModuleName());
+		csvPrinter.write(parameters.getSourceComponentName());
+		csvPrinter.write(parameters.getDestinationModuleName());
+		csvPrinter.write(parameters.getDestinationComponentName());
+		csvPrinter.write(parameters.getDestinationMethodName());
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
-		writer.write(getEscapedString(sdf.format(parameters.getFailureDateTime())) + separator);
+		csvPrinter.write(sdf.format(parameters.getFailureDateTime()));
 
-		// Write quotes start. This is needed to get all values within
-		// the same cell if and when this data is imported in Excel.
-		writer.write("\"");
 		// LS, looks like a bug in the FEM MBEAN because only get 1024 bytes
 		// back - message is truncated
-		writer.write(getEscapedString(parameters.getFailureMessage()) + "...(truncated to max. 1024 bytes)");
-		// Write quotes end plus separator
-		writer.write("\"" + separator);
+		csvPrinter.write(parameters.getFailureMessage() + "...(truncated to max. 1024 bytes)");
 
 		// Write parameters from the failed event
+		StringBuilder sb = new StringBuilder();
 		if (parameters instanceof FailedEventWithParameters) {
-
-			// Write quotes start. This is needed to get all values within
-			// the same cell if and when this data is imported in Excel.
-			writer.write("\"");
-			
 			try {
 				List paramList = parameters.getFailedEventParameters(adminClient.getConnectorProperties());
 
@@ -131,45 +142,35 @@ public class EventFileWriter extends AbstractFileWriter {
 					} else {
 						prettyPrint = "Unable to convert";
 					}
-					writer.write(getEscapedString("DataObject:" + prettyPrint));
-					writer.write(EMPTY); // Ensure all 'cells' are filled to
-											// improve make the view even more easy
-											// to read
+					sb.append("DataObject:" + prettyPrint);
+					sb.append(EMPTY); // Ensure all 'cells' are filled to
+					// improve make the view even more easy
+					// to read
 				}
 			} catch (RuntimeException e) {
 				String errormsg = "RuntimeException caught during retrieval of business object" + e.getClass().getName();
-				writer.write(errormsg);
-				writer.write(EMPTY);
+				sb.append(errormsg);
+				sb.append(EMPTY);
 				LOGGER.log(Level.SEVERE, errormsg, e);
-				
 			}
-
-			// Write quotes end
-			writer.write("\"" + separator);
 		}
+		csvPrinter.write(sb.toString());
 
 		// Write PIID / CorrelationId
-		writer.write(getEscapedString(event.getCorrelationID()));
-
-		// Write a empty line the end of this entry and close the writer
-		writer.newLine();
-
-		writer.flush();
+		csvPrinter.writeln(event.getCorrelationID());
 	}
 
 	/**
 	 * write the discard header in the csv file
 	 */
 	public void writeShortHeader() throws IOException {
-		writer.write("MessageId" + separator);
-		writer.write("Event Status" + separator);
-		writer.write("FailureDate" + separator);
-		writer.write("FailureMessage" + separator);
-		writer.write("CorrelationId" + separator);
-		writer.write("Process Status" + separator);
-		writer.write("FailureMessage" + separator);
-		writer.newLine();
-		writer.flush();
+		csvPrinter.write("MessageId");
+		csvPrinter.write("Event Status");
+		csvPrinter.write("FailureDate");
+		csvPrinter.write("FailureMessage");
+		csvPrinter.write("CorrelationId");
+		csvPrinter.write("Process Status");
+		csvPrinter.writeln("FailureMessage");
 	}
 
 	/**
@@ -182,46 +183,12 @@ public class EventFileWriter extends AbstractFileWriter {
 	 */
 	public void writeShortEvent(Event event) throws IOException {
 		// Write information about this event
-		writer.write(getEscapedString(event.getMessageID()) + separator);
-		writer.write(getEscapedString(event.getEventStatus()) + separator);
-		writer.write(getEscapedString(event.getEventFailureDate()) + separator);
-
-		// Write quotes start. This is needed to get all values within
-		// the same cell if and when this data is imported in Excel.
-		writer.write("\"");
-		writer.write(getEscapedString(event.getEventFailureMessage()));
-		// Write quotes end plus separator
-		writer.write("\"" + separator);
-
-		writer.write(getEscapedString(event.getCorrelationID()) + separator);
-		writer.write(getEscapedString(event.getProcessStatus()) + separator);
-
-		writer.write("\"");
-		writer.write(getEscapedString(event.getProcessFailureMessage()));
-		writer.write("\"");
-
-		// Write a empty line the end of this entry and close the writer
-		writer.newLine();
-
-		writer.flush();
-	}
-
-	/**
-	 * TODO: might be more complexity is necessary to filter out other chars tha
-	 * sep. Returns a string with all <code>;</code> characters replace it
-	 * with <code>#</code>
-	 * 
-	 * @param s
-	 *            String to replace
-	 * @return fixed string
-	 */
-	private String getEscapedString(String s) {
-		if (s != null) {
-			String result = s.replaceAll(";", "#");
-			result = result.replaceAll("##", "#");
-			result = result.replaceAll("\"", StringUtils.EMPTY);
-			return result;
-		}
-		return StringUtils.EMPTY;
+		csvPrinter.write(event.getMessageID());
+		csvPrinter.write(event.getEventStatus());
+		csvPrinter.write(event.getEventFailureDate());
+		csvPrinter.write(event.getEventFailureMessage());
+		csvPrinter.write(event.getCorrelationID());
+		csvPrinter.write(event.getProcessStatus());
+		csvPrinter.writeln(event.getProcessFailureMessage());
 	}
 }
