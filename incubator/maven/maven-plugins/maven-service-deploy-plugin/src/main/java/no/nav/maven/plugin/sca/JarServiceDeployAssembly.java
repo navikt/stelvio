@@ -24,7 +24,12 @@ public class JarServiceDeployAssembly implements ServiceDeployAssembly {
 		}
 
 		Collection<Artifact> runtimeArtifacts = project.getRuntimeArtifacts();
-		artifacts.addAll(runtimeArtifacts);
+		for (Artifact runtimeArtifact : runtimeArtifacts) {
+			String runtimeArtifactType = runtimeArtifact.getType();
+			if ("jar".equals(runtimeArtifactType) || "sca-library-jar".equals(runtimeArtifactType)) {
+				artifacts.add(runtimeArtifact);
+			}
+		}
 
 		return artifacts;
 	}

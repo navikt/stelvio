@@ -30,11 +30,13 @@ public class ProjectInterchangeServiceDeployAssembly implements ServiceDeployAss
 
 		Collection<Dependency> runtimeDependencies = project.getRuntimeDependencies();
 		for (Dependency runtimeDependency : runtimeDependencies) {
-			Artifact artifact = artifactFactory.createArtifactWithClassifier(runtimeDependency.getGroupId(), runtimeDependency
-					.getArtifactId(), runtimeDependency.getVersion(), PROJECT_INTERCHANGE_ARTIFACT_TYPE,
-					PROJECT_INTERCHANGE_CLASSIFIER);
-
-			artifacts.add(artifact);
+			String runtimeDependencyType = runtimeDependency.getType();
+			if ("sca-library-jar".equals(runtimeDependencyType)) {
+				Artifact artifact = artifactFactory.createArtifactWithClassifier(runtimeDependency.getGroupId(),
+						runtimeDependency.getArtifactId(), runtimeDependency.getVersion(), PROJECT_INTERCHANGE_ARTIFACT_TYPE,
+						PROJECT_INTERCHANGE_CLASSIFIER);
+				artifacts.add(artifact);
+			}
 		}
 
 		return artifacts;
