@@ -38,6 +38,7 @@
 			</xsd:element>
 			<xsd:element minOccurs="0" name="returnTomVedtakListe"
 				type="xsd:boolean">
+				<xsd:annotation><xsd:documentation>Dersom verdien er true, returneres en tom vedtakliste fra ent lag ved hentVedtakListe kall.</xsd:documentation></xsd:annotation>
 			</xsd:element>
 			<xsd:element minOccurs="0"
 				name="triggerSbeOpprettKontrollpunkt" type="xsd:boolean">
