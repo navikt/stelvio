@@ -6,7 +6,11 @@ import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.sdo.DataFactory;
-
+/**
+ * Stub som simulerer Pensjonssak kall
+ * @author person2f8774420f39
+ *
+ */
 public class PensjonssakStubImpl {
 
 	private final String nameSpace="http://nav-lib-test/no/nav/lib/test/gbo";
@@ -32,12 +36,7 @@ public class PensjonssakStubImpl {
 	}
 
 	/**
-	 * Method generated to support implemention of operation "opprettKontrollpunkt" defined for WSDL port type 
-	 * named "Pensjonssak".
-	 * 
-	 * The presence of commonj.sdo.DataObject as the return type and/or as a parameter 
-	 * type conveys that its a complex type. Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
+	 * Simulerer opprettKontrollpunkt kall. Ved å sette triggerSbe = true i request, simuleres kasting av FaultSakIkkeFunnet.
 	 */
 	public DataObject opprettKontrollpunkt(
 			DataObject opprettKontrollpunktRequest) {
@@ -47,30 +46,24 @@ public class PensjonssakStubImpl {
 			faultSakIkkeFunnet.setString("errorMessage", "Simulerer feil faultSakIkkeFunnet i opprettKontrollpunkt" );
 			throw new ServiceBusinessException(faultSakIkkeFunnet);
 		}
-		return null;
+		
+		DataObject gboKontrollpunkt = createGBOKontrollpunkt();
+		return gboKontrollpunkt;
 	}
 
+
+
 	/**
-	 * Method generated to support implemention of operation "hentKontrollpunktListe" defined for WSDL port type 
-	 * named "Pensjonssak".
-	 * 
-	 * The presence of commonj.sdo.DataObject as the return type and/or as a parameter 
-	 * type conveys that its a complex type. Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
+	 * Brukes foreløpig ikke.
 	 */
 	public DataObject hentKontrollpunktListe(
 			DataObject hentKontrollpunktListeRequest) {
-		//TODO Needs to be implemented.
+		
 		return null;
 	}
 
 	/**
-	 * Method generated to support implemention of operation "hentPensjonssakListe" defined for WSDL port type 
-	 * named "Pensjonssak".
-	 * 
-	 * The presence of commonj.sdo.DataObject as the return type and/or as a parameter 
-	 * type conveys that its a complex type. Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
+	 * Brukes foreløpig ikke.
 	 */
 	public DataObject hentPensjonssakListe(
 			DataObject hentPensjonssakListeRequest) {
@@ -79,12 +72,9 @@ public class PensjonssakStubImpl {
 	}
 
 	/**
-	 * Method generated to support implemention of operation "hentPensjonssak" defined for WSDL port type 
-	 * named "Pensjonssak".
-	 * 
-	 * The presence of commonj.sdo.DataObject as the return type and/or as a parameter 
-	 * type conveys that its a complex type. Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
+	 * Simulerer hentPensjonssak kall. Resultat kan manipuleres ved å sette følgende data i request:
+	 * 1. triggerSbe=true - simulerer kasting av business fault FaultSakIkkeFunnet
+	 * 2. triggerSre=true - simulerer kasting av ServiceRuntimeException
 	 */
 	public DataObject hentPensjonssak(DataObject hentPensjonssakRequest) {
 		if (hentPensjonssakRequest.getBoolean("triggerSbe"))
@@ -101,10 +91,26 @@ public class PensjonssakStubImpl {
 		return gboPensjonssak;
 	}
 
+	/**
+	 * Bygger en GBOPensjonssak stub
+	 * @return gboPensjonssak
+	 */
 	private DataObject createGboPensjonssak() {
 		DataObject gboPensjonssak = DataFactory.INSTANCE.create(nameSpace,"GBOPensjonssak" );
 		gboPensjonssak.setString("saksId", "789");
 		return gboPensjonssak;
+	}
+	
+	/**
+	 * Bygger en GBOKontrollpunkt stub
+	 * @return gboKontrollpunkt
+	 */
+	private DataObject createGBOKontrollpunkt() {
+		DataObject gboKontrollpunkt = DataFactory.INSTANCE.create(nameSpace, "GBOKontrollpunkt");
+		gboKontrollpunkt.setString("kontrollpunktId", "1234");
+		gboKontrollpunkt.setString("kontrollpunktTypeKode","BAKSYS_UTILGJENGELIG");
+		gboKontrollpunkt.setBoolean("kritisk", true);
+		return gboKontrollpunkt;
 	}
 
 }

@@ -10,7 +10,11 @@ import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.sdo.DataFactory;
-
+/**
+ * Stub som simulerer Vedtak kall.
+ * @author person2f8774420f39
+ *
+ */
 public class VedtakStubImpl {
 	
 	
@@ -36,12 +40,11 @@ public class VedtakStubImpl {
 	}
 
 	/**
-	 * Method generated to support implemention of operation "hentVedtakListe" defined for WSDL port type 
-	 * named "Vedtak".
+	 * Simulerer hentVedtakListe kall. Resultatet kan manipuleres ved å sette returnTomVedtakListe i 
+	 * hentVedtakListeRequest.
+	 * 1. retunrTomVedtakListe = false - Et objekt av type GBOVedtakListe som inneholder vedtak returneres.
+	 * 2. returnTomVedtakListe = true - Et tomt objekt av type GBOVedtakListe returneres.
 	 * 
-	 * The presence of commonj.sdo.DataObject as the return type and/or as a parameter 
-	 * type conveys that its a complex type. Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
 	 */
 	public DataObject hentVedtakListe(DataObject hentVedtakListeRequest) {				
 		DataObject gboVedtakListe = DataFactory.INSTANCE.create(nameSpace, "GBOVedtakListe");
@@ -102,12 +105,7 @@ public class VedtakStubImpl {
 	}
 
 	/**
-	 * Method generated to support implemention of operation "lagreVedtakStatus" defined for WSDL port type 
-	 * named "Vedtak".
-	 * 
-	 * The presence of commonj.sdo.DataObject as the return type and/or as a parameter 
-	 * type conveys that its a complex type. Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
+	 * Brukes foreløpig ikke.
 	 */
 	public String lagreVedtakStatus(DataObject lagreVedtakStatusRequest) {
 		
@@ -124,7 +122,7 @@ public class VedtakStubImpl {
 	 */
 	public String lagreVedtak(DataObject lagreVedtakRequest) {
 		
-		return null;
+		return "OK";
 	}
 
 }
