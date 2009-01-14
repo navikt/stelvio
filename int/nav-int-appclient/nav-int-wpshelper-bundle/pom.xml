@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>no.nav.int.appclient.wpshelper</groupId>
@@ -8,14 +10,19 @@
 	<name>WPS Helper Bundle Module</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle</developerConnection>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper-bundle
+		</developerConnection>
 	</scm>
 
 	<properties>
 		<launchClient.home>
 			/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin
 		</launchClient.home>
+		<artifacts.version>1.0.2-SNAPSHOT</artifacts.version>
 	</properties>
 
 	<build>
@@ -64,19 +71,19 @@
 		<dependency>
 			<groupId>no.nav.int.appclient.wpshelper</groupId>
 			<artifactId>femhelper-ear</artifactId>
-			<version>1.0.1</version>
+			<version>${artifacts.version}</version>
 			<type>ear</type>
 		</dependency>
 		<dependency>
 			<groupId>no.nav.int.appclient.wpshelper</groupId>
 			<artifactId>bpchelper-ear</artifactId>
-			<version>1.0.1</version>
+			<version>${artifacts.version}</version>
 			<type>ear</type>
 		</dependency>
 		<dependency>
 			<groupId>no.nav.int.appclient.wpshelper</groupId>
 			<artifactId>sibushelper-ear</artifactId>
-			<version>1.0.1</version>
+			<version>${artifacts.version}</version>
 			<type>ear</type>
 		</dependency>
 	</dependencies>
