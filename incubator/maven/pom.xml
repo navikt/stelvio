@@ -14,6 +14,7 @@
 	<artifactId>maven-artifacts</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<name>NAV Maven Artifacts</name>
 
 	<modules>
 		<module>maven-archetypes</module>
