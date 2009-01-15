@@ -14,4 +14,13 @@
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>NAV Maven assemblies</name>
+
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-assemblies
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-assemblies
+		</developerConnection>
+	</scm>
 </project>
