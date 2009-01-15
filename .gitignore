@@ -187,6 +187,7 @@ incubator/maven/maven-poc/poc-not-working-module/META-INF
 incubator/maven/maven-poc/poc-not-working-module/bin
 incubator/maven/maven-poc/poc-working-module/META-INF
 incubator/maven/maven-poc/poc-working-module/bin
+incubator/maven/maven-poc/poc-working-module/gen
 incubator/maven/maven-poms/.project
 incubator/maven/maven-poms/maven-root-pom/target
 incubator/maven/maven-poms/maven-sca-library-pom/target
