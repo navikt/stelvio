@@ -180,6 +180,7 @@ incubator/maven/maven-plugins/maven-service-deploy-plugin/target
 incubator/maven/maven-plugins/target
 incubator/maven/maven-poc/poc-lib/META-INF
 incubator/maven/maven-poc/poc-lib/bin
+incubator/maven/maven-poc/poc-lib/gen
 incubator/maven/maven-poc/poc-lib2/META-INF
 incubator/maven/maven-poc/poc-lib2/bin
 incubator/maven/maven-poc/poc-not-working-module/META-INF
