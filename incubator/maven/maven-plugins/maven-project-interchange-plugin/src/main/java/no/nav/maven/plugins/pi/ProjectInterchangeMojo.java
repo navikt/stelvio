@@ -2,9 +2,10 @@ package no.nav.maven.plugins.pi;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 
 import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
@@ -29,8 +30,9 @@ public class ProjectInterchangeMojo extends AbstractMojo {
 	private static final String PROJECT_INTERCHANGE_ARTIFACT_TYPE = "project-interchange";
 	private static final String PROJECT_INTERCHANGE_CLASSIFIER = "pi";
 
-	private static final String[] DEFAULT_INCLUDES = { "**/*" };
-	private static final String[] ECLIPSE_PROJECT_INCLUDES = { ".project", ".classpath", ".settings/**" };
+	private static final String[] ALL_FILES_PATTERN = { "**/*" };
+	private static final String[] ECLIPSE_PROJECT_FILES_PATTERN = { ".project", ".classpath", ".settings/**" };
+	private static final String[] JAVA_FILES_PATTERN = { "**/*.java" };
 
 	/**
 	 * @component
@@ -105,10 +107,11 @@ public class ProjectInterchangeMojo extends AbstractMojo {
 		}
 
 		private void addEclipseProjectFiles() throws ArchiverException {
-			archiver.addDirectory(project.getBasedir(), baseDirectory + "\\", ECLIPSE_PROJECT_INCLUDES, FileUtils
+			archiver.addDirectory(project.getBasedir(), baseDirectory + "\\", ECLIPSE_PROJECT_FILES_PATTERN, FileUtils
 					.getDefaultExcludes());
 		}
 
+		@SuppressWarnings("unchecked")
 		private void addSources() throws ArchiverException, MojoExecutionException {
 			File sourceDirectory = new File(project.getBuild().getSourceDirectory());
 			if (!sourceDirectory.exists()) {
@@ -116,8 +119,23 @@ public class ProjectInterchangeMojo extends AbstractMojo {
 				return;
 			}
 			String relativePath = getRelativePathToBaseDir(sourceDirectory);
-			archiver.addDirectory(sourceDirectory, baseDirectory + relativePath + "\\", new String[] { "**/*.java" }, FileUtils
-					.getDefaultExcludes());
+
+			Collection<String> excludes = new HashSet<String>(FileUtils.getDefaultExcludesAsList());
+			// Loop through resources and see if any resource directory is the
+			// same as the source directory.
+			Collection<Resource> resources = project.getBuild().getResources();
+			for (Resource resource : resources) {
+				String resourceRelativePath = getRelativePathToBaseDir(resource.getDirectory());
+				if (resourceRelativePath.equals(relativePath)) {
+					// Add excludes from resources if resource directory equals
+					// source directory. I wish Maven had support for source
+					// excludes.......
+					excludes.addAll(resource.getExcludes());
+				}
+			}
+
+			archiver.addDirectory(sourceDirectory, baseDirectory + relativePath + "\\", JAVA_FILES_PATTERN, excludes
+					.toArray(new String[excludes.size()]));
 		}
 
 		@SuppressWarnings("unchecked")
@@ -137,35 +155,31 @@ public class ProjectInterchangeMojo extends AbstractMojo {
 			}
 			String relativePath = getRelativePathToBaseDir(resourceDirectory);
 
-			String[] includes;
-			Collection<String> resourceIncludes = resource.getIncludes();
-			if (resourceIncludes == null || resourceIncludes.isEmpty()) {
-				includes = DEFAULT_INCLUDES;
-			} else {
-				includes = resourceIncludes.toArray(new String[resourceIncludes.size()]);
+			Collection<String> includes = new HashSet<String>(resource.getIncludes());
+			if (includes.isEmpty()) {
+				includes.addAll(Arrays.asList(ALL_FILES_PATTERN));
 			}
 
-			String[] excludes;
-			Collection<String> resourceExcludes = resource.getExcludes();
-			if (resourceExcludes == null || resourceExcludes.isEmpty()) {
-				excludes = FileUtils.getDefaultExcludes();
-			} else {
-				Collection<String> allExcludes = new ArrayList<String>(FileUtils.getDefaultExcludesAsList());
-				allExcludes.addAll(resourceExcludes);
-				excludes = allExcludes.toArray(new String[allExcludes.size()]);
-			}
+			Collection<String> excludes = new HashSet<String>(FileUtils.getDefaultExcludesAsList());
+			// Exclude java files - just in case resource directory is the same
+			// as source directory
+			excludes.addAll(Arrays.asList(JAVA_FILES_PATTERN));
+			excludes.addAll(resource.getExcludes());
 
-			archiver.addDirectory(resourceDirectory, baseDirectory + relativePath + "\\", includes, excludes);
+			archiver.addDirectory(resourceDirectory, baseDirectory + relativePath + "\\", includes.toArray(new String[includes
+					.size()]), excludes.toArray(new String[excludes.size()]));
 		}
 
 		private String getRelativePathToBaseDir(File dir) throws MojoExecutionException {
-			File baseDir = project.getBasedir();
-			String dirStr = dir.getAbsolutePath();
-			String baseDirStr = baseDir.getAbsolutePath();
-			if (!dirStr.startsWith(baseDirStr)) {
+			return getRelativePathToBaseDir(dir.getAbsolutePath());
+		}
+
+		private String getRelativePathToBaseDir(String dir) throws MojoExecutionException {
+			String baseDir = project.getBasedir().getAbsolutePath();
+			if (!dir.startsWith(baseDir)) {
 				throw new MojoExecutionException("Project interchange only supports folders within baseDir");
 			}
-			return dirStr.substring(baseDirStr.length(), dirStr.length());
+			return dir.substring(baseDir.length(), dir.length());
 		}
 	}
 }
