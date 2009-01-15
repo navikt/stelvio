@@ -31,4 +31,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-archetypes/service-library-archetype
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-archetypes/service-library-archetype
+		</developerConnection>
+	</scm>
 </project>
