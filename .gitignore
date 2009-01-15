@@ -88,6 +88,10 @@ incubator/maven/maven-archetypes/service-module-archetype/.project
 incubator/maven/maven-archetypes/service-module-archetype/.settings
 incubator/maven/maven-archetypes/service-module-archetype/bin
 incubator/maven/maven-archetypes/service-module-archetype/target
+incubator/maven/maven-assemblies/.classpath
+incubator/maven/maven-assemblies/.project
+incubator/maven/maven-assemblies/.settings
+incubator/maven/maven-assemblies/target
 incubator/maven/maven-plugins/.classpath
 incubator/maven/maven-plugins/.project
 incubator/maven/maven-plugins/.settings
