@@ -24,8 +24,8 @@ import org.codehaus.plexus.context.ContextException;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.Contextualizable;
 
 /**
- * This plugin builds a zip-file (containing jar-files) that can be used as
- * input to serviceDeploy.
+ * This plugin builds an assembly (zip-file) that can be used as input to
+ * serviceDeploy.
  * 
  * @author test@example.com
  * 
@@ -60,10 +60,10 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextua
 	private ArtifactRepository localRepository;
 
 	/**
-	 * Defines the assembly type to use. Valid values are jar [default]
-	 * (jar-files) and pi (project interchange).
+	 * Defines the assembly type to use. Valid values are zip [default] and pi
+	 * (project interchange).
 	 * 
-	 * @parameter default-value="jar"
+	 * @parameter default-value="zip"
 	 */
 	private String assemblyType;
 
@@ -107,8 +107,8 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextua
 
 	private ServiceDeployAssembly lookupServiceDeployAssembly() throws MojoExecutionException {
 		try {
-			if (!"jar".equals(assemblyType) && !"pi".equals(assemblyType)) {
-				throw new MojoExecutionException("Illegal assembly type (" + assemblyType + "). Must be one of [jar,pi].");
+			if (!"zip".equals(assemblyType) && !"pi".equals(assemblyType)) {
+				throw new MojoExecutionException("Illegal assembly type (" + assemblyType + "). Must be one of [zip,pi].");
 			}
 			return (ServiceDeployAssembly) container.lookup(ServiceDeployAssembly.class.getName(), assemblyType);
 		} catch (ComponentLookupException e) {

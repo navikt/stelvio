@@ -8,7 +8,7 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 
-public class JarServiceDeployAssembly implements ServiceDeployAssembly {
+public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 	private static final String JAR_CLASSIFIER = "jar";
 
 	@SuppressWarnings("unchecked")
@@ -23,13 +23,7 @@ public class JarServiceDeployAssembly implements ServiceDeployAssembly {
 			}
 		}
 
-		Collection<Artifact> runtimeArtifacts = project.getRuntimeArtifacts();
-		for (Artifact runtimeArtifact : runtimeArtifacts) {
-			String runtimeArtifactType = runtimeArtifact.getType();
-			if ("jar".equals(runtimeArtifactType) || "sca-library-jar".equals(runtimeArtifactType)) {
-				artifacts.add(runtimeArtifact);
-			}
-		}
+		artifacts.addAll(project.getRuntimeArtifacts());
 
 		return artifacts;
 	}

@@ -2,9 +2,9 @@
 	<components>
 		<component>
 			<role>no.nav.maven.plugin.sca.ServiceDeployAssembly</role>
-			<role-hint>jar</role-hint>
+			<role-hint>zip</role-hint>
 			<implementation>
-				no.nav.maven.plugin.sca.JarServiceDeployAssembly
+				no.nav.maven.plugin.sca.ZipServiceDeployAssembly
 			</implementation>
 		</component>
 		<component>
