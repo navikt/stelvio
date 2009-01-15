@@ -84,6 +84,10 @@ incubator/maven/maven-archetypes/service-library-archetype/.project
 incubator/maven/maven-archetypes/service-library-archetype/.settings
 incubator/maven/maven-archetypes/service-library-archetype/bin
 incubator/maven/maven-archetypes/service-library-archetype/target
+incubator/maven/maven-archetypes/service-module-archetype/.project
+incubator/maven/maven-archetypes/service-module-archetype/.settings
+incubator/maven/maven-archetypes/service-module-archetype/bin
+incubator/maven/maven-archetypes/service-module-archetype/target
 incubator/maven/maven-plugins/.classpath
 incubator/maven/maven-plugins/.project
 incubator/maven/maven-plugins/.settings

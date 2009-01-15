@@ -2320,6 +2320,9 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 incubator/maven/maven-archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
 incubator/maven/maven-archetypes/service-library-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-archetypes/service-module-archetype/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-archetypes/service-module-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
+incubator/maven/maven-archetypes/service-module-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-plugins/maven-project-interchange-plugin/pom.xml -text
 incubator/maven/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
 incubator/maven/maven-plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
