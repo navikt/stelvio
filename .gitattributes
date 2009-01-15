@@ -3521,7 +3521,7 @@ int/stelvio-commons-bpc-lib/bfmclientmodel.jar -text
 int/stelvio-commons-bpc-lib/bpcclientcore.jar -text
 int/stelvio-commons-bpc-lib/bpe137650.jar -text
 int/stelvio-commons-bpc-lib/bpeapi.jar -text
-int/stelvio-commons-bpc-lib/gen/src/no/stelvio/common/bpel/BPELHelperUtil.java -text svneol=unset#text/plain
+int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BPELHelperUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/.classpath -text svneol=unset#text/plain
 int/stelvio-commons-lib/.project -text svneol=unset#text/plain
 int/stelvio-commons-lib/.runtime -text
