@@ -2366,7 +2366,6 @@ incubator/maven/maven-poc/poc-lib2/.settings/org.eclipse.wst.validation.prefs -t
 incubator/maven/maven-poc/poc-lib2/no/nav/gbo/StringBO2.xsd -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-lib2/no/nav/util/LoggerUtil2.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-lib2/pom.xml -text svneol=unset#text/plain
-incubator/maven/maven-poc/poc-lib2/src/main/java/no/nav/util/LoggerUtil2.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-bundle/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-bundle/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/.classpath -text
