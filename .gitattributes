@@ -2371,7 +2371,7 @@ incubator/maven/maven-poc/poc-not-working-bundle/pom.xml -text svneol=unset#text
 incubator/maven/maven-poc/poc-not-working-module/.classpath -text
 incubator/maven/maven-poc/poc-not-working-module/.project -text
 incubator/maven/maven-poc/poc-not-working-module/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text
-incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.core.resources.prefs -text
+incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.jdt.core.prefs -text
 incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.wst.common.component -text
@@ -2390,6 +2390,9 @@ incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-modu
 incubator/maven/maven-poc/poc-not-working-module/no/nav/inf/poc-not-working-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/infmap/EchoService2TOEchoService.ifm -text
 incubator/maven/maven-poc/poc-not-working-module/no/nav/infmap/EchoService2TOEchoService_ifm.mon -text
+incubator/maven/maven-poc/poc-not-working-module/no/nav/java/EchoService2Impl.java -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/no/nav/java/Main.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-not-working-module/no/nav/map/StringBO2TOStringBO.map -text
 incubator/maven/maven-poc/poc-not-working-module/no/nav/map/StringBO2TOStringBO_map.mon -text
 incubator/maven/maven-poc/poc-not-working-module/no/nav/map/StringBOTOStringBO2.map -text
