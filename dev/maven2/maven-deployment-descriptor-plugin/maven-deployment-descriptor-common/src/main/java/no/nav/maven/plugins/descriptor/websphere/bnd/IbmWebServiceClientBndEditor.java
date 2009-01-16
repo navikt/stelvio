@@ -3,6 +3,7 @@ package no.nav.maven.plugins.descriptor.websphere.bnd;
 import java.net.URI;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.Properties;
 
 import no.nav.maven.plugins.descriptor.jee.EjbJarEditor;
 import no.nav.maven.plugins.descriptor.websphere.IbmWebServiceDescriptorEditor;
@@ -53,11 +54,25 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
 		sslConfig.setName(name);		
     }
     
-    public void setEndpointUri(String newPortServerAddress) {
+    public void setEndpointUri(String newDefaultPortServerAddress, Properties myEndpoints) {
     	Iterator iter = getServiceRefs();
     	while(iter.hasNext()){
     		ServiceRef serviceRef = (ServiceRef)iter.next();
-			setEndpointUri(newPortServerAddress, serviceRef);
+    		
+    		/*
+    		 * Det vanligste er at en modul vil koble alle web servicesene sine til en host.
+    		 * Men noen moduler, spesielt arena vil koble seg opp mot flere forskjellige baksystemer.
+    		 */
+    		if (myEndpoints != null){
+    			String newPortServerAddress = myEndpoints.getProperty(serviceRef.getServiceRefLink());
+    			System.out.println(newPortServerAddress);
+        		if (newDefaultPortServerAddress != null)
+        			setEndpointUri(newPortServerAddress, serviceRef);
+        		else
+        			setEndpointUri(newDefaultPortServerAddress, serviceRef);	
+    		}
+    		else 
+    			setEndpointUri(newDefaultPortServerAddress, serviceRef);
     	}
     }
     private void setEndpointUri(String newPortServerAddress, ServiceRef serviceRef) {
