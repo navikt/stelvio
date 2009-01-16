@@ -3,6 +3,7 @@ package no.nav.maven.plugins.descriptor.mojo;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 
 import no.nav.maven.plugins.descriptor.config.EarConfig;
 import no.nav.maven.plugins.descriptor.websphere.bnd.IbmWebServiceClientBndEditor;
@@ -53,6 +54,11 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	 */	
 	private String password;
 	
+	/**
+	 * @parameter
+	 */
+	private Properties myEndpoints;
+	
 	
 	public void executeDescriptorOperations(EARFile earFile, EarConfig earConfig) throws MojoExecutionException {
 		
@@ -66,9 +72,13 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		}
 		// Configure overridden endpoint URI
 		if (endpointPortServerAddress != null && !endpointPortServerAddress.equals("")) {
-			getLog().info("Setting up endpoint with portServerAddress: '" + endpointPortServerAddress + "'");
-			setupOverriddenEndpoint(ejbJarFile, endpointPortServerAddress);
+			if (myEndpoints == null)
+				getLog().info("Setting up endpoint with portServerAddress: '" + endpointPortServerAddress + "'");
+			else
+				getLog().info("Setting up endpoints with these addresses: " + myEndpoints);
+			setupOverriddenEndpoint(ejbJarFile, endpointPortServerAddress, myEndpoints);
 		}
+		
 		// Set up Authentication mechanisms
 		if (authMechanism != null && authMechanism.equals(AUTH_WSS_LTPATOKEN)){
 			getLog().info("Setting up LTPATokenGenerator");
@@ -96,10 +106,10 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		
 	}
 	
-	private void setupOverriddenEndpoint(Archive archive, String portServerAddress) throws MojoExecutionException {
+	private void setupOverriddenEndpoint(Archive archive, String portServerAddress, Properties endpoints) throws MojoExecutionException {
 		try {
-			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);
-			wscBnd.setEndpointUri(portServerAddress);
+			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);						
+			wscBnd.setEndpointUri(portServerAddress, endpoints);
 			wscBnd.save();
 		} catch (IOException e) {
 			throw new MojoExecutionException("Caught IOException while setting up overriddenEndpoint", e);

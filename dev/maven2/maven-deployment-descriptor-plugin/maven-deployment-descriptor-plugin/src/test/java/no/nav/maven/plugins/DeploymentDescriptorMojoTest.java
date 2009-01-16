@@ -67,8 +67,17 @@ public class DeploymentDescriptorMojoTest extends AbstractMojoTestCase{
 	}
 	public void executeWsSecurityOutboundMojo(){
 		
-		File pom = getTestPom(TEST_POM_DIRECTORY + "ws-security-outbound-pom.xml");
-		File earFile = getEar("/ear/test-prod-oppkoblingstestApp.ear");
+//		File pom = getTestPom(TEST_POM_DIRECTORY + "ws-security-outbound-pom.xml");
+//		File earFile = getEar("/ear/test-prod-oppkoblingstestApp.ear");
+//		File testEarFile = getTestEar(earFile); 
+//		Mojo mojo = getMojo("addWsSecurityOutbound", pom);
+//		try {	
+//			mojo.execute();
+//		} catch (Throwable t){
+//			t.printStackTrace();
+//		}	
+		File pom = getTestPom(TEST_POM_DIRECTORY + "ws-security-outbound-pom-with-endpoints.xml");
+		File earFile = getEar("/ear/nav-prod-sak-arena.ear");
 		File testEarFile = getTestEar(earFile); 
 		Mojo mojo = getMojo("addWsSecurityOutbound", pom);
 		try {	
@@ -80,7 +89,7 @@ public class DeploymentDescriptorMojoTest extends AbstractMojoTestCase{
 	
 	public void testExecuteDeploymentDescriptorMojo(){
 		executeEjbSecurityMojo();
-		//executeWsSecurityOutboundMojo();
+		executeWsSecurityOutboundMojo();
 		//executeWsSecurityInboundMojo();
 	}
 	

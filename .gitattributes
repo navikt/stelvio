@@ -1873,9 +1873,11 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/config/ejb-security-config.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/config/security-rolebinding-config.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/ear/nav-cons-pen-pselv-person-NOTOKENS.ear -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/ear/nav-prod-sak-arena.ear -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/ear/test-prod-oppkoblingstestApp.ear -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ejb-security-pom.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ws-security-inbound-pom.xml -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ws-security-outbound-pom-with-endpoints.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/resources/pom/ws-security-outbound-pom.xml -text
 dev/maven2/maven-deployment-descriptor-plugin/pom.xml -text
 dev/maven2/maven-ejb-plugin/.classpath -text
