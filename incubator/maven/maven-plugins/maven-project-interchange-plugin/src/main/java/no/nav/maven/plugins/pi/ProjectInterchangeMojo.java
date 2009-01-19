@@ -28,7 +28,6 @@ import org.codehaus.plexus.util.FileUtils;
  */
 public class ProjectInterchangeMojo extends AbstractMojo {
 	private static final String PROJECT_INTERCHANGE_ARTIFACT_TYPE = "project-interchange";
-	private static final String PROJECT_INTERCHANGE_CLASSIFIER = "pi";
 
 	private static final String[] ALL_FILES_PATTERN = { "**/*" };
 	private static final String[] ECLIPSE_PROJECT_FILES_PATTERN = { ".project", ".classpath", ".settings/**" };
@@ -77,13 +76,13 @@ public class ProjectInterchangeMojo extends AbstractMojo {
 			new ProjectInterchangeBuilder(archiver).build();
 
 			Build build = project.getBuild();
-			File outputFile = new File(build.getDirectory(), build.getFinalName() + "-" + PROJECT_INTERCHANGE_CLASSIFIER
-					+ ".zip");
+			File outputFile = new File(build.getDirectory(), build.getFinalName() + "-"
+					+ projectInterchangeArtifactHandler.getClassifier() + ".zip");
 			archiver.setDestFile(outputFile);
 			archiver.createArchive();
 
-			projectHelper
-					.attachArtifact(project, PROJECT_INTERCHANGE_ARTIFACT_TYPE, PROJECT_INTERCHANGE_CLASSIFIER, outputFile);
+			projectHelper.attachArtifact(project, PROJECT_INTERCHANGE_ARTIFACT_TYPE, projectInterchangeArtifactHandler
+					.getClassifier(), outputFile);
 		} catch (ArchiverException e) {
 			throw new MojoExecutionException("Error creating project interchange", e);
 		} catch (IOException e) {
