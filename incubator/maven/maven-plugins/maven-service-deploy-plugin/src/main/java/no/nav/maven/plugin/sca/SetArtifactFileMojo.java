@@ -32,6 +32,7 @@ public class SetArtifactFileMojo extends AbstractMojo {
 		String extension = artifact.getArtifactHandler().getExtension();
 		File artifactFile = new File(build.getDirectory(), build.getFinalName()
 				+ "." + extension);
+		getLog().info("Attaching main artifact file: " + artifactFile);
 		artifact.setFile(artifactFile);
 	}
 }
