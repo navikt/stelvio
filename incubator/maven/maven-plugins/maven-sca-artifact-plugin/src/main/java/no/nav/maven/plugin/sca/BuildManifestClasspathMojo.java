@@ -67,6 +67,10 @@ public class BuildManifestClasspathMojo extends AbstractMojo {
 				classPath.append(dependencyArtifact.getArtifactId()).append(".").append(dependencyArtifactExtension);
 			}
 		}
+		/*
+		 * TODO: Adding property to project properties. This works, but is there
+		 * any other way? No side-effects?
+		 */
 		getLog().debug("Setting property <" + propertyName + "> to value <" + classPath + ">");
 		project.getProperties().put(propertyName, classPath.toString());
 	}
