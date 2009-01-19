@@ -1,8 +1,10 @@
 package no.nav.maven.plugin.sca;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
@@ -40,38 +42,50 @@ public class BuildManifestClasspathMojo extends AbstractMojo {
 	 * @parameter default-value="manifest.classpath"
 	 * @required
 	 */
-	private String propertyName;
+	private String classpathPropertyName;
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
-		StringBuilder classPath = new StringBuilder();
+		StringBuilder classpath = new StringBuilder();
 
-		// Sort artifacts to get consistent behavior
-		List<Artifact> dependencyArtifacts = new ArrayList<Artifact>(project.getDependencyArtifacts());
-		Collections.sort(dependencyArtifacts, new Comparator<Artifact>() {
+		for (Artifact runtimeDependencyArtifact : getRuntimeDependencyArtifacts()) {
+			if (classpath.length() > 0) {
+				classpath.append(" ").append("\r\n");
+			}
+			String dependencyArtifactExtension = runtimeDependencyArtifact.getArtifactHandler().getExtension();
+			classpath.append(runtimeDependencyArtifact.getArtifactId()).append(".").append(dependencyArtifactExtension);
+		}
+
+		/*
+		 * TODO: Adding property to project properties. This works, but is there
+		 * any other way? No side-effects?
+		 */
+		getLog().debug("Setting property <" + classpathPropertyName + "> to value <" + classpath + ">");
+		project.getProperties().put(classpathPropertyName, classpath.toString());
+	}
+
+	@SuppressWarnings("unchecked")
+	private Collection<Artifact> getRuntimeDependencyArtifacts() {
+		List<Artifact> result = new ArrayList<Artifact>(project.getDependencyArtifacts());
+
+		for (Iterator<Artifact> it = result.iterator(); it.hasNext();) {
+			Artifact dependencyArtifact = it.next();
+			String scope = dependencyArtifact.getScope();
+			if (!(Artifact.SCOPE_COMPILE.equals(scope) || Artifact.SCOPE_RUNTIME.equals(scope))) {
+				it.remove();
+			}
+		}
+
+		// Sort collection to get consistent behavior
+		Collections.sort(result, new Comparator<Artifact>() {
 			public int compare(Artifact o1, Artifact o2) {
 				return o1.getArtifactId().compareTo(o2.getArtifactId());
 			}
 		});
 
-		for (Artifact dependencyArtifact : dependencyArtifacts) {
-			String scope = dependencyArtifact.getScope();
-			if (Artifact.SCOPE_COMPILE.equals(scope) || Artifact.SCOPE_RUNTIME.equals(scope)) {
-				if (classPath.length() > 0) {
-					classPath.append(" ").append("\r\n");
-				}
-				String dependencyArtifactExtension = dependencyArtifact.getArtifactHandler().getExtension();
-				classPath.append(dependencyArtifact.getArtifactId()).append(".").append(dependencyArtifactExtension);
-			}
-		}
-		/*
-		 * TODO: Adding property to project properties. This works, but is there
-		 * any other way? No side-effects?
-		 */
-		getLog().debug("Setting property <" + propertyName + "> to value <" + classPath + ">");
-		project.getProperties().put(propertyName, classPath.toString());
+		return result;
 	}
 }
