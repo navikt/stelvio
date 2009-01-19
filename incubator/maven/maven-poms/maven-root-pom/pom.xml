@@ -172,6 +172,10 @@
 		</snapshotRepository>
 	</distributionManagement>
 	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
 	<scm>
 		<connection>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms/maven-root-pom
