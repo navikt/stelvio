@@ -64,8 +64,7 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     		 * Men noen moduler, spesielt arena vil koble seg opp mot flere forskjellige baksystemer.
     		 */
     		if (myEndpoints != null){
-    			String newPortServerAddress = myEndpoints.getProperty(serviceRef.getServiceRefLink());
-    			System.out.println(newPortServerAddress);
+    			String newPortServerAddress = myEndpoints.getProperty(serviceRef.getServiceRefLink());    			
         		if (newDefaultPortServerAddress != null)
         			setEndpointUri(newPortServerAddress, serviceRef);
         		else

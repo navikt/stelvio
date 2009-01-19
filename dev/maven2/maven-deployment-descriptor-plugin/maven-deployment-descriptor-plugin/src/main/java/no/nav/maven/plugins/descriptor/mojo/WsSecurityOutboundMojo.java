@@ -14,6 +14,8 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
 
+import com.ibm.icu.util.StringTokenizer;
+
 
 
 /**
@@ -30,8 +32,7 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	
 	/**
 	 * @parameter expression="${authMechanism}"
-	 */
-	//private String[] authMechanisms;		
+	 */	
 	private String authMechanism;		
 
 	/**
@@ -60,9 +61,12 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	private Properties myEndpoints;
 	
 	
-	public void executeDescriptorOperations(EARFile earFile, EarConfig earConfig) throws MojoExecutionException {
-		
-		//List<String> authList = authMechanisms != null ? Arrays.asList(authMechanisms) : null;
+	/**
+	 * @parameter
+	 */
+	private String myEndpointsString;
+	
+	public void executeDescriptorOperations(EARFile earFile, EarConfig earConfig) throws MojoExecutionException {		
 		EJBJarFile ejbJarFile = (EJBJarFile) earFile.getEJBJarFiles().get(0);
 		
 		// Configure Client SSL transport security
@@ -72,10 +76,15 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		}
 		// Configure overridden endpoint URI
 		if (endpointPortServerAddress != null && !endpointPortServerAddress.equals("")) {
-			if (myEndpoints == null)
-				getLog().info("Setting up endpoint with portServerAddress: '" + endpointPortServerAddress + "'");
-			else
+			if (myEndpoints != null)
+				getLog().info("Setting up endpoints with these addresses: " + myEndpoints);				
+			else if (myEndpointsString != null){
+				getLog().info("Converting from String to Properties, old String: " + myEndpointsString);
+				myEndpoints = convertStringToProperties(myEndpointsString, ",", "=");
 				getLog().info("Setting up endpoints with these addresses: " + myEndpoints);
+			}
+			else
+				getLog().info("Setting up endpoint with portServerAddress: '" + endpointPortServerAddress + "'");
 			setupOverriddenEndpoint(ejbJarFile, endpointPortServerAddress, myEndpoints);
 		}
 		
@@ -83,28 +92,23 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		if (authMechanism != null && authMechanism.equals(AUTH_WSS_LTPATOKEN)){
 			getLog().info("Setting up LTPATokenGenerator");
 			setupLtpaTokenGenerator(ejbJarFile);
-		}
-//		if (authList != null) {
-//			// Configure message layer authentication using WS-Security BinarySecurityToken LTPA
-//			if (authList.contains(AUTH_WSS_LTPATOKEN)) {
-//				getLog().info("Setting up LTPATokenGenerator");
-//				setupLtpaTokenGenerator(ejbJarFile);
-//			}
-//			// Configure message layer authentication using WS-Security UsernameToken
-//			if (authList.contains(AUTH_WSS_USERNAMETOKEN)) {
-//				getLog().info("Setting up UsernameTokenGenerator: '" + username + ":" + password + "'");
-//				//TODO: not yet implemented
-//				throw new MojoExecutionException("UsernameToken setup is not yet implemented");
-//			}
-//			// Configure transport layer authentication using HTTP Basic (HTTP Authorization header)
-//			if (authList.contains(AUTH_HTTP_BASIC)) {
-//				getLog().info("Setting up HTTP Basic Authentication: '" + username + ":" + password + "'");
-//				//TODO: not yet implemented
-//				throw new MojoExecutionException("UsernameToken setup is not yet implemented");
-//			}			
-//		}
-		
+		}		
 	}
+	
+	public Properties convertStringToProperties(final String keysAndValues, final String propertySeparator, final String keyValueSeparator) {
+		Properties props = new Properties();
+		StringTokenizer stringTokenizer = new StringTokenizer(keysAndValues.trim(), propertySeparator);
+	
+		while(stringTokenizer.hasMoreTokens()) {
+			String token = stringTokenizer.nextToken();
+			StringTokenizer tokenTokenizer = new StringTokenizer(token, keyValueSeparator);
+			
+			if(tokenTokenizer.countTokens()==2) {
+				props.setProperty(tokenTokenizer.nextToken().trim(), tokenTokenizer.nextToken().trim());				
+			}
+		}	
+		return props;
+	}	
 	
 	private void setupOverriddenEndpoint(Archive archive, String portServerAddress, Properties endpoints) throws MojoExecutionException {
 		try {
