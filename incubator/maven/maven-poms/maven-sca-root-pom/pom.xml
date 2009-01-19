@@ -27,7 +27,6 @@
 				<!-- TODO: This is here because WID insists on having the root folder as a source folder -->
 				<!-- TODO: Review which files to exclude/include -->
 				<directory>${basedir}</directory>
-				<filtering>false</filtering>
 				<excludes>
 					<exclude>.settings/**</exclude>
 					<exclude>bin/**</exclude>
