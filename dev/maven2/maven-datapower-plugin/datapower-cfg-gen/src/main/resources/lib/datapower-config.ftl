@@ -9,6 +9,7 @@
 <#include "datapower-crypto.ftl">
 <#include "AAAPolicyLTPA2LTPA.ftl">
 <#include "AAAPolicyClientSSL2LTPA.ftl">
+<#include "AAAPolicyAuthenticateAllLTPA.ftl">
 <#include "FrontsideHandler.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">

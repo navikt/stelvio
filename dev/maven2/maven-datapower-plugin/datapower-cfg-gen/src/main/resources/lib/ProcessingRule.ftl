@@ -27,10 +27,10 @@
 		name="${actionName}"
 		destination="${action.destination}"
 		input="${action.input}"/>
-	<#elseif action.type == "result">
 	<#--
 		Result Action
 	-->
+	<#elseif action.type == "result">
 	<@StylePolicyActionResult
 		name="${actionName}"
 		input="${action.input}"

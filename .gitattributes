@@ -1395,6 +1395,7 @@ dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapow
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/DPTemplateLib.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/StreamTemplateLoader.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAInfo.ftl -text
+dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyAuthenticateAllLTPA.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyClientSSL2LTPA.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyLTPA2LTPA.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/CryptoCertificate.ftl -text
