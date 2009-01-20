@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:bo="http://nav-lib-frg-aa/no/nav/lib/frg/asbo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav-lib-frg-aa/no/nav/lib/frg/asbo">
-  <xsd:annotation>
-    <xsd:appinfo source="wid.federated.schema"/>
-  </xsd:annotation>
-    <xsd:include schemaLocation="../no/nav/lib/frg/aa/asbo/K268SR03INPUT.xsd"/>
-    <xsd:include schemaLocation="../no/nav/lib/frg/aa/asbo/K268SR03OUTPUT.xsd"/>
-</xsd:schema>
