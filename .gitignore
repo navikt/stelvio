@@ -400,6 +400,10 @@ dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
 incubator/maven/.project
+incubator/maven/j2ee-xmlbeans/.classpath
+incubator/maven/j2ee-xmlbeans/.project
+incubator/maven/j2ee-xmlbeans/.settings
+incubator/maven/j2ee-xmlbeans/bin
 incubator/maven/maven-archetypes/service-library-archetype/.project
 incubator/maven/maven-archetypes/service-library-archetype/.settings
 incubator/maven/maven-archetypes/service-library-archetype/bin

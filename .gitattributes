@@ -2322,6 +2322,11 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
+incubator/maven/j2ee-xmlbeans/pom.xml -text
+incubator/maven/j2ee-xmlbeans/src/main/xsd/application_1_4.xsd -text
+incubator/maven/j2ee-xmlbeans/src/main/xsd/j2ee_1_4.xsd -text
+incubator/maven/j2ee-xmlbeans/src/main/xsd/j2ee_web_services_client_1_1.xsd -text
+incubator/maven/j2ee-xmlbeans/src/main/xsd/xml.xsd -text
 incubator/maven/maven-archetypes/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain

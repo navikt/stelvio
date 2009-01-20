@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project>
+	<parent>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>no.nav.maven.support</groupId>
+	<artifactId>j2ee-xmlbeans</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>J2EE XMLBeans artifacts</name>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xmlbeans-maven-plugin</artifactId>
+				<version>2.3.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>xmlbeans</goal>
+						</goals>
+						<configuration>
+							<noJavac>true</noJavac>
+							<javaSource>1.5</javaSource>
+							<sourceSchemas>
+								<sourceSchema>
+									application_1_4.xsd
+								</sourceSchema>
+							</sourceSchemas>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+	</dependencies>
+</project>
