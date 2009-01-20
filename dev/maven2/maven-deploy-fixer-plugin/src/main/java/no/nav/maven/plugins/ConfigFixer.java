@@ -202,6 +202,10 @@ public class ConfigFixer extends AbstractMojo {
 		});
 		getLog().info("-------------------- Start Compressing ears --------------------");
 		
+		if(extractedModules==null) {
+			return;
+		}
+		
 		//threading the compressing process to increase performance
 		RunnableEarCompressor compressor;
 		List<RunnableEarCompressor> compressors = new ArrayList<RunnableEarCompressor>();
