@@ -12,7 +12,6 @@ import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 
 import com.sun.java.xml.ns.j2Ee.ApplicationDocument;
-import com.sun.java.xml.ns.j2Ee.ApplicationType;
 import com.sun.java.xml.ns.j2Ee.DisplayNameType;
 
 /**
@@ -58,54 +57,12 @@ public class UpdateEarMojo extends AbstractMojo {
 			tempDir = createTempDir();
 
 			extract(tempDir);
-
 			updateArchive(tempDir);
-
 			createArchive(tempDir);
 		} finally {
 			if (tempDir != null) {
 				tempDir.delete();
 			}
-		}
-	}
-
-	private void updateArchive(File tempDir) throws MojoExecutionException {
-		try {
-			File applicationXmlFile = new File(new File(tempDir, "META-INF"), "application.xml");
-			ApplicationDocument applicationDocument = ApplicationDocument.Factory.parse(applicationXmlFile);
-			
-			DisplayNameType displayName = applicationDocument.getApplication().getDisplayNameArray(0);
-			displayName.setStringValue(this.displayName);
-			
-			applicationDocument.save(applicationXmlFile);
-		} catch (XmlException e) {
-			throw new MojoExecutionException("An error occured when updating archive", e);
-		} catch (IOException e) {
-			throw new MojoExecutionException("An error occured when updating archive", e);
-		}
-	}
-
-	private void createArchive(File tempDir) throws MojoExecutionException {
-		try {
-			archiver.addDirectory(tempDir);
-			archiver.setDestFile(mainArtifactFile);
-			archiver.createArchive();
-		} catch (ArchiverException e) {
-			throw new MojoExecutionException("An error occured when creating archive", e);
-		} catch (IOException e) {
-			throw new MojoExecutionException("An error occured when creating archive", e);
-		}
-	}
-
-	private void extract(File tempDir) throws MojoExecutionException {
-		try {
-			unArchiver.setDestDirectory(tempDir);
-			unArchiver.setSourceFile(mainArtifactFile);
-			unArchiver.extract();
-		} catch (ArchiverException e) {
-			throw new MojoExecutionException("An error occured when extracting archive", e);
-		} catch (IOException e) {
-			throw new MojoExecutionException("An error occured when extracting archive", e);
 		}
 	}
 
@@ -121,4 +78,52 @@ public class UpdateEarMojo extends AbstractMojo {
 		}
 	}
 
+	private void extract(File tempDir) throws MojoExecutionException {
+		try {
+			unArchiver.setDestDirectory(tempDir);
+			unArchiver.setSourceFile(mainArtifactFile);
+			unArchiver.extract();
+		} catch (ArchiverException e) {
+			throw new MojoExecutionException(
+					"An error occured when extracting archive", e);
+		} catch (IOException e) {
+			throw new MojoExecutionException(
+					"An error occured when extracting archive", e);
+		}
+	}
+
+	private void createArchive(File tempDir) throws MojoExecutionException {
+		try {
+			archiver.addDirectory(tempDir);
+			archiver.setDestFile(mainArtifactFile);
+			archiver.createArchive();
+		} catch (ArchiverException e) {
+			throw new MojoExecutionException(
+					"An error occured when creating archive", e);
+		} catch (IOException e) {
+			throw new MojoExecutionException(
+					"An error occured when creating archive", e);
+		}
+	}
+
+	private void updateArchive(File tempDir) throws MojoExecutionException {
+		try {
+			File applicationXmlFile = new File(new File(tempDir, "META-INF"),
+					"application.xml");
+			ApplicationDocument applicationDocument = ApplicationDocument.Factory
+					.parse(applicationXmlFile);
+
+			DisplayNameType displayName = applicationDocument.getApplication()
+					.getDisplayNameArray(0);
+			displayName.setStringValue(this.displayName);
+
+			applicationDocument.save(applicationXmlFile);
+		} catch (XmlException e) {
+			throw new MojoExecutionException(
+					"An error occured when updating archive", e);
+		} catch (IOException e) {
+			throw new MojoExecutionException(
+					"An error occured when updating archive", e);
+		}
+	}
 }
