@@ -41,6 +41,14 @@
 					<configuration>
 						<assemblyType>pi</assemblyType>
 					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>update-ear</goal>
+							</goals>
+							<phase>package</phase>
+						</execution>
+					</executions>
 				</plugin>
 
 				<plugin>
