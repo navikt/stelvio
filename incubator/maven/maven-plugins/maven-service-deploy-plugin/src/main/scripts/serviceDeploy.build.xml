@@ -9,16 +9,54 @@
 		<property name="serviceDeploy.outputApplication" value="${project.build.finalName}.ear" />
 		<property name="serviceDeploy.workingDirectory" value="${project.build.directory}/service-deploy" />
 
+		<!-- TODO: I wish Ant had mutable properties... Maybe better of using ant-contrib, but I couldn't make it work. -->
+		<property name="arg0" value="${serviceDeploy.input}" />
+		<condition property="arg1" value=" -classpath ${classpath}" else="">
+			<isset property="classpath" />
+		</condition>
+		<property name="arg2" value=" -fileEncoding ${fileEncoding}" />
+		<condition property="arg3" value=" -freeform" else="">
+			<istrue value="${freeform}" />
+		</condition>
+		<condition property="arg4" value=" -ignoreErrors" else="">
+			<istrue value="${ignoreErrors}" />
+		</condition>
+		<condition property="arg5" value=" -cleanStagingModules" else="">
+			<istrue value="${cleanStagingModules}" />
+		</condition>
+		<condition property="arg6" value=" -keep" else="">
+			<istrue value="${keep}" />
+		</condition>
+		<condition property="arg7" value=" -noJ2eeDeploy" else="">
+			<istrue value="${noJ2eeDeploy}" />
+		</condition>
+		<property name="arg8" value=" -outputApplication ${serviceDeploy.outputApplication}" />
+		<condition property="arg9" value=" -skipXsdValidate true" else="">
+			<istrue value="${skipXsdValidate}" />
+		</condition>
+		<condition property="arg10" value=" -progressMonitor ${progressMonitor}" else="">
+			<isset property="progressMonitor" />
+		</condition>
+		<condition property="arg11" value="${miscParameters}" else="">
+			<isset property="miscParameters" />
+		</condition>
+		<property name="arg12" value=" -workingDirectory '${workingDirectory}'" />
+
+		<property name="serviceDeploy.arguments" value="${arg0}${arg1}${arg2}${arg3}${arg4}${arg5}${arg6}${arg7}${arg8}${arg9}${arg10}${arg11}${arg12}" />
+
 		<delete file="${serviceDeploy.dir}/${serviceDeploy.outputApplication}" verbose="true" quiet="true" />
 
+		<echo message="Initiating serviceDeploy with the following arguments: ${serviceDeploy.arguments}" level="info" />
 		<exec dir="${serviceDeploy.dir}" executable="${serviceDeploy.executable}" failonerror="true">
-			<arg value="${serviceDeploy.input}" />
-			<arg line="-outputApplication ${serviceDeploy.outputApplication}" />
-			<arg line="-workingDirectory '${serviceDeploy.workingDirectory}'" />
+			<arg line="${serviceDeploy.arguments}" />
+			<!--
+			<arg line="-outputApplication '${serviceDeploy.outputApplication}'" />
+			<arg line="-workingDirectory '${workingDirectory}'" />
 			<arg value="-keep" />
 			<arg value="-cleanStagingModules" />
 			<arg line="-skipXsdValidate true" />
 			<arg line="-progressMonitor none" />
+			-->
 		</exec>
 
 		<condition property="serviceDeploy.outputApplication.exists">

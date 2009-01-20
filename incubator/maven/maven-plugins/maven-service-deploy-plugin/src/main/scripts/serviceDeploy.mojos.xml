@@ -30,6 +30,75 @@
 						${project.build.finalName}
 					</defaultValue>
 				</parameter>
+
+				<parameter>
+					<name>classpath</name>
+					<property>classpath</property>
+				</parameter>
+				<parameter>
+					<name>fileEncoding</name>
+					<property>fileEncoding</property>
+					<required>true</required>
+					<defaultValue>UTF-8</defaultValue>
+				</parameter>
+				<parameter>
+					<name>freeform</name>
+					<property>freeform</property>
+					<type>boolean</type>
+					<required>true</required>
+					<defaultValue>false</defaultValue>
+				</parameter>
+				<parameter>
+					<name>ignoreErrors</name>
+					<property>ignoreErrors</property>
+					<type>boolean</type>
+					<required>true</required>
+					<defaultValue>false</defaultValue>
+				</parameter>
+				<parameter>
+					<name>cleanStagingModules</name>
+					<property>cleanStagingModules</property>
+					<type>boolean</type>
+					<required>true</required>
+					<defaultValue>true</defaultValue>
+				</parameter>
+				<parameter>
+					<name>keep</name>
+					<property>keep</property>
+					<type>boolean</type>
+					<required>true</required>
+					<defaultValue>false</defaultValue>
+				</parameter>
+				<parameter>
+					<name>noJ2eeDeploy</name>
+					<property>noJ2eeDeploy</property>
+					<type>boolean</type>
+					<required>true</required>
+					<defaultValue>false</defaultValue>
+				</parameter>
+				<parameter>
+					<name>skipXsdValidate</name>
+					<property>skipXsdValidate</property>
+					<type>boolean</type>
+					<required>true</required>
+					<defaultValue>true</defaultValue>
+				</parameter>
+				<parameter>
+					<name>progressMonitor</name>
+					<property>progressMonitor</property>
+				</parameter>
+				<parameter>
+					<name>workingDirectory</name>
+					<property>workingDirectory</property>
+					<required>true</required>
+					<defaultValue>
+						${project.build.directory}/service-deploy
+					</defaultValue>
+				</parameter>
+				<parameter>
+					<name>miscParameters</name>
+					<property>miscParameters</property>
+				</parameter>
 			</parameters>
 		</mojo>
 	</mojos>
