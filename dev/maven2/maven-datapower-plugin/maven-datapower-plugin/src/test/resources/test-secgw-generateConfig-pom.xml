@@ -17,7 +17,7 @@
     	</dependency>
   	</dependencies>
 	<properties>
-		<bustag.basedir>E:\data\builds\BUSTAG_K_2_27_2_FULL</bustag.basedir>
+		<bustag.basedir>E:\data\builds\BUSTAG_R_3_8_0_FULL</bustag.basedir>
 	</properties>
 	<build>
 		<plugins>
@@ -26,7 +26,7 @@
 				<configuration>
 					<filesets>
 						<fileset>
-							<directory>E:/data/builds/BUSTAG_K_2_27_2_FULL/target/datapower-config/secgw-u1</directory>
+							<directory>E:/data/builds/BUSTAG_R_3_8_0_FULL/target/datapower-config/secgw-u1</directory>
 						</fileset>
 					</filesets>					
 				</configuration>
@@ -41,13 +41,13 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-datapower-plugin</artifactId>
-				<version>1.0.1-SNAPSHOT</version>
+				<version>LATEST</version>
 				<configuration>
 					<domain>secgw-u1</domain>
-					<outputDirectory>E:/data/builds/BUSTAG_K_2_27_2_FULL/target/datapower-config/secgw-u1</outputDirectory>
-					<moduleDirectory>E:/data/builds/BUSTAG_K_2_27_2_FULL/target/classes/builds/ear</moduleDirectory>
-					<propertiesDirectory>E:/data/builds/BUSTAG_K_2_27_2_FULL/src/main/resources/scripts/environments</propertiesDirectory>
-					<overridesDirectory>E:/data/datapower/overrides/secgw-u1</overridesDirectory>
+					<outputDirectory>E:/data/builds/BUSTAG_R_3_8_0_FULL/target/datapower-config/secgw-u1</outputDirectory>
+					<moduleDirectory>E:/data/builds/BUSTAG_R_3_8_0_FULL/target/classes/builds/ear</moduleDirectory>
+					<propertiesDirectory>E:/data/builds/BUSTAG_R_3_8_0_FULL/src/main/resources/scripts/environments</propertiesDirectory>
+					<overridesDirectory>E:/data/builds/datapower-overrides/secgw-u1</overridesDirectory>
 				</configuration>
 				<executions>
 					<execution>
@@ -60,7 +60,7 @@
 					<dependency>
 						<groupId>no.nav.datapower</groupId>
 						<artifactId>datapower-cfg-secgw</artifactId>
-						<version>1.0.1-SNAPSHOT</version>
+						<version>LATEST</version>
 					</dependency>
 				</dependencies>
 			</plugin>

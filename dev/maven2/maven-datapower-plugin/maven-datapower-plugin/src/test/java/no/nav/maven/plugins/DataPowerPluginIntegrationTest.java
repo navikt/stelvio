@@ -21,7 +21,7 @@ public class DataPowerPluginIntegrationTest extends AbstractMojoTestCase {
 		protected String getGoal() { return goal; }
 		protected String getPom() { return pom; }
 	}
-
+	
 	protected void setUp() throws Exception {
 		super.setUp();
 	}

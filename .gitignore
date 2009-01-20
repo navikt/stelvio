@@ -65,6 +65,11 @@ dev/maven2/ant-versionExtracter/trunk/target
 dev/maven2/maven-appXml-plugin/trunk/.classpath
 dev/maven2/maven-appXml-plugin/trunk/.project
 dev/maven2/maven-appXml-plugin/trunk/target
+dev/maven2/maven-datapower-plugin/maven-datapower-plugin/.classpath
+dev/maven2/maven-datapower-plugin/maven-datapower-plugin/.project
+dev/maven2/maven-datapower-plugin/maven-datapower-plugin/.settings
+dev/maven2/maven-datapower-plugin/maven-datapower-plugin/bin
+dev/maven2/maven-datapower-plugin/maven-datapower-plugin/target
 dev/maven2/maven-deployment-descriptor-plugin/.classpath
 dev/maven2/maven-deployment-descriptor-plugin/.metadata
 dev/maven2/maven-deployment-descriptor-plugin/.project
