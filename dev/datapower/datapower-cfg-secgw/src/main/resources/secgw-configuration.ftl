@@ -55,11 +55,14 @@
 			name="${cfgProcessingPolicy}"
 			actions=[
 				{"type":"xform", "name":"createFaultAction",
-						"input":"INPUT",	"output":"faultGenerisk", "async":"off",
-						"stylesheet":"local:///xslt/faultgenerisk.xsl",
-						"params":[]},
+						"input":"INPUT",	"output":"PIPE", "async":"off",
+						"stylesheet":"local:///xslt/fault-handler.xsl",
+						"params":[
+							{"name":"fault-prefix","value":"DataPower Security Gateway"}
+						]
+				},
 				{"type":"result", "name":"resultAction",
-					"input":"faultGenerisk","output":"OUTPUT"}
+					"input":"PIPE","output":"OUTPUT"}
 			]/>
 			
 	<@dp.WSStylePolicy

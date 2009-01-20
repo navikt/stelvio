@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.JarURLConnection;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
@@ -18,6 +22,7 @@ import no.nav.datapower.config.freemarker.templates.StreamTemplateLoader;
 import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
+import no.nav.datapower.util.DPStreamUtils;
 import no.nav.datapower.util.DPZipUtils;
 import no.nav.datapower.util.PropertiesBuilder;
 import no.nav.datapower.util.PropertiesValidator;
@@ -41,7 +46,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	private static final String REQUIRED_PROPERTIES_NAME = "/cfg-secgw-required.properties";
 	private static final Properties REQUIRED_PROPERTIES = DPPropertiesUtils.load(SGWConfigGeneratorImpl.class,REQUIRED_PROPERTIES_NAME);
 	private static final TemplateLoader SECGW_TEMPLATE_LOADER = new StreamTemplateLoader(SGWConfigGeneratorImpl.class, "/");
-	
+	private File tmpDir;
 	
 	public SGWConfigGeneratorImpl() {		
 		super(GENERATOR_NAME, REQUIRED_PROPERTIES, SECGW_TEMPLATE_LOADER);
@@ -64,13 +69,17 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		LOG.debug("Files local directory = " + unit.getFilesLocalDir());
 		LOG.debug("Files local wsdl directory = " + unit.getFilesLocalWsdlDir());
 		
+		tmpDir = DPFileUtils.append(unit.getRootDir(), "tmp");
+		
 		// Extract wsdl from EAR archives
 		List<File> earFiles = getEarFiles(cfg.getModuleDirectory());
-		try {
+		try {			
 			extractWsdlFiles(earFiles, unit.getFilesLocalDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), unit.getFilesLocalAaaDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), unit.getFilesCertDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), unit.getFilesLocalXsltDir());
+			DPFileUtils.copyFilesToDirectory(getLocalFiles("xslt"), unit.getFilesLocalXsltDir());
+			//DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), unit.getFilesLocalWsdlDir());
 		} catch (IOException e) {
 			throw new IllegalStateException("Caught IOException while extracting WSDL files from EAR archives",e);
 		}
@@ -122,6 +131,46 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		return wsdlFiles;
 	}
 
+	
+	private List<File> getLocalFiles(String folderName) {
+		URL localDirUrl = getClass().getClassLoader().getResource(String.format("local/%1$s/", folderName));
+		List<File> fileList = null;
+		if (localDirUrl.getProtocol().equals("file")) {
+			fileList = getFileList(FileUtils.toFile(localDirUrl));			
+		}
+		else if (localDirUrl.getProtocol().equals("jar")) {//hack
+			fileList = getFileListFromJarClasspath(localDirUrl);
+		}
+		return fileList;
+	}
+	
+	private List<File> getFileListFromJarClasspath(URL url) {
+		List<File> fileList = DPCollectionUtils.newArrayList();
+		JarURLConnection conn;
+		try {
+			conn = (JarURLConnection)url.openConnection();
+			JarEntry directory = conn.getJarEntry();
+			DPFileUtils.append(tmpDir, directory.getName()).mkdirs();
+			JarFile jarFile = conn.getJarFile();
+			Enumeration<JarEntry> entries = jarFile.entries();
+			while (entries.hasMoreElements()) {
+				JarEntry entry = entries.nextElement();
+				if (!entry.isDirectory() && entry.getName().startsWith(directory.getName())) {
+					File file = DPFileUtils.append(tmpDir, entry.getName());
+					DPStreamUtils.pumpAndClose(jarFile.getInputStream(entry), new FileOutputStream(file));
+					fileList.add(file);
+				}
+			}			
+		} catch (IOException e) {
+			throw new IllegalStateException(e);
+		}
+		return fileList;
+	}
+	
+
+	private List<File> getFileList(File dir) {
+		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
+	}
 	
 	private List<File> getWsdlArchives(File wsdlDir) {
 		return getFileList(wsdlDir, "cfgWsdlArchiveFilter", ".zip");
