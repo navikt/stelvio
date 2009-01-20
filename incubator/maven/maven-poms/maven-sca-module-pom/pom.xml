@@ -40,6 +40,8 @@
 					<artifactId>maven-service-deploy-plugin</artifactId>
 					<configuration>
 						<assemblyType>pi</assemblyType>
+						<keep>true</keep>
+						<progressMonitor>none</progressMonitor>
 					</configuration>
 					<executions>
 						<!-- 
