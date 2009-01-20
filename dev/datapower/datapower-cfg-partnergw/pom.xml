@@ -4,12 +4,12 @@
 	<groupId>no.nav.datapower</groupId>
 	<artifactId>datapower-cfg-partnergw</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.3</version>
 	<name>Configuration Generator for the 'partner-gw' DataPower module</name>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/datapower/datapower-cfg-partnergw</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/datapower/datapower-cfg-partnergw</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-cfg-partnergw-1.0.3</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-cfg-partnergw-1.0.3</developerConnection>
 	</scm>
 	
 	<build>
