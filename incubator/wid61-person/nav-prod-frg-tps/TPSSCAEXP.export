@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:_="http://nav-lib-frg-tps/no/nav/lib/frg/inf" xmlns:ns1="http://nav-lib-fgr-tps/no/nav/lib/frg/inf/TPS" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="TPSSCAEXP" name="TPSSCAEXP" target="TPSAvailabilityCheck">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="_:TPS">
-      <method name="hentTPSData"/>
-    </interface>
-  </interfaces>
-</scdl:export>

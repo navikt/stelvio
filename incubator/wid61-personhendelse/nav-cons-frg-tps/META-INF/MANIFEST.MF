@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-Created-By: 1.5.0 (IBM Corporation)
-Class-Path: nav-lib-frg.jar 
- nav-lib-cons-frg-tps.jar 
- nav-lib-cons-frg-tps-personhendelse.jar
-
