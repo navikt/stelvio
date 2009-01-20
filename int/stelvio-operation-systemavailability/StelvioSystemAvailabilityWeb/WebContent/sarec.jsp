@@ -104,20 +104,17 @@
 		while (i.hasNext()){
 			 OperationAvailabilityRecord opRec=(OperationAvailabilityRecord)i.next();
 	%>
-			<FORM action="oprec.jsp" METHOD="POST"><input type="hidden"
-				name="systemName" value="<%=rec.systemName%>"> <input
-				type="hidden" name="operationName" value="<%=opRec.operationName%>">
 			<TR>
 				<TD><%=opRec.operationName%></TD>
 				<TD><%=opRec.getUnavailableString()%></TD>
 				<TD><%=opRec.getUnavailableReason() %></TD>
 				<TD><%=opRec.getStubbedString()%></TD>
 				<TD><%=opRec.getRecordStubDataString()%></TD>
-				<TD><input type="submit" value="Edit"><input
-					type="submit" value="Delete"></TD>
+				<TD><FORM action="oprec.jsp" METHOD="POST"><input type="hidden"
+				name="systemName" value="<%=rec.systemName%>"> <input
+				type="hidden" name="operationName" value="<%=opRec.operationName%>"><input type="submit" value="Edit"><input
+					type="submit" value="Delete"></FORM></TD>
 			</TR>
-			</FORM>
-
 			<%	
 		}%>
 		</TABLE>

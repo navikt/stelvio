@@ -57,19 +57,16 @@
 						rec = (AvailabilityRecord) availStorage
 						.getAvailabilityRecord((String) i.next());
 				%>
-				<FORM action="sarec.jsp" METHOD="POST"><input type="hidden"
-					name="systemName" value="<%=rec.systemName%>">
 					<TR>
 						<TD><%=rec.systemName%></TD>
 						<TD><%=rec.getUnavailableString()%></TD>
 						<TD><%=rec.getUnavailableReasonString()%></TD>
 						<TD><%=rec.getStubbedString()%></TD>
 						<TD><%=rec.getRecordStubDataString()%></TD>
-						<TD><input type="submit" value="Edit"><input
-							type="submit" value="Delete"></TD>
+						<TD><FORM action="sarec.jsp" METHOD="POST"><input type="hidden"
+					name="systemName" value="<%=rec.systemName%>"><input type="submit" value="Edit"><input
+							type="submit" value="Delete"></FORM></TD>
 					</TR>
-				</FORM>
-
 				<%
 				}
 				%>
