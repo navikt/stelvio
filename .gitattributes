@@ -2807,70 +2807,6 @@ incubator/wid61-stelvio/stelvio-commons-lib/no/stelvio/common/systemavailability
 incubator/wid61-stelvio/stelvio-commons-lib/no/stelvio/common/systemavailability/SystemAvailabilityRecord.xsd -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/xsd-includes/http.stelvio-commons-lib.no.nav.gbo.xsd -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-commons-lib/xsd-includes/http.stelvio-commons-lib.no.stelvio.common.systemavailability.xsd -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.classpath -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.compatibility -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.j2ee -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.project -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.runtime -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.wst.common.component -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.websettings -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.website-config -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/META-INF/MANIFEST.MF -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/ibm-web-bnd.xmi -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/ibm-web-ext.xmi -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/sitelib.jar -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/taglibs-datetime.jar -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/taglibs-mailer.jar -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/taglibs-string.jar -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/utility.jar -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/web.xml -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/website-config.xml -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/oprec.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/sa.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/sarec.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/1x1.gif -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_master_blue.css -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_master_blue_.css -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_master_blue__.css -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_stylesheet_blue.css -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/JSP-C-02_blue.jtpl -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/JSP-C-03_blue.jtpl -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/JSP-C-03_blue_.jtpl -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/Master.css -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/arrow-graphic-down-clear.gif -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/arrow-graphic-left-clear.gif -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/arrow-graphic-right-clear.gif -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/arrow-graphic-up-clear.gif -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/go-graphic-clear.gif -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_foot.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_foot_.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_foot__.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_head.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_head_.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_head__.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_trail_head.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_list_head.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_list_head_.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_list_head__.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_tree_left.jsp -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/sample-logo-1.gif -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/diagram.gph -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.compatibility -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.j2ee -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.project -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.runtime -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.component -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/.modulemaps -text
-incubator/wid61-stelvio/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/application.xml -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.classpath -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.project -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/WpsCoreSystemAvailability/stelvio/systemavailability/AvailabilityRecord.java -text svneol=unset#text/plain
-incubator/wid61-stelvio/stelvio-operation-systemavailability/WpsCoreSystemAvailability/stelvio/systemavailability/StaticSystemAvailabilityStorage.java -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-sibus-mediation/JMSPropertyMediation/.classpath -text svneol=unset#text/plain
 incubator/wid61-stelvio/stelvio-sibus-mediation/JMSPropertyMediation/.compatibility -text
 incubator/wid61-stelvio/stelvio-sibus-mediation/JMSPropertyMediation/.j2ee -text
@@ -3323,6 +3259,70 @@ int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/except
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/lib/sik/ad/fault/FaultADNAVAnsattIkkeFunnet.xsd -text
 int/stelvio-jca-adapters/NAVFlatFileAdapter/CWYFF_NAVFlatFile6021.rar -text
 int/stelvio-jca-adapters/NAVFlatFileAdapter/CWYFF_NAVFlatFile6023.rar -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.classpath -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.compatibility -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.j2ee -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.project -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.runtime -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.wst.common.component -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.wst.validation.prefs -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.websettings -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.website-config -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/META-INF/MANIFEST.MF -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/ibm-web-bnd.xmi -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/ibm-web-ext.xmi -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/sitelib.jar -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/taglibs-datetime.jar -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/taglibs-mailer.jar -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/taglibs-string.jar -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/lib/utility.jar -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/web.xml -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/website-config.xml -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/oprec.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/sa.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/sarec.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/1x1.gif -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_master_blue.css -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_master_blue_.css -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_master_blue__.css -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_stylesheet_blue.css -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/JSP-C-02_blue.jtpl -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/JSP-C-03_blue.jtpl -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/JSP-C-03_blue_.jtpl -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/Master.css -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/arrow-graphic-down-clear.gif -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/arrow-graphic-left-clear.gif -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/arrow-graphic-right-clear.gif -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/arrow-graphic-up-clear.gif -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/go-graphic-clear.gif -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_foot.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_foot_.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_foot__.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_head.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_head_.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_text_head__.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_horizontal_trail_head.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_list_head.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_list_head_.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_list_head__.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_tree_left.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/sample-logo-1.gif -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/diagram.gph -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.compatibility -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.j2ee -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.project -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.runtime -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.component -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/.modulemaps -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/application.xml -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.classpath -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.project -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/stelvio/systemavailability/AvailabilityRecord.java -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/stelvio/systemavailability/StaticSystemAvailabilityStorage.java -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.project -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.runtime -text
