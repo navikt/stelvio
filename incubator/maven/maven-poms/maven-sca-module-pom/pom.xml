@@ -42,6 +42,10 @@
 						<assemblyType>pi</assemblyType>
 					</configuration>
 					<executions>
+						<!-- 
+							TODO: This is an experimental goal that currently (20/1-2009) only updates the display-name element 
+							to include the Maven version.
+						-->
 						<execution>
 							<goals>
 								<goal>update-ear</goal>
