@@ -88,7 +88,8 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			FileUtils.copyDirectory(tmpDirInbound, cfgPackage.getFilesLocalDir());
 			FileUtils.copyDirectory(tmpDirOutbound, cfgPackage.getFilesLocalDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), cfgPackage.getFilesLocalAaaDir());
-			DPFileUtils.copyFilesToDirectory(getLocalXslt(), cfgPackage.getFilesLocalXsltDir());
+			DPFileUtils.copyFilesToDirectory(getLocalFiles("xslt"), cfgPackage.getFilesLocalXsltDir());
+			DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), cfgPackage.getFilesLocalWsdlDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), cfgPackage.getFilesLocalXsltDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), cfgPackage.getFilesCertDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getPubcertFiles(), cfgPackage.getFilesPubcertDir());
@@ -132,13 +133,13 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		setEnvironmentProperty("partnerTrustedCerts", trustCertMapList);
 	}
 
-	private List<File> getLocalXslt() {
-		URL localDirUrl = getClass().getClassLoader().getResource("local/xslt/");
+	private List<File> getLocalFiles(String folderName) {
+		URL localDirUrl = getClass().getClassLoader().getResource(String.format("local/%1$s/", folderName));
 		List<File> fileList = null;
 		if (localDirUrl.getProtocol().equals("file")) {
 			fileList = getFileList(FileUtils.toFile(localDirUrl));			
 		}
-		else if (localDirUrl.getProtocol().equals("jar")) {
+		else if (localDirUrl.getProtocol().equals("jar")) {//hack
 			fileList = getFileListFromJarClasspath(localDirUrl);
 		}
 		return fileList;

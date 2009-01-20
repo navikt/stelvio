@@ -59,6 +59,11 @@ cruisecontrol/.project
 dev/ant-projectSetTask/.classpath
 dev/ant-projectSetTask/.project
 dev/ant-projectSetTask/target
+dev/datapower/datapower-cfg-partnergw/.classpath
+dev/datapower/datapower-cfg-partnergw/.project
+dev/datapower/datapower-cfg-partnergw/.settings
+dev/datapower/datapower-cfg-partnergw/bin
+dev/datapower/datapower-cfg-partnergw/target
 dev/datapower/datapower-cfg-secgw/.classpath
 dev/datapower/datapower-cfg-secgw/.project
 dev/datapower/datapower-cfg-secgw/.settings

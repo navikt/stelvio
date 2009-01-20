@@ -126,16 +126,18 @@
 	<@dp.ProcessingErrorRule
 			name="${inboundProcessingPolicy}"
 			actions=[
-				{"type":"xform", "name":"createFaultAction", "async":"off",
-						"input":"INPUT",	"output":"faultGenerisk",
-						"stylesheet":"local:///xslt/faultgenerisk.xsl",
-						"params":[]},
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"faultGenerisk",	"output":"NULL",
+				{"type":"xform", "name":"createFaultAction",
+						"input":"INPUT",	"output":"faultHandler", "async":"off",
+						"stylesheet":"local:///xslt/fault-handler.xsl",
+						"params":[
+							{"name":"fault-prefix","value":"DataPower Security Gateway"}
+						]},
+				{"type":"xform", "name":"logAction",
+						"input":"faultHandler",	"output":"NULL", "async":"on",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
 				{"type":"result", "name":"resultAction",
-					"input":"faultGenerisk","output":"OUTPUT"}
+					"input":"faultHandler","output":"OUTPUT"}
 			]/>
 
 	<@dp.WSStylePolicy
@@ -182,15 +184,17 @@
 		name="${outboundProcessingPolicy}"
 		actions=[
 				{"type":"xform", "name":"createFaultAction",
-						"input":"INPUT",	"output":"faultGenerisk", "async":"off",
-						"stylesheet":"local:///xslt/faultgenerisk.xsl",
-						"params":[]},
+						"input":"INPUT",	"output":"faultHandler", "async":"off",
+						"stylesheet":"local:///xslt/fault-handler.xsl",
+						"params":[
+							{"name":"fault-prefix","value":"DataPower Security Gateway"}
+						]},
 				{"type":"xform", "name":"logAction",
-						"input":"faultGenerisk",	"output":"NULL", "async":"on",
+						"input":"faultHandler",	"output":"NULL", "async":"on",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
 				{"type":"result", "name":"resultAction",
-					"input":"faultGenerisk","output":"OUTPUT"}
+					"input":"faultHandler","output":"OUTPUT"}
 			]/>
 			
 	<@dp.WSStylePolicy
@@ -200,6 +204,91 @@
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicy}_response-rule"},
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicy}_error-rule"}
 			]/>
+		
+	<#-- SMS Gateway -->	
+	<#-- TODO her -->
+	
+	<#assign nameSMS="SMSGateway"/>
+	<#assign outboundBacksideHostSMS="smsgw.carrot.no"/>
+	<#assign outboundBacksideProtocolSMS="https"/>
+	<#assign outboundBacksidePortSMS="443"/>
+	
+	<#assign outboundProcessingPolicySMS="${nameSMS}_Policy"/>
+
+	<#assign wsdlNameSMS="carrot_sms_gateway.wsdl"/>
+	<#assign aaaPolicyNameSMS="aaa0"/>
+	
+	<@dp.BacksideSSL
+			name="${outboundBacksideHostSMS}"
+			trustedCerts=[{"name":"Thawte-Server-CA","file":"pubcert:///Thawte-Server-CA.pem"}]/>
+	<@dp.AAAPolicyAuthenticateAllLTPA
+			name="aaaPolicyAuthenticateAll"
+			auLtpaKeyFile="local:///aaa/${outboundFrontsideLTPAKeyFile}"
+			auLtpaKeyFilePwd="${outboundFrontsideLTPAKeyPwd}"/>
+	
+	<#-- Outbound processing rules-->
+	<@dp.ProcessingRequestRule
+		name="${outboundProcessingPolicySMS}"
+		actions=[
+				{"type":"slm",	"name":"slmAction",	
+						"input":"INPUT",	"output":"NULL"},
+				{"type":"aaa",	"name":"aaaAction",	
+						"input":"INPUT",	"output":"PIPE",
+						"policy":"aaaPolicyAuthenticateAll"},
+				{"type":"xform", "name":"stripWSSecAction",
+						"input":"PIPE",	"output":"PIPE", "async":"off",
+						"stylesheet":"store:///strip-security-header.xsl",
+						"params":[]},				 
+				{"type":"result", "name":"resultAction",
+					"input":"PIPE","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingResponseRule
+		name="${outboundProcessingPolicySMS}"
+		actions=[
+				{"type":"result", "name":"resultAction",
+					"input":"INPUT","output":"OUTPUT"}
+			]/>
+	<@dp.ProcessingErrorRule
+		name="${outboundProcessingPolicySMS}"
+		actions=[
+				{"type":"xform", "name":"createFaultAction",
+						"input":"INPUT",	"output":"faultHandler", "async":"off",
+						"stylesheet":"local:///xslt/fault-handler.xsl",
+						"params":[
+							{"name":"fault-prefix","value":"DataPower Security Gateway"}
+						]},
+				{"type":"xform", "name":"logAction",
+						"input":"faultHandler",	"output":"NULL", "async":"on",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"faultHandler","output":"OUTPUT"}					
+			]/>
+			
+	<@dp.WSStylePolicy
+			name="${outboundProcessingPolicySMS}"
+			policyMapsList=[
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicySMS}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicySMS}_response-rule"},
+				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicySMS}_error-rule"}
+			]/>
+	
+
+	<@dp.WSProxyStaticBackend		
+		name="${nameSMS}"
+		version="${cfgVersion}"
+		wsdlName="${wsdlNameSMS}"
+		wsdlLocation="local:///wsdl/${wsdlNameSMS}"
+		wsdlPortBinding="{http://ws.v4.sms.carrot.no}${nameSMS}"
+		policy="${outboundProcessingPolicySMS}"
+		frontsideHandler="${outboundFrontsideHandler}"
+		frontsideProtocol="${outboundFrontsideProtocol}"
+		frontsideUri="/smsgw/services/SMSGateway"
+		backsideProtocol="${outboundBacksideProtocolSMS}"
+		backsideHost="${outboundBacksideHostSMS}"
+		backsidePort="${outboundBacksidePortSMS}"
+		backsideUri="/smsgw/services/SMSGateway"
+	/>
 
 	<#-- Generate Inbound proxies -->			
 	<#list inboundProxies as proxy>

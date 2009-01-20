@@ -1309,8 +1309,9 @@ dev/datapower/datapower-cfg-partnergw/src/main/resources/META-INF/services/no.na
 dev/datapower/datapower-cfg-partnergw/src/main/resources/aaa-partnergw-dnmapping.ftl -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/cfg-partnergw-domain.ftl -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/cfg-partnergw-required.properties -text
+dev/datapower/datapower-cfg-partnergw/src/main/resources/local/wsdl/carrot_sms_gateway.wsdl -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/add-stelvio-context.xsl -text svneol=unset#text/plain
-dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/faultgenerisk.xsl -text svneol=unset#text/plain
+dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/fault-handler.xsl -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/nfs-message-logger.xsl -text svneol=unset#text/plain
 dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/userid-utils.xsl -text svneol=unset#text/plain
 dev/datapower/datapower-cfg-partnergw/src/test/java/no/nav/datapower/config/partnergw/PGWConfigGeneratorTest.java -text
