@@ -399,6 +399,9 @@ dev/maven2/nav-deployment-code-plugin/.classpath
 dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
+incubator/FEMCommandLine/FEMGRAppClient/target
+incubator/FEMCommandLine/FEMGRAppClientEAR/target
+incubator/FEMCommandLine/nav-int-appclient-fem-pom/.project
 incubator/maven/.project
 incubator/maven/j2ee-xmlbeans/.classpath
 incubator/maven/j2ee-xmlbeans/.project
@@ -536,9 +539,6 @@ incubator/maven/maven-runtimes/wps-runtime/.project
 incubator/maven/maven-runtimes/wps-runtime/.settings
 incubator/maven/maven-runtimes/wps-runtime/bin
 incubator/maven/maven-runtimes/wps-runtime/target
-int/FEMCommandLine/FEMGRAppClient/target
-int/FEMCommandLine/FEMGRAppClientEAR/target
-int/FEMCommandLine/nav-int-appclient-fem-pom/.project
 int/nav-int-appclient/nav-int-wpshelper-bundle/target
 int/nav-int-appclient/nav-int-wpshelper/.project
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
