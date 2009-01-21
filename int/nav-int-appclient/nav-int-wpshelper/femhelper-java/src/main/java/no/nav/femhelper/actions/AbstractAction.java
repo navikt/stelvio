@@ -201,7 +201,7 @@ public abstract class AbstractAction {
 	 * @param paging ->
 	 *            should we run over all fem entries with paging
 	 * @param totalevents ->
-	 *            number of totalevents
+	 *            number of totalevents. Is now more used
 	 * @param maxresultset ->
 	 *            what are the result size
 	 * @return a filtered list of failed events
@@ -209,91 +209,33 @@ public abstract class AbstractAction {
 	protected ArrayList<Event> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
 			throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, IOException {
 		logFileWriter.log("Starting to collect events");
-
+		
 		// Method level variables
 		ArrayList<Event> events = new ArrayList<Event>();
-		int iEvents = 1;
-		String lastEventId = null;
-
-		SimpleDateFormat sdfm = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
-		Date lastEventDate = new Date();
-
-		// Get all events from fem based on maxresultset
-		Object[] params = new Object[] { new Integer(maxresultset) };
-		String[] signature = new String[] { "int" };
-		String femQuery = Queries.QUERY_ALL_EVENTS;
-		List failedEventList = (List) adminClient.invoke(failedEventManager, femQuery, params, signature);
-		
-		// Decalare infinite end date
+		Date begin = null;
 		Date end = new Date();
+		List <FailedEvent> failedEventList;
+		int pagecount = 0;
 		
-		// first result set
-		logger.log(Level.INFO, "Collect events is working for first result set...please wait!");
-
-		for (int i = 0; i < failedEventList.size(); i++) {
-			FailedEvent failedEvent = (FailedEvent) failedEventList.get(i);
-			lastEventDate = failedEvent.getFailureDateTime();
-			lastEventId = failedEvent.getMsgId();
-
-			if (isEventApplicable(failedEvent, agruments)) {
+		do {
+			++pagecount;			
+			logger.log(Level.INFO, "Collect events for page #" + pagecount);
+			String femQuery = Queries.QUERY_EVENT_WITH_TIMEPERIOD;
+			Object[] pagepar = new Object[] { begin, end, new Integer(maxresultset) };
+			String[] pagesig = new String[] { "java.util.Date", "java.util.Date", "int" };
+			failedEventList = (List <FailedEvent>) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
+			for (FailedEvent failedEvent : failedEventList) {
 				Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
 				events.add(event);
 			}
-
-			iEvents++;
-		}
-
-		// clean up list for re-use
-		failedEventList.clear();
-
-		int pagecount = 1;
-		int current = 1;
-
-		while (paging && iEvents < totalevents) {
-			logger.log(Level.INFO, "Paging is activated: collected LastEventId: " + lastEventId + " LastEventDate: "
-					+ sdfm.format(lastEventDate) + " Events collected: #" + events.size());
-
-			femQuery = Queries.QUERY_EVENT_WITH_TIMEPERIOD;
 			
-			// Declare begin to be the previous event plus one ms.
-			Date begin = new Date(lastEventDate.getTime() + 1);
-			
-			logger.log(Level.INFO, "New collection start from EventDate: " + sdfm.format(begin) + " to EventDate: "
-					+ sdfm.format(end) + " with max. result set of #" + maxresultset);
-
-			Object[] pagepar = new Object[] { begin, end, new Integer(maxresultset) };
-			String[] pagesig = new String[] { "java.util.Date", "java.util.Date", "int" };
-			failedEventList = (List) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
-			Iterator pgit = failedEventList.iterator();
-
-			logger.log(Level.INFO, "Collect events is working for result set #" + pagecount + "...please wait!");
-
-			while (pgit.hasNext()) {
-				FailedEvent failedEvent = (FailedEvent) pgit.next();
-				lastEventDate = failedEvent.getFailureDateTime();
-				String currEventId = failedEvent.getMsgId();
-
-				// check id from last loop and skip if we have a double entry
-				// because on milli can include the last id (better
-				// than don't select events)
-				if (!lastEventId.equals(currEventId) && isEventApplicable(failedEvent, agruments)) {
-					Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
-					events.add(event);
-				} else {
-					logger.log(Level.FINE, "Collect events detect on result set #" + pagecount + " that the event with the id "
-							+ currEventId + " is allready collected!");
-				}
-				current++;
-				iEvents++;
-				lastEventId = currEventId;
-			}
-
-			// reset variables for next loop
-			failedEventList.clear();
-			pagecount++;
-			current = 1;
-		}
-
+			// Update end date for the next page
+			FailedEvent lastevent = failedEventList.get(failedEventList.size()-1);
+			logger.log(Level.INFO, "Completed collecting events for page #" + pagecount);
+			logger.log(Level.INFO, "The last event in this page is " + lastevent.getFailureDateTime());
+			end = new Date(lastevent.getFailureDateTime().getTime() - 1);
+		} while (paging && failedEventList.size() == maxresultset); 
+		
 		if (events.size() > 0) {
 			logger.log(Level.INFO, "Collect events is done with result of event(s): #" + events.size());
 		}
