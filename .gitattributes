@@ -1,15 +1,5 @@
 * text=auto !eol
 /.project -text
-BuildIntProjects/.project -text
-BuildIntProjects/IntegrationModuleExport.jar -text
-BuildIntProjects/ant-contrib.jar -text
-BuildIntProjects/ant-projectSetTask-1.0.jar -text
-BuildIntProjects/build.bat -text
-BuildIntProjects/masterBuild.xml -text
-BuildIntProjects/setupBuild.bat -text
-BuildIntProjects/svnClientAdapter.jar -text
-BuildIntProjects/svnant.jar -text
-BuildIntProjects/svnjavahl.jar -text
 app/changelog.txt -text
 app/incubator/trunk/spring-binding/.classpath -text
 app/incubator/trunk/spring-binding/.compatibility -text

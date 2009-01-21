@@ -1,7 +1,3 @@
-BuildIntProjects/dailybuilds/200*
-BuildIntProjects/dailybuilds/20072803
-BuildIntProjects/eclipse.log
-BuildIntProjects/standard-targets.xml
 app/incubator/trunk/spring-webflow/target
 app/stelvio-batch-java/.classpath
 app/stelvio-batch-java/.project
