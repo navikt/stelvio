@@ -2,6 +2,7 @@ package no.nav.femhelper.actions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -31,7 +32,7 @@ public class ReportAction extends AbstractAction {
 		logger.log(Level.FINE, "Write CSV header part.");
 		fileWriter.writeHeader();
 
-		ArrayList<Event> events = new ArrayList<Event>();
+		Collection  <Event> events = new ArrayList<Event>();
 		events = collectEvents(arguments, paging, totalevents, maxresultset);
 
 		if (!events.isEmpty()) {
@@ -45,9 +46,12 @@ public class ReportAction extends AbstractAction {
 
 			logFileWriter.log("Starting to report " + events.size() + " events");
 			logger.log(Level.INFO, "Reporting of #" + events.size() + " events in progress...!");
-			for (int i = 0; i < events.size(); i++) {
-				logger.log(Level.FINE, "Reporting events (" + (i + 1) + " of " + events.size() + "). Please wait!");
-				Event event = events.get(i);
+			int count = 0;
+			for (Event event : events) {
+				count++;
+				if (count % maxresultset == 0) {
+					logger.log(Level.INFO, "Reported " + (count) + " of " + events.size() + " events");
+				}
 
 				// Write the report
 				String eventWithParameter = Queries.QUERY_EVENT_WITH_PARAMETERS;
@@ -57,6 +61,7 @@ public class ReportAction extends AbstractAction {
 						failedEventManager, eventWithParameter, BOparams, BOsignature);
 				fileWriter.writeCSVEvent(failedEventWithParameters, event, adminClient);
 			}
+
 			logFileWriter.log("Reported " + events.size() + " events");
 			logger.log(Level.INFO, "Reporting of #" + events.size() + " events...done!");
 		} else {

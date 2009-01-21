@@ -3,6 +3,7 @@ package no.nav.femhelper.actions;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +39,7 @@ public class ResubmitAction extends AbstractAction {
 		fileWriter.writeShortHeader();
 
 		logFileWriter.log("Starting to collect events");
-		ArrayList<Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
+		Collection <Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
 		logFileWriter.log("Collected " + events.size() + " events");
 
 		if (!events.isEmpty()) {
@@ -50,11 +51,13 @@ public class ResubmitAction extends AbstractAction {
 				}
 			}
 
+			List <Event> eventList = new ArrayList<Event> (events);
+			
 			logger.log(Level.INFO, "Resubmiting #" + events.size() + " events...please wait!");
 			logFileWriter.log("Staring to resubmit " + events.size() + " events");
 			for (int startIndex = 0; startIndex < events.size();) {
 				int endIndex = Math.min(startIndex + Constants.MAX_DELETE, events.size());
-				List<Event> chunk = events.subList(startIndex, endIndex);
+				List<Event> chunk = eventList.subList(startIndex, endIndex);
 				for (Event event : chunk) {
 					event.setEventStatus(EventStatus.MARKED);
 				}

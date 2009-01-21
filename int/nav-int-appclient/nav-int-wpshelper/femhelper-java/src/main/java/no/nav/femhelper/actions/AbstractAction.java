@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -206,12 +206,12 @@ public abstract class AbstractAction {
 	 *            what are the result size
 	 * @return a filtered list of failed events
 	 */
-	protected ArrayList<Event> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
+	protected Collection <Event> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
 			throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, IOException {
 		logFileWriter.log("Starting to collect events");
 		
 		// Method level variables
-		ArrayList<Event> events = new ArrayList<Event>();
+		Map <String, Event> events = new LinkedHashMap<String, Event>();
 		Date begin = null;
 		Date end = new Date();
 		List <FailedEvent> failedEventList;
@@ -226,14 +226,14 @@ public abstract class AbstractAction {
 			failedEventList = (List <FailedEvent>) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
 			for (FailedEvent failedEvent : failedEventList) {
 				Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
-				events.add(event);
+				events.put(event.getMessageID(), event);
 			}
 			
 			// Update end date for the next page
 			FailedEvent lastevent = failedEventList.get(failedEventList.size()-1);
 			logger.log(Level.INFO, "Completed collecting events for page #" + pagecount);
 			logger.log(Level.INFO, "The last event in this page is " + lastevent.getFailureDateTime());
-			end = new Date(lastevent.getFailureDateTime().getTime() - 1);
+			end = new Date(lastevent.getFailureDateTime().getTime());
 		} while (paging && failedEventList.size() == maxresultset); 
 		
 		if (events.size() > 0) {
@@ -241,7 +241,7 @@ public abstract class AbstractAction {
 		}
 
 		logFileWriter.log("Collected " + events.size() + " events");
-		return events;
+		return events.values();
 	}
 
 	/**

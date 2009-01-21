@@ -3,6 +3,7 @@ package no.nav.femhelper.actions;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -42,7 +43,7 @@ public class DeleteAction extends AbstractAction {
 		fileWriter.writeShortHeader();
 
 		// Collect events to stop processes and delete events
-		ArrayList<Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
+		Collection <Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
 
 		if (!events.isEmpty()) {
 			// Check if the commandline has a --noStop option
@@ -53,11 +54,13 @@ public class DeleteAction extends AbstractAction {
 					return null;
 				}
 			}
-
+			
+			List <Event> eventList = new ArrayList<Event> (events);
+			
 			logger.log(Level.INFO, "Discarding #" + events.size() + " events...please wait!");
 			for (int startIndex = 0; startIndex < events.size();) {
 				int endIndex = Math.min(startIndex + Constants.MAX_DELETE, events.size());
-				List<Event> chunk = events.subList(startIndex, endIndex);
+				List<Event> chunk = eventList.subList(startIndex, endIndex);
 				for (Event event : chunk) {
 					event.setEventStatus(EventStatus.MARKED);
 				}
