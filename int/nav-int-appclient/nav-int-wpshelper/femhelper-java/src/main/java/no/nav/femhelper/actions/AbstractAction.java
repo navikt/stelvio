@@ -229,11 +229,22 @@ public abstract class AbstractAction {
 				events.put(event.getMessageID(), event);
 			}
 			
-			// Update end date for the next page
-			FailedEvent lastevent = failedEventList.get(failedEventList.size()-1);
-			logger.log(Level.INFO, "Completed collecting events for page #" + pagecount);
-			logger.log(Level.INFO, "The last event in this page is " + lastevent.getFailureDateTime());
-			end = new Date(lastevent.getFailureDateTime().getTime());
+			if (!failedEventList.isEmpty()) {
+				// Update end date for the next page
+				FailedEvent lastevent = failedEventList.get(failedEventList.size()-1);
+				logger.log(Level.INFO, "Completed collecting events for page #" + pagecount);
+				logger.log(Level.INFO, "The last event in this page is " + lastevent.getFailureDateTime());
+				end = new Date(lastevent.getFailureDateTime().getTime());
+				
+				long firstInMillis = failedEventList.get(0).getFailureDateTime().getTime();
+				long lastInMillis = lastevent.getFailureDateTime().getTime();
+				if (firstInMillis == lastInMillis && failedEventList.size() == maxresultset) {
+					logger.log(Level.SEVERE, "All events in this page is created on the same millis. " +
+							"This is unsupported. Try to increase pagesize.");
+					logger.log(Level.INFO, "Due to this situation the application is now exiting!");
+					System.exit(0);
+				}
+			}
 		} while (paging && failedEventList.size() == maxresultset); 
 		
 		if (events.size() > 0) {
