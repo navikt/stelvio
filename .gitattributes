@@ -1292,6 +1292,10 @@ dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
+dev/datapower/datapower-cfg-oppkoblingstest/pom.xml -text svneol=unset#text/plain
+dev/datapower/datapower-cfg-oppkoblingstest/src/main/java/no/nav/datapower/config/oppkoblingstest/PGWOTConfigGeneratorImpl.java -text svneol=unset#text/plain
+dev/datapower/datapower-cfg-oppkoblingstest/src/main/resources/cfg-oppkoblingstest-domain.ftl -text
+dev/datapower/datapower-cfg-oppkoblingstest/src/main/resources/cfg-oppkoblingstest-required.properties -text svneol=unset#text/plain
 dev/datapower/datapower-cfg-partnergw/pom.xml -text
 dev/datapower/datapower-cfg-partnergw/src/main/java/no/nav/datapower/config/partnergw/PGWConfigGeneratorImpl.java -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
