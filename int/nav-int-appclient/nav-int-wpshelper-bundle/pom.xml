@@ -22,7 +22,7 @@
 		<launchClient.home>
 			/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin
 		</launchClient.home>
-		<artifacts.version>1.0.2-SNAPSHOT</artifacts.version>
+		<artifacts.version>1.0.2</artifacts.version>
 	</properties>
 
 	<build>
