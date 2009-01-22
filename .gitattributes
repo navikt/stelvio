@@ -1392,6 +1392,7 @@ dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapow
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAInfo.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyAuthenticateAllLTPA.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyClientSSL2LTPA.ftl -text
+dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyClientSSL2LTPAAllAuthenticated.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyLTPA2LTPA.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/CryptoCertificate.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/CryptoIdentCred.ftl -text
@@ -1427,7 +1428,6 @@ dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/TwoWa
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/WSEndpointRewritePolicy.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/WSEndpointRewritePolicyMultipleWsdl.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/WSGateway.ftl -text
-dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/WSGateway.ftl.bak -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/WSGatewayMultipleWsdl.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/WSProxyStaticBackend.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/WSProxyStaticBackendMultipleWsdl.ftl -text
