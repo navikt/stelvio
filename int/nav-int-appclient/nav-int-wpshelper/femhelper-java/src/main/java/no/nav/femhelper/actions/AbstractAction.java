@@ -206,47 +206,48 @@ public abstract class AbstractAction {
 	 *            what are the result size
 	 * @return a filtered list of failed events
 	 */
-	protected Collection <Event> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
+	@SuppressWarnings("unchecked")
+	protected Collection<Event> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
 			throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, IOException {
 		logFileWriter.log("Starting to collect events");
-		
+
 		// Method level variables
-		Map <String, Event> events = new LinkedHashMap<String, Event>();
+		Map<String, Event> events = new LinkedHashMap<String, Event>();
 		Date begin = null;
 		Date end = new Date();
-		List <FailedEvent> failedEventList;
+		List<FailedEvent> failedEventList;
 		int pagecount = 0;
-		
+
 		do {
-			++pagecount;			
+			++pagecount;
 			logger.log(Level.INFO, "Collect events for page #" + pagecount);
 			String femQuery = Queries.QUERY_EVENT_WITH_TIMEPERIOD;
 			Object[] pagepar = new Object[] { begin, end, new Integer(maxresultset) };
 			String[] pagesig = new String[] { "java.util.Date", "java.util.Date", "int" };
-			failedEventList = (List <FailedEvent>) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
+			failedEventList = (List<FailedEvent>) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
 			for (FailedEvent failedEvent : failedEventList) {
 				Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
 				events.put(event.getMessageID(), event);
 			}
-			
+
 			if (!failedEventList.isEmpty()) {
 				// Update end date for the next page
-				FailedEvent lastevent = failedEventList.get(failedEventList.size()-1);
+				FailedEvent lastevent = failedEventList.get(failedEventList.size() - 1);
 				logger.log(Level.INFO, "Completed collecting events for page #" + pagecount);
 				logger.log(Level.INFO, "The last event in this page is " + lastevent.getFailureDateTime());
 				end = new Date(lastevent.getFailureDateTime().getTime());
-				
+
 				long firstInMillis = failedEventList.get(0).getFailureDateTime().getTime();
 				long lastInMillis = lastevent.getFailureDateTime().getTime();
 				if (firstInMillis == lastInMillis && failedEventList.size() == maxresultset) {
-					logger.log(Level.SEVERE, "All events in this page is created on the same millis. " +
-							"This is unsupported. Try to increase pagesize.");
+					logger.log(Level.SEVERE, "All events in this page is created on the same millis. "
+							+ "This is unsupported. Try to increase pagesize.");
 					logger.log(Level.INFO, "Due to this situation the application is now exiting!");
 					System.exit(0);
 				}
 			}
-		} while (paging && failedEventList.size() == maxresultset); 
-		
+		} while (paging && failedEventList.size() == maxresultset);
+
 		if (events.size() > 0) {
 			logger.log(Level.INFO, "Collect events is done with result of event(s): #" + events.size());
 		}
@@ -304,7 +305,7 @@ public abstract class AbstractAction {
 		return match;
 	}
 
-	private boolean isMatchWildCard (String input, String regex) {
+	private boolean isMatchWildCard(String input, String regex) {
 		if (!StringUtils.isEmpty(regex)) {
 			Pattern p = Pattern.compile(regex);
 			Matcher m = p.matcher(input);
@@ -313,7 +314,7 @@ public abstract class AbstractAction {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * Generic method to validate a attribute on the <code>FailedEvent</code>
 	 * event against values in the argument list.
