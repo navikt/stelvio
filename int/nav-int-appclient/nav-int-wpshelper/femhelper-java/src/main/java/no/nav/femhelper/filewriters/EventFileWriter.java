@@ -135,10 +135,15 @@ public class EventFileWriter {
 
 					// Probing in data type
 					String prettyPrint = null;
+					
+					// This if statement was before used for different behavior for
+					// objects of DataObject and objects of String. Keeping this
+					// statement to make this differense in the request element 
+					// obvious.
 					if (failedEventParameter.getValue() instanceof DataObject) {
-						prettyPrint = sdoppt.sdoPrettyPrint((DataObject) failedEventParameter.getValue());
+						prettyPrint = failedEventParameter.getValue().toString();
 					} else if (failedEventParameter.getValue() instanceof String) {
-						prettyPrint = (String) failedEventParameter.getValue();
+						prettyPrint = failedEventParameter.getValue().toString();
 					} else {
 						prettyPrint = "Unable to convert";
 					}
@@ -148,10 +153,11 @@ public class EventFileWriter {
 					// to read
 				}
 			} catch (RuntimeException e) {
-				String errormsg = "RuntimeException caught during retrieval of business object" + e.getClass().getName();
+				String errormsg = "RuntimeException caught during retrieval of business object" 
+					+ e.getClass().getName() + "(" + e.getMessage() + ")";
 				sb.append(errormsg);
 				sb.append(EMPTY);
-				LOGGER.log(Level.SEVERE, errormsg, e);
+				LOGGER.log(Level.SEVERE, errormsg);
 			}
 		}
 		csvPrinter.write(sb.toString());
