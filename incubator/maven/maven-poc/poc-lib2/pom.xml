@@ -13,13 +13,4 @@
 	<artifactId>poc-lib2</artifactId>
 	<packaging>sca-library-jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-sca-artifact-plugin</artifactId>
-				<extensions>true</extensions>
-			</plugin>
-		</plugins>
-	</build>
 </project>
