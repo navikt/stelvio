@@ -43,18 +43,6 @@
 						<keep>true</keep>
 						<progressMonitor>none</progressMonitor>
 					</configuration>
-					<executions>
-						<!-- 
-							TODO: This is an experimental goal that currently (20/1-2009) only updates the display-name element 
-							to include the Maven version.
-						-->
-						<execution>
-							<goals>
-								<goal>update-ear</goal>
-							</goals>
-							<phase>package</phase>
-						</execution>
-					</executions>
 				</plugin>
 
 				<plugin>
@@ -126,6 +114,24 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<!-- 
+				TODO: This is an experimental plugin that currently (20/1-2009) only updates the display-name element 
+				to include the Maven version.
+			-->
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-update-ear-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>update-ear</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<scm>
