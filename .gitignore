@@ -523,8 +523,6 @@ incubator/maven/maven-poc/poc-not-working-module/gen/src/*
 incubator/maven/maven-poc/poc-working-module/META-INF
 incubator/maven/maven-poc/poc-working-module/bin
 incubator/maven/maven-poc/poc-working-module/gen
-incubator/maven/maven-poms/.project
-incubator/maven/maven-poms/target
 incubator/maven/maven-root-pom/target
 incubator/maven/maven-runtimes/.classpath
 incubator/maven/maven-runtimes/.project
