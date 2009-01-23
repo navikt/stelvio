@@ -31,11 +31,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-sca-artifact-plugin</artifactId>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<finalName>${artifactId}</finalName>
