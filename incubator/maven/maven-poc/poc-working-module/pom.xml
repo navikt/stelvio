@@ -22,13 +22,4 @@
 			<type>sca-library-jar</type>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-sca-artifact-plugin</artifactId>
-				<extensions>true</extensions>
-			</plugin>
-		</plugins>
-	</build>
 </project>
