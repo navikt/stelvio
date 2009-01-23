@@ -13,7 +13,8 @@
 		backsideProtocol
 		backsideHost
 		backsidePort
-		backsideUri>
+		backsideUri
+		backsideSSLProxy>
 	<@WSEndpointRewritePolicy
 		name="${name}"
 		wsdlPortBinding="${wsdlPortBinding}"
@@ -27,7 +28,7 @@
 	<@WSGateway
 		name="${name}"
 		version="${version}"
-		sslProxy="${backsideHost}_SSLProxyProfile"
+		sslProxy="${backsideSSLProxy}"
 		wsdlName="${wsdlName}"
 		wsdlLocation="${wsdlLocation}"
 		rewritePolicy="${name}"
