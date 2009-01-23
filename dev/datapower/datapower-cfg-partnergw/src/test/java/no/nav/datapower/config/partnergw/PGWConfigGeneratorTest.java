@@ -27,15 +27,16 @@ public class PGWConfigGeneratorTest extends TestCase {
 	}
 
 	public void testGenerate() {
-//		String domain = "partner-gw-u1";
+//		String domain = "partner-gw-t6";
 //		gen = new PGWConfigGeneratorImpl();
-//		File bustagDir = new File("E:/data/builds/BUSTAG_K_2_22_0/");
-//		File propertiesDirectory = new File("E:/data/builds/BUSTAG_K_2_22_0/src/main/resources/scripts/environments");
-//		File moduleDirectory = new File("E:/data/builds/BUSTAG_K_2_22_0/target/classes/builds/ear");
-//		File outputDirectory = new File("E:/data/builds/BUSTAG_K_2_22_0/target/datapower-config/" + domain);
-////		File overridesDir = new File("E:/data/builds/BUSTAG_K_2_19_6/target/datapower-config/partner-gw-u1");
+//		File bustagDir = new File("E:/data/builds/BUSTAG_R_3_9_1_FULL/");
+//		File propertiesDirectory = new File("E:/data/builds/BUSTAG_R_3_9_1_FULL/src/main/resources/scripts/environments");
+//		File moduleDirectory = new File("E:/data/builds/BUSTAG_R_3_9_1_FULL/target/classes/builds/ear");
+//		File outputDirectory = new File("E:/data/builds/BUSTAG_R_3_9_1_FULL/target/datapower-config/" + domain);
+//		File overridesDir = new File("E:/data/builds/datapower-overrides/partner-gw-t6/overrides.properties");
 //		EnvironmentResources cfg = new EnvironmentResources();
 //		cfg.addProperties(DPPropertiesUtils.load(getPropertiesFile(propertiesDirectory, domain)));
+//		cfg.addProperties(DPPropertiesUtils.load(overridesDir));
 //		cfg.setModuleDirectory(moduleDirectory);
 ////		ConfigGenerator gen = new PGWConfigGeneratorImpl();
 //		gen.setEnvironmentResources(cfg);
