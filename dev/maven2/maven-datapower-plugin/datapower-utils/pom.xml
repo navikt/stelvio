@@ -4,15 +4,15 @@
 	<parent>
 		<groupId>no.nav.maven.plugins</groupId>
 		<artifactId>maven-datapower-plugin-project</artifactId>
-		<version>1.1.3</version>
+		<version>1.1.4-SNAPSHOT</version>
 	</parent>
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-datapower-plugin-project-1.1.3/datapower-utils
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/datapower-utils
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-datapower-plugin-project-1.1.3/datapower-utils
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/datapower-utils
 		</developerConnection>
 	</scm>
 
