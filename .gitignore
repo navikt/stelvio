@@ -508,6 +508,7 @@ incubator/maven/maven-plugins/maven-service-deploy-plugin/target
 incubator/maven/maven-plugins/maven-update-ear-plugin/.classpath
 incubator/maven/maven-plugins/maven-update-ear-plugin/.project
 incubator/maven/maven-plugins/maven-update-ear-plugin/.settings
+incubator/maven/maven-plugins/maven-update-ear-plugin/bin
 incubator/maven/maven-plugins/maven-update-ear-plugin/target
 incubator/maven/maven-plugins/target
 incubator/maven/maven-poc/poc-lib/META-INF
