@@ -4,7 +4,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-datapower-plugin-project</artifactId>
 	<packaging>pom</packaging>
-	<version>1.1.5</version>
+	<version>1.1.6-SNAPSHOT</version>
 	
 	<name>Maven DataPower Plugin Project</name>
 	<description>
@@ -18,10 +18,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-datapower-plugin-project-1.1.5
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-datapower-plugin-project-1.1.5
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/
 		</developerConnection>
 	</scm>
 
