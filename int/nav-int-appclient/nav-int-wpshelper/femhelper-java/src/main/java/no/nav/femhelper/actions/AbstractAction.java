@@ -217,6 +217,21 @@ public abstract class AbstractAction {
 		Date end = new Date();
 		List<FailedEvent> failedEventList;
 		int pagecount = 0;
+		
+		// Set timefram agruments if applicable
+		// The presence of times and the format are allready validated in
+		// ArgumentValidator
+		if (agruments.containsKey(CommandOptions.timeFrame)) {
+			String timeFrame = agruments.get(CommandOptions.timeFrame);
+			String times[] = StringUtils.split(timeFrame, "-");
+			SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
+			try {
+				begin = sdf.parse(times[0]);
+				end = sdf.parse(times[1]);
+			} catch (ParseException e) {
+				throw new RuntimeException("Date values are not validated properly");
+			}
+		}
 
 		do {
 			++pagecount;
@@ -241,7 +256,7 @@ public abstract class AbstractAction {
 				long lastInMillis = lastevent.getFailureDateTime().getTime();
 				if (firstInMillis == lastInMillis && failedEventList.size() == maxresultset) {
 					logger.log(Level.SEVERE, "All events in this page is created on the same millis. "
-							+ "This is unsupported. Try to increase pagesize.");
+							+ "This is unsupported. Try to increase pagesize, but keep memory usage in mind.");
 					logger.log(Level.INFO, "Due to this situation the application is now exiting!");
 					System.exit(0);
 				}
