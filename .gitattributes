@@ -2392,6 +2392,7 @@ incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/resources/MET
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
 incubator/maven/maven-plugins/maven-update-ear-plugin/pom.xml -text
+incubator/maven/maven-plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text
 incubator/maven/maven-plugins/pom.xml -text
 incubator/maven/maven-poc/poc-bundle/.project -text svneol=unset#text/plain
 incubator/maven/maven-poc/poc-bundle/pom.xml -text svneol=unset#text/plain
