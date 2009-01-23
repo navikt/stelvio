@@ -14,14 +14,4 @@
 	<artifactId>${artifactId}</artifactId>
 	<packaging>sca-module-ear</packaging>
 	<version>${version}</version>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-sca-artifact-plugin</artifactId>
-				<extensions>true</extensions>
-			</plugin>
-		</plugins>
-	</build>
 </project>
