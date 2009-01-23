@@ -2425,7 +2425,7 @@ incubator/maven/maven-poc/poc-not-working-bundle/pom.xml -text svneol=unset#text
 incubator/maven/maven-poc/poc-not-working-module/.classpath -text
 incubator/maven/maven-poc/poc-not-working-module/.project -text
 incubator/maven/maven-poc/poc-not-working-module/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text
-incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.core.resources.prefs -text svneol=unset#text/plain
+incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.core.resources.prefs -text
 incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.jdt.core.prefs -text
 incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 incubator/maven/maven-poc/poc-not-working-module/.settings/org.eclipse.wst.common.component -text
