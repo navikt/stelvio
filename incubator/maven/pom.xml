@@ -17,12 +17,13 @@
 	<name>NAV Maven Artifacts</name>
 
 	<modules>
-		<module>maven-archetypes</module>
-		<module>maven-assemblies</module>
-		<module>maven-plugins</module>
 		<module>maven-poms</module>
-		<module>maven-runtimes</module>
 		<module>j2ee-xmlbeans</module>
+		<module>maven-plugins</module>
+		<module>maven-runtimes</module>
+		<module>maven-sca-poms</module>
+		<module>maven-assemblies</module>
+		<module>maven-archetypes</module>
 	</modules>
 
 	<scm>

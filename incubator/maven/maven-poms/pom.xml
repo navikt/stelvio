@@ -18,9 +18,6 @@
 
 	<modules>
 		<module>maven-root-pom</module>
-		<module>maven-sca-root-pom</module>
-		<module>maven-sca-library-pom</module>
-		<module>maven-sca-module-pom</module>
 	</modules>
 
 	<scm>
