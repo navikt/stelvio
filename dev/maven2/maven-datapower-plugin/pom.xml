@@ -198,10 +198,12 @@
 			<id>nav-maven2-internal-repo</id>
 			<url>scp://maven.adeo.no/var/maven2/internal</url>
 		</repository>
+		<!--
 		<snapshotRepository>
 			<id>nav-pensjon-maven2-snapshot-repo</id>
 			<name>NAV Maven2 Internal Snapshot Repository</name>
 			<url>scp://maven.adeo.no/var/maven2/snapshot</url>
 		</snapshotRepository>
+		-->
 	</distributionManagement>
 </project>
