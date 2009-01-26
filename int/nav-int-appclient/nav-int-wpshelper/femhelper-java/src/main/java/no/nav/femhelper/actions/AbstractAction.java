@@ -207,7 +207,7 @@ public abstract class AbstractAction {
 	 * @return a filtered list of failed events
 	 */
 	@SuppressWarnings("unchecked")
-	protected Collection<Event> collectEvents(Map<String, String> agruments, boolean paging, long totalevents, int maxresultset)
+	protected Collection<Event> collectEvents(Map<String, String> arguments, boolean paging, long totalevents, int maxresultset)
 			throws InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, IOException {
 		logFileWriter.log("Starting to collect events");
 
@@ -217,12 +217,12 @@ public abstract class AbstractAction {
 		Date end = new Date();
 		List<FailedEvent> failedEventList;
 		int pagecount = 0;
-		
+
 		// Set timefram agruments if applicable
 		// The presence of times and the format are allready validated in
 		// ArgumentValidator
-		if (agruments.containsKey(CommandOptions.timeFrame)) {
-			String timeFrame = agruments.get(CommandOptions.timeFrame);
+		if (arguments.containsKey(CommandOptions.timeFrame)) {
+			String timeFrame = arguments.get(CommandOptions.timeFrame);
 			String times[] = StringUtils.split(timeFrame, "-");
 			SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
 			try {
@@ -241,8 +241,10 @@ public abstract class AbstractAction {
 			String[] pagesig = new String[] { "java.util.Date", "java.util.Date", "int" };
 			failedEventList = (List<FailedEvent>) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
 			for (FailedEvent failedEvent : failedEventList) {
-				Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
-				events.put(event.getMessageID(), event);
+				if (isEventApplicable(failedEvent, arguments)) {
+					Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
+					events.put(event.getMessageID(), event);
+				}
 			}
 
 			if (!failedEventList.isEmpty()) {
@@ -275,48 +277,26 @@ public abstract class AbstractAction {
 	 * Method that evaluate if a single event matches one or more search
 	 * criterias
 	 * 
-	 * @param event
+	 * @param e
 	 *            to evaluate
-	 * @param arguments
+	 * @param args
 	 *            to evaluate against. This is collected from the
 	 *            <code>CommandLing </code> object
 	 * @return
 	 */
-	private boolean isEventApplicable(FailedEvent event, Map<String, String> arguments) {
+	private boolean isEventApplicable(FailedEvent e, Map<String, String> args) {
 
 		// Default true. If no criterias are listed the 'ALL events' apply.
 		boolean match = true;
 
 		// Make use of the generic validate method for arguments that validate
 		// attributes of datatype
-		match = match && validate(event.getSourceModuleName(), arguments.get(CommandOptions.sourceModule)) ? true : false;
-		match = match && validate(event.getSourceComponentName(), arguments.get(CommandOptions.sourceComponent)) ? true : false;
-		match = match && validate(event.getDestinationModuleName(), arguments.get(CommandOptions.destinationModule)) ? true
+		match = match && validate(e.getSourceModuleName(), args.get(CommandOptions.sourceModule)) ? true : false;
+		match = match && validate(e.getSourceComponentName(), args.get(CommandOptions.sourceComponent)) ? true : false;
+		match = match && validate(e.getDestinationModuleName(), args.get(CommandOptions.destinationModule)) ? true : false;
+		match = match && validate(e.getDestinationComponentName(), args.get(CommandOptions.destinationComponent)) ? true
 				: false;
-		match = match && validate(event.getDestinationComponentName(), arguments.get(CommandOptions.destinationComponent)) ? true
-				: false;
-		match = match && isMatchWildCard(event.getFailureMessage(), arguments.get(CommandOptions.failureMessage));
-
-		String timeFrame = arguments.get(CommandOptions.timeFrame);
-		if (match && !StringUtils.isEmpty(timeFrame)) {
-			// The time / date format is already validated, and can be parsed
-			// without
-			// handling ParseException
-			String dates[] = StringUtils.split(timeFrame, "-");
-			try {
-				SimpleDateFormat sdf = new SimpleDateFormat(Constants.TIME_FRAME_FORMAT);
-				Date fromDate = sdf.parse(dates[0]);
-				Date toDate = sdf.parse(dates[1]);
-				Date failureDate = event.getFailureDateTime();
-
-				match = match && null != failureDate && failureDate.after(fromDate) && failureDate.before(toDate) ? true
-						: false;
-
-			} catch (ParseException e) {
-				// Will never occur here.
-			}
-		}
-
+		match = match && isMatchWildCard(e.getFailureMessage(), args.get(CommandOptions.failureMessage));
 		return match;
 	}
 
@@ -345,7 +325,7 @@ public abstract class AbstractAction {
 	 * @return
 	 */
 	private boolean validate(String eventValue, String criteria) {
-		if (StringUtils.isEmpty(criteria) || StringUtils.contains(eventValue, criteria)) {
+		if (StringUtils.isEmpty(criteria) || StringUtils.equals(eventValue, criteria)) {
 			return true;
 		}
 		return false;
