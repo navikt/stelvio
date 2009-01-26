@@ -72,12 +72,24 @@
 			address="${outboundFrontsideHost}"
 			port="${outboundFrontsidePort}"
 			sslProxy="${outboundFrontsideHost}_SSLProxyProfile"/>
-	<#-- AAAPolicy for Inbound calls -->
+	<#-- AAAPolicy for Inbound calls ELSAM -->
 	<@dp.AAAPolicyClientSSL2LTPA
 			name="${inboundAaaPolicyName}"
 			aaaFileName="local:///aaa/${inboundAaaFileName}"
 			ppLtpaKeyFile="local:///aaa/${inboundBacksideLTPAKeyFile}"
 			ppLtpaKeyFilePwd="${inboundBacksideLTPAKeyPwd}"/>
+	<#-- AAAPolicy for Inbound calls NorskPensjon -->
+	<@dp.AAAPolicyClientSSL2LTPAAllAuthenticated
+			name="SSLDNToLTPAMessageSigAllAuthenticated" <#-- TODO: trekk ut denne verdien som property -->
+			aaaFileName="local:///aaa/norskpensjon_AAAInfo.xml" <#-- TODO: trekk ut denne verdien som property -->
+			ppLtpaKeyFile="local:///aaa/${inboundBacksideLTPAKeyFile}" 
+			ppLtpaKeyFilePwd="${inboundBacksideLTPAKeyPwd}"/>
+	<#-- AAAPolicy for Outbound calls -->
+	<@dp.AAAPolicyAuthenticateAllLTPA
+			name="${outboundAaaPolicyName}"
+			auLtpaKeyFile="local:///aaa/${outboundFrontsideLTPAKeyFile}"
+			auLtpaKeyFilePwd="${outboundFrontsideLTPAKeyPwd}"/>
+
 	<@dp.NFSStaticMount
 			name="${nfsLogTargetName}"
 			uri="${nfsLogTargetUri}"/>
@@ -152,8 +164,15 @@
 	<@dp.ProcessingRequestRule
 		name="${outboundProcessingPolicy}"
 		actions=[
+				{"type":"aaa",	"name":"aaaAction",	
+						"input":"INPUT",	"output":"PIPE",
+						"policy":"${outboundAaaPolicyName}"},
+				{"type":"xform", "name":"stripWSSecAction",
+						"input":"PIPE",	"output":"PIPE", "async":"off",
+						"stylesheet":"store:///strip-security-header.xsl",
+						"params":[]},
 				{"type":"sign", "name":"signAction",
-						"input":"INPUT",	"output":"signedRequest",
+						"input":"PIPE",	"output":"signedRequest",
 						"signCert":"${navSigningKeystoreName}",
 						"signKey":"${navSigningKeystoreName}"}
 				{"type":"xform", "name":"logAction", "async":"on",
@@ -205,14 +224,43 @@
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicy}_error-rule"}
 			]/>
 		
+
+	<#-- Generate Inbound proxies -->			
+	<#list inboundProxies as proxy>
+	<@dp.WSProxyStaticBackendMultipleWsdl
+			name="${proxy.name}Inbound"
+			version="${cfgVersion}"
+			wsdls=proxy.wsdls
+			policy="${inboundProcessingPolicy}"
+			frontsideHandler="${inboundFrontsideHandler}"
+			frontsideProtocol="${inboundFrontsideProtocol}"
+			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
+			backsideProtocol="${inboundBacksideProtocol}"
+			backsideHost="${inboundBacksideHost}"
+			backsidePort="${inboundBacksidePort}"/>
+	</#list>	
+
+	<#-- Generate Outbound proxies -->			
+	<#list outboundProxies as proxy>
+	<@dp.WSProxyWSADynamicBackendMultipleWsdl
+			name="${proxy.name}Outbound"
+			version="${cfgVersion}"
+			wsdls=proxy.wsdls
+			policy="${outboundProcessingPolicy}"
+			frontsideHandler="${outboundFrontsideHandler}"
+			frontsideProtocol="${outboundFrontsideProtocol}"
+			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
+			wsaRequireAaa="off"/>
+	</#list>
+	
 	<#-- SMS Gateway -->	
 	<#-- TODO her -->
 	
 	<#assign nameSMS="SMSGateway"/>
-	<#assign outboundBacksideHostSMS="smsgw.carrot.no"/>
+	<#--<#assign outboundBacksideHostSMS="smsgw.carrot.no"/>
 	<#assign outboundBacksideProtocolSMS="https"/>
 	<#assign outboundBacksidePortSMS="443"/>
-	
+	-->
 	<#assign outboundProcessingPolicySMS="${nameSMS}_Policy"/>
 
 	<#assign wsdlNameSMS="carrot_sms_gateway.wsdl"/>
@@ -221,10 +269,6 @@
 	<@dp.BacksideSSL
 			name="${outboundBacksideHostSMS}"
 			trustedCerts=[{"name":"Thawte-Server-CA","file":"pubcert:///Thawte-Server-CA.pem"}]/>
-	<@dp.AAAPolicyAuthenticateAllLTPA
-			name="aaaPolicyAuthenticateAll"
-			auLtpaKeyFile="local:///aaa/${outboundFrontsideLTPAKeyFile}"
-			auLtpaKeyFilePwd="${outboundFrontsideLTPAKeyPwd}"/>
 	
 	<#-- Outbound processing rules-->
 	<@dp.ProcessingRequestRule
@@ -234,7 +278,7 @@
 						"input":"INPUT",	"output":"NULL"},
 				{"type":"aaa",	"name":"aaaAction",	
 						"input":"INPUT",	"output":"PIPE",
-						"policy":"aaaPolicyAuthenticateAll"},
+						"policy":"${outboundAaaPolicyName}"},
 				{"type":"xform", "name":"stripWSSecAction",
 						"input":"PIPE",	"output":"PIPE", "async":"off",
 						"stylesheet":"store:///strip-security-header.xsl",
@@ -283,38 +327,103 @@
 		policy="${outboundProcessingPolicySMS}"
 		frontsideHandler="${outboundFrontsideHandler}"
 		frontsideProtocol="${outboundFrontsideProtocol}"
-		frontsideUri="/smsgw/services/SMSGateway"
+		frontsideUri="${endpointURISMS}"
 		backsideProtocol="${outboundBacksideProtocolSMS}"
 		backsideHost="${outboundBacksideHostSMS}"
 		backsidePort="${outboundBacksidePortSMS}"
-		backsideUri="/smsgw/services/SMSGateway"
+		backsideUri="${endpointURISMS}"
+		backsideSSLProxy="${outboundBacksideHostSMS}_SSLProxyProfile"
 	/>
+	
+	<#-- Norsk Pensjon-->
 
-	<#-- Generate Inbound proxies -->			
-	<#list inboundProxies as proxy>
-	<@dp.WSProxyStaticBackendMultipleWsdl
-			name="${proxy.name}Inbound"
-			version="${cfgVersion}"
-			wsdls=proxy.wsdls
-			policy="${inboundProcessingPolicy}"
-			frontsideHandler="${inboundFrontsideHandler}"
-			frontsideProtocol="${inboundFrontsideProtocol}"
-			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
-			backsideProtocol="${inboundBacksideProtocol}"
-			backsideHost="${inboundBacksideHost}"
-			backsidePort="${inboundBacksidePort}"/>
-	</#list>	
+	<#assign nameNP="NorskPensjon"/>
+	
+	
+	<#assign outboundProcessingPolicyNP="${nameNP}_Policy"/>
 
-	<#-- Generate Outbound proxies -->			
-	<#list outboundProxies as proxy>
-	<@dp.WSProxyWSADynamicBackendMultipleWsdl
-			name="${proxy.name}Outbound"
-			version="${cfgVersion}"
-			wsdls=proxy.wsdls
-			policy="${outboundProcessingPolicy}"
-			frontsideHandler="${outboundFrontsideHandler}"
-			frontsideProtocol="${outboundFrontsideProtocol}"
-			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
-			wsaRequireAaa="off"/>
-	</#list>
+	<#assign wsdlNameNP="privatpensjon.wsdl"/>
+	<#assign aaaPolicyNameNP="aaa0"/>	
+	<#-- Outbound processing rules-->
+	<@dp.ProcessingRequestRule
+		name="${outboundProcessingPolicyNP}"
+		actions=[
+				{"type":"aaa",	"name":"aaaAction",	
+						"input":"INPUT",	"output":"PIPE",
+						"policy":"${outboundAaaPolicyName}"},
+				{"type":"xform", "name":"stripWSSecAction",
+						"input":"PIPE",	"output":"PIPE", "async":"off",
+						"stylesheet":"store:///strip-security-header.xsl",
+						"params":[]},				 
+				{"type":"sign", "name":"signAction",
+						"input":"PIPE",	"output":"signedRequest",
+						"signCert":"${navSigningKeystoreName}",
+						"signKey":"${navSigningKeystoreName}"}
+				{"type":"xform", "name":"logAction", "async":"on",
+						"input":"signedRequest",	"output":"NULL",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"signedRequest","output":"OUTPUT"}
+			]/>	
+			
+	<@dp.ProcessingResponseRule
+		name="${outboundProcessingPolicyNP}"
+		actions=[
+				{"type":"verify", "name":"verifiyAction",
+						"input":"INPUT",	"output":"NULL",
+						"valCred":"${signatureValCred}"},
+				{"type":"xform", "name":"logAction",
+						"input":"INPUT",	"output":"NULL", "async":"on",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"xform", "name":"stripWssAction", "async":"off",
+						"input":"INPUT",	"output":"wssHeaderRemoved",
+						"stylesheet":"store:///strip-security-header.xsl",
+						"params":[]},
+				{"type":"result", "name":"resultAction",
+					"input":"wssHeaderRemoved","output":"OUTPUT"}
+			]/>
+	<@dp.ProcessingErrorRule
+		name="${outboundProcessingPolicyNP}"
+		actions=[
+				{"type":"xform", "name":"createFaultAction",
+						"input":"INPUT",	"output":"faultHandler", "async":"off",
+						"stylesheet":"local:///xslt/fault-handler.xsl",
+						"params":[
+							{"name":"fault-prefix","value":"DataPower Security Gateway"}
+						]},
+				{"type":"xform", "name":"logAction",
+						"input":"faultHandler",	"output":"NULL", "async":"on",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"faultHandler","output":"OUTPUT"}					
+			]/>
+			
+	<@dp.WSStylePolicy
+			name="${outboundProcessingPolicyNP}"
+			policyMapsList=[
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicyNP}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicyNP}_response-rule"},
+				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicyNP}_error-rule"}
+			]/>
+	
+	<@dp.WSProxyStaticBackend		
+		name="${nameNP}"
+		version="${cfgVersion}"
+		wsdlName="${wsdlNameNP}"
+		wsdlLocation="local:///wsdl/${wsdlNameNP}"
+		wsdlPortBinding="{http://norskpensjon.no/api/pensjon}privatpensjonPort"
+		policy="${outboundProcessingPolicyNP}"
+		frontsideHandler="${outboundFrontsideHandler}"
+		frontsideProtocol="${outboundFrontsideProtocol}"
+		frontsideUri="${endpointURINP}"
+		backsideProtocol="${outboundBacksideProtocolNP}"
+		backsideHost="${outboundBacksideHostNP}"
+		backsidePort="${outboundBacksidePortNP}"
+		backsideUri="${endpointURINP}"
+		backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
+	/>	
+	
 </@dp.configuration>
