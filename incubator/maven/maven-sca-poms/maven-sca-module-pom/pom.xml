@@ -110,6 +110,19 @@
 								com.ibm.maven.runtimes:wps-runtime
 							</exclude>
 						</excludes>
+						<additionalConfig>
+							<file>
+								<name>
+									.settings/com.ibm.ws.sca.rapiddeploy.style.prefs
+								</name>
+								<content>
+									<![CDATA[
+eclipse.preferences.version=1
+config.version=6.1
+									]]>
+								</content>
+							</file>
+						</additionalConfig>
 					</configuration>
 				</plugin>
 			</plugins>
