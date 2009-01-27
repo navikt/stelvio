@@ -54,6 +54,12 @@ app/stelvio-test-java/target
 dev/ant-projectSetTask/.classpath
 dev/ant-projectSetTask/.project
 dev/ant-projectSetTask/target
+dev/datapower/datapower-cfg-oppkoblingstest/.classpath
+dev/datapower/datapower-cfg-oppkoblingstest/.metadata
+dev/datapower/datapower-cfg-oppkoblingstest/.project
+dev/datapower/datapower-cfg-oppkoblingstest/.settings
+dev/datapower/datapower-cfg-oppkoblingstest/bin
+dev/datapower/datapower-cfg-oppkoblingstest/target
 dev/datapower/datapower-cfg-partnergw/.classpath
 dev/datapower/datapower-cfg-partnergw/.project
 dev/datapower/datapower-cfg-partnergw/.settings
