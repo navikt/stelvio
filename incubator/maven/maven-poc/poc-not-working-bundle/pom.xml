@@ -19,4 +19,13 @@
 		<module>../poc-lib2</module>
 		<module>../poc-not-working-module</module>
 	</modules>
+	
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-not-working-bundle
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-not-working-bundle
+		</developerConnection>
+	</scm>
 </project>
