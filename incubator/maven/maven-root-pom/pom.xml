@@ -27,14 +27,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<artifactId>maven-scm-plugin</artifactId>
-					<configuration>
-						<username>svnguest</username>
-						<password>Subversion01</password>
-					</configuration>
-				</plugin>
-
-				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
 						<source>1.5</source>
@@ -206,10 +198,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms/maven-root-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-root-pom
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms/maven-root-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-root-pom
 		</developerConnection>
 	</scm>
 </project>
