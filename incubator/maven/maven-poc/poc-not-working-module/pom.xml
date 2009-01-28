@@ -48,4 +48,13 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-not-working-module
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-not-working-module
+		</developerConnection>
+	</scm>
 </project>
