@@ -20,4 +20,13 @@
 		<module>../poc-working-module</module>
 		<module>../poc-not-working-module</module>
 	</modules>
+	
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-bundle
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-bundle
+		</developerConnection>
+	</scm>
 </project>
