@@ -18,4 +18,13 @@
 		<module>../poc-lib</module>
 		<module>../poc-working-module</module>
 	</modules>
+	
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-working-bundle
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-working-bundle
+		</developerConnection>
+	</scm>
 </project>
