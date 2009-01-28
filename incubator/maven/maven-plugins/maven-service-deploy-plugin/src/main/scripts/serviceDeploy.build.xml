@@ -49,14 +49,6 @@
 		<echo message="Initiating serviceDeploy with the following arguments: ${serviceDeploy.arguments}" level="info" />
 		<exec dir="${serviceDeploy.dir}" executable="${serviceDeploy.executable}" failonerror="true">
 			<arg line="${serviceDeploy.arguments}" />
-			<!--
-			<arg line="-outputApplication '${serviceDeploy.outputApplication}'" />
-			<arg line="-workingDirectory '${workingDirectory}'" />
-			<arg value="-keep" />
-			<arg value="-cleanStagingModules" />
-			<arg line="-skipXsdValidate true" />
-			<arg line="-progressMonitor none" />
-			-->
 		</exec>
 
 		<condition property="serviceDeploy.outputApplication.exists">
