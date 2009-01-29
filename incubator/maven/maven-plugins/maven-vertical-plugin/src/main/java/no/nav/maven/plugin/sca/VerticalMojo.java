@@ -70,7 +70,11 @@ public abstract class VerticalMojo extends AbstractMojo {
 				scmProjects.add(new ScmProject(scmRepository, scmFileSet));
 			}
 		}
-		execute(scmProjects);
+		try {
+			execute(scmProjects);
+		} catch (ScmException e) {
+			throw new MojoExecutionException("Error running SCM command", e);
+		}
 	}
 
 	private ScmRepository getScmRepository(String scmUrl) throws MojoExecutionException {
@@ -93,5 +97,5 @@ public abstract class VerticalMojo extends AbstractMojo {
 		}
 	}
 
-	protected abstract void execute(Collection<ScmProject> scmProjects) throws MojoExecutionException;
+	protected abstract void execute(Collection<ScmProject> scmProjects) throws ScmException, MojoExecutionException;
 }
