@@ -215,7 +215,8 @@
 			backsideProtocol="${inboundBacksideProtocol}"
 			backsideHost="${inboundBacksideHost}"
 			backsidePort="${inboundBacksidePort}"
-			backsideUri="${proxy.wsdls[0].endpointURI}"/>
+			backsideUri="${proxy.wsdls[0].endpointURI}"
+			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"/>
 	<@dp.WSProxyStaticBackend
 			name="${proxy.name}InboundUnsigned"
 			version="${cfgVersion}"
@@ -229,7 +230,8 @@
 			backsideProtocol="${inboundBacksideProtocol}"
 			backsideHost="${inboundBacksideHost}"
 			backsidePort="${inboundBacksidePort}"
-			backsideUri="${proxy.wsdls[0].endpointURI}"/>
+			backsideUri="${proxy.wsdls[0].endpointURI}"
+			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"/>
 <#--	<@dp.WSProxyStaticBackendMultipleWsdl
 			name="${proxy.name}InboundSigned"
 			version="${cfgVersion}"
@@ -240,12 +242,13 @@
 			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
 			backsideProtocol="${inboundBacksideProtocol}"
 			backsideHost="${inboundBacksideHost}"
-			backsidePort="${inboundBacksidePort}"/>-->
+			backsidePort="${inboundBacksidePort}"/>
+	-->
 	</#list>
 
 	<#-- Generate Outbound proxies -->			
 <#--	<#list outboundProxies as proxy>
-	<@dp.WSProxyWSADynamicBackendMultipleWsdl
+		<@dp.WSProxyWSADynamicBackendMultipleWsdl
 			name="${proxy.name}Outbound"
 			version="${cfgVersion}"
 			wsdls=proxy.wsdls
@@ -254,5 +257,6 @@
 			frontsideProtocol="${outboundFrontsideProtocol}"
 			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
 			wsaRequireAaa="off"/>
-	</#list>-->
+	</#list>
+	-->
 </@dp.configuration>
