@@ -534,6 +534,7 @@ incubator/maven/maven-poc/layers/lib/poc-lib/gen
 incubator/maven/maven-poc/layers/lib/poc-lib2/META-INF
 incubator/maven/maven-poc/layers/lib/poc-lib2/bin
 incubator/maven/maven-poc/layers/lib/poc-lib2/gen
+incubator/maven/maven-poc/verticals/poc/*
 incubator/maven/maven-root-pom/target
 incubator/maven/maven-runtimes/.classpath
 incubator/maven/maven-runtimes/.project
