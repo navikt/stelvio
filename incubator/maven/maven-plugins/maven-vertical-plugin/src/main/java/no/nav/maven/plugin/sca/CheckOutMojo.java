@@ -80,7 +80,7 @@ public class CheckOutMojo extends AbstractMojo {
 	}
 
 	private File getParentCheckOutDir() throws MojoExecutionException {
-		return new File(project.getBasedir(), "workspace");
+		return project.getBasedir();
 	}
 
 	private Collection<MavenProject> getProjects() throws MojoExecutionException {
