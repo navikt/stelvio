@@ -9,9 +9,8 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>no.nav.maven.archetypes</groupId>
 	<artifactId>service-module-archetype</artifactId>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>maven-archetype</packaging>
 	<name>Service Module Archetype</name>
-	<version>1.0-SNAPSHOT</version>
 </project>
