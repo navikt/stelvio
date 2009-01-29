@@ -335,7 +335,7 @@
 		backsideSSLProxy="${outboundBacksideHostSMS}_SSLProxyProfile"
 	/>
 	
-	<#-- Norsk Pensjon-->
+	<#-- Norsk Pensjon outbound-->
 
 	<#assign nameNP="NorskPensjon"/>
 	
@@ -344,6 +344,7 @@
 
 	<#assign wsdlNameNP="privatpensjon.wsdl"/>
 	<#assign aaaPolicyNameNP="aaa0"/>	
+	
 	<#-- Outbound processing rules-->
 	<@dp.ProcessingRequestRule
 		name="${outboundProcessingPolicyNP}"
@@ -425,5 +426,7 @@
 		backsideUri="${endpointURINP}"
 		backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
 	/>	
+	
+	<-- Norsk Pensjon inbound -->
 	
 </@dp.configuration>
