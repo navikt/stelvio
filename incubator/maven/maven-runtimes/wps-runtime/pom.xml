@@ -4,12 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-root-pom</artifactId>
+		<groupId>no.nav.maven.runtimes</groupId>
+		<artifactId>maven-runtimes</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-
-
+	
 	<groupId>com.ibm.maven.runtimes</groupId>
 	<artifactId>wps-runtime</artifactId>
 	<packaging>jar</packaging>
@@ -55,13 +54,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-runtimes/wps-runtime
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-runtimes/wps-runtime
-		</developerConnection>
-	</scm>
 </project>
