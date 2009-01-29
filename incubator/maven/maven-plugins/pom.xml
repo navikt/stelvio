@@ -23,6 +23,14 @@
 		<module>maven-update-ear-plugin</module>
 		<module>maven-vertical-plugin</module>
 	</modules>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-plugin-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 	<scm>
 		<connection>

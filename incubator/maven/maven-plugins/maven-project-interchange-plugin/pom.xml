@@ -4,24 +4,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-root-pom</artifactId>
+		<groupId>no.nav.maven.plugins</groupId>
+		<artifactId>maven-plugins</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-project-interchange-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>Eclipse Project Interchange Plugin</name>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-plugin-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 	<dependencies>
 		<dependency>
@@ -37,13 +28,4 @@
 			<artifactId>plexus-archiver</artifactId>
 		</dependency>
 	</dependencies>
-
-	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-plugins/maven-project-interchange-plugin
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-plugins/maven-project-interchange-plugin
-		</developerConnection>
-	</scm>
 </project>
