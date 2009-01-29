@@ -525,7 +525,6 @@ incubator/maven/maven-poc/poc-lib2/bin
 incubator/maven/maven-poc/poc-lib2/gen
 incubator/maven/maven-poc/poc-not-working-module/META-INF
 incubator/maven/maven-poc/poc-not-working-module/bin
-incubator/maven/maven-poc/poc-not-working-module/gen/src/*
 incubator/maven/maven-poc/poc-working-module/META-INF
 incubator/maven/maven-poc/poc-working-module/bin
 incubator/maven/maven-poc/poc-working-module/gen
