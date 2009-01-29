@@ -427,6 +427,6 @@
 		backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
 	/>	
 	
-	<-- Norsk Pensjon inbound -->
+	<#-- Norsk Pensjon inbound -->
 	
 </@dp.configuration>
