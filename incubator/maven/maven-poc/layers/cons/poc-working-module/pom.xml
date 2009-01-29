@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-sca-module-pom</artifactId>
+		<groupId>no.nav.maven.poc</groupId>
+		<artifactId>cons</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
@@ -13,6 +13,7 @@
 	<artifactId>poc-working-module</artifactId>
 	<packaging>sca-module-ear</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<name>Maven POC ${artifactId}</name>
 
 	<dependencies>
 		<dependency>
@@ -22,13 +23,4 @@
 			<type>sca-library-jar</type>
 		</dependency>
 	</dependencies>
-	
-	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-working-module
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/poc-working-module
-		</developerConnection>
-	</scm>
 </project>

@@ -2444,6 +2444,7 @@ incubator/maven/maven-poc/layers/cons/poc-working-module/no/nav/java/EchoService
 incubator/maven/maven-poc/layers/cons/poc-working-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/cons/poc-working-module/sca.module -text
 incubator/maven/maven-poc/layers/cons/poc-working-module/sca.modulex -text
+incubator/maven/maven-poc/layers/cons/pom.xml -text
 incubator/maven/maven-poc/layers/lib/poc-lib/.classpath -text
 incubator/maven/maven-poc/layers/lib/poc-lib/.project -text
 incubator/maven/maven-poc/layers/lib/poc-lib/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text
@@ -2468,6 +2469,8 @@ incubator/maven/maven-poc/layers/lib/poc-lib2/.settings/org.eclipse.wst.validati
 incubator/maven/maven-poc/layers/lib/poc-lib2/no/nav/gbo/StringBO2.xsd -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/lib/poc-lib2/no/nav/util/LoggerUtil2.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/lib/poc-lib2/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-poc/layers/lib/pom.xml -text
+incubator/maven/maven-poc/layers/pom.xml -text
 incubator/maven/maven-root-pom/.project -text
 incubator/maven/maven-root-pom/pom.xml -text
 incubator/maven/maven-runtimes/pom.xml -text
