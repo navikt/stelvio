@@ -2,9 +2,10 @@ package no.nav.maven.plugin.sca;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.repository.ArtifactRepository;
@@ -22,21 +23,26 @@ import org.apache.maven.scm.repository.ScmRepository;
  * @author test@example.com
  * 
  * @goal checkout
- * @requiresDependencyResolution
+ * @requiresDependencyResolution compile
  */
 @SuppressWarnings("unchecked")
 public class CheckOutMojo extends AbstractMojo {
+	private static final Collection<String> SUPPORTED_PACKAGINGS = new HashSet<String>(Arrays.asList(new String[] {
+			"sca-module-ear", "sca-library-jar" }));
+
 	/**
-	 * @parameter expression="${project}"
+	 * The working directory
+	 * 
+	 * @parameter default-value="${project.basedir}"
+	 */
+	private File workingDirectory;
+
+	/**
+	 * @parameter expression="${project.artifacts}"
 	 * @required
 	 * @readonly
 	 */
-	private MavenProject project;
-
-	/**
-	 * @component
-	 */
-	private MavenProjectBuilder projectBuilder;
+	private Collection<Artifact> artifacts;
 
 	/**
 	 * @parameter expression="${project.remoteArtifactRepositories}"
@@ -55,6 +61,11 @@ public class CheckOutMojo extends AbstractMojo {
 	/**
 	 * @component
 	 */
+	private MavenProjectBuilder projectBuilder;
+
+	/**
+	 * @component
+	 */
 	private ScmManager scmManager;
 
 	/**
@@ -62,31 +73,41 @@ public class CheckOutMojo extends AbstractMojo {
 	 */
 	public void execute() throws MojoExecutionException {
 		Collection<MavenProject> projects = getProjects();
-		checkOut(projects);
+		Collection<ScmProject> scmProjects = new ArrayList<ScmProject>(projects.size());
+		for (MavenProject project : projects) {
+			String packaging = project.getPackaging();
+			if (SUPPORTED_PACKAGINGS.contains(packaging)) {
+				ScmRepository scmRepository = getScmRepository(project.getScm().getDeveloperConnection());
+				File projectWorkingDirectory = new File(workingDirectory, project.getArtifactId());
+				ScmFileSet scmFileSet = new ScmFileSet(projectWorkingDirectory);
+				scmProjects.add(new ScmProject(scmRepository, scmFileSet));
+			}
+		}
+		checkOut(scmProjects);
 	}
 
-	private void checkOut(Collection<MavenProject> projects) throws MojoExecutionException {
+	private ScmRepository getScmRepository(String scmUrl) throws MojoExecutionException {
 		try {
-			File parentCheckOutDir = getParentCheckOutDir();
-			for (MavenProject p : projects) {
-				ScmRepository scmRepository = scmManager.makeScmRepository(p.getScm().getDeveloperConnection());
-				File checkoutDir = new File(parentCheckOutDir, p.getArtifactId());
-				checkoutDir.mkdirs();
-				scmManager.checkOut(scmRepository, new ScmFileSet(checkoutDir));
+			return scmManager.makeScmRepository(scmUrl);
+		} catch (ScmException e) {
+			throw new MojoExecutionException("Error creating SCM repository", e);
+		}
+	}
+
+	private void checkOut(Collection<ScmProject> scmProjects) throws MojoExecutionException {
+		try {
+			for (ScmProject scmProject : scmProjects) {
+				scmProject.getScmFileSet().getBasedir().mkdirs();
+				scmManager.checkOut(scmProject.getScmRepository(), scmProject.getScmFileSet());
 			}
 		} catch (ScmException e) {
 			throw new MojoExecutionException("Error checking out projects", e);
 		}
 	}
 
-	private File getParentCheckOutDir() throws MojoExecutionException {
-		return project.getBasedir();
-	}
-
 	private Collection<MavenProject> getProjects() throws MojoExecutionException {
 		try {
 			Collection<MavenProject> projects = new ArrayList<MavenProject>();
-			Set<Artifact> artifacts = project.getArtifacts();
 			for (Artifact artifact : artifacts) {
 				projects.add(projectBuilder.buildFromRepository(artifact, remoteArtifactRepositories, localRepository));
 			}
