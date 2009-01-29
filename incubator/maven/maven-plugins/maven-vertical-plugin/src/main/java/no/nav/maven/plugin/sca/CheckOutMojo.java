@@ -1,7 +1,9 @@
 package no.nav.maven.plugin.sca;
 
+import java.io.File;
 import java.util.Collection;
 
+import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.scm.ScmException;
 
 /**
@@ -12,10 +14,21 @@ import org.apache.maven.scm.ScmException;
  */
 @SuppressWarnings("unchecked")
 public class CheckOutMojo extends VerticalMojo {
-	protected void execute(Collection<ScmProject> scmProjects) throws ScmException {
+	protected void execute(Collection<ScmProject> scmProjects) throws ScmException, MojoExecutionException {
+		validate(scmProjects);
 		for (ScmProject scmProject : scmProjects) {
-			scmProject.getScmFileSet().getBasedir().mkdirs();
+			File basedir = scmProject.getScmFileSet().getBasedir();
+			basedir.mkdirs();
 			scmManager.checkOut(scmProject.getScmRepository(), scmProject.getScmFileSet());
+		}
+	}
+
+	private void validate(Collection<ScmProject> scmProjects) throws ScmException, MojoExecutionException {
+		for (ScmProject scmProject : scmProjects) {
+			File basedir = scmProject.getScmFileSet().getBasedir();
+			if (basedir.exists()) {
+				throw new MojoExecutionException(basedir.getAbsolutePath() + " already exists, please run clean first...");
+			}
 		}
 	}
 }
