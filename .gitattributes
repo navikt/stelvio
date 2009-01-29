@@ -2394,6 +2394,8 @@ incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/servi
 incubator/maven/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
 incubator/maven/maven-plugins/maven-update-ear-plugin/pom.xml -text
 incubator/maven/maven-plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text
+incubator/maven/maven-plugins/maven-vertical-plugin/pom.xml -text
+incubator/maven/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/CheckOutMojo.java -text
 incubator/maven/maven-plugins/pom.xml -text
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/.classpath -text
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/.project -text
