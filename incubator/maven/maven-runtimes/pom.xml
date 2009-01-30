@@ -10,7 +10,7 @@
 	<groupId>no.nav.maven.runtimes</groupId>
 	<artifactId>maven-runtimes</artifactId>
 	<packaging>pom</packaging>
-	<version>0.1</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>Maven Runtimes</name>
 
 	<modules>
@@ -19,10 +19,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-runtimes-0.1
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-runtimes
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-runtimes-0.1
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-runtimes
 		</developerConnection>
 	</scm>
 </project>
