@@ -26,13 +26,13 @@
 							<javaSource>1.5</javaSource>
 							<sourceSchemas>
 								<sourceSchema>
-									schema0.xsd
+									ClientBinding.xsd
 								</sourceSchema>
 								<sourceSchema>
-									schema1.xsd
+									ComponentScopedRefs.xsd
 								</sourceSchema>
 								<sourceSchema>
-									schema2.xsd
+									Header.xsd
 								</sourceSchema>
 							</sourceSchemas>
 						</configuration>
