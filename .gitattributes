@@ -2673,7 +2673,6 @@ incubator/maven/maven-core-artifacts/xmlbeans/pom.xml -text
 incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
 incubator/maven/maven-deploy-poc/pom.xml -text
-incubator/maven/maven-deploy-pom/pom.xml -text
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/.classpath -text
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/.project -text
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text
@@ -2752,6 +2751,7 @@ incubator/maven/maven-poc/layers/lib/pom.xml -text
 incubator/maven/maven-poc/layers/pom.xml -text
 incubator/maven/maven-poc/verticals/poc/pom.xml -text
 incubator/maven/maven-poc/verticals/pom.xml -text
+incubator/maven/maven-poms/maven-deploy-pom/pom.xml -text
 incubator/maven/maven-poms/maven-sca-poms/maven-sca-library-pom/.project -text
 incubator/maven/maven-poms/maven-sca-poms/maven-sca-library-pom/pom.xml -text
 incubator/maven/maven-poms/maven-sca-poms/maven-sca-module-pom/.project -text
