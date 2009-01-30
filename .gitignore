@@ -540,6 +540,8 @@ incubator/maven/maven-poc/layers/lib/poc-lib2/META-INF
 incubator/maven/maven-poc/layers/lib/poc-lib2/bin
 incubator/maven/maven-poc/layers/lib/poc-lib2/gen
 incubator/maven/maven-poc/verticals/poc/*
+incubator/maven/maven-poms/maven-sca-poms/maven-sca-library-pom/target
+incubator/maven/maven-poms/maven-sca-poms/maven-sca-module-pom/target
 incubator/maven/maven-runtimes/.classpath
 incubator/maven/maven-runtimes/.project
 incubator/maven/maven-runtimes/.settings
@@ -550,8 +552,6 @@ incubator/maven/maven-runtimes/wps-runtime/.project
 incubator/maven/maven-runtimes/wps-runtime/.settings
 incubator/maven/maven-runtimes/wps-runtime/bin
 incubator/maven/maven-runtimes/wps-runtime/target
-incubator/maven/maven-sca-poms/maven-sca-library-pom/target
-incubator/maven/maven-sca-poms/maven-sca-module-pom/target
 int/nav-int-appclient/nav-int-wpshelper-bundle/target
 int/nav-int-appclient/nav-int-wpshelper/.project
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
