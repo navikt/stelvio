@@ -4,7 +4,7 @@
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-root-pom</artifactId>
+		<artifactId>maven-sca-root-pom</artifactId>
 		<version>0.1</version>
 	</parent>
 
