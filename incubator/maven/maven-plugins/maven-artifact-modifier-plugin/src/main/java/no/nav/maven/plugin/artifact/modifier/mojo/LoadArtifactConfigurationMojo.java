@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import javax.jws.WebService;
-
 import no.nav.maven.plugin.artifact.modifier.configuration.ArtifactConfiguration;
 import no.nav.maven.plugin.artifact.modifier.constants.Constants;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
