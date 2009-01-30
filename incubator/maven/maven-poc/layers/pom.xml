@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.poc</groupId>
 	<artifactId>layers</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.1</version>
 	<name>Maven POC ${artifactId}</name>
 
 	<modules>
@@ -21,10 +21,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/layers
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/layers-0.1
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/layers
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/layers-0.1
 		</developerConnection>
 	</scm>
 </project>
