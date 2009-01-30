@@ -7,10 +7,9 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>no.nav.maven.poc</groupId>
 	<artifactId>poc-working-module</artifactId>
-	<packaging>sca-module-ear</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<packaging>sca-module-ear</packaging>
 	<name>Maven POC ${artifactId}</name>
 
 	<dependencies>
