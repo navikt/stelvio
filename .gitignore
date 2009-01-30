@@ -517,6 +517,7 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/.settin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/target
+incubator/maven/maven-core-artifacts/maven-root-pom/target
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/META-INF
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/bin
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/gen
@@ -530,7 +531,6 @@ incubator/maven/maven-poc/layers/lib/poc-lib2/META-INF
 incubator/maven/maven-poc/layers/lib/poc-lib2/bin
 incubator/maven/maven-poc/layers/lib/poc-lib2/gen
 incubator/maven/maven-poc/verticals/poc/*
-incubator/maven/maven-root-pom/target
 incubator/maven/maven-runtimes/.classpath
 incubator/maven/maven-runtimes/.project
 incubator/maven/maven-runtimes/.settings

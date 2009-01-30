@@ -2653,6 +2653,8 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/pom.xm
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifact.build.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifact.mojos.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/pom.xml -text
+incubator/maven/maven-core-artifacts/maven-root-pom/.project -text
+incubator/maven/maven-core-artifacts/maven-root-pom/pom.xml -text
 incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
 incubator/maven/maven-deploy-poc/pom.xml -text
@@ -2735,8 +2737,6 @@ incubator/maven/maven-poc/layers/lib/pom.xml -text
 incubator/maven/maven-poc/layers/pom.xml -text
 incubator/maven/maven-poc/verticals/poc/pom.xml -text
 incubator/maven/maven-poc/verticals/pom.xml -text
-incubator/maven/maven-root-pom/.project -text
-incubator/maven/maven-root-pom/pom.xml -text
 incubator/maven/maven-runtimes/pom.xml -text
 incubator/maven/maven-runtimes/wps-runtime/files.txt -text
 incubator/maven/maven-runtimes/wps-runtime/pom.xml -text
