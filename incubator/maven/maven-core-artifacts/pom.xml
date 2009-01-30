@@ -7,11 +7,11 @@
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>maven-poms/maven-root-pom</relativePath>
+		<relativePath>maven-root-pom</relativePath>
 	</parent>
 
 	<groupId>no.nav.maven.artifacts</groupId>
-	<artifactId>maven-artifacts</artifactId>
+	<artifactId>maven-core-artifacts</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>NAV Maven Artifacts</name>
@@ -19,22 +19,17 @@
 	<modules>
 		<module>maven-root-pom</module>
 		<module>xmlbeans</module>
-		<module>j2ee-xmlbeans</module>
 		<module>maven-plugins</module>
-		<module>maven-runtimes</module>
-		<module>maven-sca-poms</module>
-		<module>maven-deploy-pom</module>
-		<module>maven-deploy-poc</module>
 		<module>maven-assemblies</module>
 		<module>maven-archetypes</module>
 	</modules>
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts
 		</developerConnection>
 	</scm>
 </project>

@@ -17,10 +17,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-assemblies
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-assemblies
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-assemblies
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-assemblies
 		</developerConnection>
 	</scm>
 </project>

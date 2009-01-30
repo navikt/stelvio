@@ -41,10 +41,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-archetypes
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-archetypes
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-archetypes
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-archetypes
 		</developerConnection>
 	</scm>
 </project>

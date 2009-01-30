@@ -421,6 +421,7 @@ incubator/maven/maven-core-artifacts/maven-plugins/.classpath
 incubator/maven/maven-core-artifacts/maven-plugins/.project
 incubator/maven/maven-core-artifacts/maven-plugins/.settings
 incubator/maven/maven-core-artifacts/maven-plugins/bin
+incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/.classpath
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/.project
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/.settings
@@ -516,13 +517,16 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/.projec
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/.settings
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/target
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/target
 incubator/maven/maven-core-artifacts/maven-root-pom/target
+incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/target
 incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/.classpath
 incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/.project
 incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/.settings
 incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/bin
 incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/target
+incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/target
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/META-INF
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/bin
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/gen
