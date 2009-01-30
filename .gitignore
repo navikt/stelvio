@@ -404,11 +404,6 @@ incubator/FEMCommandLine/FEMGRAppClient/target
 incubator/FEMCommandLine/FEMGRAppClientEAR/target
 incubator/FEMCommandLine/nav-int-appclient-fem-pom/.project
 incubator/maven/.project
-incubator/maven/maven-assemblies/.classpath
-incubator/maven/maven-assemblies/.project
-incubator/maven/maven-assemblies/.settings
-incubator/maven/maven-assemblies/bin
-incubator/maven/maven-assemblies/target
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/.project
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/.settings
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/bin
@@ -417,6 +412,11 @@ incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/.
 incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/.settings
 incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/bin
 incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/target
+incubator/maven/maven-core-artifacts/maven-assemblies/.classpath
+incubator/maven/maven-core-artifacts/maven-assemblies/.project
+incubator/maven/maven-core-artifacts/maven-assemblies/.settings
+incubator/maven/maven-core-artifacts/maven-assemblies/bin
+incubator/maven/maven-core-artifacts/maven-assemblies/target
 incubator/maven/maven-plugins/.classpath
 incubator/maven/maven-plugins/.project
 incubator/maven/maven-plugins/.settings

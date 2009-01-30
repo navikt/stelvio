@@ -2608,8 +2608,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/maven/maven-assemblies/pom.xml -text svneol=unset#text/plain
-incubator/maven/maven-assemblies/src/main/resources/assemblies/jar-with-all-dependencies.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
@@ -2617,6 +2615,8 @@ incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/
 incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-assemblies/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-assemblies/src/main/resources/assemblies/jar-with-all-dependencies.xml -text svneol=unset#text/plain
 incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
 incubator/maven/maven-deploy-poc/pom.xml -text
