@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<pluginMetadata>
+	<mojos>
+		<mojo>
+			<goal>deploy-artifact</goal>
+			<call>deployArtifact</call>
+			<requiresProject>false</requiresProject>
+			<parameters>
+				<parameter>
+					<name>wid.home</name>
+					<property>wid.home</property>
+					<required>true</required>
+					<readonly>true</readonly>
+					<type>java.lang.String</type>
+					<defaultValue>${wid.home}</defaultValue>
+					<description>The base directory of the WID installation</description>
+				</parameter>
+				
+				<parameter>
+					<name>script.home</name>
+					<property>script.home</property>
+					<required>true</required>
+					<readonly>true</readonly>
+					<type>java.lang.String</type>
+					<defaultValue>${project.basedir}/${project.build.scriptSourceDirectory}</defaultValue>
+					<description>The base directory of deployment scripts</description>
+				</parameter>
+
+				<parameter>
+					<name>deployableartifacts.home</name>
+					<property>deployableartifacts.home</property>
+					<required>true</required>
+					<readonly>true</readonly>
+					<type>java.lang.String</type>
+					<defaultValue>${project.build.directory}</defaultValue>
+					<description>The base directory of deployable artifacts</description>
+				</parameter>
+
+				<parameter>
+					<name>wsadmin.username</name>
+					<property>wsadmin.username</property>
+					<required>true</required>
+					<readonly>false</readonly>
+					<expression>${username}</expression>
+					<type>java.lang.String</type>
+					<description>The username</description>
+				</parameter>
+
+				<parameter>
+					<name>wsadmin.password</name>
+					<property>wsadmin.password</property>
+					<required>true</required>
+					<readonly>false</readonly>
+					<expression>${password}</expression>
+					<type>java.lang.String</type>
+					<description>The password</description>
+				</parameter>
+
+				<parameter>
+					<name>wsadmin.host</name>
+					<property>wsadmin.host</property>
+					<required>true</required>
+					<readonly>false</readonly>
+					<expression>${host}</expression>
+					<type>java.lang.String</type>
+					<description>The host</description>
+				</parameter>
+				
+				<parameter>
+					<name>wsadmin.port</name>
+					<property>wsadmin.port</property>
+					<required>true</required>
+					<readonly>false</readonly>
+					<expression>${port}</expression>
+					<type>java.lang.Integer</type>
+					<description>The port</description>
+				</parameter>
+				
+				<parameter>
+					<name>script.environment</name>
+					<property>script.environment</property>
+					<required>true</required>
+					<readonly>false</readonly>
+					<expression>${environment}</expression>
+					<type>java.lang.String</type>
+					<description>The password</description>
+				</parameter>
+			</parameters>
+		</mojo>
+	</mojos>
+</pluginMetadata>

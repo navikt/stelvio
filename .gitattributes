@@ -2400,6 +2400,9 @@ incubator/maven/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/p
 incubator/maven/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/ScmProject.java -text svneol=unset#text/plain
 incubator/maven/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/UpdateMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/VerticalMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-plugins/maven-websphere-plugin/pom.xml -text
+incubator/maven/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifact.build.xml -text
+incubator/maven/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifact.mojos.xml -text
 incubator/maven/maven-plugins/pom.xml -text
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/.classpath -text
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/.project -text
