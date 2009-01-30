@@ -10,14 +10,87 @@
 
 	<groupId>no.nav.maven.poc</groupId>
 	<artifactId>layers</artifactId>
-	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>Maven POC ${artifactId}</name>
 
 	<modules>
-		<module>lib</module>
-		<module>cons</module>
+		<module>libs</module>
+		<module>modules</module>
 	</modules>
+	
+	<build>
+		<directory>${target.dir}</directory>
+		<outputDirectory>${target.dir}/classes</outputDirectory>
+		<testOutputDirectory>
+			${target.dir}/test-classes
+		</testOutputDirectory>
+		<sourceDirectory />
+		<resources>
+			<resource>
+				<!-- TODO: This is here because WID insists on having the root folder as a source folder -->
+				<!-- TODO: Review which files to exclude/include -->
+				<directory>${basedir}</directory>
+				<excludes>
+					<exclude>.settings/**</exclude>
+					<exclude>bin/**</exclude>
+					<exclude>gen/**</exclude>
+				</excludes>
+				<includes>
+					<include>**/*.wsdl</include>
+					<include>**/*.xsd</include>
+					<include>**/*.module</include>
+					<include>**/*.modulex</include>
+					<include>**/*.component</include>
+					<include>**/*.import</include>
+					<include>**/*.export</include>
+					<include>**/*.ifm</include>
+					<include>**/*.map</include>
+					<include>**/*.scaj2ee</include>
+				</includes>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<verbose>true</verbose>
+						<fork>true</fork>
+						<executable>
+							${wid.runtime}\java\bin\javac
+						</executable>
+						<compilerVersion>1.5</compilerVersion>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-sca-artifact-plugin</artifactId>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.ibm.maven.runtimes</groupId>
+			<artifactId>wps-runtime</artifactId>
+			<version>6.1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<properties>
+		<!-- 
+			TODO: WID goes bananas if the Maven build is using the default target folder as output. 
+			As a workaround we are changing the target folder to a folder outside the project		
+		-->
+		<!-- TODO: Review this setting -->
+		<target.dir>
+			${user.home}/maven-target/${groupId}/${artifactId}/${version}
+		</target.dir>
+	</properties>
 
 	<scm>
 		<connection>
