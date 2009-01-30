@@ -2757,6 +2757,7 @@ incubator/maven/maven-poms/maven-sca-poms/maven-sca-library-pom/pom.xml -text
 incubator/maven/maven-poms/maven-sca-poms/maven-sca-module-pom/.project -text
 incubator/maven/maven-poms/maven-sca-poms/maven-sca-module-pom/pom.xml -text
 incubator/maven/maven-poms/maven-sca-poms/pom.xml -text
+incubator/maven/maven-poms/pom.xml -text
 incubator/maven/maven-runtimes/pom.xml -text
 incubator/maven/maven-runtimes/wps-runtime/files.txt -text
 incubator/maven/maven-runtimes/wps-runtime/pom.xml -text
