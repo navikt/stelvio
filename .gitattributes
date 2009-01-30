@@ -2608,11 +2608,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/maven/j2ee-xmlbeans/pom.xml -text
-incubator/maven/j2ee-xmlbeans/src/main/xsd/application_1_4.xsd -text
-incubator/maven/j2ee-xmlbeans/src/main/xsd/j2ee_1_4.xsd -text
-incubator/maven/j2ee-xmlbeans/src/main/xsd/j2ee_web_services_client_1_1.xsd -text
-incubator/maven/j2ee-xmlbeans/src/main/xsd/xml.xsd -text
 incubator/maven/maven-archetypes/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
@@ -2756,6 +2751,11 @@ incubator/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
 incubator/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ComponentScopedRefs.xsd -text
 incubator/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/Header.xsd -text
 incubator/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/xml.xsd -text
+incubator/maven/xmlbeans/j2ee-xmlbeans/pom.xml -text
+incubator/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/application_1_4.xsd -text
+incubator/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/j2ee_1_4.xsd -text
+incubator/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/j2ee_web_services_client_1_1.xsd -text
+incubator/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/xml.xsd -text
 incubator/maven/xmlbeans/moduleconfig-xmlbeans/pom.xml -text
 incubator/maven/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/moduleconfig.xsd -text
 incubator/maven/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/xml.xsd -text

@@ -404,11 +404,6 @@ incubator/FEMCommandLine/FEMGRAppClient/target
 incubator/FEMCommandLine/FEMGRAppClientEAR/target
 incubator/FEMCommandLine/nav-int-appclient-fem-pom/.project
 incubator/maven/.project
-incubator/maven/j2ee-xmlbeans/.classpath
-incubator/maven/j2ee-xmlbeans/.project
-incubator/maven/j2ee-xmlbeans/.settings
-incubator/maven/j2ee-xmlbeans/bin
-incubator/maven/j2ee-xmlbeans/target
 incubator/maven/maven-archetypes/service-library-archetype/.project
 incubator/maven/maven-archetypes/service-library-archetype/.settings
 incubator/maven/maven-archetypes/service-library-archetype/bin
@@ -548,6 +543,11 @@ incubator/maven/maven-runtimes/wps-runtime/bin
 incubator/maven/maven-runtimes/wps-runtime/target
 incubator/maven/maven-sca-poms/maven-sca-library-pom/target
 incubator/maven/maven-sca-poms/maven-sca-module-pom/target
+incubator/maven/xmlbeans/j2ee-xmlbeans/.classpath
+incubator/maven/xmlbeans/j2ee-xmlbeans/.project
+incubator/maven/xmlbeans/j2ee-xmlbeans/.settings
+incubator/maven/xmlbeans/j2ee-xmlbeans/bin
+incubator/maven/xmlbeans/j2ee-xmlbeans/target
 int/nav-int-appclient/nav-int-wpshelper-bundle/target
 int/nav-int-appclient/nav-int-wpshelper/.project
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
