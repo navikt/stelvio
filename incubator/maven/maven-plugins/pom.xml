@@ -22,6 +22,8 @@
 		<module>maven-project-interchange-plugin</module>
 		<module>maven-update-ear-plugin</module>
 		<module>maven-vertical-plugin</module>
+		<module>maven-websphere-plugin</module>
+		<module>maven-artifact-modifier-plugin</module>
 	</modules>
 	
 	<build>
