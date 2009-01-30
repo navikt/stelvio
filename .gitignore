@@ -521,6 +521,10 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/.projec
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/.settings
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/target
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/.classpath
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/.project
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/.settings
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/target
 incubator/maven/maven-core-artifacts/maven-root-pom/target
