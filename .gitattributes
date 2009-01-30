@@ -2502,6 +2502,15 @@ incubator/maven/maven-sca-poms/maven-sca-module-pom/.project -text
 incubator/maven/maven-sca-poms/maven-sca-module-pom/pom.xml -text
 incubator/maven/maven-sca-poms/pom.xml -text
 incubator/maven/pom.xml -text
+incubator/maven/xmlbeans/ibm-xmlbeans/pom.xml -text
+incubator/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
+incubator/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ComponentScopedRefs.xsd -text
+incubator/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/Header.xsd -text
+incubator/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/xml.xsd -text
+incubator/maven/xmlbeans/moduleconfig-xmlbeans/pom.xml -text
+incubator/maven/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/moduleconfig.xsd -text
+incubator/maven/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/xml.xsd -text
+incubator/maven/xmlbeans/pom.xml -text
 incubator/nav-int-fault-test/nav-broc-fault-test/.classpath -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.project -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
