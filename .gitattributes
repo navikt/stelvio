@@ -2618,13 +2618,6 @@ incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/s
 incubator/maven/maven-core-artifacts/maven-assemblies/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-assemblies/src/main/resources/assemblies/jar-with-all-dependencies.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/pom.xml -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/configuration/ArtifactConfiguration.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/constants/Constants.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/managers/ArchiveManager.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/managers/IArchiveManager.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/LoadArtifactConfigurationMojo.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ModifyWebServicesConfigurationMojo.java -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
