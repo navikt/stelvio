@@ -15,6 +15,7 @@
     <name>bus-deploy</name>
     <url>http://maven.apache.org</url>
 
+<!-- 
     <dependencies>
         <dependency>
             <groupId>no.nav</groupId>
@@ -23,4 +24,5 @@
             <type>ear</type>
             </dependency>
         </dependencies>
+-->
 </project>
