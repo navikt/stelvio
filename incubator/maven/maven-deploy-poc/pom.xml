@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>no.nav.maven.poms</groupId>
+        <artifactId>maven-root-pom</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>no.nav.maven.poc</groupId>
+    <artifactId>maven-deploy-poc</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>NAV bus deploy poc</name>
+
+    <modules>
+    	<module>maven-bus-deploy-poc</module>
+	<module>bus-deploy</module>
+    </modules>
+    
+    <scm>
+    	<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-deploy-poc</connection>
+	<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-deploy-poc</developerConnection>
+    </scm>
+</project>
