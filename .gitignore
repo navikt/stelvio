@@ -518,6 +518,11 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/target
 incubator/maven/maven-core-artifacts/maven-root-pom/target
+incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/.classpath
+incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/.project
+incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/.settings
+incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/bin
+incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/target
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/META-INF
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/bin
 incubator/maven/maven-poc/layers/cons/poc-not-working-module/gen
@@ -543,11 +548,6 @@ incubator/maven/maven-runtimes/wps-runtime/bin
 incubator/maven/maven-runtimes/wps-runtime/target
 incubator/maven/maven-sca-poms/maven-sca-library-pom/target
 incubator/maven/maven-sca-poms/maven-sca-module-pom/target
-incubator/maven/xmlbeans/j2ee-xmlbeans/.classpath
-incubator/maven/xmlbeans/j2ee-xmlbeans/.project
-incubator/maven/xmlbeans/j2ee-xmlbeans/.settings
-incubator/maven/xmlbeans/j2ee-xmlbeans/bin
-incubator/maven/xmlbeans/j2ee-xmlbeans/target
 int/nav-int-appclient/nav-int-wpshelper-bundle/target
 int/nav-int-appclient/nav-int-wpshelper/.project
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
