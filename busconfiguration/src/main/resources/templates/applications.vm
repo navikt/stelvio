@@ -1,0 +1,16 @@
+###############################################################################
+####    Application Controll Properties
+###############################################################################
+
+# Scope =  server or node | cluster
+SCOPE=$scope
+
+#Only if SCOPE=cluster
+CLUSTER=$wpsClusterName
+
+#Only if SCOPE=server or node
+NODE=$nodeName
+
+#Only if SCOPE=server or node
+SERVER=$serverName
+
