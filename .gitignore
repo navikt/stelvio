@@ -536,6 +536,8 @@ incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/bin
 incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/target
 incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/target
 incubator/maven/maven-deploy-poc/bus-deploy/target
+incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/src
+incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/target
 incubator/maven/maven-poc/layers/libs/poc-lib/META-INF
 incubator/maven/maven-poc/layers/libs/poc-lib/bin
 incubator/maven/maven-poc/layers/libs/poc-lib/gen
