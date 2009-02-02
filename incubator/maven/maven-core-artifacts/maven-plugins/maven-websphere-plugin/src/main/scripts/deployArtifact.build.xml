@@ -2,7 +2,7 @@
 <project>
 	<target name="deployArtifact">
 	
-		<condition property="wsadmin.executable" value="${wid.home}/pf/wps/bin/wsadmin.bat" else="${wid.home}/pf/wps/bin/wsadmin.sh">
+		<condition property="wsadmin.executable" value="${wid.home}/pf/wps01/bin/wsadmin.bat" else="${wid.home}/pf/wps/bin/wsadmin.sh">
 			<os family="windows"/>
 		</condition>
 					
@@ -16,12 +16,11 @@
 		<property name="arg3" value=" -user ${wsadmin.username}"/>
 		<property name="arg4" value=" -password ${wsadmin.password}"/>	
 		<property name="arg5" value=" -f ${script.home}/scripts/Applications.py applications ${script.environment} ${script.home} ${deployableartifacts.home}"/>
-			
+					
 		<echo>${wsadmin.executable} ${arg0}${arg1}${arg2}${arg3}${arg4}${arg5}</echo>
-		
+				
 		<exec dir="${script.home}/scripts" executable="${wsadmin.executable}" failonerror="true">
 			<arg line="${arg0}${arg1}${arg2}${arg3}${arg4}${arg5}"/>
 		</exec>
-	
 	</target>
 </project>

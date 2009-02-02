@@ -32,7 +32,7 @@
 					<required>true</required>
 					<readonly>true</readonly>
 					<type>java.lang.String</type>
-					<defaultValue>${project.build.directory}</defaultValue>
+					<defaultValue>${project.basedir}/target</defaultValue>
 					<description>The base directory of deployable artifacts</description>
 				</parameter>
 
