@@ -539,6 +539,8 @@ incubator/maven/maven-deploy-poc/bus-deploy/.classpath
 incubator/maven/maven-deploy-poc/bus-deploy/.project
 incubator/maven/maven-deploy-poc/bus-deploy/.settings
 incubator/maven/maven-deploy-poc/bus-deploy/target
+incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/.project
+incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/.settings
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/src
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/target
 incubator/maven/maven-poc/layers/libs/poc-lib/META-INF
