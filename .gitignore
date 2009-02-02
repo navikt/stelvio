@@ -535,6 +535,9 @@ incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/.settings
 incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/bin
 incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/target
 incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/target
+incubator/maven/maven-deploy-poc/bus-deploy/.classpath
+incubator/maven/maven-deploy-poc/bus-deploy/.project
+incubator/maven/maven-deploy-poc/bus-deploy/.settings
 incubator/maven/maven-deploy-poc/bus-deploy/target
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/src
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/target
