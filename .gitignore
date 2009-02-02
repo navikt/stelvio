@@ -403,6 +403,7 @@ dev/maven2/nav-deployment-code-plugin/target
 incubator/FEMCommandLine/FEMGRAppClient/target
 incubator/FEMCommandLine/FEMGRAppClientEAR/target
 incubator/FEMCommandLine/nav-int-appclient-fem-pom/.project
+incubator/busconfiguration/.project
 incubator/maven/.project
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/.project
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/.settings
