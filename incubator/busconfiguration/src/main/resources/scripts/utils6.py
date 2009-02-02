@@ -1793,7 +1793,7 @@ def deleteEarFile(appPath):
 	File(str(appPath)).delete()
 	print 'INFO (deleteEarFile): Done.'
 			
-def readDistributionDirectory(distDir):     
+def readDistributionDirectory(distDir):
     robFile = io.File(distDir);
     listDirs = None
     ears = []
@@ -1817,8 +1817,8 @@ def readDistributionDirectory(distDir):
                         ears.append(name)
                 elif (ext == ".war"):
                         wars.append(name)
-                elif (ext == ".jar"):
-                        ejbs.append(name)
+                #elif (ext == ".jar"):
+                #        ejbs.append(name)
                 #endIf
         #endFor
        
