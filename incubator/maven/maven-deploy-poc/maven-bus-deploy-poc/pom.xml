@@ -15,6 +15,29 @@
     <name>poc-deploy</name>
     <url>http://maven.apache.org</url>
 
+	<!-- TODO: This plugin downstairs will be injected otherwise -->
+	<build>
+		<plugins>
+               <plugin>
+				<groupId>nav.maven.plugins</groupId>
+				<artifactId>maven-propertiesgenerator-plugin</artifactId>
+                <configuration>
+					<templateDir>${basedir}/src/main/scripts/templates</templateDir>
+					<environmentName>${miljo}</environmentName>
+					<outputDir>${basedir}/src/main/scripts/app_props</outputDir>
+					<environmentDir>${basedir}/src/main/scripts/environments</environmentDir>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+               	</executions>
+           	</plugin>
+		</plugins>
+	</build>
     <dependencies>
         <dependency>
             <groupId>no.nav.maven.poc</groupId>
