@@ -17,7 +17,7 @@
 		backsideSSLProxy>
 	<@WSEndpointRewritePolicy
 		name="${name}"
-		wsdlPortBinding="${wsdlPortBinding}"
+		wsdlPortBinding=wsdlPortBinding
 		frontsideProtocol="${frontsideProtocol}"
 		frontsideHandler="${frontsideHandler}"
 		frontsideUri="${frontsideUri}"

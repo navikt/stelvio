@@ -3,6 +3,8 @@ package no.nav.datapower.config;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.wsdl.Binding;
@@ -22,7 +24,7 @@ public class WSDLFile {
 	private Definition definition;
 	private String fileName;
 	private URI location;
-	private Binding binding;
+	private List<Binding> bindingList;
 	private PortType portType;
 	private Service service;
 	private Port port;
@@ -34,7 +36,12 @@ public class WSDLFile {
 	public WSDLFile(File wsdlFile) {
 		this.fileName = wsdlFile.getName();
 		this.definition = DPWsdlUtils.getDefinition(wsdlFile.getPath());
-		this.binding = (Binding) definition.getAllBindings().values().iterator().next();
+
+		this.bindingList = new ArrayList<Binding>(); 
+		Iterator bindingIterator = definition.getAllBindings().values().iterator();
+		while (bindingIterator.hasNext())
+			bindingList.add((Binding) bindingIterator.next());
+		
 		this.portType = (PortType) definition.getAllPortTypes().values().iterator().next();
 		this.service = (Service) definition.getAllServices().values().iterator().next();		
 		this.port = (Port) service.getPorts().values().iterator().next();
@@ -57,14 +64,24 @@ public class WSDLFile {
 		return portType.getQName().getLocalPart();
 	}
 	
+	public List<String> getPortBinding(){		
+		List<String> portBindings = new ArrayList<String>();
+		for (Binding binding : bindingList){
+			QName portBinding = new QName(binding.getQName().getNamespaceURI(), port.getName());
+			portBindings.add(portBinding.toString());
+		}		
+		return portBindings;
+	}
+	/*
 	public String getPortBinding() {
 		QName portBinding = new QName(binding.getQName().getNamespaceURI(), port.getName());
 		return portBinding.toString();
-	}
+	}*/
 		
+	/*
 	public String getBinding() {
 		return binding.getQName().toString();
-	}
+	}*/
 	
 	public String getPortType() {
 		return portType.getQName().toString();
