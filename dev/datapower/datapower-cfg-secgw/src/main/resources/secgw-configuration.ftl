@@ -79,7 +79,7 @@
 			version="${cfgVersion}"
 			wsdlName="${wsdl.fileName}"
 			wsdlLocation="local:///wsdl/${wsdl.fileName}"
-			wsdlPortBinding="${wsdl.portBinding}"
+			wsdlPortBinding=wsdl.portBinding
 			policy="${cfgProcessingPolicy}"
 			frontsideHandler="${frontsideHandler}"
 			frontsideProtocol="${frontsideProtocol}"
@@ -87,6 +87,58 @@
 			backsideProtocol="${backsideProtocol}"
 			backsideHost="${backsideHost}"
 			backsidePort="${backsidePort}"
-			backsideUri="${wsdl.endpointURI}"/>
+			backsideUri="${wsdl.endpointURI}"
+			backsideSSLProxy="${backsideHost}_SSLProxyProfile"
+			/>					
 	</#list>
+	
+	<#-- Workmate -->
+	<#--
+	<#assign workmatewsdl="workmate.wsdl"/> 
+	<#assign wsdlPortBindingList = ["{http://schemas.adbsys.com/WDA.HttpHandlers.WMBDRequest.WebService01.xsd}WebService01Soap",
+	"{http://schemas.adbsys.com/WDA.HttpHandlers.WMBDRequest.WebService01.xsd}WebService01Soap12"]>
+	<#assign workmateBacksideProtocol="https"/>
+	<#assign workmateBacksideHost="wasapp-t.adeo.no"/>
+	<#assign workmateBacksidePort="443"/>
+	<#assign workmateURI="/WorkMateOM/WebServices/WDA.HttpHandlers.WMBDRequest.WebService01.03.asmx"/>
+	-->
+	
+	<#if deployWorkmate=="true">
+	<@dp.BacksideSSL
+			name="${workmateBacksideHost}"
+			trustedCerts=[{"name":"${backsideTrustCertName}","file":"pubcert:///${backsideTrustCertName}.pem"}]/>
+	
+	<@dp.ProcessingRequestRule
+		name="workmateProcessingRequestRule"
+		actions=[
+			{"type":"slm",	"name":"slmAction",	
+					"input":"INPUT",	"output":"NULL"}, 
+			{"type":"result", "name":"resultAction",
+				"input":"INPUT","output":"OUTPUT"}
+		]/>
+	<@dp.WSStylePolicy
+		name="workmateProcessingPolicy"
+		policyMapsList=[
+			{"matchingRule":"${defaultMatchAll}","processingRule":"workmateProcessingRequestRule_request-rule"},
+			{"matchingRule":"${defaultMatchAll}","processingRule":"${cfgProcessingPolicy}_response-rule"}
+			{"matchingRule":"${defaultMatchAllErrors}","processingRule":"${cfgProcessingPolicy}_error-rule"}
+		]/>
+	<@dp.WSProxyStaticBackend
+			name="Workmate_WebService01"
+			version="${cfgVersion}"
+			wsdlName="${workmatewsdl}"
+			wsdlLocation="local:///wsdl/${workmatewsdl}"
+			wsdlPortBinding=wsdlPortBindingList
+			policy="workmateProcessingPolicy"
+			frontsideHandler="${frontsideHandler}"
+			frontsideProtocol="${frontsideProtocol}"
+			frontsideUri="${workmateURI}"
+			backsideProtocol="${workmateBacksideProtocol}"
+			backsideHost="${workmateBacksideHost}"
+			backsidePort="${workmateBacksidePort}"
+			backsideUri="${workmateURI}"
+			backsideSSLProxy="${backsideHost}_SSLProxyProfile"
+			/>
+			
+	</#if>
 </@dp.configuration>

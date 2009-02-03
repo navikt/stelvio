@@ -29,7 +29,7 @@ public class SGWConfigGeneratorImplTest extends TestCase {
 	}
 	
 	public void testGenerate() {
-		
+		/*
 		String domain = "secgw-u1";
 		gen = new SGWConfigGeneratorImpl();
 		File bustagDir = new File("E:/data/builds/BUSTAG_R_3_8_0_FULL/");
@@ -56,7 +56,7 @@ public class SGWConfigGeneratorImplTest extends TestCase {
 		System.out.println("Directory files/local/aaa   = " + unit.getFilesLocalAaaDir());
 		System.out.println("Directory files/local/wsdl  = " + unit.getFilesLocalWsdlDir());
 		System.out.println("Directory files/local/xslt  = " + unit.getFilesLocalXsltDir());
-		
+		*/
 	}
 	
 	private File getPropertiesFile(File dir, String domain) {

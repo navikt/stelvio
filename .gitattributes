@@ -1316,6 +1316,7 @@ dev/datapower/datapower-cfg-secgw/src/main/java/no/nav/datapower/config/secgw/SG
 dev/datapower/datapower-cfg-secgw/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-mapping-file.ftl -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/cfg-secgw-required.properties -text
+dev/datapower/datapower-cfg-secgw/src/main/resources/local/wsdl/workmate.wsdl -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/local/xslt/fault-handler.xsl -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/secgw-configuration.ftl -text
 dev/datapower/datapower-cfg-secgw/src/test/java/no/nav/datapower/config/secgw/SGWConfigGeneratorImplTest.java -text

@@ -3,6 +3,7 @@ package no.nav.datapower.config.secgw;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
@@ -29,6 +30,7 @@ import no.nav.datapower.util.PropertiesValidator;
 import no.nav.datapower.util.WildcardPathFilter;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.OrFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.log4j.Logger;
@@ -79,7 +81,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), unit.getFilesCertDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), unit.getFilesLocalXsltDir());
 			DPFileUtils.copyFilesToDirectory(getLocalFiles("xslt"), unit.getFilesLocalXsltDir());
-			//DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), unit.getFilesLocalWsdlDir());
+			DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), unit.getFilesLocalWsdlDir());
 		} catch (IOException e) {
 			throw new IllegalStateException("Caught IOException while extracting WSDL files from EAR archives",e);
 		}
@@ -100,13 +102,19 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		}
 
 		// Generate XCFG configuration
-		try {
+		try {			
 			File cfgFile = DPFileUtils.append(unit.getImportConfigDir(), cfg.getConfigFilename());
 			LOG.debug("Config file " + cfgFile);
 			unit.setImportConfigFile(cfgFile);
 			FileWriter cfgWriter = new FileWriter(cfgFile);
-			List<WSDLFile> wsdlFiles = WSDLFile.getWsdlFiles(unit.getFilesLocalWsdlDir());
+			List<WSDLFile> wsdlFiles = getWsdlFiles(unit.getFilesLocalWsdlDir());
+			
+			//Retrieve and load wsdl files and make them available for freemarker.
 			cfg.getProperties().put("wsdls", wsdlFiles);
+			//"Hack". I was unable to make freemarker do this in the template...
+			String[] portListArray = cfg.getProperty("wsdlPortBindingList").split(",");
+			cfg.getProperties().put("wsdlPortBindingList", portListArray);			
+			
 			LOG.debug("Processing template");
 			processTemplate(TEMPLATE_CFG, cfg.getProperties(), cfgWriter);
 			LOG.debug("Done processing template");
@@ -121,11 +129,13 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		return unit;
 	}
 	
-	public static List<WSDLFile> getWsdlFiles(File directory) throws IOException {
+	private List<WSDLFile> getWsdlFiles(File directory) throws IOException {		
 		List<WSDLFile> wsdlFiles = DPCollectionUtils.newArrayList();
-		for (File wsdlFile : directory.listFiles()) {
+		LOG.debug("Gathering wsdl files for automatical generation of WS-proxys from directory: " + directory);				
+		for (File wsdlFile : getFileList(directory, "cfgWsdlFileFilter", "wsdl")) {
 			if (wsdlFile.isFile() && wsdlFile.getName().endsWith(".wsdl")) {
 				wsdlFiles.add(new WSDLFile(wsdlFile));
+				LOG.debug("Found wsdl file: " + wsdlFile.getName());
 			}
 		}
 		return wsdlFiles;
