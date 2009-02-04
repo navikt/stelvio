@@ -21,14 +21,14 @@
 					<description>LDAP server user ID</description>
 					<config-property-name>serverUserId</config-property-name>
 					<config-property-type>java.lang.String</config-property-type>
-					<config-property-value>addUser</config-property-value>
+					<config-property-value></config-property-value>
 				</config-property>
 
 				<config-property>
 					<description>LDAP server user password</description>
 					<config-property-name>serverUserIdPassword</config-property-name>
 					<config-property-type>java.lang.String</config-property-type>
-					<config-property-value>addUser</config-property-value>
+					<config-property-value></config-property-value>
 				</config-property>
 
 				<config-property>
@@ -64,7 +64,7 @@
 					<config-property-name>serverBasedDistinguishedName</config-property-name>
 					<config-property-type>java.lang.String</config-property-type>
 				<!--  <config-property-value>DC=test,DC=local</config-property-value> -->
-					<config-property-value>DC=*,DC=*</config-property-value>
+					<config-property-value></config-property-value>
 				</config-property>
 
 				<config-property>
@@ -72,14 +72,14 @@
 					<config-property-name>serverBindDistinguishedName</config-property-name>
 					<config-property-type>java.lang.String</config-property-type>
 				<!-- OLD 	<config-property-value>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</config-property-value> -->
-					<config-property-value>OU=*,DC=*,DC=*</config-property-value>
+					<config-property-value></config-property-value>
 				</config-property>
 
 				<config-property>
 					<description>LDAP search base context</description>
 					<config-property-name>serverSearchBaseContext</config-property-name>
 					<config-property-type>java.lang.String</config-property-type>
-					<config-property-value>DC=*,DC=*</config-property-value>
+					<config-property-value></config-property-value>
 				</config-property>
 				
 				<config-property>
