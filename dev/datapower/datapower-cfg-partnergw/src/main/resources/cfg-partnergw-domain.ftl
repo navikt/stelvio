@@ -323,7 +323,7 @@
 		version="${cfgVersion}"
 		wsdlName="${wsdlNameSMS}"
 		wsdlLocation="local:///wsdl/${wsdlNameSMS}"
-		wsdlPortBinding="{http://ws.v4.sms.carrot.no}${nameSMS}"
+		wsdlPortBinding=["{http://ws.v4.sms.carrot.no}${nameSMS}"]
 		policy="${outboundProcessingPolicySMS}"
 		frontsideHandler="${outboundFrontsideHandler}"
 		frontsideProtocol="${outboundFrontsideProtocol}"
@@ -338,10 +338,7 @@
 	<#-- Norsk Pensjon outbound-->
 
 	<#assign nameNP="NorskPensjon"/>
-	
-	
-	<#assign outboundProcessingPolicyNP="${nameNP}_Policy"/>
-
+	<#assign outboundProcessingPolicyNP="${nameNP}OutboundPolicy"/>
 	<#assign wsdlNameNP="privatpensjon.wsdl"/>
 	<#assign aaaPolicyNameNP="aaa0"/>	
 	
@@ -411,11 +408,11 @@
 			]/>
 	
 	<@dp.WSProxyStaticBackend		
-		name="${nameNP}"
+		name="${nameNP}Outbound"
 		version="${cfgVersion}"
 		wsdlName="${wsdlNameNP}"
 		wsdlLocation="local:///wsdl/${wsdlNameNP}"
-		wsdlPortBinding="{http://norskpensjon.no/api/pensjon}privatpensjonPort"
+		wsdlPortBinding=["{http://norskpensjon.no/api/pensjon}privatpensjonPort"]
 		policy="${outboundProcessingPolicyNP}"
 		frontsideHandler="${outboundFrontsideHandler}"
 		frontsideProtocol="${outboundFrontsideProtocol}"
