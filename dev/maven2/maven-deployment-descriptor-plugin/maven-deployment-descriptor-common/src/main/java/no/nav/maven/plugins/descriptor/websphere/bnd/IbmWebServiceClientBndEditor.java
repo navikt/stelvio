@@ -93,13 +93,14 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     	} catch (Exception e) {
     		noRelativePath = true;
 		}
-		String uri = url.getPath();
+
 		newPortServerAddress = newPortServerAddress.endsWith("/") ? 
 				newPortServerAddress.substring(0, newPortServerAddress.length() - 1) :
 					newPortServerAddress;
 		
 		String endpointURI = null;
 		if(!noRelativePath) {
+			String uri = url.getPath();
 			endpointURI = newPortServerAddress + uri;
 		} else {
 			endpointURI = newPortServerAddress;
