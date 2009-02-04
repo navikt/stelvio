@@ -85,14 +85,27 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     }
     
     private String createNewEndpointURI(String fullUrl, String newPortServerAddress){
-    	URI url = URI.create(fullUrl);
+    	URI url = null;
+      	boolean noRelativePath = false;
+      	
+    	try {
+    		url = URI.create(fullUrl);
+    	} catch (Exception e) {
+    		noRelativePath = true;
+		}
 		String uri = url.getPath();
 		newPortServerAddress = newPortServerAddress.endsWith("/") ? 
 				newPortServerAddress.substring(0, newPortServerAddress.length() - 1) :
 					newPortServerAddress;
 		
-		String endpointURI = newPortServerAddress + uri;
-    	return endpointURI;
+		String endpointURI = null;
+		if(!noRelativePath) {
+			endpointURI = newPortServerAddress + uri;
+		} else {
+			endpointURI = newPortServerAddress;
+		}
+		
+		return endpointURI;
     }
     
     public void addBasicAuth(String username, String password) {
