@@ -207,7 +207,7 @@
 			version="${cfgVersion}"
 			wsdlName="${proxy.wsdls[0].fileName}"
 			wsdlLocation="local:///${proxy.wsdls[0].relativePath}"
-			wsdlPortBinding=proxy.wsdls[0].portBinding
+			wsdlPortBinding=["${proxy.wsdls[0].portBinding}"]
 			policy="${inboundProcessingPolicy}"
 			frontsideHandler="${inboundFrontsideHandler}"
 			frontsideProtocol="${inboundFrontsideProtocol}"
@@ -222,7 +222,7 @@
 			version="${cfgVersion}"
 			wsdlName="${proxy.wsdls[0].fileName}"
 			wsdlLocation="local:///${proxy.wsdls[0].relativePath}"
-			wsdlPortBinding=proxy.wsdls[0].portBinding
+			wsdlPortBinding=["${proxy.wsdls[0].portBinding}"]
 			policy="${inboundProcessingPolicyUnsigned}"
 			frontsideHandler="${inboundFrontsideHandler}"
 			frontsideProtocol="${inboundFrontsideProtocol}"
