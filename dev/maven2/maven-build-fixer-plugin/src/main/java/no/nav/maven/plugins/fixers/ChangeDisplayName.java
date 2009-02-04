@@ -61,7 +61,7 @@ public class ChangeDisplayName extends AbstractMojo {
 		File appxml;
 		Document doc;
 		SAXReader reader;
-		Element app, desc;
+		Element app=null, desc;
 		XPath search;
 		Map<String, String> uris = new HashMap<String, String>();
 
@@ -75,20 +75,18 @@ public class ChangeDisplayName extends AbstractMojo {
 			search = doc.createXPath("/ns:application/ns:description");
 			search.setNamespaceURIs(uris);
 			desc = (Element) search.selectSingleNode(doc);
+			app = doc.getRootElement();
+			
 			if (desc != null) {
-				String value = EarUtils.getTagLog().get(module.getName() + ".ear");
-				if(value == null) throw new IOException("Unable to determine tag for '" + module.getName() + "'");
-				desc.setText(value);
-				getLog().info("[" + module.getName() + "] description element changed to " + EarUtils.getTagLog().get(module.getName() + ".ear"));
-			}else{
-				app = doc.getRootElement();
-				desc = DOMDocumentFactory.getInstance().createElement("description", "http://java.sun.com/xml/ns/j2ee");
-				desc.setText(EarUtils.getTagLog().get(module.getName() + ".ear"));				
-				List list = app.content();
-				list.add(0, desc);	
-				getLog().info("[" + module.getName() + "] description element with text '" + EarUtils.getTagLog().get(module.getName() + ".ear") + "' added");
+				app.remove(desc);
 			}
 			
+			desc = DOMDocumentFactory.getInstance().createElement("description", "http://java.sun.com/xml/ns/j2ee");
+			desc.setText(EarUtils.getTagLog().get(module.getName() + ".ear"));				
+			List list = app.content();
+			list.add(0, desc);	
+			getLog().info("[" + module.getName() + "] description element with text '" + EarUtils.getTagLog().get(module.getName() + ".ear") + "' added");
+					
 			XMLUtils.writeXMLDocument(doc, appxml);
 		} else
 			getLog().warn(
