@@ -293,7 +293,6 @@ public class ADLDAPAdapterInteraction extends WBIInteraction {
 		if (answer.hasMoreElements()) {
 			// The search criteria does not result in one single entry. As the interface support 
 			// one and one entry only the crieria must also result in one and one only entry
-			// TODO AR Make this errorObject work..
 			log.logp(Level.WARNING, CLASSNAME, "executeMinside()", "Raise fault " + ADLDAPAdapterConstants.MINSIDE_FAULT_BASE + ". " + ADLDAPAdapterConstants.ERR_MSG05);
 			DataObject errorObject = DataFactory.INSTANCE.create(ADLDAPAdapterConstants.MINSIDE_FAULT_NS, ADLDAPAdapterConstants.MINSIDE_FAULT_BASE);
 			errorObject.setString("errorMessage",  ADLDAPAdapterConstants.ERR_MSG05);
