@@ -31,8 +31,7 @@
                     <moduleConfigurationArtifactName>busconfiguration</moduleConfigurationArtifactName>
                 </configuration>
                 <extensions>true</extensions>
-            </plugin>
-                    
+            </plugin>        
         </plugins>
         
     	<pluginManagement>
