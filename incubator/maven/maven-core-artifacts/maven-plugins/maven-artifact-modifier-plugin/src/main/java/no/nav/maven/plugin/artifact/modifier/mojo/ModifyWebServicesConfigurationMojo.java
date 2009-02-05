@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import no.nav.maven.plugin.artifact.modifier.configuration.ArtifactConfiguration;
-import no.nav.maven.plugin.artifact.modifier.constants.Constants;
+import no.nav.busconfiguration.configuration.ArtifactConfiguration;
+import no.nav.busconfiguration.constants.Constants;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.EndpointType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.EndpointsType;

@@ -13,14 +13,15 @@
 							<validate>
 							</validate>
 							<initialize>
-								no.nav.maven.plugins:maven-artifact-modifier-plugin:load-artifact-configuration
+								no.nav.maven.plugins:maven-artifact-modifier-plugin:load-artifact-configuration,
+								no.nav.maven.plugins:maven-websphere-plugin:load-runtime-configuration
 							</initialize>
 							<install>
 								no.nav.maven.plugins:maven-artifact-modifier-plugin:modify-web-services-configuration
 							</install>
 							<deploy>
 								no.nav.maven.plugins:maven-websphere-plugin:deploy-artifact,
-								no.nav.maven.plugins:maven-artifact-modifier-plugin:apply-runtime-configuration
+								no.nav.maven.plugins:maven-websphere-plugin:apply-runtime-configuration
 							</deploy>
 						</phases>
 					</lifecycle>
