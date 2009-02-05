@@ -1,0 +1,26 @@
+<classpath>
+  <classpathentry kind="src" path="src/main/java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="output" path="bin"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar" sourcepath="M2_REPO/junit/junit/3.8.1/junit-3.8.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Documents%20and%20Settings/utvikler/.m2/repository/junit/junit/3.8.1/junit-3.8.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/no/nav/maven/support/moduleconfig-xmlbeans/1.0-SNAPSHOT/moduleconfig-xmlbeans-1.0-SNAPSHOT.jar" sourcepath="M2_REPO/no/nav/maven/support/moduleconfig-xmlbeans/1.0-SNAPSHOT/moduleconfig-xmlbeans-1.0-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/codehaus/plexus/plexus-archiver/1.0-alpha-7/plexus-archiver-1.0-alpha-7.jar" sourcepath="M2_REPO/org/codehaus/plexus/plexus-archiver/1.0-alpha-7/plexus-archiver-1.0-alpha-7-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Documents%20and%20Settings/utvikler/.m2/repository/org/codehaus/plexus/plexus-archiver/1.0-alpha-7/plexus-archiver-1.0-alpha-7-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/codehaus/plexus/plexus-container-default/1.0-alpha-8/plexus-container-default-1.0-alpha-8.jar" sourcepath="M2_REPO/org/codehaus/plexus/plexus-container-default/1.0-alpha-8/plexus-container-default-1.0-alpha-8-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/codehaus/plexus/plexus-utils/1.2/plexus-utils-1.2.jar" sourcepath="M2_REPO/org/codehaus/plexus/plexus-utils/1.2/plexus-utils-1.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Documents%20and%20Settings/utvikler/.m2/repository/org/codehaus/plexus/plexus-utils/1.2/plexus-utils-1.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/stax/stax-api/1.0.1/stax-api-1.0.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/xmlbeans/xmlbeans/2.4.0/xmlbeans-2.4.0.jar"/>
+</classpath>

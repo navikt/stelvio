@@ -2364,7 +2364,13 @@ incubator/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.validation.
 incubator/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/FEMGRAppClientEAR/pom.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/nav-int-appclient-fem-pom/pom.xml -text
+incubator/busconfiguration/.classpath -text svneol=unset#text/plain
+incubator/busconfiguration/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 incubator/busconfiguration/pom.xml -text
+incubator/busconfiguration/src/main/java/no/nav/busconfiguration/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
+incubator/busconfiguration/src/main/java/no/nav/busconfiguration/constants/Constants.java -text svneol=unset#text/plain
+incubator/busconfiguration/src/main/java/no/nav/busconfiguration/managers/ArchiveManager.java -text svneol=unset#text/plain
+incubator/busconfiguration/src/main/java/no/nav/busconfiguration/managers/IArchiveManager.java -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/resources/environments/I1.properties -text
 incubator/busconfiguration/src/main/resources/environments/K4.properties -text
 incubator/busconfiguration/src/main/resources/environments/K5.properties -text
@@ -2609,6 +2615,10 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
+incubator/busconfiguration/target/busconfiguration-1.0-SNAPSHOT-sources.jar -text
+incubator/busconfiguration/target/busconfiguration-1.0-SNAPSHOT.jar -text
+incubator/busconfiguration/target/maven-archiver/pom.properties -text svneol=unset#text/plain
+incubator/busconfiguration/target/mvn-eclipse-cache.properties -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
