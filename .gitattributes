@@ -2615,10 +2615,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/busconfiguration/target/busconfiguration-1.0-SNAPSHOT-sources.jar -text
-incubator/busconfiguration/target/busconfiguration-1.0-SNAPSHOT.jar -text
-incubator/busconfiguration/target/maven-archiver/pom.properties -text svneol=unset#text/plain
-incubator/busconfiguration/target/mvn-eclipse-cache.properties -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
