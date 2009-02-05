@@ -2364,8 +2364,6 @@ incubator/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.validation.
 incubator/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/FEMGRAppClientEAR/pom.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/nav-int-appclient-fem-pom/pom.xml -text
-incubator/busconfiguration/.classpath -text svneol=unset#text/plain
-incubator/busconfiguration/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 incubator/busconfiguration/pom.xml -text
 incubator/busconfiguration/src/main/java/no/nav/busconfiguration/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/java/no/nav/busconfiguration/constants/Constants.java -text svneol=unset#text/plain
