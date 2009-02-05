@@ -23,7 +23,16 @@
                 </configuration>
                 <extensions>true</extensions>
             </plugin>
-            
+   
+           	<plugin>
+                <groupId>no.nav.maven.plugins</groupId>
+                <artifactId>maven-websphere-plugin</artifactId>
+                <configuration>
+                    <moduleConfigurationArtifactName>busconfiguration</moduleConfigurationArtifactName>
+                </configuration>
+                <extensions>true</extensions>
+            </plugin>
+                     
              <plugin>
 				<groupId>nav.maven.plugins</groupId>
 				<artifactId>maven-propertiesgenerator-plugin</artifactId>
