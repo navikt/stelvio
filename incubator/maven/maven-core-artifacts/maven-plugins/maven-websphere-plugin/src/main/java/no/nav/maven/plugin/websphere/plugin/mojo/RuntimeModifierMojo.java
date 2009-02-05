@@ -48,12 +48,6 @@ public abstract class RuntimeModifierMojo extends AbstractMojo {
 	protected UnArchiver jarUnArchiver;	
 
 	/**
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	protected String targetDirectory;
-
-	/**
 	 * @parameter expression="${project.basedir}"
 	 * @required
 	 */
@@ -71,11 +65,6 @@ public abstract class RuntimeModifierMojo extends AbstractMojo {
 	 */
 	protected Set<Artifact> dependencyArtifacts;	
 	
-	/**
-	 * @parameter expression="${project.artifacts}"
-	 * @required
-	 */
-	protected Set<Artifact> artifacts;	
 	
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 
