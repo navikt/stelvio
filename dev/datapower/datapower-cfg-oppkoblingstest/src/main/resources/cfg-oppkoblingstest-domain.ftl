@@ -22,7 +22,7 @@
 
 
 <@dp.configuration domain="${cfgDomain}">
-	<@dp.AAAPolicyClientSSL2LTPAAllAuthenticated
+	<@dp.AAAPolicyClientSSL2LTPA
 			name="${inboundAaaPolicyName}"
 			aaaFileName="local:///aaa/${inboundAaaFileName}"
 			ppLtpaKeyFile="local:///aaa/${inboundBacksideLTPAKeyFile}"
