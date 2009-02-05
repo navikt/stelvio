@@ -2647,6 +2647,9 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/mai
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/UpdateMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/VerticalMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/pom.xml -text
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ApplyRuntimeConfigurationMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/LoadRuntimeConfigurationMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/RuntimeModifierMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifact.build.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifact.mojos.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/pom.xml -text
