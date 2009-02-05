@@ -15,6 +15,15 @@
     <name>poc-deploy</name>
     <url>http://maven.apache.org</url>
     
+    <build>
+    	<plugins>
+		    <plugin>
+				<groupId>nav.maven.plugins</groupId>
+				<artifactId>maven-propertiesgenerator-plugin</artifactId>
+		    </plugin>
+		</plugins>
+	</build>
+	    
     <dependencies>
         <dependency>
             <groupId>no.nav.maven.poc</groupId>
