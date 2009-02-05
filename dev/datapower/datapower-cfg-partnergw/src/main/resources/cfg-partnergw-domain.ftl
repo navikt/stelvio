@@ -1,17 +1,5 @@
 <#import "datapower-config.ftl" as dp>
 
-<#--
-<#assign partnerSPK={"tpNr":"3010","sslCertDN":"${inboundFrontsideUserDN_SPK}","srvElsamDN":"${inboundBacksideUserDN_SPK}"}/>
-<#assign partnerKLP={"tpNr":"3200","sslCertDN":"${inboundFrontsideUserDN_KLP}","srvElsamDN":"${inboundBacksideUserDN_KLP}"}/>
--->
-
-<#--<#assign partnerTrustedCerts=[
-{"name":"${partnerTrustCert_VeriSignPrimary}","file":"pubcert:///${partnerTrustCert_VeriSignPrimary}.pem"},
-{"name":"${partnerTrustCert_VeriSignIntermediate}","file":"pubcert:///${partnerTrustCert_VeriSignIntermediate}.pem"},
-{"name":"${partnerTrustCert_Thawte}","file":"pubcert:///${partnerTrustCert_Thawte}.pem"},
-{"name":"soapui.developer.local","file":"cert:///soapui.developer.local.pem"}
-]/>-->
-
 
 <#assign inboundBacksideTrustedCerts=[
 {"name":"${inboundBacksideTrustCertName}","file":"pubcert:///${inboundBacksideTrustCertName}.pem"}
@@ -80,8 +68,8 @@
 			ppLtpaKeyFilePwd="${inboundBacksideLTPAKeyPwd}"/>
 	<#-- AAAPolicy for Inbound calls NorskPensjon -->
 	<@dp.AAAPolicyClientSSL2LTPAAllAuthenticated
-			name="SSLDNToLTPAMessageSigAllAuthenticated" <#-- TODO: trekk ut denne verdien som property -->
-			aaaFileName="local:///aaa/norskpensjon_AAAInfo.xml" <#-- TODO: trekk ut denne verdien som property -->
+			name="${inboundAaaPolicyNameNP}"
+			aaaFileName="local:///aaa/${inboundAaaPolicyFileNP}"
 			ppLtpaKeyFile="local:///aaa/${inboundBacksideLTPAKeyFile}" 
 			ppLtpaKeyFilePwd="${inboundBacksideLTPAKeyPwd}"/>
 	<#-- AAAPolicy for Outbound calls -->
@@ -160,6 +148,66 @@
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicy}_error-rule"}
 			]/>
 			
+	<#-- Inbound processing rules for Norsk Pensjon-->
+	<@dp.ProcessingRequestRule
+		name="${inboundProcessingPolicyNP}"
+		actions=[
+				{"type":"aaa",	"name":"aaaAction",	
+						"input":"INPUT",	"output":"aaaOutput",
+						"policy":"${inboundAaaPolicyNameNP}"}, 
+				{"type":"verify", "name":"verifiyAction",
+						"input":"INPUT",	"output":"NULL",
+						"valCred":"${signatureValCred}"},
+				{"type":"xform", "name":"logAction", "async":"on",
+						"input":"INPUT",	"output":"NULL",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"xform", "name":"addStelvioCtxAction", "async":"off",
+						"input":"aaaOutput",	"output":"stelvioContextIncluded",
+						"stylesheet":"local:///xslt/add-stelvio-context.xsl",
+						"params":[]},
+				{"type":"result", "name":"resultAction",
+					"input":"stelvioContextIncluded","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingResponseRule
+		name="${inboundProcessingPolicyNP}"
+		actions=[
+				{"type":"sign", "name":"signAction",
+						"input":"INPUT",	"output":"signedResponse",
+						"signCert":"${navSigningKeystoreName}",
+						"signKey":"${navSigningKeystoreName}"}
+				{"type":"xform", "name":"logAction", "async":"on",
+						"input":"signedResponse",	"output":"NULL",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"signedResponse","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingErrorRule
+			name="${inboundProcessingPolicyNP}"
+			actions=[
+				{"type":"xform", "name":"createFaultAction",
+						"input":"INPUT",	"output":"faultHandler", "async":"off",
+						"stylesheet":"local:///xslt/fault-handler.xsl",
+						"params":[
+							{"name":"fault-prefix","value":"DataPower Security Gateway"}
+						]},
+				{"type":"xform", "name":"logAction",
+						"input":"faultHandler",	"output":"NULL", "async":"on",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"faultHandler","output":"OUTPUT"}
+			]/>
+
+	<@dp.WSStylePolicy
+			name="${inboundProcessingPolicyNP}"
+			policyMapsList=[
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicyNP}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicyNP}_response-rule"},
+				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicyNP}_error-rule"}
+			]/>			
+			
 	<#-- Outbound processing rules-->
 	<@dp.ProcessingRequestRule
 		name="${outboundProcessingPolicy}"
@@ -227,11 +275,22 @@
 
 	<#-- Generate Inbound proxies -->			
 	<#list inboundProxies as proxy>
+	<#assign tempPolicy="${inboundProcessingPolicy}"/>
+		<#switch proxy.name>
+			<#case "NPSimulering">
+				<#assign tempPolicy="${inboundProcessingPolicyNP}">
+				<#break>
+			<#case "NPTjenestepensjon">
+				<#assign tempPolicy="${inboundProcessingPolicyNP}">
+				<#break>				
+			<#default>
+				<#assign tempPolicy="${inboundProcessingPolicy}">
+		</#switch>				
 	<@dp.WSProxyStaticBackendMultipleWsdl
 			name="${proxy.name}Inbound"
 			version="${cfgVersion}"
 			wsdls=proxy.wsdls
-			policy="${inboundProcessingPolicy}"
+			policy=tempPolicy
 			frontsideHandler="${inboundFrontsideHandler}"
 			frontsideProtocol="${inboundFrontsideProtocol}"
 			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
@@ -423,7 +482,5 @@
 		backsideUri="${endpointURINP}"
 		backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
 	/>	
-	
-	<#-- Norsk Pensjon inbound -->
 	
 </@dp.configuration>
