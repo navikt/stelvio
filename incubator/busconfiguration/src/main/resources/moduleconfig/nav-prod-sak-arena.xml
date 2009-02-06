@@ -1,8 +1,32 @@
 <configuration xmlns="http://www.nav.no/pensjonsprogrammet/wpsconfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nav.no/pensjonsprogrammet/wpsconfiguration moduleconfig.xsd">
     <security>
         <authentication>
-            <requiresltpatoken>true</requiresltpatoken>
-            <requiresusernametoken>true</requiresusernametoken>
+            <inbound>
+                    <tokens>
+                        <token>
+                            <name>WSSLTPAToken</name>
+                            <value>required</value>
+                        </token>
+                        <token>
+                            <name>WSSUsernameToken</name>
+                            <value>required</value>
+                        </token>
+                    </tokens>
+            </inbound>
+            <outbound>
+                <tokens>
+                    <token>
+                        <name>WSSLTPAToken</name>
+                        <value>required</value>
+                    </token>
+                    <token>
+                        <name>WSSUsernameToken</name>
+                        <value>required</value>
+                        <username>steffen</username>
+                        <password>hemmelig</password>
+                    </token>
+                </tokens>
+            </outbound>
         </authentication>
     </security>
     <webservices>

@@ -6,5 +6,6 @@ public class Constants {
 	public final static String J2E_MANIFEST_DIRECTORY = "META-INF";
 	public final static String EAR_ARTIFACT_TYPE = "ear";
 	public final static String ARTIFACT_CONFIGURATION_FOLDER = "moduleconfig";
-	
+	public final static String AUTH_WSS_LTPATOKEN = "WSSLTPAToken";
+	public final static String AUTH_WSS_USERNAMETOKEN = "WSSUsernameToken";
 }
