@@ -2625,7 +2625,11 @@ incubator/maven/maven-core-artifacts/maven-assemblies/src/main/resources/assembl
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/LoadArtifactConfigurationMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ModifySecurityConfigurationMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ModifyWebServicesConfigurationMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/EarFile.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/InboundSecurity.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/OutboundSecurity.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
