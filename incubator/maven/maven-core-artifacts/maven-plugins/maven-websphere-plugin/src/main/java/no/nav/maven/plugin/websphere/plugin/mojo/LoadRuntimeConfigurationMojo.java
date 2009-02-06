@@ -24,7 +24,7 @@ public class LoadRuntimeConfigurationMojo extends RuntimeModifierMojo {
 	/**
      * Name of module configuration artifact.
      *
-     * @parameter default-value="wpsconfiguration"
+     * @parameter default-value="busconfiguration"
      */
 	private String moduleConfigurationArtifactName;
 	
@@ -32,18 +32,18 @@ public class LoadRuntimeConfigurationMojo extends RuntimeModifierMojo {
 		
 		if(ArtifactConfiguration.isConfigurationLoaded() == true) {
 			return;
-		} else {
-			for(Artifact a : dependencyArtifacts) {
-				if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
-					File extractedFolder = jarArchiveManager.unArchive(a.getFile(), new File(baseDirectory,scriptDirectory));
-					ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"));
-					break;
-				}
+		}
+		
+		for(Artifact a : dependencyArtifacts) {
+			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
+				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), new File(baseDirectory,scriptDirectory));
+				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"));
+				break;
 			}
+		}
 			
-			if(ArtifactConfiguration.isConfigurationLoaded() == false) {
-				getLog().warn("The depoyment does not contain dependency to a wps configuration");
-			}
+		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
+			getLog().warn("The depoyment does not contain dependency to a wps configuration");
 		}
 	}
 }	
