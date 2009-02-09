@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.zip.ZipException;
 
 import no.nav.maven.plugins.common.utils.EarUtils;
@@ -58,6 +59,13 @@ public class ConfigFixer extends AbstractMojo {
 	 * @required
 	 */
 	private boolean resume;
+
+    /**
+     * List of modules that must be excluded
+     *
+     * @parameter expression=${excludedModules} default-value="null"
+     */
+    private Set excludedModules;
 	
 	/**
 	 * 
@@ -100,8 +108,12 @@ public class ConfigFixer extends AbstractMojo {
 											});
 						if(consModules != null){
 							for(File f : consModules){
-								frb.setConsModuleFolder(f);
-								frb.execute();
+								if(excludedModules == null || !excludedModules.contains(f.getName())) {
+									frb.setConsModuleFolder(f);
+									frb.execute();
+								} else {
+									getLog().info("Excluding setup of rolebinding for module: " + f.getName());
+								}
 							}
 						}
 						
@@ -117,8 +129,12 @@ public class ConfigFixer extends AbstractMojo {
 						
 						if(consModules != null){
 							for(File f : consModules){
-								aut.setConsModuleFolder(f);
-								aut.execute();
+								if(excludedModules == null  || !excludedModules.contains(f.getName())) {
+									aut.setConsModuleFolder(f);
+									aut.execute();
+								} else {
+									getLog().info("Excluding setup of usernametoken for module: " + f.getName());
+								}
 							}
 						}
 					}
@@ -362,6 +378,14 @@ public class ConfigFixer extends AbstractMojo {
 
 	public void setResume(boolean resume) {
 		this.resume = resume;
+	}
+
+	public Set getExcludedModules() {
+		return excludedModules;
+	}
+
+	public void setExcludedModules(Set excludedModules) {
+		this.excludedModules = excludedModules;
 	}
 	
 }
