@@ -22,8 +22,8 @@
 
 
 <@dp.configuration domain="${cfgDomain}">
-	<@dp.AAAPolicyClientSSL2LTPA
-			name="${inboundAaaPolicyName}"
+	<@dp.AAAPolicyClientSSL2LTPAAllAuthenticated
+			name="${inboundAaaPolicyName}AllAuth"
 			aaaFileName="local:///aaa/${inboundAaaFileName}"
 			ppLtpaKeyFile="local:///aaa/${inboundBacksideLTPAKeyFile}"
 			ppLtpaKeyFilePwd="${inboundBacksideLTPAKeyPwd}"/>
@@ -40,7 +40,7 @@
 		actions=[
 				{"type":"aaa",	"name":"aaaAction",	
 						"input":"INPUT",	"output":"aaaOutput",
-						"policy":"${inboundAaaPolicyName}"}, 
+						"policy":"${inboundAaaPolicyName}AllAuth"}, 
 				{"type":"verify", "name":"verifiyAction",
 						"input":"INPUT",	"output":"NULL",
 						"valCred":"${signatureValCred}"},
@@ -98,7 +98,7 @@
 		actions=[
 				{"type":"aaa",	"name":"aaaAction",	
 						"input":"INPUT",	"output":"aaaOutput",
-						"policy":"${inboundAaaPolicyName}"}, 
+						"policy":"${inboundAaaPolicyName}AllAuth"}, 
 				{"type":"xform", "name":"logAction", "async":"on",
 						"input":"INPUT",	"output":"NULL",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
