@@ -16,7 +16,8 @@ public class Test {
 		fixer.setFlattenedFolder(new File("E:/tmp2/target/classes/builds/eardist"));
 		fixer.setEnvFile(new File("E:/tmp2/src/main/resources/scripts/environments/i2.properties"));
 		Set excluded = new HashSet();
-		excluded.add("nav-cons-pen-psak-arenasak");
+		fixer.setEnvironment("T6");
+		excluded.add("T6:nav-cons-pen-psak-arenasak");
 		fixer.setExcludedModules(excluded);
 		fixer.execute(); 
 	}

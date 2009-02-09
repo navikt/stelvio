@@ -55,6 +55,13 @@ public class ConfigFixer extends AbstractMojo {
 	
 	/**
 	 * 
+	 * @parameter expression="${environment}"
+	 * @required
+	 */
+	private String environment;
+	
+	/**
+	 * 
 	 * @parameter expression="${resume}" default-value="false"
 	 * @required
 	 */
@@ -108,7 +115,8 @@ public class ConfigFixer extends AbstractMojo {
 											});
 						if(consModules != null){
 							for(File f : consModules){
-								if(excludedModules == null || !excludedModules.contains(f.getName())) {
+								String match = environment + ":" + f.getName();
+								if(excludedModules == null || !excludedModules.contains(match)) {
 									frb.setConsModuleFolder(f);
 									frb.execute();
 								} else {
@@ -129,7 +137,8 @@ public class ConfigFixer extends AbstractMojo {
 						
 						if(consModules != null){
 							for(File f : consModules){
-								if(excludedModules == null  || !excludedModules.contains(f.getName())) {
+								String match = environment + ":" + f.getName();
+								if(excludedModules == null  || !excludedModules.contains(match)) {
 									aut.setConsModuleFolder(f);
 									aut.execute();
 								} else {
@@ -386,6 +395,14 @@ public class ConfigFixer extends AbstractMojo {
 
 	public void setExcludedModules(Set excludedModules) {
 		this.excludedModules = excludedModules;
+	}
+
+	public String getEnvironment() {
+		return environment;
+	}
+
+	public void setEnvironment(String environment) {
+		this.environment = environment;
 	}
 	
 }
