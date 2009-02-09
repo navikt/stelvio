@@ -19,6 +19,7 @@
 <#assign matchingRuleAll="ELSAMDefault_match_all"/>
 <#assign matchingRuleAllErrors="ELSAMDefault_match_allErrors"/>
 <#assign inboundProcessingPolicyUnsigned="OppkoblingstestInboundUnsignedPolicy"/>
+<#assign inboundProcessingPolicySigned="OppkoblingstestInboundSignedPolicy">
 
 
 <@dp.configuration domain="${cfgDomain}">
@@ -36,7 +37,7 @@
 
 	<#-- Inbound processing rules for Signed Policy -->
 	<@dp.ProcessingRequestRule
-		name="${inboundProcessingPolicy}"
+		name="${inboundProcessingPolicySigned}"
 		actions=[
 				{"type":"aaa",	"name":"aaaAction",	
 						"input":"INPUT",	"output":"aaaOutput",
@@ -56,7 +57,7 @@
 					"input":"stelvioContextIncluded","output":"OUTPUT"}
 			]/>	
 	<@dp.ProcessingResponseRule
-		name="${inboundProcessingPolicy}"
+		name="${inboundProcessingPolicySigned}"
 		actions=[
 				{"type":"sign", "name":"signAction",
 						"input":"INPUT",	"output":"signedResponse",
@@ -70,7 +71,7 @@
 					"input":"signedResponse","output":"OUTPUT"}
 			]/>	
 	<@dp.ProcessingErrorRule
-			name="${inboundProcessingPolicy}"
+			name="${inboundProcessingPolicySigned}"
 			actions=[
 				{"type":"xform", "name":"createFaultAction", "async":"off",
 						"input":"INPUT",	"output":"faultGenerisk",
@@ -87,9 +88,9 @@
 	<@dp.WSStylePolicy
 			name="${inboundProcessingPolicy}"
 			policyMapsList=[
-				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicy}_request-rule"}, 
-				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicy}_response-rule"},
-				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicy}_error-rule"}
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicySigned}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicySigned}_response-rule"},
+				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicySigned}_error-rule"}
 			]/>
 			
 	<#-- Inbound processing rules for Unsigned Policy -->
