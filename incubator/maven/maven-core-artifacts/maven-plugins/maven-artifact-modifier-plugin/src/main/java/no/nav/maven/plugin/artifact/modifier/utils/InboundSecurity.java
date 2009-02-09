@@ -5,26 +5,26 @@ import java.io.IOException;
 import no.nav.busconfiguration.constants.Constants;
 import no.nav.maven.plugins.descriptor.websphere.bnd.IbmWebServiceBndEditor;
 import no.nav.maven.plugins.descriptor.websphere.ext.IbmWebServiceExtEditor;
-import no.nav.pensjonsprogrammet.wpsconfiguration.TokenType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.TokensType;
 
-import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 
 public class InboundSecurity {
 
 	public static void injectTokens(TokensType tokens, Archive archive) {
-		if(tokens.getTokenList() == null || tokens.getTokenList().size() == 0) {
+		if((tokens.getTokenList() == null) || (tokens.getTokenList().size() == 0)) {
 			return;
 		}
 		
-		if(tokens.getTokenList().size()>1) {
+		if(tokens.getTokenList().size() > 1) {
 			setupBothTokenConsumer(archive);
 		}
 		
-		if(tokens.getTokenList().get(0).equals(Constants.AUTH_WSS_LTPATOKEN)) {
+		String tokenType = tokens.getTokenList().get(0).getName();
+		
+		if(Constants.AUTH_WSS_LTPATOKEN.equals(tokenType)) {
 			setupLtpaTokenConsumer(archive);
-		} else if(tokens.getTokenList().get(0).equals(Constants.AUTH_WSS_USERNAMETOKEN)) {
+		} else if(Constants.AUTH_WSS_USERNAMETOKEN.equals(tokenType)) {
 			setupUsernameTokenConsumer(archive);
 		}
 	}

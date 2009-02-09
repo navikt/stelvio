@@ -3,27 +3,24 @@ package no.nav.maven.plugin.artifact.modifier.utils;
 import java.io.IOException;
 
 import no.nav.busconfiguration.constants.Constants;
-import no.nav.maven.plugins.descriptor.websphere.bnd.IbmWebServiceBndEditor;
 import no.nav.maven.plugins.descriptor.websphere.bnd.IbmWebServiceClientBndEditor;
 import no.nav.maven.plugins.descriptor.websphere.ext.IbmWebServiceClientExtEditor;
-import no.nav.maven.plugins.descriptor.websphere.ext.IbmWebServiceExtEditor;
 import no.nav.pensjonsprogrammet.wpsconfiguration.TokenType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.TokensType;
 
-import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 
 public class OutboundSecurity {
 
 	public static void injectTokens(TokensType tokens, Archive archive) {
-		if(tokens.getTokenList() == null || tokens.getTokenList().size() == 0) {
+		if((tokens.getTokenList() == null) || (tokens.getTokenList().size() == 0)) {
 			return;
 		}
 		
 		for(TokenType t : tokens.getTokenList()) {
-			if(tokens.getTokenList().get(0).equals(Constants.AUTH_WSS_LTPATOKEN)) {
+			if(Constants.AUTH_WSS_LTPATOKEN.equals(t.getName())) {
 				setupLtpaTokenGenerator(archive);
-			} else if(tokens.getTokenList().get(0).equals(Constants.AUTH_WSS_USERNAMETOKEN)) {
+			} else if(Constants.AUTH_WSS_USERNAMETOKEN.equals(t.getName())) {
 				//TODO: To be implemented
 			}
 		}
