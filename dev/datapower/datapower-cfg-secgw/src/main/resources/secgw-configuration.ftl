@@ -137,7 +137,7 @@
 			backsideHost="${workmateBacksideHost}"
 			backsidePort="${workmateBacksidePort}"
 			backsideUri="${workmateURI}"
-			backsideSSLProxy="${backsideHost}_SSLProxyProfile"
+			backsideSSLProxy="${workmateBacksideHost}_SSLProxyProfile"
 			/>
 			
 	</#if>
