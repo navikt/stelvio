@@ -48,7 +48,6 @@
   <xs:complexType name="tokenType">
     <xs:sequence>
       <xs:element type="xs:string" name="name"/>
-      <xs:element type="xs:string" name="value"/>
       <xs:element type="xs:string" name="username" minOccurs="0"/>
       <xs:element type="xs:string" name="password" minOccurs="0"/>
     </xs:sequence>
