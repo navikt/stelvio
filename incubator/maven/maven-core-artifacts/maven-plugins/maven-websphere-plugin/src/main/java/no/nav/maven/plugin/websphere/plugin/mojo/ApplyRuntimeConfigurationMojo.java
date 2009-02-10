@@ -53,9 +53,9 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 		arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/ModifyMaxConcurrencyAS.py");
 		commandLine.addArg(arg);
 		
+		Commandline detailedCommand = new Commandline();
 		for(ActivationspecificationType a : specifications) {
 			try {
-				Commandline detailedCommand = new Commandline();
 				detailedCommand.addArguments(commandLine.getArguments());
 				arg = new Commandline.Argument();
 				arg.setLine(a.getName());
@@ -63,10 +63,10 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 				arg = new Commandline.Argument();
 				arg.setLine(String.valueOf(a.getValue()));
 				detailedCommand.addArg(arg);
-				getLog().info("Executing the following command: " + commandLine.toString());
+				getLog().info("Executing the following command: " + detailedCommand.toString());
 				CommandLineUtils.executeCommandLine(detailedCommand, stdout, stderr);
-				detailedCommand.clearArgs();
 				reportResult(stdout, stderr);
+				detailedCommand.clearArgs();
 			} catch (CommandLineException e) {
 				throw new RuntimeException("An error occured executing: " + commandLine, e);
 			}
