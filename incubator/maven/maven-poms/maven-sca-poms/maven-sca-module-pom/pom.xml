@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-sca-root-pom</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>0.1</version>
 	</parent>
 
 	<artifactId>maven-sca-module-pom</artifactId>
@@ -36,7 +36,7 @@
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
 					<configuration>
-						<assemblyType>pi</assemblyType>
+						<assemblyType>zip</assemblyType>
 						<keep>true</keep>
 						<progressMonitor>none</progressMonitor>
 					</configuration>
