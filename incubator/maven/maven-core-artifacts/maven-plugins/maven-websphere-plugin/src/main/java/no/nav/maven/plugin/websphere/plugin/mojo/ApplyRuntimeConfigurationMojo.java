@@ -64,7 +64,7 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 				arg.setLine(String.valueOf(a.getValue()));
 				detailedCommand.addArg(arg);
 				getLog().info("Executing the following command: " + commandLine.toString());
-				CommandLineUtils.executeCommandLine(commandLine, stdout, stderr);
+				CommandLineUtils.executeCommandLine(detailedCommand, stdout, stderr);
 				detailedCommand.clearArgs();
 				reportResult(stdout, stderr);
 			} catch (CommandLineException e) {
