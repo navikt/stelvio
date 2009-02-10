@@ -21,19 +21,7 @@ import org.codehaus.plexus.archiver.UnArchiver;;
  * 
  * @author test@example.com 
  */
-public abstract class RuntimeModifierMojo extends AbstractMojo {
-
-	/**
-	 * @parameter expression="${component.org.codehaus.plexus.archiver.Archiver#ear}"
-	 * @required
-	 */
-	protected Archiver earArchiver;
-
-	/**
-	 * @parameter expression="${component.org.codehaus.plexus.archiver.UnArchiver#ear}"
-	 * @required
-	 */
-	protected UnArchiver earUnArchiver;
+public abstract class WebsphereMojo extends AbstractMojo {
 
 	/**
 	 * @parameter expression="${component.org.codehaus.plexus.archiver.Archiver#jar}"
@@ -73,7 +61,6 @@ public abstract class RuntimeModifierMojo extends AbstractMojo {
 	
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
-		earArchiveManager = new ArchiveManager(earArchiver, earUnArchiver);
 		jarArchiveManager = new ArchiveManager(jarArchiver, jarUnArchiver);
 		doExecute();
 	}

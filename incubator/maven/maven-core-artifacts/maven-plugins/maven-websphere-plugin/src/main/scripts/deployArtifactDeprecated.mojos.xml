@@ -2,8 +2,8 @@
 <pluginMetadata>
 	<mojos>
 		<mojo>
-			<goal>deploy-artifact</goal>
-			<call>deployArtifact</call>
+			<goal>deploy-artifact-deprecated</goal>
+			<call>deployArtifactDeprecated</call>
 			<requiresProject>false</requiresProject>
 			<parameters>
 				<parameter>

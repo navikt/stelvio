@@ -19,7 +19,7 @@ import org.apache.maven.plugin.MojoFailureException;
  * @goal load-runtime-configuration
  * @requiresDependencyResolution
  */
-public class LoadRuntimeConfigurationMojo extends RuntimeModifierMojo {
+public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
     
 	/**
      * Name of module configuration artifact.

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project>
-	<target name="deployArtifact">
+	<target name="deployArtifactDeprecated">
 	
 		<condition property="wsadmin.executable" value="${wid.home}/pf/wps01/bin/wsadmin.bat" else="${wid.home}/pf/wps/bin/wsadmin.sh">
 			<os family="windows"/>

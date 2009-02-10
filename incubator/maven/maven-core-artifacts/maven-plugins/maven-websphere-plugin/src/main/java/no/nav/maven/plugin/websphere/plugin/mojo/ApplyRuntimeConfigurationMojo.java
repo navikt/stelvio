@@ -28,62 +28,10 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @goal apply-runtime-configuration
  * @requiresDependencyResolution
  */
-public class ApplyRuntimeConfigurationMojo extends AbstractMojo {
+public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
     	
-	/**
-	 * @parameter expression="${wid.home}"
-	 * @required
-	 */
-	protected String widHome;
+	protected final void applyToWebSphere() throws MojoExecutionException, MojoFailureException {
 	
-	/**
-	 * @parameter expression="${username}"
-	 * @required
-	 */
-	protected String deploymentManagerUser;
-	
-	/**
-	 * @parameter expression="${password}"
-	 * @required
-	 */
-	protected String deploymentManagerPassword;
-
-	/**
-	 * @parameter expression="${host}"
-	 * @required
-	 */
-	protected String deploymentManagerHost;
-	
-	/**
-	 * @parameter expression="${port}"
-	 * @required
-	 */
-	protected String deploymentManagerPort;
-
-	/**
-	 * @parameter expression="${project.artifacts}"
-	 * @required
-	 */
-	protected Set<Artifact> artifacts;	
-	
-	/**
-	 * @parameter expression="${project.basedir}"
-	 * @required
-	 */
-	protected File baseDirectory;
-	
-	/**
-	 * @parameter expression="${project.build.scriptSourceDirectory}"
-	 * @required
-	 */
-	protected String scriptDirectory;
-	
-	public final void execute() throws MojoExecutionException, MojoFailureException {
-		
-		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
-			throw new RuntimeException("The artifact configuration is not loaded");
-		}
-		
 		for(Artifact a : artifacts) {
 			if(a.getType().equals(Constants.EAR_ARTIFACT_TYPE)) {
 				ConfigurationType configuration = ArtifactConfiguration.getConfiguration(a.getArtifactId());
@@ -132,6 +80,7 @@ public class ApplyRuntimeConfigurationMojo extends AbstractMojo {
 				Commandline.Argument arg7 = new Commandline.Argument();
 				arg7.setLine(String.valueOf(a.getValue()));
 				commandLine.addArg(arg7);
+				getLog().info("Executing the following command: " + commandLine.toString());
 				CommandLineUtils.executeCommandLine(commandLine, stdout, stderr);
 				commandLine.clearArgs();
 			} catch (CommandLineException e) {
