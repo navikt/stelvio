@@ -29,7 +29,7 @@ public class ArtifactConfiguration {
 			read.unlock();
 		}
 	}
-	public static void loadConfiguration(final File directory) {
+	public static final void loadConfiguration(final File directory) {
 		write.lock();
 		try {
 			if(configuration.isEmpty() == false) {
@@ -41,9 +41,10 @@ public class ArtifactConfiguration {
 		}
 	}
 
-	public static ConfigurationType getConfiguration(final String artifactId) {
+	public static final ConfigurationType getConfiguration(final String artifactId) {
 		read.lock();
 		try {
+			//TODO: This should be cloned.
 			return configuration.get(artifactId);
 		} finally {
 			read.unlock();
@@ -51,6 +52,7 @@ public class ArtifactConfiguration {
 	}
 	
 	private final static void loadXML(final File directory) {
+		
 		File[] files = directory.listFiles(new FileFilter() {public boolean accept(File file){return file.isFile() && file.getName().endsWith(".xml");}}); 
 		
 		if(files == null)  {
@@ -68,6 +70,6 @@ public class ArtifactConfiguration {
 				}
 				
 				configuration.put(f.getName().replace(".xml", ""), config);
+			}
 		}
 	}
-}
