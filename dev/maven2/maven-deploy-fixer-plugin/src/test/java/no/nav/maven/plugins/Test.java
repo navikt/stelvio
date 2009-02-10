@@ -17,7 +17,7 @@ public class Test {
 		fixer.setEnvFile(new File("E:/tmp2/src/main/resources/scripts/environments/i2.properties"));
 		Set excluded = new HashSet();
 		fixer.setEnvironment("T6");
-		excluded.add("T6:nav-cons-pen-psak-arenasak");
+		excluded.add("nav-cons-pen-psak-arenasak");
 		fixer.setExcludedModules(excluded);
 		fixer.execute(); 
 	}

@@ -115,8 +115,9 @@ public class ConfigFixer extends AbstractMojo {
 											});
 						if(consModules != null){
 							for(File f : consModules){
-								String match = environment + ":" + f.getName();
-								if(excludedModules == null || !excludedModules.contains(match)) {
+								String baseMatch = environment + ":" + f.getName();
+								String envMatch = f.getName();
+								if(excludedModules == null || !(excludedModules.contains(baseMatch) || excludedModules.contains(envMatch))) {
 									frb.setConsModuleFolder(f);
 									frb.execute();
 								} else {
@@ -137,8 +138,9 @@ public class ConfigFixer extends AbstractMojo {
 						
 						if(consModules != null){
 							for(File f : consModules){
-								String match = environment + ":" + f.getName();
-								if(excludedModules == null  || !excludedModules.contains(match)) {
+								String baseMatch = environment + ":" + f.getName();
+								String envMatch = f.getName();
+								if(excludedModules == null || !(excludedModules.contains(baseMatch) || excludedModules.contains(envMatch))) {
 									aut.setConsModuleFolder(f);
 									aut.execute();
 								} else {
