@@ -41,8 +41,8 @@
 			<artifactId>plexus-archiver</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>no.nav.maven.support</groupId>
-			<artifactId>busconfiguration</artifactId>
+			<groupId>no.nav.maven.commons</groupId>
+			<artifactId>maven-configuration-common</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>no.nav.maven.support</groupId>
