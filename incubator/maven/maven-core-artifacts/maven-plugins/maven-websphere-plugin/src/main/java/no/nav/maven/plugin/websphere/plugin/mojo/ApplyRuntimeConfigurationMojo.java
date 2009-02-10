@@ -56,6 +56,7 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 		Commandline detailedCommand = new Commandline();
 		for(ActivationspecificationType a : specifications) {
 			try {
+				detailedCommand.setExecutable(commandLine.getExecutable());
 				detailedCommand.addArguments(commandLine.getArguments());
 				arg = new Commandline.Argument();
 				arg.setLine(a.getName());
