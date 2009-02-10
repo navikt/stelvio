@@ -55,7 +55,7 @@ public class ConfigFixer extends AbstractMojo {
 	
 	/**
 	 * 
-	 * @parameter expression="${environment}"
+	 * @parameter expression="${miljo}"
 	 * @required
 	 */
 	private String environment;
