@@ -18,6 +18,7 @@
 
 	<modules>
 		<module>maven-configuration-common</module>
+		<module>maven-deployment-descriptor-common</module>
 	</modules>
 
 	<scm>
