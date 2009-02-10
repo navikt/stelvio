@@ -1,4 +1,4 @@
-package no.nav.busconfiguration.constants;
+package no.nav.maven.commons.constants;
 
 public class Constants {
 	public final static String IBM_WS_CLIENT_BINDINGS_FILE = "ibm-webservicesclient-bnd.xmi";

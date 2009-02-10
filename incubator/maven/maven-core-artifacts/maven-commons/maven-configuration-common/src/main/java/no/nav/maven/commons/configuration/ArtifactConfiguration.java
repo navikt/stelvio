@@ -1,4 +1,4 @@
-package no.nav.busconfiguration.configuration;
+package no.nav.maven.commons.configuration;
 
 import java.io.File;
 import java.io.FileFilter;

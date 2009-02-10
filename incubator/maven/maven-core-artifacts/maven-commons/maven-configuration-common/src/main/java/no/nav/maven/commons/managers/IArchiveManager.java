@@ -1,4 +1,4 @@
-package no.nav.busconfiguration.managers;
+package no.nav.maven.commons.managers;
 
 import java.io.File;
 

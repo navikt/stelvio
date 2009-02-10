@@ -1,9 +1,9 @@
-package no.nav.busconfiguration.managers;
+package no.nav.maven.commons.managers;
 
 import java.io.File;
 import java.io.IOException;
 
-import no.nav.busconfiguration.constants.Constants;
+import no.nav.maven.commons.constants.Constants;
 
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
