@@ -421,6 +421,10 @@ incubator/maven/maven-core-artifacts/maven-assemblies/.project
 incubator/maven/maven-core-artifacts/maven-assemblies/.settings
 incubator/maven/maven-core-artifacts/maven-assemblies/bin
 incubator/maven/maven-core-artifacts/maven-assemblies/target
+incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.classpath
+incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.project
+incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.settings
+incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/target
 incubator/maven/maven-core-artifacts/maven-commons/maven-deployment-descriptor-common/.classpath
 incubator/maven/maven-core-artifacts/maven-commons/maven-deployment-descriptor-common/.metadata
 incubator/maven/maven-core-artifacts/maven-commons/maven-deployment-descriptor-common/.project
