@@ -2365,10 +2365,6 @@ incubator/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol
 incubator/FEMCommandLine/FEMGRAppClientEAR/pom.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/nav-int-appclient-fem-pom/pom.xml -text
 incubator/busconfiguration/pom.xml -text
-incubator/busconfiguration/src/main/java/no/nav/busconfiguration/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
-incubator/busconfiguration/src/main/java/no/nav/busconfiguration/constants/Constants.java -text svneol=unset#text/plain
-incubator/busconfiguration/src/main/java/no/nav/busconfiguration/managers/ArchiveManager.java -text svneol=unset#text/plain
-incubator/busconfiguration/src/main/java/no/nav/busconfiguration/managers/IArchiveManager.java -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/resources/environments/I1.properties -text
 incubator/busconfiguration/src/main/resources/environments/K4.properties -text
 incubator/busconfiguration/src/main/resources/environments/K5.properties -text
