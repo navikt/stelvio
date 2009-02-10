@@ -8,4 +8,5 @@ public class Constants {
 	public final static String ARTIFACT_CONFIGURATION_FOLDER = "moduleconfig";
 	public final static String AUTH_WSS_LTPATOKEN = "WSSLTPAToken";
 	public final static String AUTH_WSS_USERNAMETOKEN = "WSSUsernameToken";
+	public final static String ARTIFACT_MODIFIER_SEPARATOR = "-";
 }
