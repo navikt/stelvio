@@ -424,6 +424,7 @@ incubator/maven/maven-core-artifacts/maven-assemblies/target
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.classpath
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.project
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.settings
+incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/bin
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/target
 incubator/maven/maven-core-artifacts/maven-plugins/.classpath
 incubator/maven/maven-core-artifacts/maven-plugins/.project
