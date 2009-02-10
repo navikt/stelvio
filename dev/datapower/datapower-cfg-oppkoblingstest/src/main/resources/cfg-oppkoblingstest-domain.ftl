@@ -86,7 +86,7 @@
 			]/>
 
 	<@dp.WSStylePolicy
-			name="${inboundProcessingPolicy}"
+			name="${inboundProcessingPolicySigned}"
 			policyMapsList=[
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicySigned}_request-rule"}, 
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicySigned}_response-rule"},
@@ -209,7 +209,7 @@
 			wsdlName="${proxy.wsdls[0].fileName}"
 			wsdlLocation="local:///${proxy.wsdls[0].relativePath}"
 			wsdlPortBinding=proxy.wsdls[0].portBinding
-			policy="${inboundProcessingPolicy}"
+			policy="${inboundProcessingPolicySigned}"
 			frontsideHandler="${inboundFrontsideHandler}"
 			frontsideProtocol="${inboundFrontsideProtocol}"
 			frontsideUri="${proxy.wsdls[0].frontsideURI}_signed"
@@ -248,7 +248,7 @@
 	</#list>
 
 	<#-- Generate Outbound proxies -->			
-<#--	<#list outboundProxies as proxy>
+	<#list outboundProxies as proxy>
 		<@dp.WSProxyWSADynamicBackendMultipleWsdl
 			name="${proxy.name}Outbound"
 			version="${cfgVersion}"
@@ -259,5 +259,4 @@
 			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
 			wsaRequireAaa="off"/>
 	</#list>
-	-->
 </@dp.configuration>
