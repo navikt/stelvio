@@ -19,7 +19,7 @@
 	<properties>
 		<maven.version>2.0.7</maven.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<busconfiguration.version>1.0-SNAPSHOT</busconfiguration.version>
+		<maven-configuration-common.version>1.0-SNAPSHOT</maven-configuration-common.version>
 		<moduleconfig-xmlbeans.version>1.0-SNAPSHOT</moduleconfig-xmlbeans.version>
 	</properties>
 
@@ -49,9 +49,9 @@
 				<version>${moduleconfig-xmlbeans.version}</version>
 			</dependency>		
 			<dependency>
-	            <groupId>no.nav.maven.support</groupId>
-	            <artifactId>busconfiguration</artifactId>
-	            <version>${busconfiguration.version}</version>
+	            <groupId>no.nav.maven.commons</groupId>
+	            <artifactId>maven-configuration-common</artifactId>
+	            <version>${maven-configuration-common.version}</version>
 	        </dependency>
 		</dependencies>
   	</dependencyManagement>
