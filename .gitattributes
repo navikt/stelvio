@@ -2673,6 +2673,7 @@ incubator/maven/maven-core-artifacts/maven-commons/maven-deployment-descriptor-c
 incubator/maven/maven-core-artifacts/maven-commons/maven-deployment-descriptor-common/src/test/resources/nav-cons-pen-pselv-person-NOTOKENS.ear -text
 incubator/maven/maven-core-artifacts/maven-commons/maven-deployment-descriptor-common/src/test/resources/security-rolebinding-config.xml -text
 incubator/maven/maven-core-artifacts/maven-commons/maven-deployment-descriptor-common/src/test/resources/tempBeans.xml -text
+incubator/maven/maven-core-artifacts/maven-commons/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
