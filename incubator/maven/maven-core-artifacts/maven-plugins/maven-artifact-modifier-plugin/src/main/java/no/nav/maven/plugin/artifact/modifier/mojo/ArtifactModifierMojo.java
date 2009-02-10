@@ -15,7 +15,7 @@ import org.codehaus.plexus.archiver.UnArchiver;;
 
 
 /**
- * Abstract class using the template pattern for child mojos.
+ * Abstract class for all mojos.
  * 
  * @author test@example.com 
  */
