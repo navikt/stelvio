@@ -19,6 +19,7 @@
 	<modules>
 		<module>maven-root-pom</module>
 		<module>xmlbeans</module>
+		<module>maven-commons</module>
 		<module>maven-plugins</module>
 		<module>maven-assemblies</module>
 		<module>maven-archetypes</module>
