@@ -9,7 +9,7 @@
 
     <groupId>no.nav.maven.poms</groupId>
     <artifactId>maven-poms</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
 	<packaging>pom</packaging>
     <name>Maven POMs</name>
 	
@@ -20,10 +20,10 @@
 	
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-poms-0.1
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-poms-0.1
 		</developerConnection>
 	</scm>
 </project>
