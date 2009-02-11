@@ -1,6 +1,5 @@
 <#import "datapower-config.ftl" as dp>
 
-
 <#assign inboundBacksideTrustedCerts=[
 {"name":"${inboundBacksideTrustCertName}","file":"pubcert:///${inboundBacksideTrustCertName}.pem"}
 ]/>
@@ -482,5 +481,37 @@
 		backsideUri="${endpointURINP}"
 		backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
 	/>	
+	
+	<#-- Configuration for remote logging-->
+	
+	<@dp.NFSStaticMount
+		name="${loggingRemoteHost}" 
+		uri="${loggingRemoteHost}:${loggingRemoteURI}"
+	/>
+	
+	<@dp.LogTarget
+		name="debug-log"
+		size="${maxSizeDebug}"
+		nfsStaticMount="${loggingRemoteHost}"
+		logFileName="${cfgDomain}_debug.log"
+		rotations="${numRotDebug}"
+		logPriority="debug"
+	/>
+	<@dp.LogTarget
+		name="error-log"
+		size="maxSizeError"
+		nfsStaticMount="${loggingRemoteHost}"
+		logFileName="${cfgDomain}_error.log"
+		rotations="${numRotError}"
+		logPriority="error"
+	/>
+	<@dp.LogTarget
+		name="system-log"
+		size="${maxSizeSystem}"
+		nfsStaticMount="${loggingRemoteHost}"
+		logFileName="${cfgDomain}_system.log"
+		rotations="${numRotSystem}"
+		logPriority="info"
+	/>
 	
 </@dp.configuration>
