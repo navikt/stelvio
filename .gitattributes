@@ -1404,6 +1404,7 @@ dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/Crypt
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/ForwardCryptoProfile.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/ForwardSSLProxy.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/FrontsideHandler.ftl -text
+dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/LogTarget.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/MatchingRuleErrorCode.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/MatchingRuleURL.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/NFSStaticMount.ftl -text
