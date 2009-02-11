@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>layers</artifactId>
-		<version>1.1-SNAPSHOT</version>
+		<version>1.1</version>
 	</parent>
 
 	<artifactId>libs</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>pom</packaging>
 	<name>Maven POC ${artifactId}</name>
 
