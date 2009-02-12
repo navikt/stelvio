@@ -1,12 +1,15 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
 import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
-import no.nav.maven.plugin.artifact.modifier.utils.InboundSecurity;
-import no.nav.maven.plugin.artifact.modifier.utils.OutboundSecurity;
+import no.nav.maven.plugin.artifact.modifier.utils.InboundWSSecurity;
+import no.nav.maven.plugin.artifact.modifier.utils.OutboundWSSecurity;
+import no.nav.maven.plugin.artifact.modifier.utils.RoleSecurity;
 import no.nav.pensjonsprogrammet.wpsconfiguration.AuthenticationType;
+import no.nav.pensjonsprogrammet.wpsconfiguration.AuthorizationType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.InboundType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.OutboundType;
+import no.nav.pensjonsprogrammet.wpsconfiguration.RolesType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.SecurityType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.TokensType;
 
@@ -28,15 +31,20 @@ public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerM
 	protected final void applyConfiguration(Artifact artifact, ConfigurationType configuration) {
 		if(configuration.getSecurity() != null) {
 			EARFile earFile = EarFile.openEarFile(artifact.getFile().getAbsolutePath());
-			updateSecurity((EJBJarFile)earFile.getEJBJarFiles().get(0), configuration.getSecurity());
+			updateSecurity(earFile, configuration.getSecurity());
 			EarFile.closeEarFile(earFile);
 		}
 	}
 	
-	private final void updateSecurity(final Archive ejbFile, final SecurityType securityConfiguration) {
+	private final void updateSecurity(final EARFile earFile, final SecurityType securityConfiguration) {
 		AuthenticationType authentication = securityConfiguration.getAuthentication();
 		if(authentication != null) {
-			updateAuthentication(ejbFile, authentication);
+			updateAuthentication((EJBJarFile)earFile.getEJBJarFiles().get(0), authentication);
+		}
+		
+		AuthorizationType authorization = securityConfiguration.getAuthorization();
+		if(authorization != null) {
+			updateAuthorization( earFile, authorization);
 		}
 	}
 	
@@ -56,14 +64,22 @@ public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerM
 	private final void updateOutboundAuthentication(final Archive ejbFile, final OutboundType outbound) {
 		TokensType tokens = outbound.getTokens();
 		if(tokens != null) {
-			OutboundSecurity.injectTokens(tokens, ejbFile);
+			OutboundWSSecurity.injectTokens(tokens, ejbFile);
 		}
 	}
 
 	private final void updateInboundAuthentication(final Archive ejbFile, final InboundType inbound) {
 		TokensType tokens = inbound.getTokens();
 		if(tokens != null) {
-			InboundSecurity.injectTokens(tokens, ejbFile);
+			InboundWSSecurity.injectTokens(tokens, ejbFile);
+		}
+	}
+	
+	private final void updateAuthorization(final Archive earFile, final AuthorizationType authorization) {
+		RolesType roles = authorization.getRoles();
+		
+		if(roles != null && roles.sizeOfRoleArray() > 0) {
+			RoleSecurity.updateRoleBindings(earFile, roles);
 		}
 	}
 }

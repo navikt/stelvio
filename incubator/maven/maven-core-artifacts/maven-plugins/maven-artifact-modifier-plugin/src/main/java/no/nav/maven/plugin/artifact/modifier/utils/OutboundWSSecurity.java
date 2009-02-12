@@ -10,7 +10,7 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.TokensType;
 
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 
-public class OutboundSecurity {
+public class OutboundWSSecurity {
 
 	public static void injectTokens(TokensType tokens, Archive archive) {
 		if((tokens.getTokenList() == null) || (tokens.getTokenList().size() == 0)) {
