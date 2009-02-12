@@ -21,6 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-configuration-common.version>1.0-SNAPSHOT</maven-configuration-common.version>
 		<moduleconfig-xmlbeans.version>1.0-SNAPSHOT</moduleconfig-xmlbeans.version>
+		<maven-plugin-testing-harness.version>1.0-beta-1</maven-plugin-testing-harness.version>
 	</properties>
 
 	<modules>
@@ -52,6 +53,12 @@
 	            <groupId>no.nav.maven.commons</groupId>
 	            <artifactId>maven-configuration-common</artifactId>
 	            <version>${maven-configuration-common.version}</version>
+	        </dependency>
+	        <dependency>
+	        	<groupId>org.apache.maven.shared</groupId>
+	        	<artifactId>maven-plugin-testing-harness</artifactId>
+	        	<version>${maven-plugin-testing-harness.version}</version>
+	        	<scope>test</scope> 	
 	        </dependency>
 		</dependencies>
   	</dependencyManagement>
