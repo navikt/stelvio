@@ -35,3 +35,4 @@
 <#include "WSProxyStaticBackendMultipleWsdl.ftl">
 <#include "WSProxyWSADynamicBackend.ftl">
 <#include "WSProxyWSADynamicBackendMultipleWsdl.ftl">
+<#include "LogTarget.ftl">
