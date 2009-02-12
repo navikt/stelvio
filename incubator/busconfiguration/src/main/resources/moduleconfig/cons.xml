@@ -1,16 +1,34 @@
 <configuration xmlns="http://www.nav.no/pensjonsprogrammet/wpsconfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nav.no/pensjonsprogrammet/wpsconfiguration moduleconfig.xsd">
     <security>
-        <authentication>
-            <inbound>
-                    <tokens>
-                        <token>
-                            <name>WSSLTPAToken</name>
-                        </token>
-                        <token>
-                            <name>WSSUsernameToken</name>
-                        </token>
-                    </tokens>
-            </inbound>
-        </authentication>
+ 		<authorization>
+            <roles>
+                <role>
+                    <name>SAMConsumer</name>
+                    <users>
+                        <user>
+                        	<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
+                        </user>
+                    </users>
+                    <groups>
+                        <group>
+							<name>CN=0000-GA-WAS_UTV_PENSJON,OU=AccountGroupNotInRemedy,OU=Groups,OU=NAV,OU=BusinessUnits,DC=test,DC=local</name>
+                        </group>
+                    </groups>
+                </role>
+                <role>
+                    <name>KUHLConsumer</name>
+                    <users>
+                        <user>
+                        	<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
+                        </user>
+                    </users>
+                    <groups>
+                        <group>
+							<name>CN=0000-GA-WAS_UTV_PENSJON,OU=AccountGroupNotInRemedy,OU=Groups,OU=NAV,OU=BusinessUnits,DC=test,DC=local</name>
+                        </group>
+                    </groups>
+                </role>
+            </roles>
+        </authorization>
     </security>
 </configuration>
