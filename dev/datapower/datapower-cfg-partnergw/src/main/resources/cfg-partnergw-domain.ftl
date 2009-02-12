@@ -482,13 +482,8 @@
 		backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
 	/>	
 	
-	<#-- Configuration for remote logging-->
-	
-	<@dp.NFSStaticMount
-		name="${loggingRemoteHost}" 
-		uri="${loggingRemoteHost}:${loggingRemoteURI}"
-	/>
-	
+	<#-- LogTargets for remote logging-->
+	<#-- Requires the nfsStaticMount object created above-->
 	<@dp.LogTarget
 		name="debug-log"
 		size="${maxSizeDebug}"
