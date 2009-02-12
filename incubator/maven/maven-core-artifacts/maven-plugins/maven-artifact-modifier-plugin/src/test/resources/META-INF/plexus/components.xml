@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<component-set>
+	<components>
+		<component>
+			<role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+			<role-hint>deployable-artifact</role-hint>
+			<implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
+			<configuration>
+				<lifecycles>
+					<lifecycle>
+						<id>default</id>
+						<phases>
+							<validate>
+							</validate>
+							<initialize>
+								no.nav.maven.plugins:maven-artifact-modifier-plugin:load-artifact-configuration,
+								no.nav.maven.plugins:maven-websphere-plugin:load-runtime-configuration
+							</initialize>
+							<install>
+								no.nav.maven.plugins:maven-artifact-modifier-plugin:modify-web-services-configuration,
+								no.nav.maven.plugins:maven-artifact-modifier-plugin:modify-security-configuration
+							</install>
+							<deploy>
+								no.nav.maven.plugins:maven-websphere-plugin:deploy-artifact,
+								no.nav.maven.plugins:maven-websphere-plugin:apply-runtime-configuration
+							</deploy>
+						</phases>
+					</lifecycle>
+				</lifecycles>
+			</configuration>
+		</component>
+	</components>
+</component-set>
+</xml>

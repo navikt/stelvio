@@ -2640,6 +2640,8 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugi
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/RoleSecurity.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/test/java/no/nav/maven/plugin/artifact/modifier/mojo/LoadArtifactConfigurationMojoTest.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/test/resources/META-INF/plexus/components.xml -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/test/resources/unit/plugin-cfg.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
