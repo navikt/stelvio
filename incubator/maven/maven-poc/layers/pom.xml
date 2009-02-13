@@ -71,6 +71,12 @@
 				<artifactId>maven-sca-artifact-plugin</artifactId>
 				<extensions>true</extensions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<preparationGoals>clean verify install</preparationGoals>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
