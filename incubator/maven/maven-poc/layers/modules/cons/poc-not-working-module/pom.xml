@@ -8,7 +8,7 @@
 	</parent>
 
 	<artifactId>poc-not-working-module</artifactId>
-	<version>1.7-SNAPSHOT</version>
+	<version>1.7</version>
 	<packaging>sca-module-ear</packaging>
 	<name>Maven POC ${artifactId}</name>
 
@@ -46,4 +46,9 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/poc-not-working-module-1.7</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/poc-not-working-module-1.7</developerConnection>
+  </scm>
 </project>
