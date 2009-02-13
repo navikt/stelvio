@@ -1,5 +1,7 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
+import java.util.List;
+
 import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
 import no.nav.maven.plugin.artifact.modifier.utils.InboundWSSecurity;
 import no.nav.maven.plugin.artifact.modifier.utils.OutboundWSSecurity;
@@ -49,7 +51,6 @@ public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerM
 	}
 	
 	private final void updateAuthentication(final Archive ejbFile, final AuthenticationType authentication) {
-		
 		InboundType inbound = authentication.getInbound();
 		if(inbound != null) {
 			updateInboundAuthentication(ejbFile, inbound);
@@ -75,11 +76,15 @@ public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerM
 		}
 	}
 	
-	private final void updateAuthorization(final Archive earFile, final AuthorizationType authorization) {
-		RolesType roles = authorization.getRoles();
+	private final void updateAuthorization(final EARFile earFile, final AuthorizationType authorization) {
+		RolesType rolesInConfig = authorization.getRoles();
 		
-		if(roles != null && roles.sizeOfRoleArray() > 0) {
-			RoleSecurity.updateRoleBindings(earFile, roles);
+		List<String> rolesInEjb = RoleSecurity.getSecurityRoles((EJBJarFile)earFile.getEJBJarFiles().get(0));
+		
+		if(rolesInEjb != null && rolesInEjb.size() > 0) {
+			RoleSecurity.updateRoleBindings(earFile, rolesInConfig, rolesInEjb);
 		}
+		
+		//TODO: RunAs injections!
 	}
 }

@@ -21,7 +21,7 @@ public class OutboundWSSecurity {
 			if(Constants.AUTH_WSS_LTPATOKEN.equals(t.getName())) {
 				setupLtpaTokenGenerator(archive);
 			} else if(Constants.AUTH_WSS_USERNAMETOKEN.equals(t.getName())) {
-				//TODO: To be implemented
+				//TODO: Not implemented
 			}
 		}
 	}
