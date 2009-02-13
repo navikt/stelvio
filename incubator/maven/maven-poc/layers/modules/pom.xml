@@ -8,7 +8,7 @@
 	</parent>
 
 	<artifactId>modules</artifactId>
-	<version>1.6-SNAPSHOT</version>
+	<version>1.6</version>
 	<packaging>pom</packaging>
 	<name>SCA Module Master POM</name>
 	
