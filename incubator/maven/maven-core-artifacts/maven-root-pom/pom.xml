@@ -75,6 +75,12 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<preparationGoals>clean verify install</preparationGoals>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
