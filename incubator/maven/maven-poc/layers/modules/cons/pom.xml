@@ -17,9 +17,4 @@
 		<module>poc-working-module</module>
 		<module>poc-not-working-module</module>
 	</modules>
-
-  <scm>
-    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/cons-1.6</connection>
-    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/cons-1.6</developerConnection>
-  </scm>
 </project>

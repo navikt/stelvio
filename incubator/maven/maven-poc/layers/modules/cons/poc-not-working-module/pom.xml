@@ -8,7 +8,7 @@
 	</parent>
 
 	<artifactId>poc-not-working-module</artifactId>
-	<version>1.8</version>
+	<version>1.9-SNAPSHOT</version>
 	<packaging>sca-module-ear</packaging>
 	<name>Maven POC ${artifactId}</name>
 
