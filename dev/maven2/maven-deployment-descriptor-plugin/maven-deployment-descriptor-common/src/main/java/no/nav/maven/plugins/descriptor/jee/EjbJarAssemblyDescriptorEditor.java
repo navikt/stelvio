@@ -1,5 +1,6 @@
 package no.nav.maven.plugins.descriptor.jee;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import no.nav.maven.plugins.descriptor.config.EjbMethodPermissionConfig;
@@ -49,6 +50,17 @@ public class EjbJarAssemblyDescriptorEditor extends EjbJarEditor{
 			addMethodPermission(ejbPermission, entBeans);
 		}
 		
+	}
+	
+	public final List<String> getEjbSecurityRoleNames() {
+		List<String> roles = new ArrayList<String>();
+		EList secRoles = getSecurityRoles();
+		
+		for(Object o : secRoles) {
+			roles.add(((SecurityRole)o).getRoleName());
+		}
+		
+		return roles;
 	}
 	
 	private void addSecurityRoles(List<String> roleNames){
