@@ -8,7 +8,7 @@
 	</parent>
 
 	<artifactId>poc-working-module</artifactId>
-	<version>1.8</version>
+	<version>1.9-SNAPSHOT</version>
 	<packaging>sca-module-ear</packaging>
 	<name>Maven POC ${artifactId}</name>
 
@@ -20,9 +20,4 @@
 			<type>sca-library-jar</type>
 		</dependency>
 	</dependencies>
-
-  <scm>
-    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/poc-working-module-1.8</connection>
-    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/poc-working-module-1.8</developerConnection>
-  </scm>
 </project>
