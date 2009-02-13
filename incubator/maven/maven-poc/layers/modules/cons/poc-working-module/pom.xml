@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>cons</artifactId>
-		<version>1.6-SNAPSHOT</version>
+		<version>1.6</version>
 	</parent>
 
 	<artifactId>poc-working-module</artifactId>

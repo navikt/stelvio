@@ -10,7 +10,7 @@
 
 	<groupId>no.nav.maven.poc</groupId>
 	<artifactId>layers</artifactId>
-	<version>1.7-SNAPSHOT</version>
+	<version>1.6</version>
 	<packaging>pom</packaging>
 	<name>Maven POC ${artifactId}</name>
 
