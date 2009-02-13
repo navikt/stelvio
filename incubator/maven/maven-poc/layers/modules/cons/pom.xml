@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>modules</artifactId>
-		<version>1.4-SNAPSHOT</version>
+		<version>1.4</version>
 	</parent>
 
 	<artifactId>cons</artifactId>
-	<version>1.4-SNAPSHOT</version>
+	<version>1.4</version>
 	<packaging>pom</packaging>
 	<name>Maven POC ${artifactId}</name>
 
