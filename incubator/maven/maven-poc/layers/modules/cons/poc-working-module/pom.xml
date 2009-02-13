@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>cons</artifactId>
-		<version>1.5</version>
+		<version>1.6-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>poc-working-module</artifactId>
-	<version>1.7</version>
+	<version>1.8-SNAPSHOT</version>
 	<packaging>sca-module-ear</packaging>
 	<name>Maven POC ${artifactId}</name>
 
