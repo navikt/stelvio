@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>layers</artifactId>
-		<version>1.3</version>
+		<version>1.4-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>modules</artifactId>
-	<version>1.3</version>
+	<version>1.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>SCA Module Master POM</name>
 	
