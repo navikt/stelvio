@@ -332,8 +332,8 @@
 	<@dp.ProcessingRequestRule
 		name="${outboundProcessingPolicySMS}"
 		actions=[
-				{"type":"slm",	"name":"slmAction",	
-						"input":"INPUT",	"output":"NULL"},
+				<#--{"type":"slm",	"name":"slmAction",	
+						"input":"INPUT",	"output":"NULL"},-->
 				{"type":"aaa",	"name":"aaaAction",	
 						"input":"INPUT",	"output":"PIPE",
 						"policy":"${outboundAaaPolicyName}"},
