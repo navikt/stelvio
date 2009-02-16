@@ -9,7 +9,8 @@
 		type
 		toggleNoWsa
 		wsaMode
-		wsaRequireAaa>
+		wsaRequireAaa
+		backTimeout>
 	<WSGateway name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<UserSummary>${version}</UserSummary>
@@ -44,7 +45,7 @@
 		<ResponseType>soap</ResponseType>
 		<SOAPSchemaURL>store:///schemas/soap-envelope.xsd</SOAPSchemaURL>
 		<FrontTimeout>120</FrontTimeout>
-		<BackTimeout>120</BackTimeout>
+		<BackTimeout>${backTimeout}</BackTimeout>
 		<FrontPersistentTimeout>180</FrontPersistentTimeout>
 		<BackPersistentTimeout>180</BackPersistentTimeout>
 		<IncludeResponseTypeEncoding>off</IncludeResponseTypeEncoding>
