@@ -10,7 +10,8 @@
 		backsideSSLProxy
 		backsideProtocol
 		backsideHost
-		backsidePort>
+		backsidePort
+		backsideTimeout>
 	<@WSEndpointRewritePolicyMultipleWsdl
 		name="${name}"
 		wsdls=wsdls
@@ -29,5 +30,6 @@
 		type="static-from-wsdl"
 		toggleNoWsa="on"
 		wsaMode="sync2sync"
-		wsaRequireAaa="off"/>
+		wsaRequireAaa="off"
+		backTimeout="${backsideTimeout}"/>
 </#macro>
