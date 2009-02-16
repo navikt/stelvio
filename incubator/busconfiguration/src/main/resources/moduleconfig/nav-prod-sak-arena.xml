@@ -3,7 +3,7 @@
 	    <authorization>
 	            <roles>
 	                <role>
-	                    <name>SteffenConsumer</name>
+	                    <name>PENConsumer</name>
 	                    <users>
 	                        <user>
 	                        	<name>CN=steffenruler,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -14,6 +14,10 @@
 								<name>CN=0000-GA-WAS_UTV_PENSJON,OU=AccountGroupNotInTrinidad,OU=Groups,OU=NAV,OU=BusinessUnits,DC=test,DC=local</name>
 	                        </group>
 	                    </groups>
+	                    <runas>
+	                    	<username>srvpensjon</username>
+	                    	<password>testeteste</password>
+	                    </runas>
 	                </role>
 	            </roles>
 	        </authorization>

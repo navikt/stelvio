@@ -15,32 +15,6 @@
                         </group>
                     </groups>
                 </role>
-				<role>
-                    <name>PENConsumer</name>
-                    <users>
-                        <user>
-                        	<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
-                        </user>
-                    </users>
-                    <groups>
-                        <group>
-							<name>CN=0000-GA-WAS_UTV_PENSJON,OU=AccountGroupNotInRemedy,OU=Groups,OU=NAV,OU=BusinessUnits,DC=test,DC=local</name>
-                        </group>
-                    </groups>
-                </role>
-                <role>
-                    <name>KUHLConsumer</name>
-                    <users>
-                        <user>
-                        	<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
-                        </user>
-                    </users>
-                    <groups>
-                        <group>
-							<name>CN=0000-GA-WAS_UTV_PENSJON,OU=AccountGroupNotInRemedy,OU=Groups,OU=NAV,OU=BusinessUnits,DC=test,DC=local</name>
-                        </group>
-                    </groups>
-                </role>
             </roles>
         </authorization>
     </security>
