@@ -11,7 +11,8 @@
 		frontsideProtocol
 		backsideSSLProxy
 		endpointUri
-		wsaRequireAaa>
+		wsaRequireAaa
+		backsideTimeout>
 	<@WSEndpointRewritePolicy
 		name="${name}"
 		wsdlPortBinding="${wsdlPortBinding}"
@@ -26,7 +27,6 @@
 		name="${name}"
 		version="${version}"
 		sslProxy="${backsideSSLProxy}"
-<#--	sslProxy="${backside}_SSLProxyProfile"-->
 		wsdlName="${wsdlName}"
 		wsdlLocation="${wsdlLocation}"
 		rewritePolicy="${name}"
@@ -34,5 +34,6 @@
 		type="dynamic-backend"
 		toggleNoWsa="off"
 		wsaMode="wsa2sync"
-		wsaRequireAaa="${wsaRequireAaa}"/>
+		wsaRequireAaa="${wsaRequireAaa}"
+		backTimeout="${backsideTimeout}"/>
 </#macro>
