@@ -48,6 +48,7 @@ public class ModifyWebServicesConfigurationMojo extends ArtifactModifierConfigur
 			properties.put(e.getName(), e.getValue());
 		}
 
+		
 		wscBnd.setEndpointUri("http://www.dummy.org", properties);
 		try {
 			wscBnd.save();

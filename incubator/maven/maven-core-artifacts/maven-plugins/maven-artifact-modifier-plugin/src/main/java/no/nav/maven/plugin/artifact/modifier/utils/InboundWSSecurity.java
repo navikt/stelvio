@@ -31,6 +31,7 @@ public class InboundWSSecurity {
 	
 	public static void setupLtpaTokenConsumer(Archive archive) {
 		try{
+			
 			String tokenPartReference = "RequiredLTPAToken";
 			boolean usageRequired = true; 
 			IbmWebServiceExtEditor wsExt = new IbmWebServiceExtEditor(archive);
