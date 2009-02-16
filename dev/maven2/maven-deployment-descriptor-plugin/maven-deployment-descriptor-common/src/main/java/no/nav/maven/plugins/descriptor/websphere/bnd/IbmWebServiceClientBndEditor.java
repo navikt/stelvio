@@ -55,7 +55,7 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     }
     
     public void setEndpointUri(String newDefaultPortServerAddress, Properties myEndpoints) {
-    	if(getComponentScopedRefs() == null) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
     		return;
     	}
     	
@@ -130,6 +130,10 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     }
     
     public void addRequestTokenGeneratorLTPA(String partRef) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
+    		return;
+    	}
+    	
     	Iterator iter = getServiceRefs();
     	while(iter.hasNext()){
     		ServiceRef serviceRef = (ServiceRef)iter.next();
@@ -138,6 +142,10 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     }
   
     public void addRequestTokenGeneratorUsername(String partRef, String username, String password) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
+    		return;
+    	}
+    	
     	Iterator iter = getServiceRefs();
     	while(iter.hasNext()){
     		ServiceRef serviceRef = (ServiceRef)iter.next();

@@ -38,6 +38,10 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
 	}
     
     public void addRequestGeneratorLTPA(String partRef) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
+    		return;
+    	}
+   
     	Iterator iter = getServiceRefs();
     	while(iter.hasNext()){
     		ServiceRef serviceRef = (ServiceRef)iter.next();
@@ -46,6 +50,10 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
     }
 
     public void addRequestGeneratorUsername(String partRef) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
+    		return;
+    	}
+   
     	Iterator iter = getServiceRefs();
     	while(iter.hasNext()){
     		ServiceRef serviceRef = (ServiceRef)iter.next();
