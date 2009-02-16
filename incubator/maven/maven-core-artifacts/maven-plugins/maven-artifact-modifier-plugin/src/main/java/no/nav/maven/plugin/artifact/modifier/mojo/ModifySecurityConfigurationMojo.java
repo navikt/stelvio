@@ -80,6 +80,11 @@ public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerM
 		
 		RolesType rolesInConfig = authorization.getRoles();
 		if(rolesInConfig != null && rolesInConfig.sizeOfRoleArray() > 0) {
+			/* TODO: The way we check all defined roles and runasbindings in the ejb today is wrong.
+			 * Today we only find all role-names found in the "security-role-ref" in the "module" bean.
+			 * The right way is: Get rolebindings by finding all roles defined in assembly-descriptor.
+			 * 					 Get the runasbindings by finding all run-as definitions in the ejb.
+			 */
 			List<String> rolesInEjb = RoleSecurity.getSecurityRoles((EJBJarFile)earFile.getEJBJarFiles().get(0));
 			if(rolesInEjb != null && rolesInEjb.size() > 0) {
 				RoleSecurity.updateRoleBindings(earFile, rolesInConfig, rolesInEjb);
