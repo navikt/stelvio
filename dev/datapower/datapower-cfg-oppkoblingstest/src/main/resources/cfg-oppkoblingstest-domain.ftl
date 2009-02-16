@@ -217,7 +217,8 @@
 			backsideHost="${inboundBacksideHost}"
 			backsidePort="${inboundBacksidePort}"
 			backsideUri="${proxy.wsdls[0].endpointURI}"
-			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"/>
+			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
+			backsideTimeout="${inboundBacksideConnectionTimeout}"/>
 	<@dp.WSProxyStaticBackend
 			name="${proxy.name}InboundUnsigned"
 			version="${cfgVersion}"
@@ -232,7 +233,8 @@
 			backsideHost="${inboundBacksideHost}"
 			backsidePort="${inboundBacksidePort}"
 			backsideUri="${proxy.wsdls[0].endpointURI}"
-			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"/>
+			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
+			backsideTimeout="${inboundBacksideConnectionTimeout}"/>
 	</#list>
 
 	<#-- Generate Outbound proxies -->			
@@ -245,6 +247,7 @@
 			frontsideHandler="${outboundFrontsideHandler}"
 			frontsideProtocol="${outboundFrontsideProtocol}"
 			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
-			wsaRequireAaa="off"/>
+			wsaRequireAaa="off"
+			backsideTimeout="${outboundBacksideConnectionTimeout}"/>
 	</#list>
 </@dp.configuration>
