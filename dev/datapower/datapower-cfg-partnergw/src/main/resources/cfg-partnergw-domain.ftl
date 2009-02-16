@@ -362,7 +362,8 @@
 			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
 			backsideProtocol="${inboundBacksideProtocol}"
 			backsideHost="${inboundBacksideHost}"
-			backsidePort="${inboundBacksidePort}"/>
+			backsidePort="${inboundBacksidePort}"
+			backsideTimeout="${inboundBacksideConnectionTimeout}"/>
 	</#list>	
 
 	<#-- Generate Outbound proxies for ELSAM-->			
@@ -375,7 +376,8 @@
 			frontsideHandler="${outboundFrontsideHandler}"
 			frontsideProtocol="${outboundFrontsideProtocol}"
 			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
-			wsaRequireAaa="off"/>
+			wsaRequireAaa="off"
+			backsideTimeout="${outboundBacksideConnectionTimeout}"/>
 	</#list>
 	
 	<#-- Generate Norsk Pensjon outbound proxy-->
@@ -395,6 +397,7 @@
 		backsidePort="${outboundBacksidePortNP}"
 		backsideUri="${endpointURINP}"
 		backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
+		backsideTimeout="${outboundBacksideConnectionTimeout}"
 	/>	
 	
 	<#-- SMS Gateway -->	
@@ -466,6 +469,7 @@
 		backsidePort="${outboundBacksidePortSMS}"
 		backsideUri="${endpointURISMS}"
 		backsideSSLProxy="${outboundBacksideHostSMS}_SSLProxyProfile"
+		backsideTimeout=120
 	/>	
 	
 	<#-- LogTargets for remote logging-->
