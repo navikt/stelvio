@@ -55,6 +55,10 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     }
     
     public void setEndpointUri(String newDefaultPortServerAddress, Properties myEndpoints) {
+    	if(getComponentScopedRefs() == null) {
+    		return;
+    	}
+    	
     	Iterator iter = getServiceRefs();
     	while(iter.hasNext()){
     		ServiceRef serviceRef = (ServiceRef)iter.next();
