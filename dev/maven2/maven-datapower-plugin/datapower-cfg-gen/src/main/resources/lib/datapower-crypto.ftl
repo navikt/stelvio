@@ -40,7 +40,6 @@
 	<#list trustedCerts as cert>
 	<@TrustedCertificate name="${cert.name}" file="${cert.file}"/>
 	</#list>
-<#--	<@CryptoValCred name="${sslValCred}" trustedCerts=trustedCerts/>-->
 	<@CryptoValCredPKIX name="${sslValCred}" trustedCerts=trustedCerts/>
 	<@TwoWayCryptoProfile name="${sslCryptoProfile}" identCred="${sslIdCred}" valCred="${sslValCred}"/>
 	<@TwoWaySSLProxy name="${sslProxyProfile}" forwardCryptoProfile="${sslCryptoProfile}" reverseCryptoProfile="${sslCryptoProfile}"/>
