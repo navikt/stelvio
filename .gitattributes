@@ -2410,6 +2410,7 @@ incubator/busconfiguration/src/main/resources/environments/i2.properties -text
 incubator/busconfiguration/src/main/resources/environments/i3.properties -text
 incubator/busconfiguration/src/main/resources/environments/template.properties_default -text
 incubator/busconfiguration/src/main/resources/moduleconfig/cons.xml -text svneol=unset#text/plain
+incubator/busconfiguration/src/main/resources/moduleconfig/nav-cons-sak-arena-2.0.0.xml -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/resources/moduleconfig/nav-prod-sak-arena.xml -text
 incubator/busconfiguration/src/main/resources/moduleconfig/nav.xml -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/resources/moduleconfig/prod.xml -text svneol=unset#text/plain
