@@ -19,6 +19,8 @@
 <#assign matchingRuleAll="ELSAMDefault_match_all"/>
 <#assign matchingRuleAllErrors="ELSAMDefault_match_allErrors"/>
 
+<#assign nameNP="NorskPensjon"/>
+<#assign outboundProcessingPolicyNP="${nameNP}OutboundPolicy"/>
 
 <@dp.configuration domain="${cfgDomain}">
 	<#-- Frontside SSL configuration for Inbound calls -->
@@ -76,7 +78,8 @@
 			name="${outboundAaaPolicyName}"
 			auLtpaKeyFile="local:///aaa/${outboundFrontsideLTPAKeyFile}"
 			auLtpaKeyFilePwd="${outboundFrontsideLTPAKeyPwd}"/>
-
+	
+	<#-- Various parameters -->
 	<@dp.NFSStaticMount
 			name="${nfsLogTargetName}"
 			uri="${nfsLogTargetUri}"/>
@@ -87,7 +90,7 @@
 			name="${matchingRuleAllErrors}"
 			errorCodeMatch="*"/>
 
-	<#-- Inbound processing rules-->
+	<#-- Inbound processing rules ELSAM-->
 	<@dp.ProcessingRequestRule
 		name="${inboundProcessingPolicy}"
 		actions=[
@@ -207,7 +210,7 @@
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicyNP}_error-rule"}
 			]/>			
 			
-	<#-- Outbound processing rules-->
+	<#-- Outbound processing rules ELSAM-->
 	<@dp.ProcessingRequestRule
 		name="${outboundProcessingPolicy}"
 		actions=[
@@ -270,137 +273,8 @@
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicy}_response-rule"},
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicy}_error-rule"}
 			]/>
-		
-
-	<#-- Generate Inbound proxies -->			
-	<#list inboundProxies as proxy>
-	<#assign tempPolicy="${inboundProcessingPolicy}"/>
-		<#switch proxy.name>
-			<#case "NPSimulering">
-				<#assign tempPolicy="${inboundProcessingPolicyNP}">
-				<#break>
-			<#case "NPTjenestepensjon">
-				<#assign tempPolicy="${inboundProcessingPolicyNP}">
-				<#break>				
-			<#default>
-				<#assign tempPolicy="${inboundProcessingPolicy}">
-		</#switch>				
-	<@dp.WSProxyStaticBackendMultipleWsdl
-			name="${proxy.name}Inbound"
-			version="${cfgVersion}"
-			wsdls=proxy.wsdls
-			policy=tempPolicy
-			frontsideHandler="${inboundFrontsideHandler}"
-			frontsideProtocol="${inboundFrontsideProtocol}"
-			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
-			backsideProtocol="${inboundBacksideProtocol}"
-			backsideHost="${inboundBacksideHost}"
-			backsidePort="${inboundBacksidePort}"/>
-	</#list>	
-
-	<#-- Generate Outbound proxies -->			
-	<#list outboundProxies as proxy>
-	<@dp.WSProxyWSADynamicBackendMultipleWsdl
-			name="${proxy.name}Outbound"
-			version="${cfgVersion}"
-			wsdls=proxy.wsdls
-			policy="${outboundProcessingPolicy}"
-			frontsideHandler="${outboundFrontsideHandler}"
-			frontsideProtocol="${outboundFrontsideProtocol}"
-			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
-			wsaRequireAaa="off"/>
-	</#list>
 	
-	<#-- SMS Gateway -->	
-	<#-- TODO her -->
-	
-	<#assign nameSMS="SMSGateway"/>
-	<#--<#assign outboundBacksideHostSMS="smsgw.carrot.no"/>
-	<#assign outboundBacksideProtocolSMS="https"/>
-	<#assign outboundBacksidePortSMS="443"/>
-	-->
-	<#assign outboundProcessingPolicySMS="${nameSMS}_Policy"/>
-
-	<#assign wsdlNameSMS="carrot_sms_gateway.wsdl"/>
-	<#assign aaaPolicyNameSMS="aaa0"/>
-	
-	<@dp.BacksideSSL
-			name="${outboundBacksideHostSMS}"
-			trustedCerts=[{"name":"Thawte-Server-CA","file":"pubcert:///Thawte-Server-CA.pem"}]/>
-	
-	<#-- Outbound processing rules-->
-	<@dp.ProcessingRequestRule
-		name="${outboundProcessingPolicySMS}"
-		actions=[
-				<#--{"type":"slm",	"name":"slmAction",	
-						"input":"INPUT",	"output":"NULL"},-->
-				{"type":"aaa",	"name":"aaaAction",	
-						"input":"INPUT",	"output":"PIPE",
-						"policy":"${outboundAaaPolicyName}"},
-				{"type":"xform", "name":"stripWSSecAction",
-						"input":"PIPE",	"output":"PIPE", "async":"off",
-						"stylesheet":"store:///strip-security-header.xsl",
-						"params":[]},				 
-				{"type":"result", "name":"resultAction",
-					"input":"PIPE","output":"OUTPUT"}
-			]/>	
-	<@dp.ProcessingResponseRule
-		name="${outboundProcessingPolicySMS}"
-		actions=[
-				{"type":"result", "name":"resultAction",
-					"input":"INPUT","output":"OUTPUT"}
-			]/>
-	<@dp.ProcessingErrorRule
-		name="${outboundProcessingPolicySMS}"
-		actions=[
-				{"type":"xform", "name":"createFaultAction",
-						"input":"INPUT",	"output":"faultHandler", "async":"off",
-						"stylesheet":"local:///xslt/fault-handler.xsl",
-						"params":[
-							{"name":"fault-prefix","value":"DataPower Security Gateway"}
-						]},
-				{"type":"xform", "name":"logAction",
-						"input":"faultHandler",	"output":"NULL", "async":"on",
-						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
-						"params":logActionParams},
-				{"type":"result", "name":"resultAction",
-					"input":"faultHandler","output":"OUTPUT"}					
-			]/>
-			
-	<@dp.WSStylePolicy
-			name="${outboundProcessingPolicySMS}"
-			policyMapsList=[
-				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicySMS}_request-rule"}, 
-				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicySMS}_response-rule"},
-				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicySMS}_error-rule"}
-			]/>
-	
-
-	<@dp.WSProxyStaticBackend		
-		name="${nameSMS}"
-		version="${cfgVersion}"
-		wsdlName="${wsdlNameSMS}"
-		wsdlLocation="local:///wsdl/${wsdlNameSMS}"
-		wsdlPortBinding=["{http://ws.v4.sms.carrot.no}${nameSMS}"]
-		policy="${outboundProcessingPolicySMS}"
-		frontsideHandler="${outboundFrontsideHandler}"
-		frontsideProtocol="${outboundFrontsideProtocol}"
-		frontsideUri="${endpointURISMS}"
-		backsideProtocol="${outboundBacksideProtocolSMS}"
-		backsideHost="${outboundBacksideHostSMS}"
-		backsidePort="${outboundBacksidePortSMS}"
-		backsideUri="${endpointURISMS}"
-		backsideSSLProxy="${outboundBacksideHostSMS}_SSLProxyProfile"
-	/>
-	
-	<#-- Norsk Pensjon outbound-->
-
-	<#assign nameNP="NorskPensjon"/>
-	<#assign outboundProcessingPolicyNP="${nameNP}OutboundPolicy"/>
-	<#assign wsdlNameNP="privatpensjon.wsdl"/>
-	<#assign aaaPolicyNameNP="aaa0"/>	
-	
-	<#-- Outbound processing rules-->
+	<#-- Outbound processing rule Norsk Pensjon-->
 	<@dp.ProcessingRequestRule
 		name="${outboundProcessingPolicyNP}"
 		actions=[
@@ -463,8 +337,49 @@
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicyNP}_request-rule"}, 
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicyNP}_response-rule"},
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicyNP}_error-rule"}
-			]/>
+			]/>	
+
+	<#-- Generate Inbound proxies for ELSAM and Norsk Pensjon-->			
+	<#list inboundProxies as proxy>
+	<#assign tempPolicy="${inboundProcessingPolicy}"/>
+		<#switch proxy.name>
+			<#case "NPSimulering">
+				<#assign tempPolicy="${inboundProcessingPolicyNP}">
+				<#break>
+			<#case "NPTjenestepensjon">
+				<#assign tempPolicy="${inboundProcessingPolicyNP}">
+				<#break>				
+			<#default>
+				<#assign tempPolicy="${inboundProcessingPolicy}">
+		</#switch>				
+	<@dp.WSProxyStaticBackendMultipleWsdl
+			name="${proxy.name}Inbound"
+			version="${cfgVersion}"
+			wsdls=proxy.wsdls
+			policy=tempPolicy
+			frontsideHandler="${inboundFrontsideHandler}"
+			frontsideProtocol="${inboundFrontsideProtocol}"
+			backsideSSLProxy="${inboundBacksideHost}_SSLProxyProfile"
+			backsideProtocol="${inboundBacksideProtocol}"
+			backsideHost="${inboundBacksideHost}"
+			backsidePort="${inboundBacksidePort}"/>
+	</#list>	
+
+	<#-- Generate Outbound proxies for ELSAM-->			
+	<#list outboundProxies as proxy>
+	<@dp.WSProxyWSADynamicBackendMultipleWsdl
+			name="${proxy.name}Outbound"
+			version="${cfgVersion}"
+			wsdls=proxy.wsdls
+			policy="${outboundProcessingPolicy}"
+			frontsideHandler="${outboundFrontsideHandler}"
+			frontsideProtocol="${outboundFrontsideProtocol}"
+			backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
+			wsaRequireAaa="off"/>
+	</#list>
 	
+	<#-- Generate Norsk Pensjon outbound proxy-->
+		
 	<@dp.WSProxyStaticBackend		
 		name="${nameNP}Outbound"
 		version="${cfgVersion}"
@@ -480,6 +395,77 @@
 		backsidePort="${outboundBacksidePortNP}"
 		backsideUri="${endpointURINP}"
 		backsideSSLProxy="${inboundFrontsideHost}_SSLProxyProfile"
+	/>	
+	
+	<#-- SMS Gateway -->	
+	
+	<#assign nameSMS="SMSGateway"/>
+	<#assign outboundProcessingPolicySMS="${nameSMS}_Policy"/>
+	
+	<@dp.BacksideSSL
+			name="${outboundBacksideHostSMS}"
+			trustedCerts=[{"name":"Thawte-Server-CA","file":"pubcert:///Thawte-Server-CA.pem"}]/>
+	
+	<#-- Outbound processing rules-->
+	<@dp.ProcessingRequestRule
+		name="${outboundProcessingPolicySMS}"
+		actions=[
+				{"type":"aaa",	"name":"aaaAction",	
+						"input":"INPUT",	"output":"PIPE",
+						"policy":"${outboundAaaPolicyName}"},
+				{"type":"xform", "name":"stripWSSecAction",
+						"input":"PIPE",	"output":"PIPE", "async":"off",
+						"stylesheet":"store:///strip-security-header.xsl",
+						"params":[]},				 
+				{"type":"result", "name":"resultAction",
+					"input":"PIPE","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingResponseRule
+		name="${outboundProcessingPolicySMS}"
+		actions=[
+				{"type":"result", "name":"resultAction",
+					"input":"INPUT","output":"OUTPUT"}
+			]/>
+	<@dp.ProcessingErrorRule
+		name="${outboundProcessingPolicySMS}"
+		actions=[
+				{"type":"xform", "name":"createFaultAction",
+						"input":"INPUT",	"output":"faultHandler", "async":"off",
+						"stylesheet":"local:///xslt/fault-handler.xsl",
+						"params":[
+							{"name":"fault-prefix","value":"DataPower Security Gateway"}
+						]},
+				{"type":"xform", "name":"logAction",
+						"input":"faultHandler",	"output":"NULL", "async":"on",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"faultHandler","output":"OUTPUT"}					
+			]/>
+			
+	<@dp.WSStylePolicy
+			name="${outboundProcessingPolicySMS}"
+			policyMapsList=[
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicySMS}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicySMS}_response-rule"},
+				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicySMS}_error-rule"}
+			]/>
+	
+	<@dp.WSProxyStaticBackend		
+		name="${nameSMS}"
+		version="${cfgVersion}"
+		wsdlName="${wsdlNameSMS}"
+		wsdlLocation="local:///wsdl/${wsdlNameSMS}"
+		wsdlPortBinding=["{http://ws.v4.sms.carrot.no}${nameSMS}"]
+		policy="${outboundProcessingPolicySMS}"
+		frontsideHandler="${outboundFrontsideHandler}"
+		frontsideProtocol="${outboundFrontsideProtocol}"
+		frontsideUri="${endpointURISMS}"
+		backsideProtocol="${outboundBacksideProtocolSMS}"
+		backsideHost="${outboundBacksideHostSMS}"
+		backsidePort="${outboundBacksidePortSMS}"
+		backsideUri="${endpointURISMS}"
+		backsideSSLProxy="${outboundBacksideHostSMS}_SSLProxyProfile"
 	/>	
 	
 	<#-- LogTargets for remote logging-->
