@@ -77,14 +77,14 @@ public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerM
 	}
 	
 	private final void updateAuthorization(final EARFile earFile, final AuthorizationType authorization) {
+		
 		RolesType rolesInConfig = authorization.getRoles();
-		
-		List<String> rolesInEjb = RoleSecurity.getSecurityRoles((EJBJarFile)earFile.getEJBJarFiles().get(0));
-		
-		if(rolesInEjb != null && rolesInEjb.size() > 0) {
-			RoleSecurity.updateRoleBindings(earFile, rolesInConfig, rolesInEjb);
+		if(rolesInConfig != null && rolesInConfig.sizeOfRoleArray() > 0) {
+			List<String> rolesInEjb = RoleSecurity.getSecurityRoles((EJBJarFile)earFile.getEJBJarFiles().get(0));
+			if(rolesInEjb != null && rolesInEjb.size() > 0) {
+				RoleSecurity.updateRoleBindings(earFile, rolesInConfig, rolesInEjb);
+				RoleSecurity.updateRunAsBindings(earFile, rolesInConfig, rolesInEjb);
+			}
 		}
-		
-		//TODO: RunAs injections!
 	}
 }

@@ -18,6 +18,28 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
 
 public class RoleSecurity {
 
+	public static final void updateRunAsBindings(final Archive archive, final RolesType rolesInConfig, final List<String> rolesInEjb) {
+		List<SecurityRoleConfig> securityRolesConfig = securityRoles2securityRoleConfigList(rolesInConfig);
+		List<SecurityRoleConfig> targetSecurityRolesConfig = new ArrayList<SecurityRoleConfig>();
+		
+		for(SecurityRoleConfig se : securityRolesConfig) {
+			if(se.getRunAsUser() != null) {
+				if(rolesInEjb.contains(se.getRoleName())) {
+					targetSecurityRolesConfig.add(se);
+				}
+			}
+		}
+		
+		try {
+			ApplicationDescriptorEditor app = new ApplicationDescriptorEditor(archive);
+			IbmApplicationBndEditor bnd = new IbmApplicationBndEditor(archive, app.getApplication());
+			bnd.addRunAsBindings(targetSecurityRolesConfig);
+			bnd.save();
+		} catch (IOException e) {
+			throw new RuntimeException("An error occured saving the application descriptor for the ear archive", e);
+		}
+	}
+	
 	public static final void updateRoleBindings(final Archive archive, final RolesType rolesInConfig, final List<String> rolesInEjb) {
 	
 		List<SecurityRoleConfig> securityRolesConfig = securityRoles2securityRoleConfigList(rolesInConfig);
@@ -71,6 +93,12 @@ public class RoleSecurity {
 				}
 				securityRoleConfig.setGroups(stringGroups);
 			}
+			
+			if(r.getRunas() != null) {
+				securityRoleConfig.setRunAsUser(r.getRunas().getUsername());
+				securityRoleConfig.setRunasPassword(r.getRunas().getPassword());
+			}
+			
 			rolesConfig.add(securityRoleConfig);
 		}
 		

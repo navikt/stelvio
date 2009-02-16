@@ -21,7 +21,7 @@ public class OutboundWSSecurity {
 			if(Constants.AUTH_WSS_LTPATOKEN.equals(t.getName())) {
 				setupLtpaTokenGenerator(archive);
 			} else if(Constants.AUTH_WSS_USERNAMETOKEN.equals(t.getName())) {
-				//TODO: Not implemented
+				setupUsernameTokenGenerator(archive, t);
 			}
 		}
 	}
@@ -37,6 +37,20 @@ public class OutboundWSSecurity {
 			wscBnd.save();
 		} catch (IOException e) {
 			throw new RuntimeException("An error occured injecting LTPA Token generator", e);
+		}		
+	}
+
+	private static void setupUsernameTokenGenerator(Archive archive, TokenType token) {
+		try {
+			String tokenPartReference = "UsernameTokenPartRef";
+			IbmWebServiceClientExtEditor wscExt = new IbmWebServiceClientExtEditor(archive);
+			wscExt.addRequestGeneratorUsername(tokenPartReference);
+			wscExt.save();
+			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);
+			wscBnd.addRequestTokenGeneratorUsername(tokenPartReference, token.getUsername(), token.getPassword());
+			wscBnd.save();
+		} catch (IOException e) {
+			throw new RuntimeException("An error occured injecting Username Token generator", e);
 		}		
 	}
 }
