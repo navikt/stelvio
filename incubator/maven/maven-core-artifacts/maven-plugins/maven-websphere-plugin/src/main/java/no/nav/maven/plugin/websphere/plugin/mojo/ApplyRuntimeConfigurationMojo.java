@@ -62,7 +62,7 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 				arg.setLine(a.getName());
 				detailedCommand.addArg(arg);
 				arg = new Commandline.Argument();
-				arg.setLine(String.valueOf(a.getValue()));
+				arg.setLine(String.valueOf(a.getMaxconcurrency()));
 				detailedCommand.addArg(arg);
 				getLog().info("Executing the following command: " + detailedCommand.toString());
 				CommandLineUtils.executeCommandLine(detailedCommand, stdout, stderr);
