@@ -11,8 +11,9 @@ import com.ibm.etools.webservice.wscommonbnd.ValueType;
 
 public class TokenType {
 
-	private final static String LTPA_URI = "http://www.ibm.com/websphere/appserver/tokentype/5.0.2";
+	public final static String USERNAME_LOCALNAME = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken";
 	private final static String USERNAME_URI = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken";
+	private final static String LTPA_URI = "http://www.ibm.com/websphere/appserver/tokentype/5.0.2";
 	private final ValueType valueType;
 	private TokenConsumer ltpaTokenConsumer;
 	private TokenConsumer usernameTokenConsumer;
@@ -60,6 +61,24 @@ public class TokenType {
 		return tokenGenerator;
 	}
 	
+	public TokenGenerator usernameTokenGenerator() {
+		this.callbackHandler = WebSphereFactories.getWscommonbndFactory().createCallbackHandler();
+		callbackHandler.setClassname("com.ibm.wsspi.wssecurity.auth.callback.NonPromptCallbackHandler");
+		BasicAuth basicAuth = WebSphereFactories.getWscbndFactory().createBasicAuth();
+		basicAuth.setUserid(username);
+		basicAuth.setPassword(password);
+		callbackHandler.setBasicAuth(basicAuth);
+
+		this.tokenGenerator = WebSphereFactories.getWscommonbndFactory().createTokenGenerator();
+		tokenGenerator.setName("UsernameTokenGenerator");
+		tokenGenerator.setClassname("com.ibm.wsspi.wssecurity.token.UsernameTokenGenerator");
+		tokenGenerator.setValueType(valueType);
+		tokenGenerator.setCallbackHandler(callbackHandler);	
+		
+		return tokenGenerator;
+	}
+	
+	
 	public TokenConsumer getLtpaTokenConsumer() {
 		PartReference newPartRef = WebSphereFactories.getWscommonbndFactory().createPartReference();
 		newPartRef.setPart(partRef);
@@ -98,6 +117,13 @@ public class TokenType {
 					"LTPA Token", null, null, null);
 	}
 	
+	public static TokenType createUsername(final String username, final String password) {
+		return new TokenType(
+					USERNAME_URI,
+					"",
+					"Username Token", username, password, null);
+	}
+	
 	public static TokenConsumer createLTPATokenConsumer(String partRef){
 		TokenType t = new TokenType("LTPA", LTPA_URI, "LTPA Token", null, null, partRef);		
 		return t.getLtpaTokenConsumer();		
@@ -106,5 +132,9 @@ public class TokenType {
 	public static TokenConsumer createUsernameTokenConsumer(String partRef){
 		TokenType t = new TokenType(USERNAME_URI, "", "Username Token", null, null, partRef);
 		return t.getUsernameTokenConsumer();		
+	}
+
+	public String getLocalName() {
+		return localName;
 	}
 }

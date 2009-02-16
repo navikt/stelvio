@@ -21,7 +21,14 @@ import com.ibm.ejs.models.base.bindings.applicationbnd.AuthorizationTable;
 import com.ibm.ejs.models.base.bindings.applicationbnd.Everyone;
 import com.ibm.ejs.models.base.bindings.applicationbnd.Group;
 import com.ibm.ejs.models.base.bindings.applicationbnd.RoleAssignment;
+import com.ibm.ejs.models.base.bindings.applicationbnd.RunAsBinding;
+import com.ibm.ejs.models.base.bindings.applicationbnd.RunAsMap;
 import com.ibm.ejs.models.base.bindings.applicationbnd.User;
+import com.ibm.ejs.models.base.bindings.applicationbnd.impl.RunAsMapImpl;
+import com.ibm.ejs.models.base.bindings.commonbnd.AbstractAuthData;
+import com.ibm.ejs.models.base.bindings.commonbnd.BasicAuthData;
+import com.ibm.ejs.models.base.bindings.commonbnd.impl.AbstractAuthDataImpl;
+import com.ibm.ejs.models.base.bindings.commonbnd.impl.BasicAuthDataImpl;
 
 public class IbmApplicationBndEditor extends DeploymentDescriptorEditor<ApplicationBinding> {
 
@@ -45,6 +52,12 @@ public class IbmApplicationBndEditor extends DeploymentDescriptorEditor<Applicat
 			addRoleAssignment(config);
 		}
 	}
+
+	public void addRunAsBindings(List<SecurityRoleConfig> securityRoles){
+		for (SecurityRoleConfig config : securityRoles) {
+			addRunAsAssignment(config);
+		}
+	}
 	
 	private void addRoleAssignment(SecurityRoleConfig config){
 		//getAuthorizationTable().
@@ -64,6 +77,27 @@ public class IbmApplicationBndEditor extends DeploymentDescriptorEditor<Applicat
 		}
 	}
 	
+	private void addRunAsAssignment(SecurityRoleConfig config){
+		
+		String roleName = config.getRoleName();
+		SecurityRole role = application.getSecurityRoleNamed(roleName);
+		RunAsBinding runAsBinding = createNewRunAsBinding(role, config);
+		
+		if(application.containsSecurityRole(roleName)){
+			if(isRunAsBindingPresent(runAsBinding)){
+				int index = getRunAsBindingIndex(runAsBinding);
+				getRunAsMap().getRunAsBindings().set(index, runAsBinding);
+			} else {
+				getRunAsMap().getRunAsBindings().add(runAsBinding);
+			}	
+			
+			
+		} else {
+			throw new IllegalArgumentException("SecurityRole '" + roleName + "' "
+												+ "from config is not present in application.xml. Unable to create Run As binding in ibm-application-bnd.xml");
+		}
+	}
+	
 	private int getRoleAssignmentIndex(RoleAssignment roleAssignmentToCheck){
 		EList authorizations = getAuthorizationTable().getAuthorizations();
 		int i = 0;
@@ -77,6 +111,20 @@ public class IbmApplicationBndEditor extends DeploymentDescriptorEditor<Applicat
 		}
 		return -1;
 	}
+
+	private int getRunAsBindingIndex(RunAsBinding runAsBindingToCheck){
+		EList runAsBindings = getRunAsMap().getRunAsBindings();
+		int i = 0;
+		for (Object object : runAsBindings) {
+			RunAsBinding runAsBinding = (RunAsBinding)object;
+			if(runAsBinding.getSecurityRole().getRoleName().equals(
+					runAsBindingToCheck.getSecurityRole().getRoleName())){
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
 	
 	private boolean isRoleAssignmentPresent(RoleAssignment roleAssignmentToCheck){
 		EList authorizations = getAuthorizationTable().getAuthorizations();
@@ -84,6 +132,18 @@ public class IbmApplicationBndEditor extends DeploymentDescriptorEditor<Applicat
 			RoleAssignment roleAssignment = (RoleAssignment)object;
 			if(roleAssignment.getRole().getRoleName().equals(
 					roleAssignmentToCheck.getRole().getRoleName())){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean isRunAsBindingPresent(RunAsBinding runAsBindingToCheck){
+		EList runAsBindings = getRunAsMap().getRunAsBindings();
+		for (Object object : runAsBindings) {
+			RunAsBinding runAsBinding = (RunAsBinding)object;
+			if(runAsBinding.getSecurityRole().getRoleName().equals(
+					runAsBindingToCheck.getSecurityRole().getRoleName())){
 				return true;
 			}
 		}
@@ -114,6 +174,20 @@ public class IbmApplicationBndEditor extends DeploymentDescriptorEditor<Applicat
 			}
 		} 
 		return roleAssignment;
+	}
+
+	@SuppressWarnings("unchecked")
+	private RunAsBinding createNewRunAsBinding(SecurityRole role, SecurityRoleConfig config){
+		
+		RunAsBinding runAsBinding = APP_BND_FACTORY.createRunAsBinding();
+		runAsBinding.setSecurityRole(role);
+		
+		BasicAuthData basicAuthData = new BasicAuthDataImpl();
+		basicAuthData.setUserId(config.getRunAsUser());
+		basicAuthData.setPassword(config.getRunasPassword());
+	
+		runAsBinding.setAuthData(basicAuthData);
+		return runAsBinding;
 	}
 	
 	private User createUser(String userName) {
@@ -156,5 +230,12 @@ public class IbmApplicationBndEditor extends DeploymentDescriptorEditor<Applicat
 			appBnd.setAuthorizationTable(APP_BND_FACTORY.createAuthorizationTable());
 		}
 		return appBnd.getAuthorizationTable();
+	}
+	
+	private RunAsMap getRunAsMap() {
+		if(appBnd.getRunAsMap() == null){
+			appBnd.setRunAsMap(APP_BND_FACTORY.createRunAsMap());
+		}
+		return appBnd.getRunAsMap();
 	}
 }

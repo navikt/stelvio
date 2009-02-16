@@ -132,9 +132,22 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
 			addRequestTokenGeneratorLTPA(partRef, serviceRef);
     	}
     }
+  
+    public void addRequestTokenGeneratorUsername(String partRef, String username, String password) {
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+			addRequestTokenGeneratorUsername(partRef, serviceRef, username, password);
+    	}
+    }
     
     private void addRequestTokenGeneratorLTPA(String partRef, ServiceRef serviceRef) {
 		TokenType tokenType = TokenType.createLTPA();
+		addRequestTokenGenerator(tokenType, partRef, serviceRef);
+    }
+
+    private void addRequestTokenGeneratorUsername(String partRef, ServiceRef serviceRef, String username, String password) {
+		TokenType tokenType = TokenType.createUsername(username, password);
 		addRequestTokenGenerator(tokenType, partRef, serviceRef);
     }
     
@@ -186,7 +199,13 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     }
     
     private TokenGenerator createTokenGenerator(TokenType tokenType, String partRef){
-    	TokenGenerator newTokenGen = tokenType.tokenGenerator();
+    	
+    	TokenGenerator newTokenGen = null;
+    	if(tokenType.getLocalName().equals(TokenType.USERNAME_LOCALNAME)) {
+    		newTokenGen = tokenType.usernameTokenGenerator();
+    	} else {
+    		newTokenGen = tokenType.tokenGenerator();
+    	}
 		PartReference partReference = WebSphereFactories.getWscommonbndFactory().createPartReference();
 		partReference.setPart(partRef);
 		newTokenGen.setPartReference(partReference);

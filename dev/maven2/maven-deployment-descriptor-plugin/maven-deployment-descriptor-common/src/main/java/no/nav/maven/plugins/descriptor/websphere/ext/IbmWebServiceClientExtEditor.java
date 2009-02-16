@@ -25,6 +25,7 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
 	
     private static final String WEBSERVICECLIENT_EXT_FILENAME = "ibm-webservicesclient-ext.xmi";
     private static final String LTPA_URI = "http://www.ibm.com/websphere/appserver/tokentype/5.0.2";
+    private static final String USERNAMETOKEN_LOCALNAME = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken";
     private WsClientExtension clientExtension;
     
     public IbmWebServiceClientExtEditor(Archive archive) {    	
@@ -43,6 +44,15 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
     		addRequestGeneratorLTPA(partRef, serviceRef);
     	}
     }
+
+    public void addRequestGeneratorUsername(String partRef) {
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+    		addRequestGeneratorUsername(partRef, serviceRef);
+    	}
+    }
+    
     private void addRequestGeneratorLTPA(String partRef, ServiceRef serviceRef) {
     	ClientServiceConfig clientSrvCfg = getClientServiceConfig(getPortQnameBinding(serviceRef));
     	System.out.println("ClientServiceConfig: " + clientSrvCfg);
@@ -57,6 +67,22 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
     		securityTokens.add(ltpaToken);
     	}
     }
+ 
+    private void addRequestGeneratorUsername(String partRef, ServiceRef serviceRef) {
+    	ClientServiceConfig clientSrvCfg = getClientServiceConfig(getPortQnameBinding(serviceRef));
+    	System.out.println("ClientServiceConfig: " + clientSrvCfg);
+    	SecurityRequestGeneratorServiceConfig requestGenCfg = clientSrvCfg.getSecurityRequestGeneratorServiceConfig();
+    	if (requestGenCfg == null) {
+    		requestGenCfg = WebSphereFactories.getWscextFactory().createSecurityRequestGeneratorServiceConfig();
+    		clientSrvCfg.setSecurityRequestGeneratorServiceConfig(requestGenCfg);
+    	}
+    	EList securityTokens = requestGenCfg.getSecurityToken();
+    	if(!isUsernameSecurityTokenPresent(securityTokens)){
+    		SecurityToken usernameToken = createUsernameSecurityToken(partRef);
+    		securityTokens.add(usernameToken);
+    	}
+    }
+    
     
     private PortQnameBinding getPortQnameBinding(ServiceRef serviceRef) {
 		return (PortQnameBinding) serviceRef.getPortQnameBindings().get(0);   	
@@ -100,7 +126,26 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
     	}
     	return false;
     }
+   
+    private boolean isUsernameSecurityTokenPresent(EList securityTokens){
+    	Iterator securityTokensIter = securityTokens.iterator();
+    	while (securityTokensIter.hasNext()) {
+    		SecurityToken securityToken = (SecurityToken) securityTokensIter.next();
+    		if (securityToken.getLocalName().equals(USERNAMETOKEN_LOCALNAME)) {
+				return true;
+    		}
+    	}
+    	return false;
+    }
     
+    private SecurityToken createUsernameSecurityToken(String partRef){
+    	SecurityToken usernameToken = WebSphereFactories.getWscommonextFactory().createSecurityToken();
+    	usernameToken.setLocalName(USERNAMETOKEN_LOCALNAME);
+    	usernameToken.setName(partRef);
+    	usernameToken.setUri("");
+
+		return usernameToken;
+    }
     
     public void addRequestGeneratorUsername() {
     	

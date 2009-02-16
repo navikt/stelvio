@@ -9,6 +9,8 @@ public class SecurityRoleConfig {
 	private List<String> users;
 	private boolean allAuthenticatedUsers = false;
 	private boolean everyone = false;
+	private String runAsUser;
+	private String runasPassword;
 	
 	public boolean isAllAuthenticatedUsers() {
 		return allAuthenticatedUsers;
@@ -39,6 +41,18 @@ public class SecurityRoleConfig {
 	}
 	public void setUsers(List<String> users) {
 		this.users = users;
+	}
+	public String getRunAsUser() {
+		return runAsUser;
+	}
+	public void setRunAsUser(String runAsUser) {
+		this.runAsUser = runAsUser;
+	}
+	public String getRunasPassword() {
+		return runasPassword;
+	}
+	public void setRunasPassword(String runasPassword) {
+		this.runasPassword = runasPassword;
 	}
 	
 }
