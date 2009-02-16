@@ -8,7 +8,8 @@
 		frontsideHandler
 		frontsideProtocol
 		backsideSSLProxy
-		wsaRequireAaa>
+		wsaRequireAaa
+		backsideTimeout>
 	<@WSEndpointRewritePolicyMultipleWsdl
 		name="${name}"
 		wsdls=wsdls
@@ -28,5 +29,6 @@
 		type="dynamic-backend"
 		toggleNoWsa="off"
 		wsaMode="wsa2sync"
-		wsaRequireAaa="${wsaRequireAaa}"/>
+		wsaRequireAaa="${wsaRequireAaa}"
+		backTimeout="${backsideTimeout}"/>
 </#macro>
