@@ -28,6 +28,12 @@
       <xs:element type="wps:runtimeType" name="runtime" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="runasType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="username"/>
+      <xs:element type="xs:string" name="password"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="endpointsType">
     <xs:sequence>
       <xs:element type="wps:endpointType" name="endpoint" maxOccurs="unbounded" minOccurs="0" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
@@ -62,7 +68,7 @@
   <xs:complexType name="activationspecificationType">
     <xs:sequence>
       <xs:element type="xs:string" name="name"/>
-      <xs:element type="xs:byte" name="value"/>
+      <xs:element type="xs:byte" name="maxconcurrency"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="tokenType">
@@ -99,6 +105,7 @@
       <xs:element type="xs:string" name="name"/>
       <xs:element type="wps:usersType" name="users" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
       <xs:element type="wps:groupsType" name="groups" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
+      <xs:element type="wps:runasType" name="runas" minOccurs="0" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="authorizationType">
