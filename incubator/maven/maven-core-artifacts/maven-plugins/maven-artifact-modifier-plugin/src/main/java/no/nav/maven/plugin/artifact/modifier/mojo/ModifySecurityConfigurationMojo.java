@@ -57,7 +57,7 @@ public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerM
 		}
 		
 		OutboundType outbound = authentication.getOutbound();
-		if(inbound != null) {
+		if(outbound != null) {
 			updateOutboundAuthentication(ejbFile, outbound);	
 		}
 	}
