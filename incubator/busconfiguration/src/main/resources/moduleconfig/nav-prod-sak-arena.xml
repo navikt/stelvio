@@ -62,11 +62,11 @@
         <activationspecifications>
             <activationspecification>
                 <name>nav-cons-frg-tps_AS</name>
-                <value>1</value>
+                <maxconcurrency>1</maxconcurrency>
             </activationspecification>
             <activationspecification>
                 <name>nav-ent-oko-oppdragResponse_AS</name>
-                <value>1</value>
+                <maxconcurrency>1</maxconcurrency>
             </activationspecification>
         </activationspecifications>
     </runtime>
