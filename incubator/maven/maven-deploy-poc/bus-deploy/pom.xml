@@ -22,5 +22,11 @@
             <version>1.0-SNAPSHOT</version>
             <type>ear</type>
 		</dependency>
+        <dependency>
+            <groupId>no.nav.maven.support</groupId>
+            <artifactId>nav-cons-sak-arena-2.0.0</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ear</type>
+		</dependency>
 	</dependencies>
 </project>
