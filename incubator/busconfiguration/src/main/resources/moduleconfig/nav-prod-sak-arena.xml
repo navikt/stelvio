@@ -6,7 +6,7 @@
                    <token>
                        <name>WSSUsernameToken</name>
                        <username>steffen</username>
-                       <password>hemmelig</password>
+                       <password>{xor}NzoyMjozNjg=</password>
                    </token>
                </tokens>
            </outbound>
