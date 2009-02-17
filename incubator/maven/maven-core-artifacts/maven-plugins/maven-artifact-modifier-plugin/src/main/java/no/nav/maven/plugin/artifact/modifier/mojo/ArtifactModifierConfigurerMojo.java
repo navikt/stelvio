@@ -4,10 +4,10 @@ import java.io.File;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import no.nav.busconfiguration.configuration.ArtifactConfiguration;
-import no.nav.busconfiguration.constants.Constants;
-import no.nav.busconfiguration.managers.ArchiveManager;
-import no.nav.busconfiguration.managers.IArchiveManager;
+import no.nav.maven.commons.configuration.ArtifactConfiguration;
+import no.nav.maven.commons.constants.Constants;
+import no.nav.maven.commons.managers.ArchiveManager;
+import no.nav.maven.commons.managers.IArchiveManager;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;

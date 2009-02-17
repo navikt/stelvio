@@ -3,8 +3,8 @@ package no.nav.maven.plugin.artifact.modifier.mojo;
 import java.io.File;
 import java.util.Set;
 
-import no.nav.busconfiguration.managers.ArchiveManager;
-import no.nav.busconfiguration.managers.IArchiveManager;
+import no.nav.maven.commons.managers.ArchiveManager;
+import no.nav.maven.commons.managers.IArchiveManager;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;

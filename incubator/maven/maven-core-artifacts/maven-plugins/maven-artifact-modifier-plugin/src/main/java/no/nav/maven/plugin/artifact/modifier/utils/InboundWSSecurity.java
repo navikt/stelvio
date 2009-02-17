@@ -2,7 +2,7 @@ package no.nav.maven.plugin.artifact.modifier.utils;
 
 import java.io.IOException;
 
-import no.nav.busconfiguration.constants.Constants;
+import no.nav.maven.commons.constants.Constants;
 import no.nav.maven.plugins.descriptor.websphere.bnd.IbmWebServiceBndEditor;
 import no.nav.maven.plugins.descriptor.websphere.ext.IbmWebServiceExtEditor;
 import no.nav.pensjonsprogrammet.wpsconfiguration.TokensType;
