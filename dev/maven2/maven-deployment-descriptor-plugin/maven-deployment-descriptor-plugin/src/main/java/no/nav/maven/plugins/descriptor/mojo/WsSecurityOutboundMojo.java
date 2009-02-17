@@ -92,7 +92,10 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		if (authMechanism != null && authMechanism.equals(AUTH_WSS_LTPATOKEN)){
 			getLog().info("Setting up LTPATokenGenerator");
 			setupLtpaTokenGenerator(ejbJarFile);
-		}		
+		} else if (authMechanism != null && authMechanism.equals(AUTH_WSS_USERNAMETOKEN)){
+			getLog().info("Setting up UsernameTokenGenerator");
+			setupUsernameTokenGenerator(ejbJarFile);	
+		}
 	}
 	
 	public Properties convertStringToProperties(final String keysAndValues, final String propertySeparator, final String keyValueSeparator) {
@@ -145,5 +148,17 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		}		
 	}
 	
-	
+	private void setupUsernameTokenGenerator(Archive archive) throws MojoExecutionException {
+		try {
+			String tokenPartReference = "UsernameTokenPartRef";
+			IbmWebServiceClientExtEditor wscExt = new IbmWebServiceClientExtEditor(archive);
+			wscExt.addRequestGeneratorUsername(tokenPartReference);
+			wscExt.save();
+			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);
+			wscBnd.addRequestTokenGeneratorUsername(tokenPartReference, username, password);
+			wscBnd.save();
+		} catch (IOException e) {
+			throw new MojoExecutionException("Caught IOException while setting up LTPATokenGenerator", e);
+		}		
+	}	
 }
