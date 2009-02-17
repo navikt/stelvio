@@ -160,7 +160,7 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
 
     private void addRequestTokenGeneratorUsername(String partRef, ServiceRef serviceRef, String username, String password) {
 		TokenType tokenType = TokenType.createUsername(username, password);
-		addRequestTokenGenerator(tokenType, partRef, serviceRef);
+		addOrUpdateRequestTokenGenerator(tokenType, partRef, serviceRef);
     }
     
     private void addRequestTokenGenerator(TokenType tokenType, String partRef, ServiceRef serviceRef) {
@@ -172,6 +172,22 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
 			TokenGenerator newTokenGen = createTokenGenerator(tokenType, partRef);
 			System.out.println("TokenGenerator is not present. Adding new generator with TokenType:" + newTokenGen.getValueType());
 			tokenGenerators.add(newTokenGen);
+		}
+    }
+   
+    //TODO: Don't dear to change the logic above yet.
+    private void addOrUpdateRequestTokenGenerator(TokenType tokenType, String partRef, ServiceRef serviceRef) {
+		SecurityRequestGeneratorBindingConfig requestGenBnd = 
+			getSecurityRequestGeneratorBindingConfig(getPortQnameBinding(serviceRef));
+		EList tokenGenerators = requestGenBnd.getTokenGenerator();
+		Iterator tokenGenIter = tokenGenerators.iterator();
+		if(!isTokenGeneratorPresent(tokenGenerators, tokenType)){
+			TokenGenerator newTokenGen = createTokenGenerator(tokenType, partRef);
+			System.out.println("TokenGenerator is not present. Adding new generator with TokenType:" + newTokenGen.getValueType());
+			tokenGenerators.add(newTokenGen);
+		} else {
+			//Update the username password on the existing token.		
+			updateTokenGenerator(tokenGenerators, tokenType);
 		}
     }
     
@@ -197,8 +213,17 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     	return portQNBnd.getSecurityRequestGeneratorBindingConfig();
     }
        
- 
-    
+    private void updateTokenGenerator(EList tokenGenerators, TokenType tokenType){
+    	Iterator tokenGenIter = tokenGenerators.iterator();
+    	while (tokenGenIter.hasNext()) {
+			TokenGenerator tokenGen = (TokenGenerator) tokenGenIter.next();
+			if (tokenGen != null && ValueTypes.equals(tokenGen.getValueType(), tokenType.valueType())) {
+				tokenGen.getCallbackHandler().getBasicAuth().setPassword(tokenType.getPassword());
+				tokenGen.getCallbackHandler().getBasicAuth().setUserid(tokenType.getUsername());
+			}
+		}
+    }
+  
     private boolean isTokenGeneratorPresent(EList tokenGenerators, TokenType tokenType){
     	Iterator tokenGenIter = tokenGenerators.iterator();
     	while (tokenGenIter.hasNext()) {

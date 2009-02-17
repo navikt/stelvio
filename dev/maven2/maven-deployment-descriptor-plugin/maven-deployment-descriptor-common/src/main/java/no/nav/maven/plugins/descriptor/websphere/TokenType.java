@@ -137,4 +137,12 @@ public class TokenType {
 	public String getLocalName() {
 		return localName;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public String getUsername() {
+		return username;
+	}
 }
