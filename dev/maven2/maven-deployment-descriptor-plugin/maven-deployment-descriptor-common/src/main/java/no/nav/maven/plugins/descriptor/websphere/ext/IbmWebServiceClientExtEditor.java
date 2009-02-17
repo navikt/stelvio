@@ -154,8 +154,4 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
 
 		return usernameToken;
     }
-    
-    public void addRequestGeneratorUsername() {
-    	
-    }
 }
