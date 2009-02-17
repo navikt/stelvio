@@ -3,7 +3,7 @@ package no.nav.maven.plugin.websphere.plugin.mojo;
 import java.io.File;
 import java.util.Set;
 
-import no.nav.busconfiguration.configuration.ArtifactConfiguration;
+import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;

@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Set;
 
-import no.nav.busconfiguration.configuration.ArtifactConfiguration;
-import no.nav.busconfiguration.constants.Constants;
+import no.nav.maven.commons.configuration.ArtifactConfiguration;
+import no.nav.maven.commons.constants.Constants;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ActivationspecificationType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ActivationspecificationsType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
