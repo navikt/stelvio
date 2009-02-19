@@ -18,6 +18,7 @@ public class InboundWSSecurity {
 		
 		if(tokens.getTokenList().size() > 1) {
 			setupBothTokenConsumer(archive);
+			return;
 		}
 		
 		String tokenType = tokens.getTokenList().get(0).getName();
@@ -73,13 +74,17 @@ public class InboundWSSecurity {
 			boolean usageRequired = false; 
 			IbmWebServiceExtEditor wsExt = new IbmWebServiceExtEditor(archive);			
 			wsExt.deleteExistingConfig();
+			System.out.println("Adding ltpa for " + archive.getName());
 			wsExt.addRequestConsumerLTPAToken(usageRequired, ltpaPartRef);
+			System.out.println("Adding lusername for " + archive.getName());
 			wsExt.addRequestConsumerUsernameToken(usageRequired, usernamePartRef); 
 			wsExt.save();
 			
 			IbmWebServiceBndEditor wsBnd = new IbmWebServiceBndEditor(archive);
 			wsBnd.deleteExistingConfig();
+			System.out.println("Adding ltpa ext for " + archive.getName());
 			wsBnd.addLTPATokenConsumer(ltpaPartRef);
+			System.out.println("Adding lusername ext for " + archive.getName());
 			wsBnd.addUsernameTokenConsumer(usernamePartRef);			
 			wsBnd.save();
 		}catch (IOException e){
