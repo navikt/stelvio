@@ -76,6 +76,22 @@ public class RoleSecurity {
 			SecurityRoleConfig securityRoleConfig = new SecurityRoleConfig();
 			securityRoleConfig.setRoleName(r.getName());
 			
+			if( "true".equals(r.getAllauthenticated()) && r.getUsers() == null && r.getGroups() == null) {
+				securityRoleConfig.setAllAuthenticatedUsers(true);
+			} else {
+				securityRoleConfig.setAllAuthenticatedUsers(false);
+			}
+
+			if( "true".equals(r.getEveryone()) && r.getUsers() == null && r.getGroups() == null) {
+				securityRoleConfig.setEveryone(true);
+			} else {
+				securityRoleConfig.setEveryone(false);
+			}
+
+			if("true".equals(r.getEveryone()) && "true".equals(r.getAllauthenticated())) {
+				throw new RuntimeException("Not valid to set both allauthenticated and everyone to true in roleconfig.");
+			}
+			
 			if(r.getUsers() != null && r.getUsers().sizeOfUserArray() > 0) {
 				List<UserType> users = r.getUsers().getUserList();
 				List<String> stringUsers = new ArrayList<String>();
