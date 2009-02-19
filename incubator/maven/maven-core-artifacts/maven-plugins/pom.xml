@@ -19,8 +19,8 @@
 	<properties>
 		<maven.version>2.0.7</maven.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven-configuration-common.version>1.0-SNAPSHOT</maven-configuration-common.version>
-		<moduleconfig-xmlbeans.version>1.0-SNAPSHOT</moduleconfig-xmlbeans.version>
+		<maven-configuration-common.version>1.0</maven-configuration-common.version>
+		<moduleconfig-xmlbeans.version>1.0</moduleconfig-xmlbeans.version>
 		<maven-plugin-testing-harness.version>1.0-beta-1</maven-plugin-testing-harness.version>
 	</properties>
 
