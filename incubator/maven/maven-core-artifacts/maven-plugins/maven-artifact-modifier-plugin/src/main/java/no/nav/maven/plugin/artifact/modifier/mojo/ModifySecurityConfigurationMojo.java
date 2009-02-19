@@ -1,5 +1,6 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
+import java.io.File;
 import java.util.List;
 
 import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
@@ -30,9 +31,9 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
  */
 public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerMojo {
 
-	protected final void applyConfiguration(Artifact artifact, ConfigurationType configuration) {
+	protected final void applyConfiguration(File artifact, ConfigurationType configuration) {
 		if(configuration.getSecurity() != null) {
-			EARFile earFile = EarFile.openEarFile(artifact.getFile().getAbsolutePath());
+			EARFile earFile = EarFile.openEarFile(artifact.getAbsolutePath());
 			updateSecurity(earFile, configuration.getSecurity());
 			EarFile.closeEarFile(earFile);
 		}

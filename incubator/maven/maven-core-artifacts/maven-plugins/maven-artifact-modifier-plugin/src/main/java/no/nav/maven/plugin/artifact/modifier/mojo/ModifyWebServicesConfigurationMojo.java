@@ -1,5 +1,6 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -25,9 +26,9 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
  */
 public class ModifyWebServicesConfigurationMojo extends ArtifactModifierConfigurerMojo {
 	
-	protected final void applyConfiguration(Artifact artifact, ConfigurationType configuration) {
+	protected final void applyConfiguration(File artifact, ConfigurationType configuration) {
 		if(configuration.getWebservices() != null) {
-			EARFile earFile = EarFile.openEarFile(artifact.getFile().getAbsolutePath());
+			EARFile earFile = EarFile.openEarFile(artifact.getAbsolutePath());
 			updateWebServices((EJBJarFile)earFile.getEJBJarFiles().get(0), configuration.getWebservices());
 			EarFile.closeEarFile(earFile);
 		}

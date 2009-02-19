@@ -8,6 +8,7 @@ import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.commons.constants.Constants;
 import no.nav.maven.commons.managers.ArchiveManager;
 import no.nav.maven.commons.managers.IArchiveManager;
+import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;
@@ -25,11 +26,13 @@ import org.codehaus.plexus.archiver.UnArchiver;;
  */
 public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMojo {
 	
-	protected abstract void applyConfiguration(Artifact artifact, ConfigurationType configuration) throws MojoExecutionException, MojoFailureException;
+	protected abstract void applyConfiguration(File artifact, ConfigurationType configuration) throws MojoExecutionException, MojoFailureException;
 	
 	public void doExecute() throws MojoExecutionException, MojoFailureException {
 		for(Artifact a : artifacts) {
 			if(a.getType().equals(Constants.EAR_ARTIFACT_TYPE)) {
+				File destination = copyArtifactToTarget(a);
+				
 				StringTokenizer tokenizer = new StringTokenizer(a.getArtifactId(), Constants.ARTIFACT_MODIFIER_SEPARATOR);
 	
 				ConfigurationType configuration = null;
@@ -37,13 +40,27 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 					String tok=tokenizer.nextToken();
 					configuration = ArtifactConfiguration.getConfiguration(tok);
 					if(configuration != null) {
-						applyConfiguration(a, configuration);
+						applyConfiguration(destination, configuration);
 					}
 				}
 	
 				configuration = ArtifactConfiguration.getConfiguration(a.getArtifactId());
-				applyConfiguration(a, configuration);
+				if(configuration != null) {
+					applyConfiguration(destination, configuration);
+				}
 			}
 		}
+	}
+	
+	private final File copyArtifactToTarget(Artifact a) {
+		File source = new File(a.getFile().getAbsolutePath());
+		File dest = new File(targetDirectory, a.getFile().getName());
+		if( dest.exists() == false) {
+			EarFile.copyFile(source, dest);
+		} else {
+			//TODO: Should we fail?
+		}
+		
+		return dest;
 	}
 }
