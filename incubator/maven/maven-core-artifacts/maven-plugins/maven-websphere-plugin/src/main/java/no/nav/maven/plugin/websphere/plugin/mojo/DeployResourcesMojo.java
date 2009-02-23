@@ -26,9 +26,7 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 	}
 	
 	private final void deployResources(final Commandline commandLine) {
-				
 	
-		getLog().info(deployableArtifactsHome);
 		String[] applicationsWithProperties = new File(deployableArtifactsHome).list(new FilenameFilter() {public boolean accept(File dir, String name) {return (name.endsWith(".ear")) ? true : false;}});
 			
 		File resourceProperties = new File(resourcePropertiesHome);
