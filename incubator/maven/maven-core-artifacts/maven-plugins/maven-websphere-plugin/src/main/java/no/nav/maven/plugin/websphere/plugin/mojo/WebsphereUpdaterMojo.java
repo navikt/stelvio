@@ -64,6 +64,17 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 */
 	protected String scriptDirectory;
 	
+	/**
+	 * @parameter expression="${environment}"
+	 * @required
+	 */
+	protected String environment;
+	
+	protected  String scriptsHome;
+	protected  String deployableArtifactsHome;
+	protected  String resourcePropertiesHome;
+
+	
 	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
 
 	protected final void reportResult(CommandLineUtils.StringStreamConsumer stdout, CommandLineUtils.StringStreamConsumer stderr) {
@@ -77,6 +88,9 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	}
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
+		scriptsHome = baseDirectory + "/" + scriptDirectory;
+		deployableArtifactsHome = baseDirectory + "/target";
+		resourcePropertiesHome = baseDirectory + "/app_props/" + environment;
 		
 		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
 			throw new RuntimeException("The artifact configuration is not loaded");

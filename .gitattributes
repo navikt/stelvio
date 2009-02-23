@@ -2670,7 +2670,11 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/mai
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ApplyRuntimeConfigurationMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/DeployArtifactMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/DeployResourcesMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/LoadWebsphereConfigurationMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/StartClustersMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/StopClustersMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/SynchronizeNodesMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereUpdaterMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifactDeprecated.build.xml -text
