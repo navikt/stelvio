@@ -86,20 +86,20 @@ public class ArtifactConfiguration {
 		
 		for(File f : files) {
 
-				ConfigurationType config = null;
-				try {
-					config = ConfigurationDocument.Factory.parse(f).getConfiguration();
-				} catch (XmlException e) {
-					throw new RuntimeException("An XML exception occured reading file ", e);
-				} catch (IOException e) {
-					throw new RuntimeException("An IO exception occured reading file", e);
-				}
-				
-				if(f.getParent().equals(envDirectory.getAbsolutePath())) {
-					envConfiguration.put(f.getName().replace(".xml", ""), config);
-				} else {
-					configuration.put(f.getName().replace(".xml", ""), config);
-				}
+			ConfigurationType config = null;
+			try {
+				config = ConfigurationDocument.Factory.parse(f).getConfiguration();
+			} catch (XmlException e) {
+				throw new RuntimeException("An XML exception occured reading file ", e);
+			} catch (IOException e) {
+				throw new RuntimeException("An IO exception occured reading file", e);
+			}
+			
+			if(f.getParent().equals(envDirectory.getAbsolutePath())) {
+				envConfiguration.put(f.getName().replace(".xml", ""), config);
+			} else {
+				configuration.put(f.getName().replace(".xml", ""), config);
 			}
 		}
 	}
+}
