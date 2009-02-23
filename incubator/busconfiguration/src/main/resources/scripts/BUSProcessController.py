@@ -1,11 +1,18 @@
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
+execfile( "./src/main/resources/scripts/py/utils6.py" )
 
 if len(sys.argv) != 2:
         print("[ERROR] (BUSProcessOperations.py): Syntax: wsadmin -lang jython -f BUSProcessOperations.py <operation> <for cluster?>")
         sys.exit()
 
 operation=sys.argv[0]
+if(operation != 'stop' and operation != 'start'):
+	print("[ERROR] (BUSProcessOperations.py): The operation parameter must be \"stop\" or \"start\"")
+	sys.exit(1)
+
 cluster=sys.argv[1]
+if(cluster != 'true' and cluster != 'false'):
+	print("[ERROR] (BUSProcessOperations.py): The cluster parameter must be \"true\" or \"false\"")
+	sys.exit(1)
 
 def findEnvPrefixName():
 	servers = AdminConfig.list("Server").split(java.lang.System.getProperty('line.separator'))
