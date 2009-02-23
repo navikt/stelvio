@@ -36,18 +36,18 @@ ENVIRONMENT 	 	 = sys.argv[1]
 WSADMIN_SCRIPTS_HOME	 = sys.argv[2]
 APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
 
-execfile( WSADMIN_SCRIPTS_HOME+"/py/utils6.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/environment.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/monitor.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/reports.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/resources.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/security.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/serverConfig.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/serverControl.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/serverSetup.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/serviceIntegration.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/troubleshoot.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/py/WPS.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/environment.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/monitor.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/reports.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/resources.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/security.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverConfig.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverControl.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverSetup.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serviceIntegration.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/troubleshoot.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/WPS.py" )
 
 
 ############### Main Section ###############################################
