@@ -28,7 +28,7 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 		
 		try {
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/BUSProcessController.py start true");
+			arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/BUSProcessController.py start false");
 			commandLine.addArg(arg);
 			getLog().info("Executing the following command: " + commandLine.toString());
 			CommandLineUtils.executeCommandLine(commandLine, stdout, stderr);
