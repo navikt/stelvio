@@ -28,6 +28,13 @@ public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
      */
 	private String moduleConfigurationArtifactName;
 	
+	/**
+	 * @parameter expression="${environment}"
+	 * @required
+	 */
+	protected String environment;
+	
+	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
 		if(ArtifactConfiguration.isConfigurationLoaded() == true) {
@@ -37,7 +44,7 @@ public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
 		for(Artifact a : dependencyArtifacts) {
 			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
 				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), new File(baseDirectory,scriptDirectory));
-				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"));
+				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
 				break;
 			}
 		}

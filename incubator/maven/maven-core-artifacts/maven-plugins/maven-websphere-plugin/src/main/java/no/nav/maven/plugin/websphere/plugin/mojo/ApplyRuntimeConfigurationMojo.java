@@ -3,6 +3,7 @@ package no.nav.maven.plugin.websphere.plugin.mojo;
 import java.io.File;
 import java.util.List;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.commons.constants.Constants;
@@ -34,10 +35,8 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 	
 		for(Artifact a : artifacts) {
 			if(a.getType().equals(Constants.EAR_ARTIFACT_TYPE)) {
-				ConfigurationType configuration = ArtifactConfiguration.getConfiguration(a.getArtifactId());
-				if(configuration != null &&  configuration.getRuntime() != null && configuration.getRuntime().getActivationspecifications()!=null) {
-					updateActivationSpecifications(configuration.getRuntime().getActivationspecifications(), commandLine);
-				}
+				iterateOverConfiguration(a, true, commandLine);
+				iterateOverConfiguration(a, false, commandLine);
 			}
 		}
 	}
@@ -52,7 +51,7 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/ModifyMaxConcurrencyAS.py");
 		commandLine.addArg(arg);
-		/*
+		
 		Commandline detailedCommand = new Commandline();
 		for(ActivationspecificationType a : specifications) {
 			try {
@@ -72,6 +71,34 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 				throw new RuntimeException("An error occured executing: " + commandLine, e);
 			}
 		}
-		*/
+	}
+	
+	private final void iterateOverConfiguration(final Artifact a, final boolean global, Commandline commandLine) {
+		ConfigurationType configuration = null;
+
+		StringTokenizer tokenizer = new StringTokenizer(a.getArtifactId(), Constants.ARTIFACT_MODIFIER_SEPARATOR);
+
+		while(tokenizer.hasMoreTokens()) {
+			String tok=tokenizer.nextToken();
+			if(global == true) {
+				configuration = ArtifactConfiguration.getConfiguration(tok);
+			} else {
+				configuration = ArtifactConfiguration.getEnvConfiguration(tok);
+			}
+			
+			if(configuration != null) {
+				updateActivationSpecifications(configuration.getRuntime().getActivationspecifications(), commandLine);
+			}
+		}
+
+		if(global == true) {
+			configuration = ArtifactConfiguration.getConfiguration(a.getArtifactId());
+		} else {
+			configuration = ArtifactConfiguration.getEnvConfiguration(a.getArtifactId());
+		}
+		
+		if(configuration != null) {
+			updateActivationSpecifications(configuration.getRuntime().getActivationspecifications(), commandLine);
+		}
 	}
 }	
