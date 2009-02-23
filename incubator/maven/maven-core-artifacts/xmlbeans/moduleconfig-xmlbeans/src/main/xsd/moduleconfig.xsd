@@ -103,6 +103,8 @@
   <xs:complexType name="roleType">
     <xs:sequence>
       <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="everyone" minOccurs="0"/>
+      <xs:element type="xs:string" name="allauthenticated" minOccurs="0"/>
       <xs:element type="wps:usersType" name="users" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
       <xs:element type="wps:groupsType" name="groups" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
       <xs:element type="wps:runasType" name="runas" minOccurs="0" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
