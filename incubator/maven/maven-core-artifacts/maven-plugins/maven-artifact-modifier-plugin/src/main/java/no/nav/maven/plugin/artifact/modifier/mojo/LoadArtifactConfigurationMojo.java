@@ -34,11 +34,11 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 		for(Artifact a : dependencyArtifacts) {
 			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
 				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), new File(baseDirectory,scriptDirectory));
-				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"));
+				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
 				break;
 			}
 		}
-			
+				
 		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
 			getLog().warn("The depoyment does not contain dependency to a wps configuration");
 		}

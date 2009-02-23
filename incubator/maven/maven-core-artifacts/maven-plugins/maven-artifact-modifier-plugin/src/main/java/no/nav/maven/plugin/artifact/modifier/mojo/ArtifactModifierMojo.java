@@ -75,6 +75,12 @@ public abstract class ArtifactModifierMojo extends AbstractMojo {
 	 */
 	protected Set<Artifact> artifacts;	
 	
+	/**
+	 * @parameter expression="${environment}"
+	 * @required
+	 */
+	protected String environment;
+	
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 
 	protected IArchiveManager earArchiveManager;
