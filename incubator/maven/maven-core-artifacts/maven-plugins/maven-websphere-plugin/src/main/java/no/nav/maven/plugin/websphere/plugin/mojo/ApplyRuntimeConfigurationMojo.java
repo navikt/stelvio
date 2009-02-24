@@ -97,7 +97,7 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 			configuration = ArtifactConfiguration.getEnvConfiguration(a.getArtifactId());
 		}
 		
-		if(configuration != null) {
+		if(configuration != null && configuration.getRuntime() != null && configuration.getRuntime().getActivationspecifications() != null) {
 			updateActivationSpecifications(configuration.getRuntime().getActivationspecifications(), commandLine);
 		}
 	}
