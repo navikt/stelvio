@@ -17,7 +17,7 @@ import java
 
 WSADMIN_SCRIPTS_HOME	 = sys.argv[0]
 
-execfile( WSADMIN_SCRIPTS_HOME+"/py/utils6.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
 
 #===========================================================================================
 #  Synchronize Nodes
