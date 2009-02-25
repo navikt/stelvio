@@ -134,17 +134,13 @@ public class IbmWebServiceExtEditor extends
 						
 			EList securityTokens = secRecConfig.getRequiredSecurityToken();			
 			if (!isLTPASecurityTokenPresent(securityTokens)) {
-				System.out.println("LTPA Token was not present, creating ...");
 				securityTokens.add(createLTPARequiredSecurityToken(usageRequired, tokenPartReference)); 								
 			}
-			else System.out.println("Found LTPA security token, doing nothing");
 			
 			EList callers = secRecConfig.getCaller();
 			if (!isLTPACallerPresent(callers)) {
-				System.out.println("LTPA Caller was not present, creating ...");
 				callers.add(createLTPACaller());
 			}
-			else System.out.println("Found LTPA caller");
 		}
 	}
 
@@ -156,17 +152,13 @@ public class IbmWebServiceExtEditor extends
 			
 			EList securityTokens = secRecConfig.getRequiredSecurityToken();			
 			if (!isUsernameSecurityTokenPresent(securityTokens)) {
-				System.out.println("Username token was not present, creating ...");
 				securityTokens.add(createUsernameRequiredSecurityToken(usageRequired, tokenPartReference)); //TODO								
 			}
-			else System.out.println("Found username security token, doing nothing");
 			
 			EList callers = secRecConfig.getCaller();
 			if (!isUsernameCallerPresent(callers)) {
-				System.out.println("Username caller was not present, creating ...");
 				callers.add(createUsernameCaller());
 			}
-			else System.out.println("Found username caller");
 		}		
 	}
 	

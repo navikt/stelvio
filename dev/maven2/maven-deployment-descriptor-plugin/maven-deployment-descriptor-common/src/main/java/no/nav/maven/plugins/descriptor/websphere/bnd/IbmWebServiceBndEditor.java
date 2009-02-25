@@ -81,6 +81,10 @@ public class IbmWebServiceBndEditor extends IbmWebServiceDescriptorEditor<WSBind
 		}
 	}
 	
+	public final boolean isExposingWebServices() {
+		return (wsBinding.getWsdescBindings() != null && wsBinding.getWsdescBindings().size() > 0) ? true : false;
+	}
+	
 	private void addTokenConsumer(WSDescBinding wsDescBinding, TokenConsumer tokenConsumer){
 		PCBinding pcBinding = (PCBinding) wsDescBinding.getPcBindings().get(0);
 		SecurityRequestConsumerBindingConfig secRecCfg = 
@@ -93,7 +97,6 @@ public class IbmWebServiceBndEditor extends IbmWebServiceDescriptorEditor<WSBind
 		EList tokenConsumers = secRecCfg.getTokenConsumer();
 		Iterator tokenConsIter = tokenConsumers.iterator();
 		if(!isTokenConsumerPresent(tokenConsumers, tokenConsumer)){			
-			System.out.println("Adding new TokenConsumer:" + tokenConsumer.getClassname());
 			tokenConsumers.add(tokenConsumer);
 		}		
 	}

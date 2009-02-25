@@ -170,7 +170,6 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
 		Iterator tokenGenIter = tokenGenerators.iterator();
 		if(!isTokenGeneratorPresent(tokenGenerators, tokenType)){
 			TokenGenerator newTokenGen = createTokenGenerator(tokenType, partRef);
-			System.out.println("TokenGenerator is not present. Adding new generator with TokenType:" + newTokenGen.getValueType());
 			tokenGenerators.add(newTokenGen);
 		}
     }
@@ -183,7 +182,6 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
 		Iterator tokenGenIter = tokenGenerators.iterator();
 		if(!isTokenGeneratorPresent(tokenGenerators, tokenType)){
 			TokenGenerator newTokenGen = createTokenGenerator(tokenType, partRef);
-			System.out.println("TokenGenerator is not present. Adding new generator with TokenType:" + newTokenGen.getValueType());
 			tokenGenerators.add(newTokenGen);
 		} else {
 			//Update the username password on the existing token.		
