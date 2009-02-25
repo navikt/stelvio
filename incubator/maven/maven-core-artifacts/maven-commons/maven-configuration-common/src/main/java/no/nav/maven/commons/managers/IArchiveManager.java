@@ -2,9 +2,9 @@ package no.nav.maven.commons.managers;
 
 import java.io.File;
 
-import org.codehaus.plexus.archiver.Archiver;
-import org.codehaus.plexus.archiver.UnArchiver;
-
+/** 
+ * @author test@example.com 
+ */
 public interface IArchiveManager {
 
 	File unArchive(File archive, File directory);

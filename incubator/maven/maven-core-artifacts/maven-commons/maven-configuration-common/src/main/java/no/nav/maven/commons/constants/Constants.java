@@ -1,6 +1,9 @@
 package no.nav.maven.commons.constants;
 
-public class Constants {
+/** 
+ * @author test@example.com 
+ */
+public final class Constants {
 	public final static String IBM_WS_CLIENT_BINDINGS_FILE = "ibm-webservicesclient-bnd.xmi";
 	public final static String J2E_APPLICATION_XML_FILE = "application.xml";
 	public final static String J2E_MANIFEST_DIRECTORY = "META-INF";

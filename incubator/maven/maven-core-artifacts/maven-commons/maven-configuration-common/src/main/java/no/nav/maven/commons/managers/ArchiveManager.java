@@ -10,9 +10,10 @@ import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 import org.codehaus.plexus.archiver.ear.EarArchiver;
 
-import sun.security.action.GetLongAction;
-
-public class ArchiveManager implements IArchiveManager {
+/** 
+ * @author test@example.com 
+ */
+public final class ArchiveManager implements IArchiveManager {
 
 	private final Archiver archiver;
 	private final UnArchiver unArchiver;

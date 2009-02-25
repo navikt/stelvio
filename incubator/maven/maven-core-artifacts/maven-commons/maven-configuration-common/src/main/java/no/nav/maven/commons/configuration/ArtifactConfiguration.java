@@ -6,17 +6,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import org.apache.xmlbeans.XmlException;
-
-import no.nav.maven.commons.constants.Constants;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationDocument;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
-public class ArtifactConfiguration {
+import org.apache.xmlbeans.XmlException;
+
+/** 
+ * @author test@example.com 
+ */
+public final class ArtifactConfiguration {
 	
 	private static final ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 	private static final Lock read  = readWriteLock.readLock();   
