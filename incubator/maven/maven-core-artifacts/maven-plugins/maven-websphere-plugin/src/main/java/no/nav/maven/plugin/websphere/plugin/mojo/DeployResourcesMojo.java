@@ -12,7 +12,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 
 
 /**
- * Goal that contacts the deployment manager to stop MECluster,SupportCluster and WPSCluster.
+ * Goal that contacts the deployment manager to deploy resources for artifacts.
  * 
  * @author test@example.com
  * 
@@ -31,11 +31,13 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 			
 		File resourceProperties = new File(resourcePropertiesHome);
 		
+		getLog().info("Starting resource deploy");
 		for( String application : applicationsWithProperties) {
 			/* TODO: The appname stuff must be sorted out! */
 			final String appname = new StringTokenizer(application,".").nextToken();
 			String[] matches = resourceProperties.list(new FilenameFilter() {public boolean accept(File dir, String name) {return (name.contains(appname)) ? true : false;}});
 			if(matches != null && matches.length > 0) {
+				getLog().info("Deploying resources for application: " + appname);
 				deployResourceForArtifact(commandLine, appname);
 			}
 		}

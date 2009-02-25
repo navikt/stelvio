@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.Set;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
-import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -13,7 +12,11 @@ import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 
-
+/**
+* Abstract class using the template pattern for child mojos.
+* 
+* @author test@example.com 
+*/
 public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
     
 	/**
