@@ -9,9 +9,12 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.TokensType;
 
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 
-public class InboundWSSecurity {
+/** 
+ * @author test@example.com 
+ */
+public final class InboundWSSecurity {
 
-	public static void injectTokens(TokensType tokens, Archive archive) {
+	public static final void injectTokens(TokensType tokens, Archive archive) {
 		if((tokens.getTokenList() == null) || (tokens.getTokenList().size() == 0)) {
 			return;
 		}
@@ -30,7 +33,7 @@ public class InboundWSSecurity {
 		}
 	}
 	
-	public static void setupLtpaTokenConsumer(Archive archive) {
+	public static final void setupLtpaTokenConsumer(Archive archive) {
 		try{
 			
 			String tokenPartReference = "RequiredLTPAToken";
@@ -39,7 +42,7 @@ public class InboundWSSecurity {
 			wsExt.deleteExistingConfig();			
 			wsExt.addRequestConsumerLTPAToken(usageRequired, tokenPartReference); 
 			wsExt.save();
-			
+
 			IbmWebServiceBndEditor wsBnd = new IbmWebServiceBndEditor(archive);
 			wsBnd.deleteExistingConfig();
 			wsBnd.addLTPATokenConsumer(tokenPartReference);
@@ -49,7 +52,7 @@ public class InboundWSSecurity {
 		}	
 	}
 	
-	public static void setupUsernameTokenConsumer(Archive archive) {
+	public static final void setupUsernameTokenConsumer(Archive archive) {
 		try{
 			String tokenPartReference = "RequiredUsernameToken";
 			boolean usageRequired = true;
@@ -57,17 +60,24 @@ public class InboundWSSecurity {
 			wsExt.deleteExistingConfig();			
 			wsExt.addRequestConsumerUsernameToken(usageRequired, tokenPartReference); 
 			wsExt.save();
-			
+		
 			IbmWebServiceBndEditor wsBnd = new IbmWebServiceBndEditor(archive);
+	
 			wsBnd.deleteExistingConfig();
 			wsBnd.addUsernameTokenConsumer(tokenPartReference);			
 			wsBnd.save();
+			
 		}catch (IOException e){
 			throw new RuntimeException("Caught IOException while setting up UsernameTokenConsumer", e);
 		}	
 	}
 	
-	private static void setupBothTokenConsumer(Archive archive) {
+	public static final boolean isExposingWebServices(Archive archive) {
+		IbmWebServiceBndEditor wsBnd = new IbmWebServiceBndEditor(archive);
+		return wsBnd.isExposingWebServices();
+	}
+	
+	private static final void setupBothTokenConsumer(Archive archive) {
 		try{
 			String usernamePartRef = "OptionalUsernameToken";
 			String ltpaPartRef = "OptionalLTPAToken";
@@ -85,6 +95,6 @@ public class InboundWSSecurity {
 			wsBnd.save();
 		}catch (IOException e){
 			throw new RuntimeException("Caught IOException while setting up optional username and ltpa token consumers", e);
-		}	
+		}
 	}
 }

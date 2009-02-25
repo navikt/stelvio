@@ -29,7 +29,7 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
  * @goal modify-security-configuration
  * @requiresDependencyResolution
  */
-public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerMojo {
+public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerMojo {
 
 	protected final void applyConfiguration(File artifact, ConfigurationType configuration) {
 		if(configuration.getSecurity() != null) {
@@ -81,11 +81,14 @@ public class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerM
 		
 		RolesType rolesInConfig = authorization.getRoles();
 		if(rolesInConfig != null && rolesInConfig.sizeOfRoleArray() > 0) {
-			/* TODO: Check if it is enough to use the "getSecurityRoles" from the ibm assembly descriptor java classes */
 			List<String> rolesInEjb = RoleSecurity.getSecurityRoles((EJBJarFile)earFile.getEJBJarFiles().get(0));
 			if(rolesInEjb != null && rolesInEjb.size() > 0) {
 				RoleSecurity.updateRoleBindings(earFile, rolesInConfig, rolesInEjb);
 				RoleSecurity.updateRunAsBindings(earFile, rolesInConfig, rolesInEjb);
+			} else {
+				if(InboundWSSecurity.isExposingWebServices((EJBJarFile)earFile.getEJBJarFiles().get(0)) == true) {
+					throw new RuntimeException("The ejb exposes web services but no security roles are configured!");
+				}
 			}
 		}
 	}

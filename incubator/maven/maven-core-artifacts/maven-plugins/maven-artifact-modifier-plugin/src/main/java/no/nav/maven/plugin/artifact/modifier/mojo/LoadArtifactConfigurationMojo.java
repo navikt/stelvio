@@ -40,7 +40,7 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 		}
 				
 		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
-			getLog().warn("The deployment does not contain dependency to a wps configuration");
+			getLog().warn("The deployment does not contain dependency to a nus configuration");
 		}
 	}
 }	

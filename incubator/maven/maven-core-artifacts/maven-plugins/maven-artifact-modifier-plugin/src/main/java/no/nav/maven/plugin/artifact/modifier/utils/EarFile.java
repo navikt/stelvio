@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import org.eclipse.jst.j2ee.commonarchivecore.internal.CommonarchiveFactory;
@@ -16,7 +14,10 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.exception.SaveFailureExce
 import org.eclipse.jst.j2ee.commonarchivecore.internal.helpers.ArchiveOptions;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.impl.CommonarchiveFactoryImpl;
 
-public class EarFile {
+/** 
+ * @author test@example.com 
+ */
+public final class EarFile {
 
 	public static EARFile openEarFile(String absolutePath)  {
 		CommonarchiveFactory archiveFactory = CommonarchiveFactoryImpl.getActiveFactory();
@@ -64,7 +65,7 @@ public class EarFile {
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException("An error occured reading source file: " + source.getAbsolutePath(), e);
 		} catch (IOException e) {
-			throw new RuntimeException("An error occured writing desctination file: " + source.getAbsolutePath(), e);
+			throw new RuntimeException("An error occured writing desctination file: " + dest.getAbsolutePath(), e);
 		} finally {
 			if(in != null) {
 				try {

@@ -16,7 +16,11 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.UserType;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
 
-public class RoleSecurity {
+
+/** 
+ * @author test@example.com 
+ */
+public final class RoleSecurity {
 
 	public static final void updateRunAsBindings(final Archive archive, final RolesType rolesInConfig, final List<String> rolesInEjb) {
 		List<SecurityRoleConfig> securityRolesConfig = securityRoles2securityRoleConfigList(rolesInConfig);

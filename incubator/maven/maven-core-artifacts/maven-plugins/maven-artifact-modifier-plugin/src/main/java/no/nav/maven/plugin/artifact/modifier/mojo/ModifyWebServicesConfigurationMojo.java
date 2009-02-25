@@ -24,7 +24,7 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
  * @goal modify-web-services-configuration
  * @requiresDependencyResolution
  */
-public class ModifyWebServicesConfigurationMojo extends ArtifactModifierConfigurerMojo {
+public final class ModifyWebServicesConfigurationMojo extends ArtifactModifierConfigurerMojo {
 	
 	protected final void applyConfiguration(File artifact, ConfigurationType configuration) {
 		if(configuration.getWebservices() != null) {
