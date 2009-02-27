@@ -81,13 +81,17 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
 
 	protected final void reportResult(CommandLineUtils.StringStreamConsumer stdout, CommandLineUtils.StringStreamConsumer stderr) {
+		
+		
 		if(stdout != null) {
 			getLog().info(stdout.getOutput());
 		}
 		
+		/*
 		if(stderr != null) {
 			getLog().error(stdout.getOutput());
-		}	
+		}
+		*/	
 	}
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {

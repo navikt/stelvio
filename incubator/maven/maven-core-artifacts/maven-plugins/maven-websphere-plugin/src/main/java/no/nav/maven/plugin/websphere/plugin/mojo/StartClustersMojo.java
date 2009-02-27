@@ -37,5 +37,6 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 			throw new RuntimeException("An error occured executing: " + commandLine, e);
 		}
 		
+		
 	}
 }	
