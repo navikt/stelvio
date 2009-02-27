@@ -48,7 +48,6 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
 		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
 
-		/*
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/ModifyMaxConcurrencyAS.py");
 		commandLine.addArg(arg);
@@ -72,7 +71,6 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 				throw new RuntimeException("An error occured executing: " + commandLine, e);
 			}
 		}
-		*/
 	}
 	
 	private final void iterateOverConfiguration(final Artifact a, final boolean global, Commandline commandLine) {
