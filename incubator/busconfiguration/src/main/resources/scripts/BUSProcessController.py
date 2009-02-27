@@ -1,4 +1,4 @@
-execfile( "./src/main/resources/scripts/py/utils6.py" )
+execfile( "./src/main/scripts/scripts/utils6.py" )
 
 if len(sys.argv) != 2:
         print("[ERROR] (BUSProcessOperations.py): Syntax: wsadmin -lang jython -f BUSProcessOperations.py <operation> <for cluster?>")

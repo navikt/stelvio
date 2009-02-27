@@ -65,7 +65,6 @@ for resource in dir.list():
 	configInfo = {}
 	APPLICATION_NAME = None
 	try:
-		print "RESSURSEN ER : " + resource
 		# Use Java to load it, it is a properties file
 		fileprop = Properties()
 		
