@@ -1,9 +1,5 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.StringTokenizer;
-
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.CommandLineException;
@@ -27,29 +23,12 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 	
 	private final void deployResources(final Commandline commandLine) {
 	
-		String[] applicationsWithProperties = new File(deployableArtifactsHome).list(new FilenameFilter() {public boolean accept(File dir, String name) {return (name.endsWith(".ear")) ? true : false;}});
-			
-		File resourceProperties = new File(resourcePropertiesHome);
-		
-		getLog().info("Starting resource deploy");
-		for( String application : applicationsWithProperties) {
-			/* TODO: The appname stuff must be sorted out! */
-			final String appname = new StringTokenizer(application,".").nextToken();
-			String[] matches = resourceProperties.list(new FilenameFilter() {public boolean accept(File dir, String name) {return (name.contains(appname)) ? true : false;}});
-			if(matches != null && matches.length > 0) {
-				getLog().info("Deploying resources for application: " + appname);
-				deployResourceForArtifact(commandLine, appname);
-			}
-		}
-	}
-	
-	private final void deployResourceForArtifact(final Commandline commandLine, final String appname) {
 		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
 		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
 
 		try {
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/CreateApplicationArtifacts.py " + "nav-cons-sak-infot" + " " + environment + " " + scriptsHome);
+			arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/CreateApplicationArtifacts.py " + deployableArtifactsHome + " " + environment + " " + scriptsHome);
 			commandLine.addArg(arg);
 			getLog().info("Executing the following command: " + commandLine.toString());
 			CommandLineUtils.executeCommandLine(commandLine, stdout, stderr);

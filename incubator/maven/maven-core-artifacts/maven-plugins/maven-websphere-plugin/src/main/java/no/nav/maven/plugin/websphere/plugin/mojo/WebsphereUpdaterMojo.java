@@ -93,7 +93,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		scriptsHome = baseDirectory + "/" + scriptDirectory;
 		deployableArtifactsHome = baseDirectory + "/target";
-		resourcePropertiesHome = baseDirectory + "/app_props/" + environment;
+		resourcePropertiesHome = scriptsHome + "/app_props/" + environment;
 		
 		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
 			throw new RuntimeException("The artifact configuration is not loaded");
