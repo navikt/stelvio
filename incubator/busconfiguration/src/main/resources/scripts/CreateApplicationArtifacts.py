@@ -79,6 +79,8 @@ for resource in resources:
 		print 'INFO: Application '+ application_name + ' contains no resources, since property file was not defined.'
 		continue
 	
+	print 'INFO: Application ' + application_name + ' contains resources. Deploying...'
+	
 	for jidx in range(int(configInfo["app.count"])):
 			whatToCreate	 	= configInfo["app.%d.WHAT" % (jidx)]
 			whereIsProperties	= configInfo["app.%d.WHERE" % (jidx)]
