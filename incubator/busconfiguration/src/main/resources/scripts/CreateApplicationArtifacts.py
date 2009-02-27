@@ -31,7 +31,7 @@ from java.net 	import InetAddress
 from java.util 	import Properties
 from java.io 	import FileInputStream
 
-APPLICATION_NAME 	 = sys.argv[0]
+APPLICATIONS_HOME 	 = sys.argv[0]
 ENVIRONMENT 	 	 = sys.argv[1]
 WSADMIN_SCRIPTS_HOME	 = sys.argv[2]
 APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
@@ -56,146 +56,152 @@ global progInfo
 global configInfo
 
 
-configInfo = {}
 
+#Now iterate thorugh all properties files and shave the stuff as the last step
+dir = io.File(APPLICATIONS_HOME);
+resources = dir.list();
+for resource in resources:
+	configInfo = {}
 
-try:
-	# Use Java to load it, it is a properties file
-	fileprop = Properties()
-	fileStream = FileInputStream(APP_PROPS_HOME+APPLICATION_NAME +".properties")
-	
-	fileprop.load(fileStream)
-	configNames = fileprop.propertyNames()
-	for configName in configNames:
-		configInfo[configName] = fileprop.getProperty(configName)
-except:
-	print 'INFO: Application '+ APPLICATION_NAME + ' contains no resources, since property file was not defined.'
-	sys.exit(0)
-	
-			
-for jidx in range(int(configInfo["app.count"])):
-		whatToCreate	 	= configInfo["app.%d.WHAT" % (jidx)]
-		whereIsProperties	= configInfo["app.%d.WHERE" % (jidx)]
-		#===================================================================================
-		#  Create Name Space Binding
-		#===================================================================================
-		if (whatToCreate == "nsbinding"):
-			# USAGE:  createNameSpaceBinding ( <"properties file name"> ):
-			retval = createNameSpaceBinding (APP_PROPS_HOME+whereIsProperties)
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Create J2C Connection Factory
-		#===================================================================================
-		if (whatToCreate == "j2cqcf"):
-			# USAGE:  createJ2CConnectionFactory ( <"properties file name"> ):
-			retval =  createJ2CConnectionFactory(APP_PROPS_HOME+whereIsProperties)
-			if(retval == 1):
-				sys.exit(1)
-		#endIf	
-		#===================================================================================
-		#  Create Sibus destination
-		#===================================================================================
-		if (whatToCreate == "sibdestination"):
-			# USAGE:  createSIBDestination ( <"properties file name"> ):
-			retval = createSIBDestination (APP_PROPS_HOME + whereIsProperties)
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Create JMS queue
-		#===================================================================================
-		if (whatToCreate == "jmsqueue"):
-			# USAGE:  createSIBDestination ( <"properties file name"> ):
-			retval = createJMSQueue (APP_PROPS_HOME + whereIsProperties ) 
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Create JMS topic
-		#===================================================================================
-		if (whatToCreate == "jmstopic"):
-			# USAGE:  createJMSTopic ( <"properties file name"> ):
-			retval = createJMSTopic (APP_PROPS_HOME + whereIsProperties ) 
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Create J2CActivationSpec
-		#===================================================================================
-		if (whatToCreate == "jmsactivationspec"):
-			# USAGE:  createJMSActivationSpec ( <"properties file name"> ):
-			retval = createJMSActivationSpec (APP_PROPS_HOME + whereIsProperties ) 
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Create JMS Connection Factory
-		#===================================================================================
-		if (whatToCreate == "jmscf"):
-			# USAGE:  createJMSConnectionFactory ( <"properties file name"> ):
-			retval = createJMSConnectionFactory (APP_PROPS_HOME + whereIsProperties ) 
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Install J2C Resource Adapter
-		#===================================================================================
-		if (whatToCreate == "racreate"):
-			# USAGE:  installResourceAdapter ( <"properties file name"> ):
-			retval = installResourceAdapter (APP_PROPS_HOME+whereIsProperties) 
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Create Datasource
-		#===================================================================================
-		if (whatToCreate == "datasource"):
-			# USAGE:  installResourceAdapter ( <"properties file name"> ):
-			retval = createDataSource ( APP_PROPS_HOME+whereIsProperties)
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Create JDBC Provider
-		#===================================================================================
-		if (whatToCreate == "jdbcprovider"):
-			# USAGE:  createJDBCProvider ( <"properties file name"> ):
-			retval = createJDBCProvider ( APP_PROPS_HOME+whereIsProperties)
-			if(retval == 1):
-				sys.exit(1)
-			
-		#endIf
-		#===================================================================================
-		#  create MQ Connection Factory
-		#===================================================================================
-		if (whatToCreate == "mqcf"):
-			# USAGE:  createMQConnectionFactory ( <"properties file name"> ):
-			retval = createMQConnectionFactory ( APP_PROPS_HOME+whereIsProperties)
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  create MQ Queue Destination
-		#===================================================================================
-		if (whatToCreate == "mqqueuedes"):
-			# USAGE:  createMQDestination ( <"properties file name"> ):
-			retval = createMQDestination ( APP_PROPS_HOME+whereIsProperties)
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
-		#===================================================================================
-		#  Create a shared library and associate it with an application
-		#===================================================================================
-		if (whatToCreate == "sharedlib"):
-			# USAGE:  createSharedLibrary ( <"properties file name"> ):
-			retval = createSharedLibrary ( APP_PROPS_HOME+whereIsProperties)
-			if(retval == 1):
-				sys.exit(1)
-		#endIf
+	try:
+		# Use Java to load it, it is a properties file
+		fileprop = Properties()
 		
+		splitted = resource.split(".")
+		application_name = splitted[0]
+		fileStream = FileInputStream(APP_PROPS_HOME+application_name +".properties")
 		
+		fileprop.load(fileStream)
+		configNames = fileprop.propertyNames()
+		for configName in configNames:
+			configInfo[configName] = fileprop.getProperty(configName)
+	except:
+		print 'INFO: Application '+ application_name + ' contains no resources, since property file was not defined.'
+		continue
+	
+	for jidx in range(int(configInfo["app.count"])):
+			whatToCreate	 	= configInfo["app.%d.WHAT" % (jidx)]
+			whereIsProperties	= configInfo["app.%d.WHERE" % (jidx)]
+			#===================================================================================
+			#  Create Name Space Binding
+			#===================================================================================
+			if (whatToCreate == "nsbinding"):
+				# USAGE:  createNameSpaceBinding ( <"properties file name"> ):
+				retval = createNameSpaceBinding (APP_PROPS_HOME+whereIsProperties)
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Create J2C Connection Factory
+			#===================================================================================
+			if (whatToCreate == "j2cqcf"):
+				# USAGE:  createJ2CConnectionFactory ( <"properties file name"> ):
+				retval =  createJ2CConnectionFactory(APP_PROPS_HOME+whereIsProperties)
+				if(retval == 1):
+					sys.exit(1)
+			#endIf	
+			#===================================================================================
+			#  Create Sibus destination
+			#===================================================================================
+			if (whatToCreate == "sibdestination"):
+				# USAGE:  createSIBDestination ( <"properties file name"> ):
+				retval = createSIBDestination (APP_PROPS_HOME + whereIsProperties)
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Create JMS queue
+			#===================================================================================
+			if (whatToCreate == "jmsqueue"):
+				# USAGE:  createSIBDestination ( <"properties file name"> ):
+				retval = createJMSQueue (APP_PROPS_HOME + whereIsProperties ) 
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Create JMS topic
+			#===================================================================================
+			if (whatToCreate == "jmstopic"):
+				# USAGE:  createJMSTopic ( <"properties file name"> ):
+				retval = createJMSTopic (APP_PROPS_HOME + whereIsProperties ) 
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Create J2CActivationSpec
+			#===================================================================================
+			if (whatToCreate == "jmsactivationspec"):
+				# USAGE:  createJMSActivationSpec ( <"properties file name"> ):
+				retval = createJMSActivationSpec (APP_PROPS_HOME + whereIsProperties ) 
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Create JMS Connection Factory
+			#===================================================================================
+			if (whatToCreate == "jmscf"):
+				# USAGE:  createJMSConnectionFactory ( <"properties file name"> ):
+				retval = createJMSConnectionFactory (APP_PROPS_HOME + whereIsProperties ) 
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Install J2C Resource Adapter
+			#===================================================================================
+			if (whatToCreate == "racreate"):
+				# USAGE:  installResourceAdapter ( <"properties file name"> ):
+				retval = installResourceAdapter (APP_PROPS_HOME+whereIsProperties) 
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Create Datasource
+			#===================================================================================
+			if (whatToCreate == "datasource"):
+				# USAGE:  installResourceAdapter ( <"properties file name"> ):
+				retval = createDataSource ( APP_PROPS_HOME+whereIsProperties)
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Create JDBC Provider
+			#===================================================================================
+			if (whatToCreate == "jdbcprovider"):
+				# USAGE:  createJDBCProvider ( <"properties file name"> ):
+				retval = createJDBCProvider ( APP_PROPS_HOME+whereIsProperties)
+				if(retval == 1):
+					sys.exit(1)
+				
+			#endIf
+			#===================================================================================
+			#  create MQ Connection Factory
+			#===================================================================================
+			if (whatToCreate == "mqcf"):
+				# USAGE:  createMQConnectionFactory ( <"properties file name"> ):
+				retval = createMQConnectionFactory ( APP_PROPS_HOME+whereIsProperties)
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  create MQ Queue Destination
+			#===================================================================================
+			if (whatToCreate == "mqqueuedes"):
+				# USAGE:  createMQDestination ( <"properties file name"> ):
+				retval = createMQDestination ( APP_PROPS_HOME+whereIsProperties)
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			#===================================================================================
+			#  Create a shared library and associate it with an application
+			#===================================================================================
+			if (whatToCreate == "sharedlib"):
+				# USAGE:  createSharedLibrary ( <"properties file name"> ):
+				retval = createSharedLibrary ( APP_PROPS_HOME+whereIsProperties)
+				if(retval == 1):
+					sys.exit(1)
+			#endIf
+			
+			
 save()
 
 ############### End Main Section ###############################################					

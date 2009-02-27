@@ -1,4 +1,4 @@
-execfile( "src/main/scripts/scripts/utils6.py" )
+execfile( "./src/main/resources/scripts/py/utils6.py" )
 
 if len(sys.argv) != 2:
         print("[ERROR] (BUSProcessOperations.py): Syntax: wsadmin -lang jython -f BUSProcessOperations.py <operation> <for cluster?>")
@@ -36,14 +36,14 @@ def findNodeName():
 #endDef
 
 def findCellName():
-	cells = AdminConfig.list("Node").split(java.lang.System.getProperty('line.separator'))
+	cells = AdminConfig.list("Cell").split(java.lang.System.getProperty('line.separator'))
 
 	if(len(cells) > 1):
 		print "[FATAL] More than one cells found. Bailing out..."
 		sys.exit(1)
 
 	for cell in cells:
-        	cellName = AdminConfig.showAttribute(node, "name")
+        	cellName = AdminConfig.showAttribute(cell, "name")
 		if(cellName.find("Cell") >= 0):
 			print "[INFO] Using cell name: " + cellName
 			return cellName
@@ -55,7 +55,7 @@ def doClusterOperation ( clusterName, operation ):
 		waitingForState = 'stopped'
 		stopCluster ( cellName, clusterName )
 	if(operation == 'start'):
-		waitingForState = 'started'
+		waitingForState = 'running'
 		startCluster ( cellName, clusterName )
 
 	while 1:
@@ -98,6 +98,7 @@ def doServerOperation ( appServer, operation ):
 #endDef
 
 def waitForMessagingEnginesStarted():
+	started = 'false'
 	engines = AdminControl.queryNames("type=SIBMessagingEngine,*").splitlines()
 	while 1:
 		sleep(60)
