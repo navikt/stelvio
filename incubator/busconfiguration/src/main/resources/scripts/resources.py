@@ -2968,7 +2968,7 @@ def setDBPoolMaxConnections ( scope, scopeName, dataSourceName, value ):
 # Procedure:   	createSharedLibrary
 # Description:	Create Shared Library
 #****************************************************************************** 
-def createSharedLibrary ( propertyFileName ):
+def createSharedLibrary ( propertyFileName, appName ):
 
 	readProperties(propertyFileName)
 
@@ -3002,7 +3002,7 @@ def createSharedLibrary ( propertyFileName ):
 			_excp_ = 0
 			import  java			
 			lineSeparator = java.lang.System.getProperty('line.separator')
-			librefList = AdminConfig.getid("/Deployment:"+APPLICATION_NAME+"/ApplicationDeployment:/Classloader:/LibraryRef:/" )
+			librefList = AdminConfig.getid("/Deployment:"+appName+"/ApplicationDeployment:/Classloader:/LibraryRef:/" )
 			
 			if(librefList == ""):
 				pass
@@ -3016,7 +3016,7 @@ def createSharedLibrary ( propertyFileName ):
 			removeT = `_value_`
 			_excp_ = 1
 		if (_excp_ ):
-			print "ERROR (createSharedLibrary): Caught Exception removing Library Ref. for application "+APPLICATION_NAME
+			print "ERROR (createSharedLibrary): Caught Exception removing Library Ref. for application "+appName
 			print removeT 
 			return 1
 		#endIf 	
@@ -3046,14 +3046,15 @@ def createSharedLibrary ( propertyFileName ):
 		_excp_ = 1
 	#endTry 
 	if (_excp_ ):
-		print "ERROR (createSharedLibrary): Caught Exception creating Shared Library "+ name +" for application " + APPLICATION_NAME
+		print "ERROR (createSharedLibrary): Caught Exception creating Shared Library "+ name +" for application " + appName
 		print library 
 		return 1
 	#endIf 
 	
 	try:
+		print "APPNAMET ER: " + appName
 		_excp_ = 0	
-		deployment = AdminConfig.getid("/Deployment:"+APPLICATION_NAME+"/" )
+		deployment = AdminConfig.getid("/Deployment:"+appName+"/" )
 		appDeploy  = AdminConfig.showAttribute(deployment, 'deployedObject')
 		classLoad1 = AdminConfig.showAttribute(appDeploy, 'classloader')
 		libraryRef = AdminConfig.create('LibraryRef', classLoad1, [['libraryName', name],  ['sharedClassloader', 'true']])
@@ -3063,19 +3064,19 @@ def createSharedLibrary ( propertyFileName ):
 		_excp_ = 1
 	#endTry 
 	if (_excp_ ):
-		print "ERROR (createSharedLibrary): Caught Exception associate shared library with  application "+APPLICATION_NAME
+		print "ERROR (createSharedLibrary): Caught Exception associate shared library with  application "+appName
 		print libraryRef 
 		return 1
 	#endIf 
 
-	print "INFO (createSharedLibrary): Created shared libary "+name+" and associate with application "+APPLICATION_NAME+" successfully."
+	print "INFO (createSharedLibrary): Created shared libary "+name+" and associate with application "+appName+" successfully."
 	return 0
 #endDef
 #******************************************************************************
 # Procedure:   	deleteSharedLibrary
 # Description:	Delete Shared Library
 #****************************************************************************** 
-def deleteSharedLibrary ( propertyFileName ):
+def deleteSharedLibrary ( propertyFileName, appName ):
 
 	readProperties(propertyFileName)
 
@@ -3109,7 +3110,7 @@ def deleteSharedLibrary ( propertyFileName ):
 			# get line separator 
 			import  java
 			lineSeparator = java.lang.System.getProperty('line.separator')
-			librefList = AdminConfig.getid("/Deployment:"+APPLICATION_NAME+"/ApplicationDeployment:/Classloader:/LibraryRef:/" )
+			librefList = AdminConfig.getid("/Deployment:"+appName+"/ApplicationDeployment:/Classloader:/LibraryRef:/" )
 			arrayLibRef = librefList.split(lineSeparator)
 			#print librefList
 			for libref in arrayLibRef:
@@ -3119,7 +3120,7 @@ def deleteSharedLibrary ( propertyFileName ):
 			removeT = `_value_`
 			_excp_ = 1
 		if (_excp_ ):
-			print "ERROR (createSharedLibrary): Caught Exception removing Library Ref. for application "+APPLICATION_NAME
+			print "ERROR (createSharedLibrary): Caught Exception removing Library Ref. for application "+appName
 			print removeT 
 			return 1
 		#endIf 	
@@ -3139,6 +3140,6 @@ def deleteSharedLibrary ( propertyFileName ):
 		#endIf 
 	#endIf
 	
-	print "INFO (deleteSharedLibrary): Deleted shared libary "+name+" and associate with application "+APPLICATION_NAME+" successfully."
+	print "INFO (deleteSharedLibrary): Deleted shared libary "+name+" and associate with application "+appName+" successfully."
 	return 0
 #endDef

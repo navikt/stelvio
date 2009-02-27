@@ -6,16 +6,16 @@
 ##############################################################################
 # WHAT = 
 #		1 = nsbinding 			= Delete Name Space Binding
-#		2 = j2cqcf				= Delete J2C Connection Factory
+#		2 = j2cqcf			= Delete J2C Connection Factory
 #		3 = sibdestination 	 	= Delete Sibus destination (Queue, Topic...)
 #		4 = jmsqueue			= Delete JMS queue
 #		5 = jmstopic			= Delete JMS topic
-#		6 = jmsactivationspec	= Delete JMS Activation Specification
-#		7 = jmscf				= Delete JMS Connection Factory
+#		6 = jmsactivationspec		= Delete JMS Activation Specification
+#		7 = jmscf			= Delete JMS Connection Factory
 #		8 = racreate 			= DeInstall Resource adapter
 #		9 = jdbcprovider		= Delete JDBC Provider
-#       10 = datasource         = Delete Datasource	
-#		11 = mqcf				= Delete WebSphere MQ Connection Factory
+#       	10 = datasource         	= Delete Datasource	
+#		11 = mqcf			= Delete WebSphere MQ Connection Factory
 #		12 = mqqueuedes			= Delete WebSphere MQ queue destinations 
 #		13 = sharedlib			= Delete a shared library and associate it with an application
 #		
@@ -181,7 +181,7 @@ for jidx in range(int(configInfo["app.count"])):
 		#===================================================================================
 		if (whatToDelete == "sharedlib"):
 			# USAGE:  deleteSharedLibrary ( <"properties file name"> ):
-			retval = deleteSharedLibrary ( APP_PROPS_HOME+whereIsProperties)
+			retval = deleteSharedLibrary ( APP_PROPS_HOME+whereIsProperties, APPLICATION_NAME)
 			if(retval == 1):
 				sys.exit(1)
 		#endIf

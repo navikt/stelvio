@@ -35,6 +35,7 @@ APPLICATIONS_HOME 	 = sys.argv[0]
 ENVIRONMENT 	 	 = sys.argv[1]
 WSADMIN_SCRIPTS_HOME	 = sys.argv[2]
 APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
+APPLICATION_NAME	 = None
 
 execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
 execfile( WSADMIN_SCRIPTS_HOME+"/scripts/environment.py" )
@@ -59,27 +60,29 @@ global configInfo
 
 #Now iterate thorugh all properties files and shave the stuff as the last step
 dir = io.File(APPLICATIONS_HOME);
-resources = dir.list();
-for resource in resources:
-	configInfo = {}
 
+for resource in dir.list():
+	configInfo = {}
+	APPLICATION_NAME = None
 	try:
+		print "RESSURSEN ER : " + resource
 		# Use Java to load it, it is a properties file
 		fileprop = Properties()
 		
 		splitted = resource.split(".")
-		application_name = splitted[0]
-		fileStream = FileInputStream(APP_PROPS_HOME+application_name +".properties")
+		APPLICATION_NAME = splitted[0]
+		
+		fileStream = FileInputStream(APP_PROPS_HOME+APPLICATION_NAME +".properties")
 		
 		fileprop.load(fileStream)
 		configNames = fileprop.propertyNames()
 		for configName in configNames:
 			configInfo[configName] = fileprop.getProperty(configName)
 	except:
-		print 'INFO: Application '+ application_name + ' contains no resources, since property file was not defined.'
+		print 'INFO: Application '+ APPLICATION_NAME + ' contains no resources, since property file was not defined.'
 		continue
 	
-	print 'INFO: Application ' + application_name + ' contains resources. Deploying...'
+	print 'INFO: Application ' + APPLICATION_NAME + ' contains resources. Deploying...'
 	
 	for jidx in range(int(configInfo["app.count"])):
 			whatToCreate	 	= configInfo["app.%d.WHAT" % (jidx)]
@@ -198,7 +201,7 @@ for resource in resources:
 			#===================================================================================
 			if (whatToCreate == "sharedlib"):
 				# USAGE:  createSharedLibrary ( <"properties file name"> ):
-				retval = createSharedLibrary ( APP_PROPS_HOME+whereIsProperties)
+				retval = createSharedLibrary ( APP_PROPS_HOME+whereIsProperties, APPLICATION_NAME)
 				if(retval == 1):
 					sys.exit(1)
 			#endIf
