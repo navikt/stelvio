@@ -21,11 +21,22 @@ if {[array names env "wbi.install.root"] == ""} {
   }
 }
 set "bpelib.getopt" 1
+puts "$env(wbi.install.root)/ProcessChoreographer/config/bpelib.jacl"
 if {[file exists "$env(wbi.install.root)/ProcessChoreographer/config/bpelib.jacl"]} {
   source "$env(wbi.install.root)/ProcessChoreographer/config/bpelib.jacl"
 } else {
   puts "bpelib.jacl not found. Aborting..."
   exit 1
+}
+
+proc findCellName {} {
+  global env AdminConfig
+  set cells [$AdminConfig list Cell]
+
+  foreach cell $cells {
+    set cellName [$AdminConfig showAttribute $cell "name"]
+    return $cellName
+  }
 }
 
 #*******************************************************************************************************
@@ -52,7 +63,9 @@ proc changeBPCTemplateState {appName message bfmMethod htmMethod state} {
   set htmMBean ""
   if {[array names target "nodeName"] == ""} {
     set clusterName $target(name)
-    set cluster [$AdminConfig getid "/Cell:$env(local.cell)/ServerCluster:${clusterName}/"]
+    set cellName [findCellName]
+    puts $cellName
+    set cluster [$AdminConfig getid "/Cell:${cellName}/ServerCluster:${clusterName}/"]
     foreach member [$AdminConfig list ClusterMember ${cluster}] {
       set nodeName [$AdminConfig showAttribute ${member} "nodeName"]
       set serverName [$AdminConfig showAttribute ${member} "memberName"]
