@@ -173,7 +173,7 @@ public class BatchClientBuilderMojo extends AbstractMojo {
 			fw.write("#!/bin/bash\n");
 			fw.write("source " + outputConfigFile.getName() + "\n");
 			fw.write("\n");
-			fw.write("${JAVA_HOME}/bin/java ${SECURITY_JVM_PARAMS} ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p:${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $* stop\n");
+			fw.write("${JAVA_HOME}/bin/java ${SECURITY_JVM_PARAMS} ${CONSOLE_ENCODING} -Dwas.install.root=${WAS_HOME} -Djava.ext.dirs=${WAS_EXT_DIRS} -Xbootclasspath/p:${WAS_BOOTCLASSPATH} -classpath ${APP_CLASSPATH} " + javaClass + " $1 $2 stop\n");
 			fw.flush();
 			fw.close();
 			
