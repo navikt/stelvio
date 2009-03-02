@@ -11,7 +11,7 @@
 	<groupId>no.stelvio.int</groupId>
 	<artifactId>stelvio-commons-lib</artifactId>
 	<packaging>sca-library-jar</packaging>
-	<version>3.1.2</version>
+	<version>3.1.2-SNAPSHOT</version>
 	<build>
 		<plugins>
 			<plugin>
@@ -31,8 +31,8 @@
 	</build>
 	
 	<scm>
-		<connection>scm:svn:scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.1.2</connection>
-		<developerConnection>scm:svn:scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.1.2</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-commons-lib</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-commons-lib</developerConnection>
 	</scm>
 	
 </project>
