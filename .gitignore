@@ -594,4 +594,4 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/target
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/bin
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/target
 int/stelvio-commons-lib/.settings
-int/stelvio-commons-lib/no/no\stelvio\common\bus\util\DateUtil.class
+int/stelvio-commons-lib/no/*.class
