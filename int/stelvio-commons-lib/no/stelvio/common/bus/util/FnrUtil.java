@@ -1,6 +1,7 @@
 package no.stelvio.common.bus.util;
 
 import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -408,4 +409,18 @@ public final class FnrUtil{
 		
 		return age;
 	}
+	
+	/**
+	 * Returns the birthdate for a given fnr. Null if input is null or too short
+	 * 
+	 * @param fnr personal identification of the person
+	 * @return birthdate for given fnr 
+	 */
+	public static Date getBirthdateForFnr(String fnr) {
+		if(fnr == null || fnr.length()<6) return null;
+		
+		return DateUtil.parseInputString(makeDnrOrBostnrAdjustments(fnr).substring(0,6), false);
+	}
+
+
 }
