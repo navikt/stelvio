@@ -35,4 +35,11 @@
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-commons-lib</developerConnection>
 	</scm>
 	
+	<distributionManagement>
+		<site>
+			<id>snapshot-site</id>
+			<url>scp://e11apvl002.utv.internsone.local/var/www/html/project/stelvio_int/</url>
+		</site>
+	</distributionManagement>
+	
 </project>
