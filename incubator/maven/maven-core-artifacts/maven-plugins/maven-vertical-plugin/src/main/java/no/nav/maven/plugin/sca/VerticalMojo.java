@@ -55,21 +55,39 @@ public abstract class VerticalMojo extends AbstractMojo {
 	 */
 	protected ScmManager scmManager;
 
+	
+	/**
+	 * @parameter expression="${project}"
+	 */
+	protected MavenProject project;
+	
 	/**
 	 * {@inheritDoc}
 	 */
 	public void execute() throws MojoExecutionException {
+		
 		Collection<MavenProject> projects = getProjects();
-		Collection<ScmProject> scmProjects = new ArrayList<ScmProject>(projects.size());
+		StringBuilder projectNames = new StringBuilder();
 		for (MavenProject project : projects) {
-			String packaging = project.getPackaging();
-			if (SUPPORTED_PACKAGINGS.contains(packaging)) {
-				ScmRepository scmRepository = getScmRepository(project.getScm().getDeveloperConnection());
-				File projectWorkingDirectory = new File(workingDirectory, project.getArtifactId());
-				ScmFileSet scmFileSet = new ScmFileSet(projectWorkingDirectory);
-				scmProjects.add(new ScmProject(scmRepository, scmFileSet));
-			}
+			projectNames.append(project.getGroupId() + ":" + project.getArtifactId() + "  ");
 		}
+		
+		List <String> modules = project.getModules();
+		getLog().info("Resolved " + modules.size() + " modules");
+		getLog().info("Resolved the following modules " + modules.toString());
+		
+		String baseRepository = project.getScm().getDeveloperConnection();
+		baseRepository = baseRepository.concat("/../../layers");
+		
+		Collection<ScmProject> scmProjects = new ArrayList<ScmProject>(projects.size());
+		for (String moduleName : modules) {
+			File projectDirectory = new File(workingDirectory, moduleName);
+			ScmFileSet scmFileSet = new ScmFileSet(projectDirectory);
+			ScmRepository scmRepository = getScmRepository(baseRepository + "/" + moduleName);
+			ScmProject scmProject = new ScmProject(scmRepository, scmFileSet);
+			scmProjects.add(scmProject);
+		}
+		
 		try {
 			execute(scmProjects);
 		} catch (ScmException e) {
@@ -95,6 +113,10 @@ public abstract class VerticalMojo extends AbstractMojo {
 		} catch (ProjectBuildingException e) {
 			throw new MojoExecutionException("Error building projects from repository", e);
 		}
+	}
+	
+	private Collection <MavenProject> getProjectsByModules() throws MojoExecutionException {
+		return null;
 	}
 
 	protected abstract void execute(Collection<ScmProject> scmProjects) throws ScmException, MojoExecutionException;
