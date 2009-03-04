@@ -25,7 +25,7 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 				
 		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
 		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
-		
+		/*
 		try {
 			Commandline.Argument arg = new Commandline.Argument();
 			arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/BUSProcessController.py start false");
@@ -37,6 +37,7 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 			throw new RuntimeException("An error occured executing: " + commandLine, e);
 		}
 		
+		*/
 		
 	}
 }	

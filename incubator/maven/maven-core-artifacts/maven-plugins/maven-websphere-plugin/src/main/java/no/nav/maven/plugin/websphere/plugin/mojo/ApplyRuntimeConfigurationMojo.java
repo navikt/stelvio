@@ -73,6 +73,34 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 		}
 	}
 	
+	private final void updateAutoStart(final String artifactId, final String autoStart, final Commandline commandLine) {
+		
+		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
+		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
+
+		Commandline.Argument arg = new Commandline.Argument();
+		arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/AutoStart.py");
+		commandLine.addArg(arg);
+		
+		Commandline detailedCommand = new Commandline();
+		try {
+			detailedCommand.setExecutable(commandLine.getExecutable());
+			detailedCommand.addArguments(commandLine.getArguments());
+			arg = new Commandline.Argument();
+			arg.setLine(artifactId);
+			detailedCommand.addArg(arg);
+			arg = new Commandline.Argument();
+			arg.setLine(autoStart);
+			detailedCommand.addArg(arg);
+			getLog().info("Executing the following command: " + detailedCommand.toString());
+			CommandLineUtils.executeCommandLine(detailedCommand, stdout, stderr);
+			reportResult(stdout, stderr);
+			detailedCommand.clearArgs();
+		} catch (CommandLineException e) {
+			throw new RuntimeException("An error occured executing: " + commandLine, e);
+		}
+	}
+	
 	private final void iterateOverConfiguration(final Artifact a, final boolean global, Commandline commandLine) {
 		ConfigurationType configuration = null;
 
@@ -99,6 +127,10 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 		
 		if(configuration != null && configuration.getRuntime() != null && configuration.getRuntime().getActivationspecifications() != null) {
 			updateActivationSpecifications(configuration.getRuntime().getActivationspecifications(), commandLine);
+		}
+		
+		if(configuration != null && configuration.getRuntime() != null && configuration.getRuntime().getAutostart() != null) {
+			updateAutoStart(a.getArtifactId(), configuration.getRuntime().getAutostart(), commandLine);
 		}
 	}
 }	
