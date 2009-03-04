@@ -2418,6 +2418,7 @@ incubator/busconfiguration/src/main/resources/moduleconfig/nav-prod-sak-arena.xm
 incubator/busconfiguration/src/main/resources/moduleconfig/nav.xml -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/resources/moduleconfig/prod.xml -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/resources/scripts/Applications.py -text
+incubator/busconfiguration/src/main/resources/scripts/AutoStart.py -text
 incubator/busconfiguration/src/main/resources/scripts/BUSProcessController.py -text
 incubator/busconfiguration/src/main/resources/scripts/CleanBus.py -text
 incubator/busconfiguration/src/main/resources/scripts/CreateApplicationArtifacts.py -text
