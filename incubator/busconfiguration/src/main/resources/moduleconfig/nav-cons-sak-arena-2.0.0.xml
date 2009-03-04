@@ -14,6 +14,7 @@
         </authentication>
     </security>
     <runtime>
+     	<autostart>false</autostart>
         <activationspecifications>
             <activationspecification>
                 <name>nav-cons-frg-tps_AS</name>
