@@ -82,16 +82,15 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 
 	protected final void reportResult(CommandLineUtils.StringStreamConsumer stdout, CommandLineUtils.StringStreamConsumer stderr) {
 		
+		final String outPut = stdout.getOutput();
 		
 		if(stdout != null) {
-			getLog().info(stdout.getOutput());
+			getLog().info(outPut);
 		}
 		
-		/*
-		if(stderr != null) {
-			getLog().error(stdout.getOutput());
+		if(outPut.contains("ERROR") || outPut.contains("Error") || outPut.contains("error")) {
+			throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 		}
-		*/	
 	}
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {

@@ -1,5 +1,7 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
+import java.io.IOException;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.CommandLineException;
@@ -30,6 +32,7 @@ public class DeployArtifactMojo extends WebsphereUpdaterMojo {
 		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
 		
 		try {
+			
 			Commandline.Argument arg = new Commandline.Argument();
 			arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/Applications.py applications " + environment + " " + scriptsHome + " " + deployableArtifactsHome);
 			commandLine.addArg(arg);
