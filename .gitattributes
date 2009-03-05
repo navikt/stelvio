@@ -2318,9 +2318,6 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
-incubator/.classpath -text
-incubator/.project -text
-incubator/.runtime -text
 incubator/FEMCommandLine/FEMGRAppClient/.checkstyle -text
 incubator/FEMCommandLine/FEMGRAppClient/.classpath -text svneol=unset#text/plain
 incubator/FEMCommandLine/FEMGRAppClient/.compatibility -text
