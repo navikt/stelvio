@@ -2368,12 +2368,8 @@ incubator/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.validation.
 incubator/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/FEMGRAppClientEAR/pom.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/nav-int-appclient-fem-pom/pom.xml -text
-incubator/META-INF/MANIFEST.MF -text
 incubator/arbeidsforhold/pen/ibm-deploy.scaj2ee -text
 incubator/arbeidsforhold/psak/ibm-deploy.scaj2ee -text
-incubator/arenasak/psak/ibm-deploy.scaj2ee -text
-incubator/brukerprofil/psak/ibm-deploy.scaj2ee -text
-incubator/brukerprofil/pselv/ibm-deploy.scaj2ee -text
 incubator/busconfiguration/pom.xml -text
 incubator/busconfiguration/src/main/resources/environments/I1.properties -text
 incubator/busconfiguration/src/main/resources/environments/K4.properties -text
@@ -2628,15 +2624,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/dokbrev/psak/ibm-deploy.scaj2ee -text
-incubator/fullmakt/psak/ibm-deploy.scaj2ee -text
-incubator/infotrygdsak/psak/ibm-deploy.scaj2ee -text
-incubator/inntekt/pen/ibm-deploy.scaj2ee -text
-incubator/inntekt/psak/ibm-deploy.scaj2ee -text
-incubator/inntekt/pselv/ibm-deploy.scaj2ee -text
-incubator/institusjonsopphold/pen/ibm-deploy.scaj2ee -text
-incubator/institusjonsopphold/psak/ibm-deploy.scaj2ee -text
-incubator/journal/psak/ibm-deploy.scaj2ee -text
 incubator/maven/maven-core-artifacts/maven-archetypes/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
@@ -2811,8 +2798,6 @@ incubator/maven/maven-poms/pom.xml -text
 incubator/maven/maven-runtimes/pom.xml -text
 incubator/maven/maven-runtimes/wps-runtime/files.txt -text
 incubator/maven/maven-runtimes/wps-runtime/pom.xml -text
-incubator/medlemskapsunntak/pen/ibm-deploy.scaj2ee -text
-incubator/medlemskapsunntak/psak/ibm-deploy.scaj2ee -text
 incubator/nav-int-fault-test/nav-broc-fault-test/.classpath -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.project -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
@@ -2965,12 +2950,6 @@ incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/TestProc.wsdl -text 
 incubator/nav-int-testproc/nav-lib-test/no/nav/lib/test/inf/Vedtak.wsdl -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/pen/lib/nav/no/nav/lib/pen/inf/pensjonssak/Pensjonssak.java -text svneol=unset#text/plain
 incubator/nav-int-testproc/nav-lib-test/pen/lib/nav/no/nav/lib/pen/inf/vedtak/Vedtak.java -text svneol=unset#text/plain
-incubator/navorgenhet/pen/ibm-deploy.scaj2ee -text
-incubator/navorgenhet/psak/ibm-deploy.scaj2ee -text
-incubator/navorgenhet/pselv/ibm-deploy.scaj2ee -text
-incubator/oppgave/pen/ibm-deploy.scaj2ee -text
-incubator/oppgave/psak/ibm-deploy.scaj2ee -text
-incubator/oppgave/pselv/ibm-deploy.scaj2ee -text
 incubator/pom.xml -text
 incubator/release-test/nav-int-appclient-bpchelper-ear/META-INF/application.xml -text
 incubator/release-test/nav-int-appclient-bpchelper-ear/pom.xml -text
@@ -3016,7 +2995,6 @@ incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appcli
 incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/util/Constants.java -text
 incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/util/PasswordEncodeDelegate.java -text
 incubator/release-test/nav-int-appclient-common-java/src/main/java/no/nav/appclient/util/PropertyMapper.java -text
-incubator/samhandler/psak/ibm-deploy.scaj2ee -text
 incubator/src/main/resources/environments/I1.properties -text
 incubator/src/main/resources/environments/K4.properties -text
 incubator/src/main/resources/environments/K5.properties -text
@@ -3261,8 +3239,6 @@ incubator/src/main/resources/templates/nav-prod-sak-infot.properties -text
 incubator/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/utbetaling/psak/ibm-deploy.scaj2ee -text
-incubator/utbetaling/pselv/ibm-deploy.scaj2ee -text
 incubator/wid61-ceilogger/CEIEventConsumer/.compatibility -text
 incubator/wid61-ceilogger/CEIEventConsumer/.j2ee -text
 incubator/wid61-ceilogger/CEIEventConsumer/.project -text svneol=unset#text/plain
