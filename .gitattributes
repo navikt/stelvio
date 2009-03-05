@@ -2365,6 +2365,35 @@ incubator/FEMCommandLine/FEMGRAppClientEAR/.settings/org.eclipse.wst.validation.
 incubator/FEMCommandLine/FEMGRAppClientEAR/META-INF/application.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/FEMGRAppClientEAR/pom.xml -text svneol=unset#text/plain
 incubator/FEMCommandLine/nav-int-appclient-fem-pom/pom.xml -text
+incubator/IBM-Security-SCAJ2EE-lib/.classpath -text
+incubator/IBM-Security-SCAJ2EE-lib/.project -text
+incubator/IBM-Security-SCAJ2EE-lib/.runtime -text
+incubator/IBM-Security-SCAJ2EE-lib/META-INF/MANIFEST.MF -text
+incubator/IBM-Security-SCAJ2EE-lib/arbeidsforhold/pen/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/arbeidsforhold/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/arenasak/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/brukerprofil/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/brukerprofil/pselv/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/dokbrev/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/fullmakt/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/infotrygdsak/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/inntekt/pen/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/inntekt/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/inntekt/pselv/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/institusjonsopphold/pen/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/institusjonsopphold/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/journal/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/medlemskapsunntak/pen/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/medlemskapsunntak/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/navorgenhet/pen/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/navorgenhet/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/navorgenhet/pselv/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/oppgave/pen/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/oppgave/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/oppgave/pselv/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/samhandler/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/utbetaling/psak/ibm-deploy.scaj2ee -text
+incubator/IBM-Security-SCAJ2EE-lib/utbetaling/pselv/ibm-deploy.scaj2ee -text
 incubator/arbeidsforhold/pen/ibm-deploy.scaj2ee -text
 incubator/arbeidsforhold/psak/ibm-deploy.scaj2ee -text
 incubator/busconfiguration/pom.xml -text
