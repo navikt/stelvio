@@ -54,7 +54,7 @@ public abstract class VerticalMojo extends AbstractMojo {
 	 * @component
 	 */
 	protected ScmManager scmManager;
-
+	
 	
 	/**
 	 * @parameter expression="${project}"
@@ -76,14 +76,27 @@ public abstract class VerticalMojo extends AbstractMojo {
 		getLog().info("Resolved " + modules.size() + " modules");
 		getLog().info("Resolved the following modules " + modules.toString());
 		
-		String baseRepository = project.getScm().getDeveloperConnection();
-		baseRepository = baseRepository.concat("/../../layers");
+		String baseRepository = project.getScm().getDeveloperConnection().concat("/../../layers");
 		
 		Collection<ScmProject> scmProjects = new ArrayList<ScmProject>(projects.size());
 		for (String moduleName : modules) {
+			getLog().info("Working with " + moduleName);
+			
 			File projectDirectory = new File(workingDirectory, moduleName);
+			String repositoryLocation = null;
+			
+			if (moduleName.contains("stelvio-commons")) {
+				// Use alternate repository
+				repositoryLocation = "scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.1.2";
+				// Override the output folder for Stelvio Commons Lib
+				projectDirectory = new File(workingDirectory + File.separator + "libs", "stelvio-commons-lib");
+			} else {
+				repositoryLocation = baseRepository.concat("/" + moduleName);
+				getLog().info("repositoryLocation for " + moduleName + " is " + repositoryLocation);
+			}
+
 			ScmFileSet scmFileSet = new ScmFileSet(projectDirectory);
-			ScmRepository scmRepository = getScmRepository(baseRepository + "/" + moduleName);
+			ScmRepository scmRepository = getScmRepository(repositoryLocation);
 			ScmProject scmProject = new ScmProject(scmRepository, scmFileSet);
 			scmProjects.add(scmProject);
 		}
