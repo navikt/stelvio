@@ -2650,7 +2650,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/maven-eclipse-plugin/.project -text svneol=unset#text/plain
 incubator/maven-eclipse-plugin/pom.xml -text svneol=unset#text/plain
 incubator/maven-eclipse-plugin/src/main/java/org/apache/maven/plugin/eclipse/AbstractWorkspaceMojo.java -text svneol=unset#text/plain
 incubator/maven-eclipse-plugin/src/main/java/org/apache/maven/plugin/eclipse/AddMavenRepoMojo.java -text svneol=unset#text/plain
