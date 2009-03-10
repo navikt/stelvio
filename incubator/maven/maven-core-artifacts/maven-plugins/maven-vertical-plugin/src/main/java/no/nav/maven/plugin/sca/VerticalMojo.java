@@ -62,9 +62,17 @@ public abstract class VerticalMojo extends AbstractMojo {
 	protected MavenProject project;
 	
 	/**
+	 * @parameter
+	 * @required
+	 */
+	protected String stelvioSCMURL;
+	
+	/**
 	 * {@inheritDoc}
 	 */
 	public void execute() throws MojoExecutionException {
+		
+		getLog().info("stelvioSCMURL"  + stelvioSCMURL);
 		
 		Collection<MavenProject> projects = getProjects();
 		StringBuilder projectNames = new StringBuilder();
@@ -87,7 +95,7 @@ public abstract class VerticalMojo extends AbstractMojo {
 			
 			if (moduleName.contains("stelvio-commons")) {
 				// Use alternate repository
-				repositoryLocation = "scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.1.2";
+				repositoryLocation = stelvioSCMURL;
 				// Override the output folder for Stelvio Commons Lib
 				projectDirectory = new File(workingDirectory + File.separator + "libs", "stelvio-commons-lib");
 			} else {
