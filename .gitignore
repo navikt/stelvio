@@ -407,6 +407,9 @@ incubator/busconfiguration/.classpath
 incubator/busconfiguration/.project
 incubator/busconfiguration/.settings
 incubator/busconfiguration/target
+incubator/maven-eclipse-plugin/.classpath
+incubator/maven-eclipse-plugin/.project
+incubator/maven-eclipse-plugin/target
 incubator/maven/.project
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/.project
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/.settings
