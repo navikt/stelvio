@@ -95,13 +95,13 @@
 			<role>
 				org.apache.maven.artifact.handler.ArtifactHandler
 			</role>
-			<role-hint>sca-library-jar</role-hint>
+			<role-hint>wps-library-jar</role-hint>
 			<implementation>
 				org.apache.maven.artifact.handler.DefaultArtifactHandler
 			</implementation>
 			<configuration>
-				<type>sca-library-jar</type>
-				<packaging>sca-library-jar</packaging>
+				<type>wps-library-jar</type>
+				<packaging>wps-library-jar</packaging>
 				<extension>jar</extension>
 				<language>java</language>
 				<addedToClasspath>true</addedToClasspath>
@@ -111,13 +111,13 @@
 			<role>
 				org.apache.maven.artifact.handler.ArtifactHandler
 			</role>
-			<role-hint>sca-module-ear</role-hint>
+			<role-hint>wps-module-ear</role-hint>
 			<implementation>
 				org.apache.maven.artifact.handler.DefaultArtifactHandler
 			</implementation>
 			<configuration>
-				<type>sca-module-ear</type>
-				<packaging>sca-module-ear</packaging>
+				<type>wps-module-ear</type>
+				<packaging>wps-module-ear</packaging>
 				<extension>ear</extension>
 				<includesDependencies>true</includesDependencies>
 				<language>java</language>
