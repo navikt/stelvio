@@ -3387,9 +3387,6 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugi
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-sca-artifact-plugin/pom.xml -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-sca-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-sca-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-service-deploy-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ProjectInterchangeServiceDeployAssembly.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssembly.java -text svneol=unset#text/plain
@@ -3419,6 +3416,9 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/ma
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereUpdaterMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifactDeprecated.build.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifactDeprecated.mojos.xml -text
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/pom.xml -text
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-root-pom/.project -text
 incubator/maven/maven-core-artifacts/maven-root-pom/pom.xml -text
