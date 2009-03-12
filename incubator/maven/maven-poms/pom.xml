@@ -15,7 +15,7 @@
 	
 	<modules>
 		<module>maven-deploy-pom</module>
-		<module>maven-sca-poms</module>
+		<module>maven-wps-poms</module>
 	</modules>
 	
 	<scm>
