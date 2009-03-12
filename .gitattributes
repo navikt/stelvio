@@ -3524,6 +3524,10 @@ incubator/maven/maven-poms/maven-sca-poms/maven-sca-library-pom/.project -text
 incubator/maven/maven-poms/maven-sca-poms/maven-sca-library-pom/pom.xml -text
 incubator/maven/maven-poms/maven-sca-poms/maven-sca-module-pom/.project -text
 incubator/maven/maven-poms/maven-sca-poms/maven-sca-module-pom/pom.xml -text
+incubator/maven/maven-poms/maven-sca-poms/maven-wps-library-pom/.project -text
+incubator/maven/maven-poms/maven-sca-poms/maven-wps-library-pom/pom.xml -text
+incubator/maven/maven-poms/maven-sca-poms/maven-wps-module-pom/.project -text
+incubator/maven/maven-poms/maven-sca-poms/maven-wps-module-pom/pom.xml -text
 incubator/maven/maven-poms/maven-sca-poms/pom.xml -text
 incubator/maven/maven-poms/pom.xml -text
 incubator/maven/maven-runtimes/pom.xml -text
