@@ -46,6 +46,7 @@
   </xs:complexType>
   <xs:complexType name="runtimeType">
     <xs:sequence>
+      <xs:element type="xs:string" name="autostart"/>
       <xs:element type="wps:activationspecificationsType" name="activationspecifications" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
     </xs:sequence>
   </xs:complexType>
