@@ -22,67 +22,95 @@
 	</developers>
 
 	<build>
+		<directory>${target.dir}</directory>
+		<outputDirectory>${target.dir}/classes</outputDirectory>
+		<testOutputDirectory>
+			${target.dir}/test-classes
+		</testOutputDirectory>
+		<sourceDirectory />
+		<resources>
+			<resource>
+				<!-- TODO: This is here because WID insists on having the root folder as a source folder -->
+				<!-- TODO: Review which files to exclude/include -->
+				<directory>${basedir}</directory>
+				<excludes>
+					<exclude>.settings/**</exclude>
+					<exclude>bin/**</exclude>
+					<exclude>gen/**</exclude>
+				</excludes>
+				<includes>
+					<include>**/*.wsdl</include>
+					<include>**/*.xsd</include>
+					<include>**/*.module</include>
+					<include>**/*.modulex</include>
+					<include>**/*.component</include>
+					<include>**/*.import</include>
+					<include>**/*.export</include>
+					<include>**/*.ifm</include>
+					<include>**/*.map</include>
+					<include>**/*.scaj2ee</include>
+				</includes>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.5</source>
-						<target>1.5</target>
+						<verbose>true</verbose>
+						<fork>true</fork>
+						<executable>
+							${wid.runtime}\java\bin\javac
+						</executable>
+						<compilerVersion>1.5</compilerVersion>
 					</configuration>
 				</plugin>
 				<plugin>
-					<artifactId>maven-plugin-plugin</artifactId>
-					<dependencies>
-						<!--  
-							TODO: This dependency should ideally not be here, but in the plugins that are implemented i ANT.
-							I tried it, but somehow the configuration is not taken into account when building these plugins as 
-							part of an aggreation Maven module. See Maven bugs MPLUGIN-37 and MNG-1323 for more details.
-						-->
-						<dependency>
-							<groupId>org.apache.maven</groupId>
-							<artifactId>
-								maven-plugin-tools-ant
-							</artifactId>
-							<version>2.0.5</version>
-						</dependency>
-					</dependencies>
+					<artifactId>maven-wps-artifact-plugin</artifactId>
+					<groupId>no.nav.maven.plugins</groupId>
+					<extensions>true</extensions>
 				</plugin>
-
 				<plugin>
-					<artifactId>maven-eclipse-plugin</artifactId>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-service-deploy-plugin</artifactId>
 					<configuration>
-						<workspaceCodeStylesURL>
-							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
-						</workspaceCodeStylesURL>
-						<buildOutputDirectory>bin</buildOutputDirectory>
-						<downloadJavadocs>true</downloadJavadocs>
-						<downloadSources>true</downloadSources>
+						<assemblyType>zip</assemblyType>
+						<keep>true</keep>
+						<progressMonitor>none</progressMonitor>
+						<workingDirectory>c:\tmp\maven-target\</workingDirectory>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<plugins>
-			<plugin>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<preparationGoals>clean verify install</preparationGoals>
-				</configuration>
-			</plugin>
-		</plugins>
+		
 	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.ibm.maven.runtimes</groupId>
+			<artifactId>wps-runtime</artifactId>
+			<version>6.1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	
+	
+	<properties>
+		<!-- 
+			TODO: WID goes bananas if the Maven build is using the default target folder as output. 
+			As a workaround we are changing the target folder to a folder outside the project		
+		-->
+		<!-- TODO: Review this setting -->
+		<target.dir>
+			${user.home}/maven-target/${groupId}/${artifactId}/${version}
+		</target.dir>
+		
+		<maven.version>2.0.7</maven.version>
+		<project.build.sourceEncoding>
+			UTF-8
+		</project.build.sourceEncoding>
+	</properties>
+	
+
 
 	<dependencyManagement>
 		<dependencies>
@@ -192,13 +220,6 @@
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
-
-	<properties>
-		<maven.version>2.0.7</maven.version>
-		<project.build.sourceEncoding>
-			UTF-8
-		</project.build.sourceEncoding>
-	</properties>
 
 	<scm>
 		<connection>
