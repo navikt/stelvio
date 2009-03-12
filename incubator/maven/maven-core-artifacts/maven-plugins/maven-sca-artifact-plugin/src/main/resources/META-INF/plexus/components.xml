@@ -5,7 +5,7 @@
 			<role>
 				org.apache.maven.lifecycle.mapping.LifecycleMapping
 			</role>
-			<role-hint>sca-library-jar</role-hint>
+			<role-hint>wps-library-jar</role-hint>
 			<implementation>
 				org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping
 			</implementation>
@@ -50,7 +50,7 @@
 			<role>
 				org.apache.maven.lifecycle.mapping.LifecycleMapping
 			</role>
-			<role-hint>sca-module-ear</role-hint>
+			<role-hint>wps-module-ear</role-hint>
 			<implementation>
 				org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping
 			</implementation>
