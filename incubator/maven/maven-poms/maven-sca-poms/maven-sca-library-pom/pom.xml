@@ -3,14 +3,14 @@
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-sca-root-pom</artifactId>
+		<artifactId>maven-wps-root-pom</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>maven-sca-library-pom</artifactId>
+	<artifactId>maven-wps-library-pom</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>SCA Library Master POM</name>
+	<name>WPS Library Master POM</name>
 
 	<build>
 		<pluginManagement>
