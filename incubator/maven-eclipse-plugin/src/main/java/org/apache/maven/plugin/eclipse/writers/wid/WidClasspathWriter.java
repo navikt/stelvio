@@ -103,14 +103,41 @@ public class WidClasspathWriter
         }
       
         Xpp3Dom classpath = readXMLFile( classpathFile );
+        // Modify existing entries in file
+        Xpp3Dom[] children;
+        children = classpath.getChildren();
+        int index=0;
+        for ( index = children.length - 1; index >= 0; index-- )
+        {
+        	// Remove default src folder added by eclipse:eclipse
+        	if (children[index].getAttribute("including") != null) {
+	        	if(children[index].getAttribute("including").contains("java")) {
+	        		classpath.removeChild(index);
+	        		log.info("Removing index " + index);
+	        	}
+        	}
+        	// Set output to empty string
+        	if (children[index].getAttribute("kind") != null) {
+	        	if(children[index].getAttribute("kind").contains("output")) {
+	        		classpath.removeChild(index);
+	        		Xpp3Dom output = new Xpp3Dom( CLASSPATHENTRY );
+	        		output.setAttribute( KIND, OUTPUT );        
+	        		output.setAttribute( PATH, "" );
+	                classpath.addChild( output );
+	        		log.info("Setting output path to empty string.");
+	        	}
+        	}
+        }
         
 
+        // Add src folder root excluding gen/ and gen/src/
         Xpp3Dom newEntry = new Xpp3Dom( CLASSPATHENTRY );
         newEntry.setAttribute( EXCLUDING, "gen/|gen/src/" );
         newEntry.setAttribute( KIND, SRC );        
         newEntry.setAttribute( PATH, "" );
         classpath.addChild( newEntry );
 
+        // Add src folder 
         newEntry = new Xpp3Dom( CLASSPATHENTRY );
         newEntry.setAttribute( KIND, SRC );        
         newEntry.setAttribute( PATH, "gen/src" );
