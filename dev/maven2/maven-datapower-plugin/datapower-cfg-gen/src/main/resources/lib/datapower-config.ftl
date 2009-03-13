@@ -11,6 +11,7 @@
 <#include "AAAPolicyClientSSL2LTPA.ftl">
 <#include "AAAPolicyClientSSL2LTPAAllAuthenticated.ftl">
 <#include "AAAPolicyAuthenticateAllLTPA.ftl">
+<#include "AAAPolicyBasicAuth.ftl">
 <#include "FrontsideHandler.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
