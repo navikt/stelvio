@@ -3,11 +3,11 @@
 	<groupId>no.nav.datapower</groupId>
 	<artifactId>datapower-cfg-secgw</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.6</version>
+	<version>1.0.7-SNAPSHOT</version>
 	<name>Configuration Generator for the 'secgw' DataPower module</name>
 		<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-cfg-secgw-1.0.6</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-cfg-secgw-1.0.6</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/datapower/datapower-cfg-secgw</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/datapower/datapower-cfg-secgw</developerConnection>
 	</scm>
 	
 	<build>
