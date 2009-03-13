@@ -16,7 +16,7 @@
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-sca-artifact-plugin</artifactId>
+				<artifactId>maven-wps-artifact-plugin</artifactId>
 				<extensions>true</extensions>
 			</plugin>
 			
