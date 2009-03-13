@@ -1314,6 +1314,7 @@ dev/datapower/datapower-cfg-partnergw/src/test/resources/cfg-partnergw-utv.prope
 dev/datapower/datapower-cfg-secgw/pom.xml -text
 dev/datapower/datapower-cfg-secgw/src/main/java/no/nav/datapower/config/secgw/SGWConfigGeneratorImpl.java -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
+dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-basic-auth-file.ftl -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-mapping-file.ftl -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/cfg-secgw-required.properties -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/local/wsdl/workmate.wsdl -text

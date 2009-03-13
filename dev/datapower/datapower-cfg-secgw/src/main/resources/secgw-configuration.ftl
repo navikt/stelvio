@@ -89,6 +89,7 @@
 			backsidePort="${backsidePort}"
 			backsideUri="${wsdl.endpointURI}"
 			backsideSSLProxy="${backsideHost}_SSLProxyProfile"
+			backsideTimeout="${inboundBacksideConnectionTimeout}"
 			/>					
 	</#list>
 	
@@ -108,13 +109,21 @@
 			name="${workmateBacksideHost}"
 			trustedCerts=[{"name":"${backsideTrustCertName}","file":"pubcert:///${backsideTrustCertName}.pem"}]/>
 	
+	
+	<@dp.AAAPolicyBasicAuth
+			name="${workmateAaaPolicyName}"
+			aaaFileName="local:///aaa/${workmateAaaFilename}"/>
+	
 	<@dp.ProcessingRequestRule
 		name="workmateProcessingRequestRule"
 		actions=[
 			{"type":"slm",	"name":"slmAction",	
 					"input":"INPUT",	"output":"NULL"}, 
+			{"type":"aaa",	"name":"aaaAction",	
+						"input":"INPUT",	"output":"PIPE",
+						"policy":"${workmateAaaPolicyName}"}, 
 			{"type":"result", "name":"resultAction",
-				"input":"INPUT","output":"OUTPUT"}
+				"input":"PIPE","output":"OUTPUT"}
 		]/>
 	<@dp.WSStylePolicy
 		name="workmateProcessingPolicy"
@@ -138,6 +147,7 @@
 			backsidePort="${workmateBacksidePort}"
 			backsideUri="${workmateURI}"
 			backsideSSLProxy="${workmateBacksideHost}_SSLProxyProfile"
+			backsideTimeout="${inboundBacksideConnectionTimeout}"
 			/>
 			
 	</#if>

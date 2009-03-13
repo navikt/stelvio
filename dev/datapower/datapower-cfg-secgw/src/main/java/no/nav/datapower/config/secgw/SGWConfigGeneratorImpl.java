@@ -45,6 +45,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	private static final String GENERATOR_NAME = "secgw";
 	private static final String TEMPLATE_CFG = "secgw-configuration.ftl";
 	private static final String TEMPLATE_AAA = "aaa-mapping-file.ftl";
+	private static final String TEMPLATE_AAA_WORKMATE = "aaa-basic-auth-file.ftl";
 	private static final String REQUIRED_PROPERTIES_NAME = "/cfg-secgw-required.properties";
 	private static final Properties REQUIRED_PROPERTIES = DPPropertiesUtils.load(SGWConfigGeneratorImpl.class,REQUIRED_PROPERTIES_NAME);
 	private static final TemplateLoader SECGW_TEMPLATE_LOADER = new StreamTemplateLoader(SGWConfigGeneratorImpl.class, "/");
@@ -101,6 +102,22 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			throw new IllegalStateException("Template processing failed for AAAInfo file", e);
 		}
 
+		// Generate AAAInfo file for Workmate
+		try {
+			String wmateAaaFilename = cfg.getProperty("workmateAaaFilename");
+			LOG.debug("Generating Workmate AAA file " + wmateAaaFilename);
+			File wmateAaaMappingFile = DPFileUtils.append(unit.getFilesLocalAaaDir(), wmateAaaFilename);
+			FileWriter wmateAaaWriter = new FileWriter(wmateAaaMappingFile);
+			processTemplate(TEMPLATE_AAA_WORKMATE, cfg.getProperties(), wmateAaaWriter);
+			wmateAaaWriter.close();
+			LOG.debug("Done generating Workmate AAA file " + wmateAaaFilename);
+		} catch (IOException e) {
+			throw new IllegalStateException("Caught IOException while building Workmate AAAInfo file", e);
+		} catch (TemplateException e) {
+			throw new IllegalStateException("Template processing failed for Workmate AAAInfo file", e);
+		}
+
+		
 		// Generate XCFG configuration
 		try {			
 			File cfgFile = DPFileUtils.append(unit.getImportConfigDir(), cfg.getConfigFilename());
