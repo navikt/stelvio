@@ -221,10 +221,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/stelvio-integration-root-pom-1.2
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-integration-root-pom-1.2
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/stelvio-integration-root-pom-1.2
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-integration-root-pom-1.2
 		</developerConnection>
 	</scm>
 </project>
