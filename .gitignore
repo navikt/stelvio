@@ -540,7 +540,7 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/src
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/src/target
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/target
-incubator/maven/maven-core-artifacts/maven-root-pom/target
+incubator/maven/maven-core-artifacts/stelvio-integration-root-pom/target
 incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/.classpath
 incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/.project
 incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/.settings
