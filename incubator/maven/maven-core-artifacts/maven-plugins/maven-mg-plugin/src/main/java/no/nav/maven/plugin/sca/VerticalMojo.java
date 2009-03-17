@@ -21,7 +21,7 @@ import org.apache.maven.scm.repository.ScmRepository;
 
 public abstract class VerticalMojo extends AbstractMojo {
 	private static final Collection<String> SUPPORTED_PACKAGINGS = new HashSet<String>(Arrays.asList(new String[] {
-			"sca-module-ear", "sca-library-jar" }));
+			"wps-module-ear", "wps-library-jar" }));
 	/**
 	 * The working directory. 
 	 * 
