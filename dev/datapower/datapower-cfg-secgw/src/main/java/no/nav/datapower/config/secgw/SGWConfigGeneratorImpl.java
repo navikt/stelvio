@@ -82,7 +82,8 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), unit.getFilesCertDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), unit.getFilesLocalXsltDir());
 			DPFileUtils.copyFilesToDirectory(getLocalFiles("xslt"), unit.getFilesLocalXsltDir());
-			DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), unit.getFilesLocalWsdlDir());
+			//FIXME Workmate; comment the below line in again to copy workmate wsdl file to DataPower
+			//DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), unit.getFilesLocalWsdlDir());
 		} catch (IOException e) {
 			throw new IllegalStateException("Caught IOException while extracting WSDL files from EAR archives",e);
 		}
@@ -102,20 +103,21 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			throw new IllegalStateException("Template processing failed for AAAInfo file", e);
 		}
 
+		//FIXME Workmate; comment in the below section to create aaainfo file used for aaa step		
 		// Generate AAAInfo file for Workmate
-		try {
-			String wmateAaaFilename = cfg.getProperty("workmateAaaFilename");
-			LOG.debug("Generating Workmate AAA file " + wmateAaaFilename);
-			File wmateAaaMappingFile = DPFileUtils.append(unit.getFilesLocalAaaDir(), wmateAaaFilename);
-			FileWriter wmateAaaWriter = new FileWriter(wmateAaaMappingFile);
-			processTemplate(TEMPLATE_AAA_WORKMATE, cfg.getProperties(), wmateAaaWriter);
-			wmateAaaWriter.close();
-			LOG.debug("Done generating Workmate AAA file " + wmateAaaFilename);
-		} catch (IOException e) {
-			throw new IllegalStateException("Caught IOException while building Workmate AAAInfo file", e);
-		} catch (TemplateException e) {
-			throw new IllegalStateException("Template processing failed for Workmate AAAInfo file", e);
-		}
+//		try {
+//			String wmateAaaFilename = cfg.getProperty("workmateAaaFilename");
+//			LOG.debug("Generating Workmate AAA file " + wmateAaaFilename);
+//			File wmateAaaMappingFile = DPFileUtils.append(unit.getFilesLocalAaaDir(), wmateAaaFilename);
+//			FileWriter wmateAaaWriter = new FileWriter(wmateAaaMappingFile);
+//			processTemplate(TEMPLATE_AAA_WORKMATE, cfg.getProperties(), wmateAaaWriter);
+//			wmateAaaWriter.close();
+//			LOG.debug("Done generating Workmate AAA file " + wmateAaaFilename);
+//		} catch (IOException e) {
+//			throw new IllegalStateException("Caught IOException while building Workmate AAAInfo file", e);
+//		} catch (TemplateException e) {
+//			throw new IllegalStateException("Template processing failed for Workmate AAAInfo file", e);
+//		}
 
 		
 		// Generate XCFG configuration

@@ -94,15 +94,9 @@
 	</#list>
 	
 	<#-- Workmate -->
-	<#--
-	<#assign workmatewsdl="workmate.wsdl"/> 
-	<#assign wsdlPortBindingList = ["{http://schemas.adbsys.com/WDA.HttpHandlers.WMBDRequest.WebService01.xsd}WebService01Soap",
-	"{http://schemas.adbsys.com/WDA.HttpHandlers.WMBDRequest.WebService01.xsd}WebService01Soap12"]>
-	<#assign workmateBacksideProtocol="https"/>
-	<#assign workmateBacksideHost="wasapp-t.adeo.no"/>
-	<#assign workmateBacksidePort="443"/>
-	<#assign workmateURI="/WorkMateOM/WebServices/WDA.HttpHandlers.WMBDRequest.WebService01.03.asmx"/>
-	-->
+	<#-- FIXME workmate. Comment in the below to be able to deploy workmate -->
+	
+	<#-- 
 	
 	<#if deployWorkmate=="true">
 	<@dp.BacksideSSL
@@ -148,7 +142,9 @@
 			backsideUri="${workmateURI}"
 			backsideSSLProxy="${workmateBacksideHost}_SSLProxyProfile"
 			backsideTimeout="${inboundBacksideConnectionTimeout}"
-			/>
-			
+			/>		
 	</#if>
+	
+	-->
+	
 </@dp.configuration>
