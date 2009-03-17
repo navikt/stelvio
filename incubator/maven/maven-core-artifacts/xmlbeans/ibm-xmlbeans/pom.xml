@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>ibm-xmlbeans</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>IBM XMLBeans artifacts</name>
+	<name>Stelvio Integration Framework XMLBeans IBM</name>
 
 	<build>
 		<plugins>

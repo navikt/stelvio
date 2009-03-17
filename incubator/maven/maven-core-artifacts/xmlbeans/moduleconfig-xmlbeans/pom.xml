@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>moduleconfig-xmlbeans</artifactId>
 	<version>1.2-SNAPSHOT</version>
-	<name>Module Configuration XMLBeans artifacts</name>
+	<name>Stelvio Integration Framework XMLBeans Module Config</name>
 
 	<build>
 		<plugins>
