@@ -3387,6 +3387,12 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugi
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/test/java/no/nav/maven/plugin/artifact/modifier/mojo/LoadArtifactConfigurationMojoTest.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/test/resources/META-INF/plexus/components.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/test/resources/unit/plugin-cfg.xml -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/pom.xml -text
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/CheckOutMojo.java -text
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/CleanMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/ScmProject.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/UpdateMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/VerticalMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
@@ -3401,12 +3407,6 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-service-deploy-plugin/s
 incubator/maven/maven-core-artifacts/maven-plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-update-ear-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/pom.xml -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/CheckOutMojo.java -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/CleanMojo.java -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/ScmProject.java -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/UpdateMojo.java -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/src/main/java/no/nav/maven/plugin/sca/VerticalMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ApplyRuntimeConfigurationMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/DeployArtifactMojo.java -text svneol=unset#text/plain

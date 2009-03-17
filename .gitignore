@@ -439,6 +439,11 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugi
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/.settings
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/target
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/.classpath
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/.project
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/.settings
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/bin
+incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/.classpath
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/.project
 incubator/maven/maven-core-artifacts/maven-plugins/maven-project-interchange-plugin/.settings
@@ -469,11 +474,6 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-update-ear-plugin/.proj
 incubator/maven/maven-core-artifacts/maven-plugins/maven-update-ear-plugin/.settings
 incubator/maven/maven-core-artifacts/maven-plugins/maven-update-ear-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-update-ear-plugin/target
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/.classpath
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/.project
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/.settings
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/bin
-incubator/maven/maven-core-artifacts/maven-plugins/maven-vertical-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/.classpath
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/.project
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/.settings

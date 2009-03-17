@@ -9,10 +9,10 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>maven-vertical-plugin</artifactId>
+	<artifactId>maven-mg-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Vertical Plugin</name>
+	<name>Stelvio Integration Framework Module Group Plugin</name>
 
 	<dependencies>
 		<dependency>
