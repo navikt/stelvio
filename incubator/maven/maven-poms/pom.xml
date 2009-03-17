@@ -2,16 +2,16 @@
         <modelVersion>4.0.0</modelVersion> 
 
     <parent>
-        <groupId>no.nav.maven.poms</groupId>
-        <artifactId>maven-root-pom</artifactId>
-        <version>0.1</version>
+        <groupId>no.nav.stelvio.poms</groupId>
+		<artifactId>stelvio-integration-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
     </parent>
 
     <groupId>no.nav.maven.poms</groupId>
     <artifactId>maven-poms</artifactId>
     <version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-    <name>Maven POMs</name>
+    <name>Stelveio Integration Framework POMS</name>
 	
 	<modules>
 		<module>maven-deploy-pom</module>
