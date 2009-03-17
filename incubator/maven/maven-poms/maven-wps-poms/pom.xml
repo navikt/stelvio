@@ -48,21 +48,6 @@
 				</includes>
 			</resource>
 		</resources>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<verbose>true</verbose>
-						<fork>true</fork>
-						<executable>
-							${wid.runtime}\java\bin\javac
-						</executable>
-						<compilerVersion>1.5</compilerVersion>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
