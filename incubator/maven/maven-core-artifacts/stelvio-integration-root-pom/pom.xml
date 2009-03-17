@@ -4,7 +4,7 @@
 	<groupId>no.nav.stelvio.poms</groupId>
 	<artifactId>stelvio-integration-root-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.4-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>Stelvio Integration Framework Master POM</name>
 
 	<developers>
@@ -22,62 +22,19 @@
 	</developers>
 
 	<build>
-		<directory>${target.dir}</directory>
-		<outputDirectory>${target.dir}/classes</outputDirectory>
-		<testOutputDirectory>
-			${target.dir}/test-classes
-		</testOutputDirectory>
-		<sourceDirectory />
-		<resources>
-			<resource>
-				<!-- TODO: This is here because WID insists on having the root folder as a source folder -->
-				<!-- TODO: Review which files to exclude/include -->
-				<directory>${basedir}</directory>
-				<excludes>
-					<exclude>.settings/**</exclude>
-					<exclude>bin/**</exclude>
-					<exclude>gen/**</exclude>
-				</excludes>
-				<includes>
-					<include>**/*.wsdl</include>
-					<include>**/*.xsd</include>
-					<include>**/*.module</include>
-					<include>**/*.modulex</include>
-					<include>**/*.component</include>
-					<include>**/*.import</include>
-					<include>**/*.export</include>
-					<include>**/*.ifm</include>
-					<include>**/*.map</include>
-					<include>**/*.scaj2ee</include>
-				</includes>
-			</resource>
-		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
 						<verbose>true</verbose>
 						<fork>true</fork>
 						<executable>
 							${wid.runtime}\java\bin\javac
 						</executable>
 						<compilerVersion>1.5</compilerVersion>
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-wps-artifact-plugin</artifactId>
-					<groupId>no.nav.maven.plugins</groupId>
-					<extensions>true</extensions>
-				</plugin>
-				<plugin>
-					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>maven-service-deploy-plugin</artifactId>
-					<configuration>
-						<assemblyType>zip</assemblyType>
-						<keep>true</keep>
-						<progressMonitor>none</progressMonitor>
-						<workingDirectory>c:\tmp\maven-target\</workingDirectory>
 					</configuration>
 				</plugin>
 			</plugins>
