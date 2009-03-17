@@ -12,7 +12,7 @@
 	<artifactId>maven-project-interchange-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Eclipse Project Interchange Plugin</name>
+	<name>Stelvio Integration Framework PI Plugin</name>
 
 	<dependencies>
 		<dependency>
