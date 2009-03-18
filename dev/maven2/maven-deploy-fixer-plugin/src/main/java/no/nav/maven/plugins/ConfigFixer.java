@@ -110,7 +110,7 @@ public class ConfigFixer extends AbstractMojo {
 						frb.setProperties(props);
 						File[] consModules = workingFolder.listFiles(new FilenameFilter() {
 												public boolean accept(File dir, String name) {
-													return name.contains("nav-cons");
+													return (name.contains("nav-cons") || name.contains("nav-ent-test-getapplicationversion"));
 												}
 											});
 						if(consModules != null){
@@ -185,7 +185,7 @@ public class ConfigFixer extends AbstractMojo {
 		
 		File[] ears = flattenedFolder.listFiles(new FilenameFilter() {
 			public boolean accept(File dir, String name) {
-				return name.contains("nav-cons");
+				return name.contains("nav-cons") || name.contains("nav-ent-test-getapplicationversion");
 			}
 		});
 		
