@@ -1899,7 +1899,6 @@ dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/uti
 dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/utils/XMLUtils.java -text
 dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/utils/ZipUtils.java -text
 dev/maven2/maven-propertiesgenerator-plugin/trunk/pom.xml -text
-dev/maven2/maven-propertiesgenerator-plugin/trunk/src/main/java/nav/maven/plugins/PropertiesGeneratorMojo.java -text
 dev/maven2/maven-propertiesgenerator-plugin/trunk/src/main/java/no/nav/maven/plugins/PropertiesGeneratorMojo.java -text
 dev/maven2/maven-war-plugin/.classpath -text
 dev/maven2/maven-war-plugin/.project -text
