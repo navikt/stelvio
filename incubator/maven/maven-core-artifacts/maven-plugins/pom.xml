@@ -32,6 +32,7 @@
 		<module>maven-mg-plugin</module>
 		<module>maven-websphere-plugin</module>
 		<module>maven-artifact-modifier-plugin</module>
+		<module>maven-wid-plugin</module>
 	</modules>
 	
 	<build>
