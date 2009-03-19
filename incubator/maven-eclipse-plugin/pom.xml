@@ -26,18 +26,23 @@ under the License.
     <groupId>org.apache.maven.plugins</groupId>
     <version>13</version>
   </parent>
-  <artifactId>maven-eclipse-plugin</artifactId>
-  <version>2.6-SNAPSHOT</version>
+  <artifactId>maven-wid-plugin</artifactId>
+  <version>0.9-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
-  <name>Maven Eclipse Plugin</name>
-  <description>The Eclipse Plugin is used to generate Eclipse IDE files (.project, .classpath and the .settings folder) from a POM.</description>
+  <name>Maven WID Plugin</name>
+  <description>This is a modified version of maven-eclipse-plugin v. 2.6-SNAPSHOT to handle generation
+  of files for WebSphere Integration Developer. We needed to change the EclipsePlugin class to introduce postprocessing
+  of files. The eclipseplugin generated files close to what WID needs, but they required som postprocessing.
+  The original description:
+  The Eclipse Plugin is used to generate Eclipse IDE files (.project, .classpath and the .settings folder) from a POM.
+  </description>
   <prerequisites>
     <maven>2.0.1</maven>
   </prerequisites>
   <scm>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/maven/plugins/trunk/maven-eclipse-plugin/</connection>
-    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/maven/plugins/trunk/maven-eclipse-plugin/</developerConnection>
-    <url>http://svn.apache.org/viewvc/maven/plugins/trunk/maven-eclipse-plugin/</url>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/</developerConnection>
+    <url>http://versjonskontroll.adeo.no/viewsvn/trunk/incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/?root=stelvio</url>
   </scm>
   <issueManagement>
     <system>JIRA</system>
