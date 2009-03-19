@@ -79,7 +79,7 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
  * @author <a href="mailto:test@example.com">Trygve Laugst&oslash;l</a>
  * @author <a href="mailto:test@example.com">Fabrizio Giustina</a>
  * @version $Id: EclipsePlugin.java 728546 2008-12-21 22:56:51Z bentmann $
- * @goal eclipse
+ * @goal wid
  * @execute phase="generate-resources"
  */
 public class EclipsePlugin
@@ -995,6 +995,8 @@ extends AbstractIdeSupportMojo
     }
     
     /**
+     * THIS IS A MODIFICATION OF THE ORIGINAL ECLIPSE PLUGIN CLASS
+     * 
      * Extension point for subclasses.
      * <p>
      * Do any postprocessing of files here
@@ -1064,6 +1066,7 @@ extends AbstractIdeSupportMojo
 
         writeAdditionalConfig();
         
+        // THIS IS A MODIFICATION OF THE ORIGINAL ECLIPSE PLUGIN CLASS
         postProcessing(config);
 
         getLog().info( Messages.getString( "EclipsePlugin.wrote", new Object[] { //$NON-NLS-1$
