@@ -16,9 +16,9 @@
 
     <modules>
     	<module>maven-bus-deploy-poc</module>
-	<module>bus-deploy</module>
+		<module>bus-deploy</module>
     </modules>
-    
+              	
     <scm>
     	<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-deploy-poc</connection>
 	<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-deploy-poc</developerConnection>
