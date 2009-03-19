@@ -33,9 +33,9 @@
                 <extensions>true</extensions>
             </plugin>        
         </plugins>
-        
-    	<pluginManagement>
-    		<plugins>
+     
+	 	<pluginManagement>
+	   		<plugins>
 				<plugin>
 					<groupId>nav.maven.plugins</groupId>
 					<artifactId>maven-propertiesgenerator-plugin</artifactId>
@@ -54,8 +54,11 @@
 							</goals>
 						</execution>
 	             	</executions>
-         		</plugin>
-    		</plugins>
-    	</pluginManagement>
+	        	</plugin>
+	   		</plugins>
+		</pluginManagement>
+        
     </build>
+    
+
 </project>
