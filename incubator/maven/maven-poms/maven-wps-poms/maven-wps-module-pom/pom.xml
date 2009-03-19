@@ -47,7 +47,7 @@
 						TODO: This is just an experimental configuration. It does not currently work. 
 						The current show-stopper is that WID sometimes decides to regenerate the project files....
 					-->
-					<artifactId>maven-eclipse-plugin</artifactId>
+					<artifactId>maven-wid-plugin</artifactId>
 					<configuration>
 						<workspaceCodeStylesURL>
 							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
