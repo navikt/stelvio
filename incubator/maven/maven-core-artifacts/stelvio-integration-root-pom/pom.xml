@@ -7,20 +7,6 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>Stelvio Integration Framework Master POM</name>
 
-	<developers>
-		<developer>
-			<name>Erik Godding Boye</name>
-			<id>ebf2812</id>
-			<email>test@example.com</email>
-			<organization>Zenior AS</organization>
-			<roles>
-				<role>architect</role>
-				<role>developer</role>
-			</roles>
-			<timezone>+1</timezone>
-		</developer>
-	</developers>
-
 	<build>
 
 		<pluginManagement>
