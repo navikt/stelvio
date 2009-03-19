@@ -407,10 +407,6 @@ incubator/busconfiguration/.classpath
 incubator/busconfiguration/.project
 incubator/busconfiguration/.settings
 incubator/busconfiguration/target
-incubator/maven-wid-plugin/.classpath
-incubator/maven-wid-plugin/.project
-incubator/maven-wid-plugin/.settings
-incubator/maven-wid-plugin/target
 incubator/maven/.project
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/.project
 incubator/maven/maven-core-artifacts/maven-archetypes/service-library-archetype/.settings
@@ -479,6 +475,10 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/.proje
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/.settings
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/target
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/.classpath
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/.project
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/.settings
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/.classpath
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/.project
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/.settings
