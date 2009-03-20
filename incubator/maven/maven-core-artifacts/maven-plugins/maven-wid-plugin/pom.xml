@@ -27,7 +27,7 @@ under the License.
 		<version>1.0</version>
 	</parent>
   <artifactId>maven-wid-plugin</artifactId>
-  <version>0.10-SNAPSHOT</version>
+  <version>0.10</version>
   <packaging>maven-plugin</packaging>
   <name>Maven WID Plugin</name>
   <description>This is a modified version of maven-eclipse-plugin v. 2.6-SNAPSHOT to handle generation
@@ -40,9 +40,9 @@ under the License.
     <maven>2.0.1</maven>
   </prerequisites>
   <scm>
-    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/</connection>
-    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/</developerConnection>
-    <url>http://versjonskontroll.adeo.no/viewsvn/trunk/incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/?root=stelvio</url>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wid-plugin-0.10</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wid-plugin-0.10</developerConnection>
+    <url>http://versjonskontroll.adeo.no/viewsvn/tags/maven-wid-plugin-0.10?root=stelvio</url>
   </scm>
   <issueManagement>
     <system>JIRA</system>
