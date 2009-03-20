@@ -4,7 +4,7 @@
     <parent>
         <groupId>no.nav.stelvio.poms</groupId>
 		<artifactId>stelvio-integration-root-pom</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
     </parent>
 
     <groupId>no.nav.maven.poms</groupId>
