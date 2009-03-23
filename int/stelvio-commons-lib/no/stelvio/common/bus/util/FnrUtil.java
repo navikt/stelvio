@@ -52,7 +52,17 @@ public final class FnrUtil{
 		if (pid != null) {
 			String value = StringUtils.deleteWhitespace(pid);
 			if (isValidCharacters(value) && isValidFnrLength(value)) {
-				if (isMod11Compliant(value) || (acceptSpecialCircumstances && isSpecialCircumstance(value))) {
+				boolean isValid = false;
+				// non-strict validation
+				if(acceptSpecialCircumstances) {
+					isValid = isMod11Compliant(pid) || isSpecialCircumstance(pid);					
+				}
+				// strict validation
+				else {
+					isValid = isMod11Compliant(pid) && !isSpecialCircumstance(pid);
+				}
+				
+				if (isValid) {
 					String fnr = makeDnrOrBostnrAdjustments(value);
 					if (isFnrDateValid(fnr)) {
 						return true;
