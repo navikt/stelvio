@@ -8,6 +8,10 @@
 		<version>1.1</version>
 	</parent>
 
+	<name>Stelvio Integration Framework : stelvio-commons-lib</name>
+	<description>
+	This servicelibrary contains common java classes and business objects for use by WPS modules and libraries.
+	</description>
 	<groupId>no.stelvio.int</groupId>
 	<artifactId>stelvio-commons-lib</artifactId>
 	<packaging>wps-library-jar</packaging>
