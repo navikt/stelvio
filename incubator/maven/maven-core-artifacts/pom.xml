@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.stelvio.poms</groupId>
-		<artifactId>stelvio-integration-root-pom</artifactId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>stelvio-integration-root-pom</relativePath>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-integration-root-pom</artifactId>
+		<version>1.0</version>
+		<relativePath>maven-integration-root-pom</relativePath>
 	</parent>
 
 	<groupId>no.nav.maven.artifacts</groupId>
@@ -17,7 +17,7 @@
 	<name>Stelvio Integration Framework Maven Artifacts</name>
 
 	<modules>
-		<module>stelvio-integration-root-pom</module>
+		<module>maven-integration-root-pom</module>
 		<module>xmlbeans</module>
 		<module>maven-commons</module>
 		<module>maven-plugins</module>
