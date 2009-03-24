@@ -2,8 +2,8 @@
         <modelVersion>4.0.0</modelVersion> 
 
     <parent>
-        <groupId>no.nav.stelvio.poms</groupId>
-		<artifactId>stelvio-integration-root-pom</artifactId>
+        <groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-integration-root-pom</artifactId>
 		<version>1.0</version>
     </parent>
 
