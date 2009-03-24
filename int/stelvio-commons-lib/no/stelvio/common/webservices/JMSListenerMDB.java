@@ -10,7 +10,6 @@ import com.ibm.ejs.ras.TraceComponent;
 import com.ibm.mq.jms.MQDestination;
 import com.ibm.ws.ffdc.FFDCFilter;
 import com.ibm.ws.webservices.engine.EngineConfiguration;
-import com.ibm.ws.webservices.engine.EngineConfigurationFactory;
 import com.ibm.ws.webservices.engine.MessageContext;
 import com.ibm.ws.webservices.engine.SimpleTargetedChain;
 import com.ibm.ws.webservices.engine.WebServicesFault;
@@ -27,10 +26,8 @@ import com.ibm.ws.webservices.trace.MessageTrace;
 import com.ibm.ws.webservices.trace.UserExceptionTrace;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
 import javax.ejb.EJBException;
 import javax.ejb.MessageDrivenContext;
 import javax.jms.BytesMessage;
@@ -44,7 +41,6 @@ import javax.jms.QueueSession;
 import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.xml.soap.SOAPBody;
 import javax.xml.soap.SOAPException;
 
 public class JMSListenerMDB extends com.ibm.ws.webservices.engine.transport.jms.JMSListenerMDB
