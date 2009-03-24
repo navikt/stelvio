@@ -2669,7 +2669,6 @@ incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/sr
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-commons/pom.xml -text
-incubator/maven/maven-core-artifacts/maven-integration-root-pom/.project -text
 incubator/maven/maven-core-artifacts/maven-integration-root-pom/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
