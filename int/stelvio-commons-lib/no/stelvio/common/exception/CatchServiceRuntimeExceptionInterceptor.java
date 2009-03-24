@@ -54,7 +54,8 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 			} else if (safeClass) {
 				result = makeNewInstanceOfSafeClass(t, cause);
 			} else {
-				result = new RuntimeFault(t);
+//				result = new RuntimeException(ErrorHelperUtil.convertSBEStackTrace((Exception)t));
+				result = new RuntimeException(t);
 			}
 		}
 		result.setStackTrace(EMPTY_STACK_TRACE_ELEMENTS);
