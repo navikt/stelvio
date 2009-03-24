@@ -3,6 +3,7 @@
  */
 package no.stelvio.common.exception;
 
+import no.stelvio.common.bus.util.ErrorHelperUtil;
 import no.stelvio.common.interceptor.Interceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
 
@@ -54,8 +55,8 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 			} else if (safeClass) {
 				result = makeNewInstanceOfSafeClass(t, cause);
 			} else {
-//				result = new RuntimeException(ErrorHelperUtil.convertSBEStackTrace((Exception)t));
-				result = new RuntimeException(t);
+				result = new RuntimeException(ErrorHelperUtil.convertSBEStackTrace((Exception)t));
+				
 			}
 		}
 		result.setStackTrace(EMPTY_STACK_TRACE_ELEMENTS);
