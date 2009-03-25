@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-integration-root-pom</artifactId>
-		<version>1.0</version>
+		<version>1.1</version>
 		<relativePath>maven-integration-root-pom</relativePath>
 	</parent>
 
