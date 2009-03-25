@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-wps-root-pom</artifactId>
-		<version>1.2-SNAPSHOT</version>
+		<version>1.2</version>
 	</parent>
 
 	<artifactId>maven-wps-library-pom</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<packaging>pom</packaging>
 	<name>WPS Library Master POM</name>
 
