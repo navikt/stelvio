@@ -76,6 +76,10 @@ dev/maven2/ant-versionExtracter/trunk/target
 dev/maven2/maven-appXml-plugin/trunk/.classpath
 dev/maven2/maven-appXml-plugin/trunk/.project
 dev/maven2/maven-appXml-plugin/trunk/target
+dev/maven2/maven-build-fixer-plugin/.classpath
+dev/maven2/maven-build-fixer-plugin/.project
+dev/maven2/maven-build-fixer-plugin/.settings
+dev/maven2/maven-build-fixer-plugin/target
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.classpath
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.project
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.settings
