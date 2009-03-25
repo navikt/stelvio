@@ -3,6 +3,7 @@ package no.nav.maven.plugins.descriptor.websphere.bnd;
 import java.net.URI;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 import no.nav.maven.plugins.descriptor.jee.EjbJarEditor;
@@ -141,6 +142,20 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     	}
     }
   
+    public void addRequestTokenGeneratorLTPA(String partRef, final List<String> excludes) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
+    		return;
+    	}
+    	
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+    		if(!excludes.contains(serviceRef.getServiceRefLink())) { 
+    			addRequestTokenGeneratorLTPA(partRef, serviceRef);
+    		}
+    	}
+    }
+    
     public void addRequestTokenGeneratorUsername(String partRef, String username, String password) {
     	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
     		return;
@@ -150,6 +165,20 @@ public class IbmWebServiceClientBndEditor extends IbmWebServiceDescriptorEditor<
     	while(iter.hasNext()){
     		ServiceRef serviceRef = (ServiceRef)iter.next();
 			addRequestTokenGeneratorUsername(partRef, serviceRef, username, password);
+    	}
+    }
+  
+    public void addRequestTokenGeneratorUsername(String partRef, String username, String password, final List<String> excludes) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
+    		return;
+    	}
+    	
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+       		if(!excludes.contains(serviceRef.getServiceRefLink())) { 
+       			addRequestTokenGeneratorUsername(partRef, serviceRef, username, password);
+       		}
     	}
     }
     

@@ -1,6 +1,7 @@
 package no.nav.maven.plugins.descriptor.websphere.ext;
 
 import java.util.Iterator;
+import java.util.List;
 
 import no.nav.maven.plugins.descriptor.websphere.IbmWebServiceDescriptorEditor;
 import no.nav.maven.plugins.descriptor.websphere.WebSphereFactories;
@@ -49,6 +50,20 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
     	}
     }
 
+    public void addRequestGeneratorLTPA(String partRef, final List<String> excludes) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
+    		return;
+    	}
+   
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+    		if(!excludes.contains(serviceRef.getServiceRefLink())) {
+    			addRequestGeneratorLTPA(partRef, serviceRef);
+    		}
+    	}
+    }
+    
     public void addRequestGeneratorUsername(String partRef) {
     	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
     		return;
@@ -58,6 +73,20 @@ public class IbmWebServiceClientExtEditor extends IbmWebServiceDescriptorEditor<
     	while(iter.hasNext()){
     		ServiceRef serviceRef = (ServiceRef)iter.next();
     		addRequestGeneratorUsername(partRef, serviceRef);
+    	}
+    }
+   
+    public void addRequestGeneratorUsername(String partRef, final List<String> excludes) {
+    	if(getComponentScopedRefs() == null || getComponentScopedRefs().size() == 0) {
+    		return;
+    	}
+   
+    	Iterator iter = getServiceRefs();
+    	while(iter.hasNext()){
+    		ServiceRef serviceRef = (ServiceRef)iter.next();
+    		if(!excludes.contains(serviceRef.getServiceRefLink())) {
+      			addRequestGeneratorUsername(partRef, serviceRef);
+       		}
     	}
     }
     
