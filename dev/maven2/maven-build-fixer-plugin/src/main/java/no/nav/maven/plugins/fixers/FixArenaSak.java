@@ -6,6 +6,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import no.nav.maven.plugins.common.utils.EarUtils;
 import no.nav.maven.plugins.common.utils.XMLUtils;
@@ -222,7 +223,7 @@ public class FixArenaSak extends AbstractMojo {
 	private boolean changeWebservicesClientBnd(File ws) throws DocumentException, IOException {
 		Document doc;
 		SAXReader reader;
-		Element binding, basicAuth;
+		Element binding=null, basicAuth;
 		Attribute endpoint;
 		XPath search;
 		HashMap<String, String> uris = new HashMap<String, String>();
@@ -235,7 +236,16 @@ public class FixArenaSak extends AbstractMojo {
 		
 		search = doc.createXPath("//portQnameBindings");
 		search.setNamespaceURIs(uris);
-		binding = (Element)search.selectSingleNode(doc);
+		//binding = (Element)search.selectSingleNode(doc);
+		
+		List<Element> bindings = search.selectNodes(doc);
+		for(Element bind : bindings) {
+			if(bind.attribute("portQnameLocalNameLink").getText().equals("ArenaServicePort")) {
+				binding = bind;
+				break;
+			}
+		}			
+			
 		if(binding != null){
 			endpoint = binding.attribute("overriddenEndpointURI");
 			if(endpoint != null) endpoint.setText(overriddenEndpointURI);
