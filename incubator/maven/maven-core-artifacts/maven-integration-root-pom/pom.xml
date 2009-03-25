@@ -51,18 +51,8 @@
 				<version>1.1</version>
 			</plugin>
 		</plugins>
-		
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>com.ibm.maven.runtimes</groupId>
-			<artifactId>wps-runtime</artifactId>
-			<version>6.1</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
-	
-	
+
 	<properties>
 		<!-- 
 			TODO: WID goes bananas if the Maven build is using the default target folder as output. 
