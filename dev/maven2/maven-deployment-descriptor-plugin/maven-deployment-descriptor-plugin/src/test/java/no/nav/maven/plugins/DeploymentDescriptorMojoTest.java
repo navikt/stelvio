@@ -8,6 +8,8 @@ import org.apache.maven.plugin.Mojo;
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 import org.apache.maven.wagon.util.FileUtils;
 
+import sun.security.action.GetLongAction;
+
 public class DeploymentDescriptorMojoTest extends AbstractMojoTestCase{
 	
 	private static final String TEST_POM_DIRECTORY = "src/test/resources/pom/";
@@ -67,20 +69,13 @@ public class DeploymentDescriptorMojoTest extends AbstractMojoTestCase{
 	}
 	public void executeWsSecurityOutboundMojo(){
 		
-//		File pom = getTestPom(TEST_POM_DIRECTORY + "ws-security-outbound-pom.xml");
-//		File earFile = getEar("/ear/test-prod-oppkoblingstestApp.ear");
-//		File testEarFile = getTestEar(earFile); 
-//		Mojo mojo = getMojo("addWsSecurityOutbound", pom);
-//		try {	
-//			mojo.execute();
-//		} catch (Throwable t){
-//			t.printStackTrace();
-//		}	
+
 		File pom = getTestPom(TEST_POM_DIRECTORY + "ws-security-outbound-pom-with-endpoints.xml");
 		File earFile = getEar("/ear/nav-prod-sak-arena.ear");
 		File testEarFile = getTestEar(earFile); 
 		Mojo mojo = getMojo("addWsSecurityOutbound", pom);
 		try {	
+			System.out.println("Kjører");
 			mojo.execute();
 		} catch (Throwable t){
 			t.printStackTrace();
@@ -88,7 +83,7 @@ public class DeploymentDescriptorMojoTest extends AbstractMojoTestCase{
 	}
 	
 	public void testExecuteDeploymentDescriptorMojo(){
-		executeEjbSecurityMojo();
+		//executeEjbSecurityMojo();
 		executeWsSecurityOutboundMojo();
 		//executeWsSecurityInboundMojo();
 	}

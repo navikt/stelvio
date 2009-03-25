@@ -1,6 +1,7 @@
 package no.nav.maven.plugins.descriptor.mojo;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
@@ -13,6 +14,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
+import org.eclipse.osgi.framework.internal.core.Tokenizer;
 
 import com.ibm.icu.util.StringTokenizer;
 
@@ -39,7 +41,7 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	 * @parameter expression="${endpointPortServerAddress}"
 	 */
 	private String endpointPortServerAddress;
-	
+
 	/**
 	 * @parameter
 	 */
@@ -65,6 +67,11 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 	 * @parameter
 	 */
 	private String myEndpointsString;
+
+	/**
+	 * @parameter
+	 */
+	private String exludeAuthMechanismForEndpoints;
 	
 	public void executeDescriptorOperations(EARFile earFile, EarConfig earConfig) throws MojoExecutionException {		
 		EJBJarFile ejbJarFile = (EJBJarFile) earFile.getEJBJarFiles().get(0);
@@ -89,12 +96,20 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		}
 		
 		// Set up Authentication mechanisms
+		List<String> excludes = new ArrayList<String>();
+		if(exludeAuthMechanismForEndpoints!=null) {
+			StringTokenizer tokenizer = new StringTokenizer(exludeAuthMechanismForEndpoints,",");
+			while(tokenizer.hasMoreTokens()) {
+				excludes.add(tokenizer.nextToken());
+			}
+		}
+		
 		if (authMechanism != null && authMechanism.equals(AUTH_WSS_LTPATOKEN)){
 			getLog().info("Setting up LTPATokenGenerator");
-			setupLtpaTokenGenerator(ejbJarFile);
+			setupLtpaTokenGenerator(ejbJarFile,excludes);
 		} else if (authMechanism != null && authMechanism.equals(AUTH_WSS_USERNAMETOKEN)){
 			getLog().info("Setting up UsernameTokenGenerator");
-			setupUsernameTokenGenerator(ejbJarFile);	
+			setupUsernameTokenGenerator(ejbJarFile,excludes);	
 		}
 	}
 	
@@ -134,31 +149,40 @@ public class WsSecurityOutboundMojo extends AbstractDeploymentDescriptorMojo {
 		}
 	}
 	
-	private void setupLtpaTokenGenerator(Archive archive) throws MojoExecutionException {
+	private void setupLtpaTokenGenerator(Archive archive, final List<String> excludes) throws MojoExecutionException {
 		try {
 			String tokenPartReference = "LTPATokenPartRef";
 			IbmWebServiceClientExtEditor wscExt = new IbmWebServiceClientExtEditor(archive);
-			wscExt.addRequestGeneratorLTPA(tokenPartReference);
+			wscExt.addRequestGeneratorLTPA(tokenPartReference, excludes);
 			wscExt.save();
 			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);
-			wscBnd.addRequestTokenGeneratorLTPA(tokenPartReference);
+			wscBnd.addRequestTokenGeneratorLTPA(tokenPartReference,excludes);
 			wscBnd.save();
 		} catch (IOException e) {
 			throw new MojoExecutionException("Caught IOException while setting up LTPATokenGenerator", e);
 		}		
 	}
 	
-	private void setupUsernameTokenGenerator(Archive archive) throws MojoExecutionException {
+	private void setupUsernameTokenGenerator(Archive archive, final List<String> excludes) throws MojoExecutionException {
 		try {
 			String tokenPartReference = "UsernameTokenPartRef";
 			IbmWebServiceClientExtEditor wscExt = new IbmWebServiceClientExtEditor(archive);
-			wscExt.addRequestGeneratorUsername(tokenPartReference);
+			wscExt.addRequestGeneratorUsername(tokenPartReference, excludes);
 			wscExt.save();
 			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);
-			wscBnd.addRequestTokenGeneratorUsername(tokenPartReference, username, password);
+			wscBnd.addRequestTokenGeneratorUsername(tokenPartReference, username, password,excludes);
 			wscBnd.save();
 		} catch (IOException e) {
 			throw new MojoExecutionException("Caught IOException while setting up LTPATokenGenerator", e);
 		}		
+	}
+
+	public String getExludeAuthMechanismForEndpoints() {
+		return exludeAuthMechanismForEndpoints;
+	}
+
+	public void setExludeAuthMechanismForEndpoints(
+			String exludeAuthMechanismForEndpoints) {
+		this.exludeAuthMechanismForEndpoints = exludeAuthMechanismForEndpoints;
 	}	
 }
