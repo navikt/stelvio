@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.artifacts</groupId>
 	<artifactId>maven-core-artifacts</artifactId>
 	<packaging>pom</packaging>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<name>Stelvio Integration Framework Maven Artifacts</name>
 
 	<modules>
@@ -25,10 +25,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-core-artifacts-1.2
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-core-artifacts-1.2
 		</developerConnection>
 	</scm>
 </project>
