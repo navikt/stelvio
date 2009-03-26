@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.archetypes</groupId>
 		<artifactId>maven-archetypes</artifactId>
-		<version>1.0</version>
+		<version>1.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>service-library-archetype</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>maven-archetype</packaging>
 	<name>Service Library Archetype</name>
 </project>
