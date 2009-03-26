@@ -9,7 +9,7 @@
 
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>ibm-xmlbeans</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<name>Stelvio Integration Framework XMLBeans IBM</name>
 
 	<build>
@@ -51,4 +51,9 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/ibm-xmlbeans-1.2</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/ibm-xmlbeans-1.2</developerConnection>
+  </scm>
 </project>
