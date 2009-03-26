@@ -38,7 +38,7 @@
 							false
 						</autoVersionSubmodules>
 						<tagBase>
-							https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/${parent.artifactId}/${artifactId}
+							https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/${pom.parent.artifactId}/${artifactId}
 						</tagBase>
 					</configuration>
 				</plugin>
