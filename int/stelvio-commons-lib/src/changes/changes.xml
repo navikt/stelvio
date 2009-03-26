@@ -5,6 +5,10 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="3.1.4" date="24-03-2009" description="Minor release">
+			<action dev="ard2812" type="fix">POM update. Nothing else.</action>
+		</release>
+		
 		<release version="3.1.3" date="24-03-2009" description="Minor release">
 			<action dev="hnc2812" type="add">Incident 80765: Info from SBEs wrapped in SREs is now propagated. Contains information about root cause.</action>
 			<action dev="bha2812" type="fix">SIR89515, Impl 99113: FnrUtil fnr validation updated.</action>
