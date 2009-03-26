@@ -2786,22 +2786,6 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/main/jav
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/main/resources/META-INF/plexus/components.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/main/resources/org/apache/maven/plugin/eclipse/messages.properties -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/optional/eclipse-config/maven-styles.xml -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/examples/additional-facets.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/examples/ajdt-projects.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/examples/attach-library-sources.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/examples/configure-checkstyle.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/examples/load-code-styles.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/examples/multi-module-projects.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/examples/prevent-module-references.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/examples/provide-project-natures-and-build-commands.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/index.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/pde.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/reactor.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/usage.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/apt/wtp.apt -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/fml/faq.fml -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/resources/examples/j2ee-simple.tar.gz -text
-incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/site/site.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
