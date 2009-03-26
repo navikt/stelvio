@@ -9,7 +9,7 @@
 
 	<groupId>no.nav.maven</groupId>
 	<artifactId>xmlbeans</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework XMLBeans Aggregation</name>
 
@@ -55,7 +55,7 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/maven-core-artifacts/xmlbeans/xmlbeans-1.1</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/maven-core-artifacts/xmlbeans/xmlbeans-1.1</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/xmlbeans</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/xmlbeans</developerConnection>
 	</scm>
 </project>
