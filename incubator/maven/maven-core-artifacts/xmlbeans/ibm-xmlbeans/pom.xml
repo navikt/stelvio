@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.maven</groupId>
 		<artifactId>xmlbeans</artifactId>
-		<version>1.2</version>
+		<version>1.4</version>
 	</parent>
 
 	<groupId>no.nav.maven.support</groupId>
