@@ -25,6 +25,8 @@ public final class OutboundWSSecurity {
 				setupLtpaTokenGenerator(archive);
 			} else if(Constants.AUTH_WSS_USERNAMETOKEN.equals(t.getName())) {
 				setupUsernameTokenGenerator(archive, t);
+			} else if(Constants.AUTH_BASICAUTHENTICATION.equals(t.getName())) {
+				setupBasicAuthentication(archive, t);
 			}
 		}
 	}
@@ -51,6 +53,16 @@ public final class OutboundWSSecurity {
 			wscExt.save();
 			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);
 			wscBnd.addRequestTokenGeneratorUsername(tokenPartReference, token.getUsername(), token.getPassword());
+			wscBnd.save();
+		} catch (IOException e) {
+			throw new RuntimeException("An error occured injecting Username Token generator", e);
+		}		
+	}
+
+	private static void setupBasicAuthentication(Archive archive, TokenType token) {
+		try {
+			IbmWebServiceClientBndEditor wscBnd = new IbmWebServiceClientBndEditor(archive);
+			wscBnd.addBasicAuth(token.getUsername(), token.getPassword());
 			wscBnd.save();
 		} catch (IOException e) {
 			throw new RuntimeException("An error occured injecting Username Token generator", e);
