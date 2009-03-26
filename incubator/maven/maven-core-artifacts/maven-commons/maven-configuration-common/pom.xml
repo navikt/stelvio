@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.nav.maven.commons</groupId>
 	<artifactId>maven-configuration-common</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.3-SNAPSHOT</version>
 	<name>Stelvio Integration Framework Configuration Holder</name>
 
 	<dependencies>
