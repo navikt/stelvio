@@ -27,6 +27,21 @@
 					<artifactId>xmlbeans-maven-plugin</artifactId>
 					<version>2.3.2</version>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<configuration>
+						<preparationGoals>
+							clean install
+						</preparationGoals>
+						<autoVersionSubmodules>
+							false
+						</autoVersionSubmodules>
+						<tagBase>
+							https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/maven-core-artifacts/xmlbeans
+						</tagBase>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
