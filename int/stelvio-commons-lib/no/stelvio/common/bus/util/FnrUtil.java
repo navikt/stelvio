@@ -55,11 +55,11 @@ public final class FnrUtil{
 				boolean isValid = false;
 				// non-strict validation
 				if(acceptSpecialCircumstances) {
-					isValid = isMod11Compliant(pid) || isSpecialCircumstance(pid);					
+					isValid = isMod11Compliant(value) || isSpecialCircumstance(value);					
 				}
 				// strict validation
 				else {
-					isValid = isMod11Compliant(pid) && !isSpecialCircumstance(pid);
+					isValid = isMod11Compliant(value) && !isSpecialCircumstance(value);
 				}
 				
 				if (isValid) {
