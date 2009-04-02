@@ -9,7 +9,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
 /**
- * Goal that loads the configuration for all artifacts into the jvm 
+ * Goal that loads the configuration for all artifacts into the jvm for later retrieval.
  * 
  * @author test@example.com
  * 
@@ -25,6 +25,13 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
      */
 	private String moduleConfigurationArtifactName;
 	
+    /**
+     * Loads all configuration elements into the ArtifactConfiguration store. A check to see if the configuration is
+     * already loaded is supplied, because other goals may as well load the configuration. 
+     *
+     * @throws MojoExecutionException if the plugin failes to run. Causes an "BUILD ERROR" message
+     * @throws MojoFailureException if the plugin failes to run. Causes an "BUILD FAILURE" message
+     */
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
 		if(ArtifactConfiguration.isConfigurationLoaded() == true) {

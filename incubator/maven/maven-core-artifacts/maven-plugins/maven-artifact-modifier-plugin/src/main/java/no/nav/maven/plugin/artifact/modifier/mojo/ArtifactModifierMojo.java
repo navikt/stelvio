@@ -15,7 +15,8 @@ import org.codehaus.plexus.archiver.UnArchiver;;
 
 
 /**
- * Abstract class for all mojos.
+ * Abstract class for all mojos which contains the top level executeand some global
+ * maven annotation based variables used throughout the class hierarchy.
  * 
  * @author test@example.com 
  */
@@ -86,6 +87,12 @@ public abstract class ArtifactModifierMojo extends AbstractMojo {
 	protected IArchiveManager earArchiveManager;
 	protected IArchiveManager jarArchiveManager;
 	
+    /**
+     * Creates the ear and jar archive managers and calls execute.
+     *
+     * @throws MojoExecutionException if the plugin failes to run. Causes an "BUILD ERROR" message
+     * @throws MojoFailureException if the plugin failes to run. Causes an "BUILD FAILURE" message
+     */
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
 		earArchiveManager = new ArchiveManager(earArchiver, earUnArchiver);

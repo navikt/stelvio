@@ -16,13 +16,12 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.RolesType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.SecurityType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.TokensType;
 
-import org.apache.maven.artifact.Artifact;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
 
 /**
- * Goal that updates the security settings in the artifacts
+ * Goal that updates the security settings in the artifacts based on the configuration.
  * 
  * @author test@example.com
  * 
@@ -30,7 +29,14 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
  * @requiresDependencyResolution
  */
 public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerMojo {
-
+	
+	/**
+	 * Tblablabla 
+	 *
+	 * @param artifact 
+	 * @param destination The modified artifact will reside in this file
+	 * @param configuration 
+	 */
 	protected final void applyConfiguration(File artifact, ConfigurationType configuration) {
 		if(configuration.getSecurity() != null) {
 			EARFile earFile = EarFile.openEarFile(artifact.getAbsolutePath());

@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import javax.net.ssl.SSLPeerUnverifiedException;
+
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.commons.constants.Constants;
 import no.nav.maven.commons.managers.ArchiveManager;
@@ -21,6 +23,8 @@ import org.codehaus.plexus.archiver.UnArchiver;;
 
 /**
  * Abstract class using the template pattern for child mojos doing real configuration work.
+ * The class functionality retrieves the right configuration from the configuration store and calls
+ * applyConfiguration on the leaf class. 
  * 
  * @author test@example.com 
  */
@@ -28,6 +32,12 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 	
 	protected abstract void applyConfiguration(File artifact, ConfigurationType configuration);
 	
+    /**
+     * Makes sure that both the global and the environment specific configuration is applied to the target module.
+     *
+     * @throws MojoExecutionException if the plugin failes to run. Causes an "BUILD ERROR" message
+     * @throws MojoFailureException if the plugin failes to run. Causes an "BUILD FAILURE" message
+     */
 	public void doExecute() throws MojoExecutionException, MojoFailureException {
 		for(Artifact a : artifacts) {
 			if(a.getType().equals(Constants.EAR_ARTIFACT_TYPE)) {
@@ -38,6 +48,12 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		}
 	}
 	
+    /**
+     * Copies an artifact (transitive is valid) to the target (build) directory.
+     *
+     * @return the file handle after it is copied to the projects target (build) directory.
+     * @param a The artifact to copy to target (build) directory.
+     */
 	private final File copyArtifactToTarget(Artifact a) {
 		File source = new File(a.getFile().getAbsolutePath());
 		File dest = new File(targetDirectory, a.getFile().getName());
@@ -45,7 +61,19 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		
 		return dest;
 	}
-	
+
+    /**
+     * This method will iterate over all configuration objects for the module. The configuration naming uses the
+     * convenience over configuration pattern. For example, a configuration called "nav.xml" will be applied for all 
+     * module artifact names starting with the name "nav". A configuration called "cons.xml" will be applied for all
+     * module artifact names starting with the name "nav-cons". After iterating over all configuration elements, the
+     * configuration for the module itself is applied if a configuration file has the same name as the artifact name itself.
+     *
+     * @return the file handle after it is copied to the projects target (build) directory.
+     * @param a the configuration will be applied to this artifact.
+     * @param destination The modified artifact will reside in this file
+     * @param global signals if the configuration is a global element or an environment element.
+     */
 	private final void iterateOverConfiguration(final Artifact a, final File destination, final boolean global) {
 		ConfigurationType configuration = null;
 
