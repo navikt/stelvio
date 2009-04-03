@@ -27,13 +27,13 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	
 	/**
 	 * @parameter expression="${username}"
-	 * @required
+	 * 
 	 */
 	protected String deploymentManagerUser;
 	
 	/**
 	 * @parameter expression="${password}"
-	 * @required
+	 *
 	 */
 	protected String deploymentManagerPassword;
 
@@ -91,6 +91,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		if(outPut.contains("ERROR") || outPut.contains("Error") || outPut.contains("error")) {
 			throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 		}
+		
 	}
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
@@ -115,13 +116,17 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		Commandline.Argument arg2 = new Commandline.Argument();
 		arg2.setLine("-port " + deploymentManagerPort);
 		commandLine.addArg(arg2);
-		Commandline.Argument arg3 = new Commandline.Argument();
-		arg3.setLine("-user " + deploymentManagerUser);
-		commandLine.addArg(arg3);
-		Commandline.Argument arg4 = new Commandline.Argument();
-		arg4.setLine("-password " + deploymentManagerPassword);
-		commandLine.addArg(arg4);	
+		if(deploymentManagerUser != null) {
+			Commandline.Argument arg3 = new Commandline.Argument();
+			arg3.setLine("-user " + deploymentManagerUser);
+			commandLine.addArg(arg3);
+		}
 		
+		if(deploymentManagerPassword != null) {
+	 		Commandline.Argument arg4 = new Commandline.Argument();
+			arg4.setLine("-password " + deploymentManagerPassword);
+			commandLine.addArg(arg4);	
+		}
 		applyToWebSphere(commandLine);
 	}
 }	
