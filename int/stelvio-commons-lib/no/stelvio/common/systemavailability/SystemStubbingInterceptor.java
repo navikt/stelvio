@@ -9,6 +9,14 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.logging.Level;
 
+import org.apache.xerces.dom.CoreDocumentImpl;
+import org.eclipse.hyades.logging.core.DeserializationException;
+import org.eclipse.hyades.logging.core.SerializationException;
+import org.eclipse.hyades.logging.core.XmlUtility;
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import no.stelvio.common.interceptor.GenericInterceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
 
@@ -20,6 +28,7 @@ import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.scdl.OperationType;
+import com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl;
 import com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartImpl;
 import com.ibm.wsspi.sca.multipart.impl.MultipartImpl;
 import commonj.sdo.DataObject;
@@ -104,19 +113,23 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	}
 
 	private void recordStubDataException(OperationType operationType, String requestId, Object input,
-			ServiceBusinessException sbe) {
+			ServiceBusinessException sbe)  {
 		try {
 			storeObjectOrPrimitive(operationType, sbe, "exception", requestId, "Exception");
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SerializationException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void recordStubDataRuntimeException(OperationType operationType, String requestId, Object input,
-			ServiceRuntimeException sre) {
+			ServiceRuntimeException sre){
 		try {
 			storeObjectOrPrimitive(operationType, sre, "exception", requestId, "RuntimeException");
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SerializationException e) {
 			e.printStackTrace();
 		}
 	}
@@ -131,7 +144,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	}
 
 	private void storeObjectOrPrimitive(OperationType operationType, Object object, String requestObjectName, String requestId,
-			String fileSuffix) throws IOException {
+			String fileSuffix) throws IOException, SerializationException {
 		File dir = getDirectory(operationType);
 		File file = new File(dir, "Stub_" + requestId + "_" + fileSuffix + ".xml");
 		FileOutputStream fos = new FileOutputStream(file);
@@ -147,16 +160,34 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				xmlSerializerService.writeDataObject((ManagedMultipartImpl) object, "http://no.stelvio.stubdata/",
 						requestObjectName, fos);
 			}
+		}else{
+			if (object instanceof DynamicBusinessObjectImpl)
+			{
+				if (((DynamicBusinessObjectImpl)object).get(0) instanceof DataObject){
+					DataObject requestDataObject = (DataObject) ((DynamicBusinessObjectImpl) object).get(0);
+					BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
+							.locateService("com/ibm/websphere/bo/BOXMLSerializer");
+					xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName, fos);
+				} else {
+					BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
+							.locateService("com/ibm/websphere/bo/BOXMLSerializer");
+					xmlSerializerService.writeDataObject((DynamicBusinessObjectImpl) object, "http://no.stelvio.stubdata/",
+							requestObjectName, fos);				
+				}	
+				
 		} else {
 			if (object instanceof ServiceBusinessException) {
 				DataObject requestDataObject = (DataObject) ((ServiceBusinessException) object).getData();
 				BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
 						.locateService("com/ibm/websphere/bo/BOXMLSerializer");
 				xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName, fos);
+				
 			} else if (object instanceof ServiceRuntimeException) {
 				PrintWriter pw = new PrintWriter(fos);
 				pw.println(((ServiceRuntimeException) object).getMessage());
 				pw.close();
+				}
+		
 			}
 		}
 		String logMessage = "Recorded stubdata " + file;
@@ -237,6 +268,9 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		FileInputStream fis = null;
 		try {
 			fis = new FileInputStream(file);
+			
+//			Document stub = XmlUtility.deserialize(fis);
+//			System.out.println(stub);
 			BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
 					.locateService("com/ibm/websphere/bo/BOXMLSerializer");
 			BOXMLDocument criteriaDoc = xmlSerializerService.readXMLDocument(fis);
@@ -244,6 +278,10 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
+//		} catch (DeserializationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			return null;
 		} finally {
 			if (fis != null) {
 				try {
