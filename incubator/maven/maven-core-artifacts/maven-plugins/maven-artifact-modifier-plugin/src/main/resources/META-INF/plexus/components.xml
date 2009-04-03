@@ -10,8 +10,6 @@
 					<lifecycle>
 						<id>default</id>
 						<phases>
-							<validate>
-							</validate>
 							<initialize>
 								no.nav.maven.plugins:maven-artifact-modifier-plugin:load-artifact-configuration,
 								no.nav.maven.plugins:maven-websphere-plugin:load-runtime-configuration
