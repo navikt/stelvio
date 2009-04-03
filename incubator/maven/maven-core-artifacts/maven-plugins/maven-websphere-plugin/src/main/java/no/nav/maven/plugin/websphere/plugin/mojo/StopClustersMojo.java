@@ -13,6 +13,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @author test@example.com
  * 
  * @goal stop-clusters
+ * @execute phase="package"
  * @requiresDependencyResolution
  */
 public class StopClustersMojo extends WebsphereUpdaterMojo {

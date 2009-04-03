@@ -13,6 +13,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @author test@example.com
  * 
  * @goal deploy-resources
+ * @execute phase="package"
  * @requiresDependencyResolution
  */
 public class DeployResourcesMojo extends WebsphereUpdaterMojo {

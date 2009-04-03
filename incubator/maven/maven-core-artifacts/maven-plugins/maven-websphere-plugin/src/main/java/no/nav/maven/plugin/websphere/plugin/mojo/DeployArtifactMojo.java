@@ -15,6 +15,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @author test@example.com
  * 
  * @goal deploy-artifact
+ * @execute phase="package"
  * @requiresDependencyResolution
  */
 public class DeployArtifactMojo extends WebsphereUpdaterMojo {
