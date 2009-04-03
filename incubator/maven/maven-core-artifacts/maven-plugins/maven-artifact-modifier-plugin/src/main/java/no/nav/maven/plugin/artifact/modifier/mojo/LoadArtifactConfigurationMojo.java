@@ -40,7 +40,14 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 		
 		for(Artifact a : dependencyArtifacts) {
 			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
-				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), new File(baseDirectory,scriptDirectory));
+				File scriptsFolder = new File(baseDirectory,scriptDirectory);
+				getLog().info("ER HER" + scriptDirectory);
+				if(scriptsFolder.exists() == false) {
+					getLog().info("ER IKKE DER");
+					getLog().info(scriptsFolder.getAbsolutePath());
+					scriptsFolder.mkdirs();
+				}
+				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);
 				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
 				break;
 			}
