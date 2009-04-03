@@ -57,13 +57,17 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 	private final File copyArtifactToTarget(Artifact a) {
 		File source = new File(a.getFile().getAbsolutePath());
 		
+		
 		File destFolder = new File(targetDirectory);
 		if(destFolder.exists() == false) {
 			destFolder.mkdir();
 		}
 		
 		File dest = new File(targetDirectory, a.getFile().getName());
-		EarFile.copyFile(source, dest);
+		
+		if(dest.exists() == false) {
+			EarFile.copyFile(source, dest);
+		}
 		
 		return dest;
 	}

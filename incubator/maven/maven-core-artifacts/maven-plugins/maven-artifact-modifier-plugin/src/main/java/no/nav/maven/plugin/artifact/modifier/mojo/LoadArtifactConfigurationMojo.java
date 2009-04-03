@@ -49,5 +49,13 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
 			getLog().warn("The deployment does not contain dependency to a nus configuration");
 		}
+		
+		File dest = new File(targetDirectory);
+
+		if(dest.exists() && dest.isDirectory()) {
+			for( File f : dest.listFiles())
+				f.delete();
+		}
+		
 	}
 }	
