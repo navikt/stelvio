@@ -43,7 +43,11 @@ public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
 		
 		for(Artifact a : dependencyArtifacts) {
 			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
-				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), new File(baseDirectory,scriptDirectory));
+				File scriptsFolder = new File(baseDirectory,scriptDirectory);
+				if(scriptsFolder.exists() == false) {
+					scriptsFolder.mkdirs();
+				}
+				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);
 				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
 				break;
 			}
