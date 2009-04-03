@@ -267,10 +267,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	private DataObject readDataObject(File file) {
 		FileInputStream fis = null;
 		try {
-			fis = new FileInputStream(file);
-			
-//			Document stub = XmlUtility.deserialize(fis);
-//			System.out.println(stub);
+			fis = new FileInputStream(file);		
 			BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
 					.locateService("com/ibm/websphere/bo/BOXMLSerializer");
 			BOXMLDocument criteriaDoc = xmlSerializerService.readXMLDocument(fis);
@@ -278,10 +275,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
-//		} catch (DeserializationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			return null;
+
 		} finally {
 			if (fis != null) {
 				try {
