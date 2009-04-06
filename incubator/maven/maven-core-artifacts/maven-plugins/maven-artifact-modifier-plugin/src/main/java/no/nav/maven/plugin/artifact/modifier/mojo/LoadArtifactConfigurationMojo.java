@@ -41,10 +41,7 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 		for(Artifact a : dependencyArtifacts) {
 			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
 				File scriptsFolder = new File(baseDirectory,scriptDirectory);
-				getLog().info("ER HER" + scriptDirectory);
 				if(scriptsFolder.exists() == false) {
-					getLog().info("ER IKKE DER");
-					getLog().info(scriptsFolder.getAbsolutePath());
 					scriptsFolder.mkdirs();
 				}
 				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);
@@ -54,7 +51,7 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 		}
 				
 		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
-			getLog().warn("The deployment does not contain dependency to a nus configuration");
+			getLog().warn("The deployment does not contain dependency to a wps configuration");
 		}
 		
 		File dest = new File(targetDirectory);
