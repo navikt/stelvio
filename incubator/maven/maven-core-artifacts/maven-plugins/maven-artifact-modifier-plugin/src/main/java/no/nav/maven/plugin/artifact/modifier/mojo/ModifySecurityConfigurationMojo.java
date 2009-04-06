@@ -21,7 +21,7 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
 
 /**
- * Goal that updates the security settings in the artifacts based on the configuration.
+ * Goal that updates the security settings in and artifact based on the configuration.
  * 
  * @author test@example.com
  * 
@@ -31,11 +31,12 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
 public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfigurerMojo {
 	
 	/**
-	 * Tblablabla 
+	 * Method called in order to inject security configuration into one artifact. A preprocessor
+	 * will copy the artifact from the local repository to the target directory of this project before modifying
+	 * the configuration.
 	 *
-	 * @param artifact 
-	 * @param destination The modified artifact will reside in this file
-	 * @param configuration 
+	 * @param artifact The artifact in question
+	 * @param configuration This contains the configuration for the artifact built by xmlbeans
 	 */
 	protected final void applyConfiguration(File artifact, ConfigurationType configuration) {
 		if(configuration.getSecurity() != null) {
@@ -45,6 +46,13 @@ public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfi
 		}
 	}
 	
+	/**
+	 * Method that will parse the configuration and apply authentication and authorization elements
+	 * to teh artifact if these configuration elements exist.
+	 *
+	 * @param earFile An EARFile object
+	 * @param securityConfiguration The security configuration for the artifact
+	 */
 	private final void updateSecurity(final EARFile earFile, final SecurityType securityConfiguration) {
 		AuthenticationType authentication = securityConfiguration.getAuthentication();
 		if(authentication != null) {
@@ -57,6 +65,14 @@ public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfi
 		}
 	}
 	
+	/**
+	 * Method that will parse the configuration and apply authentication elements
+	 * to the artifact if these configuration elements exist. It will parse the authentication and apply 
+	 * inbound and outbound security settings.
+	 *
+	 * @param ejbFile An archive object
+	 * @param authentication The authentication configuration for this artifact.
+	 */
 	private final void updateAuthentication(final Archive ejbFile, final AuthenticationType authentication) {
 		InboundType inbound = authentication.getInbound();
 		if(inbound != null) {
@@ -69,6 +85,12 @@ public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfi
 		}
 	}
 
+	/**
+	 * Method that will update the outbound authentication of the artifact
+	 *
+	 * @param ejbFile An archive object
+	 * @param outbound The outbound authentication configuration for this artifact.
+	 */
 	private final void updateOutboundAuthentication(final Archive ejbFile, final OutboundType outbound) {
 		TokensType tokens = outbound.getTokens();
 		if(tokens != null) {
@@ -76,6 +98,12 @@ public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfi
 		}
 	}
 
+	/**
+	 * Method that will update the inbound authentication of the artifact
+	 *
+	 * @param ejbFile An archive object
+	 * @param outbound The inbound authentication configuration for this artifact.
+	 */
 	private final void updateInboundAuthentication(final Archive ejbFile, final InboundType inbound) {
 		TokensType tokens = inbound.getTokens();
 		if(tokens != null) {
@@ -83,6 +111,13 @@ public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfi
 		}
 	}
 	
+	/**
+	 * Method that will update the authorization elements of the artifact. The method will throw an exception
+	 * if the module exposes web services, but no security roles are configured.
+	 *
+	 * @param earFile An EARFile object
+	 * @param authorization The authorization configuration for this artifact.
+	 */
 	private final void updateAuthorization(final EARFile earFile, final AuthorizationType authorization) {
 		
 		RolesType rolesInConfig = authorization.getRoles();

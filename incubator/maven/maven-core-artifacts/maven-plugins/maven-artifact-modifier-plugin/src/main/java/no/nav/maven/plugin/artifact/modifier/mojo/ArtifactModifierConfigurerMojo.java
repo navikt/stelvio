@@ -1,24 +1,16 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
 import java.io.File;
-import java.util.Set;
 import java.util.StringTokenizer;
-
-import javax.net.ssl.SSLPeerUnverifiedException;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.commons.constants.Constants;
-import no.nav.maven.commons.managers.ArchiveManager;
-import no.nav.maven.commons.managers.IArchiveManager;
 import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.archiver.Archiver;
-import org.codehaus.plexus.archiver.UnArchiver;;
 
 
 /**
@@ -41,7 +33,7 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 	public void doExecute() throws MojoExecutionException, MojoFailureException {
 		
 		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
-			getLog().warn("The deployment does not contain dependency to a wps configuration");
+			getLog().warn("The deployment does not contain any module xml configuration");
 		}
 		
 		for(Artifact a : artifacts) {

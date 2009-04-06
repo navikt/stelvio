@@ -11,7 +11,6 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.EndpointType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.EndpointsType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.WebservicesType;
 
-import org.apache.maven.artifact.Artifact;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.EJBJarFile;
