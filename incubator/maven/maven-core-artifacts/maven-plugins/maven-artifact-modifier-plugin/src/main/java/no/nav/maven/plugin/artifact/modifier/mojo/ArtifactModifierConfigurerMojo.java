@@ -39,6 +39,11 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
      * @throws MojoFailureException if the plugin failes to run. Causes an "BUILD FAILURE" message
      */
 	public void doExecute() throws MojoExecutionException, MojoFailureException {
+		
+		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
+			getLog().warn("The deployment does not contain dependency to a wps configuration");
+		}
+		
 		for(Artifact a : artifacts) {
 			if(a.getType().equals(Constants.EAR_ARTIFACT_TYPE)) {
 				File destination = copyArtifactToTarget(a);
