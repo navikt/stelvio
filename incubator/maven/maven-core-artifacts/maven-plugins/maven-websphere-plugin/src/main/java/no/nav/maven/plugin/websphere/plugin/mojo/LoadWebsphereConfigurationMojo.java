@@ -36,6 +36,7 @@ public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
 	
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
+		boolean foundBusConfiguration = false;
 		
 		if(ArtifactConfiguration.isConfigurationLoaded() == true) {
 			return;
@@ -49,12 +50,13 @@ public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
 				}
 				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);
 				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
+				foundBusConfiguration = true;
 				break;
 			}
 		}
-			
-		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
-			getLog().warn("The depoyment does not contain dependency to a wps configuration");
+	
+		if(foundBusConfiguration == false) {
+			throw new MojoFailureException(" The pom must refer to a valid \"busconfiguration\" artifact. The artifact was not found as a dependency");
 		}
 	}
 }	

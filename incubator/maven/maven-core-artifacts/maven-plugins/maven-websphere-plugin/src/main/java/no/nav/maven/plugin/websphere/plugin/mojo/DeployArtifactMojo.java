@@ -15,13 +15,10 @@ import org.codehaus.plexus.util.cli.Commandline;
  * @author test@example.com
  * 
  * @goal deploy-artifact
- * @execute phase="install"
  * @requiresDependencyResolution
  */
 public class DeployArtifactMojo extends WebsphereUpdaterMojo {
     	
-
-	
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		deployArtifacts(commandLine);
 	}

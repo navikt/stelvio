@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Set;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
+import no.nav.maven.plugin.websphere.plugin.utils.MojoExecutor;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -100,7 +101,12 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		resourcePropertiesHome = scriptsHome + "/app_props/" + environment;
 		
 		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
-			throw new RuntimeException("The artifact configuration is not loaded");
+			getLog().warn("The deployment does not contain dependency to a wps configuration");
+		}
+		
+		if((new File(baseDirectory,scriptDirectory)).exists() == false ) {
+			executeLoadWebsphereConfigurationMojo();
+			executePropertiesGeneratorMojo();
 		}
 		
 		Commandline commandLine = new Commandline();
@@ -128,5 +134,46 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 			commandLine.addArg(arg4);	
 		}
 		applyToWebSphere(commandLine);
+	}
+
+	/* This is the experimental execute-a-goal-programatically code :) */
+	private final void executePropertiesGeneratorMojo()  throws MojoExecutionException, MojoFailureException {
+		MojoExecutor.executeMojo(
+			MojoExecutor.plugin(
+        		   MojoExecutor.groupId("nav.maven.plugins"),
+        		   MojoExecutor.artifactId("maven-propertiesgenerator-plugin"),
+        		   MojoExecutor.version("1.4")
+           ),
+           MojoExecutor.goal("generate"),
+           MojoExecutor.configuration(
+        		   MojoExecutor.element(MojoExecutor.name("templateDir"), "${basedir}/src/main/scripts/templates"),
+        		   MojoExecutor.element(MojoExecutor.name("environmentName"), "${environment}"),
+        		   MojoExecutor.element(MojoExecutor.name("outputDir"), "${basedir}/src/main/scripts/app_props"),
+        		   MojoExecutor.element(MojoExecutor.name("environmentDir"), "${basedir}/src/main/scripts/environments")
+           ),
+           MojoExecutor.executionEnvironment(
+                   project,
+                   session,
+                   pluginManager
+           )
+       );
+	}
+	
+	/* This is the experimental execute-a-goal-programatically code :) */
+	private final void executeLoadWebsphereConfigurationMojo()  throws MojoExecutionException, MojoFailureException {
+		MojoExecutor.executeMojo(
+			MojoExecutor.plugin(
+        		   MojoExecutor.groupId("no.nav.maven.plugins"),
+        		   MojoExecutor.artifactId("maven-websphere-plugin"),
+        		   null
+           ),
+           MojoExecutor.goal("load-runtime-configuration"),
+           null,
+           MojoExecutor.executionEnvironment(
+                   project,
+                   session,
+                   pluginManager
+           )
+       );
 	}
 }	
