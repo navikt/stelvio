@@ -4,12 +4,12 @@
 	<groupId>no.nav.datapower</groupId>
 	<artifactId>datapower-cfg-oppkoblingstest</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.5-SNAPSHOT</version>
+	<version>1.0.5</version>
 	<name>Configuration Generator for the 'oppkoblingstest' DataPower module</name>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/datapower/datapower-cfg-oppkoblingstest</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/datapower/datapower-cfg-oppkoblingstest</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-cfg-oppkoblingstest-1.0.5</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/datapower-cfg-oppkoblingstest-1.0.5</developerConnection>
 	</scm>
 
 	<build>
