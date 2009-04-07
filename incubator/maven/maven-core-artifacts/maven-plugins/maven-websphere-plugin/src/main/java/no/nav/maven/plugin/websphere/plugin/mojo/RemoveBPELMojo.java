@@ -20,6 +20,7 @@ public class RemoveBPELMojo extends WebsphereUpdaterMojo {
     	
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		for(Artifact a : artifacts) {
+			/* TODO: Remove this silly "oh, maybe I hit something interesting" logic */
 			if(a.getArtifactId().contains("ppen010") || a.getArtifactId().contains("hentinstitusjonsoppholdliste")) {
 				removeBPEL(commandLine,a.getArtifactId());
 			}
