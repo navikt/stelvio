@@ -56,4 +56,9 @@ public final class ModifyWebServicesConfigurationMojo extends ArtifactModifierCo
 			throw new RuntimeException("An error occured savind endpoint URI settings", e);
 		}
 	}
+	
+	@Override
+	protected String getGoalPrettyPrint() {
+		return "Inject artifacts with web services settings";
+	}
 }

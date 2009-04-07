@@ -63,4 +63,9 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 		}
 		
 	}
+
+	@Override
+	protected String getGoalPrettyPrint() {
+		return "Load artifact configuration";
+	}
 }	

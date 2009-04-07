@@ -11,7 +11,9 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.archiver.Archiver;
-import org.codehaus.plexus.archiver.UnArchiver;;
+import org.codehaus.plexus.archiver.UnArchiver;
+import org.codehaus.plexus.components.interactivity.Prompter;
+import org.codehaus.plexus.components.interactivity.PrompterException;
 
 
 /**
@@ -21,6 +23,9 @@ import org.codehaus.plexus.archiver.UnArchiver;;
  * @author test@example.com 
  */
 public abstract class ArtifactModifierMojo extends AbstractMojo {
+	
+	/** @component */
+	private Prompter prompter;
 
 	/**
 	 * @parameter expression="${component.org.codehaus.plexus.archiver.Archiver#ear}"
@@ -82,7 +87,14 @@ public abstract class ArtifactModifierMojo extends AbstractMojo {
 	 */
 	protected String environment;
 	
+	/**
+	 * @parameter expression="${interactiveMode}" default-value="false"
+	 * @required
+	 */
+	protected Boolean interactiveMode;
+	
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
+	protected abstract String getGoalPrettyPrint();
 
 	protected IArchiveManager earArchiveManager;
 	protected IArchiveManager jarArchiveManager;
@@ -94,7 +106,20 @@ public abstract class ArtifactModifierMojo extends AbstractMojo {
      * @throws MojoFailureException if the plugin failes to run. Causes an "BUILD FAILURE" message
      */
 	public void execute() throws MojoExecutionException, MojoFailureException {
-
+		
+		if(interactiveMode == true) {
+			String answer=null;
+			try {
+				answer = prompter.prompt("Do you want to perform step \"" + getGoalPrettyPrint() + "\" (y/n)? ", "n");
+			} catch (PrompterException e) {
+				throw new MojoFailureException(e, "An error occured during prompt input","An error occured during prompt input");
+			}
+			if("n".equalsIgnoreCase(answer)) {
+				getLog().info("Skipping step: " + getGoalPrettyPrint());
+				return;
+			}
+		}
+		
 		earArchiveManager = new ArchiveManager(earArchiver, earUnArchiver);
 		jarArchiveManager = new ArchiveManager(jarArchiver, jarUnArchiver);
 		doExecute();

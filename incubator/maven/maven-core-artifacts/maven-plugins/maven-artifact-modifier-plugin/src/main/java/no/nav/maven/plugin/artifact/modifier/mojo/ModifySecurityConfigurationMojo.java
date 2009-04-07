@@ -133,4 +133,9 @@ public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfi
 			}
 		}
 	}
+	
+	@Override
+	protected String getGoalPrettyPrint() {
+		return "Inject artifacts with security settings";
+	}
 }

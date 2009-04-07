@@ -31,6 +31,10 @@
 				</lifecycles>
 			</configuration>
 		</component>
+		<component>
+			<role>org.codehaus.plexus.components.interactivity.Prompter</role>
+			<implementation>org.codehaus.plexus.components.interactivity.DefaultPrompter</implementation>
+		</component>
 	</components>
 </component-set>
 </xml>
