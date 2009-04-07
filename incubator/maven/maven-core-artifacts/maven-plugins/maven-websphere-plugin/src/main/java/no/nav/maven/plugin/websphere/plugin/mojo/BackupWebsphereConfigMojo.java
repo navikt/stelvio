@@ -43,17 +43,18 @@ public class BackupWebsphereConfigMojo extends RemoteCommandExecutorMojo {
 
 			/* TODO: Put these hardcoded values in settings.xml for new WID Image */
 			String pwd = null;
+			String outPut = null;
 			if(Os.isFamily("windows") == true) {
 				System.out.print("Enter password for wasadm: ");
 				pwd = PwdConsole.getPassword();
 				arg.setLine("C:/apps/SSH/plink.exe -pw " + pwd + " wasadm@" + deploymentManagerHost + " /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop");
-	 		} else {
+				outPut = commLine.toString().replace(pwd, "*******");
+			} else {
 	 			arg.setLine("ssh "  + deploymentManagerHost + " '/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop'");
-	 		}	
+	 		}	outPut = commLine.toString();
 			
 			commLine.addArg(arg);
-			String hiddenPasswordOutput = commLine.toString().replace(pwd, "*******");
-			getLog().info("Executing the following command: " + hiddenPasswordOutput);
+			getLog().info("Executing the following command: " + outPut);
 			CommandLineUtils.executeCommandLine(commLine, stdout, stderr);
 			getLog().info(stdout.getOutput());
 		} catch (CommandLineException e) {
