@@ -1,7 +1,5 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
-import java.io.IOException;
-
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.CommandLineException;

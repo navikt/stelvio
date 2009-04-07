@@ -1,16 +1,9 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 import no.nav.maven.plugin.websphere.plugin.utils.PwdConsole;
 
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.components.interactivity.DefaultPrompter;
-import org.codehaus.plexus.components.interactivity.Prompter;
-import org.codehaus.plexus.components.interactivity.PrompterException;
 import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
