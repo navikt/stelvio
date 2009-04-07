@@ -59,4 +59,9 @@ public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
 			throw new MojoFailureException(" The pom must refer to a valid \"busconfiguration\" artifact. The artifact was not found as a dependency");
 		}
 	}
+	
+	@Override
+	protected String getGoalPrettyPrint() {
+		return "Load Websphere Configuration";
+	}
 }	

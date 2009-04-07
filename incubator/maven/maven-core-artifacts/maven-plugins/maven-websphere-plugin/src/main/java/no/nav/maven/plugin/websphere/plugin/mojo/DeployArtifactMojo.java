@@ -42,4 +42,9 @@ public class DeployArtifactMojo extends WebsphereUpdaterMojo {
 			throw new RuntimeException("An error occured executing: " + commandLine, e);
 		} 
 	}
+	
+	@Override
+	protected String getGoalPrettyPrint() {
+		return "Deploy artifacts to WPS";
+	}
 }	

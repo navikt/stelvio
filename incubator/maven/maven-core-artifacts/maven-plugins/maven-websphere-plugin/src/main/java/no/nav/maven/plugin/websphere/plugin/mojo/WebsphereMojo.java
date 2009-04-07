@@ -15,6 +15,8 @@ import org.apache.maven.plugin.PluginManager;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.UnArchiver;
+import org.codehaus.plexus.components.interactivity.Prompter;
+import org.codehaus.plexus.components.interactivity.PrompterException;
 
 
 /**
@@ -24,6 +26,9 @@ import org.codehaus.plexus.archiver.UnArchiver;
  */
 public abstract class WebsphereMojo extends AbstractMojo {
 
+	/** @component */
+	private Prompter prompter;
+	
 	/**
      * The Maven Project Object
      *
@@ -80,14 +85,33 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	 */
 	protected Set<Artifact> dependencyArtifacts;	
 	
+	/**
+	 * @parameter expression="${interactiveMode}" default-value="false"
+	 * @required
+	 */
+	protected Boolean interactiveMode;
 	
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
+	protected abstract String getGoalPrettyPrint();
 
 	protected IArchiveManager earArchiveManager;
 	protected IArchiveManager jarArchiveManager;
 	
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
+		if(interactiveMode == true) {
+			String answer=null;
+			try {
+				answer = prompter.prompt("Do you want to perform step \"" + getGoalPrettyPrint() + "\" (y/n)? ", "n");
+			} catch (PrompterException e) {
+				throw new MojoFailureException(e, "An error occured during prompt input","An error occured during prompt input");
+			}
+			if("n".equalsIgnoreCase(answer)) {
+				getLog().info("Skipping step: " + getGoalPrettyPrint());
+				return;
+			}
+		}
+		
 		jarArchiveManager = new ArchiveManager(jarArchiver, jarUnArchiver);
 		doExecute();
 	}

@@ -36,6 +36,10 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + commandLine, e);
 		}
-		
+	}
+	
+	@Override
+	protected String getGoalPrettyPrint() {
+		return "Start WPS";
 	}
 }	

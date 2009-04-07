@@ -36,7 +36,10 @@ public class StopClustersMojo extends WebsphereUpdaterMojo {
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + commandLine, e);
 		}
-		
-		
+	}
+	
+	@Override
+	protected String getGoalPrettyPrint() {
+		return "Stop WPS";
 	}
 }	

@@ -133,4 +133,9 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 			updateAutoStart(a.getArtifactId(), configuration.getRuntime().getAutostart(), commandLine);
 		}
 	}
+	
+	@Override
+	protected String getGoalPrettyPrint() {
+		return "Apply WPS runtime configuration";
+	}
 }	
