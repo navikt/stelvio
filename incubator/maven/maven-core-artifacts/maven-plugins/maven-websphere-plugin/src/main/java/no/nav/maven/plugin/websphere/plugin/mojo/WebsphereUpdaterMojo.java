@@ -89,10 +89,9 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 			getLog().info(outPut);
 		}
 		
-		if(outPut.contains("ERROR") || outPut.contains("Error") || outPut.contains("error")) {
+		if(outPut.toLowerCase().contains("error")) {
 			throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 		}
-		
 	}
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
