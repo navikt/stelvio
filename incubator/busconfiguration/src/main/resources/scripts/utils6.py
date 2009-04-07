@@ -1792,26 +1792,8 @@ def deleteEarFile(appPath):
 	print ("INFO (deleteEarFile): Deleting "+appPath)
 	File(str(appPath)).delete()
 	print 'INFO (deleteEarFile): Done.'
-
-def deleteEarFiles(appPath): 
-	print ("INFO (deleteEarFile): Deleting ear files in "+ appPath)
-	dir = io.File(appPath);
-	if(dir.isDirectory()):
-		earFiles = dir.list();
-		for earFile in earFiles:
-			dot = name.rfind(".")
-                	if (dot > 1):
-                        	ext = name[dot:]
-                        	ext = ext.lower()
-               		else:
-                        	ext = ""
-                	#endElse
-                	if (ext == ".ear"):
-                		print ("INFO (deleteEarFiles) Deleting " + str(appPath) + "/" + earFile)
-                        	File(str(appPath) + "/" + earFile).delete()
-	print 'INFO (deleteEarFile): Done.'
 			
-def readDistributionDirectory(distDir):
+def readDistributionDirectory(distDir):     
     robFile = io.File(distDir);
     listDirs = None
     ears = []
@@ -1835,8 +1817,8 @@ def readDistributionDirectory(distDir):
                         ears.append(name)
                 elif (ext == ".war"):
                         wars.append(name)
-                #elif (ext == ".jar"):
-                #        ejbs.append(name)
+                elif (ext == ".jar"):
+                        ejbs.append(name)
                 #endIf
         #endFor
        

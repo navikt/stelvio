@@ -258,4 +258,3 @@ if {[info exists uninstall]} {
   }
   uninstall ${uninstall} ${force}
 }
-

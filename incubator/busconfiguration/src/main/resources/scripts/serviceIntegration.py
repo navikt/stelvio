@@ -223,7 +223,11 @@ def createSIBDestination( propertyFileName ):
 	replyDestBus = 	getProperty("REPLY_DEST_BUS")
 	delAuth =	getProperty("DEL_AUTH")
 	highMessThres =	getProperty("HIGH_MESSAGE_THRESHOLD")
-
+        mediate =       getProperty("MEDIATE")
+	mediateRoute =  getProperty("MEDIATE_REMOTE_BUS").strip() + ":" + getProperty("MEDIATE_ROUTEMESSAGEDESTINATION")
+        mediateReplyTo =getProperty("MEDIATE_REPLYTO")
+	mediationName = getProperty("MEDIATE_MEDIATIONNAME")
+               
 	#-----------------------------------------------------------------------------
 	# Create a SIB Destination on the given SIBus
 	#-----------------------------------------------------------------------------
@@ -304,6 +308,21 @@ def createSIBDestination( propertyFileName ):
 			if(queuepointupdated==0):
 				print "ERROR (createSIBDestination): Could not find queuepoint: " + destName + "@" + clusterName + ".000-" + busName
 		
+		
+                if (mediate != None and mediate == "true" ):
+                        print "INFO (createSIBDestination): "+destName+ " Requested to mediate destination."
+                        AdminTask.mediateSIBDestination('-bus ' + busName + ' -destinationName ' + destName + ' -mediationName  ' + mediationName + ' -cluster ' +  clusterName)
+                        jmsRepyToAttributes = [["name", "JMSReplyTo"], ["type", "STRING"], ["value", mediateReplyTo]]
+                        routeMessageDestinationAttributes = [["name", "routeMessageDestination"], ["type", "STRING"], ["value", mediateRoute]]
+                        destinations = AdminConfig.list('SIBQueue').split(java.lang.System.getProperty('line.separator'))
+                        for destination in destinations:
+                                id = AdminConfig.showAttribute(destination, 'identifier')
+                                if(id ==  destName):
+                                        print "INFO (createSIBDestination): "+destName+ " Creating context properties."
+                                        AdminConfig.create("SIBContextInfo", destination, jmsRepyToAttributes)
+                                        AdminConfig.create("SIBContextInfo", destination, routeMessageDestinationAttributes)
+                	print "INFO (createSIBDestination): "+destName+ " SIB Destination mediated successfully."
+                
 	except:
 		_type_, _value_, _tbck_ = sys.exc_info()
 		result = `_value_`
@@ -492,4 +511,3 @@ def toggleSIBService ( nodeName, serverName, flag ):
 	#endIf
 
 #endDef
-

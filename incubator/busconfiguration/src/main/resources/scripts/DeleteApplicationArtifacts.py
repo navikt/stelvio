@@ -6,16 +6,16 @@
 ##############################################################################
 # WHAT = 
 #		1 = nsbinding 			= Delete Name Space Binding
-#		2 = j2cqcf			= Delete J2C Connection Factory
+#		2 = j2cqcf				= Delete J2C Connection Factory
 #		3 = sibdestination 	 	= Delete Sibus destination (Queue, Topic...)
 #		4 = jmsqueue			= Delete JMS queue
 #		5 = jmstopic			= Delete JMS topic
-#		6 = jmsactivationspec		= Delete JMS Activation Specification
-#		7 = jmscf			= Delete JMS Connection Factory
+#		6 = jmsactivationspec	= Delete JMS Activation Specification
+#		7 = jmscf				= Delete JMS Connection Factory
 #		8 = racreate 			= DeInstall Resource adapter
 #		9 = jdbcprovider		= Delete JDBC Provider
-#       	10 = datasource         	= Delete Datasource	
-#		11 = mqcf			= Delete WebSphere MQ Connection Factory
+#       10 = datasource         = Delete Datasource	
+#		11 = mqcf				= Delete WebSphere MQ Connection Factory
 #		12 = mqqueuedes			= Delete WebSphere MQ queue destinations 
 #		13 = sharedlib			= Delete a shared library and associate it with an application
 #		
@@ -36,18 +36,18 @@ ENVIRONMENT 	 	 = sys.argv[1]
 WSADMIN_SCRIPTS_HOME	 = sys.argv[2]
 APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
 
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/environment.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/monitor.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/reports.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/resources.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/security.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverConfig.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverControl.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverSetup.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serviceIntegration.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/troubleshoot.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/WPS.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/utils6.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/environment.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/monitor.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/reports.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/resources.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/security.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/serverConfig.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/serverControl.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/serverSetup.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/serviceIntegration.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/troubleshoot.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/WPS.py" )
 
 
 ############### Main Section ###############################################
@@ -181,7 +181,7 @@ for jidx in range(int(configInfo["app.count"])):
 		#===================================================================================
 		if (whatToDelete == "sharedlib"):
 			# USAGE:  deleteSharedLibrary ( <"properties file name"> ):
-			retval = deleteSharedLibrary ( APP_PROPS_HOME+whereIsProperties, APPLICATION_NAME)
+			retval = deleteSharedLibrary ( APP_PROPS_HOME+whereIsProperties)
 			if(retval == 1):
 				sys.exit(1)
 		#endIf

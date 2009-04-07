@@ -34,7 +34,7 @@ APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
 whereIsProperties 	 = APPLICATION_NAME+".properties"
 DISTDIR			 = sys.argv[3]
 
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/py/utils6.py" )
 
 def markAppState ( appVersion, isEnabled ):
 
@@ -237,8 +237,8 @@ def installEAR ( appName ):
                         _excp_ = 0
                         options = "-verbose -node "+nodeName+" -server "+serverName+" -distributeApp "
                         installed = AdminApp.install(appPath,options)
-                        #save()
-                        #deleteEarFile(appPath)
+                        save()
+                        deleteEarFile(appPath)
                 except:
                         _type_, _value_, _tbck_ = sys.exc_info()     
                         installed = `_value_`                   
@@ -256,8 +256,8 @@ def installEAR ( appName ):
                 try:
                         _excp_ = 0
                         installed = AdminApp.install(appPath, " -verbose -cluster "+clusterName+" -distributeApp " )
-                        #save()
-                        #deleteEarFile(appPath)
+                        save()
+                        deleteEarFile(appPath)
                 except:
                         _type_, _value_, _tbck_ = sys.exc_info()   
                         installed = `_value_`                   
@@ -444,8 +444,6 @@ def installAll(distDir):
             print "Deployment time: %s" %(intervalToString(sec))
         #endif
     #endfor    
-    print "Saving changes to websphere"
-    save()
     print "Total Deploy Time: " + intervalToString(totalSeconds)
 #endef 
 
