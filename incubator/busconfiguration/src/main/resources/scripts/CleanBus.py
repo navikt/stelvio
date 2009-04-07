@@ -28,7 +28,7 @@ WSADMIN_SCRIPTS_HOME	 = sys.argv[2]
 APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
 
 
-execfile( WSADMIN_SCRIPTS_HOME+"/py/utils6.py" )
+execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
 
 
 def listApplications(displayFlag = 1):
