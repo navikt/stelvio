@@ -2707,6 +2707,7 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-update-ear-plugin/pom.x
 incubator/maven/maven-core-artifacts/maven-plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ApplyRuntimeConfigurationMojo.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/BackupWebsphereConfigMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/DeployArtifactMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/DeployResourcesMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/LoadWebsphereConfigurationMojo.java -text svneol=unset#text/plain
@@ -2716,6 +2717,7 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/ma
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereUpdaterMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/MojoExecutor.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/PwdConsole.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifactDeprecated.build.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-websphere-plugin/src/main/scripts/deployArtifactDeprecated.mojos.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/pom.xml -text svneol=unset#text/plain
