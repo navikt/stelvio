@@ -85,10 +85,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		deployableArtifactsHome = baseDirectory + "/target";
 		resourcePropertiesHome = scriptsHome + "/app_props/" + environment;
 		
-		if(ArtifactConfiguration.isConfigurationLoaded() == false) {
-			getLog().warn("The deployment does not contain dependency to a wps configuration");
-		}
-		
 		if((new File(baseDirectory,scriptDirectory)).exists() == false ) {
 			executeLoadWebsphereConfigurationMojo();
 			executePropertiesGeneratorMojo();
