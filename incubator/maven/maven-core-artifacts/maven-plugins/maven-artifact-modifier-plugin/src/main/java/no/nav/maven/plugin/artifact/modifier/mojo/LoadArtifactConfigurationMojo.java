@@ -45,6 +45,7 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 				if(scriptsFolder.exists() == false) {
 					scriptsFolder.mkdirs();
 				}
+		
 				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);
 				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
 				foundBusConfiguration = true;
@@ -61,7 +62,6 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 			for( File f : dest.listFiles())
 				f.delete();
 		}
-		
 	}
 
 	@Override

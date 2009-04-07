@@ -27,6 +27,7 @@
 								no.nav.maven.plugins:maven-websphere-plugin:apply-runtime-configuration,
 								no.nav.maven.plugins:maven-websphere-plugin:synchronize-nodes,
 								no.nav.maven.plugins:maven-websphere-plugin:start-clusters,
+								no.nav.maven.plugins:maven-websphere-plugin:modify-max-failed-deliveries
 							</deploy>
 						</phases>
 					</lifecycle>
