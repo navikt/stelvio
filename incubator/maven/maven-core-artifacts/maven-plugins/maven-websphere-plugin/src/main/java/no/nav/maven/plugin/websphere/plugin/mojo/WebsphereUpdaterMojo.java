@@ -80,19 +80,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 
 	
 	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
-
-	protected final void reportResult(CommandLineUtils.StringStreamConsumer stdout, CommandLineUtils.StringStreamConsumer stderr) {
-		
-		final String outPut = stdout.getOutput();
-		
-		if(stdout != null) {
-			getLog().info(outPut);
-		}
-		
-		if(outPut.toLowerCase().contains("error")) {
-			throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
-		}
-	}
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		scriptsHome = baseDirectory + "/" + scriptDirectory;
@@ -108,6 +95,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 			executePropertiesGeneratorMojo();
 		}
 		
+		/* TODO: Put these hardcoded values in settings.xml for new WID Image */
 		Commandline commandLine = new Commandline();
 		if(Os.isFamily("windows") == true) {
 			commandLine.setExecutable(widHome + "/pf/wps01/bin/wsadmin.bat");

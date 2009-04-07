@@ -18,49 +18,50 @@ import org.codehaus.plexus.util.cli.Commandline;
 
 
 /**
- * Goal that contacts the deployment manager via plink to remotely execute a backup command.
+ * Goal that contacts the deployment manager via plink to remotely execute a backup command. For windows (typically developer machine)
+ * it will prompt for password for the user. For unix variants ssh trust is assumed
  * 
  * @author test@example.com
  * 
  * @goal backup-config
  * @requiresDependencyResolution
  */
-public class BackupWebsphereConfigMojo extends AbstractMojo {
+public class BackupWebsphereConfigMojo extends RemoteCommandExecutorMojo {
 
-	
-	public void execute() throws MojoExecutionException, MojoFailureException {
-		applyToWebSphere(null);
+	protected void executeRemoteCommand() throws MojoExecutionException, MojoFailureException {
+		backupConfig();
 	}
 	
-	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
-		backupConfig(commandLine);
-	}
-	
-	private final void backupConfig(final Commandline commandLine) {
+	private final void backupConfig() {
 				
 		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
 		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
 		
+		Commandline commLine = new Commandline();
 		try {
 			Commandline.Argument arg = new Commandline.Argument();
 
-			System.out.print("Enter password for wasadm: ");
-			String pwd = PwdConsole.getPassword();
-
+			/* TODO: Put these hardcoded values in settings.xml for new WID Image */
+			String pwd = null;
 			if(Os.isFamily("windows") == true) {
-				arg.setLine("C:/apps/SSH/plink.exe -pw " + pwd + " wasadm@" + "e11apvl029.utv.internsone.local" + " /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop");
+				System.out.print("Enter password for wasadm: ");
+				pwd = PwdConsole.getPassword();
+				arg.setLine("C:/apps/SSH/plink.exe -pw " + pwd + " wasadm@" + deploymentManagerHost + " /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop");
 	 		} else {
-	 			arg.setLine("ssh test@example.com '/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop'");
+	 			arg.setLine("ssh "  + deploymentManagerHost + " '/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop'");
 	 		}	
 			
-			Commandline commLine = new Commandline(); 
 			commLine.addArg(arg);
 			String hiddenPasswordOutput = commLine.toString().replace(pwd, "*******");
 			getLog().info("Executing the following command: " + hiddenPasswordOutput);
 			CommandLineUtils.executeCommandLine(commLine, stdout, stderr);
 			getLog().info(stdout.getOutput());
 		} catch (CommandLineException e) {
-			throw new RuntimeException("An error occured executing: " + commandLine, e);
+			throw new RuntimeException("An error occured executing: " + commLine, e);
 		}
+	}
+
+	protected String getGoalPrettyPrint() {
+		return "Backup Websphere configuration";
 	}
 }	

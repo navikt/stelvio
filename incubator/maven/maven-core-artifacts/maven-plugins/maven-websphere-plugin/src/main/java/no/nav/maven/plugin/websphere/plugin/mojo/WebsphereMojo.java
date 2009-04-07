@@ -17,6 +17,7 @@ import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.UnArchiver;
 import org.codehaus.plexus.components.interactivity.Prompter;
 import org.codehaus.plexus.components.interactivity.PrompterException;
+import org.codehaus.plexus.util.cli.CommandLineUtils;
 
 
 /**
@@ -114,5 +115,18 @@ public abstract class WebsphereMojo extends AbstractMojo {
 		
 		jarArchiveManager = new ArchiveManager(jarArchiver, jarUnArchiver);
 		doExecute();
+	}
+	
+	protected final void reportResult(CommandLineUtils.StringStreamConsumer stdout, CommandLineUtils.StringStreamConsumer stderr) {
+		
+		final String outPut = stdout.getOutput();
+		
+		if(stdout != null) {
+			getLog().info(outPut);
+		}
+		
+		if(outPut.toLowerCase().contains("error")) {
+			throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
+		}
 	}
 }
