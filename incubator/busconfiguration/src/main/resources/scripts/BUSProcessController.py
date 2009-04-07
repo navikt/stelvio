@@ -1,6 +1,6 @@
 import time
 
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
+execfile( "./src/main/resources/scripts/scripts/utils6.py" )
 
 if len(sys.argv) != 1:
         print time.strftime("[%d/%m %H:%M:%S]") + " [ERROR] (BUSProcessOperations.py): Syntax: wsadmin -lang jython -f BUSProcessOperations.py <operation>"
