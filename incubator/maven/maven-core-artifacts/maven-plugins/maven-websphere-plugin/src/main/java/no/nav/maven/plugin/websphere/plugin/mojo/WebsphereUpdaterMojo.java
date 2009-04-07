@@ -112,7 +112,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		if(Os.isFamily("windows") == true) {
 			commandLine.setExecutable(widHome + "/pf/wps01/bin/wsadmin.bat");
 		} else {
-			commandLine.setExecutable(widHome + "/pf/wps01/bin/wsadmin.sh");
+			commandLine.setExecutable(widHome + "/pf/wps/bin/wsadmin.sh");
 		}	
 		
 		Commandline.Argument arg1 = new Commandline.Argument();
