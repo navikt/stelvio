@@ -1,6 +1,7 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
 import java.io.File;
+import java.io.IOException;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
 
@@ -21,12 +22,7 @@ import org.apache.maven.plugin.MojoFailureException;
  */
 public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
     
-	/**
-     * Name of module configuration artifact.
-     *
-     * @parameter default-value="busconfiguration"
-     */
-	private String moduleConfigurationArtifactName;
+
 	
 	/**
 	 * @parameter expression="${environment}"
@@ -48,6 +44,14 @@ public class LoadWebsphereConfigurationMojo extends WebsphereMojo {
 				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);
 				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
 				foundBusConfiguration = true;
+				
+				/* Add the version in an empty file */
+				File versionFile = new File(scriptsFolder, a.getVersion());
+				try {
+					versionFile.createNewFile();
+				} catch (IOException e) {
+					throw new MojoFailureException("An error occured creating a version file in the scripts directory");
+				}
 				break;
 			}
 		}

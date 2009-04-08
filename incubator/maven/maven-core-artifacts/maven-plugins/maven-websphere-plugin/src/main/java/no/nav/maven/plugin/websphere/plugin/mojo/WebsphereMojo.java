@@ -31,6 +31,13 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	private Prompter prompter;
 	
 	/**
+     * Name of module configuration artifact.
+     *
+     * @parameter default-value="busconfiguration"
+     */
+	protected String moduleConfigurationArtifactName;
+	
+	/**
      * The Maven Project Object
      *
      * @parameter expression="${project}"

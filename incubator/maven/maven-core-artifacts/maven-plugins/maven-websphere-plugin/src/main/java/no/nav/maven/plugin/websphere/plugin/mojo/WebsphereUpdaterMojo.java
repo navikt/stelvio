@@ -85,11 +85,8 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		deployableArtifactsHome = baseDirectory + "/target";
 		resourcePropertiesHome = scriptsHome + "/app_props/" + environment;
 		
-		/* TODO: What about when calling websphere:deploy-resources with new busconfiguration, huh? */
-		if((new File(baseDirectory,scriptDirectory)).exists() == false ) {
-			executeLoadWebsphereConfigurationMojo();
-			executePropertiesGeneratorMojo();
-		}
+		/* If scripts are not expanded OR the scripts are from an old busconfiguration version create new ones */
+		createOrRefreshBusConfiguration();
 		
 		/* TODO: Put these hardcoded values in settings.xml for new WID Image */
 		Commandline commandLine = new Commandline();
@@ -158,5 +155,26 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
                    pluginManager
            )
        );
+	}
+	
+	private final void createOrRefreshBusConfiguration() throws MojoExecutionException, MojoFailureException {
+	
+		File scriptsDir = new File(baseDirectory,scriptDirectory);
+		
+		/* If the folder does not exist, then create it */
+		if(scriptsDir.exists() == false ) {
+			executeLoadWebsphereConfigurationMojo();
+			executePropertiesGeneratorMojo();
+		} else {
+			/* If the version is not the same, then refresh it */
+			for(Artifact a : dependencyArtifacts) {
+				if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
+					if(new File(scriptsDir, a.getVersion()).exists() == false) {
+						executeLoadWebsphereConfigurationMojo();
+						executePropertiesGeneratorMojo();
+					}
+				}
+			}
+		}
 	}
 }	
