@@ -1,6 +1,7 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
 import java.io.File;
+import java.io.IOException;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
 
@@ -42,13 +43,18 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 		for(Artifact a : dependencyArtifacts) {
 			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
 				File scriptsFolder = new File(baseDirectory,scriptDirectory);
-				if(scriptsFolder.exists() == false) {
-					scriptsFolder.mkdirs();
-				}
-		
+				
 				File extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);
 				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
 				foundBusConfiguration = true;
+				
+				/* Add the version in an empty file */
+				File versionFile = new File(scriptsFolder, a.getVersion());
+				try {
+					versionFile.createNewFile();
+				} catch (IOException e) {
+					throw new MojoFailureException("An error occured creating a version file in the scripts directory");
+				}
 				break;
 			}
 		}
