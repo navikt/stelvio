@@ -65,8 +65,8 @@ public final class ArchiveManager implements IArchiveManager {
 			throw new RuntimeException("An error occured creating temporary directory", e);
 		}
 		
-		tmpDir.delete();
-		tmpDir.mkdir();
+		deleteDirectory(tmpDir);
+		tmpDir.mkdirs();
 		tmpDir.deleteOnExit();
 		
 		unArchiver.setSourceFile(archive);
@@ -81,5 +81,18 @@ public final class ArchiveManager implements IArchiveManager {
 		}
 		
 		return tmpDir;
+	}
+	
+	private void deleteDirectory(File directory) {
+		if (directory.exists()) {
+			for (File file : directory.listFiles()) {
+				if (file.isDirectory()) {
+					deleteDirectory(file);
+				} else {
+					file.delete();
+				}
+			}
+			directory.delete();
+		}
 	}
 }
