@@ -132,8 +132,10 @@ public abstract class WebsphereMojo extends AbstractMojo {
 			outPut = stdout.getOutput();
 		}
 		
-		if(outPut == null || outPut.trim().length() == 0 || stderr != null) {
-			outPut = stderr.getOutput();
+		if(outPut == null || outPut.trim().length() == 0) {
+			if(stderr != null) {
+				outPut = stderr.getOutput();
+			}
 		}
 		
 		getLog().info(outPut);
