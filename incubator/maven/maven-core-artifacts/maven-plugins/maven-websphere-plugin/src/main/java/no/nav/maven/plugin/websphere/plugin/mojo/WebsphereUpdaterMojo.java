@@ -85,6 +85,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		deployableArtifactsHome = baseDirectory + "/target";
 		resourcePropertiesHome = scriptsHome + "/app_props/" + environment;
 		
+		/* TODO: What about when calling websphere:deploy-resources with new busconfiguration, huh? */
 		if((new File(baseDirectory,scriptDirectory)).exists() == false ) {
 			executeLoadWebsphereConfigurationMojo();
 			executePropertiesGeneratorMojo();
