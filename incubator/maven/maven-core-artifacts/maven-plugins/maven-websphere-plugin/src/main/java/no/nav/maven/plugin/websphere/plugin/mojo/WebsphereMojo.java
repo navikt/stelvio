@@ -126,11 +126,17 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	
 	protected final void reportResult(CommandLineUtils.StringStreamConsumer stdout, CommandLineUtils.StringStreamConsumer stderr) {
 		
-		final String outPut = stdout.getOutput();
+		String outPut = null;
 		
 		if(stdout != null) {
-			getLog().info(outPut);
+			outPut = stdout.getOutput();
 		}
+		
+		if(outPut == null || outPut.trim().length() == 0 || stderr != null) {
+			outPut = stderr.getOutput();
+		}
+		
+		getLog().info(outPut);
 		
 		if(outPut.toLowerCase().contains("error")) {
 			throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");

@@ -48,7 +48,7 @@ public class BackupWebsphereConfigMojo extends RemoteCommandExecutorMojo {
 
 			getLog().info("Executing the following command: " + ((pwd == null) ? commLine.toString() : commLine.toString().replace(pwd, "*******")));
 			CommandLineUtils.executeCommandLine(commLine, stdout, stderr);
-			getLog().info(stdout.getOutput());
+			reportResult(stdout, stderr);
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + commLine, e);
 		}
