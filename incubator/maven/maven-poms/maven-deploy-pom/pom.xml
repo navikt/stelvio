@@ -10,7 +10,7 @@
     <groupId>no.nav.maven.poms</groupId>
     <artifactId>maven-deploy-pom</artifactId>
     <packaging>pom</packaging>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <name>POM for deployment</name>
 
    <build>
@@ -66,4 +66,9 @@
     </build>
     
 
+
+  <scm>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deploy-pom-1.2</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deploy-pom-1.2</developerConnection>
+  </scm>
 </project>
