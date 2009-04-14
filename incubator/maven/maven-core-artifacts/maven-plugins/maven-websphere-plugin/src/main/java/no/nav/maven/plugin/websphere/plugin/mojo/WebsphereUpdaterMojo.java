@@ -5,6 +5,7 @@ import java.util.Set;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.plugin.websphere.plugin.utils.MojoExecutor;
+import no.nav.maven.plugin.websphere.plugin.utils.MojoLauncher;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -75,16 +76,13 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	
 	protected  String scriptsHome;
 	protected  String deployableArtifactsHome;
-	protected  String resourcePropertiesHome;
-
 	
 	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		scriptsHome = baseDirectory + "/" + scriptDirectory;
 		deployableArtifactsHome = baseDirectory + "/target";
-		resourcePropertiesHome = scriptsHome + "/app_props/" + environment;
-		
+	
 		/* If scripts are not expanded OR the scripts are from an old busconfiguration version create new ones */
 		createOrRefreshBusConfiguration();
 		
@@ -99,9 +97,11 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		Commandline.Argument arg1 = new Commandline.Argument();
 		arg1.setLine("-host " + deploymentManagerHost);
 		commandLine.addArg(arg1);
+		
 		Commandline.Argument arg2 = new Commandline.Argument();
 		arg2.setLine("-port " + deploymentManagerPort);
 		commandLine.addArg(arg2);
+		
 		if(deploymentManagerUser != null) {
 			Commandline.Argument arg3 = new Commandline.Argument();
 			arg3.setLine("-user " + deploymentManagerUser);
@@ -113,65 +113,25 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 			arg4.setLine("-password " + deploymentManagerPassword);
 			commandLine.addArg(arg4);	
 		}
+		
 		applyToWebSphere(commandLine);
 	}
 
-	/* This is the experimental execute-a-goal-programatically code :) */
-	private final void executePropertiesGeneratorMojo()  throws MojoExecutionException, MojoFailureException {
-		MojoExecutor.executeMojo(
-			MojoExecutor.plugin(
-        		   MojoExecutor.groupId("nav.maven.plugins"),
-        		   MojoExecutor.artifactId("maven-propertiesgenerator-plugin"),
-        		   MojoExecutor.version("1.4")
-           ),
-           MojoExecutor.goal("generate"),
-           MojoExecutor.configuration(
-        		   MojoExecutor.element(MojoExecutor.name("templateDir"), "${basedir}/src/main/scripts/templates"),
-        		   MojoExecutor.element(MojoExecutor.name("environmentName"), "${environment}"),
-        		   MojoExecutor.element(MojoExecutor.name("outputDir"), "${basedir}/src/main/scripts/app_props"),
-        		   MojoExecutor.element(MojoExecutor.name("environmentDir"), "${basedir}/src/main/scripts/environments")
-           ),
-           MojoExecutor.executionEnvironment(
-                   project,
-                   session,
-                   pluginManager
-           )
-       );
-	}
-	
-	/* This is the experimental execute-a-goal-programatically code :) */
-	private final void executeLoadWebsphereConfigurationMojo()  throws MojoExecutionException, MojoFailureException {
-		MojoExecutor.executeMojo(
-			MojoExecutor.plugin(
-        		   MojoExecutor.groupId("no.nav.maven.plugins"),
-        		   MojoExecutor.artifactId("maven-websphere-plugin"),
-        		   null
-           ),
-           MojoExecutor.goal("load-runtime-configuration"),
-           null,
-           MojoExecutor.executionEnvironment(
-                   project,
-                   session,
-                   pluginManager
-           )
-       );
-	}
-	
 	private final void createOrRefreshBusConfiguration() throws MojoExecutionException, MojoFailureException {
 	
 		File scriptsDir = new File(baseDirectory,scriptDirectory);
 		
 		/* If the folder does not exist, then create it */
 		if(scriptsDir.exists() == false ) {
-			executeLoadWebsphereConfigurationMojo();
-			executePropertiesGeneratorMojo();
+			MojoLauncher.executeLoadWebsphereConfigurationMojo(project, session, pluginManager);
+			MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
 		} else {
 			/* If the version is not the same, then refresh it */
 			for(Artifact a : dependencyArtifacts) {
 				if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
 					if(new File(scriptsDir, a.getVersion()).exists() == false) {
-						executeLoadWebsphereConfigurationMojo();
-						executePropertiesGeneratorMojo();
+						MojoLauncher.executeLoadWebsphereConfigurationMojo(project, session, pluginManager);
+						MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
 					}
 				}
 			}
