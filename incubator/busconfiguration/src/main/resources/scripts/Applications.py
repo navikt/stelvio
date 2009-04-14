@@ -463,6 +463,7 @@ def uninstallAll(distDir):
     installCounter = 1
     totalMinutes = 0
     totalSeconds = 0
+
     for appName in appNames: 
         appNameAddOnstr = appNameAddOn(appName)
         if (doesAppExist(appNameAddOnstr)):
