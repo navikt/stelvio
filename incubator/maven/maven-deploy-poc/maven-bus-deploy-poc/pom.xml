@@ -14,15 +14,6 @@
     <version>1.0-SNAPSHOT</version>
     <name>poc-deploy</name>
     <url>http://maven.apache.org</url>
-    
-    <build>
-    	<plugins>
-		    <plugin>
-				<groupId>nav.maven.plugins</groupId>
-				<artifactId>maven-propertiesgenerator-plugin</artifactId>
-		    </plugin>
-		</plugins>
-	</build>
 	    
     <dependencies>
         <dependency>
