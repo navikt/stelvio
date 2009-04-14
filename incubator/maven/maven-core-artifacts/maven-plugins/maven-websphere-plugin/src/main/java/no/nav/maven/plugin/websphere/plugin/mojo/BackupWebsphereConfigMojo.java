@@ -34,7 +34,7 @@ public class BackupWebsphereConfigMojo extends RemoteCommandExecutorMojo {
 		try {
 			Commandline.Argument arg = new Commandline.Argument();
 
-			/* TODO: Put these hardcoded values in settings.xml for new WID Image */
+			/* TODO: Put these hardcoded values somewhere else */
 			String pwd = null;
 			if(Os.isFamily("windows") == true) {
 				System.out.print("Enter password for wasadm: ");

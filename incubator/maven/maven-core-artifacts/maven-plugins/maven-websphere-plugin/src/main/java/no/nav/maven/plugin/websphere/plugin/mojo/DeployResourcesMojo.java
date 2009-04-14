@@ -28,7 +28,7 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 
 		try {
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/CreateApplicationArtifacts.py " + deployableArtifactsHome + " " + environment + " " + scriptsHome);
+			arg.setLine("-f " + scriptsHome + "/scripts/CreateApplicationArtifacts.py " + deployableArtifactsHome + " " + environment + " " + scriptsHome);
 			commandLine.addArg(arg);
 			getLog().info("Executing the following command: " + commandLine.toString());
 			CommandLineUtils.executeCommandLine(commandLine, stdout, stderr);

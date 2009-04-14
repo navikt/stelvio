@@ -28,7 +28,6 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
     	
 	protected final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
-	
 		for(Artifact a : artifacts) {
 			if(a.getType().equals(Constants.EAR_ARTIFACT_TYPE)) {
 				iterateOverConfiguration(a, true, commandLine);
@@ -38,14 +37,13 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 	}
 	
 	private final void updateActivationSpecifications(ActivationspecificationsType activationSpecifications, Commandline commandLine) {
-			
 		List<ActivationspecificationType> specifications = activationSpecifications.getActivationspecificationList();
 			
 		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
 		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
 
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/ModifyMaxConcurrencyAS.py");
+		arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py");
 		commandLine.addArg(arg);
 		
 		Commandline detailedCommand = new Commandline();
@@ -75,7 +73,7 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo  {
 		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
 
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + baseDirectory + "/" + scriptDirectory + "/scripts/AutoStart.py");
+		arg.setLine("-f " + scriptsHome + "/scripts/AutoStart.py");
 		commandLine.addArg(arg);
 		
 		Commandline detailedCommand = new Commandline();
