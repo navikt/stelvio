@@ -36,11 +36,6 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 			getLog().warn("The deployment does not contain any module xml configuration");
 		}
 		
-		/* TODO: Clean out the target folder, old stuff might be lying around. 
-		 * Consequences??
-		 * */
-		
-		
 		for(Artifact a : artifacts) {
 			if(a.getType().equals(Constants.EAR_ARTIFACT_TYPE)) {
 				File destination = copyArtifactToTarget(a);
@@ -65,7 +60,7 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 			destFolder.mkdir();
 		}
 		
-		File dest = new File(targetDirectory, a.getFile().getName());
+		File dest = new File(targetDirectory, a.getArtifactId() + "." + a.getType());
 		
 		if(dest.exists() == false) {
 			EarFile.copyFile(source, dest);
