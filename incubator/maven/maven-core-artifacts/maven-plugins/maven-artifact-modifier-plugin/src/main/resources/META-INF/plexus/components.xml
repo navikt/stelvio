@@ -19,6 +19,7 @@
 								no.nav.maven.plugins:maven-artifact-modifier-plugin:modify-security-configuration
 							</install>
 							<deploy>
+								no.nav.maven.plugins:maven-confluence-plugin:add-comment,
 								no.nav.maven.plugins:maven-websphere-plugin:backup-config,
 								no.nav.maven.plugins:maven-websphere-plugin:remove-bpel,
 								no.nav.maven.plugins:maven-websphere-plugin:stop-clusters,
