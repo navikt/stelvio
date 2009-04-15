@@ -15,6 +15,10 @@
 #
 #
 #******************************************************************************
+#Uninstall will try to uninstall an application based on the file name of the module to deploy
+#Install will install an application based on the "displayName" in the deployment descriptor.
+#Therefore mismatches will occur when the displayName value does not equal the module's file name.
+
 import sys
 import java
 
