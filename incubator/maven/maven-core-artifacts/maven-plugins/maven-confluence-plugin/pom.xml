@@ -20,6 +20,11 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.codehaus.swizzle</groupId>
 			<artifactId>swizzle-confluence</artifactId>
 			<version>1.1</version>
