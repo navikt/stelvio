@@ -31,6 +31,7 @@
 		<module>maven-websphere-plugin</module>
 		<module>maven-artifact-modifier-plugin</module>
 		<module>maven-wid-plugin</module>
+		<module>maven-confluence-plugin</module>
 	</modules>
 	
 	<build>
