@@ -440,6 +440,10 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugi
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/.settings
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/bin
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/target
+incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/.classpath
+incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/.project
+incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/.settings
+incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/target
 incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/.classpath
 incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/.project
 incubator/maven/maven-core-artifacts/maven-plugins/maven-mg-plugin/.settings
