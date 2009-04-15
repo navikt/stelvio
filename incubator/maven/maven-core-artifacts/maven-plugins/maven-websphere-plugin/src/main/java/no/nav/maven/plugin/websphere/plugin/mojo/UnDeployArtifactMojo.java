@@ -42,6 +42,9 @@ public class UnDeployArtifactMojo extends WebsphereUpdaterMojo {
 			}
 		}
 		unDeployArtifacts(commandLine);
+	
+		for( File f : destFolder.listFiles())
+			f.delete();
 	}
 	
 	private final void unDeployArtifacts(final Commandline commandLine) {
