@@ -70,8 +70,8 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 			EarFile.copyFile(source, dest);
 		}
 
-		/* If exclusion is set, then create a marker file to tell the websphere script to uninstall all of the
-		 * earlier modules of this artifact id.
+		/* If exclusion is set, then create a marker file to tell the websphere script *not* to uninstall
+		 * older versions of this module.
 		 * TODO: How to get the transitive dependencies exclusion filters?
 		 */
 		for(Dependency d : dependencies) {
