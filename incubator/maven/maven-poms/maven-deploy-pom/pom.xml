@@ -33,6 +33,11 @@
                 <extensions>true</extensions>
             </plugin>        
 
+			<plugin>
+                <groupId>no.nav.maven.plugins</groupId>
+                <artifactId>maven-confluence-plugin</artifactId>
+            </plugin> 
+			
 		    <plugin>
 				<groupId>nav.maven.plugins</groupId>
 				<artifactId>maven-propertiesgenerator-plugin</artifactId>
