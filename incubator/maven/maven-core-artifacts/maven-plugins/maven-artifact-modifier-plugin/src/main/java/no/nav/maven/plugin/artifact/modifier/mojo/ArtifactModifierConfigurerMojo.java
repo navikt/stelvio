@@ -1,6 +1,8 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
@@ -9,8 +11,11 @@ import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Exclusion;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.project.MavenProject;
 
 
 /**
@@ -54,7 +59,6 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 	private final File copyArtifactToTarget(Artifact a) {
 		File source = new File(a.getFile().getAbsolutePath());
 		
-		
 		File destFolder = new File(targetDirectory);
 		if(destFolder.exists() == false) {
 			destFolder.mkdir();
@@ -65,7 +69,15 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		if(dest.exists() == false) {
 			EarFile.copyFile(source, dest);
 		}
-		
+
+		/* If exclusion is set, then create a marker file to tell the websphere script to uninstall all of the
+		 * earlier modules of this artifact id.
+		 * TODO: How to get the transitive dependencies exclusion filters?
+		 */
+		for(Dependency d : dependencies) {
+			
+		}
+
 		return dest;
 	}
 
