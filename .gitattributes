@@ -2464,6 +2464,7 @@ incubator/busconfiguration/src/main/resources/scripts/ModifyMaxConcurrencyAS.py 
 incubator/busconfiguration/src/main/resources/scripts/ModifyMaxFailedDeliveries.py -text
 incubator/busconfiguration/src/main/resources/scripts/SibusQueuesDepth.py -text
 incubator/busconfiguration/src/main/resources/scripts/SyncNodes2.py -text
+incubator/busconfiguration/src/main/resources/scripts/UnDeploy.py -text
 incubator/busconfiguration/src/main/resources/scripts/WPS.py -text
 incubator/busconfiguration/src/main/resources/scripts/bpcTemplates.jacl -text
 incubator/busconfiguration/src/main/resources/scripts/changeClassLoader.py -text
