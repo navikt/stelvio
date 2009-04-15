@@ -16,7 +16,7 @@ import org.codehaus.swizzle.confluence.Confluence;
 import org.codehaus.swizzle.confluence.Page;
 
 /**
- * @author test@example.com
+ * @author@author test@example.com
  * 
  * 
  * @goal add-comment-up
