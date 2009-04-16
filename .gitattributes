@@ -2401,7 +2401,6 @@ incubator/IBM-Security-SCAJ2EE-lib/utbetaling/pselv/ibm-deploy.scaj2ee -text
 incubator/arbeidsforhold/pen/ibm-deploy.scaj2ee -text
 incubator/arbeidsforhold/psak/ibm-deploy.scaj2ee -text
 incubator/busconfiguration/pom.xml -text
-incubator/busconfiguration/src/main/resources/confluence/addComment.py -text
 incubator/busconfiguration/src/main/resources/environments/I1.properties -text
 incubator/busconfiguration/src/main/resources/environments/K4.properties -text
 incubator/busconfiguration/src/main/resources/environments/K5.properties -text

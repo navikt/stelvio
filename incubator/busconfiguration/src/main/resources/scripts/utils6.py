@@ -260,6 +260,47 @@ def doesAppExist ( appName ):
 #endDef 
 
 #--------------------------------------------------------------------
+# Procedure:	doesAppExist
+# Description:  Determine whether an appication exists
+#
+# Parameters:	appName
+#
+# Returns:	1 (exists)
+#		0 (does not exist)
+#--------------------------------------------------------------------
+def doesOlderAppVersionsExist ( appName ):
+		applications = AdminApp.list().split(lineSeparator);
+		
+		for app in applications:
+			if(app.find(appName) >= 0):
+				return 1;
+			
+		return 0;
+#endDef 
+
+#--------------------------------------------------------------------
+# Procedure:	doesAppExist
+# Description:  Determine whether an appication exists
+#
+# Parameters:	appName
+#
+# Returns:	1 (exists)
+#		0 (does not exist)
+#--------------------------------------------------------------------
+def doesAppExist ( appName ):
+
+        appExists = 1
+        application = AdminConfig.getid("/Deployment:"+appName+"/" )
+        #print ("doesAppExist appName="+appName+" installedAppID="+application )
+        if (len(application) == 0):
+                appExists = 0
+                #print("doesAppExist: FALSE for appName="+appName )
+      
+        #endElse
+        return appExists
+#endDef 
+
+#--------------------------------------------------------------------
 # Procedure:   	findCell
 # Description: 	Determine whether a cell exists
 #
@@ -1826,6 +1867,15 @@ def readDistributionDirectory(distDir):
   	  print "ERROR (listDirectory): Unable to read directory"
     
     return ears
+   
+def noLeaveModuleFileExits(appName, distDir): 
+
+    robFile = io.File(distDir, appName + ".leave");
+    print "DEBUG (noLeaveModuleFileExits): Looking for file" +  appName + ".leave";
+    if ( not robFile.exists()):
+		return 1;
+    else:
+    	return 0;
     
 def parseApplicationNames ( ears ):
     

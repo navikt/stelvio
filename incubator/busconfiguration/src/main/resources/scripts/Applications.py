@@ -286,37 +286,44 @@ def installEAR ( appName ):
 
 ##########################################################################
 # FUNCTION:
-#    uninstallApplication: Uninstalls a J2EE application
+#    uninstallOlderVersions: Uninstalls all previous versions of the application
 # SYNTAX:
-#    installApplication name
+#    uninstallOlderVersions name
 # PARAMETERS:
 #    name	-	Application Name
 # USAGE NOTES:
-#    Uninstalls J2EE application 
+#    Uninstalls J2EE application(s)
 # RETURNS:
 #    0    Success
 #    1    Failure
 ##########################################################################
-def uninstallApplication(appName):
+def uninstallOlderVersions(appName):
 	retval = 1
 	try:		
 		if isEmpty(appName):
-			raise StandardError("ERROR (uninstallApplication): Application name not specified")
+			raise StandardError("ERROR (uninstallOlderVersions): Application name not specified")
 				
-		print ("INFO (uninstallApplication): Running command: AdminApp.uninstall(%s)" % (appName))
-		AdminApp.uninstall(appName)
+		print ("INFO (uninstallOlderVersions): Running command: AdminApp.uninstall(%s)" % (appName))
+		
+		applications = AdminApp.list().split(lineSeparator);
+		for app in applications:
+			if(app.find(appName) >= 0):
+				print("INFO: Uninstalling application: " + app)
+				AdminApp.uninstall(app)
+				save()
+				appExists = doesAppExist(appName )
+				if (appExists):
+					retval = 1
+					print("ERROR (uninstallOlderVersions): failed to uninstallEAR application="+appName )
+					break
+		
 		save()		
-		retval = 0
+
 	except:
-		print("ERROR (uninstallApplication): An error was encountered uninstalling the J2EE Application")
+		print("ERROR (uninstallOlderVersions): An error was encountered uninstalling the J2EE Application")
 		retval = 1
-	
-	appExists = doesAppExist(appName )
-	if (appExists):
-		retval = 1
-                print("ERROR (uninstallApplication): failed to uninstallEAR application="+appName )
-        #endif
-	print ("INFO: (uninstallApplication): DONE.")
+		
+	print ("INFO: (uninstallOlderVersions): DONE.")
 	return retval
 	
 #endDef
@@ -469,27 +476,31 @@ def uninstallAll(distDir):
     totalSeconds = 0
 
     for appName in appNames: 
-        appNameAddOnstr = appNameAddOn(appName)
-        if (doesAppExist(appNameAddOnstr)):
-            print "#############################################################\n"
-            if installCounter > 1:
-                print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\t\t Estimated TTG: " + calcTTGString(totalSeconds, installCounter, len(appNames) - displayCounter) + "\n"
-            else:
-                print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\n"
-            print "#############################################################"
-            displayCounter = displayCounter + 1
-            installCounter = installCounter + 1
-            startTime = Calendar.getInstance()
-            retval = uninstallApplication(appNameAddOnstr)
-            endTime = Calendar.getInstance()
-            sec = getTimeInterval(startTime,endTime)
-            #print "Min: %d Sec: %d" %(min,sec)
-            totalSeconds = totalSeconds + sec
-            #print "TotMin: %d TotSec: %d" %(totalMinutes, totalSeconds)
-            print "Uninstall time: %s" %(intervalToString(sec))
-        else:
-            print ("WARNING (uninstallAll): application does not exsists, " +appNameAddOnstr)
-            displayCounter = displayCounter + 1
+		if (noLeaveModuleFileExits(appName, distDir)):
+			if (doesOlderAppVersionsExist(appName)):
+				print "#############################################################\n"
+				if installCounter > 1:
+					print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\t\t Estimated TTG: " + calcTTGString(totalSeconds, installCounter, len(appNames) -displayCounter) + "\n"
+				else:
+					print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\n"
+				#endif
+				print "#############################################################"
+				displayCounter = displayCounter + 1
+				installCounter = installCounter + 1
+				startTime = Calendar.getInstance()
+				retval = uninstallOlderVersions(appName)
+				endTime = Calendar.getInstance()
+				sec = getTimeInterval(startTime,endTime)
+				#print "Min: %d Sec: %d" %(min,sec)
+				totalSeconds = totalSeconds + sec
+				#print "TotMin: %d TotSec: %d" %(totalMinutes, totalSeconds)
+				print "Uninstall time: %s" %(intervalToString(sec))
+			else:
+				print ("WARNING (uninstallAll): application does not exist, " +appName)
+			#endif	
+		else:
+			print ("INFO (uninstallAll): Older versions of module are not uninstalled due to .leave file, " +appName)
+			displayCounter = displayCounter + 1
         #endif
     #endfor
     print "Total Uninstall Time: " + intervalToString(totalSeconds)
