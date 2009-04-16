@@ -1,8 +1,6 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.List;
 import java.util.StringTokenizer;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
@@ -11,12 +9,8 @@ import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;
-import org.apache.maven.model.Dependency;
-import org.apache.maven.model.DependencyManagement;
-import org.apache.maven.model.Exclusion;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.project.MavenProject;
 
 
 /**
