@@ -56,6 +56,12 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 	protected Set<Artifact> dependencyArtifacts;
 
 	/**
+	 * @parameter expression="${project.artifacts}"
+	 * @required
+	 */
+	protected Set<Artifact> artifacts;
+	
+	/**
 	 * @parameter expression="${interactiveMode}" default-value="false"
 	 * @required
 	 */
