@@ -12,9 +12,6 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.project.MavenProject;
-
-import com.ibm.ejs.models.base.bindings.commonbnd.Property;
 
 
 /**
@@ -68,7 +65,6 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		if(dest.exists() == false) {
 			EarFile.copyFile(source, dest);
 		}
-		
 		
 		if(properties.containsKey(a.getArtifactId())) {
 			String property = properties.getProperty(a.getArtifactId());
