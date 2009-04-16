@@ -5,7 +5,6 @@ import java.util.Map;
 
 import no.nav.maven.plugin.confluence.util.Constants;
 
-import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.swizzle.confluence.Comment;
@@ -18,10 +17,9 @@ import org.codehaus.swizzle.confluence.Page;
 public abstract class AddCommentMojo extends ConfluenceMojo {
 
 	protected abstract String getComment();
-	
-	protected void doExecute() throws MojoExecutionException, MojoFailureException {
-		
 
+	protected void doExecute() throws MojoExecutionException,
+			MojoFailureException {
 
 		Page page = null;
 		try {
