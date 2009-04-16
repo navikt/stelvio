@@ -1,6 +1,7 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
 import java.io.File;
+import java.util.Properties;
 import java.util.Set;
 
 import no.nav.maven.commons.managers.ArchiveManager;
@@ -77,10 +78,10 @@ public abstract class ArtifactModifierMojo extends AbstractMojo {
 	protected Set<Artifact> dependencyArtifacts;	
 	
 	/**
-	 * @parameter expression="${project.dependencyManagement}"
+	 * @parameter expression="${project.properties}"
 	 * @required
 	 */
-	protected DependencyManagement dependencyManagement;	
+	protected Properties properties;	
 	
 	/**
 	 * @parameter expression="${project.artifacts}"

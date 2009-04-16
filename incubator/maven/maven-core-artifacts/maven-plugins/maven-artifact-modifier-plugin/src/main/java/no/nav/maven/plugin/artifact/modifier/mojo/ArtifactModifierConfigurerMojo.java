@@ -1,6 +1,7 @@
 package no.nav.maven.plugin.artifact.modifier.mojo;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.StringTokenizer;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
@@ -11,6 +12,9 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.project.MavenProject;
+
+import com.ibm.ejs.models.base.bindings.commonbnd.Property;
 
 
 /**
@@ -58,12 +62,25 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		if(destFolder.exists() == false) {
 			destFolder.mkdir();
 		}
-		
+
 		File dest = new File(targetDirectory, a.getArtifactId() + "." + a.getType());
 		
 		if(dest.exists() == false) {
 			EarFile.copyFile(source, dest);
 		}
+		
+		
+		if(properties.containsKey(a.getArtifactId())) {
+			String property = properties.getProperty(a.getArtifactId());
+			if(("leave").equals(property) == true) {
+				try {
+					new File(targetDirectory, a.getArtifactId() + ".leave").createNewFile();
+				} catch (IOException e) {
+					throw new RuntimeException("An error occured creating a leave file for artifact", e);
+				}
+			}
+		}
+		
 		
 		return dest;
 	}
