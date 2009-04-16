@@ -53,11 +53,6 @@ public abstract class AddCommentMojo extends AbstractMojo {
 	protected String environment;
 
 	/**
-	 * @parameter expression="${comment}"
-	 */
-	protected String comment;
-
-	/**
 	 * @parameter expression="${project.dependencyArtifacts}"
 	 * @required
 	 */
