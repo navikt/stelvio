@@ -77,13 +77,17 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 		if(interactiveMode == true) {
 			String answer=null;
 			try {
-				answer = prompter.prompt("Do you want to perform step \"" + getGoalPrettyPrint() + "\" (y/n)? ", "n");
+				answer = prompter.prompt("Do you want to perform step \"" + getGoalPrettyPrint() + "\" (y/n/a)? ", "n");
 			} catch (PrompterException e) {
 				throw new MojoFailureException(e, "An error occured during prompt input","An error occured during prompt input");
 			}
 			if("n".equalsIgnoreCase(answer)) {
 				getLog().info("Skipping step: " + getGoalPrettyPrint());
 				return;
+			}
+			if("a".equalsIgnoreCase(answer)) {
+				getLog().info("Aborting " + getGoalPrettyPrint());
+				System.exit(0);
 			}
 		}
 		
