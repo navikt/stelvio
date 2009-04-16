@@ -33,10 +33,10 @@ public class RemoveBPELMojo extends WebsphereUpdaterMojo {
 		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
 		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
 		
-		getLog().info("Stopping and uninstalling: " + artifactId + "App");
+		getLog().info("Stopping and uninstalling: " + artifactId);
 		try {	
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + scriptsHome + "/scripts/bpcTemplates.jacl -uninstall " + artifactId + "App");
+			arg.setLine("-f " + scriptsHome + "/scripts/bpcTemplates.jacl -uninstall " + artifactId);
 			commandLine.addArg(arg);
 			getLog().info("Executing the following command: " + commandLine.toString());
 			CommandLineUtils.executeCommandLine(commandLine, stdout, stderr);
