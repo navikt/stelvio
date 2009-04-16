@@ -2686,6 +2686,7 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugi
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/test/resources/META-INF/plexus/components.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/test/resources/unit/plugin-cfg.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/pom.xml -text
+incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/release.properties -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddCommentMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddDownCommentMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddUpCommentMojo.java -text

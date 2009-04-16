@@ -11,6 +11,8 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.codehaus.plexus.components.interactivity.Prompter;
+import org.codehaus.plexus.components.interactivity.PrompterException;
 import org.codehaus.swizzle.confluence.Comment;
 import org.codehaus.swizzle.confluence.Confluence;
 import org.codehaus.swizzle.confluence.Page;
@@ -23,7 +25,10 @@ import org.codehaus.swizzle.confluence.Page;
  */
 @SuppressWarnings("unchecked")
 public abstract class AddCommentMojo extends AbstractMojo {
-
+	
+	/** @component */
+	private Prompter prompter;
+	
 	/**
 	 * 
 	 * @parameter expression="${username}" default-value="deployer"
@@ -58,12 +63,31 @@ public abstract class AddCommentMojo extends AbstractMojo {
 	 */
 	protected Set<Artifact> dependencyArtifacts;
 
+	/**
+	 * @parameter expression="${interactiveMode}" default-value="false"
+	 * @required
+	 */
+	protected Boolean interactiveMode;
+	
 	protected String deployString = "";
 
 	protected String configurationString = "";
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
+		if(interactiveMode == true) {
+			String answer=null;
+			try {
+				answer = prompter.prompt("Do you want to perform step \"" + getGoalPrettyPrint() + "\" (y/n)? ", "n");
+			} catch (PrompterException e) {
+				throw new MojoFailureException(e, "An error occured during prompt input","An error occured during prompt input");
+			}
+			if("n".equalsIgnoreCase(answer)) {
+				getLog().info("Skipping step: " + getGoalPrettyPrint());
+				return;
+			}
+		}
+		
 		for (Artifact a : dependencyArtifacts) {
 			if (a.getArtifactId().equals("bus-deploy")) {
 				deployString = a.getVersion();
@@ -110,4 +134,5 @@ public abstract class AddCommentMojo extends AbstractMojo {
 	}
 
 	protected abstract String getComment();
+	protected abstract String getGoalPrettyPrint();
 };
