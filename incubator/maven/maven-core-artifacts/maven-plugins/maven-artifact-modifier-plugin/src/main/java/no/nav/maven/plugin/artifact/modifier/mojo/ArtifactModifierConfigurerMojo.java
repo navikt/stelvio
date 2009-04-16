@@ -12,6 +12,7 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Dependency;
+import org.apache.maven.model.DependencyManagement;
 import org.apache.maven.model.Exclusion;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -69,15 +70,7 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		if(dest.exists() == false) {
 			EarFile.copyFile(source, dest);
 		}
-
-		/* If exclusion is set, then create a marker file to tell the websphere script *not* to uninstall
-		 * older versions of this module.
-		 * TODO: How to get the transitive dependencies exclusion filters?
-		 */
-		for(Dependency d : dependencies) {
-			
-		}
-
+		
 		return dest;
 	}
 

@@ -9,6 +9,7 @@ import no.nav.maven.commons.managers.IArchiveManager;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Dependency;
+import org.apache.maven.model.DependencyManagement;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -79,10 +80,10 @@ public abstract class ArtifactModifierMojo extends AbstractMojo {
 	protected Set<Artifact> dependencyArtifacts;	
 	
 	/**
-	 * @parameter expression="${project.dependencies}"
+	 * @parameter expression="${project.dependencyManagement}"
 	 * @required
 	 */
-	protected List<Dependency> dependencies;	
+	protected DependencyManagement dependencyManagement;	
 	
 	/**
 	 * @parameter expression="${project.artifacts}"
