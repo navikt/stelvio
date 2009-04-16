@@ -20,6 +20,7 @@
 							</install>
 							<deploy>
 								no.nav.maven.plugins:maven-confluence-plugin:add-comment-down,
+								no.nav.maven.plugins:maven-confluence-plugin:update-page,
 								no.nav.maven.plugins:maven-websphere-plugin:backup-config,
 								no.nav.maven.plugins:maven-websphere-plugin:remove-bpel,
 								no.nav.maven.plugins:maven-websphere-plugin:stop-clusters,
