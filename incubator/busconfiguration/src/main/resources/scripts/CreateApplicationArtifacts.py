@@ -32,6 +32,7 @@ from java.util 	import Properties
 from java.io 	import FileInputStream
 
 APPLICATIONS_FOLDER 	 = sys.argv[0]
+APPLICATIONS_FOLDER      = APPLICATIONS_FOLDER.replace('\t','\\t')
 ENVIRONMENT 	 	 = sys.argv[1]
 WSADMIN_SCRIPTS_HOME	 = sys.argv[2]
 WSADMIN_SCRIPTS_HOME 	 = WSADMIN_SCRIPTS_HOME.replace('\t','\\t')
