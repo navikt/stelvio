@@ -34,7 +34,9 @@ from java.io 	import FileInputStream
 APPLICATIONS_FOLDER 	 = sys.argv[0]
 ENVIRONMENT 	 	 = sys.argv[1]
 WSADMIN_SCRIPTS_HOME	 = sys.argv[2]
+WSADMIN_SCRIPTS_HOME 	 = WSADMIN_SCRIPTS_HOME.replace('\t','\\t')
 APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
+APP_PROPS_HOME 		 = APP_PROPS_HOME.replace('\t','\\t')
 
 execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
 execfile( WSADMIN_SCRIPTS_HOME+"/scripts/environment.py" )

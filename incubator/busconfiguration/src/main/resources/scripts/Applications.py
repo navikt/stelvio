@@ -38,6 +38,9 @@ APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
 whereIsProperties 	 = APPLICATION_NAME+".properties"
 DISTDIR			 = sys.argv[3]
 
+WSADMIN_SCRIPTS_HOME = WSADMIN_SCRIPTS_HOME.replace('\t','\\t')
+DISTDIR = DISTDIR.replace('\t','\\t')
+
 execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
 
 def markAppState ( appVersion, isEnabled ):
