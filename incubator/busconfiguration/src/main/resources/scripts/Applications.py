@@ -21,6 +21,7 @@
 
 import sys
 import java
+import re
 
 from java.lang 	import System
 from java.net 	import InetAddress
@@ -311,16 +312,15 @@ def uninstallOlderVersions(appName):
 		applications = AdminApp.list().split(lineSeparator);
 		for app in applications:
 			if(app.find(appName) >= 0):
-				print("INFO: Uninstalling application: " + app)
-				AdminApp.uninstall(app)
-				save()
-				appExists = doesAppExist(appName )
-				if (appExists):
-					retval = 1
-					print("ERROR (uninstallOlderVersions): failed to uninstallEAR application="+appName )
-					break
-		
-		save()		
+				if(re.search(appName + "-" + "(\d\.)+\d$",app)):
+					print("INFO: Uninstalling application: " + app)
+					AdminApp.uninstall(app)
+					save()
+					appExists = doesAppExist(appName )
+					if (appExists):
+						retval = 1
+						print("ERROR (uninstallOlderVersions): failed to uninstallEAR application="+appName )
+						break
 
 	except:
 		print("ERROR (uninstallOlderVersions): An error was encountered uninstalling the J2EE Application")
