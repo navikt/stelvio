@@ -15,7 +15,7 @@
 	<groupId>no.stelvio.int</groupId>
 	<artifactId>stelvio-commons-bpc-lib</artifactId>
 	<packaging>wps-library-jar</packaging>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<build>
 		<plugins>
 			<plugin>
