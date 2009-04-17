@@ -11,9 +11,12 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import no.stelvio.common.exception.ErrorTypes;
+import no.stelvio.common.exception.RuntimeFault;
 import no.stelvio.common.exception.ServiceRuntimeExceptionToFaultConverter;
+import no.stelvio.common.exception.ThrowableInfo;
 
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
@@ -199,11 +202,24 @@ public class ErrorHelperUtil {
 		}
 		return e;
 	}
+	
+	/**
+	 * @param t
+	 * @return returns the lowes Throwable in the hierachy
+	 */
+	public static Throwable getRootCause(Throwable t) {
+		Throwable cause = t.getCause();
+		if (cause != null) {
+			return getRootCause(cause);
+		} else {
+			return t;
+		}
+	}
 
 	/**
 	 * 
 	 * Provides the SCAContext as a string reprensentation of a component
-	 * 
+	 * The method has a weakness because it just returns the first IF and REF for SRE SCA context use buildErrorSource 
 	 * @param module
 	 *            the name of the module to get the context information from
 	 * @return the context information of the specified module
@@ -277,5 +293,53 @@ public class ErrorHelperUtil {
 	{
 		DataObject dao = (DataObject)sbe.getData();
 		return dao.getType().getName();
+	}
+	
+	
+	/**
+	 * @param sre
+	 * @return string as SCA context: [invoke,<methodname>] {<modulename>}<componentname>.component#<interfacename>Partner => {<modulname>}<componentname>.component 
+	 */
+	public static String buildErrorSource(ServiceRuntimeException sre) {
+		List serviceContext = sre.getServiceContext();
+		if (serviceContext.isEmpty()) {
+			return "";
+		} else {
+			return serviceContext.get(0).toString();
+		}
+	}
+
+	/**
+	 * @param sre
+	 * @return string with the current cause (highesst level of exception)
+	 */
+	public static String buildErrorMessage(ServiceRuntimeException sre) {
+		Throwable cause = sre.getCause();
+		if (cause != null) {
+			if (cause instanceof ServiceRuntimeException) {
+				return buildErrorMessage((ServiceRuntimeException) cause);
+			} else if (cause instanceof RuntimeFault) {
+				ThrowableInfo throwableInfo = ((RuntimeFault) cause).getExceptions()[0];
+				return throwableInfo.toString();
+			} else {
+				return cause.toString();
+			}
+		} else {
+			return sre.toString();
+		}
+	}
+
+	/**
+	 * @param sre
+	 * @return string with the root cause (lowest level of exception)
+	 */
+	public static String buildRootCause(ServiceRuntimeException sre) {
+		Throwable rootCause = getRootCause(sre);
+		if (rootCause instanceof RuntimeFault) {
+			ThrowableInfo[] exceptions = ((RuntimeFault) rootCause).getExceptions();
+			return exceptions[exceptions.length - 1].toString();
+		} else {
+			return rootCause.toString();
+		}
 	}
 }

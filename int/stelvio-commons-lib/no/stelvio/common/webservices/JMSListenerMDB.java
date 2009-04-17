@@ -46,7 +46,12 @@ import javax.xml.soap.SOAPException;
 public class JMSListenerMDB extends com.ibm.ws.webservices.engine.transport.jms.JMSListenerMDB
 {
 
-    public JMSListenerMDB()
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3095294735913809877L;
+	
+	public JMSListenerMDB()
     {
         fMessageDrivenCtx = null;
         serverEngine = null;

@@ -9,13 +9,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.logging.Level;
 
-import org.apache.xerces.dom.CoreDocumentImpl;
-import org.eclipse.hyades.logging.core.DeserializationException;
 import org.eclipse.hyades.logging.core.SerializationException;
-import org.eclipse.hyades.logging.core.XmlUtility;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 import no.stelvio.common.interceptor.GenericInterceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
