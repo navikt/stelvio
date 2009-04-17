@@ -3667,7 +3667,6 @@ int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/n
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/util/PasswordEncodeDelegate.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/util/PropertyMapper.java -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/.project -text svneol=unset#text/plain
-int/stelvio-commons-bpc-lib/META-INF/MANIFEST.MF -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BPELHelperUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/pom.xml -text svneol=unset#text/plain
 int/stelvio-commons-lib/.runtime -text
