@@ -7,11 +7,14 @@ import java.util.StringTokenizer;
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.commons.constants.Constants;
 import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
+import no.nav.maven.plugins.descriptor.jee.EjbJarAssemblyDescriptorEditor;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.eclipse.jst.j2ee.commonarchivecore.internal.Archive;
+import org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile;
 
 
 /**
@@ -77,6 +80,17 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 			}
 		}
 		
+		EARFile earFile = EarFile.openEarFile(dest.getAbsolutePath());
+		EjbJarAssemblyDescriptorEditor ejbjar = new EjbJarAssemblyDescriptorEditor((Archive)earFile.getEJBJarFiles().get(0));
+		if(ejbjar.containsBusinessProcesses() == true ) {
+			try {
+				new File(targetDirectory, a.getArtifactId() + ".bp").createNewFile();
+			} catch (IOException e) {
+				throw new RuntimeException("An error occured creating a bp file for artifact", e);
+			}
+		}
+
+		EarFile.closeEarFile(earFile);
 		
 		return dest;
 	}
