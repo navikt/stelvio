@@ -46,10 +46,13 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 				File extractedFolder = null;
 				if(scriptsFolder.exists() == false || new File(scriptsFolder, a.getVersion()).exists() == false) {
 					extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);
+				} else {
+					extractedFolder = scriptsFolder;
 				}
+				
 				ArtifactConfiguration.loadConfiguration(new File(extractedFolder, "moduleconfig"), environment);
 				foundBusConfiguration = true;
-				
+					
 				/* Add the version in an empty file */
 				File versionFile = new File(scriptsFolder, a.getVersion());
 				try {
