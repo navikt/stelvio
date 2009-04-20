@@ -17,6 +17,7 @@
 	    
 	<properties>
 		<nav-prod-sak-arena>leave</nav-prod-sak-arena>
+		<nav-bsrv-frg-hentinstitusjonsoppholdliste>bpel</nav-bsrv-frg-hentinstitusjonsoppholdliste>
 	</properties>
 		
     <dependencies>
