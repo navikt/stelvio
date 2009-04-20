@@ -52,6 +52,19 @@ public class EjbJarAssemblyDescriptorEditor extends EjbJarEditor{
 		
 	}
 	
+	public final boolean containsBusinessProcesses() {
+		EList beans = ejbJar.getEnterpriseBeans();
+		for (Object b : beans) {
+			EnterpriseBean bean = (EnterpriseBean)b;
+			String beanClassName = bean.getEjbClassName();
+			if("com.ibm.bpe.framework.sca.ProcessSessionBean".equals(beanClassName)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	public final List<String> getEjbSecurityRoleNames() {
 		List<String> roles = new ArrayList<String>();
 		EList secRoles = getSecurityRoles();
