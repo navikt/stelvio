@@ -67,30 +67,29 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		
 		if(dest.exists() == false) {
 			EarFile.copyFile(source, dest);
-		}
 		
-		if(properties.containsKey(a.getArtifactId())) {
-			String property = properties.getProperty(a.getArtifactId());
-			if(("leave").equals(property) == true) {
-				try {
-					new File(targetDirectory, a.getArtifactId() + ".leave").createNewFile();
-				} catch (IOException e) {
-					throw new RuntimeException("An error occured creating a leave file for artifact", e);
+			if(properties.containsKey(a.getArtifactId())) {
+				String property = properties.getProperty(a.getArtifactId());
+				if(("leave").equals(property) == true) {
+					try {
+						new File(targetDirectory, a.getArtifactId() + ".leave").createNewFile();
+					} catch (IOException e) {
+						throw new RuntimeException("An error occured creating a leave file for artifact", e);
+					}
 				}
 			}
-		}
-		
-		EARFile earFile = EarFile.openEarFile(dest.getAbsolutePath());
-		EjbJarAssemblyDescriptorEditor ejbjar = new EjbJarAssemblyDescriptorEditor((Archive)earFile.getEJBJarFiles().get(0));
-		if(ejbjar.containsBusinessProcesses() == true ) {
-			try {
-				new File(targetDirectory, a.getArtifactId() + ".bp").createNewFile();
-			} catch (IOException e) {
-				throw new RuntimeException("An error occured creating a bp file for artifact", e);
+			
+			EARFile earFile = EarFile.openEarFile(dest.getAbsolutePath());
+			EjbJarAssemblyDescriptorEditor ejbjar = new EjbJarAssemblyDescriptorEditor((Archive)earFile.getEJBJarFiles().get(0));
+			if(ejbjar.containsBusinessProcesses() == true ) {
+				try {
+					new File(targetDirectory, a.getArtifactId() + ".bp").createNewFile();
+				} catch (IOException e) {
+					throw new RuntimeException("An error occured creating a bp file for artifact", e);
+				}
 			}
+			EarFile.closeEarFile(earFile);
 		}
-
-		EarFile.closeEarFile(earFile);
 		
 		return dest;
 	}
