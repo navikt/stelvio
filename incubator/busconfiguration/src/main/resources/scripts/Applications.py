@@ -312,7 +312,7 @@ def uninstallOlderVersions(appName):
 		applications = AdminApp.list().split(lineSeparator);
 		for app in applications:
 			if(app.find(appName) >= 0):
-				if(re.search(appName + "-" + "(\d+\.)+\d+$",app)):
+				if(re.search(appName + "-" + "(\d+\.)+\d+(-SNAPSHOT)?$",app)):
 					print("INFO: Uninstalling application: " + app)
 					AdminApp.uninstall(app)
 					save()
