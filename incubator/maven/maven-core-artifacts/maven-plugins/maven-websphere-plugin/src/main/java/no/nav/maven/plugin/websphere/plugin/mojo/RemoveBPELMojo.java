@@ -1,5 +1,9 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -13,16 +17,24 @@ import org.codehaus.plexus.util.cli.Commandline;
  * 
  * @author test@example.com
  * 
+ * 
  * @goal remove-bpel
  * @requiresDependencyResolution
  */
 public class RemoveBPELMojo extends WebsphereUpdaterMojo {
-    	
+	/**
+	 * @parameter expression="${project.properties}"
+	 * @required
+	 */
+	protected Properties properties;	
+	
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		for(Artifact a : artifacts) {
-			/* TODO: Remove this silly "oh, maybe I hit something interesting" logic */
-			if(a.getArtifactId().contains("ppen010") || a.getArtifactId().contains("hentinstitusjonsoppholdliste")) {
-				removeBPEL(commandLine,a.getArtifactId());
+			if(properties.containsKey(a.getArtifactId())) {
+				String property = properties.getProperty(a.getArtifactId());
+				if(("bpel").equals(property) == true) {
+					removeBPEL(commandLine,a.getArtifactId());
+				}
 			}
 		}
 	}
