@@ -68,6 +68,9 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		if(dest.exists() == false) {
 			EarFile.copyFile(source, dest);
 		
+			/* Communicate to the deploy scripts that other versions of this module will not be uninstalled.
+			 * The regexp for module match is artifactId-(\d+\.)+\d+(-SNAPSHOT)?$
+			 */
 			if(properties.containsKey(a.getArtifactId())) {
 				String property = properties.getProperty(a.getArtifactId());
 				if(("leave").equals(property) == true) {
@@ -79,6 +82,9 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 				}
 			}
 			
+			/* Communicate to the deploy scripts that this module contains business processes. Modules containing business 
+			 * processes must be handled in a special manner during uninstall.
+			 */
 			EARFile earFile = EarFile.openEarFile(dest.getAbsolutePath());
 			EjbJarAssemblyDescriptorEditor ejbjar = new EjbJarAssemblyDescriptorEditor((Archive)earFile.getEJBJarFiles().get(0));
 			if(ejbjar.containsBusinessProcesses() == true ) {
