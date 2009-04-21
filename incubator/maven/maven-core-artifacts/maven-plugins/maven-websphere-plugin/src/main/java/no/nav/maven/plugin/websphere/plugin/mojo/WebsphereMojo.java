@@ -141,7 +141,23 @@ public abstract class WebsphereMojo extends AbstractMojo {
 		getLog().info(outPut);
 		
 		if(outPut.toLowerCase().contains("error")) {
-			throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
+			if(interactiveMode == true) {
+				String answer=null;
+				try {
+					answer = prompter.prompt("An error occured during step \"" + getGoalPrettyPrint() + "\" . Do you want to abort the deploy process (y/n)? ", "n");
+				} catch (PrompterException e) {
+					throw new RuntimeException("An error occured during prompt input", e);
+				}
+				
+				if("y".equalsIgnoreCase(answer)) {
+					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
+				} else {
+					return;
+				}
+			} else {
+				throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
+			}
+			
 		}
 	}
 }
