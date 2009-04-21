@@ -303,6 +303,7 @@ def installEAR ( appName ):
 ##########################################################################
 def uninstallOlderVersions(appName):
 	retval = 1
+	foundApp = 0
 	try:		
 		if isEmpty(appName):
 			raise StandardError("ERROR (uninstallOlderVersions): Application name not specified")
@@ -316,6 +317,7 @@ def uninstallOlderVersions(appName):
 					print("INFO: Uninstalling application: " + app)
 					AdminApp.uninstall(app)
 					save()
+					foundApp = 1
 					appExists = doesAppExist(appName )
 					if (appExists):
 						retval = 1
@@ -325,7 +327,10 @@ def uninstallOlderVersions(appName):
 	except:
 		print("ERROR (uninstallOlderVersions): An error was encountered uninstalling the J2EE Application")
 		retval = 1
-		
+	
+	
+	if(foundApp == 0):
+		print ("INFO: (uninstallOlderVersions): Did not find any versions of application: " + appName)
 	print ("INFO: (uninstallOlderVersions): DONE.")
 	return retval
 	
@@ -436,27 +441,20 @@ def installAll(distDir):
     displayCounter = 1
     totalSeconds = 0
     for appName in appNames:
-        appNameAddOnstr = appNameAddOn(appName)
-        appExists = doesAppExist(appNameAddOnstr)
-        if (appExists):
-            print ("WARNING (installAll): application="+appNameAddOnstr + " found. Will NOT install..." )
-            displayCounter = displayCounter + 1
+        print "#############################################################\n"
+        if installCounter > 1:
+            print "Installing ",appName," [ ", displayCounter," / ",len(appNames)," ]\t\t Estimated TTG: " + calcTTGString(totalSeconds, installCounter, len(appNames) - displayCounter) + "\n"
         else:
-            print "#############################################################\n"
-            if installCounter > 1:
-                print "Installing ",appName," [ ", displayCounter," / ",len(appNames)," ]\t\t Estimated TTG: " + calcTTGString(totalSeconds, installCounter, len(appNames) - displayCounter) + "\n"
-            else:
-                print "Installing ",appName," [ ", displayCounter," / ",len(appNames)," ]\n"
-            print "#############################################################"
-            installCounter = installCounter + 1
-            displayCounter = displayCounter + 1
-            startTime = Calendar.getInstance()
-            installEAR(appName)
-            endTime = Calendar.getInstance()
-            sec = getTimeInterval(startTime,endTime)
-            totalSeconds = totalSeconds + sec
-            print "Deployment time: %s" %(intervalToString(sec))
-        #endif
+            print "Installing ",appName," [ ", displayCounter," / ",len(appNames)," ]\n"
+        print "#############################################################"
+        installCounter = installCounter + 1
+        displayCounter = displayCounter + 1
+        startTime = Calendar.getInstance()
+        installEAR(appName)
+        endTime = Calendar.getInstance()
+        sec = getTimeInterval(startTime,endTime)
+        totalSeconds = totalSeconds + sec
+        print "Deployment time: %s" %(intervalToString(sec))
     #endfor    
     print "Total Deploy Time: " + intervalToString(totalSeconds)
 #endef 
