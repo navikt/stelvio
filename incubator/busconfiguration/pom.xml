@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-integration-root-pom</artifactId>
@@ -9,7 +9,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>busconfiguration</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>Scripts and configuration data for the enterprise service bus</name>
 	
+
+  <scm>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/busconfiguration-1.0</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/busconfiguration-1.0</developerConnection>
+  </scm>
 </project>
