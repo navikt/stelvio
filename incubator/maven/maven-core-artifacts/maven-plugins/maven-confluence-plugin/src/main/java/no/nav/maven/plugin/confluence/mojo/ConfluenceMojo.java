@@ -1,6 +1,5 @@
 package no.nav.maven.plugin.confluence.mojo;
 
-import java.net.MalformedURLException;
 import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
