@@ -13,61 +13,66 @@ if(operation != 'stop' and operation != 'start'):
 
 WPSMember1 = ""
 WPSMember2 = ""
+WPSMember1Node = ""
+WPSMember2Node = ""
 MEMember1 = ""
 MEMember2 = ""
+MEMember1Node = ""
+MEMember2Node = ""
 SupportMember1 = ""
 SupportMember2 = ""
+SupportMember1Node = ""
+SupportMember2Node = ""
 
 def findServers():
         global WPSMember1
         global WPSMember2
+	global WPSMember1Node
+        global WPSMember2Node
         global MEMember1
 	global MEMember2
+        global MEMember1Node
+	global MEMember2Node	
 	global SupportMember1
 	global SupportMember2
-        servers = AdminConfig.list("Server").split(java.lang.System.getProperty('line.separator'))
-        for server in servers:
-                serverName = AdminConfig.showAttribute(server, "name")
-                if(serverName.find("WPS") >= 0 and serverName.find("01") >= 0):
-                        print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Found WPSMember 1: " + serverName
-                        WPSMember1 = serverName
-                if(serverName.find("WPS") >= 0 and serverName.find("02") >= 0):
-                        print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Found WPSMember 2: " + serverName
-                        WPSMember2 = serverName
-                if(serverName.find("ME") >= 0 and serverName.find("01") >= 0):
-                        print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Found MEMember 1: " + serverName
-                        MEMember1 = serverName
-                if(serverName.find("ME") >= 0 and serverName.find("02") >= 0):
-                        print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Found MEMember 2: " + serverName
-                        MEMember2 = serverName
-                if(serverName.find("Support") >= 0 and serverName.find("01") >= 0):
-                        print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Found SupportMember 1: " + serverName
-                        SupportMember1 = serverName
-                if(serverName.find("Support") >= 0 and serverName.find("02") >= 0):
-                        print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Found SupportMember 2: " + serverName
-                        SupportMember2 = serverName                                                                                        
+	global SupportMember1Node
+	global SupportMember2Node
+	clusters = AdminConfig.list("ServerCluster").split(java.lang.System.getProperty('line.separator'))
+	for cluster in clusters:
+       		members = AdminConfig.showAttribute(cluster, "members").split(java.lang.System.getProperty(' '))
+		for member in members:
+			cool_member=member.replace('[','')
+			cool_member=cool_member.replace(']','')
+			serverName = AdminConfig.showAttribute(cool_member, "memberName")
+			nodeName = AdminConfig.showAttribute(cool_member, "nodeName")
+			print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Application Server: " + serverName + " is on node " + nodeName
+			if(serverName.find("WPS") >= 0 and serverName.find("01") >= 0):
+	                        WPSMember1 = serverName
+	                        WPSMember1Node = nodeName
+			if(serverName.find("WPS") >= 0 and serverName.find("02") >= 0):
+                	        WPSMember2 = serverName
+	                        WPSMember2Node = nodeName
+	                if(serverName.find("ME") >= 0 and serverName.find("01") >= 0):
+                	        MEMember1 = serverName
+	                        MEMember1Node = nodeName
+	                if(serverName.find("ME") >= 0 and serverName.find("02") >= 0):
+                	        MEMember2 = serverName
+	                        MEMember2Node = nodeName
+	                if(serverName.find("Support") >= 0 and serverName.find("01") >= 0):
+                	        SupportMember1 = serverName
+	                        SupportMember1Node = nodeName
+	                if(serverName.find("Support") >= 0 and serverName.find("02") >= 0):
+                	        SupportMember2 = serverName
+	                        SupportMember2Node = nodeName                                                                                        
 #endDef
 
-def findNodeName():
-	nodes = AdminConfig.list("Node").split(java.lang.System.getProperty('line.separator'))
-	for node in nodes:
-        	nodeName = AdminConfig.showAttribute(node, "name")
-		if(nodeName.find("Node01") >= 0):
-			print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Using node name: " + nodeName
-			return nodeName
-	print time.strftime("[%d/%m %H:%M:%S]") + " [FATAL] Did not find a node ending with Node01. Bailing out..."
-	sys.exit(1)
-#endDef
-
-def doServerOperation ( appServer, operation ):
-	nodeName = findNodeName();
+def doServerOperation ( appServer, appServerNode, operation ):
 	if(operation == 'stop'):
 		waitingForState = 'STOPPED'
-		stopServer ( nodeName , appServer )
+		stopServer ( appServerNode , appServer )
 	if(operation == 'start'):
 		waitingForState = 'STARTED'
-		startServer ( nodeName, appServer)
-
+		startServer ( appServerNode, appServer )
 	while 1:
 		server  = AdminControl.completeObjectName("type=Server,name="+appServer+",*")
 		if(server != ""):
@@ -120,48 +125,48 @@ if(operation == 'stop'):
 	print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stop is initiated for BUS"
 	if(cluster == "true"):
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + WPSMember1
-		doServerOperation( WPSMember1, operation)
+		doServerOperation(WPSMember1, WPSMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + WPSMember2
-		doServerOperation( WPSMember2, operation)
+		doServerOperation(WPSMember2, WPSMember2Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + SupportMember1
-		doServerOperation( SupportMember1, operation)
+		doServerOperation(SupportMember1, SupportMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + SupportMember2
-		doServerOperation( SupportMember2, operation)
+		doServerOperation(SupportMember2, SupportMember2Node,operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + MEMember1
-		doServerOperation( MEMember1, operation)
+		doServerOperation(MEMember1, MEMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + MEMember2
-		doServerOperation( MEMember2, operation)			
+		doServerOperation(MEMember2, MEMember2Node, operation)			
 	else:
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + WPSMember1
-		doServerOperation( WPSMember1, operation)
+		doServerOperation(WPSMember1, WPSMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + SupportMember1
-		doServerOperation( SupportMember1, operation)
+		doServerOperation(SupportMember1, SupportMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + MEMember1
-		doServerOperation( MEMember1, operation)
+		doServerOperation(MEMember1, MEMember1Node, operation)
 
 if(operation == 'start'):
 	print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Start is initiated for BUS"
 	if(cluster == "true"):
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + MEMember1
-		doServerOperation( MEMember1, operation)	
+		doServerOperation(MEMember1, MEMember1Node, operation)	
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + MEMember2
-		doServerOperation( MEMember2, operation)	
+		doServerOperation(MEMember2, MEMember2Node, operation)	
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Waiting for all message engines to start"
 		waitForMessagingEnginesStarted()	
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + SupportMember1
-		doServerOperation( SupportMember1, operation)	
+		doServerOperation(SupportMember1, SupportMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + SupportMember2
-		doServerOperation( SupportMember2, operation)
+		doServerOperation(SupportMember2, SupportMember2Node,operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + WPSMember1
-		doServerOperation( WPSMember1, operation)
+		doServerOperation(WPSMember1, WPSMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + WPSMember2
-		doServerOperation( WPSMember2, operation)			
+		doServerOperation(WPSMember2, WPSMember2Node, operation)			
 	else:
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + MEMember1
-		doServerOperation( MEMember1, operation)
+		doServerOperation(MEMember1, MEMember1Node, operation)	
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Waiting for all message engines to start"
 		waitForMessagingEnginesStarted()
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + SupportMember1
-		doServerOperation( SupportMember1, operation)
+		doServerOperation(SupportMember1, SupportMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + WPSMember1
-		doServerOperation( WPSMember1, operation)
+		doServerOperation(WPSMember1, WPSMember1Node, operation)
