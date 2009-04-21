@@ -26,7 +26,7 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 	
 	/**
 	 * 
-	 * @parameter expression="${username}" default-value="deplosyer"
+	 * @parameter expression="${username}" default-value="deployer"
 	 * @required
 	 */
 	protected String userName;
