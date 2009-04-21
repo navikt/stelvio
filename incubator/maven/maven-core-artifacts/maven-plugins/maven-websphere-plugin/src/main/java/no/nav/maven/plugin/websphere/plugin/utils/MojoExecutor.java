@@ -1,5 +1,9 @@
 package no.nav.maven.plugin.websphere.plugin.utils;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -9,10 +13,6 @@ import org.apache.maven.plugin.PluginManager;
 import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Executes an arbitrary mojo using a fluent interface.  This is meant to be executed within the context of a Maven 2

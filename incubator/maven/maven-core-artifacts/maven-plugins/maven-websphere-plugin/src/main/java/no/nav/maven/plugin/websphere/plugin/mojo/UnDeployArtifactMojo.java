@@ -6,7 +6,6 @@ import no.nav.maven.commons.constants.Constants;
 import no.nav.maven.plugin.websphere.plugin.utils.EarFile;
 
 import org.apache.maven.artifact.Artifact;
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.CommandLineException;
