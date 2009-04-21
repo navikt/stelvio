@@ -12,8 +12,11 @@ import org.codehaus.plexus.components.interactivity.PrompterException;
 import org.codehaus.swizzle.confluence.Confluence;
 
 /**
+ * An abstract class inherited by all mojo's in the confluence plugin. It contains a common interactivity prompter common 
+ * for all mojos. It also extracts the bus-deploy version and the busconfiguration version from the deploy. These are used by several 
+ * children. Surprisingly the execute() method also logs in to confluence and exposes the confluence object to children.
+ * 
  * @author test@example.com
-	
  */
 @SuppressWarnings("unchecked")
 public abstract class ConfluenceMojo extends AbstractMojo {
@@ -23,7 +26,7 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 	
 	/**
 	 * 
-	 * @parameter expression="${username}" default-value="deployer"
+	 * @parameter expression="${username}" default-value="deplosyer"
 	 * @required
 	 */
 	protected String userName;
@@ -100,29 +103,40 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 			}
 		}
 		
-		
 		try {
 			confluence = new Confluence(endPoint);
-		} catch (MalformedURLException e) {
-			throw new RuntimeException(
-					"The URL: " + endPoint + " is not valid", e);
-		}
-
-		try {
 			confluence.login(userName, password);
-		} catch (Exception e) {
-			throw new RuntimeException("Unable to log in to confluence", e);
-		}
-		
-		doExecute();
-		
-		try {
+			doExecute();
 			confluence.logout();
 		} catch (Exception e) {
-			throw new RuntimeException("Unable to log out of confluence", e);
+			getLog().error(e.getMessage());
+			if(abortProcess() == true) {
+				throw new RuntimeException("An error occured during step \"" + getGoalPrettyPrint() + "\"", e);
+			} else {
+				return;
+			}
 		}	
 	}
 
+	private final boolean abortProcess() {
+		if(interactiveMode == true) {
+			String answer=null;
+			try {
+				answer = prompter.prompt("An error occured during step \"" + getGoalPrettyPrint() + "\". Do you want to abort the deploy process (y/n)? ", "n");
+			} catch (PrompterException e) {
+				throw new RuntimeException("An error occured during prompt input", e);
+			}
+			
+			if("y".equalsIgnoreCase(answer)) {
+				return true;
+			} else {
+				return  false;
+			}
+		} else {
+			return true;
+		}
+	}
+	
 	protected abstract String getGoalPrettyPrint();
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 };
