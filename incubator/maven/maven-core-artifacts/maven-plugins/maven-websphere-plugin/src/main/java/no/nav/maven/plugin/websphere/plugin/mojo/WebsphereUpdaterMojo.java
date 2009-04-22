@@ -95,8 +95,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		} else {
 			commandLine.setExecutable(widHome + "/pf/wps/bin/wsadmin.sh");
 		}	
-		
-		/* TODO: BLÆÆH. Plexus doesn't use the " " for /bin/sh -c on linux. how to work around? */
+	
 		Commandline.Argument arg1 = new Commandline.Argument();
 		arg1.setLine("-host " + deploymentManagerHost);
 		commandLine.addArg(arg1);
