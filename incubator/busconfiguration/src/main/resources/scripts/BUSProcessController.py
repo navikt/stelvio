@@ -69,10 +69,13 @@ def findServers():
 def doServerOperation ( appServer, appServerNode, operation ):
 	if(operation == 'stop'):
 		waitingForState = 'STOPPED'
-		stopServer ( appServerNode , appServer )
+		res = stopServer ( appServerNode , appServer )
 	if(operation == 'start'):
 		waitingForState = 'STARTED'
-		startServer ( appServerNode, appServer )
+		res = startServer ( appServerNode, appServer )
+	if (res == 1):
+		print time.strftime("[%d/%m %H:%M:%S]") + "[ERROR] Operation: " + operation + ", on server: " + appServer + " failed"
+		return
 	while 1:
 		server  = AdminControl.completeObjectName("type=Server,name="+appServer+",*")
 		if(server != ""):
@@ -131,7 +134,7 @@ if(operation == 'stop'):
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + SupportMember1
 		doServerOperation(SupportMember1, SupportMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + SupportMember2
-		doServerOperation(SupportMember2, SupportMember2Node,operation)
+		doServerOperation(SupportMember2, SupportMember2Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + MEMember1
 		doServerOperation(MEMember1, MEMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Stopping application server: " + MEMember2
@@ -156,7 +159,7 @@ if(operation == 'start'):
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + SupportMember1
 		doServerOperation(SupportMember1, SupportMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + SupportMember2
-		doServerOperation(SupportMember2, SupportMember2Node,operation)
+		doServerOperation(SupportMember2, SupportMember2Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + WPSMember1
 		doServerOperation(WPSMember1, WPSMember1Node, operation)
 		print time.strftime("[%d/%m %H:%M:%S]") + "[INFO] Starting application server: " + WPSMember2
