@@ -13,6 +13,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.cli.shell.BourneShell;
+import org.codehaus.plexus.util.cli.shell.CmdShell;
 
 /**
 * Abstract class using the template pattern for child mojos.
@@ -93,18 +94,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 			commandLine.setExecutable(widHome + "/pf/wps01/bin/wsadmin.bat");
 		} else {
 			commandLine.setExecutable(widHome + "/pf/wps/bin/wsadmin.sh");
-			/* Plexus has a stupid bug, I have to use my own BournShell class, the SteffenIsBournShell */
-			commandLine.setShell(new BourneShell() 
-				{ 
-					public List getCommandLine(String executable, String[] arguments) {
-						StringBuffer sb = new StringBuffer();
-						sb.append("\"");
-						sb.append( super.getCommandLine(executable, arguments).get(0));
-						sb.append("\"");
-						return Arrays.asList(new String[] {sb.toString() } );
-					}
-				}
-			);
 		}	
 		
 		/* TODO: BLÆÆH. Plexus doesn't use the " " for /bin/sh -c on linux. how to work around? */
