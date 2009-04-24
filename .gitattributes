@@ -3703,6 +3703,7 @@ int/stelvio-commons-lib/no/stelvio/common/systemavailability/AvailabilityRecord.
 int/stelvio-commons-lib/no/stelvio/common/systemavailability/MatcherUtils.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/systemavailability/OperationAvailabilityRecord.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/systemavailability/OperationAvailabilityRecord.xsd -text svneol=unset#text/plain
+int/stelvio-commons-lib/no/stelvio/common/systemavailability/StelvioStringWrapper.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/systemavailability/SystemAvailabilityBaseComponent.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/systemavailability/SystemAvailabilityRecord.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/systemavailability/SystemAvailabilityStorage.java -text svneol=unset#text/plain
