@@ -487,8 +487,8 @@ def uninstallAll(distDir):
         #endif
     	
     	#Todo: Create the artifact id instead as name....
-    	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$",app)
-        print ("DEBUG (uninstallAll): The application name is, " + app[:match.start()]
+    	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$",appName)
+        print ("DEBUG (uninstallAll): The application name is, " + appName[:match.start()]
         applicationId=app[:match.start()]
         
     	
