@@ -7,12 +7,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
-
-import org.eclipse.hyades.logging.core.SerializationException;
 
 import no.stelvio.common.interceptor.GenericInterceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
+
+import org.apache.xerces.dom.CoreDocumentImpl;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.hyades.logging.core.SerializationException;
+import org.eclipse.hyades.logging.core.XmlUtility;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.bo.BOXMLDocument;
@@ -22,7 +30,9 @@ import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.scdl.OperationType;
+import com.ibm.websphere.sca.sdo.DataFactory;
 import com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl;
+import com.ibm.ws.bo.bomodel.util.SerializerUtil;
 import com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartImpl;
 import com.ibm.wsspi.sca.multipart.impl.MultipartImpl;
 import commonj.sdo.DataObject;
@@ -37,6 +47,8 @@ import commonj.sdo.Type;
  */
 public class SystemStubbingInterceptor extends GenericInterceptor {
 	private final String systemName;
+	private final String STRINGWRAPPER_NAMESPACE = "http://stelvio-commons-lib/no/stelvio/common/systemavailability";
+	private final String STRINGWRAPPER_NAME = "StelvioStringWrapper";
 
 	public SystemStubbingInterceptor(String systemName) {
 		this.systemName = systemName;
@@ -107,7 +119,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	}
 
 	private void recordStubDataException(OperationType operationType, String requestId, Object input,
-			ServiceBusinessException sbe)  {
+			ServiceBusinessException sbe) {
 		try {
 			storeObjectOrPrimitive(operationType, sbe, "exception", requestId, "Exception");
 		} catch (IOException e) {
@@ -118,7 +130,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	}
 
 	private void recordStubDataRuntimeException(OperationType operationType, String requestId, Object input,
-			ServiceRuntimeException sre){
+			ServiceRuntimeException sre) {
 		try {
 			storeObjectOrPrimitive(operationType, sre, "exception", requestId, "RuntimeException");
 		} catch (IOException e) {
@@ -154,34 +166,43 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				xmlSerializerService.writeDataObject((ManagedMultipartImpl) object, "http://no.stelvio.stubdata/",
 						requestObjectName, fos);
 			}
-		}else{
-			if (object instanceof DynamicBusinessObjectImpl)
-			{
-				if (((DynamicBusinessObjectImpl)object).get(0) instanceof DataObject){
+		} else {
+			if (object instanceof DynamicBusinessObjectImpl) {
+				if (((DynamicBusinessObjectImpl) object).get(0) instanceof DataObject) {
 					DataObject requestDataObject = (DataObject) ((DynamicBusinessObjectImpl) object).get(0);
 					BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
 							.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-					xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName, fos);
+					xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName,
+							fos);
 				} else {
 					BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
 							.locateService("com/ibm/websphere/bo/BOXMLSerializer");
 					xmlSerializerService.writeDataObject((DynamicBusinessObjectImpl) object, "http://no.stelvio.stubdata/",
-							requestObjectName, fos);				
-				}	
-				
-		} else {
-			if (object instanceof ServiceBusinessException) {
-				DataObject requestDataObject = (DataObject) ((ServiceBusinessException) object).getData();
+							requestObjectName, fos);
+				}
+
+			} else if (object instanceof String) {
+
+				DataObject stringWrapper = DataFactory.INSTANCE.create(STRINGWRAPPER_NAMESPACE, STRINGWRAPPER_NAME);
+				stringWrapper.setString("value", (String) object);
 				BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
 						.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-				xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName, fos);
-				
-			} else if (object instanceof ServiceRuntimeException) {
-				PrintWriter pw = new PrintWriter(fos);
-				pw.println(((ServiceRuntimeException) object).getMessage());
-				pw.close();
+				xmlSerializerService.writeDataObject(stringWrapper, "http://no.stelvio.stubdata/", requestObjectName, fos);
+
+			} else {
+				if (object instanceof ServiceBusinessException) {
+					DataObject requestDataObject = (DataObject) ((ServiceBusinessException) object).getData();
+					BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
+							.locateService("com/ibm/websphere/bo/BOXMLSerializer");
+					xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName,
+							fos);
+
+				} else if (object instanceof ServiceRuntimeException) {
+					PrintWriter pw = new PrintWriter(fos);
+					pw.println(((ServiceRuntimeException) object).getMessage());
+					pw.close();
 				}
-		
+
 			}
 		}
 		String logMessage = "Recorded stubdata " + file;
@@ -198,6 +219,16 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		return dir;
 	}
 
+	/**
+	 * Finds matching test data based on operation type and input object
+	 * 
+	 * @param operationType
+	 * @param input
+	 * @return the DataObject representation of the matched test data
+	 * @throws ServiceBusinessException
+	 *             if matching test data is an exception (intentionally recorded
+	 *             to return exception)
+	 */
 	private DataObject findMatchingTestData(OperationType operationType, ManagedMultipartImpl input)
 			throws ServiceBusinessException {
 		File dir = getDirectory(operationType);
@@ -243,29 +274,60 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 						"A ServiceRuntimeException was recorded, but unfortunately I'm not able yet to provide the original message. It can maybe be found in the recorded data, but I'm pretty dumb.");
 			}
 		}
-
 		if (responseFile.exists()) {
-			DataObject responseObject = readDataObject(responseFile);
-			if ((!(responseObject instanceof ManagedMultipartImpl)) || responseObject == null) {
-				BOFactory dataFactory = (BOFactory) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
-				response = dataFactory.createByType(operationType.getOutputType());
-				response.set(0, responseObject);
-			} else { // Assume MultipartImpl, because use of primitives
-				// in interface
-				response = (ManagedMultipartImpl) responseObject;
-			}
+			response = createResponseObject(responseFile, operationType.getInputType());
 		}
 		return response;
 	}
 
+	/**
+	 * Reads the xml file and creates the dataObject of the requested Type. If
+	 * the response object is a StelvioStringWrapper, the String vaule is
+	 * unwrapped and put into the response.
+	 * 
+	 * @param responseFile -
+	 *            the file to create the response object from
+	 * @param outputType -
+	 *            the type of response object to be created
+	 * @return
+	 */
+	private DataObject createResponseObject(File responseFile, Type outputType) {
+		DataObject responseObject = readDataObject(responseFile);
+		DataObject response;
+		if (responseObject.getType().getName().equals(STRINGWRAPPER_NAME)) {
+			BOFactory dataFactory = (BOFactory) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
+			response = dataFactory.createByType(outputType);
+			response.set(0, responseObject.getString("value"));
+		} else if ((!(responseObject instanceof ManagedMultipartImpl)) || responseObject == null) {
+			BOFactory dataFactory = (BOFactory) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
+			response = dataFactory.createByType(outputType);
+			response.set(0, responseObject);
+		} else { // Assume MultipartImpl, because use of primitives
+			// in interface
+			response = (ManagedMultipartImpl) responseObject;
+		}
+
+		return response;
+	}
+
+	/**
+	 * Deserializes the xml file and extracts the dataobject from it.
+	 * 
+	 * @param file -
+	 *            the file to be read
+	 * @return the extracted DataObject
+	 */
 	private DataObject readDataObject(File file) {
 		FileInputStream fis = null;
 		try {
-			fis = new FileInputStream(file);		
+			fis = new FileInputStream(file);
+
 			BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
 					.locateService("com/ibm/websphere/bo/BOXMLSerializer");
 			BOXMLDocument criteriaDoc = xmlSerializerService.readXMLDocument(fis);
+
 			return criteriaDoc.getDataObject();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
