@@ -477,31 +477,46 @@ def uninstallAll(distDir):
     totalSeconds = 0
 
     for appName in appNames: 
-		if (noLeaveModuleFileExits(appName, distDir)):
-			if (doesOlderAppVersionsExist(appName)):
-				print "#############################################################\n"
-				if installCounter > 1:
-					print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\t\t Estimated TTG: " + calcTTGString(totalSeconds, installCounter, len(appNames) -displayCounter) + "\n"
-				else:
-					print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\n"
-				#endif
-				print "#############################################################"
-				displayCounter = displayCounter + 1
-				installCounter = installCounter + 1
-				startTime = Calendar.getInstance()
-				retval = uninstallOlderVersions(appName)
-				endTime = Calendar.getInstance()
-				sec = getTimeInterval(startTime,endTime)
-				#print "Min: %d Sec: %d" %(min,sec)
-				totalSeconds = totalSeconds + sec
-				#print "TotMin: %d TotSec: %d" %(totalMinutes, totalSeconds)
-				print "Uninstall time: %s" %(intervalToString(sec))
+    	
+    	appExists = doesAppExist(appName)
+	if (appExists):
+		retval = 1
+                print("WARNING (uninstallApplication): Application " + appName + " exists. Not uninstalling. Deleting the file on the file system." )
+                deleteEarFile(DISTDIR +"/"+appName+".ear")
+                continue
+        #endif
+    	
+    	#Todo: Create the artifact id instead as name....
+    	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$",app)
+        print ("DEBUG (uninstallAll): The application name is, " + app[:match.start()]
+        applicationId=app[:match.start()]
+        
+    	
+	if (noLeaveModuleFileExits(applicationId, distDir)):
+		if (doesOlderAppVersionsExist(applicationId)):
+			print "#############################################################\n"
+			if installCounter > 1:
+				print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\t\t Estimated TTG: " + calcTTGString(totalSeconds, installCounter, len(appNames) -displayCounter) + "\n"
 			else:
-				print ("WARNING (uninstallAll): application does not exist, " +appName)
-			#endif	
-		else:
-			print ("INFO (uninstallAll): Older versions of module are not uninstalled due to .leave file, " +appName)
+				print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\n"
+			#endif
+			print "#############################################################"
 			displayCounter = displayCounter + 1
+			installCounter = installCounter + 1
+			startTime = Calendar.getInstance()
+			retval = uninstallOlderVersions(applicationId)
+			endTime = Calendar.getInstance()
+			sec = getTimeInterval(startTime,endTime)
+			#print "Min: %d Sec: %d" %(min,sec)
+			totalSeconds = totalSeconds + sec
+			#print "TotMin: %d TotSec: %d" %(totalMinutes, totalSeconds)
+			print "Uninstall time: %s" %(intervalToString(sec))
+		else:
+			print ("WARNING (uninstallAll): application does not exist, " +appName)
+		#endif	
+	else:
+		print ("INFO (uninstallAll): Older versions of module are not uninstalled due to .leave file, " +appName)
+		displayCounter = displayCounter + 1
         #endif
     #endfor
     print "Total Uninstall Time: " + intervalToString(totalSeconds)
