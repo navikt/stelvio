@@ -7,20 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 
 import no.stelvio.common.interceptor.GenericInterceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
 
-import org.apache.xerces.dom.CoreDocumentImpl;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.hyades.logging.core.SerializationException;
-import org.eclipse.hyades.logging.core.XmlUtility;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.bo.BOXMLDocument;
@@ -32,7 +24,6 @@ import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.scdl.OperationType;
 import com.ibm.websphere.sca.sdo.DataFactory;
 import com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl;
-import com.ibm.ws.bo.bomodel.util.SerializerUtil;
 import com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartImpl;
 import com.ibm.wsspi.sca.multipart.impl.MultipartImpl;
 import commonj.sdo.DataObject;
