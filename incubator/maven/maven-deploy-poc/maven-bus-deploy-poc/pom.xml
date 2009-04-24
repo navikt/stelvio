@@ -8,7 +8,7 @@
         <version>1.3</version>
     </parent>
 
-    <groupId>no.nav.maven.poc</groupId>
+    <groupId>no.nav.maven.support</groupId>
     <artifactId>poc-deploy</artifactId>
     <packaging>deployable-artifact</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -16,20 +16,22 @@
     <url>http://maven.apache.org</url>
 	    
 	<properties>
-		<nav-prod-sak-arena>leave</nav-prod-sak-arena>
+		<nav-prod-sto-minside>leave</nav-prod-sto-minside>
 	</properties>
 		
+
     <dependencies>
+			
         <dependency>
-            <groupId>no.nav.maven.poc</groupId>
-            <artifactId>bus-deploy</artifactId>
+            <groupId>no.nav.esb</groupId>
+            <artifactId>esb</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
+		
         <dependency>
             <groupId>no.nav.maven.support</groupId>
             <artifactId>busconfiguration</artifactId>
-            <version>1.0</version>
+            <version>1.3</version>
         </dependency>
 
     </dependencies>
