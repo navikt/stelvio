@@ -19,13 +19,12 @@
 		<nav-prod-sto-minside>leave</nav-prod-sto-minside>
 	</properties>
 		
-
     <dependencies>
-			
         <dependency>
             <groupId>no.nav.esb</groupId>
             <artifactId>esb</artifactId>
             <version>1.0-SNAPSHOT</version>
+			<type>pom</type>
         </dependency>
 		
         <dependency>
