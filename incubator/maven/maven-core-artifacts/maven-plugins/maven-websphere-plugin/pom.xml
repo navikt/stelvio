@@ -10,7 +10,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-websphere-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.27-SNAPSHOT</version>
+	<version>1.27</version>
 	<name>Websphere Interactor Plugin</name>
 
 	<build>
@@ -68,4 +68,9 @@
    		
    		
 	</dependencies>
+
+  <scm>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-websphere-plugin-1.27</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-websphere-plugin-1.27</developerConnection>
+  </scm>
 </project>
