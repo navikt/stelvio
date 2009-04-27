@@ -1895,7 +1895,12 @@ def parseApplicationNames ( ears ):
                         app = app[(sl+1):]
                 #endIf
                	#print ("INFO (parseApplicationNames): appName="+app )
-                appNames.append(app)
+               	
+              	#Now strip away the version information...
+              	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$",app)
+	        print ("DEBUG (uninstallAll): The application name is, " + app[:match.start()])
+        	applicationId = app[:match.start()]
+                appNames.append(applicationId)
         #endFor
         return appNames
 #endDef
