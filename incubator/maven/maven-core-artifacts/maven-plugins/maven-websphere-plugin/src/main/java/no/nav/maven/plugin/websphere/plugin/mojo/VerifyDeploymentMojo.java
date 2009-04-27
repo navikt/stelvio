@@ -30,11 +30,17 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 	 */
 	protected String nodeHost;
 	
+	/**
+	 * @parameter expression="${nodeport}" default-value=9080
+	 * @required
+	 */
+	protected int nodePort;
+	
 	private final static String relativeUrl = "/nav-cons-deploy-verifikasjonWebClient/jsp/TestClient.jsp";
 	
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		WebConversation wc = new WebConversation();
-		WebRequest request = new GetMethodWebRequest("http://" + nodeHost + ":9080" + relativeUrl);
+		WebRequest request = new GetMethodWebRequest("http://" + nodeHost + ":" + nodePort + relativeUrl);
 		
 		WebResponse response = null;
 		try {
@@ -84,7 +90,7 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 		String status = table.getCellAsText(1, 3);
 		String action = table.getCellAsText(2, 3);
 		
-		if(!"osk".equalsIgnoreCase(status)) {
+		if(!"ok".equalsIgnoreCase(status)) {
 			throw new RuntimeException("The status of the verification is: " + status + ". Required action is: " + action);
 		}
 	
