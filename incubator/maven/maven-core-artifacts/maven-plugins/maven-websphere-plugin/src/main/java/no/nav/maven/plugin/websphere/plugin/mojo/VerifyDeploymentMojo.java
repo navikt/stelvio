@@ -36,25 +36,23 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 	 */
 	protected int nodePort;
 	
-	private final static String relativeUrl = "/nav-cons-deploy-verifikasjonWebClient/jsp/TestClient.jsp";
+	private final static String RELATIVE_URL = "/nav-cons-deploy-verifikasjonWebClient/jsp/TestClient.jsp";
+	private static final String[] VERIFICATIONS = {"SCA verifikasjon", "WS verfikasjon", "CEI verifikasjon", "FEM verifikasjon"};
 	
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		WebConversation wc = new WebConversation();
-		WebRequest request = new GetMethodWebRequest("http://" + nodeHost + ":" + nodePort + relativeUrl);
+		WebRequest request = new GetMethodWebRequest("http://" + nodeHost + ":" + nodePort + RELATIVE_URL);
 		
 		WebResponse response = null;
 		try {
 			response = wc.getResponse(request);
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new RuntimeException("An error occured getting the response from request: " + request.getQueryString());
 		}
 		
 		WebResponse menu = wc.getFrameContents( "methods");
-		
-		
-		String[] verifications = {"SCA verifikasjon", "WS verfikasjon", "CEI verifikasjon", "FEM verifikasjon"};
 
-		for(String verification : verifications) {
+		for(String verification : VERIFICATIONS) {
 			WebLink verificationLink = null;
 			try {
 				verificationLink = menu.getFirstMatchingLink(WebLink.MATCH_CONTAINED_TEXT, verification);
@@ -62,7 +60,6 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 				throw new RuntimeException("Did not find the " +  verification + " link at the required url", e);
 			}
 			
-			getLog().info(verificationLink.getText());
 			try {
 				response = verificationLink.click();
 			} catch (Exception e) {
