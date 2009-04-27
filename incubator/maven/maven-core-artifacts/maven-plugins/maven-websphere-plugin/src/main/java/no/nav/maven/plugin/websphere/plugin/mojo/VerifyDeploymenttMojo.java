@@ -1,17 +1,7 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-
-import no.nav.maven.commons.constants.Constants;
-import no.nav.maven.plugin.websphere.plugin.utils.EarFile;
-
-import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.util.cli.CommandLineException;
-import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 import org.xml.sax.SAXException;
 

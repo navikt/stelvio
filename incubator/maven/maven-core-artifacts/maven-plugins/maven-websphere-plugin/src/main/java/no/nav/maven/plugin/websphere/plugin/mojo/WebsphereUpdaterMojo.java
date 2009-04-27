@@ -1,8 +1,6 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
 import no.nav.maven.plugin.websphere.plugin.utils.MojoLauncher;
@@ -12,8 +10,6 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.Commandline;
-import org.codehaus.plexus.util.cli.shell.BourneShell;
-import org.codehaus.plexus.util.cli.shell.CmdShell;
 
 /**
 * Abstract class using the template pattern for child mojos.
