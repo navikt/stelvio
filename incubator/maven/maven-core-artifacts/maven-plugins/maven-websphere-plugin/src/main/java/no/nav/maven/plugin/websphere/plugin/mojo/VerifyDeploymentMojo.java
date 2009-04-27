@@ -51,49 +51,56 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 		
 		WebResponse menu = wc.getFrameContents( "methods");
 		
-		WebLink scaVerificationLink = null;
-		try {
-			scaVerificationLink = menu.getFirstMatchingLink(WebLink.MATCH_CONTAINED_TEXT, "SCA verifikasjon");
-		} catch (SAXException e) {
-			throw new RuntimeException("Did not find the SCA verification link at the required url", e);
-		}
 		
-		try {
-			response = scaVerificationLink.click();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String[] verifications = {"SCA verifikasjon", "WS verfikasjon", "CEI verifikasjon", "FEM verifikasjon"};
 
-		WebForm form = null;
-		try {
-			form = response.getForms()[0];
-		} catch (SAXException e) {
-			throw new RuntimeException("Unable to get the invoke form from the url", e);
-		}
-		
-		SubmitButton button = form.getSubmitButtons()[0];
-		try {
-			response = form.submit(button);
-		} catch (Exception e) {
-			throw new RuntimeException("An error occured pushing the \"Invoke\" button", e);
-		}
+		for(String verification : verifications) {
+			WebLink verificationLink = null;
+			try {
+				verificationLink = menu.getFirstMatchingLink(WebLink.MATCH_CONTAINED_TEXT, verification);
+			} catch (SAXException e) {
+				throw new RuntimeException("Did not find the " +  verification + " link at the required url", e);
+			}
+			
+			getLog().info(verificationLink.getText());
+			try {
+				response = verificationLink.click();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	
-		WebResponse result = wc.getFrameContents( "result");
-
-		WebTable table = null;
-		try {
-			table = result.getTables()[0];
-		} catch (SAXException e) {
-			throw new RuntimeException("An error occured trying to get the result table from the result frame");
-		}
+			WebForm form = null;
+			try {
+				form = response.getForms()[0];
+			} catch (SAXException e) {
+				throw new RuntimeException("Unable to get the invoke form from the url", e);
+			}
+			
+			SubmitButton button = form.getSubmitButtons()[0];
+			try {
+				response = form.submit(button);
+			} catch (Exception e) {
+				throw new RuntimeException("An error occured pushing the \"Invoke\" button", e);
+			}
 		
-		String status = table.getCellAsText(1, 3);
-		String action = table.getCellAsText(2, 3);
-		
-		if(!"ok".equalsIgnoreCase(status)) {
-			throw new RuntimeException("The status of the verification is: " + status + ". Required action is: " + action);
-		}
+			WebResponse result = wc.getFrameContents( "result");
 	
+			WebTable table = null;
+			try {
+				table = result.getTables()[0];
+			} catch (SAXException e) {
+				throw new RuntimeException("An error occured trying to get the result table from the result frame");
+			}
+			
+			String status = table.getCellAsText(1, 3);
+			String action = table.getCellAsText(2, 3);
+			
+			if(!"ok".equalsIgnoreCase(status)) {
+				throw new RuntimeException("The status of the verification is: " + status + ". Required action is: " + action);
+			}
+			
+			getLog().info("Verification of: " + verification + " is successfull with status " + status + " and action " + action);
+		}
 	}
 	
 	@Override
