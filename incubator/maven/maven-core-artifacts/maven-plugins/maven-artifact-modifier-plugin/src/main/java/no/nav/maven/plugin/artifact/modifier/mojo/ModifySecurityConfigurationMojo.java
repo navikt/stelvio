@@ -128,7 +128,7 @@ public final class ModifySecurityConfigurationMojo extends ArtifactModifierConfi
 				RoleSecurity.updateRunAsBindings(earFile, rolesInConfig, rolesInEjb);
 			} else {
 				if(InboundWSSecurity.isExposingWebServices((EJBJarFile)earFile.getEJBJarFiles().get(0)) == true) {
-					throw new RuntimeException("The ejb exposes web services but no security roles are configured!");
+					getLog().warn("The ejb exposes web services but no security roles are configured for artifact: " + earFile.getName());
 				}
 			}
 		}
