@@ -35,13 +35,22 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 	 * @required
 	 */
 	protected int nodePort;
+
+	/**
+	 * @parameter expression="${relativeurl}" default-value="/nav-cons-deploy-verifikasjonWebClient/jsp/TestClient.jsp"
+	 * @required
+	 */
+	protected String relativeUrl;
 	
-	private final static String RELATIVE_URL = "/nav-cons-deploy-verifikasjonWebClient/jsp/TestClient.jsp";
 	private static final String[] VERIFICATIONS = {"SCA verifikasjon", "WS verfikasjon", "CEI verifikasjon", "FEM verifikasjon"};
+	private static final int STATUS_ROW = 1;
+	private static final int STATUS_COLUMN = 3;
+	private static final int ACTION_ROW = 2;
+	private static final int ACTION_COLUMN = 3;
 	
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		WebConversation wc = new WebConversation();
-		WebRequest request = new GetMethodWebRequest("http://" + nodeHost + ":" + nodePort + RELATIVE_URL);
+		WebRequest request = new GetMethodWebRequest("http://" + nodeHost + ":" + nodePort + relativeUrl);
 		
 		WebResponse response = null;
 		try {
@@ -51,7 +60,6 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 		}
 		
 		WebResponse menu = wc.getFrameContents( "methods");
-
 		for(String verification : VERIFICATIONS) {
 			WebLink verificationLink = null;
 			try {
@@ -63,7 +71,7 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 			try {
 				response = verificationLink.click();
 			} catch (Exception e) {
-				e.printStackTrace();
+				throw new RuntimeException("An error occured clicking the " + verification + " link", e);
 			}
 	
 			WebForm form = null;
@@ -89,8 +97,8 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 				throw new RuntimeException("An error occured trying to get the result table from the result frame");
 			}
 			
-			String status = table.getCellAsText(1, 3);
-			String action = table.getCellAsText(2, 3);
+			String status = table.getCellAsText(STATUS_ROW, STATUS_COLUMN);
+			String action = table.getCellAsText(ACTION_ROW, ACTION_COLUMN);
 			
 			if(!"ok".equalsIgnoreCase(status)) {
 				throw new RuntimeException("The status of the verification is: " + status + ". Required action is: " + action);
