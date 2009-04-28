@@ -3,7 +3,7 @@
 	 	<authorization>
 			<roles>
 				<role>
-					<name>JOARKConsumer</name>name>
+					<name>JOARKConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -16,7 +16,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>EIAConsumer</name>name>
+					<name>EIAConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -24,7 +24,7 @@
 					</users>
 				</role>
 				<role>
-					<name>NPConsumer</name>name>
+					<name>NPConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvElsam_NP,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -32,7 +32,7 @@
 					</users>
 				</role>
 				<role>
-					<name>PSELVConsumer</name>name>
+					<name>PSELVConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -54,7 +54,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>PSAKConsumer</name>name>
+					<name>PSAKConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -76,7 +76,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>PENConsumer</name>name>
+					<name>PENConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -98,7 +98,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>PKORTConsumer</name>name>
+					<name>PKORTConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -120,7 +120,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>BISYSConsumer</name>name>
+					<name>BISYSConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -137,7 +137,7 @@
 					</runas>
 				</role>
 				<role>
-					<name>MOTConsumer</name>name>
+					<name>MOTConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -150,7 +150,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>KUHLConsumer</name>name>
+					<name>KUHLConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -163,7 +163,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>SAMConsumer</name>name>
+					<name>SAMConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -176,7 +176,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>ARENAConsumer</name>name>
+					<name>ARENAConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -192,7 +192,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>GOSYSConsumer</name>name>
+					<name>GOSYSConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -208,7 +208,7 @@
 					</groups>
 				</role>
 				<role>
-					<name>TPSConsumer</name>name>
+					<name>TPSConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -220,7 +220,7 @@
 					</runas>
 				</role>
 				<role>
-					<name>BREVConsumer</name>name>
+					<name>BREVConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -232,7 +232,7 @@
 					</runas>
 				</role>
 				<role>
-					<name>OSConsumer</name>name>
+					<name>OSConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
@@ -244,7 +244,7 @@
 					</runas>
 				</role>
 				<role>
-					<name>INFOTConsumer</name>name>
+					<name>INFOTConsumer</name>
 					<users>
 						<user>
 							<name>CN=srvPensjon,OU=ServiceAccounts,DC=test,DC=local</name>
