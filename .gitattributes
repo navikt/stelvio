@@ -2822,6 +2822,7 @@ incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/src/main/xsd/xml.xsd
 incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/pom.xml -text
 incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/moduleconfig.xsd -text
 incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/xml.xsd -text
+incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/src/test/resources/example.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/xmlbeans/pom.xml -text
 incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
