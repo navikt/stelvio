@@ -12,30 +12,5 @@
                     </tokens>
             </inbound>
         </authentication>
-	    <authorization>
-	            <roles>
-	                <role>
-	                    <name>ARENAConsumer</name>
-	                    <allauthenticated>false</allauthenticated>
-	                    <everyone>true</everyone>
-	                    <!-- 
-	                    <users>
-	                        <user>
-	                        	<name>CN=steffenruler,OU=ServiceAccounts,DC=test,DC=local</name>
-	                        </user>
-	                    </users>
-	                    <groups>
-	                        <group>
-								<name>CN=0000-GA-WAS_UTV_PENSJON,OU=AccountGroupNotInTrinidad,OU=Groups,OU=NAV,OU=BusinessUnits,DC=test,DC=local</name>
-	                        </group>
-	                    </groups>
-	                     -->
-	                    <runas>
-	                    	<username>srvpensjon</username>
-	                    	<password>testeteste</password>
-	                    </runas>
-	                </role>
-	            </roles>
-	        </authorization>
 	</security>
 </configuration>
