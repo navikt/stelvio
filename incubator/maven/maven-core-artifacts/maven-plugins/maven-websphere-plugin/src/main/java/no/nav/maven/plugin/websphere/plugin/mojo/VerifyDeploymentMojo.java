@@ -110,7 +110,7 @@ public class VerifyDeploymentMojo extends WebsphereUpdaterMojo {
 	
 	@Override
 	protected String getGoalPrettyPrint() {
-		return "Verify depoyment";
+		return "Verify deployment";
 	}	
 
 
