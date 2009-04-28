@@ -3,6 +3,7 @@ package no.nav.maven.plugin.websphere.plugin.mojo;
 import java.io.File;
 import java.util.Set;
 
+import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.plugin.websphere.plugin.utils.MojoLauncher;
 
 import org.apache.maven.artifact.Artifact;
@@ -119,8 +120,8 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	
 		File scriptsDir = new File(baseDirectory,scriptDirectory);
 		
-		/* If the folder does not exist, then create it */
-		if(scriptsDir.exists() == false ) {
+		/* If the folder does not exist */
+		if(scriptsDir.exists() == false) {
 			MojoLauncher.executeLoadWebsphereConfigurationMojo(project, session, pluginManager);
 			MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
 		} else {
@@ -130,6 +131,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 					if(new File(scriptsDir, a.getVersion()).exists() == false) {
 						MojoLauncher.executeLoadWebsphereConfigurationMojo(project, session, pluginManager);
 						MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
+						break;
 					}
 				}
 			}
