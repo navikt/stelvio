@@ -2,7 +2,7 @@
 	<runtime>
 		<activationspecifications>
 			<activationspecification>
-				<name>nav-cons-frg-tps_AS</name>
+				<name>nav-ent-oko-oppdragResponse_AS</name>
 				<maxconcurrency>1</maxconcurrency>
 			</activationspecification>
 		</activationspecifications>
