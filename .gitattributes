@@ -2445,6 +2445,10 @@ incubator/busconfiguration/src/main/resources/environments/i2.properties -text
 incubator/busconfiguration/src/main/resources/environments/i3.properties -text
 incubator/busconfiguration/src/main/resources/environments/template.properties_default -text
 incubator/busconfiguration/src/main/resources/moduleconfig/Sandbox3/cons.xml -text svneol=unset#text/plain
+incubator/busconfiguration/src/main/resources/moduleconfig/Sandbox3/nav-cons-frg-tps.xml -text svneol=unset#text/plain
+incubator/busconfiguration/src/main/resources/moduleconfig/Sandbox3/nav-ent-oko-oppdragResponse.xml -text svneol=unset#text/plain
+incubator/busconfiguration/src/main/resources/moduleconfig/Sandbox3/nav-prod-oko-mot.xml -text svneol=unset#text/plain
+incubator/busconfiguration/src/main/resources/moduleconfig/Sandbox3/nav-prod-sak-arena.xml -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/resources/moduleconfig/cons.xml -text svneol=unset#text/plain
 incubator/busconfiguration/src/main/resources/scripts/Applications.py -text
 incubator/busconfiguration/src/main/resources/scripts/AutoStart.py -text
