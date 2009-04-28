@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>busconfiguration</artifactId>
-	<version>1.5-SNAPSHOT</version>
+	<version>1.5</version>
 	<name>Scripts and configuration data for the enterprise service bus</name>
 
   <scm>
