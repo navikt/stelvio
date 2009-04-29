@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
+import no.nav.maven.plugins.descriptor.utils.EarFile;
 import no.nav.maven.plugins.descriptor.websphere.bnd.IbmWebServiceClientBndEditor;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.EndpointType;

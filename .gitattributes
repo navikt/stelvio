@@ -2677,7 +2677,6 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugi
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/LoadArtifactConfigurationMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ModifySecurityConfigurationMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ModifyWebServicesConfigurationMojo.java -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/EarFile.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/InboundWSSecurity.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/OutboundWSSecurity.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/RoleSecurity.java -text svneol=unset#text/plain

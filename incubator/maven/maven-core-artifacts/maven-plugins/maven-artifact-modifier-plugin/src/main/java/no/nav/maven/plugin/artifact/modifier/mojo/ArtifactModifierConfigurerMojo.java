@@ -6,8 +6,8 @@ import java.util.StringTokenizer;
 
 import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.commons.constants.Constants;
-import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
 import no.nav.maven.plugins.descriptor.jee.EjbJarAssemblyDescriptorEditor;
+import no.nav.maven.plugins.descriptor.utils.EarFile;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
 
 import org.apache.maven.artifact.Artifact;

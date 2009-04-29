@@ -3,10 +3,10 @@ package no.nav.maven.plugin.artifact.modifier.mojo;
 import java.io.File;
 import java.util.List;
 
-import no.nav.maven.plugin.artifact.modifier.utils.EarFile;
 import no.nav.maven.plugin.artifact.modifier.utils.InboundWSSecurity;
 import no.nav.maven.plugin.artifact.modifier.utils.OutboundWSSecurity;
 import no.nav.maven.plugin.artifact.modifier.utils.RoleSecurity;
+import no.nav.maven.plugins.descriptor.utils.EarFile;
 import no.nav.pensjonsprogrammet.wpsconfiguration.AuthenticationType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.AuthorizationType;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
