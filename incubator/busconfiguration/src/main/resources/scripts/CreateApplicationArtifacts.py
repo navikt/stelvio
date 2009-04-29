@@ -62,7 +62,7 @@ global configInfo
 configInfo = {}
 
 ears = readDistributionDirectory(APPLICATIONS_FOLDER)
-appNames = parseApplicationNames(ears)	 
+appNames = parseApplicationNames(ears, 1)	 
 	
 for appName in appNames: 
 	APPLICATION_NAME=appName
