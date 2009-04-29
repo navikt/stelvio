@@ -434,7 +434,7 @@ def intervalToString(intervalSec):
 def installAll(distDir):
     ears = readDistributionDirectory(distDir)
     print("INFO (installAll): Deployment ears="+`ears` )
-    appNames = parseApplicationNames(ears)	 
+    appNames = parseApplicationNames(ears, 0)	 
     #print("INFO (installAll): Deployment appNames="+`appNames` )
     appNameAddOnstr = ""
     installCounter = 1
@@ -468,7 +468,7 @@ def installAll(distDir):
 def uninstallAll(distDir):
     ears = readDistributionDirectory(distDir)
     print("INFO (uninstallAll): "+`ears` )
-    appNames = parseApplicationNames(ears)	 
+    appNames = parseApplicationNames(ears, 1)	 
     #print("INFO (uninstallAll): Deployment appNames="+`appNames` )
     appNameAddOnstr = ""
     displayCounter = 1
@@ -481,16 +481,12 @@ def uninstallAll(distDir):
     	appExists = doesAppExist(appName)
 	if (appExists):
 		retval = 1
-                print("WARNING (uninstallApplication): Application " + appName + " exists. Not uninstalling. Deleting the file on the file system." )
-                deleteEarFile(DISTDIR +"/"+appName+".ear")
-                continue
-        #endif
+		print("WARNING (uninstallApplication): Application " + appName + " exists. Not uninstalling. Deleting the file on the file system." )
+		deleteEarFile(DISTDIR +"/"+appName+".ear")
+		continue
+	#endif
     	
-    	#Todo: Create the artifact id instead as name....
-    	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$",appName)
-        print ("DEBUG (uninstallAll): The application name is, " + appName[:match.start()])
-        applicationId = appName[:match.start()]
-        
+	applicationId = appName        
     	
 	if (noLeaveModuleFileExits(applicationId, distDir)):
 		if (doesOlderAppVersionsExist(applicationId)):

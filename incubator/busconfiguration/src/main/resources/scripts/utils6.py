@@ -1877,7 +1877,7 @@ def noLeaveModuleFileExits(appName, distDir):
     else:
     	return 0;
     
-def parseApplicationNames ( ears ):
+def parseApplicationNames ( ears, strip ):
     
         appNames = []
         for ear in ears:
@@ -1897,9 +1897,13 @@ def parseApplicationNames ( ears ):
                	#print ("INFO (parseApplicationNames): appName="+app )
                	
               	#Now strip away the version information...
-              	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$",app)
-	        print ("DEBUG (uninstallAll): The application name is, " + app[:match.start()])
-        	applicationId = app[:match.start()]
+              	if (strip == 1):
+	              	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$",app)
+        		applicationId = app[:match.start()]
+        	else:
+        		applicationId = app
+        	#endIf
+        		
                 appNames.append(applicationId)
         #endFor
         return appNames
