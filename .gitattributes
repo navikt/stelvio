@@ -1810,6 +1810,7 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/jee/ApplicationDescriptorEditor.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/jee/EjbJarAssemblyDescriptorEditor.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/jee/EjbJarEditor.java -text
+dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/jee/WebServicesEditor.java -text svneol=unset#text/plain
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/IbmWebServiceDescriptorEditor.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/TokenType.java -text
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common/src/main/java/no/nav/maven/plugins/descriptor/websphere/ValueTypes.java -text

@@ -26,6 +26,8 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.exception.ReopenException
 import org.eclipse.jst.j2ee.commonarchivecore.internal.exception.SaveFailureException;
 import org.eclipse.jst.j2ee.commonarchivecore.internal.helpers.ArchiveURIConverterImpl;
 import org.eclipse.jst.j2ee.ejb.EJBJar;
+import org.eclipse.jst.j2ee.webservice.wsdd.WsddFactory;
+import org.eclipse.jst.j2ee.webservice.wsdd.WsddPackage;
 
 
 import com.ibm.etools.webservice.WebServiceWASInit;
@@ -56,6 +58,10 @@ public abstract class DeploymentDescriptorEditor<T> {
 
 	    protected CommonFactory getCommmonFactory(){
 	    	return CommonPackage.eINSTANCE.getCommonFactory();
+	    }
+	    
+	    protected WsddFactory getWsddFactory(){
+	    	return WsddPackage.eINSTANCE.getWsddFactory();
 	    }
 	    
 		protected Archive getArchive() {
