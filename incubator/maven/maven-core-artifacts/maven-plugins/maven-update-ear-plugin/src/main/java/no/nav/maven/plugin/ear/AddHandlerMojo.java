@@ -2,8 +2,8 @@ package no.nav.maven.plugin.ear;
 
 import java.io.IOException;
 
-import no.nav.maven.plugin.ear.utils.EarFile;
 import no.nav.maven.plugins.descriptor.jee.WebServicesEditor;
+import no.nav.maven.plugins.descriptor.utils.EarFile;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
