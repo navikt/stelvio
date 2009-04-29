@@ -20,17 +20,20 @@
 	</properties>
 		
     <dependencies>
+	
+
         <dependency>
             <groupId>no.nav.esb</groupId>
             <artifactId>esb</artifactId>
             <version>1.0-SNAPSHOT</version>
 			<type>pom</type>
         </dependency>
-		
-        <dependency>
+
+	  
+		<dependency>
             <groupId>no.nav.maven.support</groupId>
             <artifactId>busconfiguration</artifactId>
-            <version>1.5</version>
+            <version>1.6</version>
         </dependency>
 
     </dependencies>
