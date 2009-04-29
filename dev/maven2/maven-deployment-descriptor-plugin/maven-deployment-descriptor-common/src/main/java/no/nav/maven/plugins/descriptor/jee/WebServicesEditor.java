@@ -30,6 +30,13 @@ public class WebServicesEditor extends DeploymentDescriptorEditor<WebServices>{
 			WebServiceDescription wsd = (WebServiceDescription)o;
 			for( Object o2 : wsd.getPortComponents()) {
 				PortComponent pc = (PortComponent)o2;
+				for( Object o3 : pc.getHandlers()) {
+					Handler h =(Handler)o3;
+					if(name.equals(h.getHandlerName())) {
+						return;
+					}
+				}
+				
 				Handler nyHandler = getWsddFactory().createHandler();
 				nyHandler.setHandlerName(name);
 				nyHandler.setHandlerClass(clazz);
