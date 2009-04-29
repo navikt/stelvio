@@ -36,7 +36,7 @@ public final class EarFile {
 		try {
 			earFile.getFilesForSave();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new RuntimeException("Unable to find files that need to be saved.", e);
 		}
 		try {
 			earFile.save();
