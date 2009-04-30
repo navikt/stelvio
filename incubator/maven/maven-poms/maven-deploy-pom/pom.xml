@@ -49,7 +49,7 @@
 				<plugin>
 					<groupId>nav.maven.plugins</groupId>
 					<artifactId>maven-propertiesgenerator-plugin</artifactId>
-					<version>1.4</version>
+					<version>1.5</version>
 	              	<configuration>
 						<templateDir>${basedir}/src/main/scripts/templates</templateDir>
 						<environmentName>${environment}</environmentName>
