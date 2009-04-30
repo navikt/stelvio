@@ -39,7 +39,7 @@
             </plugin> 
 			
 		    <plugin>
-				<groupId>nav.maven.plugins</groupId>
+				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-propertiesgenerator-plugin</artifactId>
 		    </plugin>     
 	 </plugins>
