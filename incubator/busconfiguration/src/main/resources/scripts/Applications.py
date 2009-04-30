@@ -489,7 +489,7 @@ def uninstallAll(distDir):
     	
 	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$", appName)
 	applicationId = appName[:match.start()]
-	print ("INFO (uninstallApplication): Stripped application name is : " + applicationId
+	print ("INFO (uninstallApplication): Stripped application name is : " + applicationId)
     	
 	if (noLeaveModuleFileExits(appName, distDir)):
 		if (doesOlderAppVersionsExist(applicationId)):
