@@ -1877,7 +1877,7 @@ def noLeaveModuleFileExits(appName, distDir):
     else:
     	return 0;
     
-def parseApplicationNames ( ears, strip ):
+def parseApplicationNames ( ears ):
     
         appNames = []
         for ear in ears:
@@ -1895,16 +1895,8 @@ def parseApplicationNames ( ears, strip ):
                         app = app[(sl+1):]
                 #endIf
                	#print ("INFO (parseApplicationNames): appName="+app )
-               	
-              	#Now strip away the version information...
-              	if (strip == 1):
-	              	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$",app)
-        		applicationId = app[:match.start()]
-        	else:
-        		applicationId = app
-        	#endIf
         		
-                appNames.append(applicationId)
+                appNames.append(app)
         #endFor
         return appNames
 #endDef

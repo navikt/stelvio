@@ -349,7 +349,7 @@ def stopAppsAll(distDir):
 	#print("INFO (stopAppsAll): appNames="+`appNames` )
 	appNameAddOnstr = ""
 	for appName in appNames:
-		appNameAddOnstr = appNameAddOn(appName)
+		appNameAddOnstr = appName
 		if ( appNameAddOnstr.startswith('nav') and doesAppExist(appNameAddOnstr)):
 			stopApp(appNameAddOnstr)
 		else:
@@ -369,7 +369,7 @@ def startAppsAll(distDir):
 	print("INFO (stopAppsAll): appNames="+`appNames` )
 	appNameAddOnstr = ""
 	for appName in appNames:
-		appNameAddOnstr = appNameAddOn(appName)
+		appNameAddOnstr = appName
 		if ( appNameAddOnstr.startswith('nav') and doesAppExist(appNameAddOnstr)):
 			startApp(appNameAddOnstr)
 		else:
@@ -434,7 +434,7 @@ def intervalToString(intervalSec):
 def installAll(distDir):
     ears = readDistributionDirectory(distDir)
     print("INFO (installAll): Deployment ears="+`ears` )
-    appNames = parseApplicationNames(ears, 0)	 
+    appNames = parseApplicationNames(ears)	 
     #print("INFO (installAll): Deployment appNames="+`appNames` )
     appNameAddOnstr = ""
     installCounter = 1
@@ -468,7 +468,7 @@ def installAll(distDir):
 def uninstallAll(distDir):
     ears = readDistributionDirectory(distDir)
     print("INFO (uninstallAll): "+`ears` )
-    appNames = parseApplicationNames(ears, 1)	 
+    appNames = parseApplicationNames(ears)	 
     #print("INFO (uninstallAll): Deployment appNames="+`appNames` )
     appNameAddOnstr = ""
     displayCounter = 1
@@ -478,6 +478,7 @@ def uninstallAll(distDir):
 
     for appName in appNames: 
     	
+    	#This must be fixed tomorrow. Appname is here stripped and app *will* not exist. We need the appNames with flag set to 0 as well.
     	appExists = doesAppExist(appName)
 	if (appExists):
 		retval = 1
@@ -486,10 +487,12 @@ def uninstallAll(distDir):
 		continue
 	#endif
     	
-	applicationId = appName        
+	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$", appName)
+	applicationId = appName[:match.start()]
+	print ("INFO (uninstallApplication): Stripped application name is : " + applicationId
     	
-	if (noLeaveModuleFileExits(applicationId, distDir)):
-		if (doesOlderAppVersionsExist(applicationId)):
+	if (noLeaveModuleFileExits(appName, distDir)):
+		if (doesOlderAppVersionsExist(appName)):
 			print "#############################################################\n"
 			if installCounter > 1:
 				print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\t\t Estimated TTG: " + calcTTGString(totalSeconds, installCounter, len(appNames) -displayCounter) + "\n"
