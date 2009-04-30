@@ -94,7 +94,7 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 		}
 		
 		for (Artifact a : dependencyArtifacts) {
-			if (a.getArtifactId().equals("bus-deploy")) {
+			if (a.getArtifactId().equals("esb")) {
 				deployString = a.getVersion();
 			}
 			if (a.getArtifactId().equals("busconfiguration")) {
