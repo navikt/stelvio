@@ -492,7 +492,7 @@ def uninstallAll(distDir):
 	print ("INFO (uninstallApplication): Stripped application name is : " + applicationId
     	
 	if (noLeaveModuleFileExits(appName, distDir)):
-		if (doesOlderAppVersionsExist(appName)):
+		if (doesOlderAppVersionsExist(applicationId)):
 			print "#############################################################\n"
 			if installCounter > 1:
 				print "Uninstalling ",appName," [ ", displayCounter," / ",len(appNames)," ]\t\t Estimated TTG: " + calcTTGString(totalSeconds, installCounter, len(appNames) -displayCounter) + "\n"
