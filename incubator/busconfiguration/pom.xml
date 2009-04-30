@@ -9,11 +9,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>busconfiguration</artifactId>
-	<version>1.9-SNAPSHOT</version>
+	<version>1.9</version>
 	<name>Scripts and configuration data for the enterprise service bus</name>
 
   <scm>
-    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/busconfiguration-1.5</connection>
-    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/busconfiguration-1.5</developerConnection>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/busconfiguration-1.9</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/busconfiguration-1.9</developerConnection>
   </scm>
 </project>
