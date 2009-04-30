@@ -33,7 +33,7 @@
 		<dependency>
             <groupId>no.nav.maven.support</groupId>
             <artifactId>busconfiguration</artifactId>
-            <version>1.7</version>
+            <version>1.10</version>
         </dependency>
 
     </dependencies>
