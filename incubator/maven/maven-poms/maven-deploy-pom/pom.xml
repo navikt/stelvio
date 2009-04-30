@@ -10,7 +10,7 @@
     <groupId>no.nav.maven.poms</groupId>
     <artifactId>maven-deploy-pom</artifactId>
     <packaging>pom</packaging>
-    <version>1.4-SNAPSHOT</version>
+    <version>1.4</version>
     <name>POM for deployment</name>
 
    <build>
@@ -47,7 +47,7 @@
 	 	<pluginManagement>
 	   		<plugins>
 				<plugin>
-					<groupId>nav.maven.plugins</groupId>
+					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-propertiesgenerator-plugin</artifactId>
 					<version>1.5</version>
 	              	<configuration>
@@ -69,4 +69,9 @@
 		</pluginManagement>
         
     </build>
+
+  <scm>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deploy-pom-1.4</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deploy-pom-1.4</developerConnection>
+  </scm>
 </project>
