@@ -37,9 +37,10 @@ public class RemoveBPELMojo extends WebsphereUpdaterMojo {
 		List<String> bpFilesList = Arrays.asList(bpFiles); 
 		System.out.println(bpFilesList);
 		for(Artifact a : artifacts) {
-			if(bpFilesList.contains(a.getArtifactId() + "-" + a.getVersion() + ".bp")) {
+			String fullArtifactName = a.getArtifactId() + "-" + a.getVersion();
+			if(bpFilesList.contains(fullArtifactName + ".bp")) {
 				/* TODO: Follow the uninstall logic used for "regular" modules */
-				removeBPEL(commandLine, a.getArtifactId());
+				removeBPEL(commandLine, fullArtifactName);
 			}
 		}
 	}
