@@ -62,10 +62,13 @@ global configInfo
 configInfo = {}
 
 ears = readDistributionDirectory(APPLICATIONS_FOLDER)
-appNames = parseApplicationNames(ears, 1)	 
+appNames = parseApplicationNames(ears)	 
 	
 for appName in appNames: 
-	APPLICATION_NAME=appName
+	match = re.search("-" + "(\d+\.)+\d+(-SNAPSHOT)?$", appName)
+	applicationId = appName[:match.start()]
+	
+	APPLICATION_NAME=applicationId
 	try:
 		# Use Java to load it, it is a properties file
 		fileprop = Properties()
