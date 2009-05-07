@@ -131,8 +131,9 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			//Retrieve and load wsdl files and make them available for freemarker.
 			cfg.getProperties().put("wsdls", wsdlFiles);
 			//"Hack". I was unable to make freemarker do this in the template...
-			String[] portListArray = cfg.getProperty("wsdlPortBindingList").split(",");
-			cfg.getProperties().put("wsdlPortBindingList", portListArray);			
+			//FIXME required by workmate
+			//String[] portListArray = cfg.getProperty("wsdlPortBindingList").split(",");
+			//cfg.getProperties().put("wsdlPortBindingList", portListArray);			
 			
 			LOG.debug("Processing template");
 			processTemplate(TEMPLATE_CFG, cfg.getProperties(), cfgWriter);
