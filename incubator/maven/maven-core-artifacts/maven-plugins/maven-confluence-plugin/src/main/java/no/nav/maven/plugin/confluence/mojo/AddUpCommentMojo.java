@@ -10,10 +10,10 @@ package no.nav.maven.plugin.confluence.mojo;
 public class AddUpCommentMojo extends AddCommentMojo {
 
 	protected String getComment() {
-		return "Test: " + environment + " is up again with: " + deployString
+		return environment + " is up again with: " + deployString
 				+ ", and configuration: " + configurationString;
 	}
-	
+
 	@Override
 	protected String getGoalPrettyPrint() {
 		return "Add environment up again comment";
