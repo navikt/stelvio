@@ -10,7 +10,7 @@ package no.nav.maven.plugin.confluence.mojo;
 public class AddDownCommentMojo extends AddCommentMojo {
 
 	protected String getComment() {
-		return "Test: " + environment + " is going down for deploy of: " + deployString
+		return environment + " is going down for deploy of: " + deployString
 				+ ", and configuration: " + configurationString;
 	}
 
