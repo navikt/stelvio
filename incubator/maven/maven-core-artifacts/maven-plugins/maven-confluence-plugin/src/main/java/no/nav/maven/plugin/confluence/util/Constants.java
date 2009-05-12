@@ -32,6 +32,7 @@ public interface Constants {
 				put("T9","Systemtest 9");
 				put("Q1","Q1");
 				put("Q2","Q2");
+				put("Q3","Q3");
 				put("Q5","Q5");
 				put("P","Produksjon");
 			}
