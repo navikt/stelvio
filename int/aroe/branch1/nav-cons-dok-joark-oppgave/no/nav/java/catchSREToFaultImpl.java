@@ -11,7 +11,7 @@ import com.ibm.websphere.sca.ServiceManager;
 
 
 
-public class catchSREToFaultImpl {
+public class catchSREToFaultImpl2 {
 	
 	private static final String MODULE_NAME = "nav-cons-dok-joark-oppgave";
 	private final static String FAULT_NAMESPACE = "http://nav-lib-cons-dok-joark/no/nav/lib/dok/joark/fault";
