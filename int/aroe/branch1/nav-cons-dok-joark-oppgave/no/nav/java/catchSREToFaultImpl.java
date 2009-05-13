@@ -31,6 +31,7 @@ public class catchSREToFaultImpl {
 	 * @generated (com.ibm.wbit.java)
 	 */
 	private Object getMyService() {
+		String foo = "balle";
 		return (Object) ServiceManager.INSTANCE.locateService("self");
 	}
 
