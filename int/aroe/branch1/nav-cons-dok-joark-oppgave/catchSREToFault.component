@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0" xmlns:ns1="http://nav-cons-dok-joark-oppgave/no/nav/inf" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="catchSREToFault" name="catchSREToFault">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:JOARKOppgave">
+      <scdl:interfaceQualifier xsi:type="scdl:SecurityPermission" role="JOARKConsumer"/>
+      <method name="hentOppgaveListe"/>
+      <method name="opprettOppgave"/>
+    </interface>
+  </interfaces>
+  <references>
+    <reference name="JOARKOppgavePartner">
+      <interface xsi:type="java:JavaInterface" interface="oppgave.joark.dok.cons.nav.no.nav.inf.JOARKOppgave"/>
+      <wire target="JOARKOppgaveTOOppgave"/>
+    </reference>
+  </references>
+  <implementation xsi:type="java:JavaImplementation" class="no.nav.java.catchSREToFaultImpl"/>
+</scdl:component>
