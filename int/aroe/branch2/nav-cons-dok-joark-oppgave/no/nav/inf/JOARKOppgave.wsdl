@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:bons1="http://nav-lib-cons-dok-joark/no/nav/lib/dok/joark/asbo" xmlns:bons2="http://nav-lib-cons-dok-joark/no/nav/lib/dok/joark/fault" xmlns:tns="http://nav-cons-dok-joark-oppgave/no/nav/inf" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="JOARKOppgave" targetNamespace="http://nav-cons-dok-joark-oppgave/no/nav/inf">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nav-cons-dok-joark-oppgave/no/nav/inf" xmlns:bons1="http://nav-lib-cons-dok-joark/no/nav/lib/dok/joark/asbo" xmlns:bons2="http://nav-lib-cons-dok-joark/no/nav/lib/dok/joark/fault" xmlns:tns="http://nav-cons-dok-joark-oppgave/no/nav/inf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://nav-lib-cons-dok-joark/no/nav/lib/dok/joark/asbo" schemaLocation="../../../xsd-includes/http.nav-lib-cons-dok-joark.no.nav.lib.dok.joark.asbo.xsd"/>
+      <xsd:import namespace="http://nav-lib-cons-dok-joark/no/nav/lib/dok/joark/fault" schemaLocation="../../../xsd-includes/http.nav-lib-cons-dok-joark.no.nav.lib.dok.joark.fault.xsd"/>
+      <xsd:element name="hentOppgaveListe">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentOppgaveListeRequest" nillable="true" type="bons1:ASBODokHentOppgaveListeRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentOppgaveListeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentOppgaveListeResponse" nillable="true" type="bons1:ASBODokOppgaveListe"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="opprettOppgave">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="opprettOppgaveRequest" nillable="true" type="bons1:ASBODokOppgave"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="opprettOppgaveResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="opprettOppgaveResponse" nillable="true" type="bons1:ASBODokOppgave"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="opprettOppgave_faultDokGenerisk" type="bons2:FaultDokGenerisk"/>
+      <xsd:element name="hentOppgaveListe_faultDokGenerisk" type="bons2:FaultDokGenerisk"/>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="hentOppgaveListeRequestMsg">
+    <wsdl:part element="tns:hentOppgaveListe" name="hentOppgaveListeParameters"/>
+  </wsdl:message>
+    <wsdl:message name="hentOppgaveListeResponseMsg">
+    <wsdl:part element="tns:hentOppgaveListeResponse" name="hentOppgaveListeResult"/>
+  </wsdl:message>
+    <wsdl:message name="opprettOppgaveRequestMsg">
+    <wsdl:part element="tns:opprettOppgave" name="opprettOppgaveParameters"/>
+  </wsdl:message>
+    <wsdl:message name="opprettOppgaveResponseMsg">
+    <wsdl:part element="tns:opprettOppgaveResponse" name="opprettOppgaveResult"/>
+  </wsdl:message>
+    <wsdl:message name="opprettOppgave_faultDokGeneriskMsg">
+    <wsdl:part element="tns:opprettOppgave_faultDokGenerisk" name="faultDokGenerisk"/>
+  </wsdl:message>
+    <wsdl:message name="hentOppgaveListe_faultDokGeneriskMsg">
+    <wsdl:part element="tns:hentOppgaveListe_faultDokGenerisk" name="faultDokGenerisk"/>
+  </wsdl:message>
+    <wsdl:portType name="JOARKOppgave">
+    <wsdl:operation name="hentOppgaveListe">
+      <wsdl:input message="tns:hentOppgaveListeRequestMsg" name="hentOppgaveListeRequest"/>
+      <wsdl:output message="tns:hentOppgaveListeResponseMsg" name="hentOppgaveListeResponse"/>
+      <wsdl:fault message="tns:hentOppgaveListe_faultDokGeneriskMsg" name="faultDokGenerisk"/>
+    </wsdl:operation>
+    <wsdl:operation name="opprettOppgave">
+      <wsdl:input message="tns:opprettOppgaveRequestMsg" name="opprettOppgaveRequest"/>
+      <wsdl:output message="tns:opprettOppgaveResponseMsg" name="opprettOppgaveResponse"/>
+      <wsdl:fault message="tns:opprettOppgave_faultDokGeneriskMsg" name="faultDokGenerisk"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
