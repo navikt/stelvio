@@ -28,7 +28,8 @@ public class EnvironmentResources {
 	public List<File> getWsdlArchives() { if (wsdlArchives == null) wsdlArchives = DPCollectionUtils.newArrayList(); return wsdlArchives; }
 	public void setWsdlArchives(List<File> wsdlArchives) { this.wsdlArchives = wsdlArchives; }
 	public void addWsdlArchive(File wsdlArchive) { getWsdlArchives().add(wsdlArchive); }
-
+	public void addWsdlFiles(List<File> wsdlFiles) { getWsdlArchives().addAll(wsdlFiles); }
+	
 	public List<File> getCertFiles() { if (certFiles == null) certFiles = DPCollectionUtils.newArrayList(); return certFiles; }
 	public void setCertFiles(List<File> certs) { this.certFiles = certs; }
 	public void addCertFile(File cert) { getCertFiles().add(cert); }
