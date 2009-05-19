@@ -91,6 +91,7 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			DPFileUtils.copyFilesToDirectory(getLocalFiles("xslt"), cfgPackage.getFilesLocalXsltDir());
 			DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), cfgPackage.getFilesLocalWsdlDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), cfgPackage.getFilesLocalXsltDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getWsdlArchives(), cfgPackage.getFilesLocalWsdlDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), cfgPackage.getFilesCertDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getPubcertFiles(), cfgPackage.getFilesPubcertDir());
 
