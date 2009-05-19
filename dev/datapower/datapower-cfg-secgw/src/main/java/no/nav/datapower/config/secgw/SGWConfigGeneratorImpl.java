@@ -81,6 +81,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), unit.getFilesLocalAaaDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), unit.getFilesCertDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), unit.getFilesLocalXsltDir());
+			DPFileUtils.copyFilesToDirectory(cfg.getWsdlArchives(), unit.getFilesLocalWsdlDir());
 			DPFileUtils.copyFilesToDirectory(getLocalFiles("xslt"), unit.getFilesLocalXsltDir());
 			//FIXME Workmate; comment the below line in again to copy workmate wsdl file to DataPower
 			//DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), unit.getFilesLocalWsdlDir());
