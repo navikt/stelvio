@@ -79,18 +79,21 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		private File propertiesFile;
 		private File localAaaDir;
 		private File localXsltDir;
+		private File localWsdlDir;
 		private File certDir;
-		private File pubcertDir;
+		private File pubcertDir;		
 		
 		public Overrides(File overridesDir) {
 			this.propertiesFile = DPFileUtils.append(overridesDir, "overrides.properties");
 			this.localAaaDir = DPFileUtils.append(overridesDir, "local/aaa");
 			this.localXsltDir = DPFileUtils.append(overridesDir, "local/xslt");
+			this.localWsdlDir = DPFileUtils.append(overridesDir, "local/wsdl");
 			this.certDir = DPFileUtils.append(overridesDir, "cert");
 			this.pubcertDir = DPFileUtils.append(overridesDir, "pubcert");
 		}
 		protected File getLocalAaaDir() { return localAaaDir; }
 		protected File getLocalXsltDir() { return localXsltDir; }
+		protected File getLocalWsdlDir() { return localWsdlDir; }
 		protected File getCertDir() { return certDir; }
 		protected File getPubcertDir() { return pubcertDir; }
 		protected File getPropertiesFile() { return propertiesFile; }
@@ -179,6 +182,9 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 	private List<File> getOverriddenLocalXsltFiles() {
 		return getFileList(getOverrides().getLocalXsltDir());
 	}
+	private List<File> getOverriddenLocalWsdlFiles() {
+		return getFileList(getOverrides().getLocalWsdlDir());
+	}
 	
 	private List<File> getOverriddenCertFiles() {
 		return getFileList(getOverrides().getCertDir());
@@ -196,6 +202,7 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 			cfg.addProperties(getOverriddenProperties());
 			cfg.addAaaFiles(getOverriddenLocalAaaFiles());
 			cfg.addXsltFiles(getOverriddenLocalXsltFiles());
+			cfg.addWsdlFiles(getOverriddenLocalWsdlFiles());
 			cfg.addCertFiles(getOverriddenCertFiles());		
 			cfg.addPubcertFiles(getOverriddenPubcertFiles());		
 		}
