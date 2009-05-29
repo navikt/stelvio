@@ -68,7 +68,7 @@ public class UnDeployArtifactMojo extends WebsphereUpdaterMojo {
 
 	private final void copyArtifactToTarget(Artifact a) {
 		File source = new File(a.getFile().getAbsolutePath());		
-		File dest = new File(deployableArtifactsHome, a.getArtifactId() + a.getVersion() + "." + a.getType());
+		File dest = new File(deployableArtifactsHome, a.getArtifactId() + "-" + a.getVersion() + "." + a.getType());
 		
 		EarFile.copyFile(source, dest);
 	}
