@@ -31,31 +31,38 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 		}
 	}
 
+	
 	private Throwable convertThrowable(Throwable t) {
-		Throwable cause = t.getCause();
-
-		boolean safeClass = isSafeClass(t);
+		
+		Throwable root =t;
+		Throwable cause = root.getCause();		
 		boolean causeSame = true;
-		if (cause != null) {
-			Throwable newCause = convertThrowable(cause);
+		
+		while(cause != null) {
+			Throwable newCause = cause.getCause();
 			causeSame = newCause == cause;
+			if (newCause==null){
+				root=cause;
+				}
 			cause = newCause;
 		}
-
+		
+		boolean safeClass = isSafeClass(root);
+		
 		Throwable result;
 		if (safeClass && causeSame) {
 			// Nothing to convert (safe class and causeSame) - just return t
-			result = t;
+			result = root;
 		} else {
-			if (ServiceRuntimeException.class.equals(t.getClass())) {
+			if (ServiceRuntimeException.class.equals(root.getClass())) {
 				// Special handling for SRE (not including subclasses) to get
 				// service context right
-				ServiceRuntimeException sre = (ServiceRuntimeException) t;
-				result = new ServiceRuntimeException(t.getMessage(), cause, sre.getServiceContext());
+				ServiceRuntimeException sre = (ServiceRuntimeException) root;
+				result = new ServiceRuntimeException(root.getMessage(), cause, sre.getServiceContext());
 			} else if (safeClass) {
-				result = makeNewInstanceOfSafeClass(t, cause);
+				result = makeNewInstanceOfSafeClass(root, cause);
 			} else {
-				result = new RuntimeException(ErrorHelperUtil.convertSBEStackTrace((Exception)t));
+				result =  new ServiceRuntimeException(ErrorHelperUtil.convertSBEStackTrace((Exception)root));
 				
 			}
 		}
