@@ -5,6 +5,9 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="3.1.6" date="12-06-2009" description="Minor release">
+			<action dev="hnc2812" type="fix">Fixed error resulting in IllegalStateException in CatchServiceRuntimeExceptionInterceptor</action>
+		</release>
 		<release version="3.1.5" date="17-04-2009" description="Minor release">
 			<action dev="lsb281" type="add">Class ErrorHelperUtil 3 new methods for determining root cause of error Incident 102422</action>
 			<action dev="lsb281" type="fix">Clean up warnings from SystemStubbingInterceptor and JMSListenerMDB</action>
