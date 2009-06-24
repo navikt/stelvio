@@ -27,7 +27,8 @@ public class CheckOutMojo extends VerticalMojo {
 		for (ScmProject scmProject : scmProjects) {
 			File basedir = scmProject.getScmFileSet().getBasedir();
 			if (basedir.exists()) {
-				throw new MojoExecutionException(basedir.getAbsolutePath() + " already exists, please run clean first...");
+				getLog().warn(basedir.getName() + " already exists, and will not be updated. Please update with your SVN client");
+//				throw new MojoExecutionException(basedir.getAbsolutePath() + " already exists, please run clean first...");
 			}
 		}
 	}
