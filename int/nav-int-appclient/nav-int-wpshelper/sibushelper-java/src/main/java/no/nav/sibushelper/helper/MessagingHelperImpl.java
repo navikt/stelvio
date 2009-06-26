@@ -456,8 +456,10 @@ public class MessagingHelperImpl implements MessagingHelper {
 
 	        	   browsedMsg.add(numberOfMessagesBrowsed, msginfo);
 	        	   numberOfMessagesBrowsed++;
-		           logger.logp(Level.FINE, className, "browseQueue()", "#" + browsedMsg);
-		           logger.logp(Level.FINE, className, "browseQueue()", msginfo.getApiMessageId());
+	        	   logger.logp(Level.FINE, className, "browseQueue()", "MsgId: " + msginfo.getApiMessageId());
+	        	   logger.logp(Level.FINE, className, "browseQueue()", "Browsed: #" + numberOfMessagesBrowsed);
+	        	   logger.logp(Level.FINEST, className, "browseQueue()", "ArrayList #" + browsedMsg.size());
+		           
 	        	   
               } while(true);
 	           browserSession.close();

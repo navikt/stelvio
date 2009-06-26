@@ -963,7 +963,7 @@ public class SIBUSHelper {
 	{
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 		Date currentTime = GregorianCalendar.getInstance().getTime();
-		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase()+ "_" + argqueue + "_" + sdf.format(currentTime);
+		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase()+ "_" + getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
 		String path = cl.getOptionValue(CommandOptions.reportDirectory);
 		
 		// Create file writer instances
@@ -1219,7 +1219,7 @@ public class SIBUSHelper {
 	{
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 		Date currentTime = GregorianCalendar.getInstance().getTime();
-		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase()+ "_" + argqueue + "_" + sdf.format(currentTime);
+		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase()+ "_" + getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
 		String path = cl.getOptionValue(CommandOptions.reportDirectory);
 		boolean isHeader = false;
 
@@ -1311,7 +1311,7 @@ public class SIBUSHelper {
 	{
 			SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 			Date currentTime = GregorianCalendar.getInstance().getTime();
-			String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_" + argqueue + "_" + sdf.format(currentTime);
+			String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_" + getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
 			String path = cl.getOptionValue(CommandOptions.reportDirectory);
 			
 			// Create file writer instances
@@ -1397,6 +1397,19 @@ public class SIBUSHelper {
 		return sb.toString();
 	}	
 
+	/**
+	 * 	@param width
+	 * @return
+	 */
+	private String getStrippedFileName(String s) {
+		if (s != null) {
+			String result = s.replaceAll("/", ".");
+			result = result.replaceAll("\\\\", ".");
+			return result;
+		}
+		return StringUtils.EMPTY;
+	}
+	
 	/**
 	 * @param question
 	 * @return
