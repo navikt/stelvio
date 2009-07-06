@@ -847,16 +847,6 @@ public abstract class AbstractIdeSupportMojo
 								.warn("Artifact " + artifact.getArtifactId()
 									+ " is present with more that one project, and will not be applied");
                     }
-                    
-                    
-//                    else
-//                    {
-//                        getLog().info(
-//                                       "Artifact "
-//                                           + artifact.getId()
-//                                           + " already available as a reactor project, but with different version. Expected: "
-//                                           + artifact.getVersion() + ", found: " + reactorProject.getVersion() );
-//                    }
                 }
             }
         } 
