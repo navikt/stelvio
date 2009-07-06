@@ -817,22 +817,46 @@ public abstract class AbstractIdeSupportMojo
             for ( Iterator iter = reactorProjects.iterator(); iter.hasNext(); )
             {
                 MavenProject reactorProject = (MavenProject) iter.next();
+                getLog().debug("Working with project " + reactorProject.getId());
 
                 if ( reactorProject.getGroupId().equals( artifact.getGroupId() )
                     && reactorProject.getArtifactId().equals( artifact.getArtifactId() ) )
                 {
+                	// Iterating through all projects to determine that one, 
+                	// and only one version of this artifact is made available.
+                	// As designed for NAV Integration team this plug-in will 
+                	// for the matter of convenience provide support to work 
+                	// with SNAPSHOT releases.
+                	
+                	int numberOfProjects = 0;
+                	for (int i = 0; i < reactorProjects.size(); i++) {
+                		MavenProject project = (MavenProject) reactorProjects.get(i);
+                		if (project.getArtifactId().equals(artifact.getArtifactId())) {
+                			numberOfProjects++;
+                		}
+					}
+                	                	
                     if ( reactorProject.getVersion().equals( artifact.getVersion() ) )
                     {
                         return reactorProject;
+                    } else if (numberOfProjects == 1){
+                    	getLog().debug("Applying project based on an assumption with only one available version");
+                    	return reactorProject;
+                    } else if (numberOfProjects > 1) {
+                    	getLog()
+								.warn("Artifact " + artifact.getArtifactId()
+									+ " is present with more that one project, and will not be applied");
                     }
-                    else
-                    {
-                        getLog().info(
-                                       "Artifact "
-                                           + artifact.getId()
-                                           + " already available as a reactor project, but with different version. Expected: "
-                                           + artifact.getVersion() + ", found: " + reactorProject.getVersion() );
-                    }
+                    
+                    
+//                    else
+//                    {
+//                        getLog().info(
+//                                       "Artifact "
+//                                           + artifact.getId()
+//                                           + " already available as a reactor project, but with different version. Expected: "
+//                                           + artifact.getVersion() + ", found: " + reactorProject.getVersion() );
+//                    }
                 }
             }
         } 
