@@ -3,7 +3,6 @@ package no.nav.maven.plugin.websphere.plugin.mojo;
 import java.io.File;
 import java.util.Set;
 
-import no.nav.maven.commons.configuration.ArtifactConfiguration;
 import no.nav.maven.plugin.websphere.plugin.utils.MojoLauncher;
 
 import org.apache.maven.artifact.Artifact;
@@ -27,13 +26,13 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	
 	/**
 	 * @parameter expression="${username}"
-	 * 
+	 * @required
 	 */
 	protected String deploymentManagerUser;
 	
 	/**
 	 * @parameter expression="${password}"
-	 *
+	 * @required
 	 */
 	protected String deploymentManagerPassword;
 
@@ -101,17 +100,16 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		arg2.setLine("-port " + deploymentManagerPort);
 		commandLine.addArg(arg2);
 		
-		if(deploymentManagerUser != null) {
-			Commandline.Argument arg3 = new Commandline.Argument();
-			arg3.setLine("-user " + deploymentManagerUser);
-			commandLine.addArg(arg3);
-		}
-		
-		if(deploymentManagerPassword != null) {
-	 		Commandline.Argument arg4 = new Commandline.Argument();
-			arg4.setLine("-password " + deploymentManagerPassword);
-			commandLine.addArg(arg4);	
-		}
+		getLog().info("User: " + deploymentManagerUser);
+		getLog().info("Pwd: " + deploymentManagerPassword);		
+
+		Commandline.Argument arg3 = new Commandline.Argument();
+		arg3.setLine("-user " + deploymentManagerUser);
+		commandLine.addArg(arg3);
+
+ 		Commandline.Argument arg4 = new Commandline.Argument();
+		arg4.setLine("-password " + deploymentManagerPassword);
+		commandLine.addArg(arg4);
 		
 		applyToWebSphere(commandLine);
 	}
