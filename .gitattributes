@@ -2908,6 +2908,7 @@ incubator/maven/maven-poc/layers/modules/pom.xml -text
 incubator/maven/maven-poc/layers/pom.xml -text
 incubator/maven/maven-poc/verticals/poc/pom.xml -text
 incubator/maven/maven-poc/verticals/pom.xml -text
+incubator/maven/maven-poms/maven-deploy-pom/.project -text
 incubator/maven/maven-poms/maven-deploy-pom/pom.xml -text
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/.project -text
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/pom.xml -text
