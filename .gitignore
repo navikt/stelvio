@@ -582,7 +582,7 @@ incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/gen
 incubator/maven/maven-poc/layers/modules/cons/poc-working-module/META-INF
 incubator/maven/maven-poc/layers/modules/cons/poc-working-module/bin
 incubator/maven/maven-poc/layers/modules/cons/poc-working-module/gen
-incubator/maven/maven-poc/verticals/poc/*
+incubator/maven/maven-poc/module-groups/poc/*
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/target
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-module-pom/target
 incubator/maven/maven-runtimes/.classpath

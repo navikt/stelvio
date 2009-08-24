@@ -2906,8 +2906,8 @@ incubator/maven/maven-poc/layers/modules/cons/poc-working-module/sca.modulex -te
 incubator/maven/maven-poc/layers/modules/cons/pom.xml -text
 incubator/maven/maven-poc/layers/modules/pom.xml -text
 incubator/maven/maven-poc/layers/pom.xml -text
-incubator/maven/maven-poc/verticals/poc/pom.xml -text
-incubator/maven/maven-poc/verticals/pom.xml -text
+incubator/maven/maven-poc/module-groups/poc/pom.xml -text
+incubator/maven/maven-poc/module-groups/pom.xml -text
 incubator/maven/maven-poms/maven-deploy-pom/.project -text
 incubator/maven/maven-poms/maven-deploy-pom/pom.xml -text
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/.project -text
