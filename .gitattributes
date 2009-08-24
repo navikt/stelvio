@@ -2836,8 +2836,6 @@ incubator/maven/maven-poc/layers/libs/poc-lib2/no/nav/gbo/StringBO2.xsd -text sv
 incubator/maven/maven-poc/layers/libs/poc-lib2/no/nav/util/LoggerUtil2.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/libs/poc-lib2/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/libs/pom.xml -text
-incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/.classpath -text
-incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/.project -text
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/EchoService.component -text
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/EchoService2.component -text
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/EchoService2MapWSEXP.export -text
@@ -2861,8 +2859,6 @@ incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/no/nav/map/
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/sca.module -text
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/sca.modulex -text
-incubator/maven/maven-poc/layers/modules/cons/poc-working-module/.classpath -text
-incubator/maven/maven-poc/layers/modules/cons/poc-working-module/.project -text
 incubator/maven/maven-poc/layers/modules/cons/poc-working-module/EchoService.component -text
 incubator/maven/maven-poc/layers/modules/cons/poc-working-module/EchoServiceWSEXP.export -text
 incubator/maven/maven-poc/layers/modules/cons/poc-working-module/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
