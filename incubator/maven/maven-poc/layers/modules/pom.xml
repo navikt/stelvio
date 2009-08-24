@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>layers</artifactId>
-		<version>1.6</version>
+		<version>1.7-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>modules</artifactId>
-	<version>1.6</version>
+	<version>1.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>SCA Module Master POM</name>
 	
@@ -40,9 +40,10 @@
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
 					<configuration>
-						<assemblyType>pi</assemblyType>
+						<assemblyType>zip</assemblyType>
 						<keep>true</keep>
 						<progressMonitor>none</progressMonitor>
+						<fileEncoding>ISO-8859-1</fileEncoding>
 					</configuration>
 				</plugin>
 
@@ -51,12 +52,13 @@
 						TODO: This is just an experimental configuration. It does not currently work. 
 						The current show-stopper is that WID sometimes decides to regenerate the project files....
 					-->
-					<artifactId>maven-eclipse-plugin</artifactId>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-wid-plugin</artifactId>
 					<configuration>
 						<workspaceCodeStylesURL>
 							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
 						</workspaceCodeStylesURL>
-						<buildOutputDirectory>bin</buildOutputDirectory>
+						<buildOutputDirectory />
 						<downloadJavadocs>true</downloadJavadocs>
 						<downloadSources>true</downloadSources>
 						<buildcommands>
@@ -145,6 +147,12 @@ config.version=6.1
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-wid-plugin</artifactId>
+			</plugin>
 		</plugins>
+		
 	</build>
 </project>

@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>modules</artifactId>
-		<version>1.6</version>
+		<version>1.6-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>cons</artifactId>
-	<version>1.6</version>
+	<version>1.7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Maven POC ${artifactId}</name>
 
@@ -17,9 +17,4 @@
 		<module>poc-working-module</module>
 		<module>poc-not-working-module</module>
 	</modules>
-
-  <scm>
-    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/cons-1.6</connection>
-    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/cons-1.6</developerConnection>
-  </scm>
 </project>

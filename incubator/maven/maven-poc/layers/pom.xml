@@ -4,13 +4,13 @@
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-root-pom</artifactId>
-		<version>0.1</version>
+		<artifactId>maven-integration-root-pom</artifactId>
+		<version>1.1</version>
 	</parent>
 
 	<groupId>no.nav.maven.poc</groupId>
 	<artifactId>layers</artifactId>
-	<version>1.6</version>
+	<version>1.7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Maven POC ${artifactId}</name>
 
@@ -18,6 +18,21 @@
 		<module>libs</module>
 		<module>modules</module>
 	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ibm.maven.runtimes</groupId>
+			<artifactId>wps-runtime</artifactId>
+			<version>6.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>no.stelvio.int</groupId>
+			<artifactId>stelvio-commons-lib</artifactId>
+			<version>3.1.4</version>
+		</dependency>
+	</dependencies>
+
 	
 	<build>
 		<directory>${target.dir}</directory>
@@ -46,7 +61,12 @@
 					<include>**/*.export</include>
 					<include>**/*.ifm</include>
 					<include>**/*.map</include>
-					<include>**/*.scaj2ee</include>
+					<include>**/*.medflow</include>
+					<include>**/*.mfc</include>
+					<include>**/*.xsl</include>
+					<include>**/*.bpel</include>
+					<include>**/*.bpelex</include>
+					<include>**/*.mon</include>
 				</includes>
 			</resource>
 		</resources>
@@ -68,19 +88,12 @@
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-sca-artifact-plugin</artifactId>
+				<artifactId>maven-wps-artifact-plugin</artifactId>
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>com.ibm.maven.runtimes</groupId>
-			<artifactId>wps-runtime</artifactId>
-			<version>6.1</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+
 	<properties>
 		<!-- 
 			TODO: WID goes bananas if the Maven build is using the default target folder as output. 
@@ -88,12 +101,14 @@
 		-->
 		<!-- TODO: Review this setting -->
 		<target.dir>
-			${user.home}/maven-target/${groupId}/${artifactId}/${version}
+			/data/maven-builds/maven-target/${groupId}/${artifactId}/${version}
 		</target.dir>
 	</properties>
 
+	<!-- Added because parent pom is not the parent directory in SCM -->
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/layers</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/layers</developerConnection>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poc/layers
+		</connection>
 	</scm>
 </project>

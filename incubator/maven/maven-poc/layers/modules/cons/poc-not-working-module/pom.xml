@@ -4,26 +4,26 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>cons</artifactId>
-		<version>1.6</version>
+		<version>1.7-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>poc-not-working-module</artifactId>
-	<version>1.9</version>
-	<packaging>sca-module-ear</packaging>
+	<version>1.9-SNAPSHOT</version>
+	<packaging>wps-module-ear</packaging>
 	<name>Maven POC ${artifactId}</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>no.nav.maven.poc</groupId>
 			<artifactId>poc-lib</artifactId>
-			<version>1.5</version>
-			<type>sca-library-jar</type>
+			<version>1.7-SNAPSHOT</version>
+			<type>wps-library-jar</type>
 		</dependency>
 		<dependency>
 			<groupId>no.nav.maven.poc</groupId>
 			<artifactId>poc-lib2</artifactId>
-			<version>1.5</version>
-			<type>sca-library-jar</type>
+			<version>1.7-SNAPSHOT</version>
+			<type>wps-library-jar</type>
 		</dependency>
 	</dependencies>
 	<build>
