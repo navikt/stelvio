@@ -20,7 +20,6 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile;
  * @goal add-handler
  */
 public class AddHandlerMojo extends AbstractMojo {
-
 	/**
 	 * @parameter expression="${project}"
 	 * @required
@@ -29,17 +28,17 @@ public class AddHandlerMojo extends AbstractMojo {
 	private MavenProject project;
 
 	/**
-	 * @parameter expression="${handlername}" default-value="no.stelvio.common.bus.handlers.jaxrpc.StelvioCommonContextHandler"
+	 * @parameter expression="${handlername}"
 	 * @required
 	 */
 	private String handlerName;
 
 	/**
-	 * @parameter expression="${handlerclass}" default-value="no.stelvio.common.bus.handlers.jaxrpc.StelvioCommonContextHandler"
+	 * @parameter expression="${handlerclass}"
 	 * @required
 	 */
 	private String handlerClass;
-	
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (!"pom".equals(project.getPackaging())) {
 			EARFile earFile = EarFile.openEarFile(project.getArtifact().getFile().getAbsolutePath());
@@ -47,15 +46,17 @@ public class AddHandlerMojo extends AbstractMojo {
 			EarFile.closeEarFile(earFile);
 		}
 	}
-	
+
 	private final void addHandler(final EARFile earFile) {
-		Archive ejb = (Archive)earFile.getEJBJarFiles().get(0);
+		Archive ejb = (Archive) earFile.getEJBJarFiles().get(0);
 		WebServicesEditor wse = new WebServicesEditor(ejb);
-		wse.addHandler(handlerName, handlerClass);
-		try {
-			wse.save();
-		} catch (IOException e) {
-			throw new RuntimeException("An error occured saving the ejb.", e);
+		if (wse.exists()) {
+			wse.addHandler(handlerName, handlerClass);
+			try {
+				wse.save();
+			} catch (IOException e) {
+				throw new RuntimeException("An error occured saving the ejb.", e);
+			}
 		}
 	}
 }
