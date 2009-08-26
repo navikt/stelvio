@@ -29,94 +29,98 @@ import org.eclipse.jst.j2ee.ejb.EJBJar;
 import org.eclipse.jst.j2ee.webservice.wsdd.WsddFactory;
 import org.eclipse.jst.j2ee.webservice.wsdd.WsddPackage;
 
-
 import com.ibm.etools.webservice.WebServiceWASInit;
 import com.ibm.etools.webservice.deploy.core.Utils;
 
 public abstract class DeploymentDescriptorEditor<T> {
-		private URI resourceURI;
-	    private Resource resource;
-	    private Archive archive;
-	    private ResourceSetImpl resourcesetimpl;
-	    //protected static final CommonFactory COMMONFACTORY = CommonPackage.eINSTANCE.getCommonFactory();
-	    
-	    static {
-		    WebServiceWASInit.init();
-		}
-	    
-	    public DeploymentDescriptorEditor(Archive archive, String resourceName) {
-	    	this.archive = archive;
-	        this.resourcesetimpl = new ResourceSetImpl();
-	        ArchiveURIConverterImpl archiveuriconverterimpl = new ArchiveURIConverterImpl(archive, null);
-	        String resourceString = Utils.getModulePath(archive, resourceName);
-	        resourcesetimpl.setResourceFactoryRegistry(J2EEResourceFactoryRegistry.INSTANCE);
-	        resourcesetimpl.setURIConverter(archiveuriconverterimpl);
-	    	this.resourceURI = URI.createURI(resourceString);
-	    	setResource(getResource(getResourceURI()));
+	private URI resourceURI;
+	private Resource resource;
+	private Archive archive;
+	private ResourceSetImpl resourcesetimpl;
+	// protected static final CommonFactory COMMONFACTORY =
+	// CommonPackage.eINSTANCE.getCommonFactory();
 
-	    }
+	static {
+		WebServiceWASInit.init();
+	}
 
-	    protected CommonFactory getCommmonFactory(){
-	    	return CommonPackage.eINSTANCE.getCommonFactory();
-	    }
-	    
-	    protected WsddFactory getWsddFactory(){
-	    	return WsddPackage.eINSTANCE.getWsddFactory();
-	    }
-	    
-		protected Archive getArchive() {
-			return archive;
-		}
+	public DeploymentDescriptorEditor(Archive archive, String resourceName) {
+		this.archive = archive;
+		this.resourcesetimpl = new ResourceSetImpl();
+		ArchiveURIConverterImpl archiveuriconverterimpl = new ArchiveURIConverterImpl(archive, null);
+		String resourceString = Utils.getModulePath(archive, resourceName);
+		resourcesetimpl.setResourceFactoryRegistry(J2EEResourceFactoryRegistry.INSTANCE);
+		resourcesetimpl.setURIConverter(archiveuriconverterimpl);
+		this.resourceURI = URI.createURI(resourceString);
+		setResource(getResource(getResourceURI()));
 
-		protected void setArchive(Archive archive) {
-			this.archive = archive;
-		}
+	}
 
-		protected Resource getResource() {
-			return resource;
-		}
+	protected CommonFactory getCommmonFactory() {
+		return CommonPackage.eINSTANCE.getCommonFactory();
+	}
 
-		protected void setResource(Resource resource) {
-			this.resource = resource;
-		}
+	protected WsddFactory getWsddFactory() {
+		return WsddPackage.eINSTANCE.getWsddFactory();
+	}
 
-		protected URI getResourceURI() {
-			return resourceURI;
-		}
+	protected Archive getArchive() {
+		return archive;
+	}
 
-		protected void setResourceURI(URI resourceURI) {
-			this.resourceURI = resourceURI;
-		}
-		
-		protected Resource getResource(URI resourceURI) {
-			try{
-				Resource r = archive.getMofResource(resourceURI.path());
-				return r;
-			} catch (FileNotFoundException e){
-				return resourcesetimpl.createResource(resourceURI);
-			}
-		}   
-		@SuppressWarnings("unchecked")
-		protected T getDescriptor(){
-			EList contents = getResource().getContents();
-			if(contents.size() > 0){
-				return (T)contents.get(0);
-			} else {
-				contents.add(createDescriptorContent());
-				return (T)contents.get(0);
-			}
-		}
+	protected void setArchive(Archive archive) {
+		this.archive = archive;
+	}
 
-		public void save() throws IOException {
-	    	getArchive().addOrReplaceMofResource(getResource());
-	    }    
-		
-		public void saveAs(String filename) throws IOException,  SaveFailureException, ReopenException{
-			getArchive().saveAs(filename);
+	protected Resource getResource() {
+		return resource;
+	}
+
+	protected void setResource(Resource resource) {
+		this.resource = resource;
+	}
+
+	protected URI getResourceURI() {
+		return resourceURI;
+	}
+
+	protected void setResourceURI(URI resourceURI) {
+		this.resourceURI = resourceURI;
+	}
+
+	protected Resource getResource(URI resourceURI) {
+		try {
+			Resource r = archive.getMofResource(resourceURI.path());
+			return r;
+		} catch (FileNotFoundException e) {
+			return resourcesetimpl.createResource(resourceURI);
 		}
-		
-		
-		protected abstract T createDescriptorContent();
-			
-		
+	}
+
+	@SuppressWarnings("unchecked")
+	protected T getDescriptor() {
+		EList contents = getResource().getContents();
+		if (contents.size() > 0) {
+			return (T) contents.get(0);
+		} else {
+			contents.add(createDescriptorContent());
+			return (T) contents.get(0);
+		}
+	}
+
+	public boolean exists() {
+		// TODO: This can probably be improved - using the came check as in
+		// getDescriptor() method
+		return getResource().getContents().size() > 0;
+	}
+
+	public void save() throws IOException {
+		getArchive().addOrReplaceMofResource(getResource());
+	}
+
+	public void saveAs(String filename) throws IOException, SaveFailureException, ReopenException {
+		getArchive().saveAs(filename);
+	}
+
+	protected abstract T createDescriptorContent();
 }
