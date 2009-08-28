@@ -9,11 +9,18 @@
 
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>moduleconfig-xmlbeans</artifactId>
-	<version>1.5</version>
+	<version>1.5-SNAPSHOT</version>
 	<name>Stelvio Integration Framework XMLBeans Module Config</name>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/maven-core-artifacts/${pom.parent.artifactId}/${artifactId}</tagBase>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>xmlbeans-maven-plugin</artifactId>
@@ -37,9 +44,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-  <scm>
-    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/moduleconfig-xmlbeans-1.5</connection>
-    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/moduleconfig-xmlbeans-1.5</developerConnection>
-  </scm>
 </project>
