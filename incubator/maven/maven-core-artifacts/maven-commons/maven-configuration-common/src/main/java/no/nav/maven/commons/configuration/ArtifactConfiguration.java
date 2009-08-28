@@ -14,6 +14,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import no.nav.maven.commons.constants.Constants;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationDocument;
 import no.nav.pensjonsprogrammet.wpsconfiguration.ConfigurationType;
+import no.nav.pensjonsprogrammet.wpsconfiguration.ExclusionType;
 
 import org.apache.xmlbeans.XmlException;
 
@@ -92,17 +93,26 @@ public final class ArtifactConfiguration {
 		while (tokenizer.hasMoreTokens()) {
 			String tok = tokenizer.nextToken();
 			configuration = configurationsMap.get(tok);
-			addConfiguration(configurations, configuration);
+			addConfiguration(artifactId, configurations, configuration);
 		}
 
 		configuration = configurationsMap.get(artifactId);
-		addConfiguration(configurations, configuration);
+		addConfiguration(artifactId, configurations, configuration);
 
 		return configurations;
 	}
 
-	private static void addConfiguration(List<ConfigurationType> configurations, ConfigurationType configuration) {
+	private static void addConfiguration(String artifactId, List<ConfigurationType> configurations,
+			ConfigurationType configuration) {
 		if (configuration != null) {
+			if (configuration.getExclusions() != null) {
+				for (ExclusionType exclusion : configuration.getExclusions().getExclusionList()) {
+					if (exclusion.getArtifactId().equals(artifactId)) {
+						// Exclusion for artifact found. Return from method.
+						return;
+					}
+				}
+			}
 			configurations.add(configuration);
 		}
 	}
