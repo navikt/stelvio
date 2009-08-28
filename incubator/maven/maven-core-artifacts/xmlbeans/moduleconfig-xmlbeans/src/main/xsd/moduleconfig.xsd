@@ -26,6 +26,7 @@
       <xs:element type="wps:securityType" name="security" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
       <xs:element type="wps:webservicesType" name="webservices" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
       <xs:element type="wps:runtimeType" name="runtime" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
+      <xs:element type="wps:exclusionsType" name="exclusions" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="runasType">
@@ -119,6 +120,16 @@
   <xs:complexType name="webservicesType">
     <xs:sequence>
       <xs:element type="wps:endpointsType" name="endpoints" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="exclusionsType">
+    <xs:sequence>
+      <xs:element type="wps:exclusionType" name="exclusion" maxOccurs="unbounded" xmlns:wps="http://www.nav.no/pensjonsprogrammet/wpsconfiguration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="exclusionType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="artifactId"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>

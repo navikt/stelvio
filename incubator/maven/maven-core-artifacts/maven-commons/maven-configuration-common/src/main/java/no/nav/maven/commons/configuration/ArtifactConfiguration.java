@@ -92,17 +92,19 @@ public final class ArtifactConfiguration {
 		while (tokenizer.hasMoreTokens()) {
 			String tok = tokenizer.nextToken();
 			configuration = configurationsMap.get(tok);
-			if (configuration != null) {
-				configurations.add(configuration);
-			}
+			addConfiguration(configurations, configuration);
 		}
 
 		configuration = configurationsMap.get(artifactId);
+		addConfiguration(configurations, configuration);
+
+		return configurations;
+	}
+
+	private static void addConfiguration(List<ConfigurationType> configurations, ConfigurationType configuration) {
 		if (configuration != null) {
 			configurations.add(configuration);
 		}
-
-		return configurations;
 	}
 
 	/* TODO: This is so utterly stupid */
