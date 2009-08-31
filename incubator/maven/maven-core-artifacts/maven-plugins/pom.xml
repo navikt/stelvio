@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -16,10 +18,15 @@
 
 	<properties>
 		<maven.version>2.0.7</maven.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven-configuration-common.version>1.4-SNAPSHOT</maven-configuration-common.version>
-		<moduleconfig-xmlbeans.version>1.5-SNAPSHOT</moduleconfig-xmlbeans.version>
-		<maven-plugin-testing-harness.version>1.0-beta-1</maven-plugin-testing-harness.version>
+		<project.build.sourceEncoding>
+			UTF-8
+		</project.build.sourceEncoding>
+		<maven-configuration-common.version>
+			1.4-SNAPSHOT
+		</maven-configuration-common.version>
+		<maven-plugin-testing-harness.version>
+			1.0-beta-1
+		</maven-plugin-testing-harness.version>
 	</properties>
 
 	<modules>
@@ -33,7 +40,7 @@
 		<module>maven-wid-plugin</module>
 		<module>maven-confluence-plugin</module>
 	</modules>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -45,23 +52,20 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>no.nav.maven.support</groupId>
-				<artifactId>moduleconfig-xmlbeans</artifactId>
-				<version>${moduleconfig-xmlbeans.version}</version>
-			</dependency>		
+				<groupId>no.nav.maven.commons</groupId>
+				<artifactId>maven-configuration-common</artifactId>
+				<version>${maven-configuration-common.version}</version>
+			</dependency>
 			<dependency>
-	            <groupId>no.nav.maven.commons</groupId>
-	            <artifactId>maven-configuration-common</artifactId>
-	            <version>${maven-configuration-common.version}</version>
-	        </dependency>
-	        <dependency>
-	        	<groupId>org.apache.maven.shared</groupId>
-	        	<artifactId>maven-plugin-testing-harness</artifactId>
-	        	<version>${maven-plugin-testing-harness.version}</version>
-	        	<scope>test</scope> 	
-	        </dependency>
+				<groupId>org.apache.maven.shared</groupId>
+				<artifactId>maven-plugin-testing-harness</artifactId>
+				<version>
+					${maven-plugin-testing-harness.version}
+				</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
-  	</dependencyManagement>
+	</dependencyManagement>
 
 	<scm>
 		<connection>

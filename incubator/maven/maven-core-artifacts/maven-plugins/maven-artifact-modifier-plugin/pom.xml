@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -40,17 +42,13 @@
 			<artifactId>maven-configuration-common</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>no.nav.maven.support</groupId>
-			<artifactId>moduleconfig-xmlbeans</artifactId>
+			<groupId>no.nav.maven.plugins</groupId>
+			<artifactId>maven-deployment-descriptor-common</artifactId>
+			<version>1.1.12</version>
 		</dependency>
-       	<dependency>
-      		<groupId>no.nav.maven.plugins</groupId>
-      		<artifactId>maven-deployment-descriptor-common</artifactId>
-      		<version>1.1.12</version>
-    	</dependency>
-   	    <dependency>
-        	<groupId>org.apache.maven.shared</groupId>
-        	<artifactId>maven-plugin-testing-harness</artifactId>
-   		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.shared</groupId>
+			<artifactId>maven-plugin-testing-harness</artifactId>
+		</dependency>
 	</dependencies>
 </project>
