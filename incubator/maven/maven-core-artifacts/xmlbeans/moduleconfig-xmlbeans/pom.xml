@@ -9,7 +9,7 @@
 
 	<groupId>no.nav.maven.support</groupId>
 	<artifactId>moduleconfig-xmlbeans</artifactId>
-	<version>1.5-SNAPSHOT</version>
+	<version>1.5</version>
 	<name>Stelvio Integration Framework XMLBeans Module Config</name>
 
 	<build>
@@ -37,4 +37,9 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/xmlbeans/moduleconfig-xmlbeans/moduleconfig-xmlbeans-1.5</connection>
+    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven/xmlbeans/moduleconfig-xmlbeans/moduleconfig-xmlbeans-1.5</developerConnection>
+  </scm>
 </project>
