@@ -24,7 +24,7 @@ under the License.
   <parent>
 		<groupId>no.nav.maven.plugins</groupId>
 		<artifactId>maven-plugins</artifactId>
-		<version>1.4</version>
+		<version>1.5-SNAPSHOT</version>
 	</parent>
   <artifactId>maven-wid-plugin</artifactId>
   <version>0.14-SNAPSHOT</version>
