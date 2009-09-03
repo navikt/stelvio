@@ -12,8 +12,6 @@ import no.nav.pensjonsprogrammet.wpsconfiguration.RuntimeType;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.util.cli.CommandLineException;
-import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 
 /**
@@ -48,60 +46,40 @@ public class ApplyRuntimeConfigurationMojo extends WebsphereUpdaterMojo {
 			Commandline commandLine) {
 		List<ActivationspecificationType> specifications = activationSpecifications.getActivationspecificationList();
 
-		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
-		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
-
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py");
 		commandLine.addArg(arg);
 
 		Commandline detailedCommand = new Commandline();
 		for (ActivationspecificationType a : specifications) {
-			try {
-				detailedCommand.setExecutable(commandLine.getExecutable());
-				detailedCommand.addArguments(commandLine.getArguments());
-				arg = new Commandline.Argument();
-				arg.setLine(a.getName());
-				detailedCommand.addArg(arg);
-				arg = new Commandline.Argument();
-				arg.setLine(String.valueOf(a.getMaxconcurrency()));
-				detailedCommand.addArg(arg);
-				getLog().info("Executing the following command: " + detailedCommand.toString());
-				CommandLineUtils.executeCommandLine(detailedCommand, stdout, stderr);
-				reportResult(stdout, stderr);
-				detailedCommand.clearArgs();
-			} catch (CommandLineException e) {
-				throw new RuntimeException("An error occured executing: " + commandLine, e);
-			}
+			detailedCommand.setExecutable(commandLine.getExecutable());
+			detailedCommand.addArguments(commandLine.getArguments());
+			arg = new Commandline.Argument();
+			arg.setLine(a.getName());
+			detailedCommand.addArg(arg);
+			arg = new Commandline.Argument();
+			arg.setLine(String.valueOf(a.getMaxconcurrency()));
+			detailedCommand.addArg(arg);
+			executeCommand(detailedCommand);
+			detailedCommand.clearArgs();
 		}
 	}
 
 	private final void updateAutoStart(final String artifactId, final String autoStart, final Commandline commandLine) {
-
-		final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
-		final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
-
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("-f " + scriptsHome + "/scripts/AutoStart.py");
 		commandLine.addArg(arg);
 
 		Commandline detailedCommand = new Commandline();
-		try {
-			detailedCommand.setExecutable(commandLine.getExecutable());
-			detailedCommand.addArguments(commandLine.getArguments());
-			arg = new Commandline.Argument();
-			arg.setLine(artifactId);
-			detailedCommand.addArg(arg);
-			arg = new Commandline.Argument();
-			arg.setLine(autoStart);
-			detailedCommand.addArg(arg);
-			getLog().info("Executing the following command: " + detailedCommand.toString());
-			CommandLineUtils.executeCommandLine(detailedCommand, stdout, stderr);
-			reportResult(stdout, stderr);
-			detailedCommand.clearArgs();
-		} catch (CommandLineException e) {
-			throw new RuntimeException("An error occured executing: " + commandLine, e);
-		}
+		detailedCommand.setExecutable(commandLine.getExecutable());
+		detailedCommand.addArguments(commandLine.getArguments());
+		arg = new Commandline.Argument();
+		arg.setLine(artifactId);
+		detailedCommand.addArg(arg);
+		arg = new Commandline.Argument();
+		arg.setLine(autoStart);
+		detailedCommand.addArg(arg);
+		executeCommand(detailedCommand);
 	}
 
 	@Override
