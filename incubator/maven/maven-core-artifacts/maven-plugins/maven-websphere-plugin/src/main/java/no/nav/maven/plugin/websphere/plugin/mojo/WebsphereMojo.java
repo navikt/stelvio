@@ -1,6 +1,8 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 import no.nav.maven.commons.managers.ArchiveManager;
@@ -20,6 +22,7 @@ import org.codehaus.plexus.components.interactivity.PrompterException;
 import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
+import org.codehaus.plexus.util.cli.StreamConsumer;
 
 /**
  * Abstract class using the template pattern for child mojos.
@@ -130,49 +133,77 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	protected final void executeCommand(Commandline command) {
 		try {
 			getLog().info("Executing the following command: " + command.toString());
-			final CommandLineUtils.StringStreamConsumer stdout = new CommandLineUtils.StringStreamConsumer();
-			final CommandLineUtils.StringStreamConsumer stderr = new CommandLineUtils.StringStreamConsumer();
-			CommandLineUtils.executeCommandLine(command, stdout, stderr);
-			reportResult(stdout, stderr);
+
+			StreamConsumer systemOut = new StreamConsumer() {
+				public void consumeLine(String line) {
+					getLog().info(line);
+				}
+			};
+			StreamConsumer systemErr = new StreamConsumer() {
+				public void consumeLine(String line) {
+					getLog().error(line);
+				}
+			};
+			ErrorCheckingStreamConsumer errorChecker = new ErrorCheckingStreamConsumer();
+
+			CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
+					new StreamConsumerChain(systemErr).add(errorChecker));
+
+			if (errorChecker.isError()) {
+				if (interactiveMode == true) {
+					String answer = null;
+					try {
+						answer = prompter.prompt("An error occured during step \"" + getGoalPrettyPrint()
+								+ "\" . Do you want to abort the deploy process (y/n)? ", "n");
+					} catch (PrompterException e) {
+						throw new RuntimeException("An error occured during prompt input", e);
+					}
+
+					if ("y".equalsIgnoreCase(answer)) {
+						throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
+					}
+				} else {
+					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
+				}
+			}
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
 		}
 	}
 
-	private void reportResult(CommandLineUtils.StringStreamConsumer stdout, CommandLineUtils.StringStreamConsumer stderr) {
-		String outPut = null;
+	private static class StreamConsumerChain implements StreamConsumer {
+		private final Collection<StreamConsumer> chain = new ArrayList<StreamConsumer>();
 
-		if (stdout != null) {
-			outPut = stdout.getOutput();
+		public StreamConsumerChain() {
 		}
 
-		if (outPut == null || outPut.trim().length() == 0) {
-			if (stderr != null) {
-				outPut = stderr.getOutput();
+		public StreamConsumerChain(StreamConsumer streamConsumer) {
+			add(streamConsumer);
+		}
+
+		public StreamConsumerChain add(StreamConsumer streamConsumer) {
+			chain.add(streamConsumer);
+			return this;
+		}
+
+		public void consumeLine(String line) {
+			for (StreamConsumer streamConsumer : chain) {
+				streamConsumer.consumeLine(line);
+			}
+		}
+	}
+
+	private static class ErrorCheckingStreamConsumer implements StreamConsumer {
+		private boolean error;
+
+		public void consumeLine(String line) {
+			if (line.toLowerCase().contains("error")) {
+				error = true;
 			}
 		}
 
-		getLog().info(outPut);
-
-		if (outPut.toLowerCase().contains("error")) {
-			if (interactiveMode == true) {
-				String answer = null;
-				try {
-					answer = prompter.prompt("An error occured during step \"" + getGoalPrettyPrint()
-							+ "\" . Do you want to abort the deploy process (y/n)? ", "n");
-				} catch (PrompterException e) {
-					throw new RuntimeException("An error occured during prompt input", e);
-				}
-
-				if ("y".equalsIgnoreCase(answer)) {
-					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
-				} else {
-					return;
-				}
-			} else {
-				throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
-			}
-
+		public boolean isError() {
+			return error;
 		}
 	}
 }
