@@ -44,7 +44,13 @@
 					<include>**/*.export</include>
 					<include>**/*.ifm</include>
 					<include>**/*.map</include>
-					<include>**/*.scaj2ee</include>
+					<include>**/*.medflow</include>
+					<include>**/*.mfc</include>
+					<include>**/*.xsl</include>
+					<include>**/*.bpel</include>
+					<include>**/*.bpelex</include>
+					<include>**/*.mon</include>
+					<include>**/*.bcfg</include>
 				</includes>
 			</resource>
 		</resources>
