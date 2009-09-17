@@ -1,84 +1,33 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-poms</artifactId>
+		<artifactId>maven-wps-pom</artifactId>
 		<version>1.3-SNAPSHOT</version>
+		<relativePath>maven-wps-pom</relativePath>
 	</parent>
 
-	<artifactId>maven-wps-root-pom</artifactId>
+	<artifactId>maven-wps-poms</artifactId>
 	<version>1.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>WPS Artifact Master POM</name>
+	<name>Stelvio Integration Framework WPS POMS</name>
 
 	<modules>
 		<module>maven-wps-library-pom</module>
 		<module>maven-wps-module-pom</module>
+		<module>maven-wps-pom</module>
 	</modules>
 	
-	<build>
-		<directory>${target.dir}</directory>
-		<outputDirectory>${target.dir}/classes</outputDirectory>
-		<testOutputDirectory>
-			${target.dir}/test-classes
-		</testOutputDirectory>
-		<sourceDirectory />
-		<resources>
-			<resource>
-				<!-- TODO: This is here because WID insists on having the root folder as a source folder -->
-				<!-- TODO: Review which files to exclude/include -->
-				<directory>${basedir}</directory>
-				<excludes>
-					<exclude>.settings/**</exclude>
-					<exclude>bin/**</exclude>
-					<exclude>gen/**</exclude>
-				</excludes>
-				<includes>
-					<include>**/*.wsdl</include>
-					<include>**/*.xsd</include>
-					<include>**/*.module</include>
-					<include>**/*.modulex</include>
-					<include>**/*.component</include>
-					<include>**/*.import</include>
-					<include>**/*.export</include>
-					<include>**/*.ifm</include>
-					<include>**/*.map</include>
-					<include>**/*.medflow</include>
-					<include>**/*.mfc</include>
-					<include>**/*.xsl</include>
-					<include>**/*.bpel</include>
-					<include>**/*.bpelex</include>
-					<include>**/*.mon</include>
-					<include>**/*.bcfg</include>
-				</includes>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wps-artifact-plugin</artifactId>
-				<extensions>true</extensions>
-			</plugin>
-		</plugins>
-	</build>
-	<dependencies>
-		<dependency>
-			<groupId>com.ibm.maven.runtimes</groupId>
-			<artifactId>wps-runtime</artifactId>
-			<version>6.1</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
-	<properties>
-		<!-- 
-			TODO: WID goes bananas if the Maven build is using the default target folder as output. 
-			As a workaround we are changing the target folder to a folder outside the project		
-		-->
-		<!-- TODO: Review this setting -->
-		<target.dir>
-			${user.home}/maven-target/${groupId}/${artifactId}/${version}
-		</target.dir>
-	</properties>
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms/maven-wps-poms
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-poms/maven-wps-poms
+		</developerConnection>
+	</scm>
 </project>
