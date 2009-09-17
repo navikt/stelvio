@@ -14,13 +14,6 @@
 	<version>1.6-SNAPSHOT</version>
 	<name>Stelvio Integration Framework Maven Plugins</name>
 
-	<properties>
-		<maven.version>2.0.7</maven.version>
-		<project.build.sourceEncoding>
-			UTF-8
-		</project.build.sourceEncoding>
-	</properties>
-
 	<modules>
 		<module>maven-wps-artifact-plugin</module>
 		<module>maven-service-deploy-plugin</module>
