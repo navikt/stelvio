@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-integration-root-pom</artifactId>
-		<version>1.1</version>
+		<version>1.2-SNAPSHOT</version>
 	</parent>
 
 	<groupId>no.nav.maven.poc</groupId>
@@ -19,14 +19,12 @@
 	</modules>
 
 	<build>
-	
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wps-artifact-plugin</artifactId>
 				<extensions>true</extensions>
 			</plugin>
-
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-mg-plugin</artifactId>
@@ -42,12 +40,10 @@
 
 				</configuration>
 			</plugin>
-			
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wid-plugin</artifactId>
 			</plugin>
-				
 		</plugins>
 	</build>
 
