@@ -1,5 +1,8 @@
 package no.nav.maven.plugin.wid;
 
+import java.io.File;
+
+import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.eclipse.EclipseCleanMojo;
 
 /**
@@ -10,4 +13,9 @@ import org.apache.maven.plugin.eclipse.EclipseCleanMojo;
  * @goal clean
  */
 public class WidCleanMojo extends EclipseCleanMojo {
+	@Override
+	protected void cleanExtras() throws MojoExecutionException {
+		super.cleanExtras();
+		delete(new File(getBasedir(), ".settings"));
+	}
 }
