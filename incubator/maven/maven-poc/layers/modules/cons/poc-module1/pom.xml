@@ -20,4 +20,24 @@
 			<type>wps-library-jar</type>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<finalName>${artifactId}</finalName>
+					<archive>
+						<manifest>
+							<mainClass>no.nav.java.Main</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>
+								${manifest.classpath}
+							</Class-Path>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
