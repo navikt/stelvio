@@ -2765,6 +2765,7 @@ incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
 incubator/maven/maven-deploy-poc/pom.xml -text
 incubator/maven/maven-poc/layers/libs/poc-lib1/no/nav/gbo/StringBO.xsd -text svneol=unset#text/plain
+incubator/maven/maven-poc/layers/libs/poc-lib1/no/nav/inf/DummyIF.wsdl -text
 incubator/maven/maven-poc/layers/libs/poc-lib1/no/nav/util/LoggerUtil.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/libs/poc-lib1/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/libs/poc-lib2/no/nav/gbo/StringBO2.xsd -text svneol=unset#text/plain
@@ -2773,11 +2774,13 @@ incubator/maven/maven-poc/layers/libs/poc-lib2/pom.xml -text svneol=unset#text/p
 incubator/maven/maven-poc/layers/libs/poc-lib3/no/nav/util/LoggerUtil3.java -text
 incubator/maven/maven-poc/layers/libs/poc-lib3/pom.xml -text
 incubator/maven/maven-poc/layers/libs/pom.xml -text
+incubator/maven/maven-poc/layers/modules/cons/poc-module1/DummyService.component -text
 incubator/maven/maven-poc/layers/modules/cons/poc-module1/EchoService.component -text
 incubator/maven/maven-poc/layers/modules/cons/poc-module1/EchoServiceWSEXP.export -text
 incubator/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/inf/poc-module1_EchoServiceWSEXP.wsdl -text
 incubator/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/inf/poc-working-module_EchoServiceWSEXP.wsdl -text svneol=unset#text/plain
+incubator/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/java/DummyServiceImpl.java -text
 incubator/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/java/Main.java -text
 incubator/maven/maven-poc/layers/modules/cons/poc-module1/pom.xml -text svneol=unset#text/plain
