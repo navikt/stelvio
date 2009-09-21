@@ -7,17 +7,8 @@
 		<version>1.7-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>poc-lib3</artifactId>
+	<artifactId>poc-lib1</artifactId>
 	<version>1.7-SNAPSHOT</version>
 	<packaging>wps-library-jar</packaging>
 	<name>Maven POC ${artifactId}</name>
-	
-	<dependencies>
-		<dependency>
-			<groupId>no.nav.maven.poc</groupId>
-			<artifactId>poc-lib1</artifactId>
-			<version>1.7-SNAPSHOT</version>
-			<type>wps-library-jar</type>
-		</dependency>
-	</dependencies>
 </project>

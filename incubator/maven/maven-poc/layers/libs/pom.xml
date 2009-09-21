@@ -16,7 +16,7 @@
 	<name>Maven POC ${artifactId}</name>
 
 	<modules>
-		<module>poc-lib</module>
+		<module>poc-lib1</module>
 		<module>poc-lib2</module>
 		<module>poc-lib3</module>
 	</modules>

@@ -14,7 +14,7 @@
 	<name>Maven POC ${artifactId}</name>
 
 	<modules>
-		<module>poc-working-module</module>
-		<module>poc-not-working-module</module>
+		<module>poc-module1</module>
+		<module>poc-module2</module>
 	</modules>
 </project>
