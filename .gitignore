@@ -586,6 +586,14 @@ incubator/maven/maven-poc/layers/libs/poc-lib2/META-INF
 incubator/maven/maven-poc/layers/libs/poc-lib2/bin
 incubator/maven/maven-poc/layers/libs/poc-lib2/gen
 incubator/maven/maven-poc/layers/libs/poc-lib2/target
+incubator/maven/maven-poc/layers/libs/poc-lib3/*.class
+incubator/maven/maven-poc/layers/libs/poc-lib3/.classpath
+incubator/maven/maven-poc/layers/libs/poc-lib3/.project
+incubator/maven/maven-poc/layers/libs/poc-lib3/.settings
+incubator/maven/maven-poc/layers/libs/poc-lib3/META-INF
+incubator/maven/maven-poc/layers/libs/poc-lib3/bin
+incubator/maven/maven-poc/layers/libs/poc-lib3/gen
+incubator/maven/maven-poc/layers/libs/poc-lib3/target
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/*.class
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/.classpath
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/.project

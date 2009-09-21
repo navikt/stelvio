@@ -18,6 +18,7 @@
 	<modules>
 		<module>poc-lib</module>
 		<module>poc-lib2</module>
+		<module>poc-lib3</module>
 	</modules>
 
 	<scm>

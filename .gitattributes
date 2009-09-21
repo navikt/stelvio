@@ -2770,6 +2770,7 @@ incubator/maven/maven-poc/layers/libs/poc-lib/pom.xml -text svneol=unset#text/pl
 incubator/maven/maven-poc/layers/libs/poc-lib2/no/nav/gbo/StringBO2.xsd -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/libs/poc-lib2/no/nav/util/LoggerUtil2.java -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/libs/poc-lib2/pom.xml -text svneol=unset#text/plain
+incubator/maven/maven-poc/layers/libs/poc-lib3/pom.xml -text
 incubator/maven/maven-poc/layers/libs/pom.xml -text
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/EchoService.component -text
 incubator/maven/maven-poc/layers/modules/cons/poc-not-working-module/EchoService2.component -text

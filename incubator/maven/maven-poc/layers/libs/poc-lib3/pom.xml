@@ -3,19 +3,19 @@
 
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
-		<artifactId>cons</artifactId>
+		<artifactId>libs</artifactId>
 		<version>1.7-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>poc-working-module</artifactId>
-	<version>1.11-SNAPSHOT</version>
-	<packaging>wps-module-ear</packaging>
+	<artifactId>poc-lib3</artifactId>
+	<version>1.7-SNAPSHOT</version>
+	<packaging>wps-library-jar</packaging>
 	<name>Maven POC ${artifactId}</name>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>no.nav.maven.poc</groupId>
-			<artifactId>poc-lib3</artifactId>
+			<artifactId>poc-lib</artifactId>
 			<version>1.7-SNAPSHOT</version>
 			<type>wps-library-jar</type>
 		</dependency>
