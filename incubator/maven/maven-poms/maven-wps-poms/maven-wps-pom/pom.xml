@@ -49,6 +49,7 @@
 					<include>**/*.bpelex</include>
 					<include>**/*.mon</include>
 					<include>**/*.bcfg</include>
+					<include>**/*.scaj2ee</include>
 				</includes>
 			</resource>
 		</resources>
