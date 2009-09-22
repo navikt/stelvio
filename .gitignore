@@ -611,8 +611,8 @@ incubator/maven/maven-poc/layers/modules/cons/poc-module2/bin
 incubator/maven/maven-poc/layers/modules/cons/poc-module2/gen
 incubator/maven/maven-poc/layers/modules/cons/poc-module2/poc_module2
 incubator/maven/maven-poc/layers/modules/cons/poc-module2/target
-incubator/maven/maven-poc/module-groups/poc/libs
-incubator/maven/maven-poc/module-groups/poc/modules
+incubator/maven/maven-poc/module-groups/poc-mg1/libs
+incubator/maven/maven-poc/module-groups/poc-mg1/modules
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/target
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-module-pom/target
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-pom/.project

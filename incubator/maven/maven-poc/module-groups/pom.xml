@@ -15,7 +15,7 @@
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>poc</module>
+		<module>poc-mg1</module>
 	</modules>
 
 	<build>
