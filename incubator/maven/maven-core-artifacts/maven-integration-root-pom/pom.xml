@@ -16,12 +16,14 @@
 						<source>1.5</source>
 						<target>1.5</target>
 						<verbose>true</verbose>
+						<encoding>ISO-8859-1</encoding>
+						<!-- Commented out for now. Trying to avoid fork. Awaiting feedback from IBM
 						<fork>true</fork>
 						<executable>
 							${wid.runtime}\java\bin\javac
 						</executable>
 						<compilerVersion>1.5</compilerVersion>
-						<encoding>ISO-8859-1</encoding>
+						 -->
 					</configuration>
 				</plugin>
 				<plugin>
