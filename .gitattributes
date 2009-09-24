@@ -2741,6 +2741,8 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/pom.xml -tex
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/BuildCommand.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/WidCleanMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/WidPlugin.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/writers/WidWtpComponentWriter.java -text svneol=unset#text/plain
+incubator/maven/maven-core-artifacts/maven-plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/writers/WidWtpFacetsWriter.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
