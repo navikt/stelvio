@@ -131,11 +131,6 @@ config.version=6.1
 								</content>
 							</file>
 						</additionalConfig>
-						<wtpversion>1.5</wtpversion>
-						<additionalProjectFacets>
-							<jst.utility>1.0</jst.utility>
-							<jst.java>5.0</jst.java>
-						</additionalProjectFacets>
 					</configuration>
 				</plugin>
 			</plugins>
