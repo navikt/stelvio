@@ -109,8 +109,7 @@ public class WSDLExportMojo
     					wsdlInterfaceArtifactHandler));
     		}	    	
 	    	unArchiver.setSourceFile(earFile);
-	    	String tempDir=project.getBuild().getDirectory()+"/wsdltemp/"+System.currentTimeMillis()+"/";
-	    	System.out.println("OutputFile:"+tempDir );
+	    	String tempDir=project.getBuild().getDirectory()+"/wsdltemp/"+System.currentTimeMillis()+"/";	    	
 	    	File tempDirfile = new File(tempDir);
 	    	tempDirfile.mkdirs();
 		    	
@@ -129,7 +128,6 @@ public class WSDLExportMojo
 				throw new MojoExecutionException("Unable to find a war-file under directory "+tempDir);
 			}
 			String warFileName=tempDir+warFileNames[0];
-			System.out.println("WAR: "+warFileName);
 			File warFile = new File(warFileName);
 	    	unArchiver.setSourceFile(warFile);    	
 			unArchiver.extract();
