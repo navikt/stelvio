@@ -2664,12 +2664,6 @@ incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/s
 incubator/maven/maven-core-artifacts/maven-archetypes/service-module-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-assemblies/pom.xml -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-assemblies/src/main/resources/assemblies/jar-with-all-dependencies.xml -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/pom.xml -text
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/maven-commons/pom.xml -text
 incubator/maven/maven-core-artifacts/pom.xml -text
 incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
@@ -3334,6 +3328,12 @@ int/aroe/branch2/nav-cons-dok-joark-oppgave/oppgave/joark/dok/cons/nav/no/nav/in
 int/aroe/branch2/nav-cons-dok-joark-oppgave/pom.xml -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.module -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.modulex -text
+int/maven/maven-commons/maven-configuration-common/pom.xml -text
+int/maven/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
+int/maven/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain
+int/maven/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
+int/maven/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
+int/maven/maven-commons/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain

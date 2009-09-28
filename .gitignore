@@ -425,11 +425,6 @@ incubator/maven/maven-core-artifacts/maven-assemblies/.project
 incubator/maven/maven-core-artifacts/maven-assemblies/.settings
 incubator/maven/maven-core-artifacts/maven-assemblies/bin
 incubator/maven/maven-core-artifacts/maven-assemblies/target
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.classpath
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.project
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.settings
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/bin
-incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/target
 incubator/maven/maven-deploy-poc/bus-deploy/.classpath
 incubator/maven/maven-deploy-poc/bus-deploy/.project
 incubator/maven/maven-deploy-poc/bus-deploy/.settings
@@ -491,6 +486,11 @@ incubator/maven/maven-runtimes/wps-runtime/.project
 incubator/maven/maven-runtimes/wps-runtime/.settings
 incubator/maven/maven-runtimes/wps-runtime/bin
 incubator/maven/maven-runtimes/wps-runtime/target
+int/maven/maven-commons/maven-configuration-common/.classpath
+int/maven/maven-commons/maven-configuration-common/.project
+int/maven/maven-commons/maven-configuration-common/.settings
+int/maven/maven-commons/maven-configuration-common/bin
+int/maven/maven-commons/maven-configuration-common/target
 int/maven/plugins/.classpath
 int/maven/plugins/.project
 int/maven/plugins/.settings
