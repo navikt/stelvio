@@ -31,7 +31,6 @@
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-core</artifactId>
-			<version>${maven.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
@@ -46,13 +45,9 @@
 			<artifactId>plexus-archiver</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>no.nav.maven.commons</groupId>
-			<artifactId>maven-configuration-common</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
+			<version>1.5.9</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.shared</groupId>
@@ -62,6 +57,12 @@
 			<groupId>httpunit</groupId>
 			<artifactId>httpunit</artifactId>
 			<version>1.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>no.nav.maven.commons</groupId>
+			<artifactId>maven-configuration-common</artifactId>
+			<version>1.4</version>
 		</dependency>
 	</dependencies>
 </project>
