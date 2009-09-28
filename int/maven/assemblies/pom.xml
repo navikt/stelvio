@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.artifacts</groupId>
-		<artifactId>maven-core-artifacts</artifactId>
-		<version>1.4-SNAPSHOT</version>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-integration-root-pom</artifactId>
+		<version>1.2-SNAPSHOT</version>
 	</parent>
 
 	<groupId>no.nav.maven.assemblies</groupId>
@@ -17,10 +17,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-assemblies
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/assemblies
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven/maven-core-artifacts/maven-assemblies
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/assemblies
 		</developerConnection>
 	</scm>
 </project>
