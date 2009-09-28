@@ -2711,9 +2711,6 @@ incubator/maven/maven-poc/layers/modules/pom.xml -text
 incubator/maven/maven-poc/layers/pom.xml -text
 incubator/maven/maven-poc/module-groups/poc-mg1/pom.xml -text
 incubator/maven/maven-poc/module-groups/pom.xml -text
-incubator/maven/maven-runtimes/pom.xml -text
-incubator/maven/maven-runtimes/wps-runtime/files.txt -text
-incubator/maven/maven-runtimes/wps-runtime/pom.xml -text
 incubator/nav-int-fault-test/nav-broc-fault-test/.classpath -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.project -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
@@ -3331,6 +3328,9 @@ int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/configur
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
+int/maven/maven-runtimes/pom.xml -text
+int/maven/maven-runtimes/wps-runtime/files.txt -text
+int/maven/maven-runtimes/wps-runtime/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
