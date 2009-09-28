@@ -3319,13 +3319,13 @@ int/aroe/branch2/nav-cons-dok-joark-oppgave/oppgave/joark/dok/cons/nav/no/nav/in
 int/aroe/branch2/nav-cons-dok-joark-oppgave/pom.xml -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.module -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.modulex -text
-int/maven/maven-archetypes/pom.xml -text svneol=unset#text/plain
-int/maven/maven-archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
-int/maven/maven-archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
-int/maven/maven-archetypes/service-library-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
-int/maven/maven-archetypes/service-module-archetype/pom.xml -text svneol=unset#text/plain
-int/maven/maven-archetypes/service-module-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
-int/maven/maven-archetypes/service-module-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
+int/maven/archetypes/pom.xml -text svneol=unset#text/plain
+int/maven/archetypes/service-library-archetype/pom.xml -text svneol=unset#text/plain
+int/maven/archetypes/service-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
+int/maven/archetypes/service-library-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
+int/maven/archetypes/service-module-archetype/pom.xml -text svneol=unset#text/plain
+int/maven/archetypes/service-module-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
+int/maven/archetypes/service-module-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
 int/maven/maven-assemblies/pom.xml -text svneol=unset#text/plain
 int/maven/maven-assemblies/src/main/resources/assemblies/jar-with-all-dependencies.xml -text svneol=unset#text/plain
 int/maven/maven-configuration-common/pom.xml -text
