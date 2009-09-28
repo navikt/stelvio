@@ -2655,7 +2655,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/maven/maven-core-artifacts/pom.xml -text
 incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
 incubator/maven/maven-deploy-poc/pom.xml -text
