@@ -486,11 +486,11 @@ incubator/maven/maven-runtimes/wps-runtime/.project
 incubator/maven/maven-runtimes/wps-runtime/.settings
 incubator/maven/maven-runtimes/wps-runtime/bin
 incubator/maven/maven-runtimes/wps-runtime/target
-int/maven/maven-commons/maven-configuration-common/.classpath
-int/maven/maven-commons/maven-configuration-common/.project
-int/maven/maven-commons/maven-configuration-common/.settings
-int/maven/maven-commons/maven-configuration-common/bin
-int/maven/maven-commons/maven-configuration-common/target
+int/maven/commons/maven-configuration-common/.classpath
+int/maven/commons/maven-configuration-common/.project
+int/maven/commons/maven-configuration-common/.settings
+int/maven/commons/maven-configuration-common/bin
+int/maven/commons/maven-configuration-common/target
 int/maven/plugins/.classpath
 int/maven/plugins/.project
 int/maven/plugins/.settings
