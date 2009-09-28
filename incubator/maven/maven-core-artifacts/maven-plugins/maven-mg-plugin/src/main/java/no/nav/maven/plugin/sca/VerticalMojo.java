@@ -20,8 +20,6 @@ import org.apache.maven.scm.manager.ScmManager;
 import org.apache.maven.scm.repository.ScmRepository;
 
 public abstract class VerticalMojo extends AbstractMojo {
-	private static final Collection<String> SUPPORTED_PACKAGINGS = new HashSet<String>(Arrays.asList(new String[] {
-			"wps-module-ear", "wps-library-jar" }));
 	/**
 	 * The working directory. 
 	 * 
@@ -151,10 +149,6 @@ public abstract class VerticalMojo extends AbstractMojo {
 		} catch (ProjectBuildingException e) {
 			throw new MojoExecutionException("Error building projects from repository", e);
 		}
-	}
-	
-	private Collection <MavenProject> getProjectsByModules() throws MojoExecutionException {
-		return null;
 	}
 
 	protected abstract void execute(Collection<ScmProject> scmProjects) throws ScmException, MojoExecutionException;

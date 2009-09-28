@@ -76,8 +76,6 @@ public final class ArchiveManager implements IArchiveManager {
 			unArchiver.extract();
 		} catch (ArchiverException e) {
 			throw new RuntimeException("An archiver error occured extracting the archive", e);
-		} catch (IOException e) {
-			throw new RuntimeException("An io error occured extracting the archive", e);
 		}
 		
 		return tmpDir;

@@ -101,9 +101,6 @@ public class UpdateEarMojo extends AbstractMojo {
 			} catch (ArchiverException e) {
 				throw new MojoExecutionException(
 						"An error occured when extracting archive", e);
-			} catch (IOException e) {
-				throw new MojoExecutionException(
-						"An error occured when extracting archive", e);
 			}
 		}
 
