@@ -3328,7 +3328,6 @@ int/aroe/branch2/nav-cons-dok-joark-oppgave/oppgave/joark/dok/cons/nav/no/nav/in
 int/aroe/branch2/nav-cons-dok-joark-oppgave/pom.xml -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.module -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.modulex -text
-int/maven/common/pom.xml -text
 int/maven/maven-configuration-common/pom.xml -text
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain
