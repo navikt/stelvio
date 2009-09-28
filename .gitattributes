@@ -2750,21 +2750,6 @@ incubator/maven/maven-core-artifacts/maven-plugins/maven-wsdl-export/src/main/ja
 incubator/maven/maven-core-artifacts/maven-plugins/maven-wsdl-export/src/main/resources/META-INF/plexus/components.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/pom.xml -text
 incubator/maven/maven-core-artifacts/pom.xml -text
-incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/pom.xml -text
-incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/src/main/xsd/ComponentScopedRefs.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/src/main/xsd/Header.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/ibm-xmlbeans/src/main/xsd/xml.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/pom.xml -text
-incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/src/main/xsd/application_1_4.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/src/main/xsd/j2ee_1_4.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/src/main/xsd/j2ee_web_services_client_1_1.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/j2ee-xmlbeans/src/main/xsd/xml.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/pom.xml -text
-incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/moduleconfig.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/xml.xsd -text
-incubator/maven/maven-core-artifacts/xmlbeans/moduleconfig-xmlbeans/src/test/resources/example.xml -text svneol=unset#text/plain
-incubator/maven/maven-core-artifacts/xmlbeans/pom.xml -text
 incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
 incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
 incubator/maven/maven-deploy-poc/pom.xml -text
@@ -3439,6 +3424,21 @@ int/maven/poms/maven-wps-poms/maven-wps-module-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/maven-wps-pom/.project -text svneol=unset#text/plain
 int/maven/poms/maven-wps-poms/maven-wps-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
+int/maven/xmlbeans/ibm-xmlbeans/pom.xml -text
+int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
+int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ComponentScopedRefs.xsd -text
+int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/Header.xsd -text
+int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/xml.xsd -text
+int/maven/xmlbeans/j2ee-xmlbeans/pom.xml -text
+int/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/application_1_4.xsd -text
+int/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/j2ee_1_4.xsd -text
+int/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/j2ee_web_services_client_1_1.xsd -text
+int/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/xml.xsd -text
+int/maven/xmlbeans/moduleconfig-xmlbeans/pom.xml -text
+int/maven/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/moduleconfig.xsd -text
+int/maven/xmlbeans/moduleconfig-xmlbeans/src/main/xsd/xml.xsd -text
+int/maven/xmlbeans/moduleconfig-xmlbeans/src/test/resources/example.xml -text svneol=unset#text/plain
+int/maven/xmlbeans/pom.xml -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/.project -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/README.txt -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/pom.xml -text
