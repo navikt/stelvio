@@ -3328,9 +3328,6 @@ int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/configur
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
-int/maven/maven-runtimes/pom.xml -text
-int/maven/maven-runtimes/wps-runtime/files.txt -text
-int/maven/maven-runtimes/wps-runtime/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
@@ -3421,6 +3418,9 @@ int/maven/poms/maven-wps-poms/maven-wps-module-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/maven-wps-pom/.project -text svneol=unset#text/plain
 int/maven/poms/maven-wps-poms/maven-wps-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
+int/maven/runtimes/pom.xml -text
+int/maven/runtimes/wps-runtime/files.txt -text
+int/maven/runtimes/wps-runtime/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
 int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ComponentScopedRefs.xsd -text
