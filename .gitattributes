@@ -2821,12 +2821,6 @@ incubator/maven/maven-poc/layers/modules/pom.xml -text
 incubator/maven/maven-poc/layers/pom.xml -text
 incubator/maven/maven-poc/module-groups/poc-mg1/pom.xml -text
 incubator/maven/maven-poc/module-groups/pom.xml -text
-incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/.project -text
-incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/pom.xml -text
-incubator/maven/maven-poms/maven-wps-poms/maven-wps-module-pom/.project -text
-incubator/maven/maven-poms/maven-wps-poms/maven-wps-module-pom/pom.xml -text
-incubator/maven/maven-poms/maven-wps-poms/maven-wps-pom/pom.xml -text
-incubator/maven/maven-poms/maven-wps-poms/pom.xml -text
 incubator/maven/maven-poms/pom.xml -text
 incubator/maven/maven-runtimes/pom.xml -text
 incubator/maven/maven-runtimes/wps-runtime/files.txt -text
@@ -3438,6 +3432,12 @@ int/maven/poms/maven-deploy-pom/.project -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-integration-root-pom/.project -text
 int/maven/poms/maven-integration-root-pom/pom.xml -text
+int/maven/poms/maven-wps-poms/maven-wps-library-pom/.project -text
+int/maven/poms/maven-wps-poms/maven-wps-library-pom/pom.xml -text
+int/maven/poms/maven-wps-poms/maven-wps-module-pom/.project -text
+int/maven/poms/maven-wps-poms/maven-wps-module-pom/pom.xml -text
+int/maven/poms/maven-wps-poms/maven-wps-pom/pom.xml -text
+int/maven/poms/maven-wps-poms/pom.xml -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/.project -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/README.txt -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/pom.xml -text
