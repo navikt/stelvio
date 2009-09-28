@@ -430,7 +430,6 @@ incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.p
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/.settings
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/bin
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/target
-incubator/maven/maven-core-artifacts/maven-integration-root-pom/target
 incubator/maven/maven-core-artifacts/maven-plugins/.classpath
 incubator/maven/maven-core-artifacts/maven-plugins/.project
 incubator/maven/maven-core-artifacts/maven-plugins/.settings
@@ -630,6 +629,7 @@ incubator/maven/maven-runtimes/wps-runtime/.project
 incubator/maven/maven-runtimes/wps-runtime/.settings
 incubator/maven/maven-runtimes/wps-runtime/bin
 incubator/maven/maven-runtimes/wps-runtime/target
+int/maven/poms/maven-integration-root-pom/target
 int/nav-int-appclient/nav-int-wpshelper-bundle/target
 int/nav-int-appclient/nav-int-wpshelper/.project
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target

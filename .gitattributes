@@ -2670,8 +2670,6 @@ incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/sr
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-commons/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-commons/pom.xml -text
-incubator/maven/maven-core-artifacts/maven-integration-root-pom/.project -text
-incubator/maven/maven-core-artifacts/maven-integration-root-pom/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/pom.xml -text
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 incubator/maven/maven-core-artifacts/maven-plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
@@ -3438,6 +3436,8 @@ int/aroe/branch2/nav-cons-dok-joark-oppgave/oppgave/joark/dok/cons/nav/no/nav/in
 int/aroe/branch2/nav-cons-dok-joark-oppgave/pom.xml -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.module -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.modulex -text
+int/maven/poms/maven-integration-root-pom/.project -text
+int/maven/poms/maven-integration-root-pom/pom.xml -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/.project -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/README.txt -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/pom.xml -text
