@@ -481,11 +481,11 @@ int/maven/archetypes/service-module-archetype/.project
 int/maven/archetypes/service-module-archetype/.settings
 int/maven/archetypes/service-module-archetype/bin
 int/maven/archetypes/service-module-archetype/target
-int/maven/maven-assemblies/.classpath
-int/maven/maven-assemblies/.project
-int/maven/maven-assemblies/.settings
-int/maven/maven-assemblies/bin
-int/maven/maven-assemblies/target
+int/maven/assemblies/.classpath
+int/maven/assemblies/.project
+int/maven/assemblies/.settings
+int/maven/assemblies/bin
+int/maven/assemblies/target
 int/maven/maven-configuration-common/.classpath
 int/maven/maven-configuration-common/.project
 int/maven/maven-configuration-common/.settings
