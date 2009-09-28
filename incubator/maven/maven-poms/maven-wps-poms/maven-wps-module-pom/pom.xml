@@ -38,13 +38,10 @@
 						</archive>
 					</configuration>
 				</plugin>
-				<!-- 
-					TODO: Setting assembly type to pi (Project Interchange) because of what appears to be a bug in WID ServiceDeploy.
-					Remove this setting to revert to the default (jar) when the appearent bug is resolved.
-				-->
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
+					<version>RELEASE</version>
 					<configuration>
 						<assemblyType>zip</assemblyType>
 						<keep>true</keep>
@@ -52,12 +49,7 @@
 						<fileEncoding>ISO-8859-1</fileEncoding>
 					</configuration>
 				</plugin>
-
 				<plugin>
-					<!-- 
-						TODO: This is just an experimental configuration. It does not currently work. 
-						The current show-stopper is that WID sometimes decides to regenerate the project files....
-					-->
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wid-plugin</artifactId>
 					<configuration>
@@ -133,30 +125,25 @@ config.version=6.1
 						</additionalConfig>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-update-ear-plugin</artifactId>
+					<version>RELEASE</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>update-ear</goal>
+							</goals>
+							<phase>package</phase>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<!-- 
-				TODO: This is an experimental plugin that currently (20/1-2009) only updates the display-name element 
-				to include the Maven version.
-			-->
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-update-ear-plugin</artifactId>
-				<version>RELEASE</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>update-ear</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wid-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

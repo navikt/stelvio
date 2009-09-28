@@ -29,7 +29,6 @@
 				<directory>${basedir}</directory>
 				<excludes>
 					<exclude>.settings/**</exclude>
-					<exclude>bin/**</exclude>
 					<exclude>gen/**</exclude>
 				</excludes>
 				<includes>
@@ -53,17 +52,36 @@
 				</includes>
 			</resource>
 		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-wps-artifact-plugin</artifactId>
+					<version>RELEASE</version>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>
+						maven-project-interchange-plugin
+					</artifactId>
+					<version>RELEASE</version>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-wid-plugin</artifactId>
+					<version>RELEASE</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wps-artifact-plugin</artifactId>
-				<version>RELEASE</version>
-				<extensions>true</extensions>
 			</plugin>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wid-plugin</artifactId>
-				<version>RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>
