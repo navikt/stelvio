@@ -2821,8 +2821,6 @@ incubator/maven/maven-poc/layers/modules/pom.xml -text
 incubator/maven/maven-poc/layers/pom.xml -text
 incubator/maven/maven-poc/module-groups/poc-mg1/pom.xml -text
 incubator/maven/maven-poc/module-groups/pom.xml -text
-incubator/maven/maven-poms/maven-deploy-pom/.project -text
-incubator/maven/maven-poms/maven-deploy-pom/pom.xml -text
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/.project -text
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-library-pom/pom.xml -text
 incubator/maven/maven-poms/maven-wps-poms/maven-wps-module-pom/.project -text
@@ -3436,6 +3434,8 @@ int/aroe/branch2/nav-cons-dok-joark-oppgave/oppgave/joark/dok/cons/nav/no/nav/in
 int/aroe/branch2/nav-cons-dok-joark-oppgave/pom.xml -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.module -text
 int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.modulex -text
+int/maven/poms/maven-deploy-pom/.project -text
+int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-integration-root-pom/.project -text
 int/maven/poms/maven-integration-root-pom/pom.xml -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/.project -text
