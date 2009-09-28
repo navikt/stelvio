@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>no.nav.maven.artifacts</groupId>
 		<artifactId>maven-core-artifacts</artifactId>
-		<version>1.3</version>
+		<version>1.4-SNAPSHOT</version>
 	</parent>
 
 	<groupId>no.nav.maven.assemblies</groupId>
