@@ -629,7 +629,6 @@ incubator/maven/maven-runtimes/wps-runtime/target
 int/maven/poms/maven-integration-root-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/target
-int/maven/poms/maven-wps-poms/maven-wps-pom/.project
 int/nav-int-appclient/nav-int-wpshelper-bundle/target
 int/nav-int-appclient/nav-int-wpshelper/.project
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
