@@ -412,11 +412,6 @@ incubator/busconfiguration/.project
 incubator/busconfiguration/.settings
 incubator/busconfiguration/target
 incubator/maven/.project
-incubator/maven/maven-core-artifacts/maven-assemblies/.classpath
-incubator/maven/maven-core-artifacts/maven-assemblies/.project
-incubator/maven/maven-core-artifacts/maven-assemblies/.settings
-incubator/maven/maven-core-artifacts/maven-assemblies/bin
-incubator/maven/maven-core-artifacts/maven-assemblies/target
 incubator/maven/maven-deploy-poc/bus-deploy/.classpath
 incubator/maven/maven-deploy-poc/bus-deploy/.project
 incubator/maven/maven-deploy-poc/bus-deploy/.settings
@@ -486,6 +481,11 @@ int/maven/maven-archetypes/service-module-archetype/.project
 int/maven/maven-archetypes/service-module-archetype/.settings
 int/maven/maven-archetypes/service-module-archetype/bin
 int/maven/maven-archetypes/service-module-archetype/target
+int/maven/maven-assemblies/.classpath
+int/maven/maven-assemblies/.project
+int/maven/maven-assemblies/.settings
+int/maven/maven-assemblies/bin
+int/maven/maven-assemblies/target
 int/maven/maven-configuration-common/.classpath
 int/maven/maven-configuration-common/.project
 int/maven/maven-configuration-common/.settings
