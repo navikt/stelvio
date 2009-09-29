@@ -14,14 +14,6 @@
 	<version>1.34-SNAPSHOT</version>
 	<name>Websphere Interactor Plugin</name>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-plugin-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
