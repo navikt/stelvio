@@ -15,8 +15,8 @@
 	<name>Stelvio Integration Framework Maven Archetypes</name>
 
 	<modules>
-		<module>service-library-archetype</module>
-		<module>service-module-archetype</module>
+		<module>wps-library-archetype</module>
+		<module>wps-module-archetype</module>
 	</modules>
 	
 	<build>

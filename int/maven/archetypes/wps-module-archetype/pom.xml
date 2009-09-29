@@ -7,8 +7,8 @@
 		<version>1.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>service-library-archetype</artifactId>
+	<artifactId>wps-module-archetype</artifactId>
 	<version>1.1-SNAPSHOT</version>
 	<packaging>maven-archetype</packaging>
-	<name>Service Library Archetype</name>
+	<name>WPS Module Archetype</name>
 </project>
