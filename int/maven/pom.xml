@@ -12,8 +12,10 @@
 		<module>archetypes</module>
 		<module>assemblies</module>
 		<module>maven-configuration-common</module>
+		<!--
 		<module>maven-deploy-poc</module>
 		<module>maven-poc</module>
+		-->
 		<module>plugins</module>
 		<module>poms</module>
 		<module>runtimes</module>
