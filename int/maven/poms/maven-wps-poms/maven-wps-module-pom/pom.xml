@@ -54,7 +54,7 @@
 					<artifactId>maven-wid-plugin</artifactId>
 					<configuration>
 						<workspaceCodeStylesURL>
-							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
+							${eclipse.workspaceCodeStylesURL}
 						</workspaceCodeStylesURL>
 						<downloadJavadocs>true</downloadJavadocs>
 						<downloadSources>true</downloadSources>

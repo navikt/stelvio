@@ -13,45 +13,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.0.2</version>
-					<configuration>
-						<source>1.5</source>
-						<target>1.5</target>
-						<encoding>ISO-8859-1</encoding>
-						<!-- Commented out for now. Trying to avoid fork. Awaiting feedback from IBM
-							<fork>true</fork>
-							<executable>
-							${wid.runtime}\java\bin\javac
-							</executable>
-							<compilerVersion>1.5</compilerVersion>
-						-->
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.2</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.3</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.4.3</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-eclipse-plugin</artifactId>
-					<version>2.7</version>
-					<configuration>
-						<workspaceCodeStylesURL>
-							http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml?version=1
-						</workspaceCodeStylesURL>
-						<downloadJavadocs>true</downloadJavadocs>
-						<downloadSources>true</downloadSources>
-					</configuration>
-				</plugin>
-				<plugin>
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>1.0-beta-1</version>
 					<executions>
@@ -71,6 +32,64 @@
 							</configuration>
 						</execution>
 					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.0.2</version>
+					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
+						<encoding>ISO-8859-1</encoding>
+						<!-- Commented out for now. Trying to avoid fork. Awaiting feedback from IBM
+							<fork>true</fork>
+							<executable>
+							${wid.runtime}\java\bin\javac
+							</executable>
+							<compilerVersion>1.5</compilerVersion>
+						-->
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<workspaceCodeStylesURL>
+							${eclipse.workspaceCodeStylesURL}
+						</workspaceCodeStylesURL>
+						<downloadJavadocs>true</downloadJavadocs>
+						<downloadSources>true</downloadSources>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.4.3</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>2.0.1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-javadoc-plugin</artifactId>
@@ -94,22 +113,6 @@
 					<artifactId>maven-pmd-plugin</artifactId>
 					<version>2.4</version>
 				</plugin>
-				<plugin>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>2.0.1</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>2.3</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.4</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>2.3</version>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -124,6 +127,9 @@
 		<project.build.sourceEncoding>
 			ISO-8859-1
 		</project.build.sourceEncoding>
+		<eclipse.workspaceCodeStylesURL>
+			http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml
+		</eclipse.workspaceCodeStylesURL>
 	</properties>
 
 	<dependencyManagement>
