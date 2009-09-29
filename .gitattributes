@@ -2655,9 +2655,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/maven/maven-deploy-poc/bus-deploy/pom.xml -text
-incubator/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
-incubator/maven/maven-deploy-poc/pom.xml -text
 incubator/maven/maven-poc/layers/libs/poc-lib1/no/nav/gbo/StringBO.xsd -text svneol=unset#text/plain
 incubator/maven/maven-poc/layers/libs/poc-lib1/no/nav/inf/DummyIF.wsdl -text
 incubator/maven/maven-poc/layers/libs/poc-lib1/no/nav/util/LoggerUtil.java -text svneol=unset#text/plain
@@ -3328,6 +3325,9 @@ int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/configur
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
+int/maven/maven-deploy-poc/bus-deploy/pom.xml -text
+int/maven/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
+int/maven/maven-deploy-poc/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
