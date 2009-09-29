@@ -27,6 +27,10 @@
 									</requireMavenVersion>
 									<requirePluginVersions>
 										<banRelease>false</banRelease>
+										<!-- TODO: Remove this before releasing -->
+										<banSnapshots>
+											false
+										</banSnapshots>
 									</requirePluginVersions>
 								</rules>
 							</configuration>

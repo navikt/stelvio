@@ -57,7 +57,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wps-artifact-plugin</artifactId>
-					<version>RELEASE</version>
+					<version>1.4-SNAPSHOT</version>
 					<extensions>true</extensions>
 				</plugin>
 				<plugin>
@@ -65,12 +65,12 @@
 					<artifactId>
 						maven-project-interchange-plugin
 					</artifactId>
-					<version>RELEASE</version>
+					<version>1.4-SNAPSHOT</version>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wid-plugin</artifactId>
-					<version>RELEASE</version>
+					<version>1.0-SNAPSHOT</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
