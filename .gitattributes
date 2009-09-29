@@ -3328,6 +3328,7 @@ int/maven/maven-poc/layers/modules/pom.xml -text
 int/maven/maven-poc/layers/pom.xml -text
 int/maven/maven-poc/module-groups/poc-mg1/pom.xml -text
 int/maven/maven-poc/module-groups/pom.xml -text
+int/maven/maven-poc/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
@@ -3407,6 +3408,7 @@ int/maven/plugins/maven-wsdl-export-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-export-plugin/src/main/java/no/nav/maven/plugins/WSDLExportMojo.java -text
 int/maven/plugins/maven-wsdl-export-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/pom.xml -text
+int/maven/pom.xml -text
 int/maven/poms/maven-deploy-pom/.project -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-integration-root-pom/.project -text
@@ -3418,6 +3420,7 @@ int/maven/poms/maven-wps-poms/maven-wps-module-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/maven-wps-pom/.project -text svneol=unset#text/plain
 int/maven/poms/maven-wps-poms/maven-wps-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
+int/maven/poms/pom.xml -text
 int/maven/runtimes/pom.xml -text
 int/maven/runtimes/wps-runtime/files.txt -text
 int/maven/runtimes/wps-runtime/pom.xml -text
