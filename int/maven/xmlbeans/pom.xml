@@ -9,7 +9,7 @@
 		<version>1.2-SNAPSHOT</version>
 	</parent>
 
-	<groupId>no.nav.maven</groupId>
+	<groupId>no.nav.maven.support</groupId>
 	<artifactId>xmlbeans</artifactId>
 	<version>1.8-SNAPSHOT</version>
 	<packaging>pom</packaging>

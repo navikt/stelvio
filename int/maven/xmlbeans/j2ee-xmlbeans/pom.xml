@@ -2,12 +2,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven</groupId>
+		<groupId>no.nav.maven.support</groupId>
 		<artifactId>xmlbeans</artifactId>
 		<version>1.8-SNAPSHOT</version>
 	</parent>
 
-	<groupId>no.nav.maven.support</groupId>
 	<artifactId>j2ee-xmlbeans</artifactId>
 	<version>2.3-SNAPSHOT</version>
 	<name>Stelvio Integration Framework XMLBeans J2EE</name>
