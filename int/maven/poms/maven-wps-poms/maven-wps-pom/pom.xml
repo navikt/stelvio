@@ -83,6 +83,22 @@
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wid-plugin</artifactId>
 			</plugin>
+
+			<!-- TODO: The PI file is no longer used by the build. Skip it? -->
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>
+					maven-project-interchange-plugin
+				</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>project-interchange</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
