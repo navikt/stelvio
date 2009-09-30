@@ -411,7 +411,6 @@ incubator/busconfiguration/.classpath
 incubator/busconfiguration/.project
 incubator/busconfiguration/.settings
 incubator/busconfiguration/target
-incubator/maven/.project
 int/maven/archetypes/wps-library-archetype/.project
 int/maven/archetypes/wps-library-archetype/.settings
 int/maven/archetypes/wps-library-archetype/bin
