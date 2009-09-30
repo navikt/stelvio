@@ -99,8 +99,9 @@ public class UpdateEarMojo extends AbstractMojo {
 				unArchiver.setSourceFile(earFile);
 				unArchiver.extract();
 			} catch (ArchiverException e) {
-				throw new MojoExecutionException(
-						"An error occured when extracting archive", e);
+				throw new MojoExecutionException("An error occured when extracting archive", e);
+			} catch (IOException e) {
+				throw new MojoExecutionException("An error occured when extracting archive", e);
 			}
 		}
 
@@ -110,31 +111,24 @@ public class UpdateEarMojo extends AbstractMojo {
 				archiver.setDestFile(earFile);
 				archiver.createArchive();
 			} catch (ArchiverException e) {
-				throw new MojoExecutionException(
-						"An error occured when creating archive", e);
+				throw new MojoExecutionException("An error occured when creating archive", e);
 			} catch (IOException e) {
-				throw new MojoExecutionException(
-						"An error occured when creating archive", e);
+				throw new MojoExecutionException("An error occured when creating archive", e);
 			}
 		}
 
 		private void updateArchive(File tempDir) throws MojoExecutionException {
 			try {
-				File applicationXmlFile = new File(
-						new File(tempDir, "META-INF"), "application.xml");
-				ApplicationDocument applicationDocument = ApplicationDocument.Factory
-						.parse(applicationXmlFile);
+				File applicationXmlFile = new File(new File(tempDir, "META-INF"), "application.xml");
+				ApplicationDocument applicationDocument = ApplicationDocument.Factory.parse(applicationXmlFile);
 
-				applicationDocument.getApplication().getDisplayNameArray(0)
-						.setStringValue(displayName);
+				applicationDocument.getApplication().getDisplayNameArray(0).setStringValue(displayName);
 
 				applicationDocument.save(applicationXmlFile);
 			} catch (XmlException e) {
-				throw new MojoExecutionException(
-						"An error occured when updating archive", e);
+				throw new MojoExecutionException("An error occured when updating archive", e);
 			} catch (IOException e) {
-				throw new MojoExecutionException(
-						"An error occured when updating archive", e);
+				throw new MojoExecutionException("An error occured when updating archive", e);
 			}
 		}
 	}

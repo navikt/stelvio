@@ -10,37 +10,38 @@ import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 import org.codehaus.plexus.archiver.ear.EarArchiver;
 
-/** 
- * @author test@example.com 
+/**
+ * @author test@example.com
  */
 public final class ArchiveManager implements IArchiveManager {
 
 	private final Archiver archiver;
 	private final UnArchiver unArchiver;
-	
+
 	public ArchiveManager(final Archiver archiver, final UnArchiver unArchiver) {
 		this.archiver = archiver;
 		this.unArchiver = unArchiver;
 	}
-	
+
 	public final File archive(final File directory, final String targetDirectory, final String targetFileName) {
 		try {
 			archiver.addDirectory(directory);
 		} catch (ArchiverException e) {
 			throw new RuntimeException("An error occured during archiving", e);
 		}
-	
-		archiver.setDestFile(new File(targetDirectory, targetFileName)); 
+
+		archiver.setDestFile(new File(targetDirectory, targetFileName));
 
 		/* http://jira.codehaus.org/browse/MASSEMBLY-345 */
-		if(archiver instanceof EarArchiver) {
+		if (archiver instanceof EarArchiver) {
 			try {
-				((EarArchiver)archiver).setAppxml(new File(new File(directory.getAbsolutePath(),Constants.J2E_MANIFEST_DIRECTORY), Constants.J2E_APPLICATION_XML_FILE));
+				((EarArchiver) archiver).setAppxml(new File(new File(directory.getAbsolutePath(),
+						Constants.J2E_MANIFEST_DIRECTORY), Constants.J2E_APPLICATION_XML_FILE));
 			} catch (ArchiverException e) {
 				throw new RuntimeException("An error occured when setting the deployment descriptor", e);
 			}
 		}
-		
+
 		try {
 			archiver.createArchive();
 		} catch (ArchiverException e) {
@@ -48,15 +49,15 @@ public final class ArchiveManager implements IArchiveManager {
 		} catch (IOException e) {
 			throw new RuntimeException("An error occured during archiving", e);
 		}
-		
+
 		return archiver.getDestFile();
 	}
 
 	public final File unArchive(final File archive, final File directory) {
-		File tmpDir=null;
-		
+		File tmpDir = null;
+
 		try {
-			if(directory==null) {
+			if (directory == null) {
 				tmpDir = File.createTempFile(archive.getName(), null);
 			} else {
 				tmpDir = directory;
@@ -64,23 +65,25 @@ public final class ArchiveManager implements IArchiveManager {
 		} catch (IOException e) {
 			throw new RuntimeException("An error occured creating temporary directory", e);
 		}
-		
+
 		deleteDirectory(tmpDir);
 		tmpDir.mkdirs();
 		tmpDir.deleteOnExit();
-		
+
 		unArchiver.setSourceFile(archive);
 		unArchiver.setDestDirectory(tmpDir);
-		
+
 		try {
 			unArchiver.extract();
 		} catch (ArchiverException e) {
 			throw new RuntimeException("An archiver error occured extracting the archive", e);
+		} catch (IOException e) {
+			throw new RuntimeException("An archiver error occured extracting the archive", e);
 		}
-		
+
 		return tmpDir;
 	}
-	
+
 	private void deleteDirectory(File directory) {
 		if (directory.exists()) {
 			for (File file : directory.listFiles()) {

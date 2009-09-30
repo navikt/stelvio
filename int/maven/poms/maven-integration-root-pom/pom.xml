@@ -165,7 +165,8 @@
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
 				<artifactId>plexus-archiver</artifactId>
-				<version>1.0-alpha-9</version>
+				<!-- WARNING: Do not attempt to try a newer version. Tried with 1.0-alpha-8 to 1.0-alpha-11, and all gave link error. -->
+				<version>1.0-alpha-7</version>
 			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
