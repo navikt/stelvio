@@ -638,6 +638,13 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/target
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/target
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/bin
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/target
+int/stelvio-commons-bpc-lib/*.class
+int/stelvio-commons-bpc-lib/.classpath
+int/stelvio-commons-bpc-lib/.project
+int/stelvio-commons-bpc-lib/.settings
+int/stelvio-commons-bpc-lib/META-INF
+int/stelvio-commons-bpc-lib/gen
+int/stelvio-commons-bpc-lib/target
 int/stelvio-commons-lib/*.class
 int/stelvio-commons-lib/.classpath
 int/stelvio-commons-lib/.project
