@@ -645,6 +645,10 @@ int/stelvio-commons-bpc-lib/.settings
 int/stelvio-commons-bpc-lib/META-INF
 int/stelvio-commons-bpc-lib/gen
 int/stelvio-commons-bpc-lib/target
+int/stelvio-commons-lib-test/.classpath
+int/stelvio-commons-lib-test/.project
+int/stelvio-commons-lib-test/.settings
+int/stelvio-commons-lib-test/target
 int/stelvio-commons-lib/*.class
 int/stelvio-commons-lib/.classpath
 int/stelvio-commons-lib/.project
