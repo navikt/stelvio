@@ -37,6 +37,8 @@ public class FnrUtilTest extends TestCase {
 	String hnr1940to1999 = "01524090119"; //01.12.1940
 	String hnr2000to2039 = "01413090152"; //01.01.2030
 	
+	String fdat = "12345678901"; //19.04.2001
+	
 	/* ---- INVALID FNR, H-NUMMER, BOSTNR AND D-NUMMER */
 	String invalid_dnr1 = "72016050146"; // invalid dnr
 	String invalid_dnr2 = "40013010146"; // invalid dnr
@@ -143,6 +145,8 @@ public class FnrUtilTest extends TestCase {
 		assertTrue(FnrUtil.isValidFnr(hnr1900to1999));
 		assertTrue(FnrUtil.isValidFnr(hnr1940to1999));
 		assertTrue(FnrUtil.isValidFnr(hnr2000to2039));
+		
+		assertTrue(FnrUtil.isValidFnr(fdat, true));
 		
 		// SHOULD FAIL
 		assertFalse(FnrUtil.isValidFnr(invalid_dnr1));
