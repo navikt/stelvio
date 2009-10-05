@@ -31,24 +31,23 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 		}
 	}
 
-	
 	private Throwable convertThrowable(Throwable t) {
-		
-		Throwable root =t;
-		Throwable cause = root.getCause();		
+
+		Throwable root = t;
+		Throwable cause = root.getCause();
 		boolean causeSame = true;
-		
-		while(cause != null) {
+
+		while (cause != null) {
 			Throwable newCause = cause.getCause();
 			causeSame = newCause == cause;
-			if (newCause==null){
-				root=cause;
-				}
+			if (newCause == null) {
+				root = cause;
+			}
 			cause = newCause;
 		}
-		
+
 		boolean safeClass = isSafeClass(root);
-		
+
 		Throwable result;
 		if (safeClass && causeSame) {
 			// Nothing to convert (safe class and causeSame) - just return t
@@ -62,8 +61,8 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 			} else if (safeClass) {
 				result = makeNewInstanceOfSafeClass(root, cause);
 			} else {
-				result =  new ServiceRuntimeException(ErrorHelperUtil.convertSBEStackTrace((Exception)root));
-				
+				result = new ServiceRuntimeException(ErrorHelperUtil.convertSBEStackTrace((Exception) root));
+
 			}
 		}
 		result.setStackTrace(EMPTY_STACK_TRACE_ELEMENTS);
