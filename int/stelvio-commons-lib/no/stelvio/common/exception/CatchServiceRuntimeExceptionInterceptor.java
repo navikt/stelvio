@@ -31,8 +31,7 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 		}
 	}
 
-	private Throwable convertThrowable(Throwable t) {
-
+	public Throwable convertThrowable(Throwable t) {
 		Throwable root = t;
 		Throwable cause = root.getCause();
 		boolean causeSame = true;
