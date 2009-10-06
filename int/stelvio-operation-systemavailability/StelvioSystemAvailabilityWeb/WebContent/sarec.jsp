@@ -79,7 +79,7 @@
 		Downtime Reason:<%=rec.getUnavailableReasonString()%><br>
 		Stubbed: <%=rec.getStubbedString()%><br>
 		Record stub data: <%=rec.getRecordStubDataString()%><br>
-
+		Max Simultaneous Invocations: <%=rec.maxSimultaneousInvocations %>
 		<br>
 		<p><input type="submit" value="Save"> <br>
 		</p>
