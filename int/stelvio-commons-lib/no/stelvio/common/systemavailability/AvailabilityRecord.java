@@ -19,6 +19,7 @@ import java.util.List;
 public class AvailabilityRecord {
 	public String systemName;
 	public List operations; //OperationAvailabilityRecord
+	public Integer maxSimultaneousInvocations;
 	
 	public String getUnavailableString(){
 		OperationAvailabilityRecord allRec=this.findOrCreateOperation("ALL");

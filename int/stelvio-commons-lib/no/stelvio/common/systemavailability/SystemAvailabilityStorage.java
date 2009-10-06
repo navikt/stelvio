@@ -7,8 +7,11 @@
 package no.stelvio.common.systemavailability;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -28,9 +31,10 @@ public class SystemAvailabilityStorage{
 	String saDirName=null;
 	private com.ibm.websphere.bo.BOFactory boFactory = null;
 	BOXMLSerializer xmlSerializerService=null;
+	private static Map<String, AvailabilityCacheEntry> availabilityCache=new HashMap<String, AvailabilityCacheEntry>();
 	
 	public SystemAvailabilityStorage(){
-
+		
 		ServiceManager serviceManager = new com.ibm.websphere.sca.ServiceManager();
 		xmlSerializerService=(BOXMLSerializer)serviceManager.locateService("com/ibm/websphere/bo/BOXMLSerializer");
 		boFactory = (com.ibm.websphere.bo.BOFactory)serviceManager.locateService("com/ibm/websphere/bo/BOFactory");
@@ -69,6 +73,9 @@ public class SystemAvailabilityStorage{
 		try {
 			DataObject obj=	 boFactory.create("http://stelvio-commons-lib/no/stelvio/common/systemavailability", "SystemAvailabilityRecord");
 			obj.setString("SystemName",record.systemName);
+			if (record.maxSimultaneousInvocations==null)
+				record.maxSimultaneousInvocations=25;
+			obj.setInt("MaxSimultaneousInvocations", record.maxSimultaneousInvocations);
 			
 			List<DataObject> operationList=new ArrayList<DataObject>();
 			int i;
@@ -101,15 +108,26 @@ public class SystemAvailabilityStorage{
 	@SuppressWarnings("unchecked")
 	public AvailabilityRecord getAvailabilityRecord(String systemName){
 		
-		try {
+		try {			
 			File f=new File(saDirName,systemName+".xml");
 			if (!f.exists())
 				return null;
+			synchronized(availabilityCache){
+				AvailabilityCacheEntry cachedElement = availabilityCache.get(systemName);
+				if (cachedElement!=null){					
+					if (cachedElement.lastModified==f.lastModified()){
+						return cachedElement.availabilityRecord;
+					}
+				}
+			}
+			
+			
 			FileInputStream fis=new FileInputStream(f);
 			BOXMLDocument doc=xmlSerializerService.readXMLDocument(fis);
 			DataObject obj=doc.getDataObject();
 			AvailabilityRecord rec=new AvailabilityRecord();
 			rec.systemName=obj.getString("SystemName");	
+			rec.maxSimultaneousInvocations=obj.getInt("MaxSimultaneousInvocations");
 			rec.operations=new ArrayList();
 			List storedOperationList=obj.getList("Operations");
 			Iterator i=storedOperationList.iterator();
@@ -124,6 +142,10 @@ public class SystemAvailabilityStorage{
 				rec.operations.add(opRec);			
 			}
 			fis.close();
+			AvailabilityCacheEntry newEntry=new AvailabilityCacheEntry(rec, f.lastModified());
+			synchronized(availabilityCache){
+				availabilityCache.put(systemName, newEntry);
+			}
 			return rec;			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -181,6 +203,15 @@ public class SystemAvailabilityStorage{
 			return;
 		f.delete();
 		return;
+	}
+	
+	private class AvailabilityCacheEntry{
+		public AvailabilityCacheEntry(AvailabilityRecord rec, long l) {
+			this.availabilityRecord=rec;
+			this.lastModified=l;
+		}
+		public long lastModified;
+		public AvailabilityRecord availabilityRecord;
 	}
 
 }
