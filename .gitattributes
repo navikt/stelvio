@@ -3808,8 +3808,6 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-IN
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/application.xml -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.classpath -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.project -text svneol=unset#text/plain
-int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/stelvio/systemavailability/AvailabilityRecord.java -text svneol=unset#text/plain
-int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/stelvio/systemavailability/StaticSystemAvailabilityStorage.java -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.project -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.runtime -text
