@@ -14,10 +14,22 @@
 	{"name":"transaction",	"value":"on"},
 	{"name":"rule",			"value":"on"}	
 ]/>
+<#assign logFaultActionParams=[
+	{"name":"log-store",	"value":"${nfsLogTargetName}"},
+	{"name":"domain",		"value":"on"},
+	{"name":"proxy",		"value":"on"},
+	{"name":"operation",	"value":"on"},
+	{"name":"user",			"value":"on"},
+	{"name":"transaction",	"value":"on"},
+	{"name":"rule",			"value":"off"},
+	{"name":"custom",		"value":"fault"}
+]/>
 
 <#assign signatureValCred="messageSignature_CryptoValCred"/>
 <#assign matchingRuleAll="ELSAMDefault_match_all"/>
 <#assign matchingRuleAllErrors="ELSAMDefault_match_allErrors"/>
+<#assign matchingRuleAllSoapFaults="ELSAMDefault_match_allSoapFaults"/>
+<#assign logDestination="var://context/log/destination"/>
 <#assign inboundProcessingPolicyUnsigned="OppkoblingstestInboundUnsignedPolicy"/>
 <#assign inboundProcessingPolicySigned="OppkoblingstestInboundSignedPolicy">
 
@@ -31,6 +43,9 @@
 	<@dp.MatchingRuleURL
 			name="${matchingRuleAll}"
 			urlMatch="*"/>
+	<@dp.MatchingRuleXPath
+			name="${matchingRuleAllSoapFaults}"
+			xpathExpression="/*[namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' and local-name()='Envelope']/*[namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' and local-name()='Body']/*[namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' and local-name()='Fault']"/>
 	<@dp.MatchingRuleErrorCode
 			name="${matchingRuleAllErrors}"
 			errorCodeMatch="*"/>
@@ -45,16 +60,32 @@
 				{"type":"verify", "name":"verifiyAction",
 						"input":"INPUT",	"output":"NULL",
 						"valCred":"${signatureValCred}"},
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"INPUT",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"INPUT",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"addStelvioCtxAction", "async":"off",
 						"input":"aaaOutput",	"output":"stelvioContextIncluded",
 						"stylesheet":"local:///xslt/add-stelvio-context.xsl",
 						"params":[]},
 				{"type":"result", "name":"resultAction",
 					"input":"stelvioContextIncluded","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingFaultRule
+		name="${inboundProcessingPolicySigned}"
+		actions=[
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"INPUT",	"output":"log",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
+				{"type":"result", "name":"resultAction",
+					"input":"INPUT","output":"OUTPUT"}
 			]/>	
 	<@dp.ProcessingResponseRule
 		name="${inboundProcessingPolicySigned}"
@@ -63,24 +94,37 @@
 						"input":"INPUT",	"output":"signedResponse",
 						"signCert":"${navSigningKeystoreName}",
 						"signKey":"${navSigningKeystoreName}"}
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"signedResponse",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"signedResponse",	"output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"signedResponse","output":"OUTPUT"}
 			]/>	
 	<@dp.ProcessingErrorRule
 			name="${inboundProcessingPolicySigned}"
 			actions=[
+				{"type":"xform", "name":"prepareErrorLogAction",
+						"input":"INPUT", "output":"log",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"sendErrorLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"createFaultAction", "async":"off",
 						"input":"INPUT",	"output":"faultGenerisk",
 						"stylesheet":"local:///xslt/faultgenerisk.xsl",
 						"params":[]},
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"faultGenerisk",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"faultGenerisk", "output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
-						"params":logActionParams},
+						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"faultGenerisk","output":"OUTPUT"}
 			]/>
@@ -89,6 +133,7 @@
 			name="${inboundProcessingPolicySigned}"
 			policyMapsList=[
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicySigned}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAllSoapFaults}","processingRule":"${inboundProcessingPolicySigned}_fault-response-rule"},
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicySigned}_response-rule"},
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicySigned}_error-rule"}
 			]/>
@@ -100,10 +145,13 @@
 				{"type":"aaa",	"name":"aaaAction",	
 						"input":"INPUT",	"output":"aaaOutput",
 						"policy":"${inboundAaaPolicyName}AllAuth"}, 
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"INPUT",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"INPUT",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"addStelvioCtxAction", "async":"off",
 						"input":"aaaOutput",	"output":"stelvioContextIncluded",
 						"stylesheet":"local:///xslt/add-stelvio-context.xsl",
@@ -111,27 +159,53 @@
 				{"type":"result", "name":"resultAction",
 					"input":"stelvioContextIncluded","output":"OUTPUT"}
 			]/>	
+	<@dp.ProcessingFaultRule
+		name="${inboundProcessingPolicyUnsigned}"
+		actions=[
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"INPUT",	"output":"log", "async":"off",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
+				{"type":"result", "name":"resultAction",
+					"input":"INPUT","output":"OUTPUT"}
+			]/>	
 	<@dp.ProcessingResponseRule
 		name="${inboundProcessingPolicyUnsigned}"
 		actions=[
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"INPUT",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"INPUT",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"INPUT","output":"OUTPUT"}
 			]/>	
 	<@dp.ProcessingErrorRule
 			name="${inboundProcessingPolicyUnsigned}"
 			actions=[
+				{"type":"xform", "name":"prepareErrorLogAction",
+						"input":"INPUT", "output":"log",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"sendErrorLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"createFaultAction", "async":"off",
 						"input":"INPUT",	"output":"faultGenerisk",
 						"stylesheet":"local:///xslt/faultgenerisk.xsl",
 						"params":[]},
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"faultGenerisk",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"faultGenerisk", "output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
-						"params":logActionParams},
+						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"faultGenerisk","output":"OUTPUT"}
 			]/>
@@ -140,6 +214,7 @@
 			name="${inboundProcessingPolicyUnsigned}"
 			policyMapsList=[
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicyUnsigned}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAllSoapFaults}","processingRule":"${inboundProcessingPolicyUnsigned}_fault-response-rule"},
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicyUnsigned}_response-rule"},
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicyUnsigned}_error-rule"}
 			]/>
