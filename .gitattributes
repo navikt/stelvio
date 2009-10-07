@@ -1410,6 +1410,7 @@ dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/Front
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/LogTarget.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/MatchingRuleErrorCode.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/MatchingRuleURL.ftl -text
+dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/MatchingRuleXPath.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/NFSStaticMount.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/ProcessingRule.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/ProcessingRules.ftl -text
