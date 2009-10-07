@@ -19,7 +19,7 @@ plugins\com.ibm.ws.portletcontainer_2.0.0.jar
 plugins\com.ibm.ws.emf_2.1.0.jar
 plugins\com.ibm.ws.ejbportable_6.1.0.jar
 runtimes\com.ibm.ws.admin.client_6.1.0.jar
-plugins\com.ibm.ws.wccm_6.1.0.jar
+plugins\com.ibm.wps.wccm_6.1.0.jar
 plugins\com.ibm.wps.runtime_6.1.0.jar
 plugins\com.ibm.wbicmn.wccm_6.1.0.jar
 plugins\com.ibm.wbicmn.system_6.1.0.jar
