@@ -111,7 +111,7 @@
 			<Toggles>
 				<Enable>on</Enable>
 				<Publish>on</Publish>
-				<VerifyFaults>off</VerifyFaults>
+				<VerifyFaults>on</VerifyFaults>
 				<VerifyHeaders>off</VerifyHeaders>
 				<NoRequestValidation>off</NoRequestValidation>
 				<NoResponseValidation>off</NoResponseValidation>
