@@ -45,6 +45,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	private static final String GENERATOR_NAME = "secgw";
 	private static final String TEMPLATE_CFG = "secgw-configuration.ftl";
 	private static final String TEMPLATE_AAA = "aaa-mapping-file.ftl";
+	private static final String TEMPLATE_AAA_SBLUTB = "aaa-mapping-file-SBLUTB.ftl";
 	private static final String TEMPLATE_AAA_WORKMATE = "aaa-basic-auth-file.ftl";
 	private static final String REQUIRED_PROPERTIES_NAME = "/cfg-secgw-required.properties";
 	private static final Properties REQUIRED_PROPERTIES = DPPropertiesUtils.load(SGWConfigGeneratorImpl.class,REQUIRED_PROPERTIES_NAME);
@@ -89,7 +90,7 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			throw new IllegalStateException("Caught IOException while extracting WSDL files from EAR archives",e);
 		}
 
-		// Generate AAAInfo file
+		// Generate AAAInfo files
 		try {
 			String aaaFilename = cfg.getProperty("aaaFileName");
 			LOG.debug("Generating AAA file " + aaaFilename);
@@ -98,6 +99,20 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			processTemplate(TEMPLATE_AAA, cfg.getProperties(), aaaWriter);
 			aaaWriter.close();
 			LOG.debug("Done generating AAA file " + aaaFilename);
+		} catch (IOException e) {
+			throw new IllegalStateException("Caught IOException while building AAAInfo file", e);
+		} catch (TemplateException e) {
+			throw new IllegalStateException("Template processing failed for AAAInfo file", e);
+		}
+		
+		try {
+			String SBLUTBaaaFilename = cfg.getProperty("SBLUTBWPSaaaFileName");
+			LOG.debug("Generating AAA file " + SBLUTBaaaFilename);
+			File SBLUTBaaaMappingFile = DPFileUtils.append(unit.getFilesLocalAaaDir(), SBLUTBaaaFilename);
+			FileWriter SBLUTBaaaWriter = new FileWriter(SBLUTBaaaMappingFile);
+			processTemplate(TEMPLATE_AAA_SBLUTB, cfg.getProperties(), SBLUTBaaaWriter);
+			SBLUTBaaaWriter.close();
+			LOG.debug("Done generating AAA file " + SBLUTBaaaFilename);
 		} catch (IOException e) {
 			throw new IllegalStateException("Caught IOException while building AAAInfo file", e);
 		} catch (TemplateException e) {
