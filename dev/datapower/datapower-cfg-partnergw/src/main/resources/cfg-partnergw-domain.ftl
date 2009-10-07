@@ -6,18 +6,30 @@
 
 
 <#assign logActionParams=[
-	{"name":"log-store",	"value":"${nfsLogTargetName}"},	
-	{"name":"domain",		"value":"on"},	
-	{"name":"proxy",		"value":"on"},	
-	{"name":"operation",	"value":"on"},	
-	{"name":"user",			"value":"on"},	
+	{"name":"log-store",	"value":"${nfsLogTargetName}"},
+	{"name":"domain",		"value":"on"},
+	{"name":"proxy",		"value":"on"},
+	{"name":"operation",	"value":"on"},
+	{"name":"user",			"value":"on"},
 	{"name":"transaction",	"value":"on"},
-	{"name":"rule",			"value":"on"}	
+	{"name":"rule",			"value":"on"}
+]/>
+<#assign logFaultActionParams=[
+	{"name":"log-store",	"value":"${nfsLogTargetName}"},
+	{"name":"domain",		"value":"on"},
+	{"name":"proxy",		"value":"on"},
+	{"name":"operation",	"value":"on"},
+	{"name":"user",			"value":"on"},
+	{"name":"transaction",	"value":"on"},
+	{"name":"rule",			"value":"off"},
+	{"name":"custom",		"value":"fault"}
 ]/>
 
 <#assign signatureValCred="messageSignature_CryptoValCred"/>
 <#assign matchingRuleAll="ELSAMDefault_match_all"/>
 <#assign matchingRuleAllErrors="ELSAMDefault_match_allErrors"/>
+<#assign matchingRuleAllSoapFaults="ELSAMDefault_match_allSoapFaults"/>
+<#assign logDestination="var://context/log/destination"/>
 
 <#assign nameNP="NorskPensjon"/>
 <#assign outboundProcessingPolicyNP="${nameNP}OutboundPolicy"/>
@@ -86,6 +98,9 @@
 	<@dp.MatchingRuleURL
 			name="${matchingRuleAll}"
 			urlMatch="*"/>
+	<@dp.MatchingRuleXPath
+			name="${matchingRuleAllSoapFaults}"
+			xpathExpression="/*[namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' and local-name()='Envelope']/*[namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' and local-name()='Body']/*[namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/' and local-name()='Fault']"/>
 	<@dp.MatchingRuleErrorCode
 			name="${matchingRuleAllErrors}"
 			errorCodeMatch="*"/>
@@ -100,16 +115,33 @@
 				{"type":"verify", "name":"verifiyAction",
 						"input":"INPUT",	"output":"NULL",
 						"valCred":"${signatureValCred}"},
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"INPUT",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"INPUT",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
-				{"type":"xform", "name":"addStelvioCtxAction", "async":"off",
-						"input":"aaaOutput",	"output":"stelvioContextIncluded",
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
+				{"type":"xform", "name":"addStelvioCtxAction",
+						"input":"aaaOutput",	"output":"stelvioContextIncluded", "async":"off",
 						"stylesheet":"local:///xslt/add-stelvio-context.xsl",
 						"params":[]},
 				{"type":"result", "name":"resultAction",
 					"input":"stelvioContextIncluded","output":"OUTPUT"}
+			]/>	
+	<@dp.ProcessingFaultRule
+		name="${inboundProcessingPolicy}"
+		actions=[
+				{"type":"sign", "name":"signAction",
+						"input":"INPUT",	"output":"signedResponse",
+						"signCert":"${navSigningKeystoreName}",
+						"signKey":"${navSigningKeystoreName}"}
+				{"type":"xform", "name":"logAction",
+						"input":"signedResponse",	"output":"NULL", "async":"on",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logFaultActionParams},
+				{"type":"result", "name":"resultAction",
+					"input":"signedResponse","output":"OUTPUT"}
 			]/>	
 	<@dp.ProcessingResponseRule
 		name="${inboundProcessingPolicy}"
@@ -118,8 +150,8 @@
 						"input":"INPUT",	"output":"signedResponse",
 						"signCert":"${navSigningKeystoreName}",
 						"signKey":"${navSigningKeystoreName}"}
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"signedResponse",	"output":"NULL",
+				{"type":"xform", "name":"logAction",
+						"input":"signedResponse",	"output":"NULL", "async":"on",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
 				{"type":"result", "name":"resultAction",
@@ -137,7 +169,7 @@
 				{"type":"xform", "name":"logAction",
 						"input":"faultHandler",	"output":"NULL", "async":"on",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
-						"params":logActionParams},
+						"params":logFaultActionParams},
 				{"type":"result", "name":"resultAction",
 					"input":"faultHandler","output":"OUTPUT"}
 			]/>
@@ -179,7 +211,7 @@
 						"signCert":"${navSigningKeystoreName}",
 						"signKey":"${navSigningKeystoreName}"}
 				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"signedResponse",	"output":"NULL",
+						"input":"signedResponse", "output":"NULL",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
 				{"type":"result", "name":"resultAction",
@@ -189,7 +221,7 @@
 			name="${inboundProcessingPolicyNP}"
 			actions=[
 				{"type":"xform", "name":"createFaultAction",
-						"input":"INPUT",	"output":"faultHandler", "async":"off",
+						"input":"INPUT", "output":"faultHandler", "async":"off",
 						"stylesheet":"local:///xslt/fault-handler.xsl",
 						"params":[
 							{"name":"fault-prefix","value":"DataPower Security Gateway"}
@@ -197,7 +229,7 @@
 				{"type":"xform", "name":"logAction",
 						"input":"faultHandler",	"output":"NULL", "async":"on",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
-						"params":logActionParams},
+						"params":logFaultActionParams},
 				{"type":"result", "name":"resultAction",
 					"input":"faultHandler","output":"OUTPUT"}
 			]/>
@@ -214,8 +246,8 @@
 	<@dp.ProcessingRequestRule
 		name="${outboundProcessingPolicy}"
 		actions=[
-				{"type":"aaa",	"name":"aaaAction",	
-						"input":"INPUT",	"output":"PIPE",
+				{"type":"aaa", "name":"aaaAction",	
+						"input":"INPUT", "output":"PIPE",
 						"policy":"${outboundAaaPolicyName}"},
 				{"type":"xform", "name":"stripWSSecAction",
 						"input":"PIPE",	"output":"PIPE", "async":"off",
@@ -225,43 +257,76 @@
 						"input":"PIPE",	"output":"signedRequest",
 						"signCert":"${navSigningKeystoreName}",
 						"signKey":"${navSigningKeystoreName}"}
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"signedRequest",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"signedRequest", "output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"signedRequest","output":"OUTPUT"}
 			]/>	
+	<@dp.ProcessingFaultRule
+		name="${outboundProcessingPolicy}"
+		actions=[
+				{"type":"xform", "name":"stripWssAction", "async":"off",
+						"input":"INPUT", "output":"wssHeaderRemoved",
+						"stylesheet":"store:///strip-security-header.xsl",
+						"params":[]},
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"wssHeaderRemoved",	"output":"log",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
+				{"type":"result", "name":"resultAction",
+					"input":"wssHeaderRemoved","output":"OUTPUT"}
+			]/>
 	<@dp.ProcessingResponseRule
 		name="${outboundProcessingPolicy}"
 		actions=[
 				{"type":"verify", "name":"verifiyAction",
 						"input":"INPUT",	"output":"NULL",
 						"valCred":"${signatureValCred}"},
-				{"type":"xform", "name":"logAction",
-						"input":"INPUT",	"output":"NULL", "async":"on",
-						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
-						"params":logActionParams},
 				{"type":"xform", "name":"stripWssAction", "async":"off",
-						"input":"INPUT",	"output":"wssHeaderRemoved",
+						"input":"INPUT", "output":"wssHeaderRemoved",
 						"stylesheet":"store:///strip-security-header.xsl",
 						"params":[]},
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"wssHeaderRemoved",	"output":"log",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"wssHeaderRemoved","output":"OUTPUT"}
 			]/>
 	<@dp.ProcessingErrorRule
 		name="${outboundProcessingPolicy}"
 		actions=[
+				{"type":"xform", "name":"prepareErrorLogAction",
+						"input":"INPUT", "output":"log",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"sendErrorLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"createFaultAction",
-						"input":"INPUT",	"output":"faultHandler", "async":"off",
+						"input":"INPUT", "output":"faultHandler", "async":"off",
 						"stylesheet":"local:///xslt/fault-handler.xsl",
 						"params":[
 							{"name":"fault-prefix","value":"DataPower Security Gateway"}
 						]},
-				{"type":"xform", "name":"logAction",
-						"input":"faultHandler",	"output":"NULL", "async":"on",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"faultHandler", "output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
-						"params":logActionParams},
+						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"faultHandler","output":"OUTPUT"}
 			]/>
@@ -270,6 +335,7 @@
 			name="${outboundProcessingPolicy}"
 			policyMapsList=[
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicy}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAllSoapFaults}","processingRule":"${outboundProcessingPolicy}_fault-response-rule"},
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${outboundProcessingPolicy}_response-rule"},
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${outboundProcessingPolicy}_error-rule"}
 			]/>
@@ -289,8 +355,8 @@
 						"input":"PIPE",	"output":"signedRequest",
 						"signCert":"${navSigningKeystoreName}",
 						"signKey":"${navSigningKeystoreName}"}
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"signedRequest",	"output":"NULL",
+				{"type":"xform", "name":"logAction",
+						"input":"signedRequest", "output":"NULL", "async":"on",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
 				{"type":"result", "name":"resultAction",
@@ -307,8 +373,8 @@
 						"input":"INPUT",	"output":"NULL", "async":"on",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
-				{"type":"xform", "name":"stripWssAction", "async":"off",
-						"input":"INPUT",	"output":"wssHeaderRemoved",
+				{"type":"xform", "name":"stripWssAction",
+						"input":"INPUT",	"output":"wssHeaderRemoved", "async":"off",
 						"stylesheet":"store:///strip-security-header.xsl",
 						"params":[]},
 				{"type":"result", "name":"resultAction",
@@ -484,7 +550,7 @@
 	/>
 	<@dp.LogTarget
 		name="error-log"
-		size="maxSizeError"
+		size="${maxSizeError}"
 		nfsStaticMount="${loggingRemoteHost}"
 		logFileName="${cfgDomain}_error.log"
 		rotations="${numRotError}"
