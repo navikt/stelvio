@@ -1414,6 +1414,7 @@ dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/Match
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/NFSStaticMount.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/ProcessingRule.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/ProcessingRules.ftl -text
+dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/RequestFaultResponseErrorRuleProcessingPolicy.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/RequestResponseErrorRuleProcessingPolicy.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/RequestResponseRuleProcessingPolicy.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/ReverseCryptoProfile.ftl -text
