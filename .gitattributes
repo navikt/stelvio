@@ -1399,6 +1399,7 @@ dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPo
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyClientSSL2LTPA.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyClientSSL2LTPAAllAuthenticated.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyLTPA2LTPA.ftl -text
+dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/AAAPolicyLTPA2None.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/CryptoCertificate.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/CryptoIdentCred.ftl -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/resources/lib/CryptoKey.ftl -text
