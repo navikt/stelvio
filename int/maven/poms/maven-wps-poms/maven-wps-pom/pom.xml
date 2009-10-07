@@ -55,6 +55,15 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<configuration>
+						<includes>
+							<include>**/*.java</include>
+							<include>pom.xml</include>
+						</includes>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wps-artifact-plugin</artifactId>
 					<version>1.4-SNAPSHOT</version>
@@ -82,22 +91,6 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wid-plugin</artifactId>
-			</plugin>
-
-			<!-- TODO: The PI file is no longer used by the build. Skip it? -->
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>
-					maven-project-interchange-plugin
-				</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>project-interchange</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

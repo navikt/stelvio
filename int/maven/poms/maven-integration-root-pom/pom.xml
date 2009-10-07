@@ -15,27 +15,18 @@
 				<plugin>
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>1.0-beta-1</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>enforce</goal>
-							</goals>
-							<configuration>
-								<rules>
-									<requireMavenVersion>
-										<version>2.0.9</version>
-									</requireMavenVersion>
-									<requirePluginVersions>
-										<banRelease>false</banRelease>
-										<!-- TODO: Remove this before releasing -->
-										<banSnapshots>
-											false
-										</banSnapshots>
-									</requirePluginVersions>
-								</rules>
-							</configuration>
-						</execution>
-					</executions>
+					<configuration>
+						<rules>
+							<requireMavenVersion>
+								<version>2.0.9</version>
+							</requireMavenVersion>
+							<requirePluginVersions>
+								<banRelease>false</banRelease>
+								<!-- TODO: Remove this before releasing -->
+								<banSnapshots>false</banSnapshots>
+							</requirePluginVersions>
+						</rules>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -94,6 +85,10 @@
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>2.3</version>
 				</plugin>
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1</version>
+				</plugin>
 
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
@@ -131,6 +126,24 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
