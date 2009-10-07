@@ -7,6 +7,14 @@
 		actions=actions/>
 </#macro>
 
+<#macro ProcessingFaultRule name actions>
+	<@ProcessingRule
+		name="${name}"
+		direction="response-rule"
+		actions=actions
+		subtype="fault-"/>
+</#macro>
+
 <#macro ProcessingResponseRule name actions>
 	<@ProcessingRule
 		name="${name}"
