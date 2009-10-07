@@ -15,10 +15,12 @@
 <#include "FrontsideHandler.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
+<#include "MatchingRuleXPath.ftl">
 <#include "NFSStaticMount.ftl">
 <#include "ProcessingRules.ftl">
 <#include "RequestResponseRuleProcessingPolicy.ftl">
 <#include "RequestResponseErrorRuleProcessingPolicy.ftl">
+<#include "RequestFaultResponseErrorRuleProcessingPolicy.ftl">
 <#include "SLMPolicy.ftl">
 <#include "StylePolicyActionAAA.ftl">
 <#include "StylePolicyActionLog.ftl">
