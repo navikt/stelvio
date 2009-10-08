@@ -5,7 +5,6 @@
 package no.stelvio.common.bus.util;
 
 import java.util.HashMap;
-
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,15 +12,15 @@ import java.util.logging.Logger;
 import javax.security.auth.Subject;
 import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
+import javax.xml.soap.SOAPElement;
 
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.auth.callback.WSCallbackHandlerImpl;
 import com.ibm.websphere.security.cred.WSCredential;
 import com.ibm.ws.security.util.PasswordUtil;
-import com.ibm.ws.webservices.engine.xmlsoap.SOAPFactory;
 import com.ibm.ws.webservices.engine.encoding.Base64;
 import com.ibm.ws.webservices.engine.xmlsoap.Name;
-import com.ibm.ws.webservices.engine.xmlsoap.SOAPElement;
+import com.ibm.ws.webservices.engine.xmlsoap.SOAPFactory;
 
 
 /**

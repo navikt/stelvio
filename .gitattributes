@@ -3626,6 +3626,7 @@ int/pom.xml -text
 int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BPELHelperUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/pom.xml -text svneol=unset#text/plain
 int/stelvio-commons-lib-test/pom.xml -text
+int/stelvio-commons-lib-test/src/main/java/Dummy.java -text
 int/stelvio-commons-lib-test/src/test/java/no/stelvio/common/bus/util/FnrUtilTest.java -text
 int/stelvio-commons-lib-test/src/test/java/no/stelvio/common/exception/CatchServiceRuntimeExceptionInterceptorTest.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/.runtime -text
