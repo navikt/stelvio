@@ -4,8 +4,6 @@
  */
 package no.stelvio.common.bus.handlers.jaxrpc;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,17 +18,18 @@ import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPHeader;
 
+import no.stelvio.common.util.ExceptionUtils;
+
 import com.ibm.websphere.workarea.UserWorkArea;
 
 /**
  * @author persona2c5e3b49756 Schnell
- *  
+ * 
  */
 public class StelvioCommonContextHandler extends GenericHandler {
 
 	// Sample - log.logp(Level.FINEST, className, <yourMethod>, <yourText>);
-	private static final String CLASSNAME = StelvioCommonContextHandler.class
-			.getName();
+	private static final String CLASSNAME = StelvioCommonContextHandler.class.getName();
 
 	private final Logger log = Logger.getLogger(CLASSNAME);
 
@@ -70,19 +69,16 @@ public class StelvioCommonContextHandler extends GenericHandler {
 	 */
 	public void destroy() {
 		final String methodName = "destroy()";
-		
+
 		// housekeeping workArea
 		try {
-			if (workArea.getName().equalsIgnoreCase(WORKAREANAME))
-			{
+			if (workArea.getName().equalsIgnoreCase(WORKAREANAME)) {
 				workArea.remove(WORKAREANAME);
 			}
 			workArea.complete();
-			log.logp(Level.FINE, CLASSNAME, methodName, "WorkArea "
-					+ WORKAREANAME + " removed.");
+			log.logp(Level.FINE, CLASSNAME, methodName, "WorkArea " + WORKAREANAME + " removed.");
 		} catch (Exception e) {
-			log.logp(Level.SEVERE, CLASSNAME, methodName, "Error: "
-					+ e.getMessage());
+			log.logp(Level.SEVERE, CLASSNAME, methodName, "Error: " + e.getMessage());
 		}
 		// inherit
 		super.destroy();
@@ -94,7 +90,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 	 */
 	public boolean handleFault(MessageContext context) {
 		final String methodName = "handleFault()";
-		
+
 		try {
 			// get SOAP message context
 			SOAPMessageContext smc = (SOAPMessageContext) context;
@@ -106,16 +102,14 @@ public class StelvioCommonContextHandler extends GenericHandler {
 			SOAPHeader sh = se.getHeader();
 
 			if (sh == null) {
-				log.logp(Level.WARNING, CLASSNAME, methodName,
-						"No SOAP headers found in the SOAP request message");
+				log.logp(Level.WARNING, CLASSNAME, methodName, "No SOAP headers found in the SOAP request message");
 			} else {
 				// call method to process header
-				processSOAPHeader(sh);				
+				processSOAPHeader(sh);
 			}
-				
+
 		} catch (Exception e) {
-			log.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: "
-					+ getExceptionTrace(e));
+			log.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: " + ExceptionUtils.getStackTrace(e));
 		}
 
 		// even no header exists we return true to avoid exception
@@ -128,7 +122,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 	 */
 	public boolean handleRequest(MessageContext context) {
 		final String methodName = "handleRequest()";
-		
+
 		try {
 			// get SOAP message context
 			SOAPMessageContext smc = (SOAPMessageContext) context;
@@ -140,15 +134,13 @@ public class StelvioCommonContextHandler extends GenericHandler {
 			SOAPHeader sh = se.getHeader();
 
 			if (sh == null) {
-				log.logp(Level.WARNING, CLASSNAME, methodName,
-						"No SOAP headers found in the SOAP request message");
+				log.logp(Level.WARNING, CLASSNAME, methodName, "No SOAP headers found in the SOAP request message");
 			} else {
 				// call method to process header
 				processSOAPHeader(sh);
 			}
 		} catch (Exception e) {
-			log.logp(Level.SEVERE, CLASSNAME, methodName,
-					"CatchedError: " + getExceptionTrace(e));
+			log.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: " + ExceptionUtils.getStackTrace(e));
 		}
 
 		// even no header exists we return true to avoid exception
@@ -170,18 +162,15 @@ public class StelvioCommonContextHandler extends GenericHandler {
 	 */
 	public void init(HandlerInfo arg) {
 		final String methodName = "init()";
-		
-		info = arg;		
+
+		info = arg;
 		try {
-			log.logp(Level.FINE, CLASSNAME, methodName,
-					"-- operate workArea with name " + WORKAREANAME);
+			log.logp(Level.FINE, CLASSNAME, methodName, "-- operate workArea with name " + WORKAREANAME);
 			workAreaCtx = new InitialContext();
-			workArea = (UserWorkArea) workAreaCtx
-					.lookup("java:comp/websphere/UserWorkArea");
+			workArea = (UserWorkArea) workAreaCtx.lookup("java:comp/websphere/UserWorkArea");
 
 		} catch (Exception e) {
-			log.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: "
-					+ getExceptionTrace(e));
+			log.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: " + ExceptionUtils.getStackTrace(e));
 		}
 	}
 
@@ -199,22 +188,19 @@ public class StelvioCommonContextHandler extends GenericHandler {
 	private boolean processSOAPHeader(SOAPHeader sh) {
 
 		final String methodName = "processSOAPHeader";
-		
+
 		boolean foundElements = false;
 
 		javax.xml.soap.Name sName;
-		
+
 		// if there are no headers
 		if (sh == null) {
-			log.logp(Level.WARNING, CLASSNAME, methodName,
-					"-- No SOAP headers within request message");
+			log.logp(Level.WARNING, CLASSNAME, methodName, "-- No SOAP headers within request message");
 		} else {
 			// process header
-			log.logp(Level.FINE, CLASSNAME, methodName,
-					"-- Found SOAP headers within request message: "
-							+ sh.getLocalName());
+			log.logp(Level.FINE, CLASSNAME, methodName, "-- Found SOAP headers within request message: " + sh.getLocalName());
 
-			//look for StelvioContext header element inside the HEADER
+			// look for StelvioContext header element inside the HEADER
 			Iterator childElems = sh.getChildElements();
 			SOAPElement child;
 
@@ -228,10 +214,8 @@ public class StelvioCommonContextHandler extends GenericHandler {
 					// check if this is required header
 					if (sName.getLocalName().equalsIgnoreCase(HEADERTAGNAME)) {
 						// found a SOAP header by this name
-						log.logp(Level.FINE, CLASSNAME, methodName,
-								"-- SOAPHeader " + HEADERTAGNAME
-										+ " found and matched with "
-										+ sName.getLocalName());
+						log.logp(Level.FINE, CLASSNAME, methodName, "-- SOAPHeader " + HEADERTAGNAME
+								+ " found and matched with " + sName.getLocalName());
 						// call method to perform workArea
 						foundElements = processSOAPHeaderInfo(child);
 					}
@@ -255,16 +239,15 @@ public class StelvioCommonContextHandler extends GenericHandler {
 	private boolean processSOAPHeaderInfo(SOAPElement e) {
 
 		final String methodName = "processSOAPHeaderInfo";
-		
+
 		boolean found = false;
 
 		javax.xml.soap.Name sName;
 
 		// get the name of SOAP element
 		sName = e.getElementName();
-		
-		log.logp(Level.FINE, CLASSNAME, methodName,
-				"--- \tElementTag=" + e.getElementName().getQualifiedName());
+
+		log.logp(Level.FINE, CLASSNAME, methodName, "--- \tElementTag=" + e.getElementName().getQualifiedName());
 
 		// get an iterator on child elements of SOAP element
 		Iterator childElems = e.getChildElements();
@@ -282,32 +265,28 @@ public class StelvioCommonContextHandler extends GenericHandler {
 
 				// get the value of userId element
 				if (sName.getLocalName().equalsIgnoreCase("userId")) {
-					log.logp(Level.FINE, CLASSNAME, methodName,
-							"---\t\tElement=userId=" + child.getValue());
+					log.logp(Level.FINE, CLASSNAME, methodName, "---\t\tElement=userId=" + child.getValue());
 					userId = child.getValue();
 					found = true;
 				}
 
 				// get the value of correlationId element
 				if (sName.getLocalName().equalsIgnoreCase("correlationId")) {
-					log.logp(Level.FINE, CLASSNAME, methodName,
-							"---\t\tElement=correlationId=" + child.getValue());
+					log.logp(Level.FINE, CLASSNAME, methodName, "---\t\tElement=correlationId=" + child.getValue());
 					correlationId = child.getValue();
 					found = true;
 				}
 
 				// get the value of languageId element
 				if (sName.getLocalName().equalsIgnoreCase("languageId")) {
-					log.logp(Level.FINE, CLASSNAME, methodName,
-							"---\t\tElement=languageId=" + child.getValue());
+					log.logp(Level.FINE, CLASSNAME, methodName, "---\t\tElement=languageId=" + child.getValue());
 					languageId = child.getValue();
 					found = true;
 				}
 
 				// get the value of applicationId element
 				if (sName.getLocalName().equalsIgnoreCase("applicationId")) {
-					log.logp(Level.FINE, CLASSNAME, methodName,
-							"---\t\tElement=applicationId=" + child.getValue());
+					log.logp(Level.FINE, CLASSNAME, methodName, "---\t\tElement=applicationId=" + child.getValue());
 					applicationId = child.getValue();
 					found = true;
 				}
@@ -332,17 +311,16 @@ public class StelvioCommonContextHandler extends GenericHandler {
 	private void createWorkArea() {
 
 		final String methodName = "createWorkArea()";
-		
+
 		try {
-			log.logp(Level.FINE, CLASSNAME, methodName,
-					"-- set BUS_STELVIO_CONTEXT workArea context");
+			log.logp(Level.FINE, CLASSNAME, methodName, "-- set BUS_STELVIO_CONTEXT workArea context");
 
 			if (workArea != null) {
 
 				workArea.begin(WORKAREANAME);
 
 				// userId
-				if (userId != null){
+				if (userId != null) {
 					workArea.set("userId", userId);
 				}
 
@@ -361,32 +339,14 @@ public class StelvioCommonContextHandler extends GenericHandler {
 					workArea.set("applicationId", applicationId);
 				}
 
-				log.logp(Level.FINE, CLASSNAME, methodName,
-						"-- BUS_STELVIO_CONTEXT: userId=" + userId
-								+ " correlationId=" + correlationId
-								+ " languageId=" + languageId
-								+ " applicationId=" + applicationId);
+				log.logp(Level.FINE, CLASSNAME, methodName, "-- BUS_STELVIO_CONTEXT: userId=" + userId + " correlationId="
+						+ correlationId + " languageId=" + languageId + " applicationId=" + applicationId);
 
 			} else {
-				log.logp(Level.SEVERE, CLASSNAME, methodName,
-						"WorkArea is null");
+				log.logp(Level.SEVERE, CLASSNAME, methodName, "WorkArea is null");
 			}
 		} catch (Exception e) {
-			log.logp(Level.SEVERE, CLASSNAME, methodName,
-					"Error operate workArea: " + getExceptionTrace(e));
+			log.logp(Level.SEVERE, CLASSNAME, methodName, "Error operate workArea: " + ExceptionUtils.getStackTrace(e));
 		}
-	}
-
-	/**
-	 * Convert exception stacktrace to string
-	 * 
-	 * @param exception
-	 *            the Exception to convert
-	 * @return the string representation of the Exception
-	 */
-	private String getExceptionTrace(Exception ex) {
-		StringWriter sw = new StringWriter();
-		ex.printStackTrace(new PrintWriter(sw));
-		return sw.toString();
 	}
 }
