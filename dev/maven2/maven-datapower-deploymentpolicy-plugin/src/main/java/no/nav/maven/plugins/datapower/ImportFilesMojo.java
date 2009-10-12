@@ -50,7 +50,7 @@ public class ImportFilesMojo extends AbstractDeploymentMojo {
 			List<File> children = XMLMgmtUtil.getDirectoriesToTraverse(importDirectory, dirExcludes);
 			
 			for (File child : children) {
-				System.out.println("Directory = " + child);
+				
 				
 				DeviceFileStore childLocation = DeviceFileStore.fromString(child.getName());
 				DeviceFileStore location = childLocation != null ? childLocation : DeviceFileStore.LOCAL;
