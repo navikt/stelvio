@@ -1,0 +1,5 @@
+<dp:request domain="" xmlns:dp='http://www.datapower.com/schemas/management'>
+	<dp:del-config>
+		<Domain name=""/>	
+	</dp:del-config>
+</dp:request>
