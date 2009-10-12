@@ -74,6 +74,19 @@
 		</dependency>
     	
   	</dependencies>
+  	<distributionManagement>
+		<repository>
+			<id>nav-maven2-internal-plugin-repo</id>
+			<name>NAV Maven2 Internal Repository</name>
+			<url>scp://maven.adeo.no/var/maven2/internal</url>
+		</repository>
+		<snapshotRepository>
+			<id>nav-maven2-snapshot-plugin-repo</id>
+			<name>NAV Maven2 Internal Snapshot Repository</name>
+			<url>scp://maven.adeo.no/var/maven2/snapshot</url>
+		</snapshotRepository>		
+	</distributionManagement>
+  	
    	<build>
 		<plugins>
 			<plugin>
