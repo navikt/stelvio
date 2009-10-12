@@ -114,7 +114,7 @@ public class XMLMgmtRequest extends XMLMgmtDocument {
 			return findClosestNode(parent);
 			
 		} else {
-			System.out.println("Found closest node with xPath=" + xPathExpr);
+			
 			return (Element)node;
 		}	
 	}
@@ -128,7 +128,6 @@ public class XMLMgmtRequest extends XMLMgmtDocument {
 			return findClosestNodes(upOneLevel);
 			
 		} else {
-			System.out.println("Found closest node with xPath=" + xPathExpr);
 			return nodes;
 		}	
 	}
