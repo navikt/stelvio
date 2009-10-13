@@ -40,26 +40,26 @@ public class StelvioContext {
 	 * internal method to set the context
 	 */
 	private void setStelvioBusContext(UserWorkAreaContextAdapter workArea) {
-		String wName = workArea.getName();
+		String wName = workArea.getWorkAreaName();
 		if (WORK_AREA_NAME.equalsIgnoreCase(wName)) {
 			log.logp(Level.FINE, className, "setStelvioBusContext()", "StelvioContext exists in WorkArea");
 
-			userId = (String) workArea.get("userId");
+			userId = workArea.getUserId();
 			if (userId == null || userId.length() <= 0) {
 				userId = DEFAULT_USER_NAME;
 			}
 
-			languageId = (String) workArea.get("languageId");
+			languageId = workArea.getLanguageId();
 			if (languageId == null || languageId.length() <= 0) {
 				languageId = DEFAULT_LANGUAGE;
 			}
 
-			applicationId = (String) workArea.get("applicationId");
+			applicationId = workArea.getApplicationId();
 			if (applicationId == null || applicationId.length() <= 0) {
 				applicationId = DEFAULT_APPLICATION_NAME;
 			}
 
-			correlationId = (String) workArea.get("correlationId");
+			correlationId = workArea.getCorrelationId();
 			if (correlationId == null || correlationId.length() <= 0) {
 				correlationId = getWBISessionId();
 			}

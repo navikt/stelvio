@@ -1,7 +1,5 @@
 package no.stelvio.common.context;
 
-import java.io.Serializable;
-
 import com.ibm.websphere.workarea.UserWorkArea;
 
 /**
@@ -17,11 +15,23 @@ public class UserWorkAreaContextAdapter {
 		this.adaptee = adaptee;
 	}
 
-	public Serializable get(String key) {
-		return adaptee.get(key);
+	public String getWorkAreaName() {
+		return adaptee.getName();
 	}
 
-	public String getName() {
-		return adaptee.getName();
+	public String getApplicationId() {
+		return (String) adaptee.get("applicationId");
+	}
+
+	public String getCorrelationId() {
+		return (String) adaptee.get("correlationId");
+	}
+
+	public String getLanguageId() {
+		return (String) adaptee.get("languageId");
+	}
+
+	public String getUserId() {
+		return (String) adaptee.get("userId");
 	}
 }
