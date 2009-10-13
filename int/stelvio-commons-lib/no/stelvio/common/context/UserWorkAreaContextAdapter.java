@@ -6,6 +6,8 @@ import com.ibm.websphere.workarea.UserWorkArea;
  * @author test@example.com
  */
 public class UserWorkAreaContextAdapter {
+	public static final String WORK_AREA_NAME = "BUS_STELVIO_CONTEXT";
+
 	private UserWorkArea adaptee;
 
 	public UserWorkAreaContextAdapter(UserWorkArea adaptee) {

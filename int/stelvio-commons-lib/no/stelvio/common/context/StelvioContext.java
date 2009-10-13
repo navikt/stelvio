@@ -20,8 +20,6 @@ public class StelvioContext {
 	private final static String className = StelvioContext.class.getName();
 	private final Logger log = Logger.getLogger(className);
 
-	public static final String WORK_AREA_NAME = "BUS_STELVIO_CONTEXT";
-
 	public static final String DEFAULT_USER_NAME = "UNKNOWN";
 	public static final String DEFAULT_LANGUAGE = "no";
 	public static final String DEFAULT_APPLICATION_NAME = "UNKN";
@@ -41,7 +39,7 @@ public class StelvioContext {
 	 */
 	private void setStelvioBusContext(UserWorkAreaContextAdapter workArea) {
 		String wName = workArea.getWorkAreaName();
-		if (WORK_AREA_NAME.equalsIgnoreCase(wName)) {
+		if (UserWorkAreaContextAdapter.WORK_AREA_NAME.equalsIgnoreCase(wName)) {
 			log.logp(Level.FINE, className, "setStelvioBusContext()", "StelvioContext exists in WorkArea");
 
 			userId = workArea.getUserId();
