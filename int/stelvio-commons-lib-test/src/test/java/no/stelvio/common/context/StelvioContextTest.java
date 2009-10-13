@@ -26,7 +26,7 @@ public class StelvioContextTest {
 	@Test
 	public void testContextWorkArea() {
 		UserWorkArea workArea = Mockito.mock(UserWorkArea.class);
-		Mockito.when(workArea.getName()).thenReturn(StelvioContext.WORK_AREA_NAME);
+		Mockito.when(workArea.getName()).thenReturn(UserWorkAreaContextAdapter.WORK_AREA_NAME);
 		addCommonBehavior(workArea);
 
 		StelvioContext context = new StelvioContext(workArea);
