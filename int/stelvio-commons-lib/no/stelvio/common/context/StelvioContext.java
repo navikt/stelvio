@@ -13,6 +13,9 @@ import com.ibm.websphere.security.cred.WSCredential;
 import com.ibm.websphere.workarea.UserWorkArea;
 import com.ibm.ws.session.WBISessionManager;
 
+/**
+ * @author test@example.com
+ */
 public class StelvioContext {
 	private final static String className = StelvioContext.class.getName();
 	private final Logger log = Logger.getLogger(className);
@@ -30,13 +33,13 @@ public class StelvioContext {
 	private String userId = null;
 
 	public StelvioContext(UserWorkArea workArea) {
-		setStelvioBusContext(workArea);
+		setStelvioBusContext(new UserWorkAreaContextAdapter(workArea));
 	}
 
 	/**
 	 * internal method to set the context
 	 */
-	private void setStelvioBusContext(UserWorkArea workArea) {
+	private void setStelvioBusContext(UserWorkAreaContextAdapter workArea) {
 		if (workArea != null) {
 			String wName = workArea.getName();
 			if (WORK_AREA_NAME.equalsIgnoreCase(wName)) {
