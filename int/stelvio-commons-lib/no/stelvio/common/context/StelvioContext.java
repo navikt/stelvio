@@ -40,41 +40,31 @@ public class StelvioContext {
 	 * internal method to set the context
 	 */
 	private void setStelvioBusContext(UserWorkAreaContextAdapter workArea) {
-		if (workArea != null) {
-			String wName = workArea.getName();
-			if (WORK_AREA_NAME.equalsIgnoreCase(wName)) {
-				log.logp(Level.FINE, className, "setStelvioBusContext()", "StelvioContext exists in WorkArea");
+		String wName = workArea.getName();
+		if (WORK_AREA_NAME.equalsIgnoreCase(wName)) {
+			log.logp(Level.FINE, className, "setStelvioBusContext()", "StelvioContext exists in WorkArea");
 
-				userId = (String) workArea.get("userId");
-				if (userId == null || userId.length() <= 0) {
-					userId = DEFAULT_USER_NAME;
-				}
-
-				languageId = (String) workArea.get("languageId");
-				if (languageId == null || languageId.length() <= 0) {
-					languageId = DEFAULT_LANGUAGE;
-				}
-
-				applicationId = (String) workArea.get("applicationId");
-				if (applicationId == null || applicationId.length() <= 0) {
-					applicationId = DEFAULT_APPLICATION_NAME;
-				}
-
-				correlationId = (String) workArea.get("correlationId");
-				if (correlationId == null || correlationId.length() <= 0) {
-					correlationId = getWBISessionId();
-				}
-			} else {
-				// another WorkArea
-				log.logp(Level.FINE, className, "setStelvioBusContext()",
-						"StelvioContext doesn't exists within WorkArea - use default values");
+			userId = (String) workArea.get("userId");
+			if (userId == null || userId.length() <= 0) {
 				userId = DEFAULT_USER_NAME;
+			}
+
+			languageId = (String) workArea.get("languageId");
+			if (languageId == null || languageId.length() <= 0) {
 				languageId = DEFAULT_LANGUAGE;
+			}
+
+			applicationId = (String) workArea.get("applicationId");
+			if (applicationId == null || applicationId.length() <= 0) {
 				applicationId = DEFAULT_APPLICATION_NAME;
+			}
+
+			correlationId = (String) workArea.get("correlationId");
+			if (correlationId == null || correlationId.length() <= 0) {
 				correlationId = getWBISessionId();
 			}
 		} else {
-			// set the default values in general
+			// another WorkArea
 			log.logp(Level.FINE, className, "setStelvioBusContext()",
 					"StelvioContext doesn't exists within WorkArea - use default values");
 			userId = DEFAULT_USER_NAME;
