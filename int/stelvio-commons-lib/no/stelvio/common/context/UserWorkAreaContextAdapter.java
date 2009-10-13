@@ -21,39 +21,39 @@ public class UserWorkAreaContextAdapter implements UserWorkArea {
 		this.adaptee = adaptee;
 	}
 
-	public void begin(String arg0) {
-		adaptee.begin(arg0);
+	public void begin(String name) {
+		adaptee.begin(name);
 	}
 
 	public void complete() throws NoWorkArea, NotOriginator {
 		adaptee.complete();
 	}
 
-	public Serializable get(String arg0) {
-		return adaptee.get(arg0);
+	public Serializable get(String key) {
+		return adaptee.get(key);
 	}
 
-	public PropertyModeType getMode(String arg0) {
-		return adaptee.getMode(arg0);
+	public PropertyModeType getMode(String key) {
+		return adaptee.getMode(key);
 	}
 
 	public String getName() {
 		return adaptee.getName();
 	}
 
-	public void remove(String arg0) throws NoWorkArea, NotOriginator, PropertyFixed {
-		adaptee.remove(arg0);
+	public void remove(String key) throws NoWorkArea, NotOriginator, PropertyFixed {
+		adaptee.remove(key);
 	}
 
 	public String[] retrieveAllKeys() {
 		return adaptee.retrieveAllKeys();
 	}
 
-	public void set(String arg0, Serializable arg1, PropertyModeType arg2) throws NoWorkArea, NotOriginator, PropertyReadOnly {
-		adaptee.set(arg0, arg1, arg2);
+	public void set(String key, Serializable value, PropertyModeType mode) throws NoWorkArea, NotOriginator, PropertyReadOnly {
+		adaptee.set(key, value, mode);
 	}
 
-	public void set(String arg0, Serializable arg1) throws NoWorkArea, NotOriginator, PropertyReadOnly {
-		adaptee.set(arg0, arg1);
+	public void set(String key, Serializable value) throws NoWorkArea, NotOriginator, PropertyReadOnly {
+		adaptee.set(key, value);
 	}
 }
