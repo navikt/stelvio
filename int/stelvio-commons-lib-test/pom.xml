@@ -46,6 +46,12 @@
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-wps-artifact-plugin</artifactId>
+				<version>1.4-SNAPSHOT</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wid-plugin</artifactId>
 				<version>1.0-SNAPSHOT</version>
 				<configuration>
