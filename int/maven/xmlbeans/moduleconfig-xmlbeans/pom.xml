@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.support</groupId>
 		<artifactId>xmlbeans</artifactId>
-		<version>1.8-SNAPSHOT</version>
+		<version>1.8</version>
 	</parent>
 
 	<artifactId>moduleconfig-xmlbeans</artifactId>
-	<version>1.6-SNAPSHOT</version>
+	<version>1.6</version>
 	<name>Stelvio Integration Framework XMLBeans Module Config</name>
 
 	<build>
