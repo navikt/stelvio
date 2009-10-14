@@ -1,18 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>no.nav.maven.runtimes</groupId>
 		<artifactId>maven-runtimes</artifactId>
-		<version>1.2-SNAPSHOT</version>
+		<version>1.2</version>
 	</parent>
 
 	<groupId>com.ibm.maven.runtimes</groupId>
 	<artifactId>wps-runtime</artifactId>
 	<packaging>jar</packaging>
-	<version>6.1-SNAPSHOT</version>
+	<version>6.1.0.1</version>
 	<name>IBM WPS Runtime</name>
 
 	<build>
@@ -37,13 +35,11 @@
 						<phase>process-resources</phase>
 						<configuration>
 							<tasks>
-								<unzip
-									dest="${project.build.outputDirectory}">
+								<unzip dest="${project.build.outputDirectory}">
 									<patternset>
 										<include name="**/*.class" />
 									</patternset>
-									<fileset dir="${wid.runtime}"
-										includesfile="files.txt" />
+									<fileset dir="${wid.runtime}" includesfile="files.txt" />
 								</unzip>
 							</tasks>
 						</configuration>
