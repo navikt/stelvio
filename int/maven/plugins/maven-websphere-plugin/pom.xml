@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>no.nav.maven.commons</groupId>
 			<artifactId>maven-configuration-common</artifactId>
-			<version>1.5-SNAPSHOT</version>
+			<version>1.5</version>
 		</dependency>
 	</dependencies>
 </project>
