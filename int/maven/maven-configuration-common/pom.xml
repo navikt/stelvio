@@ -10,7 +10,7 @@
 
 	<groupId>no.nav.maven.commons</groupId>
 	<artifactId>maven-configuration-common</artifactId>
-	<version>1.5</version>
+	<version>1.6-SNAPSHOT</version>
 	<name>Stelvio Integration Framework Configuration Holder</name>
 
 	<dependencies>
@@ -27,10 +27,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-configuration-common-1.5
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-configuration-common
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-configuration-common-1.5
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-configuration-common
 		</developerConnection>
 	</scm>
 </project>
