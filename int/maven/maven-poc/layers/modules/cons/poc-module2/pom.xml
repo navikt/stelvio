@@ -44,6 +44,19 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-wsdl-export-plugin</artifactId>	
+				<groupId>no.nav.maven.plugins</groupId>
+				<version>1.0</version>			
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>exportwsdl</goal>
+						</goals>		
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
