@@ -4,17 +4,17 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>libs</artifactId>
-		<version>1.7-SNAPSHOT</version>
+		<version>1.7</version>
 	</parent>
 
 	<artifactId>poc-lib2</artifactId>
-	<version>1.7-SNAPSHOT</version>
+	<version>1.7</version>
 	<packaging>wps-library-jar</packaging>
 	<name>Maven POC ${artifactId}</name>
 	
 	<scm>
-		<connection>${scm.connection}</connection>
-		<developerConnection>${scm.connection}</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/layers-1.7/modules/poc-lib2</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/layers-1.7/modules/poc-lib2</developerConnection>
 	</scm>
 	<properties>
 		<scm.connection>${scm.root}/${artifactId}</scm.connection>
