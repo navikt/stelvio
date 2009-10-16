@@ -9,7 +9,7 @@
 
 	<groupId>no.nav.maven.poc</groupId>
 	<artifactId>modules</artifactId>
-	<version>1.7</version>
+	<version>1.8-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Maven POC ${artifactId}</name>
 
@@ -18,8 +18,8 @@
 	</modules>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/layers-1.7/libs</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/layers-1.7/libs</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/libs</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/libs</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>

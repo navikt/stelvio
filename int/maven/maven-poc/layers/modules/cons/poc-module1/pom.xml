@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.poc</groupId>
 		<artifactId>cons</artifactId>
-		<version>1.7</version>
+		<version>1.8-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>poc-module1</artifactId>
-	<version>1.11</version>
+	<version>1.12-SNAPSHOT</version>
 	<packaging>wps-module-ear</packaging>
 	<name>Maven POC ${artifactId}</name>
 
@@ -48,8 +48,8 @@
 	</build>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/layers-1.7/libs/poc-module1</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/layers-1.7/libs/poc-module1</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/libs/poc-module1</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/libs/poc-module1</developerConnection>
 	</scm>
 	<properties>
 		<scm.connection>${scm.root}/${artifactId}</scm.connection>
