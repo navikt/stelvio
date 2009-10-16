@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -12,17 +14,19 @@
 	<version>1.7-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Maven POC ${artifactId}</name>
-	
+
 	<modules>
 		<module>cons</module>
 	</modules>
-	
+
 	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/modules
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/modules
-		</developerConnection>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/libs
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
 </project>
