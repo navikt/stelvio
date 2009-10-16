@@ -31,4 +31,13 @@
 			<artifactId>plexus-archiver</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-export-plugin
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-export-plugin
+		</developerConnection>
+	</scm>
 </project>
