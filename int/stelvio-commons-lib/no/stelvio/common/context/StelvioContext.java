@@ -27,8 +27,9 @@ public class StelvioContext {
 	private String applicationId = null;
 	private String correlationId = null;
 	private String languageId = null;
-	private String navUserId = null;
 	private String userId = null;
+	
+	private String navUserId = null;
 
 	public StelvioContext(UserWorkArea workArea) {
 		setStelvioBusContext(new UserWorkAreaContextAdapter(workArea));
