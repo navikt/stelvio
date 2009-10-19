@@ -28,37 +28,41 @@ public class StelvioContext {
 	private String correlationId = null;
 	private String languageId = null;
 	private String userId = null;
-	
 	private String navUserId = null;
 
-	public StelvioContext(UserWorkArea workArea) {
-		setStelvioBusContext(new UserWorkAreaContextAdapter(workArea));
+	public StelvioContext(UserWorkArea userWorkArea) {
+		this(new UserWorkAreaContextAdapter(userWorkArea));
+
+	}
+
+	public StelvioContext(UserWorkAreaContextAdapter userWorkAreaContextAdapter) {
+		setStelvioBusContext(userWorkAreaContextAdapter);
 	}
 
 	/**
 	 * internal method to set the context
 	 */
-	private void setStelvioBusContext(UserWorkAreaContextAdapter workArea) {
-		String wName = workArea.getWorkAreaName();
-		if (UserWorkAreaContextAdapter.WORK_AREA_NAME.equalsIgnoreCase(wName)) {
+	private void setStelvioBusContext(UserWorkAreaContextAdapter userWorkArea) {
+		String userWorkAreaName = userWorkArea.getUserWorkAreaName();
+		if (UserWorkAreaContextAdapter.USER_WORK_AREA_NAME.equalsIgnoreCase(userWorkAreaName)) {
 			log.logp(Level.FINE, className, "setStelvioBusContext()", "StelvioContext exists in WorkArea");
 
-			userId = workArea.getUserId();
+			userId = userWorkArea.getUserId();
 			if (userId == null || userId.length() <= 0) {
 				userId = DEFAULT_USER_NAME;
 			}
 
-			languageId = workArea.getLanguageId();
+			languageId = userWorkArea.getLanguageId();
 			if (languageId == null || languageId.length() <= 0) {
 				languageId = DEFAULT_LANGUAGE;
 			}
 
-			applicationId = workArea.getApplicationId();
+			applicationId = userWorkArea.getApplicationId();
 			if (applicationId == null || applicationId.length() <= 0) {
 				applicationId = DEFAULT_APPLICATION_NAME;
 			}
 
-			correlationId = workArea.getCorrelationId();
+			correlationId = userWorkArea.getCorrelationId();
 			if (correlationId == null || correlationId.length() <= 0) {
 				correlationId = getWBISessionId();
 			}

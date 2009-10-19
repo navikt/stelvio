@@ -3,12 +3,8 @@ package no.stelvio.common.bus.util;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.naming.InitialContext;
-
 import no.stelvio.common.context.StelvioContext;
-import no.stelvio.common.util.ExceptionUtils;
-
-import com.ibm.websphere.workarea.UserWorkArea;
+import no.stelvio.common.context.StelvioContextUtils;
 
 /**
  * <p>
@@ -23,8 +19,8 @@ import com.ibm.websphere.workarea.UserWorkArea;
  * StelvioContextHelper(); String myUserId = stelvioCtx.getUserId();
  * </p>
  * 
- * Don't use System.out it is only an example.
  * @author persona2c5e3b49756 Schnell, test@example.com
+ * @author test@example.com
  * 
  */
 public class StelvioContextHelper {
@@ -40,14 +36,7 @@ public class StelvioContextHelper {
 	 * 
 	 */
 	public StelvioContextHelper() {
-		try {
-			// 1. WorkArea
-			InitialContext initialContext = new InitialContext();
-			UserWorkArea workArea = (UserWorkArea) initialContext.lookup("java:comp/websphere/UserWorkArea");
-			context = new StelvioContext(workArea);
-		} catch (Exception e) {
-			log.logp(Level.SEVERE, className, "constructor()", "CatchedError: " + ExceptionUtils.getStackTrace(e));
-		}
+		context = StelvioContextUtils.getContext();
 	}
 
 	public String getApplicationId() {
