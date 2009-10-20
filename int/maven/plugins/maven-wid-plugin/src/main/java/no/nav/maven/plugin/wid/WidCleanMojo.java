@@ -24,6 +24,7 @@ public class WidCleanMojo extends EclipseCleanMojo {
 		String[] files = getBasedir().list(new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				return name.endsWith(".jar");
+				return false;
 			}
 		});
 		for (String file : files) {
