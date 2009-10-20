@@ -1,6 +1,7 @@
 package no.nav.maven.plugin.wid;
 
 import java.io.File;
+import java.io.FilenameFilter;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.eclipse.EclipseCleanMojo;
@@ -17,5 +18,16 @@ public class WidCleanMojo extends EclipseCleanMojo {
 	protected void cleanExtras() throws MojoExecutionException {
 		super.cleanExtras();
 		delete(new File(getBasedir(), ".settings"));
+
+		// This is just a temporary solution - deleting jar-files that might be
+		// copied in to the project folder.
+		String[] files = getBasedir().list(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".jar");
+			}
+		});
+		for (String file : files) {
+			delete(new File(getBasedir(), file));
+		}
 	}
 }
