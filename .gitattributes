@@ -3464,14 +3464,10 @@ int/maven/plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/c
 int/maven/plugins/maven-wsdl-export-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-export-plugin/src/main/java/no/nav/maven/plugins/WSDLExportMojo.java -text
 int/maven/plugins/maven-wsdl-export-plugin/src/main/resources/META-INF/plexus/components.xml -text
-int/maven/plugins/maven-wsdl-generatejava-plugin/.classpath -text
-int/maven/plugins/maven-wsdl-generatejava-plugin/.project -text
-int/maven/plugins/maven-wsdl-generatejava-plugin/.settings/org.eclipse.jdt.core.prefs -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/java/no/nav/maven/plugins/MyMojo.java -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/scripts/wsdlGenerateJava.build.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/scripts/wsdlGenerateJava.mojos.xml -text
-int/maven/plugins/maven-wsdl-generatejava-plugin/target/classes/no/nav/maven/plugins/MyMojo.class -text
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
 int/maven/poms/maven-deploy-pom/.project -text

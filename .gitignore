@@ -601,6 +601,10 @@ int/maven/plugins/maven-wsdl-export-plugin/.classpath
 int/maven/plugins/maven-wsdl-export-plugin/.project
 int/maven/plugins/maven-wsdl-export-plugin/.settings
 int/maven/plugins/maven-wsdl-export-plugin/target
+int/maven/plugins/maven-wsdl-generatejava-plugin/.classpath
+int/maven/plugins/maven-wsdl-generatejava-plugin/.project
+int/maven/plugins/maven-wsdl-generatejava-plugin/.settings
+int/maven/plugins/maven-wsdl-generatejava-plugin/target
 int/maven/plugins/target
 int/maven/poms/maven-integration-root-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
