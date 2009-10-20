@@ -26,6 +26,7 @@
 		<module>maven-websphere-plugin</module>
 		<module>maven-artifact-modifier-plugin</module>
 		<module>maven-confluence-plugin</module>
+		<module>maven-wsdl-generatejava-plugin</module>
 	</modules>
 
 	<build>
