@@ -10,7 +10,7 @@ import com.ibm.websphere.workarea.UserWorkArea;
 /**
  * @author test@example.com
  */
-public class StelvioContextUtils {
+public class StelvioContextRepository {
 	public static StelvioContext getContext() {
 		UserWorkArea workArea = lookupUserWorkArea();
 		return new StelvioContext(workArea);

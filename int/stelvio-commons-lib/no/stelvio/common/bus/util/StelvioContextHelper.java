@@ -4,7 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import no.stelvio.common.context.StelvioContext;
-import no.stelvio.common.context.StelvioContextUtils;
+import no.stelvio.common.context.StelvioContextRepository;
 
 /**
  * <p>
@@ -36,7 +36,7 @@ public class StelvioContextHelper {
 	 * 
 	 */
 	public StelvioContextHelper() {
-		context = StelvioContextUtils.getContext();
+		context = StelvioContextRepository.getContext();
 	}
 
 	public String getApplicationId() {
