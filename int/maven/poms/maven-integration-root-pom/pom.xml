@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>no.nav.maven.poms</groupId>
@@ -20,7 +22,13 @@
 								<version>2.0.9</version>
 							</requireMavenVersion>
 							<requirePluginVersions>
+								<banLatest>false</banLatest>
 								<banRelease>false</banRelease>
+								<additionalPlugins>
+									<additionalPlugin>
+										org.apache.maven.plugins:maven-eclipse-plugin
+									</additionalPlugin>
+								</additionalPlugins>
 							</requirePluginVersions>
 						</rules>
 					</configuration>
@@ -126,7 +134,7 @@
 					<artifactId>maven-scm-plugin</artifactId>
 					<version>RELEASE</version>
 				</plugin>
-				
+
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
