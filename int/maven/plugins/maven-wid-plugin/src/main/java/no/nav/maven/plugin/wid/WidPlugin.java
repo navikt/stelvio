@@ -30,15 +30,15 @@ import org.apache.maven.project.MavenProject;
  * @execute phase="generate-resources"
  */
 public class WidPlugin extends EclipsePlugin {
-	private static final String WPS_MODULE_EAR = "wps-module-ear";
-	private static final String WPS_LIBRARY_JAR = "wps-library-jar";
+	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
+	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 
 	@Override
 	protected void writeConfigurationExtras(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
 		super.writeConfigurationExtras(eclipseWriterConfig);
 
 		String packaging = getProject().getPackaging();
-		if (WPS_LIBRARY_JAR.equals(packaging) || WPS_MODULE_EAR.equals(packaging)) {
+		if (PACKAGING_WPS_LIBRARY_JAR.equals(packaging) || PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
 			setSourceDirs(eclipseWriterConfig);
 			setOutputDir(eclipseWriterConfig);
 
@@ -53,22 +53,24 @@ public class WidPlugin extends EclipsePlugin {
 		// libraries
 		List<IdeDependency> dependencies = new ArrayList<IdeDependency>();
 		for (IdeDependency dependency : eclipseWriterConfig.getDeps()) {
-			String type = dependency.getType();
+			String dependencyType = dependency.getType();
 			// The OR is just temporary - remove when correct type is added to
 			// dependencies
-			if (WPS_LIBRARY_JAR.equals(type) || reactorContainsProject(dependency)) {
+			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType) || reactorContainsProject(dependency)) {
 				dependency.setReferencedProject(true);
 				dependency.setEclipseProjectName(dependency.getArtifactId());
 				dependency.setFile(null);
 				dependency.setJavadocAttachment(null);
 				dependency.setSourceAttachment(null);
 				dependencies.add(dependency);
-			} else if (WPS_MODULE_EAR.equals(getProject().getPackaging())) {
+			} else if (PACKAGING_WPS_MODULE_EAR.equals(getProject().getPackaging())) {
 				try {
 					FileUtils.copyFileToDirectory(dependency.getFile(), getEclipseProjectDir());
 				} catch (IOException e) {
 					throw new MojoExecutionException("Unable to copy file", e);
 				}
+			} else {
+				dependencies.add(dependency);
 			}
 		}
 		eclipseWriterConfig.setDeps(dependencies.toArray(new IdeDependency[dependencies.size()]));
