@@ -20,16 +20,6 @@
 		objects for use by WPS modules and libraries.
 	</description>
 
-	<!-- 
-		<dependencies>
-		<dependency>
-		<groupId>commons-lang</groupId>
-		<artifactId>commons-lang</artifactId>
-		<version>2.4</version>
-		</dependency>
-		</dependencies>
-	-->
-
 	<build>
 		<plugins>
 			<plugin>
