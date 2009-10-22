@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project>
 	
-	<target name="WSDL2Java">		
+	<target name="generatejava">		
 		<property name="wsdlGenerateJava.dir" value="${project.build.directory}" />
 		<property name="wsdlGenerateJava.input" value="${project.build.finalName}-sd.zip" />
 		<condition property="wsdlGenerateJava.executable" value="${wid.runtime}/bin/wsdlGenerateJava.bat" else="${wid.runtime}/bin/wsdlGenerateJava.sh">
