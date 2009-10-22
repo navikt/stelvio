@@ -234,7 +234,7 @@ public class StelvioCommonContextHandler extends GenericHandler {
 		final String methodName = "createContext";
 
 		try {
-			StelvioContextRepository.createContext(contextData);
+			StelvioContextRepository.createOrUpdateContext(contextData);
 		} catch (Exception e) {
 			LOGGER.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: " + ExceptionUtils.getStackTrace(e));
 		}

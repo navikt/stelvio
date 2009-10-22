@@ -16,9 +16,11 @@ public class StelvioContextRepository {
 		return new StelvioContext(workArea);
 	}
 
-	public static StelvioContext createContext(StelvioContextData contextData) {
+	public static StelvioContext createOrUpdateContext(StelvioContextData contextData) {
 		UserWorkArea userWorkArea = lookupUserWorkArea();
-		userWorkArea.begin(UserWorkAreaContextAdapter.USER_WORK_AREA_NAME);
+		if (!UserWorkAreaContextAdapter.USER_WORK_AREA_NAME.equals(userWorkArea.getName())) {
+			userWorkArea.begin(UserWorkAreaContextAdapter.USER_WORK_AREA_NAME);
+		}
 		UserWorkAreaContextAdapter userWorkAreaContextAdapter = new UserWorkAreaContextAdapter(userWorkArea);
 		userWorkAreaContextAdapter.setApplicationId(contextData.getApplicationId());
 		userWorkAreaContextAdapter.setCorrelationId(contextData.getCorrelationId());
