@@ -3,10 +3,16 @@
  */
 package no.stelvio.common.exception;
 
-import no.stelvio.common.bus.util.ErrorHelperUtil;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import no.stelvio.common.interceptor.Interceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
 
+import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.scdl.OperationType;
 
@@ -21,8 +27,6 @@ import com.ibm.websphere.sca.scdl.OperationType;
  * @author test@example.com
  */
 public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
-	private static final StackTraceElement[] EMPTY_STACK_TRACE_ELEMENTS = new StackTraceElement[0];
-
 	public Object doIntercept(OperationType operationType, Object input, InterceptorChain interceptorChain) {
 		try {
 			return interceptorChain.doIntercept(operationType, input);
@@ -32,74 +36,24 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 	}
 
 	public Throwable convertThrowable(Throwable t) {
-		Throwable root = t;
-		Throwable cause = root.getCause();
-		boolean causeSame = true;
-
-		while (cause != null) {
-			Throwable newCause = cause.getCause();
-			causeSame = newCause == cause;
-			if (newCause == null) {
-				root = cause;
-			}
-			cause = newCause;
+		Throwable cause = t.getCause();
+		Throwable newCause = null;
+		if (cause != null) {
+			newCause = convertThrowable(cause);
 		}
-
-		boolean safeClass = isSafeClass(root);
-
-		Throwable result;
-		if (safeClass && causeSame) {
-			// Nothing to convert (safe class and causeSame) - just return t
-			result = root;
+		if (isSafeClass(t)) {
+			if (newCause == null || newCause == cause) {
+				return t;
+			} else {
+				return makeNewInstanceOfSafeClass(t, newCause);
+			}
 		} else {
-			if (ServiceRuntimeException.class.equals(root.getClass())) {
-				// Special handling for SRE (not including subclasses) to get
-				// service context right
-				ServiceRuntimeException sre = (ServiceRuntimeException) root;
-				result = new ServiceRuntimeException(root.getMessage(), cause, sre.getServiceContext());
-			} else if (safeClass) {
-				result = makeNewInstanceOfSafeClass(root, cause);
-			} else {
-				result = new ServiceRuntimeException(ErrorHelperUtil.convertSBEStackTrace((Exception) root));
-
-			}
-		}
-		result.setStackTrace(EMPTY_STACK_TRACE_ELEMENTS);
-		return result;
-	}
-
-	private Throwable makeNewInstanceOfSafeClass(Throwable t, Throwable cause) {
-		try {
-			Class<? extends Throwable> throwableClass = t.getClass();
-			String message = t.getMessage();
-
-			Throwable result;
-			if (message != null) {
-				try {
-					result = throwableClass.getConstructor(String.class).newInstance(message);
-				} catch (NoSuchMethodException nsme) {
-					// Constructor taking string (message) as argument not found
-					// Fallback to the public empty constructor that any
-					// serializable class must have
-					result = throwableClass.newInstance();
-				}
-			} else {
-				result = throwableClass.newInstance();
-			}
-			if (cause != null) {
-				result.initCause(cause);
-			}
-			return result;
-		} catch (RuntimeException re) {
-			throw re;
-		} catch (Exception e) {
-			// Wrap any non-runtime exceptions in runtime exception
-			throw new RuntimeException(e);
+			return makeNewInstanceOfUnsafeClass(t, newCause);
 		}
 	}
 
 	private boolean isSafeClass(Throwable t) {
-		if (t instanceof ServiceRuntimeException) {
+		if (t instanceof ServiceRuntimeException || t instanceof ServiceBusinessException) {
 			return true;
 		} else {
 			Package p = t.getClass().getPackage();
@@ -109,5 +63,117 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 				return false;
 			}
 		}
+	}
+
+	private Throwable makeNewInstanceOfUnsafeClass(Throwable t, Throwable cause) {
+		Throwable result;
+		String message = t.getMessage();
+		if (message != null) {
+			result = new RuntimeException(t.getClass().getName() + " : " + t.getMessage(), cause);
+		} else {
+			result = new RuntimeException(t.getClass().getName(), cause);
+		}
+		result.setStackTrace(t.getStackTrace());
+		return result;
+	}
+
+	private Throwable makeNewInstanceOfSafeClass(Throwable t, Throwable cause) {
+		Class<? extends Throwable> throwableClass = t.getClass();
+		String message = t.getMessage();
+
+		Throwable result;
+
+		if (ServiceBusinessException.class.equals(throwableClass)) {
+			ServiceBusinessException sbe = (ServiceBusinessException) t;
+			ServiceBusinessException convertedSbe = new ServiceBusinessException(sbe.getData());
+
+			// Set cause
+			convertedSbe.initCause(cause);
+
+			result = convertedSbe;
+		} else if (ServiceRuntimeException.class.equals(throwableClass)) {
+			ServiceRuntimeException sre = (ServiceRuntimeException) t;
+			result = new ServiceRuntimeException(message, cause, sre.getServiceContext());
+		} else {
+			result = newInstance(throwableClass, message, cause);
+		}
+
+		// Set stack trace
+		result.setStackTrace(t.getStackTrace());
+
+		return result;
+	}
+
+	private Throwable newInstance(Class<? extends Throwable> throwableClass, final String message, final Throwable cause) {
+		try {
+			List<Constructor<Throwable>> constructors = getConstructorCandidates(throwableClass);
+
+			sortConstructors(constructors);
+
+			Constructor<Throwable> constructor = constructors.iterator().next();
+			Class[] parameterTypes = constructor.getParameterTypes();
+			Object[] parameters = new Object[parameterTypes.length];
+			for (int i = 0; i < parameterTypes.length; i++) {
+				Class parameterType = parameterTypes[i];
+				if (String.class.isAssignableFrom(parameterType)) {
+					parameters[i] = message;
+				} else if (Throwable.class.isAssignableFrom(parameterType)) {
+					parameters[i] = cause;
+				}
+			}
+			return constructor.newInstance(parameters);
+		} catch (RuntimeException re) {
+			throw re;
+		} catch (Exception e) {
+			// Wrap any non-runtime exceptions in runtime exception
+			throw new RuntimeException(e);
+		}
+	}
+
+	private List<Constructor<Throwable>> getConstructorCandidates(Class<? extends Throwable> throwableClass) {
+		List<Constructor<Throwable>> constructors = new ArrayList<Constructor<Throwable>>();
+
+		for (Constructor<Throwable> constructor : throwableClass.getConstructors()) {
+			Class[] parameterTypes = constructor.getParameterTypes();
+			switch (parameterTypes.length) {
+			case 0:
+				constructors.add(constructor);
+				break;
+			case 1:
+				Class parameterType = parameterTypes[0];
+				if (String.class.isAssignableFrom(parameterType) || Throwable.class.isAssignableFrom(parameterType)) {
+					constructors.add(constructor);
+				}
+				break;
+			case 2:
+				Class parameterType1 = parameterTypes[0];
+				Class parameterType2 = parameterTypes[1];
+				if (String.class.isAssignableFrom(parameterType1) && Throwable.class.isAssignableFrom(parameterType2)
+						|| Throwable.class.isAssignableFrom(parameterType1) && String.class.isAssignableFrom(parameterType2)) {
+					constructors.add(constructor);
+				}
+				break;
+			}
+		}
+
+		return constructors;
+	}
+
+	private void sortConstructors(List<Constructor<Throwable>> constructors) {
+		Collections.sort(constructors, new Comparator<Constructor<Throwable>>() {
+			public int compare(Constructor<Throwable> constructor1, Constructor<Throwable> constructor2) {
+				Class<?>[] parameterTypes1 = constructor2.getParameterTypes();
+				Class<?>[] parameterTypes2 = constructor1.getParameterTypes();
+				int lengthDiff = parameterTypes1.length - parameterTypes2.length;
+				if (lengthDiff != 0) {
+					return lengthDiff;
+				}
+				// Equal length of parameter types
+				if (parameterTypes1.length == 1) {
+					return String.class.isAssignableFrom(parameterTypes1[0]) ? -1 : 1;
+				}
+				return 0;
+			}
+		});
 	}
 }
