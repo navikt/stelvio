@@ -17,9 +17,7 @@ public class ExceptionAssert extends org.junit.Assert {
 		if (!expected.getClass().equals(actual.getClass())) {
 			failNotEquals(message, expected, actual);
 		}
-		if (!expected.getMessage().equals(actual.getMessage())) {
-			failNotEquals(message, expected, actual);
-		}
+		assertEquals(expected.getMessage(), actual.getMessage());
 		assertArrayEquals(expected.getStackTrace(), actual.getStackTrace());
 
 		assertEquals(expected.getCause(), actual.getCause());
