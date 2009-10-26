@@ -4,7 +4,7 @@
 	<groupId>no.nav.datapower</groupId>
 	<artifactId>datapower-cfg-partnergw</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.11-SNAPSHOT</version>
+	<version>1.0.10-SNAPSHOT</version>
 	<name>Configuration Generator for the 'partner-gw' DataPower module</name>
 	
 	<scm>
