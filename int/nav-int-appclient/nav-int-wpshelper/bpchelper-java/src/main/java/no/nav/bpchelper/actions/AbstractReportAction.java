@@ -18,12 +18,12 @@ import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 public abstract class AbstractReportAction extends AbstractAction {
 	private static final MessageFormat CONFIRM_MESSAGE_FORMAT = new MessageFormat(
 			"Do you want to continue and {0} {1} qualifying process(es) (y/n)?");
-	protected static final Collection<ReportColumnSpec<ProcessInstanceData>> DATA_COLUMNS;
+	protected static final Collection<ReportColumnSpec<ProcessInstanceBean>> DATA_COLUMNS;
 
-	private final Collection<ReportColumnSpec<ProcessInstanceData>> reportColumns;
+	private final Collection<ReportColumnSpec<ProcessInstanceBean>> reportColumns;
 
 	static {
-		DATA_COLUMNS = new ArrayList<ReportColumnSpec<ProcessInstanceData>>();
+		DATA_COLUMNS = new ArrayList<ReportColumnSpec<ProcessInstanceBean>>();
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.ID_PROPERTY));
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.COMPLETIONTIME_PROPERTY));
 		DATA_COLUMNS.add(new ProcessInstancePropertyAccessor(ProcessInstanceBean.CREATIONTIME_PROPERTY));
@@ -42,7 +42,7 @@ public abstract class AbstractReportAction extends AbstractAction {
 		this.reportColumns = getReportColumns();
 	}
 
-	protected abstract Collection<ReportColumnSpec<ProcessInstanceData>> getReportColumns();
+	protected abstract Collection<ReportColumnSpec<ProcessInstanceBean>> getReportColumns();
 
 	public int execute() {
 		Collection<PIID> piidCollection = executeQuery();
@@ -61,7 +61,8 @@ public abstract class AbstractReportAction extends AbstractAction {
 			if (logger.isDebugEnabled()) {
 				logger.debug("Processing process with id=<{}>.", piid);
 			}
-			ProcessInstanceData processInstance = businessFlowManagerService.getProcessInstance(piid);
+			ProcessInstanceData processInstanceData = businessFlowManagerService.getProcessInstance(piid);
+			ProcessInstanceBean processInstance = new ProcessInstanceBean(processInstanceData, getBFMConnection().getAdaptee());
 			writer.writeln(buildRow(processInstance));
 		}
 
@@ -106,15 +107,15 @@ public abstract class AbstractReportAction extends AbstractAction {
 
 	private Collection<String> buildHeader() {
 		Collection<String> header = new ArrayList<String>();
-		for (ReportColumnSpec<ProcessInstanceData> reportColumn : reportColumns) {
+		for (ReportColumnSpec<ProcessInstanceBean> reportColumn : reportColumns) {
 			header.add(reportColumn.getLabel());
 		}
 		return header;
 	}
 
-	private Collection<String> buildRow(ProcessInstanceData processInstance) {
+	private Collection<String> buildRow(ProcessInstanceBean processInstance) {
 		Collection<String> row = new ArrayList<String>();
-		for (ReportColumnSpec<ProcessInstanceData> reportColumn : reportColumns) {
+		for (ReportColumnSpec<ProcessInstanceBean> reportColumn : reportColumns) {
 			row.add(reportColumn.getValue(processInstance));
 		}
 		return row;

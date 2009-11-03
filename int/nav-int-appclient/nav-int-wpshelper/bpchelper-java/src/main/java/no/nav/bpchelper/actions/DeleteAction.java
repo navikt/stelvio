@@ -6,7 +6,7 @@ import java.util.Collection;
 import no.nav.appclient.adapter.ServiceException;
 
 import com.ibm.bpe.api.PIID;
-import com.ibm.bpe.api.ProcessInstanceData;
+import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public class DeleteAction extends AbstractReportAction {
 	@Override
@@ -15,15 +15,15 @@ public class DeleteAction extends AbstractReportAction {
 	}
 
 	@Override
-	protected Collection<ReportColumnSpec<ProcessInstanceData>> getReportColumns() {
-		Collection<ReportColumnSpec<ProcessInstanceData>> reportColumns = new ArrayList<ReportColumnSpec<ProcessInstanceData>>(
+	protected Collection<ReportColumnSpec<ProcessInstanceBean>> getReportColumns() {
+		Collection<ReportColumnSpec<ProcessInstanceBean>> reportColumns = new ArrayList<ReportColumnSpec<ProcessInstanceBean>>(
 				DATA_COLUMNS);
-		reportColumns.add(new ReportColumnSpec<ProcessInstanceData>() {
+		reportColumns.add(new ReportColumnSpec<ProcessInstanceBean>() {
 			public String getLabel() {
 				return "Result";
 			}
 
-			public String getValue(ProcessInstanceData processInstance) {
+			public String getValue(ProcessInstanceBean processInstance) {
 				PIID piid = processInstance.getID();
 				try {
 					getBFMConnection().getBusinessFlowManagerService().delete(piid);

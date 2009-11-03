@@ -14,16 +14,16 @@ import no.nav.bpchelper.query.Restrictions;
 import org.apache.commons.cli.CommandLine;
 
 import com.ibm.bpe.api.ActivityInstanceData;
-import com.ibm.bpe.api.ProcessInstanceData;
+import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public class CriteriaBuilder {
 	public static Criteria build(CommandLine commandLine) {
 		Criteria criteria = new Criteria();
 
 		// Static criteria added to all queries
-		Criterion processStateFailedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceData.STATE_FAILED);
+		Criterion processStateFailedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceBean.STATE_FAILED);
 		Criterion processStateTerminatedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE",
-				ProcessInstanceData.STATE_TERMINATED);
+				ProcessInstanceBean.STATE_TERMINATED);
 		LogicalExpression processStateCriterion = Restrictions.or(processStateFailedCriterion, processStateTerminatedCriterion);
 
 		Criterion activityStateFailedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_FAILED);
@@ -34,7 +34,8 @@ public class CriteriaBuilder {
 
 		// Dynamic criteria added if options specified
 		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME)) {
-			StringTokenizer st = new StringTokenizer(commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME), "-");
+			StringTokenizer st = new StringTokenizer(commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME),
+					"-");
 			Date processStartedAfterDate = parseDate(st.nextToken());
 			criteria.add(Restrictions.ge("PROCESS_INSTANCE.STARTED", processStartedAfterDate));
 			Date processStartedBeforeDate = parseDate(st.nextToken());
