@@ -46,9 +46,9 @@ public class BPELHelperUtil {
 	private final static Logger log = Logger.getLogger(className);
 
 	private final static String SCA_ADDRESS_URL = "sca:";
-	
+
 	private final static String SCA_MODULE_POST_ID = "App";
-	
+
 	private final static String SCA_MODULE_PRE_ID = "nav-";
 
 	private final static String WS_INITIAL_CONTEXT_FACTORY = "com.ibm.websphere.naming.WsnInitialContextFactory";
@@ -72,11 +72,14 @@ public class BPELHelperUtil {
 
 		// validate input parameter
 		Boolean boolValidate = false;
-		boolValidate = (boTagName != null ? true : false) || (boTagValue != null ? true : false) || (currentService != null ? true : false);
+		boolValidate = (boTagName != null ? true : false) || (boTagValue != null ? true : false)
+				|| (currentService != null ? true : false);
 
 		// throw because we can't do anything without the right parameter.
 		if (!boolValidate) {
-			log.logp(Level.SEVERE, className, "getBprocModuleEndpoint()", "All or one of the provided input parameter is null!");
+			log
+					.logp(Level.SEVERE, className, "getBprocModuleEndpoint()",
+							"All or one of the provided input parameter is null!");
 			throw new ServiceRuntimeException("All or one of the provided input parameter is null!");
 		}
 
@@ -87,21 +90,25 @@ public class BPELHelperUtil {
 		String epSCA = epr.getAddress();
 
 		boolValidate = false;
-		boolValidate = (ref != null ? true : false) || (epr != null ? true : false)	|| (epSCA != null ? true : false);
+		boolValidate = (ref != null ? true : false) || (epr != null ? true : false) || (epSCA != null ? true : false);
 
 		if (!boolValidate) {
-			log.logp(Level.WARNING, className, "getBprocModuleEndpoint()", "Couldn't determine SCA Service Endpoint reference and address, return current service reference!");
+			log.logp(Level.WARNING, className, "getBprocModuleEndpoint()",
+					"Couldn't determine SCA Service Endpoint reference and address, return current service reference!");
 			return currentService;
 		}
 
 		if (epSCA.indexOf(SCA_ADDRESS_URL) == -1) {
-			log.logp(Level.WARNING,	className, "getBprocModuleEndpoint()", "Can't change SCA address binding because import isn't from type sca binding, return current service reference!");
+			log
+					.logp(Level.WARNING, className, "getBprocModuleEndpoint()",
+							"Can't change SCA address binding because import isn't from type sca binding, return current service reference!");
 			return currentService;
 		}
 
 		log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "CURRENT SCA REFERENCE: " + ref.getName());
-		log.logp(Level.FINE, className, "getBprocModuleEndpoint()",	"CURRENT SCA URL: " + epr.getAddress());
-		log.logp(Level.FINE, className, "getBprocModuleEndpoint()",	"CURRENT SCA CALLER SUBJECT: " + WSSubject.getCallerPrincipal());
+		log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "CURRENT SCA URL: " + epr.getAddress());
+		log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "CURRENT SCA CALLER SUBJECT: "
+				+ WSSubject.getCallerPrincipal());
 
 		// obtain the default initial JNDI context
 		Context ctx;
@@ -111,7 +118,7 @@ public class BPELHelperUtil {
 			ctx = new InitialContext();
 			// lookup the local home interface
 			Hashtable<String, String> jndiConfig = new Hashtable<String, String>();
-			jndiConfig.put(Context.INITIAL_CONTEXT_FACTORY,	WS_INITIAL_CONTEXT_FACTORY);
+			jndiConfig.put(Context.INITIAL_CONTEXT_FACTORY, WS_INITIAL_CONTEXT_FACTORY);
 
 			// this are the default context values but we run in the context of
 			// PoJo and security subject should be available, if not we throw
@@ -122,7 +129,8 @@ public class BPELHelperUtil {
 
 			InitialContext initialcontext = new InitialContext(jndiConfig);
 			Object result = initialcontext.lookup(BFM_EJB_LOOKUP);
-			BusinessFlowManagerHome bfmHome = (BusinessFlowManagerHome) PortableRemoteObject.narrow(result,com.ibm.bpe.api.BusinessFlowManagerHome.class);
+			BusinessFlowManagerHome bfmHome = (BusinessFlowManagerHome) PortableRemoteObject.narrow(result,
+					com.ibm.bpe.api.BusinessFlowManagerHome.class);
 			BusinessFlowManager bfm = bfmHome.create();
 
 			String whereClause = null;
@@ -132,7 +140,8 @@ public class BPELHelperUtil {
 			// could have performance impact on DB if the template name not
 			// provided, order the oldest to the newest
 			if (ptName != null) {
-				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED + " AND PROCESS_TEMPLATE.NAME LIKE '" + ptName + "%'";
+				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED
+						+ " AND PROCESS_TEMPLATE.NAME LIKE '" + ptName + "%'";
 				orderClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
 			} else {
 				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED;
@@ -142,58 +151,63 @@ public class BPELHelperUtil {
 			// query process templates
 			ProcessTemplateData[] ptd = bfm.queryProcessTemplates(whereClause, orderClause, (Integer) null, (TimeZone) null);
 
-			if (ptd != null) 
-			{
-				for (int i = 0; i < ptd.length; i++) 
-				{
+			if (ptd != null) {
+				for (int i = 0; i < ptd.length; i++) {
 					ProcessTemplateData data = ptd[i];
-					log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "PROCESS_TEMPLATE: ID="+ data.getID()+ " VALID="+ convertCalendar(data.getValidFromTime())+ " MODULE="+ data.getApplicationName());
+					log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "PROCESS_TEMPLATE: ID=" + data.getID()
+							+ " VALID=" + convertCalendar(data.getValidFromTime()) + " MODULE=" + data.getApplicationName());
 					String moduleName = data.getApplicationName();
 					moduleName = moduleName.replaceFirst(SCA_MODULE_POST_ID, "");
 					selectClause = "DISTINCT PROCESS_INSTANCE.PIID, PROCESS_INSTANCE.CREATED";
-					whereClause = "PROCESS_INSTANCE.STATE = " + ProcessInstanceData.STATE_RUNNING + " AND PROCESS_INSTANCE.PTID = ID('"	+ data.getID() + "')";
+					whereClause = "PROCESS_INSTANCE.STATE = " + ProcessInstanceData.STATE_RUNNING
+							+ " AND PROCESS_INSTANCE.PTID = ID('" + data.getID() + "')";
 					orderClause = "PROCESS_INSTANCE.CREATED ASC";
 
 					QueryResultSet piResult = null;
-					// query if security not enabled because than everyone see the instances with api and queryAll doesn't work without security
-					if (WSSubject.getCallerPrincipal() == null)
-					{
-						log.logp(Level.FINEST, className, "getBprocModuleEndpoint()", "Execute query method because server security is diasbled." );
-						piResult = bfm.query(selectClause, whereClause, orderClause, (Integer) null, (Integer) null, (TimeZone) null);						
+					// query if security not enabled because than everyone see
+					// the instances with api and queryAll doesn't work without
+					// security
+					if (WSSubject.getCallerPrincipal() == null) {
+						log.logp(Level.FINEST, className, "getBprocModuleEndpoint()",
+								"Execute query method because server security is diasbled.");
+						piResult = bfm.query(selectClause, whereClause, orderClause, (Integer) null, (Integer) null,
+								(TimeZone) null);
+					} else {
+						// queryALL trenger BPESYSMON otherwise CWWBE0027E: No
+						// authorization for the requested action.
+						piResult = bfm.queryAll(selectClause, whereClause, orderClause, (Integer) null, (Integer) null,
+								(TimeZone) null);
 					}
-					else
-					{
-						// queryALL trenger BPESYSMON otherwise CWWBE0027E: No authorization for the requested action.
-						piResult = bfm.queryAll(selectClause, whereClause, orderClause, (Integer) null, (Integer) null, (TimeZone) null);
-					}
-					
-					while (piResult.next()) 
-					{
-						log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="+ piResult.getOID(1) + " IDATE: " + piResult.getString(2));
+
+					while (piResult.next()) {
+						log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
+								+ piResult.getOID(1) + " IDATE: " + piResult.getString(2));
 						DataObject bo = getBoSpecification((PIID) piResult.getOID(1), bfm);
 
-						if (bo != null) 
-						{
+						if (bo != null) {
 							finish = hasMatchingProperty(bo, boTagName, boTagValue, true);
-							log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="+ piResult.getOID(1) + " Analyze BO against tagName="+ boTagName + " and tagValue=" + boTagValue+ " return=" + finish);
+							log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
+									+ piResult.getOID(1) + " Analyze BO against tagName=" + boTagName + " and tagValue="
+									+ boTagValue + " return=" + finish);
 							if (finish)
 								break;
-						}
-						else
-						{
-							log.logp(Level.WARNING, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="+ piResult.getOID(1) + " Input DataObject could not retrieved!");
+						} else {
+							log.logp(Level.WARNING, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
+									+ piResult.getOID(1) + " Input DataObject could not retrieved!");
 						}
 
 					}
 					// don't look further we found the instance
-					if (finish)
-					{
+					if (finish) {
 						// set the new service
 						int start = epSCA.indexOf(SCA_MODULE_PRE_ID);
 						int end = epSCA.lastIndexOf("/");
-						log.logp(Level.FINEST, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="+ piResult.getOID(1) + " CALC new servicename from "+ "START="+ start+ " END="+ end+ " NEW MODULE=" + moduleName);
+						log.logp(Level.FINEST, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
+								+ piResult.getOID(1) + " CALC new servicename from " + "START=" + start + " END=" + end
+								+ " NEW MODULE=" + moduleName);
 						epSCA = epSCA.replaceFirst(epSCA.substring(start, end), moduleName);
-						log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="+ piResult.getOID(1) + " RETURN with new module endpoint reference url=" + epSCA); 
+						log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
+								+ piResult.getOID(1) + " RETURN with new module endpoint reference url=" + epSCA);
 						epr.setAddress(epSCA);
 						Service targetService = (Service) ServiceManager.INSTANCE.getService(ref, epr);
 						return targetService;
@@ -201,19 +215,21 @@ public class BPELHelperUtil {
 				}
 			}
 			// no process template found, we do nothing just log and return the
-			else 
-			{
-				log.logp(Level.WARNING, className, "getBprocModuleEndpoint()", "Couldn't find any process template for match name "+ ptName + ", return current service reference!");
+			else {
+				log.logp(Level.WARNING, className, "getBprocModuleEndpoint()",
+						"Couldn't find any process template for match name " + ptName + ", return current service reference!");
 				return currentService;
 			}
 
 		} catch (Exception e) {
-			log.logp(Level.SEVERE, className, "getBprocModuleEndpoint()", "Error: "+ e.getLocalizedMessage());
+			log.logp(Level.SEVERE, className, "getBprocModuleEndpoint()", "Error: " + e.getLocalizedMessage());
 			throw new ServiceRuntimeException(e);
 		}
 
-		// return the current service none of the matching bo criteria can't found therefor return the original service
-		log.logp(Level.WARNING, className, "getBprocModuleEndpoint()", "Couldn't find any matching DataObject criteria, return current service reference!");
+		// return the current service none of the matching bo criteria can't
+		// found therefor return the original service
+		log.logp(Level.WARNING, className, "getBprocModuleEndpoint()",
+				"Couldn't find any matching DataObject criteria, return current service reference!");
 		return currentService;
 	}
 
@@ -277,7 +293,8 @@ public class BPELHelperUtil {
 		else if (List.class.isAssignableFrom(value.getClass()))
 			return Arrays.toString(((List) value).toArray());
 		else if (StaffResultSet.class.isAssignableFrom(value.getClass()))
-			return Arrays.toString(((StaffResultSet) value).getGroupIDs()) + Arrays.toString(((StaffResultSet) value).getUserIDs());
+			return Arrays.toString(((StaffResultSet) value).getGroupIDs())
+					+ Arrays.toString(((StaffResultSet) value).getUserIDs());
 		else
 			throw new ServiceRuntimeException("Unsupported Type, Class: " + value.getClass().getName());
 	}
@@ -287,65 +304,68 @@ public class BPELHelperUtil {
 	 * @return
 	 */
 	@SuppressWarnings("unused")
-	private static String convertCalendar(Calendar calendar) 
-	{
-		if (calendar != null)
-		{
-			SimpleDateFormat sdf=new SimpleDateFormat("dd.MM.yyyy HH:mm");
+	private static String convertCalendar(Calendar calendar) {
+		if (calendar != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 			return sdf.format(calendar.getTime());
-		}
-		else return "null";
+		} else
+			return "null";
 	}
 
 	/**
-	 * <p> 
+	 * <p>
 	 * Returns true if and only if a property with the criterias is found.
-	 * </p> 
-	 * @param bo The DataObject to search in (we not search in arrays, list, ...)
-	 * @param nameRegex The name of the property to search for, can be a regular expression, can be null to disable this criteria
-	 * @param nameValueRegex The value of the object to search for, can be a regular expression, can be null to disable this criteria
-	 * @param childBo Criteria to search also into child object
-	 * @return returns true if and only if a property with the criterias is found
+	 * </p>
+	 * 
+	 * @param bo
+	 *            The DataObject to search in (we not search in arrays, list,
+	 *            ...)
+	 * @param nameRegex
+	 *            The name of the property to search for, can be a regular
+	 *            expression, can be null to disable this criteria
+	 * @param nameValueRegex
+	 *            The value of the object to search for, can be a regular
+	 *            expression, can be null to disable this criteria
+	 * @param childBo
+	 *            Criteria to search also into child object
+	 * @return returns true if and only if a property with the criterias is
+	 *         found
 	 */
 	private static boolean hasMatchingProperty(DataObject bo, String nameRegex, String nameValueRegex, Boolean childBo) {
 
-		log.logp(Level.FINEST, className, "hasMatchingProperty()", "PARAM: nameRegex="+ nameRegex+ " nameValueRegex="+ nameValueRegex+ " childBo="+ childBo );						
-		
-		for(Iterator i=bo.getType().getProperties().iterator();i.hasNext();) 
-		{ 
-			//iterate over bo properties
-			Property property=(Property)i.next();
+		log.logp(Level.FINEST, className, "hasMatchingProperty()", "PARAM: nameRegex=" + nameRegex + " nameValueRegex="
+				+ nameValueRegex + " childBo=" + childBo);
+
+		for (Iterator i = bo.getType().getProperties().iterator(); i.hasNext();) {
+			// iterate over bo properties
+			Property property = (Property) i.next();
 			Object object = bo.get(property);
-			//match name?
-			if (property.getName().matches(nameRegex))
-			{
+			// match name?
+			if (property.getName().matches(nameRegex)) {
 				// is a simple type, because only on this type we can look into.
-				if(!property.isContainment()) 
-				{
+				if (!property.isContainment()) {
 					// convert to string
-					String strValue = (String)object;
-					if (strValue.matches(nameValueRegex))
-					{	
-						log.logp(Level.FINE, className, "hasMatchingProperty()", "MATCHED: " + property.getName() + "=" + strValue);						
+					String strValue = (String) object;
+					if (strValue.matches(nameValueRegex)) {
+						log.logp(Level.FINE, className, "hasMatchingProperty()", "MATCHED: " + property.getName() + "="
+								+ strValue);
 						return true;
-					}	
-				}
-				else
-				{
-					log.logp(Level.WARNING, className, "hasMatchingProperty()", "Can't match value against none simple type, return false!");
+					}
+				} else {
+					log.logp(Level.WARNING, className, "hasMatchingProperty()",
+							"Can't match value against none simple type, return false!");
 					return false;
 				}
-					
+
 			}
-			
+
 			// recursive over child bo's?
-			if (object instanceof DataObject && childBo)
-			{
+			if (object instanceof DataObject && childBo) {
 				return hasMatchingProperty((DataObject) object, nameRegex, nameValueRegex, true);
 			}
-					
+
 		}
 		return false;
 	}
-	
+
 }
