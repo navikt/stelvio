@@ -28,7 +28,7 @@ import com.ibm.websphere.security.auth.WSSubject;
  * @author Erik Godding Boye (test@example.com)
  * 
  */
-public class BusinessFlowManagerServiceAdapter {
+class BusinessFlowManagerServiceAdapter {
 	private final static String WS_INITIAL_CONTEXT_FACTORY = "com.ibm.websphere.naming.WsnInitialContextFactory";
 
 	private final static String BFM_EJB_LOOKUP = "com/ibm/bpe/api/BusinessFlowManagerHome";
@@ -66,6 +66,14 @@ public class BusinessFlowManagerServiceAdapter {
 		}
 	}
 
+	/**
+	 * Find matching process templates based on input parameter(s)
+	 * 
+	 * @param processTemplateNameBase
+	 *            the base name of the process template (will be used with the
+	 *            like operator to find matching process templates)
+	 * @return array of process templates
+	 */
 	public ProcessTemplateData[] findProcessTemplates(String processTemplateNameBase) {
 		try {
 			String whereClause = null;
@@ -92,6 +100,17 @@ public class BusinessFlowManagerServiceAdapter {
 		}
 	}
 
+	/**
+	 * Find process instance (ID) based on input parameter(s)
+	 * 
+	 * @param processTemplate
+	 *            the process template to search for instances of
+	 * @param customProperties
+	 *            custom properties that you want to filter process instance on
+	 *            (map key should be set to the custom property name, map value
+	 *            should be set to the custom property value)
+	 * @return process instance ID
+	 */
 	public PIID findProcessInstance(ProcessTemplateData processTemplate, Map<String, String> customProperties) {
 		try {
 			String selectClause = "DISTINCT PROCESS_INSTANCE.PIID, PROCESS_INSTANCE.CREATED";

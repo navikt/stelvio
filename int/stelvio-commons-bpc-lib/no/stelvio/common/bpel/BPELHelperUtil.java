@@ -39,6 +39,8 @@ public class BPELHelperUtil {
 	}
 
 	/**
+	 * Find matching BPROC service endpoint based on input parameters
+	 * 
 	 * @param currentService
 	 *            the current service endpoint
 	 * @param processTemplateNameBase
