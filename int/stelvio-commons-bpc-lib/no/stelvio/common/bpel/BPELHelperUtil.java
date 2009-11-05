@@ -3,6 +3,7 @@
  */
 package no.stelvio.common.bpel;
 
+import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -13,14 +14,19 @@ import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 import com.ibm.bpe.api.BusinessFlowManager;
 import com.ibm.bpe.api.BusinessFlowManagerHome;
+import com.ibm.bpe.api.BusinessFlowManagerService;
 import com.ibm.bpe.api.OID;
 import com.ibm.bpe.api.PIID;
+import com.ibm.bpe.api.ProcessException;
 import com.ibm.bpe.api.ProcessInstanceData;
 import com.ibm.bpe.api.ProcessTemplateData;
 import com.ibm.bpe.api.QueryResultSet;
@@ -36,11 +42,10 @@ import commonj.sdo.Property;
 
 /**
  * @author persona2c5e3b49756 Schnell
+ * @author Erik Godding Boye (test@example.com)
  * 
  */
 public class BPELHelperUtil {
-
-	// Sample - log.logp(Level.FINEST, className, <yourMethod>, <yourText>);
 	private final static String className = BPELHelperUtil.class.getName();
 
 	private final static Logger log = Logger.getLogger(className);
@@ -68,100 +73,56 @@ public class BPELHelperUtil {
 	 * @param boTagValue
 	 * @return
 	 */
-	public static Service getBprocModuleEndpoint(Service currentService, String ptName, String boTagName, String boTagValue) {
-
-		// validate input parameter
-		Boolean boolValidate = false;
-		boolValidate = (boTagName != null ? true : false) || (boTagValue != null ? true : false)
-				|| (currentService != null ? true : false);
-
-		// throw because we can't do anything without the right parameter.
-		if (!boolValidate) {
+	public static Service getBprocModuleEndpoint(Service currentService, String processTemplateNameBase, String boTagName,
+			String boTagValue) {
+		// validate input parameters
+		if (currentService == null | boTagName == null || boTagValue == null) {
 			log
 					.logp(Level.SEVERE, className, "getBprocModuleEndpoint()",
 							"All or one of the provided input parameter is null!");
+			// throw because we can't do anything without the right parameters
 			throw new ServiceRuntimeException("All or one of the provided input parameter is null!");
 		}
 
 		// determine current endpoint -> should be sca and none of the parameter
 		// should null if not return currentService
-		Reference ref = currentService.getReference();
-		EndpointReference epr = currentService.getEndpointReference();
-		String epSCA = epr.getAddress();
-
-		boolValidate = false;
-		boolValidate = (ref != null ? true : false) || (epr != null ? true : false) || (epSCA != null ? true : false);
-
-		if (!boolValidate) {
+		Reference reference = currentService.getReference();
+		EndpointReference endpointReference = currentService.getEndpointReference();
+		if (reference == null || endpointReference == null) {
 			log.logp(Level.WARNING, className, "getBprocModuleEndpoint()",
 					"Couldn't determine SCA Service Endpoint reference and address, return current service reference!");
 			return currentService;
 		}
 
-		if (epSCA.indexOf(SCA_ADDRESS_URL) == -1) {
+		String endpointReferenceAddress = endpointReference.getAddress();
+		if (endpointReferenceAddress == null || endpointReferenceAddress.indexOf(SCA_ADDRESS_URL) == -1) {
 			log
 					.logp(Level.WARNING, className, "getBprocModuleEndpoint()",
 							"Can't change SCA address binding because import isn't from type sca binding, return current service reference!");
 			return currentService;
 		}
 
-		log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "CURRENT SCA REFERENCE: " + ref.getName());
-		log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "CURRENT SCA URL: " + epr.getAddress());
+		log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "CURRENT SCA REFERENCE: " + reference.getName());
+		log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "CURRENT SCA URL: " + endpointReference.getAddress());
 		log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "CURRENT SCA CALLER SUBJECT: "
 				+ WSSubject.getCallerPrincipal());
 
-		// obtain the default initial JNDI context
-		Context ctx;
-		boolean finish = false;
-
 		try {
-			ctx = new InitialContext();
-			// lookup the local home interface
-			Hashtable<String, String> jndiConfig = new Hashtable<String, String>();
-			jndiConfig.put(Context.INITIAL_CONTEXT_FACTORY, WS_INITIAL_CONTEXT_FACTORY);
+			BusinessFlowManagerService bfm = getBusinessFlowManagerService();
 
-			// this are the default context values but we run in the context of
-			// PoJo and security subject should be available, if not we throw
-			// SRE
-			// jndiConfig.put(Context.PROVIDER_URL, "iiop:localhost:2809");
-			// jndiConfig.put(Context.SECURITY_PRINCIPAL, "wid");
-			// jndiConfig.put(Context.SECURITY_CREDENTIALS, "wid");
+			ProcessTemplateData[] processTemplates = getProcessTemplates(bfm, processTemplateNameBase);
 
-			InitialContext initialcontext = new InitialContext(jndiConfig);
-			Object result = initialcontext.lookup(BFM_EJB_LOOKUP);
-			BusinessFlowManagerHome bfmHome = (BusinessFlowManagerHome) PortableRemoteObject.narrow(result,
-					com.ibm.bpe.api.BusinessFlowManagerHome.class);
-			BusinessFlowManager bfm = bfmHome.create();
-
-			String whereClause = null;
-			String selectClause = null;
-			String orderClause = null;
-
-			// could have performance impact on DB if the template name not
-			// provided, order the oldest to the newest
-			if (ptName != null) {
-				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED
-						+ " AND PROCESS_TEMPLATE.NAME LIKE '" + ptName + "%'";
-				orderClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
-			} else {
-				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED;
-				orderClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
-			}
-
-			// query process templates
-			ProcessTemplateData[] ptd = bfm.queryProcessTemplates(whereClause, orderClause, (Integer) null, (TimeZone) null);
-
-			if (ptd != null) {
-				for (int i = 0; i < ptd.length; i++) {
-					ProcessTemplateData data = ptd[i];
+			if (processTemplates != null) {
+				for (int i = 0; i < processTemplates.length; i++) {
+					ProcessTemplateData data = processTemplates[i];
 					log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "PROCESS_TEMPLATE: ID=" + data.getID()
 							+ " VALID=" + convertCalendar(data.getValidFromTime()) + " MODULE=" + data.getApplicationName());
 					String moduleName = data.getApplicationName();
 					moduleName = moduleName.replaceFirst(SCA_MODULE_POST_ID, "");
-					selectClause = "DISTINCT PROCESS_INSTANCE.PIID, PROCESS_INSTANCE.CREATED";
-					whereClause = "PROCESS_INSTANCE.STATE = " + ProcessInstanceData.STATE_RUNNING
+					String selectClause = "DISTINCT PROCESS_INSTANCE.PIID, PROCESS_INSTANCE.CREATED";
+					String whereClause = "PROCESS_INSTANCE.STATE = " + ProcessInstanceData.STATE_RUNNING
 							+ " AND PROCESS_INSTANCE.PTID = ID('" + data.getID() + "')";
-					orderClause = "PROCESS_INSTANCE.CREATED ASC";
+					String orderClause = "PROCESS_INSTANCE.CREATED ASC";
 
 					QueryResultSet piResult = null;
 					// query if security not enabled because than everyone see
@@ -185,39 +146,40 @@ public class BPELHelperUtil {
 						DataObject bo = getBoSpecification((PIID) piResult.getOID(1), bfm);
 
 						if (bo != null) {
-							finish = hasMatchingProperty(bo, boTagName, boTagValue, true);
+							boolean hasMatchingProperty = hasMatchingProperty(bo, boTagName, boTagValue, true);
 							log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
 									+ piResult.getOID(1) + " Analyze BO against tagName=" + boTagName + " and tagValue="
-									+ boTagValue + " return=" + finish);
-							if (finish)
-								break;
+									+ boTagValue + " return=" + hasMatchingProperty);
+							// don't look further we found the instance
+							if (hasMatchingProperty) {
+								// set the new service
+								int start = endpointReferenceAddress.indexOf(SCA_MODULE_PRE_ID);
+								int end = endpointReferenceAddress.lastIndexOf("/");
+								log.logp(Level.FINEST, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
+										+ piResult.getOID(1) + " CALC new servicename from " + "START=" + start + " END=" + end
+										+ " NEW MODULE=" + moduleName);
+								endpointReferenceAddress = endpointReferenceAddress.replaceFirst(endpointReferenceAddress
+										.substring(start, end), moduleName);
+								log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
+										+ piResult.getOID(1) + " RETURN with new module endpoint reference url="
+										+ endpointReferenceAddress);
+								endpointReference.setAddress(endpointReferenceAddress);
+								Service targetService = (Service) ServiceManager.INSTANCE.getService(reference,
+										endpointReference);
+								return targetService;
+							}
 						} else {
 							log.logp(Level.WARNING, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
 									+ piResult.getOID(1) + " Input DataObject could not retrieved!");
 						}
-
-					}
-					// don't look further we found the instance
-					if (finish) {
-						// set the new service
-						int start = epSCA.indexOf(SCA_MODULE_PRE_ID);
-						int end = epSCA.lastIndexOf("/");
-						log.logp(Level.FINEST, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
-								+ piResult.getOID(1) + " CALC new servicename from " + "START=" + start + " END=" + end
-								+ " NEW MODULE=" + moduleName);
-						epSCA = epSCA.replaceFirst(epSCA.substring(start, end), moduleName);
-						log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
-								+ piResult.getOID(1) + " RETURN with new module endpoint reference url=" + epSCA);
-						epr.setAddress(epSCA);
-						Service targetService = (Service) ServiceManager.INSTANCE.getService(ref, epr);
-						return targetService;
 					}
 				}
-			}
-			// no process template found, we do nothing just log and return the
-			else {
+			} else {
+				// no process template found, we do nothing just log and return
+				// current service
 				log.logp(Level.WARNING, className, "getBprocModuleEndpoint()",
-						"Couldn't find any process template for match name " + ptName + ", return current service reference!");
+						"Couldn't find any process template for match name " + processTemplateNameBase
+								+ ", return current service reference!");
 				return currentService;
 			}
 
@@ -233,13 +195,68 @@ public class BPELHelperUtil {
 		return currentService;
 	}
 
+	private static ProcessTemplateData[] getProcessTemplates(BusinessFlowManagerService bfm, String ptName) {
+		try {
+			String whereClause = null;
+			String orderClause = null;
+
+			// could have performance impact on DB if the template name not
+			// provided, order the oldest to the newest
+			if (ptName != null) {
+				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED
+						+ " AND PROCESS_TEMPLATE.NAME LIKE '" + ptName + "%'";
+				orderClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
+			} else {
+				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED;
+				orderClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
+			}
+
+			// query process templates
+			ProcessTemplateData[] ptd = bfm.queryProcessTemplates(whereClause, orderClause, (Integer) null, (TimeZone) null);
+			return ptd;
+		} catch (ProcessException e) {
+			throw new ServiceRuntimeException(e);
+		} catch (RemoteException e) {
+			throw new ServiceRuntimeException(e);
+		} catch (EJBException e) {
+			throw new ServiceRuntimeException(e);
+		}
+	}
+
+	private static BusinessFlowManager getBusinessFlowManagerService() {
+		try {
+			// lookup the local home interface
+			Hashtable<String, String> jndiConfig = new Hashtable<String, String>();
+			jndiConfig.put(Context.INITIAL_CONTEXT_FACTORY, WS_INITIAL_CONTEXT_FACTORY);
+
+			// this are the default context values but we run in the context of
+			// PoJo and security subject should be available, if not we throw
+			// SRE
+			// jndiConfig.put(Context.PROVIDER_URL, "iiop:localhost:2809");
+			// jndiConfig.put(Context.SECURITY_PRINCIPAL, "wid");
+			// jndiConfig.put(Context.SECURITY_CREDENTIALS, "wid");
+
+			InitialContext initialcontext = new InitialContext(jndiConfig);
+			Object result = initialcontext.lookup(BFM_EJB_LOOKUP);
+			BusinessFlowManagerHome bfmHome = (BusinessFlowManagerHome) PortableRemoteObject.narrow(result,
+					com.ibm.bpe.api.BusinessFlowManagerHome.class);
+			return bfmHome.create();
+		} catch (NamingException e) {
+			throw new ServiceRuntimeException(e);
+		} catch (RemoteException e) {
+			throw new ServiceRuntimeException(e);
+		} catch (CreateException e) {
+			throw new ServiceRuntimeException(e);
+		}
+	}
+
 	/**
 	 * @param processInstance
 	 * @param bfm
 	 * @return
 	 */
 	@SuppressWarnings("unused")
-	private static DataObject getBoSpecification(PIID pid, BusinessFlowManager bfm) {
+	private static DataObject getBoSpecification(PIID pid, BusinessFlowManagerService bfm) {
 		Object in = null;
 		DataObject bo = null;
 		try {
