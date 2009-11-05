@@ -34,18 +34,22 @@ public class BPELHelperUtil {
 
 	private final static String SCA_MODULE_PRE_ID = "nav-";
 
-	/**
-	 * 
-	 */
 	public BPELHelperUtil() {
 		log.logp(Level.FINE, className, "BPELHelperUtil()", "Init constructor");
 	}
 
 	/**
 	 * @param currentService
-	 * @param boTagName
-	 * @param boTagValue
-	 * @return
+	 *            the current service endpoint
+	 * @param processTemplateNameBase
+	 *            the base name of the process template (will be used with the
+	 *            like operator to find matching process templates)
+	 * @param customProperties
+	 *            custom properties that you want to filter process instance on
+	 *            (map key should be set to the custom property name, map value
+	 *            should be set to the custom property value)
+	 * @return matching service endpoint if match found, current service if no
+	 *         match found
 	 */
 	public static Service getBprocModuleEndpoint(Service currentService, String processTemplateNameBase,
 			Map<String, String> customProperties) {
