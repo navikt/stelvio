@@ -2,8 +2,7 @@ package no.stelvio.common.bpel;
 
 import java.rmi.RemoteException;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.TimeZone;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,8 +22,6 @@ import com.ibm.bpe.api.ProcessTemplateData;
 import com.ibm.bpe.api.QueryResultSet;
 import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.security.auth.WSSubject;
-import commonj.sdo.DataObject;
-import commonj.sdo.Property;
 
 /**
  * @author persona2c5e3b49756 Schnell
@@ -72,23 +69,20 @@ public class BusinessFlowManagerServiceAdapter {
 	public ProcessTemplateData[] findProcessTemplates(String processTemplateNameBase) {
 		try {
 			String whereClause = null;
-			String orderClause = null;
+			String orderByClause = null;
 
 			// could have performance impact on DB if the template name not
 			// provided, order the oldest to the newest
 			if (processTemplateNameBase != null) {
 				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED
 						+ " AND PROCESS_TEMPLATE.NAME LIKE '" + processTemplateNameBase + "%'";
-				orderClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
+				orderByClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
 			} else {
 				whereClause = "PROCESS_TEMPLATE.STATE = " + ProcessTemplateData.STATE_STARTED;
-				orderClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
+				orderByClause = "PROCESS_TEMPLATE.VALID_FROM ASC";
 			}
 
-			// query process templates
-			ProcessTemplateData[] ptd = adaptee
-					.queryProcessTemplates(whereClause, orderClause, (Integer) null, (TimeZone) null);
-			return ptd;
+			return adaptee.queryProcessTemplates(whereClause, orderByClause, null, null);
 		} catch (ProcessException e) {
 			throw new ServiceRuntimeException(e);
 		} catch (RemoteException e) {
@@ -98,49 +92,42 @@ public class BusinessFlowManagerServiceAdapter {
 		}
 	}
 
-	public PIID findProcessInstance(ProcessTemplateData processTemplate, String boTagName, String boTagValue) {
+	public PIID findProcessInstance(ProcessTemplateData processTemplate, Map<String, String> customProperties) {
 		try {
 			String selectClause = "DISTINCT PROCESS_INSTANCE.PIID, PROCESS_INSTANCE.CREATED";
-			String whereClause = "PROCESS_INSTANCE.STATE = " + ProcessInstanceData.STATE_RUNNING
-					+ " AND PROCESS_INSTANCE.PTID = ID('" + processTemplate.getID() + "')";
-			String orderClause = "PROCESS_INSTANCE.CREATED ASC";
+			StringBuilder sb = new StringBuilder();
+			sb.append("PROCESS_INSTANCE.STATE = ").append(ProcessInstanceData.STATE_RUNNING);
+			sb.append(" AND PROCESS_INSTANCE.PTID = ID('").append(processTemplate.getID()).append("')");
+			int index = 1;
+			for (Map.Entry<String, String> customProperty : customProperties.entrySet()) {
+				String viewName = "PROCESS_ATTRIBUTE" + index++;
+				sb.append(" AND ").append(viewName).append(".NAME").append(" = '").append(customProperty.getKey()).append("'");
+				sb.append(" AND ").append(viewName).append(".VALUE").append(" = '").append(customProperty.getValue()).append(
+						"'");
+			}
+			String whereClause = sb.toString();
+			String orderByClause = "PROCESS_INSTANCE.CREATED ASC";
 
-			QueryResultSet piResult = null;
+			QueryResultSet queryResultSet = null;
 			// query if security not enabled because than everyone see
 			// the instances with api and queryAll doesn't work without
 			// security
 			if (WSSubject.getCallerPrincipal() == null) {
 				logger.logp(Level.FINEST, className, "findMatchingProcessInstance()",
 						"Execute query method because server security is diasbled.");
-				piResult = adaptee.query(selectClause, whereClause, orderClause, (Integer) null, (Integer) null,
-						(TimeZone) null);
+				queryResultSet = adaptee.query(selectClause, whereClause, orderByClause, 1, null);
 			} else {
 				// queryALL trenger BPESYSMON otherwise CWWBE0027E: No
 				// authorization for the requested action.
-				piResult = adaptee.queryAll(selectClause, whereClause, orderClause, (Integer) null, (Integer) null,
-						(TimeZone) null);
+				queryResultSet = adaptee.queryAll(selectClause, whereClause, orderByClause, 0, 1, null);
 			}
 
-			while (piResult.next()) {
-				PIID piid = (PIID) piResult.getOID(1);
-				String created = piResult.getString(2);
-				logger.logp(Level.FINE, className, "findMatchingProcessInstance()", " PROCESS_INSTANCE: ID=" + piid + " IDATE: "
-						+ created);
-				DataObject bo = getBoSpecification(piid);
-
-				if (bo != null) {
-					boolean hasMatchingProperty = hasMatchingProperty(bo, boTagName, boTagValue, true);
-					logger.logp(Level.FINE, className, "findMatchingProcessInstance()", " PROCESS_INSTANCE: ID=" + piid
-							+ " Analyze BO against tagName=" + boTagName + " and tagValue=" + boTagValue + " return="
-							+ hasMatchingProperty);
-					// don't look further we found the instance
-					if (hasMatchingProperty) {
-						return piid;
-					}
-				} else {
-					logger.logp(Level.WARNING, className, "findMatchingProcessInstance()", " PROCESS_INSTANCE: ID=" + piid
-							+ " Input DataObject could not retrieved!");
-				}
+			if (queryResultSet.next()) {
+				PIID piid = (PIID) queryResultSet.getOID(1);
+				String created = queryResultSet.getString(2);
+				logger.logp(Level.FINE, className, "findMatchingProcessInstance()", " PROCESS_INSTANCE: ID=" + piid
+						+ " IDATE: " + created);
+				return piid;
 			}
 			return null;
 		} catch (ProcessException e) {
@@ -150,85 +137,5 @@ public class BusinessFlowManagerServiceAdapter {
 		} catch (EJBException e) {
 			throw new ServiceRuntimeException(e);
 		}
-	}
-
-	/**
-	 * @param processInstance
-	 * @param bfm
-	 * @return
-	 */
-	private DataObject getBoSpecification(PIID pid) {
-		Object in = null;
-		DataObject bo = null;
-		try {
-			in = adaptee.getInputMessage(pid).getObject();
-		} catch (Exception e) {
-			logger.logp(Level.SEVERE, className, "getBoSpecification()", e.getLocalizedMessage());
-			e.printStackTrace();
-			return bo;
-		}
-		if (in == null) {
-			logger.logp(Level.WARNING, className, "getBoSpecification()", "Couldn't get input Message of process instance.");
-			return bo;
-		}
-		if (!DataObject.class.isAssignableFrom(in.getClass()))
-			return bo;
-		bo = (DataObject) in;
-		return bo;
-	}
-
-	/**
-	 * <p>
-	 * Returns true if and only if a property with the criterias is found.
-	 * </p>
-	 * 
-	 * @param bo
-	 *            The DataObject to search in (we not search in arrays, list,
-	 *            ...)
-	 * @param nameRegex
-	 *            The name of the property to search for, can be a regular
-	 *            expression, can be null to disable this criteria
-	 * @param nameValueRegex
-	 *            The value of the object to search for, can be a regular
-	 *            expression, can be null to disable this criteria
-	 * @param childBo
-	 *            Criteria to search also into child object
-	 * @return returns true if and only if a property with the criterias is
-	 *         found
-	 */
-	private boolean hasMatchingProperty(DataObject bo, String nameRegex, String nameValueRegex, Boolean childBo) {
-		logger.logp(Level.FINEST, className, "hasMatchingProperty()", "PARAM: nameRegex=" + nameRegex + " nameValueRegex="
-				+ nameValueRegex + " childBo=" + childBo);
-
-		for (Iterator i = bo.getType().getProperties().iterator(); i.hasNext();) {
-			// iterate over bo properties
-			Property property = (Property) i.next();
-			Object object = bo.get(property);
-			// match name?
-			if (property.getName().matches(nameRegex)) {
-				// is a simple type, because only on this type we can look into.
-				if (!property.isContainment()) {
-					// convert to string
-					String strValue = (String) object;
-					if (strValue.matches(nameValueRegex)) {
-						logger.logp(Level.FINE, className, "hasMatchingProperty()", "MATCHED: " + property.getName() + "="
-								+ strValue);
-						return true;
-					}
-				} else {
-					logger.logp(Level.WARNING, className, "hasMatchingProperty()",
-							"Can't match value against none simple type, return false!");
-					return false;
-				}
-
-			}
-
-			// recursive over child bo's?
-			if (object instanceof DataObject && childBo) {
-				return hasMatchingProperty((DataObject) object, nameRegex, nameValueRegex, true);
-			}
-
-		}
-		return false;
 	}
 }

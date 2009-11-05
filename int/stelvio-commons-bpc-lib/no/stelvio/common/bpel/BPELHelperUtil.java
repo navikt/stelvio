@@ -5,6 +5,7 @@ package no.stelvio.common.bpel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,15 +47,15 @@ public class BPELHelperUtil {
 	 * @param boTagValue
 	 * @return
 	 */
-	public static Service getBprocModuleEndpoint(final Service currentService, final String processTemplateNameBase,
-			final String boTagName, final String boTagValue) {
-		// validate input parameters
-		if (currentService == null | boTagName == null || boTagValue == null) {
-			log
-					.logp(Level.SEVERE, className, "getBprocModuleEndpoint()",
-							"All or one of the provided input parameter is null!");
-			// throw because we can't do anything without the right parameters
-			throw new ServiceRuntimeException("All or one of the provided input parameter is null!");
+	public static Service getBprocModuleEndpoint(Service currentService, String processTemplateNameBase,
+			Map<String, String> customProperties) {
+		if (currentService == null) {
+			log.logp(Level.SEVERE, className, "getBprocModuleEndpoint()", "Input parameter currentService is null!");
+			throw new ServiceRuntimeException("Input parameter currentService is null!");
+		}
+		if (customProperties == null || customProperties.isEmpty()) {
+			log.logp(Level.SEVERE, className, "getBprocModuleEndpoint()", "Input parameter customProperties is null or empty!");
+			throw new ServiceRuntimeException("Input parameter customProperties is null or empty!");
 		}
 
 		// determine current endpoint -> should be sca and none of the parameter
@@ -88,7 +89,7 @@ public class BPELHelperUtil {
 				log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "PROCESS_TEMPLATE: ID=" + processTemplate.getID()
 						+ " VALID=" + convertCalendar(processTemplate.getValidFromTime()) + " MODULE=" + applicationName);
 
-				PIID piid = bfm.findProcessInstance(processTemplate, boTagName, boTagValue);
+				PIID piid = bfm.findProcessInstance(processTemplate, customProperties);
 
 				if (piid != null) {
 					String moduleName = applicationName.replaceFirst(SCA_MODULE_POST_ID, "");
