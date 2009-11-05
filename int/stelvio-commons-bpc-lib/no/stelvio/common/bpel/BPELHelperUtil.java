@@ -73,8 +73,8 @@ public class BPELHelperUtil {
 	 * @param boTagValue
 	 * @return
 	 */
-	public static Service getBprocModuleEndpoint(Service currentService, String processTemplateNameBase, String boTagName,
-			String boTagValue) {
+	public static Service getBprocModuleEndpoint(final Service currentService, final String processTemplateNameBase,
+			final String boTagName, final String boTagValue) {
 		// validate input parameters
 		if (currentService == null | boTagName == null || boTagValue == null) {
 			log
@@ -113,65 +113,29 @@ public class BPELHelperUtil {
 			ProcessTemplateData[] processTemplates = getProcessTemplates(bfm, processTemplateNameBase);
 
 			if (processTemplates != null) {
-				for (int i = 0; i < processTemplates.length; i++) {
-					ProcessTemplateData data = processTemplates[i];
-					log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "PROCESS_TEMPLATE: ID=" + data.getID()
-							+ " VALID=" + convertCalendar(data.getValidFromTime()) + " MODULE=" + data.getApplicationName());
-					String moduleName = data.getApplicationName();
-					moduleName = moduleName.replaceFirst(SCA_MODULE_POST_ID, "");
-					String selectClause = "DISTINCT PROCESS_INSTANCE.PIID, PROCESS_INSTANCE.CREATED";
-					String whereClause = "PROCESS_INSTANCE.STATE = " + ProcessInstanceData.STATE_RUNNING
-							+ " AND PROCESS_INSTANCE.PTID = ID('" + data.getID() + "')";
-					String orderClause = "PROCESS_INSTANCE.CREATED ASC";
+				for (ProcessTemplateData processTemplate : processTemplates) {
+					String applicationName = processTemplate.getApplicationName();
+					log.logp(Level.FINE, className, "getBprocModuleEndpoint()", "PROCESS_TEMPLATE: ID="
+							+ processTemplate.getID() + " VALID=" + convertCalendar(processTemplate.getValidFromTime())
+							+ " MODULE=" + applicationName);
 
-					QueryResultSet piResult = null;
-					// query if security not enabled because than everyone see
-					// the instances with api and queryAll doesn't work without
-					// security
-					if (WSSubject.getCallerPrincipal() == null) {
-						log.logp(Level.FINEST, className, "getBprocModuleEndpoint()",
-								"Execute query method because server security is diasbled.");
-						piResult = bfm.query(selectClause, whereClause, orderClause, (Integer) null, (Integer) null,
-								(TimeZone) null);
-					} else {
-						// queryALL trenger BPESYSMON otherwise CWWBE0027E: No
-						// authorization for the requested action.
-						piResult = bfm.queryAll(selectClause, whereClause, orderClause, (Integer) null, (Integer) null,
-								(TimeZone) null);
-					}
+					PIID piid = findMatchingProcessInstance(bfm, processTemplate, boTagName, boTagValue);
 
-					while (piResult.next()) {
-						log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
-								+ piResult.getOID(1) + " IDATE: " + piResult.getString(2));
-						DataObject bo = getBoSpecification((PIID) piResult.getOID(1), bfm);
-
-						if (bo != null) {
-							boolean hasMatchingProperty = hasMatchingProperty(bo, boTagName, boTagValue, true);
-							log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
-									+ piResult.getOID(1) + " Analyze BO against tagName=" + boTagName + " and tagValue="
-									+ boTagValue + " return=" + hasMatchingProperty);
-							// don't look further we found the instance
-							if (hasMatchingProperty) {
-								// set the new service
-								int start = endpointReferenceAddress.indexOf(SCA_MODULE_PRE_ID);
-								int end = endpointReferenceAddress.lastIndexOf("/");
-								log.logp(Level.FINEST, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
-										+ piResult.getOID(1) + " CALC new servicename from " + "START=" + start + " END=" + end
-										+ " NEW MODULE=" + moduleName);
-								endpointReferenceAddress = endpointReferenceAddress.replaceFirst(endpointReferenceAddress
-										.substring(start, end), moduleName);
-								log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
-										+ piResult.getOID(1) + " RETURN with new module endpoint reference url="
-										+ endpointReferenceAddress);
-								endpointReference.setAddress(endpointReferenceAddress);
-								Service targetService = (Service) ServiceManager.INSTANCE.getService(reference,
-										endpointReference);
-								return targetService;
-							}
-						} else {
-							log.logp(Level.WARNING, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID="
-									+ piResult.getOID(1) + " Input DataObject could not retrieved!");
-						}
+					if (piid != null) {
+						String moduleName = applicationName.replaceFirst(SCA_MODULE_POST_ID, "");
+						// set the new service
+						int start = endpointReferenceAddress.indexOf(SCA_MODULE_PRE_ID);
+						int end = endpointReferenceAddress.lastIndexOf("/");
+						log.logp(Level.FINEST, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID=" + piid
+								+ " CALC new servicename from " + "START=" + start + " END=" + end + " NEW MODULE="
+								+ moduleName);
+						endpointReferenceAddress = endpointReferenceAddress.replaceFirst(endpointReferenceAddress.substring(
+								start, end), moduleName);
+						log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID=" + piid
+								+ " RETURN with new module endpoint reference url=" + endpointReferenceAddress);
+						endpointReference.setAddress(endpointReferenceAddress);
+						Service targetService = (Service) ServiceManager.INSTANCE.getService(reference, endpointReference);
+						return targetService;
 					}
 				}
 			} else {
@@ -193,6 +157,60 @@ public class BPELHelperUtil {
 		log.logp(Level.WARNING, className, "getBprocModuleEndpoint()",
 				"Couldn't find any matching DataObject criteria, return current service reference!");
 		return currentService;
+	}
+
+	private static PIID findMatchingProcessInstance(BusinessFlowManagerService bfm, ProcessTemplateData processTemplate,
+			String boTagName, String boTagValue) {
+		try {
+			String selectClause = "DISTINCT PROCESS_INSTANCE.PIID, PROCESS_INSTANCE.CREATED";
+			String whereClause = "PROCESS_INSTANCE.STATE = " + ProcessInstanceData.STATE_RUNNING
+					+ " AND PROCESS_INSTANCE.PTID = ID('" + processTemplate.getID() + "')";
+			String orderClause = "PROCESS_INSTANCE.CREATED ASC";
+
+			QueryResultSet piResult = null;
+			// query if security not enabled because than everyone see
+			// the instances with api and queryAll doesn't work without
+			// security
+			if (WSSubject.getCallerPrincipal() == null) {
+				log.logp(Level.FINEST, className, "getBprocModuleEndpoint()",
+						"Execute query method because server security is diasbled.");
+				piResult = bfm.query(selectClause, whereClause, orderClause, (Integer) null, (Integer) null, (TimeZone) null);
+			} else {
+				// queryALL trenger BPESYSMON otherwise CWWBE0027E: No
+				// authorization for the requested action.
+				piResult = bfm
+						.queryAll(selectClause, whereClause, orderClause, (Integer) null, (Integer) null, (TimeZone) null);
+			}
+
+			while (piResult.next()) {
+				PIID piid = (PIID) piResult.getOID(1);
+				String created = piResult.getString(2);
+				log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID=" + piid + " IDATE: "
+						+ created);
+				DataObject bo = getBoSpecification(piid, bfm);
+
+				if (bo != null) {
+					boolean hasMatchingProperty = hasMatchingProperty(bo, boTagName, boTagValue, true);
+					log.logp(Level.FINE, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID=" + piid
+							+ " Analyze BO against tagName=" + boTagName + " and tagValue=" + boTagValue + " return="
+							+ hasMatchingProperty);
+					// don't look further we found the instance
+					if (hasMatchingProperty) {
+						return piid;
+					}
+				} else {
+					log.logp(Level.WARNING, className, "getBprocModuleEndpoint()", " PROCESS_INSTANCE: ID=" + piid
+							+ " Input DataObject could not retrieved!");
+				}
+			}
+			return null;
+		} catch (ProcessException e) {
+			throw new ServiceRuntimeException(e);
+		} catch (RemoteException e) {
+			throw new ServiceRuntimeException(e);
+		} catch (EJBException e) {
+			throw new ServiceRuntimeException(e);
+		}
 	}
 
 	private static ProcessTemplateData[] getProcessTemplates(BusinessFlowManagerService bfm, String ptName) {
