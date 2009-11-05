@@ -3681,6 +3681,7 @@ int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/n
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/util/PropertyMapper.java -text svneol=unset#text/plain
 int/pom.xml -text
 int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BPELHelperUtil.java -text svneol=unset#text/plain
+int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BusinessFlowManagerServiceAdapter.java -text
 int/stelvio-commons-bpc-lib/pom.xml -text svneol=unset#text/plain
 int/stelvio-commons-lib-test/pom.xml -text
 int/stelvio-commons-lib-test/src/test/java/no/stelvio/common/bus/util/FnrUtilTest.java -text
