@@ -10,7 +10,7 @@
 
 	<artifactId>maven-wid-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<name>Stelvio Integration Framework WID Plugin</name>
 
 	<build>
@@ -37,9 +37,4 @@
 			<version>2.7</version>
 		</dependency>
 	</dependencies>
-
-  <scm>
-    <connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wid-plugin-1.1</connection>
-    <developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wid-plugin-1.1</developerConnection>
-  </scm>
 </project>
