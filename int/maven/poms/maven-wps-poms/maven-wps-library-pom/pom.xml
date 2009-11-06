@@ -3,7 +3,7 @@
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-wps-poms</artifactId>
+		<artifactId>maven-wps-pom</artifactId>
 		<version>1.4-SNAPSHOT</version>
 	</parent>
 
