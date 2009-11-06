@@ -4,7 +4,7 @@
   <parent>
     <artifactId>maven-plugins</artifactId>
     <groupId>no.nav.maven.plugins</groupId>
-    <version>1.6-SNAPSHOT</version>
+    <version>1.6</version>
   </parent>
   <groupId>no.nav.maven.plugins</groupId>
   <artifactId>maven-wsdl-generatejava-plugin</artifactId>
