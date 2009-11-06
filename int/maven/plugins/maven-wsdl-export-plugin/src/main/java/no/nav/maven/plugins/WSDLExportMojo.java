@@ -92,6 +92,9 @@ public class WSDLExportMojo extends AbstractMojo {
 	 */
 	private UnArchiver unArchiver;
 
+	
+	
+
 
 	/**
 	 * EAR-file.
