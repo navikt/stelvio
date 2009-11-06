@@ -609,6 +609,7 @@ int/maven/plugins/target
 int/maven/poms/maven-integration-root-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/target
+int/maven/poms/maven-wps-poms/target
 int/maven/runtimes/.classpath
 int/maven/runtimes/.project
 int/maven/runtimes/.settings
