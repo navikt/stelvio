@@ -19,10 +19,10 @@ import org.codehaus.plexus.util.cli.Commandline;
 public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
     
 	/**
-	 * @parameter expression="${wid.home}"
+	 * @parameter expression="${wid.runtime}"
 	 * @required
 	 */
-	protected String widHome;
+	protected String widRuntime;
 	
 	/**
 	 * @parameter expression="${username}"
@@ -84,13 +84,13 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		/* If scripts are not expanded OR the scripts are from an old busconfiguration version create new ones */
 		createOrRefreshBusConfiguration();
 		
-		/* TODO: Put these hardcoded values in settings.xml for new WID Image */
+		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline commandLine = new Commandline();
 		if(Os.isFamily("windows") == true) {
-			commandLine.setExecutable(widHome + "/pf/wps01/bin/wsadmin.bat");
+			commandLine.setExecutable(widRuntime + "/bin/wsadmin.bat");
 		} else {
-			commandLine.setExecutable(widHome + "/pf/wps/bin/wsadmin.sh");
-		}	
+			commandLine.setExecutable(widRuntime + "/bin/wsadmin.sh");
+		}		
 	
 		Commandline.Argument arg1 = new Commandline.Argument();
 		arg1.setLine("-host " + deploymentManagerHost);
