@@ -51,4 +51,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<scm>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
+	</scm>
+	<properties>
+		<scm.connection>${scm.root}/${artifactId}</scm.connection>
+	</properties>
 </project>

@@ -16,11 +16,13 @@
 	<name>Stelvio Integration Framework Maven assemblies</name>
 
 	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/assemblies
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/assemblies
-		</developerConnection>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/assemblies
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
 </project>

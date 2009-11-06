@@ -34,5 +34,16 @@
             <version>1.0-SNAPSHOT</version>
             <type>ear</type>
 		</dependency>	
-	</dependencies>		
+	</dependencies>
+
+	<scm>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
+	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-deploy-poc/bus-deploy
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>	
 </project>

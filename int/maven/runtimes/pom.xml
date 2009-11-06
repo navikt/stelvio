@@ -18,11 +18,13 @@
 	</modules>
 
 	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/runtimes
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/runtimes
-		</developerConnection>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/runtimes
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
 </project>

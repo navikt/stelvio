@@ -37,4 +37,15 @@
         </dependency>
 
     </dependencies>
+	
+	<scm>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
+	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-deploy-poc/maven-bus-deploy-poc
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
 </project>

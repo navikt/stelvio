@@ -18,4 +18,15 @@
 		<module>libs/poc-lib1</module>
 		<module>libs/poc-lib3</module>
 	</modules>
+	
+	<scm>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
+	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/module-groups/poc-mg1
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
 </project>

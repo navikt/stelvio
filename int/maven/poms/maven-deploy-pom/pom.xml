@@ -88,13 +88,15 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
+	
 	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom
-		</developerConnection>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
 </project>

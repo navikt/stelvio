@@ -48,10 +48,10 @@
 	</build>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/libs/poc-module2</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/libs/poc-module2</developerConnection>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>${scm.root}/${artifactId}</scm.connection>
+		<scm.connection>${scm.root}/cons/${artifactId}</scm.connection>
 	</properties>
 </project>

@@ -170,16 +170,6 @@
 		</plugins>
 	</build>
 
-	<properties>
-		<maven.version>2.0.10</maven.version>
-		<project.build.sourceEncoding>
-			ISO-8859-1
-		</project.build.sourceEncoding>
-		<eclipse.workspaceCodeStylesURL>
-			http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml
-		</eclipse.workspaceCodeStylesURL>
-	</properties>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -298,13 +288,24 @@
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
+	
+	
+	<properties>
+		<maven.version>2.0.10</maven.version>
+		<project.build.sourceEncoding>
+			ISO-8859-1
+		</project.build.sourceEncoding>
+		<eclipse.workspaceCodeStylesURL>
+			http://confluence.adeo.no/download/attachments/30647/Nav-Formatter-0.1.xml
+		</eclipse.workspaceCodeStylesURL>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-integration-root-pom
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
 
 	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-integration-root-pom
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-integration-root-pom
-		</developerConnection>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 </project>
