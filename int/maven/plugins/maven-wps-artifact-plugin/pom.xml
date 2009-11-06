@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.maven.plugins</groupId>
 		<artifactId>maven-plugins</artifactId>
-		<version>1.8-SNAPSHOT</version>
+		<version>1.7</version>
 	</parent>
 
 	<artifactId>maven-wps-artifact-plugin</artifactId>
