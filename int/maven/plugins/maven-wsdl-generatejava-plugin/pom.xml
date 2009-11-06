@@ -4,11 +4,11 @@
 	<parent>
 		<artifactId>maven-plugins</artifactId>
 		<groupId>no.nav.maven.plugins</groupId>
-		<version>1.7</version>
+		<version>1.8-SNAPSHOT</version>
 	</parent>
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wsdl-generatejava-plugin</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>maven-wsdl-generatejava-plugin Maven Mojo</name>
 	<url>http://maven.apache.org</url>
@@ -52,8 +52,8 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.7/maven-wsdl-generatejava-plugin</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.7/maven-wsdl-generatejava-plugin</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-generatejava-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-generatejava-plugin</developerConnection>
 	</scm>
 	<properties>
 		<scm.connection>${scm.root}/${artifactId}</scm.connection>
