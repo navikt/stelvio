@@ -38,7 +38,7 @@ public class AddOrUpdateWebsphereVariable extends WebsphereUpdaterMojo {
 	private final void addOrUpdateWebsphereVariable(final Commandline commandLine) {
 		// Set bus configuration version		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " BUS_CONFIGURATION_VERSION " + busConfigurationVersion);
+		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " BUS_CONFIGURATION_VERSION " + busConfigurationVersion + " " + scriptsHome);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 		
@@ -53,7 +53,7 @@ public class AddOrUpdateWebsphereVariable extends WebsphereUpdaterMojo {
 	
 	@Override
 	protected String getGoalPrettyPrint() {
-		return "Add or update WebSphere variable";
+		return "Add or update WebSphere variables";
 	}
 
 }
