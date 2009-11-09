@@ -46,7 +46,7 @@ public class AddOrUpdateWebsphereVariable extends WebsphereUpdaterMojo {
 		
 		// Set esb release version
 		arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " ESB_RELEASE_VERSION" + esbReleaseVersion);
+		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " ESB_RELEASE_VERSION" + esbReleaseVersion + " " + scriptsHome);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}
