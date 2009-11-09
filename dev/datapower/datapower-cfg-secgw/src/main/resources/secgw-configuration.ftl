@@ -149,7 +149,7 @@
 	-->
 	
 	<#-- Proxies for DineUtbetalinger.  -->
-	<#-- One proxy for the services on WPS and one proxy for the direct call to UTI-->
+	<#-- Two proxies for the services on WPS and one proxy for the direct call to UTI-->
 		
 		<#-- AAAPolicy for UTI-service. Using HTTP Basic Authentication, so no post-processing-->
 		<@dp.AAAPolicyLTPA2None
@@ -296,14 +296,14 @@
 			<MaxRedirects>8</MaxRedirects>
 			<Timeout>300</Timeout>
 			<BasicAuthPolicies>
-				<RegExp>"${FrikortESBasicURLMatch}"</RegExp>
-				<UserName>"${FrikortESBasicUserName}"</UserName>
-				<Password>"${FrikortESBasicPassword}"</Password>
+				<RegExp>${FrikortESBasicURLMatch}</RegExp>
+				<UserName>${FrikortESBasicUserName}</UserName>
+				<Password>${FrikortESBasicPassword}</Password>
 			</BasicAuthPolicies>
 			<BasicAuthPolicies>
-				<RegExp>"${SBLUTBUTIBasicURLMatch}"</RegExp>
-				<UserName>"${SBLUTBUTIBasicUserName}"</UserName>
-				<Password>"${SBLUTBUTIBasicPassword}"</Password>
+				<RegExp>${SBLUTBUTIBasicURLMatch}</RegExp>
+				<UserName>${SBLUTBUTIBasicUserName}</UserName>
+				<Password>${SBLUTBUTIBasicPassword}</Password>
 			</BasicAuthPolicies>
 		</HTTPUserAgent>	
 		
