@@ -38,7 +38,7 @@ public class AddOrUpdateWebsphereVariable extends WebsphereUpdaterMojo {
 	private final void addOrUpdateWebsphereVariable(final Commandline commandLine) {
 		// Set bus configuration version		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " BUS_CONFIGURATION_VERSION " + esbReleaseVersion);
+		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " BUS_CONFIGURATION_VERSION " + busConfigurationVersion);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 		
@@ -46,7 +46,7 @@ public class AddOrUpdateWebsphereVariable extends WebsphereUpdaterMojo {
 		
 		// Set esb release version
 		arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " ESB_RELEASE_VERSION" + busConfigurationVersion);
+		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " ESB_RELEASE_VERSION" + esbReleaseVersion);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}
