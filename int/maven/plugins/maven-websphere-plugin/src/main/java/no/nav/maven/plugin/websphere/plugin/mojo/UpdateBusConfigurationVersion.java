@@ -30,7 +30,7 @@ public class UpdateBusConfigurationVersion extends WebsphereUpdaterMojo {
 	private final void addOrUpdateWebsphereVariable(final Commandline commandLine) {
 		// Set bus configuration version		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " BUS_CONFIGURATION_VERSION " + busConfigurationVersion + " " + scriptsHome);
+		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " BUS_CONFIGURATION_VERSION " + busConfigurationVersion + " " + scriptsHome + " " + environment);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);	
 	}
