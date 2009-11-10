@@ -20,6 +20,29 @@
 		objects for use by WPS modules and libraries.
 	</description>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.ibm.wps</groupId>
+			<artifactId>bfmclientmodel</artifactId>
+			<version>6.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.wps</groupId>
+			<artifactId>bpcclientcore</artifactId>
+			<version>6.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.wps</groupId>
+			<artifactId>bpe137650</artifactId>
+			<version>6.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.wps</groupId>
+			<artifactId>bpeapi</artifactId>
+			<version>6.1.0</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
