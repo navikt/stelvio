@@ -8,13 +8,7 @@
 	<packaging>jar</packaging>
 	<name>Maven POC ${artifactId}</name>
 	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-wsdl-export-plugin</artifactId>	
-				<groupId>no.nav.maven.plugins</groupId>
-				<version>1.2-SNAPSHOT</version>	
-				<extensions>true</extensions>					
-			</plugin>
+		<plugins>			
 			<plugin>
 			 	<groupId>no.nav.maven.plugins</groupId>
 			 	<artifactId>maven-wsdl-generatejava-plugin</artifactId>
