@@ -37,7 +37,7 @@ public class UpdateBusConfigurationVersion extends WebsphereUpdaterMojo {
 	
 	@Override
 	protected String getGoalPrettyPrint() {
-		return "Update BUS Configuration version WebSphere variables";
+		return "Update BUS Configuration version WebSphere variable";
 	}
 
 }

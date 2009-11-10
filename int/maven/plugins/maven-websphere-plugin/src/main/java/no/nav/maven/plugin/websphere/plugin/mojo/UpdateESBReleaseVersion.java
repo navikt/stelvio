@@ -33,7 +33,7 @@ public class UpdateESBReleaseVersion extends WebsphereUpdaterMojo {
 	@Override
 	protected String getGoalPrettyPrint() {
 		// TODO Auto-generated method stub
-		return "Update ESB Release version WebSphere variables";
+		return "Update ESB Release version WebSphere variable";
 	}
 
 }
