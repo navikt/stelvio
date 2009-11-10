@@ -23,15 +23,8 @@
 					</execution>
 				</executions>			
 			</plugin>
-			
-			<plugin>
-					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>maven-wps-artifact-plugin</artifactId>
-					<version>1.4</version>
-					<extensions>true</extensions>
-				</plugin>
 		</plugins>
-	</build>
+</build>
 	<dependencies>
 		<dependency>
 			<groupId>no.nav.maven.poc</groupId>
