@@ -480,6 +480,10 @@ int/maven/maven-poc/layers/modules/cons/poc-module2/poc_module2
 int/maven/maven-poc/layers/modules/cons/poc-module2/target
 int/maven/maven-poc/module-groups/poc-mg1/libs
 int/maven/maven-poc/module-groups/poc-mg1/modules
+int/maven/maven-poc/module2-client/*.classpath
+int/maven/maven-poc/module2-client/.project
+int/maven/maven-poc/module2-client/src/main
+int/maven/maven-poc/module2-client/target
 int/maven/plugins/.classpath
 int/maven/plugins/.project
 int/maven/plugins/.settings
