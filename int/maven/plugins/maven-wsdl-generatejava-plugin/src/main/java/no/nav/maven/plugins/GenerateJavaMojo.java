@@ -49,10 +49,10 @@ import org.codehaus.plexus.util.cli.StreamConsumer;
 /**
  * Goal which touches a timestamp file.
  *
- * @goal generatejava
+ * @goal generate
  * 
- * @phase process-sources
- * @requiresDependencyResolution 
+ * @phase generate-sources
+ * @requiresDependencyResolution compile 
  */
 public class GenerateJavaMojo
     extends AbstractMojo
@@ -64,6 +64,8 @@ public class GenerateJavaMojo
 	private static final String WSDL_PATH_IN_WAR = "/META-INF/wsdl";
 
 	private static final String WSDL_INTERFACE_ARTIFACT_TYPE = "wsdl-interface";
+
+	protected static final String WSDLEXPORT_SUFFIX = "WSEXP.wsdl";
 
 	/**
 	 * @parameter expression="${project}"
@@ -116,19 +118,16 @@ public class GenerateJavaMojo
 	 */
 	private File earFile;
 	
-//	/**
-//	 * @parameter expression="${project.dependencies}"
-//	 * @required
-//	 */
-//	protected Set<Artifact> dependencyArtifacts;
-
-
-	/**
-     * Location of the file.
-     * @parameter expression="${project.build.directory}"
+    
+    
+    /**
+     * Source Dir
+     * @parameter expression="${project.build.sourceDirectory}"
      * @required
      */
-    private File outputDirectory;
+    private File sourceDirectory;
+    
+    
     
 
     public void execute()
@@ -168,13 +167,13 @@ public class GenerateJavaMojo
     	//System.out.println(commandLine);
 		List<File> wsdlFiles = listFilesRecursive(tempDirfile, new FilenameFilter() {
 			public boolean accept(File dir, String name) {
-				return name.endsWith("WSEXP.wsdl");
+				return name.endsWith(WSDLEXPORT_SUFFIX);
 			}
 		});		
 		for (File wsdlFile:wsdlFiles ){    	
 			Commandline commandLine = new Commandline();
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-r deploy-client -c web -o e:\\tmp -j Overwrite -D -f "+tempDirfile.getAbsolutePath()+"\\NStoPkg.properties \""+wsdlFile.getAbsolutePath()+"\"");
+			arg.setLine("-role client -container web -o \""+sourceDirectory+"\" -j Overwrite -f \""+tempDirfile.getAbsolutePath()+"\\NStoPkg.properties\" \""+wsdlFile.getAbsolutePath()+"\"");
 			commandLine.setExecutable(exec);
 			commandLine.addArg(arg);
 			arg = new Commandline.Argument();		
