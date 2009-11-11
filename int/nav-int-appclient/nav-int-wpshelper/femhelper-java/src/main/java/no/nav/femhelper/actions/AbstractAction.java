@@ -143,7 +143,12 @@ public abstract class AbstractAction {
 
 		Object result = null;
 		try {
-			fileWriter = new EventFileWriter(path, filename + ".csv");
+			if (cl.hasOption(CommandOptions.delimiter)) {
+				char delimiter = cl.getOptionValue(CommandOptions.delimiter).charAt(0);
+				fileWriter = new EventFileWriter(path, filename + ".csv", delimiter);
+			} else {
+				fileWriter = new EventFileWriter(path, filename + ".csv");
+			}
 			logFileWriter = new LogFileWriter(path, filename + ".log");
 
 			result = this.processEvents(path, filename, arguments, paging, totalevents, maxresultset, cl);
