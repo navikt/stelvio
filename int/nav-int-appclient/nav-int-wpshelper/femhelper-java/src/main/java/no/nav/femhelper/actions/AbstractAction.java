@@ -148,20 +148,20 @@ public abstract class AbstractAction {
 
 			result = this.processEvents(path, filename, arguments, paging, totalevents, maxresultset, cl);
 		} catch (IOException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "IOException:StackTrace:");
+			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "IOException:StackTrace:", e);
 		} catch (InstanceNotFoundException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "InstanceNotFoundException:StackTrace:");
+			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "InstanceNotFoundException:StackTrace:", e);
 		} catch (MBeanException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "MBeanException:StackTrace:");
+			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "MBeanException:StackTrace:", e);
 		} catch (ReflectionException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ReflectionException:StackTrace:");
+			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ReflectionException:StackTrace:", e);
 		} catch (ConnectorException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ConnectorException:StackTrace:");
+			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ConnectorException:StackTrace:", e);
 		}
 
 		// Close writers. (The close() method handles if the writer allready
 		// have been closed)
-		if (null != filename) {
+		if (null != fileWriter) {
 			fileWriter.close();
 		}
 
