@@ -18,16 +18,16 @@ public class PropertyUtil {
 	public List validateProperties(Properties properties) {
 		List<String> result = new ArrayList<String>();
 
-		// Validate property BootstrapHost.
+		// Validate property CONNECTOR_HOST.
 		// Criterias: present
-		if (StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.BootstrapHost))) {
-			result.add("Property " + ConfigPropertyNames.BootstrapHost + " is missing or empty");
+		if (StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.CONNECTOR_HOST))) {
+			result.add("Property " + ConfigPropertyNames.CONNECTOR_HOST + " is missing or empty");
 		}
 
 		// Validate property CONNECTOR_PORT.
 		// Criterias: present
-		if (StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.BootstrapPort))) {
-			result.add("Property " + ConfigPropertyNames.BootstrapPort + " is missing or empty");
+		if (StringUtils.isEmpty(properties.getProperty(ConfigPropertyNames.CONNECTOR_PORT))) {
+			result.add("Property " + ConfigPropertyNames.CONNECTOR_PORT + " is missing or empty");
 		}
 
 		// Validate property CONNECTOR_TYPE.
