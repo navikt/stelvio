@@ -42,6 +42,12 @@ public class ArgumentValidator {
 			result.add("Property " + CommandOptions.maxResultSetPaging + " is set must be 'true' or 'false'");
 		}
 
+		// delimiter
+		String delimiter = cl.getOptionValue(CommandOptions.delimiter);
+		if (!StringUtils.isEmpty(delimiter) && delimiter.length() != 1) {
+			result.add("Property " + CommandOptions.delimiter + " is set but consists of more than one character");
+		}
+
 		// action
 		// TODO AR Rewrite this to use toMap or something like that
 		String action = cl.getOptionValue(CommandOptions.action);

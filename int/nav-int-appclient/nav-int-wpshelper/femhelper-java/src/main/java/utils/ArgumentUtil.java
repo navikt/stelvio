@@ -70,6 +70,9 @@ public class ArgumentUtil {
 			result.put(CommandOptions.maxResultSetPaging, maxResultSetPaging);
 		}
 
+		String delimiter = cl.getOptionValue(CommandOptions.delimiter);
+		result.put(CommandOptions.delimiter, delimiter);
+
 		String reportDirectory = cl.getOptionValue(CommandOptions.reportDirectory);
 		if (StringUtils.isEmpty(reportDirectory)) {
 			result.put(CommandOptions.reportDirectory, ".");

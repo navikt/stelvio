@@ -35,6 +35,7 @@ public class CommandOptionsBuilder {
 		options.addOption(getSourceComponentOption());
 		options.addOption(getDestinationModule());
 		options.addOption(getDestinationComponent());
+		options.addOption(getDelimiterOption());
 		return options;
 	}
 
@@ -193,6 +194,16 @@ public class CommandOptionsBuilder {
 		Option noStop = OptionBuilder.withLongOpt(CommandOptions.noStop).create("ns");
 		noStop.setDescription("Runs the action without prompting between collecting the msgids and the action");
 		return noStop;
+	}
+
+	/**
+	 * Create command line option for 'noStop'. This paramater is used if
+	 * actions not shal prompt before executing the action
+	 * 
+	 * @return
+	 */
+	private Option getDelimiterOption() {
+		return new Option("dl", CommandOptions.delimiter, true, "Use this delimiter for the CSV report (default: ';')");
 	}
 
 	/**

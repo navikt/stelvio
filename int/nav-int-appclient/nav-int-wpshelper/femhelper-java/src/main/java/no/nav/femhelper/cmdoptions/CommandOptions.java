@@ -71,4 +71,14 @@ public interface CommandOptions {
 	 * <code>CommandLine</code> object
 	 */
 	public static final String maxResultSetPaging = "maxResultSetPaging";
+	/**
+	 * Public constant to represent the 'delimiter' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String delimiter = "delimiter";
+	/**
+	 * Public constant to represent the 'messageIdFile' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String messageIdFile = "messageIdFile";
 }
