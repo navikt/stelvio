@@ -104,9 +104,11 @@ public abstract class AbstractAction {
 
 		// Decode password
 		String encodedPass = mappedProperties.getProperty(ConfigPropertyNames.password);
-		PasswordEncodeDelegate encode = new PasswordEncodeDelegate();
-		String decodedPassword = encode.getDecryptedPassword(encodedPass);
-		mappedProperties.setProperty(ConfigPropertyNames.password, decodedPassword);
+		if (encodedPass != null) {
+			PasswordEncodeDelegate encode = new PasswordEncodeDelegate();
+			String decodedPassword = encode.getDecryptedPassword(encodedPass);
+			mappedProperties.setProperty(ConfigPropertyNames.password, decodedPassword);
+		}
 
 		// Create Business Flow Manager instance
 		BFMConnectionAdapter adapter = BFMConnectionAdapter.getInstance(mappedProperties);
