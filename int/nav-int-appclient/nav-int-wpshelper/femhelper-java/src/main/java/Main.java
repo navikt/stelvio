@@ -54,8 +54,8 @@ public class Main {
 			cl = new PosixParser().parse(options, args);
 
 		} catch (ParseException parseEx) {
-			System.out.println("Incorrect arguments (listed below) - application will terminate.");
-			System.out.println(parseEx.getMessage());
+			System.err.println("Incorrect arguments (listed below) - application will terminate.");
+			System.err.println(parseEx.getMessage());
 			System.exit(-1); // TODO AR Find correct return code for error
 		}
 
