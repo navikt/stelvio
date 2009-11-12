@@ -15,13 +15,13 @@ import no.nav.femhelper.common.Event;
 
 import org.apache.commons.lang.StringUtils;
 
-import utils.SDOFormatter;
-
 import com.Ostermiller.util.CSVPrinter;
 import com.ibm.wbiserver.manualrecovery.FailedEventParameter;
 import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
 import com.ibm.websphere.management.AdminClient;
 import commonj.sdo.DataObject;
+import commonj.sdo.Property;
+import commonj.sdo.Type;
 
 /**
  * This class that writes events to file
@@ -155,26 +155,16 @@ public class EventFileWriter {
 				for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
 					// Each parameter is know as a type of FailedEventParameter.
 					FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
-					SDOFormatter sdoppt = new SDOFormatter(2, " ");
-
-					// Probing in data type
-					String prettyPrint = null;
 					
-					// This if statement was before used for different behavior for
-					// objects of DataObject and objects of String. Keeping this
-					// statement to make this differense in the request element 
-					// obvious.
 					if (failedEventParameter.getValue() instanceof DataObject) {
-						prettyPrint = failedEventParameter.getValue().toString();
+						toString((DataObject) failedEventParameter.getValue(), sb);
 					} else if (failedEventParameter.getValue() instanceof String) {
-						prettyPrint = failedEventParameter.getValue().toString();
+						sb.append(failedEventParameter.getValue().toString());
 					} else {
-						prettyPrint = "Unable to convert";
+						sb.append("Unable to convert");
 					}
-					sb.append("DataObject:" + prettyPrint);
-					sb.append(EMPTY); // Ensure all 'cells' are filled to
-					// improve make the view even more easy
-					// to read
+					// Ensure all 'cells' are filled to improve make the view even more easy to read
+					sb.append(EMPTY);
 				}
 			} catch (RuntimeException e) {
 				String errormsg = "RuntimeException caught during retrieval of business object" 
@@ -188,6 +178,50 @@ public class EventFileWriter {
 
 		// Write PIID / CorrelationId
 		csvPrinter.writeln(event.getCorrelationID());
+	}
+
+	/**
+	 * Append string representation of a DataObject to StringBuilder
+	 * 
+	 * The method is intented for debugging and logging
+	 * Namespace is omitted for types and properties
+	 * 
+	 * @param dataObject The dataObject to append as a string
+	 * @param resultString An initialized StringBuilder to append to
+	 */
+	private static void toString(DataObject dataObject, StringBuilder resultString) {
+		Type type = dataObject.getType();
+		resultString.append(type.getName());
+
+		boolean firstIteration = true;
+		for (Iterator iter = type.getProperties().iterator(); iter.hasNext();) {
+			Property property = (Property) iter.next();
+			String name = property.getName();
+			Object child = dataObject.get(name);
+			if (child != null) {
+				if (firstIteration) {
+					resultString.append(" (");
+					firstIteration = false;
+				} else {
+					resultString.append(", ");
+				}
+				if (child instanceof DataObject) {
+					toString((DataObject) child, resultString);
+				} else if (child instanceof List) {
+					resultString.append(name);
+					resultString.append(": list[");
+					resultString.append(((List) child).size());
+					resultString.append("]");
+				} else {
+					resultString.append(name);
+					resultString.append("=");
+					resultString.append(child);
+				}
+			}
+		}
+		if (!firstIteration) {
+			resultString.append(")");
+		}
 	}
 
 	/**
