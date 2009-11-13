@@ -135,7 +135,7 @@ public class BPELHelperUtil {
 	private static String convertCalendar(Calendar calendar) {
 		if (calendar != null) {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-			return sdf.format(calendar);
+			return sdf.format(calendar.getTime());
 		} else
 			return "null";
 	}
