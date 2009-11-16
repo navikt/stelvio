@@ -7,15 +7,6 @@
 		<version>1.1.13-SNAPSHOT</version>
 	</parent>
 
-	<scm>
-		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/datapower-xml-mgmt
-		</connection>
-		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/datapower-xml-mgmt
-		</developerConnection>
-	</scm>
-
 	<artifactId>datapower-xml-mgmt</artifactId>
 	<packaging>jar</packaging>
 

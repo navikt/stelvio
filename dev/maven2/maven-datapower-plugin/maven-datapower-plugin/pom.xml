@@ -76,20 +76,8 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags</tagBase>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
-
-	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/maven-datapower-plugin</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/maven-datapower-plugin</developerConnection>
-	</scm>
 
 	<distributionManagement>
 		<repository>
