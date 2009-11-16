@@ -48,7 +48,7 @@
 		<BackTimeout>${backTimeout}</BackTimeout>
 		<FrontPersistentTimeout>180</FrontPersistentTimeout>
 		<BackPersistentTimeout>180</BackPersistentTimeout>
-		<IncludeResponseTypeEncoding>$iIncludeResponseTypeEncoding}</IncludeResponseTypeEncoding>
+		<IncludeResponseTypeEncoding>${includeResponseTypeEncoding}</IncludeResponseTypeEncoding>
 		<BackHTTPVersion>HTTP/1.1</BackHTTPVersion>
 		<AllowCompression>off</AllowCompression>
 		<PersistentConnections>on</PersistentConnections>
