@@ -30,5 +30,7 @@
 		toggleNoWsa="off"
 		wsaMode="wsa2sync"
 		wsaRequireAaa="${wsaRequireAaa}"
-		backTimeout="${backsideTimeout}"/>
+		backTimeout="${backsideTimeout}"
+		<#-- includeResponseTypeEncoding introduced for interoperability with SPK, consider for all proxies later -->
+		includeResponseTypeEncoding="on"/>
 </#macro>

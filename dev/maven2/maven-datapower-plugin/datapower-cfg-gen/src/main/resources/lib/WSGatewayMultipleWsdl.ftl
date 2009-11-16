@@ -9,7 +9,8 @@
 		toggleNoWsa
 		wsaMode
 		wsaRequireAaa
-		backTimeout>
+		backTimeout
+		includeResponseTypeEncoding>
 	<WSGateway name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<UserSummary>${version}</UserSummary>
@@ -47,7 +48,7 @@
 		<BackTimeout>${backTimeout}</BackTimeout>
 		<FrontPersistentTimeout>180</FrontPersistentTimeout>
 		<BackPersistentTimeout>180</BackPersistentTimeout>
-		<IncludeResponseTypeEncoding>off</IncludeResponseTypeEncoding>
+		<IncludeResponseTypeEncoding>$iIncludeResponseTypeEncoding}</IncludeResponseTypeEncoding>
 		<BackHTTPVersion>HTTP/1.1</BackHTTPVersion>
 		<AllowCompression>off</AllowCompression>
 		<PersistentConnections>on</PersistentConnections>

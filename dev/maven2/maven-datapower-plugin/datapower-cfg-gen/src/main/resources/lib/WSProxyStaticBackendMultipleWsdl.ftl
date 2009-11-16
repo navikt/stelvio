@@ -31,5 +31,7 @@
 		toggleNoWsa="on"
 		wsaMode="sync2sync"
 		wsaRequireAaa="off"
-		backTimeout="${backsideTimeout}"/>
+		backTimeout="${backsideTimeout}"
+		<#-- consider introducing includeRepsonseTypeEncoding for all proxies -->
+		includeResponseTypeEncoding="off"/>
 </#macro>
