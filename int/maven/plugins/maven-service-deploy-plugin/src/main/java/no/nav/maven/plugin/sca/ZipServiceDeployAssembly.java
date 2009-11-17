@@ -28,7 +28,7 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		return artifacts;
 	}
 
-	public void addArtifact(Archiver archiver, Artifact artifact) throws ArchiverException {
+	public void addArtifact(MavenProject project, Archiver archiver, Artifact artifact) throws ArchiverException {
 		archiver.addFile(artifact.getFile(), artifact.getArtifactId() + "." + artifact.getArtifactHandler().getExtension());
 	}
 }

@@ -94,7 +94,7 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextua
 				}
 
 				getLog().debug("Adding artifact " + artifact + " to assembly");
-				serviceDeployAssembly.addArtifact(archiver, artifact);
+				serviceDeployAssembly.addArtifact(project, archiver, artifact);
 			}
 
 			archiver.createArchive();
