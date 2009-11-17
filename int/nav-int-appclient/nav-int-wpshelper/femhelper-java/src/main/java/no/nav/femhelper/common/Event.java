@@ -39,6 +39,11 @@ public class Event implements Serializable{
 	/** Used in actions to keep the failure message from termination of connected processes */
 	private String processFailureMessage;
 	
+	public Event(String messageID) {
+		super();
+		this.messageID = messageID;
+	}
+
 	public Event(String messageID, String correlationID) {
 		super();
 		this.messageID = messageID;

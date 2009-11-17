@@ -17,6 +17,9 @@ import org.apache.commons.lang.StringUtils;
  * @author Andreas Roe
  */
 public class ArgumentUtil {
+
+	private static final String DEFAULT_DELIMITER = ";";
+
 	public static Map<String, String> getArguments(CommandLine cl) {
 		Map<String, String> result = new HashMap<String, String>();
 
@@ -38,6 +41,16 @@ public class ArgumentUtil {
 		String destComponent = cl.getOptionValue(CommandOptions.destinationComponent);
 		if (!StringUtils.isEmpty(destComponent)) {
 			result.put(CommandOptions.destinationComponent, destComponent);
+		}
+
+		String destMethod = cl.getOptionValue(CommandOptions.destinationMethod);
+		if (!StringUtils.isEmpty(destMethod)) {
+			result.put(CommandOptions.destinationMethod, destMethod);
+		}
+
+		String sessionId = cl.getOptionValue(CommandOptions.sessionId);
+		if (!StringUtils.isEmpty(sessionId)) {
+			result.put(CommandOptions.sessionId, sessionId);
 		}
 
 		String failureMessage = cl.getOptionValue(CommandOptions.failureMessage);
@@ -71,7 +84,16 @@ public class ArgumentUtil {
 		}
 
 		String delimiter = cl.getOptionValue(CommandOptions.delimiter);
-		result.put(CommandOptions.delimiter, delimiter);
+		if (StringUtils.isEmpty(delimiter)) {
+			result.put(CommandOptions.delimiter, DEFAULT_DELIMITER);
+		} else {
+			result.put(CommandOptions.delimiter, delimiter);
+		}
+
+		String messageIdFile = cl.getOptionValue(CommandOptions.messageIdFile);
+		if (!StringUtils.isEmpty(messageIdFile)) {
+			result.put(CommandOptions.messageIdFile, messageIdFile);
+		}
 
 		String reportDirectory = cl.getOptionValue(CommandOptions.reportDirectory);
 		if (StringUtils.isEmpty(reportDirectory)) {

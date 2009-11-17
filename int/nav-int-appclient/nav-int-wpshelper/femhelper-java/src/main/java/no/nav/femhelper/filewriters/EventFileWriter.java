@@ -33,11 +33,6 @@ public class EventFileWriter {
 	private static final String EMPTY = " ";
 
 	/**
-	 * Delimiter to use in CSV file unless it is set on command line
-	 */
-	private static final char DEFAULT_DELIMITER = ';';
-
-	/**
 	 * Logger instance
 	 */
 	private Logger LOGGER = Logger.getLogger(EventFileWriter.class.getName());
@@ -66,28 +61,6 @@ public class EventFileWriter {
 		LOGGER.log(Level.FINE, "Creating writer with path: " + file.getAbsolutePath());
 		this.csvPrinter = new CSVPrinter(new BufferedWriter(new FileWriter(file, true)));
 		this.csvPrinter.changeDelimiter(delimiter);
-	}
-
-	/**
-	 * Default parameterized constructor
-	 * 
-	 * @param path
-	 *            path
-	 * @param filename
-	 *            filename
-	 * @throws IOException
-	 */
-	public EventFileWriter(String path, String filename) throws IOException {
-		if (StringUtils.isEmpty(path)) {
-			String tempFolderProperty = "java.io.tmpdir";
-			String tempFolder = System.getProperty(tempFolderProperty);
-			path = tempFolder;
-		}
-
-		File file = new File(path, filename);
-		LOGGER.log(Level.FINE, "Creating writer with path: " + file.getAbsolutePath());
-		this.csvPrinter = new CSVPrinter(new BufferedWriter(new FileWriter(file, true)));
-		this.csvPrinter.changeDelimiter(DEFAULT_DELIMITER);
 	}
 
 	/**

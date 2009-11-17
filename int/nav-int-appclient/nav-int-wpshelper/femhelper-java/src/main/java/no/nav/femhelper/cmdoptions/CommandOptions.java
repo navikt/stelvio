@@ -37,6 +37,16 @@ public interface CommandOptions {
 	 */
 	public static final String destinationComponent = "destinationComponent";
 	/**
+	 * Public constant to represent the 'destinationMethod' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String destinationMethod = "destinationMethod";
+	/**
+	 * Public constant to represent the 'sessionId' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String sessionId = "sessionId";
+	/**
 	 * Public constant to represent the 'failureMessage' string from
 	 * <code>CommandLine</code> object
 	 */

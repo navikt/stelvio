@@ -18,6 +18,7 @@ import no.nav.femhelper.common.Queries;
 import org.apache.commons.cli.CommandLine;
 
 import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
+import com.ibm.wbiserver.manualrecovery.exceptions.FailedEventDataException;
 import com.ibm.websphere.management.exception.ConnectorException;
 
 public class ReportAction extends AbstractAction {
@@ -47,6 +48,7 @@ public class ReportAction extends AbstractAction {
 			logFileWriter.log("Starting to report " + events.size() + " events");
 			logger.log(Level.INFO, "Reporting of #" + events.size() + " events in progress...!");
 			int count = 0;
+			int countSuccessful = 0;
 			for (Event event : events) {
 				count++;
 				if (count % maxresultset == 0) {
@@ -57,13 +59,23 @@ public class ReportAction extends AbstractAction {
 				String eventWithParameter = Queries.QUERY_EVENT_WITH_PARAMETERS;
 				Object[] BOparams = new Object[] { new String((String) event.getMessageID()) };
 				String[] BOsignature = new String[] { "java.lang.String" };
-				FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(
-						failedEventManager, eventWithParameter, BOparams, BOsignature);
-				fileWriter.writeCSVEvent(failedEventWithParameters, event, adminClient);
+				try {
+					FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(
+								failedEventManager, eventWithParameter, BOparams, BOsignature);
+					fileWriter.writeCSVEvent(failedEventWithParameters, event, adminClient);
+				} catch (MBeanException e) {
+					if (e.getCause() != null && e.getCause() instanceof FailedEventDataException) {
+						FailedEventDataException cause = (FailedEventDataException) e.getCause();
+						logger.log(Level.WARNING, "Unable to fetch event with messageId '" + event.getMessageID() + "', probably because it does not exist.", cause);
+					} else {
+						throw e;
+					}
+				}
+				countSuccessful++;
 			}
 
-			logFileWriter.log("Reported " + events.size() + " events");
-			logger.log(Level.INFO, "Reporting of #" + events.size() + " events...done!");
+			logFileWriter.log("Reported " + countSuccessful + " events");
+			logger.log(Level.INFO, "Reporting of #" + countSuccessful + " events...done!");
 		} else {
 			logger.log(Level.WARNING, "No events found to report!");
 		}

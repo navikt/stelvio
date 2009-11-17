@@ -18,8 +18,9 @@ public class Constants {
 	public static final String ACTION_DISCARD = "DISCARD";
 	public static final String ACTION_RESUBMIT = "RESUBMIT";
 	public static final String ACTION_STATUS = "STATUS";
+	public static final String ACTION_COUNT = "COUNT";
 
-	public static final List<String> ACTIONS = Arrays.asList(ACTION_REPORT, ACTION_DISCARD, ACTION_RESUBMIT, ACTION_STATUS);
+	public static final List<String> ACTIONS = Arrays.asList(ACTION_REPORT, ACTION_DISCARD, ACTION_RESUBMIT, ACTION_STATUS, ACTION_COUNT);
 
 	/**
 	 * Public constant to represent the formatter pattern to be used together

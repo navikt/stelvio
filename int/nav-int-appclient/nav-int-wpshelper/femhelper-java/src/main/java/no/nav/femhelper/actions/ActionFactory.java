@@ -17,6 +17,8 @@ public class ActionFactory {
 			return new ResubmitAction(properties);
 		} else if (Constants.ACTION_STATUS.equalsIgnoreCase(actionType)) {
 			return new StatusAction(properties);
+		} else if (Constants.ACTION_COUNT.equalsIgnoreCase(actionType)) {
+			return new CountAction(properties);
 		} else {
 			throw new RuntimeException("ActionType '" + actionType + "' is not supported");
 		}

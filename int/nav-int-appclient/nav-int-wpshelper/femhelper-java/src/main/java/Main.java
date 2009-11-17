@@ -136,6 +136,7 @@ public class Main {
 			// Get the total number of events to match with the page size to
 			// avoid huge amount of retrieving
 			Long numberOfEvents = (Long) statusAction.process(null, null, null, false, 0, 0, cl);
+			System.out.println("Failed Event Manager contains " + numberOfEvents + " events");
 			if (numberOfEvents.intValue() < 1) {
 				logger.log(Level.INFO, "There are no events on Failed Event Manager. The application will terminate");
 				System.exit(0);

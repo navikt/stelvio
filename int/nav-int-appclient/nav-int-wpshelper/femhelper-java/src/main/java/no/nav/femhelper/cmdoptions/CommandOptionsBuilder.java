@@ -35,7 +35,10 @@ public class CommandOptionsBuilder {
 		options.addOption(getSourceComponentOption());
 		options.addOption(getDestinationModule());
 		options.addOption(getDestinationComponent());
+		options.addOption(getDestinationMethod());
+		options.addOption(getSessionId());
 		options.addOption(getDelimiterOption());
+		options.addOption(getMessageIdFileOption());
 		return options;
 	}
 
@@ -82,6 +85,28 @@ public class CommandOptionsBuilder {
 		Option destinationComponent = getGeneralOption(CommandOptions.destinationComponent, "dc");
 		destinationComponent.setDescription("Filter by Destination Component");
 		return destinationComponent;
+	}
+
+	/**
+	 * Create command line option for 'destinationMethod'
+	 * 
+	 * @return destinationMethod option
+	 */
+	private Option getDestinationMethod() {
+		Option destinationMethod = getGeneralOption(CommandOptions.destinationMethod, "de");
+		destinationMethod.setDescription("Filter by Destination Method");
+		return destinationMethod;
+	}
+
+	/**
+	 * Create command line option for 'sessionId'
+	 * 
+	 * @return sessionId option
+	 */
+	private Option getSessionId() {
+		Option sessionId = getGeneralOption(CommandOptions.sessionId, "si");
+		sessionId.setDescription("Filter by Session Id");
+		return sessionId;
 	}
 
 	/**
@@ -197,7 +222,7 @@ public class CommandOptionsBuilder {
 	}
 
 	/**
-	 * Create command line option for 'noStop'. This paramater is used if
+	 * Create command line option for 'delimmiter'. This paramater is used if
 	 * actions not shal prompt before executing the action
 	 * 
 	 * @return
@@ -229,4 +254,14 @@ public class CommandOptionsBuilder {
 				StringUtils.isEmpty(shortOption) ? null : shortOption);
 		return option;
 	}
+
+	/**
+	 * Create command line option for 'messageIdFile'.
+	 * 
+	 * @return
+	 */
+	private Option getMessageIdFileOption() {
+		return new Option("mf", CommandOptions.messageIdFile, true, "File with messageIds to use as filter. This option will replace all other filters. The first messageId is read from each line, the text MessageId is ignored, but delimiters are respected");
+	}
+
 }

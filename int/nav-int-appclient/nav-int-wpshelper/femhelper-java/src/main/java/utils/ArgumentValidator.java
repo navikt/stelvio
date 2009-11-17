@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,6 +47,15 @@ public class ArgumentValidator {
 		String delimiter = cl.getOptionValue(CommandOptions.delimiter);
 		if (!StringUtils.isEmpty(delimiter) && delimiter.length() != 1) {
 			result.add("Property " + CommandOptions.delimiter + " is set but consists of more than one character");
+		}
+
+		// delimiter
+		String messageIdFile = cl.getOptionValue(CommandOptions.messageIdFile);
+		if (!StringUtils.isEmpty(messageIdFile)) {
+			File file = new File(messageIdFile);
+			if (!file.canRead()) {
+				result.add("Unable to read from file " + messageIdFile);
+			}
 		}
 
 		// action
