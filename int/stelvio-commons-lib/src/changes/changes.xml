@@ -5,6 +5,12 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="3.2" date="18-11-2009" description="Maintenance release">
+			<action dev="ebh2812" type="fix">Fixed bug in CatchServiceRuntimeExceptionInterceptor resulting in 'cause already initialized' errors.</action>
+			<action dev="ebh2812" type="fix">Fixed issues in StelvioCommonContextHandler with creation/deletion of UserWorkArea.</action>
+			<action dev="ebh2812" type="add">Incident 143881: Implemented functionality for creating/updating StelvioContext.</action>
+			<action dev="tia2812" type="update">SIR 125127: SystemAvailability has been extended with functionality to limit the number of concurrent calls to a specific module. The default value is 25, but this is configurable using the regular SystemAvailabilityWeb application (which modifies an .xml file-structure in the SystemAvailabilityFramework-directory). Also, caching of the systemavailability property file was introduced.</action>
+		</release>
 		<release version="3.1.6" date="12-06-2009" description="Minor release">
 			<action dev="hnc2812" type="fix">Fixed error resulting in IllegalStateException in CatchServiceRuntimeExceptionInterceptor</action>
 		</release>
