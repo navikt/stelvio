@@ -135,11 +135,14 @@
 				{"type":"sign", "name":"signAction",
 						"input":"INPUT",	"output":"signedResponse",
 						"signCert":"${navSigningKeystoreName}",
-						"signKey":"${navSigningKeystoreName}"}
-				{"type":"xform", "name":"logAction",
-						"input":"signedResponse",	"output":"NULL", "async":"on",
+						"signKey":"${navSigningKeystoreName}"},
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"signedResponse",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"signedResponse","output":"OUTPUT"}
 			]/>	
@@ -149,27 +152,40 @@
 				{"type":"sign", "name":"signAction",
 						"input":"INPUT",	"output":"signedResponse",
 						"signCert":"${navSigningKeystoreName}",
-						"signKey":"${navSigningKeystoreName}"}
-				{"type":"xform", "name":"logAction",
-						"input":"signedResponse",	"output":"NULL", "async":"on",
+						"signKey":"${navSigningKeystoreName}"},
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"signedResponse",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"signedResponse","output":"OUTPUT"}
 			]/>	
 	<@dp.ProcessingErrorRule
 			name="${inboundProcessingPolicy}"
 			actions=[
+				{"type":"xform", "name":"prepareErrorLogAction",
+						"input":"INPUT",	"output":"log", "async":"off",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"sendErrorLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"createFaultAction",
 						"input":"INPUT",	"output":"faultHandler", "async":"off",
 						"stylesheet":"local:///xslt/fault-handler.xsl",
 						"params":[
 							{"name":"fault-prefix","value":"DataPower Security Gateway"}
 						]},
-				{"type":"xform", "name":"logAction",
-						"input":"faultHandler",	"output":"NULL", "async":"on",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"faultHandler",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"faultHandler","output":"OUTPUT"}
 			]/>
@@ -178,6 +194,7 @@
 			name="${inboundProcessingPolicy}"
 			policyMapsList=[
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicy}_request-rule"}, 
+				{"matchingRule":"${matchingRuleAllSoapFaults}","processingRule":"${inboundProcessingPolicy}_fault-response-rule"},
 				{"matchingRule":"${matchingRuleAll}","processingRule":"${inboundProcessingPolicy}_response-rule"},
 				{"matchingRule":"${matchingRuleAllErrors}","processingRule":"${inboundProcessingPolicy}_error-rule"}
 			]/>
@@ -192,10 +209,13 @@
 				{"type":"verify", "name":"verifiyAction",
 						"input":"INPUT",	"output":"NULL",
 						"valCred":"${signatureValCred}"},
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"INPUT",	"output":"NULL",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"INPUT",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"addStelvioCtxAction", "async":"off",
 						"input":"aaaOutput",	"output":"stelvioContextIncluded",
 						"stylesheet":"local:///xslt/add-stelvio-context.xsl",
@@ -209,27 +229,40 @@
 				{"type":"sign", "name":"signAction",
 						"input":"INPUT",	"output":"signedResponse",
 						"signCert":"${navSigningKeystoreName}",
-						"signKey":"${navSigningKeystoreName}"}
-				{"type":"xform", "name":"logAction", "async":"on",
-						"input":"signedResponse", "output":"NULL",
+						"signKey":"${navSigningKeystoreName}"},
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"signedResponse",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"signedResponse","output":"OUTPUT"}
 			]/>	
 	<@dp.ProcessingErrorRule
 			name="${inboundProcessingPolicyNP}"
 			actions=[
+				{"type":"xform", "name":"prepareErrorLogAction",
+						"input":"INPUT",	"output":"log", "async":"off",
+						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
+						"params":logActionParams},
+				{"type":"result", "name":"sendErrorLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"createFaultAction",
 						"input":"INPUT", "output":"faultHandler", "async":"off",
 						"stylesheet":"local:///xslt/fault-handler.xsl",
 						"params":[
 							{"name":"fault-prefix","value":"DataPower Security Gateway"}
 						]},
-				{"type":"xform", "name":"logAction",
-						"input":"faultHandler",	"output":"NULL", "async":"on",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"faultHandler",	"output":"log", "async":"off",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"faultHandler","output":"OUTPUT"}
 			]/>
@@ -256,7 +289,7 @@
 				{"type":"sign", "name":"signAction",
 						"input":"PIPE",	"output":"signedRequest",
 						"signCert":"${navSigningKeystoreName}",
-						"signKey":"${navSigningKeystoreName}"}
+						"signKey":"${navSigningKeystoreName}"},
 				{"type":"xform", "name":"prepareLogAction",
 						"input":"signedRequest", "output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
@@ -350,15 +383,18 @@
 				{"type":"xform", "name":"stripWSSecAction",
 						"input":"PIPE",	"output":"PIPE", "async":"off",
 						"stylesheet":"store:///strip-security-header.xsl",
-						"params":[]},				 
+						"params":[]},
 				{"type":"sign", "name":"signAction",
 						"input":"PIPE",	"output":"signedRequest",
 						"signCert":"${navSigningKeystoreName}",
-						"signKey":"${navSigningKeystoreName}"}
-				{"type":"xform", "name":"logAction",
-						"input":"signedRequest", "output":"NULL", "async":"on",
+						"signKey":"${navSigningKeystoreName}"},
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"signedRequest", "output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"signedRequest","output":"OUTPUT"}
 			]/>	
@@ -369,10 +405,13 @@
 				{"type":"verify", "name":"verifiyAction",
 						"input":"INPUT",	"output":"NULL",
 						"valCred":"${signatureValCred}"},
-				{"type":"xform", "name":"logAction",
-						"input":"INPUT",	"output":"NULL", "async":"on",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"INPUT", "output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
 						"params":logActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"xform", "name":"stripWssAction",
 						"input":"INPUT",	"output":"wssHeaderRemoved", "async":"off",
 						"stylesheet":"store:///strip-security-header.xsl",
@@ -504,10 +543,13 @@
 						"params":[
 							{"name":"fault-prefix","value":"DataPower Security Gateway"}
 						]},
-				{"type":"xform", "name":"logAction",
-						"input":"faultHandler",	"output":"NULL", "async":"on",
+				{"type":"xform", "name":"prepareLogAction",
+						"input":"faultHandler", "output":"log",
 						"stylesheet":"local:///xslt/nfs-message-logger.xsl",
-						"params":logActionParams},
+						"params":logFaultActionParams},
+				{"type":"result", "name":"sendLogAction",
+						"input":"log", "output":"NULL", "async":"on",
+						"destination":"${logDestination}"},
 				{"type":"result", "name":"resultAction",
 					"input":"faultHandler","output":"OUTPUT"}					
 			]/>
