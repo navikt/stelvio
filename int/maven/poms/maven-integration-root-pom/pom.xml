@@ -34,15 +34,15 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>2.0.2</version>
 					<configuration>
-						<source>1.5</source>
-						<target>1.5</target>
-						<encoding>ISO-8859-1</encoding>
+						<source>${target.jdk}</source>
+						<target>${target.jdk}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
 						<!-- Commented out for now. Trying to avoid fork. Awaiting feedback from IBM
 							<fork>true</fork>
 							<executable>
 							${wid.runtime}\java\bin\javac
 							</executable>
-							<compilerVersion>1.5</compilerVersion>
+							<compilerVersion>${target.jdk}</compilerVersion>
 						-->
 					</configuration>
 				</plugin>
@@ -251,7 +251,7 @@
 							</docletArtifact>
 							<additionalparam>-d .</additionalparam>
 							<destDir>doccheck</destDir>
-							<encoding>ISO-8859-1</encoding>
+							<encoding>${project.build.sourceEncoding}</encoding>
 						</configuration>
 						<reports>
 							<report>javadoc</report>
@@ -262,7 +262,7 @@
 			<plugin>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<configuration>
-					<targetJdk>1.5</targetJdk>
+					<targetJdk>${target.jdk}</targetJdk>
 					<rulesets>
 						<ruleset>
 							http://confluence.adeo.no/download/attachments/12007/nav_pmd.xml
@@ -270,7 +270,7 @@
 					</rulesets>
 					<format>xml</format>
 					<linkXref>true</linkXref>
-					<sourceEncoding>ISO-8859-1</sourceEncoding>
+					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
 					<minimumTokens>100</minimumTokens>
 				</configuration>
 			</plugin>
@@ -292,6 +292,7 @@
 
 	<properties>
 		<maven.version>2.0.10</maven.version>
+		<target.jdk>1.5</target.jdk>
 		<project.build.sourceEncoding>
 			ISO-8859-1
 		</project.build.sourceEncoding>
