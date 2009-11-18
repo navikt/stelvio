@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-integration-root-pom</artifactId>
-		<version>1.4</version>
+		<version>1.4.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>maven-wps-pom</artifactId>
@@ -92,6 +92,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<reporting>
+		<outputDirectory>${target.dir}/site</outputDirectory>
+	</reporting>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.ibm.maven.runtimes</groupId>
@@ -100,6 +105,7 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+	
 	<properties>
 		<!-- 
 			TODO: WID goes bananas if the Maven build is using the default target folder as output. 
