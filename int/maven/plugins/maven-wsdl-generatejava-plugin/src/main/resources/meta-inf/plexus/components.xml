@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<component-set>
+	<components>
+		<component>
+			<role>
+				org.apache.maven.artifact.handler.ArtifactHandler
+			</role>
+			<role-hint>wsdl-interface</role-hint>
+			<implementation>
+				org.apache.maven.artifact.handler.DefaultArtifactHandler
+			</implementation>
+			<configuration>
+				<classifier>wsdlif</classifier>
+				<type>wsdl-interface</type>
+				<extension>zip</extension>
+			</configuration>
+		</component>
+	</components>
+</component-set>

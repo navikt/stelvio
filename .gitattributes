@@ -3470,6 +3470,7 @@ int/maven/plugins/maven-wsdl-export-plugin/src/main/java/no/nav/maven/plugins/WS
 int/maven/plugins/maven-wsdl-export-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/java/no/nav/maven/plugins/GenerateJavaMojo.java -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/resources/meta-inf/plexus/components.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/scripts/wsdlGenerateJava.build.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/scripts/wsdlGenerateJava.mojos.xml -text
 int/maven/plugins/pom.xml -text
