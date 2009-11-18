@@ -76,11 +76,11 @@ public class GenerateJavaMojo
 
 	
 	/**
-	 * @parameter expression="${wid.runtime}"
+	 * @parameter expression="${was.home}"
 	 * @required
 	 * @readonly
 	 */
-	private String widRuntime;
+	private String wasRuntime;
 	/**
 	 * @component
 	 */
@@ -122,10 +122,10 @@ public class GenerateJavaMojo
     
     /**
      * Source Dir
-     * @parameter expression="${project.build.sourceDirectory}"
+     * @parameter expression="${project.build.directory}"
      * @required
      */
-    private File sourceDirectory;
+    private File buildDirectory;
     
     
     
@@ -154,13 +154,14 @@ public class GenerateJavaMojo
 					+ unArchiver.getDestDirectory(), e);
 		}
 		
+		String genDirectory=buildDirectory.getAbsolutePath()+"/genWSDL";
 		
 		
     	String exec;
     	if(Os.isFamily("windows")) {
-			exec=widRuntime + "/bin/WSDL2Java.bat";
+			exec=wasRuntime + "/bin/WSDL2Java.bat";
 		} else {
-			exec=widRuntime + "/bin/WSDL2Java.sh";
+			exec=wasRuntime + "/bin/WSDL2Java.sh";
 		}	
     	//String wsdlPath = getWSDLIfArtifact(project).getFile().getAbsolutePath();
     	//commandLine=exec+" -r deploy-client -c web -o e:\\tmp -j Overwrite -D -f namespacemapping.properties \""+wsdlPath+"\"";
@@ -173,12 +174,13 @@ public class GenerateJavaMojo
 		for (File wsdlFile:wsdlFiles ){    	
 			Commandline commandLine = new Commandline();
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-role client -container web -o \""+sourceDirectory+"\" -j Overwrite -f \""+tempDirfile.getAbsolutePath()+"\\NStoPkg.properties\" \""+wsdlFile.getAbsolutePath()+"\"");
+			arg.setLine("-role client -container web -o \""+genDirectory+"\" -j Overwrite -f \""+tempDirfile.getAbsolutePath()+"\\NStoPkg.properties\" \""+wsdlFile.getAbsolutePath()+"\"");
 			commandLine.setExecutable(exec);
 			commandLine.addArg(arg);
 			arg = new Commandline.Argument();		
 			executeCommand(commandLine);
 		}
+		project.addCompileSourceRoot(genDirectory);
 		
 		
 		
