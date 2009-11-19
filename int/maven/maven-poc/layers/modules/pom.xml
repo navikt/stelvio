@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-wps-module-pom</artifactId>
-		<version>1.3</version>
+		<version>1.5-SNAPSHOT</version>
 	</parent>
 
 	<groupId>no.nav.maven.poc</groupId>
