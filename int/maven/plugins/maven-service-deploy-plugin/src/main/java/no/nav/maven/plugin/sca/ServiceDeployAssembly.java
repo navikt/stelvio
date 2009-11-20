@@ -9,6 +9,6 @@ import org.codehaus.plexus.archiver.ArchiverException;
 
 public interface ServiceDeployAssembly {
 	Collection<Artifact> getArtifacts(MavenProject project);
-	
-	void addArtifact(MavenProject project, Archiver archiver, Artifact artifact) throws ArchiverException;
+
+	void addArtifacts(MavenProject project, Archiver archiver, Collection<Artifact> artifacts) throws ArchiverException;
 }

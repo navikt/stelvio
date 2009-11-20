@@ -50,7 +50,13 @@ public class ProjectInterchangeServiceDeployAssembly implements ServiceDeployAss
 		return artifacts;
 	}
 
-	public void addArtifact(MavenProject project, Archiver archiver, Artifact artifact) throws ArchiverException {
+	public void addArtifacts(MavenProject project, Archiver archiver, Collection<Artifact> artifacts) throws ArchiverException {
+		for (Artifact artifact : artifacts) {
+			addArtifact(project, archiver, artifact);
+		}
+	}
+
+	private void addArtifact(MavenProject project, Archiver archiver, Artifact artifact) throws ArchiverException {
 		File artifactFile = artifact.getFile();
 		if (TYPE_PROJECT_INTERCHANGE_ARTIFACT.equals(artifact.getType())) {
 			archiver.addArchivedFileSet(artifactFile);
