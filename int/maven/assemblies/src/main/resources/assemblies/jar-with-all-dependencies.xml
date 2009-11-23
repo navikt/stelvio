@@ -11,6 +11,11 @@
 			<outputFileNameMapping></outputFileNameMapping>
 			<unpack>true</unpack>
 			<scope>provided</scope>
+			<unpackOptions>
+				<excludes>
+					<exclude>META-INF/**</exclude>
+				</excludes>
+			</unpackOptions>
 		</dependencySet>
 	</dependencySets>
 	<fileSets>
