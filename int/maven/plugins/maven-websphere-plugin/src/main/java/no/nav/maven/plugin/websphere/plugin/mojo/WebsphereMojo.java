@@ -68,14 +68,16 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	protected PluginManager pluginManager;
 
 	/**
-	 * @parameter expression="${component.org.codehaus.plexus.archiver.Archiver#jar}"
+	 * @component roleHint="jar"
 	 * @required
+	 * @readonly
 	 */
 	protected Archiver jarArchiver;
 
 	/**
-	 * @parameter expression="${component.org.codehaus.plexus.archiver.UnArchiver#jar}"
+	 * @component roleHint="jar"
 	 * @required
+	 * @readonly
 	 */
 	protected UnArchiver jarUnArchiver;
 
