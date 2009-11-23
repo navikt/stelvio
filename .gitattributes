@@ -3397,8 +3397,6 @@ int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plug
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/OutboundWSSecurity.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/RoleSecurity.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/resources/META-INF/plexus/components.xml -text
-int/maven/plugins/maven-artifact-modifier-plugin/src/test/resources/META-INF/plexus/components.xml -text svneol=unset#text/plain
-int/maven/plugins/maven-artifact-modifier-plugin/src/test/resources/unit/plugin-cfg.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-confluence-plugin/pom.xml -text
 int/maven/plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddCommentMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddDownCommentMojo.java -text svneol=unset#text/plain
@@ -3453,8 +3451,6 @@ int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websp
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/MojoExecutor.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/MojoLauncher.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/PwdConsole.java -text svneol=unset#text/plain
-int/maven/plugins/maven-websphere-plugin/src/main/scripts/deployArtifactDeprecated.build.xml -text
-int/maven/plugins/maven-websphere-plugin/src/main/scripts/deployArtifactDeprecated.mojos.xml -text
 int/maven/plugins/maven-wid-plugin/pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/BuildCommand.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/WidCleanMojo.java -text svneol=unset#text/plain
@@ -3471,8 +3467,6 @@ int/maven/plugins/maven-wsdl-export-plugin/src/main/resources/META-INF/plexus/co
 int/maven/plugins/maven-wsdl-generatejava-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/java/no/nav/maven/plugins/GenerateJavaMojo.java -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/resources/meta-inf/plexus/components.xml -text
-int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/scripts/wsdlGenerateJava.build.xml -text
-int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/scripts/wsdlGenerateJava.mojos.xml -text
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
 int/maven/poms/maven-deploy-pom/.project -text
