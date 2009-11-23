@@ -2,9 +2,7 @@ package no.nav.maven.plugin.sca;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
@@ -21,9 +19,10 @@ import org.apache.maven.scm.repository.ScmRepository;
 
 public abstract class VerticalMojo extends AbstractMojo {
 	/**
-	 * The working directory. 
+	 * The working directory.
 	 * 
-	 * @parameter expression="${workingDirectory}" default-value="${project.basedir}"
+	 * @parameter expression="${workingDirectory}"
+	 *            default-value="${project.basedir}"
 	 */
 	private File workingDirectory;
 	/**
@@ -52,68 +51,62 @@ public abstract class VerticalMojo extends AbstractMojo {
 	 * @component
 	 */
 	protected ScmManager scmManager;
-	
-	
+
 	/**
 	 * @parameter expression="${project}"
 	 */
 	protected MavenProject project;
-	
+
 	/**
 	 * @parameter
 	 * @required
 	 */
 	protected String stelvioCommonsLibSCMURL;
-	
+
 	/**
 	 * @parameter
 	 * @required
 	 */
 	protected String stelvioCommonsBpcLibSCMURL;
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void execute() throws MojoExecutionException {
-		
-		getLog().info("stelvioCommonsLibSCMURL"  + stelvioCommonsLibSCMURL);
-		getLog().info("stelvioCommonsBpcLibSCMURL"  + stelvioCommonsBpcLibSCMURL);
-		
+
+		getLog().info("stelvioCommonsLibSCMURL" + stelvioCommonsLibSCMURL);
+		getLog().info("stelvioCommonsBpcLibSCMURL" + stelvioCommonsBpcLibSCMURL);
+
 		Collection<MavenProject> projects = getProjects();
 		StringBuilder projectNames = new StringBuilder();
 		for (MavenProject project : projects) {
 			projectNames.append(project.getGroupId() + ":" + project.getArtifactId() + "  ");
 		}
-		
-		List <String> modules = project.getModules();
+
+		List<String> modules = project.getModules();
 		getLog().info("Resolved " + modules.size() + " modules");
 		getLog().info("Resolved the following modules " + modules.toString());
-		
+
 		String baseRepository = project.getScm().getDeveloperConnection().concat("/../../layers");
-		
+
 		Collection<ScmProject> scmProjects = new ArrayList<ScmProject>(projects.size());
 		for (String moduleName : modules) {
 			getLog().info("Working with " + moduleName);
-			
+
 			File projectDirectory = new File(workingDirectory, moduleName);
 			String repositoryLocation = null;
-			
-			if (moduleName.contains("stelvio-commons-lib")) 
-			{
+
+			if (moduleName.contains("stelvio-commons-lib")) {
 				// Use alternate repository
 				repositoryLocation = stelvioCommonsLibSCMURL;
 				// Override the output folder for Stelvio Commons Lib
 				projectDirectory = new File(workingDirectory + File.separator + "libs", "stelvio-commons-lib");
-			} 
-			else if (moduleName.contains("stelvio-commons-bpc-lib")) 
-			{
+			} else if (moduleName.contains("stelvio-commons-bpc-lib")) {
 				// Use alternate repository
 				repositoryLocation = stelvioCommonsBpcLibSCMURL;
 				// Override the output folder for Stelvio Commons BPC Lib
 				projectDirectory = new File(workingDirectory + File.separator + "libs", "stelvio-commons-bpc-lib");
-			} 
-			else 
-			{
+			} else {
 				repositoryLocation = baseRepository.concat("/" + moduleName);
 				getLog().info("repositoryLocation for " + moduleName + " is " + repositoryLocation);
 			}
@@ -123,7 +116,7 @@ public abstract class VerticalMojo extends AbstractMojo {
 			ScmProject scmProject = new ScmProject(scmRepository, scmFileSet);
 			scmProjects.add(scmProject);
 		}
-		
+
 		try {
 			execute(scmProjects);
 		} catch (ScmException e) {
