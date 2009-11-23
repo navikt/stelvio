@@ -22,16 +22,16 @@
 			<artifactId>maven-project</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-interactivity-api</artifactId>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.codehaus.swizzle</groupId>
 			<artifactId>swizzle-confluence</artifactId>
 			<version>1.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.codehaus.plexus</groupId>
-			<artifactId>plexus-interactivity-api</artifactId>
-			<version>1.0-alpha-6</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>no.nav.maven.commons</groupId>
 			<artifactId>maven-configuration-common</artifactId>
