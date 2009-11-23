@@ -72,6 +72,7 @@ public abstract class VerticalMojo extends AbstractMojo {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
 
 		getLog().info("stelvioCommonsLibSCMURL" + stelvioCommonsLibSCMURL);

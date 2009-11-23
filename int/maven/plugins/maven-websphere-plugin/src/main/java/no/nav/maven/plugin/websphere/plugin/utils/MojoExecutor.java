@@ -50,8 +50,9 @@ public class MojoExecutor {
      * @param env The execution environment
      * @throws MojoExecutionException If there are any exceptions locating or executing the mojo
      */
-    public static void executeMojo(Plugin plugin, String goal, Xpp3Dom configuration, ExecutionEnvironment env) throws MojoExecutionException {
-        Map executionMap = null;
+    @SuppressWarnings("unchecked")
+	public static void executeMojo(Plugin plugin, String goal, Xpp3Dom configuration, ExecutionEnvironment env) throws MojoExecutionException {
+        Map<String,PluginExecution> executionMap = null;
         try {
             MavenSession session = env.getMavenSession();
 
