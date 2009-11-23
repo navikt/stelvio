@@ -7,7 +7,7 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-integration-root-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.4.1-SNAPSHOT</version>
+	<version>1.5-SNAPSHOT</version>
 	<name>Stelvio Integration Framework Master POM</name>
 
 	<build>
