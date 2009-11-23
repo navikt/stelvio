@@ -25,7 +25,7 @@ public class UpdateESBReleaseVersion extends WebsphereUpdaterMojo {
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		// Set esb release version
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariable.py" + " ESB_RELEASE_VERSION " + esbReleaseVersion + " " + scriptsHome + " " + environment);
+		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariableOnDmgr.py" + " ESB_RELEASE_VERSION " + esbReleaseVersion + " " + scriptsHome);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}
