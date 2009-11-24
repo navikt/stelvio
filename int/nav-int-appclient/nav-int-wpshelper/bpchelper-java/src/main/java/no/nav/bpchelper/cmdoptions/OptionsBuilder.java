@@ -72,6 +72,8 @@ public class OptionsBuilder {
 		activityNameOption.setArgName("activityName");
 		options.addOption(activityNameOption);
 
+		options.addOption(new Option("as", "allStates", false, "filter matching all process and activity states (default: failed/terminated/stopped)"));
+
 		return options;
 	}
 }

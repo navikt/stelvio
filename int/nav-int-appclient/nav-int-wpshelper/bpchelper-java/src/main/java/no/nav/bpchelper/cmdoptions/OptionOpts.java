@@ -20,4 +20,6 @@ public interface OptionOpts {
 	String FILTER_PROCESS_CUSTOM_PROPERTY = "processCustomProperty";
 
 	String FILTER_ACTIVITY_NAME = "activityName";
+	
+	String ALL_STATES = "allStates";
 }

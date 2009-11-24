@@ -20,17 +20,19 @@ public class CriteriaBuilder {
 	public static Criteria build(CommandLine commandLine) {
 		Criteria criteria = new Criteria();
 
-		// Static criteria added to all queries
-		Criterion processStateFailedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceBean.STATE_FAILED);
-		Criterion processStateTerminatedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE",
-				ProcessInstanceBean.STATE_TERMINATED);
-		LogicalExpression processStateCriterion = Restrictions.or(processStateFailedCriterion, processStateTerminatedCriterion);
-
-		Criterion activityStateFailedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_FAILED);
-		Criterion activityStateStoppedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_STOPPED);
-		LogicalExpression activityStateCriterion = Restrictions.or(activityStateFailedCriterion, activityStateStoppedCriterion);
-
-		criteria.add(Restrictions.or(processStateCriterion, activityStateCriterion));
+		if (!commandLine.hasOption(OptionOpts.ALL_STATES)) {
+			// Static criteria added to all queries
+			Criterion processStateFailedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE", ProcessInstanceBean.STATE_FAILED);
+			Criterion processStateTerminatedCriterion = Restrictions.eq("PROCESS_INSTANCE.STATE",
+					ProcessInstanceBean.STATE_TERMINATED);
+			LogicalExpression processStateCriterion = Restrictions.or(processStateFailedCriterion, processStateTerminatedCriterion);
+	
+			Criterion activityStateFailedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_FAILED);
+			Criterion activityStateStoppedCriterion = Restrictions.eq("ACTIVITY.STATE", ActivityInstanceData.STATE_STOPPED);
+			LogicalExpression activityStateCriterion = Restrictions.or(activityStateFailedCriterion, activityStateStoppedCriterion);
+	
+			criteria.add(Restrictions.or(processStateCriterion, activityStateCriterion));
+		}
 
 		// Dynamic criteria added if options specified
 		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME)) {
