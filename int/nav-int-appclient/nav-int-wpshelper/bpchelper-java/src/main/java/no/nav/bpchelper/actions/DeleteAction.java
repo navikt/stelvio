@@ -6,6 +6,7 @@ import java.util.Collection;
 import no.nav.appclient.adapter.ServiceException;
 
 import com.ibm.bpe.api.PIID;
+import com.ibm.bpe.api.ProcessInstanceData;
 import com.ibm.bpe.clientmodel.bean.ProcessInstanceBean;
 
 public class DeleteAction extends AbstractReportAction {
@@ -26,7 +27,7 @@ public class DeleteAction extends AbstractReportAction {
 			public String getValue(ProcessInstanceBean processInstance) {
 				PIID piid = processInstance.getID();
 				try {
-					getBFMConnection().getBusinessFlowManagerService().delete(piid);
+					getBFMConnection().getBusinessFlowManagerService().delete(piid, !(processInstance.getExecutionState() == ProcessInstanceData.STATE_TERMINATED));
 					return "OK";
 				} catch (ServiceException e) {
 					logger.warn("Error deleting process instance with id=<" + piid + ">", e);

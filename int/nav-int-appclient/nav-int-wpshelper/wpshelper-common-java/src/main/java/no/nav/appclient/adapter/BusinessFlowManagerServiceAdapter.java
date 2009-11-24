@@ -73,9 +73,11 @@ public class BusinessFlowManagerServiceAdapter {
 		}
 	}
 
-	public void delete(PIID piid) {
+	public void delete(PIID piid, boolean terminateBeforeDelete) {
 		try {
-			forceTerminate(piid);
+			if (terminateBeforeDelete) {
+				forceTerminate(piid);
+			}
 			if (logger.isDebugEnabled()) {
 				logger.debug("Attempting to delete process instance with id=<{}>", piid);
 			}
@@ -90,7 +92,7 @@ public class BusinessFlowManagerServiceAdapter {
 
 	public void deleteProcessInstanceByActivityId(String activityId) {
 		PIID piid = getProcessInstanceIdByActivityId(activityId);
-		delete(piid);
+		delete(piid, false);
 	}
 
 	public void restart(PIID piid) {
