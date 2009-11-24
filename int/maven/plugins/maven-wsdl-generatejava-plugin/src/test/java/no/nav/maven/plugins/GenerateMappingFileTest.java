@@ -3,6 +3,9 @@ package no.nav.maven.plugins;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,11 +33,12 @@ public class GenerateMappingFileTest {
 		}
 	}
 	@Test
-	public void testCreateNameSpaceToPackageMapFromWSDLDirectory() {
-		File wsdlDirectory=new File("E:\\wsMaven\\maven\\plugins\\maven-wsdl-export-plugin\\src\\test\\resources\\wsdl\\");
+	public void testCreateNameSpaceToPackageMapFromWSDLDirectory() throws Exception {
+		URL wsdlDirectoryURL=this.getClass().getClassLoader().getResource("wsdl");
+		File wsdlDirectory=new File(new URI(wsdlDirectoryURL.toString()));
 		GenerateJavaMojo mojo=new GenerateJavaMojo();
 		Map<String, String> ret = mojo.createNameSpaceToPackageMapFromWSDLDirectory(wsdlDirectory);
-		System.out.println(ret.toString());		
+		assertEquals(ret.get("http\\://poc-lib2/no/nav/gbo"), "no.nav.gbo");	
 	}
 
 }
