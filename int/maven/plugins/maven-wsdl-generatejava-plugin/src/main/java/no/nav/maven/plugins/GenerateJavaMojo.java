@@ -16,15 +16,25 @@ package no.nav.maven.plugins;
  * limitations under the License.
  */
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.handler.ArtifactHandler;
@@ -62,10 +72,15 @@ public class GenerateJavaMojo extends AbstractMojo {
 
 	/**
 	 * @parameter expression="${was.home}"
-	 * @required
 	 * @readonly
 	 */
 	private String wasRuntime;
+	
+	/**
+	 * @parameter expression="${wid.home}"
+	 * @readonly
+	 */
+	private String widRuntime;
 
 	/**
 	 * @component roleHint="wsdl-interface"
@@ -84,13 +99,7 @@ public class GenerateJavaMojo extends AbstractMojo {
 	 */
 	private UnArchiver unArchiver;
 
-	/**
-	 * EAR-file.
-	 * 
-	 * @parameter expression="${project.artifact.file}"
-	 */
-	private File earFile;
-
+	
 	/**
 	 * Source Dir
 	 * 
@@ -100,60 +109,82 @@ public class GenerateJavaMojo extends AbstractMojo {
 	private File buildDirectory;
 
 	public void execute() throws MojoExecutionException {
-		// Necessary hack. Or so is the rumor, at least.
-		if (!wsdlIfArtifactHandler.equals(artifactHandlerManager
-				.getArtifactHandler(WSDL_INTERFACE_ARTIFACT_TYPE))) {
-			getLog()
-					.debug(
-							"Adding project interchange artifact handler to artifact handler manager");
-			artifactHandlerManager.addHandlers(Collections.singletonMap(
-					WSDL_INTERFACE_ARTIFACT_TYPE, wsdlIfArtifactHandler));
+		try{
+			// Necessary hack. Or so is the rumor, at least.
+			if (!wsdlIfArtifactHandler.equals(artifactHandlerManager
+					.getArtifactHandler(WSDL_INTERFACE_ARTIFACT_TYPE))) {
+				getLog()
+						.debug(
+								"Adding project interchange artifact handler to artifact handler manager");
+				artifactHandlerManager.addHandlers(Collections.singletonMap(
+						WSDL_INTERFACE_ARTIFACT_TYPE, wsdlIfArtifactHandler));
+			}
+	
+			// First unpack the wsdl-artifact from the dependency
+			File wsdlArtifactFile = getWSDLIfArtifact(project).getFile();
+			unArchiver.setSourceFile(wsdlArtifactFile);
+			String tempDir = project.getBuild().getDirectory() + "/wsdltemp/"
+					+ System.currentTimeMillis() + "/";
+			File tempDirfile = new File(tempDir);
+			tempDirfile.mkdirs();
+			unArchiver.setDestDirectory(tempDirfile);
+			try {
+				unArchiver.extract();
+			} catch (Exception e) {
+				throw new RuntimeException("Unable to unzip wsdl artifact file "
+						+ wsdlArtifactFile.getPath() + " to directory "
+						+ unArchiver.getDestDirectory(), e);
+			}
+			
+			//Generate the NStoPkg.properties-file that will make sensible packages for the wsdl  
+			Map<String, String> namespaceToPackageMap = createNameSpaceToPackageMapFromWSDLDirectory(tempDirfile);
+			File nameSpaceToPackageFile = new File(project.getBuild().getDirectory(), /*project.getBuild().getFinalName()
+					+ "-*/"NStoPkg.properties");
+			PrintWriter pw = new PrintWriter(new BufferedOutputStream(new FileOutputStream(nameSpaceToPackageFile)));
+			for (String namespace : namespaceToPackageMap.keySet()) {
+				pw.write(namespace + "=" + namespaceToPackageMap.get(namespace) + "\n");
+			}
+			pw.close();
+	
+	
+			// Next, call the WSDL2Java script for all wsdl-files in the artifact
+			String exec;
+			if (wasRuntime==null){
+				wasRuntime=widRuntime+"/runtimes/bi_v61";
+			}
+			if (Os.isFamily("windows")) {
+				exec = wasRuntime + "/bin/WSDL2Java.bat";
+			} else {
+				exec = wasRuntime + "/bin/WSDL2Java.sh";
+			}
+	
+			List<File> wsdlFiles = listFilesRecursive(tempDirfile,
+					new FilenameFilter() {
+						public boolean accept(File dir, String name) {
+							return name.endsWith(WSDLEXPORT_SUFFIX);
+						}
+					});
+	
+			
+			
+			String genDirectory = buildDirectory.getAbsolutePath() + "/genWSDL";
+			for (File wsdlFile : wsdlFiles) {
+				Commandline commandLine = new Commandline();
+				Commandline.Argument arg = new Commandline.Argument();
+				arg.setLine("-role client -container web -o \"" + genDirectory
+						+ "\" -j Overwrite -f \"" + nameSpaceToPackageFile.getAbsolutePath()+"\" \"" + wsdlFile.getAbsolutePath()
+						+ "\"");
+				commandLine.setExecutable(exec);
+				commandLine.addArg(arg);
+				arg = new Commandline.Argument();
+				executeCommand(commandLine);
+			}
+			project.addCompileSourceRoot(genDirectory);
+		}catch(RuntimeException re){
+			throw re;
+		}catch(Exception e)	{
+			new MojoExecutionException("Unable to generate Java",e);
 		}
-
-		// First unpack the wsdl-artifact from the dependency
-		unArchiver.setSourceFile(getWSDLIfArtifact(project).getFile());
-		String tempDir = project.getBuild().getDirectory() + "/wsdltemp/"
-				+ System.currentTimeMillis() + "/";
-		File tempDirfile = new File(tempDir);
-		tempDirfile.mkdirs();
-		unArchiver.setDestDirectory(tempDirfile);
-		try {
-			unArchiver.extract();
-		} catch (Exception e) {
-			throw new RuntimeException("Unable to unzip ear file "
-					+ earFile.getPath() + " to directory "
-					+ unArchiver.getDestDirectory(), e);
-		}
-
-		// Next, call the WSDL2Java script for all wsdl-files in the artifact
-		String exec;
-		if (Os.isFamily("windows")) {
-			exec = wasRuntime + "/bin/WSDL2Java.bat";
-		} else {
-			exec = wasRuntime + "/bin/WSDL2Java.sh";
-		}
-
-		List<File> wsdlFiles = listFilesRecursive(tempDirfile,
-				new FilenameFilter() {
-					public boolean accept(File dir, String name) {
-						return name.endsWith(WSDLEXPORT_SUFFIX);
-					}
-				});
-
-		String genDirectory = buildDirectory.getAbsolutePath() + "/genWSDL";
-		for (File wsdlFile : wsdlFiles) {
-			Commandline commandLine = new Commandline();
-			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-role client -container web -o \"" + genDirectory
-					+ "\" -j Overwrite -f \"" + tempDirfile.getAbsolutePath()
-					+ "\\NStoPkg.properties\" \"" + wsdlFile.getAbsolutePath()
-					+ "\"");
-			commandLine.setExecutable(exec);
-			commandLine.addArg(arg);
-			arg = new Commandline.Argument();
-			executeCommand(commandLine);
-		}
-		project.addCompileSourceRoot(genDirectory);
 
 	}
 
@@ -202,6 +233,61 @@ public class GenerateJavaMojo extends AbstractMojo {
 				"No attached artifact of type wsdl-interface (classifier '"
 						+ wsdlIfClassifier + "') found ");
 	}
+	public Map<String, String> createNameSpaceToPackageMapFromWSDLDirectory(File wsdlDirectory) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		try {
+			createNameSpaceToPackageMap(wsdlDirectory, map);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		return map;
+	}
+
+	private void createNameSpaceToPackageMap(File file, Map<String, String> nameSpaceMap) throws IOException {
+		if (file.isDirectory()) {
+			for (File f : file.listFiles()) {
+				createNameSpaceToPackageMap(f, nameSpaceMap);
+			}
+		} else {
+			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+
+			final byte[] bytes = new byte[(int) file.length()];
+			bis.read(bytes);
+			bis.close();
+			String fileString = new String(bytes);
+			Pattern p = Pattern.compile("\"http://([^\"]+)\"");
+			Matcher m = p.matcher(fileString);
+			while (m.find()) {
+				String nameSpace = m.group(1);
+				String packageName = generatePackageNameFromNamespace(nameSpace);
+				if (packageName != null) {
+					String escapedNameSpaceUrl = "http\\://" + nameSpace;
+					nameSpaceMap.put(escapedNameSpaceUrl, packageName);
+				}
+			}
+		}
+
+	}
+
+	private String generatePackageNameFromNamespace(String nameSpace) {
+		String[] parts = nameSpace.split("/");
+		// Check if this is something else than a namespace
+		if (parts[0].startsWith("www") || parts[0].startsWith("localhost") || parts[0].endsWith(".org"))
+			return null;
+
+		String packageName = null;
+		// Skip parts[0], since this is the module name. Add the other parts,
+		// dot-separated;
+		for (int i = 1; i < parts.length; i++) {
+			if (packageName == null) {
+				packageName = parts[i];
+			} else {
+				packageName = packageName + "." + parts[i];
+			}
+		}
+		return packageName;
+
+	}
 
 	protected final void executeCommand(Commandline command) {
 		try {
@@ -220,11 +306,11 @@ public class GenerateJavaMojo extends AbstractMojo {
 			};
 			ErrorCheckingStreamConsumer errorChecker = new ErrorCheckingStreamConsumer();
 
-			CommandLineUtils.executeCommandLine(command,
+			int ret=CommandLineUtils.executeCommandLine(command,
 					new StreamConsumerChain(systemOut).add(errorChecker),
 					new StreamConsumerChain(systemErr).add(errorChecker));
 
-			if (errorChecker.isError()) {
+			if (ret!=0 || errorChecker.isError()) {
 
 				throw new RuntimeException(
 						"An error occured during deploy. Stopping deployment. Consult the logs.");

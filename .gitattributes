@@ -3467,6 +3467,7 @@ int/maven/plugins/maven-wsdl-export-plugin/src/main/resources/META-INF/plexus/co
 int/maven/plugins/maven-wsdl-generatejava-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/java/no/nav/maven/plugins/GenerateJavaMojo.java -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/resources/meta-inf/plexus/components.xml -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/java/no/nav/maven/plugins/GenerateMappingFileTest.java -text
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
 int/maven/poms/maven-deploy-pom/.project -text
