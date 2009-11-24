@@ -86,11 +86,13 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		for (ArtifactDecorator artifact : artifactMap.values()) {
 			JarFile jarFile = new JarFile(artifact.getFile());
 			String classpath = jarFile.getManifest().getMainAttributes().getValue(Attributes.Name.CLASS_PATH);
-			StringTokenizer stringTokenizer = new StringTokenizer(classpath, " ");
-			while (stringTokenizer.hasMoreTokens()) {
-				String filename = stringTokenizer.nextToken();
-				String artifactId = filename.substring(0, filename.lastIndexOf("."));
-				artifact.addDependency(artifactMap.get(artifactId));
+			if (classpath != null) {
+				StringTokenizer stringTokenizer = new StringTokenizer(classpath, " ");
+				while (stringTokenizer.hasMoreTokens()) {
+					String filename = stringTokenizer.nextToken();
+					String artifactId = filename.substring(0, filename.lastIndexOf("."));
+					artifact.addDependency(artifactMap.get(artifactId));
+				}
 			}
 		}
 	}
