@@ -3468,6 +3468,13 @@ int/maven/plugins/maven-wsdl-generatejava-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/java/no/nav/maven/plugins/GenerateJavaMojo.java -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/main/resources/meta-inf/plexus/components.xml -text
 int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/java/no/nav/maven/plugins/GenerateMappingFileTest.java -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO.xsd -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO2.xsd -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/resources/wsdl/no/nav/inf/EchoService.wsdl -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/resources/wsdl/no/nav/inf/EchoService2.wsdl -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/resources/wsdl/no/nav/inf/poc-module2_EchoService2MapWSEXP.wsdl -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/resources/wsdl/no/nav/inf/poc-module2_EchoService2WSEXP.wsdl -text
+int/maven/plugins/maven-wsdl-generatejava-plugin/src/test/resources/wsdl/no/nav/inf/poc-module2_EchoServiceWSEXP.wsdl -text
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
 int/maven/poms/maven-deploy-pom/.project -text
