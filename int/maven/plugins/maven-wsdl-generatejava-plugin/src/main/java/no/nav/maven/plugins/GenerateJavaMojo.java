@@ -61,7 +61,8 @@ public class GenerateJavaMojo extends AbstractMojo {
 
 	private static final String WSDL_INTERFACE_ARTIFACT_TYPE = "wsdl-interface";
 
-	protected static final String WSDLEXPORT_SUFFIX = "WSEXP.wsdl";
+	protected static final String WSDLEXPORT_SUFFIX = "wsdl";
+	protected static final String WSDLEXPORT_TOKEN = "WSEXP";
 
 	/**
 	 * @parameter expression="${project}"
@@ -119,65 +120,69 @@ public class GenerateJavaMojo extends AbstractMojo {
 				artifactHandlerManager.addHandlers(Collections.singletonMap(
 						WSDL_INTERFACE_ARTIFACT_TYPE, wsdlIfArtifactHandler));
 			}
+			String genDirectory = buildDirectory.getAbsolutePath() + "/genWSDL";
 	
 			// First unpack the wsdl-artifact from the dependency
-			File wsdlArtifactFile = getWSDLIfArtifact(project).getFile();
-			unArchiver.setSourceFile(wsdlArtifactFile);
-			String tempDir = project.getBuild().getDirectory() + "/wsdltemp/"
-					+ System.currentTimeMillis() + "/";
-			File tempDirfile = new File(tempDir);
-			tempDirfile.mkdirs();
-			unArchiver.setDestDirectory(tempDirfile);
-			try {
-				unArchiver.extract();
-			} catch (Exception e) {
-				throw new RuntimeException("Unable to unzip wsdl artifact file "
-						+ wsdlArtifactFile.getPath() + " to directory "
-						+ unArchiver.getDestDirectory(), e);
-			}
-			
-			//Generate the NStoPkg.properties-file that will make sensible packages for the wsdl  
-			Map<String, String> namespaceToPackageMap = createNameSpaceToPackageMapFromWSDLDirectory(tempDirfile);
-			File nameSpaceToPackageFile = new File(project.getBuild().getDirectory(), /*project.getBuild().getFinalName()
-					+ "-*/"NStoPkg.properties");
-			PrintWriter pw = new PrintWriter(new BufferedOutputStream(new FileOutputStream(nameSpaceToPackageFile)));
-			for (String namespace : namespaceToPackageMap.keySet()) {
-				pw.write(namespace + "=" + namespaceToPackageMap.get(namespace) + "\n");
-			}
-			pw.close();
-	
-	
-			// Next, call the WSDL2Java script for all wsdl-files in the artifact
-			String exec;
-			if (wasRuntime==null){
-				wasRuntime=widRuntime+"/runtimes/bi_v61";
-			}
-			if (Os.isFamily("windows")) {
-				exec = wasRuntime + "/bin/WSDL2Java.bat";
-			} else {
-				exec = wasRuntime + "/bin/WSDL2Java.sh";
-			}
-	
-			List<File> wsdlFiles = listFilesRecursive(tempDirfile,
-					new FilenameFilter() {
-						public boolean accept(File dir, String name) {
-							return name.endsWith(WSDLEXPORT_SUFFIX);
-						}
-					});
-	
-			
-			
-			String genDirectory = buildDirectory.getAbsolutePath() + "/genWSDL";
-			for (File wsdlFile : wsdlFiles) {
-				Commandline commandLine = new Commandline();
-				Commandline.Argument arg = new Commandline.Argument();
-				arg.setLine("-role client -container web -o \"" + genDirectory
-						+ "\" -j Overwrite -f \"" + nameSpaceToPackageFile.getAbsolutePath()+"\" \"" + wsdlFile.getAbsolutePath()
-						+ "\"");
-				commandLine.setExecutable(exec);
-				commandLine.addArg(arg);
-				arg = new Commandline.Argument();
-				executeCommand(commandLine);
+			long timestamp = System.currentTimeMillis();
+			for(Artifact artifact:getWSDLIfArtifacts(project)){
+				File wsdlArtifactFile = artifact.getFile();
+				unArchiver.setSourceFile(wsdlArtifactFile);
+				String tempDir = project.getBuild().getDirectory() + "/wsdltemp_"+artifact.getArtifactId()+"_"
+						+ timestamp + "/";
+				File tempDirfile = new File(tempDir);
+				tempDirfile.mkdirs();
+				unArchiver.setDestDirectory(tempDirfile);
+				try {
+					unArchiver.extract();
+				} catch (Exception e) {
+					throw new RuntimeException("Unable to unzip wsdl artifact file "
+							+ wsdlArtifactFile.getPath() + " to directory "
+							+ unArchiver.getDestDirectory(), e);
+				}
+				
+				//Generate the NStoPkg.properties-file that will make sensible packages for the wsdl  
+				Map<String, String> namespaceToPackageMap = createNameSpaceToPackageMapFromWSDLDirectory(tempDirfile);
+				File nameSpaceToPackageFile = new File(tempDir, /*project.getBuild().getFinalName()
+						+ "-*/"NStoPkg.properties");
+				PrintWriter pw = new PrintWriter(new BufferedOutputStream(new FileOutputStream(nameSpaceToPackageFile)));
+				for (String namespace : namespaceToPackageMap.keySet()) {
+					pw.write(namespace + "=" + namespaceToPackageMap.get(namespace) + "\n");
+				}
+				pw.close();
+		
+		
+				// Next, call the WSDL2Java script for all wsdl-files in the artifact
+				String exec;
+				if (wasRuntime==null){
+					wasRuntime=widRuntime+"/runtimes/bi_v61";
+				}
+				if (Os.isFamily("windows")) {
+					exec = wasRuntime + "/bin/WSDL2Java.bat";
+				} else {
+					exec = wasRuntime + "/bin/WSDL2Java.sh";
+				}
+		
+				List<File> wsdlFiles = listFilesRecursive(tempDirfile,
+						new FilenameFilter() {
+							public boolean accept(File dir, String name) {
+								return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
+							}
+						});
+		
+				
+				
+
+				for (File wsdlFile : wsdlFiles) {
+					Commandline commandLine = new Commandline();
+					Commandline.Argument arg = new Commandline.Argument();
+					arg.setLine("-role client -container none -o \"" + genDirectory
+							+ "\" -j Overwrite -f \"" + nameSpaceToPackageFile.getAbsolutePath()+"\" \"" + wsdlFile.getAbsolutePath()
+							+ "\"");
+					commandLine.setExecutable(exec);
+					commandLine.addArg(arg);
+					arg = new Commandline.Argument();
+					executeCommand(commandLine);
+				}
 			}
 			project.addCompileSourceRoot(genDirectory);
 		}catch(RuntimeException re){
@@ -216,23 +221,26 @@ public class GenerateJavaMojo extends AbstractMojo {
 	 * @param project
 	 * @return the first wsdl-if artifact found in the dependency list
 	 */
-	public Artifact getWSDLIfArtifact(MavenProject project) {
+	public List<Artifact> getWSDLIfArtifacts(MavenProject project) {
 		String wsdlIfClassifier = wsdlIfArtifactHandler.getClassifier();
-
+		ArrayList<Artifact> artifactList=new ArrayList<Artifact>();
 		Set artifacts = project.getDependencyArtifacts();
 		for (Iterator artifactIterator = artifacts.iterator(); artifactIterator
 				.hasNext();) {
 			Artifact artifact = (Artifact) artifactIterator.next();
 			System.out.println(artifact.getClassifier());
 			if (wsdlIfClassifier.equals(artifact.getClassifier())) {
-				return artifact;
+				artifactList.add(artifact);
 			}
 		}
-
-		throw new RuntimeException(
+		if (artifactList.size()==0){
+			throw new RuntimeException(
 				"No attached artifact of type wsdl-interface (classifier '"
 						+ wsdlIfClassifier + "') found ");
+		}
+		return artifactList;
 	}
+	
 	public Map<String, String> createNameSpaceToPackageMapFromWSDLDirectory(File wsdlDirectory) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		try {
