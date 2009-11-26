@@ -109,7 +109,7 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		StringBuilder classpath = new StringBuilder();
 		for (ArtifactDecorator dependency : artifact.getAllDependencies()) {
 			if (classpath.length() > 0) {
-				classpath.append(" ").append("\r\n").append(" ");
+				classpath.append(" ");
 			}
 			String dependencyArtifactExtension = dependency.getArtifactHandler().getExtension();
 			classpath.append(dependency.getArtifactId()).append(".").append(dependencyArtifactExtension);
