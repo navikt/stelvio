@@ -40,7 +40,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
-					<version>1.6-SNAPSHOT</version>
+					<version>1.6</version>
 					<configuration>
 						<assemblyType>zip</assemblyType>
 						<keep>true</keep>
@@ -127,7 +127,7 @@ config.version=6.1
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-update-ear-plugin</artifactId>
-					<version>1.8-SNAPSHOT</version>
+					<version>1.8</version>
 					<executions>
 						<execution>
 							<goals>
