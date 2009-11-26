@@ -9,7 +9,7 @@
 
 	<artifactId>maven-deploy-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.6</version>
+	<version>1.7-SNAPSHOT</version>
 	<name>POM for deployment</name>
 
 	<build>
@@ -88,8 +88,8 @@
 	</build>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deploy-pom-1.6</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deploy-pom-1.6</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
