@@ -4,10 +4,10 @@
 	<parent>
 		<artifactId>maven-plugins</artifactId>
 		<groupId>no.nav.maven.plugins</groupId>
-		<version>1.8</version>
+		<version>1.9-SNAPSHOT</version>
 	</parent>
 	<artifactId>maven-wsdl-generatejava-plugin</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>Stelvio Integration Framework WSDL Generate Java Plugin</name>
 
@@ -32,10 +32,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.8/maven-wsdl-generatejava-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-generatejava-plugin
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.8/maven-wsdl-generatejava-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-generatejava-plugin
 		</developerConnection>
 	</scm>
 	<properties>
