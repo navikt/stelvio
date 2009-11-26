@@ -1,18 +1,15 @@
 package no.nav.maven.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.junit.Test;
-
-import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 public class GenerateMappingFileTest {
 
