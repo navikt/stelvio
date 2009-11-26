@@ -23,6 +23,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wps-artifact-plugin</artifactId>
+				<version>1.6-SNAPSHOT</version>
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
