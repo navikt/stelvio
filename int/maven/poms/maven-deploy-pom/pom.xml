@@ -19,7 +19,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-artifact-modifier-plugin</artifactId>
-				<version>1.32-SNAPSHOT</version>
+				<version>1.32</version>
 				<configuration>
 					<moduleConfigurationArtifactName>
 						busconfiguration
@@ -31,7 +31,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-websphere-plugin</artifactId>
-				<version>1.37-SNAPSHOT</version>
+				<version>1.37</version>
 				<configuration>
 					<moduleConfigurationArtifactName>
 						busconfiguration
@@ -43,7 +43,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-confluence-plugin</artifactId>
-				<version>1.11-SNAPSHOT</version>
+				<version>1.11</version>
 			</plugin>
 
 			<plugin>
