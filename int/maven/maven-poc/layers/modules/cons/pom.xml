@@ -23,7 +23,7 @@
 			<plugin>
 				<artifactId>maven-wsdl-export-plugin</artifactId>
 				<groupId>no.nav.maven.plugins</groupId>
-				<version>1.3-SNAPSHOT</version>
+				<version>1.3</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
