@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-wps-pom</artifactId>
-		<version>1.5-SNAPSHOT</version>
+		<version>1.5</version>
 		<relativePath>../maven-wps-pom</relativePath>
 	</parent>
 
 	<artifactId>maven-wps-library-pom</artifactId>
-	<version>1.5-SNAPSHOT</version>
+	<version>1.5</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework WPS Library Master POM</name>
 
@@ -119,8 +119,8 @@ config.version=6.1
 	</build>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-library-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-library-pom</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.5/maven-wps-library-pom</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.5/maven-wps-library-pom</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
