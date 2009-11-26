@@ -40,7 +40,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
-					<version>1.6</version>
+					<version>1.6.1</version>
 					<configuration>
 						<assemblyType>zip</assemblyType>
 						<keep>true</keep>
