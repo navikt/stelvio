@@ -18,6 +18,7 @@ package no.nav.maven.plugins;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.util.Collections;
 
 import org.apache.maven.artifact.handler.ArtifactHandler;
@@ -27,6 +28,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
 import org.codehaus.plexus.archiver.Archiver;
+import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 
 /**
@@ -103,41 +105,30 @@ public class WSDLExportMojo extends AbstractMojo {
 				artifactHandlerManager.addHandlers(Collections.singletonMap(WSDL_INTERFACE_ARTIFACT_TYPE,
 						wsdlInterfaceArtifactHandler));
 			}
-			unArchiver.setSourceFile(earFile);
-			String tempDir = project.getBuild().getDirectory() + "/wsdltemp/" + System.currentTimeMillis() + "/";
-			File tempDirfile = new File(tempDir);
-			tempDirfile.mkdirs();
 
-			unArchiver.setDestDirectory(tempDirfile);
-			try {
-				unArchiver.extract();
-			} catch (Exception e) {
-				throw new RuntimeException("Unable to unzip ear file " + earFile.getPath() + " to directory "
-						+ unArchiver.getDestDirectory(), e);
-			}
-			File[] warFiles = tempDirfile.listFiles(new FilenameFilter() {
+			File tempDir = new File(project.getBuild().getDirectory(), "wsdltemp");
+			tempDir.mkdir();
+
+			File tempEarFileDir = extractFile(earFile, tempDir);
+			File[] warFiles = tempEarFileDir.listFiles(new FilenameFilter() {
 				public boolean accept(File dir, String name) {
 					return name.endsWith(WAR_SUFFIX);
 				}
 			});
-			if (warFiles.length != 0) { // Does this module have WSDL
-				// exports?			
-				File warFile = warFiles[0];
-				unArchiver.setSourceFile(warFile);
-				File warTempDir=new File(tempDirfile,"warExpl/");
-				warTempDir.mkdirs();
-				unArchiver.setDestDirectory(warTempDir);
-				unArchiver.extract();
 
-				File wsdlDirectory = new File(warTempDir, WSDL_PATH_IN_WAR);
+			// Does this module have WSDL exports?
+			if (warFiles.length != 0) {
+				File warFile = warFiles[0];
+
+				File tempWarFileDir = extractFile(warFile, tempDir);
+
+				File wsdlDirectory = new File(tempWarFileDir, WSDL_PATH_IN_WAR);
 
 				File wsdlZipArtifactFile = new File(project.getBuild().getDirectory(), project.getBuild().getFinalName() + "-"
 						+ wsdlInterfaceArtifactHandler.getClassifier() + "." + ZIP_SUFFIX);
 				archiver.setDestFile(wsdlZipArtifactFile);
 
 				archiver.addDirectory(wsdlDirectory);
-				//archiver.addFile(nameSpaceToPackageFile, "NStoPkg.properties"); // project.getBuild().getDirectory()+"/"+
-																				// project.getBuild().getFinalName()+"-
 				archiver.createArchive();
 				projectHelper.attachArtifact(project, WSDL_INTERFACE_ARTIFACT_TYPE, wsdlInterfaceArtifactHandler
 						.getClassifier(), wsdlZipArtifactFile);
@@ -145,8 +136,17 @@ public class WSDLExportMojo extends AbstractMojo {
 		} catch (Exception e) {
 			throw new MojoExecutionException("Creating wsdl export file failed ", e);
 		}
-
 	}
 
+	private File extractFile(File file, File parentDirectory) throws IOException, ArchiverException {
+		File tempDir = File.createTempFile(file.getName(), null, parentDirectory);
+		tempDir.delete();
+		tempDir.mkdir();
 
+		unArchiver.setSourceFile(file);
+		unArchiver.setDestDirectory(tempDir);
+		unArchiver.extract();
+
+		return tempDir;
+	}
 }
