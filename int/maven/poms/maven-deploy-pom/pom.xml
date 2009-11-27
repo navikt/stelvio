@@ -1,12 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-integration-root-pom</artifactId>
-		<version>1.5</version>
-	</parent>
-
+	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-deploy-pom</artifactId>
 	<packaging>pom</packaging>
 	<version>1.7-SNAPSHOT</version>
@@ -15,45 +12,69 @@
 	<build>
 		<plugins>
 			<plugin>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-artifact-modifier-plugin</artifactId>
-				<version>1.32</version>
-				<configuration>
-					<moduleConfigurationArtifactName>
-						busconfiguration
-					</moduleConfigurationArtifactName>
-				</configuration>
-				<extensions>true</extensions>
-			</plugin>
-
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-websphere-plugin</artifactId>
-				<version>1.37</version>
-				<configuration>
-					<moduleConfigurationArtifactName>
-						busconfiguration
-					</moduleConfigurationArtifactName>
-				</configuration>
-				<extensions>true</extensions>
-			</plugin>
-
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-confluence-plugin</artifactId>
-				<version>1.11</version>
-			</plugin>
-
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>
-					maven-propertiesgenerator-plugin
-				</artifactId>
 			</plugin>
 		</plugins>
 
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>1.0-beta-1</version>
+					<configuration>
+						<rules>
+							<requireMavenVersion>
+								<version>2.0.9</version>
+							</requireMavenVersion>
+							<requirePluginVersions>
+								<banSnapshots>false</banSnapshots>
+								<phases>clean,deploy</phases>
+							</requirePluginVersions>
+						</rules>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>
+						maven-artifact-modifier-plugin
+					</artifactId>
+					<version>1.32</version>
+					<configuration>
+						<moduleConfigurationArtifactName>
+							busconfiguration
+						</moduleConfigurationArtifactName>
+					</configuration>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-websphere-plugin</artifactId>
+					<version>1.37</version>
+					<configuration>
+						<moduleConfigurationArtifactName>
+							busconfiguration
+						</moduleConfigurationArtifactName>
+					</configuration>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-confluence-plugin</artifactId>
+					<version>1.11</version>
+				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>
@@ -83,13 +104,34 @@
 						</execution>
 					</executions>
 				</plugin>
+
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>2.0.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-	
+
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom</developerConnection>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom
+		</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
