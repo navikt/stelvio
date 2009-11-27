@@ -17,14 +17,12 @@
 			<groupId>no.nav.maven.poc</groupId>
 			<artifactId>poc-lib1</artifactId>
 			<type>wps-library-jar</type>
-			<optional>true</optional>
 			<version>1.8-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>no.nav.maven.poc</groupId>
 			<artifactId>poc-lib2</artifactId>
 			<type>wps-library-jar</type>
-			<optional>true</optional>
 			<version>1.8-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
