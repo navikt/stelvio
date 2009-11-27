@@ -16,8 +16,9 @@
 		<dependency>
 			<groupId>no.nav.maven.poc</groupId>
 			<artifactId>poc-lib3</artifactId>
-			<version>1.8-SNAPSHOT</version>
 			<type>wps-library-jar</type>
+			<optional>true</optional>
+			<version>1.8-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
