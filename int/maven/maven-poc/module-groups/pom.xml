@@ -5,8 +5,8 @@
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-integration-root-pom</artifactId>
-		<version>1.5</version>
+		<artifactId>maven-wps-pom</artifactId>
+		<version>1.5.1</version>
 	</parent>
 
 	<groupId>no.nav.maven.poc</groupId>
@@ -22,14 +22,8 @@
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wps-artifact-plugin</artifactId>
-				<version>1.6-SNAPSHOT</version>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-mg-plugin</artifactId>
-				<version>1.7-SNAPSHOT</version>
+				<version>1.7</version>
 				<configuration>
 					<!-- This configure the version of Stelvio Commons Lib for all libraries and modules -->
 					<stelvioCommonsLibSCMURL>
@@ -39,13 +33,7 @@
 					<stelvioCommonsBpcLibSCMURL>
 						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-bpc-lib-1.0.1
 					</stelvioCommonsBpcLibSCMURL>
-
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wid-plugin</artifactId>
-				<version>1.2-SNAPSHOT</version>
 			</plugin>
 		</plugins>
 	</build>
