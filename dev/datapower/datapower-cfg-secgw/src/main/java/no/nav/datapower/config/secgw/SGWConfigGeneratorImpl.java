@@ -3,7 +3,6 @@ package no.nav.datapower.config.secgw;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
@@ -30,7 +29,6 @@ import no.nav.datapower.util.PropertiesValidator;
 import no.nav.datapower.util.WildcardPathFilter;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.OrFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.log4j.Logger;
@@ -46,7 +44,6 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	private static final String TEMPLATE_CFG = "secgw-configuration.ftl";
 	private static final String TEMPLATE_AAA = "aaa-mapping-file.ftl";
 	private static final String TEMPLATE_AAA_SBLUTB = "aaa-mapping-file-SBLUTB.ftl";
-	private static final String TEMPLATE_AAA_WORKMATE = "aaa-basic-auth-file.ftl";
 	private static final String REQUIRED_PROPERTIES_NAME = "/cfg-secgw-required.properties";
 	private static final Properties REQUIRED_PROPERTIES = DPPropertiesUtils.load(SGWConfigGeneratorImpl.class,REQUIRED_PROPERTIES_NAME);
 	private static final TemplateLoader SECGW_TEMPLATE_LOADER = new StreamTemplateLoader(SGWConfigGeneratorImpl.class, "/");
@@ -84,8 +81,6 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), unit.getFilesLocalXsltDir());
 			DPFileUtils.copyFilesToDirectory(cfg.getWsdlArchives(), unit.getFilesLocalWsdlDir());
 			DPFileUtils.copyFilesToDirectory(getLocalFiles("xslt"), unit.getFilesLocalXsltDir());
-			//FIXME Workmate; comment the below line in again to copy workmate wsdl file to DataPower
-			//DPFileUtils.copyFilesToDirectory(getLocalFiles("wsdl"), unit.getFilesLocalWsdlDir());
 		} catch (IOException e) {
 			throw new IllegalStateException("Caught IOException while extracting WSDL files from EAR archives",e);
 		}
@@ -119,23 +114,6 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			throw new IllegalStateException("Template processing failed for AAAInfo file", e);
 		}
 
-		//FIXME Workmate; comment in the below section to create aaainfo file used for aaa step		
-		// Generate AAAInfo file for Workmate
-//		try {
-//			String wmateAaaFilename = cfg.getProperty("workmateAaaFilename");
-//			LOG.debug("Generating Workmate AAA file " + wmateAaaFilename);
-//			File wmateAaaMappingFile = DPFileUtils.append(unit.getFilesLocalAaaDir(), wmateAaaFilename);
-//			FileWriter wmateAaaWriter = new FileWriter(wmateAaaMappingFile);
-//			processTemplate(TEMPLATE_AAA_WORKMATE, cfg.getProperties(), wmateAaaWriter);
-//			wmateAaaWriter.close();
-//			LOG.debug("Done generating Workmate AAA file " + wmateAaaFilename);
-//		} catch (IOException e) {
-//			throw new IllegalStateException("Caught IOException while building Workmate AAAInfo file", e);
-//		} catch (TemplateException e) {
-//			throw new IllegalStateException("Template processing failed for Workmate AAAInfo file", e);
-//		}
-
-		
 		// Generate XCFG configuration
 		try {			
 			File cfgFile = DPFileUtils.append(unit.getImportConfigDir(), cfg.getConfigFilename());
@@ -146,10 +124,6 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			
 			//Retrieve and load wsdl files and make them available for freemarker.
 			cfg.getProperties().put("wsdls", wsdlFiles);
-			//"Hack". I was unable to make freemarker do this in the template...
-			//FIXME required by workmate
-			//String[] portListArray = cfg.getProperty("wsdlPortBindingList").split(",");
-			//cfg.getProperties().put("wsdlPortBindingList", portListArray);			
 			
 			LOG.debug("Processing template");
 			processTemplate(TEMPLATE_CFG, cfg.getProperties(), cfgWriter);
@@ -218,10 +192,6 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
 	}
 	
-	private List<File> getWsdlArchives(File wsdlDir) {
-		return getFileList(wsdlDir, "cfgWsdlArchiveFilter", ".zip");
-	}
-
 	private List<File> getEarFiles(File earDir) {
 		LOG.trace("getEarFiles(), earDir = " + earDir);
 		List<File> earList = DPCollectionUtils.newArrayList();
