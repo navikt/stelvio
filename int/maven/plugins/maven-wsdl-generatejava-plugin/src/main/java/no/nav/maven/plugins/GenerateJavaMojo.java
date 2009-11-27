@@ -221,14 +221,12 @@ public class GenerateJavaMojo extends AbstractMojo {
 	 * @param project
 	 * @return the first wsdl-if artifact found in the dependency list
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Artifact> getWSDLIfArtifacts(MavenProject project) {
 		String wsdlIfClassifier = wsdlIfArtifactHandler.getClassifier();
 		ArrayList<Artifact> artifactList=new ArrayList<Artifact>();
 		Set artifacts = project.getDependencyArtifacts();
-		for (Iterator artifactIterator = artifacts.iterator(); artifactIterator
-				.hasNext();) {
-			Artifact artifact = (Artifact) artifactIterator.next();
-			System.out.println(artifact.getClassifier());
+		for (Artifact artifact : (Set<Artifact>)artifacts) {
 			if (wsdlIfClassifier.equals(artifact.getClassifier())) {
 				artifactList.add(artifact);
 			}
