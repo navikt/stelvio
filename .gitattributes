@@ -1318,8 +1318,6 @@ dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-basic-auth-file.ftl -te
 dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-mapping-file-SBLUTB.ftl -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-mapping-file.ftl -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/cfg-secgw-required.properties -text
-dev/datapower/datapower-cfg-secgw/src/main/resources/local/wsdl/workmate.wsdl -text
-dev/datapower/datapower-cfg-secgw/src/main/resources/local/xslt/fault-handler.xsl -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/secgw-configuration.ftl -text
 dev/datapower/datapower-cfg-secgw/src/test/java/no/nav/datapower/config/secgw/SGWConfigGeneratorImplTest.java -text
 dev/datapower/datapower-cfg-secgw/src/test/resources/cfg-secgw-u1.properties -text

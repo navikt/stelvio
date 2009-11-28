@@ -1,18 +1,10 @@
 package no.nav.datapower.config.secgw;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.JarURLConnection;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 import no.nav.datapower.config.ConfigPackage;
 import no.nav.datapower.config.EnvironmentResources;
@@ -22,15 +14,9 @@ import no.nav.datapower.config.freemarker.templates.StreamTemplateLoader;
 import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
-import no.nav.datapower.util.DPStreamUtils;
-import no.nav.datapower.util.DPZipUtils;
 import no.nav.datapower.util.PropertiesBuilder;
 import no.nav.datapower.util.PropertiesValidator;
-import no.nav.datapower.util.WildcardPathFilter;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.OrFileFilter;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.log4j.Logger;
 
 import freemarker.cache.TemplateLoader;
@@ -47,7 +33,6 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	private static final String REQUIRED_PROPERTIES_NAME = "/cfg-secgw-required.properties";
 	private static final Properties REQUIRED_PROPERTIES = DPPropertiesUtils.load(SGWConfigGeneratorImpl.class,REQUIRED_PROPERTIES_NAME);
 	private static final TemplateLoader SECGW_TEMPLATE_LOADER = new StreamTemplateLoader(SGWConfigGeneratorImpl.class, "/");
-	private File tmpDir;
 	
 	public SGWConfigGeneratorImpl() {		
 		super(GENERATOR_NAME, REQUIRED_PROPERTIES, SECGW_TEMPLATE_LOADER);
@@ -70,21 +55,6 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		LOG.debug("Files local directory = " + unit.getFilesLocalDir());
 		LOG.debug("Files local wsdl directory = " + unit.getFilesLocalWsdlDir());
 		
-		tmpDir = DPFileUtils.append(unit.getRootDir(), "tmp");
-		
-		// Extract wsdl from EAR archives
-		List<File> earFiles = getEarFiles(cfg.getModuleDirectory());
-		try {			
-			extractWsdlFiles(earFiles, unit.getFilesLocalDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getAaaFiles(), unit.getFilesLocalAaaDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getCertFiles(), unit.getFilesCertDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getXsltFiles(), unit.getFilesLocalXsltDir());
-			DPFileUtils.copyFilesToDirectory(cfg.getWsdlArchives(), unit.getFilesLocalWsdlDir());
-			DPFileUtils.copyFilesToDirectory(getLocalFiles("xslt"), unit.getFilesLocalXsltDir());
-		} catch (IOException e) {
-			throw new IllegalStateException("Caught IOException while extracting WSDL files from EAR archives",e);
-		}
-
 		// Generate AAAInfo files
 		try {
 			String aaaFilename = cfg.getProperty("aaaFileName");
@@ -142,7 +112,9 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 	private List<WSDLFile> getWsdlFiles(File directory) throws IOException {		
 		List<WSDLFile> wsdlFiles = DPCollectionUtils.newArrayList();
 		LOG.debug("Gathering wsdl files for automatical generation of WS-proxys from directory: " + directory);				
-		for (File wsdlFile : getFileList(directory, "cfgWsdlFileFilter", "wsdl")) {
+		// TODO verify that naming standard enforces that WSDL port file location is the root folder
+		// If that can't be assumed, search for WSDL ports recursively and filter or exclude WSDL interface files
+		for (File wsdlFile : directory.listFiles()) {
 			if (wsdlFile.isFile() && wsdlFile.getName().endsWith(".wsdl")) {
 				wsdlFiles.add(new WSDLFile(wsdlFile));
 				LOG.debug("Found wsdl file: " + wsdlFile.getName());
@@ -150,89 +122,5 @@ public class SGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		}
 		return wsdlFiles;
 	}
-
 	
-	private List<File> getLocalFiles(String folderName) {
-		URL localDirUrl = getClass().getClassLoader().getResource(String.format("local/%1$s/", folderName));
-		List<File> fileList = null;
-		if (localDirUrl.getProtocol().equals("file")) {
-			fileList = getFileList(FileUtils.toFile(localDirUrl));			
-		}
-		else if (localDirUrl.getProtocol().equals("jar")) {//hack
-			fileList = getFileListFromJarClasspath(localDirUrl);
-		}
-		return fileList;
-	}
-	
-	private List<File> getFileListFromJarClasspath(URL url) {
-		List<File> fileList = DPCollectionUtils.newArrayList();
-		JarURLConnection conn;
-		try {
-			conn = (JarURLConnection)url.openConnection();
-			JarEntry directory = conn.getJarEntry();
-			DPFileUtils.append(tmpDir, directory.getName()).mkdirs();
-			JarFile jarFile = conn.getJarFile();
-			Enumeration<JarEntry> entries = jarFile.entries();
-			while (entries.hasMoreElements()) {
-				JarEntry entry = entries.nextElement();
-				if (!entry.isDirectory() && entry.getName().startsWith(directory.getName())) {
-					File file = DPFileUtils.append(tmpDir, entry.getName());
-					DPStreamUtils.pumpAndClose(jarFile.getInputStream(entry), new FileOutputStream(file));
-					fileList.add(file);
-				}
-			}			
-		} catch (IOException e) {
-			throw new IllegalStateException(e);
-		}
-		return fileList;
-	}
-	
-
-	private List<File> getFileList(File dir) {
-		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
-	}
-	
-	private List<File> getEarFiles(File earDir) {
-		LOG.trace("getEarFiles(), earDir = " + earDir);
-		List<File> earList = DPCollectionUtils.newArrayList();
-		for (File dir : earDir.listFiles()) {
-			if (dir.isDirectory()) {
-				earList.addAll(getFileList(dir, "cfgConsumerModuleFilter", ".ear"));
-			}
-		}
-		return earList;
-	}
-
-	
-	private List<File> getFileList(File dir, String filterProperty, String fileExt) {
-		String filterString = getEnvironmentResources().getProperty(filterProperty);
-		LOG.trace("getFileList(), dir = " + dir + ",  filterString = " + filterString + ", fileExt = " + fileExt);
-		List<String> filters = DPCollectionUtils.listFromString(filterString);
-		OrFileFilter orFilter = new OrFileFilter();
-		for (String filter : filters) {
-			orFilter.addFileFilter(new WildcardFileFilter(filter + fileExt));
-		}
-		return DPFileUtils.getFileListFiltered(dir, orFilter);		
-	}
-
-	
-	private void extractWsdlFiles(List<File> ears, File localFilesWsdlDir) throws IOException {
-		LOG.trace("extractWsdlFiles(), localFilesWsdlDir = " + localFilesWsdlDir);
-		DPCollectionUtils.printLines(ears, System.out);
-		for (File ear : ears) {
-			JarFile earArchive = new JarFile(ear);
-			Enumeration<JarEntry> entries = earArchive.entries();
-			while (entries.hasMoreElements()) {
-				JarEntry jarEntry = entries.nextElement();
-				LOG.trace("extractWsdlFiles(), jarEntry = " + jarEntry);
-				if (jarEntry.getName().endsWith(".war")) {
-					File warFile = DPFileUtils.append(localFilesWsdlDir.getParentFile(), jarEntry.getName());
-					DPZipUtils.writeZipEntryToOutputStream(earArchive, jarEntry, new FileOutputStream(warFile));
-					DPFileUtils.extractArchiveFiltered(warFile, localFilesWsdlDir,
-							new OrFileFilter(new WildcardPathFilter("*.wsdl"), new WildcardPathFilter("*.xsd")));
-					FileUtils.deleteQuietly(warFile);
-				}
-			}
-		}
-	}	
 }
