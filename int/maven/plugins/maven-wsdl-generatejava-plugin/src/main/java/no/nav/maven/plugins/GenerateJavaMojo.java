@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -76,7 +75,7 @@ public class GenerateJavaMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private String wasRuntime;
-	
+
 	/**
 	 * @parameter expression="${wid.home}"
 	 * @readonly
@@ -100,95 +99,88 @@ public class GenerateJavaMojo extends AbstractMojo {
 	 */
 	private UnArchiver unArchiver;
 
-	
 	/**
-	 * Source Dir
+	 * Set a location to generate CLASS files into.
 	 * 
-	 * @parameter expression="${project.build.directory}"
+	 * @parameter default-value="${project.build.directory}/generated-sources/wsdl2java"
 	 * @required
 	 */
-	private File buildDirectory;
+	private File classGenerationDirectory;
 
 	public void execute() throws MojoExecutionException {
-		try{
-			// Necessary hack. Or so is the rumor, at least.
-			if (!wsdlIfArtifactHandler.equals(artifactHandlerManager
-					.getArtifactHandler(WSDL_INTERFACE_ARTIFACT_TYPE))) {
-				getLog()
-						.debug(
-								"Adding project interchange artifact handler to artifact handler manager");
-				artifactHandlerManager.addHandlers(Collections.singletonMap(
-						WSDL_INTERFACE_ARTIFACT_TYPE, wsdlIfArtifactHandler));
+		try {
+			// TODO: The following must be done because of one (or more) bug(s)
+			// in Maven. See Maven bugs MNG-3506 and MNG-2426 for more info.
+			if (!wsdlIfArtifactHandler.equals(artifactHandlerManager.getArtifactHandler(WSDL_INTERFACE_ARTIFACT_TYPE))) {
+				getLog().debug("Adding project interchange artifact handler to artifact handler manager");
+				artifactHandlerManager.addHandlers(Collections
+						.singletonMap(WSDL_INTERFACE_ARTIFACT_TYPE, wsdlIfArtifactHandler));
 			}
-			String genDirectory = buildDirectory.getAbsolutePath() + "/genWSDL";
-	
+
 			// First unpack the wsdl-artifact from the dependency
 			long timestamp = System.currentTimeMillis();
-			for(Artifact artifact:getWSDLIfArtifacts(project)){
+			for (Artifact artifact : getWSDLIfArtifacts(project)) {
 				File wsdlArtifactFile = artifact.getFile();
 				unArchiver.setSourceFile(wsdlArtifactFile);
-				String tempDir = project.getBuild().getDirectory() + "/wsdltemp_"+artifact.getArtifactId()+"_"
-						+ timestamp + "/";
+				String tempDir = project.getBuild().getDirectory() + "/wsdltemp_" + artifact.getArtifactId() + "_" + timestamp
+						+ "/";
 				File tempDirfile = new File(tempDir);
 				tempDirfile.mkdirs();
 				unArchiver.setDestDirectory(tempDirfile);
 				try {
 					unArchiver.extract();
 				} catch (Exception e) {
-					throw new RuntimeException("Unable to unzip wsdl artifact file "
-							+ wsdlArtifactFile.getPath() + " to directory "
-							+ unArchiver.getDestDirectory(), e);
+					throw new RuntimeException("Unable to unzip wsdl artifact file " + wsdlArtifactFile.getPath()
+							+ " to directory " + unArchiver.getDestDirectory(), e);
 				}
-				
-				//Generate the NStoPkg.properties-file that will make sensible packages for the wsdl  
+
+				// Generate the NStoPkg.properties-file that will make sensible
+				// packages for the wsdl
 				Map<String, String> namespaceToPackageMap = createNameSpaceToPackageMapFromWSDLDirectory(tempDirfile);
-				File nameSpaceToPackageFile = new File(tempDir, /*project.getBuild().getFinalName()
-						+ "-*/"NStoPkg.properties");
+				File nameSpaceToPackageFile = new File(tempDir, /*
+																 * project.getBuild().getFinalName() + "-
+																 */"NStoPkg.properties");
 				PrintWriter pw = new PrintWriter(new BufferedOutputStream(new FileOutputStream(nameSpaceToPackageFile)));
 				for (String namespace : namespaceToPackageMap.keySet()) {
 					pw.write(namespace + "=" + namespaceToPackageMap.get(namespace) + "\n");
 				}
 				pw.close();
-		
-		
-				// Next, call the WSDL2Java script for all wsdl-files in the artifact
+
+				// Next, call the WSDL2Java script for all wsdl-files in the
+				// artifact
 				String exec;
-				if (wasRuntime==null){
-					wasRuntime=widRuntime+"/runtimes/bi_v61";
+				if (wasRuntime == null) {
+					wasRuntime = widRuntime + "/runtimes/bi_v61";
 				}
 				if (Os.isFamily("windows")) {
 					exec = wasRuntime + "/bin/WSDL2Java.bat";
 				} else {
 					exec = wasRuntime + "/bin/WSDL2Java.sh";
 				}
-		
-				List<File> wsdlFiles = listFilesRecursive(tempDirfile,
-						new FilenameFilter() {
-							public boolean accept(File dir, String name) {
-								return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
-							}
-						});
-		
-				
-				
+
+				List<File> wsdlFiles = listFilesRecursive(tempDirfile, new FilenameFilter() {
+					public boolean accept(File dir, String name) {
+						return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
+					}
+				});
 
 				for (File wsdlFile : wsdlFiles) {
 					Commandline commandLine = new Commandline();
 					Commandline.Argument arg = new Commandline.Argument();
-					arg.setLine("-role client -container none -o \"" + genDirectory
-							+ "\" -j Overwrite -f \"" + nameSpaceToPackageFile.getAbsolutePath()+"\" \"" + wsdlFile.getAbsolutePath()
-							+ "\"");
+					arg.setLine("-role client -container none -o \"" + classGenerationDirectory.getAbsolutePath()
+							+ "\" -j Overwrite -f \"" + nameSpaceToPackageFile.getAbsolutePath() + "\" \""
+							+ wsdlFile.getAbsolutePath() + "\"");
 					commandLine.setExecutable(exec);
 					commandLine.addArg(arg);
 					arg = new Commandline.Argument();
 					executeCommand(commandLine);
 				}
 			}
-			project.addCompileSourceRoot(genDirectory);
-		}catch(RuntimeException re){
+			project.addCompileSourceRoot(classGenerationDirectory.getAbsolutePath());
+		} catch (RuntimeException re) {
 			throw re;
-		}catch(Exception e)	{
-			new MojoExecutionException("Unable to generate Java",e);
+		} catch (Exception e) {
+			new MojoExecutionException("Unable to generate Java", e);
 		}
 
 	}
@@ -200,8 +192,7 @@ public class GenerateJavaMojo extends AbstractMojo {
 	 * @param filter
 	 * @return files matching filter in all subdirectories of dirToTraverse
 	 */
-	private List<File> listFilesRecursive(File dirToTraverse,
-			FilenameFilter filter) {
+	private List<File> listFilesRecursive(File dirToTraverse, FilenameFilter filter) {
 		List<File> foundFiles = new ArrayList<File>();
 		for (File f : dirToTraverse.listFiles(filter)) {
 			foundFiles.add(f);
@@ -224,21 +215,20 @@ public class GenerateJavaMojo extends AbstractMojo {
 	@SuppressWarnings("unchecked")
 	public List<Artifact> getWSDLIfArtifacts(MavenProject project) {
 		String wsdlIfClassifier = wsdlIfArtifactHandler.getClassifier();
-		ArrayList<Artifact> artifactList=new ArrayList<Artifact>();
+		ArrayList<Artifact> artifactList = new ArrayList<Artifact>();
 		Set artifacts = project.getDependencyArtifacts();
-		for (Artifact artifact : (Set<Artifact>)artifacts) {
+		for (Artifact artifact : (Set<Artifact>) artifacts) {
 			if (wsdlIfClassifier.equals(artifact.getClassifier())) {
 				artifactList.add(artifact);
 			}
 		}
-		if (artifactList.size()==0){
-			throw new RuntimeException(
-				"No attached artifact of type wsdl-interface (classifier '"
-						+ wsdlIfClassifier + "') found ");
+		if (artifactList.size() == 0) {
+			throw new RuntimeException("No attached artifact of type wsdl-interface (classifier '" + wsdlIfClassifier
+					+ "') found ");
 		}
 		return artifactList;
 	}
-	
+
 	public Map<String, String> createNameSpaceToPackageMapFromWSDLDirectory(File wsdlDirectory) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		try {
@@ -297,8 +287,7 @@ public class GenerateJavaMojo extends AbstractMojo {
 
 	protected final void executeCommand(Commandline command) {
 		try {
-			getLog().info(
-					"Executing the following command: " + command.toString());
+			getLog().info("Executing the following command: " + command.toString());
 
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {
@@ -312,19 +301,16 @@ public class GenerateJavaMojo extends AbstractMojo {
 			};
 			ErrorCheckingStreamConsumer errorChecker = new ErrorCheckingStreamConsumer();
 
-			int ret=CommandLineUtils.executeCommandLine(command,
-					new StreamConsumerChain(systemOut).add(errorChecker),
+			int ret = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
 					new StreamConsumerChain(systemErr).add(errorChecker));
 
-			if (ret!=0 || errorChecker.isError()) {
+			if (ret != 0 || errorChecker.isError()) {
 
-				throw new RuntimeException(
-						"An error occured during deploy. Stopping deployment. Consult the logs.");
+				throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 
 			}
 		} catch (CommandLineException e) {
-			throw new RuntimeException(
-					"An error occured executing: " + command, e);
+			throw new RuntimeException("An error occured executing: " + command, e);
 		}
 	}
 
