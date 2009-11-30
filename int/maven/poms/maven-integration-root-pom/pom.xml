@@ -314,7 +314,7 @@
 		</repository>
 		<snapshotRepository>
 			<id>nav-pensjon-maven2-snapshot-repo</id>
-			<url>scp://10.33.1.53/var/maven2/snapshot</url>
+			<url>dav:http://e11apvl002.utv.internsone.local/repo</url>
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
