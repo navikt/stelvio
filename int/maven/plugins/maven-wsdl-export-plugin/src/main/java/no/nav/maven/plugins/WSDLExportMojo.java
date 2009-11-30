@@ -100,6 +100,8 @@ public class WSDLExportMojo extends AbstractMojo {
 
 	private void executeInternal() throws MojoExecutionException {
 		try {
+			// TODO: The following must be done because of one (or more) bug(s)
+			// in Maven. See Maven bugs MNG-3506 and MNG-2426 for more info.
 			if (!wsdlInterfaceArtifactHandler.equals(artifactHandlerManager.getArtifactHandler(WSDL_INTERFACE_ARTIFACT_TYPE))) {
 				getLog().debug("Adding wsdlif interchange artifact handler to artifact handler manager");
 				artifactHandlerManager.addHandlers(Collections.singletonMap(WSDL_INTERFACE_ARTIFACT_TYPE,
@@ -139,7 +141,7 @@ public class WSDLExportMojo extends AbstractMojo {
 	}
 
 	private File extractFile(File file, File parentDirectory) throws IOException, ArchiverException {
-		File tempDir = File.createTempFile(file.getName(), null, parentDirectory);
+		File tempDir = new File(parentDirectory, file.getName());
 		tempDir.delete();
 		tempDir.mkdir();
 
