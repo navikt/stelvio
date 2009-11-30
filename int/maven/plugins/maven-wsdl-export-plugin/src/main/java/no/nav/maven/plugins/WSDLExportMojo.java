@@ -141,14 +141,14 @@ public class WSDLExportMojo extends AbstractMojo {
 	}
 
 	private File extractFile(File file, File parentDirectory) throws IOException, ArchiverException {
-		File tempDir = new File(parentDirectory, file.getName());
-		tempDir.delete();
-		tempDir.mkdir();
+		File extractDir = new File(parentDirectory, file.getName());
+		extractDir.delete();
+		extractDir.mkdir();
 
 		unArchiver.setSourceFile(file);
-		unArchiver.setDestDirectory(tempDir);
+		unArchiver.setDestDirectory(extractDir);
 		unArchiver.extract();
 
-		return tempDir;
+		return extractDir;
 	}
 }
