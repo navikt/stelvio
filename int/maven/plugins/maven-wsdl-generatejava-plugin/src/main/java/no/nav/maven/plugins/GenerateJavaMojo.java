@@ -41,8 +41,10 @@ import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 import org.codehaus.plexus.util.Os;
+import org.codehaus.plexus.util.cli.Arg;
 import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
@@ -117,29 +119,29 @@ public class GenerateJavaMojo extends AbstractMojo {
 						.singletonMap(WSDL_INTERFACE_ARTIFACT_TYPE, wsdlIfArtifactHandler));
 			}
 
+			String exec;
+			if (wasRuntime == null) {
+				wasRuntime = widRuntime + "/runtimes/bi_v61";
+			}
+			if (Os.isFamily("windows")) {
+				exec = wasRuntime + "/bin/WSDL2Java.bat";
+			} else {
+				exec = wasRuntime + "/bin/WSDL2Java.sh";
+			}
+			Commandline commandLine = new Commandline();
+			commandLine.setExecutable(exec);
+
+			File tempDir = new File(project.getBuild().getDirectory(), "wsdltemp");
+			tempDir.mkdirs();
+
 			// First unpack the wsdl-artifact from the dependency
-			long timestamp = System.currentTimeMillis();
 			for (Artifact artifact : getWSDLIfArtifacts(project)) {
-				File wsdlArtifactFile = artifact.getFile();
-				unArchiver.setSourceFile(wsdlArtifactFile);
-				String tempDir = project.getBuild().getDirectory() + "/wsdltemp_" + artifact.getArtifactId() + "_" + timestamp
-						+ "/";
-				File tempDirfile = new File(tempDir);
-				tempDirfile.mkdirs();
-				unArchiver.setDestDirectory(tempDirfile);
-				try {
-					unArchiver.extract();
-				} catch (Exception e) {
-					throw new RuntimeException("Unable to unzip wsdl artifact file " + wsdlArtifactFile.getPath()
-							+ " to directory " + unArchiver.getDestDirectory(), e);
-				}
+				File tempWsdlZipDir = extractFile(artifact.getFile(), tempDir);
 
 				// Generate the NStoPkg.properties-file that will make sensible
 				// packages for the wsdl
-				Map<String, String> namespaceToPackageMap = createNameSpaceToPackageMapFromWSDLDirectory(tempDirfile);
-				File nameSpaceToPackageFile = new File(tempDir, /*
-																 * project.getBuild().getFinalName() + "-
-																 */"NStoPkg.properties");
+				Map<String, String> namespaceToPackageMap = createNameSpaceToPackageMapFromWSDLDirectory(tempWsdlZipDir);
+				File nameSpaceToPackageFile = new File(tempWsdlZipDir, "NStoPkg.properties");
 				PrintWriter pw = new PrintWriter(new BufferedOutputStream(new FileOutputStream(nameSpaceToPackageFile)));
 				for (String namespace : namespaceToPackageMap.keySet()) {
 					pw.write(namespace + "=" + namespaceToPackageMap.get(namespace) + "\n");
@@ -148,41 +150,39 @@ public class GenerateJavaMojo extends AbstractMojo {
 
 				// Next, call the WSDL2Java script for all wsdl-files in the
 				// artifact
-				String exec;
-				if (wasRuntime == null) {
-					wasRuntime = widRuntime + "/runtimes/bi_v61";
-				}
-				if (Os.isFamily("windows")) {
-					exec = wasRuntime + "/bin/WSDL2Java.bat";
-				} else {
-					exec = wasRuntime + "/bin/WSDL2Java.sh";
-				}
-
-				List<File> wsdlFiles = listFilesRecursive(tempDirfile, new FilenameFilter() {
+				List<File> wsdlFiles = listFilesRecursive(tempWsdlZipDir, new FilenameFilter() {
 					public boolean accept(File dir, String name) {
 						return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
 					}
 				});
-
 				for (File wsdlFile : wsdlFiles) {
-					Commandline commandLine = new Commandline();
-					Commandline.Argument arg = new Commandline.Argument();
-					arg.setLine("-role client -container none -o \"" + classGenerationDirectory.getAbsolutePath()
-							+ "\" -j Overwrite -f \"" + nameSpaceToPackageFile.getAbsolutePath() + "\" \""
+					commandLine.clearArgs();
+					Arg arg = commandLine.createArg();
+					arg.setLine("-role client -container none -output \"" + classGenerationDirectory.getAbsolutePath()
+							+ "\" -genJava Overwrite -fileNStoPkg \"" + nameSpaceToPackageFile.getAbsolutePath() + "\" \""
 							+ wsdlFile.getAbsolutePath() + "\"");
-					commandLine.setExecutable(exec);
-					commandLine.addArg(arg);
-					arg = new Commandline.Argument();
 					executeCommand(commandLine);
 				}
 			}
+
 			project.addCompileSourceRoot(classGenerationDirectory.getAbsolutePath());
 		} catch (RuntimeException re) {
 			throw re;
 		} catch (Exception e) {
 			new MojoExecutionException("Unable to generate Java", e);
 		}
+	}
 
+	private File extractFile(File file, File parentDirectory) throws IOException, ArchiverException {
+		File extractDir = new File(parentDirectory, file.getName());
+		extractDir.delete();
+		extractDir.mkdir();
+
+		unArchiver.setSourceFile(file);
+		unArchiver.setDestDirectory(extractDir);
+		unArchiver.extract();
+
+		return extractDir;
 	}
 
 	/**
