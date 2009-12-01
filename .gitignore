@@ -832,6 +832,7 @@ int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/*.class
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.settings/*.class
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.settings/target
+int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/bin
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/*.class
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/*.class
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/*.class
@@ -866,6 +867,7 @@ int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/target
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.settings/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.settings/target
+int/nav-int-appclient/nav-int-wpshelper/femhelper-java/bin
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/*.class
@@ -888,14 +890,8 @@ int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/no/target
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/target
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/target
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/resources/*.class
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/resources/target
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/target
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/target
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/test/*.class
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/test/java/*.class
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/test/java/target
-int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/test/target
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/target
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/.settings/*.class
@@ -906,6 +902,7 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/target
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.settings/target
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/bin
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/*.class
