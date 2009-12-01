@@ -66,12 +66,12 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				// "+availRec.unavailableTo.toString());
 			}
 			if (availRec.stubbed) {
-				DataObject ret = findMatchingTestData(operationType, (ManagedMultipartImpl) input);
+				DataObject ret = findMatchingTestData(operationType, (DataObject) input);
 				return ret;
 			} else if (availRec.recordStubData) {
 				DataObject preRecorded = null;
 				try {
-					preRecorded = findMatchingTestData(operationType, (ManagedMultipartImpl) input);
+					preRecorded = findMatchingTestData(operationType, (DataObject) input);
 				} catch (ServiceBusinessException sbe) {
 					// This is OK, as it is a prerecorded SBE
 				} catch (ServiceRuntimeException sre) {
@@ -94,7 +94,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 						recordStubDataRuntimeException(operationType, requestId, input, sre);
 						throw sre;
 					}
-					Type sdoTypeRes = ((DataObject) input).getType();
+					Type sdoTypeRes = ((DataObject) ret).getType();
 					String responseObjectName = sdoTypeRes.getName();
 
 					recordStubData(operationType, requestId, ret, responseObjectName, "Response");
@@ -220,7 +220,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	 *             if matching test data is an exception (intentionally recorded
 	 *             to return exception)
 	 */
-	private DataObject findMatchingTestData(OperationType operationType, ManagedMultipartImpl input)
+	private DataObject findMatchingTestData(OperationType operationType, DataObject input)
 			throws ServiceBusinessException {
 		File dir = getDirectory(operationType);
 		File[] requestFiles = dir.listFiles(new FileFilter() {
@@ -266,7 +266,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			}
 		}
 		if (responseFile.exists()) {
-			response = createResponseObject(responseFile, operationType.getInputType());
+			response = createResponseObject(responseFile, operationType.getOutputType());
 		}
 		return response;
 	}
