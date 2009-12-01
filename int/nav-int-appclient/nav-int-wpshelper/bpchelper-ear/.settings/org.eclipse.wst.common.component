@@ -3,40 +3,7 @@
     <wb-module deploy-name="nav-int-appclient-bpchelper-ear">
 		<wb-resource deploy-path="/" source-path="/"/>
         <dependent-module deploy-path="/" handle="module:/resource/nav-int-appclient-bpchelper-java/nav-int-appclient-bpchelper-java">
-            <dependent-object>JavaClientModule_1222936621234</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/bfmclientmodel.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/bpcclientcore.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/bpe137650.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/bpeapi.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/commons-cli-1.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/commons-collections-3.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/commons-lang-2.1.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/htmclientmodel.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/slf4j-api-1.5.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/slf4j-jdk14-1.5.2.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-bpchelper-ear/utils-1.07.00.jar">
+            <dependent-object>JavaClientModule_1259663286281</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="nav-int-appclient-common-java.jar" deploy-path="/" handle="module:/resource/nav-int-appclient-common-java/nav-int-appclient-common-java">
