@@ -3,8 +3,6 @@ package no.nav.sibushelper.cmdoptions;
 import java.util.HashMap;
 import java.util.Map;
 
-import no.nav.sibushelper.cmdoptions.CommandOptions;
-
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author persona2c5e3b49756 Schnell
- *
+ * 
  */
 public interface MessagingHelper {
 
@@ -18,7 +18,8 @@ public interface MessagingHelper {
 	 * @return
 	 * @throws MessagingOperationFailedException
 	 */
-	public List<MessageInfo> browseQueue(String busName, String meName, String queueName) throws MessagingOperationFailedException;
+	public List<MessageInfo> browseQueue(String busName, String meName, String queueName)
+			throws MessagingOperationFailedException;
 
 	/**
 	 * @param meName
@@ -28,7 +29,8 @@ public interface MessagingHelper {
 	 * @return
 	 * @throws MessagingOperationFailedException
 	 */
-	public MessageInfo browseSingleMessage(String busName, String meName, String queueName, String msgId) throws MessagingOperationFailedException;
+	public MessageInfo browseSingleMessage(String busName, String meName, String queueName, String msgId)
+			throws MessagingOperationFailedException;
 
 	/**
 	 * @param busName
@@ -38,8 +40,8 @@ public interface MessagingHelper {
 	 * @param maxMesg
 	 * @return
 	 */
-	public List<MessageInfo> moveExceptionToDestination(String busName, String meName, String seQueue, String msgSelector, long maxMesg);
-	
+	public List<MessageInfo> moveExceptionToDestination(String busName, String meName, String seQueue, String msgSelector,
+			long maxMesg);
 
 	/**
 	 * @param busName
@@ -62,8 +64,7 @@ public interface MessagingHelper {
 	 * @throws MessagingOperationFailedException
 	 * @throws DestinationNotFoundException
 	 */
-	public long clearQueue(String busName, String meName, String queueName, String msgSelector, long maxMesg) throws MessagingOperationFailedException, DestinationNotFoundException;
-
-
+	public long clearQueue(String busName, String meName, String queueName, String msgSelector, long maxMesg)
+			throws MessagingOperationFailedException, DestinationNotFoundException;
 
 }

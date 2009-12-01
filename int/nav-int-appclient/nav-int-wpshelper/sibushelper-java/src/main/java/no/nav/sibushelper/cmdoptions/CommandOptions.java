@@ -6,19 +6,19 @@ public interface CommandOptions {
 	 * <code>CommandLine</code> object
 	 */
 	public static final String help = "help";
-	
+
 	/**
 	 * Public constant to represent the 'configFile' string from
 	 * <code>CommandLine</code> object
 	 */
 	public static final String configFile = "configFile";
-	
+
 	/**
 	 * Public constant to represent the 'logFilePath' string from
 	 * <code>CommandLine</code> object
 	 */
 	public static final String reportDirectory = "reportDirectory";
-	
+
 	/**
 	 * Public constant to represent the 'sourceModule' string from
 	 * <code>CommandLine</code> object
@@ -54,11 +54,11 @@ public interface CommandOptions {
 	 * <code>CommandLine</code> object
 	 */
 	public static final String component = "component";
-	
+
 	/**
 	 * Public constant to represent the 'generic arguments' string from
 	 * <code>CommandLine</code> object
 	 */
 	public static final String genericArguments = "busName:queue,selector";
-	
+
 }

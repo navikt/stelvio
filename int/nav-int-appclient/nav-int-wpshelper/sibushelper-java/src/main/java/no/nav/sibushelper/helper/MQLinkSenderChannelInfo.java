@@ -9,7 +9,7 @@ import com.ibm.websphere.sib.admin.SIBMQLinkState;
 
 /**
  * @author persona2c5e3b49756 Schnell
- *
+ * 
  */
 public class MQLinkSenderChannelInfo {
 
@@ -18,7 +18,7 @@ public class MQLinkSenderChannelInfo {
 	private Long buffersSent;
 	private Long bytesReceived;
 	private Long bytesSent;
-	private Long channelStartTimeMillis;	
+	private Long channelStartTimeMillis;
 	private String currentLUWID;
 	private Long currentSequenceNumber;
 	private Integer heartbeatInterval;
@@ -35,23 +35,22 @@ public class MQLinkSenderChannelInfo {
 	private String queueManager;
 	private Integer remainingLongRetryStarts;
 	private Integer remainingShortRetryStarts;
-	private SIBMQLinkState status;	
+	private SIBMQLinkState status;
 	private Boolean stopRequested;
-	private SIBMQLinkSenderCurrentStatus senderChannel=null;
-	
+	private SIBMQLinkSenderCurrentStatus senderChannel = null;
+
 	/**
 	 * 
 	 */
 	public MQLinkSenderChannelInfo(SIBMQLinkSenderCurrentStatus arg0) {
 
-		if (arg0!=null)
-		{
+		if (arg0 != null) {
 			batchSize = arg0.getBatchSize();
 			buffersReceived = arg0.getBuffersReceived();
 			buffersSent = arg0.getBuffersSent();
 			bytesReceived = arg0.getBytesReceived();
 			bytesSent = arg0.getBytesSent();
-			channelStartTimeMillis = arg0.getChannelStartTimeMillis();	
+			channelStartTimeMillis = arg0.getChannelStartTimeMillis();
 			currentLUWID = arg0.getCurrentLUWID();
 			currentSequenceNumber = arg0.getCurrentSequenceNumber();
 			heartbeatInterval = arg0.getHeartbeatInterval();
@@ -68,18 +67,16 @@ public class MQLinkSenderChannelInfo {
 			queueManager = arg0.getQueueManager();
 			remainingLongRetryStarts = arg0.getRemainingLongRetryStarts();
 			remainingShortRetryStarts = arg0.getRemainingShortRetryStarts();
-			status = arg0.getState();	
+			status = arg0.getState();
 			stopRequested = arg0.getStopRequested();
 			senderChannel = arg0;
-		}
-		else
-		{
+		} else {
 			batchSize = 0;
 			buffersReceived = 0L;
 			buffersSent = 0L;
 			bytesReceived = 0L;
 			bytesSent = 0L;
-			channelStartTimeMillis = 0L;	
+			channelStartTimeMillis = 0L;
 			currentLUWID = "";
 			currentSequenceNumber = 0L;
 			heartbeatInterval = 0;
@@ -96,186 +93,235 @@ public class MQLinkSenderChannelInfo {
 			queueManager = "SIBUSHELPER";
 			remainingLongRetryStarts = 0;
 			remainingShortRetryStarts = 0;
-			status = null;	
+			status = null;
 			stopRequested = false;
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getBatchSize()
 	 */
 	public Integer getBatchSize() {
-		return this.batchSize;
+		return batchSize;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getBuffersReceived()
 	 */
 	public Long getBuffersReceived() {
-		return this.buffersReceived;
+		return buffersReceived;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getBuffersSent()
 	 */
 	public Long getBuffersSent() {
-		return this.buffersSent;
+		return buffersSent;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getBytesReceived()
 	 */
 	public Long getBytesReceived() {
-		return this.bytesReceived;
+		return bytesReceived;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getBytesSent()
 	 */
 	public Long getBytesSent() {
-		return this.bytesSent;
+		return bytesSent;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getChannelStartTimeMillis()
 	 */
 	public Long getChannelStartTimeMillis() {
-		return this.channelStartTimeMillis;
+		return channelStartTimeMillis;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getCurrentLUWID()
 	 */
 	public String getCurrentLUWID() {
-		return this.currentLUWID;
+		return currentLUWID;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getCurrentSequenceNumber()
 	 */
 	public Long getCurrentSequenceNumber() {
-		return this.currentSequenceNumber;
+		return currentSequenceNumber;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getHeartbeatInterval()
 	 */
 	public Integer getHeartbeatInterval() {
-		return this.heartbeatInterval;
+		return heartbeatInterval;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getInDoubt()
 	 */
 	public Boolean getInDoubt() {
-		return this.inDoubt;
+		return inDoubt;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getIpAddress()
 	 */
 	public String getIpAddress() {
-		return this.ipAddress;
+		return ipAddress;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getLastLUWID()
 	 */
 	public String getLastLUWID() {
-		return this.lastLUWID;
+		return lastLUWID;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getLastMessageSendTimeMillis()
 	 */
 	public Long getLastMessageSendTimeMillis() {
-		return this.lastMessageSendTimeMillis;
+		return lastMessageSendTimeMillis;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getLastSequenceNumber()
 	 */
 	public Long getLastSequenceNumber() {
-		return this.lastSequenceNumber;
+		return lastSequenceNumber;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getLinkNpmSpeed()
 	 */
 	public String getLinkNpmSpeed() {
-		return this.linkNpmSpeed.toString();
+		return linkNpmSpeed.toString();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getMaxMessageLength()
 	 */
 	public Integer getMaxMessageLength() {
-		return this.maxMessageLength;
+		return maxMessageLength;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getMessagesInCurrentBatch()
 	 */
 	public Integer getMessagesInCurrentBatch() {
-		return this.messagesInCurrentBatch;
+		return messagesInCurrentBatch;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getNumberOfBatchesSent()
 	 */
 	public Long getNumberOfBatchesSent() {
-		return this.numberOfBatchesSent;
+		return numberOfBatchesSent;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getNumberOfMessagesSent()
 	 */
 	public Long getNumberOfMessagesSent() {
-		return this.numberOfMessagesSent;
+		return numberOfMessagesSent;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getQueueManager()
 	 */
 	public String getQueueManager() {
-		return this.queueManager;
+		return queueManager;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getRemainingLongRetryStarts()
 	 */
 	public Integer getRemainingLongRetryStarts() {
-		return this.remainingLongRetryStarts;
+		return remainingLongRetryStarts;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getRemainingShortRetryStarts()
 	 */
 	public Integer getRemainingShortRetryStarts() {
-		return this.remainingShortRetryStarts;
+		return remainingShortRetryStarts;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getStatus()
 	 */
 	public String getStatus() {
-		return this.status.toString();
+		return status.toString();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus#getStopRequested()
 	 */
 	public Boolean getStopRequested() {
-		return this.stopRequested;
+		return stopRequested;
 	}
-	
-	 /* (non-Javadoc)
-     * @see java.lang.arg0ect#toString()
-     */
-    public String toString()
-    {
-        return "MQLinkSenderChannelInfo@" + Integer.toHexString(System.identityHashCode(this)) + ": {" + senderChannel + "}";
-    }    
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.arg0ect#toString()
+	 */
+	@Override
+	public String toString() {
+		return "MQLinkSenderChannelInfo@" + Integer.toHexString(System.identityHashCode(this)) + ": {" + senderChannel + "}";
+	}
 
 }

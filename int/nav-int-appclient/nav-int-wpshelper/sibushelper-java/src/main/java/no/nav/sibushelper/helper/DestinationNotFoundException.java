@@ -5,7 +5,7 @@ package no.nav.sibushelper.helper;
 
 /**
  * @author wpsadmin
- *
+ * 
  */
 public class DestinationNotFoundException extends Exception {
 

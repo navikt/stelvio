@@ -3,46 +3,45 @@
  */
 package no.nav.sibushelper.helper;
 
-
 /**
  * Used for hold the message attributes we need for reporting
+ * 
  * @author persona2c5e3b49756 Schnell
- * @see  SIBUS JMSMessage
+ * @see SIBUS JMSMessage
  */
-public class MessageInfo  {
-	
+public class MessageInfo {
+
 	private String systemMessageId;
 	private String apiMessageId;
 	private String correlationId;
 	private Integer approximateLength;
-	
+
 	private String apiUserId;
 	private String sysUserId;
-	
+
 	private Long currentTimestamp;
 	private Long currentMEArrivalTimestamp;
 	private Long currentMessageWaitTimestamp;
-	
+
 	private String busName;
 	private Integer redeliveredCount;
 	private String reliability;
-	
+
 	private String problemDestination;
 	private String origDestinationBus;
 	private String origDestination;
-	
+
 	private String exceptionMessage;
 	private Long exceptionTimestamp;
 	private Integer exceptionReason;
-	
+
 	private String messageType;
 	private String messageBodyType;
-	
+
 	private byte[] msgContent;
 	private StringBuffer msgStringBuffer;
-	
+
 	private String status;
-	
 
 	/**
 	 * @param systemMessageId
@@ -66,7 +65,12 @@ public class MessageInfo  {
 	 * @param messageBodyType
 	 * @param msgContent
 	 */
-	public MessageInfo(String systemMessageId, String apiMessageId, String correlationId, int approximateLength, String apiUserId, String sysUserId, Long currentTimestamp, Long currentMEArrivalTimestamp, Long currentMessageWaitTimestamp, String busName, Integer redeliveredCount, String reliability, String problemDestination, String origDestinationBus, String origDestination, String exceptionMessage, Long exceptionTimestamp, int exceptionReason, String messageType, String messageBodyType, byte[] msgContent, String status) {
+	public MessageInfo(String systemMessageId, String apiMessageId, String correlationId, int approximateLength,
+			String apiUserId, String sysUserId, Long currentTimestamp, Long currentMEArrivalTimestamp,
+			Long currentMessageWaitTimestamp, String busName, Integer redeliveredCount, String reliability,
+			String problemDestination, String origDestinationBus, String origDestination, String exceptionMessage,
+			Long exceptionTimestamp, int exceptionReason, String messageType, String messageBodyType, byte[] msgContent,
+			String status) {
 
 		this.systemMessageId = "";
 		this.apiMessageId = "";
@@ -89,9 +93,9 @@ public class MessageInfo  {
 		this.messageType = "";
 		this.messageBodyType = "";
 		this.msgContent = null;
-		this.msgStringBuffer = null;
+		msgStringBuffer = null;
 		this.status = null;
-		
+
 		this.systemMessageId = systemMessageId;
 		this.apiMessageId = apiMessageId;
 		this.correlationId = correlationId;
@@ -119,34 +123,32 @@ public class MessageInfo  {
 	/**
 	 * 
 	 */
-	public MessageInfo() 
-	{
-		this.systemMessageId = "";
-		this.apiMessageId = "";
-		this.correlationId = "";
-		this.approximateLength = 0;
-		this.apiUserId = "";
-		this.sysUserId = "";
-		this.currentTimestamp = 0L;
-		this.currentMEArrivalTimestamp = 0L;
-		this.currentMessageWaitTimestamp = 0L;
-		this.busName = "";
-		this.redeliveredCount = 0;
-		this.reliability = "";
-		this.problemDestination = "";
-		this.origDestinationBus = "";
-		this.origDestination = "";
-		this.exceptionMessage = "";
-		this.exceptionTimestamp = 0L;
-		this.exceptionReason = 0;
-		this.messageType = "";
-		this.messageBodyType = "";
-		this.msgContent = null;
-		this.msgStringBuffer = null;
-		this.status="";
+	public MessageInfo() {
+		systemMessageId = "";
+		apiMessageId = "";
+		correlationId = "";
+		approximateLength = 0;
+		apiUserId = "";
+		sysUserId = "";
+		currentTimestamp = 0L;
+		currentMEArrivalTimestamp = 0L;
+		currentMessageWaitTimestamp = 0L;
+		busName = "";
+		redeliveredCount = 0;
+		reliability = "";
+		problemDestination = "";
+		origDestinationBus = "";
+		origDestination = "";
+		exceptionMessage = "";
+		exceptionTimestamp = 0L;
+		exceptionReason = 0;
+		messageType = "";
+		messageBodyType = "";
+		msgContent = null;
+		msgStringBuffer = null;
+		status = "";
 	}
 
-	
 	/**
 	 * @return the apiMessageId
 	 */
@@ -154,14 +156,13 @@ public class MessageInfo  {
 		return apiMessageId;
 	}
 
-
 	/**
-	 * @param apiMessageId the apiMessageId to set
+	 * @param apiMessageId
+	 *            the apiMessageId to set
 	 */
 	public void setApiMessageId(String apiMessageId) {
 		this.apiMessageId = apiMessageId;
 	}
-
 
 	/**
 	 * @return the apiUserId
@@ -170,36 +171,33 @@ public class MessageInfo  {
 		return apiUserId;
 	}
 
-
 	/**
-	 * @param apiUserId the apiUserId to set
+	 * @param apiUserId
+	 *            the apiUserId to set
 	 */
 	public void setApiUserId(String apiUserId) {
 		this.apiUserId = apiUserId;
 	}
 
-
 	/**
 	 * @return the approximateLength
 	 */
 	public Integer getApproximateLength() {
-		
-		if (approximateLength == null)
-		{
+
+		if (approximateLength == null) {
 			approximateLength = 0;
 		}
-		
+
 		return approximateLength;
 	}
 
-
 	/**
-	 * @param approximateLength the approximateLength to set
+	 * @param approximateLength
+	 *            the approximateLength to set
 	 */
 	public void setApproximateLength(Integer approximateLength) {
 		this.approximateLength = approximateLength;
 	}
-
 
 	/**
 	 * @return the busName
@@ -208,14 +206,13 @@ public class MessageInfo  {
 		return busName;
 	}
 
-
 	/**
-	 * @param busName the busName to set
+	 * @param busName
+	 *            the busName to set
 	 */
 	public void setBusName(String busName) {
 		this.busName = busName;
 	}
-
 
 	/**
 	 * @return the correlationId
@@ -224,14 +221,13 @@ public class MessageInfo  {
 		return correlationId;
 	}
 
-
 	/**
-	 * @param correlationId the correlationId to set
+	 * @param correlationId
+	 *            the correlationId to set
 	 */
 	public void setCorrelationId(String correlationId) {
 		this.correlationId = correlationId;
 	}
-
 
 	/**
 	 * @return the currentMEArrivalTimestamp
@@ -240,14 +236,13 @@ public class MessageInfo  {
 		return currentMEArrivalTimestamp;
 	}
 
-
 	/**
-	 * @param currentMEArrivalTimestamp the currentMEArrivalTimestamp to set
+	 * @param currentMEArrivalTimestamp
+	 *            the currentMEArrivalTimestamp to set
 	 */
 	public void setCurrentMEArrivalTimestamp(Long currentMEArrivalTimestamp) {
 		this.currentMEArrivalTimestamp = currentMEArrivalTimestamp;
 	}
-
 
 	/**
 	 * @return the currentMessageWaitTimestamp
@@ -256,14 +251,13 @@ public class MessageInfo  {
 		return currentMessageWaitTimestamp;
 	}
 
-
 	/**
-	 * @param currentMessageWaitTimestamp the currentMessageWaitTimestamp to set
+	 * @param currentMessageWaitTimestamp
+	 *            the currentMessageWaitTimestamp to set
 	 */
 	public void setCurrentMessageWaitTimestamp(Long currentMessageWaitTimestamp) {
 		this.currentMessageWaitTimestamp = currentMessageWaitTimestamp;
 	}
-
 
 	/**
 	 * @return the currentTimestamp
@@ -272,14 +266,13 @@ public class MessageInfo  {
 		return currentTimestamp;
 	}
 
-
 	/**
-	 * @param currentTimestamp the currentTimestamp to set
+	 * @param currentTimestamp
+	 *            the currentTimestamp to set
 	 */
 	public void setCurrentTimestamp(Long currentTimestamp) {
 		this.currentTimestamp = currentTimestamp;
 	}
-
 
 	/**
 	 * @return the exceptionMessage
@@ -288,36 +281,33 @@ public class MessageInfo  {
 		return exceptionMessage;
 	}
 
-
 	/**
-	 * @param exceptionMessage the exceptionMessage to set
+	 * @param exceptionMessage
+	 *            the exceptionMessage to set
 	 */
 	public void setExceptionMessage(String exceptionMessage) {
 		this.exceptionMessage = exceptionMessage;
 	}
 
-
 	/**
 	 * @return the exceptionReason
 	 */
 	public Integer getExceptionReason() {
-		
-		if (exceptionReason == null)
-		{
+
+		if (exceptionReason == null) {
 			exceptionReason = 0;
 		}
-		
+
 		return exceptionReason;
 	}
 
-
 	/**
-	 * @param exceptionReason the exceptionReason to set
+	 * @param exceptionReason
+	 *            the exceptionReason to set
 	 */
 	public void setExceptionReason(Integer exceptionReason) {
 		this.exceptionReason = exceptionReason;
 	}
-
 
 	/**
 	 * @return the exceptionTimestamp
@@ -326,14 +316,13 @@ public class MessageInfo  {
 		return exceptionTimestamp;
 	}
 
-
 	/**
-	 * @param exceptionTimestamp the exceptionTimestamp to set
+	 * @param exceptionTimestamp
+	 *            the exceptionTimestamp to set
 	 */
 	public void setExceptionTimestamp(Long exceptionTimestamp) {
 		this.exceptionTimestamp = exceptionTimestamp;
 	}
-
 
 	/**
 	 * @return the messageBodyType
@@ -342,14 +331,13 @@ public class MessageInfo  {
 		return messageBodyType;
 	}
 
-
 	/**
-	 * @param messageBodyType the messageBodyType to set
+	 * @param messageBodyType
+	 *            the messageBodyType to set
 	 */
 	public void setMessageBodyType(String messageBodyType) {
 		this.messageBodyType = messageBodyType;
 	}
-
 
 	/**
 	 * @return the messageType
@@ -358,14 +346,13 @@ public class MessageInfo  {
 		return messageType;
 	}
 
-
 	/**
-	 * @param messageType the messageType to set
+	 * @param messageType
+	 *            the messageType to set
 	 */
 	public void setMessageType(String messageType) {
 		this.messageType = messageType;
 	}
-
 
 	/**
 	 * @return the msgContent
@@ -374,9 +361,9 @@ public class MessageInfo  {
 		return msgContent;
 	}
 
-
 	/**
-	 * @param msgContent the msgContent to set
+	 * @param msgContent
+	 *            the msgContent to set
 	 */
 	public void setMsgContent(byte[] msgContent) {
 		this.msgContent = msgContent;
@@ -390,7 +377,8 @@ public class MessageInfo  {
 	}
 
 	/**
-	 * @param problemDestination the problemDestination to set
+	 * @param problemDestination
+	 *            the problemDestination to set
 	 */
 	public void setProblemDestination(String problemDestination) {
 		this.problemDestination = problemDestination;
@@ -403,14 +391,13 @@ public class MessageInfo  {
 		return origDestination;
 	}
 
-
 	/**
-	 * @param origDestination the origDestination to set
+	 * @param origDestination
+	 *            the origDestination to set
 	 */
 	public void setOrigDestination(String origDestination) {
 		this.origDestination = origDestination;
 	}
-
 
 	/**
 	 * @return the origDestinationBus
@@ -419,36 +406,33 @@ public class MessageInfo  {
 		return origDestinationBus;
 	}
 
-
 	/**
-	 * @param origDestinationBus the origDestinationBus to set
+	 * @param origDestinationBus
+	 *            the origDestinationBus to set
 	 */
 	public void setOrigDestinationBus(String origDestinationBus) {
 		this.origDestinationBus = origDestinationBus;
 	}
 
-
 	/**
 	 * @return the redeliveredCount
 	 */
 	public Integer getRedeliveredCount() {
-		
-		if (redeliveredCount == null)
-		{
+
+		if (redeliveredCount == null) {
 			redeliveredCount = 0;
 		}
-		
+
 		return redeliveredCount;
 	}
 
-
 	/**
-	 * @param redeliveredCount the redeliveredCount to set
+	 * @param redeliveredCount
+	 *            the redeliveredCount to set
 	 */
 	public void setRedeliveredCount(Integer redeliveredCount) {
 		this.redeliveredCount = redeliveredCount;
 	}
-
 
 	/**
 	 * @return the reliability
@@ -457,14 +441,13 @@ public class MessageInfo  {
 		return reliability;
 	}
 
-
 	/**
-	 * @param reliability the reliability to set
+	 * @param reliability
+	 *            the reliability to set
 	 */
 	public void setReliability(String reliability) {
 		this.reliability = reliability;
 	}
-
 
 	/**
 	 * @return the systemMessageId
@@ -473,14 +456,13 @@ public class MessageInfo  {
 		return systemMessageId;
 	}
 
-
 	/**
-	 * @param systemMessageId the systemMessageId to set
+	 * @param systemMessageId
+	 *            the systemMessageId to set
 	 */
 	public void setSystemMessageId(String systemMessageId) {
 		this.systemMessageId = systemMessageId;
 	}
-
 
 	/**
 	 * @return the sysUserId
@@ -490,7 +472,8 @@ public class MessageInfo  {
 	}
 
 	/**
-	 * @param sysUserId the sysUserId to set
+	 * @param sysUserId
+	 *            the sysUserId to set
 	 */
 	public void setSysUserId(String sysUserId) {
 		this.sysUserId = sysUserId;
@@ -504,7 +487,8 @@ public class MessageInfo  {
 	}
 
 	/**
-	 * @param msgStringBuffer the msgStringBuffer to set
+	 * @param msgStringBuffer
+	 *            the msgStringBuffer to set
 	 */
 	public void setMsgStringBuffer(StringBuffer msgStringBuffer) {
 		this.msgStringBuffer = msgStringBuffer;
@@ -518,19 +502,29 @@ public class MessageInfo  {
 	}
 
 	/**
-	 * @param status the status to set
+	 * @param status
+	 *            the status to set
 	 */
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
-	public java.lang.String toString()
-	{
-		return "MessageInfo@" + java.lang.Integer.toHexString(java.lang.System.identityHashCode(this)) + ": " + "{ ID=" + systemMessageId + ", busName=" + busName + ", API_ID=" + apiMessageId + ", correlationId=" + correlationId + ", approximateLength=" + approximateLength + ", messageType=" + messageType + ", messageBodyType=" + messageBodyType + ", apiUserId=" + apiUserId + ", sysUserId=" + sysUserId + ", redeliveredCount=" + redeliveredCount + ", currentTimestamp=" + currentTimestamp + ", currentMEArrivalTimestamp=" + currentMEArrivalTimestamp + ", currentMessageWaitTimestamp=" + currentMessageWaitTimestamp + ", reliability=" + reliability + ", problemDestination=" + problemDestination + ", origDestinationBus=" + origDestinationBus + ", exceptionMessage=" + exceptionMessage + ", exceptionTimestamp=" + exceptionTimestamp + ", exceptionReason=" + exceptionReason + ", message=" + msgStringBuffer + "}";
+	@Override
+	public java.lang.String toString() {
+		return "MessageInfo@" + java.lang.Integer.toHexString(java.lang.System.identityHashCode(this)) + ": " + "{ ID="
+				+ systemMessageId + ", busName=" + busName + ", API_ID=" + apiMessageId + ", correlationId=" + correlationId
+				+ ", approximateLength=" + approximateLength + ", messageType=" + messageType + ", messageBodyType="
+				+ messageBodyType + ", apiUserId=" + apiUserId + ", sysUserId=" + sysUserId + ", redeliveredCount="
+				+ redeliveredCount + ", currentTimestamp=" + currentTimestamp + ", currentMEArrivalTimestamp="
+				+ currentMEArrivalTimestamp + ", currentMessageWaitTimestamp=" + currentMessageWaitTimestamp + ", reliability="
+				+ reliability + ", problemDestination=" + problemDestination + ", origDestinationBus=" + origDestinationBus
+				+ ", exceptionMessage=" + exceptionMessage + ", exceptionTimestamp=" + exceptionTimestamp
+				+ ", exceptionReason=" + exceptionReason + ", message=" + msgStringBuffer + "}";
 	}
 
-	
 }

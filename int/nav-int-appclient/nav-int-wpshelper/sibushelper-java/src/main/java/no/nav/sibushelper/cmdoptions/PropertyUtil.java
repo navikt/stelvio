@@ -35,8 +35,7 @@ public class PropertyUtil {
 		if (StringUtils.isEmpty(properties.getProperty(Constants.PROP_SERVER_PORT))) {
 			result.add("Property " + Constants.PROP_SERVER_PORT + " is missing or empty");
 		}
-		
-		
+
 		// Validate property CONNECTOR_SECURITY_ENABLED.
 		// Criterias: present and 'true' or 'false'
 		if (StringUtils.isEmpty(properties.getProperty(Constants.PROP_SECURITY_ENABLED))) {
@@ -55,7 +54,7 @@ public class PropertyUtil {
 			result.add("Property " + Constants.PROP_USER_NAME + " must be present if " + Constants.PROP_SECURITY_ENABLED
 					+ " is true");
 		}
-	
+
 		// Validate property PROP_PASSWORD.
 		// Criterias: present if CONNECTOR_SECURITY_ENABLED is true
 		String userPwd = properties.getProperty(Constants.PROP_PASSWORD);
@@ -75,7 +74,7 @@ public class PropertyUtil {
 		if (StringUtils.isEmpty(properties.getProperty(Constants.PROP_MSGING_PORT))) {
 			result.add("Property " + Constants.PROP_MSGING_PORT + " is missing or empty");
 		}
-		
+
 		// Validate property meEngineChain.
 		// Criterias: present
 		if (StringUtils.isEmpty(properties.getProperty(Constants.PROP_MSGING_CHAIN))) {

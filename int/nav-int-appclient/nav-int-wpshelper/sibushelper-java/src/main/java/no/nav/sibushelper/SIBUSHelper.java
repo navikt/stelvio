@@ -60,31 +60,31 @@ import com.ibm.websphere.sib.admin.SIBMQLinkSenderCurrentStatus;
 
 /**
  * @author persona2c5e3b49756 Schnell
- *
+ * 
  */
 public class SIBUSHelper {
 
 	private static Logger logger = Logger.getLogger(SIBUSHelper.class.getName());
 	private static final int screenWidth = 500;
-	
+
 	protected String arguments[];
 	protected String confFileName;
-    protected String serverName;
-    
-    private Configuration overallConf;
-    private ServerConfigurationProperties serverConf;
-	CommandLine cl = null;
-	
-    private String sibusAction;
-    private String sibusComponent;
-    private String argsibus = Constants.ARG_FILTER;
-    private String argqueue = Constants.ARG_FILTER;
-    private String argqueue1 = Constants.ARG_FILTER;
-    private String argfilter = Constants.ARG_FILTER;
+	protected String serverName;
 
-    private AdminHelper adminHelper;
-    private String host;
-		
+	private Configuration overallConf;
+	private ServerConfigurationProperties serverConf;
+	CommandLine cl = null;
+
+	private String sibusAction;
+	private String sibusComponent;
+	private String argsibus = Constants.ARG_FILTER;
+	private String argqueue = Constants.ARG_FILTER;
+	private String argqueue1 = Constants.ARG_FILTER;
+	private String argfilter = Constants.ARG_FILTER;
+
+	private AdminHelper adminHelper;
+	private String host;
+
 	/**
 	 * @param args
 	 */
@@ -94,17 +94,16 @@ public class SIBUSHelper {
 		confFileName = null;
 		arguments = null;
 		serverConf = null;
-		sibusAction=null;
-		sibusComponent=null;
-		host=null;
-		adminHelper=null;
-		cl=null;
-		this.arguments = args;
+		sibusAction = null;
+		sibusComponent = null;
+		host = null;
+		adminHelper = null;
+		cl = null;
+		arguments = args;
 	}
 
 	@SuppressWarnings("unchecked")
-	public int invokeHelper()
-	{
+	public int invokeHelper() {
 		System.out.println();
 		System.out.println(getSeparatorLine(112));
 		System.out.println(" SIBUS Helper for WPS 6.1 (c) IBM Corp., 1997-2008");
@@ -112,7 +111,7 @@ public class SIBUSHelper {
 
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();
 		Options options = optionsBuilder.getOptions();
-	
+
 		try {
 			cl = new PosixParser().parse(options, arguments);
 
@@ -127,11 +126,14 @@ public class SIBUSHelper {
 			formatter.setWidth(screenWidth);
 
 			System.out.println("Usage:");
-			System.out.println("launchClient <SIBUSHelper application> -CCpropfile=<configFile> [-CC<name>=<value>] [app args]");
-			System.out.println("where -CC<name>=<value> are the client container (launchClient) name-value pair arguments app args are application client arguments.");
+			System.out
+					.println("launchClient <SIBUSHelper application> -CCpropfile=<configFile> [-CC<name>=<value>] [app args]");
+			System.out
+					.println("where -CC<name>=<value> are the client container (launchClient) name-value pair arguments app args are application client arguments.");
 			System.out.println(StringUtils.EMPTY);
 			System.out.println("Sample usage:");
-			System.out.println("launchClient.sh <SIBUSHelper application> --configFile=/was_app/config/sibus/sibus.properties --action=REPORT --component=queue [select options]");
+			System.out
+					.println("launchClient.sh <SIBUSHelper application> --configFile=/was_app/config/sibus/sibus.properties --action=REPORT --component=queue [select options]");
 			System.out.println(StringUtils.EMPTY);
 			System.out.println("Filter by API message id only supported.");
 			formatter.printHelp("SIBUSHelper", options);
@@ -160,7 +162,7 @@ public class SIBUSHelper {
 			logger.log(Level.SEVERE, "Exiting due to insufficient number of arguments. See details listed above");
 			return -7;
 		}
-		
+
 		// should not come an exception
 		FileInputStream in;
 		Properties connectProps = new Properties();
@@ -168,10 +170,10 @@ public class SIBUSHelper {
 			in = new FileInputStream(propertyFile);
 			connectProps.load(in);
 			in.close();
-		} catch (FileNotFoundException e1) {} 
-		  catch (IOException e) {}
-		
-		
+		} catch (FileNotFoundException e1) {
+		} catch (IOException e) {
+		}
+
 		// Log warnings from property validation if any violations and exit
 		PropertyUtil propertyUtil = new PropertyUtil();
 		List validatedProperties = propertyUtil.validateProperties(connectProps);
@@ -183,205 +185,191 @@ public class SIBUSHelper {
 			System.exit(-8);
 		}
 
-
 		// get the command line options more sorted
 		sibusAction = cl.getOptionValue(CommandOptions.action);
-        sibusComponent = cl.getOptionValue(CommandOptions.component);
+		sibusComponent = cl.getOptionValue(CommandOptions.component);
 
-        // get options for REPORT, SUBMIT, DELETE
-        String[] option = cl.getArgs();
-        if (option.length != 0)
-        {
-        	// PATTERN SIBUS:QUEUE,QUEUE:FILTER
-        	StringTokenizer st = new StringTokenizer(option[0], Constants.ARG_DELIMITER);
-        	int i=0;
-        	while (st.hasMoreTokens()) {
-				
-        		if(i==0)
-        			argsibus = st.nextToken();
-        		
-        		if (i==1)
-        		{	
-        			argqueue = st.nextToken();
-        			
-        			if (argqueue.indexOf(Constants.ARG_QUEUE_DEL) != -1)
-        			{
-        				StringTokenizer stqd = new StringTokenizer(argqueue, Constants.ARG_QUEUE_DEL);
-        				int l=0;
-        				while(stqd.hasMoreTokens())
-        				{
-        					if (l==0)
-        						argqueue = stqd.nextToken();
+		// get options for REPORT, SUBMIT, DELETE
+		String[] option = cl.getArgs();
+		if (option.length != 0) {
+			// PATTERN SIBUS:QUEUE,QUEUE:FILTER
+			StringTokenizer st = new StringTokenizer(option[0], Constants.ARG_DELIMITER);
+			int i = 0;
+			while (st.hasMoreTokens()) {
 
-        					if (l==1)
-        						argqueue1 = stqd.nextToken();
-        					
-        					l++;
-        				}
-        			}
-        		}	
+				if (i == 0) {
+					argsibus = st.nextToken();
+				}
 
-        		if (i==2)
-        		{	
-        			argfilter = st.nextToken();
-        			break;
-        		}	
+				if (i == 1) {
+					argqueue = st.nextToken();
 
-        		i++;
+					if (argqueue.indexOf(Constants.ARG_QUEUE_DEL) != -1) {
+						StringTokenizer stqd = new StringTokenizer(argqueue, Constants.ARG_QUEUE_DEL);
+						int l = 0;
+						while (stqd.hasMoreTokens()) {
+							if (l == 0) {
+								argqueue = stqd.nextToken();
+							}
+
+							if (l == 1) {
+								argqueue1 = stqd.nextToken();
+							}
+
+							l++;
+						}
+					}
+				}
+
+				if (i == 2) {
+					argfilter = st.nextToken();
+					break;
+				}
+
+				i++;
 			}
 		}
 
-        try
-        {
-        	boolean isAction=false;
-        	
-        	overallConf = new Configuration(propertyFile);
-            serverConf = overallConf.getServer();
-            if (serverConf != null)
-            	logger.log(Level.INFO, "use configuration options: " + serverConf.toString());
-            	
-        	host = serverConf.getMessagingHostName().equals("") ? serverConf.getServerHostName() : serverConf.getMessagingHostName();
-            logger.log(Level.INFO, "ACTION: " + sibusAction +  " COMPONENT: " + sibusComponent + " SIBUS: " +  argsibus + " QUEUE: " + argqueue + " FILTER: " + argfilter);
+		try {
+			boolean isAction = false;
 
-            //instance of admin helper
-            adminHelper = new AdminHelper();
+			overallConf = new Configuration(propertyFile);
+			serverConf = overallConf.getServer();
+			if (serverConf != null) {
+				logger.log(Level.INFO, "use configuration options: " + serverConf.toString());
+			}
 
-            //depending if the security is enabled
-            if(serverConf.isSecurityEnabled())
-                adminHelper.connect(serverConf.getServerHostName(), serverConf.getServerPort(), serverConf.getProtocol(), serverConf.getUserName(), serverConf.getPassword(), serverConf.getTrustStoreLocation(), serverConf.getTrustStorePassword(), serverConf.getKeyStoreLocation(), serverConf.getKeyStorePassword());
-            else
-                adminHelper.connect(serverConf.getServerHostName(), serverConf.getServerPort(), serverConf.getProtocol(), null, null, null, null, null, null);
+			host = serverConf.getMessagingHostName().equals("") ? serverConf.getServerHostName() : serverConf
+					.getMessagingHostName();
+			logger.log(Level.INFO, "ACTION: " + sibusAction + " COMPONENT: " + sibusComponent + " SIBUS: " + argsibus
+					+ " QUEUE: " + argqueue + " FILTER: " + argfilter);
 
-            // STATUS:SERVER
-            if (sibusAction.equals(Constants.ACTION_STATUS) && sibusComponent.equals(Constants.HELPER_COMPONENT_SERVER))
-            {	
-            	isAction=true;
-            	actionStatusServer();
-            }
-     
-            // STATUS:SIBUS
-            if (sibusAction.equals(Constants.ACTION_STATUS) && sibusComponent.equals(Constants.HELPER_COMPONENT_BUS))
-            {	
-            	isAction=true;
-            	actionStatusSibus();
-            }
+			// instance of admin helper
+			adminHelper = new AdminHelper();
 
-            //STATUS:WMQLINK
-            if (sibusAction.equals(Constants.ACTION_STATUS) && sibusComponent.equals(Constants.HELPER_COMPONENT_MQLINK))
-            {	
-            	isAction=true;
-            	actionStatusWmqlink();
-            }
-            
-            //STATUS:QUEUE
-            if (sibusAction.equals(Constants.ACTION_STATUS) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE))
-            {	
-            	isAction=true;
-            	if (argfilter.equals(Constants.ARG_FILTER))
-            		actionStatusQueue();
-            	else
-            		actionStatusQueueGreaterZero();
-            }
+			// depending if the security is enabled
+			if (serverConf.isSecurityEnabled()) {
+				adminHelper.connect(serverConf.getServerHostName(), serverConf.getServerPort(), serverConf.getProtocol(),
+						serverConf.getUserName(), serverConf.getPassword(), serverConf.getTrustStoreLocation(), serverConf
+								.getTrustStorePassword(), serverConf.getKeyStoreLocation(), serverConf.getKeyStorePassword());
+			} else {
+				adminHelper.connect(serverConf.getServerHostName(), serverConf.getServerPort(), serverConf.getProtocol(), null,
+						null, null, null, null, null);
+			}
 
-            //RESUBMIT:SE
-            if (sibusAction.equals(Constants.ACTION_RESUBMIT) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE) && argqueue.equals("SE"))
-            {
-            	isAction=true;
-            	if (argsibus.equals(Constants.ARG_FILTER))
-            	{
-        			logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
-        			return(-8);
-            	}
-               	actionResubmitSE();	
-            }
+			// STATUS:SERVER
+			if (sibusAction.equals(Constants.ACTION_STATUS) && sibusComponent.equals(Constants.HELPER_COMPONENT_SERVER)) {
+				isAction = true;
+				actionStatusServer();
+			}
 
-            //CLEAN:QUEUE
-            if (sibusAction.equals(Constants.ACTION_DISCARD) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE))
-            {
-            	isAction = true;
-            	if (argsibus.equals(Constants.ARG_FILTER))
-            	{
-        			logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
-        			return(-8);
-            	}
-            	if (argqueue.equals(Constants.ARG_FILTER))
-            	{
-        			logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument QUEUE name!");
-        			return(-8);
-            	}
-            	actionCleanQueue();
-            }
-            
-            //MOVE:QUEUE
-            if (sibusAction.equals(Constants.ACTION_MOVE) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE))
-            {
-            	isAction=true;
-            	if (argsibus.equals(Constants.ARG_FILTER))
-            	{
-        			logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
-        			return(-8);
-            	}
-            	if (argqueue.equals(Constants.ARG_FILTER))
-            	{
-        			logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SOURCE QUEUE name!");
-        			return(-8);
-            	}
-            	if (argqueue1.equals(Constants.ARG_FILTER))
-            	{
-        			logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument TARGET QUEUE name!");
-        			return(-8);
-            	}
-            	actionMove();
-            }
-            
-            //REPORT:SE
-            if (sibusAction.equals(Constants.ACTION_REPORT) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE) && argqueue.equals("SE"))
-            {
-            	isAction=true;
-            	actionReportSE();
-            }
-            
-            //REPORT:QUEUE:[FILTER]
-            if (sibusAction.equals(Constants.ACTION_REPORT) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE) && !argqueue.equals("SE"))
-            {	
-            	isAction = true;
-            	if (argsibus.equals(Constants.ARG_FILTER))
-            	{
-        			logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
-        			return(-8);
-            	}
+			// STATUS:SIBUS
+			if (sibusAction.equals(Constants.ACTION_STATUS) && sibusComponent.equals(Constants.HELPER_COMPONENT_BUS)) {
+				isAction = true;
+				actionStatusSibus();
+			}
 
-            	if (argqueue.equals(Constants.ARG_FILTER))
-            	{
-        			logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument QUEUE name!");
-        			return(-8);
-            	}
-           		actionReportQueue();
-            }	
-            
-            if (!isAction)
-            {	
-        		System.out.println();
-            	System.out.println(" None of the provided arguments triggered an action. Please validate command line option!");
-            }
-            
-        }
-        catch(Exception e)
-        {
-            System.out.println(Constants.METHOD_ERROR);
-            e.printStackTrace();
-            return -1;
-        }
-        
-        System.out.println();
+			// STATUS:WMQLINK
+			if (sibusAction.equals(Constants.ACTION_STATUS) && sibusComponent.equals(Constants.HELPER_COMPONENT_MQLINK)) {
+				isAction = true;
+				actionStatusWmqlink();
+			}
+
+			// STATUS:QUEUE
+			if (sibusAction.equals(Constants.ACTION_STATUS) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE)) {
+				isAction = true;
+				if (argfilter.equals(Constants.ARG_FILTER)) {
+					actionStatusQueue();
+				} else {
+					actionStatusQueueGreaterZero();
+				}
+			}
+
+			// RESUBMIT:SE
+			if (sibusAction.equals(Constants.ACTION_RESUBMIT) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE)
+					&& argqueue.equals("SE")) {
+				isAction = true;
+				if (argsibus.equals(Constants.ARG_FILTER)) {
+					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
+					return (-8);
+				}
+				actionResubmitSE();
+			}
+
+			// CLEAN:QUEUE
+			if (sibusAction.equals(Constants.ACTION_DISCARD) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE)) {
+				isAction = true;
+				if (argsibus.equals(Constants.ARG_FILTER)) {
+					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
+					return (-8);
+				}
+				if (argqueue.equals(Constants.ARG_FILTER)) {
+					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument QUEUE name!");
+					return (-8);
+				}
+				actionCleanQueue();
+			}
+
+			// MOVE:QUEUE
+			if (sibusAction.equals(Constants.ACTION_MOVE) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE)) {
+				isAction = true;
+				if (argsibus.equals(Constants.ARG_FILTER)) {
+					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
+					return (-8);
+				}
+				if (argqueue.equals(Constants.ARG_FILTER)) {
+					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SOURCE QUEUE name!");
+					return (-8);
+				}
+				if (argqueue1.equals(Constants.ARG_FILTER)) {
+					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument TARGET QUEUE name!");
+					return (-8);
+				}
+				actionMove();
+			}
+
+			// REPORT:SE
+			if (sibusAction.equals(Constants.ACTION_REPORT) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE)
+					&& argqueue.equals("SE")) {
+				isAction = true;
+				actionReportSE();
+			}
+
+			// REPORT:QUEUE:[FILTER]
+			if (sibusAction.equals(Constants.ACTION_REPORT) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE)
+					&& !argqueue.equals("SE")) {
+				isAction = true;
+				if (argsibus.equals(Constants.ARG_FILTER)) {
+					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
+					return (-8);
+				}
+
+				if (argqueue.equals(Constants.ARG_FILTER)) {
+					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument QUEUE name!");
+					return (-8);
+				}
+				actionReportQueue();
+			}
+
+			if (!isAction) {
+				System.out.println();
+				System.out.println(" None of the provided arguments triggered an action. Please validate command line option!");
+			}
+
+		} catch (Exception e) {
+			System.out.println(Constants.METHOD_ERROR);
+			e.printStackTrace();
+			return -1;
+		}
+
+		System.out.println();
 		System.out.println(getSeparatorLine(112));
 		System.out.println(" SIBUS Helper - Done ");
 		System.out.println(getSeparatorLine(112));
-        
-        return 0;
+
+		return 0;
 	}
-	
-	
+
 	/**
 	 * @throws MalformedObjectNameException
 	 * @throws InstanceNotFoundException
@@ -390,15 +378,13 @@ public class SIBUSHelper {
 	 * @throws ReflectionException
 	 * @throws MBeanException
 	 */
-	private void actionStatusServer() throws MalformedObjectNameException, InstanceNotFoundException, NullPointerException, ConnectorException, ReflectionException, MBeanException
-	{
+	private void actionStatusServer() throws MalformedObjectNameException, InstanceNotFoundException, NullPointerException,
+			ConnectorException, ReflectionException, MBeanException {
 		ServerInfo[] servers = adminHelper.getServersInfo();
 		System.out.println();
-		for(int x = 0; x < servers.length; x++)
-		{
-			ServerInfo si = servers[x];
+		for (ServerInfo si : servers) {
 			int fill = si.getServerName().length();
-			System.out.println(getSeparatorLine(30) + " " + si.getServerName() + " " + getSeparatorLine(80-fill));
+			System.out.println(getSeparatorLine(30) + " " + si.getServerName() + " " + getSeparatorLine(80 - fill));
 			System.out.println("  PID(" + si.getServerPid() + ")");
 			System.out.println("  VERSION(" + adminHelper.getServerProductDetails(si) + ")");
 			System.out.println("  STATUS(" + "RUNNING" + ")");
@@ -414,26 +400,25 @@ public class SIBUSHelper {
 	 * @throws ConnectorException
 	 * @throws ConfigServiceException
 	 */
-	private void actionStatusSibus() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException 
-	{
-    	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
-        System.out.println();
-        for(int x = 0; x < mesInfo.length; x++)
-        {
-            BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-        	int fill = busInfo.getName().length();
-        	System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-            System.out.println("  CLUSTER(" +mesInfo[x].getCluster() + ")");
-            System.out.println("  NODE(" +mesInfo[x].getNode() + ")");
-            System.out.println("  ENGINE(" +mesInfo[x].getName() + ")");
-            System.out.println("  STATE(" +mesInfo[x].getState() + ")");
-            System.out.println("  SECURE(" + busInfo.getSecure() + ")");
-            System.out.println("  RELOADENABLED(" + busInfo.getConfigReload() + ")");
-        	System.out.println("  DESCRIPTION(" + busInfo.getDescription() + ")");
-            System.out.println();
-        }
+	private void actionStatusSibus() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException, ConfigServiceException {
+		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
+		System.out.println();
+		for (MEInfo element : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element.getBus());
+			int fill = busInfo.getName().length();
+			System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+			System.out.println("  CLUSTER(" + element.getCluster() + ")");
+			System.out.println("  NODE(" + element.getNode() + ")");
+			System.out.println("  ENGINE(" + element.getName() + ")");
+			System.out.println("  STATE(" + element.getState() + ")");
+			System.out.println("  SECURE(" + busInfo.getSecure() + ")");
+			System.out.println("  RELOADENABLED(" + busInfo.getConfigReload() + ")");
+			System.out.println("  DESCRIPTION(" + busInfo.getDescription() + ")");
+			System.out.println();
+		}
 	}
-	
+
 	/**
 	 * @throws MalformedObjectNameException
 	 * @throws InstanceNotFoundException
@@ -443,74 +428,72 @@ public class SIBUSHelper {
 	 * @throws ConfigServiceException
 	 */
 	@SuppressWarnings("unchecked")
-	private void actionStatusWmqlink() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException 
-	{
-    	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
-        System.out.println();
-        for(int x = 0; x < mesInfo.length; x++)
-        {
-            BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-        	int fill = busInfo.getName().length();
+	private void actionStatusWmqlink() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException, ConfigServiceException {
+		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
+		System.out.println();
+		for (MEInfo element : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element.getBus());
+			int fill = busInfo.getName().length();
 
-            MQLinkInfo[] mqlinks = adminHelper.getMQLinks(mesInfo[x]);
-            for(int y = 0; y < mqlinks.length; y++)
-            {
-            	if (mqlinks[y] != null)
-            	{
-                	System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-            		MQLinkInfo mqlink = mqlinks[y];
-            		System.out.println("  WMQLINK(" + mqlink.getName() + ")");
-            		System.out.println("   QMGR(" + mqlink.getQueueManagerName() + ")");
-            		System.out.println("   STATUS(" + mqlink.getStatus() + ")");
-            		
-                	// sender channel
-            		Object objsend = adminHelper.getMQLinkChannelInfo(mqlink, "getCurrentStatus", true);
-            		if (objsend != null)
-            		{
-            			MQLinkSenderChannelInfo sender = new MQLinkSenderChannelInfo((SIBMQLinkSenderCurrentStatus) objsend);
-            			System.out.println("   SENDER CHANNEL STATUS(" + sender.getStatus() + ")");
-            			System.out.println("     IP(" + sender.getIpAddress() + ")");
-            			System.out.println("     IN DOUBT(" + sender.getInDoubt() + ")");
-            			System.out.println("     REMAININIG SHORT RETRY STARTS(" + sender.getRemainingShortRetryStarts() + ")");
-            			System.out.println("     CHANNEL START TIME(" + adminHelper.getTimestamp(sender.getChannelStartTimeMillis(), Constants.DEFAULT_DATE_FORMAT_TZ) + ")");
-            			System.out.println("     LAST MESSAGE SEND(" + adminHelper.getTimestamp(sender.getLastMessageSendTimeMillis(), Constants.DEFAULT_DATE_FORMAT_TZ) + ")");
-            			System.out.println("     CURRENT SEQ NUMBER(" + sender.getCurrentSequenceNumber() + ")");
-            			System.out.println("     STOP REQUESTED(" + sender.getStopRequested() + ")");
-            			
-            		}
-            		else
-            		{
-            			System.out.println("   SENDER CHANNEL STATUS(" + "STOPPED" + ")");                    			
-            		}
-            		
-                	// receiver channel
-            		Object objrecv = adminHelper.getMQLinkChannelInfo(mqlink, "getCurrentStatus", false);
-                	if (objrecv!= null)
-                	{
-                		ArrayList<Object> list = (ArrayList<Object>) objrecv;
-                		if (!list.isEmpty())
-                		{	
-                			MQLinkReceiverChannelInfo receiver = new MQLinkReceiverChannelInfo((SIBMQLinkReceiverCurrentStatus)list.get(0));
-                			System.out.println("   RECEIVER CHANNEL STATUS(" +  receiver.getStatus() + ")");
-                			System.out.println("     IP(" + receiver.getIpAddress() + ")");
-                			System.out.println("     CHANNEL START TIME(" + adminHelper.getTimestamp(receiver.getChannelStartTimeMillis(), Constants.DEFAULT_DATE_FORMAT_TZ) + ")");
-                			System.out.println("     LAST MESSAGE SEND(" + adminHelper.getTimestamp(receiver.getLastMessageSendTimeMillis(), Constants.DEFAULT_DATE_FORMAT_TZ) + ")");
-                			System.out.println("     CURRENT SEQ NUMBER(" + receiver.getCurrentSequenceNumber() + ")");
-                			System.out.println("     STOP REQUESTED(" + receiver.getStopRequested() + ")");
-                		}
-                		else
-                		{
-                			System.out.println("   RECEIVER CHANNEL STATUS(" + "STOPPED" + ")");                        	
-            			}
-            		} 
-            		else
-            		{
-            			System.out.println("   RECEIVER CHANNEL STATUS(" + "STOPPED" + ")");
-        		}                    		
-            		
-            	} //if mqlinks
-           	} // for mqlinks
-        } // for buses		
+			MQLinkInfo[] mqlinks = adminHelper.getMQLinks(element);
+			for (MQLinkInfo element0 : mqlinks) {
+				if (element0 != null) {
+					System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+					MQLinkInfo mqlink = element0;
+					System.out.println("  WMQLINK(" + mqlink.getName() + ")");
+					System.out.println("   QMGR(" + mqlink.getQueueManagerName() + ")");
+					System.out.println("   STATUS(" + mqlink.getStatus() + ")");
+
+					// sender channel
+					Object objsend = adminHelper.getMQLinkChannelInfo(mqlink, "getCurrentStatus", true);
+					if (objsend != null) {
+						MQLinkSenderChannelInfo sender = new MQLinkSenderChannelInfo((SIBMQLinkSenderCurrentStatus) objsend);
+						System.out.println("   SENDER CHANNEL STATUS(" + sender.getStatus() + ")");
+						System.out.println("     IP(" + sender.getIpAddress() + ")");
+						System.out.println("     IN DOUBT(" + sender.getInDoubt() + ")");
+						System.out.println("     REMAININIG SHORT RETRY STARTS(" + sender.getRemainingShortRetryStarts() + ")");
+						System.out.println("     CHANNEL START TIME("
+								+ adminHelper
+										.getTimestamp(sender.getChannelStartTimeMillis(), Constants.DEFAULT_DATE_FORMAT_TZ)
+								+ ")");
+						System.out.println("     LAST MESSAGE SEND("
+								+ adminHelper.getTimestamp(sender.getLastMessageSendTimeMillis(),
+										Constants.DEFAULT_DATE_FORMAT_TZ) + ")");
+						System.out.println("     CURRENT SEQ NUMBER(" + sender.getCurrentSequenceNumber() + ")");
+						System.out.println("     STOP REQUESTED(" + sender.getStopRequested() + ")");
+
+					} else {
+						System.out.println("   SENDER CHANNEL STATUS(" + "STOPPED" + ")");
+					}
+
+					// receiver channel
+					Object objrecv = adminHelper.getMQLinkChannelInfo(mqlink, "getCurrentStatus", false);
+					if (objrecv != null) {
+						ArrayList<Object> list = (ArrayList<Object>) objrecv;
+						if (!list.isEmpty()) {
+							MQLinkReceiverChannelInfo receiver = new MQLinkReceiverChannelInfo(
+									(SIBMQLinkReceiverCurrentStatus) list.get(0));
+							System.out.println("   RECEIVER CHANNEL STATUS(" + receiver.getStatus() + ")");
+							System.out.println("     IP(" + receiver.getIpAddress() + ")");
+							System.out.println("     CHANNEL START TIME("
+									+ adminHelper.getTimestamp(receiver.getChannelStartTimeMillis(),
+											Constants.DEFAULT_DATE_FORMAT_TZ) + ")");
+							System.out.println("     LAST MESSAGE SEND("
+									+ adminHelper.getTimestamp(receiver.getLastMessageSendTimeMillis(),
+											Constants.DEFAULT_DATE_FORMAT_TZ) + ")");
+							System.out.println("     CURRENT SEQ NUMBER(" + receiver.getCurrentSequenceNumber() + ")");
+							System.out.println("     STOP REQUESTED(" + receiver.getStopRequested() + ")");
+						} else {
+							System.out.println("   RECEIVER CHANNEL STATUS(" + "STOPPED" + ")");
+						}
+					} else {
+						System.out.println("   RECEIVER CHANNEL STATUS(" + "STOPPED" + ")");
+					}
+
+				} // if mqlinks
+			} // for mqlinks
+		} // for buses
 	}
 
 	/**
@@ -521,142 +504,123 @@ public class SIBUSHelper {
 	 * @throws ConnectorException
 	 * @throws ConfigServiceException
 	 */
-	private void actionStatusQueue() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException
-	{
-	      	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
-            System.out.println();
-            String queuename=null;
-            for(int x = 0; x < mesInfo.length; x++)
-            {
-                BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-                MEInfo meInfo = mesInfo[x];
-            	int fill = busInfo.getName().length();
-            	if (argqueue.equals("SE"))
-            	{	
-            		queuename = Constants.SE_QUEUE+meInfo.getName();
-            	}
-            	else
-            		queuename = argqueue;
-     	
-            	//ALL
-            	if (argsibus.equalsIgnoreCase(Constants.ARG_FILTER))
-            	{
-                	System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-                	logger.log(Level.INFO, "Collecting data for SIBUS...Please wait can take time!");
-                	
-                	List<DestinationInfo> destList;
-                	if (argqueue.equals(Constants.ARG_FILTER))
-                		destList = adminHelper.getDestinations(busInfo.getName());
-                	else
-                		destList = adminHelper.getDestinations(busInfo.getName(), queuename);
-                    
-                    if ( destList.isEmpty() ||  destList == null)
-                    {
-                    	System.out.println();
-                    	System.out.println(" DESTINATION(" + "NONE" + ")");
-                    }
-                    else
-                    {
-                        Iterator iter = destList.iterator();
-                        while (iter.hasNext()) {
-                        	DestinationInfo dest = (DestinationInfo) iter.next();
-                        	System.out.println();
-    	                	System.out.println(" DESTINATION(" + dest.getDestinationName() + ")");
-    	                    System.out.println("  TYPE(" + dest.getType() + ")");
-    	                    System.out.println("  DESCRIPTION(" + dest.getDescription() + ")");
-    	                    System.out.println("  TARGET NAME(" + dest.getTargetName() + ")");
-    	                    System.out.println("  TARGET BUS(" + dest.getTargetBus() + ")");
-    	                    
-    	                    String qinfo[] = dest.getQueuePoints();
-    	                    for(int q = 0; q < qinfo.length; q++)
-    	                    {
-    	                    	String queue = qinfo[q];
-    	                    	QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queue);
-    	                    	System.out.println("  QUEUEPOINT(" + qpi.getId() + ")");
-    	                    	System.out.println("   STATE(" + qpi.getState() + ")");
-    	                    	System.out.println("   CURRENT DEPTH(" + qpi.getCurrentDepth() + ")");
-        	                    System.out.println("   HIGH MESSAGE THRESHOLD(" + qpi.getHighMessageThreshold() + ")");
-        	                    System.out.println("   SEND ALLOWED(" + qpi.getSendAllowed() + ")");
+	private void actionStatusQueue() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException, ConfigServiceException {
+		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
+		System.out.println();
+		String queuename = null;
+		for (MEInfo element : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element.getBus());
+			MEInfo meInfo = element;
+			int fill = busInfo.getName().length();
+			if (argqueue.equals("SE")) {
+				queuename = Constants.SE_QUEUE + meInfo.getName();
+			} else {
+				queuename = argqueue;
+			}
 
-    	                    }
+			// ALL
+			if (argsibus.equalsIgnoreCase(Constants.ARG_FILTER)) {
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				logger.log(Level.INFO, "Collecting data for SIBUS...Please wait can take time!");
 
-    	                    String minfo[] = dest.getMediationPoints();
-    	                    for(int y = 0; y < minfo.length; y++)
-    	                    {
-    	                    	String medname = minfo[y];
-    	                    	MediationPointInfo mpi = adminHelper.getMediationPoints(meInfo.getName(), medname);
-    	                    	System.out.println("  MEDIATIONPOINT(" + mpi.getId() + ")");
-    	                    	System.out.println("   STATE(" + mpi.getState() + ")");
-    	                    	System.out.println("   CURRENT DEPTH(" + mpi.getCurrentDepth() + ")");
-        	                    System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
-        	                    System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
-    	                    }
-                        }
-                    }
-                    System.out.println(); 
-            	}
-                // JUST THE SI BUS
-                else if (busInfo.getName().equalsIgnoreCase(argsibus))
-                {
-                	System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-                	logger.log(Level.INFO, "Collecting data for SIBUS...Please wait can take time!");
-                	
-                	List<DestinationInfo> destList;
-                	if (argqueue.equals(Constants.ARG_FILTER))
-                		destList = adminHelper.getDestinations(busInfo.getName());
-                	else
-                		destList = adminHelper.getDestinations(busInfo.getName(), queuename);
+				List<DestinationInfo> destList;
+				if (argqueue.equals(Constants.ARG_FILTER)) {
+					destList = adminHelper.getDestinations(busInfo.getName());
+				} else {
+					destList = adminHelper.getDestinations(busInfo.getName(), queuename);
+				}
 
-                    
-                    if ( destList.isEmpty() || destList == null)
-                    {
-                    	System.out.println();
-                    	System.out.println(" DESTINATION(" + "NONE" + ")");
-                    }
-                    else
-                    {
-                        Iterator iter = destList.iterator();
-                        while (iter.hasNext()) {
-                        	DestinationInfo dest = (DestinationInfo) iter.next();
-                        	System.out.println();
-                        	System.out.println(" DESTINATION(" + dest.getDestinationName() + ")");
-    	                    System.out.println("  TYPE(" + dest.getType() + ")");
-    	                    System.out.println("  DESCRIPTION(" + dest.getDescription() + ")");
-    	                    System.out.println("  TARGET NAME(" + dest.getTargetName() + ")");
-    	                    System.out.println("  TARGET BUS(" + dest.getTargetBus() + ")");
+				if (destList.isEmpty() || destList == null) {
+					System.out.println();
+					System.out.println(" DESTINATION(" + "NONE" + ")");
+				} else {
+					Iterator iter = destList.iterator();
+					while (iter.hasNext()) {
+						DestinationInfo dest = (DestinationInfo) iter.next();
+						System.out.println();
+						System.out.println(" DESTINATION(" + dest.getDestinationName() + ")");
+						System.out.println("  TYPE(" + dest.getType() + ")");
+						System.out.println("  DESCRIPTION(" + dest.getDescription() + ")");
+						System.out.println("  TARGET NAME(" + dest.getTargetName() + ")");
+						System.out.println("  TARGET BUS(" + dest.getTargetBus() + ")");
 
-    	                    
-    	                    String qinfo[] = dest.getQueuePoints();
-    	                    for(int q = 0; q < qinfo.length; q++)
-    	                    {
-    	                    	String queue = qinfo[q];
-    	                    	QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queue);
-    	                    	System.out.println("  QUEUEPOINT(" + qpi.getId() + ")");
-    	                    	System.out.println("   STATE(" + qpi.getState() + ")");
-    	                    	System.out.println("   CURRENT DEPTH(" + qpi.getCurrentDepth() + ")");
-        	                    System.out.println("   HIGH MESSAGE THRESHOLD(" + qpi.getHighMessageThreshold() + ")");
-        	                    System.out.println("   SEND ALLOWED(" + qpi.getSendAllowed() + ")");
+						String qinfo[] = dest.getQueuePoints();
+						for (String queue : qinfo) {
+							QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queue);
+							System.out.println("  QUEUEPOINT(" + qpi.getId() + ")");
+							System.out.println("   STATE(" + qpi.getState() + ")");
+							System.out.println("   CURRENT DEPTH(" + qpi.getCurrentDepth() + ")");
+							System.out.println("   HIGH MESSAGE THRESHOLD(" + qpi.getHighMessageThreshold() + ")");
+							System.out.println("   SEND ALLOWED(" + qpi.getSendAllowed() + ")");
 
-    	                    }
-    	                    
-    	                    String minfo[] = dest.getMediationPoints();
-    	                    for(int y = 0; y < minfo.length; y++)
-    	                    {
-    	                    	String medname = minfo[y];
-    	                    	MediationPointInfo mpi = adminHelper.getMediationPoints(meInfo.getName(), medname);
-    	                    	System.out.println("  MEDIATIONPOINT(" + mpi.getId() + ")");
-    	                    	System.out.println("   STATE(" + mpi.getState() + ")");
-    	                    	System.out.println("   CURRENT DEPTH(" + mpi.getCurrentDepth() + ")");
-        	                    System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
-        	                    System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
-    	                    }
-                        }
-                    }
-                    System.out.println(); 
-                }
-           }
+						}
+
+						String minfo[] = dest.getMediationPoints();
+						for (String medname : minfo) {
+							MediationPointInfo mpi = adminHelper.getMediationPoints(meInfo.getName(), medname);
+							System.out.println("  MEDIATIONPOINT(" + mpi.getId() + ")");
+							System.out.println("   STATE(" + mpi.getState() + ")");
+							System.out.println("   CURRENT DEPTH(" + mpi.getCurrentDepth() + ")");
+							System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
+							System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
+						}
+					}
+				}
+				System.out.println();
+			}
+			// JUST THE SI BUS
+			else if (busInfo.getName().equalsIgnoreCase(argsibus)) {
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				logger.log(Level.INFO, "Collecting data for SIBUS...Please wait can take time!");
+
+				List<DestinationInfo> destList;
+				if (argqueue.equals(Constants.ARG_FILTER)) {
+					destList = adminHelper.getDestinations(busInfo.getName());
+				} else {
+					destList = adminHelper.getDestinations(busInfo.getName(), queuename);
+				}
+
+				if (destList.isEmpty() || destList == null) {
+					System.out.println();
+					System.out.println(" DESTINATION(" + "NONE" + ")");
+				} else {
+					Iterator iter = destList.iterator();
+					while (iter.hasNext()) {
+						DestinationInfo dest = (DestinationInfo) iter.next();
+						System.out.println();
+						System.out.println(" DESTINATION(" + dest.getDestinationName() + ")");
+						System.out.println("  TYPE(" + dest.getType() + ")");
+						System.out.println("  DESCRIPTION(" + dest.getDescription() + ")");
+						System.out.println("  TARGET NAME(" + dest.getTargetName() + ")");
+						System.out.println("  TARGET BUS(" + dest.getTargetBus() + ")");
+
+						String qinfo[] = dest.getQueuePoints();
+						for (String queue : qinfo) {
+							QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queue);
+							System.out.println("  QUEUEPOINT(" + qpi.getId() + ")");
+							System.out.println("   STATE(" + qpi.getState() + ")");
+							System.out.println("   CURRENT DEPTH(" + qpi.getCurrentDepth() + ")");
+							System.out.println("   HIGH MESSAGE THRESHOLD(" + qpi.getHighMessageThreshold() + ")");
+							System.out.println("   SEND ALLOWED(" + qpi.getSendAllowed() + ")");
+
+						}
+
+						String minfo[] = dest.getMediationPoints();
+						for (String medname : minfo) {
+							MediationPointInfo mpi = adminHelper.getMediationPoints(meInfo.getName(), medname);
+							System.out.println("  MEDIATIONPOINT(" + mpi.getId() + ")");
+							System.out.println("   STATE(" + mpi.getState() + ")");
+							System.out.println("   CURRENT DEPTH(" + mpi.getCurrentDepth() + ")");
+							System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
+							System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
+						}
+					}
+				}
+				System.out.println();
+			}
+		}
 	}
-	
 
 	/**
 	 * @throws MalformedObjectNameException
@@ -666,289 +630,265 @@ public class SIBUSHelper {
 	 * @throws ConnectorException
 	 * @throws ConfigServiceException
 	 */
-	private void actionStatusQueueGreaterZero() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException
-	{
-      	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
-        System.out.println();
-        String queuename=null;
-        boolean none=false;
-        for(int x = 0; x < mesInfo.length; x++)
-        {
-            BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-            MEInfo meInfo = mesInfo[x];
-        	int fill = busInfo.getName().length();
-        	if (argqueue.equals("SE"))
-        	{	
-        		queuename = Constants.SE_QUEUE+meInfo.getName();
-        	}
-        	else
-        		queuename = argqueue;
- 	
-        	//ALL
-        	if (argsibus.equalsIgnoreCase(Constants.ARG_FILTER))
-        	{
-            	System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-            	logger.log(Level.INFO, "Collecting data for SIBUS...Please wait can take time!");
-            	
-            	List<DestinationInfo> destList;
-            	if (argqueue.equals(Constants.ARG_FILTER))
-            		destList = adminHelper.getDestinations(busInfo.getName());
-            	else
-            		destList = adminHelper.getDestinations(busInfo.getName(), queuename);
-                
-                if ( destList.isEmpty() || destList == null)
-                {
-                	System.out.println();
-                	System.out.println("  DESTINATION(" + "NONE>0" + ")");
-                }
-                else
-                {
-                    Iterator iter = destList.iterator();
-                    while (iter.hasNext()) 
-                    {
-                    	DestinationInfo dest = (DestinationInfo) iter.next();
-	                    
-	                    String qinfo[] = dest.getQueuePoints();
-	                    for(int q = 0; q < qinfo.length; q++)
-	                    {
-	                    	String queue = qinfo[q];
-	                    	QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queue);
-	                    	
-	                    	Long qd = qpi.getCurrentDepth();
-	                    	
-	                    	if (qd != null && qd > 0)
-	                    	{	
-	                    		none = true;
-	                    		System.out.println();
-	                    		System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
-	                    		System.out.println("   QUEUEPOINT(" + qpi.getId() + ")");
-	                    		System.out.println("   STATE(" + qpi.getState() + ")");
-	                    		System.out.println("   CURRENT DEPTH(" + qpi.getCurrentDepth() + ")");
-	                    		System.out.println("   HIGH MESSAGE THRESHOLD(" + qpi.getHighMessageThreshold() + ")");
-	                    		System.out.println("   SEND ALLOWED(" + qpi.getSendAllowed() + ")");
-	                    	}	
+	private void actionStatusQueueGreaterZero() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException, ConfigServiceException {
+		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
+		System.out.println();
+		String queuename = null;
+		boolean none = false;
+		for (MEInfo element : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element.getBus());
+			MEInfo meInfo = element;
+			int fill = busInfo.getName().length();
+			if (argqueue.equals("SE")) {
+				queuename = Constants.SE_QUEUE + meInfo.getName();
+			} else {
+				queuename = argqueue;
+			}
 
-	                    }
-	                    
-                		String minfo[] = dest.getMediationPoints();
-                		for(int y = 0; y < minfo.length; y++)
-                		{
-                			
-                			String medname = minfo[y];
-                			MediationPointInfo mpi = adminHelper.getMediationPoints(meInfo.getName(), medname);
+			// ALL
+			if (argsibus.equalsIgnoreCase(Constants.ARG_FILTER)) {
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				logger.log(Level.INFO, "Collecting data for SIBUS...Please wait can take time!");
 
-	                    	Long md = mpi.getCurrentDepth();
+				List<DestinationInfo> destList;
+				if (argqueue.equals(Constants.ARG_FILTER)) {
+					destList = adminHelper.getDestinations(busInfo.getName());
+				} else {
+					destList = adminHelper.getDestinations(busInfo.getName(), queuename);
+				}
 
-	                    	if (md != null && md > 0)
-	                    	{
-	                    		none = true;
-	                    		System.out.println();
-	                    		System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
-	                    		System.out.println("   MEDIATIONPOINT(" + mpi.getId() + ")");
-	                    		System.out.println("   STATE(" + mpi.getState() + ")");
-	                    		System.out.println("   CURRENT DEPTH(" + mpi.getCurrentDepth() + ")");
-	                    		System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
-	                    		System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
-	                    	}
-                		}
-                    }
-                    if (!none) 
-                    { 
-                    	System.out.println();
-                    	System.out.println("  DESTINATION(" + "NONE>0" + ")");
-                    }
-                }
-                System.out.println(); 
-        	}
-            // JUST THE SI BUS
-            else if (busInfo.getName().equalsIgnoreCase(argsibus))
-            {
-            	System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-            	logger.log(Level.INFO, "Collecting data for SIBUS...Please wait can take time!");
-            	List<DestinationInfo> destList;
-            	if (argqueue.equals(Constants.ARG_FILTER))
-            		destList = adminHelper.getDestinations(busInfo.getName());
-            	else
-            		destList = adminHelper.getDestinations(busInfo.getName(), queuename);
-                
-                if ( destList.isEmpty() ||  destList == null)
-                {
-                	System.out.println();
-                	System.out.println("  DESTINATION(" + "NONE>0" + ")");
-                }
-                else
-                {
-                    Iterator iter = destList.iterator();
-                    while (iter.hasNext()) 
-                    {
-                    	DestinationInfo dest = (DestinationInfo) iter.next();
-	                    
-	                    String qinfo[] = dest.getQueuePoints();
-	                    for(int q = 0; q < qinfo.length; q++)
-	                    {
-	                    	String queue = qinfo[q];
-	                    	QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queue);
-	                    	
-	                    	Long qd = qpi.getCurrentDepth();
-	                    	
-	                    	if (qd != null && qd > 0)
-	                    	{	
-	                    		none = true;
-	                    		System.out.println();
-	                    		System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
-	                    		System.out.println("   QUEUEPOINT(" + qpi.getId() + ")");
-	                    		System.out.println("   STATE(" + qpi.getState() + ")");
-	                    		System.out.println("   CURRENT DEPTH(" + qpi.getCurrentDepth() + ")");
-	                    		System.out.println("   HIGH MESSAGE THRESHOLD(" + qpi.getHighMessageThreshold() + ")");
-	                    		System.out.println("   SEND ALLOWED(" + qpi.getSendAllowed() + ")");
-	                    	}	
+				if (destList.isEmpty() || destList == null) {
+					System.out.println();
+					System.out.println("  DESTINATION(" + "NONE>0" + ")");
+				} else {
+					Iterator iter = destList.iterator();
+					while (iter.hasNext()) {
+						DestinationInfo dest = (DestinationInfo) iter.next();
 
-	                    }
-	                    
-                		String minfo[] = dest.getMediationPoints();
-                		for(int y = 0; y < minfo.length; y++)
-                		{
-                			
-                			String medname = minfo[y];
-                			MediationPointInfo mpi = adminHelper.getMediationPoints(meInfo.getName(), medname);
+						String qinfo[] = dest.getQueuePoints();
+						for (String queue : qinfo) {
+							QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queue);
 
-	                    	Long md = mpi.getCurrentDepth();
+							Long qd = qpi.getCurrentDepth();
 
-	                    	if (md != null && md > 0)
-	                    	{
-	                    		none = true;
-	                    		System.out.println();
-	                    		System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
-	                    		System.out.println("   MEDIATIONPOINT(" + mpi.getId() + ")");
-	                    		System.out.println("   STATE(" + mpi.getState() + ")");
-	                    		System.out.println("   CURRENT DEPTH(" + mpi.getCurrentDepth() + ")");
-	                    		System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
-	                    		System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
-	                    	}
-                		}
-                    }
+							if (qd != null && qd > 0) {
+								none = true;
+								System.out.println();
+								System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
+								System.out.println("   QUEUEPOINT(" + qpi.getId() + ")");
+								System.out.println("   STATE(" + qpi.getState() + ")");
+								System.out.println("   CURRENT DEPTH(" + qpi.getCurrentDepth() + ")");
+								System.out.println("   HIGH MESSAGE THRESHOLD(" + qpi.getHighMessageThreshold() + ")");
+								System.out.println("   SEND ALLOWED(" + qpi.getSendAllowed() + ")");
+							}
 
-                    if (!none)
-                    {	
-                    	System.out.println();
-                    	System.out.println("  DESTINATION(" + "NONE>0" + ")");
-                    }	
-                }
-                System.out.println();    	            	
-            }
-        }
+						}
+
+						String minfo[] = dest.getMediationPoints();
+						for (String medname : minfo) {
+
+							MediationPointInfo mpi = adminHelper.getMediationPoints(meInfo.getName(), medname);
+
+							Long md = mpi.getCurrentDepth();
+
+							if (md != null && md > 0) {
+								none = true;
+								System.out.println();
+								System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
+								System.out.println("   MEDIATIONPOINT(" + mpi.getId() + ")");
+								System.out.println("   STATE(" + mpi.getState() + ")");
+								System.out.println("   CURRENT DEPTH(" + mpi.getCurrentDepth() + ")");
+								System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
+								System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
+							}
+						}
+					}
+					if (!none) {
+						System.out.println();
+						System.out.println("  DESTINATION(" + "NONE>0" + ")");
+					}
+				}
+				System.out.println();
+			}
+			// JUST THE SI BUS
+			else if (busInfo.getName().equalsIgnoreCase(argsibus)) {
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				logger.log(Level.INFO, "Collecting data for SIBUS...Please wait can take time!");
+				List<DestinationInfo> destList;
+				if (argqueue.equals(Constants.ARG_FILTER)) {
+					destList = adminHelper.getDestinations(busInfo.getName());
+				} else {
+					destList = adminHelper.getDestinations(busInfo.getName(), queuename);
+				}
+
+				if (destList.isEmpty() || destList == null) {
+					System.out.println();
+					System.out.println("  DESTINATION(" + "NONE>0" + ")");
+				} else {
+					Iterator iter = destList.iterator();
+					while (iter.hasNext()) {
+						DestinationInfo dest = (DestinationInfo) iter.next();
+
+						String qinfo[] = dest.getQueuePoints();
+						for (String queue : qinfo) {
+							QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queue);
+
+							Long qd = qpi.getCurrentDepth();
+
+							if (qd != null && qd > 0) {
+								none = true;
+								System.out.println();
+								System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
+								System.out.println("   QUEUEPOINT(" + qpi.getId() + ")");
+								System.out.println("   STATE(" + qpi.getState() + ")");
+								System.out.println("   CURRENT DEPTH(" + qpi.getCurrentDepth() + ")");
+								System.out.println("   HIGH MESSAGE THRESHOLD(" + qpi.getHighMessageThreshold() + ")");
+								System.out.println("   SEND ALLOWED(" + qpi.getSendAllowed() + ")");
+							}
+
+						}
+
+						String minfo[] = dest.getMediationPoints();
+						for (String medname : minfo) {
+
+							MediationPointInfo mpi = adminHelper.getMediationPoints(meInfo.getName(), medname);
+
+							Long md = mpi.getCurrentDepth();
+
+							if (md != null && md > 0) {
+								none = true;
+								System.out.println();
+								System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
+								System.out.println("   MEDIATIONPOINT(" + mpi.getId() + ")");
+								System.out.println("   STATE(" + mpi.getState() + ")");
+								System.out.println("   CURRENT DEPTH(" + mpi.getCurrentDepth() + ")");
+								System.out.println("   HIGH MESSAGE THRESHOLD(" + mpi.getHighMessageThreshold() + ")");
+								System.out.println("   SEND ALLOWED(" + mpi.getSendAllowed() + ")");
+							}
+						}
+					}
+
+					if (!none) {
+						System.out.println();
+						System.out.println("  DESTINATION(" + "NONE>0" + ")");
+					}
+				}
+				System.out.println();
+			}
+		}
 	}
-	
+
 	/**
-	 * @throws ConnectorException 
-	 * @throws ReflectionException 
-	 * @throws MBeanException 
-	 * @throws InstanceNotFoundException 
-	 * @throws MalformedObjectNameException 
-	 * @throws ConfigServiceException 
-	 * @throws DestinationNotFoundException 
-	 * @throws MessagingOperationFailedException 
+	 * @throws ConnectorException
+	 * @throws ReflectionException
+	 * @throws MBeanException
+	 * @throws InstanceNotFoundException
+	 * @throws MalformedObjectNameException
+	 * @throws ConfigServiceException
+	 * @throws DestinationNotFoundException
+	 * @throws MessagingOperationFailedException
 	 * 
 	 */
-	private long actionCleanQueue() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException, DestinationNotFoundException
-	{
-    	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
-    	String queuename=null;
-        for(int x = 0; x < mesInfo.length; x++)
-        {
-            BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-            MEInfo meInfo = mesInfo[x];
-            int fill = busInfo.getName().length();
-        	if (argqueue.equals("SE"))
-        		queuename = Constants.SE_QUEUE+meInfo.getName();
-        	else
-        		queuename = argqueue;
+	private long actionCleanQueue() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException,
+			DestinationNotFoundException {
+		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
+		String queuename = null;
+		for (MEInfo element0 : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element0.getBus());
+			MEInfo meInfo = element0;
+			int fill = busInfo.getName().length();
+			if (argqueue.equals("SE")) {
+				queuename = Constants.SE_QUEUE + meInfo.getName();
+			} else {
+				queuename = argqueue;
+			}
 
-        	if (busInfo.getName().equalsIgnoreCase(argsibus))
-        	{	
-            	System.out.println();
-        		System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-                MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
-                QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queuename);
-                long toDelete = qpi.getCurrentDepth();              
-        		
-        		//all messages
-        		if (argfilter.equals(Constants.ARG_FILTER))
-        		{
-        			if (toDelete == 0)
-        			{
-            			System.out.println();
-        				System.out.println(" QUEUEPOINT(" + queuename + ")");
-        				System.out.println("  MESSAGE COUNT(" +  toDelete + ")");
-        				System.out.println("  MESSAGE PURGED(" +  0 + ")");
-        				return 0;
-        			}
-        			
-        			//Check if the commandline has a --noStop option
-        			if (!cl.hasOption(CommandOptions.noStop) && toDelete > 0 ) 
-        			{
-        				String q = "Do you want to continue and purge " + toDelete + " messages (y/n)?";
-        				boolean result = askYesNo(q);
-        				if (!result) return 0;
-        			}
-        			logger.log(Level.INFO, "Deleting data on queue "+ argqueue + ". Please wait can take time!");
-        			long deleted = messagingHelper.clearQueue(busInfo.getName(), meInfo.getName(), queuename, null, toDelete);
-        			
-        			System.out.println();        			
-        			System.out.println(" QUEUEPOINT(" + queuename + ")");
-        			System.out.println("  MESSAGE COUNT(" +  toDelete + ")");
-        			System.out.println("  MESSAGE PURGED(" +  deleted + ")");
-        			return deleted;
-        		}
-        		//single message
-                else
-                {
-            		if (toDelete == 0)
-        			{
-            			System.out.println();
-            			System.out.println(" QUEUEPOINT(" + queuename + ")");
-        				System.out.println("  MESSAGE COUNT(" +  toDelete + ")");
-        				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");
-        				System.out.println("  MESSAGE FOUND(" +  0 + ")");
-        				System.out.println("  MESSAGE PURGED(" +  0 + ")");
-        				return 0;
-        			}
+			if (busInfo.getName().equalsIgnoreCase(argsibus)) {
+				System.out.println();
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf
+						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
+				QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queuename);
+				long toDelete = qpi.getCurrentDepth();
 
-                	MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), queuename, argfilter);
-            		if (element == null)
-            		{
-            			System.out.println();
-            			System.out.println(" QUEUEPOINT(" + queuename + ")");
-            			System.out.println("  MESSAGE COUNT(" +  toDelete + ")");
-        				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");
-        				System.out.println("  MESSAGE FOUND(" +  0 + ")");
-        				System.out.println("  MESSAGE PURGED(" +  0 + ")");
-            			return 0;
-            		}
+				// all messages
+				if (argfilter.equals(Constants.ARG_FILTER)) {
+					if (toDelete == 0) {
+						System.out.println();
+						System.out.println(" QUEUEPOINT(" + queuename + ")");
+						System.out.println("  MESSAGE COUNT(" + toDelete + ")");
+						System.out.println("  MESSAGE PURGED(" + 0 + ")");
+						return 0;
+					}
 
-            		//Check if the commandline has a --noStop option
-        			if (!cl.hasOption(CommandOptions.noStop) && toDelete > 0 ) 
-        			{
-        				String q = "Do you want to continue and purge " + element.getApiMessageId() + " messages (y/n)?";
-        				boolean result = askYesNo(q);
-        				if (!result) return 0;
-        			}
-        			logger.log(Level.INFO, "Deleting data on queue "+ argqueue + ". Please wait can take time!");
-        			long deleted = messagingHelper.clearQueue(busInfo.getName(), meInfo.getName(), queuename, argfilter, toDelete);
-        			
-        			System.out.println();        			
-        			System.out.println(" QUEUEPOINT(" + queuename + ")");
-        			System.out.println("  MESSAGE COUNT(" +  toDelete + ")");
-    				System.out.println("  MESSAGE SELECTOR(" +  element.getApiMessageId() + ")");
-    				System.out.println("  MESSAGE FOUND(" +  deleted + ")");
-        			System.out.println("  MESSAGE PURGED(" +  deleted + ")");
-        			return deleted;
-                }
-        }
-      }
-      return 0; 
+					// Check if the commandline has a --noStop option
+					if (!cl.hasOption(CommandOptions.noStop) && toDelete > 0) {
+						String q = "Do you want to continue and purge " + toDelete + " messages (y/n)?";
+						boolean result = askYesNo(q);
+						if (!result) {
+							return 0;
+						}
+					}
+					logger.log(Level.INFO, "Deleting data on queue " + argqueue + ". Please wait can take time!");
+					long deleted = messagingHelper.clearQueue(busInfo.getName(), meInfo.getName(), queuename, null, toDelete);
+
+					System.out.println();
+					System.out.println(" QUEUEPOINT(" + queuename + ")");
+					System.out.println("  MESSAGE COUNT(" + toDelete + ")");
+					System.out.println("  MESSAGE PURGED(" + deleted + ")");
+					return deleted;
+				}
+				// single message
+				else {
+					if (toDelete == 0) {
+						System.out.println();
+						System.out.println(" QUEUEPOINT(" + queuename + ")");
+						System.out.println("  MESSAGE COUNT(" + toDelete + ")");
+						System.out.println("  MESSAGE SELECTOR(ID:" + argfilter + ")");
+						System.out.println("  MESSAGE FOUND(" + 0 + ")");
+						System.out.println("  MESSAGE PURGED(" + 0 + ")");
+						return 0;
+					}
+
+					MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), queuename,
+							argfilter);
+					if (element == null) {
+						System.out.println();
+						System.out.println(" QUEUEPOINT(" + queuename + ")");
+						System.out.println("  MESSAGE COUNT(" + toDelete + ")");
+						System.out.println("  MESSAGE SELECTOR(ID:" + argfilter + ")");
+						System.out.println("  MESSAGE FOUND(" + 0 + ")");
+						System.out.println("  MESSAGE PURGED(" + 0 + ")");
+						return 0;
+					}
+
+					// Check if the commandline has a --noStop option
+					if (!cl.hasOption(CommandOptions.noStop) && toDelete > 0) {
+						String q = "Do you want to continue and purge " + element.getApiMessageId() + " messages (y/n)?";
+						boolean result = askYesNo(q);
+						if (!result) {
+							return 0;
+						}
+					}
+					logger.log(Level.INFO, "Deleting data on queue " + argqueue + ". Please wait can take time!");
+					long deleted = messagingHelper.clearQueue(busInfo.getName(), meInfo.getName(), queuename, argfilter,
+							toDelete);
+
+					System.out.println();
+					System.out.println(" QUEUEPOINT(" + queuename + ")");
+					System.out.println("  MESSAGE COUNT(" + toDelete + ")");
+					System.out.println("  MESSAGE SELECTOR(" + element.getApiMessageId() + ")");
+					System.out.println("  MESSAGE FOUND(" + deleted + ")");
+					System.out.println("  MESSAGE PURGED(" + deleted + ")");
+					return deleted;
+				}
+			}
+		}
+		return 0;
 	}
-	
+
 	/**
 	 * @throws IOException
 	 * @throws MalformedObjectNameException
@@ -957,133 +897,130 @@ public class SIBUSHelper {
 	 * @throws ReflectionException
 	 * @throws ConnectorException
 	 * @throws ConfigServiceException
-	 * @throws MessagingOperationFailedException 
+	 * @throws MessagingOperationFailedException
 	 */
-	private void actionResubmitSE() throws IOException, MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException
-	{
+	private void actionResubmitSE() throws IOException, MalformedObjectNameException, InstanceNotFoundException,
+			MBeanException, ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException {
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 		Date currentTime = GregorianCalendar.getInstance().getTime();
-		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase()+ "_" + getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
+		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_"
+				+ getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
 		String path = cl.getOptionValue(CommandOptions.reportDirectory);
-		
+
 		// Create file writer instances
 		logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the messages.");
 		MessageFileWriter fileWriter = new MessageFileWriter(path, filename + ".csv");
-		
-    	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
-    	for(int x = 0; x < mesInfo.length; x++)
-        {
-            BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-            MEInfo meInfo = mesInfo[x];
-            int fill = busInfo.getName().length();
-            argqueue = Constants.SE_QUEUE+meInfo.getName();
-            
-        	if (busInfo.getName().equalsIgnoreCase(argsibus))
-        	{	
-        		System.out.println();
-        		System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-                MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
-                QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), argqueue);
-                long toMove = qpi.getCurrentDepth();              
-        		
-        		//all messages
-        		if (argfilter.equals(Constants.ARG_FILTER))
-        		{
-        			if (toMove == 0)
-        			{
-        				System.out.println();
-        				System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
-        				System.out.println("  MESSAGE TO MOVE(" +  toMove + ")");
-        				return;
-        			}
-        			
-        			//Check if the commandline has a --noStop option
-        			if (!cl.hasOption(CommandOptions.noStop) && toMove > 0 ) 
-        			{
-        				String q = "Do you want to continue and resubmit " + toMove + " messages (y/n)?";
-        				boolean result = askYesNo(q);
-        				if (!result) return;
-        			}
-        			logger.log(Level.INFO, "Moving data from queue "+ argqueue + ". Please wait can take time!");
-        			List <MessageInfo> list = messagingHelper.moveExceptionToDestination(busInfo.getName(), meInfo.getName(), argqueue, null, toMove);
-        			if (!list.isEmpty())
-            		{	
-                		logger.log(Level.FINE, "Writing messages to file...Please wait");
-                		fileWriter.writeSEHeader();
-                		Iterator iter = list.iterator();
-                		while (iter.hasNext()) 
-                		{
-        					MessageInfo element = (MessageInfo) iter.next();
-        					fileWriter.writeCSVSEMessage(element, argqueue);
-        				}
-            		}	
-        			
-        			System.out.println();
-    				System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
-    				System.out.println("  MESSAGE TO MOVE(" +  toMove + ")");
-    				System.out.println("  MESSAGE MOVED(" +  list.size() + ")");
 
-        		}
-        		//single message
-                else
-                {
-        			if (toMove == 0)
-        			{
-        				System.out.println();
-        				System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
-        				System.out.println("  MESSAGE TO MOVE(" +  toMove + ")");
-        				return;
-        			}
-                	
-                	MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), argqueue, argfilter);
-            		if (element == null)
-            		{
-        				System.out.println();
-        				System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
-        				System.out.println("  MESSAGE TO MOVE(" + 0 + ")");
-        				System.out.println("  MESSAGE SELECTOR(ID:" + argfilter + ")");
-        				System.out.println("  MESSAGE FOUND(" +  0 + ")");
-        				return;
-            		}
-                	
-                	//Check if the commandline has a --noStop option
-        			if (!cl.hasOption(CommandOptions.noStop) && toMove > 0 ) 
-        			{
-        				String q = "Do you want to continue and resubmit " + element.getApiMessageId() + " messages (y/n)?";
-        				boolean result = askYesNo(q);
-        				if (!result) return;
-        			}
-        			
-        			logger.log(Level.INFO, "Moving data from queue "+ argqueue + ". Please wait can take time!");
-            		List <MessageInfo> list = messagingHelper.moveExceptionToDestination(busInfo.getName(),meInfo.getName(), argqueue, argfilter, 1);
+		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
+		for (MEInfo element0 : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element0.getBus());
+			MEInfo meInfo = element0;
+			int fill = busInfo.getName().length();
+			argqueue = Constants.SE_QUEUE + meInfo.getName();
 
-        			if (!list.isEmpty())
-            		{	
-                		logger.log(Level.FINE, "Writing messages to file...Please wait");
-                		fileWriter.writeSEHeader();
-                		Iterator iter = list.iterator();
-                		while (iter.hasNext()) 
-                		{
-        					MessageInfo meinfo = (MessageInfo) iter.next();
-        					fileWriter.writeCSVSEMessage(meinfo, argqueue);
-        				}
-            		}	
-          		
-        			System.out.println();
-            		System.out.println(" EXCEPTIONPOINT(" + Constants.SE_QUEUE+meInfo.getName() + ")");
-    				System.out.println("  MESSAGE TO MOVE(" +  1 + ")");
-    				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");
-    				System.out.println("  MESSAGE FOUND(" +  list.size() + ")");
-            		System.out.println("  MESSAGE MOVED(" +  list.size() + ")");
-        			System.out.println();
-                }
-        }
-      }
-    	if (fileWriter != null)
-        	fileWriter.close();
-    	return;
+			if (busInfo.getName().equalsIgnoreCase(argsibus)) {
+				System.out.println();
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf
+						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
+				QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), argqueue);
+				long toMove = qpi.getCurrentDepth();
+
+				// all messages
+				if (argfilter.equals(Constants.ARG_FILTER)) {
+					if (toMove == 0) {
+						System.out.println();
+						System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
+						System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
+						return;
+					}
+
+					// Check if the commandline has a --noStop option
+					if (!cl.hasOption(CommandOptions.noStop) && toMove > 0) {
+						String q = "Do you want to continue and resubmit " + toMove + " messages (y/n)?";
+						boolean result = askYesNo(q);
+						if (!result) {
+							return;
+						}
+					}
+					logger.log(Level.INFO, "Moving data from queue " + argqueue + ". Please wait can take time!");
+					List<MessageInfo> list = messagingHelper.moveExceptionToDestination(busInfo.getName(), meInfo.getName(),
+							argqueue, null, toMove);
+					if (!list.isEmpty()) {
+						logger.log(Level.FINE, "Writing messages to file...Please wait");
+						fileWriter.writeSEHeader();
+						Iterator iter = list.iterator();
+						while (iter.hasNext()) {
+							MessageInfo element = (MessageInfo) iter.next();
+							fileWriter.writeCSVSEMessage(element, argqueue);
+						}
+					}
+
+					System.out.println();
+					System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
+					System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
+					System.out.println("  MESSAGE MOVED(" + list.size() + ")");
+
+				}
+				// single message
+				else {
+					if (toMove == 0) {
+						System.out.println();
+						System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
+						System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
+						return;
+					}
+
+					MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), argqueue,
+							argfilter);
+					if (element == null) {
+						System.out.println();
+						System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
+						System.out.println("  MESSAGE TO MOVE(" + 0 + ")");
+						System.out.println("  MESSAGE SELECTOR(ID:" + argfilter + ")");
+						System.out.println("  MESSAGE FOUND(" + 0 + ")");
+						return;
+					}
+
+					// Check if the commandline has a --noStop option
+					if (!cl.hasOption(CommandOptions.noStop) && toMove > 0) {
+						String q = "Do you want to continue and resubmit " + element.getApiMessageId() + " messages (y/n)?";
+						boolean result = askYesNo(q);
+						if (!result) {
+							return;
+						}
+					}
+
+					logger.log(Level.INFO, "Moving data from queue " + argqueue + ". Please wait can take time!");
+					List<MessageInfo> list = messagingHelper.moveExceptionToDestination(busInfo.getName(), meInfo.getName(),
+							argqueue, argfilter, 1);
+
+					if (!list.isEmpty()) {
+						logger.log(Level.FINE, "Writing messages to file...Please wait");
+						fileWriter.writeSEHeader();
+						Iterator iter = list.iterator();
+						while (iter.hasNext()) {
+							MessageInfo meinfo = (MessageInfo) iter.next();
+							fileWriter.writeCSVSEMessage(meinfo, argqueue);
+						}
+					}
+
+					System.out.println();
+					System.out.println(" EXCEPTIONPOINT(" + Constants.SE_QUEUE + meInfo.getName() + ")");
+					System.out.println("  MESSAGE TO MOVE(" + 1 + ")");
+					System.out.println("  MESSAGE SELECTOR(ID:" + argfilter + ")");
+					System.out.println("  MESSAGE FOUND(" + list.size() + ")");
+					System.out.println("  MESSAGE MOVED(" + list.size() + ")");
+					System.out.println();
+				}
+			}
+		}
+		if (fileWriter != null) {
+			fileWriter.close();
+		}
+		return;
 	}
-	
+
 	/**
 	 * @return
 	 * @throws MalformedObjectNameException
@@ -1095,114 +1032,116 @@ public class SIBUSHelper {
 	 * @throws MessagingOperationFailedException
 	 * @throws DestinationNotFoundException
 	 */
-	private long actionMove() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException, DestinationNotFoundException
-	{
-    	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
-    	String queuename = null;
-    	String queuename1 = null;
-    	for(int x = 0; x < mesInfo.length; x++)
-        {
-            BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-            MEInfo meInfo = mesInfo[x];
-            int fill = busInfo.getName().length();
-            if (argqueue.equals("SE")) 
-            	queuename = Constants.SE_QUEUE+meInfo.getName();
-            else
-            	queuename = argqueue;
+	private long actionMove() throws MalformedObjectNameException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException,
+			DestinationNotFoundException {
+		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
+		String queuename = null;
+		String queuename1 = null;
+		for (MEInfo element0 : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element0.getBus());
+			MEInfo meInfo = element0;
+			int fill = busInfo.getName().length();
+			if (argqueue.equals("SE")) {
+				queuename = Constants.SE_QUEUE + meInfo.getName();
+			} else {
+				queuename = argqueue;
+			}
 
-            if (argqueue1.equals("SE")) 
-            	queuename1 = Constants.SE_QUEUE+meInfo.getName();
-            else
-            	queuename1 = argqueue1;
+			if (argqueue1.equals("SE")) {
+				queuename1 = Constants.SE_QUEUE + meInfo.getName();
+			} else {
+				queuename1 = argqueue1;
+			}
 
-        	if (busInfo.getName().equalsIgnoreCase(argsibus))
-        	{	
-        		System.out.println();
-        		System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-                MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
-                QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queuename);
-                long toMove = qpi.getCurrentDepth();              
-        		
-        		//all messages
-        		if (argfilter.equals(Constants.ARG_FILTER))
-        		{
-        			if (toMove == 0)
-        			{
-        				System.out.println();
-        				System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
-        				System.out.println("  MESSAGE TO MOVE(" +  toMove + ")");
-        				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
-        				System.out.println("  MESSAGE MOVED(" +  toMove + ")");
-        				return 0;
-        			}
-        			
-        			//Check if the commandline has a --noStop option
-        			if (!cl.hasOption(CommandOptions.noStop) && toMove > 0 ) 
-        			{
-        				String q = "Do you want to continue and move " + toMove + " messages (y/n)?";
-        				boolean result = askYesNo(q);
-        				if (!result) return 0;
-        			}
-        			logger.log(Level.INFO, "Moving data to queue "+ argqueue1 + ". Please wait can take time!");
-        			long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1, null, toMove);
-        			System.out.println();
-    				System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
-    				System.out.println("  MESSAGE TO MOVE(" +  toMove + ")");
-    				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
-    				System.out.println("  MESSAGE MOVED(" +  moved + ")");
-    				return moved;
-        		}
-        		//single message
-                else
-                {
-        			if (toMove == 0)
-        			{
-        				System.out.println();
-        				System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
-        				System.out.println("  MESSAGE TO MOVE(" +  0 + ")");
-        				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");        				
-        				System.out.println("  MESSAGE FOUND(" +  0 + ")");
-        				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
-        				System.out.println("  MESSAGE MOVED(" +  0 + ")");
-        				return 0;
-        			}
-                	
-                	MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), queuename, argfilter);
-            		if (element == null)
-            		{
-        				System.out.println();
-        				System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
-        				System.out.println("  MESSAGE TO MOVE(" +  0 + ")");
-        				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");
-        				System.out.println("  MESSAGE FOUND(" +  0 + ")");
-        				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
-        				System.out.println("  MESSAGE MOVED(" +  0 + ")");
-        				return 0;
-            		}
-                	
-                	//Check if the commandline has a --noStop option
-        			if (!cl.hasOption(CommandOptions.noStop) && toMove > 0 ) 
-        			{
-        				String q = "Do you want to continue and move " + element.getApiMessageId() + " messages (y/n)?";
-        				boolean result = askYesNo(q);
-        				if (!result) return 0;
-        			}
-        			logger.log(Level.INFO, "Moving data to queue "+ argqueue1 + ". Please wait can take time!");
-        			long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1, argfilter, 1);
-        			
-        			System.out.println();
-        			System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
-    				System.out.println("  MESSAGE COUNT(" +  toMove + ")");
-    				System.out.println("  MESSAGE SELECTOR(ID:" +  argfilter + ")");
-    				System.out.println("  MESSAGE TO MOVE(" +  1 + ")");
-    				System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
-    				System.out.println("  MESSAGE MOVED(" +  moved + ")");
-    				System.out.println();
-    				return moved;
-                }
-        }
-      }
-      return 0; 
+			if (busInfo.getName().equalsIgnoreCase(argsibus)) {
+				System.out.println();
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf
+						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
+				QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queuename);
+				long toMove = qpi.getCurrentDepth();
+
+				// all messages
+				if (argfilter.equals(Constants.ARG_FILTER)) {
+					if (toMove == 0) {
+						System.out.println();
+						System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
+						System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
+						System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
+						System.out.println("  MESSAGE MOVED(" + toMove + ")");
+						return 0;
+					}
+
+					// Check if the commandline has a --noStop option
+					if (!cl.hasOption(CommandOptions.noStop) && toMove > 0) {
+						String q = "Do you want to continue and move " + toMove + " messages (y/n)?";
+						boolean result = askYesNo(q);
+						if (!result) {
+							return 0;
+						}
+					}
+					logger.log(Level.INFO, "Moving data to queue " + argqueue1 + ". Please wait can take time!");
+					long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1, null,
+							toMove);
+					System.out.println();
+					System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
+					System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
+					System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
+					System.out.println("  MESSAGE MOVED(" + moved + ")");
+					return moved;
+				}
+				// single message
+				else {
+					if (toMove == 0) {
+						System.out.println();
+						System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
+						System.out.println("  MESSAGE TO MOVE(" + 0 + ")");
+						System.out.println("  MESSAGE SELECTOR(ID:" + argfilter + ")");
+						System.out.println("  MESSAGE FOUND(" + 0 + ")");
+						System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
+						System.out.println("  MESSAGE MOVED(" + 0 + ")");
+						return 0;
+					}
+
+					MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), queuename,
+							argfilter);
+					if (element == null) {
+						System.out.println();
+						System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
+						System.out.println("  MESSAGE TO MOVE(" + 0 + ")");
+						System.out.println("  MESSAGE SELECTOR(ID:" + argfilter + ")");
+						System.out.println("  MESSAGE FOUND(" + 0 + ")");
+						System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
+						System.out.println("  MESSAGE MOVED(" + 0 + ")");
+						return 0;
+					}
+
+					// Check if the commandline has a --noStop option
+					if (!cl.hasOption(CommandOptions.noStop) && toMove > 0) {
+						String q = "Do you want to continue and move " + element.getApiMessageId() + " messages (y/n)?";
+						boolean result = askYesNo(q);
+						if (!result) {
+							return 0;
+						}
+					}
+					logger.log(Level.INFO, "Moving data to queue " + argqueue1 + ". Please wait can take time!");
+					long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1,
+							argfilter, 1);
+
+					System.out.println();
+					System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
+					System.out.println("  MESSAGE COUNT(" + toMove + ")");
+					System.out.println("  MESSAGE SELECTOR(ID:" + argfilter + ")");
+					System.out.println("  MESSAGE TO MOVE(" + 1 + ")");
+					System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
+					System.out.println("  MESSAGE MOVED(" + moved + ")");
+					System.out.println();
+					return moved;
+				}
+			}
+		}
+		return 0;
 	}
 
 	/**
@@ -1215,11 +1154,12 @@ public class SIBUSHelper {
 	 * @throws ConfigServiceException
 	 * @throws MessagingOperationFailedException
 	 */
-	private void actionReportSE() throws IOException, MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException
-	{
+	private void actionReportSE() throws IOException, MalformedObjectNameException, InstanceNotFoundException, MBeanException,
+			ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException {
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
 		Date currentTime = GregorianCalendar.getInstance().getTime();
-		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase()+ "_" + getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
+		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_"
+				+ getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
 		String path = cl.getOptionValue(CommandOptions.reportDirectory);
 		boolean isHeader = false;
 
@@ -1229,74 +1169,73 @@ public class SIBUSHelper {
 
 		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
 		System.out.println();
-		
-		for(int x = 0; x < mesInfo.length; x++)
-        {
-            BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-            MEInfo meInfo = mesInfo[x];
-        	int fill = busInfo.getName().length();
-   	
-        	//ALL SIBUSES
-        	if (argsibus.equalsIgnoreCase(Constants.ARG_FILTER))
-        	{
-        		System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-        		MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
-            	logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
-        		List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), Constants.SE_QUEUE+meInfo.getName());
 
-        		if (!list.isEmpty())
-        		{	
-        			logger.log(Level.FINE, "Writing messages to file...Please wait");
-            		if (!isHeader)
-            		{	
-            			fileWriter.writeHeader();
-            			isHeader= true;
-            		}	
-            		Iterator iter = list.iterator();
-            		while (iter.hasNext()) {
-						MessageInfo element = (MessageInfo) iter.next();
-						fileWriter.writeCSVMessage(element, Constants.SE_QUEUE+meInfo.getName());
+		for (MEInfo element0 : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element0.getBus());
+			MEInfo meInfo = element0;
+			int fill = busInfo.getName().length();
+
+			// ALL SIBUSES
+			if (argsibus.equalsIgnoreCase(Constants.ARG_FILTER)) {
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf
+						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
+				logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
+				List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), Constants.SE_QUEUE
+						+ meInfo.getName());
+
+				if (!list.isEmpty()) {
+					logger.log(Level.FINE, "Writing messages to file...Please wait");
+					if (!isHeader) {
+						fileWriter.writeHeader();
+						isHeader = true;
 					}
-        		}	
-        		System.out.println();
-        		System.out.println(" EXCEPTIONPOINT(" + Constants.SE_QUEUE+meInfo.getName() + ")");
-        		System.out.println("  MESSAGE COUNT(" +  list.size() + ")");
-        		System.out.println("  BROWSED(" +  "DONE" + ")");
-        		System.out.println();
-        	}
-        	//JUST FOR THE SIBUS
-        	else if (busInfo.getName().equalsIgnoreCase(argsibus))
-        	{
-        		System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-        		MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
-            	logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
-        		List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), Constants.SE_QUEUE+meInfo.getName());
-
-        		logger.log(Level.FINE, "Writing messages to file...Please wait");
-        		
-        		if (!isHeader)
-        		{	
-        			fileWriter.writeHeader();
-        			isHeader = true;
-        		}	
-        		Iterator iter = list.iterator();
-        		while (iter.hasNext()) {
-					MessageInfo element = (MessageInfo) iter.next();
-					fileWriter.writeCSVMessage(element, Constants.SE_QUEUE+meInfo.getName());
+					Iterator iter = list.iterator();
+					while (iter.hasNext()) {
+						MessageInfo element = (MessageInfo) iter.next();
+						fileWriter.writeCSVMessage(element, Constants.SE_QUEUE + meInfo.getName());
+					}
 				}
-        		
-        		System.out.println();
-        		System.out.println(" EXCEPTIONPOINT(" + Constants.SE_QUEUE+meInfo.getName() + ")");
-        		System.out.println("  MESSAGE COUNT(" +  list.size() + ")");
-        		System.out.println("  BROWSED(" +  "DONE" + ")");
-        		System.out.println();
-        		System.out.println();
-        	}
-        }  
-        if (fileWriter != null)
-        	fileWriter.close();
+				System.out.println();
+				System.out.println(" EXCEPTIONPOINT(" + Constants.SE_QUEUE + meInfo.getName() + ")");
+				System.out.println("  MESSAGE COUNT(" + list.size() + ")");
+				System.out.println("  BROWSED(" + "DONE" + ")");
+				System.out.println();
+			}
+			// JUST FOR THE SIBUS
+			else if (busInfo.getName().equalsIgnoreCase(argsibus)) {
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf
+						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
+				logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
+				List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), Constants.SE_QUEUE
+						+ meInfo.getName());
+
+				logger.log(Level.FINE, "Writing messages to file...Please wait");
+
+				if (!isHeader) {
+					fileWriter.writeHeader();
+					isHeader = true;
+				}
+				Iterator iter = list.iterator();
+				while (iter.hasNext()) {
+					MessageInfo element = (MessageInfo) iter.next();
+					fileWriter.writeCSVMessage(element, Constants.SE_QUEUE + meInfo.getName());
+				}
+
+				System.out.println();
+				System.out.println(" EXCEPTIONPOINT(" + Constants.SE_QUEUE + meInfo.getName() + ")");
+				System.out.println("  MESSAGE COUNT(" + list.size() + ")");
+				System.out.println("  BROWSED(" + "DONE" + ")");
+				System.out.println();
+				System.out.println();
+			}
+		}
+		if (fileWriter != null) {
+			fileWriter.close();
+		}
 	}
-	
+
 	/**
 	 * @throws IOException
 	 * @throws MalformedObjectNameException
@@ -1307,86 +1246,82 @@ public class SIBUSHelper {
 	 * @throws ConfigServiceException
 	 * @throws MessagingOperationFailedException
 	 */
-	private void actionReportQueue() throws IOException, MalformedObjectNameException, InstanceNotFoundException, MBeanException, ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException
-	{
-			SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
-			Date currentTime = GregorianCalendar.getInstance().getTime();
-			String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_" + getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
-			String path = cl.getOptionValue(CommandOptions.reportDirectory);
-			
-			// Create file writer instances
-    		logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the messages.");
-   			MessageFileWriter fileWriter = new MessageFileWriter(path, filename + ".csv");
+	private void actionReportQueue() throws IOException, MalformedObjectNameException, InstanceNotFoundException,
+			MBeanException, ReflectionException, ConnectorException, ConfigServiceException, MessagingOperationFailedException {
+		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
+		Date currentTime = GregorianCalendar.getInstance().getTime();
+		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_"
+				+ getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
+		String path = cl.getOptionValue(CommandOptions.reportDirectory);
 
-        	MEInfo mesInfo[] = adminHelper.getMessagingEngines();
-            for(int x = 0; x < mesInfo.length; x++)
-            {
-                BusInfo busInfo = adminHelper.getBusInfo(mesInfo[x].getBus());
-                MEInfo meInfo = mesInfo[x];
-            	int fill = busInfo.getName().length();
-            	
-            	if (busInfo.getName().equalsIgnoreCase(argsibus))
-            	{	
-            		System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80-fill));
-                	logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
-            		MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
-            		
-            		//all messages
-            		if (argfilter.equals(Constants.ARG_FILTER))
-            		{
-                		List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue);
+		// Create file writer instances
+		logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the messages.");
+		MessageFileWriter fileWriter = new MessageFileWriter(path, filename + ".csv");
 
-                		logger.log(Level.FINE, "Writing messages to file...Please wait");
-                		fileWriter.writeHeader();
-                		Iterator iter = list.iterator();
-                		while (iter.hasNext()) {
-							MessageInfo element = (MessageInfo) iter.next();
-							fileWriter.writeCSVMessage(element, argqueue);
-						}
+		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
+		for (MEInfo element0 : mesInfo) {
+			BusInfo busInfo = adminHelper.getBusInfo(element0.getBus());
+			MEInfo meInfo = element0;
+			int fill = busInfo.getName().length();
 
-                		System.out.println();
-                		System.out.println(" DESTINATION(" + argqueue + ")");
-                		System.out.println("  MESSAGE COUNT(" +  list.size() + ")");
-                		System.out.println("  BROWSED(" +  "DONE" + ")");
-                		System.out.println();
-            		}
-            		else
-            		{
-                		MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), argqueue, argfilter);
-                		logger.log(Level.FINE, "Writing messages to file...Please wait");
-                		
-                		fileWriter.writeHeader();
-                		
-                		if (element != null)
-                		{
-   							fileWriter.writeCSVMessage(element, argqueue);
-                    		System.out.println(" DESTINATION(" + argqueue + ")");
-                    		System.out.println("  MESSAGE FILTER(" +  argfilter + ")");
-                    		System.out.println("  MESSAGE COUNT(" +  "1" + ")");
-                    		System.out.println("  BROWSED(" +  element.getSystemMessageId() + ")");
-                    		System.out.println();
-                		}
-                		else
-                		{
-                    		System.out.println(" DESTINATION(" + argqueue + ")");
-                    		System.out.println("  MESSAGE FILTER(" +  argfilter + ")");
-                    		System.out.println("  MESSAGE COUNT(" +  "0" + ")");
-                    		System.out.println("  BROWSED(" +  "NONE" + ")");
-                    		System.out.println();
-                		}
-            		}
-            	}	
-            }
-            
-    		// Close writers. (The close() method handles if the writer allready have been closed)
-    		if (null != filename) {
-    			fileWriter.close();
-    		}
-		
+			if (busInfo.getName().equalsIgnoreCase(argsibus)) {
+				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
+				logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
+				MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf
+						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
+
+				// all messages
+				if (argfilter.equals(Constants.ARG_FILTER)) {
+					List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue);
+
+					logger.log(Level.FINE, "Writing messages to file...Please wait");
+					fileWriter.writeHeader();
+					Iterator iter = list.iterator();
+					while (iter.hasNext()) {
+						MessageInfo element = (MessageInfo) iter.next();
+						fileWriter.writeCSVMessage(element, argqueue);
+					}
+
+					System.out.println();
+					System.out.println(" DESTINATION(" + argqueue + ")");
+					System.out.println("  MESSAGE COUNT(" + list.size() + ")");
+					System.out.println("  BROWSED(" + "DONE" + ")");
+					System.out.println();
+				} else {
+					MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), argqueue,
+							argfilter);
+					logger.log(Level.FINE, "Writing messages to file...Please wait");
+
+					fileWriter.writeHeader();
+
+					if (element != null) {
+						fileWriter.writeCSVMessage(element, argqueue);
+						System.out.println(" DESTINATION(" + argqueue + ")");
+						System.out.println("  MESSAGE FILTER(" + argfilter + ")");
+						System.out.println("  MESSAGE COUNT(" + "1" + ")");
+						System.out.println("  BROWSED(" + element.getSystemMessageId() + ")");
+						System.out.println();
+					} else {
+						System.out.println(" DESTINATION(" + argqueue + ")");
+						System.out.println("  MESSAGE FILTER(" + argfilter + ")");
+						System.out.println("  MESSAGE COUNT(" + "0" + ")");
+						System.out.println("  BROWSED(" + "NONE" + ")");
+						System.out.println();
+					}
+				}
+			}
+		}
+
+		// Close writers. (The close() method handles if the writer allready
+		// have been closed)
+		if (null != filename) {
+			fileWriter.close();
+		}
+
 	}
-	
+
 	/**
-	 * 	@param width
+	 * @param width
 	 * @return
 	 */
 	private static String getSeparatorLine(int width) {
@@ -1395,10 +1330,10 @@ public class SIBUSHelper {
 			sb.append("=");
 		}
 		return sb.toString();
-	}	
+	}
 
 	/**
-	 * 	@param width
+	 * @param width
 	 * @return
 	 */
 	private String getStrippedFileName(String s) {
@@ -1409,7 +1344,7 @@ public class SIBUSHelper {
 		}
 		return StringUtils.EMPTY;
 	}
-	
+
 	/**
 	 * @param question
 	 * @return

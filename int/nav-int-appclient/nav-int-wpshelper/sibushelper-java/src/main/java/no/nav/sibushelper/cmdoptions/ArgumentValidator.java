@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import no.nav.sibushelper.SIBUSHelper;
-import no.nav.sibushelper.cmdoptions.CommandOptions;
 import no.nav.sibushelper.common.Constants;
 import no.nav.sibushelper.helper.Configuration;
 
@@ -20,13 +19,12 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * @author persona2c5e3b49756 Schnell
- *
+ * 
  */
 public class ArgumentValidator {
 
 	private static Logger logger = Logger.getLogger(SIBUSHelper.class.getName());
 	private String className = Configuration.class.getName();
-
 
 	public List validate(CommandLine cl) {
 		List<String> result = new ArrayList<String>();
@@ -34,12 +32,13 @@ public class ArgumentValidator {
 		// logFilePath
 		validateLogPath(cl.getOptionValue(CommandOptions.reportDirectory));
 
-		/* maxResultSet
-		String maxResultSet = cl.getOptionValue(CommandOptions.maxResultSet);
-		if (!StringUtils.isEmpty(maxResultSet) && Integer.parseInt(maxResultSet) > 9999) {
-			result.add("Property " + CommandOptions.maxResultSet + " is to large. Possible values is 1 >= 9999");
-		}
-		*/
+		/*
+		 * maxResultSet String maxResultSet =
+		 * cl.getOptionValue(CommandOptions.maxResultSet); if
+		 * (!StringUtils.isEmpty(maxResultSet) && Integer.parseInt(maxResultSet) >
+		 * 9999) { result.add("Property " + CommandOptions.maxResultSet + " is
+		 * to large. Possible values is 1 >= 9999"); }
+		 */
 
 		// action
 		String action = cl.getOptionValue(CommandOptions.action);
@@ -54,7 +53,7 @@ public class ArgumentValidator {
 		if (!"".equals(componentValidationMessage)) {
 			result.add(componentValidationMessage);
 		}
-		
+
 		// timeFrame is validated againts the '-' separator,
 		// and the date values on both sides are validated against the pattern.
 		String timeFrame = cl.getOptionValue(CommandOptions.timeFrame);
@@ -98,7 +97,6 @@ public class ArgumentValidator {
 		return validationMessage;
 	}
 
-	
 	/**
 	 * @param action
 	 * @return
@@ -114,7 +112,7 @@ public class ArgumentValidator {
 		}
 		return validationMessage;
 	}
-	
+
 	/**
 	 * @param logFilePath
 	 */
@@ -122,7 +120,8 @@ public class ArgumentValidator {
 		if (!StringUtils.isEmpty(logFilePath)) {
 			logger.logp(Level.FINE, className, "validateLogPath", "Using '" + logFilePath + " as logfile location");
 		} else {
-			logger.logp(Level.WARNING, className, "validateLogPath", CommandOptions.reportDirectory + " is not declared. Using current folder.");
+			logger.logp(Level.WARNING, className, "validateLogPath", CommandOptions.reportDirectory
+					+ " is not declared. Using current folder.");
 		}
 	}
 }
