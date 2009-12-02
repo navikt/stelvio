@@ -731,14 +731,6 @@ int/maven/plugins/maven-wps-artifact-plugin/src/main/resources/target
 int/maven/plugins/maven-wps-artifact-plugin/src/main/target
 int/maven/plugins/maven-wps-artifact-plugin/src/target
 int/maven/plugins/maven-wps-artifact-plugin/target
-int/maven/plugins/maven-wsdl-export-plugin/.classpath
-int/maven/plugins/maven-wsdl-export-plugin/.project
-int/maven/plugins/maven-wsdl-export-plugin/.settings
-int/maven/plugins/maven-wsdl-export-plugin/target
-int/maven/plugins/maven-wsdl-generatejava-plugin/.classpath
-int/maven/plugins/maven-wsdl-generatejava-plugin/.project
-int/maven/plugins/maven-wsdl-generatejava-plugin/.settings
-int/maven/plugins/maven-wsdl-generatejava-plugin/target
 int/maven/plugins/maven-wsdl-plugin/.classpath
 int/maven/plugins/maven-wsdl-plugin/.project
 int/maven/plugins/maven-wsdl-plugin/.settings
