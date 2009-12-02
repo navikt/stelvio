@@ -2170,9 +2170,10 @@ int/maven/plugins/maven-wps-artifact-plugin/src/main/java/no/nav/maven/plugin/sc
 int/maven/plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wsdl-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/ExportWsdlMojo.java -text
+int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/NamespaceToPackageMapGenerator.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/Wsdl2JavaMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/resources/META-INF/plexus/components.xml -text
-int/maven/plugins/maven-wsdl-plugin/src/test/java/no/nav/maven/plugins/GenerateMappingFileTest.java -text
+int/maven/plugins/maven-wsdl-plugin/src/test/java/no/nav/maven/plugins/NamespaceToPackageMapGeneratorTest.java -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO.xsd -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO2.xsd -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/EchoService.wsdl -text
