@@ -53,12 +53,12 @@ import org.codehaus.plexus.util.cli.StreamConsumer;
 /**
  * Goal which touches a timestamp file.
  * 
- * @goal generate
+ * @goal wsdl2java
  * 
  * @phase generate-sources
  * @requiresDependencyResolution compile
  */
-public class GenerateJavaMojo extends AbstractMojo {
+public class Wsdl2JavaMojo extends AbstractMojo {
 
 	private static final String WSDL_INTERFACE_ARTIFACT_TYPE = "wsdl-interface";
 

@@ -38,7 +38,7 @@ import org.codehaus.plexus.archiver.UnArchiver;
  * 
  * @phase package
  */
-public class WSDLExportMojo extends AbstractMojo {
+public class ExportWsdlMojo extends AbstractMojo {
 	private static final String ZIP_SUFFIX = "zip";
 
 	private static final String WAR_SUFFIX = "war";
