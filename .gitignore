@@ -739,6 +739,10 @@ int/maven/plugins/maven-wsdl-generatejava-plugin/.classpath
 int/maven/plugins/maven-wsdl-generatejava-plugin/.project
 int/maven/plugins/maven-wsdl-generatejava-plugin/.settings
 int/maven/plugins/maven-wsdl-generatejava-plugin/target
+int/maven/plugins/maven-wsdl-plugin/.classpath
+int/maven/plugins/maven-wsdl-plugin/.project
+int/maven/plugins/maven-wsdl-plugin/.settings
+int/maven/plugins/maven-wsdl-plugin/target
 int/maven/plugins/target
 int/maven/poms/maven-deploy-pom/target
 int/maven/poms/maven-integration-root-pom/target

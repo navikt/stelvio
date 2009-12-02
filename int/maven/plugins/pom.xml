@@ -21,12 +21,11 @@
 		<module>maven-update-ear-plugin</module>
 		<module>maven-mg-plugin</module>
 		<module>maven-wid-plugin</module>
-		<module>maven-wsdl-export-plugin</module>
+		<module>maven-wsdl-plugin</module>
 
 		<module>maven-websphere-plugin</module>
 		<module>maven-artifact-modifier-plugin</module>
 		<module>maven-confluence-plugin</module>
-		<module>maven-wsdl-generatejava-plugin</module>
 	</modules>
 
 	<build>
