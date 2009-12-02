@@ -8,12 +8,12 @@
 	<packaging>jar</packaging>
 	<name>Maven POC ${artifactId}</name>
 	<build>
-		<plugins>			
+		<plugins>
 			<plugin>
 			 	<groupId>no.nav.maven.plugins</groupId>
-			 	<artifactId>maven-wsdl-generatejava-plugin</artifactId>
-		 	 	<version>1.2-SNAPSHOT</version>
-				<extensions>true</extensions>		
+			 	<artifactId>maven-wsdl-plugin</artifactId>
+		 	 	<version>1.0-SNAPSHOT</version>
+				<extensions>true</extensions>
 				<executions>
 					<execution>
 						<phase>process-sources</phase>
@@ -21,7 +21,7 @@
 							<goal>generate</goal>
 						</goals>
 					</execution>
-				</executions>			
+				</executions>
 			</plugin>
 		</plugins>
 </build>

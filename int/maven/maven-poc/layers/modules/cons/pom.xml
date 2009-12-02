@@ -21,9 +21,9 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-wsdl-export-plugin</artifactId>
 				<groupId>no.nav.maven.plugins</groupId>
-				<version>1.4-SNAPSHOT</version>
+				<artifactId>maven-wsdl-plugin</artifactId>
+				<version>1.0-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
