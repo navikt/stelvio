@@ -16,9 +16,8 @@
 				<extensions>true</extensions>
 				<executions>
 					<execution>
-						<phase>process-sources</phase>
 						<goals>
-							<goal>generate</goal>
+							<goal>wsdl2java</goal>
 						</goals>
 					</execution>
 				</executions>
