@@ -31,11 +31,20 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.InvalidRepositoryException;
+import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
+import org.apache.maven.artifact.repository.ArtifactRepository;
+import org.apache.maven.artifact.repository.ArtifactRepositoryFactory;
+import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
+import org.apache.maven.artifact.resolver.ArtifactResolutionException;
+import org.apache.maven.artifact.resolver.ArtifactResolver;
+import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.ProjectUtils;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 import org.codehaus.plexus.util.Os;
@@ -51,33 +60,72 @@ import org.codehaus.plexus.util.cli.StreamConsumer;
  * @goal wsdl2java
  * 
  * @phase generate-sources
- * @requiresDependencyResolution compile
  */
 public class Wsdl2JavaMojo extends AbstractMojo {
-
 	private static final String WSDL_INTERFACE_ARTIFACT_TYPE = "wsdl-interface";
 
-	protected static final String WSDLEXPORT_SUFFIX = "wsdl";
-	protected static final String WSDLEXPORT_TOKEN = "WSEXP";
+	private static final String WSDLEXPORT_SUFFIX = "wsdl";
+	private static final String WSDLEXPORT_TOKEN = "WSEXP";
+
+	/**
+	 * The Maven session.
+	 * 
+	 * @parameter expression="${session}"
+	 * @readonly
+	 * @required
+	 */
+	private MavenSession mavenSession;
 
 	/**
 	 * @parameter expression="${project}"
-	 * @required
 	 * @readonly
+	 * @required
 	 */
 	private MavenProject project;
 
 	/**
-	 * @parameter expression="${was.home}"
+	 * Artifact repository factory component.
+	 * 
+	 * @component
 	 * @readonly
+	 * @required
 	 */
-	private String wasRuntime;
+	private ArtifactRepositoryFactory artifactRepositoryFactory;
 
 	/**
-	 * @parameter expression="${wid.home}"
+	 * The remote repositories used as specified in your POM.
+	 * 
+	 * @parameter expression="${project.repositories}"
 	 * @readonly
+	 * @required
 	 */
-	private String widRuntime;
+	private List repositories;
+
+	/**
+	 * The local repository taken from Maven's runtime. Typically
+	 * $HOME/.m2/repository.
+	 * 
+	 * @parameter expression="${localRepository}"
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactRepository localRepository;
+
+	/**
+	 * Artifact factory, needed to create artifacts.
+	 * 
+	 * @component
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactFactory artifactFactory;
+
+	/**
+	 * @component
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactResolver artifactResolver;
 
 	/**
 	 * @component roleHint="wsdl-interface"
@@ -97,6 +145,23 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	private UnArchiver unArchiver;
 
 	/**
+	 * @parameter expression="${was.home}"
+	 * @readonly
+	 */
+	private String wasRuntime;
+
+	/**
+	 * @parameter expression="${wid.home}"
+	 * @readonly
+	 */
+	private String widRuntime;
+
+	/**
+	 * @parameter
+	 */
+	private WsdlOption wsdlOptions[];
+
+	/**
 	 * Set a location to generate CLASS files into.
 	 * 
 	 * @parameter default-value="${project.build.directory}/generated-sources/wsdl2java"
@@ -105,6 +170,11 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	private File classGenerationDirectory;
 
 	public void execute() throws MojoExecutionException {
+		if (wsdlOptions == null || wsdlOptions.length == 0) {
+			getLog().info("Nothing to generate");
+			return;
+		}
+
 		try {
 			// TODO: The following must be done because of one (or more) bug(s)
 			// in Maven. See Maven bugs MNG-3506 and MNG-2426 for more info.
@@ -130,7 +200,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 			tempDir.mkdirs();
 
 			// First unpack the wsdl-artifact from the dependency
-			for (Artifact artifact : getWSDLIfArtifacts(project)) {
+			for (Artifact artifact : getWSDLArtifacts()) {
 				File tempWsdlZipDir = extractFile(artifact.getFile(), tempDir);
 
 				// Generate the NStoPkg.properties-file that will make sensible
@@ -207,25 +277,68 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	/**
 	 * @param project
 	 * @return the first wsdl-if artifact found in the dependency list
+	 * @throws MojoExecutionException
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Artifact> getWSDLIfArtifacts(MavenProject project) {
-		String wsdlIfClassifier = wsdlIfArtifactHandler.getClassifier();
-		ArrayList<Artifact> artifactList = new ArrayList<Artifact>();
-		Set artifacts = project.getDependencyArtifacts();
-		for (Artifact artifact : (Set<Artifact>) artifacts) {
-			if (wsdlIfClassifier.equals(artifact.getClassifier())) {
-				artifactList.add(artifact);
+	public Collection<Artifact> getWSDLArtifacts() throws MojoExecutionException {
+		List remoteRepos;
+		try {
+			remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession
+					.getContainer());
+		} catch (InvalidRepositoryException e) {
+			throw new MojoExecutionException("Error build repositories for remote wsdls", e);
+		}
+
+		Collection<Artifact> wsdlArtifacts = new ArrayList<Artifact>(wsdlOptions.length);
+		for (WsdlOption wsdlOption : wsdlOptions) {
+			WsdlArtifact wsdlA = wsdlOption.getWsdlArtifact();
+			if (wsdlA == null) {
+				// TODO: Improve error handling
+				continue;
 			}
+			Artifact wsdlArtifact = artifactFactory.createArtifact(wsdlA.getGroupId(), wsdlA.getArtifactId(), wsdlA
+					.getVersion(), Artifact.SCOPE_COMPILE, wsdlA.getType());
+			wsdlArtifact = resolveRemoteWsdlArtifact(remoteRepos, wsdlArtifact);
+			if (wsdlArtifact != null) {
+				String path = wsdlArtifact.getFile().getAbsolutePath();
+				getLog().info("Resolved WSDL artifact to file " + path);
+			}
+			wsdlArtifacts.add(wsdlArtifact);
 		}
-		if (artifactList.size() == 0) {
-			throw new RuntimeException("No attached artifact of type wsdl-interface (classifier '" + wsdlIfClassifier
-					+ "') found ");
-		}
-		return artifactList;
+		return wsdlArtifacts;
 	}
 
-	protected final void executeCommand(Commandline command) {
+	@SuppressWarnings("unchecked")
+	public Artifact resolveRemoteWsdlArtifact(List remoteRepos, Artifact artifact) throws MojoExecutionException {
+		// First try to find the artifact in the reactor projects of the maven
+		// session. So an artifact that is not yet built can be resolved
+		List<MavenProject> rProjects = mavenSession.getSortedProjects();
+		for (MavenProject rProject : rProjects) {
+			if (artifact.getGroupId().equals(rProject.getGroupId())
+					&& artifact.getArtifactId().equals(rProject.getArtifactId())
+					&& artifact.getVersion().equals(rProject.getVersion())) {
+				Set<Artifact> artifacts = rProject.getArtifacts();
+				for (Artifact pArtifact : artifacts) {
+					if (artifact.getType().equals(pArtifact.getType())) {
+						return pArtifact;
+					}
+				}
+			}
+		}
+
+		// If this did not work resolve the artifact using the artifactResolver
+		try {
+			artifactResolver.resolve(artifact, remoteRepos, localRepository);
+		} catch (ArtifactResolutionException e) {
+			throw new MojoExecutionException("Error downloading wsdl artifact.", e);
+		} catch (ArtifactNotFoundException e) {
+			throw new MojoExecutionException("Resource can not be found.", e);
+		}
+
+		return artifact;
+	}
+
+	private void executeCommand(Commandline command) {
 		try {
 			getLog().info("Executing the following command: " + command.toString());
 

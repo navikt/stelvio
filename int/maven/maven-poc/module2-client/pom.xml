@@ -1,6 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 
 	<artifactId>module2-client</artifactId>
 	<groupId>no.nav.maven.poc</groupId>
@@ -10,34 +12,39 @@
 	<build>
 		<plugins>
 			<plugin>
-			 	<groupId>no.nav.maven.plugins</groupId>
-			 	<artifactId>maven-wsdl-plugin</artifactId>
-		 	 	<version>1.0-SNAPSHOT</version>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-wsdl-plugin</artifactId>
+				<version>1.0-SNAPSHOT</version>
 				<extensions>true</extensions>
 				<executions>
 					<execution>
 						<goals>
 							<goal>wsdl2java</goal>
 						</goals>
+						<configuration>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdlArtifact>
+										<groupId>no.nav.maven.poc</groupId>
+										<artifactId>poc-module1</artifactId>
+										<version>1.12-SNAPSHOT</version>
+									</wsdlArtifact>
+								</wsdlOption>
+								<wsdlOption>
+									<wsdlArtifact>
+										<groupId>no.nav.maven.poc</groupId>
+										<artifactId>poc-module2</artifactId>
+										<version>1.10-SNAPSHOT</version>
+									</wsdlArtifact>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
-</build>
+	</build>
 	<dependencies>
-		<dependency>
-			<groupId>no.nav.maven.poc</groupId>
-			<artifactId>poc-module1</artifactId>
-			<version>1.12-SNAPSHOT</version>
-			<type>wsdl-interface</type>
-		</dependency>
-		<dependency>
-			<groupId>no.nav.maven.poc</groupId>
-			<artifactId>poc-module2</artifactId>
-			<version>1.10-SNAPSHOT</version>
-			<type>wsdl-interface</type>
-		</dependency>
-		
 		<dependency>
 			<groupId>ibm.rad70</groupId>
 			<artifactId>thinclient</artifactId>
@@ -45,6 +52,4 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
 </project>
-		
