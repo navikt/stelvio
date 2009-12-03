@@ -113,7 +113,7 @@
 		-->
 		<!-- TODO: Review this setting -->
 		<target.dir>
-			${user.home}/maven-target/${groupId}/${artifactId}/${version}
+			${user.home}/maven-target/${project.groupId}/${project.artifactId}/${project.version}
 		</target.dir>
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-pom

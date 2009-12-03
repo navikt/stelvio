@@ -17,6 +17,6 @@
 		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>${scm.root}/${artifactId}</scm.connection>
+		<scm.connection>${scm.root}/${project.artifactId}</scm.connection>
 	</properties>
 </project>

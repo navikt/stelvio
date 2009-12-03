@@ -11,7 +11,7 @@
 	<artifactId>cons</artifactId>
 	<version>1.8-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Maven POC ${artifactId}</name>
+	<name>Maven POC ${project.artifactId}</name>
 
 	<modules>
 		<module>poc-module1</module>
@@ -41,6 +41,6 @@
 		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>${scm.root}/${artifactId}</scm.connection>
+		<scm.connection>${scm.root}/${project.artifactId}</scm.connection>
 	</properties>
 </project>

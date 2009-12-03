@@ -10,7 +10,7 @@
 	<artifactId>poc-module2</artifactId>
 	<version>1.10-SNAPSHOT</version>
 	<packaging>wps-module-ear</packaging>
-	<name>Maven POC ${artifactId}</name>
+	<name>Maven POC ${project.artifactId}</name>
 
 	<dependencies>
 		<dependency>
@@ -31,7 +31,7 @@
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<finalName>${artifactId}</finalName>
+					<finalName>${project.artifactId}</finalName>
 					<archive>
 						<manifest>
 							<mainClass>no.nav.java.Main</mainClass>
@@ -52,6 +52,6 @@
 		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>${scm.root}/cons/${artifactId}</scm.connection>
+		<scm.connection>${scm.root}/cons/${project.artifactId}</scm.connection>
 	</properties>
 </project>

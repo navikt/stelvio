@@ -11,7 +11,7 @@
 	<artifactId>modules</artifactId>
 	<version>1.8-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Maven POC ${artifactId}</name>
+	<name>Maven POC ${project.artifactId}</name>
 
 	<modules>
 		<module>cons</module>
