@@ -1,19 +1,33 @@
 package no.nav.maven.plugins;
 
-import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.codehaus.plexus.util.IOUtil;
+
 public class NamespaceToPackageMapGenerator {
-	private NamespaceToPackageMapGenerator() {
+	private String encoding;
+
+	private Pattern namespacePattern = Pattern.compile("\"http://([^\"]+)\"");
+
+	public NamespaceToPackageMapGenerator() {
+		this(System.getProperty("file.encoding"));
 	}
 
-	public static Map<String, String> createNameSpaceToPackageMapFromWSDLDirectory(File wsdlDirectory) {
+	public NamespaceToPackageMapGenerator(String encoding) {
+		this.encoding = encoding;
+	}
+
+	public Map<String, String> createNameSpaceToPackageMapFromWSDLDirectory(File wsdlDirectory) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		try {
 			createNameSpaceToPackageMap(wsdlDirectory, map);
@@ -23,20 +37,14 @@ public class NamespaceToPackageMapGenerator {
 		return map;
 	}
 
-	private static void createNameSpaceToPackageMap(File file, Map<String, String> nameSpaceMap) throws IOException {
+	private void createNameSpaceToPackageMap(File file, Map<String, String> nameSpaceMap) throws IOException {
 		if (file.isDirectory()) {
 			for (File f : file.listFiles()) {
 				createNameSpaceToPackageMap(f, nameSpaceMap);
 			}
 		} else {
-			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
-
-			final byte[] bytes = new byte[(int) file.length()];
-			bis.read(bytes);
-			bis.close();
-			String fileString = new String(bytes);
-			Pattern p = Pattern.compile("\"http://([^\"]+)\"");
-			Matcher m = p.matcher(fileString);
+			String fileString = readFileToString(file);
+			Matcher m = namespacePattern.matcher(fileString);
 			while (m.find()) {
 				String nameSpace = m.group(1);
 				String packageName = generatePackageNameFromNamespace(nameSpace);
@@ -46,10 +54,17 @@ public class NamespaceToPackageMapGenerator {
 				}
 			}
 		}
-
 	}
 
-	private static String generatePackageNameFromNamespace(String nameSpace) {
+	private String readFileToString(File file) throws IOException {
+		StringWriter stringWriter = new StringWriter();
+		Reader fileReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), encoding));
+		IOUtil.copy(fileReader, stringWriter);
+		fileReader.close();
+		return stringWriter.toString();
+	}
+
+	private String generatePackageNameFromNamespace(String nameSpace) {
 		String[] parts = nameSpace.split("/");
 		// Check if this is something else than a namespace
 		if (parts[0].startsWith("www") || parts[0].startsWith("localhost") || parts[0].endsWith(".org"))

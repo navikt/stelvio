@@ -34,7 +34,8 @@ public class NamespaceToPackageMapGeneratorTest {
 	public void testCreateNameSpaceToPackageMapFromWSDLDirectory() throws Exception {
 		URL wsdlDirectoryURL = this.getClass().getClassLoader().getResource("wsdl");
 		File wsdlDirectory = new File(new URI(wsdlDirectoryURL.toString()));
-		Map<String, String> ret = NamespaceToPackageMapGenerator.createNameSpaceToPackageMapFromWSDLDirectory(wsdlDirectory);
+		Map<String, String> ret = new NamespaceToPackageMapGenerator()
+				.createNameSpaceToPackageMapFromWSDLDirectory(wsdlDirectory);
 		assertEquals(ret.get("http\\://poc-lib2/no/nav/gbo"), "no.nav.gbo");
 	}
 }

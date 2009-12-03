@@ -16,12 +16,13 @@ package no.nav.maven.plugins;
  * limitations under the License.
  */
 
-import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -162,6 +163,11 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	private WsdlOption wsdlOptions[];
 
 	/**
+	 * @parameter default-value="${project.build.sourceEncoding}"
+	 */
+	private String encoding = System.getProperty("file.encoding");
+
+	/**
 	 * Set a location to generate CLASS files into.
 	 * 
 	 * @parameter default-value="${project.build.directory}/generated-sources/wsdl2java"
@@ -205,12 +211,13 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 
 				// Generate the NStoPkg.properties-file that will make sensible
 				// packages for the wsdl
-				Map<String, String> namespaceToPackageMap = NamespaceToPackageMapGenerator
+				Map<String, String> namespaceToPackageMap = new NamespaceToPackageMapGenerator(encoding)
 						.createNameSpaceToPackageMapFromWSDLDirectory(tempWsdlZipDir);
 				File nameSpaceToPackageFile = new File(tempWsdlZipDir, "NStoPkg.properties");
-				PrintWriter pw = new PrintWriter(new BufferedOutputStream(new FileOutputStream(nameSpaceToPackageFile)));
+				PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
+						nameSpaceToPackageFile), encoding)));
 				for (String namespace : namespaceToPackageMap.keySet()) {
-					pw.write(namespace + "=" + namespaceToPackageMap.get(namespace) + "\n");
+					pw.println(namespace + "=" + namespaceToPackageMap.get(namespace));
 				}
 				pw.close();
 
