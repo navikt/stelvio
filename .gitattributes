@@ -20,9 +20,6 @@ dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/add-stelvio-
 dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/fault-handler.xsl -text
 dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/nfs-message-logger.xsl -text svneol=unset#text/plain
 dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/userid-utils.xsl -text svneol=unset#text/plain
-dev/datapower/datapower-cfg-partnergw/src/test/java/no/nav/datapower/config/partnergw/PGWConfigGeneratorTest.java -text
-dev/datapower/datapower-cfg-partnergw/src/test/resources/cfg-partnergw-u1.properties -text
-dev/datapower/datapower-cfg-partnergw/src/test/resources/cfg-partnergw-utv.properties -text
 dev/datapower/datapower-cfg-secgw/pom.xml -text
 dev/datapower/datapower-cfg-secgw/src/main/java/no/nav/datapower/config/secgw/SGWConfigGeneratorImpl.java -text
 dev/datapower/datapower-cfg-secgw/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
