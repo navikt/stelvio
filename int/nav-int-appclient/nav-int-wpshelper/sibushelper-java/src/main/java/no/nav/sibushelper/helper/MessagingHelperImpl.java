@@ -526,7 +526,6 @@ public class MessagingHelperImpl implements MessagingHelper {
 		long numberOfMessagesMoved = 1;
 
 		if (msgSelector != null) {
-			msgSelector = "JMSMessageID = 'ID:" + msgSelector + "'";
 			SelectionCriteriaFactory selcFact = SelectionCriteriaFactory.getInstance();
 			seCrit = selcFact.createSelectionCriteria(null, msgSelector, SelectorDomain.JMS);
 		}
@@ -614,7 +613,6 @@ public class MessagingHelperImpl implements MessagingHelper {
 		long numberOfMessages = 1;
 
 		if (msgSelector != null) {
-			msgSelector = "JMSMessageID = 'ID:" + msgSelector + "'";
 			SelectionCriteriaFactory selcFact = SelectionCriteriaFactory.getInstance();
 			seCrit = selcFact.createSelectionCriteria(null, msgSelector, SelectorDomain.JMS);
 		}
@@ -922,13 +920,12 @@ public class MessagingHelperImpl implements MessagingHelper {
 	 * @return
 	 * @throws MessagingOperationFailedException
 	 */
-	private long _clearQueue(String busName, String meName, String queueName, String msgId, long maxMessages)
+	private long _clearQueue(String busName, String meName, String queueName, String msgSelector, long maxMessages)
 			throws SIException {
 		SICoreConnection conn = null;
 		ConsumerSession consumerSession = null;
 		long numberOfMessagesCleared = 1;
 		SIUncoordinatedTransaction trans = null;
-		String msgSelector = "JMSMessageID = 'ID:" + msgId + "'";
 		SelectionCriteria seCrit = null;
 
 		logger.logp(Level.FINE, className, "_clearQueue", "{ busName=" + busName + ", meName=" + meName + ", queueName="
@@ -938,9 +935,9 @@ public class MessagingHelperImpl implements MessagingHelper {
 			numberOfMessagesCleared = 1;
 			SIDestinationAddressFactory addrFact = SIDestinationAddressFactory.getInstance();
 			SIDestinationAddress addr = addrFact.createSIDestinationAddress(queueName, false);
-			SelectionCriteriaFactory selcFact = SelectionCriteriaFactory.getInstance();
 
-			if (msgId != null) {
+			if (msgSelector != null) {
+				SelectionCriteriaFactory selcFact = SelectionCriteriaFactory.getInstance();
 				seCrit = selcFact.createSelectionCriteria(null, msgSelector, SelectorDomain.JMS);
 			}
 

@@ -873,7 +873,8 @@ public class SIBUSHelper {
 						}
 					}
 					logger.log(Level.INFO, "Deleting data on queue " + argqueue + ". Please wait can take time!");
-					long deleted = messagingHelper.clearQueue(busInfo.getName(), meInfo.getName(), queuename, argfilter,
+					String msgSelector = "JMSMessageID = 'ID:" + argfilter + "'";
+					long deleted = messagingHelper.clearQueue(busInfo.getName(), meInfo.getName(), queuename, msgSelector,
 							toDelete);
 
 					System.out.println();
@@ -992,8 +993,9 @@ public class SIBUSHelper {
 					}
 
 					logger.log(Level.INFO, "Moving data from queue " + argqueue + ". Please wait can take time!");
+					String msgSelector = "JMSMessageID = 'ID:" + argfilter + "'";
 					List<MessageInfo> list = messagingHelper.moveExceptionToDestination(busInfo.getName(), meInfo.getName(),
-							argqueue, argfilter, 1);
+							argqueue, msgSelector, 1);
 
 					if (!list.isEmpty()) {
 						logger.log(Level.FINE, "Writing messages to file...Please wait");
@@ -1126,8 +1128,9 @@ public class SIBUSHelper {
 						}
 					}
 					logger.log(Level.INFO, "Moving data to queue " + argqueue1 + ". Please wait can take time!");
+					String msgSelector = "JMSMessageID = 'ID:" + argfilter + "'";
 					long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1,
-							argfilter, 1);
+							msgSelector, 1);
 
 					System.out.println();
 					System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
