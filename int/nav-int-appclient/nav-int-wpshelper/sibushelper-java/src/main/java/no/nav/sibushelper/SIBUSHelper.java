@@ -1172,6 +1172,12 @@ public class SIBUSHelper {
 
 		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
 		System.out.println();
+		
+		String msgSelector = null;
+		if (commandLine.hasOption(CommandOptions.problemDestination)) {
+			String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
+			msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'"; 
+		}
 
 		for (MEInfo element0 : mesInfo) {
 			BusInfo busInfo = adminHelper.getBusInfo(element0.getBus());
@@ -1185,7 +1191,7 @@ public class SIBUSHelper {
 						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
 				logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
 				List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), Constants.SE_QUEUE
-						+ meInfo.getName(), null);
+						+ meInfo.getName(), msgSelector);
 
 				if (!list.isEmpty()) {
 					logger.log(Level.FINE, "Writing messages to file...Please wait");
@@ -1212,7 +1218,7 @@ public class SIBUSHelper {
 						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
 				logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
 				List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), Constants.SE_QUEUE
-						+ meInfo.getName(), null);
+						+ meInfo.getName(), msgSelector);
 
 				logger.log(Level.FINE, "Writing messages to file...Please wait");
 
@@ -1275,7 +1281,12 @@ public class SIBUSHelper {
 
 				// all messages
 				if (argfilter.equals(Constants.ARG_FILTER)) {
-					List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue, null);
+					String msgSelector = null;
+					if (commandLine.hasOption(CommandOptions.problemDestination)) {
+						String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
+						msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'"; 
+					}
+					List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue, msgSelector);
 
 					logger.log(Level.FINE, "Writing messages to file...Please wait");
 					fileWriter.writeHeader();
