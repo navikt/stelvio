@@ -33,6 +33,7 @@ public class CommandOptionsBuilder {
 		// options.addOption(getFailureMessageOption());
 		// options.addOption(getMaxResultSetOption());
 		options.addOption(getComponentOption());
+		options.addOption(getProblemDestinationOption());
 		return options;
 	}
 
@@ -150,6 +151,17 @@ public class CommandOptionsBuilder {
 		component.setDescription("Component options {server, sibus, wmqlink, queue <arg>}" + "\n"
 				+ "arg <[SIBUSNAME:QUEUE:FILTER]>");
 		return component;
+	}
+	
+	/**
+	 * Create command line option for 'problemDestination'
+	 * 
+	 * @return
+	 */
+	private Option getProblemDestinationOption() {
+		Option option = getGeneralOption(CommandOptions.problemDestination, "pd");
+		option.setDescription("Filter by problem destination. Supports exact name only.");
+		return option;
 	}
 
 	/**

@@ -54,6 +54,12 @@ public interface CommandOptions {
 	 * <code>CommandLine</code> object
 	 */
 	public static final String component = "component";
+	
+	/**
+	 * Public constant to represent the 'problemDestination' string from
+	 * <code>CommandLine</code> object
+	 */
+	public static final String problemDestination = "problemDestination";
 
 	/**
 	 * Public constant to represent the 'generic arguments' string from
