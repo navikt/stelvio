@@ -37,12 +37,10 @@ public class AbstractFileWriter {
 	public void close() {
 		try {
 			if (null != writer) {
-				writer.flush();
 				writer.close();
 			}
 		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "ERROR: Might not all reported due to IOException : StackTrace:");
-			e.printStackTrace();
+			LOGGER.log(Level.WARNING, "Error closing writer", e);
 		}
 	}
 }

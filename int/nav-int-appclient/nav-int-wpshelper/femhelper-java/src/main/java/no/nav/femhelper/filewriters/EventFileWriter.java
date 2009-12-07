@@ -71,8 +71,7 @@ public class EventFileWriter {
 			csvPrinter.close();
 			csvPrinter = null;
 		} catch (IOException e) {
-			LOGGER.log(Level.SEVERE, "ERROR: Might not all reported due to IOException : StackTrace:");
-			e.printStackTrace();
+			LOGGER.log(Level.WARNING, "Error closing CSV Printer", e);
 		}
 	}
 
@@ -144,7 +143,7 @@ public class EventFileWriter {
 					+ e.getClass().getName() + "(" + e.getMessage() + ")";
 				sb.append(errormsg);
 				sb.append(EMPTY);
-				LOGGER.log(Level.SEVERE, errormsg);
+				LOGGER.log(Level.SEVERE, errormsg, e);
 			}
 		}
 		csvPrinter.write(sb.toString());

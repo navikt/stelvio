@@ -19,6 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.management.InstanceNotFoundException;
+import javax.management.JMException;
 import javax.management.MBeanException;
 import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
@@ -44,6 +45,7 @@ import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.websphere.management.AdminClient;
 import com.ibm.websphere.management.AdminClientFactory;
 import com.ibm.websphere.management.exception.ConnectorException;
+import com.ibm.ws.exception.WsException;
 
 /**
  * Super class for all Action classes. This class shall be inherited for all
@@ -134,17 +136,16 @@ public abstract class AbstractAction {
 			ReflectionException, ConnectorException;
 
 	public Object process(String path, String filename, Map<String, String> arguments, boolean paging, long totalevents,
-			int maxresultset, CommandLine cl) throws MalformedObjectNameException, ConnectorException {
-		// Log properties before creation of the AdminClient objects
-		this.logProperties();
-
-		this.connect();
-
-		// Create file writer instances
-		logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
-
-		Object result = null;
+			int maxresultset, CommandLine cl) throws JMException, WsException, IOException {
 		try {
+			// Log properties before creation of the AdminClient objects
+			this.logProperties();
+
+			this.connect();
+
+			// Create file writer instances
+			logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the events.");
+
 			// Don't write report file for StatusAction
 			if (arguments != null) {
 				char delimiter = arguments.get(CommandOptions.delimiter).charAt(0);
@@ -152,29 +153,15 @@ public abstract class AbstractAction {
 			}
 			logFileWriter = new LogFileWriter(path, filename + ".log");
 
-			result = this.processEvents(path, filename, arguments, paging, totalevents, maxresultset, cl);
-		} catch (IOException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "IOException:StackTrace:", e);
-		} catch (InstanceNotFoundException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "InstanceNotFoundException:StackTrace:", e);
-		} catch (MBeanException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "MBeanException:StackTrace:", e);
-		} catch (ReflectionException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ReflectionException:StackTrace:", e);
-		} catch (ConnectorException e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "ConnectorException:StackTrace:", e);
+			return this.processEvents(path, filename, arguments, paging, totalevents, maxresultset, cl);
+		} finally {
+			if (null != fileWriter) {
+				fileWriter.close();
+			}
+			if (null != logFileWriter) {
+				logFileWriter.close();
+			}
 		}
-
-		// Close writers. (The close() method handles if the writer allready
-		// have been closed)
-		if (null != fileWriter) {
-			fileWriter.close();
-		}
-
-		if (null != logFileWriter) {
-			logFileWriter.close();
-		}
-		return result;
 	}
 
 	/**
@@ -259,7 +246,7 @@ public abstract class AbstractAction {
 					throw new RuntimeException("Date values are not validated properly");
 				}
 			}
-	
+
 			do {
 				++pagecount;
 				logger.log(Level.INFO, "Collect events for page #" + pagecount);
@@ -273,14 +260,14 @@ public abstract class AbstractAction {
 						events.put(event.getMessageID(), event);
 					}
 				}
-	
+
 				if (!failedEventList.isEmpty()) {
 					// Update end date for the next page
 					FailedEvent lastevent = failedEventList.get(failedEventList.size() - 1);
 					logger.log(Level.INFO, "Completed collecting events for page #" + pagecount);
 					logger.log(Level.INFO, "The last event in this page is " + lastevent.getFailureDateTime());
 					end = new Date(lastevent.getFailureDateTime().getTime());
-	
+
 					long firstInMillis = failedEventList.get(0).getFailureDateTime().getTime();
 					long lastInMillis = lastevent.getFailureDateTime().getTime();
 					if (firstInMillis == lastInMillis && failedEventList.size() == maxresultset) {

@@ -41,15 +41,11 @@ public class LogFileWriter extends AbstractFileWriter {
 		writer = new BufferedWriter(new FileWriter(completePath, true));
 	}
 
-	public void log(String string) {
+	public void log(String string) throws IOException {
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 		String date = sdf.format(Calendar.getInstance().getTime());
-		try {
-			writer.write(date + TABULATOR + string);
-			writer.newLine();
-			writer.flush();
-		} catch (IOException e) {
-			LOGGER.log(Level.ALL, "Cannot write to log file");
-		}
+		writer.write(date + TABULATOR + string);
+		writer.newLine();
+		writer.flush();
 	}
 }

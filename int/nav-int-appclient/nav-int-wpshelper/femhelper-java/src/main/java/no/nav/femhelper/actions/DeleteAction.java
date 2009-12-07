@@ -43,7 +43,7 @@ public class DeleteAction extends AbstractAction {
 		fileWriter.writeShortHeader();
 
 		// Collect events to stop processes and delete events
-		Collection <Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
+		Collection<Event> events = collectEvents(arguments, paging, totalevents, maxresultset);
 
 		if (!events.isEmpty()) {
 			// Check if the commandline has a --noStop option
@@ -54,9 +54,9 @@ public class DeleteAction extends AbstractAction {
 					return null;
 				}
 			}
-			
-			List <Event> eventList = new ArrayList<Event> (events);
-			
+
+			List<Event> eventList = new ArrayList<Event>(events);
+
 			logger.log(Level.INFO, "Discarding #" + events.size() + " events...please wait!");
 			for (int startIndex = 0; startIndex < events.size();) {
 				int endIndex = Math.min(startIndex + Constants.MAX_DELETE, events.size());
@@ -99,6 +99,7 @@ public class DeleteAction extends AbstractAction {
 					event.setProcessStatus(ProcessStatus.NOPROCESS);
 				}
 			} catch (ServiceException se) {
+				logger.log(Level.WARNING, "Error deleting event", se);
 				event.setProcessStatus(ProcessStatus.FAILED);
 				event.setProcessFailureMessage(se.getMessage());
 				// Remove event from events to delete

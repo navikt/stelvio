@@ -196,7 +196,7 @@ public class Main {
 			} 
 			
 		} catch (Exception e) {
-			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "Exception:StackTrace:");
+			logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			e.printStackTrace();
 		}
 		
