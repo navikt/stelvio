@@ -73,7 +73,7 @@ public class SIBUSHelper {
 
 	private Configuration overallConf;
 	private ServerConfigurationProperties serverConf;
-	CommandLine cl = null;
+	private CommandLine commandLine = null;
 
 	private String sibusAction;
 	private String sibusComponent;
@@ -98,7 +98,7 @@ public class SIBUSHelper {
 		sibusComponent = null;
 		host = null;
 		adminHelper = null;
-		cl = null;
+		commandLine = null;
 		arguments = args;
 	}
 
@@ -113,7 +113,7 @@ public class SIBUSHelper {
 		Options options = optionsBuilder.getOptions();
 
 		try {
-			cl = new PosixParser().parse(options, arguments);
+			commandLine = new PosixParser().parse(options, arguments);
 
 		} catch (ParseException parseEx) {
 			System.out.println("Incorrect arguments (listed below) - application will terminate.");
@@ -121,7 +121,7 @@ public class SIBUSHelper {
 			return -5;
 		}
 
-		if (cl.hasOption("help")) {
+		if (commandLine.hasOption("help")) {
 			HelpFormatter formatter = new HelpFormatter();
 			formatter.setWidth(screenWidth);
 
@@ -140,21 +140,21 @@ public class SIBUSHelper {
 			return 0;
 		}
 
-		if (!cl.hasOption(CommandOptions.configFile)) {
+		if (!commandLine.hasOption(CommandOptions.configFile)) {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "Property file not spesified.");
 			return -6;
 		}
 
-		String propertyFileName = cl.getOptionValue(CommandOptions.configFile);
+		String propertyFileName = commandLine.getOptionValue(CommandOptions.configFile);
 		File propertyFile = new File(propertyFileName);
 		if (!propertyFile.exists()) {
 			logger.log(Level.SEVERE, Constants.METHOD_ERROR + "The property file does not exist ("
-					+ cl.getOptionValue(CommandOptions.configFile) + ")");
+					+ commandLine.getOptionValue(CommandOptions.configFile) + ")");
 			return -6;
 		}
 
 		ArgumentValidator argumentValidator = new ArgumentValidator();
-		List validatedArguments = argumentValidator.validate(cl);
+		List validatedArguments = argumentValidator.validate(commandLine);
 		if (!validatedArguments.isEmpty()) {
 			for (Iterator argumentIter = validatedArguments.iterator(); argumentIter.hasNext();) {
 				logger.log(Level.WARNING, (String) argumentIter.next());
@@ -186,11 +186,11 @@ public class SIBUSHelper {
 		}
 
 		// get the command line options more sorted
-		sibusAction = cl.getOptionValue(CommandOptions.action);
-		sibusComponent = cl.getOptionValue(CommandOptions.component);
+		sibusAction = commandLine.getOptionValue(CommandOptions.action);
+		sibusComponent = commandLine.getOptionValue(CommandOptions.component);
 
 		// get options for REPORT, SUBMIT, DELETE
-		String[] option = cl.getArgs();
+		String[] option = commandLine.getArgs();
 		if (option.length != 0) {
 			// PATTERN SIBUS:QUEUE,QUEUE:FILTER
 			StringTokenizer st = new StringTokenizer(option[0], Constants.ARG_DELIMITER);
@@ -824,7 +824,7 @@ public class SIBUSHelper {
 					}
 
 					// Check if the commandline has a --noStop option
-					if (!cl.hasOption(CommandOptions.noStop) && toDelete > 0) {
+					if (!commandLine.hasOption(CommandOptions.noStop) && toDelete > 0) {
 						String q = "Do you want to continue and purge " + toDelete + " messages (y/n)?";
 						boolean result = askYesNo(q);
 						if (!result) {
@@ -865,7 +865,7 @@ public class SIBUSHelper {
 					}
 
 					// Check if the commandline has a --noStop option
-					if (!cl.hasOption(CommandOptions.noStop) && toDelete > 0) {
+					if (!commandLine.hasOption(CommandOptions.noStop) && toDelete > 0) {
 						String q = "Do you want to continue and purge " + element.getApiMessageId() + " messages (y/n)?";
 						boolean result = askYesNo(q);
 						if (!result) {
@@ -906,7 +906,7 @@ public class SIBUSHelper {
 		Date currentTime = GregorianCalendar.getInstance().getTime();
 		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_"
 				+ getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
-		String path = cl.getOptionValue(CommandOptions.reportDirectory);
+		String path = commandLine.getOptionValue(CommandOptions.reportDirectory);
 
 		// Create file writer instances
 		logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the messages.");
@@ -937,7 +937,7 @@ public class SIBUSHelper {
 					}
 
 					// Check if the commandline has a --noStop option
-					if (!cl.hasOption(CommandOptions.noStop) && toMove > 0) {
+					if (!commandLine.hasOption(CommandOptions.noStop) && toMove > 0) {
 						String q = "Do you want to continue and resubmit " + toMove + " messages (y/n)?";
 						boolean result = askYesNo(q);
 						if (!result) {
@@ -984,7 +984,7 @@ public class SIBUSHelper {
 					}
 
 					// Check if the commandline has a --noStop option
-					if (!cl.hasOption(CommandOptions.noStop) && toMove > 0) {
+					if (!commandLine.hasOption(CommandOptions.noStop) && toMove > 0) {
 						String q = "Do you want to continue and resubmit " + element.getApiMessageId() + " messages (y/n)?";
 						boolean result = askYesNo(q);
 						if (!result) {
@@ -1076,7 +1076,7 @@ public class SIBUSHelper {
 					}
 
 					// Check if the commandline has a --noStop option
-					if (!cl.hasOption(CommandOptions.noStop) && toMove > 0) {
+					if (!commandLine.hasOption(CommandOptions.noStop) && toMove > 0) {
 						String q = "Do you want to continue and move " + toMove + " messages (y/n)?";
 						boolean result = askYesNo(q);
 						if (!result) {
@@ -1120,7 +1120,7 @@ public class SIBUSHelper {
 					}
 
 					// Check if the commandline has a --noStop option
-					if (!cl.hasOption(CommandOptions.noStop) && toMove > 0) {
+					if (!commandLine.hasOption(CommandOptions.noStop) && toMove > 0) {
 						String q = "Do you want to continue and move " + element.getApiMessageId() + " messages (y/n)?";
 						boolean result = askYesNo(q);
 						if (!result) {
@@ -1163,7 +1163,7 @@ public class SIBUSHelper {
 		Date currentTime = GregorianCalendar.getInstance().getTime();
 		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_"
 				+ getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
-		String path = cl.getOptionValue(CommandOptions.reportDirectory);
+		String path = commandLine.getOptionValue(CommandOptions.reportDirectory);
 		boolean isHeader = false;
 
 		// Create file writer instances
@@ -1255,7 +1255,7 @@ public class SIBUSHelper {
 		Date currentTime = GregorianCalendar.getInstance().getTime();
 		String filename = Constants.FILE_PREFIX + "_" + sibusAction + "_" + sibusComponent.toUpperCase() + "_"
 				+ getStrippedFileName(argqueue) + "_" + sdf.format(currentTime);
-		String path = cl.getOptionValue(CommandOptions.reportDirectory);
+		String path = commandLine.getOptionValue(CommandOptions.reportDirectory);
 
 		// Create file writer instances
 		logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the messages.");
