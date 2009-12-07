@@ -349,12 +349,17 @@ public class MessagingHelperImpl implements MessagingHelper {
 	 * @see no.nav.sibushelper.helper.MessagingHelper#browseQueue(java.lang.String,
 	 *      java.lang.String, java.lang.String)
 	 */
-	public List<MessageInfo> browseQueue(String busName, String meName, String queueName)
+	public List<MessageInfo> browseQueue(String busName, String meName, String queueName, String msgSelector)
 			throws MessagingOperationFailedException {
 		SICoreConnection conn = null;
 		BrowserSession browserSession = null;
 		List<MessageInfo> browsedMsg = new ArrayList<MessageInfo>();
+		SelectionCriteria seCrit = null;
 
+		if (msgSelector != null) {
+			SelectionCriteriaFactory selcFact = SelectionCriteriaFactory.getInstance();
+			seCrit = selcFact.createSelectionCriteria(null, msgSelector, SelectorDomain.JMS);
+		}
 		try {
 			logger.logp(Level.FINE, className, "browseQueue()", "Connect to " + busName + ":" + meName);
 			conn = getConnectionToME(meName, busName);
@@ -362,7 +367,7 @@ public class MessagingHelperImpl implements MessagingHelper {
 			SIDestinationAddressFactory addrFact = SIDestinationAddressFactory.getInstance();
 			com.ibm.websphere.sib.SIDestinationAddress addr = addrFact.createSIDestinationAddress(queueName, false);
 			logger.logp(Level.FINE, className, "browseQueue()", "Start browse queue " + queueName);
-			browserSession = conn.createBrowserSession(addr, null, null, null);
+			browserSession = conn.createBrowserSession(addr, null, seCrit, null);
 			int numberOfMessagesBrowsed = 0;
 			do {
 				SIBusMessage msg = browserSession.next();

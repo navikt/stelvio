@@ -10,15 +10,16 @@ import java.util.List;
  * 
  */
 public interface MessagingHelper {
-
 	/**
 	 * @param busName
 	 * @param meName
 	 * @param queueName
+	 * @param msgSelector
+	 *            TODO
 	 * @return
 	 * @throws MessagingOperationFailedException
 	 */
-	public List<MessageInfo> browseQueue(String busName, String meName, String queueName)
+	public List<MessageInfo> browseQueue(String busName, String meName, String queueName, String msgSelector)
 			throws MessagingOperationFailedException;
 
 	/**
@@ -66,5 +67,4 @@ public interface MessagingHelper {
 	 */
 	public long clearQueue(String busName, String meName, String queueName, String msgSelector, long maxMesg)
 			throws MessagingOperationFailedException, DestinationNotFoundException;
-
 }

@@ -1185,7 +1185,7 @@ public class SIBUSHelper {
 						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
 				logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
 				List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), Constants.SE_QUEUE
-						+ meInfo.getName());
+						+ meInfo.getName(), null);
 
 				if (!list.isEmpty()) {
 					logger.log(Level.FINE, "Writing messages to file...Please wait");
@@ -1212,7 +1212,7 @@ public class SIBUSHelper {
 						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
 				logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
 				List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), Constants.SE_QUEUE
-						+ meInfo.getName());
+						+ meInfo.getName(), null);
 
 				logger.log(Level.FINE, "Writing messages to file...Please wait");
 
@@ -1275,7 +1275,7 @@ public class SIBUSHelper {
 
 				// all messages
 				if (argfilter.equals(Constants.ARG_FILTER)) {
-					List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue);
+					List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue, null);
 
 					logger.log(Level.FINE, "Writing messages to file...Please wait");
 					fileWriter.writeHeader();
