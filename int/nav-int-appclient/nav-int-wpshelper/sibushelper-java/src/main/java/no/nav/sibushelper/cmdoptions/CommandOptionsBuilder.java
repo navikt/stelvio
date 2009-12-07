@@ -161,6 +161,7 @@ public class CommandOptionsBuilder {
 	private Option getProblemDestinationOption() {
 		Option option = getGeneralOption(CommandOptions.problemDestination, "pd");
 		option.setDescription("Filter by problem destination. Supports exact name only.");
+		option.setArgName("problem destination name");
 		return option;
 	}
 
