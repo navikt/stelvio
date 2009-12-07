@@ -2341,7 +2341,6 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/META-INF/
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/META-INF/application-client.xml -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/Main.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/SIBUSHelper.java -text svneol=unset#text/plain
-int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/ArgumentUtil.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/ArgumentValidator.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/CommandOptions.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/cmdoptions/CommandOptionsBuilder.java -text svneol=unset#text/plain
