@@ -1172,11 +1172,11 @@ public class SIBUSHelper {
 
 		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
 		System.out.println();
-		
+
 		String msgSelector = null;
 		if (commandLine.hasOption(CommandOptions.problemDestination)) {
 			String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
-			msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'"; 
+			msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'";
 		}
 
 		for (MEInfo element0 : mesInfo) {
@@ -1207,6 +1207,7 @@ public class SIBUSHelper {
 				}
 				System.out.println();
 				System.out.println(" EXCEPTIONPOINT(" + Constants.SE_QUEUE + meInfo.getName() + ")");
+				System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 				System.out.println("  MESSAGE COUNT(" + list.size() + ")");
 				System.out.println("  BROWSED(" + "DONE" + ")");
 				System.out.println();
@@ -1234,6 +1235,7 @@ public class SIBUSHelper {
 
 				System.out.println();
 				System.out.println(" EXCEPTIONPOINT(" + Constants.SE_QUEUE + meInfo.getName() + ")");
+				System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 				System.out.println("  MESSAGE COUNT(" + list.size() + ")");
 				System.out.println("  BROWSED(" + "DONE" + ")");
 				System.out.println();
@@ -1284,7 +1286,7 @@ public class SIBUSHelper {
 					String msgSelector = null;
 					if (commandLine.hasOption(CommandOptions.problemDestination)) {
 						String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
-						msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'"; 
+						msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'";
 					}
 					List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue, msgSelector);
 
@@ -1298,6 +1300,7 @@ public class SIBUSHelper {
 
 					System.out.println();
 					System.out.println(" DESTINATION(" + argqueue + ")");
+					System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 					System.out.println("  MESSAGE COUNT(" + list.size() + ")");
 					System.out.println("  BROWSED(" + "DONE" + ")");
 					System.out.println();
