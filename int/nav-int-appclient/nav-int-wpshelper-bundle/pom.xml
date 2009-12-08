@@ -4,7 +4,7 @@
 	<groupId>no.nav.int.appclient.wpshelper</groupId>
 	<artifactId>wpshelper-bundle</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.6-SNAPSHOT</version>
+	<version>1.1-SNAPSHOT</version>
 	<name>WPS Helper Bundle Module</name>
 
 	<scm>
