@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.int.appclient.wpshelper</groupId>
 		<artifactId>wpshelper</artifactId>
-		<version>1.1-SNAPSHOT</version>
+		<version>1.1</version>
 		<relativePath>../</relativePath>
 	</parent>
 
@@ -13,8 +13,8 @@
 	<name>BPC Helper Application Client</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/bpchelper-java</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/nav-int-appclient/nav-int-wpshelper/bpchelper-java</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-1.1/bpchelper-java</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/wpshelper-1.1/bpchelper-java</developerConnection>
 	</scm>
 
 	<build>
