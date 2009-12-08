@@ -609,11 +609,11 @@ int/maven/maven-poc/layers/modules/cons/target
 int/maven/maven-poc/layers/modules/gen
 int/maven/maven-poc/layers/modules/target
 int/maven/maven-poc/layers/target
+int/maven/maven-poc/module-client/*.classpath
+int/maven/maven-poc/module-client/.project
+int/maven/maven-poc/module-client/target
 int/maven/maven-poc/module-groups/poc-mg1/libs
 int/maven/maven-poc/module-groups/poc-mg1/modules
-int/maven/maven-poc/module2-client/*.classpath
-int/maven/maven-poc/module2-client/.project
-int/maven/maven-poc/module2-client/target
 int/maven/plugins/.classpath
 int/maven/plugins/.project
 int/maven/plugins/.settings
