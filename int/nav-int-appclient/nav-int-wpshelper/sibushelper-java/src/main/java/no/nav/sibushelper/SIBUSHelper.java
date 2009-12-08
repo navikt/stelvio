@@ -815,9 +815,18 @@ public class SIBUSHelper {
 
 				// all messages
 				if (argfilter.equals(Constants.ARG_FILTER)) {
+					String msgSelector = null;
+					if (commandLine.hasOption(CommandOptions.problemDestination)) {
+						String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
+						msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'";
+						
+						toDelete = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), queuename, msgSelector).size();
+					}
+					
 					if (toDelete == 0) {
 						System.out.println();
 						System.out.println(" QUEUEPOINT(" + queuename + ")");
+						System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 						System.out.println("  MESSAGE COUNT(" + toDelete + ")");
 						System.out.println("  MESSAGE PURGED(" + 0 + ")");
 						return 0;
@@ -832,10 +841,11 @@ public class SIBUSHelper {
 						}
 					}
 					logger.log(Level.INFO, "Deleting data on queue " + argqueue + ". Please wait can take time!");
-					long deleted = messagingHelper.clearQueue(busInfo.getName(), meInfo.getName(), queuename, null, toDelete);
+					long deleted = messagingHelper.clearQueue(busInfo.getName(), meInfo.getName(), queuename, msgSelector, toDelete);
 
 					System.out.println();
 					System.out.println(" QUEUEPOINT(" + queuename + ")");
+					System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 					System.out.println("  MESSAGE COUNT(" + toDelete + ")");
 					System.out.println("  MESSAGE PURGED(" + deleted + ")");
 					return deleted;
@@ -929,9 +939,18 @@ public class SIBUSHelper {
 
 				// all messages
 				if (argfilter.equals(Constants.ARG_FILTER)) {
+					String msgSelector = null;
+					if (commandLine.hasOption(CommandOptions.problemDestination)) {
+						String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
+						msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'";
+						
+						toMove = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue, msgSelector).size();
+					}
+					
 					if (toMove == 0) {
 						System.out.println();
 						System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
+						System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 						System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
 						return;
 					}
@@ -946,7 +965,7 @@ public class SIBUSHelper {
 					}
 					logger.log(Level.INFO, "Moving data from queue " + argqueue + ". Please wait can take time!");
 					List<MessageInfo> list = messagingHelper.moveExceptionToDestination(busInfo.getName(), meInfo.getName(),
-							argqueue, null, toMove);
+							argqueue, msgSelector, toMove);
 					if (!list.isEmpty()) {
 						logger.log(Level.FINE, "Writing messages to file...Please wait");
 						fileWriter.writeSEHeader();
@@ -959,6 +978,7 @@ public class SIBUSHelper {
 
 					System.out.println();
 					System.out.println(" EXCEPTIONPOINT(" + argqueue + ")");
+					System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 					System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
 					System.out.println("  MESSAGE MOVED(" + list.size() + ")");
 
@@ -1066,9 +1086,18 @@ public class SIBUSHelper {
 
 				// all messages
 				if (argfilter.equals(Constants.ARG_FILTER)) {
+					String msgSelector = null;
+					if (commandLine.hasOption(CommandOptions.problemDestination)) {
+						String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
+						msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'";
+						
+						toMove = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), queuename, msgSelector).size();
+					}
+					
 					if (toMove == 0) {
 						System.out.println();
 						System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
+						System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 						System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
 						System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
 						System.out.println("  MESSAGE MOVED(" + toMove + ")");
@@ -1084,10 +1113,11 @@ public class SIBUSHelper {
 						}
 					}
 					logger.log(Level.INFO, "Moving data to queue " + argqueue1 + ". Please wait can take time!");
-					long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1, null,
+					long moved = messagingHelper.moveMessages(busInfo.getName(), meInfo.getName(), queuename, queuename1, msgSelector,
 							toMove);
 					System.out.println();
 					System.out.println(" QUEUEPOINT SOURCE(" + queuename + ")");
+					System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
 					System.out.println("  MESSAGE TO MOVE(" + toMove + ")");
 					System.out.println(" QUEUEPOINT TARGET(" + queuename1 + ")");
 					System.out.println("  MESSAGE MOVED(" + moved + ")");
