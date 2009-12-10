@@ -9,11 +9,13 @@ import java.util.Properties;
 
 import no.nav.datapower.config.ConfigGenerator;
 import no.nav.datapower.config.EnvironmentResources;
+import no.nav.datapower.config.Policy;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
 import no.nav.datapower.util.ServiceLoader;
 
 import org.apache.commons.io.filefilter.NameFileFilter;
+import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
@@ -67,6 +69,29 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 	 * @readonly
 	 */
 	private MavenProject project;
+	
+	/**
+	 * Policies to configure, containing wsdl-interface dependencies
+	 * 
+	 * @parameter
+	 * @required
+	 */
+	private Policy[] policies;
+	
+	/**
+	 * Freemarker template to use
+	 * 
+	 * @parameter
+	 * @required
+	 */
+	private String template;
+	
+	/**
+	 * @component
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactResolver artifactResolver;
 
 	private Overrides overrides = null;
 
@@ -109,9 +134,13 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 			getLog().info("CONFIG_VERSION = " + version);
 			cfg.getProperties().setProperty("cfgVersion", version);
 		}
-		getLog().info("Environment properties:\r\n: " + DPPropertiesUtils.toString(cfg.getProperties()));
+		getLog().debug("Environment properties:\r\n: " + DPPropertiesUtils.toString(cfg.getProperties()));
 		cfg.setModuleDirectory(moduleDirectory);
 		ConfigGenerator gen = getConfigGenerator(cfg);
+		gen.setMavenProject(project);
+		gen.setArtifactResolver(artifactResolver);
+		gen.setEnvironmentProperty("template", template);
+		gen.setPolicies(policies);
 		getLog().info("START config generation");				
 		gen.generate();
 		getLog().info("END config generation");				
@@ -175,6 +204,7 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		return getFileList(getOverrides().getPubcertDir());
  	}
 	
+	@SuppressWarnings("unchecked")
 	private List<File> getFileList(File dir) {
 		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
 	}

@@ -3,6 +3,7 @@ package no.nav.datapower.config.partnergw;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -43,8 +44,8 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		EnvironmentResources cfg = getEnvironmentResources();
 		Properties props = cfg.getProperties();
 		props = new PropertiesBuilder(props).interpolate().buildProperties();
-		LOG.info("Properties:\r\n" + DPPropertiesUtils.toString(props));
-		LOG.info("Required Properties:\r\n" + DPPropertiesUtils.toString(getRequiredProperties()));
+		LOG.debug("Properties:\r\n" + DPPropertiesUtils.toString(props));
+		LOG.debug("Required Properties:\r\n" + DPPropertiesUtils.toString(getRequiredProperties()));
 		PropertiesValidator validator = new PropertiesValidator(props, getRequiredProperties());
 		if (validator.hasInvalidProperties()) {
 			throw new IllegalArgumentException("Configuration contains invalid Properties:\r\n" + validator.getErrorMessage());
@@ -56,10 +57,15 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 			File cfgFile = DPFileUtils.append(cfgPackage.getImportConfigDir(), cfg.getConfigFilename());
 			cfgPackage.setImportConfigFile(cfgFile);
 			FileWriter cfgWriter = new FileWriter(cfgFile);
-			setEnvironmentProperty("inboundWsdls", getInboundWsdls(cfgPackage.getFilesLocalWsdlDir()));
-			setEnvironmentProperty("outboundWsdls", getOutboundWsdls(cfgPackage.getFilesLocalWsdlDir()));
-			setEnvironmentProperty("inboundProxies", getInboundProxies(cfgPackage.getFilesLocalWsdlDir()));
-			setEnvironmentProperty("outboundProxies", getOutboundProxies(cfgPackage.getFilesLocalWsdlDir()));
+
+			resolveProxies(cfgPackage.getFilesLocalWsdlDir());
+
+//			File wsdlDir = new File(cfgPackage.getFilesLocalWsdlDir().getCanonicalPath()+"/no/nav/tpsamordningregistrering/V0_3/ws");
+//			setEnvironmentProperty("inboundWsdls", getInboundWsdls(wsdlDir));
+//			setEnvironmentProperty("outboundWsdls", getOutboundWsdls(cfgPackage.getFilesLocalWsdlDir()));
+//			setEnvironmentProperty("inboundProxies", getInboundProxies(cfgPackage.getFilesLocalWsdlDir()));
+//			setEnvironmentProperty("inboundProxies", getInboundProxies(cfgPackage.getFilesLocalWsdlDir()));
+//			setEnvironmentProperty("outboundProxies", getOutboundProxies(cfgPackage.getFilesLocalWsdlDir()));
 			addTrustCerts(cfg.getProperties());
 			processTemplate(TEMPLATE_CFG, cfg.getProperties(), cfgWriter);
 			cfgWriter.flush();
@@ -85,55 +91,56 @@ public class PGWConfigGeneratorImpl extends FreemarkerConfigGenerator {
 		setEnvironmentProperty("partnerTrustedCerts", trustCertMapList);
 	}
 
-	private List<WSDLFile> getInboundWsdls(File directory) throws IOException {
-		List<WSDLFile> inboundWsdls = DPCollectionUtils.newArrayList();
-		String uriMapping = getEnvironmentProperty("cfgInboundUriMapping");
-		for (File wsdlFile : directory.listFiles()) {
-			inboundWsdls.add(WSDLFile.createMappedUri(wsdlFile, new File("wsdlDirectory"), uriMapping));			
-		}
-		return inboundWsdls;
-	}
-
-	private List<WSProxy> getInboundProxies(File directory) throws IOException {
-		List<WSProxy> proxies = DPCollectionUtils.newArrayList();
-		List<WSDLFile> wsdls = getInboundWsdls(directory);
-		for (WSDLFile wsdl : wsdls) {
-			System.out.println("getInboundWsdl(), proxyName = " + wsdl.getProxyName());
-			getProxyByName(proxies, wsdl.getProxyName()).addWsdl(wsdl);
-		}
-		return proxies;
-	}
-
-	
-	private List<WSProxy> getOutboundProxies(File directory) throws IOException {
-		List<WSProxy> proxies = DPCollectionUtils.newArrayList();
-		List<WSDLFile> wsdls = getOutboundWsdls(directory);
-		for (WSDLFile wsdl : wsdls) {
-			getProxyByName(proxies, wsdl.getProxyName()).addWsdl(wsdl);
-		}
-		return proxies;
-	}
-	
-	private WSProxy getProxyByName(List<WSProxy> proxies, String name) {
-		WSProxy proxy = null;
-		for (WSProxy p : proxies) {
-			if (p.getName().equals(name)) {
-				proxy = p;
-			}
-		}
-		if (proxy == null) {
-			proxy = new WSProxy(name);
-			proxies.add(proxy);
-		}
-		return proxy;
-	}
-
-	private List<WSDLFile> getOutboundWsdls(File directory) throws IOException {
-		List<WSDLFile> outboundWsdls = DPCollectionUtils.newArrayList();
-		for (File wsdlFile : directory.listFiles()) {
-			outboundWsdls.add(new WSDLFile(wsdlFile, new File("wsdlDirectory")));
-		}
-		return outboundWsdls;
-	}
-	
+//	private List<WSDLFile> getInboundWsdls(File directory) throws IOException {
+//		List<WSDLFile> inboundWsdls = DPCollectionUtils.newArrayList();
+//		String uriMapping = getEnvironmentProperty("cfgInboundUriMapping");
+//		for (File wsdlFile : directory.listFiles()) {
+//			inboundWsdls.add(WSDLFile.createMappedUri(wsdlFile, new File("wsdlDirectory"), uriMapping));			
+//		}
+//		return inboundWsdls;
+//	}
+//
+//	private List<WSProxy> getInboundProxies(File directory) throws IOException {
+//		List<WSProxy> proxies = new ArrayList<WSProxy>();
+//
+//		List<WSDLFile> wsdls = getInboundWsdls(directory);
+//		for (WSDLFile wsdl : wsdls) {
+//			System.out.println("getInboundWsdl(), proxyName = " + wsdl.getProxyName());
+//			getProxyByName(proxies, wsdl.getProxyName()).addWsdl(wsdl);
+//		}
+//		return proxies;
+//	}
+//
+//	
+//	private List<WSProxy> getOutboundProxies(File directory) throws IOException {
+//		List<WSProxy> proxies = DPCollectionUtils.newArrayList();
+//		List<WSDLFile> wsdls = getOutboundWsdls(directory);
+//		for (WSDLFile wsdl : wsdls) {
+//			getProxyByName(proxies, wsdl.getProxyName()).addWsdl(wsdl);
+//		}
+//		return proxies;
+//	}
+//	
+//	private WSProxy getProxyByName(List<WSProxy> proxies, String name) {
+//		WSProxy proxy = null;
+//		for (WSProxy p : proxies) {
+//			if (p.getName().equals(name)) {
+//				proxy = p;
+//			}
+//		}
+//		if (proxy == null) {
+//			proxy = new WSProxy(name);
+//			proxies.add(proxy);
+//		}
+//		return proxy;
+//	}
+//
+//	private List<WSDLFile> getOutboundWsdls(File directory) throws IOException {
+//		List<WSDLFile> outboundWsdls = DPCollectionUtils.newArrayList();
+//		for (File wsdlFile : directory.listFiles()) {
+//			outboundWsdls.add(new WSDLFile(wsdlFile, new File("wsdlDirectory")));
+//		}
+//		return outboundWsdls;
+//	}
+//	
 }
