@@ -309,6 +309,9 @@ dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapo
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportConfigTester.java -text
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportFilesTester.java -text
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/XMLMgmtSessionTester.java -text
+dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/pom.xml -text
+dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigMojo.java -text
+dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/freemarker/Freemarker.java -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/pom.xml -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDataPowerMojo.java -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDeviceMgmtMojo.java -text
