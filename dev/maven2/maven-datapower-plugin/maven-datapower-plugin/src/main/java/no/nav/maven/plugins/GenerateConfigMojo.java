@@ -2,20 +2,21 @@ package no.nav.maven.plugins;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
 import no.nav.datapower.config.ConfigGenerator;
+import no.nav.datapower.config.ConfigPackage;
 import no.nav.datapower.config.EnvironmentResources;
-import no.nav.datapower.config.Policy;
 import no.nav.datapower.util.DPFileUtils;
 import no.nav.datapower.util.DPPropertiesUtils;
 import no.nav.datapower.util.ServiceLoader;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.NameFileFilter;
-import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
@@ -69,29 +70,6 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 	 * @readonly
 	 */
 	private MavenProject project;
-	
-	/**
-	 * Policies to configure, containing wsdl-interface dependencies
-	 * 
-	 * @parameter
-	 * @required
-	 */
-	private Policy[] policies;
-	
-	/**
-	 * Freemarker template to use
-	 * 
-	 * @parameter
-	 * @required
-	 */
-	private String template;
-	
-	/**
-	 * @component
-	 * @readonly
-	 * @required
-	 */
-	private ArtifactResolver artifactResolver;
 
 	private Overrides overrides = null;
 
@@ -126,6 +104,11 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		getLog().info("PropertiesDirectory = " + propertiesDirectory);
 		getLog().info("OutputDirectory = " + outputDirectory);
 		getLog().info("ModuleDirectory = " + moduleDirectory);
+		try {
+			cleanDirectory(outputDirectory);
+		} catch (IOException e) {
+			throw new MojoExecutionException("Failed to clean outputDirectory", e);
+		}
 		EnvironmentResources cfg = new EnvironmentResources();
 		cfg.addProperties(DPPropertiesUtils.load(getPropertiesFile(propertiesDirectory)));
 		addLocalOverrides(cfg);
@@ -134,16 +117,22 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 			getLog().info("CONFIG_VERSION = " + version);
 			cfg.getProperties().setProperty("cfgVersion", version);
 		}
-		getLog().debug("Environment properties:\r\n: " + DPPropertiesUtils.toString(cfg.getProperties()));
+		getLog().info("Environment properties:\r\n: " + DPPropertiesUtils.toString(cfg.getProperties()));
 		cfg.setModuleDirectory(moduleDirectory);
 		ConfigGenerator gen = getConfigGenerator(cfg);
-		gen.setMavenProject(project);
-		gen.setArtifactResolver(artifactResolver);
-		gen.setEnvironmentProperty("template", template);
-		gen.setPolicies(policies);
 		getLog().info("START config generation");				
-		gen.generate();
+		ConfigPackage unit = gen.generate();
 		getLog().info("END config generation");				
+	}
+	
+	private void cleanDirectory(File directory) throws IOException {
+		if (directory.exists()) {
+			for (File file : directory.listFiles()) {
+//				if (file.isDirectory())
+				System.out.println("Deleting: " + file);
+				FileUtils.deleteDirectory(file);
+			}
+		}
 	}
 	
 	private File getPropertiesFile(File dir) {
@@ -204,7 +193,6 @@ public class GenerateConfigMojo extends AbstractDataPowerMojo {
 		return getFileList(getOverrides().getPubcertDir());
  	}
 	
-	@SuppressWarnings("unchecked")
 	private List<File> getFileList(File dir) {
 		return (dir == null || dir.listFiles() == null) ? (List<File>)Collections.EMPTY_LIST : Arrays.asList(dir.listFiles());
 	}

@@ -147,10 +147,8 @@ dev/maven2/maven-datapower-plugin/datapower-cfg-gen/pom.xml -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigGenerator.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/ConfigPackage.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/EnvironmentResources.java -text
-dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/Policy.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/WSDLFile.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/WSProxy.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/WsdlArtifact.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/FreemarkerConfigGenerator.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/DPTemplateLib.java -text
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/src/main/java/no/nav/datapower/config/freemarker/templates/StreamTemplateLoader.java -text
