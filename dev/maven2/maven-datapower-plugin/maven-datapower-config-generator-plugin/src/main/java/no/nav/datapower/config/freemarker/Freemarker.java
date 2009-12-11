@@ -1,4 +1,4 @@
-package no.nav.maven.plugins.freemarker;
+package no.nav.datapower.config.freemarker;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import freemarker.template.TemplateException;
  */
 public class Freemarker {
 
-	private static final String TEMPLATE_DIR = "src/main/resources/freemarker-templates";
+	private static final String TEMPLATE_DIR = "src/main/freemarker-templates";
 	private static final String DATAPOWER_CFG_GEN_RESOURCE_PREFIX = "/lib/";
 	private Configuration configuration;
 
