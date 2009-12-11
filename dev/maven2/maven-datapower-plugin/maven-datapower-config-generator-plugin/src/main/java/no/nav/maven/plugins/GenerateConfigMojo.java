@@ -136,7 +136,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 	private void mapWSDLsToProxies(Policy[] policies, File wsdlFilesDir, File localFilesDir) throws IOException {
 		// Map each policy as specified in the configuration
 		for (Policy policy : policies) {
-			System.out.println("Adding WSDLs for policy '" + policy.getName() + "'");
+			getLog().info("Adding WSDLs for policy '" + policy.getName() + "'");
 			List<WSDLFile> wsdlFiles = new ArrayList<WSDLFile>();
 			// Try to match groupId/artifactId in configuration against the list of dependencies
 			for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
