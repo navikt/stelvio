@@ -36,7 +36,8 @@ public class WsdlArtifact {
 		if (!artifact.getGroupId().equals(getGroupId())) {
 			return false;
 		}
-		if (!artifact.getArtifactId().equals(getArtifactId())) {
+		// Use regexp-matching for artifactId
+		if (!artifact.getArtifactId().matches(getArtifactId())) {
 			return false;
 		}
 		if (!artifact.getType().equals(getType())) {

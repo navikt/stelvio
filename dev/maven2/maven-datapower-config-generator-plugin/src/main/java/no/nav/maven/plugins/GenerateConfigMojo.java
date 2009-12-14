@@ -3,12 +3,15 @@ package no.nav.maven.plugins;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -139,32 +142,26 @@ public class GenerateConfigMojo extends AbstractMojo {
 		// Map each policy as specified in the configuration
 		for (Policy policy : policies) {
 			getLog().info("Adding WSDLs for policy '" + policy.getName() + "'");
-			List<WSDLFile> wsdlFiles = new ArrayList<WSDLFile>();
+			Set<WSDLFile> wsdlFiles = new LinkedHashSet<WSDLFile>();
 			// Try to match groupId/artifactId in configuration against the list
 			// of dependencies
-			for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
-				List<Artifact> artifacts = new ArrayList<Artifact>();
-				for (Iterator iter = project.getDependencyArtifacts().iterator(); iter.hasNext();) {
-					Artifact artifact = (Artifact) iter.next();
+			for (Iterator iter = project.getDependencyArtifacts().iterator(); iter.hasNext();) {
+				Artifact artifact = (Artifact) iter.next();
+				for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
 					getLog().debug("Checking if " + wsdlArtifact + " matches " + artifact);
 					if (wsdlArtifact.equals(artifact)) {
-						artifacts.add(artifact);
+						// Add all hits
+						ZipFile zipFile = new ZipFile(artifact.getFile());
+						Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir);
+						wsdlFiles.addAll(wsdls);
+						getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
+						break;
 					}
-				}
-				// Check that the filter gives a unique hit
-				if (artifacts.size() != 1) {
-					throw new RuntimeException("Artifact " + wsdlArtifact + " matched " + artifacts.size()
-							+ " dependencies - expected 1");
-				}
-				// Add all hits
-				for (Artifact artifact : artifacts) {
-					ZipFile zipFile = new ZipFile(artifact.getFile());
-					wsdlFiles.addAll(findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir));
 				}
 			}
 			// Since one proxy can have multiple WSDLs, make a list of proxies
 			// each containing a list of WSDLs
-			List<WSProxy> proxies = getProxies(wsdlFiles);
+			Collection<WSProxy> proxies = getProxies(wsdlFiles);
 			// Assume naming standard "<policyname>Proxies" for property with
 			// proxy list
 			properties.put(policy.getName() + "Proxies", proxies);
@@ -176,9 +173,9 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * contains a SOAP service) The WSDL (same relative path as in the ZIP file)
 	 * is lookuped in a directory and added to the list of WSDL files returned
 	 */
-	private List<WSDLFile> findWsdlFiles(Enumeration<? extends java.util.zip.ZipEntry> name, File wsdlFilesDir,
+	private Set<WSDLFile> findWsdlFiles(Enumeration<? extends java.util.zip.ZipEntry> name, File wsdlFilesDir,
 			File localFilesDir) {
-		List<WSDLFile> wsdlFiles = new ArrayList<WSDLFile>();
+		Set<WSDLFile> wsdlFiles = new LinkedHashSet<WSDLFile>();
 		// Iterate through the ZIP file
 		while (name.hasMoreElements()) {
 			ZipEntry zipEntry = (ZipEntry) name.nextElement();
@@ -200,28 +197,17 @@ public class GenerateConfigMojo extends AbstractMojo {
 		return wsdlFiles;
 	}
 
-	private List<WSProxy> getProxies(List<WSDLFile> wsdlFiles) {
-		List<WSProxy> proxies = new ArrayList<WSProxy>();
+	private Collection<WSProxy> getProxies(Set<WSDLFile> wsdlFiles) {
+		Map<String, WSProxy> proxies = new LinkedHashMap<String, WSProxy>();
 
 		for (WSDLFile wsdl : wsdlFiles) {
-			getProxyByName(proxies, wsdl.getProxyName()).addWsdl(wsdl);
-		}
-		return proxies;
-	}
-
-	// TODO rewrite to use HashSet
-	private WSProxy getProxyByName(List<WSProxy> proxies, String name) {
-		WSProxy proxy = null;
-		for (WSProxy p : proxies) {
-			if (p.getName().equals(name)) {
-				proxy = p;
+			WSProxy proxy = new WSProxy(wsdl.getProxyName());
+			if (proxies.containsKey(proxy.getName())) {
+				proxy = proxies.get(proxy);
 			}
+			proxy.addWsdl(wsdl);
 		}
-		if (proxy == null) {
-			proxy = new WSProxy(name);
-			proxies.add(proxy);
-		}
-		return proxy;
+		return proxies.values();
 	}
 
 	private void processFreemarkerTemplates(File configFile) throws IOException, TemplateException {

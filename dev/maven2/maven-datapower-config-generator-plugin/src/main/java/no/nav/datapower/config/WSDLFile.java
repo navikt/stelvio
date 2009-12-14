@@ -134,4 +134,20 @@ public class WSDLFile {
 	protected void setProxy(WSProxy proxy) {
 		this.proxy = proxy;
 	}
+
+	@Override
+	public boolean equals(Object oThat) {
+		if (oThat instanceof WSDLFile) {
+			WSDLFile that = (WSDLFile) oThat;
+			if (that.getRelativePath().equals(this.relativePath)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return this.getRelativePath().hashCode();
+	}
 }
