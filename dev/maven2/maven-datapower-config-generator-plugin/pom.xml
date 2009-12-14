@@ -32,4 +32,9 @@
 			<version>1.1.15</version>
 		</dependency>
 	</dependencies>
+	
+	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-config-generator-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-config-generator-plugin</developerConnection>
+	</scm>
 </project>
