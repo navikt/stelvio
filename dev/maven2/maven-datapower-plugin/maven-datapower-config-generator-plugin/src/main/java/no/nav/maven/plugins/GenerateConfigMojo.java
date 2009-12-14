@@ -34,7 +34,7 @@ import freemarker.template.TemplateException;
 
 /**
  * Goal which generates a DataPower configuration.
- *
+ * 
  * @goal generate
  * @phase compile
  * 
@@ -52,7 +52,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private MavenProject project;
-	
+
 	/**
 	 * Policies to configure proxies for, containing wsdl-interface dependencies
 	 * 
@@ -77,7 +77,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 		getLog().debug("ConfigDirectory=" + outputDirectory);
 		File configFile = new File(outputDirectory, "configuration.xml");
 		getLog().debug("ConfigFile=" + configFile);
-		
+
 		properties = loadProperties(propertiesFile.getPath());
 		// Create list of trusted partner certificates and add to properties
 		addTrustCerts(properties);
@@ -91,7 +91,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 		} catch (IOException e) {
 			throw new IllegalStateException("Error while mapping from WSDLs to proxies", e);
 		}
-		
+
 		// Merge templates with properties and output to config file
 		try {
 			processFreemarkerTemplates(configFile);
@@ -114,33 +114,36 @@ public class GenerateConfigMojo extends AbstractMojo {
 	}
 
 	/*
-	 * Expand trust certificate property and inject new expanded property
-	 * TODO Move out of the generic configuration generator
+	 * Expand trust certificate property and inject new expanded property TODO
+	 * Move out of the generic configuration generator
 	 */
 	private void addTrustCerts(Properties props) {
-		List<String> trustCertList = DPCollectionUtils.listFromString(props.getProperty("partnerTrustCerts"));
-		List<Map<String, String>> trustCertMapList = DPCollectionUtils.newArrayList();
-		for (String trustCert : trustCertList) {
-			Map<String,String> cert = DPCollectionUtils.newHashMap();
-			cert.put("name", trustCert.substring(trustCert.lastIndexOf("/")+1));
-			cert.put("file", trustCert);
-			trustCertMapList.add(cert);
+		if (props.getProperty("partnerTrustCerts") != null) {
+			List<String> trustCertList = DPCollectionUtils.listFromString(props.getProperty("partnerTrustCerts"));
+			List<Map<String, String>> trustCertMapList = DPCollectionUtils.newArrayList();
+			for (String trustCert : trustCertList) {
+				Map<String, String> cert = DPCollectionUtils.newHashMap();
+				cert.put("name", trustCert.substring(trustCert.lastIndexOf("/") + 1));
+				cert.put("file", trustCert);
+				trustCertMapList.add(cert);
+			}
+			props.put("partnerTrustedCerts", trustCertMapList);
 		}
-		props.put("partnerTrustedCerts", trustCertMapList);
 	}
 
 	/*
-	 * Go through list of policies containing lists of WSDLs and add a property to 'properties'
-	 * for the list of proxies and WSDLs for each policy
+	 * Go through list of policies containing lists of WSDLs and add a property
+	 * to 'properties' for the list of proxies and WSDLs for each policy
 	 */
 	private void mapWSDLsToProxies(Policy[] policies, File wsdlFilesDir, File localFilesDir) throws IOException {
 		// Map each policy as specified in the configuration
 		for (Policy policy : policies) {
 			getLog().info("Adding WSDLs for policy '" + policy.getName() + "'");
 			List<WSDLFile> wsdlFiles = new ArrayList<WSDLFile>();
-			// Try to match groupId/artifactId in configuration against the list of dependencies
+			// Try to match groupId/artifactId in configuration against the list
+			// of dependencies
 			for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
-				List<Artifact> artifacts = new ArrayList<Artifact>(); 
+				List<Artifact> artifacts = new ArrayList<Artifact>();
 				for (Iterator iter = project.getDependencyArtifacts().iterator(); iter.hasNext();) {
 					Artifact artifact = (Artifact) iter.next();
 					getLog().debug("Checking if " + wsdlArtifact + " matches " + artifact);
@@ -150,7 +153,8 @@ public class GenerateConfigMojo extends AbstractMojo {
 				}
 				// Check that the filter gives a unique hit
 				if (artifacts.size() != 1) {
-					throw new RuntimeException("Artifact " + wsdlArtifact + " matched " + artifacts.size() + " dependencies - expected 1");
+					throw new RuntimeException("Artifact " + wsdlArtifact + " matched " + artifacts.size()
+							+ " dependencies - expected 1");
 				}
 				// Add all hits
 				for (Artifact artifact : artifacts) {
@@ -158,19 +162,22 @@ public class GenerateConfigMojo extends AbstractMojo {
 					wsdlFiles.addAll(findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir));
 				}
 			}
-			// Since one proxy can have multiple WSDLs, make a list of proxies each containing a list of WSDLs 
+			// Since one proxy can have multiple WSDLs, make a list of proxies
+			// each containing a list of WSDLs
 			List<WSProxy> proxies = getProxies(wsdlFiles);
-			// Assume naming standard "<policyname>Proxies" for property with proxy list
+			// Assume naming standard "<policyname>Proxies" for property with
+			// proxy list
 			properties.put(policy.getName() + "Proxies", proxies);
 		}
 	}
 
 	/*
-	 * Iterates through a ZIP file and find all WSDL ports (filename *.wsdl and contains a SOAP service)
-	 * The WSDL (same relative path as in the ZIP file) is lookuped in a directory
-	 * and added to the list of WSDL files returned
+	 * Iterates through a ZIP file and find all WSDL ports (filename *.wsdl and
+	 * contains a SOAP service) The WSDL (same relative path as in the ZIP file)
+	 * is lookuped in a directory and added to the list of WSDL files returned
 	 */
-	private List<WSDLFile> findWsdlFiles(Enumeration<? extends java.util.zip.ZipEntry> name, File wsdlFilesDir, File localFilesDir) {
+	private List<WSDLFile> findWsdlFiles(Enumeration<? extends java.util.zip.ZipEntry> name, File wsdlFilesDir,
+			File localFilesDir) {
 		List<WSDLFile> wsdlFiles = new ArrayList<WSDLFile>();
 		// Iterate through the ZIP file
 		while (name.hasMoreElements()) {
@@ -179,9 +186,11 @@ public class GenerateConfigMojo extends AbstractMojo {
 			// Only check files with extension .wsdl
 			if (filename.endsWith(".wsdl")) {
 				File file = new File(wsdlFilesDir, zipEntry.getName());
-				// Load WSDL and check if it has a port (eliminate WSDLs with port type)
+				// Load WSDL and check if it has a port (eliminate WSDLs with
+				// port type)
 				Definition definition = DPWsdlUtils.getDefinition(file.getPath());
-				if (definition.getServices().size() > 0) { // Only keep ports, not port types
+				if (definition.getServices().size() > 0) { // Only keep ports,
+															// not port types
 					WSDLFile wsdlFile = new WSDLFile(file, localFilesDir);
 					wsdlFiles.add(wsdlFile);
 					getLog().info("Found WSDL " + wsdlFile.getProxyName());
