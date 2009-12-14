@@ -52,6 +52,11 @@ dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/EarExtra
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/FixArenaSak.java -text
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/JaxRPCHandlerMojo.java -text
 dev/maven2/maven-config-fixer-plugin/src/main/java/no/nav/maven/plugins/ZipUtils.java -text
+dev/maven2/maven-datapower-config-generator-plugin/pom.xml -text
+dev/maven2/maven-datapower-config-generator-plugin/src/main/java/no/nav/datapower/config/Policy.java -text
+dev/maven2/maven-datapower-config-generator-plugin/src/main/java/no/nav/datapower/config/WsdlArtifact.java -text
+dev/maven2/maven-datapower-config-generator-plugin/src/main/java/no/nav/datapower/config/freemarker/Freemarker.java -text
+dev/maven2/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigMojo.java -text
 dev/maven2/maven-datapower-configurer/pom.xml -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Base64Codec.java -text
 dev/maven2/maven-datapower-configurer/src/main/java/no/nav/maven/plugins/Configurer.java -text
@@ -308,11 +313,6 @@ dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapo
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportConfigTester.java -text
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportFilesTester.java -text
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/XMLMgmtSessionTester.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/pom.xml -text
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/src/main/java/no/nav/datapower/config/Policy.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/src/main/java/no/nav/datapower/config/WsdlArtifact.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/src/main/java/no/nav/datapower/config/freemarker/Freemarker.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigMojo.java -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/pom.xml -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDataPowerMojo.java -text
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDeviceMgmtMojo.java -text

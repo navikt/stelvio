@@ -27,6 +27,11 @@ dev/maven2/maven-build-fixer-plugin/.classpath
 dev/maven2/maven-build-fixer-plugin/.project
 dev/maven2/maven-build-fixer-plugin/.settings
 dev/maven2/maven-build-fixer-plugin/target
+dev/maven2/maven-datapower-config-generator-plugin/.classpath
+dev/maven2/maven-datapower-config-generator-plugin/.project
+dev/maven2/maven-datapower-config-generator-plugin/.settings
+dev/maven2/maven-datapower-config-generator-plugin/bin
+dev/maven2/maven-datapower-config-generator-plugin/target
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.classpath
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.project
 dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.settings
@@ -42,11 +47,6 @@ dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/.project
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/.settings
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/bin
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/target
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/.classpath
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/.project
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/.settings
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/bin
-dev/maven2/maven-datapower-plugin/maven-datapower-config-generator-plugin/target
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/.classpath
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/.project
 dev/maven2/maven-datapower-plugin/maven-datapower-plugin/.settings
