@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Hashtable;
 
-import no.nav.datapower.config.freemarker.FreemarkerConfigGenerator;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
@@ -24,7 +23,7 @@ import freemarker.template.TemplateException;
 public class Freemarker {
 
 	private static final String TEMPLATE_DIR = "src/main/freemarker-templates";
-	private static final String DATAPOWER_CFG_GEN_RESOURCE_PREFIX = "/lib/";
+	private static final String DATAPOWER_CFG_GEN_RESOURCE_PREFIX = "/freemarker-templates/";
 	private Configuration configuration;
 
 	/**
@@ -39,8 +38,8 @@ public class Freemarker {
 		configuration.setLocalizedLookup(false);
 		
 		FileTemplateLoader localLoader = new FileTemplateLoader(new File(TEMPLATE_DIR));
-		ClassTemplateLoader datapowerCfgGenLoader = new ClassTemplateLoader(FreemarkerConfigGenerator.class, DATAPOWER_CFG_GEN_RESOURCE_PREFIX);
-		TemplateLoader[] loaders = new TemplateLoader[] {localLoader, datapowerCfgGenLoader};
+		ClassTemplateLoader pluginLoader = new ClassTemplateLoader(this.getClass(), DATAPOWER_CFG_GEN_RESOURCE_PREFIX);
+		TemplateLoader[] loaders = new TemplateLoader[] {localLoader, pluginLoader};
 		MultiTemplateLoader mtl = new MultiTemplateLoader(loaders);
 		configuration.setTemplateLoader(mtl);
 	}
