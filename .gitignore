@@ -654,11 +654,6 @@ int/maven/plugins/maven-service-deploy-plugin/src/main/.classpath
 int/maven/plugins/maven-service-deploy-plugin/src/main/.project
 int/maven/plugins/maven-service-deploy-plugin/src/main/.settings
 int/maven/plugins/maven-service-deploy-plugin/src/main/bin
-int/maven/plugins/maven-service-deploy-plugin/src/main/scripts/.classpath
-int/maven/plugins/maven-service-deploy-plugin/src/main/scripts/.project
-int/maven/plugins/maven-service-deploy-plugin/src/main/scripts/.settings
-int/maven/plugins/maven-service-deploy-plugin/src/main/scripts/bin
-int/maven/plugins/maven-service-deploy-plugin/src/main/scripts/target
 int/maven/plugins/maven-service-deploy-plugin/src/main/target
 int/maven/plugins/maven-service-deploy-plugin/src/target
 int/maven/plugins/maven-service-deploy-plugin/target

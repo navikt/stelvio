@@ -2185,11 +2185,10 @@ int/maven/plugins/maven-service-deploy-plugin/pom.xml -text
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ProjectInterchangeServiceDeployAssembly.java -text svneol=unset#text/plain
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssembly.java -text svneol=unset#text/plain
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssemblyMojo.java -text svneol=unset#text/plain
+int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployMojo.java -text
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/SetArtifactFileMojo.java -text
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ZipServiceDeployAssembly.java -text svneol=unset#text/plain
 int/maven/plugins/maven-service-deploy-plugin/src/main/resources/META-INF/plexus/components.xml -text svneol=unset#text/plain
-int/maven/plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.build.xml -text
-int/maven/plugins/maven-service-deploy-plugin/src/main/scripts/serviceDeploy.mojos.xml -text
 int/maven/plugins/maven-update-ear-plugin/pom.xml -text
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/AddHandlerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text

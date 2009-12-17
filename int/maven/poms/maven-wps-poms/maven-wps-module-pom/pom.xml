@@ -1,15 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-wps-pom</artifactId>
-		<version>1.5.2-SNAPSHOT</version>
+		<version>1.6-SNAPSHOT</version>
 		<relativePath>../maven-wps-pom</relativePath>
 	</parent>
 
 	<artifactId>maven-wps-module-pom</artifactId>
-	<version>1.5.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework WPS Module Master POM</name>
 
@@ -40,12 +41,12 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
-					<version>1.6.1</version>
+					<version>1.7-SNAPSHOT</version>
 					<configuration>
 						<assemblyType>zip</assemblyType>
-						<keep>true</keep>
-						<progressMonitor>none</progressMonitor>
 						<fileEncoding>ISO-8859-1</fileEncoding>
+						<keep>true</keep>
+						<skipXsdValidate>true</skipXsdValidate>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -146,10 +147,14 @@ config.version=6.1
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom</developerConnection>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom
+		</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>

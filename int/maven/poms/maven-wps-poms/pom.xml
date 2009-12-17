@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>maven-wps-poms</artifactId>
-	<version>1.5.2-SNAPSHOT</version>
+	<version>1.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework WPS POMS</name>
 
