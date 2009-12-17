@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -43,11 +44,18 @@ public class ServiceDeployMojo extends AbstractMojo {
 	private String input;
 
 	/**
-	 * @parameter expression="${project.build.finalName}.ear"
+	 * @parameter expression="${project.build.finalName}.${project.artifact.artifactHandler.extension}"
 	 * @required
 	 * @readonly
 	 */
 	private String output;
+	
+	/**
+	 * @parameter expression="${project.artifact}"
+	 * @required
+	 * @readonly
+	 */
+	private Artifact artifact;
 
 	/**
 	 * @parameter
@@ -140,6 +148,8 @@ public class ServiceDeployMojo extends AbstractMojo {
 		commandLine.setWorkingDirectory(targetDirectory.getAbsolutePath());
 		commandLine.createArg().setLine(argLineBuilder.toString());
 		executeCommand(commandLine);
+		
+		artifact.setFile(new File(targetDirectory, output));
 	}
 
 	private void executeCommand(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
