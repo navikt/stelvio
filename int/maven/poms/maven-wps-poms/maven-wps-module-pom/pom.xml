@@ -41,7 +41,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
-					<version>1.7-SNAPSHOT</version>
+					<version>1.7</version>
 					<configuration>
 						<assemblyType>zip</assemblyType>
 						<fileEncoding>ISO-8859-1</fileEncoding>
