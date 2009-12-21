@@ -49,6 +49,11 @@
 						</rules>
 					</configuration>
 				</plugin>
+				
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
 
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
