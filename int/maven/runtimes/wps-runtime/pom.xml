@@ -10,14 +10,11 @@
 	<groupId>com.ibm.maven.runtimes</groupId>
 	<artifactId>wps-runtime</artifactId>
 	<packaging>jar</packaging>
-	<version>6.1.0.2-SNAPSHOT</version>
+	<version>7.0.0.0-SNAPSHOT</version>
 	<name>IBM WPS Runtime</name>
 
 	<build>
 		<resources>
-			<resource>
-				<directory>${basedir}\src\main\resources</directory>
-			</resource>
 			<resource>
 				<directory>${basedir}</directory>
 				<targetPath>META-INF</targetPath>
@@ -35,11 +32,12 @@
 						<phase>process-resources</phase>
 						<configuration>
 							<tasks>
-								<unzip dest="${project.build.outputDirectory}">
+								<loadfile property="files" srcFile="${basedir}/files.txt"/>
+								<unzip dest="${project.build.outputDirectory}" overwrite="false">
 									<patternset>
 										<include name="**/*.class" />
 									</patternset>
-									<fileset dir="${wid.runtime}" includesfile="files.txt" />
+									<filelist dir="${wps.runtime}" files="${files}" />
 								</unzip>
 							</tasks>
 						</configuration>
