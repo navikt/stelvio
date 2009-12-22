@@ -111,7 +111,7 @@ public class ServiceDeployMojo extends AbstractMojo {
 		if (Os.isFamily("windows")) {
 			commandLine = new Commandline(wpsRuntime + "/bin/serviceDeploy.bat");
 		} else {
-			commandLine = new Commandline(wpsRuntime + "/bin/serviceDeploy.bat");
+			commandLine = new Commandline(wpsRuntime + "/bin/serviceDeploy.sh");
 		}
 
 		StringBuilder argLineBuilder = new StringBuilder();
