@@ -2053,34 +2053,6 @@ int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerfikasjonWSExp_VerifikasjonHttpServiceLocator.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/Verifikasjon.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerifikasjonProxy.java -text svneol=unset#text/plain
-int/aroe/branch1/nav-cons-dok-joark-oppgave/.runtime -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/JOARKOppgaveTOOppgave.component -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/JOARKOppgaveWSEXP.export -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/JOARKOppgaveWSEXP_JOARKOppgaveHttp_Service.wsdl -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/OppgaveSCAIMP.import -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/catchSREToFault.component -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/ibm-deploy.scaj2ee -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/no/nav/inf/JOARKOppgave.wsdl -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/no/nav/infmap/JOARKOppgaveTOOppgave.ifm -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/no/nav/java/catchSREToFaultImpl.java -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/oppgave/joark/dok/cons/nav/no/nav/inf/JOARKOppgave.java -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/pom.xml -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/sca.module -text
-int/aroe/branch1/nav-cons-dok-joark-oppgave/sca.modulex -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/.runtime -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/JOARKOppgaveTOOppgave.component -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/JOARKOppgaveWSEXP.export -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/JOARKOppgaveWSEXP_JOARKOppgaveHttp_Service.wsdl -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/OppgaveSCAIMP.import -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/catchSREToFault.component -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/ibm-deploy.scaj2ee -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/no/nav/inf/JOARKOppgave.wsdl -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/no/nav/infmap/JOARKOppgaveTOOppgave.ifm -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/no/nav/java/catchSREToFaultImpl.java -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/oppgave/joark/dok/cons/nav/no/nav/inf/JOARKOppgave.java -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/pom.xml -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.module -text
-int/aroe/branch2/nav-cons-dok-joark-oppgave/sca.modulex -text
 int/maven/archetypes/pom.xml -text svneol=unset#text/plain
 int/maven/archetypes/wps-library-archetype/pom.xml -text svneol=unset#text/plain
 int/maven/archetypes/wps-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
