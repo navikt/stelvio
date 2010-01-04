@@ -92,16 +92,16 @@
 					<version>1.5</version>
 					<configuration>
 						<templateDir>
-							${basedir}/src/main/scripts/templates
+							${basedir}/target/bus-config/templates
 						</templateDir>
 						<environmentName>
 							${environment}
 						</environmentName>
 						<outputDir>
-							${basedir}/src/main/scripts/app_props
+							${basedir}/target/bus-config/app_props
 						</outputDir>
 						<environmentDir>
-							${basedir}/src/main/scripts/environments
+							${basedir}/target/bus-config/environments
 						</environmentDir>
 					</configuration>
 					<executions>
