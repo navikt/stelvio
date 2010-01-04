@@ -31,21 +31,33 @@
       <scope>compile</scope>
     </dependency>
   </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>nav-maven2-internal-repo</id>
-            <name>NAV Maven2 Internal Repository</name>
-            <url>scp://maven.adeo.no/var/maven2/internal</url>
-        </repository>
-        <snapshotRepository>
-            <id>nav-pensjon-maven2-snapshot-repo</id>
-            <name>NAV Maven2 Internal Snapshot Repository</name>
-            <url>scp://maven.adeo.no/var/maven2/snapshot</url>
-        </snapshotRepository>
-        <site>
-            <id>website</id>
-            <url>scp://10.33.1.53/var/www/html/project/maven/plugins/propertiesgenerator/</url>
-        </site>
-    </distributionManagement>
   
+    <distributionManagement>
+		<repository>
+			<id>nav-maven2-internal-repo</id>
+			<url>scp://maven.adeo.no/var/maven2/internal</url>
+		</repository>
+		<snapshotRepository>
+			<id>nav-pensjon-maven2-snapshot-repo</id>
+			<url>dav:http://e11apvl002.utv.internsone.local/repo</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-propertiesgenerator-plugin
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-propertiesgenerator-plugin
+		</developerConnection>
+	</scm>
+	
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-propertiesgenerator-plugin
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
+
 </project>
