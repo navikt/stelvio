@@ -16,14 +16,14 @@ public class MojoLauncher {
 			MojoExecutor.plugin(
         		   MojoExecutor.groupId("nav.maven.plugins"),
         		   MojoExecutor.artifactId("maven-propertiesgenerator-plugin"),
-        		   MojoExecutor.version("1.4")
+        		   MojoExecutor.version("1.5")
            ),
            MojoExecutor.goal("generate"),
            MojoExecutor.configuration(
-        		   MojoExecutor.element(MojoExecutor.name("templateDir"), "${basedir}/src/main/scripts/templates"),
+        		   MojoExecutor.element(MojoExecutor.name("templateDir"), "${basedir}/target/bus-config/templates"),
         		   MojoExecutor.element(MojoExecutor.name("environmentName"), "${environment}"),
-        		   MojoExecutor.element(MojoExecutor.name("outputDir"), "${basedir}/src/main/scripts/app_props"),
-        		   MojoExecutor.element(MojoExecutor.name("environmentDir"), "${basedir}/src/main/scripts/environments")
+        		   MojoExecutor.element(MojoExecutor.name("outputDir"), "${basedir}/target/bus-config/app_props"),
+        		   MojoExecutor.element(MojoExecutor.name("environmentDir"), "${basedir}/target/bus-config/environments")
            ),
            MojoExecutor.executionEnvironment(
                    project,

@@ -104,6 +104,14 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected Boolean interactiveMode;
+	
+	/**
+	 * @parameter expression="${project.build.directory}"
+	 * @required
+	 */
+	protected String targetDirectory;
+	
+	protected String busConfigurationExtractDirectory = "/target/bus-config";
 
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 
@@ -134,7 +142,16 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 	protected final void executeCommand(Commandline command) {
 		try {
-			getLog().info("Executing the following command: " + command.toString());
+			
+			// If a password is sent as a parameter, we hide it from the output
+			if (command.toString().contains("-password")) {
+				String cmd = command.toString().replaceFirst("-password\\s[\\w]+", "-password *****");
+				getLog().info("Executing the following command: " + cmd);
+			}
+			else {
+				getLog().info("Executing the following command: " + command.toString());
+			}
+			
 
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {

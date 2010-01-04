@@ -72,13 +72,13 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 */
 	protected String environment;
 	
-	protected  String scriptsHome;
-	protected  String deployableArtifactsHome;
+	protected String scriptsHome;
+	protected String deployableArtifactsHome;
 	
 	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
-		scriptsHome = baseDirectory + "/" + scriptDirectory;
+		scriptsHome = baseDirectory + busConfigurationExtractDirectory;
 		deployableArtifactsHome = baseDirectory + "/target";
 	
 		/* If scripts are not expanded OR the scripts are from an old busconfiguration version create new ones */
@@ -101,7 +101,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		commandLine.addArg(arg2);
 		
 		getLog().info("User: " + deploymentManagerUser);
-		getLog().info("Pwd: " + deploymentManagerPassword);		
+		getLog().info("Pwd: " +  "*****");		
 
 		Commandline.Argument arg3 = new Commandline.Argument();
 		arg3.setLine("-user " + deploymentManagerUser);
@@ -116,7 +116,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 
 	private final void createOrRefreshBusConfiguration() throws MojoExecutionException, MojoFailureException {
 	
-		File scriptsDir = new File(baseDirectory,scriptDirectory);
+		File scriptsDir = new File(baseDirectory, busConfigurationExtractDirectory);
 		
 		/* If the folder does not exist */
 		if(scriptsDir.exists() == false) {
