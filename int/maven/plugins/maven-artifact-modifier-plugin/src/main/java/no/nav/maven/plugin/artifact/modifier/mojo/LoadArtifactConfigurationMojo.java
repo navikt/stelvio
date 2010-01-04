@@ -20,7 +20,7 @@ import org.apache.maven.plugin.MojoFailureException;
 public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
     
 	/**
-     * Name of module configuration artifact.
+     * Name of module configuration artifact. 
      *
      * @parameter default-value="busconfiguration"
      */
@@ -40,9 +40,13 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 			return;
 		}
 		
+		//FOR TESTING
+		
+		getLog().info("(TEST) LoadArtifactModifier: busConfigurationExtractDirectory = " + busConfigurationExtractDirectory);
+		
 		for(Artifact a : dependencyArtifacts) {
 			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
-				File scriptsFolder = new File(baseDirectory,scriptDirectory);
+				File scriptsFolder = new File(baseDirectory, busConfigurationExtractDirectory);
 				File extractedFolder = null;
 				if(scriptsFolder.exists() == false || new File(scriptsFolder, a.getVersion()).exists() == false) {
 					extractedFolder = jarArchiveManager.unArchive(a.getFile(), scriptsFolder);

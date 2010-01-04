@@ -102,6 +102,8 @@ public abstract class ArtifactModifierMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected Boolean interactiveMode;
+	
+	protected String busConfigurationExtractDirectory = "/target/bus-config";
 
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 

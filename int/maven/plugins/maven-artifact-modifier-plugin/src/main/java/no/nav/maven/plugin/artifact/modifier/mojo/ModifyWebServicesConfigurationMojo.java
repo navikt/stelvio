@@ -53,7 +53,7 @@ public final class ModifyWebServicesConfigurationMojo extends ArtifactModifierCo
 		try {
 			wscBnd.save();
 		} catch (IOException e) {
-			throw new RuntimeException("An error occured savind endpoint URI settings", e);
+			throw new RuntimeException("An error occured saving endpoint URI settings", e);
 		}
 	}
 	
