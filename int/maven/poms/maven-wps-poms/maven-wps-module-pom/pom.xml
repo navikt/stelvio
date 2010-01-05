@@ -4,11 +4,12 @@
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-wps-pom</artifactId>
-		<version>1.7-SNAPSHOT</version>
+		<version>1.6</version>
 		<relativePath>../maven-wps-pom</relativePath>
 	</parent>
 
 	<artifactId>maven-wps-module-pom</artifactId>
+	<version>1.6.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework WPS Module Master POM</name>
 
