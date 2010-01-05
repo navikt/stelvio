@@ -206,7 +206,7 @@ public class ServiceDeployMojo extends AbstractMojo {
 		private boolean error;
 
 		public void consumeLine(String line) {
-			if (line.contains("Run with -ignoreErrors to override.")) {
+			if (line.contains("[error]")) {
 				error = true;
 			}
 		}
