@@ -512,6 +512,18 @@ public final class Pid implements Serializable {
 			}
 
 			return fnr.toString();
+		} else if(month > 40 && month <=52 ) {
+			// H-Nummer adjustment
+			month -= 40;
+			StringBuffer fnr = new StringBuffer(value);
+
+			if (month < 10) {
+				fnr.replace(2, 4, "0" + Integer.toString(month));
+			} else {
+				fnr.replace(2, 4, Integer.toString(month));
+			}
+
+			return fnr.toString();
 		}
 
 		// value was neither bostnr nor dnr

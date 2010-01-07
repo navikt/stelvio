@@ -3,6 +3,8 @@ package no.stelvio.common.bus.util;
 import java.util.Calendar;
 import java.util.Date;
 
+import no.stelvio.domain.person.Pid;
+
 
 /**
  * 
@@ -49,28 +51,7 @@ public final class FnrUtil{
 	 * @return <code>true</code> if the specified string is valid, otherwise <code>false</code>
 	 */
 	public static boolean isValidFnr(String pid, boolean acceptSpecialCircumstances) {
-		if (pid != null) {
-			String value = StringUtils.deleteWhitespace(pid);
-			if (isValidCharacters(value) && isValidFnrLength(value)) {
-				boolean isValid = false;
-				// non-strict validation
-				if(acceptSpecialCircumstances) {
-					isValid = isMod11Compliant(value) || isSpecialCircumstance(value);					
-				}
-				// strict validation
-				else {
-					isValid = isMod11Compliant(value) && !isSpecialCircumstance(value);
-				}
-				
-				if (isValid) {
-					String fnr = makeDnrOrBostnrAdjustments(value);
-					if (isFnrDateValid(fnr)) {
-						return true;
-					}					
-				}
-			}
-		}
-		return false;
+		return Pid.isValidPid(pid, acceptSpecialCircumstances);
 	}
 	
 	/**
@@ -118,152 +99,7 @@ public final class FnrUtil{
 	 * @return <code>true</code> if usage is valid, otherwise <code>false</code>
 	 */
 	public static boolean isWhitespaceCompliant(String pid) {
-		String pidWithWhitespace = "\\d\\d\\d\\d\\d\\d\\s\\d\\d\\d\\d\\d"; // DDMMYY XXXZZ
-		String pidWithoutWhitespace = "\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d"; // DDMMYYXXXZZ
-
-		return pid.matches(pidWithWhitespace) || pid.matches(pidWithoutWhitespace);
-	}
-
-
-
-	/**
-	 * Validates that the length of the fnr is valid. To be valid the length must be 11.
-	 * 
-	 * @param fnr personal identification number
-	 * @return <code>true</code> if valid, otherwise <code>false</code>
-	 */
-	protected static boolean isValidFnrLength(String fnr) {
-		return fnr != null && (fnr.length() == 11);
-	}
-
-	/**
-	 * Validates that the characters that make up the fnr are valid. To be valid, all characters must be numeric.
-	 * 
-	 * @param fnr personal identification number
-	 * @return <code>true</code> if valid, otherwise <code>false</code>
-	 */
-	protected static boolean isValidCharacters(String fnr) {
-		return StringUtils.isNumeric(fnr);
-	}
-
-	/**
-	 * Checks that a fnr is valid according to the modulus 11 control.
-	 * 
-	 * @param fnr fodselsnummer
-	 * @return true if fnr is valid, otherwise false
-	 */
-	protected static boolean isMod11Compliant(String fnr) {
-		// FORMAT: DDMMYYXXXYY
-		int d1 = Integer.parseInt(fnr.substring(0, 1));
-		int d2 = Integer.parseInt(fnr.substring(1, 2));
-		int m1 = Integer.parseInt(fnr.substring(2, 3));
-		int m2 = Integer.parseInt(fnr.substring(3, 4));
-		int a1 = Integer.parseInt(fnr.substring(4, 5));
-		int a2 = Integer.parseInt(fnr.substring(5, 6));
-		int i1 = Integer.parseInt(fnr.substring(6, 7));
-		int i2 = Integer.parseInt(fnr.substring(7, 8));
-		int i3 = Integer.parseInt(fnr.substring(8, 9));
-		int k1 = Integer.parseInt(fnr.substring(9, 10));
-		int k2 = Integer.parseInt(fnr.substring(10));
-
-		// control 1
-		int v1 = (3 * d1) + (7 * d2) + (6 * m1) + (1 * m2) + (8 * a1) + (9 * a2) + (4 * i1) + (5 * i2) + (2 * i3);
-
-		int tmp = v1 / 11;
-		int rest1 = v1 - (tmp * 11);
-		int kontK1 = (rest1 == 0) ? 0 : (11 - rest1);
-
-		// control 2
-		int v2 = (5 * d1) + (4 * d2) + (3 * m1) + (2 * m2) + (7 * a1) + (6 * a2) + (5 * i1) + (4 * i2) + (3 * i3) + (2 * k1);
-		tmp = v2 / 11;
-		int rest2 = v2 - (tmp * 11);
-		int kontK2 = (rest2 == 0) ? 0 : (11 - rest2);
-
-		// checks that control number is correct
-		return kontK1 == k1 && kontK2 == k2;
-
-	}
-
-	/**
-	 * Checks that a fnr is valid special circumstance. A special circumstance
-	 * is when the personnummer is 0 or 1.
-	 * 
-	 * @param fnr fodselsnummer
-	 * @return true if fnr is valid, otherwise false
-	 */
-	protected static boolean isSpecialCircumstance(String fnr) {
-		int val = Integer.parseInt(fnr.substring(6));
-		
-		return val == 0 || val == 1;
-	}
-	
-	/**
-	 * Validates that the first six digits of a fnr represents a valid birth date
-	 * 
-	 * @param dnrOrBnrAdjustedFnr - 11 digit fødselsnummer, ajdusted if bnr or fnr
-	 * @return <code>true</code> if fnr can be converted to a valid date, otherwise <code>false</code>
-	 * @todo why not use DateFormat to check it?
-	 */
-	protected static boolean isFnrDateValid(String dnrOrBnrAdjustedFnr) {
-		boolean validDate = true;
-
-		// fnr format is <DDMMAAXXXYY>
-		int day = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(0, 2));
-		int month = Integer.parseInt(dnrOrBnrAdjustedFnr.substring(2, 4));
-		int year = get4DigitYearOfBirth(dnrOrBnrAdjustedFnr);
-
-		// invalid birth year
-		if (year == -1) {
-			return false;
-		}
-
-		if (day < 1) {
-			validDate = false;
-		}
-
-		switch (month) {
-			case 1: // january
-			case 3: // march
-			case 5: // may
-			case 7: // july
-			case 8: // august
-			case 10: // october
-			case 12: // december
-				validDate &= (day <= 31);
-				break;
-
-			case 4: // april
-			case 6: // june
-			case 9: // september
-			case 11: // november
-				validDate &= (day <= 30);
-				break;
-
-			case 2: // february
-				/* Leap year calculation:
-				 * 
-				 * Rule: If year can be devided by 4, it's a leap year
-				 * 
-				 * Exeception 1: If also can be devided by 100, it's NOT a leap year
-				 * Exception 2: If year can be devided by 100 AND 400, it IS a leap year 
-				 */
-				if (year % 100 == 0 && year % 400 == 0) {
-					// leap year
-					validDate &= (day <= 29);
-				} else if (year % 100 != 0 && year % 4 == 0) {
-					// det er skuddår
-					validDate &= (day <= 29);
-				} else {
-					// det er IKKE skuddår
-					validDate &= (day <= 28);
-				}
-				break;
-
-			default:
-				validDate = false;
-		}
-
-		return validDate;
+		return Pid.isWhitespaceCompliant(pid);
 	}
 
 	/**
@@ -431,6 +267,4 @@ public final class FnrUtil{
 		
 		return DateUtil.parseInputString(makeDnrOrBostnrAdjustments(fnr).substring(0,6), false);
 	}
-
-
 }
