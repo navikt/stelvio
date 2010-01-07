@@ -5,6 +5,10 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="3.2.1" date="07-01-2010" description="Bugfix release">
+			<action dev="ebh2812" type="fix">CR 97658, Impl 127795: Made PID validation methods in FnrUtil delegate to Pid class copied (and slightly modified to support H-numbers) from Stelvio App - that includes the fix for the CR.</action>
+			<action dev="tia2812" type="fix">Fixed problem when the systemavailability was used to stub interfaces that were directly imported as wsdl's from the provider system.</action>
+		</release>
 		<release version="3.2" date="18-11-2009" description="Maintenance release">
 			<action dev="ebh2812" type="fix">Fixed bug in CatchServiceRuntimeExceptionInterceptor resulting in 'cause already initialized' errors.</action>
 			<action dev="ebh2812" type="fix">Fixed issues in StelvioCommonContextHandler with creation/deletion of UserWorkArea.</action>
