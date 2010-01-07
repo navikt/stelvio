@@ -65,30 +65,10 @@ public final class FnrUtil{
 		Boolean response = null;
 		if(pid!=null && !"".equals(pid)){
 			int ninthDigit = Integer.parseInt(pid.substring(8,9));
-			if(!isEven(ninthDigit)){
-				return Boolean.TRUE;
-			}
-			else{
-				return Boolean.FALSE;
-			}
+			return !(ninthDigit % 2 == 0);
 		}
 		return response;
 		
-	}
-	
-	/**
-	 * Checks if a digit is odd or even
-	 * 
-	 * @param digit The digit to determine if is odd or even 
-	 * @return <code>true</code> if digit is even, <code>false</code> if odd
-	 */
-	protected static boolean isEven(int digit) {
-		if (digit % 2 == 0){
-			return true;
-		}
-		else{
-			return false;
-		}
 	}
 	
 	/**
