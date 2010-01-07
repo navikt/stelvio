@@ -13,7 +13,6 @@ plugins/com.ibm.bpc.runtime.jar
 plugins/com.ibm.bpc.wccm.jar
 plugins/com.ibm.events.client.jar
 plugins/com.ibm.jaxb.tools.jar
-runtimes/com.ibm.jaxws.thinclient_7.0.0.jar
 plugins/com.ibm.jaxws.tools.jar
 installedConnectors/wmq.jmsra.rar/com.ibm.mq.jar
 installedConnectors/wmq.jmsra.rar/com.ibm.mqjms.jar
@@ -31,7 +30,6 @@ plugins/com.ibm.wbicmn.xpath.jar
 plugins/com.ibm.wbitxomptest.rt_7.0.0.jar
 plugins/com.ibm.wps.runtime.jar
 plugins/com.ibm.wps.wccm.jar
-runtimes/com.ibm.ws.admin.client_7.0.0.jar
 plugins/com.ibm.ws.admin.core.jar
 plugins/com.ibm.ws.admin.services.jar
 plugins/com.ibm.ws.bpm.artifact.loader.jar
@@ -60,7 +58,6 @@ plugins/com.ibm.ws.prereq.soap.jar
 plugins/com.ibm.ws.prereq.vajava.jar
 plugins/com.ibm.ws.prereq.wsdl4j.jar
 plugins/com.ibm.ws.runtime.dist.jar
-plugins/com.ibm.ws.runtime.jar
 plugins/com.ibm.ws.sca.async.jar
 plugins/com.ibm.ws.sca.binding.eis.scdl.jar
 plugins/com.ibm.ws.sca.binding.ejb.jar

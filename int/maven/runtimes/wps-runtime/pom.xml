@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -10,19 +11,12 @@
 	<groupId>com.ibm.maven.runtimes</groupId>
 	<artifactId>wps-runtime</artifactId>
 	<packaging>jar</packaging>
-	<version>7.0.0.0-SNAPSHOT</version>
+	<version>7.0.0.1-SNAPSHOT</version>
 	<name>IBM WPS Runtime</name>
+	<description>All jar files in the IBM WPS runtime merged into one big jar files. Three of the jars are uploaded separately
+		and added as dependencies to overcome the 65536-files limitation of Sun's Jar implementation</description>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>${basedir}</directory>
-				<targetPath>META-INF</targetPath>
-				<includes>
-					<include>files.txt</include>
-				</includes>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -32,7 +26,7 @@
 						<phase>process-resources</phase>
 						<configuration>
 							<tasks>
-								<loadfile property="files" srcFile="${basedir}/files.txt"/>
+								<loadfile property="files" srcFile="${basedir}/files.txt" />
 								<unzip dest="${project.build.outputDirectory}" overwrite="false">
 									<patternset>
 										<include name="**/*.class" />
@@ -49,7 +43,26 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
+	<!-- Large jar files uploaded separately to shrink the size of the archive file -->
+	<dependencies>
+		<dependency>
+			<groupId>com.ibm.ws.runtime</groupId>
+			<artifactId>WS_Server</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.jaxws.thinclient</groupId>
+			<artifactId>WebServicesFeaturePackThinClientRuntime</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.ws.admin.client</groupId>
+			<artifactId>WebSphereClientServices</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
 	<scm>
 		<connection>${scm.connection}</connection>
 		<developerConnection>${scm.connection}</developerConnection>
