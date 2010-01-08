@@ -3,11 +3,13 @@ package no.nav.maven.plugin.sca;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
@@ -49,7 +51,7 @@ public class ServiceDeployMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private String output;
-	
+
 	/**
 	 * @parameter expression="${project.artifact}"
 	 * @required
@@ -58,9 +60,11 @@ public class ServiceDeployMojo extends AbstractMojo {
 	private Artifact artifact;
 
 	/**
-	 * @parameter
+	 * @parameter expression="${project}"
+	 * @required
+	 * @readonly
 	 */
-	private String classpath;
+	private MavenProject project;
 
 	/**
 	 * @parameter default-value="UTF-8"
@@ -118,9 +122,6 @@ public class ServiceDeployMojo extends AbstractMojo {
 		argLineBuilder.append(input);
 		argLineBuilder.append(" -outputApplication ").append(output);
 		argLineBuilder.append(" -progressMonitor none");
-		if (classpath != null && classpath.length() > 0) {
-			argLineBuilder.append(" -classpath ").append(classpath);
-		}
 		if (fileEncoding != null && fileEncoding.length() > 0) {
 			argLineBuilder.append(" -fileEncoding ").append(fileEncoding);
 		}
@@ -144,12 +145,43 @@ public class ServiceDeployMojo extends AbstractMojo {
 		}
 		workingDirectory.mkdirs();
 		argLineBuilder.append(" -workingDirectory '").append(workingDirectory.getAbsolutePath()).append("'");
+		List<Artifact> providedArtifacts = getProvidedArtifacts();
+		if (!providedArtifacts.isEmpty()) {
+			// TODO Since the WPS runtime is defined as a provided dependency,
+			// it will always be included in the list of provided artifacts.
+			// This means that the WPS runtime will be supplied with the
+			// classpath attribute - which may be a problem.
+			StringBuilder classpathBuilder = new StringBuilder();
+			for (Artifact providedArtifact : providedArtifacts) {
+				if (classpathBuilder.length() > 0) {
+					classpathBuilder.append(";");
+				}
+				classpathBuilder.append("'").append(providedArtifact.getFile().getAbsolutePath()).append("'");
+			}
+			argLineBuilder.append(" -classpath ").append(classpathBuilder);
+		}
 
 		commandLine.setWorkingDirectory(targetDirectory.getAbsolutePath());
 		commandLine.createArg().setLine(argLineBuilder.toString());
 		executeCommand(commandLine);
-		
+
 		artifact.setFile(new File(targetDirectory, output));
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Artifact> getProvidedArtifacts() {
+		List<Artifact> providedArtifacts = new ArrayList<Artifact>();
+		for (Artifact artifact : (Collection<Artifact>) project.getDependencyArtifacts()) {
+			// TODO: classpath check doesn't belong here - that's the other
+			// method
+			if (artifact.getArtifactHandler().isAddedToClasspath()) {
+				// TODO: let the scope handler deal with this
+				if (Artifact.SCOPE_PROVIDED.equals(artifact.getScope())) {
+					providedArtifacts.add(artifact);
+				}
+			}
+		}
+		return providedArtifacts;
 	}
 
 	private void executeCommand(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
