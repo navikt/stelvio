@@ -12,6 +12,7 @@ import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.cred.WSCredential;
 import com.ibm.websphere.workarea.UserWorkArea;
 import com.ibm.ws.session.WBISessionManager;
+import com.ibm.wsspi.session.ActivityData;
 
 /**
  * @author test@example.com
@@ -44,8 +45,10 @@ public class StelvioContext {
 	 */
 	private void setStelvioBusContext(UserWorkAreaContextAdapter userWorkArea) {
 		String userWorkAreaName = userWorkArea.getUserWorkAreaName();
-		if (UserWorkAreaContextAdapter.USER_WORK_AREA_NAME.equalsIgnoreCase(userWorkAreaName)) {
-			log.logp(Level.FINE, className, "setStelvioBusContext()", "StelvioContext exists in WorkArea");
+		if (UserWorkAreaContextAdapter.USER_WORK_AREA_NAME
+				.equalsIgnoreCase(userWorkAreaName)) {
+			log.logp(Level.FINE, className, "setStelvioBusContext()",
+					"StelvioContext exists in WorkArea");
 
 			userId = userWorkArea.getUserId();
 			if (userId == null || userId.length() <= 0) {
@@ -68,8 +71,9 @@ public class StelvioContext {
 			}
 		} else {
 			// another WorkArea
-			log.logp(Level.FINE, className, "setStelvioBusContext()",
-					"StelvioContext doesn't exists within WorkArea - use default values");
+			log
+					.logp(Level.FINE, className, "setStelvioBusContext()",
+							"StelvioContext doesn't exists within WorkArea - use default values");
 			userId = DEFAULT_USER_NAME;
 			languageId = DEFAULT_LANGUAGE;
 			applicationId = DEFAULT_APPLICATION_NAME;
@@ -89,15 +93,19 @@ public class StelvioContext {
 	private String getWBISessionId() {
 		String wbiSessionId;
 
-		WBISessionManager sessionManager = WBISessionManager.getInstance();
-		if (sessionManager.isSessionExisted()) {
-			wbiSessionId = sessionManager.getSessionContext().getSessionId();
+		// LS Doesn't exists in WPS7 and WBISessionManager are deprecated
+		// because OnlineSession doesn't hold an WBISession
+		// (sessionManager.getSessionContext().isSessionExisted() is removed)
+		ActivityData sessionContext = WBISessionManager.getInstance().getSessionContext();
+		if (sessionContext != null) {
+			wbiSessionId = sessionContext.getSessionId();
 		} else {
 			// TODO
 			wbiSessionId = null;
 		}
 
-		log.logp(Level.FINE, className, "getWBISessioId()", "WBISessionId=" + wbiSessionId);
+		log.logp(Level.FINE, className, "getWBISessioId()", "WBISessionId="
+				+ wbiSessionId);
 
 		return wbiSessionId;
 	}
@@ -109,18 +117,23 @@ public class StelvioContext {
 		String tName = Thread.currentThread().getName();
 		String sysUser = null;
 
-		log.logp(Level.FINE, className, "getInternIdentity()", "Credential executing on the thread " + tName);
+		log.logp(Level.FINE, className, "getInternIdentity()",
+				"Credential executing on the thread " + tName);
 		try {
 			Subject runAsSecurity = WSSubject.getRunAsSubject();
 			if (runAsSecurity != null) {
-				Set security_credentials = runAsSecurity.getPublicCredentials(WSCredential.class);
-				WSCredential security_credential = (WSCredential) security_credentials.iterator().next();
+				Set security_credentials = runAsSecurity
+						.getPublicCredentials(WSCredential.class);
+				WSCredential security_credential = (WSCredential) security_credentials
+						.iterator().next();
 				sysUser = (String) security_credential.getSecurityName();
 
-				log.logp(Level.FINE, className, "getInternIdentity()", "return " + sysUser);
+				log.logp(Level.FINE, className, "getInternIdentity()",
+						"return " + sysUser);
 			}
 		} catch (Exception e) {
-			log.logp(Level.SEVERE, className, "getInternIdentity()", "CatchedError: " + ExceptionUtils.getStackTrace(e));
+			log.logp(Level.SEVERE, className, "getInternIdentity()",
+					"CatchedError: " + ExceptionUtils.getStackTrace(e));
 		}
 
 		return sysUser;
