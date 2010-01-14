@@ -945,13 +945,6 @@ int/stelvio-commons-lib/no/stelvio/common/util/.settings
 int/stelvio-commons-lib/no/stelvio/common/util/META-INF
 int/stelvio-commons-lib/no/stelvio/common/util/gen
 int/stelvio-commons-lib/no/stelvio/common/util/target
-int/stelvio-commons-lib/no/stelvio/common/webservices/*.class
-int/stelvio-commons-lib/no/stelvio/common/webservices/.classpath
-int/stelvio-commons-lib/no/stelvio/common/webservices/.project
-int/stelvio-commons-lib/no/stelvio/common/webservices/.settings
-int/stelvio-commons-lib/no/stelvio/common/webservices/META-INF
-int/stelvio-commons-lib/no/stelvio/common/webservices/gen
-int/stelvio-commons-lib/no/stelvio/common/webservices/target
 int/stelvio-commons-lib/no/stelvio/gen
 int/stelvio-commons-lib/no/stelvio/target
 int/stelvio-commons-lib/no/target
