@@ -106,11 +106,11 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 
 	private Throwable newInstance(Class<? extends Throwable> throwableClass, final String message, final Throwable cause) {
 		try {
-			List<Constructor<Throwable>> constructors = getConstructorCandidates(throwableClass);
+			List<Constructor<? extends Throwable>> constructors = getConstructorCandidates(throwableClass);
 
 			sortConstructors(constructors);
 
-			Constructor<Throwable> constructor = constructors.iterator().next();
+			Constructor<? extends Throwable> constructor = constructors.iterator().next();
 			Class[] parameterTypes = constructor.getParameterTypes();
 			Object[] parameters = new Object[parameterTypes.length];
 			for (int i = 0; i < parameterTypes.length; i++) {
@@ -130,10 +130,10 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 		}
 	}
 
-	private List<Constructor<Throwable>> getConstructorCandidates(Class<? extends Throwable> throwableClass) {
-		List<Constructor<Throwable>> constructors = new ArrayList<Constructor<Throwable>>();
+	private List<Constructor<? extends Throwable>> getConstructorCandidates(Class<? extends Throwable> throwableClass) {
+		List<Constructor<? extends Throwable>> constructors = new ArrayList<Constructor<? extends Throwable>>();
 
-		for (Constructor<Throwable> constructor : throwableClass.getConstructors()) {
+		for (Constructor<? extends Throwable> constructor : (Constructor<? extends Throwable>[]) throwableClass.getConstructors()) {
 			Class[] parameterTypes = constructor.getParameterTypes();
 			switch (parameterTypes.length) {
 			case 0:
@@ -159,9 +159,9 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 		return constructors;
 	}
 
-	private void sortConstructors(List<Constructor<Throwable>> constructors) {
-		Collections.sort(constructors, new Comparator<Constructor<Throwable>>() {
-			public int compare(Constructor<Throwable> constructor1, Constructor<Throwable> constructor2) {
+	private void sortConstructors(List<Constructor<? extends Throwable>> constructors) {
+		Collections.sort(constructors, new Comparator<Constructor<? extends Throwable>>() {
+			public int compare(Constructor<? extends Throwable> constructor1, Constructor<? extends Throwable> constructor2) {
 				Class<?>[] parameterTypes1 = constructor2.getParameterTypes();
 				Class<?>[] parameterTypes2 = constructor1.getParameterTypes();
 				int lengthDiff = parameterTypes1.length - parameterTypes2.length;
