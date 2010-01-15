@@ -1955,7 +1955,6 @@ incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/E
 incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventDataConstant.java -text svneol=unset#text/plain
 int/CEILogger/CEIEventConsumer/.j2ee -text
 int/CEILogger/CEIEventConsumer/.project -text
-int/CEILogger/CEIEventConsumer/.runtime -text
 int/CEILogger/CEIEventConsumer/META-INF/.modulemaps -text
 int/CEILogger/CEIEventConsumer/META-INF/MANIFEST.MF -text
 int/CEILogger/CEIEventConsumer/META-INF/application.xml -text
@@ -1967,7 +1966,6 @@ int/CEILogger/CEIEventConsumer/log4j-1.2.14.jar -text
 int/CEILogger/CEIEventConsumerEJB/.classpath -text
 int/CEILogger/CEIEventConsumerEJB/.j2ee -text
 int/CEILogger/CEIEventConsumerEJB/.project -text
-int/CEILogger/CEIEventConsumerEJB/.runtime -text
 int/CEILogger/CEIEventConsumerEJB/.settings/.webspheredeploy -text
 int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/MANIFEST.MF -text
 int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/ejb-jar.xml -text
@@ -2434,7 +2432,6 @@ int/stelvio-commons-lib-test/src/test/java/no/stelvio/common/exception/CatchServ
 int/stelvio-commons-lib-test/src/test/java/no/stelvio/common/exception/ExceptionAssert.java -text
 int/stelvio-commons-lib-test/src/test/java/no/stelvio/common/util/StringUtilsIsBlankTest.java -text
 int/stelvio-commons-lib-test/src/test/java/no/stelvio/domain/person/PidTest.java -text
-int/stelvio-commons-lib/.runtime -text
 int/stelvio-commons-lib/no/nav/gbo/FaultTeknisk.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/GBOEierKomponent.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/GBOEndringsInfo.xsd -text svneol=unset#text/plain
@@ -2492,7 +2489,6 @@ int/stelvio-jca-adapters/ADLDAPAdapter/.classpath -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.compatibility -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.j2ee -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.project -text
-int/stelvio-jca-adapters/ADLDAPAdapter/.runtime -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.wst.common.component -text
@@ -2525,7 +2521,6 @@ int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/lib/sik/ad/fault/F
 int/stelvio-jca-adapters/ADLDAPAdapter6021/.classpath -text
 int/stelvio-jca-adapters/ADLDAPAdapter6021/.j2ee -text
 int/stelvio-jca-adapters/ADLDAPAdapter6021/.project -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/.runtime -text
 int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/CWYBS_AdapterFoundation.jar -text
 int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/META-INF/MANIFEST.MF -text
 int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/META-INF/ra.xml -text
@@ -2537,7 +2532,6 @@ int/stelvio-jca-adapters/CWYEM_EMail/.classpath -text
 int/stelvio-jca-adapters/CWYEM_EMail/.compatibility -text
 int/stelvio-jca-adapters/CWYEM_EMail/.j2ee -text
 int/stelvio-jca-adapters/CWYEM_EMail/.project -text
-int/stelvio-jca-adapters/CWYEM_EMail/.runtime -text
 int/stelvio-jca-adapters/CWYEM_EMail/.settings/org.eclipse.jdt.core.prefs -text
 int/stelvio-jca-adapters/CWYEM_EMail/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 int/stelvio-jca-adapters/CWYEM_EMail/.settings/org.eclipse.wst.common.component -text
@@ -2559,7 +2553,6 @@ int/stelvio-jca-adapters/cicseci602NoTrans/.classpath -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.compatibility -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.j2ee -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.project -text
-int/stelvio-jca-adapters/cicseci602NoTrans/.runtime -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.settings/org.eclipse.jdt.core.prefs -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.settings/org.eclipse.wst.common.component -text
@@ -2578,7 +2571,6 @@ int/stelvio-jca-adapters/cicseciXA-61/.classpath -text
 int/stelvio-jca-adapters/cicseciXA-61/.compatibility -text
 int/stelvio-jca-adapters/cicseciXA-61/.j2ee -text
 int/stelvio-jca-adapters/cicseciXA-61/.project -text
-int/stelvio-jca-adapters/cicseciXA-61/.runtime -text
 int/stelvio-jca-adapters/cicseciXA-61/.settings/org.eclipse.jdt.core.prefs -text
 int/stelvio-jca-adapters/cicseciXA-61/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 int/stelvio-jca-adapters/cicseciXA-61/.settings/org.eclipse.wst.common.component -text
@@ -2625,7 +2617,6 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.classpath
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.compatibility -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.j2ee -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.project -text svneol=unset#text/plain
-int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.runtime -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.wst.common.component -text
@@ -2676,7 +2667,6 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/diagram.gp
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.compatibility -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.j2ee -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.project -text svneol=unset#text/plain
-int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.runtime -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.component -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/.modulemaps -text
@@ -2685,7 +2675,6 @@ int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.classpath -t
 int/stelvio-operation-systemavailability/WpsCoreSystemAvailability/.project -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.runtime -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.wst.common.component -text
@@ -2695,7 +2684,6 @@ int/stelvio-sibus-mediation/DebugMediation/DebugMediation/no/nav/java/mediation/
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.compatibility -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.j2ee -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.runtime -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.settings/org.eclipse.wst.common.component -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/META-INF/.modulemaps -text
@@ -2704,7 +2692,6 @@ int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.classpath -text sv
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.compatibility -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.j2ee -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.runtime -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.settings/.webspheredeploy -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
@@ -2717,7 +2704,6 @@ int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/ejbModule/META-INF/
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/ejbModule/META-INF/ws-handler.xmi -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.runtime -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/.settings/org.eclipse.wst.common.component -text
@@ -2727,7 +2713,6 @@ int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/no/nav/java/mediat
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.compatibility -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.j2ee -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.runtime -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.settings/org.eclipse.wst.common.component -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/META-INF/.modulemaps -text
@@ -2736,7 +2721,6 @@ int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.classpath -tex
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.compatibility -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.j2ee -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.project -text svneol=unset#text/plain
-int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.runtime -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.settings/.webspheredeploy -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
