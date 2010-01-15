@@ -17,9 +17,11 @@ import java.util.List;
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class AvailabilityRecord {
+	public static final int DEFAULT_MAX_SIMULTANEOUS_INVOCATIONS = 30;
+	
 	public String systemName;
 	public List operations; //OperationAvailabilityRecord
-	public Integer maxSimultaneousInvocations;
+	public int maxSimultaneousInvocations = DEFAULT_MAX_SIMULTANEOUS_INVOCATIONS;
 	
 	public String getUnavailableString(){
 		OperationAvailabilityRecord allRec=this.findOrCreateOperation("ALL");

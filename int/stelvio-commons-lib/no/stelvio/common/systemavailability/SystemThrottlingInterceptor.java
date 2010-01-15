@@ -22,8 +22,8 @@ public class SystemThrottlingInterceptor extends GenericInterceptor {
 	protected Object doInterceptInternal(OperationType operationType, Object input, InterceptorChain interceptorChain) {
 		SystemAvailabilityStorage storage = new SystemAvailabilityStorage();
 		AvailabilityRecord availRecord = storage.getAvailabilityRecord(systemName);
-		Integer maxSimultaneousInvocations = 30;
-		if (availRecord != null) {
+		int maxSimultaneousInvocations = AvailabilityRecord.DEFAULT_MAX_SIMULTANEOUS_INVOCATIONS;
+		if (availRecord != null && availRecord.maxSimultaneousInvocations > 0) {
 			maxSimultaneousInvocations = availRecord.maxSimultaneousInvocations;
 		}
 		synchronized (currentExecutionMap) {

@@ -74,8 +74,6 @@ public class SystemAvailabilityStorage {
 			DataObject obj = boFactory.create("http://stelvio-commons-lib/no/stelvio/common/systemavailability",
 					"SystemAvailabilityRecord");
 			obj.setString("SystemName", record.systemName);
-			if (record.maxSimultaneousInvocations == null)
-				record.maxSimultaneousInvocations = 25;
 			obj.setInt("MaxSimultaneousInvocations", record.maxSimultaneousInvocations);
 
 			List<DataObject> operationList = new ArrayList<DataObject>();
