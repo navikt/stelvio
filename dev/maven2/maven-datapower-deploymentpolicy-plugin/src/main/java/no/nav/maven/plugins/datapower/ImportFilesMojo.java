@@ -45,8 +45,8 @@ public class ImportFilesMojo extends AbstractDeploymentMojo {
 		
 		getLog().info("ImportFilesMojo:");
 		try{	
-			String[] dirExcludes = dirExclusions.split(",");
-			String[] fileExcludes = fileExclusions.split(",");
+			String[] dirExcludes = dirExclusions != null ? dirExclusions.split(",") : new String[0];
+			String[] fileExcludes = fileExclusions != null ? fileExclusions.split(",") : new String[0];
 			List<File> children = XMLMgmtUtil.getDirectoriesToTraverse(importDirectory, dirExcludes);
 			
 			for (File child : children) {
