@@ -53,10 +53,11 @@ public class ImportDeploymentPolicyMojo extends AbstractDeploymentMojo {
 	
 	protected XMLMgmtDeploymentPolicy overrideDeploymentPolicy(File deploymentPolicyFile, File overridesFile) throws XMLMgmtException {
 		try {
-			Properties overrides = new Properties();
-			overrides.load(FileUtils.openInputStream(overridesFile));
+			
 			XMLMgmtDeploymentPolicy deploymentPolicy = new XMLMgmtDeploymentPolicy(deploymentPolicyFile);
-			if(overrides != null){
+			if(overridesFile != null){
+				Properties overrides = new Properties();
+				overrides.load(FileUtils.openInputStream(overridesFile));
 				deploymentPolicy.overrideProperties(overrides);
 			}
 			return deploymentPolicy;	
