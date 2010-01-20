@@ -62,6 +62,12 @@
 					</configuration>
 				</plugin>
 				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wps-artifact-plugin</artifactId>
 					<version>1.7</version>
