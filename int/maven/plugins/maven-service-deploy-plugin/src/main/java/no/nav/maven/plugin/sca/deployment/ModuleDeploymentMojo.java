@@ -12,9 +12,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.FileUtils;
 import org.jdom.Document;
-import org.jdom.Element;
 import org.jdom.JDOMException;
-import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
@@ -72,52 +70,24 @@ public class ModuleDeploymentMojo extends AbstractMojo {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void executeInternal() throws MojoExecutionException {
+	private void executeInternal() throws MojoExecutionException, MojoFailureException {
 		try {
 			Collection<String> webServiceExportNames = getWebServiceExportNames();
 			if (!webServiceExportNames.isEmpty()) {
 				getLog().info(webServiceExportNames.toString());
 
 				Document deploymentDescriptorDocument;
-				Element rootElement;
 				File deploymentDescriptorFile = new File(outputDirectory, "ibm-deploy.scaj2ee");
 				if (deploymentDescriptorFile.exists()) {
 					deploymentDescriptorDocument = saxBuilder.build(deploymentDescriptorFile);
-					rootElement = deploymentDescriptorDocument.getRootElement();
 				} else {
 					getLog().debug("Deployment descriptor does not exist - creating one.");
-					rootElement = new Element("IntegrationModuleDeploymentConfiguration", "scaj2ee",
-							"http://www.ibm.com/xmlns/prod/websphere/sca/j2ee/6.0.2");
-					Namespace xmiNamespace = Namespace.getNamespace("xmi", "http://www.omg.org/XMI");
-					rootElement.addNamespaceDeclaration(xmiNamespace);
-					rootElement.setAttribute("version", "2.0", xmiNamespace);
-					deploymentDescriptorDocument = new Document(rootElement);
+					deploymentDescriptorDocument = new Document();
 				}
 
-				Element wsExportsElement = rootElement.getChild("wsExports");
-				if (wsExportsElement == null) {
-					wsExportsElement = new Element("wsExports");
-					rootElement.addContent(wsExportsElement);
-				}
-				
-				Element exportHandlerElement = new Element("exportHandler");
-				for (Handler handler : handlers) {
-					Element handlerElement = new Element("handler");
-					handlerElement.setAttribute("handlerName", handler.getHandlerName());
-					handlerElement.setAttribute("handlerClass", handler.getHandlerClass());
-					exportHandlerElement.addContent(handlerElement);
-				}
-				
-				
-				// TODO: Support update of wsExportElements
-				List<Element> wsExportElements = wsExportsElement.getChildren("wsExport");
-				wsExportElements.clear();
-				for (String webServiceExportName : webServiceExportNames) {
-					Element wsExportElement = new Element("wsExport");
-					wsExportElement.addContent(new Element("name").setText(webServiceExportName));
-					wsExportElement.addContent(exportHandlerElement);
-					wsExportElements.add(wsExportElement);
-				}
+				ModuleDeploymentDescriptorEditor deploymentDescriptorEditor = new ModuleDeploymentDescriptorEditor(
+						deploymentDescriptorDocument);
+				deploymentDescriptorEditor.createOrUpdateExportHandlers(webServiceExportNames, handlers);
 
 				XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 				xmlOutputter.output(deploymentDescriptorDocument, new FileWriter(deploymentDescriptorFile));
