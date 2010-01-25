@@ -74,8 +74,6 @@ public class ModuleDeploymentMojo extends AbstractMojo {
 		try {
 			Collection<String> webServiceExportNames = getWebServiceExportNames();
 			if (!webServiceExportNames.isEmpty()) {
-				getLog().info(webServiceExportNames.toString());
-
 				Document deploymentDescriptorDocument;
 				File deploymentDescriptorFile = new File(outputDirectory, "ibm-deploy.scaj2ee");
 				if (deploymentDescriptorFile.exists()) {
