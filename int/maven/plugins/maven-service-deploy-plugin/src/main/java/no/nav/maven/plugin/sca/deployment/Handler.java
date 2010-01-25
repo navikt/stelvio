@@ -3,6 +3,7 @@ package no.nav.maven.plugin.sca.deployment;
 import java.io.Serializable;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 public class Handler implements Serializable {
 	private static final long serialVersionUID = 4173832810003432051L;
@@ -17,8 +18,8 @@ public class Handler implements Serializable {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append(description).append(displayName).append(handlerClass).append(handlerName)
-				.toString();
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("description", description).append(
+				"displayName", displayName).append("handlerClass", handlerClass).append("handlerName", handlerName).toString();
 	}
 
 	public String getDescription() {

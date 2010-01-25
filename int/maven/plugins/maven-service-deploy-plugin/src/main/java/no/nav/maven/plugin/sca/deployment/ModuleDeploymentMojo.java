@@ -83,6 +83,7 @@ public class ModuleDeploymentMojo extends AbstractMojo {
 					deploymentDescriptorDocument = new Document();
 				}
 
+				getLog().info("Adding handlers " + handlers + " to all web service exports " + webServiceExportNames + ".");
 				ModuleDeploymentDescriptorEditor deploymentDescriptorEditor = new ModuleDeploymentDescriptorEditor(
 						deploymentDescriptorDocument);
 				deploymentDescriptorEditor.createOrUpdateExportHandlers(webServiceExportNames, handlers);
