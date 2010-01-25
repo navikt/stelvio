@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.maven.plugin.MojoFailureException;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -27,14 +28,29 @@ public class ModuleDeploymentDescriptorEditor {
 			Element wsExportElement = getWsExportElement(wsExportsElement, webServiceExportName);
 			Element exportHandlerElement = getExportHandlerElement(wsExportElement);
 			Collection<Element> handlerElementsToAdd = createHandlerElements(handlers);
-			List<Element> handlerElements = exportHandlerElement.getChildren("handler");
+			Collection<Element> handlerElements = exportHandlerElement.getChildren("handler");
 			if (handlerElements.isEmpty()) {
 				handlerElements.addAll(handlerElementsToAdd);
 			} else {
-				// TODO: Implement merging of handler elements
-				throw new UnsupportedOperationException("Merging of Handlers is currently unsupported");
+				mergeHandlers(handlerElements, handlerElementsToAdd);
 			}
 		}
+	}
+
+	private void mergeHandlers(Collection<Element> handlerElements, Collection<Element> handlerElementsToAdd) {
+		// TODO: Improve merging of handler elements
+		for (Element handlerElementToAdd : handlerElementsToAdd) {
+			String handlerName = handlerElementToAdd.getAttributeValue("handlerName");
+			String handlerClass = handlerElementToAdd.getAttributeValue("handlerClass");
+			for (Element handlerElement : handlerElements) {
+				if (ObjectUtils.equals(handlerName, handlerElement.getAttributeValue("handlerName"))
+						|| ObjectUtils.equals(handlerClass, handlerElement.getAttributeValue("handlerClass"))) {
+					throw new UnsupportedOperationException(
+							"Merging of handlers with same handlerName/handlerClass is currently unsupported");
+				}
+			}
+		}
+		handlerElements.addAll(handlerElementsToAdd);
 	}
 
 	private Collection<Element> createHandlerElements(Collection<Handler> handlers) {
