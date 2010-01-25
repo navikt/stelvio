@@ -18,6 +18,7 @@ import org.eclipse.jst.j2ee.commonarchivecore.internal.EARFile;
  * @author test@example.com
  * 
  * @goal add-handler
+ * @deprecated This functionality has been moved to the maven-service-deploy-plugin:module-deployment
  */
 public class AddHandlerMojo extends AbstractMojo {
 	/**
