@@ -28,26 +28,18 @@ under the License.
     <version>16</version>
   </parent>
 
+  <groupId>no.nav.maven.plugins</groupId>
   <artifactId>maven-verifier-plugin</artifactId>
   <version>1.1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>Maven Verifier Plugin</name>
-  <description>Assists in integration testing by means of evaluating success/error conditions read from a configuration file.</description>
+  <description>Assists in integration testing by means of evaluating success/error conditions read from a configuration file.
+  Extended with functionality to invert contains criteria.</description>
 
   <prerequisites>
     <maven>2.0.6</maven>
   </prerequisites>
-
-  <scm>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/maven/plugins/trunk/maven-verifier-plugin/</connection>
-    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/maven/plugins/trunk/maven-verifier-plugin/</developerConnection>
-    <url>http://svn.apache.org/viewvc/maven/plugins/trunk/maven-verifier-plugin/</url>
-  </scm>
-  <issueManagement>
-    <system>JIRA</system>
-    <url>http://jira.codehaus.org/browse/MVERIFIER</url>
-  </issueManagement>
 
   <dependencies>
     <dependency>

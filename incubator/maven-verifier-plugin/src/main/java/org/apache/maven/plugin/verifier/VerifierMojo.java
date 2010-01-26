@@ -175,7 +175,7 @@ public class VerifierMojo
         // idea, please submit it!
         Matcher matcher = pattern.matcher( FileUtils.fileRead( new File( fileCheck.getLocation() ) ) );
 
-        if ( matcher.find() )
+        if ( matcher.find() ^ fileCheck.isInvertContainsCriteria())
         {
             result = true;
         }

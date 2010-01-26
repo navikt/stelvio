@@ -73,6 +73,14 @@ under the License.
           <type>String</type>
         </field>
         <field>
+          <name>invertContainsCriteria</name>
+          <version>1.0.0</version>
+          <description><![CDATA[
+            When this is set to <code>true</code> the plugin criteria is inverted]]></description>
+          <defaultValue>false</defaultValue>
+          <type>boolean</type>
+        </field>
+        <field>
           <name>exists</name>
           <version>1.0.0</version>
           <description><![CDATA[
