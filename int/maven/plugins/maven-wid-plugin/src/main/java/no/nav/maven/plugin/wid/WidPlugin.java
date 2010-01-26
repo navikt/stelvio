@@ -98,7 +98,6 @@ public class WidPlugin extends EclipsePlugin {
 		if (workspaceConfiguration.getDefaultDeployServerName() == null) {
 			workspaceConfiguration.setDefaultDeployServerName(runtimeName);
 		}
-		getLog().info("default deploy server name: " + workspaceConfiguration.getDefaultDeployServerName());
 		new WidWtpComponentWriter().init(getLog(), eclipseWriterConfig).write();
 		new WidWtpFacetsWriter().init(getLog(), eclipseWriterConfig).write();
 	}
