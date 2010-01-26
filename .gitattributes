@@ -2258,6 +2258,8 @@ int/maven/poms/pom.xml -text
 int/maven/runtimes/pom.xml -text
 int/maven/runtimes/wps-runtime/files.txt -text
 int/maven/runtimes/wps-runtime/pom.xml -text
+int/maven/utilities/pom.xml -text
+int/maven/utilities/sca-attributes-builder/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
 int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ComponentScopedRefs.xsd -text

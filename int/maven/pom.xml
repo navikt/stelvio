@@ -28,6 +28,7 @@
 		<!--
 		<module>runtimes</module>
 		-->
+		<module>utilities</module>
 		<module>xmlbeans</module>
 	</modules>
 	
