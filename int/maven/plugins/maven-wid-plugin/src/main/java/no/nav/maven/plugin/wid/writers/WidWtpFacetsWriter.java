@@ -102,11 +102,11 @@ public class WidWtpFacetsWriter extends AbstractWtpResourceWriter {
 		writer.startElement(ELT_FACETED_PROJECT);
 
 		writer.startElement("runtime");
-		writer.addAttribute("name", "WebSphere Process Server v6.1");
+		writer.addAttribute("name", config.getWorkspaceConfiguration().getDefaultDeployServerName());
 		writer.endElement(); // runtime
 
-		writeFacetFixedElement(writer, FACET_JST_JAVA); // fixed
 		writeFacetFixedElement(writer, FACET_JST_UTILITY); // fixed
+		writeFacetFixedElement(writer, FACET_JST_JAVA); // fixed
 		writeFacetInstalledElement(writer, FACET_JST_UTILITY, "1.0"); //$NON-NLS-1$
 		writeFacetInstalledElement(writer, FACET_JST_JAVA, IdeUtils.resolveJavaVersion(config.getProject())); // installed
 

@@ -15,6 +15,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.eclipse.EclipsePlugin;
 import org.apache.maven.plugin.eclipse.EclipseSourceDir;
+import org.apache.maven.plugin.eclipse.WorkspaceConfiguration;
 import org.apache.maven.plugin.eclipse.writers.EclipseWriterConfig;
 import org.apache.maven.plugin.ide.IdeDependency;
 import org.apache.maven.project.MavenProject;
@@ -32,7 +33,12 @@ import org.apache.maven.project.MavenProject;
 public class WidPlugin extends EclipsePlugin {
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
-
+	
+	/**
+     * @parameter expression="${wid.runtimeName}" default-value="WebSphere Process Server v6.1"
+     */
+	private String runtimeName;
+	
 	@Override
 	protected void writeConfigurationExtras(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
 		super.writeConfigurationExtras(eclipseWriterConfig);
@@ -88,6 +94,11 @@ public class WidPlugin extends EclipsePlugin {
 	}
 
 	private void writeWtpSettings(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
+		WorkspaceConfiguration workspaceConfiguration = getWorkspaceConfiguration();
+		if (workspaceConfiguration.getDefaultDeployServerName() == null) {
+			workspaceConfiguration.setDefaultDeployServerName(runtimeName);
+		}
+		getLog().info("default deploy server name: " + workspaceConfiguration.getDefaultDeployServerName());
 		new WidWtpComponentWriter().init(getLog(), eclipseWriterConfig).write();
 		new WidWtpFacetsWriter().init(getLog(), eclipseWriterConfig).write();
 	}
