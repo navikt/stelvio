@@ -11,7 +11,7 @@ public abstract class AbstractDeviceMgmtMojo extends AbstractDataPowerMojo {
      * The URL of the DataPower device to manage. Note: HTTPS required:
      * 		https://hostname:5550
      * 
-     * @parameter expression="${host}" alias="host"
+     * @parameter expression="${datapower.baseurl}" alias="host"
      * @required
      */
     private URL deviceUrl;
@@ -19,7 +19,7 @@ public abstract class AbstractDeviceMgmtMojo extends AbstractDataPowerMojo {
     /**
      * The device username used to authenticate the XML Management Interface
      * 
-     * @parameter expression="${user}" alias="user"
+     * @parameter expression="${datapower.username}" alias="user"
      * @required
      */    
     private String username;
@@ -27,7 +27,7 @@ public abstract class AbstractDeviceMgmtMojo extends AbstractDataPowerMojo {
     /**
      * The device password used to authenticate the XML Management Interface
      * 
-     * @parameter expression="${pwd}" alias="pwd"
+     * @parameter expression="${datapower.password}" alias="pwd"
      * @required
      */    
     private String password;
@@ -44,7 +44,7 @@ public abstract class AbstractDeviceMgmtMojo extends AbstractDataPowerMojo {
     
 	protected XMLMgmtSession getXMLMgmtSession() {
 		if (mgmtSession == null) {
-			getLog().info("Creating new XMLMgmtSession, host = " + getDeviceUrl() + ", user = " + username + ", pwd = " + password);	
+			getLog().debug("Creating new XMLMgmtSession, host = " + getDeviceUrl() + ", user = " + username + ", pwd = " + password);	
 			mgmtSession = new XMLMgmtSession.Builder(getDeviceUrl().toString()).user(username).password(password).domain(getDomain()).build();
 		}
 		return mgmtSession;
