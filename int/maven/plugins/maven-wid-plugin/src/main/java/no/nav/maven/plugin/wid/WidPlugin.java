@@ -10,6 +10,7 @@ import java.util.List;
 
 import no.nav.maven.plugin.wid.writers.WidWtpComponentWriter;
 import no.nav.maven.plugin.wid.writers.WidWtpFacetsWriter;
+import no.nav.maven.utilities.sca.ScaAttributesBuilder;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -29,16 +30,18 @@ import org.apache.maven.project.MavenProject;
  * @extendsGoal eclipse
  * @goal wid
  * @execute phase="generate-resources"
+ * @requiresDependencyResolution compile
  */
 public class WidPlugin extends EclipsePlugin {
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
-	
+
 	/**
-     * @parameter expression="${wid.runtimeName}" default-value="WebSphere Process Server v6.1"
-     */
+	 * @parameter expression="${wid.runtimeName}"
+	 *            default-value="WebSphere Process Server v6.1"
+	 */
 	private String runtimeName;
-	
+
 	@Override
 	protected void writeConfigurationExtras(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
 		super.writeConfigurationExtras(eclipseWriterConfig);
@@ -51,6 +54,16 @@ public class WidPlugin extends EclipsePlugin {
 			fixDependencies(eclipseWriterConfig);
 
 			writeWtpSettings(eclipseWriterConfig);
+
+			writeScaAttributes();
+		}
+	}
+
+	private void writeScaAttributes() throws MojoExecutionException {
+		try {
+			new ScaAttributesBuilder(getProject()).writeFile(getEclipseProjectDir());
+		} catch (IOException e) {
+			throw new MojoExecutionException("Unable to write SCA Attrbutes file", e);
 		}
 	}
 

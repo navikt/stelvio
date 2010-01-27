@@ -29,5 +29,8 @@ public class WidCleanMojo extends EclipseCleanMojo {
 		for (String file : files) {
 			delete(new File(getBasedir(), file));
 		}
+
+		delete(new File(getBasedir(), "sca.library.attributes"));
+		delete(new File(getBasedir(), "sca.module.attributes"));
 	}
 }

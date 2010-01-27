@@ -2262,7 +2262,6 @@ int/maven/runtimes/wps-runtime/pom.xml -text
 int/maven/utilities/pom.xml -text
 int/maven/utilities/sca-attributes-builder/pom.xml -text
 int/maven/utilities/sca-attributes-builder/src/main/java/no/nav/maven/utilities/sca/ScaAttributesBuilder.java -text
-int/maven/utilities/sca-attributes-builder/src/test/java/no/nav/maven/utilities/sca/ScaAttributesBuilderTest.java -text
 int/maven/xmlbeans/ibm-xmlbeans/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
 int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ComponentScopedRefs.xsd -text

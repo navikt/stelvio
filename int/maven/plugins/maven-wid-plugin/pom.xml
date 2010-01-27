@@ -41,6 +41,12 @@
 			<type>maven-plugin</type>
 			<version>2.7</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>no.nav.maven.support</groupId>
+			<artifactId>sca-attributes-builder</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<scm>
