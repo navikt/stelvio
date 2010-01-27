@@ -86,15 +86,17 @@ public class ExportWsdlMojo extends AbstractMojo {
 	/**
 	 * EAR-file.
 	 * 
-	 * @parameter expression="${project.artifact.file}"
+	 * @parameter expression="${project.build.directory}/${project.build.finalName}.${project.artifact.artifactHandler.extension}"
 	 */
 	private File earFile;
 
 	public void execute() throws MojoExecutionException {
-		// This "stupid" if test is here because I want to configure the plugin
-		// execution element i parent POMs
-		if (!"pom".equals(project.getPackaging())) {
+		String packaging = project.getPackaging();
+		// This plugin is only applicable to WPS Module artifacts
+		if ("wps-module-ear".equals(packaging)) {
 			executeInternal();
+		} else {
+			getLog().debug("Skipping exportwsdl because packaging is " + packaging + " and not wps-module-ear.");
 		}
 	}
 
