@@ -2,8 +2,14 @@ package no.nav.datapower.xmlmgmt;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import no.nav.datapower.util.DPCollectionUtils;
 import no.nav.datapower.util.DPFileUtils;
@@ -21,10 +27,9 @@ import no.nav.datapower.xmlmgmt.command.SetFileCommand;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
+import org.xml.sax.InputSource;
 
 public class XMLMgmtSession {
 
@@ -154,9 +159,30 @@ public class XMLMgmtSession {
 //		System.out.println("XMLMgmtSession.importFiles(), list of files:");
 //		IOUtils.writeLines(fileList, IOUtils.LINE_SEPARATOR, System.out);
 		DPCollectionUtils.printLines(fileList, LOG, Level.DEBUG, "Importing file: ");
-		return importFiles(fileList, source, location);
+		String response = importFiles(fileList, source, location);
+		validateResult(extractResult(response));
+		return response;
+	}
+
+	private String extractResult(String response) throws XMLMgmtException {
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		xpath.setNamespaceContext(new DatapowerManagementNamespaceContext());
+		InputSource inputSource = new InputSource(new StringReader(response));
+		try {
+			String result = (String) xpath.evaluate("//"+DatapowerManagementNamespaceContext.DEFAULT_PREFIX+":result", inputSource, XPathConstants.STRING);
+			LOG.debug("Result returned from XML management call: " + result);
+			return result;
+		} catch (XPathExpressionException e) {
+			throw new XMLMgmtException("Did not find expected element 'result' in response message", e);
+		}
 	}
 	 
+	private void validateResult(String result) throws XMLMgmtException {
+		if (!"OK".equals(result.trim())) {
+			throw new XMLMgmtException("Expected result 'OK', but received: '" + result + "'");
+		}
+	}
+
 	public String importFiles(List<File> fileList, File root, DeviceFileStore location) throws XMLMgmtException {
 		XMLMgmtRequest request = createRequest();
 		try {
@@ -184,7 +210,9 @@ public class XMLMgmtSession {
 		XMLMgmtRequest request = createRequest();
 		DoImportCommand command = new DoImportCommand.Builder(format, base64Config).build();	
 		request.addCommand(command);
-		return doRequest(request);
+		String response = doRequest(request);
+		validateResult(extractResult(response));
+		return response;
 	}
 	
 	public String importConfig(File configFile) throws XMLMgmtException {
@@ -215,13 +243,17 @@ public class XMLMgmtSession {
 	public String saveConfig() throws XMLMgmtException {
 		XMLMgmtRequest request = createRequest();
 		request.addCommand(new SaveConfigCommand());
-		return doRequest(request);
+		String response = doRequest(request);
+		validateResult(extractResult(response));
+		return response;
 	}
 
 	public String restartDomain() throws XMLMgmtException {
 		XMLMgmtRequest request = createRequest();
 		request.addCommand(new RestartThisDomainCommand());
-		return doRequest(request);
+		String response = doRequest(request);
+		validateResult(extractResult(response));
+		return response;
 	}
 
 	

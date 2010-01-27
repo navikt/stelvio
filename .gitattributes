@@ -344,6 +344,7 @@ dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/
 dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/inf/TPSamordningRegistrering.wsdl -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/ws/TPSamordningRegistreringWSEXP_TPSamordningRegistreringHttp_Service.wsdl -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/pom.xml -text
+dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DatapowerManagementNamespaceContext.java -text
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DeviceFileStore.java -text
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/ImportFormat.java -text
 dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/TemplateFormatter.java -text

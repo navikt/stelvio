@@ -60,7 +60,7 @@ public class DPHttpUtils {
 	
 	public static String getResponse(HttpURLConnection conn) throws IOException {
 		int httpResponseCode = conn.getResponseCode();
-		LOG.info("getResponse(), HTTP Response code = " + httpResponseCode);
+		LOG.debug("getResponse(), HTTP Response code = " + httpResponseCode);
 		if (httpResponseCode == 200)
 			return DPStreamUtils.getInputStreamAsString(conn.getInputStream(), true);
 		else
