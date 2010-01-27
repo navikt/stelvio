@@ -150,4 +150,10 @@ public class WSDLFile {
 	public int hashCode() {
 		return this.getRelativePath().hashCode();
 	}
+
+	public void mapEndpoint() {
+		String endpoint = "/elsam/tptilb/" + getProxyName() + getVersion(portType.getQName().getNamespaceURI());
+		frontsideURI = endpoint;
+	}
+
 }

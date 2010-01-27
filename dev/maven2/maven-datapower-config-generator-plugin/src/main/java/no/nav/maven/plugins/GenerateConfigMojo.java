@@ -189,6 +189,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 				if (definition.getServices().size() > 0) { // Only keep ports,
 															// not port types
 					WSDLFile wsdlFile = new WSDLFile(file, localFilesDir);
+					wsdlFile.mapEndpoint();
 					wsdlFiles.add(wsdlFile);
 					getLog().info("Found WSDL " + wsdlFile.getProxyName());
 				}
