@@ -211,7 +211,7 @@ public class XMLMgmtSession {
 		DoImportCommand command = new DoImportCommand.Builder(format, base64Config).build();	
 		request.addCommand(command);
 		String response = doRequest(request);
-		validateResult(extractResult(response));
+//		validateResult(extractResult(response));
 		return response;
 	}
 	
