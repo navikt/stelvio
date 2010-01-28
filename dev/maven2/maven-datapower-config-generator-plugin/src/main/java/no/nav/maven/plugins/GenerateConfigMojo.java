@@ -152,7 +152,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 					if (wsdlArtifact.equals(artifact)) {
 						// Add all hits
 						ZipFile zipFile = new ZipFile(artifact.getFile());
-						Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoint());
+						Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoints());
 						wsdlFiles.addAll(wsdls);
 						getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
 						break;
@@ -164,7 +164,9 @@ public class GenerateConfigMojo extends AbstractMojo {
 			Collection<WSProxy> proxies = getProxies(wsdlFiles);
 			// Assume naming standard "<policyname>Proxies" for property with
 			// proxy list
-			properties.put(policy.getName() + "Proxies", proxies);
+			String proxiesVariableName = policy.getName() + "Proxies"; 
+			properties.put(proxiesVariableName, proxies);
+			getLog().info("Added " + proxies.size() + " proxies to template variable " + proxiesVariableName);
 		}
 	}
 
@@ -206,7 +208,11 @@ public class GenerateConfigMojo extends AbstractMojo {
 		for (WSDLFile wsdl : wsdlFiles) {
 			WSProxy proxy = new WSProxy(wsdl.getProxyName());
 			if (proxies.containsKey(proxy.getName())) {
-				proxy = proxies.get(proxy);
+				proxy = proxies.get(proxy.getName());
+				getLog().debug("Found existing new proxy " + proxy.getName() + " in WSDL " + wsdl.getPortType());
+			} else {
+				proxies.put(proxy.getName(), proxy);
+				getLog().debug("Found new proxy " + proxy.getName() + " in WSDL " + wsdl.getPortType());
 			}
 			proxy.addWsdl(wsdl);
 		}
