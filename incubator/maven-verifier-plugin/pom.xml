@@ -138,4 +138,10 @@ under the License.
       </build>
     </profile>
   </profiles>
+  
+  	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven-verifier-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven-verifier-plugin</developerConnection>
+	</scm>
+  
 </project>
