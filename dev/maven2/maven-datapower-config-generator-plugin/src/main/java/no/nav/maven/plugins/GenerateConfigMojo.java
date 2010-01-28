@@ -152,7 +152,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 					if (wsdlArtifact.equals(artifact)) {
 						// Add all hits
 						ZipFile zipFile = new ZipFile(artifact.getFile());
-						Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir);
+						Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoint());
 						wsdlFiles.addAll(wsdls);
 						getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
 						break;
@@ -174,7 +174,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * is lookuped in a directory and added to the list of WSDL files returned
 	 */
 	private Set<WSDLFile> findWsdlFiles(Enumeration<? extends java.util.zip.ZipEntry> name, File wsdlFilesDir,
-			File localFilesDir) {
+			File localFilesDir, boolean rewriteEndpoints) {
 		Set<WSDLFile> wsdlFiles = new LinkedHashSet<WSDLFile>();
 		// Iterate through the ZIP file
 		while (name.hasMoreElements()) {
@@ -189,7 +189,9 @@ public class GenerateConfigMojo extends AbstractMojo {
 				if (definition.getServices().size() > 0) { // Only keep ports,
 															// not port types
 					WSDLFile wsdlFile = new WSDLFile(file, localFilesDir);
-					wsdlFile.mapEndpoint();
+					if (rewriteEndpoints) {
+						wsdlFile.rewriteEndpoint();
+					}
 					wsdlFiles.add(wsdlFile);
 					getLog().info("Found WSDL " + wsdlFile.getProxyName());
 				}

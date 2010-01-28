@@ -6,6 +6,8 @@ public class Policy {
 
 	private String name;
 	
+	private boolean rewriteEndpoint = false;
+	
 	public WsdlArtifact[] getArtifacts() {
 		return artifacts;
 	}
@@ -20,6 +22,14 @@ public class Policy {
 
 	public void setName(String policyName) {
 		this.name = policyName;
+	}
+
+	public boolean isRewriteEndpoint() {
+		return rewriteEndpoint;
+	}
+
+	public void setRewriteEndpoint(boolean rewriteEndpoint) {
+		this.rewriteEndpoint = rewriteEndpoint;
 	}
 
 }
