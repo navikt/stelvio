@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.nav.maven.plugins</groupId>
 		<artifactId>maven-datapower-plugin-project</artifactId>
-		<version>1.1.16-SNAPSHOT</version>
+		<version>1.1.17</version>
 	</parent>
 
 	<artifactId>datapower-utils</artifactId>
