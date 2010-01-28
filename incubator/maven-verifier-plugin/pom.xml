@@ -30,7 +30,7 @@ under the License.
 
   <groupId>no.nav.maven.plugins</groupId>
   <artifactId>maven-verifier-plugin</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>maven-plugin</packaging>
 
   <name>Maven Verifier Plugin</name>
@@ -138,4 +138,10 @@ under the License.
       </build>
     </profile>
   </profiles>
+
+  <scm>
+    <connection>scm:svn:http://svn.apache.org/repos/asf/maven/plugins/tags/maven-verifier-plugin-1.1</connection>
+    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/maven/plugins/tags/maven-verifier-plugin-1.1</developerConnection>
+    <url>http://svn.apache.org/viewvc/maven/plugins/tags/maven-verifier-plugin-1.1</url>
+  </scm>
 </project>
