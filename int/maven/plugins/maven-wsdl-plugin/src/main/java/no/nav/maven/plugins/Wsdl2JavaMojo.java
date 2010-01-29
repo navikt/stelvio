@@ -282,7 +282,6 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	}
 
 	/**
-	 * @param project
 	 * @return the first wsdl-if artifact found in the dependency list
 	 * @throws MojoExecutionException
 	 */
