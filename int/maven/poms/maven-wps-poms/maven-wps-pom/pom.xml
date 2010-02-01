@@ -113,6 +113,7 @@
 	</dependencies>
 	
 	<properties>
+		<maven.test.skip>true</maven.test.skip>
 		<!-- 
 			TODO: WID goes bananas if the Maven build is using the default target folder as output. 
 			As a workaround we are changing the target folder to a folder outside the project		
