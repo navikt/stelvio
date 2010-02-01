@@ -23,7 +23,6 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-service-deploy-plugin</artifactId>
-				<version>1.8-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<goals>
