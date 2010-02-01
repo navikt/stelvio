@@ -5,6 +5,9 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="3.2.3" date="01-02-2010" description="Bugfix release">
+			<action dev="ebh2812" type="fix">Fixed SIR 158228, Impl 159949: Fixed bug i code that calculates age based on FNR and date.</action>
+		</release>
 		<release version="3.2.2" date="19-01-2010" description="Bugfix release">
 			<action dev="ebh2812" type="fix">Fixed bug related to SIR 125127, Impl 142320: MaxSimultaneousInvocations was set to 0 if not set explicitly.</action>
 			<action dev="ebh2812" type="update">Various (backwards-compatible) changes preparing for migration to WPS 7.</action>
