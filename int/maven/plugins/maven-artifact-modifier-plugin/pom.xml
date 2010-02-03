@@ -9,7 +9,7 @@
 
 	<artifactId>maven-artifact-modifier-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.34-SNAPSHOT</version>
+	<version>1.34</version>
 	<name>Artifact Modifier Plugin</name>
 
 	<dependencies>
@@ -44,10 +44,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-artifact-modifier-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-artifact-modifier-plugin-1.34
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-artifact-modifier-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-artifact-modifier-plugin-1.34
 		</developerConnection>
 	</scm>
 	<properties>
