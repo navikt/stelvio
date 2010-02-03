@@ -70,16 +70,19 @@ public class NamespaceToPackageMapGenerator {
 		if (parts[0].startsWith("www") || parts[0].startsWith("localhost") || parts[0].endsWith(".org"))
 			return null;
 
-		String packageName = null;
+		StringBuilder packageName = new StringBuilder();
 		// Skip parts[0], since this is the module name. Add the other parts,
 		// dot-separated;
 		for (int i = 1; i < parts.length; i++) {
-			if (packageName == null) {
-				packageName = parts[i];
-			} else {
-				packageName = packageName + "." + parts[i];
+			if (packageName.length() > 0) {
+				packageName.append(".");
 			}
+			packageName.append(parts[i]);
 		}
-		return packageName;
+		if (packageName.length() > 0) {
+			return packageName.toString().toLowerCase();
+		} else {
+			return null;
+		}
 	}
 }
