@@ -9,7 +9,7 @@
 
 	<artifactId>maven-websphere-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.39</version>
+	<version>1.40-SNAPSHOT</version>
 	<name>Websphere Interactor Plugin</name>
 
 	<dependencies>
@@ -49,10 +49,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-websphere-plugin-1.39
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-websphere-plugin
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-websphere-plugin-1.39
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-websphere-plugin
 		</developerConnection>
 	</scm>
 	<properties>
