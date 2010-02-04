@@ -36,7 +36,7 @@ public class RestartDmgr extends RemoteCommandExecutorMojo {
 		
 		
 		String pwd = null;
-		if (Os.isFamily("windows") == false) {
+		if (Os.isFamily("windows") == true) {
 			getLog().info("### TEST ### - Inni windows=true");
 			System.out.print("Enter password for wasadm: ");
 			pwd = PwdConsole.getPassword();
