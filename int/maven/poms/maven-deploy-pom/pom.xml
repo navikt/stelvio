@@ -4,7 +4,7 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-deploy-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.7.4-SNAPSHOT</version>
+	<version>1.7.4</version>
 	<name>POM for deployment</name>
 
 	<build>
@@ -156,10 +156,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deploy-pom-1.7.4
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-deploy-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-deploy-pom-1.7.4
 		</developerConnection>
 	</scm>
 	<properties>
