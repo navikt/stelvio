@@ -7,7 +7,7 @@
 		<version>1.8</version>
 	</parent>
 	<artifactId>maven-wsdl-plugin</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>Stelvio Integration Framework WSDL Plugin</name>
 
@@ -71,10 +71,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wsdl-plugin-1.1
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-plugin
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wsdl-plugin-1.1
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-plugin
 		</developerConnection>
 	</scm>
 	<properties>
