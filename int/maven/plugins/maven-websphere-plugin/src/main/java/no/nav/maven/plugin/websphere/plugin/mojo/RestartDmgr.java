@@ -23,18 +23,21 @@ public class RestartDmgr extends RemoteCommandExecutorMojo {
 
 	protected void executeRemoteCommand() throws MojoExecutionException, MojoFailureException {
 		
-		backupConfig(stopDmgr);
-		backupConfig(startDmgr);
+		restartDmgr(stopDmgr);
+		restartDmgr(startDmgr);
 		
 	}
 
-	private final void backupConfig(String script) {
-
+	private final void restartDmgr(String script) {
+		
+		getLog().info("### TEST ### - inside restartDmgr with script value="+script);
 		Commandline commLine = new Commandline();
 		Commandline.Argument arg = new Commandline.Argument();
-
+		
+		
 		String pwd = null;
-		if (Os.isFamily("windows") == true) {
+		if (Os.isFamily("windows") == false) {
+			getLog().info("### TEST ### - Inni windows=true");
 			System.out.print("Enter password for wasadm: ");
 			pwd = PwdConsole.getPassword();
 			arg.setLine("C:/apps/SSH/plink.exe -pw "
@@ -44,14 +47,15 @@ public class RestartDmgr extends RemoteCommandExecutorMojo {
 							+ " /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/"
 							+ script );
 		} else {
+			getLog().info("### TEST ### - Inni linux=true - deploymentManagerHost="+deploymentManagerHost);
 			arg.setLine("ssh wasadm@"
 							+ deploymentManagerHost
 							+ " '/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/" 
-							+ script );
+							+ script + "'");
 		}
 
 		commLine.addArg(arg);
-
+		getLog().info("### TEST ### - commLine.toString()="+commLine.toString());
 		executeCommand(commLine);
 	}
 

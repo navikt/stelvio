@@ -26,9 +26,17 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		
+		String[] orgArgs = commandLine.getArguments();
+		
 		//Create new Commandline objects
-		Commandline cmdline2 = new Commandline(commandLine.toString());
-		Commandline cmdline3 = new Commandline(commandLine.toString());
+		Commandline cmdline2 = new Commandline();
+		Commandline cmdline3 = new Commandline();
+		
+		cmdline2.setExecutable(commandLine.getExecutable());
+		cmdline2.addArguments(orgArgs);
+
+		cmdline3.setExecutable(commandLine.getExecutable());
+		cmdline3.addArguments(orgArgs);
 		
 		deployResources(commandLine);
 		addOrUpdateWebsphereVariable(cmdline2, " ESB_RELEASE_VERSION ", esbReleaseVersion);
