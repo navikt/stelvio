@@ -75,7 +75,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 		File outputDirectory = new File(project.getBuild().getOutputDirectory());
 		File localFilesDirectory = new File(outputDirectory, "files/local");
 		File wsdlFilesDirectory = new File(localFilesDirectory, "wsdl");
-		File propertiesFile = new File(project.getBasedir(), "src/main/filters/main.properties");
+		File propertiesFile = new File(project.getBasedir(), "target/filters/main.properties");
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
 		File configFile = new File(outputDirectory, "configuration.xml");
@@ -84,9 +84,6 @@ public class GenerateConfigMojo extends AbstractMojo {
 		properties = loadProperties(propertiesFile.getPath());
 		// Create list of trusted partner certificates and add to properties
 		addTrustCerts(properties);
-		// Set version property
-		// TODO Consider using the module version
-		properties.put("cfgVersion", project.getVersion());
 
 		// Map WSDLs to proxies
 		try {
