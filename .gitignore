@@ -889,10 +889,3 @@ int/stelvio-commons-lib/src/changes/target
 int/stelvio-commons-lib/src/gen
 int/stelvio-commons-lib/src/target
 int/stelvio-commons-lib/target
-int/stelvio-commons-lib/xsd-includes/*.class
-int/stelvio-commons-lib/xsd-includes/.classpath
-int/stelvio-commons-lib/xsd-includes/.project
-int/stelvio-commons-lib/xsd-includes/.settings
-int/stelvio-commons-lib/xsd-includes/META-INF
-int/stelvio-commons-lib/xsd-includes/gen
-int/stelvio-commons-lib/xsd-includes/target

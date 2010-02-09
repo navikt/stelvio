@@ -2513,8 +2513,6 @@ int/stelvio-commons-lib/no/stelvio/domain/person/Pid.java -text
 int/stelvio-commons-lib/no/stelvio/domain/person/PidValidationException.java -text
 int/stelvio-commons-lib/pom.xml -text svneol=unset#text/plain
 int/stelvio-commons-lib/src/changes/changes.xml -text svneol=unset#text/plain
-int/stelvio-commons-lib/xsd-includes/http.stelvio-commons-lib.no.nav.gbo.xsd -text svneol=unset#text/plain
-int/stelvio-commons-lib/xsd-includes/http.stelvio-commons-lib.no.stelvio.common.systemavailability.xsd -text svneol=unset#text/plain
 int/stelvio-jca-adapters/ADLDAPAdapter/.classpath -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.compatibility -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.j2ee -text
