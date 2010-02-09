@@ -36,6 +36,7 @@ public class ScaAttributesBuilder {
 		this.project = project;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void writeTo(Writer writer) throws IOException {
 		Document document = new Document();
 		Element rootElement = new Element("moduleAndLibraryAttributes", TARGET_NAMESPACE);
