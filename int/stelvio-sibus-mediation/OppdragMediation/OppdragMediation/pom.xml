@@ -8,6 +8,7 @@
 	</parent>
 	
 	<artifactId>oppdrag-mediation-java</artifactId>
+	<name>OppdragMediation Java</name>
 	
 	<dependencies>
 		<dependency>

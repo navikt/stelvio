@@ -9,12 +9,14 @@
 
 	<groupId>no.nav.esb.layers.sibus-mediations</groupId>
 	<artifactId>oppdrag-mediation</artifactId>
+	<name>OppdragMediation</name>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 	
 	<modules>
 		<module>OppdragMediation</module>
 		<module>OppdragMediationEJB</module>
+		<module>OppdragMediationEAR</module>
 	</modules>
 
 	<scm>

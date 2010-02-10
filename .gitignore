@@ -891,5 +891,6 @@ int/stelvio-commons-lib/src/target
 int/stelvio-commons-lib/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/bin
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/target
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/bin
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/target

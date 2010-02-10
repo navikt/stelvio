@@ -2746,6 +2746,7 @@ int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.settings/org.e
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/META-INF/.modulemaps -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/META-INF/application.xml -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/pom.xml -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.compatibility -text
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/.j2ee -text
