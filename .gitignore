@@ -853,6 +853,7 @@ int/stelvio-commons-lib-test/.project
 int/stelvio-commons-lib-test/.settings
 int/stelvio-commons-lib-test/target
 int/stelvio-commons-lib/*.class
+int/stelvio-commons-lib/*.jar
 int/stelvio-commons-lib/.classpath
 int/stelvio-commons-lib/.project
 int/stelvio-commons-lib/.settings
@@ -874,6 +875,8 @@ int/stelvio-commons-lib/no/stelvio/common/systemavailability/*.class
 int/stelvio-commons-lib/no/stelvio/common/util/*.class
 int/stelvio-commons-lib/no/stelvio/domain/*.class
 int/stelvio-commons-lib/no/stelvio/domain/person/*.class
+int/stelvio-commons-lib/sca.library.attributes
+int/stelvio-commons-lib/sca.module.attributes
 int/stelvio-commons-lib/src/*.class
 int/stelvio-commons-lib/src/.classpath
 int/stelvio-commons-lib/src/.project
