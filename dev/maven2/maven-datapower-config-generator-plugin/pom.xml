@@ -43,16 +43,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-release-plugin</artifactId>
-					<configuration>
-						<tagBase>https://versjonskontroll.adeo.no/svn/stelvio/tags/dev/maven2/</tagBase>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 	<scm>
