@@ -121,7 +121,7 @@ public class OppdragMediation implements MediationHandler {
 		//		 Mediating the routing endpoint
 		log.logp(Level.FINE, className, "handle()", "OppdragMediation: " + "****** " + propName + ": " + " mediating routing endpoint.");
 		SIMessage msg = siCtx.getSIMessage();
-		List frp = new ArrayList(1);
+		List<SIDestinationAddress> frp = new ArrayList<SIDestinationAddress>(1);
 		String destName = getRouteMessageDestination(siCtx);
 
 		String destination[] = destName.split(":");
@@ -154,6 +154,7 @@ public class OppdragMediation implements MediationHandler {
 	 * @param message
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unchecked")
 	private void setJMSHeaderProperties(String propName, MessageContext ctx,
 			SIMessage message) throws IOException {
 		log.logp(Level.FINE, className, "handle()", "OppdragMediation: " + "****** " + propName + ": " + " jms system header properties applied.");
@@ -169,7 +170,7 @@ public class OppdragMediation implements MediationHandler {
 							(String) ctx.getProperty(propName), false);
 
 			// get a copy of the current reverse routing path
-			List rrp = message.getReverseRoutingPath();
+			List<SIDestinationAddress> rrp = message.getReverseRoutingPath();
 			// Add the response destination to the list (so that the
 			// new destination will be the first destination that
 			// will be visited
