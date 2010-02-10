@@ -14,6 +14,7 @@
 	
 	<modules>
 		<module>OppdragMediation</module>
+		<module>OppdragMediationEJB</module>
 	</modules>
 
 	<scm>
