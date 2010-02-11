@@ -352,6 +352,9 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/target
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/target
 dev/maven2/maven-deployment-descriptor-plugin/target
+dev/maven2/maven-properties-plugin/.classpath
+dev/maven2/maven-properties-plugin/.project
+dev/maven2/maven-properties-plugin/target
 dev/maven2/maven-propertiesgenerator-plugin/.classpath
 dev/maven2/maven-propertiesgenerator-plugin/.project
 dev/maven2/maven-propertiesgenerator-plugin/target
