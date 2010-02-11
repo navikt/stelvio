@@ -45,5 +45,18 @@
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-properties-plugin</connection>
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-properties-plugin</developerConnection>
 	</scm>
+	
+	<distributionManagement>
+		<repository>
+			<id>nav-maven2-internal-repo</id>
+			<url>scp://maven.adeo.no/var/maven2/internal</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>nav-pensjon-maven2-snapshot-repo</id>
+			<url>scp://10.33.1.53/var/maven2/snapshot</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
