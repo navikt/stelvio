@@ -1486,32 +1486,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/maven-verifier-plugin/pom.xml -text
-incubator/maven-verifier-plugin/src/it/default/pom.xml -text
-incubator/maven-verifier-plugin/src/it/default/src/test/verifier/verifications.xml -text
-incubator/maven-verifier-plugin/src/it/settings.xml -text
-incubator/maven-verifier-plugin/src/it/simple/pom.xml -text
-incubator/maven-verifier-plugin/src/it/simple/src/main/resources/file1.txt -text
-incubator/maven-verifier-plugin/src/it/simple/src/main/resources/file2.txt -text
-incubator/maven-verifier-plugin/src/it/simple/src/test/verifier/verifications-test.xml -text
-incubator/maven-verifier-plugin/src/main/java/org/apache/maven/plugin/verifier/ConsoleVerificationResultPrinter.java -text
-incubator/maven-verifier-plugin/src/main/java/org/apache/maven/plugin/verifier/VerificationResult.java -text
-incubator/maven-verifier-plugin/src/main/java/org/apache/maven/plugin/verifier/VerificationResultPrinter.java -text
-incubator/maven-verifier-plugin/src/main/java/org/apache/maven/plugin/verifier/VerifierMojo.java -text
-incubator/maven-verifier-plugin/src/main/mdo/verifications.mdo -text
-incubator/maven-verifier-plugin/src/site/apt/examples/sample-verifications.apt -text
-incubator/maven-verifier-plugin/src/site/apt/index.apt -text
-incubator/maven-verifier-plugin/src/site/apt/usage.apt.vm -text
-incubator/maven-verifier-plugin/src/site/apt/using-xsd.apt -text
-incubator/maven-verifier-plugin/src/site/fml/faq.fml -text
-incubator/maven-verifier-plugin/src/site/site.xml -text
-incubator/maven-verifier-plugin/src/test/java/org/apache/maven/plugin/verifier/VerifierMojoTest.java -text
-incubator/maven-verifier-plugin/src/test/resources/File[!!-~]Exists.xml -text
-incubator/maven-verifier-plugin/src/test/resources/FileDoesNotExist.xml -text
-incubator/maven-verifier-plugin/src/test/resources/FileExistsInvalidContent.xml -text
-incubator/maven-verifier-plugin/src/test/resources/FileExistsValidContent.xml -text
-incubator/maven-verifier-plugin/src/test/resources/InexistentFile.xml -text
-incubator/maven-verifier-plugin/src/test/resources/InexistentFileThatExists.xml -text
 incubator/nav-int-fault-test/nav-broc-fault-test/.classpath -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.project -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain

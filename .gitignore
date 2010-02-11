@@ -369,10 +369,6 @@ incubator/busconfiguration/.classpath
 incubator/busconfiguration/.project
 incubator/busconfiguration/.settings
 incubator/busconfiguration/target
-incubator/maven-verifier-plugin/.classpath
-incubator/maven-verifier-plugin/.project
-incubator/maven-verifier-plugin/.settings
-incubator/maven-verifier-plugin/target
 int/maven/archetypes/wps-library-archetype/.project
 int/maven/archetypes/wps-library-archetype/.settings
 int/maven/archetypes/wps-library-archetype/bin
