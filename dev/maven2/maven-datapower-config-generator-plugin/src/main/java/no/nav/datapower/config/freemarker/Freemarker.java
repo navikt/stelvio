@@ -22,7 +22,6 @@ import freemarker.template.TemplateException;
  */
 public class Freemarker {
 
-	private static final String TEMPLATE_DIR = "src/main/freemarker-templates";
 	private static final String DATAPOWER_CFG_GEN_RESOURCE_PREFIX = "/freemarker-templates/";
 	private Configuration configuration;
 
@@ -31,13 +30,13 @@ public class Freemarker {
 	 *  
 	 * @throws IOException
 	 */
-	public Freemarker() throws IOException {
+	public Freemarker(File templateDirectory) throws IOException {
 		configuration = new Configuration();
 		configuration.setWhitespaceStripping(true);
 		configuration.setObjectWrapper(new DefaultObjectWrapper());
 		configuration.setLocalizedLookup(false);
 		
-		FileTemplateLoader localLoader = new FileTemplateLoader(new File(TEMPLATE_DIR));
+		FileTemplateLoader localLoader = new FileTemplateLoader(templateDirectory);
 		ClassTemplateLoader pluginLoader = new ClassTemplateLoader(this.getClass(), DATAPOWER_CFG_GEN_RESOURCE_PREFIX);
 		TemplateLoader[] loaders = new TemplateLoader[] {localLoader, pluginLoader};
 		MultiTemplateLoader mtl = new MultiTemplateLoader(loaders);

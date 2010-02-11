@@ -218,7 +218,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 
 	private void processFreemarkerTemplates(File configFile) throws IOException, TemplateException {
 		// Prepare for fremarker template processing
-		Freemarker freemarker = new Freemarker();
+		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "src/main/freemarker-templates"));
 		// Open file for writing
 		FileWriter writer = new FileWriter(configFile);
 		// Process main template
