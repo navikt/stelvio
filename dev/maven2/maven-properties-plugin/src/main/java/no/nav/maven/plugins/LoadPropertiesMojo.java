@@ -10,7 +10,7 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.shared.filtering.PropertyUtils;
 
 /**
- * Goal which loads property files as project properties
+ * Goal which scans through a properties file and fails if it finds an unresolved property
  * 
  * The properties are interpolated with existing project properties and other properties from the file.
  * Only the format ${propertyname} is recognized for cross-property references.
