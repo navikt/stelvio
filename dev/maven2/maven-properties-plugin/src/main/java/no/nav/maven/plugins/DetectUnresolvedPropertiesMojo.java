@@ -48,7 +48,7 @@ public class DetectUnresolvedPropertiesMojo extends AbstractMojo {
 							index = endIndex + 1;
 							numUnresolvedProperties++;
 							getLog().warn("Found unresolved property '" + line.substring(startIndex + 1, endIndex) + "'");
-							getLog().info("Context: '" + line);
+							getLog().info("Context: '" + line + "'");
 						}
 					}
 				}
