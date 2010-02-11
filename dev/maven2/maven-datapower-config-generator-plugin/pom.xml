@@ -4,7 +4,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-datapower-config-generator-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.5</version>
+	<version>1.6-SNAPSHOT</version>
 
 	<name>Maven Datapower Config Generator Plugin</name>
 	<description>This plugin generates DataPower configuration based on predefined templates and specified WSDL files.</description>
@@ -46,8 +46,8 @@
 	</build>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-datapower-config-generator-plugin-1.5</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-datapower-config-generator-plugin-1.5</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-config-generator-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-config-generator-plugin</developerConnection>
 	</scm>
 
 	<distributionManagement>
