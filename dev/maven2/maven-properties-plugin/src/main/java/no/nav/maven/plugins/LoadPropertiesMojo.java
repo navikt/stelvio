@@ -2,8 +2,6 @@ package no.nav.maven.plugins;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Properties;
-import java.util.Map.Entry;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -12,12 +10,15 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.shared.filtering.PropertyUtils;
 
 /**
- * Goal which loads properties into project scode from a list of files
+ * Goal which loads properties from a list of files and system properties into
+ * project scope
  * 
- * The properties are interpolated with existing project properties and other properties from the file.
- * Only the format ${propertyname} is recognized for cross-property references.
+ * The properties are interpolated with existing project properties, system
+ * properties and other properties from the file. Only the format
+ * ${propertyname} is recognized for cross-property references.
  * 
- * Existing properties will not be overwritten. The existing property will be kept.
+ * Existing properties are overwritten, and system properties overwrites all
+ * other properties.
  * 
  * Missing files are ignored with an info message.
  * 
@@ -35,7 +36,7 @@ public class LoadPropertiesMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private MavenProject project;
-	
+
 	/**
 	 * Property files to load properties from
 	 * 
@@ -43,19 +44,16 @@ public class LoadPropertiesMojo extends AbstractMojo {
 	 * @required
 	 */
 	private File[] files;
-	
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		for (File file : files) {
 			if (file.exists()) {
-				getLog().debug("Loading property file: " + file);
-				
+				getLog().info("Loading property file: " + file);
+
 				try {
-					Properties properties = PropertyUtils.loadPropertyFile(file, project.getProperties());
-					for (Entry<Object, Object> property : properties.entrySet()) {
-						if (!project.getProperties().containsKey(property.getKey())) {
-							project.getProperties().put(property.getKey(), property.getValue());
-						}
-					}
+					project.getProperties().putAll(System.getProperties());
+					project.getProperties().putAll(PropertyUtils.loadPropertyFile(file, project.getProperties()));
+					project.getProperties().putAll(System.getProperties());
 				} catch (IOException e) {
 					throw new MojoExecutionException("An error occured while loading properties from " + file, e);
 				}
