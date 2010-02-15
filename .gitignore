@@ -827,6 +827,7 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/target
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/bin
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/target
 int/stelvio-commons-bpc-lib/*.class
+int/stelvio-commons-bpc-lib/*.jar
 int/stelvio-commons-bpc-lib/.classpath
 int/stelvio-commons-bpc-lib/.project
 int/stelvio-commons-bpc-lib/.settings
@@ -860,6 +861,8 @@ int/stelvio-commons-bpc-lib/no/stelvio/common/target
 int/stelvio-commons-bpc-lib/no/stelvio/gen
 int/stelvio-commons-bpc-lib/no/stelvio/target
 int/stelvio-commons-bpc-lib/no/target
+int/stelvio-commons-bpc-lib/sca.library.attributes
+int/stelvio-commons-bpc-lib/sca.module.attributes
 int/stelvio-commons-bpc-lib/target
 int/stelvio-commons-lib-test/.classpath
 int/stelvio-commons-lib-test/.project
