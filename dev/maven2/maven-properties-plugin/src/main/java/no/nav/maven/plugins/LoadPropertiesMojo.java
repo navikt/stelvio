@@ -2,6 +2,8 @@ package no.nav.maven.plugins;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
+import java.util.Map.Entry;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -10,10 +12,12 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.shared.filtering.PropertyUtils;
 
 /**
- * Goal which scans through a properties file and fails if it finds an unresolved property
+ * Goal which loads properties into project scode from a list of files
  * 
  * The properties are interpolated with existing project properties and other properties from the file.
  * Only the format ${propertyname} is recognized for cross-property references.
+ * 
+ * Existing properties will not be overwritten. The existing property will be kept.
  * 
  * Missing files are ignored with an info message.
  * 
@@ -46,7 +50,12 @@ public class LoadPropertiesMojo extends AbstractMojo {
 				getLog().debug("Loading property file: " + file);
 				
 				try {
-					project.getProperties().putAll(PropertyUtils.loadPropertyFile(file, project.getProperties()));
+					Properties properties = PropertyUtils.loadPropertyFile(file, project.getProperties());
+					for (Entry<Object, Object> property : properties.entrySet()) {
+						if (!project.getProperties().containsKey(property.getKey())) {
+							project.getProperties().put(property.getKey(), property.getValue());
+						}
+					}
 				} catch (IOException e) {
 					throw new MojoExecutionException("An error occured while loading properties from " + file, e);
 				}
