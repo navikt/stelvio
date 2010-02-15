@@ -408,6 +408,7 @@ int/maven/maven-poc/layers/libs/.settings
 int/maven/maven-poc/layers/libs/META-INF
 int/maven/maven-poc/layers/libs/gen
 int/maven/maven-poc/layers/libs/poc-lib1/*.class
+int/maven/maven-poc/layers/libs/poc-lib1/*.jar
 int/maven/maven-poc/layers/libs/poc-lib1/.classpath
 int/maven/maven-poc/layers/libs/poc-lib1/.project
 int/maven/maven-poc/layers/libs/poc-lib1/.settings
@@ -448,8 +449,11 @@ int/maven/maven-poc/layers/libs/poc-lib1/no/nav/util/META-INF
 int/maven/maven-poc/layers/libs/poc-lib1/no/nav/util/gen
 int/maven/maven-poc/layers/libs/poc-lib1/no/nav/util/target
 int/maven/maven-poc/layers/libs/poc-lib1/no/target
+int/maven/maven-poc/layers/libs/poc-lib1/sca.library.attributes
+int/maven/maven-poc/layers/libs/poc-lib1/sca.module.attributes
 int/maven/maven-poc/layers/libs/poc-lib1/target
 int/maven/maven-poc/layers/libs/poc-lib2/*.class
+int/maven/maven-poc/layers/libs/poc-lib2/*.jar
 int/maven/maven-poc/layers/libs/poc-lib2/.classpath
 int/maven/maven-poc/layers/libs/poc-lib2/.project
 int/maven/maven-poc/layers/libs/poc-lib2/.settings
@@ -483,8 +487,11 @@ int/maven/maven-poc/layers/libs/poc-lib2/no/nav/util/META-INF
 int/maven/maven-poc/layers/libs/poc-lib2/no/nav/util/gen
 int/maven/maven-poc/layers/libs/poc-lib2/no/nav/util/target
 int/maven/maven-poc/layers/libs/poc-lib2/no/target
+int/maven/maven-poc/layers/libs/poc-lib2/sca.library.attributes
+int/maven/maven-poc/layers/libs/poc-lib2/sca.module.attributes
 int/maven/maven-poc/layers/libs/poc-lib2/target
 int/maven/maven-poc/layers/libs/poc-lib3/*.class
+int/maven/maven-poc/layers/libs/poc-lib3/*.jar
 int/maven/maven-poc/layers/libs/poc-lib3/.classpath
 int/maven/maven-poc/layers/libs/poc-lib3/.project
 int/maven/maven-poc/layers/libs/poc-lib3/.settings
@@ -518,6 +525,8 @@ int/maven/maven-poc/layers/libs/poc-lib3/no/nav/util/META-INF
 int/maven/maven-poc/layers/libs/poc-lib3/no/nav/util/gen
 int/maven/maven-poc/layers/libs/poc-lib3/no/nav/util/target
 int/maven/maven-poc/layers/libs/poc-lib3/no/target
+int/maven/maven-poc/layers/libs/poc-lib3/sca.library.attributes
+int/maven/maven-poc/layers/libs/poc-lib3/sca.module.attributes
 int/maven/maven-poc/layers/libs/poc-lib3/target
 int/maven/maven-poc/layers/libs/target
 int/maven/maven-poc/layers/modules/*.class
@@ -532,6 +541,7 @@ int/maven/maven-poc/layers/modules/cons/.settings
 int/maven/maven-poc/layers/modules/cons/META-INF
 int/maven/maven-poc/layers/modules/cons/gen
 int/maven/maven-poc/layers/modules/cons/poc-module1/*.class
+int/maven/maven-poc/layers/modules/cons/poc-module1/*.jar
 int/maven/maven-poc/layers/modules/cons/poc-module1/.classpath
 int/maven/maven-poc/layers/modules/cons/poc-module1/.project
 int/maven/maven-poc/layers/modules/cons/poc-module1/.settings
@@ -565,8 +575,11 @@ int/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/java/gen
 int/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/java/target
 int/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/target
 int/maven/maven-poc/layers/modules/cons/poc-module1/no/target
+int/maven/maven-poc/layers/modules/cons/poc-module1/sca.library.attributes
+int/maven/maven-poc/layers/modules/cons/poc-module1/sca.module.attributes
 int/maven/maven-poc/layers/modules/cons/poc-module1/target
 int/maven/maven-poc/layers/modules/cons/poc-module2/*.class
+int/maven/maven-poc/layers/modules/cons/poc-module2/*.jar
 int/maven/maven-poc/layers/modules/cons/poc-module2/.classpath
 int/maven/maven-poc/layers/modules/cons/poc-module2/.project
 int/maven/maven-poc/layers/modules/cons/poc-module2/.settings
@@ -614,7 +627,8 @@ int/maven/maven-poc/layers/modules/cons/poc-module2/no/nav/map/gen
 int/maven/maven-poc/layers/modules/cons/poc-module2/no/nav/map/target
 int/maven/maven-poc/layers/modules/cons/poc-module2/no/nav/target
 int/maven/maven-poc/layers/modules/cons/poc-module2/no/target
-int/maven/maven-poc/layers/modules/cons/poc-module2/poc_module2
+int/maven/maven-poc/layers/modules/cons/poc-module2/sca.library.attributes
+int/maven/maven-poc/layers/modules/cons/poc-module2/sca.module.attributes
 int/maven/maven-poc/layers/modules/cons/poc-module2/target
 int/maven/maven-poc/layers/modules/cons/target
 int/maven/maven-poc/layers/modules/gen
