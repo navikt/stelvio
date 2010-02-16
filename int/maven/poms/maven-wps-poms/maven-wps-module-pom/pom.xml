@@ -1,12 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
 		<artifactId>maven-wps-pom</artifactId>
-		<version>1.7-SNAPSHOT</version>
+		<version>1.7</version>
 		<relativePath>../maven-wps-pom</relativePath>
 	</parent>
 
@@ -155,10 +153,10 @@ config.version=6.1
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.7/maven-wps-poms/maven-wps-module-pom
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.7/maven-wps-poms/maven-wps-module-pom
 		</developerConnection>
 	</scm>
 	<properties>
