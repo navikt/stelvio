@@ -3,15 +3,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.support</groupId>
-		<artifactId>utilities</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-integration-root-pom</artifactId>
+		<version>1.6</version>
 	</parent>
 
+	<groupId>no.nav.maven.support</groupId>
 	<artifactId>sca-attributes-builder</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>Stelvio Integration Framework SCA Attributes Builder
-	</name>
+	<name>Stelvio Integration Framework SCA Attributes Builder</name>
 
 	<dependencies>
 		<dependency>
@@ -28,11 +28,12 @@
 
 	<scm>
 		<connection>${scm.connection}</connection>
-		<developerConnection>${scm.connection}
-		</developerConnection>
+		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>${scm.root}/${project.artifactId}
-		</scm.connection>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/sca-attributes-builder
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
 	</properties>
 </project>
