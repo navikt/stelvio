@@ -6,8 +6,8 @@
 
 	<parent>
 		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-wps-poms</artifactId>
-		<version>1.7-SNAPSHOT</version>
+		<artifactId>maven-integration-root-pom</artifactId>
+		<version>1.6</version>
 	</parent>
 
 	<artifactId>maven-wps-tests-pom</artifactId>
@@ -68,9 +68,10 @@
 	</dependencies>
 
 	<properties>
-		<scm.connection>
-			${scm.root}/${project.artifactId}
-		</scm.connection>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-pom/maven-wps-tests-pom
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
 	</properties>
 
 	<scm>
