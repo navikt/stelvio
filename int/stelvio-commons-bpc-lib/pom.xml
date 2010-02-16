@@ -11,7 +11,7 @@
 	<groupId>no.stelvio.int</groupId>
 	<artifactId>stelvio-commons-bpc-lib</artifactId>
 	<packaging>wps-library-jar</packaging>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<name>Stelvio Integration Framework : ${artifactId}</name>
 	<description>
 		This servicelibrary contains common java classes and business
@@ -57,10 +57,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-commons-bpc-lib
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-bpc-lib-1.2
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-commons-bpc-lib
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-bpc-lib-1.2
 		</developerConnection>
 	</scm>
 </project>
