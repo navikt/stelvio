@@ -2572,7 +2572,6 @@ int/stelvio-jca-adapters/cicseci602NoTrans/connectorModule/cicsecitools.jar -tex
 int/stelvio-jca-adapters/cicseci602NoTrans/connectorModule/cicsframe.jar -text
 int/stelvio-jca-adapters/cicseci602NoTrans/connectorModule/ctgclient.jar -text
 int/stelvio-jca-adapters/cicseci602NoTrans/connectorModule/ctgserver.jar -text
-int/stelvio-jca-adapters/cicseci602NoTrans/pom.xml -text
 int/stelvio-jca-adapters/cicseciXA-61/.classpath -text
 int/stelvio-jca-adapters/cicseciXA-61/.compatibility -text
 int/stelvio-jca-adapters/cicseciXA-61/.j2ee -text
@@ -2590,7 +2589,6 @@ int/stelvio-jca-adapters/cicseciXA-61/connectorModule/cicsecitools.jar -text
 int/stelvio-jca-adapters/cicseciXA-61/connectorModule/cicsframe.jar -text
 int/stelvio-jca-adapters/cicseciXA-61/connectorModule/ctgclient.jar -text
 int/stelvio-jca-adapters/cicseciXA-61/connectorModule/ctgserver.jar -text
-int/stelvio-jca-adapters/cicseciXA-61/pom.xml -text
 int/stelvio-jca-adapters/cicseciXA-7.1/.classpath -text
 int/stelvio-jca-adapters/cicseciXA-7.1/.project -text
 int/stelvio-jca-adapters/cicseciXA-7.1/.settings/org.eclipse.jdt.core.prefs -text
@@ -2618,7 +2616,6 @@ int/stelvio-jca-adapters/websphere_default_messaging_provider/.settings/org.ecli
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/connectorModule/META-INF/MANIFEST.MF -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/connectorModule/META-INF/ra.xml -text
-int/stelvio-jca-adapters/websphere_default_messaging_provider/pom.xml -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.classpath -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.compatibility -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.j2ee -text
