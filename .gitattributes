@@ -2122,7 +2122,6 @@ int/maven/maven-poc/layers/modules/pom.xml -text
 int/maven/maven-poc/layers/pom.xml -text
 int/maven/maven-poc/module-client/pom.xml -text
 int/maven/maven-poc/module-groups/poc-mg1/pom.xml -text
-int/maven/maven-poc/module-groups/pom.xml -text
 int/maven/maven-poc/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain

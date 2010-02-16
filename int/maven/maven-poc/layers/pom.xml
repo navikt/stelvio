@@ -18,6 +18,25 @@
 		<module>libs</module>
 		<module>modules</module>
 	</modules>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-mg-plugin</artifactId>
+				<version>1.8</version>
+				<configuration>
+					<!-- This configure the version of Stelvio Commons Lib for all libraries and modules -->
+					<stelvioCommonsLibSCMURL>
+						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.2.2
+					</stelvioCommonsLibSCMURL>
+					<stelvioCommonsBpcLibSCMURL>
+						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-bpc-lib-1.1
+					</stelvioCommonsBpcLibSCMURL>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<scm>
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers</connection>
