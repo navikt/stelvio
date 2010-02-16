@@ -5,7 +5,7 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-integration-root-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.6</version>
+	<version>1.7-SNAPSHOT</version>
 	<name>Stelvio Integration Framework Master POM</name>
 
 	<build>
@@ -376,10 +376,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-integration-root-pom-1.6
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-integration-root-pom
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-integration-root-pom-1.6
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-integration-root-pom
 		</developerConnection>
 	</scm>
 </project>
