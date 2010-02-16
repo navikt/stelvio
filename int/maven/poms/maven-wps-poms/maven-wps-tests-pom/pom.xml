@@ -20,13 +20,13 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wps-artifact-plugin</artifactId>
-				<version>1.8-SNAPSHOT</version>
+				<version>1.8</version>
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wid-plugin</artifactId>
-				<version>1.3-SNAPSHOT</version>
+				<version>1.3</version>
 				<configuration>
 					<workspaceCodeStylesURL>
 						${eclipse.workspaceCodeStylesURL}

@@ -41,7 +41,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
-					<version>1.9-SNAPSHOT</version>
+					<version>1.9</version>
 					<configuration>
 						<assemblyType>zip</assemblyType>
 						<fileEncoding>ISO-8859-1</fileEncoding>
@@ -128,7 +128,7 @@ config.version=6.1
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-update-ear-plugin</artifactId>
-					<version>1.9-SNAPSHOT</version>
+					<version>1.9</version>
 					<executions>
 						<execution>
 							<goals>
@@ -141,7 +141,7 @@ config.version=6.1
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wsdl-plugin</artifactId>
-					<version>1.2-SNAPSHOT</version>
+					<version>1.2</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
