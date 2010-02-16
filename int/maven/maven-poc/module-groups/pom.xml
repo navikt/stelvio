@@ -23,7 +23,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-mg-plugin</artifactId>
-				<version>1.7</version>
+				<version>1.8-SNAPSHOT</version>
 				<configuration>
 					<!-- This configure the version of Stelvio Commons Lib for all libraries and modules -->
 					<stelvioCommonsLibSCMURL>

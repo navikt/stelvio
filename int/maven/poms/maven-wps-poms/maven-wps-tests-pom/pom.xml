@@ -20,7 +20,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wps-artifact-plugin</artifactId>
-				<version>1.7</version>
+				<version>1.8-SNAPSHOT</version>
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>

@@ -74,15 +74,8 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wps-artifact-plugin</artifactId>
-					<version>1.7</version>
+					<version>1.8-SNAPSHOT</version>
 					<extensions>true</extensions>
-				</plugin>
-				<plugin>
-					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>
-						maven-project-interchange-plugin
-					</artifactId>
-					<version>1.6</version>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
