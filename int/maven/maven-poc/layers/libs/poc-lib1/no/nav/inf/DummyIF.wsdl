@@ -12,7 +12,6 @@
       <xsd:element name="operation1Response">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="output1" nillable="true" type="xsd:string"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>

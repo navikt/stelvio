@@ -29,9 +29,7 @@ public class DummyServiceImpl {
 	 * Please refer to the WSDL Definition for more information 
 	 * on the type of input, output and fault(s).
 	 */
-	public String operation1(String input1) {
-		//TODO Needs to be implemented.
-		return null;
+	public void operation1(String input1) {
 	}
 
 }

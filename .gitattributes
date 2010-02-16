@@ -2084,6 +2084,7 @@ int/maven/maven-poc/layers/libs/poc-lib3/no/nav/util/LoggerUtil3.java -text
 int/maven/maven-poc/layers/libs/poc-lib3/pom.xml -text
 int/maven/maven-poc/layers/libs/pom.xml -text
 int/maven/maven-poc/layers/modules/cons/poc-module1/DummyService.component -text
+int/maven/maven-poc/layers/modules/cons/poc-module1/DummyServiceWSEXP.export -text
 int/maven/maven-poc/layers/modules/cons/poc-module1/EchoService.component -text
 int/maven/maven-poc/layers/modules/cons/poc-module1/EchoServiceWSEXP.export -text
 int/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
@@ -2091,6 +2092,7 @@ int/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/inf/poc-module1_EchoS
 int/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/java/DummyServiceImpl.java -text
 int/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
 int/maven/maven-poc/layers/modules/cons/poc-module1/no/nav/java/Main.java -text
+int/maven/maven-poc/layers/modules/cons/poc-module1/poc-module1_DummyServiceWSEXP.wsdl -text
 int/maven/maven-poc/layers/modules/cons/poc-module1/pom.xml -text svneol=unset#text/plain
 int/maven/maven-poc/layers/modules/cons/poc-module1/sca.module -text
 int/maven/maven-poc/layers/modules/cons/poc-module1/sca.modulex -text
