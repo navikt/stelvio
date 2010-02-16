@@ -28,10 +28,10 @@
 				<configuration>
 					<!-- This configure the version of Stelvio Commons Lib for all libraries and modules -->
 					<stelvioCommonsLibSCMURL>
-						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.2.2
+						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.3
 					</stelvioCommonsLibSCMURL>
 					<stelvioCommonsBpcLibSCMURL>
-						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-bpc-lib-1.1
+						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-bpc-lib-1.2
 					</stelvioCommonsBpcLibSCMURL>
 				</configuration>
 			</plugin>
