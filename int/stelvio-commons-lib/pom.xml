@@ -11,7 +11,7 @@
 	<groupId>no.stelvio.int</groupId>
 	<artifactId>stelvio-commons-lib</artifactId>
 	<packaging>wps-library-jar</packaging>
-	<version>3.2.4-SNAPSHOT</version>
+	<version>3.3-SNAPSHOT</version>
 	<name>Stelvio Integration Framework : ${artifactId}</name>
 	<description>
 		This servicelibrary contains common java classes and business

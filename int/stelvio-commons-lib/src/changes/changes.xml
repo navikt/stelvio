@@ -5,6 +5,9 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="3.3" date="16-02-2010" description="Maintenance release">
+			<action dev="ebh2812" type="remove">Deleted obsolete xsd-includes files from WID 6.0</action>
+		</release>
 		<release version="3.2.3" date="01-02-2010" description="Bugfix release">
 			<action dev="ebh2812" type="fix">Fixed SIR 158228, Impl 159949: Fixed bug i code that calculates age based on FNR and date.</action>
 		</release>
