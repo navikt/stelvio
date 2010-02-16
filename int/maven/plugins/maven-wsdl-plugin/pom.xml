@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>maven-plugins</artifactId>
 		<groupId>no.nav.maven.plugins</groupId>
-		<version>1.8</version>
+		<version>1.9-SNAPSHOT</version>
 	</parent>
 	<artifactId>maven-wsdl-plugin</artifactId>
 	<version>1.2-SNAPSHOT</version>
