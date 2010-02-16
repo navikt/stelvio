@@ -2,11 +2,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.plugins</groupId>
-		<artifactId>maven-plugins</artifactId>
-		<version>1.9-SNAPSHOT</version>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-integration-root-pom</artifactId>
+		<version>1.6-SNAPSHOT</version>
 	</parent>
 
+	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-project-interchange-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
 	<version>1.7-SNAPSHOT</version>
@@ -40,6 +41,9 @@
 		</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>${scm.root}/${project.artifactId}</scm.connection>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-project-interchange-plugin
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
 	</properties>
 </project>

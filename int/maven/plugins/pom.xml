@@ -15,41 +15,23 @@
 	<name>Stelvio Integration Framework Maven Plugins</name>
 
 	<modules>
-		<module>maven-wps-artifact-plugin</module>
-		<module>maven-service-deploy-plugin</module>
-		<module>maven-project-interchange-plugin</module>
-		<module>maven-update-ear-plugin</module>
-		<module>maven-mg-plugin</module>
-		<module>maven-wid-plugin</module>
-		<module>maven-wsdl-plugin</module>
-
-		<module>maven-websphere-plugin</module>
 		<module>maven-artifact-modifier-plugin</module>
 		<module>maven-confluence-plugin</module>
+		<module>maven-mg-plugin</module>
+		<module>maven-project-interchange-plugin</module>
+		<module>maven-service-deploy-plugin</module>
+		<module>maven-update-ear-plugin</module>
+		<module>maven-websphere-plugin</module>
+		<module>maven-wid-plugin</module>
+		<module>maven-wps-artifact-plugin</module>
+		<module>maven-wsdl-plugin</module>
 	</modules>
-
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-plugin-plugin</artifactId>
-					<version>${plugin.plugin.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<plugin>
-				<artifactId>maven-plugin-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 	<scm>
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins</connection>
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins</developerConnection>
 	</scm>
 	<properties>
-		<plugin.plugin.version>2.5.1</plugin.plugin.version>
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins
 		</scm.root>

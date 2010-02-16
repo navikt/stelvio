@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<parent>
-		<artifactId>maven-plugins</artifactId>
-		<groupId>no.nav.maven.plugins</groupId>
-		<version>1.9-SNAPSHOT</version>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-integration-root-pom</artifactId>
+		<version>1.6-SNAPSHOT</version>
 	</parent>
+
+	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wsdl-plugin</artifactId>
 	<version>1.2-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
@@ -78,8 +81,9 @@
 		</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>
-			${scm.root}/${project.artifactId}
-		</scm.connection>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-plugin
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
 	</properties>
 </project>
