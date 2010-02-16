@@ -10,7 +10,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wps-artifact-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.8-SNAPSHOT</version>
+	<version>1.8</version>
 	<name>Stelvio Integration Framework WPS Artifact Plugin</name>
 
 	<dependencies>
@@ -25,8 +25,8 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wps-artifact-plugin</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wps-artifact-plugin</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.9/plugins/maven-wps-artifact-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.9/plugins/maven-wps-artifact-plugin</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>

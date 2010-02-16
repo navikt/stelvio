@@ -10,7 +10,7 @@
 
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wsdl-plugin</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<packaging>maven-plugin</packaging>
 	<name>Stelvio Integration Framework WSDL Plugin</name>
 
@@ -74,10 +74,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.9/plugins/maven-wsdl-plugin
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.9/plugins/maven-wsdl-plugin
 		</developerConnection>
 	</scm>
 	<properties>

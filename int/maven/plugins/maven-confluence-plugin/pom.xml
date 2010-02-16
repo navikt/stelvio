@@ -10,7 +10,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-confluence-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.12-SNAPSHOT</version>
+	<version>1.12</version>
 	<name>Confluence Plugin</name>
 
 	<dependencies>
@@ -41,8 +41,8 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-confluence-plugin</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-confluence-plugin</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.9/plugins/maven-confluence-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.9/plugins/maven-confluence-plugin</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>

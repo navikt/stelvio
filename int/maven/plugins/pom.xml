@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-plugins</artifactId>
 	<packaging>pom</packaging>
-	<version>1.9-SNAPSHOT</version>
+	<version>1.9</version>
 	<name>Stelvio Integration Framework Maven Plugins</name>
 
 	<modules>
@@ -28,8 +28,8 @@
 	</modules>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.9/plugins</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.9/plugins</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
