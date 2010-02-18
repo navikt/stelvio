@@ -48,7 +48,8 @@ public class OppdragMediation implements MediationHandler {
 	//	 JMSHeader prefixes
 	private final static String JMS_PREFIX = "JMS";
 
-	private final static String JMS_REPLYT_TO = "JMSReplyTo";
+	private final static String JMS_REPLY_TO = "JMSOnlineReplyTo";
+	private final static String JMS_REPLY_PROCESS_TO = "JMSProcessReplyTo";
 
 	/**
 	 * Getter for the routeMessageDestination
@@ -83,13 +84,31 @@ public class OppdragMediation implements MediationHandler {
 
 			SIMessageContext siCtx = (SIMessageContext) ctx;
 			SIMessage message = siCtx.getSIMessage();
-
+			
+			// get Kilde property sent with message. This decides where to reverse reply the message
+			String kilde = getSingleUserProperty(message, "Kilde" );
+			
 			for (Iterator it = ctx.getPropertyNames(); it.hasNext();) {
 
 				String propName = (String) it.next();
 				if (propName.indexOf(JMS_PREFIX) >= 0) {
-					setJMSHeaderProperties(propName, ctx, message);
-
+					if (propName.indexOf(JMS_REPLY_TO) >= 0) {
+						// if Kilde is onlineMelding, read the reverse reply from JMS_REPLY_TO
+						if ("onlineMelding".equalsIgnoreCase(kilde)) {
+							setJMSHeaderProperties(propName, (Serializable)ctx.getProperty(propName), message);
+						}
+					}
+					else if (propName.indexOf(JMS_REPLY_PROCESS_TO) >= 0) {
+						// if Kilde is prosessMelding, read the reverse reply from JMS_REPLY_PROCESS_TO
+						if( "prosessMelding".equalsIgnoreCase(kilde)) {
+							setJMSHeaderProperties(propName, (Serializable)ctx.getProperty(propName), message);
+						}
+					}
+					// all other valid JMS_IBM_PROPERTIES check documentation
+					else {
+						message.setMessageProperty(propName, (Serializable)ctx.getProperty(propName));
+					}
+					
 				} else if (propName.indexOf(ROUTE_MESSAGE_DESTINATION) >= 0) {
 					setRoutingPath(propName, siCtx);
 				} else {
@@ -120,17 +139,41 @@ public class OppdragMediation implements MediationHandler {
 	private void setRoutingPath(String propName, SIMessageContext siCtx) {
 		//		 Mediating the routing endpoint
 		log.logp(Level.FINE, className, "handle()", "OppdragMediation: " + "****** " + propName + ": " + " mediating routing endpoint.");
+
 		SIMessage msg = siCtx.getSIMessage();
+		
 		List<SIDestinationAddress> frp = new ArrayList<SIDestinationAddress>(1);
 		String destName = getRouteMessageDestination(siCtx);
-
 		String destination[] = destName.split(":");
-
+		
 		frp.add(SIDestinationAddressFactory.getInstance().createSIDestinationAddress(destination[1], destination[0]));
 		msg.setForwardRoutingPath(frp);
 		log.logp(Level.FINE, className, "handle()", "OppdragMediation: " + "****** " + propName + ": " + " new queue destination: "	+ destName);
 	}
-
+	
+	/** 
+     * Returns a for a provided jms properties 
+     * 
+     * @param msgCtx 
+     * @param propName 
+     * @return java.lang.String a textual representation of jms user properties value 
+     * @throws ClassNotFoundException 
+     * @throws IOException 
+     */ 
+    private String getSingleUserProperty(SIMessage mesg, String propName)
+    { 
+    	
+            try {
+				String propNameValue= "NO_VALUE"; 
+				propNameValue = (String) mesg.getUserProperty(propName); 
+				return propNameValue;
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			} 
+    } 
+    
 	/**
 	 * Private mthod to get the new message destination from context
 	 * 
@@ -155,35 +198,49 @@ public class OppdragMediation implements MediationHandler {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	private void setJMSHeaderProperties(String propName, MessageContext ctx,
-			SIMessage message) throws IOException {
+	private void setJMSHeaderProperties(String propName, Serializable propValue, SIMessage message) throws IOException {
 		log.logp(Level.FINE, className, "handle()", "OppdragMediation: " + "****** " + propName + ": " + " jms system header properties applied.");
+		
+		//if (propName.indexOf(JMS_REPLY_TO) >= 0) {
+		log.logp(Level.FINE, className, "handle()", "****** Inside IF" + propName);
+		// now let's insert the response destination into the
+		// reverse routing
+		// path, so that we can catch the response message
+		// first build the replyAddress to be added
+		SIDestinationAddress replyAddress;
+		replyAddress = SIDestinationAddressFactory.getInstance()
+				.createSIDestinationAddress((String)propValue, false);
 
-		if (propName.indexOf(JMS_REPLYT_TO) >= 0) {
-			// now let's insert the response destination into the
-			// reverse routing
-			// path, so that we can catch the response message
-			// first build the replyAddress to be added
-			SIDestinationAddress replyAddress;
-			replyAddress = SIDestinationAddressFactory.getInstance()
-					.createSIDestinationAddress(
-							(String) ctx.getProperty(propName), false);
-
-			// get a copy of the current reverse routing path
-			List<SIDestinationAddress> rrp = message.getReverseRoutingPath();
-			// Add the response destination to the list (so that the
-			// new destination will be the first destination that
-			// will be visited
-			// by the reply message)
-			rrp.add(0, replyAddress);
-			// Change the message's reverse routing path
-			message.setReverseRoutingPath(rrp);
-		}
-		// all other valid JMS_IBM_PROPERTIES check documentation
-		else {
-			message.setMessageProperty(propName, (Serializable) ctx.getProperty(propName));
-		}
-
+		// get a copy of the current reverse routing path
+		List<SIDestinationAddress> rrp = message.getReverseRoutingPath();
+		// Add the response destination to the list (so that the
+		// new destination will be the first destination that
+		// will be visited
+		// by the reply message)
+		rrp.add(0, replyAddress);
+		// Change the message's reverse routing path
+		message.setReverseRoutingPath(rrp);
+		//}
+		
+		/*
+				// now let's insert the response destination into the
+				// reverse routing
+				// path, so that we can catch the response message
+				// first build the replyAddress to be added
+				SIDestinationAddress replyAddress;
+				
+				replyAddress = SIDestinationAddressFactory.getInstance()
+					.createSIDestinationAddress((String)propValue, false);
+				//	get a copy of the current reverse routing path
+				List rrp = message.getReverseRoutingPath();
+				// Add the response destination to the list (so that the
+				// new destination will be the first destination that
+				// will be visited
+				// by the reply message)
+				rrp.add(0, replyAddress);
+				// Change the message's reverse routing path
+				message.setReverseRoutingPath(rrp);
+		*/
 	}
 	
 	/**
