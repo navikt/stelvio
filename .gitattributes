@@ -2220,6 +2220,8 @@ int/maven/poms/maven-deploy-pom/.project -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-jca-pom/.project -text
 int/maven/poms/maven-jca-pom/pom.xml -text
+int/maven/poms/maven-plugin-pom/.project -text
+int/maven/poms/maven-plugin-pom/pom.xml -text
 int/maven/poms/maven-root-pom/.project -text
 int/maven/poms/maven-root-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/.project -text

@@ -18,6 +18,7 @@
 	<modules>
 		<module>maven-deploy-pom</module>
 		<module>maven-jca-pom</module>
+		<module>maven-plugin-pom</module>
 		<module>maven-root-pom</module>
 		<module>maven-wps-poms</module>
 	</modules>
