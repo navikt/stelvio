@@ -757,7 +757,7 @@ int/maven/plugins/maven-wsdl-plugin/.settings
 int/maven/plugins/maven-wsdl-plugin/target
 int/maven/plugins/target
 int/maven/poms/maven-deploy-pom/target
-int/maven/poms/maven-integration-root-pom/target
+int/maven/poms/maven-root-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/target
 int/maven/poms/maven-wps-poms/target

@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.poms</groupId>
-		<artifactId>maven-integration-root-pom</artifactId>
-		<version>1.6</version>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>maven-wps-poms</artifactId>
-	<version>1.8-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework WPS POMS</name>
 
