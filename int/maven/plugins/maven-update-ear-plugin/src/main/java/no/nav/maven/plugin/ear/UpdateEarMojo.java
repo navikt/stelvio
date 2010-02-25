@@ -84,7 +84,7 @@ public class UpdateEarMojo extends AbstractMojo {
 
 		private File createWorkingDir(MavenProject project) throws MojoExecutionException {
 			try {
-				File workingDir = new File(project.getBuild().getDirectory(), "update-ear-temp");
+				File workingDir = new File(project.getBuild().getDirectory(), "update-ear");
 				if (workingDir.exists()) {
 					if (workingDir.isDirectory()) {
 						FileUtils.deleteDirectory(workingDir);
