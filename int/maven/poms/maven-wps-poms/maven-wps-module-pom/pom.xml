@@ -39,7 +39,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-service-deploy-plugin</artifactId>
-					<version>1.9</version>
+					<version>1.10-SNAPSHOT</version>
 					<configuration>
 						<assemblyType>zip</assemblyType>
 						<fileEncoding>ISO-8859-1</fileEncoding>

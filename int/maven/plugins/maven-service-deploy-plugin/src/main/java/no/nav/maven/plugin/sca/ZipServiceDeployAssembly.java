@@ -30,6 +30,7 @@ import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
+import org.codehaus.plexus.util.FileUtils;
 
 public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 	private static final String JAR_CLASSIFIER = "jar";
@@ -53,14 +54,15 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 
 	@SuppressWarnings("unchecked")
 	public void addArtifacts(MavenProject project, Archiver archiver, Collection<Artifact> artifacts) throws ArchiverException {
-		Collection<ArtifactDecorator> decoratedArtifacts = decorateArtifacts(artifacts);
+		Collection<ArtifactDecorator> decoratedArtifacts = decorateArtifacts(project, artifacts);
 
 		for (Artifact artifact : decoratedArtifacts) {
 			archiver.addFile(artifact.getFile(), artifact.getArtifactId() + "." + artifact.getArtifactHandler().getExtension());
 		}
 	}
 
-	private Collection<ArtifactDecorator> decorateArtifacts(Collection<Artifact> artifacts) throws ArchiverException {
+	private Collection<ArtifactDecorator> decorateArtifacts(MavenProject project, Collection<Artifact> artifacts)
+			throws ArchiverException {
 		try {
 			Map<String, ArtifactDecorator> artifactMap = new HashMap<String, ArtifactDecorator>(artifacts.size());
 			for (Artifact artifact : artifacts) {
@@ -69,9 +71,10 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 
 			populateDependencies(artifactMap);
 
+			File workingDir = createWorkingDir(project);
 			for (ArtifactDecorator artifact : artifactMap.values()) {
 				if (!artifact.getDependencies().isEmpty()) {
-					File newArtifactFile = createNewArtifactFile(artifact);
+					File newArtifactFile = createNewArtifactFile(workingDir, artifact);
 					artifact.setFile(newArtifactFile);
 				}
 			}
@@ -97,10 +100,9 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		}
 	}
 
-	private File createNewArtifactFile(ArtifactDecorator artifact) throws IOException, ArchiverException {
-		File newArtifactFile = File
-				.createTempFile(artifact.getArtifactId(), "." + artifact.getArtifactHandler().getExtension());
-		newArtifactFile.deleteOnExit();
+	private File createNewArtifactFile(File workingDir, ArtifactDecorator artifact) throws IOException, ArchiverException {
+		File newArtifactFile = new File(workingDir, artifact.getArtifactId() + "."
+				+ artifact.getArtifactHandler().getExtension());
 
 		JarFile artifactJarFile = new JarFile(artifact.getFile());
 
@@ -135,6 +137,19 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		out.close();
 
 		return newArtifactFile;
+	}
+
+	private File createWorkingDir(MavenProject project) throws IOException {
+		File tempDir = new File(project.getBuild().getDirectory(), "service-deploy-temp");
+		if (tempDir.exists()) {
+			if (tempDir.isDirectory()) {
+				FileUtils.deleteDirectory(tempDir);
+			} else {
+				tempDir.delete();
+			}
+		}
+		tempDir.mkdir();
+		return tempDir;
 	}
 
 	private static class ArtifactDecorator implements Artifact {
