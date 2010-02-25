@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.poms</groupId>
+		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-wps-pom</artifactId>
-		<version>1.7</version>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 	<groupId>no.nav.maven.poc</groupId>
