@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -20,6 +21,7 @@ import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.ArtifactUtils;
 import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.artifact.metadata.ArtifactMetadata;
 import org.apache.maven.artifact.repository.ArtifactRepository;
@@ -61,22 +63,30 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private Collection<ArtifactDecorator> decorateArtifacts(MavenProject project, Collection<Artifact> artifacts)
 			throws ArchiverException {
 		try {
-			Map<String, ArtifactDecorator> artifactMap = new HashMap<String, ArtifactDecorator>(artifacts.size());
+			Map<String, ArtifactDecorator> artifactMap = new LinkedHashMap<String, ArtifactDecorator>(artifacts.size());
 			for (Artifact artifact : artifacts) {
-				artifactMap.put(artifact.getArtifactId(), new ArtifactDecorator(artifact));
+				artifactMap.put(ArtifactUtils.versionlessKey(artifact), new ArtifactDecorator(artifact));
 			}
 
-			populateDependencies(artifactMap);
+			for (ArtifactDecorator artifact : artifactMap.values()) {
+				String artifactKey = ArtifactUtils.versionlessKey(artifact);
+				for (String dependencyArtifactId : (List<String>) artifact.getDependencyTrail()) {
+					String dependencyArtifactKey = getVersionlessKey(dependencyArtifactId);
+					if (!dependencyArtifactKey.equals(artifactKey)) {
+						ArtifactDecorator dependencyArtifact = artifactMap.get(dependencyArtifactKey);
+						dependencyArtifact.addDependency(artifact);
+					}
+				}
+			}
 
 			File workingDir = createWorkingDir(project);
 			for (ArtifactDecorator artifact : artifactMap.values()) {
-				if (!artifact.getDependencies().isEmpty()) {
-					File newArtifactFile = createNewArtifactFile(workingDir, artifact);
-					artifact.setFile(newArtifactFile);
-				}
+				File newArtifactFile = createNewArtifactFile(workingDir, artifact);
+				artifact.setFile(newArtifactFile);
 			}
 
 			return artifactMap.values();
@@ -85,19 +95,9 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		}
 	}
 
-	private void populateDependencies(Map<String, ArtifactDecorator> artifactMap) throws IOException {
-		for (ArtifactDecorator artifact : artifactMap.values()) {
-			JarFile jarFile = new JarFile(artifact.getFile());
-			String classpath = jarFile.getManifest().getMainAttributes().getValue(Attributes.Name.CLASS_PATH);
-			if (classpath != null) {
-				StringTokenizer stringTokenizer = new StringTokenizer(classpath, " ");
-				while (stringTokenizer.hasMoreTokens()) {
-					String filename = stringTokenizer.nextToken();
-					String artifactId = filename.substring(0, filename.lastIndexOf("."));
-					artifact.addDependency(artifactMap.get(artifactId));
-				}
-			}
-		}
+	private String getVersionlessKey(String artifactId) {
+		StringTokenizer st = new StringTokenizer(artifactId, ":");
+		return st.nextToken() + ":" + st.nextToken();
 	}
 
 	private File createNewArtifactFile(File workingDir, ArtifactDecorator artifact) throws IOException, ArchiverException {
