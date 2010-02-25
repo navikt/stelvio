@@ -140,16 +140,16 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 	}
 
 	private File createWorkingDir(MavenProject project) throws IOException {
-		File tempDir = new File(project.getBuild().getDirectory(), "service-deploy-temp");
-		if (tempDir.exists()) {
-			if (tempDir.isDirectory()) {
-				FileUtils.deleteDirectory(tempDir);
+		File workingDir = new File(project.getBuild().getDirectory(), "service-deploy-assembly");
+		if (workingDir.exists()) {
+			if (workingDir.isDirectory()) {
+				FileUtils.deleteDirectory(workingDir);
 			} else {
-				tempDir.delete();
+				workingDir.delete();
 			}
 		}
-		tempDir.mkdir();
-		return tempDir;
+		workingDir.mkdir();
+		return workingDir;
 	}
 
 	private static class ArtifactDecorator implements Artifact {
