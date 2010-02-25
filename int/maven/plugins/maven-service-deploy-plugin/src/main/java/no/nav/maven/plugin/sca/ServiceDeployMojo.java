@@ -102,7 +102,7 @@ public class ServiceDeployMojo extends AbstractMojo {
 	private boolean skipXsdValidate;
 
 	/**
-	 * @parameter default-value="${project.build.directory}/serviceDeploy"
+	 * @parameter default-value="${project.build.directory}/service-deploy"
 	 * @required
 	 */
 	private File workingDirectory;
