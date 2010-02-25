@@ -11,7 +11,6 @@ import org.apache.xmlbeans.XmlException;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
-import org.codehaus.plexus.util.FileUtils;
 
 import com.sun.java.xml.ns.j2Ee.ApplicationDocument;
 
@@ -45,8 +44,7 @@ public class UpdateEarMojo extends AbstractMojo {
 	private MavenProject project;
 
 	/**
-	 * Defines the assembly type to use. Valid values are zip [default] and pi
-	 * (project interchange).
+	 * Defines the assembly type to use. Valid values are zip [default] and pi (project interchange).
 	 * 
 	 * @parameter default-value="${project.build.finalName}"
 	 */
@@ -61,47 +59,30 @@ public class UpdateEarMojo extends AbstractMojo {
 	}
 
 	private class EarUpdater {
+		private File workingDir;
 		private File earFile;
 
 		public EarUpdater(File earFile) {
 			this.earFile = earFile;
+			workingDir = createWorkingDir(project);
+		}
+		
+		private File createWorkingDir(MavenProject project) {
+			File parentDir = new File(project.getBuild().getDirectory(), "update-ear");
+			File workingDir = new File(parentDir, String.valueOf(System.currentTimeMillis()));
+			workingDir.mkdirs();
+			return workingDir;
 		}
 
 		public void update() throws MojoExecutionException {
-			File workingDir = null;
-			try {
-				workingDir = createWorkingDir(project);
-
-				extractArchive(workingDir);
-				updateArchive(workingDir);
-				createArchive(workingDir);
-			} finally {
-				if (workingDir != null) {
-					workingDir.delete();
-				}
-			}
+			extractArchive();
+			updateArchive();
+			createArchive();
 		}
 
-		private File createWorkingDir(MavenProject project) throws MojoExecutionException {
+		private void extractArchive() throws MojoExecutionException {
 			try {
-				File workingDir = new File(project.getBuild().getDirectory(), "update-ear");
-				if (workingDir.exists()) {
-					if (workingDir.isDirectory()) {
-						FileUtils.deleteDirectory(workingDir);
-					} else {
-						workingDir.delete();
-					}
-				}
-				workingDir.mkdir();
-				return workingDir;
-			} catch (IOException e) {
-				throw new MojoExecutionException("An error occured when creating working directory", e);
-			}
-		}
-
-		private void extractArchive(File dir) throws MojoExecutionException {
-			try {
-				unArchiver.setDestDirectory(dir);
+				unArchiver.setDestDirectory(workingDir);
 				unArchiver.setSourceFile(earFile);
 				unArchiver.extract();
 			} catch (ArchiverException e) {
@@ -111,9 +92,9 @@ public class UpdateEarMojo extends AbstractMojo {
 			}
 		}
 
-		private void createArchive(File dir) throws MojoExecutionException {
+		private void createArchive() throws MojoExecutionException {
 			try {
-				archiver.addDirectory(dir);
+				archiver.addDirectory(workingDir);
 				archiver.setDestFile(earFile);
 				archiver.createArchive();
 			} catch (ArchiverException e) {
@@ -123,9 +104,9 @@ public class UpdateEarMojo extends AbstractMojo {
 			}
 		}
 
-		private void updateArchive(File dir) throws MojoExecutionException {
+		private void updateArchive() throws MojoExecutionException {
 			try {
-				File applicationXmlFile = new File(new File(dir, "META-INF"), "application.xml");
+				File applicationXmlFile = new File(new File(workingDir, "META-INF"), "application.xml");
 				ApplicationDocument applicationDocument = ApplicationDocument.Factory.parse(applicationXmlFile);
 
 				applicationDocument.getApplication().getDisplayNameArray(0).setStringValue(displayName);

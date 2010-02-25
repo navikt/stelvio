@@ -32,7 +32,6 @@ import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
-import org.codehaus.plexus.util.FileUtils;
 
 public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 	private static final String JAR_CLASSIFIER = "jar";
@@ -139,16 +138,10 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		return newArtifactFile;
 	}
 
-	private File createWorkingDir(MavenProject project) throws IOException {
-		File workingDir = new File(project.getBuild().getDirectory(), "service-deploy-assembly");
-		if (workingDir.exists()) {
-			if (workingDir.isDirectory()) {
-				FileUtils.deleteDirectory(workingDir);
-			} else {
-				workingDir.delete();
-			}
-		}
-		workingDir.mkdir();
+	private File createWorkingDir(MavenProject project) {
+		File parentDir = new File(project.getBuild().getDirectory(), "service-deploy-assembly");
+		File workingDir = new File(parentDir, String.valueOf(System.currentTimeMillis()));
+		workingDir.mkdirs();
 		return workingDir;
 	}
 

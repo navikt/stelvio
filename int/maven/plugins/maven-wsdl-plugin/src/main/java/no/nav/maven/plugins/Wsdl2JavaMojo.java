@@ -202,8 +202,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 			Commandline commandLine = new Commandline();
 			commandLine.setExecutable(exec);
 
-			File workingDir = new File(project.getBuild().getDirectory(), "wsdl2java");
-			workingDir.mkdirs();
+			File workingDir = createWorkingDir();
 
 			// First unpack the wsdl-artifact from the dependency
 			for (Artifact artifact : getWSDLArtifacts()) {
@@ -244,6 +243,13 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 		} catch (Exception e) {
 			new MojoExecutionException("Unable to generate Java", e);
 		}
+	}
+	
+	private File createWorkingDir() {
+		File parentDir = new File(project.getBuild().getDirectory(), "wsdl2java");
+		File workingDir = new File(parentDir, String.valueOf(System.currentTimeMillis()));
+		workingDir.mkdirs();
+		return workingDir;
 	}
 
 	private File extractFile(File file, File parentDirectory) throws IOException, ArchiverException {

@@ -131,7 +131,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 	 * @parameter default-value="${project.build.sourceEncoding}"
 	 */
 	private String encoding;
-	
+
 	/**
 	 * @parameter default-value="false"
 	 */
@@ -224,7 +224,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 
 		for (Collection<Import> imports : (Collection<Collection<Import>>) wsdl.getImports().values()) {
 			for (Import _import : imports) {
-				Definition importedWsdl = wsdlReader.readWSDL(documentBaseURI,_import.getLocationURI());
+				Definition importedWsdl = wsdlReader.readWSDL(documentBaseURI, _import.getLocationURI());
 				addFilesForWsdl(documentUris, importedWsdl);
 			}
 		}
@@ -293,16 +293,10 @@ public class ExportWsdlMojo extends AbstractMojo {
 		mavenResourcesFiltering.filterResources(mavenResourcesExecution);
 	}
 
-	private File createWorkingDir() throws IOException {
-		File workingDir = new File(project.getBuild().getDirectory(), "exportwsdl");
-		if (workingDir.exists()) {
-			if (workingDir.isDirectory()) {
-				FileUtils.deleteDirectory(workingDir);
-			} else {
-				workingDir.delete();
-			}
-		}
-		workingDir.mkdir();
+	private File createWorkingDir() {
+		File parentDir = new File(project.getBuild().getDirectory(), "exportwsdl");
+		File workingDir = new File(parentDir, String.valueOf(System.currentTimeMillis()));
+		workingDir.mkdirs();
 		return workingDir;
 	}
 
