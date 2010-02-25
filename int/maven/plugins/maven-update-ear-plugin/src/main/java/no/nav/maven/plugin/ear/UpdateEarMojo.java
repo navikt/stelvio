@@ -11,6 +11,7 @@ import org.apache.xmlbeans.XmlException;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
+import org.codehaus.plexus.util.FileUtils;
 
 import com.sun.java.xml.ns.j2Ee.ApplicationDocument;
 
@@ -67,35 +68,40 @@ public class UpdateEarMojo extends AbstractMojo {
 		}
 
 		public void update() throws MojoExecutionException {
-			File tempDir = null;
+			File workingDir = null;
 			try {
-				tempDir = createTempDir();
+				workingDir = createWorkingDir(project);
 
-				extract(tempDir);
-				updateArchive(tempDir);
-				createArchive(tempDir);
+				extractArchive(workingDir);
+				updateArchive(workingDir);
+				createArchive(workingDir);
 			} finally {
-				if (tempDir != null) {
-					tempDir.delete();
+				if (workingDir != null) {
+					workingDir.delete();
 				}
 			}
 		}
 
-		private File createTempDir() throws MojoExecutionException {
+		private File createWorkingDir(MavenProject project) throws MojoExecutionException {
 			try {
-				File tempDir = File.createTempFile(displayName, ".ear");
-				tempDir.delete();
-				tempDir.mkdir();
-				tempDir.deleteOnExit();
-				return tempDir;
+				File workingDir = new File(project.getBuild().getDirectory(), "update-ear-temp");
+				if (workingDir.exists()) {
+					if (workingDir.isDirectory()) {
+						FileUtils.deleteDirectory(workingDir);
+					} else {
+						workingDir.delete();
+					}
+				}
+				workingDir.mkdir();
+				return workingDir;
 			} catch (IOException e) {
-				throw new MojoExecutionException("Error creating tempDir", e);
+				throw new MojoExecutionException("An error occured when creating working directory", e);
 			}
 		}
 
-		private void extract(File tempDir) throws MojoExecutionException {
+		private void extractArchive(File dir) throws MojoExecutionException {
 			try {
-				unArchiver.setDestDirectory(tempDir);
+				unArchiver.setDestDirectory(dir);
 				unArchiver.setSourceFile(earFile);
 				unArchiver.extract();
 			} catch (ArchiverException e) {
@@ -105,9 +111,9 @@ public class UpdateEarMojo extends AbstractMojo {
 			}
 		}
 
-		private void createArchive(File tempDir) throws MojoExecutionException {
+		private void createArchive(File dir) throws MojoExecutionException {
 			try {
-				archiver.addDirectory(tempDir);
+				archiver.addDirectory(dir);
 				archiver.setDestFile(earFile);
 				archiver.createArchive();
 			} catch (ArchiverException e) {
@@ -117,9 +123,9 @@ public class UpdateEarMojo extends AbstractMojo {
 			}
 		}
 
-		private void updateArchive(File tempDir) throws MojoExecutionException {
+		private void updateArchive(File dir) throws MojoExecutionException {
 			try {
-				File applicationXmlFile = new File(new File(tempDir, "META-INF"), "application.xml");
+				File applicationXmlFile = new File(new File(dir, "META-INF"), "application.xml");
 				ApplicationDocument applicationDocument = ApplicationDocument.Factory.parse(applicationXmlFile);
 
 				applicationDocument.getApplication().getDisplayNameArray(0).setStringValue(displayName);

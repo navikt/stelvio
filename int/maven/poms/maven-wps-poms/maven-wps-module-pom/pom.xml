@@ -126,7 +126,7 @@ config.version=6.1
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-update-ear-plugin</artifactId>
-					<version>1.9</version>
+					<version>1.10-SNAPSHOT</version>
 					<executions>
 						<execution>
 							<goals>
