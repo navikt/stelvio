@@ -294,16 +294,16 @@ public class ExportWsdlMojo extends AbstractMojo {
 	}
 
 	private File createWorkingDir() throws IOException {
-		File tempDir = new File(project.getBuild().getDirectory(), "wsdltemp");
-		if (tempDir.exists()) {
-			if (tempDir.isDirectory()) {
-				FileUtils.deleteDirectory(tempDir);
+		File workingDir = new File(project.getBuild().getDirectory(), "exportwsdl");
+		if (workingDir.exists()) {
+			if (workingDir.isDirectory()) {
+				FileUtils.deleteDirectory(workingDir);
 			} else {
-				tempDir.delete();
+				workingDir.delete();
 			}
 		}
-		tempDir.mkdir();
-		return tempDir;
+		workingDir.mkdir();
+		return workingDir;
 	}
 
 	private void createArchive(File baseDir, Collection<File> files) throws ArchiverException, IOException {

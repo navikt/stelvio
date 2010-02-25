@@ -202,18 +202,18 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 			Commandline commandLine = new Commandline();
 			commandLine.setExecutable(exec);
 
-			File tempDir = new File(project.getBuild().getDirectory(), "wsdltemp");
-			tempDir.mkdirs();
+			File workingDir = new File(project.getBuild().getDirectory(), "wsdl2java");
+			workingDir.mkdirs();
 
 			// First unpack the wsdl-artifact from the dependency
 			for (Artifact artifact : getWSDLArtifacts()) {
-				File tempWsdlZipDir = extractFile(artifact.getFile(), tempDir);
+				File wsdlZipDir = extractFile(artifact.getFile(), workingDir);
 
 				// Generate the NStoPkg.properties-file that will make sensible
 				// packages for the wsdl
 				Map<String, String> namespaceToPackageMap = new NamespaceToPackageMapGenerator(encoding)
-						.createNameSpaceToPackageMapFromWSDLDirectory(tempWsdlZipDir);
-				File nameSpaceToPackageFile = new File(tempWsdlZipDir, "NStoPkg.properties");
+						.createNameSpaceToPackageMapFromWSDLDirectory(wsdlZipDir);
+				File nameSpaceToPackageFile = new File(wsdlZipDir, "NStoPkg.properties");
 				PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
 						nameSpaceToPackageFile), encoding)));
 				for (String namespace : namespaceToPackageMap.keySet()) {
@@ -223,7 +223,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 
 				// Next, call the WSDL2Java script for all wsdl-files in the
 				// artifact
-				List<File> wsdlFiles = listFilesRecursive(tempWsdlZipDir, new FilenameFilter() {
+				List<File> wsdlFiles = listFilesRecursive(wsdlZipDir, new FilenameFilter() {
 					public boolean accept(File dir, String name) {
 						return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
 					}
