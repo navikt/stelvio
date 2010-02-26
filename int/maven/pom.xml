@@ -18,10 +18,6 @@
 
 	<modules>
 		<module>maven-configuration-common</module>
-		<!--
-		<module>maven-deploy-poc</module>
-		<module>maven-poc</module>
-		-->
 		<module>plugins</module>
 		<module>poms</module>
 		<!--
