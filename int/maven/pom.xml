@@ -20,9 +20,6 @@
 		<module>maven-configuration-common</module>
 		<module>plugins</module>
 		<module>poms</module>
-		<!--
-		<module>runtimes</module>
-		-->
 		<module>utilities</module>
 		<module>xmlbeans</module>
 	</modules>
