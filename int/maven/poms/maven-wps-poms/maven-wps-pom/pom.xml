@@ -64,6 +64,11 @@
 							<include>**/*.java</include>
 							<include>pom.xml</include>
 						</includes>
+						<excludes>
+							<exclude>.settings/**</exclude>
+							<exclude>gen/**</exclude>
+							<exclude>target/**</exclude>
+						</excludes>
 					</configuration>
 				</plugin>
 				<plugin>
