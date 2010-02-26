@@ -31,6 +31,13 @@ public class ModuleDeploymentMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private String packaging;
+	
+	/**
+	 * @parameter expression="${project.basedir}"
+	 * @required
+	 * @readonly
+	 */
+	protected File baseDirectory;
 
 	/**
 	 * @parameter expression="${project.build.outputDirectory}"
@@ -75,8 +82,10 @@ public class ModuleDeploymentMojo extends AbstractMojo {
 			Collection<String> webServiceExportNames = getWebServiceExportNames();
 			if (!webServiceExportNames.isEmpty()) {
 				Document deploymentDescriptorDocument;
+				File sourceDeploymentDescriptorFile = new File(baseDirectory, "ibm-deploy.scaj2ee");
 				File deploymentDescriptorFile = new File(outputDirectory, "ibm-deploy.scaj2ee");
-				if (deploymentDescriptorFile.exists()) {
+				if (sourceDeploymentDescriptorFile.exists()) {
+					FileUtils.copyFile(sourceDeploymentDescriptorFile, deploymentDescriptorFile);
 					deploymentDescriptorDocument = saxBuilder.build(deploymentDescriptorFile);
 				} else {
 					getLog().debug("Deployment descriptor does not exist - creating one.");
