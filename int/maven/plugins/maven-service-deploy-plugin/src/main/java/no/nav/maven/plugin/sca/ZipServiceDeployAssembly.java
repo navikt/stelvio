@@ -120,17 +120,17 @@ public class ZipServiceDeployAssembly implements ServiceDeployAssembly {
 		manifest.getMainAttributes().putValue(Attributes.Name.CLASS_PATH.toString(), classpath.toString());
 
 		JarOutputStream out = new JarOutputStream(new BufferedOutputStream(new FileOutputStream(newArtifactFile)), manifest);
-		InputStream in;
 		byte[] buf = new byte[1024];
 		for (JarEntry jarEntry : Collections.list(artifactJarFile.entries())) {
 			if (!"META-INF/MANIFEST.MF".equals(jarEntry.getName())) {
 				out.putNextEntry(jarEntry);
-				in = new BufferedInputStream(artifactJarFile.getInputStream(jarEntry));
+				InputStream in = new BufferedInputStream(artifactJarFile.getInputStream(jarEntry));
 				int len;
 				while ((len = in.read(buf)) > 0) {
 					out.write(buf, 0, len);
 				}
 				out.closeEntry();
+				in.close();
 			}
 		}
 		out.close();
