@@ -2056,15 +2056,6 @@ int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerfikasjonWSExp_VerifikasjonHttpServiceLocator.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/Verifikasjon.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerifikasjonProxy.java -text svneol=unset#text/plain
-int/maven/archetypes/pom.xml -text svneol=unset#text/plain
-int/maven/archetypes/wps-library-archetype/pom.xml -text svneol=unset#text/plain
-int/maven/archetypes/wps-library-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
-int/maven/archetypes/wps-library-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
-int/maven/archetypes/wps-module-archetype/pom.xml -text svneol=unset#text/plain
-int/maven/archetypes/wps-module-archetype/src/main/resources/META-INF/maven/archetype.xml -text svneol=unset#text/plain
-int/maven/archetypes/wps-module-archetype/src/main/resources/archetype-resources/pom.xml -text svneol=unset#text/plain
-int/maven/assemblies/pom.xml -text svneol=unset#text/plain
-int/maven/assemblies/src/main/resources/assemblies/jar-with-all-dependencies.xml -text svneol=unset#text/plain
 int/maven/maven-configuration-common/pom.xml -text
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
 int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain

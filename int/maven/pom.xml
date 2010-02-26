@@ -17,8 +17,6 @@
 	<name>Stelvio Integration Framework Maven Artifacts</name>
 
 	<modules>
-		<module>archetypes</module>
-		<module>assemblies</module>
 		<module>maven-configuration-common</module>
 		<!--
 		<module>maven-deploy-poc</module>
