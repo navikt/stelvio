@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.factory.ArtifactFactory;
+import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.artifact.resolver.AbstractArtifactResolutionException;
 import org.apache.maven.artifact.resolver.ArtifactResolver;
@@ -14,29 +16,32 @@ import org.apache.maven.model.Build;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.PlexusConstants;
-import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
-import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
-import org.codehaus.plexus.context.Context;
-import org.codehaus.plexus.context.ContextException;
-import org.codehaus.plexus.personality.plexus.lifecycle.phase.Contextualizable;
 
 /**
- * This plugin builds an assembly (zip-file) that can be used as input to
- * serviceDeploy.
+ * This plugin builds an assembly (zip-file) that can be used as input to serviceDeploy.
  * 
  * @author test@example.com
  * 
  * @goal service-deploy-assembly
  * @requiresDependencyResolution
  */
-public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextualizable {
+public class ServiceDeployAssemblyMojo extends AbstractMojo {
 	/**
 	 * @component
 	 */
 	private ArtifactResolver artifactResolver;
+
+	/**
+	 * @component
+	 */
+	private ArtifactFactory artifactFactory;
+
+	/**
+	 * @component
+	 */
+	private ArtifactHandlerManager artifactHandlerManager;
 
 	/**
 	 * @component roleHint="zip"
@@ -60,27 +65,20 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextua
 	private ArtifactRepository localRepository;
 
 	/**
-	 * Defines the assembly type to use. Valid values are zip [default] and pi
-	 * (project interchange).
+	 * Defines the assembly type to use. Valid values are zip [default] and pi (project interchange).
 	 * 
 	 * @parameter default-value="zip"
 	 */
 	private String assemblyType;
 
-	private PlexusContainer container;
-
 	private Map<String, MavenProject> projectReferences;
-
-	public void contextualize(Context context) throws ContextException {
-		container = (PlexusContainer) context.get(PlexusConstants.PLEXUS_KEY);
-	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public void execute() throws MojoExecutionException {
 		try {
-			ServiceDeployAssembly serviceDeployAssembly = lookupServiceDeployAssembly();
+			ServiceDeployAssembly serviceDeployAssembly = getServiceDeployAssembly();
 
 			Build build = project.getBuild();
 			File outputFile = new File(build.getDirectory(), build.getFinalName() + "-sd" + ".zip");
@@ -103,14 +101,13 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo implements Contextua
 		}
 	}
 
-	private ServiceDeployAssembly lookupServiceDeployAssembly() throws MojoExecutionException {
-		try {
-			if (!"zip".equals(assemblyType) && !"pi".equals(assemblyType)) {
-				throw new MojoExecutionException("Illegal assembly type (" + assemblyType + "). Must be one of [zip,pi].");
-			}
-			return (ServiceDeployAssembly) container.lookup(ServiceDeployAssembly.class.getName(), assemblyType);
-		} catch (ComponentLookupException e) {
-			throw new MojoExecutionException("Error looking up ServiceDeployAssembly component", e);
+	private ServiceDeployAssembly getServiceDeployAssembly() throws MojoExecutionException {
+		if ("zip".equals(assemblyType)) {
+			return new ZipServiceDeployAssembly();
+		} else if ("pi".equals(assemblyType)) {
+			return new ProjectInterchangeServiceDeployAssembly(artifactFactory, artifactHandlerManager);
+		} else {
+			throw new MojoExecutionException("Illegal assembly type (" + assemblyType + "). Must be one of [zip,pi].");
 		}
 	}
 

@@ -20,6 +20,12 @@ public class ProjectInterchangeServiceDeployAssembly implements ServiceDeployAss
 
 	private ArtifactHandlerManager artifactHandlerManager;
 
+	public ProjectInterchangeServiceDeployAssembly(ArtifactFactory artifactFactory, ArtifactHandlerManager artifactHandlerManager) {
+		super();
+		this.artifactFactory = artifactFactory;
+		this.artifactHandlerManager = artifactHandlerManager;
+	}
+
 	@SuppressWarnings("unchecked")
 	public Collection<Artifact> getArtifacts(MavenProject project) {
 		String projectInterchangeClassifier = getProjectInterchangeClassifier();
