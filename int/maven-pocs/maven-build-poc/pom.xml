@@ -19,7 +19,7 @@
 	</scm>
 	<properties>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven-pocs/maven-build-poc
 		</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
 	</properties>

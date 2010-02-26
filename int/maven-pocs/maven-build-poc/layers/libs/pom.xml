@@ -25,7 +25,7 @@
 	</scm>
 	<properties>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers/libs
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven-pocs/maven-build-poc/layers/libs
 		</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
 	</properties>

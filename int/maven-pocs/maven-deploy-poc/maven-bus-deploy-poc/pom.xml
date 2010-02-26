@@ -44,7 +44,7 @@
 	</scm>
 	<properties>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-deploy-poc/maven-bus-deploy-poc
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven-pocs/maven-deploy-poc/maven-bus-deploy-poc
 		</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
 	</properties>

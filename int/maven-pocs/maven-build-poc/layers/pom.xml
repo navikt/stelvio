@@ -39,12 +39,12 @@
 	</build>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers</developerConnection>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-poc/layers
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven-pocs/maven-build-poc/layers
 		</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
 	</properties>
