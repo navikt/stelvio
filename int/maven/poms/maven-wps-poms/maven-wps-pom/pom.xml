@@ -22,12 +22,12 @@
 		<testOutputDirectory>
 			${target.dir}/test-classes
 		</testOutputDirectory>
-		<sourceDirectory />
+		<sourceDirectory>${project.basedir}</sourceDirectory>
 		<resources>
 			<resource>
 				<!-- TODO: This is here because WID insists on having the root folder as a source folder -->
 				<!-- TODO: Review which files to exclude/include -->
-				<directory>${basedir}</directory>
+				<directory>${project.basedir}</directory>
 				<excludes>
 					<exclude>.settings/**</exclude>
 					<exclude>gen/**</exclude>
