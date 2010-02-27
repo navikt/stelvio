@@ -221,9 +221,9 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 					private Map<String, Artifact> artifactMap;
 
 					public boolean visit(DependencyNode node) {
-						if (!node.hasChildren()) {
-							Set<Artifact> emptySet = Collections.emptySet();
-							artifactDependencyMap.put(getArtifact(node), emptySet);
+						Artifact artifact = getArtifact(node);
+						if (!artifactDependencyMap.containsKey(artifact)) {
+							artifactDependencyMap.put(artifact, new LinkedHashSet<Artifact>());
 						}
 						return true;
 					}
@@ -233,17 +233,12 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 						if (parent != null) {
 							Artifact parentArtifact = getArtifact(parent);
 							Set<Artifact> parentDependencies = artifactDependencyMap.get(parentArtifact);
-							if (parentDependencies == null) {
-								parentDependencies = new LinkedHashSet<Artifact>();
-								artifactDependencyMap.put(parentArtifact, parentDependencies);
-							}
 
 							Artifact artifact = getArtifact(node);
-							parentDependencies.add(artifact);
 							Set<Artifact> dependencies = artifactDependencyMap.get(artifact);
-							if (dependencies != null) {
-								parentDependencies.addAll(dependencies);
-							}
+
+							parentDependencies.add(artifact);
+							parentDependencies.addAll(dependencies);
 						}
 						return true;
 					}
