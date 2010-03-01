@@ -17,8 +17,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.cli.StreamConsumer;
 
 /**
- * This plugin builds an assembly (zip-file) that can be used as input to
- * serviceDeploy.
+ * This plugin builds an assembly (zip-file) that can be used as input to serviceDeploy.
  * 
  * @author test@example.com
  * 
@@ -172,13 +171,8 @@ public class ServiceDeployMojo extends AbstractMojo {
 	public List<Artifact> getProvidedArtifacts() {
 		List<Artifact> providedArtifacts = new ArrayList<Artifact>();
 		for (Artifact artifact : (Collection<Artifact>) project.getDependencyArtifacts()) {
-			// TODO: classpath check doesn't belong here - that's the other
-			// method
-			if (artifact.getArtifactHandler().isAddedToClasspath()) {
-				// TODO: let the scope handler deal with this
-				if (Artifact.SCOPE_PROVIDED.equals(artifact.getScope())) {
-					providedArtifacts.add(artifact);
-				}
+			if (Artifact.SCOPE_PROVIDED.equals(artifact.getScope())) {
+				providedArtifacts.add(artifact);
 			}
 		}
 		return providedArtifacts;
