@@ -1,6 +1,9 @@
 package no.stelvio.common.bus.util;
 
 import java.util.Calendar;
+import java.util.Date;
+
+import org.apache.commons.lang.time.DateUtils;
 
 import junit.framework.TestCase;
 
@@ -130,5 +133,54 @@ public class FnrUtilTest extends TestCase {
 		assertEquals(147,FnrUtil.getAgeAtDateForFnr(fnr1, atDate2));
 		assertEquals(148,FnrUtil.getAgeAtDateForFnr(fnr2, atDate2));
 		assertEquals(148,FnrUtil.getAgeAtDateForFnr(fnr3, atDate2));
+	}
+	
+	public void testGetBirthdateForFnr()
+	{
+		//----------- Test fnr 
+		assertEquals(getDate(1860, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(fnr1855to1899)); //01.01.1860
+		assertEquals(getDate(1930, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(fnr1900to1999)); //01.01.1930
+		assertEquals(getDate(1940, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(fnr1940to1999)); //01.01.1940
+		assertEquals(getDate(2030, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(fnr2000to2039)); //01.01.2030
+		
+		// ----------- Test dnr
+		assertEquals(getDate(1980, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(dnr)); //01.01.1980
+		assertEquals(getDate(1980, Calendar.JANUARY, 31),FnrUtil.getBirthdateForFnr(dnr2)); //31.01.1980
+		
+		//------------ Test bostnr 
+		assertEquals(getDate(1860, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(bost1855to1899)); //01.01.1860
+		assertEquals(getDate(1930, Calendar.DECEMBER, 1),FnrUtil.getBirthdateForFnr(bost1900to1999)); // 01.12.1930
+		assertEquals(getDate(1940, Calendar.DECEMBER, 1),FnrUtil.getBirthdateForFnr(bost1940to1999)); //01.12.1940
+		assertEquals(getDate(2030, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(bost2000to2039)); //01.01.2030
+			
+		assertEquals(getDate(1860, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(hnr1855to1899)); //01.01.1860
+		assertEquals(getDate(1930, Calendar.DECEMBER, 1),FnrUtil.getBirthdateForFnr(hnr1900to1999)); //01.12.1930
+		assertEquals(getDate(1940, Calendar.DECEMBER, 1),FnrUtil.getBirthdateForFnr(hnr1940to1999)); //01.12.1940
+		assertEquals(getDate(2030, Calendar.JANUARY, 1),FnrUtil.getBirthdateForFnr(hnr2000to2039)); //01.01.2030
+		
+		//------------ Test with invalid fnr
+		assertNull(FnrUtil.getBirthdateForFnr(invalid_dnr1));
+		assertNull(FnrUtil.getBirthdateForFnr(invalid_dnr2));
+		assertNull(FnrUtil.getBirthdateForFnr(invalid_hnr1));
+		assertNull(FnrUtil.getBirthdateForFnr(invalid_hnr2));
+		assertNull(FnrUtil.getBirthdateForFnr(invalid_bost1));
+		assertNull(FnrUtil.getBirthdateForFnr(invalid_bost2));
+		assertNull(FnrUtil.getBirthdateForFnr(invalid_fnr1));
+		assertNull(FnrUtil.getBirthdateForFnr(invalid_fnr2));
+		
+		String fnr1 = "12345678901"; //08.05.1860
+		String fnr2 = "12345678901"; //07.05.1860
+		String fnr3 = "12345678901"; //06.05.1860
+
+		assertEquals(getDate(1860, Calendar.MAY, 8),FnrUtil.getBirthdateForFnr(fnr1));
+		assertEquals(getDate(1860, Calendar.MAY, 7),FnrUtil.getBirthdateForFnr(fnr2));
+		assertEquals(getDate(1860, Calendar.MAY, 6),FnrUtil.getBirthdateForFnr(fnr3));
+	}
+	
+	private Date getDate(int year, int month, int date) {
+		Calendar cal = Calendar.getInstance();
+		cal.clear();
+		cal.set(year, month, date);
+		return cal.getTime();
 	}
 }
