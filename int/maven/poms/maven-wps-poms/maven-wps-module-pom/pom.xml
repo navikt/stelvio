@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-wps-pom</artifactId>
-		<version>1.0</version>
+		<version>1.1-SNAPSHOT</version>
 		<relativePath>../maven-wps-pom</relativePath>
 	</parent>
 
@@ -152,10 +152,10 @@ config.version=6.1
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.0/maven-wps-poms/maven-wps-module-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.0/maven-wps-poms/maven-wps-module-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-module-pom
 		</developerConnection>
 	</scm>
 	<properties>

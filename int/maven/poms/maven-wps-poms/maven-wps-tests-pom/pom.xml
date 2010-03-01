@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>maven-wps-tests-pom</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>WPS Artifact Unit Tests Master POM</name>
 
@@ -75,10 +75,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.0/maven-wps-pom/maven-wps-tests-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-pom/maven-wps-tests-pom
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.0/maven-wps-pom/maven-wps-tests-pom
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-pom/maven-wps-tests-pom
 		</developerConnection>
 	</scm>
 </project>
