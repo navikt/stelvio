@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-plugin-pom</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 		<relativePath>../../poms/maven-plugin-pom</relativePath>
 	</parent>
 
