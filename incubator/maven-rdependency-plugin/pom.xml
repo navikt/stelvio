@@ -2,13 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<parent>
-		<groupId>no.stelvio.maven.poms</groupId>
-		<artifactId>maven-plugin-pom</artifactId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>../../poms/maven-plugin-pom</relativePath>
-	</parent>
-
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-rdependency-plugin</artifactId>
 	<version>1.0-SNAPSHOT</version>
@@ -25,15 +18,11 @@
 			<groupId>org.apache.maven.shared</groupId>
 			<artifactId>maven-dependency-tree</artifactId>
 			<version>1.2</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.shared</groupId>
 			<artifactId>maven-common-artifact-filters</artifactId>
 			<version>1.2</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
