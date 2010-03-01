@@ -1488,8 +1488,6 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
 incubator/maven-rdependency-plugin/.classpath -text
 incubator/maven-rdependency-plugin/.project -text
-incubator/maven-rdependency-plugin/.settings/org.eclipse.jdt.core.prefs -text
-incubator/maven-rdependency-plugin/.settings/org.maven.ide.eclipse.prefs -text
 incubator/maven-rdependency-plugin/pom.xml -text
 incubator/maven-rdependency-plugin/src/main/java/no/nav/maven/plugin/ReverseDependencyMojo.java -text
 incubator/maven-rdependency-plugin/target/apidocs/allclasses-frame.html -text
