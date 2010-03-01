@@ -80,6 +80,11 @@
 					<artifactId>maven-wid-plugin</artifactId>
 					<version>1.4</version>
 				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-mg-plugin</artifactId>
+					<version>1.9</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
