@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-mg-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.9</version>
+	<version>1.10-SNAPSHOT</version>
 	<name>Stelvio Integration Framework Module Group Plugin</name>
 
 	<dependencies>
@@ -51,10 +51,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.10/plugins/maven-mg-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-mg-plugin
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugins-1.10/plugins/maven-mg-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-mg-plugin
 		</developerConnection>
 	</scm>
 	<properties>
