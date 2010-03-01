@@ -1486,6 +1486,33 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
+incubator/maven-rdependency-plugin/.classpath -text
+incubator/maven-rdependency-plugin/.project -text
+incubator/maven-rdependency-plugin/.settings/org.eclipse.jdt.core.prefs -text
+incubator/maven-rdependency-plugin/.settings/org.maven.ide.eclipse.prefs -text
+incubator/maven-rdependency-plugin/pom.xml -text
+incubator/maven-rdependency-plugin/src/main/java/no/nav/maven/plugin/ReverseDependencyMojo.java -text
+incubator/maven-rdependency-plugin/target/apidocs/allclasses-frame.html -text
+incubator/maven-rdependency-plugin/target/apidocs/allclasses-noframe.html -text
+incubator/maven-rdependency-plugin/target/apidocs/constant-values.html -text
+incubator/maven-rdependency-plugin/target/apidocs/deprecated-list.html -text
+incubator/maven-rdependency-plugin/target/apidocs/help-doc.html -text
+incubator/maven-rdependency-plugin/target/apidocs/index-all.html -text
+incubator/maven-rdependency-plugin/target/apidocs/index.html -text
+incubator/maven-rdependency-plugin/target/apidocs/no/nav/maven/plugin/ReverseDependencyMojo.html -text
+incubator/maven-rdependency-plugin/target/apidocs/no/nav/maven/plugin/class-use/ReverseDependencyMojo.html -text
+incubator/maven-rdependency-plugin/target/apidocs/no/nav/maven/plugin/package-frame.html -text
+incubator/maven-rdependency-plugin/target/apidocs/no/nav/maven/plugin/package-summary.html -text
+incubator/maven-rdependency-plugin/target/apidocs/no/nav/maven/plugin/package-tree.html -text
+incubator/maven-rdependency-plugin/target/apidocs/no/nav/maven/plugin/package-use.html -text
+incubator/maven-rdependency-plugin/target/apidocs/overview-tree.html -text
+incubator/maven-rdependency-plugin/target/apidocs/package-list -text
+incubator/maven-rdependency-plugin/target/apidocs/resources/inherit.gif -text
+incubator/maven-rdependency-plugin/target/apidocs/stylesheet.css -text
+incubator/maven-rdependency-plugin/target/maven-archiver/pom.properties -text
+incubator/maven-rdependency-plugin/target/maven-rdependency-plugin-1.0-SNAPSHOT-javadoc.jar -text
+incubator/maven-rdependency-plugin/target/maven-rdependency-plugin-1.0-SNAPSHOT-sources.jar -text
+incubator/maven-rdependency-plugin/target/maven-rdependency-plugin-1.0-SNAPSHOT.jar -text
 incubator/nav-int-fault-test/nav-broc-fault-test/.classpath -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.project -text svneol=unset#text/plain
 incubator/nav-int-fault-test/nav-broc-fault-test/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
