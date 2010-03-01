@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.apache.maven.artifact.metadata.ArtifactMetadataSource;
@@ -29,25 +31,19 @@ import org.apache.maven.shared.dependency.tree.traversal.FilteringDependencyNode
 import org.apache.maven.shared.dependency.tree.traversal.SerializingDependencyNodeVisitor;
 
 /**
- * List a tree of dependencies on the same format as dependency:tree, but
- * with the option of filtering out all artifacts which is not an ancestor
- * of the subject artifacts in the dependency tree
+ * List a tree of dependencies for all reactor projects on the same format as
+ * dependency:tree, but filter out all artifacts which is not an ancestor of the
+ * subject artifacts in the dependency tree
  * 
- * The subject artifacts are specified as a filter property artifactFilter, with the
- * format documented in AbstractStrictPatternArtifactFilter
+ * The subject artifacts are specified as a filter property artifactFilter, with
+ * the format documented in AbstractStrictPatternArtifactFilter
  * 
  * @goal tree
  * @requiresDependencyResolution compile
+ * @aggregator
  */
 public class ReverseDependencyMojo extends AbstractMojo {
 
-	/**
-	 * @parameter expression="${project}"
-	 * @required
-	 * @readonly
-	 */
-	private MavenProject project;
-	
 	/**
 	 * @parameter expression="${localRepository}"
 	 * @required
@@ -84,18 +80,33 @@ public class ReverseDependencyMojo extends AbstractMojo {
 	private DependencyTreeBuilder dependencyTreeBuilder;
 
 	/**
+	 * @parameter expression="${reactorProjects}"
+	 * @required
+	 * @readonly
+	 */
+	private List reactorProjects;
+
+	/**
 	 * @parameter expression="${artifactFilter}"
 	 * @required
 	 */
 	private String artifactFilter;
-	
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
-			DependencyNode rootNode = dependencyTreeBuilder.buildDependencyTree(project, localRepository, artifactFactory, artifactMetadataSource, null, artifactCollector);
-			String dependencyTreeString = serialiseDependencyTree(rootNode);
-			log(dependencyTreeString, getLog());
+			for (Iterator iterator = reactorProjects.iterator(); iterator
+					.hasNext();) {
+				MavenProject rProject = (MavenProject) iterator.next();
+				DependencyNode rootNode = dependencyTreeBuilder
+						.buildDependencyTree(rProject, localRepository,
+								artifactFactory, artifactMetadataSource, null,
+								artifactCollector);
+				String dependencyTreeString = serialiseDependencyTree(rootNode);
+				log(dependencyTreeString, getLog());
+			}
 		} catch (DependencyTreeBuilderException e) {
-			throw new MojoExecutionException("Cannot build project dependency tree", e);
+			throw new MojoExecutionException(
+					"Cannot build project dependency tree", e);
 		} catch (ArtifactFilterException e) {
 			throw new MojoExecutionException("Cannot run artifact filter", e);
 		} catch (IOException e) {
@@ -103,27 +114,33 @@ public class ReverseDependencyMojo extends AbstractMojo {
 		}
 	}
 
-	private String serialiseDependencyTree(DependencyNode rootNode) throws ArtifactFilterException {
+	private String serialiseDependencyTree(DependencyNode rootNode)
+			throws ArtifactFilterException {
 		StringWriter writer = new StringWriter();
 
-		DependencyNodeVisitor visitor = new SerializingDependencyNodeVisitor(writer, SerializingDependencyNodeVisitor.STANDARD_TOKENS);
+		DependencyNodeVisitor visitor = new SerializingDependencyNodeVisitor(
+				writer, SerializingDependencyNodeVisitor.STANDARD_TOKENS);
 
 		ArrayList<String> patterns = new ArrayList<String>();
 		patterns.add(artifactFilter);
-		DependencyNodeFilter firstPassFilter = new ArtifactDependencyNodeFilter(new StrictPatternIncludesArtifactFilter(patterns));
+		DependencyNodeFilter firstPassFilter = new ArtifactDependencyNodeFilter(
+				new StrictPatternIncludesArtifactFilter(patterns));
 		CollectingDependencyNodeVisitor collectingVisitor = new CollectingDependencyNodeVisitor();
-		DependencyNodeVisitor firstPassVisitor = new FilteringDependencyNodeVisitor(collectingVisitor, firstPassFilter);
+		DependencyNodeVisitor firstPassVisitor = new FilteringDependencyNodeVisitor(
+				collectingVisitor, firstPassFilter);
 		rootNode.accept(firstPassVisitor);
 
-		AncestorOrSelfDependencyNodeFilter secondPassFilter = new AncestorOrSelfDependencyNodeFilter(collectingVisitor.getNodes());
+		AncestorOrSelfDependencyNodeFilter secondPassFilter = new AncestorOrSelfDependencyNodeFilter(
+				collectingVisitor.getNodes());
 		visitor = new FilteringDependencyNodeVisitor(visitor, secondPassFilter);
-		
+
 		rootNode.accept(visitor);
 
 		return writer.toString();
 	}
-	
-	public synchronized static void log(String string, Log log) throws IOException {
+
+	public synchronized static void log(String string, Log log)
+			throws IOException {
 		BufferedReader reader = new BufferedReader(new StringReader(string));
 		String line;
 		while ((line = reader.readLine()) != null) {
