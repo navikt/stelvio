@@ -10,7 +10,7 @@
 
 	<modules>
 		<module>layers</module>
-		<module>module2-client</module>
+		<module>module-client</module>
 	</modules>
 	
 	<scm>
