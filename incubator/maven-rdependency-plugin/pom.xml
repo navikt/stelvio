@@ -38,10 +38,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-rdependency-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven-rdependency-plugin
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-rdependency-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/maven-rdependency-plugin
 		</developerConnection>
 	</scm>
 </project>
