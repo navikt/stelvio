@@ -755,6 +755,8 @@ int/maven/plugins/maven-wsdl-plugin/.project
 int/maven/plugins/maven-wsdl-plugin/.settings
 int/maven/plugins/maven-wsdl-plugin/target
 int/maven/plugins/target
+int/maven/poms/maven-deploy-pom/.project
+int/maven/poms/maven-deploy-pom/.settings
 int/maven/poms/maven-deploy-pom/target
 int/maven/poms/maven-plugin-pom/target
 int/maven/poms/maven-root-pom/target
