@@ -2298,7 +2298,6 @@ int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/poc-modul
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/poc-module2_EchoServiceWSEXP.wsdl -text
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
-int/maven/poms/maven-deploy-pom/.project -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-jca-pom/.project -text
 int/maven/poms/maven-jca-pom/pom.xml -text
