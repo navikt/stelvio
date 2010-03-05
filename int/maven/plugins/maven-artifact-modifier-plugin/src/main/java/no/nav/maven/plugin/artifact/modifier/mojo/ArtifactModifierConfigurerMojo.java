@@ -85,6 +85,24 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 					}
 				}
 			}
+
+// EJB projects does not exist in WPS 7.0 modules
+//			/*
+//			 * Communicate to the deploy scripts that this module contains
+//			 * business processes. Modules containing business processes must be
+//			 * handled in a special manner during uninstall.
+//			 */
+//			EARFile earFile = EarFile.openEarFile(dest.getAbsolutePath());
+//			EjbJarAssemblyDescriptorEditor ejbjar = new EjbJarAssemblyDescriptorEditor((Archive) earFile.getEJBJarFiles()
+//					.get(0));
+//			if (ejbjar.containsBusinessProcesses() == true) {
+//				try {
+//					new File(targetDirectory, a.getArtifactId() + "-" + a.getVersion() + ".bp").createNewFile();
+//				} catch (IOException e) {
+//					throw new RuntimeException("An error occured creating a bp file for artifact", e);
+//				}
+//			}
+//			EarFile.closeEarFile(earFile);
 		}
 
 		return dest;
