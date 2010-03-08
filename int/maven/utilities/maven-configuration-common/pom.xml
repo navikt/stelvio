@@ -34,7 +34,7 @@
 	</scm>
 	<properties>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/maven-configuration-common
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/utilities/maven-configuration-common
 		</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
 	</properties>
