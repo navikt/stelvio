@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>maven-wps-poms</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>pom</packaging>
 	<name>Stelvio Integration Framework WPS POMS</name>
 
@@ -21,8 +21,8 @@
 	</modules>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.1/maven-wps-poms</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wps-poms-1.1/maven-wps-poms</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
