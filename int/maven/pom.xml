@@ -21,6 +21,7 @@
 		<module>plugins</module>
 		<module>poms</module>
 		<module>utilities</module>
+		<module>ws-clients</module>
 		<module>xmlbeans</module>
 	</modules>
 	

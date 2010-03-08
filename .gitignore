@@ -768,6 +768,10 @@ int/maven/utilities/sca-attributes-builder/.classpath
 int/maven/utilities/sca-attributes-builder/.project
 int/maven/utilities/sca-attributes-builder/.settings
 int/maven/utilities/sca-attributes-builder/target
+int/maven/ws-clients/datapower-management-client/.classpath
+int/maven/ws-clients/datapower-management-client/.project
+int/maven/ws-clients/datapower-management-client/.settings
+int/maven/ws-clients/datapower-management-client/target
 int/maven/xmlbeans/ibm-xmlbeans/.classpath
 int/maven/xmlbeans/ibm-xmlbeans/.project
 int/maven/xmlbeans/ibm-xmlbeans/.settings
