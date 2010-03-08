@@ -17,6 +17,7 @@ import org.codehaus.swizzle.confluence.Page;
  */
 @SuppressWarnings("unchecked")
 public class AddHistoryEventMojo  extends ConfluenceMojo {
+	private static final String EAR_ARTIFACT_TYPE = "ear";
 
 	@Override
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
@@ -48,7 +49,7 @@ public class AddHistoryEventMojo  extends ConfluenceMojo {
 		StringBuffer buf = new StringBuffer();
 		
 		for(Artifact a : artifacts) {
-			if(a.getType().equals(no.nav.maven.commons.constants.Constants.EAR_ARTIFACT_TYPE)) {
+			if(a.getType().equals(EAR_ARTIFACT_TYPE)) {
 				buf.append( " " + a.getArtifactId() + "-" + a.getVersion());
 			}
 		}
