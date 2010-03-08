@@ -76,7 +76,7 @@ public class CatchServiceRuntimeExceptionInterceptorTest {
 	}
 
 	@Test
-	public void testSREWithSERCauseWithSRECause() {
+	public void testSREWithSRECauseWithSRECause() {
 		ServiceRuntimeException sre = new ServiceRuntimeException("Error #1", new ServiceRuntimeException("Error #2",
 				new ServiceRuntimeException("Error #3")));
 		Throwable convertedThrowable = interceptor.convertThrowable(sre);
