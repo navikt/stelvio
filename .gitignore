@@ -634,11 +634,6 @@ int/maven-runtimes/wps-runtime/.project
 int/maven-runtimes/wps-runtime/.settings
 int/maven-runtimes/wps-runtime/bin
 int/maven-runtimes/wps-runtime/target
-int/maven/maven-configuration-common/.classpath
-int/maven/maven-configuration-common/.project
-int/maven/maven-configuration-common/.settings
-int/maven/maven-configuration-common/bin
-int/maven/maven-configuration-common/target
 int/maven/plugins/.classpath
 int/maven/plugins/.project
 int/maven/plugins/.settings
@@ -764,6 +759,11 @@ int/maven/poms/maven-root-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/target
 int/maven/poms/maven-wps-poms/target
+int/maven/utilities/maven-configuration-common/.classpath
+int/maven/utilities/maven-configuration-common/.project
+int/maven/utilities/maven-configuration-common/.settings
+int/maven/utilities/maven-configuration-common/bin
+int/maven/utilities/maven-configuration-common/target
 int/maven/utilities/sca-attributes-builder/.classpath
 int/maven/utilities/sca-attributes-builder/.project
 int/maven/utilities/sca-attributes-builder/.settings

@@ -15,6 +15,7 @@
 	<name>Stelvio Integration Framework Utilities Aggregation</name>
 
 	<modules>
+		<module>maven-configuration-common</module>
 		<module>sca-attributes-builder</module>
 	</modules>
 

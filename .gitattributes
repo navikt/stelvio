@@ -2206,11 +2206,6 @@ int/maven-pocs/maven-deploy-poc/pom.xml -text
 int/maven-runtimes/pom.xml -text
 int/maven-runtimes/wps-runtime/files.txt -text
 int/maven-runtimes/wps-runtime/pom.xml -text
-int/maven/maven-configuration-common/pom.xml -text
-int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
-int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain
-int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
-int/maven/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
@@ -2315,6 +2310,11 @@ int/maven/poms/maven-wps-poms/maven-wps-tests-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-tests-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
 int/maven/poms/pom.xml -text
+int/maven/utilities/maven-configuration-common/pom.xml -text
+int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
+int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain
+int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/ArchiveManager.java -text svneol=unset#text/plain
+int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
 int/maven/utilities/pom.xml -text
 int/maven/utilities/sca-attributes-builder/pom.xml -text
 int/maven/utilities/sca-attributes-builder/src/main/java/no/nav/maven/utilities/sca/ScaAttributesBuilder.java -text

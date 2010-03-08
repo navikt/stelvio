@@ -17,7 +17,6 @@
 	<name>Stelvio Integration Framework Maven Artifacts</name>
 
 	<modules>
-		<module>maven-configuration-common</module>
 		<module>plugins</module>
 		<module>poms</module>
 		<module>utilities</module>
