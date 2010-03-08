@@ -2319,6 +2319,12 @@ int/maven/utilities/pom.xml -text
 int/maven/utilities/sca-attributes-builder/pom.xml -text
 int/maven/utilities/sca-attributes-builder/src/main/java/no/nav/maven/utilities/sca/ScaAttributesBuilder.java -text
 int/maven/ws-clients/datapower-management-client/pom.xml -text
+int/maven/ws-clients/datapower-management-client/src/main/wsdl/amp/app-mgmt-protocol.wsdl -text
+int/maven/ws-clients/datapower-management-client/src/main/wsdl/amp/app-mgmt-protocol.xsd -text
+int/maven/ws-clients/datapower-management-client/src/main/wsdl/soma/xml-mgmt-base.xsd -text
+int/maven/ws-clients/datapower-management-client/src/main/wsdl/soma/xml-mgmt-ops.xsd -text
+int/maven/ws-clients/datapower-management-client/src/main/wsdl/soma/xml-mgmt.wsdl -text
+int/maven/ws-clients/datapower-management-client/src/main/wsdl/soma/xml-mgmt.xsd -text
 int/maven/ws-clients/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
