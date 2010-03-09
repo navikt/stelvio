@@ -18,10 +18,10 @@
   	
   	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven2/maven-datapower-plugin/datapower-cfg-gen
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-plugin/datapower-cfg-gen
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-common
 		</developerConnection>
 	</scm>
   	<dependencies>
