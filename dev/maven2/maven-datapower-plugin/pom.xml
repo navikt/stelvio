@@ -27,7 +27,6 @@
 
 	<modules>
 		<module>datapower-utils</module>
-		<module>datapower-cfg-gen</module>
 		<module>datapower-xml-mgmt</module>
 		<module>maven-datapower-plugin</module>
 	</modules>
@@ -93,11 +92,6 @@
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>datapower-utils</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>datapower-cfg-gen</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
