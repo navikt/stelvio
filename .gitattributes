@@ -105,7 +105,6 @@ dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signa
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signature-gw-saveConfig.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signature-gw-setupDomain.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/trustStore_rename.jks -text
-dev/maven2/maven-datapower-plugin/pom.xml -text
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
 dev/maven2/maven-dependency-plugin/pom.xml -text
