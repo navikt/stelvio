@@ -18,6 +18,7 @@
 	<modules>
 		<module>maven-artifact-modifier-plugin</module>
 		<module>maven-confluence-plugin</module>
+		<module>maven-datapower-config-generator-plugin</module>
 		<module>maven-mg-plugin</module>
 		<module>maven-project-interchange-plugin</module>
 		<module>maven-service-deploy-plugin</module>

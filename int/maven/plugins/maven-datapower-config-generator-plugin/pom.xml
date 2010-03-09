@@ -1,6 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-plugin-pom</artifactId>
+		<version>1.0</version>
+		<relativePath>../../poms/maven-plugin-pom</relativePath>
+	</parent>
+	
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-datapower-config-generator-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
@@ -13,18 +20,18 @@
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-plugin-api</artifactId>
-			<version>2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-project</artifactId>
-			<version>2.0</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>2.3.15</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>no.nav.maven.plugins</groupId>
 			<artifactId>datapower-utils</artifactId>
@@ -32,35 +39,8 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-config-generator-plugin</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/dev/maven2/maven-datapower-config-generator-plugin</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-datapower-config-generator-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-datapower-config-generator-plugin</developerConnection>
 	</scm>
-
-	<distributionManagement>
-		<repository>
-			<id>nav-maven2-internal-repo</id>
-			<url>scp://maven.adeo.no/var/maven2/internal</url>
-		</repository>
-
-		<snapshotRepository>
-			<id>nav-pensjon-maven2-snapshot-repo</id>
-			<url>scp://10.33.1.53/var/maven2/snapshot</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
-	</distributionManagement>
-
 </project>
