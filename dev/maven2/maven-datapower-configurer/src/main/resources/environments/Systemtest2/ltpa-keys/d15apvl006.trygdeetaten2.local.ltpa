@@ -1,9 +1,0 @@
-#IBM WebSphere Application Server key file
-#Fri Jan 25 18:19:11 CET 2008
-com.ibm.websphere.CreationDate=Fri Jan 25 18\:19\:11 CET 2008
-com.ibm.websphere.ltpa.version=1.0
-com.ibm.websphere.ltpa.3DESKey=Ezaqm+c1RUnhkW/Gtund4Qp3XtJ/wuaxf18pVofmE7M\=
-com.ibm.websphere.CreationHost=d15apvl006.trygdeetaten2.local
-com.ibm.websphere.ltpa.PrivateKey=hLWMxpUr3II7ArxWWow4ajQfr0ZDSJMs7pjv8nx/QT6cCbQl2J++VpShAI1ZizeMvAAxpFrocbLuWVwtE0YMONUO8yJMljZUUps41UMzHGHbevln6xXpI+fjSNlVpFH9rirbzFMMueK+WipRbYwwy326EsNgkIEsg6Pi1QoPS6Ftjhx9GWPK83OuIL64N+IeWD5AKDwGZ+IDGTJ54tCjcaVCDLF+hWLiRwV439rQADkIYk3N8qZeSvSEyNl4yJ4f6klvnWrVN2QK10gNaAOM4/C+I8iZCdbu14AbM/B2jLH8mh9pyvdmdNvF69YsNNPAL6bqAigEgl0yOxrzxVfgtQdXZsw0ePfLdiWD0/znS70\=
-com.ibm.websphere.ltpa.Realm=d26dcfw001.test.local\:389
-com.ibm.websphere.ltpa.PublicKey=ALVHhnlrhmcFAzGbLrxUrXGmZpIV04kG2Fr8oC3Cy39T7bFDSQjlbdUB8Gcb4yS8ZZ8y0R/UT8myTWFM8m/2yrWwNW84EFi5EoXPPLthNMKwotGrGqWZE3x7ZZ7hsJ8Z9a+HoL0m37JVuBu4S9vFc08c/5pJIRu0aER4ZX5WRJntAQAB
