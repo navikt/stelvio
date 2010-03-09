@@ -105,119 +105,6 @@ dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signa
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signature-gw-saveConfig.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signature-gw-setupDomain.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/trustStore_rename.jks -text
-dev/maven2/maven-datapower-plugin/datapower-utils/pom.xml -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/DPCollectionUtils.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/DPFileUtils.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/DPFilenameUtils.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/DPHttpUtils.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/DPPropertiesUtils.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/DPStreamUtils.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/DPWsdlUtils.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/DPZipUtils.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/NestedProperties.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/PropertiesBuilder.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/PropertiesValidator.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/ServiceConfigurationError.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/ServiceLoader.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/java/no/nav/datapower/util/WildcardPathFilter.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/resources/datapower-request.xml -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/resources/environment.properties -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/main/resources/template.xcfg -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/java/no/nav/datapower/util/DPCollectionUtilsTest.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/java/no/nav/datapower/util/DPFileUtilsTest.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/java/no/nav/datapower/util/DPPropertiesUtilsTest.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/java/no/nav/datapower/util/FileUtilsTester.java -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/java/no/nav/datapower/util/PropertiesBuilderTest.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/java/no/nav/datapower/util/PropertiesValidatorTest.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/a/1/file2.txt -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/a/file1.txt -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/b/1/file3.txt -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/b/1/file4.txt -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/b/2/file5.txt -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/c/file6.txt -text
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/RegistrereTPForholdWSEXP_RegistrereTPForholdHttp_Service.wsdl -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/HentTPForholdListeReq.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/HentTPForholdListeResp.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/OpprettTPForholdReq.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/SlettTPForholdReq.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/TPForhold.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultBase.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultGenerisk.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultKanIkkeSlettes.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultPersonIkkeFunnet.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultTjenestepensjonForholdIkkeFunnet.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/inf/RegistrereTPForhold.wsdl -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Adresse.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Beregning.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/BeregningNokkelinfo.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/HentSamordningsdataReq.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/HentSamordningsdataResp.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/KrigOgGammelYrkesskade.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/LagreTPYtelseReq.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/LagreTPYtelseResp.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/OpprettRefusjonskravReq.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/PeriodisertBelop.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Person.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Poengrekke.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/SlettTPYtelseReq.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Sluttpoengtall.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/TPYtelse.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Vedtak.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Vilkarsvedtak.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultAlleredeMottattRefusjonskrav.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultBase.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultGenerisk.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultRefusjonskravUtenforSamordningspliktigPeriode.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultRefusjonskravUtenforTidsfrist.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultSamordningsIdIkkeFunnet.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultSamordningsIdOgPersonKorrelererIkke.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPForholdIkkeIverksatt.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPYtelseAlleredeRegistrert.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPYtelseIkkeFunnet.xsd -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/inf/TPSamordningRegistrering.wsdl -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/ws/TPSamordningRegistreringWSEXP_TPSamordningRegistreringHttp_Service.wsdl -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/pom.xml -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DatapowerManagementNamespaceContext.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DeviceFileStore.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/ImportFormat.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/TemplateFormatter.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtException.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtRequest.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtSession.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractBaseCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractDeleteConfigCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractDoActionCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractModifyConfigCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractSetConfigCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AddHostAliasCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AddStaticRouteCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDirCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDomainCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DeleteDomainCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DoImportCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/FetchFileCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GenerateCSRCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RemoveDirCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RestartThisDomainCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SaveConfigCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SetFileCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/XMLMgmtCommand.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportConfigTester.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportFilesTester.java -text
-dev/maven2/maven-datapower-plugin/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/XMLMgmtSessionTester.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/pom.xml -text
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDataPowerMojo.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDeviceMgmtMojo.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/CleanFilesMojo.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportConfigMojo.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportFilesMojo.java -text
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/RestartDomainMojo.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/SaveConfigMojo.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/test/java/no/nav/maven/plugins/DataPowerPluginIntegrationTest.java -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/test/resources/test-partnergw-generateConfig-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/test/resources/test-secgw-generateConfig-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/test/resources/test-secgw-importConfig-pom.xml -text svneol=unset#text/plain
-dev/maven2/maven-datapower-plugin/maven-datapower-plugin/src/test/resources/test-secgw-importFiles-pom.xml -text svneol=unset#text/plain
 dev/maven2/maven-datapower-plugin/pom.xml -text
 dev/maven2/maven-dependency-plugin/.classpath -text
 dev/maven2/maven-dependency-plugin/.project -text
@@ -2115,6 +2002,19 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/WSStylePolicyRuleResponse.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/datapower-config.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/datapower-crypto.ftl -text
+int/maven/plugins/maven-datapower-plugin/pom.xml -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDataPowerMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDeviceMgmtMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/CleanFilesMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportConfigMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportFilesMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/RestartDomainMojo.java -text svneol=unset#text/plain
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/SaveConfigMojo.java -text svneol=unset#text/plain
+int/maven/plugins/maven-datapower-plugin/src/test/java/no/nav/maven/plugins/DataPowerPluginIntegrationTest.java -text svneol=unset#text/plain
+int/maven/plugins/maven-datapower-plugin/src/test/resources/test-partnergw-generateConfig-pom.xml -text svneol=unset#text/plain
+int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-generateConfig-pom.xml -text svneol=unset#text/plain
+int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-importConfig-pom.xml -text svneol=unset#text/plain
+int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-importFiles-pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-mg-plugin/pom.xml -text
 int/maven/plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/CheckOutMojo.java -text
 int/maven/plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/CleanMojo.java -text svneol=unset#text/plain
@@ -2205,6 +2105,106 @@ int/maven/poms/maven-wps-poms/maven-wps-tests-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-tests-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
 int/maven/poms/pom.xml -text
+int/maven/utilities/datapower-utils/pom.xml -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPCollectionUtils.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPFileUtils.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPFilenameUtils.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPHttpUtils.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPPropertiesUtils.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPStreamUtils.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPWsdlUtils.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPZipUtils.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/NestedProperties.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/PropertiesBuilder.java -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/PropertiesValidator.java -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/ServiceConfigurationError.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/ServiceLoader.java -text
+int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/WildcardPathFilter.java -text
+int/maven/utilities/datapower-utils/src/main/resources/datapower-request.xml -text
+int/maven/utilities/datapower-utils/src/main/resources/environment.properties -text
+int/maven/utilities/datapower-utils/src/main/resources/template.xcfg -text
+int/maven/utilities/datapower-utils/src/test/java/no/nav/datapower/util/DPCollectionUtilsTest.java -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/java/no/nav/datapower/util/DPFileUtilsTest.java -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/java/no/nav/datapower/util/DPPropertiesUtilsTest.java -text
+int/maven/utilities/datapower-utils/src/test/java/no/nav/datapower/util/FileUtilsTester.java -text
+int/maven/utilities/datapower-utils/src/test/java/no/nav/datapower/util/PropertiesBuilderTest.java -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/java/no/nav/datapower/util/PropertiesValidatorTest.java -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/a/1/file2.txt -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/a/file1.txt -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/b/1/file3.txt -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/b/1/file4.txt -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/b/2/file5.txt -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/c/file6.txt -text
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/RegistrereTPForholdWSEXP_RegistrereTPForholdHttp_Service.wsdl -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/HentTPForholdListeReq.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/HentTPForholdListeResp.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/OpprettTPForholdReq.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/SlettTPForholdReq.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/asbo/TPForhold.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultBase.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultGenerisk.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultKanIkkeSlettes.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultPersonIkkeFunnet.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/fault/FaultTjenestepensjonForholdIkkeFunnet.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/registreretpforhold/V0_1/inf/RegistrereTPForhold.wsdl -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Adresse.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Beregning.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/BeregningNokkelinfo.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/HentSamordningsdataReq.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/HentSamordningsdataResp.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/KrigOgGammelYrkesskade.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/LagreTPYtelseReq.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/LagreTPYtelseResp.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/OpprettRefusjonskravReq.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/PeriodisertBelop.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Person.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Poengrekke.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/SlettTPYtelseReq.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Sluttpoengtall.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/TPYtelse.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Vedtak.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/asbo/Vilkarsvedtak.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultAlleredeMottattRefusjonskrav.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultBase.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultGenerisk.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultRefusjonskravUtenforSamordningspliktigPeriode.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultRefusjonskravUtenforTidsfrist.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultSamordningsIdIkkeFunnet.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultSamordningsIdOgPersonKorrelererIkke.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPForholdIkkeIverksatt.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPYtelseAlleredeRegistrert.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/fault/FaultTPYtelseIkkeFunnet.xsd -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/inf/TPSamordningRegistrering.wsdl -text svneol=unset#text/plain
+int/maven/utilities/datapower-utils/src/test/resources/files/wsdl/no/nav/tpsamordningregistrering/V0_2/ws/TPSamordningRegistreringWSEXP_TPSamordningRegistreringHttp_Service.wsdl -text svneol=unset#text/plain
+int/maven/utilities/datapower-xml-mgmt/pom.xml -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DatapowerManagementNamespaceContext.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/DeviceFileStore.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/ImportFormat.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/TemplateFormatter.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtException.java -text svneol=unset#text/plain
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtRequest.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/XMLMgmtSession.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractBaseCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractDeleteConfigCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractDoActionCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractModifyConfigCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AbstractSetConfigCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AddHostAliasCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/AddStaticRouteCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDirCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDomainCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DeleteDomainCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DoImportCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/FetchFileCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GenerateCSRCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RemoveDirCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/RestartThisDomainCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SaveConfigCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/SetFileCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/XMLMgmtCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportConfigTester.java -text
+int/maven/utilities/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/ImportFilesTester.java -text
+int/maven/utilities/datapower-xml-mgmt/src/test/java/no/nav/datapower/xmlmgmt/XMLMgmtSessionTester.java -text
 int/maven/utilities/maven-configuration-common/pom.xml -text
 int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/configuration/ArtifactConfiguration.java -text svneol=unset#text/plain
 int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/constants/Constants.java -text svneol=unset#text/plain

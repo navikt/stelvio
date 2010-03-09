@@ -2,28 +2,33 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.plugins</groupId>
-		<artifactId>maven-datapower-plugin-project</artifactId>
-		<version>1.1.19-SNAPSHOT</version>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-plugin-pom</artifactId>
+		<version>1.0</version>
+		<relativePath>../../poms/maven-plugin-pom</relativePath>
 	</parent>
 
+	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-datapower-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
+	<version>1.1.19-SNAPSHOT</version>
 
 	<name>Maven DataPower Plugin</name>
 	<description>
 		This plugin provides goals for: - Generating DataPower configuration based on predefined templates and specified WSDL files. - Importing files to a
 		DataPower device. - Importing a pre-generated configuration to a DataPower device.
 	</description>
-	<url>http://maven.apache.org</url>
+	
 	<dependencies>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
+			<groupId>no.nav.maven.plugins</groupId>
 			<artifactId>datapower-utils</artifactId>
+			<version>1.1.18</version>
 		</dependency>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
+			<groupId>no.nav.maven.plugins</groupId>
 			<artifactId>datapower-xml-mgmt</artifactId>
+			<version>1.1.18</version>
 		</dependency>
 
 		<dependency>
@@ -37,57 +42,25 @@
 		<dependency>
 			<groupId>com.pyx4j</groupId>
 			<artifactId>maven-plugin-log4j</artifactId>
+			<version>1.0.1</version>
 		</dependency>
 
 		<!-- Test scoped dependencies -->
 		<dependency>
 			<groupId>org.apache.maven.plugin-testing</groupId>
 			<artifactId>maven-plugin-testing-harness</artifactId>
+			<scope>test</scope>
+			<version>1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
+			<scope>test</scope>
 		</dependency>
-		<!--  	<dependency>
-			<groupId>org.apache.maven.plugin-testing</groupId>
-			<artifactId>maven-test-tools</artifactId>
-			<version>1.2</version>
-			<scope>test</scope>
-			</dependency>
-			<dependency>
-			<groupId>org.apache.maven.plugin-testing</groupId>
-			<artifactId>maven-plugin-testing-tools</artifactId>
-			<version>1.2</version>
-			<scope>test</scope>
-			</dependency>-->
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-	<distributionManagement>
-		<repository>
-			<id>nav-maven2-internal-repo</id>
-			<name>NAV Maven2 Internal Repository</name>
-			<url>scp://maven.adeo.no/var/maven2/internal</url>
-		</repository>
-		<snapshotRepository>
-			<id>nav-pensjon-maven2-snapshot-repo</id>
-			<name>NAV Maven2 Internal Snapshot Repository</name>
-			<url>scp://maven.adeo.no/var/maven2/snapshot</url>
-		</snapshotRepository>
-		<site>
-			<id>website</id>
-			<url>scp://10.33.1.53/var/www/html/project/maven/plugins/appXml/</url>
-		</site>
-	</distributionManagement>
+	
+	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-datapower-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-datapower-plugin</developerConnection>
+	</scm>
 </project>
