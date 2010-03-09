@@ -664,10 +664,6 @@ dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/uti
 dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/utils/Random.java -text
 dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/utils/XMLUtils.java -text
 dev/maven2/maven-plugin-common-lib/src/main/java/no/nav/maven/plugins/common/utils/ZipUtils.java -text
-dev/maven2/maven-properties-plugin/pom.xml -text
-dev/maven2/maven-properties-plugin/src/main/java/no/nav/maven/plugins/Delimter.java -text
-dev/maven2/maven-properties-plugin/src/main/java/no/nav/maven/plugins/DetectUnresolvedPropertiesMojo.java -text
-dev/maven2/maven-properties-plugin/src/main/java/no/nav/maven/plugins/LoadPropertiesMojo.java -text
 dev/maven2/maven-propertiesgenerator-plugin/pom.xml -text
 dev/maven2/maven-propertiesgenerator-plugin/src/main/java/no/nav/maven/plugins/PropertiesGeneratorMojo.java -text
 dev/maven2/maven-propertiesgenerator-plugin/src/test/java/no/nav/maven/plugins/Test.java -text
@@ -2234,6 +2230,10 @@ int/maven/plugins/maven-mg-plugin/src/main/resources/META-INF/plexus/components.
 int/maven/plugins/maven-project-interchange-plugin/pom.xml -text
 int/maven/plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/plugins/pi/ProjectInterchangeMojo.java -text
 int/maven/plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
+int/maven/plugins/maven-properties-plugin/pom.xml -text
+int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/Delimter.java -text
+int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/DetectUnresolvedPropertiesMojo.java -text
+int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/LoadPropertiesMojo.java -text
 int/maven/plugins/maven-service-deploy-plugin/pom.xml -text
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssemblyMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployMojo.java -text

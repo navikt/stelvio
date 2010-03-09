@@ -347,10 +347,6 @@ dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/src/test/target
 dev/maven2/maven-deployment-descriptor-plugin/maven-deployment-descriptor-plugin/target
 dev/maven2/maven-deployment-descriptor-plugin/target
-dev/maven2/maven-properties-plugin/.classpath
-dev/maven2/maven-properties-plugin/.project
-dev/maven2/maven-properties-plugin/.settings
-dev/maven2/maven-properties-plugin/target
 dev/maven2/maven-propertiesgenerator-plugin/.classpath
 dev/maven2/maven-propertiesgenerator-plugin/.project
 dev/maven2/maven-propertiesgenerator-plugin/target
@@ -657,6 +653,10 @@ int/maven/plugins/maven-project-interchange-plugin/.project
 int/maven/plugins/maven-project-interchange-plugin/.settings
 int/maven/plugins/maven-project-interchange-plugin/bin
 int/maven/plugins/maven-project-interchange-plugin/target
+int/maven/plugins/maven-properties-plugin/.classpath
+int/maven/plugins/maven-properties-plugin/.project
+int/maven/plugins/maven-properties-plugin/.settings
+int/maven/plugins/maven-properties-plugin/target
 int/maven/plugins/maven-service-deploy-plugin/.classpath
 int/maven/plugins/maven-service-deploy-plugin/.project
 int/maven/plugins/maven-service-deploy-plugin/.settings
