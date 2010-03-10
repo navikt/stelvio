@@ -2219,6 +2219,9 @@ int/maven/ws-clients/datapower-management-client/src/main/wsdl/soma/xml-mgmt-bas
 int/maven/ws-clients/datapower-management-client/src/main/wsdl/soma/xml-mgmt-ops.xsd -text
 int/maven/ws-clients/datapower-management-client/src/main/wsdl/soma/xml-mgmt.wsdl -text
 int/maven/ws-clients/datapower-management-client/src/main/wsdl/soma/xml-mgmt.xsd -text
+int/maven/ws-clients/datapower-management-client/src/test/java/com/datapower/schemas/appliance/management/_1_0/wsdl/AppMgmtProtocolTest.java -text
+int/maven/ws-clients/datapower-management-client/src/test/resources/NAV-Test.jks -text
+int/maven/ws-clients/datapower-management-client/src/test/resources/cxf.xml -text
 int/maven/ws-clients/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/pom.xml -text
 int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
