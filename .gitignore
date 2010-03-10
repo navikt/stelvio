@@ -27,11 +27,6 @@ dev/maven2/maven-build-fixer-plugin/.classpath
 dev/maven2/maven-build-fixer-plugin/.project
 dev/maven2/maven-build-fixer-plugin/.settings
 dev/maven2/maven-build-fixer-plugin/target
-dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.classpath
-dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.project
-dev/maven2/maven-datapower-plugin/datapower-cfg-gen/.settings
-dev/maven2/maven-datapower-plugin/datapower-cfg-gen/bin
-dev/maven2/maven-datapower-plugin/datapower-cfg-gen/target
 dev/maven2/maven-deployment-descriptor-plugin/.classpath
 dev/maven2/maven-deployment-descriptor-plugin/.metadata
 dev/maven2/maven-deployment-descriptor-plugin/.project
