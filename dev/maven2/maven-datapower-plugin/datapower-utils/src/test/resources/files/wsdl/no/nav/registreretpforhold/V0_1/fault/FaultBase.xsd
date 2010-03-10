@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav.no/elsam/registreretpforhold/V0_1">
+  <xsd:complexType name="FaultBase">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="errorMessage" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Human readable error message.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="errorSource" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Information about the source of the error.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="rootCause" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>If the root cause of the error is different from the source described in the attribute errorSource, describe the root cause here.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="dateTimeStamp" type="xsd:dateTime"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

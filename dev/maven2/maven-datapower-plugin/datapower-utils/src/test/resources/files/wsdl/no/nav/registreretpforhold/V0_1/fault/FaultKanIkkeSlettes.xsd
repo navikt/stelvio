@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:tns="http://nav.no/elsam/registreretpforhold/V0_1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav.no/elsam/registreretpforhold/V0_1">
+  <xsd:include schemaLocation="FaultBase.xsd"/>
+  <xsd:complexType name="FaultKanIkkeSlettes">
+    <xsd:complexContent>
+      <xsd:extension base="tns:FaultBase">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

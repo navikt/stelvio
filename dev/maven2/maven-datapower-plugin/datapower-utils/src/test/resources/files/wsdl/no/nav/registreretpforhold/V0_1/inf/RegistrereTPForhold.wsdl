@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="http://nav.no/elsam/registreretpforhold/V0_1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TPTILBConsTjenestepensjonV0_1" targetNamespace="http://nav.no/elsam/registreretpforhold/V0_1">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nav.no/elsam/registreretpforhold/V0_1" xmlns:tns="http://nav.no/elsam/registreretpforhold/V0_1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:include schemaLocation="../asbo/SlettTPForholdReq.xsd"/>
+      <xsd:include schemaLocation="../asbo/HentTPForholdListeReq.xsd"/>
+      <xsd:include schemaLocation="../fault/FaultTjenestepensjonForholdIkkeFunnet.xsd"/>
+      <xsd:include schemaLocation="../fault/FaultGenerisk.xsd"/>
+      <xsd:include schemaLocation="../fault/FaultPersonIkkeFunnet.xsd"/>
+      <xsd:include schemaLocation="../asbo/OpprettTPForholdReq.xsd"/>
+      <xsd:include schemaLocation="../fault/FaultKanIkkeSlettes.xsd"/>
+      <xsd:include schemaLocation="../asbo/HentTPForholdListeResp.xsd"/>
+      <xsd:element name="hentTPForholdListe">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentTPForholdListeReq" nillable="true" type="tns:HentTPForholdListeReq"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentTPForholdListeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="hentTPForholdListeResp" nillable="true" type="tns:HentTPForholdListeResp"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="opprettTPForhold">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="opprettTPForholdReq" nillable="true" type="tns:OpprettTPForholdReq"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="opprettTPForholdResponse">
+        <xsd:complexType>
+          <xsd:sequence/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="slettTPForhold">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="slettTPForholdReq" nillable="true" type="tns:SlettTPForholdReq"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="slettTPForholdResponse">
+        <xsd:complexType>
+          <xsd:sequence/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hentTPForholdListe_faultGenerisk" type="tns:FaultGenerisk"/>
+      <xsd:element name="hentTPForholdListe_faultTjenestepensjonForholdIkkeFunnet" type="tns:FaultTjenestepensjonForholdIkkeFunnet"/>
+      <xsd:element name="opprettTPForhold_faultGenerisk" type="tns:FaultGenerisk"/>
+      <xsd:element name="opprettTPForhold_faultPersonIkkeFunnet" type="tns:FaultPersonIkkeFunnet"/>
+      <xsd:element name="slettTPForhold_faultGenerisk" type="tns:FaultGenerisk"/>
+      <xsd:element name="slettTPForhold_faultTjenestepensjonForholdIkkeFunnet" type="tns:FaultTjenestepensjonForholdIkkeFunnet"/>
+      <xsd:element name="slettTPForhold_faultKanIkkeSlettes" type="tns:FaultKanIkkeSlettes"/>
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="hentTPForholdListeRequestMsg">
+    <wsdl:part element="tns:hentTPForholdListe" name="hentTPForholdListeParameters"/>
+  </wsdl:message>
+  <wsdl:message name="hentTPForholdListeResponseMsg">
+    <wsdl:part element="tns:hentTPForholdListeResponse" name="hentTPForholdListeResult"/>
+  </wsdl:message>
+  <wsdl:message name="opprettTPForholdRequestMsg">
+    <wsdl:part element="tns:opprettTPForhold" name="opprettTPForholdParameters"/>
+  </wsdl:message>
+  <wsdl:message name="opprettTPForholdResponseMsg">
+    <wsdl:part element="tns:opprettTPForholdResponse" name="opprettTPForholdResult"/>
+  </wsdl:message>
+  <wsdl:message name="slettTPForholdRequestMsg">
+    <wsdl:part element="tns:slettTPForhold" name="slettTPForholdParameters"/>
+  </wsdl:message>
+  <wsdl:message name="slettTPForholdResponseMsg">
+    <wsdl:part element="tns:slettTPForholdResponse" name="slettTPForholdResult"/>
+  </wsdl:message>
+  <wsdl:message name="hentTPForholdListe_faultGeneriskMsg">
+    <wsdl:part element="tns:hentTPForholdListe_faultGenerisk" name="faultGenerisk"/>
+  </wsdl:message>
+  <wsdl:message name="hentTPForholdListe_faultTjenestepensjonForholdIkkeFunnetMsg">
+    <wsdl:part element="tns:hentTPForholdListe_faultTjenestepensjonForholdIkkeFunnet" name="faultTjenestepensjonForholdIkkeFunnet"/>
+  </wsdl:message>
+  <wsdl:message name="opprettTPForhold_faultGeneriskMsg">
+    <wsdl:part element="tns:opprettTPForhold_faultGenerisk" name="faultGenerisk"/>
+  </wsdl:message>
+  <wsdl:message name="opprettTPForhold_faultPersonIkkeFunnetMsg">
+    <wsdl:part element="tns:opprettTPForhold_faultPersonIkkeFunnet" name="faultPersonIkkeFunnet"/>
+  </wsdl:message>
+  <wsdl:message name="slettTPForhold_faultGeneriskMsg">
+    <wsdl:part element="tns:slettTPForhold_faultGenerisk" name="faultGenerisk"/>
+  </wsdl:message>
+  <wsdl:message name="slettTPForhold_faultTjenestepensjonForholdIkkeFunnetMsg">
+    <wsdl:part element="tns:slettTPForhold_faultTjenestepensjonForholdIkkeFunnet" name="faultTjenestepensjonForholdIkkeFunnet"/>
+  </wsdl:message>
+  <wsdl:message name="slettTPForhold_faultKanIkkeSlettesMsg">
+    <wsdl:part element="tns:slettTPForhold_faultKanIkkeSlettes" name="faultKanIkkeSlettes"/>
+  </wsdl:message>
+    <wsdl:portType name="RegistrereTPForhold">
+    <wsdl:operation name="hentTPForholdListe">
+      <wsdl:input message="tns:hentTPForholdListeRequestMsg" name="hentTPForholdListeRequest"/>
+      <wsdl:output message="tns:hentTPForholdListeResponseMsg" name="hentTPForholdListeResponse"/>
+      <wsdl:fault message="tns:hentTPForholdListe_faultGeneriskMsg" name="faultGenerisk"/>
+      <wsdl:fault message="tns:hentTPForholdListe_faultTjenestepensjonForholdIkkeFunnetMsg" name="faultTjenestepensjonForholdIkkeFunnet"/>
+        </wsdl:operation>
+    <wsdl:operation name="opprettTPForhold">
+      <wsdl:input message="tns:opprettTPForholdRequestMsg" name="opprettTPForholdRequest"/>
+      <wsdl:output message="tns:opprettTPForholdResponseMsg" name="opprettTPForholdResponse"/>
+      <wsdl:fault message="tns:opprettTPForhold_faultGeneriskMsg" name="faultGenerisk"/>
+      <wsdl:fault message="tns:opprettTPForhold_faultPersonIkkeFunnetMsg" name="faultPersonIkkeFunnet"/>
+    </wsdl:operation>
+    <wsdl:operation name="slettTPForhold">
+      <wsdl:input message="tns:slettTPForholdRequestMsg" name="slettTPForholdRequest"/>
+      <wsdl:output message="tns:slettTPForholdResponseMsg" name="slettTPForholdResponse"/>
+      <wsdl:fault message="tns:slettTPForhold_faultGeneriskMsg" name="faultGenerisk"/>
+      <wsdl:fault message="tns:slettTPForhold_faultTjenestepensjonForholdIkkeFunnetMsg" name="faultTjenestepensjonForholdIkkeFunnet"/>
+      <wsdl:fault message="tns:slettTPForhold_faultKanIkkeSlettesMsg" name="faultKanIkkeSlettes"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

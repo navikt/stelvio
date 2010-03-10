@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:tns="http://nav.no/elsam/registreretpforhold/V0_1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nav.no/elsam/registreretpforhold/V0_1">
+  <xsd:include schemaLocation="TPForhold.xsd"/>
+  <xsd:complexType name="HentTPForholdListeResp">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="1" name="tjenestepensjonForholdene" type="tns:TPForhold"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
