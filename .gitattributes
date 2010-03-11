@@ -1760,7 +1760,7 @@ incubator/stelvio-example/stelvio-example-echo-service/no/stelvio/example/mediat
 incubator/stelvio-example/stelvio-example-echo-service/no/stelvio/example/mediation/xslt/CopyInputToOutputImpl.xsl -text
 incubator/stelvio-example/stelvio-example-echo-service/no/stelvio/example/mediation/xslt/_CopyInputToOutputImpl_transform.xml -text
 incubator/stelvio-example/stelvio-example-echo-service/no/stelvio/example/services/V1/EchoService.wsdl -text
-incubator/stelvio-example/stelvio-example-echo-service/no/stelvio/example/services/V1/stelvio-example-echo-service_WSExport1.wsdl -text
+incubator/stelvio-example/stelvio-example-echo-service/no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-echo-service/sca.module -text
 incubator/stelvio-example/stelvio-example-echo-service/sca.module.attributes -text
 incubator/stelvio-example/stelvio-example-echo-service/sca.modulex -text
