@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
@@ -13,7 +11,7 @@
 	<groupId>com.ibm.ws.sib.api.jmsra</groupId>
 	<artifactId>websphere_default_messaging_provider</artifactId>
 	<packaging>rar</packaging>
-	<version>6.1-SNAPSHOT</version>
+	<version>6.1</version>
 	
 	<build>
 		<plugins>
@@ -28,7 +26,7 @@
 	</build>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-jca-adapters/websphere_default_messaging_provider</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-jca-adapters/websphere_default_messaging_provider</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/websphere_default_messaging_provider-6.1</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/websphere_default_messaging_provider-6.1</developerConnection>
 	</scm>
 </project>
