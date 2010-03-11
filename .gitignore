@@ -900,6 +900,7 @@ int/stelvio-commons-lib/src/changes/target
 int/stelvio-commons-lib/src/gen
 int/stelvio-commons-lib/src/target
 int/stelvio-commons-lib/target
+int/stelvio-jca-adapters/websphere_default_messaging_provider/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/bin
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/target
