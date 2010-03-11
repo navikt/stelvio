@@ -1780,6 +1780,7 @@ incubator/stelvio-example/stelvio-example-gateway/.settings/org.eclipse.wst.ws.s
 incubator/stelvio-example/stelvio-example-gateway/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-gateway/SOAPActionRouting.component -text
 incubator/stelvio-example/stelvio-example-gateway/ServiceGatewayWSIMP.import -text
+incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/NativeBody.xsd -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/ServiceGateway.wsdl -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/stelvio-example-gateway_ServiceGatewayWSIMP.wsdl -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/stelvio-example-gateway_WS-I_BP_11_WSEXP.wsdl -text
