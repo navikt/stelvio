@@ -3,6 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.0</version>
+	</parent>
 
 	<groupId>com.ibm.ws.sib.api.jmsra</groupId>
 	<artifactId>websphere_default_messaging_provider</artifactId>
@@ -20,4 +26,9 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-jca-adapters/websphere_default_messaging_provider</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-jca-adapters/websphere_default_messaging_provider</developerConnection>
+	</scm>
 </project>
