@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -19,7 +21,9 @@
 					<version>2.4</version>
 					<configuration>
 						<version>1.4</version>
-						<displayName>${project.build.finalName}</displayName>
+						<displayName>
+							${project.build.finalName}
+						</displayName>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -27,6 +31,14 @@
 	</build>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.ibm.ws.sib.api.jmsra</groupId>
+			<artifactId>
+				websphere_default_messaging_provider
+			</artifactId>
+			<type>rar</type>
+			<version>6.1</version>
+		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>oppdrag-mediation-ejb</artifactId>
