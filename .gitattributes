@@ -1733,7 +1733,6 @@ incubator/src/main/resources/templates/nav-prod-sak-infot.properties -text
 incubator/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/stelvio-example/soapui/EchoService-soapui-project.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.classpath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text
@@ -1764,6 +1763,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.module.attributes -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.modulex -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/stelvio-example-echo-service.component -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-soapui/EchoService-soapui-project.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/projectSet.psf -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/solution.graphml -text
