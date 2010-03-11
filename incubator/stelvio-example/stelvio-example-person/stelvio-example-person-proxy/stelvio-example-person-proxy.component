@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://www.stelvio.no/example/services/V1/PersonService" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="stelvio-example-person-proxy" name="stelvio-example-person-proxy">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonService">
+      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
+    </interface>
+  </interfaces>
+  <references>
+    <reference name="PersonServicePartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonService"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="PersonServiceSCAIMP"/>
+    </reference>
+  </references>
+</scdl:component>
