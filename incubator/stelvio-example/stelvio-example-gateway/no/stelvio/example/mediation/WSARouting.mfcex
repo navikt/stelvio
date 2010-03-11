@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extensionmodel="http:///extensionmodel.ecore" xmlns:model="http:///com/ibm/wbit/sib/mediation/ui/ext/model" xmlns:sb="http://com.ibm.wbit.stickyboard.model/model/StickyBoard.xsd">
+  <extensionmodel:ExtensionMap namespace="http:///com/ibm/wbit/sib/mediation/ui/ext/model">
+    <extensions>
+      <extendedObject href="WSARouting.mfc#//@interfaceMediationFlow"/>
+      <extensionObject xsi:type="model:MediationFlowUIExtension" saveAsMultipleFiles="false">
+        <messageFlowUI autoLayout="true" id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::request" showInputFault="false"/>
+        <messageFlowUI autoLayout="false" id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request" showInputFault="false" showInputResponse="false"/>
+        <messageFlowUI autoLayout="true" id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response"/>
+      </extensionObject>
+    </extensions>
+  </extensionmodel:ExtensionMap>
+  <extensionmodel:ExtensionMap namespace="http://com.ibm.wbit.stickyboard.model/model/StickyBoard.xsd">
+    <extensions>
+      <extendedObject href="WSARouting.mfc#//@interfaceMediationFlow"/>
+      <extensionObject xsi:type="sb:StickyDocument">
+        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::request">
+          <stickyNote body="TODO:&#xA;Double-click input_map to implement the input map." id="5dd28238-1f45-485f-8ef5-ed291b6e5d8a">
+            <bounds x="20" y="250"/>
+          </stickyNote>
+        </stickyBoard>
+        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request">
+          <stickyNote body="TODO:&#xA;1. Double-click input_map to implement the input map.&#xA;2. Complete the remaining task in the response flow.  " id="858043cb-b0ea-439e-b436-5f883e88f4b8">
+            <bounds x="20" y="250"/>
+          </stickyNote>
+        </stickyBoard>
+        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response">
+          <stickyNote body="TODO:&#xA;1. Double-click output_map to implement the output map.&#xA;2. If necessary, create a map to handle the callout fault." id="cd8465e0-85fd-4403-b386-17a6ea51dca0">
+            <bounds x="20" y="250"/>
+          </stickyNote>
+        </stickyBoard>
+      </extensionObject>
+    </extensions>
+  </extensionmodel:ExtensionMap>
+</xmi:XMI>
