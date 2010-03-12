@@ -155,7 +155,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 	private void init() throws MojoExecutionException {
 		try {
 			saxBuilder = new SAXBuilder();
-			webServiceExportXPath = XPath.newInstance("//esbBinding[@xsi:type='webservice:WebServiceExportBinding']");
+			webServiceExportXPath = XPath.newInstance("//esbBinding[@xsi:type='webservice:WebServiceExportBinding' or @xsi:type='jaxws:JaxWsExportBinding']");
 			wsdlReader = WSDLFactory.newInstance().newWSDLReader();
 			wsdlReader.setFeature("javax.wsdl.verbose", verbose);
 			wsdlReader.setFeature("javax.wsdl.importDocuments", false);
@@ -319,9 +319,11 @@ public class ExportWsdlMojo extends AbstractMojo {
 		Collection<QName> exportedWebServices = new HashSet<QName>();
 
 		Collection<File> exportFiles = FileUtils.getFiles(project.getBasedir(), "**/*.export", null);
+		getLog().debug("Found " + exportFiles.size() + " exports in module");
 		for (File exportFile : exportFiles) {
 			Document exportDocument = saxBuilder.build(exportFile);
 			Collection<Element> webServiceBindingElements = webServiceExportXPath.selectNodes(exportDocument);
+			getLog().debug("Found " + webServiceBindingElements.size() + " web service bindings in export file " + exportFile.getName());
 			for (Element webServiceBindingElement : webServiceBindingElements) {
 				String exportedWebServiceAttributeValue = webServiceBindingElement.getAttributeValue("service");
 				String[] exportedWebServiceAttributeValueParts = StringUtils.split(exportedWebServiceAttributeValue, ":");
