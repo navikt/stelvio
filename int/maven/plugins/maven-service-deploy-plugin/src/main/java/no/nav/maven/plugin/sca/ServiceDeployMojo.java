@@ -66,7 +66,7 @@ public class ServiceDeployMojo extends AbstractMojo {
 	private MavenProject project;
 
 	/**
-	 * @parameter default-value="UTF-8"
+	 * @parameter
 	 */
 	private String fileEncoding;
 
