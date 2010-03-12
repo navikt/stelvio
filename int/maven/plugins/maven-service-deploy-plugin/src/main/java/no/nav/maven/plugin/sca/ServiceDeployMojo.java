@@ -232,7 +232,7 @@ public class ServiceDeployMojo extends AbstractMojo {
 		private boolean error;
 
 		public void consumeLine(String line) {
-			if (line.contains("[error]")) {
+			if (line.contains("[error]") || line.contains("Run the serviceDeploy command with the -keep option")) {
 				error = true;
 			}
 		}
