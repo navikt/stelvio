@@ -3,7 +3,7 @@
   <wsdl:binding name="EchoServiceWSEXP_EchoServiceHttpBinding" type="Port_0:EchoService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="echo">
-      <soap:operation soapAction=""/>
+      <soap:operation soapAction="http://www.stelvio.no/example/services/EchoService/echoRequest/V1"/>
       <wsdl:input name="echoRequest">
         <soap:body use="literal"/>
       </wsdl:input>
@@ -14,7 +14,7 @@
   </wsdl:binding>
   <wsdl:service name="EchoServiceWSEXP_EchoServiceHttpService">
     <wsdl:port binding="this:EchoServiceWSEXP_EchoServiceHttpBinding" name="EchoServiceWSEXP_EchoServiceHttpPort">
-      <soap:address location="http://localhost:9080/stelvio-example-echo-serviceWeb/sca/EchoServiceWSEXP"/>
+      <soap:address location="http://localhost:9081/stelvio-example-echo-serviceWeb/sca/EchoServiceWSEXP"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
