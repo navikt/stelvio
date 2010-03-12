@@ -12,16 +12,31 @@
         </elements>
       </type>
       <nodes xmi:type="Input.mednode:Input" xmi:id="Input_1" name="ServiceGateway_requestOnly_Input">
-        <location x="10" y="20"/>
+        <location x="10" y="40"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="requestOnly : ServiceGateway"/>
       </nodes>
       <nodes xmi:type="Callout.mednode:Callout" xmi:id="Callout_1" name="ServiceGatewayPartner_requestOnly_Callout" referenceName="ServiceGatewayPartner" operationName="requestOnly">
-        <location x="400" y="20"/>
+        <location x="408" y="20"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="requestOnly : ServiceGatewayPartner"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_1" targetNode="Callout_1" sourceNode="Input_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <nodes xmi:type="GatewayEndpointLookup.mednode:GatewayEndpointLookup" xmi:id="GatewayEndpointLookup_1" name="LookupEndpoint" lookupMethod="1">
+        <location x="203" y="40"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_1"/>
+        <outTerminals terminalNodeID="OutTerminal.noMatch" type="CompositeType_1"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
+        <translation xmi:type="utility:ConstantString" string="LookupEndpoint"/>
+      </nodes>
+      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_1" name="NoRegistryMatch">
+        <location x="305" y="52"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
+        <translation xmi:type="utility:ConstantString" string="NoRegistryMatch"/>
+      </nodes>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_1" targetNode="GatewayEndpointLookup_1" sourceNode="Input_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_2" targetNode="Callout_1" sourceNode="GatewayEndpointLookup_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_3" targetNode="Fail_1" sourceNode="GatewayEndpointLookup_1" sourceTerminalName="OutTerminal.noMatch" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -69,7 +84,7 @@
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="AfterSetTargetAddress"/>
       </nodes>
-      <nodes xmi:type="GatewayEndpointLookup.mednode:GatewayEndpointLookup" xmi:id="GatewayEndpointLookup_1" name="LookupEndpoint" lookupMethod="1">
+      <nodes xmi:type="GatewayEndpointLookup.mednode:GatewayEndpointLookup" xmi:id="GatewayEndpointLookup_2" name="LookupEndpoint" lookupMethod="1">
         <location x="489" y="20"/>
         <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_2"/>
         <outTerminals terminalNodeID="OutTerminal.noMatch" type="CompositeType_2"/>
@@ -85,19 +100,19 @@
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="Is WS-A To header set?"/>
       </nodes>
-      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_1" name="NoRegistryMatch">
+      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_2" name="NoRegistryMatch">
         <location x="848" y="32"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="NoRegistryMatch"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_2" targetNode="Trace_1" sourceNode="Input_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_3" targetNode="Trace_2" sourceNode="MessageElementSetter_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="MessageFilter_1" sourceNode="Trace_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="Callout_2" sourceNode="Trace_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="Trace_2" sourceNode="GatewayEndpointLookup_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="Fail_1" sourceNode="GatewayEndpointLookup_1" sourceTerminalName="OutTerminal.noMatch" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="GatewayEndpointLookup_1" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="MessageElementSetter_1" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="Trace_1" sourceNode="Input_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="Trace_2" sourceNode="MessageElementSetter_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="MessageFilter_1" sourceNode="Trace_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="Callout_2" sourceNode="Trace_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="Trace_2" sourceNode="GatewayEndpointLookup_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="Fail_2" sourceNode="GatewayEndpointLookup_2" sourceTerminalName="OutTerminal.noMatch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="GatewayEndpointLookup_2" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="MessageElementSetter_1" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -145,8 +160,8 @@
         <inTerminals terminalNodeID="InTerminal.dynamic:in:gatewayMessage" dynamic="true" explicitType="true" label="gatewayMessage" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGateway"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="InputResponse_1" sourceNode="CalloutResponse_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="InputFault_1" sourceNode="CalloutFault_1" sourceTerminalName="OutTerminal.dynamic:out:gatewayMessage" targetTerminalName="InTerminal.dynamic:in:gatewayMessage"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="InputResponse_1" sourceNode="CalloutResponse_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_13" targetNode="InputFault_1" sourceNode="CalloutFault_1" sourceTerminalName="OutTerminal.dynamic:out:gatewayMessage" targetTerminalName="InTerminal.dynamic:in:gatewayMessage"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>

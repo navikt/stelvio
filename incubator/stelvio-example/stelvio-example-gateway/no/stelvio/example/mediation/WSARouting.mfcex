@@ -14,11 +14,7 @@
     <extensions>
       <extendedObject href="WSARouting.mfc#//@interfaceMediationFlow"/>
       <extensionObject xsi:type="sb:StickyDocument">
-        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::request">
-          <stickyNote body="TODO:&#xA;Double-click input_map to implement the input map." id="5dd28238-1f45-485f-8ef5-ed291b6e5d8a">
-            <bounds x="20" y="250"/>
-          </stickyNote>
-        </stickyBoard>
+        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::request"/>
         <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request"/>
         <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response"/>
       </extensionObject>

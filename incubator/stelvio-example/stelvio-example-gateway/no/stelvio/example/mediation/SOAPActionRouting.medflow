@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Callout.mednode="mednode://mednodes/Callout.mednode/Callout" xmlns:CalloutFault.mednode="mednode://mednodes/CalloutFault.mednode/CalloutFault" xmlns:CalloutResponse.mednode="mednode://mednodes/CalloutResponse.mednode/CalloutResponse" xmlns:GatewayEndpointLookup.mednode="mednode://mednodes/GatewayEndpointLookup.mednode/GatewayEndpointLookup" xmlns:Input.mednode="mednode://mednodes/Input.mednode/Input" xmlns:InputFault.mednode="mednode://mednodes/InputFault.mednode/InputFault" xmlns:InputResponse.mednode="mednode://mednodes/InputResponse.mednode/InputResponse" xmlns:SOAPActionRouting.medflow="SOAPActionRouting.medflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow2="http://www.ibm.com/2006/eflow" xmlns:type="http://www.ibm.com/2006/eflow/type" xmlns:utility="http://www.ibm.com/2006/eflow/utility" name="root" nsURI="SOAPActionRouting.medflow" nsPrefix="SOAPActionRouting.medflow">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Callout.mednode="mednode://mednodes/Callout.mednode/Callout" xmlns:CalloutFault.mednode="mednode://mednodes/CalloutFault.mednode/CalloutFault" xmlns:CalloutResponse.mednode="mednode://mednodes/CalloutResponse.mednode/CalloutResponse" xmlns:Fail.mednode="mednode://mednodes/Fail.mednode/Fail" xmlns:GatewayEndpointLookup.mednode="mednode://mednodes/GatewayEndpointLookup.mednode/GatewayEndpointLookup" xmlns:Input.mednode="mednode://mednodes/Input.mednode/Input" xmlns:InputFault.mednode="mednode://mednodes/InputFault.mednode/InputFault" xmlns:InputResponse.mednode="mednode://mednodes/InputResponse.mednode/InputResponse" xmlns:SOAPActionRouting.medflow="SOAPActionRouting.medflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow2="http://www.ibm.com/2006/eflow" xmlns:type="http://www.ibm.com/2006/eflow/type" xmlns:utility="http://www.ibm.com/2006/eflow/utility" name="root" nsURI="SOAPActionRouting.medflow" nsPrefix="SOAPActionRouting.medflow">
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root_I_2">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.name" name="name" lowerBound="1" defaultValueLiteral="">
@@ -21,7 +21,22 @@
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="requestOnly : ServiceGatewayPartner"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_1" targetNode="Callout_1" sourceNode="Input_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <nodes xmi:type="GatewayEndpointLookup.mednode:GatewayEndpointLookup" xmi:id="GatewayEndpointLookup_1" name="LookupEndpoint" lookupMethod="1">
+        <location x="241" y="18"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_1"/>
+        <outTerminals terminalNodeID="OutTerminal.noMatch" type="CompositeType_1"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
+        <translation xmi:type="utility:ConstantString" string="LookupEndpoint"/>
+      </nodes>
+      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_1" name="NoRegistryMatch">
+        <location x="391" y="151"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
+        <translation xmi:type="utility:ConstantString" string="NoRegistryMatch"/>
+      </nodes>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_1" targetNode="GatewayEndpointLookup_1" sourceNode="Input_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_2" targetNode="Callout_1" sourceNode="GatewayEndpointLookup_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_3" targetNode="Fail_1" sourceNode="GatewayEndpointLookup_1" sourceTerminalName="OutTerminal.noMatch" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -39,25 +54,31 @@
         </elements>
       </type>
       <nodes xmi:type="Input.mednode:Input" xmi:id="Input_2" name="ServiceGateway_requestResponse_Input">
-        <location x="10" y="20"/>
+        <location x="10" y="40"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGateway"/>
       </nodes>
       <nodes xmi:type="Callout.mednode:Callout" xmi:id="Callout_2" name="ServiceGatewayPartner_requestResponse_Callout" referenceName="ServiceGatewayPartner" operationName="requestResponse">
-        <location x="400" y="20"/>
+        <location x="414" y="20"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGatewayPartner"/>
       </nodes>
-      <nodes xmi:type="GatewayEndpointLookup.mednode:GatewayEndpointLookup" xmi:id="GatewayEndpointLookup_1" name="GatewayEndpointLookup1">
-        <location x="236" y="14"/>
+      <nodes xmi:type="GatewayEndpointLookup.mednode:GatewayEndpointLookup" xmi:id="GatewayEndpointLookup_2" name="LookupEndpoint" lookupMethod="1">
+        <location x="209" y="40"/>
         <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_2"/>
         <outTerminals terminalNodeID="OutTerminal.noMatch" type="CompositeType_2"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_2"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
-        <translation xmi:type="utility:ConstantString" string="GatewayEndpointLookup1"/>
+        <translation xmi:type="utility:ConstantString" string="LookupEndpoint"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_2" targetNode="GatewayEndpointLookup_1" sourceNode="Input_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_3" targetNode="Callout_2" sourceNode="GatewayEndpointLookup_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_2" name="NoRegistryMatch">
+        <location x="311" y="52"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
+        <translation xmi:type="utility:ConstantString" string="NoRegistryMatch"/>
+      </nodes>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="GatewayEndpointLookup_2" sourceNode="Input_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="Callout_2" sourceNode="GatewayEndpointLookup_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="Fail_2" sourceNode="GatewayEndpointLookup_2" sourceTerminalName="OutTerminal.noMatch" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -92,7 +113,7 @@
       </nodes>
       <nodes xmi:type="CalloutFault.mednode:CalloutFault" xmi:id="CalloutFault_1" name="ServiceGatewayPartner_requestResponse_CalloutFault" referenceName="ServiceGatewayPartner" operationName="requestResponse">
         <location x="10" y="98"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:gatewayMessage" dynamic="true" explicitType="true" label="gatewayMessage" type="CompositeType_3"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:gatewayMessage" dynamic="true" explicitType="true" label="gatewayMessage" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGatewayPartner"/>
       </nodes>
       <nodes xmi:type="InputResponse.mednode:InputResponse" xmi:id="InputResponse_1" name="ServiceGateway_requestResponse_InputResponse">
@@ -102,11 +123,11 @@
       </nodes>
       <nodes xmi:type="InputFault.mednode:InputFault" xmi:id="InputFault_1" name="ServiceGateway_requestResponse_InputFault">
         <location x="400" y="98"/>
-        <inTerminals terminalNodeID="InTerminal.dynamic:in:gatewayMessage" dynamic="true" explicitType="true" label="gatewayMessage" type="CompositeType_3"/>
+        <inTerminals terminalNodeID="InTerminal.dynamic:in:gatewayMessage" dynamic="true" explicitType="true" label="gatewayMessage" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGateway"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="InputResponse_1" sourceNode="CalloutResponse_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="InputFault_1" sourceNode="CalloutFault_1" sourceTerminalName="OutTerminal.dynamic:out:gatewayMessage" targetTerminalName="InTerminal.dynamic:in:gatewayMessage"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="InputResponse_1" sourceNode="CalloutResponse_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="InputFault_1" sourceNode="CalloutFault_1" sourceTerminalName="OutTerminal.dynamic:out:gatewayMessage" targetTerminalName="InTerminal.dynamic:in:gatewayMessage"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
