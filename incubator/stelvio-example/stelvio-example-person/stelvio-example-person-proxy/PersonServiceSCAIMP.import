@@ -5,5 +5,5 @@
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
     </interface>
   </interfaces>
-  <esbBinding xsi:type="scdl:SCAImportBinding" version="1.*"/>
+  <esbBinding xsi:type="scdl:SCAImportBinding" module="stelvio-example-person-stub" export="PersonServiceSCAEXP" version=""/>
 </scdl:import>

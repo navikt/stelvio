@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mfc:interfaceMediationFlow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/wbiserver/mfc/6.0.0" xmlns:ns1="http://www.stelvio.no/example/services/V1/PersonService" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" name="stelvio-example-person-stub" targetNamespace="http://stelvio-example-person-stub/no/stelvio/example/mediation/stelvio-example-person-stub">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonService"/>
+  </interfaces>
+  <operationFlow medflow="stelvio-example-person-stub.medflow"/>
+</mfc:interfaceMediationFlow>

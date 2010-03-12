@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extensionmodel:ExtensionMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extensionmodel="http:///extensionmodel.ecore" xmlns:model="http:///com/ibm/wbit/sib/mediation/ui/ext/model" namespace="http:///com/ibm/wbit/sib/mediation/ui/ext/model">
+  <extensions>
+    <extendedObject href="stelvio-example-person-stub.mfc#//@interfaceMediationFlow"/>
+    <extensionObject xsi:type="model:MediationFlowUIExtension" saveAsMultipleFiles="false"/>
+  </extensions>
+</extensionmodel:ExtensionMap>
