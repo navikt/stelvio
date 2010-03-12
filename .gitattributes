@@ -1733,18 +1733,7 @@ incubator/src/main/resources/templates/nav-prod-sak-infot.properties -text
 incubator/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/src/main/resources/templates/nav-prod-sto-sam.properties -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.classpath -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.project -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/org.eclipse.core.resources.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/org.eclipse.jdt.core.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/org.eclipse.wst.common.component -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/org.eclipse.wst.common.project.facet.core.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/org.eclipse.wst.validation.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/EchoServiceWSEXP.export -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/CopyInputToOutputImpl.map -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/CopyInputToOutputImpl.xsl -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/stelvio-example-echo-service.medflow -text
@@ -1758,7 +1747,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/s
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.module -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.module.attributes -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.modulex -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/stelvio-example-echo-service.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-soapui/EchoService-soapui-project.xml -text
