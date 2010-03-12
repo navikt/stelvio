@@ -353,7 +353,16 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/gen
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.library.attributes
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.module.attributes
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/target
+incubator/stelvio-example/stelvio-example-gateway/*.class
+incubator/stelvio-example/stelvio-example-gateway/*.jar
+incubator/stelvio-example/stelvio-example-gateway/.classpath
+incubator/stelvio-example/stelvio-example-gateway/.project
+incubator/stelvio-example/stelvio-example-gateway/.settings
+incubator/stelvio-example/stelvio-example-gateway/META-INF
 incubator/stelvio-example/stelvio-example-gateway/gen
+incubator/stelvio-example/stelvio-example-gateway/sca.library.attributes
+incubator/stelvio-example/stelvio-example-gateway/sca.module.attributes
+incubator/stelvio-example/stelvio-example-gateway/target
 int/maven-pocs/maven-build-poc/layers/*.class
 int/maven-pocs/maven-build-poc/layers/.classpath
 int/maven-pocs/maven-build-poc/layers/.project
