@@ -2094,6 +2094,8 @@ int/maven/plugins/maven-properties-plugin/pom.xml -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/Delimter.java -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/DetectUnresolvedPropertiesMojo.java -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/LoadPropertiesMojo.java -text
+int/maven/plugins/maven-sca-attributes-plugin/pom.xml -text
+int/maven/plugins/maven-sca-attributes-plugin/src/main/java/no/nav/maven/plugin/sca/attributes/GenerateScaAttributesMojo.java -text
 int/maven/plugins/maven-service-deploy-plugin/pom.xml -text
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployAssemblyMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/sca/ServiceDeployMojo.java -text

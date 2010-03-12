@@ -692,6 +692,10 @@ int/maven/plugins/maven-properties-plugin/.classpath
 int/maven/plugins/maven-properties-plugin/.project
 int/maven/plugins/maven-properties-plugin/.settings
 int/maven/plugins/maven-properties-plugin/target
+int/maven/plugins/maven-sca-attributes-plugin/.classpath
+int/maven/plugins/maven-sca-attributes-plugin/.project
+int/maven/plugins/maven-sca-attributes-plugin/.settings
+int/maven/plugins/maven-sca-attributes-plugin/target
 int/maven/plugins/maven-service-deploy-plugin/.classpath
 int/maven/plugins/maven-service-deploy-plugin/.project
 int/maven/plugins/maven-service-deploy-plugin/.settings

@@ -61,9 +61,9 @@ public class WidPlugin extends EclipsePlugin {
 
 	private void writeScaAttributes() throws MojoExecutionException {
 		try {
-			new ScaAttributesBuilder(getProject()).writeFile(getEclipseProjectDir());
+			new ScaAttributesBuilder(getProject()).writeToDirectory(getEclipseProjectDir());
 		} catch (IOException e) {
-			throw new MojoExecutionException("Unable to write SCA Attrbutes file", e);
+			throw new MojoExecutionException("Unable to write SCA Attributes file", e);
 		}
 	}
 

@@ -74,7 +74,7 @@ public class ScaAttributesBuilder {
 		}
 	}
 
-	public void writeFile(File directory) throws IOException {
+	public void writeToDirectory(File directory) throws IOException {
 		if (!directory.isDirectory()) {
 			throw new IllegalArgumentException("Input parameter directory is not a directory, or directory does not exist.");
 		}

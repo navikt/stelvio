@@ -23,6 +23,7 @@
 		<module>maven-mg-plugin</module>
 		<module>maven-project-interchange-plugin</module>
 		<module>maven-properties-plugin</module>
+		<module>maven-sca-attributes-plugin</module>
 		<module>maven-service-deploy-plugin</module>
 		<module>maven-update-ear-plugin</module>
 		<module>maven-websphere-plugin</module>
