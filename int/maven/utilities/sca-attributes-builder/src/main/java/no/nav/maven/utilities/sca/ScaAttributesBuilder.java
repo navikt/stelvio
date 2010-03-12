@@ -15,8 +15,7 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 /**
- * Utility class that is used to generate SCA Attributes files
- * (sca.module.attributes or sca.library.attributes files).
+ * Utility class that is used to generate SCA Attributes files (sca.module.attributes or sca.library.attributes files).
  * 
  * Note: Use of the class requires dependency resolution to work as expected.
  * 
@@ -31,17 +30,24 @@ public class ScaAttributesBuilder {
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 
 	private MavenProject project;
+	private boolean versioned;
 
 	public ScaAttributesBuilder(MavenProject project) {
 		this.project = project;
+	}
+
+	public ScaAttributesBuilder setVersioned(boolean versioned) {
+		this.versioned = versioned;
+		return this;
 	}
 
 	@SuppressWarnings("unchecked")
 	public void writeTo(Writer writer) throws IOException {
 		Document document = new Document();
 		Element rootElement = new Element("moduleAndLibraryAttributes", TARGET_NAMESPACE);
-		rootElement.setAttribute("versionValue", "");
-		rootElement.setAttribute("versionProvider", "");
+		String version = convertVersion(project.getVersion());
+		rootElement.setAttribute("versionValue", versioned ? version : "");
+		rootElement.setAttribute("versionProvider", versioned && version.length() > 0 ? "IBM_VRM" : "");
 		document.setRootElement(rootElement);
 
 		rootElement.addContent(new Element("boImplementation").addContent(new Element("emf")));
@@ -50,13 +56,22 @@ public class ScaAttributesBuilder {
 			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependency.getType())) {
 				Element dependencyElement = new Element("libraryDependency", TARGET_NAMESPACE);
 				dependencyElement.setAttribute("name", dependency.getArtifactId());
-				dependencyElement.setAttribute("version", "");
+				dependencyElement.setAttribute("version", versioned ? convertVersion(dependency.getVersion()) : "");
 				rootElement.addContent(dependencyElement);
 			}
 		}
 
 		XMLOutputter xmlOutputter = new XMLOutputter(Format.getPrettyFormat());
 		xmlOutputter.output(document, writer);
+	}
+
+	private String convertVersion(String version) {
+		// TODO: Improve robustness by introducing RegEx validation against IBM version schema x[.y][.z]
+		if (version.contains("-SNAPSHOT")) {
+			return "";
+		} else {
+			return version;
+		}
 	}
 
 	public void writeFile(File directory) throws IOException {
