@@ -343,6 +343,7 @@ incubator/busconfiguration/.settings
 incubator/busconfiguration/target
 incubator/maven-rdependency-plugin/.settings
 incubator/maven-rdependency-plugin/target
+incubator/stelvio-example/stelvio-example-gateway/gen
 int/maven-pocs/maven-build-poc/layers/*.class
 int/maven-pocs/maven-build-poc/layers/.classpath
 int/maven-pocs/maven-build-poc/layers/.project
