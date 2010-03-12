@@ -1733,6 +1733,7 @@ incubator/src/main/resources/templates/nav-prod-sak-infot.properties -text
 incubator/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/src/main/resources/templates/nav-prod-sto-sam.properties -text
+incubator/stelvio-example/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/EchoServiceWSEXP.export -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/CopyInputToOutputImpl.map -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/CopyInputToOutputImpl.xsl -text
