@@ -343,6 +343,16 @@ incubator/busconfiguration/.settings
 incubator/busconfiguration/target
 incubator/maven-rdependency-plugin/.settings
 incubator/maven-rdependency-plugin/target
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/*.class
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/*.jar
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.classpath
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.project
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.settings
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/META-INF
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/gen
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.library.attributes
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.module.attributes
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/target
 incubator/stelvio-example/stelvio-example-gateway/gen
 int/maven-pocs/maven-build-poc/layers/*.class
 int/maven-pocs/maven-build-poc/layers/.classpath
