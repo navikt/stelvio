@@ -19,16 +19,8 @@
             <bounds x="20" y="250"/>
           </stickyNote>
         </stickyBoard>
-        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request">
-          <stickyNote body="TODO:&#xA;1. Double-click input_map to implement the input map.&#xA;2. Complete the remaining task in the response flow.  " id="858043cb-b0ea-439e-b436-5f883e88f4b8">
-            <bounds x="20" y="250"/>
-          </stickyNote>
-        </stickyBoard>
-        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response">
-          <stickyNote body="TODO:&#xA;1. Double-click output_map to implement the output map.&#xA;2. If necessary, create a map to handle the callout fault." id="cd8465e0-85fd-4403-b386-17a6ea51dca0">
-            <bounds x="20" y="250"/>
-          </stickyNote>
-        </stickyBoard>
+        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request"/>
+        <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>
