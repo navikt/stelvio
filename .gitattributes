@@ -1774,6 +1774,11 @@ incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/W
 incubator/stelvio-example/stelvio-example-gateway/pom.xml -text
 incubator/stelvio-example/stelvio-example-gateway/sca.module -text
 incubator/stelvio-example/stelvio-example-gateway/sca.modulex -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/GetPersonRequest.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/GetPersonResponse.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/Person.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/PersonNotFoundFault.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/PersonService.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/schemas/V1/Person.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/services/V1/PersonService.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/pom.xml -text
