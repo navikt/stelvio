@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0" xmlns:ns1="http://www.stelvio.no/example/services/V1/PersonService" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="stelvio-example-person-stub" name="stelvio-example-person-stub">
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0" xmlns:ns1="http://www.stelvio.no/example/person/V1/PersonService" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="stelvio-example-person-stub" name="stelvio-example-person-stub">
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonService">
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>

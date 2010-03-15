@@ -1779,11 +1779,9 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/s
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/Person.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/PersonNotFoundFault.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/PersonService.wsdl -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/schemas/V1/Person.xsd -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/services/V1/PersonService.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/pom.xml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/PersonServiceSCAIMP.import -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/PersonServiceWSEXP.export -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/PersonServiceV1WSEXP.export -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/no/stelvio/example/mediation/stelvio-example-person-proxy.medflow -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/no/stelvio/example/mediation/stelvio-example-person-proxy.mfc -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/no/stelvio/example/mediation/stelvio-example-person-proxy.mfcex -text
@@ -1791,7 +1789,7 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/po
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/sca.module -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/sca.modulex -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/stelvio-example-person-proxy.component -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/stelvio-example-person-proxy_PersonServiceWSEXP.wsdl -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/stelvio-example-person-proxy_PersonServiceV1WSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution/.project -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution/pom.xml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution/projectSet.psf -text
