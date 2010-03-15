@@ -8,5 +8,6 @@
       <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonService"/>
     </reference>
   </references>
+  <extendedOperationBinding source="getPerson" target="getPerson" sourcePortType="ns1:PersonService" targetReference="PersonServicePartner"/>
   <operationFlow medflow="stelvio-example-person-proxy.medflow"/>
 </mfc:interfaceMediationFlow>
