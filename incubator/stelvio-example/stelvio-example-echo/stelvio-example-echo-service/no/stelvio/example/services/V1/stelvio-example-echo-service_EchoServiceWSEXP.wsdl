@@ -2,8 +2,9 @@
   <wsdl:import location="EchoService.wsdl" namespace="http://www.stelvio.no/example/services/V1/EchoService"/>
   <wsdl:binding name="EchoServiceWSEXP_EchoServiceHttpBinding" type="Port_0:EchoService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsaw:UsingAddressing wsdl:required="false" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"/>
     <wsdl:operation name="echo">
-      <soap:operation soapAction="http://www.stelvio.no/example/services/EchoService/V1/echo"/>
+      <soap:operation soapAction="http://www.stelvio.no/example/services/V1/EchoService/Binding2/EchoService/echoRequest"/>
       <wsdl:input name="echoRequest">
         <soap:body use="literal"/>
       </wsdl:input>
