@@ -1799,6 +1799,7 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/pom
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/sca.module -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/sca.modulex -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/stelvio-example-person-stub.component -text
+incubator/stelvio-example/stelvio-namespace-template.xml -text
 incubator/wid61-ceilogger/CEIEventConsumer/.compatibility -text
 incubator/wid61-ceilogger/CEIEventConsumer/.j2ee -text
 incubator/wid61-ceilogger/CEIEventConsumer/.project -text svneol=unset#text/plain
