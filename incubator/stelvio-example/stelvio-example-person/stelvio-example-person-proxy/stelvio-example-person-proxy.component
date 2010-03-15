@@ -14,7 +14,7 @@
       <wire target="PersonServiceSCAIMP"/>
     </reference>
   </references>
-  <implementation xsi:type="mfc:MediationFlowImplementation" mfcFile="no/stelvio/example/mediation/stelvio-example-person-proxy.mfc">
+  <implementation xsi:type="mfc:MediationFlowImplementation" mfcFile="no/stelvio/example/person/mediation/stelvio-example-person-proxy.mfc">
     <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
   </implementation>
 </scdl:component>

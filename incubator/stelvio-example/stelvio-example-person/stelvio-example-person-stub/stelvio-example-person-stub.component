@@ -5,7 +5,7 @@
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
     </interface>
   </interfaces>
-  <implementation xsi:type="mfc:MediationFlowImplementation" mfcFile="no/stelvio/example/mediation/stelvio-example-person-stub.mfc">
+  <implementation xsi:type="mfc:MediationFlowImplementation" mfcFile="no/stelvio/example/person/mediation/stelvio-example-person-stub.mfc">
     <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
   </implementation>
 </scdl:component>

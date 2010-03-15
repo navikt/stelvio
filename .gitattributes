@@ -1783,7 +1783,6 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/pom.
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/PersonServiceSCAIMP.import -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/PersonServiceV1WSEXP.export -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/no/stelvio/example/mediation/stelvio-example-person-proxy.medflow -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/no/stelvio/example/mediation/stelvio-example-person-proxy.mfc -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/no/stelvio/example/mediation/stelvio-example-person-proxy.mfcex -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/pom.xml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-proxy/sca.module -text
@@ -1803,7 +1802,6 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution/solution.graphml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/PersonServiceSCAEXP.export -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/mediation/stelvio-example-person-stub.medflow -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/mediation/stelvio-example-person-stub.mfc -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/mediation/stelvio-example-person-stub.mfcex -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/xslt/PersonServiceStubImpl.map -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/xslt/PersonServiceStubImpl.xml -text
