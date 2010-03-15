@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="stelvio-example-person-proxy_PersonServiceV1WSEXP" resourceRoot="" soapui-version="3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="PersonServiceV1WSEXP_PersonServiceHttpBinding" type="wsdl" bindingName="{http://www.stelvio.no/example/person/V1/PersonService/Binding2}PersonServiceV1WSEXP_PersonServiceHttpBinding" soapVersion="1_1" anonymous="optional" definition="file:/E:/develop/stelvio/incubator/stelvio-example/stelvio-example-person/stelvio-example-person-soapui/stelvio-example-person-proxy_PersonServiceV1WSEXP.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/E:/develop/stelvio/incubator/stelvio-example/stelvio-example-person/stelvio-example-person-soapui/stelvio-example-person-proxy_PersonServiceV1WSEXP.wsdl"><con:part><con:url>file:/E:/develop/stelvio/incubator/stelvio-example/stelvio-example-person/stelvio-example-person-soapui/stelvio-example-person-proxy_PersonServiceV1WSEXP.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="PersonServiceV1WSEXP_PersonServiceHttp_Service" targetNamespace="http://www.stelvio.no/example/person/V1/PersonService/Binding2" xmlns:Port_0="http://www.stelvio.no/example/person/V1/PersonService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:this="http://www.stelvio.no/example/person/V1/PersonService/Binding2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import location="no/stelvio/example/person/V1/PersonService.wsdl" namespace="http://www.stelvio.no/example/person/V1/PersonService"/>
+  <wsdl:binding name="PersonServiceV1WSEXP_PersonServiceHttpBinding" type="Port_0:PersonService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPerson">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPersonRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getPersonPersonNotFoundFault">
+        <soap:fault name="getPersonPersonNotFoundFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PersonServiceV1WSEXP_PersonServiceHttpService">
+    <wsdl:port binding="this:PersonServiceV1WSEXP_PersonServiceHttpBinding" name="PersonServiceV1WSEXP_PersonServiceHttpPort">
+      <soap:address location="http://localhost:9080/stelvio-example-person-proxyWeb/sca/PersonServiceV1WSEXP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\E:\develop\stelvio\incubator\stelvio-example\stelvio-example-person\stelvio-example-person-soapui\no\stelvio\example\person\V1\PersonService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="PersonService" targetNamespace="http://www.stelvio.no/example/person/V1/PersonService" xmlns:bons1="http://www.stelvio.no/example/person/V1" xmlns:tns="http://www.stelvio.no/example/person/V1/PersonService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.stelvio.no/example/person/V1/PersonService">
+      <xsd:import namespace="http://www.stelvio.no/example/person/V1" schemaLocation="PersonNotFoundFault.xsd"/>
+      <xsd:import namespace="http://www.stelvio.no/example/person/V1" schemaLocation="GetPersonResponse.xsd"/>
+      <xsd:import namespace="http://www.stelvio.no/example/person/V1" schemaLocation="GetPersonRequest.xsd"/>
+      <xsd:element name="getPerson">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getPersonRequest" nillable="true" type="bons1:GetPersonRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPersonResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getPersonResponse" nillable="true" type="bons1:GetPersonResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPersonFault1_getPersonPersonNotFoundFault" nillable="true" type="bons1:PersonNotFoundFault"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getPersonRequestMsg">
+    <wsdl:part element="tns:getPerson" name="getPersonParameters"/>
+  </wsdl:message>
+  <wsdl:message name="getPersonResponseMsg">
+    <wsdl:part element="tns:getPersonResponse" name="getPersonResult"/>
+  </wsdl:message>
+  <wsdl:message name="getPerson_getPersonPersonNotFoundFaultMsg">
+    <wsdl:part element="tns:getPersonFault1_getPersonPersonNotFoundFault" name="getPersonPersonNotFoundFault"/>
+  </wsdl:message>
+  <wsdl:portType name="PersonService">
+    <wsdl:operation name="getPerson">
+      <wsdl:input message="tns:getPersonRequestMsg" name="getPersonRequest"/>
+      <wsdl:output message="tns:getPersonResponseMsg" name="getPersonResponse"/>
+      <wsdl:fault message="tns:getPerson_getPersonPersonNotFoundFaultMsg" name="getPersonPersonNotFoundFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\E:\develop\stelvio\incubator\stelvio-example\stelvio-example-person\stelvio-example-person-soapui\no\stelvio\example\person\V1\PersonNotFoundFault.xsd</con:url><con:content>&lt;xsd:schema targetNamespace="http://www.stelvio.no/example/person/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  &lt;xsd:complexType name="PersonNotFoundFault">
+    &lt;xsd:sequence/>
+  &lt;/xsd:complexType>
+&lt;/xsd:schema></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\E:\develop\stelvio\incubator\stelvio-example\stelvio-example-person\stelvio-example-person-soapui\no\stelvio\example\person\V1\GetPersonResponse.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://www.stelvio.no/example/person/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bons0="http://www.stelvio.no/example/person/V1">
+  <xsd:include schemaLocation="Person.xsd"/>
+  <xsd:complexType name="GetPersonResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="person" type="bons0:Person"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\E:\develop\stelvio\incubator\stelvio-example\stelvio-example-person\stelvio-example-person-soapui\no\stelvio\example\person\V1\Person.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://www.stelvio.no/example/person/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="Person">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="id" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\E:\develop\stelvio\incubator\stelvio-example\stelvio-example-person\stelvio-example-person-soapui\no\stelvio\example\person\V1\GetPersonRequest.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://www.stelvio.no/example/person/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="GetPersonRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="id" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9081/stelvio-example-person-proxyWeb/sca/PersonServiceV1WSEXP</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="getPerson" bindingOperationName="getPerson" type="Request-Response" outputName="getPersonResponse" inputName="getPersonRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9081/stelvio-example-person-proxyWeb/sca/PersonServiceV1WSEXP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:per="http://www.stelvio.no/example/person/V1/PersonService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <per:getPerson>
+         <getPersonRequest>
+            <id>?</id>
+         </getPersonRequest>
+      </per:getPerson>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.stelvio.no/example/person/V1/PersonService/Binding2/PersonService/getPersonRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
