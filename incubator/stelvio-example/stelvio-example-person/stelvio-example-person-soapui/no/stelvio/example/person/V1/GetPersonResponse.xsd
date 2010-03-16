@@ -4,7 +4,10 @@
 	<xsd:include schemaLocation="Person.xsd"></xsd:include>
 	<xsd:complexType name="GetPersonResponse">
 		<xsd:sequence>
-			<xsd:element minOccurs="0" name="person" type="bons0:Person"></xsd:element>
+			<xsd:element minOccurs="1" name="person"
+				type="bons0:Person">
+			</xsd:element>
+			<xsd:any namespace="##any" maxOccurs="unbounded"></xsd:any>
 		</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>
