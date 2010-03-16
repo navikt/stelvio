@@ -8,7 +8,7 @@
     <composition>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_1">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.stelvio.no/example/person/V1/PersonService}getPersonRequestMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.stelvio.no/example/person/V2/PersonService}getPersonRequestMsg"/>
         </elements>
       </type>
       <nodes xmi:type="Input.mednode:Input" xmi:id="Input_1" name="PersonService_getPerson_Input">
@@ -43,17 +43,17 @@
     <composition>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_2">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.stelvio.no/example/person/V1/PersonService}getPersonResponseMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.stelvio.no/example/person/V2/PersonService}getPersonResponseMsg"/>
         </elements>
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_3">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.stelvio.no/example/person/V1/PersonService}getPersonRequestMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.stelvio.no/example/person/V2/PersonService}getPersonRequestMsg"/>
         </elements>
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_4">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.stelvio.no/example/person/V1/PersonService}getPerson_getPersonPersonNotFoundFaultMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.stelvio.no/example/person/V2/PersonService}getPerson_getPersonPersonNotFoundFaultMsg"/>
         </elements>
       </type>
       <nodes xmi:type="CalloutResponse.mednode:CalloutResponse" xmi:id="CalloutResponse_1" name="PersonServicePartner_getPerson_CalloutResponse" referenceName="PersonServicePartner" operationName="getPerson">
@@ -93,8 +93,8 @@
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <composition>
-      <nodes xmi:type="stelvio-example-person-proxy.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::request"/>
-      <nodes xmi:type="stelvio-example-person-proxy.medflow:root_I_3" xmi:id="root_I_3_1" name="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::response"/>
+      <nodes xmi:type="stelvio-example-person-proxy.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://www.stelvio.no/example/person/V2/PersonService}PersonService:getPerson::request"/>
+      <nodes xmi:type="stelvio-example-person-proxy.medflow:root_I_3" xmi:id="root_I_3_1" name="{http://www.stelvio.no/example/person/V2/PersonService}PersonService:getPerson::response"/>
     </composition>
     <propertyOrganizer/>
   </eClassifiers>

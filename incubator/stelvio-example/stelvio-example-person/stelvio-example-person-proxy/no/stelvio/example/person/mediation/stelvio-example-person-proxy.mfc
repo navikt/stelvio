@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mfc:interfaceMediationFlow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/wbiserver/mfc/6.0.0" xmlns:ns1="http://www.stelvio.no/example/person/V1/PersonService" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" name="stelvio-example-person-proxy" targetNamespace="http://www.stelvio.no/example/person/mediation/stelvio-example-person-proxy">
+<mfc:interfaceMediationFlow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PersonService="http://www.stelvio.no/example/person/V2/PersonService" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/wbiserver/mfc/6.0.0" xmlns:ns1="http://www.stelvio.no/example/person/V1/PersonService" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" name="stelvio-example-person-proxy" targetNamespace="http://www.stelvio.no/example/person/mediation/stelvio-example-person-proxy">
   <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonService"/>
+    <interface xsi:type="wsdl:WSDLPortType" portType="PersonService:PersonService"/>
   </interfaces>
   <references>
     <reference name="PersonServicePartner">
-      <interface xsi:type="wsdl:WSDLPortType" portType="ns1:PersonService"/>
+      <interface xsi:type="wsdl:WSDLPortType" portType="PersonService:PersonService"/>
     </reference>
   </references>
-  <extendedOperationBinding source="getPerson" target="getPerson" sourcePortType="ns1:PersonService" targetReference="PersonServicePartner"/>
+  <extendedOperationBinding source="getPerson" target="getPerson" sourcePortType="PersonService:PersonService" targetReference="PersonServicePartner"/>
   <operationFlow medflow="stelvio-example-person-proxy.medflow"/>
 </mfc:interfaceMediationFlow>
