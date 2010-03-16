@@ -102,7 +102,7 @@
         <translation xmi:type="utility:ConstantString" string="Is WS-A To header set?"/>
         <longDescription xmi:type="utility:ConstantString" string="Check if WS-Addressing To header is set, for possible direct routing."/>
       </nodes>
-      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_2" name="NoRegistryMatch" errorMessage="The current WS-Addressing action or SOAPAction is not supported - no match in Registry.">
+      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_2" name="NoRegistryMatch" errorMessage="The current action &quot;{4}&quot; (WS-Addressing action or SOAPAction) is not supported - no match in Registry." path="/headers/SMOHeader/Action">
         <location x="675" y="32"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="NoRegistryMatch"/>
