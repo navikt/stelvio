@@ -1755,7 +1755,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/.pr
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/projectSet.psf -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/solution.graphml -text
-incubator/stelvio-example/stelvio-example-gateway/SOAPActionRouting.component -text
+incubator/stelvio-example/stelvio-example-gateway/Routing.component -text
 incubator/stelvio-example/stelvio-example-gateway/ServiceGatewayWSIMP.import -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/NativeBody.xsd -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/ServiceGateway.wsdl -text
@@ -1764,13 +1764,9 @@ incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/stelvio
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/stelvio-example-gateway_WS-I_BP_12_WSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-gateway/WS-I_BP_11_WSEXP.export -text
 incubator/stelvio-example/stelvio-example-gateway/WS-I_BP_12_WSEXP.export -text
-incubator/stelvio-example/stelvio-example-gateway/WSARouting.component -text
-incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/SOAPActionRouting.medflow -text
-incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/SOAPActionRouting.mfc -text
-incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/SOAPActionRouting.mfcex -text
-incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/WSARouting.medflow -text
-incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/WSARouting.mfc -text
-incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/WSARouting.mfcex -text
+incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/Routing.medflow -text
+incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/Routing.mfc -text
+incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/Routing.mfcex -text
 incubator/stelvio-example/stelvio-example-gateway/pom.xml -text
 incubator/stelvio-example/stelvio-example-gateway/sca.module -text
 incubator/stelvio-example/stelvio-example-gateway/sca.modulex -text

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Callout.mednode="mednode://mednodes/Callout.mednode/Callout" xmlns:CalloutFault.mednode="mednode://mednodes/CalloutFault.mednode/CalloutFault" xmlns:CalloutResponse.mednode="mednode://mednodes/CalloutResponse.mednode/CalloutResponse" xmlns:Fail.mednode="mednode://mednodes/Fail.mednode/Fail" xmlns:GatewayEndpointLookup.mednode="mednode://mednodes/GatewayEndpointLookup.mednode/GatewayEndpointLookup" xmlns:Input.mednode="mednode://mednodes/Input.mednode/Input" xmlns:InputFault.mednode="mednode://mednodes/InputFault.mednode/InputFault" xmlns:InputResponse.mednode="mednode://mednodes/InputResponse.mednode/InputResponse" xmlns:SOAPActionRouting.medflow="SOAPActionRouting.medflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow2="http://www.ibm.com/2006/eflow" xmlns:type="http://www.ibm.com/2006/eflow/type" xmlns:utility="http://www.ibm.com/2006/eflow/utility" name="root" nsURI="SOAPActionRouting.medflow" nsPrefix="SOAPActionRouting.medflow">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Callout.mednode="mednode://mednodes/Callout.mednode/Callout" xmlns:CalloutFault.mednode="mednode://mednodes/CalloutFault.mednode/CalloutFault" xmlns:CalloutResponse.mednode="mednode://mednodes/CalloutResponse.mednode/CalloutResponse" xmlns:Fail.mednode="mednode://mednodes/Fail.mednode/Fail" xmlns:GatewayEndpointLookup.mednode="mednode://mednodes/GatewayEndpointLookup.mednode/GatewayEndpointLookup" xmlns:Input.mednode="mednode://mednodes/Input.mednode/Input" xmlns:InputFault.mednode="mednode://mednodes/InputFault.mednode/InputFault" xmlns:InputResponse.mednode="mednode://mednodes/InputResponse.mednode/InputResponse" xmlns:MessageFilter.mednode="mednode://mednodes/MessageFilter.mednode/MessageFilter" xmlns:MessageSetter.mednode="mednode://mednodes/MessageSetter.mednode/MessageElementSetter" xmlns:Routing.medflow="Routing.medflow" xmlns:Trace.mednode="mednode://mednodes/Trace.mednode/Trace" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow2="http://www.ibm.com/2006/eflow" xmlns:type="http://www.ibm.com/2006/eflow/type" xmlns:utility="http://www.ibm.com/2006/eflow/utility" name="root" nsURI="Routing.medflow" nsPrefix="Routing.medflow">
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root_I_2">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.name" name="name" lowerBound="1" defaultValueLiteral="">
@@ -12,17 +12,17 @@
         </elements>
       </type>
       <nodes xmi:type="Input.mednode:Input" xmi:id="Input_1" name="ServiceGateway_requestOnly_Input">
-        <location x="10" y="20"/>
+        <location x="10" y="40"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="requestOnly : ServiceGateway"/>
       </nodes>
       <nodes xmi:type="Callout.mednode:Callout" xmi:id="Callout_1" name="ServiceGatewayPartner_requestOnly_Callout" referenceName="ServiceGatewayPartner" operationName="requestOnly">
-        <location x="400" y="20"/>
+        <location x="408" y="20"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="requestOnly : ServiceGatewayPartner"/>
       </nodes>
       <nodes xmi:type="GatewayEndpointLookup.mednode:GatewayEndpointLookup" xmi:id="GatewayEndpointLookup_1" name="LookupEndpoint" lookupMethod="1">
-        <location x="241" y="18"/>
+        <location x="203" y="40"/>
         <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_1"/>
         <outTerminals terminalNodeID="OutTerminal.noMatch" type="CompositeType_1"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
@@ -30,7 +30,7 @@
         <translation xmi:type="utility:ConstantString" string="LookupEndpoint"/>
       </nodes>
       <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_1" name="NoRegistryMatch">
-        <location x="391" y="151"/>
+        <location x="305" y="52"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="NoRegistryMatch"/>
       </nodes>
@@ -54,31 +54,67 @@
         </elements>
       </type>
       <nodes xmi:type="Input.mednode:Input" xmi:id="Input_2" name="ServiceGateway_requestResponse_Input">
-        <location x="10" y="40"/>
+        <location x="10" y="110"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGateway"/>
       </nodes>
       <nodes xmi:type="Callout.mednode:Callout" xmi:id="Callout_2" name="ServiceGatewayPartner_requestResponse_Callout" referenceName="ServiceGatewayPartner" operationName="requestResponse">
-        <location x="414" y="20"/>
+        <location x="777" y="122"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGatewayPartner"/>
       </nodes>
+      <nodes xmi:type="MessageSetter.mednode:MessageElementSetter" xmi:id="MessageElementSetter_1" name="SetTargetAddressFromWSATo" messageElements.target="%2Fheaders%2FSMOHeader%2FTarget%2Faddress" messageElements.type="copy" messageElements.value="%2Fheaders%2FWSAHeader%2FTo%2Fvalue">
+        <location x="489" y="122"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_2"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_2"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
+        <translation xmi:type="utility:ConstantString" string="SetTargetAddressFromWSATo"/>
+        <longDescription xmi:type="utility:ConstantString" string="Set target address like WS-Addressing To address"/>
+      </nodes>
+      <nodes xmi:type="Trace.mednode:Trace" xmi:id="Trace_1" name="BeforeSetTargetAddress">
+        <location x="209" y="110"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_2"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_2"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
+        <translation xmi:type="utility:ConstantString" string="BeforeSetTargetAddress"/>
+      </nodes>
+      <nodes xmi:type="Trace.mednode:Trace" xmi:id="Trace_2" name="AfterSetTargetAddress">
+        <location x="644" y="122"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_2"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_2"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
+        <translation xmi:type="utility:ConstantString" string="AfterSetTargetAddress"/>
+      </nodes>
       <nodes xmi:type="GatewayEndpointLookup.mednode:GatewayEndpointLookup" xmi:id="GatewayEndpointLookup_2" name="LookupEndpoint" lookupMethod="1">
-        <location x="209" y="40"/>
+        <location x="489" y="20"/>
         <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_2"/>
         <outTerminals terminalNodeID="OutTerminal.noMatch" type="CompositeType_2"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_2"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="LookupEndpoint"/>
       </nodes>
-      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_2" name="NoRegistryMatch">
-        <location x="311" y="52"/>
+      <nodes xmi:type="MessageFilter.mednode:MessageFilter" xmi:id="MessageFilter_1" name="Is_WS-A_To_header_set_" filters.pattern="string-length%28%2Fheaders%2FWSAHeader%2FTo%29+%3E+0" filters.terminalName="match1">
+        <location x="349" y="110"/>
+        <outTerminals terminalNodeID="OutTerminal.default" type="CompositeType_2"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_2"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match1" dynamic="true" label="WSATo" longDescription="The WS-Addressing To header is set, use direct routing." type="CompositeType_2"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
+        <translation xmi:type="utility:ConstantString" string="Is WS-A To header set?"/>
+        <longDescription xmi:type="utility:ConstantString" string="Check if WS-Addressing To header is set, for possible direct routing."/>
+      </nodes>
+      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_2" name="NoRegistryMatch" errorMessage="The current WS-Addressing action or SOAPAction is not supported - no match in Registry.">
+        <location x="708" y="32"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="NoRegistryMatch"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="GatewayEndpointLookup_2" sourceNode="Input_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="Callout_2" sourceNode="GatewayEndpointLookup_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="Fail_2" sourceNode="GatewayEndpointLookup_2" sourceTerminalName="OutTerminal.noMatch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="Trace_1" sourceNode="Input_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="Trace_2" sourceNode="MessageElementSetter_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="MessageFilter_1" sourceNode="Trace_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="Callout_2" sourceNode="Trace_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="Trace_2" sourceNode="GatewayEndpointLookup_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="Fail_2" sourceNode="GatewayEndpointLookup_2" sourceTerminalName="OutTerminal.noMatch" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="GatewayEndpointLookup_2" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="MessageElementSetter_1" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -126,8 +162,8 @@
         <inTerminals terminalNodeID="InTerminal.dynamic:in:gatewayMessage" dynamic="true" explicitType="true" label="gatewayMessage" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGateway"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="InputResponse_1" sourceNode="CalloutResponse_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="InputFault_1" sourceNode="CalloutFault_1" sourceTerminalName="OutTerminal.dynamic:out:gatewayMessage" targetTerminalName="InTerminal.dynamic:in:gatewayMessage"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="InputResponse_1" sourceNode="CalloutResponse_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_13" targetNode="InputFault_1" sourceNode="CalloutFault_1" sourceTerminalName="OutTerminal.dynamic:out:gatewayMessage" targetTerminalName="InTerminal.dynamic:in:gatewayMessage"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -136,10 +172,10 @@
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <composition>
-      <nodes xmi:type="SOAPActionRouting.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::request"/>
-      <nodes xmi:type="SOAPActionRouting.medflow:root_I_3" xmi:id="root_I_3_1" name="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request"/>
-      <nodes xmi:type="SOAPActionRouting.medflow:root_I_4" xmi:id="root_I_4_1" name="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::response"/>
-      <nodes xmi:type="SOAPActionRouting.medflow:root_I_5" xmi:id="root_I_5_1" name="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response"/>
+      <nodes xmi:type="Routing.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::request"/>
+      <nodes xmi:type="Routing.medflow:root_I_3" xmi:id="root_I_3_1" name="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request"/>
+      <nodes xmi:type="Routing.medflow:root_I_4" xmi:id="root_I_4_1" name="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::response"/>
+      <nodes xmi:type="Routing.medflow:root_I_5" xmi:id="root_I_5_1" name="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response"/>
     </composition>
     <propertyOrganizer/>
   </eClassifiers>
