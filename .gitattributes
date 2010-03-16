@@ -1801,8 +1801,9 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/Per
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/mediation/stelvio-example-person-stub.medflow -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/mediation/stelvio-example-person-stub.mfc -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/mediation/stelvio-example-person-stub.mfcex -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/xslt/PersonNotFoundImpl.map -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/xslt/PersonNotFoundImpl.xsl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/xslt/PersonServiceStubImpl.map -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/xslt/PersonServiceStubImpl.xml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/no/stelvio/example/person/xslt/PersonServiceStubImpl.xsl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/pom.xml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-stub/sca.module -text
