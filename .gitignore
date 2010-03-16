@@ -360,6 +360,7 @@ incubator/stelvio-example/stelvio-example-gateway/.project
 incubator/stelvio-example/stelvio-example-gateway/.settings
 incubator/stelvio-example/stelvio-example-gateway/META-INF
 incubator/stelvio-example/stelvio-example-gateway/gen
+incubator/stelvio-example/stelvio-example-gateway/sca
 incubator/stelvio-example/stelvio-example-gateway/sca.library.attributes
 incubator/stelvio-example/stelvio-example-gateway/sca.module.attributes
 incubator/stelvio-example/stelvio-example-gateway/target
