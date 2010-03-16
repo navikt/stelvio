@@ -59,7 +59,7 @@
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGateway"/>
       </nodes>
       <nodes xmi:type="Callout.mednode:Callout" xmi:id="Callout_2" name="ServiceGatewayPartner_requestResponse_Callout" referenceName="ServiceGatewayPartner" operationName="requestResponse">
-        <location x="777" y="122"/>
+        <location x="880" y="122"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGatewayPartner"/>
       </nodes>
@@ -103,7 +103,7 @@
         <longDescription xmi:type="utility:ConstantString" string="Check if WS-Addressing To header is set, for possible direct routing."/>
       </nodes>
       <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_2" name="NoRegistryMatch" errorMessage="The current WS-Addressing action or SOAPAction is not supported - no match in Registry.">
-        <location x="708" y="32"/>
+        <location x="675" y="32"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="NoRegistryMatch"/>
       </nodes>
@@ -148,7 +148,7 @@
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGatewayPartner"/>
       </nodes>
       <nodes xmi:type="CalloutFault.mednode:CalloutFault" xmi:id="CalloutFault_1" name="ServiceGatewayPartner_requestResponse_CalloutFault" referenceName="ServiceGatewayPartner" operationName="requestResponse">
-        <location x="10" y="98"/>
+        <location x="10" y="122"/>
         <outTerminals terminalNodeID="OutTerminal.dynamic:out:gatewayMessage" dynamic="true" explicitType="true" label="gatewayMessage" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGatewayPartner"/>
       </nodes>
@@ -158,12 +158,18 @@
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGateway"/>
       </nodes>
       <nodes xmi:type="InputFault.mednode:InputFault" xmi:id="InputFault_1" name="ServiceGateway_requestResponse_InputFault">
-        <location x="400" y="98"/>
+        <location x="400" y="122"/>
         <inTerminals terminalNodeID="InTerminal.dynamic:in:gatewayMessage" dynamic="true" explicitType="true" label="gatewayMessage" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="requestResponse : ServiceGateway"/>
       </nodes>
+      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_3" name="TechnicalFault">
+        <location x="257" y="48"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_3"/>
+        <translation xmi:type="utility:ConstantString" string="TechnicalFault"/>
+      </nodes>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="InputResponse_1" sourceNode="CalloutResponse_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_13" targetNode="InputFault_1" sourceNode="CalloutFault_1" sourceTerminalName="OutTerminal.dynamic:out:gatewayMessage" targetTerminalName="InTerminal.dynamic:in:gatewayMessage"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_13" targetNode="Fail_3" sourceNode="CalloutResponse_1" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_14" targetNode="InputFault_1" sourceNode="CalloutFault_1" sourceTerminalName="OutTerminal.dynamic:out:gatewayMessage" targetTerminalName="InTerminal.dynamic:in:gatewayMessage"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>

@@ -6,7 +6,7 @@
       <extensionObject xsi:type="model:MediationFlowUIExtension" saveAsMultipleFiles="false">
         <messageFlowUI autoLayout="true" id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::request" showInputFault="false"/>
         <messageFlowUI autoLayout="false" id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request" showInputFault="false" showInputResponse="false"/>
-        <messageFlowUI autoLayout="true" id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response"/>
+        <messageFlowUI autoLayout="false" id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::response"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>
@@ -17,7 +17,7 @@
         <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestOnly::request"/>
         <stickyBoard id="{http://www.ibm.com/websphere/sibx/ServiceGateway}ServiceGateway:requestResponse::request">
           <stickyNote body="TODO: Throw wsa:ActionNotSupported" id="45bbc227-95fa-4d6a-a85b-ba34f81950b8">
-            <bounds x="856" y="17"/>
+            <bounds x="777" y="4"/>
             <association>
               <target href="Routing.medflow#MediationFlowLogicalPath:composite:root^composite:%7Bhttp%3A%2F%2Fwww.ibm.com%2Fwebsphere%2Fsibx%2FServiceGateway%7DServiceGateway%3ArequestResponse%3A%3Arequest^node:NoRegistryMatch"/>
             </association>
