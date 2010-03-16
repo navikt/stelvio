@@ -4,6 +4,7 @@
 	<xsd:complexType name="PersonNotFoundFault">
 		<xsd:sequence>
 			<xsd:element minOccurs="1" name="id" type="xsd:string"></xsd:element>
+			<xsd:any namespace="##any" maxOccurs="unbounded"></xsd:any>
 		</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>
