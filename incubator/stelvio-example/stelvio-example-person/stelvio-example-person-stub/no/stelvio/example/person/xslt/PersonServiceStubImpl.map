@@ -11,5 +11,14 @@
             <input path="getPerson/getPersonRequest/id"/>
             <output path="getPersonResponse/getPersonResponse/person/id"/>
         </move>
+        <local>
+            <output path="getPersonResponse/getPersonResponse/person/name"/>
+            <assign value="Ola">
+                <output path="firstName"/>
+            </assign>
+            <assign value="Nordmann">
+                <output path="lastName"/>
+            </assign>
+        </local>
     </mappingDeclaration>
 </mappingRoot>

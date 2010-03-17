@@ -1772,6 +1772,7 @@ incubator/stelvio-example/stelvio-example-gateway/sca.module -text
 incubator/stelvio-example/stelvio-example-gateway/sca.modulex -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/GetPersonRequest.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/GetPersonResponse.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/Name.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/Person.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/PersonNotFoundFault.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-lib/no/stelvio/example/person/V1/PersonService.wsdl -text
