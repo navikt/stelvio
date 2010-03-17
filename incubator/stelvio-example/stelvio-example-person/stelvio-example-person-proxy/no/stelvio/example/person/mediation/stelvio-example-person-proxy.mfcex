@@ -4,8 +4,8 @@
     <extensions>
       <extendedObject href="stelvio-example-person-proxy.mfc#//@interfaceMediationFlow"/>
       <extensionObject xsi:type="model:MediationFlowUIExtension" saveAsMultipleFiles="false">
-        <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V2/PersonService}PersonService:getPerson::request" showInputFault="false" showInputResponse="false"/>
-        <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V2/PersonService}PersonService:getPerson::response"/>
+        <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::request" showInputFault="false" showInputResponse="false"/>
+        <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::response"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>
@@ -13,8 +13,8 @@
     <extensions>
       <extendedObject href="stelvio-example-person-proxy.mfc#//@interfaceMediationFlow"/>
       <extensionObject xsi:type="sb:StickyDocument">
-        <stickyBoard id="{http://www.stelvio.no/example/person/V2/PersonService}PersonService:getPerson::request"/>
-        <stickyBoard id="{http://www.stelvio.no/example/person/V2/PersonService}PersonService:getPerson::response"/>
+        <stickyBoard id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::request"/>
+        <stickyBoard id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::response"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>

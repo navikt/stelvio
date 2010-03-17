@@ -4,7 +4,7 @@
     <extensions>
       <extendedObject href="stelvio-example-person-stub.mfc#//@interfaceMediationFlow"/>
       <extensionObject xsi:type="model:MediationFlowUIExtension" saveAsMultipleFiles="false">
-        <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V2/PersonService}PersonService:getPerson::request"/>
+        <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::request"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>
@@ -12,7 +12,7 @@
     <extensions>
       <extendedObject href="stelvio-example-person-stub.mfc#//@interfaceMediationFlow"/>
       <extensionObject xsi:type="sb:StickyDocument">
-        <stickyBoard id="{http://www.stelvio.no/example/person/V2/PersonService}PersonService:getPerson::request"/>
+        <stickyBoard id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::request"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>
