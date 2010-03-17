@@ -6,7 +6,9 @@
 		<xsd:sequence>
 			<xsd:element minOccurs="1" name="person"
 				type="bons0:Person">
-			</xsd:element>
+			</xsd:element>
+
+			<xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"></xsd:any>
 		</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>

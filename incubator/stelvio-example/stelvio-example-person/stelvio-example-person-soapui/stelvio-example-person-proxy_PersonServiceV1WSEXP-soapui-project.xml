@@ -84,6 +84,7 @@
   <xsd:complexType name="PersonNotFoundFault">
     <xsd:sequence>
       <xsd:element minOccurs="1" name="id" type="xsd:string"/>
+      <xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xsd:sequence>
   </xsd:complexType>
 </xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\E:\develop\stelvio\incubator\stelvio-example\stelvio-example-person\stelvio-example-person-soapui\no\stelvio\example\person\V1\GetPersonResponse.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://www.stelvio.no/example/person/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bons0="http://www.stelvio.no/example/person/V1">
@@ -91,12 +92,14 @@
   <xsd:complexType name="GetPersonResponse">
     <xsd:sequence>
       <xsd:element minOccurs="1" name="person" type="bons0:Person"></xsd:element>
+      <xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xsd:sequence>
   </xsd:complexType>
 </xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\E:\develop\stelvio\incubator\stelvio-example\stelvio-example-person\stelvio-example-person-soapui\no\stelvio\example\person\V1\Person.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://www.stelvio.no/example/person/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:complexType name="Person">
     <xsd:sequence>
       <xsd:element minOccurs="1" name="id" type="xsd:string"/>
+      <xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xsd:sequence>
   </xsd:complexType>
 </xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\E:\develop\stelvio\incubator\stelvio-example\stelvio-example-person\stelvio-example-person-soapui\no\stelvio\example\person\V1\GetPersonRequest.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://www.stelvio.no/example/person/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -105,12 +108,12 @@
       <xsd:element minOccurs="1" name="id" type="xsd:string"/>
     </xsd:sequence>
   </xsd:complexType>
-</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9081/stelvio-example-person-proxyWeb/sca/PersonServiceV1WSEXP</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="getPerson" bindingOperationName="getPerson" type="Request-Response" outputName="getPersonResponse" inputName="getPersonRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9081/stelvio-example-person-proxyWeb/sca/PersonServiceV1WSEXP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:per="http://www.stelvio.no/example/person/V1/PersonService">
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9081/stelvio-example-person-proxyWeb/sca/PersonServiceV1WSEXP</con:endpoint><con:endpoint>http://localhost:9080/stelvio-example-person-proxyWeb/sca/PersonServiceV1WSEXP</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="getPerson" bindingOperationName="getPerson" type="Request-Response" outputName="getPersonResponse" inputName="getPersonRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9081/stelvio-example-person-proxyWeb/sca/PersonServiceV1WSEXP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:per="http://www.stelvio.no/example/person/V1/PersonService">
    <soapenv:Header/>
    <soapenv:Body>
       <per:getPerson>
          <getPersonRequest>
-            <id>100</id>
+            <id>?</id>
          </getPersonRequest>
       </per:getPerson>
    </soapenv:Body>
