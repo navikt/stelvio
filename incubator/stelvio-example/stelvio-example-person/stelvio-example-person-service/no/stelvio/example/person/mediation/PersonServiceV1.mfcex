@@ -6,6 +6,8 @@
       <extensionObject xsi:type="model:MediationFlowUIExtension" saveAsMultipleFiles="false">
         <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::request" showInputFault="false" showInputResponse="false"/>
         <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::response"/>
+        <messageFlowUI autoLayout="false" id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:findPerson::request" showInputFault="false" showInputResponse="false"/>
+        <messageFlowUI autoLayout="true" id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:findPerson::response"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>
@@ -15,6 +17,8 @@
       <extensionObject xsi:type="sb:StickyDocument">
         <stickyBoard id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::request"/>
         <stickyBoard id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:getPerson::response"/>
+        <stickyBoard id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:findPerson::request"/>
+        <stickyBoard id="{http://www.stelvio.no/example/person/V1/PersonService}PersonService:findPerson::response"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>

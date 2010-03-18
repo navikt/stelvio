@@ -9,5 +9,6 @@
     </reference>
   </references>
   <extendedOperationBinding source="getPerson" target="getPerson" sourcePortType="ns1:PersonService" targetReference="PersonServicePartner"/>
+  <extendedOperationBinding source="findPerson" target="findPerson" sourcePortType="ns1:PersonService" targetReference="PersonServicePartner"/>
   <operationFlow medflow="PersonServiceV2.medflow"/>
 </mfc:interfaceMediationFlow>
