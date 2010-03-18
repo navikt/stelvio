@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>stelvio-example-person-lib</artifactId>
+			<artifactId>stelvio-example-person-provider-lib</artifactId>
 			<type>wps-library-jar</type>
 			<version>${project.version}</version>
 		</dependency>

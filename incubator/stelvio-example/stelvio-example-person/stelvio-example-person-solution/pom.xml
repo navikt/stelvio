@@ -14,8 +14,8 @@
 	<name>Stelvio Example ${project.artifactId}</name>
 	
 	<modules>
-		<module>../stelvio-example-person-lib</module>
 		<module>../stelvio-example-person-provider</module>
+		<module>../stelvio-example-person-provider-lib</module>
 		<module>../stelvio-example-person-service</module>
 	</modules>
 	

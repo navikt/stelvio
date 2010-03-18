@@ -3,9 +3,9 @@
 	<name>stelvio-example-person-solution</name>
 	<comment></comment>
 	<projects>
-		<project>stelvio-example-person-lib</project>
 		<project>stelvio-example-person-provider</project>
 		<project>stelvio-example-person-service</project>
+		<project>stelvio-example-person-provider-lib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
