@@ -1797,6 +1797,7 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/Person.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/PersonNotFoundFault.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/PersonService.wsdl -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V2/PersonService.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/mediation/stelvio-example-person-service.medflow -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/mediation/stelvio-example-person-service.mfc -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/mediation/stelvio-example-person-service.mfcex -text
