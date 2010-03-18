@@ -4,7 +4,7 @@
     <imports>
         <import kind="xml" location="PersonServiceStubImpl.xml"/>
     </imports>
-    <mappingDeclaration name="PersonServiceStubImpl">
+    <mappingDeclaration name="GetPersonStub">
         <input path="body"/>
         <output path="body"/>
         <move>

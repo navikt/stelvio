@@ -1784,10 +1784,10 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/mediation/stelvio-example-person-provider.medflow -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/mediation/stelvio-example-person-provider.mfc -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/mediation/stelvio-example-person-provider.mfcex -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/PersonNotFoundImpl.map -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/PersonNotFoundImpl.xsl -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/PersonServiceStubImpl.map -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/PersonServiceStubImpl.xsl -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/GetPersonNotFoundStub.map -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/GetPersonNotFoundStub.xsl -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/GetPersonStub.map -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/GetPersonStub.xsl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/pom.xml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/sca.module -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/sca.modulex -text
