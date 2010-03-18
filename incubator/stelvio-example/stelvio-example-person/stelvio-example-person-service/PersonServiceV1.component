@@ -11,7 +11,7 @@
       <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
       <scdl:referenceQualifier xsi:type="scdl:Reliability"/>
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
-      <wire target="PersonServiceProviderSCAIMP"/>
+      <wire target="PersonServiceProviderV1SCAIMP"/>
     </reference>
   </references>
   <implementation xsi:type="mfc:MediationFlowImplementation" mfcFile="no/stelvio/example/person/mediation/PersonServiceV1.mfc">

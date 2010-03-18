@@ -6,11 +6,11 @@
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
     </extensions>
     <extensions>
-      <extendedObject href="stelvio-example-person-provider.component#//@Component"/>
+      <extendedObject href="PersonServiceV1.component#//@Component"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="217" y="30"/>
     </extensions>
     <extensions>
-      <extendedObject href="PersonServiceSCAEXP.export#//@export"/>
+      <extendedObject href="PersonServiceV1SCAEXP.export#//@export"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ExportBinding" unknown="false" visible="true" x="30" y="30" bound="true"/>
     </extensions>
   </extensionmodel:ExtensionMap>

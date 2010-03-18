@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Input.mednode="mednode://mednodes/Input.mednode/Input" xmlns:InputFault.mednode="mednode://mednodes/InputFault.mednode/InputFault" xmlns:InputResponse.mednode="mednode://mednodes/InputResponse.mednode/InputResponse" xmlns:MessageFilter.mednode="mednode://mednodes/MessageFilter.mednode/MessageFilter" xmlns:XSLTransformation.mednode="mednode://mednodes/XSLTransformation.mednode/XSLTransformation" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow2="http://www.ibm.com/2006/eflow" xmlns:stelvio-example-person-provider.medflow="stelvio-example-person-provider.medflow" xmlns:type="http://www.ibm.com/2006/eflow/type" xmlns:utility="http://www.ibm.com/2006/eflow/utility" name="root" nsURI="stelvio-example-person-provider.medflow" nsPrefix="stelvio-example-person-provider.medflow">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Input.mednode="mednode://mednodes/Input.mednode/Input" xmlns:InputFault.mednode="mednode://mednodes/InputFault.mednode/InputFault" xmlns:InputResponse.mednode="mednode://mednodes/InputResponse.mednode/InputResponse" xmlns:MessageFilter.mednode="mednode://mednodes/MessageFilter.mednode/MessageFilter" xmlns:PersonServiceV1.medflow="PersonServiceV1.medflow" xmlns:XSLTransformation.mednode="mednode://mednodes/XSLTransformation.mednode/XSLTransformation" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow2="http://www.ibm.com/2006/eflow" xmlns:type="http://www.ibm.com/2006/eflow/type" xmlns:utility="http://www.ibm.com/2006/eflow/utility" name="root" nsURI="PersonServiceV1.medflow" nsPrefix="PersonServiceV1.medflow">
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root_I_2">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.name" name="name" lowerBound="1" defaultValueLiteral="">
@@ -36,7 +36,7 @@
         <inTerminals terminalNodeID="InTerminal.dynamic:in:getPerson_getPersonPersonNotFoundFaultMsg" dynamic="true" explicitType="true" label="getPerson_getPersonPersonNotFoundFaultMsg" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="getPerson : PersonService"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_1" name="GetPersonStub" root="/body" XSLTransform="no/stelvio/example/person/xslt/GetPersonStub.xsl" XMXMap="no/stelvio/example/person/xslt/GetPersonStub.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_1" name="GetPersonStub" root="/body" XSLTransform="no/stelvio/example/person/mediation/GetPersonStub.xsl" XMXMap="no/stelvio/example/person/mediation/GetPersonStub.map" SMOVersion="SMO61">
         <location x="286" y="122"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_2"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
@@ -51,7 +51,7 @@
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="PersonIdFilter"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_2" name="GetPersonNotFoundStub" root="/body" XSLTransform="no/stelvio/example/person/xslt/GetPersonNotFoundStub.xsl" XMXMap="no/stelvio/example/person/xslt/GetPersonNotFoundStub.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_2" name="GetPersonNotFoundStub" root="/body" XSLTransform="no/stelvio/example/person/mediation/GetPersonPersonNotFoundStub.xsl" XMXMap="no/stelvio/example/person/mediation/GetPersonPersonNotFoundStub.map" SMOVersion="SMO61">
         <location x="286" y="20"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_3"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
@@ -94,7 +94,7 @@
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_5"/>
         <translation xmi:type="utility:ConstantString" string="findPerson : PersonService"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_3" name="FindPersonStub" root="/body" XSLTransform="no/stelvio/example/person/xslt/FindPersonStub.xsl" XMXMap="no/stelvio/example/person/xslt/FindPersonStub.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_3" name="FindPersonStub" root="/body" XSLTransform="no/stelvio/example/person/mediation/FindPersonStub.xsl" XMXMap="no/stelvio/example/person/mediation/FindPersonStub.map" SMOVersion="SMO61">
         <location x="193" y="20"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_5"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
@@ -111,8 +111,8 @@
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <composition>
-      <nodes xmi:type="stelvio-example-person-provider.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://www.stelvio.no/example/person/provider/V1/PersonService}PersonService:getPerson::request"/>
-      <nodes xmi:type="stelvio-example-person-provider.medflow:root_I_3" xmi:id="root_I_3_1" name="{http://www.stelvio.no/example/person/provider/V1/PersonService}PersonService:findPerson::request"/>
+      <nodes xmi:type="PersonServiceV1.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://www.stelvio.no/example/person/provider/V1/PersonService}PersonService:getPerson::request"/>
+      <nodes xmi:type="PersonServiceV1.medflow:root_I_3" xmi:id="root_I_3_1" name="{http://www.stelvio.no/example/person/provider/V1/PersonService}PersonService:findPerson::request"/>
     </composition>
     <propertyOrganizer/>
   </eClassifiers>
