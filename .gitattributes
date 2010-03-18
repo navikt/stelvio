@@ -1770,6 +1770,9 @@ incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/R
 incubator/stelvio-example/stelvio-example-gateway/pom.xml -text
 incubator/stelvio-example/stelvio-example-gateway/sca.module -text
 incubator/stelvio-example/stelvio-example-gateway/sca.modulex -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/no/stelvio/example/person/provider/V1/FindPersonQuery.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/no/stelvio/example/person/provider/V1/FindPersonRequest.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/no/stelvio/example/person/provider/V1/FindPersonResponse.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/no/stelvio/example/person/provider/V1/GetPersonRequest.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/no/stelvio/example/person/provider/V1/GetPersonResponse.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/no/stelvio/example/person/provider/V1/Name.xsd -text
