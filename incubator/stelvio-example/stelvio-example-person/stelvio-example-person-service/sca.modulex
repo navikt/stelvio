@@ -10,7 +10,7 @@
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding" unknown="false" visible="true" x="582" y="34"/>
     </extensions>
     <extensions>
-      <extendedObject href="stelvio-example-person-service.component#//@Component"/>
+      <extendedObject href="PersonServiceV1.component#//@Component"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="348" y="33"/>
     </extensions>
     <extensions>
@@ -18,7 +18,7 @@
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
     </extensions>
     <extensions>
-      <extendedObject href="V2toV1.component#//@Component"/>
+      <extendedObject href="PersonServiceV2.component#//@Component"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="225" y="99"/>
     </extensions>
     <extensions>
