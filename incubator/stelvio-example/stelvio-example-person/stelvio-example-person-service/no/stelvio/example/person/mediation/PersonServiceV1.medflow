@@ -147,7 +147,7 @@
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_9"/>
         <translation xmi:type="utility:ConstantString" string="findPerson : PersonServicePartner"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_4" name="FindPersonRequest" root="/body" XSLTransform="no/stelvio/example/person/mediation/V1/FindPersonRequest.xsl" XMXMap="no/stelvio/example/person/mediation/V1/FindPersonRequest.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_4" name="FindPersonRequest" root="/body" XSLTransform="no/stelvio/example/person/mediation/V1/findPersonRequest.xsl" XMXMap="no/stelvio/example/person/mediation/V1/findPersonRequest.map" SMOVersion="SMO61">
         <location x="275" y="44"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_9"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_8"/>
@@ -193,7 +193,7 @@
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_12"/>
         <translation xmi:type="utility:ConstantString" string="findPerson : PersonService"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_5" name="FindPersonResponse" root="/body" XSLTransform="no/stelvio/example/person/mediation/V1/FindPersonResponse.xsl" XMXMap="no/stelvio/example/person/mediation/V1/FindPersonResponse.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_5" name="FindPersonResponse" root="/body" XSLTransform="no/stelvio/example/person/mediation/V1/findPersonResponse.xsl" XMXMap="no/stelvio/example/person/mediation/V1/findPersonResponse.map" SMOVersion="SMO61">
         <location x="234" y="20"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_12"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_10"/>
