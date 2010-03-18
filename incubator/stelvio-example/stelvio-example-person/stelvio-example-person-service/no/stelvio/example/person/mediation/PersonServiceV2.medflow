@@ -26,7 +26,7 @@
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="getPerson : PersonServicePartner"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_1" name="V2toV1input" root="/body" XSLTransform="no/stelvio/example/person/mediation/xslt/V2toV1input.xsl" XMXMap="no/stelvio/example/person/mediation/xslt/V2toV1input.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_1" name="V2toV1input" root="/body" XSLTransform="no/stelvio/example/person/mediation/V2/getPersonRequest.xsl" XMXMap="no/stelvio/example/person/mediation/V2/getPersonRequest.map" SMOVersion="SMO61">
         <location x="193" y="20"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_2"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
@@ -82,14 +82,14 @@
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_6"/>
         <translation xmi:type="utility:ConstantString" string="getPerson : PersonService"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_2" name="V2toV1output" root="/body" XSLTransform="no/stelvio/example/person/mediation/xslt/V2toV1output.xsl" XMXMap="no/stelvio/example/person/mediation/xslt/V2toV1output.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_2" name="V2toV1output" root="/body" XSLTransform="no/stelvio/example/person/mediation/V2/getPersonResponse.xsl" XMXMap="no/stelvio/example/person/mediation/V2/getPersonResponse.map" SMOVersion="SMO61">
         <location x="234" y="20"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_6"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_3"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="V2toV1output"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_3" name="V2toV1fault" root="/body" XSLTransform="no/stelvio/example/person/mediation/xslt/V2toV1fault.xsl" XMXMap="no/stelvio/example/person/mediation/xslt/V2toV1fault.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_3" name="V2toV1fault" root="/body" XSLTransform="no/stelvio/example/person/mediation/V2/getPersonPersonNotFoundFault.xsl" XMXMap="no/stelvio/example/person/mediation/V2/getPersonPersonNotFoundFault.map" SMOVersion="SMO61">
         <location x="234" y="224"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_6"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
