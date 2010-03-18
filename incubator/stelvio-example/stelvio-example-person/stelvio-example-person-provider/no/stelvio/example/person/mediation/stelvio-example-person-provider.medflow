@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Input.mednode="mednode://mednodes/Input.mednode/Input" xmlns:InputFault.mednode="mednode://mednodes/InputFault.mednode/InputFault" xmlns:InputResponse.mednode="mednode://mednodes/InputResponse.mednode/InputResponse" xmlns:MessageFilter.mednode="mednode://mednodes/MessageFilter.mednode/MessageFilter" xmlns:XSLTransformation.mednode="mednode://mednodes/XSLTransformation.mednode/XSLTransformation" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow2="http://www.ibm.com/2006/eflow" xmlns:stelvio-example-person-stub.medflow="stelvio-example-person-stub.medflow" xmlns:type="http://www.ibm.com/2006/eflow/type" xmlns:utility="http://www.ibm.com/2006/eflow/utility" name="root" nsURI="stelvio-example-person-stub.medflow" nsPrefix="stelvio-example-person-stub.medflow">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Input.mednode="mednode://mednodes/Input.mednode/Input" xmlns:InputFault.mednode="mednode://mednodes/InputFault.mednode/InputFault" xmlns:InputResponse.mednode="mednode://mednodes/InputResponse.mednode/InputResponse" xmlns:MessageFilter.mednode="mednode://mednodes/MessageFilter.mednode/MessageFilter" xmlns:XSLTransformation.mednode="mednode://mednodes/XSLTransformation.mednode/XSLTransformation" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow2="http://www.ibm.com/2006/eflow" xmlns:stelvio-example-person-provider.medflow="stelvio-example-person-provider.medflow" xmlns:type="http://www.ibm.com/2006/eflow/type" xmlns:utility="http://www.ibm.com/2006/eflow/utility" name="root" nsURI="stelvio-example-person-provider.medflow" nsPrefix="stelvio-example-person-provider.medflow">
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root_I_2">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.name" name="name" lowerBound="1" defaultValueLiteral="">
@@ -71,7 +71,7 @@
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <composition>
-      <nodes xmi:type="stelvio-example-person-stub.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://www.stelvio.no/example/person/provider/V1/PersonService}PersonService:getPerson::request"/>
+      <nodes xmi:type="stelvio-example-person-provider.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://www.stelvio.no/example/person/provider/V1/PersonService}PersonService:getPerson::request"/>
     </composition>
     <propertyOrganizer/>
   </eClassifiers>

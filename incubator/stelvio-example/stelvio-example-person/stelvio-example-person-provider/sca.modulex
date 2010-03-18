@@ -6,7 +6,7 @@
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
     </extensions>
     <extensions>
-      <extendedObject href="stelvio-example-person-stub.component#//@Component"/>
+      <extendedObject href="stelvio-example-person-provider.component#//@Component"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="217" y="30"/>
     </extensions>
     <extensions>
