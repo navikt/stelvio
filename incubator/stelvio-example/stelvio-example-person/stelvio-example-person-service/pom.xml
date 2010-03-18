@@ -13,7 +13,16 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>wps-module-ear</packaging>
 	<name>Stelvio Example ${project.artifactId}</name>
-	
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>stelvio-example-person-lib</artifactId>
+			<type>wps-library-jar</type>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
 	<scm>
 		<connection>${scm.connection}</connection>
 		<developerConnection>${scm.connection}</developerConnection>
