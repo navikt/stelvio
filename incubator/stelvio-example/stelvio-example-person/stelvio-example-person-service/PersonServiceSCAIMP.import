@@ -5,7 +5,7 @@
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
     </interface>
   </interfaces>
-  <esbBinding xsi:type="scdl:SCAImportBinding" module="stelvio-example-person-stub" export="PersonServiceSCAEXP">
+  <esbBinding xsi:type="scdl:SCAImportBinding" module="stelvio-example-person-provider" export="PersonServiceSCAEXP" version="">
     <scdl:bindingQualifier xsi:type="scdl:IsTargetSCA" value="true"/>
   </esbBinding>
 </scdl:import>

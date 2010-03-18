@@ -3,5 +3,5 @@
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:PersonService"/>
   </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding2:PersonServiceV1WSEXP_PersonServiceHttpPort" service="Binding2:PersonServiceV1WSEXP_PersonServiceHttpService"/>
+  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding:PersonServiceV1WSEXP_PersonServiceHttpPort" service="Binding:PersonServiceV1WSEXP_PersonServiceHttpService"/>
 </scdl:export>

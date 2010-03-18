@@ -15,8 +15,8 @@
 	
 	<modules>
 		<module>../stelvio-example-person-lib</module>
-		<module>../stelvio-example-person-proxy</module>
-		<module>../stelvio-example-person-stub</module>
+		<module>../stelvio-example-person-provider</module>
+		<module>../stelvio-example-person-service</module>
 	</modules>
 	
 	<scm>
@@ -26,6 +26,6 @@
 	
 	<properties>
 		<scm.connection>${scm.root}</scm.connection>
-		<scm.root>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution</scm.root>
+		<scm.root>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-person/${project.artifactId}</scm.root>
 	</properties>
 </project>
