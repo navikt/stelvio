@@ -173,7 +173,7 @@
         </elements>
       </type>
       <nodes xmi:type="CalloutResponse.mednode:CalloutResponse" xmi:id="CalloutResponse_2" name="PersonServicePartner_findPerson_CalloutResponse" referenceName="PersonServicePartner" operationName="findPerson">
-        <location x="10" y="20"/>
+        <location x="10" y="110"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_9"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" explicitType="true" type="CompositeType_10"/>
         <translation xmi:type="utility:ConstantString" string="findPerson : PersonServicePartner"/>
@@ -184,14 +184,20 @@
         <translation xmi:type="utility:ConstantString" string="findPerson : PersonService"/>
       </nodes>
       <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_5" name="FindPersonResponse" root="/body" XSLTransform="no/stelvio/example/person/mediation/V2/FindPersonResponse.xsl" XMXMap="no/stelvio/example/person/mediation/V2/FindPersonResponse.map" SMOVersion="SMO61">
-        <location x="229" y="20"/>
+        <location x="234" y="20"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_11"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_9"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_9"/>
         <translation xmi:type="utility:ConstantString" string="FindPersonResponse"/>
       </nodes>
+      <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_2" name="RuntimeFault">
+        <location x="234" y="122"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_10"/>
+        <translation xmi:type="utility:ConstantString" string="RuntimeFault"/>
+      </nodes>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="XSLTransformation_5" sourceNode="CalloutResponse_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="InputResponse_2" sourceNode="XSLTransformation_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="Fail_2" sourceNode="CalloutResponse_2" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="InputResponse_2" sourceNode="XSLTransformation_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
