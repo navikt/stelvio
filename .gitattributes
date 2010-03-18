@@ -1784,6 +1784,8 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/mediation/stelvio-example-person-provider.medflow -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/mediation/stelvio-example-person-provider.mfc -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/mediation/stelvio-example-person-provider.mfcex -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/FindPersonStub.map -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/FindPersonStub.xsl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/GetPersonNotFoundStub.map -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/GetPersonNotFoundStub.xsl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/no/stelvio/example/person/xslt/GetPersonStub.map -text
@@ -1796,13 +1798,18 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/PersonServiceV1WSEXP.export -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/PersonServiceV2WSEXP.export -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/V2toV1.component -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/FindPersonQuery.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/FindPersonRequest.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/FindPersonResponse.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/GetPersonRequest.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/GetPersonResponse.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/Name.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/Person.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/PersonNotFoundFault.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/PersonService.wsdl -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/stelvio-example-person-service_PersonServiceV1WSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V2/PersonService.wsdl -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V2/stelvio-example-person-service_PersonServiceV2WSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/mediation/V2toV1.medflow -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/mediation/V2toV1.mfc -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/mediation/V2toV1.mfcex -text
@@ -1825,8 +1832,6 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.module -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.modulex -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/stelvio-example-person-service.component -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/stelvio-example-person-service_PersonServiceV1WSEXP.wsdl -text
-incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/stelvio-example-person-service_PersonServiceV2WSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-soapui/PersonServiceV1/no/stelvio/example/person/V1/GetPersonRequest.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-soapui/PersonServiceV1/no/stelvio/example/person/V1/GetPersonResponse.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-soapui/PersonServiceV1/no/stelvio/example/person/V1/Person.xsd -text
