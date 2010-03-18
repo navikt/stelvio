@@ -1791,6 +1791,12 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider/stelvio-example-person-stub.component -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/PersonServiceSCAIMP.import -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/PersonServiceV1WSEXP.export -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/GetPersonRequest.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/GetPersonResponse.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/Name.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/Person.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/PersonNotFoundFault.xsd -text
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/no/stelvio/example/person/V1/PersonService.wsdl -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/pom.xml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.module -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.modulex -text
