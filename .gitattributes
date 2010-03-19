@@ -1859,6 +1859,7 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution/pom.xml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution/projectSet.psf -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-solution/solution.graphml -text
+incubator/stelvio-example/stelvio-example-workspace.xml -text
 incubator/stelvio-example/stelvio-namespace-template.xml -text
 incubator/wid61-ceilogger/CEIEventConsumer/.compatibility -text
 incubator/wid61-ceilogger/CEIEventConsumer/.j2ee -text
