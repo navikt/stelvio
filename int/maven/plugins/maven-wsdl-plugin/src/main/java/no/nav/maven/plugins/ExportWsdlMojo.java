@@ -139,6 +139,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 
 	private SAXBuilder saxBuilder;
 	private XPath webServiceExportXPath;
+	// private XPath webServiceImportXPath;
 	private WSDLReader wsdlReader;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
@@ -155,7 +156,10 @@ public class ExportWsdlMojo extends AbstractMojo {
 	private void init() throws MojoExecutionException {
 		try {
 			saxBuilder = new SAXBuilder();
-			webServiceExportXPath = XPath.newInstance("//esbBinding[@xsi:type='webservice:WebServiceExportBinding' or @xsi:type='jaxws:JaxWsExportBinding']");
+			webServiceExportXPath = XPath
+					.newInstance("//esbBinding[@xsi:type='webservice:WebServiceExportBinding' or @xsi:type='jaxws:JaxWsExportBinding']");
+			// webServiceImportXPath = XPath
+			// .newInstance("//esbBinding[@xsi:type='webservice:WebServiceImportBinding' or @xsi:type='jaxws:JaxWsImportBinding']");
 			wsdlReader = WSDLFactory.newInstance().newWSDLReader();
 			wsdlReader.setFeature("javax.wsdl.verbose", verbose);
 			wsdlReader.setFeature("javax.wsdl.importDocuments", false);
@@ -175,34 +179,28 @@ public class ExportWsdlMojo extends AbstractMojo {
 				artifactHandlerManager.addHandlers(Collections.singletonMap(TYPE_WSDL_INTERFACE, wsdlInterfaceArtifactHandler));
 			}
 
+			// TODO: All related to imported WS is commented out until we can come up with a solution for modules that have both
+			// WS exports and imports.
+
 			Collection<QName> exportedWebServices = getExportedWebServices();
+			// Collection<QName> importedWebServices = getImportedWebServices();
 
 			if (!exportedWebServices.isEmpty()) {
+				// if (!exportedWebServices.isEmpty() || !importedWebServices.isEmpty()) {
 				File workingDir = createWorkingDir();
 
 				extractDependendentResources(workingDir);
 				copyProjectResources(workingDir);
 
-				Collection<String> documentUris = new HashSet();
-
 				Map<QName, Definition> webServiceToWsdlMap = getWebServiceToWsdlMap(workingDir);
-				for (QName exportedWebService : exportedWebServices) {
-					Definition wsdl = webServiceToWsdlMap.get(exportedWebService);
-					if (wsdl == null) {
-						throw new MojoFailureException("WSDL for exported web service " + exportedWebService + " not found.");
-					}
-					addFilesForWsdl(documentUris, wsdl);
+
+				if (!exportedWebServices.isEmpty()) {
+					createWebServicesArchive(workingDir, webServiceToWsdlMap, exportedWebServices);
 				}
 
-				Collection<File> files = new ArrayList<File>(documentUris.size());
-				for (String documentUri : documentUris) {
-					// TODO: WSDL4J generates invalid URIs (with whitespace)
-					// that will have to be escaped
-					URI uri = URI.create(documentUri.replace(" ", "%20"));
-					files.add(new File(uri));
-				}
-
-				createArchive(workingDir, files);
+				// if (!importedWebServices.isEmpty()) {
+				// createWebServicesArchive(workingDir, webServiceToWsdlMap, importedWebServices);
+				// }
 			}
 		} catch (IOException e) {
 			throw new MojoExecutionException("Error accessing file system", e);
@@ -216,6 +214,29 @@ public class ExportWsdlMojo extends AbstractMojo {
 			throw new MojoExecutionException("Error processing WSDL", e);
 		}
 
+	}
+
+	private void createWebServicesArchive(File workingDir, Map<QName, Definition> webServiceToWsdlMap,
+			Collection<QName> webServices) throws MojoFailureException, WSDLException, ArchiverException, IOException {
+		Collection<String> documentUris = new HashSet();
+
+		for (QName webService : webServices) {
+			Definition wsdl = webServiceToWsdlMap.get(webService);
+			if (wsdl == null) {
+				throw new MojoFailureException("WSDL for web service " + webService + " not found.");
+			}
+			addFilesForWsdl(documentUris, wsdl);
+		}
+
+		Collection<File> files = new ArrayList<File>(documentUris.size());
+		for (String documentUri : documentUris) {
+			// TODO: WSDL4J generates invalid URIs (with whitespace)
+			// that will have to be escaped
+			URI uri = URI.create(documentUri.replace(" ", "%20"));
+			files.add(new File(uri));
+		}
+
+		createArchive(workingDir, files);
 	}
 
 	private void addFilesForWsdl(Collection<String> documentUris, Definition wsdl) throws WSDLException {
@@ -316,25 +337,33 @@ public class ExportWsdlMojo extends AbstractMojo {
 	}
 
 	private Collection<QName> getExportedWebServices() throws IOException, JDOMException {
-		Collection<QName> exportedWebServices = new HashSet<QName>();
+		return getWebServices("**/*.export", webServiceExportXPath);
+	}
 
-		Collection<File> exportFiles = FileUtils.getFiles(project.getBasedir(), "**/*.export", null);
-		getLog().debug("Found " + exportFiles.size() + " exports in module");
-		for (File exportFile : exportFiles) {
-			Document exportDocument = saxBuilder.build(exportFile);
-			Collection<Element> webServiceBindingElements = webServiceExportXPath.selectNodes(exportDocument);
-			getLog().debug("Found " + webServiceBindingElements.size() + " web service bindings in export file " + exportFile.getName());
+	// private Collection<QName> getImportedWebServices() throws IOException, JDOMException {
+	// return getWebServices("**/*.import", webServiceImportXPath);
+	// }
+
+	private Collection<QName> getWebServices(String filenamePattern, XPath xpath) throws IOException, JDOMException {
+		Collection<QName> webServices = new HashSet<QName>();
+
+		Collection<File> files = FileUtils.getFiles(project.getBasedir(), filenamePattern, null);
+		getLog().debug("Found " + files.size() + " files matching pattern " + filenamePattern + " in module");
+		for (File file : files) {
+			Document fileDocument = saxBuilder.build(file);
+			Collection<Element> webServiceBindingElements = xpath.selectNodes(fileDocument);
+			getLog().debug("Found " + webServiceBindingElements.size() + " web service bindings in file " + file.getName());
 			for (Element webServiceBindingElement : webServiceBindingElements) {
-				String exportedWebServiceAttributeValue = webServiceBindingElement.getAttributeValue("service");
-				String[] exportedWebServiceAttributeValueParts = StringUtils.split(exportedWebServiceAttributeValue, ":");
-				String exportedWebServicePrefix = exportedWebServiceAttributeValueParts[0];
-				Namespace exportedWebServiceNamespace = webServiceBindingElement.getNamespace(exportedWebServicePrefix);
-				String exportedWebServiceName = exportedWebServiceAttributeValueParts[1];
-				QName exportedWebService = new QName(exportedWebServiceNamespace.getURI(), exportedWebServiceName);
-				exportedWebServices.add(exportedWebService);
+				String webServiceAttributeValue = webServiceBindingElement.getAttributeValue("service");
+				String[] webServiceAttributeValueParts = StringUtils.split(webServiceAttributeValue, ":");
+				String webServicePrefix = webServiceAttributeValueParts[0];
+				Namespace webServiceNamespace = webServiceBindingElement.getNamespace(webServicePrefix);
+				String webServiceName = webServiceAttributeValueParts[1];
+				QName webService = new QName(webServiceNamespace.getURI(), webServiceName);
+				webServices.add(webService);
 			}
 		}
 
-		return exportedWebServices;
+		return webServices;
 	}
 }
