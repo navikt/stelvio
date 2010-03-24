@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<groupId>no.stelvio.int.operation.system-availability</groupId>
+	<artifactId>system-availability</artifactId>
+	<name>System Availability</name>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	
+	<modules>
+		<module>StelvioSystemAvailabilityWeb</module>
+		<module>StelvioSystemAvailabilityWebEAR</module>
+	</modules>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-wps-artifact-plugin</artifactId>
+					<version>1.9</version>
+					<extensions>true</extensions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-wps-artifact-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>no.stelvio.int</groupId>
+			<artifactId>stelvio-commons-lib</artifactId>
+			<type>wps-library-jar</type>
+			<version>3.3</version>
+		</dependency>
+	</dependencies>
+
+	<scm>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
+	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
+</project>

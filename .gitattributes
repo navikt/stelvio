@@ -2784,6 +2784,7 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_tree_left.jsp -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/sample-logo-1.gif -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/diagram.gph -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/pom.xml -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.compatibility -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.j2ee -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.project -text svneol=unset#text/plain
@@ -2791,6 +2792,8 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settin
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/.modulemaps -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/application.xml -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/pom.xml -text
+int/stelvio-operation-systemavailability/pom.xml -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.project -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
