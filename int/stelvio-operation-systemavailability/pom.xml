@@ -43,7 +43,7 @@
 						https://versjonskontroll.adeo.no/svn/stelvio/tags/int
 					</tagBase>
 				</configuration>
-			</plugin>
+			</plugin>
 		</plugins>
 	</build>
 	
