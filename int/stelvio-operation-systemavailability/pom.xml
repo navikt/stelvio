@@ -35,6 +35,15 @@
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wps-artifact-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<tagBase>
+						https://versjonskontroll.adeo.no/svn/stelvio/tags/int
+					</tagBase>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	
