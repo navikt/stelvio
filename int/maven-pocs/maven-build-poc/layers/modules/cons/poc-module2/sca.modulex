@@ -17,7 +17,7 @@
     <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" x="20" y="45" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0}WebServiceExportBinding" bound="true"/>
   </extensions>
   <extensions>
-    <extendedObject href="EchoServiceWSEXP.export#//@export"/>
+    <extendedObject href="EchoService1WSEXP.export#//@export"/>
     <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" x="20" y="103" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0}WebServiceExportBinding" bound="true"/>
   </extensions>
   <extensions>

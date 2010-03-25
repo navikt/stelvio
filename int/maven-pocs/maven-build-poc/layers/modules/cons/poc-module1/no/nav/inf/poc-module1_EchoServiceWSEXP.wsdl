@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:Port_0="http://poc-module/no/nav/inf/EchoService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://poc-module/no/nav/inf/EchoService/Binding2" name="EchoServiceWSEXP_EchoServiceHttp_Service" targetNamespace="http://poc-module/no/nav/inf/EchoService/Binding2">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:Port_0="http://poc-module/no/nav/inf/EchoService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://poc-module/no/nav/inf/EchoService/Binding" name="EchoServiceWSEXP_EchoServiceHttp_Service" targetNamespace="http://poc-module/no/nav/inf/EchoService/Binding">
   <wsdl:import location="EchoService.wsdl" namespace="http://poc-module/no/nav/inf/EchoService"/>
   <wsdl:binding name="EchoServiceWSEXP_EchoServiceHttpBinding" type="Port_0:EchoService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>

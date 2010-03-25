@@ -1992,6 +1992,7 @@ int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerifikasjonProxy.java -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/libs/poc-lib1/no/nav/gbo/StringBO.xsd -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/libs/poc-lib1/no/nav/inf/DummyIF.wsdl -text
+int/maven-pocs/maven-build-poc/layers/libs/poc-lib1/no/nav/inf/poc-module1_DummyServiceWSEXP.wsdl -text
 int/maven-pocs/maven-build-poc/layers/libs/poc-lib1/no/nav/util/LoggerUtil.java -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/libs/poc-lib1/pom.xml -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/libs/poc-lib2/no/nav/gbo/StringBO2.xsd -text svneol=unset#text/plain
@@ -2012,21 +2013,20 @@ int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/inf/poc-mo
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/java/DummyServiceImpl.java -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/java/Main.java -text
-int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/poc-module1_DummyServiceWSEXP.wsdl -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/pom.xml -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/sca.module -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/sca.modulex -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService.component -text
+int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService1WSEXP.export -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService2.component -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService2MapWSEXP.export -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService2TOEchoService.component -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService2WSEXP.export -text
-int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoServiceWSEXP.export -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/EchoService2.wsdl -text svneol=unset#text/plain
+int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/poc-module2_EchoService1WSEXP.wsdl -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/poc-module2_EchoService2MapWSEXP.wsdl -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/poc-module2_EchoService2WSEXP.wsdl -text
-int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/poc-module2_EchoServiceWSEXP.wsdl -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/infmap/EchoService2TOEchoService.ifm -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/infmap/EchoService2TOEchoService_ifm.mon -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/java/EchoService2Impl.java -text svneol=unset#text/plain
