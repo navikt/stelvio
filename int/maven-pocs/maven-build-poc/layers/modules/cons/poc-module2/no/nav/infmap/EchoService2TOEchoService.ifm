@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<med:interfaceMediation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EchoService1="http://poc-module/no/nav/inf/EchoService1" xmlns:EchoService2="http://poc-module/no/nav/inf/EchoService2" xmlns:StringBO2TOStringBO="http://poc-module2/no/nav/map" xmlns:StringBOTOStringBO2="http://poc-module2/no/nav/map" xmlns:med="http://www.ibm.com/xmlns/prod/websphere/wbiserver/ifm/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" name="EchoService2TOEchoService" targetNamespace="http://poc-module2/no/nav/infmap">
+<med:interfaceMediation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EchoService1_1="http://poc-module1/no/nav/inf/EchoService1" xmlns:EchoService1_2="http://poc-module2/no/nav/inf/EchoService1" xmlns:EchoService2_1="http://poc-module2/no/nav/inf/EchoService2" xmlns:StringBO2TOStringBO="http://poc-module2/no/nav/map" xmlns:StringBOTOStringBO2="http://poc-module2/no/nav/map" xmlns:med="http://www.ibm.com/xmlns/prod/websphere/wbiserver/ifm/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" name="EchoService2TOEchoService" targetNamespace="http://poc-module2/no/nav/infmap">
   <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="EchoService2:EchoService2"/>
+    <interface xsi:type="wsdl:WSDLPortType" portType="EchoService2_1:EchoService2"/>
   </interfaces>
   <references>
     <reference name="EchoService1Partner">
-      <interface xsi:type="wsdl:WSDLPortType" portType="EchoService1:EchoService1"/>
+      <interface xsi:type="wsdl:WSDLPortType" portType="EchoService1_2:EchoService1"/>
     </reference>
   </references>
   <operationBinding source="echo" target="echo">

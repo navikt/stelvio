@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:Port_0="http://poc-module/no/nav/inf/EchoService2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://poc-module/no/nav/inf/EchoService2/Binding2" name="EchoService2MapWSEXP_EchoService2Http_Service" targetNamespace="http://poc-module/no/nav/inf/EchoService2/Binding2">
-  <wsdl:import location="EchoService2.wsdl" namespace="http://poc-module/no/nav/inf/EchoService2"/>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:Port_0="http://poc-module2/no/nav/inf/EchoService2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://poc-module2/no/nav/inf/EchoService2/Binding2" name="EchoService2MapWSEXP_EchoService2Http_Service" targetNamespace="http://poc-module2/no/nav/inf/EchoService2/Binding2">
+  <wsdl:import location="EchoService2.wsdl" namespace="http://poc-module2/no/nav/inf/EchoService2"/>
   <wsdl:binding name="EchoService2MapWSEXP_EchoService2HttpBinding" type="Port_0:EchoService2">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="echo">

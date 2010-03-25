@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding="http://poc-module/no/nav/inf/EchoService1/Binding" xmlns:Binding2="http://poc-module/no/nav/inf/EchoService1/Binding2" xmlns:ns1="http://poc-module/no/nav/inf/EchoService1" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:webservice="http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="EchoService1WSEXP" name="EchoService1WSEXP" target="EchoService">
+<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding_1="http://poc-module2/no/nav/inf/EchoService1/Binding" xmlns:EchoService1="http://poc-module1/no/nav/inf/EchoService1" xmlns:EchoService1_1="http://poc-module2/no/nav/inf/EchoService1" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:webservice="http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="EchoService1WSEXP" name="EchoService1WSEXP" target="EchoService">
   <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:EchoService1"/>
+    <interface xsi:type="wsdl:WSDLPortType" portType="EchoService1_1:EchoService1"/>
   </interfaces>
-  <esbBinding xsi:type="webservice:WebServiceExportBinding" port="Binding:EchoService1WSEXP_EchoService1HttpPort" service="Binding:EchoService1WSEXP_EchoService1HttpService"/>
+  <esbBinding xsi:type="webservice:WebServiceExportBinding" port="Binding_1:EchoService1WSEXP_EchoService1HttpPort" service="Binding_1:EchoService1WSEXP_EchoService1HttpService"/>
 </scdl:export>
