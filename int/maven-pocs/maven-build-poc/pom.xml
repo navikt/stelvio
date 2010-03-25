@@ -11,6 +11,7 @@
 	<modules>
 		<module>layers</module>
 		<module>module-client</module>
+		<module>module-cxf-client</module>
 	</modules>
 	
 	<scm>

@@ -2043,6 +2043,7 @@ int/maven-pocs/maven-build-poc/layers/modules/cons/pom.xml -text
 int/maven-pocs/maven-build-poc/layers/modules/pom.xml -text
 int/maven-pocs/maven-build-poc/layers/pom.xml -text
 int/maven-pocs/maven-build-poc/module-client/pom.xml -text
+int/maven-pocs/maven-build-poc/module-cxf-client/pom.xml -text
 int/maven-pocs/maven-build-poc/module-groups/poc-mg1/pom.xml -text
 int/maven-pocs/maven-build-poc/pom.xml -text
 int/maven-pocs/maven-deploy-poc/bus-deploy/pom.xml -text
