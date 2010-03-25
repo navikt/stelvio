@@ -54,6 +54,8 @@ import org.apache.maven.shared.filtering.MavenResourcesFiltering;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
+import org.codehaus.plexus.archiver.manager.ArchiverManager;
+import org.codehaus.plexus.archiver.manager.NoSuchArchiverException;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.StringUtils;
 import org.jdom.Document;
@@ -80,18 +82,9 @@ public class ExportWsdlMojo extends AbstractMojo {
 	private MavenProjectHelper projectHelper;
 
 	/**
-	 * @component roleHint="zip"
-	 * @required
-	 * @readonly
+	 * @component
 	 */
-	private UnArchiver unArchiver;
-
-	/**
-	 * @component roleHint="zip"
-	 * @required
-	 * @readonly
-	 */
-	private Archiver archiver;
+	private ArchiverManager archiverManager;
 
 	/**
 	 * @component roleHint="wsdl-interface"
@@ -137,36 +130,29 @@ public class ExportWsdlMojo extends AbstractMojo {
 	 */
 	private boolean verbose;
 
+	/**
+	 * @parameter default-value="true"
+	 */
+	private boolean processExports;
+
+	/**
+	 * @parameter default-value="true"
+	 */
+	private boolean processImports;
+
 	private SAXBuilder saxBuilder;
-	private XPath webServiceExportXPath;
-	// private XPath webServiceImportXPath;
 	private WSDLReader wsdlReader;
+
+	private XPath webServiceExportXPath;
+	private XPath webServiceImportXPath;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		String packaging = project.getPackaging();
 		// This plugin is only applicable to WPS Module artifacts
 		if ("wps-module-ear".equals(packaging)) {
-			init();
 			executeInternal();
 		} else {
 			getLog().debug("Skipping exportwsdl because packaging is " + packaging + " and not wps-module-ear.");
-		}
-	}
-
-	private void init() throws MojoExecutionException {
-		try {
-			saxBuilder = new SAXBuilder();
-			webServiceExportXPath = XPath
-					.newInstance("//esbBinding[@xsi:type='webservice:WebServiceExportBinding' or @xsi:type='jaxws:JaxWsExportBinding']");
-			// webServiceImportXPath = XPath
-			// .newInstance("//esbBinding[@xsi:type='webservice:WebServiceImportBinding' or @xsi:type='jaxws:JaxWsImportBinding']");
-			wsdlReader = WSDLFactory.newInstance().newWSDLReader();
-			wsdlReader.setFeature("javax.wsdl.verbose", verbose);
-			wsdlReader.setFeature("javax.wsdl.importDocuments", false);
-		} catch (JDOMException e) {
-			throw new MojoExecutionException("Error initalizing XML processing framework", e);
-		} catch (WSDLException e) {
-			throw new MojoExecutionException("Error initalizing WSDL framework", e);
 		}
 	}
 
@@ -175,18 +161,20 @@ public class ExportWsdlMojo extends AbstractMojo {
 			// TODO: The following must be done because of one (or more) bug(s)
 			// in Maven. See Maven bugs MNG-3506 and MNG-2426 for more info.
 			if (!wsdlInterfaceArtifactHandler.equals(artifactHandlerManager.getArtifactHandler(TYPE_WSDL_INTERFACE))) {
-				getLog().debug("Adding wsdlif interchange artifact handler to artifact handler manager");
+				getLog().debug("Adding wsdl-interface artifact handler to artifact handler manager");
 				artifactHandlerManager.addHandlers(Collections.singletonMap(TYPE_WSDL_INTERFACE, wsdlInterfaceArtifactHandler));
 			}
 
-			// TODO: All related to imported WS is commented out until we can come up with a solution for modules that have both
-			// WS exports and imports.
+			Collection<QName> exportedWebServices = Collections.emptyList();
+			if (processExports) {
+				exportedWebServices = getExportedWebServices();
+			}
+			Collection<QName> importedWebServices = Collections.emptyList();
+			if (processImports) {
+				importedWebServices = getImportedWebServices();
+			}
 
-			Collection<QName> exportedWebServices = getExportedWebServices();
-			// Collection<QName> importedWebServices = getImportedWebServices();
-
-			if (!exportedWebServices.isEmpty()) {
-				// if (!exportedWebServices.isEmpty() || !importedWebServices.isEmpty()) {
+			if (!exportedWebServices.isEmpty() || !importedWebServices.isEmpty()) {
 				File workingDir = createWorkingDir();
 
 				extractDependendentResources(workingDir);
@@ -195,12 +183,15 @@ public class ExportWsdlMojo extends AbstractMojo {
 				Map<QName, Definition> webServiceToWsdlMap = getWebServiceToWsdlMap(workingDir);
 
 				if (!exportedWebServices.isEmpty()) {
-					createWebServicesArchive(workingDir, webServiceToWsdlMap, exportedWebServices);
+					// TODO: The exported web services archive is created twice to maintain backwards compatability.
+					// Should be removed sometime, but that will break backwards compatability. BEWARE!
+					createWebServicesArchive(workingDir, webServiceToWsdlMap, exportedWebServices, "wsdlif");
+					createWebServicesArchive(workingDir, webServiceToWsdlMap, exportedWebServices, "wsexports");
 				}
 
-				// if (!importedWebServices.isEmpty()) {
-				// createWebServicesArchive(workingDir, webServiceToWsdlMap, importedWebServices);
-				// }
+				if (!importedWebServices.isEmpty()) {
+					createWebServicesArchive(workingDir, webServiceToWsdlMap, importedWebServices, "wsimports");
+				}
 			}
 		} catch (IOException e) {
 			throw new MojoExecutionException("Error accessing file system", e);
@@ -212,12 +203,15 @@ public class ExportWsdlMojo extends AbstractMojo {
 			throw new MojoExecutionException("Error filtering resources", e);
 		} catch (WSDLException e) {
 			throw new MojoExecutionException("Error processing WSDL", e);
+		} catch (NoSuchArchiverException e) {
+			throw new MojoExecutionException("Error creating archiver/unarchiver", e);
 		}
 
 	}
 
 	private void createWebServicesArchive(File workingDir, Map<QName, Definition> webServiceToWsdlMap,
-			Collection<QName> webServices) throws MojoFailureException, WSDLException, ArchiverException, IOException {
+			Collection<QName> webServices, String classifier) throws MojoFailureException, WSDLException, ArchiverException,
+			IOException, NoSuchArchiverException {
 		Collection<String> documentUris = new HashSet();
 
 		for (QName webService : webServices) {
@@ -236,7 +230,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 			files.add(new File(uri));
 		}
 
-		createArchive(workingDir, files);
+		createArchive(workingDir, files, classifier);
 	}
 
 	private void addFilesForWsdl(Collection<String> documentUris, Definition wsdl) throws WSDLException {
@@ -245,7 +239,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 
 		for (Collection<Import> imports : (Collection<Collection<Import>>) wsdl.getImports().values()) {
 			for (Import _import : imports) {
-				Definition importedWsdl = wsdlReader.readWSDL(documentBaseURI, _import.getLocationURI());
+				Definition importedWsdl = getWsdlReader().readWSDL(documentBaseURI, _import.getLocationURI());
 				addFilesForWsdl(documentUris, importedWsdl);
 			}
 		}
@@ -276,7 +270,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 
 		Collection<File> wsdlFiles = FileUtils.getFiles(workingDir, "**/*.wsdl", null);
 		for (File wsdlFile : wsdlFiles) {
-			Definition wsdl = wsdlReader.readWSDL(wsdlFile.getAbsolutePath());
+			Definition wsdl = getWsdlReader().readWSDL(wsdlFile.getAbsolutePath());
 			Collection<QName> services = wsdl.getServices().keySet();
 			for (QName service : services) {
 				Definition previousWsdl = webServiceToWsdlMap.put(service, wsdl);
@@ -291,7 +285,8 @@ public class ExportWsdlMojo extends AbstractMojo {
 		return webServiceToWsdlMap;
 	}
 
-	private void extractDependendentResources(File workingDir) throws ArchiverException, IOException {
+	private void extractDependendentResources(File workingDir) throws ArchiverException, IOException, NoSuchArchiverException {
+		UnArchiver unArchiver = archiverManager.getUnArchiver("zip");
 		for (Artifact artifact : (Collection<Artifact>) project.getCompileArtifacts()) {
 			if (TYPE_WPS_LIBRARY_JAR.equals(artifact.getType())) {
 				File artifactFile = artifact.getFile();
@@ -321,9 +316,12 @@ public class ExportWsdlMojo extends AbstractMojo {
 		return workingDir;
 	}
 
-	private void createArchive(File baseDir, Collection<File> files) throws ArchiverException, IOException {
+	private void createArchive(File baseDir, Collection<File> files, String classifier) throws ArchiverException, IOException,
+			NoSuchArchiverException {
+		Archiver archiver = archiverManager.getArchiver("zip");
+
 		File wsdlZipArtifactFile = new File(project.getBuild().getDirectory(), project.getBuild().getFinalName() + "-"
-				+ wsdlInterfaceArtifactHandler.getClassifier() + "." + wsdlInterfaceArtifactHandler.getExtension());
+				+ classifier + "." + wsdlInterfaceArtifactHandler.getExtension());
 		archiver.setDestFile(wsdlZipArtifactFile);
 
 		for (File file : files) {
@@ -332,17 +330,24 @@ public class ExportWsdlMojo extends AbstractMojo {
 		}
 
 		archiver.createArchive();
-		projectHelper.attachArtifact(project, TYPE_WSDL_INTERFACE, wsdlInterfaceArtifactHandler.getClassifier(),
-				wsdlZipArtifactFile);
+		projectHelper.attachArtifact(project, TYPE_WSDL_INTERFACE, classifier, wsdlZipArtifactFile);
 	}
 
 	private Collection<QName> getExportedWebServices() throws IOException, JDOMException {
+		if (webServiceExportXPath == null) {
+			webServiceExportXPath = XPath
+					.newInstance("//esbBinding[@xsi:type='webservice:WebServiceExportBinding' or @xsi:type='jaxws:JaxWsExportBinding']");
+		}
 		return getWebServices("**/*.export", webServiceExportXPath);
 	}
 
-	// private Collection<QName> getImportedWebServices() throws IOException, JDOMException {
-	// return getWebServices("**/*.import", webServiceImportXPath);
-	// }
+	private Collection<QName> getImportedWebServices() throws IOException, JDOMException {
+		if (webServiceImportXPath == null) {
+			webServiceImportXPath = XPath
+					.newInstance("//esbBinding[@xsi:type='webservice:WebServiceImportBinding' or @xsi:type='jaxws:JaxWsImportBinding']");
+		}
+		return getWebServices("**/*.import", webServiceImportXPath);
+	}
 
 	private Collection<QName> getWebServices(String filenamePattern, XPath xpath) throws IOException, JDOMException {
 		Collection<QName> webServices = new HashSet<QName>();
@@ -350,7 +355,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 		Collection<File> files = FileUtils.getFiles(project.getBasedir(), filenamePattern, null);
 		getLog().debug("Found " + files.size() + " files matching pattern " + filenamePattern + " in module");
 		for (File file : files) {
-			Document fileDocument = saxBuilder.build(file);
+			Document fileDocument = getSAXBuilder().build(file);
 			Collection<Element> webServiceBindingElements = xpath.selectNodes(fileDocument);
 			getLog().debug("Found " + webServiceBindingElements.size() + " web service bindings in file " + file.getName());
 			for (Element webServiceBindingElement : webServiceBindingElements) {
@@ -365,5 +370,21 @@ public class ExportWsdlMojo extends AbstractMojo {
 		}
 
 		return webServices;
+	}
+
+	private SAXBuilder getSAXBuilder() {
+		if (saxBuilder == null) {
+			saxBuilder = new SAXBuilder();
+		}
+		return saxBuilder;
+	}
+
+	private WSDLReader getWsdlReader() throws WSDLException {
+		if (wsdlReader == null) {
+			wsdlReader = WSDLFactory.newInstance().newWSDLReader();
+			wsdlReader.setFeature("javax.wsdl.verbose", verbose);
+			wsdlReader.setFeature("javax.wsdl.importDocuments", false);
+		}
+		return wsdlReader;
 	}
 }

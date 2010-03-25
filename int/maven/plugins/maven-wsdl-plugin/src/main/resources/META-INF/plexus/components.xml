@@ -13,7 +13,6 @@
 				<type>wsdl-interface</type>
 				<extension>zip</extension>
 				<packaging>zip</packaging>
-				<classifier>wsdlif</classifier>
 				<language>wsdl</language>
 				<addedToClasspath>false</addedToClasspath>
 				<includesDependencies>true</includesDependencies>

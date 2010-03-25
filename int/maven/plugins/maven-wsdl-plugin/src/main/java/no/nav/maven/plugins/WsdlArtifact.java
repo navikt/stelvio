@@ -5,6 +5,9 @@ public class WsdlArtifact {
 	private String artifactId;
 	private String version;
 	private String type = "wsdl-interface";
+	// TODO: This classifier should at some point be changed to the new value (wsexports), but that will break backwards
+	// compatability. BEWARE!
+	private String classifier = "wsdlif";
 
 	public String getArtifactId() {
 		return artifactId;
@@ -12,6 +15,14 @@ public class WsdlArtifact {
 
 	public void setArtifactId(String artifactId) {
 		this.artifactId = artifactId;
+	}
+
+	public String getClassifier() {
+		return classifier;
+	}
+
+	public void setClassifier(String classifier) {
+		this.classifier = classifier;
 	}
 
 	public String getGroupId() {
