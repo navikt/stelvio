@@ -959,9 +959,11 @@ int/stelvio-jca-adapters/websphere_default_messaging_provider/target
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/classes
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/target
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/target
+int/stelvio-operation-systemavailability/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/bin
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEAR/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/bin
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/target
+int/stelvio-sibus-mediation/OppdragMediation/target
 int/target
