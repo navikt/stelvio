@@ -2004,8 +2004,11 @@ int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/DummyService.comp
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/DummyServiceWSEXP.export -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/EchoService.component -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/EchoServiceWSEXP.export -text
+int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/ImportedServiceWSIMP.import -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
+int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/inf/ImportedService.wsdl -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/inf/poc-module1_EchoServiceWSEXP.wsdl -text
+int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/inf/poc-module1_ImportedServiceWSEXP.wsdl -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/java/DummyServiceImpl.java -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/java/EchoServiceImpl.java -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module1/no/nav/java/Main.java -text

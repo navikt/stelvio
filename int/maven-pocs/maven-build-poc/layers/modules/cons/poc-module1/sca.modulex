@@ -20,4 +20,8 @@
     <extendedObject href="DummyServiceWSEXP.export#//@export"/>
     <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" x="20" y="45" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0}WebServiceExportBinding" bound="true"/>
   </extensions>
+  <extensions>
+    <extendedObject href="ImportedServiceWSIMP.import#//@import"/>
+    <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" x="362" y="211" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/webservice/6.0.0}WebServiceImportBinding"/>
+  </extensions>
 </extensionmodel:ExtensionMap>
