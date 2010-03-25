@@ -2022,7 +2022,7 @@ int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService2.comp
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService2MapWSEXP.export -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService2TOEchoService.component -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/EchoService2WSEXP.export -text
-int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/EchoService.wsdl -text svneol=unset#text/plain
+int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/EchoService1.wsdl -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/EchoService2.wsdl -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/poc-module2_EchoService1WSEXP.wsdl -text
 int/maven-pocs/maven-build-poc/layers/modules/cons/poc-module2/no/nav/inf/poc-module2_EchoService2MapWSEXP.wsdl -text
