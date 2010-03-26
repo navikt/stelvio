@@ -13,7 +13,7 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-deploy-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.7.6-SNAPSHOT</version>
+	<version>1.7.3-SNAPSHOT</version>
 	<name>POM for deployment</name>
 
 	<build>
@@ -37,7 +37,7 @@
 					<artifactId>
 						maven-artifact-modifier-plugin
 					</artifactId>
-					<version>1.35</version>
+					<version>1.39</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -48,7 +48,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-websphere-plugin</artifactId>
-					<version>1.42</version>
+					<version>1.45</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -59,7 +59,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-confluence-plugin</artifactId>
-					<version>1.11</version>
+					<version>1.14</version>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
