@@ -250,17 +250,21 @@ public class ExportWsdlMojo extends AbstractMojo {
 					.getExtensibilityElements()) {
 				if (extensibilityElement instanceof Schema) {
 					Schema schema = (Schema) extensibilityElement;
-					for (Collection<SchemaImport> schemaImports : (Collection<Collection<SchemaImport>>) schema.getImports()
-							.values()) {
-						for (SchemaImport schemaImport : schemaImports) {
-							documentUris.add(schemaImport.getReferencedSchema().getDocumentBaseURI());
-						}
-					}
-					for (SchemaReference schemaInclude : (Collection<SchemaReference>) schema.getIncludes()) {
-						documentUris.add(schemaInclude.getReferencedSchema().getDocumentBaseURI());
-					}
+					addFilesForSchema(documentUris, schema);
 				}
 			}
+		}
+	}
+
+	private void addFilesForSchema(Collection<String> documentUris, Schema schema) {
+		documentUris.add(schema.getDocumentBaseURI());
+		for (Collection<SchemaImport> schemaImports : (Collection<Collection<SchemaImport>>) schema.getImports().values()) {
+			for (SchemaImport schemaImport : schemaImports) {
+				addFilesForSchema(documentUris, schemaImport.getReferencedSchema());
+			}
+		}
+		for (SchemaReference schemaInclude : (Collection<SchemaReference>) schema.getIncludes()) {
+			addFilesForSchema(documentUris, schemaInclude.getReferencedSchema());
 		}
 	}
 
