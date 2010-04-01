@@ -3,6 +3,8 @@ package no.stelvio.example.person.stub;
 import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
+import com.ibm.websphere.sca.ServiceRuntimeException;
+
 import commonj.sdo.DataObject;
 
 public class PersonServiceV1StubImpl {
@@ -35,7 +37,11 @@ public class PersonServiceV1StubImpl {
 
 		String id = getPersonRequest.getString("id");
 		try {
-			Long.parseLong(id);
+			if (Long.parseLong(id) == -1) {
+				throw new ServiceRuntimeException("Teknisk feil: id er -1");
+			} else if (Long.parseLong(id) < -1) {
+				throw new RuntimeException("Teknisk feil: negativ id");
+			}
 			DataObject getPersonResponse = factoryService.create("http://www.stelvio.no/example/person/provider/V1",
 					"GetPersonResponse");
 			DataObject person = getPersonResponse.createDataObject("person");
