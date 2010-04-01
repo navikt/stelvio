@@ -1757,6 +1757,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/pro
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/solution.graphml -text
 incubator/stelvio-example/stelvio-example-gateway/Routing.component -text
 incubator/stelvio-example/stelvio-example-gateway/ServiceGatewayWSIMP.import -text
+incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/Environment.xsd -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/NativeBody.xsd -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/ServiceGateway.wsdl -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/stelvio-example-gateway_ServiceGatewayWSIMP.wsdl -text
