@@ -47,7 +47,6 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wsdl-plugin</artifactId>
-				<version>1.4-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
