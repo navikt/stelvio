@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://stelvio-example-gateway" xmlns="http://www.w3.org/2001/XMLSchema">
-    <simpleType name="Environment">
-    	<restriction base="string"/>
-    </simpleType>
-</schema>

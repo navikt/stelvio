@@ -388,9 +388,6 @@ declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
       </per:findPerson>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ServiceGateway - WS-I BP 1.1" searchProperties="true" id="3d07c55d-d5cf-44a1-878d-06181f718489"><con:settings/><con:testStep type="request" name="PersonServiceV1:getPerson:PersonFound"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>PersonServiceV1WSEXP_PersonServiceHttpBinding</con:interface><con:operation>getPerson</con:operation><con:request name="PersonServiceV1:getPerson:PersonFound"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Jeje" value="T10" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9081/stelvio-example-gatewayWeb/sca/WS-I_BP_11_WSEXP</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:per="http://www.stelvio.no/example/person/V1/PersonService">
-   <soapenv:Header>
-	<ns1:Environment xmlns:ns1="http://stelvio-example-gateway">S5</ns1:Environment>
-   </soapenv:Header>
    <soapenv:Body>
       <per:getPerson>
          <getPersonRequest>
