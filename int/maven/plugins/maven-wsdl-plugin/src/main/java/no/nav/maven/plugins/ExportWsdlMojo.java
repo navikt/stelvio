@@ -209,17 +209,27 @@ public class ExportWsdlMojo extends AbstractMojo {
 
 	}
 
+	@SuppressWarnings("serial")
 	private void createWebServicesArchive(File workingDir, Map<QName, Definition> webServiceToWsdlMap,
 			Collection<QName> webServices, String classifier) throws MojoFailureException, WSDLException, ArchiverException,
 			IOException, NoSuchArchiverException {
-		Collection<String> documentUris = new HashSet();
+		Collection<String> documentUris = new HashSet<String>() {
+			@Override
+			public boolean add(String documentUri) {
+				if (getLog().isDebugEnabled()) {
+					getLog().debug("Adding document URI: " + documentUri);
+				}
+				return super.add(documentUri);
+			}
+
+		};
 
 		for (QName webService : webServices) {
 			Definition wsdl = webServiceToWsdlMap.get(webService);
 			if (wsdl == null) {
 				throw new MojoFailureException("WSDL for web service " + webService + " not found.");
 			}
-			addFilesForWsdl(documentUris, wsdl);
+			addWsdl(documentUris, wsdl);
 		}
 
 		Collection<File> files = new ArrayList<File>(documentUris.size());
@@ -233,38 +243,47 @@ public class ExportWsdlMojo extends AbstractMojo {
 		createArchive(workingDir, files, classifier);
 	}
 
-	private void addFilesForWsdl(Collection<String> documentUris, Definition wsdl) throws WSDLException {
-		String documentBaseURI = wsdl.getDocumentBaseURI();
-		documentUris.add(documentBaseURI);
-
-		for (Collection<Import> imports : (Collection<Collection<Import>>) wsdl.getImports().values()) {
-			for (Import _import : imports) {
-				Definition importedWsdl = getWsdlReader().readWSDL(documentBaseURI, _import.getLocationURI());
-				addFilesForWsdl(documentUris, importedWsdl);
+	private void addWsdl(Collection<String> documentUris, Definition wsdl) throws WSDLException {
+		String documentUri = wsdl.getDocumentBaseURI();
+		if (documentUris.add(documentUri)) {
+			for (Collection<Import> imports : (Collection<Collection<Import>>) wsdl.getImports().values()) {
+				for (Import _import : imports) {
+					Definition importedWsdl = getWsdlReader().readWSDL(documentUri, _import.getLocationURI());
+					addWsdl(documentUris, importedWsdl);
+				}
 			}
-		}
 
-		Types types = wsdl.getTypes();
-		if (types != null) {
-			for (ExtensibilityElement extensibilityElement : (Collection<ExtensibilityElement>) types
-					.getExtensibilityElements()) {
-				if (extensibilityElement instanceof Schema) {
-					Schema schema = (Schema) extensibilityElement;
-					addFilesForSchema(documentUris, schema);
+			Types types = wsdl.getTypes();
+			if (types != null) {
+				for (ExtensibilityElement extensibilityElement : (Collection<ExtensibilityElement>) types
+						.getExtensibilityElements()) {
+					if (extensibilityElement instanceof Schema) {
+						Schema schema = (Schema) extensibilityElement;
+						for (Collection<SchemaImport> schemaImports : (Collection<Collection<SchemaImport>>) schema
+								.getImports().values()) {
+							for (SchemaImport schemaImport : schemaImports) {
+								addSchema(documentUris, schemaImport.getReferencedSchema());
+							}
+						}
+						for (SchemaReference schemaInclude : (Collection<SchemaReference>) schema.getIncludes()) {
+							addSchema(documentUris, schemaInclude.getReferencedSchema());
+						}
+					}
 				}
 			}
 		}
 	}
 
-	private void addFilesForSchema(Collection<String> documentUris, Schema schema) {
-		documentUris.add(schema.getDocumentBaseURI());
-		for (Collection<SchemaImport> schemaImports : (Collection<Collection<SchemaImport>>) schema.getImports().values()) {
-			for (SchemaImport schemaImport : schemaImports) {
-				addFilesForSchema(documentUris, schemaImport.getReferencedSchema());
+	private void addSchema(Collection<String> documentUris, Schema schema) {
+		if (documentUris.add(schema.getDocumentBaseURI())) {
+			for (Collection<SchemaImport> schemaImports : (Collection<Collection<SchemaImport>>) schema.getImports().values()) {
+				for (SchemaImport schemaImport : schemaImports) {
+					addSchema(documentUris, schemaImport.getReferencedSchema());
+				}
 			}
-		}
-		for (SchemaReference schemaInclude : (Collection<SchemaReference>) schema.getIncludes()) {
-			addFilesForSchema(documentUris, schemaInclude.getReferencedSchema());
+			for (SchemaReference schemaInclude : (Collection<SchemaReference>) schema.getIncludes()) {
+				addSchema(documentUris, schemaInclude.getReferencedSchema());
+			}
 		}
 	}
 
