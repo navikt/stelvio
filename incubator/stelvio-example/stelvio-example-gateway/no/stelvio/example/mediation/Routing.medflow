@@ -193,7 +193,7 @@
   </eClassifiers>
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Environment" name="Environment" defaultValueLiteral="S5">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Environment" name="Environment" defaultValueLiteral="local">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <composition>
