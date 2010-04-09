@@ -35,7 +35,7 @@
 					<artifactId>
 						maven-artifact-modifier-plugin
 					</artifactId>
-					<version>1.40</version>
+					<version>1.42</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -46,7 +46,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-websphere-plugin</artifactId>
-					<version>1.46</version>
+					<version>1.47</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -79,6 +79,7 @@
 							${basedir}/target/bus-config/environments
 						</environmentDir>
 					</configuration>
+					<!-- Commented out, because its unnessecary here.   -JFH
 					<executions>
 						<execution>
 							<phase>package</phase>
@@ -87,6 +88,8 @@
 							</goals>
 						</execution>
 					</executions>
+					-->
+
 				</plugin>
 			</plugins>
 		</pluginManagement>
