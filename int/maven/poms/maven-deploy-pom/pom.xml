@@ -35,7 +35,7 @@
 					<artifactId>
 						maven-artifact-modifier-plugin
 					</artifactId>
-					<version>1.42</version>
+					<version>1.43</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
