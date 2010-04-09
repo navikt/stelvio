@@ -40,10 +40,6 @@ public class LoadArtifactConfigurationMojo extends ArtifactModifierMojo {
 			return;
 		}
 		
-		//FOR TESTING
-		
-		getLog().info("(TEST) LoadArtifactModifier: busConfigurationExtractDirectory = " + busConfigurationExtractDirectory);
-		
 		for(Artifact a : dependencyArtifacts) {
 			if(a.getArtifactId().equals(moduleConfigurationArtifactName)) {
 				File scriptsFolder = new File(baseDirectory, busConfigurationExtractDirectory);

@@ -21,6 +21,8 @@ import org.apache.maven.plugin.MojoFailureException;
  */
 public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMojo {
 
+	private String earDirectory = targetDirectory + "/EARFilesToDeploy";
+	
 	protected abstract void applyConfiguration(File artifact, ConfigurationType configuration);
 
 	/**
@@ -60,12 +62,12 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 	private final File copyArtifactToTarget(Artifact a) {
 		File source = new File(a.getFile().getAbsolutePath());
 
-		File destFolder = new File(targetDirectory);
+		File destFolder = new File(earDirectory);
 		if (destFolder.exists() == false) {
 			destFolder.mkdir();
 		}
 
-		File dest = new File(targetDirectory, a.getFile().getName());
+		File dest = new File(earDirectory, a.getFile().getName());
 
 		if (dest.exists() == false) {
 			EarFile.copyFile(source, dest);
@@ -79,7 +81,7 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 				String property = properties.getProperty(a.getArtifactId());
 				if (("leave").equals(property) == true) {
 					try {
-						new File(targetDirectory, a.getArtifactId() + "-" + a.getVersion() + ".leave").createNewFile();
+						new File(earDirectory, a.getArtifactId() + "-" + a.getVersion() + ".leave").createNewFile();
 					} catch (IOException e) {
 						throw new RuntimeException("An error occured creating a leave file for artifact", e);
 					}
