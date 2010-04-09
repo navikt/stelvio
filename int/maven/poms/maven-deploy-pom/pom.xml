@@ -79,7 +79,6 @@
 							${basedir}/target/bus-config/environments
 						</environmentDir>
 					</configuration>
-					<!-- Commented out, because its unnessecary here.   -JFH
 					<executions>
 						<execution>
 							<phase>package</phase>
@@ -88,8 +87,6 @@
 							</goals>
 						</execution>
 					</executions>
-					-->
-
 				</plugin>
 			</plugins>
 		</pluginManagement>
