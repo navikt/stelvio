@@ -21,7 +21,7 @@ import org.apache.maven.plugin.MojoFailureException;
  */
 public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMojo {
 
-	private String earDirectory = targetDirectory + "/EARFilesToDeploy";
+	private String earDirectory;
 	
 	protected abstract void applyConfiguration(File artifact, ConfigurationType configuration);
 
@@ -37,6 +37,8 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 	 */
 	public void doExecute() throws MojoExecutionException, MojoFailureException {
 
+		earDirectory = targetDirectory + "/EARFilesToDeploy";
+		
 		if (ArtifactConfiguration.isConfigurationLoaded() == false) {
 			getLog().warn("The deployment does not contain any module xml configuration");
 		}
