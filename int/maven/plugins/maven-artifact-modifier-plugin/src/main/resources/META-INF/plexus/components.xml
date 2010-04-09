@@ -31,7 +31,6 @@
 								no.nav.maven.plugins:maven-websphere-plugin:start-clusters,
 								no.nav.maven.plugins:maven-websphere-plugin:modify-max-failed-deliveries,
 								no.nav.maven.plugins:maven-confluence-plugin:add-comment-up,
-								no.nav.maven.plugins:maven-confluence-plugin:add-history-event
 							</deploy>
 						</phases>
 					</lifecycle>
