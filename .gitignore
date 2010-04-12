@@ -960,6 +960,14 @@ int/stelvio-jca-adapters/websphere_default_messaging_provider/target
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/WEB-INF/classes
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/target
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/target
+int/stelvio-operation-systemavailability/system-availability-config/*.class
+int/stelvio-operation-systemavailability/system-availability-config/*.jar
+int/stelvio-operation-systemavailability/system-availability-config/.classpath
+int/stelvio-operation-systemavailability/system-availability-config/.project
+int/stelvio-operation-systemavailability/system-availability-config/.settings
+int/stelvio-operation-systemavailability/system-availability-config/META-INF
+int/stelvio-operation-systemavailability/system-availability-config/gen
+int/stelvio-operation-systemavailability/system-availability-config/target
 int/stelvio-operation-systemavailability/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/bin
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/target

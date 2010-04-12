@@ -2855,6 +2855,7 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-IN
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/META-INF/application.xml -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/pom.xml -text
 int/stelvio-operation-systemavailability/pom.xml -text
+int/stelvio-operation-systemavailability/system-availability-config/pom.xml -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.project -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
