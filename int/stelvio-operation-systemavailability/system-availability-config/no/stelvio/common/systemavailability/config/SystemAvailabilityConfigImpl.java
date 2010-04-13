@@ -1,11 +1,17 @@
 package no.stelvio.common.systemavailability.config;
 
+import java.util.*;
+
 import commonj.sdo.DataObject;
 import com.ibm.websphere.sca.ServiceManager;
+import com.ibm.websphere.sca.sdo.DataFactory;
 
 import no.stelvio.common.systemavailability.*;
 
 public class SystemAvailabilityConfigImpl {
+	
+	private static final String SYSTEM_AVAILABILITY_CONFIG_NAMESPACE = "http://system-availability-config";
+	
 	/**
 	 * Default constructor.
 	 */
@@ -34,8 +40,27 @@ public class SystemAvailabilityConfigImpl {
 	 * on the type of input, output and fault(s).
 	 */
 	public DataObject enableStubs(DataObject enableStubsRequest) {
-		//TODO Needs to be implemented.
-		return null;
+		String response = "Failure";
+		if (enableStubsRequest != null) {
+			String systemName = enableStubsRequest.getString("system");
+			List operations = enableStubsRequest.getList("operations");
+			boolean enabled = enableStubsRequest.getBoolean("enabled");
+			if (systemName != null && operations != null) {
+				SystemAvailabilityStorage systemAvailabilityStorage = new SystemAvailabilityStorage();
+				AvailabilityRecord availabilityRecord = systemAvailabilityStorage.getAvailabilityRecord(systemName);
+			
+				for (Object operation : operations) {
+					String operationName = (String) operation;
+					OperationAvailabilityRecord operationAvailabilityRecord = availabilityRecord.findOrCreateOperation(operationName);
+					operationAvailabilityRecord.stubbed = enabled;
+					systemAvailabilityStorage.storeAvailabilityRecord(availabilityRecord);
+				}
+			}
+			response = "Success";
+		}
+		DataObject enableStubsResponse = DataFactory.INSTANCE.create(SYSTEM_AVAILABILITY_CONFIG_NAMESPACE, "EnableStubsResponse");
+		enableStubsResponse.setString("response", response);
+		return enableStubsResponse;
 	}
 
 }

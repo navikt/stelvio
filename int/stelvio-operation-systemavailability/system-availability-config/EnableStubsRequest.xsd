@@ -3,8 +3,11 @@
 	targetNamespace="http://system-availability-config">
 	<xsd:complexType name="EnableStubsRequest">
 		<xsd:sequence>
-			<xsd:element minOccurs="0" name="stubs" type="xsd:string"
-				maxOccurs="unbounded">
+			<xsd:element minOccurs="0" name="system"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="operations"
+				type="xsd:string" maxOccurs="unbounded">
 			</xsd:element>
 			<xsd:element minOccurs="0" name="enabled"
 				type="xsd:boolean">

@@ -3,7 +3,9 @@
 	targetNamespace="http://system-availability-config">
 	<xsd:complexType name="EnableStubsResponse">
 		<xsd:sequence>
-			<xsd:element minOccurs="0" name="ack" type="xsd:string"></xsd:element>
+			<xsd:element minOccurs="0" name="response"
+				type="xsd:string">
+			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>
