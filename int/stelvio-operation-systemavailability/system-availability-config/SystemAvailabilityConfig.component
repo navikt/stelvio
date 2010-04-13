@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0" xmlns:ns1="http://system-availability-config/Stubbing" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="SystemAvailabilityConfig" name="SystemAvailabilityConfig">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Stubbing"/>
+  </interfaces>
+  <implementation xsi:type="java:JavaImplementation" class="no.stelvio.common.systemavailability.config.SystemAvailabilityConfigImpl"/>
+</scdl:component>
