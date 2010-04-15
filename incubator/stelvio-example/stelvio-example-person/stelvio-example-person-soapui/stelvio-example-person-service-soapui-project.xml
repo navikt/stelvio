@@ -512,7 +512,7 @@ declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
    <soapenv:Body>
       <per:getPerson>
          <getPersonRequest>
-            <id>100</id>
+            <id>-100</id>
          </getPersonRequest>
       </per:getPerson>
    </soapenv:Body>
