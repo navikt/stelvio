@@ -50,7 +50,8 @@ public class OppdragMediation implements MediationHandler {
 
 	private final static String JMS_REPLY_TO = "JMSOnlineReplyTo";
 	private final static String JMS_REPLY_PROCESS_TO = "JMSProcessReplyTo";
-
+	private final static String JMS_REPLY_BATCH_TO = "JMSBatchReplyTo";
+	
 	/**
 	 * Getter for the routeMessageDestination
 	 * 
@@ -101,6 +102,12 @@ public class OppdragMediation implements MediationHandler {
 					else if (propName.indexOf(JMS_REPLY_PROCESS_TO) >= 0) {
 						// if Kilde is prosessMelding, read the reverse reply from JMS_REPLY_PROCESS_TO
 						if( "prosessMelding".equalsIgnoreCase(kilde)) {
+							setJMSHeaderProperties(propName, (Serializable)ctx.getProperty(propName), message);
+						}
+					}
+					else if (propName.indexOf(JMS_REPLY_BATCH_TO) >= 0) {
+						// if Kilde is batchMelding, read the reverse reply from JMS_REPLY_BATCH_TO
+						if( "batchMelding".equalsIgnoreCase(kilde)) {
 							setJMSHeaderProperties(propName, (Serializable)ctx.getProperty(propName), message);
 						}
 					}
