@@ -11,7 +11,7 @@
 	<artifactId>oppdrag-mediation</artifactId>
 	<name>OppdragMediation</name>
 	<packaging>pom</packaging>
-	<version>1.3</version>
+	<version>1.4-SNAPSHOT</version>
 	
 	<modules>
 		<module>OppdragMediation</module>
@@ -20,8 +20,8 @@
 	</modules>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/oppdrag-mediation-1.3</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/oppdrag-mediation-1.3</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-sibus-mediation/OppdragMediation</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-sibus-mediation/OppdragMediation</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
