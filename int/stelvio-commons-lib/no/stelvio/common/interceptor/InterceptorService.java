@@ -15,8 +15,8 @@ import com.ibm.websphere.sca.scdl.OperationType;
 import com.ibm.websphere.sca.scdl.Reference;
 
 /**
- * Base class that can be extended to implement an interceptor service (a
- * dynamic service implementation purely based on interceptors).
+ * Base class that can be extended to implement an interceptor service (a dynamic service implementation purely based on
+ * interceptors).
  * 
  * @author test@example.com
  */
@@ -34,8 +34,7 @@ public abstract class InterceptorService implements ServiceImplSync, ServiceImpl
 	}
 
 	/**
-	 * Template method that builds the interceptors that applies to this
-	 * service.
+	 * Template method that builds the interceptors that applies to this service.
 	 * 
 	 * @param context
 	 * @return interceptors that apply to this service (never <code>null</code>)

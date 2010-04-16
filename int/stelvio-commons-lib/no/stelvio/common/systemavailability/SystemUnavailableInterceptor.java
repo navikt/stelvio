@@ -18,9 +18,8 @@ import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.scdl.OperationType;
 
 /**
- * Interceptor that analyzes runtime exceptions thrown by the intercepting call.
- * Criteria can be defined that defines the system as unavailable if criteria
- * are met.
+ * Interceptor that analyzes runtime exceptions thrown by the intercepting call. Criteria can be defined that defines the system
+ * as unavailable if criteria are met.
  * 
  * @author person73874c7d71f8
  * @author test@example.com
@@ -109,8 +108,7 @@ public class SystemUnavailableInterceptor extends GenericInterceptor {
 	}
 
 	/**
-	 * Method that recursively checks if a chain of nested exceptions contains
-	 * (one or more) ServiceUnavailableException(s).
+	 * Method that recursively checks if a chain of nested exceptions contains (one or more) ServiceUnavailableException(s).
 	 * 
 	 * @param t
 	 * @return

@@ -19,34 +19,26 @@ import commonj.sdo.Property;
 import commonj.sdo.Type;
 
 /*
- * <p>
- * This is a utility class that provides pretty-print capability for SDOs,
- * useful for debug and trace statements in SCA/SDO code.
- * </p>
+ * <p> This is a utility class that provides pretty-print capability for SDOs, useful for debug and trace statements in SCA/SDO
+ * code. </p>
  * 
- * @usage 
- * <p>
- * commonj.sdo.DataObject obj = ...;
- * no.stelvio.common.bus.util.SDOInspector sdoppt = new SDOInspector(2,"-");
+ * @usage <p> commonj.sdo.DataObject obj = ...; no.stelvio.common.bus.util.SDOInspector sdoppt = new SDOInspector(2,"-");
  * 
- * Alternative 1:
- * String pptString = sdoppt.sdoPrettyPrint(obj); System.out.println(pptString);
+ * Alternative 1: String pptString = sdoppt.sdoPrettyPrint(obj); System.out.println(pptString);
  * 
- * Alternative 2:
- * sdoppt.sdoPrettyPrint(obj,<Your logger/PrintWriter>);
+ * Alternative 2: sdoppt.sdoPrettyPrint(obj,<Your logger/PrintWriter>);
  * 
  * Don't use System.out it is only an example.
  * 
  * </p>
- *  
+ * 
  * @author persona2c5e3b49756 Schnell, test@example.com
- *  
+ * 
  */
 public class SDOInspector {
 
 	/**
-	 * The amount of spaces/characters to increase the indent of each child
-	 * level of the tree
+	 * The amount of spaces/characters to increase the indent of each child level of the tree
 	 */
 	private int baseIndent = 0;
 
@@ -59,23 +51,19 @@ public class SDOInspector {
 
 	/**
 	 * <p>
-	 * Initialize the pretty printer with the indent characters and number of
-	 * times to print for each indent level.
+	 * Initialize the pretty printer with the indent characters and number of times to print for each indent level.
 	 * </p>
 	 * 
 	 * @param indent
-	 *            number of times to repeat the indentString for each child
-	 *            level
+	 *            number of times to repeat the indentString for each child level
 	 * @param indentString
 	 *            string to print representing a child level (eg. " " or "-")
 	 */
 	public SDOInspector(int indent, String indentString) {
-		m_logger.entering("SDOInspector",
-				"SDOInspector(int indent,String indentString)");
+		m_logger.entering("SDOInspector", "SDOInspector(int indent,String indentString)");
 		baseIndent = indent;
 		baseIndentStr = indentString;
-		m_logger.exiting("SDOInspector",
-				"SDOInspector(int indent,String indentString)");
+		m_logger.exiting("SDOInspector", "SDOInspector(int indent,String indentString)");
 	}
 
 	/**
@@ -89,11 +77,9 @@ public class SDOInspector {
 	 *            The PrintWriter to print the output to
 	 */
 	public void sdoPrettyPrint(DataObject sdo, PrintWriter out) {
-		m_logger.entering("SDOInspector",
-				"sdoPrettyPrint(DataObject sdo, PrintWriter out)");
+		m_logger.entering("SDOInspector", "sdoPrettyPrint(DataObject sdo, PrintWriter out)");
 		printDataObject(sdo, null, out, 0, baseIndentStr);
-		m_logger.exiting("SDOPrettyPrinter",
-				"sdoPrettyPrint(DataObject sdo, PrintWriter out)");
+		m_logger.exiting("SDOPrettyPrinter", "sdoPrettyPrint(DataObject sdo, PrintWriter out)");
 	}
 
 	/**
@@ -118,8 +104,7 @@ public class SDOInspector {
 		} catch (IOException e) {
 			m_logger.severe("IOException in writer.close(): " + e.getMessage());
 		}
-		m_logger.exiting("SDOInspector", "sdoPrettyPrint(DataObject sdo)",
-				result);
+		m_logger.exiting("SDOInspector", "sdoPrettyPrint(DataObject sdo)", result);
 		return result;
 	}
 
@@ -135,26 +120,21 @@ public class SDOInspector {
 	 * @param indentStr
 	 *            The string to use for indentation
 	 */
-	protected void printDataObject(DataObject sdo, String instanceName,
-			PrintWriter out, int indent, String indentStr) {
-		m_logger.entering(
-						"SDOInspector",
-						"printDataObject(DataObject sdo, PrintWriter out, int indent, String indentStr)");
+	protected void printDataObject(DataObject sdo, String instanceName, PrintWriter out, int indent, String indentStr) {
+		m_logger.entering("SDOInspector", "printDataObject(DataObject sdo, PrintWriter out, int indent, String indentStr)");
 		Type sdoType = sdo.getType();
 		String sdoName = sdoType.getName();
 		String sdoURI = sdoType.getURI();
 		String sep = getIndentStr(indent, indentStr);
-		out.println(sep + " " + (instanceName != null ? instanceName : sdoName)
-				+ " = " + "[ " + sdoType.getName() + " : " + sdoURI + "]");
+		out.println(sep + " " + (instanceName != null ? instanceName : sdoName) + " = " + "[ " + sdoType.getName() + " : "
+				+ sdoURI + "]");
 		List sdoPropertyList = sdoType.getProperties();
 		Iterator propIterator = sdoPropertyList.iterator();
 		while (propIterator.hasNext()) {
 			Property property = (Property) propIterator.next();
 			printProperty(sdo, property, out, indent + baseIndent, indentStr);
 		}
-		m_logger.exiting(
-						"SDOInspector",
-						"printDataObject(DataObject sdo, PrintWriter out, int indent, String indentStr)");
+		m_logger.exiting("SDOInspector", "printDataObject(DataObject sdo, PrintWriter out, int indent, String indentStr)");
 	}
 
 	/**
@@ -171,23 +151,20 @@ public class SDOInspector {
 	 * @param indentStr
 	 *            The string to use for the indent
 	 */
-	protected void printProperty(DataObject sdo, Property prop,
-			PrintWriter out, int indent, String indentStr) {
-		m_logger.entering(
-						"SDOInspector",
-						"printProperty(DataObject sdo, Property prop, PrintWriter out, int indent, String indentStr)");
+	protected void printProperty(DataObject sdo, Property prop, PrintWriter out, int indent, String indentStr) {
+		m_logger.entering("SDOInspector",
+				"printProperty(DataObject sdo, Property prop, PrintWriter out, int indent, String indentStr)");
 		String name = prop.getName();
 		Object child = sdo.get(name);
 		printObject(child, name, prop, out, indent, indentStr);
 
-		m_logger.exiting(
-						"SDOInspector",
-						"printProperty(DataObject sdo, Property prop, PrintWriter out, int indent, String indentStr)");
+		m_logger.exiting("SDOInspector",
+				"printProperty(DataObject sdo, Property prop, PrintWriter out, int indent, String indentStr)");
 	}
 
 	/**
-	 * Prints an object in the tree. Depending on if the child is a DataObject,
-	 * List or primitive type, it calls the appropriate methods.
+	 * Prints an object in the tree. Depending on if the child is a DataObject, List or primitive type, it calls the appropriate
+	 * methods.
 	 * 
 	 * @param child
 	 *            The object to print
@@ -202,8 +179,7 @@ public class SDOInspector {
 	 * @param indentStr
 	 *            The string to use for indentation
 	 */
-	protected void printObject(Object child, String name, Property prop,
-			PrintWriter out, int indent, String indentStr) {
+	protected void printObject(Object child, String name, Property prop, PrintWriter out, int indent, String indentStr) {
 		String sep = getIndentStr(indent, indentStr);
 		if (child instanceof DataObject) {
 			printDataObject((DataObject) child, name, out, indent, indentStr);
@@ -213,13 +189,11 @@ public class SDOInspector {
 			Iterator it = list.iterator();
 			for (int i = 0; it.hasNext(); i++) {
 				Object listItem = it.next();
-				printObject(listItem, name + "[" + i + "]", prop, out, indent
-						+ baseIndent, indentStr);
+				printObject(listItem, name + "[" + i + "]", prop, out, indent + baseIndent, indentStr);
 			}
 		} else {
-			out.println(sep + " " + name + " = " + child + " ["
-					+ prop.getType().getName() + " : "
-					+ prop.getType().getURI() + "]");
+			out.println(sep + " " + name + " = " + child + " [" + prop.getType().getName() + " : " + prop.getType().getURI()
+					+ "]");
 		}
 	}
 

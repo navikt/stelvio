@@ -18,8 +18,7 @@ package no.stelvio.common.bus.util;
 
 /**
  * <p>
- * Note: This version of StringUtils.java is stripped for
- * no.stelvio.commons.bus.util and contains only the methods needed by
+ * Note: This version of StringUtils.java is stripped for no.stelvio.commons.bus.util and contains only the methods needed by
  * no.stelvio.common.bus.util.DateUtils.
  * </p>
  * 
@@ -29,45 +28,39 @@ package no.stelvio.common.bus.util;
  * 
  * <ul>
  * <li><b>IsEmpty/IsBlank </b>- checks if a String contains text</li>
- * <li><b>Replace/Overlay </b>- Searches a String and replaces one String with
- * another</li>
+ * <li><b>Replace/Overlay </b>- Searches a String and replaces one String with another</li>
  * </ul>
  * 
  * <p>
- * The <code>StringUtils</code> class defines certain words related to String
- * handling.
+ * The <code>StringUtils</code> class defines certain words related to String handling.
  * </p>
  * 
  * <ul>
  * <li>null -<code>null</code></li>
  * <li>empty - a zero-length string (<code>""</code>)</li>
  * <li>space - the space character (<code>' '</code>, char 32)</li>
- * <li>whitespace - the characters defined by
- * {@link Character#isWhitespace(char)}</li>
+ * <li>whitespace - the characters defined by {@link Character#isWhitespace(char)}</li>
  * <li>trim - the characters &lt;= 32 as in {@link String#trim()}</li>
  * </ul>
  * 
  * <p>
- * <code>StringUtils</code> handles <code>null</code> input Strings quietly.
- * That is to say that a <code>null</code> input will return <code>null</code>.
- * Where a <code>boolean</code> or <code>int</code> is being returned
- * details vary by method.
+ * <code>StringUtils</code> handles <code>null</code> input Strings quietly. That is to say that a <code>null</code> input
+ * will return <code>null</code>. Where a <code>boolean</code> or <code>int</code> is being returned details vary by
+ * method.
  * </p>
  * 
  * <p>
- * A side effect of the <code>null</code> handling is that a
- * <code>NullPointerException</code> should be considered a bug in
+ * A side effect of the <code>null</code> handling is that a <code>NullPointerException</code> should be considered a bug in
  * <code>StringUtils</code> (except for deprecated methods).
  * </p>
  * 
  * <p>
- * Methods in this class give sample code to explain their operation. The symbol
- * <code>*</code> is used to indicate any input including <code>null</code>.
+ * Methods in this class give sample code to explain their operation. The symbol <code>*</code> is used to indicate any input
+ * including <code>null</code>.
  * </p>
  * 
  * @see java.lang.String
- * @author <a href="http://jakarta.apache.org/turbine/">Apache Jakarta Turbine
- *         </a>
+ * @author <a href="http://jakarta.apache.org/turbine/">Apache Jakarta Turbine </a>
  * @author GenerationJavaCore
  * @author <a href="mailto:test@example.com">Jon S. Stevens </a>
  * @author <a href="mailto:test@example.com">Daniel Rall </a>
@@ -90,21 +83,19 @@ package no.stelvio.common.bus.util;
  */
 public class StringUtils {
 
-	//	This is a stripped version of org.apache.commons.lang.StringUtils which
+	// This is a stripped version of org.apache.commons.lang.StringUtils which
 	// only contains
-	//	the methods needed by no.stelvio.common.bus.util.DateUtil.
-	//	Added to stelvio-commons-lib 07.05.2007 by Dag Christoffersen
+	// the methods needed by no.stelvio.common.bus.util.DateUtil.
+	// Added to stelvio-commons-lib 07.05.2007 by Dag Christoffersen
 
 	/**
 	 * <p>
-	 * <code>StringUtils</code> instances should NOT be constructed in
-	 * standard programming. Instead, the class should be used as
-	 * <code>StringUtils.trim(" foo ");</code>.
+	 * <code>StringUtils</code> instances should NOT be constructed in standard programming. Instead, the class should be used
+	 * as <code>StringUtils.trim(" foo ");</code>.
 	 * </p>
 	 * 
 	 * <p>
-	 * This constructor is public to permit tools that require a JavaBean
-	 * instance to operate.
+	 * This constructor is public to permit tools that require a JavaBean instance to operate.
 	 * </p>
 	 */
 	public StringUtils() {
@@ -112,7 +103,7 @@ public class StringUtils {
 	}
 
 	// Empty checks
-	//-----------------------------------------------------------------------
+	// -----------------------------------------------------------------------
 	/**
 	 * <p>
 	 * Checks if a String is empty ("") or null.
@@ -131,8 +122,8 @@ public class StringUtils {
 	 * </pre>
 	 * 
 	 * <p>
-	 * NOTE: This method changed in Lang version 2.0. It no longer trims the
-	 * String. That functionality is available in isBlank().
+	 * NOTE: This method changed in Lang version 2.0. It no longer trims the String. That functionality is available in
+	 * isBlank().
 	 * </p>
 	 * 
 	 * @param str
@@ -180,8 +171,7 @@ public class StringUtils {
 
 	/**
 	 * <p>
-	 * Replaces multiple characters in a String in one go. This method can also
-	 * be used to delete characters.
+	 * Replaces multiple characters in a String in one go. This method can also be used to delete characters.
 	 * </p>
 	 * 
 	 * <p>
@@ -190,16 +180,14 @@ public class StringUtils {
 	 * </p>
 	 * 
 	 * <p>
-	 * A <code>null</code> string input returns <code>null</code>. An empty
-	 * ("") string input returns an empty string. A null or empty set of search
-	 * characters returns the input string.
+	 * A <code>null</code> string input returns <code>null</code>. An empty ("") string input returns an empty string. A
+	 * null or empty set of search characters returns the input string.
 	 * </p>
 	 * 
 	 * <p>
-	 * The length of the search characters should normally equal the length of
-	 * the replace characters. If the search characters is longer, then the
-	 * extra search characters are deleted. If the search characters is shorter,
-	 * then the extra replace characters are ignored.
+	 * The length of the search characters should normally equal the length of the replace characters. If the search characters
+	 * is longer, then the extra search characters are deleted. If the search characters is shorter, then the extra replace
+	 * characters are ignored.
 	 * </p>
 	 * 
 	 * <pre>
@@ -227,8 +215,7 @@ public class StringUtils {
 	 * @return modified String, <code>null</code> if null string input
 	 * @since 2.0
 	 */
-	public static String replaceChars(String str, String searchChars,
-			String replaceChars) {
+	public static String replaceChars(String str, String searchChars, String replaceChars) {
 		if (isEmpty(str) || isEmpty(searchChars)) {
 			return str;
 		}
@@ -287,9 +274,8 @@ public class StringUtils {
 	 * @param str
 	 *            the String to delete whitespace from, may be null
 	 * 
-	 * @return the String without whitespaces, <code>null</code> if null
-	 *         String input
-	 *  
+	 * @return the String without whitespaces, <code>null</code> if null String input
+	 * 
 	 */
 
 	public static String deleteWhitespace(String str) {
@@ -358,7 +344,7 @@ public class StringUtils {
 	 *            the String to check, may be null
 	 * 
 	 * @return <code>true</code> if only contains digits, and is non-null
-	 *  
+	 * 
 	 */
 
 	public static boolean isNumeric(String str) {
@@ -384,35 +370,29 @@ public class StringUtils {
 		return true;
 
 	}
-	
-	/**
-     * This method ensures that the output String has only
-     * valid XML unicode characters as specified by the
-     * XML 1.0 standard. For reference, please see
-     * <a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the
-     * standard</a>. This method will return an empty
-     * String if the input is null or empty.
-     *
-     * @param in The String whose non-valid characters we want to remove.
-     * @return The in String, stripped of non-valid characters.
-     */
-    public static String stripNonValidXMLCharacters(String in) {
-        StringBuffer out = new StringBuffer(); // Used to hold the output.
-        char current; // Used to reference the current character.
- 
-        if (in == null || ("".equals(in))) return ""; // vacancy test.
-        for (int i = 0; i < in.length(); i++) {
-            current = in.charAt(i); // NOTE: No IndexOutOfBoundsException caught here; it should not happen.
-            if ((current == 0x9) ||
-                (current == 0xA) ||
-                (current == 0xD) ||
-                ((current >= 0x20) && (current <= 0xD7FF)) ||
-                ((current >= 0xE000) && (current <= 0xFFFD)) ||
-                ((current >= 0x10000) && (current <= 0x10FFFF)))
-                out.append(current);
-        }
-        return out.toString();
-    }
 
+	/**
+	 * This method ensures that the output String has only valid XML unicode characters as specified by the XML 1.0 standard.
+	 * For reference, please see <a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the standard</a>. This method
+	 * will return an empty String if the input is null or empty.
+	 * 
+	 * @param in
+	 *            The String whose non-valid characters we want to remove.
+	 * @return The in String, stripped of non-valid characters.
+	 */
+	public static String stripNonValidXMLCharacters(String in) {
+		StringBuffer out = new StringBuffer(); // Used to hold the output.
+		char current; // Used to reference the current character.
+
+		if (in == null || ("".equals(in)))
+			return ""; // vacancy test.
+		for (int i = 0; i < in.length(); i++) {
+			current = in.charAt(i); // NOTE: No IndexOutOfBoundsException caught here; it should not happen.
+			if ((current == 0x9) || (current == 0xA) || (current == 0xD) || ((current >= 0x20) && (current <= 0xD7FF))
+					|| ((current >= 0xE000) && (current <= 0xFFFD)) || ((current >= 0x10000) && (current <= 0x10FFFF)))
+				out.append(current);
+		}
+		return out.toString();
+	}
 
 }

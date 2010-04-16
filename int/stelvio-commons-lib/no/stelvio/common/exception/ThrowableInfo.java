@@ -16,7 +16,7 @@ public class ThrowableInfo implements Serializable {
 	private String className;
 	private String localizedMessage;
 	private StackTraceElement[] stackTrace;
-	
+
 	public ThrowableInfo(Throwable t) {
 		this(t.getClass().getName(), t.getLocalizedMessage(), t.getStackTrace());
 	}

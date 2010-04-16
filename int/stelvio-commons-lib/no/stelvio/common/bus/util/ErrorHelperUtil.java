@@ -29,9 +29,8 @@ import commonj.sdo.DataObject;
 
 /**
  * <p>
- * This is a utility class that provides helper methods around common error
- * handling with WPS, useful for different purpose as convert
- * ServiceBusinessException or ServiceRuntimeExcpetion to faults.
+ * This is a utility class that provides helper methods around common error handling with WPS, useful for different purpose as
+ * convert ServiceBusinessException or ServiceRuntimeExcpetion to faults.
  * </p>
  * 
  * @author persona2c5e3b49756 Schnell, test@example.com
@@ -72,14 +71,11 @@ public class ErrorHelperUtil {
 	 * @param faultBOName
 	 *            the name of the fault object
 	 * @param errorType
-	 *            indicates whether the fault is a ServiceBusinessException
-	 *            (Business) or ServiceRuntimeException (Runtime)
+	 *            indicates whether the fault is a ServiceBusinessException (Business) or ServiceRuntimeException (Runtime)
 	 * @param errorMessage
-	 *            enables the user to provide an errorMessage in case an
-	 *            exception is not available
+	 *            enables the user to provide an errorMessage in case an exception is not available
 	 * @param rootCause
-	 *            enables the user to provide a rootCause in case an exception
-	 *            is not available
+	 *            enables the user to provide a rootCause in case an exception is not available
 	 * @return the fault business object
 	 */
 	public static DataObject getFaultBO(Exception e, String module, String faultBONamespace, String faultBOName,
@@ -103,8 +99,7 @@ public class ErrorHelperUtil {
 
 	/**
 	 * 
-	 * Method used to create a fault object when a ServiceRuntimeException does
-	 * exist.
+	 * Method used to create a fault object when a ServiceRuntimeException does exist.
 	 * 
 	 * @param sre
 	 *            the caught ServiceRuntimeException
@@ -123,8 +118,7 @@ public class ErrorHelperUtil {
 
 	/**
 	 * 
-	 * Method used to create a fault object when a ServiceRuntimeException does
-	 * exist.
+	 * Method used to create a fault object when a ServiceRuntimeException does exist.
 	 * 
 	 * @param sre
 	 *            the caught ServiceRuntimeException
@@ -135,11 +129,9 @@ public class ErrorHelperUtil {
 	 * @param faultBOName
 	 *            the name of the fault object
 	 * @param errorMessage
-	 *            enables the user to provide an errorMessage as there is no SRE
-	 *            available
+	 *            enables the user to provide an errorMessage as there is no SRE available
 	 * @param rootCause
-	 *            enables the user to provide an rootCause as there is no SRE
-	 *            available
+	 *            enables the user to provide an rootCause as there is no SRE available
 	 * @return the fault business object
 	 */
 	public static DataObject getRuntimeFaultBO(ServiceRuntimeException sre, String module, String faultBONamespace,
@@ -175,11 +167,9 @@ public class ErrorHelperUtil {
 	 * @param faultBOName
 	 *            the name of the fault object
 	 * @param errorMessage
-	 *            enables the user to provide an errorMessage as there is no SRE
-	 *            available
+	 *            enables the user to provide an errorMessage as there is no SRE available
 	 * @param rootCause
-	 *            enables the user to provide an rootCause as there is no SRE
-	 *            available
+	 *            enables the user to provide an rootCause as there is no SRE available
 	 * @return the fault business object
 	 */
 	public static DataObject getBusinessFaultBO(String module, String faultBONamespace, String faultBOName,
@@ -202,7 +192,7 @@ public class ErrorHelperUtil {
 		}
 		return e;
 	}
-	
+
 	/**
 	 * @param t
 	 * @return returns the lowes Throwable in the hierachy
@@ -218,8 +208,9 @@ public class ErrorHelperUtil {
 
 	/**
 	 * 
-	 * Provides the SCAContext as a string reprensentation of a component
-	 * The method has a weakness because it just returns the first IF and REF for SRE SCA context use buildErrorSource 
+	 * Provides the SCAContext as a string reprensentation of a component The method has a weakness because it just returns the
+	 * first IF and REF for SRE SCA context use buildErrorSource
+	 * 
 	 * @param module
 	 *            the name of the module to get the context information from
 	 * @return the context information of the specified module
@@ -278,27 +269,24 @@ public class ErrorHelperUtil {
 		e.printStackTrace(new PrintWriter(sw));
 		return sw.toString();
 	}
-	
+
 	/**
 	 * <p>
-	 * Return  the business fault name of the sbe
+	 * Return the business fault name of the sbe
 	 * </p>
 	 * 
 	 * @param sbe
-	 *			The business exception
-	 * @return 
-	 * 			Fault name of the SBE
+	 *            The business exception
+	 * @return Fault name of the SBE
 	 */
-	public static String getFaultName(ServiceBusinessException sbe)
-	{
-		DataObject dao = (DataObject)sbe.getData();
+	public static String getFaultName(ServiceBusinessException sbe) {
+		DataObject dao = (DataObject) sbe.getData();
 		return dao.getType().getName();
 	}
-	
-	
+
 	/**
 	 * @param sre
-	 * @return string as SCA context: [invoke,<methodname>] {<modulename>}<componentname>.component#<interfacename>Partner => {<modulname>}<componentname>.component 
+	 * @return string as SCA context: [invoke,<methodname>] {<modulename>}<componentname>.component#<interfacename>Partner => {<modulname>}<componentname>.component
 	 */
 	public static String buildErrorSource(ServiceRuntimeException sre) {
 		List serviceContext = sre.getServiceContext();

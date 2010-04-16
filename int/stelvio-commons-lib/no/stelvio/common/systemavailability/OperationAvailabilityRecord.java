@@ -10,9 +10,8 @@ import java.util.Date;
 
 /**
  * @author utvikler
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * 
+ * TODO To change the template for this generated type comment go to Window - Preferences - Java - Code Style - Code Templates
  */
 public class OperationAvailabilityRecord {
 	public boolean unAvailable;
@@ -22,24 +21,26 @@ public class OperationAvailabilityRecord {
 	public Date unavailableTo;
 	public boolean stubbed;
 	public boolean recordStubData;
-	
-	public String getStubbedString(){
+
+	public String getStubbedString() {
 		if (stubbed)
 			return "YES";
 		return " ";
 	}
-	
-	public String getUnavailableString(){
+
+	public String getUnavailableString() {
 		if (unAvailable)
 			return "YES";
 		return " ";
 	}
-	public String getRecordStubDataString(){
+
+	public String getRecordStubDataString() {
 		if (recordStubData)
 			return "YES";
 		return " ";
 	}
-	public String getUnavailableReason(){
+
+	public String getUnavailableReason() {
 		return unavailableReason;
 	}
 }

@@ -11,12 +11,10 @@ import no.stelvio.common.interceptor.InterceptorServiceContext;
 import com.ibm.websphere.sca.scdl.OperationType;
 
 /**
- * This class can be used as a base class for components that wants to create
- * (or update) StelvioContext.
+ * This class can be used as a base class for components that wants to create (or update) StelvioContext.
  * 
- * When subclassing, the referenced methods will have to be overridden with
- * default behavior (call to the corresponding method in the superclass).
- * Example: <code>
+ * When subclassing, the referenced methods will have to be overridden with default behavior (call to the corresponding method
+ * in the superclass). Example: <code>
  * @Override
  *	public Object invoke(OperationType operationType, Object input) throws ServiceBusinessException {
  *		return super.invoke(operationType, input);
@@ -24,11 +22,9 @@ import com.ibm.websphere.sca.scdl.OperationType;
  * </code>
  * 
  * @see com.ibm.websphere.sca.ServiceImplSync#invoke(OperationType, Object)
- * @see com.ibm.websphere.sca.ServiceImplAsync#invokeAsync(OperationType,
- *      Object, com.ibm.websphere.sca.ServiceCallback,
+ * @see com.ibm.websphere.sca.ServiceImplAsync#invokeAsync(OperationType, Object, com.ibm.websphere.sca.ServiceCallback,
  *      com.ibm.websphere.sca.Ticket)
- * @see com.ibm.websphere.sca.ServiceCallback#onInvokeResponse(com.ibm.websphere.sca.Ticket,
- *      Object, Exception)
+ * @see com.ibm.websphere.sca.ServiceCallback#onInvokeResponse(com.ibm.websphere.sca.Ticket, Object, Exception)
  * @author test@example.com
  */
 public abstract class SetStelvioContextComponent extends InterceptorService implements Interceptor {

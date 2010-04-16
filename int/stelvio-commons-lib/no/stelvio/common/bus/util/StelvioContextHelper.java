@@ -8,15 +8,14 @@ import no.stelvio.common.context.StelvioContextRepository;
 
 /**
  * <p>
- * This is a utility class that provides helper methods around StelvioContext,
- * useful for different purposes, such as getting a userId, the WBISessionId or
- * other funtionality around StelvioContext
+ * This is a utility class that provides helper methods around StelvioContext, useful for different purposes, such as getting a
+ * userId, the WBISessionId or other funtionality around StelvioContext
  * </p>
  * 
  * @usage
  * <p>
- * no.stelvio.common.bus.util.StelvioContextHelper stelvioCtx = new
- * StelvioContextHelper(); String myUserId = stelvioCtx.getUserId();
+ * no.stelvio.common.bus.util.StelvioContextHelper stelvioCtx = new StelvioContextHelper(); String myUserId =
+ * stelvioCtx.getUserId();
  * </p>
  * 
  * @author persona2c5e3b49756 Schnell, test@example.com

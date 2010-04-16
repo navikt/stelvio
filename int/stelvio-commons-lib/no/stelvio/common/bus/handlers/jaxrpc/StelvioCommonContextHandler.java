@@ -97,14 +97,12 @@ public class StelvioCommonContextHandler extends GenericHandler {
 
 	/**
 	 * <p>
-	 * This method is called by handleRequest method and it retrieves the SOAP
-	 * headers in the message.
+	 * This method is called by handleRequest method and it retrieves the SOAP headers in the message.
 	 * </p>
 	 * 
 	 * @param SOAPHeader
 	 *            The SOAPHeader
-	 * @return boolean true = SOAPHeader with specific name exists false =
-	 *         SOAPHeader with specific name doesn't exist
+	 * @return boolean true = SOAPHeader with specific name exists false = SOAPHeader with specific name doesn't exist
 	 */
 	private static boolean processSOAPHeader(SOAPHeader sh) {
 		final String methodName = "processSOAPHeader";
@@ -149,14 +147,12 @@ public class StelvioCommonContextHandler extends GenericHandler {
 
 	/**
 	 * <p>
-	 * This method retrieves the necessary information for the request header
-	 * and validates it.
+	 * This method retrieves the necessary information for the request header and validates it.
 	 * </p>
 	 * 
 	 * @param SOAPElement
 	 *            The SOAPElement
-	 * @return boolean true = SOAPElement with specific name exists false =
-	 *         SOAPElement with specific name doesn't exist
+	 * @return boolean true = SOAPElement with specific name exists false = SOAPElement with specific name doesn't exist
 	 */
 	private static boolean processSOAPHeaderInfo(SOAPElement e) {
 		final String methodName = "processSOAPHeaderInfo";

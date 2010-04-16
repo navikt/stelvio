@@ -8,9 +8,8 @@ import com.ibm.websphere.sca.sdo.DataFactory;
 import commonj.sdo.DataObject;
 
 /**
- * Simple utility class that converts ServiceRuntimeException to fault business
- * object. This class is typically used in the consumer integration layer to
- * avoid throwing runtime exception out of the integration platform.
+ * Simple utility class that converts ServiceRuntimeException to fault business object. This class is typically used in the
+ * consumer integration layer to avoid throwing runtime exception out of the integration platform.
  * 
  * @author test@example.com
  */

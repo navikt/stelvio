@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Exception wrapper class used to hold (properties of) a chain of nested
- * exceptions. This class is used to avoid potential marshalling exceptions when
- * propagated through the integration platform (bus)
+ * Exception wrapper class used to hold (properties of) a chain of nested exceptions. This class is used to avoid potential
+ * marshalling exceptions when propagated through the integration platform (bus)
  * 
  * @author test@example.com
  */

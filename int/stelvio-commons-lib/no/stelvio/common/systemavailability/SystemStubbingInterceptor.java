@@ -30,8 +30,7 @@ import commonj.sdo.DataObject;
 import commonj.sdo.Type;
 
 /**
- * Interceptor that can simulate a system. It also has the ability to record
- * data that can be used in simulation.
+ * Interceptor that can simulate a system. It also has the ability to record data that can be used in simulation.
  * 
  * @author person73874c7d71f8
  * @author test@example.com
@@ -217,11 +216,9 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	 * @param input
 	 * @return the DataObject representation of the matched test data
 	 * @throws ServiceBusinessException
-	 *             if matching test data is an exception (intentionally recorded
-	 *             to return exception)
+	 *             if matching test data is an exception (intentionally recorded to return exception)
 	 */
-	private DataObject findMatchingTestData(OperationType operationType, DataObject input)
-			throws ServiceBusinessException {
+	private DataObject findMatchingTestData(OperationType operationType, DataObject input) throws ServiceBusinessException {
 		File dir = getDirectory(operationType);
 		File[] requestFiles = dir.listFiles(new FileFilter() {
 			public boolean accept(File pathname) {
@@ -272,9 +269,8 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	}
 
 	/**
-	 * Reads the xml file and creates the dataObject of the requested Type. If
-	 * the response object is a StelvioStringWrapper, the String vaule is
-	 * unwrapped and put into the response.
+	 * Reads the xml file and creates the dataObject of the requested Type. If the response object is a StelvioStringWrapper,
+	 * the String vaule is unwrapped and put into the response.
 	 * 
 	 * @param responseFile -
 	 *            the file to create the response object from

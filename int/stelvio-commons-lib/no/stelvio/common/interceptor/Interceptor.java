@@ -3,8 +3,7 @@ package no.stelvio.common.interceptor;
 import com.ibm.websphere.sca.scdl.OperationType;
 
 /**
- * This interface can be implemented by classes that want to intercept calls
- * through SCA service components.
+ * This interface can be implemented by classes that want to intercept calls through SCA service components.
  * 
  * @author test@example.com
  */

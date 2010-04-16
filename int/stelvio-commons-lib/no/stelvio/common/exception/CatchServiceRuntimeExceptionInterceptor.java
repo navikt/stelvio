@@ -17,12 +17,10 @@ import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.scdl.OperationType;
 
 /**
- * Interceptor implementation that transforms service runtime exceptions (root
- * and nested) so that the exception can safely propagate through the
- * integration platform (bus) without any marshalling problems.
+ * Interceptor implementation that transforms service runtime exceptions (root and nested) so that the exception can safely
+ * propagate through the integration platform (bus) without any marshalling problems.
  * 
- * This class is typically used in the producer layer as an "exception shield"
- * towards the unrelying service.
+ * This class is typically used in the producer layer as an "exception shield" towards the unrelying service.
  * 
  * @author test@example.com
  */
@@ -133,7 +131,8 @@ public class CatchServiceRuntimeExceptionInterceptor implements Interceptor {
 	private List<Constructor<? extends Throwable>> getConstructorCandidates(Class<? extends Throwable> throwableClass) {
 		List<Constructor<? extends Throwable>> constructors = new ArrayList<Constructor<? extends Throwable>>();
 
-		for (Constructor<? extends Throwable> constructor : (Constructor<? extends Throwable>[]) throwableClass.getConstructors()) {
+		for (Constructor<? extends Throwable> constructor : (Constructor<? extends Throwable>[]) throwableClass
+				.getConstructors()) {
 			Class[] parameterTypes = constructor.getParameterTypes();
 			switch (parameterTypes.length) {
 			case 0:

@@ -1,6 +1,5 @@
 package no.stelvio.domain.person;
 
-
 /**
  * Exception thrown as a result of Pid validation failure.
  * 

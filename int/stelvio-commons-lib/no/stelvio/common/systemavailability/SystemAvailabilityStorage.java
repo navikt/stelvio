@@ -23,8 +23,7 @@ import commonj.sdo.DataObject;
 /**
  * @author utvikler
  * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
+ * TODO To change the template for this generated type comment go to Window - Preferences - Java - Code Style - Code Templates
  */
 public class SystemAvailabilityStorage {
 	String saDirName = null;
@@ -64,7 +63,7 @@ public class SystemAvailabilityStorage {
 		for (int i = 0; i < sysList.length; i++) {
 			if (sysList[i].isFile())
 				ret.add(sysList[i].getName().substring(0, sysList[i].getName().length() - 4)); // Deducts
-																								// .xml-suffix
+			// .xml-suffix
 		}
 		return ret;
 	}
@@ -95,10 +94,10 @@ public class SystemAvailabilityStorage {
 			}
 			obj.setList("Operations", operationList);
 			File f = new File(saDirName, record.systemName + ".xml"); // May
-																		// not
-																		// handle
-																		// special
-																		// characters
+			// not
+			// handle
+			// special
+			// characters
 			FileOutputStream fos;
 			fos = new FileOutputStream(f);
 			xmlSerializerService.writeDataObject(obj, "http://no/stelvio/systemavailability/", "SystemAvailabilityRecord", fos);

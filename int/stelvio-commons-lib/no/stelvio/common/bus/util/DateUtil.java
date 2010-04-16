@@ -13,7 +13,7 @@ import java.util.TimeZone;
 
 /**
  * Utility for localized parsing and formatting of dates.
- *
+ * 
  * @author person7553f5959484, Accenture
  * @author persone5d69f3729a8, Accenture
  * @author persond56073296bff R? Accenture
@@ -24,7 +24,7 @@ public final class DateUtil {
 
 	/** Used for testing the earlist year accepted for parsing. */
 	private static final int EARLIEST_YEAR = 1000;
-    /** Used for calculating months between 2 dates. */
+	/** Used for calculating months between 2 dates. */
 	private static final int MONTHS_IN_YEAR = 12;
 
 	/** Legal date formats */
@@ -53,23 +53,26 @@ public final class DateUtil {
 
 	/**
 	 * Parse a string in following formats:
-	 *
+	 * 
 	 * <ul>
-	 *  <li>ddMMyy
-	 *  <li>dd.MM.yy
-	 *  <li>dd.MM.yyyy
-	 *  <li>dd/MM/yy
-	 *  <li>dd/MM/yyyy
-	 *  <li>dd\MM\yy
-	 *  <li>dd\MM\yyyy
-	 *  <li>dd-MM-yy
-	 *  <li>dd-MM-yyyy
+	 * <li>ddMMyy
+	 * <li>dd.MM.yy
+	 * <li>dd.MM.yyyy
+	 * <li>dd/MM/yy
+	 * <li>dd/MM/yyyy
+	 * <li>dd\MM\yy
+	 * <li>dd\MM\yyyy
+	 * <li>dd-MM-yy
+	 * <li>dd-MM-yyyy
 	 * </ul>
-	 *
-	 * @param input the String to parse
-	 * @param allowNull true to allow empty String
+	 * 
+	 * @param input
+	 *            the String to parse
+	 * @param allowNull
+	 *            true to allow empty String
 	 * @return a Date or null if input is null and it is allowed.
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parseInputString(final String input, final boolean allowNull) throws IllegalArgumentException {
 		if (StringUtils.isBlank(input)) {
@@ -93,10 +96,12 @@ public final class DateUtil {
 
 	/**
 	 * Parse a String into a Date.
-	 *
-	 * @param input the String to parse
+	 * 
+	 * @param input
+	 *            the String to parse
 	 * @return a Date, null if input is null or an empty String
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parse(final String input) throws IllegalArgumentException {
 		return parse(input, true);
@@ -104,11 +109,14 @@ public final class DateUtil {
 
 	/**
 	 * Parse a String into a Date.
-	 *
-	 * @param input the String to parse
-	 * @param allowNull true to allow empty String
+	 * 
+	 * @param input
+	 *            the String to parse
+	 * @param allowNull
+	 *            true to allow empty String
 	 * @return a Date, null if input is null or an empty String
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parse(final String input, final boolean allowNull) throws IllegalArgumentException {
 		return parseCommon(input, allowNull, DATE_FORMAT, true, true, false);
@@ -116,10 +124,12 @@ public final class DateUtil {
 
 	/**
 	 * Parser dato angitt som string fra TPS (formatet er yyyy-MM-dd)
-	 *
-	 * @param input dato som en streng
+	 * 
+	 * @param input
+	 *            dato som en streng
 	 * @return Date objekt som er parset fra strengen
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parseTpsDate(final String input) throws IllegalArgumentException {
 		return parseCommon(input, true, TPS_DATE_FORMAT, false, true, false);
@@ -127,10 +137,12 @@ public final class DateUtil {
 
 	/**
 	 * Parse a CICS date into a Java Date.
-	 *
-	 * @param input the String to parse.
+	 * 
+	 * @param input
+	 *            the String to parse.
 	 * @return a Date, null if input is null or an empty String.
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parseCicsDate(final String input) throws IllegalArgumentException {
 		return parseCommon(input, true, CICS_DATE_FORMAT, true, true, false);
@@ -138,10 +150,12 @@ public final class DateUtil {
 
 	/**
 	 * Parse a TSS date into a Java Date.
-	 *
-	 * @param input the String to parse.
+	 * 
+	 * @param input
+	 *            the String to parse.
 	 * @return a Date, null if input is null or an empty String.
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parseTSSDate(final String input) throws IllegalArgumentException {
 		return parseCommon(input, true, TSS_DATE_FORMAT, true, true, false);
@@ -149,10 +163,12 @@ public final class DateUtil {
 
 	/**
 	 * Parse a TSS tid_reg into a Java Date.
-	 *
-	 * @param input the String to parse.
+	 * 
+	 * @param input
+	 *            the String to parse.
 	 * @return a Date, null if input is null or an empty String.
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parseTSSTidReg(final String input) throws IllegalArgumentException {
 		return parseCommon(input, true, TSS_TID_REG_FORMAT, true, false, false);
@@ -160,11 +176,14 @@ public final class DateUtil {
 
 	/**
 	 * Parse a String into a Date with batch month pattern (yyyyMM).
-	 *
-	 * @param input the String to parse
-	 * @param allowNull true to allow empty String
+	 * 
+	 * @param input
+	 *            the String to parse
+	 * @param allowNull
+	 *            true to allow empty String
 	 * @return a Date, null if input is null or an empty String
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parseBatchMonth(final String input) throws IllegalArgumentException {
 		return parseCommon(input, true, BATCH_MONTH_FORMAT, true, true, true);
@@ -172,22 +191,27 @@ public final class DateUtil {
 
 	/**
 	 * Parse a string in format yyyy-MM-dd HH:mm:ss into a Date
-	 *
-	 * @param input the String to parse
-	 * @param allowNull true to allow empty String
+	 * 
+	 * @param input
+	 *            the String to parse
+	 * @param allowNull
+	 *            true to allow empty String
 	 * @return a Date, null if input is null or an empty String
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parseDB2String(final String input) throws IllegalArgumentException {
 		return parseCommon(input, true, DB2_DATE_FORMAT, true, false, false);
 	}
-	
+
 	/**
 	 * Parse a string in format yyyy-MM-dd'T'HH:mm:ss'Z' GMT-time into a Date locale time
-	 *
-	 * @param input the String to parse
+	 * 
+	 * @param input
+	 *            the String to parse
 	 * @return a Date, null if input is null or an empty String
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
 	public static Date parseWIDString(final String input) throws IllegalArgumentException {
 
@@ -197,15 +221,15 @@ public final class DateUtil {
 			return output;
 		} else {
 			try {
-				//Workaround for handling datetime's without milliseconds (.SSS)
-				//checks if '.' is part of the input datestring
+				// Workaround for handling datetime's without milliseconds (.SSS)
+				// checks if '.' is part of the input datestring
 				String format = WID_DATE_FORMAT;
-				if(input.length()>19 && !".".equalsIgnoreCase(input.substring(19,20))){
+				if (input.length() > 19 && !".".equalsIgnoreCase(input.substring(19, 20))) {
 					format = WID_DATE_FORMAT_NO_MILLIS;
 				}
-				//parse to a date in GMT-time, then change to local-time through calendar.
+				// parse to a date in GMT-time, then change to local-time through calendar.
 				DateFormat dateFormat = createDateFormat(format);
-				
+
 				dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 				Date gmtDate = dateFormat.parse(input);
 				Calendar cal = Calendar.getInstance(TimeZone.getDefault());
@@ -219,8 +243,9 @@ public final class DateUtil {
 
 	/**
 	 * Check if the date is last day of month.
-	 *
-	 * @param date the date to check.
+	 * 
+	 * @param date
+	 *            the date to check.
 	 * @return true if date is last day of month.
 	 */
 	public static boolean isLastDayOfMonth(Date date) {
@@ -238,8 +263,9 @@ public final class DateUtil {
 
 	/**
 	 * Format a Date into a localized String (dd.MM.yyyy).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date or empty string for null input or "eternity" (31.12.9999).
 	 * @see #ETERNITY
 	 */
@@ -253,8 +279,9 @@ public final class DateUtil {
 
 	/**
 	 * Formats a Date into a monthly period format (MM.yyyy).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatMonthlyPeriod(final Date input) {
@@ -264,17 +291,18 @@ public final class DateUtil {
 			return createDateFormat(MONTHLY_PERIOD_FORMAT).format(input);
 		}
 	}
-	
+
 	/**
 	 * Formats a Date into WID format, in GMT-time (XSD-DateTime: yyyy-MM-dd'T'HH:mm:ss'Z').
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
-	 *  
+	 * 
 	 * 
 	 */
 	public static String formatWIDString(final Date input) {
-		if(input == null){
+		if (input == null) {
 			return null;
 		}
 		DateFormat dateFormat = createDateFormat(WID_DATE_FORMAT);
@@ -284,40 +312,41 @@ public final class DateUtil {
 
 	/**
 	 * Formats a Date into DB2 format (yyyy-MM-dd HH:mm:ss).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatDB2String(final Date input) {
-		if(input == null){
+		if (input == null) {
 			return null;
 		}
 		return createDateFormat(DB2_DATE_FORMAT).format(input);
 	}
-	
-
 
 	/**
 	 * Formats a Date into CICS format (yyyyMMdd).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatCICSString(final Date input) {
-		if(input == null){
+		if (input == null) {
 			return null;
 		}
 		return createDateFormat(CICS_DATE_FORMAT).format(input);
 	}
-	
+
 	/**
 	 * Formats a Date into Brevgruppe format (ddMMyyyy).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatBrevgruppeString(final Date input) {
-		if(input == null){
+		if (input == null) {
 			return null;
 		}
 		return createDateFormat(BREVGRRUPPE_DATA_FORMAT).format(input);
@@ -325,8 +354,9 @@ public final class DateUtil {
 
 	/**
 	 * Formats a Date into TSS format (yyyyMMdd).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatTSSString(final Date input) {
@@ -340,8 +370,9 @@ public final class DateUtil {
 
 	/**
 	 * Formats a Date into time of day format (MMmmss).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatTimeOfDay(final Date input) {
@@ -355,12 +386,13 @@ public final class DateUtil {
 
 	/**
 	 * Formats a Date into TSS format (yyyyMMdd).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatTSSTidRegString(final Date input) {
-		if(input == null){
+		if (input == null) {
 			return null;
 		}
 		return createDateFormat(TSS_TID_REG_FORMAT).format(input);
@@ -368,12 +400,13 @@ public final class DateUtil {
 
 	/**
 	 * Formats a Date into Oppdrag format (yyyy-MM-dd).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatOppdragString(final Date input) {
-		if(input == null){
+		if (input == null) {
 			return null;
 		}
 		return createDateFormat(OPPDRAG_DATE_FORMAT).format(input);
@@ -381,12 +414,13 @@ public final class DateUtil {
 
 	/**
 	 * Formats a Date into batch month format (yyyyMM).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatBatchMonthString(final Date input) {
-		if(input == null){
+		if (input == null) {
 			return null;
 		}
 		return createDateFormat(BATCH_MONTH_FORMAT).format(input);
@@ -394,12 +428,13 @@ public final class DateUtil {
 
 	/**
 	 * Formats a Data into TPS born date format (ddMMyy).
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatTpsBornDateString(final Date input) {
-		if(input == null){
+		if (input == null) {
 			return null;
 		}
 		return createDateFormat(TPS_BORN_DATE_FORMAT).format(input);
@@ -407,8 +442,9 @@ public final class DateUtil {
 
 	/**
 	 * Formats a input String to date format dd.mm.yyyy
-	 *
-	 * @param input the date to format.
+	 * 
+	 * @param input
+	 *            the date to format.
 	 * @return the formatted date.
 	 */
 	public static String formatInputDateString(final String input) {
@@ -423,8 +459,9 @@ public final class DateUtil {
 
 	/**
 	 * Checks if the day of the specified date is today's day.
-	 *
-	 * @param date the date to check.
+	 * 
+	 * @param date
+	 *            the date to check.
 	 * @return true if the specified date's day is today's day, false otherwise.
 	 */
 	public static boolean isToday(final Date date) {
@@ -433,8 +470,9 @@ public final class DateUtil {
 
 	/**
 	 * Checks if the day of the specified date is after today's day.
-	 *
-	 * @param date the date to check.
+	 * 
+	 * @param date
+	 *            the date to check.
 	 * @return true if specified date is after today's date, false otherwise.
 	 */
 	public static boolean isAfterToday(final Date date) {
@@ -447,8 +485,9 @@ public final class DateUtil {
 
 	/**
 	 * Checks if the day of the specified date is before today's date.
-	 *
-	 * @param date the date to check.
+	 * 
+	 * @param date
+	 *            the date to check.
 	 * @return true if specified date is before today's date, false otherwise.
 	 */
 	public static boolean isBeforeToday(final Date date) {
@@ -456,10 +495,13 @@ public final class DateUtil {
 	}
 
 	/**
-	 * Checks if one date is before another date. Only uses the date portion of the input, not taking the time portion in account.
-	 *
-	 * @param firstDate the first date.
-	 * @param secondDate the second date to check against.
+	 * Checks if one date is before another date. Only uses the date portion of the input, not taking the time portion in
+	 * account.
+	 * 
+	 * @param firstDate
+	 *            the first date.
+	 * @param secondDate
+	 *            the second date to check against.
 	 * @return true if first date is before the second date, false otherwise.
 	 */
 	public static boolean isBeforeDay(final Date firstDate, final Date secondDate) {
@@ -476,9 +518,11 @@ public final class DateUtil {
 
 	/**
 	 * Check if the date is the same day.
-	 *
-	 * @param firstDate the first date.
-	 * @param secondDate the second date to check against.
+	 * 
+	 * @param firstDate
+	 *            the first date.
+	 * @param secondDate
+	 *            the second date to check against.
 	 * @return true if first date is the same day as the second date, false otherwise.
 	 */
 	public static boolean isSameDay(Date firstDate, Date secondDate) {
@@ -494,10 +538,13 @@ public final class DateUtil {
 
 	/**
 	 * Method that checks if a date is between two other dates.
-	 *
-	 * @param compDate date that is being checked.
-	 * @param fomDate FOM-date.
-	 * @param tomDate TOM-date.
+	 * 
+	 * @param compDate
+	 *            date that is being checked.
+	 * @param fomDate
+	 *            FOM-date.
+	 * @param tomDate
+	 *            TOM-date.
 	 * @return boolean if date is in period.
 	 */
 	public static boolean isDateInPeriod(final Date compDate, final Date fomDate, final Date tomDate) {
@@ -520,8 +567,9 @@ public final class DateUtil {
 
 	/**
 	 * Checks whether the date is the first day of a month or not.
-	 *
-	 * @param date the date to check.
+	 * 
+	 * @param date
+	 *            the date to check.
 	 * @return true if the date is the first day of a month, false otherwise.
 	 */
 	public static boolean isFirstDayOfMonth(Date date) {
@@ -536,7 +584,7 @@ public final class DateUtil {
 
 	/**
 	 * Returns yesterday's date formatted for display.
-	 *
+	 * 
 	 * @return yesterday.
 	 */
 	public static Date getYesterday() {
@@ -545,8 +593,9 @@ public final class DateUtil {
 
 	/**
 	 * Returns the date n days from now.
-	 *
-	 * @param days number of days relative from today (e.g. -14 = 2 weeks ago, 7 = in a week)
+	 * 
+	 * @param days
+	 *            number of days relative from today (e.g. -14 = 2 weeks ago, 7 = in a week)
 	 * @return the date.
 	 */
 	public static Date getRelativeDateFromNow(int days) {
@@ -555,8 +604,9 @@ public final class DateUtil {
 
 	/**
 	 * Creates a sorted list of <code>Date</code>s with the newest first.
-	 *
-	 * @param dates a set with the <code>Date</code>s to sort.
+	 * 
+	 * @param dates
+	 *            a set with the <code>Date</code>s to sort.
 	 * @return a sorted list of <code>Date</code>s with the newest first.
 	 */
 	@SuppressWarnings("unchecked")
@@ -575,8 +625,9 @@ public final class DateUtil {
 
 	/**
 	 * Finds the last day in the month before the given date.
-	 *
-	 * @param date the date to work against.
+	 * 
+	 * @param date
+	 *            the date to work against.
 	 * @return the last day in the month before the given date.
 	 */
 	public static Date findLastDayInMonthBefore(final Date date) {
@@ -590,8 +641,9 @@ public final class DateUtil {
 
 	/**
 	 * Returns the first day of month for the given date.
-	 *
-	 * @param date a given date
+	 * 
+	 * @param date
+	 *            a given date
 	 * @return the first day of the month for the given date.
 	 */
 	public static Date getFirstDayOfMonth(Date date) {
@@ -600,8 +652,9 @@ public final class DateUtil {
 
 	/**
 	 * Returns the last day of month for the given date.
-	 *
-	 * @param date a given date
+	 * 
+	 * @param date
+	 *            a given date
 	 * @return the last day of the month for the given date.
 	 */
 	public static Date getLastDayOfMonth(Date date) {
@@ -610,9 +663,11 @@ public final class DateUtil {
 
 	/**
 	 * Metode for ?inne datoer X ?frem/tilbake i tid
-	 *
-	 * @param date Dato
-	 * @param years ? fremover (positive tall) eller ?bakover (negative tall)
+	 * 
+	 * @param date
+	 *            Dato
+	 * @param years ?
+	 *            fremover (positive tall) eller ?bakover (negative tall)
 	 * @return Datoen X ?frem eller tilbake
 	 */
 	public static Date getRelativeDateByYear(Date date, int years) {
@@ -624,9 +679,11 @@ public final class DateUtil {
 
 	/**
 	 * Metode for ?inne datoer X m?der fremover/tilbake i tid
-	 *
-	 * @param date Datoen
-	 * @param months M?der fremover / bakover
+	 * 
+	 * @param date
+	 *            Datoen
+	 * @param months
+	 *            M?der fremover / bakover
 	 * @return Datoen X m?der fremover/tilbake
 	 */
 	public static Date getRelativeDateByMonth(Date date, int months) {
@@ -638,9 +695,11 @@ public final class DateUtil {
 
 	/**
 	 * Metode for ?inne datoer X dager frem / tilbake i tid
-	 *
-	 * @param date Datoe
-	 * @param days dager frem/tilbake
+	 * 
+	 * @param date
+	 *            Datoe
+	 * @param days
+	 *            dager frem/tilbake
 	 * @return Datoen X dager fremover/tilbake
 	 */
 	public static Date getRelativeDateByDays(Date date, int days) {
@@ -652,8 +711,9 @@ public final class DateUtil {
 
 	/**
 	 * Setter klokkeslettet til 00:00:00.00
-	 *
-	 * @param inDate Aktuell dato
+	 * 
+	 * @param inDate
+	 *            Aktuell dato
 	 * @return nullstilt dato.
 	 */
 	public static Date setTimeToZero(Date inDate) {
@@ -662,8 +722,9 @@ public final class DateUtil {
 
 	/**
 	 * Returnerer ?t i en dato.
-	 *
-	 * @param inDate angitt dato.
+	 * 
+	 * @param inDate
+	 *            angitt dato.
 	 * @return ?t i datoen.
 	 */
 	public static int getYear(Date inDate) {
@@ -672,8 +733,9 @@ public final class DateUtil {
 
 	/**
 	 * Returnerer m?d i en dato.
-	 *
-	 * @param inDate angitt dato.
+	 * 
+	 * @param inDate
+	 *            angitt dato.
 	 * @return m?d i datoen.
 	 */
 	public static int getMonth(Date inDate) {
@@ -682,8 +744,9 @@ public final class DateUtil {
 
 	/**
 	 * Metode som finner f? dagen i ?t for angitt dato. Timer, minutter, sekunder og millisekunder er nullstilt.
-	 *
-	 * @param inDate hvilken dato som skal benyttes
+	 * 
+	 * @param inDate
+	 *            hvilken dato som skal benyttes
 	 * @return f? dag
 	 */
 	public static Date getFirstDateInYear(Date inDate) {
@@ -697,8 +760,9 @@ public final class DateUtil {
 
 	/**
 	 * Metode som finner siste dagen i ?t for angitt dato Timer, minutter, sekunder og millisekunder er nullstilt.
-	 *
-	 * @param inDate hvilken dato som skal benyttes
+	 * 
+	 * @param inDate
+	 *            hvilken dato som skal benyttes
 	 * @return siste dag
 	 */
 	public static Date getLastDateInYear(Date inDate) {
@@ -712,9 +776,11 @@ public final class DateUtil {
 
 	/**
 	 * Returns the number of month between two dates.
-	 *
-	 * @param fromDate date from.
-	 * @param toDate date to.
+	 * 
+	 * @param fromDate
+	 *            date from.
+	 * @param toDate
+	 *            date to.
 	 * @return relative number of months between fromDate and toDate.
 	 */
 	public static int getMonthBetween(Date fromDate, Date toDate) {
@@ -729,8 +795,9 @@ public final class DateUtil {
 
 	/**
 	 * Henter datoen 18 ar tilbake fra angitt dato. Feks hvis parameter dato er 15/5-2005 vil retur dato vare 15/5-1987
-	 *
-	 * @param date den nye datoen
+	 * 
+	 * @param date
+	 *            den nye datoen
 	 * @return Date 18 ?tilbake fra date eller null hvis date er null
 	 */
 	public static Date get18YearsBack(Date date) {
@@ -746,8 +813,9 @@ public final class DateUtil {
 
 	/**
 	 * Creates a non-lenient <code>DateFormat</code> from the specified date format.
-	 *
-	 * @param dateFormat the date format the created <code>DateForm</code> will have.
+	 * 
+	 * @param dateFormat
+	 *            the date format the created <code>DateForm</code> will have.
 	 * @return a non-lenient <code>DateFormat</code> with the specified date format.
 	 */
 	public static DateFormat createDateFormat(final String dateFormat) {
@@ -760,24 +828,25 @@ public final class DateUtil {
 
 	/**
 	 * Helper method for parsing dates in a string.
-	 *
-	 * @param input the input string to parse into a date.
-	 * @param allowNull whether null is allowed as input for the date.
-	 * @param dateFormat the format to use for parsing the date string.
-	 * @param noEarlyDates whether early dates should be allowed.
-	 * @param resetTimePart whether the time part of the date should be reset to all zeros.
-	 * @param resetDayOfMonth whether the day of month of the date should be reset to the first day of the month.
+	 * 
+	 * @param input
+	 *            the input string to parse into a date.
+	 * @param allowNull
+	 *            whether null is allowed as input for the date.
+	 * @param dateFormat
+	 *            the format to use for parsing the date string.
+	 * @param noEarlyDates
+	 *            whether early dates should be allowed.
+	 * @param resetTimePart
+	 *            whether the time part of the date should be reset to all zeros.
+	 * @param resetDayOfMonth
+	 *            whether the day of month of the date should be reset to the first day of the month.
 	 * @return the parsed date.
-	 * @throws IllegalArgumentException if input is not legal.
+	 * @throws IllegalArgumentException
+	 *             if input is not legal.
 	 */
-	private static Date parseCommon(
-			final String input,
-			final boolean allowNull,
-			String dateFormat,
-			boolean noEarlyDates,
-			boolean resetTimePart,
-			boolean resetDayOfMonth)
-			throws IllegalArgumentException {
+	private static Date parseCommon(final String input, final boolean allowNull, String dateFormat, boolean noEarlyDates,
+			boolean resetTimePart, boolean resetDayOfMonth) throws IllegalArgumentException {
 		Date output = null;
 
 		if (StringUtils.isBlank(input)) {
@@ -795,10 +864,9 @@ public final class DateUtil {
 				final Calendar calendar = createCalendar(output);
 
 				if (noEarlyDates) {
-					//	We don't accept years earlier than 1000
+					// We don't accept years earlier than 1000
 					if (EARLIEST_YEAR > calendar.get(Calendar.YEAR)) {
-						throw new IllegalArgumentException(
-								"Don't accept years earlier than " + EARLIEST_YEAR + ": " + input);
+						throw new IllegalArgumentException("Don't accept years earlier than " + EARLIEST_YEAR + ": " + input);
 					}
 				}
 
@@ -819,8 +887,9 @@ public final class DateUtil {
 
 	/**
 	 * Helper method for replacing not formattable separators with formattable separators.
-	 *
-	 * @param input the string to replace separators in.
+	 * 
+	 * @param input
+	 *            the string to replace separators in.
 	 * @return string with separators replaced.
 	 */
 	private static String replaceSeparators(final String input) {
@@ -829,8 +898,9 @@ public final class DateUtil {
 
 	/**
 	 * Creates a non-lenient calendar with empty time fields.
-	 *
-	 * @param date the <code>Date</code> to create a calendar from.
+	 * 
+	 * @param date
+	 *            the <code>Date</code> to create a calendar from.
 	 * @return a non-lenient calendar with empty time fields.
 	 * @see #createCalendar(Date)
 	 */
@@ -843,8 +913,9 @@ public final class DateUtil {
 
 	/**
 	 * Creates a non-lenient calendar.
-	 *
-	 * @param date the <code>Date</code> to create a calendar from.
+	 * 
+	 * @param date
+	 *            the <code>Date</code> to create a calendar from.
 	 * @return a non-lenient calendar.
 	 * @see #createCalendar(Date)
 	 */
@@ -858,8 +929,9 @@ public final class DateUtil {
 
 	/**
 	 * Clears the time fields of a calendar.
-	 *
-	 * @param calendar the calendar to clear the time fields of.
+	 * 
+	 * @param calendar
+	 *            the calendar to clear the time fields of.
 	 */
 	private static void clearTimeFields(final Calendar calendar) {
 		calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -869,11 +941,13 @@ public final class DateUtil {
 	}
 
 	/**
-	 * Returns the given field for a date. Be careful when calling this from inside another synchronized block as it could lead to
-	 * a dealock.
-	 *
-	 * @param inDate the date to return the given field for.
-	 * @param dateField hvilket felt som skal finnes (vil v? feks Calendar.YEAR)
+	 * Returns the given field for a date. Be careful when calling this from inside another synchronized block as it could lead
+	 * to a dealock.
+	 * 
+	 * @param inDate
+	 *            the date to return the given field for.
+	 * @param dateField
+	 *            hvilket felt som skal finnes (vil v? feks Calendar.YEAR)
 	 * @return verdien p?eltet
 	 */
 	private static int getField(Date inDate, int dateField) {
@@ -882,11 +956,13 @@ public final class DateUtil {
 	}
 
 	/**
-	 * Returns the first or last of month for a given date. Be careful when calling this from inside another synchronized block as
-	 * it could lead to a dealock.
-	 *
-	 * @param date a given date
-	 * @param first is true then first day in month
+	 * Returns the first or last of month for a given date. Be careful when calling this from inside another synchronized block
+	 * as it could lead to a dealock.
+	 * 
+	 * @param date
+	 *            a given date
+	 * @param first
+	 *            is true then first day in month
 	 * @return Date for the first or last day of month
 	 */
 	private static Date getFirstOrLastDayOfMonth(Date date, boolean first) {
@@ -906,7 +982,7 @@ public final class DateUtil {
 
 	/**
 	 * Immutable date, that is, only read access. All setter methods throws an <code>UnsupportedOperation</code> exception.
-	 *
+	 * 
 	 * @see UnsupportedOperationException
 	 * @see Date
 	 */
@@ -922,10 +998,13 @@ public final class DateUtil {
 
 		/**
 		 * Constructs a date from the year, month and day of month values.
-		 *
-		 * @param year year to use.
-		 * @param month month to use.
-		 * @param dayOfMonth day of month to use.
+		 * 
+		 * @param year
+		 *            year to use.
+		 * @param month
+		 *            month to use.
+		 * @param dayOfMonth
+		 *            day of month to use.
 		 */
 		public ReadOnlyDate(final int year, final int month, final int dayOfMonth) {
 			super(longValue(year, month, dayOfMonth));
@@ -933,7 +1012,7 @@ public final class DateUtil {
 
 		/**
 		 * {@inheritDoc}
-		 *
+		 * 
 		 * @deprecated
 		 */
 		public void setYear(int year) {
@@ -942,7 +1021,7 @@ public final class DateUtil {
 
 		/**
 		 * {@inheritDoc}
-		 *
+		 * 
 		 * @deprecated
 		 */
 		public void setMonth(int month) {
@@ -951,7 +1030,7 @@ public final class DateUtil {
 
 		/**
 		 * {@inheritDoc}
-		 *
+		 * 
 		 * @deprecated
 		 */
 		public void setDate(int date) {
@@ -960,7 +1039,7 @@ public final class DateUtil {
 
 		/**
 		 * {@inheritDoc}
-		 *
+		 * 
 		 * @deprecated
 		 */
 		public void setHours(int hours) {
@@ -969,7 +1048,7 @@ public final class DateUtil {
 
 		/**
 		 * {@inheritDoc}
-		 *
+		 * 
 		 * @deprecated
 		 */
 		public void setMinutes(int minutes) {
@@ -978,7 +1057,7 @@ public final class DateUtil {
 
 		/**
 		 * {@inheritDoc}
-		 *
+		 * 
 		 * @deprecated
 		 */
 		public void setSeconds(int seconds) {
@@ -992,10 +1071,13 @@ public final class DateUtil {
 
 		/**
 		 * Helper method for calculating a time in millis representation of the year, month and day of month values.
-		 *
-		 * @param year year to use.
-		 * @param month month to use.
-		 * @param dayOfMonth day of month to use.
+		 * 
+		 * @param year
+		 *            year to use.
+		 * @param month
+		 *            month to use.
+		 * @param dayOfMonth
+		 *            day of month to use.
 		 * @return time in millis representation of the year, month and day values.
 		 */
 		private static long longValue(final int year, final int month, final int dayOfMonth) {
@@ -1005,4 +1087,3 @@ public final class DateUtil {
 		}
 	}
 }
-

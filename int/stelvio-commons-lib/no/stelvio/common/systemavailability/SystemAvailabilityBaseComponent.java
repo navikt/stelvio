@@ -27,8 +27,8 @@ public class SystemAvailabilityBaseComponent extends InterceptorService {
 							+ "\". Make sure that the component name is on the form \"<SystemName>AvailabilityCheck\"");
 		}
 		String systemName = componentName.substring(0, componentName.indexOf("Avail"));
-		return Arrays.asList(new CatchServiceRuntimeExceptionInterceptor(), new SystemThrottlingInterceptor(systemName), new SystemStubbingInterceptor(systemName),
-				new SystemUnavailableInterceptor(systemName));
+		return Arrays.asList(new CatchServiceRuntimeExceptionInterceptor(), new SystemThrottlingInterceptor(systemName),
+				new SystemStubbingInterceptor(systemName), new SystemUnavailableInterceptor(systemName));
 	}
 
 	@Override
