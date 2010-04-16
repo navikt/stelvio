@@ -83,9 +83,16 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 					Type sdoTypeReq = ((DataObject) input).getType();
 					String requestObjectName = sdoTypeReq.getName();
 					recordStubData(operationType, requestId, input, requestObjectName, "Request");
-					Object ret;
 					try {
-						ret = interceptorChain.doIntercept(operationType, input);
+						Object ret = interceptorChain.doIntercept(operationType, input);
+
+						if (ret != null) {
+							Type sdoTypeRes = ((DataObject) ret).getType();
+							String responseObjectName = sdoTypeRes.getName();
+							recordStubData(operationType, requestId, ret, responseObjectName, "Response");
+						}
+
+						return ret;
 					} catch (ServiceBusinessException sbe) {
 						recordStubDataException(operationType, requestId, input, sbe);
 						throw sbe;
@@ -93,11 +100,6 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 						recordStubDataRuntimeException(operationType, requestId, input, sre);
 						throw sre;
 					}
-					Type sdoTypeRes = ((DataObject) ret).getType();
-					String responseObjectName = sdoTypeRes.getName();
-
-					recordStubData(operationType, requestId, ret, responseObjectName, "Response");
-					return ret;
 				}
 				String logMessage = "Found prerecorded matching stub data for " + systemName + "." + operationType.getName()
 						+ ". Ignoring.";
