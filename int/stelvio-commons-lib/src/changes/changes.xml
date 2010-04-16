@@ -5,6 +5,9 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="3.3.1" date="16-04-2010" description="Bugfix release">
+			<action dev="ebh2812" type="fix">SIR 175088: NPE in SystemStubbingInterceptor when recording void-methods (or one-way oeprations)</action>
+		</release>
 		<release version="3.3" date="16-02-2010" description="Maintenance release">
 			<action dev="ebh2812" type="remove">Deleted obsolete xsd-includes files from WID 6.0</action>
 		</release>
