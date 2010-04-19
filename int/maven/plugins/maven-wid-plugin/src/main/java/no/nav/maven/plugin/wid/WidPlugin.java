@@ -73,9 +73,7 @@ public class WidPlugin extends EclipsePlugin {
 		List<IdeDependency> dependencies = new ArrayList<IdeDependency>();
 		for (IdeDependency dependency : eclipseWriterConfig.getDeps()) {
 			String dependencyType = dependency.getType();
-			// The OR is just temporary - remove when correct type is added to
-			// dependencies
-			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType) || reactorContainsProject(dependency)) {
+			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType)) {
 				dependency.setReferencedProject(true);
 				dependency.setEclipseProjectName(dependency.getArtifactId());
 				dependency.setFile(null);
@@ -93,17 +91,6 @@ public class WidPlugin extends EclipsePlugin {
 			}
 		}
 		eclipseWriterConfig.setDeps(dependencies.toArray(new IdeDependency[dependencies.size()]));
-	}
-
-	private boolean reactorContainsProject(IdeDependency dependency) {
-		for (Object temp : getReactorProjects()) {
-			MavenProject reactorProject = (MavenProject) temp;
-			if (dependency.getGroupId().equals(reactorProject.getGroupId())
-					&& dependency.getArtifactId().equals(reactorProject.getArtifactId())) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	private void writeWtpSettings(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
