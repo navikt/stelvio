@@ -52,7 +52,9 @@ public class SystemAvailabilityConfigImpl {
 				for (Object operation : operations) {
 					String operationName = (String) operation;
 					OperationAvailabilityRecord operationAvailabilityRecord = availabilityRecord.findOrCreateOperation(operationName);
-					operationAvailabilityRecord.stubbed = enabled;
+					if (operationAvailabilityRecord != null) {
+						operationAvailabilityRecord.stubbed = enabled;
+					}
 					systemAvailabilityStorage.storeAvailabilityRecord(availabilityRecord);
 				}
 			}
