@@ -20,6 +20,7 @@
 			<type>wps-library-jar</type>
 			<version>3.3</version>
 		</dependency>
+                <dependency/>
 	</dependencies>
 
 	<scm>
