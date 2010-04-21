@@ -13,13 +13,13 @@ import no.nav.maven.plugin.wid.writers.WidWtpFacetsWriter;
 import no.nav.maven.utilities.sca.ScaAttributesBuilder;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.maven.artifact.ArtifactUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.eclipse.EclipsePlugin;
 import org.apache.maven.plugin.eclipse.EclipseSourceDir;
 import org.apache.maven.plugin.eclipse.WorkspaceConfiguration;
 import org.apache.maven.plugin.eclipse.writers.EclipseWriterConfig;
 import org.apache.maven.plugin.ide.IdeDependency;
-import org.apache.maven.project.MavenProject;
 
 /**
  * Generates the wid configuration files.
@@ -37,8 +37,7 @@ public class WidPlugin extends EclipsePlugin {
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 
 	/**
-	 * @parameter expression="${wid.runtimeName}"
-	 *            default-value="WebSphere Process Server v6.1"
+	 * @parameter expression="${wid.runtimeName}" default-value="WebSphere Process Server v6.1"
 	 */
 	private String runtimeName;
 
@@ -72,22 +71,33 @@ public class WidPlugin extends EclipsePlugin {
 		// libraries
 		List<IdeDependency> dependencies = new ArrayList<IdeDependency>();
 		for (IdeDependency dependency : eclipseWriterConfig.getDeps()) {
-			String dependencyType = dependency.getType();
-			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType)) {
-				dependency.setReferencedProject(true);
-				dependency.setEclipseProjectName(dependency.getArtifactId());
-				dependency.setFile(null);
-				dependency.setJavadocAttachment(null);
-				dependency.setSourceAttachment(null);
+			if (dependency.isReferencedProject()) {
 				dependencies.add(dependency);
-			} else if (PACKAGING_WPS_MODULE_EAR.equals(getProject().getPackaging())) {
-				try {
-					FileUtils.copyFileToDirectory(dependency.getFile(), getEclipseProjectDir());
-				} catch (IOException e) {
-					throw new MojoExecutionException("Unable to copy file", e);
-				}
 			} else {
-				dependencies.add(dependency);
+				String dependencyType = dependency.getType();
+				if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType)) {
+					dependency.setReferencedProject(true);
+					dependency.setEclipseProjectName(dependency.getArtifactId());
+					dependency.setFile(null);
+					dependency.setJavadocAttachment(null);
+					dependency.setSourceAttachment(null);
+					dependencies.add(dependency);
+				} else if (PACKAGING_WPS_MODULE_EAR.equals(getProject().getPackaging())) {
+					File dependencyFile = dependency.getFile();
+					if (dependencyFile != null) {
+						try {
+							FileUtils.copyFileToDirectory(dependencyFile, getEclipseProjectDir());
+						} catch (IOException e) {
+							throw new MojoExecutionException("Unable to copy file", e);
+						}
+					} else {
+						throw new MojoExecutionException("Unable to resolve file for dependency "
+								+ ArtifactUtils.artifactId(dependency.getGroupId(), dependency.getArtifactId(), dependency
+										.getType(), dependency.getVersion()));
+					}
+				} else {
+					dependencies.add(dependency);
+				}
 			}
 		}
 		eclipseWriterConfig.setDeps(dependencies.toArray(new IdeDependency[dependencies.size()]));
