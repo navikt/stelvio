@@ -48,10 +48,14 @@
 		</profile>
 		
 		<profile>
-			<!-- TODO: Review this profile -->
-			<id>RAD</id>
+			<id>RAD7</id>
+			<activation>
+				<file>
+					<exists>C:/IBM/SDP70</exists>
+				</file>
+			</activation>
 			<properties>
-				<was.home>${wid.runtime}</was.home>
+				<was.home>C:/IBM/SDP70/runtimes/base_v7</was.home>
 				<was.java.home>${was.home}/java</was.java.home>
 				<itp.loc>${was.home}/deploytool/itp</itp.loc>
 				<boot.path>${itp.loc}/batchboot.jar;${was.java.home}/jre/lib/ext/iwsorbutil.jar</boot.path>
