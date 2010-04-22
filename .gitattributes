@@ -2324,7 +2324,6 @@ int/maven/poms/maven-wps-poms/maven-wps-tests-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-tests-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
 int/maven/poms/pom.xml -text
-int/maven/settings.xml -text
 int/maven/utilities/datapower-utils/pom.xml -text
 int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPCollectionUtils.java -text
 int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPFileUtils.java -text
@@ -2963,3 +2962,4 @@ int/workspaces/nav-int-stelvio-workspaces/.project -text svneol=unset#text/plain
 int/workspaces/nav-int-stelvio-workspaces/nav-steilvio-ceilogger-1.0.2.psf -text
 int/workspaces/nav-int-stelvio-workspaces/nav-stelvio-ceilogger.psf -text
 int/workspaces/nav-int-stelvio-workspaces/stelvio-operation-systemavailability.psf -text
+maven/settings.xml -text
