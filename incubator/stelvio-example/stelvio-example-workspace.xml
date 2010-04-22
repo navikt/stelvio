@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-workspace name="stelvio-example" soapui-version="3.0" xmlns:con="http://eviware.com/soapui/config">
-  <con:settings/>
-  <con:project name="stelvio-example-person-service">E:/develop/stelvio/incubator/stelvio-example/stelvio-example-person/stelvio-example-person-soapui/stelvio-example-person-service-soapui-project.xml</con:project>
-</con:soapui-workspace>
