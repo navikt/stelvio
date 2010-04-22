@@ -2324,6 +2324,7 @@ int/maven/poms/maven-wps-poms/maven-wps-tests-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-tests-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
 int/maven/poms/pom.xml -text
+int/maven/settings.xml -text
 int/maven/utilities/datapower-utils/pom.xml -text
 int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPCollectionUtils.java -text
 int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPFileUtils.java -text
