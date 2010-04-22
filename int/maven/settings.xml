@@ -61,12 +61,16 @@
 		</profile>
 		
 		<profile>
-			<!-- TODO: Review this profile -->
-			<id>WPS6</id>
+			<id>WPS</id>
+			<activation>
+				<file>
+					<exists>/opt/IBM/WebSphere/ProcServer</exists>
+				</file>
+			</activation>
 			<properties>
-				<wid.home>C:/IBM/WID61</wid.home>
-				<wid.runtime>${wid.home}/runtimes/bi_v61</wid.runtime>
-				<target.dir>${basedir}/target</target.dir>
+				<wid.home>/opt/IBM/WebSphere/ProcServer</wid.home>
+				<wid.runtime>${wid.home}</wid.runtime>
+				<target.dir>${project.basedir}/target</target.dir>
 			</properties>
 		</profile>
 		
