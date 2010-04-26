@@ -1862,7 +1862,9 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/ste
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/common/V1/Entity.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/AdditionalOrderInfo1.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/AdditionalOrderLineItemInfo1.xsd -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/AdditionalOrderLineItemInfo2.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/CreateOrderRequest.xsd -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/DiscountType.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/Order.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderCommand.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderCommandV1WSEXP_OrderCommandHttp_Service.wsdl -text

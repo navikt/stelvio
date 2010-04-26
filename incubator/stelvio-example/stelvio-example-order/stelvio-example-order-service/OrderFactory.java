@@ -13,6 +13,11 @@ public class OrderFactory {
 		orderLineItem.set("id", 1234);
 		orderLineItem.set("productId", 1234);
 		orderLineItem.set("quantity", 1);
+		DataObject additionalInfo = orderLineItem.createDataObject("additionalInfo");
+		DataObject newInfoContainer = additionalInfo.createDataObject("newInfoContainer");
+		// TODO: For some reason this value needs to be set - even if it has a fixed value in schema.
+		newInfoContainer.set("sinceVersion", "1.1");
+		newInfoContainer.set("discount", 0.25f);
 		return order;
 	}
 	
