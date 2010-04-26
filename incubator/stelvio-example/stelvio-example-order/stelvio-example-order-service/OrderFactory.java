@@ -18,6 +18,10 @@ public class OrderFactory {
 		// TODO: For some reason this value needs to be set - even if it has a fixed value in schema.
 		newInfoContainer.set("sinceVersion", "1.1");
 		newInfoContainer.set("discount", 0.25f);
+		
+		//Validate order
+		BusinessObjectValidator.assertValidBusinessObject(order);
+		
 		return order;
 	}
 	

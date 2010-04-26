@@ -1874,6 +1874,7 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/ste
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderQueryV1WSEXP_OrderQueryHttp_Service.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/UpdateOrderRequest.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/pom.xml -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/BusinessObjectValidator.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1Stub.component -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1StubImpl.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1WSEXP.export -text
