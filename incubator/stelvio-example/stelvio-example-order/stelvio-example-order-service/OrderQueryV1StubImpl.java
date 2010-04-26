@@ -27,6 +27,6 @@ public class OrderQueryV1StubImpl {
 	 * Please refer to the WSDL Definition for more information on the type of input, output and fault(s).
 	 */
 	public DataObject getOrder(String orderId) {
-		return null;
+		return OrderFactory.createOrder();
 	}
 }

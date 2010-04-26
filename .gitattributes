@@ -1875,6 +1875,7 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/pom.xm
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1Stub.component -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1StubImpl.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1WSEXP.export -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderFactory.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1Stub.component -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1StubImpl.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1WSEXP.export -text

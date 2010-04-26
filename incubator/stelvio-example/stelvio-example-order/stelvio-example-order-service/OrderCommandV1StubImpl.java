@@ -27,7 +27,7 @@ public class OrderCommandV1StubImpl {
 	 * Please refer to the WSDL Definition for more information on the type of input, output and fault(s).
 	 */
 	public DataObject createOrder(DataObject createOrderRequest) {
-		return null;
+		return OrderFactory.createOrder();
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class OrderCommandV1StubImpl {
 	 * Please refer to the WSDL Definition for more information on the type of input, output and fault(s).
 	 */
 	public DataObject addItemsToOrder(DataObject addItemsToOrderRequest) {
-		return null;
+		return OrderFactory.createOrder();
 	}
 
 	/**
@@ -57,6 +57,6 @@ public class OrderCommandV1StubImpl {
 	 * Please refer to the WSDL Definition for more information on the type of input, output and fault(s).
 	 */
 	public DataObject removeItemsFromOrder(DataObject removeItemsFromOrderRequest) {
-		return null;
+		return OrderFactory.createOrder();
 	}
 }
