@@ -12,12 +12,14 @@ public class OrderFactory {
 		DataObject orderLineItem = order.createDataObject("orderLineItem");
 		orderLineItem.set("id", 1234);
 		orderLineItem.set("productId", 1234);
-		orderLineItem.set("quantity", 1);
+		orderLineItem.setInt("quantity", 1);
 		DataObject additionalInfo = orderLineItem.createDataObject("additionalInfo");
-		DataObject newInfoContainer = additionalInfo.createDataObject("newInfoContainer");
+		DataObject discount = additionalInfo.createDataObject("discount");
+		// TODO: Is this the best way to set simpleContent of a complex type. It seems like a 'magic value'
+		discount.setFloat("value", 0.25f);
 		// TODO: For some reason this value needs to be set - even if it has a fixed value in schema.
-		newInfoContainer.set("sinceVersion", "1.1");
-		newInfoContainer.set("discount", 0.25f);
+		discount.set("sinceVersion", "1.1");
+		
 		
 		//Validate order
 		BusinessObjectValidator.assertValidBusinessObject(order);
