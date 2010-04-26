@@ -1904,6 +1904,7 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-soapui/Ord
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-soapui/stelvio-example-order-service-soapui-project.xml -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-solution/.project -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-solution/pom.xml -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-solution/projectSet.psf -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-solution/solution.graphml -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/no/stelvio/example/person/provider/V1/FindPersonQuery.xsd -text
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/no/stelvio/example/person/provider/V1/FindPersonRequest.xsd -text
