@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema targetNamespace="http://www.stelvio.no/example/order/V1"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:bons0="http://www.stelvio.no/example/order/V1">
+	xmlns:Q1="http://www.stelvio.no/example/order/V1">
+
 	<xsd:include schemaLocation="DiscountType.xsd"></xsd:include>
 	<xsd:complexType name="OrderLineItemSpecification">
 		<xsd:sequence>
@@ -9,9 +10,17 @@
 				type="xsd:string">
 			</xsd:element>
 			<xsd:element minOccurs="1" name="quantity" type="xsd:int"></xsd:element>
-			<xsd:element minOccurs="0" name="discount"
-				type="bons0:DiscountType">
 
+			<xsd:element name="discount" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="Q1:DiscountType">
+							<xsd:attribute name="sinceVersion"
+								type="xsd:string" fixed="1.1">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
