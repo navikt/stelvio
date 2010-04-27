@@ -1,0 +1,1 @@
+WPS6: C:\IBM\WID61\runtimes\bi_v61\bin\serviceDeploy.bat serviceDeployTestModule-1.0-SNAPSHOT-sd.zip -keep

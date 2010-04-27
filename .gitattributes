@@ -2692,9 +2692,11 @@ int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/n
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/util/ConfigPropertyNames.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/util/PasswordEncodeDelegate.java -text svneol=unset#text/plain
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/util/PropertyMapper.java -text svneol=unset#text/plain
+int/pmr/43743-001-806/commands.txt -text
 int/pmr/43743-001-806/serviceDeployTestModule-1.0-SNAPSHOT-sd.zip -text
 int/pmr/43743-001-806/serviceDeployTestModule/pom.xml -text
 int/pmr/43743-001-806/serviceDeployTestModule/sca.module -text
+int/pmr/43743-001-806/versionInfo-6.1.log -text
 int/pom.xml -text
 int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BPELHelperUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BusinessFlowManagerServiceAdapter.java -text
