@@ -2697,6 +2697,7 @@ int/pmr/43743-001-806/serviceDeployTestModule-1.0-SNAPSHOT-sd.zip -text
 int/pmr/43743-001-806/serviceDeployTestModule/pom.xml -text
 int/pmr/43743-001-806/serviceDeployTestModule/sca.module -text
 int/pmr/43743-001-806/versionInfo-6.1.log -text
+int/pmr/43743-001-806/versionInfo-7.0.log -text
 int/pom.xml -text
 int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BPELHelperUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-bpc-lib/no/stelvio/common/bpel/BusinessFlowManagerServiceAdapter.java -text
