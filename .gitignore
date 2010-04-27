@@ -894,6 +894,16 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/si
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/target
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/bin
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/target
+int/pmr/43743-001-806/serviceDeployTestModule/*.class
+int/pmr/43743-001-806/serviceDeployTestModule/*.jar
+int/pmr/43743-001-806/serviceDeployTestModule/.classpath
+int/pmr/43743-001-806/serviceDeployTestModule/.project
+int/pmr/43743-001-806/serviceDeployTestModule/.settings
+int/pmr/43743-001-806/serviceDeployTestModule/META-INF
+int/pmr/43743-001-806/serviceDeployTestModule/gen
+int/pmr/43743-001-806/serviceDeployTestModule/sca.library.attributes
+int/pmr/43743-001-806/serviceDeployTestModule/sca.module.attributes
+int/pmr/43743-001-806/serviceDeployTestModule/target
 int/stelvio-commons-bpc-lib/*.class
 int/stelvio-commons-bpc-lib/*.jar
 int/stelvio-commons-bpc-lib/.classpath
