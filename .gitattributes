@@ -2694,6 +2694,7 @@ int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/n
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/src/main/java/no/nav/appclient/util/PropertyMapper.java -text svneol=unset#text/plain
 int/pmr/43743-001-806/commands.txt -text
 int/pmr/43743-001-806/gen-ws-6.1.zip -text
+int/pmr/43743-001-806/gen-ws-7.0.zip -text
 int/pmr/43743-001-806/serviceDeployTestModule-1.0-SNAPSHOT-sd.zip -text
 int/pmr/43743-001-806/serviceDeployTestModule/pom.xml -text
 int/pmr/43743-001-806/serviceDeployTestModule/sca.module -text
