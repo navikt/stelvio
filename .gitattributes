@@ -4,32 +4,6 @@ dev/ant-projectSetTask/pom.xml -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetData.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetHandler.java -text
 dev/ant-projectSetTask/src/main/java/no/nav/ant/ProjectSetTask.java -text
-dev/datapower/datapower-cfg-oppkoblingstest/pom.xml -text svneol=unset#text/plain
-dev/datapower/datapower-cfg-oppkoblingstest/src/main/java/no/nav/datapower/config/oppkoblingstest/PGWOTConfigGeneratorImpl.java -text svneol=unset#text/plain
-dev/datapower/datapower-cfg-oppkoblingstest/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
-dev/datapower/datapower-cfg-oppkoblingstest/src/main/resources/cfg-oppkoblingstest-domain.ftl -text
-dev/datapower/datapower-cfg-oppkoblingstest/src/main/resources/cfg-oppkoblingstest-required.properties -text svneol=unset#text/plain
-dev/datapower/datapower-cfg-partnergw/pom.xml -text
-dev/datapower/datapower-cfg-partnergw/src/main/java/no/nav/datapower/config/partnergw/PGWConfigGeneratorImpl.java -text
-dev/datapower/datapower-cfg-partnergw/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
-dev/datapower/datapower-cfg-partnergw/src/main/resources/aaa-partnergw-dnmapping.ftl -text
-dev/datapower/datapower-cfg-partnergw/src/main/resources/cfg-partnergw-required.properties -text
-dev/datapower/datapower-cfg-partnergw/src/main/resources/local/wsdl/carrot_sms_gateway.wsdl -text
-dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/add-stelvio-context.xsl -text svneol=unset#text/plain
-dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/fault-handler.xsl -text
-dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/nfs-message-logger.xsl -text svneol=unset#text/plain
-dev/datapower/datapower-cfg-partnergw/src/main/resources/local/xslt/userid-utils.xsl -text svneol=unset#text/plain
-dev/datapower/datapower-cfg-secgw/pom.xml -text
-dev/datapower/datapower-cfg-secgw/src/main/java/no/nav/datapower/config/secgw/SGWConfigGeneratorImpl.java -text
-dev/datapower/datapower-cfg-secgw/src/main/resources/META-INF/services/no.nav.datapower.config.ConfigGenerator -text
-dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-basic-auth-file.ftl -text
-dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-mapping-file-SBLUTB.ftl -text
-dev/datapower/datapower-cfg-secgw/src/main/resources/aaa-mapping-file.ftl -text
-dev/datapower/datapower-cfg-secgw/src/main/resources/cfg-secgw-required.properties -text
-dev/datapower/datapower-cfg-secgw/src/main/resources/secgw-configuration.ftl -text
-dev/datapower/datapower-cfg-secgw/src/test/java/no/nav/datapower/config/secgw/SGWConfigGeneratorImplTest.java -text
-dev/datapower/datapower-cfg-secgw/src/test/resources/cfg-secgw-u1.properties -text
-dev/datapower/datapower-cfg-secgw/src/test/resources/cfg-secgw-utv.properties -text
 dev/maven2/ant-versionExtracter/trunk/pom.xml -text
 dev/maven2/ant-versionExtracter/trunk/src/main/java/no/nav/ant/VersionExtractorTask.java -text
 dev/maven2/deploy.txt -text
