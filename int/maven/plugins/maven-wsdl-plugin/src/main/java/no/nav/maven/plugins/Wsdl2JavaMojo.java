@@ -58,7 +58,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.cli.StreamConsumer;
 
 /**
- * Goal which touches a timestamp file.
+ * Goal which generates a Java API for web services provided by the Integration Platform
  * 
  * @goal wsdl2java
  * 
