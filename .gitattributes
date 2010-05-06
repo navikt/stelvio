@@ -1832,6 +1832,11 @@ incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/R
 incubator/stelvio-example/stelvio-example-gateway/pom.xml -text
 incubator/stelvio-example/stelvio-example-gateway/sca.module -text
 incubator/stelvio-example/stelvio-example-gateway/sca.modulex -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/UML2XSD.tc -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/XSD2UML.tc -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/common/V1/common_V1.xsd -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/design.emx -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/implementation.emx -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/common/V1/AdditionalInfo.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/common/V1/Entity.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/AdditionalOrderInfo1.xsd -text
@@ -1847,6 +1852,7 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/ste
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderQuery.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderQueryV1WSEXP_OrderQueryHttp_Service.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/UpdateOrderRequest.xsd -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/order/V1/order_V1.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/pom.xml -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/BusinessObjectValidator.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1Stub.component -text
