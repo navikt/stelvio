@@ -357,7 +357,7 @@
 <Property id="AuxiliarySources" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="AuxiliaryTargets" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="AuxiliaryTargetsChecks" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
-<Property id="CONTEXT_SOURCE" value="@49,test@example.com,138&amp;lt;ELEM_START&amp;gt;@47,test@example.com:/resource/stelvio-example-order-lib/design.emx#_3lVA4FkCEd-j8dW_X_IgRQ"/>
+<Property id="CONTEXT_SOURCE" value="@49,test@example.com modeljava.util.ArrayList,153&amp;lt;ELEM_START&amp;gt;@47,test@example.com modelplatform:/resource/stelvio-example-order-lib/domain%20model.emx#_3lVA4FkCEd-j8dW_X_IgRQ"/>
 <Property id="CONTEXT_TARGET_CONTAINER" value="@46,=@com.ibm.xtools.transform.core.metatype.project/stelvio-example-order-lib"/>
 <Property id="DCMP" value="@43,test@example.com"/>
 <Property id="EnableReverseTransformation" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
@@ -366,6 +366,7 @@
 <Property id="MergeKind" value="@45,=@com.ibm.xtools.transform.core.metatype.choice2"/>
 <Property id="MergeWarning" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="OpenReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="PARENT_CONFIG_URIS" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="REVERSE_TRANSFORMATION_EXTENSIONS_STATUS" value="@42,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="ShowWarningsInReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="TRANSFORM_REVERSE_SILENT" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>

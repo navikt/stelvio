@@ -3,7 +3,7 @@
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:XSDProfile="http:///schemas/XSDProfile/100" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http:///schemas/XSDProfile/100 pathmap://XSD_PROFILES/XSDProfile.epx#_vvGR0PDPEdq5wKwOrH0SmA?XSDProfile/XSDProfile?">
-  <uml:Model xmi:id="_3lVA4FkCEd-j8dW_X_IgRQ" name="design">
+  <uml:Model xmi:id="_3lVA4FkCEd-j8dW_X_IgRQ" name="domain model">
     <eAnnotations xmi:id="_j1itcFkLEd-j8dW_X_IgRQ" source="uml2.diagrams"/>
     <packageImport xmi:id="_3lVA4VkCEd-j8dW_X_IgRQ">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -1258,12 +1258,6 @@
         <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_IrdAUMmBEdqBcN1R6EvWUw?Deployment/Deployment?"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
-    </profileApplication>
-    <profileApplication xmi:id="_3lVA6VkCEd-j8dW_X_IgRQ">
-      <eAnnotations xmi:id="_3lVA6lkCEd-j8dW_X_IgRQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://SOAML/SoaML.epx#_x1wwoZC9Ed65QtEA2_z-fQ?SoaML/SoaML?"/>
-      </eAnnotations>
-      <appliedProfile href="pathmap://SOAML/SoaML.epx#_ut1IIGfDEdy6JoIZoRRqYw?SoaML?"/>
     </profileApplication>
     <profileApplication xmi:id="_3lVA61kCEd-j8dW_X_IgRQ">
       <eAnnotations xmi:id="_3lVA7FkCEd-j8dW_X_IgRQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
