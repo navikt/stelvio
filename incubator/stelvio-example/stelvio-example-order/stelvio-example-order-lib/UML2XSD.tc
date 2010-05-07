@@ -336,12 +336,28 @@
 <Property id="/resource/stelvio-example-order-lib/Services.emx#_PwTjtVjuEd-j8dW_X_IgRQResourceTableFileNamespace" value="@45,=@com.ibm.xtools.transform.core.metatype.stringhttp://no/stelvio/example/order/V1/"/>
 <Property id="/resource/stelvio-example-order-lib/Services.emx#_PwTjtVjuEd-j8dW_X_IgRQResourceTableFolder" value="@45,=@com.ibm.xtools.transform.core.metatype.stringwww/stelvio/no/example/order/V1/anonymous"/>
 <Property id="/resource/stelvio-example-order-lib/Services.emx#_PwTjtVjuEd-j8dW_X_IgRQResourceTableQName" value="@45,=@com.ibm.xtools.transform.core.metatype.stringwww.stelvio.no::www.stelvio.no::example::order::V1::anonymous"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_MlQ-glkDEd-j8dW_X_IgRQResourceTableDefaultFile" value="@45,=@com.ibm.xtools.transform.core.metatype.stringV1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_MlQ-glkDEd-j8dW_X_IgRQResourceTableDefaultFolder" value="@45,=@com.ibm.xtools.transform.core.metatype.stringcommon/V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_MlQ-glkDEd-j8dW_X_IgRQResourceTableFile" value="@45,=@com.ibm.xtools.transform.core.metatype.stringcommon_V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_MlQ-glkDEd-j8dW_X_IgRQResourceTableFileDefaultNamespace" value="@45,=@com.ibm.xtools.transform.core.metatype.stringhttp://www.stelvio.no/example/common/V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_MlQ-glkDEd-j8dW_X_IgRQResourceTableFileExtension" value="@45,=@com.ibm.xtools.transform.core.metatype.stringxsd"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_MlQ-glkDEd-j8dW_X_IgRQResourceTableFileNamespace" value="@45,=@com.ibm.xtools.transform.core.metatype.stringhttp://www.stelvio.no/example/common/V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_MlQ-glkDEd-j8dW_X_IgRQResourceTableFolder" value="@45,=@com.ibm.xtools.transform.core.metatype.stringcommon/V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_MlQ-glkDEd-j8dW_X_IgRQResourceTableQName" value="@45,=@com.ibm.xtools.transform.core.metatype.stringdesign::common::V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_Mlj5cVkDEd-j8dW_X_IgRQResourceTableDefaultFile" value="@45,=@com.ibm.xtools.transform.core.metatype.stringV1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_Mlj5cVkDEd-j8dW_X_IgRQResourceTableDefaultFolder" value="@45,=@com.ibm.xtools.transform.core.metatype.stringorder/V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_Mlj5cVkDEd-j8dW_X_IgRQResourceTableFile" value="@45,=@com.ibm.xtools.transform.core.metatype.stringorder_V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_Mlj5cVkDEd-j8dW_X_IgRQResourceTableFileDefaultNamespace" value="@45,=@com.ibm.xtools.transform.core.metatype.stringhttp://www.stelvio.no/example/order/V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_Mlj5cVkDEd-j8dW_X_IgRQResourceTableFileExtension" value="@45,=@com.ibm.xtools.transform.core.metatype.stringxsd"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_Mlj5cVkDEd-j8dW_X_IgRQResourceTableFileNamespace" value="@45,=@com.ibm.xtools.transform.core.metatype.stringhttp://www.stelvio.no/example/order/V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_Mlj5cVkDEd-j8dW_X_IgRQResourceTableFolder" value="@45,=@com.ibm.xtools.transform.core.metatype.stringorder/V1"/>
+<Property id="/resource/stelvio-example-order-lib/design.emx#_Mlj5cVkDEd-j8dW_X_IgRQResourceTableQName" value="@45,=@com.ibm.xtools.transform.core.metatype.stringdesign::order::V1"/>
 <Property id="AuroSaveRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
 <Property id="AuroValidateRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
 <Property id="AuxiliarySources" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="AuxiliaryTargets" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="AuxiliaryTargetsChecks" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
-<Property id="CONTEXT_SOURCE" value="@49,test@example.com Modeljava.util.ArrayList,147&amp;lt;ELEM_START&amp;gt;@47,test@example.com Modelplatform:/resource/stelvio-example-order-lib/Services.emx#_3lVA4FkCEd-j8dW_X_IgRQ"/>
+<Property id="CONTEXT_SOURCE" value="@49,test@example.com,138&amp;lt;ELEM_START&amp;gt;@47,test@example.com:/resource/stelvio-example-order-lib/design.emx#_3lVA4FkCEd-j8dW_X_IgRQ"/>
 <Property id="CONTEXT_TARGET_CONTAINER" value="@46,=@com.ibm.xtools.transform.core.metatype.project/stelvio-example-order-lib"/>
 <Property id="DCMP" value="@43,test@example.com"/>
 <Property id="EnableReverseTransformation" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
@@ -350,7 +366,6 @@
 <Property id="MergeKind" value="@45,=@com.ibm.xtools.transform.core.metatype.choice2"/>
 <Property id="MergeWarning" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="OpenReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
-<Property id="PARENT_CONFIG_URIS" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="REVERSE_TRANSFORMATION_EXTENSIONS_STATUS" value="@42,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="ShowWarningsInReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="TRANSFORM_REVERSE_SILENT" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
