@@ -6,7 +6,7 @@
 <Property id="AuxiliaryTargets" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="AuxiliaryTargetsChecks" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="CONTEXT_SOURCE" value="@49,test@example.com/stelvio-example-order-lib/nojava.util.ArrayList,80&amp;lt;ELEM_START&amp;gt;@45,=@com.ibm.xtools.transform.core.metatype.folder/stelvio-example-order-lib/no"/>
-<Property id="CONTEXT_TARGET_CONTAINER" value="@47,test@example.com Modelplatform:/resource/stelvio-example-order-lib/Implementation%20Model.emx#_Io9aQin1Ed62JqUwOlImrA"/>
+<Property id="CONTEXT_TARGET_CONTAINER" value="@47,test@example.com:/resource/stelvio-example-order-lib/implementation.emx#_Io9aQin1Ed62JqUwOlImrA"/>
 <Property id="DCMP" value="@43,test@example.com"/>
 <Property id="EnableReverseTransformation" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
 <Property id="FORWARD_TRANSFORMATION_EXTENSIONS_STATUS" value="@42,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
