@@ -369,7 +369,7 @@
 <Property id="REVERSE_TRANSFORMATION_EXTENSIONS_STATUS" value="@42,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="ShowWarningsInReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="TRANSFORM_REVERSE_SILENT" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
-<Property id="com.ibm.xtools.transform.merge.option" value="@45,=@com.ibm.xtools.transform.core.metatype.stringAlways_Overwrite"/>
+<Property id="com.ibm.xtools.transform.merge.option" value="@45,=@com.ibm.xtools.transform.core.metatype.stringSilent_Merge"/>
 <Property id="convertNestedClassImplicitly" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="logTrace" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="processUnmarkedClass" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
