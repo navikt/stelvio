@@ -1226,7 +1226,7 @@
         </eAnnotations>
         <packagedElement xmi:type="uml:Class" xmi:id="_MlQ-hVkDEd-j8dW_X_IgRQ" name="AdditionalInfo" isAbstract="true">
           <ownedAttribute xmi:id="_8RuIcFkLEd-j8dW_X_IgRQ" name="anyAttribute" visibility="public">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iMhEsFkMEd-j8dW_X_IgRQ" value="*"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iMhEsFkMEd-j8dW_X_IgRQ" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iMX6wFkMEd-j8dW_X_IgRQ"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_XOOyMFkMEd-j8dW_X_IgRQ" name="anyElement" visibility="public">

@@ -170,12 +170,13 @@
 <Property id="/resource/stelvio-example-order-lib/services.emx#_qcgucFncEd-whZxrhTMUXwResourceTableQName" value="@45,=@com.ibm.xtools.transform.core.metatype.stringservices::OrderQuery"/>
 <Property id="AuroSaveRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
 <Property id="AuroValidateRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
-<Property id="CONTEXT_SOURCE" value="@49,test@example.com,142&amp;lt;ELEM_START&amp;gt;@47,test@example.com:/resource/stelvio-example-order-lib/services.emx#_Io9aQin1Ed62JqUwOlImrA"/>
-<Property id="CONTEXT_TARGET_CONTAINER" value="@46,=@com.ibm.xtools.transform.core.metatype.project/stelvio-example-order-lib"/>
+<Property id="CONTEXT_SOURCE" value="@49,test@example.com,145&amp;lt;ELEM_START&amp;gt;@47,test@example.com:/resource/stelvio-example-order-design/services.emx#_Io9aQin1Ed62JqUwOlImrA"/>
+<Property id="CONTEXT_TARGET_CONTAINER" value="@46,=@com.ibm.xtools.transform.core.metatype.project/stelvio-example-order-design"/>
 <Property id="DCMP" value="@43,test@example.com"/>
 <Property id="EnableReverseTransformation" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="FORWARD_TRANSFORMATION_EXTENSIONS_STATUS" value="@42,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="OpenReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="PARENT_CONFIG_URIS" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
 <Property id="PopulateAllProperty" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="RsaVersion" value="@45,=@com.ibm.xtools.transform.core.metatype.string7.5.0.0"/>
 <Property id="ShowWarningsInReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
