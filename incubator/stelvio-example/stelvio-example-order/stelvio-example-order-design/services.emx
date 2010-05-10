@@ -120,52 +120,52 @@
           <eAnnotations xmi:id="_7CH_AVwPEd-tDcRY6MRSSw" source="uml2.diagrams"/>
           <packagedElement xmi:type="uml:Package" xmi:id="_8K16kFwPEd-tDcRY6MRSSw" name="V1">
             <eAnnotations xmi:id="_8K_EgFwPEd-tDcRY6MRSSw" source="uml2.diagrams"/>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_-EI-gFwPEd-tDcRY6MRSSw" name="OrderQuery">
+              <ownedOperation xmi:id="_FQlXEFwQEd-tDcRY6MRSSw" name="getOrder">
+                <ownedParameter xmi:id="_HJuqAFwQEd-tDcRY6MRSSw" name="orderId">
+                  <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_KQXDwFwQEd-tDcRY6MRSSw" name="order" direction="return">
+                  <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_YPnz8FwQEd-tDcRY6MRSSw" name="OrderCommand">
+              <ownedOperation xmi:id="_hJ5AQFwQEd-tDcRY6MRSSw" name="createOrder">
+                <ownedParameter xmi:id="_YExZYFwREd-tDcRY6MRSSw" name="createOrderRequest">
+                  <type xmi:type="uml:Class" href="domain%20model.emx#_MmwMRFkDEd-j8dW_X_IgRQ?domain%20model/order/V1/CreateOrderRequest?"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_bqjNQFwREd-tDcRY6MRSSw" name="order" direction="return">
+                  <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_ivqrQFwQEd-tDcRY6MRSSw" name="cancelOrder">
+                <ownedParameter xmi:id="_UxLhsFwREd-tDcRY6MRSSw" name="orderId">
+                  <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_kwQqAFwQEd-tDcRY6MRSSw" name="addItemsToOrder">
+                <ownedParameter xmi:id="_sitSoFwQEd-tDcRY6MRSSw" name="updateOrderRequest">
+                  <type xmi:type="uml:Class" href="domain%20model.emx#_MmdRUFkDEd-j8dW_X_IgRQ?domain%20model/order/V1/UpdateOrderRequest?"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_9KzGQFwQEd-tDcRY6MRSSw" name="order" direction="return">
+                  <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_mrfnoFwQEd-tDcRY6MRSSw" name="removeItemsFromOrder">
+                <ownedParameter xmi:id="_eYASAFwREd-tDcRY6MRSSw" name="updateOrderRequest">
+                  <type xmi:type="uml:Class" href="domain%20model.emx#_MmdRUFkDEd-j8dW_X_IgRQ?domain%20model/order/V1/UpdateOrderRequest?"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_hSj-oFwREd-tDcRY6MRSSw" name="order" direction="return">
+                  <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
             <packagedElement xmi:type="uml:Package" xmi:id="_S1-j0FwSEd-tDcRY6MRSSw" name="OrderQuery">
               <eAnnotations xmi:id="_S1-j0VwSEd-tDcRY6MRSSw" source="uml2.diagrams"/>
-              <packagedElement xmi:type="uml:Interface" xmi:id="_-EI-gFwPEd-tDcRY6MRSSw" name="OrderQuery">
-                <ownedOperation xmi:id="_FQlXEFwQEd-tDcRY6MRSSw" name="getOrder">
-                  <ownedParameter xmi:id="_HJuqAFwQEd-tDcRY6MRSSw" name="orderId">
-                    <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
-                  </ownedParameter>
-                  <ownedParameter xmi:id="_KQXDwFwQEd-tDcRY6MRSSw" name="order" direction="return">
-                    <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
-                  </ownedParameter>
-                </ownedOperation>
-              </packagedElement>
             </packagedElement>
             <packagedElement xmi:type="uml:Package" xmi:id="_WGAKIFwSEd-tDcRY6MRSSw" name="OrderCommand">
               <eAnnotations xmi:id="_WGAKIVwSEd-tDcRY6MRSSw" source="uml2.diagrams"/>
-              <packagedElement xmi:type="uml:Interface" xmi:id="_YPnz8FwQEd-tDcRY6MRSSw" name="OrderCommand">
-                <ownedOperation xmi:id="_hJ5AQFwQEd-tDcRY6MRSSw" name="createOrder">
-                  <ownedParameter xmi:id="_YExZYFwREd-tDcRY6MRSSw" name="createOrderRequest">
-                    <type xmi:type="uml:Class" href="domain%20model.emx#_MmwMRFkDEd-j8dW_X_IgRQ?domain%20model/order/V1/CreateOrderRequest?"/>
-                  </ownedParameter>
-                  <ownedParameter xmi:id="_bqjNQFwREd-tDcRY6MRSSw" name="order" direction="return">
-                    <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
-                  </ownedParameter>
-                </ownedOperation>
-                <ownedOperation xmi:id="_ivqrQFwQEd-tDcRY6MRSSw" name="cancelOrder">
-                  <ownedParameter xmi:id="_UxLhsFwREd-tDcRY6MRSSw" name="orderId">
-                    <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
-                  </ownedParameter>
-                </ownedOperation>
-                <ownedOperation xmi:id="_kwQqAFwQEd-tDcRY6MRSSw" name="addItemsToOrder">
-                  <ownedParameter xmi:id="_sitSoFwQEd-tDcRY6MRSSw" name="updateOrderRequest">
-                    <type xmi:type="uml:Class" href="domain%20model.emx#_MmdRUFkDEd-j8dW_X_IgRQ?domain%20model/order/V1/UpdateOrderRequest?"/>
-                  </ownedParameter>
-                  <ownedParameter xmi:id="_9KzGQFwQEd-tDcRY6MRSSw" name="order" direction="return">
-                    <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
-                  </ownedParameter>
-                </ownedOperation>
-                <ownedOperation xmi:id="_mrfnoFwQEd-tDcRY6MRSSw" name="removeItemsFromOrder">
-                  <ownedParameter xmi:id="_eYASAFwREd-tDcRY6MRSSw" name="updateOrderRequest">
-                    <type xmi:type="uml:Class" href="domain%20model.emx#_MmdRUFkDEd-j8dW_X_IgRQ?domain%20model/order/V1/UpdateOrderRequest?"/>
-                  </ownedParameter>
-                  <ownedParameter xmi:id="_hSj-oFwREd-tDcRY6MRSSw" name="order" direction="return">
-                    <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
-                  </ownedParameter>
-                </ownedOperation>
-              </packagedElement>
             </packagedElement>
           </packagedElement>
         </packagedElement>
