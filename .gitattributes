@@ -1836,6 +1836,7 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/.pr
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/UML2WSDL.tc -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/UML2XSD.tc -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/XSD2UML.tc -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/build.xml -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/common/V1/AdditionalInfo.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/common/V1/Entity.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/domain[!!-~]model.emx -text
