@@ -1853,9 +1853,11 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/ste
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/DiscountType.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/Order.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderCommand.wsdl -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderCommandV1WSEXP_OrderCommandHttp_Service.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderLineItem.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderLineItemSpecification.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderQuery.wsdl -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/OrderQueryV1WSEXP_OrderQueryHttp_Service.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/order/V1/UpdateOrderRequest.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/pom.xml -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/BusinessObjectValidator.java -text
@@ -1866,7 +1868,6 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/Or
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1StubFlow.mfcex -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1StubImpl.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1WSEXP.export -text
-incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderCommandV1WSEXP_OrderCommandHttp_Service.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderFactory.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1Stub.component -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1StubFlow.component -text
@@ -1875,7 +1876,6 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/Or
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1StubFlow.mfcex -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1StubImpl.java -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1WSEXP.export -text
-incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/OrderQueryV1WSEXP_OrderQueryHttp_Service.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/no/stelvio/example/order/V1/AddItemsToOrderStubTransform.map -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/no/stelvio/example/order/V1/AddItemsToOrderStubTransform.xsl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/no/stelvio/example/order/V1/CancelOrderStubTransform.map -text
