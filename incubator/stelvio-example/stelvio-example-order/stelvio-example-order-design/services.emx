@@ -178,8 +178,6 @@
               </ownedParameter>
               <ownedParameter xmi:id="_hSj-oFwREd-tDcRY6MRSSw" name="order" direction="return">
                 <type xmi:type="uml:Class" href="domain%20model.emx#_Ml20Y1kDEd-j8dW_X_IgRQ?domain%20model/order/V1/Order?"/>
-                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hC5rsV22Ed-Q2JLuh0eNNg" value="1"/>
-                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hC5rsF22Ed-Q2JLuh0eNNg" value="1"/>
               </ownedParameter>
             </ownedOperation>
           </packagedElement>
