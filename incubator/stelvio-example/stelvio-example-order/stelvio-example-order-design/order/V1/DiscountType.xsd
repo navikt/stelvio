@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.stelvio.no/example/order/V1" version="1.1" xmlns:order="http://www.stelvio.no/example/order/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:simpleType name="DiscountType">
-    <xsd:restriction base="xsd:float">
-      <xsd:maxInclusive value="1"/>
-      <xsd:minExclusive value="0"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-</xsd:schema>

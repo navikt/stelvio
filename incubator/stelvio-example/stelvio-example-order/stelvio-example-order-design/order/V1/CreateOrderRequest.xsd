@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.stelvio.no/example/order/V1" version="1.1" xmlns:order="http://www.stelvio.no/example/order/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:include schemaLocation="OrderLineItemSpecification.xsd"/>
-  <xsd:complexType name="CreateOrderRequest">
-    <xsd:sequence>
-      <xsd:element name="customerId" type="xsd:string"/>
-      <xsd:element maxOccurs="unbounded" name="orderLineItemSpecification" type="order:OrderLineItemSpecification"/>
-    </xsd:sequence>
-  </xsd:complexType>
-</xsd:schema>

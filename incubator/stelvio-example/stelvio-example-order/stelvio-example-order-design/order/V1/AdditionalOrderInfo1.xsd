@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://www.stelvio.no/example/order/V1" version="1.1" xmlns:common="http://www.stelvio.no/example/common/V1" xmlns:order="http://www.stelvio.no/example/order/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:import namespace="http://www.stelvio.no/example/common/V1" schemaLocation="../../common/V1/AdditionalInfo.xsd"/>
-  <xsd:complexType name="AdditionalOrderInfo1">
-    <xsd:complexContent>
-      <xsd:extension base="common:AdditionalInfo"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-</xsd:schema>
