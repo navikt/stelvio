@@ -1841,7 +1841,9 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/com
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/domain[!!-~]model.emx -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/implementation.emx -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/order/V1/OrderCommand/OrderCommand.wsdl -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/order/V1/OrderCommand/OrderCommandBinding.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/order/V1/OrderQuery/OrderQuery.wsdl -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/order/V1/OrderQuery/OrderQueryBinding.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/order/V1/V1.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/services.emx -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/common/V1/AdditionalInfo.xsd -text
