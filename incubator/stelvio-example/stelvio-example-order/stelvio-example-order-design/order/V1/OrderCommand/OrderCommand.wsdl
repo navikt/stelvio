@@ -2,17 +2,38 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://www.stelvio.no/example/order/V1/OrderCommand" xmlns:order="http://www.stelvio.no/example/order/V1">
       <xsd:import namespace="http://www.stelvio.no/example/order/V1" schemaLocation="../V1.xsd"/>
-      <xsd:element name="createOrder" type="order:CreateOrderRequest"/>
+      <xsd:element name="createOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="customerId" type="xsd:string"/>
+            <xsd:element maxOccurs="unbounded" name="orderLineItems" type="order:OrderLineItemSpecification"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
       <xsd:element name="createOrderResponse" type="order:Order"/>
       <xsd:element name="cancelOrder" type="xsd:string"/>
-      <xsd:element name="addItemsToOrder" type="order:UpdateOrderRequest"/>
+      <xsd:element name="addItemsToOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="orderId" type="xsd:string"/>
+            <xsd:element maxOccurs="unbounded" name="orderLineItemsToAdd" type="order:OrderLineItemSpecification"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
       <xsd:element name="addItemsToOrderResponse" type="order:Order"/>
-      <xsd:element name="removeItemsFromOrder" type="order:UpdateOrderRequest"/>
+      <xsd:element name="removeItemsFromOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="orderId" type="xsd:string"/>
+            <xsd:element maxOccurs="unbounded" name="orderLineItemsToRemove" type="order:OrderLineItemSpecification"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
       <xsd:element name="removeItemsFromOrderResponse" type="order:Order"/>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="createOrderRequest">
-    <wsdl:part element="tns:createOrder" name="createOrderRequest"/>
+    <wsdl:part element="tns:createOrder" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="createOrderResponse">
     <wsdl:part element="tns:createOrderResponse" name="order"/>
@@ -21,13 +42,13 @@
     <wsdl:part element="tns:cancelOrder" name="orderId"/>
   </wsdl:message>
   <wsdl:message name="addItemsToOrderRequest">
-    <wsdl:part element="tns:addItemsToOrder" name="updateOrderRequest"/>
+    <wsdl:part element="tns:addItemsToOrder" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="addItemsToOrderResponse">
     <wsdl:part element="tns:addItemsToOrderResponse" name="order"/>
   </wsdl:message>
   <wsdl:message name="removeItemsFromOrderRequest">
-    <wsdl:part element="tns:removeItemsFromOrder" name="updateOrderRequest"/>
+    <wsdl:part element="tns:removeItemsFromOrder" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="removeItemsFromOrderResponse">
     <wsdl:part element="tns:removeItemsFromOrderResponse" name="order"/>

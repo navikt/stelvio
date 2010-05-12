@@ -85,16 +85,4 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="CreateOrderRequest">
-    <xsd:sequence>
-      <xsd:element name="customerId" type="xsd:string"/>
-      <xsd:element maxOccurs="unbounded" name="orderLineItemSpecification" type="order:OrderLineItemSpecification"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="UpdateOrderRequest">
-    <xsd:sequence>
-      <xsd:element name="orderId" type="xsd:string"/>
-      <xsd:element maxOccurs="unbounded" name="orderLineItemSpecification" type="order:OrderLineItemSpecification"/>
-    </xsd:sequence>
-  </xsd:complexType>
 </xsd:schema>
