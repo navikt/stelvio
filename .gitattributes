@@ -1837,8 +1837,12 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/UML
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/UML2XSD.tc -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/XSD2UML.tc -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/build.xml -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/common/V1/V1.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/domain[!!-~]model.emx -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/implementation.emx -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/order/V1/OrderCommand/OrderCommand.wsdl -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/order/V1/OrderQuery/OrderQuery.wsdl -text
+incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/order/V1/V1.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/services.emx -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/common/V1/AdditionalInfo.xsd -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-lib/no/stelvio/example/common/V1/Entity.xsd -text
