@@ -369,7 +369,9 @@ incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/sc
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/sca.module.attributes
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-service/target
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/*.class
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/*.cmt
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/*.jar
+incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/.apt_generated
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/.classpath
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/.project
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-provider-lib/.settings
