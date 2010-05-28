@@ -2326,7 +2326,8 @@ int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websp
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/PwdConsole.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/BuildCommand.java -text svneol=unset#text/plain
-int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/CreateProjectsPlugin.java -text
+int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/CleanProjectsMojo.java -text
+int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/CreateProjectsMojo.java -text
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/WidCleanMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/WidPlugin.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/utils/IdeDependencyFactory.java -text svneol=unset#text/plain

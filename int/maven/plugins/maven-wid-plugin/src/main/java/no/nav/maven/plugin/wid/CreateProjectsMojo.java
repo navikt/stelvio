@@ -30,7 +30,7 @@ import org.codehaus.plexus.archiver.UnArchiver;
  * @execute goal="wid"
  * @aggregator
  */
-public class CreateProjectsPlugin extends AbstractMojo {
+public class CreateProjectsMojo extends AbstractMojo {
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 
