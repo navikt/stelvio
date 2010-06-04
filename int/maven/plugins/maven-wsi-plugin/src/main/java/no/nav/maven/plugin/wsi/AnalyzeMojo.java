@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.wsi.WSIException;
 import org.wsi.test.analyzer.BasicProfileAnalyzer;
 import org.wsi.test.analyzer.config.AnalyzerConfig;
@@ -35,10 +36,15 @@ public class AnalyzeMojo extends AbstractMojo {
 	private File projectBuildDirectory;
 
 	/**
+	 * @parameter expression=${failOnFailure} default-value="true"
+	 */
+	private boolean failOnFailure;
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
-	public void execute() throws MojoExecutionException {
+	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
 			DocumentFactory documentFactory = DocumentFactory.newInstance();
 
@@ -71,7 +77,10 @@ public class AnalyzeMojo extends AbstractMojo {
 				getLog().debug(analyzerConfig.toString());
 			}
 
-			new BasicProfileAnalyzer(Collections.singletonList(analyzerConfig)).validateConformance();
+			int result = new BasicProfileAnalyzer(Collections.singletonList(analyzerConfig)).validateConformance();
+			if (failOnFailure && result > 0) {
+				throw new MojoFailureException("WSI validation failed, check report for details.");
+			}
 		} catch (WSIException e) {
 			throw new MojoExecutionException("WSIException", e);
 		}
