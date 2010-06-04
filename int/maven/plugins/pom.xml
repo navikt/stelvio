@@ -30,6 +30,7 @@
 		<module>maven-wid-plugin</module>
 		<module>maven-wps-artifact-plugin</module>
 		<module>maven-wsdl-plugin</module>
+		<module>maven-wsi-plugin</module>
 	</modules>
 
 	<scm>

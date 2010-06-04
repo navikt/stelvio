@@ -2351,6 +2351,8 @@ int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/EchoServi
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/poc-module2_EchoService2MapWSEXP.wsdl -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/poc-module2_EchoService2WSEXP.wsdl -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/poc-module2_EchoServiceWSEXP.wsdl -text
+int/maven/plugins/maven-wsi-plugin/pom.xml -text
+int/maven/plugins/maven-wsi-plugin/src/main/java/no/nav/maven/plugin/wsi/AnalyzeMojo.java -text
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
