@@ -797,6 +797,10 @@ int/maven/plugins/maven-wsdl-plugin/.classpath
 int/maven/plugins/maven-wsdl-plugin/.project
 int/maven/plugins/maven-wsdl-plugin/.settings
 int/maven/plugins/maven-wsdl-plugin/target
+int/maven/plugins/maven-wsi-plugin/.classpath
+int/maven/plugins/maven-wsi-plugin/.project
+int/maven/plugins/maven-wsi-plugin/.settings
+int/maven/plugins/maven-wsi-plugin/target
 int/maven/plugins/target
 int/maven/poms/maven-deploy-pom/.project
 int/maven/poms/maven-deploy-pom/.settings
