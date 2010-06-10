@@ -11,7 +11,7 @@
 	<groupId>com.ibm.maven.runtimes</groupId>
 	<artifactId>wps-runtime</artifactId>
 	<packaging>jar</packaging>
-	<version>7.0.0.1-SNAPSHOT</version>
+	<version>7.0.0.2-SNAPSHOT</version>
 	<name>IBM WPS Runtime</name>
 	<description>All jar files in the IBM WPS runtime merged into one big jar files. Three of the jars are uploaded separately
 		and added as dependencies to overcome the 65536-files limitation of Sun's Jar implementation</description>
@@ -31,7 +31,7 @@
 									<patternset>
 										<include name="**/*.class" />
 									</patternset>
-									<filelist dir="${wps.runtime}" files="${files}" />
+									<filelist dir="${wid.runtime}" files="${files}" />
 								</unzip>
 							</tasks>
 						</configuration>
@@ -45,26 +45,26 @@
 	</build>
 
 	<!-- Large jar files uploaded separately to shrink the size of the archive file -->
-	<!-- Install/deploy the jars manually with commands like these:
-		mvn deploy:deploy-file -DgroupId=com.ibm.ws.runtime -DartifactId=WS_Server -Dversion=7.0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=plugins\com.ibm.ws.runtime.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
-		mvn deploy:deploy-file -DgroupId=com.ibm.jaxws.thinclient -DartifactId=WebServicesFeaturePackThinClientRuntime -Dversion=7.0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=runtimes/com.ibm.jaxws.thinclient_7.0.0.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
-		mvn deploy:deploy-file -DgroupId=com.ibm.ws.admin.client -DartifactId=WebSphereClientServices -Dversion=7.0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=runtimes/com.ibm.ws.admin.client_7.0.0.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
+	<!-- Install/deploy the jars manually with commands like these (or use Nexus artifact upload):
+		mvn deploy:deploy-file -DgroupId=com.ibm.ws.runtime -DartifactId=WS_Server -Dversion=7.0.0.2 -Dpackaging=jar -Dfile=plugins\com.ibm.ws.runtime.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
+		mvn deploy:deploy-file -DgroupId=com.ibm.jaxws.thinclient -DartifactId=WebServicesFeaturePackThinClientRuntime -Dversion=7.0.0.2 -Dpackaging=jar -Dfile=runtimes/com.ibm.jaxws.thinclient_7.0.0.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
+		mvn deploy:deploy-file -DgroupId=com.ibm.ws.admin.client -DartifactId=WebSphereClientServices -Dversion=7.0.0.2 -Dpackaging=jar -Dfile=runtimes/com.ibm.ws.admin.client_7.0.0.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
 	 -->
 	<dependencies>
 		<dependency>
 			<groupId>com.ibm.ws.runtime</groupId>
 			<artifactId>WS_Server</artifactId>
-			<version>${project.version}</version>
+			<version>${runtime.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.jaxws.thinclient</groupId>
 			<artifactId>WebServicesFeaturePackThinClientRuntime</artifactId>
-			<version>${project.version}</version>
+			<version>${runtime.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.ws.admin.client</groupId>
 			<artifactId>WebSphereClientServices</artifactId>
-			<version>${project.version}</version>
+			<version>${runtime.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -74,5 +74,6 @@
 	</scm>
 	<properties>
 		<scm.connection>${scm.root}/${project.artifactId}</scm.connection>
+		<runtime.version>7.0.0.2</runtime.version>
 	</properties>
 </project>
