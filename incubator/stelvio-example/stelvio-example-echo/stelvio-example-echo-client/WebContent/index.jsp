@@ -7,7 +7,8 @@
 <%@page import="no.stelvio.example.services.v1.echoservice.binding2.EchoService"%>
 <%@page import="no.stelvio.example.services.v1.echoservice.binding2.EchoServiceWSEXP_EchoServiceHttpPortProxy"%>
 <%@page import="no.stelvio.example.services.v1.echoservice.binding2.EchoEchoFault1Msg"%>
-<%@page import="javax.xml.ws.soap.SOAPFaultException"%><html>
+<%@page import="javax.xml.ws.soap.SOAPFaultException"%>
+<%@page import="java.io.PrintWriter"%><html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Test Echo Service</title>
@@ -27,6 +28,9 @@
 		out.println("Fault1:" + e.getMessage());
 	} catch (SOAPFaultException e) {
 		out.println("Ikke-deklarert feil: " + e.getMessage());
+		out.println("<br/><br/><pre>");
+		e.printStackTrace(new PrintWriter(out));
+		out.println("</pre>");
 	}
 	%>
 </body>
