@@ -2222,7 +2222,6 @@ int/maven-pocs/maven-build-poc/pom.xml -text
 int/maven-pocs/maven-deploy-poc/bus-deploy/pom.xml -text
 int/maven-pocs/maven-deploy-poc/maven-bus-deploy-poc/pom.xml -text
 int/maven-pocs/maven-deploy-poc/pom.xml -text
-int/maven-runtimes/pom.xml -text
 int/maven-runtimes/wps-runtime/files.txt -text
 int/maven-runtimes/wps-runtime/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text

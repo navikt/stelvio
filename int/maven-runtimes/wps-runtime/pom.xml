@@ -3,9 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.nav.maven.runtimes</groupId>
-		<artifactId>maven-runtimes</artifactId>
-		<version>1.3-SNAPSHOT</version>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.0</version>
+		<relativePath>../../maven/poms/maven-root-pom</relativePath>
 	</parent>
 
 	<groupId>com.ibm.maven.runtimes</groupId>
@@ -67,13 +68,23 @@
 			<version>${runtime.version}</version>
 		</dependency>
 	</dependencies>
+	
+	<distributionManagement>
+		<repository>
+			<id>nav-maven2-3rdparty-repo</id>
+			<url>scp://maven.adeo.no/usr/local/sonatype-work/nexus/storage/thirdparty</url>
+		</repository>
+	</distributionManagement>
 
 	<scm>
 		<connection>${scm.connection}</connection>
 		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>${scm.root}/${project.artifactId}</scm.connection>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven-runtimes/wps-runtime
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
 		<runtime.version>7.0.0.2</runtime.version>
 	</properties>
 </project>
