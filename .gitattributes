@@ -1834,6 +1834,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-client/src/n
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-client/src/no/stelvio/example/services/v1/echoservice/binding2/EchoServiceWSEXPEchoServiceHttpService.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-client/src/no/stelvio/example/services/v1/echoservice/binding2/EchoServiceWSEXP_EchoServiceHttpPortProxy.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-client/src/no/stelvio/example/services/v1/echoservice/package-info.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-client/src/service/Echo.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.settings/org.eclipse.wst.common.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
