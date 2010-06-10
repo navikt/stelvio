@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="EchoService" targetNamespace="http://www.stelvio.no/example/services/V1/EchoService" xmlns:tns="http://www.stelvio.no/example/services/V1/EchoService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <wsdl:types>
+  <wsdl:types>
     <xsd:schema targetNamespace="http://www.stelvio.no/example/services/V1/EchoService">
       <xsd:element name="echo">
         <xsd:complexType>
@@ -18,26 +18,32 @@
       <xsd:element name="echoFault1" nillable="true">
       	<xsd:simpleType>
       		<xsd:restriction base="xsd:string">
-      			<xsd:maxLength value="2"></xsd:maxLength>
+      			<xsd:maxLength value="2"/>
       		</xsd:restriction>
       	</xsd:simpleType>
       </xsd:element>
     </xsd:schema>
   </wsdl:types>
-    <wsdl:message name="echoRequestMsg">
-    <wsdl:part element="tns:echo" name="echoParameters"/>
+  <wsdl:message name="echoResponseMsg">
+    <wsdl:part element="tns:echoResponse" name="echoResult">
+    </wsdl:part>
   </wsdl:message>
-    <wsdl:message name="echoResponseMsg">
-    <wsdl:part element="tns:echoResponse" name="echoResult"/>
+  <wsdl:message name="echoRequestMsg">
+    <wsdl:part element="tns:echo" name="echoParameters">
+    </wsdl:part>
   </wsdl:message>
-    <wsdl:message name="echo_echoFault1Msg">
-    <wsdl:part element="tns:echoFault1" name="echoFault1"/>
+  <wsdl:message name="echo_echoFault1Msg">
+    <wsdl:part element="tns:echoFault1" name="echoFault1">
+    </wsdl:part>
   </wsdl:message>
-    <wsdl:portType name="EchoService">
+  <wsdl:portType name="EchoService">
     <wsdl:operation name="echo">
-      <wsdl:input message="tns:echoRequestMsg" name="echoRequest"/>
-      <wsdl:output message="tns:echoResponseMsg" name="echoResponse"/>
-            <wsdl:fault message="tns:echo_echoFault1Msg" name="echoFault1"/>
-        </wsdl:operation>
+      <wsdl:input message="tns:echoRequestMsg" name="echoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:echoResponseMsg" name="echoResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:echo_echoFault1Msg" name="echoFault1">
+    </wsdl:fault>
+    </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
