@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -12,7 +11,7 @@
 	<groupId>com.ibm.maven.runtimes</groupId>
 	<artifactId>wps-runtime</artifactId>
 	<packaging>jar</packaging>
-	<version>7.0.0.2-SNAPSHOT</version>
+	<version>7.0.0.2</version>
 	<name>IBM WPS Runtime</name>
 	<description>All jar files in the IBM WPS runtime merged into one big jar files. Three of the jars are uploaded separately
 		and added as dependencies to overcome the 65536-files limitation of Sun's Jar implementation</description>
@@ -27,10 +26,10 @@
 						<phase>process-resources</phase>
 						<configuration>
 							<tasks>
-								<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath"/>
-								<property name="unzipDirectory" value="${project.build.outputDirectory}"/>
-								<property name="filesBaseDirectory" value="${wid.runtime}"/>
-								<ant target="unzipFiles"/>
+								<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath" />
+								<property name="unzipDirectory" value="${project.build.outputDirectory}" />
+								<property name="filesBaseDirectory" value="${wid.runtime}" />
+								<ant target="unzipFiles" />
 							</tasks>
 						</configuration>
 						<goals>
@@ -87,8 +86,8 @@
 	</distributionManagement>
 
 	<scm>
-		<connection>${scm.connection}</connection>
-		<developerConnection>${scm.connection}</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/wps-runtime-7.0.0.2</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/wps-runtime-7.0.0.2</developerConnection>
 	</scm>
 	<properties>
 		<maven.test.skip>true</maven.test.skip>
