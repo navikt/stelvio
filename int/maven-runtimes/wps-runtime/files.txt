@@ -1,3 +1,4 @@
+feature_packs/sca/sdoplugins/sdo_api.jar
 lib/aspectjrt.jar
 lib/bootstrap.jar
 plugins/com.ibm.bpc.admin.jar
@@ -8,14 +9,23 @@ plugins/com.ibm.bpc.core.jar
 plugins/com.ibm.bpc.core.nl1.jar
 plugins/com.ibm.bpc.core.nl2.jar
 plugins/com.ibm.bpc.handler.sca.jar
+plugins/com.ibm.bpc.message.sdo.jar
 plugins/com.ibm.bpc.model.jar
+plugins/com.ibm.bpc.query.common.jar
+plugins/com.ibm.bpc.query.common.nl1.jar
+plugins/com.ibm.bpc.query.common.nl2.jar
+plugins/com.ibm.bpc.query.jar
 plugins/com.ibm.bpc.runtime.jar
 plugins/com.ibm.bpc.wccm.jar
+plugins/com.ibm.bpe.query.model.jar
+plugins/com.ibm.bpe.query.model.nl1.jar
+plugins/com.ibm.bpe.query.model.nl2.jar
 plugins/com.ibm.events.client.jar
 plugins/com.ibm.jaxb.tools.jar
 plugins/com.ibm.jaxws.tools.jar
 installedConnectors/wmq.jmsra.rar/com.ibm.mq.jar
 installedConnectors/wmq.jmsra.rar/com.ibm.mqjms.jar
+installedConnectors/wmq.jmsra.rar/com.ibm.msg.client.jms.internal.jar
 plugins/com.ibm.sibx.gateway_7.0.0.jar
 plugins/com.ibm.sibx.migration_6.1.0.jar
 plugins/com.ibm.sibx.runtime_6.1.0.jar
@@ -27,7 +37,7 @@ plugins/com.ibm.wbicmn.runtime_6.1.0.jar
 plugins/com.ibm.wbicmn.system_6.1.0.jar
 plugins/com.ibm.wbicmn.wccm_6.1.0.jar
 plugins/com.ibm.wbicmn.xpath.jar
-plugins/com.ibm.wbitxomptest.rt_7.0.0.jar
+plugins/com.ibm.wbit.comptest.rt_7.0.0.jar
 plugins/com.ibm.wps.runtime.jar
 plugins/com.ibm.wps.wccm.jar
 plugins/com.ibm.ws.admin.core.jar
@@ -53,7 +63,7 @@ plugins/com.ibm.ws.jpa.jar
 plugins/com.ibm.ws.monitoring.core.jar
 plugins/com.ibm.ws.monitoring.sca.jar
 plugins/com.ibm.ws.portletcontainer.jar
-plugins/com.ibm.ws.prereqxommonj-twm.jar
+plugins/com.ibm.ws.prereq.commonj-twm.jar
 plugins/com.ibm.ws.prereq.soap.jar
 plugins/com.ibm.ws.prereq.vajava.jar
 plugins/com.ibm.ws.prereq.wsdl4j.jar
