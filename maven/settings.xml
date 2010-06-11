@@ -5,6 +5,14 @@
 		  
 	<!-- Other settings can be set here, like username for the different repositories etc-->
 	
+	<servers>
+		<server>
+			<id>nav-maven2-internal-repo</id>
+			<username>maven</username>
+			<password>maven</password>
+		</server>
+	</servers>
+	
 	<pluginGroups>
 		<pluginGroup>no.nav.maven.plugins</pluginGroup>
 		<pluginGroup>no.stelvio.maven.plugins</pluginGroup>
