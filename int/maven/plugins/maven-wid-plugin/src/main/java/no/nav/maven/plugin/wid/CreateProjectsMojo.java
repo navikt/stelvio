@@ -5,15 +5,22 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.NameFileFilter;
-import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.InvalidRepositoryException;
+import org.apache.maven.artifact.factory.ArtifactFactory;
+import org.apache.maven.artifact.repository.ArtifactRepository;
+import org.apache.maven.artifact.repository.ArtifactRepositoryFactory;
+import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
+import org.apache.maven.artifact.resolver.ArtifactResolutionException;
+import org.apache.maven.artifact.resolver.ArtifactResolver;
+import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.ProjectUtils;
 import org.apache.maven.shared.invoker.DefaultInvocationRequest;
 import org.apache.maven.shared.invoker.InvocationRequest;
 import org.apache.maven.shared.invoker.Invoker;
@@ -35,17 +42,29 @@ public class CreateProjectsMojo extends AbstractMojo {
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 
 	/**
-	 * @parameter expression="${reactorProjects}"
-	 * @required
+	 * Artifact repository factory component.
+	 * 
+	 * @component
 	 * @readonly
+	 * @required
 	 */
-	private Collection<MavenProject> reactorProjects;
+	private ArtifactRepositoryFactory artifactRepositoryFactory;
 
 	/**
-	 * @parameter default-value="${project.basedir}/libraries"
+	 * Artifact factory, needed to create artifacts.
+	 * 
+	 * @component
+	 * @readonly
 	 * @required
 	 */
-	private File dependencyProjectsDirectory;
+	private ArtifactFactory artifactFactory;
+
+	/**
+	 * @component
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactResolver artifactResolver;
 
 	/**
 	 * @component roleHint="zip"
@@ -56,6 +75,46 @@ public class CreateProjectsMojo extends AbstractMojo {
 	 * @component
 	 */
 	private Invoker invoker;
+
+	/**
+	 * The Maven session.
+	 * 
+	 * @parameter expression="${session}"
+	 * @readonly
+	 * @required
+	 */
+	private MavenSession mavenSession;
+
+	/**
+	 * @parameter expression="${reactorProjects}"
+	 * @required
+	 * @readonly
+	 */
+	private Collection<MavenProject> reactorProjects;
+
+	/**
+	 * The remote repositories used as specified in your POM.
+	 * 
+	 * @parameter expression="${project.repositories}"
+	 * @readonly
+	 * @required
+	 */
+	private List repositories;
+
+	/**
+	 * The local repository taken from Maven's runtime. Typically $HOME/.m2/repository.
+	 * 
+	 * @parameter expression="${localRepository}"
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactRepository localRepository;
+
+	/**
+	 * @parameter default-value="${project.basedir}/libraries"
+	 * @required
+	 */
+	private File dependencyProjectsDirectory;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		Collection<String> reactorProjectIds = new HashSet<String>(reactorProjects.size());
@@ -81,14 +140,26 @@ public class CreateProjectsMojo extends AbstractMojo {
 			}
 		}
 
+		List remoteRepos = buildRemoteRepositories();
+
 		for (Artifact dependencyArtifact : dependencyArtifacts) {
-			createProject(dependencyArtifact);
+			createProject(remoteRepos, dependencyArtifact);
 		}
 	}
 
-	private void createProject(Artifact artifact) throws MojoExecutionException {
-		File extractDirectory = extractArtifact(artifact);
-		copyPomFileToRoot(extractDirectory);
+	private List buildRemoteRepositories() throws MojoExecutionException {
+		try {
+			return ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
+		} catch (InvalidRepositoryException e) {
+			throw new MojoExecutionException("Error building remote repositories", e);
+		}
+	}
+
+	private void createProject(List remoteRepos, Artifact artifact) throws MojoExecutionException {
+		Artifact sourceArtifact = artifactFactory.createArtifactWithClassifier(artifact.getGroupId(), artifact.getArtifactId(),
+				artifact.getVersion(), artifact.getType(), "sources");
+		sourceArtifact = resolveArtifact(remoteRepos, sourceArtifact);
+		File extractDirectory = extractArtifact(sourceArtifact);
 		invokeWidPlugin(extractDirectory);
 	}
 
@@ -104,15 +175,17 @@ public class CreateProjectsMojo extends AbstractMojo {
 		}
 	}
 
-	private void copyPomFileToRoot(File directory) throws MojoExecutionException {
+	@SuppressWarnings("unchecked")
+	public Artifact resolveArtifact(List remoteRepos, Artifact artifact) throws MojoExecutionException {
 		try {
-			Collection filesFound = FileUtils.listFiles(new File(directory, "META-INF/maven"), new NameFileFilter("pom.xml"),
-					TrueFileFilter.INSTANCE);
-			// Expect exactly one file found
-			FileUtils.copyFileToDirectory((File) filesFound.iterator().next(), directory);
-		} catch (IOException e) {
-			throw new MojoExecutionException("Error copying file", e);
+			artifactResolver.resolve(artifact, remoteRepos, localRepository);
+		} catch (ArtifactResolutionException e) {
+			throw new MojoExecutionException("Error downloading wsdl artifact.", e);
+		} catch (ArtifactNotFoundException e) {
+			throw new MojoExecutionException("Resource can not be found.", e);
 		}
+
+		return artifact;
 	}
 
 	private File extractArtifact(Artifact artifact) throws MojoExecutionException {
