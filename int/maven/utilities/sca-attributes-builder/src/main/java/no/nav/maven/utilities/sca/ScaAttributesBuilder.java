@@ -66,12 +66,7 @@ public class ScaAttributesBuilder {
 	}
 
 	private String convertVersion(String version) {
-		// TODO: Improve robustness by introducing RegEx validation against IBM version schema x[.y][.z]
-		if (version.contains("-SNAPSHOT")) {
-			return "";
-		} else {
-			return version;
-		}
+		return version.substring(0, version.indexOf("."));
 	}
 
 	public void writeToDirectory(File directory) throws IOException {
