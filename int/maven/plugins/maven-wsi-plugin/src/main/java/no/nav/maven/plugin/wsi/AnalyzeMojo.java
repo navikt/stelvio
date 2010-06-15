@@ -2,6 +2,7 @@ package no.nav.maven.plugin.wsi;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -104,7 +105,6 @@ public class AnalyzeMojo extends AbstractMojo {
 			analyzerConfig.setTestAssertionsDocumentLocation(new File(reportDirectory, "common/profiles/SSBP10_BP11_TAD.xml")
 					.getPath());
 
-			analyzerConfig.setReportLocation(new File(reportDirectory, "report.xml").getPath());
 			analyzerConfig.setReplaceReport(true);
 
 			AddStyleSheet addStyleSheet = new AddStyleSheetImpl();
@@ -112,20 +112,31 @@ public class AnalyzeMojo extends AbstractMojo {
 			addStyleSheet.setType("text/xsl");
 			analyzerConfig.setAddStyleSheet(addStyleSheet);
 
-			WSDLReference wsdlReference = getWSDLReference();
-
-			analyzerConfig.setWSDLReference(wsdlReference);
-
-			if (getLog().isDebugEnabled()) {
-				getLog().debug(analyzerConfig.toString());
-			}
-
 			// This is sort of a "hack" to make the WSI Testing Tool find schemas
 			// TODO: This can be improved by setting properties explicitly (see class org.wsi.test.util.TestUtils for details)
 			System.setProperty(WSIProperties.PROP_WSI_HOME, reportDirectory.getPath());
 
-			int result = new BasicProfileAnalyzer(Collections.singletonList(analyzerConfig)).validateConformance();
-			if (failOnFailure && result > 0) {
+			int aggregatedResult = 0;
+			for (WSDLReference wsdlReference : getWSDLReferences()) {
+				String reportFilename = wsdlReference.getWSDLElement().getName() + ".xml";
+
+				analyzerConfig.setWSDLReference(wsdlReference);
+				analyzerConfig.setReportLocation(new File(reportDirectory, reportFilename).getPath());
+
+				if (getLog().isDebugEnabled()) {
+					getLog().debug(analyzerConfig.toString());
+				}
+
+				int result = new BasicProfileAnalyzer(Collections.singletonList(analyzerConfig)).validateConformance();
+
+				getLog().info(
+						wsdlReference.getWSDLElement().getQName() + ":[" + (result == 0 ? "OK" : "FAILED") + "]" + ":"
+								+ reportFilename);
+
+				aggregatedResult += result;
+			}
+
+			if (failOnFailure && aggregatedResult > 0) {
 				throw new MojoFailureException("WSI validation failed, check report for details.");
 			}
 
@@ -157,11 +168,8 @@ public class AnalyzeMojo extends AbstractMojo {
 		throw new MojoExecutionException("Dependency containing WSI Tools files not found. Unable to continue.");
 	}
 
-	private WSDLReference getWSDLReference() throws MojoExecutionException {
-		// TODO: Find all applicable port types
+	private Collection<WSDLReference> getWSDLReferences() throws MojoExecutionException {
 		try {
-			WSDLReference wsdlReference = new WSDLReferenceImpl();
-
 			DirectoryScanner scanner = new DirectoryScanner();
 			scanner.setBasedir(basedir);
 			if (!includes.isEmpty()) {
@@ -176,11 +184,13 @@ public class AnalyzeMojo extends AbstractMojo {
 
 			String[] includedFiles = scanner.getIncludedFiles();
 
+			Collection<WSDLReference> wsdlReferences = new ArrayList<WSDLReference>();
 			for (int i = 0; i < includedFiles.length; i++) {
 				String includedFile = includedFiles[i];
 				Definition wsdl = getWsdlReader().readWSDL(basedir.toString(), includedFile);
 				Map<QName, PortType> portTypes = wsdl.getPortTypes();
 				for (QName qName : portTypes.keySet()) {
+					WSDLReference wsdlReference = new WSDLReferenceImpl();
 					wsdlReference.setWSDLLocation(includedFile);
 					WSDLElement wsdlElement = new WSDLElementImpl();
 					wsdlReference.setWSDLElement(wsdlElement);
@@ -188,10 +198,10 @@ public class AnalyzeMojo extends AbstractMojo {
 					wsdlElement.setNamespace(qName.getNamespaceURI());
 					wsdlElement.setName(qName.getLocalPart());
 
-					return wsdlReference;
+					wsdlReferences.add(wsdlReference);
 				}
 			}
-			return null;
+			return wsdlReferences;
 		} catch (WSDLException e) {
 			throw new MojoExecutionException("Error parsing WSDL", e);
 		}
