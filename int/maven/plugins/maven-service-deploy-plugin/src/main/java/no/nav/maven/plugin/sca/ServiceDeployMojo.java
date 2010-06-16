@@ -120,7 +120,6 @@ public class ServiceDeployMojo extends AbstractMojo {
 		StringBuilder argLineBuilder = new StringBuilder();
 		argLineBuilder.append(input);
 		argLineBuilder.append(" -outputApplication ").append(output);
-		argLineBuilder.append(" -progressMonitor none");
 		if (fileEncoding != null && fileEncoding.length() > 0) {
 			argLineBuilder.append(" -fileEncoding ").append(fileEncoding);
 		}
