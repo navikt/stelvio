@@ -64,19 +64,11 @@ public abstract class VerticalMojo extends AbstractMojo {
 	protected String stelvioCommonsLibSCMURL;
 
 	/**
-	 * @parameter
-	 * @required
-	 */
-	protected String stelvioCommonsBpcLibSCMURL;
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
-
 		getLog().info("stelvioCommonsLibSCMURL" + stelvioCommonsLibSCMURL);
-		getLog().info("stelvioCommonsBpcLibSCMURL" + stelvioCommonsBpcLibSCMURL);
 
 		Collection<MavenProject> projects = getProjects();
 		StringBuilder projectNames = new StringBuilder();
@@ -102,11 +94,6 @@ public abstract class VerticalMojo extends AbstractMojo {
 				repositoryLocation = stelvioCommonsLibSCMURL;
 				// Override the output folder for Stelvio Commons Lib
 				projectDirectory = new File(workingDirectory + File.separator + "libs", "stelvio-commons-lib");
-			} else if (moduleName.contains("stelvio-commons-bpc-lib")) {
-				// Use alternate repository
-				repositoryLocation = stelvioCommonsBpcLibSCMURL;
-				// Override the output folder for Stelvio Commons BPC Lib
-				projectDirectory = new File(workingDirectory + File.separator + "libs", "stelvio-commons-bpc-lib");
 			} else {
 				repositoryLocation = baseRepository.concat("/" + moduleName);
 				getLog().info("repositoryLocation for " + moduleName + " is " + repositoryLocation);
