@@ -18,7 +18,6 @@
 	<modules>
 		<module>stelvio-commons-lib</module>
 		<module>stelvio-commons-lib-test</module>
-		<module>stelvio-commons-bpc-lib</module>
 	</modules>
 
 	<build>
