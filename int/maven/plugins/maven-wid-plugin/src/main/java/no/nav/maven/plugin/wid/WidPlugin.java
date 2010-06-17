@@ -40,6 +40,11 @@ public class WidPlugin extends EclipsePlugin {
 	 * @parameter expression="${wid.runtimeName}" default-value="WebSphere Process Server v6.1"
 	 */
 	private String runtimeName;
+	
+	/**
+	 * @parameter default-value="false"
+	 */
+	private boolean versioned;
 
 	@Override
 	protected void writeConfigurationExtras(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
@@ -60,7 +65,7 @@ public class WidPlugin extends EclipsePlugin {
 
 	private void writeScaAttributes() throws MojoExecutionException {
 		try {
-			new ScaAttributesBuilder(getProject()).writeToDirectory(getEclipseProjectDir());
+			new ScaAttributesBuilder(getProject()).setVersioned(versioned).writeToDirectory(getEclipseProjectDir());
 		} catch (IOException e) {
 			throw new MojoExecutionException("Unable to write SCA Attributes file", e);
 		}
