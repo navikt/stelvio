@@ -60,7 +60,7 @@
 						<id>default</id>
 						<phases>
 							<generate-resources>
-								no.nav.maven.plugins:maven-wps-artifact-plugin:build-manifest-classpath
+								no.nav.maven.plugins:maven-wps-artifact-plugin:build-manifest-classpath,no.nav.maven.plugins:maven-sca-attributes-plugin:generate-sca-attributes
 							</generate-resources>
 							<process-resources>
 								org.apache.maven.plugins:maven-resources-plugin:resources
