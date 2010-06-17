@@ -32,6 +32,11 @@ public class GenerateScaAttributesMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private File outputDirectory;
+	
+	/**
+	 * @parameter expression="${sca.versioned}" default-value="false"
+	 */
+	private boolean versioned;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// This "stupid" if test is here because I want to configure the plugin
@@ -46,7 +51,7 @@ public class GenerateScaAttributesMojo extends AbstractMojo {
 			if (!outputDirectory.exists()) {
 				outputDirectory.mkdirs();
 			}
-			new ScaAttributesBuilder(project).setVersioned(true).writeToDirectory(outputDirectory);
+			new ScaAttributesBuilder(project).setVersioned(versioned).writeToDirectory(outputDirectory);
 		} catch (IOException e) {
 			throw new MojoExecutionException("Unable to write SCA Attributes file", e);
 		}
