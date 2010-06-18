@@ -56,7 +56,7 @@ public class ScaAttributesBuilder {
 			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependency.getType())) {
 				Element dependencyElement = new Element("libraryDependency", TARGET_NAMESPACE);
 				dependencyElement.setAttribute("name", dependency.getArtifactId());
-				dependencyElement.setAttribute("version", versioned ? convertVersion(dependency.getVersion()) : "");
+				dependencyElement.setAttribute("version", "");
 				rootElement.addContent(dependencyElement);
 			}
 		}

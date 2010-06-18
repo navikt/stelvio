@@ -40,7 +40,7 @@ public class WidPlugin extends EclipsePlugin {
 	 * @parameter expression="${wid.runtimeName}" default-value="WebSphere Process Server v6.1"
 	 */
 	private String runtimeName;
-	
+
 	/**
 	 * @parameter expression="${sca.versioned}" default-value="false"
 	 */
@@ -50,7 +50,6 @@ public class WidPlugin extends EclipsePlugin {
 	protected void writeConfigurationExtras(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
 		super.writeConfigurationExtras(eclipseWriterConfig);
 
-		String packaging = getProject().getPackaging();
 		if (PACKAGING_WPS_LIBRARY_JAR.equals(packaging) || PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
 			setSourceDirs(eclipseWriterConfig);
 			setOutputDir(eclipseWriterConfig);
@@ -65,7 +64,11 @@ public class WidPlugin extends EclipsePlugin {
 
 	private void writeScaAttributes() throws MojoExecutionException {
 		try {
-			new ScaAttributesBuilder(getProject()).setVersioned(versioned).writeToDirectory(getEclipseProjectDir());
+			ScaAttributesBuilder scaAttributesBuilder = new ScaAttributesBuilder(getProject());
+			if (PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
+				scaAttributesBuilder.setVersioned(versioned);
+			}
+			scaAttributesBuilder.writeToDirectory(getEclipseProjectDir());
 		} catch (IOException e) {
 			throw new MojoExecutionException("Unable to write SCA Attributes file", e);
 		}
@@ -87,7 +90,7 @@ public class WidPlugin extends EclipsePlugin {
 					dependency.setJavadocAttachment(null);
 					dependency.setSourceAttachment(null);
 					dependencies.add(dependency);
-				} else if (PACKAGING_WPS_MODULE_EAR.equals(getProject().getPackaging())) {
+				} else if (PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
 					File dependencyFile = dependency.getFile();
 					if (dependencyFile != null) {
 						try {
