@@ -42,7 +42,7 @@ public class WidPlugin extends EclipsePlugin {
 	private String runtimeName;
 	
 	/**
-	 * @parameter default-value="false"
+	 * @parameter expression="${sca.versioned}" default-value="false"
 	 */
 	private boolean versioned;
 
