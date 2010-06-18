@@ -106,7 +106,7 @@
 					</releases>
 					<snapshots>
 						<enabled>true</enabled>
-						<updatePolicy>always</updatePolicy>
+						<updatePolicy>interval:10</updatePolicy>
 					</snapshots>
 					<url>http://maven.adeo.no/nexus/content/groups/pp-snapshots</url>
 				</repository>
@@ -129,7 +129,7 @@
 					</releases>
 					<snapshots>
 						<enabled>true</enabled>
-						<updatePolicy>always</updatePolicy>
+						<updatePolicy>interval:10</updatePolicy>
 					</snapshots>
 					<url>http://maven.adeo.no/nexus/content/groups/pp-snapshots</url>
 				</pluginRepository>
