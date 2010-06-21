@@ -2821,6 +2821,7 @@ int/stelvio-commons-lib/no/stelvio/common/context/StelvioContext.java -text
 int/stelvio-commons-lib/no/stelvio/common/context/StelvioContextData.java -text
 int/stelvio-commons-lib/no/stelvio/common/context/StelvioContextRepository.java -text
 int/stelvio-commons-lib/no/stelvio/common/context/UserWorkAreaContextAdapter.java -text svneol=unset#text/plain
+int/stelvio-commons-lib/no/stelvio/common/context/jaxws/StelvioContextHandler.java -text
 int/stelvio-commons-lib/no/stelvio/common/exception/CatchServiceRuntimeExceptionInterceptor.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/exception/ErrorTypes.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/exception/RuntimeFault.java -text svneol=unset#text/plain
