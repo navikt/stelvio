@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Set;
 
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
@@ -31,6 +33,7 @@ public class ScaAttributesBuilder {
 
 	private MavenProject project;
 	private boolean versioned;
+	private Set<BORuntimeFramework> boRuntimeFrameworks = EnumSet.of(BORuntimeFramework.VERSION7);
 
 	public ScaAttributesBuilder(MavenProject project) {
 		this.project = project;
@@ -39,6 +42,22 @@ public class ScaAttributesBuilder {
 	public ScaAttributesBuilder setVersioned(boolean versioned) {
 		this.versioned = versioned;
 		return this;
+	}
+
+	public ScaAttributesBuilder setBusinessObjectRuntimeFrameworks(Set<BORuntimeFramework> boRuntimeFrameworks) {
+		if (boRuntimeFrameworks.isEmpty()) {
+			throw new IllegalArgumentException("boRuntimeFrameworks cannot be empty");
+		}
+		if (boRuntimeFrameworks.size() > 1 && PACKAGING_WPS_MODULE_EAR.equals(project.getPackaging())) {
+			throw new IllegalArgumentException(PACKAGING_WPS_MODULE_EAR
+					+ " supports exactly one business object runtime framework.");
+		}
+		this.boRuntimeFrameworks = boRuntimeFrameworks;
+		return this;
+	}
+
+	public ScaAttributesBuilder setBusinessObjectRuntimeFramework(BORuntimeFramework boRuntimeFramework) {
+		return setBusinessObjectRuntimeFrameworks(EnumSet.of(boRuntimeFramework));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -50,7 +69,11 @@ public class ScaAttributesBuilder {
 		rootElement.setAttribute("versionProvider", versioned && version.length() > 0 ? "IBM_VRM" : "");
 		document.setRootElement(rootElement);
 
-		rootElement.addContent(new Element("boImplementation").addContent(new Element("emf")));
+		Element boImplementationElement = new Element("boImplementation");
+		rootElement.addContent(boImplementationElement);
+		for (BORuntimeFramework boRuntimeFramework : boRuntimeFrameworks) {
+			boImplementationElement.addContent(new Element(boRuntimeFramework.getElementName()));
+		}
 
 		for (Dependency dependency : (Collection<Dependency>) project.getCompileDependencies()) {
 			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependency.getType())) {

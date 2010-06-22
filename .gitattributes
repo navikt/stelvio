@@ -2522,6 +2522,7 @@ int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/common
 int/maven/utilities/maven-configuration-common/src/main/java/no/nav/maven/commons/managers/IArchiveManager.java -text svneol=unset#text/plain
 int/maven/utilities/pom.xml -text
 int/maven/utilities/sca-attributes-builder/pom.xml -text
+int/maven/utilities/sca-attributes-builder/src/main/java/no/nav/maven/utilities/sca/BORuntimeFramework.java -text
 int/maven/utilities/sca-attributes-builder/src/main/java/no/nav/maven/utilities/sca/ScaAttributesBuilder.java -text
 int/maven/ws-clients/datapower-management-client/pom.xml -text
 int/maven/ws-clients/datapower-management-client/src/main/wsdl/amp/app-mgmt-protocol.wsdl -text
