@@ -19,7 +19,7 @@
 			<groupId>no.stelvio.int</groupId>
 			<artifactId>stelvio-commons-lib</artifactId>
 			<type>wps-library-jar</type>
-			<version>3.3.2-SNAPSHOT</version>
+			<version>4.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
