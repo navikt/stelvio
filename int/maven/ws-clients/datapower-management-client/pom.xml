@@ -77,7 +77,7 @@
 	</scm>
 
 	<properties>
-		<cxf.version>2.2.6</cxf.version>
+		<cxf.version>2.2.7</cxf.version>
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/ws-clients/datapower-management-client
 		</scm.root>
