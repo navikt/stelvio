@@ -2367,6 +2367,7 @@ int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websp
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/MojoLauncher.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/PwdConsole.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/XML.java -text
+int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/XMLUtils.java -text
 int/maven/plugins/maven-wid-plugin/pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/BuildCommand.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/CleanProjectsMojo.java -text
