@@ -16,6 +16,7 @@
 	<modules>
 		<module>StelvioSystemAvailabilityWeb</module>
 		<module>StelvioSystemAvailabilityWebEAR</module>
+		<module>system-availability-config</module>
 	</modules>
 	
 	<build>
