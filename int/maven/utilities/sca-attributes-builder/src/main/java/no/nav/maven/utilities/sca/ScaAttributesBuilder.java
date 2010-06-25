@@ -33,7 +33,7 @@ public class ScaAttributesBuilder {
 
 	private MavenProject project;
 	private boolean versioned;
-	private Set<BORuntimeFramework> boRuntimeFrameworks = EnumSet.of(BORuntimeFramework.VERSION7);
+	private Set<BORuntimeFramework> boRuntimeFrameworks = EnumSet.of(BORuntimeFramework.VERSION6);
 
 	public ScaAttributesBuilder(MavenProject project) {
 		this.project = project;
