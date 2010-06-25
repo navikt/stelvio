@@ -1,31 +1,29 @@
 package no.stelvio.common.systemavailability;
 
+import java.io.Closeable;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.logging.Level;
 
 import no.stelvio.common.interceptor.GenericInterceptor;
 import no.stelvio.common.interceptor.InterceptorChain;
 
-import org.eclipse.hyades.logging.core.SerializationException;
-
+import com.ibm.websphere.bo.BOEquality;
 import com.ibm.websphere.bo.BOFactory;
-import com.ibm.websphere.bo.BOXMLDocument;
+import com.ibm.websphere.bo.BOType;
 import com.ibm.websphere.bo.BOXMLSerializer;
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
-import com.ibm.websphere.sca.ServiceRuntimeException;
 import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.scdl.OperationType;
-import com.ibm.websphere.sca.sdo.DataFactory;
-import com.ibm.ws.bo.bomodel.impl.DynamicBusinessObjectImpl;
-import com.ibm.ws.sca.internal.multipart.impl.ManagedMultipartImpl;
-import com.ibm.wsspi.sca.multipart.impl.MultipartImpl;
 import commonj.sdo.DataObject;
 import commonj.sdo.Type;
 
@@ -37,8 +35,6 @@ import commonj.sdo.Type;
  */
 public class SystemStubbingInterceptor extends GenericInterceptor {
 	private final String systemName;
-	private final String STRINGWRAPPER_NAMESPACE = "http://stelvio-commons-lib/no/stelvio/common/systemavailability";
-	private final String STRINGWRAPPER_NAME = "StelvioStringWrapper";
 
 	public SystemStubbingInterceptor(String systemName) {
 		this.systemName = systemName;
@@ -65,270 +61,214 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				// "+availRec.unavailableTo.toString());
 			}
 			if (availRec.stubbed) {
-				DataObject ret = findMatchingTestData(operationType, (DataObject) input);
-				return ret;
+				return findStubData(operationType, input);
 			} else if (availRec.recordStubData) {
-				DataObject preRecorded = null;
 				try {
-					preRecorded = findMatchingTestData(operationType, (DataObject) input);
-				} catch (ServiceBusinessException sbe) {
-					// This is OK, as it is a prerecorded SBE
-				} catch (ServiceRuntimeException sre) {
-					// This is also OK as it is a prerecorded SRE
-				} catch (RuntimeException re) {
-					// No prerecorded stub found
-					long timestamp = System.currentTimeMillis();
-					String requestId = Long.toString(timestamp);
-
-					Type sdoTypeReq = ((DataObject) input).getType();
-					String requestObjectName = sdoTypeReq.getName();
-					recordStubData(operationType, requestId, input, requestObjectName, "Request");
-					try {
-						Object ret = interceptorChain.doIntercept(operationType, input);
-
-						if (ret != null) {
-							Type sdoTypeRes = ((DataObject) ret).getType();
-							String responseObjectName = sdoTypeRes.getName();
-							recordStubData(operationType, requestId, ret, responseObjectName, "Response");
-						}
-
-						return ret;
-					} catch (ServiceBusinessException sbe) {
-						recordStubDataException(operationType, requestId, input, sbe);
-						throw sbe;
-					} catch (ServiceRuntimeException sre) {
-						recordStubDataRuntimeException(operationType, requestId, input, sre);
-						throw sre;
-					}
+					findStubData(operationType, input);
+				} catch (IllegalStateException e) {
+					return recordStubData(operationType, input, interceptorChain);
 				}
 				String logMessage = "Found prerecorded matching stub data for " + systemName + "." + operationType.getName()
 						+ ". Ignoring.";
 				logger.logp(Level.FINE, className, "invoke", logMessage);
-				return interceptorChain.doIntercept(operationType, input);
 			}
 		}
 		return interceptorChain.doIntercept(operationType, input);
 	}
 
-	private void recordStubDataException(OperationType operationType, String requestId, Object input,
-			ServiceBusinessException sbe) {
+	private Object recordStubData(OperationType operationType, Object input, InterceptorChain interceptorChain) {
+		RuntimeException exception = null;
+		Object output = null;
 		try {
-			storeObjectOrPrimitive(operationType, sbe, "exception", requestId, "Exception");
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (SerializationException e) {
-			e.printStackTrace();
+			output = interceptorChain.doIntercept(operationType, input);
+		} catch (RuntimeException e) {
+			exception = e;
 		}
-	}
-
-	private void recordStubDataRuntimeException(OperationType operationType, String requestId, Object input,
-			ServiceRuntimeException sre) {
-		try {
-			storeObjectOrPrimitive(operationType, sre, "exception", requestId, "RuntimeException");
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (SerializationException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void recordStubData(OperationType operationType, String requestId, Object input, String requestObjectName,
-			String fileSuffix) {
-		try {
-			storeObjectOrPrimitive(operationType, input, requestObjectName, requestId, fileSuffix);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void storeObjectOrPrimitive(OperationType operationType, Object object, String requestObjectName, String requestId,
-			String fileSuffix) throws IOException, SerializationException {
-		File dir = getDirectory(operationType);
-		File file = new File(dir, "Stub_" + requestId + "_" + fileSuffix + ".xml");
-		FileOutputStream fos = new FileOutputStream(file);
-		if (object instanceof MultipartImpl) {
-			if (((ManagedMultipartImpl) object).get(0) instanceof DataObject) {
-				DataObject requestDataObject = (DataObject) ((ManagedMultipartImpl) object).get(0);
-				BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
-						.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-				xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName, fos);
-			} else {
-				BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
-						.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-				xmlSerializerService.writeDataObject((ManagedMultipartImpl) object, "http://no.stelvio.stubdata/",
-						requestObjectName, fos);
-			}
+		recordStubData(operationType, input, output, exception);
+		if (exception != null) {
+			throw exception;
 		} else {
-			if (object instanceof DynamicBusinessObjectImpl) {
-				if (((DynamicBusinessObjectImpl) object).get(0) instanceof DataObject) {
-					DataObject requestDataObject = (DataObject) ((DynamicBusinessObjectImpl) object).get(0);
-					BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
-							.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-					xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName,
-							fos);
-				} else {
-					BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
-							.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-					xmlSerializerService.writeDataObject((DynamicBusinessObjectImpl) object, "http://no.stelvio.stubdata/",
-							requestObjectName, fos);
-				}
-
-			} else if (object instanceof String) {
-
-				DataObject stringWrapper = DataFactory.INSTANCE.create(STRINGWRAPPER_NAMESPACE, STRINGWRAPPER_NAME);
-				stringWrapper.setString("value", (String) object);
-				BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
-						.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-				xmlSerializerService.writeDataObject(stringWrapper, "http://no.stelvio.stubdata/", requestObjectName, fos);
-
-			} else {
-				if (object instanceof ServiceBusinessException) {
-					DataObject requestDataObject = (DataObject) ((ServiceBusinessException) object).getData();
-					BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
-							.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-					xmlSerializerService.writeDataObject(requestDataObject, "http://no.stelvio.stubdata/", requestObjectName,
-							fos);
-
-				} else if (object instanceof ServiceRuntimeException) {
-					PrintWriter pw = new PrintWriter(fos);
-					pw.println(((ServiceRuntimeException) object).getMessage());
-					pw.close();
-				}
-
-			}
+			return output;
 		}
-		String logMessage = "Recorded stubdata " + file;
-		logger.logp(Level.FINE, className, "storeObjectOrPrimitive", logMessage);
-		fos.close();
 	}
 
-	private File getDirectory(OperationType operationType) {
-		String dirName = new SystemAvailabilityStorage().getSystemAvailabilityDirectory() + "/" + this.systemName + "/"
-				+ operationType.getName();
-		File dir = new File(dirName);
-		if (!dir.exists())
-			dir.mkdirs();
-		return dir;
+	private boolean isOneWayOperation(Type outputType) {
+		return outputType == null;
 	}
 
-	/**
-	 * Finds matching test data based on operation type and input object
-	 * 
-	 * @param operationType
-	 * @param input
-	 * @return the DataObject representation of the matched test data
-	 * @throws ServiceBusinessException
-	 *             if matching test data is an exception (intentionally recorded to return exception)
-	 */
-	private DataObject findMatchingTestData(OperationType operationType, DataObject input) throws ServiceBusinessException {
-		File dir = getDirectory(operationType);
-		File[] requestFiles = dir.listFiles(new FileFilter() {
-			public boolean accept(File pathname) {
-				return pathname.getName().endsWith("_Request.xml");
+	private Object findStubData(OperationType operationType, Object input) {
+		File directory = getDirectory(operationType);
+
+		File[] requestFiles = directory.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.endsWith("_Request.xml");
 			}
 		});
 		Arrays.sort(requestFiles);
-		File matchingRequestFile = null;
+
+		DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
+		BOEquality boEquality = getBOEquality();
 		for (File requestFile : requestFiles) {
-			DataObject storedInput = readDataObject(requestFile);
-			if (input.get(0) instanceof DataObject) {
-				if (MatcherUtils.match(storedInput, (DataObject) input.get(0))) {
-					matchingRequestFile = requestFile;
-					break;
+			DataObject requestDataObject = readStubData(requestFile);
+			// TODO: Add support for "default" response - based on empty request
+			if (boEquality.isEqual(inputDataObject, requestDataObject)) {
+				if (isOneWayOperation(operationType.getOutputType())) {
+					return null;
 				}
-			} else // Primitive interface
-			if (MatcherUtils.match(storedInput, input)) {
-				matchingRequestFile = requestFile;
-				break;
+
+				String requestFilename = requestFile.getName();
+				String responseFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
+						+ "_Response.xml";
+				File responseFile = new File(directory, responseFilename);
+				if (responseFile.exists()) {
+					DataObject responseDataObject = readStubData(responseFile);
+					if (getBOType().isDataTypeWrapper(responseDataObject)) {
+						return responseDataObject.get("value");
+					} else {
+						return responseDataObject;
+					}
+				}
+				String exceptionFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
+						+ "_Exception.xml";
+				File exceptionFile = new File(directory, exceptionFilename);
+				if (exceptionFile.exists()) {
+					DataObject faultDataObject = readStubData(exceptionFile);
+					throw new ServiceBusinessException(faultDataObject);
+				}
+				String runtimeExceptionFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
+						+ "_RuntimeException.ser";
+				File runtimeExceptionFile = new File(directory, runtimeExceptionFilename);
+				if (runtimeExceptionFile.exists()) {
+					throw readRuntimeException(runtimeExceptionFile);
+				}
 			}
 		}
-		if (matchingRequestFile == null) {
-			throw new RuntimeException("No matching stub found for system " + systemName + ", operation "
-					+ operationType.getName() + " in path " + dir);
-		}
-		DataObject response = null;
-		String logMessage = "Found matching test data " + matchingRequestFile;
-		logger.logp(Level.FINE, className, "findMatchingTestData", logMessage);
-		String tmStamp = matchingRequestFile.getName().substring(0, matchingRequestFile.getName().length() - 12); // Deduct
-		// "_Request.xml"
-		File responseFile = new File(dir, tmStamp + "_Response.xml");
-		if (!responseFile.exists()) {
-			File exceptionFile = new File(dir, tmStamp + "_Exception.xml");
-			if (exceptionFile.exists()) {
-				DataObject responseObject = readDataObject(exceptionFile);
-				throw new ServiceBusinessException(responseObject);
-			}
-			File runtimeExceptionFile = new File(dir, tmStamp + "_RuntimeException.xml");
-			if (runtimeExceptionFile.exists()) {
-				throw new ServiceRuntimeException(
-						"A ServiceRuntimeException was recorded, but unfortunately I'm not able yet to provide the original message. It can maybe be found in the recorded data, but I'm pretty dumb.");
-			}
-		}
-		if (responseFile.exists()) {
-			response = createResponseObject(responseFile, operationType.getOutputType());
-		}
-		return response;
+		throw new IllegalStateException("No matching stub found for system " + systemName + ", operation "
+				+ operationType.getName() + " in path " + directory);
 	}
 
-	/**
-	 * Reads the xml file and creates the dataObject of the requested Type. If the response object is a StelvioStringWrapper,
-	 * the String vaule is unwrapped and put into the response.
-	 * 
-	 * @param responseFile -
-	 *            the file to create the response object from
-	 * @param outputType -
-	 *            the type of response object to be created
-	 * @return
-	 */
-	private DataObject createResponseObject(File responseFile, Type outputType) {
-		DataObject responseObject = readDataObject(responseFile);
-		DataObject response;
-		if (responseObject.getType().getName().equals(STRINGWRAPPER_NAME)) {
-			BOFactory dataFactory = (BOFactory) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
-			response = dataFactory.createByType(outputType);
-			response.set(0, responseObject.getString("value"));
-		} else if ((!(responseObject instanceof ManagedMultipartImpl)) || responseObject == null) {
-			BOFactory dataFactory = (BOFactory) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
-			response = dataFactory.createByType(outputType);
-			response.set(0, responseObject);
-		} else { // Assume MultipartImpl, because use of primitives
-			// in interface
-			response = (ManagedMultipartImpl) responseObject;
-		}
-
-		return response;
-	}
-
-	/**
-	 * Deserializes the xml file and extracts the dataobject from it.
-	 * 
-	 * @param file -
-	 *            the file to be read
-	 * @return the extracted DataObject
-	 */
-	private DataObject readDataObject(File file) {
-		FileInputStream fis = null;
+	private RuntimeException readRuntimeException(File file) {
+		ObjectInputStream objectInputStream = null;
 		try {
-			fis = new FileInputStream(file);
-
-			BOXMLSerializer xmlSerializerService = (BOXMLSerializer) new ServiceManager()
-					.locateService("com/ibm/websphere/bo/BOXMLSerializer");
-			BOXMLDocument criteriaDoc = xmlSerializerService.readXMLDocument(fis);
-
-			return criteriaDoc.getDataObject();
-
+			objectInputStream = new ObjectInputStream(new FileInputStream(file));
+			return (RuntimeException) objectInputStream.readObject();
 		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-
+			logger.logp(Level.WARNING, getClass().getName(), "readRuntimeException", "Error reading runtime exception", e);
+			throw new RuntimeException(e);
+		} catch (ClassNotFoundException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "readRuntimeException", "Error reading runtime exception", e);
+			throw new RuntimeException(e);
 		} finally {
-			if (fis != null) {
-				try {
-					fis.close();
-				} catch (Exception e) {
-					// Ignore
-				}
+			closeQuietly(objectInputStream);
+		}
+	}
+
+	private DataObject readStubData(File file) {
+		InputStream inputStream = null;
+		try {
+			inputStream = new FileInputStream(file);
+			return getBOXMLSerializer().readXMLDocument(inputStream).getDataObject();
+		} catch (IOException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "readStubData", "Error reading stub data", e);
+			throw new RuntimeException(e);
+		} finally {
+			closeQuietly(inputStream);
+		}
+	}
+
+	private void recordStubData(OperationType operationType, Object input, Object output, RuntimeException exception) {
+		String requestId = Long.toString(System.currentTimeMillis());
+		File directory = getDirectory(operationType);
+
+		DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
+		persistStubData(inputDataObject, new File(directory, getFilename(requestId, "Request.xml")));
+
+		if (exception != null) {
+			if (exception instanceof ServiceBusinessException) {
+				DataObject faultDataObject = (DataObject) ((ServiceBusinessException) exception).getData();
+				persistStubData(faultDataObject, new File(directory, getFilename(requestId, "Exception.xml")));
+			} else {
+				persistStubData(exception, new File(directory, getFilename(requestId, "RuntimeException.ser")));
+			}
+		} else {
+			Type outputType = operationType.getOutputType();
+			if (!isOneWayOperation(outputType)) {
+				// Two-way operation
+				DataObject outputDataObject = getDataObject(outputType, output);
+				persistStubData(outputDataObject, new File(directory, getFilename(requestId, "Response.xml")));
 			}
 		}
+	}
+
+	private void persistStubData(DataObject dataObject, File file) {
+		OutputStream outputStream = null;
+		try {
+			outputStream = new FileOutputStream(file);
+			getBOXMLSerializer().writeDataObject(dataObject, "http://no.stelvio.stubdata/", dataObject.getType().getName(),
+					outputStream);
+		} catch (IOException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "persistStubData", "Error persisting stub data", e);
+		} finally {
+			closeQuietly(outputStream);
+		}
+	}
+
+	private void persistStubData(RuntimeException exception, File file) {
+		ObjectOutputStream objectOutputStream = null;
+		try {
+			objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
+			objectOutputStream.writeObject(exception);
+		} catch (IOException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "persistStubData", "Error persisting stub data", e);
+		} finally {
+			closeQuietly(objectOutputStream);
+		}
+	}
+
+	private void closeQuietly(Closeable closeable) {
+		try {
+			if (closeable != null) {
+				closeable.close();
+			}
+		} catch (IOException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "closeQuietly", "Error closing IO object", e);
+		}
+	}
+
+	private String getFilename(String requestId, String suffix) {
+		return "Stub_" + requestId + "_" + suffix;
+	}
+
+	private File getDirectory(OperationType operationType) {
+		String directoryName = new SystemAvailabilityStorage().getSystemAvailabilityDirectory() + "/" + systemName + "/"
+				+ operationType.getName();
+		File directory = new File(directoryName);
+		directory.mkdirs();
+		return directory;
+	}
+
+	private DataObject getDataObject(Type type, Object obj) {
+		if (obj instanceof DataObject) {
+			return (DataObject) obj;
+		} else {
+			return getBOFactory().createDataTypeWrapper(type, obj);
+		}
+	}
+
+	private BOFactory getBOFactory() {
+		return (BOFactory) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
+	}
+
+	private BOXMLSerializer getBOXMLSerializer() {
+		return (BOXMLSerializer) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOXMLSerializer");
+	}
+
+	private BOEquality getBOEquality() {
+		return (BOEquality) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOEquality");
+	}
+
+	private BOType getBOType() {
+		return (BOType) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOType");
 	}
 }
