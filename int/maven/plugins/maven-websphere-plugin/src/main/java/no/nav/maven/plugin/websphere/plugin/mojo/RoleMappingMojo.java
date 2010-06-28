@@ -5,11 +5,8 @@ package no.nav.maven.plugin.websphere.plugin.mojo;
 
 import java.io.File;
 import java.io.IOException;
-
 import javax.xml.parsers.ParserConfigurationException;
-
 import no.nav.maven.plugin.websphere.plugin.utils.XMLUtils;
-
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.Commandline;
@@ -41,16 +38,13 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 	
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		
-		String separator = System.getProperty("file.separator");
-		String moduleConfigPath = "target" + separator + "bus-config" + separator + "moduleconfig";
-
 		String roleMapping;
 		String fileName = "cons.xml";
 		
-		File file = getConfigurationFile(environment, envClass, fileName, moduleConfigPath);
+		File file = getConfigurationFile(environment, envClass, fileName, moduleConfigHome);
 		
 		try {
-			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleConfigPath, file);
+			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleConfigHome, file);
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		} catch (IOException e) {
