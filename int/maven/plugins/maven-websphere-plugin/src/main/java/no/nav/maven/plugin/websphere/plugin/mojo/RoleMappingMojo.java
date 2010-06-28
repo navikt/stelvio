@@ -3,6 +3,7 @@
  */
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -39,12 +40,17 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 	protected String environment;
 	
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
-			
+		
+		String separator = System.getProperty("file.separator");
+		String moduleConfigPath = "target" + separator + "bus-config" + separator + "moduleconfig";
+
 		String roleMapping;
 		String fileName = "cons.xml";
-				
+		
+		File file = getConfigurationFile(environment, envClass, fileName, moduleConfigPath);
+		
 		try {
-			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleConfigHome);
+			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleConfigPath, file);
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		} catch (IOException e) {
@@ -58,6 +64,31 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 		commandLine.addArg(arg);
 		executeCommand(commandLine);	
 	}
+	
+	private static File getConfigurationFile(String env, String envClass, String fileName, String moduleConfigPath) {
+		File file = new File(moduleConfigPath + "/" + envClass + "/" + env
+				+ "/cons.xml");
+
+		if (file.exists()) {
+			return file;
+		}
+
+		file = new File(moduleConfigPath + "/" + envClass + "/" + "/cons.xml");
+		if (file.exists()) {
+			return new File(moduleConfigPath + "/" + envClass + "/"
+					+ "/cons.xml");
+		}
+
+		file = new File(moduleConfigPath + "/" + "/cons.xml");
+		if (file.exists()) {
+			return new File(moduleConfigPath + "/" + "/cons.xml");
+		}
+
+		System.out.println("ERROR!!!!!!!!!!!!");
+
+		return null;
+	}
+	
 	
 	protected String getGoalPrettyPrint() {
 		return "Map roles to users and groups, and set RunAs users";

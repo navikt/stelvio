@@ -27,10 +27,8 @@ public class XMLUtils {
 	 * Returns the complete string with all user/group role-mapping + runas on the form:
 	 * rolename::user1 user2... userx::group1 group2... groupx::runas-username runas-password||rolename...
 	 */
-	public static String getRoleMappingString(String env, String envClass, String fileName, String moduleConfigPath) throws SAXException, IOException, ParserConfigurationException {
+	public static String getRoleMappingString(String env, String envClass, String fileName, String moduleConfigPath, File file) throws SAXException, IOException, ParserConfigurationException {
 
-		File file = getConfigurationFile(env, envClass, fileName, moduleConfigPath);
-		
 		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
 
 		NodeList roles = xml.getElementsByTagName("role");
@@ -115,30 +113,5 @@ public class XMLUtils {
 		}
 
 		return s.toString();
-	}
-	
-	private static File getConfigurationFile(String env, String envClass, String fileName, String moduleConfigPath) {
-		File file = new File(moduleConfigPath + "/" + envClass + "/" + env
-				+ "/cons.xml");
-
-		if (file.exists()) {
-			return file;
-		}
-
-		file = new File(moduleConfigPath + "/" + envClass + "/" + "/cons.xml");
-		if (file.exists()) {
-			return new File(moduleConfigPath + "/" + envClass + "/"
-					+ "/cons.xml");
-		}
-
-		file = new File(moduleConfigPath + "/" + "/cons.xml");
-		if (file.exists()) {
-			return new File(moduleConfigPath + "/" + "/cons.xml");
-		}
-
-		System.out.println("ERROR!!!!!!!!!!!!");
-
-		return null;
-
 	}
 }
