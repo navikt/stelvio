@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 
 import no.stelvio.common.interceptor.GenericInterceptor;
@@ -25,6 +26,7 @@ import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceUnavailableException;
 import com.ibm.websphere.sca.scdl.OperationType;
 import commonj.sdo.DataObject;
+import commonj.sdo.Property;
 import commonj.sdo.Type;
 
 /**
@@ -111,8 +113,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		BOEquality boEquality = getBOEquality();
 		for (File requestFile : requestFiles) {
 			DataObject requestDataObject = readStubData(requestFile);
-			// TODO: Add support for "default" response - based on empty request
-			if (boEquality.isEqual(inputDataObject, requestDataObject)) {
+			if (isDefaultRequest(requestDataObject) || boEquality.isEqual(inputDataObject, requestDataObject)) {
 				if (isOneWayOperation(operationType.getOutputType())) {
 					return null;
 				}
@@ -146,6 +147,15 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		}
 		throw new IllegalStateException("No matching stub found for system " + systemName + ", operation "
 				+ operationType.getName() + " in path " + directory);
+	}
+
+	private boolean isDefaultRequest(DataObject requestDataObject) {
+		for (Property property : (List<Property>) requestDataObject.getType().getProperties()) {
+			if (requestDataObject.isSet(property)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private RuntimeException readRuntimeException(File file) {
