@@ -3,7 +3,6 @@
  */
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,7 +16,6 @@ import org.xml.sax.SAXException;
 
 /**
  * @author utvikler
- *
  */
  
  /**
@@ -40,28 +38,22 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 	 */
 	protected String environment;
 	
-	/* (non-Javadoc)
-	 * @see no.nav.maven.plugin.websphere.plugin.mojo.WebsphereUpdaterMojo#applyToWebSphere(org.codehaus.plexus.util.cli.Commandline)
-	 */
-	@Override
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		
 		String separator = System.getProperty("file.separator");
 		String moduleconfigPath = "target" + separator + "bus-config" + separator + "moduleconfig";
-		String env = "";
+		String env = null;
+		String roleMapping;
 		String fileName = "cons.xml";
-		String roleMapping = "";
+		
 		try {
 			roleMapping = XMLUtils.getRoleMappingString(env, envClass, fileName, moduleconfigPath);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoFailureException("[ERROR]: " + e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoFailureException("[ERROR]: " + e);
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MojoFailureException("[ERROR]: " + e);
 		}
 		
 		Commandline.Argument arg = new Commandline.Argument();
@@ -70,14 +62,7 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 		executeCommand(commandLine);	
 	}
 	
-	
-
-	/* (non-Javadoc)
-	 * @see no.nav.maven.plugin.websphere.plugin.mojo.WebsphereMojo#getGoalPrettyPrint()
-	 */
-	@Override
 	protected String getGoalPrettyPrint() {
-		// TODO Auto-generated method stub
 		return "Map roles to users and groups, and set RunAs users";
 	}
 
