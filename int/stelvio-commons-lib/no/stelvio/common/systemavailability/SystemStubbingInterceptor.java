@@ -66,13 +66,16 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				return findStubData(operationType, input);
 			} else if (availRec.recordStubData) {
 				try {
+					// Trying to find matching stub data first, to avoid creating "duplicates"
 					findStubData(operationType, input);
+
+					String logMessage = "Found prerecorded matching stub data for " + systemName + "."
+							+ operationType.getName() + ". Ignoring.";
+					logger.logp(Level.FINE, className, "invoke", logMessage);
 				} catch (IllegalStateException e) {
+					// No matching stub found, record stub data
 					return recordStubData(operationType, input, interceptorChain);
 				}
-				String logMessage = "Found prerecorded matching stub data for " + systemName + "." + operationType.getName()
-						+ ". Ignoring.";
-				logger.logp(Level.FINE, className, "invoke", logMessage);
 			}
 		}
 		return interceptorChain.doIntercept(operationType, input);
