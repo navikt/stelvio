@@ -39,16 +39,12 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 	protected String environment;
 	
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
-		
-		String separator = System.getProperty("file.separator");
-		String moduleconfigPath = "target" + separator + "bus-config" + separator + "moduleconfig";
+			
 		String roleMapping;
-
 		String fileName = "cons.xml";
-		
-		
+				
 		try {
-			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleconfigPath);
+			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleConfigHome);
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		} catch (IOException e) {

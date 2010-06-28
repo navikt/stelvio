@@ -74,12 +74,14 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	
 	protected String scriptsHome;
 	protected String deployableArtifactsHome;
+	protected String moduleConfigHome;
 	
 	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		scriptsHome = baseDirectory + busConfigurationExtractDirectory;
 		deployableArtifactsHome = baseDirectory + "/target/EARFilesToDeploy";
+		moduleConfigHome = scriptsHome + "/moduleconfig";
 	
 		/* If scripts are not expanded OR the scripts are from an old busconfiguration version create new ones */
 		createOrRefreshBusConfiguration();
