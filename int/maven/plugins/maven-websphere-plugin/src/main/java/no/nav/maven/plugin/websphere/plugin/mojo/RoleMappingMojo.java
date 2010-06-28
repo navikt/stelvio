@@ -42,12 +42,13 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 		
 		String separator = System.getProperty("file.separator");
 		String moduleconfigPath = "target" + separator + "bus-config" + separator + "moduleconfig";
-		String env = null;
 		String roleMapping;
+
 		String fileName = "cons.xml";
 		
+		
 		try {
-			roleMapping = XMLUtils.getRoleMappingString(env, envClass, fileName, moduleconfigPath);
+			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleconfigPath);
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		} catch (IOException e) {
@@ -57,7 +58,7 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 		}
 		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + separator + "scripts" + separator + "RoleMapping.py" + " " + scriptsHome + " " + roleMapping);
+		arg.setLine("-f " + scriptsHome + "/scripts/RoleMapping.py" + " " + scriptsHome + " " + roleMapping);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);	
 	}
