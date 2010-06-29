@@ -2344,6 +2344,16 @@ int/maven/plugins/maven-service-deploy-plugin/src/main/java/no/nav/maven/plugin/
 int/maven/plugins/maven-update-ear-plugin/pom.xml -text
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/AddHandlerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-update-ear-plugin/src/main/java/no/nav/maven/plugin/ear/UpdateEarMojo.java -text
+int/maven/plugins/maven-wasdeploy-plugin/pom.xml -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/mojos/DeployOrBundleMojo.java -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/mojos/FileHandlerMojo.java -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/mojos/LoadXMLPropertiesMojo.java -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/mojos/ProcessDependenciesMojo.java -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/ApplicationArtifactDependency.java -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/Archiver.java -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/NativeOps.java -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/SSHUtil.java -text
+int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/XMLOps.java -text
 int/maven/plugins/maven-websphere-plugin/pom.xml -text
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ApplyRuntimeConfigurationMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/BackupWebsphereConfigMojo.java -text svneol=unset#text/plain
