@@ -26,7 +26,9 @@
 								no.nav.maven.plugins:maven-websphere-plugin:stop-clusters,
 								no.nav.maven.plugins:maven-websphere-plugin:deploy-artifact,
 								no.nav.maven.plugins:maven-websphere-plugin:deploy-resources,
-								no.nav.maven.plugins:maven-websphere-plugin:role-mapping
+								no.nav.maven.plugins:maven-websphere-plugin:role-mapping,
+								no.nav.maven.plugins:maven-websphere-plugin:modify-imports,
+								no.nav.maven.plugins:maven-websphere-plugin:apply-activationspecs,
 								no.nav.maven.plugins:maven-websphere-plugin:apply-runtime-configuration,
 								no.nav.maven.plugins:maven-websphere-plugin:synchronize-nodes,
 								no.nav.maven.plugins:maven-websphere-plugin:start-clusters,
