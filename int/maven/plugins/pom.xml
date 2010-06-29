@@ -31,6 +31,7 @@
 		<module>maven-wps-artifact-plugin</module>
 		<module>maven-wsdl-plugin</module>
 		<module>maven-wsi-plugin</module>
+		<module>maven-wasdeploy-plugin</module>
 	</modules>
 
 	<scm>
