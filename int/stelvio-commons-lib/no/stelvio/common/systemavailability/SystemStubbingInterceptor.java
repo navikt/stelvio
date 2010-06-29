@@ -91,6 +91,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		} catch (RuntimeException e) {
 			exception = e;
 		}
+		validateSupported(operationType, input, output);
 		recordStubData(operationType, input, output, exception);
 		if (exception != null) {
 			throw exception;
@@ -104,12 +105,6 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	}
 
 	private Object findStubData(OperationType operationType, Object input) {
-		Type outputType = operationType.getOutputType();
-		if (!isOneWayOperation(outputType) && !operationType.isWrappedStyle() && !outputType.isDataType()) {
-			throw new UnsupportedOperationException(
-					"Document literal non-wrapped operations without response (void methods) are currently not supported by the stubbing framework.");
-		}
-
 		File directory = getDirectory(operationType);
 
 		File[] requestFiles = directory.listFiles(new FilenameFilter() {
@@ -125,7 +120,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		for (File requestFile : requestFiles) {
 			DataObject requestDataObject = readStubData(requestFile);
 			if (isDefaultRequest(requestDataObject) || boEquality.isEqual(inputDataObject, requestDataObject)) {
-				if (isOneWayOperation(outputType)) {
+				if (isOneWayOperation(operationType.getOutputType())) {
 					return null;
 				}
 
@@ -158,6 +153,24 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		}
 		throw new IllegalStateException("No matching stub found for system " + systemName + ", operation "
 				+ operationType.getName() + " in path " + directory);
+	}
+
+	private void validateSupported(OperationType operationType, Object input, Object output) {
+		if (!operationType.isWrappedStyle()) {
+			Type outputType = operationType.getOutputType();
+			if (!isOneWayOperation(outputType) && !outputType.isDataType()) {
+				throw new UnsupportedOperationException(
+						"Document literal non-wrapped operations without response (void methods) are currently not supported by the stubbing framework.");
+			}
+			if (input == null) {
+				throw new UnsupportedOperationException(
+						"Document literal non-wrapped operations with null as input are currently not supported by the stubbing framework.");
+			}
+			if (output == null) {
+				throw new UnsupportedOperationException(
+						"Document literal non-wrapped operations with null as output are currently not supported by the stubbing framework.");
+			}
+		}
 	}
 
 	private boolean isDefaultRequest(DataObject requestDataObject) {
