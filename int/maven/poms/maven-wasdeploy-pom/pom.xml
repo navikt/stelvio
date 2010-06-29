@@ -1,0 +1,168 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>no.nav.maven.wasdeploy.pom</groupId>
+	<artifactId>maven-wasdeploy-pom</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>maven-wasdeploy-pom</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<wasdeployVersion>1.1-SNAPSHOT</wasdeployVersion>
+		<devArchBaseDir>C:/TEST/DevArch</devArchBaseDir>
+		<bundleAreaDir>C:/BUNDLE</bundleAreaDir>
+		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
+		<stagingAreaDir>C:/STAGING</stagingAreaDir>
+		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
+		<mapFile>C:/TEST/build_version_mapping.txt</mapFile>
+		<applicationProperties>${devArchBaseDir}/module_config/${app}/spring/</applicationProperties>
+		<environmentFile>${devArchBaseDir}/environments/${env}.xml</environmentFile>
+		<log4jDir>${devArchBaseDir}/module_config/pen/log4j</log4jDir>
+		<batchcontrollerDir>${devArchBaseDir}/module_config/${app}/batchcontroller/</batchcontrollerDir>
+		<pselvISSessionTimeout>30</pselvISSessionTimeout>
+		<pselvSSAccessDeniedURL>/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow</pselvSSAccessDeniedURL>
+		<roleMappingDir>${devArchBaseDir}/security/rolemapping/</roleMappingDir>
+		<wsadminLocation>C:/IBM/WID61/runtimes/bi_v61/bin</wsadminLocation>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.0-beta-1</version>
+			</plugin>
+			<!-- Lock java compiler version -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+					<encoding>ISO-8859-1</encoding>
+				</configuration>
+			</plugin>
+			<!-- Disable clean plugin to avoid deleting the output directories-->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-wasdeploy-plugin</artifactId>
+				<version>${wasdeployVersion}</version>
+				<executions>
+					<!-- Step 1: Download and unpack application artifacts -->
+					<execution>
+						<id>process-dependencies</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>process-dependencies</goal>
+						</goals>
+					</execution>
+					<!-- Step 2: Load properties from environment file -->
+					<execution>
+						<id>load-xml-property-files</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>load-xml-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>${environmentFile}</file>
+							</files>
+						</configuration>
+					</execution>
+					<!-- Step 4: Perform custom file operations to prepare for bundle/deploy -->
+					<execution>
+						<id>handle-files</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>handle-files</goal>
+						</goals>
+					</execution>
+					<!-- Step 6: Deploy + upload or bundle -->
+					<execution>
+						<id>deploy-or-bundle</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>deploy-or-bundle</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Step 3: Generate environment spesific configuration -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>interpolate-appconfig-resources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<!-- Specifies where the property files end up after interpolation (exposed by wasdeploy-plugin)  -->
+							<outputDirectory>${configDir}</outputDirectory>
+							<resources>
+								<resource>
+									<!-- Specifies where the application configuration/property files reside -->
+									<directory>${applicationProperties}</directory>
+									<includes>
+										<include>cfg-*.properties</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>interpolate-batchcontroller-resources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<!-- Specifies where the property files end up after interpolation (exposed by wasdeploy-plugin)  -->
+							<outputDirectory>${batchDir}/config</outputDirectory>
+							<resources>
+								<resource>
+									<!-- Specifies where the batchcontroller file reside -->
+									<directory>${batchcontrollerDir}</directory>
+									<includes>
+										<include>btc-controllerclient.properties</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Step 5: Apply EJB security -->
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-deployment-descriptor-plugin</artifactId>
+				<version>1.1.14</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<id>addEjbSecurity</id>
+						<goals>
+							<goal>addEjbSecurity</goal>
+						</goals>
+						<configuration>
+							<ear>${stagingArea}/${earName}</ear>
+							<springConfigFile>${environment/springConfigFile}</springConfigFile>
+							<mappingFile>${mapFile}</mappingFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
