@@ -24,7 +24,7 @@ import com.ibm.websphere.bo.BOXMLSerializer;
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceUnavailableException;
-import com.ibm.websphere.sca.scdl.OperationType;
+import com.ibm.wsspi.sca.scdl.OperationType;
 import commonj.sdo.DataObject;
 import commonj.sdo.Property;
 import commonj.sdo.Type;
@@ -43,7 +43,8 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	}
 
 	@Override
-	protected Object doInterceptInternal(OperationType operationType, Object input, InterceptorChain interceptorChain) {
+	protected Object doInterceptInternal(com.ibm.websphere.sca.scdl.OperationType operationType, Object input,
+			InterceptorChain interceptorChain) {
 		OperationAvailabilityRecord availRec = null;
 		try {
 			availRec = new SystemAvailabilityStorage().calculateOperationAvailability(systemName, operationType.getName());
@@ -62,19 +63,20 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				// "+availRec.unavailableFrom.toString()+" to
 				// "+availRec.unavailableTo.toString());
 			}
+			OperationType castedOperationType = (OperationType) operationType;
 			if (availRec.stubbed) {
-				return findStubData(operationType, input);
+				return findStubData(castedOperationType, input);
 			} else if (availRec.recordStubData) {
 				try {
 					// Trying to find matching stub data first, to avoid creating "duplicates"
-					findStubData(operationType, input);
+					findStubData(castedOperationType, input);
 
 					String logMessage = "Found prerecorded matching stub data for " + systemName + "."
 							+ operationType.getName() + ". Ignoring.";
 					logger.logp(Level.FINE, className, "invoke", logMessage);
 				} catch (IllegalStateException e) {
 					// No matching stub found, record stub data
-					return recordStubData(operationType, input, interceptorChain);
+					return recordStubData(castedOperationType, input, interceptorChain);
 				}
 			}
 		}
@@ -102,6 +104,12 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	}
 
 	private Object findStubData(OperationType operationType, Object input) {
+		Type outputType = operationType.getOutputType();
+		if (!isOneWayOperation(outputType) && !operationType.isWrappedStyle() && !outputType.isDataType()) {
+			throw new UnsupportedOperationException(
+					"Document literal non-wrapped operations without response (void methods) are currently not supported by the stubbing framework.");
+		}
+
 		File directory = getDirectory(operationType);
 
 		File[] requestFiles = directory.listFiles(new FilenameFilter() {
@@ -117,7 +125,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		for (File requestFile : requestFiles) {
 			DataObject requestDataObject = readStubData(requestFile);
 			if (isDefaultRequest(requestDataObject) || boEquality.isEqual(inputDataObject, requestDataObject)) {
-				if (isOneWayOperation(operationType.getOutputType())) {
+				if (isOneWayOperation(outputType)) {
 					return null;
 				}
 
@@ -218,8 +226,8 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		OutputStream outputStream = null;
 		try {
 			outputStream = new FileOutputStream(file);
-			getBOXMLSerializer().writeDataObject(dataObject, "http://no.stelvio.stubdata/", dataObject.getType().getName(),
-					outputStream);
+			Type type = dataObject.getType();
+			getBOXMLSerializer().writeDataObject(dataObject, type.getURI(), type.getName(), outputStream);
 		} catch (IOException e) {
 			logger.logp(Level.WARNING, getClass().getName(), "persistStubData", "Error persisting stub data", e);
 		} finally {
