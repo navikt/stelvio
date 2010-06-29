@@ -3,7 +3,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wasdeploy-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<url>http://maven.apache.org</url>
 	
 	<parent>
@@ -104,10 +104,10 @@
 	
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wasdeploy-plugin-1.0
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wasdeploy-plugin
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wasdeploy-plugin-1.0
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wasdeploy-plugin
 		</developerConnection>
 	</scm>
 	<properties>
