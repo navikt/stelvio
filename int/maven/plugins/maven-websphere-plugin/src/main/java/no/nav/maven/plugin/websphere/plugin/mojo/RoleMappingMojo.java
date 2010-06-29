@@ -54,35 +54,10 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 		}
 		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/RoleMapping.py" + " " + scriptsHome + " " + roleMapping);
+		arg.setLine("-f " + scriptsHome + "/scripts/RoleMapping.py" + " " + scriptsHome + " " + "\"" +  roleMapping + "\"");
 		commandLine.addArg(arg);
 		executeCommand(commandLine);	
 	}
-	
-	private static File getConfigurationFile(String env, String envClass, String fileName, String moduleConfigPath) {
-		File file = new File(moduleConfigPath + "/" + envClass + "/" + env
-				+ "/cons.xml");
-
-		if (file.exists()) {
-			return file;
-		}
-
-		file = new File(moduleConfigPath + "/" + envClass + "/" + "/cons.xml");
-		if (file.exists()) {
-			return new File(moduleConfigPath + "/" + envClass + "/"
-					+ "/cons.xml");
-		}
-
-		file = new File(moduleConfigPath + "/" + "/cons.xml");
-		if (file.exists()) {
-			return new File(moduleConfigPath + "/" + "/cons.xml");
-		}
-
-		System.out.println("ERROR!!!!!!!!!!!!");
-
-		return null;
-	}
-	
 	
 	protected String getGoalPrettyPrint() {
 		return "Map roles to users and groups, and set RunAs users";

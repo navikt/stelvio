@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.FactoryConfigurationError;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
@@ -25,7 +26,7 @@ public class XMLUtils {
 
 	/**
 	 * Returns the complete string with all user/group role-mapping + runas on the form:
-	 * rolename::user1 user2... userx::group1 group2... groupx::runas-username runas-password||rolename...
+	 * _rolename::user1 user2... userx::group1 group2... groupx::runas-username runas-password|rolename...
 	 */
 	public static String getRoleMappingString(String env, String envClass, String fileName, String moduleConfigPath, File file) throws SAXException, IOException, ParserConfigurationException {
 
@@ -114,4 +115,46 @@ public class XMLUtils {
 
 		return s.toString();
 	}
+	
+	/**
+	 * Returns the complete string with all endpoint names and values for a given module on the format:
+	 * modulename::name::value;modulename ... 
+	 */
+	public static String parseWebServiceEndpoints(File file) throws SAXException, IOException, ParserConfigurationException, FactoryConfigurationError {
+
+		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+
+		NodeList endpoints = xml.getElementsByTagName("endpoint");
+
+		if (endpoints.getLength() == 0) {
+			return null;
+		}
+
+		String moduleName = file.getName().replace(".xml", "");
+
+		StringBuilder returnString = new StringBuilder();
+
+		for (int i = 0; i < endpoints.getLength(); i++) {
+
+			returnString.append(moduleName);
+
+			NodeList endpointElements = endpoints.item(i).getChildNodes();
+
+			for (int j = 0; j < endpointElements.getLength(); j++) {
+
+				Node endpointElement = endpointElements.item(j);
+				if (endpointElement.getNodeName().equals("name")) {
+					returnString.append("::" + endpointElement.getChildNodes().item(0).getTextContent());
+				}
+				if (endpointElement.getNodeName().equals("value")) {
+					returnString.append("::" + endpointElement.getChildNodes().item(0).getTextContent());
+				}
+			}
+			returnString.append(";");
+		}
+
+		return returnString.toString();
+	}
+	
+	
 }
