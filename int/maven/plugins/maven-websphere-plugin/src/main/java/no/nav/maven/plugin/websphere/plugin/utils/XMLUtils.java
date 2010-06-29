@@ -156,5 +156,46 @@ public class XMLUtils {
 		return returnString.toString();
 	}
 	
+	/**
+	 * Returns the complete string with all activation specifications for a given module on the format:
+	 * modulename::name::maxconcurrency;modulename ... 
+	 */
+	public static String parseActivationSpecs(File file) throws SAXException, IOException, ParserConfigurationException, FactoryConfigurationError {
+
+		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+
+		NodeList aSpecs = xml.getElementsByTagName("activationspecification");
+
+		if (aSpecs.getLength() == 0) {
+			System.out.println("[INFO]: No activation specifications found in " + file + ".");
+			return null;
+		}
+
+		String moduleName = file.getName().replace(".xml", "");
+
+		StringBuilder returnString = new StringBuilder();
+
+		for (int i = 0; i < aSpecs.getLength(); i++) {
+
+			returnString.append(moduleName);
+
+			NodeList aSpecElements = aSpecs.item(i).getChildNodes();
+
+			for (int j = 0; j < aSpecElements.getLength(); j++) {
+
+				Node endpointElement = aSpecElements.item(j);
+				if (endpointElement.getNodeName().equals("name")) {
+					returnString.append("::" + endpointElement.getChildNodes().item(0).getTextContent());
+				}
+				if (endpointElement.getNodeName().equals("maxconcurrency")) {
+					returnString.append("::" + endpointElement.getChildNodes().item(0).getTextContent());
+				}
+			}
+			returnString.append(";");
+		}
+
+		return returnString.toString();
+	}
+	
 	
 }

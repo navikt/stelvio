@@ -1,6 +1,3 @@
-/**
- * 
- */
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
 import java.io.File;
@@ -28,10 +25,10 @@ import org.xml.sax.SAXException;
 /**
  * TODO
  * 
- * @goal modify-imports
+ * @goal apply-activationspecs
  * @requiresDependencyResolution
  */
-public class ModifySCAImports extends WebsphereUpdaterMojo {
+public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 
 	/**
 	 * @parameter expression="${envClass}"
@@ -58,10 +55,10 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 				if (found.isFile()) {
 					System.out.println("Found file: " + found);
 					
-					String s = XMLUtils.parseWebServiceEndpoints(found);
+					String s = XMLUtils.parseActivationSpecs(found);
 					
 					if (s == null || s.equals("")) {
-						getLog().info("[INFO]: No webservice endpoint elements found in " + found + ". Skipping ...");
+						getLog().info("[INFO]: No activation specification elements found in " + found + ". Skipping ...");
 						continue;
 					}
 					sb.append(s);
@@ -80,7 +77,7 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 	}
 
 	protected String getGoalPrettyPrint() {
-		return "Apply webservice endpoints";
+		return "Apply activation specifications";
 	}
 
 }
