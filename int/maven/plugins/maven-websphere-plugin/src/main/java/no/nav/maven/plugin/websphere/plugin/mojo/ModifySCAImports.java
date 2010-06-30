@@ -4,6 +4,7 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 
 import javax.xml.parsers.FactoryConfigurationError;
@@ -18,15 +19,10 @@ import org.codehaus.plexus.util.cli.Commandline;
 import org.xml.sax.SAXException;
 
 /**
+ * @author test@example.com
  * 
  * Builds up the required string for the Python script by traversing the moduleconfig 
  * filestructure and parsing the relevant xml files, and launches the script.
- * 
- * @author test@example.com
- */
-
-/**
- * TODO
  * 
  * @goal modify-imports
  * @requiresDependencyResolution
@@ -51,12 +47,42 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 
 			StringBuilder sb = new StringBuilder();
 			
-			for (Artifact a : artifacts) {
-				System.out.println("Trying to find file with name: " + a.getArtifactId());
-				File found = getConfigurationFile(environment, envClass, a.getArtifactId(), moduleConfigHome);
+			File targetFolder = new File(deployableArtifactsHome);
+			
+			getLog().info("[INFO] Checking target folder, " + targetFolder + ", to check which modules were installed.");
+			
+			FilenameFilter fnFilter = new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					if (name.endsWith(".ear"))
+						return true;
+					return false;
+				}
+			};
+
+			String[] deployedModules = targetFolder.list(fnFilter);
+
+			for (int i = 0; i < deployedModules.length; i++) {
+				
+				String module = deployedModules[i].replace(".ear", "");
+				
+				Artifact moduleArtifact = null;
+				
+				for (Artifact a : artifacts){
+					if ( module.contains(a.getArtifactId()) ) {
+						moduleArtifact = a;
+					}
+				}
+				
+				if (moduleArtifact == null) {
+					getLog().info("[INFO] Module " + module + " is not deployed, skipping ...");
+					continue;
+				}
+			
+				System.out.println("[INFO] Trying to find file with name: " + module);
+				File found = getConfigurationFile(environment, envClass, moduleArtifact.getArtifactId(), moduleConfigHome);
 
 				if (found.isFile()) {
-					System.out.println("Found file: " + found);
+					System.out.println("[INFO] Found file: " + found);
 					
 					String s = XMLUtils.parseWebServiceEndpoints(found);
 					
@@ -67,8 +93,6 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 					sb.append(s);
 				}
 			}
-			
-		
 
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);

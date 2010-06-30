@@ -13,38 +13,42 @@ import org.codehaus.plexus.util.cli.Commandline;
 import org.xml.sax.SAXException;
 
 /**
- * @author utvikler
+ * @author test@example.com
+ * 
+ * Goal that finds and parses the ${fileName}.xml to accumulate a String of rolemappings, and executes the Jython script. 
+ * 
+ * @goal role-mapping
+ * @requiresDependencyResolution
  */
- 
- /**
-  * Goal that contacts the deployment manager to deploy resources for artifacts.
-  * 
-  * @goal role-mapping
-  * @requiresDependencyResolution
-  */
 public class RoleMappingMojo extends WebsphereUpdaterMojo {
-	
+
 	/**
 	 * @parameter expression="${envClass}"
 	 * @required
 	 */
 	protected String envClass;
-	
+
 	/**
 	 * @parameter expression="${environment}"
 	 * @required
 	 */
 	protected String environment;
-	
+
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
-		
-		String roleMapping;
-		String fileName = "cons.xml";
-		
-		File file = getConfigurationFile(environment, envClass, fileName, moduleConfigHome);
-		
+
 		try {
+			
+			String roleMapping;
+			String fileName = "cons.xml";
+
+			File file = getConfigurationFile(environment, envClass, fileName, moduleConfigHome);
 			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleConfigHome, file);
+			
+			Commandline.Argument arg = new Commandline.Argument();
+			arg.setLine("-f " + scriptsHome + "/scripts/RoleMapping.py" + " " + scriptsHome + " " + "\"" + roleMapping + "\"");
+			commandLine.addArg(arg);
+			executeCommand(commandLine);
+			
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		} catch (IOException e) {
@@ -52,13 +56,9 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 		} catch (ParserConfigurationException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		}
-		
-		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/RoleMapping.py" + " " + scriptsHome + " " + "\"" +  roleMapping + "\"");
-		commandLine.addArg(arg);
-		executeCommand(commandLine);	
+
 	}
-	
+
 	protected String getGoalPrettyPrint() {
 		return "Map roles to users and groups, and set RunAs users";
 	}
