@@ -67,6 +67,8 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 					sb.append(s);
 				}
 			}
+			
+		
 
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);

@@ -47,16 +47,16 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 		try {
 
 			StringBuilder sb = new StringBuilder();
-			
+
 			for (Artifact a : artifacts) {
 				System.out.println("Trying to find file with name: " + a.getArtifactId());
 				File found = getConfigurationFile(environment, envClass, a.getArtifactId(), moduleConfigHome);
 
 				if (found.isFile()) {
 					System.out.println("Found file: " + found);
-					
+
 					String s = XMLUtils.parseActivationSpecs(found);
-					
+
 					if (s == null || s.equals("")) {
 						getLog().info("[INFO]: No activation specification elements found in " + found + ". Skipping ...");
 						continue;
@@ -64,6 +64,11 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 					sb.append(s);
 				}
 			}
+
+			Commandline.Argument arg = new Commandline.Argument();
+			arg.setLine("-f " + scriptsHome + "/scripts/RoleMapping.py" + " " + scriptsHome + " " + "\"" + sb + "\"");
+			commandLine.addArg(arg);
+			executeCommand(commandLine);
 
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
