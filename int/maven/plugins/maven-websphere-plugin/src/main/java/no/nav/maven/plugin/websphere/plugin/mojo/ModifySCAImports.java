@@ -78,10 +78,9 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 					continue;
 				}
 			
-				System.out.println("[INFO] Trying to find file with name: " + module);
-				File found = getConfigurationFile(environment, envClass, moduleArtifact.getArtifactId(), moduleConfigHome);
+				File found = getConfigurationFile(environment, envClass, moduleArtifact.getArtifactId() + ".xml", moduleConfigHome);
 
-				if (found.isFile()) {
+				if (found != null) {
 					System.out.println("[INFO] Found file: " + found);
 					
 					String s = XMLUtils.parseWebServiceEndpoints(found);
@@ -93,6 +92,11 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 					sb.append(s);
 				}
 			}
+			
+			Commandline.Argument arg = new Commandline.Argument();
+			arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py" + " " + scriptsHome + " " + "\"" + sb + "\"");
+			commandLine.addArg(arg);
+			executeCommand(commandLine);
 
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);

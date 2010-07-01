@@ -76,10 +76,9 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 					continue;
 				}
 				
-				System.out.println("[INFO] Trying to find file with name: " + module);
-				File found = getConfigurationFile(environment, envClass, moduleArtifact.getArtifactId(), moduleConfigHome);
+				File found = getConfigurationFile(environment, envClass, moduleArtifact.getArtifactId() + ".xml", moduleConfigHome);
 
-				if (found.isFile()) {
+				if (found != null) {
 					System.out.println("[INFO] Found file: " + found);
 
 					String s = XMLUtils.parseActivationSpecs(found);
