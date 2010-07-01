@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
  * Goal that finds and parses the ${fileName}.xml to accumulate a String of rolemappings, 
  * and executes the Jython script. 
  * 
- * @goal role-mapping
+ * @goal apply-rolemapping
  * @requiresDependencyResolution
  */
 public class RoleMappingMojo extends WebsphereUpdaterMojo {

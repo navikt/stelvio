@@ -24,10 +24,10 @@ import org.xml.sax.SAXException;
  * Builds up the required string for the Python script by traversing the moduleconfig 
  * filestructure and parsing the relevant xml files, and executes the script.
  * 
- * @goal modify-imports
+ * @goal apply-wsendpoints
  * @requiresDependencyResolution
  */
-public class ModifySCAImports extends WebsphereUpdaterMojo {
+public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 
 	/**
 	 * @parameter expression="${envClass}"
@@ -53,9 +53,7 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 			
 			FilenameFilter fnFilter = new FilenameFilter() {
 				public boolean accept(File dir, String name) {
-					if (name.endsWith(".ear"))
-						return true;
-					return false;
+					return name.endsWith(".ear");
 				}
 			};
 

@@ -50,9 +50,7 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 			
 			FilenameFilter fnFilter = new FilenameFilter() {
 				public boolean accept(File dir, String name) {
-					if (name.endsWith(".ear"))
-						return true;
-					return false;
+					return name.endsWith(".ear");
 				}
 			};
 
