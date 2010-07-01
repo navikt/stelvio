@@ -42,17 +42,17 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 			String fileName = "cons.xml";
 
 			File file = getConfigurationFile(environment, envClass, fileName, moduleConfigHome);
-			//debug
-			System.out.println("found file " + file);
+			
+			if (file != null){
+				getLog().info("[INFO] Found configuration file, " + file + ".");
+			}
+
 			roleMapping = XMLUtils.getRoleMappingString(environment, envClass, fileName, moduleConfigHome, file);
 			
 			Commandline.Argument arg = new Commandline.Argument();
 			arg.setLine("-f " + scriptsHome + "/scripts/RoleMapping.py" + " " + scriptsHome + " " + "\"" + roleMapping + "\"");
 			commandLine.addArg(arg);
 
-			//debug
-			System.out.println("launching " + commandLine.toString());
-			
 			executeCommand(commandLine);
 			
 		} catch (SAXException e) {

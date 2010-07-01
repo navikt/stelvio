@@ -49,7 +49,7 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 			
 			File targetFolder = new File(deployableArtifactsHome);
 			
-			getLog().info("[INFO] Checking target folder, " + targetFolder + ", to check which modules were installed.");
+			getLog().info("[INFO] Checking target folder " + targetFolder + " to see which modules were installed.");
 			
 			FilenameFilter fnFilter = new FilenameFilter() {
 				public boolean accept(File dir, String name) {
@@ -81,14 +81,14 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 				File found = getConfigurationFile(environment, envClass, moduleArtifact.getArtifactId() + ".xml", moduleConfigHome);
 
 				if (found != null) {
-					System.out.println("[INFO] Found file: " + found);
 					
 					String s = XMLUtils.parseWebServiceEndpoints(found);
 					
 					if (s == null || s.equals("")) {
-						getLog().info("[INFO]: No webservice endpoint elements found in " + found + ". Skipping ...");
 						continue;
 					}
+
+					getLog().info("[INFO]: Found webservice endpoints in " + found + ". Adding ...");
 					sb.append(s);
 				}
 			}
