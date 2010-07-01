@@ -92,7 +92,7 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 			}
 
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py" + " " + scriptsHome + " " + "\"" + sb + "\"");
+			arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py" + " " + scriptsHome + " " + "\"" + sb.toString() + "\"");
 			commandLine.addArg(arg);
 			executeCommand(commandLine);
 
