@@ -13,16 +13,12 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
+ * @author test@example.com
  * 
  * This util class performs the XML parsing + mining for the XML files in the moduleconfig directory.
- * 
- * @author test@example.com
- *
  */
 
 public class XMLUtils {
-	
-	
 
 	/**
 	 * Returns the complete string with all user/group role-mapping + runas on the form:
@@ -44,7 +40,6 @@ public class XMLUtils {
 				Node roleElement = roleElements.item(j);
 
 				if (roleElement.getNodeName().equals("name")) {
-					//System.out.println("Found role: " + roleElement.getChildNodes().item(0).getNodeValue());
 					if (s.length() == 0)
 						s.append(roleElement.getChildNodes().item(0).getNodeValue());
 					else
@@ -61,7 +56,6 @@ public class XMLUtils {
 							for (int l = 0; l < userChildren.getLength(); l++) {
 								Node userChild = userChildren.item(l);
 								if (userChild.getNodeName().equals("name")) {
-									//System.out.println("--- user: " + userChild.getChildNodes().item(0).getNodeValue());
 									if (first) {
 										s.append("::_user::" + userChild.getChildNodes().item(0).getNodeValue());
 										first = false;
@@ -85,7 +79,6 @@ public class XMLUtils {
 							for (int l = 0; l < groupChildren.getLength(); l++) {
 								Node groupChild = groupChildren.item(l);
 								if (groupChild.getNodeName().equals("name")) {
-									//System.out.println("--- group: " + groupChild.getChildNodes().item(0).getNodeValue());
 									if (first) {
 										s.append("::_groups::" + groupChild.getChildNodes().item(0).getNodeValue());
 										first = false;
@@ -102,10 +95,8 @@ public class XMLUtils {
 
 					for (int m = 0; m < runas.getLength(); m++) {
 						if (runas.item(m).getNodeName().equals("username")) {
-							//System.out.println("--- runas username: " + runas.item(m).getChildNodes().item(0).getNodeValue());
 							s.append("::_runas::" + runas.item(m).getChildNodes().item(0).getNodeValue());
 						} else if (runas.item(m).getNodeName().equals("password")) {
-							//System.out.println("--- runas password: " + runas.item(m).getChildNodes().item(0).getNodeValue());
 							s.append("|" + runas.item(m).getChildNodes().item(0).getNodeValue());
 						}
 					}
@@ -170,11 +161,8 @@ public class XMLUtils {
 		NodeList aSpecs = xml.getElementsByTagName("activationspecification");
 
 		if (aSpecs.getLength() == 0) {
-			System.out.println("[INFO]: No activation specifications found in " + file + ".");
 			return null;
 		}
-
-		String moduleName = file.getName().replace(".xml", "");
 
 		StringBuilder returnString = new StringBuilder();
 
@@ -184,22 +172,19 @@ public class XMLUtils {
 				returnString.append(";");
 			} 
 
-			returnString.append(moduleName);
-
 			NodeList aSpecElements = aSpecs.item(i).getChildNodes();
 
 			for (int j = 0; j < aSpecElements.getLength(); j++) {
 
 				Node endpointElement = aSpecElements.item(j);
 				if (endpointElement.getNodeName().equals("name")) {
-					returnString.append("::" + endpointElement.getChildNodes().item(0).getTextContent());
+					returnString.append(endpointElement.getChildNodes().item(0).getTextContent());
 				}
 				if (endpointElement.getNodeName().equals("maxconcurrency")) {
 					returnString.append("::" + endpointElement.getChildNodes().item(0).getTextContent());
 				}
 			}
 		}
-
 		return returnString.toString();
 	}
 	

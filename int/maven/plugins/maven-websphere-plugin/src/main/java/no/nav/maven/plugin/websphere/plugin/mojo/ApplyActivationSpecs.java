@@ -18,9 +18,8 @@ import org.xml.sax.SAXException;
 /**
  * @author test@example.com
  * 
- *         Builds up the required string for the Python script by traversing the
- *         moduleconfig filestructure and parsing the relevant xml files, and
- *         launches the script.
+ * Builds up the required string for the Python script by traversing the moduleconfig filestructure 
+ * and parsing the relevant xml files, and executes the script.
  * 
  * @goal apply-activationspecs
  * @requiresDependencyResolution

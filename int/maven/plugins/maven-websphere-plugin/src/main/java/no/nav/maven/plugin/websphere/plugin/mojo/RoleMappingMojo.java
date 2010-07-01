@@ -15,7 +15,8 @@ import org.xml.sax.SAXException;
 /**
  * @author test@example.com
  * 
- * Goal that finds and parses the ${fileName}.xml to accumulate a String of rolemappings, and executes the Jython script. 
+ * Goal that finds and parses the ${fileName}.xml to accumulate a String of rolemappings, 
+ * and executes the Jython script. 
  * 
  * @goal role-mapping
  * @requiresDependencyResolution
@@ -66,7 +67,7 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 	}
 
 	protected String getGoalPrettyPrint() {
-		return "Map roles to users and groups, and set RunAs users";
+		return "Apply user/group mapping and RunAs";
 	}
 
 }
