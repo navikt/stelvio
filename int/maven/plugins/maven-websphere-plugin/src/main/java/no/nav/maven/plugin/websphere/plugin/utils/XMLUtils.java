@@ -135,6 +135,10 @@ public class XMLUtils {
 		StringBuilder returnString = new StringBuilder();
 
 		for (int i = 0; i < endpoints.getLength(); i++) {
+			
+			if (returnString.length() != 0) {
+				returnString.append(";");
+			} 
 
 			returnString.append(moduleName);
 
@@ -150,7 +154,6 @@ public class XMLUtils {
 					returnString.append("::" + endpointElement.getChildNodes().item(0).getTextContent());
 				}
 			}
-			returnString.append(";");
 		}
 
 		return returnString.toString();
@@ -176,6 +179,10 @@ public class XMLUtils {
 		StringBuilder returnString = new StringBuilder();
 
 		for (int i = 0; i < aSpecs.getLength(); i++) {
+			
+			if (returnString.length() != 0) {
+				returnString.append(";");
+			} 
 
 			returnString.append(moduleName);
 
@@ -191,7 +198,6 @@ public class XMLUtils {
 					returnString.append("::" + endpointElement.getChildNodes().item(0).getTextContent());
 				}
 			}
-			returnString.append(";");
 		}
 
 		return returnString.toString();
