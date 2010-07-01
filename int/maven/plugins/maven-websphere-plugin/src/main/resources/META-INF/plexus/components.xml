@@ -11,13 +11,8 @@
 						<id>default</id>
 						<phases>
 							<initialize>
-								no.nav.maven.plugins:maven-artifact-modifier-plugin:load-artifact-configuration,
 								no.nav.maven.plugins:maven-websphere-plugin:load-runtime-configuration
 							</initialize>
-							<install>
-								no.nav.maven.plugins:maven-artifact-modifier-plugin:modify-web-services-configuration,
-								no.nav.maven.plugins:maven-artifact-modifier-plugin:modify-security-configuration
-							</install>
 							<deploy>
 								no.nav.maven.plugins:maven-confluence-plugin:add-comment-down,
 								no.nav.maven.plugins:maven-confluence-plugin:update-page,
