@@ -18,7 +18,7 @@
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-artifact-modifier-plugin</artifactId>
+				<artifactId>maven-websphere-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
@@ -30,19 +30,6 @@
 
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>
-						maven-artifact-modifier-plugin
-					</artifactId>
-					<version>1.43</version>
-					<configuration>
-						<moduleConfigurationArtifactName>
-							busconfiguration
-						</moduleConfigurationArtifactName>
-					</configuration>
-					<extensions>true</extensions>
-				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-websphere-plugin</artifactId>
