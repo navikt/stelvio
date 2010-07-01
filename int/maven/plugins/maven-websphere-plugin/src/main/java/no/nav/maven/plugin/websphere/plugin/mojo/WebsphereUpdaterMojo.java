@@ -172,8 +172,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 			return new File(moduleConfigPath + "/" + fileName);
 		}
 
-		System.out.println("[WARN] Unable to find file: " + fileName);
-
 		return null;
 	}
 
