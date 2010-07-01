@@ -94,7 +94,7 @@ public class ModifySCAImports extends WebsphereUpdaterMojo {
 			}
 			
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py" + " " + scriptsHome + " " + "\"" + sb + "\"");
+			arg.setLine("-f " + scriptsHome + "/scripts/ModifySCAImportsBinding.py" + " " + scriptsHome + " " + "\"" + sb.toString() + "\"");
 			commandLine.addArg(arg);
 			executeCommand(commandLine);
 
