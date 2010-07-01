@@ -25,6 +25,8 @@ public class ExtractBusConfig extends WebsphereUpdaterMojo {
 				File busConfigFolder = new File(baseDirectory, busConfigurationExtractDirectory);
 				jarArchiveManager.unArchive(a.getFile(), busConfigFolder);
 				getLog().info("[INFO] Successfully extracted " + a.getArtifactId() + " into " + busConfigFolder + ".");
+			} else {
+				System.out.println(moduleConfigurationArtifactName + " didnt match. artifact = " + a.getArtifactId());
 			}
 		}
 	}
