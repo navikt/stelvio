@@ -1,18 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-plugin-pom</artifactId>
-		<version>1.2-SNAPSHOT</version>
+		<version>1.1</version>
 		<relativePath>../../poms/maven-plugin-pom</relativePath>
 	</parent>
 
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-websphere-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>ROGER-BETA-SNAPSHOT</version>
+	<version>ROGER-BETA</version>
 	<name>Websphere Interactor Plugin</name>
 
 	<dependencies>
@@ -74,10 +73,10 @@
 
 	<scm>
 		<connection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-websphere-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-websphere-plugin-ROGER-BETA
 		</connection>
 		<developerConnection>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-websphere-plugin
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-websphere-plugin-ROGER-BETA
 		</developerConnection>
 	</scm>
 	<properties>
