@@ -33,7 +33,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-websphere-plugin</artifactId>
-					<version>1.47</version>
+					<version>2.0.0</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
