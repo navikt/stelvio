@@ -46,9 +46,9 @@ public abstract class ArtifactModifierConfigurerMojo extends ArtifactModifierMoj
 		for (Artifact a : artifacts) {
 			if (a.getType().equals(Constants.EAR_ARTIFACT_TYPE)) {
 				File destination = copyArtifactToTarget(a);
-				for (ConfigurationType configuration : ArtifactConfiguration.getAllConfigurations(a.getArtifactId())) {
-					applyConfiguration(destination, configuration);
-				}
+//				for (ConfigurationType configuration : ArtifactConfiguration.getAllConfigurations(a.getArtifactId())) {
+//					applyConfiguration(destination, configuration);
+//				}
 			}
 		}
 	}
