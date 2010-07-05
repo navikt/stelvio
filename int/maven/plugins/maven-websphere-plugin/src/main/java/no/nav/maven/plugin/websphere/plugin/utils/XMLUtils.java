@@ -24,7 +24,7 @@ public class XMLUtils {
 	 * Returns the complete string with all user/group role-mapping + runas on the form:
 	 * _rolename::user1 user2... userx::group1 group2... groupx::runas-username runas-password|rolename...
 	 */
-	public static String getRoleMappingString(String env, String envClass, String fileName, String moduleConfigPath, File file) throws SAXException, IOException, ParserConfigurationException {
+	public static String parseRoleMappings(String env, String envClass, String fileName, String moduleConfigPath, File file) throws SAXException, IOException, ParserConfigurationException {
 
 		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
 
@@ -152,7 +152,7 @@ public class XMLUtils {
 	
 	/**
 	 * Returns the complete string with all activation specifications for a given module on the format:
-	 * modulename::name::maxconcurrency;modulename ... 
+	 * name::maxconcurrency;name ... 
 	 */
 	public static String parseActivationSpecs(File file) throws SAXException, IOException, ParserConfigurationException, FactoryConfigurationError {
 

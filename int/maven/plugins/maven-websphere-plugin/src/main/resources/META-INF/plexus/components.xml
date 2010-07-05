@@ -13,6 +13,7 @@
 							<initialize>
 								no.nav.maven.plugins:maven-websphere-plugin:extract-bus-configuration,
 								no.nav.maven.plugins:maven-websphere-plugin:extract-esb-release,
+								no.nav.maven.plugins:maven-websphere-plugin:interpolate-config,
 							</initialize>
 							<deploy>
 								no.nav.maven.plugins:maven-confluence-plugin:add-comment-down,

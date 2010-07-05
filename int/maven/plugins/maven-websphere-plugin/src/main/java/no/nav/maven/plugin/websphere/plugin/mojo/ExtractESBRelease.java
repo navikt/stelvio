@@ -1,10 +1,12 @@
 package no.nav.maven.plugin.websphere.plugin.mojo;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 
 /**
@@ -26,13 +28,21 @@ public class ExtractESBRelease extends WebsphereUpdaterMojo {
 	@Override
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 
-		File earDirectory = new File(targetDirectory + "/EARFilesToDeploy");
-
-		for (Artifact a : artifacts) {
-			if (a.getType() == "ear") {
-				jarArchiveManager.unArchive(a.getFile(), earDirectory);
-				getLog().info("[INFO] Successfully extracted esb-" + esbReleaseVersion + " into " + earDirectory + ".");
+		try {
+			
+			getLog().info("[INFO] Loading artifacts into " + deployableArtifactsHome + " ...");
+			
+			for (Artifact a : artifacts) {
+				if (a.getType().equals("ear")) {
+					File src = new File(a.getFile().getAbsolutePath());
+					FileUtils.copyFileToDirectory(src, new File(deployableArtifactsHome));
+				}
 			}
+			
+			getLog().info("[INFO] Successfully loaded the artifacts of esb-" + esbReleaseVersion + " into " + deployableArtifactsHome + ".");
+			
+		} catch (IOException e) {
+			throw new MojoFailureException("[ERROR]: " + e);
 		}
 	}
 

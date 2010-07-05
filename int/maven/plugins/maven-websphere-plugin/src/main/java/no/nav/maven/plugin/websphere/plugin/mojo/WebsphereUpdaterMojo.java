@@ -79,15 +79,10 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
 
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
+		
 		scriptsHome = baseDirectory + busConfigurationExtractDirectory;
 		deployableArtifactsHome = baseDirectory + "/target/EARFilesToDeploy";
 		moduleConfigHome = scriptsHome + "/moduleconfig";
-
-		/*
-		 * If scripts are not expanded OR the scripts are from an old
-		 * busconfiguration version create new ones
-		 */
-		createOrRefreshBusConfiguration();
 
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline commandLine = new Commandline();
@@ -105,9 +100,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		arg2.setLine("-port " + deploymentManagerPort);
 		commandLine.addArg(arg2);
 
-		getLog().info("User: " + deploymentManagerUser);
-		getLog().info("Pwd: " + "*****");
-
 		Commandline.Argument arg3 = new Commandline.Argument();
 		arg3.setLine("-user " + deploymentManagerUser);
 		commandLine.addArg(arg3);
@@ -117,28 +109,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		commandLine.addArg(arg4);
 
 		applyToWebSphere(commandLine);
-	}
-
-	private final void createOrRefreshBusConfiguration() throws MojoExecutionException, MojoFailureException {
-
-		File scriptsDir = new File(baseDirectory, busConfigurationExtractDirectory);
-
-		/* If the folder does not exist */
-		if (scriptsDir.exists() == false) {
-			MojoLauncher.executeLoadWebsphereConfigurationMojo(project, session, pluginManager);
-			MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
-		} else {
-			/* If the version is not the same, then refresh it */
-			for (Artifact a : dependencyArtifacts) {
-				if (a.getArtifactId().equals(moduleConfigurationArtifactName)) {
-					if (new File(scriptsDir, a.getVersion()).exists() == false) {
-						MojoLauncher.executeLoadWebsphereConfigurationMojo(project, session, pluginManager);
-						MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
-						break;
-					}
-				}
-			}
-		}
 	}
 
 	protected static File getConfigurationFile(String env, String envClass, String fileName, String moduleConfigPath) {
