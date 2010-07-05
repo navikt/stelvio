@@ -76,11 +76,9 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String deployableArtifactsHome;
 	protected String moduleConfigHome;
 
-	protected abstract void applyToWebSphere(final Commandline commandLine)
-			throws MojoExecutionException, MojoFailureException;
+	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
 
-	protected final void doExecute() throws MojoExecutionException,
-			MojoFailureException {
+	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		scriptsHome = baseDirectory + busConfigurationExtractDirectory;
 		deployableArtifactsHome = baseDirectory + "/target/EARFilesToDeploy";
 		moduleConfigHome = scriptsHome + "/moduleconfig";
@@ -121,27 +119,21 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		applyToWebSphere(commandLine);
 	}
 
-	private final void createOrRefreshBusConfiguration()
-			throws MojoExecutionException, MojoFailureException {
+	private final void createOrRefreshBusConfiguration() throws MojoExecutionException, MojoFailureException {
 
-		File scriptsDir = new File(baseDirectory,
-				busConfigurationExtractDirectory);
+		File scriptsDir = new File(baseDirectory, busConfigurationExtractDirectory);
 
 		/* If the folder does not exist */
 		if (scriptsDir.exists() == false) {
-			MojoLauncher.executeLoadWebsphereConfigurationMojo(project,
-					session, pluginManager);
-			MojoLauncher.executePropertiesGeneratorMojo(project, session,
-					pluginManager);
+			MojoLauncher.executeLoadWebsphereConfigurationMojo(project, session, pluginManager);
+			MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
 		} else {
 			/* If the version is not the same, then refresh it */
 			for (Artifact a : dependencyArtifacts) {
 				if (a.getArtifactId().equals(moduleConfigurationArtifactName)) {
 					if (new File(scriptsDir, a.getVersion()).exists() == false) {
-						MojoLauncher.executeLoadWebsphereConfigurationMojo(
-								project, session, pluginManager);
-						MojoLauncher.executePropertiesGeneratorMojo(project,
-								session, pluginManager);
+						MojoLauncher.executeLoadWebsphereConfigurationMojo(project, session, pluginManager);
+						MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
 						break;
 					}
 				}
@@ -149,27 +141,24 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		}
 	}
 
-	protected static File getConfigurationFile(String env, String envClass,
-			String fileName, String moduleConfigPath) {
+	protected static File getConfigurationFile(String env, String envClass, String fileName, String moduleConfigPath) {
 
-		File file = new File(moduleConfigPath + "/" + envClass + "/" + env
-				+ "/" + fileName);
+		File file = new File(moduleConfigPath + "/" + envClass + "/" + env + "/" + fileName);
 
 		if (file.exists()) {
 			return file;
 		}
 
-		file = new File(moduleConfigPath + "/" + envClass + "/"
-				+ fileName);
+		file = new File(moduleConfigPath + "/" + envClass + "/" + fileName);
 
 		if (file.exists()) {
-			return new File(moduleConfigPath + "/" + envClass + "/"
-					+ fileName);
+			return file;
 		}
 
 		file = new File(moduleConfigPath + "/" + fileName);
+		
 		if (file.exists()) {
-			return new File(moduleConfigPath + "/" + fileName);
+			return file;
 		}
 
 		return null;
