@@ -3,8 +3,6 @@ package no.nav.maven.plugin.websphere.plugin.mojo;
 import java.io.File;
 import java.util.Set;
 
-import no.nav.maven.plugin.websphere.plugin.utils.MojoLauncher;
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;

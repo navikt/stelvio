@@ -168,10 +168,6 @@ public class XMLUtils {
 
 		for (int i = 0; i < aSpecs.getLength(); i++) {
 			
-			if (returnString.length() != 0) {
-				returnString.append(";");
-			} 
-
 			NodeList aSpecElements = aSpecs.item(i).getChildNodes();
 
 			for (int j = 0; j < aSpecElements.getLength(); j++) {

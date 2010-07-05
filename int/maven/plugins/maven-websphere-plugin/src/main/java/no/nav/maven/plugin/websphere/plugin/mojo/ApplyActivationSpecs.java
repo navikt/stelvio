@@ -76,12 +76,17 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 				File found = getConfigurationFile(environment, envClass, moduleArtifact.getArtifactId() + ".xml", moduleConfigHome);
 
 				if (found != null) {
-
+					
 					String s = XMLUtils.parseActivationSpecs(found);
 
 					if (s == null || s.equals("")) {
 						continue;
 					}
+					
+					if (sb.length() != 0){
+						sb.append(";");
+					}
+					
 					getLog().info("[INFO]: Found activation specification elements in " + found + ". Adding ...");
 					sb.append(s);
 				}
