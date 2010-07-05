@@ -1,4 +1,6 @@
 <#include "StylePolicyActionAAA.ftl"/>
+<#include "StylePolicyActionConditional.ftl"/>
+<#include "StylePolicyActionFetch.ftl"/>
 <#include "StylePolicyActionLog.ftl"/>
 <#include "StylePolicyActionResult.ftl"/>
 <#include "StylePolicyActionSign.ftl"/>
@@ -18,7 +20,23 @@
 		aaaPolicy="${action.policy}"
 		input="${action.input}"
 		output="${action.output}"/>
-
+	<#--
+		Conditional Action
+	-->
+	<#elseif action.type == "conditional">
+	<@StylePolicyActionConditional
+		name="${actionName}"
+		input="${action.input}"
+		expression="${action.expression}"
+		conditionAction="${name}_${subtype}${direction}-${action.conditionAction}"/>
+	<#--
+		Fetch Action
+	-->
+	<#elseif action.type == "fetch">
+	<@StylePolicyActionFetch
+		name="${actionName}"
+		destination="${action.destination}"
+		output="${action.output}"/>
 	<#--
 		LOG Message Action
 	-->
