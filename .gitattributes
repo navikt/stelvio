@@ -2810,6 +2810,9 @@ int/pmr/44308-001-806/versionInfo.log -text
 int/pmr/44494-001-806/policySetModule-PI.zip -text
 int/pmr/44494-001-806/policySetModule.ear -text
 int/pmr/44494-001-806/versionInfo.log -text
+int/pmr/44496-001-806/classpathModule-PI.zip -text
+int/pmr/44496-001-806/classpathModule.zip -text
+int/pmr/44496-001-806/versionInfo.log -text
 int/pom.xml -text
 int/stelvio-commons-lib-test/pom.xml -text
 int/stelvio-commons-lib-test/src/test/java/no/stelvio/common/bus/util/FnrUtilTest.java -text
