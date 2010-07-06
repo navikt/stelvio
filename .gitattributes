@@ -1854,6 +1854,8 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/pom.
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.module -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.modulex -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/stelvio-example-echo-service.component -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/xslt/XSLTransformation1_req_1.map -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/xslt/XSLTransformation1_req_1.xsl -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-soapui/EchoService-soapui-project.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/pom.xml -text

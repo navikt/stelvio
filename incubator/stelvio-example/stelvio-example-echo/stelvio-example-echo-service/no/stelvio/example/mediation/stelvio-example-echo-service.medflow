@@ -65,7 +65,7 @@
         <outTerminals terminalNodeID="OutTerminal.default" type="CompositeType_1"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
         <outTerminals terminalNodeID="OutTerminal.dynamic:match:match1" dynamic="true" label="match1" longDescription="" type="CompositeType_1"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match2" dynamic="true" label="match2" type="CompositeType_1"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match2" dynamic="true" label="match2" longDescription="" type="CompositeType_1"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="DetekterFeil"/>
       </nodes>
