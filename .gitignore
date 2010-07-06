@@ -810,6 +810,10 @@ int/maven/poms/maven-root-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/target
 int/maven/poms/maven-wps-poms/target
+int/maven/utilities/custom-enforcer-rules/.classpath
+int/maven/utilities/custom-enforcer-rules/.project
+int/maven/utilities/custom-enforcer-rules/.settings
+int/maven/utilities/custom-enforcer-rules/target
 int/maven/utilities/datapower-utils/.classpath
 int/maven/utilities/datapower-utils/.project
 int/maven/utilities/datapower-utils/.settings

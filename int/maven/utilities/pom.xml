@@ -15,6 +15,7 @@
 	<name>Stelvio Integration Framework Utilities Aggregation</name>
 
 	<modules>
+		<module>custom-enforcer-rules</module>
 		<module>datapower-utils</module>
 		<module>datapower-xml-mgmt</module>
 		<module>maven-configuration-common</module>
