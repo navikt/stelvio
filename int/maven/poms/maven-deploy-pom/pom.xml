@@ -4,21 +4,21 @@
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
-		<version>1.1</version>
+		<version>1.2-SNAPSHOT</version>
 		<relativePath>../maven-root-pom</relativePath>
 	</parent>
 
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-deploy-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.1-SNAPSHOT</version>
+	<version>1.8.0-SNAPSHOT</version>
 	<name>POM for deployment</name>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-websphere-plugin</artifactId>
+				<artifactId>maven-artifact-modifier-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
@@ -32,8 +32,21 @@
 			<plugins>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>
+						maven-artifact-modifier-plugin
+					</artifactId>
+					<version>1.43</version>
+					<configuration>
+						<moduleConfigurationArtifactName>
+							busconfiguration
+						</moduleConfigurationArtifactName>
+					</configuration>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-websphere-plugin</artifactId>
-					<version>2.0</version>
+					<version>1.47</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -66,6 +79,14 @@
 							${basedir}/target/bus-config/environments
 						</environmentDir>
 					</configuration>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
