@@ -32,16 +32,19 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	public RemoveBPMojo(){
 		
 		/* 
-		 * Sketchy to set this here, should be set automatically 
+		 * Sketchy to set these here, should be set automatically 
 		 * by naming rules or other logic separate from the plugin. 
 		 */ 
 		
 		modulesToRemove = new ArrayList<String>();
+		modulesToRemove.add("nav-bproc-pen-ppen010");
 		modulesToRemove.add("nav-bsrv-frg-hentinstitusjonsoppholdliste");
 		
 	}
 	
 	/*
+	 * applyToWebSphere(Commandline commandLine)
+	 * 
 	 * Inherited method which is the one executed when running the script.
 	 * 
 	 * Builds up a commandline to send as a argument to the RemoveOldBPModule.py script with the appropriate 
@@ -89,6 +92,8 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	} 
 	
 	/*
+	 * removeBP(final Commandline commandLine, final String artifactId, String version, String cmdLine)
+	 * 
 	 * Builds up and executes the commandline from the incoming parameters.
 	 */
 	private final void removeBP(final Commandline commandLine, final String artifactId, String version, String cmdLine){
@@ -100,6 +105,8 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	}
 
 	/*
+	 * getModuleMap()
+	 * 
 	 * Returns a HashMap<String, String> containing 
 	 * <[WHICH APP TO UNINSTALL], [WHICH VERSION OF THIS APP IS IN THIS RELEASE]> 
 	 */

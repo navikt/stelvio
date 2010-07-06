@@ -2358,30 +2358,28 @@ int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/util
 int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/SSHUtil.java -text
 int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/XMLOps.java -text
 int/maven/plugins/maven-websphere-plugin/pom.xml -text
-int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ApplyActivationSpecs.java -text
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ApplyRuntimeConfigurationMojo.java -text svneol=unset#text/plain
-int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ApplyWSEndpoints.java -text
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/BackupWebsphereConfigMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/DeployArtifactMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/DeployResourcesMojo.java -text svneol=unset#text/plain
-int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ExtractBusConfig.java -text
-int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ExtractESBRelease.java -text
-int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/InterpolatorMojo.java -text
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/LoadWebsphereConfigurationMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/ModifyMaxFailedDeliveriesMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/RemoteCommandExecutorMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/RemoveBPMojo.java -text
-int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/RoleMappingMojo.java -text
+int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/RestartDmgr.java -text
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/StartClustersMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/StopClustersMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/SynchronizeNodesMojo.java -text svneol=unset#text/plain
+int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/UnDeployArtifactMojo.java -text svneol=unset#text/plain
+int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/UploadConfiguration.java -text
+int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/VerifyDeploymentMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereUpdaterMojo.java -text svneol=unset#text/plain
+int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/EarFile.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/MojoExecutor.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/MojoLauncher.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/PwdConsole.java -text svneol=unset#text/plain
-int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/XMLUtils.java -text
-int/maven/plugins/maven-websphere-plugin/src/main/resources/META-INF/plexus/components.xml -text
+int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/XML.java -text
 int/maven/plugins/maven-wid-plugin/pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/BuildCommand.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/CleanProjectsMojo.java -text
