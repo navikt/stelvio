@@ -1,4 +1,4 @@
-<#macro StylePolicyActionConditional name input expression conditionAction>
+<#macro StylePolicyActionConditional name input conditionActionNamePrefix conditions>
 	<StylePolicyAction name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<Type>conditional</Type>
@@ -8,10 +8,12 @@
 		<SOAPValidation>body</SOAPValidation>
 		<SQLSourceType>static</SQLSourceType>
 		<Asynchronous>off</Asynchronous>
+	<#list conditions as condition>
 		<Condition>
-			<Expression>${expression}</Expression>
-			<ConditionAction>${conditionAction}</ConditionAction>
+			<Expression>${condition.expression}</Expression>
+			<ConditionAction>${conditionActionNamePrefix}${condition.conditionAction.name}</ConditionAction>
 		</Condition>
+	</#list>
 		<ResultsMode>first-available</ResultsMode>
 		<RetryCount>0</RetryCount>
 		<RetryInterval>1000</RetryInterval>

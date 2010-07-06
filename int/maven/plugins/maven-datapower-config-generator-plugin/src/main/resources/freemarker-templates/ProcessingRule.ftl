@@ -1,108 +1,19 @@
-<#include "StylePolicyActionAAA.ftl"/>
-<#include "StylePolicyActionConditional.ftl"/>
-<#include "StylePolicyActionFetch.ftl"/>
-<#include "StylePolicyActionLog.ftl"/>
-<#include "StylePolicyActionResult.ftl"/>
-<#include "StylePolicyActionSign.ftl"/>
-<#include "StylePolicyActionSLM.ftl"/>
-<#include "StylePolicyActionTransform.ftl"/>
-<#include "StylePolicyActionTransformParameterized.ftl"/>
-<#include "StylePolicyActionVerify.ftl"/>
+<#include "StylePolicyAction.ftl"/>
+
 <#macro ProcessingRule name direction actions subtype="">
 	<#list actions as action>
-	<#assign actionName="${name}_${subtype}${direction}-${action.name}"/>
-	<#--
-		Execute AAA Policy Action
-	-->
-	<#if action.type == "aaa">
-	<@StylePolicyActionAAA
-		name="${actionName}"
-		aaaPolicy="${action.policy}"
-		input="${action.input}"
-		output="${action.output}"/>
-	<#--
-		Conditional Action
-	-->
-	<#elseif action.type == "conditional">
-	<@StylePolicyActionConditional
-		name="${actionName}"
-		input="${action.input}"
-		expression="${action.expression}"
-		conditionAction="${name}_${subtype}${direction}-${action.conditionAction}"/>
-	<#--
-		Fetch Action
-	-->
-	<#elseif action.type == "fetch">
-	<@StylePolicyActionFetch
-		name="${actionName}"
-		destination="${action.destination}"
-		output="${action.output}"/>
-	<#--
-		LOG Message Action
-	-->
-	<#elseif action.type == "log">
-	<@StylePolicyActionLog
-		name="${actionName}"
-		destination="${action.destination}"
-		input="${action.input}"/>
-	<#--
-		Result Action
-	-->
-	<#elseif action.type == "result">
-	<@StylePolicyActionResult
-		name="${actionName}"
-		input="${action.input}"
-		output="${action.output}"
-		async="${action.async!'off'}"
-		destination="${action.destination!''}"/>
-	<#--
-		Add WS-Security Signature Action
-	-->
-	<#elseif action.type == "sign">
-	<@StylePolicyActionSign
-		name="${actionName}"
-		input="${action.input}"
-		output="${action.output}"
-		signCert="${action.signCert}"
-		signKey="${action.signKey}"/>
-	<#--
-		SLM Action
-	-->
-	<#elseif action.type == "slm">
-	<@StylePolicyActionSLM
-		name="${actionName}"
-		input="${action.input}"/>
-	<#--
-		XSLT Transform Action
-	-->
-	<#elseif action.type == "xform">
-	<#if action.params?size == 0> 
-	<@StylePolicyActionTransform
-		name="${actionName}"
-		input="${action.input}"
-		output="${action.output}"
-		async="${action.async!'off'}"
-		stylesheet="${action.stylesheet}"/>
-	<#else>
-	<@StylePolicyActionTransformParameterized
-		name="${actionName}"
-		input="${action.input}"
-		output="${action.output}"
-		async="${action.async!'off'}"
-		stylesheet="${action.stylesheet}"
-		params=action.params/>
-	</#if>
-	<#--
-		Verify WS-Security Signature Action
-	-->
-	<#elseif action.type == "verify">
-	<@StylePolicyActionVerify
-		name="${actionName}"
-		input="${action.input}"
-		valCred="${action.valCred}"/>
-	<#else>
-	</#if> 
+		<#--
+			Create conditional actions in addition without adding to Processing rule
+		-->
+		<#if action.type == "conditional">
+			<#list action.conditions as condition>
+				<@StylePolicyAction actionNamePrefix="${name}_${subtype}${direction}-" action=condition.conditionAction/>
+			</#list>
+		</#if>
+
+		<@StylePolicyAction actionNamePrefix="${name}_${subtype}${direction}-" action=action/>
 	</#list>
+
 	<#--
 		Add the specified actions to a Processing rule
 	-->
