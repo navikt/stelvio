@@ -6,11 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.apache.maven.enforcer.rule.api.EnforcerRule;
 import org.apache.maven.enforcer.rule.api.EnforcerRuleException;
@@ -23,8 +21,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public class RequirePolicySetRule implements EnforcerRule {
-
-	private XPath xPath;
 	private XPathExpression jaxWSExportBindingExpression;
 
 	public void execute(EnforcerRuleHelper helper) throws EnforcerRuleException {
@@ -71,20 +67,13 @@ public class RequirePolicySetRule implements EnforcerRule {
 	private XPathExpression getJaxWSExportBindingExpression() throws EnforcerRuleException {
 		try {
 			if (jaxWSExportBindingExpression == null) {
-				jaxWSExportBindingExpression = getXPath().compile("//esbBinding[@xsi:type='jaxws:JaxWsExportBinding']");
+				String expression = "//esbBinding[@xsi:type='jaxws:JaxWsExportBinding']";
+				jaxWSExportBindingExpression = ExportFileXPathFactory.getXPathExpression(expression);
 			}
 			return jaxWSExportBindingExpression;
 		} catch (XPathExpressionException e) {
 			throw new EnforcerRuleException("Error compiling XPath: ", e);
 		}
-	}
-
-	private XPath getXPath() {
-		if (xPath == null) {
-			XPathFactory xPathFactory = XPathFactory.newInstance();
-			xPath = xPathFactory.newXPath();
-		}
-		return xPath;
 	}
 
 	private List<File> getExportFiles(File basedir) throws EnforcerRuleException {
