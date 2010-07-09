@@ -43,7 +43,7 @@ public class RequirePolicySetRule implements EnforcerRule {
 
 	private String buildErrorMessage(File file, Element jaxWSBindingElement) {
 		// TODO: Extract fully qualified name of service
-		return "Binding for service " + jaxWSBindingElement.getAttribute("service") + " defined in " + file.getName()
+		return "Binding for service " + jaxWSBindingElement.getAttribute("service") + " defined in " + file.getAbsolutePath()
 				+ " does not have required policy set.";
 	}
 
