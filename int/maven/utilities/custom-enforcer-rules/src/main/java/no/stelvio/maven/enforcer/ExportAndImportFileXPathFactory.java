@@ -10,7 +10,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-public class ExportFileXPathFactory {
+public class ExportAndImportFileXPathFactory {
 	private static XPath xPath;
 
 	public static XPathExpression getXPathExpression(String expression) throws XPathExpressionException {
@@ -21,15 +21,15 @@ public class ExportFileXPathFactory {
 		if (xPath == null) {
 			XPathFactory xPathFactory = XPathFactory.newInstance();
 			xPath = xPathFactory.newXPath();
-			xPath.setNamespaceContext(new ExportFileNamespaceContext());
+			xPath.setNamespaceContext(new ExportAndImportFileNamespaceContext());
 		}
 		return xPath;
 	}
 
-	private static final class ExportFileNamespaceContext implements NamespaceContext {
+	private static final class ExportAndImportFileNamespaceContext implements NamespaceContext {
 		private Map<String, String> namespaceMap = new HashMap<String, String>();
 
-		public ExportFileNamespaceContext() {
+		public ExportAndImportFileNamespaceContext() {
 			namespaceMap.put("jaxws", "http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0");
 			namespaceMap.put("xsi", "http://www.w3.org/2001/XMLSchema-instance");
 		}
