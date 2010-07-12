@@ -12,8 +12,5 @@
         <dependent-module archiveName="stelvio-commons-lib.jar" deploy-path="/" handle="module:/resource/stelvio-commons-lib/stelvio-commons-lib">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="nav-lib-commons-lang-2.1.jar" deploy-path="/" handle="module:/resource/nav-lib-commons-lang-2.1/nav-lib-commons-lang-2.1">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
     </wb-module>
 </project-modules>

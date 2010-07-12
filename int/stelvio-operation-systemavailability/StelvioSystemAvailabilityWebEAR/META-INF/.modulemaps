@@ -4,5 +4,4 @@
     <module xmi:type="application:WebModule" href="META-INF/application.xml#WebModule_1174983645468"/>
   </mappings>
   <utilityJARMappings xmi:id="UtilityJARMapping_1176715344890" projectName="stelvio-commons-lib" uri="stelvio-commons-lib.jar"/>
-  <utilityJARMappings xmi:id="UtilityJARMapping_1176715344891" projectName="nav-lib-commons-lang-2.1" uri="nav-lib-commons-lang-2.1.jar"/>
 </modulemap:EARProjectMap>

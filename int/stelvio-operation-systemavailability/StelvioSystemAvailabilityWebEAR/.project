@@ -3,7 +3,6 @@
 	<name>StelvioSystemAvailabilityWebEAR</name>
 	<comment></comment>
 	<projects>
-		<project>nav-lib-commons-lang-2.1</project>
 		<project>StelvioSystemAvailabilityWeb</project>
 		<project>stelvio-commons-lib</project>
 	</projects>
