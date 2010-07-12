@@ -27,8 +27,11 @@ public class RequirePolicySetRule implements EnforcerRule {
 	public void execute(EnforcerRuleHelper helper) throws EnforcerRuleException {
 		MavenProject project = getProject(helper);
 
-		File basedir = project.getBasedir();
-		validateJaxWsBindings(getExportAndImportFiles(basedir), getMissingPolicySetJaxWSBindingXPathExpression());
+		// This rule is meaningless for POM artifacts
+		if (!"pom".equals(project.getPackaging())) {
+			File basedir = project.getBasedir();
+			validateJaxWsBindings(getExportAndImportFiles(basedir), getMissingPolicySetJaxWSBindingXPathExpression());
+		}
 	}
 
 	private void validateJaxWsBindings(List<File> files, XPathExpression xPathExpression) throws EnforcerRuleException {
