@@ -75,9 +75,9 @@ public class RequirePolicySetRule implements EnforcerRule {
 		}
 	}
 
-	private List<File> getExportAndImportFiles(File basedir) throws EnforcerRuleException {
+	private List<File> getExportAndImportFiles(File directory) throws EnforcerRuleException {
 		try {
-			return FileUtils.getFiles(basedir, "**/*.export,**/*.import", FileUtils.getDefaultExcludesAsString());
+			return FileUtils.getFiles(directory, "**/*.export,**/*.import", FileUtils.getDefaultExcludesAsString());
 		} catch (IOException e) {
 			throw new EnforcerRuleException("Unable to list export files: ", e);
 		}
