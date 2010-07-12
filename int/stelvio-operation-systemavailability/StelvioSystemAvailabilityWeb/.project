@@ -3,7 +3,6 @@
 	<name>StelvioSystemAvailabilityWeb</name>
 	<comment></comment>
 	<projects>
-		<project>WpsCoreSystemAvailability</project>
 		<project>stelvio-commons-lib</project>
 	</projects>
 	<buildSpec>
