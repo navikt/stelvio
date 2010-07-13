@@ -37,6 +37,10 @@ public class StelvioContextHelper {
 	public StelvioContextHelper() {
 		context = StelvioContextRepository.getContext();
 	}
+	
+	public StelvioContext getContext() {
+		return context;
+	}
 
 	public String getApplicationId() {
 		return context.getApplicationId();
