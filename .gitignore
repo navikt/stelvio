@@ -907,6 +907,7 @@ int/stelvio-commons-lib/*.cmt
 int/stelvio-commons-lib/*.jar
 int/stelvio-commons-lib/.apt_generated
 int/stelvio-commons-lib/.classpath
+int/stelvio-commons-lib/.factorypath
 int/stelvio-commons-lib/.project
 int/stelvio-commons-lib/.settings
 int/stelvio-commons-lib/META-INF
@@ -921,6 +922,7 @@ int/stelvio-commons-lib/no/stelvio/common/bus/handlers/*.class
 int/stelvio-commons-lib/no/stelvio/common/bus/handlers/jaxrpc/*.class
 int/stelvio-commons-lib/no/stelvio/common/bus/util/*.class
 int/stelvio-commons-lib/no/stelvio/common/context/*.class
+int/stelvio-commons-lib/no/stelvio/common/context/jaxws/*.class
 int/stelvio-commons-lib/no/stelvio/common/exception/*.class
 int/stelvio-commons-lib/no/stelvio/common/interceptor/*.class
 int/stelvio-commons-lib/no/stelvio/common/systemavailability/*.class
