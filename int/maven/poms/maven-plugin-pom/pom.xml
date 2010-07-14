@@ -72,7 +72,7 @@
 	</dependencyManagement>
 
 	<properties>
-		<maven.version>2.0.10</maven.version>
+		<maven.version>2.2.1</maven.version>
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-plugin-pom
 		</scm.root>
