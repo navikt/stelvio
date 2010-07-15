@@ -20,7 +20,8 @@
 		<module>maven-jca-pom</module>
 		<module>maven-plugin-pom</module>
 		<module>maven-root-pom</module>
-		<module>maven-wasdeploy-pom</module>
+		<!-- TODO: Commented out since it is currently not working. Fix, or move/delete. -->
+		<!--module>maven-wasdeploy-pom</module-->
 		<module>maven-wps-poms</module>
 	</modules>
 	
