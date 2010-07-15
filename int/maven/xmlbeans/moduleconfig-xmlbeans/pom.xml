@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>no.nav.maven.support</groupId>
 		<artifactId>xmlbeans</artifactId>
-		<version>1.9-SNAPSHOT</version>
+		<version>1.9</version>
 	</parent>
 
 	<artifactId>moduleconfig-xmlbeans</artifactId>
-	<version>1.7-SNAPSHOT</version>
+	<version>1.7</version>
 	<name>Stelvio Integration Framework XMLBeans Module Config</name>
 
 	<build>
@@ -37,8 +37,8 @@
 	</build>
 	
 	<scm>
-		<connection>${scm.connection}</connection>
-		<developerConnection>${scm.connection}</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/xmlbeans-1.9/moduleconfig-xmlbeans</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/xmlbeans-1.9/moduleconfig-xmlbeans</developerConnection>
 	</scm>
 	<properties>
 		<scm.connection>${scm.root}/${project.artifactId}</scm.connection>
