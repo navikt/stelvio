@@ -8,7 +8,7 @@ import javax.xml.xpath.XPathExpressionException;
 import org.apache.maven.enforcer.rule.api.EnforcerRuleException;
 import org.w3c.dom.Element;
 
-public class RequirePolicySetRule extends AbstractJaxWsBindingRule {
+public class RequireJaxWsPolicySetRule extends AbstractJaxWsBindingRule {
 	@Override
 	protected String getIncludedFilePattern() {
 		return "**/*.export,**/*.import";

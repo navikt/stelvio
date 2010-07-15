@@ -2459,7 +2459,7 @@ int/maven/poms/pom.xml -text
 int/maven/utilities/custom-enforcer-rules/pom.xml -text
 int/maven/utilities/custom-enforcer-rules/src/main/java/no/stelvio/maven/enforcer/AbstractJaxWsBindingRule.java -text
 int/maven/utilities/custom-enforcer-rules/src/main/java/no/stelvio/maven/enforcer/ExportAndImportFileXPathFactory.java -text
-int/maven/utilities/custom-enforcer-rules/src/main/java/no/stelvio/maven/enforcer/RequirePolicySetRule.java -text
+int/maven/utilities/custom-enforcer-rules/src/main/java/no/stelvio/maven/enforcer/RequireJaxWsPolicySetRule.java -text
 int/maven/utilities/datapower-utils/pom.xml -text
 int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPCollectionUtils.java -text
 int/maven/utilities/datapower-utils/src/main/java/no/nav/datapower/util/DPFileUtils.java -text
