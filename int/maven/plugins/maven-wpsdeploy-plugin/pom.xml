@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-plugin-pom</artifactId>
+		<version>1.1</version>
+		<relativePath>../../poms/maven-plugin-pom</relativePath>
+	</parent>
+
+	<groupId>no.nav.maven.plugins</groupId>
+	<artifactId>maven-wpsdeploy-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
+	<version>1.2-SNAPSHOT</version>
+	<name>IBM WebSphere Process Server deployment plugin</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jtidy</groupId>
+					<artifactId>jtidy</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-archiver</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-utils</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>httpunit</groupId>
+			<artifactId>httpunit</artifactId>
+			<version>1.6.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>jtidy</groupId>
+					<artifactId>jtidy</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>no.nav.maven.commons</groupId>
+			<artifactId>maven-configuration-common</artifactId>
+			<version>1.5</version>
+		</dependency>
+	</dependencies>
+
+	<scm>
+		<connection>${scm.connection}</connection>
+		<developerConnection>${scm.connection}</developerConnection>
+	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wpsdeploy-plugin
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
+</project>
