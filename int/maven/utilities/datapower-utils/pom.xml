@@ -10,7 +10,7 @@
 
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>datapower-utils</artifactId>
-	<version>1.1.19-SNAPSHOT</version>
+	<version>1.2-SNAPSHOT</version>
 
 	<name>DataPower Utilities Library</name>
 	<dependencies>
