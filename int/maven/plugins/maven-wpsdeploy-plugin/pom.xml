@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>no.nav.maven.commons</groupId>
 			<artifactId>maven-configuration-common</artifactId>
-			<version>1.5</version>
+			<version>1.6</version>
 		</dependency>
 	</dependencies>
 
