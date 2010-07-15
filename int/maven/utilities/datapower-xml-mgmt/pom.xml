@@ -5,7 +5,7 @@
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.2-SNAPSHOT</version>
-		<relativePath>../poms/maven-root-pom</relativePath>
+		<relativePath>../../poms/maven-root-pom</relativePath>
 	</parent>
 
 	<groupId>no.nav.maven.plugins</groupId>

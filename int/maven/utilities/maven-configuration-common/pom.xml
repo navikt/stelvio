@@ -8,7 +8,7 @@
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-plugin-pom</artifactId>
 		<version>1.2-SNAPSHOT</version>
-		<relativePath>../poms/maven-plugin-pom</relativePath>
+		<relativePath>../../poms/maven-plugin-pom</relativePath>
 	</parent>
 
 	<groupId>no.nav.maven.commons</groupId>
