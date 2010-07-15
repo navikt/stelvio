@@ -68,7 +68,6 @@
 	</dependencies>
 
 	<properties>
-		<target.jdk>1.6</target.jdk>
 		<scm.root>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wps-poms/maven-wps-pom/maven-wps-tests-pom</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
 	</properties>
