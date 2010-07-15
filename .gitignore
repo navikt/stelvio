@@ -854,6 +854,7 @@ int/maven/xmlbeans/moduleconfig-xmlbeans/.classpath
 int/maven/xmlbeans/moduleconfig-xmlbeans/.project
 int/maven/xmlbeans/moduleconfig-xmlbeans/.settings
 int/maven/xmlbeans/moduleconfig-xmlbeans/target
+int/maven/xmlbeans/target
 int/nav-int-appclient/nav-int-wpshelper-bundle/target
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/*.class
