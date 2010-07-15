@@ -79,7 +79,7 @@ public class MojoExecutor {
                 }
             }
 
-            PluginDescriptor pluginDescriptor = env.getPluginManager().verifyPlugin(plugin, env.getMavenProject(), session.getSettings(), session.getLocalRepository());
+            PluginDescriptor pluginDescriptor = env.getPluginManager().loadPluginDescriptor(plugin, env.getMavenProject(), session);
             MojoExecution exec = null;
             if (executionMap != null) {
                 exec = new MojoExecution(pluginDescriptor.getMojo(goal), FAKE_EXECUTION_ID);

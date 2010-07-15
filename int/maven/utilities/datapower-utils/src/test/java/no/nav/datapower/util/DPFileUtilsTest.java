@@ -2,18 +2,11 @@ package no.nav.datapower.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
+
+import junit.framework.TestCase;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.filefilter.IOFileFilter;
-import org.apache.commons.io.filefilter.NameFileFilter;
-import org.apache.commons.io.filefilter.NotFileFilter;
-import org.apache.commons.io.filefilter.OrFileFilter;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
-
-import junit.framework.TestCase;
 
 public class DPFileUtilsTest extends TestCase {
 

@@ -25,7 +25,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.lang.Validate;
-import org.apache.log4j.Logger;
 
 public class DPFileUtils {
 		
@@ -234,7 +233,7 @@ public class DPFileUtils {
 	}
 	
 	public static String replaceSeparator(File file, char newSeparator) {
-		return file.getPath().replace(file.separatorChar, newSeparator);
+		return file.getPath().replace(File.separatorChar, newSeparator);
 	}
 		
 	public static void scanFolders(File parent, List<File> folders) {

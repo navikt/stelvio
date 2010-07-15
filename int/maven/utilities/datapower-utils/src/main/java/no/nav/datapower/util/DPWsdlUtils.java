@@ -5,12 +5,7 @@ import javax.wsdl.WSDLException;
 import javax.wsdl.factory.WSDLFactory;
 import javax.wsdl.xml.WSDLReader;
 
-import org.apache.log4j.Logger;
-
 public class DPWsdlUtils {
-	
-	private static final Logger LOG = Logger.getLogger(DPWsdlUtils.class);
-	
 	public static WSDLFactory getWSDLFactory() {
 		WSDLFactory factory = null;
 		try {
