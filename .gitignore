@@ -724,6 +724,10 @@ int/maven/plugins/maven-update-ear-plugin/.project
 int/maven/plugins/maven-update-ear-plugin/.settings
 int/maven/plugins/maven-update-ear-plugin/bin
 int/maven/plugins/maven-update-ear-plugin/target
+int/maven/plugins/maven-wasdeploy-plugin/.classpath
+int/maven/plugins/maven-wasdeploy-plugin/.project
+int/maven/plugins/maven-wasdeploy-plugin/.settings
+int/maven/plugins/maven-wasdeploy-plugin/target
 int/maven/plugins/maven-websphere-plugin/.classpath
 int/maven/plugins/maven-websphere-plugin/.project
 int/maven/plugins/maven-websphere-plugin/.settings
@@ -793,6 +797,10 @@ int/maven/plugins/maven-wps-artifact-plugin/src/main/resources/target
 int/maven/plugins/maven-wps-artifact-plugin/src/main/target
 int/maven/plugins/maven-wps-artifact-plugin/src/target
 int/maven/plugins/maven-wps-artifact-plugin/target
+int/maven/plugins/maven-wpsdeploy-plugin/.classpath
+int/maven/plugins/maven-wpsdeploy-plugin/.project
+int/maven/plugins/maven-wpsdeploy-plugin/.settings
+int/maven/plugins/maven-wpsdeploy-plugin/target
 int/maven/plugins/maven-wsdl-plugin/.classpath
 int/maven/plugins/maven-wsdl-plugin/.project
 int/maven/plugins/maven-wsdl-plugin/.settings

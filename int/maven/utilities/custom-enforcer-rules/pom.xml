@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>org.apache.maven.enforcer</groupId>
 			<artifactId>enforcer-api</artifactId>
-			<version>1.0-beta-1</version>
+			<version>${enforcer.plugin.version}</version>
 		</dependency>
 		
 		<dependency>

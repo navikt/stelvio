@@ -40,14 +40,13 @@
 		<dependency>
 			<groupId>org.apache.maven.shared</groupId>
 			<artifactId>maven-invoker</artifactId>
-			<version>2.0.11</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-eclipse-plugin</artifactId>
 			<type>maven-plugin</type>
-			<version>2.8</version>
+			<version>${eclipse.plugin.version}</version>
 		</dependency>
 		
 		<dependency>

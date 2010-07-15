@@ -14,7 +14,7 @@
 			<plugins>
 				<plugin>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.0-beta-1</version>
+					<version>${enforcer.plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -29,7 +29,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-eclipse-plugin</artifactId>
-					<version>2.8</version>
+					<version>${eclipse.plugin.version}</version>
 					<configuration>
 						<workspaceCodeStylesURL>
 							${eclipse.workspaceCodeStylesURL}
@@ -106,7 +106,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-changes-plugin</artifactId>
 					<version>2.3</version>
 				</plugin>
@@ -274,6 +273,8 @@
 
 
 	<properties>
+		<enforcer.plugin.version>1.0-beta-1</enforcer.plugin.version>
+		<eclipse.plugin.version>2.8</eclipse.plugin.version>
 		<project.build.sourceEncoding>
 			ISO-8859-1
 		</project.build.sourceEncoding>
