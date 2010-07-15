@@ -2579,11 +2579,6 @@ int/maven/ws-clients/datapower-management-client/src/test/java/com/datapower/sch
 int/maven/ws-clients/datapower-management-client/src/test/resources/NAV-Test.jks -text
 int/maven/ws-clients/datapower-management-client/src/test/resources/cxf.xml -text
 int/maven/ws-clients/pom.xml -text
-int/maven/xmlbeans/ibm-xmlbeans/pom.xml -text
-int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ClientBinding.xsd -text
-int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/ComponentScopedRefs.xsd -text
-int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/Header.xsd -text
-int/maven/xmlbeans/ibm-xmlbeans/src/main/xsd/xml.xsd -text
 int/maven/xmlbeans/j2ee-xmlbeans/pom.xml -text
 int/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/application_1_4.xsd -text
 int/maven/xmlbeans/j2ee-xmlbeans/src/main/xsd/j2ee_1_4.xsd -text

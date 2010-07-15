@@ -845,10 +845,6 @@ int/maven/ws-clients/datapower-management-client/.classpath
 int/maven/ws-clients/datapower-management-client/.project
 int/maven/ws-clients/datapower-management-client/.settings
 int/maven/ws-clients/datapower-management-client/target
-int/maven/xmlbeans/ibm-xmlbeans/.classpath
-int/maven/xmlbeans/ibm-xmlbeans/.project
-int/maven/xmlbeans/ibm-xmlbeans/.settings
-int/maven/xmlbeans/ibm-xmlbeans/target
 int/maven/xmlbeans/j2ee-xmlbeans/.classpath
 int/maven/xmlbeans/j2ee-xmlbeans/.project
 int/maven/xmlbeans/j2ee-xmlbeans/.settings

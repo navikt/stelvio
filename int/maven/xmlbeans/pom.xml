@@ -16,7 +16,6 @@
 
 	<modules>
 		<module>j2ee-xmlbeans</module>
-		<module>ibm-xmlbeans</module>
 		<module>moduleconfig-xmlbeans</module>
 	</modules>
 
