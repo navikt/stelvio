@@ -33,7 +33,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wpsdeploy-plugin</artifactId>
-					<version>1.2-SNAPSHOT</version>
+					<version>1.2</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -44,7 +44,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-confluence-plugin</artifactId>
-					<version>1.16-SNAPSHOT</version>
+					<version>1.16</version>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
