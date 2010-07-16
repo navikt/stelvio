@@ -127,6 +127,20 @@ eclipse.preferences.version=1
 									]]>
 								</content>
 							</file>
+							<file>
+								<name>
+									.factorypath
+								</name>
+								<content>
+									<![CDATA[
+<factorypath>
+    <factorypathentry kind="PLUGIN" id="com.ibm.ws.ast.wsfp.annotations.processor" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="PLUGIN" id="com.ibm.adapter.j2c.codegen" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="PLUGIN" id="com.ibm.jee.ejb.annotations.processor" enabled="false" runInBatchMode="false"/>
+</factorypath>
+									]]>
+								</content>
+							</file>
 						</additionalConfig>
 					</configuration>
 				</plugin>
