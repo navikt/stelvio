@@ -95,20 +95,6 @@
 					<artifactId>maven-wid-plugin</artifactId>
 					<version>2.1</version>
 				</plugin>
-				<plugin>
-					<!--
-						TODO: This configuration should ideally not be here, but got ClassNotFoundException when putting it where it should be (in
-						the module POM or ancestor POM)
-					-->
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<dependencies>
-						<dependency>
-							<groupId>no.stelvio.maven.support</groupId>
-							<artifactId>custom-enforcer-rules</artifactId>
-							<version>1.0-SNAPSHOT</version>
-						</dependency>
-					</dependencies>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
