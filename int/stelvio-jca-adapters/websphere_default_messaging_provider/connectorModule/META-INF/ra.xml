@@ -2,17 +2,17 @@
 
  <!--
 	@start_restricted_prolog@
-	Version: @(#) 1.48 SIB/ws/code/sib.api.jmsra.rar/src/META-INF/ra.xml, SIB.api.jmsra, WAS61.SIB, o0740.19 05/02/04 07:16:20 [10/12/07 19:38:33]
+	Version: @(#) 1.52 SIB/ws/code/sib.api.jmsra.rar/src/META-INF/ra.xml, SIB.api.jmsra, WAS70.SIB, o1019.18 07/02/27 06:13:50 [5/18/10 11:18:41]
 	
 	Licensed Materials - Property of IBM
 	
 	"Restricted Materials of IBM"
 	
-	5724-I63, 5724-H88, 5655-N01, 5733-W60, 5630-A36           
+	5724-I63, 5724-H88, 5724-H89, 5655-N02, 5724-J08
 	
-	(C) Copyright IBM Corp. 2003, 2005 All Rights Reserved.
+	 Copyright IBM Corp. 2003, 2007 All Rights Reserved.
 	
-	US Government Users Restricted Rights - Use, duplication or
+  US Government Users Restricted Rights - Use, duplication or
 	disclosure restricted by GSA ADP Schedule Contract with
 	IBM Corp.
 	@end_restricted_prolog@
@@ -114,6 +114,16 @@ version="1.5">
      <config-property-type>java.lang.Boolean</config-property-type>
      <config-property-value>false</config-property-value>     
     </config-property>
+    <config-property>
+     <config-property-name>ConsumerDoesNotModifyPayloadAfterGet</config-property-name>
+     <config-property-type>java.lang.String</config-property-type>
+     <config-property-value>false</config-property-value>     
+    </config-property>
+    <config-property>
+     <config-property-name>ProducerDoesNotModifyPayloadAfterSet</config-property-name>
+     <config-property-type>java.lang.String</config-property-type>
+     <config-property-value>false</config-property-value>     
+    </config-property>     
     <connectionfactory-interface>
      javax.jms.QueueConnectionFactory
     </connectionfactory-interface>
@@ -208,6 +218,16 @@ version="1.5">
      <config-property-type>java.lang.String</config-property-type>
      <config-property-value>InCluster</config-property-value>     
     </config-property>
+    <config-property>
+     <config-property-name>ConsumerDoesNotModifyPayloadAfterGet</config-property-name>
+     <config-property-type>java.lang.String</config-property-type>
+     <config-property-value>false</config-property-value>     
+    </config-property>
+    <config-property>
+     <config-property-name>ProducerDoesNotModifyPayloadAfterSet</config-property-name>
+     <config-property-type>java.lang.String</config-property-type>
+     <config-property-value>false</config-property-value>     
+    </config-property>     
     <connectionfactory-interface>
      javax.jms.TopicConnectionFactory
     </connectionfactory-interface>
@@ -306,6 +326,16 @@ version="1.5">
      <config-property-type>java.lang.String</config-property-type>
      <config-property-value>InCluster</config-property-value>     
     </config-property>
+    <config-property>
+     <config-property-name>ConsumerDoesNotModifyPayloadAfterGet</config-property-name>
+     <config-property-type>java.lang.String</config-property-type>
+     <config-property-value>false</config-property-value>     
+    </config-property>
+    <config-property>
+     <config-property-name>ProducerDoesNotModifyPayloadAfterSet</config-property-name>
+     <config-property-type>java.lang.String</config-property-type>
+     <config-property-value>false</config-property-value>     
+    </config-property>    
     <connectionfactory-interface>
      javax.jms.ConnectionFactory
     </connectionfactory-interface>
@@ -343,7 +373,7 @@ version="1.5">
       </required-config-property>
       <required-config-property>
        <config-property-name>busName</config-property-name>
-      </required-config-property>
+      </required-config-property>     
      </activationspec>
     </messagelistener>
    </messageadapter>

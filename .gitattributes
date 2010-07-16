@@ -3022,7 +3022,9 @@ int/stelvio-jca-adapters/cicseciXA-7.1/deploy.txt -text
 int/stelvio-jca-adapters/cicseciXA-7.1/pom.xml -text
 int/stelvio-jca-adapters/cicseciXA-7.1/readme.txt -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.classpath -text
+int/stelvio-jca-adapters/websphere_default_messaging_provider/.factorypath -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.project -text
+int/stelvio-jca-adapters/websphere_default_messaging_provider/.settings/org.eclipse.jdt.apt.core.prefs -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.settings/org.eclipse.jdt.core.prefs -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.settings/org.eclipse.wst.common.component -text
