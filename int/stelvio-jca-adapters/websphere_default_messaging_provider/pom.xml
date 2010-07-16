@@ -11,7 +11,7 @@
 	<groupId>com.ibm.ws.sib.api.jmsra</groupId>
 	<artifactId>websphere_default_messaging_provider</artifactId>
 	<packaging>rar</packaging>
-	<version>7.0-SNAPSHOT</version>
+	<version>7.0</version>
 	
 	<build>
 		<plugins>
