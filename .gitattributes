@@ -2324,6 +2324,8 @@ int/maven/plugins/maven-datapower-plugin/src/test/resources/test-partnergw-gener
 int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-generateConfig-pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-importConfig-pom.xml -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/test/resources/test-secgw-importFiles-pom.xml -text svneol=unset#text/plain
+int/maven/plugins/maven-enforcer-plugin/pom.xml -text
+int/maven/plugins/maven-enforcer-plugin/src/main/java/no/nav/maven/plugin/enforcer/EnforceMojo.java -text
 int/maven/plugins/maven-mg-plugin/pom.xml -text
 int/maven/plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/CheckOutMojo.java -text
 int/maven/plugins/maven-mg-plugin/src/main/java/no/nav/maven/plugin/sca/CleanMojo.java -text svneol=unset#text/plain

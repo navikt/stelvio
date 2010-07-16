@@ -686,6 +686,10 @@ int/maven/plugins/maven-datapower-plugin/.project
 int/maven/plugins/maven-datapower-plugin/.settings
 int/maven/plugins/maven-datapower-plugin/bin
 int/maven/plugins/maven-datapower-plugin/target
+int/maven/plugins/maven-enforcer-plugin/.classpath
+int/maven/plugins/maven-enforcer-plugin/.project
+int/maven/plugins/maven-enforcer-plugin/.settings
+int/maven/plugins/maven-enforcer-plugin/target
 int/maven/plugins/maven-mg-plugin/.classpath
 int/maven/plugins/maven-mg-plugin/.project
 int/maven/plugins/maven-mg-plugin/.settings
