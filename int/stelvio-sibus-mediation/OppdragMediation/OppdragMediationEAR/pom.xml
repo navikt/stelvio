@@ -35,7 +35,7 @@
 				websphere_default_messaging_provider
 			</artifactId>
 			<type>rar</type>
-			<version>6.1</version>
+			<version>7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>

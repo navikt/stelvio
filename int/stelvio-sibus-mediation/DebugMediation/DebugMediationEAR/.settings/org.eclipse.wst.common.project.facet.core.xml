@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-  <runtime name="WebSphere Process Server v6.1"/>
+  <runtime name="wps.v70"/>
   <fixed facet="jst.ear"/>
   <installed facet="jst.ear" version="1.4"/>
 </faceted-project>

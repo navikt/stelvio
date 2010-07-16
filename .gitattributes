@@ -3106,7 +3106,10 @@ int/stelvio-operation-systemavailability/system-availability-config/sca.module.a
 int/stelvio-operation-systemavailability/system-availability-config/sca.modulex -text
 int/stelvio-operation-systemavailability/system-availability-config/system-availability-config_SystemAvailabilityConfigWSEXP.wsdl -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.factorypath -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.project -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/com.ibm.ws.ast.st.migration.prefs -text
+int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.jdt.apt.core.prefs -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.settings/org.eclipse.wst.common.component -text
@@ -3116,6 +3119,7 @@ int/stelvio-sibus-mediation/DebugMediation/DebugMediation/no/nav/java/mediation/
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.compatibility -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.j2ee -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.project -text svneol=unset#text/plain
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.settings/com.ibm.ws.ast.st.migration.prefs -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.settings/org.eclipse.wst.common.component -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEAR/META-INF/.modulemaps -text
@@ -3125,6 +3129,7 @@ int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.compatibility -tex
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.j2ee -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.project -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.settings/.webspheredeploy -text
+int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.settings/com.ibm.ws.ast.st.migration.prefs -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/DebugMediation/DebugMediationEJB/.settings/org.eclipse.wst.common.component -text
