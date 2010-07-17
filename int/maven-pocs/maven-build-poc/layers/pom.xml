@@ -24,15 +24,12 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-mg-plugin</artifactId>
-				<version>1.9</version>
+				<version>2.0</version>
 				<configuration>
 					<!-- This configure the version of Stelvio Commons Lib for all libraries and modules -->
 					<stelvioCommonsLibSCMURL>
-						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.3
+						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-4.0
 					</stelvioCommonsLibSCMURL>
-					<stelvioCommonsBpcLibSCMURL>
-						scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-bpc-lib-1.2
-					</stelvioCommonsBpcLibSCMURL>
 				</configuration>
 			</plugin>
 		</plugins>
