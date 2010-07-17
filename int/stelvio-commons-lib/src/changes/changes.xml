@@ -5,6 +5,13 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="4.0" date="17-07-2010" description="Major release">
+			<action dev="ebh2812" type="add">New interceptor component implementation (SetRequestContextComponent) that can be used to extract information from the Stelvio Context to Request Context.</action>
+			<action dev="ebh2812" type="add">New interceptor component implementation (EmptyInterceptorService) that can be used when you need a dummy component to set some configuration.</action>
+			<action dev="ebh2812" type="update">Re-implementation of stubbing framework. Improved code structure and error handling.</action>
+			<action dev="ebh2812" type="add">New JAX-WS handler to interpret Stelvio Context when using JAX-WS exports (instead of JAX-RPC)</action>
+			<action dev="ebh2812" type="update">Migrated to WPS 7</action>
+		</release>
 		<release version="3.3.1" date="16-04-2010" description="Bugfix release">
 			<action dev="ebh2812" type="fix">SIR 175088: NPE in SystemStubbingInterceptor when recording void-methods (or one-way oeprations)</action>
 		</release>
