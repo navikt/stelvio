@@ -109,6 +109,6 @@
 		<wsdl.temp.dir>
 			${project.build.directory}/wsdl-temp
 		</wsdl.temp.dir>
-		<cxf.version>2.2.7</cxf.version>
+		<cxf.version>2.2.9</cxf.version>
 	</properties>
 </project>
