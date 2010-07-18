@@ -821,6 +821,7 @@ int/maven/poms/maven-plugin-pom/target
 int/maven/poms/maven-root-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/target
+int/maven/poms/maven-wps-poms/maven-wps-tests-pom/target
 int/maven/poms/maven-wps-poms/target
 int/maven/utilities/custom-enforcer-rules/.classpath
 int/maven/utilities/custom-enforcer-rules/.project
