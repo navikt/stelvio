@@ -1174,6 +1174,7 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sak-infot.prope
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
+incubator/deploy-pom/pom.xml -text
 incubator/maven-rdependency-plugin/.classpath -text
 incubator/maven-rdependency-plugin/.project -text
 incubator/maven-rdependency-plugin/pom.xml -text
