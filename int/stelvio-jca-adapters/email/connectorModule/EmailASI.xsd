@@ -104,7 +104,8 @@
  </complexType>
 
    <complexType name="BiDiContext">
-            <sequence minOccurs="0" maxOccurs="1">
+            
+ 			 <sequence minOccurs="0" maxOccurs="1">
  			<element name="BiDiEIS" type="dtm:Bi_DirectionStringTD" minOccurs="0"/>
  			<element name="BiDiMetadata" type="dtm:Bi_DirectionStringTD" minOccurs="0"/>
  			<element name="BiDiSkip" type="dtm:TrueFalse" minOccurs="0"/>
@@ -141,8 +142,8 @@
 	<complexType name="DataBindingMapping">
 		<sequence>
 			<element name="DataBindingConfig" type="anyType" maxOccurs="unbounded" />
-			<element name="BiDiContext" type="dtm:BiDiContext" minOccurs="0"/>
-			<element name="BiDiContextDataTransformationFramework" type="dtm:BiDiContext" minOccurs="0"/>
+			<element name="BiDiContext" type="dtm:Bi_DirectionStringTD" minOccurs="0"/>
+			<element name="BiDiContextDataTransformationFramework" type="dtm:Bi_DirectionStringTD" minOccurs="0"/>
 		</sequence>
 	</complexType>
 
@@ -158,8 +159,8 @@
 			<element name="ContentType" type="string"/>
 			<element name="WrapperName" type="string"/>
 			<element name="Charset" type="string"/>
-			<element name="BiDiContext" type="dtm:BiDiContext" minOccurs="0"/>
-			<element name="BiDiContextDataTransformationFramework" type="dtm:BiDiContext" minOccurs="0"/>
+			<element name="BiDiContext" type="dtm:Bi_DirectionStringTD" minOccurs="0"/>
+			<element name="BiDiContextDataTransformationFramework" type="dtm:Bi_DirectionStringTD" minOccurs="0"/>
 		</sequence>
 	</complexType>		
 
