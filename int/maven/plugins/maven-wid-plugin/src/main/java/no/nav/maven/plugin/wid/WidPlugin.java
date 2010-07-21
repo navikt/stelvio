@@ -35,6 +35,7 @@ import org.apache.maven.plugin.ide.IdeDependency;
 public class WidPlugin extends EclipsePlugin {
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
+	private static final String PACKAGING_RAR = "rar";
 
 	/**
 	 * @parameter expression="${wid.runtimeName}" default-value="WebSphere Process Server v6.1"
@@ -83,7 +84,9 @@ public class WidPlugin extends EclipsePlugin {
 				dependencies.add(dependency);
 			} else {
 				String dependencyType = dependency.getType();
-				if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType)) {
+				// WPS libraries and JCA adapters must be present in workspace
+				// TODO replace PACKAGING_RAR with something less generic, for example packaging type jca-adapter
+				if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType) || PACKAGING_RAR.equals(dependencyType)) {
 					dependency.setReferencedProject(true);
 					dependency.setEclipseProjectName(dependency.getArtifactId());
 					dependency.setFile(null);
