@@ -84,14 +84,22 @@ public class WidPlugin extends EclipsePlugin {
 				dependencies.add(dependency);
 			} else {
 				String dependencyType = dependency.getType();
-				// WPS libraries and JCA adapters must be present in workspace
-				// TODO replace PACKAGING_RAR with something less generic, for example packaging type jca-adapter
-				if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType) || PACKAGING_RAR.equals(dependencyType)) {
+				if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType)) {
 					dependency.setReferencedProject(true);
 					dependency.setEclipseProjectName(dependency.getArtifactId());
 					dependency.setFile(null);
 					dependency.setJavadocAttachment(null);
 					dependency.setSourceAttachment(null);
+					dependencies.add(dependency);
+				// WPS libraries and JCA adapters must be present in workspace
+				// TODO replace PACKAGING_RAR with something less generic, for example packaging type jca-adapter
+				} else if (PACKAGING_RAR.equals(dependencyType)) {
+					dependency.setReferencedProject(true);
+					dependency.setEclipseProjectName(dependency.getArtifactId());
+					dependency.setFile(null);
+					dependency.setJavadocAttachment(null);
+					dependency.setSourceAttachment(null);
+					dependency.setAddedToClasspath(true);
 					dependencies.add(dependency);
 				} else if (PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
 					File dependencyFile = dependency.getFile();
