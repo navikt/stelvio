@@ -2938,16 +2938,6 @@ int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/Minsid
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterConnectionFailedException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/lib/sik/ad/fault/FaultADNAVAnsattIkkeFunnet.xsd -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/.classpath -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/.j2ee -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/.project -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/CWYBS_AdapterFoundation.jar -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/META-INF/MANIFEST.MF -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/META-INF/ra.xml -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/_connectorModule.jar -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/nav/lib/sik/ad/asbo/adNAVAnsatt.xsd -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/nav/lib/sik/ad/fault/FaultADBase.xsd -text
-int/stelvio-jca-adapters/ADLDAPAdapter6021/connectorModule/no/nav/lib/sik/ad/fault/FaultADNAVAnsattIkkeFunnet.xsd -text
 int/stelvio-jca-adapters/CWYEM_EMail/.classpath -text
 int/stelvio-jca-adapters/CWYEM_EMail/.compatibility -text
 int/stelvio-jca-adapters/CWYEM_EMail/.j2ee -text
