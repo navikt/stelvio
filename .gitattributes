@@ -2960,8 +2960,6 @@ int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/META-INF/ra.xml -text
 int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/activation.jar -text
 int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/commonj.connector.jar -text
 int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/mail.jar -text
-int/stelvio-jca-adapters/NAVFlatFileAdapter/CWYFF_NAVFlatFile6021.rar -text
-int/stelvio-jca-adapters/NAVFlatFileAdapter/CWYFF_NAVFlatFile6023.rar -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.classpath -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.compatibility -text
 int/stelvio-jca-adapters/cicseci602NoTrans/.j2ee -text
