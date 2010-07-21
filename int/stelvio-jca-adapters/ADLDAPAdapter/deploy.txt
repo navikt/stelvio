@@ -1,0 +1,1 @@
+mvn deploy:deploy-file -DrepositoryId=nav-maven2-internal-repo -Durl=scp://maven.adeo.no/var/maven2/internal -Dfile=ADLDAPAdapter.rar -DpomFile=pom.xml

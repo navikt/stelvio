@@ -2939,6 +2939,8 @@ int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/Minsid
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterConnectionFailedException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/j2ca/adldap/exception/ADLDAPAdapterException.java -text
 int/stelvio-jca-adapters/ADLDAPAdapter/connectorModule/no/nav/lib/sik/ad/fault/FaultADNAVAnsattIkkeFunnet.xsd -text
+int/stelvio-jca-adapters/ADLDAPAdapter/deploy.txt -text
+int/stelvio-jca-adapters/ADLDAPAdapter/pom.xml -text
 int/stelvio-jca-adapters/CWYEM_EMail/.classpath -text
 int/stelvio-jca-adapters/CWYEM_EMail/.compatibility -text
 int/stelvio-jca-adapters/CWYEM_EMail/.j2ee -text
