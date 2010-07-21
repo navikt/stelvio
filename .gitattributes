@@ -2965,6 +2965,7 @@ int/stelvio-jca-adapters/email/connectorModule/activation.jar -text
 int/stelvio-jca-adapters/email/connectorModule/commonj.connector.jar -text
 int/stelvio-jca-adapters/email/connectorModule/mail.jar -text
 int/stelvio-jca-adapters/email/connectorModule/wbiBiDi.jar -text
+int/stelvio-jca-adapters/email/pom.xml -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.classpath -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.factorypath -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.project -text
