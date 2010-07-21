@@ -1,4 +1,0 @@
-#Thu Jan 07 13:54:07 CET 2010
-classpath.helper/org.eclipse.jdt.launching.JRE_CONTAINER\:\:org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType\:\:WebSphere\ Process\ Server\ v6.1\ JRE/owners=jst.java\:5.0
-classpath.helper/org.eclipse.jst.server.core.container\:\:com.ibm.ws.ast.st.runtime.runtimeTarget.v61.bi\:\:wps.v61/owners=jst.connector\:1.5
-eclipse.preferences.version=1
