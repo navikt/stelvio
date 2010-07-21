@@ -2909,6 +2909,7 @@ int/stelvio-jca-adapters/ADLDAPAdapter/.classpath -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.compatibility -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.j2ee -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.project -text
+int/stelvio-jca-adapters/ADLDAPAdapter/.settings/com.ibm.ws.ast.st.migration.prefs -text
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-jca-adapters/ADLDAPAdapter/.settings/org.eclipse.wst.common.component -text
