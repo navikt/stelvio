@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.6.5
 Created-By: 2.3 (NAV)
 Implementation-Title: LDAP WebSphere Adapter for Microsoft AD
-Implementation-Version: 6.1.0.0
+Implementation-Version: 7.0.0.0
 Implementation-Vendor: NAV Pensjonprosjektet
 
 
