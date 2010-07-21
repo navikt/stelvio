@@ -2977,6 +2977,7 @@ int/stelvio-jca-adapters/cicseci602NoTrans/connectorModule/cicsecitools.jar -tex
 int/stelvio-jca-adapters/cicseci602NoTrans/connectorModule/cicsframe.jar -text
 int/stelvio-jca-adapters/cicseci602NoTrans/connectorModule/ctgclient.jar -text
 int/stelvio-jca-adapters/cicseci602NoTrans/connectorModule/ctgserver.jar -text
+int/stelvio-jca-adapters/cicseciNoTrans/pom.xml -text
 int/stelvio-jca-adapters/cicseciXA-61/.classpath -text
 int/stelvio-jca-adapters/cicseciXA-61/.compatibility -text
 int/stelvio-jca-adapters/cicseciXA-61/.j2ee -text
