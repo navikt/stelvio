@@ -3013,6 +3013,7 @@ int/stelvio-jca-adapters/cicseciXA-7.1/connectorModule/ctgserver.jar -text
 int/stelvio-jca-adapters/cicseciXA-7.1/deploy.txt -text
 int/stelvio-jca-adapters/cicseciXA-7.1/pom.xml -text
 int/stelvio-jca-adapters/cicseciXA-7.1/readme.txt -text
+int/stelvio-jca-adapters/cicseciXA/pom.xml -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.classpath -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.factorypath -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.project -text
