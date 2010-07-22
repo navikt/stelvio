@@ -21,7 +21,8 @@ import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.cli.StreamConsumer;
 
 /**
- * Goal bundles everything or uploads application/batch config and deploys the earfile
+ * Goal bundles everything or uploads application/batch config and deploys the
+ * earfile
  * 
  * @goal deploy-or-bundle
  * 
@@ -79,75 +80,110 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	private String batchDir;
 
 	/**
-	 * @parameter expression="${environment/server/was-node1-hostname}"
+	 * @parameter expression="${environment/servers/was-node1/hostname}"
 	 */
 	private String n1Hostname;
 
 	/**
-	 * @parameter expression="${environment/server/was-node1-username}"
+	 * @parameter expression="${environment/servers/was-node1/app-username}"
 	 */
-	private String n1Username;
+	private String n1AppUsername;
 
 	/**
-	 * @parameter expression="${environment/server/was-node1-password}"
+	 * @parameter expression="${environment/servers/was-node1/app-password}"
 	 */
-	private String n1Password;
+	private String n1AppPassword;
+	
+	/**
+	 * @parameter expression="${environment/servers/was-node1/batch-username}"
+	 */
+	private String n1BatchUsername;
 
 	/**
-	 * @parameter expression="${environment/server/was-node2-hostname}"
+	 * @parameter expression="${environment/servers/was-node1/batch-password}"
+	 */
+	private String n1BatchPassword;
+
+	/**
+	 * @parameter expression="${environment/servers/was-node2/hostname}"
 	 */
 	private String n2Hostname;
 
 	/**
-	 * @parameter expression="${environment/server/was-node2-username}"
+	 * @parameter expression="${environment/servers/was-node2/app-username}"
 	 */
-	private String n2Username;
+	private String n2AppUsername;
 
 	/**
-	 * @parameter expression="${environment/server/was-node2-password}"
+	 * @parameter expression="${environment/servers/was-node2/app-password}"
 	 */
-	private String n2Password;
+	private String n2AppPassword;
 	
 	/**
-	 * @parameter expression="${environment/server/node2-config-upload}"
+	 * @parameter expression="${environment/servers/was-node2/batch-username}"
+	 */
+	private String n2BatchUsername;
+
+	/**
+	 * @parameter expression="${environment/servers/was-node2/batch-password}"
+	 */
+	private String n2BatchPassword;
+
+	/**
+	 * @parameter expression="${environment/node2-config-upload}"
 	 */
 	private boolean node2Upload;
 
 	/**
-	 * @parameter expression="${environment/server/was-dmgr-hostname}"
+	 * @parameter expression="${environment/servers/was-dmgr/hostname}"
 	 */
 	private String hostname;
-	
+
 	/**
-	 * @parameter expression="${environment/server/was-dmgr-soap-port}"
+	 * @parameter expression="${environment/servers/was-dmgr/soap-port}"
 	 */
 	private String soapPort;
-	
+
 	/**
-	 * @parameter expression="${environment/server/was-dmgr-username}"
+	 * @parameter expression="${environment/servers/was-dmgr/username}"
 	 */
 	private String username;
-	
+
 	/**
-	 * @parameter expression="${environment/server/was-dmgr-password}"
+	 * @parameter expression="${environment/servers/was-dmgr/password}"
 	 */
 	private String password;
-	
+
 	/**
-	 * @parameter expression="${environment/server/was-server-name}"
+	 * @parameter expression="${environment/servers/misc/pensjon-server-name}"
 	 */
-	private String serverName;
-	
+	private String pensjonServerName;
+
 	/**
-	 * @parameter expression="${environment/server/was-node-name}"
+	 * @parameter expression="${environment/servers/misc/pensjon-node-name}"
 	 */
-	private String nodeName;
-	
+	private String pensjonNodeName;
+
 	/**
-	 * @parameter expression="${environment/server/was-cluster-name}"
+	 * @parameter expression="${environment/servers/misc/pensjon-cluster-name}"
 	 */
-	private String clusterName;
-	
+	private String pensjonClusterName;
+
+	/**
+	 * @parameter expression="${environment/servers/misc/joark-server-name}"
+	 */
+	private String joarkServerName;
+
+	/**
+	 * @parameter expression="${environment/servers/misc/joark-node-name}"
+	 */
+	private String joarkNodeName;
+
+	/**
+	 * @parameter expression="${environment/servers/misc/joark-cluster-name}"
+	 */
+	private String joarkClusterName;
+
 	/**
 	 * @parameter expression="${wsadminLocation}"
 	 */
@@ -202,20 +238,20 @@ public class DeployOrBundleMojo extends AbstractMojo {
 
 		if (node2Upload) {
 			// Upload application config
-			SSHUtil.uploadDir(n1Hostname, n1Username, n1Password, configDir, "/was_app/config", application);
-			SSHUtil.uploadDir(n2Hostname, n2Username, n2Password, configDir, "/was_app/config", application);
+			SSHUtil.uploadDir(n1Hostname, n1AppUsername, n1AppPassword, configDir, "/was_app/config", application);
+			SSHUtil.uploadDir(n2Hostname, n2AppUsername, n2AppPassword, configDir, "/was_app/config", application);
 
 			// Upload batch config
 			if (isBatch) {
-				SSHUtil.uploadDir(n1Hostname, n1Username, n1Password, batchDir, "/was_app/batch", application);
-				SSHUtil.uploadDir(n2Hostname, n2Username, n2Password, batchDir, "/was_app/batch", application);
+				SSHUtil.uploadDir(n1Hostname, n1BatchUsername, n1BatchPassword, batchDir, "/was_app/batch", application);
+				SSHUtil.uploadDir(n2Hostname, n2BatchUsername, n2BatchPassword, batchDir, "/was_app/batch", application);
 			}
 
 		} else {
-			SSHUtil.uploadDir(n1Hostname, n1Username, n1Password, configDir, "/was_app/config", application);
+			SSHUtil.uploadDir(n1Hostname, n1AppUsername, n1AppPassword, configDir, "/was_app/config", application);
 
 			if (isBatch)
-				SSHUtil.uploadDir(n1Hostname, n1Username, n1Password, batchDir, "/was_app/batch", application);
+				SSHUtil.uploadDir(n1Hostname, n1BatchUsername, n1BatchPassword, batchDir, "/was_app/batch", application);
 		}
 
 		// Deploy the application
@@ -223,19 +259,20 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	}
 
 	private void deploy() throws CommandLineException, MojoFailureException {
-		
+
 		String expectedLocation = project.getBasedir() + "/scripts/InstallApp.py";
 		File scriptFile = new File(expectedLocation);
 		earName = earName.replace(".ear", "");
 		earPath = earPath.replace("\\", "/");
-		
+
 		if (!scriptFile.exists()) {
 			throw new MojoFailureException("[ERROR] The Jython script file is not at the expected location, " + expectedLocation + " - Please make sure the file is present, and rerun the deployment.");
 		}
-		
+
 		String wsAdmin;
 		boolean security = true;
 
+		// If the password is not specified, it assumes the environment doesn't have security enabled.
 		if (password == null || password.equals("")) {
 			System.out.println("[WARN] ### DEPLOY ### The environment configuration does not specify a password. This is ok if the environment doesn't have security enabled.");
 			security = false;
@@ -264,9 +301,17 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		s.append(" -f " + scriptFile.getAbsolutePath() + " ");
 		s.append(earName + " ");
 		s.append(earPath + " ");
-		s.append(serverName + " ");
-		s.append(nodeName + " ");
-		s.append(clusterName + " ");
+
+		if (!application.equals("joark")) {
+			s.append(pensjonServerName + " ");
+			s.append(pensjonNodeName + " ");
+			s.append(pensjonClusterName + " ");
+		} else {
+			s.append(joarkServerName + " ");
+			s.append(joarkNodeName + " ");
+			s.append(joarkClusterName + " ");
+		}
+
 		s.append(application);
 
 		arg1.setLine(s.toString());
@@ -286,7 +331,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		};
 
 		CommandLineUtils.executeCommandLine(commandLine, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
-		
+
 		System.out.println("[INFO] ### DEPLOY ### The application: " + application + " has been successfully deployed.");
 	}
 

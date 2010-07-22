@@ -25,7 +25,6 @@ import org.xml.sax.SAXException;
  * @goal handle-files
  * 
  * @author test@example.com
- * 
  */
 public class FileHandlerMojo extends AbstractMojo {
 
@@ -93,7 +92,13 @@ public class FileHandlerMojo extends AbstractMojo {
 	private String log4jBatchFile;
 
 	/**
-	 * @parameter expression="${environment/server/domain}"
+	 * @parameter expression="${environment/zone}"
+	 * @required
+	 */
+	private String zone;
+	
+	/**
+	 * @parameter expression="${environment/domain}"
 	 * @required
 	 */
 	private String domain;
@@ -148,14 +153,14 @@ public class FileHandlerMojo extends AbstractMojo {
 				copyDependencies();
 
 				// For PSAK and PSELV, create a new role mapping file
-				XMLOps.fixRoleMapping(new File(roleMappingDir + "/template.xml"), new File(earDir + "/META-INF/ibm-application-bnd.xmi"), new File(roleMappingDir + "/" + application + ".xml"));
+				XMLOps.fixRoleMapping(new File(roleMappingDir + "/template.xml"), new File(earDir + "/META-INF/ibm-application-bnd.xmi"), new File(roleMappingDir + "/" + domain + "/" + zone + "/" + application + ".xml"));
 
 				// For PSELV, do domain spesific file modifications
 				if (application.equals("pselv")) {
 
 					String webXMLPath = pselvWARDir + "/WEB-INF/web.xml";
 
-					if (domain.equalsIgnoreCase("INTERNSONE")) {
+					if (zone.equalsIgnoreCase("intern")) {
 						
 						XMLOps.fixContext(configDir + "/cfg-pen-context.xml");
 						XMLOps.fixContext(configDir + "/cfg-pselv-context.xml");
@@ -292,6 +297,8 @@ public class FileHandlerMojo extends AbstractMojo {
 
 	}
 
+	
+	// Removes the files marked for exclusion
 	private void deleteFiles(ArrayList<String> filesToDelete) throws MojoFailureException {
 		getLog().info("#######################################");
 		getLog().info("### Deleting the excluded files ... ###");
@@ -307,6 +314,7 @@ public class FileHandlerMojo extends AbstractMojo {
 		}
 	}
 
+	//Reassembles the archives, making them ready for deploy/bundle
 	private void reassembleArchives() throws MojoFailureException {
 
 		getLog().info("########################################################");

@@ -15,8 +15,16 @@ import com.sshtools.j2ssh.transport.HostKeyVerification;
 import com.sshtools.j2ssh.transport.TransportProtocolException;
 import com.sshtools.j2ssh.transport.publickey.SshPublicKey;
 
+/**
+ * Util class for handling SSH/SCP operations 
+ * 
+ * @author test@example.com
+ */
 public class SSHUtil {
 	
+	/*
+	 * Uploads a local directory to a folder on the remote host 
+	 */
 	public static void uploadDir(String hostname, String username, String password, String localDir, String remoteDir, String application) throws IOException {
 
 		File localDirectory = new File(localDir);
@@ -65,18 +73,11 @@ public class SSHUtil {
 	// Couldn't find any implementations of the FileTransferProgress interface.
 	private static FileTransferProgress getFTProg() {
 		return new FileTransferProgress() {
-
-			public void started(long arg0, String arg1) {
-			}
-
-			public void progressed(long arg0) {
-			}
-
+			public void started(long arg0, String arg1) {}
+			public void progressed(long arg0) {}
+			public void completed() {}
 			public boolean isCancelled() {
 				return false;
-			}
-
-			public void completed() {
 			}
 		};
 	}

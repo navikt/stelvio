@@ -147,7 +147,9 @@ public class XMLOps {
 		System.out.println("[INFO] ### FIX-LOGIN-CONFIG ### Successfully changed login config to: " + url);
 	}
 	
-	// Creates a new "ibm-application-bnd.xmi" file at the given location, with the given template and application mapping
+	/*
+	 *  Creates a new "ibm-application-bnd.xmi" file at the given location, with the given template and application mapping
+	 */
 	public static void fixRoleMapping(File template, File ibmBndFileLocation, File applicationMapping) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 		
 		System.out.println("[INFO] ###################################################");
@@ -163,7 +165,6 @@ public class XMLOps {
 		
 		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(template);
 
-		// Get the root element which we are appending child elements
 		Node authorizationTable = xml.getElementsByTagName("authorizationTable").item(0);
 
 		HashMap<String, String> map = parseRoleMapping(applicationMapping);
@@ -220,7 +221,9 @@ public class XMLOps {
 		System.out.println("[INFO] ### FIX-ROLE-MAPPING ### Successfully created file: " + ibmBndFileLocation + " based on template: " + template + " and application mapping file : " + applicationMapping);
 	}
 
-	// Parses the role mapping file, and puts the coherent values in the returned HashMap
+	/*
+	 * Parses the role mapping file, and puts the coherent values in the returned HashMap
+	 */
 	private static HashMap<String, String> parseRoleMapping(File rolemapping) throws ParserConfigurationException, SAXException, IOException {
 
 		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rolemapping);
