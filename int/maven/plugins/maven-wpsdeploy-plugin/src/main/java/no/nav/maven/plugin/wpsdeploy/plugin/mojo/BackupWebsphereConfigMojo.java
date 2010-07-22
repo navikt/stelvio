@@ -20,7 +20,8 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class BackupWebsphereConfigMojo extends RemoteCommandExecutorMojo {
 
 	protected void executeRemoteCommand() throws MojoExecutionException, MojoFailureException {
-		backupConfig();
+		if (interactiveMode)
+				backupConfig();
 	}
 
 	private final void backupConfig() {
