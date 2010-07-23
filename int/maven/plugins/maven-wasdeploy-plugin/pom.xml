@@ -69,5 +69,7 @@
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wasdeploy-plugin
 		</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
+		<!-- Target Java 5 until upgrade to WAS 7.0 -->
+		<target.jdk>1.5</target.jdk>
 	</properties>
 </project>
