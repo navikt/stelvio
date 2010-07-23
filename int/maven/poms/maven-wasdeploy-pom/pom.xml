@@ -32,15 +32,6 @@
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<version>1.0-beta-1</version>
 			</plugin>
-			<!-- Lock java compiler version -->
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-					<encoding>ISO-8859-1</encoding>
-				</configuration>
-			</plugin>
 			<!-- Disable clean plugin to avoid deleting the output directories-->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
