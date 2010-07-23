@@ -282,9 +282,9 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		Commandline.Argument arg1 = new Commandline.Argument();
 
 		if (Os.isFamily("windows") == true) {
-			wsAdmin = "/wsadmin.bat";
+			wsAdmin = "wsadmin.bat";
 		} else {
-			wsAdmin = "/wsadmin.sh";
+			wsAdmin = "wsadmin.sh";
 		}
 
 		StringBuilder s = new StringBuilder();
@@ -329,9 +329,11 @@ public class DeployOrBundleMojo extends AbstractMojo {
 				System.out.println(line);
 			}
 		};
-
-		CommandLineUtils.executeCommandLine(commandLine, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
-
+		
+		//TODO: throw new MojoFailureException if retVal = ? 
+		int retval = CommandLineUtils.executeCommandLine(commandLine, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
+		getLog().info("Retval = " + retval);
+		
 		System.out.println("[INFO] ### DEPLOY ### The application: " + application + " has been successfully deployed.");
 	}
 
