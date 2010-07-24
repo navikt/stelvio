@@ -64,7 +64,9 @@ public class WidPlugin extends EclipsePlugin {
 
 			writeScaAttributes();
 			
-			createRoleMapping();
+			if (PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
+				createRoleMapping();
+			}
 		}
 	}
 
