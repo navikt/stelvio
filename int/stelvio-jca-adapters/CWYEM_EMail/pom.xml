@@ -9,7 +9,7 @@
 		mvn deploy:deploy-file -DrepositoryId=nav-maven2-internal-repo -Durl=scp://maven.adeo.no/var/maven2/internal -Dfile=C:\IBM\WID7\ResourceAdapters\Email_7.0.0.1\CWYEM_EMail.rar -DpomFile=pom.xml
 	-->
 	
-	<groupId>no.stelvio.int.jca-adapters</groupId>
+	<groupId>com.ibm.j2ca.email</groupId>
 	<artifactId>CWYEM_EMail</artifactId>
 	<packaging>rar</packaging>
 	<version>7.0.0.1</version>
