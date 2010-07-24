@@ -1,7 +1,9 @@
 package no.nav.maven.plugin.wid;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -33,6 +35,7 @@ import org.apache.maven.plugin.ide.IdeDependency;
  * @requiresDependencyResolution compile
  */
 public class WidPlugin extends EclipsePlugin {
+	private static final String IBM_DEPLOYMENT_DESCRIPTOR = "/ibm-deploy.scaj2ee";
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
 	private static final String PACKAGING_RAR = "rar";
@@ -60,6 +63,8 @@ public class WidPlugin extends EclipsePlugin {
 			writeWtpSettings(eclipseWriterConfig);
 
 			writeScaAttributes();
+			
+			createRoleMapping();
 		}
 	}
 
@@ -144,5 +149,23 @@ public class WidPlugin extends EclipsePlugin {
 		eclipseWriterConfig.setSourceDirs(sourceDirs.toArray(new EclipseSourceDir[sourceDirs.size()]));
 		// Make sure source folder is created
 		new File(eclipseWriterConfig.getEclipseProjectDirectory(), "gen/src").mkdirs();
+	}
+	
+	private void createRoleMapping() throws MojoExecutionException {
+		InputStream in = this.getClass().getResourceAsStream(IBM_DEPLOYMENT_DESCRIPTOR);
+		System.out.println("In="+in);
+		File targetFile = new File(getEclipseProjectDir(), IBM_DEPLOYMENT_DESCRIPTOR);
+		try {
+			FileOutputStream out = new FileOutputStream(targetFile);
+			byte buf[] = new byte[1024];
+			int len;
+			while ((len = in.read(buf)) > 0) {
+				out.write(buf, 0, len);
+			}
+			out.close();
+			in.close();
+		} catch (IOException e) {
+			throw new MojoExecutionException("An error occured while writing to deployment descriptor " + targetFile);
+		}
 	}
 }

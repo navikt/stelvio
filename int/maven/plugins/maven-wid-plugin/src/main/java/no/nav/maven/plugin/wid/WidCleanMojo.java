@@ -32,5 +32,7 @@ public class WidCleanMojo extends EclipseCleanMojo {
 
 		delete(new File(getBasedir(), "sca.library.attributes"));
 		delete(new File(getBasedir(), "sca.module.attributes"));
+		
+		delete(new File(getBasedir(), "ibm-deploy.scaj2ee"));
 	}
 }
