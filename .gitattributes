@@ -2960,6 +2960,7 @@ int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/activation.jar -text
 int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/commonj.connector.jar -text
 int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/mail.jar -text
 int/stelvio-jca-adapters/CWYEM_EMail/connectorModule/wbiBiDi.jar -text
+int/stelvio-jca-adapters/CWYEM_EMail/pom.xml -text
 int/stelvio-jca-adapters/cicseciNoTrans/pom.xml -text
 int/stelvio-jca-adapters/cicseciXA/pom.xml -text
 int/stelvio-jca-adapters/email/.classpath -text
@@ -2984,7 +2985,6 @@ int/stelvio-jca-adapters/email/connectorModule/activation.jar -text
 int/stelvio-jca-adapters/email/connectorModule/commonj.connector.jar -text
 int/stelvio-jca-adapters/email/connectorModule/mail.jar -text
 int/stelvio-jca-adapters/email/connectorModule/wbiBiDi.jar -text
-int/stelvio-jca-adapters/email/pom.xml -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.classpath -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.factorypath -text
 int/stelvio-jca-adapters/websphere_default_messaging_provider/.project -text
