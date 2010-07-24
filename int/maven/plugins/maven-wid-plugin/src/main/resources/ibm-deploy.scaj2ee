@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scaj2ee:IntegrationModuleDeploymentConfiguration
+	xmlns:scaj2ee="http://www.ibm.com/xmlns/prod/websphere/sca/j2ee/6.0.2">
+	<appProject>
+		<authorizationTable>
+			<authorizations role="//@appProject/@securityrole.0">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.1">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.2">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.3">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.4">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.5">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.6">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.7">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.8">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.9">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.10">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.11">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.12">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.13">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.14">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.15">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.16">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.17">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.18">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.19">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.20">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.21">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.22">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.23">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+		</authorizationTable>
+		<securityrole roleName="PensjonOpptjening"></securityrole>
+		<securityrole roleName="JOARKConsumer"></securityrole>
+		<securityrole roleName="EIAConsumer"></securityrole>
+		<securityrole roleName="FKConsumer"></securityrole>
+		<securityrole roleName="NPConsumer"></securityrole>
+		<securityrole roleName="SBLUTBConsumer"></securityrole>
+		<securityrole roleName="PSELVConsumer"></securityrole>
+		<securityrole roleName="PSAKConsumer"></securityrole>
+		<securityrole roleName="PENConsumer"></securityrole>
+		<securityrole roleName="PKORTConsumer"></securityrole>
+		<securityrole roleName="TPTILBConsumer"></securityrole>
+		<securityrole roleName="BISYSConsumer"></securityrole>
+		<securityrole roleName="MOTConsumer"></securityrole>
+		<securityrole roleName="KUHLConsumer"></securityrole>
+		<securityrole roleName="SAMConsumer"></securityrole>
+		<securityrole roleName="ARENAConsumer"></securityrole>
+		<securityrole roleName="GOSYSConsumer"></securityrole>
+		<securityrole roleName="ERESEPTConsumer"></securityrole>
+		<securityrole roleName="TPSConsumer"></securityrole>
+		<securityrole roleName="BREVConsumer"></securityrole>
+		<securityrole roleName="OSConsumer"></securityrole>
+		<securityrole roleName="INFOTConsumer"></securityrole>
+		<securityrole roleName="TESTConsumer"></securityrole>
+		<securityrole roleName="BPROCROUTER"></securityrole>
+	</appProject>
+</scaj2ee:IntegrationModuleDeploymentConfiguration>

@@ -2394,6 +2394,7 @@ int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/WidPlug
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/utils/IdeDependencyFactory.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/writers/WidWtpComponentWriter.java -text svneol=unset#text/plain
 int/maven/plugins/maven-wid-plugin/src/main/java/no/nav/maven/plugin/wid/writers/WidWtpFacetsWriter.java -text svneol=unset#text/plain
+int/maven/plugins/maven-wid-plugin/src/main/resources/ibm-deploy.scaj2ee -text
 int/maven/plugins/maven-wps-artifact-plugin/pom.xml -text
 int/maven/plugins/maven-wps-artifact-plugin/src/main/java/no/nav/maven/plugin/sca/BuildManifestClasspathMojo.java -text
 int/maven/plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text

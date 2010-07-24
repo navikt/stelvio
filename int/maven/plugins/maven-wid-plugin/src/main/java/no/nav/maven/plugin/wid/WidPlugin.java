@@ -155,7 +155,6 @@ public class WidPlugin extends EclipsePlugin {
 	
 	private void createRoleMapping() throws MojoExecutionException {
 		InputStream in = this.getClass().getResourceAsStream(IBM_DEPLOYMENT_DESCRIPTOR);
-		System.out.println("In="+in);
 		File targetFile = new File(getEclipseProjectDir(), IBM_DEPLOYMENT_DESCRIPTOR);
 		try {
 			FileOutputStream out = new FileOutputStream(targetFile);
