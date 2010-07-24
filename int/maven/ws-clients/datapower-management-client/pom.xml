@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -7,11 +6,13 @@
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.2.1</version>
-		<relativePath>../../poms/maven-root-pom</relativePath>
+		<relativePath>../../poms/maven-root-pom
+		</relativePath>
 	</parent>
 
 	<groupId>no.stelvio.maven.support</groupId>
-	<artifactId>datapower-management-client</artifactId>
+	<artifactId>datapower-management-client
+	</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>
 		Stelvio Integration Framework DataPower Management Client
@@ -31,9 +32,15 @@
 							</wsdlRoot>
 							<includes>
 								<include>amp/**/*.wsdl</include>
-								<!-- TODO: soma currently gives JAXB fault -->
-								<!--include>**/*.wsdl</include-->
 							</includes>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/wsdl/soma/xml-mgmt.wsdl</wsdl>	
+									<bindingFiles>
+										<bindingFile>${basedir}/src/main/wsdl/soma/xml-mgmt-ops.jxb</bindingFile>
+									</bindingFiles>
+								</wsdlOption>
+							</wsdlOptions>
 						</configuration>
 						<goals>
 							<goal>wsdl2java</goal>
@@ -45,7 +52,10 @@
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<!-- Skip tests because they perform network operations, and should not be run by CI (only manually) -->
+					<!--
+						Skip tests because they perform network operations, and should not
+						be run by CI (only manually)
+					-->
 					<skip>true</skip>
 				</configuration>
 			</plugin>
@@ -73,7 +83,8 @@
 
 	<scm>
 		<connection>${scm.connection}</connection>
-		<developerConnection>${scm.connection}</developerConnection>
+		<developerConnection>${scm.connection}
+		</developerConnection>
 	</scm>
 
 	<properties>

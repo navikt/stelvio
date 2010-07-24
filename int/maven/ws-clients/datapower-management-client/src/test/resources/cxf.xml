@@ -10,7 +10,7 @@
            http://cxf.apache.org/schemas/configuration/security.xsd
            ">
 
-	<http-conf:conduit name="https://dp-tst-01.adeo.no:5550/service/mgmt/amp/1.0">
+	<http-conf:conduit name="https://dp-tst-01.adeo.no:5550/service/mgmt/.*">
 		<http-conf:tlsClientParameters>
 			<sec:trustManagers>
 				<sec:keyStore type="JKS" password="Test1234" resource="NAV-Test.jks"/>
