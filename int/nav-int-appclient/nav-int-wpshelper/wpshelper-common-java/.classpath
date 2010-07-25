@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="M2_REPO/com/ibm/ws/admin-client/6.1.0.7/admin-client-6.1.0.7.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/ibm/wps/bfmclientmodel/6.1.0/bfmclientmodel-6.1.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/ibm/wps/bpcclientcore/6.1.0/bpcclientcore-6.1.0.jar"/>
@@ -11,12 +12,5 @@
 	<classpathentry kind="var" path="M2_REPO/com/ibm/wps/htmlclientmodel/6.1.0.1/htmlclientmodel-6.1.0.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.5.8/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="src" path=".apt_generated">
-		<attributes>
-			<attribute name="optional" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v70.bi/wps.v70"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere Process Server v7.0 JRE"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

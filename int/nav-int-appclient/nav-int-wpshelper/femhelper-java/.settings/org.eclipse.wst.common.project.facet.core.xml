@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-  <runtime name="wps.v70"/>
+  <runtime name="WebSphere Process Server v6.1"/>
   <fixed facet="jst.java"/>
   <fixed facet="jst.appclient"/>
+  <installed facet="com.ibm.websphere.extended.appclient" version="6.1"/>
+  <installed facet="jst.java" version="5.0"/>
   <installed facet="jst.appclient" version="1.4"/>
-  <installed facet="com.ibm.websphere.coexistence.appclient" version="7.0"/>
-  <installed facet="com.ibm.websphere.extended.appclient" version="7.0"/>
-  <installed facet="jst.java" version="6.0"/>
+  <installed facet="com.ibm.websphere.coexistence.appclient" version="6.1"/>
 </faceted-project>
