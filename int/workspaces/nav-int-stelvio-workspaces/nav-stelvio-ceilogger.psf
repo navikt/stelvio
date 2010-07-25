@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<psf version="2.0">
-	<provider id="org.polarion.team.svn.core.svnnature">
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/tags/INT_CEILogger_1.0.1_D20071029/CEIEventConsumer,CEIEventConsumer,a71ca7-115fb3bb58e-734048f9ec414b9f7d35754baa37aae4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/tags/INT_CEILogger_1.0.1_D20071029/CEIEventConsumerEJB,CEIEventConsumerEJB,a71ca7-115fb3bb58e-734048f9ec414b9f7d35754baa37aae4;https://versjonskontroll.adeo.no/svn/stelvio;https://versjonskontroll.adeo.no/svn/stelvio;branches;tags;trunk"/>
-	</provider>
-</psf>

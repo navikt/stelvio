@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<psf version="2.0">
-	<provider id="org.polarion.team.svn.core.svnnature">
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/tags/int/stelvio-commons-lib-3.1.1_D20090107/stelvio-commons-lib,stelvio-commons-lib,e030f1d7ffe6001d168ee05a15d3cb36;https://versjonskontroll.adeo.no/svn/stelvio/;https://versjonskontroll.adeo.no/svn/stelvio/;branches;tags;trunk"/>
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability/WpsCoreSystemAvailability,WpsCoreSystemAvailability,e030f1d7ffe6001d168ee05a15d3cb36;https://versjonskontroll.adeo.no/svn/stelvio/;https://versjonskontroll.adeo.no/svn/stelvio/;branches;tags;trunk"/>
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR,StelvioSystemAvailabilityWebEAR,e030f1d7ffe6001d168ee05a15d3cb36;https://versjonskontroll.adeo.no/svn/stelvio/;https://versjonskontroll.adeo.no/svn/stelvio/;branches;tags;trunk"/>
-		<project reference="1.0.0,https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb,StelvioSystemAvailabilityWeb,e030f1d7ffe6001d168ee05a15d3cb36;https://versjonskontroll.adeo.no/svn/stelvio/;https://versjonskontroll.adeo.no/svn/stelvio/;branches;tags;trunk"/>
-	</provider>
-</psf>

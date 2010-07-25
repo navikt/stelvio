@@ -3117,8 +3117,4 @@ int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/ejbModule/META-
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/ejbModule/META-INF/ws-handler.xmi -text svneol=unset#text/plain
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediationEJB/pom.xml -text
 int/stelvio-sibus-mediation/OppdragMediation/pom.xml -text
-int/workspaces/nav-int-stelvio-workspaces/.project -text svneol=unset#text/plain
-int/workspaces/nav-int-stelvio-workspaces/nav-steilvio-ceilogger-1.0.2.psf -text
-int/workspaces/nav-int-stelvio-workspaces/nav-stelvio-ceilogger.psf -text
-int/workspaces/nav-int-stelvio-workspaces/stelvio-operation-systemavailability.psf -text
 maven/settings.xml -text
