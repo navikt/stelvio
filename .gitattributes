@@ -843,6 +843,27 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
+incubator/CEILogger/CEIEventConsumer/.j2ee -text
+incubator/CEILogger/CEIEventConsumer/.project -text
+incubator/CEILogger/CEIEventConsumer/META-INF/.modulemaps -text
+incubator/CEILogger/CEIEventConsumer/META-INF/MANIFEST.MF -text
+incubator/CEILogger/CEIEventConsumer/META-INF/application.xml -text
+incubator/CEILogger/CEIEventConsumer/commons-jxpath.jar -text
+incubator/CEILogger/CEIEventConsumer/config/log4j.properties.template -text
+incubator/CEILogger/CEIEventConsumer/events-client.jar -text
+incubator/CEILogger/CEIEventConsumer/events-messages.jar -text
+incubator/CEILogger/CEIEventConsumer/log4j-1.2.14.jar -text
+incubator/CEILogger/CEIEventConsumerEJB/.classpath -text
+incubator/CEILogger/CEIEventConsumerEJB/.j2ee -text
+incubator/CEILogger/CEIEventConsumerEJB/.project -text
+incubator/CEILogger/CEIEventConsumerEJB/.settings/.webspheredeploy -text
+incubator/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/MANIFEST.MF -text
+incubator/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/ejb-jar.xml -text
+incubator/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/ibm-ejb-jar-bnd.xmi -text
+incubator/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/services/org.apache.commons.logging.LogFactory -text
+incubator/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/CEIConsumerMDBBean.java -text
+incubator/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventData.java -text
+incubator/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventDataConstant.java -text
 incubator/FEMCommandLine/FEMGRAppClient/.checkstyle -text
 incubator/FEMCommandLine/FEMGRAppClient/.classpath -text svneol=unset#text/plain
 incubator/FEMCommandLine/FEMGRAppClient/.compatibility -text
@@ -2068,27 +2089,6 @@ incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/META-INF/services/org.ap
 incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/CEIConsumerMDBBean.java -text svneol=unset#text/plain
 incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventData.java -text svneol=unset#text/plain
 incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventDataConstant.java -text svneol=unset#text/plain
-int/CEILogger/CEIEventConsumer/.j2ee -text
-int/CEILogger/CEIEventConsumer/.project -text
-int/CEILogger/CEIEventConsumer/META-INF/.modulemaps -text
-int/CEILogger/CEIEventConsumer/META-INF/MANIFEST.MF -text
-int/CEILogger/CEIEventConsumer/META-INF/application.xml -text
-int/CEILogger/CEIEventConsumer/commons-jxpath.jar -text
-int/CEILogger/CEIEventConsumer/config/log4j.properties.template -text
-int/CEILogger/CEIEventConsumer/events-client.jar -text
-int/CEILogger/CEIEventConsumer/events-messages.jar -text
-int/CEILogger/CEIEventConsumer/log4j-1.2.14.jar -text
-int/CEILogger/CEIEventConsumerEJB/.classpath -text
-int/CEILogger/CEIEventConsumerEJB/.j2ee -text
-int/CEILogger/CEIEventConsumerEJB/.project -text
-int/CEILogger/CEIEventConsumerEJB/.settings/.webspheredeploy -text
-int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/MANIFEST.MF -text
-int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/ejb-jar.xml -text
-int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/ibm-ejb-jar-bnd.xmi -text
-int/CEILogger/CEIEventConsumerEJB/ejbModule/META-INF/services/org.apache.commons.logging.LogFactory -text
-int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/CEIConsumerMDBBean.java -text
-int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventData.java -text
-int/CEILogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventDataConstant.java -text
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.classpath -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.project -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
