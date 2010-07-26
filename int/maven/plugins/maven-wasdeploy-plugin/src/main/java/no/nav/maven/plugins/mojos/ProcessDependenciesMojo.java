@@ -107,9 +107,13 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 
 	/**
 	 * @parameter expression="${mooseBuildId}"
-	 * @required
 	 */
 	private String mooseBuildId;
+	
+	/**
+	 * @parameter expression="${version}"
+	 */
+	private String version;
 
 	/**
 	 * @parameter expression="${mapFile}"
@@ -146,8 +150,12 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		// Make sure the folder structure exists
 		stagingDirectory.mkdirs();
 
-		// Resolve Maven version
-		mavenVersion = getMavenVersion(mooseBuildId);
+		// Determine whether to resolve the mooseBuildId or to use the version provided
+		if (!mooseBuildId.equals("") || mooseBuildId != null){
+			mavenVersion = getMavenVersion(mooseBuildId);
+		} else {
+			mavenVersion = version;
+		}
 
 		getLog().info("################################################");
 		getLog().info("### Downloading and extracting artifacts ... ###");
