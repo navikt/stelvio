@@ -93,7 +93,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	 * @parameter expression="${environment/servers/was-node1/app-password}"
 	 */
 	private String n1AppPassword;
-	
+
 	/**
 	 * @parameter expression="${environment/servers/was-node1/batch-username}"
 	 */
@@ -118,7 +118,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	 * @parameter expression="${environment/servers/was-node2/app-password}"
 	 */
 	private String n2AppPassword;
-	
+
 	/**
 	 * @parameter expression="${environment/servers/was-node2/batch-username}"
 	 */
@@ -272,7 +272,8 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		String wsAdmin;
 		boolean security = true;
 
-		// If the password is not specified, it assumes the environment doesn't have security enabled.
+		// If the password is not specified, it assumes the environment doesn't
+		// have security enabled.
 		if (password == null || password.equals("")) {
 			System.out.println("[WARN] ### DEPLOY ### The environment configuration does not specify a password. This is ok if the environment doesn't have security enabled.");
 			security = false;
@@ -329,16 +330,21 @@ public class DeployOrBundleMojo extends AbstractMojo {
 				System.out.println(line);
 			}
 		};
-		
+
 		int retval = CommandLineUtils.executeCommandLine(commandLine, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
 
 		getLog().info("[INFO] Return value from command line execution was: " + retval);
-		
-		//TODO: remove this, when testing is finished
-//		if (retval != 0){
-//			throw new MojoFailureException("[ERROR] Deployment failed, check error messages. Tried to execute: " + commandLine);
-//		}
-		
+
+		/*
+		 * We get return value 86 because the wsadmin instance we use is
+		 * "incompatible, and unsupported" we get an error message, but the
+		 * deployment works. Can be removed once we upgrade WAS instances to
+		 * v.7.0
+		 */
+		if (retval != 0 && retval != 86) {
+			throw new MojoFailureException("[ERROR] Deployment failed, check error messages. Tried to execute: " + commandLine);
+		}
+
 		System.out.println("[INFO] ### DEPLOY ### The application: " + application + " has been successfully deployed.");
 	}
 
