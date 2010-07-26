@@ -331,11 +331,12 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		};
 		
 		int retval = CommandLineUtils.executeCommandLine(commandLine, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
-		getLog().debug("Return value from command = " + retval);
 		
 		if (retval != 0){
 			throw new MojoFailureException("[ERROR] Deployment failed, check error messages. Tried to execute: " + commandLine);
 		}
+		
+		getLog().info("[INFO] Return value from command line execution was: " + retval);
 		
 		System.out.println("[INFO] ### DEPLOY ### The application: " + application + " has been successfully deployed.");
 	}
