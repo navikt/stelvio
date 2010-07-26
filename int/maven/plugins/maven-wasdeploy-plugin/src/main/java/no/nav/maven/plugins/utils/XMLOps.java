@@ -97,9 +97,9 @@ public class XMLOps {
 	 */
 	public static void fixPSELVSessionTimeout(String filePath, String timeout) throws ParserConfigurationException, SAXException, IOException, TransformerException {
 
-		System.out.println("[INFO] #################################################################");
-		System.out.println("[INFO] ## web.xml - Setting the PSELV internsone session timeout ... ###");
-		System.out.println("[INFO] #################################################################");
+		System.out.println("[INFO] ##################################################################");
+		System.out.println("[INFO] ### web.xml - Setting the PSELV internsone session timeout ... ###");
+		System.out.println("[INFO] ##################################################################");
 		
 		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filePath);
 		
