@@ -35,7 +35,7 @@
 					<artifactId>
 						maven-artifact-modifier-plugin
 					</artifactId>
-					<version>1.43</version>
+					<version>1.44-SNAPSHOT</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -46,7 +46,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-websphere-plugin</artifactId>
-					<version>1.47</version>
+					<version>1.49-SNAPSHOT</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
