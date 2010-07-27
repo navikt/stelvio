@@ -2458,6 +2458,7 @@ int/maven/poms/maven-wps-poms/maven-wps-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/maven-wps-tests-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-tests-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/pom.xml -text
+int/maven/poms/maven-wpsdeploy-pom/pom.xml -text
 int/maven/poms/pom.xml -text
 int/maven/utilities/custom-enforcer-rules/pom.xml -text
 int/maven/utilities/custom-enforcer-rules/src/main/java/no/stelvio/maven/enforcer/AbstractJaxWsBindingRule.java -text
