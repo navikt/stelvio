@@ -109,7 +109,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 	 * @parameter expression="${mooseBuildId}"
 	 */
 	private String mooseBuildId;
-	
+
 	/**
 	 * @parameter expression="${version}"
 	 */
@@ -151,7 +151,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		stagingDirectory.mkdirs();
 
 		// Determine whether to resolve the mooseBuildId or to use the version provided
-		if (!mooseBuildId.equals("") || mooseBuildId != null){
+		if (!mooseBuildId.equals("") || mooseBuildId != null) {
 			mavenVersion = getMavenVersion(mooseBuildId);
 		} else {
 			mavenVersion = version;
@@ -189,7 +189,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 				if (extDirPath.contains("-jee-")) {
 					exposeMavenProperty("earDir", extDirPath);
 				}
-				
+
 				// If the extracted resource is the pselv EAR file, we extract the WAR inside it
 				// and expose that directory to the maven context
 				if (extDirPath.contains("nav-pensjon-pselv-jee")) {
@@ -278,9 +278,9 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 
 		return artifact;
 	}
-	
-	public void exposeMavenProperty(String key, String value){
-		getLog().info("### EXPOSED MAVEN PROPERTY ### " + key + " = " + value);  
+
+	public void exposeMavenProperty(String key, String value) {
+		getLog().info("### EXPOSED MAVEN PROPERTY ### " + key + " = " + value);
 		project.getProperties().put(key, value);
 	}
 
