@@ -78,9 +78,7 @@ public class XMLOps {
 			}
 		}
 
-		TransformerFactory tff = TransformerFactory.newInstance();
-		Transformer tf = tff.newTransformer();
-
+		Transformer tf = TransformerFactory.newInstance().newTransformer();
 		tf.setOutputProperty(OutputKeys.METHOD, "xml");
 		tf.setOutputProperty(OutputKeys.INDENT, "yes");
 
@@ -105,9 +103,7 @@ public class XMLOps {
 		
 		xml.getElementsByTagName("session-timeout").item(0).setTextContent(timeout);
 		
-		TransformerFactory tff = TransformerFactory.newInstance();
-		Transformer tf = tff.newTransformer();
-
+		Transformer tf = TransformerFactory.newInstance().newTransformer();
 		tf.setOutputProperty(OutputKeys.METHOD, "xml");
 		tf.setOutputProperty(OutputKeys.INDENT, "yes");
 
@@ -133,9 +129,7 @@ public class XMLOps {
 		xml.getElementsByTagName("form-login-page").item(0).setTextContent(url);
 		xml.getElementsByTagName("form-error-page").item(0).setTextContent(url);
 		
-		TransformerFactory tff = TransformerFactory.newInstance();
-		Transformer tf = tff.newTransformer();
-
+		Transformer tf = TransformerFactory.newInstance().newTransformer();
 		tf.setOutputProperty(OutputKeys.METHOD, "xml");
 		tf.setOutputProperty(OutputKeys.INDENT, "yes");
 
@@ -205,9 +199,7 @@ public class XMLOps {
 			authorizationTable.appendChild(authorizations);
 		}
 
-		TransformerFactory tff = TransformerFactory.newInstance();
-		Transformer tf = tff.newTransformer();
-
+		Transformer tf = TransformerFactory.newInstance().newTransformer();
 		tf.setOutputProperty(OutputKeys.METHOD, "xml");
 		tf.setOutputProperty(OutputKeys.INDENT, "yes");
 
