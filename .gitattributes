@@ -2380,6 +2380,7 @@ int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websp
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/VerifyDeploymentMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereUpdaterMojo.java -text svneol=unset#text/plain
+int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/Archiver.java -text
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/EarFile.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/MojoExecutor.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/utils/MojoLauncher.java -text svneol=unset#text/plain
