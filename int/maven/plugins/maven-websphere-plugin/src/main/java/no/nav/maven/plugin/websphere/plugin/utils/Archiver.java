@@ -39,7 +39,7 @@ public class Archiver {
 			ua.setDestDirectory(destinationDir);
 			ua.extract();
 			
-			System.out.println("[INFO] ### ARCHIVER ### Successfully extracted: " + file + " => " + destinationDir);
+			System.out.println("[INFO] ARCHIVER - Successfully extracted: " + file + " => " + destinationDir);
 
 			return destinationDir;
 
@@ -52,8 +52,7 @@ public class Archiver {
 		}
 	}
 
-	// Creates a new archive with the source directory in the given parent directory (supported extensions: 'ear', 'war' and
-	// 'zip')
+	// Creates a new archive with the source directory in the given parent directory (supported extensions: 'ear', 'war' and 'zip')
 	public static File createArchive(File src, File parentDir, String extension) throws MojoFailureException {
 		try {
 
@@ -72,14 +71,13 @@ public class Archiver {
 			za.addDirectory(src);
 			za.setDestFile(destination);
 			za.createArchive();
-			
 
 			if (!extension.equals("zip")) {
 				// counter the silly message!
 				System.out.println("[INFO] pfff, ignore that.. we're actually creating a " + extension + "! :)");
 			}
 			
-			System.out.println("[INFO] ### ARCHIVER ### Successfully created: " + destination);
+			System.out.println("[INFO] ARCHIVER - Successfully created: " + destination);
 			
 			FileUtils.deleteDirectory(src);
 			
