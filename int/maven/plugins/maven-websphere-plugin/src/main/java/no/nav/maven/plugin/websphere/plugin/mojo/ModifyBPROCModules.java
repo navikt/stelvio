@@ -39,6 +39,7 @@ public class ModifyBPROCModules extends WebsphereUpdaterMojo {
 		// Specifies which modules to modify
 		modules.add("nav-bproc-pen-ppen002");
 		modules.add("nav-bproc-pen-ppen003");
+		modules.add("nav-bproc-pen-ppen008");
 		modules.add("nav-bproc-pen-ppen015");
 	}
 
@@ -80,14 +81,23 @@ public class ModifyBPROCModules extends WebsphereUpdaterMojo {
 							Archiver.extractArchive(jar, extractedEARFolder, unArchiver);
 							File bpelFileDir = new File(extractedEARFolder + "/" + jarName.replace(".jar", "") + "/no/nav/bpel");
 							String[] bpelFileDirFiles = bpelFileDir.list();
+							File bpelFile = null;
 							for (int k = 0; k < bpelFileDirFiles.length; k++) {
 								if (bpelFileDirFiles[k].endsWith(".bpel")) {
-									File bpelFile = new File(bpelFileDir + "/" + bpelFileDirFiles[k]);
-									modifyBPELFile(bpelFile);
-									File modifiedJarFolder = new File(extractedEARFolder + "/" + jarName.replace(".jar", ""));
-									Archiver.createArchive(modifiedJarFolder, extractedEARFolder, "jar");
+									if (module.equals("nav-bproc-pen-ppen008")) {
+										if (bpelFileDirFiles[k].equals("OverforeOmsorgspoengBPEL.bpel")) {
+											bpelFile = new File(bpelFileDir + "/" + bpelFileDirFiles[k]);
+										} else {
+											continue;
+										}
+									} else {
+										bpelFile = new File(bpelFileDir + "/" + bpelFileDirFiles[k]);
+									}
 								}
 							}
+							modifyBPELFile(bpelFile);
+							File modifiedJarFolder = new File(extractedEARFolder + "/" + jarName.replace(".jar", ""));
+							Archiver.createArchive(modifiedJarFolder, extractedEARFolder, "jar");
 						}
 					}
 				}
@@ -107,8 +117,8 @@ public class ModifyBPROCModules extends WebsphereUpdaterMojo {
 
 			String text = null;
 			while ((text = br.readLine()) != null) {
-				if (text.contains("wpc:autoDelete=\"yes\"")) {
-					text = text.replace("wpc:autoDelete=\"yes\"", "wpc:autoDelete=\"no\"");
+				if (text.contains("wpc:autonomy=\"peer\"")) {
+					text = text.replace("wpc:autonomy=\"peer\"", "wpc:autonomy=\"peer\" wpc:autoDelete=\"no\"");
 				}
 				sb.append(text).append(System.getProperty("line.separator"));
 			}
