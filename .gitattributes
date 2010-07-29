@@ -2375,7 +2375,6 @@ int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websp
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/StartClustersMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/StopClustersMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/SynchronizeNodesMojo.java -text svneol=unset#text/plain
-int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/UnDeployArtifactMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/UploadConfiguration.java -text
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-websphere-plugin/src/main/java/no/nav/maven/plugin/websphere/plugin/mojo/WebsphereUpdaterMojo.java -text svneol=unset#text/plain
