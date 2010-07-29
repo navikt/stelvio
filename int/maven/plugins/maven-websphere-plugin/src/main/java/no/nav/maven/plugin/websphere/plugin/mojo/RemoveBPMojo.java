@@ -37,7 +37,6 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 		 */ 
 		
 		modulesToRemove = new ArrayList<String>();
-		modulesToRemove.add("nav-bproc-pen-ppen010");
 		modulesToRemove.add("nav-bsrv-frg-hentinstitusjonsoppholdliste");
 		
 	}
