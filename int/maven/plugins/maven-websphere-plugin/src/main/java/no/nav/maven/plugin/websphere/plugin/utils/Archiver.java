@@ -39,8 +39,6 @@ public class Archiver {
 			ua.setDestDirectory(destinationDir);
 			ua.extract();
 			
-			System.out.println("[INFO] ARCHIVER - Successfully extracted: " + file + " => " + destinationDir);
-
 			return destinationDir;
 
 		} catch (ArchiverException e) {
@@ -72,12 +70,10 @@ public class Archiver {
 			za.setDestFile(destination);
 			za.createArchive();
 
-			if (!extension.equals("zip")) {
-				// counter the silly message!
-				System.out.println("[INFO] pfff, ignore that.. we're actually creating a " + extension + "! :)");
-			}
-			
-			System.out.println("[INFO] ARCHIVER - Successfully created: " + destination);
+//			if (!extension.equals("zip")) {
+//				// counter the silly message!
+//				System.out.println("[INFO] pfff, ignore that.. we're actually creating a " + extension + "! :)");
+//			}
 			
 			FileUtils.deleteDirectory(src);
 			
