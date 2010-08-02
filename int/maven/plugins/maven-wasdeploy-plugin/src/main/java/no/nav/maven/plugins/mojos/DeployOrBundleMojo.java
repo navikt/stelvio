@@ -342,7 +342,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		 * v.7.0
 		 */
 		if (retval != 0 && retval != 86) {
-			throw new MojoFailureException("[ERROR] Deployment failed, check error messages. Tried to execute: " + commandLine);
+			throw new MojoFailureException("[ERROR] Deployment failed, check error messages. Tried to execute: " + commandLine + ". Got return value: " + retval);
 		}
 
 		System.out.println("[INFO] ### DEPLOY ### The application: " + application + " has been successfully deployed.");
