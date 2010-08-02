@@ -151,10 +151,10 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		stagingDirectory.mkdirs();
 
 		// Determine whether to resolve the mooseBuildId or to use the version provided
-		if (!mooseBuildId.equals("") || mooseBuildId != null) {
-			mavenVersion = getMavenVersion(mooseBuildId);
-		} else {
+		if (version != null) {
 			mavenVersion = version;
+		} else {
+			mavenVersion = getMavenVersion(mooseBuildId);
 		}
 
 		getLog().info("################################################");
