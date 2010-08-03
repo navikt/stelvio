@@ -7,50 +7,36 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>maven-wasdeploy-pom</name>
 	<url>http://maven.apache.org</url>
-
-	<!--properties>
-		<wasdeployVersion>1.3-SNAPSHOT</wasdeployVersion>
-		<devArchBaseDir>D:/cc/DevArch_F3_3_Refactor_Staging/DevArch</devArchBaseDir>
-		<bundleAreaDir>C:/BUNDLE</bundleAreaDir>
-		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
-		<stagingAreaDir>C:/STAGING</stagingAreaDir>
-		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
-		<mapFile>${devArchBaseDir}/build_version_mapping.txt</mapFile>
-		<applicationProperties>${devArchBaseDir}/module_config/${app}/spring/</applicationProperties>
-		<environmentFile>${devArchBaseDir}/environments/${env}.xml</environmentFile>
-		<log4jDir>${devArchBaseDir}/module_config/${app}/log4j/${environment/zone}/</log4jDir>
-		<batchcontrollerDir>${devArchBaseDir}/module_config/${app}/batchcontroller/</batchcontrollerDir>
-		<pselvISSessionTimeout>30</pselvISSessionTimeout>
-		<pselvSSAccessDeniedURL>/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow</pselvSSAccessDeniedURL>
-		<roleMappingDir>${devArchBaseDir}/security/rolemapping/</roleMappingDir>
-		<wsadminLocation>F:/ibm/WID61/runtimes/bi_v61/bin/</wsadminLocation>
-		<ejbSecurityFile>${devArchBaseDir}/security/ejb-security/${environment/domain}/ejb-security.xml</ejbSecurityFile>
-	</properties-->
-	<!--properties>
-		<wasdeployVersion>1.3-SNAPSHOT</wasdeployVersion>
+	
+	<properties>
+		
+		<!-- Who needs profiles... -->
+		
+		<!-- johnny.local -->
 		<devArchBaseDir>C:/DevArch_F3_3_Refactor_Staging/DevArch</devArchBaseDir>
 		<bundleAreaDir>C:/BUNDLE</bundleAreaDir>
-		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingAreaDir>C:/STAGING</stagingAreaDir>
-		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
-		<mapFile>${devArchBaseDir}/build_version_mapping.txt</mapFile>
-		<applicationProperties>${devArchBaseDir}/module_config/${app}/spring/</applicationProperties>
-		<environmentFile>${devArchBaseDir}/environments/${env}.xml</environmentFile>
-		<log4jDir>${devArchBaseDir}/module_config/pen/log4j/${environment/zone}/</log4jDir>
-		<batchcontrollerDir>${devArchBaseDir}/module_config/${app}/batchcontroller/</batchcontrollerDir>
-		<pselvISSessionTimeout>30</pselvISSessionTimeout>
-		<pselvSSAccessDeniedURL>/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow</pselvSSAccessDeniedURL>
-		<roleMappingDir>${devArchBaseDir}/security/rolemapping/</roleMappingDir>
 		<wsadminLocation>C:/IBM/WID7_WTE/runtimes/bi_v7/bin/</wsadminLocation>
-		<ejbSecurityFile>${devArchBaseDir}/security/ejb-security/${environment/domain}/ejb-security.xml</ejbSecurityFile>
-	</properties-->
-	<properties>
-		<wasdeployVersion>1.3-SNAPSHOT</wasdeployVersion>
+		<!-- /johnny.local -->
+		
+		<!-- moose --><!--
+		<devArchBaseDir>D:/cc/DevArch_F3_3_Refactor_Staging/DevArch</devArchBaseDir>
+		<bundleAreaDir>C:/BUNDLE</bundleAreaDir>
+		<stagingAreaDir>C:/STAGING</stagingAreaDir>
+		<wsadminLocation>F:/ibm/WID61/runtimes/bi_v61/bin/</wsadminLocation
+		--><!-- /moose -->
+		
+		<!-- hudson --><!--
 		<devArchBaseDir>/home/ci/test/</devArchBaseDir>
 		<bundleAreaDir>${devArchBaseDir}/BUNDLE</bundleAreaDir>
-		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingAreaDir>C:/STAGING</stagingAreaDir>
+		<wsadminLocation>/opt/IBM/WebSphere/ProcServer7/profiles/Dmgr01/bin/</wsadminLocation>
+		--><!-- /hudson -->
+		
+		<wasdeployVersion>1.3-SNAPSHOT</wasdeployVersion>
+		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
+		<scriptAbsPath>${project.basedir}/scripts/InstallApp.py</scriptAbsPath>
 		<mapFile>${devArchBaseDir}/build_version_mapping.txt</mapFile>
 		<applicationProperties>${devArchBaseDir}/module_config/${app}/spring/</applicationProperties>
 		<environmentFile>${devArchBaseDir}/environments/${env}.xml</environmentFile>
@@ -59,7 +45,6 @@
 		<pselvISSessionTimeout>30</pselvISSessionTimeout>
 		<pselvSSAccessDeniedURL>/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow</pselvSSAccessDeniedURL>
 		<roleMappingDir>${devArchBaseDir}/security/rolemapping/</roleMappingDir>
-		<wsadminLocation>/opt/IBM/WebSphere/ProcServer7/profiles/Dmgr01/bin/</wsadminLocation>
 		<ejbSecurityFile>${devArchBaseDir}/security/ejb-security/${environment/domain}/ejb-security.xml</ejbSecurityFile>
 	</properties>
 
@@ -185,7 +170,7 @@
 						</goals>
 						<configuration>
 							<ear>${stagingArea}/${earName}</ear>
-							<springConfigFile>${environment/springConfigFile}</springConfigFile>
+							<springConfigFile>${ejbSecurityFile}</springConfigFile>
 							<mappingFile>${mapFile}</mappingFile>
 						</configuration>
 					</execution>
