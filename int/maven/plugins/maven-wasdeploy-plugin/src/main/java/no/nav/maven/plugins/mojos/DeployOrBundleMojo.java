@@ -13,7 +13,6 @@ import no.nav.maven.plugins.utils.SSHUtil;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
@@ -36,13 +35,6 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String application;
-
-	/**
-	 * @parameter expression="${project}"
-	 * @readonly
-	 * @required
-	 */
-	private MavenProject project;
 
 	/**
 	 * @parameter expression="${environment/bundleEnvironment}"
@@ -78,6 +70,11 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	 * @parameter expression="${batchDir}"
 	 */
 	private String batchDir;
+	
+	/**
+	 * @parameter expression="${scriptAbsPath}"
+	 */
+	private String scriptAbsPath;
 
 	/**
 	 * @parameter expression="${environment/servers/was-node1/hostname}"
@@ -260,15 +257,15 @@ public class DeployOrBundleMojo extends AbstractMojo {
 
 	private void deploy() throws CommandLineException, MojoFailureException {
 
-		String expectedLocation = project.getBasedir() + "/scripts/InstallApp.py";
-		File scriptFile = new File(expectedLocation);
-		earName = earName.replace(".ear", "");
-		earPath = earPath.replace("\\", "/");
-
+		File scriptFile = new File(scriptAbsPath);
+		
 		if (!scriptFile.exists()) {
-			throw new MojoFailureException("[ERROR] The Jython script file is not at the expected location, " + expectedLocation + " - Please make sure the file is present, and rerun the deployment.");
+			throw new MojoFailureException("[ERROR] The Jython script file is not at the expected location, " + scriptAbsPath + " - Please make sure the file is present, and rerun the deployment.");
 		}
 
+		earName = earName.replace(".ear", "");
+		earPath = earPath.replace("\\", "/");
+		
 		String wsAdmin;
 		boolean security = true;
 
