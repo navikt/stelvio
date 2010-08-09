@@ -94,7 +94,7 @@ hr {
 .topAreaLogo {
 	position: absolute;
 	left: 50px;
-	top: 55px;
+	top: 35px;
 	z-index: 5;
 	}
 
@@ -324,4 +324,29 @@ a.arrow:hover {
 	background-image: url("arrow-graphic-left-clear.gif");
 	background-image: url("arrow-graphic-right-clear.gif");
 	background-image: url("go-graphic-clear.gif");
+}
+
+
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+table th {
+	text-align: left;
+	background: #bbb;
+	padding: 1px 5px 1px 5px;
+}
+
+table td {
+	padding: 1px 5px 1px 5px;
+}
+
+table .pair {
+	background: #ddd;
+}
+
+table .odd {
+	background: #eee;
 }

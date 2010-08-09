@@ -3000,6 +3000,7 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/oprec.jsp -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/sa.jsp -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/sarec.jsp -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/scan.jsp -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/1x1.gif -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_master_blue.css -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/C_master_blue_.css -text svneol=unset#text/plain
@@ -3026,6 +3027,7 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_list_head__.jsp -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/nav_vertical_tree_left.jsp -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/sample-logo-1.gif -text
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent/theme/sample-logo-2.png -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/diagram.gph -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/pom.xml -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/.compatibility -text

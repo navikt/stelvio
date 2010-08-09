@@ -20,7 +20,7 @@
 <body>
 <!-- start header area -->
 <div class="topAreaBox"></div>
-<div class="topAreaLogo"><a href="/your_project/index.jsp"><img src="/StelvioSystemAvailabilityWeb/theme/sample-logo-1.gif" alt="return to home page" border="0" /></a>
+<div class="topAreaLogo"><a href="/StelvioSystemAvailabilityWeb/sa.jsp"><img src="/StelvioSystemAvailabilityWeb/theme/sample-logo-2.png" alt="return to home page" border="0" /></a>
 <a href="#navskip"><IMG src="/StelvioSystemAvailabilityWeb/theme/1x1.gif" alt="skip to page's main contents" border=0 width="1" height="1"></a></div>
 <!-- end header area -->
 
@@ -44,7 +44,7 @@ Insert body content here.
 	 2.  Set the following navbar to use the group as its Destination Group
 	 3.  Set the User Data of the navbar to include the company name, copyright data, etc. -->
 <div class="mainContentWidth">
-<siteedit:navbar spec="/StelvioSystemAvailabilityWeb/theme/nav_horizontal_text_foot_.jsp" group="group" uservalue="&copy; 2005 $Company-Name" targetlevel=""></siteedit:navbar>
+<siteedit:navbar spec="/StelvioSystemAvailabilityWeb/theme/nav_horizontal_text_foot_.jsp" group="group" uservalue="&copy; 2010 NAV Pensjon" targetlevel=""></siteedit:navbar>
 </div>
 <!-- end footer area -->
 </div>
