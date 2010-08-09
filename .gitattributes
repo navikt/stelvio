@@ -3044,11 +3044,9 @@ int/stelvio-operation-systemavailability/system-availability-config/EnableStubsR
 int/stelvio-operation-systemavailability/system-availability-config/Stubbing.wsdl -text
 int/stelvio-operation-systemavailability/system-availability-config/SystemAvailabilityConfig.component -text
 int/stelvio-operation-systemavailability/system-availability-config/SystemAvailabilityConfigWSEXP.export -text
-int/stelvio-operation-systemavailability/system-availability-config/ibm-deploy.scaj2ee -text
 int/stelvio-operation-systemavailability/system-availability-config/no/stelvio/common/systemavailability/config/SystemAvailabilityConfigImpl.java -text
 int/stelvio-operation-systemavailability/system-availability-config/pom.xml -text
 int/stelvio-operation-systemavailability/system-availability-config/sca.module -text
-int/stelvio-operation-systemavailability/system-availability-config/sca.module.attributes -text
 int/stelvio-operation-systemavailability/system-availability-config/sca.modulex -text
 int/stelvio-operation-systemavailability/system-availability-config/system-availability-config_SystemAvailabilityConfigWSEXP.wsdl -text
 int/stelvio-sibus-mediation/DebugMediation/DebugMediation/.classpath -text svneol=unset#text/plain

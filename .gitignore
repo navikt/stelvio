@@ -964,12 +964,17 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/WebContent
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/target
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWebEAR/target
 int/stelvio-operation-systemavailability/system-availability-config/*.class
+int/stelvio-operation-systemavailability/system-availability-config/*.cmt
 int/stelvio-operation-systemavailability/system-availability-config/*.jar
+int/stelvio-operation-systemavailability/system-availability-config/.apt_generated
 int/stelvio-operation-systemavailability/system-availability-config/.classpath
+int/stelvio-operation-systemavailability/system-availability-config/.factorypath
 int/stelvio-operation-systemavailability/system-availability-config/.project
 int/stelvio-operation-systemavailability/system-availability-config/.settings
 int/stelvio-operation-systemavailability/system-availability-config/META-INF
 int/stelvio-operation-systemavailability/system-availability-config/gen
+int/stelvio-operation-systemavailability/system-availability-config/sca.library.attributes
+int/stelvio-operation-systemavailability/system-availability-config/sca.module.attributes
 int/stelvio-operation-systemavailability/system-availability-config/target
 int/stelvio-operation-systemavailability/target
 int/stelvio-sibus-mediation/OppdragMediation/OppdragMediation/bin

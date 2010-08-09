@@ -65,4 +65,43 @@ public class SystemAvailabilityConfigImpl {
 		return enableStubsResponse;
 	}
 
+	/**
+	 * Method generated to support implementation of operation "enableStubsAllOperations" defined for WSDL port type 
+	 * named "Stubbing".
+	 * 
+	 * Please refer to the WSDL Definition for more information 
+	 * on the type of input, output and fault(s).
+	 */
+	public Boolean enableStubsAllOperations(Boolean stubbing) {
+		SystemAvailabilityStorage storage = new SystemAvailabilityStorage();
+		if (stubbing != null && stubbing.booleanValue() == true) {
+			storage.turnOnAllStubs();
+			return true;
+		}
+		else if (stubbing != null && stubbing.booleanValue() == false) {
+			storage.turnOffAllStubs();
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Method generated to support implementation of operation "enableRecordingAllOperations" defined for WSDL port type 
+	 * named "Stubbing".
+	 * 
+	 * Please refer to the WSDL Definition for more information 
+	 * on the type of input, output and fault(s).
+	 */
+	public Boolean enableRecordingAllOperations(Boolean recording) {
+		SystemAvailabilityStorage storage = new SystemAvailabilityStorage();
+		if (recording != null && recording.booleanValue() == true) {
+			storage.turnOnAllRecords();
+			return true;
+		}
+		else if (recording != null && recording.booleanValue() == false) {
+			storage.turnOffAllRecords();
+			return true;
+		}
+		return false;
+	}
 }
