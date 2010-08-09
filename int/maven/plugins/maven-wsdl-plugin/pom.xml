@@ -74,6 +74,8 @@
 		</developerConnection>
 	</scm>
 	<properties>
+		<!-- TODO: The following property is added to support using the plugin with JDK 1.5. Remove when the migration to JDK 1.6 is final..... -->
+		<target.jdk>1.5</target.jdk>
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wsdl-plugin
 		</scm.root>
