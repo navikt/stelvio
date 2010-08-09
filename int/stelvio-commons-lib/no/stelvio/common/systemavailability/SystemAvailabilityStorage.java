@@ -9,11 +9,18 @@ package no.stelvio.common.systemavailability;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 import com.ibm.websphere.bo.BOXMLDocument;
 import com.ibm.websphere.bo.BOXMLSerializer;
@@ -69,6 +76,10 @@ public class SystemAvailabilityStorage {
 	}
 
 	public void storeAvailabilityRecord(AvailabilityRecord record) {
+		if (record == null || "".equals(record.systemName)) {
+			return;
+		}
+		
 		try {
 			DataObject obj = boFactory.create("http://stelvio-commons-lib/no/stelvio/common/systemavailability",
 					"SystemAvailabilityRecord");
@@ -110,7 +121,10 @@ public class SystemAvailabilityStorage {
 
 	@SuppressWarnings("unchecked")
 	public AvailabilityRecord getAvailabilityRecord(String systemName) {
-
+		if (systemName == null) {
+			return null;
+		}
+		
 		try {
 			File f = new File(saDirName, systemName + ".xml");
 			if (!f.exists())
@@ -212,4 +226,249 @@ public class SystemAvailabilityStorage {
 		public AvailabilityRecord availabilityRecord;
 	}
 
+	/**
+	 * Turns on stubbing for all SystemNames. 
+	 */
+	public void turnOnAllStubs() {
+		turnOnOffStubbingRecording(true, false);
+	}
+	
+	/**
+	 * Turns off stubbing for all SystemNames.
+	 */
+	public void turnOffAllStubs() {
+		turnOnOffStubbingRecording(false, null);
+	}
+	
+	/**
+	 * Turns on recording for all SystemNames.
+	 */
+	public void turnOnAllRecords() {
+		turnOnOffStubbingRecording(false, true);
+	}
+	
+	/**
+	 * Turns off recording for all SystemNames.
+	 */
+	public void turnOffAllRecords() {
+		turnOnOffStubbingRecording(null, false);
+	}
+	
+	/**
+	 * Changes the operation "ALL" to stub or record for all SystemNames.
+	 * 
+	 * Turns stubbing on/off if the boolean parameter "stubbing" is true/false.
+	 * If the boolean parameter "stubbing" is null, stubbing is not changed.
+	 * 
+	 * Turns recording on/off if the boolean parameter "recording" is true/false.
+	 * If the boolean parameter "recording" is null, recording is not changed.
+	 * 
+	 * Recording will be set to off if setting stubbing on, and opposite.
+	 * 
+	 * @param stubbing
+	 * @param recording
+	 */
+	private void turnOnOffStubbingRecording(Boolean stubbing, Boolean recording) {
+		List tjenester = listAvailabilityRecordSystemNames();
+		// Alle tjenestene
+		for (int i = 0; i < tjenester.size(); i++) {
+			String systemName = (String) tjenester.get(i);
+			AvailabilityRecord record = getAvailabilityRecord(systemName);
+			// Alle operasjonene
+			for (int x = 0; x < record.operations.size(); x++) {
+				OperationAvailabilityRecord operation = (OperationAvailabilityRecord) record.operations.get(x);
+				if (operation != null) {
+					// Kun "ALL"-operasjonen blir satt til true ved true
+					if ("ALL".equals(operation.operationName) && null != recording) {
+						operation.recordStubData = recording.booleanValue();
+					}
+					if ("ALL".equals(operation.operationName) && null != stubbing) {
+						operation.stubbed = stubbing.booleanValue();
+					}
+					// Alle operasjoner blir satt til false ved false
+					if (null != recording && recording.booleanValue() == false) {
+						operation.recordStubData = false;
+					}
+					if (null != stubbing && stubbing.booleanValue() == false) {
+						operation.stubbed = false;
+					}
+				}
+			}
+			// Lagre til XML
+			storeAvailabilityRecord(record);
+		}
+	}
+	
+	/**
+	 * Returns a list of java.io.File with installed prod-modules on the wps-server (name begins at "nav-prod-").
+	 * 
+	 * @return
+	 */
+	public List<File> listInstalledProdModules() {
+		
+		List<File> liste = new ArrayList<File>();
+		
+		// Finne absolutt-path til denne klassen:
+		String ressursnavn = SystemAvailabilityStorage.class.getName().replace('.', '/') + ".class";
+		ClassLoader cl = SystemAvailabilityStorage.class.getClassLoader();
+		if (cl == null) ClassLoader.getSystemClassLoader();
+		URL url = cl.getResource(ressursnavn);
+		String urlString = url.toString();
+		File fil = null;
+		
+		// Gjør om URL til File
+		if (urlString.startsWith("jar:file:")) {
+			try {
+				urlString = urlString.substring("jar:".length(), urlString.lastIndexOf("!"));
+				URI uri = new URI(urlString);
+				fil = new File(uri);
+			}
+			catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+		}
+		else if (urlString.startsWith("wsjar:file:")) {
+			try {
+				urlString = urlString.substring("wsjar:".length(), urlString.lastIndexOf("!"));
+				URI uri = new URI(urlString);
+				fil = new File(uri);
+			}
+			catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+		}
+		else if (urlString.startsWith("file:")) {
+			try {
+				urlString = urlString.substring(0, urlString.length() - ressursnavn.length());
+				URI uri = new URI(urlString);
+				fil = new File(uri);
+			}
+			catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		// Hvis fil ikke er null, så kan vi bla oss tilbake til directory hvor alle applikasjonene er installert.
+		if (fil != null) {
+			// 1. Finne StelvioSystemAvailabilityWebEAR.ear-mappen
+			while (!fil.getName().equals("StelvioSystemAvailabilityWebEAR.ear") && fil != null) {
+				fil = fil.getParentFile();
+			}
+			// 2. Bla oss tilbake til directory
+			if (fil != null) {
+				File directory = fil.getParentFile();
+				int length = directory.listFiles().length;
+				String app = "", s = "";
+				
+				// Gå gjennom alle mappene som ligger der som begynner på "nav-prod-" (+ nav-ent-pen-* for Horisonten).
+				for (int x = 0; x < length; x++) {
+					fil = directory.listFiles()[x];
+					app = fil.getName();
+					if ((app.startsWith("nav-prod-") || app.startsWith("nav-ent-pen-"))
+							&& app.indexOf("App.ear") != -1) {
+						app = app.substring(0, app.indexOf("App.ear"));
+						// Går gjennom alle mappene/filene som ligger i "nav-prod-"-mappen.
+						// Hvis det finnes en fil der som begynner på det samme som prosjektet, så legges den til i lista.
+						for (int y = 0; y < fil.list().length; y++) {
+							s = fil.list()[y];
+							if (s.startsWith(app)) {
+								liste.add(fil);
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+		// Hvis fil er null
+		else {
+			System.err.println("\"fil\" var null!");
+		}
+		
+		return liste;
+	}
+	
+	/**
+	 * Adds all SystemNames in a prodModule.
+	 * Returns a String[] with all the SystemNames that have been added. 
+	 * 
+	 * @param prodModule
+	 * @return
+	 */
+	public String[] addSystemNamesFromProdModule(File prodModule) {
+		String retur[];
+		String kladd = "";
+		
+		// Lister opp filene som prod-modulen inneholder
+		File[] filer = prodModule.listFiles();
+		for (int j = 0; j < filer.length; j++) {
+			// prod-jar (og ikke lib-jars) åpnes for å finne komponenter med "Avail"
+			if (filer[j].getName().equals(getProdModuleName(prodModule) + ".jar")) {
+				java.util.List jarList = readJarForSystemNames(filer[j]);
+
+				// For hver JarEntry (som inneholder "Avail" og er .component)
+				for (int x = 0; x < jarList.size(); x++) {
+					JarEntry entry = (JarEntry)jarList.get(x);
+					
+					// Kutter stringen der "Avail" begynner, og det som er foran, er SystemName
+					String name = entry.getName();
+					name = name.substring(0, name.indexOf("Avail"));
+
+					// Legger til SystemName
+					findOrCreateSystemRecord(name);
+					
+					kladd += name + ":";
+				}
+				break;
+			}
+		}
+		
+		kladd = kladd.substring(0, kladd.length()-1);
+		retur = kladd.split(":");
+		
+		return retur;
+	}
+	
+	/**
+	 * Reads a jar-file and returns a list of java.util.jar.JarEntry, so we can read SystemNames from it. 
+	 * 
+	 * @param jarFile
+	 * @return
+	 */
+	private List<JarEntry> readJarForSystemNames(File jarFile) {
+		// returliste
+		List<JarEntry> liste = new ArrayList<JarEntry>();
+		try {
+			// Lese input-fila som en jar-fil.
+			JarFile jar = new JarFile(jarFile);
+			Enumeration<JarEntry> entries = jar.entries();
+			// Gå gjennom alle entries som jarfila har (mapper og filer)
+			while (entries.hasMoreElements()) {
+				JarEntry entry = entries.nextElement();
+				String name = entry.getName();
+				// Alle filer som slutter på .component og inneholder "Avail", er SystemName-komponenter
+				if (name.endsWith(".component") && name.contains("Avail")) {
+					liste.add(entry);
+				}
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return liste;
+	}
+	
+	/**
+	 * The prod-module file is f.ex. named "nav-prod-pen-penApp.ear".
+	 * This method returns "nav-prod-pen-pen", or "" (blank String) if the input File is null.
+	 * 
+	 * @param prodModule
+	 * @return
+	 */
+	public String getProdModuleName(File prodModule) {
+		if (prodModule != null)
+			return prodModule.getName().substring(0, prodModule.getName().indexOf("App.ear"));
+		return "";
+	}
 }
