@@ -13,6 +13,7 @@
 <#include "AAAPolicyAuthenticateAllLTPA.ftl">
 <#include "AAAPolicyBasicAuth.ftl">
 <#include "AAAPolicyLTPA2None.ftl">
+<#include "AAAPolicyUsernameToken2LTPA.ftl">
 <#include "FrontsideHandler.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
@@ -31,6 +32,8 @@
 <#include "StylePolicyActionTransformParameterized.ftl">
 <#include "StylePolicyActionVerify.ftl">
 <#include "StylePolicyActionSign.ftl">
+<#include "StylePolicyActionFetch.ftl">
+<#include "StylePolicyActionConditional.ftl">
 <#include "WSStylePolicy.ftl">
 <#include "WSStylePolicyRuleError.ftl">
 <#include "WSStylePolicyRuleRequest.ftl">
