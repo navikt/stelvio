@@ -102,7 +102,7 @@ public class StringUtils
         {
             File file = new File(s);
             if(file.isAbsolute())
-                return file.toURL();
+                return file.toURI().toURL();
         }
         try
         {
@@ -111,7 +111,7 @@ public class StringUtils
         catch(MalformedURLException malformedurlexception)
         {
             if(url == null)
-                return (new File(s)).toURL();
+                return (new File(s)).toURI().toURL();
             else
                 throw malformedurlexception;
         }
