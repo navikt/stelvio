@@ -153,7 +153,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	private String wasRuntime;
 
 	/**
-	 * @parameter expression="${wid.home}"
+	 * @parameter expression="${wid.runtime}"
 	 * @readonly
 	 */
 	private String widRuntime;
@@ -191,7 +191,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 
 		String exec;
 		if (wasRuntime == null) {
-			wasRuntime = widRuntime + "/runtimes/bi_v61";
+			wasRuntime = widRuntime;
 		}
 		if (Os.isFamily("windows")) {
 			exec = wasRuntime + "/bin/WSDL2Java.bat";
