@@ -189,7 +189,7 @@
 		<PPSAMLSkew>0</PPSAMLSkew>
 		<PPWSUsernameTokenIncludePwd>on</PPWSUsernameTokenIncludePwd>
 		<PPLTPA>on</PPLTPA>
-		<PPLTPAVersion>LTPA2</PPLTPAVersion>
+		<PPLTPAVersion>LTPA</PPLTPAVersion>
 		<PPLTPAExpiry>600</PPLTPAExpiry>
 		<PPLTPAKeyFile>${ppLtpaKeyFile}</PPLTPAKeyFile>
 		<PPLTPAKeyFilePassword>${ppLtpaKeyFilePwd}</PPLTPAKeyFilePassword>
@@ -198,7 +198,7 @@
 		<PPKerberosBstValueType>http://docs.oasis-open.org/wss/oasis-wss-kerberos-token-profile-1.1#GSS_Kerberosv5_AP_REQ</PPKerberosBstValueType>
 		<PPSAMLUseWSSec>off</PPSAMLUseWSSec>
 		<PPKerberosClientKeytab/>
-		<PPUseWSSec>off</PPUseWSSec>
+		<PPUseWSSec>on</PPUseWSSec>
 		<PPActorRoleID/>
 		<PPTFIMTokenMapping>off</PPTFIMTokenMapping>
 		<PPTFIMEndpoint/>
@@ -225,7 +225,7 @@
 	<LogRejected>on</LogRejected>
 	<LogRejectedLevel>warn</LogRejectedLevel>
 	<PingIdentityCompatibility>off</PingIdentityCompatibility>
-	<DoSValve>1</DoSValve>
+	<DoSValve>3</DoSValve>
 	<LDAPVersion>v2</LDAPVersion>
 	<EnforceSOAPActor>on</EnforceSOAPActor>
 	<WSSecActorRoleID/>
