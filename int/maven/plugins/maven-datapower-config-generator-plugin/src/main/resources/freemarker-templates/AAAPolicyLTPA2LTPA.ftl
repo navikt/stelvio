@@ -208,9 +208,9 @@
 		<SAMLSigningAlg>rsa</SAMLSigningAlg>
 		<LDAPsuffix/>
 		<LogAllowed>on</LogAllowed>
-		<LogAllowedLevel>debug</LogAllowedLevel>
+		<LogAllowedLevel>info</LogAllowedLevel>
 		<LogRejected>on</LogRejected>
-		<LogRejectedLevel>debug</LogRejectedLevel>
+		<LogRejectedLevel>warn</LogRejectedLevel>
 		<PingIdentityCompatibility>off</PingIdentityCompatibility>
 		<DoSValve>3</DoSValve>
 		<LDAPVersion>v2</LDAPVersion>

@@ -225,7 +225,7 @@
 	<LogRejected>on</LogRejected>
 	<LogRejectedLevel>warn</LogRejectedLevel>
 	<PingIdentityCompatibility>off</PingIdentityCompatibility>
-	<DoSValve>3</DoSValve>
+	<DoSValve>1</DoSValve>
 	<LDAPVersion>v2</LDAPVersion>
 	<EnforceSOAPActor>on</EnforceSOAPActor>
 	<WSSecActorRoleID/>
