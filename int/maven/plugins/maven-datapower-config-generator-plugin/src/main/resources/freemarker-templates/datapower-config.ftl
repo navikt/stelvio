@@ -14,6 +14,7 @@
 <#include "AAAPolicyBasicAuth.ftl">
 <#include "AAAPolicyLTPA2None.ftl">
 <#include "AAAPolicyUsernameToken2LTPA.ftl">
+<#include "AAAPolicyUsernameToken2None.ftl">
 <#include "FrontsideHandler.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">

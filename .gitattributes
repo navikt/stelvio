@@ -2262,6 +2262,7 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/fre
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyLTPA2LTPA.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyLTPA2None.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2LTPA.ftl -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyUsernameToken2None.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/CryptoCertificate.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/CryptoIdentCred.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/CryptoKey.ftl -text
