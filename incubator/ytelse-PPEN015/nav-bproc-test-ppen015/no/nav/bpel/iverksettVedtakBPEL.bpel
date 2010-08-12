@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://nav-bproc-pen-ppen015/nav-bproc-pen-ppen015/iverksettVedtakBPELArtifacts" xmlns:ns0="http://nav-lib-pen/no/nav/lib/pen/gbo" xmlns:ns1="http://nav-lib-pen/no/nav/lib/pen/inf/IverksettVedtak" xmlns:ns11="http://nav-lib-sah/no/nav/lib/sah/gbo" xmlns:ns12="http://nav-lib-sah/no/nav/lib/sah/inf/Brevbestilling" xmlns:ns13="http://nav-lib-sak/no/nav/lib/sak/gbo" xmlns:ns14="http://nav-lib-sak/no/nav/lib/sak/inf" xmlns:ns15="http://nav-lib-oko/no/nav/lib/oko/inf/OppdragOnline" xmlns:ns16="http://nav-lib-pen/no/nav/lib/pen/inf/Grunnlag" xmlns:ns17="http://nav-lib-pen/no/nav/lib/pen/inf/Beregning" xmlns:ns18="http://nav-bproc-pen-ppen015/no/nav/inf/OpptjeningAsync" xmlns:ns19="http://nav-bproc-pen-ppen015/no/nav/inf/SamordningAsync" xmlns:ns2="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak" xmlns:ns20="http://nav-bproc-pen-ppen015/no/nav/inf/BrevbestillingAsync" xmlns:ns21="http://nav-lib-peh/no/nav/lib/peh/gbo" xmlns:ns22="http://nav-lib-peh/no/nav/lib/peh/inf/Fullmakt" xmlns:ns23="http://nav-bproc-pen-ppen015/no/nav/inf/PensjonssakAsync" xmlns:ns24="http://nav-bproc-pen-ppen015/no/nav/inf/GrunnlagAsync" xmlns:ns25="http://nav-bproc-pen-ppen015/no/nav/inf/VedtakAsync" xmlns:ns26="http://nav-bproc-pen-ppen015-1.3.1/no/nav/inf/KravAsync" xmlns:ns27="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/FullmaktAsync" xmlns:ns28="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/OppgaveAsync" xmlns:ns29="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/OppdragOnlineAsync" xmlns:ns3="http://nav-lib-pen/no/nav/lib/pen/inf/Pensjonssak" xmlns:ns30="http://nav-bproc-pen-ppen015/no/nav/inf/BeregningAsync" xmlns:ns4="http://nav-lib-pen/no/nav/lib/pen/inf" xmlns:ns5="http://nav-lib-sto/no/nav/lib/sto/gbo" xmlns:ns6="http://nav-lib-sto/no/nav/lib/sto/inf/Samordning" xmlns:ns7="http://nav-lib-oko/no/nav/lib/oko/gbo" xmlns:ns8="http://nav-lib-oko/no/nav/lib/oko/inf/Oppdrag" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="iverksettVedtakBPEL" suppressJoinFailure="yes" targetNamespace="http://nav-bproc-pen-ppen015/nav-bproc-pen-ppen015" wpc:autoDelete="no" wpc:autonomy="peer" wpc:displayName="iverksettVedtakBPEL" wpc:id="1" wpc:ignoreMissingData="yes" wpc:validFrom="2010-06-29T08:00:00">
+<bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://nav-bproc-pen-ppen015/nav-bproc-pen-ppen015/iverksettVedtakBPELArtifacts" xmlns:ns0="http://nav-lib-pen/no/nav/lib/pen/gbo" xmlns:ns1="http://nav-lib-pen/no/nav/lib/pen/inf/IverksettVedtak" xmlns:ns11="http://nav-lib-sah/no/nav/lib/sah/gbo" xmlns:ns12="http://nav-lib-sah/no/nav/lib/sah/inf/Brevbestilling" xmlns:ns13="http://nav-lib-sak/no/nav/lib/sak/gbo" xmlns:ns14="http://nav-lib-sak/no/nav/lib/sak/inf" xmlns:ns15="http://nav-lib-oko/no/nav/lib/oko/inf/OppdragOnline" xmlns:ns16="http://nav-lib-pen/no/nav/lib/pen/inf/Grunnlag" xmlns:ns17="http://nav-lib-pen/no/nav/lib/pen/inf/Beregning" xmlns:ns18="http://nav-bproc-pen-ppen015/no/nav/inf/OpptjeningAsync" xmlns:ns19="http://nav-bproc-pen-ppen015/no/nav/inf/SamordningAsync" xmlns:ns2="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak" xmlns:ns20="http://nav-bproc-pen-ppen015/no/nav/inf/BrevbestillingAsync" xmlns:ns21="http://nav-lib-peh/no/nav/lib/peh/gbo" xmlns:ns22="http://nav-lib-peh/no/nav/lib/peh/inf/Fullmakt" xmlns:ns23="http://nav-bproc-pen-ppen015/no/nav/inf/PensjonssakAsync" xmlns:ns24="http://nav-bproc-pen-ppen015/no/nav/inf/GrunnlagAsync" xmlns:ns25="http://nav-bproc-pen-ppen015/no/nav/inf/VedtakAsync" xmlns:ns26="http://nav-bproc-pen-ppen015-1.3.1/no/nav/inf/KravAsync" xmlns:ns27="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/FullmaktAsync" xmlns:ns28="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/OppgaveAsync" xmlns:ns29="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/OppdragOnlineAsync" xmlns:ns3="http://nav-lib-pen/no/nav/lib/pen/inf/Pensjonssak" xmlns:ns30="http://nav-bproc-pen-ppen015/no/nav/inf/BeregningAsync" xmlns:ns4="http://nav-lib-pen/no/nav/lib/pen/inf" xmlns:ns5="http://nav-lib-sto/no/nav/lib/sto/gbo" xmlns:ns6="http://nav-lib-sto/no/nav/lib/sto/inf/Samordning" xmlns:ns7="http://nav-lib-oko/no/nav/lib/oko/gbo" xmlns:ns8="http://nav-lib-oko/no/nav/lib/oko/inf/Oppdrag" xmlns:ns9="http://nav-bproc-test-ppen015/no/nav/inf/IverksettVedtakTest" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="iverksettVedtakBPEL" suppressJoinFailure="yes" targetNamespace="http://nav-bproc-pen-ppen015/nav-bproc-pen-ppen015" wpc:autoDelete="no" wpc:autonomy="peer" wpc:displayName="iverksettVedtakBPEL" wpc:id="1" wpc:ignoreMissingData="yes" wpc:validFrom="2010-06-29T08:00:00">
   <wpc:customProperty name="terminatedSuccessful">
     <wpc:value>false</wpc:value>
   </wpc:customProperty>
@@ -52,68 +52,66 @@
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/pen/inf/Opptjening.wsdl" namespace="http://nav-lib-pen/no/nav/lib/pen/inf"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/sto/gbo/GBOOpprettVedtakSamordningRequest.xsd" namespace="http://nav-lib-sto/no/nav/lib/sto/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/sto/inf/Samordning.wsdl" namespace="http://nav-lib-sto/no/nav/lib/sto/inf/Samordning"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/oko/gbo/GBOSendAsynkOppdragsmeldingListeRequest.xsd" namespace="http://nav-lib-oko/no/nav/lib/oko/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../../../xsd-includes/http.nav-lib-oko.no.nav.lib.oko.gbo.xsd" namespace="http://nav-lib-oko/no/nav/lib/oko/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/oko/inf/Oppdrag.wsdl" namespace="http://nav-lib-oko/no/nav/lib/oko/inf/Oppdrag"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/sah/gbo/GBOBrevbestillingRequest.xsd" namespace="http://nav-lib-sah/no/nav/lib/sah/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/sah/inf/Brevbestilling.wsdl" namespace="http://nav-lib-sah/no/nav/lib/sah/inf/Brevbestilling"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOIverksettVedtakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOLagreVedtakStatusRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOpptjeningGrunnlag.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOVedtak.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOVedtaksId.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOKontrollpunkt.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentUttrekkTilOppdragstransaksjonRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentUttrekkTilOppdragstransaksjonResponse.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentPensjonssakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOBatchBrevdata.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOPensjonssak.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentBatchBrevdata.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentVedtakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/sak/gbo/GBOOppgave.xsd" namespace="http://nav-lib-sak/no/nav/lib/sak/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../../../xsd-includes/http.nav-lib-sak.no.nav.lib.sak.gbo.xsd" namespace="http://nav-lib-sak/no/nav/lib/sak/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/sak/inf/Oppgave.wsdl" namespace="http://nav-lib-sak/no/nav/lib/sak/inf"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/oko/gbo/GBOOppdrag.xsd" namespace="http://nav-lib-oko/no/nav/lib/oko/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/oko/inf/OppdragOnline.wsdl" namespace="http://nav-lib-oko/no/nav/lib/oko/inf/OppdragOnline"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentOmsorgGodskrGrunnlagRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/pen/inf/Grunnlag.wsdl" namespace="http://nav-lib-pen/no/nav/lib/pen/inf/Grunnlag"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOmsorgGodskrGrunnlag.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOPersonOpptjeningsgrunnlagliste.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/pen/inf/Beregning.wsdl" namespace="http://nav-lib-pen/no/nav/lib/pen/inf/Beregning"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentOpptjeningsgrunnlagListeRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOpptjening.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentOmsorgOverfGrunnlagRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOmsorgOverfGrunnlag.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/OpptjeningAsync.wsdl" namespace="http://nav-bproc-pen-ppen015/no/nav/inf/OpptjeningAsync"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/SamordningAsync.wsdl" namespace="http://nav-bproc-pen-ppen015/no/nav/inf/SamordningAsync"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/BrevbestillingAsync.wsdl" namespace="http://nav-bproc-pen-ppen015/no/nav/inf/BrevbestillingAsync"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../lib/peh/inf/Fullmakt.wsdl" namespace="http://nav-lib-peh/no/nav/lib/peh/inf/Fullmakt"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/peh/gbo/GBOHentFullmaktListeRequest.xsd" namespace="http://nav-lib-peh/no/nav/lib/peh/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/peh/gbo/GBOFullmaktListe.xsd" namespace="http://nav-lib-peh/no/nav/lib/peh/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOPersongrunnlagListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOPersonOpptjeningsgrunnlagListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../../../xsd-includes/http.nav-lib-peh.no.nav.lib.peh.gbo.xsd" namespace="http://nav-lib-peh/no/nav/lib/peh/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/PensjonssakAsync.wsdl" namespace="http://nav-bproc-pen-ppen015/no/nav/inf/PensjonssakAsync"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/GrunnlagAsync.wsdl" namespace="http://nav-bproc-pen-ppen015/no/nav/inf/GrunnlagAsync"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/VedtakAsync.wsdl" namespace="http://nav-bproc-pen-ppen015/no/nav/inf/VedtakAsync"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOLagreHistorikkOgOppdaterPenRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOKravhode.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/KravAsync.wsdl" namespace="http://nav-bproc-pen-ppen015-1.3.1/no/nav/inf/KravAsync"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOppdaterPoppVedIverksettelseRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/FullmaktAsync.wsdl" namespace="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/FullmaktAsync"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/OppgaveAsync.wsdl" namespace="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/OppgaveAsync"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/OppdragOnlineAsync.wsdl" namespace="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/OppdragOnlineAsync"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOmsorgGodskrGrunnlagListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/BeregningAsync.wsdl" namespace="http://nav-bproc-pen-ppen015/no/nav/inf/BeregningAsync"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOmsorgOverfGrunnlagListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOverforingOmsorgGrunnlag.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentPensjonssakListeRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOPensjonssakListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOpprettsakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOBehandleOSKvitteringResponse.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOMottaOSKvitteringRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOBehandleOSKvitteringRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="../inf/IverksettVedtakTest.wsdl" namespace="http://nav-bproc-test-ppen015/no/nav/inf/IverksettVedtakTest"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOverforOmsorgsopptjeningListeRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOverforOmsorgsopptjeningListeResponse.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
-  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/sak/gbo/GBOHentOppgaveListeRequest.xsd" namespace="http://nav-lib-sak/no/nav/lib/sak/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOPersonOpptjeningsgrunnlagListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOPensjonssakListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/sak/gbo/GBOOppgaveListe.xsd" namespace="http://nav-lib-sak/no/nav/lib/sak/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentVedtakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentUttrekkTilOppdragstransaksjonRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentOmsorgGodskrGrunnlagRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/oko/gbo/GBOOppdrag.xsd" namespace="http://nav-lib-oko/no/nav/lib/oko/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOKontrollpunkt.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentOmsorgOverfGrunnlagRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/peh/gbo/GBOFullmaktListe.xsd" namespace="http://nav-lib-peh/no/nav/lib/peh/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOmsorgGodskrGrunnlag.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOmsorgGodskrGrunnlagListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOMottaOSKvitteringRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOVedtaksId.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOpprettsakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/sak/gbo/GBOHentOppgaveListeRequest.xsd" namespace="http://nav-lib-sak/no/nav/lib/sak/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOVedtak.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOKravhode.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOverforOmsorgsopptjeningListeResponse.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentPensjonssakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOmsorgOverfGrunnlagListe.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/sak/gbo/GBOOppgave.xsd" namespace="http://nav-lib-sak/no/nav/lib/sak/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOpptjeningGrunnlag.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOIverksettVedtakRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentPensjonssakListeRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOPensjonssak.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOBehandleOSKvitteringResponse.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentUttrekkTilOppdragstransaksjonResponse.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOBatchBrevdata.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentOpptjeningsgrunnlagListeRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/peh/gbo/GBOHentFullmaktListeRequest.xsd" namespace="http://nav-lib-peh/no/nav/lib/peh/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOppdaterPoppVedIverksettelseRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOHentBatchBrevdata.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOBehandleOSKvitteringRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOLagreVedtakStatusRequest.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="../lib/pen/gbo/GBOOpptjening.xsd" namespace="http://nav-lib-pen/no/nav/lib/pen/gbo"/>
   <bpws:partnerLinks>
     <bpws:partnerLink myRole="IverksettVedtakRole" name="IverksettVedtak" partnerLinkType="ns:IverksettVedtakPLT"/>
     <bpws:partnerLink name="SamordningAsyncPartner" partnerLinkType="ns:PartnerPLT" partnerRole="partnerRole"/>
@@ -212,7 +210,7 @@
     <bpws:correlationSet name="SamordningCorrelationSet" properties="ns:vedtaksId"/>
   </bpws:correlationSets>
   <bpws:sequence name="HiddenSequence" wpc:id="1073741828">
-    <bpws:receive createInstance="yes" name="MottaIverksettVedtakForespørsel" operation="invokeIverksettVedtak" partnerLink="IverksettVedtak" portType="ns1:IverksettVedtak" wpc:displayName="Motta Iverksett Vedtak Forespørsel" wpc:id="5">
+    <bpws:receive createInstance="yes" name="MottaIverksettVedtakForespørsel" operation="invokeIverksettVedtak" partnerLink="IverksettVedtak" portType="ns9:IverksettVedtakTest" wpc:displayName="Motta Iverksett Vedtak Forespørsel" wpc:id="5">
       <wpc:output>
         <wpc:parameter name="iverksettVedtakRequest" variable="IverksettVedtakRequest"/>
       </wpc:output>
@@ -687,7 +685,7 @@ if(saksType.equals(KSakT.KRIGSPENSJON) || saksType.equals(KSakT.GAMMEL_YRKESSKAD
                             </bpws:scope>
                             <bpws:scope name="S570Mottasvarfrasamordning" wpc:displayName="S570 Motta svar fra samordning" wpc:id="668">
                               <bpws:eventHandlers>
-                                <bpws:onEvent operation="mottaSamhandlerSvar" partnerLink="IverksettVedtak" portType="ns1:IverksettVedtak">
+                                <bpws:onEvent operation="mottaSamhandlerSvar" partnerLink="IverksettVedtak" portType="ns9:IverksettVedtakTest">
                                   <wpc:output>
                                     <wpc:parameter name="mottaSamhandler" type="ns0:GBOVedtaksId" variable="samhandlerSvar" wpc:variableId="737" wpc:variableIsBusinessRelevant="no"/>
                                   </wpc:output>
@@ -705,7 +703,7 @@ if(saksType.equals(KSakT.KRIGSPENSJON) || saksType.equals(KSakT.GAMMEL_YRKESSKAD
                                         </bpws:to>
                                       </bpws:copy>
                                     </bpws:assign>
-                                    <bpws:invoke name="KallsamordningFerdig" operation="samordningFerdig" partnerLink="IverksettVedtakPartner" portType="ns1:IverksettVedtak" wpc:continueOnError="no" wpc:displayName="Kall samordningFerdig" wpc:id="735">
+                                    <bpws:invoke name="KallsamordningFerdig" operation="samordningFerdig" partnerLink="IverksettVedtakPartner" portType="ns9:IverksettVedtakTest" wpc:continueOnError="no" wpc:displayName="Kall samordningFerdig" wpc:id="735">
                                       <wpc:input>
                                         <wpc:parameter name="samordningFerdig" variable="samordningFerdig"/>
                                       </wpc:input>
@@ -713,7 +711,7 @@ if(saksType.equals(KSakT.KRIGSPENSJON) || saksType.equals(KSakT.GAMMEL_YRKESSKAD
                                   </bpws:sequence>
                                 </bpws:onEvent>
                               </bpws:eventHandlers>
-                              <bpws:receive name="Ventpaasvarfrasamordning" operation="samordningFerdig" partnerLink="IverksettVedtak" portType="ns1:IverksettVedtak" wpc:displayName="Vent paa svar fra samordning" wpc:id="731">
+                              <bpws:receive name="Ventpaasvarfrasamordning" operation="samordningFerdig" partnerLink="IverksettVedtak" portType="ns9:IverksettVedtakTest" wpc:displayName="Vent paa svar fra samordning" wpc:id="731">
                                 <wpc:output>
                                   <wpc:parameter name="samordningFerdig" variable="samordningFerdig"/>
                                 </wpc:output>
@@ -947,7 +945,7 @@ return sendVedtakTilOppdrag != null && sendVedtakTilOppdrag == true;]]></bpws:co
           </bpws:scope>
           <bpws:scope name="S680Mottasvarfraoppdrag" wpc:displayName="S680 Motta svar fra oppdrag" wpc:id="754">
             <bpws:eventHandlers>
-              <bpws:onEvent operation="mottaOSKvittering" partnerLink="IverksettVedtak" portType="ns1:IverksettVedtak">
+              <bpws:onEvent operation="mottaOSKvittering" partnerLink="IverksettVedtak" portType="ns9:IverksettVedtakTest">
                 <wpc:output>
                   <wpc:parameter name="mottaOSKvitteringRequest" type="ns0:GBOMottaOSKvitteringRequest" variable="mottaOSKvitteringRequest" wpc:variableId="760" wpc:variableIsBusinessRelevant="no"/>
                 </wpc:output>
@@ -987,7 +985,7 @@ return sendVedtakTilOppdrag != null && sendVedtakTilOppdrag == true;]]></bpws:co
                       </bpws:to>
                     </bpws:copy>
                   </bpws:assign>
-                  <bpws:invoke name="KallPositivOppdragsmeldingMottatt" operation="positivOSKvitteringMottatt" partnerLink="IverksettVedtakPartner" portType="ns1:IverksettVedtak" wpc:continueOnError="no" wpc:displayName="Kall PositivOppdragsmeldingMottatt" wpc:id="765">
+                  <bpws:invoke name="KallPositivOppdragsmeldingMottatt" operation="positivOSKvitteringMottatt" partnerLink="IverksettVedtakPartner" portType="ns9:IverksettVedtakTest" wpc:continueOnError="no" wpc:displayName="Kall PositivOppdragsmeldingMottatt" wpc:id="765">
                     <wpc:input>
                       <wpc:parameter name="positivOSKvitteringMottattRequest" variable="positivOSKvitteringMottattRequest"/>
                     </wpc:input>
@@ -995,7 +993,7 @@ return sendVedtakTilOppdrag != null && sendVedtakTilOppdrag == true;]]></bpws:co
                 </bpws:sequence>
               </bpws:onEvent>
             </bpws:eventHandlers>
-            <bpws:receive name="Ventpaapositivoppdragsmelding" operation="positivOSKvitteringMottatt" partnerLink="IverksettVedtak" portType="ns1:IverksettVedtak" wpc:displayName="Vent paa positiv oppdragsmelding" wpc:id="755">
+            <bpws:receive name="Ventpaapositivoppdragsmelding" operation="positivOSKvitteringMottatt" partnerLink="IverksettVedtak" portType="ns9:IverksettVedtakTest" wpc:displayName="Vent paa positiv oppdragsmelding" wpc:id="755">
               <wpc:output>
                 <wpc:parameter name="positivOSKvitteringMottattRequest" variable="positivOSKvitteringMottattRequest"/>
               </wpc:output>

@@ -5,7 +5,7 @@
   </interfaces>
   <references>
     <reference name="BrevbestillingPartner">
-      <interface xsi:type="java:JavaInterface" interface="sah.lib.nav.no.nav.lib.sah.inf.brevbestilling.Brevbestilling"/>
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Brevbestilling"/>
       <wire target="BrevbestillingSCAIMP"/>
     </reference>
   </references>

@@ -2145,7 +2145,7 @@ incubator/ytelse-PPEN015/nav-bproc-test-ppen015/VedtakSCAIMP.import -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/VedtakStub.component -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/ibm-deploy.scaj2ee -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/iverksettVedtakBPTest.component -text
-incubator/ytelse-PPEN015/nav-bproc-test-ppen015/iverksettVedtakWSEXP.export -text
+incubator/ytelse-PPEN015/nav-bproc-test-ppen015/iverksettVedtakTestWSEXP.export -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/bpel/iverksettVedtakBPEL.bpel -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/bpel/iverksettVedtakBPEL.bpelex -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/bpel/iverksettVedtakBPELArtifacts.wsdl -text
@@ -2154,6 +2154,7 @@ incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/BeregningAsync.wsdl -
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/BrevbestillingAsync.wsdl -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/FullmaktAsync.wsdl -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/GrunnlagAsync.wsdl -text
+incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/IverksettVedtakTest.wsdl -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/KravAsync.wsdl -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/OppdragOnlineAsync.wsdl -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/OppgaveAsync.wsdl -text
@@ -2161,6 +2162,7 @@ incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/OpptjeningAsync.wsdl 
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/PensjonssakAsync.wsdl -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/SamordningAsync.wsdl -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/VedtakAsync.wsdl -text
+incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/inf/nav-bproc-test-ppen015_iverksettVedtakWSEXP.wsdl -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/infmap/BeregningAsyncTOBeregning.component -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/infmap/BeregningAsyncTOBeregning.ifm -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/infmap/BrevbestillingAsyncTOBrevbestilling.ifm -text
@@ -2204,6 +2206,7 @@ incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/java/VedtakStubImpl.java 
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/map/GBOOpprettVedtakSamordningRequestTOGBOOpprettVedtakSamordningRequest.map -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/no/nav/map/GBOOpprettVedtakSamordningRequestTOGBOOpprettVedtakSamordningRequest_map.mon -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/pom.xml -text
+incubator/ytelse-PPEN015/nav-bproc-test-ppen015/ppen015/test/bproc/nav/no/nav/inf/iverksettvedtaktest/IverksettVedtakTest.java -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/sca.module -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/sca.module.attributes -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/sca.modulex -text

@@ -5,7 +5,7 @@
   </interfaces>
   <references>
     <reference name="OppgavePartner">
-      <interface xsi:type="java:JavaInterface" interface="sak.lib.nav.no.nav.lib.sak.inf.Oppgave"/>
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Oppgave"/>
       <wire target="OppgaveSCAIMP"/>
     </reference>
   </references>

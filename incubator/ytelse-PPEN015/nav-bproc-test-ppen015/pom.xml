@@ -41,7 +41,7 @@
 			<groupId>no.nav.esb.layers.libs.gbo</groupId>
 			<artifactId>nav-lib-pen</artifactId>
 			<type>wps-library-jar</type>
-			<version>6.0.114-SNAPSHOT</version>
+			<version>6.0.113</version>
 		</dependency>
 
 		<dependency>

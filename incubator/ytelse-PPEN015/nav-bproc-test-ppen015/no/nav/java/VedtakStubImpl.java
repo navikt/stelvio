@@ -1,8 +1,8 @@
 package no.nav.java;
 
+import com.ibm.websphere.sca.Service;
 import com.ibm.websphere.sca.Ticket;
 import commonj.sdo.DataObject;
-import pen.lib.nav.no.nav.lib.pen.inf.vedtak.Vedtak;
 import com.ibm.websphere.sca.ServiceManager;
 
 public class VedtakStubImpl {
@@ -28,16 +28,18 @@ public class VedtakStubImpl {
 
 	/**
 	 * This method is used to locate the service for the reference named
-	 * "VedtakPartner". This will return an instance of {@link Vedtak}. If you
-	 * would like to use this service asynchronously then you will need to cast
-	 * the result to {@link VedtakAsync}.
+	 * "VedtakPartner". This will return an instance of
+	 * {@link com.ibm.websphere.sca.Service}. This is the dynamic interface
+	 * which is used to invoke operations on the reference service either
+	 * synchronously or asynchronously. You will need to pass the operation name
+	 * in order to invoke an operation on the service.
 	 * 
 	 * @generated (com.ibm.wbit.java)
 	 * 
-	 * @return Vedtak
+	 * @return Service
 	 */
-	public Vedtak locateService_VedtakPartner() {
-		return (Vedtak) ServiceManager.INSTANCE.locateService("VedtakPartner");
+	public Service locateService_VedtakPartner() {
+		return (Service) ServiceManager.INSTANCE.locateService("VedtakPartner");
 	}
 
 	/**
@@ -64,7 +66,16 @@ public class VedtakStubImpl {
 	 * fault(s).
 	 */
 	public DataObject hentVedtak(DataObject hentVedtakRequest) {
-		return locateService_VedtakPartner().hentVedtak(hentVedtakRequest);
+
+		DataObject response = (DataObject) locateService_VedtakPartner().invoke("hentVedtak",
+				hentVedtakRequest);
+		
+		if(response !=null){
+			response = response.getDataObject(0);
+		}
+		
+		return response;
+
 	}
 
 	/**
@@ -149,7 +160,16 @@ public class VedtakStubImpl {
 	 */
 	public DataObject hentUttrekkTilOppdragstransaksjon(
 			DataObject hentUttrekkTilOppdragstransaksjonRequest) {
-		return locateService_VedtakPartner().hentUttrekkTilOppdragstransaksjon(hentUttrekkTilOppdragstransaksjonRequest);
+		
+		DataObject response = (DataObject) locateService_VedtakPartner().invoke(
+				"hentUttrekkTilOppdragstransaksjon",
+				hentUttrekkTilOppdragstransaksjonRequest);
+		
+		if (response != null){
+			response = response.getDataObject(0);
+		}
+		
+		return response;
 	}
 
 	/**

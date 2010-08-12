@@ -5,7 +5,7 @@
   </interfaces>
   <references>
     <reference name="VedtakPartner">
-      <interface xsi:type="java:JavaInterface" interface="pen.lib.nav.no.nav.lib.pen.inf.vedtak.Vedtak"/>
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Vedtak"/>
       <wire target="VedtakSCAIMP"/>
     </reference>
   </references>

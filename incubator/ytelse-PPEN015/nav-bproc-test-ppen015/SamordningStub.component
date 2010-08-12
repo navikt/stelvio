@@ -4,8 +4,8 @@
     <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Samordning"/>
   </interfaces>
   <references>
-    <reference name="IverksettVedtakPartner">
-      <interface xsi:type="java:JavaInterface" interface="pen.lib.nav.no.nav.lib.pen.inf.iverksett.vedtak.IverksettVedtak"/>
+    <reference name="IverksettVedtakTestPartner">
+      <interface xsi:type="java:JavaInterface" interface="ppen015.test.bproc.nav.no.nav.inf.iverksettvedtaktest.IverksettVedtakTest"/>
       <wire target="iverksettVedtakBPTest"/>
     </reference>
   </references>

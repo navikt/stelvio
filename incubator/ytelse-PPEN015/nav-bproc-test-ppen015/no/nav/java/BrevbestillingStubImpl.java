@@ -1,8 +1,8 @@
 package no.nav.java;
 
+import com.ibm.websphere.sca.Service;
 import com.ibm.websphere.sca.Ticket;
 import commonj.sdo.DataObject;
-import sah.lib.nav.no.nav.lib.sah.inf.brevbestilling.Brevbestilling;
 import com.ibm.websphere.sca.ServiceManager;
 
 public class BrevbestillingStubImpl {
@@ -27,17 +27,18 @@ public class BrevbestillingStubImpl {
 
 	/**
 	 * This method is used to locate the service for the reference
-	 * named "BrevbestillingPartner".  This will return an instance of
-	 * {@link Brevbestilling}.  If you would like to use this service 
-	 * asynchronously then you will need to cast the result
-	 * to {@link BrevbestillingAsync}.
+	 * named "BrevbestillingPartner".  This will return an instance of 
+	 * {@link com.ibm.websphere.sca.Service}.  This is the dynamic
+	 * interface which is used to invoke operations on the reference service
+	 * either synchronously or asynchronously.  You will need to pass the operation
+	 * name in order to invoke an operation on the service.
 	 *
 	 * @generated (com.ibm.wbit.java)
 	 *
-	 * @return Brevbestilling
+	 * @return Service
 	 */
-	public Brevbestilling locateService_BrevbestillingPartner() {
-		return (Brevbestilling) ServiceManager.INSTANCE
+	public Service locateService_BrevbestillingPartner() {
+		return (Service) ServiceManager.INSTANCE
 				.locateService("BrevbestillingPartner");
 	}
 

@@ -1,19 +1,16 @@
 package no.nav.java;
 
+import com.ibm.websphere.sca.Service;
 import java.util.ArrayList;
-
-import sak.lib.nav.no.nav.lib.sak.inf.Oppgave;
-import sak.lib.nav.no.nav.lib.sak.inf.OppgaveAsync;
-
 import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.Ticket;
 import commonj.sdo.DataObject;
 
 public class OppgaveStubImpl {
-	
+
 	private static final String GBONAMESPACE = "http://nav-lib-sak/no/nav/lib/sak/gbo";
-	
+
 	/**
 	 * Default constructor.
 	 */
@@ -35,17 +32,18 @@ public class OppgaveStubImpl {
 
 	/**
 	 * This method is used to locate the service for the reference
-	 * named "OppgavePartner".  This will return an instance of
-	 * {@link Oppgave}.  If you would like to use this service 
-	 * asynchronously then you will need to cast the result
-	 * to {@link OppgaveAsync}.
+	 * named "OppgavePartner".  This will return an instance of 
+	 * {@link com.ibm.websphere.sca.Service}.  This is the dynamic
+	 * interface which is used to invoke operations on the reference service
+	 * either synchronously or asynchronously.  You will need to pass the operation
+	 * name in order to invoke an operation on the service.
 	 *
 	 * @generated (com.ibm.wbit.java)
 	 *
-	 * @return Oppgave
+	 * @return Service
 	 */
-	public Oppgave locateService_OppgavePartner() {
-		return (Oppgave) ServiceManager.INSTANCE
+	public Service locateService_OppgavePartner() {
+		return (Service) ServiceManager.INSTANCE
 				.locateService("OppgavePartner");
 	}
 
@@ -123,11 +121,12 @@ public class OppgaveStubImpl {
 	 * on the type of input, output and fault(s).
 	 */
 	public DataObject hentOppgaveListe(DataObject hentOppgaveListeRequest) {
-		BOFactory bof = (BOFactory) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
-		
+		BOFactory bof = (BOFactory) ServiceManager.INSTANCE
+				.locateService("com/ibm/websphere/bo/BOFactory");
+
 		DataObject oppgaveListe = bof.create(GBONAMESPACE, "GBOOppgaveListe");
 		oppgaveListe.setList("oppgaver", new ArrayList());
-		
+
 		return oppgaveListe;
 	}
 
