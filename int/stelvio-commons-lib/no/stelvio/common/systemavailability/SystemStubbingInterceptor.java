@@ -157,18 +157,20 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 
 	private void validateSupported(OperationType operationType, Object input, Object output) {
 		if (!operationType.isWrappedStyle()) {
-			Type outputType = operationType.getOutputType();
-			if (!isOneWayOperation(outputType) && !outputType.isDataType()) {
-				throw new UnsupportedOperationException(
-						"Document literal non-wrapped operations without response (void methods) are currently not supported by the stubbing framework.");
-			}
 			if (input == null) {
 				throw new UnsupportedOperationException(
 						"Document literal non-wrapped operations with null as input are currently not supported by the stubbing framework.");
 			}
-			if (output == null) {
-				throw new UnsupportedOperationException(
-						"Document literal non-wrapped operations with null as output are currently not supported by the stubbing framework.");
+			Type outputType = operationType.getOutputType();
+			if (!isOneWayOperation(outputType)) {
+				if (!outputType.isDataType() && operationType.isWrapperType(outputType)) {
+					throw new UnsupportedOperationException(
+							"Document literal non-wrapped two-way operations without response (void methods) are currently not supported by the stubbing framework.");
+				}
+				if (output == null) {
+					throw new UnsupportedOperationException(
+							"Document literal non-wrapped operations with null as output are currently not supported by the stubbing framework.");
+				}
 			}
 		}
 	}
