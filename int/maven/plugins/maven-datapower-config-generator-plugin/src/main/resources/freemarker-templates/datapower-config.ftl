@@ -16,6 +16,7 @@
 <#include "AAAPolicyUsernameToken2LTPA.ftl">
 <#include "AAAPolicyUsernameToken2None.ftl">
 <#include "FrontsideHandler.ftl">
+<#include "LDAPSearchParameters.ftl">
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
 <#include "MatchingRuleXPath.ftl">

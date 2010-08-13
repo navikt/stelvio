@@ -1,4 +1,4 @@
-<#macro AAAPolicyUsernameToken2None name aaaFileName>
+<#macro AAAPolicyUsernameToken2None name aaaFileName auLdapHost auLdapPort auLdapBindDN auLdapBindPwd auLdapSearchParameters>
 	<AAAPolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<ExtractIdentity>
@@ -38,11 +38,11 @@
 			<EISSLProxyProfile/>
 		</ExtractIdentity>
 		<Authenticate>
-			<AUMethod>xmlfile</AUMethod>
+			<AUMethod>ldap</AUMethod>
 			<AUCustomURL/>
-			<AUMapURL>${aaaFileName}</AUMapURL>
-			<AUHost/>
-			<AUPort/>
+			<AUMapURL/>
+			<AUHost>${auLdapHost}</AUHost>
+			<AUPort>${auLdapPort}</AUPort>
 			<AUSSLValcred/>
 			<AUCacheAllow>absolute</AUCacheAllow>
 			<AUCacheTTL>3</AUCacheTTL>
@@ -65,8 +65,8 @@
 			<AUSignedXPath/>
 			<AUSSLProxyProfile/>
 			<AUNetegrityConfig/>
-			<AULDAPBindDN/>
-			<AULDAPBindPassword/>
+			<AULDAPBindDN>${auLdapBindDN}</AULDAPBindDN>
+			<AULDAPBindPassword>${auLdapBindPwd}</AULDAPBindPassword>
 			<AULDAPSearchAttribute>userPassword</AULDAPSearchAttribute>
 			<AULTPATokenVersionsBitmap>
 				<LTPA>off</LTPA>
@@ -81,8 +81,8 @@
 			<AUAllowRemoteTokenReference>off</AUAllowRemoteTokenReference>
 			<AURemoteTokenProcessService/>
 			<AUWSTrustVersion>1.2</AUWSTrustVersion>
-			<AULDAPSearchForDN>off</AULDAPSearchForDN>
-			<AULDAPSearchParameters/>
+			<AULDAPSearchForDN>on</AULDAPSearchForDN>
+			<AULDAPSearchParameters class="LDAPSearchParameters">${auLdapSearchParameters}</AULDAPSearchParameters>
 			<AUWSTrustRequireClientEntropy>off</AUWSTrustRequireClientEntropy>
 			<AUWSTrustClientEntropySize>32</AUWSTrustClientEntropySize>
 			<AUWSTrustRequireServerEntropy>off</AUWSTrustRequireServerEntropy>
