@@ -1,14 +1,10 @@
 Manifest-Version: 1.0
 Main-Class: Main
-Class-Path: bfmclientmodel-6.1.0.jar 
- bpcclientcore-6.1.0.jar 
- bpe137650-6.1.0.jar 
- bpeapi-6.1.0.jar 
- commons-cli-1.2.jar 
+Class-Path: commons-cli-1.2.jar 
  commons-lang-2.4.jar 
- htmlclientmodel-6.1.0.1.jar 
  slf4j-api-1.5.8.jar 
  slf4j-jdk14-1.5.8.jar 
  utils-1.07.00.jar 
- nav-int-appclient-common-java.jar
+ nav-int-appclient-common-java.jar 
+ process-choreographer-client-7.0.0.2.jar
 

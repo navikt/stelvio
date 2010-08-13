@@ -122,30 +122,8 @@
 
 			<dependency>
 				<groupId>com.ibm.wps</groupId>
-				<artifactId>bfmclientmodel</artifactId>
-				<version>6.1.0</version>
-			</dependency>
-			<dependency>
-				<groupId>com.ibm.wps</groupId>
-				<artifactId>bpcclientcore</artifactId>
-				<version>6.1.0</version>
-			</dependency>
-			<dependency>
-				<groupId>com.ibm.wps</groupId>
-				<artifactId>bpeapi</artifactId>
-				<version>6.1.0</version>
-			</dependency>
-			<dependency>
-				<groupId>com.ibm.wps</groupId>
-				<artifactId>bpe137650</artifactId>
-				<version>6.1.0</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.ibm.wps</groupId>
-				<artifactId>htmlclientmodel</artifactId>
-				<version>6.1.0.1</version>
-				<scope>runtime</scope>
+				<artifactId>process-choreographer-client</artifactId>
+				<version>7.0.0.2</version>
 			</dependency>
 
 			<dependency>
