@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="nav-int-appclient-femhelper-ear">
         <wb-resource deploy-path="/" source-path="/"/>
-        <dependent-module archiveName="nav-int-appclient-common-java.jar" deploy-path="/" handle="module:/resource/nav-int-appclient-common-java/nav-int-appclient-common-java">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module deploy-path="/" handle="module:/resource/nav-int-appclient-femhelper-java/nav-int-appclient-femhelper-java">
             <dependent-object>JavaClientModule_1259659725125</dependent-object>
             <dependency-type>uses</dependency-type>
@@ -40,6 +36,9 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module deploy-path="/" handle="module:/classpath/lib/nav-int-appclient-femhelper-ear/utils-1.07.00.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="nav-int-appclient-common-java.jar" deploy-path="/" handle="module:/resource/nav-int-appclient-common-java/nav-int-appclient-common-java">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

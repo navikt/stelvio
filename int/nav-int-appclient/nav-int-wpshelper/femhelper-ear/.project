@@ -3,8 +3,8 @@
 	<name>nav-int-appclient-femhelper-ear</name>
 	<comment></comment>
 	<projects>
-		<project>nav-int-appclient-common-java</project>
 		<project>nav-int-appclient-femhelper-java</project>
+		<project>nav-int-appclient-common-java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

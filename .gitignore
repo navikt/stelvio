@@ -864,7 +864,9 @@ int/maven/xmlbeans/moduleconfig-xmlbeans/.settings
 int/maven/xmlbeans/moduleconfig-xmlbeans/target
 int/maven/xmlbeans/target
 int/nav-int-appclient/nav-int-wpshelper-bundle/target
+int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/META-INF/MANIFEST.MF
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/target
+int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/.apt_generated
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/*.class
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/META-INF/*.class
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/*.class
@@ -876,7 +878,9 @@ int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpch
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/utils/*.class
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/src/main/java/no/nav/bpchelper/writers/*.class
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-java/target
+int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/META-INF/MANIFEST.MF
 int/nav-int-appclient/nav-int-wpshelper/femhelper-ear/target
+int/nav-int-appclient/nav-int-wpshelper/femhelper-java/.apt_generated
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/META-INF/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/no/*.class
@@ -888,7 +892,9 @@ int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/no/nav/femh
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/no/nav/femhelper/filewriters/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/src/main/java/utils/*.class
 int/nav-int-appclient/nav-int-wpshelper/femhelper-java/target
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/META-INF/MANIFEST.MF
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-ear/target
+int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/.apt_generated
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/META-INF/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/*.class
@@ -899,6 +905,7 @@ int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/si
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/filewriters/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/src/main/java/no/nav/sibushelper/helper/*.class
 int/nav-int-appclient/nav-int-wpshelper/sibushelper-java/target
+int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/.apt_generated
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/bin
 int/nav-int-appclient/nav-int-wpshelper/wpshelper-common-java/target
 int/pmr/43743-001-806/serviceDeployTestModule/*.class
