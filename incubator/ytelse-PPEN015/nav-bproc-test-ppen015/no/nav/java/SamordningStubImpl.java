@@ -3,7 +3,7 @@ package no.nav.java;
 import java.util.ArrayList;
 
 import commonj.sdo.DataObject;
-import pen.lib.nav.no.nav.lib.pen.inf.iverksett.vedtak.IverksettVedtak;
+import ppen015.test.bproc.nav.no.nav.inf.iverksettvedtaktest.IverksettVedtakTest;
 
 import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.sca.ServiceManager;
@@ -17,11 +17,10 @@ public class SamordningStubImpl {
 	}
 
 	/**
-	 * Return a reference to the component service instance for this
-	 * implementation class. This method should be used when passing this
-	 * service to a partner reference or if you want to invoke this component
-	 * service asynchronously.
-	 * 
+	 * Return a reference to the component service instance for this implementation
+	 * class.  This method should be used when passing this service to a partner reference
+	 * or if you want to invoke this component service asynchronously.    
+	 *
 	 * @generated (com.ibm.wbit.java)
 	 */
 	@SuppressWarnings("unused")
@@ -30,19 +29,19 @@ public class SamordningStubImpl {
 	}
 
 	/**
-	 * This method is used to locate the service for the reference named
-	 * "IverksettVedtakPartner". This will return an instance of
-	 * {@link IverksettVedtak}. If you would like to use this service
-	 * asynchronously then you will need to cast the result to
-	 * {@link IverksettVedtakAsync}.
-	 * 
+	 * This method is used to locate the service for the reference
+	 * named "IverksettVedtakTestPartner".  This will return an instance of
+	 * {@link IverksettVedtakTest}.  If you would like to use this service 
+	 * asynchronously then you will need to cast the result
+	 * to {@link IverksettVedtakTestAsync}.
+	 *
 	 * @generated (com.ibm.wbit.java)
-	 * 
-	 * @return IverksettVedtak
+	 *
+	 * @return IverksettVedtakTest
 	 */
-	public IverksettVedtak locateService_IverksettVedtakPartner() {
-		return (IverksettVedtak) ServiceManager.INSTANCE
-				.locateService("IverksettVedtakPartner");
+	public IverksettVedtakTest locateService_IverksettVedtakTestPartner() {
+		return (IverksettVedtakTest) ServiceManager.INSTANCE
+				.locateService("IverksettVedtakTestPartner");
 	}
 
 	/**
@@ -140,7 +139,7 @@ public class SamordningStubImpl {
 	 */
 	public void opprettVedtakSamordning(
 			DataObject opprettVedtakSamordningRequest) {
-		
+
 		String vedtaksId = opprettVedtakSamordningRequest.getString("vedtakId");
 
 		BOFactory bof = (BOFactory) ServiceManager.INSTANCE
@@ -149,8 +148,9 @@ public class SamordningStubImpl {
 				"http://nav-lib-pen/no/nav/lib/pen/gbo", "GBOVedtaksId");
 
 		mottaSamhandler.setString("vedtaksId", vedtaksId);
-		
-		locateService_IverksettVedtakPartner().mottaSamhandlerSvar(mottaSamhandler);
+
+		locateService_IverksettVedtakTestPartner().mottaSamhandlerSvar(
+				mottaSamhandler);
 	}
 
 	/**

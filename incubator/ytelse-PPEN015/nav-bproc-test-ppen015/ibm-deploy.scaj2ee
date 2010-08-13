@@ -2,7 +2,7 @@
 <scaj2ee:IntegrationModuleDeploymentConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:scaj2ee="http://www.ibm.com/xmlns/prod/websphere/sca/j2ee/6.0.2">
   <wsExports>
     <wsDescExtensions>
-      <wsDescExt wsDescNameLink="iverksettVedtakWSEXP_IverksettVedtakHttpService">
+      <wsDescExt wsDescNameLink="iverksettVedtakWSEXP_IverksettVedtakTestHttpService">
         <pcBinding pcNameLink="iverksettVedtakTestWSEXP_IverksettVedtakTestHttpPort">
         <serverServiceConfig>
             <securityRequestConsumerServiceConfig>
@@ -16,7 +16,7 @@
       </wsDescExt>
     </wsDescExtensions>
     <wsDescBindings>
-      <wsdescBindings wsDescNameLink="iverksettVedtakWSEXP_IverksettVedtakHttpService">
+      <wsdescBindings wsDescNameLink="iverksettVedtakWSEXP_IverksettVedtakTestHttpService">
         <pcBindings pcNameLink="iverksettVedtakTestWSEXP_IverksettVedtakTestHttpPort">
         <securityRequestConsumerBindingConfig>
             <tokenConsumer classname="com.ibm.wsspi.wssecurity.token.UsernameTokenConsumer" name="UsernameTokenConsumer">
