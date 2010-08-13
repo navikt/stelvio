@@ -49,22 +49,9 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>com.ibm.ws</groupId>
-			<artifactId>runtime</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.ibm.ws</groupId>
-			<artifactId>admin-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.ibm.ws.sib</groupId>
-			<artifactId>server</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf.commonj</groupId>
-			<artifactId>org.eclipse.emf.commonj.sdo</artifactId>
+			<groupId>com.ibm.maven.runtimes</groupId>
+			<artifactId>wps-runtime</artifactId>
 		</dependency>
 	</dependencies>
 </project>

@@ -66,18 +66,9 @@
 			<groupId>org.ostermiller</groupId>
 			<artifactId>utils</artifactId>
 		</dependency>
-		
 		<dependency>
-			<groupId>com.ibm.wps</groupId>
-			<artifactId>com.ibm.wps.runtime</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.ibm.ws</groupId>
-			<artifactId>admin-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf.commonj</groupId>
-			<artifactId>org.eclipse.emf.commonj.sdo</artifactId>
+			<groupId>com.ibm.maven.runtimes</groupId>
+			<artifactId>wps-runtime</artifactId>
 		</dependency>
 	</dependencies>
 </project>
