@@ -2231,6 +2231,7 @@ incubator/ytelse-PPEN015/nav-bproc-test-ppen015/test/2B/TestOverforingMottakerAv
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/test/2B/nav-bproc-pen-ppen015-1.4.0_Test.wbiexetrace -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/test/2B/nav-bproc-pen-ppen015-1.4.0_Test2.wbiexetrace -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015/test/2B/nav-bproc-pen-ppen015-1.4.0_Test3.wbiexetrace -text
+incubator/ytelse-PPEN015/ppen015Test-soapui-project.xml -text
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.classpath -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.project -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjon/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text svneol=unset#text/plain
