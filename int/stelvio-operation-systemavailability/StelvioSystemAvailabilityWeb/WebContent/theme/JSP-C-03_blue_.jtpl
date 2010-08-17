@@ -21,7 +21,7 @@
 <!-- start header area -->
 <div class="topAreaBox"></div>
 <div class="topAreaLogo"><a href="/StelvioSystemAvailabilityWeb/sa.jsp"><img src="/StelvioSystemAvailabilityWeb/theme/sample-logo-2.png" alt="return to home page" border="0" /></a>
-<a href="#navskip"><IMG src="/StelvioSystemAvailabilityWeb/theme/1x1.gif" alt="skip to page's main contents" border=0 width="1" height="1"></a></div>
+</div>
 <!-- end header area -->
 
 <!-- start header navigation bar -->

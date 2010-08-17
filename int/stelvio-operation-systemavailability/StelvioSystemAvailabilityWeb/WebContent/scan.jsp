@@ -38,84 +38,134 @@
 <!-- start main content area -->
 <div class="mainWideBox"><a name="navskip"><IMG border="0" src="/StelvioSystemAvailabilityWeb/theme/1x1.gif" width="1" height="1" alt="Beginning of page content"></a><%-- tpl:put name="bodyarea" --%>
 
+
+	<SCRIPT LANGUAGE="JavaScript">			
+		function check(field) {
+			var allEmpty = true;
+			
+			for (i = 0; i < field.length; i++) {
+				if (field[i].checked == true) {
+					allEmpty = false;
+					break;
+				}
+			}
+			
+			for (i = 0; i < field.length; i++) {
+				field[i].checked = allEmpty;
+			}
+		}
+	</SCRIPT>
+
 	<%
 	SystemAvailabilityStorage availStorage = new SystemAvailabilityStorage();
-	java.util.List prodListe = availStorage.listInstalledProdModules();
+	java.util.List navListe = availStorage.listInstalledNAVModules();
 	File fil;
 	String app;
 	
 	
-	// Klikket på btnVelgProd
-	if (request.getParameter("btnVelgProd") != null && request.getParameterValues("prodApp") != null) {
-		%><a href="scan.jsp">Go back for choosing prod-modules again</a><br /><%
+	// Klikket på btnModulerValgt
+	if (request.getParameter("btnModulerValgt") != null && request.getParameterValues("navApp") != null) {
+		%><a href="scan.jsp">Go back for choosing nav-modules again</a><br /><%
 		
-		// Listen inneholder index til valgte prod-moduler i prodListe-objektet
-		String[] prodApp = request.getParameterValues("prodApp");
+		// Listen inneholder index til valgte nav-moduler i navListe-objektet
+		String[] navApp = request.getParameterValues("navApp");
 		int index = 0;
+		String form = "";
+		int size = 0;
 		
-		for (int i = 0; i < prodApp.length; i++) {
-			index = Integer.parseInt(prodApp[i]);
-			fil = (File)prodListe.get(index);
+		for (int i = 0; i < navApp.length; i++) {
+			index = Integer.parseInt(navApp[i]);
+			fil = (File)navListe.get(index);
+			String output[] = availStorage.readSystemNamesFromNAVModule(fil);
 			
-			// Prod-modulens navn: "nav-prod-pen-penApp.jar" blir til "nav-prod-pen-pen"
-			app = availStorage.getProdModuleName(fil);
-			
-			// Skriver ut modulens navn i fet skrift:
-			%><br /><b><%=app%>:</b><br /><%
-			
-			String output[] = availStorage.addSystemNamesFromProdModule(fil);
-			
-			for (int x = 0; x < output.length; x++) {
-				%><%=output[x]%> is added!<br /><%
+			if (output != null) {
+				// Bruke tabell for kolonner
+				if (size > 1400) {
+					if (!form.startsWith("<td")) {
+						form = "<td style='padding: 1px 25px 1px 1px; vertical-align: top;'>" + form;
+					}
+					form += "</td><td style='padding: 1px 25px 1px 1px; vertical-align: top;'>";
+					size = 0;
+				}
+				
+				// Modulens navn: "nav-ent-pen-vedtakApp.jar" blir til "nav-ent-pen-vedtak"
+				app = availStorage.getNAVModuleName(fil);
+				// Skriver ut modulens navn i fet skrift:
+				String form2 = "<br /><b>" + app + ":</b><br />";
+				
+				for (int x = 0; x < output.length; x++) {
+					form2 += "<label>" +
+						"<input type='checkbox' CHECKED name='systemnames' value='" + output[x] + "' />" + output[x] + 
+						"</label><br />";
+				}
+				form += form2;
+				size += form2.length();
 			}
+		}
+		
+		if (!"".equals(form)) {
+			if (form.startsWith("<td")) {
+				form = "<table><tr>" + form + "</tr></table>"; 
+			}
+			form = "<h2>Select SystemNames to add:</h2>" +
+				"<form name='myForm' method='POST' action='scan.jsp'>" + form + 
+					"<br /><a href='#' onClick='check(document.myForm.systemnames)'>check/clear all</a><br />" +
+					"<br /><input type='submit' name='btnSystemNamesValgt' value='Next' />" +
+				"</form>";
+		}
+		else {
+			form = "<h2>Did not found any SystemNames</h2>";
+		}
+		
+		%><%=form%><%
+	}
+	
+	
+	// Klikket på btnSystemNamesValgt
+	else if  (request.getParameter("btnSystemNamesValgt") != null && request.getParameterValues("systemnames") != null) {
+		%><a href="scan.jsp">Go back for choosing nav-modules again</a><br /><%
+		
+		String[] systemnames = request.getParameterValues("systemnames");
+		String[] added = availStorage.addSystemNames(systemnames);
+		
+		for (int i = 0 ; i < added.length; i++) {
+			%><%=added[i]%> is added!<br /><%
 		}
 	}
 	
-	// Lister ut installerte prod-moduler og ber bruker velge hvilke som skal scannes for SystemNames
+	
+	// Lister ut installerte nav-moduler og ber bruker velge hvilke som skal scannes for SystemNames
 	else {
-		int size = prodListe.size();
+		int size = navListe.size();
 		
 		if (size == 0) {
-			%><h2>You have not deployed any prod-modules.</h2><%
+			%><h2>You have not deployed any nav-modules.</h2><%
 		}
+		
 		else {
 			%>
-			<h2>Choose prod-modules to add their SystemNames:</h2>
+			<h2>Select modules to scan for SystemNames:</h2>
 			
 			<form name="myForm" method="POST" action="scan.jsp">
 			<%
 			for (int i = 0; i < size; i++) {
-				fil = (File) prodListe.get(i);
-				app = availStorage.getProdModuleName(fil);
+				fil = (File) navListe.get(i);
+				app = availStorage.getNAVModuleName(fil);
 				%>
-				<label><input type="checkbox" name="prodApp" value="<%=i%>" /> <%=app%></label><br />
+				<label><input type="checkbox" name="navApp" value="<%=i%>" /> <%=app%></label><br />
 				<%
 			}
-			%>
-			<a href="#" onClick="check(document.myForm.prodApp)">Check/clear all</a><br />
-			<br />
-			<input type="submit" name="btnVelgProd" value="Next" />
-			</form>
 			
-			<SCRIPT LANGUAGE="JavaScript">
-				
-				function check(field) {
-					var allEmpty = true;
-					
-					for (i = 0; i < field.length; i++) {
-						if (field[i].checked == true) {
-							allEmpty = false;
-							break;
-						}
-					}
-					
-					for (i = 0; i < field.length; i++) {
-						field[i].checked = allEmpty;
-					}
-				}
-				
-			</SCRIPT>
+			%>
+			<a href="#" onClick="check(document.myForm.navApp)">check/clear all</a><br />
+			<br />
+			<input type="submit" name="btnModulerValgt" value="Next" />
+			</form>
 			<%
+			
+			if (request.getParameter("btnModulerValgt") != null) {
+				%><h5>You did not select any modules in the list!</h5><%
+			}
 		}
 	}
 	%>
