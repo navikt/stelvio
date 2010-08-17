@@ -157,6 +157,16 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private String widRuntime;
+	
+	/**
+	 * @parameter default-value="false"
+	 */
+	private boolean noWrappedOperations;
+	
+	/**
+	 * @parameter default-value="false"
+	 */
+	private boolean noWrappedArrays;
 
 	/**
 	 * @parameter
@@ -221,9 +231,22 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 			for (File wsdlFile : wsdlFiles) {
 				commandLine.clearArgs();
 				Arg arg = commandLine.createArg();
-				arg.setLine("-role client -container none -output \"" + classGenerationDirectory.getAbsolutePath()
-						+ "\" -genJava Overwrite -fileNStoPkg \"" + nameSpaceToPackageFile.getAbsolutePath() + "\" \""
-						+ wsdlFile.getAbsolutePath() + "\"");
+				
+				StringBuilder argLineBuilder = new StringBuilder();
+				argLineBuilder.append(" -role client");
+				argLineBuilder.append(" -container none");
+				argLineBuilder.append(" -genJava Overwrite");
+				if (noWrappedOperations) {
+					argLineBuilder.append(" -noWrappedOperations");
+				}
+				if (noWrappedArrays) {
+					argLineBuilder.append(" -noWrappedArrays");
+				}
+				argLineBuilder.append(" -fileNStoPkg ").append('"').append(nameSpaceToPackageFile.getAbsolutePath()).append('"');
+				argLineBuilder.append(" -output ").append('"').append(classGenerationDirectory.getAbsolutePath()).append('"');
+				argLineBuilder.append(" ").append('"').append(wsdlFile.getAbsolutePath()).append('"');
+				
+				arg.setLine(argLineBuilder.toString());
 				executeCommand(commandLine);
 			}
 		}
