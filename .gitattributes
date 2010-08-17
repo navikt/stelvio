@@ -2993,6 +2993,9 @@ int/pmr/44496-001-806/versionInfo.log -text
 int/pmr/44503-001-806/ejbClient-after-refactoring-PI.zip -text
 int/pmr/44503-001-806/ejbClient-before-refactoring-PI.zip -text
 int/pmr/44503-001-806/versionInfo.log -text
+int/pmr/44711-001-806/System.out.log -text
+int/pmr/44711-001-806/ejbConsumingModule-PI.zip -text
+int/pmr/44711-001-806/versionInfo.log -text
 int/pom.xml -text
 int/stelvio-commons-lib-test/pom.xml -text
 int/stelvio-commons-lib-test/src/test/java/no/stelvio/common/bus/util/FnrUtilTest.java -text
