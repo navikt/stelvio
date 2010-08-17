@@ -300,11 +300,11 @@ public class SystemAvailabilityStorage {
 	}
 	
 	/**
-	 * Returns a list of java.io.File with installed prod-modules on the wps-server (name begins at "nav-prod-").
+	 * Returns a list of java.io.File with installed nav-modules on the wps-server (name begins at "nav-").
 	 * 
 	 * @return
 	 */
-	public List<File> listInstalledProdModules() {
+	public List<File> listInstalledNAVModules() {
 		
 		List<File> liste = new ArrayList<File>();
 		
@@ -361,14 +361,14 @@ public class SystemAvailabilityStorage {
 				int length = directory.listFiles().length;
 				String app = "", s = "";
 				
-				// Gå gjennom alle mappene som ligger der som begynner på "nav-prod-" (+ nav-ent-pen-* for Horisonten).
+				// Gå gjennom alle mappene som ligger der som begynner på "nav-".
 				for (int x = 0; x < length; x++) {
 					fil = directory.listFiles()[x];
 					app = fil.getName();
-					if ((app.startsWith("nav-prod-") || app.startsWith("nav-ent-pen-"))
+					if ((app.startsWith("nav-"))
 							&& app.indexOf("App.ear") != -1) {
 						app = app.substring(0, app.indexOf("App.ear"));
-						// Går gjennom alle mappene/filene som ligger i "nav-prod-"-mappen.
+						// Går gjennom alle mappene/filene som ligger i "nav-"-mappen.
 						// Hvis det finnes en fil der som begynner på det samme som prosjektet, så legges den til i lista.
 						for (int y = 0; y < fil.list().length; y++) {
 							s = fil.list()[y];
@@ -390,33 +390,29 @@ public class SystemAvailabilityStorage {
 	}
 	
 	/**
-	 * Adds all SystemNames in a prodModule.
+	 * Reads all SystemNames from a nav-module.
 	 * Returns a String[] with all the SystemNames that have been added. 
 	 * 
-	 * @param prodModule
+	 * @param navModule
 	 * @return
 	 */
-	public String[] addSystemNamesFromProdModule(File prodModule) {
-		String retur[];
+	public String[] readSystemNamesFromNAVModule(File navModule) {
 		String kladd = "";
 		
-		// Lister opp filene som prod-modulen inneholder
-		File[] filer = prodModule.listFiles();
+		// Lister opp filene som nav-modulen inneholder
+		File[] filer = navModule.listFiles();
 		for (int j = 0; j < filer.length; j++) {
-			// prod-jar (og ikke lib-jars) åpnes for å finne komponenter med "Avail"
-			if (filer[j].getName().equals(getProdModuleName(prodModule) + ".jar")) {
+			// Denne modulens JAR-fil åpnes for å finne komponenter med "Avail"
+			if (filer[j].getName().equals(getNAVModuleName(navModule) + ".jar")) {
 				java.util.List jarList = readJarForSystemNames(filer[j]);
 
-				// For hver JarEntry (som inneholder "Avail" og er .component)
+				// For hver JarEntry (disse inneholder "Avail" og er .component)
 				for (int x = 0; x < jarList.size(); x++) {
 					JarEntry entry = (JarEntry)jarList.get(x);
 					
 					// Kutter stringen der "Avail" begynner, og det som er foran, er SystemName
 					String name = entry.getName();
 					name = name.substring(0, name.indexOf("Avail"));
-
-					// Legger til SystemName
-					findOrCreateSystemRecord(name);
 					
 					kladd += name + ":";
 				}
@@ -424,10 +420,12 @@ public class SystemAvailabilityStorage {
 			}
 		}
 		
-		kladd = kladd.substring(0, kladd.length()-1);
-		retur = kladd.split(":");
+		if (!"".equals(kladd)) {
+			kladd = kladd.substring(0, kladd.length()-1);
+			return kladd.split(":");
+		}
 		
-		return retur;
+		return null;
 	}
 	
 	/**
@@ -460,15 +458,37 @@ public class SystemAvailabilityStorage {
 	}
 	
 	/**
-	 * The prod-module file is f.ex. named "nav-prod-pen-penApp.ear".
-	 * This method returns "nav-prod-pen-pen", or "" (blank String) if the input File is null.
+	 * The nav-module file is f.ex. named "nav-ent-pen-vedtakApp.ear".
+	 * This method returns "nav-ent-pen-vedtak", or "" (blank String) if the input File is null.
 	 * 
-	 * @param prodModule
+	 * @param module
 	 * @return
 	 */
-	public String getProdModuleName(File prodModule) {
-		if (prodModule != null)
-			return prodModule.getName().substring(0, prodModule.getName().indexOf("App.ear"));
+	public String getNAVModuleName(File module) {
+		if (module != null)
+			return module.getName().substring(0, module.getName().indexOf("App.ear"));
 		return "";
+	}
+	
+	/**
+	 * Adds all the entries from String[] into the list of SystemNames.
+	 * 
+	 * @param systemNamesList
+	 * @return
+	 */
+	public String[] addSystemNames(String[] systemNamesList) {
+		String kladd = "";
+		for (String systemName : systemNamesList) {
+			// Legger til SystemName
+			findOrCreateSystemRecord(systemName);
+			kladd += systemName + ":";
+		}
+		
+		if (!"".equals(kladd)) {
+			kladd = kladd.substring(0, kladd.length()-1);
+			return kladd.split(":");
+		}
+		
+		return null;
 	}
 }
