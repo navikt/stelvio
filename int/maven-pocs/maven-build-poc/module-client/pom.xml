@@ -14,26 +14,20 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wsdl-plugin</artifactId>
-				<version>1.4.1</version>
+				<version>1.6</version>
 				<executions>
 					<execution>
 						<goals>
 							<goal>wsdl2java</goal>
 						</goals>
 						<configuration>
+							<noWrappedOperations>true</noWrappedOperations>
 							<wsdlOptions>
 								<wsdlOption>
 									<wsdlArtifact>
-										<groupId>no.nav.maven.poc</groupId>
-										<artifactId>poc-module1</artifactId>
-										<version>1.12-SNAPSHOT</version>
-									</wsdlArtifact>
-								</wsdlOption>
-								<wsdlOption>
-									<wsdlArtifact>
-										<groupId>no.nav.maven.poc</groupId>
-										<artifactId>poc-module2</artifactId>
-										<version>1.10-SNAPSHOT</version>
+										<groupId>no.nav.esb</groupId>
+										<artifactId>pensjon-opptjening-tjeneste</artifactId>
+										<version>1.0.0</version>
 									</wsdlArtifact>
 								</wsdlOption>
 							</wsdlOptions>

@@ -40,18 +40,11 @@
 							</outputDirectory>
 							<artifactItems>
 								<artifactItem>
-									<groupId>no.nav.maven.poc</groupId>
-									<artifactId>poc-module1</artifactId>
+									<groupId>no.nav.esb</groupId>
+									<artifactId>pensjon-opptjening-tjeneste</artifactId>
 									<type>wsdl-interface</type>
-									<classifier>wsdlif</classifier>
-									<version>1.12-SNAPSHOT</version>
-								</artifactItem>
-								<artifactItem>
-									<groupId>no.nav.maven.poc</groupId>
-									<artifactId>poc-module2</artifactId>
-									<type>wsdl-interface</type>
-									<classifier>wsdlif</classifier>
-									<version>1.10-SNAPSHOT</version>
+									<classifier>wsexports</classifier>
+									<version>1.0.0</version>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
