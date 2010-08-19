@@ -7,7 +7,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,7 +52,7 @@ public class NamespaceToPackageMapGenerator {
 			Matcher m = namespacePattern.matcher(fileString);
 			while (m.find()) {
 				String nameSpace = m.group(1);
-				String packageName = generatePackageNameFromNamespace(nameSpace);
+				String packageName = generatePackageNameFromNamespace("http://" + nameSpace);
 				if (packageName != null) {
 					String escapedNameSpaceUrl = "http\\://" + nameSpace;
 					nameSpaceMap.put(escapedNameSpaceUrl, packageName);
@@ -65,24 +70,62 @@ public class NamespaceToPackageMapGenerator {
 	}
 
 	private String generatePackageNameFromNamespace(String nameSpace) {
-		String[] parts = nameSpace.split("/");
-		// Check if this is something else than a namespace
-		if (parts[0].startsWith("www") || parts[0].startsWith("localhost") || parts[0].endsWith(".org"))
-			return null;
+		try {
+			Appendable packageName = new Appendable() {
+				StringBuilder adaptee = new StringBuilder();
 
-		StringBuilder packageName = new StringBuilder();
-		// Skip parts[0], since this is the module name. Add the other parts,
-		// dot-separated;
-		for (int i = 1; i < parts.length; i++) {
-			if (packageName.length() > 0) {
-				packageName.append(".");
+				public Appendable append(CharSequence csq) throws IOException {
+					append(csq, 0, csq.length());
+					return this;
+				}
+
+				public Appendable append(char c) throws IOException {
+					append(new String(new char[] { c }));
+					return this;
+				}
+
+				public Appendable append(CharSequence csq, int start, int end) throws IOException {
+					if (csq != null && csq.length() > 0) {
+						if (adaptee.length() > 0) {
+							adaptee.append('.');
+						}
+						adaptee.append(csq, start, end);
+					}
+					return this;
+				}
+
+				@Override
+				public String toString() {
+					return adaptee.toString();
+				}
+			};
+
+			URI uri = new URI(nameSpace);
+
+			String host = uri.getHost();
+			if (host != null) {
+				String[] hostParts = host.split("\\.");
+				if (hostParts.length > 1) {
+					List<String> hostPartsList = Arrays.asList(hostParts);
+					Collections.reverse(hostPartsList);
+					for (String hostPart : hostPartsList) {
+						packageName.append(hostPart);
+					}
+				}
 			}
-			packageName.append(parts[i]);
-		}
-		if (packageName.length() > 0) {
-			return packageName.toString().toLowerCase();
-		} else {
-			return null;
+
+			String path = uri.getPath();
+			if (path != null) {
+				String[] pathParts = path.split("/");
+				for (String pathPart : pathParts) {
+					packageName.append(pathPart);
+				}
+			}
+			return packageName.toString();
+		} catch (URISyntaxException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 }
