@@ -17,7 +17,7 @@ import no.nav.femhelper.common.Queries;
 
 import org.apache.commons.cli.CommandLine;
 
-import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
+import com.ibm.wbiserver.manualrecovery.SCAEvent;
 import com.ibm.wbiserver.manualrecovery.exceptions.FailedEventDataException;
 import com.ibm.websphere.management.exception.ConnectorException;
 
@@ -60,9 +60,9 @@ public class ReportAction extends AbstractAction {
 				Object[] BOparams = new Object[] { new String((String) event.getMessageID()) };
 				String[] BOsignature = new String[] { "java.lang.String" };
 				try {
-					FailedEventWithParameters failedEventWithParameters = (FailedEventWithParameters) adminClient.invoke(
+					SCAEvent scaEvent = (SCAEvent) adminClient.invoke(
 								failedEventManager, eventWithParameter, BOparams, BOsignature);
-					fileWriter.writeCSVEvent(failedEventWithParameters, event, adminClient);
+					fileWriter.writeCSVEvent(scaEvent, event, adminClient);
 				} catch (MBeanException e) {
 					if (e.getCause() != null && e.getCause() instanceof FailedEventDataException) {
 						FailedEventDataException cause = (FailedEventDataException) e.getCause();

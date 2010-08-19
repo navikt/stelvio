@@ -17,7 +17,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.Ostermiller.util.CSVPrinter;
 import com.ibm.wbiserver.manualrecovery.FailedEventParameter;
-import com.ibm.wbiserver.manualrecovery.FailedEventWithParameters;
+import com.ibm.wbiserver.manualrecovery.SCAEvent;
 import com.ibm.websphere.management.AdminClient;
 import commonj.sdo.DataObject;
 import commonj.sdo.Property;
@@ -97,54 +97,52 @@ public class EventFileWriter {
 	 * Format from FEM format to CSV and write
 	 * 
 	 * @param event
-	 * @param parameters
+	 * @param scaEvent
 	 * @param adminClient
 	 * @throws IOException
 	 */
-	public void writeCSVEvent(FailedEventWithParameters parameters, Event event, AdminClient adminClient) throws IOException {
+	public void writeCSVEvent(SCAEvent scaEvent, Event event, AdminClient adminClient) throws IOException {
 		// Write information about this event
-		csvPrinter.write(parameters.getMsgId());
-		csvPrinter.write(parameters.getSessionId());
-		csvPrinter.write(parameters.getInteractionType());
-		csvPrinter.write(parameters.getSourceModuleName());
-		csvPrinter.write(parameters.getSourceComponentName());
-		csvPrinter.write(parameters.getDestinationModuleName());
-		csvPrinter.write(parameters.getDestinationComponentName());
-		csvPrinter.write(parameters.getDestinationMethodName());
+		csvPrinter.write(scaEvent.getMsgId());
+		csvPrinter.write(scaEvent.getSessionId());
+		csvPrinter.write(scaEvent.getInteractionType());
+		csvPrinter.write(scaEvent.getSourceModuleName());
+		csvPrinter.write(scaEvent.getSourceComponentName());
+		csvPrinter.write(scaEvent.getDestinationModuleName());
+		csvPrinter.write(scaEvent.getDestinationComponentName());
+		csvPrinter.write(scaEvent.getDestinationMethodName());
 		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
-		csvPrinter.write(sdf.format(parameters.getFailureDateTime()));
+		csvPrinter.write(sdf.format(scaEvent.getFailureDateTime()));
 
 		// LS, looks like a bug in the FEM MBEAN because only get 1024 bytes
 		// back - message is truncated
-		csvPrinter.write(parameters.getFailureMessage() + "...(truncated to max. 1024 bytes)");
+		csvPrinter.write(scaEvent.getFailureMessage() + "...(truncated to max. 1024 bytes)");
 
 		// Write parameters from the failed event
 		StringBuilder sb = new StringBuilder();
-		if (parameters instanceof FailedEventWithParameters) {
-			try {
-				List paramList = parameters.getFailedEventParameters(adminClient.getConnectorProperties());
+		try {
+			List paramList = scaEvent.getFailedEventParameters(adminClient.getConnectorProperties());
 
-				for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
-					// Each parameter is know as a type of FailedEventParameter.
-					FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
-					
-					if (failedEventParameter.getValue() instanceof DataObject) {
-						toString((DataObject) failedEventParameter.getValue(), sb);
-					} else if (failedEventParameter.getValue() instanceof String) {
-						sb.append(failedEventParameter.getValue().toString());
-					} else {
-						sb.append("Unable to convert");
-					}
-					// Ensure all 'cells' are filled to improve make the view even more easy to read
-					sb.append(EMPTY);
+			for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
+				// Each parameter is know as a type of FailedEventParameter.
+				FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
+
+				if (failedEventParameter.getValue() instanceof DataObject) {
+					toString((DataObject) failedEventParameter.getValue(), sb);
+				} else if (failedEventParameter.getValue() instanceof String) {
+					sb.append(failedEventParameter.getValue().toString());
+				} else {
+					sb.append("Unable to convert");
 				}
-			} catch (RuntimeException e) {
-				String errormsg = "RuntimeException caught during retrieval of business object" 
-					+ e.getClass().getName() + "(" + e.getMessage() + ")";
-				sb.append(errormsg);
+				// Ensure all 'cells' are filled to improve make the view even more easy to read
 				sb.append(EMPTY);
-				LOGGER.log(Level.SEVERE, errormsg, e);
 			}
+		} catch (RuntimeException e) {
+			String errormsg = "RuntimeException caught during retrieval of business object" + e.getClass().getName() + "("
+					+ e.getMessage() + ")";
+			sb.append(errormsg);
+			sb.append(EMPTY);
+			LOGGER.log(Level.SEVERE, errormsg, e);
 		}
 		csvPrinter.write(sb.toString());
 
@@ -155,11 +153,12 @@ public class EventFileWriter {
 	/**
 	 * Append string representation of a DataObject to StringBuilder
 	 * 
-	 * The method is intented for debugging and logging
-	 * Namespace is omitted for types and properties
+	 * The method is intented for debugging and logging Namespace is omitted for types and properties
 	 * 
-	 * @param dataObject The dataObject to append as a string
-	 * @param resultString An initialized StringBuilder to append to
+	 * @param dataObject
+	 *            The dataObject to append as a string
+	 * @param resultString
+	 *            An initialized StringBuilder to append to
 	 */
 	private static void toString(DataObject dataObject, StringBuilder resultString) {
 		Type type = dataObject.getType();
