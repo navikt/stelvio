@@ -29,7 +29,7 @@
 		<devArchBaseDir>/opt/DevArch/</devArchBaseDir>
 		<bundleAreaDir>${devArchBaseDir}/BUNDLE</bundleAreaDir>
 		<stagingAreaDir${devArchBaseDir}/STAGING</stagingAreaDir>
-		<wsadminLocation>/opt/IBM/WebSphere/ProcServer7/profiles/Dmgr01/bin/</wsadminLocation>
+		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
 		<!-- /hudson -->
 		
 		<wasdeployVersion>1.3-SNAPSHOT</wasdeployVersion>
