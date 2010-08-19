@@ -24,7 +24,7 @@
 		--><!-- /moose -->
 		
 		<!-- hudson -->
-		<devArchBaseDir>/opt/DevArch/</devArchBaseDir>
+		<devArchBaseDir>/opt/DevArch</devArchBaseDir>
 		<bundleAreaDir>${devArchBaseDir}/BUNDLE</bundleAreaDir>
 		<stagingAreaDir>${devArchBaseDir}/STAGING</stagingAreaDir>
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
