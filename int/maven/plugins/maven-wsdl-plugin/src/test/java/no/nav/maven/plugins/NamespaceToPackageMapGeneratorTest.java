@@ -1,6 +1,6 @@
 package no.nav.maven.plugins;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.net.URI;
@@ -36,6 +36,6 @@ public class NamespaceToPackageMapGeneratorTest {
 		File wsdlDirectory = new File(new URI(wsdlDirectoryURL.toString()));
 		Map<String, String> ret = new NamespaceToPackageMapGenerator()
 				.createNameSpaceToPackageMapFromWSDLDirectory(wsdlDirectory);
-		assertEquals(ret.get("http\\://poc-lib2/no/nav/gbo"), "no.nav.gbo");
+		assertEquals("no.nav.gbo", ret.get("http\\://poc-lib2/no/nav/gbo"));
 	}
 }
