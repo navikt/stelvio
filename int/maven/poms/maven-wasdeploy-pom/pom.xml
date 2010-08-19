@@ -168,7 +168,7 @@
 						</goals>
 						<configuration>
 							<ear>${stagingArea}/${earName}</ear>
-							<springConfigFile>/top/YO</springConfigFile>
+							<springConfigFile>${ejbSecurityFile}</springConfigFile>
 							<mappingFile>${mapFile}</mappingFile>
 						</configuration>
 					</execution>
