@@ -642,6 +642,9 @@ int/maven-pocs/maven-build-poc/layers/target
 int/maven-pocs/maven-build-poc/module-client/*.classpath
 int/maven-pocs/maven-build-poc/module-client/.project
 int/maven-pocs/maven-build-poc/module-client/target
+int/maven-pocs/maven-build-poc/module-cxf-client/.classpath
+int/maven-pocs/maven-build-poc/module-cxf-client/.project
+int/maven-pocs/maven-build-poc/module-cxf-client/.settings
 int/maven-pocs/maven-build-poc/module-cxf-client/target
 int/maven-pocs/maven-build-poc/module-groups/poc-mg1/libs
 int/maven-pocs/maven-build-poc/module-groups/poc-mg1/modules
