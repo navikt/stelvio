@@ -28,7 +28,7 @@
 		<!-- hudson -->
 		<devArchBaseDir>/opt/DevArch/</devArchBaseDir>
 		<bundleAreaDir>${devArchBaseDir}/BUNDLE</bundleAreaDir>
-		<stagingAreaDir${devArchBaseDir}/STAGING</stagingAreaDir>
+		<stagingAreaDir>${devArchBaseDir}/STAGING</stagingAreaDir>
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
 		<!-- /hudson -->
 		
@@ -45,6 +45,7 @@
 		<pselvSSAccessDeniedURL>/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow</pselvSSAccessDeniedURL>
 		<roleMappingDir>${devArchBaseDir}/security/rolemapping/</roleMappingDir>
 		<ejbSecurityFile>${devArchBaseDir}/security/ejb-security/${environment/domain}/ejb-security.xml</ejbSecurityFile>
+		
 	</properties>
 
 	<build>
