@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extensionmodel:ExtensionMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.wiring.ui.ext.model="http:///com/ibm/wbit/wiring/ui/ext/model.ecore" xmlns:extensionmodel="http:///extensionmodel.ecore" xmi:id="ExtensionMap_1222254920953" namespace="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0">
   <extensions xmi:id="Extension_1222254920953">
-    <extendedObject href="iverksettVedtakBPTest.component#//@Component"/>
+    <extendedObject href="iverksettVedtakBPParticipate.component#//@Component"/>
     <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1222254920953" x="270" y="157" unknown="false" visible="true" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation" synchronizeDisplayName="false"/>
   </extensions>
   <extensions xmi:id="Extension_1222254920954">

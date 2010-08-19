@@ -6,7 +6,7 @@
   <references>
     <reference name="IverksettVedtakTestPartner">
       <interface xsi:type="java:JavaInterface" interface="ppen015.test.bproc.nav.no.nav.inf.iverksettvedtaktest.IverksettVedtakTest"/>
-      <wire target="iverksettVedtakBPTest"/>
+      <wire target="iverksettVedtakBPParticipate"/>
     </reference>
   </references>
   <implementation xsi:type="java:JavaImplementation" class="no.nav.java.SamordningStubImpl"/>
