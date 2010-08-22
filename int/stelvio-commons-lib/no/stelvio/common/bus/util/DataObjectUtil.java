@@ -16,6 +16,7 @@ package no.stelvio.common.bus.util;
 import java.io.ByteArrayOutputStream;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Vector;
 
 import com.ibm.websphere.bo.BOXMLSerializer;
@@ -34,7 +35,7 @@ import commonj.sdo.Type;
  * </p>
  * 
  * @author persona2c5e3b49756 Schnell, test@example.com
- * 
+ * @author Erik Godding Boye, test@example.com
  */
 
 public class DataObjectUtil {
@@ -43,6 +44,90 @@ public class DataObjectUtil {
 	public static final int MATCH_NAME = 1;
 	public static final int MATCH_TYPENAME = 2;
 	public static final int MATCH_BOTH = MATCH_NAME | MATCH_TYPENAME;
+
+	/**
+	 * Remove all leading and trailing whitespace from all data object string properties (recursively).
+	 * 
+	 * @param dataObject
+	 *            dataObject
+	 * @return dataObject
+	 */
+	public static DataObject trimWhitespace(DataObject dataObject) {
+		visitProperties(dataObject, new PropertyVisitor() {
+			@Override
+			public Object visitProperty(Object propertyValue) {
+				Object newPropertyValue = propertyValue;
+				if (propertyValue != null & propertyValue instanceof String) {
+					newPropertyValue = ((String) propertyValue).trim();
+				}
+				return newPropertyValue;
+			}
+		});
+		return dataObject;
+	}
+
+	/**
+	 * Nullify all data object strings properties that are whitespace only (recursively).
+	 * 
+	 * @param dataObject
+	 *            dataObject
+	 * @return dataObject
+	 */
+	public static DataObject nullifyBlankStrings(DataObject dataObject) {
+		visitProperties(dataObject, new PropertyVisitor() {
+			@Override
+			public Object visitProperty(Object propertyValue) {
+				if (propertyValue != null & propertyValue instanceof String) {
+					for (char character : ((String) propertyValue).toCharArray()) {
+						if (!Character.isWhitespace(character)) {
+							return propertyValue;
+						}
+					}
+					// All characters are whitespace - return null;
+					return null;
+				}
+				return propertyValue;
+			}
+		});
+		return dataObject;
+	}
+
+	/**
+	 * Utility method that can be used to visit all (simple properties) in a data object structure.
+	 * 
+	 * @param dataObject
+	 *            dataObject
+	 * @param propertyVisitor
+	 *            propertyVisitor
+	 */
+	public static void visitProperties(DataObject dataObject, PropertyVisitor propertyVisitor) {
+		visitProperties((Object) dataObject, propertyVisitor);
+	}
+
+	private static Object visitProperties(Object object, PropertyVisitor propertyVisitor) {
+		if (object == null) {
+			return object;
+		} else if (object instanceof DataObject) {
+			DataObject dataObject = (DataObject) object;
+			for (Property property : (List<Property>) dataObject.getType().getProperties()) {
+				Object propertyValue = dataObject.get(property);
+				if (property.isMany()) {
+					List list = (List) propertyValue;
+					for (ListIterator listIterator = list.listIterator(); listIterator.hasNext();) {
+						Object listElement = listIterator.next();
+						Object newListElement = visitProperties(listElement, propertyVisitor);
+						listIterator.set(newListElement);
+					}
+				} else {
+					Object newPropertyValue = visitProperties(propertyValue, propertyVisitor);
+					dataObject.set(property, newPropertyValue);
+				}
+			}
+			return object;
+		} else {
+			return propertyVisitor.visitProperty(object);
+		}
+	}
 
 	/**
 	 * <p>
@@ -181,7 +266,7 @@ public class DataObjectUtil {
 				if (target == null)
 					target = DataFactory.INSTANCE.create(source.getType());
 				for (Iterator i = source.getType().getProperties().iterator(); i.hasNext();) { // iterate over source
-																								// properties
+					// properties
 					Property sProp = (Property) i.next();
 					Object object = source.get(sProp);
 					Property tProp;
