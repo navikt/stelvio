@@ -1,75 +1,78 @@
 package no.nav.maven.plugins;
 
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.codehaus.plexus.util.IOUtil;
 
-public class NamespaceToPackageMapGenerator {
+/**
+ * TODO: Rewrite this class using WSDL4J instead of RegEx
+ */
+public class NamespaceToPackageMappingGenerator {
 	private String encoding;
 
 	private Pattern namespacePattern = Pattern.compile("\"http://([^\"]+)\"");
 
-	public NamespaceToPackageMapGenerator() {
+	public NamespaceToPackageMappingGenerator() {
 		this(System.getProperty("file.encoding"));
 	}
 
-	public NamespaceToPackageMapGenerator(String encoding) {
+	public NamespaceToPackageMappingGenerator(String encoding) {
 		this.encoding = encoding;
 	}
 
-	public Map<String, String> createNameSpaceToPackageMapFromWSDLDirectory(File wsdlDirectory) {
-		HashMap<String, String> map = new HashMap<String, String>();
+	public Properties createNamespaceToPackageMappingFromWSDLDirectory(File wsdlDirectory) {
+		Properties mapping = new Properties();
 		try {
-			createNameSpaceToPackageMap(wsdlDirectory, map);
+			createNamespaceToPackageMapping(wsdlDirectory, mapping);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-		return map;
+		return mapping;
 	}
 
-	private void createNameSpaceToPackageMap(File file, Map<String, String> nameSpaceMap) throws IOException {
+	private void createNamespaceToPackageMapping(File file, Properties mapping) throws IOException {
 		if (file.isDirectory()) {
 			for (File f : file.listFiles()) {
-				createNameSpaceToPackageMap(f, nameSpaceMap);
+				createNamespaceToPackageMapping(f, mapping);
 			}
 		} else {
 			String fileString = readFileToString(file);
 			Matcher m = namespacePattern.matcher(fileString);
 			while (m.find()) {
-				String nameSpace = m.group(1);
-				String packageName = generatePackageNameFromNamespace("http://" + nameSpace);
-				if (packageName != null) {
-					String escapedNameSpaceUrl = "http\\://" + nameSpace;
-					nameSpaceMap.put(escapedNameSpaceUrl, packageName);
+				String namespace = "http://" + m.group(1);
+				if (!mapping.containsKey(namespace)) {
+					String packageName = generatePackageNameFromNamespace(namespace);
+					if (packageName != null) {
+						mapping.put(namespace, packageName);
+					}
 				}
 			}
 		}
 	}
 
 	private String readFileToString(File file) throws IOException {
-		StringWriter stringWriter = new StringWriter();
-		Reader fileReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), encoding));
-		IOUtil.copy(fileReader, stringWriter);
-		fileReader.close();
-		return stringWriter.toString();
+		InputStream inputStream = null;
+		try {
+			inputStream = new BufferedInputStream(new FileInputStream(file));
+			return IOUtil.toString(inputStream, encoding);
+		} finally {
+			IOUtil.close(inputStream);
+		}
 	}
 
-	private String generatePackageNameFromNamespace(String nameSpace) {
+	private String generatePackageNameFromNamespace(String namespace) {
 		try {
 			Appendable packageName = new Appendable() {
 				StringBuilder adaptee = new StringBuilder();
@@ -100,7 +103,7 @@ public class NamespaceToPackageMapGenerator {
 				}
 			};
 
-			URI uri = new URI(nameSpace);
+			URI uri = new URI(namespace);
 
 			String host = uri.getHost();
 			if (host != null) {

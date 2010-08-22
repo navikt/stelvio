@@ -16,21 +16,18 @@ package no.nav.maven.plugins;
  * limitations under the License.
  */
 
-import java.io.BufferedWriter;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
@@ -50,6 +47,7 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.ProjectUtils;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
+import org.codehaus.plexus.util.IOUtil;
 import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.Arg;
 import org.codehaus.plexus.util.cli.CommandLineException;
@@ -157,12 +155,12 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private String widRuntime;
-	
+
 	/**
 	 * @parameter default-value="false"
 	 */
 	private boolean noWrappedOperations;
-	
+
 	/**
 	 * @parameter default-value="false"
 	 */
@@ -196,7 +194,8 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 		// in Maven. See Maven bugs MNG-3506 and MNG-2426 for more info.
 		if (!wsdlInterfaceArtifactHandler.equals(artifactHandlerManager.getArtifactHandler(WSDL_INTERFACE_ARTIFACT_TYPE))) {
 			getLog().debug("Adding project interchange artifact handler to artifact handler manager");
-			artifactHandlerManager.addHandlers(Collections.singletonMap(WSDL_INTERFACE_ARTIFACT_TYPE, wsdlInterfaceArtifactHandler));
+			artifactHandlerManager.addHandlers(Collections.singletonMap(WSDL_INTERFACE_ARTIFACT_TYPE,
+					wsdlInterfaceArtifactHandler));
 		}
 
 		String exec;
@@ -219,7 +218,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 
 			// Generate the NStoPkg.properties-file that will make sensible
 			// packages for the wsdl
-			File nameSpaceToPackageFile = generateNameSpaceToPackageFile(wsdlZipDir);
+			File namespaceToPackageFile = generateNamespaceToPackageFile(wsdlZipDir);
 
 			// Next, call the WSDL2Java script for all wsdl-files in the
 			// artifact
@@ -231,7 +230,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 			for (File wsdlFile : wsdlFiles) {
 				commandLine.clearArgs();
 				Arg arg = commandLine.createArg();
-				
+
 				StringBuilder argLineBuilder = new StringBuilder();
 				argLineBuilder.append(" -role client");
 				argLineBuilder.append(" -container none");
@@ -242,10 +241,11 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 				if (noWrappedArrays) {
 					argLineBuilder.append(" -noWrappedArrays");
 				}
-				argLineBuilder.append(" -fileNStoPkg ").append('"').append(nameSpaceToPackageFile.getAbsolutePath()).append('"');
+				argLineBuilder.append(" -fileNStoPkg ").append('"').append(namespaceToPackageFile.getAbsolutePath())
+						.append('"');
 				argLineBuilder.append(" -output ").append('"').append(classGenerationDirectory.getAbsolutePath()).append('"');
 				argLineBuilder.append(" ").append('"').append(wsdlFile.getAbsolutePath()).append('"');
-				
+
 				arg.setLine(argLineBuilder.toString());
 				executeCommand(commandLine);
 			}
@@ -254,22 +254,20 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 		project.addCompileSourceRoot(classGenerationDirectory.getAbsolutePath());
 	}
 
-	private File generateNameSpaceToPackageFile(File wsdlZipDir) throws MojoExecutionException {
+	private File generateNamespaceToPackageFile(File wsdlZipDir) throws MojoExecutionException {
+		OutputStream out = null;
 		try {
-			Map<String, String> namespaceToPackageMap = new NamespaceToPackageMapGenerator(encoding)
-					.createNameSpaceToPackageMapFromWSDLDirectory(wsdlZipDir);
-			File nameSpaceToPackageFile = new File(wsdlZipDir, "NStoPkg.properties");
-			PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
-					nameSpaceToPackageFile), encoding)));
-			for (String namespace : namespaceToPackageMap.keySet()) {
-				pw.println(namespace + "=" + namespaceToPackageMap.get(namespace));
-			}
-			pw.close();
-			return nameSpaceToPackageFile;
-		} catch (UnsupportedEncodingException e) {
+			Properties mapping = new NamespaceToPackageMappingGenerator(encoding)
+					.createNamespaceToPackageMappingFromWSDLDirectory(wsdlZipDir);
+
+			File namespaceToPackageFile = new File(wsdlZipDir, "NStoPkg.properties");
+			out = new BufferedOutputStream(new FileOutputStream(namespaceToPackageFile));
+			mapping.store(out, null);
+			return namespaceToPackageFile;
+		} catch (IOException e) {
 			throw new MojoExecutionException("Error generating NStoPkg.properties file", e);
-		} catch (FileNotFoundException e) {
-			throw new MojoExecutionException("Error generating NStoPkg.properties file", e);
+		} finally {
+			IOUtil.close(out);
 		}
 	}
 
@@ -342,8 +340,8 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 				// TODO: Improve error handling
 				continue;
 			}
-			Artifact wsdlArtifact = artifactFactory.createArtifactWithClassifier(wsdlA.getGroupId(), wsdlA.getArtifactId(), wsdlA
-					.getVersion(), wsdlA.getType(), wsdlA.getClassifier());
+			Artifact wsdlArtifact = artifactFactory.createArtifactWithClassifier(wsdlA.getGroupId(), wsdlA.getArtifactId(),
+					wsdlA.getVersion(), wsdlA.getType(), wsdlA.getClassifier());
 			wsdlArtifact = resolveRemoteWsdlArtifact(remoteRepos, wsdlArtifact);
 			if (wsdlArtifact.getFile() == null) {
 				throw new MojoExecutionException("Unable to resolve artifact: " + wsdlArtifact);

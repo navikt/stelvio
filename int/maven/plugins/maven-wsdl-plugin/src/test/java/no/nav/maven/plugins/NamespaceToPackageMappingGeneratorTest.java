@@ -6,12 +6,13 @@ import java.io.File;
 import java.net.URI;
 import java.net.URL;
 import java.util.Map;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.junit.Test;
 
-public class NamespaceToPackageMapGeneratorTest {
+public class NamespaceToPackageMappingGeneratorTest {
 
 	// @Test
 	public void testPatternMatch() {
@@ -31,11 +32,11 @@ public class NamespaceToPackageMapGeneratorTest {
 	}
 
 	@Test
-	public void testCreateNameSpaceToPackageMapFromWSDLDirectory() throws Exception {
+	public void testCreateNamespaceToPackageMapFromWSDLDirectory() throws Exception {
 		URL wsdlDirectoryURL = this.getClass().getClassLoader().getResource("wsdl");
 		File wsdlDirectory = new File(new URI(wsdlDirectoryURL.toString()));
-		Map<String, String> ret = new NamespaceToPackageMapGenerator()
-				.createNameSpaceToPackageMapFromWSDLDirectory(wsdlDirectory);
-		assertEquals("no.nav.gbo", ret.get("http\\://poc-lib2/no/nav/gbo"));
+		Properties mapping = new NamespaceToPackageMappingGenerator()
+				.createNamespaceToPackageMappingFromWSDLDirectory(wsdlDirectory);
+		assertEquals("no.nav.gbo", mapping.get("http://poc-lib2/no/nav/gbo"));
 	}
 }
