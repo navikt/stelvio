@@ -42,15 +42,17 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang.StringUtils;
 
 import com.ibm.wbiserver.manualrecovery.FailedEvent;
+import com.ibm.wbiserver.manualrecovery.QueryFilters;
+import com.ibm.wbiserver.manualrecovery.exceptions.InvalidFilterNameException;
+import com.ibm.wbiserver.manualrecovery.exceptions.InvalidFilterValueException;
 import com.ibm.websphere.management.AdminClient;
 import com.ibm.websphere.management.AdminClientFactory;
 import com.ibm.websphere.management.exception.ConnectorException;
 import com.ibm.ws.exception.WsException;
 
 /**
- * Super class for all Action classes. This class shall be inherited for all
- * functional areas, such as finding all failed events, deleting events, or just
- * getting the current depth of FEM
+ * Super class for all Action classes. This class shall be inherited for all functional areas, such as finding all failed
+ * events, deleting events, or just getting the current depth of FEM
  * 
  * @author Andreas Roe
  */
@@ -165,9 +167,8 @@ public abstract class AbstractAction {
 	}
 
 	/**
-	 * Private method that make use of the class member variable
-	 * <code>properties</code> to debug log all input parameters (excluding
-	 * the password)
+	 * Private method that make use of the class member variable <code>properties</code> to debug log all input parameters
+	 * (excluding the password)
 	 */
 	private void logProperties() {
 		logger.log(Level.FINE, "Initializing admin client with the following properties:");
@@ -191,14 +192,14 @@ public abstract class AbstractAction {
 	/**
 	 * Private method for colleacting events TODO AR: Rewrite this method
 	 * 
-	 * @param criteria ->
-	 *            filer events (session id) based on the criteria
-	 * @param paging ->
-	 *            should we run over all fem entries with paging
-	 * @param totalevents ->
-	 *            number of totalevents. Is now more used
-	 * @param maxresultset ->
-	 *            what are the result size
+	 * @param criteria
+	 *            -> filer events (session id) based on the criteria
+	 * @param paging
+	 *            -> should we run over all fem entries with paging
+	 * @param totalevents
+	 *            -> number of totalevents. Is now more used
+	 * @param maxresultset
+	 *            -> what are the result size
 	 * @return a filtered list of failed events
 	 */
 	@SuppressWarnings("unchecked")
@@ -232,8 +233,8 @@ public abstract class AbstractAction {
 				}
 			}
 		} else {
-			// Set timefram agruments if applicable
-			// The presence of times and the format are allready validated in
+			// Set timeframe arguments if applicable
+			// The presence of times and the format are already validated in
 			// ArgumentValidator
 			if (arguments.containsKey(CommandOptions.timeFrame)) {
 				String timeFrame = arguments.get(CommandOptions.timeFrame);
@@ -250,9 +251,30 @@ public abstract class AbstractAction {
 			do {
 				++pagecount;
 				logger.log(Level.INFO, "Collect events for page #" + pagecount);
-				String femQuery = Queries.QUERY_EVENT_WITH_TIMEPERIOD;
-				Object[] pagepar = new Object[] { begin, end, new Integer(maxresultset) };
-				String[] pagesig = new String[] { "java.util.Date", "java.util.Date", "int" };
+				String femQuery = Queries.QUERY_FAILED_EVENTS;
+				QueryFilters queryFilters = new QueryFilters();
+				if (begin != null) {
+					try {
+						queryFilters.setFilter(QueryFilters.BEGIN_TIME, begin);
+					} catch (InvalidFilterNameException e) {
+						throw new RuntimeException("Invalid filter name");
+					} catch (InvalidFilterValueException e) {
+						throw new RuntimeException("Begin date is not valid");
+					}
+				}
+
+				if (end != null) {
+					try {
+						queryFilters.setFilter(QueryFilters.END_TIME, end);
+					} catch (InvalidFilterNameException e) {
+						throw new RuntimeException("Invalid filter name");
+					} catch (InvalidFilterValueException e) {
+						throw new RuntimeException("End date is not valid");
+					}
+				}
+
+				Object[] pagepar = new Object[] { queryFilters, 0, new Integer(maxresultset) };
+				String[] pagesig = new String[] { "com.ibm.wbiserver.manualrecovery.QueryFilters", "int", "int" };
 				failedEventList = (List<FailedEvent>) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
 				for (FailedEvent failedEvent : failedEventList) {
 					if (isEventApplicable(failedEvent, arguments)) {
@@ -262,6 +284,7 @@ public abstract class AbstractAction {
 				}
 
 				if (!failedEventList.isEmpty()) {
+
 					// Update end date for the next page
 					FailedEvent lastevent = failedEventList.get(failedEventList.size() - 1);
 					logger.log(Level.INFO, "Completed collecting events for page #" + pagecount);
@@ -290,14 +313,12 @@ public abstract class AbstractAction {
 	}
 
 	/**
-	 * Method that evaluate if a single event matches one or more search
-	 * criterias
+	 * Method that evaluate if a single event matches one or more search criterias
 	 * 
 	 * @param e
 	 *            to evaluate
 	 * @param args
-	 *            to evaluate against. This is collected from the
-	 *            <code>CommandLine </code> object
+	 *            to evaluate against. This is collected from the <code>CommandLine </code> object
 	 * @return
 	 */
 	private boolean isEventApplicable(FailedEvent e, Map<String, String> args) {
@@ -329,14 +350,11 @@ public abstract class AbstractAction {
 	}
 
 	/**
-	 * Generic method to validate a attribute on the <code>FailedEvent</code>
-	 * event against values in the argument list.
+	 * Generic method to validate a attribute on the <code>FailedEvent</code> event against values in the argument list.
 	 * 
-	 * The rules are the following
-	 * <li>TRUE If the criteria is empty</li>
-	 * <li>TRUE If the criteria is a part of the value</li>
-	 * <li>FALSE If the event's value is empty while the criteria is not</li>
-	 * <li>FALSE If the criteria is not a part of the value</li>
+	 * The rules are the following <li>TRUE If the criteria is empty</li> <li>TRUE If the criteria is a part of the value</li>
+	 * <li>FALSE If the event's value is empty while the criteria is not</li> <li>FALSE If the criteria is not a part of the
+	 * value</li>
 	 * 
 	 * @param eventValue
 	 * @param criteria
