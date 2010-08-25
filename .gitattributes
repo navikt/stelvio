@@ -3277,6 +3277,10 @@ int/pmr/44503-001-806/ejbClient-before-refactoring-PI.zip -text
 int/pmr/44503-001-806/ejbClient2-after-refactoring-PI.zip -text
 int/pmr/44503-001-806/ejbClient2-before-refactoring-PI.zip -text
 int/pmr/44503-001-806/versionInfo.log -text
+int/pmr/44708-001-806/minimal_reproduce_UTF8XML_fixed/pmr44708.zip -text
+int/pmr/44708-001-806/minimal_reproduce_XMLJMS/JMSresponse.txt -text
+int/pmr/44708-001-806/minimal_reproduce_XMLJMS/pmr44708.zip -text
+int/pmr/44708-001-806/minimal_reproduce_XMLJMS_fixed/pmr44708.zip -text
 int/pmr/44711-001-806/System.out.log -text
 int/pmr/44711-001-806/ejbConsumingModule-PI.zip -text
 int/pmr/44711-001-806/versionInfo.log -text
