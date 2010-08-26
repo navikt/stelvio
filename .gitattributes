@@ -2875,6 +2875,7 @@ int/maven/poms/maven-plugin-pom/pom.xml -text
 int/maven/poms/maven-root-pom/.project -text
 int/maven/poms/maven-root-pom/pom.xml -text
 int/maven/poms/maven-wasdeploy-pom/pom.xml -text
+int/maven/poms/maven-wasdeploy-pom/processApplications.py -text
 int/maven/poms/maven-wasdeploy-pom/scripts/InstallApp.py -text
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/pom.xml -text
