@@ -92,7 +92,7 @@ public class FileHandlerMojo extends AbstractMojo {
 	private String log4jBatchFile;
 
 	/**
-	 * @parameter expression="${environment/zone}"
+	 * @parameter expression="${zone}"
 	 * @required
 	 */
 	private String zone;
@@ -307,9 +307,9 @@ public class FileHandlerMojo extends AbstractMojo {
 		for (String s : filesToDelete) {
 			File toDelete = new File(s);
 			if (toDelete.delete()) {
-				getLog().info("### FILE-DELETION ### Deleted the file: " + s);
+				getLog().info("[INFO] Deleted the file: " + s);
 			} else {
-				throw new MojoFailureException("ERROR: Unable to delete the file: " + s);
+				throw new MojoFailureException("[ERROR] Unable to delete the file: " + s);
 			}
 		}
 	}
@@ -333,8 +333,8 @@ public class FileHandlerMojo extends AbstractMojo {
 		String earPath = appEAR.getAbsolutePath();
 
 		project.getProperties().put("earName", earName);
-		getLog().info("### EXPOSED MAVEN PROPERTY ### " + "earName" + " = " + earName);
+		getLog().info("[INFO] EXPOSED MAVEN PROPERTY " + "earName" + " = " + earName);
 		project.getProperties().put("earPath", earPath);
-		getLog().info("### EXPOSED MAVEN PROPERTY ### " + "earPath" + " = " + earPath);
+		getLog().info("[INFO] EXPOSED MAVEN PROPERTY " + "earPath" + " = " + earPath);
 	}
 }

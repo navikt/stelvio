@@ -129,19 +129,24 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 
 	private String mavenVersion;
 
-	// Statically set the naming convention of the PSELV WAR file, without version.
-	// Full name would be PSELV_WAR_NAME + <VERSION> + ".war"
+   /**
+	* Need to statically set the naming convention of the PSELV WAR file, without version.
+	* Full name would be PSELV_WAR_NAME + <VERSION> + ".war", this is only required for PSELV as of now.
+	*/
 	private final String PSELV_WAR_NAME = "nav-presentation-pensjon-pselv-web-";
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
-
+		
+		if (!ApplicationArtifactDependency.isSupported(application))
+			throw new MojoFailureException("[ERROR] The application, " + application + " is not supported for deploy/bundle.");
+		
 		List remoteRepos;
 
 		// Instantiate the remote repositories object
 		try {
 			remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
 		} catch (InvalidRepositoryException e) {
-			throw new MojoExecutionException("Error building remote repositories", e);
+			throw new MojoExecutionException("[ERROR] Error building remote repositories", e);
 		}
 
 		// Destination for folder extraction
@@ -193,11 +198,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 				// If the extracted resource is the pselv EAR file, we extract the WAR inside it
 				// and expose that directory to the maven context
 				if (extDirPath.contains("nav-pensjon-pselv-jee")) {
-					getLog().info("#########################################################");
-					getLog().info("###          *** PSELV DETECTED! ***                  ###");
-					getLog().info("### Extracting WAR inside extracted EAR directory ... ###");
-					getLog().info("#########################################################");
-
+					
 					File pselvWAR = new File(extDir.getPath() + "/" + PSELV_WAR_NAME + mavenVersion + ".war");
 					File pselvWARDir = new File(extDir.getPath());
 
@@ -228,7 +229,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 
 	}
 
-	// Returns the maven version based on the Moose build ID
+	// *MOOSE SPECIFIC* - Returns the maven version based on the Moose build ID
 	private String getMavenVersion(String mooseBuildId) throws MojoFailureException {
 
 		try {
@@ -238,7 +239,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 			getLog().info("######################################################");
 
 			if (!new File(mapFile).exists()) {
-				throw new IOException("ERROR: The Moose => Maven version mapping " + "file does not exist at the following location: " + mapFile);
+				throw new IOException("[ERROR] The Moose => Maven version mapping " + "file does not exist at the following location: " + mapFile);
 			}
 
 			String mavenVersion = null;
@@ -248,18 +249,18 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 			while ((line = r.readLine()) != null) {
 				if (line.startsWith(mooseBuildId)) {
 					mavenVersion = line.substring(mooseBuildId.length() + 1);
-					getLog().info("### Found version match! MOOSE_BUILD_ID:" + mooseBuildId + " => " + " MAVEN_VERSION:" + mavenVersion);
+					getLog().info("Found version match! MOOSE_BUILD_ID:" + mooseBuildId + " => " + " MAVEN_VERSION:" + mavenVersion);
 					r.close();
 					return mavenVersion;
 				}
 			}
 			if (mavenVersion == null) {
 				r.close();
-				throw new MojoFailureException("ERROR: No corresponding Maven version found for Moose build ID: " + mooseBuildId);
+				throw new MojoFailureException("[ERROR] No corresponding Maven version found for Moose build ID: " + mooseBuildId);
 			}
 
 		} catch (IOException e) {
-			throw new MojoFailureException("ERROR: Could not resolve Maven version " + e);
+			throw new MojoFailureException("[ERROR] Could not resolve Maven version " + e);
 		}
 
 		return null;
@@ -271,16 +272,16 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		try {
 			artifactResolver.resolve(artifact, remoteRepos, localRepository);
 		} catch (ArtifactResolutionException e) {
-			throw new MojoExecutionException("Error downloading artifact.", e);
+			throw new MojoExecutionException("[ERROR] Error downloading artifact.", e);
 		} catch (ArtifactNotFoundException e) {
-			throw new MojoExecutionException("Resource can not be found.", e);
+			throw new MojoExecutionException("[ERROR] Resource can not be found.", e);
 		}
 
 		return artifact;
 	}
 
 	public void exposeMavenProperty(String key, String value) {
-		getLog().info("### EXPOSED MAVEN PROPERTY ### " + key + " = " + value);
+		getLog().info("EXPOSED MAVEN PROPERTY: " + key + " = " + value);
 		project.getProperties().put(key, value);
 	}
 

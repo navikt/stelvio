@@ -28,7 +28,7 @@ public class Archiver {
 			} else if (file.getName().endsWith(".zip")) {
 				formattedDirName = file.getName().replace(".zip", "");
 			} else {
-				throw new MojoExecutionException("[ERROR]: Unsupported file format. Only 'ear', 'war', 'jar' and 'zip'");
+				throw new MojoExecutionException("[ERROR] Unsupported file format. Only 'ear', 'war', 'jar' and 'zip'");
 			}
 
 			File destinationDir = new File(stagingDirectory, formattedDirName);
@@ -39,16 +39,16 @@ public class Archiver {
 			ua.setDestDirectory(destinationDir);
 			ua.extract();
 			
-			System.out.println("[INFO] ### ARCHIVER ### Successfully extracted: " + file + " => " + destinationDir);
+			System.out.println("[INFO] Successfully extracted: " + file + " => " + destinationDir);
 
 			return destinationDir;
 
 		} catch (ArchiverException e) {
-			throw new MojoExecutionException("Error extracting archive", e);
+			throw new MojoExecutionException("[ERROR] Error extracting archive", e);
 		} catch (IOException e) {
-			throw new MojoExecutionException("Error extracting archive", e);
+			throw new MojoExecutionException("[ERROR] Error extracting archive", e);
 		} catch (Exception e) {
-			throw new MojoExecutionException("Error extracting archive", e);
+			throw new MojoExecutionException("[ERROR] Error extracting archive", e);
 		}
 	}
 
@@ -58,11 +58,11 @@ public class Archiver {
 		try {
 
 			if (!extension.equals("war") && !extension.equals("ear") && !extension.equals("zip") && !extension.equals("jar")) {
-				throw new MojoFailureException("[ERROR]: Unable to compress, " + src + ". Unsupported extension: " + extension + ", please use 'ear', 'jar', 'war' or 'zip'.");
+				throw new MojoFailureException("[ERROR] Unable to compress, " + src + ". Unsupported extension: " + extension + ", please use 'ear', 'jar', 'war' or 'zip'.");
 			}
 
 			if (!src.isDirectory()) {
-				throw new MojoFailureException("[ERROR]: Unable to compress, " + src + ". The source is not a directory.");
+				throw new MojoFailureException("[ERROR] Unable to compress, " + src + ". The source is not a directory.");
 			}
 
 			ZipArchiver za = new ZipArchiver();
@@ -73,22 +73,16 @@ public class Archiver {
 			za.setDestFile(destination);
 			za.createArchive();
 			
-
-			if (!extension.equals("zip")) {
-				// counter the silly message!
-				System.out.println("[INFO] pfff, ignore that.. we're actually creating a " + extension + "! :)");
-			}
-			
-			System.out.println("[INFO] ### ARCHIVER ### Successfully created: " + destination);
+			System.out.println("[INFO] Successfully created archive: " + destination);
 			
 			FileUtils.deleteDirectory(src);
 			
 			return za.getDestFile();
 
 		} catch (ArchiverException e) {
-			throw new MojoFailureException("[ERROR]: Unable to compress, " + src + ". " + e.getMessage());
+			throw new MojoFailureException("[ERROR] Unable to compress, " + src + ". " + e.getMessage());
 		} catch (IOException e) {
-			throw new MojoFailureException("[ERROR]: Unable to compress, " + src + ". " + e.getMessage());
+			throw new MojoFailureException("[ERROR] Unable to compress, " + src + ". " + e.getMessage());
 		}
 	}
 }

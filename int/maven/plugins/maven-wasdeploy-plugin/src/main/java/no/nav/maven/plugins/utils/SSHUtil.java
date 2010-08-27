@@ -48,7 +48,7 @@ public class SSHUtil {
 
 		int result = ssh.authenticate(pac);
 		if (result != AuthenticationProtocolState.COMPLETE) {
-			throw new IOException("[ERROR]: Unable to connect to host: " + hostname + " with username/pw:" + username + "/" + password + ".");
+			throw new IOException("[ERROR] Unable to connect to host: " + hostname + " with username/pw:" + username + "/" + password + ".");
 		}
 
 		SftpClient client = ssh.openSftpClient();
@@ -63,10 +63,10 @@ public class SSHUtil {
 		client.quit();
 		ssh.disconnect();
 		
-		System.out.println("[INFO] ### UPLOAD ### Deleting temp folder: " + tempDirectory.getParentFile().getAbsolutePath());
+		System.out.println("[INFO] Deleting temp folder: " + tempDirectory.getParentFile().getAbsolutePath());
 		FileUtils.deleteDirectory(tempDirectory.getParentFile());
 		
-		System.out.println("[INFO] ### UPLOAD ### Successfully uploaded the directory: " + localDir + " => " + hostname + ":" + remoteDir);
+		System.out.println("[INFO] Successfully uploaded the directory: " + localDir + " => " + hostname + ":" + remoteDir);
 	}
 
 	// Useless, but needed for copyLocalDirectory method. 

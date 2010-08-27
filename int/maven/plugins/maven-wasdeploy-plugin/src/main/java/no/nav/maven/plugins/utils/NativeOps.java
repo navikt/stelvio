@@ -35,6 +35,6 @@ public class NativeOps {
 				destination.close();
 		}
 		
-		System.out.println("[INFO] ### FILE COPY ### " + sourceFile + " => " + destFile);
+		System.out.println("[INFO] File copy successful. " + sourceFile + " => " + destFile);
 	}
 }

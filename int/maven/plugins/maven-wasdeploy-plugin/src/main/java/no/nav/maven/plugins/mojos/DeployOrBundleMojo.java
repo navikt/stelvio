@@ -77,107 +77,107 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	private String scriptAbsPath;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node1/hostname}"
+	 * @parameter expression="${environment/servers/was/node1/hostname}"
 	 */
-	private String n1Hostname;
+	private String node1Hostname;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node1/app-username}"
+	 * @parameter expression="${environment/servers/was/node1/linux-app-username}"
 	 */
-	private String n1AppUsername;
+	private String node1LinuxAppUsername;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node1/app-password}"
+	 * @parameter expression="${environment/servers/was/node1/linux-app-password}"
 	 */
-	private String n1AppPassword;
+	private String node1LinuxAppPassword;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node1/batch-username}"
+	 * @parameter expression="${environment/servers/was/node1/linux-batch-username}"
 	 */
-	private String n1BatchUsername;
+	private String node1LinuxBatchUsername;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node1/batch-password}"
+	 * @parameter expression="${environment/servers/was/node1/linux-batch-password}"
 	 */
-	private String n1BatchPassword;
+	private String node1LinuxBatchPassword;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node2/hostname}"
+	 * @parameter expression="${environment/servers/was/node2/hostname}"
 	 */
-	private String n2Hostname;
+	private String node2Hostname;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node2/app-username}"
+	 * @parameter expression="${environment/servers/was/node2/linux-app-username}"
 	 */
-	private String n2AppUsername;
+	private String node2AppUsername;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node2/app-password}"
+	 * @parameter expression="${environment/servers/was/node2/linux-app-password}"
 	 */
-	private String n2AppPassword;
+	private String node2AppPassword;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node2/batch-username}"
+	 * @parameter expression="${environment/servers/was/node2/linux-batch-username}"
 	 */
-	private String n2BatchUsername;
+	private String node2BatchUsername;
 
 	/**
-	 * @parameter expression="${environment/servers/was-node2/batch-password}"
+	 * @parameter expression="${environment/servers/was/node2/linux-batch-password}"
 	 */
-	private String n2BatchPassword;
+	private String node2BatchPassword;
 
 	/**
-	 * @parameter expression="${environment/node2-config-upload}"
+	 * @parameter expression="${environment/servers/was/misc/node2-config-upload}"
 	 */
 	private boolean node2Upload;
 
 	/**
-	 * @parameter expression="${environment/servers/was-dmgr/hostname}"
+	 * @parameter expression="${environment/servers/was/dmgr/hostname}"
 	 */
-	private String hostname;
+	private String dmgrHostname;
 
 	/**
-	 * @parameter expression="${environment/servers/was-dmgr/soap-port}"
+	 * @parameter expression="${environment/servers/was/dmgr/soap-port}"
 	 */
-	private String soapPort;
+	private String dmgrSoapPort;
 
 	/**
-	 * @parameter expression="${environment/servers/was-dmgr/username}"
+	 * @parameter expression="${environment/servers/was/dmgr/ws-username}"
 	 */
-	private String username;
+	private String dmgrUsername;
 
 	/**
-	 * @parameter expression="${environment/servers/was-dmgr/password}"
+	 * @parameter expression="${environment/servers/was/dmgr/ws-password}"
 	 */
 	private String password;
 
 	/**
-	 * @parameter expression="${environment/servers/misc/pensjon-server-name}"
+	 * @parameter expression="${environment/servers/was/misc/pensjon-server-name}"
 	 */
 	private String pensjonServerName;
 
 	/**
-	 * @parameter expression="${environment/servers/misc/pensjon-node-name}"
+	 * @parameter expression="${environment/servers/was/misc/pensjon-node-name}"
 	 */
 	private String pensjonNodeName;
 
 	/**
-	 * @parameter expression="${environment/servers/misc/pensjon-cluster-name}"
+	 * @parameter expression="${environment/servers/was/misc/pensjon-cluster-name}"
 	 */
 	private String pensjonClusterName;
 
 	/**
-	 * @parameter expression="${environment/servers/misc/joark-server-name}"
+	 * @parameter expression="${environment/servers/was/misc/joark-server-name}"
 	 */
 	private String joarkServerName;
 
 	/**
-	 * @parameter expression="${environment/servers/misc/joark-node-name}"
+	 * @parameter expression="${environment/servers/was/misc/joark-node-name}"
 	 */
 	private String joarkNodeName;
 
 	/**
-	 * @parameter expression="${environment/servers/misc/joark-cluster-name}"
+	 * @parameter expression="${environment/servers/was/misc/joark-cluster-name}"
 	 */
 	private String joarkClusterName;
 
@@ -234,21 +234,22 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		getLog().info("###########################################################################");
 
 		if (node2Upload) {
+			
 			// Upload application config
-			SSHUtil.uploadDir(n1Hostname, n1AppUsername, n1AppPassword, configDir, "/was_app/config", application);
-			SSHUtil.uploadDir(n2Hostname, n2AppUsername, n2AppPassword, configDir, "/was_app/config", application);
+			SSHUtil.uploadDir(node1Hostname, node1LinuxAppUsername, node1LinuxAppPassword, configDir, "/was_app/config", application);
+			SSHUtil.uploadDir(node2Hostname, node2AppUsername, node2AppPassword, configDir, "/was_app/config", application);
 
 			// Upload batch config
 			if (isBatch) {
-				SSHUtil.uploadDir(n1Hostname, n1BatchUsername, n1BatchPassword, batchDir, "/was_app/batch", application);
-				SSHUtil.uploadDir(n2Hostname, n2BatchUsername, n2BatchPassword, batchDir, "/was_app/batch", application);
+				SSHUtil.uploadDir(node1Hostname, node1LinuxBatchUsername, node1LinuxBatchPassword, batchDir, "/was_app/batch", application);
+				SSHUtil.uploadDir(node2Hostname, node2BatchUsername, node2BatchPassword, batchDir, "/was_app/batch", application);
 			}
 
 		} else {
-			SSHUtil.uploadDir(n1Hostname, n1AppUsername, n1AppPassword, configDir, "/was_app/config", application);
+			SSHUtil.uploadDir(node1Hostname, node1LinuxAppUsername, node1LinuxAppPassword, configDir, "/was_app/config", application);
 
 			if (isBatch)
-				SSHUtil.uploadDir(n1Hostname, n1BatchUsername, n1BatchPassword, batchDir, "/was_app/batch", application);
+				SSHUtil.uploadDir(node1Hostname, node1LinuxBatchUsername, node1LinuxBatchPassword, batchDir, "/was_app/batch", application);
 		}
 
 		// Deploy the application
@@ -272,7 +273,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		// If the password is not specified, it assumes the environment doesn't
 		// have security enabled.
 		if (password == null || password.equals("")) {
-			System.out.println("[WARN] ### DEPLOY ### The environment configuration does not specify a password. This is ok if the environment doesn't have security enabled.");
+			getLog().warn("The environment configuration does not specify a password. This is ok if the environment doesn't have security enabled.");
 			security = false;
 		}
 
@@ -288,11 +289,11 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		StringBuilder s = new StringBuilder();
 
 		s.append(wsadminLocation + wsAdmin + " -lang jython");
-		s.append(" -host " + hostname);
-		s.append(" -port " + soapPort);
+		s.append(" -host " + dmgrHostname);
+		s.append(" -port " + dmgrSoapPort);
 
 		if (security) {
-			s.append(" -username " + username);
+			s.append(" -username " + dmgrUsername);
 			s.append(" -password " + password);
 		}
 
@@ -315,7 +316,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		arg1.setLine(s.toString());
 		commandLine.addArg(arg1);
 
-		System.out.println("[INFO] ### DEPLOY ### Executing the following commandline: " + commandLine.toString());
+		getLog().info("Executing the following commandline: " + commandLine.toString());
 
 		StreamConsumer systemOut = new StreamConsumer() {
 			public void consumeLine(String line) {
@@ -330,7 +331,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 
 		int retval = CommandLineUtils.executeCommandLine(commandLine, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
 
-		getLog().info("[INFO] Return value from command line execution was: " + retval);
+		getLog().info("Return value from command line execution was: " + retval);
 
 		/*
 		 * We get return value 86 because the wsadmin instance we use is
@@ -342,7 +343,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 			throw new MojoFailureException("[ERROR] Deployment failed, check error messages. Tried to execute: " + commandLine + ". Got return value: " + retval);
 		}
 
-		System.out.println("[INFO] ### DEPLOY ### The application: " + application + " has been successfully deployed.");
+		System.out.println(application + " has been successfully deployed.");
 	}
 
 	// Needed in order to print the output to SystemOut.

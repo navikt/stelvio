@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * Handles the XML operations of the deployment
+ * Util for XML operations
  * 
  * @author test@example.com
  */
@@ -36,10 +36,9 @@ public class XMLOps {
 	 */
 	public static void fixContext(String filePath) throws ParserConfigurationException, IOException, TransformerException, SAXException {
 
-		System.out.println("[INFO] ##############################################");
-		System.out.println("[INFO] ### Fixing PSAK/PSELV-context.xml file ... ###");
-		System.out.println("[INFO] ##############################################");
-		System.out.println("[INFO] ### For file: " + filePath);
+		System.out.println("[INFO] ###########################################");
+		System.out.println("[INFO] ### Fix PSAK/PSELV-context.xml file ... ###");
+		System.out.println("[INFO] ###########################################");
 		
 		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filePath);
 
@@ -87,7 +86,7 @@ public class XMLOps {
 
 		tf.transform(xmlSource, output);
 
-		System.out.println("[INFO] ### FIX-CONTEXT ### Successfully altered file: " + filePath);
+		System.out.println("[INFO] Successfully altered file: " + filePath);
 	}
 	
 	/*
@@ -112,7 +111,7 @@ public class XMLOps {
 
 		tf.transform(xmlSource, output);
 
-		System.out.println("[INFO] ### FIX-SESSION-TIMEOUT ### Successfully set PSELV web session timeout to: " + timeout);
+		System.out.println("[INFO] Successfully set PSELV web session timeout to: " + timeout);
 	}
 	
 	/*
@@ -138,7 +137,7 @@ public class XMLOps {
 
 		tf.transform(xmlSource, output);
 
-		System.out.println("[INFO] ### FIX-LOGIN-CONFIG ### Successfully changed login config to: " + url);
+		System.out.println("[INFO] Successfully changed login config to: " + url);
 	}
 	
 	/*
@@ -210,7 +209,7 @@ public class XMLOps {
 		tf.transform(xmlSource, output);
 		w.close();
 		
-		System.out.println("[INFO] ### FIX-ROLE-MAPPING ### Successfully created file: " + ibmBndFileLocation + " based on template: " + template + " and application mapping file : " + applicationMapping);
+		System.out.println("[INFO] Successfully created file: " + ibmBndFileLocation + " based on template: " + template + " and application mapping file : " + applicationMapping);
 	}
 
 	/*

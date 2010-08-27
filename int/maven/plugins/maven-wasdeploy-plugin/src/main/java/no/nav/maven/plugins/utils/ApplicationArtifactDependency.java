@@ -16,6 +16,9 @@ import org.apache.maven.artifact.factory.ArtifactFactory;
  */
 
 public class ApplicationArtifactDependency {
+
+	// Definition point of which applications that contains batch
+	private final static String[] allSupportedApplications = {"pen", "psak", "pselv", "preg", "popp", "mot", "joark", "medl", "sam", "tp", "komp", "inst"};
 	
 	// Definition point of which applications that contains batch
 	private final static String[] batchApplications = {"pen", "popp", "mot", "joark", "medl", "sam"};
@@ -139,7 +142,16 @@ public class ApplicationArtifactDependency {
 			if (batchApplications[i].equals(application))
 				return true;
 		}
+		return false;
+	}
+	
+	// Returns true or false based on whether the application is supporte
+	public static boolean isSupported(String application) {
 		
+		for (int i = 0; i < allSupportedApplications.length; i++) {
+			if (allSupportedApplications[i].equals(application))
+				return true;
+		}
 		return false;
 	}
 }
