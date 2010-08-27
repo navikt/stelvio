@@ -51,7 +51,8 @@ def printError(APP, VERSION, ZONE):
 	
 	print "[INFO]"
 	print "[INFO] #################################################################################################################"
-	print "[INFO]"  
+	print "[INFO] FAILURE"
+	print "[INFO] #################################################################################################################"  
 	print "[INFO] The deployment failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
 	print "[INFO] Please correct the errors, and relaunch the deployment with the remaining applications described below."
 	print "[INFO]"

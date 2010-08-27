@@ -16,13 +16,6 @@
 		<wsadminLocation>C:/IBM/WID7_WTE/runtimes/bi_v7/bin/</wsadminLocation>
 		--><!-- /johnny.local -->
 		
-		<!-- moose --><!-- 
-		<devArchBaseDir>D:/cc/DevArch_F3_3_Refactor_Staging/DevArch</devArchBaseDir>
-		<bundleAreaDir>C:/BUNDLE</bundleAreaDir>
-		<stagingAreaDir>C:/STAGING</stagingAreaDir>
-		<wsadminLocation>F:/ibm/WID61/runtimes/bi_v61/bin/</wsadminLocation
-		--><!-- /moose -->
-		
 		<!-- hudson -->
 		<devArchBaseDir>/opt/DevArch</devArchBaseDir>
 		<bundleAreaDir>${devArchBaseDir}/BUNDLE</bundleAreaDir>
@@ -35,13 +28,15 @@
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
 		<scriptAbsPath>${project.basedir}/scripts/InstallApp.py</scriptAbsPath>
 		<mapFile>${devArchBaseDir}/build_version_mapping.txt</mapFile>
-		<applicationProperties>${devArchBaseDir}/module_config/${app}/spring/</applicationProperties>
-		<environmentFile>${devArchBaseDir}/environments/${env}.xml</environmentFile>
-		<log4jDir>${devArchBaseDir}/module_config/pen/log4j/${environment/zone}/</log4jDir>
-		<batchcontrollerDir>${devArchBaseDir}/module_config/${app}/batchcontroller/</batchcontrollerDir>
+		<applicationProperties>${devArchBaseDir}/module_config/${app}/spring</applicationProperties>
+		<environmentFilesDir>${devArchBaseDir}/environments</environmentFilesDir>
+		<environmentFile>${environmentFilesDir}/${env}.xml</environmentFile>
+		<environmentXSD>${environmentFilesDir}/environment.xsd</environmentXSD>
+		<log4jDir>${devArchBaseDir}/module_config/pen/log4j/${zone}/</log4jDir>
+		<batchcontrollerDir>${devArchBaseDir}/module_config/${app}/batchcontroller</batchcontrollerDir>
 		<pselvISSessionTimeout>30</pselvISSessionTimeout>
 		<pselvSSAccessDeniedURL>/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow</pselvSSAccessDeniedURL>
-		<roleMappingDir>${devArchBaseDir}/security/rolemapping/</roleMappingDir>
+		<roleMappingDir>${devArchBaseDir}/security/rolemapping</roleMappingDir>
 		<ejbSecurityFile>${devArchBaseDir}/security/ejb-security/${environment/domain}/ejb-security.xml</ejbSecurityFile>
 		
 	</properties>
@@ -59,7 +54,9 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-
+			
+			<!-- INSERT XML VALIDATION STEP, as step1. Phase=validate. -->
+			
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wasdeploy-plugin</artifactId>
