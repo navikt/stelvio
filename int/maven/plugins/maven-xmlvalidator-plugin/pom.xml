@@ -11,7 +11,7 @@
 	
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-xmlvalidator-plugin</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>maven-xmlvalidator-plugin</name>
 
@@ -31,8 +31,8 @@
 	</dependencies>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-xmlvalidator-plugin-1.0</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-xmlvalidator-plugin-1.0</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-xmlvalidator-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-xmlvalidator-plugin</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
