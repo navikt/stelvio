@@ -24,7 +24,7 @@
 		<!-- /hudson -->
 		
 		<wasdeployVersion>1.3-SNAPSHOT</wasdeployVersion>
-		<xmlvalidatorVersion>1.0-SNAPSHOT</xmlvalidatorVersion>
+		<xmlvalidatorVersion>1.0</xmlvalidatorVersion>
 		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
 		<scriptAbsPath>${project.basedir}/scripts/InstallApp.py</scriptAbsPath>
@@ -33,7 +33,7 @@
 		<environmentFilesDir>${devArchBaseDir}/environments</environmentFilesDir>
 		<environmentFile>${environmentFilesDir}/${env}.xml</environmentFile>
 		<environmentXSD>${environmentFilesDir}/environment.xsd</environmentXSD>
-		<log4jDir>${devArchBaseDir}/module_config/pen/log4j/${zone}/</log4jDir>
+		<log4jDir>${devArchBaseDir}/module_config/${app}/log4j/${zone}/</log4jDir>
 		<batchcontrollerDir>${devArchBaseDir}/module_config/${app}/batchcontroller</batchcontrollerDir>
 		<pselvISSessionTimeout>30</pselvISSessionTimeout>
 		<pselvSSAccessDeniedURL>/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow</pselvSSAccessDeniedURL>
