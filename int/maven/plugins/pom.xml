@@ -28,7 +28,6 @@
 		<module>maven-service-deploy-plugin</module>
 		<module>maven-update-ear-plugin</module>
 		<module>maven-wasdeploy-plugin</module>
-		<module>maven-wpsdeploy-plugin</module>
 		<module>maven-websphere-plugin</module>
 		<module>maven-wid-plugin</module>
 		<module>maven-wps-artifact-plugin</module>
@@ -36,7 +35,7 @@
 		<module>maven-wsi-plugin</module>
 		<module>maven-wsdl-plugin</module>
 		<module>maven-xmlvalidator-plugin</module>
-  </modules>
+	</modules>
 
 	<scm>
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins</connection>
