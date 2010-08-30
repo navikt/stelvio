@@ -24,6 +24,7 @@
 		<!-- /hudson -->
 		
 		<wasdeployVersion>1.3-SNAPSHOT</wasdeployVersion>
+		<xmlvalidatorVersion>1.0-SNAPSHOT</xmlvalidatorVersion>
 		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
 		<scriptAbsPath>${project.basedir}/scripts/InstallApp.py</scriptAbsPath>
@@ -55,25 +56,43 @@
 				</configuration>
 			</plugin>
 			
-			<!-- INSERT XML VALIDATION STEP, as step1. Phase=validate. -->
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-xmlvalidator-plugin</artifactId>
+				<version>${xmlvalidatorVersion}</version>
+				<executions>
+					<!-- Step 1: Validate environment file against defined XSD -->
+					<execution>
+						<id>validate-xml</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>validate-xml</goal>
+						</goals>
+						<configuration>
+							<xsdFile>${environmentXSD}</xsdFile>
+							<xmlFile>${environmentFile}</xmlFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wasdeploy-plugin</artifactId>
 				<version>${wasdeployVersion}</version>
 				<executions>
-					<!-- Step 1: Download and unpack application artifacts -->
+					<!-- Step 2: Download and unpack application artifacts -->
 					<execution>
 						<id>process-dependencies</id>
-						<phase>validate</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>process-dependencies</goal>
 						</goals>
 					</execution>
-					<!-- Step 2: Load properties from environment file -->
+					<!-- Step 3: Load properties from environment file -->
 					<execution>
 						<id>load-xml-property-files</id>
-						<phase>initialize</phase>
+						<phase>generate-sources</phase>
 						<goals>
 							<goal>load-xml-properties</goal>
 						</goals>
@@ -83,7 +102,7 @@
 							</files>
 						</configuration>
 					</execution>
-					<!-- Step 4: Perform custom file operations to prepare for bundle/deploy -->
+					<!-- Step 5: Perform custom file operations to prepare for bundle/deploy -->
 					<execution>
 						<id>handle-files</id>
 						<phase>process-resources</phase>
@@ -91,7 +110,7 @@
 							<goal>handle-files</goal>
 						</goals>
 					</execution>
-					<!-- Step 6: Deploy + upload or bundle -->
+					<!-- Step 7: Deploy + upload or bundle -->
 					<execution>
 						<id>deploy-or-bundle</id>
 						<phase>process-classes</phase>
@@ -102,7 +121,7 @@
 				</executions>
 			</plugin>
 
-			<!-- Step 3: Generate environment spesific configuration -->
+			<!-- Step 4: Generate environment spesific configuration -->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
@@ -151,7 +170,7 @@
 				</executions>
 			</plugin>
 
-			<!-- Step 5: Apply EJB security -->
+			<!-- Step 6: Apply EJB security -->
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-deployment-descriptor-plugin</artifactId>

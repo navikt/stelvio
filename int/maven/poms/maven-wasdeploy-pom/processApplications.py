@@ -69,9 +69,10 @@ def deploy(APP_LIST, ZONE, ENV):
 		SPLITTED = APP_COMP.split(":")
 		APP = SPLITTED[0]
 		VERSION = SPLITTED[1]
-		printStatus(APP, VERSION, ZONE)
+		# Print statements commented out as this does not show up correctly in the Hudson console output.
+		#printStatus(APP, VERSION, ZONE)
 		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE
-		print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
+		#print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
 		retval = subprocess.call(MAVEN_STRING, shell=True)
 		if (retval != 0):
 			printError(APP, VERSION, ZONE)
