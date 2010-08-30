@@ -34,7 +34,6 @@
 		<module>maven-wpsdeploy-plugin</module>
 		<module>maven-wsi-plugin</module>
 		<module>maven-wsdl-plugin</module>
-		<module>maven-xmlvalidator-plugin</module>
 	</modules>
 
 	<scm>
