@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mediation="http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:src="http://nav-bproc-pen-ppen015/no/nav/inf/SamordningAsync" xmlns:trg="http://nav-lib-sto/no/nav/lib/sto/inf/Samordning" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="SamordningAsyncTOSamordning" name="no/nav/infmap/SamordningAsyncTOSamordning">
   <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="src:SamordningAsync"/>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="src:SamordningAsync"/>
   </interfaces>
   <references>
     <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>

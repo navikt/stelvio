@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mediation="http://www.ibm.com/xmlns/prod/websphere/wbiserver/ift/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:src="http://nav-bproc-pen-ppen015-1.2.2/no/nav/inf/OppgaveAsync" xmlns:trg="http://nav-lib-sak/no/nav/lib/sak/inf" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="OppgaveAsyncTOOppgave" name="no/nav/infmap/OppgaveAsyncTOOppgave">
   <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="src:OppgaveAsync"/>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="src:OppgaveAsync"/>
   </interfaces>
   <references>
     <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
