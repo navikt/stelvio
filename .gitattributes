@@ -2091,6 +2091,9 @@ incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/META-INF/services/org.ap
 incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/CEIConsumerMDBBean.java -text svneol=unset#text/plain
 incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventData.java -text svneol=unset#text/plain
 incubator/wid61-ceilogger/CEIEventConsumerEJB/ejbModule/no/nav/logfrw/cei/util/EventDataConstant.java -text svneol=unset#text/plain
+incubator/ytelse-PPEN015/BpelInvokeTest-BpelInvokeTestWSEXP-soapui-project.xml -text
+incubator/ytelse-PPEN015/BpelTest-BpelTestWSEXP-soapui-project.xml -text
+incubator/ytelse-PPEN015/BpelVariableTest-BpelVariableTestWSEXP-soapui-project.xml -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015-microflow/.classpath -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015-microflow/.project -text
 incubator/ytelse-PPEN015/nav-bproc-test-ppen015-microflow/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text
