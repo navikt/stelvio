@@ -69,16 +69,17 @@ def deploy(APP_LIST, ZONE, ENV):
 		SPLITTED = APP_COMP.split(":")
 		APP = SPLITTED[0]
 		VERSION = SPLITTED[1]
-		# Print statements commented out as this does not show up correctly in the Hudson console output.
-		#printStatus(APP, VERSION, ZONE)
+		printStatus(APP, VERSION, ZONE)
 		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE
-		#print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
+		print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
+		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
 		if (retval != 0):
 			printError(APP, VERSION, ZONE)
 			sys.exit(1)
       		else:
 			print "[INFO] The processing of application " + APP + ":" + VERSION + " finished successfully."		
+			sys.stdout.flush()
 			INSTALLED_COUNT += 1
 			if ZONE == "sensitiv":
 				CHECKLIST_SENSITIV.remove(APP_COMP)
