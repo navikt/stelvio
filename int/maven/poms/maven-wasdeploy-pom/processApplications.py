@@ -70,7 +70,7 @@ def deploy(APP_LIST, ZONE, ENV):
 		APP = SPLITTED[0]
 		VERSION = SPLITTED[1]
 		printStatus(APP, VERSION, ZONE)
-		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE
+		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE + " -DconfigVersion=" + CONFIG_VERSION
 		print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
@@ -89,6 +89,8 @@ def deploy(APP_LIST, ZONE, ENV):
 ENV = sys.argv[1]
 CHECKLIST_SENSITIV = sys.argv[2].split("=")[1].split(",")
 CHECKLIST_INTERN = sys.argv[3].split("=")[1].split(",")
+CONFIG_VERSION = sys.argv[4]
+
 
 TOTAL_APP_COUNT = appCount(CHECKLIST_SENSITIV) + appCount(CHECKLIST_INTERN)
 INSTALLED_COUNT = 1
