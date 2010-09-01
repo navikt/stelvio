@@ -9,13 +9,6 @@
 	
 	<properties>
 		
-		<!-- johnny.local --><!-- 
-		<devArchBaseDir>C:/DevArch_F3_3_Refactor_Staging/DevArch</devArchBaseDir>
-		<bundleAreaDir>C:/BUNDLE</bundleAreaDir>
-		<stagingAreaDir>C:/STAGING</stagingAreaDir>
-		<wsadminLocation>C:/IBM/WID7_WTE/runtimes/bi_v7/bin/</wsadminLocation>
-		--><!-- /johnny.local -->
-		
 		<!-- hudson -->
 		<devArchBaseDir>/opt/DevArch</devArchBaseDir>
 		<bundleAreaDir>${devArchBaseDir}/BUNDLE</bundleAreaDir>
@@ -41,13 +34,23 @@
 		<ejbSecurityFile>${devArchBaseDir}/security/ejb-security/${environment/domain}/ejb-security.xml</ejbSecurityFile>
 		
 	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>no.nav.maven.devarch</groupId>
+			<artifactId>devarch-config</artifactId>
+			<version>${configVersion}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
+		
 			<plugin>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<version>1.0-beta-1</version>
 			</plugin>
+			
 			<!-- Disable clean plugin to avoid deleting the output directories-->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -57,11 +60,30 @@
 			</plugin>
 			
 			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.0</version>
+                <executions>
+               			<!-- Step 1: Download and unpack configuration -->
+                        <execution>
+                                <id>unpack-configuration</id>
+                                <phase>validate</phase>
+                                <goals>
+                                        <goal>unpack-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                        <outputDirectory>${devArchBaseDir}</outputDirectory>
+                                </configuration>
+                        </execution>
+                </executions>
+       		 </plugin>
+       		 
+			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-xmlvalidator-plugin</artifactId>
 				<version>${xmlvalidatorVersion}</version>
 				<executions>
-					<!-- Step 1: Validate environment file against defined XSD -->
+					<!-- Step 2: Validate environment file against defined XSD -->
 					<execution>
 						<id>validate-xml</id>
 						<phase>validate</phase>
@@ -81,7 +103,7 @@
 				<artifactId>maven-wasdeploy-plugin</artifactId>
 				<version>${wasdeployVersion}</version>
 				<executions>
-					<!-- Step 2: Download and unpack application artifacts -->
+					<!-- Step 3: Download and unpack application artifacts -->
 					<execution>
 						<id>process-dependencies</id>
 						<phase>initialize</phase>
@@ -89,7 +111,7 @@
 							<goal>process-dependencies</goal>
 						</goals>
 					</execution>
-					<!-- Step 3: Load properties from environment file -->
+					<!-- Step 4: Load properties from environment file -->
 					<execution>
 						<id>load-xml-property-files</id>
 						<phase>generate-sources</phase>
@@ -102,7 +124,7 @@
 							</files>
 						</configuration>
 					</execution>
-					<!-- Step 5: Perform custom file operations to prepare for bundle/deploy -->
+					<!-- Step 6: Perform custom file operations to prepare for bundle/deploy -->
 					<execution>
 						<id>handle-files</id>
 						<phase>process-resources</phase>
@@ -110,7 +132,7 @@
 							<goal>handle-files</goal>
 						</goals>
 					</execution>
-					<!-- Step 7: Deploy + upload or bundle -->
+					<!-- Step 8: Deploy + upload or bundle -->
 					<execution>
 						<id>deploy-or-bundle</id>
 						<phase>process-classes</phase>
@@ -121,7 +143,7 @@
 				</executions>
 			</plugin>
 
-			<!-- Step 4: Generate environment spesific configuration -->
+			<!-- Step 5: Generate environment spesific configuration -->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
@@ -170,7 +192,7 @@
 				</executions>
 			</plugin>
 
-			<!-- Step 6: Apply EJB security -->
+			<!-- Step 7: Apply EJB security -->
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-deployment-descriptor-plugin</artifactId>
@@ -190,6 +212,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			
 		</plugins>
 	</build>
 </project>
