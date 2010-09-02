@@ -2,8 +2,8 @@
 <scaj2ee:IntegrationModuleDeploymentConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:scaj2ee="http://www.ibm.com/xmlns/prod/websphere/sca/j2ee/6.0.2">
   <wsExports>
     <wsDescExtensions>
-      <wsDescExt wsDescNameLink="iverksettVedtakWSEXP_IverksettVedtakTestHttpService">
-        <pcBinding pcNameLink="iverksettVedtakTestWSEXP_IverksettVedtakTestHttpPort">
+      <wsDescExt wsDescNameLink="iverksettVedtakSynkronWSEXP_IverksettVedtakTestHttpService">
+        <pcBinding pcNameLink="iverksettVedtakSynkronWSEXP_IverksettVedtakTestHttpPort">
         <serverServiceConfig>
             <securityRequestConsumerServiceConfig>
               <caller name="UsernameTokenCaller" part="" uri="" localName="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken"/>
@@ -16,8 +16,8 @@
       </wsDescExt>
     </wsDescExtensions>
     <wsDescBindings>
-      <wsdescBindings wsDescNameLink="iverksettVedtakWSEXP_IverksettVedtakTestHttpService">
-        <pcBindings pcNameLink="iverksettVedtakTestWSEXP_IverksettVedtakTestHttpPort">
+      <wsdescBindings wsDescNameLink="iverksettVedtakSynkronWSEXP_IverksettVedtakTestHttpService">
+        <pcBindings pcNameLink="iverksettVedtakSynkronWSEXP_IverksettVedtakTestHttpPort">
         <securityRequestConsumerBindingConfig>
             <tokenConsumer classname="com.ibm.wsspi.wssecurity.token.UsernameTokenConsumer" name="UsernameTokenConsumer">
               <valueType localName="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken" uri="" name="Username Token"/>
