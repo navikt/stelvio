@@ -46,7 +46,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-websphere-plugin</artifactId>
-					<version>1.49</version>
+					<version>1.50</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
