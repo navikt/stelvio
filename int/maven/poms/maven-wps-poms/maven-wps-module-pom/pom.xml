@@ -135,13 +135,10 @@ eclipse.preferences.version=1
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<!-- TODO: Commented out since Policy Sets does not work when display name is different from module name -->
-			<!--
 			 <plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-update-ear-plugin</artifactId> 
 			</plugin>
-			-->
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wsdl-plugin</artifactId>
