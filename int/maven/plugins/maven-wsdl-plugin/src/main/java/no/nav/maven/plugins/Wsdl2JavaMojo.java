@@ -165,6 +165,11 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	 * @parameter default-value="false"
 	 */
 	private boolean noWrappedArrays;
+	
+	/**
+	 * @parameter 
+	 */
+	private File namespaceMappingFile;
 
 	/**
 	 * @parameter
@@ -241,8 +246,15 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 				if (noWrappedArrays) {
 					argLineBuilder.append(" -noWrappedArrays");
 				}
-				argLineBuilder.append(" -fileNStoPkg ").append('"').append(namespaceToPackageFile.getAbsolutePath())
-						.append('"');
+				if(namespaceMappingFile==null){
+					argLineBuilder.append(" -fileNStoPkg ").append('"').append(namespaceToPackageFile.getAbsolutePath())
+					.append('"');
+				}
+				else{
+					argLineBuilder.append(" -fileNStoPkg ").append('"').append(namespaceMappingFile.getAbsolutePath())
+					.append('"');
+				}
+				
 				argLineBuilder.append(" -output ").append('"').append(classGenerationDirectory.getAbsolutePath()).append('"');
 				argLineBuilder.append(" ").append('"').append(wsdlFile.getAbsolutePath()).append('"');
 
