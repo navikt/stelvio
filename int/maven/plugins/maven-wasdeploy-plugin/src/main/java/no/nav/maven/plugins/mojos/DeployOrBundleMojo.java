@@ -210,16 +210,17 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		getLog().info("###########################################################################");
 		getLog().info("### BUNDLING SELECTED - Creating archives and moving to bundle area ... ###");
 		getLog().info("###########################################################################");
-
+		
 		File bundleArea = new File(this.bundleArea);
+		bundleArea.mkdir();
 		File earArea = new File(bundleArea + "/ear");
-		earArea.mkdirs();
+		earArea.mkdir();
 		File configArea = new File(bundleArea + "/config");
-		configArea.mkdirs();
+		configArea.mkdir();
 
 		if (isBatch) {
 			File batchArea = new File(bundleArea + "/batchklienter");
-			batchArea.mkdirs();
+			batchArea.mkdir();
 			Archiver.createArchive(new File(batchDir), batchArea, "jar");
 		}
 

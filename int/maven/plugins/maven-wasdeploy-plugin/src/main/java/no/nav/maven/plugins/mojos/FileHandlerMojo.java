@@ -182,13 +182,12 @@ public class FileHandlerMojo extends AbstractMojo {
 			}
 
 			// Configuration file exlusions
-			if (application.equals("medl")) {
-				filesToDelete.add(configDir + "/cfg-environment.komptest65.properties");
-				filesToDelete.add(configDir + "/cfg-environment.komptest61.properties");
-			}
 
 			if (application.equals("inst")) {
-				filesToDelete.add(configDir + "/cfg-environment.komptest65.properties");
+				File komptest65 = new File(configDir + "/cfg-environment.komptest65.properties");
+				
+				if (komptest65.exists())
+					filesToDelete.add(komptest65.getAbsolutePath());
 			}
 
 			if (filesToDelete.size() > 0)
@@ -333,8 +332,8 @@ public class FileHandlerMojo extends AbstractMojo {
 		String earPath = appEAR.getAbsolutePath();
 
 		project.getProperties().put("earName", earName);
-		getLog().info("[INFO] EXPOSED MAVEN PROPERTY " + "earName" + " = " + earName);
+		getLog().info("[INFO] EXPOSED MAVEN PROPERTY: " + "earName" + " = " + earName);
 		project.getProperties().put("earPath", earPath);
-		getLog().info("[INFO] EXPOSED MAVEN PROPERTY " + "earPath" + " = " + earPath);
+		getLog().info("[INFO] EXPOSED MAVEN PROPERTY: " + "earPath" + " = " + earPath);
 	}
 }
