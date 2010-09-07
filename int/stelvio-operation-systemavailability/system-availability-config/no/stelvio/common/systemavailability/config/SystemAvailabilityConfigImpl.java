@@ -1,16 +1,24 @@
 package no.stelvio.common.systemavailability.config;
 
+import java.io.IOException;
 import java.util.*;
 
 import commonj.sdo.DataObject;
+
+import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.sdo.DataFactory;
 
+import no.stelvio.common.bus.util.ErrorHelperUtil;
 import no.stelvio.common.systemavailability.*;
 
 public class SystemAvailabilityConfigImpl {
 	
 	private static final String SYSTEM_AVAILABILITY_CONFIG_NAMESPACE = "http://system-availability-config";
+	
+	private static final String MODULE_NAME = "system-availability-config";
+	private static final String FAULT_NAMESPACE = "http://system-availability-config/no/stelvio/fault";
+	private static final String FAULT_NAME = "FaultUpdateStubbingfilesFailed";
 	
 	/**
 	 * Default constructor.
@@ -103,5 +111,28 @@ public class SystemAvailabilityConfigImpl {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Method generated to support implementation of operation "updateStubbingfiles" defined for WSDL port type 
+	 * named "Stubbing".
+	 * 
+	 * Please refer to the WSDL Definition for more information 
+	 * on the type of input, output and fault(s).
+	 */
+	public Boolean updateStubbingfiles(String path) {
+		if (path == null || "".equals(path.trim())) {
+			path = "/opt/IBM/WebSphere/ProcServer/profiles/wps01/StelvioSystemAvailabilityFramework";
+		}
+		
+		try {
+			Runtime.getRuntime().exec("/usr/bin/svn revert --recursive " + path);
+			Runtime.getRuntime().exec("/usr/bin/svn up " + path);
+		} catch (IOException io) {
+			DataObject faultBO = ErrorHelperUtil.getBusinessFaultBO(io, MODULE_NAME, FAULT_NAMESPACE, FAULT_NAME);
+			throw new ServiceBusinessException(faultBO);
+		}
+		
+		return true;
 	}
 }

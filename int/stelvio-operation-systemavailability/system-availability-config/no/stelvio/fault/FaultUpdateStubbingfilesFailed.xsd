@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+	targetNamespace="http://system-availability-config/no/stelvio/fault"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:bons0="http://system-availability-config/no/stelvio/fault">
+	<xsd:include schemaLocation="FaultBase.xsd"></xsd:include>
+	<xsd:complexType name="FaultUpdateStubbingfilesFailed">
+		<xsd:complexContent>
+			<xsd:extension base="bons0:FaultBase">
+				<xsd:sequence />
+
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

@@ -29,6 +29,18 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="updateStubbingfiles">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateStubbingfilesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateStubbingfilesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="faultUpdateStubbingfilesFailed">
+        <soap:fault name="faultUpdateStubbingfilesFailed" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="SystemAvailabilityConfigWSEXP_StubbingHttpService">
     <wsdl:port binding="this:SystemAvailabilityConfigWSEXP_StubbingHttpBinding" name="SystemAvailabilityConfigWSEXP_StubbingHttpPort">
