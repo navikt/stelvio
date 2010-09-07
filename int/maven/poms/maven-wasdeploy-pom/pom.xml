@@ -8,10 +8,9 @@
 	<url>http://maven.apache.org</url>
 	
 	<properties>
-		
 		<!-- hudson -->
-		<devArchBaseDir>/opt/DevArch</devArchBaseDir>
-		<bundleAreaDir>${devArchBaseDir}/BUNDLE</bundleAreaDir>
+		<devArchBaseDir>${project.basedir}</devArchBaseDir>
+		<bundleAreaDir>/opt/BUNDLE</bundleAreaDir>
 		<stagingAreaDir>${devArchBaseDir}/STAGING</stagingAreaDir>
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
 		<!-- /hudson -->
@@ -32,7 +31,6 @@
 		<pselvSSAccessDeniedURL>/tilleggsfunksjonalitet/tilgangnektet.jsf?_flowId=tilgangnektet-flow</pselvSSAccessDeniedURL>
 		<roleMappingDir>${devArchBaseDir}/security/rolemapping</roleMappingDir>
 		<ejbSecurityFile>${devArchBaseDir}/security/ejb-security/${environment/domain}/ejb-security.xml</ejbSecurityFile>
-		
 	</properties>
 	
 	<dependencies>
@@ -103,18 +101,18 @@
 				<artifactId>maven-wasdeploy-plugin</artifactId>
 				<version>${wasdeployVersion}</version>
 				<executions>
-					<!-- Step 3: Download and unpack application artifacts -->
+					<!-- Step 4: Download and unpack application artifacts -->
 					<execution>
 						<id>process-dependencies</id>
-						<phase>initialize</phase>
+						<phase>generate-sources</phase>
 						<goals>
 							<goal>process-dependencies</goal>
 						</goals>
 					</execution>
-					<!-- Step 4: Load properties from environment file -->
+					<!-- Step 3: Load properties from environment file -->
 					<execution>
 						<id>load-xml-property-files</id>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>load-xml-properties</goal>
 						</goals>
@@ -207,7 +205,7 @@
 						<configuration>
 							<ear>${stagingArea}/${earName}</ear>
 							<springConfigFile>file:${ejbSecurityFile}</springConfigFile>
-							<mappingFile>${mapFile}</mappingFile>
+							<!--  mappingFile>${mapFile}</mappingFile-->
 						</configuration>
 					</execution>
 				</executions>
