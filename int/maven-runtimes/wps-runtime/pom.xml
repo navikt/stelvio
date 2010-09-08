@@ -11,7 +11,7 @@
 	<groupId>com.ibm.maven.runtimes</groupId>
 	<artifactId>wps-runtime</artifactId>
 	<packaging>jar</packaging>
-	<version>7.0.0.3-SNAPSHOT</version>
+	<version>7.0.0.3</version>
 	<name>IBM WPS Runtime</name>
 	<description>All jar files in the IBM WPS runtime merged into one big jar files. Three of the jars are uploaded separately
 		and added as dependencies to overcome the 65536-files limitation of Sun's Jar implementation</description>
@@ -86,8 +86,8 @@
 	</distributionManagement>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven-runtimes/wps-runtime</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven-runtimes/wps-runtime</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/wps-runtime-7.0.0.3</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/wps-runtime-7.0.0.3</developerConnection>
 	</scm>
 	<properties>
 		<maven.test.skip>true</maven.test.skip>
