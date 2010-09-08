@@ -56,9 +56,9 @@
 
 	<!-- Large jar files uploaded separately to shrink the size of the archive file -->
 	<!-- Install/deploy the jars manually with commands like these (or use Nexus artifact upload):
-		mvn deploy:deploy-file -DgroupId=com.ibm.ws.runtime -DartifactId=WS_Server -Dversion=7.0.0.2 -Dpackaging=jar -Dfile=plugins\com.ibm.ws.runtime.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
-		mvn deploy:deploy-file -DgroupId=com.ibm.jaxws.thinclient -DartifactId=WebServicesFeaturePackThinClientRuntime -Dversion=7.0.0.2 -Dpackaging=jar -Dfile=runtimes/com.ibm.jaxws.thinclient_7.0.0.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
-		mvn deploy:deploy-file -DgroupId=com.ibm.ws.admin.client -DartifactId=WebSphereClientServices -Dversion=7.0.0.2 -Dpackaging=jar -Dfile=runtimes/com.ibm.ws.admin.client_7.0.0.jar -DrepositoryId=nav-pensjon-maven2-snapshot-repo -Durl=scp://e11apvl002.utv.internsone.local/var/maven2/snapshot/
+		mvn deploy:deploy-file -DgroupId=com.ibm.ws.runtime -DartifactId=WS_Server -Dversion=7.0.0.3 -Dpackaging=jar -Dfile=plugins\com.ibm.ws.runtime.jar -DrepositoryId=nav-maven2-internal-repo -Durl=scp://maven.adeo.no/var/maven2/internal
+		mvn deploy:deploy-file -DgroupId=com.ibm.jaxws.thinclient -DartifactId=WebServicesFeaturePackThinClientRuntime -Dversion=7.0.0.3 -Dpackaging=jar -Dfile=runtimes/com.ibm.jaxws.thinclient_7.0.0.jar -DrepositoryId=nav-maven2-internal-repo -Durl=scp://maven.adeo.no/var/maven2/internal
+		mvn deploy:deploy-file -DgroupId=com.ibm.ws.admin.client -DartifactId=WebSphereClientServices -Dversion=7.0.0.3 -Dpackaging=jar -Dfile=runtimes/com.ibm.ws.admin.client_7.0.0.jar -DrepositoryId=nav-maven2-internal-repo -Durl=scp://maven.adeo.no/var/maven2/internal
 	 -->
 	<dependencies>
 		<dependency>
@@ -91,7 +91,7 @@
 	</scm>
 	<properties>
 		<maven.test.skip>true</maven.test.skip>
-		<runtime.version>7.0.0.2</runtime.version>
+		<runtime.version>7.0.0.3</runtime.version>
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven-runtimes/wps-runtime
 		</scm.root>
