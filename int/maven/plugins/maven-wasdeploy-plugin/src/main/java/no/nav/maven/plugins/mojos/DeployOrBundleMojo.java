@@ -336,7 +336,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 
 		/*
 		 * We get return value 86 because the wsadmin instance we use is
-		 * "incompatible, and unsupported" we get an error message, but the
+		 * "incompatible, and unsupported" and we get an error message, but the
 		 * deployment works. Can be removed once we upgrade WAS instances to
 		 * v.7.0
 		 */
@@ -344,7 +344,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 			throw new MojoFailureException("[ERROR] Deployment failed, check error messages. Tried to execute: " + commandLine + ". Got return value: " + retval);
 		}
 
-		System.out.println(application + " has been successfully deployed.");
+		getLog().info(application + " has been successfully deployed.");
 	}
 
 	// Needed in order to print the output to SystemOut.
