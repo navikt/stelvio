@@ -70,7 +70,7 @@ def deploy(APP_LIST, ZONE, ENV):
 		APP = SPLITTED[0]
 		VERSION = SPLITTED[1]
 		printStatus(APP, VERSION, ZONE)
-		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE + " -DconfigVersion=" + CONFIG_VERSION
+		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE + " -Dconfig=" + CONFIG_VERSION
 		print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
