@@ -56,7 +56,7 @@ def printError(ENV, APP, VERSION, ZONE):
 	INTERN_FORMATTED = ",".join(CHECKLIST_INTERN)
 	
 	
-	if (!MULTI_ENV_DEPLOY):
+	if (MULTI_ENV_DEPLOY == 0):
 		print "[INFO]"
 		print "[INFO] #################################################################################################################"
 		print "[INFO] FAILURE"

@@ -9,7 +9,7 @@
 	
 	<properties>
 		<!-- hudson -->
-		<devArchBaseDir>${project.basedir}</devArchBaseDir>
+		<devArchBaseDir>${project.build.directory}</devArchBaseDir>
 		<bundleAreaDir>/opt/BUNDLE</bundleAreaDir>
 		<stagingAreaDir>${devArchBaseDir}/STAGING</stagingAreaDir>
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
