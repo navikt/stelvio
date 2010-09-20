@@ -38,7 +38,7 @@ def appCount(APP_LIST):
 		else:
 			return 0
 
-def printStatus(APP, VERSION, ZONE):
+def printStatus(ENV, APP, VERSION, ZONE):
 	print "[INFO]"
 	print "[INFO] ################################################################################"
 	print "[INFO]"
@@ -67,11 +67,12 @@ def printError(APP, VERSION, ZONE):
 
 def deploy(APP_LIST, ZONE, ENV):
 	global INSTALLED_COUNT
+	
 	for APP_COMP in APP_LIST:		
 		SPLITTED = APP_COMP.split(":")
 		APP = SPLITTED[0]
 		VERSION = SPLITTED[1]
-		printStatus(APP, VERSION, ZONE)
+		printStatus(ENV, APP, VERSION, ZONE)
 		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE + " -Dconfig=" + CONFIG_VERSION
 		print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
 		sys.stdout.flush()
