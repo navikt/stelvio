@@ -61,9 +61,9 @@ def printStatus(ENV, APP, VERSION, ZONE):
 
 def printError(ENV, APP, VERSION, ZONE):
 	
-	global ENVS
 	SENSITIV_FORMATTED = ",".join(CHECKLIST_SENSITIV)
 	INTERN_FORMATTED = ",".join(CHECKLIST_INTERN)
+	ENVS_FORMATTED = ",".join(ENVS)
 	
 	if (MULTI_ENV_DEPLOY == 0):
 		print "[INFO]"
@@ -81,8 +81,6 @@ def printError(ENV, APP, VERSION, ZONE):
 	else:
 		SENSITIV_FORMATTED_FULL = ",".join(CHECKLIST_SENSITIV_BACKUP)
 		INTERN_FORMATTED_FULL = ",".join(CHECKLIST_INTERN_BACKUP)
-		ENVS = ENVS.remove(ENV)
-		ENVS_FORMATTED = ",".join(ENVS)
 		
 		print "[INFO]"
 		print "[INFO] #################################################################################################################"
@@ -118,6 +116,7 @@ def deploy(ENV, APP_LIST, ZONE):
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
 		if (retval != 0):
+			ENVS.remove(ENV)
 			printError(ENV, APP, VERSION, ZONE)
 			sys.exit(1)
 		else:
