@@ -5,7 +5,7 @@
 # File name: processApplications.py 			                    
 #							                    
 # Description: This script processes the input strings for the two zones, and
-# 	       deploys/bundles the applications to the specific environment.
+#	       deploys/bundles the applications to the specified environment(s).
 # 
 # Author: test@example.com			                   
 #							 		
@@ -15,19 +15,21 @@ import sys
 import subprocess
 
 def main():
-	ENV = sys.argv[1]
+	ENVS = sys.argv[1].split(",")
 	SENSITIV_LIST = sys.argv[2].split("=")[1].split(",")
 	INTERN_LIST = sys.argv[3].split("=")[1].split(",")
 	
-	if appCount(SENSITIV_LIST) > 0:	
-		deploy(SENSITIV_LIST, "sensitiv", ENV)
-	else:
-		print "[INFO] No applications to install in sensitiv zone."
-
-	if appCount(INTERN_LIST) > 0:	
-		deploy(INTERN_LIST, "intern", ENV)
-	else:
-		print "[INFO] No applications to install in intern zone."
+	for ENV in ENVS:
+		if appCount(SENSITIV_LIST) > 0:	
+			deploy(SENSITIV_LIST, "sensitiv", ENV)
+		else:
+			print "[INFO] No applications to install in sensitiv zone."
+	
+		if appCount(INTERN_LIST) > 0:	
+			deploy(INTERN_LIST, "intern", ENV)
+		else:
+			print "[INFO] No applications to install in intern zone."
+			
 
 def appCount(APP_LIST):
 	if len(APP_LIST) > 0:
@@ -77,7 +79,7 @@ def deploy(APP_LIST, ZONE, ENV):
 		if (retval != 0):
 			printError(APP, VERSION, ZONE)
 			sys.exit(1)
-      		else:
+		else:
 			print "[INFO] The processing of application " + APP + ":" + VERSION + " finished successfully."		
 			sys.stdout.flush()
 			INSTALLED_COUNT += 1
@@ -86,7 +88,8 @@ def deploy(APP_LIST, ZONE, ENV):
 			else:
 				CHECKLIST_INTERN.remove(APP_COMP)
 
-ENV = sys.argv[1]
+ENVS = sys.argv[1].split(",")
+print "Deploying to the following environments: ", ENVS
 CHECKLIST_SENSITIV = sys.argv[2].split("=")[1].split(",")
 CHECKLIST_INTERN = sys.argv[3].split("=")[1].split(",")
 CONFIG_VERSION = sys.argv[4]
