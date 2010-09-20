@@ -120,9 +120,6 @@ ENVS = sys.argv[1].split(",")
 ENVS_CHECKLIST = ENVS[:]
 ENVS_LENGTH = len(ENVS)
 
-if (ENVS_LENGTH == 0):
-	print "[ERROR] No environment specified."
-	sys.exit(1)
 if (ENVS_LENGTH > 1):
 	MULTI_ENV_DEPLOY = 1
 
