@@ -15,6 +15,12 @@ import sys
 import subprocess
 
 def main():
+	
+	global CHECKLIST_SENSITIV
+	global CHECKLIST_INTERN
+	global CHECKLIST_SENSITIV_BACKUP
+	global CHECKLIST_INTERN_BACKUP
+	
 	ENVS = sys.argv[1].split(",")
 	SENSITIV_LIST = sys.argv[2].split("=")[1].split(",")
 	INTERN_LIST = sys.argv[3].split("=")[1].split(",")
