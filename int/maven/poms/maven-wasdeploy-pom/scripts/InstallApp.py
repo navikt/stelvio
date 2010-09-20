@@ -70,14 +70,7 @@ def uninstall():
 	
 def install():
 	serverId = AdminConfig.getid("/Node:"+NODE_NAME+"/Server:"+SERVER_NAME+"/")
-	check = AdminConfig.getObjectName(serverId).split("processType=")[1]
-	options = "-verbose -appname " + APP_NAME + " -nodeployejb -usedefaultbindings -defaultbinding.virtual.host default_host"
-	
-	if (check == "UnManagedProcess"):
-		options += " -server " + SERVER_NAME
-	else:
-		options += " -cluster " + CLUSTER_NAME
-		
+	options = "-verbose -appname " + APP_NAME + " -nodeployejb -usedefaultbindings -defaultbinding.virtual.host default_hostoptions -cluster " + CLUSTER_NAME
 	log("INFO", "Installing application, " + APP_NAME + " with the following options: " + options)
 	AdminApp.install(APP_LOCATION, options)
 
