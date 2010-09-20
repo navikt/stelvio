@@ -86,19 +86,22 @@ def printError(ENV, APP, VERSION, ZONE):
 		print "[INFO] #################################################################################################################"
 		print "[INFO] FAILURE"
 		print "[INFO] #################################################################################################################"  
-		print "[INFO] The deployment failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
-		print "[INFO] Please correct the errors, and first relaunch the deployment with the remaining applications for " + ENV
+		print "[INFO] Failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
+		print "[INFO] Please correct the errors, and relaunch the job with the remaining applications for " + ENV
 		print "[INFO]"
 		print "[INFO] Environments: " + ENV
 		print "[INFO] Sensitiv: ", SENSITIV_FORMATTED
 		print "[INFO] Intern: ", INTERN_FORMATTED
 		print "[INFO]"
-		print "[INFO] Then, relaunch the deployment with the following parameters:"
-		print "[INFO]"
-		print "[INFO] Environments: ", ENVS_FORMATTED
-		print "[INFO] Sensitiv: ", SENSITIV_FORMATTED_FULL
-		print "[INFO] Intern: ", INTERN_FORMATTED_FULL
-		print "[INFO]"
+		
+		if (len(ENVS_FORMATTED) > 0):
+			print "[INFO] Then, relaunch the job with the following parameters:"
+			print "[INFO]"
+			print "[INFO] Environments: ", ENVS_FORMATTED
+			print "[INFO] Sensitiv: ", SENSITIV_FORMATTED_FULL
+			print "[INFO] Intern: ", INTERN_FORMATTED_FULL
+			print "[INFO]"	
+
 		print "[INFO] #################################################################################################################"
 		print "[INFO]"
 	
