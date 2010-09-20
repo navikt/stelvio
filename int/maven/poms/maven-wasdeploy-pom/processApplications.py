@@ -94,7 +94,7 @@ def printError(ENV, APP, VERSION, ZONE):
 		print "[INFO]"
 		print "[INFO] Then, relaunch the deployment with the following parameters:"
 		print "[INFO]"
-		print "[INFO] Environments: " + ENVS
+		print "[INFO] Environments: ", ENVS
 		print "[INFO] Sensitiv: ", CHECKLIST_SENSITIV_BACKUP
 		print "[INFO] Intern: ", CHECKLIST_INTERN_BACKUP
 		print "[INFO]"
