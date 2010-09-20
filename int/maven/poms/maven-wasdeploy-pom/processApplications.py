@@ -137,7 +137,7 @@ def deploy(ENV, APP_LIST, ZONE):
 MULTI_ENV_DEPLOY = 0
 ENVS = sys.argv[1].split("=")[1].split(",")
 
-if (getCount(ENVS) == 0)
+if (getCount(ENVS) == 0):
 	print "[ERROR] No environment(s) specified."
 	sys.exit(1)
 
