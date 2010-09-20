@@ -90,7 +90,7 @@ def deploy(APP_LIST, ZONE, ENV):
 				CHECKLIST_INTERN.remove(APP_COMP)
 
 
-ENVS_LENGTH = len(ENVS = sys.argv[1].split(","))
+ENVS_LENGTH = len(sys.argv[1].split(","))
 
 print ENVS_LENGTH
 
