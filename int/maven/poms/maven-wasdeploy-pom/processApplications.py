@@ -61,7 +61,7 @@ def printStatus(ENV, APP, VERSION, ZONE):
 
 def printError(ENV, APP, VERSION, ZONE):
 	
-	
+	global ENVS
 	SENSITIV_FORMATTED = ",".join(CHECKLIST_SENSITIV)
 	INTERN_FORMATTED = ",".join(CHECKLIST_INTERN)
 	
