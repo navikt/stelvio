@@ -38,23 +38,9 @@ def main():
 		
 		print "[INFO] Completed processing of " + ENV + "."
 		ENVS_CHECKLIST.remove(ENV)
-		
-		print "remaining envs: ", ENVS_CHECKLIST
-		
-		print "CHECKLIST_SENSITIV_BACKUP: ", CHECKLIST_SENSITIV_BACKUP
-		print "CHECKLIST_INTERN_BACKUP: ", CHECKLIST_INTERN_BACKUP
-		print "CHECKLIST_SENSITIV: ", CHECKLIST_SENSITIV
-		print "CHECKLIST_INTERN: ", CHECKLIST_INTERN
-		
-		print "copying..."
-		
 		CHECKLIST_SENSITIV = CHECKLIST_SENSITIV_BACKUP[:]
 		CHECKLIST_INTERN = CHECKLIST_INTERN_BACKUP[:]
-		
-		print "CHECKLIST_SENSITIV_BACKUP: ", CHECKLIST_SENSITIV_BACKUP
-		print "CHECKLIST_INTERN_BACKUP: ", CHECKLIST_INTERN_BACKUP
-		print "CHECKLIST_SENSITIV: ", CHECKLIST_SENSITIV
-		print "CHECKLIST_INTERN: ", CHECKLIST_INTERN
+
 
 
 def appCount(APP_LIST):
@@ -74,9 +60,10 @@ def printStatus(ENV, APP, VERSION, ZONE):
 	print "[INFO]"
 
 def printError(ENV, APP, VERSION, ZONE):
+	
+	
 	SENSITIV_FORMATTED = ",".join(CHECKLIST_SENSITIV)
 	INTERN_FORMATTED = ",".join(CHECKLIST_INTERN)
-	
 	
 	if (MULTI_ENV_DEPLOY == 0):
 		print "[INFO]"
@@ -92,6 +79,8 @@ def printError(ENV, APP, VERSION, ZONE):
 		print "[INFO] #################################################################################################################"
 		print "[INFO]"
 	else:
+		SENSITIV_FORMATTED_FULL = ",".join(CHECKLIST_SENSITIV_BACKUP)
+		INTERN_FORMATTED_FULL = ",".join(CHECKLIST_INTERN_BACKUP)
 		print "[INFO]"
 		print "[INFO] #################################################################################################################"
 		print "[INFO] FAILURE"
@@ -99,14 +88,15 @@ def printError(ENV, APP, VERSION, ZONE):
 		print "[INFO] The deployment failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
 		print "[INFO] Please correct the errors, and first relaunch the deployment with the remaining applications for " + ENV
 		print "[INFO]"
-		print "[INFO] Environment: " + ENV
+		print "[INFO] Environments: " + ENV
 		print "[INFO] Sensitiv: ", SENSITIV_FORMATTED
 		print "[INFO] Intern: ", INTERN_FORMATTED
 		print "[INFO]"
 		print "[INFO] Then, relaunch the deployment with the following parameters:"
 		print "[INFO]"
-		print "[INFO]"
-		print "[INFO]"
+		print "[INFO] Environments: " + ENVS
+		print "[INFO] Sensitiv: ", CHECKLIST_SENSITIV_BACKUP
+		print "[INFO] Intern: ", CHECKLIST_INTERN_BACKUP
 		print "[INFO]"
 		print "[INFO] #################################################################################################################"
 		print "[INFO]"
