@@ -141,6 +141,7 @@ def deploy(ENV, APP_LIST, ZONE):
 MULTI_ENV_DEPLOY = 0
 
 ENVS = sys.argv[1].split("=")[1].split(",")
+print "ENVS=", ENVS
 
 if (getCount(ENVS) == 0):
 	print "[ERROR] No environment(s) specified."
@@ -148,6 +149,7 @@ if (getCount(ENVS) == 0):
 
 # Make sure we are dealing with uppercase environment names
 for ENV in ENVS:
+	print "doing upper() on env: " + ENV
 	ENV = ENV.upper()
 
 ENVS_CHECKLIST = ENVS[:]
