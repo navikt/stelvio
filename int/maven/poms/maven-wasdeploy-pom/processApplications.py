@@ -42,7 +42,7 @@ def printStatus(ENV, APP, VERSION, ZONE):
 	print "[INFO]"
 	print "[INFO] ################################################################################"
 	print "[INFO]"
-	print "[INFO] Installing  " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + " ...  [ ", INSTALLED_COUNT ," / ", TOTAL_APP_COUNT ," ]"
+	print "[INFO] Processing  " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + " ...  [ ", INSTALLED_COUNT ," / ", TOTAL_APP_COUNT ," ]"
 	print "[INFO]"
 	print "[INFO] ################################################################################"
 	print "[INFO]"
@@ -89,14 +89,20 @@ def deploy(APP_LIST, ZONE, ENV):
 			else:
 				CHECKLIST_INTERN.remove(APP_COMP)
 
-ENVS = sys.argv[1].split(",")
-print "Deploying to the following environments: ", ENVS
+
+ENVS_LENGTH = len(ENVS = sys.argv[1].split(","))
+
+print ENVS_LENGTH
+
 CHECKLIST_SENSITIV = sys.argv[2].split("=")[1].split(",")
 CHECKLIST_INTERN = sys.argv[3].split("=")[1].split(",")
+
+CHECKLIST_SENSITIV_BACKUP = sys.argv[2].split("=")[1].split(",")
+CHECKLIST_INTERN_BACKUP = sys.argv[3].split("=")[1].split(",")
+
 CONFIG_VERSION = sys.argv[4]
 
-
-TOTAL_APP_COUNT = appCount(CHECKLIST_SENSITIV) + appCount(CHECKLIST_INTERN)
+TOTAL_APP_COUNT = (appCount(CHECKLIST_SENSITIV) + appCount(CHECKLIST_INTERN)) * ENVS_LENGTH  
 INSTALLED_COUNT = 1
 
 main()
