@@ -81,6 +81,8 @@ def printError(ENV, APP, VERSION, ZONE):
 	else:
 		SENSITIV_FORMATTED_FULL = ",".join(CHECKLIST_SENSITIV_BACKUP)
 		INTERN_FORMATTED_FULL = ",".join(CHECKLIST_INTERN_BACKUP)
+		ENVS.remove(ENV)
+		
 		print "[INFO]"
 		print "[INFO] #################################################################################################################"
 		print "[INFO] FAILURE"
@@ -95,8 +97,8 @@ def printError(ENV, APP, VERSION, ZONE):
 		print "[INFO] Then, relaunch the deployment with the following parameters:"
 		print "[INFO]"
 		print "[INFO] Environments: ", ENVS
-		print "[INFO] Sensitiv: ", CHECKLIST_SENSITIV_BACKUP
-		print "[INFO] Intern: ", CHECKLIST_INTERN_BACKUP
+		print "[INFO] Sensitiv: ", SENSITIV_FORMATTED_FULL
+		print "[INFO] Intern: ", INTERN_FORMATTED_FULL
 		print "[INFO]"
 		print "[INFO] #################################################################################################################"
 		print "[INFO]"
