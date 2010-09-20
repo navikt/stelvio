@@ -64,12 +64,15 @@ def printError(ENV, APP, VERSION, ZONE):
 	SENSITIV_FORMATTED = ",".join(CHECKLIST_SENSITIV)
 	INTERN_FORMATTED = ",".join(CHECKLIST_INTERN)
 	ENVS_FORMATTED = ",".join(ENVS)
+	#for testing of special case
+	MULTI_ENV_DEPLOY = 1
 	
 	if (MULTI_ENV_DEPLOY == 0):
 		print "[INFO]"
 		print "[INFO] #################################################################################################################"
 		print "[INFO] FAILURE"
-		print "[INFO] #################################################################################################################"  
+		print "[INFO] #################################################################################################################"
+		print "[INFO]"  
 		print "[INFO] The deployment failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
 		print "[INFO] Please correct the errors, and relaunch the deployment with the remaining applications described below."
 		print "[INFO]"
@@ -86,6 +89,7 @@ def printError(ENV, APP, VERSION, ZONE):
 		print "[INFO] #################################################################################################################"
 		print "[INFO] FAILURE"
 		print "[INFO] #################################################################################################################"  
+		print "[INFO]"
 		print "[INFO] Failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
 		print "[INFO] Please correct the errors, and relaunch the job with the remaining applications for " + ENV
 		print "[INFO]"
