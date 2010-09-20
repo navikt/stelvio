@@ -17,14 +17,13 @@ import subprocess
 
 ########### defs ###########
 
-def main():
+def main(ENVS):
 	
 	global CHECKLIST_SENSITIV
 	global CHECKLIST_INTERN
 	global CHECKLIST_SENSITIV_BACKUP
 	global CHECKLIST_INTERN_BACKUP
 	
-	ENVS = sys.argv[1].split(",")
 	SENSITIV_LIST = sys.argv[2].split("=")[1].split(",")
 	INTERN_LIST = sys.argv[3].split("=")[1].split(",")
 	
@@ -43,7 +42,6 @@ def main():
 		ENVS_CHECKLIST.remove(ENV)
 		CHECKLIST_SENSITIV = CHECKLIST_SENSITIV_BACKUP[:]
 		CHECKLIST_INTERN = CHECKLIST_INTERN_BACKUP[:]
-
 
 
 def getCount(APP_LIST):
@@ -141,7 +139,6 @@ def deploy(ENV, APP_LIST, ZONE):
 MULTI_ENV_DEPLOY = 0
 
 ENVS = sys.argv[1].split("=")[1].split(",")
-print "ENVS=", ENVS
 
 if (getCount(ENVS) == 0):
 	print "[ERROR] No environment(s) specified."
@@ -149,7 +146,6 @@ if (getCount(ENVS) == 0):
 
 # Make sure we are dealing with uppercase environment names
 for ENV in ENVS:
-	print "doing upper() on env: " + ENV
 	ENV = ENV.upper()
 
 ENVS_CHECKLIST = ENVS[:]
@@ -171,5 +167,5 @@ CONFIG_VERSION = sys.argv[4]
 TOTAL_APP_COUNT = (getCount(CHECKLIST_SENSITIV) + getCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
 INSTALLED_COUNT = 1
 
-main()
+main(ENVS)
 
