@@ -26,12 +26,12 @@ def main():
 	INTERN_LIST = sys.argv[3].split("=")[1].split(",")
 	
 	for ENV in ENVS:  
-		if appCount(SENSITIV_LIST) > 0:	
+		if getCount(SENSITIV_LIST) > 0:	
 			deploy(ENV, SENSITIV_LIST, "sensitiv")
 		else:
 			print "[INFO] No applications to install in sensitiv zone."
 	
-		if appCount(INTERN_LIST) > 0:	
+		if getCount(INTERN_LIST) > 0:	
 			deploy(ENV, INTERN_LIST, "intern")
 		else:
 			print "[INFO] No applications to install in intern zone."
@@ -43,7 +43,7 @@ def main():
 
 
 
-def appCount(APP_LIST):
+def getCount(APP_LIST):
 	if len(APP_LIST) > 0:
 		if APP_LIST[0] != "":
 			return len(APP_LIST)
@@ -64,8 +64,6 @@ def printError(ENV, APP, VERSION, ZONE):
 	SENSITIV_FORMATTED = ",".join(CHECKLIST_SENSITIV)
 	INTERN_FORMATTED = ",".join(CHECKLIST_INTERN)
 	ENVS_FORMATTED = ",".join(ENVS)
-	#for testing of special case
-	MULTI_ENV_DEPLOY = 1
 	
 	if (MULTI_ENV_DEPLOY == 0):
 		print "[INFO]"
@@ -137,22 +135,33 @@ def deploy(ENV, APP_LIST, ZONE):
 
 
 MULTI_ENV_DEPLOY = 0
-ENVS = sys.argv[1].split(",")
+ENVS = sys.argv[1].split("=")[1].split(",")
+
+if (getCount(ENVS) == 0)
+	print "[ERROR] No environment(s) specified."
+	sys.exit(1)
+
+# Make sure we are dealing with uppercase environment names
+for ENV in ENVS:
+	ENV = ENV.upper()
+
 ENVS_CHECKLIST = ENVS[:]
 ENVS_LENGTH = len(ENVS)
 
+# Set the multiple environment flag
 if (ENVS_LENGTH > 1):
 	MULTI_ENV_DEPLOY = 1
 
 CHECKLIST_SENSITIV = sys.argv[2].split("=")[1].split(",")
 CHECKLIST_INTERN = sys.argv[3].split("=")[1].split(",")
 
+# Create a backup we can use to refresh the array when done processing an environment
 CHECKLIST_SENSITIV_BACKUP = CHECKLIST_SENSITIV[:]
 CHECKLIST_INTERN_BACKUP = CHECKLIST_INTERN[:]
 
 CONFIG_VERSION = sys.argv[4]
 
-TOTAL_APP_COUNT = (appCount(CHECKLIST_SENSITIV) + appCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
+TOTAL_APP_COUNT = (getCount(CHECKLIST_SENSITIV) + getCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
 INSTALLED_COUNT = 1
 
 main()
