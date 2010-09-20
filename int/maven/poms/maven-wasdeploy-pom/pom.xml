@@ -9,7 +9,7 @@
 	
 	<properties>
 		<!-- hudson -->
-		<devArchBaseDir>${project.build.directory}</devArchBaseDir>
+		<devArchBaseDir>${project.basedir}</devArchBaseDir>
 		<bundleAreaDir>/opt/BUNDLE</bundleAreaDir>
 		<stagingAreaDir>${devArchBaseDir}/STAGING</stagingAreaDir>
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
@@ -45,22 +45,22 @@
 		<plugins>
 			
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.0</version>
-                <executions>
-               			<!-- Step 1: Download and unpack configuration -->
-                        <execution>
-                                <id>unpack-configuration</id>
-                                <phase>validate</phase>
-                                <goals>
-                                        <goal>unpack-dependencies</goal>
-                                </goals>
-                                <configuration>
-                                        <outputDirectory>${devArchBaseDir}</outputDirectory>
-                                </configuration>
-                        </execution>
-                </executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.0</version>
+				<executions>
+						<!-- Step 1: Download and unpack configuration -->
+						<execution>
+								<id>unpack-configuration</id>
+								<phase>validate</phase>
+								<goals>
+										<goal>unpack-dependencies</goal>
+								</goals>
+								<configuration>
+										<outputDirectory>${devArchBaseDir}</outputDirectory>
+								</configuration>
+						</execution>
+				</executions>
        		 </plugin>
        		 
 			<plugin>

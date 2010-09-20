@@ -19,17 +19,21 @@ def main():
 	SENSITIV_LIST = sys.argv[2].split("=")[1].split(",")
 	INTERN_LIST = sys.argv[3].split("=")[1].split(",")
 	
-	for ENV in ENVS:
+	for ENV in ENVS:  
 		if appCount(SENSITIV_LIST) > 0:	
-			deploy(SENSITIV_LIST, "sensitiv", ENV)
+			deploy(ENV, SENSITIV_LIST, "sensitiv")
 		else:
 			print "[INFO] No applications to install in sensitiv zone."
 	
 		if appCount(INTERN_LIST) > 0:	
-			deploy(INTERN_LIST, "intern", ENV)
+			deploy(ENV, INTERN_LIST, "intern")
 		else:
 			print "[INFO] No applications to install in intern zone."
-			
+		
+		print "[INFO] Completed processing of " + ENV + "."
+		ENVS_CHECKLIST.remove(ENV)
+		CHECKLIST_SENSITIV = CHECKLIST_SENSITIV_BACKUP[:]
+		CHECKLIST_INTERN = CHECKLIST_INTERN_BACKUP[:]
 
 def appCount(APP_LIST):
 	if len(APP_LIST) > 0:
@@ -47,25 +51,46 @@ def printStatus(ENV, APP, VERSION, ZONE):
 	print "[INFO] ################################################################################"
 	print "[INFO]"
 
-def printError(APP, VERSION, ZONE):
+def printError(ENV, APP, VERSION, ZONE):
 	SENSITIV_FORMATTED = ",".join(CHECKLIST_SENSITIV)
 	INTERN_FORMATTED = ",".join(CHECKLIST_INTERN)
 	
-	print "[INFO]"
-	print "[INFO] #################################################################################################################"
-	print "[INFO] FAILURE"
-	print "[INFO] #################################################################################################################"  
-	print "[INFO] The deployment failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
-	print "[INFO] Please correct the errors, and relaunch the deployment with the remaining applications described below."
-	print "[INFO]"
-	print "[INFO] Sensitiv: ", SENSITIV_FORMATTED
-	print "[INFO] Intern: ", INTERN_FORMATTED
-	print "[INFO]"
-	print "[INFO] #################################################################################################################"
-	print "[INFO]"
+	
+	if (!MULTI_ENV_DEPLOY):
+		print "[INFO]"
+		print "[INFO] #################################################################################################################"
+		print "[INFO] FAILURE"
+		print "[INFO] #################################################################################################################"  
+		print "[INFO] The deployment failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
+		print "[INFO] Please correct the errors, and relaunch the deployment with the remaining applications described below."
+		print "[INFO]"
+		print "[INFO] Sensitiv: ", SENSITIV_FORMATTED
+		print "[INFO] Intern: ", INTERN_FORMATTED
+		print "[INFO]"
+		print "[INFO] #################################################################################################################"
+		print "[INFO]"
+	else:
+		print "[INFO]"
+		print "[INFO] #################################################################################################################"
+		print "[INFO] FAILURE"
+		print "[INFO] #################################################################################################################"  
+		print "[INFO] The deployment failed when deploying application, " + APP + ":" + VERSION + " to " + ZONE + " zone in " + ENV + "."
+		print "[INFO] Please correct the errors, and first relaunch the deployment with the remaining applications for " + ENV
+		print "[INFO]"
+		print "[INFO] Environment: " + ENV
+		print "[INFO] Sensitiv: ", SENSITIV_FORMATTED
+		print "[INFO] Intern: ", INTERN_FORMATTED
+		print "[INFO]"
+		print "[INFO] Then, relaunch the deployment with the following parameters:"
+		print "[INFO]"
+		print "[INFO]"
+		print "[INFO]"
+		print "[INFO]"
+		print "[INFO] #################################################################################################################"
+		print "[INFO]"
 	
 
-def deploy(APP_LIST, ZONE, ENV):
+def deploy(ENV, APP_LIST, ZONE):
 	global INSTALLED_COUNT
 	
 	for APP_COMP in APP_LIST:		
@@ -78,7 +103,7 @@ def deploy(APP_LIST, ZONE, ENV):
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
 		if (retval != 0):
-			printError(APP, VERSION, ZONE)
+			printError(ENV, APP, VERSION, ZONE)
 			sys.exit(1)
 		else:
 			print "[INFO] The processing of application " + APP + ":" + VERSION + " finished successfully."		
@@ -90,19 +115,26 @@ def deploy(APP_LIST, ZONE, ENV):
 				CHECKLIST_INTERN.remove(APP_COMP)
 
 
-ENVS_LENGTH = len(sys.argv[1].split(","))
+MULTI_ENV_DEPLOY = 0
+ENVS = sys.argv[1].split(",")
+ENVS_CHECKLIST = ENVS[:]
+ENVS_LENGTH = len(ENVS)
 
-print ENVS_LENGTH
+if (ENVS_LENGTH == 0):
+	print "[ERROR] No environment specified."
+	sys.exit(1)
+if (ENVS_LENGTH > 1):
+	MULTI_ENV_DEPLOY = 1
 
 CHECKLIST_SENSITIV = sys.argv[2].split("=")[1].split(",")
 CHECKLIST_INTERN = sys.argv[3].split("=")[1].split(",")
 
-CHECKLIST_SENSITIV_BACKUP = sys.argv[2].split("=")[1].split(",")
-CHECKLIST_INTERN_BACKUP = sys.argv[3].split("=")[1].split(",")
+CHECKLIST_SENSITIV_BACKUP = CHECKLIST_SENSITIV[:]
+CHECKLIST_INTERN_BACKUP = CHECKLIST_INTERN[:]
 
 CONFIG_VERSION = sys.argv[4]
 
-TOTAL_APP_COUNT = (appCount(CHECKLIST_SENSITIV) + appCount(CHECKLIST_INTERN)) * ENVS_LENGTH  
+TOTAL_APP_COUNT = (appCount(CHECKLIST_SENSITIV) + appCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
 INSTALLED_COUNT = 1
 
 main()
