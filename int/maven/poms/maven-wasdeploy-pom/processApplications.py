@@ -14,6 +14,9 @@
 import sys
 import subprocess
 
+
+########### defs ###########
+
 def main():
 	
 	global CHECKLIST_SENSITIV
@@ -133,8 +136,10 @@ def deploy(ENV, APP_LIST, ZONE):
 			else:
 				CHECKLIST_INTERN.remove(APP_COMP)
 
+########### /defs ###########
 
 MULTI_ENV_DEPLOY = 0
+
 ENVS = sys.argv[1].split("=")[1].split(",")
 
 if (getCount(ENVS) == 0):
