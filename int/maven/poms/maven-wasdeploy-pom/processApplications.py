@@ -49,7 +49,7 @@ def getCount(APP_LIST):
 			return len(APP_LIST)
 		else:
 			return 0
-
+			
 def printStatus(ENV, APP, VERSION, ZONE):
 	print "[INFO]"
 	print "[INFO] ################################################################################"
@@ -121,12 +121,12 @@ def deploy(ENV, APP_LIST, ZONE):
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
 		
-		if (retval != 0) or (retval != 10):
+		if (retval != 0 and retval != 10):
 			ENVS.remove(ENV)
 			printError(ENV, APP, VERSION, ZONE)
 			sys.exit(1)
 		else:
-			print "[INFO] The processing of application " + APP + ":" + VERSION + " finished successfully."		
+			print "[INFO] The processing of application " + APP + ":" + VERSION + " completed successfully."		
 			sys.stdout.flush()
 			INSTALLED_COUNT += 1
 			if ZONE == "sensitiv":
