@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-#*****************************************************************************
+#********************************************************************************
 #							                              
 # File name: processApplications.py 			                    
 #							                    
@@ -9,11 +9,10 @@
 # 
 # Author: test@example.com			                   
 #							 		
-#*****************************************************************************
+#********************************************************************************
 
 import sys
 import subprocess
-
 
 ########### defs ###########
 
@@ -121,7 +120,7 @@ def deploy(ENV, APP_LIST, ZONE):
 		print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
-		if (retval != 0):
+		if (retval != 0 || retval != 1337):
 			ENVS.remove(ENV)
 			printError(ENV, APP, VERSION, ZONE)
 			sys.exit(1)
