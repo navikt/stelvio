@@ -121,7 +121,7 @@ def deploy(ENV, APP_LIST, ZONE):
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
 		print "Ey, got retval: ", retval
-		if ((retval != 0) or (retval != 1337)):
+		if (retval != 0):
 			ENVS.remove(ENV)
 			printError(ENV, APP, VERSION, ZONE)
 			sys.exit(1)
