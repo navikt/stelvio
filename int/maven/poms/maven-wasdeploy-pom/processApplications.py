@@ -120,7 +120,7 @@ def deploy(ENV, APP_LIST, ZONE):
 		print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
-		print "Ey, got retval: " + retval
+		print "Ey, got retval: ", retval
 		if ((retval != 0) or (retval != 1337)):
 			ENVS.remove(ENV)
 			printError(ENV, APP, VERSION, ZONE)
