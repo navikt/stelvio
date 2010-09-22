@@ -20,7 +20,6 @@
 		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
 		<scriptAbsPath>${project.basedir}/scripts/InstallApp.py</scriptAbsPath>
-		<mapFile>${devArchBaseDir}/build_version_mapping.txt</mapFile>
 		<applicationProperties>${devArchBaseDir}/module_config/${app}/spring</applicationProperties>
 		<environmentFilesDir>${devArchBaseDir}/environments</environmentFilesDir>
 		<environmentFile>${environmentFilesDir}/${env}.xml</environmentFile>
@@ -192,7 +191,6 @@
 						<configuration>
 							<ear>${stagingArea}/${earName}</ear>
 							<springConfigFile>file:${ejbSecurityFile}</springConfigFile>
-							<!--  mappingFile>${mapFile}</mappingFile-->
 						</configuration>
 					</execution>
 				</executions>
