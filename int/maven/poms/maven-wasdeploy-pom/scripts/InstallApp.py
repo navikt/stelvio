@@ -70,7 +70,7 @@ def uninstall():
 	
 def install():
 	serverId = AdminConfig.getid("/Node:"+NODE_NAME+"/Server:"+SERVER_NAME+"/")
-	options = "-verbose -appname " + APP_NAME + " -nodeployejb -usedefaultbindings -defaultbinding.virtual.host default_hostoptions -cluster " + CLUSTER_NAME
+	options = "-verbose -appname " + APP_NAME + " -nodeployejb -usedefaultbindings -defaultbinding.virtual.host default_host -cluster " + CLUSTER_NAME
 	log("INFO", "Installing application, " + APP_NAME + " with the following options: " + options)
 	AdminApp.install(APP_LOCATION, options)
 
