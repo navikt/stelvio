@@ -145,7 +145,7 @@ if (getCount(ENVS) == 0):
 	sys.exit(1)
 
 # Make sure we are dealing with uppercase environment names
-ENV.upper() for ENV in ENVS
+ENVS = [ENV.upper() for ENV in ENVS]
 
 # Strip string for whitespaces
 ENVS = ENVS.replace(' ','')
