@@ -138,7 +138,8 @@ def deploy(ENV, APP_LIST, ZONE):
 
 MULTI_ENV_DEPLOY = 0
 
-ENVS = sys.argv[1].split("=")[1].split(",")
+# Strip string for whitespaces and split for each environment
+ENVS = sys.argv[1].replace(' ','').split("=")[1].split(",")
 
 if (getCount(ENVS) == 0):
 	print "[ERROR] No environment(s) specified."
@@ -147,8 +148,7 @@ if (getCount(ENVS) == 0):
 # Make sure we are dealing with uppercase environment names
 ENVS = [ENV.upper() for ENV in ENVS]
 
-# Strip string for whitespaces
-ENVS = ENVS.replace(' ','')
+
 
 print "ENVS: ", ENVS
 
