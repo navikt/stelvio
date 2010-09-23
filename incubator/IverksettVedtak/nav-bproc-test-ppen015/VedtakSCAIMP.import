@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="VedtakSCAIMP" name="VedtakSCAIMP">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Vedtak"/>
-  </interfaces>
-  <esbBinding xsi:type="scdl:SCAImportBinding" module="nav-ent-pen-vedtak" export="VedtakSCAEXP"/>
-</scdl:import>
