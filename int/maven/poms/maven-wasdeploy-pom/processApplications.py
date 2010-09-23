@@ -145,8 +145,12 @@ if (getCount(ENVS) == 0):
 	sys.exit(1)
 
 # Make sure we are dealing with uppercase environment names
-for ENV in ENVS:
-	ENV = ENV.upper()
+ENV.upper() for ENV in ENVS
+
+# Strip string for whitespaces
+ENVS = ENVS.replace(' ','')
+
+print "ENVS: ", ENVS
 
 ENVS_CHECKLIST = ENVS[:]
 ENVS_LENGTH = len(ENVS)
@@ -163,7 +167,7 @@ CHECKLIST_SENSITIV_BACKUP = CHECKLIST_SENSITIV[:]
 CHECKLIST_INTERN_BACKUP = CHECKLIST_INTERN[:]
 
 CONFIG_VERSION = sys.argv[4]
-
+	
 TOTAL_APP_COUNT = (getCount(CHECKLIST_SENSITIV) + getCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
 INSTALLED_COUNT = 1
 
