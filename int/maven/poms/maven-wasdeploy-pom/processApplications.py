@@ -6,6 +6,7 @@
 #							                    
 # Description: This script processes the input strings for the two zones, and
 #	       deploys/bundles the applications to the specified environment(s).
+#	       Also provides status and proper failure information. 
 # 
 # Author: test@example.com			                   
 #							 		
