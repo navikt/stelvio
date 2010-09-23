@@ -138,17 +138,14 @@ def deploy(ENV, APP_LIST, ZONE):
 
 MULTI_ENV_DEPLOY = 0
 
-# Strip string for whitespaces and split for each environment
-ENVS = sys.argv[1].replace(' ','').split("=")[1].split(",")
+ENVS = sys.argv[1].split("=")[1].split(",")
 
 if (getCount(ENVS) == 0):
 	print "[ERROR] No environment(s) specified."
 	sys.exit(1)
 
-# Make sure we are dealing with uppercase environment names
+# Make sure we have uppercase environment names
 ENVS = [ENV.upper() for ENV in ENVS]
-
-print "ENVS: ", ENVS
 
 ENVS_CHECKLIST = ENVS[:]
 ENVS_LENGTH = len(ENVS)
@@ -157,8 +154,8 @@ ENVS_LENGTH = len(ENVS)
 if (ENVS_LENGTH > 1):
 	MULTI_ENV_DEPLOY = 1
 
-CHECKLIST_SENSITIV = sys.argv[2].replace(' ','').split("=")[1].split(",")
-CHECKLIST_INTERN = sys.argv[3].replace(' ','').split("=")[1].split(",")
+CHECKLIST_SENSITIV = sys.argv[2].split("=")[1].split(",")
+CHECKLIST_INTERN = sys.argv[3].split("=")[1].split(",")
 
 # Create a backup we can use to refresh the array when done processing an environment
 CHECKLIST_SENSITIV_BACKUP = CHECKLIST_SENSITIV[:]
