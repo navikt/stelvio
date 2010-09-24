@@ -42,10 +42,15 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 			File file = getConfigurationFile(environment, envClass, fileName, moduleConfigHome);
 			
 			if (file != null){
-				getLog().info("[INFO] Found configuration file, " + file + ".");
+				getLog().info("Found configuration file, " + file + ".");
 			}
 
 			roleMapping = XMLUtils.parseRoleMappings(environment, envClass, fileName, moduleConfigHome, file);
+			
+			if (roleMapping.equals("")){
+				getLog().info("No rolemappings found for the remaining modules in the EARSToDeploy folder.");
+				return;
+			}
 			
 			Commandline.Argument arg = new Commandline.Argument();
 			arg.setLine("-f " + scriptsHome + "/scripts/RoleMapping.py" + " " + scriptsHome + " " + "\"" + roleMapping + "\"");

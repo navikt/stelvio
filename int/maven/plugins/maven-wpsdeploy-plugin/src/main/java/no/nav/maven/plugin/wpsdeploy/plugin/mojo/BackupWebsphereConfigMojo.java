@@ -8,9 +8,8 @@ import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.Commandline;
 
 /**
- * Goal that contacts the deployment manager via plink to remotely execute a
- * backup command. For windows (typically developer machine) it will prompt for
- * password for the user. For unix variants ssh trust is assumed
+ * Goal that contacts the deployment manager via plink to remotely execute a backup command. For windows (typically developer machine) it will prompt for password for the user. For unix variants ssh
+ * trust is assumed
  * 
  * @author test@example.com
  * 
@@ -21,7 +20,7 @@ public class BackupWebsphereConfigMojo extends RemoteCommandExecutorMojo {
 
 	protected void executeRemoteCommand() throws MojoExecutionException, MojoFailureException {
 		if (interactiveMode)
-				backupConfig();
+			backupConfig();
 	}
 
 	private final void backupConfig() {
@@ -33,17 +32,11 @@ public class BackupWebsphereConfigMojo extends RemoteCommandExecutorMojo {
 		if (Os.isFamily("windows") == true) {
 			System.out.print("Enter password for wasadm: ");
 			pwd = PwdConsole.getPassword();
-			arg
-					.setLine("C:/apps/SSH/plink.exe -pw "
-							+ pwd
-							+ " wasadm@"
-							+ deploymentManagerHost
-							+ " /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop");
+			arg.setLine("C:/apps/SSH/plink.exe -pw " + pwd + " wasadm@" + deploymentManagerHost
+					+ " /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop");
 		} else {
-			arg
-					.setLine("ssh wasadm@"
-							+ deploymentManagerHost
-							+ " '/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop'");
+			arg.setLine("ssh wasadm@" + deploymentManagerHost
+					+ " '/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/backupConfig.sh /opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/WebSphereConfig_`date +%d%m%Y%H%M%S`.zip -nostop'");
 		}
 
 		commLine.addArg(arg);

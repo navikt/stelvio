@@ -30,7 +30,7 @@ public class ExtractESBRelease extends WebsphereUpdaterMojo {
 
 		try {
 			
-			getLog().info("[INFO] Extracting artifacts into " + deployableArtifactsHome + " ...");
+			getLog().info("Extracting artifacts into " + deployableArtifactsHome + " ...");
 			
 			for (Artifact a : artifacts) {
 				if (a.getType().equals("ear")) {
@@ -39,10 +39,10 @@ public class ExtractESBRelease extends WebsphereUpdaterMojo {
 				}
 			}
 			
-			getLog().info("[INFO] Successfully extracted the artifacts of esb-" + esbReleaseVersion + " into " + deployableArtifactsHome + ".");
+			getLog().info("Successfully extracted the artifacts of esb-" + esbReleaseVersion + " into " + deployableArtifactsHome + ".");
 			
 		} catch (IOException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		}
 	}
 

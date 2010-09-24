@@ -44,9 +44,9 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 
 			StringBuilder sb = new StringBuilder();
 			
-			File targetFolder = new File(deployableArtifactsHome);
+			File earFolder = new File(deployableArtifactsHome);
 			
-			getLog().info("[INFO] Checking target folder " + targetFolder + " to see which modules were installed.");
+			getLog().info("Checking target folder " + earFolder + " to see which modules were installed.");
 			
 			FilenameFilter fnFilter = new FilenameFilter() {
 				public boolean accept(File dir, String name) {
@@ -54,7 +54,7 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 				}
 			};
 
-			String[] deployedModules = targetFolder.list(fnFilter);
+			String[] deployedModules = earFolder.list(fnFilter);
 
 			for (int i = 0; i < deployedModules.length; i++) {
 				
@@ -69,7 +69,7 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 				}
 				
 				if (moduleArtifact == null) {
-					getLog().info("[INFO] Module " + module + " is not deployed, skipping ...");
+					getLog().info("Module " + module + " is not deployed, skipping ...");
 					continue;
 				}
 			
@@ -83,24 +83,31 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 						continue;
 					}
 
-					getLog().info("[INFO]: Found webservice endpoints in " + found + ". Adding ...");
+					getLog().info("Found webservice endpoints in " + found + ". Adding ...");
 					sb.append(s);
 				}
 			}
 			
+			String wsEndpoints = sb.toString();
+			
+			if (wsEndpoints.equals("")){
+				getLog().info("No webservice endpoints found for the remaining modules in the EARSToDeploy folder.");
+				return;
+			}
+			
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + scriptsHome + "/scripts/ModifySCAImportsBinding.py" + " " + scriptsHome + " " + "\"" + sb.toString() + "\"");
+			arg.setLine("-f " + scriptsHome + "/scripts/ModifySCAImportsBinding.py" + " " + scriptsHome + " " + "\"" + wsEndpoints + "\"");
 			commandLine.addArg(arg);
 			executeCommand(commandLine);
 
 		} catch (SAXException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		} catch (IOException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		} catch (ParserConfigurationException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		} catch (FactoryConfigurationError e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		}
 	}
 

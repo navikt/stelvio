@@ -46,7 +46,7 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 
 			File targetFolder = new File(deployableArtifactsHome);
 			
-			getLog().info("[INFO] Checking target folder, " + targetFolder + ", to check which modules were installed.");
+			getLog().info("Checking target folder, " + targetFolder + ", to check which modules were installed.");
 			
 			FilenameFilter fnFilter = new FilenameFilter() {
 				public boolean accept(File dir, String name) {
@@ -69,7 +69,7 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 				}
 				
 				if (moduleArtifact == null) {
-					getLog().info("[INFO] Module " + module + " is not deployed, skipping ...");
+					getLog().info("Module " + module + " is not deployed, skipping ...");
 					continue;
 				}
 				
@@ -87,29 +87,31 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 						sb.append(";");
 					}
 					
-					getLog().info("[INFO]: Found activation specification elements in " + found + ". Adding ...");
+					getLog().info("Found activation specification elements in " + found + ". Adding ...");
 					sb.append(s);
 				}
 			}
 			
-			if (sb.length() == 0) {
-				getLog().info("[INFO]: No activation specifications found for any of the artifacts in the target folder.");
+			String activationSpecs = sb.toString();
+			
+			if (activationSpecs.equals("")) {
+				getLog().info("No activation specifications found for the remaining modules in the EARSToDeploy folder.");
 				return;
 			}
 
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py" + " " + scriptsHome + " " + "\"" + sb.toString() + "\"");
+			arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py" + " " + scriptsHome + " " + "\"" + activationSpecs + "\"");
 			commandLine.addArg(arg);
 			executeCommand(commandLine);
 
 		} catch (SAXException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		} catch (IOException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		} catch (ParserConfigurationException e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		} catch (FactoryConfigurationError e) {
-			throw new MojoFailureException("[ERROR]: " + e);
+			throw new MojoFailureException(e.getMessage());
 		}
 	}
 
