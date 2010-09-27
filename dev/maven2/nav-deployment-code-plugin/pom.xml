@@ -9,10 +9,10 @@
   <artifactId>nav-deployment-code-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>NAV Maven Deployment Code Plugin</name>
-  <version>1.1</version>
+  <version>1.2</version>
   <url>http://10.33.1.53/project/maven/plugins/nav-deployment-code-plugin</url>
   <prerequisites>
-    <maven>2.0.1</maven>
+    <maven>2.2.1</maven>
   </prerequisites>
   
   <dependencies>    
@@ -61,6 +61,16 @@
             </roles>
             <timezone>+1</timezone>
         </developer>
+          <developer>
+              <name>Steinar person7b6db0c03aa3</name>
+              <id>shf2812</id>
+              <email>test@example.com</email>
+              <organization>JProfessionals</organization>
+              <roles>
+                  <role>Utviklingsarkitekt</role>
+              </roles>
+              <timezone>+1</timezone>
+          </developer>
     </developers>
   	
 	<build>

@@ -468,6 +468,7 @@ dev/maven2/nav-copy-plugin/src/main/java/no/nav/maven/plugins/navcopyplugin/Sour
 dev/maven2/nav-deployment-code-plugin/.project -text
 dev/maven2/nav-deployment-code-plugin/pom.xml -text
 dev/maven2/nav-deployment-code-plugin/src/main/java/no/nav/maven/plugin/deploymentcodeplugin/AbstractDeploymentCodeMojo.java -text
+dev/maven2/nav-deployment-code-plugin/src/main/java/no/nav/maven/plugin/deploymentcodeplugin/StreamGobbler.java -text
 dev/maven2/nav-deployment-code-plugin/src/main/java/no/nav/maven/plugin/deploymentcodeplugin/WebsphereDeploymentCodeMojo.java -text
 dev/maven2/nav-eclipse-plugin/.classpath -text
 dev/maven2/nav-eclipse-plugin/.compatibility -text

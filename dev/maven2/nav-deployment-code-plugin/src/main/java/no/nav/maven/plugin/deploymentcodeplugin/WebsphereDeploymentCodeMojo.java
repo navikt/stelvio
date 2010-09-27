@@ -1,13 +1,10 @@
 package no.nav.maven.plugin.deploymentcodeplugin;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
@@ -25,9 +22,9 @@ import org.codehaus.plexus.util.FileUtils;
  *   <td style="font-weight: bold">Maven Pom property</td><td style="font-weight: bold">settings.xml property</td>
  *  </tr>
  *  <tr>
- *   <td>was61Home</td></td>was.home</td>
+ *   <td>wasHome</td></td>was.home</td>
  *   <td>itpLoc</td></td>itp.loc</td>
- *   <td>javaHome</td></td>was.java.home</td>
+ *   <td>wasJavaHome</td></td>was.java.home</td>
  *   <td>bootPath</td></td>boot.path</td>
  *   <td>ejbdCp</td></td>ejbd.cp</td>
  *   <td>wasExtDirs</td></td>was.ext.dirs</td>
@@ -66,7 +63,7 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	 * 
 	 * @parameter expression="${was.home}"
 	 */
-	private File was61Home;
+	private File wasHome;
 	
 	/**
 	 * Default value should be specified as a property ('itp.loc') in settings.xml.
@@ -80,7 +77,7 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	 * 
 	 * @parameter expression="${was.java.home}"
 	 */
-	private File javaHome;
+	private File wasJavaHome;
 	
 	/**
 	 * Default value should be specified as a property ('boot.path') in settings.xml.
@@ -140,19 +137,31 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 				// Execute the ejb deploy tool in a separate JVM
 				Process process = Runtime.getRuntime().exec(getJavaExecutable());
 				
-				// Print ejb deploy tool log
-				logStreams(process.getInputStream(), process.getErrorStream());
-		
-				// Make final preperations to the resulting artifacts
+                // any output?
+                StreamGobbler errorGobbler = new
+                    StreamGobbler(process.getErrorStream(), getLog());
+                StreamGobbler outputGobbler = new
+                    StreamGobbler(process.getInputStream(), getLog());
+
+                // kick them off
+                errorGobbler.start();
+                outputGobbler.start();
+
+                //wait for process to finish, ignoring the return code
+                process.waitFor();
+
+				// Make final preparations to the resulting artifacts
 				finalizeArtifacts();
 			}
 			catch (DependencyResolutionRequiredException e) {
-				throw new MojoExecutionException("An error occured while setting ejbdeploy arguments.", e);
+				throw new MojoExecutionException("An error occurred while setting ejbdeploy arguments.", e);
 			}
 			catch (IOException e) {
-				throw new MojoExecutionException("An error occured while executing process", e);
-			}
-		}
+				throw new MojoExecutionException("An error occurred while executing process", e);
+			} catch (InterruptedException e) {
+                throw new MojoExecutionException("An error occurred while executing process", e);
+            }
+        }
 	}
 	
 	/**
@@ -198,16 +207,16 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	 * @throws MojoExecutionException 
 	 */
 	private void checkArguments() throws MojoExecutionException {
-		if (was61Home == null || !was61Home.exists()) {
-			throw new MojoExecutionException("The argument 'was61Home' is not specified or specified as an invalid value (folder does not exists). "+
+		if (wasHome == null || !wasHome.exists()) {
+			throw new MojoExecutionException("The argument 'wasHome' is not specified or specified as an invalid value (folder does not exists). "+
 							"A possible cause is that the property 'was.home' is missing in your settings.xml file.");
 		}
 		if (itpLoc == null || !itpLoc.exists()) {
 			throw new MojoExecutionException("The argument 'itpLoc' is not specified or specified as an invalid value (folder does not exists). "+
 							"A possible cause is that the property 'itp.loc' is missing in your settings.xml file.");
 		}
-		if (javaHome == null || !javaHome.exists()) {
-			throw new MojoExecutionException("The argument 'javaHome' is not specified or specified as an invalid value (folder does not exists). "+
+		if (wasJavaHome == null || !wasJavaHome.exists()) {
+			throw new MojoExecutionException("The argument 'wasJavaHome' is not specified or specified as an invalid value (folder does not exists). "+
 							"A possible cause is that the property 'was.java.home' is missing in your settings.xml file.");
 		}
 		if (bootPath == null) {
@@ -315,33 +324,13 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	}
 	
 	/**
-	 * Dumps ejb deploy tool to maven log.
-	 * 
-	 * @param stdOut
-	 * @param stdErr
-	 * @throws IOException
-	 */
-	private void logStreams(InputStream stdOut, InputStream stdErr) throws IOException {
-		BufferedReader bro = new BufferedReader(new InputStreamReader(stdOut));
-		String line;
-		while ((line = bro.readLine()) != null) {
-			getLog().info(line);
-		}
-		
-		BufferedReader bre = new BufferedReader(new InputStreamReader(stdErr));
-		while ((line = bre.readLine()) != null) {
-			getLog().info(line);
-		}
-	}
-	
-	/**
 	 * Returns a String containing the java executables with all its arguments.
 	 * 
 	 * @return String
 	 * @throws DependencyResolutionRequiredException
 	 */
 	private String getJavaExecutable() throws DependencyResolutionRequiredException {
-		return 	javaHome.toString()+File.separatorChar+
+		return 	wasJavaHome.toString()+File.separatorChar+
 				"bin"+File.separatorChar+
 				"java "+getJvmArgs();
 	}
@@ -352,21 +341,22 @@ public class WebsphereDeploymentCodeMojo extends AbstractDeploymentCodeMojo {
 	 * @return
 	 * @throws DependencyResolutionRequiredException
 	 */
-	private String getJvmArgs() throws DependencyResolutionRequiredException {
-		return 	"-classpath "+ejbdCp+
-				" -Xbootclasspath/a:"+bootPath+
-				" -Xj9"+
-				" -Xquickstart"+
-				" -Xverify:none"+
-				" -Xms256M"+
-				" -Xmx256M"+
-				" -Ditp.loc=\""+itpLoc+"\""+
-				" -Dwas.install.root=\""+was61Home+"\""+
-				" -Dwebsphere.lib.dir=\""+was61Home+File.separatorChar+"lib\""+
-				" -Dws.ext.dirs=\""+was61Home+File.separatorChar+"eclipse"+File.separatorChar+"plugins"+File.separatorChar+"j2ee.javax_1.4.0\";\""+was61Home+File.separatorChar+"eclipse"+File.separatorChar+"plugins"+File.separatorChar+"com.ibm.ws.runtime.eclipse_1.0.0\";\""+wasExtDirs+"\""+
-				" -Dcom.ibm.sse.model.structuredbuilder=\"off\""+
-				" com.ibm.etools.ejbdeploy.EJBDeploy "+getEjbDeployArgs();
-	}
+    private String getJvmArgs() throws DependencyResolutionRequiredException {
+        return 	"-classpath "+ejbdCp+
+                " -Xbootclasspath/a:"+bootPath+
+                " -Xj9"+
+                " -Xquickstart"+
+                " -Xverify:none"+
+                " -Xms256M"+
+                " -Xmx256M"+
+                " -Dorg.osgi.framework.bootdelegation=*"+
+                " -Ditp.loc=\""+itpLoc+"\""+
+                " -Dwas.install.root=\""+ wasHome +"\""+
+                " -Dwebsphere.lib.dir=\""+ wasHome +File.separatorChar+"lib\""+
+                " -Dws.ext.dirs=\""+ wasHome +File.separatorChar+"eclipse"+File.separatorChar+"plugins"+File.separatorChar+"j2ee.javax_1.4.0\";\""+ wasHome +File.separatorChar+"eclipse"+File.separatorChar+"plugins"+File.separatorChar+"com.ibm.ws.runtime.eclipse_1.0.0\";\""+wasExtDirs+"\""+
+                " -Dcom.ibm.sse.model.structuredbuilder=\"off\""+
+                " com.ibm.etools.ejbdeploy.EJBDeploy "+getEjbDeployArgs();
+    }
 	
 	/**
 	 * Returns a String containing the ejb deploy tool argument line. 
