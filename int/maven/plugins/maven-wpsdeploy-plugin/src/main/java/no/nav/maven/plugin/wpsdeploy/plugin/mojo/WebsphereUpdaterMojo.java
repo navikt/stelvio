@@ -91,8 +91,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 */
 	protected String dmgrSOAPPort;
 	
-	protected boolean isPropertiesLoaded = false;
-
 	protected String scriptsHome;
 	protected String deployableArtifactsHome;
 	protected String environmentFile;
