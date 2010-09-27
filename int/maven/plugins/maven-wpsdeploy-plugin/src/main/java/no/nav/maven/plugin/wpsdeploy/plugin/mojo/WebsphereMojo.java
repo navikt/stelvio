@@ -100,7 +100,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	protected Set<Artifact> dependencyArtifacts;
 
 	/**
-	 * @parameter expression="${interactiveMode}" default-value="false"
+	 * @parameter expression="${interactiveMode}" default-value="true"
 	 * @required
 	 */
 	protected Boolean interactiveMode;
