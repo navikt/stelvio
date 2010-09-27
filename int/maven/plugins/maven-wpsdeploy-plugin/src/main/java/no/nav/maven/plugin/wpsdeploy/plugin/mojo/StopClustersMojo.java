@@ -16,6 +16,11 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class StopClustersMojo extends WebsphereUpdaterMojo {
 
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+		if (!isConfigurationLoaded()){
+			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
+			return;
+		}
+		
 		stopClusters(commandLine);
 	}
 

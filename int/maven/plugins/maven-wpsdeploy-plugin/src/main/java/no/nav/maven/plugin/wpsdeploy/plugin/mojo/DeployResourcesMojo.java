@@ -12,19 +12,12 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 	
-	/**
-	 * @parameter expression="${bus-configuration-version}"
-	 * @required
-	 */
-	protected String busConfigurationVersion;
-	
-	/**
-	 * @parameter expression="${esb-release-version}"
-	 * @required
-	 */
-	protected String esbReleaseVersion;
-
 	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+		
+		if (!isConfigurationLoaded()){
+			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
+			return;
+		}
 		
 		String[] orgArgs = commandLine.getArguments();
 		

@@ -26,20 +26,13 @@ import org.xml.sax.SAXException;
  */
 public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 
-	/**
-	 * @parameter expression="${envClass}"
-	 * @required
-	 */
-	protected String envClass;
-
-	/**
-	 * @parameter expression="${environment}"
-	 * @required
-	 */
-	protected String environment;
-
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 
+		if (!isConfigurationLoaded()){
+			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
+			return;
+		}
+		
 		try {
 
 			StringBuilder sb = new StringBuilder();
@@ -73,7 +66,7 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 					continue;
 				}
 				
-				File found = getConfigurationFile(environment, envClass, moduleArtifact.getArtifactId() + ".xml", moduleConfigHome);
+				File found = getConfigurationFile(environment, moduleArtifact.getArtifactId() + ".xml", moduleConfigHome);
 
 				if (found != null) {
 					

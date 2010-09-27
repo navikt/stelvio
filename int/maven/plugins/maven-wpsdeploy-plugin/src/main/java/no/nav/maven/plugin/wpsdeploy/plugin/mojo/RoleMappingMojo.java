@@ -20,26 +20,19 @@ import org.xml.sax.SAXException;
  */
 public class RoleMappingMojo extends WebsphereUpdaterMojo {
 
-	/**
-	 * @parameter expression="${envClass}"
-	 * @required
-	 */
-	protected String envClass;
-
-	/**
-	 * @parameter expression="${environment}"
-	 * @required
-	 */
-	protected String environment;
-
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 
+		if (!isConfigurationLoaded()){
+			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
+			return;
+		}
+		
 		try {
 			
 			String roleMapping;
 			String fileName = "cons.xml";
 
-			File file = getConfigurationFile(environment, envClass, fileName, moduleConfigHome);
+			File file = getConfigurationFile(environment, fileName, moduleConfigHome);
 			
 			if (file != null){
 				getLog().info("Found configuration file, " + file + ".");

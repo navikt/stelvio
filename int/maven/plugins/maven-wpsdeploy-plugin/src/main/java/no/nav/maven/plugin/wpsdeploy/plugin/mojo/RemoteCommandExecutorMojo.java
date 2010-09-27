@@ -10,11 +10,6 @@ import org.apache.maven.plugin.MojoFailureException;
 */
 public abstract class RemoteCommandExecutorMojo extends WebsphereMojo {
     
-	/**
-	 * @parameter expression="${host}"
-	 * @required
-	 */
-	protected String deploymentManagerHost;
 	
 	protected abstract void executeRemoteCommand() throws MojoExecutionException, MojoFailureException;
 	

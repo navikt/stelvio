@@ -16,19 +16,6 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class InterpolatorMojo extends WebsphereUpdaterMojo {
 
-	/**
-	 * @parameter expression="${envClass}"
-	 * @required
-	 */
-	protected String envClass;
-
-	/**
-	 * @parameter expression="${environment}"
-	 * @required
-	 */
-	protected String environment;
-	
-
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 		MojoLauncher.executePropertiesGeneratorMojo(project, session, pluginManager);
 	}
