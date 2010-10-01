@@ -12,7 +12,7 @@
   <version>1.2</version>
   <url>http://10.33.1.53/project/maven/plugins/nav-deployment-code-plugin</url>
   <prerequisites>
-    <maven>2.2.1</maven>
+    <maven>2.0.1</maven>
   </prerequisites>
   
   <dependencies>    
