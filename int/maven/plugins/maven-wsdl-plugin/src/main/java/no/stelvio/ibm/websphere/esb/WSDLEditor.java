@@ -109,7 +109,7 @@ public class WSDLEditor {
 	}
 
 	public void saveChanges() throws FileNotFoundException, WSDLException, URISyntaxException {
-		WSDLFactory.newInstance().newWSDLWriter().writeWSDL(definition, new FileOutputStream(new File(new URI(definition.getDocumentBaseURI()))));
+		WSDLFactory.newInstance().newWSDLWriter().writeWSDL(definition, new FileOutputStream(new File(URI.create(definition.getDocumentBaseURI().replace(" ", "%20")))));
 	}
 	
 }
