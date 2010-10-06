@@ -38,6 +38,10 @@ import javax.wsdl.factory.WSDLFactory;
 import javax.wsdl.xml.WSDLReader;
 import javax.xml.namespace.QName;
 
+import no.stelvio.Version;
+import no.stelvio.ibm.websphere.esb.SCAModuleName;
+import no.stelvio.ibm.websphere.esb.WSDLEditor;
+
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.artifact.handler.manager.ArtifactHandlerManager;
@@ -58,12 +62,14 @@ import org.codehaus.plexus.archiver.manager.ArchiverManager;
 import org.codehaus.plexus.archiver.manager.NoSuchArchiverException;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.StringUtils;
+import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.jdom.xpath.XPath;
+
 
 /**
  * Goal which touches a timestamp file.
@@ -182,6 +188,49 @@ public class ExportWsdlMojo extends AbstractMojo {
 
 				Map<QName, Definition> webServiceToWsdlMap = getWebServiceToWsdlMap(workingDir);
 
+				for (QName name : exportedWebServices) {
+					WSDLEditor wsdlEditor = new WSDLEditor(webServiceToWsdlMap.get(name));
+
+					// Determine if module is versioned
+					File scaModuleAttributesFile = new File(project.getBuild().getOutputDirectory(), "sca.module.attributes");
+					getLog().debug("Extracting version from " + scaModuleAttributesFile.getAbsolutePath());
+					if (scaModuleAttributesFile.canRead()) {
+						Document scaModuleAttributes = getSAXBuilder().build(scaModuleAttributesFile);
+						XPath versionXPath = XPath.newInstance("/scdl:moduleAndLibraryAttributes/@versionValue");
+						versionXPath.addNamespace("scdl", "http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0");
+						Object result = versionXPath.selectSingleNode(scaModuleAttributes);
+						if (result != null && result instanceof Attribute) {
+							String versionString = ((Attribute) result).getValue();
+							if (versionString.trim().length() > 0) {
+								try {
+									Version version = new Version(((Attribute) result).getValue());
+									// Modify SOAP endpoint with versioned module name
+									String versionedModuleName = SCAModuleName.createVersionedModuleName(project.getArtifactId(), version);
+									getLog().debug("Modifying context root of SOAP endpoint with module name " + versionedModuleName + " (file=" + webServiceToWsdlMap.get(name).getDocumentBaseURI() + ")");
+									try {
+										wsdlEditor.modifySOAPAddresses(versionedModuleName);
+									} catch (WSDLException e) {
+										throw new MojoExecutionException("Error modifying WSDL SOAP address", e); 
+									}
+								} catch (NumberFormatException e) {
+									throw new MojoExecutionException("Invalid version string in attribute /scdl:moduleAndLibraryAttributes/@versionValue in file " + scaModuleAttributesFile.getAbsolutePath(), e);
+								}
+	
+							}
+						}
+					}
+
+					// Add SOAP Actions
+					wsdlEditor.setSOAPActions();
+					
+					// Write changes back to WSDL file
+					try {
+						wsdlEditor.saveChanges();
+					} catch (Exception e) {
+						throw new MojoExecutionException("Error saving modified WSDL file", e); 
+					}
+				}
+				
 				if (!exportedWebServices.isEmpty()) {
 					// TODO: The exported web services archive is created twice to maintain backwards compatability.
 					// Should be removed sometime, but that will break backwards compatability. BEWARE!

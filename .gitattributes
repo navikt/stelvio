@@ -3023,8 +3023,12 @@ int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/Namespace
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/Wsdl2JavaMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsdlArtifact.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsdlOption.java -text
+int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/Version.java -text
+int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/ibm/websphere/esb/SCAModuleName.java -text
+int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/ibm/websphere/esb/WSDLEditor.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wsdl-plugin/src/test/java/no/nav/maven/plugins/NamespaceToPackageMappingGeneratorTest.java -text
+int/maven/plugins/maven-wsdl-plugin/src/test/java/no/stelvio/VersionTest.java -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO.xsd -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO2.xsd -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/EchoService.wsdl -text
