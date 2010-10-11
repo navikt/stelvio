@@ -1,7 +1,12 @@
 package no.nav.maven.plugin.ear;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.jar.Attributes;
+import java.util.jar.Manifest;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -104,16 +109,42 @@ public class UpdateEarMojo extends AbstractMojo {
 			}
 		}
 
+		/**
+		 * Adds Implementation-Version to the ear's Manifest.mf
+		 * Used to enable delta deploy for the ESB
+		 * 
+		 * @throws MojoExecutionException
+		 */
 		private void updateArchive() throws MojoExecutionException {
 			try {
-				File applicationXmlFile = new File(new File(workingDir, "META-INF"), "application.xml");
-				ApplicationDocument applicationDocument = ApplicationDocument.Factory.parse(applicationXmlFile);
-
-				applicationDocument.getApplication().getDisplayNameArray(0).setStringValue(displayName);
-
-				applicationDocument.save(applicationXmlFile);
-			} catch (XmlException e) {
-				throw new MojoExecutionException("An error occured when updating archive", e);
+								
+				File manifestFile = new File(new File(workingDir, "META-INF"), "Manifest.mf");
+				
+				Manifest manifest = new Manifest(new FileInputStream(manifestFile));
+				if(manifest != null){
+					Attributes manifestAttributes = manifest.getMainAttributes();
+					if(manifestAttributes != null){
+						manifestAttributes.putValue("Implementation-Version", project.getVersion());
+					}
+				}
+				BufferedOutputStream bos = null;
+				
+				try {
+					bos = new BufferedOutputStream(new FileOutputStream(manifestFile));
+					manifest.write(bos);
+				} catch (IOException ioe) {
+					throw new MojoExecutionException("An error occured when updating manifest", ioe);
+				} finally {
+					if (bos != null){
+						try {
+							bos.close();
+						} catch(IOException ioe2){
+							throw new MojoExecutionException("An error occured while trying to close file", ioe2);
+						}
+					}
+				}
+								
+				
 			} catch (IOException e) {
 				throw new MojoExecutionException("An error occured when updating archive", e);
 			}
