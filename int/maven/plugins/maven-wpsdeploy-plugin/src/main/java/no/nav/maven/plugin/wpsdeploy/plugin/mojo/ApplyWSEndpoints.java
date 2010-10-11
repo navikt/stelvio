@@ -77,7 +77,7 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 					}
 
 					getLog().info("Found webservice endpoints in " + found + ". Adding ...");
-					sb.append(s);
+					sb.append(s + ";");
 				}
 			}
 			
