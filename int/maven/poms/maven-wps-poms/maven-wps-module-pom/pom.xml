@@ -109,7 +109,7 @@ eclipse.preferences.version=1
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-update-ear-plugin</artifactId>
-					<version>1.11</version>
+					<version>1.12</version>
 					<executions>
 						<execution>
 							<goals>
@@ -135,7 +135,7 @@ eclipse.preferences.version=1
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			 <plugin>
+			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-update-ear-plugin</artifactId> 
 			</plugin>
