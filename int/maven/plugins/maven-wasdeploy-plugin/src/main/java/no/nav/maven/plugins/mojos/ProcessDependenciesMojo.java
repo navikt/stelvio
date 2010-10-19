@@ -116,12 +116,6 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 	private String version;
 
 	/**
-	 * @parameter expression="${mapFile}"
-	 * @required
-	 */
-	private String mapFile;
-
-	/**
 	 * @parameter expression="${stagingArea}"
 	 * @required
 	 */
