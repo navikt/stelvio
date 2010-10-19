@@ -48,16 +48,20 @@ public class SetFaultNamesMojo extends AbstractMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		try {
-			Collection<Definition> wsdls = getWSDLs(new File(project.getBuild().getOutputDirectory()));
-			for (Definition definition : wsdls) {
-				setFaultNames(definition);
-				WSDLFactory.newInstance().newWSDLWriter().writeWSDL(definition, new FileOutputStream(new File(URI.create(definition.getDocumentBaseURI().replace(" ", "%20")))));
+		if (!"pom".equals(project.getPackaging())) {
+			try {
+				Collection<Definition> wsdls = getWSDLs(new File(project.getBuild().getOutputDirectory()));
+				for (Definition definition : wsdls) {
+					setFaultNames(definition);
+					WSDLFactory.newInstance().newWSDLWriter().writeWSDL(definition, new FileOutputStream(new File(URI.create(definition.getDocumentBaseURI().replace(" ", "%20")))));
+				}
+			} catch (IOException e) {
+				throw new MojoExecutionException("An error occured while reading WSDL files", e);
+			} catch (WSDLException e) {
+				throw new MojoExecutionException("An error occured while reading WSDL files", e);
 			}
-		} catch (IOException e) {
-			throw new MojoExecutionException("An error occured while reading WSDL files", e);
-		} catch (WSDLException e) {
-			throw new MojoExecutionException("An error occured while reading WSDL files", e);
+		} else {
+			getLog().debug("Skipping set-fault-names because packaging is pom");
 		}
 	}
 
