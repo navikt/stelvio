@@ -21,6 +21,7 @@ import org.apache.maven.artifact.ArtifactUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 import org.codehaus.plexus.util.DirectoryScanner;
@@ -43,6 +44,14 @@ import org.wsi.util.WSIProperties;
  * @goal analyze
  */
 public class AnalyzeMojo extends AbstractMojo {
+
+	/**
+	 * @parameter expression="${project}"
+	 * @required
+	 * @readonly
+	 */
+	private MavenProject project;
+
 	/**
 	 * @component roleHint="zip"
 	 */
@@ -91,57 +100,61 @@ public class AnalyzeMojo extends AbstractMojo {
 	 */
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		try {
-			reportDirectory.mkdirs();
-			extractWsiToolsFiles();
-
-			DocumentFactory documentFactory = DocumentFactory.newInstance();
-
-			AnalyzerConfig analyzerConfig = documentFactory.newAnalyzerConfig();
-			analyzerConfig.setLocation(reportDirectory.getPath());
-			analyzerConfig.setVerboseOption(verbose);
-
-			// TODO: Make selection of profile configurable
-			analyzerConfig.setTestAssertionsDocumentLocation(new File(reportDirectory, "common/profiles/SSBP10_BP11_TAD.xml")
-					.getPath());
-
-			analyzerConfig.setReplaceReport(true);
-
-			AddStyleSheet addStyleSheet = new AddStyleSheetImpl();
-			addStyleSheet.setHref("common/xsl/report.xsl");
-			addStyleSheet.setType("text/xsl");
-			analyzerConfig.setAddStyleSheet(addStyleSheet);
-
-			// This is sort of a "hack" to make the WSI Testing Tool find schemas
-			// TODO: This can be improved by setting properties explicitly (see class org.wsi.test.util.TestUtils for details)
-			System.setProperty(WSIProperties.PROP_WSI_HOME, reportDirectory.getPath());
-
-			int aggregatedResult = 0;
-			for (WSDLReference wsdlReference : getWSDLReferences()) {
-				String reportFilename = wsdlReference.getWSDLElement().getName() + ".xml";
-
-				analyzerConfig.setWSDLReference(wsdlReference);
-				analyzerConfig.setReportLocation(new File(reportDirectory, reportFilename).getPath());
-
-				if (getLog().isDebugEnabled()) {
-					getLog().debug(analyzerConfig.toString());
+		if (!"pom".equals(project.getPackaging())) {
+			try {
+				reportDirectory.mkdirs();
+				extractWsiToolsFiles();
+	
+				DocumentFactory documentFactory = DocumentFactory.newInstance();
+	
+				AnalyzerConfig analyzerConfig = documentFactory.newAnalyzerConfig();
+				analyzerConfig.setLocation(reportDirectory.getPath());
+				analyzerConfig.setVerboseOption(verbose);
+	
+				// TODO: Make selection of profile configurable
+				analyzerConfig.setTestAssertionsDocumentLocation(new File(reportDirectory, "common/profiles/SSBP10_BP11_TAD.xml")
+						.getPath());
+	
+				analyzerConfig.setReplaceReport(true);
+	
+				AddStyleSheet addStyleSheet = new AddStyleSheetImpl();
+				addStyleSheet.setHref("common/xsl/report.xsl");
+				addStyleSheet.setType("text/xsl");
+				analyzerConfig.setAddStyleSheet(addStyleSheet);
+	
+				// This is sort of a "hack" to make the WSI Testing Tool find schemas
+				// TODO: This can be improved by setting properties explicitly (see class org.wsi.test.util.TestUtils for details)
+				System.setProperty(WSIProperties.PROP_WSI_HOME, reportDirectory.getPath());
+	
+				int aggregatedResult = 0;
+				for (WSDLReference wsdlReference : getWSDLReferences()) {
+					String reportFilename = wsdlReference.getWSDLElement().getName() + ".xml";
+	
+					analyzerConfig.setWSDLReference(wsdlReference);
+					analyzerConfig.setReportLocation(new File(reportDirectory, reportFilename).getPath());
+	
+					if (getLog().isDebugEnabled()) {
+						getLog().debug(analyzerConfig.toString());
+					}
+	
+					int result = new BasicProfileAnalyzer(Collections.singletonList(analyzerConfig)).validateConformance();
+	
+					getLog().info(
+							wsdlReference.getWSDLElement().getQName() + ":[" + (result == 0 ? "OK" : "FAILED") + "]" + ":"
+									+ reportFilename);
+	
+					aggregatedResult += result;
 				}
-
-				int result = new BasicProfileAnalyzer(Collections.singletonList(analyzerConfig)).validateConformance();
-
-				getLog().info(
-						wsdlReference.getWSDLElement().getQName() + ":[" + (result == 0 ? "OK" : "FAILED") + "]" + ":"
-								+ reportFilename);
-
-				aggregatedResult += result;
+	
+				if (failOnFailure && aggregatedResult > 0) {
+					throw new MojoFailureException("WSI validation failed, check report for details.");
+				}
+	
+			} catch (WSIException e) {
+				throw new MojoExecutionException("WSIException", e);
 			}
-
-			if (failOnFailure && aggregatedResult > 0) {
-				throw new MojoFailureException("WSI validation failed, check report for details.");
-			}
-
-		} catch (WSIException e) {
-			throw new MojoExecutionException("WSIException", e);
+		} else {
+			getLog().debug("Skipping analyze because packaging is pom");
 		}
 	}
 
