@@ -153,7 +153,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		if (version != null) {
 			mavenVersion = version;
 		} else {
-			mavenVersion = getMavenVersion(mooseBuildId);
+
 		}
 
 		getLog().info("################################################");
@@ -223,42 +223,6 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 
 	}
 
-	// *MOOSE SPECIFIC* - Returns the maven version based on the Moose build ID
-	private String getMavenVersion(String mooseBuildId) throws MojoFailureException {
-
-		try {
-
-			getLog().info("######################################################");
-			getLog().info("### Converting Moose build ID to Maven version ... ###");
-			getLog().info("######################################################");
-
-			if (!new File(mapFile).exists()) {
-				throw new IOException("[ERROR] The Moose => Maven version mapping " + "file does not exist at the following location: " + mapFile);
-			}
-
-			String mavenVersion = null;
-			String line;
-			BufferedReader r = new BufferedReader(new FileReader(mapFile));
-
-			while ((line = r.readLine()) != null) {
-				if (line.startsWith(mooseBuildId)) {
-					mavenVersion = line.substring(mooseBuildId.length() + 1);
-					getLog().info("Found version match! MOOSE_BUILD_ID:" + mooseBuildId + " => " + " MAVEN_VERSION:" + mavenVersion);
-					r.close();
-					return mavenVersion;
-				}
-			}
-			if (mavenVersion == null) {
-				r.close();
-				throw new MojoFailureException("[ERROR] No corresponding Maven version found for Moose build ID: " + mooseBuildId);
-			}
-
-		} catch (IOException e) {
-			throw new MojoFailureException("[ERROR] Could not resolve Maven version " + e);
-		}
-
-		return null;
-	}
 
 	// Resolves the artifact using the given repositories
 	public Artifact resolveRemoteArtifact(List remoteRepos, Artifact artifact) throws MojoExecutionException {
