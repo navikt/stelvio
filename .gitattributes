@@ -3045,6 +3045,7 @@ int/maven/plugins/maven-xmlvalidator-plugin/src/main/java/no/nav/maven/plugins/m
 int/maven/plugins/maven-xmlvalidator-plugin/src/main/java/no/nav/maven/plugins/utils/ErrorHandlerImpl.java -text
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
+int/maven/poms/maven-bounce-pom/pom.xml -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-jca-pom/.project -text
 int/maven/poms/maven-jca-pom/pom.xml -text
