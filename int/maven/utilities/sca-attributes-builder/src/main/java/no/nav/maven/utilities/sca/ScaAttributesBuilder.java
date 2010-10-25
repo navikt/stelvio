@@ -33,6 +33,7 @@ public class ScaAttributesBuilder {
 
 	private MavenProject project;
 	private boolean versioned;
+	private boolean versionedFull;
 	private Set<BORuntimeFramework> boRuntimeFrameworks = EnumSet.of(BORuntimeFramework.VERSION6);
 
 	public ScaAttributesBuilder(MavenProject project) {
@@ -41,6 +42,11 @@ public class ScaAttributesBuilder {
 
 	public ScaAttributesBuilder setVersioned(boolean versioned) {
 		this.versioned = versioned;
+		return this;
+	}
+	
+	public ScaAttributesBuilder setVersionedFull(boolean versionedFull) {
+		this.versionedFull = versionedFull;
 		return this;
 	}
 
@@ -64,9 +70,11 @@ public class ScaAttributesBuilder {
 	public void writeTo(Writer writer) throws IOException {
 		Document document = new Document();
 		Element rootElement = new Element("moduleAndLibraryAttributes", TARGET_NAMESPACE);
-		String version = convertVersion(project.getVersion());
-		rootElement.setAttribute("versionValue", versioned ? version : "");
-		rootElement.setAttribute("versionProvider", versioned && version.length() > 0 ? "IBM_VRM" : "");
+		
+		// version is set to same as maven version if versionFull is set, otherwise only major version
+		String version = (versionedFull ? project.getVersion() : convertVersion(project.getVersion()));
+		rootElement.setAttribute("versionValue", versioned || versionedFull ? version : "");
+		rootElement.setAttribute("versionProvider", (versioned || versionedFull) && version.length() > 0 ? "IBM_VRM" : "");
 		document.setRootElement(rootElement);
 
 		Element boImplementationElement = new Element("boImplementation");
