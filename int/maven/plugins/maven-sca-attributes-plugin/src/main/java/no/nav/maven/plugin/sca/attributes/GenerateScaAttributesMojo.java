@@ -25,18 +25,23 @@ public class GenerateScaAttributesMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private MavenProject project;
-	
+
 	/**
 	 * @parameter expression="${project.build.outputDirectory}"
 	 * @required
 	 * @readonly
 	 */
 	private File outputDirectory;
-	
+
 	/**
 	 * @parameter expression="${sca.versioned}" default-value="false"
 	 */
 	private boolean versioned;
+
+	/**
+	 * @parameter expression="${sca.versioned.full}" default-value="false"
+	 */
+	private boolean versionedFull;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// This "stupid" if test is here because I want to configure the plugin
@@ -51,7 +56,16 @@ public class GenerateScaAttributesMojo extends AbstractMojo {
 			if (!outputDirectory.exists()) {
 				outputDirectory.mkdirs();
 			}
-			new ScaAttributesBuilder(project).setVersioned(versioned).writeToDirectory(outputDirectory);
+			if (versionedFull) {
+				if (project.getVersion() != null && project.getVersion().contains("-SNAPSHOT")) {
+					getLog().info("Full versioning is not supported for SNAPSHOT versions. Building the project without SCA versioning");
+					versionedFull = false;
+				}
+				new ScaAttributesBuilder(project).setVersionedFull(versionedFull).writeToDirectory(outputDirectory);
+
+			} else {
+				new ScaAttributesBuilder(project).setVersioned(versioned).writeToDirectory(outputDirectory);
+			}
 		} catch (IOException e) {
 			throw new MojoExecutionException("Unable to write SCA Attributes file", e);
 		}
