@@ -1,9 +1,6 @@
 package no.nav.maven.plugins.mojos;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
 
 import no.nav.maven.plugins.utils.ApplicationArtifactDependency;
@@ -106,12 +103,8 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 	private String application;
 
 	/**
-	 * @parameter expression="${mooseBuildId}"
-	 */
-	private String mooseBuildId;
-
-	/**
 	 * @parameter expression="${version}"
+	 * @required
 	 */
 	private String version;
 
@@ -120,8 +113,19 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String stagingArea;
-
-	private String mavenVersion;
+	
+	/**
+	 * @parameter expression="${zone}"
+	 * @required
+	 */
+	private String zone;
+	
+	/**
+	 * @parameter expression="${hasInternZone}"
+	 * @required
+	 */
+	private boolean hasInternZone;
+	
 
    /**
 	* Need to statically set the naming convention of the PSELV WAR file, without version.
@@ -133,6 +137,13 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		
 		if (!ApplicationArtifactDependency.isSupported(application))
 			throw new MojoFailureException("[ERROR] The application, " + application + " is not supported for deploy/bundle.");
+		
+		if (!hasInternZone && zone.equals("intern")){
+			getLog().info("#########################################################################################");
+			getLog().info("### Skipping deployment to intern zone, no definitions found in the environment file. ###");
+			getLog().info("#########################################################################################");
+			System.exit(10);
+		}
 		
 		List remoteRepos;
 
@@ -149,19 +160,12 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		// Make sure the folder structure exists
 		stagingDirectory.mkdirs();
 
-		// Determine whether to resolve the mooseBuildId or to use the version provided
-		if (version != null) {
-			mavenVersion = version;
-		} else {
-
-		}
-
 		getLog().info("################################################");
 		getLog().info("### Downloading and extracting artifacts ... ###");
 		getLog().info("################################################");
 
 		// Retrieving the list of artifacts for the given application and Moose build ID
-		List<Artifact> artifacts = ApplicationArtifactDependency.getApplicationArtifacts(artifactFactory, application, mavenVersion);
+		List<Artifact> artifacts = ApplicationArtifactDependency.getApplicationArtifacts(artifactFactory, application, version);
 
 		// For each artifact, the artifact is resolved and extracted to the given staging directory
 		for (Artifact a : artifacts) {
@@ -193,7 +197,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 				// and expose that directory to the maven context
 				if (extDirPath.contains("nav-pensjon-pselv-jee")) {
 					
-					File pselvWAR = new File(extDir.getPath() + "/" + PSELV_WAR_NAME + mavenVersion + ".war");
+					File pselvWAR = new File(extDir.getPath() + "/" + PSELV_WAR_NAME + version + ".war");
 					File pselvWARDir = new File(extDir.getPath());
 
 					// Making sure we have the destination folder
@@ -222,7 +226,6 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		}
 
 	}
-
 
 	// Resolves the artifact using the given repositories
 	public Artifact resolveRemoteArtifact(List remoteRepos, Artifact artifact) throws MojoExecutionException {

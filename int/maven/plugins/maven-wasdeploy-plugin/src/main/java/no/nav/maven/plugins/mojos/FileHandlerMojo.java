@@ -306,9 +306,9 @@ public class FileHandlerMojo extends AbstractMojo {
 		for (String s : filesToDelete) {
 			File toDelete = new File(s);
 			if (toDelete.delete()) {
-				getLog().info("[INFO] Deleted the file: " + s);
+				getLog().info("Deleted the file: " + s);
 			} else {
-				throw new MojoFailureException("[ERROR] Unable to delete the file: " + s);
+				throw new MojoFailureException("Unable to delete the file: " + s);
 			}
 		}
 	}

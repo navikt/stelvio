@@ -56,6 +56,7 @@ public class LoadXMLPropertiesMojo extends AbstractMojo {
 
 	private String name;
 	private String value;
+	private String hasInternZone = "false";
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
@@ -81,9 +82,11 @@ public class LoadXMLPropertiesMojo extends AbstractMojo {
 
 					// No prefix for first run
 					traverseNode(xml.getDocumentElement(), null);
+					
+					project.getProperties().put("hasInternZone", hasInternZone);
 
 				} else {
-					throw new MojoExecutionException("[ERROR] Environment file, " + file.getAbsolutePath() + " does not exist.");
+					throw new MojoExecutionException("Unable to find environment file at the expected location: " + file.getAbsolutePath());
 				}
 			}
 		} catch (SAXException e) {
@@ -111,6 +114,10 @@ public class LoadXMLPropertiesMojo extends AbstractMojo {
 
 				String propertyName;
 
+				if (prefix.contains("/was/intern")){
+					hasInternZone = "true";
+				}
+				
 				// In order to have one environment file for each environment, we need to separate the zone specific properties during the parse-time.
 				if ((prefix.contains("app-config") && prefix.contains(zone)) || (prefix.contains("servers") && prefix.contains(zone)) ) {
 					getLog().info("Detected zone specfic value, " + name + ". Modifying ...");
