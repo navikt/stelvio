@@ -38,7 +38,21 @@ def main(ENVS):
 		else:
 			print "[INFO] No applications to install in intern zone."
 		
+		print "[INFO] Updating confluence environment page ..."
+		CONF_STRING = "ssh test@example.com /fixpacks/envupdate/spread_script.py " + ENV 
+		retval = subprocess.call(CONF_STRING, shell=True)
+		if retval != 0:
+			print "[ERROR] Something went wrong when updating confluence."
+			
+		APPS = getApps()
+		
+		BOUNCE_STRING = "cd ../maven-bounce-plugin/ && mvn clean install -Dapps=" + APPS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DincludeBus=" + INCLUDE_BUS   
+		retval = subprocess.call(BOUNCE_STRING, shell=True) 		
+		if retval != 0:
+			print "[ERROR] Something went wrong when performing restarts."
+
 		print "[INFO] Completed processing of " + ENV + "."
+		sys.stdout.flush()
 		ENVS_CHECKLIST.remove(ENV)
 		CHECKLIST_SENSITIV = CHECKLIST_SENSITIV_BACKUP[:]
 		CHECKLIST_INTERN = CHECKLIST_INTERN_BACKUP[:]
@@ -50,6 +64,22 @@ def getCount(APP_LIST):
 			return len(APP_LIST)
 		else:
 			return 0
+			
+def getApps():
+		ALL_APPS = CHECKLIST_INTERN_BACKUP + CHECKLIST_SENSITIV_BACKUP
+		RET_STRING = ""
+		for APP_COMP in ALL_APPS:
+			if APP_COMP == "":
+				continue
+
+			APP = APP_COMP.split(":")[0]
+
+			if RET_STRING != "":
+				RET_STRING += "," + APP
+			else:
+				RET_STRING += APP
+		return RET_STRING
+	
 			
 def printStatus(ENV, APP, VERSION, ZONE):
 	print "[INFO]"
@@ -158,14 +188,16 @@ if (ENVS_LENGTH > 1):
 CHECKLIST_SENSITIV = sys.argv[2].split("=")[1].split(",")
 CHECKLIST_INTERN = sys.argv[3].split("=")[1].split(",")
 
-# Create a backup we can use to refresh the array when done processing an environment
+# Create a backup we can use to refresh the array when done processing of an environment
 CHECKLIST_SENSITIV_BACKUP = CHECKLIST_SENSITIV[:]
 CHECKLIST_INTERN_BACKUP = CHECKLIST_INTERN[:]
 
 CONFIG_VERSION = sys.argv[4]
+INCLUDE_BUS = sys.argv[5]
 	
 TOTAL_APP_COUNT = (getCount(CHECKLIST_SENSITIV) + getCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
 INSTALLED_COUNT = 1
 
 main(ENVS)
+
 
