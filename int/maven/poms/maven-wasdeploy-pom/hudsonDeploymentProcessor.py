@@ -39,6 +39,7 @@ def main(ENVS):
 			print "[INFO] No applications to install in intern zone."
 		
 		print "[INFO] Updating confluence environment page ..."
+		sys.stdout.flush()
 		CONF_STRING = "ssh test@example.com /fixpacks/envupdate/spread_script.py " + ENV 
 		retval = subprocess.call(CONF_STRING, shell=True)
 		if retval != 0:
@@ -47,7 +48,7 @@ def main(ENVS):
 		
 		if BOUNCE == "true":
 			APPS = getApps()
-			BOUNCE_STRING = "cd ../maven-bounce-plugin/ && mvn clean install -Dapps=" + APPS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
+			BOUNCE_STRING = "cd ../maven-bounce-pom/ && mvn clean install -Dapps=" + APPS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
 			retval = subprocess.call(BOUNCE_STRING, shell=True) 		
 			if retval != 0:
 				print "[ERROR] Something went wrong when performing restarts."
