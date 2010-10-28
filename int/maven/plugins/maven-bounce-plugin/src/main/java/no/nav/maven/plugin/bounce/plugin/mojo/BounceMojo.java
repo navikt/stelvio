@@ -109,6 +109,27 @@ public class BounceMojo extends AbstractMojo {
 	 */
 	private String apps;
 	
+	/**
+	 * @parameter expression="${restartMode}"
+	 */
+	private boolean restartMode;
+	
+	/**
+	 * @parameter expression="${wasSs}"
+	 */
+	private boolean wasSs;
+	
+	/**
+	 * @parameter expression="${wasIs}"
+	 */
+	private boolean wasIs;
+	
+	/**
+	 * @parameter expression="${wps}"
+	 */
+	private boolean wps;
+	
+	
 	private boolean was_ss_restart = false;
 	private boolean was_is_restart = false;
 	private boolean wps_restart = false;
@@ -138,14 +159,7 @@ public class BounceMojo extends AbstractMojo {
 		}
 		if (this.excludeBus) wps_restart = false;
 		
-		getLog().info("Restarting the following instances: ");
-		if (was_ss_restart)
-			getLog().info(" - WAS SS");
-		if (was_is_restart)
-			getLog().info(" - WAS IS");
-		if (wps_restart)
-			getLog().info(" - WPS");
-		getLog().info("");
+
 	}
 	
 	public void execute() throws MojoExecutionException {
@@ -153,8 +167,25 @@ public class BounceMojo extends AbstractMojo {
 			getLog().info("");
 			getLog().info("Parsing restart configuration file ...");
 			getLog().info("");
-			this.ResolveRestart();
 			
+			if (restartMode) {
+				was_ss_restart = wasSs;
+				was_is_restart = wasIs;
+				wps_restart = wps;
+			} else {
+				this.ResolveRestart();
+			}
+			
+			
+			//TODO: flytt denne slik at man vet om man har internsone
+			getLog().info("Restarting the following instances: ");
+			if (was_ss_restart)
+				getLog().info(" - WAS SS");
+			if (was_is_restart)
+				getLog().info(" - WAS IS");
+			if (wps_restart)
+				getLog().info(" - WPS");
+			getLog().info("");
 			
 			getLog().info("Parsing environment file for parameters: \n* " + this.envFile);
 			
@@ -179,6 +210,8 @@ public class BounceMojo extends AbstractMojo {
 			 * */
 			
 			boolean hasIntern = parse_result.contains("was.intern") & this.was_is_restart;
+			
+			//TODO: fjern denne og alle referanser til den
 			boolean hasWps = parse_result.contains("wps") & this.wps_restart;
 			/*
 			 * was_s[0]: was.intern 
