@@ -224,21 +224,27 @@ public class BounceMojo extends AbstractMojo {
 			if (hasWps) getLog().info("WPS: " + wps_cl.toString());
 			
 			if (this.was_ss_restart){
+				getLog().info("");
 				getLog().info("##########################");
 				getLog().info("### STOPPING -  WAS SS ###");
 				getLog().info("##########################");
+				getLog().info("");
 				executeCommand(was_sen_cl);
 			}
 			if (hasIntern) {
+				getLog().info("");
 				getLog().info("##########################");
 				getLog().info("### STOPPING -  WAS IS ###");
 				getLog().info("##########################");
+				getLog().info("");
 				executeCommand(was_int_cl);
 			}
 			if (hasWps) {
+				getLog().info("");
 				getLog().info("#######################");
 				getLog().info("### STOPPING -  WPS ###");
 				getLog().info("#######################");
+				getLog().info("");
 				executeCommand(wps_cl);
 			}
 			
@@ -251,21 +257,27 @@ public class BounceMojo extends AbstractMojo {
 				wps_cl = this.prepareCommandline(wps, Operation.START);
 			
 			if (this.was_ss_restart){
+				getLog().info("");
 				getLog().info("##########################");
 				getLog().info("### STARTING -  WAS SS ###");
 				getLog().info("##########################");
+				getLog().info("");
 				executeCommand(was_sen_cl);
 			}
 			if (hasIntern) {
+				getLog().info("");
 				getLog().info("##########################");
 				getLog().info("### STARTING -  WAS IS ###");
 				getLog().info("##########################");
+				getLog().info("");
 				executeCommand(was_int_cl);
 			}
 			if (hasWps) {
+				getLog().info("");
 				getLog().info("#######################");
 				getLog().info("### STARTING -  WPS ###");
 				getLog().info("#######################");
+				getLog().info("");
 				executeCommand(wps_cl);
 			}
 			
