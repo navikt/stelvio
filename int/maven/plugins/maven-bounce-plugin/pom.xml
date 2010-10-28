@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>maven-plugins</artifactId>
+		<groupId>no.nav.maven.plugins</groupId>
+		<version>1.12-SNAPSHOT</version>
+	</parent>
+	<groupId>no.stelvio.maven.poms</groupId>
+	<artifactId>maven-bounce-plugin</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>maven-plugin</packaging>
+	<name>maven-bounce-plugin Maven Mojo</name>
+	
+	<dependencies>
+		<!-- To be able to extend AbstractMojo -->
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<!-- To be able to run commands from the shell -->
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-utils</artifactId>
+			<version>2.0.5</version>
+		</dependency>	
+	</dependencies>
+	
+</project>
