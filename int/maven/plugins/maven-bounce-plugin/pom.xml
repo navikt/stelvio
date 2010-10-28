@@ -32,4 +32,16 @@
 		</dependency>	
 	</dependencies>
 	
+	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-bounce-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-bounce-plugin</developerConnection>
+	</scm>
+	
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-bounce-plugin
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
+	
 </project>
