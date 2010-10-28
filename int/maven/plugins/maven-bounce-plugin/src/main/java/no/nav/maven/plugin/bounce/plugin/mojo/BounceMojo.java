@@ -137,28 +137,27 @@ public class BounceMojo extends AbstractMojo {
 			if (name.equalsIgnoreCase("joark")) this.isJoarkRestartNeeded = true; 
 		}
 		if (this.excludeBus) wps_restart = false;
-		getLog().info("****************************************************");
-		getLog().info("* 	[BOUNCE] Restart resolution:		  *");
+		
+		getLog().info("Restarting the following instances: ");
 		if (was_ss_restart)
-			getLog().info("* 	[BOUNCE] WAS Sensitive Sone		  *");
+			getLog().info(" - WAS SS");
 		if (was_is_restart)
-			getLog().info("* 	[BOUNCE] WAS Intern Sone		  *");
+			getLog().info(" - WAS IS");
 		if (wps_restart)
-			getLog().info("* 	[BOUNCE] WPS				  *");
-		getLog().info("****************************************************");
+			getLog().info(" - WPS");
+		getLog().info("");
 	}
 	
 	public void execute() throws MojoExecutionException {
 		try {
-			getLog().info("****************************************************");
-			getLog().info("* 	[BOUNCE] Parsing restart_config file	  *");
-			getLog().info("****************************************************");
+			getLog().info("");
+			getLog().info("Parsing restart configuration file ...");
+			getLog().info("");
 			this.ResolveRestart();
 			
 			
-			getLog().info("****************************************************");
-			getLog().info("* [BOUNCE] Parsing environment file for parameters: \n* " + this.envFile);
-			getLog().info("****************************************************");
+			getLog().info("Parsing environment file for parameters: \n* " + this.envFile);
+			
 			File xml = new File(this.envFile);
 			String parse_result = XMLParser.parseEnvironmentFile(xml);
 			/* parse_result:
@@ -211,9 +210,6 @@ public class BounceMojo extends AbstractMojo {
 			if (hasWps)
 				wps = parse_result.substring(parse_result.indexOf("wps")).split("\n");
 
-			getLog().info("****************************************************");
-			getLog().info("* [BOUNCE] Forming commands to stop/start clusters *");
-			getLog().info("****************************************************");
 			Commandline was_sen_cl = new Commandline(); // was sensitive command line
 			Commandline was_int_cl = new Commandline(); // was intern command line
 			Commandline wps_cl = new Commandline(); // wps command line
@@ -228,21 +224,21 @@ public class BounceMojo extends AbstractMojo {
 			if (hasWps) getLog().info("WPS: " + wps_cl.toString());
 			
 			if (this.was_ss_restart){
-				getLog().info("****************************************************");
-				getLog().info("*    	   [BOUNCE] STOPPING WAS Sensitiv   	  *");
-				getLog().info("****************************************************");
+				getLog().info("##########################");
+				getLog().info("### STOPPING -  WAS SS ###");
+				getLog().info("##########################");
 				executeCommand(was_sen_cl);
 			}
 			if (hasIntern) {
-				getLog().info("****************************************************");
-				getLog().info("*    	   [BOUNCE] STOPPING WAS Intern 	   	  *");
-				getLog().info("****************************************************");
+				getLog().info("##########################");
+				getLog().info("### STOPPING -  WAS IS ###");
+				getLog().info("##########################");
 				executeCommand(was_int_cl);
 			}
 			if (hasWps) {
-				getLog().info("****************************************************");
-				getLog().info("*    		   [BOUNCE] STOPPING WPS		   	  *");
-				getLog().info("****************************************************");
+				getLog().info("#######################");
+				getLog().info("### STOPPING -  WPS ###");
+				getLog().info("#######################");
 				executeCommand(wps_cl);
 			}
 			
@@ -255,21 +251,21 @@ public class BounceMojo extends AbstractMojo {
 				wps_cl = this.prepareCommandline(wps, Operation.START);
 			
 			if (this.was_ss_restart){
-				getLog().info("****************************************************");
-				getLog().info("*    	   [BOUNCE] STARTING WAS Sensitiv   	  *");
-				getLog().info("****************************************************");
+				getLog().info("##########################");
+				getLog().info("### STARTING -  WAS SS ###");
+				getLog().info("##########################");
 				executeCommand(was_sen_cl);
 			}
 			if (hasIntern) {
-				getLog().info("****************************************************");
-				getLog().info("*    	   [BOUNCE] STARTING WAS Intern		   	  *");
-				getLog().info("****************************************************");
+				getLog().info("##########################");
+				getLog().info("### STARTING -  WAS IS ###");
+				getLog().info("##########################");
 				executeCommand(was_int_cl);
 			}
 			if (hasWps) {
-				getLog().info("****************************************************");
-				getLog().info("*    	 	  [BOUNCE] STARTING WPS			   	  *");
-				getLog().info("****************************************************");
+				getLog().info("#######################");
+				getLog().info("### STARTING -  WPS ###");
+				getLog().info("#######################");
 				executeCommand(wps_cl);
 			}
 			
@@ -319,7 +315,7 @@ public class BounceMojo extends AbstractMojo {
 			     			 this.scriptName + " " + this.buildDir + "/da-config/misc " + op;
 		}
 		if (this.isJoarkRestartNeeded) scriptCommand += " JOARK_RESTART";
-		scriptCommand += " ONLY_APP_TARGET";
+		
 		
 		Commandline.Argument lang = new Commandline.Argument();
 		Commandline.Argument host = new Commandline.Argument();
@@ -371,23 +367,6 @@ public class BounceMojo extends AbstractMojo {
 			CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
 					new StreamConsumerChain(systemErr).add(errorChecker));
 
-//			if (errorChecker.isError()) {
-//				if (interactiveMode == true) {
-//					String answer = null;
-//					try {
-//						answer = prompter.prompt("An error occured during step \"" + getGoalPrettyPrint()
-//								+ "\" . Do you want to abort the deploy process (y/n)? ", "n");
-//					} catch (PrompterException e) {
-//						throw new RuntimeException("An error occured during prompt input", e);
-//					}
-//
-//					if ("y".equalsIgnoreCase(answer)) {
-//						throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
-//					}
-//				} else {
-//					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
-//				}
-//			}
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
 		}
