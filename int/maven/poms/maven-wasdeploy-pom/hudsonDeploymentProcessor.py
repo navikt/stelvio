@@ -45,7 +45,7 @@ def main(ENVS):
 			print "[ERROR] Something went wrong when updating confluence."
 			
 		
-		if BOUNCE == true:
+		if BOUNCE == "true":
 			APPS = getApps()
 			BOUNCE_STRING = "cd ../maven-bounce-plugin/ && mvn clean install -Dapps=" + APPS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
 			retval = subprocess.call(BOUNCE_STRING, shell=True) 		
