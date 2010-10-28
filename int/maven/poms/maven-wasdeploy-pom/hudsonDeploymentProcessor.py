@@ -44,12 +44,13 @@ def main(ENVS):
 		if retval != 0:
 			print "[ERROR] Something went wrong when updating confluence."
 			
-		APPS = getApps()
 		
-		BOUNCE_STRING = "cd ../maven-bounce-plugin/ && mvn clean install -Dapps=" + APPS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
-		retval = subprocess.call(BOUNCE_STRING, shell=True) 		
-		if retval != 0:
-			print "[ERROR] Something went wrong when performing restarts."
+		if BOUNCE == true:
+			APPS = getApps()
+			BOUNCE_STRING = "cd ../maven-bounce-plugin/ && mvn clean install -Dapps=" + APPS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
+			retval = subprocess.call(BOUNCE_STRING, shell=True) 		
+			if retval != 0:
+				print "[ERROR] Something went wrong when performing restarts."
 
 		print "[INFO] Completed processing of " + ENV + "."
 		sys.stdout.flush()
@@ -193,7 +194,8 @@ CHECKLIST_SENSITIV_BACKUP = CHECKLIST_SENSITIV[:]
 CHECKLIST_INTERN_BACKUP = CHECKLIST_INTERN[:]
 
 CONFIG_VERSION = sys.argv[4]
-EXCLUDE_BUS = sys.argv[5]
+BOUNCE = sys.argv[5]
+EXCLUDE_BUS = sys.argv[6]
 	
 TOTAL_APP_COUNT = (getCount(CHECKLIST_SENSITIV) + getCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
 INSTALLED_COUNT = 1
