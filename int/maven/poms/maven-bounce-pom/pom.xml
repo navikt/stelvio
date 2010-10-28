@@ -11,7 +11,7 @@
 		<!--
 			Required properties: * da-configuration-version (DevArch config version) 
 								 * bus-configuration-version (DevArch config version)
-								 * environment (environment)  
+								 * env (environment)  
 			
 		-->
 
@@ -19,11 +19,12 @@
 		<bounceVersion>1.0-SNAPSHOT</bounceVersion>
 		<dependencyVersion>2.0</dependencyVersion>
 		<daConfigDirectory>da-config</daConfigDirectory>
-		<busConfigDirectory>bus-config</busConfigDirectory>
 
 		<outputDir>${project.build.directory}</outputDir>
 		<environmentFilesDir>${outputDir}/${daConfigDirectory}/environments</environmentFilesDir>
-		<environmentFile>${environmentFilesDir}/${environment}.xml</environmentFile> 
+		<miscFilesDir>${outputDir}/${daConfigDirectory}/misc</miscFilesDir>
+		<environmentFile>${environmentFilesDir}/${env}.xml</environmentFile> 
+		<restartConfigFile>${miscFilesDir}/config/restart_config.xml</restartConfigFile>
 	</properties>
 
 	<dependencies>
@@ -32,11 +33,6 @@
 			<groupId>no.nav.maven.devarch</groupId>
 			<artifactId>devarch-config</artifactId>
 			<version>${da-configuration-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>no.nav.maven.support</groupId>
-			<artifactId>busconfiguration</artifactId>
-			<version>${bus-configuration-version}</version>
 		</dependency>
 	</dependencies>
 
@@ -62,12 +58,6 @@
 									<artifactId>devarch-config</artifactId>
 									<version>${da-configuration-version}</version>
 									<outputDirectory>${outputDir}/${daConfigDirectory}</outputDirectory>
-								</artifactItem>
-								<artifactItem>
-									<groupId>no.nav.maven.support</groupId>
-									<artifactId>busconfiguration</artifactId>
-									<version>${bus-configuration-version}</version>
-									<outputDirectory>${outputDir}/${busConfigDirectory}</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
