@@ -211,7 +211,11 @@ public class BounceMojo extends AbstractMojo {
 				getLog().info(" - WAS IS: " + operationMode.toString().toUpperCase());
 			if (wps_operation)
 				getLog().info(" - WPS: " + operationMode.toString().toUpperCase());
+			if (this.isJoarkRestartNeeded)
+				getLog().info(" - JOARK: " + operationMode.toString().toUpperCase());
 			getLog().info("");
+			getLog().info("");
+			
 
 			/*
 			 * [0]: was.intern 
