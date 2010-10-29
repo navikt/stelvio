@@ -152,32 +152,4 @@ public class XMLParser {
 		}
 		return result;
 	}
-	
-	public static void main(String[] args) {
-		File f = new File("E:\\restart_config.xml");
-		try {
-			HashMap<String, RestartConfig> list = parseRestartConfigFile(f);
-			for (RestartConfig rc: list.values()){
-				System.out.println(rc);
-			}
-			String apps = "pen:version,psak:version,pselv:version,";
-			String [] tmp = apps.split(",");
-			for (String s : tmp) System.out.println("_"+ s);
-			System.out.println(tmp[0].substring(0,tmp[0].indexOf(":")));
-			boolean a = true;
-			a |= true;
-			System.out.println(a);
-			
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 }
