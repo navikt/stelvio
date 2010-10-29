@@ -24,7 +24,7 @@ public class LoadEnvironmentConfiguration extends WebsphereUpdaterMojo {
 		try {
 			exposeEnvironmentProperties();
 		} catch (IOException e) {
-			throw new MojoFailureException(e.getMessage() + " + \n[INFO]\n[INFO] Tip: Make sure you have extracted the bus configuration.");
+			throw new MojoFailureException(e.getMessage() + "\n[INFO]\n[INFO] Tip: Make sure you have extracted the bus configuration.");
 		}
 	}
 
