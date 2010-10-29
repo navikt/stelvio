@@ -54,7 +54,7 @@ public class BounceMojo extends AbstractMojo {
 	 * Can be start or stop.
 	 */
 	private enum Operation {
-		START("start"), STOP("stop");
+		START("start"), STOP("stop"), RESTART("restart");
 		String action;
 
 		Operation(String s) {
@@ -132,10 +132,15 @@ public class BounceMojo extends AbstractMojo {
 	 */
 	private boolean wps;
 	
+	/**
+	 * @parameter expression="${action}" default-value="restart"
+	 * can be start/stop/restart
+	 */
+	private String action;
 	
-	private boolean was_ss_restart = false;
-	private boolean was_is_restart = false;
-	private boolean wps_restart = false;
+	private boolean was_ss_operation = false;
+	private boolean was_is_operation = false;
+	private boolean wps_operation = false;
 	
 	/**
 	 * This method will parse the apps string  together with the restart_config.xml 
@@ -155,22 +160,26 @@ public class BounceMojo extends AbstractMojo {
 		// set variables
 		this.isJoarkRestartNeeded = false;
 		for (String name : apps_names){
-			was_ss_restart |= restart_config.get(name).hasWas_ss();
-			was_is_restart |= restart_config.get(name).hasWas_is();
-			wps_restart |= restart_config.get(name).hasWps();
+			was_ss_operation |= restart_config.get(name).hasWas_ss();
+			was_is_operation |= restart_config.get(name).hasWas_is();
+			wps_operation |= restart_config.get(name).hasWps();
 			if (name.equalsIgnoreCase("joark")) this.isJoarkRestartNeeded = true; 
 		}
-		if (this.excludeBus) wps_restart = false;
+		if (this.excludeBus) wps_operation = false;
 		
 
 	}
 	
 	public void execute() throws MojoExecutionException {
 		try {
+			Operation operationMode;
+			if (action.equalsIgnoreCase("start")) operationMode = Operation.START;
+			else if (action.equalsIgnoreCase("stop")) operationMode = Operation.STOP;
+			else operationMode = Operation.RESTART;
 			if (restartMode) {
-				was_ss_restart = wasSs;
-				was_is_restart = wasIs;
-				wps_restart = wps;
+				was_ss_operation = wasSs;
+				was_is_operation = wasIs;
+				wps_operation = wps;
 			} else {
 				getLog().info("");
 				getLog().info("Parsing restart configuration file ...");
@@ -201,13 +210,13 @@ public class BounceMojo extends AbstractMojo {
 			 * */
 			
 			boolean hasIntern = parse_result.contains("was.intern");
-			was_is_restart &= hasIntern;
+			was_is_operation &= hasIntern;
 			getLog().info("Restarting the following instances: ");
-			if (was_ss_restart)
+			if (was_ss_operation)
 				getLog().info(" - WAS SS");
-			if (was_is_restart)
+			if (was_is_operation)
 				getLog().info(" - WAS IS");
-			if (wps_restart)
+			if (wps_operation)
 				getLog().info(" - WPS");
 			getLog().info("");
 
@@ -237,71 +246,74 @@ public class BounceMojo extends AbstractMojo {
 			Commandline was_sen_cl = new Commandline(); // was sensitive command line
 			Commandline was_int_cl = new Commandline(); // was intern command line
 			Commandline wps_cl = new Commandline(); // wps command line
-			if (was_ss_restart) was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.STOP);
-			//getLog().info("JOARK: "+this.isJoarkRestartNeeded);
-			
-			if (was_is_restart) was_int_cl = this.prepareCommandline(was_is_env_info, Operation.STOP);
-			if (wps_restart) wps_cl = this.prepareCommandline(wps_env_info, Operation.STOP);
-			
-//			if (was_ss_restart) getLog().info("WAS Sensitiv: " + was_sen_cl.toString());
-//			if (was_is_restart) getLog().info("WAS Intern: " + was_int_cl.toString());
-//			if (wps_restart) getLog().info("WPS: " + wps_cl.toString());
-			
-			if (this.was_ss_restart){
-				getLog().info("");
-				getLog().info("###########################");
-				getLog().info("### STOPPING WAS SS ... ###");
-				getLog().info("###########################");
-				getLog().info("");
-				executeCommand(was_sen_cl);
-			}
-			if (was_is_restart) {
-				getLog().info("");
-				getLog().info("###########################");
-				getLog().info("### STOPPING WAS IS ... ###");
-				getLog().info("###########################");
-				getLog().info("");
-				executeCommand(was_int_cl);
-			}
-			if (wps_restart) {
-				getLog().info("");
-				getLog().info("########################");
-				getLog().info("### STOPPING WPS ... ###");
-				getLog().info("########################");
-				getLog().info("");
-				executeCommand(wps_cl);
-			}
+			if ((operationMode == Operation.STOP || operationMode == Operation.RESTART)) {
 
-			if (was_ss_restart)
-				was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.START);
-			if (was_is_restart)
-				was_int_cl = this.prepareCommandline(was_is_env_info, Operation.START);
-			if (wps_restart) 
-				wps_cl = this.prepareCommandline(wps_env_info, Operation.START);
+				if (was_ss_operation)
+					was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.STOP);
+				if (was_is_operation)
+					was_int_cl = this.prepareCommandline(was_is_env_info, Operation.STOP);
+				if (wps_operation)
+					wps_cl = this.prepareCommandline(wps_env_info, Operation.STOP);
+
+				if (this.was_ss_operation) {
+					getLog().info("");
+					getLog().info("###########################");
+					getLog().info("### STOPPING WAS SS ... ###");
+					getLog().info("###########################");
+					getLog().info("");
+					executeCommand(was_sen_cl);
+				}
+				if (was_is_operation) {
+					getLog().info("");
+					getLog().info("###########################");
+					getLog().info("### STOPPING WAS IS ... ###");
+					getLog().info("###########################");
+					getLog().info("");
+					executeCommand(was_int_cl);
+				}
+				if (wps_operation) {
+					getLog().info("");
+					getLog().info("########################");
+					getLog().info("### STOPPING WPS ... ###");
+					getLog().info("########################");
+					getLog().info("");
+					executeCommand(wps_cl);
+				}
+			}
 			
-			if (this.was_ss_restart){
-				getLog().info("");
-				getLog().info("###########################");
-				getLog().info("### STARTING WAS SS ... ###");
-				getLog().info("###########################");
-				getLog().info("");
-				executeCommand(was_sen_cl);
-			}
-			if (was_is_restart) {
-				getLog().info("");
-				getLog().info("###########################");
-				getLog().info("### STARTING WAS IS ... ###");
-				getLog().info("###########################");
-				getLog().info("");
-				executeCommand(was_int_cl);
-			}
-			if (wps_restart) {
-				getLog().info("");
-				getLog().info("########################");
-				getLog().info("### STARTING WPS ... ###");
-				getLog().info("########################");
-				getLog().info("");
-				executeCommand(wps_cl);
+			if ((operationMode == Operation.START || operationMode == Operation.RESTART)) {
+
+				if (was_ss_operation)
+					was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.START);
+				if (was_is_operation)
+					was_int_cl = this.prepareCommandline(was_is_env_info, Operation.START);
+				if (wps_operation)
+					wps_cl = this.prepareCommandline(wps_env_info, Operation.START);
+
+				if (this.was_ss_operation) {
+					getLog().info("");
+					getLog().info("###########################");
+					getLog().info("### STARTING WAS SS ... ###");
+					getLog().info("###########################");
+					getLog().info("");
+					executeCommand(was_sen_cl);
+				}
+				if (was_is_operation) {
+					getLog().info("");
+					getLog().info("###########################");
+					getLog().info("### STARTING WAS IS ... ###");
+					getLog().info("###########################");
+					getLog().info("");
+					executeCommand(was_int_cl);
+				}
+				if (wps_operation) {
+					getLog().info("");
+					getLog().info("########################");
+					getLog().info("### STARTING WPS ... ###");
+					getLog().info("########################");
+					getLog().info("");
+					executeCommand(wps_cl);
+				}
 			}
 		} catch (SAXException e) {
 			getLog().error(e.getMessage());
