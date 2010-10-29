@@ -101,11 +101,14 @@ public class BounceMojo extends AbstractMojo {
 	 */
 	private String buildDir;
 	
-	private boolean isJoarkRestartNeeded = false;
+	
+	/**
+	 * @parameter expression="${restartJoark}"
+	 */
+	private boolean isJoarkRestartNeeded;
 
 	/**
 	 * @parameter expression="${apps}"
-	 * @required
 	 */
 	private String apps;
 	
