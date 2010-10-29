@@ -204,13 +204,13 @@ public class BounceMojo extends AbstractMojo {
 			
 			boolean hasIntern = parse_result.contains("was.intern");
 			was_is_operation &= hasIntern;
-			getLog().info("Restarting the following instances: ");
+			getLog().info("Performing the following operations:");
 			if (was_ss_operation)
-				getLog().info(" - WAS SS");
+				getLog().info(" - WAS SS: " + operationMode.toString().toUpperCase());
 			if (was_is_operation)
-				getLog().info(" - WAS IS");
+				getLog().info(" - WAS IS: " + operationMode.toString().toUpperCase());
 			if (wps_operation)
-				getLog().info(" - WPS");
+				getLog().info(" - WPS: " + operationMode.toString().toUpperCase());
 			getLog().info("");
 
 			/*
