@@ -243,77 +243,12 @@ public class BounceMojo extends AbstractMojo {
 			
 			wps_env_info = parse_result.substring(parse_result.indexOf("wps")).split("\n");
 
-			Commandline was_sen_cl = new Commandline(); // was sensitive command line
-			Commandline was_int_cl = new Commandline(); // was intern command line
-			Commandline wps_cl = new Commandline(); // wps command line
 			if ((operationMode == Operation.STOP || operationMode == Operation.RESTART)) {
-
-				if (was_ss_operation)
-					was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.STOP);
-				if (was_is_operation)
-					was_int_cl = this.prepareCommandline(was_is_env_info, Operation.STOP);
-				if (wps_operation)
-					wps_cl = this.prepareCommandline(wps_env_info, Operation.STOP);
-
-				if (this.was_ss_operation) {
-					getLog().info("");
-					getLog().info("###########################");
-					getLog().info("### STOPPING WAS SS ... ###");
-					getLog().info("###########################");
-					getLog().info("");
-					executeCommand(was_sen_cl);
-				}
-				if (was_is_operation) {
-					getLog().info("");
-					getLog().info("###########################");
-					getLog().info("### STOPPING WAS IS ... ###");
-					getLog().info("###########################");
-					getLog().info("");
-					executeCommand(was_int_cl);
-				}
-				if (wps_operation) {
-					getLog().info("");
-					getLog().info("########################");
-					getLog().info("### STOPPING WPS ... ###");
-					getLog().info("########################");
-					getLog().info("");
-					executeCommand(wps_cl);
-				}
+				this.modulesStop(was_ss_env_info, was_is_env_info, wps_env_info);
 			}
 			
 			if ((operationMode == Operation.START || operationMode == Operation.RESTART)) {
-
-				if (was_ss_operation)
-					was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.START);
-				if (was_is_operation)
-					was_int_cl = this.prepareCommandline(was_is_env_info, Operation.START);
-				if (wps_operation)
-					wps_cl = this.prepareCommandline(wps_env_info, Operation.START);
-
-				if (this.was_ss_operation) {
-					getLog().info("");
-					getLog().info("###########################");
-					getLog().info("### STARTING WAS SS ... ###");
-					getLog().info("###########################");
-					getLog().info("");
-					executeCommand(was_sen_cl);
-				}
-				if (was_is_operation) {
-					getLog().info("");
-					getLog().info("###########################");
-					getLog().info("### STARTING WAS IS ... ###");
-					getLog().info("###########################");
-					getLog().info("");
-					executeCommand(was_int_cl);
-				}
-				if (wps_operation) {
-					getLog().info("");
-					getLog().info("########################");
-					getLog().info("### STARTING WPS ... ###");
-					getLog().info("########################");
-					getLog().info("");
-					executeCommand(wps_cl);
-				}
+				this.modulesStart(was_ss_env_info, was_is_env_info, wps_env_info);
 			}
 		} catch (SAXException e) {
 			getLog().error(e.getMessage());
@@ -326,6 +261,91 @@ public class BounceMojo extends AbstractMojo {
 		}
 	}
 	
+	/**
+	 * This method will perform the START operation on the modules based on operation flags
+	 * @param was_ss_info - array with was_ss related info: host, port, username, password
+	 * @param was_is_info - array with was_is related info: host, port, username, password
+	 * @param wps_info - array with wps related info: host, port, username, password
+	 */
+	private void modulesStart(String [] was_ss_info, String [] was_is_info, String [] wps_info){
+		Commandline was_sen_cl = new Commandline(); // was sensitive command line
+		Commandline was_int_cl = new Commandline(); // was intern command line
+		Commandline wps_cl = new Commandline(); // wps command line
+		if (was_ss_operation)
+			was_sen_cl = this.prepareCommandline(was_ss_info, Operation.START);
+		if (was_is_operation)
+			was_int_cl = this.prepareCommandline(was_is_info, Operation.START);
+		if (wps_operation)
+			wps_cl = this.prepareCommandline(wps_info, Operation.START);
+
+		if (this.was_ss_operation) {
+			getLog().info("");
+			getLog().info("###########################");
+			getLog().info("### STARTING WAS SS ... ###");
+			getLog().info("###########################");
+			getLog().info("");
+			executeCommand(was_sen_cl);
+		}
+		if (was_is_operation) {
+			getLog().info("");
+			getLog().info("###########################");
+			getLog().info("### STARTING WAS IS ... ###");
+			getLog().info("###########################");
+			getLog().info("");
+			executeCommand(was_int_cl);
+		}
+		if (wps_operation) {
+			getLog().info("");
+			getLog().info("########################");
+			getLog().info("### STARTING WPS ... ###");
+			getLog().info("########################");
+			getLog().info("");
+			executeCommand(wps_cl);
+		}
+	}
+	
+	/**
+	 * This method will perform the STOP operation on the modules based on operation flags
+	 * @param was_ss_info - array with was_ss related info: host, port, username, password
+	 * @param was_is_info - array with was_is related info: host, port, username, password
+	 * @param wps_info - array with wps related info: host, port, username, password
+	 */
+	private void modulesStop(String [] was_ss_info, String [] was_is_info, String [] wps_info){
+		Commandline was_sen_cl = new Commandline(); // was sensitive command line
+		Commandline was_int_cl = new Commandline(); // was intern command line
+		Commandline wps_cl = new Commandline(); // wps command line
+		if (was_ss_operation)
+			was_sen_cl = this.prepareCommandline(was_ss_info, Operation.STOP);
+		if (was_is_operation)
+			was_int_cl = this.prepareCommandline(was_is_info, Operation.STOP);
+		if (wps_operation)
+			wps_cl = this.prepareCommandline(wps_info, Operation.STOP);
+
+		if (this.was_ss_operation) {
+			getLog().info("");
+			getLog().info("###########################");
+			getLog().info("### STOPPING WAS SS ... ###");
+			getLog().info("###########################");
+			getLog().info("");
+			executeCommand(was_sen_cl);
+		}
+		if (was_is_operation) {
+			getLog().info("");
+			getLog().info("###########################");
+			getLog().info("### STOPPING WAS IS ... ###");
+			getLog().info("###########################");
+			getLog().info("");
+			executeCommand(was_int_cl);
+		}
+		if (wps_operation) {
+			getLog().info("");
+			getLog().info("########################");
+			getLog().info("### STOPPING WPS ... ###");
+			getLog().info("########################");
+			getLog().info("");
+			executeCommand(wps_cl);
+		}
+	}
 	/**
 	 * This method extracts the value from the parameter
 	 * 
