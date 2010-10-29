@@ -164,20 +164,44 @@ public class BounceMojo extends AbstractMojo {
 	
 	public void execute() throws MojoExecutionException {
 		try {
-			getLog().info("");
-			getLog().info("Parsing restart configuration file ...");
-			getLog().info("");
-			
 			if (restartMode) {
+				getLog().info("");
+				getLog().info("Starting plugin in restart mode ...");
+				getLog().info("");
 				was_ss_restart = wasSs;
 				was_is_restart = wasIs;
 				wps_restart = wps;
 			} else {
+				getLog().info("");
+				getLog().info("Parsing restart configuration file ...");
+				getLog().info("");
 				this.ResolveRestart();
 			}
 			
+			getLog().info("Parsing environment file for parameters: \n " + this.envFile);
 			
-			//TODO: flytt denne slik at man vet om man har internsone
+			File xml = new File(this.envFile);
+			String parse_result = XMLParser.parseEnvironmentFile(xml);
+			/* parse_result:
+			 * was.sensitiv
+			 * hostname:d10apvl022.test.internsone.local; 
+			 * soap-port:8879; 
+			 * ws-username:username; 
+			 * ws-password:password;
+			 * [was.intern
+			 * hostname:d10apvl022.test.internsone.local; 
+			 * soap-port:8879; 
+			 * ws-username:username; 
+			 * ws-password:password;]
+			 * wps
+			 * hostname:d10apvl022.test.internsone.local; 
+			 * soap-port:8879; 
+			 * ws-username:username; 
+			 * ws-password:password;
+			 * */
+			
+			boolean hasIntern = parse_result.contains("was.intern");
+			was_is_restart &= hasIntern;
 			getLog().info("Restarting the following instances: ");
 			if (was_ss_restart)
 				getLog().info(" - WAS SS");
@@ -186,75 +210,42 @@ public class BounceMojo extends AbstractMojo {
 			if (wps_restart)
 				getLog().info(" - WPS");
 			getLog().info("");
-			
-			getLog().info("Parsing environment file for parameters: \n* " + this.envFile);
-			
-			File xml = new File(this.envFile);
-			String parse_result = XMLParser.parseEnvironmentFile(xml);
-			/* parse_result:
-			 * was.sensitiv
-			 * hostname:d10apvl022.test.internsone.local; 
-			 * soap-port:8879; 
-			 * ws-username:srvPensjon; 
-			 * ws-password:Ash5SoxP;
-			 * [was.intern
-			 * hostname:d10apvl022.test.internsone.local; 
-			 * soap-port:8879; 
-			 * ws-username:srvPensjon; 
-			 * ws-password:Ash5SoxP;]
-			 * [wps
-			 * hostname:d10apvl022.test.internsone.local; 
-			 * soap-port:8879; 
-			 * ws-username:srvPensjon; 
-			 * ws-password:Ash5SoxP;]
-			 * */
-			
-			boolean hasIntern = parse_result.contains("was.intern") & this.was_is_restart;
-			
-			//TODO: fjern denne og alle referanser til den
-			boolean hasWps = parse_result.contains("wps") & this.wps_restart;
+
 			/*
-			 * was_s[0]: was.intern 
-			 * was_s[1]: hostname:d10apvl022.test.internsone.local; 
-			 * was_s[2]: soap-port:8879; was_s[3]: ws-username:srvPensjon; 
-			 * was_s[4]: ws-password:Ash5SoxP;
+			 * [0]: was.intern 
+			 * [1]: hostname:d10apvl022.test.internsone.local; 
+			 * [2]: soap-port:8879; 
+			 * [3]: ws-username:username; 
+			 * [4]: ws-password:password;
 			 */
-			String[] was_s = null; // was sensitiv
-			String[] was_i = null; // was intern
-			String[] wps = null; // wps
-			// It is possible that the env. file does not have was intern properties,
-			// but has wps properties
-			was_s = (hasIntern) ? parse_result.substring(0,
+			String[] was_ss_env_info = null; // was sensitiv
+			String[] was_is_env_info = null; // was intern
+			String[] wps_env_info = null; // wps
+			// It is possible that the env. file does not have was intern properties
+			was_ss_env_info = (hasIntern) ? parse_result.substring(0,
 					parse_result.indexOf("was.intern")).split("\n")	: 
-					(hasWps) ? parse_result.substring(0,
-							parse_result.indexOf("wps")).split("\n") 
-							: parse_result.split("\n");
-			
+					parse_result.substring(0,parse_result.indexOf("wps")).split("\n");
 			
 			if (hasIntern) {
-				was_i = (hasWps) ? parse_result.substring(
+				was_is_env_info = parse_result.substring(
 						parse_result.indexOf("was.intern"),
-						parse_result.indexOf("wps"))
-						.split("\n") : 
-						parse_result.substring(
-								parse_result.indexOf("was.intern")
-						).split("\n");
+						parse_result.indexOf("wps")).split("\n") ;
 			}
-			if (hasWps)
-				wps = parse_result.substring(parse_result.indexOf("wps")).split("\n");
+			
+			wps_env_info = parse_result.substring(parse_result.indexOf("wps")).split("\n");
 
 			Commandline was_sen_cl = new Commandline(); // was sensitive command line
 			Commandline was_int_cl = new Commandline(); // was intern command line
 			Commandline wps_cl = new Commandline(); // wps command line
-			was_sen_cl = this.prepareCommandline(was_s, Operation.STOP);
+			if (was_ss_restart) was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.STOP);
 			getLog().info("JOARK: "+this.isJoarkRestartNeeded);
 			
-			if (hasIntern) was_int_cl = this.prepareCommandline(was_i, Operation.STOP);
-			if (hasWps) wps_cl = this.prepareCommandline(wps, Operation.STOP);
+			if (was_is_restart) was_int_cl = this.prepareCommandline(was_is_env_info, Operation.STOP);
+			if (wps_restart) wps_cl = this.prepareCommandline(wps_env_info, Operation.STOP);
 			
-			getLog().info("WAS Sensitiv: " + was_sen_cl.toString());
-			if (hasIntern) getLog().info("WAS Intern: " + was_int_cl.toString());
-			if (hasWps) getLog().info("WPS: " + wps_cl.toString());
+			if (was_ss_restart) getLog().info("WAS Sensitiv: " + was_sen_cl.toString());
+			if (was_is_restart) getLog().info("WAS Intern: " + was_int_cl.toString());
+			if (wps_restart) getLog().info("WPS: " + wps_cl.toString());
 			
 			if (this.was_ss_restart){
 				getLog().info("");
@@ -264,7 +255,7 @@ public class BounceMojo extends AbstractMojo {
 				getLog().info("");
 				executeCommand(was_sen_cl);
 			}
-			if (hasIntern) {
+			if (was_is_restart) {
 				getLog().info("");
 				getLog().info("###########################");
 				getLog().info("### STOPPING WAS IS ... ###");
@@ -272,7 +263,7 @@ public class BounceMojo extends AbstractMojo {
 				getLog().info("");
 				executeCommand(was_int_cl);
 			}
-			if (hasWps) {
+			if (wps_restart) {
 				getLog().info("");
 				getLog().info("########################");
 				getLog().info("### STOPPING WPS ... ###");
@@ -280,14 +271,13 @@ public class BounceMojo extends AbstractMojo {
 				getLog().info("");
 				executeCommand(wps_cl);
 			}
-			
-			
 
-			was_sen_cl = this.prepareCommandline(was_s, Operation.START);
-			if (hasIntern)
-				was_int_cl = this.prepareCommandline(was_i, Operation.START);
-			if (hasWps) 
-				wps_cl = this.prepareCommandline(wps, Operation.START);
+			if (was_ss_restart)
+				was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.START);
+			if (was_is_restart)
+				was_int_cl = this.prepareCommandline(was_is_env_info, Operation.START);
+			if (wps_restart) 
+				wps_cl = this.prepareCommandline(wps_env_info, Operation.START);
 			
 			if (this.was_ss_restart){
 				getLog().info("");
@@ -297,7 +287,7 @@ public class BounceMojo extends AbstractMojo {
 				getLog().info("");
 				executeCommand(was_sen_cl);
 			}
-			if (hasIntern) {
+			if (was_is_restart) {
 				getLog().info("");
 				getLog().info("###########################");
 				getLog().info("### STARTING WAS IS ... ###");
@@ -305,7 +295,7 @@ public class BounceMojo extends AbstractMojo {
 				getLog().info("");
 				executeCommand(was_int_cl);
 			}
-			if (hasWps) {
+			if (wps_restart) {
 				getLog().info("");
 				getLog().info("########################");
 				getLog().info("### STARTING WPS ... ###");
@@ -313,8 +303,6 @@ public class BounceMojo extends AbstractMojo {
 				getLog().info("");
 				executeCommand(wps_cl);
 			}
-			
-
 		} catch (SAXException e) {
 			getLog().error(e.getMessage());
 		} catch (IOException e) {
@@ -324,8 +312,6 @@ public class BounceMojo extends AbstractMojo {
 		} catch (InvalideNodeValueException e) {
 			getLog().error(e.getMessage());
 		}
-		
-		
 	}
 	
 	/**
