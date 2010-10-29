@@ -103,7 +103,7 @@ public class BounceMojo extends AbstractMojo {
 	
 	
 	/**
-	 * @parameter expression="${restartJoark}"
+	 * @parameter expression="${restartJoark}" default-value=false
 	 */
 	private boolean isJoarkRestartNeeded;
 
@@ -153,7 +153,6 @@ public class BounceMojo extends AbstractMojo {
 		File restartConfigFile = new File(this.restartCfgFile);
 		HashMap<String, RestartConfig> restart_config = XMLParser.parseRestartConfigFile(restartConfigFile);
 		// set variables
-		this.isJoarkRestartNeeded = false;
 		for (String name : apps_names){
 			was_ss_operation |= restart_config.get(name).hasWas_ss();
 			was_is_operation |= restart_config.get(name).hasWas_is();
