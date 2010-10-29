@@ -165,9 +165,6 @@ public class BounceMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException {
 		try {
 			if (restartMode) {
-				getLog().info("");
-				getLog().info("Starting plugin in restart mode ...");
-				getLog().info("");
 				was_ss_restart = wasSs;
 				was_is_restart = wasIs;
 				wps_restart = wps;
@@ -238,14 +235,14 @@ public class BounceMojo extends AbstractMojo {
 			Commandline was_int_cl = new Commandline(); // was intern command line
 			Commandline wps_cl = new Commandline(); // wps command line
 			if (was_ss_restart) was_sen_cl = this.prepareCommandline(was_ss_env_info, Operation.STOP);
-			getLog().info("JOARK: "+this.isJoarkRestartNeeded);
+			//getLog().info("JOARK: "+this.isJoarkRestartNeeded);
 			
 			if (was_is_restart) was_int_cl = this.prepareCommandline(was_is_env_info, Operation.STOP);
 			if (wps_restart) wps_cl = this.prepareCommandline(wps_env_info, Operation.STOP);
 			
-			if (was_ss_restart) getLog().info("WAS Sensitiv: " + was_sen_cl.toString());
-			if (was_is_restart) getLog().info("WAS Intern: " + was_int_cl.toString());
-			if (wps_restart) getLog().info("WPS: " + wps_cl.toString());
+//			if (was_ss_restart) getLog().info("WAS Sensitiv: " + was_sen_cl.toString());
+//			if (was_is_restart) getLog().info("WAS Intern: " + was_int_cl.toString());
+//			if (wps_restart) getLog().info("WPS: " + wps_cl.toString());
 			
 			if (this.was_ss_restart){
 				getLog().info("");
