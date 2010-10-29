@@ -113,11 +113,6 @@ public class BounceMojo extends AbstractMojo {
 	private String apps;
 	
 	/**
-	 * @parameter expression="${restartMode}"
-	 */
-	private boolean restartMode;
-	
-	/**
 	 * @parameter expression="${wasSs}"
 	 */
 	private boolean wasSs;
@@ -133,7 +128,7 @@ public class BounceMojo extends AbstractMojo {
 	private boolean wps;
 	
 	/**
-	 * @parameter expression="${action}" default-value="restart"
+	 * @parameter expression="${action}"
 	 * can be start/stop/restart
 	 */
 	private String action;
@@ -172,14 +167,13 @@ public class BounceMojo extends AbstractMojo {
 	
 	public void execute() throws MojoExecutionException {
 		try {
-			Operation operationMode;
-			if (action.equalsIgnoreCase("start")) operationMode = Operation.START;
-			else if (action.equalsIgnoreCase("stop")) operationMode = Operation.STOP;
-			else operationMode = Operation.RESTART;
-			if (restartMode) {
+			Operation operationMode = Operation.RESTART;;
+			if (action != null){
 				was_ss_operation = wasSs;
 				was_is_operation = wasIs;
 				wps_operation = wps;
+				if (action.equalsIgnoreCase("start")) operationMode = Operation.START;
+				else if (action.equalsIgnoreCase("stop")) operationMode = Operation.STOP;
 			} else {
 				getLog().info("");
 				getLog().info("Parsing restart configuration file ...");
