@@ -148,7 +148,7 @@ public class BounceMojo extends AbstractMojo {
 	private boolean was_is_operation = false;
 	private boolean wps_operation = false;
 	
-	private String envFile = envFilesDir + "/" + env.toUpperCase() + ".xml";
+	private String envFile;
 	
 	/**
 	 * This method will parse the apps string  together with the restart_config.xml 
@@ -178,6 +178,9 @@ public class BounceMojo extends AbstractMojo {
 	}
 	
 	public void execute() throws MojoExecutionException {
+		
+		envFile = envFilesDir + "/" + env.toUpperCase() + ".xml";
+		
 		try {
 			Operation operationMode = Operation.RESTART;;
 			if (action != null){
