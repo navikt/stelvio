@@ -6,7 +6,7 @@ ven-v4_0_0.xsd">
   <parent>
     <groupId>no.nav.maven.poms</groupId>
     <artifactId>maven-wpsdeploy-pom</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
   </parent>
 
   <groupId>no.nav.maven.poc</groupId>
