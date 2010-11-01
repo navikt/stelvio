@@ -51,7 +51,7 @@ public class BounceMojo extends AbstractMojo {
 
 	/**
 	 * Operation that will be sent to the script.
-	 * Can be start or stop.
+	 * Can be start, stop or restart.
 	 */
 	private enum Operation {
 		START("start"), STOP("stop"), RESTART("restart");
@@ -85,6 +85,12 @@ public class BounceMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String envFile;
+	
+	/**
+	 * @parameter expression="${env}"
+	 * @required
+	 */
+	private String env;
 	
 	/**
 	 * @parameter expression="${restartConfigFile}"
@@ -204,18 +210,20 @@ public class BounceMojo extends AbstractMojo {
 			
 			boolean hasIntern = parse_result.contains("was.intern");
 			was_is_operation &= hasIntern;
-			getLog().info("Performing the following operations:");
-			if (was_ss_operation)
-				getLog().info(" - WAS SS: " + operationMode.toString().toUpperCase());
+			getLog().info("Performing " + operationMode.toString() + " on the following servers in " + env );
+			if (was_ss_operation){
+				if (this.isJoarkRestartNeeded)
+					getLog().info(" - WAS SS ( + JOARK )");
+				else {
+					getLog().info(" - WAS SS");
+				}
+			}
 			if (was_is_operation)
-				getLog().info(" - WAS IS: " + operationMode.toString().toUpperCase());
+				getLog().info(" - WAS IS");
 			if (wps_operation)
-				getLog().info(" - WPS: " + operationMode.toString().toUpperCase());
-			if (this.isJoarkRestartNeeded)
-				getLog().info(" - JOARK: " + operationMode.toString().toUpperCase());
-			getLog().info("");
-			getLog().info("");
+				getLog().info(" - WPS");
 			
+			getLog().info("");
 
 			/*
 			 * [0]: was.intern 
