@@ -109,9 +109,9 @@ public class BounceMojo extends AbstractMojo {
 	
 	
 	/**
-	 * @parameter expression="${restartJoark}" default-value=false
+	 * @parameter expression="${includeJoark}" default-value=false
 	 */
-	private boolean isJoarkRestartNeeded;
+	private boolean includeJoark;
 
 	/**
 	 * @parameter expression="${apps}"
@@ -168,7 +168,7 @@ public class BounceMojo extends AbstractMojo {
 			was_ss_operation |= restart_config.get(name).hasWas_ss();
 			was_is_operation |= restart_config.get(name).hasWas_is();
 			wps_operation |= restart_config.get(name).hasWps();
-			if (name.equalsIgnoreCase("joark")) this.isJoarkRestartNeeded = true; 
+			if (name.equalsIgnoreCase("joark")) this.includeJoark = true; 
 		}
 		if (this.excludeBus) wps_operation = false;
 		
@@ -217,7 +217,7 @@ public class BounceMojo extends AbstractMojo {
 			was_is_operation &= hasIntern;
 			getLog().info("Performing " + operationMode.toString() + " on the following servers in " + env );
 			if (was_ss_operation){
-				if (this.isJoarkRestartNeeded)
+				if (this.includeJoark)
 					getLog().info(" - WAS SS (Pensjon and JOARK cluster)");
 				else 
 					getLog().info(" - WAS SS (Only Pensjons cluster");
@@ -393,7 +393,7 @@ public class BounceMojo extends AbstractMojo {
 			     			 this.scriptName + " " + this.buildDir + "/da-config/misc " + op;
 		}
 		
-		scriptCommand += (this.isJoarkRestartNeeded) ? " true" : " false";
+		scriptCommand += (this.includeJoark) ? " true" : " false";
 		scriptCommand += (this.onlyAppTarget) ? " true" : " false";
 		
 		Commandline.Argument lang = new Commandline.Argument();
