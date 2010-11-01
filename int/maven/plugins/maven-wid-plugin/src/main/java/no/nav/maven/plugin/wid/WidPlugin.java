@@ -49,6 +49,11 @@ public class WidPlugin extends EclipsePlugin {
 	 * @parameter expression="${sca.versioned}" default-value="false"
 	 */
 	private boolean versioned;
+	
+	/**
+	 * @parameter expression="${sca.versioned.full}" default-value="false"
+	 */
+	private boolean versionedFull;
 
 	@Override
 	protected void writeConfigurationExtras(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
@@ -74,7 +79,11 @@ public class WidPlugin extends EclipsePlugin {
 		try {
 			ScaAttributesBuilder scaAttributesBuilder = new ScaAttributesBuilder(getProject());
 			if (PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
-				scaAttributesBuilder.setVersioned(versioned);
+				if(versionedFull){
+					scaAttributesBuilder.setVersionedFull(versionedFull);
+				} else{
+					scaAttributesBuilder.setVersioned(versioned);
+				}
 			}
 			scaAttributesBuilder.writeToDirectory(getEclipseProjectDir());
 		} catch (IOException e) {
