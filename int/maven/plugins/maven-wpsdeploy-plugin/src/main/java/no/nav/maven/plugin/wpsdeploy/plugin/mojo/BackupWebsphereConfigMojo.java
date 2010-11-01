@@ -1,9 +1,5 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.PropertyUtils;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.PwdConsole;
 
 import org.apache.maven.plugin.MojoExecutionException;
