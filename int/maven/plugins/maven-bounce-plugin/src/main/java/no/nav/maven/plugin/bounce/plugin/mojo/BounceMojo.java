@@ -134,6 +134,11 @@ public class BounceMojo extends AbstractMojo {
 	private boolean wps;
 	
 	/**
+	 * @parameter expression="${onlyAppTarget}"
+	 */
+	private boolean onlyAppTarget;
+	
+	/**
 	 * @parameter expression="${action}"
 	 * can be start/stop/restart
 	 */
@@ -213,15 +218,20 @@ public class BounceMojo extends AbstractMojo {
 			getLog().info("Performing " + operationMode.toString() + " on the following servers in " + env );
 			if (was_ss_operation){
 				if (this.isJoarkRestartNeeded)
-					getLog().info(" - WAS SS ( + JOARK )");
-				else {
-					getLog().info(" - WAS SS");
-				}
+					getLog().info(" - WAS SS (Pensjon and JOARK cluster)");
+				else 
+					getLog().info(" - WAS SS (Only Pensjons cluster");
+				
 			}
 			if (was_is_operation)
 				getLog().info(" - WAS IS");
-			if (wps_operation)
-				getLog().info(" - WPS");
+			if (wps_operation){
+				if (onlyAppTarget)
+					getLog().info(" - WPS (Only AppTarget cluster)");
+				else
+					getLog().info(" - WPS (All clusters)");
+			}
+				
 			
 			getLog().info("");
 
@@ -382,8 +392,9 @@ public class BounceMojo extends AbstractMojo {
 			scriptCommand += this.buildDir + "/da-config/misc/scripts/" + 
 			     			 this.scriptName + " " + this.buildDir + "/da-config/misc " + op;
 		}
-		if (this.isJoarkRestartNeeded) scriptCommand += " JOARK_RESTART";
 		
+		scriptCommand += (this.isJoarkRestartNeeded) ? " true" : " false";
+		scriptCommand += (this.onlyAppTarget) ? " true" : " false";
 		
 		Commandline.Argument lang = new Commandline.Argument();
 		Commandline.Argument host = new Commandline.Argument();
@@ -418,7 +429,6 @@ public class BounceMojo extends AbstractMojo {
 			else {
 				getLog().info("Executing the following command: " + command.toString());
 			}
-			
 
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {
@@ -430,10 +440,9 @@ public class BounceMojo extends AbstractMojo {
 					getLog().error(line);
 				}
 			};
-			ErrorCheckingStreamConsumer errorChecker = new ErrorCheckingStreamConsumer();
 
-			CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
-					new StreamConsumerChain(systemErr).add(errorChecker));
+			CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut),
+					new StreamConsumerChain(systemErr));
 
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
@@ -459,20 +468,6 @@ public class BounceMojo extends AbstractMojo {
 			for (StreamConsumer streamConsumer : chain) {
 				streamConsumer.consumeLine(line);
 			}
-		}
-	}
-
-	private static class ErrorCheckingStreamConsumer implements StreamConsumer {
-		private boolean error;
-
-		public void consumeLine(String line) {
-			if (line.toLowerCase().contains("error")) {
-				error = true;
-			}
-		}
-
-		public boolean isError() {
-			return error;
 		}
 	}
 }
