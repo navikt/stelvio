@@ -81,10 +81,10 @@ public class BounceMojo extends AbstractMojo {
 	private boolean excludeBus;
 
 	/**
-	 * @parameter expression="${environmentFile}"
+	 * @parameter expression="${environmentFilesDir}"
 	 * @required
 	 */
-	private String envFile;
+	private String envFilesDir;
 	
 	/**
 	 * @parameter expression="${env}"
@@ -147,6 +147,8 @@ public class BounceMojo extends AbstractMojo {
 	private boolean was_ss_operation = false;
 	private boolean was_is_operation = false;
 	private boolean wps_operation = false;
+	
+	private String envFile = envFilesDir + "/" + env.toUpperCase() + ".xml";
 	
 	/**
 	 * This method will parse the apps string  together with the restart_config.xml 
@@ -427,7 +429,7 @@ public class BounceMojo extends AbstractMojo {
 		return cmd;
 	}
 	
-	protected final void executeCommand(Commandline command) {
+	protected final int executeCommand(Commandline command) {
 		try {
 			
 			// If a password is sent as a parameter, we hide it from the output
@@ -450,7 +452,7 @@ public class BounceMojo extends AbstractMojo {
 				}
 			};
 
-			CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut),
+			return CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut),
 					new StreamConsumerChain(systemErr));
 
 		} catch (CommandLineException e) {
