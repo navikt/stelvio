@@ -23,7 +23,6 @@
 		<outputDir>${project.build.directory}</outputDir>
 		<environmentFilesDir>${outputDir}/${daConfigDirectory}/environments</environmentFilesDir>
 		<miscFilesDir>${outputDir}/${daConfigDirectory}/misc</miscFilesDir>
-		<environmentFile>${environmentFilesDir}/${env}.xml</environmentFile> 
 		<restartConfigFile>${miscFilesDir}/config/restart_config.xml</restartConfigFile>
 	</properties>
 
