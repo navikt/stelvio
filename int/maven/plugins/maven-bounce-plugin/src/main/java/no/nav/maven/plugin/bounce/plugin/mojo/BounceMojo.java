@@ -214,27 +214,36 @@ public class BounceMojo extends AbstractMojo {
 			 * */
 			
 			boolean hasIntern = parse_result.contains("was.intern");
+			
+			if (was_is_operation && !hasIntern){
+				getLog().warn("Requested operation on the intern sone, however the XML parser didn't detect any matching configuration. Get your act together man.");
+			}
+			
 			was_is_operation &= hasIntern;
-			getLog().info("Performing " + operationMode.toString() + " on the following servers in " + env );
+			
+			getLog().info("***********************************************************************************");
+			getLog().info("*");
+			getLog().info("* Summary:");
+			getLog().info("*");
+			getLog().info("* Performing " + operationMode.toString() + " on the following servers in " + env );
 			if (was_ss_operation){
 				if (this.includeJoark)
-					getLog().info(" - WAS SS (Pensjon and JOARK cluster)");
+					getLog().info("* - WAS SS (Pensjon and JOARK cluster)");
 				else 
-					getLog().info(" - WAS SS (Only Pensjons cluster");
+					getLog().info("* - WAS SS (Only Pensjons cluster");
 				
 			}
 			if (was_is_operation)
-				getLog().info(" - WAS IS");
+				getLog().info("* - WAS IS");
 			if (wps_operation){
 				if (onlyAppTarget)
-					getLog().info(" - WPS (Only AppTarget cluster)");
+					getLog().info("* - WPS (Only AppTarget cluster)");
 				else
-					getLog().info(" - WPS (All clusters)");
+					getLog().info("* - WPS (All clusters)");
 			}
+			getLog().info("*");
+			getLog().info("***********************************************************************************");
 				
-			
-			getLog().info("");
-
 			/*
 			 * [0]: was.intern 
 			 * [1]: hostname:d10apvl022.test.internsone.local; 
