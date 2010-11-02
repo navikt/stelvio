@@ -80,6 +80,10 @@ public class WidPlugin extends EclipsePlugin {
 			ScaAttributesBuilder scaAttributesBuilder = new ScaAttributesBuilder(getProject());
 			if (PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
 				if(versionedFull){
+					if (project.getVersion() != null && project.getVersion().contains("-SNAPSHOT")) {
+						getLog().info("Full versioning is not supported for SNAPSHOT versions. Building the project without SCA versioning");
+						versionedFull = false;
+					}
 					scaAttributesBuilder.setVersionedFull(versionedFull);
 				} else{
 					scaAttributesBuilder.setVersioned(versioned);
