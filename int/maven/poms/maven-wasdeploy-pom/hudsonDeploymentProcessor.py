@@ -27,6 +27,8 @@ def main(ENVS):
 	SENSITIV_LIST = sys.argv[2].split("=")[1].split(",")
 	INTERN_LIST = sys.argv[3].split("=")[1].split(",")
 	
+	BOUNCE_FAIL = "false"
+	
 	for ENV in ENVS:  
 		if getCount(SENSITIV_LIST) > 0:	
 			deploy(ENV, SENSITIV_LIST, "sensitiv")
@@ -51,7 +53,7 @@ def main(ENVS):
 			BOUNCE_STRING = "cd ../maven-bounce-pom/ && mvn clean install -Dapps=" + APPS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
 			retval = subprocess.call(BOUNCE_STRING, shell=True) 		
 			if retval != 0:
-				print "[ERROR] Something went wrong when performing restarts."
+				BOUNCE_FAIL = "true"	
 
 		print "[INFO] Completed processing of " + ENV + "."
 		sys.stdout.flush()
@@ -59,6 +61,9 @@ def main(ENVS):
 		CHECKLIST_SENSITIV = CHECKLIST_SENSITIV_BACKUP[:]
 		CHECKLIST_INTERN = CHECKLIST_INTERN_BACKUP[:]
 
+	if BOUNCE_FAIL == "true":
+		print "[ERROR] Failed to perform the bounce on one or more environments, please check the log messages."
+		sys.exit(1)
 
 def getCount(APP_LIST):
 	if len(APP_LIST) > 0:
@@ -149,7 +154,7 @@ def deploy(ENV, APP_LIST, ZONE):
 		APP = SPLITTED[0]
 		VERSION = SPLITTED[1]
 		printStatus(ENV, APP, VERSION, ZONE)
-		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE + " -Dconfig=" + CONFIG_VERSION + " -DnoFail=" + NO_FAIL
+		MAVEN_STRING = "mvn clean install -Denv=" + ENV + " -Dapp=" + APP + " -Dversion=" + VERSION + " -Dzone=" + ZONE + " -Dconfig=" + CONFIG_VERSION
 		print "[INFO] Executing the following Maven string: \"" + MAVEN_STRING + "\""
 		sys.stdout.flush()
 		retval = subprocess.call(MAVEN_STRING, shell=True)
@@ -197,7 +202,6 @@ CHECKLIST_INTERN_BACKUP = CHECKLIST_INTERN[:]
 CONFIG_VERSION = sys.argv[4]
 BOUNCE = sys.argv[5]
 EXCLUDE_BUS = sys.argv[6]
-NO_FAIL = sys.argv[7]
 	
 TOTAL_APP_COUNT = (getCount(CHECKLIST_SENSITIV) + getCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
 INSTALLED_COUNT = 1
