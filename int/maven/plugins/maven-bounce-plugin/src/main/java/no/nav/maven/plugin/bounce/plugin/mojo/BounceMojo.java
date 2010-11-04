@@ -30,6 +30,7 @@ import no.nav.maven.plugin.bounce.plugin.utils.XMLParser;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 
 //import org.codehaus.plexus.components.interactivity.PrompterException; 
 import org.codehaus.plexus.util.Os;
@@ -40,8 +41,7 @@ import org.codehaus.plexus.util.cli.StreamConsumer;
 import org.xml.sax.SAXException;
 
 /**
- * Bounce script that restarts WPS/App target-cluster on WPS if this is
- * specified.
+ * Bounce script that restarts WPS/App target-cluster on WPS if this is specified.
  * 
  * @goal bounce
  * 
@@ -50,8 +50,7 @@ import org.xml.sax.SAXException;
 public class BounceMojo extends AbstractMojo {
 
 	/**
-	 * Operation that will be sent to the script.
-	 * Can be start, stop or restart.
+	 * Operation that will be sent to the script. Can be start, stop or restart.
 	 */
 	private enum Operation {
 		START("start"), STOP("stop"), RESTART("restart");
@@ -65,7 +64,7 @@ public class BounceMojo extends AbstractMojo {
 			return action.toLowerCase();
 		}
 	}
-	
+
 	/**
 	 * @parameter expression="${wid.runtime}"
 	 * @required
@@ -85,13 +84,13 @@ public class BounceMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String envFilesDir;
-	
+
 	/**
 	 * @parameter expression="${env}"
 	 * @required
 	 */
 	private String env;
-	
+
 	/**
 	 * @parameter expression="${restartConfigFile}"
 	 * @required
@@ -99,15 +98,14 @@ public class BounceMojo extends AbstractMojo {
 	private String restartCfgFile;
 
 	private String scriptCommand = " -lang jython -f ";
-	
+
 	private String scriptName = "ClusterStartStop.py";
-	
+
 	/**
 	 * @parameter expression="${project.build.directory}"
 	 */
 	private String buildDir;
-	
-	
+
 	/**
 	 * @parameter expression="${includeJoark}" default-value=false
 	 */
@@ -117,130 +115,121 @@ public class BounceMojo extends AbstractMojo {
 	 * @parameter expression="${apps}"
 	 */
 	private String apps;
-	
+
 	/**
 	 * @parameter expression="${wasSs}"
 	 */
 	private boolean wasSs;
-	
+
 	/**
 	 * @parameter expression="${wasIs}"
 	 */
 	private boolean wasIs;
-	
+
 	/**
 	 * @parameter expression="${wps}"
 	 */
 	private boolean wps;
-	
+
 	/**
 	 * @parameter expression="${onlyAppTarget}"
 	 */
 	private boolean onlyAppTarget;
 	
+
 	/**
-	 * @parameter expression="${action}"
-	 * can be start/stop/restart
+	 * @parameter expression="${action}" 
 	 */
 	private String action;
-	
+
 	private boolean was_ss_operation = false;
 	private boolean was_is_operation = false;
 	private boolean wps_operation = false;
-	
+
 	private String envFile;
 	
+	private boolean fail = false;
+
 	/**
-	 * This method will parse the apps string  together with the restart_config.xml 
-	 * and decide which modules should be restarted. 
-	 * The appropriate variables are set to true.
-	 * @throws ParserConfigurationException 
-	 * @throws IOException 
-	 * @throws SAXException 
+	 * This method will parse the apps string together with the restart_config.xml and decide which modules should be restarted. The appropriate variables are set to true.
+	 * 
+	 * @throws ParserConfigurationException
+	 * @throws IOException
+	 * @throws SAXException
 	 */
-	private void ResolveRestart() throws SAXException, IOException, ParserConfigurationException{
+	private void ResolveRestart() throws SAXException, IOException, ParserConfigurationException {
 		// apps-string:
-		String [] apps_names = apps.split(",");
-		
+		String[] apps_names = apps.split(",");
+
 		// restart_config.xml
 		File restartConfigFile = new File(this.restartCfgFile);
 		HashMap<String, RestartConfig> restart_config = XMLParser.parseRestartConfigFile(restartConfigFile);
 		// set variables
-		for (String name : apps_names){
+		for (String name : apps_names) {
 			was_ss_operation |= restart_config.get(name).hasWas_ss();
 			was_is_operation |= restart_config.get(name).hasWas_is();
 			wps_operation |= restart_config.get(name).hasWps();
-			if (name.equalsIgnoreCase("joark")) this.includeJoark = true; 
+			if (name.equalsIgnoreCase("joark"))
+				this.includeJoark = true;
 		}
-		if (this.excludeBus) wps_operation = false;
-		
+		if (this.excludeBus)
+			wps_operation = false;
 
 	}
-	
-	public void execute() throws MojoExecutionException {
-		
+
+	public void execute() throws MojoExecutionException, MojoFailureException {
+
 		envFile = envFilesDir + "/" + env.toUpperCase() + ".xml";
-		
+
 		try {
 			Operation operationMode = Operation.RESTART;;
-			if (action != null){
+			if (action != null) {
 				was_ss_operation = wasSs;
 				was_is_operation = wasIs;
 				wps_operation = wps;
-				if (action.equalsIgnoreCase("start")) operationMode = Operation.START;
-				else if (action.equalsIgnoreCase("stop")) operationMode = Operation.STOP;
+				if (action.equalsIgnoreCase("start"))
+					operationMode = Operation.START;
+				else if (action.equalsIgnoreCase("stop"))
+					operationMode = Operation.STOP;
 			} else {
 				getLog().info("");
 				getLog().info("Parsing restart configuration file ...");
 				getLog().info("");
 				this.ResolveRestart();
 			}
-			
+
 			getLog().info("Parsing environment file for parameters: \n " + this.envFile);
-			
+
 			File xml = new File(this.envFile);
 			String parse_result = XMLParser.parseEnvironmentFile(xml);
-			/* parse_result:
-			 * was.sensitiv
-			 * hostname:d10apvl022.test.internsone.local; 
-			 * soap-port:8879; 
-			 * ws-username:username; 
-			 * ws-password:password;
-			 * [was.intern
-			 * hostname:d10apvl022.test.internsone.local; 
-			 * soap-port:8879; 
-			 * ws-username:username; 
-			 * ws-password:password;]
-			 * wps
-			 * hostname:d10apvl022.test.internsone.local; 
-			 * soap-port:8879; 
-			 * ws-username:username; 
-			 * ws-password:password;
-			 * */
-			
+			/*
+			 * parse_result: was.sensitiv hostname:d10apvl022.test.internsone.local; soap-port:8879; ws-username:username; ws-password:password; [was.intern hostname:d10apvl022.test.internsone.local;
+			 * soap-port:8879; ws-username:username; ws-password:password;] wps hostname:d10apvl022.test.internsone.local; soap-port:8879; ws-username:username; ws-password:password;
+			 */
+
 			boolean hasIntern = parse_result.contains("was.intern");
-			
-			if (was_is_operation && !hasIntern){
+
+			if (was_is_operation && !hasIntern) {
 				getLog().warn("Requested operation on the intern sone, however the XML parser didn't detect any matching configuration. Get your act together man.");
 			}
-			
+
 			was_is_operation &= hasIntern;
-			
+
 			getLog().info("***********************************************************************************");
 			getLog().info("*");
 			getLog().info("* Summary:");
 			getLog().info("*");
-			getLog().info("* Performing " + operationMode.toString() + " on the following servers in " + env );
-			if (was_ss_operation){
+			getLog().info("* Performing " + operationMode.toString() + " on the following servers in " + env);
+			if (was_ss_operation) {
 				if (this.includeJoark)
 					getLog().info("* - WAS SS (Pensjon and JOARK cluster)");
-				else 
-					getLog().info("* - WAS SS (Only Pensjons cluster");
-				
+				else
+					getLog().info("* - WAS SS (Only Pensjons cluster)");
+
 			}
 			if (was_is_operation)
 				getLog().info("* - WAS IS");
-			if (wps_operation){
+			if (wps_operation) {
 				if (onlyAppTarget)
 					getLog().info("* - WPS (Only AppTarget cluster)");
 				else
@@ -248,55 +237,56 @@ public class BounceMojo extends AbstractMojo {
 			}
 			getLog().info("*");
 			getLog().info("***********************************************************************************");
-				
+
 			/*
-			 * [0]: was.intern 
-			 * [1]: hostname:d10apvl022.test.internsone.local; 
-			 * [2]: soap-port:8879; 
-			 * [3]: ws-username:username; 
-			 * [4]: ws-password:password;
+			 * [0]: was.intern [1]: hostname:d10apvl022.test.internsone.local; [2]: soap-port:8879; [3]: ws-username:username; [4]: ws-password:password;
 			 */
 			String[] was_ss_env_info = null; // was sensitiv
 			String[] was_is_env_info = null; // was intern
 			String[] wps_env_info = null; // wps
 			// It is possible that the env. file does not have was intern properties
-			was_ss_env_info = (hasIntern) ? parse_result.substring(0,
-					parse_result.indexOf("was.intern")).split("\n")	: 
-					parse_result.substring(0,parse_result.indexOf("wps")).split("\n");
-			
+			was_ss_env_info = (hasIntern) ? parse_result.substring(0, parse_result.indexOf("was.intern")).split("\n") : parse_result.substring(0, parse_result.indexOf("wps")).split("\n");
+
 			if (hasIntern) {
-				was_is_env_info = parse_result.substring(
-						parse_result.indexOf("was.intern"),
-						parse_result.indexOf("wps")).split("\n") ;
+				was_is_env_info = parse_result.substring(parse_result.indexOf("was.intern"), parse_result.indexOf("wps")).split("\n");
 			}
-			
+
 			wps_env_info = parse_result.substring(parse_result.indexOf("wps")).split("\n");
 
 			if ((operationMode == Operation.STOP || operationMode == Operation.RESTART)) {
 				this.modulesStop(was_ss_env_info, was_is_env_info, wps_env_info);
 			}
-			
+
 			if ((operationMode == Operation.START || operationMode == Operation.RESTART)) {
 				this.modulesStart(was_ss_env_info, was_is_env_info, wps_env_info);
 			}
 		} catch (SAXException e) {
-			getLog().error(e.getMessage());
+			throw new MojoFailureException(e.getMessage());
 		} catch (IOException e) {
-			getLog().error(e.getMessage());
+			throw new MojoFailureException(e.getMessage());
 		} catch (ParserConfigurationException e) {
-			getLog().error(e.getMessage());
+			throw new MojoFailureException(e.getMessage());
 		} catch (InvalideNodeValueException e) {
-			getLog().error(e.getMessage());
+			throw new MojoFailureException(e.getMessage());
+		}
+		
+		if (fail) {
+			System.exit(-1);
 		}
 	}
-	
+
 	/**
 	 * This method will perform the START operation on the modules based on operation flags
-	 * @param was_ss_info - array with was_ss related info: host, port, username, password
-	 * @param was_is_info - array with was_is related info: host, port, username, password
-	 * @param wps_info - array with wps related info: host, port, username, password
+	 * 
+	 * @param was_ss_info
+	 *            - array with was_ss related info: host, port, username, password
+	 * @param was_is_info
+	 *            - array with was_is related info: host, port, username, password
+	 * @param wps_info
+	 *            - array with wps related info: host, port, username, password
+	 * @throws MojoFailureException 
 	 */
-	private void modulesStart(String [] was_ss_info, String [] was_is_info, String [] wps_info){
+	private void modulesStart(String[] was_ss_info, String[] was_is_info, String[] wps_info) throws MojoFailureException {
 		Commandline was_sen_cl = new Commandline(); // was sensitive command line
 		Commandline was_int_cl = new Commandline(); // was intern command line
 		Commandline wps_cl = new Commandline(); // wps command line
@@ -332,14 +322,19 @@ public class BounceMojo extends AbstractMojo {
 			executeCommand(wps_cl);
 		}
 	}
-	
+
 	/**
 	 * This method will perform the STOP operation on the modules based on operation flags
-	 * @param was_ss_info - array with was_ss related info: host, port, username, password
-	 * @param was_is_info - array with was_is related info: host, port, username, password
-	 * @param wps_info - array with wps related info: host, port, username, password
+	 * 
+	 * @param was_ss_info
+	 *            - array with was_ss related info: host, port, username, password
+	 * @param was_is_info
+	 *            - array with was_is related info: host, port, username, password
+	 * @param wps_info
+	 *            - array with wps related info: host, port, username, password
+	 * @throws MojoFailureException 
 	 */
-	private void modulesStop(String [] was_ss_info, String [] was_is_info, String [] wps_info){
+	private void modulesStop(String[] was_ss_info, String[] was_is_info, String[] wps_info) throws MojoFailureException {
 		Commandline was_sen_cl = new Commandline(); // was sensitive command line
 		Commandline was_int_cl = new Commandline(); // was intern command line
 		Commandline wps_cl = new Commandline(); // wps command line
@@ -385,62 +380,62 @@ public class BounceMojo extends AbstractMojo {
 	private String getParameterValue(String parameter) {
 		return parameter.substring(parameter.indexOf(':') + 1, parameter.length() - 1);
 	}
-	
+
 	/**
 	 * This method injects all the necessary parameters into the command line
-	 * @param params array with parameters (each in format: parameter:value, except for params[0])
-	 * @param op operation: start/stop
+	 * 
+	 * @param params
+	 *            array with parameters (each in format: parameter:value, except for params[0])
+	 * @param op
+	 *            operation: start/stop
 	 * @return prepared command line
 	 */
-	private Commandline prepareCommandline(String [] params, Operation op){
+	private Commandline prepareCommandline(String[] params, Operation op) {
 		Commandline cmd = new Commandline();
-		
+
 		scriptCommand = " -lang jython -f ";
-		
+
 		if (Os.isFamily("windows") == true) {
 			cmd.setExecutable(widRuntime + "\\bin\\wsadmin.bat");
-			scriptCommand += this.buildDir + "\\da-config\\misc\\scripts\\" + 
-							 this.scriptName + " " + this.buildDir + "\\da-config\\misc " + op;
- 		} else {
+			scriptCommand += this.buildDir + "\\da-config\\misc\\scripts\\" + this.scriptName + " " + this.buildDir + "\\da-config\\misc " + op;
+		} else {
 			cmd.setExecutable(widRuntime + "/bin/wsadmin.sh");
-			scriptCommand += this.buildDir + "/da-config/misc/scripts/" + 
-			     			 this.scriptName + " " + this.buildDir + "/da-config/misc " + op;
+			scriptCommand += this.buildDir + "/da-config/misc/scripts/" + this.scriptName + " " + this.buildDir + "/da-config/misc " + op;
 		}
-		
+
 		scriptCommand += (this.includeJoark) ? " true" : " false";
 		scriptCommand += (this.onlyAppTarget) ? " true" : " false";
-		
+
 		Commandline.Argument lang = new Commandline.Argument();
 		Commandline.Argument host = new Commandline.Argument();
 		Commandline.Argument port = new Commandline.Argument();
 		Commandline.Argument user = new Commandline.Argument();
 		Commandline.Argument pswd = new Commandline.Argument();
-		
+
 		// === set parameters === //
 		lang.setLine(scriptCommand); // -lang jython -f ClusterStartStop.py ...
 		host.setLine("-host " + this.getParameterValue(params[1])); // hostname
 		port.setLine("-port " + this.getParameterValue(params[2])); // soap-port
 		user.setLine("-user " + this.getParameterValue(params[3])); // username
 		pswd.setLine("-password " + this.getParameterValue(params[4])); // password
-		
+
 		cmd.addArg(host);
 		cmd.addArg(port);
 		cmd.addArg(user);
 		cmd.addArg(pswd);
 		cmd.addArg(lang);
-		
+
 		return cmd;
 	}
-	
-	protected final int executeCommand(Commandline command) {
+
+	protected final void executeCommand(Commandline command) throws MojoFailureException {
 		try {
-			
+
 			// If a password is sent as a parameter, we hide it from the output
 			if (command.toString().contains("-password")) {
 				String cmd = command.toString().replaceFirst("-password\\s[\\w]+", "-password *****");
 				getLog().info("Executing the following command: " + cmd);
-			}
-			else {
+			} else {
 				getLog().info("Executing the following command: " + command.toString());
 			}
 
@@ -455,9 +450,26 @@ public class BounceMojo extends AbstractMojo {
 				}
 			};
 
-			return CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut),
-					new StreamConsumerChain(systemErr));
-
+			
+			// Handling SOAPException, SocketTimeoutException (retval 105), retrying five times.
+			int attempt = 0;
+			int maxattempt = 5;
+			
+			while (attempt <= maxattempt){
+				int retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
+				getLog().info("[RETVAL = " + retval + "]");
+				if (retval != 105){
+					break;
+				}
+				
+				if (attempt != maxattempt) getLog().info("Caught exception, retrying ... " + "[" + ++attempt + "/" + maxattempt + "]" );
+				else {
+					getLog().info("Could not perform the operation. Continuing ...");
+					fail = true;
+					break;
+				}
+			}
+			
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
 		}
