@@ -46,14 +46,14 @@ public class WidPlugin extends EclipsePlugin {
 	private String runtimeName;
 
 	/**
-	 * @parameter expression="${sca.versioned}" default-value="false"
+	 * @parameter expression="${sca.versioning}" default-value="false"
 	 */
 	private boolean versioned;
 	
 	/**
-	 * @parameter expression="${sca.versioned.full}" default-value="false"
+	 * @parameter expression="${sca.versioning.scheme}"
 	 */
-	private boolean versionedFull;
+	private String versionScheme;
 
 	@Override
 	protected void writeConfigurationExtras(EclipseWriterConfig eclipseWriterConfig) throws MojoExecutionException {
@@ -79,17 +79,19 @@ public class WidPlugin extends EclipsePlugin {
 		try {
 			ScaAttributesBuilder scaAttributesBuilder = new ScaAttributesBuilder(getProject());
 			if (PACKAGING_WPS_MODULE_EAR.equals(packaging)) {
-				if(versionedFull){
-					if (project.getVersion() != null && project.getVersion().contains("-SNAPSHOT")) {
-						getLog().info("Full versioning is not supported for SNAPSHOT versions. Building the project without SCA versioning");
-						versionedFull = false;
-					}
-					scaAttributesBuilder.setVersionedFull(versionedFull);
-				} else{
-					scaAttributesBuilder.setVersioned(versioned);
+				if (versionScheme!=null) {
+					if(versionScheme.toUpperCase().equals("FULL")){
+						
+						if (project.getVersion() != null && project.getVersion().contains("-SNAPSHOT")) {
+							getLog().info("Full versioning is not supported for SNAPSHOT versions. Building the project without SCA versioning");
+							versioned = false;
+						} else{
+							scaAttributesBuilder.setVersionScheme("FULL");
+						}
+					} 
 				}
 			}
-			scaAttributesBuilder.writeToDirectory(getEclipseProjectDir());
+			scaAttributesBuilder.setVersioned(versioned).writeToDirectory(getEclipseProjectDir());
 		} catch (IOException e) {
 			throw new MojoExecutionException("Unable to write SCA Attributes file", e);
 		}
