@@ -74,7 +74,7 @@ public class BounceMojo extends AbstractMojo {
 	/**
 	 * Indicates whether bus deploy is needed.
 	 * 
-	 * @parameter expression="${excludeBus}" default-value=false
+	 * @parameter expression="${excludeBus}"
 	 * @required
 	 */
 	private boolean excludeBus;
@@ -203,7 +203,9 @@ public class BounceMojo extends AbstractMojo {
 				getLog().info("");
 				getLog().info("Parsing restart configuration file ...");
 				getLog().info("");
+				getLog().info("[BEFORE] was_ss: "+this.was_ss_operation+" was_is: "+this.was_is_operation+" wps: "+this.wps_operation);
 				this.ResolveRestart();
+				getLog().info("[AFTER] was_ss: "+this.was_ss_operation+" was_is: "+this.was_is_operation+" wps: "+this.wps_operation);
 			}
 
 			getLog().info("Parsing environment file for parameters: \n " + this.envFile);
@@ -218,7 +220,7 @@ public class BounceMojo extends AbstractMojo {
 			boolean hasIntern = parse_result.contains("was.intern");
 
 			if (was_is_operation && !hasIntern) {
-				getLog().warn("Requested operation on the intern sone, however the XML parser didn't detect any matching configuration. Get your act together man.");
+				getLog().warn("Requested operation on the intern sone, however the XML parser didn't detect any matching configuration. Get your act together, man.");
 			}
 
 			was_is_operation &= hasIntern;
