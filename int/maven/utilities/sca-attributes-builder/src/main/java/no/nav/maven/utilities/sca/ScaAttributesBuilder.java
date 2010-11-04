@@ -33,7 +33,7 @@ public class ScaAttributesBuilder {
 
 	private MavenProject project;
 	private boolean versioned;
-	private boolean versionedFull;
+	private String versionScheme;
 	private Set<BORuntimeFramework> boRuntimeFrameworks = EnumSet.of(BORuntimeFramework.VERSION6);
 
 	public ScaAttributesBuilder(MavenProject project) {
@@ -45,8 +45,8 @@ public class ScaAttributesBuilder {
 		return this;
 	}
 	
-	public ScaAttributesBuilder setVersionedFull(boolean versionedFull) {
-		this.versionedFull = versionedFull;
+	public ScaAttributesBuilder setVersionScheme(String versionScheme) {
+		this.versionScheme = versionScheme;
 		return this;
 	}
 
@@ -71,10 +71,22 @@ public class ScaAttributesBuilder {
 		Document document = new Document();
 		Element rootElement = new Element("moduleAndLibraryAttributes", TARGET_NAMESPACE);
 		
-		// version is set to same as maven version if versionFull is set, otherwise only major version
-		String version = (versionedFull ? project.getVersion() : convertVersion(project.getVersion()));
-		rootElement.setAttribute("versionValue", versioned || versionedFull ? version : "");
-		rootElement.setAttribute("versionProvider", (versioned || versionedFull) && version.length() > 0 ? "IBM_VRM" : "");
+		String version;
+		
+		if(versioned){
+			// version is set based on versionScheme, either FULL or MAJOR (default)
+			
+			if (versionScheme != null && "FULL".equals(versionScheme)){
+				version = project.getVersion();
+			} else{ //using MAJOR
+				version = convertVersion(project.getVersion());
+			}
+		} else {
+			version = "";
+		}
+		
+		rootElement.setAttribute("versionValue", versioned ? version : "");
+		rootElement.setAttribute("versionProvider", versioned && version.length() > 0 ? "IBM_VRM" : "");
 		document.setRootElement(rootElement);
 
 		Element boImplementationElement = new Element("boImplementation");
