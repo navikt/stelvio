@@ -458,6 +458,11 @@ public class BounceMojo extends AbstractMojo {
 			while (attempt <= maxattempt){
 				int retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
 				getLog().info("[RETVAL = " + retval + "]");
+				if (retval == 2) {
+					getLog().info("Could not perform the operation because none node agents are running.");
+					fail = true;
+					break;
+				}
 				if (retval != 105){
 					break;
 				}
