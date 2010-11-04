@@ -34,14 +34,14 @@ public class GenerateScaAttributesMojo extends AbstractMojo {
 	private File outputDirectory;
 
 	/**
-	 * @parameter expression="${sca.versioned}" default-value="false"
+	 * @parameter expression="${sca.versioning}" default-value="false"
 	 */
 	private boolean versioned;
 
 	/**
-	 * @parameter expression="${sca.versioned.full}" default-value="false"
+	 * @parameter expression="${sca.versioning.scheme}" 
 	 */
-	private boolean versionedFull;
+	private String versionScheme;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// This "stupid" if test is here because I want to configure the plugin
@@ -56,16 +56,19 @@ public class GenerateScaAttributesMojo extends AbstractMojo {
 			if (!outputDirectory.exists()) {
 				outputDirectory.mkdirs();
 			}
-			if (versionedFull) {
-				if (project.getVersion() != null && project.getVersion().contains("-SNAPSHOT")) {
-					getLog().info("Full versioning is not supported for SNAPSHOT versions. Building the project without SCA versioning");
-					versionedFull = false;
-				}
-				new ScaAttributesBuilder(project).setVersionedFull(versionedFull).writeToDirectory(outputDirectory);
-
-			} else {
-				new ScaAttributesBuilder(project).setVersioned(versioned).writeToDirectory(outputDirectory);
+			ScaAttributesBuilder scaAttributesBuilder = new ScaAttributesBuilder(project);
+			if (versionScheme!=null) {
+				if(versionScheme.toUpperCase().equals("FULL")){
+					
+					if (project.getVersion() != null && project.getVersion().contains("-SNAPSHOT")) {
+						getLog().info("Full versioning is not supported for SNAPSHOT versions. Building the project without SCA versioning");
+						versioned = false;
+					} else{
+						scaAttributesBuilder.setVersionScheme("FULL");
+					}
+				} 
 			}
+			scaAttributesBuilder.setVersioned(versioned).writeToDirectory(outputDirectory);
 		} catch (IOException e) {
 			throw new MojoExecutionException("Unable to write SCA Attributes file", e);
 		}
