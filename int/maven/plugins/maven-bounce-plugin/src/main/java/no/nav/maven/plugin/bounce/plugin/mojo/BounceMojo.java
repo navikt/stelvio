@@ -179,6 +179,14 @@ public class BounceMojo extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
+		String executing = "[DEBUG] Executing: mvn clean install " +
+				"-Dapps="+this.apps + " " +
+				"-Denv="+this.env + " " + 
+				"-Dda-configuration-version="+ "7.0.1-SNAPSHOT " + 
+				"-DexcludeBus="+this.excludeBus + " " + 
+				"-Daction="+this.action + " " + 
+				"-DrestartJoark="+this.includeJoark;
+		getLog().info(executing);
 		envFile = envFilesDir + "/" + env.toUpperCase() + ".xml";
 
 		try {
