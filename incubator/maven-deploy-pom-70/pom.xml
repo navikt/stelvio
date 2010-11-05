@@ -26,7 +26,7 @@ ven-v4_0_0.xsd">
     <dependency>
       <groupId>no.nav.maven.support</groupId>
       <artifactId>busconfiguration</artifactId>
-      <version>LATEST</version>
+      <version>[7.0.0.0,7.1.0.0]</version>
     </dependency>
   </dependencies>
 </project>
