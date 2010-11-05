@@ -11,7 +11,7 @@
 	
 	<groupId>no.stelvio.maven.plugins</groupId>
 	<artifactId>maven-bounce-plugin</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>maven-bounce-plugin Maven Mojo</name>
 	
@@ -31,8 +31,8 @@
 	</dependencies>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-bounce-plugin-1.0</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-bounce-plugin-1.0</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-bounce-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-bounce-plugin</developerConnection>
 	</scm>
 	
 	<properties>
