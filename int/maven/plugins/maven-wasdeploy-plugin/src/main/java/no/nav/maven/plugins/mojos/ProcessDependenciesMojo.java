@@ -164,7 +164,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		getLog().info("### Downloading and extracting artifacts ... ###");
 		getLog().info("################################################");
 
-		// Retrieving the list of artifacts for the given application and Moose build ID
+		// Retrieving the list of artifacts for the given application and version
 		List<Artifact> artifacts = ApplicationArtifactDependency.getApplicationArtifacts(artifactFactory, application, version);
 
 		// For each artifact, the artifact is resolved and extracted to the given staging directory
