@@ -28,10 +28,21 @@ import no.nav.datapower.util.DPWsdlUtils;
 import no.nav.datapower.util.PropertiesBuilder;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.InvalidRepositoryException;
+import org.apache.maven.artifact.factory.ArtifactFactory;
+import org.apache.maven.artifact.repository.ArtifactRepository;
+import org.apache.maven.artifact.repository.ArtifactRepositoryFactory;
+import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
+import org.apache.maven.artifact.resolver.ArtifactResolutionException;
+import org.apache.maven.artifact.resolver.ArtifactResolver;
+import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.ProjectUtils;
+import org.codehaus.plexus.archiver.ArchiverException;
+import org.codehaus.plexus.archiver.UnArchiver;
 
 import freemarker.template.TemplateException;
 
@@ -63,9 +74,68 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * @required
 	 */
 	private Policy[] policies;
+	
+	/**
+	 * Artifact repository factory component.
+	 * 
+	 * @component
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactRepositoryFactory artifactRepositoryFactory;
+
+	/**
+	 * Artifact factory, needed to create artifacts.
+	 * 
+	 * @component
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactFactory artifactFactory;
+
+	/**
+	 * @component
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactResolver artifactResolver;
+
+	/**
+	 * The local repository taken from Maven's runtime. Typically $HOME/.m2/repository.
+	 * 
+	 * @parameter expression="${localRepository}"
+	 * @readonly
+	 * @required
+	 */
+	private ArtifactRepository localRepository;
+
+	/**
+	 * @parameter expression="${session}"
+	 * @readonly
+	 * @required
+	 */
+	private MavenSession mavenSession;
+
+	/**
+	 * The remote repositories used as specified in your POM.
+	 * 
+	 * @parameter expression="${project.repositories}"
+	 * @readonly
+	 * @required
+	 */
+	private List repositories;
+	
+	/**
+	 * @component roleHint="zip"
+	 * @required
+	 * @readonly
+	 */
+	private UnArchiver unArchiver;
 
 	// Properties for template interpolation
 	private Properties properties;
+
+	private List remoteRepos;
 
 	/**
 	 * The mojo method doing the actual work when goal is invoked
@@ -75,6 +145,8 @@ public class GenerateConfigMojo extends AbstractMojo {
 		File outputDirectory = new File(project.getBuild().getOutputDirectory());
 		File localFilesDirectory = new File(outputDirectory, "files/local");
 		File wsdlFilesDirectory = new File(localFilesDirectory, "wsdl");
+		wsdlFilesDirectory.mkdir();
+		unArchiver.setDestDirectory(wsdlFilesDirectory);
 		File propertiesFile = new File(project.getBasedir(), "target/filters/main.properties");
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
@@ -85,11 +157,24 @@ public class GenerateConfigMojo extends AbstractMojo {
 		// Create list of trusted partner certificates and add to properties
 		addTrustCerts(properties);
 
+		// Instantiate the remote repositories object
+		try {
+			remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
+		} catch (InvalidRepositoryException e) {
+			throw new MojoExecutionException("[ERROR] Error building remote repositories", e);
+		}
+
 		// Map WSDLs to proxies
 		try {
 			mapWSDLsToProxies(policies, wsdlFilesDirectory, localFilesDirectory);
 		} catch (IOException e) {
 			throw new IllegalStateException("Error while mapping from WSDLs to proxies", e);
+		} catch (ArtifactResolutionException e) {
+			throw new MojoExecutionException("Unable to resolve interface artifact", e);
+		} catch (ArtifactNotFoundException e) {
+			throw new MojoExecutionException("Unable to find interface artifact", e);
+		} catch (ArchiverException e) {
+			throw new MojoExecutionException("An error occured during extraction of WSDL interface ZIP", e);
 		}
 
 		// Merge templates with properties and output to config file
@@ -135,20 +220,31 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * Go through list of policies containing lists of WSDLs and add a property
 	 * to 'properties' for the list of proxies and WSDLs for each policy
 	 */
-	private void mapWSDLsToProxies(Policy[] policies, File wsdlFilesDir, File localFilesDir) throws IOException {
+	private void mapWSDLsToProxies(Policy[] policies, File wsdlFilesDir, File localFilesDir) throws IOException, ArtifactResolutionException, ArtifactNotFoundException, ArchiverException {
 		// Map each policy as specified in the configuration
 		for (Policy policy : policies) {
 			getLog().info("Adding WSDLs for policy '" + policy.getName() + "'");
 			Set<WSDLFile> wsdlFiles = new LinkedHashSet<WSDLFile>();
 			// Try to match groupId/artifactId in configuration against the list
 			// of dependencies
-			for (Iterator iter = project.getDependencyArtifacts().iterator(); iter.hasNext();) {
+			for (Iterator iter = project.getArtifacts().iterator(); iter.hasNext();) {
 				Artifact artifact = (Artifact) iter.next();
 				for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
 					getLog().debug("Checking if " + wsdlArtifact + " matches " + artifact);
-					if (wsdlArtifact.equals(artifact)) {
+					if (wsdlArtifact.equals(artifact) || wsdlArtifact.equals(artifact, "ear", null)) {
+						// Direct dependency
+						Artifact wsdlInterfaceArtifact = artifact;
+						// Dependency via esb
+						if (wsdlArtifact.equals(artifact, "ear", null)) {
+							// Resolve interface artifact
+							wsdlInterfaceArtifact = artifactFactory.createArtifactWithClassifier(artifact.getGroupId(), artifact.getArtifactId(), artifact.getVersion(), wsdlArtifact.getType(), wsdlArtifact.getClassifier());
+							artifactResolver.resolve(wsdlInterfaceArtifact, remoteRepos, localRepository);
+						}
 						// Add all hits
-						ZipFile zipFile = new ZipFile(artifact.getFile());
+						ZipFile zipFile = new ZipFile(wsdlInterfaceArtifact.getFile());
+						// Extract interface from ZIP
+						unArchiver.setSourceFile(wsdlInterfaceArtifact.getFile());
+						unArchiver.extract();
 						Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoints());
 						wsdlFiles.addAll(wsdls);
 						getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());

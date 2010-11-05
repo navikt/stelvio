@@ -7,6 +7,7 @@ public class WsdlArtifact {
 	private String groupId;
 	private String artifactId;
 	private String type = "wsdl-interface";
+	private String classifier = "wsexports";
 
 	public String getGroupId() {
 		return groupId;
@@ -32,7 +33,19 @@ public class WsdlArtifact {
 		this.type = type;
 	}
 	
+	public String getClassifier() {
+		return classifier;
+	}
+
+	public void setClassifier(String classifier) {
+		this.classifier = classifier;
+	}
+
 	public boolean equals(Artifact artifact) {
+		return equals(artifact, getType(), getClassifier());
+	}
+
+	public boolean equals(Artifact artifact, String type, String classifier) {
 		if (!artifact.getGroupId().equals(getGroupId())) {
 			return false;
 		}
@@ -40,7 +53,10 @@ public class WsdlArtifact {
 		if (!artifact.getArtifactId().matches(getArtifactId())) {
 			return false;
 		}
-		if (!artifact.getType().equals(getType())) {
+		if (type != null && !artifact.getType().equals(type)) {
+			return false;
+		}
+		if (classifier != null && classifier.length() > 0 && !artifact.getClassifier().equals(classifier)) {
 			return false;
 		}
 		return true;
@@ -48,7 +64,7 @@ public class WsdlArtifact {
 
 	@Override
 	public String toString() {
-		return getGroupId() + ":" + getArtifactId() + ":" + getType();
+		return getGroupId() + ":" + getArtifactId() + ":" + getType() + ":" + getClassifier();
 	}
 
 }
