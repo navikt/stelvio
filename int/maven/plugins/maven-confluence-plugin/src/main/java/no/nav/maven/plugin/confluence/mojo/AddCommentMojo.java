@@ -35,7 +35,7 @@ public abstract class AddCommentMojo extends ConfluenceMojo {
 			page = confluence.getPage("stelvio", Constants.ENVMAPPING
 					.get(environment));
 		} catch (Exception e) {
-			throw new RuntimeException(
+			throw new MojoExecutionException(
 					"An error occured trying to retrieve environment page", e);
 		}
 
@@ -46,7 +46,7 @@ public abstract class AddCommentMojo extends ConfluenceMojo {
 		try {
 			confluence.addComment(newcomment);
 		} catch (Exception e) {
-			throw new RuntimeException(
+			throw new MojoExecutionException(
 					"An error occured trying to add a comment to the environment page",
 					e);
 		}

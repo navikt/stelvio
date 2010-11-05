@@ -74,23 +74,25 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 	protected String deployString = "";
 	protected String configurationString = "";
 	
-	public void execute() throws MojoExecutionException, MojoFailureException {
+	public void execute(){
 
-		if(interactiveMode == true) {
-			String answer=null;
+		if (interactiveMode == true) {
+			String answer = null;
 			try {
 				answer = prompter.prompt("Do you want to perform step \"" + getGoalPrettyPrint() + "\" (y/n/a)? ", "n");
 			} catch (PrompterException e) {
-				throw new MojoFailureException(e, "An error occured during prompt input","An error occured during prompt input");
+				System.err.println("An error occured during prompt input. Skipping this step...");
+				return;
 			}
-			if("n".equalsIgnoreCase(answer)) {
+			if ("n".equalsIgnoreCase(answer)) {
 				getLog().info("Skipping step: " + getGoalPrettyPrint());
 				return;
 			}
-			if("a".equalsIgnoreCase(answer)) {
+			if ("a".equalsIgnoreCase(answer)) {
 				getLog().info("Aborting " + getGoalPrettyPrint());
 				System.exit(0);
 			}
+
 		}
 		
 		for (Artifact a : dependencyArtifacts) {
@@ -108,24 +110,23 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 			doExecute();
 			confluence.logout();
 		} catch (Exception e) {
-			getLog().error(e.getMessage());
-			if(abortProcess() == true) {
-				throw new RuntimeException("An error occured during step \"" + getGoalPrettyPrint() + "\"", e);
-			} else {
-				return;
+			getLog().error(e.getMessage());			
+			try {
+				if(abortProcess() == true) {
+					System.err.println("An error occured during step \"" + getGoalPrettyPrint() + "\"");
+				} else {
+					return;
+				}
+			} catch (PrompterException e1) {
+				System.err.println("An error occured during prompt input. Skipping this step...");
 			}
 		}	
 	}
 
-	private final boolean abortProcess() {
+	private final boolean abortProcess() throws PrompterException {
 		if(interactiveMode == true) {
 			String answer=null;
-			try {
-				answer = prompter.prompt("An error occured during step \"" + getGoalPrettyPrint() + "\". Do you want to abort the deploy process (y/n)? ", "n");
-			} catch (PrompterException e) {
-				throw new RuntimeException("An error occured during prompt input", e);
-			}
-			
+			answer = prompter.prompt("An error occured during step \"" + getGoalPrettyPrint() + "\". Do you want to abort the deploy process (y/n)? ", "n");
 			if("y".equalsIgnoreCase(answer)) {
 				return true;
 			} else {
