@@ -6,7 +6,7 @@ ven-v4_0_0.xsd">
   <parent>
     <groupId>no.nav.maven.poms</groupId>
     <artifactId>maven-wpsdeploy-pom</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
   </parent>
 
   <groupId>no.nav.maven.poc</groupId>
@@ -26,7 +26,6 @@ ven-v4_0_0.xsd">
     <dependency>
       <groupId>no.nav.maven.support</groupId>
       <artifactId>busconfiguration</artifactId>
-      <version>${bus-configuration-version}</version>
     </dependency>
   </dependencies>
 </project>
