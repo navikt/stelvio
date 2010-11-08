@@ -3035,8 +3035,10 @@ int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/ibm/websphere/esb/W
 int/maven/plugins/maven-wsdl-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wsdl-plugin/src/test/java/no/nav/maven/plugins/NamespaceToPackageMappingGeneratorTest.java -text
 int/maven/plugins/maven-wsdl-plugin/src/test/java/no/stelvio/VersionTest.java -text
+int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO-versionedNamespace.xsd -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO.xsd -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/gbo/StringBO2.xsd -text
+int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/EchoService-versionedNamespace.wsdl -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/EchoService.wsdl -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/EchoService2.wsdl -text
 int/maven/plugins/maven-wsdl-plugin/src/test/resources/wsdl/no/nav/inf/poc-module2_EchoService2MapWSEXP.wsdl -text

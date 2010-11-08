@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.codehaus.plexus.util.IOUtil;
 
 /**
@@ -21,6 +20,7 @@ import org.codehaus.plexus.util.IOUtil;
  */
 public class NamespaceToPackageMappingGenerator {
 	private String encoding;
+	private boolean removeVersionInfo;
 
 	private Pattern namespacePattern = Pattern.compile("\"http://([^\"]+)\"");
 
@@ -40,6 +40,11 @@ public class NamespaceToPackageMappingGenerator {
 			throw new RuntimeException(e);
 		}
 		return mapping;
+	}
+	
+	public NamespaceToPackageMappingGenerator setRemoveVersionInfo(boolean removeVersionInfo){
+		this.removeVersionInfo = removeVersionInfo;
+		return this;
 	}
 
 	private void createNamespaceToPackageMapping(File file, Properties mapping) throws IOException {
@@ -120,6 +125,12 @@ public class NamespaceToPackageMappingGenerator {
 			String path = uri.getPath();
 			if (path != null) {
 				String[] pathParts = path.split("/");
+				
+				//remove version part if removeVersionInfo flag is set
+				if(removeVersionInfo && isVersionPart(pathParts[pathParts.length-1])){
+					pathParts[pathParts.length-1] = "";
+				}
+				
 				for (String pathPart : pathParts) {
 					packageName.append(pathPart);
 				}
@@ -131,4 +142,17 @@ public class NamespaceToPackageMappingGenerator {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	private boolean isVersionPart(String pathPart){
+		if("v".equals(pathPart.substring(0,1))){
+			try{
+				Integer.parseInt(pathPart.substring(1));
+				return true;
+			} catch (NumberFormatException nfe){
+				return false;
+			}			
+		}
+		return false;
+	}
+	
 }

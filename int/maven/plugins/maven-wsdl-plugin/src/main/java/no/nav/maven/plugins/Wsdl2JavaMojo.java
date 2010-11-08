@@ -188,6 +188,11 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	 * @required
 	 */
 	private File classGenerationDirectory;
+	
+	/**
+	 * @parameter default-value="false"
+	 */
+	private boolean removeVersionInfo;
 
 	public void execute() throws MojoExecutionException {
 		if (wsdlOptions == null || wsdlOptions.length == 0) {
@@ -269,7 +274,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	private File generateNamespaceToPackageFile(File wsdlZipDir) throws MojoExecutionException {
 		OutputStream out = null;
 		try {
-			Properties mapping = new NamespaceToPackageMappingGenerator(encoding)
+			Properties mapping = new NamespaceToPackageMappingGenerator(encoding).setRemoveVersionInfo(removeVersionInfo)
 					.createNamespaceToPackageMappingFromWSDLDirectory(wsdlZipDir);
 
 			File namespaceToPackageFile = new File(wsdlZipDir, "NStoPkg.properties");
