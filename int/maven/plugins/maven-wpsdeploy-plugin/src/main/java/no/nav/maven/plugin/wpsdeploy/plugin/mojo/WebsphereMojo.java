@@ -140,7 +140,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 		doExecute();
 	}
 
-	protected final void executeCommand(Commandline command) {
+	protected final int executeCommand(Commandline command) {
 		try {
 			
 			// If a password is sent as a parameter, we hide it from the output
@@ -165,7 +165,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 			};
 			ErrorCheckingStreamConsumer errorChecker = new ErrorCheckingStreamConsumer();
 
-			CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
+			int retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
 					new StreamConsumerChain(systemErr).add(errorChecker));
 
 			if (errorChecker.isError()) {
@@ -185,9 +185,13 @@ public abstract class WebsphereMojo extends AbstractMojo {
 					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 				}
 			}
+			
+			return retval;
+			
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
 		}
+		
 	}
 
 	private static class StreamConsumerChain implements StreamConsumer {
