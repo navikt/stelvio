@@ -75,7 +75,6 @@ public class BounceMojo extends AbstractMojo {
 	 * Indicates whether bus deploy is needed.
 	 * 
 	 * @parameter expression="${excludeBus}"
-	 * @required
 	 */
 	private boolean excludeBus;
 
