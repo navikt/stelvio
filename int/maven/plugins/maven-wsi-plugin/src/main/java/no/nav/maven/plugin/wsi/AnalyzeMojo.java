@@ -204,7 +204,7 @@ public class AnalyzeMojo extends AbstractMojo {
 				Map<QName, PortType> portTypes = wsdl.getPortTypes();
 				for (QName qName : portTypes.keySet()) {
 					WSDLReference wsdlReference = new WSDLReferenceImpl();
-					wsdlReference.setWSDLLocation(includedFile);
+					wsdlReference.setWSDLLocation(new File(basedir, includedFile).getAbsolutePath());
 					WSDLElement wsdlElement = new WSDLElementImpl();
 					wsdlReference.setWSDLElement(wsdlElement);
 					wsdlElement.setType("portType");
