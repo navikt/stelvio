@@ -46,7 +46,6 @@ public class SetFaultNamesMojo extends AbstractMojo {
 
 	private WSDLReader wsdlReader;
 
-	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (!"pom".equals(project.getPackaging())) {
 			try {
