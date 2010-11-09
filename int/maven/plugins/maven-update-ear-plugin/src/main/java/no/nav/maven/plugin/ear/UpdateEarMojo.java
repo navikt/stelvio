@@ -118,7 +118,7 @@ public class UpdateEarMojo extends AbstractMojo {
 		private void updateArchive() throws MojoExecutionException {
 			try {
 								
-				File manifestFile = new File(new File(workingDir, "META-INF"), "Manifest.mf");
+				File manifestFile = new File(new File(workingDir, "META-INF"), "MANIFEST.MF");
 				
 				Manifest manifest = new Manifest(new FileInputStream(manifestFile));
 				if(manifest != null){
