@@ -16,7 +16,7 @@
 	<name>maven-bounce-pom</name>
 
 	<properties>
-		<bounceVersion>1.1</bounceVersion>
+		<bounceVersion>1.2</bounceVersion>
 		<dependencyVersion>2.0</dependencyVersion>
 		<daConfigDirectory>da-config</daConfigDirectory>
 
