@@ -171,6 +171,7 @@ public class BounceMojo extends AbstractMojo {
 		}
 		if (this.excludeBus)
 			wps_operation = false;
+		this.onlyAppTarget = true;
 
 	}
 
