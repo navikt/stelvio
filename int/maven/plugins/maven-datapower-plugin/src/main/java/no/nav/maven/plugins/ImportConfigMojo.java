@@ -17,29 +17,51 @@ import org.apache.maven.plugin.MojoFailureException;
 public class ImportConfigMojo extends AbstractDeviceMgmtMojo {
 
 	/**
-	 * @parameter expression="${config}"
-	 * @required
+	 * @parameter expression="${configFile}"
 	 */
-	private File config;
+	private File configFile;
+
+	/**
+	 * @parameter expression="${extensionsDir}"
+	 */
+	private File extensionsDir;
+
+	/**
+	 * @parameter expression="${skipExtensions}" default-value="false"
+	 */
+	private boolean skipExtensions;
 
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 
-		if (config.isDirectory()) {
+		getLog().info("--- Importing main configuration");
+		importConfigFile(configFile.getAbsolutePath(), getFormat(configFile));
 
-			for (File f : config.listFiles()) {
-				importConfigFile(f.getAbsolutePath(), getFormat(f));
-			}
-			
+		if (skipExtensions) {
+			getLog().info("Skipping import of extensions");
+			return;
 		} else {
-			importConfigFile(config.getAbsolutePath(), getFormat(config));
-		}
 
+			if (extensionsDir != null) {
+
+				if (extensionsDir.isDirectory()) {
+					getLog().info("--- Importing extensions");
+
+					for (File f : extensionsDir.listFiles()) {
+						importConfigFile(f.getAbsolutePath(), getFormat(f));
+					}
+				} else {
+					throw new MojoFailureException("extensionsDir is not a directory");
+				}
+			} else {
+				getLog().info("No extensions directory specified");
+			}
+		}
 	}
 
 	private void importConfigFile(String configFile, ImportFormat importFormat) throws MojoExecutionException {
 		try {
 
-			getLog().info("Importing config file: " + configFile + " ...");
+			getLog().info("Importing config file: " + configFile);
 			String response = getXMLMgmtSession().importConfig(configFile, importFormat);
 			getLog().debug(response);
 
