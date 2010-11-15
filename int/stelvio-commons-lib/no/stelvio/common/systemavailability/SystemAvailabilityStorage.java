@@ -365,7 +365,7 @@ public class SystemAvailabilityStorage {
 				for (int x = 0; x < length; x++) {
 					fil = directory.listFiles()[x];
 					app = fil.getName();
-					if ((app.startsWith("nav-"))
+					if (((app.startsWith("nav-")) || (app.startsWith("pensjon-")))
 							&& app.indexOf("App.ear") != -1) {
 						app = app.substring(0, app.indexOf("App.ear"));
 						// Går gjennom alle mappene/filene som ligger i "nav-"-mappen.
