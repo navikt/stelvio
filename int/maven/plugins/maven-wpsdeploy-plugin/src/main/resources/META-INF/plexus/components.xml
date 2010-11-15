@@ -20,6 +20,7 @@
 								no.nav.maven.plugins:maven-confluence-plugin:add-comment-down,
 								no.nav.maven.plugins:maven-confluence-plugin:update-page,
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:backup-config,
+	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:remove-bp,
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:stop-clusters,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:deploy-artifact,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:deploy-resources,
