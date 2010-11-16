@@ -121,6 +121,7 @@ public class SystemAvailabilityConfigImpl {
 	 * on the type of input, output and fault(s).
 	 */
 	public Boolean updateStubbingfiles(String path) {
+		/*
 		if (path == null || "".equals(path.trim())) {
 			path = "/opt/IBM/WebSphere/ProcServer/profiles/wps01/StelvioSystemAvailabilityFramework";
 		}
@@ -134,5 +135,9 @@ public class SystemAvailabilityConfigImpl {
 		}
 		
 		return true;
+		*/
+		
+		// REPLACED BY crontab
+		return false;
 	}
 }
