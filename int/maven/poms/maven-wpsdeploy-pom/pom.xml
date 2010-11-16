@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-wpsdeploy-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.0.4</version>
 	<name>POM for deployments</name>
 
 	<build>
@@ -33,7 +33,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wpsdeploy-plugin</artifactId>
-					<version>1.4</version>
+					<version>1.5</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -44,7 +44,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-confluence-plugin</artifactId>
-					<version>1.18</version>
+					<version>1.19</version>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
@@ -72,8 +72,8 @@
 	</build>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-pom</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wpsdeploy-pom-1.0.4</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wpsdeploy-pom-1.0.4</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
