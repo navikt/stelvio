@@ -21,8 +21,7 @@ public class DeployArtifactMojo extends WebsphereUpdaterMojo {
 
 	private final void deployArtifacts(final Commandline commandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/Applications.py applications " + environment + " " + scriptsHome + " "
-				+ deployableArtifactsHome);
+		arg.setLine("-f " + scriptsHome + "/scripts/Applications.py " + scriptsHome + " " + deployableArtifactsHome);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}
