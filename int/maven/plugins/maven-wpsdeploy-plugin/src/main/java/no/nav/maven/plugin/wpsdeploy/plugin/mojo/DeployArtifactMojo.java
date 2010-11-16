@@ -1,4 +1,4 @@
-package no.nav.maven.plugin.websphere.plugin.mojo;
+package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
