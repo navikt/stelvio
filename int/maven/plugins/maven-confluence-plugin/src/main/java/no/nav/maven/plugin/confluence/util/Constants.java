@@ -13,12 +13,12 @@ public interface Constants {
 		private static final long serialVersionUID = 1L;
 
 		{
-			put("Sandbox2", "Sandbox 2");
-			put("Sandbox3", "Sandbox 3");
-			put("Sandbox4", "Sandbox 4");
-			put("Sandbox6", "Sandbox 6");
-			put("Sandbox7", "Sandbox 7");
-			put("Sandbox8", "Sandbox 8");
+			put("S2", "Sandbox 2");
+			put("S3", "Sandbox 3");
+			put("S4", "Sandbox 4");
+			put("S6", "Sandbox 6");
+			put("S7", "Sandbox 7");
+			put("S8", "Sandbox 8");
 			put("K1", "Komponenttest 1");
 			put("K2", "Komponenttest 2");
 			put("K3", "Komponenttest 3");
@@ -26,6 +26,7 @@ public interface Constants {
 			put("K5", "Komponenttest 5");
 			put("K6", "Komponenttest 6");
 			put("K7", "Komponenttest 7");
+			put("K10", "Komponenttest 10");
 			put("I1", "Integrasjonstest 1");
 			put("I2", "Integrasjonstest 2");
 			put("I3", "Integrasjonstest 3");
