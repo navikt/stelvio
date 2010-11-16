@@ -34,7 +34,7 @@ public class ImportConfigMojo extends AbstractDeviceMgmtMojo {
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 
 		getLog().info("--- Importing main configuration");
-		importConfigFile(configFile.getAbsolutePath(), getFormat(configFile));
+		importConfigFile(configFile, getFormat(configFile));
 
 		if (skipExtensions) {
 			getLog().info("Skipping import of extensions");
@@ -47,10 +47,10 @@ public class ImportConfigMojo extends AbstractDeviceMgmtMojo {
 					getLog().info("--- Importing extensions");
 
 					for (File f : extensionsDir.listFiles()) {
-						importConfigFile(f.getAbsolutePath(), getFormat(f));
+						importConfigFile(f, getFormat(f));
 					}
 				} else {
-					throw new MojoFailureException("extensionsDir is not a directory");
+					throw new MojoFailureException("extensionsDir is not a directory\n\n" + extensionsDir);
 				}
 			} else {
 				getLog().info("No extensions directory specified");
@@ -58,12 +58,13 @@ public class ImportConfigMojo extends AbstractDeviceMgmtMojo {
 		}
 	}
 
-	private void importConfigFile(String configFile, ImportFormat importFormat) throws MojoExecutionException {
+	private void importConfigFile(File configFile, ImportFormat importFormat) throws MojoExecutionException {
 		try {
 
 			getLog().info("Importing config file: " + configFile);
 			String response = getXMLMgmtSession().importConfig(configFile, importFormat);
 			getLog().debug(response);
+			
 
 		} catch (XMLMgmtException e) {
 			throw new MojoExecutionException("Failed to import configuration", e);
