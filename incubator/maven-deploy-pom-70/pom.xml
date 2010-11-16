@@ -19,7 +19,7 @@ ven-v4_0_0.xsd">
   <dependencies>
     <dependency>
       <groupId>no.nav.esb</groupId>
-      <artifactId>esb</artifactId>
+      <artifactId>esb-modules</artifactId>
       <version>${esb-release-version}</version>
       <type>pom</type>
     </dependency>
