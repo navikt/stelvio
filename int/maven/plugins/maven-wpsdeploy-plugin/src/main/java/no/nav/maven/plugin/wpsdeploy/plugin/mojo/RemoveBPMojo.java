@@ -23,9 +23,6 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class RemoveBPMojo extends WebsphereUpdaterMojo {
 
 
-	private String WSADMIN_HOME;
-	private String EXEC;
-	private String JACL_LOCATION;
 	private ArrayList<String> modulesToRemove;
 
 	
@@ -44,8 +41,8 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	/*
 	 * Inherited method which is the one executed when running the script.
 	 * 
-	 * Builds up a commandline to send as a argument to the RemoveOldBPModule.py script with the appropriate 
-	 * environment spesific information, customized for the current runtime environment and runs the removeBP method
+	 * Builds up a command line to send as a argument to the RemoveOldBPModule.py script with the appropriate 
+	 * environment specific information, customized for the current runtime environment and runs the removeBP method
 	 * for each module specified in the constructor.
 	 */
 	@Override
@@ -53,26 +50,8 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 		
 		// Sets the correct specs for the runtime environment
 		if(Os.isFamily("windows") == true) {
-			WSADMIN_HOME = widRuntime + "/bin/wsadmin.bat";
-			EXEC = "cmd.exe /X /C";
 		} else {
-			WSADMIN_HOME = widRuntime + "/bin/wsadmin.sh";
-			EXEC = "sh";
 		}	
-		
-		JACL_LOCATION = scriptsHome + "/scripts/bpcTemplates.jacl";
-		
-		StringBuilder cmdString = new StringBuilder();
-		
-		cmdString.append("\"");
-		cmdString.append(EXEC + " ");
-		cmdString.append(WSADMIN_HOME + " ");
-		cmdString.append("-host " + dmgrHostname + " ");
-		cmdString.append("-port " + dmgrSOAPPort + " ");
-		cmdString.append("-user " + dmgrUsername + " ");
-		cmdString.append("-password " + dmgrPassword + " ");
-		cmdString.append("-f " + JACL_LOCATION + " -uninstall");
-		cmdString.append("\"");
 		
 		HashMap<String, String> modules = getModuleMap();
 	    
@@ -84,17 +63,17 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 			cmdline.setExecutable(commandLine.getExecutable());
 			cmdline.addArguments(orgArgs);
 			
-			removeBP(cmdline, artifact, modules.get(artifact), cmdString.toString());
+			removeBP(cmdline, artifact, modules.get(artifact));
 		}
 	} 
 	
 	/*
 	 * Builds up and executes the commandline from the incoming parameters.
 	 */
-	private final void removeBP(final Commandline commandLine, final String artifactId, String version, String cmdLine){
+	private final void removeBP(final Commandline commandLine,final String artifactId, String version){
 		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/RemoveOldBPModule.py " + cmdLine + " " + artifactId + " " + version);
+		arg.setLine("-f " + scriptsHome + "/scripts/RemoveOldBPModule.py " + artifactId + " " + version);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}
