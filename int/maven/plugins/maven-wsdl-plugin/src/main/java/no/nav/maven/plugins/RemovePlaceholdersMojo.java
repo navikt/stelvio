@@ -1,6 +1,7 @@
 package no.nav.maven.plugins;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class RemovePlaceholdersMojo extends AbstractMojo {
 						}
 					}
 					XMLOutputter outputter = new XMLOutputter();
-					outputter.output(document, System.out);
+					outputter.output(document, new FileOutputStream(wsdlFile));
 				}
 			} catch (IOException e) {
 				throw new MojoExecutionException("An error occured while reading WSDL files", e);
