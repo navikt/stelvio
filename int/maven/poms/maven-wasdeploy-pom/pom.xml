@@ -15,7 +15,7 @@
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
 		<!-- /hudson -->
 		
-		<wasdeployVersion>1.3</wasdeployVersion>
+		<wasdeployVersion>1.4</wasdeployVersion>
 		<xmlvalidatorVersion>1.0</xmlvalidatorVersion>
 		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
