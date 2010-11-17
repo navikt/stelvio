@@ -3026,6 +3026,7 @@ int/maven/plugins/maven-wpsdeploy-plugin/src/main/resources/META-INF/plexus/comp
 int/maven/plugins/maven-wsdl-plugin/pom.xml -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/ExportWsdlMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/NamespaceToPackageMappingGenerator.java -text
+int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/RemovePlaceholdersMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/SetFaultNamesMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/Wsdl2JavaMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsdlArtifact.java -text
