@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.swing.text.ZoneView;
+
 import no.nav.maven.plugins.utils.ApplicationArtifactDependency;
 import no.nav.maven.plugins.utils.Archiver;
 import no.nav.maven.plugins.utils.NativeOps;
@@ -35,6 +37,12 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String application;
+	
+	/**
+	 * @parameter expression="${zone}"
+	 * @required
+	 */
+	private String zone;
 
 	/**
 	 * @parameter expression="${environment/bundleEnvironment}"
@@ -233,8 +241,8 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		getLog().info("###########################################################################");
 		getLog().info("### DEPLOYMENT SELECTED - Uploading files and deploying application ... ###");
 		getLog().info("###########################################################################");
-
-		if (node2Upload) {
+		
+		if (node2Upload && !zone.equals("intern")) {
 			
 			// Upload application config
 			SSHUtil.uploadDir(node1Hostname, node1LinuxAppUsername, node1LinuxAppPassword, configDir, "/was_app/config", application);
@@ -247,6 +255,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 			}
 
 		} else {
+			
 			SSHUtil.uploadDir(node1Hostname, node1LinuxAppUsername, node1LinuxAppPassword, configDir, "/was_app/config", application);
 
 			if (isBatch)
