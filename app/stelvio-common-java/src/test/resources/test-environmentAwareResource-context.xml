@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/jee 
+                           http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
+
+	<!--				Unit test of EnvironmentAwareResource		-->
+
+
+	<bean id="environmentAwareResource" class="no.stelvio.common.config.EnvironmentAwareResource" init-method="init">	
+		<property name="location" value="test-environment.properties"/>
+		<property name="environmentKey" value="environmentName"/>
+		<property name="jndiTemplate" ref="jndiTemplate"/>
+	</bean>
+	
+	<bean id="jndiTemplate" class="org.springframework.mock.jndi.ExpectedLookupTemplate" >
+		<constructor-arg index="0"><value>environmentName</value></constructor-arg>
+		<constructor-arg index="1"><value>komptest</value></constructor-arg>	
+	</bean>	
+	
+</beans>	

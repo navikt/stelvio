@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+	<configuration>
+		<!-- Customer converters -->
+		<custom-converters>			
+			<converter type="no.stelvio.provider.codestable.map.CodesTableItemConverter">
+				<class-a>no.stelvio.dto.codestable.AbstractCodesTableItemDto</class-a>
+				<class-b>no.stelvio.common.codestable.CodesTableItem</class-b>
+			</converter>			
+			<converter type="no.stelvio.provider.codestable.map.CodesTablePeriodicItemConverter">
+				<class-a>no.stelvio.dto.codestable.AbstractCodesTableItemDto</class-a>
+				<class-b>no.stelvio.common.codestable.CodesTablePeriodicItem</class-b>
+			</converter>			
+		</custom-converters>
+	</configuration>
+	<mapping>
+		<class-a>no.stelvio.dto.person.PidDto</class-a>
+		<class-b>no.stelvio.domain.person.Pid</class-b>
+		<field>
+			<a>pid</a>
+			<b is-accessible="true">pid</b>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>no.stelvio.dto.time.ChangeStampDto</class-a>
+		<class-b>no.stelvio.domain.time.ChangeStamp</class-b>
+		<field>
+			<a>createdBy</a>
+			<b is-accessible="true">createdBy</b>
+		</field>
+		<field>
+			<a>createdDate</a>
+			<b is-accessible="true">createdDate</b>
+		</field>
+		<field>
+			<a>updatedBy</a>
+			<b is-accessible="true">updatedBy</b>
+		</field>
+		<field>
+			<a>updatedDate</a>
+			<b is-accessible="true">updatedDate</b>
+		</field>
+	</mapping>
+	<mapping type="one-way">
+		<class-a>no.stelvio.common.error.RecoverableException</class-a>
+		<class-b>no.stelvio.dto.exception.RecoverableDtoException</class-b>
+	</mapping>
+	<mapping type="one-way">
+		<class-a>no.stelvio.dto.transferobject.ServiceRequestDto</class-a>
+		<class-b>no.stelvio.common.transferobject.ServiceRequest</class-b>
+		<field>
+			<a>requestContextDto</a>
+			<b>requestContext</b>
+		</field>
+	</mapping>
+	<mapping type="one-way">
+		<class-a>no.stelvio.dto.context.RequestContextDto</class-a>
+		<class-b>no.stelvio.common.context.RequestContext</class-b>
+		<!--  field>
+			<a>processId</a>
+			<b>processId</b>
+		</field -->
+		<field>
+			<a>screenId</a>
+			<b>screenId</b>
+		</field>
+		<field>
+			<a>moduleId</a>
+			<b>moduleId</b>
+		</field>
+		<field>
+			<a>transactionId</a>
+			<b>transactionId</b>
+		</field>
+		<field>
+			<a>componentId</a>
+			<b>componentId</b>
+		</field>
+		<field>
+			<a>userId</a>
+			<b>userId</b>
+		</field>
+	</mapping>
+</mappings>

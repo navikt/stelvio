@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.0/notation" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http:///schemas/Default/1 pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default?">
+  <uml:Model xmi:id="_ptTNkBy2EdmH6_M2UD5AWw" name="java-se Design Model">
+    <eAnnotations xmi:id="_ptTNkRy2EdmH6_M2UD5AWw" source="uml2.diagrams" references="_ptTNkhy2EdmH6_M2UD5AWw">
+      <contents xmi:type="notation:Diagram" xmi:id="_ptTNkhy2EdmH6_M2UD5AWw" type="Freeform" name="java-se Design Overview">
+        <children xmi:id="_ptTNkxy2EdmH6_M2UD5AWw" type="Text">
+          <children xmi:id="_ptTNlBy2EdmH6_M2UD5AWw" type="DiagramName"/>
+          <children xmi:id="_ptTNlRy2EdmH6_M2UD5AWw" type="Description"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ptTNlhy2EdmH6_M2UD5AWw" fontHeight="22" description="java-se Design Overview"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptTNlxy2EdmH6_M2UD5AWw" x="636" y="318"/>
+        </children>
+        <children xmi:id="_ptTNnRy2EdmH6_M2UD5AWw" element="_ptljWhy2EdmH6_M2UD5AWw">
+          <children xmi:id="_ptTNnhy2EdmH6_M2UD5AWw" type="ImageCompartment" element="_ptljWhy2EdmH6_M2UD5AWw">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_ptTNnxy2EdmH6_M2UD5AWw" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_ptTNoBy2EdmH6_M2UD5AWw" type="Stereotype" element="_ptljWhy2EdmH6_M2UD5AWw"/>
+          <children xmi:id="_ptTNoRy2EdmH6_M2UD5AWw" type="Name" element="_ptljWhy2EdmH6_M2UD5AWw"/>
+          <children xmi:id="_KmjI8NCxEdqK7KjEh4hvHw" type="Parent"/>
+          <children xmi:id="_KmjI8dCxEdqK7KjEh4hvHw" type="PackageContents">
+            <children xmi:id="_q6zdKjE2EdyoUtYCyKWxcg" element="_ptroEBy2EdmH6_M2UD5AWw">
+              <children xmi:id="_q6zdLTE2EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_q6zdLjE2EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_q6zdLzE2EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_q6zdMDE2EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_q6zdMTE2EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_q6zdMjE2EdyoUtYCyKWxcg" type="PackageContents">
+                <children xmi:id="_7FUUMDFHEdyoUtYCyKWxcg" element="_bCKg8OguEdur7tMUWN94QQ">
+                  <children xmi:id="_7FUUMzFHEdyoUtYCyKWxcg" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_7FUUNDFHEdyoUtYCyKWxcg" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:id="_7FUUNTFHEdyoUtYCyKWxcg" type="Stereotype"/>
+                  <children xmi:id="_7FUUNjFHEdyoUtYCyKWxcg" type="Name"/>
+                  <children xmi:id="_7FUUNzFHEdyoUtYCyKWxcg" type="Parent"/>
+                  <children xmi:id="_7FUUODFHEdyoUtYCyKWxcg" type="PackageContents">
+                    <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_7FUUOTFHEdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+                  </children>
+                  <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_7FUUMTFHEdyoUtYCyKWxcg" showStereotype="Label"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7FUUMjFHEdyoUtYCyKWxcg" x="317"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_q6zdMzE2EdyoUtYCyKWxcg" canonical="false"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_q6zdKzE2EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_q6zdLDE2EdyoUtYCyKWxcg" x="555" y="78"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_KmjI8tCxEdqK7KjEh4hvHw"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ptTNohy2EdmH6_M2UD5AWw" showStereotype="Label"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptTNoxy2EdmH6_M2UD5AWw" x="1902" y="2219"/>
+        </children>
+        <children xmi:id="_ptfa0By2EdmH6_M2UD5AWw" element="_pt978Ry2EdmH6_M2UD5AWw">
+          <children xmi:id="_ptfa0Ry2EdmH6_M2UD5AWw" type="ImageCompartment" element="_pt978Ry2EdmH6_M2UD5AWw">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_ptfa0hy2EdmH6_M2UD5AWw" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_ptfa0xy2EdmH6_M2UD5AWw" type="Stereotype" element="_pt978Ry2EdmH6_M2UD5AWw"/>
+          <children xmi:id="_ptfa1By2EdmH6_M2UD5AWw" type="Name" element="_pt978Ry2EdmH6_M2UD5AWw"/>
+          <children xmi:id="_Kms58NCxEdqK7KjEh4hvHw" type="Parent"/>
+          <children xmi:id="_Kms58dCxEdqK7KjEh4hvHw" type="PackageContents">
+            <children xmi:id="_0Lkd4DE2EdyoUtYCyKWxcg" element="_0Las4DE2EdyoUtYCyKWxcg">
+              <children xmi:id="_0Ltn0DE2EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_0Ltn0TE2EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_0Ltn0jE2EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_0Ltn0zE2EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_0Ltn1DE2EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_0Ltn1TE2EdyoUtYCyKWxcg" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_0Ltn1jE2EdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_0Lkd4TE2EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0Lkd4jE2EdyoUtYCyKWxcg" x="238" y="78"/>
+            </children>
+            <children xmi:id="_T5GmrjE3EdyoUtYCyKWxcg" element="_T5GmoDE3EdyoUtYCyKWxcg">
+              <children xmi:id="_T5GmsTE3EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_T5GmsjE3EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_T5GmszE3EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_T5GmtDE3EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_T5GmtTE3EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_T5GmtjE3EdyoUtYCyKWxcg" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_T5GmtzE3EdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_T5GmrzE3EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T5GmsDE3EdyoUtYCyKWxcg" x="238" y="1663"/>
+            </children>
+            <children xmi:id="_XEXBvjE3EdyoUtYCyKWxcg" element="_XEXBsDE3EdyoUtYCyKWxcg">
+              <children xmi:id="_XEXBwTE3EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_XEXBwjE3EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_XEXBwzE3EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_XEXBxDE3EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_XEXBxTE3EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_XEXBxjE3EdyoUtYCyKWxcg" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_XEXBxzE3EdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_XEXBvzE3EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEXBwDE3EdyoUtYCyKWxcg" x="3408" y="78"/>
+            </children>
+            <children xmi:id="_FUeDHjE4EdyoUtYCyKWxcg" element="_FUeDEDE4EdyoUtYCyKWxcg">
+              <children xmi:id="_FUn0EDE4EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_FUn0ETE4EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_FUn0EjE4EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_FUn0EzE4EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_FUn0FDE4EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_FUn0FTE4EdyoUtYCyKWxcg" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_FUn0FjE4EdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_FUeDHzE4EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FUeDIDE4EdyoUtYCyKWxcg" x="3408" y="1663"/>
+            </children>
+            <children xmi:id="_MNZpzjE4EdyoUtYCyKWxcg" element="_MNZpwDE4EdyoUtYCyKWxcg">
+              <children xmi:id="_MNZp0TE4EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_MNZp0jE4EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_MNZp0zE4EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_MNZp1DE4EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_MNZp1TE4EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_MNZp1jE4EdyoUtYCyKWxcg" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_MNZp1zE4EdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_MNZpzzE4EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MNZp0DE4EdyoUtYCyKWxcg" x="10065" y="78"/>
+            </children>
+            <children xmi:id="_QW8SDjE4EdyoUtYCyKWxcg" element="_QW8SADE4EdyoUtYCyKWxcg">
+              <children xmi:id="_QW8SETE4EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_QW8SEjE4EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_QW8SEzE4EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_QW8SFDE4EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_QW8SFTE4EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_QW8SFjE4EdyoUtYCyKWxcg" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_QW8SFzE4EdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_QW8SDzE4EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QW8SEDE4EdyoUtYCyKWxcg" x="6578" y="1663"/>
+            </children>
+            <children xmi:id="_WLd1YDE4EdyoUtYCyKWxcg" element="_WLUEYDE4EdyoUtYCyKWxcg">
+              <children xmi:id="_WLd1YzE4EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_WLd1ZDE4EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_WLd1ZTE4EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_WLd1ZjE4EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_WLd1ZzE4EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_WLd1aDE4EdyoUtYCyKWxcg" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_WLd1aTE4EdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_WLd1YTE4EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WLd1YjE4EdyoUtYCyKWxcg" x="12601" y="78"/>
+            </children>
+            <children xmi:id="_ncUBrj9bEdyUo7FzHiTo_A" element="_ncUBoD9bEdyUo7FzHiTo_A">
+              <children xmi:id="_ncUBsT9bEdyUo7FzHiTo_A" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_ncUBsj9bEdyUo7FzHiTo_A" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_ncUBsz9bEdyUo7FzHiTo_A" type="Stereotype"/>
+              <children xmi:id="_ncUBtD9bEdyUo7FzHiTo_A" type="Name"/>
+              <children xmi:id="_ncUBtT9bEdyUo7FzHiTo_A" type="Parent"/>
+              <children xmi:id="_ncUBtj9bEdyUo7FzHiTo_A" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_ncUBtz9bEdyUo7FzHiTo_A" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ncUBrz9bEdyUo7FzHiTo_A" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ncUBsD9bEdyUo7FzHiTo_A" x="9114" y="1663"/>
+            </children>
+            <children xmi:id="_Fh_4cK_OEdysG6nRSJz3ww" element="_VYk_sGbJEdy77PHyDlXfuA">
+              <children xmi:id="_Fh_4c6_OEdysG6nRSJz3ww" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_Fh_4dK_OEdysG6nRSJz3ww" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_Fh_4da_OEdysG6nRSJz3ww" type="Stereotype"/>
+              <children xmi:id="_Fh_4dq_OEdysG6nRSJz3ww" type="Name"/>
+              <children xmi:id="_Fh_4d6_OEdysG6nRSJz3ww" type="Parent"/>
+              <children xmi:id="_Fh_4eK_OEdysG6nRSJz3ww" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_Fh_4ea_OEdysG6nRSJz3ww" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_Fh_4ca_OEdysG6nRSJz3ww" showListSignature="true" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fh_4cq_OEdysG6nRSJz3ww" x="6261" y="78"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_Kms58tCxEdqK7KjEh4hvHw"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ptlhcBy2EdmH6_M2UD5AWw" showStereotype="Label"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlhcRy2EdmH6_M2UD5AWw" x="1902" y="7291"/>
+        </children>
+        <children xmi:id="_ptlhchy2EdmH6_M2UD5AWw" element="_ptlirRy2EdmH6_M2UD5AWw">
+          <children xmi:id="_ptlhcxy2EdmH6_M2UD5AWw" type="ImageCompartment" element="_ptlirRy2EdmH6_M2UD5AWw">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_ptlhdBy2EdmH6_M2UD5AWw" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_ptlhdRy2EdmH6_M2UD5AWw" type="Stereotype" element="_ptlirRy2EdmH6_M2UD5AWw"/>
+          <children xmi:id="_ptlhdhy2EdmH6_M2UD5AWw" type="Name" element="_ptlirRy2EdmH6_M2UD5AWw"/>
+          <children xmi:id="_Kms589CxEdqK7KjEh4hvHw" type="Parent"/>
+          <children xmi:id="_Kms59NCxEdqK7KjEh4hvHw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_Kms59dCxEdqK7KjEh4hvHw"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ptlhdxy2EdmH6_M2UD5AWw" showStereotype="Label"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlheBy2EdmH6_M2UD5AWw" x="1902" y="12363"/>
+        </children>
+        <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_ptlheRy2EdmH6_M2UD5AWw"/>
+      </contents>
+    </eAnnotations>
+    <eAnnotations xmi:id="_5iXKwB7EEdmMKq2tTjg0KA" source="uml2.isTemplate"/>
+    <packageImport xmi:id="_ptlhohy2EdmH6_M2UD5AWw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_2WRoQHASEduxJ4jl3ZgCZQ" name="PrimitiveTypes">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_rSCLpIyMEdqCiN2Pcel64A" name="boolean"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_rSLMoIyMEdqCiN2Pcel64A" name="long"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_rSCLqIyMEdqCiN2Pcel64A" name="short"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_rSCLpYyMEdqCiN2Pcel64A" name="String"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2WRoQnASEduxJ4jl3ZgCZQ" name="double"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2WRoQ3ASEduxJ4jl3ZgCZQ" name="int"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_S8JcgHATEduxJ4jl3ZgCZQ" name="Object"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_cs16gHATEduxJ4jl3ZgCZQ" name="Boolean"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_jjTcAHATEduxJ4jl3ZgCZQ" name="Class"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_nQWVgHATEduxJ4jl3ZgCZQ" name="Double"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_q_lnYHATEduxJ4jl3ZgCZQ" name="Float"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_s6sCIHATEduxJ4jl3ZgCZQ" name="Long"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_vvS3wHATEduxJ4jl3ZgCZQ" name="Short"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_wlop4HATEduxJ4jl3ZgCZQ" name="StringBuffer"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_v0dPIHAUEduxJ4jl3ZgCZQ" name="byte"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_1c43QHAUEduxJ4jl3ZgCZQ" name="float"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_6xXooHAUEduxJ4jl3ZgCZQ" name="char"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Bp7b4HAVEduxJ4jl3ZgCZQ" name="Byte"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_GEDd0HAVEduxJ4jl3ZgCZQ" name="Integer"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_ptlhphy2EdmH6_M2UD5AWw" name="Design Building Blocks">
+      <eAnnotations xmi:id="_ptlhpxy2EdmH6_M2UD5AWw" source="uml2.diagrams" references="_ptlhqBy2EdmH6_M2UD5AWw">
+        <contents xmi:type="notation:Diagram" xmi:id="_ptlhqBy2EdmH6_M2UD5AWw" type="Freeform" name="Design Building Block Instructions">
+          <children xmi:id="_ptlhqRy2EdmH6_M2UD5AWw" type="Text">
+            <children xmi:id="_ptlhqhy2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_ptlhqxy2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlhrBy2EdmH6_M2UD5AWw" fontHeight="14" description="Design Model Building Block Instructions"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlhrRy2EdmH6_M2UD5AWw" x="318" y="318"/>
+          </children>
+          <children xmi:id="_ptlhrhy2EdmH6_M2UD5AWw" element="_ptlh-By2EdmH6_M2UD5AWw">
+            <children xmi:id="_ptlhrxy2EdmH6_M2UD5AWw" type="ImageCompartment" element="_ptlh-By2EdmH6_M2UD5AWw">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_ptlhsBy2EdmH6_M2UD5AWw" width="1320" height="1320"/>
+            </children>
+            <children xmi:id="_ptlhsRy2EdmH6_M2UD5AWw" type="Stereotype" element="_ptlh-By2EdmH6_M2UD5AWw"/>
+            <children xmi:id="_ptlhshy2EdmH6_M2UD5AWw" type="Name" element="_ptlh-By2EdmH6_M2UD5AWw"/>
+            <children xmi:id="_KpYagNCxEdqK7KjEh4hvHw" type="Parent"/>
+            <children xmi:id="_KpYagdCxEdqK7KjEh4hvHw" type="PackageContents">
+              <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_KpYagtCxEdqK7KjEh4hvHw"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ptlhsxy2EdmH6_M2UD5AWw" showStereotype="Label"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlhtBy2EdmH6_M2UD5AWw" x="954" y="6042"/>
+          </children>
+          <children xmi:id="_ptlhtRy2EdmH6_M2UD5AWw" type="Text">
+            <children xmi:id="_ptlhthy2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_ptlhtxy2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlhuBy2EdmH6_M2UD5AWw" description="TO USE A BUILDING BLOCK:&#xD;&#xA;&#xD;&#xA;1) CTRL-drag a building block element from &quot;Design Building Blocks&quot; to desired model location.   NOTE: You must perform the CTRL-drag operation via the Model Explorer, not via this diagram.&#xD;&#xA;&#xD;&#xA;2) Right-click over the new element, choose Find/Replace to change the placeholder text ${something} to the desired name.&#xD;&#xA;&#xD;&#xA;"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlhuRy2EdmH6_M2UD5AWw" x="1270" y="1270" width="13335" height="4126"/>
+          </children>
+          <children xmi:id="_ptlhzhy2EdmH6_M2UD5AWw" type="Note">
+            <children xmi:id="_ptlhzxy2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_ptlh0By2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlh0Ry2EdmH6_M2UD5AWw" description="A container for a collection of functionally related implementation design elements" fillColor="13369343" lineColor="51455"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlh0hy2EdmH6_M2UD5AWw" x="17435" y="6023" width="8915" height="1650"/>
+          </children>
+          <children xmi:id="_ptlh0xy2EdmH6_M2UD5AWw" type="Note">
+            <children xmi:id="_ptlh1By2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_ptlh1Ry2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlh1hy2EdmH6_M2UD5AWw" description="A container for the expressions of the design-level realizations of a collection of functionally related use cases " fillColor="13369343" lineColor="51455"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlh1xy2EdmH6_M2UD5AWw" x="17435" y="8242" width="8967" height="2061"/>
+          </children>
+          <children xmi:id="_ptlh2By2EdmH6_M2UD5AWw" type="Note">
+            <children xmi:id="_ptlh2Ry2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_ptlh2hy2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlh2xy2EdmH6_M2UD5AWw" description="The expression of the design-level realization of a use case.  The building block provides a structure that you may use for specifying sequence diagrams for the basic and named alternative and exceptional flows of the use case.  In a component-based or service-oriented architecture, the participants in the design-level use case realizations should consist solely of interfaces.  The use-case realizations become parts of the realization contracts of the components that particiapte in them " fillColor="13369343" lineColor="51455"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlh3By2EdmH6_M2UD5AWw" x="12680" y="12997" width="8888" height="4950"/>
+          </children>
+          <children xmi:id="_ptlh3Ry2EdmH6_M2UD5AWw" element="_ptlijxy2EdmH6_M2UD5AWw">
+            <children xmi:id="_ptlh3hy2EdmH6_M2UD5AWw" type="ImageCompartment" element="_ptlijxy2EdmH6_M2UD5AWw">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_ptlh3xy2EdmH6_M2UD5AWw" width="1320" height="1320"/>
+            </children>
+            <children xmi:id="_ptlh4By2EdmH6_M2UD5AWw" type="Stereotype" element="_ptlijxy2EdmH6_M2UD5AWw"/>
+            <children xmi:id="_ptlh4Ry2EdmH6_M2UD5AWw" type="Name" element="_ptlijxy2EdmH6_M2UD5AWw"/>
+            <children xmi:id="_KpiLgdCxEdqK7KjEh4hvHw" type="Parent"/>
+            <children xmi:id="_KpiLgtCxEdqK7KjEh4hvHw" type="PackageContents">
+              <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_KpiLg9CxEdqK7KjEh4hvHw"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ptlh4hy2EdmH6_M2UD5AWw" showStereotype="Label"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlh4xy2EdmH6_M2UD5AWw" x="954" y="11448"/>
+          </children>
+          <children xmi:id="_ptlh5By2EdmH6_M2UD5AWw" type="Note">
+            <children xmi:id="_ptlh5Ry2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_ptlh5hy2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlh5xy2EdmH6_M2UD5AWw" description="A container for a collection of functionally related component specifications" fillColor="13369343" lineColor="51455"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlh6By2EdmH6_M2UD5AWw" x="12680" y="10857" width="8889" height="1650"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_ptlh6Ry2EdmH6_M2UD5AWw"/>
+          <edges xmi:id="_ptlh6hy2EdmH6_M2UD5AWw" type="NoteAttachment" source="_ptlhrhy2EdmH6_M2UD5AWw" target="_ptlhzhy2EdmH6_M2UD5AWw">
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_ptlh6xy2EdmH6_M2UD5AWw"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ptlh7By2EdmH6_M2UD5AWw" points="[98, 2, -243, -5]$[238, 3, -103, -4]"/>
+          </edges>
+          <edges xmi:id="_ptlh8xy2EdmH6_M2UD5AWw" type="NoteAttachment" source="_ptlh3Ry2EdmH6_M2UD5AWw" target="_ptlh5By2EdmH6_M2UD5AWw">
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_ptlh9By2EdmH6_M2UD5AWw"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ptlh9Ry2EdmH6_M2UD5AWw" points="[87, 2, -266, 12]$[250, 5, -103, 15]"/>
+          </edges>
+        </contents>
+      </eAnnotations>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ptlh-By2EdmH6_M2UD5AWw" name="${functional.area.impldesign}">
+        <eAnnotations xmi:id="_ptlh-Ry2EdmH6_M2UD5AWw" source="uml2.diagrams" references="_ptlh-hy2EdmH6_M2UD5AWw">
+          <contents xmi:type="notation:Diagram" xmi:id="_ptlh-hy2EdmH6_M2UD5AWw" type="Class" name="${functional.area.impldesign} Design Elements">
+            <children xmi:id="_ptlh-xy2EdmH6_M2UD5AWw" type="Text">
+              <children xmi:id="_ptlh_By2EdmH6_M2UD5AWw" type="DiagramName"/>
+              <children xmi:id="_ptlh_Ry2EdmH6_M2UD5AWw" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlh_hy2EdmH6_M2UD5AWw" fontHeight="22" description="${functional.area.impldesign} Design Elements"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlh_xy2EdmH6_M2UD5AWw" x="636" y="318"/>
+            </children>
+            <children xmi:id="_ptliABy2EdmH6_M2UD5AWw" type="Note">
+              <children xmi:id="_ptliARy2EdmH6_M2UD5AWw" type="DiagramName"/>
+              <children xmi:id="_ptliAhy2EdmH6_M2UD5AWw" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ptliAxy2EdmH6_M2UD5AWw" description="&#xD;&#xA;Populate this diagram with the key impementation design elements for the functional area&#xD;&#xA;&#xD;&#xA;You can also double-click the packages to drill into layer-specific diagrams  &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptliBBy2EdmH6_M2UD5AWw" x="1908" y="6996" width="16218" height="4192"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_ptliIRy2EdmH6_M2UD5AWw"/>
+          </contents>
+        </eAnnotations>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ptlijxy2EdmH6_M2UD5AWw" name="${functional.area.specs}">
+        <eAnnotations xmi:id="_ptlikBy2EdmH6_M2UD5AWw" source="uml2.diagrams" references="_ptlikRy2EdmH6_M2UD5AWw">
+          <contents xmi:type="notation:Diagram" xmi:id="_ptlikRy2EdmH6_M2UD5AWw" type="Freeform" name="${functional.area.specs} Usage Contracts">
+            <children xmi:id="_ptlikhy2EdmH6_M2UD5AWw" type="Text">
+              <children xmi:id="_ptlikxy2EdmH6_M2UD5AWw" type="DiagramName"/>
+              <children xmi:id="_ptlilBy2EdmH6_M2UD5AWw" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlilRy2EdmH6_M2UD5AWw" fontHeight="22" description="${functional.area.specs} Usage Contracts"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlilhy2EdmH6_M2UD5AWw" x="635" y="317" width="15265" height="1270"/>
+            </children>
+            <children xmi:id="_ptlilxy2EdmH6_M2UD5AWw" type="Note">
+              <children xmi:id="_ptlimBy2EdmH6_M2UD5AWw" type="DiagramName"/>
+              <children xmi:id="_ptlimRy2EdmH6_M2UD5AWw" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlimhy2EdmH6_M2UD5AWw" description="&#xD;&#xA;Populate this diagram with the Interfaces and &lt;&lt;specification>> Components for the functional area  &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlimxy2EdmH6_M2UD5AWw" x="1908" y="3498" width="16218" height="2954"/>
+            </children>
+            <children xmi:id="_ptlinBy2EdmH6_M2UD5AWw" element="_ptlipBy2EdmH6_M2UD5AWw">
+              <children xmi:id="_ptlinRy2EdmH6_M2UD5AWw" type="ImageCompartment" element="_ptlipBy2EdmH6_M2UD5AWw">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_ptlinhy2EdmH6_M2UD5AWw" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_ptlinxy2EdmH6_M2UD5AWw" type="Stereotype" element="_ptlipBy2EdmH6_M2UD5AWw"/>
+              <children xmi:id="_ptlioBy2EdmH6_M2UD5AWw" type="Name" element="_ptlipBy2EdmH6_M2UD5AWw"/>
+              <children xmi:id="_KvC9oNCxEdqK7KjEh4hvHw" type="Parent"/>
+              <children xmi:id="_KvC9odCxEdqK7KjEh4hvHw" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_KvC9otCxEdqK7KjEh4hvHw"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_ptlioRy2EdmH6_M2UD5AWw" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptliohy2EdmH6_M2UD5AWw" x="5088" y="7314"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_ptlioxy2EdmH6_M2UD5AWw"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Package" xmi:id="_ptlipBy2EdmH6_M2UD5AWw" name="${functional.area.specs} Data Transfer Objects">
+          <eAnnotations xmi:id="_ptlipRy2EdmH6_M2UD5AWw" source="uml2.diagrams" references="_ptliphy2EdmH6_M2UD5AWw">
+            <contents xmi:type="notation:Diagram" xmi:id="_ptliphy2EdmH6_M2UD5AWw" type="Class" name="Â«Â» ${functional.area.specs} Data Transfer Objects">
+              <children xmi:id="_ptlipxy2EdmH6_M2UD5AWw" type="Text">
+                <children xmi:id="_ptliqBy2EdmH6_M2UD5AWw" type="DiagramName"/>
+                <children xmi:id="_ptliqRy2EdmH6_M2UD5AWw" type="Description"/>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_ptliqhy2EdmH6_M2UD5AWw" fontHeight="22" description="${functional.area.specs} Data Transfer Objects"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptliqxy2EdmH6_M2UD5AWw" x="635" y="317" width="17805" height="1587"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_ptlirBy2EdmH6_M2UD5AWw"/>
+            </contents>
+          </eAnnotations>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_ptlirRy2EdmH6_M2UD5AWw" name="java-se Viewpoints">
+      <eAnnotations xmi:id="_ptlirhy2EdmH6_M2UD5AWw" source="uml2.diagrams" references="_ptlirxy2EdmH6_M2UD5AWw">
+        <contents xmi:type="notation:Diagram" xmi:id="_ptlirxy2EdmH6_M2UD5AWw" type="Freeform" name="java-se Viewpoints">
+          <children xmi:id="_ptlisBy2EdmH6_M2UD5AWw" type="Text">
+            <children xmi:id="_ptlisRy2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_ptlishy2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlisxy2EdmH6_M2UD5AWw" fontHeight="22" description="java-se Viewpoints"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlitBy2EdmH6_M2UD5AWw" x="317" y="317" width="9207" height="1905"/>
+          </children>
+          <children xmi:id="_ptliwxy2EdmH6_M2UD5AWw" type="Note">
+            <children xmi:id="_ptlixBy2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_ptlixRy2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ptlixhy2EdmH6_M2UD5AWw" description="Create additional viewpoint packages as needed, and place them on this diagram.   You can then double-click on the packages to drill down into more detailed diagrams (specifically, the 'default diagram' of each package)   &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptlixxy2EdmH6_M2UD5AWw" x="2853" y="16801" width="16218" height="3300"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_ptliyBy2EdmH6_M2UD5AWw"/>
+        </contents>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_ptljWhy2EdmH6_M2UD5AWw" name="java-se Design Contracts">
+      <eAnnotations xmi:id="_ptljWxy2EdmH6_M2UD5AWw" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ptroEBy2EdmH6_M2UD5AWw" name="java-se Component Specifications">
+        <eAnnotations xmi:id="_ptroERy2EdmH6_M2UD5AWw" source="uml2.diagrams" references="_ptroEhy2EdmH6_M2UD5AWw">
+          <contents xmi:type="notation:Diagram" xmi:id="_ptroEhy2EdmH6_M2UD5AWw" type="Freeform" name="java-se Component Specification Packages">
+            <children xmi:id="_ptroGBy2EdmH6_M2UD5AWw" type="Text">
+              <children xmi:id="_ptroGRy2EdmH6_M2UD5AWw" type="DiagramName"/>
+              <children xmi:id="_ptroGhy2EdmH6_M2UD5AWw" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ptroGxy2EdmH6_M2UD5AWw" fontHeight="22" description="java-se Component Specification Packages"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ptroHBy2EdmH6_M2UD5AWw" x="952" y="635" width="16853" height="1270"/>
+            </children>
+            <children xmi:id="_5e1xgDE6EdyoUtYCyKWxcg" element="_bCKg8OguEdur7tMUWN94QQ">
+              <children xmi:id="_5e1xgzE6EdyoUtYCyKWxcg" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_5e1xhDE6EdyoUtYCyKWxcg" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_5e1xhTE6EdyoUtYCyKWxcg" type="Stereotype"/>
+              <children xmi:id="_5e1xhjE6EdyoUtYCyKWxcg" type="Name"/>
+              <children xmi:id="_5e1xhzE6EdyoUtYCyKWxcg" type="Parent"/>
+              <children xmi:id="_5e1xiDE6EdyoUtYCyKWxcg" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_5e1xiTE6EdyoUtYCyKWxcg" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_5e1xgTE6EdyoUtYCyKWxcg" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5e1xgjE6EdyoUtYCyKWxcg" x="6023" y="2536"/>
+            </children>
+            <children xmi:id="_YeA7sD9uEdyUo7FzHiTo_A" element="_RSAoAD9uEdyUo7FzHiTo_A">
+              <children xmi:id="_YeA7sz9uEdyUo7FzHiTo_A" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_YeA7tD9uEdyUo7FzHiTo_A" width="1320" height="1320"/>
+              </children>
+              <children xmi:id="_YeA7tT9uEdyUo7FzHiTo_A" type="Stereotype"/>
+              <children xmi:id="_YeA7tj9uEdyUo7FzHiTo_A" type="Name"/>
+              <children xmi:id="_YeA7tz9uEdyUo7FzHiTo_A" type="Parent"/>
+              <children xmi:id="_YeA7uD9uEdyUo7FzHiTo_A" type="PackageContents">
+                <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_YeA7uT9uEdyUo7FzHiTo_A" canonical="false" collapsed="true"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_YeA7sT9uEdyUo7FzHiTo_A" showListSignature="true" showStereotype="Label"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeA7sj9uEdyUo7FzHiTo_A" x="2536" y="2536"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_pt978By2EdmH6_M2UD5AWw"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Package" xmi:id="_RSAoAD9uEdyUo7FzHiTo_A" name="java-sql">
+          <eAnnotations xmi:id="_RSAoAT9uEdyUo7FzHiTo_A" source="uml2.diagrams" references="_RSAoAj9uEdyUo7FzHiTo_A">
+            <contents xmi:type="notation:Diagram" xmi:id="_RSAoAj9uEdyUo7FzHiTo_A" type="Freeform" name="java-sql Usage Contracts">
+              <children xmi:id="_RSAoAz9uEdyUo7FzHiTo_A" type="Text">
+                <children xmi:id="_RSAoBD9uEdyUo7FzHiTo_A" type="DiagramName"/>
+                <children xmi:id="_RSAoBT9uEdyUo7FzHiTo_A" type="Description"/>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_RSAoBj9uEdyUo7FzHiTo_A" fontHeight="22" description="java-sql Usage Contracts"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RSAoBz9uEdyUo7FzHiTo_A" x="635" y="317" width="15265" height="1270"/>
+              </children>
+              <children xmi:id="_RSAoDT9uEdyUo7FzHiTo_A" element="_RSAoGD9uEdyUo7FzHiTo_A">
+                <children xmi:id="_RSAoDj9uEdyUo7FzHiTo_A" type="ImageCompartment" element="_RSAoGD9uEdyUo7FzHiTo_A">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_RSAoDz9uEdyUo7FzHiTo_A" width="1320" height="1320"/>
+                </children>
+                <children xmi:id="_RSAoED9uEdyUo7FzHiTo_A" type="Stereotype" element="_RSAoGD9uEdyUo7FzHiTo_A"/>
+                <children xmi:id="_RSAoET9uEdyUo7FzHiTo_A" type="Name" element="_RSAoGD9uEdyUo7FzHiTo_A"/>
+                <children xmi:id="_RSAoEj9uEdyUo7FzHiTo_A" type="Parent"/>
+                <children xmi:id="_RSAoEz9uEdyUo7FzHiTo_A" type="PackageContents">
+                  <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_RSAoFD9uEdyUo7FzHiTo_A"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_RSAoFT9uEdyUo7FzHiTo_A" showStereotype="Label"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RSAoFj9uEdyUo7FzHiTo_A" x="3804" y="2536"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_RSAoFz9uEdyUo7FzHiTo_A"/>
+            </contents>
+          </eAnnotations>
+          <packagedElement xmi:type="uml:Package" xmi:id="_RSAoGD9uEdyUo7FzHiTo_A" name="java-sql Data Transfer Objects">
+            <eAnnotations xmi:id="_RSAoGT9uEdyUo7FzHiTo_A" source="uml2.diagrams" references="_RSAoGj9uEdyUo7FzHiTo_A">
+              <contents xmi:type="notation:Diagram" xmi:id="_RSAoGj9uEdyUo7FzHiTo_A" type="Class" name="«» java-sql Data Transfer Objects">
+                <children xmi:id="_RSAoGz9uEdyUo7FzHiTo_A" type="Text">
+                  <children xmi:id="_RSAoHD9uEdyUo7FzHiTo_A" type="DiagramName"/>
+                  <children xmi:id="_RSAoHT9uEdyUo7FzHiTo_A" type="Description"/>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_RSAoHj9uEdyUo7FzHiTo_A" fontHeight="22" description="java-sql Data Transfer Objects"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RSAoHz9uEdyUo7FzHiTo_A" x="635" y="317" width="17805" height="1587"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_RSAoID9uEdyUo7FzHiTo_A"/>
+              </contents>
+            </eAnnotations>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_bCKg8OguEdur7tMUWN94QQ" name="java-util">
+          <eAnnotations xmi:id="_bCKg8eguEdur7tMUWN94QQ" source="uml2.diagrams">
+            <contents xmi:type="notation:Diagram" xmi:id="_bCKg8uguEdur7tMUWN94QQ" type="Component" name="java-util Component Diagram">
+              <children xmi:id="_bCKg8-guEdur7tMUWN94QQ" type="Text">
+                <children xmi:id="_bCKg9OguEdur7tMUWN94QQ" type="DiagramName">
+                  <element xsi:nil="true"/>
+                </children>
+                <children xmi:id="_bCKg9eguEdur7tMUWN94QQ" type="Description">
+                  <element xsi:nil="true"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_bCKg9uguEdur7tMUWN94QQ" fontHeight="22" description="java-util Component Diagram"/>
+                <element xsi:nil="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bCKg9-guEdur7tMUWN94QQ" x="318" y="318" width="21613" height="1270"/>
+              </children>
+              <children xmi:id="_qpuEoOguEdur7tMUWN94QQ" element="_AhZicDnvEdubF99l17rb0Q">
+                <children xmi:id="_qpuEo-guEdur7tMUWN94QQ" type="ImageCompartment">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_qpuEpOguEdur7tMUWN94QQ" width="1320" height="1320"/>
+                </children>
+                <children xmi:id="_qpuEpeguEdur7tMUWN94QQ" type="Stereotype"/>
+                <children xmi:id="_qpuEpuguEdur7tMUWN94QQ" type="Kind"/>
+                <children xmi:id="_qpuEp-guEdur7tMUWN94QQ" type="Name"/>
+                <children xmi:id="_EeEsxTEbEdyDrPEhnm5CYw" type="Parent"/>
+                <children xmi:id="_qpuEqOguEdur7tMUWN94QQ" visible="false" type="AttributeCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_qpuEqeguEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_qpuEquguEdur7tMUWN94QQ" visible="false" type="OperationCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_qpuEq-guEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_qpuErOguEdur7tMUWN94QQ" visible="false" type="RealizationListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_qpuEreguEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_qpuEruguEdur7tMUWN94QQ" type="RequiredInterfaceListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_qpuEr-guEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_qpuEsOguEdur7tMUWN94QQ" type="ProvidedInterfaceListCompartment">
+                  <children xmi:id="_qp6R4OguEdur7tMUWN94QQ" type="InterfaceTreeItem" element="_MksVMDnvEdubF99l17rb0Q">
+                    <children xmi:id="_qp6R4uguEdur7tMUWN94QQ" type="OperationCompartment" element="_MksVMDnvEdubF99l17rb0Q">
+                      <children xmi:id="_q_-BcOguEdur7tMUWN94QQ" type="Operation" element="_xzi8ADnwEdubF99l17rb0Q"/>
+                      <children xmi:id="_q_-BceguEdur7tMUWN94QQ" type="Operation" element="_qJah4DnwEdubF99l17rb0Q"/>
+                      <children xmi:id="_q_-BcuguEdur7tMUWN94QQ" type="Operation" element="_FiTloDnxEdubF99l17rb0Q"/>
+                      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_qp6R4-guEdur7tMUWN94QQ"/>
+                    </children>
+                    <styles xmi:type="notation:DrawerStyle" xmi:id="_qp6R4eguEdur7tMUWN94QQ" collapsed="true"/>
+                  </children>
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_qpuEseguEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_qpuEsuguEdur7tMUWN94QQ" visible="false" type="StructureCompartment">
+                  <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_qpuEs-guEdur7tMUWN94QQ"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_qpuEoeguEdur7tMUWN94QQ" showListSignature="true" showStereotype="Label"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qpuEouguEdur7tMUWN94QQ" x="2226" y="3180"/>
+              </children>
+              <children xmi:id="_WMFUQZghEdyFidM924oGeg" element="_WMFUQJghEdyFidM924oGeg">
+                <children xmi:id="_WMPFQJghEdyFidM924oGeg" type="ImageCompartment">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_WMPFQZghEdyFidM924oGeg" width="1320" height="1320"/>
+                </children>
+                <children xmi:id="_WMPFQpghEdyFidM924oGeg" type="Stereotype"/>
+                <children xmi:id="_WMPFQ5ghEdyFidM924oGeg" type="Kind"/>
+                <children xmi:id="_WMPFRJghEdyFidM924oGeg" type="Name"/>
+                <children xmi:id="_WMPFRZghEdyFidM924oGeg" type="Parent"/>
+                <children xmi:id="_WMPFRpghEdyFidM924oGeg" visible="false" type="AttributeCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_WMPFR5ghEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_WMPFSJghEdyFidM924oGeg" visible="false" type="OperationCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_WMPFSZghEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_WMPFSpghEdyFidM924oGeg" visible="false" type="RealizationListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_WMPFS5ghEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_WMPFTJghEdyFidM924oGeg" type="RequiredInterfaceListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_WMPFTZghEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_WMPFTpghEdyFidM924oGeg" type="ProvidedInterfaceListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_WMPFT5ghEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_WMPFUJghEdyFidM924oGeg" visible="false" type="StructureCompartment">
+                  <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_WMPFUZghEdyFidM924oGeg"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_WMFUQpghEdyFidM924oGeg" showListSignature="true" showStereotype="Label"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WMFUQ5ghEdyFidM924oGeg" x="2219" y="6023"/>
+              </children>
+              <children xmi:id="_JKF4QZhbEdyFidM924oGeg" element="_JKF4QJhbEdyFidM924oGeg">
+                <children xmi:id="_JKF4RJhbEdyFidM924oGeg" type="ImageCompartment">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_JKF4RZhbEdyFidM924oGeg" width="1320" height="1320"/>
+                </children>
+                <children xmi:id="_JKF4RphbEdyFidM924oGeg" type="Stereotype"/>
+                <children xmi:id="_JKF4R5hbEdyFidM924oGeg" type="Kind"/>
+                <children xmi:id="_JKF4SJhbEdyFidM924oGeg" type="Name"/>
+                <children xmi:id="_JKF4SZhbEdyFidM924oGeg" type="Parent"/>
+                <children xmi:id="_JKPCMJhbEdyFidM924oGeg" visible="false" type="AttributeCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_JKPCMZhbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_JKPCMphbEdyFidM924oGeg" visible="false" type="OperationCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_JKPCM5hbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_JKPCNJhbEdyFidM924oGeg" visible="false" type="RealizationListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_JKPCNZhbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_JKPCNphbEdyFidM924oGeg" type="RequiredInterfaceListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_JKPCN5hbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_JKPCOJhbEdyFidM924oGeg" type="ProvidedInterfaceListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_JKPCOZhbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_JKPCOphbEdyFidM924oGeg" visible="false" type="StructureCompartment">
+                  <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_JKPCO5hbEdyFidM924oGeg"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_JKF4QphbEdyFidM924oGeg" showListSignature="true" showStereotype="Label"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JKF4Q5hbEdyFidM924oGeg" x="2219" y="8559"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_bCKhFeguEdur7tMUWN94QQ"/>
+            </contents>
+            <contents xmi:type="notation:Diagram" xmi:id="_bCKhFuguEdur7tMUWN94QQ" type="Component" name="java-util Usage Contracts">
+              <children xmi:id="_bCKhF-guEdur7tMUWN94QQ" type="Text">
+                <children xmi:id="_bCKhGOguEdur7tMUWN94QQ" type="DiagramName">
+                  <element xsi:nil="true"/>
+                </children>
+                <children xmi:id="_bCKhGeguEdur7tMUWN94QQ" type="Description">
+                  <element xsi:nil="true"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_bCKhGuguEdur7tMUWN94QQ" fontHeight="22" description="java-util Usage Contracts"/>
+                <element xsi:nil="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bCKhG-guEdur7tMUWN94QQ" x="954" y="318" width="21613" height="1270"/>
+              </children>
+              <children xmi:id="_bCKhIeguEdur7tMUWN94QQ" element="_bCKhVuguEdur7tMUWN94QQ">
+                <children xmi:id="_bCKhIuguEdur7tMUWN94QQ" type="ImageCompartment">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_bCKhI-guEdur7tMUWN94QQ" width="1320" height="1320"/>
+                </children>
+                <children xmi:id="_bCKhJOguEdur7tMUWN94QQ" type="Stereotype"/>
+                <children xmi:id="_bCKhJeguEdur7tMUWN94QQ" type="Name"/>
+                <children xmi:id="_EeEsxjEbEdyDrPEhnm5CYw" type="Parent"/>
+                <children xmi:id="_EeEsxzEbEdyDrPEhnm5CYw" type="PackageContents">
+                  <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_EeEsyDEbEdyDrPEhnm5CYw" canonical="false" collapsed="true"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_bCKhJuguEdur7tMUWN94QQ" showStereotype="Label"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bCKhJ-guEdur7tMUWN94QQ" x="954" y="1908"/>
+              </children>
+              <children xmi:id="_tyd-QOguEdur7tMUWN94QQ" element="_AhZicDnvEdubF99l17rb0Q">
+                <children xmi:id="_tyd-Q-guEdur7tMUWN94QQ" type="ImageCompartment">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_tyd-ROguEdur7tMUWN94QQ" width="1320" height="1320"/>
+                </children>
+                <children xmi:id="_tyd-ReguEdur7tMUWN94QQ" type="Stereotype"/>
+                <children xmi:id="_tyd-RuguEdur7tMUWN94QQ" type="Kind"/>
+                <children xmi:id="_tyd-R-guEdur7tMUWN94QQ" type="Name"/>
+                <children xmi:id="_EeEsyTEbEdyDrPEhnm5CYw" type="Parent"/>
+                <children xmi:id="_tyd-SOguEdur7tMUWN94QQ" visible="false" type="AttributeCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_tyd-SeguEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_tyd-SuguEdur7tMUWN94QQ" visible="false" type="OperationCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_tyd-S-guEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_tykE4OguEdur7tMUWN94QQ" visible="false" type="RealizationListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_tykE4eguEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_tykE4uguEdur7tMUWN94QQ" type="RequiredInterfaceListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_tykE4-guEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_tykE5OguEdur7tMUWN94QQ" type="ProvidedInterfaceListCompartment">
+                  <children xmi:id="_tyqLh-guEdur7tMUWN94QQ" type="InterfaceTreeItem" element="_MksVMDnvEdubF99l17rb0Q">
+                    <children xmi:id="_tyqLieguEdur7tMUWN94QQ" type="OperationCompartment" element="_MksVMDnvEdubF99l17rb0Q">
+                      <children xmi:id="_uDqb8OguEdur7tMUWN94QQ" type="Operation" element="_xzi8ADnwEdubF99l17rb0Q"/>
+                      <children xmi:id="_uDqb8eguEdur7tMUWN94QQ" type="Operation" element="_qJah4DnwEdubF99l17rb0Q"/>
+                      <children xmi:id="_uDqb8uguEdur7tMUWN94QQ" type="Operation" element="_FiTloDnxEdubF99l17rb0Q"/>
+                      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_tyqLiuguEdur7tMUWN94QQ"/>
+                    </children>
+                    <styles xmi:type="notation:DrawerStyle" xmi:id="_tyqLiOguEdur7tMUWN94QQ" collapsed="true"/>
+                  </children>
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_tykE5eguEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_tykE5uguEdur7tMUWN94QQ" visible="false" type="StructureCompartment">
+                  <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_tykE5-guEdur7tMUWN94QQ"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_tyd-QeguEdur7tMUWN94QQ" showListSignature="true" showStereotype="Label"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tyd-QuguEdur7tMUWN94QQ" x="2219" y="5072"/>
+              </children>
+              <children xmi:id="_ugsWMOguEdur7tMUWN94QQ" element="_MksVMDnvEdubF99l17rb0Q">
+                <children xmi:id="_ugsWM-guEdur7tMUWN94QQ" type="ImageCompartment">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_ugsWNOguEdur7tMUWN94QQ" width="530" height="530"/>
+                </children>
+                <children xmi:id="_ugsWNeguEdur7tMUWN94QQ" type="Stereotype"/>
+                <children xmi:id="_ugsWNuguEdur7tMUWN94QQ" type="Kind"/>
+                <children xmi:id="_ugsWN-guEdur7tMUWN94QQ" type="Name"/>
+                <children xmi:id="_EeEsyjEbEdyDrPEhnm5CYw" type="Parent"/>
+                <children xmi:id="_ugsWOOguEdur7tMUWN94QQ" type="AttributeCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_ugsWOeguEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_ugsWOuguEdur7tMUWN94QQ" type="OperationCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_ugsWO-guEdur7tMUWN94QQ"/>
+                </children>
+                <children xmi:id="_ugsWPOguEdur7tMUWN94QQ" visible="false" type="SignalCompartment" element="_MksVMDnvEdubF99l17rb0Q">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_ugsWPeguEdur7tMUWN94QQ"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLClassifierStyle" xmi:id="_ugsWMeguEdur7tMUWN94QQ" showListSignature="true" showStereotype="Label" useClassifierShape="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ugsWMuguEdur7tMUWN94QQ" x="7950" y="4452"/>
+              </children>
+              <children xmi:id="_RzXbMJhbEdyFidM924oGeg" element="_JKF4QJhbEdyFidM924oGeg">
+                <children xmi:id="_RzXbMZhbEdyFidM924oGeg" type="ImageCompartment">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_RzXbMphbEdyFidM924oGeg" width="1296" height="1296"/>
+                </children>
+                <children xmi:id="_RzXbM5hbEdyFidM924oGeg" type="Stereotype"/>
+                <children xmi:id="_RzXbNJhbEdyFidM924oGeg" type="Kind"/>
+                <children xmi:id="_RzXbNZhbEdyFidM924oGeg" type="Name"/>
+                <children xmi:id="_RzXbNphbEdyFidM924oGeg" type="Parent"/>
+                <children xmi:id="_RzXbN5hbEdyFidM924oGeg" visible="false" type="AttributeCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RzXbOJhbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_RzXbOZhbEdyFidM924oGeg" visible="false" type="OperationCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RzXbOphbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_RzXbO5hbEdyFidM924oGeg" visible="false" type="RealizationListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RzXbPJhbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_RzXbPZhbEdyFidM924oGeg" type="RequiredInterfaceListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RzXbPphbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_RzXbP5hbEdyFidM924oGeg" type="ProvidedInterfaceListCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RzXbQJhbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_RzXbQZhbEdyFidM924oGeg" visible="false" type="StructureCompartment">
+                  <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_RzXbQphbEdyFidM924oGeg"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_RzXbQ5hbEdyFidM924oGeg" showListSignature="true" showStereotype="Label"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RzXbRJhbEdyFidM924oGeg" x="2853" y="8876"/>
+              </children>
+              <children xmi:id="_RzXbRZhbEdyFidM924oGeg" element="_KHetkJhbEdyFidM924oGeg">
+                <children xmi:id="_RzXbRphbEdyFidM924oGeg" type="ImageCompartment">
+                  <layoutConstraint xmi:type="notation:Size" xmi:id="_RzXbR5hbEdyFidM924oGeg" width="529" height="529"/>
+                </children>
+                <children xmi:id="_RzXbSJhbEdyFidM924oGeg" type="Stereotype"/>
+                <children xmi:id="_RzXbSZhbEdyFidM924oGeg" type="Kind"/>
+                <children xmi:id="_RzXbSphbEdyFidM924oGeg" type="Name"/>
+                <children xmi:id="_RzXbS5hbEdyFidM924oGeg" type="Parent"/>
+                <children xmi:id="_RzXbTJhbEdyFidM924oGeg" type="AttributeCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RzXbTZhbEdyFidM924oGeg"/>
+                </children>
+                <children xmi:id="_RzXbTphbEdyFidM924oGeg" type="OperationCompartment">
+                  <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_RzXbT5hbEdyFidM924oGeg"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLClassifierStyle" xmi:id="_RzXbUJhbEdyFidM924oGeg" showListSignature="true" showStereotype="Label" useClassifierShape="true"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RzXbUZhbEdyFidM924oGeg" x="7959" y="8903"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_bCKhTuguEdur7tMUWN94QQ"/>
+              <edges xmi:id="_ug-qEOguEdur7tMUWN94QQ" element="_PQyvEDnvEdubF99l17rb0Q" source="_tyd-QOguEdur7tMUWN94QQ" target="_ugsWMOguEdur7tMUWN94QQ">
+                <children xmi:id="_ug-qE-guEdur7tMUWN94QQ" type="NameLabel">
+                  <children xmi:id="_ug-qFeguEdur7tMUWN94QQ" type="Stereotype" element="_PQyvEDnvEdubF99l17rb0Q"/>
+                  <children xmi:id="_ug-qFuguEdur7tMUWN94QQ" type="Name" element="_PQyvEDnvEdubF99l17rb0Q"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ug-qFOguEdur7tMUWN94QQ" y="-185"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_ug-qEeguEdur7tMUWN94QQ" showStereotype="Text"/>
+                <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ug-qEuguEdur7tMUWN94QQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+              </edges>
+              <edges xmi:id="_RzXbUphbEdyFidM924oGeg" element="_Llp7wJhbEdyFidM924oGeg" source="_RzXbMJhbEdyFidM924oGeg" target="_RzXbRZhbEdyFidM924oGeg">
+                <children xmi:id="_RzXbU5hbEdyFidM924oGeg" type="NameLabel">
+                  <children xmi:id="_RzXbVJhbEdyFidM924oGeg" type="Stereotype"/>
+                  <children xmi:id="_RzXbVZhbEdyFidM924oGeg" type="Name"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RzXbVphbEdyFidM924oGeg" y="-186"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_RzXbV5hbEdyFidM924oGeg" showStereotype="Text"/>
+                <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RzXbWJhbEdyFidM924oGeg" points="[0, 26, -80, -80]$[52, 79, -53, -53]"/>
+              </edges>
+            </contents>
+          </eAnnotations>
+          <packagedElement xmi:type="uml:Component" xmi:id="_AhZicDnvEdubF99l17rb0Q" name="ResourceBundle" clientDependency="_PQyvEDnvEdubF99l17rb0Q">
+            <eAnnotations xmi:id="_zvBmsDnvEdubF99l17rb0Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:id="_2ZdNwOgkEdur7tMUWN94QQ" key="java"/>
+            </eAnnotations>
+            <interfaceRealization xmi:id="_PQyvEDnvEdubF99l17rb0Q" supplier="_MksVMDnvEdubF99l17rb0Q" client="_AhZicDnvEdubF99l17rb0Q" contract="_MksVMDnvEdubF99l17rb0Q">
+              <mapping xmi:id="_PQyvETnvEdubF99l17rb0Q"/>
+            </interfaceRealization>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_MksVMDnvEdubF99l17rb0Q" name="ResourceBundle">
+            <ownedAttribute xmi:id="_PtJ68DnvEdubF99l17rb0Q" name="baseName" visibility="private">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_R_wPsDnvEdubF99l17rb0Q" name="var" visibility="private">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedOperation xmi:id="_xzi8ADnwEdubF99l17rb0Q" name="getBundle">
+              <ownedParameter xmi:id="_0alPsDnwEdubF99l17rb0Q" name="ReturnResult" type="_AhZicDnvEdubF99l17rb0Q" direction="return"/>
+              <ownedParameter xmi:id="_5TEooDnwEdubF99l17rb0Q" name="baseName">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_5TEooTnwEdubF99l17rb0Q" name="locale">
+                <type xmi:type="uml:PrimitiveType" href="stelvio%20Design%20Model.emx#_A77acieoEdujetAVnJamCQ?stelvio%20Design%20Model/PrimitiveTypes/Locale?"/>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:id="_qJah4DnwEdubF99l17rb0Q" name="getObject">
+              <ownedParameter xmi:id="_-SoS4DnwEdubF99l17rb0Q" name="ReturnResult" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="stelvio%20Design%20Model.emx#_QzedsChzEdujetAVnJamCQ?stelvio%20Design%20Model/PrimitiveTypes/Object?"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_8r93EDnwEdubF99l17rb0Q" name="key">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:id="_FiTloDnxEdubF99l17rb0Q" name="getString">
+              <ownedParameter xmi:id="_JS-a4DnxEdubF99l17rb0Q" name="ReturnResult" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_JS4UQDnxEdubF99l17rb0Q" name="key">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_bCKhVuguEdur7tMUWN94QQ" name="java-util Data Transfer Objects">
+            <eAnnotations xmi:id="_bCKhV-guEdur7tMUWN94QQ" source="uml2.diagrams" references="_bCKhWOguEdur7tMUWN94QQ">
+              <contents xmi:type="notation:Diagram" xmi:id="_bCKhWOguEdur7tMUWN94QQ" type="Class" name="«» java-util Data Transfer Objects">
+                <children xmi:id="_bCKhWeguEdur7tMUWN94QQ" type="Text">
+                  <children xmi:id="_bCKhWuguEdur7tMUWN94QQ" type="DiagramName">
+                    <element xsi:nil="true"/>
+                  </children>
+                  <children xmi:id="_bCKhW-guEdur7tMUWN94QQ" type="Description">
+                    <element xsi:nil="true"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_bCKhXOguEdur7tMUWN94QQ" fontHeight="22" description="java-util Data Transfer Objects"/>
+                  <element xsi:nil="true"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bCKhXeguEdur7tMUWN94QQ" x="635" y="317" width="22567" height="1587"/>
+                </children>
+                <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_bCKhXuguEdur7tMUWN94QQ"/>
+              </contents>
+            </eAnnotations>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Component" xmi:id="_WMFUQJghEdyFidM924oGeg" name="EventListener" clientDependency="_i929oJghEdyFidM924oGeg">
+            <eAnnotations xmi:id="_Yug0wJghEdyFidM924oGeg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:id="_Yug0wZghEdyFidM924oGeg" key="java"/>
+            </eAnnotations>
+            <interfaceRealization xmi:id="_i929oJghEdyFidM924oGeg" supplier="_Zad70JghEdyFidM924oGeg" client="_WMFUQJghEdyFidM924oGeg" contract="_Zad70JghEdyFidM924oGeg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_Zad70JghEdyFidM924oGeg" name="EventListener">
+            <ownedComment xmi:id="_g-KWwJghEdyFidM924oGeg" annotatedElement="_Zad70JghEdyFidM924oGeg">
+              <body>java.util.EventListener&#xD;
+&#xD;
+A marker interface that all event listener interfaces must extend.</body>
+            </ownedComment>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Component" xmi:id="_JKF4QJhbEdyFidM924oGeg" name="Locale" clientDependency="_Llp7wJhbEdyFidM924oGeg">
+            <eAnnotations xmi:id="_MpTxIJhbEdyFidM924oGeg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:id="_MpTxIZhbEdyFidM924oGeg" key="java"/>
+            </eAnnotations>
+            <interfaceRealization xmi:id="_Llp7wJhbEdyFidM924oGeg" supplier="_KHetkJhbEdyFidM924oGeg" client="_JKF4QJhbEdyFidM924oGeg" contract="_KHetkJhbEdyFidM924oGeg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_KHetkJhbEdyFidM924oGeg" name="Locale"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_pt978Ry2EdmH6_M2UD5AWw" name="java-se Implementation Designs">
+      <eAnnotations xmi:id="_pt978hy2EdmH6_M2UD5AWw" source="uml2.diagrams" references="_pt978xy2EdmH6_M2UD5AWw">
+        <contents xmi:type="notation:Diagram" xmi:id="_pt978xy2EdmH6_M2UD5AWw" type="Freeform" name="java-se Implementation Design Packages">
+          <children xmi:id="_pt979By2EdmH6_M2UD5AWw" type="Text">
+            <children xmi:id="_pt979Ry2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_pt979hy2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_pt979xy2EdmH6_M2UD5AWw" fontHeight="22" description="java-se Implementation Design Packages"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pt97-By2EdmH6_M2UD5AWw" x="793" y="582"/>
+          </children>
+          <children xmi:id="_pt97-Ry2EdmH6_M2UD5AWw" type="Note">
+            <children xmi:id="_pt97-hy2EdmH6_M2UD5AWw" type="DiagramName"/>
+            <children xmi:id="_pt97-xy2EdmH6_M2UD5AWw" type="Description"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_pt97_By2EdmH6_M2UD5AWw" description="&#xD;&#xA;You should populate this diagram with the &quot;functional area implementation design&quot; packages. &#xD;&#xA;&#xD;&#xA;TO ADD A FUNCTIONAL AREA IMPLEMENTATION DESIGN PACKAGE AND PLACE IT ON THIS DIAGRAM:&#xD;&#xA;&#xD;&#xA;1) Using the Model Explorer, CTRL-Drag the &quot;${functional.area.impldesign}&quot; package from the &quot;Design Building Blocks&quot; package to the &quot;Implementation Designs&quot; top-level package&#xD;&#xA;&#xD;&#xA;2) Right-click over the new package use Find/Replace to change &quot;${functional.area.impledesign}&quot; to the desired functional area name (the use of an inverted internet domain naming convention is recommended)&#xD;&#xA;&#xD;&#xA;3) Drag the new package from the Model Explorer onto this diagram.&#xD;&#xA;&#xD;&#xA;You can then double-click on the packages in this diagram to drill down into more detailed diagrams   &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pt97_Ry2EdmH6_M2UD5AWw" x="954" y="4452" width="16218" height="8665"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_pt97_hy2EdmH6_M2UD5AWw"/>
+        </contents>
+      </eAnnotations>
+      <packagedElement xmi:type="uml:Package" xmi:id="_0Las4DE2EdyoUtYCyKWxcg" name="java.beans">
+        <eAnnotations xmi:id="_0Las4TE2EdyoUtYCyKWxcg" source="uml2.diagrams" references="_0Las4jE2EdyoUtYCyKWxcg">
+          <contents xmi:type="notation:Diagram" xmi:id="_0Las4jE2EdyoUtYCyKWxcg" type="Class" name="java.beans Design Elements">
+            <children xmi:id="_0Las4zE2EdyoUtYCyKWxcg" type="Text">
+              <children xmi:id="_0Las5DE2EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_0Las5TE2EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_0Las5jE2EdyoUtYCyKWxcg" fontHeight="22" description="java.beans Design Elements"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0Las5zE2EdyoUtYCyKWxcg" x="636" y="318"/>
+            </children>
+            <children xmi:id="_0Las6DE2EdyoUtYCyKWxcg" type="Note">
+              <children xmi:id="_0Las6TE2EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_0Las6jE2EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_0Las6zE2EdyoUtYCyKWxcg" description="&#xD;&#xA;Populate this diagram with the key impementation design elements for the functional area&#xD;&#xA;&#xD;&#xA;You can also double-click the packages to drill into layer-specific diagrams  &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0Las7DE2EdyoUtYCyKWxcg" x="1908" y="6996" width="16218" height="4192"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_0LatFTE2EdyoUtYCyKWxcg"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_rSLMwoyMEdqCiN2Pcel64A" name="java.beans.BeanInfo"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMw4yMEdqCiN2Pcel64A" name="java.beans.IntrospectionException"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_T5GmoDE3EdyoUtYCyKWxcg" name="java.io">
+        <eAnnotations xmi:id="_T5GmoTE3EdyoUtYCyKWxcg" source="uml2.diagrams" references="_T5GmojE3EdyoUtYCyKWxcg">
+          <contents xmi:type="notation:Diagram" xmi:id="_T5GmojE3EdyoUtYCyKWxcg" type="Class" name="java.io Design Elements">
+            <children xmi:id="_T5GmozE3EdyoUtYCyKWxcg" type="Text">
+              <children xmi:id="_T5GmpDE3EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_T5GmpTE3EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_T5GmpjE3EdyoUtYCyKWxcg" fontHeight="22" description="java.io Design Elements"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T5GmpzE3EdyoUtYCyKWxcg" x="636" y="318"/>
+            </children>
+            <children xmi:id="_T5GmqDE3EdyoUtYCyKWxcg" type="Note">
+              <children xmi:id="_T5GmqTE3EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_T5GmqjE3EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_T5GmqzE3EdyoUtYCyKWxcg" description="&#xD;&#xA;Populate this diagram with the key impementation design elements for the functional area&#xD;&#xA;&#xD;&#xA;You can also double-click the packages to drill into layer-specific diagrams  &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T5GmrDE3EdyoUtYCyKWxcg" x="1908" y="6996" width="16218" height="4192"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_T5GmrTE3EdyoUtYCyKWxcg"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_4x-goHFkEdq1-ovvSHFXGQ" name="java.io.Serializable"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMxoyMEdqCiN2Pcel64A" name="java.io.PrintStream"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMwYyMEdqCiN2Pcel64A" name="java.io.ObjectInputStream"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMxIyMEdqCiN2Pcel64A" name="java.io.IOException"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_XEXBsDE3EdyoUtYCyKWxcg" name="java.lang">
+        <eAnnotations xmi:id="_XEXBsTE3EdyoUtYCyKWxcg" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_YlzQ8HMNEdq6TvAeT-iEJw" name="java.lang.Cloneable"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMyYyMEdqCiN2Pcel64A" name="java.lang.RuntimeException"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSCLo4yMEdqCiN2Pcel64A" name="java.lang.IllegalStateException"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSCLqYyMEdqCiN2Pcel64A" name="java.lang.IllegalArgumentException"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSCLq4yMEdqCiN2Pcel64A" name="java.lang.Exception"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSCLsoyMEdqCiN2Pcel64A" name="java.lang.CloneNotSupportedException"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMxYyMEdqCiN2Pcel64A" name="java.lang.ClassNotFoundException"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_C3HKEK_PEdysG6nRSJz3ww" name="java.lang.Comparable">
+          <ownedOperation xmi:id="_9eGcIMRVEdy4idO0H0SUdA" name="compareTo">
+            <ownedParameter xmi:id="_BVwqMMRWEdy4idO0H0SUdA" name="o" type="_S8JcgHATEduxJ4jl3ZgCZQ"/>
+            <ownedParameter xmi:id="_BVwqMcRWEdy4idO0H0SUdA" name="OwnedParameter" type="_2WRoQ3ASEduxJ4jl3ZgCZQ" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_BBa-UK_QEdysG6nRSJz3ww" name="java.lang.Enum"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_3WPeQMUfEdy4idO0H0SUdA" name="java.lang.Iterable&lt;T>">
+          <ownedComment xmi:id="_Vz6hoMUgEdy4idO0H0SUdA" annotatedElement="_3WPeQMUfEdy4idO0H0SUdA">
+            <body>Implementing this interface allows an object to be the target of the &quot;foreach&quot; statement.</body>
+          </ownedComment>
+          <ownedOperation xmi:id="_NUxLEMUgEdy4idO0H0SUdA" name="iterator">
+            <ownedComment xmi:id="_VXwKEMUgEdy4idO0H0SUdA" annotatedElement="_NUxLEMUgEdy4idO0H0SUdA">
+              <body>Returns an iterator over a set of elements of type T</body>
+            </ownedComment>
+            <ownedParameter xmi:id="_Zka-0MUgEdy4idO0H0SUdA" name="Parameter1" type="_rSLMvoyMEdqCiN2Pcel64A" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_FUeDEDE4EdyoUtYCyKWxcg" name="java.math">
+        <eAnnotations xmi:id="_FUeDETE4EdyoUtYCyKWxcg" source="uml2.diagrams" references="_FUeDEjE4EdyoUtYCyKWxcg">
+          <contents xmi:type="notation:Diagram" xmi:id="_FUeDEjE4EdyoUtYCyKWxcg" type="Class" name="java.math Design Elements">
+            <children xmi:id="_FUeDEzE4EdyoUtYCyKWxcg" type="Text">
+              <children xmi:id="_FUeDFDE4EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_FUeDFTE4EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_FUeDFjE4EdyoUtYCyKWxcg" fontHeight="22" description="java.math Design Elements"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FUeDFzE4EdyoUtYCyKWxcg" x="636" y="318"/>
+            </children>
+            <children xmi:id="_FUeDGDE4EdyoUtYCyKWxcg" type="Note">
+              <children xmi:id="_FUeDGTE4EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_FUeDGjE4EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_FUeDGzE4EdyoUtYCyKWxcg" description="&#xD;&#xA;Populate this diagram with the key impementation design elements for the functional area&#xD;&#xA;&#xD;&#xA;You can also double-click the packages to drill into layer-specific diagrams  &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FUeDHDE4EdyoUtYCyKWxcg" x="1908" y="6996" width="16218" height="4192"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_FUeDHTE4EdyoUtYCyKWxcg"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Pa1msF2XEdq08MffLWFqGQ" name="java.math.BigInteger"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSCLrIyMEdqCiN2Pcel64A" name="java.math.BigDecimal"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_MNZpwDE4EdyoUtYCyKWxcg" name="java.net">
+        <eAnnotations xmi:id="_MNZpwTE4EdyoUtYCyKWxcg" source="uml2.diagrams" references="_MNZpwjE4EdyoUtYCyKWxcg">
+          <contents xmi:type="notation:Diagram" xmi:id="_MNZpwjE4EdyoUtYCyKWxcg" type="Class" name="java.net Design Elements">
+            <children xmi:id="_MNZpwzE4EdyoUtYCyKWxcg" type="Text">
+              <children xmi:id="_MNZpxDE4EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_MNZpxTE4EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_MNZpxjE4EdyoUtYCyKWxcg" fontHeight="22" description="java.net Design Elements"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MNZpxzE4EdyoUtYCyKWxcg" x="636" y="318"/>
+            </children>
+            <children xmi:id="_MNZpyDE4EdyoUtYCyKWxcg" type="Note">
+              <children xmi:id="_MNZpyTE4EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_MNZpyjE4EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_MNZpyzE4EdyoUtYCyKWxcg" description="&#xD;&#xA;Populate this diagram with the key impementation design elements for the functional area&#xD;&#xA;&#xD;&#xA;You can also double-click the packages to drill into layer-specific diagrams  &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MNZpzDE4EdyoUtYCyKWxcg" x="1908" y="6996" width="16218" height="4192"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_MNZpzTE4EdyoUtYCyKWxcg"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSCLtIyMEdqCiN2Pcel64A" name="java.net.URL"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_QW8SADE4EdyoUtYCyKWxcg" name="java.rmi">
+        <eAnnotations xmi:id="_QW8SATE4EdyoUtYCyKWxcg" source="uml2.diagrams" references="_QW8SAjE4EdyoUtYCyKWxcg">
+          <contents xmi:type="notation:Diagram" xmi:id="_QW8SAjE4EdyoUtYCyKWxcg" type="Class" name="java.rmi Design Elements">
+            <children xmi:id="_QW8SAzE4EdyoUtYCyKWxcg" type="Text">
+              <children xmi:id="_QW8SBDE4EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_QW8SBTE4EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_QW8SBjE4EdyoUtYCyKWxcg" fontHeight="22" description="java.rmi Design Elements"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QW8SBzE4EdyoUtYCyKWxcg" x="636" y="318"/>
+            </children>
+            <children xmi:id="_QW8SCDE4EdyoUtYCyKWxcg" type="Note">
+              <children xmi:id="_QW8SCTE4EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_QW8SCjE4EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_QW8SCzE4EdyoUtYCyKWxcg" description="&#xD;&#xA;Populate this diagram with the key impementation design elements for the functional area&#xD;&#xA;&#xD;&#xA;You can also double-click the packages to drill into layer-specific diagrams  &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QW8SDDE4EdyoUtYCyKWxcg" x="1908" y="6996" width="16218" height="4192"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_QW8SDTE4EdyoUtYCyKWxcg"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Class" xmi:id="_iAqeQHFfEdq1-ovvSHFXGQ" name="java.rmi.RemoteException"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_WLUEYDE4EdyoUtYCyKWxcg" name="java.util">
+        <eAnnotations xmi:id="_WLUEYTE4EdyoUtYCyKWxcg" source="uml2.diagrams" references="_WLUEYjE4EdyoUtYCyKWxcg">
+          <contents xmi:type="notation:Diagram" xmi:id="_WLUEYjE4EdyoUtYCyKWxcg" type="Class" name="java.util Design Elements">
+            <children xmi:id="_WLUEYzE4EdyoUtYCyKWxcg" type="Text">
+              <children xmi:id="_WLUEZDE4EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_WLUEZTE4EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_WLUEZjE4EdyoUtYCyKWxcg" fontHeight="22" description="java.util Design Elements"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WLUEZzE4EdyoUtYCyKWxcg" x="636" y="318"/>
+            </children>
+            <children xmi:id="_WLUEaDE4EdyoUtYCyKWxcg" type="Note">
+              <children xmi:id="_WLUEaTE4EdyoUtYCyKWxcg" type="DiagramName"/>
+              <children xmi:id="_WLUEajE4EdyoUtYCyKWxcg" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_WLUEazE4EdyoUtYCyKWxcg" description="&#xD;&#xA;Populate this diagram with the key impementation design elements for the functional area&#xD;&#xA;&#xD;&#xA;You can also double-click the packages to drill into layer-specific diagrams  &#xD;&#xA;&#xD;&#xA;(Delete this instructional note once you no longer need it.)" fillColor="13369343" lineColor="51455"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WLUEbDE4EdyoUtYCyKWxcg" x="1908" y="6996" width="16218" height="4192"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_WLUEbTE4EdyoUtYCyKWxcg"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_m6-QgHAVEduxJ4jl3ZgCZQ" name="java.util.Set"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_rSLMpoyMEdqCiN2Pcel64A" name="java.util.Map"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_k4mwIHAVEduxJ4jl3ZgCZQ" name="java.util.List"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_rSLMvoyMEdqCiN2Pcel64A" name="java.util.Iterator&lt;T>"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_ijItkHAVEduxJ4jl3ZgCZQ" name="java.util.Enumeration"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_eUrJEHAVEduxJ4jl3ZgCZQ" name="java.util.Collection"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMwIyMEdqCiN2Pcel64A" name="java.util.Vector"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMvIyMEdqCiN2Pcel64A" name="java.util.TreeMap"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSCLtoyMEdqCiN2Pcel64A" name="java.util.TimeZone"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Py9ioGCTEdq08MffLWFqGQ" name="java.util.Properties"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMtoyMEdqCiN2Pcel64A" name="java.util.Hashtable"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMuYyMEdqCiN2Pcel64A" name="java.util.HashMap"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_vLps8F2XEdq08MffLWFqGQ" name="java.util.Date"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSCLtYyMEdqCiN2Pcel64A" name="java.util.Calendar"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMv4yMEdqCiN2Pcel64A" name="java.util.BitSet"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_rSLMvYyMEdqCiN2Pcel64A" name="java.util.ArrayList"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_nZhJkMUkEdy4idO0H0SUdA" name="java.util.Comparator&lt;T>">
+          <ownedOperation xmi:id="_4_AZkMUkEdy4idO0H0SUdA" name="compare">
+            <ownedParameter xmi:id="_9AWIEMUkEdy4idO0H0SUdA" name="o1"/>
+            <ownedParameter xmi:id="_9Af5EMUkEdy4idO0H0SUdA" name="o2"/>
+            <ownedParameter xmi:id="_9Af5EcUkEdy4idO0H0SUdA" name="OwnedParameter" type="_2WRoQ3ASEduxJ4jl3ZgCZQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_9p7QkMUkEdy4idO0H0SUdA" name="equals">
+            <ownedParameter xmi:id="_AkyfMMUlEdy4idO0H0SUdA" name="obj" type="_S8JcgHATEduxJ4jl3ZgCZQ"/>
+            <ownedParameter xmi:id="_AkyfMcUlEdy4idO0H0SUdA" name="OwnedParameter" type="_rSCLpIyMEdqCiN2Pcel64A" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ncUBoD9bEdyUo7FzHiTo_A" name="java.sql">
+        <eAnnotations xmi:id="_ncUBoT9bEdyUo7FzHiTo_A" source="uml2.diagrams" references="_ncUBoj9bEdyUo7FzHiTo_A">
+          <contents xmi:type="notation:Diagram" xmi:id="_ncUBoj9bEdyUo7FzHiTo_A" type="Class" name="java.sql Design Elements">
+            <children xmi:id="_ncUBoz9bEdyUo7FzHiTo_A" type="Text">
+              <children xmi:id="_ncUBpD9bEdyUo7FzHiTo_A" type="DiagramName"/>
+              <children xmi:id="_ncUBpT9bEdyUo7FzHiTo_A" type="Description"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ncUBpj9bEdyUo7FzHiTo_A" fontHeight="22" description="java.sql Design Elements"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ncUBpz9bEdyUo7FzHiTo_A" x="636" y="318"/>
+            </children>
+            <children xmi:id="_1sj0ID9bEdyUo7FzHiTo_A" element="_0O-b0D9bEdyUo7FzHiTo_A">
+              <children xmi:id="_1sj0Iz9bEdyUo7FzHiTo_A" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_1sj0JD9bEdyUo7FzHiTo_A" width="530" height="530"/>
+              </children>
+              <children xmi:id="_1sj0JT9bEdyUo7FzHiTo_A" type="Stereotype"/>
+              <children xmi:id="_1sj0Jj9bEdyUo7FzHiTo_A" type="Kind"/>
+              <children xmi:id="_1sj0Jz9bEdyUo7FzHiTo_A" type="Name"/>
+              <children xmi:id="_1sj0KD9bEdyUo7FzHiTo_A" type="Parent"/>
+              <children xmi:id="_1sj0KT9bEdyUo7FzHiTo_A" type="AttributeCompartment">
+                <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_1sj0Kj9bEdyUo7FzHiTo_A"/>
+              </children>
+              <children xmi:id="_1sj0Kz9bEdyUo7FzHiTo_A" type="OperationCompartment">
+                <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_1sj0LD9bEdyUo7FzHiTo_A"/>
+              </children>
+              <styles xmi:type="umlnotation:UMLClassifierStyle" xmi:id="_1sj0IT9bEdyUo7FzHiTo_A" showStereotype="Label" useClassifierShape="true"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1sj0Ij9bEdyUo7FzHiTo_A" x="2381" y="3598"/>
+            </children>
+            <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_ncUBrT9bEdyUo7FzHiTo_A"/>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_0O-b0D9bEdyUo7FzHiTo_A" name="java.sql.ResultSet">
+          <ownedComment xmi:id="_yeW9UD9cEdyUo7FzHiTo_A" annotatedElement="_0O-b0D9bEdyUo7FzHiTo_A">
+            <body>java.sql&#xD;
+&#xD;
+A table of data representing a database result set, which is usually generated by executing a statement that queries the database.</body>
+          </ownedComment>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VYk_sGbJEdy77PHyDlXfuA" name="java.lang.reflect">
+        <eAnnotations xmi:id="_VYk_sWbJEdy77PHyDlXfuA" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_OwpCYGbJEdy77PHyDlXfuA" name="java.lang.reflect.Method"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_ptlhlhy2EdmH6_M2UD5AWw">
+      <eAnnotations xmi:id="_ptlhlxy2EdmH6_M2UD5AWw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ptlhnxy2EdmH6_M2UD5AWw">
+      <eAnnotations xmi:id="_ptlhoBy2EdmH6_M2UD5AWw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ptlhoxy2EdmH6_M2UD5AWw">
+      <eAnnotations xmi:id="_ptlhpBy2EdmH6_M2UD5AWw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_IrdAUMmBEdqBcN1R6EvWUw?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+  </uml:Model>
+  <Default:Documentation xmi:id="_yeW9UT9cEdyUo7FzHiTo_A" base_Comment="_yeW9UD9cEdyUo7FzHiTo_A"/>
+  <Default:Documentation xmi:id="_g-KWwZghEdyFidM924oGeg" base_Comment="_g-KWwJghEdyFidM924oGeg"/>
+  <Default:Documentation xmi:id="_VXwKEcUgEdy4idO0H0SUdA" base_Comment="_VXwKEMUgEdy4idO0H0SUdA"/>
+  <Default:Documentation xmi:id="_Vz6hocUgEdy4idO0H0SUdA" base_Comment="_Vz6hoMUgEdy4idO0H0SUdA"/>
+</xmi:XMI>

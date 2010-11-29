@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <!-- Alternative to the mapping definitions -->
+    <configuration>
+        <custom-converters>			
+            <converter type="no.stelvio.provider.codestable.map.CodesTableItemConverter">
+                <class-a>no.stelvio.dto.codestable.CodesTableItemDto</class-a>
+                <class-b>no.stelvio.common.codestable.CodesTableItem</class-b>
+            </converter>
+            <converter type="no.stelvio.provider.codestable.map.CodesTablePeriodicItemConverter">
+                <class-a>no.stelvio.dto.codestable.CodesTablePeriodicItemDto</class-a>
+                <class-b>no.stelvio.common.codestable.CodesTablePeriodicItem</class-b>
+            </converter>           			
+        </custom-converters>
+    </configuration>
+</mappings>
+

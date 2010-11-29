@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                           http://www.springframework.org/schema/jee
+                           http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
+
+
+	<jee:remote-slsb id="batch.controllerService" 
+		jndi-name="${btc.controller.jndi-name}"
+		business-interface="no.stelvio.batch.controller.BatchControllerServiceBi" 
+		cache-home="true"
+		home-interface="no.stelvio.test.TimeLimitStopableBatchHome">
+		<jee:environment>
+        	java.naming.provider.url=${btc.controller.provider-url}
+        	java.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+        </jee:environment>
+	</jee:remote-slsb>
+	
+	<!-- Configurer that replaces ${...} placeholders with values from a properties file -->
+	<bean id="btc.controller.propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="btc-controllerclient-environment.properties"/>
+	</bean>	
+	
+</beans>
