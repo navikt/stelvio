@@ -127,9 +127,19 @@ public class NamespaceToPackageMappingGenerator {
 				String[] pathParts = path.split("/");
 				
 				//remove version part if removeVersionInfo flag is set
-				if(removeVersionInfo && isVersionPart(pathParts[pathParts.length-1])){
-					pathParts[pathParts.length-1] = "";
+				if(removeVersionInfo){
+					if(pathParts.length > 0 && isVersionPart(pathParts[pathParts.length-1])){
+						pathParts[pathParts.length-1] = "";
+					}
+				
+					//remove version part for WS port artifact
+					if(isBindingPart(pathParts[pathParts.length-1])){
+						if(pathParts.length > 1 && isVersionPart(pathParts[pathParts.length-2])){
+							pathParts[pathParts.length-2] = "";
+						}
+					}
 				}
+									
 				
 				for (String pathPart : pathParts) {
 					packageName.append(pathPart);
@@ -153,6 +163,16 @@ public class NamespaceToPackageMappingGenerator {
 			}			
 		}
 		return false;
+	}
+	
+	private boolean isBindingPart(String pathPart){
+		if("Binding".equals(pathPart)){
+			return true;
+		}
+		else{
+			return false;
+		}
+
 	}
 	
 }
