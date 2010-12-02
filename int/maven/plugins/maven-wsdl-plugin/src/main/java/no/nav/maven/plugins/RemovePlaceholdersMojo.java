@@ -48,7 +48,6 @@ public class RemovePlaceholdersMojo extends AbstractMojo {
 					for (Object node : nodes) {
 						if (node instanceof Element) {
 							Element element = (Element) node;
-							getLog().info("Je="+element.getAttributeValue("name"));
 							element.getParent().removeContent(element);
 						}
 					}
