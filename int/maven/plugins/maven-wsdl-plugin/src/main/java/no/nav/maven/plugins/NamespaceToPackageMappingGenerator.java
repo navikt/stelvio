@@ -138,16 +138,16 @@ public class NamespaceToPackageMappingGenerator {
 				
 					//check for WS port artifact
 					if(pathParts.length > 0 && isBindingPart(pathParts[pathParts.length-1])){
-						//convert to lower case if useLowerCasePackageName is set
-						if(useLowerCasePackageName){
-							pathParts[pathParts.length-1] = pathParts[pathParts.length-1].toLowerCase();
-						}
-						
 						//remove version info
 						if(pathParts.length > 1 && isVersionPart(pathParts[pathParts.length-2])){
 							pathParts[pathParts.length-2] = "";
 						}
 					}
+				}
+				
+				//convert Binding part to lower case if useLowerCasePackageName is set
+				if(pathParts.length > 0 && isBindingPart(pathParts[pathParts.length-1]) && useLowerCasePackageName){
+					pathParts[pathParts.length-1] = pathParts[pathParts.length-1].toLowerCase();
 				}
 									
 				
