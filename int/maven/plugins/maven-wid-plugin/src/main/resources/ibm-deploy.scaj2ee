@@ -99,6 +99,10 @@
 				<users name="utvPensjon" />
 				<users name="srvPensjon" />
 			</authorizations>
+			<authorizations role="//@appProject/@securityrole.24">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
 		</authorizationTable>
 		<securityrole roleName="PensjonOpptjening"></securityrole>
 		<securityrole roleName="JOARKConsumer"></securityrole>
@@ -124,5 +128,6 @@
 		<securityrole roleName="INFOTConsumer"></securityrole>
 		<securityrole roleName="TESTConsumer"></securityrole>
 		<securityrole roleName="BPROCROUTER"></securityrole>
+		<securityrole roleName="NAVFamilieforhold"></securityrole>
 	</appProject>
 </scaj2ee:IntegrationModuleDeploymentConfiguration>
