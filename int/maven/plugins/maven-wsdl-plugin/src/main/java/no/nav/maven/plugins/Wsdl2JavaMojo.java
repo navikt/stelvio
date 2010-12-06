@@ -193,6 +193,11 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	 * @parameter default-value="false"
 	 */
 	private boolean removeVersionInfo;
+	
+	/**
+	 * @parameter default-value="false"
+	 */
+	private boolean useLowerCasePackageName;
 
 	public void execute() throws MojoExecutionException {
 		if (wsdlOptions == null || wsdlOptions.length == 0) {
@@ -274,8 +279,10 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 	private File generateNamespaceToPackageFile(File wsdlZipDir) throws MojoExecutionException {
 		OutputStream out = null;
 		try {
-			Properties mapping = new NamespaceToPackageMappingGenerator(encoding).setRemoveVersionInfo(removeVersionInfo)
-					.createNamespaceToPackageMappingFromWSDLDirectory(wsdlZipDir);
+			NamespaceToPackageMappingGenerator ns2pmg = new NamespaceToPackageMappingGenerator(encoding);
+			ns2pmg.setRemoveVersionInfo(removeVersionInfo);
+			ns2pmg.setUseLowerCasePackageName(useLowerCasePackageName);
+			Properties mapping = ns2pmg.createNamespaceToPackageMappingFromWSDLDirectory(wsdlZipDir);
 
 			File namespaceToPackageFile = new File(wsdlZipDir, "NStoPkg.properties");
 			out = new BufferedOutputStream(new FileOutputStream(namespaceToPackageFile));

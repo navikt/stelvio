@@ -21,6 +21,7 @@ import org.codehaus.plexus.util.IOUtil;
 public class NamespaceToPackageMappingGenerator {
 	private String encoding;
 	private boolean removeVersionInfo;
+	private boolean useLowerCasePackageName;
 
 	private Pattern namespacePattern = Pattern.compile("\"http://([^\"]+)\"");
 
@@ -42,9 +43,12 @@ public class NamespaceToPackageMappingGenerator {
 		return mapping;
 	}
 	
-	public NamespaceToPackageMappingGenerator setRemoveVersionInfo(boolean removeVersionInfo){
+	public void setRemoveVersionInfo(boolean removeVersionInfo){
 		this.removeVersionInfo = removeVersionInfo;
-		return this;
+	}
+	
+	public void setUseLowerCasePackageName(boolean useLowerCasePackageName){
+		this.useLowerCasePackageName = useLowerCasePackageName;
 	}
 
 	private void createNamespaceToPackageMapping(File file, Properties mapping) throws IOException {
@@ -132,8 +136,14 @@ public class NamespaceToPackageMappingGenerator {
 						pathParts[pathParts.length-1] = "";
 					}
 				
-					//remove version part for WS port artifact
-					if(isBindingPart(pathParts[pathParts.length-1])){
+					//check for WS port artifact
+					if(pathParts.length > 0 && isBindingPart(pathParts[pathParts.length-1])){
+						//convert to lower case if useLowerCasePackageName is set
+						if(useLowerCasePackageName){
+							pathParts[pathParts.length-1] = pathParts[pathParts.length-1].toLowerCase();
+						}
+						
+						//remove version info
 						if(pathParts.length > 1 && isVersionPart(pathParts[pathParts.length-2])){
 							pathParts[pathParts.length-2] = "";
 						}

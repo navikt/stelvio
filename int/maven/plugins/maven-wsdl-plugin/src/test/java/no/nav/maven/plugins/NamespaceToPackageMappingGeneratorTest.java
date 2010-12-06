@@ -43,8 +43,9 @@ public class NamespaceToPackageMappingGeneratorTest {
 	public void testRemoveVersionInfoInNamespaceToPackageMapping() throws Exception {
 		URL wsdlDirectoryURL = this.getClass().getClassLoader().getResource("wsdl");
 		File wsdlDirectory = new File(new URI(wsdlDirectoryURL.toString()));
-		Properties mapping = new NamespaceToPackageMappingGenerator().setRemoveVersionInfo(true)
-				.createNamespaceToPackageMappingFromWSDLDirectory(wsdlDirectory);
+		NamespaceToPackageMappingGenerator ns2pmg = new NamespaceToPackageMappingGenerator();
+		ns2pmg.setRemoveVersionInfo(true);
+		Properties mapping = ns2pmg.createNamespaceToPackageMappingFromWSDLDirectory(wsdlDirectory);
 		assertEquals("no.nav.gbo", mapping.get("http://poc-lib1-versionedNamespace/no/nav/gbo/v1"));
 	}
 	
