@@ -53,6 +53,8 @@
 					<include>**/*.mon</include>
 					<include>**/*.bcfg</include>
 					<include>**/*.scaj2ee</include>
+					<include>**/*.subflow</include>
+					<include>**/*.subflowex</include>
 				</includes>
 			</resource>
 		</resources>
