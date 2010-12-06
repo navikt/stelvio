@@ -103,8 +103,79 @@
 				<users name="utvPensjon" />
 				<users name="srvPensjon" />
 			</authorizations>
+			<authorizations role="//@appProject/@securityrole.25">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.26">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.27">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.28">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.29">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.30">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.31">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.32">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.33">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.34">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.35">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.36">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.37">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.38">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.39">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.40">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.41">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
+			<authorizations role="//@appProject/@securityrole.42">
+				<users name="utvPensjon" />
+				<users name="srvPensjon" />
+			</authorizations>
 		</authorizationTable>
-		<securityrole roleName="PensjonOpptjening"></securityrole>
 		<securityrole roleName="JOARKConsumer"></securityrole>
 		<securityrole roleName="EIAConsumer"></securityrole>
 		<securityrole roleName="FKConsumer"></securityrole>
@@ -128,6 +199,24 @@
 		<securityrole roleName="INFOTConsumer"></securityrole>
 		<securityrole roleName="TESTConsumer"></securityrole>
 		<securityrole roleName="BPROCROUTER"></securityrole>
+		<securityrole roleName="NAVArkiv"></securityrole>
 		<securityrole roleName="NAVFamilieforhold"></securityrole>
+		<securityrole roleName="NAVFullmakt"></securityrole>
+		<securityrole roleName="NAVOppdrag"></securityrole>
+		<securityrole roleName="NAVOppgave"></securityrole>
+		<securityrole roleName="NAVOpptjening"></securityrole>
+		<securityrole roleName="NAVSamordning"></securityrole>
+		<securityrole roleName="PensjonBehandleAFPPrivat"></securityrole>
+		<securityrole roleName="PensjonBehandleDodsmeldinger"></securityrole>
+		<securityrole roleName="PensjonBehandleEndringAvUttaksgrad"></securityrole>
+		<securityrole roleName="PensjonBehandleFleksibelAPSak"></securityrole>
+		<securityrole roleName="PensjonBeregning"></securityrole>
+		<securityrole roleName="PensjonGrunnlag"></securityrole>
+		<securityrole roleName="PensjonIverksetting"></securityrole>
+		<securityrole roleName="PensjonIverksettVedtak"></securityrole>
+		<securityrole roleName="PensjonKrav"></securityrole>
+		<securityrole roleName="PensjonOverforeOmsorgspoeng"></securityrole>
+		<securityrole roleName="PensjonSak"></securityrole>
+		<securityrole roleName="PensjonVedtak"></securityrole>
 	</appProject>
 </scaj2ee:IntegrationModuleDeploymentConfiguration>
