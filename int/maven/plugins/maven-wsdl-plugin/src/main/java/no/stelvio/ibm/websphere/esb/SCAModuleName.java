@@ -19,7 +19,7 @@ public class SCAModuleName {
 	public static String createVersionedModuleName(String moduleName,
 			Version version, String unqiueCellId) {
 		StringBuilder result = new StringBuilder(moduleName);
-		if (!version.isSnapshot() && version.getMajor() != null) {
+		if (version.getMajor() != null) {
 			result.append("_v");
 			result.append(version.getMajor());
 			if (version.getMinor() != null) {
