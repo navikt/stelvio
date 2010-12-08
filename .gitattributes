@@ -3836,7 +3836,6 @@ int/maven/poms/maven-wasdeploy-pom/pom.xml -text
 int/maven/poms/maven-wasdeploy-pom/scripts/InstallApp.py -text
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/pom.xml -text
-int/maven/poms/maven-wps-poms/maven-wps-module-pom/.project -text
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/pom.xml -text
 int/maven/poms/maven-wps-poms/maven-wps-pom/.project -text svneol=unset#text/plain
 int/maven/poms/maven-wps-poms/maven-wps-pom/pom.xml -text
