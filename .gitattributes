@@ -2535,6 +2535,12 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-client/src/s
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.settings/org.eclipse.wst.common.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/.project -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/stelvio-example-echo.emx -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/uml2wsdl.tc -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/.project -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/example/services/V1/EchoService/EchoService.wsdl -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/example/services/V1/EchoService/ExampleProvider.wsdl -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/EchoServiceWSEXP.export -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/CopyInputToOutputImpl.map -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/CopyInputToOutputImpl.xsl -text

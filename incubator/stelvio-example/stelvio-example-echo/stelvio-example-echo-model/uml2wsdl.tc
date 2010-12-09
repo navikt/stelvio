@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><TransformationConfiguration forwardTransformation="com.ibm.xtools.transform.uml2.wsdl.internal.Uml2WsdlTransform" version="7.0.0">
+<!--xtools2_universal_type_manager-->
+<Property id="/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_7TqU0APdEeCXVKYffJrB5gResourceTableDefaultFile" value="@45,=@com.ibm.xtools.transform.core.metatype.stringEchoService"/>
+<Property id="/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_7TqU0APdEeCXVKYffJrB5gResourceTableDefaultFolder" value="@45,=@com.ibm.xtools.transform.core.metatype.stringexample/services/V1/EchoService"/>
+<Property id="/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_7TqU0APdEeCXVKYffJrB5gResourceTableFile" value="@45,=@com.ibm.xtools.transform.core.metatype.stringEchoService"/>
+<Property id="/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_7TqU0APdEeCXVKYffJrB5gResourceTableFileDefaultNamespace" value="@45,=@com.ibm.xtools.transform.core.metatype.stringhttp://www.stelvio.no/example/services/V1/EchoService/"/>
+<Property id="/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_7TqU0APdEeCXVKYffJrB5gResourceTableFileExtension" value="@45,=@com.ibm.xtools.transform.core.metatype.stringwsdl"/>
+<Property id="/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_7TqU0APdEeCXVKYffJrB5gResourceTableFileNamespace" value="@45,=@com.ibm.xtools.transform.core.metatype.stringhttp://www.stelvio.no/example/services/V1/EchoService/"/>
+<Property id="/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_7TqU0APdEeCXVKYffJrB5gResourceTableFolder" value="@45,=@com.ibm.xtools.transform.core.metatype.stringexample/services/V1/EchoService"/>
+<Property id="/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_7TqU0APdEeCXVKYffJrB5gResourceTableQName" value="@45,=@com.ibm.xtools.transform.core.metatype.stringwww.stelvio.no::example::services::V1::EchoService"/>
+<Property id="AuroSaveRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
+<Property id="AuroValidateRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
+<Property id="CONTEXT_SOURCE" value="@49,test@example.com,162&amp;lt;ELEM_START&amp;gt;@47,test@example.com:/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_ditNgAPdEeCXVKYffJrB5g"/>
+<Property id="CONTEXT_TARGET_CONTAINER" value="@46,=@com.ibm.xtools.transform.core.metatype.project/stelvio-example-echo-service-specification"/>
+<Property id="DCMP" value="@43,test@example.com"/>
+<Property id="EnableReverseTransformation" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="FORWARD_TRANSFORMATION_EXTENSIONS_STATUS" value="@42,test@example.com=falsejava.util.HashMap,100,57&amp;lt;ELEM_START&amp;gt;@45,=@com.ibm.xtools.transform.core.metatype.stringcom.ibm.xtools.transform.uml2.wsdl.globalElements,@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="OpenReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="PARENT_CONFIG_URIS" value="@49,test@example.com&amp;lt;ELEM_START&amp;gt;"/>
+<Property id="PopulateAllProperty" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="RsaVersion" value="@45,=@com.ibm.xtools.transform.core.metatype.string7.5.0.0"/>
+<Property id="ShowWarningsInReportDialog" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="com.ibm.xtools.transform.merge.option" value="@45,=@com.ibm.xtools.transform.core.metatype.stringAlways_Overwrite"/>
+<Property id="detectCyclicReferences" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="extensiveValidation" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
+<Property id="generateComplexTypeForEmptyRequest" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
+<Property id="logTrace" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="procesWothoutStereotype" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="processDataTypesStyle" value="@45,=@com.ibm.xtools.transform.core.metatype.choice0"/>
+<Property id="replaceUML" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="reverseNsFirstSegment" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="silentlyAddRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="useWidStyle" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="wsdl_transport_property" value="@45,=@com.ibm.xtools.transform.core.metatype.stringHTTP"/>
+<Property id="www.stelvio.no::example::services::V1::EchoService::EchoService" value="@45,=@com.ibm.xtools.transform.core.metatype.stringWRAPPED-DOCUMENT-LITERAL"/>
+</TransformationConfiguration>
