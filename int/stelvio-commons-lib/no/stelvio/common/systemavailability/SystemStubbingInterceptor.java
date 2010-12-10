@@ -24,6 +24,7 @@ import com.ibm.websphere.bo.BOXMLSerializer;
 import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.ServiceUnavailableException;
+import com.ibm.ws.bo.bomodel.util.BOPropertyImpl;
 import com.ibm.wsspi.sca.scdl.OperationType;
 import commonj.sdo.DataObject;
 import commonj.sdo.Property;
@@ -86,13 +87,16 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	private Object recordStubData(OperationType operationType, Object input, InterceptorChain interceptorChain) {
 		RuntimeException exception = null;
 		Object output = null;
+		validateSupportedInput(operationType, input);
+		String requestId = Long.toString(System.currentTimeMillis());
+		recordStubDataRequest(requestId, operationType, input);
 		try {
 			output = interceptorChain.doIntercept(operationType, input);
 		} catch (RuntimeException e) {
 			exception = e;
 		}
-		validateSupported(operationType, input, output);
-		recordStubData(operationType, input, output, exception);
+		validateSupportedOutput(requestId, operationType, output, exception);
+		recordStubDataResponse(requestId, operationType, output, exception);
 		if (exception != null) {
 			throw exception;
 		} else {
@@ -100,8 +104,12 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		}
 	}
 
-	private boolean isOneWayOperation(Type outputType) {
-		return outputType == null;
+	private boolean isOneWayOperation(OperationType operationType) {
+		Type outputType = operationType.getOutputType();
+		if (!operationType.isWrappedStyle()) {
+			return outputType == null;
+		}
+		return (outputType.getProperties().size() == 0);
 	}
 
 	private Object findStubData(OperationType operationType, Object input) {
@@ -116,15 +124,25 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		Arrays.sort(requestFiles);
 
 		DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
+		
+		// Workaround start
+		if (operationType.isWrapperType(inputDataObject.getType())) {
+			inputDataObject = (DataObject)inputDataObject.get(0);
+		}
+		removeRequestContext(inputDataObject);
+		// Workaround slutt
+		
 		BOEquality boEquality = getBOEquality();
 		for (File requestFile : requestFiles) {
 			DataObject requestDataObject = readStubData(requestFile);
+			String requestFilename = requestFile.getName();
+			
 			if (isDefaultRequest(requestDataObject) || boEquality.isEqual(inputDataObject, requestDataObject)) {
-				if (isOneWayOperation(operationType.getOutputType())) {
+				if (isOneWayOperation(operationType)) {
+					checkForException(directory, requestFilename);
 					return null;
 				}
 
-				String requestFilename = requestFile.getName();
 				String responseFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
 						+ "_Response.xml";
 				File responseFile = new File(directory, responseFilename);
@@ -136,43 +154,63 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 						return responseDataObject;
 					}
 				}
-				String exceptionFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
-						+ "_Exception.xml";
-				File exceptionFile = new File(directory, exceptionFilename);
-				if (exceptionFile.exists()) {
-					DataObject faultDataObject = readStubData(exceptionFile);
-					throw new ServiceBusinessException(faultDataObject);
-				}
-				String runtimeExceptionFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
-						+ "_RuntimeException.ser";
-				File runtimeExceptionFile = new File(directory, runtimeExceptionFilename);
-				if (runtimeExceptionFile.exists()) {
-					throw readRuntimeException(runtimeExceptionFile);
-				}
+				checkForException(directory, requestFilename);
 			}
 		}
 		throw new IllegalStateException("No matching stub found for system " + systemName + ", operation "
 				+ operationType.getName() + " in path " + directory);
 	}
+	
+	private void checkForException(File directory, String requestFilename) {
+		String exceptionFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
+		+ "_Exception.xml";
+		File exceptionFile = new File(directory, exceptionFilename);
+		if (exceptionFile.exists()) {
+			DataObject faultDataObject = readStubData(exceptionFile);
+			throw new ServiceBusinessException(faultDataObject);
+		}
+		String runtimeExceptionFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
+				+ "_RuntimeException.ser";
+		File runtimeExceptionFile = new File(directory, runtimeExceptionFilename);
+		if (runtimeExceptionFile.exists()) {
+			throw readRuntimeException(runtimeExceptionFile);
+		}
+	}
 
-	private void validateSupported(OperationType operationType, Object input, Object output) {
+	private void validateSupportedInput(OperationType operationType, Object input) {
+		if (!operationType.isWrappedStyle() && input == null) {
+			throw new UnsupportedOperationException(
+					"Document literal non-wrapped operations with null as input are currently not supported by the stubbing framework.");
+		}
+	}
+	
+	private void validateSupportedOutput(String requestId, OperationType operationType, Object output, Exception exception) {
 		if (!operationType.isWrappedStyle()) {
-			if (input == null) {
-				throw new UnsupportedOperationException(
-						"Document literal non-wrapped operations with null as input are currently not supported by the stubbing framework.");
-			}
 			Type outputType = operationType.getOutputType();
-			if (!isOneWayOperation(outputType)) {
+			if (!isOneWayOperation(operationType)) {
 				if (!outputType.isDataType() && operationType.isWrapperType(outputType)) {
+					String fail = removeRequestStubbingFile(requestId, operationType);
 					throw new UnsupportedOperationException(
-							"Document literal non-wrapped two-way operations without response (void methods) are currently not supported by the stubbing framework.");
+							"Document literal non-wrapped two-way operations without response (void methods) are currently not supported by the stubbing framework. " + fail);
 				}
-				if (output == null) {
+				if (output == null && exception == null) {
+					String fail = removeRequestStubbingFile(requestId, operationType);
 					throw new UnsupportedOperationException(
-							"Document literal non-wrapped operations with null as output are currently not supported by the stubbing framework.");
+							"Document literal non-wrapped operations with null as output are currently not supported by the stubbing framework. " + fail);
 				}
 			}
 		}
+	}
+	
+	private String removeRequestStubbingFile(String requestId, OperationType operationType) {
+		String response = "\nError! The request stubbing file could not be deleted!";
+		File request = new File(getDirectory(operationType), getFilename(requestId, "Request.xml"));
+		if (request != null && request.exists()) {
+			if (request.delete() == true) {
+				return "";
+			}
+		}
+		return response;
 	}
 
 	private boolean isDefaultRequest(DataObject requestDataObject) {
@@ -213,42 +251,107 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		}
 	}
 
-	private void recordStubData(OperationType operationType, Object input, Object output, RuntimeException exception) {
-		String requestId = Long.toString(System.currentTimeMillis());
+	private void recordStubDataRequest(String requestId, OperationType operationType, Object input) {
 		File directory = getDirectory(operationType);
 
 		DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
-		persistStubData(inputDataObject, new File(directory, getFilename(requestId, "Request.xml")));
-
+		persistStubData(inputDataObject, new File(directory, getFilename(requestId, "Request.xml")), operationType);
+	}
+	
+	private void recordStubDataResponse(String requestId, OperationType operationType, Object output, RuntimeException exception) {
+		File directory = getDirectory(operationType);
+		
 		if (exception != null) {
 			if (exception instanceof ServiceBusinessException) {
 				DataObject faultDataObject = (DataObject) ((ServiceBusinessException) exception).getData();
-				persistStubData(faultDataObject, new File(directory, getFilename(requestId, "Exception.xml")));
+				persistStubData(faultDataObject, new File(directory, getFilename(requestId, "Exception.xml")), operationType);
 			} else {
 				persistStubData(exception, new File(directory, getFilename(requestId, "RuntimeException.ser")));
 			}
 		} else {
 			Type outputType = operationType.getOutputType();
-			if (!isOneWayOperation(outputType)) {
+			if (!isOneWayOperation(operationType)) {
 				// Two-way operation
 				DataObject outputDataObject = getDataObject(outputType, output);
-				persistStubData(outputDataObject, new File(directory, getFilename(requestId, "Response.xml")));
+				persistStubData(outputDataObject, new File(directory, getFilename(requestId, "Response.xml")), operationType);
 			}
 		}
 	}
 
-	private void persistStubData(DataObject dataObject, File file) {
+	private void persistStubData(DataObject dataObject, File file, OperationType operationType) {
 		OutputStream outputStream = null;
 		try {
 			outputStream = new FileOutputStream(file);
 			Type type = dataObject.getType();
-			getBOXMLSerializer().writeDataObject(dataObject, type.getURI(), type.getName(), outputStream);
+			
+			// Workaround start
+			if (operationType.isWrapperType(type)) {
+				DataObject child = (DataObject)dataObject.get(0);
+				removeRequestContext(child);
+				getBOXMLSerializer().writeDataObject(child, type.getURI(), type.getName(), outputStream);
+				System.out.println("WrapperType");
+			} else {
+				getBOXMLSerializer().writeDataObject(dataObject, type.getURI(), type.getName(), outputStream);
+				System.out.println("Not WrapperType");
+			}
+			// Workaround slutt
 		} catch (IOException e) {
 			logger.logp(Level.WARNING, getClass().getName(), "persistStubData", "Error persisting stub data", e);
 		} finally {
 			closeQuietly(outputStream);
 		}
 	}
+	
+	/*
+	// Metode for å lage et DOM-dokument
+	private Document createDocument(DataObject dataObject) {
+		Type type = dataObject.getType();
+		try {
+			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+			Element element = createElement(doc, dataObject, type.getName());
+			String uri = type.getURI();
+			element.setAttribute("uri", uri);
+			doc.appendChild(element);
+			doc.normalize();
+			return doc;
+		} catch (ParserConfigurationException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "createDocument", "Error creating stub request document", e);
+			return null;
+		}
+	}
+	
+	// Metode for å lage DOM-element av et DataObject.
+	private Element createElement(Document doc, DataObject dataObject, String name) {
+		Element element = doc.createElement(name);
+		Type type = dataObject.getType();
+		List properties = type.getProperties();
+		for (int i = 0; i < properties.size(); i++) {
+			Property property = (Property) properties.get(i);
+			String propName = property.getName();
+			Object object = dataObject.get(propName);
+			addChildren(doc, object, element, propName);
+		}
+		
+		return element;
+	}
+	// Legger til alle barna til et element
+	private void addChildren(Document doc, Object obj, Element parent, String name) {
+		if (obj instanceof DataObject) {
+			parent.appendChild(createElement(doc, (DataObject) obj, name));
+		} else if (obj instanceof List) {
+			List list = (List) obj;
+			for (int i = 0; i < list.size(); i++) {
+				Object listObj = list.get(i);
+				addChildren(doc, listObj, parent, name);
+			}
+		} else if (obj != null) {
+			Element element = doc.createElement(name);
+			Text text = doc.createTextNode(obj.toString());
+			element.appendChild(text);
+			parent.appendChild(element);
+		}
+	}
+	*/
 
 	private void persistStubData(RuntimeException exception, File file) {
 		ObjectOutputStream objectOutputStream = null;
@@ -306,5 +409,15 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 
 	private BOType getBOType() {
 		return (BOType) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOType");
+	}
+
+	private void removeRequestContext(DataObject dataObject) {
+		List properties = dataObject.getInstanceProperties();
+		for (int i = 0; i < properties.size(); i++) {
+			BOPropertyImpl prop = (BOPropertyImpl) properties.get(i);
+			if (prop != null && prop.getType() != null && "requestContextDto".equals(prop.getType().getName())) {
+				dataObject.setDataObject(prop.getName(), null);
+			}
+		}
 	}
 }
