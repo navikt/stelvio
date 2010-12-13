@@ -35,6 +35,7 @@ import commonj.sdo.Type;
  * 
  * @author person73874c7d71f8
  * @author test@example.com
+ * @author test@example.com
  */
 public class SystemStubbingInterceptor extends GenericInterceptor {
 	private final String systemName;
@@ -83,35 +84,15 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		}
 		return interceptorChain.doIntercept(operationType, input);
 	}
-
-	private Object recordStubData(OperationType operationType, Object input, InterceptorChain interceptorChain) {
-		RuntimeException exception = null;
-		Object output = null;
-		validateSupportedInput(operationType, input);
-		String requestId = Long.toString(System.currentTimeMillis());
-		recordStubDataRequest(requestId, operationType, input);
-		try {
-			output = interceptorChain.doIntercept(operationType, input);
-		} catch (RuntimeException e) {
-			exception = e;
-		}
-		validateSupportedOutput(requestId, operationType, output, exception);
-		recordStubDataResponse(requestId, operationType, output, exception);
-		if (exception != null) {
-			throw exception;
-		} else {
-			return output;
-		}
-	}
-
-	private boolean isOneWayOperation(OperationType operationType) {
-		Type outputType = operationType.getOutputType();
-		if (!operationType.isWrappedStyle()) {
-			return outputType == null;
-		}
-		return (outputType.getProperties().size() == 0);
-	}
-
+	
+	/**
+	 * Returnerer respons/exception-objekt hvis innkommende operasjon er recorded.
+	 * Kaster IllegalStateException hvis operasjonen ikke er recorded (ingen matchende request).
+	 * 
+	 * @param operationType
+	 * @param input
+	 * @return
+	 */
 	private Object findStubData(OperationType operationType, Object input) {
 		File directory = getDirectory(operationType);
 
@@ -160,7 +141,13 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		throw new IllegalStateException("No matching stub found for system " + systemName + ", operation "
 				+ operationType.getName() + " in path " + directory);
 	}
-	
+
+	/**
+	 * Hjelpemetode for å se etter om innkommende request har en matchende exception-response.
+	 * 
+	 * @param directory
+	 * @param requestFilename
+	 */
 	private void checkForException(File directory, String requestFilename) {
 		String exceptionFilename = requestFilename.substring(0, requestFilename.indexOf("_Request.xml"))
 		+ "_Exception.xml";
@@ -176,7 +163,63 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			throw readRuntimeException(runtimeExceptionFile);
 		}
 	}
+	
+	/**
+	 * Leser exception fra fil og kaster denne som RuntimeException.
+	 * 
+	 * @param file
+	 * @return
+	 */
+	private RuntimeException readRuntimeException(File file) {
+		ObjectInputStream objectInputStream = null;
+		try {
+			objectInputStream = new ObjectInputStream(new FileInputStream(file));
+			return (RuntimeException) objectInputStream.readObject();
+		} catch (IOException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "readRuntimeException", "Error reading runtime exception", e);
+			throw new RuntimeException(e);
+		} catch (ClassNotFoundException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "readRuntimeException", "Error reading runtime exception", e);
+			throw new RuntimeException(e);
+		} finally {
+			closeQuietly(objectInputStream);
+		}
+	}
+	
+	/**
+	 * Metode for recording av data (skriving av request/response/exception til fil).
+	 * 
+	 * @param operationType
+	 * @param input
+	 * @param interceptorChain
+	 * @return
+	 */
+	private Object recordStubData(OperationType operationType, Object input, InterceptorChain interceptorChain) {
+		RuntimeException exception = null;
+		Object output = null;
+		validateSupportedInput(operationType, input);
+		String requestId = Long.toString(System.currentTimeMillis());
+		recordStubDataRequest(requestId, operationType, input);
+		try {
+			output = interceptorChain.doIntercept(operationType, input);
+		} catch (RuntimeException e) {
+			exception = e;
+		}
+		validateSupportedOutput(requestId, operationType, output, exception);
+		recordStubDataResponse(requestId, operationType, output, exception);
+		if (exception != null) {
+			throw exception;
+		} else {
+			return output;
+		}
+	}
 
+	/**
+	 * Input kan ikke være null med mindre operasjonstype er "WrappedStyle" (kompleks dataobjekt, og ikke int/boolean osv).
+	 * 
+	 * @param operationType
+	 * @param input
+	 */
 	private void validateSupportedInput(OperationType operationType, Object input) {
 		if (!operationType.isWrappedStyle() && input == null) {
 			throw new UnsupportedOperationException(
@@ -184,6 +227,14 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		}
 	}
 	
+	/**
+	 * Output kan ikke være null med mindre operasjonstype er "WrappedStyle" (kompleks dataobjekt, og ikke int/boolean osv).
+	 * 
+	 * @param requestId
+	 * @param operationType
+	 * @param output
+	 * @param exception
+	 */
 	private void validateSupportedOutput(String requestId, OperationType operationType, Object output, Exception exception) {
 		if (!operationType.isWrappedStyle()) {
 			Type outputType = operationType.getOutputType();
@@ -202,42 +253,71 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		}
 	}
 	
+	/**
+	 * Recording fungerer slik at først skriver vi requesten til fil.
+	 * Så utføres kallet, og hvis det viser seg at responsen er null og operasjonstype ikke er "WrappedStyle", så er ikke operasjonen støttet av stubbingrammeverket.
+	 * I disse tilfellene skal request-filen som ble laget, slettes igjen.
+	 * 
+	 * @param requestId
+	 * @param operationType
+	 * @return
+	 */
 	private String removeRequestStubbingFile(String requestId, OperationType operationType) {
-		String response = "\nError! The request stubbing file could not be deleted!";
 		File request = new File(getDirectory(operationType), getFilename(requestId, "Request.xml"));
 		if (request != null && request.exists()) {
 			if (request.delete() == true) {
 				return "";
 			}
 		}
-		return response;
+		return "\nError! The request stubbing file \"" + getFilename(requestId, "Request.xml") + "\" could not be deleted!";
 	}
 
-	private boolean isDefaultRequest(DataObject requestDataObject) {
-		for (Property property : (List<Property>) requestDataObject.getType().getProperties()) {
-			if (requestDataObject.isSet(property)) {
-				return false;
+	/**
+	 * Tar imot input, behandler denne, og skriver den til fil.
+	 * 
+	 * @param requestId
+	 * @param operationType
+	 * @param input
+	 */
+	private void recordStubDataRequest(String requestId, OperationType operationType, Object input) {
+		File directory = getDirectory(operationType);
+
+		DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
+		persistStubData(inputDataObject, new File(directory, getFilename(requestId, "Request.xml")), operationType);
+	}
+	
+	/**
+	 * Tar imot output og exception (én av disse er null ved toveisoperasjon), og skriver til fil.
+	 * 
+	 * @param requestId
+	 * @param operationType
+	 * @param output
+	 * @param exception
+	 */
+	private void recordStubDataResponse(String requestId, OperationType operationType, Object output, RuntimeException exception) {
+		File directory = getDirectory(operationType);
+		
+		if (exception != null) {
+			if (exception instanceof ServiceBusinessException) {
+				DataObject faultDataObject = (DataObject) ((ServiceBusinessException) exception).getData();
+				persistStubData(faultDataObject, new File(directory, getFilename(requestId, "Exception.xml")), operationType);
+			} else {
+				persistStubData(exception, new File(directory, getFilename(requestId, "RuntimeException.ser")));
 			}
-		}
-		return true;
-	}
-
-	private RuntimeException readRuntimeException(File file) {
-		ObjectInputStream objectInputStream = null;
-		try {
-			objectInputStream = new ObjectInputStream(new FileInputStream(file));
-			return (RuntimeException) objectInputStream.readObject();
-		} catch (IOException e) {
-			logger.logp(Level.WARNING, getClass().getName(), "readRuntimeException", "Error reading runtime exception", e);
-			throw new RuntimeException(e);
-		} catch (ClassNotFoundException e) {
-			logger.logp(Level.WARNING, getClass().getName(), "readRuntimeException", "Error reading runtime exception", e);
-			throw new RuntimeException(e);
-		} finally {
-			closeQuietly(objectInputStream);
+		} else if (!isOneWayOperation(operationType)) {
+			// Two-way operation
+			Type outputType = operationType.getOutputType();
+			DataObject outputDataObject = getDataObject(outputType, output);
+			persistStubData(outputDataObject, new File(directory, getFilename(requestId, "Response.xml")), operationType);
 		}
 	}
 
+	/**
+	 * Hjelpemetode for å lese en fil og returnere denne som et DataObject.
+	 * 
+	 * @param file
+	 * @return
+	 */
 	private DataObject readStubData(File file) {
 		InputStream inputStream = null;
 		try {
@@ -250,34 +330,14 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			closeQuietly(inputStream);
 		}
 	}
-
-	private void recordStubDataRequest(String requestId, OperationType operationType, Object input) {
-		File directory = getDirectory(operationType);
-
-		DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
-		persistStubData(inputDataObject, new File(directory, getFilename(requestId, "Request.xml")), operationType);
-	}
 	
-	private void recordStubDataResponse(String requestId, OperationType operationType, Object output, RuntimeException exception) {
-		File directory = getDirectory(operationType);
-		
-		if (exception != null) {
-			if (exception instanceof ServiceBusinessException) {
-				DataObject faultDataObject = (DataObject) ((ServiceBusinessException) exception).getData();
-				persistStubData(faultDataObject, new File(directory, getFilename(requestId, "Exception.xml")), operationType);
-			} else {
-				persistStubData(exception, new File(directory, getFilename(requestId, "RuntimeException.ser")));
-			}
-		} else {
-			Type outputType = operationType.getOutputType();
-			if (!isOneWayOperation(operationType)) {
-				// Two-way operation
-				DataObject outputDataObject = getDataObject(outputType, output);
-				persistStubData(outputDataObject, new File(directory, getFilename(requestId, "Response.xml")), operationType);
-			}
-		}
-	}
-
+	/**
+	 * Hjelpemetode for å skrive et DataObject til fil.
+	 * 
+	 * @param dataObject
+	 * @param file
+	 * @param operationType
+	 */
 	private void persistStubData(DataObject dataObject, File file, OperationType operationType) {
 		OutputStream outputStream = null;
 		try {
@@ -299,6 +359,25 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			logger.logp(Level.WARNING, getClass().getName(), "persistStubData", "Error persisting stub data", e);
 		} finally {
 			closeQuietly(outputStream);
+		}
+	}
+
+	/**
+	 * Hjelpemetode for å skrive en RuntimeException til fil.
+	 * 
+	 * @param dataObject
+	 * @param file
+	 * @param operationType
+	 */
+	private void persistStubData(RuntimeException exception, File file) {
+		ObjectOutputStream objectOutputStream = null;
+		try {
+			objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
+			objectOutputStream.writeObject(exception);
+		} catch (IOException e) {
+			logger.logp(Level.WARNING, getClass().getName(), "persistStubData", "Error persisting stub data", e);
+		} finally {
+			closeQuietly(objectOutputStream);
 		}
 	}
 	
@@ -352,18 +431,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		}
 	}
 	*/
-
-	private void persistStubData(RuntimeException exception, File file) {
-		ObjectOutputStream objectOutputStream = null;
-		try {
-			objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
-			objectOutputStream.writeObject(exception);
-		} catch (IOException e) {
-			logger.logp(Level.WARNING, getClass().getName(), "persistStubData", "Error persisting stub data", e);
-		} finally {
-			closeQuietly(objectOutputStream);
-		}
-	}
+	
 
 	private void closeQuietly(Closeable closeable) {
 		try {
@@ -394,7 +462,34 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			return getBOFactory().createDataTypeWrapper(type, obj);
 		}
 	}
+	
+	private boolean isOneWayOperation(OperationType operationType) {
+		Type outputType = operationType.getOutputType();
+		if (!operationType.isWrappedStyle()) {
+			return outputType == null;
+		}
+		return (outputType.getProperties().size() == 0);
+	}
+	
+	private boolean isDefaultRequest(DataObject requestDataObject) {
+		for (Property property : (List<Property>) requestDataObject.getType().getProperties()) {
+			if (requestDataObject.isSet(property)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
+	private void removeRequestContext(DataObject dataObject) {
+		List properties = dataObject.getInstanceProperties();
+		for (int i = 0; i < properties.size(); i++) {
+			BOPropertyImpl prop = (BOPropertyImpl) properties.get(i);
+			if (prop != null && prop.getType() != null && "requestContextDto".equals(prop.getType().getName())) {
+				dataObject.setDataObject(prop.getName(), null);
+			}
+		}
+	}
+	
 	private BOFactory getBOFactory() {
 		return (BOFactory) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOFactory");
 	}
@@ -409,15 +504,5 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 
 	private BOType getBOType() {
 		return (BOType) ServiceManager.INSTANCE.locateService("com/ibm/websphere/bo/BOType");
-	}
-
-	private void removeRequestContext(DataObject dataObject) {
-		List properties = dataObject.getInstanceProperties();
-		for (int i = 0; i < properties.size(); i++) {
-			BOPropertyImpl prop = (BOPropertyImpl) properties.get(i);
-			if (prop != null && prop.getType() != null && "requestContextDto".equals(prop.getType().getName())) {
-				dataObject.setDataObject(prop.getName(), null);
-			}
-		}
 	}
 }
