@@ -3734,7 +3734,6 @@ int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/mojo
 int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/mojos/FileHandlerMojo.java -text
 int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/mojos/LoadXMLPropertiesMojo.java -text
 int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/mojos/ProcessDependenciesMojo.java -text
-int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/ApplicationArtifactDependency.java -text
 int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/Archiver.java -text
 int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/NativeOps.java -text
 int/maven/plugins/maven-wasdeploy-plugin/src/main/java/no/nav/maven/plugins/utils/SSHUtil.java -text

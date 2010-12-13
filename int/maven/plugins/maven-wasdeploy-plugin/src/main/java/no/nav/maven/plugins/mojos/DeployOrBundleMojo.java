@@ -5,9 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.swing.text.ZoneView;
+import javax.xml.parsers.ParserConfigurationException;
 
-import no.nav.maven.plugins.utils.ApplicationArtifactDependency;
 import no.nav.maven.plugins.utils.Archiver;
 import no.nav.maven.plugins.utils.NativeOps;
 import no.nav.maven.plugins.utils.SSHUtil;
@@ -20,6 +19,7 @@ import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.cli.StreamConsumer;
+import org.xml.sax.SAXException;
 
 /**
  * Goal bundles everything or uploads application/batch config and deploys the
@@ -28,7 +28,7 @@ import org.codehaus.plexus.util.cli.StreamConsumer;
  * @goal deploy-or-bundle
  * 
  * @author test@example.com
- * 
+ *  
  */
 public class DeployOrBundleMojo extends AbstractMojo {
 
@@ -193,11 +193,17 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	 * @parameter expression="${wsadminLocation}"
 	 */
 	private String wsadminLocation;
+	
+	/**
+	 * @parameter expression="${applicationConfig}"
+	 * @required
+	 */
+	private String applicationConfig;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		try {
 
-			boolean isBatch = ApplicationArtifactDependency.isBatch(application);
+			boolean isBatch = ProcessDependenciesMojo.isBatch(applicationConfig, application);
 
 			if (bundleEnvironment.equals("true")) {
 				bundle(isBatch);
@@ -209,6 +215,10 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		} catch (IOException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		} catch (CommandLineException e) {
+			throw new MojoFailureException("[ERROR]: " + e);
+		} catch (SAXException e) {
+			throw new MojoFailureException("[ERROR]: " + e);
+		} catch (ParserConfigurationException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		}
 	}
