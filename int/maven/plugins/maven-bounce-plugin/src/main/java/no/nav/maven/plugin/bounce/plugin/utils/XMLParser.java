@@ -10,6 +10,10 @@ import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import no.nav.devarch.utils.Application;
+import no.nav.devarch.utils.ApplicationConfig;
+import no.nav.maven.plugin.bounce.plugin.utils.InvalideNodeValueException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -120,36 +124,12 @@ public class XMLParser {
 	/**
 	 * Parser restart_config.xml file and gets flags for which modules should be restarted when given applications are deployed
 	 * @param file
-	 * @return a HashMap with names of applications as keys and RestartConfig objects as values
-	 * format: app:was_ss/was_is/wps
+	 * @return a HashMap with names of applications as keys and Application objects as values
 	 * @throws SAXException
 	 * @throws IOException
 	 * @throws ParserConfigurationException
 	 */
-	public static HashMap<String, RestartConfig> parseRestartConfigFile(File file) throws SAXException, IOException, ParserConfigurationException{
-		HashMap<String, RestartConfig> result = new HashMap<String, RestartConfig>();
-		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
-		xml.getDocumentElement().normalize();	
-				
-		NodeList applications = xml.getElementsByTagName("applications").item(0).getChildNodes();	
-		
-		for (int i=0;i<applications.getLength();i++){
-			Node node = applications.item(i);
-			if (node.hasChildNodes()){
-				NodeList modules = node.getChildNodes();
-				RestartConfig rc = new RestartConfig();
-				for (int j=0;j<modules.getLength();j++){
-					Node n = modules.item(j);
-					if (n.hasChildNodes()){
-						if (n.getNodeName().equals("name")) rc.setApp(n.getChildNodes().item(0).getNodeValue());
-						if (n.getNodeName().equals("was_sensitiv")) rc.setWas_ss((n.getChildNodes().item(0).getNodeValue()));
-						if (n.getNodeName().equals("was_intern")) rc.setWas_is((n.getChildNodes().item(0).getNodeValue()));
-						if (n.getNodeName().equals("wps")) rc.setWps((n.getChildNodes().item(0).getNodeValue()));
-					}
-				}
-				result.put(rc.getApp(), rc);
-			}
-		}
-		return result;
+	public static HashMap<String, Application> parseRestartConfigFile(String file) throws SAXException, IOException, ParserConfigurationException{
+		return ApplicationConfig.getApplications(file);	 
 	}
 }

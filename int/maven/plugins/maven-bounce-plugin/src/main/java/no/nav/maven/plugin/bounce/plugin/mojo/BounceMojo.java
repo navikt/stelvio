@@ -24,8 +24,8 @@ import java.util.HashMap;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import no.nav.devarch.utils.Application;
 import no.nav.maven.plugin.bounce.plugin.utils.InvalideNodeValueException;
-import no.nav.maven.plugin.bounce.plugin.utils.RestartConfig;
 import no.nav.maven.plugin.bounce.plugin.utils.XMLParser;
 
 import org.apache.maven.plugin.AbstractMojo;
@@ -159,13 +159,12 @@ public class BounceMojo extends AbstractMojo {
 		String[] apps_names = apps.split(",");
 
 		// restart_config.xml
-		File restartConfigFile = new File(this.restartCfgFile);
-		HashMap<String, RestartConfig> restart_config = XMLParser.parseRestartConfigFile(restartConfigFile);
+		HashMap<String, Application> restart_config = XMLParser.parseRestartConfigFile(this.restartCfgFile);
 		// set variables
 		for (String name : apps_names) {
-			was_ss_operation |= restart_config.get(name).hasWas_ss();
-			was_is_operation |= restart_config.get(name).hasWas_is();
-			wps_operation |= restart_config.get(name).hasWps();
+			was_ss_operation |= restart_config.get(name).isWasSSRestartRequired();
+			was_is_operation |= restart_config.get(name).isWasISRestartRequired();
+			wps_operation |= restart_config.get(name).isWpsRestartRequired();
 			if (name.equalsIgnoreCase("joark"))
 				this.includeJoark = true;
 		}
@@ -190,7 +189,7 @@ public class BounceMojo extends AbstractMojo {
 					operationMode = Operation.STOP;
 			} else {
 				getLog().info("");
-				getLog().info("Parsing restart configuration file ...");
+				getLog().info("Parsing application configuration file ...");
 				getLog().info("");
 				this.ResolveRestart();
 			}
@@ -252,10 +251,12 @@ public class BounceMojo extends AbstractMojo {
 
 			if ((operationMode == Operation.STOP || operationMode == Operation.RESTART)) {
 				this.modulesStop(was_ss_env_info, was_is_env_info, wps_env_info);
+//				getLog().info("STOP: wasSS>"+was_ss_operation + " wasIS>" + was_is_operation + " wps>"+wps_operation);
 			}
 
 			if ((operationMode == Operation.START || operationMode == Operation.RESTART)) {
 				this.modulesStart(was_ss_env_info, was_is_env_info, wps_env_info);
+//				getLog().info("START: wasSS>"+was_ss_operation + " wasIS>" + was_is_operation + " wps>"+wps_operation);
 			}
 		} catch (SAXException e) {
 			throw new MojoFailureException(e.getMessage());
