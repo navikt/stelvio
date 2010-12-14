@@ -5,7 +5,6 @@
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>maven-wasdeploy-pom</name>
-	<url>http://maven.apache.org</url>
 	
 	<properties>
 		<!-- hudson -->
@@ -15,10 +14,11 @@
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
 		<!-- /hudson -->
 		
-		<wasdeployVersion>1.4</wasdeployVersion>
+		<wasdeployVersion>1.5</wasdeployVersion>
 		<xmlvalidatorVersion>1.0</xmlvalidatorVersion>
 		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
+		<applicationConfig>${devArchBaseDir}/misc/config/applicationConfig.xml</applicationConfig>
 		<scriptAbsPath>${project.basedir}/scripts/InstallApp.py</scriptAbsPath>
 		<applicationProperties>${devArchBaseDir}/module_config/${app}/spring</applicationProperties>
 		<environmentFilesDir>${devArchBaseDir}/environments</environmentFilesDir>
@@ -42,7 +42,6 @@
 
 	<build>
 		<plugins>
-			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -61,7 +60,6 @@
 						</execution>
 				</executions>
        		 </plugin>
-       		 
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-xmlvalidator-plugin</artifactId>
@@ -81,7 +79,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wasdeploy-plugin</artifactId>
@@ -117,16 +114,15 @@
 						</goals>
 					</execution>
 					<!-- Step 8: Deploy + upload or bundle -->
-					<execution>
+					<!--execution>
 						<id>deploy-or-bundle</id>
 						<phase>process-classes</phase>
 						<goals>
 							<goal>deploy-or-bundle</goal>
 						</goals>
-					</execution>
+					</execution-->
 				</executions>
 			</plugin>
-
 			<!-- Step 5: Generate environment spesific configuration -->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -175,7 +171,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<!-- Step 7: Apply EJB security -->
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
