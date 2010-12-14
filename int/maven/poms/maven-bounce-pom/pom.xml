@@ -16,14 +16,14 @@
 	<name>maven-bounce-pom</name>
 
 	<properties>
-		<bounceVersion>1.2</bounceVersion>
+		<bounceVersion>1.3</bounceVersion>
 		<dependencyVersion>2.0</dependencyVersion>
 		<daConfigDirectory>da-config</daConfigDirectory>
 
 		<outputDir>${project.build.directory}</outputDir>
 		<environmentFilesDir>${outputDir}/${daConfigDirectory}/environments</environmentFilesDir>
 		<miscFilesDir>${outputDir}/${daConfigDirectory}/misc</miscFilesDir>
-		<restartConfigFile>${miscFilesDir}/config/restart_config.xml</restartConfigFile>
+		<restartConfigFile>${miscFilesDir}/config/applicationConfig.xml</restartConfigFile>
 	</properties>
 
 	<dependencies>
@@ -62,7 +62,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			
 			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-bounce-plugin</artifactId>
