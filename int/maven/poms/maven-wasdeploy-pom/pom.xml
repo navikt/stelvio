@@ -114,13 +114,13 @@
 						</goals>
 					</execution>
 					<!-- Step 8: Deploy + upload or bundle -->
-					<!--execution>
+					<execution>
 						<id>deploy-or-bundle</id>
 						<phase>process-classes</phase>
 						<goals>
 							<goal>deploy-or-bundle</goal>
 						</goals>
-					</execution-->
+					</execution>
 				</executions>
 			</plugin>
 			<!-- Step 5: Generate environment spesific configuration -->
