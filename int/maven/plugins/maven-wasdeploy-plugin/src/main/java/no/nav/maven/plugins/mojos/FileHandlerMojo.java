@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import no.nav.maven.plugins.utils.ApplicationArtifactDependency;
 import no.nav.maven.plugins.utils.Archiver;
 import no.nav.maven.plugins.utils.NativeOps;
 import no.nav.maven.plugins.utils.XMLOps;
@@ -122,6 +121,12 @@ public class FileHandlerMojo extends AbstractMojo {
 	private String roleMappingDir;
 
 	/**
+	 * @parameter expression="${applicationConfig}"
+	 * @required
+	 */
+	private String applicationConfig;
+	
+	/**
 	 * List of files to delete
 	 */
 	private ArrayList<String> filesToDelete;
@@ -134,7 +139,7 @@ public class FileHandlerMojo extends AbstractMojo {
 			filesToDelete = new ArrayList<String>();
 
 			// Checks whether the application your deploying contains batch
-			boolean isBatch = ApplicationArtifactDependency.isBatch(application);
+			boolean isBatch = ProcessDependenciesMojo.isBatch(applicationConfig, application);
 
 			// Copies the appropriate log4j settings for the application
 			copyLog4j(application, isBatch);
