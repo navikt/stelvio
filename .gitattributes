@@ -3612,6 +3612,9 @@ int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/p
 int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/plugin/utils/InvalideNodeValueException.java -text
 int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/plugin/utils/RestartConfig.java -text
 int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/plugin/utils/XMLParser.java -text
+int/maven/plugins/maven-config-verification-plugin/pom.xml -text
+int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/Archiver.java -text
+int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/VerifyConfigMojo.java -text
 int/maven/plugins/maven-confluence-plugin/pom.xml -text
 int/maven/plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddCommentMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddDownCommentMojo.java -text svneol=unset#text/plain
