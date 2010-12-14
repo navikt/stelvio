@@ -41,4 +41,19 @@
 		</dependency>
   </dependencies>
   
+  	<scm>
+		<connection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-config-verification-plugin
+		</connection>
+		<developerConnection>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-config-verification-plugin
+		</developerConnection>
+	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-config-verification-plugin
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
+  
 </project>
