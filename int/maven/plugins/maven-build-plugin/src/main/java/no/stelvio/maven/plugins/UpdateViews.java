@@ -19,27 +19,27 @@ package no.stelvio.maven.plugins;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 /**
- * Goal which touches a timestamp file.
+ * Goal which updates views for both DEV and INT streams
  *
- * @goal updateView
+ * @goal updateViews
  * 
- * @phase process-sources
+ * @author test@example.com
  */
 public class UpdateViews extends AbstractMojo
 {
 	/**
-	 * Stream - dev or int
+	 * Stream name - BUILD_TEST
 	 * @parameter expression="${stream}"
 	 * @required
 	 */
-
+	private String stream;
+	
     public void execute() throws MojoExecutionException
     {
-        
+    	this.getLog().info("----------------------------------");
+    	this.getLog().info("--- Updating views for streams ---");
+    	this.getLog().info("----------------------------------");
+        this.getLog().info("Updating views for " + this.stream);
     }
 }
