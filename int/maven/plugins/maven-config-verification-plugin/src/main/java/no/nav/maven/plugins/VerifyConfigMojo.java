@@ -1,8 +1,16 @@
 package no.nav.maven.plugins;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
+
+import javax.xml.parsers.ParserConfigurationException;
+
 import no.nav.devarch.utils.Application;
 import no.nav.devarch.utils.ApplicationConfig;
-import no.nav.maven.plugins.Archiver;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.InvalidRepositoryException;
@@ -15,23 +23,9 @@ import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.ProjectUtils;
 import org.codehaus.plexus.archiver.UnArchiver;
 import org.xml.sax.SAXException;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
-import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Goal that compares two property files and detects missing properties.
@@ -50,20 +44,13 @@ public class VerifyConfigMojo extends AbstractMojo {
 	private MavenSession mavenSession;
 
 	/**
-	 * @parameter expression="${project}"
-	 * @readonly
-	 * @required
-	 */
-	private MavenProject project;
-
-	/**
 	 * The remote repositories used as specified in your POM.
 	 * 
 	 * @parameter expression="${project.repositories}"
 	 * @readonly
 	 * @required
 	 */
-	private List repositories;
+	private List<?> repositories;
 
 	/**
 	 * Artifact repository factory component.
@@ -128,21 +115,21 @@ public class VerifyConfigMojo extends AbstractMojo {
 	 * @parameter expression="${project.build.directory}"
 	 * @required
 	 */
-	private String buildDirectory;
+	private String buildDirectoryPath;
 
 	private boolean foundMissing = false;
 
 	public void execute() throws MojoExecutionException {
 		try {
 
-			List remoteRepos;
-
 			// Instantiate the remote repositories object
-			remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
-
+			List<?> remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
 			Artifact devArchConfig = resolveRemoteArtifact(remoteRepos, artifactFactory.createArtifact("no.nav.maven.devarch", "devarch-config", configVersion, null, "jar"));
-			File daExtDir = Archiver.extractArchive(devArchConfig.getFile(), new File(buildDirectory), unArchiver);
-
+			File buildDirectory = new File(buildDirectoryPath);
+			
+			buildDirectory.mkdirs();
+			
+			File daExtDir = Archiver.extractArchive(devArchConfig.getFile(), buildDirectory, unArchiver);
 			HashMap<String, Application> apps = ApplicationConfig.getApplications(daExtDir.getAbsolutePath() + "/misc/config/applicationConfig.xml");
 
 			Application app = apps.get(application);
@@ -163,7 +150,7 @@ public class VerifyConfigMojo extends AbstractMojo {
 
 			Artifact configArtifact = resolveRemoteArtifact(remoteRepos, artifactFactory.createArtifact(daConfigArtifact.getGroupId(), daConfigArtifact.getArtifactId(), appVersion, null, "jar"));
 
-			File devExtDir = Archiver.extractArchive(configArtifact.getFile(), new File(buildDirectory), unArchiver);
+			File devExtDir = Archiver.extractArchive(configArtifact.getFile(), buildDirectory, unArchiver);
 			File devFile = new File(devExtDir + "/" + envConfigFile);
 			File ourFile = new File(daExtDir + "/module_config/" + application + "/spring/" + envConfigFile);
 
@@ -273,7 +260,7 @@ public class VerifyConfigMojo extends AbstractMojo {
 	}
 
 	// Resolves the artifact using the given repositories
-	public Artifact resolveRemoteArtifact(List remoteRepos, Artifact artifact) throws MojoExecutionException {
+	public Artifact resolveRemoteArtifact(List<?> remoteRepos, Artifact artifact) throws MojoExecutionException {
 
 		try {
 			artifactResolver.resolve(artifact, remoteRepos, localRepository);
