@@ -26,8 +26,8 @@
 	<build>
 	<!--
 	  Build process:
-	  1. Update views
-	  2. Get activities (DEV)
+	  1. Update views - done
+	  2. Get activities (DEV) - 
 	  3. Remove SNAPSHOT (INT)
 	  4. Deliver I (DEV -> INT) 
 	  5. COMPILE
@@ -62,10 +62,10 @@
 				<executions>
 					<!-- Step 2: get activities -->
 					<execution>
-						<id>updateActivities</id>
+						<id>deliverCandidates</id>
 						<phase>compile</phase>
 						<goals>
-							<goal>updateActivity</goal>
+							<goal>deliverCandidates</goal>
 						</goals>
 					</execution>
 				</executions>
