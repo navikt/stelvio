@@ -3835,6 +3835,7 @@ int/maven/plugins/maven-xmlvalidator-plugin/src/main/java/no/nav/maven/plugins/u
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
 int/maven/poms/maven-bounce-pom/pom.xml -text
+int/maven/poms/maven-build-pom/pom.xml -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-jca-pom/.project -text
 int/maven/poms/maven-jca-pom/pom.xml -text

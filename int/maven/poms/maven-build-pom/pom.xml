@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.2.1</version>
+		<relativePath>../maven-root-pom</relativePath>
+	</parent>
+	
+	<groupId>no.nav.maven.poms</groupId>
+	<artifactId>maven-build-pom</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>maven-build-pom</name>
+
+	<properties>
+		<buildVersion>1.0-SNAPSHOT</buildVersion>
+	</properties>
+
+	<dependencies>
+
+	</dependencies>
+
+	<build>
+	<!--
+	  Build process:
+	  1. Update views
+	  2. Get activities (DEV)
+	  3. Remove SNAPSHOT (INT)
+	  4. Deliver I (DEV -> INT) 
+	  5. COMPILE
+	  6. Update maven repo
+	  7. Put back SNAPSHOT
+	  8. Deliver II (DEV -> INT)
+	  9. Create baseline
+	  10. Update Poms
+	  11. Update CQ activities	  
+	-->
+		<plugins>
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 1: update views -->
+					<execution>
+						<id>updateViews</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>updateViews</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 2: get activities -->
+					<execution>
+						<id>updateActivities</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>updateActivity</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+		</plugins>
+	</build>
+</project>
