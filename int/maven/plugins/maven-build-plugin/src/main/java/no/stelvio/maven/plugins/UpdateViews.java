@@ -16,30 +16,50 @@ package no.stelvio.maven.plugins;
  * limitations under the License.
  */
 
+import no.stelvio.maven.build.plugin.utils.CommandLineUtil;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.codehaus.plexus.util.cli.Commandline;
 
 /**
  * Goal which updates views for both DEV and INT streams
- *
+ * 
  * @goal updateViews
  * 
  * @author test@example.com
  */
-public class UpdateViews extends AbstractMojo
-{
+public class UpdateViews extends AbstractMojo {
 	/**
 	 * Stream name - BUILD_TEST
+	 * 
 	 * @parameter expression="${stream}"
 	 * @required
 	 */
 	private String stream;
-	
-    public void execute() throws MojoExecutionException
-    {
-    	this.getLog().info("----------------------------------");
-    	this.getLog().info("--- Updating views for streams ---");
-    	this.getLog().info("----------------------------------");
-        this.getLog().info("Updating views for " + this.stream);
-    }
+
+	public void execute() throws MojoExecutionException, MojoFailureException {
+
+		boolean fail = false;
+		this.getLog().info("----------------------------------");
+		this.getLog().info("--- Updating views for streams ---");
+		this.getLog().info("----------------------------------");
+		this.getLog().info("Updating INT view for " + this.stream);
+		Commandline update_int = new Commandline();
+		Commandline.Argument arg = new Commandline.Argument();
+		String command = "cleartool update -force -overwrite D:/cc/" + this.stream;
+		arg.setLine(command + "_int");
+		update_int.addArg(arg);
+		fail = CommandLineUtil.executeCommand(update_int) != 0;
+		if (fail) throw new MojoExecutionException("Unable to update INT view");
+		this.getLog().info("************************************");
+		this.getLog().info("Updating DEV view for " + this.stream);
+		Commandline update_dev = new Commandline();
+		arg.setLine(command + "_Dev");
+		update_dev.addArg(arg);
+		fail = CommandLineUtil.executeCommand(update_dev) != 0;
+		if (fail) throw new MojoExecutionException("Unable to update DEV view");
+		
+	}
 }

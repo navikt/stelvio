@@ -13,8 +13,10 @@ public class CommandLineUtil {
 	
 	//private static boolean fail = false;
 	
-	public static final void executeCommand(Commandline command) throws MojoFailureException {
+	public static final int executeCommand(Commandline command) throws MojoFailureException {
 		try {
+			
+			int retval = 0;
 
 			// If a password is sent as a parameter, we hide it from the output
 			if (command.toString().contains("-password")) {
@@ -42,7 +44,7 @@ public class CommandLineUtil {
 			int maxattempt = 5;
 			
 			while (attempt <= maxattempt){
-				int retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
+				retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
 				System.out.println("[INFO] [RETVAL = " + retval + "]");
 				if (retval == 2) {
 					System.out.println("[INFO] Could not perform the operation because none node agents are running.");
@@ -60,7 +62,7 @@ public class CommandLineUtil {
 					break;
 				}
 			}
-			
+			return retval;
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
 		}
