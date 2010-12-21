@@ -61,12 +61,6 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String busConfigurationVersion;
 	
 	/**
-	 * @parameter expression="${esb-release-version}"
-	 * @required
-	 */
-	protected String esbReleaseVersion;
-	
-	/**
 	 * @parameter expression="${envClass}"
 	 */
 	protected String envClass;

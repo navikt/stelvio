@@ -3786,10 +3786,11 @@ int/maven/plugins/maven-wpsdeploy-plugin/pom.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyActivationSpecs.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyWSEndpoints.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/BackupWebsphereConfigMojo.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployArtifact.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployArtifactMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployResourcesMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractBusConfig.java -text
-int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractESBRelease.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ExtractModules.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/InterpolatorMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/LoadEnvironmentConfiguration.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ModifyMaxFailedDeliveriesMojo.java -text
