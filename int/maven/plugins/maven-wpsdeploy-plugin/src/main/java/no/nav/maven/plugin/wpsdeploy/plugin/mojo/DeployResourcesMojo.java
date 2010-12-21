@@ -32,7 +32,9 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 		cmdline3.addArguments(orgArgs);
 		
 		deployResources(commandLine);
-		addOrUpdateWebsphereVariable(cmdline2, " ESB_RELEASE_VERSION ", esbReleaseVersion);
+		
+		// reintroduce this when we know what the different module poms are called. /Johnny
+//		addOrUpdateWebsphereVariable(cmdline2, " ESB_RELEASE_VERSION ", esbReleaseVersion);
 		addOrUpdateWebsphereVariable(cmdline3, " BUS_CONFIGURATION_VERSION ", busConfigurationVersion);
 	}
 
