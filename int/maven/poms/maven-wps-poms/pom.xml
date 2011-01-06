@@ -14,10 +14,10 @@
 	<name>Stelvio Integration Framework WPS POMS</name>
 
 	<modules>
-		<module>maven-wps-library-pom</module>
+		<!-- <module>maven-wps-library-pom</module> -->
 		<module>maven-wps-module-pom</module>
 		<module>maven-wps-pom</module>
-		<module>maven-wps-tests-pom</module>
+		<!-- <module>maven-wps-tests-pom</module> -->
 	</modules>
 	
 	<scm>
