@@ -14,7 +14,7 @@ public class DeployArtifact {
 	}
 	public String getArtifactId() {
 		return artifactId;
-	}
+	} 	
 	public void setArtifactId(String artifactId) {
 		this.artifactId = artifactId;
 	}

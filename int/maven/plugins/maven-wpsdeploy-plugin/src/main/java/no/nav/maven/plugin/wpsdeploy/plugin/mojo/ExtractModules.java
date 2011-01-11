@@ -2,6 +2,7 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -101,11 +102,14 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 	
 	/** @component */
 	private ArtifactMetadataSource artifactMetadataSource;
+	
+	private Set<Artifact> allArtifacts; 
 
 	@Override
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
 
 		try {
+			allArtifacts = new HashSet<Artifact>();
 			
 			List<?> remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
 			
@@ -129,6 +133,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 				
 				while (iter.hasNext()){
 					Artifact a = (Artifact) iter.next();
+					allArtifacts.add(a);
 					File src = new File(a.getFile().getAbsolutePath());
 					FileUtils.copyFileToDirectory(src, new File(deployableArtifactsHome));
 				}
@@ -136,6 +141,10 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 				getLog().info("Successfully extracted dependency artifacts of " + da.toString() + " into " + deployableArtifactsHome);
 				
 			}
+			
+			project.setArtifacts(allArtifacts);
+			project.setDependencyArtifacts(allArtifacts);
+			
 		} catch (InvalidRepositoryException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
 		} catch (InvalidDependencyVersionException e) {
@@ -169,7 +178,5 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 	protected String getGoalPrettyPrint() {
 		return "Extract ESB release";
 	}
-	
-
 	
 }

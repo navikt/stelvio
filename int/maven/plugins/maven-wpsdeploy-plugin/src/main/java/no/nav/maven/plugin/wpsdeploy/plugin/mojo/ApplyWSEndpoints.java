@@ -48,7 +48,7 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 			};
 
 			String[] deployedModules = earFolder.list(fnFilter);
-
+			
 			for (int i = 0; i < deployedModules.length; i++) {
 				
 				String module = deployedModules[i].replace(".ear", "");
