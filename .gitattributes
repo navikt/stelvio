@@ -1869,6 +1869,7 @@ incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-00.vm -
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam-01.vm -text
 incubator/busconfiguration/src/main/resources/templates/nav-prod-sto-sam.properties -text
 incubator/deploy-pom/pom.xml -text
+incubator/maven-deploy-ci-pom/pom.xml -text
 incubator/maven-deploy-pom-61/pom.xml -text
 incubator/maven-deploy-pom-70/pom.xml -text
 incubator/maven-rdependency-plugin/.classpath -text
