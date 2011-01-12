@@ -19,6 +19,6 @@
 		  <artifactId>busconfiguration</artifactId>
 		  <version>${bus-configuration-version}</version>
 		</dependency> 
-	<dependencies>
+	</dependencies>
  
 </project>
