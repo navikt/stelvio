@@ -1,5 +1,6 @@
 package no.stelvio.maven.plugins;
 
+import no.stelvio.maven.build.plugin.utils.CleartoolCommandLine;
 import no.stelvio.maven.build.plugin.utils.CommandLineUtil;
 
 import org.apache.maven.plugin.AbstractMojo;
@@ -24,22 +25,42 @@ public class Delivery extends AbstractMojo{
 	 */
 	private String stream;
 	
+	/**
+	 * Step of delivery: I or II
+	 * 
+	 * @parameter expression="${step}" 
+	 * @required
+	 */
+	private int step;
+	
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		boolean fail = false;
-		this.getLog().info("---------------------------");
-		this.getLog().info("--- Performing delivery ---");
-		this.getLog().info("---------------------------");
-		Commandline deliver = new Commandline();
-		// must stand in the right place
-		deliver.setWorkingDirectory("D:/cc/"+this.stream+"_Dev");
-		Commandline.Argument arg = new Commandline.Argument();
-		String command = "cleartool deliver -preview";
-		arg.setLine(command);
-		deliver.addArg(arg);
-		fail = CommandLineUtil.executeCommand(deliver) != 0;
+		
+		if (step == 1){
+			fail = deliverI() != 0;
+		}else if (step == 2){
+			fail = deliverII() != 0;
+		}
 		if (fail) throw new MojoExecutionException("Unable to perform delivery");
-		// TODO to think: cleartool deliver -cancel -> undo delivery?
+	}
+	
+	private int deliverI() throws MojoFailureException{
+		this.getLog().info("-----------------------------");
+		this.getLog().info("--- Performing delivery I ---");
+		this.getLog().info("-----------------------------");
+		String workingDir = "D:/cc/"+this.stream+"_Dev";
+		String subcommand = "deliver -to " + this.stream + "_int"+" -force";
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+	}
+	
+	private int deliverII() throws MojoFailureException{
+		this.getLog().info("------------------------------");
+		this.getLog().info("--- Performing delivery II ---");
+		this.getLog().info("------------------------------");
+		String workingDir = "D:/cc/"+this.stream+"_Dev";
+		String subcommand = "deliver -complete -force";
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
 	}
 
 }

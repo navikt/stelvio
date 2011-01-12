@@ -3,6 +3,7 @@
  */
 package no.stelvio.maven.plugins;
 
+import no.stelvio.maven.build.plugin.utils.CleartoolCommandLine;
 import no.stelvio.maven.build.plugin.utils.CommandLineUtil;
 
 import org.apache.maven.plugin.AbstractMojo;
@@ -32,14 +33,9 @@ public class UndoDelivery extends AbstractMojo{
 		this.getLog().info("---------------------");
 		this.getLog().info("--- Undo delivery ---");
 		this.getLog().info("---------------------");
-		Commandline undeliver = new Commandline();
-		// must stand in the right place
-		undeliver.setWorkingDirectory("D:/cc/"+this.stream+"_Dev");
-		Commandline.Argument arg = new Commandline.Argument();
-		String command = "cleartool -cancel -force";
-		arg.setLine(command);
-		undeliver.addArg(arg);
-		if (CommandLineUtil.executeCommand(undeliver) != 0) 
+		String workingDir = "D:/cc/"+this.stream+"_Dev";
+		String subcommand = "-cancel -force";
+		if (CleartoolCommandLine.runClearToolCommand(workingDir, subcommand) != 0) 
 			throw new MojoExecutionException("Unable to perform delivery");
 	}
 
