@@ -3617,6 +3617,7 @@ int/maven/plugins/maven-build-plugin/pom.xml -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/CommandLineUtil.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Baseline.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Delivery.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UndoDelivery.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdateActivities.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdatePoms.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdateViews.java -text
