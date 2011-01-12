@@ -83,7 +83,6 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 					} else {
 						sb.append(s);
 					}
-					
 				}
 			}
 			
