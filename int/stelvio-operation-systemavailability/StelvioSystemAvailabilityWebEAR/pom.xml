@@ -28,19 +28,12 @@
 						<modules>
 							<webModule>
 								<groupId>${project.groupId}</groupId>
-								<artifactId>
-									system-availability-web
-								</artifactId>
-								<contextRoot>
-									StelvioSystemAvailabilityWeb
-								</contextRoot>
+								<artifactId>system-availability-web</artifactId>
+								<contextRoot>StelvioSystemAvailabilityWeb</contextRoot>
 							</webModule>
 							<jarModule>
 								<groupId>no.stelvio.int</groupId>
-								<artifactId>
-									stelvio-commons-lib
-								</artifactId>
-								<version>4.1-SNAPSHOT</version>
+								<artifactId>stelvio-commons-lib</artifactId>
 							</jarModule>
 						</modules>
 					</configuration>
