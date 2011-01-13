@@ -26,15 +26,15 @@
 	<build>
 	<!--
 	  Build process:
-	  1. Update views - done
-	  2. Get activities (DEV) - 
-	  3. Remove SNAPSHOT (INT)
-	  4. Deliver I (DEV -> INT) 
+	  1. Update views - initialize
+	  2. Get activities (DEV) - validate
+	  3. Remove SNAPSHOT (INT) - 
+	  4. Deliver I (DEV -> INT) - generate-resources
 	  5. COMPILE
 	  6. Update maven repo
 	  7. Put back SNAPSHOT
-	  8. Deliver II (DEV -> INT)
-	  9. Create baseline
+	  8. Deliver II (DEV -> INT) - package
+	  9. Create baseline - package
 	  10. Update Poms
 	  11. Update CQ activities	  
 	-->
@@ -63,14 +63,67 @@
 					<!-- Step 2: get activities -->
 					<execution>
 						<id>deliverCandidates</id>
-						<phase>compile</phase>
+						<phase>initialize</phase>
 						<goals>
-							<goal>deliverCandidates</goal>
+							<goal>getActivities</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
 			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 3: deliver I -->
+					<execution>
+						<id>deliverCandidates</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>deliverCandidates</goal>
+						</goals>
+						<configuration>
+							<step>1</step>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 4: deliver II -->
+					<execution>
+						<id>deliverCandidates</id>
+						<phase>package</phase>
+						<goals>
+							<goal>deliverCandidates</goal>
+						</goals>
+						<configuration>
+							<step>2</step>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 5: baseline -->
+					<execution>
+						<id>deliverCandidates</id>
+						<phase>package</phase>
+						<goals>
+							<goal>baseline</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			
 		</plugins>
 	</build>
