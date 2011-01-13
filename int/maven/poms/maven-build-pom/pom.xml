@@ -44,22 +44,6 @@
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
-					<!-- Step 1: update views -->
-					<execution>
-						<id>updateViews</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>updateViews</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			
-			<plugin>
-				<groupId>no.stelvio.maven.plugins</groupId>
-				<artifactId>maven-build-plugin</artifactId>
-				<version>${buildVersion}</version>
-				<executions>
 					<!-- Step 2: Remove WARN_UNRESERVED trigger -->
 					<execution>
 						<id>Remove WARN_UNRESERVED trigger</id>
@@ -72,7 +56,23 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> 
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 1: update views -->
+					<execution>
+						<id>updateViews</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>updateViews</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			
 			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
@@ -100,7 +100,7 @@
 				<executions>
 					<execution>
 						<id>deliverCandidates</id>
-						<phase>test-compile</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>undoDelivery</goal>
 						</goals>
@@ -116,7 +116,7 @@
 					<!-- Step 4: Add WARN_UNRESERVED trigger -->
 					<execution>
 						<id>Add WARN_UNRESERVED trigger</id>
-						<phase>test</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>editWarnUnreserved</goal>
 						</goals>
