@@ -82,7 +82,7 @@
 					<!-- Step 3: deliver I -->
 					<execution>
 						<id>deliverCandidates</id>
-						<phase>compile</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>deliverCandidates</goal>
 						</goals>
