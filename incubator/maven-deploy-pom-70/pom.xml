@@ -17,12 +17,6 @@ ven-v4_0_0.xsd">
   <url>http://maven.apache.org</url>
 
   <dependencies>
-    <!-- <dependency>
-      <groupId>no.nav.esb</groupId>
-      <artifactId>esb-modules</artifactId>
-      <version>${esb-release-version}</version>
-      <type>pom</type>
-    </dependency> -->
     <dependency>
       <groupId>no.nav.maven.support</groupId>
       <artifactId>busconfiguration</artifactId>
