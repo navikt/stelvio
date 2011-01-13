@@ -47,7 +47,7 @@
 					<!-- Step 1: update views -->
 					<execution>
 						<id>updateViews</id>
-						<phase>validate</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>updateViews</goal>
 						</goals>
@@ -63,7 +63,7 @@
 					<!-- Step 2: Remove WARN_UNRESERVED trigger -->
 					<execution>
 						<id>Remove WARN_UNRESERVED trigger</id>
-						<phase>initialize</phase>
+						<phase>validate</phase>
 						<goals>
 							<goal>editWarnUnreserved</goal>
 						</goals>
@@ -92,6 +92,21 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<execution>
+						<id>deliverCandidates</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>undoDelivery</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> 
 			
 			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
