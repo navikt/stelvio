@@ -55,12 +55,11 @@
 				</executions>
 			</plugin>
 			
-			<plugin>
+			<!-- <plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
-					<!-- Step 2: get activities -->
 					<execution>
 						<id>deliverCandidates</id>
 						<phase>initialize</phase>
@@ -69,7 +68,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			
 			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
@@ -90,12 +89,11 @@
 				</executions>
 			</plugin>
 			
-			<plugin>
+			<!-- <plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
-					<!-- Step 4: deliver II -->
 					<execution>
 						<id>deliverCandidates</id>
 						<phase>package</phase>
@@ -107,14 +105,13 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			
-			<plugin>
+			<!-- <plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
-					<!-- Step 5: baseline -->
 					<execution>
 						<id>deliverCandidates</id>
 						<phase>package</phase>
@@ -123,7 +120,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			
 		</plugins>
 	</build>
