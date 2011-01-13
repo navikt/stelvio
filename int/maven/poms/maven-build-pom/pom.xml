@@ -100,7 +100,7 @@
 				<executions>
 					<execution>
 						<id>deliverCandidates</id>
-						<phase>package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>undoDelivery</goal>
 						</goals>
