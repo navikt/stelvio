@@ -12,7 +12,7 @@
 						<phases>
 							<initialize>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-bus-configuration,
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-esb-release,
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-module-poms,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:interpolate-config,
 							</initialize>
 							<deploy>

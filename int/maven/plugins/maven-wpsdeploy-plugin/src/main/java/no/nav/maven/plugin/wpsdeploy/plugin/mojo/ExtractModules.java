@@ -33,7 +33,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  * 
  * @author test@example.com
  * 
- * @goal extract-esb-release
+ * @goal extract-module-poms
  * @requiresDependencyResolution
  */
 public class ExtractModules extends WebsphereUpdaterMojo {
@@ -117,7 +117,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 				
 				if (da.getVersion() == null){
 					getLog().info("Skipping " + da.getGroupId() + ":" + da.getArtifactId() + ", no version specified.");
-					break;
+					continue;
 				}
 				
 				Artifact pomArtifact = artifactFactory.createArtifact(da.getGroupId(), da.getArtifactId(), da.getVersion(), null, "pom");
