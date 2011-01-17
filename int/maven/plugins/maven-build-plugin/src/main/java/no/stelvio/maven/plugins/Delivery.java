@@ -68,6 +68,11 @@ public class Delivery extends AbstractMojo{
 		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand.toString());
 	}
 	
+	/**
+	 * This method extracts IDs from array and puts them in a comma separated string
+	 * @param activities - list with IDs
+	 * @return string NAV00xxxxxx,NAV00xxxxxx,...
+	 */
 	private String getActIDString(ArrayList<String> activities){
 		StringBuffer result = new StringBuffer();
 		for (int i=0; i<activities.size();i++){

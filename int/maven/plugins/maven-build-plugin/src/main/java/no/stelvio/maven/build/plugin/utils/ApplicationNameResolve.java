@@ -15,6 +15,11 @@ public class ApplicationNameResolve {
 		names.put("PEN_HR", "PEN");
 	}
 	
+	/**
+	 * Gets the application name from the project name
+	 * @param projectName
+	 * @return
+	 */
 	public static String ApplicationFromProject(String projectName){
 		return names.get(projectName);
 	}

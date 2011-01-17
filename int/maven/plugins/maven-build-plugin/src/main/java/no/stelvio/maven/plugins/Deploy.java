@@ -30,9 +30,9 @@ public class Deploy extends AbstractMojo{
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		this.getLog().info("----------------------------------");
-		this.getLog().info("--- Updating views for streams ---");
-		this.getLog().info("----------------------------------");
+		this.getLog().info("---------------------------------");
+		this.getLog().info("--- Updating maven repository ---");
+		this.getLog().info("---------------------------------");
 		Commandline cmd = new Commandline();
 		cmd.setWorkingDirectory("D:\\cc\\"+this.project+"_int\\"+ApplicationNameResolve.ApplicationFromProject(project)+"\\layers");
 		Commandline.Argument arg = new Commandline.Argument();
