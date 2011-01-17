@@ -16,12 +16,12 @@ import org.apache.maven.plugin.MojoFailureException;
 public class Baseline extends AbstractMojo{
 
 	/**
-	 * Stream name - BUILD_TEST
+	 * Project name - BUILD_TEST
 	 * 
-	 * @parameter expression="${stream}"
+	 * @parameter expression="${project}"
 	 * @required
 	 */
-	private String stream;
+	private String project;
 	
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
@@ -29,10 +29,10 @@ public class Baseline extends AbstractMojo{
 		this.getLog().info("--- Creating baseline ---");
 		this.getLog().info("-------------------------");
 		
-		String workingDir = "D:/cc/"+this.stream+"_int";
+		String workingDir = "D:/cc/"+this.project+"_int";
 		String subcommand = "-mkbl -force";
 		if (CleartoolCommandLine.runClearToolCommand(workingDir, subcommand) != 0) 
-			throw new MojoExecutionException("Unable to perform delivery");
+			throw new MojoExecutionException("Unable to create baseline");
 	}
 
 }

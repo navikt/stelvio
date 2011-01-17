@@ -21,22 +21,22 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class UndoDelivery extends AbstractMojo{
 	
 	/**
-	 * Stream name - BUILD_TEST
+	 * Project name - BUILD_TEST
 	 * 
-	 * @parameter expression="${stream}"
+	 * @parameter expression="${project}"
 	 * @required
 	 */
-	private String stream;
+	private String project;
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		this.getLog().info("---------------------");
 		this.getLog().info("--- Undo delivery ---");
 		this.getLog().info("---------------------");
-		String workingDir = "D:/cc/"+this.stream+"_Dev";
-		String subcommand = "-cancel -force";
+		String workingDir = "D:/cc/"+this.project+"_Dev";
+		String subcommand = "deliver -cancel -force";
 		if (CleartoolCommandLine.runClearToolCommand(workingDir, subcommand) != 0) 
-			throw new MojoExecutionException("Unable to perform delivery");
+			throw new MojoExecutionException("Unable to undo delivery");
 	}
 
 }

@@ -1,5 +1,8 @@
 package no.stelvio.maven.plugins;
 
+import java.util.ArrayList;
+
+import no.stelvio.maven.build.plugin.utils.CCCQRequest;
 import no.stelvio.maven.build.plugin.utils.CleartoolCommandLine;
 import no.stelvio.maven.build.plugin.utils.CommandLineUtil;
 
@@ -18,12 +21,12 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class Delivery extends AbstractMojo{
 
 	/**
-	 * Stream name - BUILD_TEST
+	 * Project name - BUILD_TEST
 	 * 
-	 * @parameter expression="${stream}"
+	 * @parameter expression="${project}"
 	 * @required
 	 */
-	private String stream;
+	private String project;
 	
 	/**
 	 * Step of delivery: I or II
@@ -39,26 +42,50 @@ public class Delivery extends AbstractMojo{
 		
 		if (step == 1){
 			fail = deliverI() != 0;
+			// TODO consider to run undo delivery here if failed
+			// and maybe rerun this goal
+			/** 
+			 * AGREED TO RELEASE WITHOUT RERUN, BUT 
+			 * MONITOR BEHAVIOUR AND FIX LATER IF NEEDED
+			 */
 		}else if (step == 2){
 			fail = deliverII() != 0;
 		}
 		if (fail) throw new MojoExecutionException("Unable to perform delivery");
 	}
 	
+	/**
+	 * Deliver I
+	 * @throws MojoFailureException
+	 */
 	private int deliverI() throws MojoFailureException{
 		this.getLog().info("-----------------------------");
 		this.getLog().info("--- Performing delivery I ---");
 		this.getLog().info("-----------------------------");
-		String workingDir = "D:/cc/"+this.stream+"_Dev";
-		String subcommand = "deliver -to " + this.stream + "_int"+" -force";
-		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+		String workingDir = "D:/cc/"+this.project+"_Dev";
+		ArrayList<String> activities = (ArrayList<String>) CCCQRequest.getActivitiesToDeliver(this.project);
+		StringBuffer subcommand = new StringBuffer("deliver -to srvmooseadmin_" + this.project + "_int"+" -force -act " + this.getActIDString(activities));
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand.toString());
 	}
 	
+	private String getActIDString(ArrayList<String> activities){
+		StringBuffer result = new StringBuffer();
+		for (int i=0; i<activities.size();i++){
+			result.append(activities.get(i)); 
+			if (i<activities.size()) result.append(',');
+		}
+		return result.toString();
+	}
+	
+	/**
+	 * Deliver II
+	 * @throws MojoFailureException
+	 */
 	private int deliverII() throws MojoFailureException{
 		this.getLog().info("------------------------------");
 		this.getLog().info("--- Performing delivery II ---");
 		this.getLog().info("------------------------------");
-		String workingDir = "D:/cc/"+this.stream+"_Dev";
+		String workingDir = "D:/cc/"+this.project+"_Dev";
 		String subcommand = "deliver -complete -force";
 		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
 	}

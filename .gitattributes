@@ -3614,10 +3614,13 @@ int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/p
 int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/plugin/utils/RestartConfig.java -text
 int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/plugin/utils/XMLParser.java -text
 int/maven/plugins/maven-build-plugin/pom.xml -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/ApplicationNameResolve.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/CCCQRequest.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/CleartoolCommandLine.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/CommandLineUtil.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Baseline.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Delivery.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Deploy.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UndoDelivery.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdateActivities.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdatePoms.java -text

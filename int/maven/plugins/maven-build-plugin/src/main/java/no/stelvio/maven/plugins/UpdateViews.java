@@ -16,6 +16,7 @@ package no.stelvio.maven.plugins;
  * limitations under the License.
  */
 
+import no.stelvio.maven.build.plugin.utils.CleartoolCommandLine;
 import no.stelvio.maven.build.plugin.utils.CommandLineUtil;
 
 import org.apache.maven.plugin.AbstractMojo;
@@ -32,12 +33,12 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class UpdateViews extends AbstractMojo {
 	/**
-	 * Stream name - BUILD_TEST
+	 * Project name - BUILD_TEST
 	 * 
-	 * @parameter expression="${stream}"
+	 * @parameter expression="${project}"
 	 * @required
 	 */
-	private String stream;
+	private String project;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
@@ -45,20 +46,14 @@ public class UpdateViews extends AbstractMojo {
 		this.getLog().info("----------------------------------");
 		this.getLog().info("--- Updating views for streams ---");
 		this.getLog().info("----------------------------------");
-		this.getLog().info("Updating INT view for " + this.stream);
-		Commandline update_int = new Commandline();
-		Commandline.Argument arg = new Commandline.Argument();
-		String command = "cleartool update -force -overwrite D:/cc/" + this.stream;
-		arg.setLine(command + "_int");
-		update_int.addArg(arg);
-		fail = CommandLineUtil.executeCommand(update_int) != 0;
+		this.getLog().info("Updating INT view for " + this.project + "\n");
+		String workingDir = "D:/cc/";
+		String subcommand = "update -force -overwrite D:/cc/" + this.project;
+		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+"_int") != 0;
 		if (fail) throw new MojoExecutionException("Unable to update INT view");
 		this.getLog().info("************************************");
-		this.getLog().info("Updating DEV view for " + this.stream);
-		Commandline update_dev = new Commandline();
-		arg.setLine(command + "_Dev");
-		update_dev.addArg(arg);
-		fail = CommandLineUtil.executeCommand(update_dev) != 0;
+		this.getLog().info("Updating DEV view for " + this.project + "\n");
+		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+"_Dev") != 0;
 		if (fail) throw new MojoExecutionException("Unable to update DEV view");
 		
 	}

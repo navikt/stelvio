@@ -26,7 +26,7 @@ public class CommandLineUtil {
 			} else {
 				System.out.println("[INFO] Executing the following command: " + command.toString());
 			}
-
+			System.out.println("[INFO] Working directory: " + command.getWorkingDirectory().toString());
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {
 					System.out.println("[INFO] " + line);
@@ -38,30 +38,8 @@ public class CommandLineUtil {
 				}
 			};
 
-			
-			// Handling SOAPException, SocketTimeoutException (retval 105), retrying five times.
-			int attempt = 0;
-			int maxattempt = 5;
-			
-			while (attempt <= maxattempt){
-				retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));
-				System.out.println("[INFO] [RETVAL = " + retval + "]");
-				if (retval == 2) {
-					System.out.println("[INFO] Could not perform the operation because none node agents are running.");
-					//fail = true;
-					break;
-				}
-				if (retval != 105){
-					break;
-				}
-				
-				if (attempt != maxattempt) System.out.println("[INFO] Caught exception, retrying ... " + "[" + ++attempt + "/" + maxattempt + "]" );
-				else {
-					System.out.println("[INFO] Could not perform the operation. Continuing ...");
-					//fail = true;
-					break;
-				}
-			}
+			retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));				
+			System.out.println("[INFO] [RETVAL = " + retval + "]");
 			return retval;
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
