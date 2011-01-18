@@ -3609,6 +3609,7 @@ int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plug
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/utils/RoleSecurity.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-bounce-plugin/pom.xml -text
+int/maven/plugins/maven-bounce-plugin/release-pom.xml -text
 int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/plugin/mojo/BounceMojo.java -text
 int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/plugin/utils/InvalideNodeValueException.java -text
 int/maven/plugins/maven-bounce-plugin/src/main/java/no/nav/maven/plugin/bounce/plugin/utils/RestartConfig.java -text
