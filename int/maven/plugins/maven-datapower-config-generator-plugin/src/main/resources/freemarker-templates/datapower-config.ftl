@@ -45,3 +45,4 @@
 <#include "WSProxyWSADynamicBackend.ftl">
 <#include "WSProxyWSADynamicBackendMultipleWsdl.ftl">
 <#include "LogTarget.ftl">
+<#include "AAAPolicyClientSSL2LTPAURLauth.ftl">
