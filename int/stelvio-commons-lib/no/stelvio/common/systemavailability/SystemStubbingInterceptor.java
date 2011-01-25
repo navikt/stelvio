@@ -94,6 +94,8 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	 * @return
 	 */
 	private Object findStubData(OperationType operationType, Object input) {
+		validateSupportedInput(operationType, input);
+		
 		File directory = getDirectory(operationType);
 
 		File[] requestFiles = directory.listFiles(new FilenameFilter() {
@@ -216,14 +218,26 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 
 	/**
 	 * Input kan ikke være null med mindre operasjonstype er "WrappedStyle" (kompleks dataobjekt, og ikke int/boolean osv).
+	 * Hvis operasjonstype er "WrappedStyle", må inputDataObject ikke kaste NullPointerException (som betyr null i input).
+	 * Kaster UnsupportedOperationException ved disse tilfellene.
 	 * 
 	 * @param operationType
 	 * @param input
 	 */
 	private void validateSupportedInput(OperationType operationType, Object input) {
-		if (!operationType.isWrappedStyle() && input == null) {
-			throw new UnsupportedOperationException(
+		if (!operationType.isWrappedStyle()) {
+			if (input == null) {
+				throw new UnsupportedOperationException(
 					"Document literal non-wrapped operations with null as input are currently not supported by the stubbing framework.");
+			}
+		} else {
+			DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
+			try {
+				inputDataObject = (DataObject)inputDataObject.get(0);
+			} catch (NullPointerException npe) {
+				throw new UnsupportedOperationException(
+					"Document literal non-wrapped operations with null as input are currently not supported by the stubbing framework.");
+			}
 		}
 	}
 	
@@ -484,7 +498,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		List properties = dataObject.getInstanceProperties();
 		for (int i = 0; i < properties.size(); i++) {
 			BOPropertyImpl prop = (BOPropertyImpl) properties.get(i);
-			if (prop != null && prop.getType() != null && "requestContextDto".equals(prop.getType().getName())) {
+			if (prop != null && prop.getType() != null && "requestContextDto".equalsIgnoreCase(prop.getType().getName())) {
 				dataObject.setDataObject(prop.getName(), null);
 			}
 		}
