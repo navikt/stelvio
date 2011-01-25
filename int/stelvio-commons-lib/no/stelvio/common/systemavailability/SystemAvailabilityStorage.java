@@ -362,6 +362,7 @@ public class SystemAvailabilityStorage {
 				String app = "", s = "";
 				
 				// Gå gjennom alle mappene som ligger der som begynner på "nav-".
+				// TODO: Gjøre mer universell. F.eks. kun sjekke om variabelen app slutter på "App.ear"?
 				for (int x = 0; x < length; x++) {
 					fil = directory.listFiles()[x];
 					app = fil.getName();
