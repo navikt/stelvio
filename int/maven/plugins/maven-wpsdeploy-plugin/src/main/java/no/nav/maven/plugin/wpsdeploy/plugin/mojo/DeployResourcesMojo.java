@@ -27,9 +27,9 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 			return;
 		}
 
-		deployResources(commandLine);
-
 		String[] orgArgs = commandLine.getArguments();
+		
+		deployResources(commandLine);
 
 		for (DeployArtifact da : artifacts) {
 
@@ -43,6 +43,11 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 			cmdline.addArguments(orgArgs);
 			addOrUpdateWebsphereVariable(cmdline, " " + da.getVariableName() + " ", da.getVersion());
 		}
+		
+		Commandline cmdlineBusConfig = new Commandline();
+		cmdlineBusConfig.setExecutable(commandLine.getExecutable());
+		cmdlineBusConfig.addArguments(orgArgs);
+		addOrUpdateWebsphereVariable(cmdlineBusConfig, " BUS_CONFIGURATION_VERSION ", busConfigurationVersion);
 
 	}
 
