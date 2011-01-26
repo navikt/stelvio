@@ -115,7 +115,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 			
 			for (DeployArtifact da : artifacts){
 				
-				if (da.getVersion() == null){
+				if (da.getVersion() == null || da.getVersion().startsWith("$")){
 					getLog().info("Skipping " + da.getGroupId() + ":" + da.getArtifactId() + ", no version specified.");
 					continue;
 				}

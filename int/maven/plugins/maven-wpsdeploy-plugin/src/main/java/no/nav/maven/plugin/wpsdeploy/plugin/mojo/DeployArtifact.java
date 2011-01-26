@@ -5,6 +5,7 @@ public class DeployArtifact {
 	private String groupId;
 	private String artifactId;
 	private String version;
+	private String variableName;
 	
 	public String getGroupId() {
 		return groupId;
@@ -23,6 +24,12 @@ public class DeployArtifact {
 	}
 	public void setVersion(String version) {
 		this.version = version;
+	}
+	public String getVariableName() {
+		return variableName;
+	}
+	public void setVariableName(String variableName) {
+		this.variableName = variableName;
 	}
 	
 	@Override

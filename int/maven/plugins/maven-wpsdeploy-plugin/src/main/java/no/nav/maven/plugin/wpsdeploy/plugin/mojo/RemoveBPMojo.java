@@ -22,22 +22,8 @@ import org.codehaus.plexus.util.cli.Commandline;
 
 public class RemoveBPMojo extends WebsphereUpdaterMojo {
 
-
 	private ArrayList<String> modulesToRemove;
 
-	
-	public RemoveBPMojo(){
-		
-		/* 
-		 * Sketchy to set this here, should be set automatically 
-		 * by naming rules or other logic separate from the plugin. 
-		 */ 
-		
-		modulesToRemove = new ArrayList<String>();
-		modulesToRemove.add("nav-bsrv-frg-hentinstitusjonsoppholdliste");
-		
-	}
-	
 	/*
 	 * Inherited method which is the one executed when running the script.
 	 * 
@@ -47,6 +33,15 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	 */
 	@Override
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+		
+		modulesToRemove = new ArrayList<String>();
+		modulesToRemove.add("nav-bsrv-frg-hentinstitusjonsoppholdliste");
+		
+		for (Artifact a : artifacts){
+			if (a.getArtifactId().contains("-microflow-")){
+				modulesToRemove.add(a.getArtifactId());
+			}
+		}
 		
 		// Sets the correct specs for the runtime environment
 		if(Os.isFamily("windows") == true) {
