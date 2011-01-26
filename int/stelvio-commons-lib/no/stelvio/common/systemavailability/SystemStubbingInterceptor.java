@@ -39,6 +39,7 @@ import commonj.sdo.Type;
  */
 public class SystemStubbingInterceptor extends GenericInterceptor {
 	private final String systemName;
+	private boolean findStubDataForRecording = false;
 
 	public SystemStubbingInterceptor(String systemName) {
 		this.systemName = systemName;
@@ -48,6 +49,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	protected Object doInterceptInternal(com.ibm.websphere.sca.scdl.OperationType operationType, Object input,
 			InterceptorChain interceptorChain) {
 		OperationAvailabilityRecord availRec = null;
+		findStubDataForRecording = false;
 		try {
 			availRec = new SystemAvailabilityStorage().calculateOperationAvailability(systemName, operationType.getName());
 		} catch (Throwable t) {
@@ -70,6 +72,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				return findStubData(castedOperationType, input);
 			} else if (availRec.recordStubData) {
 				try {
+					findStubDataForRecording = true;
 					// Trying to find matching stub data first, to avoid creating "duplicates"
 					findStubData(castedOperationType, input);
 
@@ -112,7 +115,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		if (operationType.isWrapperType(inputDataObject.getType())) {
 			inputDataObject = (DataObject)inputDataObject.get(0);
 		}
-		removeRequestContext(inputDataObject);
+		DataObject requestContext = removeRequestContext(inputDataObject);
 		// Workaround slutt
 		
 		BOEquality boEquality = getBOEquality();
@@ -121,6 +124,14 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			String requestFilename = requestFile.getName();
 			
 			if (isDefaultRequest(requestDataObject) || boEquality.isEqual(inputDataObject, requestDataObject)) {
+				setRequestContext(inputDataObject, requestContext);
+
+				// If findStubData was called in recording state (in order to prevent duplicates),
+				if (findStubDataForRecording) {
+					// then return an empty object (we are not interesting in the response from stubbing file). 
+					return new Object();
+				}
+				
 				if (isOneWayOperation(operationType)) {
 					checkForException(directory, requestFilename);
 					return null;
@@ -140,6 +151,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				checkForException(directory, requestFilename);
 			}
 		}
+		
 		throw new IllegalStateException("No matching stub found for system " + systemName + ", operation "
 				+ operationType.getName() + " in path " + directory);
 	}
@@ -361,9 +373,10 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			// Workaround start
 			if (operationType.isWrapperType(type)) {
 				DataObject child = (DataObject)dataObject.get(0);
-				removeRequestContext(child);
+				DataObject requestContext = removeRequestContext(child);
 				getBOXMLSerializer().writeDataObject(child, type.getURI(), type.getName(), outputStream);
 				System.out.println("WrapperType");
+				setRequestContext(child, requestContext);
 			} else {
 				getBOXMLSerializer().writeDataObject(dataObject, type.getURI(), type.getName(), outputStream);
 				System.out.println("Not WrapperType");
@@ -494,14 +507,29 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		return true;
 	}
 
-	private void removeRequestContext(DataObject dataObject) {
+	private DataObject removeRequestContext(DataObject dataObject) {
+		DataObject requestContext = null;
 		List properties = dataObject.getInstanceProperties();
 		for (int i = 0; i < properties.size(); i++) {
 			BOPropertyImpl prop = (BOPropertyImpl) properties.get(i);
 			if (prop != null && prop.getType() != null && "requestContextDto".equalsIgnoreCase(prop.getType().getName())) {
+				requestContext = dataObject.getDataObject(prop.getName());
 				dataObject.setDataObject(prop.getName(), null);
 			}
 		}
+		return requestContext;
+	}
+	
+	private boolean setRequestContext(DataObject dataObject, DataObject requestContext) {
+		List properties = dataObject.getInstanceProperties();
+		for (int i = 0; i < properties.size(); i++) {
+			BOPropertyImpl prop = (BOPropertyImpl) properties.get(i);
+			if (prop != null && prop.getType() != null && "requestContextDto".equalsIgnoreCase(prop.getType().getName())) {
+				dataObject.setDataObject(prop.getName(), requestContext);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	private BOFactory getBOFactory() {
