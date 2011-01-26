@@ -9,12 +9,12 @@
 	<properties>
 		<!-- hudson -->
 		<devArchBaseDir>${project.build.directory}</devArchBaseDir>
-		<bundleAreaDir>/opt/BUNDLE</bundleAreaDir>
+		<bundleAreaDir>E:/BUNDLE</bundleAreaDir>
 		<stagingAreaDir>${devArchBaseDir}/STAGING</stagingAreaDir>
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
 		<!-- /hudson -->
 		
-		<wasdeployVersion>1.5</wasdeployVersion>
+		<wasdeployVersion>1.6</wasdeployVersion>
 		<xmlvalidatorVersion>1.0</xmlvalidatorVersion>
 		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
