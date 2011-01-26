@@ -144,13 +144,13 @@ public class FileHandlerMojo extends AbstractMojo {
 			// Copies the appropriate log4j settings for the application
 			copyLog4j(application, isBatch);
 			
-			// For PEN, replace cfg-pen-batch-environment.properties
-			if (application.equals("pen")) {
-				getLog().info("##################################################################");
-				getLog().info("### PEN - Overwriting cfg-pen-batch-environment.properties ... ###");
-				getLog().info("##################################################################");
-				FileUtils.copyFile(new File(configDir + "/cfg-pen-provider-environment.properties"), new File(configDir + "/cfg-pen-batch-environment.properties"));
-			}
+//			// For PEN, replace cfg-pen-batch-environment.properties
+//			if (application.equals("pen")) {
+//				getLog().info("##################################################################");
+//				getLog().info("### PEN - Overwriting cfg-pen-batch-environment.properties ... ###");
+//				getLog().info("##################################################################");
+//				FileUtils.copyFile(new File(configDir + "/cfg-pen-provider-environment.properties"), new File(configDir + "/cfg-pen-batch-environment.properties"));
+//			}
 
 			if (application.equals("psak") || application.equals("pselv")) {
 

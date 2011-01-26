@@ -228,7 +228,6 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		getLog().info("###########################################################################");
 		getLog().info("### BUNDLING SELECTED - Creating archives and moving to bundle area ... ###");
 		getLog().info("###########################################################################");
-		
 		File bundleArea = new File(this.bundleArea);
 		bundleArea.mkdir();
 		File earArea = new File(bundleArea + "/ear");
