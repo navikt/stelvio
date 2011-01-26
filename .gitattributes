@@ -4496,7 +4496,6 @@ int/stelvio-operation-systemavailability/system-availability-config/SystemAvaila
 int/stelvio-operation-systemavailability/system-availability-config/SystemAvailabilityConfigWSEXP.export -text
 int/stelvio-operation-systemavailability/system-availability-config/no/stelvio/common/systemavailability/config/SystemAvailabilityConfigImpl.java -text
 int/stelvio-operation-systemavailability/system-availability-config/no/stelvio/fault/FaultBase.xsd -text
-int/stelvio-operation-systemavailability/system-availability-config/no/stelvio/fault/FaultUpdateStubbingfilesFailed.xsd -text
 int/stelvio-operation-systemavailability/system-availability-config/pom.xml -text
 int/stelvio-operation-systemavailability/system-availability-config/sca.module -text
 int/stelvio-operation-systemavailability/system-availability-config/sca.modulex -text

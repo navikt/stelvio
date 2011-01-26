@@ -112,32 +112,4 @@ public class SystemAvailabilityConfigImpl {
 		}
 		return false;
 	}
-	
-	/**
-	 * Method generated to support implementation of operation "updateStubbingfiles" defined for WSDL port type 
-	 * named "Stubbing".
-	 * 
-	 * Please refer to the WSDL Definition for more information 
-	 * on the type of input, output and fault(s).
-	 */
-	public Boolean updateStubbingfiles(String path) {
-		/*
-		if (path == null || "".equals(path.trim())) {
-			path = "/opt/IBM/WebSphere/ProcServer/profiles/wps01/StelvioSystemAvailabilityFramework";
-		}
-		
-		try {
-			Runtime.getRuntime().exec("/usr/bin/svn revert --recursive " + path);
-			Runtime.getRuntime().exec("/usr/bin/svn up " + path);
-		} catch (IOException io) {
-			DataObject faultBO = ErrorHelperUtil.getBusinessFaultBO(io, MODULE_NAME, FAULT_NAMESPACE, FAULT_NAME);
-			throw new ServiceBusinessException(faultBO);
-		}
-		
-		return true;
-		*/
-		
-		// REPLACED BY crontab
-		return false;
-	}
 }

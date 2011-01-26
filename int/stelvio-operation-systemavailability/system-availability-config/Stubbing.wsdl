@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="Stubbing" targetNamespace="http://system-availability-config/Stubbing" xmlns:bons1="http://system-availability-config" xmlns:bons2="http://system-availability-config/no/stelvio/fault" xmlns:tns="http://system-availability-config/Stubbing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="Stubbing" targetNamespace="http://system-availability-config/Stubbing" xmlns:bons1="http://system-availability-config" xmlns:tns="http://system-availability-config/Stubbing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <wsdl:types>
     <xsd:schema targetNamespace="http://system-availability-config/Stubbing">
             <xsd:import namespace="http://system-availability-config/no/stelvio/fault" schemaLocation="no/stelvio/fault/FaultUpdateStubbingfilesFailed.xsd"/>
@@ -46,21 +46,6 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-            <xsd:element name="updateStubbingfiles">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="path" nillable="true" type="xsd:string"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-            <xsd:element name="updateStubbingfilesResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="suksess" nillable="true" type="xsd:boolean"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-            <xsd:element name="updateStubbingfilesFault1_faultUpdateStubbingfilesFailed" nillable="true" type="bons2:FaultUpdateStubbingfilesFailed"/>
         </xsd:schema>
   </wsdl:types>
     <wsdl:message name="enableStubsRequestMsg">
@@ -81,15 +66,6 @@
     <wsdl:message name="enableRecordingAllOperationsResponseMsg">
     <wsdl:part element="tns:enableRecordingAllOperationsResponse" name="enableRecordingAllOperationsResult"/>
   </wsdl:message>
-    <wsdl:message name="updateStubbingfilesRequestMsg">
-    <wsdl:part element="tns:updateStubbingfiles" name="updateStubbingfilesParameters"/>
-  </wsdl:message>
-    <wsdl:message name="updateStubbingfilesResponseMsg">
-    <wsdl:part element="tns:updateStubbingfilesResponse" name="updateStubbingfilesResult"/>
-  </wsdl:message>
-    <wsdl:message name="updateStubbingfiles_faultUpdateStubbingfilesFailedMsg">
-    <wsdl:part element="tns:updateStubbingfilesFault1_faultUpdateStubbingfilesFailed" name="faultUpdateStubbingfilesFailed"/>
-  </wsdl:message>
     <wsdl:portType name="Stubbing">
     <wsdl:operation name="enableStubs">
       <wsdl:input message="tns:enableStubsRequestMsg" name="enableStubsRequest"/>
@@ -102,11 +78,6 @@
         <wsdl:operation name="enableRecordingAllOperations">
       <wsdl:input message="tns:enableRecordingAllOperationsRequestMsg" name="enableRecordingAllOperationsRequest"/>
       <wsdl:output message="tns:enableRecordingAllOperationsResponseMsg" name="enableRecordingAllOperationsResponse"/>
-    </wsdl:operation>
-        <wsdl:operation name="updateStubbingfiles">
-      <wsdl:input message="tns:updateStubbingfilesRequestMsg" name="updateStubbingfilesRequest"/>
-      <wsdl:output message="tns:updateStubbingfilesResponseMsg" name="updateStubbingfilesResponse"/>
-      <wsdl:fault message="tns:updateStubbingfiles_faultUpdateStubbingfilesFailedMsg" name="faultUpdateStubbingfilesFailed"/>
     </wsdl:operation>
     </wsdl:portType>
 </wsdl:definitions>
