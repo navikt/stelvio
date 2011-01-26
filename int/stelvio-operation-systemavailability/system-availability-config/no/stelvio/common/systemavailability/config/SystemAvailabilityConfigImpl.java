@@ -1,15 +1,12 @@
 package no.stelvio.common.systemavailability.config;
 
-import java.io.IOException;
 import java.util.*;
 
 import commonj.sdo.DataObject;
 
-import com.ibm.websphere.sca.ServiceBusinessException;
 import com.ibm.websphere.sca.ServiceManager;
 import com.ibm.websphere.sca.sdo.DataFactory;
 
-import no.stelvio.common.bus.util.ErrorHelperUtil;
 import no.stelvio.common.systemavailability.*;
 
 public class SystemAvailabilityConfigImpl {
@@ -18,7 +15,6 @@ public class SystemAvailabilityConfigImpl {
 	
 	private static final String MODULE_NAME = "system-availability-config";
 	private static final String FAULT_NAMESPACE = "http://system-availability-config/no/stelvio/fault";
-	private static final String FAULT_NAME = "FaultUpdateStubbingfilesFailed";
 	
 	/**
 	 * Default constructor.

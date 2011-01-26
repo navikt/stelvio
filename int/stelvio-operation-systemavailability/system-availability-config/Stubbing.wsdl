@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="Stubbing" targetNamespace="http://system-availability-config/Stubbing" xmlns:bons1="http://system-availability-config" xmlns:tns="http://system-availability-config/Stubbing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <wsdl:types>
     <xsd:schema targetNamespace="http://system-availability-config/Stubbing">
-            <xsd:import namespace="http://system-availability-config/no/stelvio/fault" schemaLocation="no/stelvio/fault/FaultUpdateStubbingfilesFailed.xsd"/>
             <xsd:import namespace="http://system-availability-config" schemaLocation="EnableStubsResponse.xsd"/>
       <xsd:import namespace="http://system-availability-config" schemaLocation="EnableStubsRequest.xsd"/>
       <xsd:element name="enableStubs">
