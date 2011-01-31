@@ -65,12 +65,18 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	/*
 	 * Builds up and executes the commandline from the incoming parameters.
 	 */
-	private final void removeBP(final Commandline commandLine,final String artifactId, String version){
+	private final void removeBP(final Commandline commandLine,final String artifactId, String version) throws MojoExecutionException { 
 		
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("-f " + scriptsHome + "/scripts/RemoveOldBPModule.py " + artifactId + " " + version);
 		commandLine.addArg(arg);
-		executeCommand(commandLine);
+		int retval = executeCommand(commandLine);
+		
+		getLog().info("[RETVAL = " + retval + "]");
+		
+		if (retval == 1) {
+			throw new MojoExecutionException("[ERROR] Enable to uninstall. Please verify that application server is running");
+		}
 	}
 
 	/*
