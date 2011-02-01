@@ -84,7 +84,7 @@
 					<!-- Step 3: deliver I -->
 					<execution>
 						<id>deliverCandidates</id>
-						<phase>initialize</phase>
+						<phase>validate</phase>
 						<goals>
 							<goal>deliverCandidates</goal>
 						</goals>
@@ -133,12 +133,11 @@
 				</executions>
 			</plugin> 
 			
-			<plugin>
+			<!-- <plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
-					<!-- Step 6: deploy -->
 					<execution>
 						<id>Deploy</id>
 						<phase>compile</phase>
@@ -150,7 +149,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> 
+			</plugin>  -->
 			
 			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
