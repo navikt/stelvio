@@ -103,7 +103,7 @@
 					<!-- Step 4: remove snapshot on int stream -->
 					<execution>
 						<id>Remove SNAPSHOT on Int stream</id>
-						<phase>generate-sources</phase>
+						<phase>compile</phase>
 						<goals>
 							<goal>updatePom</goal>
 						</goals>
