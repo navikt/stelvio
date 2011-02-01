@@ -75,7 +75,7 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 		getLog().info("[RETVAL = " + retval + "]");
 		
 		if (retval == 1) {
-			throw new MojoExecutionException("[ERROR] Enable to uninstall. Please verify that application server is running");
+			throw new MojoExecutionException("[ERROR] Unable to uninstall. Please verify that application server is running");
 		}
 	}
 
