@@ -17,6 +17,8 @@
 
 	<properties>
 		<buildVersion>1.0-SNAPSHOT</buildVersion>
+		<ccProjectDir>D:/cc/</ccProjectDir>
+		<scriptFolder>D:/scripts/</scriptFolder>
 	</properties>
 
 	<dependencies>
@@ -44,7 +46,7 @@
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
-					<!-- Step 2: Remove WARN_UNRESERVED trigger -->
+					<!-- Step 1: Remove WARN_UNRESERVED trigger -->
 					<execution>
 						<id>Remove WARN_UNRESERVED trigger</id>
 						<phase>validate</phase>
@@ -63,10 +65,10 @@
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
-					<!-- Step 1: update views -->
+					<!-- Step 2: update views -->
 					<execution>
 						<id>updateViews</id>
-						<phase>initialize</phase>
+						<phase>validate</phase>
 						<goals>
 							<goal>updateViews</goal>
 						</goals>
@@ -93,44 +95,88 @@
 				</executions>
 			</plugin>
 			
-			<!-- <plugin>
+		    <plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
+					<!-- Step 4: remove snapshot on int stream -->
 					<execution>
-						<id>deliverCandidates</id>
-						<phase>install</phase>
+						<id>Remove SNAPSHOT on Int stream</id>
+						<phase>generate-sources</phase>
 						<goals>
-							<goal>undoDelivery</goal>
+							<goal>updatePom</goal>
 						</goals>
+						<configuration>
+							<action>remove</action>
+						</configuration>
 					</execution>
 				</executions>
-			</plugin>  -->
+			</plugin> 
 			
 			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
-					<!-- Step 4: Add WARN_UNRESERVED trigger -->
+					<!-- Step 5: install to local repo -->
 					<execution>
-						<id>Add WARN_UNRESERVED trigger</id>
-						<phase>install</phase>
+						<id>Install</id>
+						<phase>compile</phase>
 						<goals>
-							<goal>editWarnUnreserved</goal>
+							<goal>updateRepo</goal>
 						</goals>
 						<configuration>
-							<action>add</action>
+							<action>install</action>
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<!-- <plugin>
+			</plugin> 
+			
+			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
+					<!-- Step 6: deploy -->
+					<execution>
+						<id>Deploy</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>updateRepo</goal>
+						</goals>
+						<configuration>
+							<action>deploy</action>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin> 
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 7: put back snapshot on int stream -->
+					<execution>
+						<id>Put back SNAPSHOT on Int stream</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>updatePom</goal>
+						</goals>
+						<configuration>
+							<action>put_back</action>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin> 
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 8: deliver II -->
 					<execution>
 						<id>deliverCandidates</id>
 						<phase>package</phase>
@@ -142,23 +188,118 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
 			
-			<!-- <plugin>
+			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
+					<!-- Step 9: baseline -->
 					<execution>
-						<id>deliverCandidates</id>
+						<id>baseline</id>
 						<phase>package</phase>
 						<goals>
 							<goal>baseline</goal>
 						</goals>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
 			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 10: check out poms in Dev stream -->
+					<execution>
+						<id>Prepare poms in Dev stream</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>prepare-pom-update</goal>
+						</goals>
+						<configuration>
+							<action>setTask</action>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 11: check out poms in Dev stream -->
+					<execution>
+						<id>Prepare poms in Dev stream</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>prepare-pom-update</goal>
+						</goals>
+						<configuration>
+							<action>checkout</action>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 12: check out poms in Dev stream -->
+					<execution>
+						<id>Prepare poms in Dev stream</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>updatePom</goal>
+						</goals>
+						<configuration>
+							<action>increase</action>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 13: check out poms in Dev stream -->
+					<execution>
+						<id>Prepare poms in Dev stream</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>prepare-pom-update</goal>
+						</goals>
+						<configuration>
+							<action>checkin</action>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 14: Add WARN_UNRESERVED trigger -->
+					<execution>
+						<id>Add WARN_UNRESERVED trigger</id>
+						<phase>install</phase>
+						<goals>
+							<goal>editWarnUnreserved</goal>
+						</goals>
+						<configuration>
+							<action>add</action>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>		
 		</plugins>
 	</build>
 </project>
