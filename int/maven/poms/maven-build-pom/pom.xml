@@ -83,7 +83,7 @@
 				<executions>
 					<!-- Step 3: deliver I -->
 					<execution>
-						<id>deliverCandidates</id>
+						<id>deliverCandidates 1</id>
 						<phase>validate</phase>
 						<goals>
 							<goal>deliverCandidates</goal>
@@ -133,7 +133,7 @@
 				</executions>
 			</plugin> 
 			
-			<!-- <plugin>
+			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
@@ -149,7 +149,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>  -->
+			</plugin>  
 			
 			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
@@ -177,7 +177,7 @@
 				<executions>
 					<!-- Step 8: deliver II -->
 					<execution>
-						<id>deliverCandidates</id>
+						<id>deliverCandidates 2</id>
 						<phase>package</phase>
 						<goals>
 							<goal>deliverCandidates</goal>
@@ -212,7 +212,7 @@
 				<executions>
 					<!-- Step 10: check out poms in Dev stream -->
 					<execution>
-						<id>Prepare poms in Dev stream</id>
+						<id>Prepare poms in Dev stream: set task</id>
 						<phase>verify</phase>
 						<goals>
 							<goal>prepare-pom-update</goal>
@@ -231,7 +231,7 @@
 				<executions>
 					<!-- Step 11: check out poms in Dev stream -->
 					<execution>
-						<id>Prepare poms in Dev stream</id>
+						<id>Prepare poms in Dev stream: checkout</id>
 						<phase>verify</phase>
 						<goals>
 							<goal>prepare-pom-update</goal>
@@ -250,7 +250,7 @@
 				<executions>
 					<!-- Step 12: check out poms in Dev stream -->
 					<execution>
-						<id>Prepare poms in Dev stream</id>
+						<id>Update poms in Dev stream</id>
 						<phase>verify</phase>
 						<goals>
 							<goal>updatePom</goal>
@@ -269,7 +269,7 @@
 				<executions>
 					<!-- Step 13: check out poms in Dev stream -->
 					<execution>
-						<id>Prepare poms in Dev stream</id>
+						<id>Prepare poms in Dev stream: check in</id>
 						<phase>verify</phase>
 						<goals>
 							<goal>prepare-pom-update</goal>
