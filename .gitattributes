@@ -3852,6 +3852,7 @@ int/maven/poms/maven-bounce-pom/pom.xml -text
 int/maven/poms/maven-build-pom/Compile/pom.xml -text
 int/maven/poms/maven-build-pom/Complete/pom.xml -text
 int/maven/poms/maven-build-pom/Prepare/pom.xml -text
+int/maven/poms/maven-build-pom/Undo/pom.xml -text
 int/maven/poms/maven-build-pom/pom.xml -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-jca-pom/.project -text

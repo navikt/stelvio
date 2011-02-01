@@ -6,7 +6,7 @@
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.2.1</version>
-		<relativePath>../maven-root-pom</relativePath>
+		<relativePath>../../maven-root-pom</relativePath>
 	</parent>
 	
 	<groupId>no.nav.maven.poms</groupId>
