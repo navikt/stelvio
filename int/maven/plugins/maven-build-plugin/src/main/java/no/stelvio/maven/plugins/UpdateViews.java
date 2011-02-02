@@ -17,12 +17,10 @@ package no.stelvio.maven.plugins;
  */
 
 import no.stelvio.maven.build.plugin.utils.CleartoolCommandLine;
-import no.stelvio.maven.build.plugin.utils.CommandLineUtil;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.util.cli.Commandline;
 
 /**
  * Goal which updates views for both DEV and INT streams
@@ -35,26 +33,57 @@ public class UpdateViews extends AbstractMojo {
 	/**
 	 * Project name - BUILD_TEST
 	 * 
-	 * @parameter expression="${project}"
+	 * @parameter expression="${build}"
 	 * @required
 	 */
-	private String project;
+	private String build;
+	
+	/**
+	 * Folder where all CC streams are located
+	 * 
+	 * @parameter expression="${ccProjectDir}"
+	 * @required
+	 */
+	private String ccProjectDir;
+	
+	/**
+	 * Development stream tag
+	 * 
+	 * @parameter expression="${devStream}" default-value="_Dev"
+	 */
+	private String devStream;
+	
+	/**
+	 * Integration stream tag
+	 * 
+	 * @parameter expression="${intStream}" default-value="_int"
+	 */
+	private String intStream;
+	
+	/**
+	 * Whether this goal should be done
+	 * @parameter expression="${perform_updateViews}" default-value=true
+	 */
+	private boolean perform;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
-
+		if (!perform) {
+			this.getLog().warn("Skipping baseline");
+			return;
+		}
 		boolean fail = false;
 		this.getLog().info("----------------------------------");
 		this.getLog().info("--- Updating views for streams ---");
 		this.getLog().info("----------------------------------");
-		this.getLog().info("Updating INT view for " + this.project + "\n");
-		String workingDir = "D:/cc/";
-		String subcommand = "update -force -overwrite D:/cc/" + this.project;
-		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+"_int") != 0;
+		this.getLog().info("Updating INT view for " + this.build + "\n");
+		String workingDir = this.ccProjectDir;
+		String subcommand = "update -force -overwrite " + this.ccProjectDir + this.build;
+		//fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+this.intStream) != 0;
 		if (fail) throw new MojoExecutionException("Unable to update INT view");
 		this.getLog().info("************************************");
-		this.getLog().info("Updating DEV view for " + this.project + "\n");
-		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+"_Dev") != 0;
-		if (fail) throw new MojoExecutionException("Unable to update DEV view");
+		this.getLog().info("Updating DEV view for " + this.build + "\n");
+//		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+this.devStream) != 0;
+//		if (fail) throw new MojoExecutionException("Unable to update DEV view");
 		
 	}
 }

@@ -9,7 +9,8 @@ import java.util.HashMap;
  */
 public class ApplicationNameResolve {
 	private static HashMap<String,String> names;
-	{
+	
+	static {
 		names = new HashMap<String,String>();
 		names.put("BUILD_TEST", "POPP");
 		names.put("PEN_HR", "PEN");
@@ -23,4 +24,5 @@ public class ApplicationNameResolve {
 	public static String ApplicationFromProject(String projectName){
 		return names.get(projectName);
 	}
+	
 }

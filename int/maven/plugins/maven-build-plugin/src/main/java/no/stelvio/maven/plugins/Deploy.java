@@ -1,13 +1,13 @@
 package no.stelvio.maven.plugins;
 
 import no.stelvio.maven.build.plugin.utils.ApplicationNameResolve;
-import no.stelvio.maven.build.plugin.utils.CommandLineUtil;
+import no.stelvio.maven.build.plugin.utils.MavenCommandLine;
+
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.util.cli.Commandline;
-
+import org.apache.maven.project.MavenProject;
 
 /**
  * Goal which runs deploy script and updates maven repo
@@ -18,27 +18,89 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class Deploy extends AbstractMojo{
 	
-	private final String BAT_FILE = "D:\\scripts\\mvn_job_exec.bat";
-	
 	/**
 	 * Project name - BUILD_TEST
 	 * 
-	 * @parameter expression="${project}"
+	 * @parameter expression="${build}"
 	 * @required
 	 */
-	private String project;
+	private String build;
+	
+	/**
+	 * Action to be done: install, deploy
+	 * 
+	 * @parameter expression="${action}" 
+	 * @required
+	 */
+	private String action;
+	
+	/**
+	 * Folder where all CC streams are located
+	 * 
+	 * @parameter expression="${ccProjectDir}"
+	 * @required
+	 */
+	private String ccProjectDir;
+	
+	/**
+	 * Integration stream tag
+	 * 
+	 * @parameter expression="${intStream}" default-value="_int"
+	 */
+	private String intStream;
+	
+	/**
+	 * Whether this goal should be done
+	 * @parameter expression="${perform_install}" default-value=true
+	 */
+	private boolean perform_install;
+	
+	/**
+	 * Whether this goal should be done
+	 * @parameter expression="${perform_deploy}" default-value=true
+	 */
+	private boolean perform_deploy;
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		this.getLog().info("---------------------------------");
-		this.getLog().info("--- Updating maven repository ---");
-		this.getLog().info("---------------------------------");
-		Commandline cmd = new Commandline();
-		cmd.setWorkingDirectory("D:\\cc\\"+this.project+"_int\\"+ApplicationNameResolve.ApplicationFromProject(project)+"\\layers");
-		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine(BAT_FILE + " mvn deploy -Dmaven.test.skip ");
-		cmd.addArg(arg);
-		if (CommandLineUtil.executeCommand(cmd) != 0) throw new MojoExecutionException("Unable to update maven repository.");
+		boolean fail = false;
+		if (this.action.equalsIgnoreCase("install")){
+			if (perform_install) fail = doInstall() != 0;
+			else this.getLog().warn("Skipping install");
+		}else if (this.action.equalsIgnoreCase("deploy")){
+			if (perform_deploy)	fail = doDeploy() != 0;
+			else this.getLog().warn("Skipping deploy");
+		}
+		if (fail) throw new MojoExecutionException("Unable to update maven repository.");
 	}
+	
+	/**
+	 * This method runs mvn clean install in layers folder in Int stream
+	 * @return 0 if everything is OK
+	 * @throws MojoFailureException
+	 */
+	private int doInstall() throws MojoFailureException{
+		this.getLog().info("--------------------------------------");
+		this.getLog().info("--- Installing to local repository ---");
+		this.getLog().info("--------------------------------------");
+		String workDir = this.ccProjectDir+this.build+this.intStream+"/"+ApplicationNameResolve.ApplicationFromProject(build)+"/layers";
+		//return MavenCommandLine.PerformMavenCommand(workDir, "clean install");
+		return 0;
+	}
+	
+	/**
+	 * This method runs mvn clean install in layers folder in Int stream
+	 * @return 0 if everything is OK
+	 * @throws MojoFailureException
+	 */
+	private int doDeploy() throws MojoFailureException{
+		this.getLog().info("---------------------------------------");
+		this.getLog().info("--- Installing to remote repository ---");
+		this.getLog().info("---------------------------------------");
+		String workDir = this.ccProjectDir+this.build+this.intStream+"/"+ApplicationNameResolve.ApplicationFromProject(build)+"/layers";
+		//return MavenCommandLine.PerformMavenCommand(workDir, "deploy -Dmaven.test.skip");
+		return 0;
+	}
+	
 
 }

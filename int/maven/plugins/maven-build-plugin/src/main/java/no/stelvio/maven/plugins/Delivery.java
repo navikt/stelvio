@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 import no.stelvio.maven.build.plugin.utils.CCCQRequest;
 import no.stelvio.maven.build.plugin.utils.CleartoolCommandLine;
-import no.stelvio.maven.build.plugin.utils.CommandLineUtil;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.util.cli.Commandline;
 
 /**
  * Goal which delivers candidates from DEV to INT
@@ -23,10 +21,10 @@ public class Delivery extends AbstractMojo{
 	/**
 	 * Project name - BUILD_TEST
 	 * 
-	 * @parameter expression="${project}"
+	 * @parameter expression="${build}"
 	 * @required
 	 */
-	private String project;
+	private String build;
 	
 	/**
 	 * Step of delivery: I or II
@@ -35,13 +33,58 @@ public class Delivery extends AbstractMojo{
 	 * @required
 	 */
 	private int step;
+
+	/**
+	 * Folder where all CC streams are located
+	 * 
+	 * @parameter expression="${ccProjectDir}"
+	 * @required
+	 */
+	private String ccProjectDir;
+	
+	/**
+	 * Activities to be included in the build.
+	 * If "all" - everything will be included. Otherwise just those activities
+	 * that are defined in this string
+	 * <p>N.B. if this string contains unrelated activities, build fails</p>
+	 * 
+	 * @parameter expression="${activities}" default-value="all"
+	 */
+	private String activityList;
+	
+	/**
+	 * Development stream tag
+	 * 
+	 * @parameter expression="${devStream}" default-value="_Dev"
+	 */
+	private String devStream;
+	
+	/**
+	 * Integration stream tag
+	 * 
+	 * @parameter expression="${intStream}" default-value="_int"
+	 */
+	private String intStream;
+	
+	/**
+	 * Whether this goal should be done
+	 * @parameter expression="${perform_delivery_1}" default-value=true
+	 */
+	private boolean perform_delivery_1;
+	
+	/**
+	 * Whether this goal should be done
+	 * @parameter expression="${perform_delivery_2}" default-value=true
+	 */
+	private boolean perform_delivery_2;
 	
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		boolean fail = false;
 		
 		if (step == 1){
-			fail = deliverI() != 0;
+			if (perform_delivery_1)	fail = deliverI() != 0;
+			else this.getLog().warn("Skipping delivery I");
 			// TODO consider to run undo delivery here if failed
 			// and maybe rerun this goal
 			/** 
@@ -49,7 +92,8 @@ public class Delivery extends AbstractMojo{
 			 * MONITOR BEHAVIOUR AND FIX LATER IF NEEDED
 			 */
 		}else if (step == 2){
-			fail = deliverII() != 0;
+			if (perform_delivery_2)	fail = deliverII() != 0;
+			else this.getLog().warn("Skipping delivery II");
 		}
 		if (fail) throw new MojoExecutionException("Unable to perform delivery");
 	}
@@ -62,10 +106,16 @@ public class Delivery extends AbstractMojo{
 		this.getLog().info("-----------------------------");
 		this.getLog().info("--- Performing delivery I ---");
 		this.getLog().info("-----------------------------");
-		String workingDir = "D:/cc/"+this.project+"_Dev";
-		ArrayList<String> activities = (ArrayList<String>) CCCQRequest.getActivitiesToDeliver(this.project);
-		StringBuffer subcommand = new StringBuffer("deliver -to srvmooseadmin_" + this.project + "_int"+" -force -act " + this.getActIDString(activities));
-		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand.toString());
+		String workingDir = this.ccProjectDir+this.build+this.devStream;
+		ArrayList<String> activities = (ArrayList<String>) CCCQRequest.getActivitiesToDeliver(this.ccProjectDir, this.build+this.devStream, activityList);
+		if (activities == null)	{
+			getLog().info("Nothing to deliver");
+			return 0;
+		}
+		StringBuffer subcommand = new StringBuffer("deliver -to srvmooseadmin_" + this.build + this.intStream+" -force " + "-act " + this.getActIDString(activities));
+		
+		//return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand.toString());
+		return 0;
 	}
 	
 	/**
@@ -77,7 +127,7 @@ public class Delivery extends AbstractMojo{
 		StringBuffer result = new StringBuffer();
 		for (int i=0; i<activities.size();i++){
 			result.append(activities.get(i)); 
-			if (i<activities.size()) result.append(',');
+			if (i<activities.size()-1) result.append(',');
 		}
 		return result.toString();
 	}
@@ -90,9 +140,10 @@ public class Delivery extends AbstractMojo{
 		this.getLog().info("------------------------------");
 		this.getLog().info("--- Performing delivery II ---");
 		this.getLog().info("------------------------------");
-		String workingDir = "D:/cc/"+this.project+"_Dev";
+		String workingDir = this.ccProjectDir+this.build+this.devStream;
 		String subcommand = "deliver -complete -force";
-		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+		//return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+		return 0;
 	}
 
 }

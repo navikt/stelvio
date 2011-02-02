@@ -3619,13 +3619,17 @@ int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/CCCQRequest.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/CleartoolCommandLine.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/CommandLineUtil.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/MavenCommandLine.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/PomSearchUtil.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Baseline.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/CCPomManipulator.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Delivery.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Deploy.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UndoDelivery.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdateActivities.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdatePoms.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdateViews.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/WarnUnreserved.java -text
 int/maven/plugins/maven-config-verification-plugin/pom.xml -text
 int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/Archiver.java -text
 int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/VerifyConfigMojo.java -text
