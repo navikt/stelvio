@@ -209,6 +209,22 @@
 					</execution>
 				</executions>
 			</plugin>		
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 15: Add WARN_UNRESERVED trigger -->
+					<execution>
+						<id>Update CQ activities</id>
+						<phase>install</phase>
+						<goals>
+							<goal>updateActivities</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
