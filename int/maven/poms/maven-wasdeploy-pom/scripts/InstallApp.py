@@ -84,7 +84,7 @@ def install():
 	#endTry
 	temp = _excp_
 	if (temp != 0):
-		msg = "Exception installing "+appName+" to "+CLUSTER_NAME
+		msg = "Exception installing "+APP_NAME+" to "+CLUSTER_NAME
 		log("ERROR", msg)
 		log("ERROR", installed)
 	#endIf
