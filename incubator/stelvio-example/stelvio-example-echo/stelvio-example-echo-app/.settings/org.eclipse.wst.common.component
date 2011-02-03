@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="stelvio-example-echo-providerEAR">
+    <wb-module deploy-name="stelvio-example-echo-app">
         <wb-resource deploy-path="/" source-path="/"/>
         <dependent-module deploy-path="/" handle="module:/resource/stelvio-example-echo-provider/stelvio-example-echo-provider">
             <dependent-object>Module_1296773473059</dependent-object>
