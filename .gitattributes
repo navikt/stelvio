@@ -2555,6 +2555,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/Web
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-ext.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/web.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/index.html -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/stelvio/example/echo/provider/Echo.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.wst.common.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
