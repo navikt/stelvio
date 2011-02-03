@@ -2543,17 +2543,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.s
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/stelvio-example-echo.emx -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/uml2wsdl.tc -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.classpath -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.factorypath -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.project -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/.jsdtscope -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.jdt.apt.core.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.jdt.core.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.common.component -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.common.project.facet.core.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.jsdt.ui.superType.container -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.jsdt.ui.superType.name -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-ext.xml -text
