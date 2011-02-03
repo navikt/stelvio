@@ -72,7 +72,22 @@ def install():
 	serverId = AdminConfig.getid("/Node:"+NODE_NAME+"/Server:"+SERVER_NAME+"/")
 	options = "-verbose -appname " + APP_NAME + " -nodeployejb -usedefaultbindings -defaultbinding.virtual.host default_host -cluster " + CLUSTER_NAME
 	log("INFO", "Installing application, " + APP_NAME + " with the following options: " + options)
-	AdminApp.install(APP_LOCATION, options)
+	
+	
+	try:
+		_excp_ = 0
+		installed = AdminApp.install(APP_LOCATION, options)
+	except:
+		_type_, _value_, _tbck_ = sys.exc_info()
+		installed = `_value_`
+		_excp_ = 1
+	#endTry
+	temp = _excp_
+	if (temp != 0):
+		msg = "Exception installing "+appName+" to "+CLUSTER_NAME
+		log("ERROR", msg)
+		log("ERROR", installed)
+	#endIf
 
 def referenceSharedLibrary( libName, appName ):
 	libraries = AdminConfig.getid('/Library:/').split(java.lang.System.getProperty('line.separator'))
