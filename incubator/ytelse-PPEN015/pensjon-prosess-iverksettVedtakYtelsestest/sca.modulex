@@ -57,9 +57,13 @@
       <extendedObject href="OppdragWSIMP.import#//@import"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1296808430184" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ImportBinding" unknown="false" visible="true" x="657" y="513"/>
     </extensions>
-    <extensions xmi:id="Extension_1296808430186">
+    <extensions xmi:id="Extension_1296825477124">
+      <extendedObject href="invoke.component#//@Component"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1296825477122" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0}JavaImplementation" unknown="false" visible="true" x="273" y="369"/>
+    </extensions>
+    <extensions>
       <extendedObject href="sca.module#//@module"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" xmi:id="ModuleExtension_1296808430185" autoLayout="true"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
     </extensions>
     <extensions>
       <extendedObject href="iverksettVedtakYtelsestestWSEXP.export#//@export"/>
@@ -68,10 +72,6 @@
     <extensions>
       <extendedObject href="sca.module#//@module"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="invoke.component#//@Component"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/java/6.0.0}JavaImplementation" unknown="false" visible="true" x="273" y="369"/>
     </extensions>
   </extensionmodel:ExtensionMap>
   <extensionmodel:ExtensionMap xmi:id="ExtensionMap_1287052802246" namespace="http://com.ibm.wbit.stickyboard.model/model/StickyBoard.xsd">
