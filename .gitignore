@@ -328,6 +328,7 @@ incubator/busconfiguration/target
 incubator/maven-rdependency-plugin/.settings
 incubator/maven-rdependency-plugin/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-app/target
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/classes
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/*.class
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/*.jar
