@@ -2543,6 +2543,8 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.s
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/stelvio-example-echo.emx -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/uml2wsdl.tc -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.apt_generated/stelvio/example/echo/provider/jaxws/Echo.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.apt_generated/stelvio/example/echo/provider/jaxws/EchoResponse.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.classpath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.factorypath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.project -text
