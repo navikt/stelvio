@@ -32,6 +32,7 @@ public class ExportAndImportFileXPathFactory {
 		public ExportAndImportFileNamespaceContext() {
 			namespaceMap.put("jaxws", "http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0");
 			namespaceMap.put("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+			namespaceMap.put("scdl", "http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0");
 		}
 
 		public String getNamespaceURI(String prefix) {
