@@ -2560,7 +2560,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/Web
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-ext.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/web.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/index.html -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/stelvio/example/echo/provider/Echo.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/.project -text
