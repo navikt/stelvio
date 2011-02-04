@@ -3439,6 +3439,7 @@ incubator/ytelse-PPEN015/pensjon-prosess-iverksettVedtakYtelsestest/pom.xml -tex
 incubator/ytelse-PPEN015/pensjon-prosess-iverksettVedtakYtelsestest/sca.module -text
 incubator/ytelse-PPEN015/pensjon-prosess-iverksettVedtakYtelsestest/sca.module.attributes -text
 incubator/ytelse-PPEN015/pensjon-prosess-iverksettVedtakYtelsestest/sca.modulex -text
+incubator/ytelse-PPEN015/pensjon-test-iverksettVedtak/PensjonIverksettVedtak-soapui-project.xml -text
 incubator/ytelse-PPEN015/ppen015Test-soapui-project.xml -text
 inf/WebSEAL/stelvio-security-webseal-config/.project -text
 inf/WebSEAL/stelvio-security-webseal-html/.compatibility -text
