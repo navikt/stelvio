@@ -15,4 +15,8 @@
 			<type>war</type>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<directory>${target.dir}</directory>
+	</build>
 </project>
