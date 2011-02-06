@@ -669,6 +669,10 @@ int/maven-runtimes/wps-runtime/.project
 int/maven-runtimes/wps-runtime/.settings
 int/maven-runtimes/wps-runtime/bin
 int/maven-runtimes/wps-runtime/target
+int/maven/lifecycles/service-specification-plugin-lifecycle/.classpath
+int/maven/lifecycles/service-specification-plugin-lifecycle/.project
+int/maven/lifecycles/service-specification-plugin-lifecycle/.settings
+int/maven/lifecycles/service-specification-plugin-lifecycle/target
 int/maven/plugins/.classpath
 int/maven/plugins/.project
 int/maven/plugins/.settings
@@ -710,6 +714,10 @@ int/maven/plugins/maven-properties-plugin/.classpath
 int/maven/plugins/maven-properties-plugin/.project
 int/maven/plugins/maven-properties-plugin/.settings
 int/maven/plugins/maven-properties-plugin/target
+int/maven/plugins/maven-rsa-transform-plugin/.classpath
+int/maven/plugins/maven-rsa-transform-plugin/.project
+int/maven/plugins/maven-rsa-transform-plugin/.settings
+int/maven/plugins/maven-rsa-transform-plugin/target
 int/maven/plugins/maven-sca-attributes-plugin/.classpath
 int/maven/plugins/maven-sca-attributes-plugin/.project
 int/maven/plugins/maven-sca-attributes-plugin/.settings
@@ -825,6 +833,8 @@ int/maven/poms/maven-deploy-pom/.settings
 int/maven/poms/maven-deploy-pom/target
 int/maven/poms/maven-plugin-pom/target
 int/maven/poms/maven-root-pom/target
+int/maven/poms/maven-service-specification-pom/.project
+int/maven/poms/maven-service-specification-pom/.settings
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/.project
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/.settings
