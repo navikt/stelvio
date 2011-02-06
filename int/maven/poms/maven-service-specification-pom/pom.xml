@@ -18,8 +18,13 @@
 
 		<resources>
 			<resource>
-				<directory>.</directory>
-				<includes>*.emx</includes>
+				<directory>${basedir}</directory>
+				<includes>
+					<include>.project</include>
+					<include>*.emx</include>
+					<include>*.tc</include>
+				</includes>
+				<targetPath>${project.build.directory}/input</targetPath>
 			</resource>
 		</resources>
 

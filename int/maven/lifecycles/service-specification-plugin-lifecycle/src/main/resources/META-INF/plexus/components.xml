@@ -16,6 +16,9 @@
 							<generate-sources>
 								org.apache.maven.plugins:maven-dependency-plugin:unpack-dependencies
 							</generate-sources>
+							<process-resources>
+								org.apache.maven.plugins:maven-resources-plugin:resources
+							</process-resources>
 							<compile>
 								no.nav.maven.plugins:maven-rsa-transform-plugin:uml2wsdl
 							</compile>

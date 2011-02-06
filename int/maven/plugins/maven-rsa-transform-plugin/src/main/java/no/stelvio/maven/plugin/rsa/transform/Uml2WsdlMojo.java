@@ -36,6 +36,11 @@ public class Uml2WsdlMojo extends AbstractMojo {
 	private File workspace;
 	
 	/**
+	 * @parameter default-value="${project.build.directory}/input"
+	 */
+	private File inputDirectory;
+
+	/**
 	 * @parameter default-value="${project.build.outputDirectory}"
 	 */
 	private File outputDirectory;
@@ -47,7 +52,7 @@ public class Uml2WsdlMojo extends AbstractMojo {
 	private String rsaCommand;
 	
 	/**
-	 * @parameter default-value="/input/UML2WSDL.tc"
+	 * @parameter default-value="/input/uml2wsdl.tc"
 	 */
 	private String transformationConfiguration;
 
@@ -88,6 +93,7 @@ public class Uml2WsdlMojo extends AbstractMojo {
 		commandline.createArg().setLine("-application stelvio.rsa.uml2wsdl.headless.uml2wsdl");
 		commandline.createArg().setLine("-data " + workspace);
 		commandline.createArg().setLine("-tc " + transformationConfiguration);
+		commandline.createArg().setLine("-projectDir " + inputDirectory);
 		commandline.createArg().setLine("-projectDir " + outputDirectory);
 		for (File project : Arrays.asList(projectDirectory.listFiles())) {
 			commandline.createArg().setLine("-projectDir " + project.getAbsolutePath());
