@@ -16,6 +16,13 @@
 	<build>
 		<outputDirectory>${project.build.directory}/output</outputDirectory>
 
+		<resources>
+			<resource>
+				<directory>.</directory>
+				<includes>*.emx</includes>
+			</resource>
+		</resources>
+
 		<!-- Custom lifecycle and packaging -->
 		<extensions>
 			<extension>

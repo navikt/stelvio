@@ -45,6 +45,11 @@ public class Uml2WsdlMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String rsaCommand;
+	
+	/**
+	 * @parameter default-value="/input/UML2WSDL.tc"
+	 */
+	private String transformationConfiguration;
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
@@ -82,7 +87,7 @@ public class Uml2WsdlMojo extends AbstractMojo {
 		
 		commandline.createArg().setLine("-application stelvio.rsa.uml2wsdl.headless.uml2wsdl");
 		commandline.createArg().setLine("-data " + workspace);
-		commandline.createArg().setLine("-tc " + "/opptjening-modell/UML2WSDL.tc");
+		commandline.createArg().setLine("-tc " + transformationConfiguration);
 		commandline.createArg().setLine("-projectDir " + outputDirectory);
 		for (File project : Arrays.asList(projectDirectory.listFiles())) {
 			commandline.createArg().setLine("-projectDir " + project.getAbsolutePath());
