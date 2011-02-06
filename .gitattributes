@@ -3677,6 +3677,9 @@ int/maven-pocs/maven-deploy-poc/pom.xml -text
 int/maven-runtimes/wps-runtime/build.xml -text
 int/maven-runtimes/wps-runtime/files.txt -text
 int/maven-runtimes/wps-runtime/pom.xml -text
+int/maven/lifecycles/service-specification-plugin-lifecycle/pom.xml -text
+int/maven/lifecycles/service-specification-plugin-lifecycle/src/main/resources/META-INF/plexus/components.xml -text
+int/maven/lifecycles/service-specification-plugin-lifecycle/src/main/resources/service-specification-assembly.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/pom.xml -text
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierConfigurerMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-artifact-modifier-plugin/src/main/java/no/nav/maven/plugin/artifact/modifier/mojo/ArtifactModifierMojo.java -text svneol=unset#text/plain
@@ -3819,6 +3822,9 @@ int/maven/plugins/maven-properties-plugin/pom.xml -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/Delimter.java -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/DetectUnresolvedPropertiesMojo.java -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/LoadPropertiesMojo.java -text
+int/maven/plugins/maven-rsa-transform-plugin/pom.xml -text
+int/maven/plugins/maven-rsa-transform-plugin/src/main/java/no/stelvio/maven/plugin/rsa/transform/Uml2WsdlMojo.java -text
+int/maven/plugins/maven-rsa-transform-plugin/src/main/resources/project -text
 int/maven/plugins/maven-sca-attributes-plugin/pom.xml -text
 int/maven/plugins/maven-sca-attributes-plugin/src/main/java/no/nav/maven/plugin/sca/attributes/GenerateScaAttributesMojo.java -text
 int/maven/plugins/maven-service-deploy-plugin/pom.xml -text

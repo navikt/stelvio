@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
 		<groupId>no.stelvio.maven.poms</groupId>
-		<artifactId>maven-wps-library-pom</artifactId>
-		<version>2.0.1</version>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.2.2-SNAPSHOT</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -13,70 +14,59 @@
 	<packaging>pom</packaging>
 
 	<build>
-		<!-- service libraries are materialized from source artifact -->
-		<sourceDirectory>target/output</sourceDirectory>
-		<!-- ..which makes maven-eclipse-plugin crash unless source directory is a child of basedir, so set build directories too -->
-		<directory>${basedir}/target</directory>
-		<outputDirectory>${build.directory}/output</outputDirectory>
-		<testOutputDirectory>${build.directory}/test-output</testOutputDirectory>
+		<outputDirectory>${project.build.directory}/output</outputDirectory>
 
-		<plugins>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wsi-plugin</artifactId>
-				<version>1.0.2</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>analyze</goal>
-						</goals>
-						<phase>test</phase>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wsdl-plugin</artifactId>
-				<version>1.10</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>set-fault-names</goal>
-						</goals>
-						<id>set-fault-names</id>
-						<phase>process-resources</phase>
-					</execution>
-					<execution>
-						<id>remove-placeholders</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>remove-placeholders</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<configuration>
-					<includes>
-						<include>**/*.wsdl</include>
-						<include>**/*.xsd</include>
-					</includes>
-					<includePom>true</includePom>
-					<excludeResources>true</excludeResources>
-				</configuration>
-			</plugin>
-		</plugins>
-		
+		<!-- Custom lifecycle and packaging -->
+		<extensions>
+			<extension>
+				<groupId>no.nav.maven.lifecycles</groupId>
+				<artifactId>service-specification-plugin-lifecycle</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+			</extension>
+		</extensions>
+
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<outputDirectory>${project.build.directory}/projects</outputDirectory>
+						<useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-rsa-transform-plugin</artifactId>
+					<version>1.0.0-SNAPSHOT</version>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-wsdl-plugin</artifactId>
+					<version>1.10</version>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-wsi-plugin</artifactId>
+					<version>1.0.2</version>
+					<configuration>
+						<basedir>${project.build.outputDirectory}</basedir>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<configuration>
+						<descriptors>
+							<descriptor>service-specification-assembly.xml</descriptor>
+						</descriptors>
+						<appendAssemblyId>false</appendAssemblyId>
+					</configuration>
+				</plugin>
+				<plugin>
 					<artifactId>maven-release-plugin</artifactId>
 					<configuration>
-						<tagBase>
-							https://versjonskontroll.adeo.no/svn/nav/tags/tjenester
-						</tagBase>
+						<tagBase>https://versjonskontroll.adeo.no/svn/nav/tags/tjenester</tagBase>
 					</configuration>
 				</plugin>
 			</plugins>

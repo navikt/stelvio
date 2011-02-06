@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.2.2-SNAPSHOT</version>
+		<relativePath>../../poms/maven-root-pom</relativePath>
+	</parent>
+
+	<groupId>no.nav.maven.lifecycles</groupId>
+	<artifactId>service-specification-plugin-lifecycle</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>Service Specification Plugin Lifecycle</name>
+
+	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-plugin-lifecycle</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-plugin-lifecycle</developerConnection>
+	</scm>
+	<properties>
+		<scm.root>
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-plugin-lifecycle
+		</scm.root>
+		<scm.connection>${scm.root}</scm.connection>
+	</properties>
+</project>
