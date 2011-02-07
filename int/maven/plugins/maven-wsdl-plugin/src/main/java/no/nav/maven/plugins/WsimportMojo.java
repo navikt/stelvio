@@ -182,9 +182,9 @@ public class WsimportMojo extends AbstractMojo {
 	private String encoding = System.getProperty("file.encoding");
 
 	/**
-	 * Set a location to generate CLASS files into.
+	 * Set a location to generate CLASS files into. DEBUG: This is changed from original (wsdl2java)
 	 * 
-	 * @parameter default-value="${project.build.directory}/generated-sources/wsdl2java"
+	 * @parameter default-value="${project.build.directory}/wsimport"
 	 * @required
 	 */
 	private File classGenerationDirectory;
@@ -201,119 +201,71 @@ public class WsimportMojo extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException {
 
-		System.out.print("Starting Rubens super wsimport-mojo!\n");
-		System.out.print(".\n");
-		System.out.print("..\n");
-		System.out.print("..\n");
 		String exec = "";
-		
+
 		if (wasRuntime == null) {
 			wasRuntime = widRuntime;
 		}
 		if (Os.isFamily("windows")) {
-			System.out.print("We can has windoes!\n\n");
 			exec = wasRuntime + "/bin/wsimport.bat";
 		} else {
+			// TODO: Fix and test support for Linux
 			System.out.print("\n No support for non-windows systems as of now!\n");
 		}
 		Commandline commandLine = new Commandline();
 		commandLine.setExecutable(exec);
 
-		commandLine.clearArgs();
-		Arg arg = commandLine.createArg();
-		
-		StringBuilder argLineBuilder = new StringBuilder();
-		
-		//argLineBuilder.append(" -help");
-		
-		//argLineBuilder.append(" -verbose");
-		//argLineBuilder.append(" -s E:/ws/stelvio-example-echo-wsimport/src");
-		argLineBuilder.append("E:/ws/stelvio-example-echo-wsimport/WebContent/WEB-INF/wsdl/stelvio-example-echo-service_EchoServiceWSEXP.wsdl");	
-		
-		try {
-			executeCommand(commandLine);
-		} catch (Exception e) {
+		// File workingDir = createWorkingDir(); // Shouldn't be necessary at this stage
+		new File(project.getBuild().getOutputDirectory()).mkdirs();
+		File workingDir = createWorkingDir();
 
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (wsdlOptions == null || wsdlOptions.length == 0) {
+			getLog().info("Nothing to generate");
+			return;
 		}
 
-		// if (wsdlOptions == null || wsdlOptions.length == 0) {
-		// getLog().info("Nothing to generate");
-		// return;
-		// }
+		// TODO: The following must be done because of one (or more) bug(s)
+		// in Maven. See Maven bugs MNG-3506 and MNG-2426 for more info.
+		if (!wsdlInterfaceArtifactHandler.equals(artifactHandlerManager.getArtifactHandler(WSDL_INTERFACE_ARTIFACT_TYPE))) {
+			getLog().debug("Adding project interchange artifact handler to artifact handler manager");
+			artifactHandlerManager.addHandlers(Collections.singletonMap(WSDL_INTERFACE_ARTIFACT_TYPE,
+					wsdlInterfaceArtifactHandler));
+		}
 
-		// // TODO: The following must be done because of one (or more) bug(s)
-		// // in Maven. See Maven bugs MNG-3506 and MNG-2426 for more info.
-		// if (!wsdlInterfaceArtifactHandler.equals(artifactHandlerManager.getArtifactHandler(WSDL_INTERFACE_ARTIFACT_TYPE))) {
-		// getLog().debug("Adding project interchange artifact handler to artifact handler manager");
-		// artifactHandlerManager.addHandlers(Collections.singletonMap(WSDL_INTERFACE_ARTIFACT_TYPE,
-		// wsdlInterfaceArtifactHandler));
-		// }
-		//
-		// String exec;
-		// if (wasRuntime == null) {
-		// wasRuntime = widRuntime;
-		// }
-		// if (Os.isFamily("windows")) {
-		// exec = wasRuntime + "/bin/WSDL2Java.bat";
-		// } else {
-		// exec = wasRuntime + "/bin/WSDL2Java.sh";
-		// }
-		// Commandline commandLine = new Commandline();
-		// commandLine.setExecutable(exec);
-		//
-		// File workingDir = createWorkingDir();
-		//
-		// // First unpack the wsdl-artifact from the dependency
-		// for (Artifact artifact : getWSDLArtifacts()) {
-		// File wsdlZipDir = extractFile(artifact.getFile(), workingDir);
-		//
-		// // Generate the NStoPkg.properties-file that will make sensible
-		// // packages for the wsdl
-		// File namespaceToPackageFile = generateNamespaceToPackageFile(wsdlZipDir);
-		//
-		// // Next, call the WSDL2Java script for all wsdl-files in the
-		// // artifact
-		// List<File> wsdlFiles = listFilesRecursive(wsdlZipDir, new FilenameFilter() {
-		// public boolean accept(File dir, String name) {
-		// return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
-		// }
-		// });
-		// for (File wsdlFile : wsdlFiles) {
-		// commandLine.clearArgs();
-		// Arg arg = commandLine.createArg();
-		//
-		// StringBuilder argLineBuilder = new StringBuilder();
-		// argLineBuilder.append(" -role client");
-		// argLineBuilder.append(" -container none");
-		// argLineBuilder.append(" -genJava Overwrite");
-		// if (noWrappedOperations) {
-		// argLineBuilder.append(" -noWrappedOperations");
-		// }
-		// if (noWrappedArrays) {
-		// argLineBuilder.append(" -noWrappedArrays");
-		// }
-		// if(namespaceMappingFile==null){
-		// argLineBuilder.append(" -fileNStoPkg ").append('"').append(namespaceToPackageFile.getAbsolutePath())
-		// .append('"');
-		// }
-		// else{
-		// argLineBuilder.append(" -fileNStoPkg ").append('"').append(namespaceMappingFile.getAbsolutePath())
-		// .append('"');
-		// }
-		//				
-		// argLineBuilder.append(" -output ").append('"').append(classGenerationDirectory.getAbsolutePath()).append('"');
-		// argLineBuilder.append(" ").append('"').append(wsdlFile.getAbsolutePath()).append('"');
-		//
-		// arg.setLine(argLineBuilder.toString());
-		// executeCommand(commandLine);
-		// }
-		// }
-		//
+		// First unpack the wsdl-artifact from the dependency
+		for (Artifact artifact : getWSDLArtifacts()) {
+			File wsdlZipDir = extractFile(artifact.getFile(), workingDir);
+
+			// Generate the NStoPkg.properties-file that will make sensible
+			// packages for the wsdl
+			File namespaceToPackageFile = generateNamespaceToPackageFile(wsdlZipDir);
+
+			// Next, call the WSDL2Java script for all wsdl-files in the
+			// artifact
+			List<File> wsdlFiles = listFilesRecursive(wsdlZipDir, new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
+				}
+			});
+			for (File wsdlFile : wsdlFiles) {
+
+				commandLine.clearArgs();
+				Arg arg = commandLine.createArg();
+
+				StringBuilder argLineBuilder = new StringBuilder();
+
+				argLineBuilder.append(" -verbose ");
+				argLineBuilder.append(" -keep "); // HACK Used to generate java-files for testing
+				argLineBuilder.append(" -d ").append('"').append(project.getBuild().getOutputDirectory()).append('"');
+
+				argLineBuilder.append(" " + wsdlFile.getAbsolutePath() + " ");
+				arg.setLine(argLineBuilder.toString());
+
+				executeCommand(commandLine);
+			}
+		}
 		// project.addCompileSourceRoot(classGenerationDirectory.getAbsolutePath());
 
-		System.out.print("\n\nROFLMAOx2!\n\n");
 	}
 
 	private File generateNamespaceToPackageFile(File wsdlZipDir) throws MojoExecutionException {
@@ -336,7 +288,7 @@ public class WsimportMojo extends AbstractMojo {
 	}
 
 	private File createWorkingDir() {
-		File parentDir = new File(project.getBuild().getDirectory(), "wsdl2java");
+		File parentDir = new File(project.getBuild().getDirectory(), "wsimport");
 		File workingDir = new File(parentDir, String.valueOf(System.currentTimeMillis()));
 		workingDir.mkdirs();
 		return workingDir;
