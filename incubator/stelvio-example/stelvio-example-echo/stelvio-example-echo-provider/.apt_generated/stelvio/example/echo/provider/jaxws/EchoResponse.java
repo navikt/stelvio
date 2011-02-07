@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "echoResponse", namespace = "http://provider.echo.example.stelvio/")
+@XmlRootElement(name = "echoResponse", namespace = "http://www.stelvio.no/example/services/V1/EchoService")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "echoResponse", namespace = "http://provider.echo.example.stelvio/")
+@XmlType(name = "echoResponse", namespace = "http://www.stelvio.no/example/services/V1/EchoService")
 public class EchoResponse {
 
     @XmlElement(name = "return", namespace = "")
