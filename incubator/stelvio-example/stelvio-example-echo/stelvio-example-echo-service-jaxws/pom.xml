@@ -5,8 +5,7 @@
 	<groupId>no.stelvio.example</groupId>
 	<artifactId>stelvio-example-echo-service-jaxws</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>Stelvio Example ${project.artifactId}</name>
-	<packaging>nav-war</packaging> 
+	<name>Stelvio Example Echo JAX-WS interface</name>
 	<build>
 		<plugins>
 			<plugin>
@@ -35,7 +34,7 @@
 			</plugin>
 			
 			<!-- Delete the files in the WebContent/WEB-INF/lib and WebContent/META-INF folder -->
-			<plugin>
+			<!--plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.4.1</version><configuration>
@@ -52,14 +51,14 @@
 						</fileset>
 					</filesets>
 				</configuration>
-			</plugin>
+			</plugin-->
 
 			<!-- Create the WAR file -->
-			<plugin>
+			<!--plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>nav-war-plugin</artifactId>
-				<version>1.3</version><!--  EHRM TODO -->
-				<extensions>true</extensions>
+				<version>1.3</version--><!--  EHRM TODO -->
+				<!--extensions>true</extensions>
 				<configuration>
 					<warSourceExcludes>
 						WEB-INF/lib/*.jar, **/*.db
@@ -70,10 +69,10 @@
 							<classpathPrefix>lib/</classpathPrefix>
 							<addClasspath>true</addClasspath>
 						</manifest>
-					</archive>
+					</archive-->
 
 					<!-- Export generated manifest for use with IDE -->
-					<exportManifestToDir>
+					<!--exportManifestToDir>
 						${basedir}/WebContent/META-INF/
 					</exportManifestToDir>
 
@@ -84,7 +83,7 @@
 						${basedir}/WebContent/WEB-INF/web.xml
 					</webXml>
 				</configuration>
-			</plugin>
+			</plugin-->
 									
 		</plugins>
 	</build>
