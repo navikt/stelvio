@@ -16,18 +16,14 @@ package no.nav.maven.plugins;
  * limitations under the License.
  */
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Properties;
 import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
@@ -47,8 +43,6 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.ProjectUtils;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
-import org.codehaus.plexus.util.IOUtil;
-import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.Arg;
 import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
@@ -145,18 +139,6 @@ public class WsimportMojo extends AbstractMojo {
 	private UnArchiver unArchiver;
 
 	/**
-	 * @parameter expression="${was.home}"
-	 * @readonly
-	 */
-	private String wasRuntime;
-
-	/**
-	 * @parameter expression="${wid.runtime}"
-	 * @readonly
-	 */
-	private String widRuntime;
-
-	/**
 	 * @parameter default-value="false"
 	 */
 	private boolean noWrappedOperations;
@@ -201,21 +183,11 @@ public class WsimportMojo extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException {
 
-		String exec = "";
-
-		if (wasRuntime == null) {
-			wasRuntime = widRuntime;
-		}
-		if (Os.isFamily("windows")) {
-			exec = wasRuntime + "/bin/wsimport.bat";
-		} else {
-			// TODO: Fix and test support for Linux
-			System.out.print("\n No support for non-windows systems as of now!\n");
-		}
+		// Assume 'wsimport' is found on the path
+		String wsimportCmd = "wsimport";
 		Commandline commandLine = new Commandline();
-		commandLine.setExecutable(exec);
+		commandLine.setExecutable(wsimportCmd);
 
-		// File workingDir = createWorkingDir(); // Shouldn't be necessary at this stage
 		new File(project.getBuild().getOutputDirectory()).mkdirs();
 		File workingDir = createWorkingDir();
 
@@ -236,26 +208,21 @@ public class WsimportMojo extends AbstractMojo {
 		for (Artifact artifact : getWSDLArtifacts()) {
 			File wsdlZipDir = extractFile(artifact.getFile(), workingDir);
 
-			// Generate the NStoPkg.properties-file that will make sensible
-			// packages for the wsdl
-			File namespaceToPackageFile = generateNamespaceToPackageFile(wsdlZipDir);
-
-			// Next, call the WSDL2Java script for all wsdl-files in the
-			// artifact
+			// Next, call the wsimport script for all wsdl-files in the artifact
+			// TODO look for WSDL ports, not particular names
 			List<File> wsdlFiles = listFilesRecursive(wsdlZipDir, new FilenameFilter() {
 				public boolean accept(File dir, String name) {
 					return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
 				}
 			});
 			for (File wsdlFile : wsdlFiles) {
-
 				commandLine.clearArgs();
 				Arg arg = commandLine.createArg();
 
 				StringBuilder argLineBuilder = new StringBuilder();
 
 				argLineBuilder.append(" -verbose ");
-				argLineBuilder.append(" -keep "); // HACK Used to generate java-files for testing
+//				argLineBuilder.append(" -keep "); // HACK Used to generate java-files for testing
 				argLineBuilder.append(" -d ").append('"').append(project.getBuild().getOutputDirectory()).append('"');
 
 				argLineBuilder.append(" " + wsdlFile.getAbsolutePath() + " ");
@@ -263,27 +230,6 @@ public class WsimportMojo extends AbstractMojo {
 
 				executeCommand(commandLine);
 			}
-		}
-		// project.addCompileSourceRoot(classGenerationDirectory.getAbsolutePath());
-
-	}
-
-	private File generateNamespaceToPackageFile(File wsdlZipDir) throws MojoExecutionException {
-		OutputStream out = null;
-		try {
-			NamespaceToPackageMappingGenerator ns2pmg = new NamespaceToPackageMappingGenerator(encoding);
-			ns2pmg.setRemoveVersionInfo(removeVersionInfo);
-			ns2pmg.setUseLowerCasePackageName(useLowerCasePackageName);
-			Properties mapping = ns2pmg.createNamespaceToPackageMappingFromWSDLDirectory(wsdlZipDir);
-
-			File namespaceToPackageFile = new File(wsdlZipDir, "NStoPkg.properties");
-			out = new BufferedOutputStream(new FileOutputStream(namespaceToPackageFile));
-			mapping.store(out, null);
-			return namespaceToPackageFile;
-		} catch (IOException e) {
-			throw new MojoExecutionException("Error generating NStoPkg.properties file", e);
-		} finally {
-			IOUtil.close(out);
 		}
 	}
 
