@@ -6,7 +6,7 @@
 		<groupId>no.stelvio.maven.poms</groupId>
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.2.1</version>
-		<relativePath>../../maven-root-pom</relativePath>
+		<relativePath>../</relativePath>		
 	</parent>
 	
 	<groupId>no.nav.maven.poms</groupId>
@@ -19,8 +19,6 @@
 		<buildVersion>1.0-SNAPSHOT</buildVersion>
 		<ccProjectDir>D:/cc/</ccProjectDir>
 		<scriptFolder>D:/scripts/</scriptFolder>
-		<devStream>_Dev_h</devStream>
-		<intStream>_int_h</intStream>
 	</properties>
 
 	<dependencies>
