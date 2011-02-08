@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Stelvio plugin site for RSA plugins">
+      This is eclipse update-site for Stelvio eclipse plugins for modelling in RSA 8.0
+   </description>
+   <feature url="features/no.stelvio.esb.models.service.uml.profile_1.0.0.jar" id="no.stelvio.esb.models.service.uml.profile" version="1.0.0">
+      <category name="profiles"/>
+   </feature>
+   <feature url="features/no.stelvio.esb.models.transformation.uml2html_1.0.0.jar" id="no.stelvio.esb.models.transformation.uml2html" version="1.0.0">
+      <category name="transformation"/>
+   </feature>
+   <category-def name="transformation" label="Stelvio model transformations">
+      <description>
+         Model transformation plugins. Created in and used within RSA 8.0
+      </description>
+   </category-def>
+   <category-def name="profiles" label="Stelvio UML Profile">
+      <description>
+         Stelvio uml profiles
+      </description>
+   </category-def>
+</site>
