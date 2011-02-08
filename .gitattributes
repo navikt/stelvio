@@ -2856,6 +2856,13 @@ int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/res
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/resources/xslt/web-publish-frontpage.xsl -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/main/resources/xslt/web-publish-operations.xsl -text
 int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/src/test/java/no/stelvio/esb/models/transformation/servicemodel2html/utils/PublishFileUtilsTest.java -text
+int/eclipse/plugins/stelvio-models-transformation-uml2html/META-INF/MANIFEST.MF -text
+int/eclipse/plugins/stelvio-models-transformation-uml2html/build.properties -text
+int/eclipse/plugins/stelvio-models-transformation-uml2html/plugin.xml -text
+int/eclipse/plugins/stelvio-models-transformation-uml2html/pom.xml -text
+int/eclipse/plugins/stelvio-models-transformation-uml2html/src/main/java/no/stelvio/esb/models/transformation/uml2html/Activator.java -text
+int/eclipse/plugins/stelvio-models-transformation-uml2html/src/main/java/no/stelvio/esb/models/transformation/uml2html/headless/UmlModelFilter.java -text
+int/eclipse/plugins/stelvio-models-transformation-uml2html/src/main/java/no/stelvio/esb/models/transformation/uml2html/headless/UmlToHtmlTransformationRunner.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/META-INF/MANIFEST.MF -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/build.properties -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/model/Uml2servicemodel.mapping -text
