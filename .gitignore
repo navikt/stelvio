@@ -404,6 +404,10 @@ int/eclipse/plugins/stelvio-models-service-uml-profile/.classpath
 int/eclipse/plugins/stelvio-models-service-uml-profile/.project
 int/eclipse/plugins/stelvio-models-service-uml-profile/.settings
 int/eclipse/plugins/stelvio-models-service-uml-profile/target
+int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/.classpath
+int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/.project
+int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/.settings
+int/eclipse/plugins/stelvio-models-transformation-servicemodel2html/target
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/.project
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/artifacts.jar
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/content.jar
