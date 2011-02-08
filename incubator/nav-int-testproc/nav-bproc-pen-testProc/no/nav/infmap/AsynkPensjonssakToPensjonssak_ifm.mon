@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Monitor xmlns="http://www.ibm.com/xmlns/prod/websphere/monitoring/6.0.0/mon" kind="http://www.ibm.com/xmlns/prod/websphere/wbiserver/ifm/6.0.0:InterfaceMediation" name="AsynkPensjonssakToPensjonssak" targetName="AsynkPensjonssakToPensjonssak" targetNamespace="http://nav-bproc-pen-testProc/no/nav/infmap:AsynkPensjonssakToPensjonssak" version="6.1">
-  <EnableDefaultEvents>false</EnableDefaultEvents>
-  <Configuration>
-    <Entry key="FULL_MODE" value="FIELDS"/>
-  </Configuration>
-</Monitor>

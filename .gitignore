@@ -318,13 +318,6 @@ dev/maven2/nav-deployment-code-plugin/.classpath
 dev/maven2/nav-deployment-code-plugin/.compatibility
 dev/maven2/nav-deployment-code-plugin/bin
 dev/maven2/nav-deployment-code-plugin/target
-incubator/FEMCommandLine/FEMGRAppClient/target
-incubator/FEMCommandLine/FEMGRAppClientEAR/target
-incubator/FEMCommandLine/nav-int-appclient-fem-pom/.project
-incubator/busconfiguration/.classpath
-incubator/busconfiguration/.project
-incubator/busconfiguration/.settings
-incubator/busconfiguration/target
 incubator/maven-rdependency-plugin/.settings
 incubator/maven-rdependency-plugin/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-app/target

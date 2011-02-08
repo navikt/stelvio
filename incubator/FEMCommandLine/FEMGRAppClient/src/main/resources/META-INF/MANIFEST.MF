@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: Main
-Class-Path: commons-lang-2.1.jar 
- commons-cli-1.1.jar 
- commons-collections-3.2.jar
-

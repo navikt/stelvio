@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EntVedtak="http://nav-ent-test-proctest/no/nav/inf/EntVedtak" xmlns:ns1="http://nav-lib-pen/no/nav/lib/pen/inf/Vedtak" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="VedtakSCAEXP" name="VedtakSCAEXP" target="no/nav/infmap/VedtakToEntVedtak">
-  <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Vedtak"/>
-  </interfaces>
-</scdl:export>

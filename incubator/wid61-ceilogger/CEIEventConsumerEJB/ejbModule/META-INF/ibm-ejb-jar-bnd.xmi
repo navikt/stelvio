@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:ejbbnd="ejbbnd.xmi" xmi:id="EJBJarBinding_1122054576644">
-  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
-  <ejbBindings xmi:type="ejbbnd:MessageDrivenBeanBinding" xmi:id="MessageDrivenBeanBinding_1122054576654" activationSpecJndiName="jms/cei/CEI_EVENT_QUEUE_AS" destinationJndiName="jms/cei/CEI_EVENT_QUEUE">
-    <enterpriseBean xmi:type="ejb:MessageDriven" href="META-INF/ejb-jar.xml#CEIConsumerMDB"/>
-  </ejbBindings>
-</ejbbnd:EJBJarBinding>

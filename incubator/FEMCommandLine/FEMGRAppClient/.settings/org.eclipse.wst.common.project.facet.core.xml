@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<faceted-project>
-  <runtime name="WebSphere Process Server v6.1"/>
-  <fixed facet="jst.java"/>
-  <fixed facet="jst.appclient"/>
-  <installed facet="jst.java" version="5.0"/>
-  <installed facet="jst.appclient" version="1.4"/>
-</faceted-project>

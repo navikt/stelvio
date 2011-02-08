@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bons1="http://nav-lib-test/no/nav/lib/test/gbo" targetNamespace="http://nav-lib-test/no/nav/lib/test/gbo">
-    <xsd:include schemaLocation="GBOKontrollpunkt.xsd"/>
-    <xsd:complexType name="GBOKontrollpunktListe">
-    <xsd:sequence>
-      <xsd:element maxOccurs="unbounded" minOccurs="0" name="kontrollpunkt" type="bons1:GBOKontrollpunkt"/>
-    </xsd:sequence>
-  </xsd:complexType>
-</xsd:schema>
