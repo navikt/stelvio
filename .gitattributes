@@ -3057,6 +3057,7 @@ int/maven/plugins/maven-wps-artifact-plugin/src/main/java/no/nav/maven/plugin/sc
 int/maven/plugins/maven-wps-artifact-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/pom.xml -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyActivationSpecs.java -text
+int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyUsernameTokenDetails.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/ApplyWSEndpoints.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/BackupWebsphereConfigMojo.java -text
 int/maven/plugins/maven-wpsdeploy-plugin/src/main/java/no/nav/maven/plugin/wpsdeploy/plugin/mojo/DeployArtifact.java -text

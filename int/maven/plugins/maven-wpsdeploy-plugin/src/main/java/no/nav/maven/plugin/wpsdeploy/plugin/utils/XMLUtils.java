@@ -108,6 +108,39 @@ public class XMLUtils {
 	}
 	
 	/**
+	 * returns <modulename>;username=<username>;password=<passwd>;policyBinding=<bindin> 
+	 */
+	public static String parseUsernameTokenDetails(File file) throws SAXException, IOException, ParserConfigurationException {
+		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+
+		NodeList usernametoken = xml.getElementsByTagName("usernametoken");
+
+		if (usernametoken.getLength() == 0) {
+			return null;
+		}
+		
+		String moduleName = file.getName().replace(".xml", "");
+		
+		StringBuilder returnString = new StringBuilder();
+		returnString.append(moduleName+";");
+		
+		for (int i = 0; i < usernametoken.getLength(); i++) {
+			NodeList usernametokenElements = usernametoken.item(i).getChildNodes();
+			for (int j = 0; j < usernametokenElements.getLength(); j++) {
+				if (usernametokenElements.item(j).getNodeName().equals("username")) {
+					returnString.append("username="+usernametokenElements.item(j).getChildNodes().item(0).getNodeValue()+";");
+				} else if (usernametokenElements.item(j).getNodeName().equals("password")) {
+					returnString.append("password="+usernametokenElements.item(j).getChildNodes().item(0).getNodeValue()+";");
+				} else if (usernametokenElements.item(j).getNodeName().equals("policyBinding")) {
+					returnString.append("policyBinding="+usernametokenElements.item(j).getChildNodes().item(0).getNodeValue());
+				}
+			}
+		}
+				
+		return returnString.toString();
+	}
+	
+	/**
 	 * Returns the complete string with all endpoint names and values for a given module on the format:
 	 * modulename::name::value;modulename ... 
 	 */
