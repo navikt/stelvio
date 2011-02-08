@@ -400,6 +400,10 @@ int/eclipse/plugins/stelvio-models-service-metamodel/.classpath
 int/eclipse/plugins/stelvio-models-service-metamodel/.project
 int/eclipse/plugins/stelvio-models-service-metamodel/.settings
 int/eclipse/plugins/stelvio-models-service-metamodel/target
+int/eclipse/plugins/stelvio-models-service-uml-profile/.classpath
+int/eclipse/plugins/stelvio-models-service-uml-profile/.project
+int/eclipse/plugins/stelvio-models-service-uml-profile/.settings
+int/eclipse/plugins/stelvio-models-service-uml-profile/target
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/.project
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/artifacts.jar
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/content.jar

@@ -2828,6 +2828,12 @@ int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/es
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ServicePackageImpl.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/util/ServiceMetamodelAdapterFactory.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/util/ServiceMetamodelSwitch.java -text
+int/eclipse/plugins/stelvio-models-service-uml-profile/META-INF/MANIFEST.MF -text
+int/eclipse/plugins/stelvio-models-service-uml-profile/build.properties -text
+int/eclipse/plugins/stelvio-models-service-uml-profile/plugin.xml -text
+int/eclipse/plugins/stelvio-models-service-uml-profile/pom.xml -text
+int/eclipse/plugins/stelvio-models-service-uml-profile/profiles/NAV_UML_Profile.epx -text
+int/eclipse/plugins/stelvio-models-service-uml-profile/src/main/java/no/stelvio/esb/models/service/uml/profile/Activator.java -text
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/site.xml -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/.project -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/build.properties -text
