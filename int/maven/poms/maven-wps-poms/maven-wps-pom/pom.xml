@@ -96,6 +96,14 @@
 					<artifactId>maven-wid-plugin</artifactId>
 					<version>3.1</version>
 				</plugin>
+				<!-- Since we're using ${project.build.outputDirectory} that doesn't account for target/checkout used by release:perform, we risk conflicts with mvn:release -->
+				<!-- To work around this, do clean before build the release. Assume that we're not interested in site-deploy -->
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<configuration>
+						<goals>clean deploy</goals>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
