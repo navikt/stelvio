@@ -396,6 +396,10 @@ incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.library.attributes
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/sca.module.attributes
 incubator/stelvio-example/stelvio-example-person/stelvio-example-person-service/target
+int/eclipse/plugins/stelvio-models-service-metamodel/.classpath
+int/eclipse/plugins/stelvio-models-service-metamodel/.project
+int/eclipse/plugins/stelvio-models-service-metamodel/.settings
+int/eclipse/plugins/stelvio-models-service-metamodel/target
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/.project
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/artifacts.jar
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/content.jar

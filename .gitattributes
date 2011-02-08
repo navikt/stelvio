@@ -2791,6 +2791,43 @@ int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerfikasjonWSExp_VerifikasjonHttpServiceLocator.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/Verifikasjon.java -text svneol=unset#text/plain
 int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy_verifikasjon/VerifikasjonProxy.java -text svneol=unset#text/plain
+int/eclipse/plugins/stelvio-models-service-metamodel/META-INF/MANIFEST.MF -text
+int/eclipse/plugins/stelvio-models-service-metamodel/build.properties -text
+int/eclipse/plugins/stelvio-models-service-metamodel/model/ServiceMetamodel.ecore -text
+int/eclipse/plugins/stelvio-models-service-metamodel/model/ServiceMetamodel.ecore_diagram -text
+int/eclipse/plugins/stelvio-models-service-metamodel/model/ServiceMetamodel.genmodel -text
+int/eclipse/plugins/stelvio-models-service-metamodel/plugin.properties -text
+int/eclipse/plugins/stelvio-models-service-metamodel/plugin.xml -text
+int/eclipse/plugins/stelvio-models-service-metamodel/pom.xml -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Attachment.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Attribute.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ComplexType.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Diagram.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Fault.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Message.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/OperationMetadata.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Scope.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ServiceCatagory.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ServiceInterface.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ServiceMetamodelFactory.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ServiceMetamodelPackage.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ServiceOperation.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ServicePackage.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/AttachmentImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/AttributeImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ComplexTypeImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/DiagramImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/FaultImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/MessageImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/OperationMetadataImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ServiceCatagoryImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ServiceInterfaceImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ServiceMetamodelFactoryImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ServiceMetamodelPackageImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ServiceOperationImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ServicePackageImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/util/ServiceMetamodelAdapterFactory.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/util/ServiceMetamodelSwitch.java -text
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/site.xml -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/.project -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/build.properties -text
