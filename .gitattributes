@@ -2794,6 +2794,9 @@ int/DeploymentVerifier/nav-cons-deploy-verifikasjonWebClient/src/nav_cons_deploy
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/.project -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/build.properties -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/feature.xml -text
+int/eclipse/update-sites/models/stelvio-models-transformation-uml2html-feature/.project -text
+int/eclipse/update-sites/models/stelvio-models-transformation-uml2html-feature/build.properties -text
+int/eclipse/update-sites/models/stelvio-models-transformation-uml2html-feature/feature.xml -text
 int/maven-pocs/maven-build-poc/layers/libs/poc-lib1/no/nav/gbo/StringBO.xsd -text svneol=unset#text/plain
 int/maven-pocs/maven-build-poc/layers/libs/poc-lib1/no/nav/inf/DummyIF.wsdl -text
 int/maven-pocs/maven-build-poc/layers/libs/poc-lib1/no/nav/inf/poc-module1_DummyServiceWSEXP.wsdl -text
