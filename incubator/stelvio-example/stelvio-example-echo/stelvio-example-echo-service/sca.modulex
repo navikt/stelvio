@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.wbit.wiring.ui.ext.model="http:///com/ibm/wbit/wiring/ui/ext/model.ecore" xmlns:extensionmodel="http:///extensionmodel.ecore" xmlns:sb="http://com.ibm.wbit.stickyboard.model/model/StickyBoard.xsd">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.wbit.wiring.ui.ext.model="http:///com/ibm/wbit/wiring/ui/ext/model.ecore" xmlns:extensionmodel="http:///extensionmodel.ecore" xmlns:sb="http://com.ibm.wbit.stickyboard.model/model/StickyBoard.xsd" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0">
   <extensionmodel:ExtensionMap xmi:id="ExtensionMap_1268315602680" namespace="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0">
     <extensions xmi:id="Extension_1268315602680">
-      <extendedObject href="stelvio-example-echo-service.component#//@Component"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1268315602696" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="239" y="30"/>
+      <extendedObject xmi:type="scdl:Component" href="stelvio-example-echo-service.component#//@Component"/>
+      <extensionObject xmi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1268315602696" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="203" y="30"/>
     </extensions>
     <extensions xmi:id="Extension_1268315602696">
-      <extendedObject href="sca.module#//@module"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" xmi:id="ModuleExtension_1268315602696" autoLayout="true"/>
+      <extendedObject xmi:type="scdl:Module" href="sca.module#//@module"/>
+      <extensionObject xmi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" xmi:id="ModuleExtension_1268315602696" autoLayout="true"/>
     </extensions>
-    <extensions>
-      <extendedObject href="EchoServiceWSEXP.export#//@export"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0}JaxWsExportBinding" unknown="false" visible="true" x="30" y="30" bound="true"/>
+    <extensions xmi:id="Extension_1268315602697">
+      <extendedObject xmi:type="scdl:Export" href="EchoServiceWSEXP.export#//@export"/>
+      <extensionObject xmi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" xmi:id="ExportExtension_1268315602696" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0}JaxWsExportBinding" unknown="false" visible="true" x="30" y="30" bound="true"/>
     </extensions>
   </extensionmodel:ExtensionMap>
   <extensionmodel:ExtensionMap xmi:id="ExtensionMap_1268315602711" namespace="http://com.ibm.wbit.stickyboard.model/model/StickyBoard.xsd">
     <extensions xmi:id="Extension_1268315602711">
-      <extendedObject href="sca.module#//@module"/>
-      <extensionObject xsi:type="sb:StickyDocument" xmi:id="StickyDocument_1268315602711">
+      <extendedObject xmi:type="scdl:Module" href="sca.module#//@module"/>
+      <extensionObject xmi:type="sb:StickyDocument" xmi:id="StickyDocument_1268315602711">
         <stickyBoard xmi:id="StickyBoard_1268315602711" id="default"/>
       </extensionObject>
     </extensions>
