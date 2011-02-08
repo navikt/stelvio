@@ -2894,6 +2894,7 @@ int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvi
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/TjenestekategoriToServiceCategoryTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/TjenestemetadataToOperationMetadataTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/UrlToAttachmentTransform.java -text
+int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/.project -text
 int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/site.xml -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/.project -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/build.properties -text
