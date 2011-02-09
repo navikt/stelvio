@@ -20,6 +20,8 @@
 		<configVersion>7.0.1-SNAPSHOT</configVersion>
 		<ccProjectDir>D:/cc/</ccProjectDir>
 		<scriptFolder>D:/scripts/</scriptFolder>
+		<devStream>_Dev_h</devStream>
+		<intStream>_int_h</intStream>
 	</properties>
 
 	<dependencies>
