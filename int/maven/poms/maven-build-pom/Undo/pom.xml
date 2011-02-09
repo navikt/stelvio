@@ -3,24 +3,22 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>no.stelvio.maven.poms</groupId>
-		<artifactId>maven-root-pom</artifactId>
-		<version>1.2.1</version>
+		<groupId>no.nav.maven.poms</groupId>
+		<artifactId>maven-build-pom</artifactId>
+		<version>1.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 	
 	<groupId>no.nav.maven.poms</groupId>
-	<artifactId>maven-build-pom</artifactId>
+	<artifactId>maven-build-undo-pom</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>maven-build-pom</name>
+	<name>maven-build-undo-pom</name>
 
 	<properties>
 		<buildVersion>1.0-SNAPSHOT</buildVersion>
 		<ccProjectDir>D:/cc/</ccProjectDir>
 		<scriptFolder>D:/scripts/</scriptFolder>
-		<devStream>_Dev_h</devStream>
-		<intStream>_int_h</intStream>
 	</properties>
 
 	<dependencies>
