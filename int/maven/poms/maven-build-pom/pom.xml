@@ -19,8 +19,8 @@
 		<buildVersion>1.0-SNAPSHOT</buildVersion>
 		<ccProjectDir>D:/cc/</ccProjectDir>
 		<scriptFolder>D:/scripts/</scriptFolder>
-		<devStream>_Dev</devStream>
-		<intStream>_int</intStream>
+		<devStream>_Dev_h</devStream>
+		<intStream>_int_h</intStream>
 	</properties>
 
 
