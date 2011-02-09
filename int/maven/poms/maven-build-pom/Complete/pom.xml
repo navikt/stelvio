@@ -16,10 +16,7 @@
 	<name>maven-build-complete-pom</name>
 
 	<properties>
-		<buildVersion>1.0-SNAPSHOT</buildVersion>
 		<configVersion>7.0.1-SNAPSHOT</configVersion>
-		<ccProjectDir>D:/cc/</ccProjectDir>
-		<scriptFolder>D:/scripts/</scriptFolder>
 	</properties>
 
 	<dependencies>

@@ -15,16 +15,6 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>maven-build-compile-pom</name>
 
-	<properties>
-		<buildVersion>1.0-SNAPSHOT</buildVersion>
-		<ccProjectDir>D:/cc/</ccProjectDir>
-		<scriptFolder>D:/scripts/</scriptFolder>
-	</properties>
-
-	<dependencies>
-
-	</dependencies>
-
 	<build>
 	<!--
 	  Build process:
