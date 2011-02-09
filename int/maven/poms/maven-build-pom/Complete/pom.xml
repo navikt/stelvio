@@ -226,41 +226,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			
-			<plugin>
-				<groupId>no.stelvio.maven.plugins</groupId>
-				<artifactId>maven-build-plugin</artifactId>
-				<version>${buildVersion}</version>
-				<executions>
-					<execution>
-						<id>Undo delivery</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>prepare-config-verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-config-verification-plugin</artifactId>
-				<version>1.2-SNAPSHOT</version>
-				<executions>
-					<execution>
-						<id>Config verification</id>
-						<phase>install</phase>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-						<configuration>
-							<configVersion>${configVersion}</configVersion>
-							<application>${app}</application>
-							<appVersion>${version}</appVersion>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 </project>
