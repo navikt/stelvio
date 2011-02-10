@@ -37,8 +37,12 @@ public class SCAModuleAdministration {
 		command.addArg(argScript);
 		Commandline.Argument argTarget = new Commandline.Argument();
 		argTarget
-				.setLine("-host " + dmgrHost + " -port " + dmgrPort + " -user " + username + " -password " + password);
+				.setLine("-host " + dmgrHost + " -port " + dmgrPort + " -user " + username);
 		command.addArg(argTarget);
+		log.info("Executing command: " + command + " -password ********");
+		Commandline.Argument argPassword = new Commandline.Argument();
+		argPassword.setLine("-password " + password);
+		command.addArg(argPassword);
 
 		try {
 			CommandLineUtils.executeCommandLine(command,

@@ -11,7 +11,7 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
-import no.stelvio.websphere.datapower.ConfigurationManagement;
+//import no.stelvio.websphere.datapower.ConfigurationManagement;
 
 import org.junit.Test;
 
@@ -43,6 +43,6 @@ public class ServiceRegistryTest {
 	public void testDatapowerUpload() throws Exception {
 		XmlMgmt xmlMgmt = new XmlMgmt_Service(getClass().getResource("/wsdl/soma/xml-mgmt.wsdl")).getXmlMgmt();
 		((BindingProvider) xmlMgmt).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "https://dp-tst-01.adeo.no:5550/service/mgmt/current");
-		ConfigurationManagement.setFile(xmlMgmt, "secgw-u1", "local:///test.xml", "".getBytes());
+//		ConfigurationManagement.setFile(xmlMgmt, "secgw-u1", "local:///test.xml", "".getBytes());
 	}
 }

@@ -26,9 +26,8 @@ class SCAExportBinding:
 
 modules = SCAModuleList(AdminTask.listSCAModules())
 for module in modules.module_list:
-	if module.name == 'pensjon-opptjening-tjeneste':
-		scaExports = AdminTask.listSCAExports('-moduleName ' + module.name + ' -applicationName ' + module.app_name).split()
-		for scaExport in scaExports:
-			scaExportBinding = SCAExportBinding(AdminTask.showSCAExportBinding('-moduleName ' + module.name + ' -export ' + scaExport + ' -applicationName ' + module.app_name))
-			if scaExportBinding.type == 'JaxWsExportBinding':
-				print 'module=' + module.name + ',app=' + module.app_name + ',export=' + scaExport
+	scaExports = AdminTask.listSCAExports('-moduleName ' + module.name + ' -applicationName ' + module.app_name).split()
+	for scaExport in scaExports:
+		scaExportBinding = SCAExportBinding(AdminTask.showSCAExportBinding('-moduleName ' + module.name + ' -export ' + scaExport + ' -applicationName ' + module.app_name))
+		if scaExportBinding.type == 'JaxWsExportBinding':
+			print 'module=' + module.name + ',app=' + module.app_name + ',export=' + scaExport

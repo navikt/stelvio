@@ -69,15 +69,15 @@ public class CreateServiceRegistryMojo extends AbstractMojo {
 					"Collecting JaxWS exports from environment " + environment);
 			exports = retrieveJaxWsExportsFromESB(environment, envProps);
 			getLog().info("Found " + exports.size() + " exports in " + environment);
+			String esbHostname = getEnvironmentProperty(envProps, "esbHostname");
+			String esbSOAPPort = getEnvironmentProperty(envProps, "esbSOAPPort");
 			for (Map<String, String> export : exports) {
 				getLog().debug(
 						"From module" + export.get("module") + ", add export "
 								+ export.get("export") + " for environment "
 								+ environment);
 				serviceRegistry.addServiceInstance(new ServiceInstance(
-						environment, envProps.getProperty("esbHost"), envProps
-								.getProperty("esbSoapPort"), export
-								.get("module"), export.get("export")));
+						environment, esbHostname, esbSOAPPort, export.get("module"), export.get("export")));
 			}
 		}
 		
@@ -106,10 +106,27 @@ public class CreateServiceRegistryMojo extends AbstractMojo {
 	private List<Map<String, String>> retrieveJaxWsExportsFromESB(
 			String environment, EnvironmentProperties envProps)
 			throws MojoExecutionException {
+		String dmgrHostname = getEnvironmentProperty(envProps, "dmgrHostname");
+		String dmgrPortString = getEnvironmentProperty(envProps, "dmgrSOAPPort");
+		int dmgrPort;
+		try {
+			dmgrPort = Integer.parseInt(dmgrPortString);
+		} catch (NumberFormatException e) {
+			throw new MojoExecutionException("dmgrSOAPPort '" + dmgrPortString + "' is not a number");
+		}
+		String dmgrUsername = getEnvironmentProperty(envProps, "dmgrUsername");
+		String dmgrPassword = getEnvironmentProperty(envProps, "dmgrPassword");
 		return SCAModuleAdministration.getJaxWsExports(getLog(), jythonScript,
-				wpsRuntime, envProps.getProperty("dmgrHost"), 8879, envProps
-						.getProperty("username"), envProps
-						.getProperty("password"));
+				wpsRuntime, dmgrHostname, dmgrPort, dmgrUsername, dmgrPassword);
+	}
+
+	private String getEnvironmentProperty(EnvironmentProperties envProps, String propertyName) throws MojoExecutionException {
+		String value = envProps.getProperty(propertyName);
+		if (value == null) {
+			throw new MojoExecutionException("Property " + propertyName + " is not set in environment file");
+		}
+		
+		return value;
 	}
 
 }
