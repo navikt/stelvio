@@ -4,11 +4,13 @@
 package no.stelvio.maven.plugins;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import no.stelvio.maven.build.plugin.utils.ApplicationNameResolve;
 import no.stelvio.maven.build.plugin.utils.CCCQRequest;
 import no.stelvio.maven.build.plugin.utils.PomSearchUtil;
+import no.stelvio.maven.build.plugin.utils.PropertiesFile;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -58,19 +60,13 @@ public class CCPomManipulator extends AbstractMojo {
 	private String action;
 	
 	/**
-	 * Version to be released
-	 * @parameter expression="${versionNumber}"
-	 * @required
-	 */
-	private String release_version;
-	
-	/**
 	 * Whether this goal should be done
 	 * @parameter expression="${perform_increaseSS}" default-value=true
 	 */
 	private boolean perform;
 
-
+	public static final String TASK_HEADLINE = "Edit poms in Dev stream after build: "; 
+	public static final String TASK_DESCRIPTION = "\"activity to check out all pom.xml files\"";
 	
 	private ArrayList<File> poms;
 
@@ -81,20 +77,29 @@ public class CCPomManipulator extends AbstractMojo {
 			return;
 		}
 		
-		String workDir = this.ccProjectDir+this.build+this.devStream+"/"+ApplicationNameResolve.ApplicationFromProject(build)+"/layers";
+		String workDir = this.ccProjectDir+this.build+this.devStream+"/"+ApplicationNameResolve.ApplicationFromProject(build.toUpperCase())+"/layers";
 		poms = PomSearchUtil.SearchForPoms(workDir);
 		boolean fail = false;
 		if (action.equalsIgnoreCase("setTask")){
-			String build_tag = this.build + " version: " + this.release_version;
-			fail = this.setCQTask("Edit poms in Dev stream for build: "+build_tag, "activity to check out all pom.xml files") != 0;
+			String build_tag = this.build + "_" + getReleaseVersion();
+			fail = this.setCQTask("\"" + TASK_HEADLINE+build_tag+"\"", TASK_DESCRIPTION) != 0;
 			if (fail) throw new MojoExecutionException("Unable to create a CQ task.");
 		}else if (action.equalsIgnoreCase("checkout")){
 			fail = this.doCheckOut() != 0;
 			if (fail) throw new MojoExecutionException("Unable to perform checkout. Some files might have been checked out.");
 		}else if (action.equalsIgnoreCase("checkin")){
-			fail = this.doCheckIn() != 0;
+			fail = this.doCheckIn() != 0 && this.clearView() != 0;
 			if (fail) throw new MojoExecutionException("Unable to perform checkin. Some files might have been checked in.");
 		}
+	}
+	
+	private String getReleaseVersion() {
+		try {
+			return PropertiesFile.getProperties(this.ccProjectDir, this.build).getProperty("RELEASE");
+		} catch (IOException e) {
+			getLog().error(e.getLocalizedMessage());
+		}
+		return null;
 	}
 	
 	private int setCQTask(String headline, String description) throws MojoFailureException{
@@ -103,12 +108,20 @@ public class CCPomManipulator extends AbstractMojo {
 		this.getLog().info("-----------------------------------------------");
 		if (!this.scriptFolder.endsWith("/")) this.scriptFolder += "/";
 		
-//		return CCCQRequest.setActivity(
-//				this.ccProjectDir+this.build+this.devStream, 
-//				CCCQRequest.createActivity(
-//						this.scriptFolder, headline, description)
-//				);
-		return 0;
+		return CCCQRequest.setActivity(
+				this.ccProjectDir+this.build+this.devStream, 
+				CCCQRequest.createActivity(
+						this.scriptFolder, headline, description)
+				);
+		//return 0;
+	}
+	
+	private int clearView() throws MojoFailureException{
+		this.getLog().info("--------------------------------------");
+		this.getLog().info("--- Clear Dev view from activities ---");
+		this.getLog().info("--------------------------------------");
+		if (!this.scriptFolder.endsWith("/")) this.scriptFolder += "/";
+		return CCCQRequest.unsetActivity(this.ccProjectDir+this.build+this.devStream);
 	}
 	
 	private int doCheckOut() throws MojoFailureException{
@@ -116,9 +129,9 @@ public class CCPomManipulator extends AbstractMojo {
 		this.getLog().info("--- Cheking out pom files ---");
 		this.getLog().info("-----------------------------");
 		int result = 0;
-		for (File pom : poms){
-			//result += CCCQRequest.checkOutFile(pom);
-		}
+		getLog().info("Total amount of pom files: "+poms.size());
+		for (File pom : poms) getLog().info(pom.getAbsolutePath());
+		for (File pom : poms) result += CCCQRequest.checkOutFile(pom);
 		return result;
 	}
 	
@@ -127,9 +140,9 @@ public class CCPomManipulator extends AbstractMojo {
 		this.getLog().info("--- Checking in pom files ---");
 		this.getLog().info("-----------------------------");
 		int result = 0;
-		for (File pom : poms){
-			//result += CCCQRequest.checkInFile(pom);
-		}
+		getLog().info("Total amount of pom files: "+poms.size());
+		for (File pom : poms) getLog().info(pom.getAbsolutePath());
+		for (File pom : poms) result += CCCQRequest.checkInFile(pom);
 		return result;
 	}
 

@@ -1,9 +1,13 @@
 package no.stelvio.maven.plugins;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import no.stelvio.maven.build.plugin.utils.CCCQRequest;
 import no.stelvio.maven.build.plugin.utils.CleartoolCommandLine;
+import no.stelvio.maven.build.plugin.utils.PropertiesFile;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -101,21 +105,34 @@ public class Delivery extends AbstractMojo{
 	/**
 	 * Deliver I
 	 * @throws MojoFailureException
+	 * @throws  
 	 */
-	private int deliverI() throws MojoFailureException{
+	private int deliverI() throws MojoFailureException {
 		this.getLog().info("-----------------------------");
 		this.getLog().info("--- Performing delivery I ---");
 		this.getLog().info("-----------------------------");
 		String workingDir = this.ccProjectDir+this.build+this.devStream;
+		if (activityList.equalsIgnoreCase("none") || activityList == null || activityList.equalsIgnoreCase("")) activityList = null;
 		ArrayList<String> activities = (ArrayList<String>) CCCQRequest.getActivitiesToDeliver(this.ccProjectDir, this.build+this.devStream, activityList);
-		if (activities == null)	{
+		if (activities == null || activities.isEmpty())	{
 			getLog().info("Nothing to deliver");
-			return 0;
+			return 1;
 		}
 		StringBuffer subcommand = new StringBuffer("deliver -to srvmooseadmin_" + this.build + this.intStream+" -force " + "-act " + this.getActIDString(activities));
-		
-		//return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand.toString());
-		return 0;
+		try {
+			this.saveActivitiesToFile(this.getActIDString(activities));
+		} catch (IOException e) {
+			getLog().error(e.getLocalizedMessage());
+			throw new MojoFailureException("Could not create build.properties file");
+		}
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand.toString());
+		//return 0;
+	}
+	
+	private void saveActivitiesToFile(String activities) throws IOException{ 
+		Properties properties = new Properties();
+		properties.setProperty("TO_DELIVER", activities);
+		PropertiesFile.setProperties(this.ccProjectDir, this.build, properties);
 	}
 	
 	/**
@@ -142,8 +159,8 @@ public class Delivery extends AbstractMojo{
 		this.getLog().info("------------------------------");
 		String workingDir = this.ccProjectDir+this.build+this.devStream;
 		String subcommand = "deliver -complete -force";
-		//return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
-		return 0;
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+		//return 0;
 	}
 
 }

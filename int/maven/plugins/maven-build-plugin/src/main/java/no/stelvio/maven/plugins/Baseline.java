@@ -1,7 +1,10 @@
 package no.stelvio.maven.plugins;
 
+import java.io.IOException;
+
 import no.stelvio.maven.build.plugin.utils.ApplicationNameResolve;
 import no.stelvio.maven.build.plugin.utils.CleartoolCommandLine;
+import no.stelvio.maven.build.plugin.utils.PropertiesFile;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -40,13 +43,6 @@ public class Baseline extends AbstractMojo{
 	private String intStream;
 	
 	/**
-	 * Version to be released
-	 * @parameter expression="${versionNumber}"
-	 * @required
-	 */
-	private String release_version;
-	
-	/**
 	 * Whether this goal should be done
 	 * @parameter expression="${perform_baseline}" default-value=true
 	 */
@@ -63,12 +59,20 @@ public class Baseline extends AbstractMojo{
 		this.getLog().info("-------------------------");
 		
 		String workingDir = this.ccProjectDir+this.build+this.intStream;
-		String build_tag = this.build + " version: " + this.release_version;
+		String build_tag = this.build + "_" + getReleaseVersion();
 		String subcommand = "mkbl -c \"Baseline for " + build_tag + "\" -component " +
-				"component:" + ApplicationNameResolve.ApplicationFromProject(build) + "_Composite@\\NAV_PVOB" + 
+				"component:" + ApplicationNameResolve.ApplicationFromProject(build.toUpperCase()) + "_Composite@\\NAV_PVOB " + 
 				"-identical -full " + build_tag;
-//		if (CleartoolCommandLine.runClearToolCommand(workingDir, subcommand) != 0) 
-//			throw new MojoExecutionException("Unable to create baseline");
+		if (CleartoolCommandLine.runClearToolCommand(workingDir, subcommand) != 0) 
+			throw new MojoExecutionException("Unable to create baseline");
 	}
 
+	private String getReleaseVersion() {
+		try {
+			return PropertiesFile.getProperties(this.ccProjectDir, this.build).getProperty("RELEASE");
+		} catch (IOException e) {
+			getLog().error(e.getLocalizedMessage());
+		}
+		return null;
+	}
 }

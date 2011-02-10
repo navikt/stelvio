@@ -56,10 +56,22 @@ public class Deploy extends AbstractMojo{
 	private boolean perform_install;
 	
 	/**
+	 * Whether this goal should run tests under installation to local repo
+	 * @parameter expression="${skipTests}" default-value=false
+	 */
+	private boolean skip_install_test_run;
+	
+	/**
 	 * Whether this goal should be done
 	 * @parameter expression="${perform_deploy}" default-value=true
 	 */
 	private boolean perform_deploy;
+	
+	/**
+	 * Which profile to use
+	 * @parameter expression="${additionalParam}" default-value=""
+	 */
+	private String additionalParam;
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
@@ -83,9 +95,10 @@ public class Deploy extends AbstractMojo{
 		this.getLog().info("--------------------------------------");
 		this.getLog().info("--- Installing to local repository ---");
 		this.getLog().info("--------------------------------------");
-		String workDir = this.ccProjectDir+this.build+this.intStream+"/"+ApplicationNameResolve.ApplicationFromProject(build)+"/layers";
-		//return MavenCommandLine.PerformMavenCommand(workDir, "clean install");
-		return 0;
+		String workDir = this.ccProjectDir+this.build+this.intStream+"/"+ApplicationNameResolve.ApplicationFromProject(build.toUpperCase())+"/layers";
+		String mvnCmd = (this.skip_install_test_run) ? "clean install -DskipTests "+additionalParam : "clean install " + additionalParam;
+		return MavenCommandLine.PerformMavenCommand(workDir, mvnCmd);
+		//return 0;
 	}
 	
 	/**
@@ -97,10 +110,8 @@ public class Deploy extends AbstractMojo{
 		this.getLog().info("---------------------------------------");
 		this.getLog().info("--- Installing to remote repository ---");
 		this.getLog().info("---------------------------------------");
-		String workDir = this.ccProjectDir+this.build+this.intStream+"/"+ApplicationNameResolve.ApplicationFromProject(build)+"/layers";
-		//return MavenCommandLine.PerformMavenCommand(workDir, "deploy -Dmaven.test.skip");
-		return 0;
+		String workDir = this.ccProjectDir+this.build+this.intStream+"/"+ApplicationNameResolve.ApplicationFromProject(build.toUpperCase())+"/layers";
+		return MavenCommandLine.PerformMavenCommand(workDir, "deploy -DskipTests " + additionalParam);
+		//return 0;
 	}
-	
-
 }

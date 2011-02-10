@@ -13,6 +13,10 @@ public class PomSearchUtil {
 	
 	private static ArrayList<File> poms = new ArrayList<File>();
 	
+	/**
+	 * Recursive method that searches for pom.xml files
+	 * @param dir - where to look for files
+	 */
 	private static void listFiles(File dir){
 		File[] entries = dir.listFiles(new MyFileFilter());
 		for (int i = 0; i<entries.length;i++){
@@ -27,6 +31,7 @@ public class PomSearchUtil {
 	 * @return list of pom files
 	 */
 	public static ArrayList<File> SearchForPoms(File dir) {
+		if (poms.size()>0) poms.clear();
 		listFiles(dir);
 		return poms;
 	} 

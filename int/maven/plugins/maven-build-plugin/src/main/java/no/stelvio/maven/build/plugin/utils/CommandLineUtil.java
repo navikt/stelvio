@@ -34,12 +34,13 @@ public class CommandLineUtil {
 			};
 			StreamConsumer systemErr = new StreamConsumer() {
 				public void consumeLine(String line) {
-					System.err.println("[INFO] " + line);
+					System.err.println("[ERROR] " + line);
 				}
 			};
 
 			retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut), new StreamConsumerChain(systemErr));				
 			System.out.println("[INFO] [RETVAL = " + retval + "]");
+			if (retval != 0) throw new MojoFailureException("Something went wrong. retval="+retval);
 			return retval;
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);

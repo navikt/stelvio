@@ -58,8 +58,8 @@ public class UndoDelivery extends AbstractMojo{
 		this.getLog().info("---------------------");
 		String workingDir = this.ccProjectDir+this.build+this.devStream;
 		String subcommand = "deliver -cancel -force";
-//		if (CleartoolCommandLine.runClearToolCommand(workingDir, subcommand) != 0) 
-//			throw new MojoExecutionException("Unable to undo delivery");
+		if (CleartoolCommandLine.runClearToolCommand(workingDir, subcommand) != 0) 
+			throw new MojoExecutionException("Unable to undo delivery");
 	}
 
 }

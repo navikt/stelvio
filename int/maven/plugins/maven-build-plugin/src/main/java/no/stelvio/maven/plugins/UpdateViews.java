@@ -78,12 +78,12 @@ public class UpdateViews extends AbstractMojo {
 		this.getLog().info("Updating INT view for " + this.build + "\n");
 		String workingDir = this.ccProjectDir;
 		String subcommand = "update -force -overwrite " + this.ccProjectDir + this.build;
-		//fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+this.intStream) != 0;
+		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+this.intStream) != 0;
 		if (fail) throw new MojoExecutionException("Unable to update INT view");
 		this.getLog().info("************************************");
 		this.getLog().info("Updating DEV view for " + this.build + "\n");
-//		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+this.devStream) != 0;
-//		if (fail) throw new MojoExecutionException("Unable to update DEV view");
+		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+this.devStream) != 0;
+		if (fail) throw new MojoExecutionException("Unable to update DEV view");
 		
 	}
 }

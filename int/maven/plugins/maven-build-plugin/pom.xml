@@ -15,12 +15,6 @@
   <packaging>maven-plugin</packaging>
   <name>maven-build-plugin Maven Mojo</name>
   
-  <properties>
-	<ccProjectDir>D:/cc/</ccProjectDir>
-	<devStream>_Dev</devStream>
-	<intStream>_int</intStream>
-  </properties>
-  
   <dependencies>
     <dependency>
 		<groupId>org.apache.maven</groupId>

@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import no.stelvio.maven.plugins.CCPomManipulator;
+import no.stelvio.maven.plugins.UpdateActivities;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.Commandline;
@@ -20,6 +23,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class CCCQRequest {
 
 	private static final String TMP_FILE = "cleartool_output.txt";
+	private final static String UPDATE_SCRIPT = "update_activities.pl";
 
 	/**
 	 * This method runs deliver -preview command, logs output to a tmp file and then parses it to extract NAV00xxxxxx IDs
@@ -32,19 +36,24 @@ public class CCCQRequest {
 		String workingDir = ccProjectDir + buildStream;
 		String subcommand = "deliver -preview > " + TMP_FILE;
 		List<String> result = new ArrayList<String>(0);
+		List<String> pom_edit_task = new ArrayList<String>(0);
 		try {
 			// run command and write output to a file
 			CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
 			// parse the file and get activities' IDs
-			File tmpFile = new File(workingDir +"\\"+ TMP_FILE);
+			File tmpFile = new File(workingDir +"/"+ TMP_FILE);
 			BufferedReader br = new BufferedReader(new FileReader(tmpFile));
 			String s = br.readLine();
 			while (s != null) {
-				if (s.contains("activity:"))
+				if (s.contains("activity:")){
 					result.add(s.substring(s.indexOf(":") + 1, s.indexOf(":") + 12).trim());
+					if (s.contains(CCPomManipulator.TASK_HEADLINE))
+						pom_edit_task.add(s.substring(s.indexOf(":") + 1, s.indexOf(":") + 12).trim());
+				}
 				s = br.readLine();
 			}
 			if (result.size() == 0) return null;
+			if (activities == null) return pom_edit_task; // if activities == null, none, ""
 			// check to see if we decided to include not all activities
 			if (!activities.equalsIgnoreCase("all")){
 				String [] activityList = activities.split(",");
@@ -76,7 +85,7 @@ public class CCCQRequest {
 	 * @throws MojoFailureException
 	 */
 	public static int checkOutFile(File f) throws MojoFailureException {
-		String subcommand = "checkout -nc -force" + f.getName();
+		String subcommand = "checkout -nc " + f.getName();
 		return CleartoolCommandLine.runClearToolCommand(f.getParent(), subcommand);
 	}
 
@@ -138,5 +147,37 @@ public class CCCQRequest {
 		String subcommand = "setact " + activity;
 		String workingDir = buildStreamLocation;
 		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+	}
+	
+	/**
+	 * This method clears view from activities
+	 * 
+	 * @param buildStreamLocation
+	 *            - path to the stream
+	 * @return 0 if everything is OK
+	 * @throws MojoFailureException 
+	 */
+	public static int unsetActivity(String buildStreamLocation) throws MojoFailureException {
+		String subcommand = "setact -none";
+		String workingDir = buildStreamLocation;
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+	}
+	
+	/**
+	 * This method runs a perl script that updates all given activities with build version
+	 * @param workDir - folder where script is
+	 * @param ids - string with activities' ids
+	 * @param version - build version
+	 * @return 0 if everything is OK
+	 * @throws MojoFailureException
+	 */
+	public static int updateActivity(String workDir, String ids, String build_id, String version) throws MojoFailureException{
+		String command = "cqperl " + UPDATE_SCRIPT + " " + ids + " " + build_id + " " + version;
+		Commandline cmd = new Commandline();
+		cmd.setWorkingDirectory(workDir);
+		Commandline.Argument arg = new Commandline.Argument();
+		arg.setLine(command);
+		cmd.addArg(arg);
+		return CommandLineUtil.executeCommand(cmd);
 	}
 }

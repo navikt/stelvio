@@ -85,8 +85,8 @@ public class WarnUnreserved extends AbstractMojo{
 		this.getLog().info("----------------------------------------");
 		String workingDir = this.ccProjectDir+this.build+this.intStream;
 		String subcommand = "rmtype -ignore trtype:WARN_UNRESERVED@\\" + ApplicationNameResolve.ApplicationFromProject(this.build);
-		//return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
-		return 0;
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+		//return 0;
 	}
 	
 	/**
@@ -98,11 +98,11 @@ public class WarnUnreserved extends AbstractMojo{
 		this.getLog().info("--- Adding WARN_UNRESERVED trigger ---");
 		this.getLog().info("--------------------------------------");
 		String workingDir = this.ccProjectDir+this.build+this.intStream;
-		String subcommand = "mktrtype -nc -element -all -preop checkout -execwin ccperl " +
-				"\\\\e11apfw001\\ccstg_d\\triggers\\warn_unreserved.pl WARN_UNRESERVED@\\" + 
+		String subcommand = "mktrtype -nc -element -all -preop checkout -execwin \"ccperl " +
+				"\\\\e11apfw001\\ccstg_d\\triggers\\warn_unreserved.pl\" WARN_UNRESERVED@\\" + 
 				ApplicationNameResolve.ApplicationFromProject(this.build);
-		//return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
-		return 0;
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+		//return 0;
 	}
 
 }
