@@ -27,7 +27,11 @@ for ENV in ENVS:
     print "###########################"
     print "Starting bounce for " + ENV
     print "###########################"
-    BOUNCE_STRING = "mvn clean install -Denv=" + ENV + " -Daction=" + ACTION + " -Dda-configuration-version=" + DA_CONFIG_VER + " -DwasSs=" + WAS_SS + " -DwasIs=" + WAS_IS + " -Dwps=" + WPS + " -DincludeJoark=" + JOARK + " -DonlyAppTarget=" + ONLY_APP_TARGET
+    BOUNCE_STRING = "mvn clean install -Denv=" + ENV + " -Daction=" + ACTION
+	BOUNCE_STRING += " -Dda-configuration-version=" + DA_CONFIG_VER
+	BOUNCE_STRING += " -DwasSs=" + WAS_SS + " -DwasIs=" + WAS_IS 
+	BOUNCE_STRING += " -Dwps=" + WPS + " -DincludeJoark=" + JOARK 
+	BOUNCE_STRING += " -DonlyAppTarget=" + ONLY_APP_TARGET
 	print BOUNCE_STRING
     #retval = subprocess.call(BOUNCE_STRING, shell=True)
     #if (retval != 0):
