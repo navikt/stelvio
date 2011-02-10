@@ -3337,7 +3337,9 @@ int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
 int/maven/poms/maven-bounce-pom/pom.xml -text
 int/maven/poms/maven-build-pom/Compile/pom.xml -text
+int/maven/poms/maven-build-pom/Complete/create_task.pl -text
 int/maven/poms/maven-build-pom/Complete/pom.xml -text
+int/maven/poms/maven-build-pom/Complete/update_activities.pl -text
 int/maven/poms/maven-build-pom/Prepare/pom.xml -text
 int/maven/poms/maven-build-pom/Undo/pom.xml -text
 int/maven/poms/maven-build-pom/pom.xml -text
