@@ -1,0 +1,9 @@
+<verifications>
+	<files>
+		<file>
+			<location>configuration.xml</location>
+			<contains>@</contains>
+			<invertContainsCriteria>true</invertContainsCriteria>
+		</file>
+	</files>
+</verifications>

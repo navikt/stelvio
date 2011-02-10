@@ -1561,6 +1561,7 @@ incubator/maven-service-registry-plugin/src/test/resources/NAV-Test.jks -text
 incubator/maven-service-registry-plugin/src/test/resources/cxf.xml -text
 incubator/service-discovery/pom.xml -text
 incubator/service-gateway-deploy/pom.xml -text
+incubator/service-gateway-deploy/src/test/verifier/resource-filtering-test.xml -text
 incubator/service-gateway-poc/stelvio-inc-dynamic/.project -text
 incubator/service-gateway-poc/stelvio-inc-dynamic/Pattern[!!-~]Configuration/stelvio-inc-dynamic_configuration.xml -text
 incubator/service-gateway-poc/stelvio-inc-dynamic/Pattern[!!-~]Configuration/stelvio-inc-dynamic_summary.html -text
