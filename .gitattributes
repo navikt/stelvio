@@ -3335,6 +3335,7 @@ int/maven/plugins/maven-xmlvalidator-plugin/src/main/java/no/nav/maven/plugins/m
 int/maven/plugins/maven-xmlvalidator-plugin/src/main/java/no/nav/maven/plugins/utils/ErrorHandlerImpl.java -text
 int/maven/plugins/pom.xml -text
 int/maven/pom.xml -text
+int/maven/poms/maven-bounce-pom/bouncePerform.py -text
 int/maven/poms/maven-bounce-pom/pom.xml -text
 int/maven/poms/maven-build-pom/Compile/pom.xml -text
 int/maven/poms/maven-build-pom/Complete/create_task.pl -text
