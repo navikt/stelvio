@@ -52,7 +52,7 @@ foreach my $id (@activities) {
 		next;
 	}
 	my $headline = $entity->GetFieldValue("Headline")->GetValue();
-	my $state = $entiry->GetFieldValue("state")->GetValue();
+	my $state = $entity->GetFieldValue("state")->GetValue();
 	if ((index(lc($headline), "edit poms") >= 0) && (lc($state) ne "task_complete")) {
 		# it is our pom edit task
 		$CQSession->EditEntity($entity,"close");
