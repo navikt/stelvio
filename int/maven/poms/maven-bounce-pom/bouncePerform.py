@@ -22,7 +22,7 @@ if (len(ENVS) == 0):
 
 FAIL = "false"
 FAILED_ENVS = ""
-
+BOUNCE_STRING = ""
 for ENV in ENVS:
     print "###########################"
     print "Starting bounce for " + ENV
