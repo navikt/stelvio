@@ -33,10 +33,10 @@ for ENV in ENVS:
     BOUNCE_STRING += " -Dwps=" + WPS + " -DincludeJoark=" + JOARK 
     BOUNCE_STRING += " -DonlyAppTarget=" + ONLY_APP_TARGET
     print BOUNCE_STRING
-    #retval = subprocess.call(BOUNCE_STRING, shell=True)
-    #if (retval != 0):
-        #FAIL = "true"
-        #FAILED_ENVS += ENV + ", "
+    retval = subprocess.call(BOUNCE_STRING, shell=True)
+    if (retval != 0):
+        FAIL = "true"
+        FAILED_ENVS += ENV + ", "
 
  
 if (FAIL == "true"):
