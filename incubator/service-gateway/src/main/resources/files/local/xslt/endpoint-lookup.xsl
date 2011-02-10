@@ -10,7 +10,7 @@
     <xsl:variable name="WSAddressingAction" select="/soapenv:envelope/soapenv:header/wsa:Action/text()"/>
 
     <!-- Extract environment from URL -->
-    <xsl:variable name="Environment" select="substring(dp:http-url(), 18)"/>
+    <xsl:variable name="Environment" select="substring(dp:http-url(), 2)"/>
 
     <!-- Lookup endpoint -->
     <xsl:choose>

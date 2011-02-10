@@ -130,7 +130,8 @@
 			<Unprocessed>off</Unprocessed>
 			<Actions class="StylePolicyAction">ServiceGateway_request_fetch_0</Actions>
 			<Actions class="StylePolicyAction">ServiceGateway_request_route-action_0</Actions>
-			<Actions class="StylePolicyAction">ServiceGateway_request_validate_0</Actions>
+			<!-- Disable schema validation temporarily -->
+			<!--Actions class="StylePolicyAction">ServiceGateway_request_validate_0</Actions-->
 			<Actions class="StylePolicyAction">ServiceGateway_request_results_output_0</Actions>
 		</StylePolicyRule>
 		<StylePolicyAction name="ServiceGateway_response_results_output_0"
