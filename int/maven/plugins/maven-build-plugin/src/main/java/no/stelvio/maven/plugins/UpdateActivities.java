@@ -1,11 +1,8 @@
 package no.stelvio.maven.plugins;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import no.stelvio.maven.build.plugin.utils.ApplicationNameResolve;
 import no.stelvio.maven.build.plugin.utils.CCCQRequest;
 import no.stelvio.maven.build.plugin.utils.PropertiesFile;
 
@@ -35,11 +32,6 @@ public class UpdateActivities extends AbstractMojo{
 	private String ccProjectDir;
 	
 	/**
-	 * @parameter expression="${scriptFolder}"
-	 */
-	private String scriptFolder;
-	
-	/**
 	 * Project name - BUILD_TEST
 	 * 
 	 * @parameter expression="${build}"
@@ -63,8 +55,8 @@ public class UpdateActivities extends AbstractMojo{
 		this.getLog().info("---------------------------");
     	this.getLog().info("--- Updating activities ---");
     	this.getLog().info("---------------------------");
-    	this.getProperties();
-    	if (CCCQRequest.updateActivity(this.scriptFolder, activities, build, release_version) != 0)
+    	this.getProperties();    	
+    	if (CCCQRequest.updateActivity(activities, build, release_version) != 0)
     		throw new MojoExecutionException("Unable to update activities");    	
 	}
 	

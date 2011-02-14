@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+
 
 import no.stelvio.maven.build.plugin.utils.ApplicationNameResolve;
 import no.stelvio.maven.build.plugin.utils.MavenCommandLine;
@@ -16,9 +16,9 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
+
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+
 
 /**
  * Goal which updates pom files: removes/puts back SNAPSHOT and so on

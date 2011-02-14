@@ -48,11 +48,6 @@ public class CCPomManipulator extends AbstractMojo {
 	private String devStream;
 	
 	/**
-	 * @parameter expression="${scriptFolder}"
-	 */
-	private String scriptFolder;
-	
-	/**
 	 * Action to perform: setTask, checkout, checkin
 	 * @parameter expression="${action}"
 	 * @required
@@ -106,13 +101,10 @@ public class CCPomManipulator extends AbstractMojo {
 		this.getLog().info("-----------------------------------------------");
 		this.getLog().info("--- Creating a task to perform check in/out ---");
 		this.getLog().info("-----------------------------------------------");
-		if (!this.scriptFolder.endsWith("/")) this.scriptFolder += "/";
 		
 		return CCCQRequest.setActivity(
 				this.ccProjectDir+this.build+this.devStream, 
-				CCCQRequest.createActivity(
-						this.scriptFolder, headline, description)
-				);
+				CCCQRequest.createActivity(headline, description));
 		//return 0;
 	}
 	
@@ -120,7 +112,6 @@ public class CCPomManipulator extends AbstractMojo {
 		this.getLog().info("--------------------------------------");
 		this.getLog().info("--- Clear Dev view from activities ---");
 		this.getLog().info("--------------------------------------");
-		if (!this.scriptFolder.endsWith("/")) this.scriptFolder += "/";
 		return CCCQRequest.unsetActivity(this.ccProjectDir+this.build+this.devStream);
 	}
 	

@@ -26,7 +26,9 @@ public class CommandLineUtil {
 			} else {
 				System.out.println("[INFO] Executing the following command: " + command.toString());
 			}
-			System.out.println("[INFO] Working directory: " + command.getWorkingDirectory().toString());
+			if (command.getWorkingDirectory() != null)
+				System.out.println("[INFO] Working directory: " + command.getWorkingDirectory().toString());
+			else System.out.println("[INFO] Working directory: default directory");
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {
 					System.out.println("[INFO] " + line);

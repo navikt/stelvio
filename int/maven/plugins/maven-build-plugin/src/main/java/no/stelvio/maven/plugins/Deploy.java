@@ -7,7 +7,6 @@ import no.stelvio.maven.build.plugin.utils.MavenCommandLine;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.project.MavenProject;
 
 /**
  * Goal which runs deploy script and updates maven repo

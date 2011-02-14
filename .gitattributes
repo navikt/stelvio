@@ -3014,8 +3014,10 @@ int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/CommandLineUtil.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/MavenCommandLine.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/PomSearchUtil.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/build/plugin/utils/PropertiesFile.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Baseline.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/CCPomManipulator.java -text
+int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/ConfigVerificationPreparation.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Delivery.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Deploy.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UndoDelivery.java -text

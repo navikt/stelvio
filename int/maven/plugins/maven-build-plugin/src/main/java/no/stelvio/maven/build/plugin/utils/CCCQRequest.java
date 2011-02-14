@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import no.stelvio.maven.plugins.CCPomManipulator;
-import no.stelvio.maven.plugins.UpdateActivities;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -102,7 +101,7 @@ public class CCCQRequest {
 		return CleartoolCommandLine.runClearToolCommand(f.getParent(), subcommand);
 	}
 
-	private static final String TASK_SCRIPT = "create_task.pl";
+	private static final String CREATE_TASK_SCRIPT = "create_task.pl";
 
 	/**
 	 * This method creates new activity in CQ
@@ -113,19 +112,18 @@ public class CCCQRequest {
 	 * @throws MojoExecutionException 
 	 * @throws MojoFailureException
 	 */
-	public static String createActivity(String workDir, String headline, String description) throws MojoFailureException {
+	public static String createActivity(String headline, String description) throws MojoFailureException {
 		try {
 			// script creates activity  and writes it's id to tmp file
-			String command = "cqperl " + TASK_SCRIPT + " " + headline + " " + description;
+			String command = "cqperl " + CREATE_TASK_SCRIPT + " " + headline + " " + description;
 			Commandline cmd = new Commandline();
-			cmd.setWorkingDirectory(workDir);
 			Commandline.Argument arg = new Commandline.Argument();
 			arg.setLine(command);
 			cmd.addArg(arg);
 			CommandLineUtil.executeCommand(cmd);
 			
 			// read id from tmp file
-			File tmpFile = new File(workDir + TMP_FILE);
+			File tmpFile = new File(TMP_FILE);
 			BufferedReader br = new BufferedReader(new FileReader(tmpFile));
 			return br.readLine();
 		} catch (IOException e) {
@@ -171,10 +169,9 @@ public class CCCQRequest {
 	 * @return 0 if everything is OK
 	 * @throws MojoFailureException
 	 */
-	public static int updateActivity(String workDir, String ids, String build_id, String version) throws MojoFailureException{
+	public static int updateActivity(String ids, String build_id, String version) throws MojoFailureException{
 		String command = "cqperl " + UPDATE_SCRIPT + " " + ids + " " + build_id + " " + version;
 		Commandline cmd = new Commandline();
-		cmd.setWorkingDirectory(workDir);
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine(command);
 		cmd.addArg(arg);
