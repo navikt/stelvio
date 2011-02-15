@@ -33,18 +33,44 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wpsdeploy-plugin</artifactId>
-					<version>1.5</version>
+					<version>1.9-SNAPSHOT</version> 
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
 						</moduleConfigurationArtifactName>
+						<artifacts>
+							<artifact>
+								<groupId>no.nav.esb</groupId>
+								<artifactId>pensjon-modules</artifactId>
+								<version>${pensjon-modules-version}</version>
+								<variableName>PENSJON_MODULES_VERSION</variableName>
+							</artifact>
+							<artifact>
+								<groupId>no.nav.esb</groupId>
+								<artifactId>nav-modules</artifactId>
+								<version>${nav-modules-version}</version>
+								<variableName>NAV_MODULES_VERSION</variableName>
+							</artifact>
+							<artifact>
+								<groupId>no.nav.esb</groupId>
+								<artifactId>pensjon-prosess-modules</artifactId>
+								<version>${pensjon-prosess-modules-version}</version>
+								<variableName>PENSJON_PROCESS_MODULES_VERSION</variableName>
+							</artifact>
+							<artifact>
+								<groupId>no.nav.esb</groupId>
+								<artifactId>esb-modules</artifactId>
+								<version>${esb-modules-version}</version>
+								<variableName>ESB_MODULES_VERSION</variableName>
+							</artifact>
+						</artifacts>
 					</configuration>
 					<extensions>true</extensions>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-confluence-plugin</artifactId>
-					<version>1.20</version>
+					<version>1.21-SNAPSHOT</version>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
@@ -70,15 +96,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-pom</developerConnection>
-	</scm>
-	<properties>
-		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-pom
-		</scm.root>
-		<scm.connection>${scm.root}</scm.connection>
-	</properties>
 </project>
