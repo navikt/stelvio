@@ -68,7 +68,7 @@ public class Deploy extends AbstractMojo{
 	
 	/**
 	 * Which profile to use
-	 * @parameter expression="${additionalParam}" default-value=""
+	 * @parameter expression="${additionalParam}" default-value=" "
 	 */
 	private String additionalParam;
 
