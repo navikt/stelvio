@@ -13,8 +13,8 @@ public class SystemAvailabilityConfigImpl {
 	
 	private static final String SYSTEM_AVAILABILITY_CONFIG_NAMESPACE = "http://system-availability-config";
 	
-	private static final String MODULE_NAME = "system-availability-config";
-	private static final String FAULT_NAMESPACE = "http://system-availability-config/no/stelvio/fault";
+	//private static final String MODULE_NAME = "system-availability-config";
+	//private static final String FAULT_NAMESPACE = "http://system-availability-config/no/stelvio/fault";
 	
 	/**
 	 * Default constructor.

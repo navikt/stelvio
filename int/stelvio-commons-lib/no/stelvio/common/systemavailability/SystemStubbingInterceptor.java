@@ -375,11 +375,11 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				DataObject child = (DataObject)dataObject.get(0);
 				DataObject requestContext = removeRequestContext(child);
 				getBOXMLSerializer().writeDataObject(child, type.getURI(), type.getName(), outputStream);
-				System.out.println("WrapperType");
+				//System.out.println("WrapperType");
 				setRequestContext(child, requestContext);
 			} else {
 				getBOXMLSerializer().writeDataObject(dataObject, type.getURI(), type.getName(), outputStream);
-				System.out.println("Not WrapperType");
+				//System.out.println("Not WrapperType");
 			}
 			// Workaround slutt
 		} catch (IOException e) {
