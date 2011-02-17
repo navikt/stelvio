@@ -29,6 +29,7 @@
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-usernametokendetails,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:apply-activationspecs,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:synchronize-nodes,
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:bounce-dmgr,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:start-clusters,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:modify-max-failed-deliveries,
 								no.nav.maven.plugins:maven-confluence-plugin:add-comment-up,
