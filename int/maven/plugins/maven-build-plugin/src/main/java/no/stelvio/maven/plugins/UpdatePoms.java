@@ -95,9 +95,9 @@ public class UpdatePoms extends AbstractMojo {
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
-		this.initVersions();
+		this.readVersionsFromStream();
 		if (this.snapshot_version == null || this.release_version == null || this.next_version == null)
-			this.readVersionsFromStream();
+			throw new MojoExecutionException("Could not retrieve version from Dev stream.");
 
 		this.getLog().info("Current SNAPSHOT version: " + this.snapshot_version);
 		this.getLog().info("Next released version: " + this.release_version);
