@@ -37,6 +37,8 @@ public class LoadEnvironmentConfiguration extends WebsphereUpdaterMojo {
 		pf.exposeProperty("dmgrPassword", pf.getProperty("dmgrPassword"), true);
 		pf.exposeProperty("dmgrHostname", pf.getProperty("dmgrHostname"), false);
 		pf.exposeProperty("dmgrSOAPPort", pf.getProperty("dmgrSOAPPort"), false);
+		pf.exposeProperty("linuxUser",pf.getProperty("linuxUser"), false);
+		pf.exposeProperty("linuxPassword",pf.getProperty("linuxPassword"), true);
 	}
 
 	@Override

@@ -85,6 +85,16 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 */
 	protected String dmgrSOAPPort;
 	
+	/**
+	 * @parameter expression="${linuxUser}"
+	 */
+	protected String linuxUser;
+	
+	/**
+	 * @parameter expression="${linuxPassword}"
+	 */
+	protected String linuxPassword;
+	
 	protected String scriptsHome;
 	protected String deployableArtifactsHome;
 	protected String environmentFile;
