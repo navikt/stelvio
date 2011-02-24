@@ -63,6 +63,12 @@
 								<version>${esb-modules-version}</version>
 								<variableName>ESB_MODULES_VERSION</variableName>
 							</artifact>
+							<artifact>
+								<groupId>no.nav.esb</groupId>
+								<artifactId>esb-release</artifactId>
+								<version>${esb-release-version}</version>
+								<variableName>ESB_RELEASE_VERSION</variableName>
+							</artifact>
 						</artifacts>
 					</configuration>
 					<extensions>true</extensions>
