@@ -13,7 +13,7 @@ import no.nav.sibushelper.common.Constants;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.ibm.ws.security.util.PasswordUtil;
+import com.ibm.websphere.crypto.PasswordUtil;
 
 /**
  * @author persona2c5e3b49756 Schnell
@@ -252,7 +252,7 @@ public class Configuration {
 			try {
 				if (!"".equals(meEnginePassword) && meEnginePassword != null) {
 					if (meEnginePassword.startsWith("{xor}")) {
-						serverProps.setMessagingPassword(com.ibm.ws.security.util.PasswordUtil.decode(meEnginePassword));
+						serverProps.setMessagingPassword(PasswordUtil.decode(meEnginePassword));
 					} else {
 						encodePassword(confFileName, Constants.PROP_MSGING_PASSWORD);
 						serverProps.setMessagingPassword(meEnginePassword);
@@ -268,7 +268,7 @@ public class Configuration {
 			try {
 				if (!"".equals(password) && password != null) {
 					if (password.startsWith("{xor}")) {
-						serverProps.setPassword(com.ibm.ws.security.util.PasswordUtil.decode(password));
+						serverProps.setPassword(PasswordUtil.decode(password));
 					} else {
 						encodePassword(confFileName, Constants.PROP_PASSWORD);
 						serverProps.setPassword(password);
@@ -285,7 +285,7 @@ public class Configuration {
 			try {
 				if (!"".equals(trustPassword) && trustPassword != null) {
 					if (trustPassword.startsWith("{xor}")) {
-						serverProps.setTrustStorePassword(com.ibm.ws.security.util.PasswordUtil.decode(trustPassword));
+						serverProps.setTrustStorePassword(PasswordUtil.decode(trustPassword));
 					} else {
 						encodePassword(confFileName, Constants.PROP_TRUST_PASSWORD);
 						serverProps.setTrustStorePassword(trustPassword);
@@ -301,7 +301,7 @@ public class Configuration {
 			try {
 				if (!"".equals(keyPassword) && keyPassword != null) {
 					if (keyPassword.startsWith("{xor}")) {
-						serverProps.setKeyStorePassword(com.ibm.ws.security.util.PasswordUtil.decode(keyPassword));
+						serverProps.setKeyStorePassword(PasswordUtil.decode(keyPassword));
 					} else {
 						encodePassword(confFileName, Constants.PROP_KEY_PASSWORD);
 						serverProps.setKeyStorePassword(trustPassword);
@@ -329,7 +329,7 @@ public class Configuration {
 			in.close();
 			// Check is password is defined
 			if (!StringUtils.isEmpty(properties.getProperty(propPwd))) {
-				// Check if password allready is encrypted
+				// Check if password already is encrypted
 				String password = properties.getProperty(propPwd);
 				if (!password.startsWith("{xor}")) {
 					// Write encoded password back to the property file

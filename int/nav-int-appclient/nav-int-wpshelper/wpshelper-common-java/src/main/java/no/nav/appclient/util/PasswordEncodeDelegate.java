@@ -7,7 +7,7 @@ import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.ibm.ws.security.util.PasswordUtil;
+import com.ibm.websphere.crypto.PasswordUtil;
 
 /**
  * This class encrypts password listed in the FEM & BPC Helpers property file.

@@ -1316,7 +1316,7 @@ public class AdminHelper {
 	 */
 	private CommandMgr getCommandManager() throws CommandMgrInitException {
 		logger.logp(Level.FINE, className, "getCommandManager", "Init");
-		CommandMgr cmdMgr = CommandMgr.getClientCommandMgr(ac);
+		CommandMgr cmdMgr = CommandMgr.getCommandMgr(ac);
 		logger.logp(Level.FINE, className, "getCommandManager", cmdMgr.toString());
 		return cmdMgr;
 	}
