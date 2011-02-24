@@ -17,7 +17,6 @@ public class AbstractFileWriter {
 	 * Private constant for this class to organize the content properly in the
 	 * output file
 	 */
-	@SuppressWarnings("unused")
 	protected static final String TABULATOR = "\t\t";
 	/**
 	 * Separator to use in CSV file
