@@ -1,6 +1,0 @@
-/**
- * Handling of codes tables.
- *
- * TODO All package javadoc should be converted to package.info files
- */
-package no.stelvio.common.codestable;

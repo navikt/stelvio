@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
-<!--
-	Performance Monitoring Configuration is used by the PerformanceMonitor
--->
-<beans>
-	<bean id="PerformanceMonitor" class="no.stelvio.common.performance.DefaultMonitorImpl"/>
-</beans>
