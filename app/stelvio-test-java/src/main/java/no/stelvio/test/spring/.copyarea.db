@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-test-java\src\main\java\no\stelvio\test\spring
+2
+3
+4:jdbc|2|0|0|0|7650b70c955e4b61bbbb23efe6ccb9d3|0
+b:transaction|2|0|0|0|84f36c04954046fca3be8dd2f032b78c|0
+9:hibernate|2|0|0|0|e4a32452bb914154947eac92a54c8f53|0

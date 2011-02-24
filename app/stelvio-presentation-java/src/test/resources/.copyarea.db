@@ -1,0 +1,16 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-presentation-java\src\test\resources
+2
+c
+8:META-INF|2|0|0|0|58a7ea3810bd4dd4bdd1014c99acb012|0
+25:test-requestcontextfilter-context.xml|1|12e57f5be03|42a|9d056b85|11df0e1553c6478e866abc3e09c6edc2|0
+13:messages.properties|1|12e57f5be12|0|0|bc21f0ed21b64662bd5d5b29d7f68a84|0
+19:messages_en_GB.properties|1|12e57f5bdd4|1a|89c30a07|a62c69eb99bb4d94827a7a9c9e95c643|0
+1b:numberconverter-context.xml|1|12e57f5beaf|16d|35b574a5|03f4e57a131a4ffca09f38240c4e068a|0
+2c:no-stelvio-presentation-resources.properties|1|12e57f5be9f|de9|bd8f125a|577088447191446a92e9499e3dc71239|0
+10:log4j.properties|1|12e57f5bdc4|bda|27d43116|43e185a01cad4804a4e8c9c277dd9f6d|0
+19:dateconverter-context.xml|1|12e57f5be80|16d|35b574a5|2bcb2a7da7324dde817d12a6d032e340|0
+19:messages_en_US.properties|1|12e57f5bde4|2c|62220f40|6bab8182cf064d87870dc4a6473399b3|0
+d:test-flow.xml|1|12e57f5bedd|2d4|cea4dfe7|9aea66b696664af2a458100381f1ee08|0
+10:test-context.xml|1|12e57f5bece|1d8|489e99cc|5fdeb3787d3b4b03847e391fdb2cb9c4|0
+7:WEB-INF|2|0|0|0|494903bde16245db9589bbf8c3bc9f06|0

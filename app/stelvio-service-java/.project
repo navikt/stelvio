@@ -1,0 +1,17 @@
+<projectDescription>
+  <name>stelvio-service-java</name>
+  <comment/>
+  <projects>
+    <project>stelvio-repository-java</project>
+    <project>stelvio-common-java</project>
+    <project>stelvio-domain-java</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

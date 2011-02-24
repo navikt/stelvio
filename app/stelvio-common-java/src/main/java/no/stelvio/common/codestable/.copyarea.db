@@ -1,0 +1,22 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\codestable
+2
+12
+1b:CodesTablePeriodicItem.java|1|12e57f55bfd|74a|fc2a5d34|6e56baf5f5104a38bb1e59050dae74cb|0
+1b:NotCodesTableException.java|1|12e57f55c7a|3c2|f6953182|43bac6b7016b460eb4462f68324689e2|0
+7:factory|2|0|0|0|74fe64c04be642bcaa1b50e447aae316|0
+20:CodesTableNotFoundException.java|1|12e57f55bbf|3f6|d38544b3|56e43d94c4204e73a7a950460aba8cca|0
+18:CodesTableException.java|1|12e57f55cf7|35a|ce74104c|8ea4099914114e80a787a24667bd27ff|0
+16:CodesTableManager.java|1|12e57f55ba0|bd3|a2a5fea6|0987e989fc6c4f5baff423dfe0c8a641|0
+25:CodesTableConfigurationException.java|1|12e57f55ae4|3fd|4f6a4a82|1d81867c9ac943ad88a97784fe691114|0
+25:AbstractCodesTableItemComparator.java|1|12e57f55d07|ab0|849c8802|8fe0c45b27d4486b96962428a6ba8ea8|0
+1c:DecodeNotFoundException.java|1|12e57f55c1d|3fe|4f364579|4793c9837a28449f90e51c50ad0f7ab6|0
+8:relation|2|0|0|0|ea2613c9dde840dcac05b11ff7efbc7a|0
+f:CodesTable.java|1|12e57f55ad4|1af2|c4929d6f|f93a4410014b409d9451a7d4bb8087d8|0
+1d:CodesTableEmptyException.java|1|12e57f55b03|3f1|ba443eaa|f6cf3874834646a18031dcba808f8744|0
+13:CodesTableItem.java|1|12e57f55b80|553|5d68bbf2|7b9d58ac10814577bab9bd79dbb5411b|0
+17:CodesTablePeriodic.java|1|12e57f55bde|359c|fa8a1f66|18af8137f000463987130ed672f298bb|0
+c:package.info|1|12e57f55cb9|93|80ab3160|259e2d09c85746d9b4e7f1acea89e448|0
+7:support|2|0|0|0|dae5897a245f457cb4f3be8b3bf2c80a|0
+1a:ItemNotFoundException.java|1|12e57f55c5b|3e2|77993ca6|2d8d22be9b1742a48545423498a40b82|0
+1c:DuplicateItemsException.java|1|12e57f55cd8|498|483b7a53|ec77dfcbdfb249098f7cd8887b2c5a7f|0

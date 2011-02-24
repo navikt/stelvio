@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+	  <property name="configLocation" value="/test-ehcache.xml" />
+	</bean>
+	
+	<bean id="cacheProviderFacade" class="org.springmodules.cache.provider.ehcache.EhCacheFacade">
+	  <property name="cacheManager" ref="cacheManager" />
+	</bean>
+	
+		
+	<!-- This cachinglistener will be triggered and provide debug info when cache is accessed -->
+	<bean id="cachingListener" class="no.stelvio.common.cache.CustomCachingListener" />
+	<bean id="cacheStoreCounter" class="no.stelvio.common.cache.support.CacheStoreCounterCachingListener"/>
+	
+	<!-- Specifies the cache the interceptor that will intercept calls and use cache instead of source if possible  -->
+	<bean id="cachingInterceptor" class="org.springmodules.cache.interceptor.caching.MetadataCachingInterceptor">
+	  <property name="cacheProviderFacade" ref="cacheProviderFacade" />
+	  <property name="cachingAttributeSource" ref="cachingAttributeSource" />
+	  <property name="cachingListeners">
+	    <list>
+	      <ref bean="cachingListener" />
+	      <ref bean="cacheStoreCounter" />
+	    </list>
+	  </property>
+	  <property name="cachingModels">
+	    <props>
+	      <prop key="non-persistent">cacheName=sampleCache3</prop>      
+	    </props>
+	  </property>
+	</bean>	
+	
+	<!-- Specifies the cache the interceptor that will intercept calls and flush cache before data is fetched from source  -->	
+	<bean id="flushingInterceptor" class="org.springmodules.cache.interceptor.flush.MetadataFlushingInterceptor">
+	  <property name="cacheProviderFacade" ref="cacheProviderFacade" />
+	  <property name="flushingAttributeSource" ref="flushingAttributeSource" />
+	  <property name="flushingModels">
+	    <props>
+	      <prop key="flushingModel">cacheNames=sampleCache3</prop>
+	    </props>
+	  </property>
+	</bean>
+	
+	<!-- Describes how method calls are identified as flushable, in this case by using annotations -->
+	<bean id="flushingAttributeSource" class="org.springmodules.cache.annotations.AnnotationFlushingAttributeSource" />
+	
+	<!-- Describes how method calls are identified as cacheable, in this case by using annotations -->
+	<bean id="cachingAttributeSource" class="org.springmodules.cache.annotations.AnnotationCachingAttributeSource" />
+	
+	<!-- Spring Modules Caching viser sourceAdvisors i sitt oppsett, men dette fører
+	til dobbel hit i cache-oppsett. Ved å fjerne disse blir det kun et hit på cache og flush -->	
+	<!-- Instructs the interceptor which method to intercept 
+	<bean id="flushingAttributeSourceAdvisor" class="org.springmodules.cache.interceptor.flush.FlushingAttributeSourceAdvisor">
+	  <constructor-arg ref="flushingInterceptor" />
+	</bean>-->
+	
+	<!-- Spring Modules Caching viser sourceAdvisors i sitt oppsett, men dette fører
+	til dobbel hit i cache-oppsett. Ved å fjerne disse blir det kun et hit på cache og flush -->
+	<!-- Instructs the interceptor which method to intercept 
+	<bean id="cachingAttributeSourceAdvisor" class="org.springmodules.cache.interceptor.caching.CachingAttributeSourceAdvisor">
+	  <constructor-arg ref="cachingInterceptor" />
+	</bean>	-->
+  
+	<bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache" />
+	<bean id="testNoCache" class="no.stelvio.common.cache.support.NoAnnotationsTestCache" />
+
+
+	<!-- AOP Configuration   -->	
+	<aop:config>
+	  <aop:pointcut id="defaultCache" 
+	        expression="execution(* no.stelvio.common.cache.TestCache.*(..))"/>	
+
+      <aop:advisor
+		pointcut-ref="defaultCache"
+		advice-ref="flushingInterceptor"/>			
+
+       <aop:advisor
+		pointcut-ref="defaultCache"
+		advice-ref="cachingInterceptor"/>	
+	
+	</aop:config>	
+
+       
+</beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+       
+    <bean id="test.morpher.morpherstrategy" class="no.stelvio.provider.error.strategy.support.MorphToSdk14ExceptionHandlerStrategy"/>
+       
+	<bean id="test.morpher.exceptionthrower" class="no.stelvio.provider.error.strategy.support.ExceptionThrower"/>
+       
+	<aop:config>
+		    <aop:aspect ref="error.advice">
+		        <aop:after-throwing
+	                pointcut="execution(* no.stelvio.provider.error.strategy.support.ExceptionThrower.*(..))"
+	                throwing="throwable" 
+	                method="afterThrowing"/>
+		    </aop:aspect>
+	</aop:config>
+	
+	<bean id="error.advice" class="no.stelvio.common.error.support.RethrowExceptionHandlingAdvice" />
+       
+</beans>

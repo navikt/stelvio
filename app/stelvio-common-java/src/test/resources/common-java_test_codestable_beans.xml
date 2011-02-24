@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+<!--
+	Springs application context used by Codestable. 
+-->
+ <bean class="no.stelvio.common.codestable.support.DefaultCodesTableManager" id="codesTableManager"/>
+ <!--  <bean class="no.stelvio.common.codestable.CodesTableFactoryImpl" id="codesTableFactory"/>-->
+ <bean class="no.stelvio.common.codestable.factory.support.DefaultCodesTableInitializer" id="codesTableInitializer">
+  <property name="codesTableItemClasses">
+   <list>
+    <value>no.stelvio.common.codestable.CodesTableItem</value>
+   </list>
+  </property>
+  <property name="codesTablePeriodicItemClasses">
+   <list>
+    <value>no.stelvio.common.codestable.CodesTablePeriodicItem</value>
+   </list>
+  </property>
+ </bean>
+</beans>

@@ -1,0 +1,12 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-presentation-java\src\test\java\no\stelvio\presentation\jsf
+2
+8
+8:resolver|2|0|0|0|3c9982dce7a447cdac1e83d6b60eab08|0
+a:codestable|2|0|0|0|8dde49b17e124e8383c16576286eebb8|0
+6:locale|2|0|0|0|11b4cb7c94434a82b48014534087d291|0
+9:validator|2|0|0|0|3e5fda346b484dbd8bdb758b34db44c6|0
+9:converter|2|0|0|0|8950f849629c46a1bfb22f73a9579714|0
+4:test|2|0|0|0|c1572b14bdfd4820b996bbce3d934b8c|0
+4:mock|2|0|0|0|e5b97ea80f314cad899af334ae753648|0
+18:AbstractJsfTestCase.java|1|12e57f5b43f|1958|523a932d|24090c3ba37f4cca9a557ff5b7472a1a|0

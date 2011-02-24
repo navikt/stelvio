@@ -1,0 +1,6 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\error\strategy\support
+2
+2
+1e:TestCommonsLoggingFactory.java|1|12e57f57f54|909|6247f694|833469cb0c6143bdb73177bcfa03c85e|0
+27:LoggerExceptionHandlerStrategyTest.java|1|12e57f57f16|1964|f63eaa7b|275c989a41104c46b7a46686a107b0e9|0

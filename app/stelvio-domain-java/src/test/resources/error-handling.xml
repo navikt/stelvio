@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<!--
+	Error Handling Configuration is used by the ErrorHandler
+-->
+<beans>
+
+
+	<bean id="RemoteServiceLocator" class="no.stelvio.common.error.TestServiceLocator" />
+
+	<bean id="InitErrorHandler" class="no.stelvio.common.error.InitErrorHandler">
+		<property name="serviceLocator">
+			<ref bean="RemoteServiceLocator" />
+		</property>
+	</bean>
+
+    <!--TODO: use new version-->
+    <!--<bean id="ErrorHandler" class="no.stelvio.common.error.TestHandlerImpl" init-method="init"></bean>-->
+
+</beans>
+

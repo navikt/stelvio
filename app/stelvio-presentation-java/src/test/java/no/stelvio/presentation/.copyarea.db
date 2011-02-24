@@ -1,0 +1,10 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-presentation-java\src\test\java\no\stelvio\presentation
+2
+6
+4:util|2|0|0|0|c52997ccff814c0480898d0846e47f2b|0
+3:jsf|2|0|0|0|9577a46030d943949f05201d1687beaa|0
+8:security|2|0|0|0|2b1971c091d64618abbdd27a04120745|0
+7:binding|2|0|0|0|7b8036dd73b64a7588dca2a3ba7ce0d8|0
+7:context|2|0|0|0|eb19333ec3c747ebb4d39632be07fdb5|0
+5:error|2|0|0|0|d703221c8b1f458a8f2116ac662c5414|0

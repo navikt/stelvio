@@ -1,0 +1,21 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common
+2
+11
+4:util|2|0|0|0|10726fea5bcd482f82eae19bca909f95|0
+c:package.html|1|12e57f5596d|50|3c0b1a51|f775f0b9d3914061a86b932206813aa7|0
+6:config|2|0|0|0|3993d9b8d3cd4d1f9e297b406ca28c88|0
+7:context|2|0|0|0|5fed2cc58fb148c1a3cebdf55fbd8720|0
+5:event|2|0|0|0|4dae8363d526449a801d63b9a4d19996|0
+9:converter|2|0|0|0|8d42c1f414884b4894640ac362f03d75|0
+3:ejb|2|0|0|0|44860611e440449cb42052ace6af2666|0
+3:log|2|0|0|0|f270dfb765ce44e08052813626b08190|0
+8:security|2|0|0|0|c9eabd14edbe4fd38e1dea5a1f44e32c|0
+7:mapping|2|0|0|0|6a711ccc8f3d4dcc961934a817cfa8e1|0
+5:audit|2|0|0|0|c0b7739041dc433cbd0bcb5326c2d917|0
+a:codestable|2|0|0|0|8214079d4da948ddbb9cedd227a70cc6|0
+a:validation|2|0|0|0|6f7408e39f554039be10f67733afa54e|0
+5:error|2|0|0|0|1da5394a8ee74bf78ab26a714d2180a4|0
+5:cache|2|0|0|0|4a91ed2e4b1a49a8bbdf3b42ba32602e|0
+3:aop|2|0|0|0|07dfa4e676c24568acc8573963fe5652|0
+e:transferobject|2|0|0|0|a4f95bde1652428ab3b6283b59074431|0

@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-provider-java\src\test\resources
+2
+3
+1d:test-morphtosdk14-context.xml|1|12e57f5d14c|48e|af7c7ecf|9130173bfad94d5d8f34ba68b3a32ee2|0
+1e:prv-testcodestable-mapping.xml|1|12e57f5d16b|3f6|351e434c|97f70bf58520495896a604e5df8f48c1|0
+14:loglevels.properties|1|12e57f5d15c|60|ff141faf|d93e88f7152a4515ad3ebae8ff868efc|0

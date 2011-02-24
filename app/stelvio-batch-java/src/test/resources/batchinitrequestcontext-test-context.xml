@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+	<bean id="test.requestcontextinit.batchExecutor" class="no.stelvio.batch.FakeBatchExecutorEJB">
+		<property name="batchPojo" ref="test.requestcontextinit.batchPojo"/>	
+	</bean>
+	
+	<bean id="test.requestcontextinit.batchPojo" class="no.stelvio.batch.InitRequestContextBatchImpl">
+		<property name="batchName" value="test"/>
+	</bean>
+	
+	<bean id="test.requestcontextinit.initInterceptor" class="no.stelvio.batch.context.support.BatchInitRequestContextInterceptor"/>
+	
+	<aop:config >	
+		<!-- Pointcut describes where what calls should be intercepted -->
+		<aop:pointcut id="test.requestcontextinit.pojoPointcut"
+				expression="execution(public * no.stelvio.batch.InitRequestContextBatchImpl.*(..))"/>				
+		<aop:advisor advice-ref="test.requestcontextinit.initInterceptor" pointcut-ref="test.requestcontextinit.pojoPointcut"/>
+	</aop:config>	
+	
+	<bean id="test.requestcontextinit.componentId" class="no.stelvio.common.context.support.ComponentIdHolder">
+		<constructor-arg value="testCompId"/>	
+	</bean>
+              
+</beans>

@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\security\eai
+2
+4
+13:Authentication.java|1|12e57f5aa8a|347|703ffc7f|ebcd2f1687754f67b3f7c2d8323f5154|0
+7:support|2|0|0|0|cf4fa97768464844954161fcf88c4cc7|0
+23:AuthenticationFailureException.java|1|12e57f5aaaa|3e3|d8c34065|f9f24d28a3c949419eb6dc1f2d682f7a|0
+7:headers|2|0|0|0|9adf5e91da734e23a29fc4d0da11472b|0

@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\context
+2
+4
+19:RequestContextHolder.java|1|12e57f5614d|73c|6690661d|ecce9bb558314b75a74ab303596cec24|0
+c:package.html|1|12e57f5610e|322|9f0b1334|107949e2be5a41f4adeda8bdb9f80f72|0
+7:support|2|0|0|0|31b9e39155394b5f966fb85c661d8ff5|0
+13:RequestContext.java|1|12e57f5612d|6b2|f282274c|af8a5b6445c34c25bc8e7e3a310c4b60|0

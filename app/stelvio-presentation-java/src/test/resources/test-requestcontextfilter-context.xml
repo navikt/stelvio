@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:stelvio="http://www.stelvio.no/schema/stelvio"
+   	   xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+       http://www.stelvio.no/schema/stelvio http://www.stelvio.no/schema/stelvio/stelvio.xsd">
+
+
+  	<!-- Filter must be set up in appctx, to get appctx injected (ApplicationContextAware) -->
+	<bean id="test.requestcontextfilter" class="no.stelvio.presentation.context.RequestContextFilter">
+	</bean>
+
+ 	<!-- ComponentIdHolder is retrieved by RequestContextFilter by type, no need to name it -->
+	<bean class="no.stelvio.common.context.support.ComponentIdHolder" scope="singleton">
+		<constructor-arg value="PSAK"/>
+	</bean>
+       
+</beans>

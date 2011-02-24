@@ -1,0 +1,6 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\validation
+2
+2
+12:IbanValidator.java|1|12e57f57225|1125|b69b4781|cffbb2d5e4bf47a5a1b9d377eca44394|0
+12:BbanValidator.java|1|12e57f57206|8ee|723fd02e|4b37c3a053154d9caa2ad95e45d53687|0

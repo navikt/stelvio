@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>no.stelvio</groupId>
+        <artifactId>stelvio</artifactId>
+        <version>2.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>no.stelvio</groupId>
+    <artifactId>stelvio-domain-java</artifactId>
+    <packaging>jar</packaging>
+    <name>stelvio - domain</name>
+    <dependencies>
+        <dependency>
+            <groupId>no.stelvio</groupId>
+            <artifactId>stelvio-common-java</artifactId>
+            <version>${pom.version}</version>
+        </dependency>
+        <dependency>
+			<!-- Apache commons-lang library provides a host of helper utilities that extend the standard java.lang API, for example String manipulation methods. -->
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-api</artifactId>
+			<version>1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-integration</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
+</project>

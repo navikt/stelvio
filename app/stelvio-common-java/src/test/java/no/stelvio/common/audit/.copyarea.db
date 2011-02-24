@@ -1,0 +1,6 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\audit
+2
+2
+1d:AuditLogInstanceNameTest.java|1|12e57f58928|566|854bc3d7|d3ee2d5216f7424c95e6e4628470cdd3|0
+12:AuditItemTest.java|1|12e57f588f9|a27|16925281|4aa734dfd9fc4a30a11f5402f0f41606|0

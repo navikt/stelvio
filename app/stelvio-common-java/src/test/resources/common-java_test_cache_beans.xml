@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+		<!-- Do ot use autoproxy in combination with aop:config -->
+<!--	<bean id="autoproxy" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />-->
+
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+	  <property name="configLocation" value="/test-ehcache.xml" />
+	</bean>
+	
+	<bean id="cacheProviderFacade" class="org.springmodules.cache.provider.ehcache.EhCacheFacade">
+	  <property name="cacheManager" ref="cacheManager" />
+	</bean>
+	
+	<bean id="cachingAttributeSource" class="org.springmodules.cache.annotations.AnnotationCachingAttributeSource" />
+	
+	<bean id="cachingListener" class="no.stelvio.common.cache.CustomCachingListener" />
+	
+	<bean id="cachingInterceptor" class="org.springmodules.cache.interceptor.caching.MetadataCachingInterceptor">
+	  <property name="cacheProviderFacade" ref="cacheProviderFacade" />
+	  <property name="cachingAttributeSource" ref="cachingAttributeSource" />
+	  <property name="cachingListeners">
+	    <list>
+	      <ref bean="cachingListener" />
+	    </list>
+	  </property>
+	  <property name="cachingModels">
+	    <props>
+	      <prop key="non-persistent">cacheName=sampleCache1</prop>      
+	      <prop key="persistent">cacheName=sampleCache2</prop>
+	    </props>
+	  </property>
+	</bean>	
+	<bean id="cachingAttributeSourceAdvisor" class="org.springmodules.cache.interceptor.caching.CachingAttributeSourceAdvisor">
+	  <constructor-arg ref="cachingInterceptor" />
+	</bean>
+	
+	<bean id="flushingAttributeSource" class="org.springmodules.cache.annotations.AnnotationFlushingAttributeSource" />
+	
+	<bean id="flushingInterceptor" class="org.springmodules.cache.interceptor.flush.MetadataFlushingInterceptor">
+	  <property name="cacheProviderFacade" ref="cacheProviderFacade" />
+	  <property name="flushingAttributeSource" ref="flushingAttributeSource" />
+	  <property name="flushingModels">
+	    <props>
+	      <prop key="flushingModel">cacheNames=sampleCache1</prop>
+	    </props>
+	  </property>
+	</bean>
+	
+	<bean id="flushingAttributeSourceAdvisor" class="org.springmodules.cache.interceptor.flush.FlushingAttributeSourceAdvisor">
+	  <constructor-arg ref="flushingInterceptor" />
+	</bean>
+  
+	<bean id="testCache" class="no.stelvio.common.cache.support.DefaultTestCache" />
+	
+	<bean id="cacheManagement" class="no.stelvio.common.cache.support.DefaultCacheManagement">
+		<property name="cacheManager" ref="cacheManager" />
+	</bean>
+	
+	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
+		<property name="beans">
+			<map>
+				<entry key="bean:name=cacheManagement" value-ref="cacheManagement" />
+			</map>
+		</property>
+	</bean>
+	 
+	<bean id="cacheManagementProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean">
+		<property name="objectName" value="bean:name=cacheManagement"/>
+		<property name="proxyInterface" value="no.stelvio.common.cache.CacheManagement"/>
+	</bean>
+	
+	
+	<!-- AOP Configuration   -->	
+	<aop:config>
+	  <aop:pointcut id="defaultCache" 
+	        expression="execution(* no.stelvio.common.cache.support.DefaultTestCache.*(..))"/>	
+
+      <aop:advisor
+		pointcut-ref="defaultCache"
+		advice-ref="flushingInterceptor"/>			
+
+       <aop:advisor
+		pointcut-ref="defaultCache"
+		advice-ref="cachingInterceptor"/>	
+	
+	</aop:config>		
+	
+</beans>

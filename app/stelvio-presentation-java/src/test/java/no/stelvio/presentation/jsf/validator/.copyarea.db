@@ -1,0 +1,17 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-presentation-java\src\test\java\no\stelvio\presentation\jsf\validator
+2
+d
+25:CodesTableItemExistValidatorTest.java|1|12e57f5b6fe|db5|9c088a98|fff7a76f7b55499fa7f3955ef3e16c12|0
+21:CustomLongRangeValidatorTest.java|1|12e57f5b71d|545|ce4fc1ee|a3b0b702dafc46b591a88cef871956de|0
+16:TextValidatorTest.java|1|12e57f5bb92|a8b|1f436ccf|f0159465852848379147193307deb487|0
+1c:FieldRangeValidatorTest.java|1|12e57f5b78b|f00|c314c138|a56a4f7ef8d74f41852ef8aae87e6776|0
+16:IbanValidatorTest.java|1|12e57f5b7d9|91c|441bd287|ab8b15e2a7ce466e871b4d42b5d194dd|0
+25:OrganisasjonsnummerValidatorTest.java|1|12e57f5bb53|9ef|33a2312d|e69be0d790f4498dabc410910031860e|0
+1d:DoubleRangeValidatorTest.java|1|12e57f5b75c|d53|7ba33aed|3160c19fcccb4fadb7059bdb3cdfdd41|0
+1b:DateRangeValidatorTest.java|1|12e57f5b73c|15d5|333ae5d1|ec2a220233f3439cb46561d27b7e5749|0
+1d:LastInMonthValidatorTest.java|1|12e57f5b7f8|1698|a2c13d57|847bb825dea843578bbe37d0feb74886|0
+1e:FirstInMonthValidatorTest.java|1|12e57f5b7c9|d3b|ae6538a7|c7aa91284ba641c2984f8cf742774b53|0
+22:NorskKontonummerValidatorTest.java|1|12e57f5b817|1070|e92b264f|30d1e8ec4f5541478cd56c40d247654b|0
+16:BbanValidatorTest.java|1|12e57f5b6df|ea1|8b4992a5|4dc1178b0cfc486ba53ea273a36864d0|0
+15:PidValidatorTest.java|1|12e57f5bb73|a84|29c757b5|40b5ce91db974da3b8453cddbcbfa06a|0

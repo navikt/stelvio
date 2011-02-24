@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-service-java\src\test\java\no\stelvio\service\codestable
+2
+4
+c:TestCti.java|1|12e57f5c527|ac5|25e44684|764421bd2b6f48e4b508a73a0f0cd270|0
+10:TestCtiCode.java|1|12e57f5c546|37c|61d30129|f2542a8b81a84d90ad5d07f843640f8d|0
+d:TestCtpi.java|1|12e57f5c565|1a2c|12c5cb85|227bcbe3dce04a528abe128a4283cec1|0
+1e:CodesTableIntegrationTest.java|1|12e57f5c508|6c7|55e54507|8b5c4df24cc645dcb7a74459cc717cb8|0

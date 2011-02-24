@@ -1,0 +1,9 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-batch-java\src\test\resources
+2
+5
+28:batchinitrequestcontext-test-context.xml|1|12e57f5566f|5e5|5bfb0613|382ed67759304324afc1617fdc6deead|0
+10:log4j.properties|1|12e57f556ec|3f6|79746920|e06766766c934fe0bc8b999690e0e131|0
+19:btc-testbatch-context.xml|1|12e57f556cd|238|6606c108|961f3186f6554e0883ea6bcfa5d2f7eb|0
+1f:batchvalidator-test-context.xml|1|12e57f557b8|725|b1d366ff|d42fe17e913a489192841389b4162078|0
+19:tst-stopbatch-context.xml|1|12e57f5570c|554|bf04cddb|951cb84113da4a9399b9e50b5333543b|0

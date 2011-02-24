@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-batch-client-java\src\main\java\no\stelvio\batch\controller
+2
+4
+1b:SpringBatchJobOperator.java|1|12e57f5d534|302|d9a6f8f1|ac98bb3e8b54459ca61f8883e487db42|0
+2f:SpringBatchEnabledBatchControllerServiceBi.java|1|12e57f5d553|16a|39ab79d8|88aba857695f4a019a160d8f48dc8942|0
+1d:BatchControllerServiceBi.java|1|12e57f5d515|3e3|6e173182|93e2f07bd4374f5484f5c6b96276c257|0
+6:client|2|0|0|0|d7f61f0d30ff4749aabe19c15f9061b5|0

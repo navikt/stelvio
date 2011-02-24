@@ -1,0 +1,6 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-provider-java\src\test\java\no\stelvio\provider\error\strategy\support
+2
+2
+2d:MorphToSdk14ExceptionHandlerStrategyTest.java|1|12e57f5d10e|cdb|bc736ed5|11b93645b506476982d8f478318ed0b1|0
+15:ExceptionThrower.java|1|12e57f5d0ee|4e9|f0dd8e1b|90a62bd681424108bf8b33409fda1cb7|0

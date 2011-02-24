@@ -1,0 +1,7 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\event
+2
+3
+15:ApplicationEvent.java|1|12e57f56861|278|ee76d0e0|f9aa362ca8f14f54b8956a6de09e6a15|0
+1d:ApplicationEventListener.java|1|12e57f56880|d7|3ba84c02|ae1816c0fda649dea4d7f3b89e394346|0
+7:support|2|0|0|0|851bb19fbedb48cabc146eafa5a0b657|0

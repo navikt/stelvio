@@ -1,0 +1,18 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\codestable\support
+2
+e
+1c:DecodeNumericComparator.java|1|12e57f55f97|d1a|b4b05e58|3cc37e68693545729579e02301e54be2|0
+17:AbstractCodesTable.java|1|12e57f55e11|575b|5ed414b9|4c86271a8a774923955b42f54cd7047f|0
+1a:CodeNumericComparator.java|1|12e57f55f78|ce2|7872495b|43c9361fe2ad41379751a3545c3ac740|0
+15:DecodeComparator.java|1|12e57f55f68|ef8|439ee601|fc983a34cbef4f0ebef318db014db203|0
+17:CodeToCtiConverter.java|1|12e57f55fa7|527|2ff29b14|f9371c313e87404581aa09de58b8d6da|0
+14:IllegalCodeEnum.java|1|12e57f55f49|351|5a62120b|6b5f5a1102174467a78ca1f921c77c11|0
+13:CtiConvertable.java|1|12e57f55fc6|21c|e995aa7a|ca875f73c16449449de0054ba4ab77a0|0
+1e:DefaultCodesTablePeriodic.java|1|12e57f55ebc|27db|5ee58602|24faf2084b4b4d6984e8d7ddc11e22ad|0
+22:IdAsKeyCodesTablePeriodicItem.java|1|12e57f55f39|907|a319e132|0317f6ccb90749d4b48b836043671a88|0
+16:DefaultCodesTable.java|1|12e57f55e7e|908|fecc14af|c0a69bc089ff4787b827a35a33982c1e|0
+1b:AbstractCodesTableItem.java|1|12e57f55e5f|1ca6|862f0e0a|7829e2b704d848beb9df933608bbc4ee|0
+23:AbstractCodesTablePeriodicItem.java|1|12e57f55f0b|174a|4b395823|cb379052c2344807ad1b1b51fedc6557|0
+1a:IdAsKeyCodesTableItem.java|1|12e57f55f1a|5bc|d47ce23c|78b29d57e5ea42d899a6c7b6b0bb2d01|0
+1d:DefaultCodesTableManager.java|1|12e57f55e9d|11c3|6276e66c|f20c80917a894d4db08c796cd40a1e96|0

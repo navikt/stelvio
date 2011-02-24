@@ -1,0 +1,12 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\codestable\support
+2
+8
+1e:IdAsKeyCodesTableItemTest.java|1|12e57f57b1e|811|8212a736|c670c66fc1364a31a0c6fdd18ca2bb02|0
+26:IdAsKeyCodesTablePeriodicItemTest.java|1|12e57f57b7c|897|315f0ca|7f239f23d2124ef0a0390f8ba17ad888|0
+21:DefaultCodesTableManagerTest.java|1|12e57f57aef|2483|69904ab5|7109337033fb417994f0bce0afbc5800|0
+1f:AbstractCodesTableItemTest.java|1|12e57f57b0e|fc0|e2fe4831|2d18dad4954c435eb95c377943f3ba5e|0
+18:IllegalEnumCodeTest.java|1|12e57f57b9b|e25|c4a7704a|4db7f466235e4512872884f60b163f8f|0
+19:DecodeComparatorTest.java|1|12e57f57bba|10ac|65da335e|39820f025f1a4bd6a5a4edd23e02f6dd|0
+20:DecodeNumericComparatorTest.java|1|12e57f57bf9|ebc|825de25a|e7fab2fec76d4e66bdc7f773a50f3977|0
+1e:CodeNumericComparatorTest.java|1|12e57f57bd9|e67|6092c4d0|4fc9ed05e83f4f69b3b161aa4c42d765|0

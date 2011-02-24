@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\error\support
+2
+4
+1b:SimpleExceptionWrapper.java|1|12e57f567a6|192|7938980|9be7d11aca85493cb9675659a9f0d501|0
+d:Severity.java|1|12e57f56786|64b|25f1e78d|d5b2890e686743308d81395ab20899ec|0
+23:RethrowExceptionHandlingAdvice.java|1|12e57f56777|50c|64529cf5|3be7fb51fe08421ba0c2ccaafaa2eeeb|0
+14:ErrorDefinition.java|1|12e57f56758|1777|d202337d|b2e526097c90405db5cc84caeac24cd0|0

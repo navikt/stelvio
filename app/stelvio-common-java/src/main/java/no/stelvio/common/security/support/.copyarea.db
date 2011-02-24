@@ -1,0 +1,6 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\security\support
+2
+2
+1a:SecurityContextSetter.java|1|12e57f56e5c|8bd|1eb5edcf|1c12bd6ddbf14c02be0d27843fbb1480|0
+1a:SimpleSecurityContext.java|1|12e57f56e8b|16b5|1fa5af6|23a659ac20aa46aa82a574fad07543fb|0

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:util="http://www.springframework.org/schema/util" 
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/jee 
+		http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<bean id="stopableBatch" class="no.stelvio.batch.StopableInfinitLoopBatch">
+	</bean>
+	<bean id="successfulBatch" class="no.stelvio.batch.SuccessfulBatch">
+	</bean>
+	
+	<bean id="batchService" class="no.stelvio.batch.controller.support.DefaultBatchControllerService">
+		<property name="batchNameMap" ref="batchNameToBatchClassMapping"/>
+	</bean>
+	
+	<bean id="batchRegistry" class="no.stelvio.batch.support.StaticBatchRegistry"/>
+	
+	
+	<!-- Map used by BatchController to get id's for protoype batch-object beans to run. Map key is batchName -->
+	<util:map id="batchNameToBatchClassMapping">
+		<entry key="stopTest" value="stopableBatch" />
+		<entry key="startTest" value="successfulBatch" />
+	</util:map>	
+            
+</beans>

@@ -1,0 +1,6 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\security\validation\support
+2
+2
+1a:RoleValidatorUtilTest.java|1|12e57f586c6|63a|68a9fc55|815799c237d54acea4fc924e86a2503c|0
+1d:DefaultRoleValidatorTest.java|1|12e57f586a7|d02|5e372806|7b31064bc54f4d458d1e205cbb6bc12f|0

@@ -1,0 +1,9 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\security\ws
+2
+5
+18:LTPASecurityHandler.java|1|12e57f56f76|aa7|6e18687e|d5e2fbee7f624ff7a13ad4285999e8ce|0
+13:SecurityHeader.java|1|12e57f56f95|4628|b2f6368f|fcc516930bc1480797520ce35f1cdccb|0
+21:UsernameTokenSecurityHandler.java|1|12e57f56fa5|835|1be1ad57|e66f501e20b04e94a1ba235f8fc7c2f7|0
+1f:WSSubjectSecurityException.java|1|12e57f56fd3|2e3|2f25f471|11fd5d3d28c14cab85d1ea21c23f2c86|0
+14:WSCustomSubject.java|1|12e57f56fc4|f87|b4c300a5|659bea60636443f0b63a25aa9b719016|0

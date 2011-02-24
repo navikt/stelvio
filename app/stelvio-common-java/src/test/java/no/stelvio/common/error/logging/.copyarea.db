@@ -1,0 +1,10 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\error\logging
+2
+6
+16:Log4jTestAppender.java|1|12e57f57fb2|2156|d9e8a7|3eb248a8b64d4c62b05af74e14e5c5d5|0
+26:LoggingTestUnrecoverableException.java|1|12e57f57fe1|289|14c1d804|0a9126fe56554f5dae8a47e56f2acd23|0
+15:ExceptionThrower.java|1|12e57f57fd1|1d1|4aec91c1|40b5a79933be47578c761dd511d76584|0
+1e:LoggingTestDebugException.java|1|12e57f5801f|213|3512ac5e|aaeca2a8e6ab4a48aa9efc4d910e1ab7|0
+23:ExceptionLoggerInterceptorTest.java|1|12e57f58000|6bb|700f3804|6fe4024033814d02aca9d17e02234378|0
+7:support|2|0|0|0|3720b79440b5402d9a15b9d9de5b3caf|0

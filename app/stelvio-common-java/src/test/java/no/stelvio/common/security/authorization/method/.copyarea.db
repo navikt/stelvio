@@ -1,0 +1,24 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\security\authorization\method
+2
+14
+1b:MockAccessAbstainVoter.java|1|12e57f58436|2f4|6e33f91c|a2b8f83f046f47128a53436e3e81ae87|0
+1f:MockMethodDefinitionSource.java|1|12e57f58511|3a4|d8a22fa0|c5030a8b995648c3822d6266f82b36c3|0
+27:AfterInvocationProviderManagerTest.java|1|12e57f5838a|1afe|edb043cb|9c025cb5038c4358a77d23cf29f414c9|0
+20:MethodDefinitionSourcesTest.java|1|12e57f58417|107e|f6c39950|2cd86fb9df6340079b494646b61024b1|0
+1b:AccessVoterManagerTest.java|1|12e57f5862a|236d|a7dc0b3b|7603ec001dd549c59c7bd4060be19c09|0
+23:MockReflectiveMethodInvocation.java|1|12e57f5860b|44c|7f6f64cc|32d77f649ddd47e69bdb3ae576f43457|0
+10:MockService.java|1|12e57f58520|1d4|17a8a0f|53b7b4cbac2a4398bf1146542de9020b|0
+1f:AlwaysAffirmativeVoterTest.java|1|12e57f583b9|4a4|ae827ef6|51aea4050db7436fa14e9927ae30407b|0
+1a:MockAccessDeniedVoter.java|1|12e57f58484|2f2|ac90f77c|3055404392f44668b6f4d67bd7eda098|0
+24:AnnotationAttributesMappingTest.java|1|12e57f583f8|3c6|8a494872|54767b4cac034a1eb67389fff7d220de|0
+26:SecurityAnnotationsAttributesTest.java|1|12e57f585ec|1652|e40d59b0|7db7e607e8684386bb0141baaf253c26|0
+12:RolesUtilTest.java|1|12e57f585cc|90c|b638e7c0|1b72994b97704910ab4a8b90915518ff|0
+2b:MockAfterInvocationProviderNoFiltering.java|1|12e57f584f2|394|da9d378e|7f10cd2d5b6a46f68da46a5da66c66bf|0
+11:MockService2.java|1|12e57f58540|176|79f476ec|19e6011588f54b18b2ae6182350bd1a3|0
+21:MockAfterInvocationProvider2.java|1|12e57f584c3|37b|90242b1a|e8db2373a4c7441b95d619b97dd061cb|0
+2c:MockAfterInvocationProviderDeniesAccess.java|1|12e57f584e2|391|60f63481|eb8577cc22724349b004db6a10310558|0
+20:MockAfterInvocationProvider.java|1|12e57f584b3|378|ae902a84|ac23b8f6d8524094b0cb44b824e2bb7c|0
+2a:AnnotationAttributesMappingEditorTest.java|1|12e57f583d8|cb0|d1f42e58|e5ccecce350640b289b025dfd1a4f90d|0
+1b:MockAccessGrantedVoter.java|1|12e57f58494|2f3|4af8f8b9|4245f56c08904fa48475b46fae32884b|0
+20:RoleAccessDecisionVoterTest.java|1|12e57f5855f|d4a|99eb7992|c9da2dee2c3a42bcb6f05ca9fb58afb3|0

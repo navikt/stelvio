@@ -1,0 +1,6 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\config
+2
+2
+20:ConfigurationExceptionsTest.java|1|12e57f57c37|1234|9b94f183|d3b3e9418214406b827f840d0ea2ea20|0
+21:EnvironmentAwareResourceTest.java|1|12e57f57c18|337|793b1b44|66c35b32a50b4f85802cfa2389828d45|0

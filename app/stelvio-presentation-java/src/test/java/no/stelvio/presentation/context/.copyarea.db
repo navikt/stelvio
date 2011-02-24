@@ -1,0 +1,8 @@
+ClearCase CopyAreaDB|4
+Stelvio\app\stelvio-presentation-java\src\test\java\no\stelvio\presentation\context
+2
+4
+1c:AbstractMockFilterChain.java|1|12e57f5b335|a49|f9b448d9|2c87bedeae0443d0ba23479ab999c46b|0
+26:ServletContextAttributeSetterTest.java|1|12e57f5b2e7|4bb|9b55abe2|bd79c3454aaa41e8b401784893ac2fb8|0
+1d:RequestContextFilterTest.java|1|12e57f5b306|14b6|2de3004a|b8df73fb7d3240229b91b16a703487f0|0
+17:AbstractFilterTest.java|1|12e57f5b316|e2e|fa36804d|1b42608dad6c46d68768aff82f4359b4|0
