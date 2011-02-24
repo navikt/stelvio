@@ -350,35 +350,48 @@ public class SystemAvailabilityStorage {
 		
 		
 		// Hvis fil ikke er null, så kan vi bla oss tilbake til directory hvor alle applikasjonene er installert.
-		if (fil != null) {
+		if (fil != null && fil.exists()) {
+			String test = "";
 			// 1. Finne StelvioSystemAvailabilityWebEAR.ear-mappen
-			while (!fil.getName().equals("StelvioSystemAvailabilityWebEAR.ear") && fil != null) {
+			while (fil != null && !fil.getName().equals("installedApps")) {
+				test = fil.getName();
 				fil = fil.getParentFile();
 			}
 			// 2. Bla oss tilbake til directory
 			if (fil != null) {
-				File directory = fil.getParentFile();
-				int length = directory.listFiles().length;
-				String app = "", s = "";
-				
-				// Gå gjennom alle mappene som ligger der som begynner på "nav-".
-				// TODO: Gjøre mer universell. F.eks. kun sjekke om variabelen app slutter på "App.ear"?
-				for (int x = 0; x < length; x++) {
-					fil = directory.listFiles()[x];
-					app = fil.getName();
-					if (((app.startsWith("nav-")) || (app.startsWith("pensjon-")))
-							&& app.indexOf("App.ear") != -1) {
-						app = app.substring(0, app.indexOf("App.ear"));
-						// Går gjennom alle mappene/filene som ligger i "nav-"-mappen.
-						// Hvis det finnes en fil der som begynner på det samme som prosjektet, så legges den til i lista.
-						for (int y = 0; y < fil.list().length; y++) {
-							s = fil.list()[y];
-							if (s.startsWith(app)) {
-								liste.add(fil);
-								break;
+				File[] installedApps = fil.listFiles();
+				File directory = null;
+				for (File file : installedApps) {
+					if (test.equals(file.getName())) {
+						directory = file;
+						break;
+					}
+				}
+				if (directory != null) {
+					int length = directory.listFiles().length;
+					String app = "", s = "";
+					
+					// Gå gjennom alle mappene som ligger der som begynner på "nav-".
+					// TODO: Gjøre mer universell. F.eks. kun sjekke om variabelen app slutter på "App.ear"?
+					for (int x = 0; x < length; x++) {
+						fil = directory.listFiles()[x];
+						app = fil.getName();
+						if (((app.startsWith("nav-")) || (app.startsWith("pensjon-")))
+								&& app.indexOf("App.ear") != -1) {
+							app = app.substring(0, app.indexOf("App.ear"));
+							// Går gjennom alle mappene/filene som ligger i "nav-"-mappen.
+							// Hvis det finnes en fil der som begynner på det samme som prosjektet, så legges den til i lista.
+							for (int y = 0; y < fil.list().length; y++) {
+								s = fil.list()[y];
+								if (s.startsWith(app)) {
+									liste.add(fil);
+									break;
+								}
 							}
 						}
 					}
+				} else {
+					System.err.println("\"directory\" var null!");
 				}
 			}
 		}
