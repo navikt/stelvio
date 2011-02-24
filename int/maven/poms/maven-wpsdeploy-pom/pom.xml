@@ -65,9 +65,9 @@
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>esb-release</artifactId>
-								<version>${esb-release-version}</version>
-								<variableName>ESB_RELEASE_VERSION</variableName>
+								<artifactId>ekstern-pensjon-modules</artifactId>
+								<version>${ekstern-pensjon-modules-version}</version>
+								<variableName>EKSTERN_PENSJON_MODULES_VERSION</variableName>
 							</artifact>
 						</artifacts>
 					</configuration>
