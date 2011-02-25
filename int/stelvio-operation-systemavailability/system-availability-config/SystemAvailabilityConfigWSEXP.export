@@ -3,5 +3,13 @@
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:Stubbing"/>
   </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding:SystemAvailabilityConfigWSEXP_StubbingHttpPort" service="Binding:SystemAvailabilityConfigWSEXP_StubbingHttpService"/>
+  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding:SystemAvailabilityConfigWSEXP_StubbingHttpPort" service="Binding:SystemAvailabilityConfigWSEXP_StubbingHttpService">
+    <policySetRef policySetName="NAV ESB WSExport"/>
+    <handlerChain>
+      <handler>
+        <handlerName>StelvioContextHandler</handlerName>
+        <handlerClass>no.stelvio.common.context.jaxws.StelvioContextHandler</handlerClass>
+      </handler>
+    </handlerChain>
+  </esbBinding>
 </scdl:export>

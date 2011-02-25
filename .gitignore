@@ -1278,6 +1278,7 @@ int/stelvio-operation-systemavailability/system-availability-config/.project
 int/stelvio-operation-systemavailability/system-availability-config/.settings
 int/stelvio-operation-systemavailability/system-availability-config/META-INF
 int/stelvio-operation-systemavailability/system-availability-config/gen
+int/stelvio-operation-systemavailability/system-availability-config/ibm-deploy.scaj2ee
 int/stelvio-operation-systemavailability/system-availability-config/sca.library.attributes
 int/stelvio-operation-systemavailability/system-availability-config/sca.module.attributes
 int/stelvio-operation-systemavailability/system-availability-config/target
