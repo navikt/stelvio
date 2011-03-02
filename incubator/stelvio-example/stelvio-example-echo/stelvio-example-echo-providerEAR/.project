@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>stelvio-example-echo-app</name>
+	<name>stelvio-example-echo-providerEAR</name>
 	<comment></comment>
 	<projects>
 		<project>stelvio-example-echo-provider</project>
-		<project>stelvio-example-echo-app</project>
+		<project>stelvio-example-echo-providerEAR</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
