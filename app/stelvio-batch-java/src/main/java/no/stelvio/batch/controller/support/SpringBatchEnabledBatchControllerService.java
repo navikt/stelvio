@@ -7,27 +7,29 @@ import no.stelvio.common.context.support.SimpleRequestContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.MDC;
+import org.slf4j.MDC;
 
 /**
  * Extension of {@link DefaultBatchControllerService} in order to handle execution of Spring Batches.
  * 
  * @author person47c121e3ccb5, BEKK
- * 
+ * @author persone38597605f58 (Capgemini)
+ * @version $Id$
  */
 public class SpringBatchEnabledBatchControllerService extends DefaultBatchControllerService implements
 		SpringBatchEnabledBatchControllerServiceBi {
 
-	private static Log log = LogFactory.getLog(SpringBatchEnabledBatchControllerService.class);
-	private static final String JOB_NAME = "jobName";
+	private static final Log LOGGER = LogFactory.getLog(SpringBatchEnabledBatchControllerService.class);
 
 	private SpringBatchJobOperator springBatchOperator;
 
 	/** {@inheritDoc} */
 	public int executeBatch(String jobName, String parameters) {
-		MDC.put(JOB_NAME, jobName != null ? jobName.toLowerCase() : null);
-		log.info("Executing batch with jobName=" + jobName + " , and parameters=" + parameters);
-		
+		if (jobName != null) {
+			MDC.put(JOB_NAME, jobName.toLowerCase());
+		}
+		LOGGER.info("Executing batch with jobName=" + jobName + " , and parameters=" + parameters);
+
 		RequestContextSetter.setRequestContext(new SimpleRequestContext.Builder().userId(jobName).build());
 
 		int twsCode = springBatchOperator.executeBatch(jobName, parameters);
@@ -38,8 +40,10 @@ public class SpringBatchEnabledBatchControllerService extends DefaultBatchContro
 
 	/** {@inheritDoc} */
 	public boolean stopBatch(String jobName) {
-		MDC.put(JOB_NAME, jobName != null ? jobName.toLowerCase() : null);
-		log.info("stopping batch with jobName=" + jobName);
+		if (jobName != null) {
+			MDC.put(JOB_NAME, jobName.toLowerCase());
+		}
+		LOGGER.info("stopping batch with jobName=" + jobName);
 		boolean stopped = springBatchOperator.stopBatch(jobName);
 		MDC.remove(JOB_NAME);
 		return stopped;

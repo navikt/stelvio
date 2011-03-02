@@ -2,6 +2,6 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-presentation-java\src\main\java\no\stelvio\presentation\security\eai\headers\config
 2
 3
-10:ConfigEntry.java|1|12e57f5ad88|109|68da4c6e|5434ba1f521d403bab26ef22acef0427|0
-14:EaiHeaderConfig.java|1|12e57f5adb7|236|a7e6b10d|1e4f544ca31d4c128e65987051c6fded|0
+10:ConfigEntry.java|1|12e77096e2c|109|68da4c6e|5434ba1f521d403bab26ef22acef0427|0
+14:EaiHeaderConfig.java|1|12e77096e6b|236|a7e6b10d|1e4f544ca31d4c128e65987051c6fded|0
 7:support|2|0|0|0|9e46136a4d314aa2b19fbd0c253c810c|0

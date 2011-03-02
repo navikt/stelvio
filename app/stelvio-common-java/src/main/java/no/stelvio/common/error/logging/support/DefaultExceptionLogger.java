@@ -17,7 +17,6 @@ import no.stelvio.common.util.ReflectionException;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.logging.impl.Log4JLogger;
 import org.slf4j.MDC;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -42,12 +41,9 @@ import org.springframework.util.ReflectionUtils.FieldFilter;
  * <li>If all fails, uses {@link #getFallbackLogLevel()}</li>
  * </ul>
  * 
- * @see Log4JLogger
- * 
  * @author person983601e0e117 (Accenture)
  * @author person6045563b8dec (Accenture)
  * @author person15754a4522e7 (ex-coder)
- * 
  */
 public class DefaultExceptionLogger extends Log4jLogger implements ExceptionLogger {
 
@@ -439,8 +435,8 @@ public class DefaultExceptionLogger extends Log4jLogger implements ExceptionLogg
 	protected boolean shouldExtractProperties(Class<?> declaringClass) {
 
 		boolean isAStelvioExceptionSubclass = (SystemUnrecoverableException.class.isAssignableFrom(declaringClass)
-				|| FunctionalUnrecoverableException.class.isAssignableFrom(declaringClass) 
-				|| FunctionalRecoverableException.class.isAssignableFrom(declaringClass));
+				|| FunctionalUnrecoverableException.class.isAssignableFrom(declaringClass) || FunctionalRecoverableException.class
+				.isAssignableFrom(declaringClass));
 
 		return isAStelvioExceptionSubclass;
 	}
@@ -574,7 +570,8 @@ public class DefaultExceptionLogger extends Log4jLogger implements ExceptionLogg
 		/**
 		 * Returns true if field matches.
 		 * 
-		 * @param field field
+		 * @param field
+		 *            field
 		 * @return true if match
 		 */
 		public boolean matches(Field field) {
@@ -598,7 +595,8 @@ public class DefaultExceptionLogger extends Log4jLogger implements ExceptionLogg
 		/**
 		 * do with.
 		 * 
-		 * @param arg0 field
+		 * @param arg0
+		 *            field
 		 * @throws IllegalAccessException
 		 *             illegal access
 		 * @throws IllegalArgumentException

@@ -2,13 +2,13 @@ package no.stelvio.common.log;
 
 import no.stelvio.common.context.RequestContext;
 
-import org.apache.log4j.MDC;
+import org.slf4j.MDC;
 
 /**
  * MDC constants.
  * <p>
- * Defines MDC property keys than can be used by log4j to log additional context data to a log entry. See {@link MDC}. Log4J
- * loggers can use these properties to set corresponding values. If the MDC properties are set with values, log4j can be
+ * Defines MDC property keys than can be used by slf4j to log additional context data to a log entry. See {@link MDC}. slf4j
+ * loggers can use these properties to set corresponding values. If the MDC properties are set with values, slf4j can be
  * configured to include them in the logs by specifying the <code>ConversionPattern</code> on the layout. Example:
  * <code>[appender].layout.ConversionPattern=... %X{user}... </code>
  * </p>

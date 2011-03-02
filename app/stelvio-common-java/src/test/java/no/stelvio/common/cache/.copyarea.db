@@ -2,9 +2,9 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\cache
 2
 6
-19:CacheAnnotationsTest.java|1|12e57f5766b|7a7|9e7488ad|9df9d9e1667c4e669b719b721499a89e|0
-29:CacheAnnotationsWithoutAutoProxyTest.java|1|12e57f576d8|dbf|e3cda4d2|cec6562e58a74388b4cc74fb9755889e|0
-18:CacheManagementTest.java|1|12e57f5767a|1028|397843f6|03b6ed3c540b442e88c6b1458cf292bf|0
-1a:CustomCachingListener.java|1|12e57f5768a|47e|d3776b66|85aac78cbbd84f629bb5420cebb55251|0
-e:TestCache.java|1|12e57f576b9|1c4|a98889d9|0d05d08ca98340d88da8ee427967fc27|0
+19:CacheAnnotationsTest.java|1|12e77080ab3|7a7|9e7488ad|9df9d9e1667c4e669b719b721499a89e|0
+29:CacheAnnotationsWithoutAutoProxyTest.java|1|12e77080b5e|dbf|e3cda4d2|cec6562e58a74388b4cc74fb9755889e|0
+18:CacheManagementTest.java|1|12e77080ad2|1028|397843f6|03b6ed3c540b442e88c6b1458cf292bf|0
+1a:CustomCachingListener.java|1|12e77080af1|47e|d3776b66|85aac78cbbd84f629bb5420cebb55251|0
+e:TestCache.java|1|12e77080b30|1c4|a98889d9|0d05d08ca98340d88da8ee427967fc27|0
 7:support|2|0|0|0|6a15198a127041fb8af05884c03d7225|0

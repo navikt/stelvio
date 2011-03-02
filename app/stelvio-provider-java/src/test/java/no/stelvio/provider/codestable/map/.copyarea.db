@@ -2,6 +2,6 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-provider-java\src\test\java\no\stelvio\provider\codestable\map
 2
 3
-28:CodesTablePeriodicItemConverterTest.java|1|12e57f5d014|cae|477c497b|638b43c18f864793ac710a2eef72d64e|0
-20:CodesTableItemConverterTest.java|1|12e57f5d043|bae|8c16eafe|319a7b6ad96b4faca4440bcd40f4cf6f|0
-28:AbstractCodesTableItemConverterTest.java|1|12e57f5d081|f50|94ed2611|87e595a3793f443693d001bb4a3187df|0
+28:CodesTablePeriodicItemConverterTest.java|1|12e770a299c|cae|477c497b|638b43c18f864793ac710a2eef72d64e|0
+20:CodesTableItemConverterTest.java|1|12e770a29bb|bae|8c16eafe|319a7b6ad96b4faca4440bcd40f4cf6f|0
+28:AbstractCodesTableItemConverterTest.java|1|12e770a29db|f50|94ed2611|87e595a3793f443693d001bb4a3187df|0

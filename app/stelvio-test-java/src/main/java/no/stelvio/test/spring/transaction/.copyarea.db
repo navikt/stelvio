@@ -2,4 +2,4 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-test-java\src\main\java\no\stelvio\test\spring\transaction
 2
 1
-1c:MockTransactionTemplate.java|1|12e57f5c72a|f64|d69e5c8f|b928a2db27a54ab8bc77b6b622665796|0
+1c:MockTransactionTemplate.java|1|12e770a1f6b|f64|d69e5c8f|b928a2db27a54ab8bc77b6b622665796|0

@@ -2,5 +2,5 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\security\validation\support
 2
 2
-19:DefaultRoleValidator.java|1|12e57f56f47|b4a|6d957cab|612667b8a3af4d93a7d0d4cad28fbb27|0
-16:RoleValidatorUtil.java|1|12e57f56f56|957|798e12da|6bc8cb03377d41e9ba570d264f0b66d3|0
+19:DefaultRoleValidator.java|1|12e7707e3e1|b4a|6d957cab|612667b8a3af4d93a7d0d4cad28fbb27|0
+16:RoleValidatorUtil.java|1|12e7707e400|957|798e12da|6bc8cb03377d41e9ba570d264f0b66d3|0

@@ -2,6 +2,6 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-batch-client-java\src\main\java\no\stelvio\batch\controller\client
 2
 3
-10:BatchRunner.java|1|12e57f5d5c1|58c|b146b1cf|b58a4c66f01b48e7bc51d1daee63fdf8|0
-1a:BatchControllerClient.java|1|12e57f5d5b1|12f4|7f4fe42d|16da3b78ae2148efab08924505e6a4fe|0
+10:BatchRunner.java|1|12e770a4c76|58c|b146b1cf|b58a4c66f01b48e7bc51d1daee63fdf8|0
+1a:BatchControllerClient.java|1|12e770a4c47|12f4|7f4fe42d|16da3b78ae2148efab08924505e6a4fe|0
 7:support|2|0|0|0|3b22dd06934a43d98ad96cdf5ca84327|0

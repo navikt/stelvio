@@ -2,5 +2,5 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-common-java\src\test\java\no\stelvio\common\error\support
 2
 2
-11:SeverityTest.java|1|12e57f57fa2|26d|6daac36e|debe610024fd4b65b15a2ed24320d94a|0
-27:RethrowExceptionHandlingAdviceTest.java|1|12e57f57f83|369|39a72182|c613b59211d44553aaede370bae102a0|0
+11:SeverityTest.java|1|12e77084a80|26d|6daac36e|debe610024fd4b65b15a2ed24320d94a|0
+27:RethrowExceptionHandlingAdviceTest.java|1|12e77084a51|369|39a72182|c613b59211d44553aaede370bae102a0|0

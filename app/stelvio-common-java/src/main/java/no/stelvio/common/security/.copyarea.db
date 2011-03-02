@@ -4,9 +4,9 @@ Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\security
 8
 2:ws|2|0|0|0|6eebf9e3c025450f9ec90ade4ba29ec0|0
 d:authorization|2|0|0|0|3ec39b5847b14996988908f68b735e48|0
-16:SecurityException.java|1|12e57f56b4f|3ad|bf042f9d|37158c3a8a37412a88b25bb3d59b379f|0
-14:SecurityContext.java|1|12e57f56ad2|a44|69bc59a9|64052fc9d3034ce1aa053f4fb3456514|0
+16:SecurityException.java|1|12e7707bdbc|3ad|bf042f9d|37158c3a8a37412a88b25bb3d59b379f|0
+14:SecurityContext.java|1|12e7707bd3f|a44|69bc59a9|64052fc9d3034ce1aa053f4fb3456514|0
 a:validation|2|0|0|0|9b06da6b28a049bca31930642fe8b3cb|0
 a:definition|2|0|0|0|a6fcacd8cdd44badbd8a7b40838d8358|0
 7:support|2|0|0|0|13eadeb9851f4dc9895c31c7b564270d|0
-1a:SecurityContextHolder.java|1|12e57f56b30|a56|151b6cee|d1d0b2990e48494aa275197b01c1a804|0
+1a:SecurityContextHolder.java|1|12e7707bd8d|a56|151b6cee|d1d0b2990e48494aa275197b01c1a804|0

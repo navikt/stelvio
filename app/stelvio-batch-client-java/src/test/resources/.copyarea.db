@@ -2,6 +2,6 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-batch-client-java\src\test\resources
 2
 3
-10:log4j.properties|1|12e57f5d6ab|533|52e0e04d|7792a07206c5407e8ad1130cdefba6be|0
-20:btc-controllerclient-context.xml|1|12e57f5d63e|53d|96f5bf28|e2b1ad9d67da49fd8d4be7afd29e54c6|0
-2b:btc-controllerclient-environment.properties|1|12e57f5d64d|7a|f992b68|89e0294af40347439c651151b88a0b02|0
+10:log4j.properties|1|12e770a4d50|533|52e0e04d|7792a07206c5407e8ad1130cdefba6be|0
+20:btc-controllerclient-context.xml|1|12e770a4d21|53d|96f5bf28|e2b1ad9d67da49fd8d4be7afd29e54c6|0
+2b:btc-controllerclient-environment.properties|1|12e770a4d31|7a|f992b68|89e0294af40347439c651151b88a0b02|0

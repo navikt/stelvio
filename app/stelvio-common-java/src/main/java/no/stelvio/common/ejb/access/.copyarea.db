@@ -2,4 +2,4 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-common-java\src\main\java\no\stelvio\common\ejb\access
 2
 1
-32:StelvioRemoteStatelessSessionProxyFactoryBean.java|1|12e57f57264|78f|835094a0|73975df8db2d48058aa294e9f5b55523|0
+32:StelvioRemoteStatelessSessionProxyFactoryBean.java|1|12e7707f6ec|78f|835094a0|73975df8db2d48058aa294e9f5b55523|0

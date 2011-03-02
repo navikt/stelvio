@@ -2,6 +2,6 @@ ClearCase CopyAreaDB|4
 Stelvio\app\stelvio-domain-java\src\main\java\no\stelvio\domain\menu
 2
 3
-17:MenuItemPermission.java|1|12e57f59388|d57|a7892274|5c285da10cfa4734a5be525615b7dadd|0
-d:MenuItem.java|1|12e57f59369|1fe5|c627c937|d4aaaa3da2b34498a2acdd95c441b4a6|0
-13:MenuItemScreen.java|1|12e57f59398|abf|7c3146a4|b04c4aabd6b34bdd802b37148ec0c121|0
+17:MenuItemPermission.java|1|12e7708e8a0|d57|a7892274|5c285da10cfa4734a5be525615b7dadd|0
+d:MenuItem.java|1|12e7708e881|1fe5|c627c937|d4aaaa3da2b34498a2acdd95c441b4a6|0
+13:MenuItemScreen.java|1|12e7708e8bf|abf|7c3146a4|b04c4aabd6b34bdd802b37148ec0c121|0
