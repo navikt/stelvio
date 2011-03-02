@@ -44,6 +44,7 @@ public abstract class AddCommentMojo extends ConfluenceMojo {
 		map.put("content", getComment());
 		Comment newcomment = new Comment(map);
 		try {
+			getLog().info("Trying to add the following comment: " + getComment());
 			confluence.addComment(newcomment);
 		} catch (Exception e) {
 			throw new MojoExecutionException(

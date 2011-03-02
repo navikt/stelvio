@@ -35,7 +35,7 @@ public class UpdatePageMojo extends ConfluenceMojo {
 		}
 		String newline = "|| WPS services | Bus tag " + deployString
 				+ " \\\\ | ||";
-
+		getLog().info("Writing " + newline + " to confluence page");
 		content = content.replace(oldline, newline);
 		page.setContent(content);
 

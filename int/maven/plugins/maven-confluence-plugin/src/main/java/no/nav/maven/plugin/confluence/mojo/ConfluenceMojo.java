@@ -71,7 +71,13 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 
 	protected Confluence confluence;
 	
+	/**
+	 * @parameter expression="${esb-modules-version}"
+	 */
 	protected String deployString = "";
+	/**
+	 * @parameter expression="${bus-configuration-version}"
+	 */
 	protected String configurationString = "";
 	
 	public void execute(){
@@ -93,15 +99,6 @@ public abstract class ConfluenceMojo extends AbstractMojo {
 				System.exit(0);
 			}
 
-		}
-		
-		for (Artifact a : dependencyArtifacts) {
-			if (a.getArtifactId().equals("esb-modules")) {
-				deployString = a.getVersion();
-			}
-			if (a.getArtifactId().equals("busconfiguration")) {
-				configurationString = a.getVersion();
-			}
 		}
 		
 		try {
