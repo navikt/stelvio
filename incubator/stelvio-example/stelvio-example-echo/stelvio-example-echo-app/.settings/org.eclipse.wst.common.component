@@ -5,5 +5,8 @@
             <dependent-object>Module_1296773473059</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib//home/utvikler/.m2/repository/no/stelvio/example/stelvio-example-echo-service-jaxws/1.0-SNAPSHOT/stelvio-example-echo-service-jaxws-1.0-SNAPSHOT.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

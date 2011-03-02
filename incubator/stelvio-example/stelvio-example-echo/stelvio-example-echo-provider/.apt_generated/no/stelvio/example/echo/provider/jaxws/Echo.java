@@ -3,7 +3,7 @@
 //
 
 
-package stelvio.example.echo.provider.jaxws;
+package no.stelvio.example.echo.provider.jaxws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "echo", namespace = "http://www.stelvio.no/example/services/V1/EchoService")
+@XmlRootElement(name = "echo", namespace = "http://provider.echo.example.stelvio.no/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "echo", namespace = "http://www.stelvio.no/example/services/V1/EchoService")
+@XmlType(name = "echo", namespace = "http://provider.echo.example.stelvio.no/")
 public class Echo {
 
     @XmlElement(name = "arg0", namespace = "")

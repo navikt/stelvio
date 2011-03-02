@@ -11,10 +11,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "echoResponse", namespace = "http://www.stelvio.no/example/services/V1/EchoService")
+@XmlRootElement(name = "echo2Response", namespace = "http://provider.echo.example.stelvio/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "echoResponse", namespace = "http://www.stelvio.no/example/services/V1/EchoService")
-public class EchoResponse {
+@XmlType(name = "echo2Response", namespace = "http://provider.echo.example.stelvio/")
+public class Echo2Response {
 
     @XmlElement(name = "return", namespace = "")
     private String _return;

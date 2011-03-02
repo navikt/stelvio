@@ -4,7 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>stelvio-example-echo-provider</project>
-		<project>stelvio-example-echo-service-jaxws</project>
+		<project>stelvio-example-echo-app</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

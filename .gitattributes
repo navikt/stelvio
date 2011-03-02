@@ -2129,6 +2129,7 @@ incubator/stelvio-example/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-app/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-app/.settings/org.eclipse.wst.common.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-app/.settings/org.eclipse.wst.common.project.facet.core.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-app/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-app/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-client/.classpath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-client/.factorypath -text
@@ -2175,8 +2176,10 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-clientEAR/.s
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/stelvio-example-echo.emx -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/uml2wsdl.tc -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.apt_generated/stelvio/example/echo/provider/jaxws/Echo.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.apt_generated/stelvio/example/echo/provider/jaxws/EchoResponse.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.apt_generated/no/stelvio/example/echo/provider/jaxws/Echo.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.apt_generated/no/stelvio/example/echo/provider/jaxws/EchoResponse.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.apt_generated/stelvio/example/echo/provider/jaxws/Echo2.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.apt_generated/stelvio/example/echo/provider/jaxws/Echo2Response.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.classpath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.factorypath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.project -text
@@ -2188,10 +2191,10 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.se
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.jsdt.ui.superType.container -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.jsdt.ui.superType.name -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-ext.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/web.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/Echo.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxws/pom.xml -text
