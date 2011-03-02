@@ -2195,6 +2195,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.se
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-ext.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/web.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/Echo.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxws/pom.xml -text
