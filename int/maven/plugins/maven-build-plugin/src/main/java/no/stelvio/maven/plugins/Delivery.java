@@ -87,7 +87,7 @@ public class Delivery extends AbstractMojo{
 		
 		if (step == 1){
 			if (perform_delivery_1)	fail = deliverI() != 0;
-			else this.getLog().warn("Skipping delivery I");
+			else this.getLog().warn("Skipping delivery I"); //$NON-NLS-1$
 			// TODO consider to run undo delivery here if failed
 			// and maybe rerun this goal
 			/** 
@@ -96,9 +96,9 @@ public class Delivery extends AbstractMojo{
 			 */
 		}else if (step == 2){
 			if (perform_delivery_2)	fail = deliverII() != 0;
-			else this.getLog().warn("Skipping delivery II");
+			else this.getLog().warn("Skipping delivery II"); //$NON-NLS-1$
 		}
-		if (fail) throw new MojoExecutionException("Unable to perform delivery");
+		if (fail) throw new MojoExecutionException("Unable to perform delivery"); //$NON-NLS-1$
 	}
 	
 	/**
@@ -107,22 +107,22 @@ public class Delivery extends AbstractMojo{
 	 * @throws  
 	 */
 	private int deliverI() throws MojoFailureException {
-		this.getLog().info("-----------------------------");
-		this.getLog().info("--- Performing delivery I ---");
-		this.getLog().info("-----------------------------");
+		this.getLog().info("-----------------------------"); //$NON-NLS-1$
+		this.getLog().info("--- Performing delivery I ---"); //$NON-NLS-1$
+		this.getLog().info("-----------------------------"); //$NON-NLS-1$
 		String workingDir = this.ccProjectDir+this.build+this.devStream;
-		if (activityList.equalsIgnoreCase("none") || activityList == null || activityList.equalsIgnoreCase("")) activityList = null;
+		if (activityList.equalsIgnoreCase("none") || activityList == null || activityList.equalsIgnoreCase("")) activityList = null; //$NON-NLS-1$ //$NON-NLS-2$
 		ArrayList<String> activities = (ArrayList<String>) CCCQRequest.getActivitiesToDeliver(this.ccProjectDir, this.build+this.devStream, activityList);
 		if (activities == null || activities.isEmpty())	{
-			getLog().info("Nothing to deliver");
+			getLog().info("Nothing to deliver"); //$NON-NLS-1$
 			return 1;
 		}
-		StringBuffer subcommand = new StringBuffer("deliver -to srvmooseadmin_" + this.build + this.intStream+" -force " + "-act " + this.getActIDString(activities));
+		StringBuffer subcommand = new StringBuffer(Messages.getString("Delivery.9") + this.build + this.intStream+" -force " + "-act " + this.getActIDString(activities)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		try {
 			this.saveActivitiesToFile(this.getActIDString(activities));
 		} catch (IOException e) {
 			getLog().error(e.getLocalizedMessage());
-			throw new MojoFailureException("Could not create build.properties file");
+			throw new MojoFailureException("Could not create build.properties file"); //$NON-NLS-1$
 		}
 		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand.toString());
 		//return 0;
@@ -130,7 +130,7 @@ public class Delivery extends AbstractMojo{
 	
 	private void saveActivitiesToFile(String activities) throws IOException{ 
 		Properties properties = new Properties();
-		properties.setProperty("TO_DELIVER", activities);
+		properties.setProperty(Messages.getString("Delivery.13"), activities); //$NON-NLS-1$
 		PropertiesFile.setProperties(this.ccProjectDir, this.build, properties);
 	}
 	
@@ -153,11 +153,11 @@ public class Delivery extends AbstractMojo{
 	 * @throws MojoFailureException
 	 */
 	private int deliverII() throws MojoFailureException{
-		this.getLog().info("------------------------------");
-		this.getLog().info("--- Performing delivery II ---");
-		this.getLog().info("------------------------------");
+		this.getLog().info("------------------------------"); //$NON-NLS-1$
+		this.getLog().info("--- Performing delivery II ---"); //$NON-NLS-1$
+		this.getLog().info("------------------------------"); //$NON-NLS-1$
 		String workingDir = this.ccProjectDir+this.build+this.devStream;
-		String subcommand = "deliver -complete -force";
+		String subcommand = "deliver -complete -force"; //$NON-NLS-1$
 		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
 		//return 0;
 	}

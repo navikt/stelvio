@@ -61,18 +61,26 @@ public class WarnUnreserved extends AbstractMojo{
 	private boolean perform_addTrg;
 	
 	@Override
-	public void execute() throws MojoExecutionException, MojoFailureException {
-		boolean fail = false;
-		if (action.equalsIgnoreCase("remove")) {
-			if (perform_removeTrg) fail = remove() != 0;
-			else this.getLog().warn("Skipping remove WARN_UNRESERVED trigger");
-			if (fail) this.getLog().warn("Cleartool could not find any triggers to remove. Proceding with build.");
-		}
-		else if (action.equalsIgnoreCase("add")) {
-			if (perform_addTrg)	fail = add() != 0;
-			else this.getLog().warn("Skipping add WARN_UNRESERVED trigger");
-			if (fail) this.getLog().warn("Cleartool detected already existing trigger. Proceding with build.");
-		}		
+	public void execute() throws MojoExecutionException {
+			if (action.equalsIgnoreCase("remove")) {
+				if (perform_removeTrg)
+					try {
+						remove();
+					} catch (MojoFailureException e) {
+						this.getLog().warn("Cleartool could not find any triggers to remove. Proceding with build.");
+					}
+				else this.getLog().warn("Skipping remove WARN_UNRESERVED trigger");
+				
+			}
+			else if (action.equalsIgnoreCase("add")) {
+				if (perform_addTrg)
+					try {
+						add();
+					} catch (MojoFailureException e) {
+						this.getLog().warn("Cleartool detected already existing trigger. Proceding with build.");
+					}
+				else this.getLog().warn("Skipping add WARN_UNRESERVED trigger");
+			}	
 	}
 	
 	/**
