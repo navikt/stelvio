@@ -120,7 +120,21 @@ public class EventFileWriter {
 			csvPrinter.write(failedEvent.getResubmitDestination());
 			SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
 			csvPrinter.write(sdf.format(failedEvent.getFailureDateTime()));
-			csvPrinter.write(failedEvent.getFailureMessage());
+			String failureMessage = failedEvent.getFailureMessage();
+
+			// Truncating the failure message if it is larger than the maximum cell length
+			if (failureMessage != null) {
+				if (failureMessage.length() > Constants.REPORT_MAX_CELL_LENGTH) {
+
+					failureMessage = failureMessage.substring(0, getMaximumReportCellSubstringSize()).concat(
+							Constants.REPORT_TRUNCATE_STRING);
+					csvPrinter.write(failureMessage);
+				} else {
+					csvPrinter.write(failureMessage);
+				}
+			} else { // write empty cell
+				csvPrinter.write(failureMessage);
+			}
 
 			// Write parameters from the failed event
 			StringBuilder sb = new StringBuilder();
@@ -243,4 +257,14 @@ public class EventFileWriter {
 		csvPrinter.write(event.getProcessStatus());
 		csvPrinter.writeln(event.getProcessFailureMessage());
 	}
+
+	/**
+	 * Returns the maximum length of a substring in order for the substring concatenated with the truncate string not to exceed
+	 * the maximum cell length in the report.
+	 * 
+	 */
+	public int getMaximumReportCellSubstringSize() {
+		return Constants.REPORT_MAX_CELL_LENGTH - Constants.REPORT_TRUNCATE_STRING.length();
+	}
+
 }
