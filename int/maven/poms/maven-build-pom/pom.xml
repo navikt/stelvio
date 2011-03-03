@@ -12,13 +12,13 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-build-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>maven-build-pom</name>
 
 	<properties>
-		<buildVersion>1.0-SNAPSHOT</buildVersion>
+		<buildVersion>1.0</buildVersion>
 		<ccProjectDir>D:/cc/</ccProjectDir>
-		<scriptFolder>D:/scripts/</scriptFolder>
+		<scriptFolder>${script_folder}</scriptFolder>
 		<devStream>_Dev_h</devStream>
 		<intStream>_int_h</intStream>
 	</properties>
