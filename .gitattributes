@@ -2138,16 +2138,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.se
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.settings/org.eclipse.wst.jsdt.ui.superType.container -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.settings/org.eclipse.wst.jsdt.ui.superType.name -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/META-INF/MANIFEST.MF -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/form/Query.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/Echo.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/EchoResponse.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/ObjectFactory.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/binding2/EchoEchoFault1Msg.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/binding2/EchoService.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/binding2/EchoServiceWSEXPEchoServiceHttpService.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/binding2/EchoServiceWSEXP_EchoServiceHttpPortProxy$Descriptor.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/binding2/EchoServiceWSEXP_EchoServiceHttpPortProxy.class -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes/no/stelvio/example/services/v1/echoservice/package-info.class -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/ibm-web-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/ibm-web-ext.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/ibm-webservicesclient-bnd.xmi -text
