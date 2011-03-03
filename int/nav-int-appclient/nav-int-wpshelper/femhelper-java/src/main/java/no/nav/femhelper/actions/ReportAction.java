@@ -14,10 +14,12 @@ import javax.management.ReflectionException;
 import no.nav.femhelper.cmdoptions.CommandOptions;
 import no.nav.femhelper.common.Event;
 import no.nav.femhelper.common.Queries;
+import no.nav.femhelper.common.Constants;
 
 import org.apache.commons.cli.CommandLine;
 
-import com.ibm.wbiserver.manualrecovery.SCAEvent;
+import com.ibm.wbiserver.manualrecovery.FailedEvent;
+import com.ibm.wbiserver.manualrecovery.FailedEventImpl;
 import com.ibm.wbiserver.manualrecovery.exceptions.FailedEventDataException;
 import com.ibm.websphere.management.exception.ConnectorException;
 
@@ -33,7 +35,7 @@ public class ReportAction extends AbstractAction {
 		logger.log(Level.FINE, "Write CSV header part.");
 		fileWriter.writeHeader();
 
-		Collection  <Event> events = new ArrayList<Event>();
+		Collection<Event> events = new ArrayList<Event>();
 		events = collectEvents(arguments, paging, totalevents, maxresultset);
 
 		if (!events.isEmpty()) {
@@ -56,22 +58,44 @@ public class ReportAction extends AbstractAction {
 				}
 
 				// Write the report
-				String eventWithParameter = Queries.QUERY_EVENT_WITH_PARAMETERS;
-				Object[] BOparams = new Object[] { new String((String) event.getMessageID()) };
-				String[] BOsignature = new String[] { "java.lang.String" };
+
+				// Using FailedEventImpl as a part of upgrading to WPS7 API
+				FailedEventImpl failedEvent = new FailedEventImpl();
+				failedEvent.setMsgId(event.getMessageID());
+				String query = "";
+				Object[] BOparams = new Object[] { failedEvent };
+				String[] BOsignature = new String[] { "com.ibm.wbiserver.manualrecovery.FailedEvent" };
+
+				if ((Constants.EVENT_TYPE_SCA).equals(event.getType())) {
+					query = Queries.QUERY_EVENT_DETAIL_FOR_SCA;
+				} else if ((Constants.EVENT_TYPE_BPC).equals(event.getType())) {
+					query = Queries.QUERY_EVENT_DETAIL_FOR_BPC;
+					failedEvent.setType(event.getType());
+					failedEvent.setDeploymentTarget(event.getDeploymentTarget());
+				} else if ((Constants.EVENT_TYPE_JMS).equals(event.getType())) {
+					query = Queries.QUERY_EVENT_DETAIL_FOR_JMS;
+					failedEvent.setDestinationModuleName(event.getDestinationModuleName());
+					failedEvent.setType(event.getType());
+				} else if ((Constants.EVENT_TYPE_MQ).equals(event.getType())) {
+					query = Queries.QUERY_EVENT_DETAIL_FOR_MQ;
+				}
+
 				try {
-					SCAEvent scaEvent = (SCAEvent) adminClient.invoke(
-								failedEventManager, eventWithParameter, BOparams, BOsignature);
-					fileWriter.writeCSVEvent(scaEvent, event, adminClient);
+					FailedEvent eventDetail = (FailedEvent) adminClient
+							.invoke(failedEventManager, query, BOparams, BOsignature);
+					fileWriter.writeCSVEvent(eventDetail, event, adminClient);
 				} catch (MBeanException e) {
 					if (e.getCause() != null && e.getCause() instanceof FailedEventDataException) {
 						FailedEventDataException cause = (FailedEventDataException) e.getCause();
-						logger.log(Level.WARNING, "Unable to fetch event with messageId '" + event.getMessageID() + "', probably because it does not exist.", cause);
+						logger.log(Level.WARNING, "Unable to fetch event with messageId '" + event.getMessageID()
+								+ "', probably because it does not exist.", cause);
 					} else {
 						throw e;
 					}
 				}
+
 				countSuccessful++;
+
 			}
 
 			logFileWriter.log("Reported " + countSuccessful + " events");

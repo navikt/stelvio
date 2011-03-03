@@ -16,7 +16,11 @@ import no.nav.femhelper.common.Event;
 import org.apache.commons.lang.StringUtils;
 
 import com.Ostermiller.util.CSVPrinter;
+import com.ibm.wbiserver.manualrecovery.BPCEvent;
+import com.ibm.wbiserver.manualrecovery.FailedEvent;
 import com.ibm.wbiserver.manualrecovery.FailedEventParameter;
+import com.ibm.wbiserver.manualrecovery.JMSEvent;
+import com.ibm.wbiserver.manualrecovery.MQEvent;
 import com.ibm.wbiserver.manualrecovery.SCAEvent;
 import com.ibm.websphere.management.AdminClient;
 import commonj.sdo.DataObject;
@@ -87,6 +91,7 @@ public class EventFileWriter {
 		csvPrinter.write("DestinationModule");
 		csvPrinter.write("DestinationComponent");
 		csvPrinter.write("DestinationMethod");
+		csvPrinter.write("ResubmitDestination");
 		csvPrinter.write("FailureDate");
 		csvPrinter.write("FailureMessage");
 		csvPrinter.write("DataObject");
@@ -101,53 +106,65 @@ public class EventFileWriter {
 	 * @param adminClient
 	 * @throws IOException
 	 */
-	public void writeCSVEvent(SCAEvent scaEvent, Event event, AdminClient adminClient) throws IOException {
+	public void writeCSVEvent(FailedEvent failedEvent, Event event, AdminClient adminClient) throws IOException {
 		// Write information about this event
-		csvPrinter.write(scaEvent.getMsgId());
-		csvPrinter.write(scaEvent.getSessionId());
-		csvPrinter.write(scaEvent.getInteractionType());
-		csvPrinter.write(scaEvent.getSourceModuleName());
-		csvPrinter.write(scaEvent.getSourceComponentName());
-		csvPrinter.write(scaEvent.getDestinationModuleName());
-		csvPrinter.write(scaEvent.getDestinationComponentName());
-		csvPrinter.write(scaEvent.getDestinationMethodName());
-		SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
-		csvPrinter.write(sdf.format(scaEvent.getFailureDateTime()));
+		if (failedEvent != null) {
+			csvPrinter.write(failedEvent.getMsgId());
+			csvPrinter.write(failedEvent.getSessionId());
+			csvPrinter.write(failedEvent.getInteractionType());
+			csvPrinter.write(failedEvent.getSourceModuleName());
+			csvPrinter.write(failedEvent.getSourceComponentName());
+			csvPrinter.write(failedEvent.getDestinationModuleName());
+			csvPrinter.write(failedEvent.getDestinationComponentName());
+			csvPrinter.write(failedEvent.getDestinationMethodName());
+			csvPrinter.write(failedEvent.getResubmitDestination());
+			SimpleDateFormat sdf = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT_MILLS);
+			csvPrinter.write(sdf.format(failedEvent.getFailureDateTime()));
+			csvPrinter.write(failedEvent.getFailureMessage());
 
-		// LS, looks like a bug in the FEM MBEAN because only get 1024 bytes
-		// back - message is truncated
-		csvPrinter.write(scaEvent.getFailureMessage() + "...(truncated to max. 1024 bytes)");
-
-		// Write parameters from the failed event
-		StringBuilder sb = new StringBuilder();
-		try {
-			List paramList = scaEvent.getFailedEventParameters(adminClient.getConnectorProperties());
-
-			for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
-				// Each parameter is know as a type of FailedEventParameter.
-				FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
-
-				if (failedEventParameter.getValue() instanceof DataObject) {
-					toString((DataObject) failedEventParameter.getValue(), sb);
-				} else if (failedEventParameter.getValue() instanceof String) {
-					sb.append(failedEventParameter.getValue().toString());
-				} else {
-					sb.append("Unable to convert");
+			// Write parameters from the failed event
+			StringBuilder sb = new StringBuilder();
+			try {
+				List paramList = null;
+				if ((Constants.EVENT_TYPE_SCA).equals(event.getType())) {
+					paramList = ((SCAEvent) failedEvent).getFailedEventParameters(adminClient.getConnectorProperties());
+				} else if ((Constants.EVENT_TYPE_BPC).equals(event.getType())) {
+					paramList = ((BPCEvent) failedEvent).getInputMessage(adminClient.getConnectorProperties());
+				} else if ((Constants.EVENT_TYPE_JMS).equals(event.getType())) {
+					paramList = ((JMSEvent) failedEvent).getPayload(adminClient.getConnectorProperties());
+				} else if ((Constants.EVENT_TYPE_MQ).equals(event.getType())) {
+					paramList = ((MQEvent) failedEvent).getPayload(adminClient.getConnectorProperties());
 				}
-				// Ensure all 'cells' are filled to improve make the view even more easy to read
-				sb.append(EMPTY);
-			}
-		} catch (RuntimeException e) {
-			String errormsg = "RuntimeException caught during retrieval of business object" + e.getClass().getName() + "("
-					+ e.getMessage() + ")";
-			sb.append(errormsg);
-			sb.append(EMPTY);
-			LOGGER.log(Level.SEVERE, errormsg, e);
-		}
-		csvPrinter.write(sb.toString());
 
-		// Write PIID / CorrelationId
-		csvPrinter.writeln(event.getCorrelationID());
+				if (paramList != null) {
+					for (Iterator itBO = paramList.iterator(); itBO.hasNext();) {
+						// Each parameter is know as a type of FailedEventParameter.
+						FailedEventParameter failedEventParameter = (FailedEventParameter) itBO.next();
+
+						if (failedEventParameter.getValue() instanceof DataObject) {
+							toString((DataObject) failedEventParameter.getValue(), sb);
+						} else if (failedEventParameter.getValue() instanceof String) {
+							sb.append(failedEventParameter.getValue().toString());
+						} else {
+							sb.append("Unable to convert");
+						}
+						// Ensure all 'cells' are filled to improve make the view even more easy to read
+						sb.append(EMPTY);
+					}
+				}
+
+			} catch (RuntimeException e) {
+				String errormsg = "RuntimeException caught during retrieval of business object" + e.getClass().getName() + "("
+						+ e.getMessage() + ")";
+				sb.append(errormsg);
+				sb.append(EMPTY);
+				LOGGER.log(Level.SEVERE, errormsg, e);
+			}
+			csvPrinter.write(sb.toString());
+
+			// Write PIID / CorrelationId
+			csvPrinter.writeln(failedEvent.getCorrelationId());
+		}
 	}
 
 	/**

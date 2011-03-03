@@ -43,7 +43,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		System.out.println(getSeparatorLine(100));
-		System.out.println("FEM Helper for WPS 6.1");
+		System.out.println("FEM Helper for WPS 7");
 		System.out.println(getSeparatorLine(100));
 
 		CommandOptionsBuilder optionsBuilder = new CommandOptionsBuilder();

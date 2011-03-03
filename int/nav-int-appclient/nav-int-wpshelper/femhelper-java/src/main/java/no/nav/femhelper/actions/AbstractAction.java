@@ -278,7 +278,16 @@ public abstract class AbstractAction {
 				failedEventList = (List<FailedEvent>) adminClient.invoke(failedEventManager, femQuery, pagepar, pagesig);
 				for (FailedEvent failedEvent : failedEventList) {
 					if (isEventApplicable(failedEvent, arguments)) {
-						Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId());
+
+						Event event = new Event(failedEvent.getMsgId(), failedEvent.getCorrelationId(), failedEvent.getType());
+
+						// setting necessary parameters for getting details on BPC and JMS Events
+						if ((Constants.EVENT_TYPE_BPC).equals(failedEvent.getType())) {
+							event.setDeploymentTarget(failedEvent.getDeploymentTarget());
+						} else if ((Constants.EVENT_TYPE_JMS).equals(failedEvent.getType())) {
+							event.setDestinationModuleName(failedEvent.getDestinationModuleName());
+						}
+
 						events.put(event.getMessageID(), event);
 					}
 				}
