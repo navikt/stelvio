@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.etools.webservice.wscbnd:ClientBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wscbnd="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wscbnd.xmi" xmi:id="ClientBinding_1276147422765">
-  <serviceRefs xmi:id="ServiceRef_1276147422765" serviceRefLink="service/EchoServiceWSEXP_EchoServiceHttpService">
-    <portQnameBindings xmi:id="PortQnameBinding_1276147422765" portQnameNamespaceLink="http://www.stelvio.no/example/services/V1/EchoService/Binding2" portQnameLocalNameLink="EchoServiceWSEXP_EchoServiceHttpPort" overriddenEndpointURI="http://localhost:9081/stelvio-example-echo-serviceWeb/sca/EchoServiceWSEXP"/>
-  </serviceRefs>
-</com.ibm.etools.webservice.wscbnd:ClientBinding>
