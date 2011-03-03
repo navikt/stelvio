@@ -68,7 +68,7 @@ public class UpdateViews extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (!perform) {
-			this.getLog().warn("Skipping baseline");
+			this.getLog().warn("Skipping update view");
 			return;
 		}
 		boolean fail = false;
