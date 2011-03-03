@@ -3407,13 +3407,11 @@ int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/CCPo
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/ConfigVerificationPreparation.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Delivery.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Deploy.java -text
-int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Messages.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UndoDelivery.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdateActivities.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdatePoms.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/UpdateViews.java -text
 int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/WarnUnreserved.java -text
-int/maven/plugins/maven-build-plugin/src/main/resources/messages.properties -text
 int/maven/plugins/maven-config-verification-plugin/pom.xml -text
 int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/Archiver.java -text
 int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/VerifyConfigMojo.java -text

@@ -117,7 +117,7 @@ public class Delivery extends AbstractMojo{
 			getLog().info("Nothing to deliver"); //$NON-NLS-1$
 			return 1;
 		}
-		StringBuffer subcommand = new StringBuffer(Messages.getString("Delivery.9") + this.build + this.intStream+" -force " + "-act " + this.getActIDString(activities)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		StringBuffer subcommand = new StringBuffer("deliver -to srvmooseadmin_" + this.build + this.intStream+" -force " + "-act " + this.getActIDString(activities)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		try {
 			this.saveActivitiesToFile(this.getActIDString(activities));
 		} catch (IOException e) {
@@ -130,7 +130,7 @@ public class Delivery extends AbstractMojo{
 	
 	private void saveActivitiesToFile(String activities) throws IOException{ 
 		Properties properties = new Properties();
-		properties.setProperty(Messages.getString("Delivery.13"), activities); //$NON-NLS-1$
+		properties.setProperty("TO_DELIVER", activities); //$NON-NLS-1$
 		PropertiesFile.setProperties(this.ccProjectDir, this.build, properties);
 	}
 	
