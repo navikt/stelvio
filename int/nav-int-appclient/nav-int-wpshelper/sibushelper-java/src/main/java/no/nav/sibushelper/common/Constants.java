@@ -34,14 +34,13 @@ public class Constants {
 			HELPER_COMPONENT_MQLINK, HELPER_COMPONENT_QUEUE);
 
 	/**
-	 * Public constant to represent the formatter pattern to be used together
-	 * with <code>Constants.timeFrame</code> operation
+	 * Public constant to represent the formatter pattern to be used together with <code>Constants.timeFrame</code> operation
 	 */
 	public static final String TIME_FRAME_FORMAT = "dd.MM.yyyy:hhmm";
 
 	/**
-	 * Public constant to represent the Date operation and parameter string from
-	 * the configuration file and properties related to that
+	 * Public constant to represent the Date operation and parameter string from the configuration file and properties related
+	 * to that
 	 */
 	public static String DEFAULT_DATE_FORMAT = "yyyyMMddHHmmss";
 	public static String DEFAULT_DATE_FORMAT_MILLS = "yyyy-MM-dd HH:mm:ss:SSS";
@@ -61,7 +60,7 @@ public class Constants {
 	public final static String RMI_PROTOCOL = "RMI";
 	public final static String MQ_PROTOCOL = "WMQ";
 
-	/*
+	/**
 	 * Further properties admin client
 	 */
 	public final static String PROP_SERVER_HOST_NAME = "CONNECTOR_HOST";
