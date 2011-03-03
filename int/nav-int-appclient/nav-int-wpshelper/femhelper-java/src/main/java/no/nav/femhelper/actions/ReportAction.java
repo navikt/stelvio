@@ -76,11 +76,14 @@ public class ReportAction extends AbstractAction {
 					query = Queries.QUERY_EVENT_DETAIL_FOR_JMS;
 					failedEvent.setDestinationModuleName(event.getDestinationModuleName());
 					failedEvent.setType(event.getType());
-				} else if ((Constants.EVENT_TYPE_MQ).equals(event.getType())) {
-					query = Queries.QUERY_EVENT_DETAIL_FOR_MQ;
 				}
 
 				try {
+					// writing an information message in cases of MQ events. Currently not used, or supported by FEM Helper
+					if ((Constants.EVENT_TYPE_MQ).equals(event.getType())) {
+						fileWriter.writeEventLineWithoutDetails(Constants.MQ_EVENT_INFORMATION_MESSAGE);
+					}
+					
 					FailedEvent eventDetail = (FailedEvent) adminClient
 							.invoke(failedEventManager, query, BOparams, BOsignature);
 					fileWriter.writeCSVEvent(eventDetail, event, adminClient);

@@ -257,6 +257,11 @@ public class EventFileWriter {
 		csvPrinter.write(event.getProcessStatus());
 		csvPrinter.writeln(event.getProcessFailureMessage());
 	}
+	
+	public void writeEventLineWithoutDetails(String informationMessage) throws IOException {
+		// Write information message to report
+		csvPrinter.writeln(informationMessage);
+	}
 
 	/**
 	 * Returns the maximum length of a substring in order for the substring concatenated with the truncate string not to exceed

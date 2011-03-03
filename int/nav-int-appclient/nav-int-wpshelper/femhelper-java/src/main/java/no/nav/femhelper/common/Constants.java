@@ -47,10 +47,15 @@ public class Constants {
 	public static final String EVENT_TYPE_JMS = "JMS";
 	public static final String EVENT_TYPE_MQ = "MQ";
 	public static final String EVENT_TYPE_SCA = "SCA";
-	
+
 	/**
 	 * Public properties representing max cell lengths in report
 	 */
 	public static final int REPORT_MAX_CELL_LENGTH = 31416;
 	public static final String REPORT_TRUNCATE_STRING = " ...(truncated)";
+	
+	/**
+	 * Public properties representing information messages related to events that are currently not supported
+	 */
+	public static final String MQ_EVENT_INFORMATION_MESSAGE = "This line represents an MQ event. FEM Helper does not currently support reporting details of MQ events";
 }
