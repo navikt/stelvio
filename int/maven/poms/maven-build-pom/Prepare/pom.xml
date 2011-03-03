@@ -31,6 +31,23 @@
 	  11. Update CQ activities	  
 	-->
 		<plugins>
+		
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
+					<!-- Step 2: update views -->
+					<execution>
+						<id>updateViews</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>updateViews</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
 			<plugin>
 				<groupId>no.stelvio.maven.plugins</groupId>
 				<artifactId>maven-build-plugin</artifactId>
@@ -46,22 +63,6 @@
 						<configuration>
 							<action>remove</action>
 						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			
-			<plugin>
-				<groupId>no.stelvio.maven.plugins</groupId>
-				<artifactId>maven-build-plugin</artifactId>
-				<version>${buildVersion}</version>
-				<executions>
-					<!-- Step 2: update views -->
-					<execution>
-						<id>updateViews</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>updateViews</goal>
-						</goals>
 					</execution>
 				</executions>
 			</plugin>
