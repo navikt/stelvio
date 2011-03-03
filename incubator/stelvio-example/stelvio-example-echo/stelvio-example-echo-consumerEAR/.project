@@ -3,7 +3,6 @@
 	<name>stelvio-example-echo-consumerEAR</name>
 	<comment></comment>
 	<projects>
-		<project>stelvio-example-echo-consumer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
