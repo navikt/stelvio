@@ -79,7 +79,8 @@ public class ReportAction extends AbstractAction {
 				}
 
 				try {
-					// writing an information message in cases of MQ events. Currently not used, or supported by FEM Helper
+					// writing an information message in cases of MQ events. 
+					// MQ events are currently not used, or supported by FEM Helper
 					if ((Constants.EVENT_TYPE_MQ).equals(event.getType())) {
 						fileWriter.writeEventLineWithoutDetails(Constants.MQ_EVENT_INFORMATION_MESSAGE);
 					}
