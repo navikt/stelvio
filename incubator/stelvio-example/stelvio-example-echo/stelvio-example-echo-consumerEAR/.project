@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>stelvio-example-echo-clientEAR</name>
+	<name>stelvio-example-echo-consumerEAR</name>
 	<comment></comment>
 	<projects>
-		<project>stelvio-example-echo-client</project>
+		<project>stelvio-example-echo-consumer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
