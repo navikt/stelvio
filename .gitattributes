@@ -2196,8 +2196,11 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/META-INF/policyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/EchoWSEXP.export -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/EchoWSIMP.import -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/META-INF/MANIFEST.MF -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/sca.module -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/sca.modulex -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxws/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/example/services/V1/EchoService/EchoService.wsdl -text

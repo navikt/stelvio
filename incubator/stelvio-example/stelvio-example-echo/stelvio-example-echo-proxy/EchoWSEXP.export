@@ -3,7 +3,7 @@
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:EchoService"/>
   </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding2:EchoServiceWSEXP_EchoServiceHttpPort" service="Binding2:EchoServiceWSEXP_EchoServiceHttpService">
+  <esbBinding xsi:type="jaxws:JaxWsExportBinding" port="Binding2:EchoWSEXP_EchoServiceHttpPort" service="Binding2:EchoWSEXP_EchoServiceHttpService">
     <policySetRef policySetName="SAML20 Bearer"/>
   </esbBinding>
 </scdl:export>
