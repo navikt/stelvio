@@ -15,7 +15,7 @@ import no.stelvio.example.services.v1.echoservice.binding2.EchoService;
 public class EchoClient extends Service {
 
 	    public EchoClient() throws MalformedURLException {
-	    	super(EchoClient.class.getResource("WEB-INF/wsdl/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://www.stelvio.no/example/services/V1/EchoService/Binding2", "EchoService"));
+	    	super(EchoService.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://www.stelvio.no/example/services/V1/EchoService/Binding2", "EchoService"));
 	    }
 	    
 	    @WebEndpoint(name = "EchoServiceHttpPort")

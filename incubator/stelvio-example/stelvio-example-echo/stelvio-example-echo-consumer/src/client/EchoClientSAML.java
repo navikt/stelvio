@@ -11,11 +11,11 @@ import javax.xml.ws.WebServiceClient;
 import no.stelvio.example.services.v1.echoservice.binding2.EchoEchoFault1Msg;
 import no.stelvio.example.services.v1.echoservice.binding2.EchoService;
 
-@WebServiceClient(name = "EchoServiceSAML", targetNamespace = "http://www.stelvio.no/example/services/V1/EchoService/Binding2")
+@WebServiceClient(name = "EchoSAMLService", targetNamespace = "http://www.stelvio.no/example/services/V1/EchoService/Binding2")
 public class EchoClientSAML extends Service {
 
 	    public EchoClientSAML() throws MalformedURLException {
-	    	super(EchoClientSAML.class.getResource("WEB-INF/wsdl/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://www.stelvio.no/example/services/V1/EchoService/Binding2", "EchoServiceSAML"));
+	    	super(EchoService.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://www.stelvio.no/example/services/V1/EchoService/Binding2", "EchoSAMLService"));
 	    }
 	    
 	    @WebEndpoint(name = "EchoServiceHttpPort")
