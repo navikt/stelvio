@@ -10,6 +10,20 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
-	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Wildcard</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>any</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-role>
+		<role-name>any</role-name>
+	</security-role>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>	
 </web-app>

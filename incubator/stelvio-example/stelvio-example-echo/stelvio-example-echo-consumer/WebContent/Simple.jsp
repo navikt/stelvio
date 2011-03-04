@@ -6,7 +6,7 @@
 <%@page import="no.stelvio.example.services.v1.echoservice.binding2.EchoEchoFault1Msg"%>
 <%@page import="javax.xml.ws.soap.SOAPFaultException"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="client.EchoClientSAML"%><html>
+<%@page import="client.EchoClient"%><html>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,7 +21,7 @@
 	<%
 		out.println("echo(" + query.getInput() + ") =");
 		try {
-			out.println(EchoClientSAML.echo(query.getInput()));
+			out.println(EchoClient.echo(query.getInput()));
 		} catch (EchoEchoFault1Msg e) {
 			out.println("Fault1:" + e.getMessage());
 		} catch (SOAPFaultException e) {
