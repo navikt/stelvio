@@ -575,8 +575,6 @@ app/stelvio-consumer-java/src/main/java/no/stelvio/consumer/ws/FaultUnrecoverabl
 app/stelvio-consumer-java/src/test/.copyarea.db -text
 app/stelvio-domain-java/.copyarea.db -text
 app/stelvio-domain-java/.project -text
-app/stelvio-domain-java/.settings/.copyarea.db -text
-app/stelvio-domain-java/.settings/org.eclipse.jst.common.project.facet.core.prefs -text
 app/stelvio-domain-java/pom.xml -text
 app/stelvio-domain-java/src/.copyarea.db -text
 app/stelvio-domain-java/src/main/.copyarea.db -text
