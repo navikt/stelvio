@@ -990,8 +990,6 @@ app/stelvio-provider-java/src/test/resources/prv-testcodestable-mapping.xml -tex
 app/stelvio-provider-java/src/test/resources/test-morphtosdk14-context.xml -text
 app/stelvio-repository-java/.copyarea.db -text
 app/stelvio-repository-java/.project -text
-app/stelvio-repository-java/.settings/.copyarea.db -text
-app/stelvio-repository-java/.settings/org.maven.ide.eclipse.prefs -text
 app/stelvio-repository-java/pom.xml -text
 app/stelvio-repository-java/src/.copyarea.db -text
 app/stelvio-repository-java/src/main/.copyarea.db -text
