@@ -920,11 +920,8 @@ app/stelvio-presentation-java/src/test/resources/numberconverter-context.xml -te
 app/stelvio-presentation-java/src/test/resources/test-context.xml -text
 app/stelvio-presentation-java/src/test/resources/test-flow.xml -text
 app/stelvio-presentation-java/src/test/resources/test-requestcontextfilter-context.xml -text
-app/stelvio-provider-java/.classpath -text
 app/stelvio-provider-java/.copyarea.db -text
 app/stelvio-provider-java/.project -text
-app/stelvio-provider-java/.settings/.copyarea.db -text
-app/stelvio-provider-java/.settings/org.maven.ide.eclipse.prefs -text
 app/stelvio-provider-java/pom.xml -text
 app/stelvio-provider-java/src/.copyarea.db -text
 app/stelvio-provider-java/src/main/.copyarea.db -text
