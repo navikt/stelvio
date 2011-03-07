@@ -607,11 +607,8 @@ app/stelvio-domain-java/src/test/resources/application-services.xml -text
 app/stelvio-domain-java/src/test/resources/common-java_test_menu_beans.xml -text
 app/stelvio-domain-java/src/test/resources/error-handling.xml -text
 app/stelvio-domain-java/src/test/resources/performance-monitoring.xml -text
-app/stelvio-dto-java/.classpath -text
 app/stelvio-dto-java/.copyarea.db -text
 app/stelvio-dto-java/.project -text
-app/stelvio-dto-java/.settings/.copyarea.db -text
-app/stelvio-dto-java/.settings/org.eclipse.jdt.core.prefs -text
 app/stelvio-dto-java/pom.xml -text
 app/stelvio-dto-java/src/.copyarea.db -text
 app/stelvio-dto-java/src/main/.copyarea.db -text
