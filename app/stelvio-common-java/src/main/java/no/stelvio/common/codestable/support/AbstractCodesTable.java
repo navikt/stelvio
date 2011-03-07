@@ -29,6 +29,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.util.CollectionUtils;
 
+import com.googlecode.ehcache.annotations.Cacheable;
+
 /**
  * Holds common functionality for <code>CodesTable</code> and <code>CodesTablePeriodic</code>.
  * 
@@ -95,6 +97,11 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	 * @throws DuplicateItemsException
 	 *             if the collection has duplicate entries.
 	 */
+	
+	public static final String CACHE_MODEL_ID = "no.stelvio.common.codestable.items";
+	
+	@Cacheable(cacheName = CACHE_MODEL_ID) // ehcache-spring-annotations, new caching library
+	@org.springmodules.cache.annotations.Cacheable(modelId = CACHE_MODEL_ID) // spring-modules-cache, old caching library
 	@SuppressWarnings("unchecked")
 	protected void init(Collection<T> codesTableItems, Class<? extends AbstractCodesTableItem> codesTableItemsClass)
 			throws CodesTableEmptyException, DuplicateItemsException {
