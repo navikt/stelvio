@@ -10,6 +10,9 @@ app/stelvio-common-java/target
 app/stelvio-consumer-java/.classpath
 app/stelvio-consumer-java/.settings
 app/stelvio-consumer-java/target
+app/stelvio-domain-java/.classpath
+app/stelvio-domain-java/.settings
+app/stelvio-domain-java/target
 app/stelvio-dto-java/.classpath
 app/stelvio-dto-java/.settings
 app/stelvio-dto-java/target
