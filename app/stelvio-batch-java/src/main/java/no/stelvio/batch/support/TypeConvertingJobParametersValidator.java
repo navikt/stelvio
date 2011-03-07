@@ -238,12 +238,15 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
 
 		@Override
 		public void validateTypeConversion(String jobParameterValue) throws JobParametersInvalidException {
-			try {
-				this.value = Boolean.parseBoolean(jobParameterValue);
-			} catch (Exception e) {
+			if (!isBooleanString(jobParameterValue)) {
 				throw new JobParametersInvalidException("Invalid boolean input for parameter:" + getKey());
 			}
+			this.value = Boolean.parseBoolean(jobParameterValue);
+		}
 
+		private boolean isBooleanString(String jobParameterValue) {
+			return jobParameterValue.equalsIgnoreCase(Boolean.TRUE.toString()) 
+				|| jobParameterValue.equalsIgnoreCase(Boolean.FALSE.toString());
 		}
 
 		@Override

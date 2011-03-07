@@ -1,6 +1,7 @@
 package no.stelvio.batch.support;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -8,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringBooleanJobParameter;
 import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringDateJobParameter;
 import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringEnumJobParameter;
 import no.stelvio.batch.support.TypeConvertingJobParametersValidator.StringLongJobParameter;
@@ -183,6 +185,41 @@ public class TypeConvertingJobParametersValidatorTest {
 		assertEquals(value, jobExecution.getExecutionContext().getString(key));
 	}	
 
+	@Test
+	public void shouldValidateTypeConversionOfBooleanParameters() throws Exception {
+		String key = "boolean";
+		validator.setOptionalParameters(Arrays.asList(new StringBooleanJobParameter(key)));
+		validator.afterPropertiesSet();
+		try {
+			validate(new JobParametersBuilder().addString(key, "hello").toJobParameters());
+			fail();
+		} catch (JobParametersInvalidException expectedException) {
+			assertTrue(expectedException.getMessage().contains(key));
+		}		
+	}
+	
+	@Test
+	public void shouldValidateTypeConversionFromStringToTrue() throws Exception {
+		StringBooleanJobParameter parameter = new StringBooleanJobParameter("key");
+		parameter.validateTypeConversion("True");
+		assertTrue(parameter.getValue());
+		parameter.validateTypeConversion("true");
+		assertTrue(parameter.getValue());
+		parameter.validateTypeConversion("tRuE");
+		assertTrue(parameter.getValue());
+	}
+	
+	@Test
+	public void shouldValidateTypeConversionFromStringToFalse() throws Exception {
+		StringBooleanJobParameter parameter = new StringBooleanJobParameter("key");
+		parameter.validateTypeConversion("False");
+		assertFalse(parameter.getValue());
+		parameter.validateTypeConversion("false");
+		assertFalse(parameter.getValue());
+		parameter.validateTypeConversion("fAlSe");
+		assertFalse(parameter.getValue());
+	}	
+	
 	private JobExecution validate(JobParameters jobParameters) throws JobParametersInvalidException {
 		validator.validate(jobParameters);
 		JobExecution jobExecution = MetaDataInstanceFactory.createJobExecution();
