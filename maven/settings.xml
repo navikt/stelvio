@@ -12,7 +12,7 @@
 			<password>maven</password>
 		</server>
 		<server>
-			<id>nav-pensjon-maven2-snapshot</id>
+			<id>nav-pensjon-maven2-snapshot-repo</id>
 			<username>maven</username>
 			<password>maven</password>
 		</server>
