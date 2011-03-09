@@ -2,7 +2,7 @@
 <feature
       id="no.stelvio.esb.models.transformation.uml2html"
       label="Stelvio uml2html transformation"
-      version="1.0.0"
+      version="1.0.2"
       provider-name="Ismar Slomic">
 
    <description url="http://www.example.com/description">
