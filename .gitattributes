@@ -3351,6 +3351,9 @@ int/eclipse/update-sites/models/stelvio-models-eclipse-updatesite/site.xml -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/.project -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/build.properties -text
 int/eclipse/update-sites/models/stelvio-models-service-uml-profile-feature/feature.xml -text
+int/eclipse/update-sites/models/stelvio-models-transformation-diagram2img-feature/.project -text
+int/eclipse/update-sites/models/stelvio-models-transformation-diagram2img-feature/build.properties -text
+int/eclipse/update-sites/models/stelvio-models-transformation-diagram2img-feature/feature.xml -text
 int/eclipse/update-sites/models/stelvio-models-transformation-uml2html-feature/.project -text
 int/eclipse/update-sites/models/stelvio-models-transformation-uml2html-feature/build.properties -text
 int/eclipse/update-sites/models/stelvio-models-transformation-uml2html-feature/feature.xml -text
