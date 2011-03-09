@@ -20,6 +20,7 @@ public class PublishFileUtils {
 	public Logger logger = Logger.getLogger("PublishFileUtils");
 	public static final String TEMPLATE_FOLDER_NAME = "src/main/resources/html-template";
 	public static final String SHARED_IMAGES_FOLDER_NAME = "images";
+	public static final String SHARED_JAVASCRIPT_FOLDER_NAME = "js";
 	public static final String SHARED_CSS_FOLDER_NAME = "stylesheets";
 	public static final String SHARED_DIAGRAM_FOLDER_NAME = "diagrams";
 	public static final String SHARED_ATTACHMENT_FOLDER_NAME = "attachments";
@@ -63,8 +64,44 @@ public class PublishFileUtils {
 		return makeRelativeWebLink(currentFile,cssDirPath).toString();
 	}
 
-	/******************** IMAGES *********************/
+	/******************** JAVASCRIPT *********************/
 
+	private static IPath getJavascriptDirPath()
+	{
+		IPath javascriptDirPath = new Path(TEMPLATE_FOLDER_NAME);
+		javascriptDirPath = javascriptDirPath.append(SHARED_JAVASCRIPT_FOLDER_NAME);
+		return javascriptDirPath;
+	}
+	
+	private static IPath getOutputJavascriptDirPath(File outputDirectory)
+	{
+		IPath outputDirPath = new Path(outputDirectory.getAbsolutePath());
+		outputDirPath = outputDirPath.append(SHARED_JAVASCRIPT_FOLDER_NAME);
+		
+		return outputDirPath;
+	}
+	
+	public static void copyJavascriptDirectory(File outputDirectory)throws IOException 
+	{
+		IPath outputDirPath = getOutputJavascriptDirPath(outputDirectory);
+		IPath javascriptDirPath = getJavascriptDirPath();
+		
+		File javascriptDirFile = getBoundleFileForPath(javascriptDirPath);	
+		FileUtils.copyDirectory(javascriptDirFile, outputDirPath.toFile());
+	}
+
+	public static String getRelativePathToJavascriptDir(String outputDirPath, String currentFilePath) 
+	{	
+		File outputDirectory = new File(outputDirPath);
+		IPath javascriptDirPath = getOutputJavascriptDirPath(outputDirectory);
+		
+		IPath currentFile = new Path(currentFilePath);
+		
+		return makeRelativeWebLink(currentFile,javascriptDirPath).toString();
+	}
+	
+	/******************** IMAGES *********************/
+	
 	private static IPath getImagesDirPath()
 	{
 		IPath cssDirPath = new Path(TEMPLATE_FOLDER_NAME);
@@ -261,7 +298,7 @@ public class PublishFileUtils {
 		return makeRelativeWebLink(currentFile, toAttachmentFilePath).toString();
 	}
 	
-	/********************** Front page ******************************************************/
+	/********************** Front pages ******************************************************/
 	public static IPath getFrontpageFilePath(File outputDirectory)
 	{
 		IPath frontpageFilePath = new Path(outputDirectory.getAbsolutePath());
@@ -271,9 +308,83 @@ public class PublishFileUtils {
 		return frontpageFilePath;
 	}
 	
+	public static IPath getServicemodelFrontpageFilePath(File outputDirectory)
+	{
+		IPath frontpageFilePath = new Path(outputDirectory.getAbsolutePath());
+		frontpageFilePath = frontpageFilePath.append("servicemodels");
+		frontpageFilePath = frontpageFilePath.addFileExtension("html");
+		
+		return frontpageFilePath;
+	}
+	
+	public static IPath getInformationmodelFrontpageFilePath(File outputDirectory)
+	{
+		IPath frontpageFilePath = new Path(outputDirectory.getAbsolutePath());
+		frontpageFilePath = frontpageFilePath.append("informationmodels");
+		frontpageFilePath = frontpageFilePath.addFileExtension("html");
+		
+		return frontpageFilePath;
+	}
+	
+	/**
+	 * Creates HTML-file for the frontpage (including output/destination folders if they doesn't exist)
+	 * 
+	 * @param outputDirectory the directory where to place the frontpage file
+	 * @return created file
+	 * @throws IOException
+	 */
 	public static File createFrontpageFile(File outputDirectory) throws IOException
 	{
 		IPath frontpageFilePath = getFrontpageFilePath(outputDirectory);
+		
+		File frontpageFile = frontpageFilePath.toFile();
+		File frontpageDir = new File(FilenameUtils.getFullPath(frontpageFilePath.toString()));
+		
+		if(!frontpageDir.isDirectory())
+		{
+			frontpageDir.mkdirs();
+		}
+
+		frontpageFile.createNewFile();
+		
+		return frontpageFile;
+	}
+
+	
+	/**
+	 * Creates HTML-file for the servicemodel frontpage (including output/destination folders if they doesn't exist)
+	 * 
+	 * @param outputDirectory the directory where to place the frontpage file
+	 * @return created file
+	 * @throws IOException
+	 */
+	public static File createServicemodelFrontpageFile(File outputDirectory) throws IOException
+	{
+		IPath frontpageFilePath = getServicemodelFrontpageFilePath(outputDirectory);
+		
+		File frontpageFile = frontpageFilePath.toFile();
+		File frontpageDir = new File(FilenameUtils.getFullPath(frontpageFilePath.toString()));
+		
+		if(!frontpageDir.isDirectory())
+		{
+			frontpageDir.mkdirs();
+		}
+
+		frontpageFile.createNewFile();
+		
+		return frontpageFile;
+	}
+	
+	/**
+	 * Creates HTML-file for the informationmodel frontpage (including output/destination folders if they doesn't exist)
+	 * 
+	 * @param outputDirectory the directory where to place the frontpage file
+	 * @return created file
+	 * @throws IOException
+	 */
+	public static File createInformationmodelFrontpageFile(File outputDirectory) throws IOException
+	{
+		IPath frontpageFilePath = getInformationmodelFrontpageFilePath(outputDirectory);
 		
 		File frontpageFile = frontpageFilePath.toFile();
 		File frontpageDir = new File(FilenameUtils.getFullPath(frontpageFilePath.toString()));
@@ -292,6 +403,24 @@ public class PublishFileUtils {
 	{
 		File outputDirectory = new File(outputDirPath);
 		IPath toFrontpageFilePath = getFrontpageFilePath(outputDirectory);
+		IPath currentFile = new Path(currentFilePath);
+		
+		return makeRelativeWebLink(currentFile, toFrontpageFilePath).toString();
+	}
+	
+	public static String getLinkToServicemodelFrontpage(String outputDirPath, String currentFilePath)
+	{
+		File outputDirectory = new File(outputDirPath);
+		IPath toFrontpageFilePath = getServicemodelFrontpageFilePath(outputDirectory);
+		IPath currentFile = new Path(currentFilePath);
+		
+		return makeRelativeWebLink(currentFile, toFrontpageFilePath).toString();
+	}
+	
+	public static String getLinkToInformationmodelFrontpage(String outputDirPath, String currentFilePath)
+	{
+		File outputDirectory = new File(outputDirPath);
+		IPath toFrontpageFilePath = getInformationmodelFrontpageFilePath(outputDirectory);
 		IPath currentFile = new Path(currentFilePath);
 		
 		return makeRelativeWebLink(currentFile, toFrontpageFilePath).toString();

@@ -352,3 +352,71 @@ td a
 	-moz-border-radius:0px 10px 0px 0px; /* Firefox */
 	-webkit-border-top-right-radius:10px; /* Safari and Chrome */
 }
+
+/****** Frontpage styles *****/
+li.package
+{
+	list-style-image: url(../images/package_icon.png);
+}
+
+li.complexType
+{
+	list-style-image: url(../images/complexType_icon.png);
+}
+
+li.serviceOperation
+{
+	list-style-image: url(../images/serviceOperation_icon.png);
+}
+
+li.serviceInterface
+{
+	list-style-image: url(../images/serviceInterface_icon.png);
+}
+
+li .serviceOperation a:hover
+{
+	text-decoration:underline;
+}
+
+li .complexType a:hover
+{
+	text-decoration:underline;
+}
+
+/* Expand/Collapse */
+.trigger
+{
+	cursor:pointer;
+}	
+	
+.trigger:hover
+{
+	cursor:pointer;
+}		
+
+.expanded
+{
+	cursor:pointer;
+	font-weight: bold;
+}
+
+.expanded:hover
+{
+	cursor:pointer;
+}
+
+.show
+{
+   position:static;
+   display: table;
+}
+
+.hide
+{
+	position:absolute;
+	left:-999em;
+	height:1px;
+	width:100px;
+	overflow:hidden;
+}

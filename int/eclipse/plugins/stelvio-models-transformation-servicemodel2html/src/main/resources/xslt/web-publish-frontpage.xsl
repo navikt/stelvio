@@ -4,6 +4,7 @@
 	xmlns="http://www.w3.org/1999/xhtml" xmlns:xmi="http://www.omg.org/XMI"
 	xmlns:futil="no.stelvio.esb.models.transformation.servicemodel2html.utils.PublishFileUtils" xmlns:fn="http://www.w3.org/2005/xpath-functions"
 	xmlns:dutil="no.stelvio.esb.models.transformation.servicemodel2html.utils.DateUtils" version="1.0"
+	xmlns:tjn="http://stelvio.no/int/models/service/metamodel"
 	exclude-result-prefixes="#default">
 
 	<xsl:output method="html" indent="yes"
@@ -13,6 +14,8 @@
 	<!-- Required input parameters for the transformation -->
 	<xsl:param name="outputDirPath" />
 	<xsl:param name="currentFilePath" />
+	<xsl:param name="informationmodelFilePath" />
+	<xsl:param name="servicemodelFilePath" />
 
 	<!-- Document Root: calls serviceInterface and serviceOperation templates 
 		(menu and content mode) -->
@@ -33,36 +36,20 @@
 					<h1><a href="{futil:getLinkToFrontpage($outputDirPath, $currentFilePath)}">NAV Tjenestebuss</a></h1>
 				</div>
 
-				<div class="colmask threecol">
-					<div class="colmid">
-						<div class="colleft">
-							<!-- Middle column -->
-							<div class="col1">
-								<h1>Service interfaces</h1>
-								<xsl:for-each select="//serviceInterface">
-									<xsl:sort order="ascending" select="@name"/>
-									<h2> <xsl:value-of select="@name"/> </h2>
-									<table class="table-vertical-header table-metadata">
-									<tr>
-										<th scope="row">Namespace</th>
-										<td>
-											<xsl:apply-templates select="./serviceOperations[1]" mode="createLink" />
-										</td>
-									</tr>
-									</table>
-								</xsl:for-each>
-							</div>
-
-							<!-- Left column -->
-							<div class="col2">
-								<p></p>
-							</div>
-
-							<!-- Right column -->
-							<div class="col3">
-								<p></p>
-							</div>
-						</div>
+				<div class="colmask" style="text-align: center;">
+					<div>
+						<h1>Tjenestespesifikasjoner</h1>
+						<p>(Klikk på referansefiguren under for beskrivelse av tjenestespesifikasjoner)</p>
+						<a href="{futil:getLinkToServicemodelFrontpage($outputDirPath, $currentFilePath)}" alt="Tjenestespesifikasjoner">
+							<img src="images/esb_tjenestemodell_v0.91.jpeg" alt="Klikk her for tjenestespesifikasjoner på NAV ESB" border="0"/>
+						</a>
+					</div>
+					<div>
+						<h1>Informasjonsmodeller</h1>
+						<p>(Klikk på referansefiguren under for beskrivelse av informasjonsmodellene)</p>
+						<a href="{futil:getLinkToInformationmodelFrontpage($outputDirPath, $currentFilePath)}" alt="Informasjonsmodeller">
+							<img src="images/esb_informasjonsmodell_v1.1.jpeg" alt="Klikk her for tjenestespesifikasjoner på NAV ESB" border="0"/>
+						</a>
 					</div>
 				</div>
 
@@ -75,18 +62,5 @@
 
 			</body>
 		</html>
-	</xsl:template>
-	
-	<!-- Creates an link to the HTML file for the current service operation -->
-	<xsl:template match="serviceOperations" mode="createLink">
-		<xsl:variable name="operationLink"
-			select="futil:getLinkToOperation($outputDirPath, $currentFilePath, ../@namespace, ../@name, @name)" />
-		<a title="{@name}">
-			<xsl:attribute name="href">
-			<xsl:value-of select="$operationLink" />
-		</xsl:attribute>
-			<xsl:value-of select="@namespace" />
-		</a>
-	</xsl:template>
-	
+	</xsl:template>	
 </xsl:stylesheet>

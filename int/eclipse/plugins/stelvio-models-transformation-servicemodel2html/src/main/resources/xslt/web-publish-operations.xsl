@@ -37,6 +37,7 @@
 				<meta name="robots" content="index, follow" />
 				<link rel="stylesheet" type="text/css" media="screen" href="{futil:getRelativePathToCssDir($outputDirPath, $currentFilePath)}/screen.css" />
 				<link rel="icon" type="image/x-icon" href="{futil:getRelativePathToImagesDir($outputDirPath, $currentFilePath)}/favicon.ico" />
+				<script type="text/javascript" src="{futil:getRelativePathToJavascriptDir($outputDirPath, $currentFilePath)}/domcollapse.js">{}</script>
 			</head>
 			<body>
 
@@ -66,12 +67,15 @@
 
 							<!-- Right column -->
 							<div class="col3">
-								<p></p>
-
 								<h3>Diagrammer:</h3>
 								<xsl:apply-templates select="$serviceOperation" mode="createDiagramList" />
 								<h3>Vedlegg:</h3>
 								<xsl:apply-templates select="$serviceOperation" mode="createAttachmentList" />
+								<h3>Endringslogg:</h3>
+								<xsl:apply-templates select="$serviceOperation/changelog"  >
+								<xsl:sort select="@version" order="descending"/>
+								<xsl:sort select="@date" order="descending"/>
+								</xsl:apply-templates>
 							</div>
 						</div>
 					</div>
@@ -522,7 +526,7 @@
 		</a>
 	</xsl:template>
 	
-		<!-- Creates an link to the Attachment files for the current service operation -->
+	<!-- Creates an link to the Attachment files for the current service operation -->
 	<xsl:template match="attachments" mode="createLink">
 		<xsl:variable name="attachmentLink"
 			select="futil:getLinkToAttachment($outputDirPath, $currentFilePath, @FilePath)" />
@@ -532,6 +536,16 @@
 			</xsl:attribute>
 			<xsl:value-of select="@Name" />
 		</a>
+	</xsl:template>
+	
+	<!-- Writes changelog -->
+	<xsl:template match="changelog">
+		<div class="trigger">
+			<a href="#">v.<xsl:value-of select="@version" /> - <xsl:value-of select="@editor" /> (<xsl:value-of select="@date" />)</a>
+		</div>
+		<div class="hide">
+			<xsl:value-of select="@description" disable-output-escaping="yes"/>
+		</div>
 	</xsl:template>
 
 </xsl:stylesheet>

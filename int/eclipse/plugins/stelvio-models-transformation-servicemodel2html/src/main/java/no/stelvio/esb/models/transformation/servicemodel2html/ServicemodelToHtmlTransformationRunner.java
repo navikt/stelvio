@@ -39,18 +39,22 @@ public class ServicemodelToHtmlTransformationRunner {
 		// 3. copy shared images directory to the output directory
 		logger.debug("3. Copy shared images directory to the output directory");
 		PublishFileUtils.copyImagesDirectory(outputDirectory);
+		
+		// 4. copy shared images directory to the output directory
+		logger.debug("4. Copy shared javascript directory to the output directory");
+		PublishFileUtils.copyJavascriptDirectory(outputDirectory);
 
-		// 4. publish frontpage to the root of the output directory
-		logger.debug("4. Publish frontpage to the root of the output directory.");
+		// 5. publish frontpage to the root of the output directory
+		logger.debug("5. Publish frontpage to the root of the output directory.");
 		WebPublishFrontpage.run(inputFile, outputDirectory);
 		
-		// 5. publish service operations to output directory
-		logger.debug("5. Publish all service operations to the output directory");
+		// 6. publish service operations to output directory
+		logger.debug("6. Publish all service operations to the output directory");
 		WebPublishOperations.run(inputFile, outputDirectory);
 
-		// 6. publish complex types to output directory
-		logger.debug("6. Publish all complex types to the output directory");
-		WebPublishComplexTypes.run(inputFile, outputDirectory);
+		// 7. publish complex types to output directory
+		//logger.debug("7. Publish all complex types to the output directory");
+		//WebPublishComplexTypes.run(inputFile, outputDirectory);
 		
 		logger.debug("**************** Finished servicemodel-to-html transformation ****************");
 	}

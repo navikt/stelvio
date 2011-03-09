@@ -171,7 +171,19 @@
 			</tr>
 		</table>
 		<h2>Arver fra objekter</h2>
-		<h2>Tilknytning til objekter</h2>
+		<table class="table-vertical-header table-metadata" id="service-interface">
+			<caption>
+				<xsl:value-of select="@name" />
+				: arver fra objekter
+			</caption>
+			<tr>
+				<th scope="row">Arver fra objekter</th>
+				<td>
+					<xsl:call-template name="createGeneralizationList" />
+				</td>
+			</tr>
+		</table>
+		<h2>Tilknytning til objekter</h2>		
 		<table class="table-vertical-header table-metadata" id="service-interface">
 			<caption>
 				<xsl:value-of select="@name" />
@@ -331,6 +343,23 @@
 						<!-- calls the complexType template for creating link -->
 						<xsl:apply-templates select="$docRoot//attributes[@UUID=$attrUUID]/.."
 							mode="createLink" />
+					</li>
+				</xsl:for-each>
+			</ul>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- Iterates list of generelizations UUIDs for complex type and calls 
+		complexType-template mode="createLink" -->
+	<xsl:template name="createGeneralizationList">
+		<xsl:if test="@generalizations">
+			<ul>
+				<xsl:variable name="docRoot" select="/" />
+				<xsl:for-each select="str:tokenize(@generalizations)">
+					<li>
+						<xsl:variable name="genUUID" select="." />
+						<!-- calls the complexType template for creating link -->
+						<xsl:apply-templates select="$docRoot//complexTypes[@UUID=$genUUID]" mode="createLink" />
 					</li>
 				</xsl:for-each>
 			</ul>
