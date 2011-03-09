@@ -6,7 +6,10 @@
    <feature url="features/no.stelvio.esb.models.service.uml.profile_1.0.0.jar" id="no.stelvio.esb.models.service.uml.profile" version="1.0.0">
       <category name="profiles"/>
    </feature>
-   <feature url="features/no.stelvio.esb.models.transformation.uml2html_1.0.0.jar" id="no.stelvio.esb.models.transformation.uml2html" version="1.0.0">
+   <feature url="features/no.stelvio.esb.models.transformation.uml2html_1.0.2.jar" id="no.stelvio.esb.models.transformation.uml2html" version="1.0.2">
+      <category name="transformation"/>
+   </feature>
+   <feature url="features/no.stelvio.esb.models.transformation.diagram2img_1.0.0.jar" id="no.stelvio.esb.models.transformation.diagram2img" version="1.0.0">
       <category name="transformation"/>
    </feature>
    <category-def name="transformation" label="Stelvio model transformations">
