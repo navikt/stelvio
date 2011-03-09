@@ -243,13 +243,22 @@ public interface ServiceMetamodelPackage extends EPackage {
 	int SERVICE_OPERATION__BEHAVIOUR_RULES = 10;
 
 	/**
+	 * The feature id for the '<em><b>Changelog</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_OPERATION__CHANGELOG = 11;
+
+	/**
 	 * The number of structural features of the '<em>Service Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_OPERATION_FEATURE_COUNT = 11;
+	int SERVICE_OPERATION_FEATURE_COUNT = 12;
 
 	/**
 	 * The meta object id for the '{@link no.stelvio.esb.models.service.metamodel.impl.FaultImpl <em>Fault</em>}' class.
@@ -589,13 +598,22 @@ public interface ServiceMetamodelPackage extends EPackage {
 	int COMPLEX_TYPE__ATTACHMENTS = 11;
 
 	/**
+	 * The feature id for the '<em><b>Generalizations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_TYPE__GENERALIZATIONS = 12;
+
+	/**
 	 * The number of structural features of the '<em>Complex Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPLEX_TYPE_FEATURE_COUNT = 12;
+	int COMPLEX_TYPE_FEATURE_COUNT = 13;
 
 	/**
 	 * The meta object id for the '{@link no.stelvio.esb.models.service.metamodel.impl.OperationMetadataImpl <em>Operation Metadata</em>}' class.
@@ -945,6 +963,61 @@ public interface ServiceMetamodelPackage extends EPackage {
 	int ATTACHMENT_FEATURE_COUNT = 4;
 
 	/**
+	 * The meta object id for the '{@link no.stelvio.esb.models.service.metamodel.impl.ChangelogImpl <em>Changelog</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.stelvio.esb.models.service.metamodel.impl.ChangelogImpl
+	 * @see no.stelvio.esb.models.service.metamodel.impl.ServiceMetamodelPackageImpl#getChangelog()
+	 * @generated
+	 */
+	int CHANGELOG = 11;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGELOG__VERSION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGELOG__DATE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Editor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGELOG__EDITOR = 2;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGELOG__DESCRIPTION = 3;
+
+	/**
+	 * The number of structural features of the '<em>Changelog</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGELOG_FEATURE_COUNT = 4;
+
+	/**
 	 * The meta object id for the '{@link no.stelvio.esb.models.service.metamodel.Scope <em>Scope</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -952,7 +1025,7 @@ public interface ServiceMetamodelPackage extends EPackage {
 	 * @see no.stelvio.esb.models.service.metamodel.impl.ServiceMetamodelPackageImpl#getScope()
 	 * @generated
 	 */
-	int SCOPE = 11;
+	int SCOPE = 12;
 
 
 	/**
@@ -1161,6 +1234,17 @@ public interface ServiceMetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getServiceOperation_BehaviourRules();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.stelvio.esb.models.service.metamodel.ServiceOperation#getChangelog <em>Changelog</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Changelog</em>'.
+	 * @see no.stelvio.esb.models.service.metamodel.ServiceOperation#getChangelog()
+	 * @see #getServiceOperation()
+	 * @generated
+	 */
+	EReference getServiceOperation_Changelog();
 
 	/**
 	 * Returns the meta object for class '{@link no.stelvio.esb.models.service.metamodel.Fault <em>Fault</em>}'.
@@ -1533,6 +1617,17 @@ public interface ServiceMetamodelPackage extends EPackage {
 	EReference getComplexType_Attachments();
 
 	/**
+	 * Returns the meta object for the reference list '{@link no.stelvio.esb.models.service.metamodel.ComplexType#getGeneralizations <em>Generalizations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Generalizations</em>'.
+	 * @see no.stelvio.esb.models.service.metamodel.ComplexType#getGeneralizations()
+	 * @see #getComplexType()
+	 * @generated
+	 */
+	EReference getComplexType_Generalizations();
+
+	/**
 	 * Returns the meta object for class '{@link no.stelvio.esb.models.service.metamodel.OperationMetadata <em>Operation Metadata</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1891,6 +1986,60 @@ public interface ServiceMetamodelPackage extends EPackage {
 	EAttribute getAttachment_UUID();
 
 	/**
+	 * Returns the meta object for class '{@link no.stelvio.esb.models.service.metamodel.Changelog <em>Changelog</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Changelog</em>'.
+	 * @see no.stelvio.esb.models.service.metamodel.Changelog
+	 * @generated
+	 */
+	EClass getChangelog();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.stelvio.esb.models.service.metamodel.Changelog#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see no.stelvio.esb.models.service.metamodel.Changelog#getVersion()
+	 * @see #getChangelog()
+	 * @generated
+	 */
+	EAttribute getChangelog_Version();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.stelvio.esb.models.service.metamodel.Changelog#getDate <em>Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date</em>'.
+	 * @see no.stelvio.esb.models.service.metamodel.Changelog#getDate()
+	 * @see #getChangelog()
+	 * @generated
+	 */
+	EAttribute getChangelog_Date();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.stelvio.esb.models.service.metamodel.Changelog#getEditor <em>Editor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Editor</em>'.
+	 * @see no.stelvio.esb.models.service.metamodel.Changelog#getEditor()
+	 * @see #getChangelog()
+	 * @generated
+	 */
+	EAttribute getChangelog_Editor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.stelvio.esb.models.service.metamodel.Changelog#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see no.stelvio.esb.models.service.metamodel.Changelog#getDescription()
+	 * @see #getChangelog()
+	 * @generated
+	 */
+	EAttribute getChangelog_Description();
+
+	/**
 	 * Returns the meta object for enum '{@link no.stelvio.esb.models.service.metamodel.Scope <em>Scope</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2077,6 +2226,14 @@ public interface ServiceMetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SERVICE_OPERATION__BEHAVIOUR_RULES = eINSTANCE.getServiceOperation_BehaviourRules();
+
+		/**
+		 * The meta object literal for the '<em><b>Changelog</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE_OPERATION__CHANGELOG = eINSTANCE.getServiceOperation_Changelog();
 
 		/**
 		 * The meta object literal for the '{@link no.stelvio.esb.models.service.metamodel.impl.FaultImpl <em>Fault</em>}' class.
@@ -2359,6 +2516,14 @@ public interface ServiceMetamodelPackage extends EPackage {
 		EReference COMPLEX_TYPE__ATTACHMENTS = eINSTANCE.getComplexType_Attachments();
 
 		/**
+		 * The meta object literal for the '<em><b>Generalizations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPLEX_TYPE__GENERALIZATIONS = eINSTANCE.getComplexType_Generalizations();
+
+		/**
 		 * The meta object literal for the '{@link no.stelvio.esb.models.service.metamodel.impl.OperationMetadataImpl <em>Operation Metadata</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2631,6 +2796,48 @@ public interface ServiceMetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ATTACHMENT__UUID = eINSTANCE.getAttachment_UUID();
+
+		/**
+		 * The meta object literal for the '{@link no.stelvio.esb.models.service.metamodel.impl.ChangelogImpl <em>Changelog</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.stelvio.esb.models.service.metamodel.impl.ChangelogImpl
+		 * @see no.stelvio.esb.models.service.metamodel.impl.ServiceMetamodelPackageImpl#getChangelog()
+		 * @generated
+		 */
+		EClass CHANGELOG = eINSTANCE.getChangelog();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANGELOG__VERSION = eINSTANCE.getChangelog_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANGELOG__DATE = eINSTANCE.getChangelog_Date();
+
+		/**
+		 * The meta object literal for the '<em><b>Editor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANGELOG__EDITOR = eINSTANCE.getChangelog_Editor();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANGELOG__DESCRIPTION = eINSTANCE.getChangelog_Description();
 
 		/**
 		 * The meta object literal for the '{@link no.stelvio.esb.models.service.metamodel.Scope <em>Scope</em>}' enum.

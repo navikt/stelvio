@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link no.stelvio.esb.models.service.metamodel.ServiceOperation#getFaults <em>Faults</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.ServiceOperation#getAttachments <em>Attachments</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.ServiceOperation#getBehaviourRules <em>Behaviour Rules</em>}</li>
+ *   <li>{@link no.stelvio.esb.models.service.metamodel.ServiceOperation#getChangelog <em>Changelog</em>}</li>
  * </ul>
  * </p>
  *
@@ -302,5 +303,21 @@ public interface ServiceOperation extends EObject {
 	 * @generated
 	 */
 	void setBehaviourRules(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Changelog</b></em>' containment reference list.
+	 * The list contents are of type {@link no.stelvio.esb.models.service.metamodel.Changelog}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Changelog</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Changelog</em>' containment reference list.
+	 * @see no.stelvio.esb.models.service.metamodel.ServiceMetamodelPackage#getServiceOperation_Changelog()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Changelog> getChangelog();
 
 } // ServiceOperation

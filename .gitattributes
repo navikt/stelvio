@@ -3225,6 +3225,7 @@ int/eclipse/plugins/stelvio-models-service-metamodel/plugin.xml -text
 int/eclipse/plugins/stelvio-models-service-metamodel/pom.xml -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Attachment.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Attribute.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Changelog.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ComplexType.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Diagram.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/Fault.java -text
@@ -3239,6 +3240,7 @@ int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/es
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/ServicePackage.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/AttachmentImpl.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/AttributeImpl.java -text
+int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ChangelogImpl.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/ComplexTypeImpl.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/DiagramImpl.java -text
 int/eclipse/plugins/stelvio-models-service-metamodel/src/main/java/no/stelvio/esb/models/service/metamodel/impl/FaultImpl.java -text

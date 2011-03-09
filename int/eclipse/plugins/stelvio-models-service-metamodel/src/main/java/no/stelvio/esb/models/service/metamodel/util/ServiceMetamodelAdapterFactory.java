@@ -116,6 +116,10 @@ public class ServiceMetamodelAdapterFactory extends AdapterFactoryImpl {
 				return createAttachmentAdapter();
 			}
 			@Override
+			public Adapter caseChangelog(Changelog object) {
+				return createChangelogAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -286,6 +290,20 @@ public class ServiceMetamodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAttachmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.stelvio.esb.models.service.metamodel.Changelog <em>Changelog</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.stelvio.esb.models.service.metamodel.Changelog
+	 * @generated
+	 */
+	public Adapter createChangelogAdapter() {
 		return null;
 	}
 

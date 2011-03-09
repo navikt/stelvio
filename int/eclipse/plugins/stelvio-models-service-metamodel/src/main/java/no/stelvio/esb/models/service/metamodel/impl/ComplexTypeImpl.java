@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -49,6 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.ComplexTypeImpl#getReferencedMessages <em>Referenced Messages</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.ComplexTypeImpl#getDiagrams <em>Diagrams</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.ComplexTypeImpl#getAttachments <em>Attachments</em>}</li>
+ *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.ComplexTypeImpl#getGeneralizations <em>Generalizations</em>}</li>
  * </ul>
  * </p>
  *
@@ -262,6 +264,16 @@ public class ComplexTypeImpl extends EObjectImpl implements ComplexType {
 	 * @ordered
 	 */
 	protected EList<Attachment> attachments;
+
+	/**
+	 * The cached value of the '{@link #getGeneralizations() <em>Generalizations</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGeneralizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ComplexType> generalizations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -544,6 +556,18 @@ public class ComplexTypeImpl extends EObjectImpl implements ComplexType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ComplexType> getGeneralizations() {
+		if (generalizations == null) {
+			generalizations = new EObjectResolvingEList<ComplexType>(ComplexType.class, this, ServiceMetamodelPackage.COMPLEX_TYPE__GENERALIZATIONS);
+		}
+		return generalizations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -612,6 +636,8 @@ public class ComplexTypeImpl extends EObjectImpl implements ComplexType {
 				return getDiagrams();
 			case ServiceMetamodelPackage.COMPLEX_TYPE__ATTACHMENTS:
 				return getAttachments();
+			case ServiceMetamodelPackage.COMPLEX_TYPE__GENERALIZATIONS:
+				return getGeneralizations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -666,6 +692,10 @@ public class ComplexTypeImpl extends EObjectImpl implements ComplexType {
 				getAttachments().clear();
 				getAttachments().addAll((Collection<? extends Attachment>)newValue);
 				return;
+			case ServiceMetamodelPackage.COMPLEX_TYPE__GENERALIZATIONS:
+				getGeneralizations().clear();
+				getGeneralizations().addAll((Collection<? extends ComplexType>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -714,6 +744,9 @@ public class ComplexTypeImpl extends EObjectImpl implements ComplexType {
 			case ServiceMetamodelPackage.COMPLEX_TYPE__ATTACHMENTS:
 				getAttachments().clear();
 				return;
+			case ServiceMetamodelPackage.COMPLEX_TYPE__GENERALIZATIONS:
+				getGeneralizations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -750,6 +783,8 @@ public class ComplexTypeImpl extends EObjectImpl implements ComplexType {
 				return diagrams != null && !diagrams.isEmpty();
 			case ServiceMetamodelPackage.COMPLEX_TYPE__ATTACHMENTS:
 				return attachments != null && !attachments.isEmpty();
+			case ServiceMetamodelPackage.COMPLEX_TYPE__GENERALIZATIONS:
+				return generalizations != null && !generalizations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link no.stelvio.esb.models.service.metamodel.ComplexType#getReferencedMessages <em>Referenced Messages</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.ComplexType#getDiagrams <em>Diagrams</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.ComplexType#getAttachments <em>Attachments</em>}</li>
+ *   <li>{@link no.stelvio.esb.models.service.metamodel.ComplexType#getGeneralizations <em>Generalizations</em>}</li>
  * </ul>
  * </p>
  *
@@ -360,5 +361,21 @@ public interface ComplexType extends EObject {
 	 * @generated
 	 */
 	EList<Attachment> getAttachments();
+
+	/**
+	 * Returns the value of the '<em><b>Generalizations</b></em>' reference list.
+	 * The list contents are of type {@link no.stelvio.esb.models.service.metamodel.ComplexType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Generalizations</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Generalizations</em>' reference list.
+	 * @see no.stelvio.esb.models.service.metamodel.ServiceMetamodelPackage#getComplexType_Generalizations()
+	 * @model keys="UUID"
+	 * @generated
+	 */
+	EList<ComplexType> getGeneralizations();
 
 } // ComplexType

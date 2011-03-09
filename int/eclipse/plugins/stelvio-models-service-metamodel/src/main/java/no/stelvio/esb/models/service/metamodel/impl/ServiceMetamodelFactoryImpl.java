@@ -72,6 +72,7 @@ public class ServiceMetamodelFactoryImpl extends EFactoryImpl implements Service
 			case ServiceMetamodelPackage.MESSAGE: return createMessage();
 			case ServiceMetamodelPackage.DIAGRAM: return createDiagram();
 			case ServiceMetamodelPackage.ATTACHMENT: return createAttachment();
+			case ServiceMetamodelPackage.CHANGELOG: return createChangelog();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -215,6 +216,16 @@ public class ServiceMetamodelFactoryImpl extends EFactoryImpl implements Service
 	public Attachment createAttachment() {
 		AttachmentImpl attachment = new AttachmentImpl();
 		return attachment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Changelog createChangelog() {
+		ChangelogImpl changelog = new ChangelogImpl();
+		return changelog;
 	}
 
 	/**

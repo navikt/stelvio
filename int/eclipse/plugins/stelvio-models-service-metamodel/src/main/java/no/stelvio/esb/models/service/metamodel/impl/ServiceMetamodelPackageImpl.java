@@ -8,6 +8,7 @@ package no.stelvio.esb.models.service.metamodel.impl;
 
 import no.stelvio.esb.models.service.metamodel.Attachment;
 import no.stelvio.esb.models.service.metamodel.Attribute;
+import no.stelvio.esb.models.service.metamodel.Changelog;
 import no.stelvio.esb.models.service.metamodel.ComplexType;
 import no.stelvio.esb.models.service.metamodel.Diagram;
 import no.stelvio.esb.models.service.metamodel.Fault;
@@ -112,6 +113,13 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 	 * @generated
 	 */
 	private EClass attachmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass changelogEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -350,6 +358,15 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 	 */
 	public EAttribute getServiceOperation_BehaviourRules() {
 		return (EAttribute)serviceOperationEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServiceOperation_Changelog() {
+		return (EReference)serviceOperationEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -663,6 +680,15 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getComplexType_Generalizations() {
+		return (EReference)complexTypeEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOperationMetadata() {
 		return operationMetadataEClass;
 	}
@@ -960,6 +986,51 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getChangelog() {
+		return changelogEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChangelog_Version() {
+		return (EAttribute)changelogEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChangelog_Date() {
+		return (EAttribute)changelogEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChangelog_Editor() {
+		return (EAttribute)changelogEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChangelog_Description() {
+		return (EAttribute)changelogEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getScope() {
 		return scopeEEnum;
 	}
@@ -1012,6 +1083,7 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 		createEReference(serviceOperationEClass, SERVICE_OPERATION__FAULTS);
 		createEReference(serviceOperationEClass, SERVICE_OPERATION__ATTACHMENTS);
 		createEAttribute(serviceOperationEClass, SERVICE_OPERATION__BEHAVIOUR_RULES);
+		createEReference(serviceOperationEClass, SERVICE_OPERATION__CHANGELOG);
 
 		faultEClass = createEClass(FAULT);
 		createEAttribute(faultEClass, FAULT__ID);
@@ -1050,6 +1122,7 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 		createEReference(complexTypeEClass, COMPLEX_TYPE__REFERENCED_MESSAGES);
 		createEReference(complexTypeEClass, COMPLEX_TYPE__DIAGRAMS);
 		createEReference(complexTypeEClass, COMPLEX_TYPE__ATTACHMENTS);
+		createEReference(complexTypeEClass, COMPLEX_TYPE__GENERALIZATIONS);
 
 		operationMetadataEClass = createEClass(OPERATION_METADATA);
 		createEAttribute(operationMetadataEClass, OPERATION_METADATA__ID);
@@ -1088,6 +1161,12 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 		createEAttribute(attachmentEClass, ATTACHMENT__TYPE);
 		createEAttribute(attachmentEClass, ATTACHMENT__FILE_PATH);
 		createEAttribute(attachmentEClass, ATTACHMENT__UUID);
+
+		changelogEClass = createEClass(CHANGELOG);
+		createEAttribute(changelogEClass, CHANGELOG__VERSION);
+		createEAttribute(changelogEClass, CHANGELOG__DATE);
+		createEAttribute(changelogEClass, CHANGELOG__EDITOR);
+		createEAttribute(changelogEClass, CHANGELOG__DESCRIPTION);
 
 		// Create enums
 		scopeEEnum = createEEnum(SCOPE);
@@ -1143,6 +1222,7 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 		initEReference(getServiceOperation_Faults(), this.getFault(), null, "faults", null, 0, -1, ServiceOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServiceOperation_Attachments(), this.getAttachment(), null, "attachments", null, 0, -1, ServiceOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceOperation_BehaviourRules(), ecorePackage.getEString(), "behaviourRules", null, 0, 1, ServiceOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceOperation_Changelog(), this.getChangelog(), null, "changelog", null, 0, -1, ServiceOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(faultEClass, Fault.class, "Fault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFault_Id(), ecorePackage.getEString(), "id", null, 0, 1, Fault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1187,6 +1267,8 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 		initEReference(getComplexType_Diagrams(), this.getDiagram(), this.getDiagram_ComplexTypes(), "diagrams", null, 0, -1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getComplexType_Diagrams().getEKeys().add(this.getDiagram_UUID());
 		initEReference(getComplexType_Attachments(), this.getAttachment(), null, "attachments", null, 0, -1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComplexType_Generalizations(), this.getComplexType(), null, "generalizations", null, 0, -1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getComplexType_Generalizations().getEKeys().add(this.getComplexType_UUID());
 
 		initEClass(operationMetadataEClass, OperationMetadata.class, "OperationMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOperationMetadata_Id(), ecorePackage.getEString(), "id", null, 0, 1, OperationMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1227,6 +1309,12 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 		initEAttribute(getAttachment_Type(), ecorePackage.getEString(), "Type", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttachment_FilePath(), ecorePackage.getEString(), "FilePath", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttachment_UUID(), ecorePackage.getEString(), "UUID", null, 0, 1, Attachment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(changelogEClass, Changelog.class, "Changelog", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getChangelog_Version(), ecorePackage.getEString(), "version", null, 0, 1, Changelog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChangelog_Date(), ecorePackage.getEString(), "date", null, 0, 1, Changelog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChangelog_Editor(), ecorePackage.getEString(), "editor", null, 0, 1, Changelog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChangelog_Description(), ecorePackage.getEString(), "description", null, 0, 1, Changelog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(scopeEEnum, Scope.class, "Scope");

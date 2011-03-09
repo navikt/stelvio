@@ -9,6 +9,7 @@ package no.stelvio.esb.models.service.metamodel.impl;
 import java.util.Collection;
 
 import no.stelvio.esb.models.service.metamodel.Attachment;
+import no.stelvio.esb.models.service.metamodel.Changelog;
 import no.stelvio.esb.models.service.metamodel.Fault;
 import no.stelvio.esb.models.service.metamodel.Message;
 import no.stelvio.esb.models.service.metamodel.OperationMetadata;
@@ -47,6 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.ServiceOperationImpl#getFaults <em>Faults</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.ServiceOperationImpl#getAttachments <em>Attachments</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.ServiceOperationImpl#getBehaviourRules <em>Behaviour Rules</em>}</li>
+ *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.ServiceOperationImpl#getChangelog <em>Changelog</em>}</li>
  * </ul>
  * </p>
  *
@@ -222,6 +224,16 @@ public class ServiceOperationImpl extends EObjectImpl implements ServiceOperatio
 	 * @ordered
 	 */
 	protected String behaviourRules = BEHAVIOUR_RULES_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getChangelog() <em>Changelog</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChangelog()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Changelog> changelog;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -526,6 +538,18 @@ public class ServiceOperationImpl extends EObjectImpl implements ServiceOperatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Changelog> getChangelog() {
+		if (changelog == null) {
+			changelog = new EObjectContainmentEList<Changelog>(Changelog.class, this, ServiceMetamodelPackage.SERVICE_OPERATION__CHANGELOG);
+		}
+		return changelog;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -539,6 +563,8 @@ public class ServiceOperationImpl extends EObjectImpl implements ServiceOperatio
 				return ((InternalEList<?>)getFaults()).basicRemove(otherEnd, msgs);
 			case ServiceMetamodelPackage.SERVICE_OPERATION__ATTACHMENTS:
 				return ((InternalEList<?>)getAttachments()).basicRemove(otherEnd, msgs);
+			case ServiceMetamodelPackage.SERVICE_OPERATION__CHANGELOG:
+				return ((InternalEList<?>)getChangelog()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -573,6 +599,8 @@ public class ServiceOperationImpl extends EObjectImpl implements ServiceOperatio
 				return getAttachments();
 			case ServiceMetamodelPackage.SERVICE_OPERATION__BEHAVIOUR_RULES:
 				return getBehaviourRules();
+			case ServiceMetamodelPackage.SERVICE_OPERATION__CHANGELOG:
+				return getChangelog();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -621,6 +649,10 @@ public class ServiceOperationImpl extends EObjectImpl implements ServiceOperatio
 			case ServiceMetamodelPackage.SERVICE_OPERATION__BEHAVIOUR_RULES:
 				setBehaviourRules((String)newValue);
 				return;
+			case ServiceMetamodelPackage.SERVICE_OPERATION__CHANGELOG:
+				getChangelog().clear();
+				getChangelog().addAll((Collection<? extends Changelog>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -666,6 +698,9 @@ public class ServiceOperationImpl extends EObjectImpl implements ServiceOperatio
 			case ServiceMetamodelPackage.SERVICE_OPERATION__BEHAVIOUR_RULES:
 				setBehaviourRules(BEHAVIOUR_RULES_EDEFAULT);
 				return;
+			case ServiceMetamodelPackage.SERVICE_OPERATION__CHANGELOG:
+				getChangelog().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -700,6 +735,8 @@ public class ServiceOperationImpl extends EObjectImpl implements ServiceOperatio
 				return attachments != null && !attachments.isEmpty();
 			case ServiceMetamodelPackage.SERVICE_OPERATION__BEHAVIOUR_RULES:
 				return BEHAVIOUR_RULES_EDEFAULT == null ? behaviourRules != null : !BEHAVIOUR_RULES_EDEFAULT.equals(behaviourRules);
+			case ServiceMetamodelPackage.SERVICE_OPERATION__CHANGELOG:
+				return changelog != null && !changelog.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

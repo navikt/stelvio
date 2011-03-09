@@ -125,6 +125,15 @@ public interface ServiceMetamodelFactory extends EFactory {
 	Attachment createAttachment();
 
 	/**
+	 * Returns a new object of class '<em>Changelog</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Changelog</em>'.
+	 * @generated
+	 */
+	Changelog createChangelog();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
