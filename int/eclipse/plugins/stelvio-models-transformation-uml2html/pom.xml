@@ -3,8 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>no.stelvio.int.models</groupId>
-	<artifactId>stelvio-models-transformation-uml2html
-	</artifactId>
+	<artifactId>stelvio-models-transformation-uml2html</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<build>
 		<resources>

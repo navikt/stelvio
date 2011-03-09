@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-import no.stelvio.esb.models.transformation.servicemodel2html.DiagramToImageFileTransformationRunner;
 import no.stelvio.esb.models.transformation.servicemodel2html.ServicemodelToHtmlTransformationRunner;
 import no.stelvio.esb.models.transformation.uml2servicemodel.headless.UmlToServicemodelTransformationRunner;
 
@@ -66,12 +65,8 @@ public class UmlToHtmlTransformationRunner implements IApplication
 		// 3. call the servicemodel-to-html transformation
 		logger.debug("3. Calling the servicemodel-to-html transformation runner");
 		ServicemodelToHtmlTransformationRunner servicemodelToHtmlRunner = new ServicemodelToHtmlTransformationRunner();
+		//File servicemodelTempFile = new File("C:/DOCUME~1/utvikler/LOKALE~1/Temp/serviceModel3092244307676463523.tmp");
 		servicemodelToHtmlRunner.run(servicemodelTempFile, outputDirForSite.toFile());
-		
-		// 4. call the servicemodel-to-html transformation
-		//logger.debug("4. Rendering UML diagrams to image files");
-		//DiagramToImageFileTransformationRunner diagramToImageFileRunner = new DiagramToImageFileTransformationRunner();
-		//diagramToImageFileRunner.run(inputModelFiles, outputDirForSite.toFile());
 		
 		logger.debug("**************** Finished uml-to-html transformation ****************");
 

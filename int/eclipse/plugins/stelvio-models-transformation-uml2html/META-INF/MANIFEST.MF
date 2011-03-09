@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Stelvio uml-to-html transformation
 Bundle-SymbolicName: no.stelvio.esb.models.transformation.uml2html;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Bundle-Activator: no.stelvio.esb.models.transformation.uml2html.Activator
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.6.0",
  no.stelvio.esb.models.transformation.servicemodel2html;bundle-version="1.0.0",
