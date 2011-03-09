@@ -96,12 +96,7 @@ abstract class AbstractCodesTable<T extends AbstractCodesTableItem<K, V>, K exte
 	 *             if the collection is null or empty.
 	 * @throws DuplicateItemsException
 	 *             if the collection has duplicate entries.
-	 */
-	
-	public static final String CACHE_MODEL_ID = "no.stelvio.common.codestable.items";
-	
-	@Cacheable(cacheName = CACHE_MODEL_ID) // ehcache-spring-annotations, new caching library
-	@org.springmodules.cache.annotations.Cacheable(modelId = CACHE_MODEL_ID) // spring-modules-cache, old caching library
+	 */	
 	@SuppressWarnings("unchecked")
 	protected void init(Collection<T> codesTableItems, Class<? extends AbstractCodesTableItem> codesTableItemsClass)
 			throws CodesTableEmptyException, DuplicateItemsException {
