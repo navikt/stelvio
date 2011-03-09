@@ -220,7 +220,7 @@ public class DefaultSpringBatchJobOperator implements SpringBatchJobOperator {
 	}
 
 	/**
-	 * Concatenates given parameters with (optional) parameters from T_BATCH.
+	 * Concatenates given parameters with (optional) parameters from another source.
 	 * 
 	 * @param jobName
 	 *            Name of batch to get additional parameters for
@@ -229,7 +229,7 @@ public class DefaultSpringBatchJobOperator implements SpringBatchJobOperator {
 	 * @return Concatenated parameter string.
 	 */
 	private String assembleParameters(String jobName, String parameters) {
-		String tBatchParameters = parameterReader.getBatchParameters(jobName);
+		String tBatchParameters = parameterReader == null ? null : parameterReader.getBatchParameters(jobName);
 		if (parameters == null) {
 			return tBatchParameters;
 		} else if (tBatchParameters == null) {

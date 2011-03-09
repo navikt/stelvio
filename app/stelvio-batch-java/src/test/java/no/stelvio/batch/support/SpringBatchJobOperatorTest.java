@@ -49,8 +49,6 @@ public class SpringBatchJobOperatorTest {
 		jobOperatorImpl.setJobOperator(springJobOperatorMock);
 		jobExplorerMock = mock(JobExplorer.class);
 		jobOperatorImpl.setJobExplorer(jobExplorerMock);
-		parameterReaderMock = mock(BatchParameterReader.class);
-		jobOperatorImpl.setParameterReader(parameterReaderMock);
 		jobRepositoryMock = mock(JobRepository.class);
 		jobOperatorImpl.setJobRepository(jobRepositoryMock);
 		jobParametersConverterMock = mock(JobParametersConverter.class);
@@ -93,6 +91,8 @@ public class SpringBatchJobOperatorTest {
 	
 	@Test
 	public void shouldAssembleParameters() throws Exception {
+		parameterReaderMock = mock(BatchParameterReader.class);
+		((DefaultSpringBatchJobOperator) jobOperator).setParameterReader(parameterReaderMock);
 		String tBatchParams = "batchParam3=param3,batchParam4=param4";
 		when(parameterReaderMock.getBatchParameters(jobName)).thenReturn(tBatchParams);
 		String assembledParameters = parameters + "," + tBatchParams;
