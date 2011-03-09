@@ -29,6 +29,7 @@ import com.ibm.xtools.transform.core.TransformException;
 import java.util.Collection;
 
 import no.stelvio.esb.models.service.metamodel.Attachment;
+import no.stelvio.esb.models.service.metamodel.Changelog;
 import no.stelvio.esb.models.service.metamodel.Fault;
 import no.stelvio.esb.models.service.metamodel.Message;
 import no.stelvio.esb.models.service.metamodel.OperationMetadata;
@@ -37,6 +38,7 @@ import no.stelvio.esb.models.service.metamodel.ServiceOperation;
 
 import no.stelvio.esb.models.transformation.uml2servicemodel.l10n.Uml2servicemodelMessages;
 
+import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.EndringsloggToChangelogTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.OperationToOperationMetadataTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.ParameterToFaultTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.ParameterToMessageTransform;
@@ -180,6 +182,16 @@ public class OperationToServiceOperationTransform extends MapTransform {
       + "_OwnedComment$BodyToBehaviourRules_Rule";//$NON-NLS-1$
 
   /**
+   * The 'OperationToServiceOperation Endringslogg To Changelog Using
+   * EndringsloggToChangelog Extractor' id <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
+   * @generated
+   */
+  public static final String OPERATIONTOSERVICEOPERATION_ENDRINGSLOGG_TO_CHANGELOG_USING_ENDRINGSLOGGTOCHANGELOG_EXTRACTOR = OPERATIONTOSERVICEOPERATION_TRANSFORM
+      + "_EndringsloggToChangelog_UsingEndringsloggToChangelog_Extractor";//$NON-NLS-1$
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -232,6 +244,7 @@ public class OperationToServiceOperationTransform extends MapTransform {
     add(getOwnedParameterToFaults_UsingParameterToFault_Extractor(registry));
     add(getOwnedCommentToAttachments_UsingUrlToAttachment_Extractor(registry));
     add(getOwnedComment$BodyToBehaviourRules_Rule());
+    add(getEndringsloggToChangelog_UsingEndringsloggToChangelog_Extractor(registry));
   }
 
 	/**
@@ -643,6 +656,25 @@ public class OperationToServiceOperationTransform extends MapTransform {
         new DirectFeatureAdapter(
             ServiceMetamodelPackage.Literals.SERVICE_OPERATION__BEHAVIOUR_RULES));
     return rule;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected AbstractContentExtractor getEndringsloggToChangelog_UsingEndringsloggToChangelog_Extractor(
+      Registry registry) {
+    SubmapExtractor extractor = new SubmapExtractor(
+        OPERATIONTOSERVICEOPERATION_ENDRINGSLOGG_TO_CHANGELOG_USING_ENDRINGSLOGGTOCHANGELOG_EXTRACTOR,
+        Uml2servicemodelMessages.OperationToServiceOperation_Transform_EndringsloggToChangelog_UsingEndringsloggToChangelog_Extractor,
+        registry.get(
+            EndringsloggToChangelogTransform.class,
+            new DirectFeatureAdapter(
+                ServiceMetamodelPackage.Literals.SERVICE_OPERATION__CHANGELOG)),
+        new StereotypeFeatureAdapter(
+            "NAV UML Profile::Tjeneste::endringslogg"));
+    return extractor;
   }
 
 }

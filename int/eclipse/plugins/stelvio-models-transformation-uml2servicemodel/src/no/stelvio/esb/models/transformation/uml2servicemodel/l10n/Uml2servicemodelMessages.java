@@ -280,6 +280,13 @@ public class Uml2servicemodelMessages extends NLS {
    * 
    * @generated
    */
+  public static String ComplexTypeToComplexType_Transform_Generalization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
 	public static String EnumerationToComplexType_Transform;
 
 	/**
@@ -582,6 +589,13 @@ public class Uml2servicemodelMessages extends NLS {
    * @generated
    */
   public static String OperationToServiceOperation_Transform_OwnedComment$BodyToBehaviourRules_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String OperationToServiceOperation_Transform_EndringsloggToChangelog_UsingEndringsloggToChangelog_Extractor;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -960,6 +974,48 @@ public class Uml2servicemodelMessages extends NLS {
    * @generated
    */
   public static String UrlToAttachment_Transform_ToUUID_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String EndringsloggToChangelog_Transform;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String EndringsloggToChangelog_Transform_Create_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String EndringsloggToChangelog_Transform_VersjonToVersion_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String EndringsloggToChangelog_Transform_DatoToDate_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String EndringsloggToChangelog_Transform_EndringToDescription_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String EndringsloggToChangelog_Transform_ProdusentToEditor_Rule;
 
   /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -154,6 +154,11 @@ for (org.eclipse.uml2.uml.Comment comment : comments) &#13;
 }</code>
             </custom>
         </mapping>
+        <mapping>
+            <input path="generalization[-1]/target" var="target_src"/>
+            <output path="generalizations" var="generalizations_tgt"/>
+            <submap ref="map:ComplexTypeToComplexType"/>
+        </mapping>
     </mappingDeclaration>
     <mappingDeclaration name="EnumerationToComplexType">
         <input path="$src/type('Class')" var="Class_src"/>
@@ -485,6 +490,11 @@ return isOutParameter &amp;&amp; isException;</code>
             <input path="ownedComment[-1]/body" var="body_src"/>
             <output path="behaviourRules" var="behaviourRules_tgt"/>
         </mapping>
+        <mapping>
+            <input path="endringslogg" var="endringslogg_src"/>
+            <output path="changelog" var="changelog_tgt"/>
+            <submap ref="map:EndringsloggToChangelog"/>
+        </mapping>
     </mappingDeclaration>
     <mappingDeclaration name="OperationToOperationMetadata">
         <input path="$src/type('Operation')stereotype[$src2/type('Tjeneste')]" var="Operation_src"/>
@@ -717,6 +727,26 @@ Diagram_tgt.setUUID(xmiURI);</code>
                 <code language="java">String xmiURI = Comment_src.eResource().getURIFragment(Comment_src);&#13;
 Attachment_tgt.setUUID(xmiURI);</code>
             </custom>
+        </mapping>
+    </mappingDeclaration>
+    <mappingDeclaration name="EndringsloggToChangelog">
+        <input path="$src2/type('Endringslogg')" var="Endringslogg_src"/>
+        <output path="type('Changelog')" var="Changelog_tgt"/>
+        <mapping>
+            <input path="versjon" var="versjon_src"/>
+            <output path="version" var="version_tgt"/>
+        </mapping>
+        <mapping>
+            <input path="dato" var="dato_src"/>
+            <output path="date" var="date_tgt"/>
+        </mapping>
+        <mapping>
+            <input path="endring" var="endring_src"/>
+            <output path="description" var="description_tgt"/>
+        </mapping>
+        <mapping>
+            <input path="produsent" var="produsent_src"/>
+            <output path="editor" var="editor_tgt"/>
         </mapping>
     </mappingDeclaration>
 </mappingRoot>

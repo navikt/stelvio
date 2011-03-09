@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Stelvio uml-to-servicemodel transformation
 Bundle-SymbolicName: no.stelvio.esb.models.transformation.uml2servicemodel; singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1
 Bundle-Activator: no.stelvio.esb.models.transformation.uml2servicemodel.Activator
 Bundle-Localization: plugin
 Require-Bundle: com.ibm.xtools.transform.authoring.uml2,

@@ -12,6 +12,7 @@ import no.stelvio.esb.models.service.metamodel.ComplexType;
 import no.stelvio.esb.models.service.metamodel.ServiceMetamodelPackage;
 import no.stelvio.esb.models.transformation.uml2servicemodel.l10n.Uml2servicemodelMessages;
 
+import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.ComplexTypeToComplexTypeTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.PropertyToAttributeTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.UrlToAttachmentTransform;
 import org.eclipse.emf.common.util.EList;
@@ -147,6 +148,16 @@ public class ComplexTypeToComplexTypeTransform extends MapTransform {
       + "_OwnedCommentToDescription_Rule";//$NON-NLS-1$
 
   /**
+   * The 'ComplexTypeToComplexType Generalization$Target To Generalizations
+   * Using ComplexTypeToComplexType Extractor' id <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
+   * @generated
+   */
+  public static final String COMPLEXTYPETOCOMPLEXTYPE_GENERALIZATION$TARGET_TO_GENERALIZATIONS_USING_COMPLEXTYPETOCOMPLEXTYPE_EXTRACTOR = COMPLEXTYPETOCOMPLEXTYPE_TRANSFORM
+      + "_Generalization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor";//$NON-NLS-1$
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -197,6 +208,7 @@ public class ComplexTypeToComplexTypeTransform extends MapTransform {
     add(getToIsFault_Rule());
     add(getOwnedCommentToAttachments_UsingUrlToAttachment_Extractor(registry));
     add(getOwnedCommentToDescription_Rule());
+    add(getGeneralization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor(registry));
   }
 
 	/**
@@ -577,6 +589,26 @@ public class ComplexTypeToComplexTypeTransform extends MapTransform {
                       : ComplexType_tgt.getName() });
       throw new TransformException(message, e, null);
     }
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected AbstractContentExtractor getGeneralization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor(
+      Registry registry) {
+    SubmapExtractor extractor = new SubmapExtractor(
+        COMPLEXTYPETOCOMPLEXTYPE_GENERALIZATION$TARGET_TO_GENERALIZATIONS_USING_COMPLEXTYPETOCOMPLEXTYPE_EXTRACTOR,
+        Uml2servicemodelMessages.ComplexTypeToComplexType_Transform_Generalization$TargetToGeneralizations_UsingComplexTypeToComplexType_Extractor,
+        registry.get(
+            ComplexTypeToComplexTypeTransform.class,
+            new DirectFeatureAdapter(
+                ServiceMetamodelPackage.Literals.COMPLEX_TYPE__GENERALIZATIONS)),
+        new DirectFeatureAdapter(
+            UMLPackage.Literals.CLASSIFIER__GENERALIZATION,
+            "target"));
+    return extractor;
   }
 
 }

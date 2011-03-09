@@ -3303,6 +3303,7 @@ int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvi
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/l10n/Uml2servicemodelMessages.properties -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/ComplexTypeToComplexTypeTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/DiagramToDiagramTransform.java -text
+int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/EndringsloggToChangelogTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/EnumerationToComplexTypeTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/FaultMetaDataToFaultTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/InterfaceToServiceInterfaceTransform.java -text

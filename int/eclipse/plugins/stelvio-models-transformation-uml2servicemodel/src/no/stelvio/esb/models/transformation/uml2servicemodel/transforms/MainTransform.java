@@ -8,6 +8,7 @@ package no.stelvio.esb.models.transformation.uml2servicemodel.transforms;
 import no.stelvio.esb.models.transformation.uml2servicemodel.l10n.Uml2servicemodelMessages;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.ComplexTypeToComplexTypeTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.DiagramToDiagramTransform;
+import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.EndringsloggToChangelogTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.EnumerationToComplexTypeTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.FaultMetaDataToFaultTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.InterfaceToServiceInterfaceTransform;
@@ -62,6 +63,7 @@ public class MainTransform extends
     add(ParameterToFaultTransform.class);
     add(DiagramToDiagramTransform.class);
     add(UrlToAttachmentTransform.class);
+    add(EndringsloggToChangelogTransform.class);
   }
 
 }
