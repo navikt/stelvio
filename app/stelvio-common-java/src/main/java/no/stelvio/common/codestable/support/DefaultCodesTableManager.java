@@ -11,6 +11,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import com.googlecode.ehcache.annotations.Cacheable;
+
 /**
  * Implementation of CodesTableManager used for accessing and caching persistent codes tables.
  * 
@@ -26,6 +28,8 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 
 	/** The <code>ApplicationContext</code> this manager is run in. */
 	private ApplicationContext applicationContext;
+	
+	public static final String CACHE_MODEL_ID = "no.stelvio.common.codestable.items";
 
 	/** {@inheritDoc} */
 	public <T extends AbstractCodesTableItem<K, V>, K extends Enum, V> CodesTable<T, K, V> getCodesTable(
@@ -47,6 +51,8 @@ public class DefaultCodesTableManager implements CodesTableManager, ApplicationC
 	}
 
 	/** {@inheritDoc} */
+	@Cacheable(cacheName = CACHE_MODEL_ID) // ehcache-spring-annotations, new caching library
+	@org.springmodules.cache.annotations.Cacheable(modelId = CACHE_MODEL_ID) // spring-modules-cache, old caching library
 	public <T extends AbstractCodesTablePeriodicItem<K, V>, K extends Enum, V> CodesTablePeriodic<T, K, V> getCodesTablePeriodic(
 			Class<T> codesTablePeriodicItemClass) {
 		validate(codesTablePeriodicItemClass, AbstractCodesTablePeriodicItem.class);
