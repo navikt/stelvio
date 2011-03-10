@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -112,7 +113,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
 		
 		// Workaround start
-		if (operationType.isWrapperType(inputDataObject.getType())) {
+		if (operationType.isWrapperType(inputDataObject.getType()) && !isObjectPrimitive(inputDataObject.get(0))) {
 			inputDataObject = (DataObject)inputDataObject.get(0);
 		}
 		DataObject requestContext = removeRequestContext(inputDataObject);
@@ -245,7 +246,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		} else {
 			DataObject inputDataObject = getDataObject(operationType.getInputType(), input);
 			try {
-				inputDataObject = (DataObject)inputDataObject.get(0);
+				Object object = inputDataObject.get(0);
 			} catch (NullPointerException npe) {
 				throw new UnsupportedOperationException(
 					"Document literal non-wrapped operations with null as input are currently not supported by the stubbing framework.");
@@ -371,15 +372,13 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			Type type = dataObject.getType();
 			
 			// Workaround start
-			if (operationType.isWrapperType(type)) {
+			if (operationType.isWrapperType(type) && !isObjectPrimitive(dataObject.get(0))) {
 				DataObject child = (DataObject)dataObject.get(0);
 				DataObject requestContext = removeRequestContext(child);
 				getBOXMLSerializer().writeDataObject(child, type.getURI(), type.getName(), outputStream);
-				//System.out.println("WrapperType");
 				setRequestContext(child, requestContext);
 			} else {
 				getBOXMLSerializer().writeDataObject(dataObject, type.getURI(), type.getName(), outputStream);
-				//System.out.println("Not WrapperType");
 			}
 			// Workaround slutt
 		} catch (IOException e) {
@@ -528,6 +527,26 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 				dataObject.setDataObject(prop.getName(), requestContext);
 				return true;
 			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Sjekker om input er av primitiv type.
+	 * 
+	 * @param child
+	 * @return
+	 */
+	private boolean isObjectPrimitive(Object object) {
+		if (object instanceof Boolean ||
+			object instanceof Date || 
+			object instanceof Double || 
+			object instanceof Float || 
+			object instanceof Short || 
+			object instanceof Integer || 
+			object instanceof String || 
+			object instanceof Byte) {
+			return true;
 		}
 		return false;
 	}
