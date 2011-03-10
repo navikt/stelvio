@@ -1911,6 +1911,7 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 incubator/maven-deploy-ci-pom/pom.xml -text
 incubator/maven-deploy-pom-61/pom.xml -text
 incubator/maven-deploy-pom-70/pom.xml -text
+incubator/maven-deploy-pom-70/wps_datapower_deploy.py -text
 incubator/maven-rdependency-plugin/.classpath -text
 incubator/maven-rdependency-plugin/.project -text
 incubator/maven-rdependency-plugin/pom.xml -text
