@@ -137,6 +137,25 @@
 				<artifactId>maven-build-plugin</artifactId>
 				<version>${buildVersion}</version>
 				<executions>
+					<!-- Step 2: update views -->
+					<execution>
+						<id>updateViews</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>updateViews</goal>
+						</goals>
+						<configuration>
+							<stream_to_update>dev</stream_to_update>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>no.stelvio.maven.plugins</groupId>
+				<artifactId>maven-build-plugin</artifactId>
+				<version>${buildVersion}</version>
+				<executions>
 					<!-- Step 11: check out poms in Dev stream -->
 					<execution>
 						<id>Prepare poms in Dev stream: checkout</id>
