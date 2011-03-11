@@ -215,10 +215,10 @@
 				<executions>
 					<!-- Step 14: Add WARN_UNRESERVED trigger -->
 					<execution>
-						<id>Add WARN_UNRESERVED trigger</id>
+						<id>Add triggers</id>
 						<phase>install</phase>
 						<goals>
-							<goal>editWarnUnreserved</goal>
+							<goal>editTriggers</goal>
 						</goals>
 						<configuration>
 							<action>add</action>

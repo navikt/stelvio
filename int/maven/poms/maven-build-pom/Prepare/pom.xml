@@ -58,10 +58,10 @@
 				<executions>
 					<!-- Step 1: Remove WARN_UNRESERVED trigger -->
 					<execution>
-						<id>Remove WARN_UNRESERVED trigger</id>
+						<id>Remove triggers</id>
 						<phase>validate</phase>
 						<goals>
-							<goal>editWarnUnreserved</goal>
+							<goal>editTriggers</goal>
 						</goals>
 						<configuration>
 							<action>remove</action>
