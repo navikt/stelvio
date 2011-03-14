@@ -11,10 +11,19 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-wpsdeploy-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.6-SNAPSHOT</version>
+	<version>1.0.7-SNAPSHOT</version>
 	<name>POM for deployments</name>
 
+	<properties>
+		<hei>${project.build.directory}/TMP</hei>
+	</properties>
+	
 	<build>
+	<filters>
+		<filter>${serviceusers}</filter>
+		<filter>${envcreds}</filter>
+		<filter>${bogus-test}</filter>
+	</filters>
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
@@ -25,6 +34,28 @@
 				<artifactId>
 					maven-propertiesgenerator-plugin
 				</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<id>testing</id>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<!-- Specifies where the property files end up after interpolation -->
+							<outputDirectory>${project.build.directory}/bus-config</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${hei}</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 
@@ -80,22 +111,20 @@
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>
-						maven-propertiesgenerator-plugin
-					</artifactId>
-					<version>1.6</version>
+					<artifactId>maven-propertiesgenerator-plugin</artifactId>
+					<version>1.7-SNAPSHOT</version>
 					<configuration>
 						<templateDir>
-							${basedir}/target/bus-config/templates
+							${hei}/templates
 						</templateDir>
 						<environmentName>
 							${environment}
 						</environmentName>
 						<outputDir>
-							${basedir}/target/bus-config/app_props
+							${hei}/app_props
 						</outputDir>
 						<environmentDir>
-							${basedir}/target/bus-config/environments
+							${hei}/environments
 						</environmentDir>
 					</configuration>
 				</plugin>
