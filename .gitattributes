@@ -69,6 +69,7 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/count/support/EventReportF
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/count/support/JamonBatchCounter.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/count/support/ProgressNotifier.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/count/support/SimpleBatchCounter.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/count/support/SimpleEventCounter.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/count/support/TableFormatter.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/.copyarea.db -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/BatchDO.java -text

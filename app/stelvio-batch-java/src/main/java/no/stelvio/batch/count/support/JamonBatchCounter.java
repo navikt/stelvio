@@ -1,9 +1,9 @@
 package no.stelvio.batch.count.support;
 
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
+import com.jamonapi.MonKey;
+import com.jamonapi.MonKeyImp;
 import com.jamonapi.Monitor;
 import com.jamonapi.MonitorFactory;
 
@@ -18,7 +18,6 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	private String jamonPrefix;
 	private boolean isJamonEnabled = false;
 	private static final String UNITS = "ms.";
-	private ConcurrentMap<String, Monitor> monitors = new ConcurrentHashMap<String, Monitor>();
 
 	/**
 	 * Creates a counter and registers events.
@@ -43,8 +42,9 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void start(CounterEvent event) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.start(getMonitorLabel(event));
-			monitors.put(getMonitorLabel(event), monitor);
+			synchronized (event) {
+				MonitorFactory.start(getMonKey(event));
+			}
 		}
 		super.start(event);
 	}
@@ -52,18 +52,23 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void stop(CounterEvent event) {
 		if (isJamonEnabled) {
-			Monitor monitor = monitors.get(getMonitorLabel(event));
-			monitor.stop();
+			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			synchronized (event) {
+				monitor.stop();
+			}
 		}
 		super.stop(event);
 	}
 
+
 	@Override
 	public void stop(CounterEvent event, int count) {
 		if (isJamonEnabled) {
-			Monitor monitor = monitors.get(getMonitorLabel(event));
-			monitor.setHits(monitor.getHits() + count);
-			monitor.stop();
+			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			synchronized (event) {
+				monitor.stop();
+				monitor.setHits(monitor.getHits() + count - 1); //monitor.stop() adds 1
+			}
 		}
 		super.stop(event, count);
 	}
@@ -71,8 +76,10 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void incrementEvent(CounterEvent event) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getMonitor(getMonitorLabel(event), UNITS);
-			monitor.setHits(monitor.getHits() + 1);
+			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			synchronized (event) {
+				monitor.setHits(monitor.getHits() + 1);
+			}
 		}
 		super.incrementEvent(event);
 	}
@@ -80,8 +87,10 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void incrementEvent(CounterEvent event, long ms) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getMonitor(getMonitorLabel(event), UNITS);
-			monitor.add(ms);
+			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			synchronized (event) {
+				monitor.add(ms);
+			}
 		}
 		super.incrementEvent(event, ms);
 	}
@@ -89,8 +98,10 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void addEvents(CounterEvent event, long count) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getMonitor(getMonitorLabel(event), UNITS);
-			monitor.setHits(monitor.getHits() + count);
+			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			synchronized (event) {
+				monitor.setHits(monitor.getHits() + count);
+			}
 		}
 		super.addEvents(event, count);
 	}
@@ -98,13 +109,24 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void addEvents(CounterEvent event, long count, long ms) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getMonitor(getMonitorLabel(event), UNITS);
-			monitor.add(ms);
-			monitor.setHits(monitor.getHits() + count - 1);
+			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			synchronized (event) {
+				monitor.add(ms);
+				monitor.setHits(monitor.getHits() + count - 1); //monitor.add adds 1
+			}
 		}
 		super.addEvents(event, count, ms);
 	}
-
+	
+	
+	public Monitor getMonitor(CounterEvent event) {
+		return MonitorFactory.getTimeMonitor(getMonKey(event));
+	}
+	
+	private MonKey getMonKey(CounterEvent event) {
+		return new MonKeyImp(getMonitorLabel(event), UNITS);
+	}
+	
 	private String getMonitorLabel(CounterEvent event) {
 		return jamonPrefix + "-" + event.getName();
 	}

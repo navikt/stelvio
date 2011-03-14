@@ -94,14 +94,14 @@ public class SimpleBatchCounter implements BatchCounter {
 	/** {@inheritDoc} */
 	public void addEvents(CounterEvent event, long count) {
 		SimpleEventCounter counter = getEventOrPutIfAbsent(event);
-		counter.count += count;
+		counter.addCount(count);
 	}
 
 	/** {@inheritDoc} */
 	public void addEvents(CounterEvent event, long count, long ms) {
 		SimpleEventCounter counter = getEventOrPutIfAbsent(event);
-		counter.count += count;
-		counter.time += ms;
+		counter.addCount(count);
+		counter.addTime(ms);
 	}
 
 	public Map<CounterEvent, ? extends EventCounter> getEventReport() {
@@ -111,86 +111,37 @@ public class SimpleBatchCounter implements BatchCounter {
 	/** {@inheritDoc} */
 	public void incrementEvent(CounterEvent event) {
 		SimpleEventCounter counter = getEventOrPutIfAbsent(event);
-		counter.count++;
+		counter.addCount(1);
 	}
 
 	/** {@inheritDoc} */
 	public void incrementEvent(CounterEvent event, long ms) {
 		SimpleEventCounter counter = getEventOrPutIfAbsent(event);
-		counter.count++;
-		counter.time += ms;
+		counter.addCount(1);
+		counter.addTime(ms);
 	}
 
 	/** {@inheritDoc} */
 	public void start(CounterEvent event) {
 		SimpleEventCounter e = getEventOrPutIfAbsent(event);
-		e.startTime = System.currentTimeMillis();
+		e.setStartTime(System.currentTimeMillis());
 	}
 
 	/** {@inheritDoc} */
 	public void stop(CounterEvent event) {
 		SimpleEventCounter e = addTime(event);
-		e.count++;
+		e.addCount(1);
 	}
 
 	/** {@inheritDoc} */
 	public void stop(CounterEvent event, int count) {
 		SimpleEventCounter e = addTime(event);
-		e.count += count;
+		e.addCount(count);
 	}
 
 	private SimpleEventCounter addTime(CounterEvent event) {
 		SimpleEventCounter e = getEventOrPutIfAbsent(event);
-		e.time += System.currentTimeMillis() - e.startTime;
+		e.addTime(System.currentTimeMillis() - e.getStartTime());
 		return e;
 	}
-
-	/**
-	 * @author person47c121e3ccb5, BEKK
-	 * 
-	 */
-	static class SimpleEventCounter implements EventCounter {
-		private long count;
-		private long time;
-		private long startTime;
-
-		/**
-		 * Creates a new counter
-		 * 
-		 * @param count
-		 *            initial count value
-		 * @param time
-		 *            initial time value
-		 */
-		public SimpleEventCounter(long count, long time) {
-			this.count = count;
-			this.time = time;
-		}
-
-		/** {@inheritDoc} */
-		public long getCount() {
-			return count;
-		}
-
-		/** {@inheritDoc} */
-		public long getTime() {
-			return time;
-		}
-
-		/** {@inheritDoc} */
-		public long getAvg() {
-			if (count == 0) {
-				return 0;
-			}
-			return time / count;
-		}
-
-		/** {@inheritDoc} */
-		@Override
-		public String toString() {
-			return "count=" + count + ", time=" + time + ", avg=" + getAvg();
-		}
-
-	}
-
 }
