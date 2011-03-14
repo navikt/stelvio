@@ -13,7 +13,7 @@
 		<bundleAreaDir>/opt/BUNDLE</bundleAreaDir>
 		<stagingAreaDir>${devArchBaseDir}/STAGING</stagingAreaDir>
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
-		<passwordVault>~/vault</passwordVault>
+		<passwordVault>/home/${USER}/vault</passwordVault>
 		<!-- /hudson -->
 		
 		<wasdeployVersion>1.6</wasdeployVersion>
