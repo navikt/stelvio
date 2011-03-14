@@ -78,7 +78,7 @@ public class BatchCounterTest {
 	@Test
 	public void shouldStartAndStop() throws InterruptedException {
 		counter.start(funcEvent);
-		Thread.sleep(100);
+		Thread.sleep(1);
 		counter.stop(funcEvent);
 		Map<CounterEvent, ? extends EventCounter> events = counter.getEventReport();
 		assertEquals(1, events.get(funcEvent).getCount());
@@ -90,7 +90,7 @@ public class BatchCounterTest {
 		long time = 123456;
 		counter.incrementEvent(funcEvent, time);
 		counter.start(funcEvent);
-		Thread.sleep(100);
+		Thread.sleep(1);
 		counter.stop(funcEvent);
 		Map<CounterEvent, ? extends EventCounter> events = counter.getEventReport();
 		assertEquals(2, events.get(funcEvent).getCount());
@@ -100,7 +100,7 @@ public class BatchCounterTest {
 	@Test
 	public void shouldStartAndStopAndAddToCount() throws InterruptedException {
 		counter.start(funcEvent);
-		Thread.sleep(100);
+		Thread.sleep(1);
 		counter.stop(funcEvent, 11);
 		Map<CounterEvent, ? extends EventCounter> events = counter.getEventReport();
 		assertEquals(11, events.get(funcEvent).getCount());

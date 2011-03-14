@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import no.stelvio.batch.count.support.CounterEvent.EventType;
-import no.stelvio.batch.count.support.SimpleBatchCounter.SimpleEventCounter;
 
 import org.junit.Test;
 

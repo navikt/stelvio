@@ -6,8 +6,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 
 import no.stelvio.batch.count.support.CounterEvent.EventType;
 
@@ -22,18 +20,15 @@ import com.jamonapi.MonitorFactory;
  */
 public class JamonBatchCounterTest {
 	private BatchCounter counter;
+	private JamonBatchCounter jamonCounter;
 	private CounterEvent funcEvent = CounterEvent.createCounterEvent(getClass(),
 			"testFunc", "test functional event", EventType.FUNCTIONAL);
 	private CounterEvent techEvent = CounterEvent.createCounterEvent(getClass(),
 			"testTech", "test technincal event", EventType.TECHNICAL);
 	
-	private final int noOfThreads = 10;
-	private CountDownLatch startSignal = new CountDownLatch(1);
-	private CountDownLatch doneSignal = new CountDownLatch(noOfThreads);
-	
 	@Before
 	public void setUp() {
-		JamonBatchCounter jamonCounter = new JamonBatchCounter(new HashSet<CounterEvent>(Arrays.asList(funcEvent, techEvent)));
+		jamonCounter = new JamonBatchCounter(new HashSet<CounterEvent>(Arrays.asList(funcEvent, techEvent)));
 		jamonCounter.setJamonEnabled(true);
 		jamonCounter.setJamonPrefix("TEST");
 		MonitorFactory.reset();
@@ -106,81 +101,8 @@ public class JamonBatchCounterTest {
 		assertEquals(3, events.get(funcEvent).getCount());
 		assertEquals(1, events.get(techEvent).getCount());
 		String report = MonitorFactory.getReport();
-		assertTrue(report.contains("<tr><td>TEST-testFunc, ms.</td><td>3.0</td>"));
-		assertTrue(report.contains("<tr><td>TEST-testTech, ms.</td><td>1.0</td>"));
-	}
-	
-	@Test
-	public void shouldHandleConcurrentIncrements() throws Exception {
-		for (int i = 0; i < noOfThreads; i++) {
-			new Thread(new EventIncrementer(startSignal, doneSignal)).start();
-		}
-		startSignal.countDown();
-		doneSignal.await();
-		
-		assertCounters(noOfThreads);
-	}
-	
-	@Test
-	public void shouldHandleConcurrentStartAndStop() throws Exception {
-		for (int i = 0; i < noOfThreads; i++) {
-			new Thread(new EventStarterStopper(startSignal, doneSignal)).start();
-		}
-		startSignal.countDown();
-		doneSignal.await();
-		
-		assertCounters(noOfThreads);
-	}
-
-	private void assertCounters(final int noOfThreads) {
-		Map<CounterEvent, ? extends EventCounter> events = counter.getEventReport();
-		assertEquals(noOfThreads, events.get(funcEvent).getCount());
-		String report = MonitorFactory.getReport();
-		assertTrue(report, report.contains("<tr><td>TEST-testFunc, ms.</td><td>" + noOfThreads + ".0</td>"));
-	}
-	
-	private abstract class AbstractEventExecutor implements Runnable {
-		protected final CountDownLatch startSignal;
-		protected final CountDownLatch doneSignal;
-		
-		public AbstractEventExecutor(CountDownLatch startSignal, CountDownLatch doneSignal) {
-			this.startSignal = startSignal;
-			this.doneSignal = doneSignal;
-		}
-	}
-	
-	private class EventIncrementer extends AbstractEventExecutor {
-
-		public EventIncrementer(CountDownLatch startSignal, CountDownLatch doneSignal) {
-			super(startSignal, doneSignal);
-		}
-
-		public void run() {
-			try {
-				startSignal.await();
-				counter.incrementEvent(funcEvent);
-				doneSignal.countDown();
-			} catch (InterruptedException e) {
-			}
-		}
-	}
-	
-	private class EventStarterStopper extends AbstractEventExecutor {
-
-		public EventStarterStopper(CountDownLatch startSignal, CountDownLatch doneSignal) {
-			super(startSignal, doneSignal);
-		}
-
-		public void run() {
-			try {
-				startSignal.await();
-				counter.start(funcEvent);
-				Thread.sleep(new Random(this.hashCode()).nextInt(200));
-				counter.stop(funcEvent);
-				doneSignal.countDown();
-			} catch (InterruptedException e) {
-			}
-		}
+		assertTrue(report, report.contains("<tr><td>TEST-testFunc, ms.</td><td>3.0</td>"));
+		assertTrue(report, report.contains("<tr><td>TEST-testTech, ms.</td><td>1.0</td>"));
 	}
 	
 }
