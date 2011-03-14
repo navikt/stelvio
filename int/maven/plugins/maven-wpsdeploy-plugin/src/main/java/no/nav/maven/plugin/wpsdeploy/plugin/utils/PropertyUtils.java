@@ -7,6 +7,12 @@ import java.util.Properties;
 
 import org.apache.maven.project.MavenProject;
 
+/**
+ * Utility class for handling properties during the execution
+ * 
+ * @author test@example.com
+ */
+
 public class PropertyUtils {
 	
 	private MavenProject project;
@@ -35,11 +41,12 @@ public class PropertyUtils {
 	}
 	
 	public void exposeProperty(String key, String value, boolean password){
+		
+		project.getProperties().put(key, value);
+		
 		if (password)
 			System.out.println("[INFO] Exposed property [" + key + ",*****]");
 		else
 			System.out.println("[INFO] Exposed property [" + key + "," + value + "]");
-		
-		project.getProperties().put(key, value);
 	}
 }

@@ -7,8 +7,6 @@ import org.codehaus.plexus.util.cli.Commandline;
 /**
  * Goal that contacts the deployment manager to start MECluster,SupportCluster and WPSCluster.
  * 
- * @author test@example.com
- * 
  * @goal start-clusters
  * @requiresDependencyResolution
  */

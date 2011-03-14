@@ -8,8 +8,6 @@ import org.codehaus.plexus.util.cli.Commandline;
  * Goal that contacts the deployment manager to stop MECluster,SupportCluster
  * and WPSCluster.
  * 
- * @author test@example.com
- * 
  * @goal stop-clusters
  * @requiresDependencyResolution
  */
