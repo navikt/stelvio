@@ -75,7 +75,7 @@
 						</goals>
 						<configuration>
 							<files>
-								<file>${passwordVault}/${envClass}/${env}-env.properties</file>
+								<file>${passwordVault}/${envClass}/${environment}-env.properties</file>
 								<file>${passwordVault}/${envClass}/application.properties</file>
 							</files>
 						</configuration>
