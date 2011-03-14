@@ -111,7 +111,12 @@ public class PropertiesGeneratorMojo extends AbstractMojo {
 	}
 
 	public void execute() throws MojoExecutionException {
-		System.out.println("envir= " + environmentName);
+		
+		System.out.println("DEBUG - environment=" + environmentName);
+		System.out.println("DEBUG - templatedir="+ getTemplateDir());
+		System.out.println("DEBUG - outputdir="+ getOutputDir());
+		System.out.println("DEBUG - environmentdir="+ getEnvironmentDir());
+		
 		if (environmentName == null) {
 			getLog().warn("\tEnvironmentName er ikke satt. Dette er ok saa lenge du ikke deployer ressurser");
 			return;
