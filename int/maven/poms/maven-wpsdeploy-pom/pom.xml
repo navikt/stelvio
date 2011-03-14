@@ -10,20 +10,24 @@
 
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-wpsdeploy-pom</artifactId>
-	<packaging>pom</packaging>
+	<packaging>deployable-artifact</packaging>
 	<version>1.0.7-SNAPSHOT</version>
 	<name>POM for deployments</name>
 
 	<properties>
-		<hei>${project.build.directory}/TMP</hei>
+		<passwordVault>/home/${USER}/vault/</passwordVault>
+		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
 	
+	<dependencies>
+		<dependency>
+			<groupId>no.nav.maven.support</groupId>
+			<artifactId>busconfiguration</artifactId>
+			<version>${bus-configuration-version}</version>
+		</dependency>
+	</dependencies>
+	
 	<build>
-	<filters>
-		<filter>${serviceusers}</filter>
-		<filter>${envcreds}</filter>
-		<filter>${bogus-test}</filter>
-	</filters>
 		<plugins>
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
@@ -49,10 +53,31 @@
 							<outputDirectory>${project.build.directory}/bus-config</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${hei}</directory>
+									<directory>${tmpExtractDir}</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			 <plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-properties-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<!-- Load properties from file -->
+					<execution>
+						<id>load-property-files</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>load-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>${passwordVault}/${envClass}/${env}-env.properties</file>
+								<file>${passwordVault}/${envClass}/application.properties</file>
+							</files>
 						</configuration>
 					</execution>
 				</executions>
@@ -112,19 +137,19 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-propertiesgenerator-plugin</artifactId>
-					<version>1.7-SNAPSHOT</version>
+					<version>1.6</version>
 					<configuration>
 						<templateDir>
-							${hei}/templates
+							${tmpExtractDir}/templates
 						</templateDir>
 						<environmentName>
 							${environment}
 						</environmentName>
 						<outputDir>
-							${hei}/app_props
+							${tmpExtractDir}/app_props
 						</outputDir>
 						<environmentDir>
-							${hei}/environments
+							${tmpExtractDir}/environments
 						</environmentDir>
 					</configuration>
 				</plugin>
