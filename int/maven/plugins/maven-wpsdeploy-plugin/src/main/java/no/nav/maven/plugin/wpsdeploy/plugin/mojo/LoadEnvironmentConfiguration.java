@@ -30,7 +30,10 @@ public class LoadEnvironmentConfiguration extends WebsphereUpdaterMojo {
 
 	// Get the properties from the environment file
 	protected void exposeEnvironmentProperties() throws FileNotFoundException, IOException {
-		PropertyUtils pf = new PropertyUtils(environmentFile, project);
+		
+		String tmpEnvironmentFile = baseDirectory + tmpBusConfigurationExtractDirectory + "/environments/" + environment + ".properties";
+		
+		PropertyUtils pf = new PropertyUtils(tmpEnvironmentFile, project);
 
 		pf.exposeProperty("envClass", pf.getProperty("envClass"), false);
 		pf.exposeProperty("dmgrUsername", pf.getProperty("dmgrUsername"), false);
