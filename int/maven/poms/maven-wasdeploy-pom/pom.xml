@@ -10,10 +10,10 @@
 		<!-- hudson -->
 		<devArchBaseDir>${project.build.directory}</devArchBaseDir>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
-		<bundleAreaDir>C:/BUNDLE</bundleAreaDir>
+		<bundleAreaDir>/opt/BUNDLE</bundleAreaDir>
 		<stagingAreaDir>${devArchBaseDir}/STAGING</stagingAreaDir>
 		<wsadminLocation>/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/</wsadminLocation>
-		<passwordVault>C:/Users/h129009/vault</passwordVault>
+		<passwordVault>~/vault</passwordVault>
 		<!-- /hudson -->
 		
 		<wasdeployVersion>1.6</wasdeployVersion>

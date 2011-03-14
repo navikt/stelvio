@@ -50,7 +50,7 @@ def main(ENVS):
 		
 		if BOUNCE == "true":
 			APPS = getApps()
-			BOUNCE_STRING = "cd ../maven-bounce-pom/ && mvn clean install -Dapps=" + APPS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
+			BOUNCE_STRING = "cd ../maven-bounce-pom/ && mvn clean install -Dapps=" + APPS + " -DenvClass=" + ENV_CLASS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
 			retval = subprocess.call(BOUNCE_STRING, shell=True) 		
 			if retval != 0:
 				BOUNCE_FAIL = "true"	
@@ -202,6 +202,7 @@ CHECKLIST_INTERN_BACKUP = CHECKLIST_INTERN[:]
 CONFIG_VERSION = sys.argv[4]
 BOUNCE = sys.argv[5]
 EXCLUDE_BUS = sys.argv[6]
+ENV_CLASS = sys.argv[7]
 	
 TOTAL_APP_COUNT = (getCount(CHECKLIST_SENSITIV) + getCount(CHECKLIST_INTERN)) * ENVS_LENGTH   
 INSTALLED_COUNT = 1
