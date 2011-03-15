@@ -494,7 +494,11 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		if (!operationType.isWrappedStyle()) {
 			return outputType == null;
 		}
-		return (outputType.getProperties().size() == 0);
+		if (outputType != null) {
+			return (outputType.getProperties().size() == 0);
+		} else {
+			return true;
+		}
 	}
 	
 	private boolean isDefaultRequest(DataObject requestDataObject) {
