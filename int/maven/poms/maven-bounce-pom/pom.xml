@@ -86,7 +86,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wasdeploy-plugin</artifactId>
-				<version>${wasdeployVersion}</version>
+				<version>1.7-SNAPSHOT</version>
 				<executions>
 					<!-- Step 4: Download and unpack application artifacts -->
 					<!-- Step 1: Load properties from environment file -->
