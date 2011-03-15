@@ -24,7 +24,8 @@
 		<environmentFilesDir>${outputDir}/${daConfigDirectory}/environments</environmentFilesDir>
 		<miscFilesDir>${outputDir}/${daConfigDirectory}/misc</miscFilesDir>
 		<restartConfigFile>${miscFilesDir}/config/applicationConfig.xml</restartConfigFile>
-		<passwordVault>/home/${USER}/vault</passwordVault>
+		<passwordVault>/home/${USER}/vault</passwordVault>	
+		<environmentFile>${environmentFilesDir}/${env}.xml</environmentFile>
 	</properties>
 
 	<dependencies>
