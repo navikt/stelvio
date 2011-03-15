@@ -16,6 +16,7 @@ WPS = sys.argv[6]
 JOARK = sys.argv[7]
 ONLY_APP_TARGET = sys.argv[8]
 ENV_CLASS = sys.argv[9]
+ZONE = sys.argv[10]
 
 if (len(ENVS) == 0):
         print "[ERROR] No environment(s) specified."
@@ -34,6 +35,7 @@ for ENV in ENVS:
     BOUNCE_STRING += " -Dwps=" + WPS + " -DincludeJoark=" + JOARK 
     BOUNCE_STRING += " -DonlyAppTarget=" + ONLY_APP_TARGET
 	BOUNCE_STRING += " -DenvClass=" + ENV_CLASS 
+	BOUNCE_STRING += " -Dzone=" + ZONE
     print BOUNCE_STRING
     retval = subprocess.call(BOUNCE_STRING, shell=True)
     if (retval != 0):
