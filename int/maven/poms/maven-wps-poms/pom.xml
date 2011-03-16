@@ -16,7 +16,7 @@
 	<modules>
 		<module>maven-wps-library-pom</module> 
 		<module>maven-wps-module-pom</module>
-		<module>maven-wps-pom</module>
+		<!-- <module>maven-wps-pom</module> -->
 		<!-- <module>maven-wps-tests-pom</module> -->
 	</modules>
 	
