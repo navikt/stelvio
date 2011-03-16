@@ -15,8 +15,13 @@ WAS_IS = sys.argv[5]
 WPS = sys.argv[6]
 JOARK = sys.argv[7]
 ONLY_APP_TARGET = sys.argv[8]
-ENV_CLASS = sys.argv[9]
-ZONE = sys.argv[10]
+
+if(len(sys.argv) > 10)
+	ENV_CLASS = sys.argv[9]
+	ZONE = sys.argv[10]
+else
+	ENV_CLASS = "T"
+	ZONE = "sensitiv"
 
 if (len(ENVS) == 0):
         print "[ERROR] No environment(s) specified."
