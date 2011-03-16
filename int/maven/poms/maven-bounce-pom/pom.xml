@@ -26,6 +26,7 @@
 		<restartConfigFile>${miscFilesDir}/config/applicationConfig.xml</restartConfigFile>
 		<passwordVault>/home/${USER}/vault</passwordVault>	
 		<environmentFile>${environmentFilesDir}/${env}.xml</environmentFile>
+		<environmentXSD>${environmentFilesDir}/environment.xsd</environmentXSD>
 	</properties>
 
 	<dependencies>
@@ -81,6 +82,25 @@
 								<file>${passwordVault}/${envClass}/${env}-env.properties</file>
 								<file>${passwordVault}/${envClass}/application.properties</file>
 							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-xmlvalidator-plugin</artifactId>
+				<version>${xmlvalidatorVersion}</version>
+				<executions>
+					<!-- Step 2: Validate environment file against defined XSD -->
+					<execution>
+						<id>validate-xml</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>validate-xml</goal>
+						</goals>
+						<configuration>
+							<xsdFile>${environmentXSD}</xsdFile>
+							<xmlFile>${environmentFile}</xmlFile>
 						</configuration>
 					</execution>
 				</executions>
