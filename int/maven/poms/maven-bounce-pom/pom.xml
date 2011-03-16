@@ -27,6 +27,8 @@
 		<passwordVault>/home/${USER}/vault</passwordVault>	
 		<environmentFile>${environmentFilesDir}/${env}.xml</environmentFile>
 		<environmentXSD>${environmentFilesDir}/environment.xsd</environmentXSD>
+		<zone>sensitiv</zone>
+		<envClass>T</envClass>
 	</properties>
 
 	<dependencies>
