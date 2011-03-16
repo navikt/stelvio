@@ -16,7 +16,7 @@
 		<passwordVault>/home/${USER}/vault</passwordVault>
 		<!-- /hudson -->
 		
-		<wasdeployVersion>1.6</wasdeployVersion>
+		<wasdeployVersion>1.7</wasdeployVersion>
 		<xmlvalidatorVersion>1.0</xmlvalidatorVersion>
 		<bundleArea>${bundleAreaDir}/${env}</bundleArea>
 		<stagingArea>${stagingAreaDir}/${env}/${app}</stagingArea>
