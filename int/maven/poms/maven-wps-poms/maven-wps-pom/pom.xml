@@ -55,6 +55,7 @@
 					<include>**/*.scaj2ee</include>
 					<include>**/*.subflow</include>
 					<include>**/*.subflowex</include>
+					<include>**/*.cal</include>
 				</includes>
 			</resource>
 		</resources>
