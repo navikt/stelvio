@@ -16,10 +16,10 @@ WPS = sys.argv[6]
 JOARK = sys.argv[7]
 ONLY_APP_TARGET = sys.argv[8]
 
-if(len(sys.argv) > 10)
+if(len(sys.argv) > 10):
 	ENV_CLASS = sys.argv[9]
 	ZONE = sys.argv[10]
-else
+else:
 	ENV_CLASS = "T"
 	ZONE = "sensitiv"
 
