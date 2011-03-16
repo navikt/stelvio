@@ -89,7 +89,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-xmlvalidator-plugin</artifactId>
-				<version>${xmlvalidatorVersion}</version>
+				<version>1.0</version>
 				<executions>
 					<!-- Step 2: Validate environment file against defined XSD -->
 					<execution>
