@@ -107,7 +107,8 @@
 					</execution>
 				</executions>
 			</plugin>
-			<artifactId>maven-resources-plugin</artifactId>
+			<plugi>
+				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
 				<!-- STEP X TODO -->
 					<execution>
