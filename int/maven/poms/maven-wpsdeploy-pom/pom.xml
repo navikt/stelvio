@@ -15,7 +15,7 @@
 	<name>POM for deployments</name>
 
 	<properties>
-		<wpsdeployVersion>1.9</wpsdeployVersion>
+		<wpsdeployVersion>1.10</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
@@ -45,7 +45,7 @@
 				<executions>
 					<execution>
 						<phase>generate-resources</phase>
-						<id>testing</id>
+						<id>interpolate-passwords</id>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
