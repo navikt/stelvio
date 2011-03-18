@@ -11,6 +11,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.ibm.ws.ast.st.runtime.runtimeTarget.v70.bi/wps.v70"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/WebSphere Process Server v7.0 JRE"/>
-	<classpathentry kind="var" path="M2_REPO/com/ibm/wps/process-choreographer-client/7.0.0.2/process-choreographer-client-7.0.0.2.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/ibm/wps/process-choreographer-client/7.0.0.3/process-choreographer-client-7.0.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

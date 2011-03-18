@@ -15,6 +15,7 @@ import com.ibm.bpe.api.PIID;
 import com.ibm.bpe.api.ProcessInstanceData;
 import com.ibm.bpe.api.QueryResultSet;
 import com.ibm.bpe.api.UnexpectedFailureException;
+import com.ibm.bpe.api.ArchiveUnsupportedOperationException;
 
 public class BusinessFlowManagerServiceAdapter {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -111,7 +112,8 @@ public class BusinessFlowManagerServiceAdapter {
 	}
 
 	private void forceTerminate(PIID piid) throws EngineNotAuthorizedException, EngineWrongKindException,
-			IdWrongFormatException, ObjectDoesNotExistException, UnexpectedFailureException, RemoteException {
+			IdWrongFormatException, ObjectDoesNotExistException, UnexpectedFailureException, RemoteException,
+			ArchiveUnsupportedOperationException {
 		try {
 			if (logger.isDebugEnabled()) {
 				logger.debug("Attempting to force terminate process instance with id=<{}>", piid);
