@@ -53,8 +53,8 @@ public class ServicemodelToHtmlTransformationRunner {
 		WebPublishOperations.run(inputFile, outputDirectory);
 
 		// 7. publish complex types to output directory
-		//logger.debug("7. Publish all complex types to the output directory");
-		//WebPublishComplexTypes.run(inputFile, outputDirectory);
+		logger.debug("7. Publish all complex types to the output directory");
+		WebPublishComplexTypes.run(inputFile, outputDirectory);
 		
 		logger.debug("**************** Finished servicemodel-to-html transformation ****************");
 	}
