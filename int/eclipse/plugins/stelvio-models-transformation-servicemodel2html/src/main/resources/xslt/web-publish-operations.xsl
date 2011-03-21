@@ -296,6 +296,7 @@
 					<th>Er liste?</th>
 					<th>Er påkrevd?</th>
 					<th>Beskrivelse</th>
+					<th>Mapping</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -342,6 +343,9 @@
 						<td>
 							<xsl:value-of select="@description"  disable-output-escaping="yes"/>
 						</td>
+						<td>
+							<xsl:value-of select="@mappingToAttributeName" disable-output-escaping="yes"/>
+						</td>
 					</tr>
 				</xsl:for-each>
 			</tbody>
@@ -371,6 +375,7 @@
 							<th>Er liste?</th>
 							<th>Er påkrevd?</th>
 							<th>Beskrivelse</th>
+							<th>Mapping</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -416,6 +421,9 @@
 								</td>
 								<td>
 									<xsl:value-of select="@description"  disable-output-escaping="yes"/>
+								</td>
+								<td>
+									<xsl:value-of select="@mappingToAttributeName" disable-output-escaping="yes"/>
 								</td>
 							</tr>
 						</xsl:for-each>

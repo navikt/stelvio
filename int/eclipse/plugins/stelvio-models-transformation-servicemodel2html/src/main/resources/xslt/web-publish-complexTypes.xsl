@@ -230,6 +230,7 @@
 					<th>Er liste?</th>
 					<th>Er påkrevd??</th>
 					<th>Beskrivelse</th>
+					<th>Mapping</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -277,8 +278,11 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</td>
-			<td>
+			<td class="center">
 				<xsl:value-of select="@description" disable-output-escaping="yes"/>
+			</td>
+			<td>
+				<xsl:value-of select="@mappingToAttributeName" disable-output-escaping="yes"/>
 			</td>
 		</tr>
 	</xsl:template>

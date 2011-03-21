@@ -173,7 +173,7 @@ img {
 	position:relative;
 	padding:0 0 1em 0;	/* no left and right padding on columns, we just make them narrower instead 
 					only padding top and bottom is included here, make it whatever value you need */
-	overflow:hidden;
+	overflow: auto;
 }
 /* 3 Column settings */
 .threecol {
@@ -316,7 +316,7 @@ td a
 	-webkit-border-top-left-radius:10px; /* Safari and Chrome */
 }
 
-.table-input thead :nth-child(5)
+.table-input thead :nth-child(6)
 {
 	border-top-right-radius: 10px;
 	-moz-border-radius:0px 10px 0px 0px; /* Firefox */
@@ -331,7 +331,7 @@ td a
 	-webkit-border-top-left-radius:10px; /* Safari and Chrome */
 }
 
-.table-output thead :nth-child(5)
+.table-output thead :nth-child(6)
 {
 	border-top-right-radius: 10px;
 	-moz-border-radius:0px 10px 0px 0px; /* Firefox */
