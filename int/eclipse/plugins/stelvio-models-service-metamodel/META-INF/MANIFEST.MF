@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Stelvio ecore service metamodel
 Bundle-SymbolicName: no.stelvio.esb.models.service.metamodel;singleton:=true
-Bundle-Version: 1.0.1
+Bundle-Version: 1.0.4
 Bundle-ClassPath: .
 Bundle-Vendor: Ismar Slomic
 Bundle-Localization: plugin

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Stelvio servicemodel-to-html transformation
 Bundle-SymbolicName: no.stelvio.esb.models.transformation.servicemodel2html;singleton:=true
-Bundle-Version: 1.0.3
+Bundle-Version: 1.0.4
 Require-Bundle: no.stelvio.esb.models.service.metamodel;bundle-version="1.0.0",
  org.eclipse.core.runtime;bundle-version="3.6.0",
  org.apache.log4j;bundle-version="1.2.15",
