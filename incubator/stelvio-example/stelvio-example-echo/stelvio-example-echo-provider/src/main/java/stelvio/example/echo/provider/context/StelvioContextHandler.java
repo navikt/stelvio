@@ -51,9 +51,6 @@ public class StelvioContextHandler implements SOAPHandler<SOAPMessageContext> {
 
 	@Override
 	public void close(MessageContext context) {
-		// final String methodName = "handleResponse";
-		// RemoveContext was originally called here. Not longer implemented
-		// LOGGER.logp(Level.WARNING, CLASSNAME, methodName, "Unimplemented: No action is taken upon close");
 	}
 
 	@Override
