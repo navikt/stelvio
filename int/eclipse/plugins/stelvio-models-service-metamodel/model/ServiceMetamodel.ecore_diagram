@@ -166,6 +166,10 @@
         <element xmi:type="ecore:EAttribute" href="ServiceMetamodel.ecore#//Attribute/UUID"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_Y9unkRNhEeCEmqmoRJwqPA"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_S_YJMVFvEeCzr7wDbWrNPg" type="3001">
+        <element xmi:type="ecore:EAttribute" href="ServiceMetamodel.ecore#//Attribute/mappingToAttributeName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_S_YJMlFvEeCzr7wDbWrNPg"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_d30B1A1UEeCzDMF0GQ6x_g"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_d30B1Q1UEeCzDMF0GQ6x_g"/>
     </children>

@@ -75,6 +75,8 @@
         unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="UUID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappingToAttributeName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" unsettable="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComplexType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"

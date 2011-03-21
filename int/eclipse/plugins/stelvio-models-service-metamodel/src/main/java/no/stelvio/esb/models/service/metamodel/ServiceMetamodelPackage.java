@@ -471,13 +471,22 @@ public interface ServiceMetamodelPackage extends EPackage {
 	int ATTRIBUTE__UUID = 6;
 
 	/**
+	 * The feature id for the '<em><b>Mapping To Attribute Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME = 7;
+
+	/**
 	 * The number of structural features of the '<em>Attribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_FEATURE_COUNT = 7;
+	int ATTRIBUTE_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link no.stelvio.esb.models.service.metamodel.impl.ComplexTypeImpl <em>Complex Type</em>}' class.
@@ -1475,6 +1484,17 @@ public interface ServiceMetamodelPackage extends EPackage {
 	EAttribute getAttribute_UUID();
 
 	/**
+	 * Returns the meta object for the attribute '{@link no.stelvio.esb.models.service.metamodel.Attribute#getMappingToAttributeName <em>Mapping To Attribute Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mapping To Attribute Name</em>'.
+	 * @see no.stelvio.esb.models.service.metamodel.Attribute#getMappingToAttributeName()
+	 * @see #getAttribute()
+	 * @generated
+	 */
+	EAttribute getAttribute_MappingToAttributeName();
+
+	/**
 	 * Returns the meta object for class '{@link no.stelvio.esb.models.service.metamodel.ComplexType <em>Complex Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2408,6 +2428,14 @@ public interface ServiceMetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ATTRIBUTE__UUID = eINSTANCE.getAttribute_UUID();
+
+		/**
+		 * The meta object literal for the '<em><b>Mapping To Attribute Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME = eINSTANCE.getAttribute_MappingToAttributeName();
 
 		/**
 		 * The meta object literal for the '{@link no.stelvio.esb.models.service.metamodel.impl.ComplexTypeImpl <em>Complex Type</em>}' class.

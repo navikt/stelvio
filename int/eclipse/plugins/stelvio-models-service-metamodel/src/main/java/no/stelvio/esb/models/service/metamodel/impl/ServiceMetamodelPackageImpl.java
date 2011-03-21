@@ -563,6 +563,15 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAttribute_MappingToAttributeName() {
+		return (EAttribute)attributeEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getComplexType() {
 		return complexTypeEClass;
 	}
@@ -1108,6 +1117,7 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 		createEAttribute(attributeEClass, ATTRIBUTE__DESCRIPTION);
 		createEAttribute(attributeEClass, ATTRIBUTE__IS_REQUIRED);
 		createEAttribute(attributeEClass, ATTRIBUTE__UUID);
+		createEAttribute(attributeEClass, ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME);
 
 		complexTypeEClass = createEClass(COMPLEX_TYPE);
 		createEReference(complexTypeEClass, COMPLEX_TYPE__ATTRIBUTES);
@@ -1250,6 +1260,7 @@ public class ServiceMetamodelPackageImpl extends EPackageImpl implements Service
 		initEAttribute(getAttribute_Description(), ecorePackage.getEString(), "description", "\"no description\"", 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttribute_IsRequired(), ecorePackage.getEBoolean(), "isRequired", "false", 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAttribute_UUID(), ecorePackage.getEString(), "UUID", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribute_MappingToAttributeName(), ecorePackage.getEString(), "mappingToAttributeName", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(complexTypeEClass, ComplexType.class, "ComplexType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComplexType_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

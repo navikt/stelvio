@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link no.stelvio.esb.models.service.metamodel.Attribute#getDescription <em>Description</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.Attribute#isIsRequired <em>Is Required</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.Attribute#getUUID <em>UUID</em>}</li>
+ *   <li>{@link no.stelvio.esb.models.service.metamodel.Attribute#getMappingToAttributeName <em>Mapping To Attribute Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -354,5 +355,58 @@ public interface Attribute extends EObject {
 	 * @generated
 	 */
 	void setUUID(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Mapping To Attribute Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mapping To Attribute Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mapping To Attribute Name</em>' attribute.
+	 * @see #isSetMappingToAttributeName()
+	 * @see #unsetMappingToAttributeName()
+	 * @see #setMappingToAttributeName(String)
+	 * @see no.stelvio.esb.models.service.metamodel.ServiceMetamodelPackage#getAttribute_MappingToAttributeName()
+	 * @model unsettable="true"
+	 * @generated
+	 */
+	String getMappingToAttributeName();
+
+	/**
+	 * Sets the value of the '{@link no.stelvio.esb.models.service.metamodel.Attribute#getMappingToAttributeName <em>Mapping To Attribute Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mapping To Attribute Name</em>' attribute.
+	 * @see #isSetMappingToAttributeName()
+	 * @see #unsetMappingToAttributeName()
+	 * @see #getMappingToAttributeName()
+	 * @generated
+	 */
+	void setMappingToAttributeName(String value);
+
+	/**
+	 * Unsets the value of the '{@link no.stelvio.esb.models.service.metamodel.Attribute#getMappingToAttributeName <em>Mapping To Attribute Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetMappingToAttributeName()
+	 * @see #getMappingToAttributeName()
+	 * @see #setMappingToAttributeName(String)
+	 * @generated
+	 */
+	void unsetMappingToAttributeName();
+
+	/**
+	 * Returns whether the value of the '{@link no.stelvio.esb.models.service.metamodel.Attribute#getMappingToAttributeName <em>Mapping To Attribute Name</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Mapping To Attribute Name</em>' attribute is set.
+	 * @see #unsetMappingToAttributeName()
+	 * @see #getMappingToAttributeName()
+	 * @see #setMappingToAttributeName(String)
+	 * @generated
+	 */
+	boolean isSetMappingToAttributeName();
 
 } // Attribute

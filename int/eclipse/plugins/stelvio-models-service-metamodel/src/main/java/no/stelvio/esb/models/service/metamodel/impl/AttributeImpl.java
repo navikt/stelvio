@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.AttributeImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.AttributeImpl#isIsRequired <em>Is Required</em>}</li>
  *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.AttributeImpl#getUUID <em>UUID</em>}</li>
+ *   <li>{@link no.stelvio.esb.models.service.metamodel.impl.AttributeImpl#getMappingToAttributeName <em>Mapping To Attribute Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -213,6 +214,35 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * @ordered
 	 */
 	protected String uuid = UUID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMappingToAttributeName() <em>Mapping To Attribute Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMappingToAttributeName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MAPPING_TO_ATTRIBUTE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMappingToAttributeName() <em>Mapping To Attribute Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMappingToAttributeName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String mappingToAttributeName = MAPPING_TO_ATTRIBUTE_NAME_EDEFAULT;
+
+	/**
+	 * This is true if the Mapping To Attribute Name attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean mappingToAttributeNameESet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -549,6 +579,52 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getMappingToAttributeName() {
+		return mappingToAttributeName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMappingToAttributeName(String newMappingToAttributeName) {
+		String oldMappingToAttributeName = mappingToAttributeName;
+		mappingToAttributeName = newMappingToAttributeName;
+		boolean oldMappingToAttributeNameESet = mappingToAttributeNameESet;
+		mappingToAttributeNameESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServiceMetamodelPackage.ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME, oldMappingToAttributeName, mappingToAttributeName, !oldMappingToAttributeNameESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetMappingToAttributeName() {
+		String oldMappingToAttributeName = mappingToAttributeName;
+		boolean oldMappingToAttributeNameESet = mappingToAttributeNameESet;
+		mappingToAttributeName = MAPPING_TO_ATTRIBUTE_NAME_EDEFAULT;
+		mappingToAttributeNameESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ServiceMetamodelPackage.ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME, oldMappingToAttributeName, MAPPING_TO_ATTRIBUTE_NAME_EDEFAULT, oldMappingToAttributeNameESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMappingToAttributeName() {
+		return mappingToAttributeNameESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -597,6 +673,8 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 				return isIsRequired();
 			case ServiceMetamodelPackage.ATTRIBUTE__UUID:
 				return getUUID();
+			case ServiceMetamodelPackage.ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME:
+				return getMappingToAttributeName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -629,6 +707,9 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 				return;
 			case ServiceMetamodelPackage.ATTRIBUTE__UUID:
 				setUUID((String)newValue);
+				return;
+			case ServiceMetamodelPackage.ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME:
+				setMappingToAttributeName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -663,6 +744,9 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 			case ServiceMetamodelPackage.ATTRIBUTE__UUID:
 				setUUID(UUID_EDEFAULT);
 				return;
+			case ServiceMetamodelPackage.ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME:
+				unsetMappingToAttributeName();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -689,6 +773,8 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 				return isSetIsRequired();
 			case ServiceMetamodelPackage.ATTRIBUTE__UUID:
 				return UUID_EDEFAULT == null ? uuid != null : !UUID_EDEFAULT.equals(uuid);
+			case ServiceMetamodelPackage.ATTRIBUTE__MAPPING_TO_ATTRIBUTE_NAME:
+				return isSetMappingToAttributeName();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -715,6 +801,8 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		if (isRequiredESet) result.append(isRequired); else result.append("<unset>");
 		result.append(", UUID: ");
 		result.append(uuid);
+		result.append(", mappingToAttributeName: ");
+		if (mappingToAttributeNameESet) result.append(mappingToAttributeName); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}
