@@ -7,6 +7,7 @@ package no.stelvio.esb.models.transformation.uml2servicemodel.transforms;
 import com.ibm.icu.text.MessageFormat;
 
 import com.ibm.xtools.transform.authoring.CreateRule;
+import com.ibm.xtools.transform.authoring.CustomDirectFeatureAdapter;
 import com.ibm.xtools.transform.authoring.CustomRule;
 import com.ibm.xtools.transform.authoring.DirectFeatureAdapter;
 import com.ibm.xtools.transform.authoring.FeatureAdapter;
@@ -17,6 +18,8 @@ import com.ibm.xtools.transform.authoring.Registry;
 import com.ibm.xtools.transform.authoring.RuleExtension;
 import com.ibm.xtools.transform.authoring.SubmapExtractor;
 
+import com.ibm.xtools.transform.authoring.uml2.StereotypeCondition;
+import com.ibm.xtools.transform.authoring.uml2.StereotypeFeatureAdapter;
 import com.ibm.xtools.transform.core.AbstractContentExtractor;
 import com.ibm.xtools.transform.core.AbstractRule;
 import com.ibm.xtools.transform.core.TransformException;
@@ -30,8 +33,10 @@ import no.stelvio.esb.models.transformation.uml2servicemodel.l10n.Uml2servicemod
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.ComplexTypeToComplexTypeTransform;
 import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.EnumerationToComplexTypeTransform;
 
+import no.stelvio.esb.models.transformation.uml2servicemodel.transforms.PropertyMappingToAttributeTransform;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.query.conditions.Condition;
 
 import org.eclipse.uml2.uml.Property;
@@ -134,6 +139,16 @@ public class PropertyToAttributeTransform extends MapTransform {
       + "_TypeToTypeRef_UsingEnumerationToComplexType_Extractor";//$NON-NLS-1$
 
   /**
+   * The 'PropertyToAttribute Property To Attribute Using
+   * PropertyMappingToAttribute Extractor' id <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
+   * @generated
+   */
+  public static final String PROPERTYTOATTRIBUTE_PROPERTY_TO_ATTRIBUTE_USING_PROPERTYMAPPINGTOATTRIBUTE_EXTRACTOR = PROPERTYTOATTRIBUTE_TRANSFORM
+      + "_PropertyToAttribute_UsingPropertyMappingToAttribute_Extractor";//$NON-NLS-1$
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -183,6 +198,7 @@ public class PropertyToAttributeTransform extends MapTransform {
     add(getLowerValueToIsRequired_Rule());
     add(getToUUID_Rule());
     add(getTypeToTypeRef_UsingEnumerationToComplexType_Extractor(registry));
+    add(getPropertyToAttribute_UsingPropertyMappingToAttribute_Extractor(registry));
   }
 
 	/**
@@ -540,6 +556,24 @@ public class PropertyToAttributeTransform extends MapTransform {
                       .getQualifiedName() });
       throw new TransformException(message, e, null);
     }
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected AbstractContentExtractor getPropertyToAttribute_UsingPropertyMappingToAttribute_Extractor(
+      Registry registry) {
+    SubmapExtractor extractor = new SubmapExtractor(
+        PROPERTYTOATTRIBUTE_PROPERTY_TO_ATTRIBUTE_USING_PROPERTYMAPPINGTOATTRIBUTE_EXTRACTOR,
+        Uml2servicemodelMessages.PropertyToAttribute_Transform_PropertyToAttribute_UsingPropertyMappingToAttribute_Extractor,
+        registry.get(PropertyMappingToAttributeTransform.class,
+            new CustomDirectFeatureAdapter(
+
+            (EStructuralFeature) null)), new DirectFeatureAdapter(
+            null));
+    return extractor;
   }
 
 }

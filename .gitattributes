@@ -3353,6 +3353,7 @@ int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvi
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/ParameterToComplexTypeTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/ParameterToFaultTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/ParameterToMessageTransform.java -text
+int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/PropertyMappingToAttributeTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/PropertyToAttributeTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/TjenestekategoriToServiceCategoryTransform.java -text
 int/eclipse/plugins/stelvio-models-transformation-uml2servicemodel/src/no/stelvio/esb/models/transformation/uml2servicemodel/transforms/TjenestemetadataToOperationMetadataTransform.java -text

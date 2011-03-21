@@ -308,6 +308,11 @@ Attribute_tgt.setUUID(xmiURI);</code>
 return stereotype != null;</code>
             </condition>
         </mapping>
+        <mapping>
+            <input path="$Property_src" var="Property_src"/>
+            <output path="$Attribute_tgt" var="Attribute_tgt"/>
+            <ext:customSubmapRefinement ref="map:PropertyMappingToAttribute"/>
+        </mapping>
     </mappingDeclaration>
     <mappingDeclaration name="ParameterToComplexType">
         <input path="$src/type('Parameter')" var="Parameter_src"/>
@@ -747,6 +752,14 @@ Attachment_tgt.setUUID(xmiURI);</code>
         <mapping>
             <input path="produsent" var="produsent_src"/>
             <output path="editor" var="editor_tgt"/>
+        </mapping>
+    </mappingDeclaration>
+    <mappingDeclaration name="PropertyMappingToAttribute">
+        <input path="$src/type('Property')stereotype[$src2/type('Mapping')]" var="Property_src"/>
+        <output path="type('Attribute')" var="Attribute_tgt"/>
+        <mapping>
+            <input path="tilFeltNavn" var="tilFeltNavn_src"/>
+            <output path="mappingToAttributeName" var="mappingToAttributeName_tgt"/>
         </mapping>
     </mappingDeclaration>
 </mappingRoot>

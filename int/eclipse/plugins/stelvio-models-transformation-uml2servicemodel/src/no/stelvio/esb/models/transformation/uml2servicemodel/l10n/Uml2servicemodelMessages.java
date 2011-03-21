@@ -427,6 +427,13 @@ public class Uml2servicemodelMessages extends NLS {
    * 
    * @generated
    */
+  public static String PropertyToAttribute_Transform_PropertyToAttribute_UsingPropertyMappingToAttribute_Extractor;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
 	public static String ParameterToComplexType_Transform;
 
 	/**
@@ -1016,6 +1023,27 @@ public class Uml2servicemodelMessages extends NLS {
    * @generated
    */
   public static String EndringsloggToChangelog_Transform_ProdusentToEditor_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String PropertyMappingToAttribute_Transform;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String PropertyMappingToAttribute_Transform_Create_Rule;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public static String PropertyMappingToAttribute_Transform_TilFeltNavnToMappingToAttributeName_Rule;
 
   /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
