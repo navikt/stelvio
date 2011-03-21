@@ -9,6 +9,7 @@
 <body>
 <h2>Tester:</h2>
 <h3><a href="Simple.jsp">Simple</a></h3>
+<h3><a href="Addressing.jsp">WS-Addressing</a></h3>
 <h3><a href="LTPA.jsp">LTPA</a></h3>
 <h3><a href="SAML.jsp">SAML</a></h3>
 </body>

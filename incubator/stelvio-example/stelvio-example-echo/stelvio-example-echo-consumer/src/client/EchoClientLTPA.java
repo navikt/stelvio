@@ -28,7 +28,7 @@ public class EchoClientLTPA extends Service {
 		try {
 			EchoClientLTPA service = new EchoClientLTPA();
 			EchoService port = service.getEchoServiceWSEXPEchoServiceHttpPort();
-			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8080/stelvio-example-echo-provider/EchoLTPAService");
+			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9080/stelvio-example-echo-provider/EchoLTPAService");
 			String output = port.echo(input);
 			return output;
 		} catch (MalformedURLException e) {

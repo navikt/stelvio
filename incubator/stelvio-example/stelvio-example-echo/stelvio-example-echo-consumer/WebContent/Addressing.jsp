@@ -6,11 +6,12 @@
 <%@page import="no.stelvio.example.services.v1.echoservice.binding2.EchoEchoFault1Msg"%>
 <%@page import="javax.xml.ws.soap.SOAPFaultException"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="client.EchoClient"%><html>
+<%@page import="client.EchoClientAddressing"%>
 
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Simple</title>
+<title>WS-Addressing</title>
 </head>
 <body>
 	<a href=".">Menu</a>
@@ -21,7 +22,7 @@
 	<%
 		out.println("echo(" + query.getInput() + ") =");
 		try {
-			out.println(EchoClient.echo(query.getInput()));
+			out.println(EchoClientAddressing.echo(query.getInput()));
 		} catch (EchoEchoFault1Msg e) {
 			out.println("Fault1:" + e.getMessage());
 		} catch (SOAPFaultException e) {
@@ -37,4 +38,5 @@
 		}
 	%>
 </body>
+
 </html>
