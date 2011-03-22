@@ -18,5 +18,24 @@
 
 	<build>
 		<directory>${target.dir}</directory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<!-- No need for default deployment descriptor -->
+						<version>5</version>
+						<generateApplicationXml>false</generateApplicationXml>
+						<!-- Make sure policyAttachments.xml is included in the .ear -->
+						<earSourceDirectory>${basedir}</earSourceDirectory>
+						<earSourceIncludes>META-INF/</earSourceIncludes>
+						<!-- Remove version from module filenames to make static reference in policyAttachments.xml work -->
+						<fileNameMapping>no-version</fileNameMapping>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
