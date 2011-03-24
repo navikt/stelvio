@@ -38,14 +38,17 @@ def datapower_deploy(GATEWAY, ENV, ESB_VERSION, BUS_CONFIG):
 	COMMAND = "cd ../deployer/ && " + MAVEN_STRING
 	retval = subprocess.call(COMMAND, shell=True)
 	if retval != 0:
-		print "[ERROR] Something went wrong while performing deploy to datapower. Please consult the logs."
+		print "[ERROR] Something went wrong while performing deploy to " + GATEWAY + ". Please consult the logs."
 #end datapower_deploy
 
 ENVIRONMENT = sys.argv[1].split("=")[1].upper()
 BUS_CONFIGURATION = sys.argv[2].split("=")[1]
 ESB_V = sys.argv[3].split("=")[1]
-DEPLOY_DATAPOWER = sys.argv[4].split("=")[1].upper()
+DEPLOY_SECGW = sys.argv[4].split("=")[1].upper()
+DEPLOY_PARTNERGW = sys.argv[5].split("=")[1].upper()
 
 wps_deploy(ENVIRONMENT, BUS_CONFIGURATION, ESB_V, "false")
-if DEPLOY_DATAPOWER == "TRUE":
+if DEPLOY_SECGW == "TRUE":
 	datapower_deploy("secgw", ENVIRONMENT, ESB_V, BUS_CONFIGURATION)
+if DEPLOY_PARTNERGW == "TRUE":
+	datapower_deploy("partner-gw", ENVIRONMENT, ESB_V, BUS_CONFIGURATION)
