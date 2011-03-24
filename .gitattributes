@@ -2121,6 +2121,7 @@ incubator/stelvio-example/error-handling/runtime-exception-handling/sca.module -
 incubator/stelvio-example/error-handling/runtime-exception-handling/sca.module.attributes -text
 incubator/stelvio-example/error-handling/runtime-exception-handling/sca.modulex -text
 incubator/stelvio-example/pom.xml -text
+incubator/stelvio-example/stelvio-example-echo/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.classpath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.factorypath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.project -text

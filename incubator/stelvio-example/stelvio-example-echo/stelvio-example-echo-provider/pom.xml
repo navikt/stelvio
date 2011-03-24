@@ -13,7 +13,8 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<warSourceDirectory>${basedir}/WebContent</warSourceDirectory>
-					<warSourceExcludes>WEB-INF/classes/**</warSourceExcludes>
+					<warSourceExcludes>WEB-INF/classes</warSourceExcludes>
+					<warSourceExcludes>WEB-INF/lib</warSourceExcludes>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -23,6 +24,14 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<buildOutputDirectory>${basedir}/WebContent/WEB-INF/classes</buildOutputDirectory>
+					<wtpapplicationxml>true</wtpapplicationxml>
 				</configuration>
 			</plugin>
 		</plugins>
