@@ -21,6 +21,7 @@ import javax.management.InstanceNotFoundException;
 import javax.management.MBeanException;
 import javax.management.MalformedObjectNameException;
 import javax.management.ReflectionException;
+import javax.portlet.filter.ActionFilter;
 
 import no.nav.sibushelper.cmdoptions.ArgumentValidator;
 import no.nav.sibushelper.cmdoptions.CommandOptions;
@@ -339,13 +340,8 @@ public class SIBUSHelper {
 			if (sibusAction.equals(Constants.ACTION_REPORT) && sibusComponent.equals(Constants.HELPER_COMPONENT_QUEUE)
 					&& !argqueue.equals("SE")) {
 				isAction = true;
-				if (argsibus.equals(Constants.ARG_FILTER)) {
+				if (argsibus.equals(Constants.ARG_FILTER) && !argqueue.equals(Constants.ARG_FILTER)) {
 					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument SIBUS name!");
-					return (-8);
-				}
-
-				if (argqueue.equals(Constants.ARG_FILTER)) {
-					logger.log(Level.SEVERE, "SIBUS Helper terminating due to missing argument QUEUE name!");
 					return (-8);
 				}
 				actionReportQueue();
@@ -1298,6 +1294,9 @@ public class SIBUSHelper {
 		// Create file writer instances
 		logger.log(Level.FINE, "Opening file#" + filename + "on path#" + path + " for reporting the messages.");
 		MessageFileWriter fileWriter = new MessageFileWriter(path, filename + ".csv");
+		logger.log(Level.INFO, "Collecting and writing data for report...Please wait can take time!");
+		fileWriter.writeHeader();
+
 
 		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
 		for (MEInfo element0 : mesInfo) {
@@ -1305,55 +1304,71 @@ public class SIBUSHelper {
 			MEInfo meInfo = element0;
 			int fill = busInfo.getName().length();
 
-			if (busInfo.getName().equalsIgnoreCase(argsibus)) {
+			if (argsibus.equals(Constants.ARG_FILTER) || busInfo.getName().equalsIgnoreCase(argsibus)) {
 				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
-				logger.log(Level.INFO, "Collecting data for report...Please wait can take time!");
 				MessagingHelper messagingHelper = new MessagingHelperImpl(host, serverConf.getMessagingPort(), serverConf
 						.getMessagingChainName(), overallConf.getServer().getUserName(), overallConf.getServer().getPassword());
 
-				// all messages
-				if (argfilter.equals(Constants.ARG_FILTER)) {
-					String msgSelector = null;
-					if (commandLine.hasOption(CommandOptions.problemDestination)) {
-						String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
-						msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'";
-					}
-					List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), argqueue, msgSelector);
-
-					logger.log(Level.FINE, "Writing messages to file...Please wait");
-					fileWriter.writeHeader();
-					Iterator iter = list.iterator();
-					while (iter.hasNext()) {
-						MessageInfo element = (MessageInfo) iter.next();
-						fileWriter.writeCSVMessage(element, argqueue);
-					}
-
-					System.out.println();
-					System.out.println(" DESTINATION(" + argqueue + ")");
-					System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
-					System.out.println("  MESSAGE COUNT(" + list.size() + ")");
-					System.out.println("  BROWSED(" + "DONE" + ")");
-					System.out.println();
+				// Collect destinations
+				List<DestinationInfo> destinations = new ArrayList<DestinationInfo>();
+				if (argqueue.equals(Constants.ARG_FILTER)) {
+					destinations = adminHelper.getDestinations(busInfo.getName());
 				} else {
-					MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), argqueue,
-							argfilter);
-					logger.log(Level.FINE, "Writing messages to file...Please wait");
+					destinations = adminHelper.getDestinations(busInfo.getName(), argqueue);
+				}
 
-					fileWriter.writeHeader();
+				for (DestinationInfo destination : destinations) {
+					logger.log(Level.WARNING, "Destination="+destination.getDestinationName());
+					// more than one message
+					if (argfilter.equals(Constants.ARG_FILTER) || argfilter.equals(Constants.ARG_FILTER_NOT_EMPTY)) {
+						if (argfilter.equals(Constants.ARG_FILTER_NOT_EMPTY)) {
+							String[] queuePoints = destination.getQueuePoints();
+							int messageCount = 0;
+							for (String queuePoint : queuePoints) {
+								QueuePointInfo qpi = adminHelper.getQueuePoints(meInfo.getName(), queuePoint);
+								messageCount += qpi.getCurrentDepth();
+							}
+							if (messageCount == 0) {
+								continue;
+							}
+						}
+						String msgSelector = null;
+						if (commandLine.hasOption(CommandOptions.problemDestination)) {
+							String problemDestination = commandLine.getOptionValue(CommandOptions.problemDestination);
+							msgSelector = "JMS_IBM_ExceptionProblemDestination = '" + problemDestination + "'";
+						}
+						List list = messagingHelper.browseQueue(busInfo.getName(), meInfo.getName(), destination.getDestinationName(), msgSelector);
 
-					if (element != null) {
-						fileWriter.writeCSVMessage(element, argqueue);
+						Iterator iter = list.iterator();
+						while (iter.hasNext()) {
+							MessageInfo element = (MessageInfo) iter.next();
+							fileWriter.writeCSVMessage(element, argqueue);
+						}
+
+						System.out.println();
 						System.out.println(" DESTINATION(" + argqueue + ")");
-						System.out.println("  MESSAGE FILTER(" + argfilter + ")");
-						System.out.println("  MESSAGE COUNT(" + "1" + ")");
-						System.out.println("  BROWSED(" + element.getSystemMessageId() + ")");
+						System.out.println("  MESSAGE SELECTOR(" + (msgSelector == null ? "NONE" : msgSelector) + ")");
+						System.out.println("  MESSAGE COUNT(" + list.size() + ")");
+						System.out.println("  BROWSED(" + "DONE" + ")");
 						System.out.println();
 					} else {
-						System.out.println(" DESTINATION(" + argqueue + ")");
-						System.out.println("  MESSAGE FILTER(" + argfilter + ")");
-						System.out.println("  MESSAGE COUNT(" + "0" + ")");
-						System.out.println("  BROWSED(" + "NONE" + ")");
-						System.out.println();
+						MessageInfo element = messagingHelper.browseSingleMessage(busInfo.getName(), meInfo.getName(), argqueue,
+								argfilter);
+
+						if (element != null) {
+							fileWriter.writeCSVMessage(element, argqueue);
+							System.out.println(" DESTINATION(" + argqueue + ")");
+							System.out.println("  MESSAGE FILTER(" + argfilter + ")");
+							System.out.println("  MESSAGE COUNT(" + "1" + ")");
+							System.out.println("  BROWSED(" + element.getSystemMessageId() + ")");
+							System.out.println();
+						} else {
+							System.out.println(" DESTINATION(" + argqueue + ")");
+							System.out.println("  MESSAGE FILTER(" + argfilter + ")");
+							System.out.println("  MESSAGE COUNT(" + "0" + ")");
+							System.out.println("  BROWSED(" + "NONE" + ")");
+							System.out.println();
+						}
 					}
 				}
 			}

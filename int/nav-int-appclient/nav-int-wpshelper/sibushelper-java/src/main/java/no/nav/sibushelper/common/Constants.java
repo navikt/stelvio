@@ -94,6 +94,7 @@ public class Constants {
 	public final static String SE_QUEUE = "_SYSTEM.Exception.Destination.";
 	public final static String ARG_DELIMITER = ":";
 	public final static String ARG_FILTER = "*";
+	public final static String ARG_FILTER_NOT_EMPTY = "1";
 	public final static String ARG_QUEUE_DEL = ",";
 
 	public final static String JS_SIBHELP_REDELIVERY = "SIBHELP_REDELIVERY";
