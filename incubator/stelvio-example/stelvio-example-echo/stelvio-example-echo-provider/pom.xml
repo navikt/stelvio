@@ -31,6 +31,7 @@
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<configuration>
 					<buildOutputDirectory>${basedir}/WebContent/WEB-INF/classes</buildOutputDirectory>
+					<wtpversion>1.5</wtpversion>
 					<wtpapplicationxml>true</wtpapplicationxml>
 				</configuration>
 			</plugin>
@@ -61,6 +62,13 @@
 			<version>2.0.1-SNAPSHOT</version>
 		</dependency>
 		
+		<!-- Workaround for MECLIPSE-587. groupId should be javaee or eclipse-plugin should detect JEE version differently -->
+		<dependency>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>5.0-3</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<properties>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
