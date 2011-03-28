@@ -65,25 +65,39 @@ public class UpdateViews extends AbstractMojo {
 	 * @parameter expression="${perform_updateViews}" default-value=true
 	 */
 	private boolean perform;
+	
+	/**
+	 * Which stream to update. Can be "dev" or "int"
+	 * @parameter expression="${stream_to_update}"
+	 * @required
+	 */
+	private String stream_to_update;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (!perform) {
 			this.getLog().warn("Skipping update view");
 			return;
 		}
+		
 		boolean fail = false;
-		this.getLog().info("----------------------------------");
-		this.getLog().info("--- Updating views for streams ---");
-		this.getLog().info("----------------------------------");
-		this.getLog().info("Updating INT view for " + this.build + "\n");
 		String workingDir = this.ccProjectDir;
 		String subcommand = "update -force -overwrite " + this.ccProjectDir + this.build;
-		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+this.intStream) != 0;
-		if (fail) throw new MojoExecutionException("Unable to update INT view");
-		this.getLog().info("************************************");
-		this.getLog().info("Updating DEV view for " + this.build + "\n");
-		fail = CleartoolCommandLine.runClearToolCommand(workingDir, subcommand+this.devStream) != 0;
-		if (fail) throw new MojoExecutionException("Unable to update DEV view");
-		
+		if (this.stream_to_update.equalsIgnoreCase("int")){
+			this.getLog().info("Updating INT view for " + this.build + "\n");
+			fail = this.updateView(workingDir, subcommand+this.intStream) != 0;
+			if (fail) throw new MojoExecutionException("Unable to update INT view");
+		}else if (this.stream_to_update.equalsIgnoreCase("dev")){
+			this.getLog().info("Updating DEV view for " + this.build + "\n");
+			fail = this.updateView(workingDir, subcommand+this.devStream) != 0;
+			if (fail) throw new MojoExecutionException("Unable to update DEV view");
+		}		
 	}
+	
+	private int updateView(String workingDir, String subcommand) throws MojoFailureException{
+		this.getLog().info("-------------------------");
+		this.getLog().info("--- Updating "+ this.stream_to_update+" view ---");
+		this.getLog().info("-------------------------");
+		return CleartoolCommandLine.runClearToolCommand(workingDir, subcommand);
+	}
+	
 }

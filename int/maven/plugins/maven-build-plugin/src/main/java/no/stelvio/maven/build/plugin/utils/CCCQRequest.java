@@ -46,8 +46,14 @@ public class CCCQRequest {
 			while (s != null) {
 				if (s.contains("activity:")){
 					result.add(s.substring(s.indexOf(":") + 1, s.indexOf(":") + 12).trim());
-					if (s.contains(CCPomManipulator.TASK_HEADLINE))
-						pom_edit_task.add(s.substring(s.indexOf(":") + 1, s.indexOf(":") + 12).trim());
+					if (s.contains(CCPomManipulator.TASK_HEADLINE)){
+						String cq_id = s.substring(s.indexOf(":") + 1, s.indexOf(":") + 12).trim();
+						pom_edit_task.add(cq_id);
+						// add pom edit task to activity list of it's not there
+						if (!activities.equalsIgnoreCase("none") && !activities.equalsIgnoreCase("all")
+								&& !activities.contains(cq_id))
+							activities += "," + cq_id;
+					}
 				}
 				s = br.readLine();
 			}
