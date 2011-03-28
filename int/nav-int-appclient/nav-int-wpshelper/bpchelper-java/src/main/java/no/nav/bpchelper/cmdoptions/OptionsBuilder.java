@@ -45,7 +45,7 @@ public class OptionsBuilder {
 		options.addOption(reportFilenameOption);
 		
 		Option inputFilenameOption = OptionBuilder.withLongOpt(OptionOpts.INPUT_FILENAME).hasArg().create("if");
-		inputFilenameOption.setDescription("input filename");
+		inputFilenameOption.setDescription("input filename (mandatory with action SAMORDNING");
 		inputFilenameOption.setArgName("input filename");
 		options.addOption(inputFilenameOption);
 		

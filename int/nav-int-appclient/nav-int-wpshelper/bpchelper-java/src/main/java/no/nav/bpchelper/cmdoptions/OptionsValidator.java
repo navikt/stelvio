@@ -92,6 +92,13 @@ public class OptionsValidator {
 			}
 		}
 		
+		if (commandLine.getOptionValue(OptionOpts.ACTION).equalsIgnoreCase(ActionOptionValues.SAMORDNING.toString())){
+			if (!commandLine.hasOption(OptionOpts.INPUT_FILENAME)){
+				validationErrors.add("Illegal argument for option: " + OptionOpts.ACTION + " ("
+						+ ActionOptionValues.SAMORDNING.toString() + ") requires an input file");
+			}
+		}
+		
 		if (commandLine.hasOption(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME)) {
 			String startedTimeFrameFilterArg = commandLine.getOptionValue(OptionOpts.FILTER_PROCESS_STARTED_TIME_FRAME);
 			StringTokenizer st = new StringTokenizer(startedTimeFrameFilterArg, "-");
