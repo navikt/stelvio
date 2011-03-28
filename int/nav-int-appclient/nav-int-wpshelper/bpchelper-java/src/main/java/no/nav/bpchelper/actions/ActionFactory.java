@@ -32,6 +32,11 @@ public class ActionFactory {
 		File reportFile = getReportFile(actionName, reportFilename, reportDirectory);
 		action.setReportFile(reportFile);
 		
+		String inputFilename = commandLine.getOptionValue(OptionOpts.INPUT_FILENAME);
+		String inputDirectory = commandLine.getOptionValue(OptionOpts.INPUT_DIR);
+		File inputFile = new File(inputDirectory, inputFilename);
+		action.setInputFile(inputFile);
+		
 		if (commandLine.hasOption(OptionOpts.NO_STOP)) {
 			action.setInteractiveMode(false);
 		}
@@ -42,7 +47,7 @@ public class ActionFactory {
 	private static Properties getProperties(String configFilePath) {
 		// It is more or less okay to catch FileNotFound exceptions from
 		// this method as we have give the user a log entry about
-		// this and simultainisly abort the program before this
+		// this and simultaneously abort the program before this
 		// will occur.
 		Properties connectProps;
 		try {

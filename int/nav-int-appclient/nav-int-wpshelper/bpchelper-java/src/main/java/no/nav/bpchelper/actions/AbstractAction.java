@@ -15,6 +15,7 @@ public abstract class AbstractAction implements Action {
 	private Properties properties;
 	private Criteria criteria;
 	private File reportFile;
+	private File inputFile;
 	private boolean interactiveMode = true;
 
 	private BFMConnectionAdapter bfmConnection;
@@ -50,6 +51,14 @@ public abstract class AbstractAction implements Action {
 
 	public void setReportFile(File reportFile) {
 		this.reportFile = reportFile;
+	}
+	
+	public File getInputFile(){
+		return inputFile;
+	}
+	
+	public void setInputFile(File inputFile){
+		this.inputFile = inputFile;
 	}
 
 	public boolean isInteractiveMode() {

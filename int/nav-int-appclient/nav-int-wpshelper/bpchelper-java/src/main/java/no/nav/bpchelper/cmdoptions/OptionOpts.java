@@ -11,6 +11,10 @@ public interface OptionOpts {
 
 	String REPORT_FILENAME = "reportFilename";
 	
+	String INPUT_DIR = "inputDirectory";
+	
+	String INPUT_FILENAME = "inputFilename";
+	
 	String NO_STOP = "noStop";
 	
 	String FILTER_PROCESS_STARTED_TIME_FRAME = "timeFrame";
