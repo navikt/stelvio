@@ -630,7 +630,7 @@ public class SIBUSHelper {
 		MEInfo mesInfo[] = adminHelper.getMessagingEngines();
 		System.out.println();
 		String queuename = null;
-		boolean none = false;
+		boolean none = true;
 		for (MEInfo element : mesInfo) {
 			BusInfo busInfo = adminHelper.getBusInfo(element.getBus());
 			MEInfo meInfo = element;
@@ -668,7 +668,7 @@ public class SIBUSHelper {
 							Long qd = qpi.getCurrentDepth();
 
 							if (qd != null && qd > 0) {
-								none = true;
+								none = false;
 								System.out.println();
 								System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
 								System.out.println("   QUEUEPOINT(" + qpi.getId() + ")");
@@ -688,7 +688,7 @@ public class SIBUSHelper {
 							Long md = mpi.getCurrentDepth();
 
 							if (md != null && md > 0) {
-								none = true;
+								none = false;
 								System.out.println();
 								System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
 								System.out.println("   MEDIATIONPOINT(" + mpi.getId() + ")");
@@ -699,7 +699,7 @@ public class SIBUSHelper {
 							}
 						}
 					}
-					if (!none) {
+					if (none) {
 						System.out.println();
 						System.out.println("  DESTINATION(" + "NONE>0" + ")");
 					}
@@ -732,7 +732,7 @@ public class SIBUSHelper {
 							Long qd = qpi.getCurrentDepth();
 
 							if (qd != null && qd > 0) {
-								none = true;
+								none = false;
 								System.out.println();
 								System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
 								System.out.println("   QUEUEPOINT(" + qpi.getId() + ")");
@@ -752,7 +752,7 @@ public class SIBUSHelper {
 							Long md = mpi.getCurrentDepth();
 
 							if (md != null && md > 0) {
-								none = true;
+								none = false;
 								System.out.println();
 								System.out.println("  DESTINATION(" + dest.getDestinationName() + ")");
 								System.out.println("   MEDIATIONPOINT(" + mpi.getId() + ")");
@@ -764,7 +764,7 @@ public class SIBUSHelper {
 						}
 					}
 
-					if (!none) {
+					if (none) {
 						System.out.println();
 						System.out.println("  DESTINATION(" + "NONE>0" + ")");
 					}
