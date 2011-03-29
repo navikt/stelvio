@@ -19,7 +19,9 @@ public class Constants {
 	public static final String ACTION_RESUBMIT = "RESUBMIT";
 	public static final String ACTION_MOVE = "MOVE";
 	public static final String ACTION_STATUS = "STATUS";
-
+	
+	public static final String FILENAME_PART_ALLQUEUES = "ALLQUEUES";
+	
 	/*
 	 * COMPONENT Options
 	 */
