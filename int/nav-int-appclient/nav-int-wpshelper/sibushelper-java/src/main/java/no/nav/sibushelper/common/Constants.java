@@ -101,5 +101,11 @@ public class Constants {
 
 	public final static String JS_SIBHELP_REDELIVERY = "SIBHELP_REDELIVERY";
 	public final static Integer JS_MAX_REDELIVERY = 6;
+	
+	/**
+	 * Public properties representing max cell lengths in reports
+	 */
+	public static final int REPORT_MAX_CELL_LENGTH = 31416;
+	public static final String REPORT_TRUNCATE_STRING = " ...(truncated)";
 
 }

@@ -1351,7 +1351,7 @@ public class SIBUSHelper {
 						Iterator iter = list.iterator();
 						while (iter.hasNext()) {
 							MessageInfo element = (MessageInfo) iter.next();
-							fileWriter.writeCSVMessage(element, argqueue);
+							fileWriter.writeCSVMessage(element, destination.getDestinationName());
 						}
 
 						System.out.println();

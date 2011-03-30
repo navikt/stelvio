@@ -151,7 +151,20 @@ public class MessageFileWriter extends AbstractFileWriter {
 		// Write quotes start. This is needed to get all values within
 		// the same cell if and when this data is imported in Excel.
 		writer.write("\"");
-		writer.write(getEscapedString(message.getMsgStringBuffer().toString()));
+		String messageData = getEscapedString(message.getMsgStringBuffer().toString());
+		if(messageData != null) {
+			if (messageData.length() > Constants.REPORT_MAX_CELL_LENGTH) {
+
+				messageData = messageData.substring(0, getMaximumReportCellSubstringSize()).concat(
+						Constants.REPORT_TRUNCATE_STRING);
+				writer.write(messageData);
+			} else {
+				writer.write(messageData);
+			}
+		} else { // write empty cell
+			writer.write(messageData);
+		}
+
 		// Write quotes end plus separator
 		writer.write("\"" + separator);
 		// Write a empty line the end of this entry and close the writer
@@ -262,5 +275,14 @@ public class MessageFileWriter extends AbstractFileWriter {
 					+ " seconds";
 			return ret;
 		}
+	}
+	
+	/**
+	 * Returns the maximum length of a substring in order for the substring concatenated with the truncate string not to exceed
+	 * the maximum cell length in the report.
+	 * 
+	 */
+	public int getMaximumReportCellSubstringSize() {
+		return Constants.REPORT_MAX_CELL_LENGTH - Constants.REPORT_TRUNCATE_STRING.length();
 	}
 }
