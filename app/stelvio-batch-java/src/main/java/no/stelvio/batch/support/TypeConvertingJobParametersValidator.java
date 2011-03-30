@@ -162,9 +162,17 @@ public class TypeConvertingJobParametersValidator extends JobExecutionListenerSu
 		public void validateTypeConversion(String jobParameterValue) throws JobParametersInvalidException {
 			try {
 				this.value = dateformat.parse(jobParameterValue);
+				if (!dateformat.format(getValue()).equals(jobParameterValue)) {
+					throwValidationException(jobParameterValue);
+				}
 			} catch (ParseException e) {
-				throw new JobParametersInvalidException("Invalid date input for parameter:" + getKey());
+				throwValidationException(jobParameterValue);
 			}
+		}
+
+		private void throwValidationException(String jobParameterValue) throws JobParametersInvalidException {
+			throw new JobParametersInvalidException("Invalid date input for parameter:" 
+					+ getKey() + ", value=" + jobParameterValue);
 		}
 
 		@Override

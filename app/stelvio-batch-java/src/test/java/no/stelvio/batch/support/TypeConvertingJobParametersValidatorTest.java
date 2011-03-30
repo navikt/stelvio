@@ -30,19 +30,17 @@ import org.springframework.batch.test.MetaDataInstanceFactory;
  */
 public class TypeConvertingJobParametersValidatorTest {
 	private TypeConvertingJobParametersValidator validator;
-	private String datePattern = "mm.DD.yyyy";
+	private String datePattern = "dd.MM.yyyy-HH:mm:ss";
 	private SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
 	
 	private enum ParamValidatorEnum {
 		VALID,
-		
 		NOT_VALID;
 	}
 	
 	@Before
 	public void setUp() {
 		validator = new TypeConvertingJobParametersValidator();
-	
 	}
 	
 	@Test
@@ -50,12 +48,7 @@ public class TypeConvertingJobParametersValidatorTest {
 		String requiredKey = "test";
 		validator.setRequiredParameters(Arrays.asList(new StringLongJobParameter(requiredKey)));
 		validator.afterPropertiesSet();
-		try {
-			validate(new JobParametersBuilder().toJobParameters());
-			fail();
-		} catch (JobParametersInvalidException expectedException) {
-			assertTrue(expectedException.getMessage().contains(requiredKey));
-		}
+		assertInvalidJobParameter(requiredKey, new JobParametersBuilder().toJobParameters());
 	}
 	
 	@Test
@@ -67,7 +60,7 @@ public class TypeConvertingJobParametersValidatorTest {
 			validate(new JobParametersBuilder().addLong(key, 1L).toJobParameters());
 			fail();
 		} catch (JobParametersInvalidException expectedException) {
-			assertTrue(expectedException.getMessage().contains("String"));
+			assertTrue(expectedException.getMessage().contains("must be of type String"));
 		}		
 	}
 	
@@ -76,25 +69,18 @@ public class TypeConvertingJobParametersValidatorTest {
 		String key = "date";
 		validator.setOptionalParameters(Arrays.asList(new StringDateJobParameter(key, datePattern)));
 		validator.afterPropertiesSet();
-		try {
-			validate(new JobParametersBuilder().addString(key, "2010.10.01").toJobParameters());
-			fail();
-		} catch (JobParametersInvalidException expectedException) {
-			assertTrue(expectedException.getMessage().contains(key));
-		}
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "01.01.11-09:10:52").toJobParameters());
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "01.01.2011-09:10").toJobParameters());
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "01.01.2011").toJobParameters());
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "33.01.2011").toJobParameters());
 	}
-	
+
 	@Test
 	public void shouldValidateTypeConversionOfLongParameters() throws Exception {
 		String key = "long";
 		validator.setOptionalParameters(Arrays.asList(new StringLongJobParameter(key)));
 		validator.afterPropertiesSet();
-		try {
-			validate(new JobParametersBuilder().addString(key, "4.1").toJobParameters());
-			fail();
-		} catch (JobParametersInvalidException expectedException) {
-			assertTrue(expectedException.getMessage().contains(key));
-		}
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "4.1").toJobParameters());
 	}	
 	
 	@Test
@@ -102,12 +88,7 @@ public class TypeConvertingJobParametersValidatorTest {
 		String key = "short";
 		validator.setOptionalParameters(Arrays.asList(new StringShortJobParameter(key)));
 		validator.afterPropertiesSet();
-		try {
-			validate(new JobParametersBuilder().addString(key, "4.1").toJobParameters());
-			fail();
-		} catch (JobParametersInvalidException expectedException) {
-			assertTrue(expectedException.getMessage().contains(key));
-		}
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "4.1").toJobParameters());
 	}	
 	
 	
@@ -122,7 +103,7 @@ public class TypeConvertingJobParametersValidatorTest {
 				new StringLongJobParameter(optionalLongKey)));
 		validator.afterPropertiesSet();
 		
-		String date = "01.10.2010";
+		String date = "01.10.2010-10:20:30";
 		Date dateValue = dateFormat.parse(date);
 		Long longValue = 123L;
 		
@@ -141,12 +122,7 @@ public class TypeConvertingJobParametersValidatorTest {
 		String key = "enum";
 		validator.setOptionalParameters(Arrays.asList(new StringEnumJobParameter(key, ParamValidatorEnum.class)));
 		validator.afterPropertiesSet();
-		try {
-			validate(new JobParametersBuilder().addString(key, "VAL").toJobParameters());
-			fail();
-		} catch (JobParametersInvalidException expectedException) {
-			assertTrue(expectedException.getMessage().contains(key));
-		}
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "VAL").toJobParameters());
 	}	
 	
 	@Test
@@ -166,12 +142,7 @@ public class TypeConvertingJobParametersValidatorTest {
 		String key = "uri";
 		validator.setOptionalParameters(Arrays.asList(new StringUriJobParameter(key)));
 		validator.afterPropertiesSet();
-		try {
-			validate(new JobParametersBuilder().addString(key, "/test\\/").toJobParameters());
-			fail();
-		} catch (JobParametersInvalidException expectedException) {
-			assertTrue(expectedException.getMessage().contains(key));
-		}
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "/test\\/").toJobParameters());
 	}
 	
 	@Test
@@ -190,12 +161,7 @@ public class TypeConvertingJobParametersValidatorTest {
 		String key = "boolean";
 		validator.setOptionalParameters(Arrays.asList(new StringBooleanJobParameter(key)));
 		validator.afterPropertiesSet();
-		try {
-			validate(new JobParametersBuilder().addString(key, "hello").toJobParameters());
-			fail();
-		} catch (JobParametersInvalidException expectedException) {
-			assertTrue(expectedException.getMessage().contains(key));
-		}		
+		assertInvalidJobParameter(key, new JobParametersBuilder().addString(key, "hello").toJobParameters());
 	}
 	
 	@Test
@@ -227,5 +193,14 @@ public class TypeConvertingJobParametersValidatorTest {
 		validator.beforeJob(jobExecution);
 		return jobExecution;
 	}
+	
+	private void assertInvalidJobParameter(String key, JobParameters jobParameters) {
+		try {
+			validate(jobParameters);
+			fail();
+		} catch (JobParametersInvalidException expectedException) {
+			assertTrue(expectedException.getMessage().contains(key));
+		}
+	}	
 	
 }
