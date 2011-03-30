@@ -786,7 +786,7 @@ public class MessagingHelperImpl implements MessagingHelper {
 				buf.append("\nJMS StreamMessage:");
 				msgRoot = jsmsg.makeInboundSdoMessage().getDataGraph().getRootObject();
 				appendStreamMessage(buf, indent, msgRoot, newLine);
-			} else if (msgfmt.equals(SIApiConstants.JMS_FORMAT_BYTES)) {
+			} else if (msgfmt.equals(SIApiConstants.JMS_FORMAT_MAP)) {
 				buf.append("\nJMS MapMessage:");
 				JsJmsMapMessage map = (JsJmsMapMessage) jsmsg;
 				if (map.getUserFriendlyBytes() != null) {
