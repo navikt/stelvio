@@ -1307,7 +1307,6 @@ public class SIBUSHelper {
 			BusInfo busInfo = adminHelper.getBusInfo(element0.getBus());
 			MEInfo meInfo = element0;
 			int fill = busInfo.getName().length();
-			boolean none = true;
 
 			if (argsibus.equals(Constants.ARG_FILTER) || busInfo.getName().equalsIgnoreCase(argsibus)) {
 				System.out.println(getSeparatorLine(30) + " " + busInfo.getName() + " " + getSeparatorLine(80 - fill));
@@ -1338,7 +1337,6 @@ public class SIBUSHelper {
 							if (messageCount == 0) {
 								continue;
 							}
-							none = false;
 						}
 						String msgSelector = null;
 						if (commandLine.hasOption(CommandOptions.problemDestination)) {
@@ -1381,15 +1379,11 @@ public class SIBUSHelper {
 					}
 				}
 			}
-			if (none) {
-				System.out.println();
-				System.out.println("  DESTINATION(" + "NONE>0" + ")");
-			}
 		}
 
-		// Close writers. (The close() method handles if the writer allready
+		// Close writers. (The close() method handles if the writer already
 		// have been closed)
-		if (null != filename) {
+		if (null != fileWriter) {
 			fileWriter.close();
 		}
 
