@@ -85,6 +85,7 @@ public class EventFileWriter {
 	public void writeHeader() throws IOException {
 		csvPrinter.write("MessageId");
 		csvPrinter.write("SessionId");
+		csvPrinter.write("EventType");
 		csvPrinter.write("InteractionType");
 		csvPrinter.write("SourceModule");
 		csvPrinter.write("SourceComponent");
@@ -111,6 +112,7 @@ public class EventFileWriter {
 		if (failedEvent != null) {
 			csvPrinter.write(failedEvent.getMsgId());
 			csvPrinter.write(failedEvent.getSessionId());
+			csvPrinter.write(failedEvent.getType());
 			csvPrinter.write(failedEvent.getInteractionType());
 			csvPrinter.write(failedEvent.getSourceModuleName());
 			csvPrinter.write(failedEvent.getSourceComponentName());
