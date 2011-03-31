@@ -34,8 +34,11 @@ public class ActionFactory {
 		
 		String inputFilename = commandLine.getOptionValue(OptionOpts.INPUT_FILENAME);
 		String inputDirectory = commandLine.getOptionValue(OptionOpts.INPUT_DIR);
-		File inputFile = new File(inputDirectory, inputFilename);
-		action.setInputFile(inputFile);
+		if(inputFilename != null && inputDirectory != null){
+			File inputFile = new File(inputDirectory, inputFilename);
+			action.setInputFile(inputFile);
+		}
+		
 		
 		if (commandLine.hasOption(OptionOpts.NO_STOP)) {
 			action.setInteractiveMode(false);
