@@ -65,27 +65,11 @@ public class OptionsValidator {
 			}
 		}
 		
-		if (commandLine.hasOption(OptionOpts.INPUT_DIR)) {
-			String inputDirectoryPath = commandLine.getOptionValue(OptionOpts.INPUT_DIR);
-			File inputDirectory = new File(inputDirectoryPath);
-			if (!inputDirectory.exists()) {
-				validationErrors.add("Illegal argument for option:" + OptionOpts.INPUT_DIR + " (" + inputDirectoryPath
-						+ ") does not exist");
-			}
-			if (!inputDirectory.isDirectory()) {
-				validationErrors.add("Illegal argument for option:" + OptionOpts.INPUT_DIR + " (" + inputDirectoryPath
-						+ ") is not a directory");
-			}
-		}
 		
 		if (commandLine.hasOption(OptionOpts.INPUT_FILENAME)) {
 			String inputFilenameString = commandLine.getOptionValue(OptionOpts.INPUT_FILENAME);
-			File inputFile;
-			if (commandLine.hasOption(OptionOpts.INPUT_DIR)) {
-				inputFile = new File(commandLine.getOptionValue(OptionOpts.INPUT_DIR), inputFilenameString);
-			} else {
-				inputFile = new File(inputFilenameString);
-			}
+			File inputFile = new File(inputFilenameString);
+			
 			if (!inputFile.exists()) {
 				validationErrors.add("Illegal argument for option:" + OptionOpts.INPUT_FILENAME + " ("
 						+ inputFilenameString + ") does not exist");

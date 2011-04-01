@@ -49,11 +49,6 @@ public class OptionsBuilder {
 		inputFilenameOption.setArgName("input filename");
 		options.addOption(inputFilenameOption);
 		
-		Option inputDirectoryOption = OptionBuilder.withLongOpt(OptionOpts.INPUT_DIR).hasArg().create("id");
-		inputDirectoryOption.setDescription("directory to get input file");
-		inputDirectoryOption.setArgName("input path");
-		options.addOption(inputDirectoryOption);
-		
 		Option noStopOption = OptionBuilder.withLongOpt(OptionOpts.NO_STOP).create("ns");
 		noStopOption.setDescription("Runs the action without prompting after collecting process instance ids");
 		options.addOption(noStopOption);

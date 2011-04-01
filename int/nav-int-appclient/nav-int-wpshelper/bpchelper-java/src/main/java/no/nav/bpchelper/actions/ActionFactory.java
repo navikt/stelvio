@@ -33,9 +33,8 @@ public class ActionFactory {
 		action.setReportFile(reportFile);
 		
 		String inputFilename = commandLine.getOptionValue(OptionOpts.INPUT_FILENAME);
-		String inputDirectory = commandLine.getOptionValue(OptionOpts.INPUT_DIR);
-		if(inputFilename != null && inputDirectory != null){
-			File inputFile = new File(inputDirectory, inputFilename);
+		if(inputFilename != null){
+			File inputFile = new File(inputFilename);
 			action.setInputFile(inputFile);
 		}
 		
