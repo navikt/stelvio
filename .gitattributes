@@ -3877,11 +3877,11 @@ int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/assembly/assembly.xml -t
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/bin/bpcdeleteterminatedsuccessfully.sh -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/bin/bpcstoppedprocessstatus.sh -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/bin/femstatus.sh -text
-int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/BPCHelper.doc -text
-int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/FEMHelper.doc -text
-int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/SIBusHelper.doc -text
-int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/SIBusKoedybde.doc -text
-int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/WPSHelpers.doc -text
+int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/BPCHelper.doc -text svneol=unset#application/octet-stream
+int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/FEMHelper.doc -text svneol=unset#application/octet-stream
+int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/SIBusHelper.doc -text svneol=unset#application/octet-stream
+int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/SIBusKoedybde.doc -text svneol=unset#application/octet-stream
+int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/docs/WPSHelpers.doc -text svneol=unset#application/octet-stream
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/python/SibusQueuesDepth.py -text
 int/nav-int-appclient/nav-int-wpshelper-bundle/src/main/resources/localhost_helper.properties -text
 int/nav-int-appclient/nav-int-wpshelper/bpchelper-ear/.project -text

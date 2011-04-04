@@ -1,6 +1,6 @@
 ***Leveranse av støtteverktøy for WPS versjon ${project.version}***
 
-* Zip-filen skal pakkes ut på WPS deployment manager, i katalogen som angitt i dokumentasjon; /was_app/tools/esb/wpshelpers.
+* Zip-filen skal pakkes ut på WPS node1, i katalogen som angitt i dokumentasjon; /was_app/tools/esb/wpshelpers.
   Helperverktøyene havner da i underkatalogen ${project.build.finalName}.
 * Kontroller at shell-skript er eksekverbare
 
@@ -19,4 +19,4 @@ Opprettet katalog /was_app/tools/esb/wpshelpers/${project.build.finalName} har i
 * localhost_helper.properties
 * Shell-script som pakker inn normale kjøremønstre. Disse fungerer også som eksempler for nye script som opprettes av drift ved behov.
 
-12.12.2008
+04.04.2011
