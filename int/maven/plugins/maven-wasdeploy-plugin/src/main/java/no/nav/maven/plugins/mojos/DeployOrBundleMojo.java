@@ -117,27 +117,59 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	/**
 	 * @parameter expression="${environment/servers/was/node2/linux-app-username}"
 	 */
-	private String node2AppUsername;
+	private String node2LinuxAppUsername;
 
 	/**
 	 * @parameter expression="${environment/servers/was/node2/linux-app-password}"
 	 */
-	private String node2AppPassword;
+	private String node2LinuxAppPassword;
 
 	/**
 	 * @parameter expression="${environment/servers/was/node2/linux-batch-username}"
 	 */
-	private String node2BatchUsername;
+	private String node2LinuxBatchUsername;
 
 	/**
 	 * @parameter expression="${environment/servers/was/node2/linux-batch-password}"
 	 */
-	private String node2BatchPassword;
+	private String node2LinuxBatchPassword;
 
 	/**
 	 * @parameter expression="${environment/servers/was/misc/node2-config-upload}"
 	 */
 	private boolean node2Upload;
+
+	
+	/**
+	 * @parameter expression="${environment/servers/was/node3/hostname}"
+	 */
+	private String node3Hostname;
+	
+	/**
+	 * @parameter expression="${environment/servers/was/node3/linux-app-username}"
+	 */
+	private String node3LinuxAppUsername;
+	
+	/**
+	 * @parameter expression="${environment/servers/was/node3/linux-app-password}"
+	 */
+	private String node3LinuxAppPassword;
+	
+	/**
+	 * @parameter expression="${environment/servers/was/node3/linux-batch-username}"
+	 */
+	private String node3LinuxBatchUsername;
+	
+	/**
+	 * @parameter expression="${environment/servers/was/node3/linux-batch-password}"
+	 */
+	private String node3LinuxBatchPassword;
+	
+	/**
+	 * @parameter expression="${environment/servers/was/misc/node3-config-upload}" default-value=false
+	 */
+	private boolean node3Upload;
+	
 
 	/**
 	 * @parameter expression="${environment/servers/was/dmgr/hostname}"
@@ -251,26 +283,27 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		getLog().info("### DEPLOYMENT SELECTED - Uploading files and deploying application ... ###");
 		getLog().info("###########################################################################");
 		
+		// node 1
+		// Upload application config
+		SSHUtil.uploadDir(node1Hostname, node1LinuxAppUsername, node1LinuxAppPassword, configDir, "/was_app/config", application);
+		// Upload batch config
+		if (isBatch)
+			SSHUtil.uploadDir(node1Hostname, node1LinuxBatchUsername, node1LinuxBatchPassword, batchDir, "/was_app/batch", application);
+		
+		//node 2
 		if (node2Upload && !zone.equals("intern")) {
-			
-			// Upload application config
-			SSHUtil.uploadDir(node1Hostname, node1LinuxAppUsername, node1LinuxAppPassword, configDir, "/was_app/config", application);
-			SSHUtil.uploadDir(node2Hostname, node2AppUsername, node2AppPassword, configDir, "/was_app/config", application);
-
-			// Upload batch config
-			if (isBatch) {
-				SSHUtil.uploadDir(node1Hostname, node1LinuxBatchUsername, node1LinuxBatchPassword, batchDir, "/was_app/batch", application);
-				SSHUtil.uploadDir(node2Hostname, node2BatchUsername, node2BatchPassword, batchDir, "/was_app/batch", application);
-			}
-
-		} else {
-			
-			SSHUtil.uploadDir(node1Hostname, node1LinuxAppUsername, node1LinuxAppPassword, configDir, "/was_app/config", application);
-
-			if (isBatch)
-				SSHUtil.uploadDir(node1Hostname, node1LinuxBatchUsername, node1LinuxBatchPassword, batchDir, "/was_app/batch", application);
+			SSHUtil.uploadDir(node2Hostname, node2LinuxAppUsername, node2LinuxAppPassword, configDir, "/was_app/config", application);
+			if (isBatch) 
+				SSHUtil.uploadDir(node2Hostname, node2LinuxBatchUsername, node2LinuxBatchPassword, batchDir, "/was_app/batch", application);
 		}
-
+		
+		// node 3	
+		if (node3Upload && !zone.equals("intern")) {
+			SSHUtil.uploadDir(node3Hostname, node3LinuxAppUsername, node3LinuxAppPassword, configDir, "/was_app/config", application);
+			if (isBatch) 
+				SSHUtil.uploadDir(node3Hostname, node3LinuxBatchUsername, node3LinuxBatchPassword, batchDir, "/was_app/batch", application);
+		} 
+		
 		// Deploy the application
 		deploy();
 	}

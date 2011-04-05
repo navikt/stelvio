@@ -89,6 +89,17 @@ public class FileHandlerMojo extends AbstractMojo {
 	 * @parameter expression="${environment/log4j-batch-file}"
 	 */
 	private String log4jBatchFile;
+	
+	/**
+	 * @parameter expression="${environment/logback-file}"
+	 * @required
+	 */
+	private String logbackFile;
+
+	/**
+	 * @parameter expression="${environment/logback-batch-file}"
+	 */
+	private String logbackBatchFile;
 
 	/**
 	 * @parameter expression="${zone}"
@@ -212,14 +223,27 @@ public class FileHandlerMojo extends AbstractMojo {
 		}
 
 	}
+	
+	/**
+	 * Only pen, psak, pselv or popp has logback.xml. 
+	 * Other applications don't.
+	 * @param application
+	 * @return true if application has logback.xml
+	 */
+	private boolean hasLogback(String application){
+		return application.equalsIgnoreCase("pen") ||
+			   application.equalsIgnoreCase("psak") ||
+			   application.equalsIgnoreCase("pselv") ||
+			   application.equalsIgnoreCase("popp");
+	}
 
 	// Copy the appropriate log4j.properties files to the correct directories
 	private void copyLog4j(String application, boolean isBatch) throws MojoFailureException {
 		try {
 
-			getLog().info("#############################################");
-			getLog().info("### Copying log4j configuration files ... ###");
-			getLog().info("#############################################");
+			getLog().info("#########################################################");
+			getLog().info("### Copying log4j and logback configuration files ... ###");
+			getLog().info("#########################################################");
 
 			// Application does not contain batch
 			if (!isBatch) {
@@ -228,6 +252,17 @@ public class FileHandlerMojo extends AbstractMojo {
 				File l4jSource = new File(log4jDir + "/" + log4jFile);
 				File l4jDestination = new File(configDir + "/" + "log4j.properties");
 				NativeOps.copy(l4jSource, l4jDestination);
+				
+				if (hasLogback(application)){
+					//logback.xml => <config folder>
+					File logbackSource = new File(log4jDir + "/" + logbackFile);
+					File logbackDestination = new File(configDir + "/" + logbackFile);
+					try{
+						NativeOps.copy(logbackSource, logbackDestination);
+					}catch (IOException e) {
+						getLog().warn("Logback.xml file was not found. Check module config for " + this.application);
+					}
+				}
 			}
 
 			// Application contains batch
@@ -242,7 +277,26 @@ public class FileHandlerMojo extends AbstractMojo {
 				File l4jBatchSource = new File(log4jDir + "/" + log4jBatchFile);
 				File l4jBatchDestination = new File(batchDir + "/config/" + "log4j.properties");
 				NativeOps.copy(l4jBatchSource, l4jBatchDestination);
-
+				
+				if (hasLogback(application)){
+					//logback.xml => <config folder>
+					File logbackSource = new File(log4jDir + "/" + logbackFile);
+					File logbackDestination = new File(configDir + "/" + logbackFile);
+					try{
+						NativeOps.copy(logbackSource, logbackDestination);
+					}catch (IOException e) {
+						getLog().warn("Logback.xml file was not found. Check module config for " + this.application, e);
+					}
+					
+					//logback_batch.xml => <config folder>
+					File logbackBatchSource = new File(log4jDir + "/" + logbackBatchFile);
+					File logbackBatchDestination = new File(batchDir + "/config/" + logbackBatchFile);
+					try{
+						NativeOps.copy(logbackBatchSource, logbackBatchDestination);
+					}catch (IOException e) {
+						getLog().warn("Logback_batch.xml file was not found. Check module config for " + this.application, e);
+					}
+				}
 			}
 
 		} catch (IOException e) {

@@ -5,12 +5,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.ParserConfigurationException;
 
 import no.nav.devarch.utils.Application;
 import no.nav.devarch.utils.ApplicationConfig;
 import no.nav.maven.plugins.utils.Archiver;
+import no.nav.maven.plugins.utils.NativeOps;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.InvalidRepositoryException;
@@ -138,13 +141,20 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String applicationConfig;
+	
+	/**
+	 * @parameter expression="${environment/satstabell}"
+	 * @required
+	 */
+	private String satstabell_classifier;
 
 	/**
 	 * Need to statically set the naming convention of the PSELV WAR file, without version. Full name would be PSELV_WAR_NAME +
 	 * <VERSION> + ".war", this is only required for PSELV as of now.
 	 */
 	private final String PSELV_WAR_NAME = "nav-presentation-pensjon-pselv-web-";
-
+	private static final String BLASE_ARTIFACT_ID = "nav-service-pensjon-blaze";
+	
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
 		try {
@@ -180,16 +190,16 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 			getLog().info("################################################");
 			getLog().info("### Downloading and extracting artifacts ... ###");
 			getLog().info("################################################");
-
+			
 			// Retrieving the list of artifacts for the given application and version
-			List<Artifact> artifacts = getApplicationArtifacts(applicationConfig, artifactFactory, application, version);
-
+			List<Artifact> artifacts = getApplicationArtifacts(applicationConfig, artifactFactory, application, version, satstabell_classifier);
+			String configDir = null; // need to take care of cofig path that is cofigured below
 			// For each artifact, the artifact is resolved and extracted to the given staging directory
 			for (Artifact a : artifacts) {
 				Artifact artifact = resolveRemoteArtifact(remoteRepos, a);
 				File extDir = Archiver.extractArchive(artifact.getFile(), stagingDirectory, unArchiver);
 				String extDirPath = extDir.getPath();
-
+				
 				// We expose the different properties in order to be able to operate on these in the same Maven session
 				if (application.equals("psak") || application.equals("pselv")) {
 
@@ -234,11 +244,17 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 					// Exposing config directory to maven context
 					if (extDirPath.contains("nav-config-")) {
 						exposeMavenProperty("configDir", extDirPath);
+						configDir = extDirPath;
 					}
 					// Exposing batch directory to maven context
 					if (extDirPath.contains("nav-batch-")) {
 						exposeMavenProperty("batchDir", extDirPath);
 					}
+				}
+				if (artifact.getArtifactId().equalsIgnoreCase(BLASE_ARTIFACT_ID)){
+					// don't need to unpack jar filen, just upload to config folder
+					File blazeDest = new File(configDir + "/" + stripVersionAndClassifier(artifact.getFile().getName()));
+					NativeOps.copy(artifact.getFile(), blazeDest);
 				}
 			}
 
@@ -251,7 +267,16 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 		}
 
 	}
-
+	
+	private static String stripVersionAndClassifier(String artifactName){
+		Pattern pattern = Pattern.compile("[0-9]+\\.[0-9]+\\.[0-9]+");
+		Matcher matcher = pattern.matcher(artifactName);
+		
+		int versionStart = -1;
+		while (matcher.find()) versionStart = matcher.start();
+		return versionStart <=0 ? artifactName : artifactName.substring(0, versionStart-1) + ".jar";
+	}
+	
 	// Resolves the artifact using the given repositories
 	public Artifact resolveRemoteArtifact(List remoteRepos, Artifact artifact) throws MojoExecutionException {
 
@@ -272,7 +297,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 	}
 
 	public static List<Artifact> getApplicationArtifacts(String applicationConfig, ArtifactFactory artifactory,
-			String application, String version) throws SAXException, IOException, ParserConfigurationException {
+			String application, String version, String classifier) throws SAXException, IOException, ParserConfigurationException {
 
 		List<Artifact> artifacts = new ArrayList<Artifact>();
 		HashMap<String, Application> applications = ApplicationConfig.getApplications(applicationConfig);
@@ -286,7 +311,9 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 			} else {
 				type = "jar";
 			}
-			artifacts.add(artifactory.createArtifact(a.getGroupId(), a.getArtifactId(), version, null, type));
+			if (a.getArtifactId().equalsIgnoreCase(BLASE_ARTIFACT_ID))
+				artifacts.add(artifactory.createArtifactWithClassifier(a.getGroupId(), a.getArtifactId(), "RELEASE", type, classifier));
+			else artifacts.add(artifactory.createArtifact(a.getGroupId(), a.getArtifactId(), version, null, type));
 		}
 
 		if (application.equals("psak") || application.equals("pselv")) {
