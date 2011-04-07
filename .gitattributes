@@ -2201,6 +2201,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/META-INF/policyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/pom.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/src/main/application/META-INF/policyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/EchoWSEXP.export -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/EchoWSIMP.import -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/META-INF/MANIFEST.MF -text
