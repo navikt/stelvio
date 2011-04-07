@@ -7,7 +7,13 @@ package no.stelvio.batch.count.support;
 public class SimpleEventCounter implements EventCounter {
 	private long count;
 	private long time;
-	private long startTime;
+	private ThreadLocal<Long> startTime = new ThreadLocal<Long>() {
+		/** {@inheritDoc} */
+		@Override
+		protected Long initialValue() {
+			return new Long(0);
+		}
+	};
 
 	/**
 	 * Creates a new counter
@@ -31,11 +37,11 @@ public class SimpleEventCounter implements EventCounter {
 	}
 
 	public synchronized void setStartTime(long time) {
-		startTime = time;
+		startTime.set(time);
 	}
 
 	public synchronized long getStartTime() {
-		return startTime;
+		return startTime.get();
 	}
 	
 	/** {@inheritDoc} */

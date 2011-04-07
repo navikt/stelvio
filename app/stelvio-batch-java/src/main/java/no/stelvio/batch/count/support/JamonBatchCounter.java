@@ -1,5 +1,7 @@
 package no.stelvio.batch.count.support;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import com.jamonapi.MonKey;
@@ -18,6 +20,13 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	private String jamonPrefix;
 	private boolean isJamonEnabled = false;
 	private static final String UNITS = "ms.";
+	private ThreadLocal<Map<CounterEvent, Monitor>> timeMonitorsForThread = new ThreadLocal<Map<CounterEvent,Monitor>>() {
+		/** {@inheritDoc} */
+		@Override
+		protected Map<CounterEvent, Monitor> initialValue() {
+			return new HashMap<CounterEvent, Monitor>();
+		}
+	};
 
 	/**
 	 * Creates a counter and registers events.
@@ -43,7 +52,8 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	public void start(CounterEvent event) {
 		if (isJamonEnabled) {
 			synchronized (event) {
-				MonitorFactory.start(getMonKey(event));
+				Monitor monitor = MonitorFactory.start(getMonKey(event));
+				timeMonitorsForThread.get().put(event, monitor);
 			}
 		}
 		super.start(event);
@@ -52,8 +62,8 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void stop(CounterEvent event) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
 			synchronized (event) {
+				Monitor monitor = timeMonitorsForThread.get().get(event);
 				monitor.stop();
 			}
 		}
@@ -64,8 +74,8 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void stop(CounterEvent event, int count) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
 			synchronized (event) {
+				Monitor monitor = timeMonitorsForThread.get().get(event);
 				monitor.stop();
 				monitor.setHits(monitor.getHits() + count - 1); //monitor.stop() adds 1
 			}
@@ -76,7 +86,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void incrementEvent(CounterEvent event) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			Monitor monitor = MonitorFactory.getMonitor(getMonKey(event));
 			synchronized (event) {
 				monitor.setHits(monitor.getHits() + 1);
 			}
@@ -87,7 +97,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void incrementEvent(CounterEvent event, long ms) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			Monitor monitor = MonitorFactory.getMonitor(getMonKey(event));
 			synchronized (event) {
 				monitor.add(ms);
 			}
@@ -98,7 +108,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void addEvents(CounterEvent event, long count) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			Monitor monitor = MonitorFactory.getMonitor(getMonKey(event));
 			synchronized (event) {
 				monitor.setHits(monitor.getHits() + count);
 			}
@@ -109,7 +119,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void addEvents(CounterEvent event, long count, long ms) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getTimeMonitor(getMonKey(event));
+			Monitor monitor = MonitorFactory.getMonitor(getMonKey(event));
 			synchronized (event) {
 				monitor.add(ms);
 				monitor.setHits(monitor.getHits() + count - 1); //monitor.add adds 1

@@ -4,6 +4,7 @@
 package no.stelvio.batch.count.support;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -13,6 +14,7 @@ import no.stelvio.batch.count.support.CounterEvent.EventType;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.jamonapi.Monitor;
 import com.jamonapi.MonitorFactory;
 
 /**
@@ -35,6 +37,35 @@ public class ConcurrentJamonBatchCounterTest {
 	}
 	
 	@Test
+	public void shouldHandleStartAndStopConcurrently() throws Exception {
+		final int sleeptime = 100;
+		ConcurrentCounterTestUtil.executeConcurrentStartAndStop(counter, concurrentEvent, sleeptime);
+		Monitor monitor = counter.getMonitor(concurrentEvent);
+		assertTrue(monitor.getTotal() > sleeptime);
+	}
+	
+	@Test
+	public void shouldSampleRunningTimeBetweenStartAndStop() throws Exception {
+		final int sleeptime = 100;
+		Runnable action = new Runnable() {
+			public void run() {
+				counter.start(concurrentEvent);
+				try {
+					Thread.sleep(sleeptime);
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+				counter.stop(concurrentEvent);
+			}
+		};
+		int numberOfTimeSamplesPerThread = numberOfExecutionsPerThread / 10000;
+		ConcurrentExecutor.execute(noOfThreads, numberOfTimeSamplesPerThread, action);	
+		
+		Monitor monitor = counter.getMonitor(concurrentEvent);
+		assertEquals(noOfThreads * numberOfTimeSamplesPerThread * sleeptime, monitor.getTotal(), 500);
+	}	
+	
+	@Test
 	public void shouldHandleConcurrentStartAndStop() throws Exception {
 		Runnable action = new Runnable() {
 			public void run() {
@@ -45,7 +76,7 @@ public class ConcurrentJamonBatchCounterTest {
 		ConcurrentExecutor.execute(noOfThreads, numberOfExecutionsPerThread, action);	
 		
 		assertHits(noOfThreads * numberOfExecutionsPerThread);
-	}	
+	}		
 
 	@Test
 	public void shouldHandleConcurrentStartAndStopWithCounts() throws Exception {

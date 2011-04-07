@@ -17,7 +17,6 @@ import org.springframework.util.Assert;
  * @author person95f6f76be33a, Sirius IT
  */
 public class SimpleBatchCounter implements BatchCounter {
-
 	private ConcurrentMap<CounterEvent, SimpleEventCounter> events = new ConcurrentHashMap<CounterEvent, SimpleEventCounter>();
 
 	/**

@@ -4,6 +4,7 @@
 package no.stelvio.batch.count.support;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -29,6 +30,14 @@ public class ConcurrentBatchCounterTest {
 	@Before
 	public void setUp() {
 		counter = new SimpleBatchCounter(new HashSet<CounterEvent>(Arrays.asList(concurrentEvent)));
+	}
+	
+	@Test
+	public void shouldHandleStartAndStopConcurrently() throws Exception {
+		final int sleeptime = 10;
+		ConcurrentCounterTestUtil.executeConcurrentStartAndStop(counter, concurrentEvent, sleeptime);
+		EventCounter eventCounter = counter.getEventReport().get(concurrentEvent);
+		assertTrue(eventCounter.getTime() > sleeptime);
 	}
 	
 	@Test

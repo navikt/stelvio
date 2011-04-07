@@ -126,6 +126,7 @@ app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/.copyarea.db
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/BatchCounterOutputFormatterTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/BatchCounterTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/ConcurrentBatchCounterTest.java -text svneol=unset#text/plain
+app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/ConcurrentCounterTestUtil.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/ConcurrentExecutor.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/ConcurrentJamonBatchCounterTest.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/JamonBatchCounterTest.java -text
