@@ -27,7 +27,7 @@
 	</modules>
 
 	<scm>
-		<connection>scm:clearcase:maven_stelvio_next:\\localhost\c$\config_spec.stelvio_next</connection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/app</connection>
 	</scm>
 		
 	<properties>
