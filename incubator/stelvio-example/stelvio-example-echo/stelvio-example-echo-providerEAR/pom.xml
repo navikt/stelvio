@@ -42,7 +42,7 @@
 					<version>5</version>
 					<generateApplicationXml>false</generateApplicationXml>
 					<!-- earSourceDirectory does not work: MECLIPSE-560 -->
-					<!-- Make sure policyAttachments.xml is included in the .ear -->
+					<!-- Duplicate files in / and src/main/application in the meanwhile -->
 					<!--earSourceDirectory>${basedir}</earSourceDirectory>
 					<earSourceIncludes>META-INF/</earSourceIncludes-->
 					<!--
