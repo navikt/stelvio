@@ -8,7 +8,7 @@
 			<component-family>javax.faces.SelectOne</component-family>
             <renderer-type>no.stelvio.Menu</renderer-type> 
             <renderer-class>no.stelvio.presentation.jsf.renderkit.html.HtmlMenuExtendedRenderer</renderer-class>
-        </renderer> 
+        </renderer>
 		<renderer> 
 			<component-family>javax.faces.SelectMany</component-family>
             <renderer-type>no.stelvio.Menu</renderer-type> 
@@ -18,12 +18,17 @@
 	        <component-family>org.apache.myfaces.Radio</component-family>
 	        <renderer-type>no.stelvio.Radio</renderer-type>
 	        <renderer-class>no.stelvio.presentation.jsf.renderkit.html.HtmlRadioRenderer</renderer-class>
-	     </renderer>
-	     <renderer>
+	    </renderer>
+	    <renderer>
 	        <component-family>javax.faces.SelectOne</component-family>
 	        <renderer-type>no.stelvio.Radio</renderer-type>
 	        <renderer-class>no.stelvio.presentation.jsf.renderkit.html.HtmlRadioRenderer</renderer-class>
-	      </renderer>
+	    </renderer>
+	    <renderer>
+			<component-family>javax.faces.SelectMany</component-family>
+			<renderer-type>no.stelvio.Checkbox</renderer-type>
+			<renderer-class>no.stelvio.presentation.jsf.renderkit.html.HtmlCheckboxRenderer</renderer-class>
+		</renderer>	      
 	</render-kit>
 	
 	<component>

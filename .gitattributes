@@ -719,6 +719,8 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderki
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/JsfResourceHandler.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/JsfResourceLoader.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/.copyarea.db -text
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlCheckboxRenderer.java -text svneol=unset#text/plain
+app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlCheckboxRendererBase.java -text svneol=unset#text/plain
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlMenuExtendedRenderer.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlRadioRenderer.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlRadioRendererBase.java -text
