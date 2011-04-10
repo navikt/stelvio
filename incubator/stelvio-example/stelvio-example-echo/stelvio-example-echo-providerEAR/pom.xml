@@ -49,7 +49,7 @@
 						Remove version from module filenames to make static reference in
 						policyAttachments.xml work
 					-->
-					<!-- fileNameMapping>no-version</fileNameMapping-->
+					<fileNameMapping>no-version</fileNameMapping>
 				</configuration>
 			</plugin>
 		</plugins>
