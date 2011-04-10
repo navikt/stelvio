@@ -3,7 +3,7 @@
 	<groupId>no.stelvio.example</groupId>
 	<artifactId>stelvio-example-echo-providerEAR</artifactId>
 	<packaging>ear</packaging>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>Stelvio Example Application - Echo Provider EAR application</name>
 
 	<dependencies>
@@ -23,7 +23,7 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/stelvio-example-echo-providerEAR-0.0.1</connection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo/providerEA</connection>
 	</scm>
 	<build>
 		<directory>${target.dir}</directory>
