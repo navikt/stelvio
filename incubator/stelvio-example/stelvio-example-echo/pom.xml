@@ -8,6 +8,7 @@
 	<name>Stelvio Echo Example</name>
 
 	<modules>
+		<module>stelvio-example-echo-provider-jaxws</module>
 		<module>stelvio-example-echo-providerEAR</module>
 		<module>stelvio-example-echo-provider</module>
 	</modules>
