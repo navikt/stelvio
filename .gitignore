@@ -497,7 +497,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/gen
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.library.attributes
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/sca.module.attributes
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/target
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-soapui/target
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-test/target
 incubator/stelvio-example/stelvio-example-gateway/*.class
 incubator/stelvio-example/stelvio-example-gateway/*.jar
 incubator/stelvio-example/stelvio-example-gateway/.classpath
