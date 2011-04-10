@@ -486,6 +486,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/ibm-de
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/sca.library.attributes
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/sca.module.attributes
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/target
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxws/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/*.class
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/*.jar
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/.classpath
