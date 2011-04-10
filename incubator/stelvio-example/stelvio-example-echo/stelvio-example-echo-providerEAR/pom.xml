@@ -8,12 +8,12 @@
 	<name>Stelvio Example Application - Echo Provider EAR application</name>
 
 	<dependencies>
-		<!--dependency>
+		<dependency>
 			<groupId>no.stelvio.example</groupId>
 			<artifactId>stelvio-example-echo-provider</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 			<type>war</type>
-		</dependency-->
+		</dependency>
 		<!-- Workaround for MECLIPSE-587. groupId should be javaee or eclipse-plugin should detect JEE version differently -->
 		<dependency>
 			<groupId>org.apache.openejb</groupId>
@@ -23,9 +23,6 @@
 		</dependency>
 	</dependencies>
 
-	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo/providerEA</connection>
-	</scm>
 	<build>
 		<directory>${target.dir}</directory>
 		<plugins>
@@ -55,19 +52,6 @@
 					<!-- fileNameMapping>no-version</fileNameMapping-->
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<mavenExecutorId>forked-path</mavenExecutorId>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
-	<distributionManagement>
-		<repository>
-			<id>test</id>
-			<url>scp:e11apvl002.utv.internsone.local:/data/maven2/snapshot</url>
-		</repository>
-	</distributionManagement>
 </project>
