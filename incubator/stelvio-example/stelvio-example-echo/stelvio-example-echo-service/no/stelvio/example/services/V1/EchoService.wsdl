@@ -18,7 +18,7 @@
       <xsd:element name="echoFault1" nillable="true">
       	<xsd:simpleType>
       		<xsd:restriction base="xsd:string">
-      			<xsd:maxLength value="2"></xsd:maxLength>
+      			<xsd:maxLength value="2"/>
       		</xsd:restriction>
       	</xsd:simpleType>
       </xsd:element>
@@ -35,6 +35,7 @@
   </wsdl:message>
     <wsdl:portType name="EchoService">
     <wsdl:operation name="echo">
+      <wsdl:documentation>Reflect the input into the output. Also supports 'quack'.</wsdl:documentation>
       <wsdl:input message="tns:echoRequestMsg" name="echoRequest"/>
       <wsdl:output message="tns:echoResponseMsg" name="echoResponse"/>
             <wsdl:fault message="tns:echo_echoFault1Msg" name="echoFault1"/>
