@@ -28,7 +28,7 @@
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
 				<artifactId>maven-wsdl-plugin</artifactId>
-				<version>1.11-SNAPSHOT</version>
+				<version>1.10</version>
 				<extensions>true</extensions>
 			</plugin>
 
@@ -38,7 +38,7 @@
 				<version>2.2</version>
 				<executions>
 					<execution>
-						<phase>generate-sources</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>unpack-dependencies</goal>
 						</goals>
@@ -55,7 +55,6 @@
 				<version>1.12</version>
 				<executions>
 					<execution>
-						<phase>process-sources</phase>
 						<goals>
 							<goal>wsimport</goal>
 						</goals>
@@ -75,6 +74,16 @@
 						<version>2.1.4</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<!-- Don't include the generated client -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>no/stelvio/example/services/v1/echoservice/binding2/EchoServiceWSEXPEchoServiceHttpService.java</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
