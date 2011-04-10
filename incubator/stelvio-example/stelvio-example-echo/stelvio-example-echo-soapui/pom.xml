@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>no.stelvio.example</groupId>
+	<artifactId>stelvio-example-echo-soapui</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>no.stelvio.example</groupId>
+			<artifactId>stelvio-example-echo-providerEAR</artifactId>
+			<type>ear</type>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>was6-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<!--executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>installApp</goal>
+							<goal>wsStartApp</goal>
+						</goals>
+					</execution>
+				</executions-->
+				<configuration>
+					<wasHome>/home/utvikler/IBM/WID7_WTE</wasHome>
+					<conntype>SOAP</conntype>
+					<username>srvPensjon</username>
+					<password>Ash5SoxP</password>
+					<updateExisting>false</updateExisting>
+					<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
+					<applicationName>stelvio-example-echo-providerEAR</applicationName>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>eviware</groupId>
+				<artifactId>maven-soapui-plugin</artifactId>
+				<version>3.6.1</version>
+				<executions>
+					<execution>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
