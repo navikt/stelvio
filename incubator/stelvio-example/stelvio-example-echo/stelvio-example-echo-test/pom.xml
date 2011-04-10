@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.stelvio.example</groupId>
-	<artifactId>stelvio-example-echo-soapui</artifactId>
+	<artifactId>stelvio-example-echo-test</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
 	<dependencies>
@@ -33,15 +33,16 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>was6-maven-plugin</artifactId>
 				<version>1.1.1</version>
-				<!--executions>
+				<executions>
 					<execution>
 						<phase>pre-integration-test</phase>
 						<goals>
+							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
 							<goal>wsStartApp</goal>
 						</goals>
 					</execution>
-				</executions-->
+				</executions>
 				<configuration>
 					<wasHome>/home/utvikler/IBM/WID7_WTE</wasHome>
 					<conntype>SOAP</conntype>
@@ -65,6 +66,11 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<outputFolder>${project.build.directory}/soapui/</outputFolder>
+					<projectFile>${basedir}/${project.artifactId}-soapui-project.xml</projectFile>
+					<testSuite>Smoke</testSuite>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
