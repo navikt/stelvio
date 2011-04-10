@@ -37,9 +37,7 @@
 					<execution>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
-							<goal>wsStartApp</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -50,7 +48,8 @@
 					<port>8879</port>
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
-					<updateExisting>false</updateExisting>
+					<targetCluster>SS_K1.AppTarget</targetCluster>
+					<updateExisting>true</updateExisting>
 					<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
 					<applicationName>stelvio-example-echo-providerEAR</applicationName>
 				</configuration>
