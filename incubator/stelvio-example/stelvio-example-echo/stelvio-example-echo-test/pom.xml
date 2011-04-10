@@ -44,8 +44,10 @@
 					</execution>
 				</executions>
 				<configuration>
-					<wasHome>/home/utvikler/IBM/WID7_WTE</wasHome>
+					<wasHome>${wid.runtime}</wasHome>
 					<conntype>SOAP</conntype>
+					<host>e11apvl007.utv.internsone.local</host>
+					<port>8879</port>
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
 					<updateExisting>false</updateExisting>
