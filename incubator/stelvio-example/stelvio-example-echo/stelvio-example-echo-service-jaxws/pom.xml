@@ -76,6 +76,7 @@
 				</dependencies>
 			</plugin>
 			<!-- Don't include the generated client -->
+			<!-- Warning: Source and Javadoc still includes this file -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
