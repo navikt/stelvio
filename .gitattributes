@@ -2257,11 +2257,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/META-INF/policyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/src/main/application/META-INF/policyAttachments.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/.classpath -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/.project -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/.settings/org.eclipse.wst.validation.prefs -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/sca.module -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/sca.module.attributes -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/EchoWSEXP.export -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/EchoWSIMP.import -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/META-INF/MANIFEST.MF -text
