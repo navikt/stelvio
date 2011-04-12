@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: stelvio-example-echo-provider-ejbClient.jar
+
