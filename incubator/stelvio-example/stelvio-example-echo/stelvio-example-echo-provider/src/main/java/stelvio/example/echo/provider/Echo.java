@@ -6,6 +6,8 @@ import javax.jws.WebService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import stelvio.example.echo.service.EchoServiceBi;
+
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.example.services.v1.echoservice.binding2.EchoEchoFault1Msg;
 import no.stelvio.example.services.v1.echoservice.binding2.EchoService;
@@ -17,12 +19,16 @@ import no.stelvio.example.services.v1.echoservice.binding2.EchoService;
 public class Echo implements EchoService {
 
 	protected final Log log = LogFactory.getLog(this.getClass());
+	
+	EchoServiceBi echoServiceBi;
 
 	public String echo(String input) throws EchoEchoFault1Msg {
 
 		log.debug("Echoing message:" + input);
 		log.debug("Context: " + RequestContextHolder.currentRequestContext());
 
-		return input;
+		echoServiceBi = new EchoServiceBi();
+		return echoServiceBi.echo(input);
 	}
+
 }
