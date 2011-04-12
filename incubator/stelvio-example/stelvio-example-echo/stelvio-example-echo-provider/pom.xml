@@ -44,12 +44,19 @@
 		</plugins>
 	</build>
 	<dependencies>
+
+		<dependency>
+			<groupId>no.stelvio.int</groupId>
+			<artifactId>stelvio-commons-lib</artifactId>
+			<version>4.1.4-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>no.stelvio.example</groupId>
 			<artifactId>stelvio-example-echo-service-jaxws</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -61,14 +68,17 @@
 			<artifactId>logback-classic</artifactId>
 			<version>0.9.26</version>
 		</dependency>
-				
+
 		<dependency>
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-common-java</artifactId>
 			<version>2.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		<!-- Workaround for MECLIPSE-587. groupId should be javaee or eclipse-plugin should detect JEE version differently -->
+
+		<!--
+			Workaround for MECLIPSE-587. groupId should be javaee or
+			eclipse-plugin should detect JEE version differently
+		-->
 		<dependency>
 			<groupId>org.apache.openejb</groupId>
 			<artifactId>javaee-api</artifactId>
