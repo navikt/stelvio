@@ -256,7 +256,7 @@ public class FileHandlerMojo extends AbstractMojo {
 				if (hasLogback(application)){
 					//logback.xml => <config folder>
 					File logbackSource = new File(log4jDir + "/" + logbackFile);
-					File logbackDestination = new File(configDir + "/" + logbackFile);
+					File logbackDestination = new File(configDir + "/" + "logback.xml");
 					try{
 						NativeOps.copy(logbackSource, logbackDestination);
 					}catch (IOException e) {
@@ -281,20 +281,22 @@ public class FileHandlerMojo extends AbstractMojo {
 				if (hasLogback(application)){
 					//logback.xml => <config folder>
 					File logbackSource = new File(log4jDir + "/" + logbackFile);
-					File logbackDestination = new File(configDir + "/" + logbackFile);
+					File logbackDestination = new File(configDir + "/" + "logback.xml");
 					try{
 						NativeOps.copy(logbackSource, logbackDestination);
 					}catch (IOException e) {
-						getLog().warn("Logback.xml file was not found. Check module config for " + this.application, e);
+						getLog().warn("Logback.xml file was not found. Check module config for " + this.application);
 					}
 					
-					//logback_batch.xml => <config folder>
-					File logbackBatchSource = new File(log4jDir + "/" + logbackBatchFile);
-					File logbackBatchDestination = new File(batchDir + "/config/" + logbackBatchFile);
-					try{
-						NativeOps.copy(logbackBatchSource, logbackBatchDestination);
-					}catch (IOException e) {
-						getLog().warn("Logback_batch.xml file was not found. Check module config for " + this.application, e);
+					if (!application.equalsIgnoreCase("popp")){ // popp doesnot have logback_batch.xml
+						//logback_batch.xml => <config folder>
+						File logbackBatchSource = new File(log4jDir + "/" + logbackBatchFile);
+						File logbackBatchDestination = new File(batchDir + "/config/" + "logback.xml");
+						try{
+							NativeOps.copy(logbackBatchSource, logbackBatchDestination);
+						}catch (IOException e) {
+							getLog().warn("Logback_batch.xml file was not found. Check module config for " + this.application);
+						}
 					}
 				}
 			}
