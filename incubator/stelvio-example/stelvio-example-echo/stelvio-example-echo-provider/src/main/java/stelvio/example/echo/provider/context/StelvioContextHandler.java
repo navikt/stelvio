@@ -15,6 +15,7 @@ import javax.xml.ws.handler.soap.SOAPMessageContext;
 import no.stelvio.common.context.RequestContext;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.common.context.support.SimpleRequestContext;
+import no.stelvio.common.util.ExceptionUtils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
