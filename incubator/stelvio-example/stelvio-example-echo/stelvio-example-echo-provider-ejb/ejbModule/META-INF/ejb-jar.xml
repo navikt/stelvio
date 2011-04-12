@@ -11,5 +11,4 @@
 			<transaction-type>Container</transaction-type>
 		</session>
 	</enterprise-beans>
-	<ejb-client-jar>stelvio-example-echo-provider-ejbClient.jar</ejb-client-jar>
 </ejb-jar>

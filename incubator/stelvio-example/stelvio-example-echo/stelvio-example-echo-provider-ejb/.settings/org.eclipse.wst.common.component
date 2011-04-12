@@ -2,11 +2,6 @@
     <wb-module deploy-name="stelvio-example-echo-provider-ejb">
         <wb-resource deploy-path="/" source-path="/ejbModule"/>
         <wb-resource deploy-path="/" source-path="/.apt_generated"/>
-        <dependent-module deploy-path="/" handle="module:/resource/stelvio-example-echo-provider-ejbClient/stelvio-example-echo-provider-ejbClient">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="ejbModule"/>
-        <property name="ClientProject" value="stelvio-example-echo-provider-ejbClient"/>
-        <property name="ClientJARURI" value="stelvio-example-echo-provider-ejbClient.jar"/>
     </wb-module>
 </project-modules>

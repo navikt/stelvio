@@ -3,7 +3,6 @@
 	<name>stelvio-example-echo-provider-ejb</name>
 	<comment></comment>
 	<projects>
-		<project>stelvio-example-echo-provider-ejbClient</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
