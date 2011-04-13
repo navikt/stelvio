@@ -32,7 +32,7 @@
 		<renderer>
 	        <component-family>javax.faces.Data</component-family>
 	        <renderer-type>no.stelvio.Table</renderer-type>
-	        <renderer-class>no.stelvio.presentation.jsf.renderkit.html.ext.HtmlTableRenderer</renderer-class>
+	        <renderer-class>no.stelvio.presentation.jsf.renderkit.html.HtmlTableRenderer</renderer-class>
 		</renderer>     
 	</render-kit>
 	
