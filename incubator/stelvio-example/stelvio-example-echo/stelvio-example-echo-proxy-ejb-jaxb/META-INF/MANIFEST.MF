@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
-Class-Path: stelvio-example-echo-provider-ejbClient.jar
+Class-Path: copiedjars/stelvio-example-echo-proxy-ejb-jaxb/stelvio-exa
+ mple-echo-provider-ejbClient.jar
 Created-By: 1.5.0 (IBM Corporation)
 

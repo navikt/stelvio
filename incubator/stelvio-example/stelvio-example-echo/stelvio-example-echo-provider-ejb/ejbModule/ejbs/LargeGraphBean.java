@@ -41,6 +41,8 @@ public class LargeGraphBean implements javax.ejb.SessionBean {
 	}
 	
 	public LGResponse echo(String input) {
-		return new LGResponse(input);
+		LGResponse response = new LGResponse();
+		response.setOutput(input);
+		return response;
 	}
 }

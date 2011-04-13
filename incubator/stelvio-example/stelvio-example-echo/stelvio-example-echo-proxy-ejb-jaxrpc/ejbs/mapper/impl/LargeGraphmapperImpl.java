@@ -1,15 +1,9 @@
 package ejbs.mapper.impl;
 
-import ejbs.*;
-
 public class LargeGraphmapperImpl {
 
 public LargeGraphmapperImpl() {
 	super();
-}
-
-private Object getMyService() {
-	return (Object) com.ibm.websphere.sca.ServiceManager.INSTANCE.locateService("self");
 }
 
 public ejbs.LargeGraph locateService_LargeGraphPartner() {
