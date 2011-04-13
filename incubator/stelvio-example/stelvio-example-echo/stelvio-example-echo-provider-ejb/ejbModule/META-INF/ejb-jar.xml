@@ -10,5 +10,14 @@
 			<session-type>Stateless</session-type>
 			<transaction-type>Container</transaction-type>
 		</session>
+		<session id="LargeGraph">
+			<ejb-name>LargeGraph</ejb-name>
+			<home>ejbs.LargeGraphHome</home>
+			<remote>ejbs.LargeGraph</remote>
+			<ejb-class>ejbs.LargeGraphBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
 	</enterprise-beans>
+	<ejb-client-jar>stelvio-example-echo-provider-ejbClient.jar</ejb-client-jar>
 </ejb-jar>

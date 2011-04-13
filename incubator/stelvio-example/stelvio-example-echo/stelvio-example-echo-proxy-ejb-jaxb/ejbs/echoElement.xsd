@@ -5,7 +5,7 @@
         <xs:appinfo source="http://www.ibm.com/xmlns/prod/websphere/jaxb/metadata">
           <jasi:JavaObjectTypeMetadata xmlns:jasi="http://www.ibm.com/xmlns/prod/websphere/jaxb/metadata">
             <jasi:ObjectName>ejbs.jaxws.Echo</jasi:ObjectName>
-            <jasi:ImplClass>ejbs.Echo</jasi:ImplClass>
+            <jasi:ImplClass>ejbs.LargeGraph</jasi:ImplClass>
           </jasi:JavaObjectTypeMetadata>
         </xs:appinfo>
       </xs:annotation>

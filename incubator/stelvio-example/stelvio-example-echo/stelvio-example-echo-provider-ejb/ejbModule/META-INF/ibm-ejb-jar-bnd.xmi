@@ -4,4 +4,7 @@
   <ejbBindings xmi:id="EnterpriseBeanBinding_1302587477534" jndiName="ejb/ejbs/EchoHome">
     <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#Echo"/>
   </ejbBindings>
+  <ejbBindings xmi:id="EnterpriseBeanBinding_1302622867757" jndiName="ejb/ejbs/LargeGraphHome">
+    <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#LargeGraph"/>
+  </ejbBindings>
 </ejbbnd:EJBJarBinding>

@@ -11,7 +11,7 @@
   <message name="echoResponse">
     <part element="tns:echoResponse" name="parameters"/>
   </message>
-  <portType name="Echo">
+  <portType name="LargeGraph">
     <operation name="echo">
       <input message="tns:echo"/>
       <output message="tns:echoResponse"/>
