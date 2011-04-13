@@ -13,7 +13,7 @@ import org.apache.myfaces.component.html.ext.HtmlDataTable;
  * @author persone38597605f58 (Capgemini)
  * @version $Id$
  */
-public class HtmlTableRenderer extends org.apache.myfaces.renderkit.html.ext.HtmlTableRenderer {
+public class HtmlTableRenderer extends HtmlTableRendererBase {
 
 	/** {@inheritDoc} */
 	public void encodeChildren(FacesContext facesContext, UIComponent component) throws IOException {
