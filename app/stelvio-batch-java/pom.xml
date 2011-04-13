@@ -53,6 +53,17 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
 			<!-- Framework for AOP (Aspect Oriented Programming), providing method interceptors that for instance is used by Stelvio transfer objects to set service context data behind the scene. Also used in Spring-AOP. -->
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
