@@ -291,12 +291,7 @@ app/stelvio-common-java/src/main/java/no/stelvio/common/log/.copyarea.db -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/InfoLogger.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/Log4jLogger.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/MdcConstants.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/log/ReloadLog4JProperties.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/log/appender/.copyarea.db -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/log/appender/JMSQueueAppender.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/.copyarea.db -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/Log4jLogFactory.java -text
-app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/LogFactoryImpl.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/factory/UndeployListener.java -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/support/.copyarea.db -text
 app/stelvio-common-java/src/main/java/no/stelvio/common/log/support/Log4jInfoLogger.java -text
@@ -469,7 +464,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/event/support/LoggingApp
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/.copyarea.db -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/InfoLoggerTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/.copyarea.db -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/JMSQueueAppenderTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/TestErrorhandler.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/TestInitialContext.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/TestInitialContextFactory.java -text
@@ -478,8 +472,6 @@ app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/TestQueueCo
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/TestQueueSender.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/TestQueueSession.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/log/appender/TestTextMessage.java -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/log/factory/.copyarea.db -text
-app/stelvio-common-java/src/test/java/no/stelvio/common/log/factory/Log4jLogFactoryTest.java -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/.copyarea.db -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/.copyarea.db -text
 app/stelvio-common-java/src/test/java/no/stelvio/common/security/authorization/method/.copyarea.db -text
@@ -977,8 +969,6 @@ app/stelvio-provider-java/src/test/java/no/stelvio/provider/context/.copyarea.db
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/context/map/.copyarea.db -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/context/map/TestDozerMapper.java -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/error/.copyarea.db -text
-app/stelvio-provider-java/src/test/java/no/stelvio/provider/error/logging/.copyarea.db -text
-app/stelvio-provider-java/src/test/java/no/stelvio/provider/error/logging/Log4jTestAppender.java -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/error/strategy/.copyarea.db -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/error/strategy/support/.copyarea.db -text
 app/stelvio-provider-java/src/test/java/no/stelvio/provider/error/strategy/support/ExceptionThrower.java -text

@@ -5,7 +5,8 @@ package no.stelvio.common.cache.support;
 
 import net.sf.ehcache.CacheManager;
 import no.stelvio.common.cache.CacheManagement;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * CacheManagement component for stelvio.
@@ -17,7 +18,7 @@ import org.apache.log4j.Logger;
  * @version $id$
  */
 public class DefaultCacheManagement implements CacheManagement {
-	private Logger log = Logger.getLogger(DefaultCacheManagement.class);
+	private Logger log = LoggerFactory.getLogger(DefaultCacheManagement.class);
 	private CacheManager cacheManager;
 	
 	/**
