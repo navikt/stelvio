@@ -82,6 +82,8 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/InvalidBatchEntr
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/InvalidParameterFormatException.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/NoSuchParameterException.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/NullBatchException.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/listeners/BatchStatusReportLoggerListener.java -text svneol=unset#text/plain
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/listeners/support/ListenerSupport.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/.copyarea.db -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/BatchRepository.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/support/.copyarea.db -text
