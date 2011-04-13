@@ -3,5 +3,5 @@
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" portType="ns1:LargeGraph"/>
   </interfaces>
-  <esbBinding xsi:type="ejb:SLSBImportBinding" dataHandlerType="com.ibm.wbiserver.datahandler.j2w.JAXWSDataHandler" faultSelector="com.ibm.wbiserver.faults.j2w.EJBFaultSelector" functionSelector="com.ibm.wbiserver.selector.j2w.EJBImportFunctionSelector" jndiName="LargeGraphBinding"/>
+  <esbBinding xsi:type="ejb:SLSBImportBinding" dataHandlerType="com.ibm.wbiserver.datahandler.j2w.JAXWSDataHandler" faultSelector="com.ibm.wbiserver.faults.j2w.EJBFaultSelector" functionSelector="com.ibm.wbiserver.selector.j2w.EJBImportFunctionSelector" jndiName="ejb/ejbs/LargeGraphHome"/>
 </scdl:import>
