@@ -351,8 +351,8 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 			inputStream = new FileInputStream(file);
 			return getBOXMLSerializer().readXMLDocument(inputStream).getDataObject();
 		} catch (IOException e) {
-			logger.logp(Level.WARNING, getClass().getName(), "readStubData", "Error reading stub data", e);
-			throw new RuntimeException(e);
+			logger.logp(Level.WARNING, getClass().getName(), "readStubData", "Error reading stub data: " + file.getName(), e);
+			throw new RuntimeException("Error reading stub data: " + file.getName(), e);
 		} finally {
 			closeQuietly(inputStream);
 		}
