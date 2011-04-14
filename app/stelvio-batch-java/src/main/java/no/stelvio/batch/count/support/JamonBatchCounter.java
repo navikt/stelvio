@@ -20,14 +20,27 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	private String jamonPrefix;
 	private boolean isJamonEnabled = false;
 	private static final String UNITS = "ms.";
-	private ThreadLocal<Map<CounterEvent, Monitor>> timeMonitorsForThread = new ThreadLocal<Map<CounterEvent,Monitor>>() {
+	private ThreadLocal<Map<CounterEvent, MonitorRef>> timeMonitorsForThread = new ThreadLocal<Map<CounterEvent,MonitorRef>>() {
 		/** {@inheritDoc} */
 		@Override
-		protected Map<CounterEvent, Monitor> initialValue() {
-			return new HashMap<CounterEvent, Monitor>();
+		protected Map<CounterEvent, MonitorRef> initialValue() {
+			return new HashMap<CounterEvent, MonitorRef>();
 		}
 	};
 
+	/**
+	 * In order to support lazy loading of Jamon. 
+	 * If isJamonEnabled is false, Jamon library should not be required on classpath.
+	 * @author person47c121e3ccb5, BEKK
+	 *
+	 */
+	private static class MonitorRef {
+		private Monitor monitor;
+
+		public MonitorRef(Monitor monitor) {
+			this.monitor = monitor;
+		}
+	}
 	/**
 	 * Creates a counter and registers events.
 	 * 
@@ -53,7 +66,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 		if (isJamonEnabled) {
 			synchronized (event) {
 				Monitor monitor = MonitorFactory.start(getMonKey(event));
-				timeMonitorsForThread.get().put(event, monitor);
+				timeMonitorsForThread.get().put(event, new MonitorRef(monitor));
 			}
 		}
 		super.start(event);
@@ -63,7 +76,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	public void stop(CounterEvent event) {
 		if (isJamonEnabled) {
 			synchronized (event) {
-				Monitor monitor = timeMonitorsForThread.get().get(event);
+				Monitor monitor = timeMonitorsForThread.get().get(event).monitor;
 				monitor.stop();
 			}
 		}
@@ -75,7 +88,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	public void stop(CounterEvent event, int count) {
 		if (isJamonEnabled) {
 			synchronized (event) {
-				Monitor monitor = timeMonitorsForThread.get().get(event);
+				Monitor monitor = timeMonitorsForThread.get().get(event).monitor;
 				monitor.stop();
 				monitor.setHits(monitor.getHits() + count - 1); //monitor.stop() adds 1
 			}
