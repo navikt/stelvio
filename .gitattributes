@@ -720,7 +720,6 @@ app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderki
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlRadioRenderer.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlRadioRendererBase.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlTableRenderer.java -text svneol=unset#text/plain
-app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/renderkit/html/HtmlTableRendererBase.java -text svneol=unset#text/plain
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver/.copyarea.db -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/resolver/MessageSourcePropertyResolver.java -text
 app/stelvio-presentation-java/src/main/java/no/stelvio/presentation/jsf/security/.copyarea.db -text
