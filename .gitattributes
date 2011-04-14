@@ -2356,7 +2356,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/context/StelvioContextData.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/provider/context/StelvioContextHandler.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/service/EchoServiceBi.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/resources/stelvio/example/echo/provider/EchoHandler.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.wst.common.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
