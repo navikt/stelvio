@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>stelvio</artifactId>
@@ -15,8 +16,18 @@
 			<artifactId>stelvio-common-java</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
+
+		<!-- Stelvio (integration) commons library (for ExceptionUtils) -->
 		<dependency>
-			<!--  Stelvio DTO are used in the provider layer for data transfer objects -->
+			<groupId>no.stelvio.int</groupId>
+			<artifactId>stelvio-commons-lib</artifactId>
+			<version>4.1.4-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<!--
+				Stelvio DTO are used in the provider layer for data transfer objects
+			-->
 			<groupId>no.stelvio</groupId>
 			<artifactId>stelvio-dto-java</artifactId>
 			<version>${pom.version}</version>
@@ -27,7 +38,11 @@
 			<version>${pom.version}</version>
 		</dependency>
 		<dependency>
-			<!-- Apache commons-lang library provides a host of helper utilities that extend the standard java.lang API, for example String manipulation methods. -->
+			<!--
+				Apache commons-lang library provides a host of helper utilities that
+				extend the standard java.lang API, for example String manipulation
+				methods.
+			-->
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>${commons-lang.version}</version>
@@ -38,7 +53,10 @@
 			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<!-- spring-context is a Spring core library used for configuration and dependency injection. Builds on the spring-beans library. -->
+			<!--
+				spring-context is a Spring core library used for configuration and
+				dependency injection. Builds on the spring-beans library.
+			-->
 			<artifactId>spring-context</artifactId>
 			<groupId>org.springframework</groupId>
 			<version>${spring.version}</version>
@@ -60,10 +78,10 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-		   <groupId>org.apache.xmlbeans</groupId>
-		   <artifactId>xmlbeans</artifactId>
-		   <version>2.4.0</version>
-		   <scope>test</scope>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.4.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>

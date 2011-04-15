@@ -935,6 +935,9 @@ app/stelvio-provider-java/src/main/java/no/stelvio/provider/codestable/map/.copy
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/codestable/map/AbstractCodesTableItemConverter.java -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/codestable/map/CodesTableItemConverter.java -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/codestable/map/CodesTablePeriodicItemConverter.java -text
+app/stelvio-provider-java/src/main/java/no/stelvio/provider/context/RequestContextSetter.java -text
+app/stelvio-provider-java/src/main/java/no/stelvio/provider/context/StelvioContextData.java -text
+app/stelvio-provider-java/src/main/java/no/stelvio/provider/context/StelvioContextHandler.java -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/error/.copyarea.db -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/error/logging/.copyarea.db -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/error/logging/support/.copyarea.db -text
@@ -956,6 +959,7 @@ app/stelvio-provider-java/src/main/resources/EchoHandler.xml -text svneol=unset#
 app/stelvio-provider-java/src/main/resources/modules/.copyarea.db -text
 app/stelvio-provider-java/src/main/resources/modules/prv-stelvio-context.xml -text
 app/stelvio-provider-java/src/main/resources/modules/prv-stelvio-mapping.xml -text
+app/stelvio-provider-java/src/main/resources/no/stelvio/provider/context/EchoHandler.xml -text
 app/stelvio-provider-java/src/test/.copyarea.db -text
 app/stelvio-provider-java/src/test/java/.copyarea.db -text
 app/stelvio-provider-java/src/test/java/no/.copyarea.db -text
