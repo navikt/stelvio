@@ -287,21 +287,27 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		// Upload application config
 		SSHUtil.uploadDir(node1Hostname, node1LinuxAppUsername, node1LinuxAppPassword, configDir, "/was_app/config", application);
 		// Upload batch config
-		if (isBatch)
+		if (isBatch){
+			SSHUtil.deleteRemoteDir(node1Hostname, node1LinuxBatchUsername, node1LinuxBatchPassword, "/was_app/batch/"+application+"/lib");
 			SSHUtil.uploadDir(node1Hostname, node1LinuxBatchUsername, node1LinuxBatchPassword, batchDir, "/was_app/batch", application);
+		}
 		
 		//node 2
 		if (node2Upload && !zone.equals("intern")) {
 			SSHUtil.uploadDir(node2Hostname, node2LinuxAppUsername, node2LinuxAppPassword, configDir, "/was_app/config", application);
-			if (isBatch) 
+			if (isBatch) {
+				SSHUtil.deleteRemoteDir(node2Hostname, node2LinuxBatchUsername, node2LinuxBatchPassword, "/was_app/batch/"+application+"/lib");
 				SSHUtil.uploadDir(node2Hostname, node2LinuxBatchUsername, node2LinuxBatchPassword, batchDir, "/was_app/batch", application);
+			}
 		}
 		
 		// node 3	
 		if (node3Upload && !zone.equals("intern")) {
 			SSHUtil.uploadDir(node3Hostname, node3LinuxAppUsername, node3LinuxAppPassword, configDir, "/was_app/config", application);
-			if (isBatch) 
+			if (isBatch){ 
+				SSHUtil.deleteRemoteDir(node3Hostname, node3LinuxBatchUsername, node3LinuxBatchPassword, "/was_app/batch/"+application+"/lib");
 				SSHUtil.uploadDir(node3Hostname, node3LinuxBatchUsername, node3LinuxBatchPassword, batchDir, "/was_app/batch", application);
+			}
 		} 
 		
 		// Deploy the application
