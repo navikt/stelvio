@@ -955,7 +955,6 @@ app/stelvio-provider-java/src/main/java/no/stelvio/provider/time/.copyarea.db -t
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/time/map/.copyarea.db -text
 app/stelvio-provider-java/src/main/java/no/stelvio/provider/time/map/ChangeStampMapper.java -text
 app/stelvio-provider-java/src/main/resources/.copyarea.db -text
-app/stelvio-provider-java/src/main/resources/EchoHandler.xml -text svneol=unset#text/plain
 app/stelvio-provider-java/src/main/resources/modules/.copyarea.db -text
 app/stelvio-provider-java/src/main/resources/modules/prv-stelvio-context.xml -text
 app/stelvio-provider-java/src/main/resources/modules/prv-stelvio-mapping.xml -text
