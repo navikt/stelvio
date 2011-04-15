@@ -3,7 +3,7 @@
 	<jws:handler-chain>
 		<jws:handler>
 			<jws:handler-class>
-			stelvio.example.echo.provider.context.StelvioContextHandler
+			no.stelvio.provider.context.StelvioContextHandler
 			</jws:handler-class>
 		</jws:handler>
 	</jws:handler-chain>
