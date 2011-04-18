@@ -4,7 +4,9 @@ import static no.stelvio.batch.listeners.support.ListenerSupport.formatMilliseco
 
 import java.net.InetAddress;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import no.stelvio.common.log.InfoLogger;
 
@@ -24,9 +26,14 @@ import org.springframework.util.Assert;
  * @version $Id$
  */
 public final class BatchStatusReportLoggerListener implements JobExecutionListener, InitializingBean {
-
-	private static final String CURRENT_SCHEMA_SQL = "SELECT current_schema from SYSIBM.SYSDUMMY1";
-
+	
+	public static final String DB2 = "db2";
+	private Map<String, String> dbTypeToSql = new HashMap<String, String>() {{
+		put(DB2, "SELECT current_schema from SYSIBM.SYSDUMMY1");
+	}};
+	
+	private String databaseType = DB2;
+	 
 	/** Spring injected. */
 	private InfoLogger infoLogger;
 
@@ -199,7 +206,13 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
 	 * @return Current DB2 Schema
 	 */
 	private String getCurrentSchema() {
-		String currentSchema = (String) jdbcTemplate.queryForObject(CURRENT_SCHEMA_SQL, String.class);
+		String currentSchema = "UNKNOWN";
+		String currentSchemaSql = dbTypeToSql.get(databaseType);
+		
+		if(currentSchemaSql != null) {
+			currentSchema = (String) jdbcTemplate.queryForObject(currentSchemaSql, String.class);
+		}
+
 		return currentSchema;
 	}
 
@@ -236,4 +249,21 @@ public final class BatchStatusReportLoggerListener implements JobExecutionListen
 		Assert.notNull(infoLogger, "BatchStatusReportLoggerListener requires a InfoLogger");
 		Assert.notNull(jdbcTemplate, "BatchStatusReportLoggerListener requires a JdbcTemplate");
 	}
+	
+	/**
+	 * Get the databayse type
+	 * @return the databasetype as a String
+	 */
+	public String getDatabaseType() {
+		return databaseType;
+	}
+
+	/**
+	 * Sets the database type
+	 * @param databaseType the database type to set
+	 */
+	public void setDatabaseType(String databaseType) {
+		this.databaseType = databaseType;
+	}
+
 }
