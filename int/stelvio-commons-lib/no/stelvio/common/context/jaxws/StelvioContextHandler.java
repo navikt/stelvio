@@ -24,9 +24,9 @@ public class StelvioContextHandler implements SOAPHandler<SOAPMessageContext> {
 			"StelvioContext");
 	private static final Set<QName> PROCESSED_HEADERS_QNAME = Collections.singleton(STELVIO_CONTEXT_QNAME);
 
-	private final JAXBContext jaxbContext;
+	private static final JAXBContext jaxbContext;
 
-	public StelvioContextHandler() {
+	static {
 		try {
 			jaxbContext = JAXBContext.newInstance(StelvioContextData.class);
 		} catch (JAXBException e) {
