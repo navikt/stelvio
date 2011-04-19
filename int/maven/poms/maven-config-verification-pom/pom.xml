@@ -16,14 +16,8 @@
 	<name>maven-build-pom</name>
 
 	<properties>
-		<buildVersion>1.0-SNAPSHOT</buildVersion>
-		<configVersion>7.0.1-SNAPSHOT</configVersion>
-		<ccProjectDir>D:/cc/</ccProjectDir>
+		<configVersion>7.0.14-SNAPSHOT</configVersion>
 	</properties>
-
-	<dependencies>
-
-	</dependencies>
 
 	<build>
 		<plugins>	
