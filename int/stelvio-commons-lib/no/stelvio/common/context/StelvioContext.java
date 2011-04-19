@@ -11,8 +11,8 @@ import no.stelvio.common.util.ExceptionUtils;
 import com.ibm.websphere.security.auth.WSSubject;
 import com.ibm.websphere.security.cred.WSCredential;
 import com.ibm.websphere.workarea.UserWorkArea;
-import com.ibm.ws.session.WBISessionManager;
-import com.ibm.wsspi.session.ActivityData;
+import com.ibm.wsspi.bpm.session.ContextPropagation;
+import com.ibm.wsspi.bpm.session.SessionActivityData;
 
 /**
  * @author test@example.com
@@ -93,7 +93,7 @@ public class StelvioContext {
 		// LS Doesn't exists in WPS7 and WBISessionManager are deprecated
 		// because OnlineSession doesn't hold an WBISession
 		// (sessionManager.getSessionContext().isSessionExisted() is removed)
-		ActivityData sessionContext = WBISessionManager.getInstance().getSessionContext();
+		SessionActivityData sessionContext = ContextPropagation.INSTANCE.getSessionContext();
 		if (sessionContext != null) {
 			wbiSessionId = sessionContext.getSessionId();
 		} else {
