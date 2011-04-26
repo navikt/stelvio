@@ -5,6 +5,27 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="4.1.4" date="15-03-2011" description="Bugfix release">
+			<action dev="tne2812" type="fix">Improved error message when an error occured reading XML (stubbing)</action>
+			<action dev="oga2812" type="fix">NAV00243862: Static initialization of JAXBContext for StelvioPropagationContext (performance)</action>
+		</release>
+		<release version="4.1.3" date="15-03-2011" description="Bugfix release">
+			<action dev="tne2812" type="fix">Add check for null in isOneWayOperation</action>
+		</release>
+		<release version="4.1.2" date="11-03-2011" description="Bugfix release">
+			<action dev="tne2812" type="fix">Fix stubbing framework when using primitive types</action>
+		</release>
+		<release version="4.1.1" date="24-02-2011" description="Bugfix release">
+			<action dev="tne2812" type="fix">Fix listInstalledNAVModules in stubbing framework</action>
+		</release>
+		<release version="4.1" date="18-02-2011" description="Maintenance release">
+			<action dev="tne2812" type="add">Add methods for reading SystemNames and more from from stubbing framework. To be used in automated testing.</action>
+			<action dev="ebh2812" type="fix">Fix SIR 182044: Incorrect validation in validateSupported.</action>
+			<action dev="ebh2812" type="add">Incident 183726: Implemented new utility method to "visit" all simple properties in a data object structure. Added two new methods using this new utility. One for trimming string properties (as requested by incident), and one to nullify blank strings. The latter functionality is currently duplicated in several modules.</action>
+			<action dev="tne2812" type="add">Added support for one-way operations</action>
+			<action dev="tne2812" type="fix">Fix recording for WPS 7.0</action>
+			<action dev="tne2812" type="add">Remove requestContextDto from input to avoid every message being unique</action>
+		</release>
 		<release version="4.0" date="17-07-2010" description="Major release">
 			<action dev="ebh2812" type="add">New interceptor component implementation (SetRequestContextComponent) that can be used to extract information from the Stelvio Context to Request Context.</action>
 			<action dev="ebh2812" type="add">New interceptor component implementation (EmptyInterceptorService) that can be used when you need a dummy component to set some configuration.</action>
