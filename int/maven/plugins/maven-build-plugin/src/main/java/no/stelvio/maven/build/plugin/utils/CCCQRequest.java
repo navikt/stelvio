@@ -103,7 +103,7 @@ public class CCCQRequest {
 	 * @throws MojoFailureException
 	 */
 	public static int checkInFile(File f) throws MojoFailureException {
-		String subcommand = "checkin -nc " + f.getName();
+		String subcommand = "checkin -nc -identical " + f.getName();
 		return CleartoolCommandLine.runClearToolCommand(f.getParent(), subcommand);
 	}
 
