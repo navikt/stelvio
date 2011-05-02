@@ -40,7 +40,7 @@ public class ConcurrentJamonBatchCounterTest {
 	public void shouldHandleStartAndStopConcurrently() throws Exception {
 		final int sleeptime = 100;
 		ConcurrentCounterTestUtil.executeConcurrentStartAndStop(counter, concurrentEvent, sleeptime);
-		Monitor monitor = counter.getMonitor(concurrentEvent);
+		Monitor monitor = (Monitor) counter.getMonitor(concurrentEvent);
 		assertTrue(monitor.getTotal() > sleeptime);
 	}
 	
@@ -61,7 +61,7 @@ public class ConcurrentJamonBatchCounterTest {
 		int numberOfTimeSamplesPerThread = numberOfExecutionsPerThread / 10000;
 		ConcurrentExecutor.execute(noOfThreads, numberOfTimeSamplesPerThread, action);	
 		
-		Monitor monitor = counter.getMonitor(concurrentEvent);
+		Monitor monitor = (Monitor) counter.getMonitor(concurrentEvent);
 		assertEquals(noOfThreads * numberOfTimeSamplesPerThread * sleeptime, monitor.getTotal(), 500);
 	}	
 	
@@ -159,10 +159,10 @@ public class ConcurrentJamonBatchCounterTest {
 	}	
 	
 	private void assertHits(int hits) {
-		assertEquals(hits, counter.getMonitor(concurrentEvent).getHits(), 0);
+		assertEquals(hits, ((Monitor) counter.getMonitor(concurrentEvent)).getHits(), 0);
 	}
 	
 	private void assertTotalTime(int time) {
-		assertEquals(time, counter.getMonitor(concurrentEvent).getTotal(), 0);
+		assertEquals(time, ((Monitor) counter.getMonitor(concurrentEvent)).getTotal(), 0);
 	}	
 }

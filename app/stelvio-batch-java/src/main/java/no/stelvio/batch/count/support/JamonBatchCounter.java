@@ -65,7 +65,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	public void start(CounterEvent event) {
 		if (isJamonEnabled) {
 			synchronized (event) {
-				Monitor monitor = MonitorFactory.start(getMonKey(event));
+				Monitor monitor = MonitorFactory.start((MonKey) getMonKey(event));
 				timeMonitorsForThread.get().put(event, new MonitorRef(monitor));
 			}
 		}
@@ -99,7 +99,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void incrementEvent(CounterEvent event) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getMonitor(getMonKey(event));
+			Monitor monitor = MonitorFactory.getMonitor((MonKey) getMonKey(event));
 			synchronized (event) {
 				monitor.setHits(monitor.getHits() + 1);
 			}
@@ -110,7 +110,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void incrementEvent(CounterEvent event, long ms) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getMonitor(getMonKey(event));
+			Monitor monitor = MonitorFactory.getMonitor((MonKey) getMonKey(event));
 			synchronized (event) {
 				monitor.add(ms);
 			}
@@ -121,7 +121,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void addEvents(CounterEvent event, long count) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getMonitor(getMonKey(event));
+			Monitor monitor = MonitorFactory.getMonitor((MonKey) getMonKey(event));
 			synchronized (event) {
 				monitor.setHits(monitor.getHits() + count);
 			}
@@ -132,7 +132,7 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	@Override
 	public void addEvents(CounterEvent event, long count, long ms) {
 		if (isJamonEnabled) {
-			Monitor monitor = MonitorFactory.getMonitor(getMonKey(event));
+			Monitor monitor = MonitorFactory.getMonitor((MonKey) getMonKey(event));
 			synchronized (event) {
 				monitor.add(ms);
 				monitor.setHits(monitor.getHits() + count - 1); //monitor.add adds 1
@@ -142,11 +142,21 @@ public class JamonBatchCounter extends SimpleBatchCounter {
 	}
 	
 	
-	public Monitor getMonitor(CounterEvent event) {
-		return MonitorFactory.getTimeMonitor(getMonKey(event));
+	/**
+	 * (object return type in case of jamon not on classpath/should be supported if isJamonEnabled is false)
+	 * @param event Event to get monitor for
+	 * @return A jamon monitor  
+	 */
+	public Object getMonitor(CounterEvent event) {
+		return MonitorFactory.getTimeMonitor((MonKey) getMonKey(event));
 	}
 	
-	private MonKey getMonKey(CounterEvent event) {
+	/**
+	 * (object return type in case of jamon not on classpath/should be supported if isJamonEnabled is false)
+	 * @param event Event to get gey for
+	 * @return A MonKey  
+	 */
+	private Object getMonKey(CounterEvent event) {
 		return new MonKeyImp(getMonitorLabel(event), UNITS);
 	}
 	
