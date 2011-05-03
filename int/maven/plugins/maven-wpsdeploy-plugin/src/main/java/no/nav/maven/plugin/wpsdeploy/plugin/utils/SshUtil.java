@@ -80,6 +80,7 @@ public class SshUtil {
 	
 	public static boolean stopDeploymentManager(String hostname, String username, String password, String dmgrUsername, String dmgrPassword) throws IOException {
 		SessionChannelClient session = openSshSession(hostname, username, password);
+		session.startShell();
 		if (session != null) {
 			String cmd = "/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/stopManager.sh -username "+dmgrUsername+" -password "+dmgrPassword;
 			boolean result = executeCommand(cmd, session);
@@ -119,4 +120,60 @@ public class SshUtil {
 			return stop;
 		}
 	}
+
+	/**
+	 * Checks if there is enough disk space available
+	 * @param hostname
+	 * @param username
+	 * @param password
+	 * @return true if there is enough space, false otherwise
+	 * @throws IOException
+	 */
+	public static boolean checkDiskSpace(String hostname, String username, String password) throws IOException{
+		SessionChannelClient session = openSshSession(hostname, username, password);
+		if (session != null) {
+			String cmd = "df /opt/";
+			boolean result = false;
+			System.out.println("[INFO] Checking disk space usage in /opt");
+			if (session.executeCommand(cmd)) {
+				InputStream in = session.getInputStream();
+				byte buffer[] = new byte[255];
+				int read;
+							
+				String output = "";
+				while ((read = in.read(buffer)) > 0) {
+					output += new String(buffer, 0, read);
+					System.out.print(output);
+				}	
+				String space_available = output.split("\n")[2].trim().split("  ")[2].trim();
+				result = compareSizeStrings(space_available, "500000") > 0; // size_available > 500M
+			} else {
+				System.out.println("[ERROR] Execution of command failed!");
+			}
+			return result;
+		} else {
+			System.out.println("[ERROR] Could not create ssh session! Disk space check failed.");
+			return false;
+		}
+	}
+	
+	/**
+	 * Compares numbers from strings
+	 * @param a
+	 * @param b
+	 * @return positiv if a>b, negativ if a&ltb or error (message is written out), 0 if either a=b 
+	 */
+	private static int compareSizeStrings(String a, String b){
+		int number_a = 0;
+		int number_b = 0;
+		try{
+			number_a = Integer.parseInt(a);
+			number_b = Integer.parseInt(b);	
+			return number_a - number_b;
+		}catch (NumberFormatException e){
+			System.out.println("Size is in incorrect format");
+			return -1;
+		}
+	}
 }
+

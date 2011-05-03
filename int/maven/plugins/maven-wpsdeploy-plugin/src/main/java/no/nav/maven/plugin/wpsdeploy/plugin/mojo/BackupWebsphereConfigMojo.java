@@ -17,6 +17,10 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class BackupWebsphereConfigMojo extends WebsphereUpdaterMojo {
 
+	/**
+	 * @parameter expression="${config.backup.skip}"
+	 */
+	private boolean skipBackup;
 	
 	@Override
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
@@ -26,10 +30,19 @@ public class BackupWebsphereConfigMojo extends WebsphereUpdaterMojo {
 		}
 	
 		try {
-			SshUtil.backupConfig(dmgrHostname, linuxUser, linuxPassword);
+			if (!checkDiskSpace())
+				throw new MojoFailureException("Not enought space on dmgr available! Cannot continue.");
+			
+			if (skipBackup) getLog().info("Skipping backup of WebSohere configuration");
+			else SshUtil.backupConfig(dmgrHostname, linuxUser, linuxPassword);
+			
 		} catch (IOException e) {
 			throw new MojoFailureException(e.getMessage());
 		}
+	}
+	
+	private boolean checkDiskSpace() throws IOException{
+		return SshUtil.checkDiskSpace(dmgrHostname, linuxUser, linuxPassword);
 	}
 	
 	protected String getGoalPrettyPrint() {
