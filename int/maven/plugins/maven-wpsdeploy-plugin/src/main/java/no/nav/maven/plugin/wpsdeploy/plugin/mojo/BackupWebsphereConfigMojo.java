@@ -32,7 +32,7 @@ public class BackupWebsphereConfigMojo extends WebsphereUpdaterMojo {
 		try {
 			if (!checkDiskSpace())
 				throw new MojoFailureException("Not enought space on dmgr available! Cannot continue.");
-			
+			else getLog().info("There is enough disk space. Proceeding with deployment.");
 			if (skipBackup) getLog().info("Skipping backup of WebSohere configuration");
 			else SshUtil.backupConfig(dmgrHostname, linuxUser, linuxPassword);
 			
