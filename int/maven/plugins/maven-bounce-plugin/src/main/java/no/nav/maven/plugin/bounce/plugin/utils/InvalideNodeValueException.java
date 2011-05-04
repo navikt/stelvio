@@ -12,6 +12,11 @@ public class InvalideNodeValueException extends Exception {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
 	public InvalideNodeValueException() {
 		// TODO Auto-generated constructor stub
 	}

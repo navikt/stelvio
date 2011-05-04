@@ -11,7 +11,7 @@
 	
 	<groupId>no.stelvio.maven.plugins</groupId>
 	<artifactId>maven-bounce-plugin</artifactId>
-	<version>1.4-SNAPSHOT</version>
+	<version>2.0-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>maven-bounce-plugin Maven Mojo</name>
 	
@@ -29,12 +29,22 @@
 			<version>2.0.5</version>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>sshtools</groupId>
+			<artifactId>j2ssh-core</artifactId>
+			<version>0.2.9</version>
+		</dependency>	
+		<dependency>
 			<groupId>no.nav.devarch.utils</groupId>
   			<artifactId>application-config</artifactId>
   			<version>1.0</version>
-		</dependency>		
+		</dependency>
+			
 	</dependencies>
-	
+
 	<scm>
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-bounce-plugin</connection>
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-bounce-plugin</developerConnection>
