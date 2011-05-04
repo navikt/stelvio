@@ -50,7 +50,7 @@ def main(ENVS):
 		
 		if BOUNCE == "true":
 			APPS = getApps()
-			BOUNCE_STRING = "cd ../maven-bounce-pom/ && mvn clean install -Dapps=" + APPS + " -DenvClass=" + ENV_CLASS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS   
+			BOUNCE_STRING = "cd ../maven-bounce-pom/ && mvn clean install -Dapps=" + APPS + " -DenvClass=" + ENV_CLASS + " -Denv=" + ENV + " -Dda-configuration-version=" + CONFIG_VERSION + " -DexcludeBus=" + EXCLUDE_BUS + " -Dzone=sensitiv"   
 			retval = subprocess.call(BOUNCE_STRING, shell=True) 		
 			if retval != 0:
 				BOUNCE_FAIL = "true"	
