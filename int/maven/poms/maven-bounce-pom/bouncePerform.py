@@ -19,18 +19,24 @@ WPS = sys.argv[6]
 JOARK = sys.argv[7]
 ONLY_APP_TARGET = sys.argv[8]
 
+# envClass and zone
 if(len(sys.argv) > 10):
     ENV_CLASS = sys.argv[9]
     ZONE = sys.argv[10]
+else:
+    ENV_CLASS = "T"
+    ZONE = "sensitiv"
+	
+# bounce_app_servers, bounce_dmgr, ifix_install
+if(len(sys.argv) > 13):
     BOUNCE_APP_SERVERS = sys.argv[11]
     BOUNCE_DMGR_NA = sys.argv[12]
     IFIX = sys.argv[13]
 else:
-    ENV_CLASS = "T"
-    ZONE = "sensitiv"
     BOUNCE_APP_SERVERS = "true"
     BOUNCE_DMGR_NA = "false"
     IFIX = "false"
+
 
 if (len(ENVS) == 0):
     print "[ERROR] No environment(s) specified."
