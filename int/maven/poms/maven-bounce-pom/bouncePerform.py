@@ -3,6 +3,24 @@
 import sys
 import subprocess
 
+def execute(command):
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    output = ''
+
+    # Poll process for new output until finished
+    for line in iter(process.stdout.readline, ""):
+        print line,
+        output += line
+
+
+    process.wait()
+    exitCode = process.returncode
+
+    if (exitCode == 0):
+        return output
+    else:
+        raise Exception(command, exitCode, output)
+
 if (len(sys.argv) < 9):
     print "[ERROR] Missing parameters. Usage: bouncePerform.py envs action da_config_verson wasSs wasIs wps joark onlyAppTarget [env_class zone bounce_app_servers bounce_dmgr_na install_ifix]"
     print "[EXAMPLE 1] bouncePerform.py T1,T2 stop 7.0.1 true false true true false - this will stop WAS SS (both PensjonsCluster adn Joark) and WPS (all clusters) in T1 and T2"
@@ -61,8 +79,9 @@ for ENV in ENVS:
     BOUNCE_STRING += " -Dinstall_ifix=" + IFIX
 	
     print BOUNCE_STRING
-    retval = subprocess.call(BOUNCE_STRING, shell=True)
-    if (retval != 0):
+    try:
+	execute(BOUNCE_STRING)
+    except Exception:
         FAIL = "true"
         FAILED_ENVS += ENV + ", "
 
