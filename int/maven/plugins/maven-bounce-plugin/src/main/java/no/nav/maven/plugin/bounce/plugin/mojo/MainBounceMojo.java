@@ -1,12 +1,20 @@
 package no.nav.maven.plugin.bounce.plugin.mojo;
 
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import no.nav.devarch.utils.Application;
 import no.nav.maven.plugin.bounce.plugin.utils.AppServerBouncer;
 import no.nav.maven.plugin.bounce.plugin.utils.DmgrNaBouncer;
 import no.nav.maven.plugin.bounce.plugin.utils.IFixInstaller;
+import no.nav.maven.plugin.bounce.plugin.utils.XMLParser;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.xml.sax.SAXException;
 
 /**
  * Goal that decides what should be restarted and in which order
@@ -18,14 +26,12 @@ import org.apache.maven.plugin.MojoFailureException;
  */
 public class MainBounceMojo extends AbstractMojo {
 	
+	private boolean bounce_servers;
+	
 	/**
 	 * @parameter expression="${action}" default-value="restart"
 	 */
 	protected String action;
-	/**
-	 * @parameter expression="${bounce_app_servers}" default-value=true
-	 */
-	private boolean bounce_servers;
 	/**
 	 * @parameter expression="${bounce_dmgr_na}" default-value=false
 	 */
@@ -35,6 +41,32 @@ public class MainBounceMojo extends AbstractMojo {
 	 * @parameter expression="${install_ifix}" 
 	 */
 	private boolean install_ifixes;
+	
+	
+	private boolean wasSs;
+	
+	private boolean wasIs;
+
+	private boolean wps;
+	
+	private boolean onlyAppTarget;
+	
+	/**
+	 * @parameter expression="${ss_pensjons_cluster}"
+	 */
+	private boolean ss_pensjonsCluster;
+	/**
+	 * @parameter expression="${is_pensjons_cluster}"
+	 */
+	private boolean is_pensjonsCluster;
+	/**
+	 * @parameter expression="${apptarget}"
+	 */
+	private boolean wps_AppTarget;
+	/**
+	 * @parameter expression="${msg_sup}"
+	 */
+	private boolean wps_MessagingAndSupport;
 	
 	// ==== parameters to bounce app servers ====
 	/**
@@ -60,30 +92,15 @@ public class MainBounceMojo extends AbstractMojo {
 	 */
 	private String apps;
 	/**
-	 * @parameter expression="${wasSs}"
+	 * @parameter expression="${excludeBus}"
 	 */
-	private boolean wasSs;
-	/**
-	 * @parameter expression="${wasIs}"
-	 */
-	private boolean wasIs;
-	/**
-	 * @parameter expression="${wps}"
-	 */
-	private boolean wps;
-	/**
-	 * @parameter expression="${onlyAppTarget}"
-	 */
-	private boolean onlyAppTarget;
+	private boolean excludeBus;
 	/**
 	 * @parameter expression="${wid.runtime}"
 	 * @required
 	 */
 	private String widRuntime;
-	/**
-	 * @parameter expression="${excludeBus}"
-	 */
-	private boolean excludeBus;
+	
 	/**
 	 * @parameter expression="${environmentFilesDir}"
 	 * @required
@@ -91,7 +108,7 @@ public class MainBounceMojo extends AbstractMojo {
 	private String envFilesDir;
 	// ==== parameters to bounce app servers ====
 	
-	// ==== parameters to boucne dmgr and node agents ====
+	// ==== parameters to bounce dmgr and node agents ====
 	// these parameters should be the same for both dmgr and node agents.
 	/**
 	 * @parameter expression="${environment/servers/was/node1/linux-app-username}"
@@ -162,54 +179,21 @@ public class MainBounceMojo extends AbstractMojo {
 	 * @parameter expression="${environment/servers/wps/node2/hostname}"
 	 */
 	private String wps_node2_hostname;
-	// ==== parameters to boucne dmgr and node agents ====
-	
+	// ==== parameters to bounce dmgr and node agents ====
 
-//	@Override
-//	public void execute() throws MojoExecutionException, MojoFailureException {
-//		boolean dmgr_stopped = false;
-//		IFixInstaller ifixInstaller = this.getIFixInstaller();
-//		getLog().info("server type: " + this.getServerType());
-//		if (action.equalsIgnoreCase("stop") || action.equalsIgnoreCase("restart")){
-//			if (bounce_servers){ 
-//				this.bounceAppServers("stop");
-//				if (ifixInstaller.isInstallNeeded()){
-//					getLog().info("IFix installation is going to be performed");
-//					this.bounceDmgrAndNA("stop");
-//					dmgr_stopped = true;
-//					ifixInstaller.installIFixes();
-//					this.bounce_dmgr_na = true;
-//				}else{
-//					getLog().info("IFix installation is not needed");
-//				}
-//			}
-//			if (bounce_dmgr_na && !dmgr_stopped)
-//				this.bounceDmgrAndNA("stop");
-//			else getLog().info("Skipping stop of dmgr and na");
-//		}
-//		if (action.equalsIgnoreCase("start") || action.equalsIgnoreCase("restart")){
-//			dmgr_stopped = true;
-//			if (ifixInstaller.isInstallNeeded()){
-//				getLog().info("IFix installation is going to be performed");
-//				this.bounceDmgrAndNA("stop");
-//				ifixInstaller.installIFixes();
-//				this.bounceDmgrAndNA("start");
-//				dmgr_stopped = false;
-//				this.bounce_dmgr_na = false;
-//			}else{
-//				getLog().info("IFix installation is not needed");
-//			}
-//			if (bounce_dmgr_na && dmgr_stopped)
-//				this.bounceDmgrAndNA("start");
-//			else getLog().info("Skipping start of dmgr and na");
-//			if (bounce_servers)
-//				this.bounceAppServers("start");
-//			else getLog().info("Skipping start of appservers");
-//		}
-//	}
 	
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException{
+		
+		try {
+			this.ResolveRestart();
+		} catch (SAXException e) {
+			getLog().error(e.getMessage());
+		} catch (IOException e) {
+			getLog().error(e.getMessage());
+		} catch (ParserConfigurationException e) {
+			getLog().error(e.getMessage());
+		} 
 		getLog().info("bouce_servers: " + this.bounce_servers);
 		getLog().info("bouce_dmgr: " + this.bounce_dmgr_na);
 		getLog().info("ifix: " + this.install_ifixes);
@@ -305,27 +289,59 @@ public class MainBounceMojo extends AbstractMojo {
 				wps_dmgr_hostname,
 				wps_node1_hostname,
 				wps_node2_hostname,
-				getServerType() // was/wps/all
+				getServerType() // was/wps/all/none
 		);
 	}
 	
+	/**
+	 * This method will parse the apps string together with the restart_config.xml and decide which modules should be restarted. The appropriate variables are set to true.
+	 * 
+	 * @throws ParserConfigurationException
+	 * @throws IOException
+	 * @throws SAXException
+	 */
+	private void ResolveRestart() throws SAXException, IOException, ParserConfigurationException {
+		if (this.apps != null){ // try to find out what should be restarted
+			// apps-string:
+			String[] apps_names = apps.split(",");
+			getLog().info("[INFO] Starting resolve for " + apps);
+			getLog().info("[INFO] Parsing application configuration file ...");
+			// restart_config.xml
+			HashMap<String, Application> restart_config = XMLParser.parseRestartConfigFile(this.restartCfgFile);
+			// set variables
+			for (String name : apps_names) {
+				wasSs |= restart_config.get(name).isWasSSRestartRequired();
+				wasIs |= restart_config.get(name).isWasISRestartRequired();
+				wps |= restart_config.get(name).isWpsRestartRequired();
+				if (name.equalsIgnoreCase("joark"))
+					this.includeJoark = true;
+			}
+			if (this.excludeBus)
+				wps = false;
+			this.onlyAppTarget = true;
+			this.bounce_servers = true;
+		} else {
+			wasSs = ss_pensjonsCluster;
+			wasIs = is_pensjonsCluster;
+			wps = wps_AppTarget & !excludeBus;
+			onlyAppTarget = !wps_MessagingAndSupport;
+			this.bounce_servers = true;
+		}
+	}
+	
 	private AppServerBouncer getAppServerBouncer(String action){
-		if (this.apps != null) action = null; // let AppServerBouncer find out what should be restarted
 		return new AppServerBouncer(
 				this, 
 				this.widRuntime, 
 				this.env, 
 				this.envFilesDir, 
-				this.restartCfgFile, 
 				action, 
 				this.buildDir, 
-				this.apps, 
 				this.wasSs, 
 				this.wasIs, 
 				this.wps, 
 				this.onlyAppTarget, 
-				this.includeJoark, 
-				this.excludeBus
+				this.includeJoark 
 		);
 	}
 	
@@ -333,7 +349,7 @@ public class MainBounceMojo extends AbstractMojo {
 		if ((this.wasSs || this.wasIs) && this.wps) return "all";
 		else if (this.wasSs || this.wasIs) return "was";
 		else if (this.wps) return "wps";
-		return "all";
+		return "none";
 	}
 	
 	private DmgrNaBouncer getDmgrNaBouncer(String action){

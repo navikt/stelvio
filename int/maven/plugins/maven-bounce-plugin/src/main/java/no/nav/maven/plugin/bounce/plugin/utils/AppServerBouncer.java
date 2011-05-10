@@ -23,16 +23,13 @@ import org.xml.sax.SAXException;
 
 public class AppServerBouncer {
 
-	private String restartCfgFile;
 	private String buildDir;
 	private boolean includeJoark;
-	private String apps;
 	private boolean wasSs;
 	private boolean wasIs;
 	private boolean wps;
 	private boolean onlyAppTarget;
 	private String widRuntime;
-	private boolean excludeBus;
 	private String envFilesDir;
 	private String env;
 	private String action;
@@ -90,81 +87,39 @@ public class AppServerBouncer {
 			String widRuntime,
 			String env,
 			String envFilesDir,
-			String restartCfgFile,
 			String action,
 			String buildDir,
-			String apps,
 			boolean wasSs,
 			boolean wasIs,
 			boolean wps,
 			boolean onlyAppTarget,
-			boolean includeJoark,
-			boolean excludeBus
-			
+			boolean includeJoark			
 	){
-		this.restartCfgFile = restartCfgFile;
 		this.buildDir = buildDir;
 		this.includeJoark = includeJoark;
-		this.apps = apps;
 		this.wasSs = wasSs;
 		this.wasIs = wasIs;
 		this.wps = wps;
 		this.onlyAppTarget = onlyAppTarget;
 		this.widRuntime = widRuntime;
-		this.excludeBus = excludeBus;
 		this.envFilesDir = envFilesDir;
 		this.mainBounceMojo = mbm;
 		this.env = env;
 		this.action = action;
 	}
 	
-	/**
-	 * This method will parse the apps string together with the restart_config.xml and decide which modules should be restarted. The appropriate variables are set to true.
-	 * 
-	 * @throws ParserConfigurationException
-	 * @throws IOException
-	 * @throws SAXException
-	 */
-	private void ResolveRestart() throws SAXException, IOException, ParserConfigurationException {
-		// apps-string:
-		String[] apps_names = apps.split(",");
-
-		// restart_config.xml
-		HashMap<String, Application> restart_config = XMLParser.parseRestartConfigFile(this.restartCfgFile);
-		// set variables
-		for (String name : apps_names) {
-			was_ss_operation |= restart_config.get(name).isWasSSRestartRequired();
-			was_is_operation |= restart_config.get(name).isWasISRestartRequired();
-			wps_operation |= restart_config.get(name).isWpsRestartRequired();
-			if (name.equalsIgnoreCase("joark"))
-				this.includeJoark = true;
-		}
-		if (this.excludeBus)
-			wps_operation = false;
-		this.onlyAppTarget = true;
-		if (!this.wasIs)
-			was_is_operation = false;
-	}
-
 	public void performOperation() throws MojoExecutionException, MojoFailureException {
 		envFile = envFilesDir + "/" + env.toUpperCase() + ".xml";
 
 		try {
 			Operation operationMode = Operation.RESTART;
-			if (action != null) {
-				was_ss_operation = wasSs;
-				was_is_operation = wasIs;
-				wps_operation = wps;
-				if (action.equalsIgnoreCase("start"))
-					operationMode = Operation.START;
-				else if (action.equalsIgnoreCase("stop"))
-					operationMode = Operation.STOP;
-			} else {
-				getLog().info("");
-				getLog().info("Parsing application configuration file ...");
-				getLog().info("");
-				this.ResolveRestart();
-			}
+			was_ss_operation = wasSs;
+			was_is_operation = wasIs;
+			wps_operation = wps;
+			if (action.equalsIgnoreCase("start"))
+				operationMode = Operation.START;
+			else if (action.equalsIgnoreCase("stop"))
+				operationMode = Operation.STOP;
 
 			File xml = new File(this.envFile);
 			String parse_result = XMLParser.parseEnvironmentFile(xml);

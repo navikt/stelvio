@@ -119,6 +119,10 @@ public class DmgrNaBouncer {
 	
 
 	private void performStart(String server) throws IOException{
+		if (server.equalsIgnoreCase("none")) {
+			getLog().info("[INFO] Start operation was not requested for any server.");
+			return;
+		}
 		getLog().info("");
 		getLog().info("#########################################");
 		getLog().info("### STARTING DMGR AND NODE AGENTS ... ###");
@@ -145,6 +149,10 @@ public class DmgrNaBouncer {
 	}
 	
 	private void performStop(String server) throws IOException{
+		if (server.equalsIgnoreCase("none")) {
+			getLog().info("[INFO] Stop operation was not requested for any server.");
+			return;
+		}
 		getLog().info("");
 		getLog().info("#########################################");
 		getLog().info("### STOPPING DMGR AND NODE AGENTS ... ###");
