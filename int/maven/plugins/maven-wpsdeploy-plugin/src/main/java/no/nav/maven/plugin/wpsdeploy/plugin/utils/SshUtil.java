@@ -145,7 +145,7 @@ public class SshUtil {
 					output += new String(buffer, 0, read);
 					System.out.print(output);
 				}	
-				String space_available = output.split("\n")[2].trim().split("  ")[2].trim();
+				String space_available = extractSize(output.trim());
 				result = compareSizeStrings(space_available, "500000") > 0; // size_available > 500M
 			} else {
 				System.out.println("[ERROR] Execution of command failed!");
@@ -188,14 +188,6 @@ public class SshUtil {
 			System.out.println("[ERROR] Size is in incorrect format");
 			return -1;
 		}
-	}
-	
-	public static void main(String[] args) {
-		String output = "                      10321208   9111676       685244  94% /opt";
-		String space_available = extractSize(output);
-		System.out.println(space_available);
-		int result = compareSizeStrings(space_available, "500000"); // size_available > 500M
-		System.out.println(result);
 	}
 }
 
