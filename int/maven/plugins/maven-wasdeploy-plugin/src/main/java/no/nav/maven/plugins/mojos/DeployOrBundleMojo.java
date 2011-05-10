@@ -37,12 +37,6 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String application;
-	
-	/**
-	 * @parameter expression="${zone}"
-	 * @required
-	 */
-	private String zone;
 
 	/**
 	 * @parameter expression="${environment/bundleEnvironment}"
@@ -137,8 +131,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	/**
 	 * @parameter expression="${environment/servers/was/misc/node2-config-upload}"
 	 */
-	private boolean node2Upload;
-
+	private boolean node2Upload;	
 	
 	/**
 	 * @parameter expression="${environment/servers/was/node3/hostname}"
@@ -293,7 +286,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		}
 		
 		//node 2
-		if (node2Upload && !zone.equals("intern")) {
+		if (node2Upload) {
 			SSHUtil.uploadDir(node2Hostname, node2LinuxAppUsername, node2LinuxAppPassword, configDir, "/was_app/config", application);
 			if (isBatch) {
 				SSHUtil.deleteRemoteDir(node2Hostname, node2LinuxBatchUsername, node2LinuxBatchPassword, "/was_app/batch/"+application+"/lib");
@@ -302,7 +295,7 @@ public class DeployOrBundleMojo extends AbstractMojo {
 		}
 		
 		// node 3	
-		if (node3Upload && !zone.equals("intern")) {
+		if (node3Upload) {
 			SSHUtil.uploadDir(node3Hostname, node3LinuxAppUsername, node3LinuxAppPassword, configDir, "/was_app/config", application);
 			if (isBatch){ 
 				SSHUtil.deleteRemoteDir(node3Hostname, node3LinuxBatchUsername, node3LinuxBatchPassword, "/was_app/batch/"+application+"/lib");

@@ -288,16 +288,15 @@ public class FileHandlerMojo extends AbstractMojo {
 						getLog().warn("Logback.xml file was not found. Check module config for " + this.application);
 					}
 					
-					if (!application.equalsIgnoreCase("popp")){ // popp doesnot have logback_batch.xml
-						//logback_batch.xml => <config folder>
-						File logbackBatchSource = new File(log4jDir + "/" + logbackBatchFile);
-						File logbackBatchDestination = new File(batchDir + "/config/" + "logback.xml");
-						try{
-							NativeOps.copy(logbackBatchSource, logbackBatchDestination);
-						}catch (IOException e) {
-							getLog().warn("Logback_batch.xml file was not found. Check module config for " + this.application);
-						}
+					//logback_batch.xml => <config folder>
+					File logbackBatchSource = new File(log4jDir + "/" + logbackBatchFile);
+					File logbackBatchDestination = new File(batchDir + "/config/" + "logback.xml");
+					try{
+						NativeOps.copy(logbackBatchSource, logbackBatchDestination);
+					}catch (IOException e) {
+						getLog().warn("Logback_batch.xml file was not found. Check module config for " + this.application);
 					}
+					
 				}
 			}
 
