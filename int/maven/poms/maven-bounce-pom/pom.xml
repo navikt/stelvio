@@ -16,7 +16,7 @@
 	<name>maven-bounce-pom</name>
 
 	<properties>
-		<bounceVersion>2.0-SNAPSHOT</bounceVersion>
+		<bounceVersion>2.0</bounceVersion>
 		<dependencyVersion>2.0</dependencyVersion>
 		<daConfigDirectory>da-config</daConfigDirectory>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
