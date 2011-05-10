@@ -157,6 +157,20 @@ public class SshUtil {
 		}
 	}
 	
+	private static String extractSize(String sizeString){
+		StringBuilder output = new StringBuilder(sizeString.trim());
+		int index;
+		while ((index = output.indexOf(" ")) >=0 )
+			output.setCharAt(index, '_');
+		for (int i=0; i<2; i++){
+			output.replace(0, output.indexOf("_"), "");
+			while (output.charAt(0) == '_')
+				output.deleteCharAt(0);
+		}
+		
+		return output.substring(0,output.indexOf("_"));
+	}
+	
 	/**
 	 * Compares numbers from strings
 	 * @param a
@@ -171,9 +185,17 @@ public class SshUtil {
 			number_b = Integer.parseInt(b);	
 			return number_a - number_b;
 		}catch (NumberFormatException e){
-			System.out.println("Size is in incorrect format");
+			System.out.println("[ERROR] Size is in incorrect format");
 			return -1;
 		}
+	}
+	
+	public static void main(String[] args) {
+		String output = "                      10321208   9111676       685244  94% /opt";
+		String space_available = extractSize(output);
+		System.out.println(space_available);
+		int result = compareSizeStrings(space_available, "500000"); // size_available > 500M
+		System.out.println(result);
 	}
 }
 
