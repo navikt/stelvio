@@ -61,6 +61,20 @@
 		</profile>
 		
 		<profile>
+			<id>WID7-Linux</id>
+			<activation>
+				<file>
+					<exists>/home/utvikler/IBM/WID7_WTE/runtimes/bi_v7</exists>
+				</file>
+			</activation>
+			<properties>
+				<wid.home>/home/utvikler/IBM/WID7_WTE/runtimes/bi_v7</wid.home>
+				<wid.runtime>${wid.home}</wid.runtime>
+				<target.dir>${user.home}/maven-target/${project.groupId}/${project.artifactId}/${project.version}</target.dir>
+			</properties>
+		</profile>
+		
+		<profile>
 			<id>RAD7</id>
 			<activation>
 				<file>
