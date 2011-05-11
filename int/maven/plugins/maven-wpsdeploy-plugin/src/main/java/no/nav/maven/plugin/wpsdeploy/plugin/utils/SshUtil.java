@@ -80,7 +80,7 @@ public class SshUtil {
 	
 	public static boolean stopDeploymentManager(String hostname, String username, String password, String dmgrUsername, String dmgrPassword) throws IOException {
 		SessionChannelClient session = openSshSession(hostname, username, password);
-		session.startShell();
+		//session.startShell();
 		if (session != null) {
 			String cmd = "/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/stopManager.sh -username "+dmgrUsername+" -password "+dmgrPassword;
 			boolean result = executeCommand(cmd, session);
