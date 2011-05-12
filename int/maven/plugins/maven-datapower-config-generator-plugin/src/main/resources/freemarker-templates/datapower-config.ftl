@@ -46,3 +46,4 @@
 <#include "WSProxyWSADynamicBackendMultipleWsdl.ftl">
 <#include "LogTarget.ftl">
 <#include "AAAPolicyClientSSL2LTPAURLauth.ftl">
+<#include "AAAPolicyUsernameToken2UsernameToken.ftl">
