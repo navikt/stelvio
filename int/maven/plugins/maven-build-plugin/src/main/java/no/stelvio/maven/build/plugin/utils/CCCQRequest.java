@@ -127,13 +127,16 @@ public class CCCQRequest {
 			arg.setLine(command);
 			cmd.addArg(arg);
 			CommandLineUtil.executeCommand(cmd);
-			
+			System.out.println("[INFO] Waiting for 10 seconds so that ClearQuest updates the status of the new task");
+			Thread.sleep(10000);
 			// read id from tmp file
 			File tmpFile = new File(TMP_FILE);
 			BufferedReader br = new BufferedReader(new FileReader(tmpFile));
 			return br.readLine();
 		} catch (IOException e) {
 			throw new MojoFailureException("Unable obtain task ID for this build. Try running setactivity manually");
+		} catch (InterruptedException e) {
+			throw new MojoFailureException("Could not create pom edit task because the process was interrupted");
 		}
 	}
 
