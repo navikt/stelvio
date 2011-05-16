@@ -90,6 +90,34 @@ public class XMLOps {
 	}
 	
 	/*
+	 * Changes the given context-param value for PSELV
+	 */
+	public static void fixPSELVContextParams(String filePath, String paramName, String newValue) throws ParserConfigurationException, SAXException, IOException, TransformerException {
+
+		System.out.println("[INFO] ##################################################################");
+		System.out.println("[INFO] ### web.xml - Setting " + paramName +" in PSELV to " + newValue + " ... ###");
+		System.out.println("[INFO] ##################################################################");
+		
+		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filePath);
+		NodeList cp = xml.getElementsByTagName("context-param");
+		for (int i=0;i<cp.getLength();i++){
+			if (cp.item(i).getChildNodes().item(1).getTextContent().contains(paramName))
+				cp.item(i).getChildNodes().item(3).setTextContent(newValue);
+		}
+		
+		Transformer tf = TransformerFactory.newInstance().newTransformer();
+		tf.setOutputProperty(OutputKeys.METHOD, "xml");
+		tf.setOutputProperty(OutputKeys.INDENT, "yes");
+
+		DOMSource xmlSource = new DOMSource(xml);
+		StreamResult output = new StreamResult(filePath);
+
+		tf.transform(xmlSource, output);
+
+		System.out.println("[INFO] Successfully set " + paramName + " in PSELV to: " + newValue);
+	}
+	
+	/*
 	 * Changes the session timeout for PSELV internsone
 	 */
 	public static void fixPSELVSessionTimeout(String filePath, String timeout) throws ParserConfigurationException, SAXException, IOException, TransformerException {

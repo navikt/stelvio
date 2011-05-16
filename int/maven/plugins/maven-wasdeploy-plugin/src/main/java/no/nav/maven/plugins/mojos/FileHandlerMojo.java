@@ -175,7 +175,7 @@ public class FileHandlerMojo extends AbstractMojo {
 				if (application.equals("pselv")) {
 
 					String webXMLPath = pselvWARDir + "/WEB-INF/web.xml";
-
+					XMLOps.fixPSELVContextParams(webXMLPath, "facelets.REFRESH_PERIOD", "-1");
 					if (zone.equalsIgnoreCase("intern")) {
 						
 						XMLOps.fixContext(configDir + "/cfg-pen-context.xml");
