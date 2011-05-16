@@ -146,7 +146,7 @@ public class SshUtil {
 					System.out.print(output);
 				}	
 				String space_available = extractSize(output.split("\n")[2].trim());
-				result = compareSizeStrings(space_available, "500000") > 0; // size_available > 500M
+				result = compareSizeStrings(space_available, "1000000") > 0; // size_available > 500M
 			} else {
 				System.out.println("[ERROR] Execution of command failed!");
 			}
