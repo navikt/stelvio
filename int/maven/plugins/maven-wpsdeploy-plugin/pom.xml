@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wpsdeploy-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.12</version>
+	<version>1.13-SNAPSHOT</version>
 	<name>WPS deployment plugin</name>
 
 	<dependencies>
@@ -60,8 +60,8 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wpsdeploy-plugin-1.12</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-wpsdeploy-plugin-1.12</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wpsdeploy-plugin</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/plugins/maven-wpsdeploy-plugin</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
