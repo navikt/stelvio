@@ -16,11 +16,10 @@
 	<name>maven-build-pom</name>
 
 	<properties>
-		<buildVersion>1.0</buildVersion>
+		<buildVersion>1.1-SNAPSHOT</buildVersion>
 		<ccProjectDir>D:/cc/</ccProjectDir>
 		<scriptFolder>${script_folder}</scriptFolder>
 		<devStream>_Dev_h</devStream>
 		<intStream>_int_h</intStream>
 	</properties>
-
 </project>
