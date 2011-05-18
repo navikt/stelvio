@@ -288,7 +288,7 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 		Set<? extends CodesTableItem> koder = null;
 		if (AbstractCodesTablePeriodicItem.class.isAssignableFrom(resolveCtiClass())) {
 			
-			if (getValidOnDate() != null && !isDisplayValueOnly()) {
+			if (getValidOnDate() != null) {
 				koder = getCodesTableManager().getCodesTablePeriodic(resolveCtiClass()).getCodesTableItemsValidForDate(getValidOnDate());
 			}
 			else if (isShowValidOnly() && !isDisplayValueOnly()) {
