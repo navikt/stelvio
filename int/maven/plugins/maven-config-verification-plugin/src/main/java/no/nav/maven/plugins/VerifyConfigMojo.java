@@ -121,7 +121,9 @@ public class VerifyConfigMojo extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException {
 		try {
-
+			
+			System.out.println("Application = " + application);
+			System.out.println("Version = " + this.appVersion);
 			// Instantiate the remote repositories object
 			List<?> remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
 			Artifact devArchConfig = resolveRemoteArtifact(remoteRepos, artifactFactory.createArtifact("no.nav.maven.devarch", "devarch-config", configVersion, null, "jar"));
@@ -192,8 +194,10 @@ public class VerifyConfigMojo extends AbstractMojo {
 				getLog().info("");
 				getLog().info("Everything is fine.");
 				getLog().info("");
+			} else if(!dev_our_missing.isEmpty()) {
+				throw new MojoExecutionException("Found missing properties in DA-congig, fix it.");
 			} else {
-				throw new MojoExecutionException("Found missing properties, fix it.");
+				getLog().warn("DevArch config have more properties than the development file.");
 			}
 
 		} catch (InvalidRepositoryException e) {
