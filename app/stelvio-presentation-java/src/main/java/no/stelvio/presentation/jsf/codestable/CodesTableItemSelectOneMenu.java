@@ -43,8 +43,8 @@ import org.springframework.web.jsf.FacesContextUtils;
  * </li>
  * <li><code>comparator</code> optional attribute, can be used to specify a comparator to use for the sorting of the
  * codestableitems. Default comparator is {@link no.stelvio.common.codestable.support.DecodeComparator}</li>
- * <li><code>showValidOnly</code> optional atttribute, can be set to <code>false</code> if one whishes to display codeitems that
- * are invalidated and expired. Defaults to true, displaying only codeitems that are valid.</li>
+ * <li><code>showValidOnly</code> optional attribute, can be set to <code>false</code> if one wishes to display codeitems that
+ * are invalidated and expired. Defaults to true, displaying only code items that are valid.</li>
  * </ul>
  * <br>
  * Be aware that the CodesTableManager and ExceptionHandlerFacade must be properly configured in the Spring context
@@ -229,12 +229,9 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 	/**
 	 * Retrieves the codestableitems from the codestablemanager and mappes these into SelectItems which are displayed in the
 	 * drop down list. The select items are added as children of this component.
-	 * 
-	 * 
 	 */
-
 	private void buildSelectItems() {
-		if (this.getChildCount() > 0) {
+		if (this.getChildCount() > 0 && isDisplayValueOnly()) {
 			return;
 		}
 
@@ -247,9 +244,9 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 			selectItems.add(item);
 		}
 
-		if (!isDisplayValueOnly()){
+		if (!isDisplayValueOnly()) {
 			for (AbstractCodesTableItem cti : codesTableItems) {
-				if(cti.isValid()){
+				if (cti.isValid()) {
 					selectItems.add(createSelectItem(cti));
 				}
 			}
@@ -276,25 +273,24 @@ public class CodesTableItemSelectOneMenu extends HtmlSelectOneMenu {
 		}
 		return item;
 	}
-	
+
 	/**
 	 * Retrives the codes table items from the codestable manager. Fetches only codeitems valid today, unless the
-	 * "showValidOnly" atttribute is set to false. Default is true for this attribute.  As of CR NAV00163122, this 
-	 * method will return codeitems valid at a given date if a date is provided.  
+	 * "showValidOnly" atttribute is set to false. Default is true for this attribute. As of CR NAV00163122, this method will
+	 * return codeitems valid at a given date if a date is provided.
 	 * 
 	 * @return koder
 	 */
 	private Set<? extends AbstractCodesTableItem> retrieveCodesTableItems() {
 		Set<? extends CodesTableItem> koder = null;
 		if (AbstractCodesTablePeriodicItem.class.isAssignableFrom(resolveCtiClass())) {
-			
-			if (getValidOnDate() != null) {
-				koder = getCodesTableManager().getCodesTablePeriodic(resolveCtiClass()).getCodesTableItemsValidForDate(getValidOnDate());
-			}
-			else if (isShowValidOnly() && !isDisplayValueOnly()) {
+
+			if (getValidOnDate() != null && !isDisplayValueOnly()) {
+				koder = getCodesTableManager().getCodesTablePeriodic(resolveCtiClass()).getCodesTableItemsValidForDate(
+						getValidOnDate());
+			} else if (isShowValidOnly() && !isDisplayValueOnly()) {
 				koder = getCodesTableManager().getCodesTablePeriodic(resolveCtiClass()).getCodesTableItemsValidToday();
-			}
-			else {
+			} else {
 				koder = getCodesTableManager().getCodesTablePeriodic(resolveCtiClass()).getCodesTableItems();
 			}
 		} else {
