@@ -100,7 +100,7 @@ public abstract class AbstractDeploymentMojo extends AbstractMojo {
     	//System.setProperty(prop, value)
     	//getLog().info("isNotDPHttpClientPrintOut()=" + isNotDPHttpClientPrintOut() );
     	if(trustStorePath != null && trustStorePwd != null && isNotDPHttpClientPrintOut()){
-    		Security.setProperty("ssl.SocketFactory.provider", "com.ibm.jsse2.SSLSocketFactoryImpl");
+    		//Security.setProperty("ssl.SocketFactory.provider", "com.ibm.jsse2.SSLSocketFactoryImpl");
     		System.setProperty("javax.net.ssl.trustStore", trustStorePath);
     		System.setProperty("javax.net.ssl.trustStorePassword", trustStorePwd);
     		System.setProperty("javax.net.ssl.trustStoreType", "jks");
