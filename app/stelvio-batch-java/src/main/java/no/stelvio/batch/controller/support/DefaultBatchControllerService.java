@@ -51,8 +51,8 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 	 * TODO Remove binding to test-config
 	 */
 	public DefaultBatchControllerService() {
-		ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext("btc-testbatch-context.xml");
-		controllerServiceHistorySupport = (ControllerServiceHistorySupport) springContext.getBean("ControllerServiceHistorySupport");
+//		ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext("btc-testbatch-context.xml");
+//		controllerServiceHistorySupport = (ControllerServiceHistorySupport) springContext.getBean("ControllerServiceHistorySupport");
 	}
 
 	private static final String SLICE_STRING = " slice ";
@@ -82,9 +82,9 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 
 			registerBatch(batchName, slice, batch);
 
-			long batchHistoryId = controllerServiceHistorySupport.saveInitialBatchInformation(batchName, slice);
+			//long batchHistoryId = controllerServiceHistorySupport.saveInitialBatchInformation(batchName, slice);
 			int result = batch.executeBatch(slice);
-			controllerServiceHistorySupport.saveAdditionalBatchInformation(batchHistoryId, result);
+			//controllerServiceHistorySupport.saveAdditionalBatchInformation(batchHistoryId, result);
 
 			return result;
 

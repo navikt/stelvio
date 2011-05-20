@@ -1,43 +1,21 @@
 package no.stelvio.batch.domain;
 
-import java.sql.Blob;
 import java.sql.Clob;
 import java.util.Date;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.domain.time.ChangeStamp;
-
-/*
- * tabell oppdateres ved start og stop av kjøringer med følgende kolonner:
-
- <<Batchnavn		Lagres ved oppstart av batch
- <<Slicenr			lagres ved oppstart av batch
- Starttid/Sluttid   <-- STARTTID LOGGES MED EN GANG; SLUTTID VED STOPP
- Kjøretid 			<-- REGNES UT VED STOPP
- Parametre på kjøretidspunktet
- Outputdata fra kjøring, f.eks. dump av fremdriftstellere
- Returkode - NULL så lenge batchen kjører	<-- OPPDATERES VED STOPP
-
- */
 
 /**
  * Representation of batch history. *
@@ -82,11 +60,6 @@ import no.stelvio.domain.time.ChangeStamp;
 	private int slice;
 
 	/** Batch start time. Automatically inserted by onCreate() **/
-	// @Temporal(TemporalType.TIMESTAMP)
-	// @Column(name = "startTime", nullable = false)
-	// private Date startTime;
-	// TODO Should not be nullable!
-	// @Column(name = "startTime", nullable = false)
 	@Column(name = "STARTTIME", nullable = true)
 	private Date startTime;
 

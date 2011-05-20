@@ -1,27 +1,24 @@
 package no.stelvio.batch.support;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import no.stelvio.batch.controller.support.DefaultBatchControllerService;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
 import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
+
+import org.hibernate.SessionFactory;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate3.HibernateTemplate;
-
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 
 public class ControllerServiceHistorySupportTest {
 
@@ -114,36 +111,29 @@ public class ControllerServiceHistorySupportTest {
 		assertEquals(batchHistory.get(0).getBatchname(), "dummyBatch");
 	}
 
-	//TODO rename
+	//TODO rename test
+	//TODO Mange av disse testene er veldig ad-hoc og bærer preg av å ville teste database og ikke bare metodesignaturer
 	@Test
 	public void endToEndTest(){
 		String batchName = "btc.testbatch.dummyBatch";
 		Date testDay = new Date();
 		Date fromDate = new Date();
 		fromDate.setTime(fromDate.getTime()-1500000);
+		
 		//Providing the controller service with correct setup		ControllerServiceHistorySupport controller = new ControllerServiceHistorySupport();
 		controller.setBatchHistoryRepository(histRepository);
 		batchControllerService.setControllerServiceHistorySupport(controller);	
-		//TODO Hvordan skal jeg "initialisere" den klassen
+
 
 		batchControllerService.executeBatch(batchName, 0);
 		
 		ControllerServiceHistorySupport testController = batchControllerService.getControllerServiceHistorySupport();
 
 		Collection <BatchHistDO> batchHistory = testController.fetchBatchHistory(batchName, fromDate, new Date());
-		Collection <BatchHistDO> batchHistoryDay = testController.fetchBatchHistory(batchName, testDay);
-		BatchHistDO history = (BatchHistDO)((List) batchHistory).get(0);
+//		Collection <BatchHistDO> batchHistoryDay = testController.fetchBatchHistory(batchName, testDay);
+//		BatchHistDO history = (BatchHistDO)((List) batchHistory).get(0);
 	}
-	
-	@Test
-	public void shouldSaveInitialBatchInformation(){
-			
-		/** Start med å kjøre dette grønt før jeg utvider test **/
 		
-		controllerServiceHistorySupport.saveInitialBatchInformation("dummyBatch", 1);
-	    //initialSave må returnere ID for videre lagring?	
-	}
-	
 	@Test(expected = InvalidBatchEntryException.class)
 	public void shouldThrowExceptionIfNonexistingBatch(){
 
@@ -158,7 +148,6 @@ public class ControllerServiceHistorySupportTest {
 	public void shouldSaveAdditionalDataToExistingBatchHistoryEntry(){
 		int finishedCode = 1;
 
-
 		long batchNr = controllerServiceHistorySupport.saveInitialBatchInformation("dummyBatch", 1);
 		BatchHistDO historyDO = controllerServiceHistorySupport.fetchBatchHistory(batchNr);
 		assertEquals(historyDO.getBatchname(), "dummyBatch");
@@ -167,19 +156,13 @@ public class ControllerServiceHistorySupportTest {
 				
 		BatchHistDO retrievedHistory = controllerServiceHistorySupport.fetchBatchHistory(batchNr);
 		long interval = retrievedHistory.getEndtime().getTime() - retrievedHistory.getStartTime().getTime();
-		final long MINIMUM_WAIT = 200;
 		
-		//TODO Tenkte å ha en wait, men fjernet den. Gir lite mening nå
-		assertTrue(interval >= 0);
-		
+		//TODO Få inn logging og flytt dette dit et sted. Neppe riktig med sys.out
 		System.out.println("Runtime: " + interval + " ms");
-		
-	//initialSave må returnere ID for videre lagring?	
-		
+
 	}
 	
-	//TODO Remove expected exception	
-	@Test//(expected = InvalidBatchEntryException.class)
+	@Test
 	public void shouldSaveSeveralBatchesAndFetchCorrectly(){
 
 		insertDummyBatches(controllerServiceHistorySupport);

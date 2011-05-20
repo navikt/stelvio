@@ -16,7 +16,6 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
  * implementation is exposed to a client.
  * 
  * @author person5dc3535ea7f4(Accenture)
- * @author person983601e0e117 (Accenture)
  * @see BatchHistDO
  * 
  */
@@ -44,27 +43,6 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 			getHibernateTemplate().merge(batch);
 		}
 	}
-
-//	/**
-//	 * TODO This is probably obsolete
-//	 * It returns the first (in the list) object of the result set
-//	 * {@inheritDoc}
-//	 */
-//	public BatchHistDO findByNameAndSlice(String batchName, int slice)
-//			throws InvalidBatchEntryException {
-//		Object[] arguments = { batchName, Integer.valueOf(slice) };
-//		List batchDos = getHibernateTemplate().findByNamedQueryAndNamedParam(
-//				NAME_AND_SLICE_QUERY, nameAndSliceParams, arguments);
-//
-//
-//
-//		if (batchDos.size() > 1) {
-//			throw new InvalidBatchEntryException("Multiple(" + batchDos.size()
-//					+ ") entries in database for batch with name=" + batchName
-//					+ ", slice=" + slice);
-//		}
-//		return (BatchHistDO) batchDos.get(0);
-//	}
 
 	//TODO Test and document
 	public Collection<BatchHistDO> findByNameAndTimeInterval(String batchName,
@@ -131,17 +109,11 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 		return null;
 	}
 
-	// /**
-	// *
-	// * TODO: Research save/persist differences
-	// */
-	// public void setHist(BatchHistDO batchHistDO) {
-	// getHibernateTemplate().persist(batchHistDO);
-	// }
-
 	/**
+	 * Persists the initial history and returns the generated ID
 	 * 
-	 * TODO: Research save/persist differences
+	 * @param batchHistDO
+	 *            the BatchHistDO
 	 */
 	public long setHist(BatchHistDO batchHistDO) {
 		getHibernateTemplate().persist(batchHistDO);
@@ -154,11 +126,9 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 		List batchHistDOs = getHibernateTemplate()
 				.findByNamedQueryAndNamedParam(ID_QUERY, idParameter,
 						batchHistoryID);
-		// TODO Do some checks here,
 
 		return (BatchHistDO) batchHistDOs.get(0);
 	}
-
 	
 	//TODO This method won't work yet. 
 	//We'll need either a start time for the beginning of the day and end time for the end of the day
@@ -172,7 +142,6 @@ public class HibernateBatchHistRepository implements BatchHistRepository {
 				arguments);
 
 		return (Collection<BatchHistDO>) batchDos;
-
 	}
 
 }
