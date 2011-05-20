@@ -1,5 +1,6 @@
 package no.stelvio.batch.repository.support;
 
+import java.util.Collection;
 import java.util.List;
 
 import no.stelvio.batch.domain.BatchDO;
@@ -34,6 +35,7 @@ public class HibernateBatchRepository implements BatchRepository {
 
 	/**
 	 * {@inheritDoc}
+	 * This version should return first (latest) entrance of batchname and slice
 	 */
 	public BatchDO findByNameAndSlice(String batchName, int slice) throws InvalidBatchEntryException {
 		Object[] arguments = { batchName, Integer.valueOf(slice) };
@@ -44,18 +46,17 @@ public class HibernateBatchRepository implements BatchRepository {
 		if (batchDos.size() == 0) {
 			throw new InvalidBatchEntryException("No entry found in database for batch with name=" + batchName + ", slice="
 					+ slice);
-
 		}
-		// Multiple batches matching name+slice defined in DB. Although this shouldn't
-		// be possible as the batch meta data table should have a unique constraint for
-		// combination batchname+slice
+
 		if (batchDos.size() > 1) {
 			throw new InvalidBatchEntryException("Multiple(" + batchDos.size() + ") entries in database for batch with name="
 					+ batchName + ", slice=" + slice);
 		}
 		return (BatchDO) batchDos.get(0);
 	}
+	
 
+	
 	/**
 	 * Flushes the changes made through the hibernate template to the database.
 	 * 

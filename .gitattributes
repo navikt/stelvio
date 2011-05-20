@@ -73,6 +73,7 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/count/support/SimpleEventC
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/count/support/TableFormatter.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/.copyarea.db -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/BatchDO.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/BatchHistDO.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/BatchParameter.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/domain/FileIdentity.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/.copyarea.db -text
@@ -85,11 +86,14 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/exception/NullBatchExcepti
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/listeners/BatchStatusReportLoggerListener.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/listeners/support/ListenerSupport.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/.copyarea.db -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/BatchHistRepository.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/BatchRepository.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/support/.copyarea.db -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/support/HibernateBatchHistRepository.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/repository/support/HibernateBatchRepository.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/support/.copyarea.db -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/support/CommonBatchInputParameters.java -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/support/ControllerServiceHistorySupport.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/support/DefaultBatchParameterReader.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/support/DefaultSpringBatchJobOperator.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/support/NavExitStatus.java -text
@@ -135,8 +139,10 @@ app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/JamonBatchCo
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/count/support/JamonBatchCounterTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/.copyarea.db -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchDOTest.java -text
+app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchHistDOTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/listeners/support/ListenerSupportTest.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/.copyarea.db -text
+app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ControllerServiceHistorySupportTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ProgressLoggerListenerTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ProgressNotifierTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/SpringBatchJobOperatorTest.java -text

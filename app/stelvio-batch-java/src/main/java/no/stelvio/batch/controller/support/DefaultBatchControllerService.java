@@ -5,15 +5,18 @@ import java.util.Map;
 import no.stelvio.batch.BatchBi;
 import no.stelvio.batch.BatchRegistry;
 import no.stelvio.batch.controller.BatchControllerServiceBi;
+import no.stelvio.batch.support.ControllerServiceHistorySupport;
 import no.stelvio.common.config.InvalidPropertyException;
 import no.stelvio.common.config.MissingPropertyException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.SessionFactory;
 import org.slf4j.MDC;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Work controller service for batches. Use the server side batch context configuration which is described in a xml file, for
@@ -34,12 +37,23 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 	private static final Log LOGGER = LogFactory.getLog(DefaultBatchControllerService.class);
 
 	private ApplicationContext applicationContext;
+	private ControllerServiceHistorySupport controllerServiceHistorySupport;
 
 	// The name of the Map used by BatchController to get id's for prototype
 	// batch-object beans to run.
 	// Map key is batchName
 	@SuppressWarnings("unchecked")
 	private Map batchNameMap;
+
+
+	/**
+	 * Default constructor
+	 * TODO Remove binding to test-config
+	 */
+	public DefaultBatchControllerService() {
+		ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext("btc-testbatch-context.xml");
+		controllerServiceHistorySupport = (ControllerServiceHistorySupport) springContext.getBean("ControllerServiceHistorySupport");
+	}
 
 	private static final String SLICE_STRING = " slice ";
 
@@ -59,13 +73,19 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 
 		BatchBi batch = null;
 		try {
+
+			// ApplicationContext apeCont = getApplicationContext();
+			// batch = (BatchBi) getApplicationContext().getBean("btc.testbatch.dummyBatch");
 			batch = (BatchBi) getApplicationContext().getBean(batchBeanId);
 			batch.setBatchName(batchName);
 			batch.setSlice(slice);
 
-			// Register batch
 			registerBatch(batchName, slice, batch);
+
+			long batchHistoryId = controllerServiceHistorySupport.saveInitialBatchInformation(batchName, slice);
 			int result = batch.executeBatch(slice);
+			controllerServiceHistorySupport.saveAdditionalBatchInformation(batchHistoryId, result);
+
 			return result;
 
 		} catch (BeansException be) {
@@ -92,6 +112,8 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 					LOGGER.info("Running batch " + batchName + SLICE_STRING + slice + " was located and stop was requested");
 				}
 				batchWasLocatedAndStopped = true;
+				
+				// TODO: avsluttende historikk med at batch stoppes
 
 			} else {
 				if (LOGGER.isInfoEnabled()) {
@@ -239,4 +261,23 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 		return this.applicationContext;
 	}
 
+	/**
+	 * Gets the controllerServiceHistorySupport.
+	 * 
+	 * @return controllerServiceHistorySupport
+	 */
+	public ControllerServiceHistorySupport getControllerServiceHistorySupport() {
+			return this.controllerServiceHistorySupport;
+	}
+	
+	/**
+	 * Set the controllerServiceHistorySupport.
+	 * 
+	 * @param controllerServiceHistorySupport
+	 *            - ControllerServiceHistorySupport
+	 */
+	//TODO Should possibly be set in another way
+	public void setControllerServiceHistorySupport(ControllerServiceHistorySupport controllerServiceHistorySupport) {
+		this.controllerServiceHistorySupport = controllerServiceHistorySupport;
+	}
 }

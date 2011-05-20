@@ -32,7 +32,9 @@ public class SpringBatchEnabledBatchControllerService extends DefaultBatchContro
 
 		RequestContextSetter.setRequestContext(new SimpleRequestContext.Builder().userId(jobName).build());
 
+		// TODO: Intitiell batchhistorikk
 		int twsCode = springBatchOperator.executeBatch(jobName, parameters);
+		//TODO: avslutningsvis historikk
 		MDC.remove(JOB_NAME);
 
 		return twsCode;
@@ -45,6 +47,7 @@ public class SpringBatchEnabledBatchControllerService extends DefaultBatchContro
 		}
 		LOGGER.info("stopping batch with jobName=" + jobName);
 		boolean stopped = springBatchOperator.stopBatch(jobName);
+		//TODO: Historikk om at batch er stoppet 
 		MDC.remove(JOB_NAME);
 		return stopped;
 	}

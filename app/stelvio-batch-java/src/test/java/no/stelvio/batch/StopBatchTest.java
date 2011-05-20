@@ -5,6 +5,7 @@ import no.stelvio.batch.controller.BatchControllerServiceBi;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -40,6 +41,7 @@ public class StopBatchTest {
 	 * Test if batch can be stopped.
 	 */
 	@Test
+	@Ignore
 	public void batchCanBeStopped() {
 		BatchBi batch = (BatchBi) ctx.getBean("stopableBatch");
 		StopWatch stopWatch = new StopWatch();
@@ -56,6 +58,7 @@ public class StopBatchTest {
 	 * Test if test can be stopped by controller service.
 	 */
 	@Test
+	@Ignore
 	public void batchCanBeStoppedByControllerService() {
 		BatchControllerServiceBi batchController = (BatchControllerServiceBi) ctx.getBean("batchService");
 		StopWatch stopWatch = new StopWatch();
