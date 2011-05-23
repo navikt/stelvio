@@ -22,7 +22,7 @@ def execute(command):
         raise Exception(command, exitCode, output)
 
 if (len(sys.argv) < 9):
-    print "[ERROR] Missing parameters. Usage: bouncePerform.py envs action da_config_verson wasSs wasIs wps joark onlyAppTarget [env_class zone bounce_dmgr_na install_ifix]"
+    print "[ERROR] Missing parameters. Usage: bouncePerform.py envs action da_config_verson wasSs wasIs wps_apptrgt joark msg_sup [env_class zone bounce_dmgr_na install_ifix]"
     sys.exit(1)
 
 ENVS = sys.argv[1].split(",")
@@ -30,9 +30,9 @@ ACTION = sys.argv[2]
 DA_CONFIG_VER = sys.argv[3]
 WAS_SS = sys.argv[4]
 WAS_IS = sys.argv[5]
-WPS = sys.argv[6]
+WPS_APPTRGT = sys.argv[6]
 JOARK = sys.argv[7]
-ONLY_APP_TARGET = sys.argv[8]
+MSG_SUP = sys.argv[8]
 
 # envClass and zone
 if(len(sys.argv) > 10):
@@ -65,8 +65,8 @@ for ENV in ENVS:
     BOUNCE_STRING = "mvn clean install -Denv=" + ENV + " -Daction=" + ACTION
     BOUNCE_STRING += " -Dda-configuration-version=" + DA_CONFIG_VER
     BOUNCE_STRING += " -Dss_pensjons_cluster=" + WAS_SS + " -Dis_pensjons_cluster=" + WAS_IS 
-    BOUNCE_STRING += " -Dapptarget=" + WPS + " -DincludeJoark=" + JOARK 
-    BOUNCE_STRING += " -Dmsg_sup=" + ONLY_APP_TARGET
+    BOUNCE_STRING += " -Dapptarget=" + WPS_APPTRGT + " -DincludeJoark=" + JOARK 
+    BOUNCE_STRING += " -Dmsg_sup=" + MSG_SUP
     BOUNCE_STRING += " -DenvClass=" + ENV_CLASS 
     BOUNCE_STRING += " -Dzone=" + ZONE
     BOUNCE_STRING += " -Dbounce_dmgr_na=" + BOUNCE_DMGR_NA
