@@ -3,31 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.stelvio</groupId>
 	<artifactId>releasetest</artifactId>
-	<version>1.4-SNAPSHOT</version>
-
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-release-plugin</artifactId>
-					<!-- TODO: Tried released version (2.0), but ran into a critical bug (MRELEASE-526). Follow up, and upgrade as soon as a bugfix release is available -->
-					<version>2.0-beta-9</version>
-					<configuration>
-						<!-- Work around bug making release:prepare non-interactive (MRELEASE-263)  -->
-						<mavenExecutorId>forked-path</mavenExecutorId>
-						<goals>clean deploy</goals>
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-scm-plugin</artifactId>
-					<version>1.3</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+	<version>1.4</version>
 
 	<scm>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/release-test</developerConnection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/releasetest-1.4</developerConnection>
 	</scm>
 
 	<distributionManagement>
