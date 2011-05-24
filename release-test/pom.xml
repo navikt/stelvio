@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.stelvio</groupId>
 	<artifactId>releasetest</artifactId>
-	<version>1.7-SNAPSHOT</version>
+	<version>1.6</version>
 
 	<build>
 		<pluginManagement>
@@ -18,7 +18,7 @@
 	</build>
 
 	<scm>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/release-test</developerConnection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/releasetest-1.6</developerConnection>
 	</scm>
 
 	<distributionManagement>
