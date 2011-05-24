@@ -4951,3 +4951,4 @@ int/stelvio-test-responsetime/stelvio-module-responsetime/sca.module.attributes 
 int/stelvio-test-responsetime/stelvio-module-responsetime/sca.modulex -text
 maven/settings.xml -text
 release-test/pom.xml -text
+release-test/src/main/resources/versjon -text
