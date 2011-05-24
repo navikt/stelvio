@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>no.stelvio</groupId>
 	<artifactId>releasetest</artifactId>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 
 	<scm>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/releasetest-1.1</developerConnection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/release-test</developerConnection>
 	</scm>
 
 	<distributionManagement>
