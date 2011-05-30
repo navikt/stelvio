@@ -147,6 +147,14 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 	 * @required
 	 */
 	private String satstabell_classifier;
+	
+	/**
+	 * This parameter is supposed to decide the version of blaze artifact that is used during deploy.
+	 * If not given any value from config, the latest released version is used.
+	 * 
+	 * @parameter expression="${environment/blaze-version}" default-value="RELEASE"
+	 */
+	private String blaze_version;
 
 	/**
 	 * Need to statically set the naming convention of the PSELV WAR file, without version. Full name would be PSELV_WAR_NAME +
@@ -192,7 +200,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 			getLog().info("################################################");
 			
 			// Retrieving the list of artifacts for the given application and version
-			List<Artifact> artifacts = getApplicationArtifacts(applicationConfig, artifactFactory, application, version, satstabell_classifier);
+			List<Artifact> artifacts = getApplicationArtifacts(applicationConfig, artifactFactory, application, version, satstabell_classifier, blaze_version);
 			String configDir = null; // need to take care of cofig path that is cofigured below
 			// For each artifact, the artifact is resolved and extracted to the given staging directory
 			for (Artifact a : artifacts) {
@@ -297,7 +305,7 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 	}
 
 	public static List<Artifact> getApplicationArtifacts(String applicationConfig, ArtifactFactory artifactory,
-			String application, String version, String classifier) throws SAXException, IOException, ParserConfigurationException {
+			String application, String version, String satsTabellClassifier, String blazeVersion) throws SAXException, IOException, ParserConfigurationException {
 
 		List<Artifact> artifacts = new ArrayList<Artifact>();
 		HashMap<String, Application> applications = ApplicationConfig.getApplications(applicationConfig);
@@ -311,9 +319,14 @@ public class ProcessDependenciesMojo extends AbstractMojo {
 			} else {
 				type = "jar";
 			}
-			if (a.getArtifactId().equalsIgnoreCase(BLASE_ARTIFACT_ID))
-				artifacts.add(artifactory.createArtifactWithClassifier(a.getGroupId(), a.getArtifactId(), "RELEASE", type, classifier));
-			else artifacts.add(artifactory.createArtifact(a.getGroupId(), a.getArtifactId(), version, null, type));
+			if (a.getArtifactId().equalsIgnoreCase(BLASE_ARTIFACT_ID)){
+				if (blazeVersion.equalsIgnoreCase("")) blazeVersion = "RELEASE";
+				if (blazeVersion.equalsIgnoreCase("RELEASE")) System.out.println("[INFO] The version of the " + BLASE_ARTIFACT_ID +" artifact was not configured. The latest released version will be used.");
+				artifacts.add(artifactory.createArtifactWithClassifier(a.getGroupId(), a.getArtifactId(), blazeVersion, type, satsTabellClassifier));
+			}
+			else {
+				artifacts.add(artifactory.createArtifact(a.getGroupId(), a.getArtifactId(), version, null, type));
+			}
 		}
 
 		if (application.equals("psak") || application.equals("pselv")) {
