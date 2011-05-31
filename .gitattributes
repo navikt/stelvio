@@ -120,6 +120,7 @@ app/stelvio-batch-java/src/test/java/no/stelvio/batch/BatchStopper.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/BatchTestException.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/DummyBatchImplementation.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/DummyBatchParameterValidator.java -text
+app/stelvio-batch-java/src/test/java/no/stelvio/batch/DummyBatchWithInputParameters.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/FakeBatchExecutorEJB.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/InitRequestContextBatchImpl.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/StartBatchTest.java -text
@@ -142,6 +143,7 @@ app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchDOTest.java -t
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchHistDOTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/listeners/support/ListenerSupportTest.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/.copyarea.db -text
+app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ControllerServiceHistorySupportBatchWithParametersTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ControllerServiceHistorySupportTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ProgressLoggerListenerTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ProgressNotifierTest.java -text
@@ -156,6 +158,7 @@ app/stelvio-batch-java/src/test/resources/.copyarea.db -text
 app/stelvio-batch-java/src/test/resources/batchinitrequestcontext-test-context.xml -text
 app/stelvio-batch-java/src/test/resources/batchvalidator-test-context.xml -text
 app/stelvio-batch-java/src/test/resources/btc-testbatch-context.xml -text
+app/stelvio-batch-java/src/test/resources/btc-testbatch-with-params-context.xml -text
 app/stelvio-batch-java/src/test/resources/log4j.properties -text
 app/stelvio-batch-java/src/test/resources/tst-stopbatch-context.xml -text
 app/stelvio-common-java/.copyarea.db -text
