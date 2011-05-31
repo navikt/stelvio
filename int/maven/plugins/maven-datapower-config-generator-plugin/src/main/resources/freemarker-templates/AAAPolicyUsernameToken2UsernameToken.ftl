@@ -94,9 +94,9 @@
 			<AUZOSNSSConfig/>
 		</Authenticate>
 		<MapCredentials>
-			<MCMethod>none</MCMethod>
+			<MCMethod>xmlfile</MCMethod>
 			<MCCustomURL/>
-			<MCMapURL/>
+			<MCMapURL>${aaaFileName}</MCMapURL>
 			<MCMapXPath/>
 			<MCTFIMEndpoint/>
 		</MapCredentials>
@@ -204,7 +204,7 @@
 			<PPTFIMEndpoint/>
 			<PPWSDerivedKeyUsernameToken>off</PPWSDerivedKeyUsernameToken>
 			<PPWSDerivedKeyUsernameTokenIterations>1000</PPWSDerivedKeyUsernameTokenIterations>
-			<PPWSUsernameTokenAllowReplacement>off</PPWSUsernameTokenAllowReplacement>
+			<PPWSUsernameTokenAllowReplacement>on</PPWSUsernameTokenAllowReplacement>
 			<PPTFIMReplaceMethod>all</PPTFIMReplaceMethod>
 			<PPTFIMRetrieveMode>CallTFIM</PPTFIMRetrieveMode>
 			<PPHMACSigningAlg>hmac-sha1</PPHMACSigningAlg>
