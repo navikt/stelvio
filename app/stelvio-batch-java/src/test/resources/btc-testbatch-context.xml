@@ -16,7 +16,7 @@
 
 	<bean id="ControllerServiceHistorySupportTest"
 		class="no.stelvio.batch.support.ControllerServiceHistorySupportTest">
-		<property name="omgLol" ref="btc.testbatch.sessionFactory" />
+		<property name="sessionFactory" ref="btc.testbatch.sessionFactory" />
 		<property name="histRepository" ref="batchHistoryRepository" />
 	</bean>
 

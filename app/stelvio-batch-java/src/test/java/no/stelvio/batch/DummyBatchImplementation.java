@@ -34,6 +34,7 @@ public class DummyBatchImplementation extends AbstractBatch {
 
 		BatchDO batchDO = new BatchDO();
 		batchDO.setChangeStamp(new ChangeStamp("xxx9999"));
+		System.out.println("dummybatch");
 		batchDO.setBatchname("IBTesting");
 
 		int status = 2;

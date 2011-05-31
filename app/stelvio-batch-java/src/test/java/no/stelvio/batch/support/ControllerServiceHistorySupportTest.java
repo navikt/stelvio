@@ -2,11 +2,16 @@ package no.stelvio.batch.support;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
+import no.stelvio.batch.BatchStatus;
+import no.stelvio.batch.DummyBatchWithInputParameters;
 import no.stelvio.batch.controller.support.DefaultBatchControllerService;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
@@ -29,7 +34,7 @@ public class ControllerServiceHistorySupportTest {
 	HibernateBatchHistRepository histRepository;
 	ControllerServiceHistorySupport controllerServiceHistorySupport;
 	
-	private SessionFactory omgLol;
+	private SessionFactory sessionFactory;
 
 	/**
 	 * 
@@ -37,12 +42,12 @@ public class ControllerServiceHistorySupportTest {
 	public ControllerServiceHistorySupportTest() {
 	}
 
-	public SessionFactory getOmgLol() {
-		return omgLol;
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
-	public void setOmgLol(SessionFactory omgLol) {
-		this.omgLol = omgLol;
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
 	public HibernateBatchHistRepository getHistRepository() {
@@ -62,9 +67,9 @@ public class ControllerServiceHistorySupportTest {
 		batchControllerService.getBatchNameMap().put("btc.testbatch.dummyBatch", "btc.testbatch.dummyBatch");
 
 		ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext(BATCH_TEST_CONTEXT);
-		omgLol = (SessionFactory) springContext.getBean("btc.testbatch.sessionFactory");
+		sessionFactory = (SessionFactory) springContext.getBean("btc.testbatch.sessionFactory");
 		
-		ht = new HibernateTemplate(omgLol);
+		ht = new HibernateTemplate(sessionFactory);
 		batchControllerService.setApplicationContext(springContext);
 		
 		histRepository = new HibernateBatchHistRepository();
@@ -118,7 +123,7 @@ public class ControllerServiceHistorySupportTest {
 		String batchName = "btc.testbatch.dummyBatch";
 		Date testDay = new Date();
 		Date fromDate = new Date();
-		fromDate.setTime(fromDate.getTime()-1500000);
+		//fromDate.setTime(fromDate.getTime()-1500000);
 		
 		//Providing the controller service with correct setup		ControllerServiceHistorySupport controller = new ControllerServiceHistorySupport();
 		controller.setBatchHistoryRepository(histRepository);
@@ -129,9 +134,13 @@ public class ControllerServiceHistorySupportTest {
 		
 		ControllerServiceHistorySupport testController = batchControllerService.getControllerServiceHistorySupport();
 
-		Collection <BatchHistDO> batchHistory = testController.fetchBatchHistory(batchName, fromDate, new Date());
-//		Collection <BatchHistDO> batchHistoryDay = testController.fetchBatchHistory(batchName, testDay);
-//		BatchHistDO history = (BatchHistDO)((List) batchHistory).get(0);
+		Collection <BatchHistDO> batchHistory = fetchBatchHistory(batchName, fromDate, new Date());
+		Iterator<BatchHistDO> iterator = batchHistory.iterator();
+		Assert.assertTrue(iterator.hasNext());
+		BatchHistDO batchHistDO = iterator.next();
+		Assert.assertEquals(BatchStatus.BATCH_OK, Integer.parseInt(batchHistDO.getStatus()));
+		Assert.assertFalse(iterator.hasNext());
+
 	}
 		
 	@Test(expected = InvalidBatchEntryException.class)
@@ -140,14 +149,14 @@ public class ControllerServiceHistorySupportTest {
 		histRepository.findByNameAndSlice("non-existing-batch", 1);
 		
 		insertDummyBatches(controllerServiceHistorySupport);
-		controllerServiceHistorySupport.fetchBatchHistory("dummyBatch", 1);	
+		fetchBatchHistory("dummyBatch", 1);	
 		
 	}
 	
 	@Test 
 	public void shouldSaveAdditionalDataToExistingBatchHistoryEntry(){
 		int finishedCode = 1;
-
+		
 		long batchNr = controllerServiceHistorySupport.saveInitialBatchInformation("dummyBatch", 1);
 		BatchHistDO historyDO = controllerServiceHistorySupport.fetchBatchHistory(batchNr);
 		assertEquals(historyDO.getBatchname(), "dummyBatch");
@@ -157,16 +166,15 @@ public class ControllerServiceHistorySupportTest {
 		BatchHistDO retrievedHistory = controllerServiceHistorySupport.fetchBatchHistory(batchNr);
 		long interval = retrievedHistory.getEndtime().getTime() - retrievedHistory.getStartTime().getTime();
 		
-		//TODO Få inn logging og flytt dette dit et sted. Neppe riktig med sys.out
 		System.out.println("Runtime: " + interval + " ms");
 
 	}
 	
 	@Test
 	public void shouldSaveSeveralBatchesAndFetchCorrectly(){
-
+		
 		insertDummyBatches(controllerServiceHistorySupport);
-		controllerServiceHistorySupport.fetchBatchHistory("dummyBatch", 1);	
+		fetchBatchHistory("dummyBatch", 1);	
 		
 	}
 	
@@ -190,6 +198,22 @@ public class ControllerServiceHistorySupportTest {
 				controller.saveInitialBatchInformation("dummyBatch", 2), finishCode);
 		controller.saveAdditionalBatchInformation(
 				controller.saveInitialBatchInformation("dummyBatch", 3), finishCode);
+	}
+	
+	public Collection <BatchHistDO> fetchBatchHistory(String batchName, int slice) {
+
+		return histRepository.findByNameAndSlice(batchName, slice);
+	}
+
+
+	public Collection<BatchHistDO> fetchBatchHistory(String batchName,
+			Date fromDate, Date toDate) {
+		return histRepository
+				.findByNameAndTimeInterval(batchName, fromDate, toDate);
+	}
+	
+	public Collection <BatchHistDO> fetchBatchHistory(String batchName, Date startDay) {
+		return histRepository.findByNameAndDay(batchName, startDay);
 	}
 	
 }

@@ -82,10 +82,22 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 
 			registerBatch(batchName, slice, batch);
 
-			//long batchHistoryId = controllerServiceHistorySupport.saveInitialBatchInformation(batchName, slice);
+			long batchHistoryId = 0;
+			try
+			{
+				batchHistoryId = controllerServiceHistorySupport.saveInitialBatchInformation(batchName, slice);
+			}
+			catch(NullPointerException e)
+			{
+				
+			}
 			int result = batch.executeBatch(slice);
-			//controllerServiceHistorySupport.saveAdditionalBatchInformation(batchHistoryId, result);
-
+			
+			if(batchHistoryId != 0)
+			{
+				controllerServiceHistorySupport.saveAdditionalBatchInformation(batchHistoryId, result);	
+			}
+			
 			return result;
 
 		} catch (BeansException be) {
@@ -111,10 +123,7 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 				if (LOGGER.isInfoEnabled()) {
 					LOGGER.info("Running batch " + batchName + SLICE_STRING + slice + " was located and stop was requested");
 				}
-				batchWasLocatedAndStopped = true;
-				
-				// TODO: avsluttende historikk med at batch stoppes
-
+				batchWasLocatedAndStopped = true;		
 			} else {
 				if (LOGGER.isInfoEnabled()) {
 					LOGGER.info("No running batch with name " + batchName + SLICE_STRING + slice + " found");

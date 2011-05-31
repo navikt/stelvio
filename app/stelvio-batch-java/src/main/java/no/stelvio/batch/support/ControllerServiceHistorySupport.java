@@ -26,7 +26,6 @@ public class ControllerServiceHistorySupport {
 	private static final String BATCH_STATUS_COMPLETED = "COMPLETED"; // Corresponds
 	// with
 	// BatchStatus.COMPLETED
-	private SessionFactory factoryFromBean;
 
 	public ControllerServiceHistorySupport() {
 		
@@ -75,43 +74,16 @@ public class ControllerServiceHistorySupport {
 		return true;
 	}
 
-	// Returns last run row matchin batchName and slice
+	// Returns last run row matching batchName and slice
 	// TODO Write proper docs
-	public Collection <BatchHistDO> fetchBatchHistory(String batchName, int slice) {
-
-		return repository.findByNameAndSlice(batchName, slice);
-	}
-
-
-	public BatchHistDO fetchBatchHistory(Long batchHistoryID) {
-		return repository.findById(batchHistoryID);
-	}
-
-	//TODO remove this or implement it
-//	public BatchHistDO fetchBatchHistory(String batchName, int slice,
-//			int runNumber) {
-//
-//		throw new NotImplementedException();
-//	}
-
-	public Collection<BatchHistDO> fetchBatchHistory(String batchName,
-			Date fromDate, Date toDate) {
-		return repository
-				.findByNameAndTimeInterval(batchName, fromDate, toDate);
-	}
-
-//	public Collection<BatchHistDO> fetchBatchHistoryCollection(
-//			String batchName, int slice) {
-//
-//		return repository.findByNameAndSlice(batchName, slice);
-//	}
 
 	public void setBatchHistoryRepository(
 			HibernateBatchHistRepository histRepository) {
 		this.repository = histRepository;
 	}
 
-	public Collection <BatchHistDO> fetchBatchHistory(String batchName, Date startDay) {
-		return repository.findByNameAndDay(batchName, startDay);
+	public BatchHistDO fetchBatchHistory(Long batchHistoryID) {
+		return repository.findById(batchHistoryID);
 	}
+
 }
