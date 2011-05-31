@@ -11,7 +11,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import no.stelvio.batch.BatchStatus;
-import no.stelvio.batch.DummyBatchWithInputParameters;
 import no.stelvio.batch.controller.support.DefaultBatchControllerService;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
