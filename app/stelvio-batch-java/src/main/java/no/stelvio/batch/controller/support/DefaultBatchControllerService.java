@@ -83,14 +83,12 @@ public class DefaultBatchControllerService implements BatchControllerServiceBi, 
 			registerBatch(batchName, slice, batch);
 
 			long batchHistoryId = 0;
-			try
+			
+			if(controllerServiceHistorySupport != null)
 			{
 				batchHistoryId = controllerServiceHistorySupport.saveInitialBatchInformation(batchName, slice);
 			}
-			catch(NullPointerException e)
-			{
-				
-			}
+			
 			int result = batch.executeBatch(slice);
 			
 			if(batchHistoryId != 0)
