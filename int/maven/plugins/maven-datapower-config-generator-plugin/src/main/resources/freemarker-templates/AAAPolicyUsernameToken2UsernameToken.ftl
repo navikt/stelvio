@@ -94,11 +94,11 @@
 			<AUZOSNSSConfig/>
 		</Authenticate>
 		<MapCredentials>
-			<MCMethod>custom</MCMethod>
-			<MCCustomURL/>
-			<MCMapURL>local:///xslt/map-credentials.xsl</MCMapURL>
-			<MCMapXPath/>
-			<MCTFIMEndpoint/>
+				<MCMethod>custom</MCMethod>
+				<MCCustomURL>local:///xslt/map-credentials.xsl</MCCustomURL>
+				<MCMapURL/>
+				<MCMapXPath/>
+				<MCTFIMEndpoint/>
 		</MapCredentials>
 		<ExtractResource>
 			<ERBitmap>
