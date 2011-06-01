@@ -1,4 +1,4 @@
-<#macro AAAPolicyUsernameToken2UsernameToken name aaaFileName auLdapHost auLdapPort auLdapBindDN auLdapBindPwd auLdapSearchParameters>
+<#macro AAAPolicyUsernameToken2UsernameToken name auLdapHost auLdapPort auLdapBindDN auLdapBindPwd auLdapSearchParameters>
 	<AAAPolicy name="${name}" xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 		<mAdminState>enabled</mAdminState>
 		<ExtractIdentity>
@@ -94,9 +94,9 @@
 			<AUZOSNSSConfig/>
 		</Authenticate>
 		<MapCredentials>
-			<MCMethod>xmlfile</MCMethod>
+			<MCMethod>custom</MCMethod>
 			<MCCustomURL/>
-			<MCMapURL>${aaaFileName}</MCMapURL>
+			<MCMapURL>local:///xslt/map-credentials.xsl</MCMapURL>
 			<MCMapXPath/>
 			<MCTFIMEndpoint/>
 		</MapCredentials>
@@ -123,9 +123,9 @@
 			<MRTAMWebSEALDynURLFile/>
 		</MapResource>
 		<Authorize>
-			<AZMethod>xmlfile</AZMethod>
+			<AZMethod>passthrough</AZMethod>
 			<AZCustomURL/>
-			<AZMapURL>${aaaFileName}</AZMapURL>
+			<AZMapURL/>
 			<AZHost/>
 			<AZPort/>
 			<AZLDAPGroup/>
@@ -184,7 +184,7 @@
 			<PPSAMLSLOEndpoint/>
 			<PPSSLProxyProfile/>
 			<PPWSUsernameToken>on</PPWSUsernameToken>
-			<PPWSUsernameTokenPasswordType>Digest</PPWSUsernameTokenPasswordType>
+			<PPWSUsernameTokenPasswordType>Text</PPWSUsernameTokenPasswordType>
 			<PPSAMLValidity>0</PPSAMLValidity>
 			<PPSAMLSkew>0</PPSAMLSkew>
 			<PPWSUsernameTokenIncludePwd>on</PPWSUsernameTokenIncludePwd>
