@@ -5,6 +5,12 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 
 	<bean id="btc.testbatch.dummyBatch" class="no.stelvio.batch.DummyBatchImplementation" />
+	
+	<bean id="btc.testbatch.dummyBatchWithInputParameters"
+		class="no.stelvio.batch.DummyBatchWithInputParameters">
+		<property name="timeToRun" value="2" />
+		<property name="exitCode" value="8" />
+	</bean>
 
 	<bean id="btc.testbatch.dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -16,21 +22,24 @@
 
 	<bean id="ControllerServiceHistorySupportTest"
 		class="no.stelvio.batch.support.ControllerServiceHistorySupportTest">
-		<property name="sessionFactory" ref="btc.testbatch.sessionFactory" />
+<!-- 		<property name="sessionFactory" ref="btc.testbatch.sessionFactory" /> -->
 		<property name="histRepository" ref="batchHistoryRepository" />
+		<property name="batchControllerService" ref="DefaultBatchControllerService" />
+		<property name="controllerServiceHistorySupport" ref="ControllerServiceHistorySupport" />
 	</bean>
 
-	<bean id="ControllerServiceHistorySupport"
-		class="no.stelvio.batch.support.ControllerServiceHistorySupport">
-		<property name="repository" ref="batchHistoryRepository" />
-	</bean><!--
-	
 	<bean id="DefaultBatchControllerService"
 		class="no.stelvio.batch.controller.support.DefaultBatchControllerService">
 		<property name="controllerServiceHistorySupport" ref="ControllerServiceHistorySupport" />
 	</bean>
 
-	--><!-- Hibernate Template Defintion -->
+	<bean id="ControllerServiceHistorySupport"
+		class="no.stelvio.batch.support.ControllerServiceHistorySupport">
+		<property name="repository" ref="batchHistoryRepository" />
+		<!-- <property name="sessionFactory" ref="btc.testbatch.sessionFactory" /> -->
+	</bean>
+	
+	<!-- Hibernate Template Defintion -->
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory">
 			<ref bean="btc.testbatch.sessionFactory" />
@@ -43,12 +52,6 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 
-	<!--
-		<bean id="ControllerServiceHistorySupport"
-		class="no.stelvio.batch.support.ControllerServiceHistorySupport">
-		<property name="sessionFactory" ref="btc.testbatch.sessionFactory" />
-		</bean>
-	-->
 	<bean id="btc.testbatch.sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 
