@@ -143,7 +143,6 @@ app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchDOTest.java -t
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/domain/BatchHistDOTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/listeners/support/ListenerSupportTest.java -text svneol=unset#text/plain
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/.copyarea.db -text
-app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ControllerServiceHistorySupportBatchWithParametersTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ControllerServiceHistorySupportTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ProgressLoggerListenerTest.java -text
 app/stelvio-batch-java/src/test/java/no/stelvio/batch/support/ProgressNotifierTest.java -text
