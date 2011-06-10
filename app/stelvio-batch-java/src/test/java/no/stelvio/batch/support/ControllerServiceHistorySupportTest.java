@@ -70,13 +70,7 @@ public class ControllerServiceHistorySupportTest {
 		
 		ctx = new ClassPathXmlApplicationContext(BATCH_TEST_CONTEXT);
 		batchControllerService = (DefaultBatchControllerService) ctx.getBean("DefaultBatchControllerService");
-		
-		batchControllerService.setBatchNameMap(new HashMap());
-		batchControllerService.getBatchNameMap().put("btc.testbatch.dummyBatch", "btc.testbatch.dummyBatch");
-		batchControllerService.getBatchNameMap().put("btc.testbatch.dummyBatchWithInputParameters", "btc.testbatch.dummyBatchWithInputParameters");
-
 		histRepository = (HibernateBatchHistRepository) ctx.getBean("batchHistoryRepository");
-
 		controllerServiceHistorySupport = (ControllerServiceHistorySupport) ctx.getBean("ControllerServiceHistorySupport");
 
 	}

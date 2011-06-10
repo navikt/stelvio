@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/util 
+       http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
 	<bean id="btc.testbatch.dummyBatch" class="no.stelvio.batch.DummyBatchImplementation" />
 	
@@ -22,7 +23,6 @@
 
 	<bean id="ControllerServiceHistorySupportTest"
 		class="no.stelvio.batch.support.ControllerServiceHistorySupportTest">
-<!-- 		<property name="sessionFactory" ref="btc.testbatch.sessionFactory" /> -->
 		<property name="histRepository" ref="batchHistoryRepository" />
 		<property name="batchControllerService" ref="DefaultBatchControllerService" />
 		<property name="controllerServiceHistorySupport" ref="ControllerServiceHistorySupport" />
@@ -31,12 +31,17 @@
 	<bean id="DefaultBatchControllerService"
 		class="no.stelvio.batch.controller.support.DefaultBatchControllerService">
 		<property name="controllerServiceHistorySupport" ref="ControllerServiceHistorySupport" />
+		<property name="batchNameMap" ref="batchNameToBatchClassMapping"/>
 	</bean>
+	
+	<util:map id="batchNameToBatchClassMapping">
+		<entry key="btc.testbatch.dummyBatch" value="btc.testbatch.dummyBatch" />
+		<entry key="btc.testbatch.dummyBatchWithInputParameters" value="btc.testbatch.dummyBatchWithInputParameters" />		
+	</util:map>
 
 	<bean id="ControllerServiceHistorySupport"
 		class="no.stelvio.batch.support.ControllerServiceHistorySupport">
 		<property name="repository" ref="batchHistoryRepository" />
-		<!-- <property name="sessionFactory" ref="btc.testbatch.sessionFactory" /> -->
 	</bean>
 	
 	<!-- Hibernate Template Defintion -->
