@@ -53,6 +53,7 @@ app/stelvio-batch-java/src/main/java/no/stelvio/batch/BatchRegistry.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/StelvioBatchParameterReader.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/context/.copyarea.db -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/context/support/.copyarea.db -text
+app/stelvio-batch-java/src/main/java/no/stelvio/batch/context/support/BatchControllerServiceInitRequestContextInterceptor.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/context/support/BatchInitRequestContextInterceptor.java -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/controller/.copyarea.db -text
 app/stelvio-batch-java/src/main/java/no/stelvio/batch/controller/support/.copyarea.db -text
