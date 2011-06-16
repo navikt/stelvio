@@ -47,7 +47,14 @@ public class ControllerServiceHistorySupport {
 
 	public long saveInitialBatchInformation(String jobName, String parameters) {
 		BatchHistDO batchHistory = new BatchHistDO();
-		batchHistory.setParameters(parameters);
+		
+		if (parameters != null){
+			batchHistory.setParameters(parameters);			
+		}
+		else {
+			batchHistory.setParameters("");
+		}
+		
 		return saveInitialCommonBatchInformation(batchHistory, jobName);
 	}
 
