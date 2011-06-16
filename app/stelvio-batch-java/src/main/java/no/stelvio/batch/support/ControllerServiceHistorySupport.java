@@ -51,7 +51,7 @@ public class ControllerServiceHistorySupport {
 		return saveInitialCommonBatchInformation(batchHistory, jobName);
 	}
 
-	public long saveInitialCommonBatchInformation(BatchHistDO batchHistory,
+	private long saveInitialCommonBatchInformation(BatchHistDO batchHistory,
 			String batchName) {
 		batchHistory.setBatchname(batchName);
 		batchHistory.setStatus(BATCH_STATUS_STARTED);

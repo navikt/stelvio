@@ -3,7 +3,10 @@ package no.stelvio.batch.domain;
 import java.sql.Clob;
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +15,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
+
+import no.stelvio.common.context.RequestContextHolder;
+import no.stelvio.domain.time.ChangeStamp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,8 +62,18 @@ import org.slf4j.LoggerFactory;
 	@Column(name = "SLICE_END", insertable = true, updatable = false)
 	private String sliceEnd;
 
-	@Column(name = "SLICE", insertable = true, updatable = false, nullable = true)
+	@Column(name = "SLICE", insertable = true, updatable = false)
 	private int slice;
+	
+	/**
+	 * Audit information.
+	 */
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "createdBy", column = @Column(name = "opprettet_av")),
+			@AttributeOverride(name = "createdDate", column = @Column(name = "dato_opprettet")),
+			@AttributeOverride(name = "updatedBy", column = @Column(name = "endret_av")),
+			@AttributeOverride(name = "updatedDate", column = @Column(name = "dato_endret")) })
+	private ChangeStamp changeStamp;
 
 	/** Batch start time. Automatically inserted by onCreate() **/
 	@Column(name = "STARTTIME", nullable = true)
@@ -226,6 +242,52 @@ import org.slf4j.LoggerFactory;
 
 	public Date getStartTime() {
 		return startTime;
+	}
+	
+	/**
+	 * Returns the batch change stamp.
+	 * 
+	 * @return the batch change stamp
+	 */
+	public ChangeStamp getChangeStamp() {
+		return changeStamp;
+	}
+
+	/**
+	 * Sets the batch change stamp.
+	 * 
+	 * @param changeStamp
+	 *            the batch change stamp.
+	 */
+	public void setChangeStamp(ChangeStamp changeStamp) {
+		this.changeStamp = changeStamp;
+	}
+
+	/**
+	 * Makes sure that the ChangeStamp object is updated. Called by the setter methods.
+	 */
+	private void updateChangeStamp() {
+		String userId;
+		if (RequestContextHolder.isRequestContextSet()) {
+			userId = RequestContextHolder.currentRequestContext().getUserId();
+		} else {
+			userId = null;
+			if (logger.isInfoEnabled()) {
+				logger.info("RequestContext is not sat for this thread.");
+			}
+		}
+
+		if (userId == null || userId.trim().equals("")) {
+			userId = this.batchname;
+		}
+
+		if (changeStamp == null) {
+			if (logger.isWarnEnabled()) {
+				logger.warn("ChangeStamp entity not set for batch: " + this.batchname);
+			}
+			return;
+		}
+		changeStamp.updatedBy(userId);
 	}
 
 }
