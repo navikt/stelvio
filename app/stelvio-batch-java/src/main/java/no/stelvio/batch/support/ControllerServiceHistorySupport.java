@@ -71,7 +71,7 @@ public class ControllerServiceHistorySupport {
 			batchHistory.setParameters(parameters);			
 		}
 		else {
-			batchHistory.setParameters("");
+			batchHistory.setParameters(" ");
 		}
 		
 		return saveInitialCommonBatchInformation(batchHistory, jobName);
@@ -82,6 +82,7 @@ public class ControllerServiceHistorySupport {
 		batchHistory.setBatchname(batchName);
 		batchHistory.setStatus(BATCH_STATUS_STARTED);
 		batchHistory.setStartTime();
+		batchHistory.setParameters(" ");
 		return repository.setHist(batchHistory);
 	}
 
