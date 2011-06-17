@@ -19,6 +19,9 @@ import javax.persistence.Version;
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.domain.time.ChangeStamp;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -116,6 +119,7 @@ import org.slf4j.LoggerFactory;
 	 */
 	public void setVersion(long version) {
 		this.version = version;
+		updateChangeStamp();
 	}
 
 	/** default constructor. */
@@ -128,6 +132,7 @@ import org.slf4j.LoggerFactory;
 	 */
 	public void setSlice(int slice) {
 		this.slice = slice;
+		updateChangeStamp();
 	}
 
 	/**
@@ -143,6 +148,7 @@ import org.slf4j.LoggerFactory;
 	 */
 	public void setBatchname(String batchname) {
 		this.batchname = batchname;
+		updateChangeStamp();
 	}
 
 	/**
@@ -190,6 +196,7 @@ import org.slf4j.LoggerFactory;
 	 */
 	public void setParameters(String parameters) {
 		this.parameters = parameters;
+		updateChangeStamp();
 	}
 
 	/**
@@ -205,6 +212,7 @@ import org.slf4j.LoggerFactory;
 	 */
 	public void setStatus(String status) {
 		this.status = status;
+		updateChangeStamp();
 	}
 
 	/**
@@ -218,6 +226,7 @@ import org.slf4j.LoggerFactory;
 
 	public void setBatchHistId(long batchHistId) {
 		this.batchHistId = batchHistId;
+		updateChangeStamp();
 	}
 
 	public long getBatchHistId() {
@@ -226,14 +235,17 @@ import org.slf4j.LoggerFactory;
 
 	public void setStartTime() {
 		this.startTime = new Date();
+		updateChangeStamp();
 	}
 
 	public void setEndTime() {
 		this.endTime = new Date();
+		updateChangeStamp();
 	}
 
 	public void setOutput(Clob output) {
 		this.output = output;
+		updateChangeStamp();
 	}
 
 	public Date getEndtime() {
@@ -288,6 +300,54 @@ import org.slf4j.LoggerFactory;
 			return;
 		}
 		changeStamp.updatedBy(userId);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		ToStringBuilder sb = new ToStringBuilder(this);
+		sb.append("batchname", getBatchname()).append("slice", getSlice());
+		if (getSliceStart() != null && getSliceEnd() != null) {
+			if (!getSliceStart().equals(getSliceEnd())) {
+				sb.append("sliceStart", getSliceStart());
+				sb.append("sliceEnd").append(getSliceEnd());
+			}
+		}
+		sb.append("parameters", getParameters());
+		sb.append("status", getStatus());
+		return sb.toString();
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	public boolean equals(Object other) {
+
+		if (this == other) {
+			return true;
+		}
+
+		if (!(other instanceof BatchDO)) {
+			return false;
+		}
+		BatchDO castOther = (BatchDO) other;
+		return new EqualsBuilder().append(this.getBatchname(), castOther.getBatchname()).append(this.getSlice(),
+				castOther.getSlice()).isEquals();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	public int hashCode() {
+		return new HashCodeBuilder().append(getBatchname()).append(getSlice()).toHashCode();
 	}
 
 }

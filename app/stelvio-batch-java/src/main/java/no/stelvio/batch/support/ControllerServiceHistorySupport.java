@@ -12,11 +12,11 @@ import org.apache.commons.lang.NotImplementedException;
 import org.hibernate.SessionFactory;
 import org.springframework.batch.core.BatchStatus;
 
-/*
+/**
  * Class for saving and retrieving history on batches that have been run
  * 
  * @author person5dc3535ea7f4(Accenture)
- */
+ **/
 public class ControllerServiceHistorySupport {
 
 	BatchHistRepository repository;
@@ -38,13 +38,29 @@ public class ControllerServiceHistorySupport {
 	public void setRepository(BatchHistRepository repository) {
 		this.repository = repository;
 	}
-
+	
+	/**
+	 * Saves batch information in T_BATCH_HIST when a (classic) batch is started (when the execute method is called).  
+	 * Used in DefaultBatchControllerService's execute method.  
+	 * 
+	 * @param batchName
+	 * @param slice
+	 * @return
+	 */
 	public long saveInitialBatchInformation(String batchName, int slice) {
 		BatchHistDO batchHistory = new BatchHistDO();
 		batchHistory.setSlice(slice);
 		return saveInitialCommonBatchInformation(batchHistory, batchName);
 	}
 
+	/**
+	 * Saves batch information in T_BATCH_HIST when a spring batch is started (when the execute method is called). 
+	 * Not used yet.  
+	 * 
+	 * @param jobName
+	 * @param parameters
+	 * @return
+	 */
 	public long saveInitialBatchInformation(String jobName, String parameters) {
 		BatchHistDO batchHistory = new BatchHistDO();
 		
