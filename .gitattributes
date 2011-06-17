@@ -3927,6 +3927,13 @@ int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Warn
 int/maven/plugins/maven-config-verification-plugin/pom.xml -text
 int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/Archiver.java -text
 int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/VerifyConfigMojo.java -text
+int/maven/plugins/maven-configure-wps-dev-plugin/pom.xml -text
+int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/CommandLineExecuteMojo.java -text
+int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/CommandLineMojo.java -text
+int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureAdaptersMojo.java -text
+int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/CreateProfilesMojo.java -text
+int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/utils/Utils.java -text
+int/maven/plugins/maven-configure-wps-dev-plugin/src/main/resources/scripts/configureAdapters.py -text
 int/maven/plugins/maven-confluence-plugin/pom.xml -text
 int/maven/plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddCommentMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-confluence-plugin/src/main/java/no/nav/maven/plugin/confluence/mojo/AddDownCommentMojo.java -text svneol=unset#text/plain
