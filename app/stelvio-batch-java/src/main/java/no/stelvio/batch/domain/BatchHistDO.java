@@ -333,10 +333,10 @@ import org.slf4j.LoggerFactory;
 			return true;
 		}
 
-		if (!(other instanceof BatchDO)) {
+		if (!(other instanceof BatchHistDO)) {
 			return false;
 		}
-		BatchDO castOther = (BatchDO) other;
+		BatchHistDO castOther = (BatchHistDO) other;
 		return new EqualsBuilder().append(this.getBatchname(), castOther.getBatchname()).append(this.getSlice(),
 				castOther.getSlice()).isEquals();
 	}

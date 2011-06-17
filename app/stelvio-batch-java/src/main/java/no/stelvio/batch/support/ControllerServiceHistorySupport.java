@@ -7,6 +7,7 @@ import java.util.Date;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
+import no.stelvio.domain.time.ChangeStamp;
 
 import org.apache.commons.lang.NotImplementedException;
 import org.hibernate.SessionFactory;
@@ -49,6 +50,7 @@ public class ControllerServiceHistorySupport {
 	 */
 	public long saveInitialBatchInformation(String batchName, int slice) {
 		BatchHistDO batchHistory = new BatchHistDO();
+		batchHistory.setChangeStamp(new ChangeStamp(batchName));
 		batchHistory.setSlice(slice);
 		return saveInitialCommonBatchInformation(batchHistory, batchName);
 	}
@@ -63,6 +65,7 @@ public class ControllerServiceHistorySupport {
 	 */
 	public long saveInitialBatchInformation(String jobName, String parameters) {
 		BatchHistDO batchHistory = new BatchHistDO();
+		batchHistory.setChangeStamp(new ChangeStamp(jobName));
 		
 		if (parameters != null){
 			batchHistory.setParameters(parameters);			
