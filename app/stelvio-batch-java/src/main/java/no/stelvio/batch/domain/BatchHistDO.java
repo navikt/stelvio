@@ -281,11 +281,17 @@ import org.slf4j.LoggerFactory;
 	private void updateChangeStamp() {
 		String userId;
 		if (RequestContextHolder.isRequestContextSet()) {
-			userId = RequestContextHolder.currentRequestContext().getUserId();
+			String fullUserId = RequestContextHolder.currentRequestContext().getUserId();
+			if (fullUserId != null){
+				userId = shortenBatchName(fullUserId);				
+			} else {
+				userId = fullUserId;				
+			}
+			
 		} else {
 			userId = null;
 			if (logger.isInfoEnabled()) {
-				logger.info("RequestContext is not sat for this thread.");
+				logger.info("RequestContext is not set for this thread.");
 			}
 		}
 
@@ -348,6 +354,11 @@ import org.slf4j.LoggerFactory;
 	 */
 	public int hashCode() {
 		return new HashCodeBuilder().append(getBatchname()).append(getSlice()).toHashCode();
+	}
+	
+	private String shortenBatchName(String batchName){
+		String[] name = batchName.split("\\.");
+		return name[name.length-1];			
 	}
 
 }
