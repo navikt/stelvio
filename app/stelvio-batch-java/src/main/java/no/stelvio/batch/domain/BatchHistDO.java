@@ -45,11 +45,11 @@ import org.slf4j.LoggerFactory;
 			.getLogger(BatchHistDO.class);
 
 	/**
-	 * identifier field, read only. for a unique identifyer of a batch use the
-	 * batchnam/slice combination
+	 * identifier field, read only. for a unique identifier of a batch use the
+	 * batchname/slice combination
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "BATCH_HIST_ID", insertable = true, updatable = false)
 	private long batchHistId;
 
