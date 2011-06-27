@@ -16,21 +16,9 @@ package no.nav.maven.plugin.configurewpsdev.mojo;
  * limitations under the License.
  */
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
-
-import no.nav.maven.plugin.configurewpsdev.utils.Utils;
-
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.util.Os;
-import org.codehaus.plexus.util.cli.CommandLineException;
-import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
-import org.codehaus.plexus.util.cli.StreamConsumer;
 
 /**
  * 
@@ -38,37 +26,25 @@ import org.codehaus.plexus.util.cli.StreamConsumer;
  * 
  * @phase process-sources
  */
-public class ConfigureAdaptersMojo extends AbstractMojo {
-	/**
-	 * Location of the file.
-	 * 
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	private File outputDirectory;
+public class ConfigureAdaptersMojo extends AbstractWSAdminMojo {
 
 	/**
-	 * @parameter
-	 * @required
+	 * @parameter expression="${adaptersHome}"
 	 */
-	private List<String> adapters;
+	protected String adaptersHome;
+	
+	protected void runWSAdmin(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+		Commandline.Argument arg0 = new Commandline.Argument();
+		arg0.setLine(scriptsHome+"\\configureAdapters.py");
+		commandLine.addArg(arg0);
+		Commandline.Argument arg1 = new Commandline.Argument();
+		arg1.setLine(scriptsHome);
+		commandLine.addArg(arg1);
+		Commandline.Argument arg2 = new Commandline.Argument();
+		arg2.setLine(adaptersHome);
+		commandLine.addArg(arg2);
+		executeCommand(commandLine);
+		
+	}
 
-	public void execute() throws MojoExecutionException, MojoFailureException {
-		try {
-			download(adapters);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void download(List<String> urls) throws MalformedURLException {
-		for (String url : adapters) {
-			URL adapterURL = null;
-			adapterURL = new URL(url);
-			Utils.downloadURL(adapterURL, outputDirectory);
-		}
-	}
-	
-	
-	
 }

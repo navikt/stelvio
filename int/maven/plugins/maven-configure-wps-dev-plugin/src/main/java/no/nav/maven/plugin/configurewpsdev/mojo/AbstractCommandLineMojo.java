@@ -1,6 +1,5 @@
 package no.nav.maven.plugin.configurewpsdev.mojo;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -17,32 +16,12 @@ import org.codehaus.plexus.util.cli.StreamConsumer;
  * 
  * @author test@example.com
  */
-public abstract class CommandLineMojo extends AbstractMojo {
+public abstract class AbstractCommandLineMojo extends AbstractMojo {
 
-	/**
-	 * @parameter expression="${project.basedir}"
-	 * @required
-	 */
-	protected File baseDirectory;
-
-	/**
-	 * @parameter expression="${project.build.scriptSourceDirectory}"
-	 * @required
-	 */
-	protected String scriptDirectory;
-
-	/**
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	protected String targetDirectory;
-	
-	protected String busConfigurationExtractDirectory = "/target/bus-config";
-	protected String tmpBusConfigurationExtractDirectory = "/target/tmp";
 
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 
-	protected abstract String getGoalPrettyPrint();
+//	protected abstract String getGoalPrettyPrint();
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		doExecute();
@@ -91,7 +70,6 @@ public abstract class CommandLineMojo extends AbstractMojo {
 	private static class StreamConsumerChain implements StreamConsumer {
 		private final Collection<StreamConsumer> chain = new ArrayList<StreamConsumer>();
 
-		@SuppressWarnings("unused")
 		public StreamConsumerChain() {
 		}
 
