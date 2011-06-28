@@ -50,7 +50,7 @@ import org.slf4j.LoggerFactory;
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "BATCH_HIST_ID", insertable = true, updatable = false)
+	@Column(name = "BATCH_HIST_ID", insertable = false, updatable = false)
 	private long batchHistId;
 
 	/** batch name, read only. */
