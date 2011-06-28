@@ -10,8 +10,8 @@
 	<name>maven-configure-wps-dev-pom</name>
 
 	<properties>
-		<adminUser>srvpensjon</adminUser>
-		<adminPasswd>Ash5SoxP</adminPasswd>
+		<!-- adminUser>srvpensjon</adminUser>
+		<adminPasswd>Ash5SoxP</adminPasswd -->
 		<manageProfilesLocation>${was.home}/bin
 		</manageProfilesLocation>
 		<profilePathRoot>${was.home}/profiles
@@ -124,7 +124,7 @@
 				</artifactId>
 				<version>1.0-SNAPSHOT</version>
 				<executions>
-					<!-- execution>
+					<execution>
 						<id>createProfiles</id>
 						<phase>install</phase>
 						<goals>
@@ -185,7 +185,7 @@
 							</executable>
 							<arguments>server1</arguments>
 						</configuration>
-					</execution-->
+					</execution>
 					<execution>
 						<id>import-ltpa</id>
 						<phase>install</phase>
