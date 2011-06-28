@@ -1,7 +1,9 @@
 package no.nav.maven.plugin.configurewpsdev.mojo;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -17,7 +19,11 @@ import org.codehaus.plexus.util.cli.StreamConsumer;
  * @author test@example.com
  */
 public abstract class AbstractCommandLineMojo extends AbstractMojo {
-
+	
+	/**
+	 * @parameter expression="${adminPasswd}"
+	 */
+	protected String adminPasswd;
 
 	protected abstract void doExecute() throws MojoExecutionException, MojoFailureException;
 
@@ -28,26 +34,33 @@ public abstract class AbstractCommandLineMojo extends AbstractMojo {
 	}
 
 	protected final int executeCommand(Commandline command) {
+		final DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+		
+		
 		try {
-			
 			// If a password is sent as a parameter, we hide it from the output
-			if (command.toString().contains("-password")) {
-				String cmd = command.toString().replaceFirst("-password\\s[\\w]+", "-password *****");
-				getLog().info("Executing the following command: " + cmd);
+//			if (command.toString().contains("-password")) {
+//				String cmd = command.toString().replaceFirst("-password\\s[\\w]+", "-password *****");
+//				getLog().info("Executing the following command: " + cmd);
+//			}
+			if (command.toString().contains(adminPasswd)) {
+				String cmd = command.toString().replace(adminPasswd, "*****");
+				getLog().info(df.format(new Date()) + " Executing the following command: " + cmd);
 			}
 			else {
-				getLog().info("Executing the following command: " + command.toString());
+				getLog().info(df.format(new Date()) + " Executing the following command: " + command.toString());
 			}
+			
 			
 
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {
-					getLog().info(line);
+					getLog().info(df.format(new Date()) + " " + line);
 				}
 			};
 			StreamConsumer systemErr = new StreamConsumer() {
 				public void consumeLine(String line) {
-					getLog().error(line);
+					getLog().error(df.format(new Date()) + " " + line);
 				}
 			};
 			ErrorCheckingStreamConsumer errorChecker = new ErrorCheckingStreamConsumer();

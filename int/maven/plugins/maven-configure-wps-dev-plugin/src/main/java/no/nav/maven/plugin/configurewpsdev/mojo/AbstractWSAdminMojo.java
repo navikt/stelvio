@@ -33,12 +33,6 @@ public abstract class AbstractWSAdminMojo extends AbstractCommandLineMojo {
 	 */
 	protected String adminUser;
 	
-	/**
-	 * @parameter expression="${adminPasswd}"
-	 * @required 
-	 */
-	protected String adminPasswd;
-	
 	protected abstract void runWSAdmin(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
 	
 	
