@@ -1992,7 +1992,6 @@ incubator/oppgave-poc/nav/virksomhet/tjenester/felles/felles.xsd -text
 incubator/oppgave-poc/nav/virksomhet/tjenester/person/feil/feil.xsd -text
 incubator/oppgave-poc/nav/virksomhet/tjenester/person/meldinger/meldinger.xsd -text
 incubator/oppgave-poc/nav/virksomhet/tjenester/person/person.wsdl -text
-incubator/oppgave-poc/output.jsp -text
 incubator/oppgave-poc/sca.module -text
 incubator/oppgave-poc/sca.module.attributes -text
 incubator/oppgave-poc/sca.modulex -text
