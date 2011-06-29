@@ -1016,6 +1016,13 @@ int/maven/plugins/maven-wsi-plugin/.project
 int/maven/plugins/maven-wsi-plugin/.settings
 int/maven/plugins/maven-wsi-plugin/target
 int/maven/plugins/target
+int/maven/poms/maven-configure-wps-dev-pom/.project
+int/maven/poms/maven-configure-wps-dev-pom/.settings
+int/maven/poms/maven-configure-wps-dev-pom/ADLDAPAdapter-7.0.2.rar
+int/maven/poms/maven-configure-wps-dev-pom/CWYEM_EMail-7.0.0.3.rar
+int/maven/poms/maven-configure-wps-dev-pom/cicseciNoTrans-7.2.0.1.rar
+int/maven/poms/maven-configure-wps-dev-pom/cicseciXA-7.2.0.1.rar
+int/maven/poms/maven-configure-wps-dev-pom/target
 int/maven/poms/maven-deploy-pom/.project
 int/maven/poms/maven-deploy-pom/.settings
 int/maven/poms/maven-deploy-pom/target

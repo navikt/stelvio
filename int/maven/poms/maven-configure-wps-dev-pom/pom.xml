@@ -198,6 +198,19 @@
 							</ltpaurl>
 						</configuration>
 					</execution>
+					<execution>
+						<id>import-certificates</id>
+						<phase>install</phase>
+						<goals>
+							<goal>import-certificates</goal>
+						</goals>
+						<configuration>
+							<certificates>
+								<certificate>http://confluence.adeo.no/download/attachments/61819/NAV+Test-CA-1.crt</certificate>
+								<certificate>http://confluence.adeo.no/download/attachments/61826/Usertrust_Network.crt</certificate>
+							</certificates>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
@@ -205,3 +218,4 @@
 
 
 </project>
+
