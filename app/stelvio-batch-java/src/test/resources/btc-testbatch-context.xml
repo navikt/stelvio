@@ -9,7 +9,7 @@
 	
 	<bean id="btc.testbatch.dummyBatchWithInputParameters"
 		class="no.stelvio.batch.DummyBatchWithInputParameters">
-		<property name="timeToRun" value="2" />
+		<property name="timeToRun" value="1" />
 		<property name="exitCode" value="8" />
 	</bean>
 
