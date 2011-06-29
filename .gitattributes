@@ -3963,6 +3963,7 @@ int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plug
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureAdaptersMojo.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ConfigureSecurity.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ExecuteCommandLineMojo.java -text
+int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ImportCertificates.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/ImportLTPA.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/WSAdminMojo.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/utils/Utils.java -text

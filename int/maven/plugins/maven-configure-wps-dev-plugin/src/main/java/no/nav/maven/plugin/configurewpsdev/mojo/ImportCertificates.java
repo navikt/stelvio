@@ -2,6 +2,7 @@ package no.nav.maven.plugin.configurewpsdev.mojo;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import no.nav.maven.plugin.configurewpsdev.utils.Utils;
 
@@ -11,32 +12,35 @@ import org.codehaus.plexus.util.cli.Commandline;
 
 /**
  * 
- * @goal import-ltpa
+ * @goal import-certificates
  * 
  * @phase process-sources
  */
-public class ImportLTPA extends AbstractWSAdminMojo {
+public class ImportCertificates extends AbstractWSAdminMojo {
 	/**
-	 * @parameter expression="${ltpaurl}"
+	 * @parameter
 	 * @required
 	 */
-	protected String ltpaurl;
+	protected List<String> certificates;
 	
 	@Override
 	protected void runWSAdmin(Commandline commandLine)
 			throws MojoExecutionException, MojoFailureException {
 		
-		URL ltpaURL;
-		try {
-			ltpaURL = new URL(ltpaurl);
-			Utils.downloadURL(ltpaURL, targetFolder);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for (String certificate:certificates) {
+			URL certificateURL;
+			try {
+				certificateURL = new URL(certificate);
+				Utils.downloadURL(certificateURL, targetFolder);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
+		
 		Commandline.Argument arg0 = new Commandline.Argument();
-		arg0.setLine(scriptsHome + "\\importLTPA.py");
+		arg0.setLine(scriptsHome + "\\importCertificates.py");
 		commandLine.addArg(arg0);
 		Commandline.Argument arg1 = new Commandline.Argument();
 		arg1.setLine(scriptsHome);
