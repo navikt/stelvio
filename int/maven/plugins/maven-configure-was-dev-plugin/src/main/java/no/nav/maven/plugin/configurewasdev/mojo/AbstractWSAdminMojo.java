@@ -23,10 +23,10 @@ public abstract class AbstractWSAdminMojo extends AbstractCommandLineMojo {
 	protected String scriptsHome;
 	
 	/**
-	 * @parameter expression="${wpsProfilePath}"
+	 * @parameter expression="${profilePath}"
 	 * @required 
 	 */
-	protected String wpsProfilePath;
+	protected String profilePath;
 	
 	/**
 	 * @parameter expression="${adminUser}"
@@ -39,7 +39,7 @@ public abstract class AbstractWSAdminMojo extends AbstractCommandLineMojo {
 	
 	@Override
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
-		String executable = wpsProfilePath + "/bin/wsadmin.bat";
+		String executable = profilePath + "/bin/wsadmin.bat";
 		Commandline commandLine = new Commandline();
 		commandLine.setExecutable(executable);
 		Commandline.Argument arg = new Commandline.Argument();
