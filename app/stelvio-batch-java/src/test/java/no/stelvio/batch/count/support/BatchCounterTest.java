@@ -76,8 +76,8 @@ public class BatchCounterTest {
 		assertEquals(30, events.get(techEvent).getTime());
 	}	
 	
+	//
 	@Test
-	@Ignore
 	public void shouldStartAndStop() throws InterruptedException {
 		counter.start(funcEvent);
 		Thread.sleep(1);
@@ -87,8 +87,8 @@ public class BatchCounterTest {
 		assertTrue(events.get(funcEvent).getTime() > 0);
 	}
 	
+	//
 	@Test
-	@Ignore
 	public void shouldStartAndStopAndAddToTime() throws InterruptedException {
 		long time = 123456;
 		counter.incrementEvent(funcEvent, time);
@@ -100,8 +100,8 @@ public class BatchCounterTest {
 		assertTrue(events.get(funcEvent).getTime() > time);
 	}	
 	
+	//
 	@Test
-	@Ignore
 	public void shouldStartAndStopAndAddToCount() throws InterruptedException {
 		counter.start(funcEvent);
 		Thread.sleep(1);
