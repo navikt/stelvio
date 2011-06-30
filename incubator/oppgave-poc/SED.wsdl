@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="SED" targetNamespace="http://oppgave-poc/SED" xmlns:tns="http://oppgave-poc/SED" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://oppgave-poc/SED">
+      <xsd:element name="validerOgLagreUtenlandskId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="sedId" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validerOgLagreUtenlandskIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="hentIdDataFraSEDFault1_idIkkeFunnet" nillable="true" type="xsd:string"/>
+        </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="validerOgLagreUtenlandskIdRequestMsg">
+    <wsdl:part element="tns:validerOgLagreUtenlandskId" name="validerOgLagreUtenlandskIdParameters"/>
+  </wsdl:message>
+    <wsdl:message name="validerOgLagreUtenlandskIdResponseMsg">
+    <wsdl:part element="tns:validerOgLagreUtenlandskIdResponse" name="validerOgLagreUtenlandskIdResult"/>
+  </wsdl:message>
+    <wsdl:message name="validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg">
+    <wsdl:part element="tns:hentIdDataFraSEDFault1_idIkkeFunnet" name="norskIdIkkeFunnet"/>
+  </wsdl:message>
+    <wsdl:portType name="SED">
+    <wsdl:operation name="validerOgLagreUtenlandskId">
+      <wsdl:input message="tns:validerOgLagreUtenlandskIdRequestMsg" name="validerOgLagreUtenlandskIdRequest"/>
+      <wsdl:output message="tns:validerOgLagreUtenlandskIdResponseMsg" name="validerOgLagreUtenlandskIdResponse"/>
+            <wsdl:fault message="tns:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" name="norskIdIkkeFunnet"/>
+        </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

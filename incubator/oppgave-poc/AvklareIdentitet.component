@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AvklareIdentitet="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://oppgave-poc/InnhenteDNummer" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:process="http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="AvklareIdentitet" name="AvklareIdentitet">
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AvklareIdentitet="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://oppgave-poc/InnhenteDNummer" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/SED" xmlns:process="http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="AvklareIdentitet" name="AvklareIdentitet">
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="async" portType="AvklareIdentitet:AvklareIdentitet">
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
     </interface>
   </interfaces>
   <references>
-    <reference name="PersonPartner">
-      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:Person"/>
+    <reference name="SEDPartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns3:SED"/>
       <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
       <scdl:referenceQualifier xsi:type="scdl:Reliability"/>
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="Component1"/>
     </reference>
   </references>
   <implementation xsi:type="process:ProcessImplementation">

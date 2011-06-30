@@ -14,12 +14,6 @@
       </tel:verb>
     </tel:potentialOwner>
   </tel:staffSettings>
-  <tel:uiSettings>
-    <tel:webClientSettings clientType="Web Client V6">
-      <tel:jsp contextRoot="/oppgave-pocWeb" for="input" uri="/output.jsp">
-        <tel:applyTo role="all"/>
-      </tel:jsp>
-    </tel:webClientSettings>
-  </tel:uiSettings>
+  <tel:uiSettings/>
   <tel:escalationSettings/>
 </tel:task>

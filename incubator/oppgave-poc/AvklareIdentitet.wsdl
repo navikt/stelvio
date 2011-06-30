@@ -4,14 +4,7 @@
       <xsd:element name="avklarIdentitet">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="navn" nillable="true" type="xsd:string"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="avklarIdentitetResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="fnr" nillable="true" type="xsd:string"/>
+            <xsd:element name="sedId" nillable="true" type="xsd:string"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -20,13 +13,9 @@
     <wsdl:message name="avklarIdentitetRequestMsg">
     <wsdl:part element="tns:avklarIdentitet" name="avklarIdentitetParameters"/>
   </wsdl:message>
-    <wsdl:message name="avklarIdentitetResponseMsg">
-    <wsdl:part element="tns:avklarIdentitetResponse" name="avklarIdentitetResult"/>
-  </wsdl:message>
     <wsdl:portType name="AvklareIdentitet">
     <wsdl:operation name="avklarIdentitet">
       <wsdl:input message="tns:avklarIdentitetRequestMsg" name="avklarIdentitetRequest"/>
-      <wsdl:output message="tns:avklarIdentitetResponseMsg" name="avklarIdentitetResponse"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

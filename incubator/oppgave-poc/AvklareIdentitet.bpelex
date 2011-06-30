@@ -3,7 +3,7 @@
   <extensionmodel:ExtensionMap namespace="http://com.ibm.wbit.bpel.ui/">
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#/"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1309236771000" autoLayout="true" maxWpcId="19" minWpcId="0"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1309251074000" autoLayout="true" maxWpcId="23" minWpcId="0"/>
     </extensions>
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity"/>
@@ -22,52 +22,24 @@
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
     </extensions>
     <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.4"/>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.1/@faultHandler/@catch.0/@activity"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.3/@cases.0/@activity"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.3/@cases.0/@activity/@copy.0"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@variables/@children.2"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:VariableExtension"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@variables/@children.3"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:VariableExtension"/>
     </extensions>
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.1"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
     </extensions>
     <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.3/@cases.0"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CaseExtension"/>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.1/@faultHandler/@catch.0/@faultVariable"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:VariableExtension"/>
     </extensions>
     <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.3"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.1/@faultHandler"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:FaultHandlerExtension"/>
     </extensions>
     <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.3/@otherwise/@activity"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.3/@cases.0/@condition"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ExpressionExtension"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.1/@copy.0"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.1/@faultHandler/@catch.0"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CatchExtension"/>
     </extensions>
   </extensionmodel:ExtensionMap>
   <extensionmodel:ExtensionMap namespace="http://com.ibm.wbit.stickyboard.model/model/StickyBoard.xsd">

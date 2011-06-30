@@ -1985,13 +1985,10 @@ incubator/oppgave-poc/AvklareIdentitetArtifacts.wsdl -text
 incubator/oppgave-poc/AvklareIdentitetTask1.itel -text
 incubator/oppgave-poc/AvklareIdentitetTask1.itelex -text
 incubator/oppgave-poc/AvklareIdentitet_bpel.mon -text
+incubator/oppgave-poc/Component1.component -text
 incubator/oppgave-poc/InnhentDNummer.wsdl -text
 incubator/oppgave-poc/META-INF/MANIFEST.MF -text
-incubator/oppgave-poc/nav/virksomhet/part/person/person.xsd -text
-incubator/oppgave-poc/nav/virksomhet/tjenester/felles/felles.xsd -text
-incubator/oppgave-poc/nav/virksomhet/tjenester/person/feil/feil.xsd -text
-incubator/oppgave-poc/nav/virksomhet/tjenester/person/meldinger/meldinger.xsd -text
-incubator/oppgave-poc/nav/virksomhet/tjenester/person/person.wsdl -text
+incubator/oppgave-poc/SED.wsdl -text
 incubator/oppgave-poc/sca.module -text
 incubator/oppgave-poc/sca.module.attributes -text
 incubator/oppgave-poc/sca.modulex -text

@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="AvklareIdentitet" targetNamespace="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns="http://nav.no/virksomhet/tjenester/person/v1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl0="http://oppgave-poc/AvklareIdentitet" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="AvklareIdentitet" targetNamespace="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns0="http://oppgave-poc/SED" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl0="http://oppgave-poc/AvklareIdentitet" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <plnk:partnerLinkType name="AvklareIdentitetPLT">
     <plnk:role name="Interface">
       <plnk:portType name="wsdl0:AvklareIdentitet"/>
     </plnk:role>
   </plnk:partnerLinkType>
-    <plnk:partnerLinkType name="PersonPartnerPLT">
+    <plnk:partnerLinkType name="SEDPartnerPLT">
     <plnk:role name="Reference">
-      <plnk:portType name="ns:Person"/>
+      <plnk:portType name="ns0:SED"/>
     </plnk:role>
   </plnk:partnerLinkType>
     <wsdl:import location="AvklareIdentitet.wsdl" namespace="http://oppgave-poc/AvklareIdentitet"/>
-    <wsdl:import location="nav/virksomhet/tjenester/person/person.wsdl" namespace="http://nav.no/virksomhet/tjenester/person/v1"/>
+    <wsdl:import location="SED.wsdl" namespace="http://oppgave-poc/SED"/>
 </wsdl:definitions>

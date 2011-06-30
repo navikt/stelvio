@@ -1,72 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns0="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://nav.no/virksomhet/tjenester/person/meldinger/v1" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/InnhentDNummer" xmlns:tel="http://oppgave-poc/Task1" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="AvklareIdentitet" suppressJoinFailure="yes" targetNamespace="http://oppgave-poc" wpc:autoDelete="no" wpc:continueOnError="no" wpc:displayName="AvklareIdentitet" wpc:executionMode="longRunning" wpc:id="1" wpc:validFrom="2011-06-24T07:48:43" wpc:version="IBM_7.0.300">
+<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns0="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://nav.no/virksomhet/tjenester/person/meldinger/v1" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/InnhentDNummer" xmlns:ns4="http://oppgave-poc/SED" xmlns:tel="http://oppgave-poc/Task1" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="AvklareIdentitet" suppressJoinFailure="yes" targetNamespace="http://oppgave-poc" wpc:autoDelete="no" wpc:continueOnError="no" wpc:displayName="AvklareIdentitet" wpc:executionMode="longRunning" wpc:id="1" wpc:validFrom="2011-06-24T07:48:43" wpc:version="IBM_7.0.300">
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="AvklareIdentitet.wsdl" namespace="http://oppgave-poc/AvklareIdentitet"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="AvklareIdentitetArtifacts.wsdl" namespace="http://oppgave-poc/AvklareIdentitetArtifacts"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="nav/virksomhet/tjenester/person/meldinger/meldinger.xsd" namespace="http://nav.no/virksomhet/tjenester/person/meldinger/v1"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="nav/virksomhet/tjenester/person/person.wsdl" namespace="http://nav.no/virksomhet/tjenester/person/v1"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="InnhentDNummer.wsdl" namespace="http://oppgave-poc/InnhentDNummer"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="SED.wsdl" namespace="http://oppgave-poc/SED"/>
   <bpws:partnerLinks>
     <bpws:partnerLink myRole="Interface" name="AvklareIdentitet" partnerLinkType="ns:AvklareIdentitetPLT" wpc:id="2"/>
-    <bpws:partnerLink name="PersonPartner" partnerLinkType="ns:PersonPartnerPLT" partnerRole="Reference" wpc:id="12"/>
+    <bpws:partnerLink name="SEDPartner" partnerLinkType="ns:SEDPartnerPLT" partnerRole="Reference" wpc:id="20"/>
   </bpws:partnerLinks>
   <bpws:variables>
-    <bpws:variable name="navn" type="xsd:string" wpc:id="6"/>
-    <bpws:variable name="fnr" type="xsd:string" wpc:id="7"/>
-    <bpws:variable name="EUPerson" type="ns1:HentPersonRequest" wpc:id="13"/>
-    <bpws:variable name="person" type="ns1:HentPersonResponse" wpc:id="14"/>
+    <bpws:variable name="sedId" type="xsd:string" wpc:id="6"/>
+    <bpws:variable name="personId" type="xsd:string" wpc:id="7"/>
   </bpws:variables>
   <bpws:sequence name="HiddenSequence" wpc:id="1073741827">
     <bpws:receive createInstance="yes" name="Receive" operation="avklarIdentitet" partnerLink="AvklareIdentitet" portType="ns0:AvklareIdentitet" wpc:displayName="Receive" wpc:id="4" wpc:transactionalBehavior="commitAfter">
       <wpc:output>
-        <wpc:parameter name="navn" variable="navn"/>
+        <wpc:parameter name="sedId" variable="sedId"/>
       </wpc:output>
     </bpws:receive>
-    <bpws:assign name="Assign1" wpc:displayName="Assign EUPerson" wpc:id="15">
-      <bpws:copy>
-        <bpws:from variable="navn"/>
-        <bpws:to variable="EUPerson">
-          <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[fnr]]></bpws:query>
-        </bpws:to>
-      </bpws:copy>
-    </bpws:assign>
-    <bpws:invoke name="Invoke" operation="hentPerson" partnerLink="PersonPartner" portType="ns2:Person" wpc:continueOnError="inherit" wpc:displayName="Person.hentPerson" wpc:id="11">
+    <bpws:invoke name="Invoke1" operation="validerOgLagreUtenlandskId" partnerLink="SEDPartner" portType="ns4:SED" wpc:continueOnError="inherit" wpc:displayName="Valider og lagre utenlandsk Id" wpc:id="21">
       <wpc:input>
-        <wpc:parameter name="request" variable="EUPerson"/>
+        <wpc:parameter name="sedId" variable="sedId"/>
       </wpc:input>
-      <wpc:output>
-        <wpc:parameter name="response" variable="person"/>
-      </wpc:output>
-    </bpws:invoke>
-    <bpws:switch name="Choice" wpc:displayName="Har norsk ident?" wpc:id="16">
-      <bpws:case wpc:displayName="Ja" wpc:id="17">
-        <bpws:condition expressionLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[string-length($person/person/personIdent/ident) > 0
-]]></bpws:condition>
-        <bpws:assign name="Assign" wpc:displayName="Assign" wpc:id="10">
-          <bpws:copy>
-            <bpws:from variable="person">
-              <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[person/personIdent/ident]]></bpws:query>
-            </bpws:from>
-            <bpws:to variable="fnr"/>
-          </bpws:copy>
-        </bpws:assign>
-      </bpws:case>
-      <bpws:otherwise wpc:id="19">
-        <bpws:invoke name="HumanTask" operation="innhentDNummer" partnerLink="null" portType="ns3:InnhentDNummer" wpc:continueOnError="inherit" wpc:displayName="HumanTask" wpc:id="18" wpc:transactionalBehavior="participates">
-          <wpc:description>Beskrivelse</wpc:description>
-          <wpc:documentation>Dokumentasjon</wpc:documentation>
+      <wpc:output/>
+      <bpws:catch faultMessageType="ns4:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" faultName="ns4:norskIdIkkeFunnet" faultVariable="norskIdIkkeFunnetVariable" wpc:displayName="Norsk Id ikke funnet" wpc:id="22" wpc:variableId="23">
+        <bpws:invoke name="HumanTask" operation="innhentDNummer" partnerLink="null" portType="ns3:InnhentDNummer" wpc:continueOnError="inherit" wpc:displayName="Innhent Id" wpc:id="18" wpc:transactionalBehavior="participates">
+          <wpc:description>Søk etter person. Dersom person ikke funnet, rekvirer D-nummer eller send spørre-SED</wpc:description>
           <wpc:task name="tel:InnhentDNummer"/>
           <wpc:input>
-            <wpc:parameter name="navn" variable="navn"/>
+            <wpc:parameter name="navn" variable="sedId"/>
           </wpc:input>
           <wpc:output>
-            <wpc:parameter name="dnr" variable="fnr"/>
+            <wpc:parameter name="dnr" variable="personId"/>
           </wpc:output>
         </bpws:invoke>
-      </bpws:otherwise>
-    </bpws:switch>
-    <bpws:reply name="Reply" operation="avklarIdentitet" partnerLink="AvklareIdentitet" portType="ns0:AvklareIdentitet" wpc:displayName="Reply" wpc:id="5">
-      <wpc:input>
-        <wpc:parameter name="fnr" variable="fnr"/>
-      </wpc:input>
-    </bpws:reply>
+      </bpws:catch>
+    </bpws:invoke>
   </bpws:sequence>
 </bpws:process>
