@@ -3956,6 +3956,11 @@ int/maven/plugins/maven-build-plugin/src/main/java/no/stelvio/maven/plugins/Warn
 int/maven/plugins/maven-config-verification-plugin/pom.xml -text
 int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/Archiver.java -text
 int/maven/plugins/maven-config-verification-plugin/src/main/java/no/nav/maven/plugins/VerifyConfigMojo.java -text
+int/maven/plugins/maven-configure-was-dev-plugin/pom.xml -text
+int/maven/plugins/maven-configure-was-dev-plugin/src/main/java/no/nav/maven/plugin/configurewasdev/mojo/AbstractCommandLineMojo.java -text
+int/maven/plugins/maven-configure-was-dev-plugin/src/main/java/no/nav/maven/plugin/configurewasdev/mojo/AbstractExecutableMojo.java -text
+int/maven/plugins/maven-configure-was-dev-plugin/src/main/java/no/nav/maven/plugin/configurewasdev/mojo/AbstractWSAdminMojo.java -text
+int/maven/plugins/maven-configure-was-dev-plugin/src/main/java/no/nav/maven/plugin/configurewasdev/mojo/ConfigureSecurity.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/pom.xml -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/AbstractCommandLineMojo.java -text
 int/maven/plugins/maven-configure-wps-dev-plugin/src/main/java/no/nav/maven/plugin/configurewpsdev/mojo/AbstractExecutableMojo.java -text
