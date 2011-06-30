@@ -4203,6 +4203,7 @@ int/maven/poms/maven-build-pom/Prepare/pom.xml -text
 int/maven/poms/maven-build-pom/Undo/pom.xml -text
 int/maven/poms/maven-build-pom/pom.xml -text
 int/maven/poms/maven-config-verification-pom/pom.xml -text
+int/maven/poms/maven-configure-was-dev-pom/pom.xml -text
 int/maven/poms/maven-configure-wps-dev-pom/pom.xml -text
 int/maven/poms/maven-deploy-pom/pom.xml -text
 int/maven/poms/maven-jca-pom/.project -text
