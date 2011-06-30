@@ -12,9 +12,9 @@
 		<adminPasswd>Ash5SoxP</adminPasswd -->
 		<manageProfilesLocation>${was.home}/bin</manageProfilesLocation>
 		<profilePathRoot>${was.home}/profiles</profilePathRoot>
-		<wasProfilePath>${profilePathRoot}/wps</wasProfilePath>
+		<profilePath>${profilePathRoot}/AppSrv01</profilePath>
 		<wasTemplatePath>${was.home}/profileTemplates/default</wasTemplatePath>
-		<scriptsHome>${project.build.directory}/scripts/configure_dev_wps</scriptsHome>
+		<scriptsHome>${project.build.directory}/scripts/configure_dev_was</scriptsHome>
 	</properties>
 	<build>
 		<plugins>
@@ -38,7 +38,7 @@
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}</outputDirectory>
 									<includes>
-										scripts/configure_dev_wps/*.py,scripts/configure_dev_wps/*.properties
+										scripts/configure_dev_was/*.py,scripts/configure_dev_was/*.properties
 									</includes>
 								</artifactItem>
 							</artifactItems>
@@ -48,8 +48,7 @@
 			</plugin>
 			<plugin>
 				<groupId>no.nav.testsenter-tools</groupId>
-				<artifactId>maven-configure-wps-dev-plugin
-				</artifactId>
+				<artifactId>maven-configure-was-dev-plugin</artifactId>
 				<version>1.0-SNAPSHOT</version>
 				<executions>
 					<execution>
@@ -63,23 +62,16 @@
 							<arguments>-create -templatePath ${wasTemplatePath} -serverName server1 -enableAdminSecurity true -adminUserName ${adminUser} -adminPassword ${adminPasswd}</arguments>
 						</configuration>
 					</execution>
-					<!--execution>
+					<execution>
 						<id>startServer1</id>
 						<phase>install</phase>
 						<goals>
 							<goal>execute-commandline</goal>
 						</goals>
 						<configuration>
-							<executable>${wpsProfilePath}\bin\startServer.bat</executable>
+							<executable>${profilePath}\bin\startServer.bat</executable>
 							<arguments>server1</arguments>
 						</configuration>
-					</execution>
-					<execution>
-						<id>configure-adapters</id>
-						<phase>install</phase>
-						<goals>
-							<goal>configure-adapters</goal>
-						</goals>
 					</execution>
 					<execution>
 						<id>configure-security</id>
@@ -95,7 +87,7 @@
 							<goal>execute-commandline</goal>
 						</goals>
 						<configuration>
-							<executable>${wpsProfilePath}\bin\stopServer.bat
+							<executable>${profilePath}\bin\stopServer.bat
 							</executable>
 							<arguments>server1 -username ${adminUser} -password	${adminPasswd}</arguments>
 						</configuration>
@@ -107,7 +99,7 @@
 							<goal>execute-commandline</goal>
 						</goals>
 						<configuration>
-							<executable>${wpsProfilePath}\bin\startServer.bat
+							<executable>${profilePath}\bin\startServer.bat
 							</executable>
 							<arguments>server1</arguments>
 						</configuration>
@@ -136,7 +128,7 @@
 								<certificate>http://confluence.adeo.no/download/attachments/61826/Usertrust_Network.crt</certificate>
 							</certificates>
 						</configuration>
-					</execution-->
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
