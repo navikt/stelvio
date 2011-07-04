@@ -1976,9 +1976,15 @@ incubator/nav-person-tjenestespesifikasjon/.settings/org.eclipse.wst.common.proj
 incubator/nav-person-tjenestespesifikasjon/.settings/org.eclipse.wst.validation.prefs -text
 incubator/nav-person-tjenestespesifikasjon/META-INF/MANIFEST.MF -text
 incubator/nav-person-tjenestespesifikasjon/SharedLib_root_objDef.cmt -text
+incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person/Navnesok.xsd -text
 incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person/person.xsd -text
 incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/felles/felles.xsd -text
+incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/Adressesok.xsd -text
+incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/Fodselsdatosok.xsd -text
+incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/Kontonummersok.xsd -text
 incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/feil/feil.xsd -text
+incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger/FinnPersonRequest.xsd -text
+incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger/FinnPersonResponse.xsd -text
 incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger/meldinger.xsd -text
 incubator/nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/person.wsdl -text
 incubator/nav-person-tjenestespesifikasjon/pom.xml -text
