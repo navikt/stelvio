@@ -22,22 +22,30 @@
     xmlns:exsl="http://exslt.org/common"
     xmlns:date="http://exslt.org/dates-and-times"
     xmlns:in="http://nav.no/virksomhet/tjenester/familieforhold/v1"
-    xmlns:in3="http://nav.no/virksomhet/tjenester/felles/v1"
-    xmlns:in4="http://nav.no/virksomhet/tjenester/familieforhold/feil/v1"
-    xmlns:in5="http://nav.no/virksomhet/grunnlag/familieforhold/v1"
-    xmlns:in6="http://nav.no/virksomhet/tjenester/familieforhold/meldinger/v1"
-    xmlns:io="http://www.w3.org/2003/05/soap-envelope"
-    xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
-    xmlns:io2="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
     xmlns:in2="wsdl.http://nav.no/virksomhet/tjenester/familieforhold/v1"
-    xmlns:io4="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:in3="http://nav.no/virksomhet/tjenester/familieforhold/feil/v1"
+    xmlns:in4="http://nav.no/virksomhet/grunnlag/familieforhold/v1"
+    xmlns:in5="http://nav.no/virksomhet/tjenester/familieforhold/meldinger/v1"
+    xmlns:io="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:io2="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
+    xmlns:out="http://nav.no/virksomhet/part/person/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:io5="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"
+    xmlns:out2="http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:out3="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person"
+    xmlns:out4="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person"
+    xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
+    xmlns:out5="http://nav.no/virksomhet/tjenester/person/feil/v1"
+    xmlns:io4="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:io5="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:out6="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:io6="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:io6="http://www.w3.org/2005/08/addressing"
+    xmlns:io7="http://www.w3.org/2005/08/addressing"
+    xmlns:out7="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:out8="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger"
     xmlns:map="http://nav-tjeneste-person/no/nav/xslt/henFamilierelasjonerFeilet"
     xmlns:msl="http://www.ibm.com/xmlmap"
-    exclude-result-prefixes="xalan str set msl math map exsl date"
+    exclude-result-prefixes="set in msl math exsl in2 in3 date in4 in5 xalan str map"
     version="1.0">
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -47,6 +55,9 @@
       <xsl:when test="msl:datamap">
         <msl:datamap>
           <dataObject>
+            <xsl:attribute name="xsi:type">
+              <xsl:value-of select="'out6:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo'"/>
+            </xsl:attribute>
             <xsl:call-template name="map:henFamilierelasjonerFeilet2">
               <xsl:with-param name="body" select="msl:datamap/dataObject[1]"/>
             </xsl:call-template>
@@ -63,14 +74,78 @@
   <xsl:template match="body"  mode="map:henFamilierelasjonerFeilet">
     <body>
       <xsl:attribute name="xsi:type">
-        <xsl:value-of select="'in2:hentFamilierelasjoner_personIkkeFunnet'"/>
+        <xsl:value-of select="'out6:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo'"/>
       </xsl:attribute>
+      <out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
+        <!-- a simple data mapping: "in:hentFamilierelasjonerpersonIkkeFunnet/errorMessage"(string) to "errorMessage"(string) -->
+        <xsl:if test="in:hentFamilierelasjonerpersonIkkeFunnet/errorMessage">
+          <errorMessage>
+            <xsl:value-of select="in:hentFamilierelasjonerpersonIkkeFunnet/errorMessage"/>
+          </errorMessage>
+        </xsl:if>
+        <!-- a simple data mapping: "in:hentFamilierelasjonerpersonIkkeFunnet/errorSource"(string) to "errorSource"(string) -->
+        <xsl:if test="in:hentFamilierelasjonerpersonIkkeFunnet/errorSource">
+          <errorSource>
+            <xsl:value-of select="in:hentFamilierelasjonerpersonIkkeFunnet/errorSource"/>
+          </errorSource>
+        </xsl:if>
+        <!-- a simple data mapping: "in:hentFamilierelasjonerpersonIkkeFunnet/errorType"(string) to "errorType"(string) -->
+        <xsl:if test="in:hentFamilierelasjonerpersonIkkeFunnet/errorType">
+          <errorType>
+            <xsl:value-of select="in:hentFamilierelasjonerpersonIkkeFunnet/errorType"/>
+          </errorType>
+        </xsl:if>
+        <!-- a simple data mapping: "in:hentFamilierelasjonerpersonIkkeFunnet/rootCause"(string) to "rootCause"(string) -->
+        <xsl:if test="in:hentFamilierelasjonerpersonIkkeFunnet/rootCause">
+          <rootCause>
+            <xsl:value-of select="in:hentFamilierelasjonerpersonIkkeFunnet/rootCause"/>
+          </rootCause>
+        </xsl:if>
+        <!-- a simple data mapping: "in:hentFamilierelasjonerpersonIkkeFunnet/dateTimeStamp"(string) to "dateTimeStamp"(string) -->
+        <xsl:if test="in:hentFamilierelasjonerpersonIkkeFunnet/dateTimeStamp">
+          <dateTimeStamp>
+            <xsl:value-of select="in:hentFamilierelasjonerpersonIkkeFunnet/dateTimeStamp"/>
+          </dateTimeStamp>
+        </xsl:if>
+      </out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
     </body>
   </xsl:template>
 
   <!-- This rule represents a type mapping: "body" to "body".  -->
   <xsl:template name="map:henFamilierelasjonerFeilet2">
     <xsl:param name="body"/>
+    <out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
+      <!-- a simple data mapping: "$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorMessage"(string) to "errorMessage"(string) -->
+      <xsl:if test="$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorMessage">
+        <errorMessage>
+          <xsl:value-of select="$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorMessage"/>
+        </errorMessage>
+      </xsl:if>
+      <!-- a simple data mapping: "$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorSource"(string) to "errorSource"(string) -->
+      <xsl:if test="$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorSource">
+        <errorSource>
+          <xsl:value-of select="$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorSource"/>
+        </errorSource>
+      </xsl:if>
+      <!-- a simple data mapping: "$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorType"(string) to "errorType"(string) -->
+      <xsl:if test="$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorType">
+        <errorType>
+          <xsl:value-of select="$body/in:hentFamilierelasjonerpersonIkkeFunnet/errorType"/>
+        </errorType>
+      </xsl:if>
+      <!-- a simple data mapping: "$body/in:hentFamilierelasjonerpersonIkkeFunnet/rootCause"(string) to "rootCause"(string) -->
+      <xsl:if test="$body/in:hentFamilierelasjonerpersonIkkeFunnet/rootCause">
+        <rootCause>
+          <xsl:value-of select="$body/in:hentFamilierelasjonerpersonIkkeFunnet/rootCause"/>
+        </rootCause>
+      </xsl:if>
+      <!-- a simple data mapping: "$body/in:hentFamilierelasjonerpersonIkkeFunnet/dateTimeStamp"(string) to "dateTimeStamp"(string) -->
+      <xsl:if test="$body/in:hentFamilierelasjonerpersonIkkeFunnet/dateTimeStamp">
+        <dateTimeStamp>
+          <xsl:value-of select="$body/in:hentFamilierelasjonerpersonIkkeFunnet/dateTimeStamp"/>
+        </dateTimeStamp>
+      </xsl:if>
+    </out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
   </xsl:template>
 
   <!-- *****************    Utility Templates    ******************  -->

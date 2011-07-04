@@ -23,18 +23,27 @@
     xmlns:date="http://exslt.org/dates-and-times"
     xmlns:in="http://nav-lib-frg-tps/no/nav/lib/frg/tps/fault"
     xmlns:in2="http://nav-lib-frg-tps/no/nav/lib/frg/inf"
+    xmlns:in3="wsdl.http://nav-lib-frg-tps/no/nav/lib/frg/inf"
     xmlns:io="http://www.w3.org/2003/05/soap-envelope"
-    xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
     xmlns:io2="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
-    xmlns:io4="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:out="http://nav.no/virksomhet/part/person/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:out2="http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:out3="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person"
+    xmlns:out4="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person"
+    xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
+    xmlns:out5="http://nav.no/virksomhet/tjenester/person/feil/v1"
+    xmlns:out6="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:io4="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:out7="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
     xmlns:io5="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:in3="wsdl.http://nav-lib-frg-tps/no/nav/lib/frg/inf"
     xmlns:io6="http://www.w3.org/2005/08/addressing"
+    xmlns:out8="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:out9="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger"
     xmlns:map="http://nav-tjeneste-person/no/nav/xslt/PersonIkkeFunnetToKunneIkkeRegistrereAdresseForDodsbo"
     xmlns:msl="http://www.ibm.com/xmlmap"
-    exclude-result-prefixes="xalan str set msl math map exsl date"
+    exclude-result-prefixes="xalan str set in msl math map exsl in2 date in3"
     version="1.0">
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -44,6 +53,9 @@
       <xsl:when test="msl:datamap">
         <msl:datamap>
           <dataObject>
+            <xsl:attribute name="xsi:type">
+              <xsl:value-of select="'out7:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo'"/>
+            </xsl:attribute>
             <xsl:call-template name="map:PersonIkkeFunnetToKunneIkkeRegistrereAdresseForDodsbo2">
               <xsl:with-param name="body" select="msl:datamap/dataObject[1]"/>
             </xsl:call-template>
@@ -60,14 +72,78 @@
   <xsl:template match="body"  mode="map:PersonIkkeFunnetToKunneIkkeRegistrereAdresseForDodsbo">
     <body>
       <xsl:attribute name="xsi:type">
-        <xsl:value-of select="'in3:hentTPSData_faultTPSPersonIkkeFunnetMsg'"/>
+        <xsl:value-of select="'out7:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo'"/>
       </xsl:attribute>
+      <out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
+        <!-- a simple data mapping: "in2:hentTPSData_faultTPSPersonIkkeFunnet/errorMessage"(string) to "errorMessage"(string) -->
+        <xsl:if test="in2:hentTPSData_faultTPSPersonIkkeFunnet/errorMessage">
+          <errorMessage>
+            <xsl:value-of select="in2:hentTPSData_faultTPSPersonIkkeFunnet/errorMessage"/>
+          </errorMessage>
+        </xsl:if>
+        <!-- a simple data mapping: "in2:hentTPSData_faultTPSPersonIkkeFunnet/errorSource"(string) to "errorSource"(string) -->
+        <xsl:if test="in2:hentTPSData_faultTPSPersonIkkeFunnet/errorSource">
+          <errorSource>
+            <xsl:value-of select="in2:hentTPSData_faultTPSPersonIkkeFunnet/errorSource"/>
+          </errorSource>
+        </xsl:if>
+        <!-- a simple data mapping: "in2:hentTPSData_faultTPSPersonIkkeFunnet/errorType"(string) to "errorType"(string) -->
+        <xsl:if test="in2:hentTPSData_faultTPSPersonIkkeFunnet/errorType">
+          <errorType>
+            <xsl:value-of select="in2:hentTPSData_faultTPSPersonIkkeFunnet/errorType"/>
+          </errorType>
+        </xsl:if>
+        <!-- a simple data mapping: "in2:hentTPSData_faultTPSPersonIkkeFunnet/rootCause"(string) to "rootCause"(string) -->
+        <xsl:if test="in2:hentTPSData_faultTPSPersonIkkeFunnet/rootCause">
+          <rootCause>
+            <xsl:value-of select="in2:hentTPSData_faultTPSPersonIkkeFunnet/rootCause"/>
+          </rootCause>
+        </xsl:if>
+        <!-- a simple data mapping: "in2:hentTPSData_faultTPSPersonIkkeFunnet/dateTimeStamp"(string) to "dateTimeStamp"(string) -->
+        <xsl:if test="in2:hentTPSData_faultTPSPersonIkkeFunnet/dateTimeStamp">
+          <dateTimeStamp>
+            <xsl:value-of select="in2:hentTPSData_faultTPSPersonIkkeFunnet/dateTimeStamp"/>
+          </dateTimeStamp>
+        </xsl:if>
+      </out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
     </body>
   </xsl:template>
 
   <!-- This rule represents a type mapping: "body" to "body".  -->
   <xsl:template name="map:PersonIkkeFunnetToKunneIkkeRegistrereAdresseForDodsbo2">
     <xsl:param name="body"/>
+    <out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
+      <!-- a simple data mapping: "$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorMessage"(string) to "errorMessage"(string) -->
+      <xsl:if test="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorMessage">
+        <errorMessage>
+          <xsl:value-of select="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorMessage"/>
+        </errorMessage>
+      </xsl:if>
+      <!-- a simple data mapping: "$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorSource"(string) to "errorSource"(string) -->
+      <xsl:if test="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorSource">
+        <errorSource>
+          <xsl:value-of select="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorSource"/>
+        </errorSource>
+      </xsl:if>
+      <!-- a simple data mapping: "$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorType"(string) to "errorType"(string) -->
+      <xsl:if test="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorType">
+        <errorType>
+          <xsl:value-of select="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/errorType"/>
+        </errorType>
+      </xsl:if>
+      <!-- a simple data mapping: "$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/rootCause"(string) to "rootCause"(string) -->
+      <xsl:if test="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/rootCause">
+        <rootCause>
+          <xsl:value-of select="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/rootCause"/>
+        </rootCause>
+      </xsl:if>
+      <!-- a simple data mapping: "$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/dateTimeStamp"(string) to "dateTimeStamp"(string) -->
+      <xsl:if test="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/dateTimeStamp">
+        <dateTimeStamp>
+          <xsl:value-of select="$body/in2:hentTPSData_faultTPSPersonIkkeFunnet/dateTimeStamp"/>
+        </dateTimeStamp>
+      </xsl:if>
+    </out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
   </xsl:template>
 
   <!-- *****************    Utility Templates    ******************  -->

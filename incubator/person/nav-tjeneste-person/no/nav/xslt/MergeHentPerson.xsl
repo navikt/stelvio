@@ -24,21 +24,24 @@
     xmlns:in="http://nav-lib-frg-tps/no/nav/lib/frg/tps/fault"
     xmlns:in3="wsdl.http://nav-lib-frg-tps/no/nav/lib/frg/inf"
     xmlns:in2="http://nav-lib-frg-tps/no/nav/lib/frg/inf"
-    xmlns:io="http://www.w3.org/2003/05/soap-envelope"
-    xmlns:io2="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
-    xmlns:out="http://nav.no/virksomhet/part/person/v1"
+    xmlns:io3="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:io4="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
+    xmlns:out6="http://nav.no/virksomhet/part/person/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:out2="http://nav.no/virksomhet/tjenester/person/v1"
-    xmlns:io3="http://nav-tjeneste-person/no/nav/asbo"
-    xmlns:io4="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
-    xmlns:out3="http://nav.no/virksomhet/tjenester/person/feil/v1"
-    xmlns:io6="http://schemas.xmlsoap.org/ws/2004/08/addressing"
-    xmlns:io5="http://nav.no/virksomhet/tjenester/felles/v1"
-    xmlns:out4="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:out="http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:out7="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person"
+    xmlns:out8="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person"
+    xmlns:io5="http://nav-tjeneste-person/no/nav/asbo"
+    xmlns:io="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
+    xmlns:out2="http://nav.no/virksomhet/tjenester/person/feil/v1"
+    xmlns:io6="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:io2="http://schemas.xmlsoap.org/ws/2004/08/addressing"
     xmlns:io7="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"
+    xmlns:out3="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:io8="http://www.w3.org/2005/08/addressing"
-    xmlns:out5="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:out4="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:out5="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger"
     xmlns:DU="xalan://no.nav.java.DateUtilities"
     xmlns:map="http://nav-tjeneste-person/xslt/MergeHentPerson"
     xmlns:msl="http://www.ibm.com/xmlmap"
@@ -53,7 +56,7 @@
         <msl:datamap>
           <dataObject>
             <xsl:attribute name="xsi:type">
-              <xsl:value-of select="'io2:ServiceMessageObject'"/>
+              <xsl:value-of select="'io4:ServiceMessageObject'"/>
             </xsl:attribute>
             <xsl:call-template name="map:MergeHentPerson2">
               <xsl:with-param name="smo" select="msl:datamap/dataObject[1]"/>
@@ -62,44 +65,44 @@
         </msl:datamap>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="io2:smo" mode="map:MergeHentPerson"/>
+        <xsl:apply-templates select="io4:smo" mode="map:MergeHentPerson"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
-  <!-- This rule represents an element mapping: "io2:smo" to "io2:smo".  -->
-  <xsl:template match="io2:smo"  mode="map:MergeHentPerson">
-    <io2:smo>
+  <!-- This rule represents an element mapping: "io4:smo" to "io4:smo".  -->
+  <xsl:template match="io4:smo"  mode="map:MergeHentPerson">
+    <io4:smo>
       <!-- a structural mapping: "context"(<Anonymous>) to "body"(hentPersonResponse) -->
-      <xsl:apply-templates select="context" mode="localContextToBody_697379318"/>
-    </io2:smo>
+      <xsl:apply-templates select="context" mode="localContextToBody_1456088450"/>
+    </io4:smo>
   </xsl:template>
 
-  <!-- This rule represents a type mapping: "io2:smo" to "io2:smo".  -->
+  <!-- This rule represents a type mapping: "io4:smo" to "io4:smo".  -->
   <xsl:template name="map:MergeHentPerson2">
     <xsl:param name="smo"/>
     <!-- a structural mapping: "$smo/context"(<Anonymous>) to "body"(hentPersonResponse) -->
-    <xsl:apply-templates select="$smo/context" mode="localContextToBody_697379318"/>
+    <xsl:apply-templates select="$smo/context" mode="localContextToBody_1456088450"/>
   </xsl:template>
 
   <!-- This rule represents an element mapping: "context" to "body".  -->
-  <xsl:template match="context"  mode="localContextToBody_697379318">
+  <xsl:template match="context"  mode="localContextToBody_1456088450">
     <body>
       <xsl:attribute name="xsi:type">
-        <xsl:value-of select="'out4:hentPersonResponse'"/>
+        <xsl:value-of select="'out3:hentPersonResponse'"/>
       </xsl:attribute>
-      <!-- a structural mapping: "shared"(TPSPersonSharedContext) to "out2:hentPersonResponse"(<Anonymous>) -->
-      <xsl:apply-templates select="shared" mode="localSharedToHentPersonResponse_662372323"/>
+      <!-- a structural mapping: "shared"(TPSPersonSharedContext) to "out:hentPersonResponse"(<Anonymous>) -->
+      <xsl:apply-templates select="shared" mode="localSharedToHentPersonResponse_1822942891"/>
     </body>
   </xsl:template>
 
-  <!-- This rule represents an element mapping: "shared" to "out2:hentPersonResponse".  -->
-  <xsl:template match="shared"  mode="localSharedToHentPersonResponse_662372323">
-    <out2:hentPersonResponse>
+  <!-- This rule represents an element mapping: "shared" to "out:hentPersonResponse".  -->
+  <xsl:template match="shared"  mode="localSharedToHentPersonResponse_1822942891">
+    <out:hentPersonResponse>
       <response>
         <person>
           <!-- a structural mapping: "person/sivilstandsInfo"(sivilstandsInfoType) to "sivilstand"(Sivilstand) -->
-          <xsl:apply-templates select="person/sivilstandsInfo" mode="localSivilstandsInfoToSivilstand_2142214610"/>
+          <xsl:apply-templates select="person/sivilstandsInfo" mode="localSivilstandsInfoToSivilstand_1969627072"/>
           <!-- a simple data mapping: "person/datoUmyndiggjort"(DBdate) to "umyndiggjortDato"(string) -->
           <xsl:if test="person/datoUmyndiggjort">
             <umyndiggjortDato>
@@ -131,7 +134,7 @@
             </xsl:if>
           </diskresjonskode>
           <!-- a structural mapping: "person/navn"(<Anonymous>) to "navn"(Navn) -->
-          <xsl:apply-templates select="person/navn" mode="localNavnToNavn_881016740"/>
+          <xsl:apply-templates select="person/navn" mode="localNavnToNavn_1402470088"/>
           <dodsfall>
             <!-- a simple data mapping: "person/datoDo"(DBdate) to "dodsdato"(date) -->
             <!-- variables for custom code -->
@@ -311,7 +314,7 @@
             </utvandretTilLand>
           </utvandring>
           <!-- a structural mapping: "person/statsborgerskap"(statsborgerskapType) to "statsborgerskap"(Statsborgerskap) -->
-          <xsl:apply-templates select="person/statsborgerskap" mode="localStatsborgerskapToStatsborgerskap_684657702"/>
+          <xsl:apply-templates select="person/statsborgerskap" mode="localStatsborgerskapToStatsborgerskap_1472441266"/>
           <fodeland>
             <!-- a simple data mapping: "person/kodeFodeland"(string) to "kode"(string) -->
             <xsl:if test="person/kodeFodeland">
@@ -328,11 +331,11 @@
           </fodeland>
         </person>
       </response>
-    </out2:hentPersonResponse>
+    </out:hentPersonResponse>
   </xsl:template>
 
   <!-- This rule represents an element mapping: "navn" to "navn".  -->
-  <xsl:template match="navn"  mode="localNavnToNavn_881016740">
+  <xsl:template match="navn"  mode="localNavnToNavn_1402470088">
     <navn>
       <!-- a simple data mapping: "kortnavn"(string) to "kortnavn"(string) -->
       <xsl:if test="kortnavn">
@@ -384,7 +387,7 @@
   </xsl:template>
 
   <!-- This rule represents an element mapping: "statsborgerskap" to "statsborgerskap".  -->
-  <xsl:template match="statsborgerskap"  mode="localStatsborgerskapToStatsborgerskap_684657702">
+  <xsl:template match="statsborgerskap"  mode="localStatsborgerskapToStatsborgerskap_1472441266">
     <statsborgerskap>
       <!-- a simple data mapping: "datoStatsborger"(DBdate) to "gjelderFom"(date) -->
       <!-- variables for custom code -->
@@ -436,7 +439,7 @@
   </xsl:template>
 
   <!-- This rule represents an element mapping: "sivilstandsInfo" to "sivilstand".  -->
-  <xsl:template match="sivilstandsInfo"  mode="localSivilstandsInfoToSivilstand_2142214610">
+  <xsl:template match="sivilstandsInfo"  mode="localSivilstandsInfoToSivilstand_1969627072">
     <sivilstand>
       <sivilstand>
         <!-- a simple data mapping: "kodeSivilstand"(Tsivilstandkode) to "kode"(string) -->

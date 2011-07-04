@@ -23,19 +23,28 @@
     xmlns:date="http://exslt.org/dates-and-times"
     xmlns:in="http://nav-lib-frg-sfe/no/nav/lib/frg/sfe/fault"
     xmlns:in2="http://www.rtv.no/SFEData"
-    xmlns:in4="http://nav-lib-frg-sfe/no/nav/lib/frg/inf"
     xmlns:in3="wsdl.http://nav-lib-frg-sfe/no/nav/lib/frg/inf"
+    xmlns:in4="http://nav-lib-frg-sfe/no/nav/lib/frg/inf"
     xmlns:io="http://www.w3.org/2003/05/soap-envelope"
-    xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
     xmlns:io2="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
-    xmlns:io4="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:out="http://nav.no/virksomhet/part/person/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:out2="http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:out3="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person"
+    xmlns:out4="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person"
+    xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
+    xmlns:out5="http://nav.no/virksomhet/tjenester/person/feil/v1"
+    xmlns:out6="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:io4="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:out7="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
     xmlns:io5="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:io6="http://www.w3.org/2005/08/addressing"
+    xmlns:out8="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:out9="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger"
     xmlns:map="http://nav-tjeneste-person/xslt/KunneIkkeEndreAdresse2_req_1"
     xmlns:msl="http://www.ibm.com/xmlmap"
-    exclude-result-prefixes="xalan str set msl math map exsl date"
+    exclude-result-prefixes="xalan str set in msl math map exsl in2 date in3 in4"
     version="1.0">
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -45,6 +54,9 @@
       <xsl:when test="msl:datamap">
         <msl:datamap>
           <dataObject>
+            <xsl:attribute name="xsi:type">
+              <xsl:value-of select="'out7:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo'"/>
+            </xsl:attribute>
             <xsl:call-template name="map:KunneIkkeEndreAdresse2_req_12">
               <xsl:with-param name="body" select="msl:datamap/dataObject[1]"/>
             </xsl:call-template>
@@ -61,14 +73,58 @@
   <xsl:template match="body"  mode="map:KunneIkkeEndreAdresse2_req_1">
     <body>
       <xsl:attribute name="xsi:type">
-        <xsl:value-of select="'in3:endreAdresseRequestMsg'"/>
+        <xsl:value-of select="'out7:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo'"/>
       </xsl:attribute>
+      <out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
+        <!-- a simple mapping with no associated source:  to "errorMessage"(string) -->
+        <errorMessage>
+          <xsl:text>Producer Business Exception</xsl:text>
+        </errorMessage>
+        <!-- a simple mapping with no associated source:  to "errorSource"(string) -->
+        <errorSource>
+          <xsl:text>nav-tjeneste-person</xsl:text>
+        </errorSource>
+        <!-- a simple mapping with no associated source:  to "errorType"(string) -->
+        <errorType>
+          <xsl:text>SBE</xsl:text>
+        </errorType>
+        <!-- a simple mapping with no associated source:  to "rootCause"(string) -->
+        <rootCause>
+          <xsl:text>Message: NOE GIKK GALT I TJENESTEKALLET</xsl:text>
+        </rootCause>
+        <!-- a simple mapping with no associated source:  to "dateTimeStamp"(string) -->
+        <dateTimeStamp>
+          <xsl:value-of select="date:time()"/>
+        </dateTimeStamp>
+      </out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
     </body>
   </xsl:template>
 
   <!-- This rule represents a type mapping: "body" to "body".  -->
   <xsl:template name="map:KunneIkkeEndreAdresse2_req_12">
     <xsl:param name="body"/>
+    <out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
+      <!-- a simple mapping with no associated source:  to "errorMessage"(string) -->
+      <errorMessage>
+        <xsl:text>Producer Business Exception</xsl:text>
+      </errorMessage>
+      <!-- a simple mapping with no associated source:  to "errorSource"(string) -->
+      <errorSource>
+        <xsl:text>nav-tjeneste-person</xsl:text>
+      </errorSource>
+      <!-- a simple mapping with no associated source:  to "errorType"(string) -->
+      <errorType>
+        <xsl:text>SBE</xsl:text>
+      </errorType>
+      <!-- a simple mapping with no associated source:  to "rootCause"(string) -->
+      <rootCause>
+        <xsl:text>Message: NOE GIKK GALT I TJENESTEKALLET</xsl:text>
+      </rootCause>
+      <!-- a simple mapping with no associated source:  to "dateTimeStamp"(string) -->
+      <dateTimeStamp>
+        <xsl:value-of select="date:time()"/>
+      </dateTimeStamp>
+    </out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
   </xsl:template>
 
   <!-- *****************    Utility Templates    ******************  -->

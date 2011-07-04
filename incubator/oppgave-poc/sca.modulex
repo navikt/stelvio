@@ -3,15 +3,27 @@
   <extensionmodel:ExtensionMap namespace="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0">
     <extensions>
       <extendedObject href="AvklareIdentitet.component#//@Component"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation" unknown="false" visible="true" x="30" y="30"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation" unknown="false" visible="true" x="30" y="88"/>
     </extensions>
     <extensions>
       <extendedObject href="sca.module#//@module"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
     </extensions>
     <extensions>
-      <extendedObject href="Component1.component#//@Component"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}Implementation" unknown="false" visible="true" x="224" y="31"/>
+      <extendedObject href="OppgaveWSIMP.import#//@import"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ImportBinding" unknown="false" visible="true" x="390" y="100"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="PersonWSIMP.import#//@import"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ImportBinding" unknown="false" visible="true" x="402" y="31"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="OppgaveWSIMP.import#//@import"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" unknown="false" visible="true" x="20" y="34"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="ValiderPINMedFlow.component#//@Component"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="202" y="30"/>
     </extensions>
   </extensionmodel:ExtensionMap>
   <extensionmodel:ExtensionMap namespace="http://com.ibm.wbit.stickyboard.model/model/StickyBoard.xsd">

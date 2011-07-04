@@ -21,16 +21,24 @@
     xmlns:math="http://exslt.org/math"
     xmlns:exsl="http://exslt.org/common"
     xmlns:date="http://exslt.org/dates-and-times"
-    xmlns:io2="http://www.w3.org/2003/05/soap-envelope"
-    xmlns:io="http://nav-tjeneste-person/no/nav/asbo"
-    xmlns:io4="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
-    xmlns:io3="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
-    xmlns:io5="http://schemas.xmlsoap.org/ws/2004/08/addressing"
-    xmlns:io6="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:io3="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:io4="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
+    xmlns:out6="http://nav.no/virksomhet/part/person/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:out="http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:out7="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person"
+    xmlns:out8="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person"
+    xmlns:io5="http://nav-tjeneste-person/no/nav/asbo"
+    xmlns:io="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
+    xmlns:out2="http://nav.no/virksomhet/tjenester/person/feil/v1"
+    xmlns:io6="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:io2="http://schemas.xmlsoap.org/ws/2004/08/addressing"
     xmlns:io7="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"
+    xmlns:out3="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:io8="http://www.w3.org/2005/08/addressing"
+    xmlns:out4="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:out5="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger"
     xmlns:map="http://nav-tjeneste-person/no/nav/xslt/XSLTransformation1_req_1"
     xmlns:msl="http://www.ibm.com/xmlmap"
     exclude-result-prefixes="xalan str set msl math map exsl date"
@@ -44,7 +52,7 @@
         <msl:datamap>
           <dataObject>
             <xsl:attribute name="xsi:type">
-              <xsl:value-of select="'io3:ServiceMessageObject'"/>
+              <xsl:value-of select="'io4:ServiceMessageObject'"/>
             </xsl:attribute>
             <xsl:call-template name="map:MapFaultPersonIkkeFunnet2">
               <xsl:with-param name="smo" select="msl:datamap/dataObject[1]"/>
@@ -53,39 +61,71 @@
         </msl:datamap>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="io3:smo" mode="map:MapFaultPersonIkkeFunnet"/>
+        <xsl:apply-templates select="io4:smo" mode="map:MapFaultPersonIkkeFunnet"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
-  <!-- This rule represents an element mapping: "io3:smo" to "io3:smo".  -->
-  <xsl:template match="io3:smo"  mode="map:MapFaultPersonIkkeFunnet">
-    <io3:smo>
-      <!-- a structural mapping: "context"(<Anonymous>) to "body"(anyType) -->
-      <xsl:apply-templates select="context" mode="localContextToBody_1890240220"/>
-    </io3:smo>
+  <!-- This rule represents an element mapping: "io4:smo" to "io4:smo".  -->
+  <xsl:template match="io4:smo"  mode="map:MapFaultPersonIkkeFunnet">
+    <io4:smo>
+      <!-- a structural mapping: "context"(<Anonymous>) to "body"(hentPerson_PersonIkkeFunnet) -->
+      <xsl:apply-templates select="context" mode="localContextToBody_820011716"/>
+    </io4:smo>
   </xsl:template>
 
-  <!-- This rule represents a type mapping: "io3:smo" to "io3:smo".  -->
+  <!-- This rule represents a type mapping: "io4:smo" to "io4:smo".  -->
   <xsl:template name="map:MapFaultPersonIkkeFunnet2">
     <xsl:param name="smo"/>
-    <!-- a structural mapping: "$smo/context"(<Anonymous>) to "body"(anyType) -->
-    <xsl:apply-templates select="$smo/context" mode="localContextToBody_1890240220"/>
+    <!-- a structural mapping: "$smo/context"(<Anonymous>) to "body"(hentPerson_PersonIkkeFunnet) -->
+    <xsl:apply-templates select="$smo/context" mode="localContextToBody_820011716"/>
   </xsl:template>
 
   <!-- This rule represents an element mapping: "context" to "body".  -->
-  <xsl:template match="context"  mode="localContextToBody_1890240220">
+  <xsl:template match="context"  mode="localContextToBody_820011716">
     <body>
       <xsl:attribute name="xsi:type">
-        <xsl:value-of select="'io3:context_._type'"/>
+        <xsl:value-of select="'out3:hentPerson_PersonIkkeFunnet'"/>
       </xsl:attribute>
+      <!-- a structural mapping: "shared"(TPSPersonSharedContext) to "out:hentPersonPersonIkkeFunnet"(PersonIkkeFunnet) -->
+      <xsl:apply-templates select="shared" mode="localSharedToHentPersonPersonIkkeFunnet_1714112991"/>
     </body>
   </xsl:template>
 
-  <!-- This rule represents an element mapping: "shared" to "null".  -->
-  <xsl:template match="shared"  mode="localSharedToNull_109005833">
-    <null>
-    </null>
+  <!-- This rule represents an element mapping: "shared" to "out:hentPersonPersonIkkeFunnet".  -->
+  <xsl:template match="shared"  mode="localSharedToHentPersonPersonIkkeFunnet_1714112991">
+    <out:hentPersonPersonIkkeFunnet>
+      <!-- a simple data mapping: "fault/errorMessage"(string) to "errorMessage"(string) -->
+      <xsl:if test="fault/errorMessage">
+        <errorMessage>
+          <xsl:value-of select="fault/errorMessage"/>
+        </errorMessage>
+      </xsl:if>
+      <!-- a simple data mapping: "fault/errorSource"(string) to "errorSource"(string) -->
+      <xsl:if test="fault/errorSource">
+        <errorSource>
+          <xsl:value-of select="fault/errorSource"/>
+        </errorSource>
+      </xsl:if>
+      <!-- a simple data mapping: "fault/errorType"(string) to "errorType"(string) -->
+      <xsl:if test="fault/errorType">
+        <errorType>
+          <xsl:value-of select="fault/errorType"/>
+        </errorType>
+      </xsl:if>
+      <!-- a simple data mapping: "fault/rootCause"(string) to "rootCause"(string) -->
+      <xsl:if test="fault/rootCause">
+        <rootCause>
+          <xsl:value-of select="fault/rootCause"/>
+        </rootCause>
+      </xsl:if>
+      <!-- a simple data mapping: "fault/dateTimeStamp"(string) to "dateTimeStamp"(string) -->
+      <xsl:if test="fault/dateTimeStamp">
+        <dateTimeStamp>
+          <xsl:value-of select="fault/dateTimeStamp"/>
+        </dateTimeStamp>
+      </xsl:if>
+    </out:hentPersonPersonIkkeFunnet>
   </xsl:template>
 
   <!-- *****************    Utility Templates    ******************  -->

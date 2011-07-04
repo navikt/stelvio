@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="InnhenteDNummer" targetNamespace="http://oppgave-poc/AvklareIdentitet" xmlns:bons0="http://oppgave-poc/InnhenteDNummer" xmlns:tns="http://oppgave-poc/AvklareIdentitet" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="InnhenteDNummer" targetNamespace="http://oppgave-poc/AvklareIdentitet" xmlns:bons0="http://oppgave-poc/InnhenteDNummer" xmlns:bons1="http://oppgave-poc" xmlns:tns="http://oppgave-poc/AvklareIdentitet" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <wsdl:types>
     <xsd:schema targetNamespace="http://oppgave-poc/AvklareIdentitet" xmlns:bons0="http://oppgave-poc/AvklareIdentitet">
-      <xsd:element name="avklarIdentitet">
+            <xsd:import namespace="http://oppgave-poc" schemaLocation="MinIDSetWithPIN.xsd"/>
+            <xsd:element name="avklarIdentitet">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="sedId" nillable="true" type="xsd:string"/>
+            <xsd:element name="minIDSetWithPIN" nillable="true" type="bons1:MinIDSetWithPIN"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>

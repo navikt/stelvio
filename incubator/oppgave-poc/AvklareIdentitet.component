@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AvklareIdentitet="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://oppgave-poc/InnhenteDNummer" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/SED" xmlns:process="http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="AvklareIdentitet" name="AvklareIdentitet">
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AvklareIdentitet="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://oppgave-poc/InnhenteDNummer" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/SED" xmlns:ns4="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:process="http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="AvklareIdentitet" name="AvklareIdentitet">
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="async" portType="AvklareIdentitet:AvklareIdentitet">
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
@@ -11,7 +11,14 @@
       <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
       <scdl:referenceQualifier xsi:type="scdl:Reliability"/>
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
-      <wire target="Component1"/>
+      <wire target="ValiderPINMedFlow"/>
+    </reference>
+    <reference name="OppgavePartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns4:Oppgave"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability"/>
+      <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
+      <wire target="OppgaveWSIMP"/>
     </reference>
   </references>
   <implementation xsi:type="process:ProcessImplementation">

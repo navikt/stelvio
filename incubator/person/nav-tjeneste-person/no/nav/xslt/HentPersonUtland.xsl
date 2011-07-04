@@ -23,10 +23,13 @@
     xmlns:date="http://exslt.org/dates-and-times"
     xmlns:in="http://nav.no/virksomhet/part/person/v1"
     xmlns:in2="http://nav.no/virksomhet/tjenester/person/v1"
-    xmlns:in3="http://nav.no/virksomhet/tjenester/person/feil/v1"
-    xmlns:in4="http://nav.no/virksomhet/tjenester/felles/v1"
-    xmlns:in5="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
-    xmlns:in6="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:in3="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person"
+    xmlns:in4="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person"
+    xmlns:in5="http://nav.no/virksomhet/tjenester/person/feil/v1"
+    xmlns:in6="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:in7="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:in8="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:in9="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger"
     xmlns:out="http://nav-lib-frg-tps/no/nav/lib/frg/tps/fault"
     xmlns:io="http://www.w3.org/2003/05/soap-envelope"
     xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
@@ -40,7 +43,7 @@
     xmlns:io6="http://www.w3.org/2005/08/addressing"
     xmlns:map="http://nav-tjeneste-person/no/nav/xslt/HentPersonUtland"
     xmlns:msl="http://www.ibm.com/xmlmap"
-    exclude-result-prefixes="set in msl math exsl in2 in3 date in4 xalan in5 in6 str map"
+    exclude-result-prefixes="set in msl math exsl in2 date in3 in4 xalan in5 in6 str in7 in8 in9 map"
     version="1.0">
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -72,7 +75,7 @@
         <xsl:value-of select="'out3:hentTPSDataRequestMsg'"/>
       </xsl:attribute>
       <!-- a structural mapping: "in2:hentPerson"(<Anonymous>) to "out2:hentTPSData"(<Anonymous>) -->
-      <xsl:apply-templates select="in2:hentPerson" mode="localHentPersonToHentTPSData_597842575"/>
+      <xsl:apply-templates select="in2:hentPerson" mode="localHentPersonToHentTPSData_80769566"/>
     </body>
   </xsl:template>
 
@@ -80,19 +83,19 @@
   <xsl:template name="map:HentPersonUtland2">
     <xsl:param name="body"/>
     <!-- a structural mapping: "$body/in2:hentPerson"(<Anonymous>) to "out2:hentTPSData"(<Anonymous>) -->
-    <xsl:apply-templates select="$body/in2:hentPerson" mode="localHentPersonToHentTPSData_597842575"/>
+    <xsl:apply-templates select="$body/in2:hentPerson" mode="localHentPersonToHentTPSData_80769566"/>
   </xsl:template>
 
   <!-- This rule represents an element mapping: "in2:hentPerson" to "out2:hentTPSData".  -->
-  <xsl:template match="in2:hentPerson"  mode="localHentPersonToHentTPSData_597842575">
+  <xsl:template match="in2:hentPerson"  mode="localHentPersonToHentTPSData_80769566">
     <out2:hentTPSData>
       <!-- a structural mapping: "request"(HentPersonRequest) to "tpsPersonDataReq"(tpsPersonDataType) -->
-      <xsl:apply-templates select="request" mode="localRequestToTpsPersonDataReq_1156630971"/>
+      <xsl:apply-templates select="request" mode="localRequestToTpsPersonDataReq_880332965"/>
     </out2:hentTPSData>
   </xsl:template>
 
   <!-- This rule represents an element mapping: "request" to "tpsPersonDataReq".  -->
-  <xsl:template match="request"  mode="localRequestToTpsPersonDataReq_1156630971">
+  <xsl:template match="request"  mode="localRequestToTpsPersonDataReq_880332965">
     <tpsPersonDataReq>
       <tpsServiceRutine>
         <!-- a simple mapping with no associated source:  to "serviceRutinenavn"(<SRnavn>) -->

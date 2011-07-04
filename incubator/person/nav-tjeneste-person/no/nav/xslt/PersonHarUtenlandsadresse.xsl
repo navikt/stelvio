@@ -25,14 +25,23 @@
     xmlns:in2="http://nav-lib-frg-tps/no/nav/lib/frg/inf"
     xmlns:in3="wsdl.http://nav-lib-frg-tps/no/nav/lib/frg/inf"
     xmlns:io="http://nav-tjeneste-person/no/nav/bo"
-    xmlns:io2="http://www.w3.org/2003/05/soap-envelope"
-    xmlns:io4="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
-    xmlns:io3="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
-    xmlns:io5="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:io4="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:io5="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
+    xmlns:out6="http://nav.no/virksomhet/part/person/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:out="http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:out7="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person"
+    xmlns:out8="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person"
+    xmlns:io2="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
+    xmlns:out2="http://nav.no/virksomhet/tjenester/person/feil/v1"
+    xmlns:out9="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:io3="http://schemas.xmlsoap.org/ws/2004/08/addressing"
     xmlns:io6="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"
+    xmlns:out3="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:io7="http://www.w3.org/2005/08/addressing"
+    xmlns:out4="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:out5="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger"
     xmlns:map="http://nav-tjeneste-person/no/nav/xslt/PersonHarUtenlandsadresse"
     xmlns:msl="http://www.ibm.com/xmlmap"
     exclude-result-prefixes="xalan str set in msl math map exsl in2 date in3"
@@ -46,7 +55,7 @@
         <msl:datamap>
           <dataObject>
             <xsl:attribute name="xsi:type">
-              <xsl:value-of select="'io3:ServiceMessageObject'"/>
+              <xsl:value-of select="'io5:ServiceMessageObject'"/>
             </xsl:attribute>
             <xsl:call-template name="map:PersonHarUtenlandsadresse2">
               <xsl:with-param name="smo" select="msl:datamap/dataObject[1]"/>
@@ -55,20 +64,62 @@
         </msl:datamap>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="io3:smo" mode="map:PersonHarUtenlandsadresse"/>
+        <xsl:apply-templates select="io5:smo" mode="map:PersonHarUtenlandsadresse"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
-  <!-- This rule represents an element mapping: "io3:smo" to "io3:smo".  -->
-  <xsl:template match="io3:smo"  mode="map:PersonHarUtenlandsadresse">
-    <io3:smo>
-    </io3:smo>
+  <!-- This rule represents an element mapping: "io5:smo" to "io5:smo".  -->
+  <xsl:template match="io5:smo"  mode="map:PersonHarUtenlandsadresse">
+    <io5:smo>
+      <body>
+        <xsl:attribute name="xsi:type">
+          <xsl:value-of select="'out3:registrereAdresseForDodsbo_personHarUtlandsadresse'"/>
+        </xsl:attribute>
+        <out:registrereAdresseForDodsbopersonHarUtlandsadresse>
+          <!-- a simple mapping with no associated source:  to "errorMessage"(string) -->
+          <errorMessage>
+            <xsl:text>Kan ikke endre adresse til dødsbo, da personen har utlandsadresse.</xsl:text>
+          </errorMessage>
+          <!-- a simple mapping with no associated source:  to "errorSource"(string) -->
+          <errorSource>
+            <xsl:text>nav-tjeneste-person_registrereAdresseForDodsbo</xsl:text>
+          </errorSource>
+          <!-- a simple data mapping: "context/transient/brukerFnr"(string) to "rootCause"(string) -->
+          <xsl:if test="context/transient/brukerFnr">
+            <rootCause>
+              <xsl:value-of select="context/transient/brukerFnr"/>
+            </rootCause>
+          </xsl:if>
+        </out:registrereAdresseForDodsbopersonHarUtlandsadresse>
+      </body>
+    </io5:smo>
   </xsl:template>
 
-  <!-- This rule represents a type mapping: "io3:smo" to "io3:smo".  -->
+  <!-- This rule represents a type mapping: "io5:smo" to "io5:smo".  -->
   <xsl:template name="map:PersonHarUtenlandsadresse2">
     <xsl:param name="smo"/>
+    <body>
+      <xsl:attribute name="xsi:type">
+        <xsl:value-of select="'out3:registrereAdresseForDodsbo_personHarUtlandsadresse'"/>
+      </xsl:attribute>
+      <out:registrereAdresseForDodsbopersonHarUtlandsadresse>
+        <!-- a simple mapping with no associated source:  to "errorMessage"(string) -->
+        <errorMessage>
+          <xsl:text>Kan ikke endre adresse til dødsbo, da personen har utlandsadresse.</xsl:text>
+        </errorMessage>
+        <!-- a simple mapping with no associated source:  to "errorSource"(string) -->
+        <errorSource>
+          <xsl:text>nav-tjeneste-person_registrereAdresseForDodsbo</xsl:text>
+        </errorSource>
+        <!-- a simple data mapping: "$smo/context/transient/brukerFnr"(string) to "rootCause"(string) -->
+        <xsl:if test="$smo/context/transient/brukerFnr">
+          <rootCause>
+            <xsl:value-of select="$smo/context/transient/brukerFnr"/>
+          </rootCause>
+        </xsl:if>
+      </out:registrereAdresseForDodsbopersonHarUtlandsadresse>
+    </body>
   </xsl:template>
 
   <!-- *****************    Utility Templates    ******************  -->

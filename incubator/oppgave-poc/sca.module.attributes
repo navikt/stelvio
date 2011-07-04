@@ -3,4 +3,6 @@
   <boImplementation>
     <emf/>
   </boImplementation>
+  <scdl:libraryDependency name="nav-oppgave-tjenestespesifikasjon" version=""/>
+  <scdl:libraryDependency name="nav-person-tjenestespesifikasjon" version=""/>
 </scdl:moduleAndLibraryAttributes>

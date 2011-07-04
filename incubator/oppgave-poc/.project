@@ -2,7 +2,9 @@
 <projectDescription>
 	<name>oppgave-poc</name>
 	<comment></comment>
-    <projects>
+	<projects>
+		<project>nav-oppgave-tjenestespesifikasjon</project>
+		<project>nav-person-tjenestespesifikasjon</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

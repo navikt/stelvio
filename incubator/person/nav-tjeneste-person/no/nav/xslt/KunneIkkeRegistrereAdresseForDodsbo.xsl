@@ -23,18 +23,27 @@
     xmlns:date="http://exslt.org/dates-and-times"
     xmlns:in="http://nav-lib-frg-tps/no/nav/lib/frg/tps/fault"
     xmlns:in2="http://nav-lib-frg-tps/no/nav/lib/frg/inf"
+    xmlns:in3="wsdl.http://nav-lib-frg-tps/no/nav/lib/frg/inf"
     xmlns:io="http://www.w3.org/2003/05/soap-envelope"
-    xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
     xmlns:io2="http://www.ibm.com/websphere/sibx/smo/v6.0.1"
-    xmlns:io4="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:out="http://nav.no/virksomhet/part/person/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:out2="http://nav.no/virksomhet/tjenester/person/v1"
+    xmlns:out3="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person"
+    xmlns:out4="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/part/person"
+    xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"
+    xmlns:out5="http://nav.no/virksomhet/tjenester/person/feil/v1"
+    xmlns:out6="http://nav.no/virksomhet/tjenester/felles/v1"
+    xmlns:io4="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:out7="wsdl.http://nav.no/virksomhet/tjenester/person/v1"
     xmlns:io5="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:in3="wsdl.http://nav-lib-frg-tps/no/nav/lib/frg/inf"
     xmlns:io6="http://www.w3.org/2005/08/addressing"
+    xmlns:out8="http://nav.no/virksomhet/tjenester/person/meldinger/v1"
+    xmlns:out9="http://nav-person-tjenestespesifikasjon/no/nav/virksomhet/tjenester/person/meldinger"
     xmlns:map="http://nav-tjeneste-person/no/nav/xslt/KunneIkkeRegistrereAdresseForDodsbo"
     xmlns:msl="http://www.ibm.com/xmlmap"
-    exclude-result-prefixes="xalan str set msl math map exsl date"
+    exclude-result-prefixes="xalan str set in msl math map exsl in2 date in3"
     version="1.0">
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -44,6 +53,9 @@
       <xsl:when test="msl:datamap">
         <msl:datamap>
           <dataObject>
+            <xsl:attribute name="xsi:type">
+              <xsl:value-of select="'out7:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo'"/>
+            </xsl:attribute>
             <xsl:call-template name="map:KunneIkkeRegistrereAdresseForDodsbo2">
               <xsl:with-param name="body" select="msl:datamap/dataObject[1]"/>
             </xsl:call-template>
@@ -60,20 +72,46 @@
   <xsl:template match="body"  mode="map:KunneIkkeRegistrereAdresseForDodsbo">
     <body>
       <xsl:attribute name="xsi:type">
-        <xsl:value-of select="'in3:hentTPSDataResponseMsg'"/>
+        <xsl:value-of select="'out7:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo'"/>
       </xsl:attribute>
+      <!-- a structural mapping: "in2:hentTPSDataResponse"(<Anonymous>) to "out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo"(KunneIkkeRegistrereAdresseForDodsbo) -->
+      <xsl:apply-templates select="in2:hentTPSDataResponse" mode="localHentTPSDataResponseToRegistrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo_656529714"/>
     </body>
   </xsl:template>
 
   <!-- This rule represents a type mapping: "body" to "body".  -->
   <xsl:template name="map:KunneIkkeRegistrereAdresseForDodsbo2">
     <xsl:param name="body"/>
+    <!-- a structural mapping: "$body/in2:hentTPSDataResponse"(<Anonymous>) to "out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo"(KunneIkkeRegistrereAdresseForDodsbo) -->
+    <xsl:apply-templates select="$body/in2:hentTPSDataResponse" mode="localHentTPSDataResponseToRegistrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo_656529714"/>
   </xsl:template>
 
-  <!-- This rule represents an element mapping: "in2:hentTPSDataResponse" to "null".  -->
-  <xsl:template match="in2:hentTPSDataResponse"  mode="localHentTPSDataResponseToNull_1565154793">
-    <null>
-    </null>
+  <!-- This rule represents an element mapping: "in2:hentTPSDataResponse" to "out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo".  -->
+  <xsl:template match="in2:hentTPSDataResponse"  mode="localHentTPSDataResponseToRegistrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo_656529714">
+    <out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
+      <!-- a simple data mapping: "tpsPersonDataRes/tpsSvar/svarStatus/utfyllendeMelding"(string) to "errorMessage"(string) -->
+      <xsl:if test="tpsPersonDataRes/tpsSvar/svarStatus/utfyllendeMelding">
+        <errorMessage>
+          <xsl:value-of select="tpsPersonDataRes/tpsSvar/svarStatus/utfyllendeMelding"/>
+        </errorMessage>
+      </xsl:if>
+      <!-- a simple mapping with no associated source:  to "errorSource"(string) -->
+      <errorSource>
+        <xsl:text>nav-tjeneste-person _ RegistrereAdresseForDødsbo _ KunneIkkeRegistrereAdresseForDødsbo!</xsl:text>
+      </errorSource>
+      <!-- a simple data mapping: "tpsPersonDataRes/tpsSvar/svarStatus/returStatus"(TreturStatus) to "errorType"(string) -->
+      <xsl:if test="tpsPersonDataRes/tpsSvar/svarStatus/returStatus">
+        <errorType>
+          <xsl:value-of select="tpsPersonDataRes/tpsSvar/svarStatus/returStatus"/>
+        </errorType>
+      </xsl:if>
+      <!-- a simple data mapping: "tpsPersonDataRes/tpsSvar/svarStatus/returMelding"(string) to "rootCause"(string) -->
+      <xsl:if test="tpsPersonDataRes/tpsSvar/svarStatus/returMelding">
+        <rootCause>
+          <xsl:value-of select="tpsPersonDataRes/tpsSvar/svarStatus/returMelding"/>
+        </rootCause>
+      </xsl:if>
+    </out2:registrereAdresseForDodsbokunneIkkeRegistrereAdresseForDodsbo>
   </xsl:template>
 
   <!-- *****************    Utility Templates    ******************  -->
