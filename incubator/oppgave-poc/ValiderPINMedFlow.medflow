@@ -10,138 +10,166 @@
         <elements id="message">
           <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/SED}validerOgLagreUtenlandskIdRequestMsg"/>
         </elements>
+        <elements id="transientContext">
+          <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
+        </elements>
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_2">
         <elements id="message">
           <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/SED}validerOgLagreUtenlandskIdResponseMsg"/>
+        </elements>
+        <elements id="transientContext">
+          <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
         </elements>
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_3">
         <elements id="message">
           <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/SED}validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
         </elements>
+        <elements id="transientContext">
+          <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
+        </elements>
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_4">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav.no/virksomhet/tjenester/person/v1}finnPersonRequestMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg/no/nav/lib/frg/inf/Person}finnPersonResponseMsg"/>
+        </elements>
+        <elements id="transientContext">
+          <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
         </elements>
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_5">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav.no/virksomhet/tjenester/person/v1}finnPersonResponseMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg/no/nav/lib/frg/inf/Person}finnPersonRequestMsg"/>
+        </elements>
+        <elements id="transientContext">
+          <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
         </elements>
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_6">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav.no/virksomhet/tjenester/person/v1}finnPerson_personIkkeFunnetMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg/no/nav/lib/frg/inf/Person}finnPerson_faultPersonIkkeFunnetMsg"/>
+        </elements>
+        <elements id="transientContext">
+          <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
         </elements>
       </type>
-      <nodes xmi:type="Input.mednode:Input" xmi:id="Input_1" name="SED_validerOgLagreUtenlandskId_Input">
-        <location x="10" y="216"/>
+      <type xmi:type="type:CompositeType" xmi:id="CompositeType_7">
+        <elements id="message">
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg/no/nav/lib/frg/inf/Person}finnPerson_faultFinnPersonMsg"/>
+        </elements>
+        <elements id="transientContext">
+          <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
+        </elements>
+      </type>
+      <nodes xmi:type="Input.mednode:Input" xmi:id="Input_1" name="SED_validerOgLagreUtenlandskId_Input" transientContext="{http://oppgave-poc}MinIDSetWithPIN">
+        <location x="10" y="204"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="validerOgLagreUtenlandskId : SED"/>
       </nodes>
       <nodes xmi:type="InputResponse.mednode:InputResponse" xmi:id="InputResponse_1" name="SED_validerOgLagreUtenlandskId_InputResponse">
-        <location x="1154" y="20"/>
+        <location x="1190" y="20"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="validerOgLagreUtenlandskId : SED"/>
       </nodes>
       <nodes xmi:type="InputFault.mednode:InputFault" xmi:id="InputFault_1" name="SED_validerOgLagreUtenlandskId_InputFault">
-        <location x="1154" y="196"/>
-        <inTerminals terminalNodeID="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" dynamic="true" explicitType="true" label="validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" type="CompositeType_3"/>
+        <location x="1190" y="228"/>
+        <inTerminals terminalNodeID="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" dynamic="true" explicitType="true" label="validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="validerOgLagreUtenlandskId : SED"/>
       </nodes>
       <nodes xmi:type="MessageFilter.mednode:MessageFilter" xmi:id="MessageFilter_1" name="Kontroller_for_utenlandsk_PIN" filters.pattern="%2Fbody%2FvaliderOgLagreUtenlandskId%2FminIDSetWithPin%2FpinSendingInstitution+%3D+%27%27" filters.terminalName="match1">
-        <location x="274" y="216"/>
+        <location x="274" y="204"/>
         <outTerminals terminalNodeID="OutTerminal.default" type="CompositeType_1"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match1" dynamic="true" label="Navnesok" type="CompositeType_1"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match1" dynamic="true" label="Navnesok" longDescription="" type="CompositeType_1"/>
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="Kontroller for utenlandsk PIN"/>
       </nodes>
-      <nodes xmi:type="ServiceInvoke.mednode:ServiceInvoke" xmi:id="ServiceInvoke_1" name="fnr_søk" referenceName="PersonPartner" operationName="finnPerson">
-        <location x="559" y="100"/>
-        <outTerminals terminalNodeID="OutTerminal.timeout" explicitType="true" type="CompositeType_4"/>
+      <nodes xmi:type="MessageFilter.mednode:MessageFilter" xmi:id="MessageFilter_2" name="Mer_enn_ett_resultat_returnert" filters.pattern="%2Fbody%2FfinnPersonResponse%2FfinnPersonResponse%2FflereTreff+%3D+%27true%27" filters.terminalName="match1">
+        <location x="934" y="112"/>
+        <outTerminals terminalNodeID="OutTerminal.default" type="CompositeType_4"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:out" dynamic="true" explicitType="true" label="out" type="CompositeType_5"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:finnPerson_personIkkeFunnetMsg" dynamic="true" explicitType="true" label="finnPerson_personIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_6"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match1" dynamic="true" label="true" longDescription="" type="CompositeType_4"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
-        <translation xmi:type="utility:ConstantString" string="fnr søk"/>
-      </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_1" name="ValiderUtenlandskIdTOfnrsok" root="/body" XSLTransform="xslt/ValiderUtenlandskIdTOfnrsok.xsl" XMXMap="xslt/ValiderUtenlandskIdTOfnrsok.map" SMOVersion="SMO61">
-        <location x="419" y="100"/>
-        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_4"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
-        <translation xmi:type="utility:ConstantString" string="ValiderUtenlandskIdTOfnrsok"/>
-      </nodes>
-      <nodes xmi:type="ServiceInvoke.mednode:ServiceInvoke" xmi:id="ServiceInvoke_2" name="navnesøk" referenceName="PersonPartner" operationName="finnPerson" invocationStyle="1">
-        <location x="790" y="172"/>
-        <outTerminals terminalNodeID="OutTerminal.timeout" explicitType="true" type="CompositeType_4"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:out" dynamic="true" explicitType="true" label="out" type="CompositeType_5"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:finnPerson_personIkkeFunnetMsg" dynamic="true" explicitType="true" label="finnPerson_personIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_6"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
-        <translation xmi:type="utility:ConstantString" string="navnesøk"/>
-      </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_2" name="ValiderUtenlandskIdTONavnesok" root="/body" XSLTransform="xslt/ValiderUtenlandskIdTONavnesok.xsl" XMXMap="xslt/ValiderUtenlandskIdTONavnesok.map" SMOVersion="SMO61">
-        <location x="645" y="228"/>
-        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_4"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
-        <translation xmi:type="utility:ConstantString" string="ValiderUtenlandskIdTONavnesok"/>
-      </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_3" name="XSLTransformation3" root="&lt;not specified>" SMOVersion="SMO61">
-        <location x="876" y="196"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_3"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_6"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_6"/>
-        <translation xmi:type="utility:ConstantString" string="XSLTransformation3"/>
-      </nodes>
-      <nodes xmi:type="MessageFilter.mednode:MessageFilter" xmi:id="MessageFilter_2" name="Mer_enn_ett_resultat_returnert" filters.pattern="%2Fbody%2FfinnPersonResponse%2Fresponse%2FflereTreff+%3D+%27true%27" filters.terminalName="match1">
-        <location x="876" y="92"/>
-        <outTerminals terminalNodeID="OutTerminal.default" type="CompositeType_5"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match1" dynamic="true" label="true" type="CompositeType_5"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_5"/>
         <translation xmi:type="utility:ConstantString" string="Mer enn ett resultat returnert"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_4" name="XSLTransformation5" root="&lt;not specified>" SMOVersion="SMO61">
-        <location x="1021" y="20"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_2"/>
+      <nodes xmi:type="ServiceInvoke.mednode:ServiceInvoke" xmi:id="ServiceInvoke_1" name="fnr_søk" referenceName="PersonPartner" operationName="finnPerson">
+        <location x="506" y="120"/>
+        <outTerminals terminalNodeID="OutTerminal.timeout" explicitType="true" type="CompositeType_5"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_5"/>
-        <translation xmi:type="utility:ConstantString" string="XSLTransformation5"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:out" dynamic="true" explicitType="true" label="out" longDescription="" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:finnPerson_faultPersonIkkeFunnetMsg" dynamic="true" explicitType="true" label="finnPerson_faultPersonIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_6"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:finnPerson_faultFinnPersonMsg" dynamic="true" explicitType="true" label="finnPerson_faultFinnPersonMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_7"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_5"/>
+        <translation xmi:type="utility:ConstantString" string="fnr søk"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_5" name="XSLTransformation6" root="&lt;not specified>" SMOVersion="SMO61">
-        <location x="1021" y="124"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_3"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_5"/>
-        <translation xmi:type="utility:ConstantString" string="XSLTransformation6"/>
-      </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_6" name="XSLTransformation2" root="/body" XSLTransform="xslt/ValiderUtenlandskIdTONavnesok.xsl" XMXMap="xslt/ValiderUtenlandskIdTONavnesok.map" SMOVersion="SMO61">
-        <location x="645" y="124"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_4"/>
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_1" name="PINtoFnrSøk" root="/" XSLTransform="xslt/PINtoFnrSøk.xsl" XMXMap="xslt/PINtoFnrSøk.map" SMOVersion="SMO61">
+        <location x="419" y="120"/>
+        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_5"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
-        <translation xmi:type="utility:ConstantString" string="XSLTransformation2"/>
+        <translation xmi:type="utility:ConstantString" string="PINtoFnrSøk"/>
+      </nodes>
+      <nodes xmi:type="ServiceInvoke.mednode:ServiceInvoke" xmi:id="ServiceInvoke_2" name="navnesøk" referenceName="PersonPartner" operationName="finnPerson">
+        <location x="848" y="204"/>
+        <outTerminals terminalNodeID="OutTerminal.timeout" explicitType="true" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:out" dynamic="true" explicitType="true" label="out" longDescription="" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:finnPerson_faultPersonIkkeFunnetMsg" dynamic="true" explicitType="true" label="finnPerson_faultPersonIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_6"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:finnPerson_faultFinnPersonMsg" dynamic="true" explicitType="true" label="finnPerson_faultFinnPersonMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_7"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_5"/>
+        <translation xmi:type="utility:ConstantString" string="navnesøk"/>
+      </nodes>
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_2" name="PINtoNavnesøk" root="/body" XSLTransform="xslt/PINtoNavnesøk.xsl" XMXMap="xslt/PINtoNavnesøk.map" SMOVersion="SMO61">
+        <location x="745" y="204"/>
+        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
+        <translation xmi:type="utility:ConstantString" string="PINtoNavnesøk"/>
+      </nodes>
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_3" name="PersonIkkeFunnetToNavnesøk" root="/" XSLTransform="xslt/PersonIkkeFunnetToNavnesøk.xsl" XMXMap="xslt/PersonIkkeFunnetToNavnesøk.map" SMOVersion="SMO61">
+        <location x="592" y="144"/>
+        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_1"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_6"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_6"/>
+        <translation xmi:type="utility:ConstantString" string="PersonIkkeFunnetToNavnesøk"/>
+      </nodes>
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_4" name="Ett_resultat" root="/body" XSLTransform="xslt/Ett_resultat.xsl" XMXMap="xslt/Ett_resultat.map" SMOVersion="SMO61">
+        <location x="1079" y="20"/>
+        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_2"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
+        <translation xmi:type="utility:ConstantString" string="Ett resultat"/>
+      </nodes>
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_5" name="FlereIdenter" root="/body" XSLTransform="xslt/FlereIdenter.xsl" XMXMap="xslt/FlereIdenter.map" SMOVersion="SMO61">
+        <location x="1079" y="124"/>
+        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_3"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
+        <translation xmi:type="utility:ConstantString" string="FlereIdenter"/>
+      </nodes>
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_6" name="IdentIkkeFunnet" root="/body" XSLTransform="xslt/IdentIkkeFunnet.xsl" XMXMap="xslt/IdentIkkeFunnet.map" SMOVersion="SMO61">
+        <location x="1079" y="228"/>
+        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_3"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_6"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_6"/>
+        <translation xmi:type="utility:ConstantString" string="IdentIkkeFunnet"/>
       </nodes>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_1" targetNode="MessageFilter_1" sourceNode="Input_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_2" targetNode="XSLTransformation_1" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_3" targetNode="XSLTransformation_2" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="MessageFilter_2" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="XSLTransformation_6" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:finnPerson_personIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="ServiceInvoke_1" sourceNode="XSLTransformation_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="MessageFilter_2" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="XSLTransformation_3" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:finnPerson_personIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="ServiceInvoke_2" sourceNode="XSLTransformation_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="InputFault_1" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="XSLTransformation_4" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="XSLTransformation_5" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="XSLTransformation_4" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="XSLTransformation_5" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="MessageFilter_2" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="XSLTransformation_3" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:finnPerson_faultPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="ServiceInvoke_1" sourceNode="XSLTransformation_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="MessageFilter_2" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="XSLTransformation_6" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:finnPerson_faultPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="ServiceInvoke_2" sourceNode="XSLTransformation_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="XSLTransformation_2" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_13" targetNode="InputResponse_1" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_14" targetNode="InputFault_1" sourceNode="XSLTransformation_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_15" targetNode="ServiceInvoke_2" sourceNode="XSLTransformation_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_15" targetNode="InputFault_1" sourceNode="XSLTransformation_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>

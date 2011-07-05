@@ -4,7 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>nav-oppgave-tjenestespesifikasjon</project>
-		<project>nav-person-tjenestespesifikasjon</project>
+		<project>nav-lib-frg</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

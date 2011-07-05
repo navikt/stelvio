@@ -6,12 +6,12 @@
     </interface>
   </interfaces>
   <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://localhost:9080/nav-tjeneste-oppgaveWeb/sca/OppgaveWSEXP" port="Binding:OppgaveWSEXP_OppgaveHttpPort" service="Binding:OppgaveWSEXP_OppgaveHttpService">
-   <policySetRef policySetName="NAV ESB WSExport"/>
+    <policySetRef policySetName="NAV ESB WSExport"/>
     <handlerChain>
       <handler>
         <handlerName>StelvioContextHandler</handlerName>
         <handlerClass>no.stelvio.common.context.jaxws.StelvioContextHandler</handlerClass>
       </handler>
     </handlerChain>
-    </esbBinding>
+  </esbBinding>
 </scdl:import>
