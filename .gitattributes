@@ -2008,6 +2008,7 @@ incubator/oppgave-poc/AvklareIdentitetArtifacts.wsdl -text
 incubator/oppgave-poc/AvklareIdentitetTask1.itel -text
 incubator/oppgave-poc/AvklareIdentitetTask1.itelex -text
 incubator/oppgave-poc/AvklareIdentitet_bpel.mon -text
+incubator/oppgave-poc/HTMJAXWSService-soapui-project.xml -text
 incubator/oppgave-poc/InnhentDNummer.wsdl -text
 incubator/oppgave-poc/META-INF/MANIFEST.MF -text
 incubator/oppgave-poc/MinIDSetWithPIN.xsd -text
@@ -2022,8 +2023,8 @@ incubator/oppgave-poc/nav-tjeneste-oppgave_OppgaveWSEXP.wsdl -text
 incubator/oppgave-poc/sca.module -text
 incubator/oppgave-poc/sca.module.attributes -text
 incubator/oppgave-poc/sca.modulex -text
-incubator/oppgave-poc/xslt/Ett_resultat.map -text
-incubator/oppgave-poc/xslt/Ett_resultat.xsl -text
+incubator/oppgave-poc/xslt/EttFnr.map -text
+incubator/oppgave-poc/xslt/EttFnr.xsl -text
 incubator/oppgave-poc/xslt/FlereIdenter.map -text
 incubator/oppgave-poc/xslt/FlereIdenter.xsl -text
 incubator/oppgave-poc/xslt/IdentIkkeFunnet.map -text

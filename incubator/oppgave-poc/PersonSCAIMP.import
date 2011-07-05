@@ -5,4 +5,7 @@
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
     </interface>
   </interfaces>
+  <esbBinding xsi:type="scdl:SCAImportBinding" module="nav-ent-frg-person" export="PersonSCAEXP" version="">
+    <scdl:bindingQualifier xsi:type="scdl:IsTargetSCA" value="true"/>
+  </esbBinding>
 </scdl:import>
