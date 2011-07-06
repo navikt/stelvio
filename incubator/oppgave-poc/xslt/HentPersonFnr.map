@@ -6,7 +6,7 @@
         <output path="body"/>
         <move>
             <input path="hentPersonResponse/hentPersonResponse/fodselsnummer"/>
-            <output path="validerOgLagreUtenlandskIdResponse/fnr"/>
+            <output path="validerOgLagreUtenlandskIdResponse/norskPIN"/>
         </move>
     </mappingDeclaration>
 </mappingRoot>
