@@ -8,6 +8,7 @@
       <interface xsi:type="wsdl:WSDLPortType" portType="Person:Person"/>
     </reference>
   </references>
+  <extendedOperationBinding source="validerOgLagreUtenlandskId" target="hentPerson" sourcePortType="ns3:SED" targetReference="PersonPartner"/>
   <extendedOperationBinding source="validerOgLagreUtenlandskId" target="finnPerson" sourcePortType="ns3:SED" targetReference="PersonPartner"/>
   <operationFlow medflow="ValiderPINMedFlow.medflow"/>
 </mfc:interfaceMediationFlow>

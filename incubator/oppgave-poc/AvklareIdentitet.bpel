@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns0="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://nav.no/virksomhet/tjenester/person/meldinger/v1" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/InnhentDNummer" xmlns:ns4="http://oppgave-poc/SED" xmlns:ns5="http://oppgave-poc" xmlns:ns6="http://nav.no/virksomhet/gjennomforing/oppgave/v1" xmlns:ns7="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:ns8="http://nav.no/virksomhet/tjenester/oppgave/meldinger/v1" xmlns:tel="http://oppgave-poc/Task1" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="AvklareIdentitet" suppressJoinFailure="yes" targetNamespace="http://oppgave-poc" wpc:autoDelete="no" wpc:continueOnError="no" wpc:displayName="AvklareIdentitet" wpc:executionMode="longRunning" wpc:id="1" wpc:validFrom="2011-06-24T07:48:43" wpc:version="IBM_7.0.300">
+<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns0="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://nav.no/virksomhet/tjenester/person/meldinger/v1" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/InnhentDNummer" xmlns:ns4="http://oppgave-poc/SED" xmlns:ns5="http://oppgave-poc" xmlns:ns6="http://nav.no/virksomhet/gjennomforing/oppgave/v1" xmlns:ns7="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:ns8="http://nav.no/virksomhet/tjenester/oppgave/meldinger/v1" xmlns:tel="http://oppgave-poc/Task1" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="AvklareIdentitet" suppressJoinFailure="yes" targetNamespace="http://oppgave-poc" wpc:autoDelete="no" wpc:businessRelevant="no" wpc:continueOnError="no" wpc:displayName="AvklareIdentitet" wpc:executionMode="longRunning" wpc:id="1" wpc:validFrom="2011-06-24T07:48:43" wpc:version="IBM_7.0.300">
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="AvklareIdentitet.wsdl" namespace="http://oppgave-poc/AvklareIdentitet"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="AvklareIdentitetArtifacts.wsdl" namespace="http://oppgave-poc/AvklareIdentitetArtifacts"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="nav/virksomhet/tjenester/person/meldinger/meldinger.xsd" namespace="http://nav.no/virksomhet/tjenester/person/meldinger/v1"/>
@@ -23,19 +23,21 @@
     <bpws:variable name="slettOppgaveListeRequest" type="ns8:SlettOppgaveListeRequest" wpc:id="37"/>
   </bpws:variables>
   <bpws:sequence name="HiddenSequence" wpc:id="1073741827">
-    <bpws:receive createInstance="yes" name="Receive" operation="avklarIdentitet" partnerLink="AvklareIdentitet" portType="ns0:AvklareIdentitet" wpc:displayName="Receive" wpc:id="4" wpc:transactionalBehavior="commitAfter">
+    <bpws:receive createInstance="yes" name="MinIDSetWithPINMottatt" operation="avklarIdentitet" partnerLink="AvklareIdentitet" portType="ns0:AvklareIdentitet" wpc:businessRelevant="no" wpc:displayName="MinIDSetWithPIN Mottatt" wpc:id="4" wpc:transactionalBehavior="commitAfter">
       <wpc:output>
         <wpc:parameter name="minIDSetWithPIN" variable="minIDSetWithPIN"/>
       </wpc:output>
     </bpws:receive>
-    <bpws:invoke name="Invoke1" operation="validerOgLagreUtenlandskId" partnerLink="SEDPartner" portType="ns4:SED" wpc:continueOnError="inherit" wpc:displayName="Valider og lagre utenlandsk Id" wpc:id="21">
+    <bpws:invoke name="ValiderOgLagreUtenlandskId" operation="validerOgLagreUtenlandskId" partnerLink="SEDPartner" portType="ns4:SED" wpc:businessRelevant="yes" wpc:continueOnError="inherit" wpc:displayName="Valider og lagre utenlandsk Id" wpc:id="21">
       <wpc:input>
         <wpc:parameter name="minIDSetWithPin" variable="minIDSetWithPIN"/>
       </wpc:input>
-      <wpc:output/>
+      <wpc:output>
+        <wpc:parameter name="fnr" variable="personId"/>
+      </wpc:output>
       <bpws:catch faultMessageType="ns4:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" faultName="ns4:norskIdIkkeFunnet" faultVariable="norskIdIkkeFunnetVariable" wpc:displayName="Norsk Id ikke funnet" wpc:id="22" wpc:variableId="23">
         <bpws:sequence name="HiddenSequence1" wpc:id="1073741850">
-          <bpws:assign name="Assign" wpc:displayName="Opprett dnr-oppgave" wpc:id="27">
+          <bpws:assign name="OpprettDnrOppgave" wpc:displayName="Opprett dnr-oppgave" wpc:id="27">
             <bpws:copy>
               <bpws:from>2011-07-04</bpws:from>
               <bpws:to variable="opprettOppgaveRequest">
@@ -43,7 +45,7 @@
               </bpws:to>
             </bpws:copy>
             <bpws:copy>
-              <bpws:from><![CDATA[OPPG_EESSI_INNHENT_DNR]]></bpws:from>
+              <bpws:from><![CDATA[EESSIPOC]]></bpws:from>
               <bpws:to variable="opprettOppgaveRequest">
                 <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[oppgave/oppgaveType]]></bpws:query>
               </bpws:to>
@@ -55,25 +57,43 @@
               </bpws:to>
             </bpws:copy>
             <bpws:copy>
-              <bpws:from><![CDATA[EESSI]]></bpws:from>
+              <bpws:from><![CDATA[1563]]></bpws:from>
               <bpws:to variable="opprettOppgaveRequest">
                 <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[oppgave/ansvarligEnhetId]]></bpws:query>
               </bpws:to>
             </bpws:copy>
             <bpws:copy>
-              <bpws:from><![CDATA[EESSI]]></bpws:from>
+              <bpws:from><![CDATA[NAV Sunndal]]></bpws:from>
               <bpws:to variable="opprettOppgaveRequest">
                 <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[oppgave/ansvarligEnhetNavn]]></bpws:query>
               </bpws:to>
             </bpws:copy>
             <bpws:copy>
-              <bpws:from><![CDATA[EESSI]]></bpws:from>
+              <bpws:from><![CDATA[HOY]]></bpws:from>
+              <bpws:to variable="opprettOppgaveRequest">
+                <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[oppgave/prioritet]]></bpws:query>
+              </bpws:to>
+            </bpws:copy>
+            <bpws:copy>
+              <bpws:from><![CDATA[GEN]]></bpws:from>
               <bpws:to variable="opprettOppgaveRequest">
                 <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[oppgave/fagomrade]]></bpws:query>
               </bpws:to>
             </bpws:copy>
+            <bpws:copy>
+              <bpws:from><![CDATA[9999]]></bpws:from>
+              <bpws:to variable="opprettOppgaveRequest">
+                <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[oppgave/endringsInfo/opprettetAvEnhetId]]></bpws:query>
+              </bpws:to>
+            </bpws:copy>
+            <bpws:copy>
+              <bpws:from><![CDATA[Marvin]]></bpws:from>
+              <bpws:to variable="opprettOppgaveRequest">
+                <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[oppgave/endringsInfo/opprettetAvEnhetNavn]]></bpws:query>
+              </bpws:to>
+            </bpws:copy>
           </bpws:assign>
-          <bpws:invoke name="Invoke" operation="opprettOppgave" partnerLink="OppgavePartner" portType="ns7:Oppgave" wpc:continueOnError="inherit" wpc:displayName="Opprett Innhent dnr oppgave" wpc:id="28">
+          <bpws:invoke name="OpprettInnhentDnrOppgave" operation="opprettOppgave" partnerLink="OppgavePartner" portType="ns7:Oppgave" wpc:businessRelevant="no" wpc:continueOnError="inherit" wpc:displayName="Opprett Innhent dnr oppgave" wpc:id="28" wpc:transactionalBehavior="commitAfter">
             <wpc:input>
               <wpc:parameter name="request" variable="opprettOppgaveRequest"/>
             </wpc:input>
@@ -81,7 +101,7 @@
               <wpc:parameter name="response" variable="opprettOppgaveResponse"/>
             </wpc:output>
           </bpws:invoke>
-          <bpws:assign name="Assign1" wpc:displayName="Assign GSAKId" wpc:id="32">
+          <bpws:assign name="AssignGSAKId" wpc:displayName="Assign GSAKId" wpc:id="32">
             <bpws:copy>
               <bpws:from variable="opprettOppgaveResponse">
                 <bpws:query queryLanguage="http://www.w3.org/TR/1999/REC-xpath-19991116"><![CDATA[oppgave/oppgaveId]]></bpws:query>
@@ -89,10 +109,10 @@
               <bpws:to variable="GSAKoppgaveId"/>
             </bpws:copy>
           </bpws:assign>
-          <bpws:invoke name="HumanTask" operation="innhentDNummer" partnerLink="null" portType="ns3:InnhentDNummer" wpc:continueOnError="inherit" wpc:displayName="Innhent Id" wpc:id="18" wpc:transactionalBehavior="participates">
+          <bpws:invoke name="InnhentId" operation="innhentDNummer" partnerLink="null" portType="ns3:InnhentDNummer" wpc:continueOnError="inherit" wpc:displayName="Innhent Id" wpc:id="18" wpc:transactionalBehavior="participates">
             <wpc:description>Søk etter person. Dersom person ikke funnet, rekvirer D-nummer eller send spørre-SED</wpc:description>
-            <wpc:customProperty name="GSAKOppgaveId" wpc:id="34">
-              <wpc:value>%wf:GSAKoppgaveId%</wpc:value>
+            <wpc:customProperty name="OppgaveId" wpc:id="34">
+              <wpc:value>%wf:variable.GSAKoppgaveId%</wpc:value>
             </wpc:customProperty>
             <wpc:task name="tel:InnhentDNummer"/>
             <wpc:input>
@@ -102,7 +122,7 @@
               <wpc:parameter name="dnr" variable="personId"/>
             </wpc:output>
           </bpws:invoke>
-          <bpws:assign name="Assign2" wpc:displayName="Opprett slettOppgaveListeRequest" wpc:id="35">
+          <bpws:assign name="OpprettSlettOppgaveListeRequest" wpc:displayName="Opprett slettOppgaveListeRequest" wpc:id="35">
             <bpws:copy>
               <bpws:from variable="GSAKoppgaveId"/>
               <bpws:to variable="slettOppgaveListeRequest">
@@ -110,7 +130,7 @@
               </bpws:to>
             </bpws:copy>
           </bpws:assign>
-          <bpws:invoke name="Invoke2" operation="slettOppgaveListe" partnerLink="OppgavePartner" portType="ns7:Oppgave" wpc:continueOnError="inherit" wpc:displayName="Slett Innhent dnr oppgave" wpc:id="36">
+          <bpws:invoke name="SlettInnhentDnrOppgave" operation="slettOppgaveListe" partnerLink="OppgavePartner" portType="ns7:Oppgave" wpc:businessRelevant="no" wpc:continueOnError="inherit" wpc:displayName="Slett Innhent dnr oppgave" wpc:id="36">
             <wpc:input>
               <wpc:parameter name="request" variable="slettOppgaveListeRequest"/>
             </wpc:input>

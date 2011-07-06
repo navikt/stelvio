@@ -12,7 +12,8 @@
       <xsd:element name="validerOgLagreUtenlandskIdResponse">
         <xsd:complexType>
           <xsd:sequence>
-          </xsd:sequence>
+                        <xsd:element name="fnr" nillable="true" type="xsd:string"/>
+                    </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
             <xsd:element name="hentIdDataFraSEDFault1_idIkkeFunnet" nillable="true" type="xsd:string"/>
@@ -30,7 +31,7 @@
     <wsdl:portType name="SED">
     <wsdl:operation name="validerOgLagreUtenlandskId">
       <wsdl:input message="tns:validerOgLagreUtenlandskIdRequestMsg" name="validerOgLagreUtenlandskIdRequest"/>
-      <wsdl:output message="tns:validerOgLagreUtenlandskIdResponseMsg" name="validerOgLagreUtenlandskIdResponse"/>
+            <wsdl:output message="tns:validerOgLagreUtenlandskIdResponseMsg" name="validerOgLagreUtenlandskIdResponse"/>
             <wsdl:fault message="tns:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" name="norskIdIkkeFunnet"/>
         </wsdl:operation>
   </wsdl:portType>

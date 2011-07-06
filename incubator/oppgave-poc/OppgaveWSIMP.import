@@ -5,8 +5,8 @@
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
     </interface>
   </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://localhost:9081/nav-tjeneste-oppgaveWeb/sca/OppgaveWSEXP" port="Binding:OppgaveWSEXP_OppgaveHttpPort" service="Binding:OppgaveWSEXP_OppgaveHttpService">
-    <policySetRef policySetName="NAV ESB WSExport"/>
+  <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://localhost:9080/nav-tjeneste-oppgave_v1Web/sca/OppgaveWSEXP" port="Binding:OppgaveWSEXP_OppgaveHttpPort" service="Binding:OppgaveWSEXP_OppgaveHttpService">
+    <policySetRef policySetName="NAV ESB WSImport"/>
     <handlerChain>
       <handler>
         <handlerName>StelvioContextHandler</handlerName>
