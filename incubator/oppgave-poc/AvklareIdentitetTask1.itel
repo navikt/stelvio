@@ -4,7 +4,7 @@
  ##[generatedBy:/oppgave-poc/AvklareIdentitet.bpel]##
  ##[lineageStampEnd]##
 -->
-<tel:task xmlns:tel="http://www.ibm.com/xmlns/prod/websphere/human-task/6.0.0/" xmlns:wsdl="http://oppgave-poc/InnhentDNummer" allowClaimWhenSuspended="no" autoClaim="yes" businessRelevance="no" calendarName="Simple" contextAuthorizationForOwner="none" defaultLocale="en-GB" durationUntilDue="20seconds" jndiNameStaffPluginProvider="bpe/staff/samplevmmconfiguration" kind="pTask" name="InnhentDNummer" priorityDefinition="5" supportsDelegation="yes" supportsFollowOnTask="yes" supportsSubTask="yes" targetNamespace="http://oppgave-poc/Task1">
+<tel:task xmlns:tel="http://www.ibm.com/xmlns/prod/websphere/human-task/6.0.0/" xmlns:wsdl="http://oppgave-poc/InnhentDNummer" allowClaimWhenSuspended="no" autoClaim="yes" businessRelevance="no" calendarName="Simple" contextAuthorizationForOwner="none" defaultLocale="en-GB" durationUntilDue="20seconds" jndiNameStaffPluginProvider="bpe/staff/samplevmmconfiguration" kind="pTask" name="InnhentDNummer" priorityDefinition="15" supportsDelegation="yes" supportsFollowOnTask="yes" supportsSubTask="yes" targetNamespace="http://oppgave-poc/Task1">
   <tel:import importType="http://schemas.xmlsoap.org/wsdl/" location="InnhentDNummer.wsdl" namespace="http://oppgave-poc/InnhentDNummer"/>
   <tel:interface kind="inbound" operation="innhentDNummer" portType="wsdl:InnhentDNummer"/>
   <tel:staffSettings>
@@ -14,6 +14,11 @@
       </tel:verb>
     </tel:potentialOwner>
   </tel:staffSettings>
-  <tel:uiSettings/>
+  <tel:uiSettings>
+    <tel:customClientSettings clientType="Dojo">
+      <tel:customSetting name="contextRoot" value="opppgave-poc-gui"/>
+      <tel:customSetting name="pathAndFilename" value="InnhentDNummer.html"/>
+    </tel:customClientSettings>
+  </tel:uiSettings>
   <tel:escalationSettings/>
 </tel:task>
