@@ -3,7 +3,7 @@
   <extensionmodel:ExtensionMap namespace="http://com.ibm.wbit.bpel.ui/">
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#/"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1309965282060" autoLayout="true" maxWpcId="43" minWpcId="0"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1310116655808" autoLayout="true" maxWpcId="43" minWpcId="0"/>
     </extensions>
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity"/>
@@ -31,7 +31,7 @@
     </extensions>
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:FaultHandlerExtension" collapsed="true"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:FaultHandlerExtension"/>
     </extensions>
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0"/>
@@ -58,19 +58,19 @@
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
     </extensions>
     <extensions>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.6"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.7"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
+    </extensions>
+    <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.1"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
     </extensions>
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.2"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.3"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.4"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
     </extensions>
     <extensions>
@@ -110,19 +110,19 @@
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
     </extensions>
     <extensions>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.8"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
+    </extensions>
+    <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.5"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
     </extensions>
     <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.6"/>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.3"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
     </extensions>
     <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.7"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.8"/>
+      <extendedObject href="AvklareIdentitet.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.0/@copy.4"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:CopyExtension"/>
     </extensions>
     <extensions>
