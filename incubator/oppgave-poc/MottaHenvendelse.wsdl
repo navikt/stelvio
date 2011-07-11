@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="InnhenteDNummer" targetNamespace="http://oppgave-poc/AvklareIdentitet" xmlns:bons0="http://oppgave-poc/InnhenteDNummer" xmlns:bons1="http://oppgave-poc" xmlns:tns="http://oppgave-poc/AvklareIdentitet" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="InnhenteDNummer" targetNamespace="http://oppgave-poc/MottaHenvendelse" xmlns:bons1="http://oppgave-poc" xmlns:bons2="http://oppgave-poc/AvklareIdentitet" xmlns:tns="http://oppgave-poc/MottaHenvendelse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <wsdl:types>
-    <xsd:schema targetNamespace="http://oppgave-poc/AvklareIdentitet" xmlns:bons0="http://oppgave-poc/AvklareIdentitet">
+    <xsd:schema targetNamespace="http://oppgave-poc/MottaHenvendelse" xmlns:bons2="http://oppgave-poc/MottaHenvendelse">
             <xsd:import namespace="http://oppgave-poc" schemaLocation="MinIDSetWithPIN.xsd"/>
             <xsd:element name="avklarIdentitet">
         <xsd:complexType>
@@ -14,7 +14,7 @@
     <wsdl:message name="avklarIdentitetRequestMsg">
     <wsdl:part element="tns:avklarIdentitet" name="avklarIdentitetParameters"/>
   </wsdl:message>
-    <wsdl:portType name="AvklareIdentitet">
+    <wsdl:portType name="MottaHenvendelse">
     <wsdl:operation name="avklarIdentitet">
       <wsdl:input message="tns:avklarIdentitetRequestMsg" name="avklarIdentitetRequest"/>
     </wsdl:operation>

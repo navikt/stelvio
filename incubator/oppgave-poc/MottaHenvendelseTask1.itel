@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
  ##[lineageStampBegin]##
- ##[generatedBy:/oppgave-poc/AvklareIdentitet.bpel]##
+ ##[generatedBy:/oppgave-poc/MottaHenvendelse.bpel]##
  ##[lineageStampEnd]##
 -->
 <tel:task xmlns:tel="http://www.ibm.com/xmlns/prod/websphere/human-task/6.0.0/" xmlns:wsdl="http://oppgave-poc/InnhentDNummer" allowClaimWhenSuspended="no" autoClaim="yes" businessRelevance="no" calendarName="Simple" contextAuthorizationForOwner="none" defaultLocale="en-GB" durationUntilDue="20seconds" jndiNameStaffPluginProvider="bpe/staff/samplevmmconfiguration" kind="pTask" name="InnhentDNummer" priorityDefinition="15" supportsDelegation="yes" supportsFollowOnTask="yes" supportsSubTask="yes" targetNamespace="http://oppgave-poc/Task1">

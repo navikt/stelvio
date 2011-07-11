@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0" xmlns:ns1="http://oppgave-poc/SED" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://nav-lib-frg/no/nav/lib/frg/inf/Person" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ValiderPINMedFlow" name="ValiderPINMedFlow">
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Person="http://oppgave-poc/Person" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0" xmlns:ns1="http://oppgave-poc/SED" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://nav-lib-frg/no/nav/lib/frg/inf/Person" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ValiderPINMedFlow" name="ValiderPINMedFlow">
   <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:SED">
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="Person:IdentitetAvklaring">
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
     </interface>
   </interfaces>

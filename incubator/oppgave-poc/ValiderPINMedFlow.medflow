@@ -8,7 +8,7 @@
     <composition>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_1">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/SED}validerOgLagreUtenlandskIdRequestMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/Person}avklarIdentitetRequestMsg"/>
         </elements>
         <elements id="transientContext">
           <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
@@ -16,7 +16,7 @@
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_2">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/SED}validerOgLagreUtenlandskIdResponseMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/Person}avklarIdentitetResponseMsg"/>
         </elements>
         <elements id="transientContext">
           <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
@@ -24,7 +24,7 @@
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_3">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/SED}validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://oppgave-poc/Person}avklarIdentitet_norskIdIkkeFunnetMsg"/>
         </elements>
         <elements id="transientContext">
           <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
@@ -94,22 +94,22 @@
           <type xmi:type="type:XSDType" xsiType="{http://oppgave-poc}MinIDSetWithPIN"/>
         </elements>
       </type>
-      <nodes xmi:type="Input.mednode:Input" xmi:id="Input_1" name="SED_validerOgLagreUtenlandskId_Input" transientContext="{http://oppgave-poc}MinIDSetWithPIN">
+      <nodes xmi:type="Input.mednode:Input" xmi:id="Input_1" name="IdentitetAvklaring_avklarIdentitet_Input" transientContext="{http://oppgave-poc}MinIDSetWithPIN">
         <location x="10" y="712"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_1"/>
-        <translation xmi:type="utility:ConstantString" string="validerOgLagreUtenlandskId : SED"/>
+        <translation xmi:type="utility:ConstantString" string="avklarIdentitet : IdentitetAvklaring"/>
       </nodes>
-      <nodes xmi:type="InputResponse.mednode:InputResponse" xmi:id="InputResponse_1" name="SED_validerOgLagreUtenlandskId_InputResponse">
+      <nodes xmi:type="InputResponse.mednode:InputResponse" xmi:id="InputResponse_1" name="IdentitetAvklaring_avklarIdentitet_InputResponse">
         <location x="1431" y="124"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_2"/>
-        <translation xmi:type="utility:ConstantString" string="validerOgLagreUtenlandskId : SED"/>
+        <translation xmi:type="utility:ConstantString" string="avklarIdentitet : IdentitetAvklaring"/>
       </nodes>
-      <nodes xmi:type="InputFault.mednode:InputFault" xmi:id="InputFault_1" name="SED_validerOgLagreUtenlandskId_InputFault">
+      <nodes xmi:type="InputFault.mednode:InputFault" xmi:id="InputFault_1" name="IdentitetAvklaring_avklarIdentitet_InputFault">
         <location x="1431" y="332"/>
-        <inTerminals terminalNodeID="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" dynamic="true" explicitType="true" label="validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" longDescription="" type="CompositeType_3"/>
-        <translation xmi:type="utility:ConstantString" string="validerOgLagreUtenlandskId : SED"/>
+        <inTerminals terminalNodeID="InTerminal.dynamic:in:avklarIdentitet_norskIdIkkeFunnetMsg" dynamic="true" explicitType="true" label="avklarIdentitet_norskIdIkkeFunnetMsg" longDescription="" type="CompositeType_3"/>
+        <translation xmi:type="utility:ConstantString" string="avklarIdentitet : IdentitetAvklaring"/>
       </nodes>
-      <nodes xmi:type="MessageFilter.mednode:MessageFilter" xmi:id="MessageFilter_1" name="Kontroller_for_utenlandsk_PIN" filters.pattern="%2Fbody%2FvaliderOgLagreUtenlandskId%2FminIDSetWithPin%2FpinSendingInstitution" filters.terminalName="match1">
+      <nodes xmi:type="MessageFilter.mednode:MessageFilter" xmi:id="MessageFilter_1" name="Kontroller_for_utenlandsk_PIN" filters.pattern="%2Fbody%2FavklarIdentitet%2FminIDSetWithPin%2FpinSendingInstitution" filters.terminalName="match1">
         <location x="274" y="712"/>
         <outTerminals terminalNodeID="OutTerminal.default" type="CompositeType_1"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
@@ -227,9 +227,9 @@
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_14" targetNode="Fail_1" sourceNode="XSLTransformation_1" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_15" targetNode="XSLTransformation_1" sourceNode="XSLTransformation_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_16" targetNode="Fail_1" sourceNode="XSLTransformation_2" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_17" targetNode="InputFault_1" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_17" targetNode="InputFault_1" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:avklarIdentitet_norskIdIkkeFunnetMsg"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_18" targetNode="Fail_1" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_19" targetNode="InputFault_1" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_19" targetNode="InputFault_1" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:avklarIdentitet_norskIdIkkeFunnetMsg"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_20" targetNode="Fail_1" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_21" targetNode="Fail_1" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_22" targetNode="XSLTransformation_6" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
@@ -241,7 +241,7 @@
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_28" targetNode="Fail_1" sourceNode="XSLTransformation_6" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_29" targetNode="InputResponse_1" sourceNode="XSLTransformation_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_30" targetNode="Fail_1" sourceNode="XSLTransformation_7" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_31" targetNode="InputFault_1" sourceNode="XSLTransformation_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_31" targetNode="InputFault_1" sourceNode="XSLTransformation_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:avklarIdentitet_norskIdIkkeFunnetMsg"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -250,7 +250,7 @@
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
     <composition>
-      <nodes xmi:type="ValiderPINMedFlow.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://oppgave-poc/SED}SED:validerOgLagreUtenlandskId::request"/>
+      <nodes xmi:type="ValiderPINMedFlow.medflow:root_I_2" xmi:id="root_I_2_1" name="{http://oppgave-poc/Person}IdentitetAvklaring:avklarIdentitet::request"/>
     </composition>
     <propertyOrganizer/>
   </eClassifiers>

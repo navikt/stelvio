@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns0="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://nav.no/virksomhet/tjenester/person/meldinger/v1" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/InnhentDNummer" xmlns:ns4="http://oppgave-poc/SED" xmlns:ns5="http://oppgave-poc" xmlns:ns6="http://nav.no/virksomhet/gjennomforing/oppgave/v1" xmlns:ns7="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:ns8="http://nav.no/virksomhet/tjenester/oppgave/meldinger/v1" xmlns:tel="http://oppgave-poc/Task1" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="AvklareIdentitet" suppressJoinFailure="yes" targetNamespace="http://oppgave-poc" wpc:autoDelete="no" wpc:businessRelevant="no" wpc:continueOnError="no" wpc:displayName="AvklareIdentitet" wpc:executionMode="longRunning" wpc:id="1" wpc:validFrom="2011-07-11T11:15:25" wpc:version="IBM_7.0.300">
-  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="AvklareIdentitet.wsdl" namespace="http://oppgave-poc/AvklareIdentitet"/>
-  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="AvklareIdentitetArtifacts.wsdl" namespace="http://oppgave-poc/AvklareIdentitetArtifacts"/>
+<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns0="http://oppgave-poc/AvklareIdentitet" xmlns:ns1="http://nav.no/virksomhet/tjenester/person/meldinger/v1" xmlns:ns10="http://oppgave-poc/Person" xmlns:ns2="http://nav.no/virksomhet/tjenester/person/v1" xmlns:ns3="http://oppgave-poc/InnhentDNummer" xmlns:ns4="http://oppgave-poc/SED" xmlns:ns5="http://oppgave-poc" xmlns:ns6="http://nav.no/virksomhet/gjennomforing/oppgave/v1" xmlns:ns7="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:ns8="http://nav.no/virksomhet/tjenester/oppgave/meldinger/v1" xmlns:ns9="http://oppgave-poc/MottaHenvendelse" xmlns:tel="http://oppgave-poc/Task1" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="MottaHenvendelse" suppressJoinFailure="yes" targetNamespace="http://oppgave-poc" wpc:autoDelete="no" wpc:businessRelevant="no" wpc:continueOnError="no" wpc:displayName="MottaHenvendelse" wpc:executionMode="longRunning" wpc:id="1" wpc:validFrom="2011-07-11T11:15:25" wpc:version="IBM_7.0.300">
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="MottaHenvendelse.wsdl" namespace="http://oppgave-poc/MottaHenvendelse"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="MottaHenvendelseArtifacts.wsdl" namespace="http://oppgave-poc/AvklareIdentitetArtifacts"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="nav/virksomhet/tjenester/person/meldinger/meldinger.xsd" namespace="http://nav.no/virksomhet/tjenester/person/meldinger/v1"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="nav/virksomhet/tjenester/person/person.wsdl" namespace="http://nav.no/virksomhet/tjenester/person/v1"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="InnhentDNummer.wsdl" namespace="http://oppgave-poc/InnhentDNummer"/>
-  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="SED.wsdl" namespace="http://oppgave-poc/SED"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="IdentitetAvklaring.wsdl" namespace="http://oppgave-poc/Person"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="MinIDSetWithPIN.xsd" namespace="http://oppgave-poc"/>
   <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="no/nav/virksomhet/tjenester/oppgave/oppgave.wsdl" namespace="http://nav.no/virksomhet/tjenester/oppgave/v1"/>
   <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="no/nav/virksomhet/gjennomforing/oppgave/oppgave.xsd" namespace="http://nav.no/virksomhet/gjennomforing/oppgave/v1"/>
@@ -23,20 +23,20 @@
     <bpws:variable name="slettOppgaveListeRequest" type="ns8:SlettOppgaveListeRequest" wpc:id="37"/>
   </bpws:variables>
   <bpws:sequence name="HiddenSequence" wpc:id="1073741827">
-    <bpws:receive createInstance="yes" name="MinIDSetWithPINMottatt" operation="avklarIdentitet" partnerLink="AvklareIdentitet" portType="ns0:AvklareIdentitet" wpc:businessRelevant="no" wpc:displayName="MinIDSetWithPIN Mottatt" wpc:id="4" wpc:transactionalBehavior="commitAfter">
+    <bpws:receive createInstance="yes" name="MottaDokument" operation="avklarIdentitet" partnerLink="AvklareIdentitet" portType="ns9:MottaHenvendelse" wpc:businessRelevant="no" wpc:displayName="Motta Dokument" wpc:id="4" wpc:transactionalBehavior="commitAfter">
       <wpc:output>
         <wpc:parameter name="minIDSetWithPIN" variable="minIDSetWithPIN"/>
       </wpc:output>
     </bpws:receive>
-    <bpws:empty name="Arkiver" wpc:businessRelevant="yes" wpc:displayName="Arkiver" wpc:id="41"/>
-    <bpws:invoke name="AvklarIdentitet" operation="validerOgLagreUtenlandskId" partnerLink="SEDPartner" portType="ns4:SED" wpc:businessRelevant="yes" wpc:continueOnError="inherit" wpc:displayName="Avklar identitet" wpc:id="21">
+    <bpws:empty name="ArkiverDokument" wpc:businessRelevant="yes" wpc:displayName="Arkiver dokument" wpc:id="41"/>
+    <bpws:invoke name="AvklarIdentitet" operation="avklarIdentitet" partnerLink="SEDPartner" portType="ns10:IdentitetAvklaring" wpc:businessRelevant="yes" wpc:continueOnError="inherit" wpc:displayName="Avklar identitet" wpc:id="21">
       <wpc:input>
         <wpc:parameter name="minIDSetWithPin" variable="minIDSetWithPIN"/>
       </wpc:input>
       <wpc:output>
         <wpc:parameter name="norskPIN" variable="personId"/>
       </wpc:output>
-      <bpws:catch faultMessageType="ns4:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg" faultName="ns4:norskIdIkkeFunnet" faultVariable="norskIdIkkeFunnetVariable" wpc:displayName="Norsk Id ikke funnet" wpc:id="22" wpc:variableId="23">
+      <bpws:catch faultMessageType="ns10:avklarIdentitet_norskIdIkkeFunnetMsg" faultName="ns10:norskIdIkkeFunnet" faultVariable="norskIdIkkeFunnetVariable" wpc:displayName="Norsk Id ikke funnet" wpc:id="22" wpc:variableId="23">
         <bpws:sequence name="HiddenSequence1" wpc:id="1073741850">
           <bpws:assign name="AssignOpprettOppgaveRequest" wpc:displayName="Assign opprettOppgaveRequest" wpc:id="27">
             <bpws:copy>
@@ -140,7 +140,7 @@
         </bpws:sequence>
       </bpws:catch>
     </bpws:invoke>
-    <bpws:empty name="Journalfør" wpc:businessRelevant="yes" wpc:displayName="Journalfør" wpc:id="42"/>
+    <bpws:empty name="JournalførDokument" wpc:businessRelevant="yes" wpc:displayName="Journalfør dokument" wpc:id="42"/>
     <bpws:empty name="BesluttVidereBehandling" wpc:businessRelevant="yes" wpc:displayName="Beslutt videre behandling" wpc:id="43"/>
   </bpws:sequence>
 </bpws:process>

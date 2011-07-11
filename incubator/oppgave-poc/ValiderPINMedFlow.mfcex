@@ -4,7 +4,7 @@
     <extensions>
       <extendedObject href="ValiderPINMedFlow.mfc#//@interfaceMediationFlow"/>
       <extensionObject xsi:type="model:MediationFlowUIExtension" saveAsMultipleFiles="false">
-        <messageFlowUI autoLayout="true" id="{http://oppgave-poc/SED}SED:validerOgLagreUtenlandskId::request"/>
+        <messageFlowUI autoLayout="true" id="{http://oppgave-poc/Person}IdentitetAvklaring:avklarIdentitet::request"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>
@@ -12,7 +12,7 @@
     <extensions>
       <extendedObject href="ValiderPINMedFlow.mfc#//@interfaceMediationFlow"/>
       <extensionObject xsi:type="sb:StickyDocument">
-        <stickyBoard id="{http://oppgave-poc/SED}SED:validerOgLagreUtenlandskId::request"/>
+        <stickyBoard id="{http://oppgave-poc/Person}IdentitetAvklaring:avklarIdentitet::request"/>
       </extensionObject>
     </extensions>
   </extensionmodel:ExtensionMap>

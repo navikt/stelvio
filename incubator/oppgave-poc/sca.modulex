@@ -14,7 +14,7 @@
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" xmi:id="ModuleExtension_1309944751343" autoLayout="true"/>
     </extensions>
     <extensions xmi:id="Extension_1309944751346">
-      <extendedObject href="AvklareIdentitet.component#//@Component"/>
+      <extendedObject href="MottaHenvendelse.component#//@Component"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" xmi:id="NodeExtension_1309944751345" unknown="false" visible="true" x="211" y="88"/>
     </extensions>
     <extensions xmi:id="Extension_1309944751347">
