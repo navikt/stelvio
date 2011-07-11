@@ -2012,6 +2012,7 @@ incubator/oppgave-poc/HTMJAXWSService-soapui-project.xml -text
 incubator/oppgave-poc/InnhentDNummer.wsdl -text
 incubator/oppgave-poc/META-INF/MANIFEST.MF -text
 incubator/oppgave-poc/MinIDSetWithPIN.xsd -text
+incubator/oppgave-poc/MottaHenvendelse.export -text
 incubator/oppgave-poc/OppgaveWSIMP.import -text
 incubator/oppgave-poc/PersonSCAIMP.import -text
 incubator/oppgave-poc/SED.wsdl -text
@@ -2020,6 +2021,8 @@ incubator/oppgave-poc/ValiderPINMedFlow.medflow -text
 incubator/oppgave-poc/ValiderPINMedFlow.mfc -text
 incubator/oppgave-poc/ValiderPINMedFlow.mfcex -text
 incubator/oppgave-poc/nav-tjeneste-oppgave_OppgaveWSEXP.wsdl -text
+incubator/oppgave-poc/oppgave-poc_MottaHenvendelse.wsdl -text
+incubator/oppgave-poc/oppgave-poc_WSExport1.wsdl -text
 incubator/oppgave-poc/sca.module -text
 incubator/oppgave-poc/sca.module.attributes -text
 incubator/oppgave-poc/sca.modulex -text

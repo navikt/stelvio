@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="WSExport1_AvklareIdentitetHttp_Service" targetNamespace="http://oppgave-poc/AvklareIdentitet" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://oppgave-poc/AvklareIdentitet" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import location="AvklareIdentitet.wsdl" namespace="http://oppgave-poc/AvklareIdentitet"/>
+  <wsdl:binding name="WSExport1_AvklareIdentitetHttpBinding" type="this:AvklareIdentitet">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="avklarIdentitet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="avklarIdentitetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSExport1_AvklareIdentitetHttpService">
+    <wsdl:port binding="this:WSExport1_AvklareIdentitetHttpBinding" name="WSExport1_AvklareIdentitetHttpPort">
+      <soap:address location="http://localhost:9080/oppgave-pocWeb/sca/WSExport1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

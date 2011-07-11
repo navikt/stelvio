@@ -3,10 +3,9 @@
 	<name>oppgave-poc</name>
 	<comment></comment>
 	<projects>
-		<project>nav-lib-frg</project>
 		<project>nav-oppgave-tjenestespesifikasjon</project>
+		<project>nav-lib-frg</project>
 		<project>oppgave-pocApp</project>
-		<project>oppgave-pocWeb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

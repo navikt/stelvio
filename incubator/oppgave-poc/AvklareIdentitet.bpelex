@@ -3,7 +3,7 @@
   <extensionmodel:ExtensionMap namespace="http://com.ibm.wbit.bpel.ui/">
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#/"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1310116655808" autoLayout="true" maxWpcId="43" minWpcId="0"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1310382929146" autoLayout="true" maxWpcId="43" minWpcId="0"/>
     </extensions>
     <extensions>
       <extendedObject href="AvklareIdentitet.bpel#//@activity"/>
