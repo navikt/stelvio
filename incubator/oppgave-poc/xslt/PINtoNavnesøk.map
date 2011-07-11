@@ -15,7 +15,7 @@
         <expression>
             <input path="validerOgLagreUtenlandskId/minIDSetWithPin/birthDate" var="birthDate"/>
             <output path="finnPerson/finnPersonRequest/navnesok/datoFodt"/>
-            <code lang="xpath">concat($birthDate, 'T00.00.00.0Z')</code>
+            <code lang="xpath">concat($birthDate, 'T00:00:00.0Z')</code>
         </expression>
         <move>
             <input path="validerOgLagreUtenlandskId/minIDSetWithPin/gender"/>
