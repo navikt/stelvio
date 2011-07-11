@@ -2033,8 +2033,8 @@ incubator/oppgave-poc/xslt/IdentIkkeFunnet.map -text
 incubator/oppgave-poc/xslt/IdentIkkeFunnet.xsl -text
 incubator/oppgave-poc/xslt/Ingen_treff_på_finnPerson.map -text
 incubator/oppgave-poc/xslt/Ingen_treff_på_finnPerson.xsl -text
-incubator/oppgave-poc/xslt/PINtoFnrSøk1.map -text
-incubator/oppgave-poc/xslt/PINtoFnrSøk1.xsl -text
+incubator/oppgave-poc/xslt/PINtoFnrSøk.map -text
+incubator/oppgave-poc/xslt/PINtoFnrSøk.xsl -text
 incubator/oppgave-poc/xslt/PINtoNavnesøk.map -text
 incubator/oppgave-poc/xslt/PINtoNavnesøk.xsl -text
 incubator/oppgave-poc/xslt/PersonIkkeFunnetToNavnesøk.map -text

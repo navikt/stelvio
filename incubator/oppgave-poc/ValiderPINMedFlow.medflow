@@ -122,7 +122,7 @@
         <outTerminals terminalNodeID="OutTerminal.default" type="CompositeType_4"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
         <outTerminals terminalNodeID="OutTerminal.dynamic:match:match1" dynamic="true" label="true" longDescription="" type="CompositeType_4"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match2" dynamic="true" label="ingenTreff" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:match:match2" dynamic="true" label="ingenTreff" longDescription="" type="CompositeType_4"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
         <translation xmi:type="utility:ConstantString" string="Mer enn ett resultat returnert"/>
       </nodes>
@@ -183,7 +183,7 @@
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_9"/>
         <translation xmi:type="utility:ConstantString" string="hent basert på fnr"/>
       </nodes>
-      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_5" name="PINtoFnrSøk1" root="/" XSLTransform="xslt/PINtoFnrSøk1.xsl" XMXMap="xslt/PINtoFnrSøk1.map" SMOVersion="SMO61">
+      <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_5" name="PINtoFnrSøk1" root="/" XSLTransform="xslt/PINtoFnrSøk.xsl" XMXMap="xslt/PINtoFnrSøk.map" SMOVersion="SMO61">
         <location x="419" y="724"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_9"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
@@ -218,8 +218,8 @@
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="XSLTransformation_7" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="XSLTransformation_3" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="XSLTransformation_8" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.dynamic:match:match2" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="MessageFilter_2" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="Fail_1" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="Fail_1" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="MessageFilter_2" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="XSLTransformation_4" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:finnPerson_faultPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="Fail_2" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:finnPerson_faultFinnPersonMsg" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="Fail_1" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
@@ -231,8 +231,8 @@
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_18" targetNode="Fail_1" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_19" targetNode="InputFault_1" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:validerOgLagreUtenlandskId_norskIdIkkeFunnetMsg"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_20" targetNode="Fail_1" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_21" targetNode="XSLTransformation_6" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_22" targetNode="Fail_1" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_21" targetNode="Fail_1" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_22" targetNode="XSLTransformation_6" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_23" targetNode="XSLTransformation_2" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:hentPerson_faultPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_24" targetNode="Fail_1" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_25" targetNode="ServiceInvoke_2" sourceNode="XSLTransformation_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
