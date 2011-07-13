@@ -2000,6 +2000,7 @@ incubator/oppgave-poc/.settings/org.eclipse.wst.common.component -text
 incubator/oppgave-poc/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 incubator/oppgave-poc/.settings/org.eclipse.wst.validation.prefs -text
 incubator/oppgave-poc/.settings/org.eclipse.wst.ws.service.policy.prefs -text
+incubator/oppgave-poc/AvklarIdentitet.component -text
 incubator/oppgave-poc/HTMJAXWSService-soapui-project.xml -text
 incubator/oppgave-poc/IdentitetAvklaring.wsdl -text
 incubator/oppgave-poc/InnhentDNummer.wsdl -text
@@ -2016,7 +2017,6 @@ incubator/oppgave-poc/MottaHenvendelseTask1.itelex -text
 incubator/oppgave-poc/MottaHenvendelse_bpel.mon -text
 incubator/oppgave-poc/OppgaveWSIMP.import -text
 incubator/oppgave-poc/PersonSCAIMP.import -text
-incubator/oppgave-poc/ValiderPINMedFlow.component -text
 incubator/oppgave-poc/ValiderPINMedFlow.medflow -text
 incubator/oppgave-poc/ValiderPINMedFlow.mfc -text
 incubator/oppgave-poc/ValiderPINMedFlow.mfcex -text

@@ -12,8 +12,13 @@
 			<xsd:element minOccurs="0" name="birthDate"
 				type="xsd:date">
 			</xsd:element>
-			<xsd:element minOccurs="0" name="gender"
-				type="xsd:string">
+			<xsd:element minOccurs="0" name="gender">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="M"></xsd:enumeration>
+						<xsd:enumeration value="K"></xsd:enumeration>
+					</xsd:restriction>
+				</xsd:simpleType>
 			</xsd:element>
 			<xsd:element minOccurs="0" name="familyNameAtBirth"
 				type="xsd:string">

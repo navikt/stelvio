@@ -85,7 +85,7 @@
                 <xsl:value-of select="in:avklarIdentitet/minIDSetWithPin/familyName"/>
               </etternavn>
             </xsl:if>
-            <!-- a simple data mapping: "in:avklarIdentitet/minIDSetWithPin/gender"(string) to "kjonn"(string) -->
+            <!-- a simple data mapping: "in:avklarIdentitet/minIDSetWithPin/gender"(<string>) to "kjonn"(string) -->
             <xsl:if test="in:avklarIdentitet/minIDSetWithPin/gender">
               <kjonn>
                 <xsl:value-of select="in:avklarIdentitet/minIDSetWithPin/gender"/>
@@ -123,7 +123,7 @@
               <xsl:value-of select="$body/in:avklarIdentitet/minIDSetWithPin/familyName"/>
             </etternavn>
           </xsl:if>
-          <!-- a simple data mapping: "$body/in:avklarIdentitet/minIDSetWithPin/gender"(string) to "kjonn"(string) -->
+          <!-- a simple data mapping: "$body/in:avklarIdentitet/minIDSetWithPin/gender"(<string>) to "kjonn"(string) -->
           <xsl:if test="$body/in:avklarIdentitet/minIDSetWithPin/gender">
             <kjonn>
               <xsl:value-of select="$body/in:avklarIdentitet/minIDSetWithPin/gender"/>
