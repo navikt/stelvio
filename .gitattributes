@@ -4202,6 +4202,8 @@ int/maven/plugins/maven-datapower-plugin/pom.xml -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDataPowerMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/AbstractDeviceMgmtMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/CleanFilesMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/CreateDomainMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/DeleteDomainMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportConfigMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportFilesMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/RestartDomainMojo.java -text svneol=unset#text/plain
