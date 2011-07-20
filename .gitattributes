@@ -4227,7 +4227,6 @@ int/maven/plugins/maven-project-interchange-plugin/src/main/java/no/nav/maven/pl
 int/maven/plugins/maven-project-interchange-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-properties-plugin/pom.xml -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/Delimter.java -text
-int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/DetectUnresolvedPropertiesInDirMojo.java -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/DetectUnresolvedPropertiesMojo.java -text
 int/maven/plugins/maven-properties-plugin/src/main/java/no/nav/maven/plugins/LoadPropertiesMojo.java -text
 int/maven/plugins/maven-rsa-transform-plugin/pom.xml -text
