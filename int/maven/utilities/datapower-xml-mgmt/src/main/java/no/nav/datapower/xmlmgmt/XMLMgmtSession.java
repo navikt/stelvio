@@ -20,6 +20,7 @@ import no.nav.datapower.xmlmgmt.command.CreateDirCommand;
 import no.nav.datapower.xmlmgmt.command.CreateDomainCommand;
 import no.nav.datapower.xmlmgmt.command.DeleteDomainCommand;
 import no.nav.datapower.xmlmgmt.command.DoImportCommand;
+import no.nav.datapower.xmlmgmt.command.GetStatusCommand;
 import no.nav.datapower.xmlmgmt.command.RemoveDirCommand;
 import no.nav.datapower.xmlmgmt.command.RestartThisDomainCommand;
 import no.nav.datapower.xmlmgmt.command.SaveConfigCommand;
@@ -263,6 +264,20 @@ public class XMLMgmtSession {
 
 	public String importXMLConfig(File configFile) throws XMLMgmtException {
 		return importConfig(configFile, ImportFormat.XML);
+	}
+	
+	public String getStatus() throws XMLMgmtException {
+		XMLMgmtRequest request = createRequest();
+		request.addCommand(new GetStatusCommand());
+		String response = doRequest(request);
+		return response;
+	}
+	
+	public String getStatus(String objectClass) throws XMLMgmtException {
+		XMLMgmtRequest request = createRequest();
+		request.addCommand(new GetStatusCommand(objectClass));
+		String response = doRequest(request);
+		return response;
 	}
 
 	private String doRequest(XMLMgmtRequest request) throws XMLMgmtException {
