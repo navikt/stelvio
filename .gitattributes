@@ -4206,6 +4206,7 @@ int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/Crea
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/DeleteDomainMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportConfigMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ImportFilesMojo.java -text
+int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/ObjectStatusMojo.java -text
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/RestartDomainMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/main/java/no/nav/maven/plugins/SaveConfigMojo.java -text svneol=unset#text/plain
 int/maven/plugins/maven-datapower-plugin/src/test/java/no/nav/maven/plugins/DataPowerPluginIntegrationTest.java -text svneol=unset#text/plain
