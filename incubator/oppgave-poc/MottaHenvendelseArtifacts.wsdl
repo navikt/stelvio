@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="AvklareIdentitet" targetNamespace="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns="http://oppgave-poc/MottaHenvendelse" xmlns:ns0="http://oppgave-poc/SED" xmlns:ns1="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:ns2="http://oppgave-poc/Person" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="AvklareIdentitet" targetNamespace="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns="http://oppgave-poc/MottaHenvendelse" xmlns:ns0="http://oppgave-poc/SED" xmlns:ns1="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:ns2="http://oppgave-poc/Person" xmlns:ns3="http://oppgave-poc/InnhentDNummer" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <plnk:partnerLinkType name="AvklareIdentitetPLT">
     <plnk:role name="Interface">
       <plnk:portType name="ns:MottaHenvendelse"/>
@@ -14,7 +14,13 @@
       <plnk:portType name="ns1:Oppgave"/>
     </plnk:role>
   </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="InnhentIdPartnerPLT">
+    <plnk:role name="Reference">
+      <plnk:portType name="ns3:InnhentDNummer"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
     <wsdl:import location="MottaHenvendelse.wsdl" namespace="http://oppgave-poc/MottaHenvendelse"/>
     <wsdl:import location="IdentitetAvklaring.wsdl" namespace="http://oppgave-poc/Person"/>
     <wsdl:import location="no/nav/virksomhet/tjenester/oppgave/oppgave.wsdl" namespace="http://nav.no/virksomhet/tjenester/oppgave/v1"/>
+    <wsdl:import location="InnhentDNummer.wsdl" namespace="http://oppgave-poc/InnhentDNummer"/>
 </wsdl:definitions>

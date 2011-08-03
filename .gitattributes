@@ -2003,7 +2003,10 @@ incubator/oppgave-poc/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/oppgave-poc/AvklarIdentitet.component -text
 incubator/oppgave-poc/HTMJAXWSService-soapui-project.xml -text
 incubator/oppgave-poc/IdentitetAvklaring.wsdl -text
+incubator/oppgave-poc/InnhentDNummer.tel -text
+incubator/oppgave-poc/InnhentDNummer.telex -text
 incubator/oppgave-poc/InnhentDNummer.wsdl -text
+incubator/oppgave-poc/InnhentId.component -text
 incubator/oppgave-poc/META-INF/MANIFEST.MF -text
 incubator/oppgave-poc/MinIDSetWithPIN.xsd -text
 incubator/oppgave-poc/MottaHenvendelse.bpel -text
