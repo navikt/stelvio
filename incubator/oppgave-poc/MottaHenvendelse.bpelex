@@ -3,7 +3,7 @@
   <extensionmodel:ExtensionMap namespace="http://com.ibm.wbit.bpel.ui/">
     <extensions>
       <extendedObject href="MottaHenvendelse.bpel#/"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1312351615536" autoLayout="true" maxWpcId="45" minWpcId="0"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1310390544026" autoLayout="true" maxWpcId="43" minWpcId="0"/>
     </extensions>
     <extensions>
       <extendedObject href="MottaHenvendelse.bpel#//@activity"/>
@@ -18,6 +18,10 @@
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
     </extensions>
     <extensions>
+      <extendedObject href="MottaHenvendelse.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.3"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
+    </extensions>
+    <extensions>
       <extendedObject href="MottaHenvendelse.bpel#//@activity/@activities.2"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
     </extensions>
@@ -27,7 +31,7 @@
     </extensions>
     <extensions>
       <extendedObject href="MottaHenvendelse.bpel#//@activity/@activities.2/@faultHandler"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:FaultHandlerExtension"/>
+      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:FaultHandlerExtension" collapsed="true"/>
     </extensions>
     <extensions>
       <extendedObject href="MottaHenvendelse.bpel#//@activity/@activities.2/@faultHandler/@catch.0"/>
@@ -131,10 +135,6 @@
     </extensions>
     <extensions>
       <extendedObject href="MottaHenvendelse.bpel#//@activity/@activities.4"/>
-      <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="MottaHenvendelse.bpel#//@activity/@activities.2/@faultHandler/@catch.0/@activity/@activities.3"/>
       <extensionObject xsi:type="com.ibm.wbit.bpel.ui.uiextensionmodel:ActivityExtension" x="-2147483648"/>
     </extensions>
   </extensionmodel:ExtensionMap>
