@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
-Class-Path: nav-lib-frg.jar 
+Class-Path: stelvio-commons-lib.jar 
+ nav-lib-frg.jar 
  nav-oppgave-tjenestespesifikasjon.jar
 Created-By: 1.5.0 (IBM Corporation)
 

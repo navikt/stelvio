@@ -5,6 +5,7 @@
 	<projects>
 		<project>nav-oppgave-tjenestespesifikasjon</project>
 		<project>nav-lib-frg</project>
+		<project>stelvio-commons-lib</project>
 		<project>oppgave-pocApp</project>
 	</projects>
 	<buildSpec>
