@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="AvklareIdentitet" targetNamespace="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns="http://oppgave-poc/MottaHenvendelse" xmlns:ns0="http://oppgave-poc/SED" xmlns:ns1="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:ns2="http://oppgave-poc/Person" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="AvklareIdentitet" targetNamespace="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:ns="http://oppgave-poc/MottaHenvendelse" xmlns:ns0="http://oppgave-poc/SED" xmlns:ns1="http://nav.no/virksomhet/tjenester/oppgave/v1" xmlns:ns2="http://oppgave-poc/Person" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://oppgave-poc/AvklareIdentitetArtifacts" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <plnk:partnerLinkType name="AvklareIdentitetPLT">
     <plnk:role name="Interface">
       <plnk:portType name="ns:MottaHenvendelse"/>
