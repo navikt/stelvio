@@ -10,8 +10,6 @@
 	<name>maven-configure-wps-dev-pom</name>
 
 	<properties>
-		<!-- adminUser>srvpensjon</adminUser>
-		<adminPasswd>Ash5SoxP</adminPasswd -->
 		<manageProfilesLocation>${was.home}/bin
 		</manageProfilesLocation>
 		<profilePathRoot>${was.home}/profiles
