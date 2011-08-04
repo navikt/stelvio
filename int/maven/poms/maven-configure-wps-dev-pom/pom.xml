@@ -26,11 +26,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>no.nav.maven.configure-wps-dev.wsadmin
-			</groupId>
-			<artifactId>wsadmin-configure-wps-dev
-			</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>no.nav.testsenter-tools</groupId>
+			<artifactId>maven-configure-wps-dev-plugin</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
