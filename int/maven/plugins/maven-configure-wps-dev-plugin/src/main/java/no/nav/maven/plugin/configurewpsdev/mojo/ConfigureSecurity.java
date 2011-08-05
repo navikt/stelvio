@@ -28,7 +28,14 @@ public class ConfigureSecurity extends AbstractWSAdminMojo {
 		Commandline.Argument arg2 = new Commandline.Argument();
 		arg2.setLine(targetFolder.toString());
 		commandLine.addArg(arg2);
+		Commandline.Argument arg3 = new Commandline.Argument();
+		arg3.setLine(adminUser);
+		commandLine.addArg(arg3);
+		Commandline.Argument arg4 = new Commandline.Argument();
+		arg4.setLine(adminPasswd);
+		commandLine.addArg(arg4);
 		executeCommand(commandLine);
+		
 
 	}
 
