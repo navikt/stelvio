@@ -127,7 +127,7 @@
 							<goal>execute-commandline</goal>
 						</goals>
 						<configuration>
-							<executable>${manageProfilesLocation}\manageProfiles.bat
+							<executable>${manageProfilesLocation}/manageProfiles.bat
 							</executable>
 							<arguments>-create -profileName wps -profilePath ${wpsProfilePath} -templatePath ${wpsTemplatePath} -enableAdminSecurity true -adminPassword ${adminPasswd}	-adminUserName ${adminUser}	-dbDelayConfig false -configureBPC true -dbType DERBY_EMBEDDED -dbCommonForME false -dbCreateNew true -configureBSpace true	-configureBRM false -cdbSchemaName WPS -omitAction defaultAppDeployAndConfig -isDeveloperServer -samplesPassword ${adminPasswd}</arguments>
 						</configuration>
@@ -139,7 +139,7 @@
 							<goal>execute-commandline</goal>
 						</goals>
 						<configuration>
-							<executable>${wpsProfilePath}\bin\startServer.bat
+							<executable>${wpsProfilePath}/bin/startServer.bat
 							</executable>
 							<arguments>server1</arguments>
 						</configuration>
@@ -165,7 +165,7 @@
 							<goal>execute-commandline</goal>
 						</goals>
 						<configuration>
-							<executable>${wpsProfilePath}\bin\stopServer.bat
+							<executable>${wpsProfilePath}/bin/stopServer.bat
 							</executable>
 							<arguments>server1 -username ${adminUser} -password	${adminPasswd}</arguments>
 						</configuration>
@@ -177,7 +177,7 @@
 							<goal>execute-commandline</goal>
 						</goals>
 						<configuration>
-							<executable>${wpsProfilePath}\bin\startServer.bat
+							<executable>${wpsProfilePath}/bin/startServer.bat
 							</executable>
 							<arguments>server1</arguments>
 						</configuration>
