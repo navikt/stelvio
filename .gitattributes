@@ -4958,6 +4958,7 @@ int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.classpath
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.compatibility -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.j2ee -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.project -text svneol=unset#text/plain
+int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jdt.apt.core.prefs -text
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jdt.core.prefs -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.jst.common.project.facet.core.prefs -text svneol=unset#text/plain
 int/stelvio-operation-systemavailability/StelvioSystemAvailabilityWeb/.settings/org.eclipse.wst.common.component -text
