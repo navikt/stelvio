@@ -36,7 +36,7 @@
 		</dependency>
 	</dependencies>
 
-	<!--
+	
 	<distributionManagement>
 		<repository>
 			<id>m2internal</id>
@@ -50,7 +50,7 @@
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
-	-->
+	
 	<!--
 	<distributionManagement>
 		<repository>
