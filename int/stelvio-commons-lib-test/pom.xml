@@ -36,6 +36,20 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<repository>
+			<id>m2internal</id>
+			<name>NAV Maven2 Internal Repository</name>
+			<url>scp://maven.adeo.no/nexus/content/groups/public</url>
+		</repository>
+		<snapshotRepository>
+			<id>m2snapshot</id>
+			<name>NAV Maven2 Snapshot Repository</name>
+			<url>dav:http://maven.adeo.no/nexus/content/groups/public-snapshots</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+	
 	<scm>
 		<connection>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/stelvio-commons-lib-test
