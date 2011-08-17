@@ -51,7 +51,7 @@
 		</snapshotRepository>
 	</distributionManagement>
 	-->
-	
+	<!--
 	<distributionManagement>
 		<repository>
 			<id>m2internal</id>
@@ -65,6 +65,7 @@
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
+	-->
 	
 	<scm>
 		<connection>
