@@ -56,7 +56,9 @@
 		</snapshotRepository>
 	</distributionManagement>
 	-->
-	<!-- -->
+	
+	<!-- Også denne gir 400 Bad Request ved override av settings.xml + Repository ID til "m2snapshot" -->
+	<!--
 	<distributionManagement>
 		<repository>
 			<id>m2internal</id>
@@ -70,7 +72,7 @@
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
-	
+	-->
 	
 	<scm>
 		<connection>
