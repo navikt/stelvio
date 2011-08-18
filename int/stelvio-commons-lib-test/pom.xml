@@ -35,44 +35,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<!-- I Hudson er jobben konfigurert med deploy mot dav:http://maven.adeo.no/nexus/content/groups/public-snapshots -->
-	<!-- Begge gir gir 401 Unauthorized ved test. -->
-	
-	<!-- Denne gir 400 Bad request hvis man har Hudson-jobb som overrider hvilken settings.xml som benyttes,
-		 samt satt deploy Repository ID til "m2snapshot" (i stedet for blank) -->
-	<!--
-	<distributionManagement>
-		<repository>
-			<id>m2internal</id>
-			<name>NAV Maven2 Internal Repository</name>
-			<url>scp://maven.adeo.no/nexus/content/groups/public</url>
-		</repository>
-		<snapshotRepository>
-			<id>m2snapshot</id>
-			<name>NAV Maven2 Snapshot Repository</name>
-			<url>dav:http://maven.adeo.no/nexus/content/groups/public-snapshots</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
-	</distributionManagement>
-	-->
-	
-	<!-- Også denne gir 400 Bad Request ved override av settings.xml + Repository ID til "m2snapshot" -->
-	<!--
-	<distributionManagement>
-		<repository>
-			<id>m2internal</id>
-			<name>NAV Maven2 Internal Repository</name>
-			<url>dav:http://maven.adeo.no/nexus/content/repositories/m2internal</url>
-		</repository>
-		<snapshotRepository>
-			<id>m2snapshot</id>
-			<name>NAV Maven2 Snapshot Repository</name>
-			<url>http://maven.adeo.no/nexus/content/repositories/m2snapshot</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
-	</distributionManagement>
-	-->
 	
 	<scm>
 		<connection>
