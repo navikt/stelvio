@@ -401,9 +401,6 @@ public class DeployOrBundleMojo extends AbstractMojo {
 	private static class StreamConsumerChain implements StreamConsumer {
 		private final Collection<StreamConsumer> chain = new ArrayList<StreamConsumer>();
 
-		public StreamConsumerChain() {
-		}
-
 		public StreamConsumerChain(StreamConsumer streamConsumer) {
 			add(streamConsumer);
 		}
