@@ -52,17 +52,17 @@
 							<artifact>
 								<groupId>no.nav.esb</groupId>
 								<artifactId>ekstern-pensjon-modules-ci</artifactId>
-								<version>${ekstern-pensjon-modules-ci}</version>
+								<version>${ekstern-pensjon-modules-ci-version}</version>
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>pensjon-modules</artifactId>
-								<version>${pensjon-modules-version}</version>
+								<artifactId>esb-modules-ci</artifactId>
+								<version>${esb-modules-ci-version}</version>
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>pensjon-prosess-modules</artifactId>
-								<version>${pensjon-prosess-modules-version}</version>
+								<artifactId>pensjon-prosess-modules-ci</artifactId>
+								<version>${pensjon-prosess-modules-ci-version}</version>
 							</artifact>
 						</artifacts>
 					</configuration>
