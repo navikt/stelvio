@@ -61,7 +61,7 @@
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>pensjon-prosess-modules-ci</artifactId>
+								<artifactId>pensjon-prosess-modules-c</artifactId>
 								<version>${pensjon-prosess-modules-ci-version}</version>
 							</artifact>
 						</artifacts>
