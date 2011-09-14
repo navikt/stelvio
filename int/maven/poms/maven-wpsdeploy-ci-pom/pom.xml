@@ -13,7 +13,13 @@
 	<packaging>deployable-artifact</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>POM for CI deployments</name>
-
+	
+	<properties>
+		<wpsdeployVersion>1.13</wpsdeployVersion>
+		<passwordVault>${user.home}/vault/</passwordVault>
+		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>no.nav.maven.support</groupId>
@@ -34,6 +40,49 @@
 					maven-propertiesgenerator-plugin
 				</artifactId>
 			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<id>interpolate-passwords</id>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<!-- Specifies where the property files end up after interpolation -->
+							<outputDirectory>${project.build.directory}/bus-config</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${tmpExtractDir}</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			 <plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-properties-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<!-- Load properties from file -->
+					<execution>
+						<id>load-property-files</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>load-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>${passwordVault}/${envClass}/${environment}-env.properties</file>
+								<file>${passwordVault}/${envClass}/application.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>
@@ -41,7 +90,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wpsdeploy-plugin</artifactId>
-					<version>1.13</version>
+					<version>${wpsdeployVersion}</version> 
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -79,41 +128,28 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-confluence-plugin</artifactId>
-					<version>1.20</version>
+					<version>1.21</version>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
-					<artifactId>
-						maven-propertiesgenerator-plugin
-					</artifactId>
+					<artifactId>maven-propertiesgenerator-plugin</artifactId>
 					<version>1.6</version>
 					<configuration>
 						<templateDir>
-							${basedir}/target/bus-config/templates
+							${tmpExtractDir}/templates
 						</templateDir>
 						<environmentName>
 							${environment}
 						</environmentName>
 						<outputDir>
-							${basedir}/target/bus-config/app_props
+							${tmpExtractDir}/app_props
 						</outputDir>
 						<environmentDir>
-							${basedir}/target/bus-config/environments
+							${tmpExtractDir}/environments
 						</environmentDir>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom</developerConnection>
-	</scm>
-	<properties>
-		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-ci-pom
-		</scm.root>
-		<scm.connection>${scm.root}</scm.connection>
-	</properties>
 </project>
