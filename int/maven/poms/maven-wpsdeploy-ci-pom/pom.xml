@@ -33,7 +33,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wpsdeploy-plugin</artifactId>
-					<version>1.7</version>
+					<version>1.13</version>
 					<configuration>
 						<moduleConfigurationArtifactName>
 							busconfiguration
@@ -51,8 +51,8 @@
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>pensjon-modules</artifactId>
-								<version>${pensjon-modules-version}</version>
+								<artifactId>ekstern-pensjon-modules-ci</artifactId>
+								<version>${ekstern-pensjon-modules-ci}</version>
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
