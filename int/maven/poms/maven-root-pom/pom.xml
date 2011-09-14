@@ -5,7 +5,7 @@
 	<groupId>no.stelvio.maven.poms</groupId>
 	<artifactId>maven-root-pom</artifactId>
 	<packaging>pom</packaging>
-	<version>1.2.2</version>
+	<version>1.2.3-SNAPSHOT</version>
 	<name>Stelvio Framework Maven Root POM</name>
 
 	<build>
@@ -270,9 +270,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-root-pom-1.2.2
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-root-pom
 		</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-root-pom-1.2.2
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-root-pom
 		</developerConnection>
 	</scm>
 </project>
