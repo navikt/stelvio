@@ -32,7 +32,7 @@
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_4">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.w3.org/2001/XMLSchema}anyType"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSDataRequestMsg"/>
         </elements>
         <elements id="sharedContext">
           <type xmi:type="type:XSDType" xsiType="{http://nav-tjeneste-person/no/nav/asbo}TPSPersonSharedContext"/>
@@ -40,7 +40,7 @@
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_5">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSDataRequestMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSDataResponseMsg"/>
         </elements>
         <elements id="sharedContext">
           <type xmi:type="type:XSDType" xsiType="{http://nav-tjeneste-person/no/nav/asbo}TPSPersonSharedContext"/>
@@ -48,7 +48,7 @@
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_6">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSDataResponseMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSData_faultTPSPersonIkkeFunnetMsg"/>
         </elements>
         <elements id="sharedContext">
           <type xmi:type="type:XSDType" xsiType="{http://nav-tjeneste-person/no/nav/asbo}TPSPersonSharedContext"/>
@@ -56,7 +56,7 @@
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_7">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSData_faultTPSPersonIkkeFunnetMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSData_faultTPSFinnPersonMsg"/>
         </elements>
         <elements id="sharedContext">
           <type xmi:type="type:XSDType" xsiType="{http://nav-tjeneste-person/no/nav/asbo}TPSPersonSharedContext"/>
@@ -64,7 +64,7 @@
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_8">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSData_faultTPSFinnPersonMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg"/>
         </elements>
         <elements id="sharedContext">
           <type xmi:type="type:XSDType" xsiType="{http://nav-tjeneste-person/no/nav/asbo}TPSPersonSharedContext"/>
@@ -72,155 +72,164 @@
       </type>
       <type xmi:type="type:CompositeType" xmi:id="CompositeType_9">
         <elements id="message">
-          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://nav-lib-frg-tps/no/nav/lib/frg/inf}hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg"/>
+          <type xmi:type="type:WSDLMessageType" wsdlMessage="{http://www.w3.org/2001/XMLSchema}anyType"/>
         </elements>
         <elements id="sharedContext">
           <type xmi:type="type:XSDType" xsiType="{http://nav-tjeneste-person/no/nav/asbo}TPSPersonSharedContext"/>
         </elements>
       </type>
       <nodes xmi:type="Input.mednode:Input" xmi:id="Input_1" name="Person_hentPerson_Input" sharedContext="{http://nav-tjeneste-person/no/nav/asbo}TPSPersonSharedContext">
-        <location x="10" y="204"/>
+        <location x="10" y="228"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="hentPerson : Person"/>
       </nodes>
       <nodes xmi:type="InputResponse.mednode:InputResponse" xmi:id="InputResponse_1" name="Person_hentPerson_InputResponse">
-        <location x="1112" y="124"/>
+        <location x="1083" y="228"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="hentPerson : Person"/>
       </nodes>
       <nodes xmi:type="InputFault.mednode:InputFault" xmi:id="InputFault_1" name="Person_hentPerson_InputFault">
-        <location x="1112" y="228"/>
+        <location x="1083" y="332"/>
         <inTerminals terminalNodeID="InTerminal.dynamic:in:hentPerson_PersonIkkeFunnet" dynamic="true" explicitType="true" label="hentPerson_PersonIkkeFunnet" longDescription="" type="CompositeType_3"/>
         <translation xmi:type="utility:ConstantString" string="hentPerson : Person"/>
       </nodes>
       <nodes xmi:type="FanOut.mednode:FanOut" xmi:id="FanOut_1" name="FanOut1">
-        <location x="268" y="204"/>
+        <location x="190" y="228"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_1"/>
         <outTerminals terminalNodeID="OutTerminal.noOccurrences" type="CompositeType_1"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="FanOut1"/>
       </nodes>
       <nodes xmi:type="ServiceInvoke.mednode:ServiceInvoke" xmi:id="ServiceInvoke_1" name="ServiceInvokeTPSS004" referenceName="TPSPartner" operationName="hentTPSData">
-        <location x="472" y="204"/>
-        <outTerminals terminalNodeID="OutTerminal.timeout" explicitType="true" type="CompositeType_5"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:out" dynamic="true" explicitType="true" label="out" longDescription="" type="CompositeType_6"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSPersonIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_7"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSFinnPersonMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSFinnPersonMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_8"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_9"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_5"/>
+        <location x="405" y="228"/>
+        <outTerminals terminalNodeID="OutTerminal.timeout" explicitType="true" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:out" dynamic="true" explicitType="true" label="out" longDescription="" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSPersonIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_6"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSFinnPersonMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSFinnPersonMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_7"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_8"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
         <translation xmi:type="utility:ConstantString" string="ServiceInvokeTPSS004"/>
       </nodes>
       <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_1" name="HentPerson" root="/body" XSLTransform="no/nav/xslt/HentPerson.xsl" XMXMap="no/nav/xslt/HentPerson.map" SMOVersion="SMO61">
-        <location x="354" y="204"/>
-        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_5"/>
+        <location x="287" y="228"/>
+        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_4"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="HentPerson"/>
       </nodes>
       <nodes xmi:type="MessageSetter.mednode:MessageElementSetter" xmi:id="MessageElementSetter_1" name="LagrePersonTilSharedContext" messageElements.target="%2Fcontext%2Fshared%2FpersonUtland^%2Fcontext%2Fshared%2Fperson" messageElements.type="copy^copy" messageElements.value="%2Fcontext%2Fshared%2FpersonUtland^%2Fbody%2FhentTPSDataResponse%2FtpsPersonDataRes%2FtpsSvar%2FpersonDataS004">
-        <location x="644" y="124"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_6"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_6"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_6"/>
+        <location x="597" y="228"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_5"/>
         <translation xmi:type="utility:ConstantString" string="LagrePersonTilSharedContext"/>
       </nodes>
       <nodes xmi:type="FanIn.mednode:FanIn" xmi:id="FanIn_1" name="FanIn1" fanOutID="FanOut1" count="2">
-        <location x="789" y="124"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_6"/>
-        <outTerminals terminalNodeID="OutTerminal.incomplete" type="CompositeType_6"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_6"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_6"/>
-        <inTerminals terminalNodeID="InTerminal.stop" explicitType="true" type="CompositeType_4"/>
+        <location x="742" y="228"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.incomplete" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_5"/>
+        <inTerminals terminalNodeID="InTerminal.stop" explicitType="true" type="CompositeType_9"/>
         <translation xmi:type="utility:ConstantString" string="FanIn1"/>
       </nodes>
       <nodes xmi:type="ServiceInvoke.mednode:ServiceInvoke" xmi:id="ServiceInvoke_2" name="ServiceInvokeTPSS101" referenceName="TPSPartner" operationName="hentTPSData">
-        <location x="472" y="64"/>
-        <outTerminals terminalNodeID="OutTerminal.timeout" explicitType="true" type="CompositeType_5"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:out" dynamic="true" explicitType="true" label="out" longDescription="" type="CompositeType_6"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSPersonIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_7"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSFinnPersonMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSFinnPersonMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_8"/>
-        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_9"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_5"/>
+        <location x="405" y="88"/>
+        <outTerminals terminalNodeID="OutTerminal.timeout" explicitType="true" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:out" dynamic="true" explicitType="true" label="out" longDescription="" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSPersonIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_6"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSFinnPersonMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSFinnPersonMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_7"/>
+        <outTerminals terminalNodeID="OutTerminal.dynamic:out:hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg" dynamic="true" explicitType="true" label="hentTPSData_faultTPSBrukerprofilIkkeFunnetMsg" longDescription="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." type="CompositeType_8"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
         <translation xmi:type="utility:ConstantString" string="ServiceInvokeTPSS101"/>
       </nodes>
       <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_2" name="HentPersonUtland" root="/body" XSLTransform="no/nav/xslt/HentPersonUtland.xsl" XMXMap="no/nav/xslt/HentPersonUtland.map" SMOVersion="SMO61">
-        <location x="354" y="64"/>
-        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_5"/>
+        <location x="287" y="88"/>
+        <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_4"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_1"/>
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_1"/>
         <translation xmi:type="utility:ConstantString" string="HentPersonUtland"/>
       </nodes>
       <nodes xmi:type="MessageSetter.mednode:MessageElementSetter" xmi:id="MessageElementSetter_2" name="LagrePersonUtlandTilSharedContext" messageElements.target="%2Fcontext%2Fshared%2Fperson^%2Fcontext%2Fshared%2FpersonUtland" messageElements.type="copy^copy" messageElements.value="%2Fcontext%2Fshared%2Fperson^%2Fbody%2FhentTPSDataResponse%2FtpsPersonDataRes%2FtpsSvar%2FpersonDataS101">
-        <location x="644" y="20"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_6"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_6"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_6"/>
+        <location x="597" y="20"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_5"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_5"/>
         <translation xmi:type="utility:ConstantString" string="LagrePersonUtlandTilSharedContext"/>
       </nodes>
       <nodes xmi:type="Fail.mednode:Fail" xmi:id="Fail_1" name="Udeklarert_feil" errorMessage="{4}" path="/context/failInfo/failureString">
-        <location x="644" y="332"/>
-        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_5"/>
+        <location x="597" y="436"/>
+        <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_4"/>
         <translation xmi:type="utility:ConstantString" string="Udeklarert feil"/>
       </nodes>
       <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_3" name="MapPersonOgPersonUtland" root="/" XSLTransform="no/nav/xslt/MergeHentPerson.xsl" XMXMap="no/nav/xslt/MergeHentPerson.map" SMOVersion="SMO61">
-        <location x="875" y="124"/>
+        <location x="828" y="228"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_2"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_6"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_6"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_5"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_5"/>
         <translation xmi:type="utility:ConstantString" string="MapPersonOgPersonUtland"/>
       </nodes>
       <nodes xmi:type="MessageSetter.mednode:MessageElementSetter" xmi:id="MessageElementSetter_3" name="LagreFaultPersonIkkeFunnetTilSharedContext" messageElements.target="%2Fcontext%2Fshared%2Ffault" messageElements.type="copy" messageElements.value="%2Fbody%2FhentTPSData_faultTPSPersonIkkeFunnet">
-        <location x="644" y="228"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_7"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_7"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_7"/>
+        <location x="597" y="332"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_6"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_6"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_6"/>
         <translation xmi:type="utility:ConstantString" string="LagreFaultPersonIkkeFunnetTilSharedContext"/>
       </nodes>
       <nodes xmi:type="XSLTransformation.mednode:XSLTransformation" xmi:id="XSLTransformation_4" name="MapFaultPersonIkkeFunnet" root="/" XSLTransform="no/nav/xslt/MapFaultPersonIkkeFunnet.xsl" XMXMap="no/nav/xslt/MapFaultPersonIkkeFunnet.map" SMOVersion="SMO61">
-        <location x="875" y="228"/>
+        <location x="828" y="332"/>
         <outTerminals terminalNodeID="OutTerminal.out" explicitType="true" type="CompositeType_3"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_9"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_9"/>
         <translation xmi:type="utility:ConstantString" string="MapFaultPersonIkkeFunnet"/>
       </nodes>
-      <nodes xmi:type="Trace.mednode:Trace" xmi:id="Trace_1" name="Trace1" destination="2" file="C:\Temp\WID-trace\person-trace.txt">
-        <location x="185" y="204"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_4"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
-        <translation xmi:type="utility:ConstantString" string="Trace1"/>
+      <nodes xmi:type="Trace.mednode:Trace" xmi:id="Trace_1" name="TraceRequest" enabled="false" destination="2" file="/was_app/logs/esb/trace/hentPerson-request.log">
+        <location x="190" y="124"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_9"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_9"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_9"/>
+        <translation xmi:type="utility:ConstantString" string="TraceRequest"/>
       </nodes>
-      <nodes xmi:type="Trace.mednode:Trace" xmi:id="Trace_2" name="Trace2" destination="2" file="C:\Temp\WID-trace\person-trace.txt">
-        <location x="1030" y="156"/>
-        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_4"/>
-        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_4"/>
-        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_4"/>
-        <translation xmi:type="utility:ConstantString" string="Trace2"/>
+      <nodes xmi:type="Trace.mednode:Trace" xmi:id="Trace_2" name="TraceResponse" enabled="false" destination="2" file="/was_app/logs/esb/trace/hentPerson-response.log">
+        <location x="983" y="260"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_9"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_9"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_9"/>
+        <translation xmi:type="utility:ConstantString" string="TraceResponse"/>
+      </nodes>
+      <nodes xmi:type="Trace.mednode:Trace" xmi:id="Trace_3" name="TraceTPS" enabled="false" destination="2" file="/was_app/logs/esb/trace/hentPerson-TPS.log">
+        <location x="597" y="124"/>
+        <outTerminals terminalNodeID="OutTerminal.out" type="CompositeType_9"/>
+        <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_9"/>
+        <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_9"/>
+        <translation xmi:type="utility:ConstantString" string="TraceTPS"/>
       </nodes>
       <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_1" targetNode="Trace_1" sourceNode="Input_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_2" targetNode="XSLTransformation_1" sourceNode="FanOut_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_3" targetNode="XSLTransformation_2" sourceNode="FanOut_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="MessageElementSetter_1" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="MessageElementSetter_3" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="Fail_1" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="ServiceInvoke_1" sourceNode="XSLTransformation_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="FanIn_1" sourceNode="MessageElementSetter_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="XSLTransformation_3" sourceNode="FanIn_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="XSLTransformation_4" sourceNode="FanIn_1" sourceTerminalName="OutTerminal.incomplete" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="MessageElementSetter_2" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="MessageElementSetter_3" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_13" targetNode="Fail_1" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_14" targetNode="ServiceInvoke_2" sourceNode="XSLTransformation_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_15" targetNode="FanIn_1" sourceNode="MessageElementSetter_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_16" targetNode="InputResponse_1" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_17" targetNode="Trace_2" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_18" targetNode="FanIn_1" sourceNode="MessageElementSetter_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.stop"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_19" targetNode="InputFault_1" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:hentPerson_PersonIkkeFunnet"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_20" targetNode="Trace_2" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_21" targetNode="FanOut_1" sourceNode="Trace_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_2" targetNode="FanOut_1" sourceNode="Input_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_3" targetNode="XSLTransformation_1" sourceNode="FanOut_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_4" targetNode="XSLTransformation_2" sourceNode="FanOut_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_5" targetNode="MessageElementSetter_1" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_6" targetNode="Trace_3" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_7" targetNode="MessageElementSetter_3" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_8" targetNode="Fail_1" sourceNode="ServiceInvoke_1" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_9" targetNode="ServiceInvoke_1" sourceNode="XSLTransformation_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_10" targetNode="FanIn_1" sourceNode="MessageElementSetter_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_11" targetNode="XSLTransformation_3" sourceNode="FanIn_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_12" targetNode="XSLTransformation_4" sourceNode="FanIn_1" sourceTerminalName="OutTerminal.incomplete" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_13" targetNode="MessageElementSetter_2" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_14" targetNode="Trace_3" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_15" targetNode="MessageElementSetter_3" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_16" targetNode="Fail_1" sourceNode="ServiceInvoke_2" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_17" targetNode="ServiceInvoke_2" sourceNode="XSLTransformation_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_18" targetNode="FanIn_1" sourceNode="MessageElementSetter_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_19" targetNode="InputResponse_1" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_20" targetNode="Trace_2" sourceNode="XSLTransformation_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_21" targetNode="FanIn_1" sourceNode="MessageElementSetter_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.stop"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_22" targetNode="InputFault_1" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:hentPerson_PersonIkkeFunnet"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_23" targetNode="Trace_2" sourceNode="XSLTransformation_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -646,61 +655,61 @@
         <inTerminals terminalNodeID="InTerminal.in" explicitType="true" type="CompositeType_21"/>
         <translation xmi:type="utility:ConstantString" string="KunneIkkeEndreAdresse2"/>
       </nodes>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_22" targetNode="MessageFilter_7" sourceNode="Input_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_23" targetNode="MessageFilter_1" sourceNode="ServiceInvoke_3" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_24" targetNode="XSLTransformation_16" sourceNode="ServiceInvoke_3" sourceTerminalName="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_25" targetNode="Fail_3" sourceNode="ServiceInvoke_3" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_26" targetNode="ServiceInvoke_3" sourceNode="XSLTransformation_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_27" targetNode="XSLTransformation_8" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_28" targetNode="MessageElementSetter_5" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match2" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_29" targetNode="MessageElementSetter_6" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match3" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_30" targetNode="MessageElementSetter_7" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match4" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_31" targetNode="XSLTransformation_7" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match5" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_32" targetNode="InputFault_2" sourceNode="XSLTransformation_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_33" targetNode="XSLTransformation_5" sourceNode="MessageElementSetter_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_34" targetNode="MessageFilter_2" sourceNode="MessageElementSetter_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_35" targetNode="MessageFilter_2" sourceNode="MessageElementSetter_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_36" targetNode="MessageFilter_3" sourceNode="MessageElementSetter_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_37" targetNode="XSLTransformation_8" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_38" targetNode="Stop_2" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_39" targetNode="InputFault_2" sourceNode="XSLTransformation_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_personHarUtlandsadresse"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_40" targetNode="XSLTransformation_6" sourceNode="MessageFilter_3" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_41" targetNode="Stop_2" sourceNode="MessageFilter_3" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_42" targetNode="XSLTransformation_12" sourceNode="ServiceInvoke_4" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_43" targetNode="XSLTransformation_10" sourceNode="ServiceInvoke_4" sourceTerminalName="OutTerminal.dynamic:out:hentFamilierelasjoner_personIkkeFunnet" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_44" targetNode="Fail_5" sourceNode="ServiceInvoke_4" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_45" targetNode="ServiceInvoke_4" sourceNode="XSLTransformation_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_46" targetNode="XSLTransformation_11" sourceNode="MessageFilter_4" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_47" targetNode="XSLTransformation_9" sourceNode="MessageFilter_4" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_48" targetNode="XSLTransformation_15" sourceNode="MessageFilter_4" sourceTerminalName="OutTerminal.dynamic:match:match2" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_49" targetNode="InputFault_2" sourceNode="XSLTransformation_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_50" targetNode="InputFault_2" sourceNode="XSLTransformation_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_51" targetNode="MessageFilter_5" sourceNode="ServiceInvoke_5" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_52" targetNode="XSLTransformation_16" sourceNode="ServiceInvoke_5" sourceTerminalName="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_53" targetNode="Fail_2" sourceNode="ServiceInvoke_5" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_54" targetNode="ServiceInvoke_5" sourceNode="XSLTransformation_11" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_55" targetNode="MessageFilter_4" sourceNode="XSLTransformation_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_56" targetNode="XSLTransformation_6" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_57" targetNode="MessageElementSetter_8" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.dynamic:match:match2" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_58" targetNode="MessageElementSetter_9" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.dynamic:match:match3" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_59" targetNode="MessageElementSetter_10" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.dynamic:match:match4" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_60" targetNode="XSLTransformation_7" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.dynamic:match:match5" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_61" targetNode="Fail_4" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_62" targetNode="MessageFilter_6" sourceNode="MessageElementSetter_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_63" targetNode="MessageFilter_6" sourceNode="MessageElementSetter_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_64" targetNode="MessageFilter_6" sourceNode="MessageElementSetter_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_65" targetNode="ServiceInvoke_6" sourceNode="XSLTransformation_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_66" targetNode="InputFault_2" sourceNode="XSLTransformation_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_67" targetNode="ServiceInvoke_6" sourceNode="XSLTransformation_15" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_68" targetNode="InputFault_2" sourceNode="XSLTransformation_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_69" targetNode="XSLTransformation_13" sourceNode="MessageFilter_6" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_70" targetNode="XSLTransformation_6" sourceNode="MessageFilter_6" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_71" targetNode="Stop_1" sourceNode="ServiceInvoke_6" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_72" targetNode="XSLTransformation_14" sourceNode="ServiceInvoke_6" sourceTerminalName="OutTerminal.dynamic:out:endreAdresse_faultSFEPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_73" targetNode="XSLTransformation_17" sourceNode="ServiceInvoke_6" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_74" targetNode="MessageElementSetter_4" sourceNode="MessageFilter_7" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_75" targetNode="Fail_6" sourceNode="MessageFilter_7" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_76" targetNode="InputFault_2" sourceNode="XSLTransformation_17" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_24" targetNode="MessageFilter_7" sourceNode="Input_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_25" targetNode="MessageFilter_1" sourceNode="ServiceInvoke_3" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_26" targetNode="XSLTransformation_16" sourceNode="ServiceInvoke_3" sourceTerminalName="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_27" targetNode="Fail_3" sourceNode="ServiceInvoke_3" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_28" targetNode="ServiceInvoke_3" sourceNode="XSLTransformation_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_29" targetNode="XSLTransformation_8" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_30" targetNode="MessageElementSetter_5" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match2" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_31" targetNode="MessageElementSetter_6" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match3" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_32" targetNode="MessageElementSetter_7" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match4" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_33" targetNode="XSLTransformation_7" sourceNode="MessageFilter_1" sourceTerminalName="OutTerminal.dynamic:match:match5" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_34" targetNode="InputFault_2" sourceNode="XSLTransformation_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_35" targetNode="XSLTransformation_5" sourceNode="MessageElementSetter_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_36" targetNode="MessageFilter_2" sourceNode="MessageElementSetter_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_37" targetNode="MessageFilter_2" sourceNode="MessageElementSetter_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_38" targetNode="MessageFilter_3" sourceNode="MessageElementSetter_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_39" targetNode="XSLTransformation_8" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_40" targetNode="Stop_2" sourceNode="MessageFilter_2" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_41" targetNode="InputFault_2" sourceNode="XSLTransformation_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_personHarUtlandsadresse"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_42" targetNode="XSLTransformation_6" sourceNode="MessageFilter_3" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_43" targetNode="Stop_2" sourceNode="MessageFilter_3" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_44" targetNode="XSLTransformation_12" sourceNode="ServiceInvoke_4" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_45" targetNode="XSLTransformation_10" sourceNode="ServiceInvoke_4" sourceTerminalName="OutTerminal.dynamic:out:hentFamilierelasjoner_personIkkeFunnet" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_46" targetNode="Fail_5" sourceNode="ServiceInvoke_4" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_47" targetNode="ServiceInvoke_4" sourceNode="XSLTransformation_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_48" targetNode="XSLTransformation_11" sourceNode="MessageFilter_4" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_49" targetNode="XSLTransformation_9" sourceNode="MessageFilter_4" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_50" targetNode="XSLTransformation_15" sourceNode="MessageFilter_4" sourceTerminalName="OutTerminal.dynamic:match:match2" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_51" targetNode="InputFault_2" sourceNode="XSLTransformation_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_52" targetNode="InputFault_2" sourceNode="XSLTransformation_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_53" targetNode="MessageFilter_5" sourceNode="ServiceInvoke_5" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_54" targetNode="XSLTransformation_16" sourceNode="ServiceInvoke_5" sourceTerminalName="OutTerminal.dynamic:out:hentTPSData_faultTPSPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_55" targetNode="Fail_2" sourceNode="ServiceInvoke_5" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_56" targetNode="ServiceInvoke_5" sourceNode="XSLTransformation_11" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_57" targetNode="MessageFilter_4" sourceNode="XSLTransformation_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_58" targetNode="XSLTransformation_6" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_59" targetNode="MessageElementSetter_8" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.dynamic:match:match2" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_60" targetNode="MessageElementSetter_9" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.dynamic:match:match3" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_61" targetNode="MessageElementSetter_10" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.dynamic:match:match4" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_62" targetNode="XSLTransformation_7" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.dynamic:match:match5" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_63" targetNode="Fail_4" sourceNode="MessageFilter_5" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_64" targetNode="MessageFilter_6" sourceNode="MessageElementSetter_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_65" targetNode="MessageFilter_6" sourceNode="MessageElementSetter_9" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_66" targetNode="MessageFilter_6" sourceNode="MessageElementSetter_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_67" targetNode="ServiceInvoke_6" sourceNode="XSLTransformation_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_68" targetNode="InputFault_2" sourceNode="XSLTransformation_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_69" targetNode="ServiceInvoke_6" sourceNode="XSLTransformation_15" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_70" targetNode="InputFault_2" sourceNode="XSLTransformation_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_71" targetNode="XSLTransformation_13" sourceNode="MessageFilter_6" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_72" targetNode="XSLTransformation_6" sourceNode="MessageFilter_6" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_73" targetNode="Stop_1" sourceNode="ServiceInvoke_6" sourceTerminalName="OutTerminal.dynamic:out:out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_74" targetNode="XSLTransformation_14" sourceNode="ServiceInvoke_6" sourceTerminalName="OutTerminal.dynamic:out:endreAdresse_faultSFEPersonIkkeFunnetMsg" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_75" targetNode="XSLTransformation_17" sourceNode="ServiceInvoke_6" sourceTerminalName="OutTerminal.Failure" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_76" targetNode="MessageElementSetter_4" sourceNode="MessageFilter_7" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_77" targetNode="Fail_6" sourceNode="MessageFilter_7" sourceTerminalName="OutTerminal.dynamic:match:match1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow2:FCMConnection" xmi:id="FCMConnection_78" targetNode="InputFault_2" sourceNode="XSLTransformation_17" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.dynamic:in:registrereAdresseForDodsbo_kunneIkkeRegistrereAdresseForDodsbo"/>
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="basic" describedAttribute="Property.name"/>
@@ -708,10 +717,16 @@
   </eClassifiers>
   <eClassifiers xmi:type="eflow2:FCMComposite" name="root">
     <eSuperTypes href="http://www.ibm.com/2006/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Trace.file" name="Trace.file" defaultValueLiteral="C:\Temp\WID-trace\person-trace.txt">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.TraceRequest.file" name="TraceRequest.file" defaultValueLiteral="/was_app/logs/esb/trace/hentPerson-request.log">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Trace.enabled" name="Trace.enabled" defaultValueLiteral="true">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.TraceResponse.file" name="TraceResponse.file" defaultValueLiteral="/was_app/logs/esb/trace/hentPerson-response.log">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.TraceTPS.file" name="TraceTPS.file" defaultValueLiteral="/was_app/logs/esb/trace/hentPerson-TPS.log">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Trace.enabled" name="Trace.enabled" defaultValueLiteral="false">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
     <composition>
@@ -719,23 +734,35 @@
       <nodes xmi:type="PersonMedFlow.medflow:root_I_3" xmi:id="root_I_3_1" name="{http://nav.no/virksomhet/tjenester/person/v1}Person:registrereAdresseForDodsbo::request"/>
     </composition>
     <propertyOrganizer>
-      <propertyDescriptor groupName="nav-tjeneste-person.PersonMedFlow" describedAttribute="Property.Trace.enabled">
+      <propertyDescriptor groupName="nav-tjeneste-person-trace.PersonMedFlow" describedAttribute="Property.Trace.enabled">
         <description xmi:type="utility:ConstantString" string=""/>
-        <propertyDescriptor groupName="nav-tjeneste-person.PersonMedFlow" describedAttribute="Property.Trace.file">
+        <propertyDescriptor groupName="nav-tjeneste-person-trace.PersonMedFlow" describedAttribute="Property.TraceRequest.file">
           <description xmi:type="utility:ConstantString" string=""/>
+          <propertyDescriptor groupName="nav-tjeneste-person-trace.PersonMedFlow" describedAttribute="Property.TraceResponse.file">
+            <description xmi:type="utility:ConstantString" string=""/>
+            <propertyDescriptor groupName="nav-tjeneste-person-trace.PersonMedFlow" describedAttribute="Property.TraceTPS.file">
+              <description xmi:type="utility:ConstantString" string=""/>
+            </propertyDescriptor>
+          </propertyDescriptor>
         </propertyDescriptor>
       </propertyDescriptor>
     </propertyOrganizer>
     <attributeLinks promotedAttribute="Property.Trace.enabled" overriddenNodes="Trace_1">
       <overriddenAttribute href="mednode://mednodes/Trace.mednode/Trace#Property.enabled"/>
     </attributeLinks>
-    <attributeLinks promotedAttribute="Property.Trace.file" overriddenNodes="Trace_1">
+    <attributeLinks promotedAttribute="Property.TraceRequest.file" overriddenNodes="Trace_1">
       <overriddenAttribute href="mednode://mednodes/Trace.mednode/Trace#Property.file"/>
     </attributeLinks>
     <attributeLinks promotedAttribute="Property.Trace.enabled" overriddenNodes="Trace_2">
       <overriddenAttribute href="mednode://mednodes/Trace.mednode/Trace#Property.enabled"/>
     </attributeLinks>
-    <attributeLinks promotedAttribute="Property.Trace.file" overriddenNodes="Trace_2">
+    <attributeLinks promotedAttribute="Property.TraceResponse.file" overriddenNodes="Trace_2">
+      <overriddenAttribute href="mednode://mednodes/Trace.mednode/Trace#Property.file"/>
+    </attributeLinks>
+    <attributeLinks promotedAttribute="Property.Trace.enabled" overriddenNodes="Trace_3">
+      <overriddenAttribute href="mednode://mednodes/Trace.mednode/Trace#Property.enabled"/>
+    </attributeLinks>
+    <attributeLinks promotedAttribute="Property.TraceTPS.file" overriddenNodes="Trace_3">
       <overriddenAttribute href="mednode://mednodes/Trace.mednode/Trace#Property.file"/>
     </attributeLinks>
   </eClassifiers>
