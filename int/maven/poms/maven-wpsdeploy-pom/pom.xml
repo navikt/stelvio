@@ -15,7 +15,7 @@
 	<name>POM for deployments</name>
 
 	<properties>
-		<wpsdeployVersion>1.13</wpsdeployVersion>
+		<wpsdeployVersion>1.14</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
