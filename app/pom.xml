@@ -1,6 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.2.2</version>
+	</parent>
+
 	<groupId>no.stelvio</groupId>
 	<artifactId>stelvio</artifactId>
 	<packaging>pom</packaging>
@@ -44,7 +51,6 @@
 		<slf4j.version>1.6.1</slf4j.version>
 		<dozer.version>5.2.2</dozer.version>
 		<jmock.version>2.5.1</jmock.version>
-		
 		<maven-depgraph-plugin.version>1.1</maven-depgraph-plugin.version>
 		<maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
 	</properties>
@@ -76,7 +82,7 @@
 		</dependency>
 	</dependencies>
 	
-	<distributionManagement>
+<!--	<distributionManagement>
 		<repository>
 			<id>nav-maven2-internal-repo</id>
 			<name>NAV Maven2 Internal Repository</name>
@@ -91,10 +97,11 @@
 			<id>website</id>
 			<url>scp://10.33.1.53/var/www/html/project/stelvio_m</url>
 		</site>
-	</distributionManagement>
+	</distributionManagement> -->
+	
 	<reporting>
 		<plugins>
-			<plugin>
+			<!--<plugin>
 				<artifactId>
 					maven-project-info-reports-plugin
 				</artifactId>
@@ -103,7 +110,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -146,7 +153,7 @@
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>2.7.2</version>
 			</plugin>
-			<plugin>
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<configuration>
@@ -160,9 +167,9 @@
 					<linkXref>true</linkXref>					
 					<minimumTokens>100</minimumTokens>
 				</configuration>
-			</plugin>
+			</plugin>-->
 
-			<plugin>
+			<!--<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>2.1</version>
@@ -170,13 +177,13 @@
 					<findbugsXmlOutput>true</findbugsXmlOutput>
 					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
 					<xmlOutput>true</xmlOutput>
-					<threshold>Normal</threshold><!--High|Normal|Low|Exp-->
-					<effort>Default</effort> <!--Min|Default1Max-->
+					<threshold>Normal</threshold>High|Normal|Low|Exp
+					<effort>Default</effort> Min|Default1Max
 					<excludeFilterFile>
 						http://confluence.adeo.no/download/attachments/107131/nav-stelvio-findbugs-exclude.xml
 					</excludeFilterFile>
 				</configuration>
-			</plugin>
+			</plugin>-->
 		</plugins>
 	</reporting>
 	<build>
@@ -251,7 +258,7 @@
 						<password>Maven1234</password>
 					</configuration>
 				</plugin>
-				<plugin>
+				<!--<plugin>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
@@ -259,7 +266,7 @@
 						http://confluence.adeo.no/download/attachments/12007/nav_checkstyle.xml
 					</configLocation>
 				</configuration>
-			</plugin>
+			</plugin>-->
 			</plugins>
 		</pluginManagement>
 		<!-- Prevents ClearCase(*.db)-files being copied into target folder-->
