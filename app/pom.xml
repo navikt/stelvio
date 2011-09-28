@@ -258,7 +258,7 @@
 						<password>Maven1234</password>
 					</configuration>
 				</plugin>
-				<!--<plugin>
+				<!--<plugin> 
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
