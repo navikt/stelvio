@@ -1108,6 +1108,7 @@ dev/maven2/maven-datapower-deploymentpolicy-plugin/.classpath -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/.compatibility -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/.project -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/.settings/org.eclipse.jdt.core.prefs -text
+dev/maven2/maven-datapower-deploymentpolicy-plugin/.settings/org.maven.ide.eclipse.prefs -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/pom.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/datapower/util/DPCollectionUtils.java -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/datapower/util/DPFileUtils.java -text
@@ -1133,6 +1134,7 @@ dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/datapowe
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/datapower/xmlmgmt/net/DPHttpClientPrintOut.java -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/datapower/xmlmgmt/net/DPHttpResponse.java -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/maven/plugins/datapower/AbstractDeploymentMojo.java -text
+dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/maven/plugins/datapower/CreateDomainMojo.java -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/maven/plugins/datapower/ImportConfigMojo.java -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/maven/plugins/datapower/ImportDeploymentPolicyMojo.java -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/java/no/nav/maven/plugins/datapower/ImportFilesMojo.java -text
@@ -1143,6 +1145,7 @@ dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/resources/xmlmgmt-co
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/resources/xmlmgmt-commands/do-action.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/resources/xmlmgmt-commands/do-import-with-deployment-policy.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/resources/xmlmgmt-commands/do-import.xml -text
+dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/resources/xmlmgmt-commands/get-domain-list.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/resources/xmlmgmt-commands/set-config-domain.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/resources/xmlmgmt-commands/set-config-hostalias.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/main/resources/xmlmgmt-commands/set-file.xml -text
@@ -1150,6 +1153,7 @@ dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/java/no/nav/datapowe
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/java/no/nav/datapower/xmlmgmt/XMLMgmtRequestTest.java -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/java/no/nav/maven/plugins/datapower/DatapowerDeployPluginTest.java -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/overrides.properties -text
+dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-es-gw-createDomain.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signature-gw-importConfig.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signature-gw-importDeploymentPolicy.xml -text
 dev/maven2/maven-datapower-deploymentpolicy-plugin/src/test/resources/test-signature-gw-importFiles.xml -text

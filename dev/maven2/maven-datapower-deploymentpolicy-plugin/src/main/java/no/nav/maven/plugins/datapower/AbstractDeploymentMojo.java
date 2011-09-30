@@ -18,7 +18,8 @@ import com.pyx4j.log4j.MavenLogAppender;
 
 public abstract class AbstractDeploymentMojo extends AbstractMojo {
 
-	 /**
+	
+	/**
      * The DataPower configuration domain
      * 
      * @parameter expression="${domain}"
@@ -57,6 +58,10 @@ public abstract class AbstractDeploymentMojo extends AbstractMojo {
      * @parameter expression="${xmlMgmtEndpoint}" alias="xmlMgmtEndpoint"
      */    
     private String xmlMgmtEndpoint;
+    
+    public void setXmlMgmtEndpoint(String xmlMgmtEndpoint) {
+		this.xmlMgmtEndpoint = xmlMgmtEndpoint;
+	}
     
     /**
      * The device username used to authenticate the XML Management Interface
@@ -139,17 +144,23 @@ public abstract class AbstractDeploymentMojo extends AbstractMojo {
 	
 	public XMLMgmtSession getXMLMgmtSession() {		
 		if (mgmtSession == null) {
-			String xmlMgmtUrl = getDeviceUrl().toString() + getXmlMgmtEndpoint();
-			getLog().info("Creating new XMLMgmtSession, host = " + getDeviceUrl() +", endpoint=" + getXmlMgmtEndpoint() + ", user = " + username + ", pwd = " + password);
-			getLog().info("Registered httpClient:" + httpClientClass);
-			if(StringUtils.isNotBlank(httpClientClass)){	
-				DPHttpClient client = XMLMgmtUtil.createHttpClient(httpClientClass);
-				mgmtSession = new XMLMgmtSession(xmlMgmtUrl,username,password,client);
-			} else {
-				mgmtSession = new XMLMgmtSession(xmlMgmtUrl,username,password);
-			}
-			mgmtSession.setLogDirectory(logDirectory);
+			mgmtSession = createXMLMgmtSession();
 		}
+		return mgmtSession;
+	}
+	
+	public XMLMgmtSession createXMLMgmtSession(){
+		XMLMgmtSession mgmtSession = null;
+		String xmlMgmtUrl = getDeviceUrl().toString() + getXmlMgmtEndpoint();
+		getLog().info("Creating new XMLMgmtSession, host = " + getDeviceUrl() +", endpoint=" + getXmlMgmtEndpoint() + ", user = " + username + ", pwd = " + password);
+		getLog().info("Registered httpClient:" + httpClientClass);
+		if(StringUtils.isNotBlank(httpClientClass)){	
+			DPHttpClient client = XMLMgmtUtil.createHttpClient(httpClientClass);
+			mgmtSession = new XMLMgmtSession(xmlMgmtUrl,username,password,client);
+		} else {
+			mgmtSession = new XMLMgmtSession(xmlMgmtUrl,username,password);
+		}
+		mgmtSession.setLogDirectory(logDirectory);
 		return mgmtSession;
 	}
 	

@@ -15,6 +15,7 @@ public class DatapowerDeployPluginTest extends AbstractMojoTestCase {
 
 		
 		private enum MojoTest {
+			ESGW_CREATE_DOMAIN(					"createDomain",				"src/test/resources/test-es-gw-createDomain.xml"),
 			SIGNATUREGW_SETUP_DOMAIN(			"setupDomain",				"src/test/resources/test-signature-gw-setupDomain.xml"),
 			SIGNATUREGW_IMPORT_DEPLOYMENTPOLICY("importDeploymentPolicy",	"src/test/resources/test-signature-gw-importDeploymentPolicy.xml"),
 			SIGNATUREGW_IMPORT_FILES(			"importFiles",				"src/test/resources/test-signature-gw-importFiles.xml"),
@@ -68,6 +69,7 @@ public class DatapowerDeployPluginTest extends AbstractMojoTestCase {
 
 
 		private void executeMojo(MojoTest test) {
+			//Need to update testdata
 			/*Mojo wsClient = getMojo(test);
 			try {
 				wsClient.execute();
@@ -77,8 +79,13 @@ public class DatapowerDeployPluginTest extends AbstractMojoTestCase {
 			} catch (MojoFailureException e) {
 				e.printStackTrace();
 				fail("Caught MojoFailureException");
-			}*/		
+			}*/	
 		}
+		
+		public void test_es_gw_CreateDomainMojo() {
+			executeMojo(MojoTest.ESGW_CREATE_DOMAIN);		
+		}
+		
 		public void test_signature_gw_SetupDomainMojo() {
 			executeMojo(MojoTest.SIGNATUREGW_SETUP_DOMAIN);		
 		}

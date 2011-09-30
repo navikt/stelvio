@@ -19,6 +19,12 @@ import no.nav.datapower.util.DPFileUtils;
 
 public class XMLMgmtRequestFactory {
 	
+	private class AMPCmd {}
+	
+	private class GetDomainListCmd extends AMPCmd{
+		private static final String TEMPLATE = "xmlmgmt-commands/get-domain-list.xml";
+	}
+	
 	private class SOMACmd {
 		private static final String DOMAIN_XPATH = "/request/@domain";
 	}
@@ -185,5 +191,8 @@ public class XMLMgmtRequestFactory {
 		return request;
 	}
 	
-	
+	public static XMLMgmtRequest createGetDomainListRequest(){
+		return new XMLMgmtRequest(GetDomainListCmd.TEMPLATE);
+	}
+
 }
