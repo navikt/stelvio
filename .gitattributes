@@ -2224,6 +2224,8 @@ incubator/service-gateway-poc/stelvio-inc-example-stub/sca.module -text
 incubator/service-gateway-poc/stelvio-inc-example-stub/sca.module.attributes -text
 incubator/service-gateway-poc/stelvio-inc-example-stub/sca.modulex -text
 incubator/service-gateway/pom.xml -text
+incubator/service-gateway/src/main/filters/main.properties -text
+incubator/service-gateway/src/main/freemarker-templates/main.ftl -text
 incubator/service-gateway/src/main/resources/configuration.xml -text
 incubator/service-gateway/src/main/resources/files/local/service-registry.xml -text
 incubator/service-gateway/src/main/resources/files/local/xslt/endpoint-lookup.xsl -text
