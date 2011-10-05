@@ -1,5 +1,6 @@
 <datapower-configuration version="3">
-	<configuration domain="@datapower.domain@">
+<!--	<configuration domain="@datapower.domain@"> -->
+	<configuration domain="service-gw">
 		<HTTPSourceProtocolHandler name="http_signature-gw-u1.utv.internsone.local_3010"
 			xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:dp="http://www.datapower.com/schemas/management">
 			<mAdminState>enabled</mAdminState>
