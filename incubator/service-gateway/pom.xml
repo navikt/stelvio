@@ -27,7 +27,6 @@
 				<directory>src/main/filters</directory>
 			</resource>
 		</resources>
-		</resources>
 		<plugins>
 			<!-- Run plugin to generate config -->
 			<plugin>
