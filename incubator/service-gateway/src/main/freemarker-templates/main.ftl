@@ -21,55 +21,55 @@
 		name="${defaultMatchAll}"
 		urlMatch="*"/>
 	<@dp.MPGStylePolicyAction
-		actionNamePrefix=${defaultPolicyName}
+		actionNamePrefix="${defaultPolicyName}"
 		action={
 			"type":"fetch", "name":"${requestFetchAction}", 
 			"output":"service-registry", "destination":"@serviceRegistryDestinationFile@"} />
 	<@dp.MPGStylePolicyAction
-		actionNamePrefix=${defaultPolicyName}
+		actionNamePrefix="${defaultPolicyName}"
 		action={
 			"type":"route-action", "name":"${requestRouteAction}", 
 			"input":"service-registry", "transform":"@endpointLookupTransformFile@"} />
 	<@dp.MPGStylePolicyAction
-		actionNamePrefix=${defaultPolicyName}
+		actionNamePrefix="${defaultPolicyName}"
 		action={
 			"type":"validate", "name":"${requestValidateAction}", 
 			"input":"INPUT", "output":"NULL", "wsdlURL":"var://context/wsdl/url"} />
 	<@dp.MPGStylePolicyAction
-		actionNamePrefix=${defaultPolicyName}
+		actionNamePrefix="${defaultPolicyName}"
 		action={
 			"type":"results", "name":"${requestResultsAction}", 
 			"input":"INPUT"}/>
 	<@dp.MPGStylePolicyRuleRequest
 		name="${defaultPolicyName}_request"
 		actions=[
-			{${defaultPolicyName}${requestFetchAction}}, 
-			{${defaultPolicyName}${requestRouteAction}}, 
-			{${defaultPolicyName}${responseResultsAction}}] />
+			{"${defaultPolicyName}${requestFetchAction}"}, 
+			{"${defaultPolicyName}${requestRouteAction}"}, 
+			{"${defaultPolicyName}${responseResultsAction}"}] />
 	<@dp.MPGStylePolicyAction
-		actionNamePrefix=${defaultPolicyName}
+		actionNamePrefix="${defaultPolicyName}"
 		action={
 			"type":"results", "name":"${responseResultsAction}", 
 			"input":"INPUT"} />
 	<@dp.MPGStylePolicyRuleResponse
 		name="${defaultPolicyName}_response"
-		actions=[{${defaultPolicyName}${responseResultsAction}}] />
+		actions=[{"${defaultPolicyName}${responseResultsAction}"}] />
 	<@dp.MPGStylePolicyAction
-		actionNamePrefix=${defaultPolicyName}
+		actionNamePrefix="${defaultPolicyName}"
 		action={
 			"type":"xform", "name":"${errorXformAction}", 
 			"input":"INPUT", "transform":"@faultHandlerFile@", 
 			"output":"PIPE"} />
 	<@dp.MPGStylePolicyAction
-		actionNamePrefix=${defaultPolicyName}
+		actionNamePrefix="${defaultPolicyName}"
 		action={
 			"type":"results", "name":"${errorResultsAction}", 
 			"input":"PIPE"} />
 	<@dp.MPGStylePolicyRuleError
 		name="${defaultPolicyName}_error"
 		actions=[
-			{${defaultPolicyName}${errorXformAction}}, 
-			{${defaultPolicyName}${errorResultsAction}}] />
+			{"${defaultPolicyName}${errorXformAction}"}, 
+			{"${defaultPolicyName}${errorResultsAction}"}] />
 	<@dp.MPGStylePolicy 
 		name="${defaultPolicyName}"
 		policyMapsList=[
@@ -79,5 +79,5 @@
 	<@dp.MultiProtocolGateway
 		name="${defaultPolicyName}"
 		httpSourceProtocolHandler="${httpSourceProtocolHandlerName}"
-		stylePolicy=${defaultPolicyName}/>
+		stylePolicy="${defaultPolicyName}"/>
 </@dp.configuration>
