@@ -12,6 +12,13 @@
 <#assign errorXformAction="_error_xform_0"/>
 <#assign errorResultsAction="_error_results_output_0"/>
 
+<#assign requestDefaultFetchAction="${defaultPolicyName}_request_fetch_0"/>
+<#assign requestDefaultRouteAction="${defaultPolicyName}_request_route-action_0"/>
+<#assign responseDefaultResultsAction="${defaultPolicyName}_response_results_output_0"/>
+<#assign requestDefaultResultsAction="${defaultPolicyName}_request_results_output_0"/>
+#assign errorDefaultXformAction="${defaultPolicyName}_error_xform_0"/>
+<#assign errorDefaultResultsAction="${defaultPolicyName}_error_results_output_0"/>
+
 <@dp.configuration domain="@cfgDomain@">
 	<@dp.HTTPSourceProtocolHandler 
 		name="${httpSourceProtocolHandlerName}"
@@ -43,9 +50,9 @@
 	<@dp.MPGStylePolicyRuleRequest
 		name="${defaultPolicyName}_request"
 		actions=[
-			{"${defaultPolicyName}""${requestFetchAction}"}, 
-			{"${defaultPolicyName}""${requestRouteAction}"}, 
-			{"${defaultPolicyName}""${responseResultsAction}"}] />
+			{"${requestDefaultFetchAction}"}, 
+			{"${requestDefaultRouteAction}"}, 
+			{"${requestDefaultResultsAction}"}] />
 	<@dp.MPGStylePolicyAction
 		actionNamePrefix="${defaultPolicyName}"
 		action={
@@ -53,7 +60,7 @@
 			"input":"INPUT"} />
 	<@dp.MPGStylePolicyRuleResponse
 		name="${defaultPolicyName}_response"
-		actions=[{"${defaultPolicyName}""${responseResultsAction}"}] />
+		actions=[{"${responseDefaultResultsAction}"}] />
 	<@dp.MPGStylePolicyAction
 		actionNamePrefix="${defaultPolicyName}"
 		action={
@@ -68,8 +75,8 @@
 	<@dp.MPGStylePolicyRuleError
 		name="${defaultPolicyName}_error"
 		actions=[
-			{"${defaultPolicyName}""${errorXformAction}"}, 
-			{"${defaultPolicyName}""${errorResultsAction}"}] />
+			{"${errorDefaultXformAction}"}, 
+			{"${errorDefaultResultsAction}"}] />
 	<@dp.MPGStylePolicy 
 		name="${defaultPolicyName}"
 		policyMapsList=[
