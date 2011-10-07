@@ -71,7 +71,7 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 	 * Policies to configure proxies for, containing wsdl-interface dependencies
 	 * 
 	 * @parameter
-	 * @required
+	 * 
 	 */
 	private Policy[] policies;
 	
@@ -143,10 +143,10 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// Welcome
 		File outputDirectory = new File(project.getBuild().getOutputDirectory());
-		File localFilesDirectory = new File(outputDirectory, "files/local");
-		File wsdlFilesDirectory = new File(localFilesDirectory, "wsdl");
-		wsdlFilesDirectory.mkdir();
-		unArchiver.setDestDirectory(wsdlFilesDirectory);
+//		File localFilesDirectory = new File(outputDirectory, "files/local");
+//		File wsdlFilesDirectory = new File(localFilesDirectory, "wsdl");
+//		wsdlFilesDirectory.mkdir();
+//		unArchiver.setDestDirectory(wsdlFilesDirectory);
 		File propertiesFile = new File(project.getBasedir(), "target/filters/main.properties");
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
@@ -165,17 +165,17 @@ public class GenerateServiceGWConfigMojo extends AbstractMojo {
 		}
 
 		// Map WSDLs to proxies
-		try {
-			mapWSDLsToProxies(policies, wsdlFilesDirectory, localFilesDirectory);
-		} catch (IOException e) {
-			throw new IllegalStateException("Error while mapping from WSDLs to proxies", e);
-		} catch (ArtifactResolutionException e) {
-			throw new MojoExecutionException("Unable to resolve interface artifact", e);
-		} catch (ArtifactNotFoundException e) {
-			throw new MojoExecutionException("Unable to find interface artifact", e);
-		} catch (ArchiverException e) {
-			throw new MojoExecutionException("An error occured during extraction of WSDL interface ZIP", e);
-		}
+//		try {
+//			mapWSDLsToProxies(policies, wsdlFilesDirectory, localFilesDirectory);
+//		} catch (IOException e) {
+//			throw new IllegalStateException("Error while mapping from WSDLs to proxies", e);
+//		} catch (ArtifactResolutionException e) {
+//			throw new MojoExecutionException("Unable to resolve interface artifact", e);
+//		} catch (ArtifactNotFoundException e) {
+//			throw new MojoExecutionException("Unable to find interface artifact", e);
+//		} catch (ArchiverException e) {
+//			throw new MojoExecutionException("An error occured during extraction of WSDL interface ZIP", e);
+//		}
 
 		// Merge templates with properties and output to config file
 		try {
