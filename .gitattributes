@@ -4226,6 +4226,7 @@ int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/d
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/datapower/config/WsdlArtifact.java -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/datapower/config/freemarker/Freemarker.java -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateConfigMojo.java -text
+int/maven/plugins/maven-datapower-config-generator-plugin/src/main/java/no/nav/maven/plugins/GenerateServiceGWConfigMojo.java -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAInfo.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAInfoBasicAuth.ftl -text
 int/maven/plugins/maven-datapower-config-generator-plugin/src/main/resources/freemarker-templates/AAAPolicyAuthenticateAllLTPA.ftl -text
