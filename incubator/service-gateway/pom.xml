@@ -35,10 +35,10 @@
 				<version>2.8-SNAPSHOT</version>
 				<executions>
 					<execution>
-						<id>generateConfig</id>
+						<id>generateServiceGWConfig</id>
 						<phase>compile</phase>
 						<goals>
-							<goal>generate</goal>
+							<goal>generateServiceGW</goal>
 						</goals>
 					</execution>
 				</executions>
