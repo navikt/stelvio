@@ -19,7 +19,6 @@
 	<@MPGStylePolicyActionResults
 		name="${actionNamePrefix}${action.name}"
 		input="${action.input}"
-		output="${action.output}"
 		async="${action.async!'off'}"/>
 	<#--
 		Route-Action Action
