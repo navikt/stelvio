@@ -8,7 +8,7 @@
 
 	<properties>
 		<deployKeys>${user.home}/deploy-keys/</deployKeys>
-		<esb-version>${esb-release-version}</esb-version>
+		<servicegw-version>${service-gw-version}</servicegw-version>
 	</properties>
 
 	<dependencies>
@@ -45,10 +45,10 @@
 				<filtering>true</filtering>
 			</resource>
 			<!-- Copy files from key directory structure -->
-			<resource>
+			<!--<resource>
 				<directory>${deployKeys}/${envclass}/datapower-cfg-${gateway-name}-files/</directory>
 				<targetPath>files/</targetPath>
-			</resource>
+			</resource>-->
 <!--			<resource>
 				<directory>${deployKeys}/${envclass}/${env}/datapower-cfg-${gateway-name}-files/</directory>
 				<targetPath>files/</targetPath>
@@ -108,12 +108,12 @@
 								<file>
 									${project.build.directory}/dependency/busconfiguration-jar/environments/${envclass}/${env}/datapower-cfg-${gateway-name}.properties
 								</file>
-								<file>${deployKeys}/${envclass}/esb.properties</file>
+					<!--			<file>${deployKeys}/${envclass}/esb.properties</file>
 								<file>${deployKeys}/${envclass}/${env}/esb.properties</file>
 								<file>${deployKeys}/${envclass}/datapower.properties</file>
 								<file>${deployKeys}/${envclass}/${env}/datapower.properties</file>
 								<file>${deployKeys}/${envclass}/datapower-cfg-${gateway-name}.properties</file>
-								<file>${deployKeys}/${envclass}/${env}/datapower-cfg-${gateway-name}.properties</file>
+								<file>${deployKeys}/${envclass}/${env}/datapower-cfg-${gateway-name}.properties</file> -->
 							</files>
 						</configuration>
 					</execution>
