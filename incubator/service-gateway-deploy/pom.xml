@@ -109,9 +109,9 @@
 									${project.build.directory}/dependency/busconfiguration-jar/environments/${envclass}/${env}/datapower-cfg-${gateway-name}.properties
 								</file>
 					<!--			<file>${deployKeys}/${envclass}/esb.properties</file>
-								<file>${deployKeys}/${envclass}/${env}/esb.properties</file>
+								<file>${deployKeys}/${envclass}/${env}/esb.properties</file>-->
 								<file>${deployKeys}/${envclass}/datapower.properties</file>
-								<file>${deployKeys}/${envclass}/${env}/datapower.properties</file>
+							<!--	<file>${deployKeys}/${envclass}/${env}/datapower.properties</file>
 								<file>${deployKeys}/${envclass}/datapower-cfg-${gateway-name}.properties</file>
 								<file>${deployKeys}/${envclass}/${env}/datapower-cfg-${gateway-name}.properties</file> -->
 							</files>
