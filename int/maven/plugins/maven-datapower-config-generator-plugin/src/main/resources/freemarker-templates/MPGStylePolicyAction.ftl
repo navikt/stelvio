@@ -7,7 +7,7 @@
 	<#--
 		Fetch Action
 	-->
-	<#elseif action.type == "fetch">
+	<#if action.type == "fetch">
 	<@MPGStylePolicyActionFetch
 		name="${actionNamePrefix}${action.name}"
 		destination="${action.destination}"
