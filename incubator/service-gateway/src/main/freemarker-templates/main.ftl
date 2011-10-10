@@ -22,8 +22,8 @@
 <@dp.configuration domain="@cfgDomain@">
 	<@dp.HTTPSourceProtocolHandler 
 		name="${httpSourceProtocolHandlerName}"
-		localAddress=@localSourceProtocolAddress@
-		localPort=@localSourceProtocolPort@ />
+		localAddress="@localSourceProtocolAddress@"
+		localPort="@localSourceProtocolPort@" />
 	<@dp.MatchingRuleURL
 		name="${defaultMatchAll}"
 		urlMatch="*"/>
