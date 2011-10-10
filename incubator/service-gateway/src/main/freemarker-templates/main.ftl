@@ -50,9 +50,10 @@
 	<@dp.MPGStylePolicyRuleRequest
 		name="${defaultPolicyName}_request"
 		actions=[
-			{"${requestDefaultFetchAction}"}, 
-			{"${requestDefaultRouteAction}"}, 
-			{"${requestDefaultResultsAction}"}] />
+				{"${requestDefaultFetchAction}"}, 
+				{"${requestDefaultRouteAction}"}, 
+				{"${requestDefaultResultsAction}"}
+			] />
 	<@dp.MPGStylePolicyAction
 		actionNamePrefix="${defaultPolicyName}"
 		action={
