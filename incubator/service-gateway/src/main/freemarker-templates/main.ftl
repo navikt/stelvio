@@ -86,6 +86,6 @@
 			{"matchingRule":"${defaultMatchAll}","processingRule":"${defaultPolicyName}_error}"}]/>
 	<@dp.MultiProtocolGateway
 		name="${defaultPolicyName}"
-		httpSourceProtocolHandler="${httpSourceProtocolHandlerName}"
+		@httpSourceProtocolHandler="${httpSourceProtocolHandlerName}"
 		stylePolicy="${defaultPolicyName}"/>
 </@dp.configuration>
