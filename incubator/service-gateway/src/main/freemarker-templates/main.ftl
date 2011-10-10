@@ -50,9 +50,9 @@
 	<@dp.MPGStylePolicyRuleRequest
 		name="${defaultPolicyName}_request"
 		actions=[
-				{"${requestDefaultFetchAction}"}, 
-				{"${requestDefaultRouteAction}"}, 
-				{"${requestDefaultResultsAction}"}
+			"${requestDefaultFetchAction}", 
+			"${requestDefaultRouteAction}", 
+			"${requestDefaultResultsAction}"
 			] />
 	<@dp.MPGStylePolicyAction
 		actionNamePrefix="${defaultPolicyName}"
@@ -61,7 +61,7 @@
 			"input":"INPUT"} />
 	<@dp.MPGStylePolicyRuleResponse
 		name="${defaultPolicyName}_response"
-		actions=[{"${responseDefaultResultsAction}"}] />
+		actions=["${responseDefaultResultsAction}"] />
 	<@dp.MPGStylePolicyAction
 		actionNamePrefix="${defaultPolicyName}"
 		action={
@@ -76,8 +76,8 @@
 	<@dp.MPGStylePolicyRuleError
 		name="${defaultPolicyName}_error"
 		actions=[
-			{"${errorDefaultXformAction}"}, 
-			{"${errorDefaultResultsAction}"}] />
+			"${errorDefaultXformAction}", 
+			"${errorDefaultResultsAction}"] />
 	<@dp.MPGStylePolicy 
 		name="${defaultPolicyName}"
 		policyMapsList=[
