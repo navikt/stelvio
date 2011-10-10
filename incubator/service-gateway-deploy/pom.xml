@@ -19,8 +19,10 @@
 		</dependency>
 	</dependencies>
 
+	<!-- gateway-name = service-gw, env = tX, envclass = t-->
+	
 	<build>
-		<outputDirectory>${project.build.directory}/datapower-config/${gateway-name}-${env}</outputDirectory>
+		<outputDirectory>${project.build.directory}/datapower-config/${gateway-name}-${envclass}</outputDirectory>
 		<resources>
 			<resource>
 				<directory>${project.build.directory}/dependency/${gateway-name}-jar</directory>
@@ -32,11 +34,11 @@
 				<targetPath>files/</targetPath>
 				<filtering>true</filtering>
 			</resource>
-			<resource>
+<!--			<resource>
 				<directory>${project.build.directory}/dependency/busconfiguration-jar/environments/${envclass}/${env}/datapower-cfg-${gateway-name}-files/</directory>
 				<targetPath>files/</targetPath>
 				<filtering>true</filtering>
-			</resource>
+			</resource> -->
 			<resource>
 				<directory>${project.build.directory}/dependency/busconfiguration-jar/environments/${envclass}/datapower-cfg-${gateway-name}-env-extensions/</directory>
 				<targetPath>extensions/</targetPath>
@@ -47,17 +49,16 @@
 				<directory>${deployKeys}/${envclass}/datapower-cfg-${gateway-name}-files/</directory>
 				<targetPath>files/</targetPath>
 			</resource>
-			<resource>
+<!--			<resource>
 				<directory>${deployKeys}/${envclass}/${env}/datapower-cfg-${gateway-name}-files/</directory>
 				<targetPath>files/</targetPath>
-			</resource>
+			</resource> -->
 		</resources>
-		<testResources>
-			<testResource>
+<!--			<testResource>
 				<directory>src/test/verifier</directory>
 				<filtering>true</filtering>
 			</testResource>
-		</testResources>
+		</testResources> -->
 		<plugins>
 			<!-- Unpack bus release and configuration -->
 			<plugin>
@@ -94,7 +95,7 @@
 						<configuration>
 							<files>
 								<!-- Add properties from old properties file for backward compatibility -->
-								<file>${project.build.directory}/dependency/busconfiguration-jar/environments/cfg-${gateway-name}-${env}.properties</file>
+								<file>${project.build.directory}/dependency/busconfiguration-jar/environments/cfg-${gateway-name}-${envclass}.properties</file>
 
 								<file>${project.build.directory}/dependency/busconfiguration-jar/environments/datapower-cfg-${gateway-name}.properties</file>
 								<file>${project.build.directory}/dependency/busconfiguration-jar/environments/${envclass}/esb.properties</file>
@@ -124,11 +125,11 @@
 							<goal>detect-unresolved-properties</goal>
 						</goals>
 						<configuration>
-							<file>${project.build.directory}/datapower-config/${gateway-name}-${env}/configuration.xml</file>
+							<file>${project.build.directory}/datapower-config/${gateway-name}-${envclass}/configuration.xml</file>
 						</configuration>
 					</execution>
 					<!-- Verify that there are no unresolved properties left in the AAA files -->
-					<execution>
+			<!--		<execution>
 						<id>verify-aaa-resource-filtering</id>
 						<phase>test</phase>
 						<goals>
@@ -137,7 +138,7 @@
 						<configuration>
 							<file>${project.build.directory}/datapower-config/${gateway-name}-${env}/files/local/aaa</file>
 						</configuration>
-					</execution>
+					</execution> -->
 				</executions>
 			</plugin>
 			<!-- Verify that all required properties are set, once in validate-phase and once in initialize-phase -->
@@ -192,7 +193,7 @@
 				</executions>
 			</plugin>
 			<!-- Verify that all required files are present -->
-			<plugin>
+		<!--	<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-verifier-plugin</artifactId>
 				<version>1.0-beta-1</version>
@@ -211,7 +212,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<!-- Invoke SOAP management interface on server -->
 			<plugin>
 				<groupId>no.nav.maven.plugins</groupId>
