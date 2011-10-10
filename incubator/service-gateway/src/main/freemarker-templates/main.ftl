@@ -16,7 +16,7 @@
 <#assign requestDefaultRouteAction="${defaultPolicyName}_request_route-action_0"/>
 <#assign responseDefaultResultsAction="${defaultPolicyName}_response_results_output_0"/>
 <#assign requestDefaultResultsAction="${defaultPolicyName}_request_results_output_0"/>
-#assign errorDefaultXformAction="${defaultPolicyName}_error_xform_0"/>
+<#assign errorDefaultXformAction="${defaultPolicyName}_error_xform_0"/>
 <#assign errorDefaultResultsAction="${defaultPolicyName}_error_results_output_0"/>
 
 <@dp.configuration domain="@cfgDomain@">
@@ -77,7 +77,8 @@
 		name="${defaultPolicyName}_error"
 		actions=[
 			"${errorDefaultXformAction}", 
-			"${errorDefaultResultsAction}"] />
+			"${errorDefaultResultsAction}"
+			] />
 	<@dp.MPGStylePolicy 
 		name="${defaultPolicyName}"
 		policyMapsList=[
