@@ -371,7 +371,7 @@
 			<activation>
 				<property>
 					<name>gateway-name</name>
-					<value>service-gateway</value>
+					<value>service-gw</value>
 				</property>
 			</activation>
 			<properties>
