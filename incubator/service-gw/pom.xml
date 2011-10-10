@@ -8,7 +8,7 @@
 	</parent>
 
 	<groupId>no.stelvio.int.poc</groupId>
-	<artifactId>service-gateway</artifactId>
+	<artifactId>service-gw</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Configuration for the 'service-gw' DataPower application domain</name>
 	<description>
@@ -127,7 +127,7 @@
 	</build>
 	
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/service-gateway</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/service-gateway</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/service-gw</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/service-gw</developerConnection>
 	</scm>
 </project>
