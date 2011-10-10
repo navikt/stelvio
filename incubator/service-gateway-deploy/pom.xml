@@ -161,9 +161,9 @@
 								<requireProperty>
 									<property>envclass</property>
 								</requireProperty>
-								<requireProperty>
+							<!--	<requireProperty>
 									<property>env</property>
-								</requireProperty>
+								</requireProperty> -->
 							</rules>
 						</configuration>
 					</execution>
@@ -248,7 +248,7 @@
 						</goals>
 						<configuration>
 							<domain>${datapower.domain}</domain>
-							<importDir>${project.build.directory}/datapower-config/${gateway-name}-${env}/files</importDir>
+							<importDir>${project.build.directory}/datapower-config/${gateway-name}-${envclass}/files</importDir>
 						</configuration>
 					</execution>
 					<execution>
@@ -259,7 +259,7 @@
 						</goals>
 						<configuration>
 							<domain>${datapower.domain}</domain>
-							<configFile>${project.build.directory}/datapower-config/${gateway-name}-${env}/configuration.xml</configFile>
+							<configFile>${project.build.directory}/datapower-config/${gateway-name}-${envclass}/configuration.xml</configFile>
 							<extensionsDir>${build.outputDirectory}/extensions/</extensionsDir>
 						</configuration>
 					</execution>
