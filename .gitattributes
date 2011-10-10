@@ -2154,8 +2154,8 @@ incubator/person/nav-tjeneste-person/sca.module -text
 incubator/person/nav-tjeneste-person/sca.module.attributes -text
 incubator/person/nav-tjeneste-person/sca.modulex -text
 incubator/service-discovery/pom.xml -text
-incubator/service-gateway-deploy/pom.xml -text
-incubator/service-gateway-deploy/src/test/verifier/resource-filtering-test.xml -text
+incubator/service-gw-deploy/pom.xml -text
+incubator/service-gw-deploy/src/test/verifier/resource-filtering-test.xml -text
 incubator/service-gw-poc/stelvio-inc-dynamic/.project -text
 incubator/service-gw-poc/stelvio-inc-dynamic/Pattern[!!-~]Configuration/stelvio-inc-dynamic_configuration.xml -text
 incubator/service-gw-poc/stelvio-inc-dynamic/Pattern[!!-~]Configuration/stelvio-inc-dynamic_summary.html -text
