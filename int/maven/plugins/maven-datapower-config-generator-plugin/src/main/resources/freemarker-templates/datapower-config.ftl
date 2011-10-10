@@ -21,7 +21,8 @@
 <#include "MatchingRuleErrorCode.ftl">
 <#include "MatchingRuleURL.ftl">
 <#include "MatchingRuleXPath.ftl">
-<"include "MPGStylePolicy.ftl">
+<#include "MPGStylePolicy.ftl">
+<#include "MPGStylePolicyAction.ftl">
 <#include "MPGStylePolicyActionFetch.ftl">
 <#include "MPGStylePolicyActionResults.ftl">
 <#include "MPGStylePolicyActionRouteAction.ftl">
