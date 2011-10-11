@@ -82,9 +82,9 @@
 	<@dp.MPGStylePolicy 
 		name="${defaultPolicyName}"
 		policyMapsList=[
-			{"matchingRule":"${defaultMatchAll}","processingRule":"${defaultPolicyName}_request}"}, 
-			{"matchingRule":"${defaultMatchAll}","processingRule":"${defaultPolicyName}_response}"},
-			{"matchingRule":"${defaultMatchAll}","processingRule":"${defaultPolicyName}_error}"}]/>
+			{"matchingRule":"${defaultMatchAll}","processingRule":"${defaultPolicyName}_request"}, 
+			{"matchingRule":"${defaultMatchAll}","processingRule":"${defaultPolicyName}_response"},
+			{"matchingRule":"${defaultMatchAll}","processingRule":"${defaultPolicyName}_error"}]/>
 	<@dp.MultiProtocolGateway
 		name="${defaultPolicyName}"
 		httpSourceProtocolHandler="${httpSourceProtocolHandlerName}"
