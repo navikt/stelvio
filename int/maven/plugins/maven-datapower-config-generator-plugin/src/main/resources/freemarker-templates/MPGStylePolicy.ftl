@@ -5,11 +5,8 @@
 		<DefStylesheetForXsl>store:///identity.xsl</DefStylesheetForXsl>
 		<#list policyMapsList as policyMaps>
 		<PolicyMaps>
-			<WSDLComponentType>all</WSDLComponentType>
-			<WSDLComponentValue/>
 			<Match class="Matching">${policyMaps.matchingRule}</Match>
 			<Rule class="StylePolicyRule">${policyMaps.processingRule}</Rule>
-			<Subscription/>
 		</PolicyMaps>
 		</#list>
 	</StylePolicy>

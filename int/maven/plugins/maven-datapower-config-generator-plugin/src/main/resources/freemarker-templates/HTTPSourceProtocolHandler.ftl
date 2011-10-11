@@ -29,5 +29,5 @@
 		<MaxNameHdrLen>0</MaxNameHdrLen>
 		<MaxValueHdrLen>0</MaxValueHdrLen>
 		<MaxQueryStringLen>0</MaxQueryStringLen>
-	<HTTPSourceProtocolHandler>
+	</HTTPSourceProtocolHandler>
 </#macro>
