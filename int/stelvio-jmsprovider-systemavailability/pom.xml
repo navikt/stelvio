@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>prod</artifactId>
+		<groupId>no.nav.esb.layers.modules</groupId>
+		<version>7.2.0</version>
+	</parent>
+
+	<groupId>no.nav.esb.layers.modules.prod</groupId>
+	<artifactId>nav-prod-frg-sfe</artifactId>
+	<version>7.2.0-SNAPSHOT</version>
+	<packaging>wps-module-ear</packaging>
+	<name>Stelvio Integration Framework ${artifactId}</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>no.nav.esb.layers.libs.gbo</groupId>
+			<artifactId>nav-lib-frg</artifactId>
+			<version>7.1.6</version>
+			<type>wps-library-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>no.nav.esb.layers.libs.asbo</groupId>
+			<artifactId>nav-lib-frg-sfe</artifactId>
+			<version>7.1.1</version>
+			<type>wps-library-jar</type>
+		</dependency>
+	</dependencies>
+	
+	<scm>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/layers/modules/prod/nav-prod-frg-sfe</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/layers/modules/prod/nav-prod-frg-sfe</developerConnection>
+	</scm>
+	<properties>
+		<scm.connection>${scm.root}/prod/${artifactId}</scm.connection>
+	</properties>
+</project>
