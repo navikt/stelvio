@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:OpprettSakRequest="http://nav.no/domene/pensjon/tjenester/sak/meldinger/v1" xmlns:OpprettSakRequestTOLagreSakRequestDto="http://pensjon-tjeneste-sak/no/nav/map" xmlns:lagreSakRequestDto="http://ejb/sak/pensjon/provider/nav/no" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>OpprettSakRequestTOLagreSakRequestDto</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="OpprettSakRequest:OpprettSakRequest" name="OpprettSakRequest"/>
+  <map:outputBusinessObjectVariable businessObjectRef="lagreSakRequestDto:lagreSakRequestDto" name="lagreSakRequestDto"/>
+  <map:propertyMap executionOrder="1">
+    <map:submap submapName="OpprettSakRequestTOLagreSakRequestDto:SakTOSakDto">
+      <map:input businessObjectVariableRef="OpprettSakRequest" property="sak" variableName="Sak"/>
+      <map:output businessObjectVariableRef="lagreSakRequestDto" property="sak" variableName="sakDto"/>
+    </map:submap>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:submap submapName="OpprettSakRequestTOLagreSakRequestDto:TilgangTOTilgangDto">
+      <map:input businessObjectVariableRef="OpprettSakRequest" property="tilgang" variableName="Tilgang"/>
+      <map:output businessObjectVariableRef="lagreSakRequestDto" property="tilgang" variableName="tilgangDto"/>
+    </map:submap>
+  </map:propertyMap>
+</map:businessObjectMap>

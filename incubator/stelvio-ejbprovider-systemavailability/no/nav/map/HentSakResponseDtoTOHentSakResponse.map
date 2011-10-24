@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GBOPensjonssak="http://nav-lib-pen/no/nav/lib/pen/gbo" xmlns:GBOPensjonssak_1="http://nav.no/domene/pensjon/sak/v1" xmlns:HentSakResponse="http://nav.no/domene/pensjon/tjenester/sak/meldinger/v1" xmlns:HentSakResponseDto="http://to.sak.pensjon.dto.nav.no" xmlns:HentSakResponseDtoTOGBOPensjonssak="http://nav-ent-pen-pensjonssak/no/nav/infmap" xmlns:SakDtoTOGBOPensjonssak="http://nav-ent-pen-pensjonssak/no/nav/map" xmlns:SakDtoTOGBOPensjonssak_1="http://pensjon-tjeneste-sak/no/nav/map" xmlns:hentSakResponseDto="http://ejb/sak/pensjon/provider/nav/no" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>HentSakResponseDtoTOHentSakResponse</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="hentSakResponseDto:hentSakResponseDto" name="hentSakResponseDto"/>
+  <map:outputBusinessObjectVariable businessObjectRef="HentSakResponse:HentSakResponse" name="HentSakResponse"/>
+  <map:propertyMap executionOrder="1">
+    <map:submap submapName="SakDtoTOGBOPensjonssak_1:SakDtoTOSak">
+      <map:input businessObjectVariableRef="hentSakResponseDto" property="sak" variableName="sakDto"/>
+      <map:output businessObjectVariableRef="HentSakResponse" property="sak" variableName="Sak"/>
+    </map:submap>
+  </map:propertyMap>
+</map:businessObjectMap>

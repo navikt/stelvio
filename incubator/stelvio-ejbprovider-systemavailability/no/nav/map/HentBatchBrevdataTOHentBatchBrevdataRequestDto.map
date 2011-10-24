@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GBOHentBatchBrevdata="http://nav-lib-pen/no/nav/lib/pen/gbo" xmlns:GBOHentBatchBrevdataTOHentBatchBrevdataRequestDto="http://nav-ent-pen-pensjonssak/no/nav/map" xmlns:GBOHentBatchBrevdata_1="http://nav.no/domene/pensjon/tjenester/sak/meldinger/v1" xmlns:HentBatchBrevdataRequestDto="http://to.sak.pensjon.dto.nav.no" xmlns:hentBatchBrevdataRequestDto="http://ejb/sak/pensjon/provider/nav/no" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>HentBatchBrevdataTOHentBatchBrevdataRequestDto</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GBOHentBatchBrevdata_1:HentBatchBrevdataRequest" name="HentBatchBrevdataRequest"/>
+  <map:outputBusinessObjectVariable businessObjectRef="hentBatchBrevdataRequestDto:hentBatchBrevdataRequestDto" name="hentBatchBrevdataRequestDto"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="HentBatchBrevdataRequest" property="internBatchbrevkode"/>
+      <map:output businessObjectVariableRef="hentBatchBrevdataRequestDto" property="internBatchbrevkode"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

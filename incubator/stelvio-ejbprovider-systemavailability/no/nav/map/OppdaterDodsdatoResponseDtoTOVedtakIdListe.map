@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:OppdaterDodsdatoResponseDtoTOVedtakIdListe="http://pensjon-tjeneste-sak/no/nav/map" xmlns:VedtakIdListe="http://nav.no/domene/pensjon/tjenester/sak/meldinger/v1" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" xmlns:oppdaterDodsdatoResponseDto="http://ejb/penperson/pensjon/provider/nav/no" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>OppdaterDodsdatoResponseDtoTOVedtakIdListe</map:name>
+  <map:import>java.util.List</map:import>
+  <map:import>java.util.ArrayList</map:import>
+  <map:inputBusinessObjectVariable businessObjectRef="oppdaterDodsdatoResponseDto:oppdaterDodsdatoResponseDto" name="oppdaterDodsdatoResponseDto"/>
+  <map:outputBusinessObjectVariable businessObjectRef="VedtakIdListe:VedtakIdListe" name="VedtakIdListe"/>
+  <map:propertyMap executionOrder="1">
+    <map:custom>
+      <map:input businessObjectVariableRef="oppdaterDodsdatoResponseDto" property="vedtakIdList"/>
+      <map:output businessObjectVariableRef="VedtakIdListe" property="vedtakId"/>
+      <map:javaCode>// The specific type of variable oppdaterDodsdatoResponseDto_vedtakIdList is java.util.List&#xD;
+// The specific type of variable VedtakIdListe_vedtakId is java.util.List&#xD;
+List&lt;String> liste = new ArrayList&lt;String>();&#xD;
+List&lt;Long> fraListe = (List&lt;Long>)oppdaterDodsdatoResponseDto_vedtakIdList;&#xD;
+int size = fraListe.size();&#xD;
+&#xD;
+for (int i = 0; i &lt; size; i++) {
+	liste.add(fraListe.get(i).toString());&#xD;
+}&#xD;
+&#xD;
+VedtakIdListe_vedtakId = liste;</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+</map:businessObjectMap>

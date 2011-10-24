@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap targetNamespace="http://pensjon-tjeneste-sak/no/nav/map" xmlns:LagreSakRequestDto="http://to.sak.pensjon.dto.nav.no" xmlns:Sak="http://nav.no/domene/pensjon/sak/v1" xmlns:TilgangTOTilgangDto="http://pensjon-tjeneste-sak/no/nav/map" xmlns:lagreSakRequestDto="http://ejb/sak/pensjon/provider/nav/no" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <map:name>SakTOSakDto</map:name>
+  <map:import>java.util.Date</map:import>
+  <map:inputBusinessObjectVariable businessObjectRef="Sak:Sak" name="Sak"/>
+  <map:outputBusinessObjectVariable businessObjectRef="lagreSakRequestDto:sakDto" name="sakDto"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="Sak" property="saksStatusKode"/>
+      <map:output businessObjectVariableRef="sakDto" property="sakStatus/code"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="Sak" property="saksTypeKode"/>
+      <map:output businessObjectVariableRef="sakDto" property="sakType/code"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="Sak" property="inhabil"/>
+      <map:output businessObjectVariableRef="sakDto" property="inhabil"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="Sak" property="fnr"/>
+      <map:output businessObjectVariableRef="sakDto" property="penPerson/fnr/pid"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

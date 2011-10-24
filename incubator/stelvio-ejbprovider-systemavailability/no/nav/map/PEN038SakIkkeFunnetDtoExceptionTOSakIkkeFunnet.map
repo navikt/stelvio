@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:FaultSakIkkeFunnet="http://nav-lib-pen/no/nav/lib/pen/fault" xmlns:FaultSakIkkeFunnet_1="http://nav.no/domene/pensjon/tjenester/sak/feil/v1" xmlns:PEN038SakIkkeFunnetDtoException="http://ejb/sak/pensjon/provider/nav/no" xmlns:PEN038SakIkkeFunnetDtoExceptionTOFaultSakIkkeFunnet="http://nav-ent-pen-pensjonssak/no/nav/map" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>PEN038SakIkkeFunnetDtoExceptionTOSakIkkeFunnet</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="PEN038SakIkkeFunnetDtoException:PEN038SakIkkeFunnetDtoException" name="PEN038SakIkkeFunnetDtoException_1"/>
+  <map:outputBusinessObjectVariable businessObjectRef="FaultSakIkkeFunnet_1:SakIkkeFunnet" name="SakIkkeFunnet"/>
+  <map:propertyMap executionOrder="1">
+    <map:join delimiter="" prefix="Error Id: ">
+      <map:input businessObjectVariableRef="PEN038SakIkkeFunnetDtoException_1" property="errorId" outputDelimiterOverride=", Error message: "/>
+      <map:input businessObjectVariableRef="PEN038SakIkkeFunnetDtoException_1" property="message" outputDelimiterOverride=""/>
+      <map:output businessObjectVariableRef="SakIkkeFunnet" property="errorMessage"/>
+    </map:join>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:customAssignment>
+      <map:output businessObjectVariableRef="SakIkkeFunnet" property="errorSource"/>
+      <map:javaCode>// The specific type of variable SakIkkeFunnet_errorSource is java.lang.String&#xD;
+SakIkkeFunnet_errorSource = no.stelvio.common.bus.util.ErrorHelperUtil.getSCAContext(&quot;pensjon-tjeneste-sak&quot;);
+</map:javaCode>
+    </map:customAssignment>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:set value="Business">
+      <map:output businessObjectVariableRef="SakIkkeFunnet" property="errorType"/>
+    </map:set>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:customAssignment>
+      <map:output businessObjectVariableRef="SakIkkeFunnet" property="dateTimeStamp"/>
+      <map:javaCode>// The specific type of variable SakIkkeFunnet_dateTimeStamp is java.lang.String&#xD;
+SakIkkeFunnet_dateTimeStamp = no.stelvio.common.bus.util.DateUtil.formatWIDString(new java.util.Date());</map:javaCode>
+    </map:customAssignment>
+  </map:propertyMap>
+</map:businessObjectMap>

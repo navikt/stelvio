@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap targetNamespace="http://pensjon-tjeneste-sak/no/nav/map" xmlns:GBOPensjonssak_1="http://nav.no/domene/pensjon/sak/v1" xmlns:SakDto="http://sak.kjerne.pensjon.dto.nav.no" xmlns:SakDtoTOGBOPensjonssak_1="http://pensjon-tjeneste-sak/no/nav/map" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" xmlns:sakDto="http://ejb/sak/pensjon/provider/nav/no" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <map:name>SakDtoTOSak</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="sakDto:sakDto" name="sakDto"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GBOPensjonssak_1:Sak" name="Sak"/>
+  <map:propertyMap executionOrder="1">
+    <map:custom>
+      <map:input businessObjectVariableRef="sakDto" property="sakId"/>
+      <map:output businessObjectVariableRef="Sak" property="saksId"/>
+      <map:javaCode>// The specific type of variable sakDto_sakId is java.lang.Long&#xD;
+// The specific type of variable Sak_saksId is java.lang.String&#xD;
+Sak_saksId = sakDto_sakId.toString();</map:javaCode>
+    </map:custom>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="sakDto" property="penPerson/fnr/pid"/>
+      <map:output businessObjectVariableRef="Sak" property="fnr"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="sakDto" property="sakType/code"/>
+      <map:output businessObjectVariableRef="Sak" property="saksTypeKode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="sakDto" property="sakStatus/code"/>
+      <map:output businessObjectVariableRef="Sak" property="saksStatusKode"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="5">
+    <map:submap submapName="SakDtoTOGBOPensjonssak_1:TilgangDtoTOTilgang">
+      <map:input businessObjectVariableRef="sakDto" property="midlertidigTilgangListe" variableName="tilgangDto"/>
+      <map:output businessObjectVariableRef="Sak" property="midlertidigTilgangListe" variableName="Tilgang"/>
+    </map:submap>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="6">
+    <map:move>
+      <map:input businessObjectVariableRef="sakDto" property="inhabil"/>
+      <map:output businessObjectVariableRef="Sak" property="inhabil"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="7">
+    <map:submap submapName="SakDtoTOGBOPensjonssak_1:TilgangDtoTOTilgang">
+      <map:input businessObjectVariableRef="sakDto" property="eierTilgang" variableName="tilgangDto"/>
+      <map:output businessObjectVariableRef="Sak" property="eierTilgang" variableName="Tilgang"/>
+    </map:submap>
+  </map:propertyMap>
+</map:businessObjectMap>

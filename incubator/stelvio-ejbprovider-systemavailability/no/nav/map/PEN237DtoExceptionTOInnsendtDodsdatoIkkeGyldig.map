@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:InnsendtDodsdatoIkkeGyldig="http://nav.no/domene/pensjon/tjenester/sak/feil/v1" xmlns:PEN237DtoExceptionTOInnsendtDodsdatoIkkeGyldig="http://pensjon-tjeneste-sak/no/nav/map" xmlns:PEN237InnsendtDodsdatoIkkeGyldigDtoException="http://ejb/penperson/pensjon/provider/nav/no" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>PEN237DtoExceptionTOInnsendtDodsdatoIkkeGyldig</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="PEN237InnsendtDodsdatoIkkeGyldigDtoException:PEN237InnsendtDodsdatoIkkeGyldigDtoException" name="PEN237InnsendtDodsdatoIkkeGyldigDtoException"/>
+  <map:outputBusinessObjectVariable businessObjectRef="InnsendtDodsdatoIkkeGyldig:InnsendtDodsdatoIkkeGyldig" name="InnsendtDodsdatoIkkeGyldig"/>
+  <map:propertyMap executionOrder="1">
+    <map:join prefix="Error Id: ">
+      <map:input businessObjectVariableRef="PEN237InnsendtDodsdatoIkkeGyldigDtoException" property="errorId" outputDelimiterOverride=", Error message: "/>
+      <map:input businessObjectVariableRef="PEN237InnsendtDodsdatoIkkeGyldigDtoException" property="message"/>
+      <map:output businessObjectVariableRef="InnsendtDodsdatoIkkeGyldig" property="errorMessage"/>
+    </map:join>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:set value="Business">
+      <map:output businessObjectVariableRef="InnsendtDodsdatoIkkeGyldig" property="errorType"/>
+    </map:set>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:customAssignment>
+      <map:output businessObjectVariableRef="InnsendtDodsdatoIkkeGyldig" property="dateTimeStamp"/>
+      <map:javaCode>// The specific type of variable InnsendtDodsdatoIkkeGyldig_dateTimeStamp is java.lang.String&#xD;
+InnsendtDodsdatoIkkeGyldig_dateTimeStamp = no.stelvio.common.bus.util.DateUtil.formatWIDString(new java.util.Date());</map:javaCode>
+    </map:customAssignment>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:customAssignment>
+      <map:output businessObjectVariableRef="InnsendtDodsdatoIkkeGyldig" property="errorSource"/>
+      <map:javaCode>// The specific type of variable InnsendtDodsdatoIkkeGyldig_errorSource is java.lang.String&#xD;
+InnsendtDodsdatoIkkeGyldig_errorSource = no.stelvio.common.bus.util.ErrorHelperUtil.getSCAContext(&quot;pensjon-tjeneste-sak&quot;);</map:javaCode>
+    </map:customAssignment>
+  </map:propertyMap>
+</map:businessObjectMap>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap targetNamespace="http://pensjon-tjeneste-sak/no/nav/map" xmlns:Tilgang="http://nav.no/domene/pensjon/sak/v1" xmlns:TilgangTOTilgangDto="http://pensjon-tjeneste-sak/no/nav/map" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" xmlns:tilgangDto="http://ejb/sak/pensjon/provider/nav/no" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <map:name>TilgangTOTilgangDto</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="Tilgang:Tilgang" name="Tilgang"/>
+  <map:outputBusinessObjectVariable businessObjectRef="tilgangDto:tilgangDto" name="tilgangDto"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="Tilgang" property="tilgangTypeKode"/>
+      <map:output businessObjectVariableRef="tilgangDto" property="tilgangType/code"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="Tilgang" property="tilgangArsakKode"/>
+      <map:output businessObjectVariableRef="tilgangDto" property="tilgangArsak/code"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="Tilgang" property="enhetId"/>
+      <map:output businessObjectVariableRef="tilgangDto" property="tilgangGittTil/enhetId"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

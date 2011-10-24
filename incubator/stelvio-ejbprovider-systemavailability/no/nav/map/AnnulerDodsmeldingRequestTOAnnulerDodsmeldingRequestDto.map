@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:AnnulerDodsmeldingRequestDto="http://to.vedlikehold.pensjon.dto.nav.no" xmlns:GBOAnnulerDodsmeldingRequest="http://nav-lib-pen/no/nav/lib/pen/gbo" xmlns:GBOAnnulerDodsmeldingRequestTOAnnulerDodsmeldingRequestDTO="http://nav-ent-pen-pensjonssak/no/nav/map" xmlns:GBOAnnulerDodsmeldingRequest_1="http://nav.no/domene/pensjon/tjenester/sak/meldinger/v1" xmlns:annulerDodsmeldingRequestDto="http://ejb/vedlikehold/pensjon/provider/nav/no" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>AnnulerDodsmeldingRequestTOAnnulerDodsmeldingRequestDto</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GBOAnnulerDodsmeldingRequest_1:AnnulerDodsmeldingRequest" name="AnnulerDodsmeldingRequest"/>
+  <map:outputBusinessObjectVariable businessObjectRef="annulerDodsmeldingRequestDto:annulerDodsmeldingRequestDto" name="annulerDodsmeldingRequestDto"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="AnnulerDodsmeldingRequest" property="fnr"/>
+      <map:output businessObjectVariableRef="annulerDodsmeldingRequestDto" property="personOppdatert/oppdatertPerson/fnr/pid"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

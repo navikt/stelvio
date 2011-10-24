@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GBOOppdaterDodsdatoResponse="http://nav-lib-pen/no/nav/lib/pen/gbo" xmlns:GBOOppdaterDodsdatoResponse_1="http://nav.no/domene/pensjon/tjenester/sak/meldinger/v1" xmlns:OppdaterDodsdatoResponseDto="http://to.penperson.pensjon.dto.nav.no" xmlns:OppdaterDodsdatoResponseDtoTOGBOOppdaterDodsdatoResponse="http://nav-ent-pen-pensjonssak/no/nav/map" xmlns:OppdaterDodsdatoResponseDtoTOVedtakIdListe="http://pensjon-tjeneste-sak/no/nav/map" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" xmlns:oppdaterDodsdatoResponseDto="http://ejb/penperson/pensjon/provider/nav/no" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>OppdaterDodsdatoResponseDtoTOOppdaterDodsdatoResponse</map:name>
+  <map:import>java.util.List</map:import>
+  <map:import>java.util.ArrayList</map:import>
+  <map:inputBusinessObjectVariable businessObjectRef="oppdaterDodsdatoResponseDto:oppdaterDodsdatoResponseDto" name="oppdaterDodsdatoResponseDto"/>
+  <map:outputBusinessObjectVariable businessObjectRef="GBOOppdaterDodsdatoResponse_1:OppdaterDodsdatoResponse" name="OppdaterDodsdatoResponse"/>
+  <map:propertyMap executionOrder="1">
+    <map:submap submapName="OppdaterDodsdatoResponseDtoTOVedtakIdListe:OppdaterDodsdatoResponseDtoTOVedtakIdListe">
+      <map:input businessObjectVariableRef="oppdaterDodsdatoResponseDto" variableName="oppdaterDodsdatoResponseDto"/>
+      <map:output businessObjectVariableRef="OppdaterDodsdatoResponse" property="vedtakIdListe" variableName="VedtakIdListe"/>
+    </map:submap>
+  </map:propertyMap>
+</map:businessObjectMap>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:DodsdatoPaSammeDatoAlleredeRegistrert="http://nav.no/domene/pensjon/tjenester/sak/feil/v1" xmlns:PEN235DodsDatoPaSammeDagAlleredeRegistrertDtoException="http://ejb/penperson/pensjon/provider/nav/no" xmlns:PEN235DtoExceptionTODodsdatoPaSammeDatoAlleredeRegistrert="http://pensjon-tjeneste-sak/no/nav/map" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>PEN235DtoExceptionTODodsdatoPaSammeDatoAlleredeRegistrert</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="PEN235DodsDatoPaSammeDagAlleredeRegistrertDtoException:PEN235DodsDatoPaSammeDagAlleredeRegistrertDtoException" name="PEN235DodsDatoPaSammeDagAlleredeRegistrertDtoException"/>
+  <map:outputBusinessObjectVariable businessObjectRef="DodsdatoPaSammeDatoAlleredeRegistrert:DodsdatoPaSammeDatoAlleredeRegistrert" name="DodsdatoPaSammeDatoAlleredeRegistrert"/>
+  <map:propertyMap executionOrder="1">
+    <map:join prefix="Error Id: ">
+      <map:input businessObjectVariableRef="PEN235DodsDatoPaSammeDagAlleredeRegistrertDtoException" property="errorId" outputDelimiterOverride=", Error message: "/>
+      <map:input businessObjectVariableRef="PEN235DodsDatoPaSammeDagAlleredeRegistrertDtoException" property="message"/>
+      <map:output businessObjectVariableRef="DodsdatoPaSammeDatoAlleredeRegistrert" property="errorMessage"/>
+    </map:join>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:set value="Business">
+      <map:output businessObjectVariableRef="DodsdatoPaSammeDatoAlleredeRegistrert" property="errorType"/>
+    </map:set>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:customAssignment>
+      <map:output businessObjectVariableRef="DodsdatoPaSammeDatoAlleredeRegistrert" property="dateTimeStamp"/>
+      <map:javaCode>// The specific type of variable DodsdatoPaSammeDatoAlleredeRegistrert_dateTimeStamp is java.lang.String&#xD;
+DodsdatoPaSammeDatoAlleredeRegistrert_dateTimeStamp = no.stelvio.common.bus.util.DateUtil.formatWIDString(new java.util.Date());</map:javaCode>
+    </map:customAssignment>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:customAssignment>
+      <map:output businessObjectVariableRef="DodsdatoPaSammeDatoAlleredeRegistrert" property="errorSource"/>
+      <map:javaCode>// The specific type of variable DodsdatoPaSammeDatoAlleredeRegistrert_errorSource is java.lang.String&#xD;
+DodsdatoPaSammeDatoAlleredeRegistrert_errorSource = no.stelvio.common.bus.util.ErrorHelperUtil.getSCAContext(&quot;pensjon-tjeneste-sak&quot;);</map:javaCode>
+    </map:customAssignment>
+  </map:propertyMap>
+</map:businessObjectMap>

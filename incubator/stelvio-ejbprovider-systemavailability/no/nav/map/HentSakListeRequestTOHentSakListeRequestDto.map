@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:GBOHentPensjonssakListeRequest="http://nav-lib-pen/no/nav/lib/pen/gbo" xmlns:GBOHentPensjonssakListeRequest_1="http://nav.no/domene/pensjon/tjenester/sak/meldinger/v1" xmlns:HentSakListeRequestDto="http://to.sak.pensjon.dto.nav.no" xmlns:HentSakListeRequestDtoTOGBOHentPensjonssakListeRequest="http://nav-ent-pen-pensjonssak/no/nav/map" xmlns:hentSakListeRequestDto="http://ejb/sak/pensjon/provider/nav/no" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://pensjon-tjeneste-sak/no/nav/map">
+  <map:name>HentSakListeRequestTOHentSakListeRequestDto</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="GBOHentPensjonssakListeRequest_1:HentSakListeRequest" name="HentSakListeRequest"/>
+  <map:outputBusinessObjectVariable businessObjectRef="hentSakListeRequestDto:hentSakListeRequestDto" name="hentSakListeRequestDto"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="HentSakListeRequest" property="enhetId"/>
+      <map:output businessObjectVariableRef="hentSakListeRequestDto" property="enhetId"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="HentSakListeRequest" property="saksTypeKode"/>
+      <map:output businessObjectVariableRef="hentSakListeRequestDto" property="sakType/code"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="HentSakListeRequest" property="saksStatusKode"/>
+      <map:output businessObjectVariableRef="hentSakListeRequestDto" property="sakStatus/code"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="4">
+    <map:move>
+      <map:input businessObjectVariableRef="HentSakListeRequest" property="fnr"/>
+      <map:output businessObjectVariableRef="hentSakListeRequestDto" property="pid/pid"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>
