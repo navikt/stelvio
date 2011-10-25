@@ -2743,7 +2743,6 @@ incubator/stelvio-ejbprovider-systemavailability/no/nav/provider/pensjon/vedlike
 incubator/stelvio-ejbprovider-systemavailability/no/nav/provider/pensjon/vedlikehold/ejb/jaxws/SlettFodselsnummer.java -text
 incubator/stelvio-ejbprovider-systemavailability/no/nav/provider/pensjon/vedlikehold/ejb/jaxws/SlettFodselsnummerResponse.class -text
 incubator/stelvio-ejbprovider-systemavailability/no/nav/provider/pensjon/vedlikehold/ejb/jaxws/SlettFodselsnummerResponse.java -text
-incubator/stelvio-ejbprovider-systemavailability/pom.xml -text
 incubator/stelvio-ejbprovider-systemavailability/sca.module -text
 incubator/stelvio-ejbprovider-systemavailability/sca.module.attributes -text
 incubator/stelvio-ejbprovider-systemavailability/sca.modulex -text
