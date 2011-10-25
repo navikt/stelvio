@@ -3,7 +3,6 @@
 	<name>stelvio-ejbprovider-systemavailability</name>
 	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
-		<project>pensjon-sak-tjenestespesifikasjon</project>
 		<project>stelvio-commons-lib</project>
 	</projects>
 	<buildSpec>
