@@ -1,6 +1,7 @@
 package no.nav.java;
 
 import no.nav.dto.pensjon.exception.PEN038SakIkkeFunnetDtoException;
+import no.nav.dto.pensjon.kjerne.sak.BatchBrevdataDto;
 import no.nav.dto.pensjon.sak.to.HentBatchBrevdataRequestDto;
 import no.nav.dto.pensjon.sak.to.HentBatchBrevdataResponseDto;
 import no.nav.dto.pensjon.sak.to.HentKontrollpunktListeRequestDto;
@@ -17,9 +18,7 @@ import no.nav.dto.pensjon.sak.to.LagreSakRequestDto;
 import no.nav.dto.pensjon.sak.to.LagreSakResponseDto;
 import no.nav.provider.pensjon.sak.SakServiceBi;
 
-import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.sca.ServiceManager;
-import commonj.sdo.DataObject;
 
 public class Component1Impl2 implements SakServiceBi {
 	/**
@@ -91,8 +90,25 @@ public class Component1Impl2 implements SakServiceBi {
 	 */
 	public HentBatchBrevdataResponseDto hentBatchBrevdata(
 			HentBatchBrevdataRequestDto dtoRequest) {
-		//TODO Needs to be implemented.
-		return null;
+		
+		//Creating a stub for recording
+		HentBatchBrevdataResponseDto hentBatchBrevdataResponseDto = new HentBatchBrevdataResponseDto();
+		BatchBrevdataDto batchBrevdataDto = new BatchBrevdataDto();
+		
+		batchBrevdataDto.setBrevGruppe("brevGruppe");
+		batchBrevdataDto.setBrevkode("brevkode");
+		batchBrevdataDto.setDokumentType("dokumentType");
+		batchBrevdataDto.setElektroniskDistribusjon(true);
+		batchBrevdataDto.setFagsystem("fagsystem");
+		batchBrevdataDto.setInnhold("innhold");
+		batchBrevdataDto.setInternBatchbrevkode("internBatchbrevkode");
+		batchBrevdataDto.setKategori("kategori");
+		batchBrevdataDto.setRedigerbart(true);
+		batchBrevdataDto.setSensitivt(true);
+				
+		hentBatchBrevdataResponseDto.setBatchBrevdata(batchBrevdataDto);
+		
+		return hentBatchBrevdataResponseDto;
 	}
 
 	/* (non-Javadoc)
