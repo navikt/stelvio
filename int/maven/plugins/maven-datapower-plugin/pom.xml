@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>no.nav.maven.plugins</groupId>
 			<artifactId>datapower-xml-mgmt</artifactId>
-			<version>1.3</version>
+			<version>1.4-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
