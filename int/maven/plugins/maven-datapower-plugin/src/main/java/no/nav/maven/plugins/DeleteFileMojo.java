@@ -20,7 +20,7 @@ public class DeleteFileMojo extends AbstractDeviceMgmtMojo {
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 		getLog().info("Executing DeleteFileMojo");
 		try {
-			getXMLMgmtSession().deleteFile(DeviceFileStore.LOCAL, "service-registry.xml");
+			getXMLMgmtSession().deleteFile("service-registry.xml", DeviceFileStore.LOCAL);
 		} catch (XMLMgmtException e) {
 			throw new MojoExecutionException("Failed to delete file in the local:/// directory on the DataPower device",e);
 		}
