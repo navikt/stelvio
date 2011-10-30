@@ -5071,6 +5071,7 @@ int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/co
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDirCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/CreateDomainCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DeleteDomainCommand.java -text
+int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DeleteFileCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/DoImportCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/FetchFileCommand.java -text
 int/maven/utilities/datapower-xml-mgmt/src/main/java/no/nav/datapower/xmlmgmt/command/GenerateCSRCommand.java -text

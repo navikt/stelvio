@@ -19,6 +19,7 @@ import no.nav.datapower.xmlmgmt.command.AddStaticRouteCommand;
 import no.nav.datapower.xmlmgmt.command.CreateDirCommand;
 import no.nav.datapower.xmlmgmt.command.CreateDomainCommand;
 import no.nav.datapower.xmlmgmt.command.DeleteDomainCommand;
+import no.nav.datapower.xmlmgmt.command.DeleteFileCommand;
 import no.nav.datapower.xmlmgmt.command.DoImportCommand;
 import no.nav.datapower.xmlmgmt.command.GetStatusCommand;
 import no.nav.datapower.xmlmgmt.command.RemoveDirCommand;
@@ -147,6 +148,12 @@ public class XMLMgmtSession {
 		for (String dir : dirs) {
 			request.addCommand(new RemoveDirCommand(location,dir));
 		}
+		return doRequest(request);
+	}
+	
+	public String deleteFile(String filename, DeviceFileStore location) throws XMLMgmtException {
+		XMLMgmtRequest request = createRequest();
+		request.addCommand(new DeleteFileCommand(location,filename));
 		return doRequest(request);
 	}
 	
