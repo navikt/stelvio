@@ -27,7 +27,7 @@ public class ImportFilesMojo extends AbstractDeviceMgmtMojo {
 		if (!importDirectory.isDirectory())
 			throw new IllegalArgumentException("Specified path '" + importDirectory + "'is not a directory");
 		File[] children = importDirectory.listFiles((FileFilter)FileFilterUtils.directoryFileFilter());
-		System.out.println(importDirectory + "mappe");
+		System.out.println(importDirectory + " mappe, lengde " + children.length);
 		for (File child : children) {
 			getLog().info("File = " + child);
 			try {
