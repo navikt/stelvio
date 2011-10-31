@@ -38,20 +38,16 @@ public class ImportFilesMojo extends AbstractDeviceMgmtMojo {
 			File[] children = importDirectory.listFiles();
 			System.out.println(importDirectory + " mappe, lengde " + children.length);
 			List<File> filelist = Arrays.asList(children);
-			
-//			for (File child : children) {
-			
-//				getLog().info("File = " + child);
-				try {
-					//DeviceFileStore childLocation = DeviceFileStore.fromString(child.getName());
-					//DeviceFileStore location = childLocation != null ? childLocation : DeviceFileStore.LOCAL;
-					DeviceFileStore location = DeviceFileStore.LOCAL;
-					getLog().info("Importing files to device location '" + location + "'");
-					getXMLMgmtSession().importFiles(filelist, importDirectory, location);
-				} catch (XMLMgmtException e) {
-					throw new MojoExecutionException("Failed to import files from directory '" + importDirectory + "' to domain '" + getDomain() + "'", e);
+			try {
+				DeviceFileStore location = DeviceFileStore.LOCAL;
+				getLog().info("Importing following files to device location '" + location + "': ");
+				for (File child : children) {
+					getLog().info("File = " + child);
 				}
-//			}
+				getXMLMgmtSession().importFiles(filelist, importDirectory, location);
+			} catch (XMLMgmtException e) {
+				throw new MojoExecutionException("Failed to import files from directory '" + importDirectory + "' to domain '" + getDomain() + "'", e);
+			}
 		} else {
 			File[] children = importDirectory.listFiles((FileFilter)FileFilterUtils.directoryFileFilter());
 			for (File child : children) {
