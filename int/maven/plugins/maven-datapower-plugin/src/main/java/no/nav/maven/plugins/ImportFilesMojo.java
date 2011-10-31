@@ -22,25 +22,46 @@ public class ImportFilesMojo extends AbstractDeviceMgmtMojo {
 	 * @parameter expression="${importDir}" alias="importDir"
 	 */
 	private File importDirectory;
+	
+	/**
+	 * @parameter expression="${singleFiles}" default-value="false"
+	 */
+	private boolean singleFiles;
 
 	protected void doExecute() throws MojoExecutionException, MojoFailureException {
 		if (!importDirectory.isDirectory())
 			throw new IllegalArgumentException("Specified path '" + importDirectory + "'is not a directory");
-//		File[] children = importDirectory.listFiles((FileFilter)FileFilterUtils.directoryFileFilter());
-		File[] children = importDirectory.listFiles();
-		System.out.println(importDirectory + " mappe, lengde " + children.length);
-		for (File child : children) {
-			getLog().info("File = " + child);
-			try {
-				DeviceFileStore childLocation = DeviceFileStore.fromString(child.getName());
-				DeviceFileStore location = childLocation != null ? childLocation : DeviceFileStore.LOCAL;
-				if (location == DeviceFileStore.LOCAL) {
-					getXMLMgmtSession().createDirs(child, DeviceFileStore.LOCAL);
+		if (singleFiles){
+			File[] children = importDirectory.listFiles();
+			System.out.println(importDirectory + " mappe, lengde " + children.length);
+			for (File child : children) {
+				getLog().info("File = " + child);
+				try {
+					DeviceFileStore childLocation = DeviceFileStore.fromString(child.getName());
+					DeviceFileStore location = childLocation != null ? childLocation : DeviceFileStore.LOCAL;
+					getLog().info("Importing files to device location '" + location + "'");
+					getXMLMgmtSession().importFiles(child, location);
+				} catch (XMLMgmtException e) {
+					throw new MojoExecutionException("Failed to import files from directory '" + importDirectory + "' to domain '" + getDomain() + "'", e);
 				}
-				getLog().info("Importing files to device location '" + location + "'");
-				getXMLMgmtSession().importFiles(child, location);
-			} catch (XMLMgmtException e) {
-				throw new MojoExecutionException("Failed to import files from directory '" + importDirectory + "' to domain '" + getDomain() + "'", e);
+			}
+		} else {
+			File[] children = importDirectory.listFiles((FileFilter)FileFilterUtils.directoryFileFilter());
+	
+			System.out.println(importDirectory + " mappe, lengde " + children.length);
+			for (File child : children) {
+				getLog().info("File = " + child);
+				try {
+					DeviceFileStore childLocation = DeviceFileStore.fromString(child.getName());
+					DeviceFileStore location = childLocation != null ? childLocation : DeviceFileStore.LOCAL;
+					if (location == DeviceFileStore.LOCAL) {
+						getXMLMgmtSession().createDirs(child, DeviceFileStore.LOCAL);
+					}
+					getLog().info("Importing files to device location '" + location + "'");
+					getXMLMgmtSession().importFiles(child, location);
+				} catch (XMLMgmtException e) {
+					throw new MojoExecutionException("Failed to import files from directory '" + importDirectory + "' to domain '" + getDomain() + "'", e);
+				}
 			}
 		}
 	}
