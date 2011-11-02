@@ -84,30 +84,6 @@ public class WSDLEditor {
 		}
 	}
 
-	/**
-	 * Set SOAP action according to pattern $BindingNamespace/$OperationName
-	 */
-	@SuppressWarnings("unchecked")
-	public void setSOAPActions() {
-		Collection<Service> services = definition.getServices().values();
-		for (Service service : services) {
-			Collection<Port> ports = service.getPorts().values();
-			for (Port port : ports) {
-				Binding binding = port.getBinding();
-				QName bindingQName = binding.getQName();
-				for (BindingOperation bindingOperation : (List<BindingOperation>) binding.getBindingOperations()) {
-					String operationName = bindingOperation.getName();
-					String soapActionURI = bindingQName.getNamespaceURI() + "/" + operationName;
-					for (ExtensibilityElement extensibilityElement : (List<ExtensibilityElement>) bindingOperation.getExtensibilityElements()) {
-						if (extensibilityElement instanceof SOAPOperation) {
-							((SOAPOperation) extensibilityElement).setSoapActionURI(soapActionURI);
-						}
-					}
-				}
-			}
-		}
-	}
-
 	public void saveChanges() throws FileNotFoundException, WSDLException, URISyntaxException {
 		WSDLFactory.newInstance().newWSDLWriter().writeWSDL(definition, new FileOutputStream(new File(URI.create(definition.getDocumentBaseURI().replace(" ", "%20")))));
 	}

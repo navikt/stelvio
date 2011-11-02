@@ -220,9 +220,6 @@ public class ExportWsdlMojo extends AbstractMojo {
 						}
 					}
 
-					// Add SOAP Actions
-					wsdlEditor.setSOAPActions();
-					
 					// Write changes back to WSDL file
 					try {
 						wsdlEditor.saveChanges();
