@@ -1,5 +1,12 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
+  
+    <parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.2.2</version>
+	</parent>
+  
   <groupId>no.nav.maven.plugins</groupId>
   <artifactId>maven-plugins</artifactId>
   <packaging>pom</packaging>
