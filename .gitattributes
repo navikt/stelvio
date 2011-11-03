@@ -3385,10 +3385,16 @@ incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-st
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/.settings/org.eclipse.wst.validation.prefs -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/META-INF/MANIFEST.MF -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/Metronome.wsdl -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/MetronomeWSEXP.export -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/sca.module -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/sca.module.attributes -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/sca.modulex -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/stelvio-example-metronome-static-broker.component -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/stelvio-example-metronome-static-broker.medflow -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/stelvio-example-metronome-static-broker.mfc -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/stelvio-example-metronome-static-broker.mfcex -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/stelvio-example-metronome-static-broker_MetronomeWSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/.project -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/UML2WSDL.tc -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/UML2XSD.tc -text
