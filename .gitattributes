@@ -3374,6 +3374,7 @@ incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/R
 incubator/stelvio-example/stelvio-example-gateway/pom.xml -text
 incubator/stelvio-example/stelvio-example-gateway/sca.module -text
 incubator/stelvio-example/stelvio-example-gateway/sca.modulex -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-meteronome-test/Metronome-soapui-project.xml -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/.classpath -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/.project -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/.settings/com.ibm.ws.sca.rapiddeploy.style.prefs -text
