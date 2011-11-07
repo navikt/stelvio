@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>maven-plugin-pom</artifactId>
-	<version>1.4-SNAPSHOT</version>
+	<version>1.4</version>
 	<packaging>pom</packaging>
 	<name>Maven Plugin Master POM</name>
 
@@ -127,7 +127,7 @@
 	</properties>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-plugin-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-plugin-pom</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugin-pom-1.4</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/tags/maven-plugin-pom-1.4</developerConnection>
 	</scm>
 </project>
