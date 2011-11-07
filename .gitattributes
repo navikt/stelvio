@@ -3386,7 +3386,9 @@ incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-st
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/Metronome.wsdl -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/MetronomeSubscriber.import -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/MetronomeWSEXP.export -text
+incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/Metronome_Endpoint.wsdl -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/sca.module -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/sca.module.attributes -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/sca.modulex -text

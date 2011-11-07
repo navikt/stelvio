@@ -3,5 +3,11 @@
   <interfaces>
     <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Metronome"/>
   </interfaces>
+  <references>
+    <reference name="MetronomePartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns1:Metronome"/>
+    </reference>
+  </references>
+  <extendedOperationBinding source="tick" target="tick" sourcePortType="ns1:Metronome" targetReference="MetronomePartner"/>
   <operationFlow medflow="stelvio-example-metronome-static-broker.medflow"/>
 </mfc:interfaceMediationFlow>
