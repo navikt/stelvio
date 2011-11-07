@@ -3398,9 +3398,6 @@ incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-st
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/stelvio-example-metronome-static-broker.mfc -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/stelvio-example-metronome-static-broker.mfcex -text
 incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-static-broker/stelvio-example-metronome-static-broker_MetronomeWSEXP.wsdl -text
-incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-subscriberEAR/.project -text
-incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-subscriberEAR/.settings/org.eclipse.wst.common.component -text
-incubator/stelvio-example/stelvio-example-metronome/stelvio-example-metronome-subscriberEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/.project -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/UML2WSDL.tc -text
 incubator/stelvio-example/stelvio-example-order/stelvio-example-order-design/UML2XSD.tc -text
