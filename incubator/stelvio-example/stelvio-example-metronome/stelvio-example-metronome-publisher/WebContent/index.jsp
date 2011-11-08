@@ -4,7 +4,8 @@
 
 <%@page import="stelvio.MetronomeWSEXP_MetronomeHttpPortProxy"%>
 <%@page import="java.util.GregorianCalendar"%>
-<%@page import="javax.xml.datatype.DatatypeFactory"%><html>
+<%@page import="javax.xml.datatype.DatatypeFactory"%>
+<%@page import="nav.Publish"%><html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -12,9 +13,10 @@
 <body>
 Sent tick
 <%
-MetronomeWSEXP_MetronomeHttpPortProxy proxy = new MetronomeWSEXP_MetronomeHttpPortProxy();
+//MetronomeWSEXP_MetronomeHttpPortProxy proxy = new MetronomeWSEXP_MetronomeHttpPortProxy();
 GregorianCalendar calendar = new GregorianCalendar();
-proxy.tick(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
+//proxy.tick(DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar));
+new Publish().publish(calendar);
 out.println(calendar.getTime());
 %>
 </body>
