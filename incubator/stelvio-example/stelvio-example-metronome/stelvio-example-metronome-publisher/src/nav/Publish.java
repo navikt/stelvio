@@ -13,6 +13,7 @@ import javax.xml.ws.soap.AddressingFeature;
 
 import org.oasis_open.docs.wsn.b_2.NotificationMessageHolderType;
 import org.oasis_open.docs.wsn.b_2.Notify;
+import org.oasis_open.docs.wsn.b_2.TopicExpressionType;
 import org.oasis_open.docs.wsn.b_2.NotificationMessageHolderType.Message;
 
 import com.ibm.websphere.wsn.notification_broker.NotificationBroker;
@@ -26,7 +27,7 @@ public class Publish {
 	private static final QName BROKER_SERVICE_QNAME = new QName(BROKER_WSDL_TARGET_NS, BROKER_SERVICE_NAME);
 
 	public void publish(GregorianCalendar calendar) throws MalformedURLException, SOAPException {
-		Service broker = Service.create(new URL("http://localhost:9080/MetronomenMetronomenSPNB/Service" + "?wsdl"), BROKER_SERVICE_QNAME);
+		Service broker = Service.create(new URL("http://localhost:9081/MetronomenMetronomenSPNB/Service" + "?wsdl"), BROKER_SERVICE_QNAME);
 		NotificationBroker port = broker.getPort(BROKER_PORTTYPE_QNAME, NotificationBroker.class, new AddressingFeature());
 		Message message = new Message();
 		SOAPFactory soapFactory = SOAPFactory.newInstance();
@@ -39,8 +40,19 @@ public class Publish {
 //		topicExpression.setDialect(TopicExpressionType.DIALECT_SIMPLE_TOPIC_EXPRESSION);
 //		topicExpression.addPrefixMapping("jeje", "http://nav/jeje");
 //		notificationHolder.setTopic(topicExpression);
+		TopicExpressionType topic = new TopicExpressionType();
+		topic.setDialect(com.ibm.websphere.sib.wsn.jaxb.base.TopicExpressionType.DIALECT_SIMPLE_TOPIC_EXPRESSION);
+		topic.getContent().add("Journalforing");
+		notificationHolder.setTopic(topic);
 		Notify notify = new Notify();
 		notify.getNotificationMessage().add(notificationHolder);
-		port.notify(notify);
+		long start = System.currentTimeMillis();
+		System.out.println("Start: " + start);
+		int n = 1000;
+		for (int i = 0; i++ < n;) {
+			port.notify(notify);
+		}
+		long slutt = System.currentTimeMillis();
+		System.out.println("Slutt: " + slutt + "; n=" + n + "; tid=" + (slutt-start) + "ms");
 	}
 }
