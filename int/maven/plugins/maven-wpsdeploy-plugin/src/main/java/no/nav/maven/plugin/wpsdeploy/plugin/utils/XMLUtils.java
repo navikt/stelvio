@@ -43,7 +43,7 @@ public class XMLUtils {
 					if (s.length() == 0)
 						s.append(roleElement.getChildNodes().item(0).getNodeValue());
 					else
-						s.append(";" + roleElement.getChildNodes().item(0).getNodeValue());
+						s.append("\" \"" + roleElement.getChildNodes().item(0).getNodeValue());
 				} else if (roleElement.getNodeName().equals("users")) {
 
 					NodeList users = roleElement.getChildNodes();
