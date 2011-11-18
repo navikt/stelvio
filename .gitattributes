@@ -5815,7 +5815,6 @@ int/stelvio-commons-lib/no/nav/gbo/GBOStelvioContext.xsd -text svneol=unset#text
 int/stelvio-commons-lib/no/nav/gbo/GBOStelvioFault.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/GBOStelvioFrg.xsd -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/nav/gbo/StandardFaultType.xsd -text svneol=unset#text/plain
-int/stelvio-commons-lib/no/stelvio/common/bus/handlers/jaxrpc/StelvioCommonContextHandler.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/bus/util/DataObjectUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/bus/util/DateUtil.java -text svneol=unset#text/plain
 int/stelvio-commons-lib/no/stelvio/common/bus/util/ErrorHelperUtil.java -text svneol=unset#text/plain

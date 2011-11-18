@@ -1153,8 +1153,6 @@ int/stelvio-commons-lib/no/nav/gbo/*.class
 int/stelvio-commons-lib/no/stelvio/*.class
 int/stelvio-commons-lib/no/stelvio/common/*.class
 int/stelvio-commons-lib/no/stelvio/common/bus/*.class
-int/stelvio-commons-lib/no/stelvio/common/bus/handlers/*.class
-int/stelvio-commons-lib/no/stelvio/common/bus/handlers/jaxrpc/*.class
 int/stelvio-commons-lib/no/stelvio/common/bus/util/*.class
 int/stelvio-commons-lib/no/stelvio/common/context/*.class
 int/stelvio-commons-lib/no/stelvio/common/context/jaxws/*.class
