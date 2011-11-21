@@ -14,6 +14,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.PluginManager;
+import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.archiver.Archiver;
 import org.codehaus.plexus.archiver.UnArchiver;
@@ -225,6 +226,8 @@ getLog().info("my little error!"); //rm
 		public void consumeLine(String line) {
 			if (line.toLowerCase().contains("error")) {
 				error = true;
+SystemStreamLog log = new SystemStreamLog(); //rm
+log.info("errorLineKG:"+ line); //rm
 			}
 		}
 
