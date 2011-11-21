@@ -50,6 +50,7 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 			commandLine.addArg(arg);
 
 			executeCommand(commandLine);
+getLog().info("ending executeCommand(commandLine)): "+commandLine); //rm
 			
 		} catch (SAXException e) {
 			throw new MojoFailureException("[ERROR]: " + e);

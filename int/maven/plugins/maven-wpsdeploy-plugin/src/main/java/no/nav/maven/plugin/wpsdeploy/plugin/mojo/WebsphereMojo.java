@@ -168,6 +168,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 			int retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
 					new StreamConsumerChain(systemErr).add(errorChecker));
+getLog().info("command executed["+retval+"]"); //rm
 
 			if (errorChecker.isError()) {
 				if (interactiveMode == true) {
@@ -183,6 +184,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 						throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 					}
 				} else {
+getLog().info("my little error!"); //rm
 					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 				}
 			}
