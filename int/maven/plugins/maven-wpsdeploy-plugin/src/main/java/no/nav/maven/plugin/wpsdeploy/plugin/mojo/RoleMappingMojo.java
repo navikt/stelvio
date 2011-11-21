@@ -58,7 +58,7 @@ public class RoleMappingMojo extends WebsphereUpdaterMojo {
 		} catch (ParserConfigurationException e) {
 			throw new MojoFailureException("[ERROR]: " + e);
 		}
-
+getLog().info("ending rolemapping(java)"); //rm
 	}
 
 	protected String getGoalPrettyPrint() {

@@ -27,7 +27,7 @@ import org.xml.sax.SAXException;
 public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 
 	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
-
+getLog().info("startgin ws"); //rm
 		if (!isConfigurationLoaded()){
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
 			return;
@@ -36,7 +36,7 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 		try {
 
 			StringBuilder sb = new StringBuilder();
-			
+getLog().info("File earFolder = new File(deployableArtifactsHome)(java):"+deployableArtifactsHome); //rm			
 			File earFolder = new File(deployableArtifactsHome);
 			
 			getLog().info("Checking target folder " + earFolder + " to see which modules were installed.");
@@ -69,7 +69,7 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 				File found = getConfigurationFile(environment, moduleArtifact.getArtifactId() + ".xml", moduleConfigHome);
 
 				if (found != null) {
-					
+					getLog().info("Trying: " + found);
 					String s = XMLUtils.parseWebServiceEndpoints(found);
 					
 					if (s == null || s.equals("")) {
