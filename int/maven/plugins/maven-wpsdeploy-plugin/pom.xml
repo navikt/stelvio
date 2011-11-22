@@ -11,7 +11,7 @@
 	<groupId>no.nav.maven.plugins</groupId>
 	<artifactId>maven-wpsdeploy-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.20-SNAPSHOT</version>
+	<version>1.17-SNAPSHOT</version>
 	<name>WPS deployment plugin</name>
 
 	<dependencies>
