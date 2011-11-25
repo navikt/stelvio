@@ -27,7 +27,7 @@ public class invokeProviderImpl {
 
 	/**
 	 * This method is used to locate the service for the reference
-	 * named "ContextHandlerVerifierProviderPartner".  This will return an instance of 
+	 * named "ContextHandlerVerifierProviderPartnerWS".  This will return an instance of 
 	 * {@link com.ibm.websphere.sca.Service}.  This is the dynamic
 	 * interface which is used to invoke operations on the reference service
 	 * either synchronously or asynchronously.  You will need to pass the operation
@@ -37,14 +37,14 @@ public class invokeProviderImpl {
 	 *
 	 * @return Service
 	 */
-	private Service _ContextHandlerVerifierProviderPartner = null;
+	private Service _ContextHandlerVerifierProviderPartnerWS = null;
 
-	public Service locateService_ContextHandlerVerifierProviderPartner() {
-		if (_ContextHandlerVerifierProviderPartner == null) {
-			_ContextHandlerVerifierProviderPartner = (Service) ServiceManager.INSTANCE
-					.locateService("ContextHandlerVerifierProviderPartner");
+	public Service locateService_ContextHandlerVerifierProviderPartnerWS() {
+		if (_ContextHandlerVerifierProviderPartnerWS == null) {
+			_ContextHandlerVerifierProviderPartnerWS = (Service) ServiceManager.INSTANCE
+					.locateService("ContextHandlerVerifierProviderPartnerWS");
 		}
-		return _ContextHandlerVerifierProviderPartner;
+		return _ContextHandlerVerifierProviderPartnerWS;
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class invokeProviderImpl {
 	 * on the type of input, output and fault(s).
 	 */
 	public DataObject callWSChain(DataObject request) {
-		DataObject response = ((DataObject) locateService_ContextHandlerVerifierProviderPartner()
+		DataObject response = ((DataObject) locateService_ContextHandlerVerifierProviderPartnerWS()
 				.invoke("callWSChain", request)).getDataObject(0);
 		return response;
 	}

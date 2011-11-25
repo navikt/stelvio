@@ -6,7 +6,7 @@
     </interface>
   </interfaces>
   <references>
-    <reference name="ContextHandlerVerifierProviderPartner">
+    <reference name="ContextHandlerVerifierProviderPartnerWS">
       <interface xsi:type="wsdl:WSDLPortType" portType="ns1:ContextHandlerVerifierProvider"/>
       <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
       <scdl:referenceQualifier xsi:type="scdl:Reliability"/>

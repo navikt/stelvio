@@ -7,5 +7,11 @@
   </interfaces>
   <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://localhost:9081/stelvio-example-contexthandler-providerWeb/sca/ContextHandlerVerifierProviderWSEXP" port="Binding:ContextHandlerVerifierProviderWSEXP_ContextHandlerVerifierProviderHttpPort" service="Binding:ContextHandlerVerifierProviderWSEXP_ContextHandlerVerifierProviderHttpService">
     <policySetRef bindingName="NAV ESB WSImport Binding" policySetName="NAV ESB WSImport"/>
+    <handlerChain>
+      <handler>
+        <handlerName>StelvioContextHandler</handlerName>
+        <handlerClass>no.stelvio.common.context.jaxws.StelvioContextHandler</handlerClass>
+      </handler>
+    </handlerChain>
   </esbBinding>
 </scdl:import>
