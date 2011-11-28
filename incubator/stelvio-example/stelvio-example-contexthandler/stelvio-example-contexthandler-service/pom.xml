@@ -2,9 +2,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>no.stelvio.maven.poms</groupId>
-		<artifactId>maven-wps-module-pom</artifactId>
-		<version>2.1.5</version>
+		<groupId>no.nav.esb.poms</groupId>
+		<artifactId>esb-module-pom</artifactId>
+		<version>1.5.6</version>
 	</parent>
 
 	<groupId>no.stelvio.example</groupId>
