@@ -2,12 +2,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<parent>
-		<groupId>no.stelvio.maven.poms</groupId>
-		<artifactId>maven-root-pom</artifactId>
-		<version>1.2.2</version>
-	</parent>
-	
 	<groupId>no.stelvio.example</groupId>
 	<artifactId>stelvio-example-contexthandler</artifactId>
 	<packaging>pom</packaging>
