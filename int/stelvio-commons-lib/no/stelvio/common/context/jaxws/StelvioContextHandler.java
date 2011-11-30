@@ -16,6 +16,8 @@ import no.stelvio.common.context.StelvioContextData;
 import no.stelvio.common.context.StelvioContextRepository;
 import no.stelvio.common.util.ExceptionUtils;
 
+import com.ibm.websphere.workarea.NotOriginator;
+
 public class StelvioContextHandler implements SOAPHandler<SOAPMessageContext> {
 	private static final String CLASSNAME = StelvioContextHandler.class.getName();
 	private static final Logger LOGGER = Logger.getLogger(CLASSNAME);
@@ -46,6 +48,7 @@ public class StelvioContextHandler implements SOAPHandler<SOAPMessageContext> {
 		try {
 			StelvioContextRepository.removeContext();
 		} catch (Exception e) {
+
 			LOGGER.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: " + ExceptionUtils.getStackTrace(e));
 		}
 	}
@@ -75,7 +78,16 @@ public class StelvioContextHandler implements SOAPHandler<SOAPMessageContext> {
 							+ headers.length + ".");
 				}
 			}
+		} catch (RuntimeException e){
+			
+			LOGGER.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: " + ExceptionUtils.getStackTrace(e));
+			
+			if (e.getCause() instanceof NotOriginator){
+				
+				throw new RuntimeException(e);
+			} 
 		} catch (Exception e) {
+			
 			LOGGER.logp(Level.SEVERE, CLASSNAME, methodName, "CatchedError: " + ExceptionUtils.getStackTrace(e));
 		}
 
