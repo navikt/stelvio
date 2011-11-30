@@ -5,6 +5,9 @@
 		<author>Author</author>
 	</properties>
 	<body>
+		<release version="4.1.5" date="30-11-2011" description="Bugfix release">
+			<action dev="tfc2990" type="fix">IRPORT-1086: Endre feilhåndtering i StelvioContextHandler for å kaste NotOriginator-feil</action>
+		</release>
 		<release version="4.1.4" date="15-03-2011" description="Bugfix release">
 			<action dev="tne2812" type="fix">Improved error message when an error occured reading XML (stubbing)</action>
 			<action dev="oga2812" type="fix">NAV00243862: Static initialization of JAXBContext for StelvioPropagationContext (performance)</action>
