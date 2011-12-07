@@ -1,4 +1,6 @@
 import commonj.sdo.DataObject;
+
+import com.ibm.websphere.bo.BOFactory;
 import com.ibm.websphere.sca.ServiceManager;
 
 public class EchoImpl {
@@ -41,8 +43,11 @@ public class EchoImpl {
 	 * on the type of input, output and fault(s).
 	 */
 	public DataObject callWSChain(DataObject request) {
-		request.set("request", "pong");
-		return request;
+		
+		BOFactory boFactory = (BOFactory) new ServiceManager().locateService("com/ibm/websphere/bo/BOFactory");
+		DataObject response = boFactory.create("http://stelvio-example-contexthandler-provider-lib/no/nav/dataobject", "responseObject"); 
+		response.set("response", "pong");
+		return response;
 	}
 
 }
