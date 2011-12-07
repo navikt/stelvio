@@ -5912,6 +5912,7 @@ int/stelvio-commons-lib/no/stelvio/common/bus/util/WSAddressing.java -text svneo
 int/stelvio-commons-lib/no/stelvio/common/context/SetRequestContextComponent.java -text
 int/stelvio-commons-lib/no/stelvio/common/context/SetStelvioContextComponent.java -text
 int/stelvio-commons-lib/no/stelvio/common/context/StelvioContext.java -text
+int/stelvio-commons-lib/no/stelvio/common/context/StelvioContext.xsd -text
 int/stelvio-commons-lib/no/stelvio/common/context/StelvioContextData.java -text
 int/stelvio-commons-lib/no/stelvio/common/context/StelvioContextRepository.java -text
 int/stelvio-commons-lib/no/stelvio/common/context/UserWorkAreaContextAdapter.java -text svneol=unset#text/plain
