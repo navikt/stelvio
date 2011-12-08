@@ -93,7 +93,7 @@
         <inTerminals terminalNodeID="InTerminal.in" type="CompositeType_2"/>
         <translation xmi:type="utility:ConstantString" string="LookupEndpoint"/>
       </nodes>
-      <nodes xmi:type="MessageFilter.mednode:MessageFilter" xmi:id="MessageFilter_1" name="Is_WS-A_To_header_set_" enabled="false" filters.pattern="string-length%28%2Fheaders%2FWSAHeader%2FTo%29+%3E+0" filters.terminalName="match1">
+      <nodes xmi:type="MessageFilter.mednode:MessageFilter" xmi:id="MessageFilter_1" name="Is_WS-A_To_header_set_" filters.pattern="string-length%28%2Fheaders%2FWSAHeader%2FTo%29+%3E+0" filters.terminalName="match1">
         <location x="354" y="124"/>
         <outTerminals terminalNodeID="OutTerminal.default" type="CompositeType_2"/>
         <outTerminals terminalNodeID="OutTerminal.Failure" type="CompositeType_2"/>

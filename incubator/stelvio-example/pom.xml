@@ -15,7 +15,7 @@
 	
 	<modules>
 		<module>stelvio-example-echo/stelvio-example-echo-solution</module>
-		<module>stelvio-example-gateway</module>
+		<!--module>stelvio-example-gateway</module> Build failure after upgrading Hudson server to 7.0.0.3 -->
 		<module>stelvio-example-person/stelvio-example-person-solution</module>
 		<module>stelvio-example-order/stelvio-example-order-solution</module>
 	</modules>
