@@ -19,7 +19,7 @@
 			<plugin>
 				<groupId>eviware</groupId>
 				<artifactId>maven-soapui-plugin</artifactId>
-				<version>4.0.0</version>
+				<version>3.6.1</version>
 				<executions>
 					<execution>
 						<phase>initialize</phase>
@@ -30,6 +30,8 @@
 				</executions>
 				<configuration>
 					<projectFile>${basedir}/${project.artifactId}-soapui-project.xml</projectFile>
+					<port>8081</port>
+					<noBlock>true</noBlock>
 				</configuration>
 			</plugin>
 			<!--plugin>
