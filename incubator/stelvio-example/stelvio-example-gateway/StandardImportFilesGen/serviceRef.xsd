@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<import namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" schemaLocation="wsa.xsd"/>
+	<element name="service-ref" type="bpws:ServiceRefType"/>
+	<complexType name="ServiceRefType">
+		<sequence>
+			<element ref="wsa:EndpointReference"/>
+		</sequence>
+		<attribute name="reference-scheme" type="anyURI" use="required"/>
+	</complexType>
+</schema>

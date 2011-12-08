@@ -3447,9 +3447,11 @@ incubator/stelvio-example/stelvio-example-gateway/Routing.component -text
 incubator/stelvio-example/stelvio-example-gateway/ServiceGatewayWSIMP.import -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/NativeBody.xsd -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/ServiceGateway.wsdl -text
+incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/serviceRef.xsd -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/stelvio-example-gateway_ServiceGatewayWSIMP.wsdl -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/stelvio-example-gateway_WS-I_BP_11_WSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/stelvio-example-gateway_WS-I_BP_12_WSEXP.wsdl -text
+incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/wsa.xsd -text
 incubator/stelvio-example/stelvio-example-gateway/WS-I_BP_11_WSEXP.export -text
 incubator/stelvio-example/stelvio-example-gateway/WS-I_BP_12_WSEXP.export -text
 incubator/stelvio-example/stelvio-example-gateway/no/stelvio/example/mediation/Routing.medflow -text
