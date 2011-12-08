@@ -5,18 +5,34 @@
 	<artifactId>stelvio-example-echo-test</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
-	<dependencies>
+	<!--dependencies>
 		<dependency>
 			<groupId>no.stelvio.example</groupId>
 			<artifactId>stelvio-example-echo-providerEAR</artifactId>
 			<type>ear</type>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-	</dependencies>
+	</dependencies-->
 
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>eviware</groupId>
+				<artifactId>maven-soapui-plugin</artifactId>
+				<version>4.0.1</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>mock</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<projectFile>${basedir}/${project.artifactId}-soapui-project.xml</projectFile>
+				</configuration>
+			</plugin>
+			<!--plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.2</version>
@@ -72,7 +88,7 @@
 					<projectFile>${basedir}/${project.artifactId}-soapui-project.xml</projectFile>
 					<testSuite>Smoke</testSuite>
 				</configuration>
-			</plugin>
+			</plugin-->
 		</plugins>
 	</build>
 </project>
