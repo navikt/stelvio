@@ -30,7 +30,7 @@
       <soap:address location="http://www.stelvio.no/example/services/V1/EchoService/ExampleProvider/echoService/EchoServicePort"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\src\stelvio-trunk-incubator\stelvio-example\stelvio-example-echo\stelvio-example-echo-test\target\dependency\example\services\V1\EchoService\EchoService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="EchoService" targetNamespace="http://www.stelvio.no/example/services/V1/EchoService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.stelvio.no/example/services/V1/EchoService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>target\dependency\example\services\V1\EchoService\EchoService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="EchoService" targetNamespace="http://www.stelvio.no/example/services/V1/EchoService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.stelvio.no/example/services/V1/EchoService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
     <xsd:schema targetNamespace="http://www.stelvio.no/example/services/V1/EchoService/">
       <xsd:element name="echo">
