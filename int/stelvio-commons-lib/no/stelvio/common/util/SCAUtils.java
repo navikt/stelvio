@@ -16,17 +16,21 @@ public class SCAUtils {
 	
 	public static String getModuleName() {
 		
-		String moduleName = "NOT_FOUND";
-		Object component = (Object) ServiceManager.INSTANCE.getComponent();
+		String moduleName = "MODULE_UNKNOWN";
+		Component component = ServiceManager.INSTANCE.getComponent();
+		
+		if (component!=null) {
+			Object componentObj = (Object) ServiceManager.INSTANCE.getComponent();
 
-		if (component instanceof ManagedComponentImpl) {
-			ManagedComponentImpl managedComponentImpl = (ManagedComponentImpl) component ;
-			Object aggregate = managedComponentImpl.getAggregate();
-			if (aggregate instanceof ManagedModuleImpl) {
-				ManagedModuleImpl aggregateModul = (ManagedModuleImpl) aggregate;
-				moduleName = aggregateModul.getName();
-			}
-		}		
+			if (componentObj instanceof ManagedComponentImpl) {
+				ManagedComponentImpl managedComponentImpl = (ManagedComponentImpl) componentObj ;
+				Object aggregate = managedComponentImpl.getAggregate();
+				if (aggregate instanceof ManagedModuleImpl) {
+					ManagedModuleImpl aggregateModul = (ManagedModuleImpl) aggregate;
+					moduleName = aggregateModul.getName();
+				}
+			}		
+		}
 		return moduleName;
 	}
 }

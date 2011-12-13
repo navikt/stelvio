@@ -45,7 +45,7 @@ public class StelvioContext {
 	 */
 	private void setStelvioBusContext(UserWorkAreaContextAdapter userWorkArea) {
 		String userWorkAreaName = userWorkArea.getUserWorkAreaName();
-		if (UserWorkAreaContextAdapter.USER_WORK_AREA_NAME.equalsIgnoreCase(userWorkAreaName)) {
+		if (userWorkAreaName!=null && userWorkAreaName.startsWith(UserWorkAreaContextAdapter.USER_WORK_AREA_NAME)) {
 			log.logp(Level.FINE, className, "setStelvioBusContext()", "StelvioContext exists in WorkArea");
 
 			userId = userWorkArea.getUserId();

@@ -26,10 +26,16 @@ public class StelvioContextRepository {
 	}
 
 	public static StelvioContext createOrUpdateContext(StelvioContextData contextData) {
+		String workAreaName = UserWorkAreaContextAdapter.USER_WORK_AREA_NAME;
+		Long threadId = Thread.currentThread().getId();
+		String threadName = Thread.currentThread().getName();
+		String moduleName = SCAUtils.getModuleName();
+		workAreaName = workAreaName.concat("_"+threadName+"_"+threadId+"_"+moduleName);
+				
 		UserWorkArea userWorkArea = lookupUserWorkArea();
-		userWorkArea.begin(UserWorkAreaContextAdapter.USER_WORK_AREA_NAME);
-					
-		log.logp(Level.FINE, className, "createOrUpdateContext()", "- userWorkArea.begin: Thread=" +Thread.currentThread().getId()+ ", Module=" +SCAUtils.getModuleName());
+		userWorkArea.begin(workAreaName);
+						
+		log.logp(Level.FINE, className, "createOrUpdateContext()", "- userWorkArea.begin: workAreaName="+workAreaName);
 		
 		UserWorkAreaContextAdapter userWorkAreaContextAdapter = new UserWorkAreaContextAdapter(userWorkArea);
 		userWorkAreaContextAdapter.setApplicationId(contextData.getApplicationId());
@@ -42,7 +48,7 @@ public class StelvioContextRepository {
 	public static void removeContext() {
 		try {
 			UserWorkArea userWorkArea = lookupUserWorkArea();
-			if (UserWorkAreaContextAdapter.USER_WORK_AREA_NAME.equals(userWorkArea.getName())) {
+			if (userWorkArea.getName()!=null && (userWorkArea.getName()).startsWith(UserWorkAreaContextAdapter.USER_WORK_AREA_NAME)) {
 				userWorkArea.complete();
 			}
 		} catch (NoWorkArea e) {
