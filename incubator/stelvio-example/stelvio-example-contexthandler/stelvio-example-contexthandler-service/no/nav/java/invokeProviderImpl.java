@@ -1,5 +1,7 @@
 package no.nav.java;
 
+import no.stelvio.common.bus.util.StelvioContextHelper;
+
 import com.ibm.websphere.sca.Service;
 import com.ibm.websphere.sca.Ticket;
 import commonj.sdo.DataObject;
@@ -70,6 +72,11 @@ public class invokeProviderImpl {
 	public DataObject callWSChain(DataObject request) {
 		DataObject response = ((DataObject) locateService_ContextHandlerVerifierProviderPartnerWS()
 				.invoke("callWSChain", request)).getDataObject(0);
+		
+		StelvioContextHelper stelvioContext = new StelvioContextHelper();
+		
+		System.out.println("Service (callWSChain) workArea: AppId=" +stelvioContext.getApplicationId()+ " ,CorrId="+stelvioContext.getCorrelationId()+" , UserID="+stelvioContext.getUserId());
+		
 		return response;
 	}
 
