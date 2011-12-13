@@ -2841,11 +2841,13 @@ incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-context
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/.settings/stelvio-example-contexthandler-provider.prefs -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/ContextHandlerVerifierProviderWSEXP.export -text
+incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/DebugWorkArea.component -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/Echo.component -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/EchoImpl.class -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/EchoImpl.java -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/ibm-deploy.scaj2ee -text
+incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/no/nav/java/DebugWorkAreaImpl.java -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/pom.xml -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/sca.module -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-provider/sca.module.attributes -text
