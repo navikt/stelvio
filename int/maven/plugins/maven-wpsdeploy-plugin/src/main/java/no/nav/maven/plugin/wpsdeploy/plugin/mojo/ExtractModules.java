@@ -112,7 +112,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 			allArtifacts = new HashSet<Artifact>();
 			
 			List<?> remoteRepos = ProjectUtils.buildArtifactRepositories(repositories, artifactRepositoryFactory, mavenSession.getContainer());
-			
+			getLog().info("***********HERHERHERHER**********");
 			for (DeployArtifact da : artifacts){
 				
 				if (da.getVersion() == null || da.getVersion().startsWith("$")){
@@ -120,8 +120,11 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 					continue;
 				}
 				
+				getLog().info("Deployable artifacts " + da.getGroupId() + ":" + da.getArtifactId() + ":" + da.getVersion());
+				
 				Artifact pomArtifact = artifactFactory.createArtifact(da.getGroupId(), da.getArtifactId(), da.getVersion(), null, "pom");
 				MavenProject pomProject = mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
+				getLog().info("Project size:  " + pomProject.getArtifacts().size());
 				Set<?> artifacts = pomProject.createArtifacts(this.artifactFactory, null, null);
 				ArtifactResolutionResult arr = resolver.resolveTransitively(artifacts, pomArtifact, remoteRepos, localRepository, artifactMetadataSource);
 				
@@ -164,6 +167,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 	public Artifact resolveRemoteArtifact(List<?> remoteRepos, Artifact artifact) throws MojoExecutionException {
 
 		try {
+			System.out.println("RESOLVE ARTIFACTS");
 			artifactResolver.resolve(artifact, remoteRepos, localRepository);
 		} catch (ArtifactResolutionException e) {
 			throw new MojoExecutionException("[ERROR] Error downloading artifact.", e);
