@@ -4,6 +4,7 @@ import java.sql.Clob;
 import java.util.Collection;
 import java.util.Date;
 
+import no.stelvio.batch.StelvioBatchParameterReader;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
@@ -21,6 +22,7 @@ import org.springframework.batch.core.BatchStatus;
 public class ControllerServiceHistorySupport {
 
 	BatchHistRepository repository;
+	StelvioBatchParameterReader reader;
 	private final static String BATCH_STATUS_STARTED = "STARTED"; // Corresponds
 	// with
 	// BatchStatus.STARTED
@@ -40,6 +42,14 @@ public class ControllerServiceHistorySupport {
 		this.repository = repository;
 	}
 	
+	public StelvioBatchParameterReader getReader() {
+		return reader;
+	}
+
+	public void setReader(StelvioBatchParameterReader reader) {
+		this.reader = reader;
+	}
+	
 	/**
 	 * Saves batch information in T_BATCH_HIST when a (classic) batch is started (when the execute method is called).  
 	 * Used in DefaultBatchControllerService's execute method.  
@@ -50,7 +60,13 @@ public class ControllerServiceHistorySupport {
 	 */
 	public long saveInitialBatchInformation(String batchName, int slice) {
 		BatchHistDO batchHistory = new BatchHistDO();
+		String parameters = reader.getBatchParameters(batchName);
 		batchHistory.setChangeStamp(new ChangeStamp(batchName));
+		if (parameters != null){
+			batchHistory.setParameters(parameters);
+		}else {
+			batchHistory.setParameters(" ");
+		}
 		batchHistory.setSlice(slice);
 		return saveInitialCommonBatchInformation(batchHistory, batchName);
 	}

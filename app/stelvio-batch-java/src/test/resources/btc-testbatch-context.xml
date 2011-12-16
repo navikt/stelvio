@@ -26,6 +26,8 @@
 		<property name="histRepository" ref="batchHistoryRepository" />
 		<property name="batchControllerService" ref="DefaultBatchControllerService" />
 		<property name="controllerServiceHistorySupport" ref="ControllerServiceHistorySupport" />
+		<property name="reader" ref="stelvioBatchParameterReader" />
+		<property name="batchRepo" ref="batchRepository" />
 	</bean>
 
 	<bean id="DefaultBatchControllerService"
@@ -42,6 +44,12 @@
 	<bean id="ControllerServiceHistorySupport"
 		class="no.stelvio.batch.support.ControllerServiceHistorySupport">
 		<property name="repository" ref="batchHistoryRepository" />
+		<property name="reader" ref="stelvioBatchParameterReader" />
+	</bean>
+	
+	<bean id="stelvioBatchParameterReader"
+		class="no.stelvio.batch.StelvioBatchParameterReader">
+		<property name="batchRepository" ref="batchRepository" />
 	</bean>
 	
 	<!-- Hibernate Template Defintion -->
@@ -57,6 +65,12 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 
+	<bean id="batchRepository"
+		class="no.stelvio.batch.repository.support.HibernateBatchRepository"
+		scope="prototype">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	
 	<bean id="btc.testbatch.sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 
@@ -64,6 +78,8 @@
 
 		<property name="annotatedClasses">
 			<list>
+				<value>no.stelvio.batch.domain.BatchDO
+				</value>
 				<value>no.stelvio.batch.domain.BatchHistDO
 				</value>
 			</list>

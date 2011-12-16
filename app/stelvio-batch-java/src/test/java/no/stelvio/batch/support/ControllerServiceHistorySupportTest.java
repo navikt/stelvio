@@ -11,11 +11,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import no.stelvio.batch.BatchStatus;
+import no.stelvio.batch.StelvioBatchParameterReader;
 import no.stelvio.batch.controller.support.DefaultBatchControllerService;
 import no.stelvio.batch.domain.BatchHistDO;
 import no.stelvio.batch.exception.InvalidBatchEntryException;
 import no.stelvio.batch.repository.BatchHistRepository;
 import no.stelvio.batch.repository.support.HibernateBatchHistRepository;
+import no.stelvio.batch.repository.support.HibernateBatchRepository;
 
 import org.hibernate.SessionFactory;
 import org.junit.Before;
@@ -32,6 +34,8 @@ public class ControllerServiceHistorySupportTest {
 	private DefaultBatchControllerService batchControllerService;
 	private HibernateBatchHistRepository histRepository;
 	private ControllerServiceHistorySupport controllerServiceHistorySupport;
+	private StelvioBatchParameterReader reader;
+	private HibernateBatchRepository batchRepo;
 	
 	private ApplicationContext ctx;
 	
@@ -64,6 +68,22 @@ public class ControllerServiceHistorySupportTest {
 	public void setControllerServiceHistorySupport(ControllerServiceHistorySupport controllerServiceHistorySupport) {
 		this.controllerServiceHistorySupport = controllerServiceHistorySupport;
 	}
+	
+	public StelvioBatchParameterReader getReader() {
+		return reader;
+	}
+
+	public void setReader(StelvioBatchParameterReader reader) {
+		this.reader = reader;
+	}
+
+	public HibernateBatchRepository getBatchRepo() {
+		return batchRepo;
+	}
+
+	public void setBatchRepo(HibernateBatchRepository batchRepo) {
+		this.batchRepo = batchRepo;
+	}
 
 	@Before
 	public void prepareForTests() {
@@ -72,6 +92,8 @@ public class ControllerServiceHistorySupportTest {
 		batchControllerService = (DefaultBatchControllerService) ctx.getBean("DefaultBatchControllerService");
 		histRepository = (HibernateBatchHistRepository) ctx.getBean("batchHistoryRepository");
 		controllerServiceHistorySupport = (ControllerServiceHistorySupport) ctx.getBean("ControllerServiceHistorySupport");
+		reader = (StelvioBatchParameterReader) ctx.getBean("stelvioBatchParameterReader");
+		batchRepo = (HibernateBatchRepository) ctx.getBean("batchRepository");
 
 	}
 
