@@ -9,7 +9,7 @@
 	<groupId>no.stelvio.int.jca-adapters</groupId>
 	<artifactId>ADLDAPAdapter</artifactId>
 	<packaging>rar</packaging>
-	<version>7.0.2</version>
+	<version>7.0.3</version>
 	
 	<!--
 		Dependencies from the WPS runtime have been copied to the project under connectorModule\.
