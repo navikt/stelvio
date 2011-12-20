@@ -33,6 +33,19 @@ public class StelvioBatchParameterReader implements BatchParameterReader {
 		
 	}
 
+	public String getBatchParameters(String batchName, int slice) {
+		try {
+		BatchDO batchDo = batchRepository.findByNameAndSlice(batchName, slice);
+		return batchDo.getParameters().replace(';', ',');
+		} catch (InvalidBatchEntryException e) {
+			if (logger.isInfoEnabled()) {
+				logger.info("Batch ikke konfigurert i T_BATCH", e);
+			}
+			return null;
+		}
+		
+	}
+	
 	/**
 	 * Sets implementation to use.
 	 * @param batchRepository Repository to set.

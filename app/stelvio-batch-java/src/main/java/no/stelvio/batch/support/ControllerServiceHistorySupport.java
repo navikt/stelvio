@@ -60,7 +60,7 @@ public class ControllerServiceHistorySupport {
 	 */
 	public long saveInitialBatchInformation(String batchName, int slice) {
 		BatchHistDO batchHistory = new BatchHistDO();
-		String parameters = reader.getBatchParameters(batchName);
+		String parameters = reader.getBatchParameters(batchName, slice);
 		batchHistory.setChangeStamp(new ChangeStamp(batchName));
 		if (parameters != null){
 			batchHistory.setParameters(parameters);
@@ -98,7 +98,6 @@ public class ControllerServiceHistorySupport {
 		batchHistory.setBatchname(batchName);
 		batchHistory.setStatus(BATCH_STATUS_STARTED);
 		batchHistory.setStartTime();
-		batchHistory.setParameters(" ");
 		return repository.setHist(batchHistory);
 	}
 
