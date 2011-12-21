@@ -26,6 +26,8 @@
 		<property name="histRepository" ref="batchHistoryRepository" />
 		<property name="batchControllerService" ref="DefaultBatchControllerService" />
 		<property name="controllerServiceHistorySupport" ref="ControllerServiceHistorySupport" />
+		<property name="reader" ref="stelvioBatchParameterReader" />
+		<property name="batchRepo" ref="batchRepository" />
 	</bean>
 
 	<bean id="DefaultBatchControllerService"
