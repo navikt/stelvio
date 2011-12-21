@@ -138,12 +138,14 @@ public class ControllerServiceHistorySupportTest {
 
 		BatchHistDO batchHistDO = new BatchHistDO();
 		batchHistDO.setBatchname("dummyBatchWithInputParameters");
+		batchHistDO.setParameters("timeToRun=1;exitCode=8");
 
 		//TODO This tests the repository, not the implementation class
 		long batchID = histRepository.setHist(batchHistDO);
 		
 		List <BatchHistDO> batchHistory = (List<BatchHistDO>) histRepository.findByNameAndSlice("dummyBatchWithInputParameters", 0);
 		assertEquals(batchHistory.get(0).getBatchname(), "dummyBatchWithInputParameters");
+		assertEquals(batchHistory.get(0).getParameters(), "timeToRun=1;exitCode=8");
 	}
 
 	//TODO rename test
