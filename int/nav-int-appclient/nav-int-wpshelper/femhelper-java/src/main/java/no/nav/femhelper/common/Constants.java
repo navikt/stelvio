@@ -26,7 +26,7 @@ public class Constants {
 	/**
 	 * Public constant to represent the formatter pattern to be used together with <code>Constants.timeFrame</code> operation
 	 */
-	public static final String TIME_FRAME_FORMAT = "dd.MM.yyyy:hhmm";
+	public static final String TIME_FRAME_FORMAT = "dd.MM.yyyy:HHmm";
 
 	/**
 	 * Public constant to represent the Date operation and parameter string from the configuration file and properties related
