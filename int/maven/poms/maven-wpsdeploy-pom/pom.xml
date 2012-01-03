@@ -15,7 +15,7 @@
 	<name>POM for deployments</name>
 
 	<properties>
-		<wpsdeployVersion>2.0.1</wpsdeployVersion>
+		<wpsdeployVersion>2.0.2-SNAPSHOT</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
@@ -122,9 +122,9 @@
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>ekstern-pensjon-modules</artifactId>
+								<artifactId>ekstern-modules</artifactId>
 								<version>${ekstern-pensjon-modules-version}</version>
-								<variableName>EKSTERN_PENSJON_MODULES_VERSION</variableName>
+								<variableName>EKSTERN_MODULES_VERSION</variableName>
 							</artifact>
 						</artifacts>
 					</configuration>

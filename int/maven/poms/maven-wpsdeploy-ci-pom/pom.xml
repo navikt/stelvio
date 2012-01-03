@@ -108,7 +108,7 @@
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>ekstern-pensjon-modules-ci</artifactId>
+								<artifactId>ekstern-modules-ci</artifactId>
 								<version>${ekstern-pensjon-modules-ci-version}</version>
 							</artifact>
 							<artifact>
