@@ -87,11 +87,4 @@
 			<type>ear</type>
 		</dependency>
 	</dependencies>
-
-	<distributionManagement>
-		<repository>
-			<id>nav-maven2-internal-repo</id>
-			<url>scp://maven.adeo.no/var/maven2/internal</url>
-		</repository>
-	</distributionManagement>
 </project>
