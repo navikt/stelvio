@@ -10,7 +10,6 @@
 	<groupId>no.stelvio.example</groupId>
 	<artifactId>stelvio-example-echo-proxy</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<packaging>wps-module-ear</packaging>
 	<name>Stelvio Example ${project.artifactId}</name>
 	
 	<scm>
@@ -18,6 +17,15 @@
 		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	
+	<dependencies>
+		<dependency>
+			<groupId>no.stelvio.example</groupId>
+			<artifactId>stelvio-example-echo-service-specification</artifactId>
+			<type>wps-library-jar</type>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
 	<properties>
 		<scm.connection>${scm.root}</scm.connection>
 		<scm.root>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy</scm.root>
