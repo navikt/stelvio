@@ -49,7 +49,7 @@
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
-					<updateExisting>false</updateExisting>
+					<updateExisting>true</updateExisting>
 					<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
 					<applicationName>stelvio-example-echo-providerEAR</applicationName>
 				</configuration>
