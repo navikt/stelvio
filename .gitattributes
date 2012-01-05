@@ -2926,10 +2926,15 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.settings/org.eclipse.wst.common.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.settings/org.eclipse.wst.ws.service.policy.prefs -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/application.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/clientPolicyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/ibm-application-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/wsPolicyClientControl.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/pom.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/src/main/application/META-INF/application.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/src/main/application/META-INF/clientPolicyAttachments.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/src/main/application/META-INF/ibm-application-bnd.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/src/main/application/META-INF/wsPolicyClientControl.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/stelvio-example-echo.emx -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/uml2wsdl.tc -text

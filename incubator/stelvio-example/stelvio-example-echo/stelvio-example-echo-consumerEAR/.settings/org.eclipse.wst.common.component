@@ -2,7 +2,7 @@
     <wb-module deploy-name="stelvio-example-echo-consumerEAR">
         <wb-resource deploy-path="/" source-path="/"/>
         <dependent-module deploy-path="/" handle="module:/resource/stelvio-example-echo-consumer/stelvio-example-echo-consumer">
-            <dependent-object>Module_1299245763683</dependent-object>
+            <dependent-object>Module_1325781526081</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
