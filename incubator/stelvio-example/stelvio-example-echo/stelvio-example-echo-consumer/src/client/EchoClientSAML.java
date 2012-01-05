@@ -28,7 +28,7 @@ public class EchoClientSAML extends Service {
 		try {
 			EchoClientSAML service = new EchoClientSAML();
 			EchoService port = service.getEchoServiceWSEXPEchoServiceHttpPort();
-			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9080/stelvio-example-echo-proxyWeb/sca/EchoWSEXP");
+			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9081/stelvio-example-echo-provider/EchoSAMLService");
 			String output = port.echo(input);
 			return output;
 		} catch (MalformedURLException e) {
