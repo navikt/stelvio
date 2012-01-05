@@ -41,6 +41,7 @@
 				<version>1.1.1</version>
 				<executions>
 					<execution>
+						<id>provider-deploy</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>installApp</goal>
@@ -51,6 +52,7 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>consumer-deploy</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>installApp</goal>
