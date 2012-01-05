@@ -8,6 +8,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>no.stelvio.example</groupId>
+			<artifactId>stelvio-example-echo-consumerEAR</artifactId>
+			<type>ear</type>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>no.stelvio.example</groupId>
 			<artifactId>stelvio-example-echo-providerEAR</artifactId>
 			<type>ear</type>
 			<version>1.0.0-SNAPSHOT</version>
@@ -39,6 +45,20 @@
 						<goals>
 							<goal>installApp</goal>
 						</goals>
+						<configuration>
+							<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
+							<applicationName>stelvio-example-echo-providerEAR</applicationName>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>installApp</goal>
+						</goals>
+						<configuration>
+							<earFile>${project.build.directory}/dependency/stelvio-example-echo-consumerEAR-1.0.0-SNAPSHOT.ear</earFile>
+							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
+						</configuration>
 					</execution>
 				</executions>
 				<configuration>
@@ -50,8 +70,6 @@
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
 					<updateExisting>true</updateExisting>
-					<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
-					<applicationName>stelvio-example-echo-providerEAR</applicationName>
 				</configuration>
 			</plugin>
 			

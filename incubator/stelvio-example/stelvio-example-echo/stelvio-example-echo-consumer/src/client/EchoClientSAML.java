@@ -1,7 +1,5 @@
 package client;
 
-import java.net.MalformedURLException;
-
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
@@ -13,8 +11,16 @@ import no.stelvio.example.services.v1.echoservice.binding2.EchoService;
 
 @WebServiceClient(name = "EchoSAMLService", targetNamespace = "http://www.stelvio.no/example/services/V1/EchoService/Binding2")
 public class EchoClientSAML extends Service {
+	
+		private static EchoService port;
 
-	    public EchoClientSAML() throws MalformedURLException {
+		static {
+			EchoClientSAML service = new EchoClientSAML();
+			port = service.getEchoServiceWSEXPEchoServiceHttpPort();
+			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9081/stelvio-example-echo-provider/EchoSAMLService");
+		}
+
+	    public EchoClientSAML() {
 	    	super(EchoService.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://www.stelvio.no/example/services/V1/EchoService/Binding2", "EchoSAMLService"));
 	    }
 	    
@@ -25,15 +31,7 @@ public class EchoClientSAML extends Service {
 
 
 		public static String echo(String input) throws EchoEchoFault1Msg { 
-		try {
-			EchoClientSAML service = new EchoClientSAML();
-			EchoService port = service.getEchoServiceWSEXPEchoServiceHttpPort();
-			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9081/stelvio-example-echo-provider/EchoSAMLService");
 			String output = port.echo(input);
 			return output;
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
 		}
-	}
 }

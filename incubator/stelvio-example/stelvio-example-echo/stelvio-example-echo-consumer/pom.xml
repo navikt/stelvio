@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>no.stelvio.maven.poms</groupId>
+		<artifactId>maven-root-pom</artifactId>
+		<version>1.2.2</version>
+	</parent>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>no.stelvio.example</groupId>
+	<artifactId>stelvio-example-echo-consumer</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>Stelvio Example Application - Echo Consumer</name>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<warSourceDirectory>${basedir}/WebContent</warSourceDirectory>
+					<warSourceExcludes>WEB-INF/classes</warSourceExcludes>
+					<warSourceExcludes>WEB-INF/lib</warSourceExcludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<buildOutputDirectory>${basedir}/WebContent/WEB-INF/classes</buildOutputDirectory>
+					<wtpversion>1.5</wtpversion>
+					<wtpapplicationxml>true</wtpapplicationxml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>no.nav.maven.plugins</groupId>
+				<artifactId>maven-wsdl-plugin</artifactId>
+				<version>1.3</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<id>unpack-wsdls</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<includeTypes>wsdl-interface</includeTypes>
+					<outputDirectory>${basedir}/WebContent/WEB-INF/wsdl</outputDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>WebContent/WEB-INF/wsdl</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>no.stelvio.example</groupId>
+			<artifactId>stelvio-example-echo-service</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>wsdl-interface</type>
+			<classifier>wsdlif</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>no.stelvio.example</groupId>
+			<artifactId>stelvio-example-echo-service-jaxws</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!--
+			Workaround for MECLIPSE-587. groupId should be javaee or
+			eclipse-plugin should detect JEE version differently
+		-->
+		<dependency>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>5.0-3</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<properties>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+	</properties>
+</project>

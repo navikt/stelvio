@@ -2915,9 +2915,8 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/Web
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/ibm-web-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/ibm-web-ext.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/web.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/wsdl/EchoService.wsdl -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/wsdl/stelvio-example-echo-service_EchoServiceWSEXP.wsdl -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/index.jsp -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/client/EchoClient.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/client/EchoClientAddressing.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/client/EchoClientLTPA.java -text
@@ -2930,6 +2929,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/clientPolicyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/ibm-application-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/wsPolicyClientControl.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/stelvio-example-echo.emx -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-model/uml2wsdl.tc -text

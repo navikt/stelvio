@@ -358,8 +358,11 @@ incubator/maven-rdependency-plugin/.settings
 incubator/maven-rdependency-plugin/target
 incubator/service-gw-deploy/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/wsdl/*
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/classes
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/wsdl
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/bin
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy/*.class
