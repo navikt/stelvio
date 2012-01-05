@@ -2917,11 +2917,11 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/Web
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/web.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/index.jsp -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/pom.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/client/EchoClient.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/client/EchoClientAddressing.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/client/EchoClientLTPA.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/client/EchoClientSAML.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/form/Query.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClient.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientAddressing.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientLTPA.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientSAML.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/form/Query.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.project -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.settings/org.eclipse.wst.common.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text

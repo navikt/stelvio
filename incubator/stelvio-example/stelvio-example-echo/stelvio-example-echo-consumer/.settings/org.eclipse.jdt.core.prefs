@@ -1,8 +1,12 @@
-#Thu Jun 10 07:21:07 CEST 2010
-org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
-org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
-eclipse.preferences.version=1
-org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
-org.eclipse.jdt.core.compiler.source=1.6
-org.eclipse.jdt.core.compiler.processAnnotations=enabled
+#Thu Jan 05 18:04:12 CET 2012
+encoding//src/main/java=ISO-8859-1
 org.eclipse.jdt.core.compiler.compliance=1.6
+encoding//src/main/resources=ISO-8859-1
+encoding//src/test/resources=ISO-8859-1
+encoding//src/test/java=ISO-8859-1
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
+org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
+eclipse.preferences.version=1
+org.eclipse.jdt.core.compiler.source=1.6
+org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
+org.eclipse.jdt.core.compiler.processAnnotations=enabled
