@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="stelvio-example-echo-providerEAR">
-        <wb-resource deploy-path="/" source-path="/"/>
+  <wb-module deploy-name="stelvio-example-echo-providerEAR">
+    <wb-resource deploy-path="/" source-path="src/main/application"/>
+    <dependent-module archiveName="stelvio-example-echo-provider-1.0.0-SNAPSHOT.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/no/stelvio/example/stelvio-example-echo-provider/1.0.0-SNAPSHOT/stelvio-example-echo-provider-1.0.0-SNAPSHOT.war">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
         <dependent-module deploy-path="/" handle="module:/resource/stelvio-example-echo-provider/stelvio-example-echo-provider">
-            <dependent-object>Module_1296773473059</dependent-object>
+            <dependent-object>Module_1324483959637</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-    </wb-module>
+  </wb-module>
 </project-modules>

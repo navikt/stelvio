@@ -3115,6 +3115,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.se
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.jsdt.ui.superType.container -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.jsdt.ui.superType.name -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.eclipse.wst.ws.service.policy.prefs -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.settings/org.maven.ide.eclipse.prefs -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/META-INF/services/org.apache.commons.logging.LogFactory -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/WebContent/WEB-INF/ibm-web-bnd.xml -text
@@ -3131,11 +3132,16 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/java/stelvio/example/echo/service/EchoServiceBi.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/resources/stelvio/example/echo/provider/EchoHandler.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.project -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/com.ibm.ws.ast.st.migration.prefs -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.jdt.core.prefs -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.wst.common.component -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.eclipse.wst.ws.service.policy.prefs -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings/org.maven.ide.eclipse.prefs -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/META-INF/policyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/pom.xml -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/src/main/application/META-INF/MANIFEST.MF -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/src/main/application/META-INF/application.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/src/main/application/META-INF/policyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/.classpath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/.project -text
