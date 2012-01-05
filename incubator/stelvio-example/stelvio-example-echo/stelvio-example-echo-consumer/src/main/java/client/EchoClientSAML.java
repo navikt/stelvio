@@ -17,7 +17,7 @@ public class EchoClientSAML extends Service {
 		static {
 			EchoClientSAML service = new EchoClientSAML();
 			port = service.getEchoServiceWSEXPEchoServiceHttpPort();
-			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9081/stelvio-example-echo-provider/EchoSAMLService");
+			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9080/stelvio-example-echo-provider/EchoSAMLService");
 		}
 
 	    public EchoClientSAML() {
