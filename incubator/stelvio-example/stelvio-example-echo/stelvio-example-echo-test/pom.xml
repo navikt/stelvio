@@ -44,11 +44,11 @@
 				<configuration>
 					<wasHome>${wid.runtime}</wasHome>
 					<conntype>SOAP</conntype>
-					<host>e11apvl007.utv.internsone.local</host>
+					<host>e26apvl036.test.local</host>
 					<port>8879</port>
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
-					<targetCluster>SS_K1.AppTarget</targetCluster>
+					<targetCluster>SS_U2.AppTarget</targetCluster>
 					<updateExisting>true</updateExisting>
 					<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
 					<applicationName>stelvio-example-echo-providerEAR</applicationName>
