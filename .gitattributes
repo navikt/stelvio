@@ -2898,7 +2898,6 @@ incubator/stelvio-example/stelvio-example-echo/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/proxy/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/EchoWSEXP.export -text
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/EchoWSIMP.import -text
-incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/sca.module -text
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/sca.modulex -text
