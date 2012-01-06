@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding2="http://www.stelvio.no/example/services/V1/EchoService/Binding2" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://www.stelvio.no/example/services/V1/EchoService" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="EchoWSIMP" name="EchoWSIMP">
+<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Binding2="http://www.stelvio.no/example/services/V1/EchoService/Binding2" xmlns:ExampleProvider="http://www.stelvio.no/example/services/V1/EchoService/ExampleProvider/" xmlns:jaxws="http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0" xmlns:ns1="http://www.stelvio.no/example/services/V1/EchoService" xmlns:ns2="http://www.stelvio.no/example/services/V1/EchoService/" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="EchoWSIMP" name="EchoWSIMP">
   <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:EchoService">
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns2:EchoService">
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
     </interface>
   </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://localhost:9080/stelvio-example-echo-provider/EchoSAMLService" port="Binding2:EchoServiceWSEXP_EchoServiceHttpPort" service="Binding2:EchoServiceWSEXP_EchoServiceHttpService">
+  <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://www.stelvio.no/example/services/V1/EchoService/ExampleProvider/echoService/EchoServicePort" port="ExampleProvider:EchoServicePort" service="ExampleProvider:echoService">
     <policySetRef policySetName="SAML20 Bearer"/>
   </esbBinding>
 </scdl:import>
