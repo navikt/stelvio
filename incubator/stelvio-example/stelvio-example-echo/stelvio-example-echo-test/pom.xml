@@ -51,7 +51,7 @@
 							<applicationName>stelvio-example-echo-providerEAR</applicationName>
 						</configuration>
 					</execution>
-					<!-- does not work -- must debug later
+					<!-- does not work, debug later
 					<execution>
 						<id>consumer-deploy</id>
 						<phase>pre-integration-test</phase>
