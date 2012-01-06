@@ -51,6 +51,7 @@
 							<applicationName>stelvio-example-echo-providerEAR</applicationName>
 						</configuration>
 					</execution>
+					<!-- does not work -- must debug later
 					<execution>
 						<id>consumer-deploy</id>
 						<phase>pre-integration-test</phase>
@@ -62,6 +63,7 @@
 							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
 						</configuration>
 					</execution>
+					-->
 				</executions>
 				<configuration>
 					<wasHome>${wid.runtime}</wasHome>
