@@ -5439,7 +5439,6 @@ int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/SetFaultN
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/Wsdl2JavaMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsdlArtifact.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsdlOption.java -text
-int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsimportMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/Version.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/ibm/websphere/esb/SCAModuleName.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/ibm/websphere/esb/WSDLEditor.java -text
