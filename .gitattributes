@@ -2895,6 +2895,7 @@ incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-context
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-service/xslt/output_map_res_2.xsl -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-test/stelvio-example-contexthandler-test-soapui-project.xml -text
 incubator/stelvio-example/stelvio-example-echo/pom.xml -text
+incubator/stelvio-example/stelvio-example-echo/proxy/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/EchoWSEXP.export -text
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/EchoWSIMP.import -text
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/META-INF/MANIFEST.MF -text

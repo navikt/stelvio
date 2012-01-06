@@ -21,6 +21,6 @@
 		<module>stelvio-example-echo-consumerEAR</module>
 		<module>stelvio-example-echo-consumer</module>
 		<module>stelvio-example-echo-service-specification</module>
-		<module>proxy/stelvio-example-echo-proxy</module>
+		<module>stelvio-example-echo-proxy</module>
 	</modules>
 </project>

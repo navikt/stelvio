@@ -357,6 +357,7 @@ dev/maven2/nav-deployment-code-plugin/target
 incubator/maven-rdependency-plugin/.settings
 incubator/maven-rdependency-plugin/target
 incubator/service-gw-deploy/target
+incubator/stelvio-example/stelvio-example-echo/proxy/libraries
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/*.class
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/*.cmt
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/*.jar
