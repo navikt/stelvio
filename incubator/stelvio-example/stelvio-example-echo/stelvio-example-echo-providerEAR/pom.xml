@@ -53,8 +53,7 @@
 					<!--earSourceDirectory>${basedir}</earSourceDirectory>
 					<earSourceIncludes>META-INF/</earSourceIncludes-->
 					<!--
-						Remove version from module filenames to make static reference in
-						policyAttachments.xml work
+						Remove version from module filenames to make static reference in policyAttachments.xml work
 					-->
 					<fileNameMapping>no-version</fileNameMapping>
 				</configuration>
