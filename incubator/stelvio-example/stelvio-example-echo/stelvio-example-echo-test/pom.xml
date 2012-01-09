@@ -49,6 +49,7 @@
 						<configuration>
 							<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
 							<applicationName>stelvio-example-echo-providerEAR</applicationName>
+							<updateExisting>true</updateExisting>
 						</configuration>
 					</execution>
 					<execution>
@@ -62,6 +63,7 @@
 						<configuration>
 							<earFile>${project.build.directory}/dependency/stelvio-example-echo-consumerEAR-1.0.0-SNAPSHOT.ear</earFile>
 							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
+							<updateExisting>false</updateExisting>
 						</configuration>
 					</execution>
 				</executions>
@@ -73,7 +75,6 @@
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
-					<updateExisting>true</updateExisting>
 				</configuration>
 			</plugin>
 			
