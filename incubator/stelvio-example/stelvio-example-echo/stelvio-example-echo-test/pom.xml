@@ -59,6 +59,7 @@
 							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
 							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
+							<goal>wsStartApp</goal>
 						</goals>
 						<configuration>
 							<earFile>${project.build.directory}/dependency/stelvio-example-echo-consumerEAR-1.0.0-SNAPSHOT.ear</earFile>
