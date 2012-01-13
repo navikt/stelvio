@@ -1926,6 +1926,7 @@ dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseFileSystemSpringConfigLoader.java -text
 dev/maven2/trunk/maven-moose-earfile-retriever/src/main/java/no/nav/maven/moose/utility/spring/loader/MooseSpringConfigLoader.java -text
+incubator/install-scripts/was-prereqs.sh -text
 incubator/maven-deploy-ci-pom/pom.xml -text
 incubator/maven-deploy-pom-61/pom.xml -text
 incubator/maven-deploy-pom-70/pom.xml -text
