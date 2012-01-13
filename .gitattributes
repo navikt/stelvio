@@ -5434,6 +5434,7 @@ int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/ExportWsd
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/NamespaceToPackageMappingGenerator.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/RemovePlaceholdersMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/SetFaultNamesMojo.java -text
+int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/SetSoapActionMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/Wsdl2JavaMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsdlArtifact.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsdlOption.java -text
