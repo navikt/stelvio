@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.wsdl.Definition;
@@ -15,14 +14,14 @@ import javax.wsdl.Part;
 import javax.wsdl.PortType;
 import javax.wsdl.WSDLException;
 import javax.wsdl.factory.WSDLFactory;
-import javax.wsdl.xml.WSDLReader;
 import javax.xml.namespace.QName;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.FileUtils;
+
+import no.stelvio.ibm.websphere.esb.WSDLUtils;
 
 /**
  * Will modify every PortType in every WSDL of the output directory
@@ -44,12 +43,11 @@ public class SetFaultNamesMojo extends AbstractMojo {
 	 */
 	private MavenProject project;
 
-	private WSDLReader wsdlReader;
-
 	public void execute() throws MojoExecutionException, MojoFailureException {
+		
 		if (!"pom".equals(project.getPackaging())) {
 			try {
-				Collection<Definition> wsdls = getWSDLs(new File(project.getBuild().getOutputDirectory()));
+				Collection<Definition> wsdls = WSDLUtils.getWSDLs(new File(project.getBuild().getOutputDirectory()));
 				for (Definition definition : wsdls) {
 					setFaultNames(definition);
 					WSDLFactory.newInstance().newWSDLWriter().writeWSDL(definition, new FileOutputStream(new File(URI.create(definition.getDocumentBaseURI().replace(" ", "%20")))));
@@ -62,18 +60,6 @@ public class SetFaultNamesMojo extends AbstractMojo {
 		} else {
 			getLog().debug("Skipping set-fault-names because packaging is pom");
 		}
-	}
-
-	private Collection<Definition> getWSDLs(File workingDir) throws IOException, WSDLException,
-			MojoFailureException {
-		Collection<Definition> wsdls = new ArrayList<Definition>();
-
-		Collection<File> wsdlFiles = FileUtils.getFiles(workingDir, "**/*.wsdl", null);
-		for (File wsdlFile : wsdlFiles) {
-			wsdls.add(getWsdlReader().readWSDL(wsdlFile.getAbsolutePath()));
-		}
-
-		return wsdls;
 	}
 
 	private void setFaultNames(Definition definition) throws MojoExecutionException {
@@ -98,12 +84,4 @@ public class SetFaultNamesMojo extends AbstractMojo {
 		}
 	}
 
-	private WSDLReader getWsdlReader() throws WSDLException {
-		if (wsdlReader == null) {
-			wsdlReader = WSDLFactory.newInstance().newWSDLReader();
-			wsdlReader.setFeature("javax.wsdl.verbose", false);
-			wsdlReader.setFeature("javax.wsdl.importDocuments", false);
-		}
-		return wsdlReader;
-	}
 }
