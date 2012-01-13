@@ -5440,6 +5440,7 @@ int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/WsdlOptio
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/Version.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/ibm/websphere/esb/SCAModuleName.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/ibm/websphere/esb/WSDLEditor.java -text
+int/maven/plugins/maven-wsdl-plugin/src/main/java/no/stelvio/ibm/websphere/esb/WSDLUtils.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/resources/META-INF/plexus/components.xml -text
 int/maven/plugins/maven-wsdl-plugin/src/test/java/no/nav/maven/plugins/NamespaceToPackageMappingGeneratorTest.java -text
 int/maven/plugins/maven-wsdl-plugin/src/test/java/no/stelvio/VersionTest.java -text
