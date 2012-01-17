@@ -17,11 +17,12 @@ variableNames	= sys.argv[0]
 
 varNameList = variableNames.split(",")
 
-filename = "temp.txt"
+filename = "target/temp.txt"
 FILE = open(filename,"w")
 
+AdminOperations = AdminControl.completeObjectName('WebSphere:name=AdminOperations,process=dmgr,*')
 for varName in varNameList:
-	AdminOperations = AdminControl.completeObjectName('WebSphere:*,type=AdminOperations')
+#	AdminOperations = AdminControl.completeObjectName('WebSphere:*,type=AdminOperations')
 	version = AdminControl.invoke(AdminOperations, 'expandVariable', '${'+varName+'}')
 	FILE.writelines(varName+"="+version+"\n")
 

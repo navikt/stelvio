@@ -3,6 +3,7 @@ package no.nav.maven.plugins;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -30,17 +31,23 @@ import no.nav.datapower.util.PropertiesBuilder;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.InvalidRepositoryException;
 import org.apache.maven.artifact.factory.ArtifactFactory;
+import org.apache.maven.artifact.metadata.ArtifactMetadataSource;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.artifact.repository.ArtifactRepositoryFactory;
 import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
 import org.apache.maven.artifact.resolver.ArtifactResolutionException;
+import org.apache.maven.artifact.resolver.ArtifactResolutionResult;
 import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.MavenProjectBuilder;
+import org.apache.maven.project.ProjectBuildingException;
 import org.apache.maven.project.ProjectUtils;
+import org.apache.maven.project.artifact.InvalidDependencyVersionException;
 import org.codehaus.plexus.archiver.ArchiverException;
 import org.codehaus.plexus.archiver.UnArchiver;
 
@@ -124,6 +131,22 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * @required
 	 */
 	private List repositories;
+
+	/**
+	 * secgw or partner-gw
+	 * 
+	 * @parameter expression="${gateway-name}"
+	 * @readonly
+	 * @required
+	 */
+	private String gateway;	
+	
+	/**
+	 * 
+	 * @parameter
+	 * @required
+	 */
+	private WsdlDependency[] wsdlDeps;	
 	
 	/**
 	 * @component roleHint="zip"
@@ -131,6 +154,15 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private UnArchiver unArchiver;
+	
+	/** @component */
+	private ArtifactResolver resolver;
+	
+	/** @component */
+	private MavenProjectBuilder mavenProjectBuilder;
+	
+	/** @component */
+	private ArtifactMetadataSource artifactMetadataSource;
 
 	// Properties for template interpolation
 	private Properties properties;
@@ -143,14 +175,21 @@ public class GenerateConfigMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// Welcome
 		File outputDirectory = new File(project.getBuild().getOutputDirectory());
+//		File outputDirectory = new File(project.getBuild().getOutputDirectory()+"/target/esb-busconfiguration/src/main/resources/"+gateway);
 		File localFilesDirectory = new File(outputDirectory, "files/local");
-		File wsdlFilesDirectory = new File(localFilesDirectory, "wsdl");
+		File wsdlFilesDirectory = new File(localFilesDirectory, "/wsdl");
 		wsdlFilesDirectory.mkdir();
 		unArchiver.setDestDirectory(wsdlFilesDirectory);
-		File propertiesFile = new File(project.getBasedir(), "target/filters/main.properties");
+//		File propertiesFile = new File(project.getBasedir(), "target/filters/main.properties");
+		
+		getLog().warn("!!!!!THIS IS GATEWAY " + gateway);
+		File propertiesFile = new File(project.getBasedir(), "target/dependency/busconfiguration-jar/" + gateway+ "/src/main/filters/main.properties");
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
-		File configFile = new File(outputDirectory, "configuration.xml");
+//		File configFile = new File(outputDirectory, "configuration.xml");
+		File tempDir = new File(project.getBasedir(), "target/temp");
+		tempDir.mkdir();
+		File configFile = new File(tempDir, "configuration.xml");
 		getLog().debug("ConfigFile=" + configFile);
 
 		properties = loadProperties(propertiesFile.getPath());
@@ -220,46 +259,117 @@ public class GenerateConfigMojo extends AbstractMojo {
 	 * Go through list of policies containing lists of WSDLs and add a property
 	 * to 'properties' for the list of proxies and WSDLs for each policy
 	 */
-	private void mapWSDLsToProxies(Policy[] policies, File wsdlFilesDir, File localFilesDir) throws IOException, ArtifactResolutionException, ArtifactNotFoundException, ArchiverException {
+	private void mapWSDLsToProxies(Policy[] policies, File wsdlFilesDir, File localFilesDir) throws IOException, ArtifactResolutionException, ArtifactNotFoundException, ArchiverException, MojoExecutionException {
 		// Map each policy as specified in the configuration
 		for (Policy policy : policies) {
 			getLog().info("Adding WSDLs for policy '" + policy.getName() + "'");
 			Set<WSDLFile> wsdlFiles = new LinkedHashSet<WSDLFile>();
 			// Try to match groupId/artifactId in configuration against the list
 			// of dependencies
-			for (Iterator iter = project.getArtifacts().iterator(); iter.hasNext();) {
-				Artifact artifact = (Artifact) iter.next();
-				for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
-					getLog().debug("Checking if " + wsdlArtifact + " matches " + artifact);
-					if (wsdlArtifact.equals(artifact) || wsdlArtifact.equals(artifact, "ear", null)) {
-						// Direct dependency
-						Artifact wsdlInterfaceArtifact = artifact;
-						// Dependency via esb
-						if (wsdlArtifact.equals(artifact, "ear", null)) {
-							// Resolve interface artifact
-							wsdlInterfaceArtifact = artifactFactory.createArtifactWithClassifier(artifact.getGroupId(), artifact.getArtifactId(), artifact.getVersion(), wsdlArtifact.getType(), wsdlArtifact.getClassifier());
-							artifactResolver.resolve(wsdlInterfaceArtifact, remoteRepos, localRepository);
-						}
-						// Add all hits
-						ZipFile zipFile = new ZipFile(wsdlInterfaceArtifact.getFile());
-						// Extract interface from ZIP
-						unArchiver.setSourceFile(wsdlInterfaceArtifact.getFile());
-						unArchiver.extract();
-						Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoints());
-						wsdlFiles.addAll(wsdls);
-						getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
-						break;
+			ArtifactResolutionResult arr;
+			
+			for (WsdlDependency dep : wsdlDeps){
+				if (dep.getType().equals("pom")){
+					getLog().warn("pom dependency");
+					Artifact pomArtifact = artifactFactory.createArtifact(dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), null, dep.getType());
+					MavenProject pomProject = null;
+					try {
+						pomProject = mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
+					} catch (ProjectBuildingException e) {
+						throw new MojoExecutionException("Unable to build project, " + e);
 					}
-				}
+					Set<?> artifacts = null;
+					try {
+						artifacts = pomProject.createArtifacts(this.artifactFactory, null, null);
+					} catch (InvalidDependencyVersionException e) {
+						throw new MojoExecutionException("Invalid dependency: " + e);
+					}
+					arr = resolver.resolveTransitively(artifacts, pomArtifact, remoteRepos, localRepository, artifactMetadataSource);
+				
+		
+					if (arr.getArtifacts().size() == 0){
+						throw new MojoExecutionException("Unable to retrieve artifact, " + dep.toString());
+					}
+					
+					Iterator<?> iter = arr.getArtifacts().iterator(); 
+				
+					while (iter.hasNext()){
+						Artifact a = (Artifact) iter.next();
+
+						for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
+							getLog().debug("Checking if " + wsdlArtifact + " matches " + a);
+							getLog().debug("wsdlArtifact: " + wsdlArtifact.getGroupId()+", "+ wsdlArtifact.getArtifactId());
+							getLog().debug("artifact: " + a.getGroupId()+", "+ a.getArtifactId());
+							if (wsdlArtifact.equals(a) || wsdlArtifact.equals(a, "ear", null)) {
+								// Direct dependency
+								Artifact wsdlInterfaceArtifact = a;
+								// Dependency via esb
+								if (wsdlArtifact.equals(a, "ear", null)) {
+									// Resolve interface artifact
+									wsdlInterfaceArtifact = artifactFactory.createArtifactWithClassifier(a.getGroupId(), a.getArtifactId(), a.getVersion(), wsdlArtifact.getType(), wsdlArtifact.getClassifier());
+									artifactResolver.resolve(wsdlInterfaceArtifact, remoteRepos, localRepository);
+								}
+								getLog().warn("WSDL-artifact: " + wsdlInterfaceArtifact.getGroupId() + ", " + wsdlInterfaceArtifact.getGroupId() + ": " + wsdlInterfaceArtifact.getVersion());
+								// Add all hits
+								ZipFile zipFile = new ZipFile(wsdlInterfaceArtifact.getFile());
+								// Extract interface from ZIP
+								unArchiver.setSourceFile(wsdlInterfaceArtifact.getFile());
+								unArchiver.extract();
+								getLog().warn("BILLEBA!!");
+								Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoints());
+								getLog().warn("ULF!! " + wsdls.size());
+								wsdlFiles.addAll(wsdls);
+								getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
+								break;
+							}
+
+						}
+					}
+				} else {
+					getLog().warn("WSDL dependency");
+					Artifact art = artifactFactory.createArtifact(dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), null, dep.getType());
+
+					resolver.resolve(art, remoteRepos, localRepository);
+
+					for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
+						getLog().debug("Checking if " + wsdlArtifact + " matches " + art);
+						getLog().debug("wsdlArtifact: " + wsdlArtifact.getGroupId()+", "+ wsdlArtifact.getArtifactId());
+						getLog().debug("artifact: " + art.getGroupId()+", "+ art.getArtifactId());
+						if (wsdlArtifact.equals(art) || wsdlArtifact.equals(art, "ear", null)) {
+							// Direct dependency
+							Artifact wsdlInterfaceArtifact = art;
+							// Dependency via esb
+							if (wsdlArtifact.equals(art, "ear", null)) {
+								// Resolve interface artifact
+								wsdlInterfaceArtifact = artifactFactory.createArtifactWithClassifier(art.getGroupId(), art.getArtifactId(), art.getVersion(), wsdlArtifact.getType(), wsdlArtifact.getClassifier());
+								artifactResolver.resolve(wsdlInterfaceArtifact, remoteRepos, localRepository);
+							}
+							getLog().warn("WSDL-artifact: " + wsdlInterfaceArtifact.getGroupId() + ", " + wsdlInterfaceArtifact.getGroupId() + ": " + wsdlInterfaceArtifact.getVersion());
+							// Add all hits
+							ZipFile zipFile = new ZipFile(wsdlInterfaceArtifact.getFile());
+							// Extract interface from ZIP
+							unArchiver.setSourceFile(wsdlInterfaceArtifact.getFile());
+							unArchiver.extract();
+							getLog().warn("BILLEBA wsdl!!");
+							Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoints());
+							getLog().warn("ULF wsdl!! " + wsdls.size());
+							wsdlFiles.addAll(wsdls);
+							getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
+							break;
+							}
+
+						}
+					}
+			
+				// Since one proxy can have multiple WSDLs, make a list of proxies
+				// each containing a list of WSDLs
+				Collection<WSProxy> proxies = getProxies(wsdlFiles);
+				// Assume naming standard "<policyname>Proxies" for property with
+				// proxy list
+				String proxiesVariableName = policy.getName() + "Proxies"; 
+				properties.put(proxiesVariableName, proxies);
+				getLog().info("Added " + proxies.size() + " proxies to template variable " + proxiesVariableName);
 			}
-			// Since one proxy can have multiple WSDLs, make a list of proxies
-			// each containing a list of WSDLs
-			Collection<WSProxy> proxies = getProxies(wsdlFiles);
-			// Assume naming standard "<policyname>Proxies" for property with
-			// proxy list
-			String proxiesVariableName = policy.getName() + "Proxies"; 
-			properties.put(proxiesVariableName, proxies);
-			getLog().info("Added " + proxies.size() + " proxies to template variable " + proxiesVariableName);
 		}
 	}
 
@@ -314,7 +424,8 @@ public class GenerateConfigMojo extends AbstractMojo {
 
 	private void processFreemarkerTemplates(File configFile) throws IOException, TemplateException {
 		// Prepare for fremarker template processing
-		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "src/main/freemarker-templates"));
+//		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "src/main/freemarker-templates"));
+		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "target/dependency/busconfiguration-jar/" + gateway + "/src/main/freemarker-templates"));
 		// Open file for writing
 		FileWriter writer = new FileWriter(configFile);
 		// Process main template
