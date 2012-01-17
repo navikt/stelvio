@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -11,12 +12,12 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-wpsdeploy-ci-pom</artifactId>
 	<packaging>deployable-artifact</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.0.0-SNAPSHOT</version>
 	<name>POM for CI deployments</name>
-	
+
 	<properties>
-		<wpsdeployVersion>1.20</wpsdeployVersion>
-		<passwordVault>${user.home}/vault/</passwordVault>
+		<wpsdeployVersion>2.0.1</wpsdeployVersion>
+		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
 	
@@ -98,28 +99,33 @@
 						<artifacts>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>nav-modules-ci</artifactId>
-								<version>${nav-modules-ci-version}</version>
-							</artifact>
-							<artifact>
-								<groupId>no.nav.esb</groupId>
 								<artifactId>pensjon-modules-ci</artifactId>
 								<version>${pensjon-modules-ci-version}</version>
+								<variableName>PENSJON_MODULES_VERSION</variableName>
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
-								<artifactId>ekstern-modules-ci</artifactId>
-								<version>${ekstern-pensjon-modules-ci-version}</version>
-							</artifact>
-							<artifact>
-								<groupId>no.nav.esb</groupId>
-								<artifactId>esb-modules-ci</artifactId>
-								<version>${esb-modules-ci-version}</version>
+								<artifactId>nav-modules-ci</artifactId>
+								<version>${nav-modules-ci-version}</version>
+								<variableName>NAV_MODULES_VERSION</variableName>
 							</artifact>
 							<artifact>
 								<groupId>no.nav.esb</groupId>
 								<artifactId>pensjon-prosess-modules-ci</artifactId>
 								<version>${pensjon-prosess-modules-ci-version}</version>
+								<variableName>PENSJON_PROCESS_MODULES_VERSION</variableName>
+							</artifact>
+							<artifact>
+								<groupId>no.nav.esb</groupId>
+								<artifactId>esb-modules-ci</artifactId>
+								<version>${esb-modules-ci-version}</version>
+								<variableName>ESB_MODULES_VERSION</variableName>
+							</artifact>
+							<artifact>
+								<groupId>no.nav.esb</groupId>
+								<artifactId>ekstern-modules-ci</artifactId>
+								<version>${ekstern-modules-ci-version}</version>
+								<variableName>EKSTERN_MODULES_VERSION</variableName>
 							</artifact>
 						</artifacts>
 					</configuration>
