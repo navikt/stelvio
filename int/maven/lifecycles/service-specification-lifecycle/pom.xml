@@ -9,17 +9,17 @@
 	</parent>
 
 	<groupId>no.nav.maven.lifecycles</groupId>
-	<artifactId>service-specification-plugin-lifecycle</artifactId>
+	<artifactId>service-specification-lifecycle</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>Service Specification Plugin Lifecycle</name>
+	<name>Service Specification Lifecycle</name>
 
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-plugin-lifecycle</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-plugin-lifecycle</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-lifecycle</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-lifecycle</developerConnection>
 	</scm>
 	<properties>
 		<scm.root>
-			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-plugin-lifecycle
+			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-lifecycle
 		</scm.root>
 		<scm.connection>${scm.root}</scm.connection>
 	</properties>
