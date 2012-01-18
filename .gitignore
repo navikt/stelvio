@@ -763,10 +763,10 @@ int/maven-runtimes/wps-runtime/.project
 int/maven-runtimes/wps-runtime/.settings
 int/maven-runtimes/wps-runtime/bin
 int/maven-runtimes/wps-runtime/target
-int/maven/lifecycles/service-specification-plugin-lifecycle/.classpath
-int/maven/lifecycles/service-specification-plugin-lifecycle/.project
-int/maven/lifecycles/service-specification-plugin-lifecycle/.settings
-int/maven/lifecycles/service-specification-plugin-lifecycle/target
+int/maven/lifecycles/service-specification-lifecycle/.classpath
+int/maven/lifecycles/service-specification-lifecycle/.project
+int/maven/lifecycles/service-specification-lifecycle/.settings
+int/maven/lifecycles/service-specification-lifecycle/target
 int/maven/plugins/.classpath
 int/maven/plugins/.project
 int/maven/plugins/.settings
