@@ -17,6 +17,7 @@
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-lifecycle</connection>
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-lifecycle</developerConnection>
 	</scm>
+
 	<properties>
 		<scm.root>
 			scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/lifecycles/service-specification-lifecycle

@@ -13,19 +13,13 @@
 					<lifecycle>
 						<id>default</id>
 						<phases>
-							<generate-sources>
-								org.apache.maven.plugins:maven-dependency-plugin:unpack-dependencies
-							</generate-sources>
-							<process-resources>
+							<generate-resources>
 								org.apache.maven.plugins:maven-resources-plugin:resources
-							</process-resources>
-							<compile>
-								no.nav.maven.plugins:maven-rsa-transform-plugin:uml2wsdl
-							</compile>
-							<process-classes>
+							</generate-resources>
+							<process-resources>
 								no.nav.maven.plugins:maven-wsdl-plugin:set-fault-names,
 								no.nav.maven.plugins:maven-wsdl-plugin:remove-placeholders
-							</process-classes>
+							</process-resources>
 							<test>
 								no.nav.maven.plugins:maven-wsi-plugin:analyze
 							</test>
