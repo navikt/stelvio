@@ -4,7 +4,6 @@
 		<artifactId>maven-root-pom</artifactId>
 		<groupId>no.stelvio.maven.poms</groupId>
 		<version>1.2.2</version>
-		<relativePath>../maven-root-pom</relativePath>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
