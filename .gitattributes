@@ -5484,6 +5484,7 @@ int/maven/poms/maven-plugin-pom/.project -text
 int/maven/poms/maven-plugin-pom/pom.xml -text
 int/maven/poms/maven-root-pom/.project -text
 int/maven/poms/maven-root-pom/pom.xml -text
+int/maven/poms/maven-service-specification-pom/pom.xml -text
 int/maven/poms/maven-wasdeploy-pom/hudsonDeploymentProcessor.py -text
 int/maven/poms/maven-wasdeploy-pom/pom.xml -text
 int/maven/poms/maven-wasdeploy-pom/scripts/InstallApp.py -text

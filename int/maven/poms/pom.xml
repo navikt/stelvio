@@ -23,6 +23,7 @@
 		<!-- TODO: Commented out since it is currently not working. Fix, or move/delete. -->
 		<!--module>maven-wasdeploy-pom</module-->
 		<module>maven-wps-poms</module>
+		<module>maven-service-specification-pom</module>
 	</modules>
 	
 	<scm>
