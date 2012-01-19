@@ -1,92 +1,67 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
+		<artifactId>maven-root-pom</artifactId>
 		<groupId>no.stelvio.maven.poms</groupId>
-		<artifactId>maven-wps-library-pom</artifactId>
-		<version>2.1.5</version>
+		<version>1.2.2</version>
+		<relativePath>../maven-root-pom</relativePath>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>no.nav.tjenester</groupId>
-	<artifactId>service-specification-pom</artifactId>
-	<version>1.0.4-SNAPSHOT</version>
+	<artifactId>maven-service-specification-pom</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<build>
-		<!-- service libraries are materialized from source artifact -->
-		<sourceDirectory>target/output</sourceDirectory>
-		<!-- ..which makes maven-eclipse-plugin crash unless source directory is a child of basedir, so set build directories too -->
-		<directory>${basedir}/target</directory>
-		<outputDirectory>${build.directory}/output</outputDirectory>
-		<testOutputDirectory>${build.directory}/test-output</testOutputDirectory>
+		<extensions>
+			<extension>
+				<groupId>no.nav.maven.lifecycles</groupId>
+				<artifactId>service-specification-lifecycle</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+			</extension>
+		</extensions>
 
-		<plugins>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wsi-plugin</artifactId>
-				<version>1.0.2</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>analyze</goal>
-						</goals>
-						<phase>test</phase>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wsdl-plugin</artifactId>
-				<version>1.10</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>set-fault-names</goal>
-						</goals>
-						<id>set-fault-names</id>
-						<phase>process-resources</phase>
-					</execution>
-					<execution>
-						<id>remove-placeholders</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>remove-placeholders</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<configuration>
-					<includes>
-						<include>**/*.wsdl</include>
-						<include>**/*.xsd</include>
-					</includes>
-					<includePom>true</includePom>
-					<excludeResources>true</excludeResources>
-				</configuration>
-			</plugin>
-		</plugins>
-		
+		<sourceDirectory>${basedir}/src/main/wsdl</sourceDirectory>
+		<outputDirectory>${build.directory}/wsdl</outputDirectory>
+		<testOutputDirectory>${build.directory}/test-output</testOutputDirectory>
+		<resources>
+			<resource>
+				<directory>${project.build.sourceDirectory}</directory>
+			</resource>
+		</resources>
+
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<artifactId>maven-release-plugin</artifactId>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-wsdl-plugin</artifactId>
+					<version>1.11</version>
+				</plugin>
+				<plugin>
+					<groupId>no.nav.maven.plugins</groupId>
+					<artifactId>maven-wsi-plugin</artifactId>
+					<version>1.0.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.2.1</version>
 					<configuration>
-						<tagBase>
-							https://versjonskontroll.adeo.no/svn/nav/tags/tjenester
-						</tagBase>
+						<descriptorRefs>
+							<descriptorRef>service-specification</descriptorRef>
+						</descriptorRefs>
+						<appendAssemblyId>false</appendAssemblyId>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
+
 	<scm>
-		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/nav/trunk/tjenester/service-specification-pom</connection>
-		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/nav/trunk/tjenester/service-specification-pom</developerConnection>
+		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-service-specification-pom</connection>
+		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-service-specification-pom</developerConnection>
 	</scm>
 	<properties>
-		<scm.connection>scm:svn:https://versjonskontroll.adeo.no/svn/nav/trunk/tjenester/service-specification-pom</scm.connection>
+		<scm.connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-service-specification-pom</scm.connection>
 	</properties>
 </project>
