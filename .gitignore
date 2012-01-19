@@ -938,8 +938,6 @@ int/maven/poms/maven-deploy-pom/.settings
 int/maven/poms/maven-deploy-pom/target
 int/maven/poms/maven-plugin-pom/target
 int/maven/poms/maven-root-pom/target
-int/maven/poms/maven-service-specification-pom/.project
-int/maven/poms/maven-service-specification-pom/.settings
 int/maven/poms/maven-wps-poms/maven-wps-library-pom/target
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/.project
 int/maven/poms/maven-wps-poms/maven-wps-module-pom/.settings
