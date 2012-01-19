@@ -398,6 +398,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxw
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/.classpath
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/.project
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/.settings
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/bin
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/*.class
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/*.jar
