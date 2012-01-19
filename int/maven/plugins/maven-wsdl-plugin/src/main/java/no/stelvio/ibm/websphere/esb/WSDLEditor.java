@@ -7,17 +7,13 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
 
-import javax.wsdl.Binding;
-import javax.wsdl.BindingOperation;
 import javax.wsdl.Definition;
 import javax.wsdl.Port;
 import javax.wsdl.Service;
 import javax.wsdl.WSDLException;
 import javax.wsdl.extensions.ExtensibilityElement;
 import javax.wsdl.extensions.soap.SOAPAddress;
-import javax.wsdl.extensions.soap.SOAPOperation;
 import javax.wsdl.factory.WSDLFactory;
-import javax.xml.namespace.QName;
 
 /**
  * Editor framework for modifying WSDL files. Supports:
