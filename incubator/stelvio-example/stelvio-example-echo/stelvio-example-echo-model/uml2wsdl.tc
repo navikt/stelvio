@@ -11,7 +11,7 @@
 <Property id="AuroSaveRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
 <Property id="AuroValidateRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
 <Property id="CONTEXT_SOURCE" value="@49,test@example.com,162&amp;lt;ELEM_START&amp;gt;@47,test@example.com:/resource/stelvio-example-echo-model/stelvio-example-echo.emx#_ditNgAPdEeCXVKYffJrB5g"/>
-<Property id="CONTEXT_TARGET_CONTAINER" value="@46,=@com.ibm.xtools.transform.core.metatype.project/stelvio-example-echo-service-specification"/>
+<Property id="CONTEXT_TARGET_CONTAINER" value="@45,=@com.ibm.xtools.transform.core.metatype.folder/stelvio-example-echo-service-specification/src/main/wsdl"/>
 <Property id="DCMP" value="@43,test@example.com"/>
 <Property id="EnableReverseTransformation" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="FORWARD_TRANSFORMATION_EXTENSIONS_STATUS" value="@42,test@example.com=falsejava.util.HashMap,100,57&amp;lt;ELEM_START&amp;gt;@45,=@com.ibm.xtools.transform.core.metatype.stringcom.ibm.xtools.transform.uml2.wsdl.globalElements,@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
@@ -29,7 +29,7 @@
 <Property id="processDataTypesStyle" value="@45,=@com.ibm.xtools.transform.core.metatype.choice0"/>
 <Property id="replaceUML" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="reverseNsFirstSegment" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
-<Property id="silentlyAddRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
+<Property id="silentlyAddRule" value="@46,=@com.ibm.xtools.transform.core.metatype.booleantrue"/>
 <Property id="useWidStyle" value="@46,=@com.ibm.xtools.transform.core.metatype.booleanfalse"/>
 <Property id="wsdl_transport_property" value="@45,=@com.ibm.xtools.transform.core.metatype.stringHTTP"/>
 <Property id="www.stelvio.no::example::services::V1::EchoService::EchoService" value="@45,=@com.ibm.xtools.transform.core.metatype.stringWRAPPED-DOCUMENT-LITERAL"/>
