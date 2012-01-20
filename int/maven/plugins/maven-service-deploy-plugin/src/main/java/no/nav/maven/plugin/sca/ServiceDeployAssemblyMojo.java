@@ -345,7 +345,12 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 		}
 
 		private String getArtifactFileName(Artifact artifact) {
-			return artifact.getArtifactId() + "." + artifact.getArtifactHandler().getExtension();
+			String extension = artifact.getArtifactHandler().getExtension();
+			// Convert service-specification files from zip to jar
+			if ("zip".equals(extension)) {
+				extension = "jar";
+			}
+			return artifact.getArtifactId() + "." + extension;
 		}
 	}
 }

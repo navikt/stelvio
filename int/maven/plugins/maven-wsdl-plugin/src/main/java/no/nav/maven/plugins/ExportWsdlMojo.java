@@ -81,6 +81,7 @@ import org.jdom.xpath.XPath;
 public class ExportWsdlMojo extends AbstractMojo {
 	private static final String TYPE_WSDL_INTERFACE = "wsdl-interface";
 	private static final String TYPE_WPS_LIBRARY_JAR = "wps-library-jar";
+	private static final String TYPE_SERVICE_SPECIFICATION = "service-specification";
 
 	/**
 	 * @component
@@ -357,7 +358,7 @@ public class ExportWsdlMojo extends AbstractMojo {
 	private void extractDependendentResources(File workingDir) throws ArchiverException, IOException, NoSuchArchiverException {
 		UnArchiver unArchiver = archiverManager.getUnArchiver("zip");
 		for (Artifact artifact : (Collection<Artifact>) project.getCompileArtifacts()) {
-			if (TYPE_WPS_LIBRARY_JAR.equals(artifact.getType())) {
+			if (TYPE_WPS_LIBRARY_JAR.equals(artifact.getType()) || TYPE_SERVICE_SPECIFICATION.equals(artifact.getType())) {
 				File artifactFile = artifact.getFile();
 				unArchiver.setSourceFile(artifactFile);
 				unArchiver.setDestDirectory(workingDir);
