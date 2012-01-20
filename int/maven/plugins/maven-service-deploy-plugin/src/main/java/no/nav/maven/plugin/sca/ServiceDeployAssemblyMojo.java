@@ -131,6 +131,7 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 
 		projectArtifactResolver.resolveArtifacts(artifacts);
 		Map<Artifact, Set<Artifact>> artifactDependencyMap = projectDependencyResolver.getArtifactDependencyMap(artifacts);
+		System.out.println("artifactDependencyMap="+artifactDependencyMap);
 		serviceDeployAssemblyBuilder.createAssembly(artifactDependencyMap);
 	}
 
