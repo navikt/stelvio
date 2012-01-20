@@ -108,7 +108,6 @@ public class WidPlugin extends EclipsePlugin {
 			} else {
 				String dependencyType = dependency.getType();
 				if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyType) || PACKAGING_SERVICE_SPECIFICATION.equals(dependencyType)) {
-					dependency.setAddedToClasspath(true);
 					dependency.setReferencedProject(true);
 					dependency.setEclipseProjectName(dependency.getArtifactId());
 					dependency.setFile(null);

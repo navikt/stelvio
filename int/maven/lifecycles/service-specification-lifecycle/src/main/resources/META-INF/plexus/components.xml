@@ -49,8 +49,8 @@
 			<configuration>
 				<type>service-specification</type>
 				<extension>zip</extension>
-				<packaging>zip</packaging>
-				<language>wsdl</language>
+				<language>xml</language>
+				<addedToClasspath>true</addedToClasspath>
 			</configuration>
 		</component>
 	</components>
