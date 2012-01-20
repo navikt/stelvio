@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -118,6 +119,10 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 	 */
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
+		for (Iterator iterator = project.getArtifacts().iterator(); iterator.hasNext();) {
+			Artifact artifact = (Artifact) iterator.next();
+			System.out.println("Artifact="+artifact+";"+artifact.getArtifactHandler().isAddedToClasspath());
+		}
 		Collection<Artifact> artifacts = new ArrayList<Artifact>();
 		for (Artifact artifact : (Collection<Artifact>) project.getAttachedArtifacts()) {
 			System.out.println("Attached artifact="+artifact);
