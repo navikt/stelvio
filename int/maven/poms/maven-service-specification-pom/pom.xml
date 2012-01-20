@@ -35,6 +35,9 @@
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wsdl-plugin</artifactId>
 					<version>1.12-SNAPSHOT</version>
+					<configuration>
+						<endpointAddress>${endpointAddress}</endpointAddress>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>

@@ -19,7 +19,8 @@
 							<process-resources>
 								no.nav.maven.plugins:maven-wsdl-plugin:set-fault-names,
 								no.nav.maven.plugins:maven-wsdl-plugin:remove-placeholders,
-								no.nav.maven.plugins:maven-wsdl-plugin:set-soap-action
+								no.nav.maven.plugins:maven-wsdl-plugin:set-soap-action,
+								no.nav.maven.plugins:maven-wsdl-plugin:set-endpoint-address
 							</process-resources>
 							<test>
 								no.nav.maven.plugins:maven-wsi-plugin:analyze
