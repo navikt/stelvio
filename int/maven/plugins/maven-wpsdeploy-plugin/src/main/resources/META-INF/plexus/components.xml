@@ -10,15 +10,16 @@
 					<lifecycle>
 						<id>default</id>
 						<phases>
-							<initialize>
+							<validate>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-bus-configuration,
+							</validate>
+							<!-- <initialize> steget kjører copy-resources plugin'et som ligger i deploy pom.xml -->
+							<compile>
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:load-configuration,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-module-poms,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:interpolate-config,
-							</initialize>
+							</compile>
 							<deploy>
-								no.nav.maven.plugins:maven-wpsdeploy-plugin:load-configuration,
-								<!-- no.nav.maven.plugins:maven-confluence-plugin:add-comment-down, -->
-								<!-- no.nav.maven.plugins:maven-confluence-plugin:update-page, -->
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:backup-config,
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:remove-bp,
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:stop-clusters,
@@ -32,7 +33,6 @@
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:bounce-dmgr,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:start-clusters,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:modify-max-failed-deliveries,
-								<!-- no.nav.maven.plugins:maven-confluence-plugin:add-comment-up, -->
 							</deploy>
 						</phases>
 					</lifecycle>

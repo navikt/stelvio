@@ -2,11 +2,15 @@ package no.nav.maven.plugin.wpsdeploy.plugin.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.FactoryConfigurationError;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -217,5 +221,44 @@ public class XMLUtils {
 		return returnString.toString();
 	}
 	
-	
+	/**
+	 * Returns a list of artifacts in the pom file
+	 * 
+	 */
+	public static HashSet<Artifact> parsePomDependencies(File file, ArtifactFactory artifactFactory) throws SAXException, IOException, ParserConfigurationException, FactoryConfigurationError {
+
+		Document xml = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+
+		NodeList dependency = xml.getElementsByTagName("dependency");
+
+		if (dependency.getLength() == 0) return null;
+		
+		HashSet<Artifact> artifactList = new HashSet<Artifact>();
+
+		for (int i = 0; i < dependency.getLength(); i++) {
+			
+			NodeList dependencyChildren = dependency.item(i).getChildNodes();
+			
+			String artifactId = getChildNodeValue(dependencyChildren,"artifactId");
+			String groupId = getChildNodeValue(dependencyChildren, "groupId");
+			String version = getChildNodeValue(dependencyChildren, "version");
+			String type = getChildNodeValue(dependencyChildren, "type");
+			
+			Artifact a = artifactFactory.createArtifact(groupId, artifactId, version, null, type);
+			artifactList.add(a);
+		}
+		return artifactList;
+	}
+
+	private static String getChildNodeValue(NodeList children, String nodeName) {
+		String returnString = null;
+		for (int j = 0; j < children.getLength(); j++) {
+
+			Node endpointElement = children.item(j);
+			if (endpointElement.getNodeName().equals(nodeName)) {
+				returnString = endpointElement.getChildNodes().item(0).getTextContent();
+			}
+		}
+		return returnString;
+	}
 }
