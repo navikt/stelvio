@@ -13,6 +13,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.maven.plugin.AbstractMojo;
@@ -98,9 +99,8 @@ public class GetVersionsMojo extends AbstractMojo {
 			Commandline.Argument arg = new Commandline.Argument();
 			arg.setLine(" -f " + script + " " + varNames);
 
-//			System.out.println("RUNNING " + commandLine.toString() + " -f " + script + " " + varNames);
 			commandLine.addArg(arg);
-			System.out.println("RUNNING " + commandLine.toString());			
+			//System.out.println("RUNNING " + commandLine.toString());
 			//For å få med logging fra scriptet:  
 			StreamConsumer systemOut = new StreamConsumer() {
 				public void consumeLine(String line) {
@@ -125,7 +125,6 @@ public class GetVersionsMojo extends AbstractMojo {
 			if (errorChecker.isError()) {
 				throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 			}
-			System.out.println("scriptet er ferdig");
 			Properties props = new Properties();
 			FileInputStream is;
 			// forventer fil på formen NAV_MODULES_VERSION=7.3.0.22,ESB_MODULES_VERSION=7.3.0.21 med 
@@ -133,7 +132,7 @@ public class GetVersionsMojo extends AbstractMojo {
 			try {
 				is = new FileInputStream(outputDir + "/temp.txt");
 				props.load(is);
-
+				List<String> failed = new ArrayList<String>();
 				if (!props.isEmpty()){
 					Enumeration<Object> em = props.keys();
 					while(em.hasMoreElements()){
@@ -143,7 +142,7 @@ public class GetVersionsMojo extends AbstractMojo {
 								String propValue = props.getProperty(propKey);
 								
 								if (propValue.contains("$")){//flyttes til etterpå for å få med alle som feiler?
-									throw new MojoExecutionException("[ERROR]: " + propKey + " was not set correctly. ");
+									failed.add(propKey);
 								}
 								getLog().info("Exposing: " + mv.getExposedAs() + " = " + propValue);
 								project.getProperties().put(mv.getExposedAs(), propValue);
@@ -153,7 +152,13 @@ public class GetVersionsMojo extends AbstractMojo {
 				} else {
 					throw new MojoExecutionException("[ERROR]: " + "No versions found. ");
 				}
-				
+				if (failed.size()>0){
+					String error = null;
+					for (String s : failed) {
+						error = error + ", " + s;
+					}
+					throw new MojoExecutionException("[ERROR]: Variables " + error + " was not set correctly. ");
+				}
 			} catch (IOException e) {
 				throw new MojoExecutionException("[ERROR]: " + e);
 			}

@@ -169,24 +169,22 @@ public class GenerateConfigMojo extends AbstractMojo {
 
 	private List remoteRepos;
 
+	private File localFilesDir;
+
 	/**
 	 * The mojo method doing the actual work when goal is invoked
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		// Welcome
 		File outputDirectory = new File(project.getBuild().getOutputDirectory());
-//		File outputDirectory = new File(project.getBuild().getOutputDirectory()+"/target/esb-busconfiguration/src/main/resources/"+gateway);
 		File localFilesDirectory = new File(outputDirectory, "files/local");
 		File wsdlFilesDirectory = new File(localFilesDirectory, "/wsdl");
 		wsdlFilesDirectory.mkdir();
 		unArchiver.setDestDirectory(wsdlFilesDirectory);
-//		File propertiesFile = new File(project.getBasedir(), "target/filters/main.properties");
 		
-		getLog().warn("!!!!!THIS IS GATEWAY " + gateway);
-		File propertiesFile = new File(project.getBasedir(), "target/dependency/busconfiguration-jar/" + gateway+ "/src/main/filters/main.properties");
+		File propertiesFile = new File(project.getBasedir(), "target/dependency/busconfiguration-jar/datapower/" + gateway+ "/src/main/filters/main.properties");
 		getLog().info("Generating Datapower config");
 		getLog().debug("ConfigDirectory=" + outputDirectory);
-//		File configFile = new File(outputDirectory, "configuration.xml");
 		File tempDir = new File(project.getBasedir(), "target/temp");
 		tempDir.mkdir();
 		File configFile = new File(tempDir, "configuration.xml");
@@ -269,9 +267,10 @@ public class GenerateConfigMojo extends AbstractMojo {
 			ArtifactResolutionResult arr;
 			
 			for (WsdlDependency dep : wsdlDeps){
+
+				Artifact pomArtifact = artifactFactory.createArtifact(dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), null, dep.getType());
+				
 				if (dep.getType().equals("pom")){
-					getLog().warn("pom dependency");
-					Artifact pomArtifact = artifactFactory.createArtifact(dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), null, dep.getType());
 					MavenProject pomProject = null;
 					try {
 						pomProject = mavenProjectBuilder.buildFromRepository( pomArtifact, remoteRepos, localRepository);
@@ -291,15 +290,14 @@ public class GenerateConfigMojo extends AbstractMojo {
 						throw new MojoExecutionException("Unable to retrieve artifact, " + dep.toString());
 					}
 					
-					Iterator<?> iter = arr.getArtifacts().iterator(); 
-				
+					Iterator<?> iter = arr.getArtifacts().iterator();
 					while (iter.hasNext()){
-						Artifact a = (Artifact) iter.next();
+						Artifact a = (Artifact) iter.next();						
+						//wsdlFiles.addAll(getWsdls(policy, a, wsdlFilesDir));
+					//}
 
 						for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
 							getLog().debug("Checking if " + wsdlArtifact + " matches " + a);
-							getLog().debug("wsdlArtifact: " + wsdlArtifact.getGroupId()+", "+ wsdlArtifact.getArtifactId());
-							getLog().debug("artifact: " + a.getGroupId()+", "+ a.getArtifactId());
 							if (wsdlArtifact.equals(a) || wsdlArtifact.equals(a, "ear", null)) {
 								// Direct dependency
 								Artifact wsdlInterfaceArtifact = a;
@@ -309,15 +307,12 @@ public class GenerateConfigMojo extends AbstractMojo {
 									wsdlInterfaceArtifact = artifactFactory.createArtifactWithClassifier(a.getGroupId(), a.getArtifactId(), a.getVersion(), wsdlArtifact.getType(), wsdlArtifact.getClassifier());
 									artifactResolver.resolve(wsdlInterfaceArtifact, remoteRepos, localRepository);
 								}
-								getLog().warn("WSDL-artifact: " + wsdlInterfaceArtifact.getGroupId() + ", " + wsdlInterfaceArtifact.getGroupId() + ": " + wsdlInterfaceArtifact.getVersion());
 								// Add all hits
 								ZipFile zipFile = new ZipFile(wsdlInterfaceArtifact.getFile());
 								// Extract interface from ZIP
 								unArchiver.setSourceFile(wsdlInterfaceArtifact.getFile());
 								unArchiver.extract();
-								getLog().warn("BILLEBA!!");
 								Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoints());
-								getLog().warn("ULF!! " + wsdls.size());
 								wsdlFiles.addAll(wsdls);
 								getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
 								break;
@@ -325,16 +320,15 @@ public class GenerateConfigMojo extends AbstractMojo {
 
 						}
 					}
+			
 				} else {
-					getLog().warn("WSDL dependency");
 					Artifact art = artifactFactory.createArtifact(dep.getGroupId(), dep.getArtifactId(), dep.getVersion(), null, dep.getType());
 
 					resolver.resolve(art, remoteRepos, localRepository);
+//					wsdlFiles.addAll(getWsdls(policy, pomArtifact, wsdlFilesDir));
 
 					for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
 						getLog().debug("Checking if " + wsdlArtifact + " matches " + art);
-						getLog().debug("wsdlArtifact: " + wsdlArtifact.getGroupId()+", "+ wsdlArtifact.getArtifactId());
-						getLog().debug("artifact: " + art.getGroupId()+", "+ art.getArtifactId());
 						if (wsdlArtifact.equals(art) || wsdlArtifact.equals(art, "ear", null)) {
 							// Direct dependency
 							Artifact wsdlInterfaceArtifact = art;
@@ -344,15 +338,12 @@ public class GenerateConfigMojo extends AbstractMojo {
 								wsdlInterfaceArtifact = artifactFactory.createArtifactWithClassifier(art.getGroupId(), art.getArtifactId(), art.getVersion(), wsdlArtifact.getType(), wsdlArtifact.getClassifier());
 								artifactResolver.resolve(wsdlInterfaceArtifact, remoteRepos, localRepository);
 							}
-							getLog().warn("WSDL-artifact: " + wsdlInterfaceArtifact.getGroupId() + ", " + wsdlInterfaceArtifact.getGroupId() + ": " + wsdlInterfaceArtifact.getVersion());
 							// Add all hits
 							ZipFile zipFile = new ZipFile(wsdlInterfaceArtifact.getFile());
 							// Extract interface from ZIP
 							unArchiver.setSourceFile(wsdlInterfaceArtifact.getFile());
 							unArchiver.extract();
-							getLog().warn("BILLEBA wsdl!!");
 							Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoints());
-							getLog().warn("ULF wsdl!! " + wsdls.size());
 							wsdlFiles.addAll(wsdls);
 							getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
 							break;
@@ -373,6 +364,34 @@ public class GenerateConfigMojo extends AbstractMojo {
 		}
 	}
 
+	
+	private Set<WSDLFile> getWsdls(Policy policy, Artifact art, File wsdlFilesDir) throws ArchiverException, IOException, ArtifactResolutionException, ArtifactNotFoundException{
+		Set<WSDLFile> wsdlFiles = new LinkedHashSet<WSDLFile>();
+		
+		for (WsdlArtifact wsdlArtifact : policy.getArtifacts()) {
+			getLog().debug("Checking if " + wsdlArtifact + " matches " + art);
+			if (wsdlArtifact.equals(art) || wsdlArtifact.equals(art, "ear", null)) {
+				// Direct dependency
+				Artifact wsdlInterfaceArtifact = art;
+				// Dependency via esb
+				if (wsdlArtifact.equals(art, "ear", null)) {
+					// Resolve interface artifact
+					wsdlInterfaceArtifact = artifactFactory.createArtifactWithClassifier(art.getGroupId(), art.getArtifactId(), art.getVersion(), wsdlArtifact.getType(), wsdlArtifact.getClassifier());
+					artifactResolver.resolve(wsdlInterfaceArtifact, remoteRepos, localRepository);
+				}
+				// Add all hits
+				ZipFile zipFile = new ZipFile(wsdlInterfaceArtifact.getFile());
+				// Extract interface from ZIP
+				unArchiver.setSourceFile(wsdlInterfaceArtifact.getFile());
+				unArchiver.extract();
+				Set<WSDLFile> wsdls = findWsdlFiles(zipFile.entries(), wsdlFilesDir, localFilesDir, policy.isRewriteEndpoints());
+				wsdlFiles.addAll(wsdls);
+				getLog().debug("Added " + wsdls.size() + " WSDLs, new size of WSDL-set is " + wsdlFiles.size());
+				break;
+				}
+			}
+		return wsdlFiles;
+	}
 	/*
 	 * Iterates through a ZIP file and find all WSDL ports (filename *.wsdl and
 	 * contains a SOAP service) The WSDL (same relative path as in the ZIP file)
@@ -424,8 +443,7 @@ public class GenerateConfigMojo extends AbstractMojo {
 
 	private void processFreemarkerTemplates(File configFile) throws IOException, TemplateException {
 		// Prepare for fremarker template processing
-//		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "src/main/freemarker-templates"));
-		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "target/dependency/busconfiguration-jar/" + gateway + "/src/main/freemarker-templates"));
+		Freemarker freemarker = new Freemarker(new File(project.getBasedir(), "target/dependency/busconfiguration-jar/datapower/" + gateway + "/src/main/freemarker-templates"));
 		// Open file for writing
 		FileWriter writer = new FileWriter(configFile);
 		// Process main template
