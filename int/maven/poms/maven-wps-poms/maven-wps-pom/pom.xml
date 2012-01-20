@@ -96,6 +96,13 @@
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wid-plugin</artifactId>
 					<version>3.1</version>
+					<configuration>
+						<wpsLibraryParent>
+							<groupId>no.stelvio.maven.poms</groupId>
+							<artifactId>maven-wps-library-pom</artifactId>
+							<version>2.1.5</version>
+						</wpsLibraryParent>
+					</configuration>
 				</plugin>
 				<!-- Since we're using ${project.build.outputDirectory} that doesn't account for target/checkout used by release:perform, we risk conflicts with mvn:release -->
 				<!-- To work around this, do clean before build the release. Assume that we're not interested in site-deploy -->

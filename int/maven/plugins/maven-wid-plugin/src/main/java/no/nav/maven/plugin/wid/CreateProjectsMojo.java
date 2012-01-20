@@ -1,6 +1,7 @@
 package no.nav.maven.plugin.wid;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,10 +17,13 @@ import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
 import org.apache.maven.artifact.resolver.ArtifactResolutionException;
 import org.apache.maven.artifact.resolver.ArtifactResolver;
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.model.Parent;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.MavenProjectBuilder;
+import org.apache.maven.project.ProjectBuildingException;
 import org.apache.maven.project.ProjectUtils;
 import org.apache.maven.shared.invoker.DefaultInvocationRequest;
 import org.apache.maven.shared.invoker.InvocationRequest;
@@ -40,6 +44,7 @@ import org.codehaus.plexus.archiver.UnArchiver;
 public class CreateProjectsMojo extends AbstractMojo {
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
+	private static final String PACKAGING_SERVICE_SPECIFICATION = "service-specification";
 
 	/**
 	 * Artifact repository factory component.
@@ -111,10 +116,22 @@ public class CreateProjectsMojo extends AbstractMojo {
 	private ArtifactRepository localRepository;
 
 	/**
+	 * @component
+	 * @readonly
+	 * @required
+	 */
+	private MavenProjectBuilder projectBuilder;
+
+	/**
 	 * @parameter default-value="${project.basedir}/libraries"
 	 * @required
 	 */
 	private File dependencyProjectsDirectory;
+	
+	/**
+	 * @parameter
+	 */
+	private Parent wpsLibraryParent;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		Collection<String> reactorProjectIds = new HashSet<String>(reactorProjects.size());
@@ -126,10 +143,10 @@ public class CreateProjectsMojo extends AbstractMojo {
 		Collection<Artifact> dependencyArtifacts = new HashSet<Artifact>();
 		for (MavenProject reactorProject : reactorProjects) {
 			String packaging = reactorProject.getPackaging();
-			if (PACKAGING_WPS_MODULE_EAR.equals(packaging) || PACKAGING_WPS_LIBRARY_JAR.equals(packaging)) {
+			if (PACKAGING_WPS_MODULE_EAR.equals(packaging) || PACKAGING_WPS_LIBRARY_JAR.equals(packaging) || PACKAGING_SERVICE_SPECIFICATION.equals(packaging)) {
 				for (Artifact dependencyArtifact : (Collection<Artifact>) reactorProject.getArtifacts()) {
-					// TODO: For now we only support dependencies of type wps-library-jar
-					if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyArtifact.getType())) {
+					// TODO: For now we only support dependencies of type wps-library-jar and service-specification
+					if (PACKAGING_WPS_LIBRARY_JAR.equals(dependencyArtifact.getType()) || PACKAGING_SERVICE_SPECIFICATION.equals(dependencyArtifact.getType())) {
 						String dependencyArtifactId = dependencyArtifact.getId();
 						// Only add dependency artifacts that are not part of the reactor
 						if (!reactorProjectIds.contains(dependencyArtifactId)) {
@@ -156,10 +173,33 @@ public class CreateProjectsMojo extends AbstractMojo {
 	}
 
 	private void createProject(List remoteRepos, Artifact artifact) throws MojoExecutionException {
-		Artifact sourceArtifact = artifactFactory.createArtifactWithClassifier(artifact.getGroupId(), artifact.getArtifactId(),
-				artifact.getVersion(), artifact.getType(), "sources");
-		sourceArtifact = resolveArtifact(remoteRepos, sourceArtifact);
-		File extractDirectory = extractArtifact(sourceArtifact);
+		if (PACKAGING_WPS_LIBRARY_JAR.equals(artifact.getType())) {
+			Artifact sourceArtifact = artifactFactory.createArtifactWithClassifier(artifact.getGroupId(), artifact.getArtifactId(),
+					artifact.getVersion(), artifact.getType(), "sources");
+				artifact = resolveArtifact(remoteRepos, sourceArtifact);
+		}
+		File extractDirectory = extractArtifact(artifact);
+		if (PACKAGING_SERVICE_SPECIFICATION.equals(artifact.getType())) {
+			// Create temporary pom.xml based on the service-specification pom
+			File tempPom = new File(extractDirectory, "pom.xml");
+			try {
+				MavenProject project = projectBuilder.buildFromRepository(artifact, remoteRepos, localRepository);
+				// Use default value to simplify usage
+				if (wpsLibraryParent == null) {
+					wpsLibraryParent = new Parent();
+					wpsLibraryParent.setGroupId("no.stelvio.maven.poms");
+					wpsLibraryParent.setArtifactId("maven-wps-library-pom");
+					wpsLibraryParent.setVersion("2.1.5");
+				}
+				project.getOriginalModel().setParent(wpsLibraryParent);
+				project.getOriginalModel().setPackaging(PACKAGING_WPS_LIBRARY_JAR);
+				project.writeOriginalModel(new FileWriter(tempPom));
+			} catch (ProjectBuildingException e) {
+				throw new MojoExecutionException("Unable to load project pom for dependent project", e);
+			} catch (IOException e) {
+				throw new MojoExecutionException("Unable to write temporary project pom " + tempPom.getAbsolutePath(), e);
+			}
+		}
 		invokeWidPlugin(extractDirectory);
 	}
 

@@ -30,6 +30,7 @@ public class ScaAttributesBuilder {
 
 	private static final String PACKAGING_WPS_MODULE_EAR = "wps-module-ear";
 	private static final String PACKAGING_WPS_LIBRARY_JAR = "wps-library-jar";
+	private static final String PACKAGING_SERVICE_SPECIFICATION = "service-specification";
 
 	private MavenProject project;
 	private boolean versioned;
@@ -96,7 +97,7 @@ public class ScaAttributesBuilder {
 		}
 
 		for (Dependency dependency : (Collection<Dependency>) project.getCompileDependencies()) {
-			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependency.getType())) {
+			if (PACKAGING_WPS_LIBRARY_JAR.equals(dependency.getType()) || PACKAGING_SERVICE_SPECIFICATION.equals(dependency.getType())) {
 				Element dependencyElement = new Element("libraryDependency", TARGET_NAMESPACE);
 				dependencyElement.setAttribute("name", dependency.getArtifactId());
 				dependencyElement.setAttribute("version", "");
