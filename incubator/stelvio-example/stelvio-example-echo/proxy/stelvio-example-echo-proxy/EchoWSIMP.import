@@ -5,7 +5,7 @@
       <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
     </interface>
   </interfaces>
-  <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://www.stelvio.no/example/services/V1/EchoService/ExampleProvider/echoService/EchoServicePort" port="ExampleProvider:EchoServicePort" service="ExampleProvider:echoService">
+  <esbBinding xsi:type="jaxws:JaxWsImportBinding" endpoint="http://localhost:9080/stelvio-example-echo-proxyWeb/sca/EchoWSEXP" port="ExampleProvider:EchoServicePort" service="ExampleProvider:echoService">
     <policySetRef policySetName="SAML20 Bearer"/>
   </esbBinding>
 </scdl:import>
