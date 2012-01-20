@@ -11,11 +11,11 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-wpsdeploy-pom</artifactId>
 	<packaging>deployable-artifact</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version/><!-- No version because this pom is nevere uploaded to a repository -->
 	<name>POM for deployments</name>
 
 	<properties>
-		<wpsdeployVersion>2.0.1</wpsdeployVersion>
+		<wpsdeployVersion>3.0.0</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
