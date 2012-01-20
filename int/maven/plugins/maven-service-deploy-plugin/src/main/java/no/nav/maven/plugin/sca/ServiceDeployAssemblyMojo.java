@@ -317,6 +317,10 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 			}
 			// Update Manifest File
 			Manifest manifest = artifactJarFile.getManifest();
+			// service-specification has no manifest
+			if (manifest == null) {
+				manifest = new Manifest();
+			}
 			Attributes manifestMainAttributes = manifest.getMainAttributes();
 			if (classpath.length() > 0) {
 				manifestMainAttributes.put(Attributes.Name.CLASS_PATH, classpath.toString());
