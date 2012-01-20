@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -119,37 +118,27 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 	 */
 	@SuppressWarnings("unchecked")
 	public void execute() throws MojoExecutionException {
-		for (Iterator iterator = project.getArtifacts().iterator(); iterator.hasNext();) {
-			Artifact artifact = (Artifact) iterator.next();
-			System.out.println("Artifact="+artifact+";"+artifact.getArtifactHandler().isAddedToClasspath());
-		}
 		Collection<Artifact> artifacts = new ArrayList<Artifact>();
 		for (Artifact artifact : (Collection<Artifact>) project.getAttachedArtifacts()) {
-			System.out.println("Attached artifact="+artifact);
 			if (JAR_CLASSIFIER.equals(artifact.getClassifier())) {
 				artifacts.add(artifact);
 				break;
 			}
 		}
 		for (Artifact artifact : (Collection<Artifact>) project.getRuntimeArtifacts()) {
-			System.out.println("Runtime artifact="+artifact);
 			artifacts.add(artifact);
 		}
 
 		projectArtifactResolver.resolveArtifacts(artifacts);
-		System.out.println("Artifacts after resolution="+artifacts);
 		Map<Artifact, Set<Artifact>> artifactDependencyMap = projectDependencyResolver.getArtifactDependencyMap(artifacts);
-		System.out.println("artifactDependencyMap="+artifactDependencyMap);
 		serviceDeployAssemblyBuilder.createAssembly(artifactDependencyMap);
 	}
 
 	@SuppressWarnings("unchecked")
 	private static void addProjectReferences(Map<String, MavenProject> projectReferences, MavenProject project) {
-		System.out.println("Find project references for ="+project);
 		for (MavenProject projectReference : ((Map<String, MavenProject>) project.getProjectReferences()).values()) {
 			String projectReferenceId = getProjectReferenceId(projectReference.getGroupId(), projectReference.getArtifactId(),
 					projectReference.getVersion());
-			System.out.println("Project Reference="+projectReferenceId);
 			projectReferences.put(projectReferenceId, projectReference);
 			addProjectReferences(projectReferences, projectReference);
 		}
@@ -166,7 +155,6 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 
 			for (Artifact artifact : artifacts) {
 				File artifactFile = artifact.getFile();
-				System.out.println("Resolve artifact="+artifactFile);
 				if (artifactFile == null) {
 					artifact = resolveArtifact(artifact, projectReferences);
 				}
@@ -179,7 +167,6 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 			// work if the artifact to resolve is built as part of this
 			// (multi-module) build.
 			Artifact resolvedArtifact = resolveArtifactFromProjectReferences(artifact, projectReferences);
-			System.out.println("Resolved artifact="+resolvedArtifact);
 			if (resolvedArtifact != null) {
 				return resolvedArtifact;
 			}
@@ -362,7 +349,6 @@ public class ServiceDeployAssemblyMojo extends AbstractMojo {
 		}
 
 		private String getArtifactFileName(Artifact artifact) {
-			System.out.println("Artifact!!!!="+artifact);
 			String extension = artifact.getArtifactHandler().getExtension();
 			// Convert service-specification files from zip to jar
 			if ("zip".equals(extension)) {
