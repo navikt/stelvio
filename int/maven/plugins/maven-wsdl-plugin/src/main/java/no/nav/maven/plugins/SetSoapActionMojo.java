@@ -73,7 +73,6 @@ public class SetSoapActionMojo extends AbstractMojo {
 					for (ExtensibilityElement extensibilityElement : (List<ExtensibilityElement>) bindingOperation.getExtensibilityElements()) {
 						if (extensibilityElement instanceof SOAPOperation) {
 							((SOAPOperation) extensibilityElement).setSoapActionURI("");
-							System.out.println("Set soapAction");
 						}
 					}
 				}
