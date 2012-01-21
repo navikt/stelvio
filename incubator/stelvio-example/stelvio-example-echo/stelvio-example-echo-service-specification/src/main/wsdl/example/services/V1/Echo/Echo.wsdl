@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="EchoService" targetNamespace="http://www.stelvio.no/example/services/V1/EchoService/" xmlns:tns="http://www.stelvio.no/example/services/V1/EchoService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="Echo" targetNamespace="http://stelvio.no/example/services/V1/Echo/" xmlns:tns="http://stelvio.no/example/services/V1/Echo/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
-    <xsd:schema targetNamespace="http://www.stelvio.no/example/services/V1/EchoService/">
+    <xsd:schema targetNamespace="http://stelvio.no/example/services/V1/Echo/">
       <xsd:element name="echo">
         <xsd:complexType>
           <xsd:sequence>
@@ -27,10 +27,8 @@
   <wsdl:message name="echoEchoFault1">
     <wsdl:part element="tns:echoechoFault1" name="echoFault1"/>
   </wsdl:message>
-  <wsdl:portType name="EchoService">
-    <wsdl:documentation>Throws back echoes like a wall.
-
-Does not provide any guarantee for echoing "Quack". </wsdl:documentation>
+  <wsdl:portType name="Echo">
+    <wsdl:documentation>&lt;p&gt;Throws back echoes like a wall.&lt;/p&gt;&lt;p&gt;Does not provide any guarantee for echoing "Quack".&lt;/p&gt; </wsdl:documentation>
     <wsdl:operation name="echo">
       <wsdl:input message="tns:echoRequest"/>
       <wsdl:output message="tns:echoResponse"/>

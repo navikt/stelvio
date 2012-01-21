@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="Binding" targetNamespace="http://stelvio.no/example/services/V1/Echo/Binding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://stelvio.no/example/services/V1/Echo/Binding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl_1="http://stelvio.no/example/services/V1/Echo/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import location="Echo.wsdl" namespace="http://stelvio.no/example/services/V1/Echo/"/>
+  <wsdl:binding name="EchoBinding" type="wsdl_1:Echo">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="echo">
+      <soap:operation soapAction="http://stelvio.no/example/services/V1/Echo/Binding/echo/"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="echoFault">
+        <soap:fault name="echoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Echo">
+    <wsdl:port binding="tns:EchoBinding" name="EchoPort">
+      <soap:address location="http://stelvio.no/example/services/V1/Echo/Binding/Echo/EchoPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
