@@ -13,21 +13,30 @@
 					<lifecycle>
 						<id>default</id>
 						<phases>
-							<generate-resources>
+							<validate>
 								org.apache.maven.plugins:maven-resources-plugin:resources
-							</generate-resources>
-							<process-resources>
-								no.nav.maven.plugins:maven-wsdl-plugin:set-fault-names,
+							</validate>
+							<initialize>
 								no.nav.maven.plugins:maven-wsdl-plugin:remove-placeholders,
 								no.nav.maven.plugins:maven-wsdl-plugin:set-soap-action,
 								no.nav.maven.plugins:maven-wsdl-plugin:set-endpoint-address,
 								no.nav.maven.plugins:maven-wsdl-plugin:add-using-addressing,
-							</process-resources>
+							</initialize>
+							<generate-sources>
+								org.jvnet.jax-ws-commons:jaxws-maven-plugin:wsimport
+							</generate-sources>
+							<compile>
+								org.apache.maven.plugins:maven-compiler-plugin:compile
+							</compile>
 							<test>
 								no.nav.maven.plugins:maven-wsi-plugin:analyze
 							</test>
+							<prepare-package>
+								org.apache.maven.plugins:maven-javadoc-plugin:javadoc,
+							</prepare-package>
 							<package>
-								org.apache.maven.plugins:maven-assembly-plugin:single
+								org.apache.maven.plugins:maven-assembly-plugin:single,
+								org.apache.maven.plugins:maven-jar-plugin:jar
 							</package>
 							<install>
 								org.apache.maven.plugins:maven-install-plugin:install

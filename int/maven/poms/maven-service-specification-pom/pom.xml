@@ -22,7 +22,6 @@
 
 		<sourceDirectory>${basedir}/src/main/wsdl</sourceDirectory>
 		<outputDirectory>${build.directory}/wsdl</outputDirectory>
-		<testOutputDirectory>${build.directory}/test-output</testOutputDirectory>
 		<resources>
 			<resource>
 				<directory>${project.build.sourceDirectory}</directory>
@@ -40,6 +39,14 @@
 					</configuration>
 				</plugin>
 				<plugin>
+					<groupId>org.jvnet.jax-ws-commons</groupId>
+					<artifactId>jaxws-maven-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<wsdlDirectory>${project.build.outputDirectory}</wsdlDirectory>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wsi-plugin</artifactId>
 					<version>1.0.3-SNAPSHOT</version>
@@ -54,6 +61,44 @@
 						</descriptorRefs>
 						<appendAssemblyId>false</appendAssemblyId>
 					</configuration>
+					<executions>
+						<execution>
+				            <id>jaxws-javadoc</id>
+				            <phase>package</phase>
+				            <goals>
+				              <goal>single</goal>
+				            </goals>
+				            <configuration>
+								<descriptorRefs>
+									<descriptorRef>jaxws-javadoc</descriptorRef>
+								</descriptorRefs>
+								<appendAssemblyId>true</appendAssemblyId>
+				            </configuration>
+						</execution>
+						<execution>
+				            <id>jaxws-sources</id>
+				            <phase>package</phase>
+				            <goals>
+				              <goal>single</goal>
+				            </goals>
+				            <configuration>
+								<descriptorRefs>
+									<descriptorRef>jaxws-sources</descriptorRef>
+								</descriptorRefs>
+								<appendAssemblyId>true</appendAssemblyId>
+				            </configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<configuration>
+						<classifier>jaxws</classifier>
+						<includes>
+							<include>**/*.class</include>
+						</includes>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -63,6 +108,10 @@
 		<connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-service-specification-pom</connection>
 		<developerConnection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-service-specification-pom</developerConnection>
 	</scm>
+	<dependencyManagement>
+		<dependencies>
+		</dependencies>
+	</dependencyManagement>
 	<properties>
 		<scm.connection>scm:svn:https://versjonskontroll.adeo.no/svn/stelvio/trunk/int/maven/poms/maven-service-specification-pom</scm.connection>
 	</properties>
