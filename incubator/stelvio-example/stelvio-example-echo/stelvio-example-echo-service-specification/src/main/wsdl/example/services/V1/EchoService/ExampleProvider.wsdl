@@ -5,19 +5,14 @@
     <wsdl:operation name="echo">
       <soap:operation soapAction="http://www.stelvio.no/example/services/V1/EchoService/ExampleProvider/echo/"/>
       <wsdl:input>
-        <soap:body use="literal"/>
+        <soap:body parts="parameters" use="literal"/>
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal"/>
+        <soap:body parts="parameters" use="literal"/>
       </wsdl:output>
       <wsdl:fault name="echoFault">
         <soap:fault name="echoFault" use="literal"/>
       </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="echo">
-      <wsdl:input/>
-      <wsdl:output/>
-      <wsdl:fault name="echoFault"/>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="echoService">

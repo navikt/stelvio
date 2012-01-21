@@ -24,14 +24,14 @@
   <wsdl:message name="echoResponse">
     <wsdl:part element="tns:echoResponse" name="parameters"/>
   </wsdl:message>
-  <wsdl:message name="echoFault">
+  <wsdl:message name="echoEchoFault1">
     <wsdl:part element="tns:echoechoFault1" name="echoFault1"/>
   </wsdl:message>
   <wsdl:portType name="EchoService">
     <wsdl:operation name="echo">
       <wsdl:input message="tns:echoRequest"/>
       <wsdl:output message="tns:echoResponse"/>
-      <wsdl:fault message="tns:echoFault" name="echoFault"/>
+      <wsdl:fault message="tns:echoEchoFault1" name="echoFault"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
