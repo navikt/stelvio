@@ -12,7 +12,23 @@
 	<artifactId>stelvio-example-echo-service-specification</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>service-specification</packaging>
-	
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.jvnet.jax-ws-commons</groupId>
+					<artifactId>jaxws-maven-plugin</artifactId>
+					<configuration>
+						<wsdlFiles>
+							<wsdlFile>example/services/V1/EchoService/ExampleProvider.wsdl</wsdlFile>
+						</wsdlFiles>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
 	<properties>
 		<endpointAddress>http://localhost:9080/stelvio-example-echo-proxyWeb/sca/EchoWSEXP</endpointAddress>
 	</properties>
