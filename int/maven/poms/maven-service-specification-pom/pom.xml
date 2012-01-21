@@ -95,9 +95,6 @@
 					<artifactId>maven-jar-plugin</artifactId>
 					<configuration>
 						<classifier>jaxws</classifier>
-						<includes>
-							<include>**/*.class</include>
-						</includes>
 					</configuration>
 				</plugin>
 			</plugins>
