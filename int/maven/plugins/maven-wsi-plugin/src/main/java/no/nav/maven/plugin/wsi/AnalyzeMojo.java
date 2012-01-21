@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.wsdl.Binding;
 import javax.wsdl.Definition;
 import javax.wsdl.PortType;
 import javax.wsdl.WSDLException;
@@ -201,6 +202,7 @@ public class AnalyzeMojo extends AbstractMojo {
 			for (int i = 0; i < includedFiles.length; i++) {
 				String includedFile = includedFiles[i];
 				Definition wsdl = getWsdlReader().readWSDL(basedir.toString(), includedFile);
+				// Port Types
 				Map<QName, PortType> portTypes = wsdl.getPortTypes();
 				for (QName qName : portTypes.keySet()) {
 					WSDLReference wsdlReference = new WSDLReferenceImpl();
@@ -211,6 +213,18 @@ public class AnalyzeMojo extends AbstractMojo {
 					wsdlElement.setNamespace(qName.getNamespaceURI());
 					wsdlElement.setName(qName.getLocalPart());
 
+					wsdlReferences.add(wsdlReference);
+				}
+				// Bindings
+				Map<QName, Binding> bindings = wsdl.getBindings();
+				for (QName qName : bindings.keySet()) {
+					WSDLReference wsdlReference = new WSDLReferenceImpl();
+					wsdlReference.setWSDLLocation(new File(basedir, includedFile).getAbsolutePath());
+					WSDLElement wsdlElement = new WSDLElementImpl();
+					wsdlReference.setWSDLElement(wsdlElement);
+					wsdlElement.setType("binding");
+					wsdlElement.setNamespace(qName.getNamespaceURI());
+					wsdlElement.setName(qName.getLocalPart());
 					wsdlReferences.add(wsdlReference);
 				}
 			}
