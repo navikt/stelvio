@@ -21,7 +21,7 @@
 		</extensions>
 
 		<sourceDirectory>${basedir}/src/main/wsdl</sourceDirectory>
-		<outputDirectory>${build.directory}/wsdl</outputDirectory>
+		<outputDirectory>${project.build.directory}/wsdl</outputDirectory>
 		<resources>
 			<resource>
 				<directory>${project.build.sourceDirectory}</directory>
