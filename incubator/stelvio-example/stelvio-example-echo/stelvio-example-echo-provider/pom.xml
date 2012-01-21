@@ -44,12 +44,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>no.nav.maven.plugins</groupId>
-				<artifactId>maven-wsdl-plugin</artifactId>
-				<version>1.3</version>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.2</version>
@@ -65,8 +59,9 @@
 					</execution>
 				</executions>
 				<configuration>
-					<includeTypes>wsdl-interface</includeTypes>
+					<includeClassifiers>jaxws</includeClassifiers>
 					<outputDirectory>${basedir}/WebContent/WEB-INF/wsdl</outputDirectory>
+					<includes>**/*.wsdl,**/*.xsd</includes>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -99,35 +94,9 @@
 
 		<dependency>
 			<groupId>no.stelvio.example</groupId>
-			<artifactId>stelvio-example-echo-service</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<type>wsdl-interface</type>
-			<classifier>wsdlif</classifier>
-		</dependency>
-
-		<dependency>
-			<groupId>no.stelvio.example</groupId>
 			<artifactId>stelvio-example-echo-service-specification</artifactId>
 			<classifier>jaxws</classifier>
 			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.6.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>0.9.26</version>
-		</dependency>
-
-		<dependency>
-			<groupId>no.stelvio</groupId>
-			<artifactId>stelvio-common-java</artifactId>
-			<version>2.0.2-SNAPSHOT</version>
 		</dependency>
 
 		<!--

@@ -4,27 +4,25 @@ import javax.jws.HandlerChain;
 import javax.jws.WebService;
 
 import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.example.services.v1.echoservice.exampleprovider.EchoFault;
-import no.stelvio.example.services.v1.echoservice.exampleprovider.EchoService;
+import no.stelvio.example.services.v1.echo.binding.EchoEchoFault1;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import stelvio.example.echo.service.EchoServiceBi;
 
-@WebService(endpointInterface = "no.stelvio.example.services.v1.echoservice.exampleprovider.EchoService",
-			wsdlLocation="WEB-INF/wsdl/no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl",
-			targetNamespace="http://www.stelvio.no/example/services/V1/EchoService/Binding2",
-			serviceName="EchoServiceWSEXP_EchoServiceHttpService",
-			portName="EchoServiceWSEXP_EchoServiceHttpPort")
+@WebService(endpointInterface = "no.stelvio.example.services.v1.echo.binding.Echo",
+			wsdlLocation="WEB-INF/wsdl/example/services/V1/Echo/Binding.wsdl",
+			targetNamespace="http://stelvio.no/example/services/V1/Echo/Binding/",
+			serviceName="Echo")
 @HandlerChain(file = "EchoHandler.xml")
-public class Echo implements EchoService {
+public class Echo implements no.stelvio.example.services.v1.echo.binding.Echo {
 
 	protected final Log log = LogFactory.getLog(this.getClass());
 	
 	EchoServiceBi echoServiceBi;
 
-	public String echo(String input) throws EchoFault {
+	public String echo(String input) throws EchoEchoFault1 {
 
 		log.debug("Echoing message:" + input);
 		log.debug("Context: " + RequestContextHolder.currentRequestContext());
