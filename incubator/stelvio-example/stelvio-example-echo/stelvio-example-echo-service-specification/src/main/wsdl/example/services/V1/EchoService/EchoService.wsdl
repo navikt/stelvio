@@ -28,6 +28,9 @@
     <wsdl:part element="tns:echoechoFault1" name="echoFault1"/>
   </wsdl:message>
   <wsdl:portType name="EchoService">
+    <wsdl:documentation>Throws back echoes like a wall.
+
+Does not provide any guarantee for echoing "Quack". </wsdl:documentation>
     <wsdl:operation name="echo">
       <wsdl:input message="tns:echoRequest"/>
       <wsdl:output message="tns:echoResponse"/>

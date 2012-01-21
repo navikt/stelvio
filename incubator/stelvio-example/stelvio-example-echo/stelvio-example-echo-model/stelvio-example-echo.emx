@@ -2,8 +2,8 @@
 <!--xtools2_universal_type_manager-->
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SoaML="http:///schemas/SoaML/_L8VXYIXTEd-rHPgPaD0G8g/128" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/SoaML/_L8VXYIXTEd-rHPgPaD0G8g/128 pathmap://SOAML/SoaML.epx#_L8fIYIXTEd-rHPgPaD0G8g?SoaML/SoaML? http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w">
-  <uml:Package xmi:id="_ditNgAPdEeCXVKYffJrB5g" name="www.stelvio.no">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2" xmlns:SoaML="http:///schemas/SoaML/_L8VXYIXTEd-rHPgPaD0G8g/128" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:XSDProfile="http:///schemas/XSDProfile/_0SxmILmyEeCPE-4cAROvtA/102" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2 pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default? http:///schemas/SoaML/_L8VXYIXTEd-rHPgPaD0G8g/128 pathmap://SOAML/SoaML.epx#_L8fIYIXTEd-rHPgPaD0G8g?SoaML/SoaML? http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w http:///schemas/XSDProfile/_0SxmILmyEeCPE-4cAROvtA/102 pathmap://XSD_PROFILES/XSDProfile.epx#_0S7XILmyEeCPE-4cAROvtA?XSDProfile/XSDProfile?">
+  <uml:Package xmi:id="_ditNgAPdEeCXVKYffJrB5g" name="no.stelvio.www">
     <eAnnotations xmi:id="_ditNgQPdEeCXVKYffJrB5g" source="uml2.diagrams"/>
     <eAnnotations xmi:id="_GpyfkgPeEeCXVKYffJrB5g" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
       <details xmi:id="_GpyfkwPeEeCXVKYffJrB5g" key="com.ibm.xtools.modeling.soa.ml.uireduction.activity" value="2"/>
@@ -58,6 +58,9 @@
       <details xmi:id="_GpyfxAPeEeCXVKYffJrB5g" key="com.ibm.xtools.activities.umlBBDeploymentDiagram" value="1"/>
       <details xmi:id="_GpyfxQPeEeCXVKYffJrB5g" key="com.ibm.xtools.activities.umlBBInteraction" value="1"/>
       <details xmi:id="_GpyfxgPeEeCXVKYffJrB5g" key="com.ibm.xtools.activities.umlBBCommunication" value="1"/>
+      <details xmi:id="_XM0WgUSBEeG4OMAVlcsc3Q" key="com.ibm.xtools.activities.umlBBCollaborationUse" value="1"/>
+      <details xmi:id="_XM09kESBEeG4OMAVlcsc3Q" key="com.ibm.xtools.activities.umlBBCompositeStructure2" value="1"/>
+      <details xmi:id="_XsNoQESBEeG4OMAVlcsc3Q" key="com.ibm.xtools.transform.uml2.xsd.profile.uireduction.activity" value="2"/>
     </eAnnotations>
     <packageImport xmi:id="_ditNggPdEeCXVKYffJrB5g">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -67,6 +70,9 @@
         <packagedElement xmi:type="uml:Package" xmi:id="_1Z66QAPdEeCXVKYffJrB5g" name="V1">
           <packagedElement xmi:type="uml:Package" xmi:id="_7TqU0APdEeCXVKYffJrB5g" name="EchoService">
             <packagedElement xmi:type="uml:Interface" xmi:id="_IUfG0APeEeCXVKYffJrB5g" name="EchoService">
+              <ownedComment xmi:id="_rX56UESCEeG4OMAVlcsc3Q" annotatedElement="_IUfG0APeEeCXVKYffJrB5g">
+                <body>&lt;p>Throws back echoes like a wall.&lt;/p>&lt;p>Does not provide any guarantee for echoing &quot;Quack&quot;.&lt;/p></body>
+              </ownedComment>
               <ownedOperation xmi:id="_tBD8cAPeEeCXVKYffJrB5g" name="echo">
                 <ownedParameter xmi:id="_wIlHAAPeEeCXVKYffJrB5g" name="input">
                   <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
@@ -79,8 +85,8 @@
                 </ownedParameter>
               </ownedOperation>
             </packagedElement>
-            <packagedElement xmi:type="uml:Component" xmi:id="_8SdNcAPfEeCXVKYffJrB5g" name="ExampleProvider">
-              <ownedAttribute xmi:type="uml:Port" xmi:id="_KPBO8APgEeCXVKYffJrB5g" name="echoService" type="_IUfG0APeEeCXVKYffJrB5g" aggregation="composite" isService="false"/>
+            <packagedElement xmi:type="uml:Component" xmi:id="_8SdNcAPfEeCXVKYffJrB5g" name="Binding">
+              <ownedAttribute xmi:type="uml:Port" xmi:id="_KPBO8APgEeCXVKYffJrB5g" name="Echo" type="_IUfG0APeEeCXVKYffJrB5g" aggregation="composite" isService="false"/>
             </packagedElement>
           </packagedElement>
         </packagedElement>
@@ -110,8 +116,22 @@
       </eAnnotations>
       <appliedProfile href="pathmap://SOAML/SoaML.epx#_ut1IIGfDEdy6JoIZoRRqYw?SoaML?"/>
     </profileApplication>
+    <profileApplication xmi:id="_YsXdsESBEeG4OMAVlcsc3Q">
+      <eAnnotations xmi:id="_YsbIEESBEeG4OMAVlcsc3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://XSD_PROFILES/XSDProfile.epx#_0S7XILmyEeCPE-4cAROvtA?XSDProfile/XSDProfile?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://XSD_PROFILES/XSDProfile.epx#_w1-ykSkOEdmj4ajjgbmSxQ?XSDProfile?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ZNd_oESBEeG4OMAVlcsc3Q">
+      <eAnnotations xmi:id="_ZNemsESBEeG4OMAVlcsc3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://WSDL_BINDING_PROFILES/WsdlBindingProfile.epx#_WVcJAWWaEeCDE_V0fp4Xng?WSDL%20Binding%20Profile/WSDLBindingProfile?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://WSDL_BINDING_PROFILES/WsdlBindingProfile.epx#_-tDzIFvLEd69IqHydx9IRA?WSDL%20Binding%20Profile?"/>
+    </profileApplication>
   </uml:Package>
   <SoaML:ServiceInterface xmi:id="_IUo30APeEeCXVKYffJrB5g" base_Interface="_IUfG0APeEeCXVKYffJrB5g"/>
   <SoaML:Participant xmi:id="_8Sm-cAPfEeCXVKYffJrB5g" base_Class="_8SdNcAPfEeCXVKYffJrB5g"/>
   <Standard:Specification xmi:id="_Ae0gMAPgEeCXVKYffJrB5g" base_Classifier="_8SdNcAPfEeCXVKYffJrB5g"/>
+  <XSDProfile:schema xmi:id="_Q92dYESCEeG4OMAVlcsc3Q" base_Package="_7TqU0APdEeCXVKYffJrB5g" targetNamespace=""/>
+  <Default:Documentation xmi:id="_rX56UUSCEeG4OMAVlcsc3Q" base_Comment="_rX56UESCEeG4OMAVlcsc3Q"/>
 </xmi:XMI>
