@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.wsdl.Binding;
 import javax.wsdl.Definition;
@@ -38,6 +40,11 @@ public class AddUsingAddressingMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	private MavenProject project;
+	
+	/**
+	 * @parameter
+	 */
+	private Boolean addressingRequired;
 	
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (!"pom".equals(project.getPackaging())) {
@@ -81,7 +88,18 @@ public class AddUsingAddressingMojo extends AbstractMojo {
 			Collection<Port> ports = service.getPorts().values();
 			for (Port port : ports) {
 				Binding binding = port.getBinding();
+				List<ExtensibilityElement> removeList = new ArrayList<ExtensibilityElement>();
+				for (Object ext : binding.getExtensibilityElements()) {
+					// Remove existing elements
+					if (UsingAddressingImpl.Q_ELEMENT.equals(((ExtensibilityElement)ext).getElementType())) {
+						removeList.add((ExtensibilityElement) ext);
+					}
+				}
+				for (ExtensibilityElement extensibilityElement : removeList) {
+					binding.removeExtensibilityElement(extensibilityElement);
+				}
 				ExtensibilityElement usingAddressing = definition.getExtensionRegistry().createExtension(Binding.class, UsingAddressingImpl.Q_ELEMENT);
+				usingAddressing.setRequired(addressingRequired);
 				binding.addExtensibilityElement(usingAddressing);
 			}
 		}
