@@ -21,6 +21,7 @@
 								no.nav.maven.plugins:maven-wsdl-plugin:set-soap-action,
 								no.nav.maven.plugins:maven-wsdl-plugin:set-endpoint-address,
 								no.nav.maven.plugins:maven-wsdl-plugin:add-using-addressing,
+								no.nav.maven.plugins:maven-wsdl-plugin:delete-duplicate-operation,
 							</initialize>
 							<generate-sources>
 								org.jvnet.jax-ws-commons:jaxws-maven-plugin:wsimport
