@@ -239,7 +239,7 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 			// artifact
 			List<File> wsdlFiles = listFilesRecursive(wsdlZipDir, new FilenameFilter() {
 				public boolean accept(File dir, String name) {
-					return name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX);
+					return (name.contains(WSDLEXPORT_TOKEN) && name.endsWith(WSDLEXPORT_SUFFIX) || name.endsWith("Binding.wsdl"));
 				}
 			});
 			for (File wsdlFile : wsdlFiles) {
