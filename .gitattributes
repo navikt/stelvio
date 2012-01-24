@@ -3407,6 +3407,8 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-spec
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/src/main/wsdl/example/services/V1/Echo/Binding.wsdl -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/src/main/wsdl/example/services/V1/Echo/Echo.wsdl -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/src/main/wsdl/example/services/echo/v1/Binding.wsdl -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/src/main/wsdl/example/services/echo/v1/Echo-v1.wsdl -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/EchoServiceWSEXP.export -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/CopyInputToOutputImpl.map -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service/no/stelvio/example/mediation/CopyInputToOutputImpl.xsl -text
