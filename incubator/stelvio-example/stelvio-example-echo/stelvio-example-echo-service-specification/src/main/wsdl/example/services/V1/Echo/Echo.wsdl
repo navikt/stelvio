@@ -28,7 +28,9 @@
     <wsdl:part element="tns:echoechoFault1" name="echoFault1"/>
   </wsdl:message>
   <wsdl:portType name="Echo">
-    <wsdl:documentation>&lt;p&gt;Throws back echoes like a wall.&lt;/p&gt;&lt;p&gt;Does not provide any guarantee for echoing "Quack".&lt;/p&gt; </wsdl:documentation>
+    <wsdl:documentation>Throws back echoes like a wall.
+
+Does not provide any guarantee for echoing "Quack". </wsdl:documentation>
     <wsdl:operation name="echo">
       <wsdl:input message="tns:echoRequest"/>
       <wsdl:output message="tns:echoResponse"/>
