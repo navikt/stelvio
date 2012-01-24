@@ -364,6 +364,10 @@ public class Wsdl2JavaMojo extends AbstractMojo {
 				// TODO: Improve error handling
 				continue;
 			}
+			// Workaround to support service-specification projects
+			if (wsdlA.getType().equals("service-specification") && wsdlA.getClassifier().equals("wsdlif")) {
+				wsdlA.setClassifier(null);
+			}
 			Artifact wsdlArtifact = artifactFactory.createArtifactWithClassifier(wsdlA.getGroupId(), wsdlA.getArtifactId(),
 					wsdlA.getVersion(), wsdlA.getType(), wsdlA.getClassifier());
 			wsdlArtifact = resolveRemoteWsdlArtifact(remoteRepos, wsdlArtifact);
