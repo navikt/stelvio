@@ -21,7 +21,7 @@
 					<artifactId>jaxws-maven-plugin</artifactId>
 					<configuration>
 						<wsdlFiles>
-							<wsdlFile>example/services/V1/Echo/Binding.wsdl</wsdlFile>
+							<wsdlFile>example/services/echo/v1/Binding.wsdl</wsdlFile>
 						</wsdlFiles>
 					</configuration>
 				</plugin>
