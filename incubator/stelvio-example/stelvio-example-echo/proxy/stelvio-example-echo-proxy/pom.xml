@@ -18,16 +18,6 @@
 		<developerConnection>${scm.connection}</developerConnection>
 	</scm>
 	
-	<build>
-		<extensions>
-			<extension>
-				<groupId>no.nav.maven.lifecycles</groupId>
-				<artifactId>service-specification-lifecycle</artifactId>
-				<version>1.0.0-SNAPSHOT</version>
-			</extension>
-		</extensions>
-	</build>
-
 	<dependencies>
 		<dependency>
 			<groupId>no.stelvio.example</groupId>
