@@ -15,6 +15,13 @@
 	<name>WPS Artifact Master POM</name>
 
 	<build>
+		<extensions>
+			<extension>
+				<groupId>no.nav.maven.lifecycles</groupId>
+				<artifactId>service-specification-lifecycle</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+			</extension>
+		</extensions>
 		<directory>${target.dir}</directory>
 		<outputDirectory>${target.dir}/classes</outputDirectory>
 		<testOutputDirectory>
