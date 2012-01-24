@@ -30,7 +30,8 @@
 	</build>
 
 	<properties>
-		<endpointAddress>http://localhost:9080/stelvio-example-echo-proxyWeb/sca/EchoWSEXP</endpointAddress>
+		<!-- Syntax: http://localhost:9080/<logical bus>-tjeneste-<service name>_v<major version>Web/sca/<export name> -->
+		<endpointAddress>http://localhost:9080/stelvio-example-echo-proxy_v1Web/sca/EchoWSEXP</endpointAddress>
 	</properties>
 
 </project>
