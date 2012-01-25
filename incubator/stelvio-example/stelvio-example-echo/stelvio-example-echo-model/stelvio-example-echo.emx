@@ -60,7 +60,7 @@
       <details xmi:id="_GpyfxgPeEeCXVKYffJrB5g" key="com.ibm.xtools.activities.umlBBCommunication" value="1"/>
       <details xmi:id="_XM0WgUSBEeG4OMAVlcsc3Q" key="com.ibm.xtools.activities.umlBBCollaborationUse" value="1"/>
       <details xmi:id="_XM09kESBEeG4OMAVlcsc3Q" key="com.ibm.xtools.activities.umlBBCompositeStructure2" value="1"/>
-      <details xmi:id="_XsNoQESBEeG4OMAVlcsc3Q" key="com.ibm.xtools.transform.uml2.xsd.profile.uireduction.activity" value="2"/>
+      <details xmi:id="_mr8IYEcdEeGgdOIsYPAN3g" key="com.ibm.xtools.transform.uml2.xsd.profile.uireduction.activity" value="2"/>
     </eAnnotations>
     <packageImport xmi:id="_ditNggPdEeCXVKYffJrB5g">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -116,17 +116,17 @@
       </eAnnotations>
       <appliedProfile href="pathmap://SOAML/SoaML.epx#_ut1IIGfDEdy6JoIZoRRqYw?SoaML?"/>
     </profileApplication>
-    <profileApplication xmi:id="_YsXdsESBEeG4OMAVlcsc3Q">
-      <eAnnotations xmi:id="_YsbIEESBEeG4OMAVlcsc3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://XSD_PROFILES/XSDProfile.epx#_0S7XILmyEeCPE-4cAROvtA?XSDProfile/XSDProfile?"/>
-      </eAnnotations>
-      <appliedProfile href="pathmap://XSD_PROFILES/XSDProfile.epx#_w1-ykSkOEdmj4ajjgbmSxQ?XSDProfile?"/>
-    </profileApplication>
-    <profileApplication xmi:id="_ZNd_oESBEeG4OMAVlcsc3Q">
-      <eAnnotations xmi:id="_ZNemsESBEeG4OMAVlcsc3Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://WSDL_BINDING_PROFILES/WsdlBindingProfile.epx#_WVcJAWWaEeCDE_V0fp4Xng?WSDL%20Binding%20Profile/WSDLBindingProfile?"/>
+    <profileApplication xmi:id="_mIDYMEcdEeGgdOIsYPAN3g">
+      <eAnnotations xmi:id="_mIHCkEcdEeGgdOIsYPAN3g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://WSDL_BINDING_PROFILES/WsdlBindingProfile.epx#_W-bEAKNDEd6oEJsvdWaazQ?WSDL%20Binding%20Profile/WSDLBindingProfile?"/>
       </eAnnotations>
       <appliedProfile href="pathmap://WSDL_BINDING_PROFILES/WsdlBindingProfile.epx#_-tDzIFvLEd69IqHydx9IRA?WSDL%20Binding%20Profile?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_mr6TMEcdEeGgdOIsYPAN3g">
+      <eAnnotations xmi:id="_mr66QEcdEeGgdOIsYPAN3g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://XSD_PROFILES/XSDProfile.epx#_vvGR0PDPEdq5wKwOrH0SmA?XSDProfile/XSDProfile?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://XSD_PROFILES/XSDProfile.epx#_w1-ykSkOEdmj4ajjgbmSxQ?XSDProfile?"/>
     </profileApplication>
   </uml:Package>
   <SoaML:ServiceInterface xmi:id="_IUo30APeEeCXVKYffJrB5g" base_Interface="_IUfG0APeEeCXVKYffJrB5g"/>
