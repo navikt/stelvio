@@ -22,6 +22,7 @@
 								no.nav.maven.plugins:maven-wsdl-plugin:set-endpoint-address,
 								no.nav.maven.plugins:maven-wsdl-plugin:add-using-addressing,
 								no.nav.maven.plugins:maven-wsdl-plugin:delete-duplicate-operation,
+								no.nav.maven.plugins:maven-wsdl-plugin:reverse-namespace-hostname,
 							</initialize>
 							<generate-sources>
 								org.jvnet.jax-ws-commons:jaxws-maven-plugin:wsimport

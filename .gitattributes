@@ -5416,6 +5416,7 @@ int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/DeleteDup
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/ExportWsdlMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/NamespaceToPackageMappingGenerator.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/RemovePlaceholdersMojo.java -text
+int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/ReverseNamespaceHostnameMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/SetEndpointAddressMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/SetFaultNamesMojo.java -text
 int/maven/plugins/maven-wsdl-plugin/src/main/java/no/nav/maven/plugins/SetSoapActionMojo.java -text
