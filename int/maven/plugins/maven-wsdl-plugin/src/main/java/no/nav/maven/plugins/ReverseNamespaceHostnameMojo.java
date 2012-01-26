@@ -4,16 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
-import javax.wsdl.Binding;
-import javax.wsdl.BindingOperation;
 import javax.wsdl.Definition;
-import javax.wsdl.Port;
-import javax.wsdl.Service;
 import javax.wsdl.WSDLException;
 import javax.wsdl.factory.WSDLFactory;
 
@@ -66,7 +59,7 @@ public class ReverseNamespaceHostnameMojo extends AbstractMojo {
 		if (definition.getServices().size() > 0) {
 			for (String namespace : (Collection<String>) definition.getNamespaces().values()) {
 				if (namespace.startsWith("http://no.nav")) {
-					namespace.replaceFirst("http://no.nav", "http://nav.no");
+					namespace = namespace.replaceFirst("http://no.nav", "http://nav.no");
 				}
 			}
 		}
