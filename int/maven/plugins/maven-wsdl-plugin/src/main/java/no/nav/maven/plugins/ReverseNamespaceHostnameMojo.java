@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Collection;
 
+import javax.wsdl.Binding;
 import javax.wsdl.Definition;
 import javax.wsdl.WSDLException;
 import javax.wsdl.factory.WSDLFactory;
+import javax.xml.namespace.QName;
 
 import no.stelvio.ibm.websphere.esb.WSDLUtils;
 
@@ -57,9 +59,16 @@ public class ReverseNamespaceHostnameMojo extends AbstractMojo {
 	 */
 	public void reverseNamespaceHostname(Definition definition) {
 		if (definition.getServices().size() > 0) {
-			for (String namespace : (Collection<String>) definition.getNamespaces().values()) {
-				if (namespace.startsWith("http://no.nav")) {
-					namespace = namespace.replaceFirst("http://no.nav", "http://nav.no");
+			String namespace = definition.getTargetNamespace();
+			if (namespace.startsWith("http://no.nav")) {
+				String newNamespace = namespace.replaceFirst("http://no.nav", "http://nav.no");
+				definition.setTargetNamespace(newNamespace);
+				definition.removeNamespace("tns");
+				definition.addNamespace("tns", newNamespace);
+				for (Binding binding : (Collection<Binding>) definition.getBindings().values()) {
+					QName qName = binding.getQName();
+					QName newQName = new QName(newNamespace, qName.getLocalPart(), "tns");
+					binding.setQName(newQName);
 				}
 			}
 		}
