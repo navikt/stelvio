@@ -5,6 +5,7 @@ import javax.jws.WebService;
 
 import no.stelvio.common.context.RequestContextHolder;
 import no.stelvio.example.services.echo.v1.binding.EchoFault;
+import no.stelvio.example.services.echo.v1.binding.EchoFault1;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,7 +23,7 @@ public class Echo implements no.stelvio.example.services.echo.v1.binding.Echo {
 	
 	EchoServiceBi echoServiceBi;
 
-	public String echo(String input) throws EchoFault {
+	public String echo(String input) throws EchoFault, EchoFault1 {
 
 		log.debug("Echoing message:" + input);
 		log.debug("Context: " + RequestContextHolder.currentRequestContext());
