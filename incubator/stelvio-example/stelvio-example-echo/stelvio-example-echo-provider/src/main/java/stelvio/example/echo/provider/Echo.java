@@ -4,8 +4,8 @@ import javax.jws.HandlerChain;
 import javax.jws.WebService;
 
 import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.example.services.echo.v1.binding.EchoFault;
-import no.stelvio.example.services.echo.v1.binding.EchoFault1;
+import no.stelvio.example.services.echo.v1.binding.EchoQuackUnsupported;
+import no.stelvio.example.services.echo.v1.binding.EchoServiceUnavailable;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -23,7 +23,7 @@ public class Echo implements no.stelvio.example.services.echo.v1.binding.Echo {
 	
 	EchoServiceBi echoServiceBi;
 
-	public String echo(String input) throws EchoFault, EchoFault1 {
+	public String echo(String input) throws EchoQuackUnsupported, EchoServiceUnavailable {
 
 		log.debug("Echoing message:" + input);
 		log.debug("Context: " + RequestContextHolder.currentRequestContext());
