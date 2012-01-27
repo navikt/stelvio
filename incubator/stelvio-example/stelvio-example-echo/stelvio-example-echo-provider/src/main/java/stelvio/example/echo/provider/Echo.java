@@ -4,7 +4,7 @@ import javax.jws.HandlerChain;
 import javax.jws.WebService;
 
 import no.stelvio.common.context.RequestContextHolder;
-import no.stelvio.example.services.v1.echo.binding.EchoEchoFault1;
+import no.stelvio.example.services.echo.v1.binding.EchoFault;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,13 +16,13 @@ import stelvio.example.echo.service.EchoServiceBi;
 			targetNamespace="http://stelvio.no/example/services/V1/Echo/Binding/",
 			serviceName="Echo")
 @HandlerChain(file = "EchoHandler.xml")
-public class Echo implements no.stelvio.example.services.v1.echo.binding.Echo {
+public class Echo implements no.stelvio.example.services.echo.v1.binding.Echo {
 
 	protected final Log log = LogFactory.getLog(this.getClass());
 	
 	EchoServiceBi echoServiceBi;
 
-	public String echo(String input) throws EchoEchoFault1 {
+	public String echo(String input) throws EchoFault {
 
 		log.debug("Echoing message:" + input);
 		log.debug("Context: " + RequestContextHolder.currentRequestContext());
