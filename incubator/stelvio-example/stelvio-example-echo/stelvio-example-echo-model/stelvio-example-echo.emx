@@ -80,7 +80,7 @@
                 <ownedParameter xmi:id="_wadhMAPeEeCXVKYffJrB5g" name="output" direction="out">
                   <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
                 </ownedParameter>
-                <ownedParameter xmi:id="_d49fcAPfEeCXVKYffJrB5g" name="echoFault1" direction="return" isException="true">
+                <ownedParameter xmi:id="_d49fcAPfEeCXVKYffJrB5g" name="QuackUnsupported" direction="return" isException="true">
                   <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
                 </ownedParameter>
               </ownedOperation>
