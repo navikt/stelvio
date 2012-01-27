@@ -55,7 +55,7 @@ public class ReverseNamespaceHostnameMojo extends AbstractMojo {
 	
 	
 	/**
-	 * Set blank SOAP action for all operations
+	 * Replace targetNamespaces "http://no.nav" with "http://nav.no" in binding WSDL
 	 */
 	public void reverseNamespaceHostname(Definition definition) {
 		if (definition.getServices().size() > 0) {
