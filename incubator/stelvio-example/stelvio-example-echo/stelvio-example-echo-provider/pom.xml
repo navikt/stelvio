@@ -7,7 +7,7 @@
 		<artifactId>maven-root-pom</artifactId>
 		<version>1.2.2</version>
 	</parent>
-	
+
 	<groupId>no.stelvio.example</groupId>
 	<artifactId>stelvio-example-echo-provider</artifactId>
 	<packaging>war</packaging>
@@ -54,8 +54,6 @@
 						<goals>
 							<goal>unpack-dependencies</goal>
 						</goals>
-						<configuration>
-						</configuration>
 					</execution>
 				</executions>
 				<configuration>
