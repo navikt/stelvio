@@ -399,6 +399,10 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/tar
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.project
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/.settings
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/target
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxrpc/.classpath
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxrpc/.project
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxrpc/.settings
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxrpc/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-jaxws/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/.apt_generated
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-service-specification/.classpath
