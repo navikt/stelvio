@@ -32,7 +32,7 @@ public class WSDLUtils {
 		if (wsdlReader == null) {
 			wsdlReader = WSDLFactory.newInstance().newWSDLReader();
 			wsdlReader.setFeature("javax.wsdl.verbose", false);
-			wsdlReader.setFeature("javax.wsdl.importDocuments", false);
+			wsdlReader.setFeature("javax.wsdl.importDocuments", true);
 		}
 		return wsdlReader;
 		}
