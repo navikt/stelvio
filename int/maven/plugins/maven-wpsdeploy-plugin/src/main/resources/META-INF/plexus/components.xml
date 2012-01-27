@@ -13,12 +13,13 @@
 							<validate>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-bus-configuration,
 							</validate>
-							<!-- <initialize> steget kjører copy-resources plugin'et som ligger i deploy pom.xml -->
+							<!-- <generate-resources> phase runs the "copy-resources" plugin in the deploy pom.xml -->
 							<compile>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:load-configuration,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-module-poms,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:interpolate-config,
 							</compile>
+							<!-- <test> phase runs the "load-properties" plugin in the deploy pom.xml -->
 							<deploy>
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:backup-config,
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:remove-bp,
