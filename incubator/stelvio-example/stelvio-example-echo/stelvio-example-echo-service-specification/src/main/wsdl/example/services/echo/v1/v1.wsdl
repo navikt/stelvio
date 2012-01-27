@@ -16,6 +16,7 @@
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="echoQuackUnsupported" type="xsd:string"/>
+      <xsd:element name="echoServiceUnavailable" type="xsd:string"/>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="echoRequest">
@@ -27,12 +28,16 @@
   <wsdl:message name="echoFault">
     <wsdl:part element="tns:echoQuackUnsupported" name="QuackUnsupported"/>
   </wsdl:message>
+  <wsdl:message name="echoFault1">
+    <wsdl:part element="tns:echoServiceUnavailable" name="ServiceUnavailable"/>
+  </wsdl:message>
   <wsdl:portType name="Echo">
     <wsdl:documentation>&lt;p&gt;Throws back echoes like a wall.&lt;/p&gt;&lt;p&gt;Does not provide any guarantee for echoing "Quack".&lt;/p&gt; </wsdl:documentation>
     <wsdl:operation name="echo">
       <wsdl:input message="tns:echoRequest"/>
       <wsdl:output message="tns:echoResponse"/>
       <wsdl:fault message="tns:echoFault" name="echoFault"/>
+      <wsdl:fault message="tns:echoFault1" name="echoFault1"/>
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

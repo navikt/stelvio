@@ -83,6 +83,9 @@
                 <ownedParameter xmi:id="_d49fcAPfEeCXVKYffJrB5g" name="QuackUnsupported" direction="return" isException="true">
                   <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
                 </ownedParameter>
+                <ownedParameter xmi:id="_zMhCMEjMEeGF-7D0GnrEWg" name="ServiceUnavailable" direction="return" isException="true">
+                  <type xmi:type="uml:Class" href="pathmap://XSD_LIBRARIES/XSDDataTypes.library.emx#_7yKF-ikGEdmDdasWev0kGA?XSDDataTypes/XSDDataTypes/string?"/>
+                </ownedParameter>
               </ownedOperation>
             </packagedElement>
             <packagedElement xmi:type="uml:Component" xmi:id="_8SdNcAPfEeCXVKYffJrB5g" name="Binding">

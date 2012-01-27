@@ -13,11 +13,15 @@
       <wsdl:fault name="echoFault">
         <soap:fault name="echoFault" use="literal"/>
       </wsdl:fault>
+      <wsdl:fault name="echoFault1">
+        <soap:fault name="echoFault1" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="echo">
       <wsdl:input/>
       <wsdl:output/>
       <wsdl:fault name="echoFault"/>
+      <wsdl:fault name="echoFault1"/>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Echo">
