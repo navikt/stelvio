@@ -2821,8 +2821,8 @@ incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-context
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/.settings/org.eclipse.wst.validation.prefs -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/.settings/stelvio-example-contexthandler-prosess.prefs -text
-incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/ContextHandlerVerifierProviderImport1.import -text
-incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/ContextHandlerVerifierProviderImport2.import -text
+incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/ContextHandlerVerifierProviderImportWSIMP.import -text
+incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/ContextHandlerVerifierProviderWSIMP.import -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/ExampleBP.component -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/ExampleProcessWSEXP.export -text
 incubator/stelvio-example/stelvio-example-contexthandler/stelvio-example-contexthandler-prosess/META-INF/MANIFEST.MF -text

@@ -9,14 +9,14 @@
     <reference name="ContextHandlerVerifierProviderPartner">
       <interface xsi:type="wsdl:WSDLPortType" portType="ns5:ContextHandlerVerifierProvider"/>
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
-      <wire target="ContextHandlerVerifierProviderImport1"/>
+      <wire target="ContextHandlerVerifierProviderImportWSIMP"/>
     </reference>
     <reference name="ContextHandlerVerifierProviderPartner1">
       <interface xsi:type="wsdl:WSDLPortType" portType="ns5:ContextHandlerVerifierProvider"/>
       <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
       <scdl:referenceQualifier xsi:type="scdl:Reliability"/>
       <scdl:referenceQualifier xsi:type="scdl:DeliverAsyncAt" value="commit"/>
-      <wire target="ContextHandlerVerifierProviderImport2"/>
+      <wire target="ContextHandlerVerifierProviderWSIMP"/>
     </reference>
   </references>
   <implementation xsi:type="process:ProcessImplementation">
