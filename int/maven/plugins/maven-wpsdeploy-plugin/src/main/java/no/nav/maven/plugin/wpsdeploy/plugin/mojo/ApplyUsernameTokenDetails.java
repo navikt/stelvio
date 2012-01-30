@@ -59,10 +59,17 @@ public class ApplyUsernameTokenDetails extends WebsphereUpdaterMojo {
 				Artifact moduleArtifact = null;
 				
 				for (Artifact a : artifacts){
-					if ( module.contains(a.getArtifactId()) ) {
+					
+					String matchString = a.getArtifactId() + "-\\d+.\\d+.\\d+";
+					Pattern p = Pattern.compile(matchString);
+
+					if(p.matcher(module).find()) {
 						moduleArtifact = a;
+						break;
 					}
 				}
+				
+				
 				
 				if (moduleArtifact == null) {
 					getLog().info("Module " + module + " is not deployed, skipping ...");
