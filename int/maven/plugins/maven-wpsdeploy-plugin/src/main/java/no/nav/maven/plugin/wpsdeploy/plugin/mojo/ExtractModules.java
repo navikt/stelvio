@@ -109,7 +109,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 	 */
 	private void downloadEARFiles(Commandline commandLine, String poms, String mvnLocalRepo, String mvnRepo, String mvnSnapshotRepo){
 		Commandline.Argument arg = new Commandline.Argument();
-		String pythonDownloadEARFiles = baseDirectory + busConfigurationExtractDirectory+ "/scripts/DownloadEARFiles.py";
+		String pythonDownloadEARFiles = baseDirectory + tmpBusConfigurationExtractDirectory + "/scripts/DownloadEARFiles.py";
 		String EARFilesToDeployFolder = baseDirectory + "/target/EARFilesToDeploy";
 		arg.setLine("-f " + pythonDownloadEARFiles + " " + EARFilesToDeployFolder + " " +poms + " " + mvnLocalRepo + " " + mvnRepo + " " + mvnSnapshotRepo);
 		commandLine.addArg(arg);
