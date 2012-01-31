@@ -70,7 +70,7 @@
 					<!-- Load properties from file -->
 					<execution>
 						<id>load-property-files</id>
-						<phase>test</phase>
+						<phase>process-sources</phase>
 						<goals>
 							<goal>load-properties</goal>
 						</goals>
