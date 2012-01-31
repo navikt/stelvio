@@ -123,14 +123,8 @@
 							<artifact>
 								<groupId>no.nav.esb</groupId>
 								<artifactId>ekstern-modules</artifactId>
-								<version>${ekstern-modules-version}</version>
-								<variableName>EKSTERN_MODULES_VERSION</variableName>
-							</artifact>
-							<artifact>
-								<groupId>no.nav.esb</groupId>
-								<artifactId>ekstern-pensjon-modules</artifactId>
 								<version>${ekstern-pensjon-modules-version}</version>
-								<variableName>EKSTERN_PENSJON_MODULES_VERSION</variableName>
+								<variableName>EKSTERN_MODULES_VERSION</variableName>
 							</artifact>
 						</artifacts>
 					</configuration>
