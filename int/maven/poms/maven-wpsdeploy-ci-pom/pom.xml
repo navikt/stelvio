@@ -127,12 +127,6 @@
 								<version>${ekstern-modules-ci-version}</version>
 								<variableName>EKSTERN_MODULES_VERSION</variableName>
 							</artifact>
-							<artifact>
-								<groupId>no.nav.esb</groupId>
-								<artifactId>ekstern-pensjon-modules-ci</artifactId>
-								<version>${ekstern-pensjon-modules-ci-version}</version>
-								<variableName>EKSTERN_PENSJON_MODULES_VERSION</variableName>
-							</artifact>
 						</artifacts>
 					</configuration>
 					<extensions>true</extensions>
