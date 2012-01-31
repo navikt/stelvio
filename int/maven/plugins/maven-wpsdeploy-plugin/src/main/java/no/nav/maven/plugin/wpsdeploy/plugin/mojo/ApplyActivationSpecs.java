@@ -3,6 +3,8 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.FactoryConfigurationError;
 import javax.xml.parsers.ParserConfigurationException;
@@ -56,8 +58,13 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 				Artifact moduleArtifact = null;
 				
 				for (Artifact a : artifacts){
-					if ( module.contains(a.getArtifactId()) ) {
+					
+					String matchString = a.getArtifactId() + "-\\d+.\\d+.\\d+";
+					Pattern p = Pattern.compile(matchString);
+
+					if(p.matcher(module).find()) {
 						moduleArtifact = a;
+						break;
 					}
 				}
 				
