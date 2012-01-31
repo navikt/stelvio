@@ -16,7 +16,7 @@
 			<extension>
 				<groupId>no.nav.maven.lifecycles</groupId>
 				<artifactId>service-specification-lifecycle</artifactId>
-				<version>1.0.0-SNAPSHOT</version>
+				<version>1.0.0</version>
 			</extension>
 		</extensions>
 
@@ -41,7 +41,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wsdl-plugin</artifactId>
-					<version>1.12-SNAPSHOT</version>
+					<version>1.12</version>
 					<configuration>
 						<endpointAddress>${endpointAddress}</endpointAddress>
 					</configuration>
@@ -57,7 +57,7 @@
 				<plugin>
 					<groupId>no.nav.maven.plugins</groupId>
 					<artifactId>maven-wsi-plugin</artifactId>
-					<version>1.0.3-SNAPSHOT</version>
+					<version>1.0.3</version>
 					<configuration>
 						<basedir>${project.build.outputDirectory}</basedir>
 					</configuration>
