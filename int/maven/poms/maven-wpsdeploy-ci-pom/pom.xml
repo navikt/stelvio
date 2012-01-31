@@ -12,11 +12,11 @@
 	<groupId>no.nav.maven.poms</groupId>
 	<artifactId>maven-wpsdeploy-ci-pom</artifactId>
 	<packaging>deployable-artifact</packaging>
-	<version>0.0.0-SNAPSHOT</version>
+	<version>0.0.0-SNAPSHOT</version><!-- No version because this pom is nevere uploaded to a repository -->
 	<name>POM for CI deployments</name>
 
 	<properties>
-		<wpsdeployVersion>2.0.1</wpsdeployVersion>
+		<wpsdeployVersion>3.0.2</wpsdeployVersion>
 		<passwordVault>/home/${USER}/vault/</passwordVault>
 		<tmpExtractDir>${project.build.directory}/tmp</tmpExtractDir>
 	</properties>
@@ -71,7 +71,7 @@
 					<!-- Load properties from file -->
 					<execution>
 						<id>load-property-files</id>
-						<phase>initialize</phase>
+						<phase>test</phase>
 						<goals>
 							<goal>load-properties</goal>
 						</goals>
