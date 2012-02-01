@@ -85,7 +85,7 @@ public class ExampleOrchestrationImpl {
 		
 		// Second WS call
 		DataObject requestObject2 = createRequestObject("request no. 2");
-		locateService_ContextHandlerVerifierProviderPartner().invoke("callWSChain", requestObject2);
+		locateService_ContextHandlerVerifierProviderPartner1().invoke("callWSChain", requestObject2);
 		
 		String outputString = "Input was: '" + inputString + "'";
 		return outputString;

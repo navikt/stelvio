@@ -23,7 +23,7 @@
   </wsdl:binding>
   <wsdl:service name="ContextHandlerVerifierProviderWSEXP_ContextHandlerVerifierProviderHttpService">
     <wsdl:port binding="this:ContextHandlerVerifierProviderWSEXP_ContextHandlerVerifierProviderHttpBinding" name="ContextHandlerVerifierProviderWSEXP_ContextHandlerVerifierProviderHttpPort">
-      <soap:address location="http://localhost:9080/stelvio-example-contexthandler-providerWeb/sca/ContextHandlerVerifierProviderWSEXP"/>
+      <soap:address location="http://localhost:8088/stelvio-example-contexthandler-providerWeb/sca/ContextHandlerVerifierProviderWSEXP"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

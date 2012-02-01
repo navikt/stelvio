@@ -201,7 +201,7 @@
 		<securityrole roleName="NAVOppdrag"></securityrole>
 		<securityrole roleName="NAVOppgave"></securityrole>
 		<securityrole roleName="NAVOpptjening"></securityrole>
-		<securityrole roleName="PensjonSamordning"></securityrole>
+		<securityrole roleName="NAVSamordning"></securityrole>
 		<securityrole roleName="PensjonBehandleAFPPrivat"></securityrole>
 		<securityrole roleName="PensjonBehandleDodsmeldinger"></securityrole>
 		<securityrole roleName="PensjonBehandleEndringAvUttaksgrad"></securityrole>

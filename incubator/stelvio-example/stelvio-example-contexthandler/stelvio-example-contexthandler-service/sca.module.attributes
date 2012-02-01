@@ -4,6 +4,5 @@
     <emf />
   </boImplementation>
   <scdl:libraryDependency name="stelvio-example-contexthandler-provider-lib" version="" />
-  <scdl:libraryDependency name="stelvio-commons-lib" version="" />
 </scdl:moduleAndLibraryAttributes>
 
