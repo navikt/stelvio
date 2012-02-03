@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>Environment</name>
+          <description>Please select the environment you wish to deploy/bundle to</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>none</string>
+              <string>I2</string>
+              <string>I3</string>
+              <string>K1</string>
+              <string>K2</string>
+              <string>K3</string>
+              <string>K4</string>
+              <string>K5</string>
+              <string>K6</string>
+              <string>K7</string>
+              <string>Produksjon</string>
+              <string>Q1</string>
+              <string>Q2</string>
+              <string>Q3</string>
+              <string>Q4</string>
+              <string>Q5</string>
+              <string>S2</string>
+              <string>S3</string>
+              <string>S6</string>
+              <string>S7</string>
+              <string>S8</string>
+              <string>T10</string>
+              <string>T11</string>
+              <string>T1</string>
+              <string>T2</string>
+              <string>T3</string>
+              <string>T4</string>
+              <string>T5</string>
+              <string>T6</string>
+              <string>T7</string>
+              <string>T8</string>
+              <string>T9 </string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Sensitiv</name>
+          <description>Here you specify which application(s) you wish to deploy to the sensitiv zone or bundle.
+Please input the string on the following format: &lt;app1&gt;:&lt;version&gt;, (e.g. pen:7.0.0, psak:7.0.0, pselv:7.0.0, preg:7.0.1)</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>Intern</name>
+          <description>Here you specify which application(s) you wish to deploy to the intern zone or bundle. Same string format as sensitiv sone.
+</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <hudson.queueSorter.PrioritySorterJobProperty>
+      <priority>100</priority>
+    </hudson.queueSorter.PrioritySorterJobProperty>
+  </properties>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote></remote>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>/usr/bin/python multiDeployExecution.py ${Environment} ${Sensitiv} ${Intern}</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

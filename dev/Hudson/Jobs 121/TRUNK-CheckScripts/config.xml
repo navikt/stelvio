@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Samle jobb som kjører alle skript jobber vi har for å sjekke koden</description>
+  <logRotator>
+    <daysToKeep>1</daysToKeep>
+    <numToKeep>15</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.queueSorter.PrioritySorterJobProperty>
+      <priority>100</priority>
+    </hudson.queueSorter.PrioritySorterJobProperty>
+  </properties>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb</remote>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
+  <triggers class="vector">
+    <hudson.triggers.SCMTrigger>
+      <spec>@monthly</spec>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
+esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py sysdok Tilgangsstyring\ \(HL4\)
+esb/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
+find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
+esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py esb/ 17228180
+esb/esb-tools/esb-scripts/bin/System.out.print_Search.py
+esb/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
+esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.chucknorris.CordellWalkerRecorder>
+      <factGenerator/>
+    </hudson.plugins.chucknorris.CordellWalkerRecorder>
+    <hudson.tasks.Mailer>
+      <recipients>test@example.com test@example.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+    <hudson.plugins.cigame.GamePublisher/>
+  </publishers>
+  <buildWrappers/>
+</project>
