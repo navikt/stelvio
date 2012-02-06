@@ -18,10 +18,8 @@
 							<!-- <generate-resources> phase runs the "load-properties" plugin in the deploy pom.xml -->
 							<compile>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:load-configuration,
-							</compile>
-							<package>
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-module-poms,
-							</package>
+							</compile>
 							<deploy>
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:backup-config,
 	 							no.nav.maven.plugins:maven-wpsdeploy-plugin:remove-bp,

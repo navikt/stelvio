@@ -1,5 +1,7 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
+import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySocketTimeoutException;
+
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.Commandline;
@@ -38,26 +40,23 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 		arg.setLine("-f " + scriptsHome + "/scripts/ClusterStartStop.py " + scriptsHome + " start");
 		commandLine.addArg(arg);
 
-		// Handling SOAPException, SocketTimeoutException (retval 105), retrying
-		// five times.
-		int attempt = 0;
+		int attempt = 1;
 		int maxattempt = 5;
-
-		while (attempt <= maxattempt) {
-			int retval = executeCommand(commandLine);
-			getLog().info("[RETVAL = " + retval + "]");
-
-			if (retval != 105) {
+		while (true) {
+			++attempt;
+			try{
+				executeCommand(commandLine);
 				break;
-			}
-
-			if (attempt != maxattempt)
-				getLog().info("Caught exception, retrying ... " + "[" + ++attempt + "/" + maxattempt + "]");
-			else {
-				getLog().info("Could not perform the operation. Continuing ...");
-				break;
+			} catch (MySocketTimeoutException e) {
+				if (attempt < maxattempt){
+					getLog().info("Caught exception, retrying ... " + "[" + attempt + "/" + maxattempt + "]");
+					continue;
+				} else {
+					throw new RuntimeException("Exiting after retrying "+maxattempt+" times!");
+				}
 			}
 		}
+		getLog().info("Cluster started!");
 	}
 
 	@Override

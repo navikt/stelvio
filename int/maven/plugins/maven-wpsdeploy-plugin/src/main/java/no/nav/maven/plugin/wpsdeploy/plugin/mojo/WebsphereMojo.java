@@ -1,12 +1,14 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.File;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
 import no.nav.maven.commons.managers.ArchiveManager;
 import no.nav.maven.commons.managers.IArchiveManager;
+import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySocketTimeoutException;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
@@ -141,7 +143,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 		doExecute();
 	}
 
-	protected final int executeCommand(Commandline command) {
+	protected final void executeCommand(Commandline command) throws MySocketTimeoutException {
 		try {
 			
 			// If a password is sent as a parameter, we hide it from the output
@@ -168,8 +170,12 @@ public abstract class WebsphereMojo extends AbstractMojo {
 
 			int retval = CommandLineUtils.executeCommandLine(command, new StreamConsumerChain(systemOut).add(errorChecker),
 					new StreamConsumerChain(systemErr).add(errorChecker));
+			
+			if( retval == 105){
+				throw new MySocketTimeoutException();
+			}
 
-			if (errorChecker.isError()) {
+			if (errorChecker.isError() || retval != 0) {
 				if (interactiveMode == true) {
 					String answer = null;
 					try {
@@ -186,8 +192,6 @@ public abstract class WebsphereMojo extends AbstractMojo {
 					throw new RuntimeException("An error occured during deploy. Stopping deployment. Consult the logs.");
 				}
 			}
-			
-			return retval;
 			
 		} catch (CommandLineException e) {
 			throw new RuntimeException("An error occured executing: " + command, e);
