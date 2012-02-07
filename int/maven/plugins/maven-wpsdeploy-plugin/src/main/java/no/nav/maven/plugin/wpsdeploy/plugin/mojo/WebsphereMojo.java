@@ -8,7 +8,7 @@ import java.util.Set;
 
 import no.nav.maven.commons.managers.ArchiveManager;
 import no.nav.maven.commons.managers.IArchiveManager;
-import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySocketTimeoutException;
+import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySOAPException;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
@@ -143,7 +143,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 		doExecute();
 	}
 
-	protected final void executeCommand(Commandline command) throws MySocketTimeoutException {
+	protected final void executeCommand(Commandline command) throws MySOAPException {
 		try {
 			
 			// If a password is sent as a parameter, we hide it from the output
@@ -172,7 +172,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 					new StreamConsumerChain(systemErr).add(errorChecker));
 			
 			if( retval == 105){
-				throw new MySocketTimeoutException();
+				throw new MySOAPException();
 			}
 
 			if (errorChecker.isError() || retval != 0) {

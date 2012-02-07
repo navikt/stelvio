@@ -1,6 +1,6 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySocketTimeoutException;
+import no.nav.maven.plugin.wpsdeploy.plugin.exceptions.MySOAPException;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -36,7 +36,7 @@ public class StopClustersMojo extends WebsphereUpdaterMojo {
 			try{
 				executeCommand(commandLine);
 				break;
-			} catch (MySocketTimeoutException e) {
+			} catch (MySOAPException e) {
 				if (attempt < maxattempt){
 					getLog().info("Caught exception, retrying ... " + "[" + attempt + "/" + maxattempt + "]");
 					continue;
