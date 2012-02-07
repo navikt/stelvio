@@ -45,7 +45,7 @@ public class StopClustersMojo extends WebsphereUpdaterMojo {
 				}
 			}
 		}
-		getLog().info("Cluster started!");
+		getLog().info("Cluster stoped!");
 		
 	}
 

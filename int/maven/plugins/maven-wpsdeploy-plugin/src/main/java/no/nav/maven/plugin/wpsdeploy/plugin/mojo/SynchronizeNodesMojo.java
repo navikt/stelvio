@@ -48,7 +48,7 @@ public class SynchronizeNodesMojo extends WebsphereUpdaterMojo {
 				}
 			}
 		}
-		getLog().info("Cluster started!");
+		getLog().info("Cluster synchronized!");
 	}
 
 	@Override
