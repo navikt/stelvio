@@ -46,7 +46,7 @@ function getMinSideLogoutURL(){
 // Builds the URL to the default login page for the PSELV instance serving the current request.
 function endagsPassordLoginURL() {
 		var requestedJunction = getRequestedJunction();
-		if (requestedJunction == pselvJunction) {
+		if (requestedJunction == pselvContextRoot) {
 				return endagspassordJunction + endagspassordContextRoot + endagspassordLoginURI;
 		} else {
 				return requestedJunction + endagspassordContextRoot + endagspassordLoginURI;
