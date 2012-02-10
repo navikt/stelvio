@@ -82,7 +82,7 @@ public class SshUtil {
 		SessionChannelClient session = openSshSession(hostname, username, password);
 		//session.startShell();
 		if (session != null) {
-			String cmd = "/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/stopManager.sh -username "+dmgrUsername+" -password "+dmgrPassword+" -trace -timeout 300";
+			String cmd = "/opt/IBM/WebSphere/ProcServer/profiles/Dmgr01/bin/stopManager.sh -username "+dmgrUsername+" -password "+dmgrPassword+" -timeout 600";
 			boolean result = executeCommand(cmd, session);
 			session.close();
 			return result;
