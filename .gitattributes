@@ -3440,8 +3440,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/src/main/resources/stelvio/example/echo/provider/EchoHandler.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/META-INF/policyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/pom.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/src/main/application/META-INF/MANIFEST.MF -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/src/main/application/META-INF/application.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-providerEAR/src/main/application/META-INF/policyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/.classpath -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-proxy-ejb-jaxb/.project -text
