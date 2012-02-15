@@ -12,9 +12,9 @@ import org.apache.commons.logging.LogFactory;
 
 import stelvio.example.echo.service.EchoServiceBi;
 
-@WebService(endpointInterface = "no.stelvio.example.services.v1.echo.binding.Echo",
-			wsdlLocation="WEB-INF/wsdl/example/services/V1/Echo/Binding.wsdl",
-			targetNamespace="http://stelvio.no/example/services/V1/Echo/Binding/",
+@WebService(endpointInterface = "no.stelvio.example.services.echo.v1.binding.Echo",
+			wsdlLocation="WEB-INF/wsdl/example/services/echo/v1/Binding.wsdl",
+			targetNamespace="http://stelvio.no/example/services/echo/v1/Binding/",
 			serviceName="Echo")
 @HandlerChain(file = "EchoHandler.xml")
 public class Echo implements no.stelvio.example.services.echo.v1.binding.Echo {
