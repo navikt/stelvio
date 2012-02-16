@@ -12,11 +12,11 @@ import no.stelvio.example.services.echo.v1.binding.Echo;
 import no.stelvio.example.services.echo.v1.binding.EchoQuackUnsupported;
 import no.stelvio.example.services.echo.v1.binding.EchoServiceUnavailable;
 
-@WebServiceClient(name = "EchoLTPAService", targetNamespace = "http://www.stelvio.no/example/services/V1/EchoService/Binding2")
+@WebServiceClient(name = "EchoLTPAService", targetNamespace = "http://stelvio.no/example/services/echo/v1/Binding/")
 public class EchoClientLTPA extends Service {
 
 	    public EchoClientLTPA() throws MalformedURLException {
-	    	super(Echo.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://www.stelvio.no/example/services/V1/EchoService/Binding2", "EchoLTPAService"));
+	    	super(Echo.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://stelvio.no/example/services/echo/v1/Binding/", "EchoLTPAService"));
 	    }
 	    
 	    @WebEndpoint(name = "EchoServiceHttpPort")
