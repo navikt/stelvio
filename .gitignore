@@ -390,6 +390,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.cl
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.project
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/.settings
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/wsdl
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/bin
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.classpath
