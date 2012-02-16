@@ -27,7 +27,6 @@
 	</build>
 
 	<modules>
-		<module>stelvio-example-echo-service-jaxws</module>
 		<module>stelvio-example-echo-providerEAR</module>
 		<module>stelvio-example-echo-provider</module>
 		<module>stelvio-example-echo-consumerEAR</module>
