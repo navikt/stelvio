@@ -387,7 +387,6 @@ incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/sca.module.attributes
 incubator/stelvio-example/stelvio-example-echo/proxy/stelvio-example-echo-proxy/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/classes
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/wsdl/*
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/target
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.classpath
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-provider/.project
