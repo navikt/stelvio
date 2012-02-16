@@ -7,11 +7,10 @@ import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
 import javax.xml.ws.WebServiceClient;
-import javax.xml.ws.soap.Addressing;
-import javax.xml.ws.soap.AddressingFeature;
 
-import no.stelvio.example.services.v1.echoservice.binding2.EchoEchoFault1Msg;
-import no.stelvio.example.services.v1.echoservice.binding2.EchoService;
+import no.stelvio.example.services.echo.v1.binding.Echo;
+import no.stelvio.example.services.echo.v1.binding.EchoQuackUnsupported;
+import no.stelvio.example.services.echo.v1.binding.EchoServiceUnavailable;
 
 @WebServiceClient(name = "EchoAddressingService", targetNamespace = "http://www.stelvio.no/example/services/V1/EchoService/Binding2")
 public class EchoClientAddressing extends Service {
@@ -23,16 +22,16 @@ public class EchoClientAddressing extends Service {
 	    }
 	    
 	    @WebEndpoint(name = "EchoServiceHttpPort")
-	    public EchoService getEchoServiceWSEXPEchoServiceHttpPort() {
-	        return (EchoService)super.getPort(EchoService.class);
+	    public Echo getEchoServiceWSEXPEchoServiceHttpPort() {
+	        return (Echo)super.getPort(Echo.class);
 //	        return (EchoService)super.getPort(EchoService.class, new AddressingFeature());
 	    }
 
 
-		public static String echo(String input) throws EchoEchoFault1Msg { 
+		public static String echo(String input) throws EchoQuackUnsupported, EchoServiceUnavailable { 
 		try {
 			EchoClientAddressing service = new EchoClientAddressing();
-			EchoService port = service.getEchoServiceWSEXPEchoServiceHttpPort();
+			Echo port = service.getEchoServiceWSEXPEchoServiceHttpPort();
 			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9080/stelvio-example-echo-provider/EchoService");
 			String output = port.echo(input);
 			return output;

@@ -6,13 +6,14 @@ import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
 import javax.xml.ws.WebServiceClient;
 
-import no.stelvio.example.services.v1.echoservice.binding2.EchoEchoFault1Msg;
-import no.stelvio.example.services.v1.echoservice.binding2.EchoService;
+import no.stelvio.example.services.echo.v1.binding.EchoQuackUnsupported;
+import no.stelvio.example.services.echo.v1.binding.EchoServiceUnavailable;
+import no.stelvio.example.services.echo.v1.binding.Echo;
 
-@WebServiceClient(name = "EchoSAMLService", targetNamespace = "http://www.stelvio.no/example/services/V1/EchoService/Binding2")
+@WebServiceClient(name = "EchoSAMLService", targetNamespace = "http://stelvio.no/example/services/echo/v1/Binding/")
 public class EchoClientSAML extends Service {
 	
-		private static EchoService port;
+		private static Echo port;
 
 		static {
 			EchoClientSAML service = new EchoClientSAML();
@@ -21,16 +22,16 @@ public class EchoClientSAML extends Service {
 		}
 
 	    public EchoClientSAML() {
-	    	super(EchoService.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://www.stelvio.no/example/services/V1/EchoService/Binding2", "EchoSAMLService"));
+	    	super(Echo.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://stelvio.no/example/services/echo/v1/Binding/", "EchoSAMLService"));
 	    }
 	    
 	    @WebEndpoint(name = "EchoServiceHttpPort")
-	    public EchoService getEchoServiceWSEXPEchoServiceHttpPort() {
-	        return (EchoService)super.getPort(EchoService.class);
+	    public Echo getEchoServiceWSEXPEchoServiceHttpPort() {
+	        return (Echo)super.getPort(Echo.class);
 	    }
 
 
-		public static String echo(String input) throws EchoEchoFault1Msg { 
+		public static String echo(String input) throws EchoServiceUnavailable, EchoQuackUnsupported { 
 			String output = port.echo(input);
 			return output;
 		}
