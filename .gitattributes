@@ -3242,10 +3242,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientLTPA.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientSAML.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/form/Query.java -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.project -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.settings/org.eclipse.wst.common.component -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.settings/org.eclipse.wst.common.project.facet.core.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/.settings/org.eclipse.wst.ws.service.policy.prefs -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/application.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/clientPolicyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/ibm-application-bnd.xml -text
