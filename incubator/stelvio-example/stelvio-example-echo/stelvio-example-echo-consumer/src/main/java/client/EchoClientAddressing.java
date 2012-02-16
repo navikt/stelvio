@@ -32,7 +32,7 @@ public class EchoClientAddressing extends Service {
 		try {
 			EchoClientAddressing service = new EchoClientAddressing();
 			Echo port = service.getEchoServiceWSEXPEchoServiceHttpPort();
-			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9080/stelvio-example-echo-provider/EchoService");
+			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9080/stelvio-example-echo-provider/Echo");
 			String output = port.echo(input);
 			return output;
 		} catch (MalformedURLException e) {
