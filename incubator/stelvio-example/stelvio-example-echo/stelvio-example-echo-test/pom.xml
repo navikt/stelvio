@@ -41,11 +41,21 @@
 				<version>1.1.1</version>
 				<executions>
 					<execution>
+						<id>provider-uninstall</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>wsUninstallApp</goal>
+						</goals>
+						<configuration>
+							<applicationName>stelvio-example-echo-providerEAR</applicationName>
+							<failOnError>false</failOnError>
+						</configuration>
+					</execution>
+					<execution>
 						<id>provider-deploy</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
-							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
 						</goals>
 						<configuration>
@@ -86,7 +96,6 @@
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
-					<workingDirectory>/tmp</workingDirectory>
 					<!--server>SS_U2.AppTarget.e26apvl036Node01.0</server>
 					<node>e26apvl036Node01</node-->
 				</configuration>
