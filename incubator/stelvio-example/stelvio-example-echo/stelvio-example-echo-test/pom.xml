@@ -47,11 +47,9 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>${wid.runtime}/bin/wsadmin.sh</executable>
+							<executable>${wid.runtime}/bin/wsadmin.sh -lang jython -host e26apvl036.test.local</executable>
 							<arguments>
-								<argument>-lang jython</argument>
 								<argument>-conntype SOAP</argument>
-								<argument>-host e26apvl036.test.local</argument>
 								<argument>-port 8879</argument>
 								<argument>-user srvPensjon</argument>
 								<argument>-password Ash5SoxP</argument>
