@@ -89,6 +89,28 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>sync-node1</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>wsAdmin</goal>
+						</goals>
+						<configuration>
+							<language>jython</language>
+							<command>AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl036Node01,*'), 'sync')</command>
+						</configuration>
+					</execution>
+					<execution>
+						<id>sync-node2</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>wsAdmin</goal>
+						</goals>
+						<configuration>
+							<language>jython</language>
+							<command>AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl041Node01,*'), 'sync')</command>
+						</configuration>
+					</execution>
+					<execution>
 						<id>provider-start-node1</id>
 						<phase>pre-integration-test</phase>
 						<goals>
