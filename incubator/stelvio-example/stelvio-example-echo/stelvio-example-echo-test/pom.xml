@@ -41,6 +41,28 @@
 				<version>1.2.1</version>
 				<executions>
 					<execution>
+						<id>uninstall-sync-node1</id>
+						<phase>package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${wid.runtime}/bin/wsadmin.sh</executable>
+							<commandlineArgs>-lang jython -conntype SOAP -host e26apvl036.test.local -port 8879 -user srvPensjon -password Ash5SoxP -c "AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl036Node01,*'), 'sync')"</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>uninstall-sync-node2</id>
+						<phase>package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${wid.runtime}/bin/wsadmin.sh</executable>
+							<commandlineArgs>-lang jython -conntype SOAP -host e26apvl036.test.local -port 8879 -user srvPensjon -password Ash5SoxP -c "AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl041Node01,*'), 'sync')"</commandlineArgs>
+						</configuration>
+					</execution>
+					<execution>
 						<id>sync-node1</id>
 						<phase>pre-integration-test</phase>
 						<goals>
@@ -72,7 +94,7 @@
 				<executions>
 					<execution>
 						<id>provider-uninstall</id>
-						<phase>package</phase>
+						<phase>pre-package</phase>
 						<goals>
 							<goal>wsUninstallApp</goal>
 						</goals>
@@ -96,7 +118,7 @@
 					</execution>
 					<execution>
 						<id>consumer-uninstall</id>
-						<phase>package</phase>
+						<phase>pre-package</phase>
 						<goals>
 							<goal>wsUninstallApp</goal>
 						</goals>
