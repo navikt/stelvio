@@ -156,7 +156,7 @@
 						</configuration>
 					</execution>
 				</executions>
-				<configuration>
+				<!--configuration>
 					<wasHome>${wid.runtime}</wasHome>
 					<conntype>SOAP</conntype>
 					<host>e26apvl036.test.local</host>
@@ -164,7 +164,7 @@
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
-				</configuration>
+				</configuration-->
 			</plugin>
 			
 			<plugin>
