@@ -95,6 +95,7 @@
 						<configuration>
 							<language>jython</language>
 							<script>/tmp/heidu</script>
+							<user>srvPensjon</user>
 						</configuration>
 					</execution>
 					<execution>
