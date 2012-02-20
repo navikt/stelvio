@@ -89,7 +89,7 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>provider-uninstall</id>
+						<id>consumer-uninstall</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>wsUninstallApp</goal>
