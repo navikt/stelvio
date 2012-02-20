@@ -48,13 +48,7 @@
 						</goals>
 						<configuration>
 							<executable>${wid.runtime}/bin/wsadmin.sh</executable>
-							<commandlineArgs>-lang jython -host e26apvl036.test.local</commandlineArgs>
-							<arguments>
-								<argument>-conntype SOAP</argument>
-								<argument>-port 8879</argument>
-								<argument>-user srvPensjon</argument>
-								<argument>-password Ash5SoxP</argument>
-							</arguments>
+							<commandlineArgs>-lang jython -conntype SOAP -host e26apvl036.test.local -port 8879 -user srvPensjon -password Ash5SoxP -c "AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl041Node01,*'), 'sync')"</commandlineArgs>
 						</configuration>
 					</execution>
 				</executions>
