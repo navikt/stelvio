@@ -1,0 +1,1 @@
+AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl041Node01,*'), 'sync')
