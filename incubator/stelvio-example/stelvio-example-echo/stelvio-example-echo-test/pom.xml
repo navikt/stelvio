@@ -45,8 +45,8 @@
 						<phase>pre-integration-test</phase>
 						<goals>
 							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
-							<goal>wsUninstallApp</goal>
-							<goal>installApp</goal>
+							<!--goal>wsUninstallApp</goal>
+							<goal>installApp</goal-->
 							<goal>wsStartApp</goal>
 						</goals>
 						<configuration>
@@ -80,6 +80,7 @@
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
+					<workingDirectory>/tmp</workingDirectory>
 				</configuration>
 			</plugin>
 			
