@@ -65,6 +65,30 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>consumer-uninstall</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>wsUninstallApp</goal>
+						</goals>
+						<configuration>
+							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
+							<failOnError>false</failOnError>
+						</configuration>
+					</execution>
+					<execution>
+						<id>consumer-install</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
+							<goal>installApp</goal>
+						</goals>
+						<configuration>
+							<earFile>${project.build.directory}/dependency/stelvio-example-echo-consumerEAR-1.0.0-SNAPSHOT.ear</earFile>
+							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
+							<updateExisting>false</updateExisting>
+						</configuration>
+					</execution>
+					<execution>
 						<id>provider-start-node1</id>
 						<phase>pre-integration-test</phase>
 						<goals>
@@ -86,29 +110,6 @@
 							<applicationName>stelvio-example-echo-providerEAR</applicationName>
 							<server>SS_U2.AppTarget.e26apvl041Node01.0</server>
 							<node>e26apvl041Node01</node>
-						</configuration>
-					</execution>
-					<execution>
-						<id>consumer-uninstall</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>wsUninstallApp</goal>
-						</goals>
-						<configuration>
-							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
-							<failOnError>false</failOnError>
-						</configuration>
-					</execution>
-					<execution>
-						<id>consumer-install</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>installApp</goal>
-						</goals>
-						<configuration>
-							<earFile>${project.build.directory}/dependency/stelvio-example-echo-consumerEAR-1.0.0-SNAPSHOT.ear</earFile>
-							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
-							<updateExisting>false</updateExisting>
 						</configuration>
 					</execution>
 					<execution>
