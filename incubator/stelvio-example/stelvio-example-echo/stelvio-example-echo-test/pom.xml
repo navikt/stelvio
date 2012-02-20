@@ -59,11 +59,9 @@
 						<id>consumer-deploy</id>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
 							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
 							<goal>wsStartApp</goal>
-							<!-- <goal>wsStartApp</goal> feiler med WASX7025E Error found in String ""; cannot create ObjectName. -->
 						</goals>
 						<configuration>
 							<earFile>${project.build.directory}/dependency/stelvio-example-echo-consumerEAR-1.0.0-SNAPSHOT.ear</earFile>
@@ -81,8 +79,7 @@
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
 					<workingDirectory>/tmp</workingDirectory>
-					<!-- Workaround for http://jira.codehaus.org/browse/MWAS-33 -->
-					<server>dmgr</server>
+					<server>SS_U2.AppTarget.e26apvl036Node01.0</server>
 					<node>e26apvl036Node01</node>
 				</configuration>
 			</plugin>
