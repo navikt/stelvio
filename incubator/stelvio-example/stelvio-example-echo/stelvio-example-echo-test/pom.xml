@@ -44,9 +44,10 @@
 						<id>provider-deploy</id>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<!-- installApp & updateExisting=true fungerer ikke -->
+							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
 							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
+							<goal>wsStartApp</goal>
 						</goals>
 						<configuration>
 							<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
@@ -61,6 +62,7 @@
 							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
 							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
+							<goal>wsStartApp</goal>
 							<!-- <goal>wsStartApp</goal> feiler med WASX7025E Error found in String ""; cannot create ObjectName. -->
 						</goals>
 						<configuration>
