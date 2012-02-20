@@ -81,6 +81,7 @@
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
 					<workingDirectory>/tmp</workingDirectory>
+					<node>e26apvl036Node01</node>
 				</configuration>
 			</plugin>
 			
