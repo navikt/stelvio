@@ -70,9 +70,9 @@
 				<artifactId>was6-maven-plugin</artifactId>
 				<version>1.1.1</version>
 				<executions>
-					<!-- execution>
+					<execution>
 						<id>provider-uninstall</id>
-						<phase>pre-integration-test</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>wsUninstallApp</goal>
 						</goals>
@@ -83,7 +83,7 @@
 					</execution>
 					<execution>
 						<id>provider-install</id>
-						<phase>pre-integration-test</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>installApp</goal>
 						</goals>
@@ -95,7 +95,7 @@
 					</execution>
 					<execution>
 						<id>consumer-uninstall</id>
-						<phase>pre-integration-test</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>wsUninstallApp</goal>
 						</goals>
@@ -106,7 +106,7 @@
 					</execution>
 					<execution>
 						<id>consumer-install</id>
-						<phase>pre-integration-test</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>installApp</goal>
 						</goals>
@@ -115,7 +115,7 @@
 							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
 							<updateExisting>false</updateExisting>
 						</configuration>
-					</execution-->
+					</execution>
 					<execution>
 						<id>provider-start-node1</id>
 						<phase>pre-integration-test</phase>
