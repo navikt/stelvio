@@ -45,9 +45,8 @@
 						<phase>pre-integration-test</phase>
 						<goals>
 							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
-							<!--goal>wsUninstallApp</goal>
-							<goal>installApp</goal-->
-							<goal>wsStartApp</goal>
+							<goal>wsUninstallApp</goal>
+							<goal>installApp</goal>
 						</goals>
 						<configuration>
 							<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
@@ -61,12 +60,21 @@
 						<goals>
 							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
-							<goal>wsStartApp</goal>
 						</goals>
 						<configuration>
 							<earFile>${project.build.directory}/dependency/stelvio-example-echo-consumerEAR-1.0.0-SNAPSHOT.ear</earFile>
 							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
 							<updateExisting>false</updateExisting>
+						</configuration>
+					</execution>
+					<execution>
+						<id>provider-start</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>wsStartApp</goal>
+						</goals>
+						<configuration>
+							<applicationName>stelvio-example-echo-providerEAR</applicationName>
 						</configuration>
 					</execution>
 				</executions>
@@ -79,8 +87,8 @@
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
 					<workingDirectory>/tmp</workingDirectory>
-					<server>SS_U2.AppTarget.e26apvl036Node01.0</server>
-					<node>e26apvl036Node01</node>
+					<!--server>SS_U2.AppTarget.e26apvl036Node01.0</server>
+					<node>e26apvl036Node01</node-->
 				</configuration>
 			</plugin>
 			
