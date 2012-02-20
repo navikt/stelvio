@@ -118,7 +118,7 @@
 							<updateExisting>false</updateExisting>
 						</configuration>
 					</execution>
-					<execution>
+					<!--execution>
 						<id>provider-start-node1</id>
 						<phase>pre-integration-test</phase>
 						<goals>
@@ -165,7 +165,7 @@
 							<server>SS_U2.AppTarget.e26apvl041Node01.0</server>
 							<node>e26apvl041Node01</node>
 						</configuration>
-					</execution>
+					</execution-->
 				</executions>
 				<configuration>
 					<wasHome>${wid.runtime}</wasHome>
