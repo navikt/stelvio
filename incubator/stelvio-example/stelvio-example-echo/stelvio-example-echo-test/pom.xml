@@ -83,7 +83,7 @@
 					<workingDirectory>/tmp</workingDirectory>
 					<!-- Workaround for http://jira.codehaus.org/browse/MWAS-33 -->
 					<server>dmgr</server>
-					<targetCluster>SSU2.AppTarget</targetCluster>
+					<node>e26apvl036Node01</node>
 				</configuration>
 			</plugin>
 			
