@@ -40,7 +40,7 @@
 				<artifactId>was6-maven-plugin</artifactId>
 				<version>1.1.1</version>
 				<executions>
-					<execution>
+					<!-- execution>
 						<id>provider-uninstall</id>
 						<phase>pre-integration-test</phase>
 						<goals>
@@ -55,7 +55,6 @@
 						<id>provider-install</id>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
 							<goal>installApp</goal>
 						</goals>
 						<configuration>
@@ -79,7 +78,6 @@
 						<id>consumer-install</id>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
 							<goal>installApp</goal>
 						</goals>
 						<configuration>
@@ -87,7 +85,7 @@
 							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
 							<updateExisting>false</updateExisting>
 						</configuration>
-					</execution>
+					</execution-->
 					<execution>
 						<id>sync-node1</id>
 						<phase>pre-integration-test</phase>
@@ -95,7 +93,6 @@
 							<goal>wsAdmin</goal>
 						</goals>
 						<configuration>
-							<language>jython</language>
 							<command>AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl036Node01,*'), 'sync')</command>
 						</configuration>
 					</execution>
