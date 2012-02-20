@@ -52,7 +52,7 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>provider-deploy</id>
+						<id>provider-install</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
@@ -65,10 +65,44 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>consumer-deploy</id>
+						<id>provider-start-node1</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>wsStartApp</goal>
+						</goals>
+						<configuration>
+							<applicationName>stelvio-example-echo-providerEAR</applicationName>
+							<server>SS_U2.AppTarget.e26apvl036Node01.0</server>
+							<node>e26apvl036Node01</node>
+						</configuration>
+					</execution>
+					<execution>
+						<id>provider-start-node2</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>wsStartApp</goal>
+						</goals>
+						<configuration>
+							<applicationName>stelvio-example-echo-providerEAR</applicationName>
+							<server>SS_U2.AppTarget.e26apvl041Node01.0</server>
+							<node>e26apvl041Node01</node>
+						</configuration>
+					</execution>
+					<execution>
+						<id>provider-uninstall</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>wsUninstallApp</goal>
+						</goals>
+						<configuration>
+							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
+							<failOnError>false</failOnError>
+						</configuration>
+					</execution>
+					<execution>
+						<id>consumer-install</id>
+						<phase>pre-integration-test</phase>
+						<goals>
 							<goal>installApp</goal>
 						</goals>
 						<configuration>
@@ -78,13 +112,27 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>provider-start</id>
+						<id>consumer-start-node1</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>wsStartApp</goal>
 						</goals>
 						<configuration>
-							<applicationName>stelvio-example-echo-providerEAR</applicationName>
+							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
+							<server>SS_U2.AppTarget.e26apvl036Node01.0</server>
+							<node>e26apvl036Node01</node>
+						</configuration>
+					</execution>
+					<execution>
+						<id>consumer-start-node2</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>wsStartApp</goal>
+						</goals>
+						<configuration>
+							<applicationName>stelvio-example-echo-consumerEAR</applicationName>
+							<server>SS_U2.AppTarget.e26apvl041Node01.0</server>
+							<node>e26apvl041Node01</node>
 						</configuration>
 					</execution>
 				</executions>
@@ -96,8 +144,6 @@
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
 					<targetCluster>SS_U2.AppTarget</targetCluster>
-					<!--server>SS_U2.AppTarget.e26apvl036Node01.0</server>
-					<node>e26apvl036Node01</node-->
 				</configuration>
 			</plugin>
 			
