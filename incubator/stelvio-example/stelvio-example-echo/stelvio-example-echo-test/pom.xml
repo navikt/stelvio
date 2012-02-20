@@ -94,7 +94,7 @@
 				<executions>
 					<execution>
 						<id>provider-uninstall</id>
-						<phase>pre-package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>wsUninstallApp</goal>
 						</goals>
@@ -129,7 +129,7 @@
 					</execution>
 					<execution>
 						<id>consumer-install</id>
-						<phase>package</phase>
+						<phase>prepare-package</phase>
 						<goals>
 							<!-- installApp & updateExisting=true fungerer ikke, angivelig pga. bug som fikses i WAS 7.0.0.15 -->
 							<goal>installApp</goal>
