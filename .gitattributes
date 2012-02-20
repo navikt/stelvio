@@ -3725,7 +3725,6 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/pro
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-solution/solution.graphml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-test/pom.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-test/stelvio-example-echo-test-soapui-project.xml -text
-incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-test/synchronize.py -text
 incubator/stelvio-example/stelvio-example-gateway/Routing.component -text
 incubator/stelvio-example/stelvio-example-gateway/ServiceGatewayWSIMP.import -text
 incubator/stelvio-example/stelvio-example-gateway/StandardImportFilesGen/NativeBody.xsd -text
