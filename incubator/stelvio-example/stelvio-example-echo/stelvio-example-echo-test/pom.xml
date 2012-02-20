@@ -156,15 +156,15 @@
 						</configuration>
 					</execution>
 				</executions>
-				<!--configuration>
+				<configuration>
 					<wasHome>${wid.runtime}</wasHome>
 					<conntype>SOAP</conntype>
 					<host>e26apvl036.test.local</host>
 					<port>8879</port>
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
-					<targetCluster>SS_U2.AppTarget</targetCluster>
-				</configuration-->
+					<!--targetCluster>SS_U2.AppTarget</targetCluster-->
+				</configuration>
 			</plugin>
 			
 			<plugin>
