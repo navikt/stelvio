@@ -44,12 +44,14 @@
 						<id>provider-deploy</id>
 						<phase>pre-integration-test</phase>
 						<goals>
+							<!-- installApp & updateExisting=true fungerer ikke -->
+							<goal>wsUninstallApp</goal>
 							<goal>installApp</goal>
 						</goals>
 						<configuration>
 							<earFile>${project.build.directory}/dependency/stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</earFile>
 							<applicationName>stelvio-example-echo-providerEAR</applicationName>
-							<updateExisting>true</updateExisting>
+							<updateExisting>false</updateExisting>
 						</configuration>
 					</execution>
 					<execution>
