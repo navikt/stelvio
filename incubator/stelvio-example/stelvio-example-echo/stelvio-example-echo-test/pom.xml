@@ -94,7 +94,7 @@
 						</goals>
 						<configuration>
 							<language>jython</language>
-							<script>/tmp/heidu</script>
+							<script>${basedir}/synchronize.py</script>
 							<user>srvPensjon</user>
 						</configuration>
 					</execution>
