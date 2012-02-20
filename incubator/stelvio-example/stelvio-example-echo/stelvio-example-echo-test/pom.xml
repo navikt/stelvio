@@ -40,30 +40,6 @@
 				<artifactId>was6-maven-plugin</artifactId>
 				<version>1.1.1</version>
 				<executions>
-					<execution>
-						<id>sync-node1</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>wsAdmin</goal>
-						</goals>
-						<configuration>
-							<wasHome>${wid.runtime}</wasHome>
-							<conntype>SOAP</conntype>
-							<host>e26apvl036.test.local</host>
-							<port>8879</port>
-							<username>srvPensjon</username>
-							<password>Ash5SoxP</password>
-							<command>AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl036Node01,*'), 'sync')</command>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>was6-maven-plugin</artifactId>
-				<version>1.1.1</version>
-				<executions>
 					<!-- execution>
 						<id>provider-uninstall</id>
 						<phase>pre-integration-test</phase>
@@ -117,8 +93,8 @@
 							<goal>wsAdmin</goal>
 						</goals>
 						<configuration>
-							<command>AdminControl.invoke(AdminControl.completeObjectName('type=NodeSync,node=e26apvl036Node01,*'), 'sync')</command>
-							<script></script>
+							<language>jython</language>
+							<script>/tmp/heidu</script>
 						</configuration>
 					</execution>
 					<execution>
@@ -188,7 +164,7 @@
 					<port>8879</port>
 					<username>srvPensjon</username>
 					<password>Ash5SoxP</password>
-					<!--targetCluster>SS_U2.AppTarget</targetCluster-->
+					<targetCluster>SS_U2.AppTarget</targetCluster>
 				</configuration>
 			</plugin>
 			
