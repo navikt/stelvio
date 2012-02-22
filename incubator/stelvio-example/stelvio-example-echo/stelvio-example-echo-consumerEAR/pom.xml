@@ -37,6 +37,11 @@
 				<version>2.9</version>
 				<configuration>
 					<wtpversion>1.5</wtpversion>
+					<!-- Could be replaced by server definitions -->
+					<additionalProjectFacets>
+						<com.ibm.websphere.coexistence.web>7.0</com.ibm.websphere.coexistence.web>
+						<com.ibm.websphere.extended.web>7.0</com.ibm.websphere.extended.web>
+					</additionalProjectFacets>
 				</configuration>
 			</plugin>
 			<plugin>
