@@ -42,6 +42,11 @@
 					<buildOutputDirectory>${basedir}/WebContent/WEB-INF/classes</buildOutputDirectory>
 					<wtpversion>1.5</wtpversion>
 					<wtpapplicationxml>true</wtpapplicationxml>
+					<!-- Could be replaced by server definitions -->
+					<additionalProjectFacets>
+						<com.ibm.websphere.coexistence.web>7.0</com.ibm.websphere.coexistence.web>
+						<com.ibm.websphere.extended.web>7.0</com.ibm.websphere.extended.web>
+					</additionalProjectFacets>
 				</configuration>
 			</plugin>
 			<plugin>
