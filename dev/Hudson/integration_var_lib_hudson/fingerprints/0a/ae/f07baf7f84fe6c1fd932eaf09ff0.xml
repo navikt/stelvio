@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:29:40.209 UTC</timestamp>
+  <md5sum>0aaef07baf7f84fe6c1fd932eaf09ff0</md5sum>
+  <fileName>javaee:javaee-api-5.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-consumerEAR</string>
+      <ranges>1-2</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-consumer</string>
+      <ranges>1-2</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo</string>
+      <ranges>1-2</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-provider</string>
+      <ranges>1-2</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-providerEAR</string>
+      <ranges>1-2</ranges>
+    </entry>
+  </usages>
+</fingerprint>

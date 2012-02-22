@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:33:14.185 UTC</timestamp>
+  <md5sum>399486dc560e0cb58e3bd0d0cc618c85</md5sum>
+  <fileName>wsdl4j:wsdl4j-1.4-wsi.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wsi-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

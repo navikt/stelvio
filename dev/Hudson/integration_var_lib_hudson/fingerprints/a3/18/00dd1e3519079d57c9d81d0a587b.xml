@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:08:39.287 UTC</timestamp>
+  <md5sum>a31800dd1e3519079d57c9d81d0a587b</md5sum>
+  <fileName>org.mockito:mockito-core-1.8.2.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_stelvio-commons-lib-test/no.stelvio.int:stelvio-commons-lib-test</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_stelvio-commons-lib-test</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

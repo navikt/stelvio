@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:59:33.527 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-oppgavebehandling</name>
+    <number>12</number>
+  </original>
+  <md5sum>2191efe71e7e1615b48d285e162ba60f</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-oppgavebehandling-2.0.1-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-oppgavebehandling</string>
+      <ranges>12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

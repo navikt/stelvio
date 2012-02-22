@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:58:11.612 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.ent:nav-ent-oko-tilbakekreving</name>
+    <number>1</number>
+  </original>
+  <md5sum>375f47a65ab03cc736a54a124e441a6c</md5sum>
+  <fileName>no.nav.esb.layers.modules.ent:nav-ent-oko-tilbakekreving-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.ent:nav-ent-oko-tilbakekreving</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

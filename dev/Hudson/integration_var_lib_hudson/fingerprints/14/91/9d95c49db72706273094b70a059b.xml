@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:17:51.158 UTC</timestamp>
+  <original>
+    <name>Stelvio-app-svn/no.stelvio:stelvio-domain-java</name>
+    <number>1</number>
+  </original>
+  <md5sum>14919d95c49db72706273094b70a059b</md5sum>
+  <fileName>no.stelvio:stelvio-domain-java-2.1.3-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-presentation-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-batch-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-repository-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-service-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-domain-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-provider-java</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

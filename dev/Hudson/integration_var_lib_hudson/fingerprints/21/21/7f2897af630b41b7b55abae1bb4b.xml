@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:42:55.99 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-tjeneste-tilbakekreving</name>
+    <number>1</number>
+  </original>
+  <md5sum>21217f2897af630b41b7b55abae1bb4b</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-tilbakekreving-1.1.1-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-tilbakekreving</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

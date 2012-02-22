@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:38:56.314 UTC</timestamp>
+  <md5sum>aa2ce61140c71232f8049aa38d0f27ca</md5sum>
+  <fileName>no.nav.tjenester:nav-journalbehandling-tjenestespesifikasjon-1.0.0-alpha002.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-journalbehandling</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

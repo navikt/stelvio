@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:35:37.319 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:oppgave</name>
+    <number>10</number>
+  </original>
+  <md5sum>f4a03b78da703a0d78a75e64b79591ca</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10-12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:oppgave</string>
+      <ranges>10-12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

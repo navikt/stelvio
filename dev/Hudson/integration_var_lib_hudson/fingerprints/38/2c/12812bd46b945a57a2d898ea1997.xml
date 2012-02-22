@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:17:28.66 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav_trunk_int_esb_layers_dryRun/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-henvendelse</name>
+    <number>1</number>
+  </original>
+  <md5sum>382c12812bd46b945a57a2d898ea1997</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav_trunk_int_esb_layers_dryRun/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-henvendelse</string>
+      <ranges>1-2</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-henvendelse</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

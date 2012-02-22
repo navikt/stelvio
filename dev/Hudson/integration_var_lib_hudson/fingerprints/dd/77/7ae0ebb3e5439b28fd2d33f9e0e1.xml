@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:41:17.94 UTC</timestamp>
+  <md5sum>dd777ae0ebb3e5439b28fd2d33f9e0e1</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-oko-datamaps-7.3.0.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.ent:nav-ent-oko-oppdragOnline</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.modules.ent:nav-ent-oko-oppdragOnline</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:32:21.286 UTC</timestamp>
+  <md5sum>e5e4c43ecc200744c9ce09c6b133d8d7</md5sum>
+  <fileName>org.apache.maven.scm:maven-scm-provider-perforce-1.3.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-mg-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

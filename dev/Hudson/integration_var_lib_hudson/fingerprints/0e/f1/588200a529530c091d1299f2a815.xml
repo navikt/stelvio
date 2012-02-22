@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:11:16.862 UTC</timestamp>
+  <original>
+    <name>TRUNK-pensjon-tjenestespesifikasjon/no.nav.tjenester:pensjon-behandleTilbakekrevingVedDodsfall-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>0ef1588200a529530c091d1299f2a815</md5sum>
+  <fileName>no.nav.tjenester:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-tjenestespesifikasjon/no.nav.tjenester:pensjon-behandleTilbakekrevingVedDodsfall-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

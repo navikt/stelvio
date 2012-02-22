@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:40:21.162 UTC</timestamp>
+  <md5sum>ab8565da831e36bd4aff3cd7898690a4</md5sum>
+  <fileName>no.nav.tjenester:nav-oppgave-tjenestespesifikasjon-1.2.0.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-oppgave</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:58.228 UTC</timestamp>
+  <original>
+    <name>TRUNK-ekstern-tjenestespesifikasjon/no.nav.tjenester:ekstern</name>
+    <number>1</number>
+  </original>
+  <md5sum>038ab32c337af1e1dca64c3893c9e902</md5sum>
+  <fileName>no.nav.tjenester:ekstern-1.0.2-SNAPSHOT.pom</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-ekstern-tjenestespesifikasjon/no.nav.tjenester:ekstern</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-ekstern-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 04:07:02.363 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.modules.cons:nav-cons-sak-kuhl-person</name>
+    <number>1</number>
+  </original>
+  <md5sum>3742367f0a90e7fdf84aafd0c03a40d1</md5sum>
+  <fileName>no.nav.esb.layers.modules.cons:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.modules.cons:nav-cons-sak-kuhl-person</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

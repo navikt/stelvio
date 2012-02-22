@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:33:53.922 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-institusjonsopphold-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>d01d3ccc0aad76b5cc132fe66c2d5973</md5sum>
+  <fileName>no.nav.tjenester:nav-institusjonsopphold-tjenestespesifikasjon-1.2.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-institusjonsopphold-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

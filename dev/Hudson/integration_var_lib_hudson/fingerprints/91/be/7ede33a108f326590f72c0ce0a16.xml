@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:33:37.556 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-behandlePerson-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>91be7ede33a108f326590f72c0ce0a16</md5sum>
+  <fileName>no.nav.tjenester:nav-behandlePerson-tjenestespesifikasjon-1.0.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-behandlePerson-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

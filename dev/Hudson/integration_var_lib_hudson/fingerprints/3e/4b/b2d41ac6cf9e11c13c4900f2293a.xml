@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:32:32.458 UTC</timestamp>
+  <md5sum>3e4bb2d41ac6cf9e11c13c4900f2293a</md5sum>
+  <fileName>org.jdom:jaxen-jdom-1.0-FCS.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wsdl-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-service-deploy-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

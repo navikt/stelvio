@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:34:41.472 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-utbetaling-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>e84b8b4e026b2b121b745e6210b617c5</md5sum>
+  <fileName>no.nav.tjenester:nav-utbetaling-tjenestespesifikasjon-1.0.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-utbetaling-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

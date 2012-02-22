@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:24.640 UTC</timestamp>
+  <md5sum>5cf756dfd21766dcaf426a94b3c1a3a2</md5sum>
+  <fileName>no.nav.esb.layers.modules.ent:nav-ent-pen-pensjonsvedtak-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb-modules-ci/no.nav.esb:esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:42:30.566 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-tjeneste-statistikk</name>
+    <number>1</number>
+  </original>
+  <md5sum>420b8f50c5c7e0807bd69860263c768b</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-statistikk-1.0.1-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-statistikk</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

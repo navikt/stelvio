@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:31:42.85 UTC</timestamp>
+  <md5sum>d9296b5bed39ed8550d5326bc7d46d8a</md5sum>
+  <fileName>xmlrpc:xmlrpc-1.2-b1.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-confluence-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

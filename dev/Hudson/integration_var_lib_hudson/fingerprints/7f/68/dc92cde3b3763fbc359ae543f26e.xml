@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:10:17.716 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_systemavailability/no.stelvio.int.operation.system-availability:system-availability-web-ear</name>
+    <number>1</number>
+  </original>
+  <md5sum>7f68dc92cde3b3763fbc359ae543f26e</md5sum>
+  <fileName>no.stelvio.int.operation.system-availability:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_systemavailability/no.stelvio.int.operation.system-availability:system-availability-web-ear</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_systemavailability</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

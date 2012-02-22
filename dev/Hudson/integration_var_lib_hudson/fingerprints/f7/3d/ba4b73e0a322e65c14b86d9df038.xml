@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:35:10.98 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-arbeidsgiver</name>
+    <number>1</number>
+  </original>
+  <md5sum>f73dba4b73e0a322e65c14b86d9df038</md5sum>
+  <fileName>no.nav.esb.layers.modules.ent:nav-ent-frg-arbeidsgiver-7.3.1-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-arbeidsgiver</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

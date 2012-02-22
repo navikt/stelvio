@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:28:15.785 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-order-service</name>
+    <number>1</number>
+  </original>
+  <md5sum>98671eb7d9cd763c49c2026dd813a9f3</md5sum>
+  <fileName>no.stelvio.example:stelvio-example-order-service-1.0-SNAPSHOT-wsexports.zip</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-order-service</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

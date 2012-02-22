@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:39:06.272 UTC</timestamp>
+  <original>
+    <name>HORISONTEN_7.2_ekstern-pensjon/no.nav.esb.ekstern.pensjon:ekstern-pensjon-tjeneste-beregning</name>
+    <number>2</number>
+  </original>
+  <md5sum>1626b680eb374caaa05bb411099f3772</md5sum>
+  <fileName>no.nav.esb.ekstern.pensjon:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>HORISONTEN_7.2_ekstern-pensjon/no.nav.esb.ekstern.pensjon:ekstern-pensjon-tjeneste-beregning</string>
+      <ranges>2</ranges>
+    </entry>
+    <entry>
+      <string>HORISONTEN_7.2_ekstern-pensjon</string>
+      <ranges>2</ranges>
+    </entry>
+  </usages>
+</fingerprint>

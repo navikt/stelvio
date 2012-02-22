@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:32:21.292 UTC</timestamp>
+  <md5sum>1b9a6b1d147e66d5c79e179ee534d48d</md5sum>
+  <fileName>org.apache.maven.scm:maven-scm-api-1.3.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-mg-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

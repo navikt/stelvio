@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:56:13.627 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-personhendelse</name>
+    <number>1</number>
+  </original>
+  <md5sum>ebb00d5c726276e111169e4d35c0d2f6</md5sum>
+  <fileName>no.nav.esb.layers.modules.ent:nav-ent-frg-personhendelse-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-personhendelse</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

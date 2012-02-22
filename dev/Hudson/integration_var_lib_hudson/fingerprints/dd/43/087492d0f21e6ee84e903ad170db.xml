@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:11:30.795 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:sibushelper-client</name>
+    <number>1</number>
+  </original>
+  <md5sum>dd43087492d0f21e6ee84e903ad170db</md5sum>
+  <fileName>no.nav.int.appclient.wpshelper:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:sibushelper-client</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

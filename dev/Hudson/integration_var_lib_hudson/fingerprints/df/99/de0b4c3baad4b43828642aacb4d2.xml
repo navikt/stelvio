@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:35:02.405 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_oppdragmediation/no.nav.esb.layers.sibus-mediations:oppdrag-mediation-ear</name>
+    <number>1</number>
+  </original>
+  <md5sum>df99de0b4c3baad4b43828642aacb4d2</md5sum>
+  <fileName>no.nav.esb.layers.sibus-mediations:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_oppdragmediation/no.nav.esb.layers.sibus-mediations:oppdrag-mediation-ear</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

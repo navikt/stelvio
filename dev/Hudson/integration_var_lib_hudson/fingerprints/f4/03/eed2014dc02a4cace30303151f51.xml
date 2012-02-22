@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:42:54.881 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-tjeneste-tilbakekreving</name>
+    <number>1</number>
+  </original>
+  <md5sum>f403eed2014dc02a4cace30303151f51</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-tilbakekreving</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

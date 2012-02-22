@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:33:14.177 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wsi-plugin</name>
+    <number>1</number>
+  </original>
+  <md5sum>37ca18d928afbee095ce80a37a220a0c</md5sum>
+  <fileName>no.nav.maven.plugins:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wsi-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

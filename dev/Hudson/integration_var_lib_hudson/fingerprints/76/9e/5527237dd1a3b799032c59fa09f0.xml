@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 04:06:25.476 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.libs.asbo:nav-lib-frg-norg</name>
+    <number>1</number>
+  </original>
+  <md5sum>769e5527237dd1a3b799032c59fa09f0</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.libs.asbo:nav-lib-frg-norg</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-frg-norg</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

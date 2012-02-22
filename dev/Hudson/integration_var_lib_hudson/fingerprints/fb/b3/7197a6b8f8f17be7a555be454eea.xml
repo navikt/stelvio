@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:12:23.558 UTC</timestamp>
+  <md5sum>fbb37197a6b8f8f17be7a555be454eea</md5sum>
+  <fileName>no.nav.esb.layers.modules.cons:nav-cons-sto-sam-tjenestepensjon-7.3.0.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:esb-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:esb-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:esb-modules</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

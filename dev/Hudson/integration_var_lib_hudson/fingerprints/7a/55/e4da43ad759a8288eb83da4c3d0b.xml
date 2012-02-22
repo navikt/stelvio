@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:12:23.644 UTC</timestamp>
+  <md5sum>7a55e4da43ad759a8288eb83da4c3d0b</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-oko-os-7.3.1.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:esb-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:esb-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:esb-modules</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

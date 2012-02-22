@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:13:47.188 UTC</timestamp>
+  <md5sum>ca8b1412911aacef7ec26d229773fe62</md5sum>
+  <fileName>no.nav.esb.nav:nav-produsent-tilbakekreving-2.1.2.ear</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:nav-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:nav-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:nav-modules</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

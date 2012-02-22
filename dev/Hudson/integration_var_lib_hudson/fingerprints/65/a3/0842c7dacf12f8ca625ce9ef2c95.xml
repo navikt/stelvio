@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:39:58.334 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-oko-trekk</name>
+    <number>1</number>
+  </original>
+  <md5sum>65a30842c7dacf12f8ca625ce9ef2c95</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-oko-trekk-7.4.0-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-oko-trekk</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:33:57.944 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-journalbehandling-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>6925a555d7a9b9098bb13a2c86cd0ee1</md5sum>
+  <fileName>no.nav.tjenester:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-journalbehandling-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

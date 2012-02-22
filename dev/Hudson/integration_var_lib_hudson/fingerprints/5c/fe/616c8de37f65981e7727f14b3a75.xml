@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:29:21.212 UTC</timestamp>
+  <original>
+    <name>TRUNK-ekstern/no.nav.esb.ekstern:ekstern-tjeneste-arbeidsgiver</name>
+    <number>1</number>
+  </original>
+  <md5sum>5cfe616c8de37f65981e7727f14b3a75</md5sum>
+  <fileName>no.nav.esb.ekstern:ekstern-tjeneste-arbeidsgiver-1.0.0-alpha003-SNAPSHOT-wsexports.zip</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-ekstern/no.nav.esb.ekstern:ekstern-tjeneste-arbeidsgiver</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-ekstern</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

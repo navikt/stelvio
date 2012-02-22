@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:32:09.309 UTC</timestamp>
+  <md5sum>53160199f5667de3fca69b723173639b</md5sum>
+  <fileName>org.sonatype.plexus:plexus-sec-dispatcher-1.3.jar</fileName>
+  <usages>
+    <entry>
+      <string>test_plugin_build</string>
+      <ranges>28</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-properties-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wsdl-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wpsdeploy-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-datapower-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-enforcer-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wid-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>test_plugin_build/no.nav.maven.plugins:maven-wpsdeploy-plugin</string>
+      <ranges>28</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-websphere-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wasdeploy-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

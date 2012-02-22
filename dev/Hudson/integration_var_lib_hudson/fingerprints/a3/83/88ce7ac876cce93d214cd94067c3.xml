@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:27:44.830 UTC</timestamp>
+  <original>
+    <name>Stelvio-app-sandbox/no.stelvio:stelvio-dto-java</name>
+    <number>1</number>
+  </original>
+  <md5sum>a38388ce7ac876cce93d214cd94067c3</md5sum>
+  <fileName>no.stelvio:stelvio-dto-java-2.1.3-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-sandbox</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-provider-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-dto-java</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

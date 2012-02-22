@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:34:13.120 UTC</timestamp>
+  <md5sum>97e9e91a0824277ca351063e1ee6d2de</md5sum>
+  <fileName>com.sun.xml.bind:jaxb-impl-2.1.13.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.stelvio.maven.support:datapower-management-client</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

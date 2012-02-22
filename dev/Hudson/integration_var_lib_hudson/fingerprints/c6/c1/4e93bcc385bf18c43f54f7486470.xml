@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:25.97 UTC</timestamp>
+  <md5sum>c6c14e93bcc385bf18c43f54f7486470</md5sum>
+  <fileName>no.nav.esb.layers.modules.cons:nav-cons-pen-psak-institusjonsopphold-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb-modules-ci/no.nav.esb:esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

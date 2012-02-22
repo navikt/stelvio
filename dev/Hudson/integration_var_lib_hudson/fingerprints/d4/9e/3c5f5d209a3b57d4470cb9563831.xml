@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:24:25.921 UTC</timestamp>
+  <md5sum>d49e3c5f5d209a3b57d4470cb9563831</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-frg-inst-7.3.0.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-frg-inst</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.modules.prod:nav-prod-frg-inst</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-personhendelse</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-institusjonsopphold</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-personhendelse</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-institusjonsopphold</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

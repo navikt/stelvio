@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:11:03.610 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:wpshelper</name>
+    <number>1</number>
+  </original>
+  <md5sum>c7ade251bd3cd2cfddc63cd199090570</md5sum>
+  <fileName>no.nav.int.appclient.wpshelper:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:wpshelper</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

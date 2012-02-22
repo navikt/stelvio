@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:16:20.129 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-arbeidOgAktivitetYtelse</name>
+    <number>1</number>
+  </original>
+  <md5sum>98936c4f02c7578d3bab3c9d17e8dd8a</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-arbeidOgAktivitetYtelse-1.0.1-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-arbeidOgAktivitetYtelse</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:29:16.371 UTC</timestamp>
+  <md5sum>bcb6799239d10042e0b55ce88bdd8d3c</md5sum>
+  <fileName>no.nav.esb.ekstern.pensjon:ekstern-pensjon-tjeneste-person-1.1.3-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-ekstern-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-ekstern-modules-ci/no.nav.esb:ekstern-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:34:13.386 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_maven/no.nav.maven.int:all</name>
+    <number>1</number>
+  </original>
+  <md5sum>0d1b7c1e75d47aefaaa66d9e385fb549</md5sum>
+  <fileName>no.nav.maven.int:all-1.0-SNAPSHOT.pom</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.int:all</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

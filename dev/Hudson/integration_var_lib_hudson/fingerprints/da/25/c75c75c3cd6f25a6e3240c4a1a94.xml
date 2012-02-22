@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:56:10.305 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandleTrekk</name>
+    <number>12</number>
+  </original>
+  <md5sum>da25c75c75c3cd6f25a6e3240c4a1a94</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-behandleTrekk-1.0.1-SNAPSHOT-wsdlif.zip</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandleTrekk</string>
+      <ranges>12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

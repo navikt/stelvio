@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:24.708 UTC</timestamp>
+  <md5sum>ab285f4582127c8dfc841bb491b1809d</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-oko-os-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb-modules-ci/no.nav.esb:esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

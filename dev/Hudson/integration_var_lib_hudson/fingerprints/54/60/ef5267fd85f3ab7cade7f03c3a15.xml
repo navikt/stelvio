@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:40:21.169 UTC</timestamp>
+  <md5sum>5460ef5267fd85f3ab7cade7f03c3a15</md5sum>
+  <fileName>no.nav.esb.layers.libs.commons:nav-lib-commons-codestables-7.1.7.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-utbetaling</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-oppgave</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

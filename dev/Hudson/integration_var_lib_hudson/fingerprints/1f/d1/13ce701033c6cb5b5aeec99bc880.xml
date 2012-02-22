@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:35:50.707 UTC</timestamp>
+  <md5sum>1fd113ce701033c6cb5b5aeec99bc880</md5sum>
+  <fileName>no.nav.esb.pensjon:pensjon-tjeneste-grunnlag-1.1.3-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon-modules-ci/no.nav.esb:pensjon-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

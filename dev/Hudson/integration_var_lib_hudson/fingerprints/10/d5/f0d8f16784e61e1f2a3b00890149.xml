@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:19:00.921 UTC</timestamp>
+  <md5sum>10d5f0d8f16784e61e1f2a3b00890149</md5sum>
+  <fileName>org.apache.shale:shale-test-1.0.4.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-presentation-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-presentation-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

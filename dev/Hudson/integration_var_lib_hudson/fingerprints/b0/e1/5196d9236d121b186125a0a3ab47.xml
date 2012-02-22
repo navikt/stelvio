@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 04:06:50.977 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.modules.cons:nav-cons-pen-pen-navorgenhet</name>
+    <number>1</number>
+  </original>
+  <md5sum>b0e15196d9236d121b186125a0a3ab47</md5sum>
+  <fileName>no.nav.esb.layers.modules.cons:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.modules.cons:nav-cons-pen-pen-navorgenhet</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

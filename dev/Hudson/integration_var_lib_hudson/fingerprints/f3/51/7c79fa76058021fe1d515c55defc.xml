@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:14:09.277 UTC</timestamp>
+  <md5sum>f3517c79fa76058021fe1d515c55defc</md5sum>
+  <fileName>no.nav.esb.pensjon:pensjon-tjeneste-tilbakekrevingHendelse-1.1.3-alpha001.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:pensjon-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:pensjon-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

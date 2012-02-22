@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:19:08.472 UTC</timestamp>
+  <original>
+    <name>Stelvio-app-svn/no.stelvio:stelvio-provider-java</name>
+    <number>1</number>
+  </original>
+  <md5sum>cc278d2a627964d59f40f89b3d2797d9</md5sum>
+  <fileName>no.stelvio:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-svn-dryRun-release/no.stelvio:stelvio-provider-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-provider-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-provider-java</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

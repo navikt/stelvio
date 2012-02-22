@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:29:46.392 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-providerEAR</name>
+    <number>1</number>
+  </original>
+  <md5sum>fe6378e2eb04064cb902338480800185</md5sum>
+  <fileName>no.stelvio.example:stelvio-example-echo-providerEAR-1.0.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo_test/no.stelvio.example:stelvio-example-echo-test</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo_test</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-providerEAR</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

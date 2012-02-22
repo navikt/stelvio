@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:18:23.386 UTC</timestamp>
+  <md5sum>edef31970a90402b7b57a9f4b70b1a66</md5sum>
+  <fileName>org.springframework:spring-orm-2.5.6.SEC02.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-service-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-batch-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-repository-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-batch-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-service-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-repository-java</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

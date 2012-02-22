@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:36:25.763 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-opptjening-tjeneste</name>
+    <number>10</number>
+  </original>
+  <md5sum>810be0d271db5838e6ff1277f0a88b1b</md5sum>
+  <fileName>no.nav.esb.nav:nav-opptjening-tjeneste-1.1.3-SNAPSHOT-wsexports.zip</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-opptjening-tjeneste</string>
+      <ranges>10</ranges>
+    </entry>
+  </usages>
+</fingerprint>

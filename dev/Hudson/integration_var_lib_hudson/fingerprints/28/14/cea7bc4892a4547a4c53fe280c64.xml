@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:36:09.609 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys-oppgave</name>
+    <number>1</number>
+  </original>
+  <md5sum>2814cea7bc4892a4547a4c53fe280c64</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys-oppgave-7.4.0-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys-oppgave</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

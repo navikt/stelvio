@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:17:44.962 UTC</timestamp>
+  <md5sum>5079155844478bb8d79eaab1c272998a</md5sum>
+  <fileName>org.slf4j:slf4j-log4j12-1.6.1.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-service-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-batch-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-common-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-batch-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-service-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-common-java</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

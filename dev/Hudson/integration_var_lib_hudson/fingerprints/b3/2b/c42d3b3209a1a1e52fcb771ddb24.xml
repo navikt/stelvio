@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:15:54.973 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-arbeidOgAktivitet</name>
+    <number>1</number>
+  </original>
+  <md5sum>b32bc42d3b3209a1a1e52fcb771ddb24</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-arbeidOgAktivitet</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

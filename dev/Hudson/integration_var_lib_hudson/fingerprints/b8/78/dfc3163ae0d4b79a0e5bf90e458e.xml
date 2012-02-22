@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:16:22.512 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:arbeidOgAktivitetYtelse</name>
+    <number>1</number>
+  </original>
+  <md5sum>b878dfc3163ae0d4b79a0e5bf90e458e</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:arbeidOgAktivitetYtelse</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

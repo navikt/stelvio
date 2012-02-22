@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:17:51.653 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-behandleTrekk</name>
+    <number>1</number>
+  </original>
+  <md5sum>a910e9fe75245fb3847d696b0e59a74e</md5sum>
+  <fileName>nav-tjeneste-behandleTrekk-1.0.1-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-modules-ci/no.nav.esb:nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:24:00.698 UTC</timestamp>
+  <md5sum>6e54bd1edeb6872b928b72996b0ff2a4</md5sum>
+  <fileName>no.nav.tjenester:pensjon-grunnlag-tjenestespesifikasjon-1.1.0.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_pensjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_pensjon/no.nav.esb.pensjon:pensjon-tjeneste-grunnlag</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon/no.nav.esb.pensjon:pensjon-tjeneste-grunnlag</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

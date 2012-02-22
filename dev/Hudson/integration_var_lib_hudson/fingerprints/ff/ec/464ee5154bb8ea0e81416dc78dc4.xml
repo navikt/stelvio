@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 10:05:41.810 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav-modules-ci/no.nav.esb:nav-modules-ci</name>
+    <number>1</number>
+  </original>
+  <md5sum>ffec464ee5154bb8ea0e81416dc78dc4</md5sum>
+  <fileName>no.nav.esb:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-modules-ci/no.nav.esb:nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

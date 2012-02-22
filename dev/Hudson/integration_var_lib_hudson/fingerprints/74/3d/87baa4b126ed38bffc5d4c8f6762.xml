@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:21:57.583 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_layers/no.nav.esb.layers.modules.prod:nav-prod-dok-sms</name>
+    <number>1</number>
+  </original>
+  <md5sum>743d87baa4b126ed38bffc5d4c8f6762</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-dok-sms-7.3.1-SNAPSHOT-wsimports.zip</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-dok-sms</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.modules.prod:nav-prod-dok-sms</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

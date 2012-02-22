@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:24.976 UTC</timestamp>
+  <md5sum>42d0a4ff4c020bd2169a2ec29d6a3c6d</md5sum>
+  <fileName>no.nav.esb.layers.modules.cons:nav-cons-pen-pselv-fullmakt-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb-modules-ci/no.nav.esb:esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

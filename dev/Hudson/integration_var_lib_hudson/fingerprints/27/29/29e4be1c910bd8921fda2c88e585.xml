@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:24.640 UTC</timestamp>
+  <md5sum>272929e4be1c910bd8921fda2c88e585</md5sum>
+  <fileName>no.nav.esb.layers.modules.cons:nav-cons-elsam-fk-afpprivat-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb-modules-ci/no.nav.esb:esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

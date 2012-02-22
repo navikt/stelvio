@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:41:33.373 UTC</timestamp>
+  <md5sum>0953c6ff65e4232f954e778541cf9575</md5sum>
+  <fileName>no.nav.tjenester:nav-familieforhold-tjenestespesifikasjon-1.1.0.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-person</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

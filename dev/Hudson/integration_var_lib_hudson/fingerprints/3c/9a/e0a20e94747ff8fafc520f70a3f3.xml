@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:41:33.361 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-tjeneste-person</name>
+    <number>1</number>
+  </original>
+  <md5sum>3c9ae0a20e94747ff8fafc520f70a3f3</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-person-1.1.1-SNAPSHOT-wsdlif.zip</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-person</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

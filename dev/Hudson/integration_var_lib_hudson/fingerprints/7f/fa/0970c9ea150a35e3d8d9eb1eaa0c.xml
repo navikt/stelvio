@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:44:14.820 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-tjeneste-utbetaling</name>
+    <number>1</number>
+  </original>
+  <md5sum>7ffa0970c9ea150a35e3d8d9eb1eaa0c</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-utbetaling-1.1.1-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-utbetaling</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

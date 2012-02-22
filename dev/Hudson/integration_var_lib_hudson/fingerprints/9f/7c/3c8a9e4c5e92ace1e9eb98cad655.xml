@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:37:37.779 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-tjeneste-henvendelsebehandling</name>
+    <number>1</number>
+  </original>
+  <md5sum>9f7c3c8a9e4c5e92ace1e9eb98cad655</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-henvendelsebehandling-1.0.0-alpha001-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-henvendelsebehandling</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:30:41.544 UTC</timestamp>
+  <md5sum>874d940ead4000f645eba4b0ceeb5657</md5sum>
+  <fileName>no.nav.tjenester:nav-behandleArbeidsgiver-tjenestespesifikasjon-1.0.0-alpha001.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10-12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandleArbeidsgiver</string>
+      <ranges>10-12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

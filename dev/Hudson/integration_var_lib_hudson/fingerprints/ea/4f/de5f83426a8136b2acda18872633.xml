@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:44:14.830 UTC</timestamp>
+  <md5sum>ea4fde5f83426a8136b2acda18872633</md5sum>
+  <fileName>no.nav.tjenester:nav-utbetaling-tjenestespesifikasjon-1.0.0.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-utbetaling</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

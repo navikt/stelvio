@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:21:32.448 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_layers/no.nav.esb.layers.libs.gbo:nav-lib-test</name>
+    <number>1</number>
+  </original>
+  <md5sum>248f43466a3a85303270e7df6fea8008</md5sum>
+  <fileName>no.nav.esb.layers.libs.gbo:nav-lib-test-7.3.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.libs.gbo:nav-lib-test</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

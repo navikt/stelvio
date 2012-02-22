@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:35:52.222 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-bisys</name>
+    <number>1</number>
+  </original>
+  <md5sum>087ac5d42447f18ab24b8824578a0c23</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-bisys-7.4.0-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-bisys</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

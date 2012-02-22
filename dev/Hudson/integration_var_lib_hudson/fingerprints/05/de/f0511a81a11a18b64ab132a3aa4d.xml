@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:11:24.83 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:bpchelper-client</name>
+    <number>1</number>
+  </original>
+  <md5sum>05def0511a81a11a18b64ab132a3aa4d</md5sum>
+  <fileName>no.nav.int.appclient.wpshelper:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:bpchelper-client</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

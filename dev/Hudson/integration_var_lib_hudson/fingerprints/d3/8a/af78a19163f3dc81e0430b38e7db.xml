@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:30:30.121 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-proxy</name>
+    <number>1</number>
+  </original>
+  <md5sum>d38aaf78a19163f3dc81e0430b38e7db</md5sum>
+  <fileName>no.stelvio.example:stelvio-example-echo-proxy-1.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-proxy</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

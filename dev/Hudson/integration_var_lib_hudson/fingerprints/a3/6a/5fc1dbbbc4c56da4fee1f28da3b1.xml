@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:40:44.342 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:oppgavebehandling</name>
+    <number>1</number>
+  </original>
+  <md5sum>a36a5fc1dbbbc4c56da4fee1f28da3b1</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:oppgavebehandling</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

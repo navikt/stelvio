@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:54.600 UTC</timestamp>
+  <original>
+    <name>TRUNK-ekstern-tjenestespesifikasjon/no.nav.tjenester:ekstern-pensjon-tjenestepensjonSimulering-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>fefd9461b56005aa80b35211cf3d373d</md5sum>
+  <fileName>no.nav.tjenester:ekstern-pensjon-tjenestepensjonSimulering-tjenestespesifikasjon-1.0.0-alpha003-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-ekstern-tjenestespesifikasjon/no.nav.tjenester:ekstern-pensjon-tjenestepensjonSimulering-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-ekstern-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

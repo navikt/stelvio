@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:17:39.646 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena</name>
+    <number>1</number>
+  </original>
+  <md5sum>bf67538e2bf6c367716478f33f59ff00</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-7.3.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

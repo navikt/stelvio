@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:37:22.883 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-frg-medl</name>
+    <number>1</number>
+  </original>
+  <md5sum>6eac48ac5feff54b4bd884e60f1d2809</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-frg-medl-7.4.0-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-frg-medl</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

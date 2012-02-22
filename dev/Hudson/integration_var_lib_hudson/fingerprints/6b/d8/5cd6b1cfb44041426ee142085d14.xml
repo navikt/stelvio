@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:34:11.359 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-pensjonBeregning-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>6bd85cd6b1cfb44041426ee142085d14</md5sum>
+  <fileName>no.nav.tjenester:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-pensjonBeregning-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:30:58.873 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandleMedlemskap</name>
+    <number>10</number>
+  </original>
+  <md5sum>2257e7bac6d97794f38475f681d6b162</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-behandleMedlemskap-1.0.1-SNAPSHOT-wsimports.zip</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandleMedlemskap</string>
+      <ranges>10</ranges>
+    </entry>
+  </usages>
+</fingerprint>

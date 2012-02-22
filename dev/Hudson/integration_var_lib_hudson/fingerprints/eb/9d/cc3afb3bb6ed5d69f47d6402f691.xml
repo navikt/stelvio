@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:44:17.475 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:utbetaling</name>
+    <number>1</number>
+  </original>
+  <md5sum>eb9dcc3afb3bb6ed5d69f47d6402f691</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:utbetaling</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

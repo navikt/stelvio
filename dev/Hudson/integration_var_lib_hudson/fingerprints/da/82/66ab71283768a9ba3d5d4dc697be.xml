@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:44:17.669 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-institusjonsopphold</name>
+    <number>11</number>
+  </original>
+  <md5sum>da8266ab71283768a9ba3d5d4dc697be</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-institusjonsopphold-1.2.4-SNAPSHOT-wsimports.zip</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-institusjonsopphold</string>
+      <ranges>11</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>11</ranges>
+    </entry>
+  </usages>
+</fingerprint>

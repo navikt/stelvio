@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:11:20.750 UTC</timestamp>
+  <original>
+    <name>TRUNK-pensjon-prosess-modules-ci/no.nav.esb:pensjon-prosess-modules-ci</name>
+    <number>1</number>
+  </original>
+  <md5sum>7b34b2054a31a66d3884f8723cff8923</md5sum>
+  <fileName>no.nav.esb:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-prosess-modules-ci/no.nav.esb:pensjon-prosess-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon-prosess-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

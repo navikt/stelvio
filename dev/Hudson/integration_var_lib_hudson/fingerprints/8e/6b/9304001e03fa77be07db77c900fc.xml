@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:36:20.927 UTC</timestamp>
+  <md5sum>8e6b9304001e03fa77be07db77c900fc</md5sum>
+  <fileName>no.nav.tjenester:nav-behandleMedlemskap-tjenestespesifikasjon-1.0.0-alpha001.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-behandleMedlemskap</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:47:31.667 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-frg-tss</name>
+    <number>1</number>
+  </original>
+  <md5sum>4e5b344bc06db1532e742601e51cdbc4</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-frg-tss-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-frg-tss</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

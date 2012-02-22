@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:19:00.921 UTC</timestamp>
+  <md5sum>2abec4b0ad828e953742bc50a8c90a12</md5sum>
+  <fileName>org.richfaces.framework:richfaces-impl-3.3.3.Final.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-presentation-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-presentation-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

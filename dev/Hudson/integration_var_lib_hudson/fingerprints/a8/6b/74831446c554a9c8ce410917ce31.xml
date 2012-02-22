@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:55:11.746 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandleArbeidsgiver</name>
+    <number>12</number>
+  </original>
+  <md5sum>a86b74831446c554a9c8ce410917ce31</md5sum>
+  <fileName>nav-tjeneste-behandleArbeidsgiver-1.0.0-alpha002-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-modules-ci/no.nav.esb:nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

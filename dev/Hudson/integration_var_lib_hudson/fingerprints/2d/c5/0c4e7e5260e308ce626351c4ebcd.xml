@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:36:33.995 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-remedy</name>
+    <number>1</number>
+  </original>
+  <md5sum>2dc50c4e7e5260e308ce626351c4ebcd</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-remedy-7.4.0-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-remedy</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

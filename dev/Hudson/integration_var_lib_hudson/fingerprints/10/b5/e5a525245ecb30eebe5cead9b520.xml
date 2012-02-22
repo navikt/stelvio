@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:19:00.916 UTC</timestamp>
+  <md5sum>10b5e5a525245ecb30eebe5cead9b520</md5sum>
+  <fileName>org.springframework.webflow:spring-js-2.0.9.RELEASE.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-presentation-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-presentation-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

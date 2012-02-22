@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:23:51.747 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_esb-busconfiguration/no.nav.maven.support:busconfiguration</name>
+    <number>2</number>
+  </original>
+  <md5sum>d432a94e267912634dbd121e5fa5c01c</md5sum>
+  <fileName>no.nav.maven.support:busconfiguration-7.3.0.39-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_esb-busconfiguration</string>
+      <ranges>2</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-busconfiguration/no.nav.maven.support:busconfiguration</string>
+      <ranges>2</ranges>
+    </entry>
+  </usages>
+</fingerprint>

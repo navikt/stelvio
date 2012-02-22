@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 04:06:47.246 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.modules.cons:nav-cons-elsam-tptilb-oppkoblingstestV0_1</name>
+    <number>1</number>
+  </original>
+  <md5sum>8a7fe953ef12d4597df1efe4b3c68e74</md5sum>
+  <fileName>no.nav.esb.layers.modules.cons:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>oppkoblingstest/no.nav.esb.layers.modules.cons:nav-cons-elsam-tptilb-oppkoblingstestV0_1</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.modules.cons:nav-cons-elsam-tptilb-oppkoblingstestV0_1</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>oppkoblingstest</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

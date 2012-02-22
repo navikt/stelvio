@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:38:56.305 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-tjeneste-journalbehandling</name>
+    <number>1</number>
+  </original>
+  <md5sum>799cd554508ed1e56a0e1014e2ddd83d</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-journalbehandling-1.0.0-alpha005-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-journalbehandling</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

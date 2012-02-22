@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 10:05:42.59 UTC</timestamp>
+  <md5sum>6c375b727f4a9feaa873e567c20698f6</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-person-1.2.1-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-modules-ci/no.nav.esb:nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

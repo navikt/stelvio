@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:42:56.912 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-enhet</name>
+    <number>11</number>
+  </original>
+  <md5sum>b194ef79bf161b9fc78ae2db2109b6ee</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-enhet-1.0.3-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-enhet</string>
+      <ranges>11</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>11</ranges>
+    </entry>
+  </usages>
+</fingerprint>

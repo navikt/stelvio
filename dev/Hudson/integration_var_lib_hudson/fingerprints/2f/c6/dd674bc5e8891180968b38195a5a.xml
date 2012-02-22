@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:17:45.256 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav_trunk_int_esb_layers_dryRun/no.nav.esb.layers.modules.ent:nav-ent-frg-arbeidsforhold</name>
+    <number>1</number>
+  </original>
+  <md5sum>2fc6dd674bc5e8891180968b38195a5a</md5sum>
+  <fileName>no.nav.esb.layers.modules.ent:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav_trunk_int_esb_layers_dryRun/no.nav.esb.layers.modules.ent:nav-ent-frg-arbeidsforhold</string>
+      <ranges>1-2</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.modules.ent:nav-ent-frg-arbeidsforhold</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

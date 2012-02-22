@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 04:07:03.843 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.modules.cons:nav-cons-sto-sam-samhandler</name>
+    <number>1</number>
+  </original>
+  <md5sum>abfe67982430e3a7c2608d91979b3900</md5sum>
+  <fileName>no.nav.esb.layers.modules.cons:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.modules.cons:nav-cons-sto-sam-samhandler</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

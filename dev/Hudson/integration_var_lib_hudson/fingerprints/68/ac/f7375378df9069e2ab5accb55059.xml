@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:21:57.585 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_layers/no.nav.esb.layers.modules.prod:nav-prod-dok-sms</name>
+    <number>1</number>
+  </original>
+  <md5sum>68acf7375378df9069e2ab5accb55059</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-dok-sms-7.3.1-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.modules.prod:nav-prod-dok-sms</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

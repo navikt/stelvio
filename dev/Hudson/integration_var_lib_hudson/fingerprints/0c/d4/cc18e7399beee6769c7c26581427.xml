@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:40:21.163 UTC</timestamp>
+  <md5sum>0cd4cc18e7399beee6769c7c26581427</md5sum>
+  <fileName>no.nav.esb.layers.libs.gbo:nav-lib-sak-7.1.2.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-oppgave</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

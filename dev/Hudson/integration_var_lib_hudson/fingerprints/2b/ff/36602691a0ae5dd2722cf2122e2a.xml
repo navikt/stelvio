@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:33:28.206 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-arbeidOgAktivitetYtelse-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>2bff36602691a0ae5dd2722cf2122e2a</md5sum>
+  <fileName>no.nav.tjenester:nav-arbeidOgAktivitetYtelse-tjenestespesifikasjon-1.0.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-arbeidOgAktivitetYtelse-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

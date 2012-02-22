@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:13:47.184 UTC</timestamp>
+  <md5sum>926f9cdf94148a0c044898982ae62d7e</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-behandlePerson-1.0.0.ear</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:nav-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:nav-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:nav-modules</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:11:20.817 UTC</timestamp>
+  <md5sum>ed2c5f2aae952ba0ad4a55ebd7d5b647</md5sum>
+  <fileName>no.nav.esb.pensjon:pensjon-prosess-behandleAFPPrivat-0.1.5-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-prosess-modules-ci/no.nav.esb:pensjon-prosess-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon-prosess-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

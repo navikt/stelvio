@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:34:13.119 UTC</timestamp>
+  <md5sum>25c0752852205167af8f31a1eb019975</md5sum>
+  <fileName>org.springframework:spring-beans-2.5.6.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.stelvio.maven.support:datapower-management-client</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

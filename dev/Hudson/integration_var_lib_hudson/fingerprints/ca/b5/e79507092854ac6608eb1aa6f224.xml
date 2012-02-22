@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:34:50.380 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-elsam-np-tjenestepensjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>cab5e79507092854ac6608eb1aa6f224</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-cons-elsam-np-tjenestepensjon-7.4.0-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-elsam-np-tjenestepensjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

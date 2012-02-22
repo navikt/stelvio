@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:25.57 UTC</timestamp>
+  <md5sum>24707e5a05538fd4255506e57e6644dd</md5sum>
+  <fileName>no.nav.esb.layers.modules.bsrv:nav-bsrv-sah-sendpensjonvedtakfleksibeltuttak-7.4.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb-modules-ci/no.nav.esb:esb-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

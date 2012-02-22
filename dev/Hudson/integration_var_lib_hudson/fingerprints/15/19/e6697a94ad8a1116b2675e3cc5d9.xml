@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:31:57.758 UTC</timestamp>
+  <md5sum>1519e6697a94ad8a1116b2675e3cc5d9</md5sum>
+  <fileName>no.nav.maven.plugins:datapower-utils-1.2.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-datapower-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-datapower-config-generator-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:datapower-xml-mgmt</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:18:41.651 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-fullmakt</name>
+    <number>1</number>
+  </original>
+  <md5sum>0d861290167108a2efdd3a9f143524d2</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-fullmakt</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

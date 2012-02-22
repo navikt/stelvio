@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:10:41.493 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_systemavailability/no.stelvio.int.operation.system-availability:system-availability-config</name>
+    <number>1</number>
+  </original>
+  <md5sum>dbacb1275a6bd8409925e6646e33dd28</md5sum>
+  <fileName>no.stelvio.int.operation.system-availability:system-availability-config-1.4.6-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_systemavailability/no.stelvio.int.operation.system-availability:system-availability-config</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_systemavailability</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

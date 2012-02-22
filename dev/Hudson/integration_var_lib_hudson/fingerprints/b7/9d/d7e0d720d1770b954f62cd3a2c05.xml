@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:51:12.982 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-sak-gsak</name>
+    <number>1</number>
+  </original>
+  <md5sum>b79dd7e0d720d1770b954f62cd3a2c05</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-sak-gsak-7.4.0-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-sak-gsak</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

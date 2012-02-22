@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:27:46.283 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-order-lib</name>
+    <number>1</number>
+  </original>
+  <md5sum>ef22e05b091f2aa818898f1682b4838a</md5sum>
+  <fileName>no.stelvio.example:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-order-lib</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

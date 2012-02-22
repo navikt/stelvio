@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:18:24.273 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav_trunk_int_esb_layers_dryRun/no.nav.esb:layers</name>
+    <number>1</number>
+  </original>
+  <md5sum>d01f12e05be55ac9e95ff281e58fd89a</md5sum>
+  <fileName>no.nav.esb:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav_trunk_int_esb_layers_dryRun</string>
+      <ranges>1-2</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav_trunk_int_esb_layers_dryRun/no.nav.esb:layers</string>
+      <ranges>1-2</ranges>
+    </entry>
+  </usages>
+</fingerprint>

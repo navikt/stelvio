@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:11:17.653 UTC</timestamp>
+  <md5sum>218d00ada9d9d9ea24935ac1a4f15a2b</md5sum>
+  <fileName>org.ostermiller:utils-1.07.00.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:femhelper-client</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:bpchelper-ear</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:bpchelper-client</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_wpshelpers/no.nav.int.appclient.wpshelper:femhelper-ear</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

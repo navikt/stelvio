@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:11:46.979 UTC</timestamp>
+  <original>
+    <name>TRUNK-pensjon-tjenestespesifikasjon/no.nav.tjenester:pensjon-tilbakekrevingHendelse-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>b70e1735118600795913d1c6c89ce0c5</md5sum>
+  <fileName>no.nav.tjenester:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-tjenestespesifikasjon/no.nav.tjenester:pensjon-tilbakekrevingHendelse-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

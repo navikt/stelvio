@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:27:07.721 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-person-provider</name>
+    <number>1</number>
+  </original>
+  <md5sum>9e65dc87448b5a42225054c0c7856c70</md5sum>
+  <fileName>no.stelvio.example:stelvio-example-person-provider-1.0-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-person-provider</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

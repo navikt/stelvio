@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:29:56.384 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-consumerEAR</name>
+    <number>1</number>
+  </original>
+  <md5sum>42fdaf9e222679ea264f885732d4ec1c</md5sum>
+  <fileName>no.stelvio.example:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-consumerEAR</string>
+      <ranges>1-2</ranges>
+    </entry>
+  </usages>
+</fingerprint>

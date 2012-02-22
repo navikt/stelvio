@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:34:12.715 UTC</timestamp>
+  <md5sum>4bcea8aa3540b81b66de5e9893a2b5d7</md5sum>
+  <fileName>org.apache.geronimo.specs:geronimo-annotation_1.0_spec-1.1.1.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.stelvio.maven.support:datapower-management-client</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

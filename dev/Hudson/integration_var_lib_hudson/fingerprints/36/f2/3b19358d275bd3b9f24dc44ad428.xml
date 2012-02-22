@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:18:45.761 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys</name>
+    <number>1</number>
+  </original>
+  <md5sum>36f23b19358d275bd3b9f24dc44ad428</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys-7.3.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

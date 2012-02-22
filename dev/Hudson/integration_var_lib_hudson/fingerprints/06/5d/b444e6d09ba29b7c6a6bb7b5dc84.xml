@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:19:36.605 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-institusjonsopphold</name>
+    <number>1</number>
+  </original>
+  <md5sum>065db444e6d09ba29b7c6a6bb7b5dc84</md5sum>
+  <fileName>nav-tjeneste-institusjonsopphold-1.2.4-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-modules-ci/no.nav.esb:nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

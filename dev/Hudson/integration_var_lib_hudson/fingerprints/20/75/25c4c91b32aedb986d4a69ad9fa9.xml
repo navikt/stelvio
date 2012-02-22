@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:19:12.602 UTC</timestamp>
+  <md5sum>207525c4c91b32aedb986d4a69ad9fa9</md5sum>
+  <fileName>org.hibernate:hibernate-core-3.3.1.GA.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-service-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-repository-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-service-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-repository-java</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:41:07.230 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-opptjening-tjeneste</name>
+    <number>1</number>
+  </original>
+  <md5sum>b3e5ca60bb7b925d5d7068ca6dd21828</md5sum>
+  <fileName>no.nav.esb.nav:nav-opptjening-tjeneste-1.1.1-SNAPSHOT-wsexports.zip</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-opptjening-tjeneste</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

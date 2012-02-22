@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:54.613 UTC</timestamp>
+  <original>
+    <name>TRUNK-ekstern-tjenestespesifikasjon/no.nav.tjenester:ekstern-pensjon-tjenestepensjonSimulering-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>1060b43eb1e18c7a9eddf3a3f6795cca</md5sum>
+  <fileName>no.nav.tjenester:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-ekstern-tjenestespesifikasjon/no.nav.tjenester:ekstern-pensjon-tjenestepensjonSimulering-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

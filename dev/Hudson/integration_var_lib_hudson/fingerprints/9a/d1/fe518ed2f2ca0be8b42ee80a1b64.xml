@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:33:00.952 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:fullmakt</name>
+    <number>10</number>
+  </original>
+  <md5sum>9ad1fe518ed2f2ca0be8b42ee80a1b64</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10-12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:fullmakt</string>
+      <ranges>10-12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

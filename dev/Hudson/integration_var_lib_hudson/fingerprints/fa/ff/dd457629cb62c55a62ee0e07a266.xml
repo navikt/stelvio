@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:50:57.486 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-sak-bprof</name>
+    <number>1</number>
+  </original>
+  <md5sum>faffdd457629cb62c55a62ee0e07a266</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-sak-bprof-7.4.0-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-sak-bprof</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

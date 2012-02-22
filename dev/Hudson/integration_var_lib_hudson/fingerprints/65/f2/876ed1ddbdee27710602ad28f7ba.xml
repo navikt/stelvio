@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:11:20.819 UTC</timestamp>
+  <md5sum>65f2876ed1ddbdee27710602ad28f7ba</md5sum>
+  <fileName>no.nav.esb.pensjon:pensjon-microflow-behandleDodsmeldingerProxy-1.1.6-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-prosess-modules-ci/no.nav.esb:pensjon-prosess-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon-prosess-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

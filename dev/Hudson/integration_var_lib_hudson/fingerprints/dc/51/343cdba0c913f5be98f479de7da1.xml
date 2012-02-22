@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:34:29.117 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-tilbakekrevingHendelse-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>dc51343cdba0c913f5be98f479de7da1</md5sum>
+  <fileName>no.nav.tjenester:nav-tilbakekrevingHendelse-tjenestespesifikasjon-1.1.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon/no.nav.tjenester:nav-tilbakekrevingHendelse-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

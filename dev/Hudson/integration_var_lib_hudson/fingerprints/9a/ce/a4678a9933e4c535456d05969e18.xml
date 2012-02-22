@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:17:14.508 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-behandleMedlemskap</name>
+    <number>1</number>
+  </original>
+  <md5sum>9acea4678a9933e4c535456d05969e18</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-behandleMedlemskap-1.0.1-SNAPSHOT-wsimports.zip</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-behandleMedlemskap</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

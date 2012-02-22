@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 23:19:08.484 UTC</timestamp>
+  <md5sum>3f1e1a09534bb8fdb81eb7abf16ea311</md5sum>
+  <fileName>org.hamcrest:hamcrest-all-1.1.jar</fileName>
+  <usages>
+    <entry>
+      <string>Stelvio-app-sandbox</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-sandbox/no.stelvio:stelvio-provider-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>Stelvio-app-svn/no.stelvio:stelvio-provider-java</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

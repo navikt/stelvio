@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:31:23.885 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_maven/no.nav.maven.support:moduleconfig-xmlbeans</name>
+    <number>1</number>
+  </original>
+  <md5sum>50149a82a36d12877072a9af0f417b72</md5sum>
+  <fileName>no.nav.maven.support:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.support:moduleconfig-xmlbeans</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

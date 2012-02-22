@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:35:43.383 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-navansatt</name>
+    <number>1</number>
+  </original>
+  <md5sum>83a9a2c533118b05724f9957ad82b751</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-navansatt-7.4.0-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-navansatt</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 04:06:28.891 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.libs.asbo:nav-lib-sak-gsak</name>
+    <number>1</number>
+  </original>
+  <md5sum>db3214b67534f5349f8a1b2d683e1a4b</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.libs.asbo:nav-lib-sak-gsak</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-sak-gsak</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

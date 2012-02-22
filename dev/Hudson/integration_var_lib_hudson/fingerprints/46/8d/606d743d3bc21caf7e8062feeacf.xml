@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:18:25.792 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-familieforhold</name>
+    <number>1</number>
+  </original>
+  <md5sum>468d606d743d3bc21caf7e8062feeacf</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-familieforhold-1.1.4-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-familieforhold</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

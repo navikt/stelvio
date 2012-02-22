@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:11:49.720 UTC</timestamp>
+  <original>
+    <name>TRUNK-pensjon-tjenestespesifikasjon/no.nav.tjenester:pensjon-vedtak-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>32640f85fc46a476e2b8719b435769a1</md5sum>
+  <fileName>no.nav.tjenester:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-tjenestespesifikasjon/no.nav.tjenester:pensjon-vedtak-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

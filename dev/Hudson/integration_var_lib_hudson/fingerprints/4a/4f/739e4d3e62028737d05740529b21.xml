@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:43:16.97 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-familieforhold</name>
+    <number>11</number>
+  </original>
+  <md5sum>4a4f739e4d3e62028737d05740529b21</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-familieforhold-1.1.4-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-familieforhold</string>
+      <ranges>11</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>11</ranges>
+    </entry>
+  </usages>
+</fingerprint>

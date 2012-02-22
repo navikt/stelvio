@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:48:07.47 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-oko-mot</name>
+    <number>1</number>
+  </original>
+  <md5sum>feebed2f89442a7ab6c3c002eae1ba8b</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-oko-mot-7.4.0-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-oko-mot</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

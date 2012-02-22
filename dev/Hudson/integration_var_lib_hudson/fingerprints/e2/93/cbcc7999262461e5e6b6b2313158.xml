@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:43:54.268 UTC</timestamp>
+  <md5sum>e293cbcc7999262461e5e6b6b2313158</md5sum>
+  <fileName>no.nav.tjenester:nav-tjenestepensjon-tjenestespesifikasjon-1.0.1.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-tjenestepensjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:50:42.399 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-sak-bisys</name>
+    <number>1</number>
+  </original>
+  <md5sum>1e569ae5fbef73f133b7702d70c03897</md5sum>
+  <fileName>nav-prod-sak-bisys-7.4.0-SNAPSHOT.ear</fileName>
+  <usages/>
+</fingerprint>

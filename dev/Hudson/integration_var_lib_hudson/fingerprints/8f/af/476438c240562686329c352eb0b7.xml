@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:49:49.116 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-pen-popp</name>
+    <number>1</number>
+  </original>
+  <md5sum>8faf476438c240562686329c352eb0b7</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-pen-popp-7.4.0-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-pen-popp</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

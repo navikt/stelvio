@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:42:07.926 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandlePerson</name>
+    <number>11</number>
+  </original>
+  <md5sum>c7c2ddac0da106b552a32a278c3a86c6</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-behandlePerson-1.0.1-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>11</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandlePerson</string>
+      <ranges>11</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:34:12.717 UTC</timestamp>
+  <md5sum>3f0948a3b1316dfc94f9abce02da8901</md5sum>
+  <fileName>org.apache.neethi:neethi-2.0.4.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.stelvio.maven.support:datapower-management-client</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:32:22.513 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-project-interchange-plugin</name>
+    <number>1</number>
+  </original>
+  <md5sum>8d34be64874a0c39df05d5f98254d651</md5sum>
+  <fileName>no.nav.maven.plugins:maven-project-interchange-plugin-1.10-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-project-interchange-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

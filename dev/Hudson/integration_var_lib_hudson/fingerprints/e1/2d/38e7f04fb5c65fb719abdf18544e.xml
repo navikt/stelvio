@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:43:30.22 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-fullmakt</name>
+    <number>11</number>
+  </original>
+  <md5sum>e12d38e7f04fb5c65fb719abdf18544e</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-fullmakt-1.1.3-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>11</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-fullmakt</string>
+      <ranges>11</ranges>
+    </entry>
+  </usages>
+</fingerprint>

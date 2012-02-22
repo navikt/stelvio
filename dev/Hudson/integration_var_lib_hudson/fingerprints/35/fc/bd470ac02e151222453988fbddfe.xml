@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:11:21.9 UTC</timestamp>
+  <md5sum>35fcbd470ac02e151222453988fbddfe</md5sum>
+  <fileName>no.nav.esb.pensjon:pensjon-microflow-overforeOmsorgspoengProxy-1.1.2-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-prosess-modules-ci/no.nav.esb:pensjon-prosess-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon-prosess-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

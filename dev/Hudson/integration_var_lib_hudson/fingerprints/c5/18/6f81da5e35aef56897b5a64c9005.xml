@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:30:15.429 UTC</timestamp>
+  <md5sum>c5186f81da5e35aef56897b5a64c9005</md5sum>
+  <fileName>no.nav.esb.layers.libs.gbo:nav-lib-sah-7.1.3.jar</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-tjeneste-arkiv</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-arkiv</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-arkiv</string>
+      <ranges>10-12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10-12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

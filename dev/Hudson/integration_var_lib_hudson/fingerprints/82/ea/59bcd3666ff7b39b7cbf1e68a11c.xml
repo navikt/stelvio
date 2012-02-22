@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:31:53.47 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:behandleTrekk</name>
+    <number>10</number>
+  </original>
+  <md5sum>82ea59bcd3666ff7b39b7cbf1e68a11c</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:behandleTrekk</string>
+      <ranges>10-12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10-12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

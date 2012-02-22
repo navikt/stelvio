@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:31:50.535 UTC</timestamp>
+  <md5sum>abea0a21c966a61f5bd0592c094c82d6</md5sum>
+  <fileName>no.nav.tjenester:nav-behandleTrekk-tjenestespesifikasjon-1.0.0.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-behandleTrekk</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10-12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-behandleTrekk</string>
+      <ranges>10-12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:31:24.924 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:behandlePerson</name>
+    <number>10</number>
+  </original>
+  <md5sum>527e9390418f524469cfc38ab10c7ba7</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav</string>
+      <ranges>10-12</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:behandlePerson</string>
+      <ranges>10-12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

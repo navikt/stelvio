@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:32:21.33 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-mg-plugin</name>
+    <number>1</number>
+  </original>
+  <md5sum>49c93df75a380ef351447001377f03c9</md5sum>
+  <fileName>no.nav.maven.plugins:maven-mg-plugin-2.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-mg-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

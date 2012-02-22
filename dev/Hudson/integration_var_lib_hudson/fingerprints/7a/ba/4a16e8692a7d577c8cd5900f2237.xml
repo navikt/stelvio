@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:21:13.938 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-oppgave</name>
+    <number>1</number>
+  </original>
+  <md5sum>7aba4a16e8692a7d577c8cd5900f2237</md5sum>
+  <fileName>no.nav.esb.nav:nav-tjeneste-oppgave-2.0.1-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_nav</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_nav/no.nav.esb.nav:nav-tjeneste-oppgave</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

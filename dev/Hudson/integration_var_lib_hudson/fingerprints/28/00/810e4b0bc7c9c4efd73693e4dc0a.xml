@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:32:11.505 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_maven/no.stelvio.maven.support:custom-enforcer-rules</name>
+    <number>1</number>
+  </original>
+  <md5sum>2800810e4b0bc7c9c4efd73693e4dc0a</md5sum>
+  <fileName>no.stelvio.maven.support:custom-enforcer-rules-1.2-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.stelvio.maven.support:custom-enforcer-rules</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

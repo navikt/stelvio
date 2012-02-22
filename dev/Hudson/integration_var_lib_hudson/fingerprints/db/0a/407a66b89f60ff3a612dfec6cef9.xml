@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:24:31.904 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_esb-release/no.nav.esb:esb-release</name>
+    <number>1</number>
+  </original>
+  <md5sum>db0a407a66b89f60ff3a612dfec6cef9</md5sum>
+  <fileName>no.nav.esb:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

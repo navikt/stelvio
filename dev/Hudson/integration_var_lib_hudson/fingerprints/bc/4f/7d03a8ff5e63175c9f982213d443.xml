@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:42:44.303 UTC</timestamp>
+  <original>
+    <name>TRUNK-ekstern-tjenestespesifikasjon/no.nav.tjenester:ekstern-arbeidsgiver-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>bc4f7d03a8ff5e63175c9f982213d443</md5sum>
+  <fileName>no.nav.tjenester:ekstern-arbeidsgiver-tjenestespesifikasjon-1.0.0-alpha003-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-ekstern-tjenestespesifikasjon/no.nav.tjenester:ekstern-arbeidsgiver-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-ekstern-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

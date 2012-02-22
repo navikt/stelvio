@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:42:34.843 UTC</timestamp>
+  <original>
+    <name>EESSI_nav/no.nav.esb.nav:nav-lib-produsent-tilbakekreving</name>
+    <number>1</number>
+  </original>
+  <md5sum>5a3aaf19e63d379a1f7a3a2a0768f174</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>EESSI_nav/no.nav.esb.nav:nav-lib-produsent-tilbakekreving</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

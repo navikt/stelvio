@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:44:43.243 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-elsam-tpsamordningvarsling</name>
+    <number>1</number>
+  </original>
+  <md5sum>e0f8ec4da55d9bd21972e99eedefb3ec</md5sum>
+  <fileName>no.nav.esb.layers.modules.prod:nav-prod-elsam-tpsamordningvarsling-7.4.0-SNAPSHOT-jar.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.modules.prod:nav-prod-elsam-tpsamordningvarsling</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

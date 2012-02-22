@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 04:06:20.455 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-tjenestepensjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>845c9be04c96caf5eb14fc554f07f655</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-tjenestepensjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-nav_trunk_int_esb_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-arena-tjenestepensjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

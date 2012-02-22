@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:34:48.713 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_oppdragmediation/no.nav.esb.layers.sibus-mediations:oppdrag-mediation</name>
+    <number>1</number>
+  </original>
+  <md5sum>1235d3117bcc98c96b097425b22cb188</md5sum>
+  <fileName>no.nav.esb.layers.sibus-mediations:oppdrag-mediation-2.1-SNAPSHOT.pom</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_oppdragmediation</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_oppdragmediation/no.nav.esb.layers.sibus-mediations:oppdrag-mediation</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 11:11:46.978 UTC</timestamp>
+  <original>
+    <name>TRUNK-pensjon-tjenestespesifikasjon/no.nav.tjenester:pensjon-tilbakekrevingHendelse-tjenestespesifikasjon</name>
+    <number>1</number>
+  </original>
+  <md5sum>b1a7e181de564cc68283c83f9d6a120c</md5sum>
+  <fileName>no.nav.tjenester:pensjon-tilbakekrevingHendelse-tjenestespesifikasjon-1.1.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-pensjon-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-pensjon-tjenestespesifikasjon/no.nav.tjenester:pensjon-tilbakekrevingHendelse-tjenestespesifikasjon</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:26:37.845 UTC</timestamp>
+  <md5sum>3a783402b6088d5fade71d2f4a2ab9a5</md5sum>
+  <fileName>com.ibm.ws.runtime:WS_Server-7.0.0.2.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-person-provider</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-order-lib</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_stelvio-commons-lib-test</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-person-solution</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-person-service</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_oppdragmediation</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_oppdragmediation/no.nav.esb.layers.sibus-mediations:oppdrag-mediation-java</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-order-service</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-person-provider-lib</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_stelvio-commons-lib-test/no.stelvio.int:stelvio-commons-lib-test</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example/no.stelvio.example:stelvio-example-order-solution</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:29:40.237 UTC</timestamp>
+  <md5sum>046a2755102bee7623fee000f52a218d</md5sum>
+  <fileName>no.stelvio:stelvio-provider-java-2.0.2-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo</string>
+      <ranges>1-2</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_incubator_stelvio_example_echo/no.stelvio.example:stelvio-example-echo-provider</string>
+      <ranges>1-2</ranges>
+    </entry>
+  </usages>
+</fingerprint>

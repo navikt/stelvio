@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:32:45.938 UTC</timestamp>
+  <md5sum>8a507817b28077e0478add944c64586a</md5sum>
+  <fileName>commons-logging:commons-logging-1.0.4.jar</fileName>
+  <usages>
+    <entry>
+      <string>test_plugin_build/no.nav.maven.plugins:maven-wpsdeploy-plugin</string>
+      <ranges>28</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wasdeploy-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>test_plugin_build</string>
+      <ranges>28</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_maven/no.nav.maven.plugins:maven-wpsdeploy-plugin</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

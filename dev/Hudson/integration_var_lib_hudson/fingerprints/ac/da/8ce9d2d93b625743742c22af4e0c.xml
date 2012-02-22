@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 14:34:56.894 UTC</timestamp>
+  <original>
+    <name>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-medlemskap</name>
+    <number>10</number>
+  </original>
+  <md5sum>acda8ce9d2d93b625743742c22af4e0c</md5sum>
+  <fileName>no.nav.esb.nav:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-nav/no.nav.esb.nav:nav-tjeneste-medlemskap</string>
+      <ranges>10-12</ranges>
+    </entry>
+  </usages>
+</fingerprint>

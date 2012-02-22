@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:08:39.110 UTC</timestamp>
+  <original>
+    <name>stelvio_trunk_int_stelvio-commons-lib-test/no.stelvio.int:stelvio-commons-lib-test</name>
+    <number>1</number>
+  </original>
+  <md5sum>acee01f105ea63b3524eaec7e5069a89</md5sum>
+  <fileName>no.stelvio.int:stelvio-commons-lib-test-1.0-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>stelvio_trunk_int_stelvio-commons-lib-test/no.stelvio.int:stelvio-commons-lib-test</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>stelvio_trunk_int_stelvio-commons-lib-test</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

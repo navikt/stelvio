@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-22 09:29:16.370 UTC</timestamp>
+  <md5sum>54e1685e01a3f8ae815988bd5b1de391</md5sum>
+  <fileName>no.nav.esb.ekstern:ekstern-tjeneste-navytelsesinfo-1.0.1-SNAPSHOT.ear</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-ekstern-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-ekstern-modules-ci/no.nav.esb:ekstern-modules-ci</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

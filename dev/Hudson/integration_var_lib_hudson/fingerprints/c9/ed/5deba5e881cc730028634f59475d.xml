@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:14:50.527 UTC</timestamp>
+  <original>
+    <name>TRUNK-esb/no.nav.esb:pensjon-prosess-modules</name>
+    <number>1</number>
+  </original>
+  <md5sum>c9ed5deba5e881cc730028634f59475d</md5sum>
+  <fileName>no.nav.esb:pom.xml</fileName>
+  <usages>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:pensjon-prosess-modules</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK_esb-release/no.nav.esb:esb-release</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>TRUNK-esb/no.nav.esb:pensjon-prosess-modules</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>

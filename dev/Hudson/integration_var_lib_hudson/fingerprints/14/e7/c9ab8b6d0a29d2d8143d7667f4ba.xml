@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2012-02-21 15:19:01.447 UTC</timestamp>
+  <original>
+    <name>2012HL2_7.3_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys-medlemskapsunntak</name>
+    <number>1</number>
+  </original>
+  <md5sum>14e7c9ab8b6d0a29d2d8143d7667f4ba</md5sum>
+  <fileName>no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys-medlemskapsunntak-7.3.1-SNAPSHOT.jar</fileName>
+  <usages>
+    <entry>
+      <string>2012HL2_7.3_layers/no.nav.esb.layers.libs.asbo:nav-lib-cons-sak-gosys-medlemskapsunntak</string>
+      <ranges>1</ranges>
+    </entry>
+    <entry>
+      <string>2012HL2_7.3_layers</string>
+      <ranges>1</ranges>
+    </entry>
+  </usages>
+</fingerprint>
