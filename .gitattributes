@@ -1272,15 +1272,6 @@ dev/Hudson/integration_var_lib_hudson/jobs/Post[!!-~]installed[!!-~]fixpacks[!!-
 dev/Hudson/integration_var_lib_hudson/jobs/Post[!!-~]installed[!!-~]fixpacks[!!-~](WPS)[!!-~]on[!!-~]U2,[!!-~]U3[!!-~]and[!!-~]U4[!!-~]to[!!-~]Confluence/builds/2012-02-21_23-31-40/log -text
 dev/Hudson/integration_var_lib_hudson/jobs/Post[!!-~]installed[!!-~]fixpacks[!!-~](WPS)[!!-~]on[!!-~]U2,[!!-~]U3[!!-~]and[!!-~]U4[!!-~]to[!!-~]Confluence/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/Post[!!-~]installed[!!-~]fixpacks[!!-~](WPS)[!!-~]on[!!-~]U2,[!!-~]U3[!!-~]and[!!-~]U4[!!-~]to[!!-~]Confluence/nextBuildNumber -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-GOSYS_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-Henvendelse_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-Infotrygdsak_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-Inntekt_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-Oppdrag_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-PensjonKrav_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-Pentjenester_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-SimulerPensjon_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-Sandbox3-Tilbakekreving_CI/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-U2-Ekstern-NAVYtelsesinfo_CI/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-U2-Ekstern-NAVYtelsesinfo_CI/lastSuccessful -text
 dev/Hudson/integration_var_lib_hudson/jobs/SoapUI-U2-Ekstern-Pensjon-Beregning_CI/config.xml -text
