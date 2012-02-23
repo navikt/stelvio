@@ -40,6 +40,7 @@ dev/Hudson/integration_var_lib_hudson/*.json
 dev/Hudson/integration_var_lib_hudson/*.log
 dev/Hudson/integration_var_lib_hudson/*.old
 dev/Hudson/integration_var_lib_hudson/*.tmp
+dev/Hudson/integration_var_lib_hudson/fingerprints
 dev/Hudson/integration_var_lib_hudson/jobs/2012HL2[!!-~]7.3[!!-~]datapower_cfg_partner-gw/*.log
 dev/Hudson/integration_var_lib_hudson/jobs/2012HL2[!!-~]7.3[!!-~]datapower_cfg_partner-gw/*.txt
 dev/Hudson/integration_var_lib_hudson/jobs/2012HL2[!!-~]7.3[!!-~]datapower_cfg_partner-gw/builds

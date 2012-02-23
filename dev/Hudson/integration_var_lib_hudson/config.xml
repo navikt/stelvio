@@ -3,9 +3,15 @@
   <version>2.2.0</version>
   <numExecutors>3</numExecutors>
   <mode>NORMAL</mode>
-  <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
-  <securityRealm class="hudson.security.SecurityRealm$None"/>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"/>
+  <securityRealm class="hudson.plugins.active_directory.ActiveDirectorySecurityRealm">
+    <domain>adeo.no</domain>
+    <bindName>srvciIntegrasjon</bindName>
+    <bindPassword>Q6j28cmRnJt7aeCp5/xmUjUZdOlp/GRsytwuftGVbnw=</bindPassword>
+  </securityRealm>
   <systemMessage>&lt;h1&gt;&lt;font color=blue&gt;Denne serveren skal brukes nå (22.02.2012)&lt;/font&gt;&lt;/h1&gt;</systemMessage>
+  <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter"/>
   <configuredWorkspaceRoot></configuredWorkspaceRoot>
   <jdks>
     <jdk>
@@ -242,27 +248,6 @@
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
-      <name>CI Sandbox3</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[3]/jobNames/comparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-        <de.fspengler.hudson.pview.ConsoleViewColumn/>
-      </columns>
-      <includeRegex>^(SoapUI-Sandbox3-).*</includeRegex>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
       <name>Statusoversikt 7.2</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
@@ -288,7 +273,7 @@
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[5]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[4]/jobNames/comparator"/>
         <string>2012HL2_7.3_CheckScripts_Leveransedokumentasjon</string>
         <string>7.2-CheckScripts</string>
         <string>7.2-System.out.print</string>
@@ -336,7 +321,7 @@
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[7]/jobNames/comparator"/>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[6]/jobNames/comparator"/>
         <string>2012HL2_7.3_nav-model-doc</string>
         <string>2012HL2_7.3_nav-model-doc-chmod</string>
         <string>2012HL2_7.3_nav-model-doc-diagram</string>

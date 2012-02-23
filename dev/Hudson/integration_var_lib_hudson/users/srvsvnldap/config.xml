@@ -15,7 +15,7 @@
     </hudson.model.MyViewsProperty>
     <hudson.tasks.Mailer_-UserProperty/>
     <hudson.plugins.cigame.UserScoreProperty>
-      <score>1.0</score>
+      <score>4.0</score>
       <isNotParticipatingInGame>false</isNotParticipatingInGame>
     </hudson.plugins.cigame.UserScoreProperty>
   </properties>

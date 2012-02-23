@@ -32,10 +32,23 @@
       </boolean-property>
     </entry>
     <entry>
+      <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+      <base-property>
+        <originalValue class="hudson.plugins.descriptionsetter.JobByDescription"/>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
       <string>org-hudsonci-plugins-snapshotmonitor-SnapshotTrigger</string>
       <trigger-property>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
+    </entry>
+    <entry>
+      <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
+      <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
     </entry>
     <entry>
       <string>logRotator</string>
@@ -52,6 +65,9 @@
     <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
     </entry>
@@ -75,6 +91,12 @@
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>scmCheckoutRetryCount</string>
+      <integer-property>
+        <propertyOverridden>false</propertyOverridden>
+      </integer-property>
     </entry>
     <entry>
       <string>blockBuildWhenUpstreamBuilding</string>
@@ -175,6 +197,12 @@
       </external-property>
     </entry>
     <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
+    </entry>
+    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <originalValue class="hudson.plugins.emailext.ExtendedEmailPublisher">
@@ -210,6 +238,12 @@
       </external-property>
     </entry>
     <entry>
+      <string>quietPeriod</string>
+      <integer-property>
+        <propertyOverridden>false</propertyOverridden>
+      </integer-property>
+    </entry>
+    <entry>
       <string>hudson-plugins-chucknorris-CordellWalkerRecorder</string>
       <external-property>
         <originalValue class="hudson.plugins.chucknorris.CordellWalkerRecorder">
@@ -241,11 +275,12 @@
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
             <command>find -name ibm-deploy.scaj2ee -print -exec false {} +
+find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
+esb/esb-tools/esb-scripts/bin/System.out.print_Search.py
+esb/esb-tools/esb-scripts/bin/HUDSON-ImportComponentExportPublish.py --page 18190795
+esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py --path esb/ --page 17228180
 esb/esb-tools/esb-scripts/bin/HUDSON-findRolesOnModules.py sysdok Tilgangsstyring\ \(HL4\)
 esb/esb-tools/esb-scripts/bin/HUDSON-Import_context_check.py
-find . -name &quot;*WSIMP.import&quot; -exec esb/esb-tools/esb-scripts/bin/bindingCheckHudson.py {} +
-esb/esb-tools/esb-scripts/bin/HUDSON-EJBImports.py esb/ 17228180
-esb/esb-tools/esb-scripts/bin/System.out.print_Search.py
 esb/esb-tools/esb-scripts/bin/HUDSON-validFromCheck.py
 esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157</command>
           </hudson.tasks.Shell>
@@ -275,11 +310,17 @@ esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157</co
       </external-property>
     </entry>
     <entry>
-      <string>hudson-tasks-ArtifactArchiver</string>
-      <external-property>
+      <string>jdk</string>
+      <string-property>
+        <originalValue class="string">(Default)</originalValue>
         <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
+      </string-property>
+    </entry>
+    <entry>
+      <string>appointedNode</string>
+      <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
     </entry>
     <entry>
       <string>concurrentBuild</string>
@@ -289,11 +330,11 @@ esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157</co
       </boolean-property>
     </entry>
     <entry>
-      <string>jdk</string>
-      <string-property>
-        <originalValue class="string">(Default)</originalValue>
+      <string>hudson-tasks-ArtifactArchiver</string>
+      <external-property>
         <propertyOverridden>false</propertyOverridden>
-      </string-property>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyTrigger</string>
@@ -330,6 +371,7 @@ esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157</co
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
               <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb</remote>
+              <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
           </locations>
@@ -338,8 +380,7 @@ esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157</co
           <excludedUsers></excludedUsers>
           <excludedRevprop></excludedRevprop>
           <excludedCommitMessages></excludedCommitMessages>
-          <useUpdate>true</useUpdate>
-          <doRevert>false</doRevert>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
@@ -360,16 +401,28 @@ esb/esb-tools/esb-scripts/bin/HUDSON-doc-produsent-avhengighet.py . 17228157</co
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <creationTime>0</creationTime>
-  <properties>
-    <hudson.queueSorter.PrioritySorterJobProperty>
-      <priority>100</priority>
-    </hudson.queueSorter.PrioritySorterJobProperty>
-  </properties>
+  <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+    <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[40]/scm-property/originalValue"/>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb</remote>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>

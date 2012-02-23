@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <maven2-moduleset>
   <actions/>
-  <description>*Deaktivert pga dette deployet krasjer med ny hudson server*&#xd;
-&#xd;
-deploy av siste snapshots av bussmoduler til I&amp;R rammeverks U2-miljø</description>
+  <description></description>
   <project-properties class="java.util.concurrent.ConcurrentHashMap">
     <entry>
       <string>blockBuildWhenDownstreamBuilding</string>
@@ -11,12 +9,6 @@ deploy av siste snapshots av bussmoduler til I&amp;R rammeverks U2-miljø</descr
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
-    </entry>
-    <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
-        <propertyOverridden>false</propertyOverridden>
-      </base-property>
     </entry>
     <entry>
       <string>logRotator</string>
@@ -29,6 +21,12 @@ deploy av siste snapshots av bussmoduler til I&amp;R rammeverks U2-miljø</descr
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </log-rotator-property>
+    </entry>
+    <entry>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
     </entry>
     <entry>
       <string>blockBuildWhenUpstreamBuilding</string>
@@ -52,11 +50,10 @@ deploy av siste snapshots av bussmoduler til I&amp;R rammeverks U2-miljø</descr
       </copy-write-list-property>
     </entry>
     <entry>
-      <string>jdk</string>
-      <string-property>
-        <originalValue class="string">Sun JDK 6.0</originalValue>
+      <string>hudson-triggers-SCMTrigger</string>
+      <trigger-property>
         <propertyOverridden>false</propertyOverridden>
-      </string-property>
+      </trigger-property>
     </entry>
     <entry>
       <string>concurrentBuild</string>
@@ -64,6 +61,13 @@ deploy av siste snapshots av bussmoduler til I&amp;R rammeverks U2-miljø</descr
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>jdk</string>
+      <string-property>
+        <originalValue class="string">Sun JDK 6.0</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
     </entry>
     <entry>
       <string>scm</string>
@@ -86,6 +90,16 @@ deploy av siste snapshots av bussmoduler til I&amp;R rammeverks U2-miljø</descr
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
+    <entry>
+      <string>hudson-triggers-TimerTrigger</string>
+      <trigger-property>
+        <originalValue class="hudson.triggers.TimerTrigger">
+          <spec># at 03:20 in the morning
+20 3 * * *</spec>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </trigger-property>
+    </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <creationTime>0</creationTime>
@@ -98,17 +112,11 @@ deploy av siste snapshots av bussmoduler til I&amp;R rammeverks U2-miljø</descr
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[9]/scm-property/originalValue"/>
+  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[10]/scm-property/originalValue"/>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector">
-    <hudson.triggers.TimerTrigger>
-      <spec># at 03:20 in the morning
-20 3 * * *</spec>
-    </hudson.triggers.TimerTrigger>
-  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <rootModule>
