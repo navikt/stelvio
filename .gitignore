@@ -1548,6 +1548,17 @@ dev/Hudson/integration_var_lib_hudson/jobs/TRUNK_service-gw-maven-service-regist
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK_service-gw-maven-service-registry-plugin/ncover
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK_service-gw-maven-service-registry-plugin/next*
 dev/Hudson/integration_var_lib_hudson/jobs/TRUNK_service-gw-maven-service-registry-plugin/workspace*
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/*.log
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/*.txt
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/builds
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/cobertura
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/doclinks
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/htmlreports
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/javadoc
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/last*
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/ncover
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/next*
+dev/Hudson/integration_var_lib_hudson/jobs/deploy_datapower/workspace*
 dev/Hudson/integration_var_lib_hudson/jobs/oppkoblingstest/*.log
 dev/Hudson/integration_var_lib_hudson/jobs/oppkoblingstest/*.txt
 dev/Hudson/integration_var_lib_hudson/jobs/oppkoblingstest/builds
