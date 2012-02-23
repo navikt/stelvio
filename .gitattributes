@@ -1510,12 +1510,6 @@ dev/Hudson/integration_var_lib_hudson/jobs/stelvio_trunk_int_systemavailability/
 dev/Hudson/integration_var_lib_hudson/jobs/stelvio_trunk_int_systemavailability/lastSuccessful -text
 dev/Hudson/integration_var_lib_hudson/jobs/stelvio_trunk_int_wpshelpers/config.xml -text
 dev/Hudson/integration_var_lib_hudson/jobs/stelvio_trunk_int_wpshelpers/lastSuccessful -text
-dev/Hudson/integration_var_lib_hudson/jobs/¤SoapUI-U2-layers-Arbeidsforhold_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/¤SoapUI-U2-layers-Arbeidsforhold_CI/nextBuildNumber -text
-dev/Hudson/integration_var_lib_hudson/jobs/¤SoapUI-U2-layers-DokBrev_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/¤SoapUI-U2-layers-DokBrev_CI/nextBuildNumber -text
-dev/Hudson/integration_var_lib_hudson/jobs/¤SoapUI-U2-layers-TPTILB-FolketrygdberegnetAFP_CI/config.xml -text
-dev/Hudson/integration_var_lib_hudson/jobs/¤SoapUI-U2-layers-TPTILB-FolketrygdberegnetAFP_CI/nextBuildNumber -text
 dev/Hudson/integration_var_lib_hudson/maven-builder-descriptor.xml -text
 dev/Hudson/integration_var_lib_hudson/maven-installation-descriptor.xml -text
 dev/Hudson/integration_var_lib_hudson/maven3-snapshots.xml -text

@@ -136,9 +136,6 @@
         <string>SoapUI-U2-Pensjon-Beregning_CI</string>
         <string>SoapUI-U2-Pensjon-Grunnlag_CI</string>
         <string>SoapUI-U2-Pensjon-Iverksetting_CI</string>
-        <string>¤SoapUI-U2-layers-Arbeidsforhold_CI</string>
-        <string>¤SoapUI-U2-layers-DokBrev_CI</string>
-        <string>¤SoapUI-U2-layers-TPTILB-FolketrygdberegnetAFP_CI</string>
       </jobNames>
       <jobFilters/>
       <columns>
