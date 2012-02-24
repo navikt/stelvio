@@ -13,8 +13,42 @@
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
       <base-property>
+        <originalValue class="hudson.plugins.descriptionsetter.JobByDescription"/>
         <propertyOverridden>false</propertyOverridden>
       </base-property>
+    </entry>
+    <entry>
+      <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
+      <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
+          <priority>100</priority>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
+      <string>logRotator</string>
+      <log-rotator-property>
+        <originalValue class="hudson.tasks.LogRotator">
+          <daysToKeep>-1</daysToKeep>
+          <numToKeep>5</numToKeep>
+          <artifactDaysToKeep>-1</artifactDaysToKeep>
+          <artifactNumToKeep>-1</artifactNumToKeep>
+        </originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </log-rotator-property>
+    </entry>
+    <entry>
+      <string>scmCheckoutRetryCount</string>
+      <integer-property>
+        <propertyOverridden>false</propertyOverridden>
+      </integer-property>
     </entry>
     <entry>
       <string>blockBuildWhenUpstreamBuilding</string>
@@ -49,12 +83,12 @@
                 </choices>
               </hudson.model.ChoiceParameterDefinition>
               <hudson.model.StringParameterDefinition>
-                <name>ServicegwVersion</name>
+                <name>BusConfigVersion</name>
                 <description></description>
                 <defaultValue></defaultValue>
               </hudson.model.StringParameterDefinition>
               <hudson.model.StringParameterDefinition>
-                <name>BusConfigVersion</name>
+                <name>ServicegwVersion</name>
                 <description></description>
                 <defaultValue></defaultValue>
               </hudson.model.StringParameterDefinition>
@@ -78,11 +112,43 @@
       </copy-write-list-property>
     </entry>
     <entry>
+      <string>quietPeriod</string>
+      <integer-property>
+        <propertyOverridden>false</propertyOverridden>
+      </integer-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-BuildTrigger</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
+      <string>hudson-triggers-SCMTrigger</string>
+      <trigger-property>
+        <propertyOverridden>false</propertyOverridden>
+      </trigger-property>
+    </entry>
+    <entry>
+      <string>jdk</string>
+      <string-property>
+        <originalValue class="string">(Default)</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
+    </entry>
+    <entry>
       <string>concurrentBuild</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>appointedNode</string>
+      <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
     </entry>
     <entry>
       <string>scm</string>
@@ -91,6 +157,7 @@
           <locations>
             <hudson.scm.SubversionSCM_-ModuleLocation>
               <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/datapower/cfg/service-gw/service-gw-deploy</remote>
+              <depthOption>infinity</depthOption>
               <ignoreExternalsOption>false</ignoreExternalsOption>
             </hudson.scm.SubversionSCM_-ModuleLocation>
           </locations>
@@ -99,43 +166,53 @@
           <excludedUsers></excludedUsers>
           <excludedRevprop></excludedRevprop>
           <excludedCommitMessages></excludedCommitMessages>
-          <useUpdate>true</useUpdate>
-          <doRevert>false</doRevert>
+          <workspaceUpdater class="hudson.scm.subversion.UpdateUpdater"/>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
     </entry>
+    <entry>
+      <string>hudson-triggers-TimerTrigger</string>
+      <trigger-property>
+        <propertyOverridden>false</propertyOverridden>
+      </trigger-property>
+    </entry>
   </project-properties>
   <keepDependencies>false</keepDependencies>
   <creationTime>0</creationTime>
-  <properties>
-    <hudson.model.ParametersDefinitionProperty>
-      <parameterDefinitions>
-        <hudson.model.ChoiceParameterDefinition reference="../../../../project-properties/entry[5]/copy-write-list-property/originalValue/hudson.model.ParametersDefinitionProperty/parameterDefinitions/hudson.model.ChoiceParameterDefinition"/>
-        <hudson.model.StringParameterDefinition reference="../../../../project-properties/entry[5]/copy-write-list-property/originalValue/hudson.model.ParametersDefinitionProperty/parameterDefinitions/hudson.model.StringParameterDefinition"/>
-        <hudson.model.StringParameterDefinition reference="../../../../project-properties/entry[5]/copy-write-list-property/originalValue/hudson.model.ParametersDefinitionProperty/parameterDefinitions/hudson.model.StringParameterDefinition[2]"/>
-        <hudson.model.ChoiceParameterDefinition reference="../../../../project-properties/entry[5]/copy-write-list-property/originalValue/hudson.model.ParametersDefinitionProperty/parameterDefinitions/hudson.model.ChoiceParameterDefinition[2]"/>
-      </parameterDefinitions>
-    </hudson.model.ParametersDefinitionProperty>
-    <hudson.plugins.descriptionsetter.JobByDescription/>
-  </properties>
+  <properties/>
   <cascadingChildrenNames class="java.util.concurrent.CopyOnWriteArraySet"/>
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-plugins-descriptionsetter-JobByDescription</string>
+    <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+    <string>org-hudsonci-plugins-snapshotmonitor-WatchedDependenciesProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[7]/scm-property/originalValue"/>
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://versjonskontroll.adeo.no/svn/nav/trunk/int/esb/datapower/cfg/service-gw/service-gw-deploy</remote>
+        <ignoreExternalsOption>false</ignoreExternalsOption>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <useUpdate>true</useUpdate>
+    <doRevert>false</doRevert>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
   <cleanWorkspaceRequired>false</cleanWorkspaceRequired>
   <rootModule>
     <groupId>no.nav.datapower</groupId>
     <artifactId>deploy-util</artifactId>
   </rootModule>
-  <goals>clean install -Dgateway-name=service-gw -Denvclass=${EnvironmentClass} -Dservice-gw-version=${ServicegwVersion} -Dbus-configuration-version=${BusConfigVersion} -Ddatapower.baseurl=${DataPowerInstance}</goals>
+  <goals>clean install -Dgateway-name=service-gw -Denvclass=${EnvironmentClass} -Dbus-configuration-version=${BusConfigVersion} -Dservice-gw-version=${ServicegwVersion} -Ddatapower.baseurl=${DataPowerInstance}</goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>
   <usePrivateRepository>false</usePrivateRepository>
