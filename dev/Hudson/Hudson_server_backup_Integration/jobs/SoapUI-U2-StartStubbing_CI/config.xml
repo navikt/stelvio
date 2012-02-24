@@ -18,13 +18,6 @@
       </external-property>
     </entry>
     <entry>
-      <string>blockBuildWhenDownstreamBuilding</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-tasks-TasksPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -32,16 +25,17 @@
       </external-property>
     </entry>
     <entry>
+      <string>blockBuildWhenDownstreamBuilding</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
+    </entry>
+    <entry>
       <string>org-hudsonci-plugins-snapshotmonitor-SnapshotTrigger</string>
       <trigger-property>
         <propertyOverridden>false</propertyOverridden>
       </trigger-property>
-    </entry>
-    <entry>
-      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
-      <base-property>
-        <propertyOverridden>false</propertyOverridden>
-      </base-property>
     </entry>
     <entry>
       <string>logRotator</string>
@@ -56,14 +50,20 @@
       </log-rotator-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-queueSorter-PrioritySorterJobProperty</string>
+      <base-property>
+        <propertyOverridden>false</propertyOverridden>
+      </base-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -90,14 +90,14 @@
       </boolean-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -123,18 +123,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>cleanWorkspaceRequired</string>
-      <boolean-property>
-        <originalValue class="boolean">false</originalValue>
-        <propertyOverridden>false</propertyOverridden>
-      </boolean-property>
-    </entry>
-    <entry>
       <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>cleanWorkspaceRequired</string>
+      <boolean-property>
+        <originalValue class="boolean">false</originalValue>
+        <propertyOverridden>false</propertyOverridden>
+      </boolean-property>
     </entry>
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
@@ -158,18 +158,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>parametersDefinitionProperties</string>
-      <copy-write-list-property>
-        <originalValue class="hudson.util.CopyOnWriteList"/>
-        <propertyOverridden>false</propertyOverridden>
-      </copy-write-list-property>
-    </entry>
-    <entry>
       <string>hudson-tasks-JavadocArchiver</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>parametersDefinitionProperties</string>
+      <copy-write-list-property>
+        <originalValue class="hudson.util.CopyOnWriteList"/>
+        <propertyOverridden>false</propertyOverridden>
+      </copy-write-list-property>
     </entry>
     <entry>
       <string>join-JoinTrigger</string>
@@ -191,17 +191,17 @@
       </external-property>
     </entry>
     <entry>
-      <string>customWorkspace</string>
-      <string-property>
-        <propertyOverridden>false</propertyOverridden>
-      </string-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -220,7 +220,7 @@
       <string>hudson-tasks-BuildTrigger</string>
       <external-property>
         <originalValue class="hudson.tasks.BuildTrigger">
-          <childProjects>SoapUI-U2-NAV-Opptjening_CI, SoapUI-U2-NAV-Oppgavebehandling_CI, SoapUI-U2-NAV-Henvendelsebehandling_CI, SoapUI-U2-NAV-Henvendelse_CI, SoapUI-U2-NAV-Oppgave_CI, SoapUI-U2-NAV-Ruting_CI, SoapUI-U2-NAV-Tilbakekreving_CI, SoapUI-U2-layers-Vedtak_CI, ¤SoapUI-U2-layers-Arbeidsforhold_CI, ¤SoapUI-U2-layers-DokBrev_CI, ¤SoapUI-U2-layers-TPTILB-FolketrygdberegnetAFP_CI, SoapUI-U2-layers-Samordning_CI, SoapUI-U2-layers-NAVOrgEnhet_CI, SoapUI-U2-layers-Arena-2.0.0_CI, SoapUI-U2-layers-Bidragsak_CI, SoapUI-U2-layers-Brevbestilling_CI, SoapUI-U2-layers-Trekk_CI, SoapUI-U2-NAV-Medlemskap_CI, SoapUI-U2-NAV-BehandleMedlemskap_CI, SoapUI-U2-NAV-Journal_CI, SoapUI-U2-NAV-BehandlePerson_CI, SoapUI-U2-NAV-Person_CI, SoapUI-U2-NAV-Journalbehandling_CI, SoapUI-U2-NAV-Statistikk_CI, SoapUI-U2-NAV-Familieforhold_CI, SoapUI-U2-NAV-Enhet_CI, SoapUI-U2-NAV-Personsok_CI, SoapUI-U2-NAV-PensjonSak_CI, SoapUI-U2-NAV-PensjonBeregning_CI, SoapUI-U2-Ekstern-Pensjon-TPTILB_CI, SoapUI-U2-NAV-Arkiv_CI, SoapUI-U2-NAV-ArbeidOgAktivitet_CI, SoapUI-U2-NAV-Fullmakt_CI, SoapUI-U2-NAV-Samhandler_CI, SoapUI-U2-layers-Institusjonsopphold_CI, SoapUI-U2-NAV-Institusjonsopphold_CI, SoapUI-U2-layers-Medlemskapsunntak_CI, SoapUI-U2-layers-NAVAnsatt_CI, SoapUI-U2-layers-Brukerprofil_CI, SoapUI-U2-layers-Samhandler_CI, SoapUI-U2-layers-Oppgave_CI, SoapUI-U2-Ekstern-Pensjon-Person_CI, SoapUI-U2-layers-Dineutbetalinger_CI, SoapUI-U2-layers-Eresept_CI, SoapUI-U2-layers-fkafp-privat_CI, SoapUI-U2-layers-Fullmakt_CI, SoapUI-U2-NAV-Sak_CI, SoapUI-U2-NAV-Tjenestepensjon_CI, SoapUI-U2-NAV-ArbeidOgAktivitetYtelse_CI, SoapUI-U2-Ekstern-NAVYtelsesinfo_CI, SoapUI-U2-layers-Person_CI, SoapUI-U2-layers-Tjenestepensjon_CI, SoapUI-U2-NAV-BehandleTrekk_CI, SoapUI-U2-NAV-Trekk_CI, SoapUI-U2-Pensjon-Iverksetting_CI, SoapUI-U2-layers-Journal_CI, SoapUI-U2-Pensjon-Beregning_CI, SoapUI-U2-Pensjon-Grunnlag_CI, SoapUI-U2-Pensjon-Krav_CI, SoapUI-U2-Ekstern-Pensjon-Beregning_CI, SoapUI-U2-Pensjon-Sak_CI, SoapUI-U2-Pensjon-Vedtak_CI, SoapUI-U2-Pensjon-Samordning_CI, SoapUI-U2-Pensjon-TilbakekrevingHendelse_CI, SoapUI-U2-layers-Rettskilder_CI, SoapUI-U2-Ekstern-Pensjon-TjenestepensjonSimulering_CI</childProjects>
+          <childProjects>SoapUI-U2-NAV-Opptjening_CI, SoapUI-U2-NAV-Oppgavebehandling_CI, SoapUI-U2-NAV-Henvendelsebehandling_CI, SoapUI-U2-NAV-Henvendelse_CI, SoapUI-U2-NAV-Oppgave_CI, SoapUI-U2-NAV-Ruting_CI, SoapUI-U2-NAV-Tilbakekreving_CI, SoapUI-U2-layers-Vedtak_CI, SoapUI-U2-layers-Samordning_CI, SoapUI-U2-layers-NAVOrgEnhet_CI, SoapUI-U2-layers-Arena-2.0.0_CI, SoapUI-U2-layers-Bidragsak_CI, SoapUI-U2-layers-Brevbestilling_CI, SoapUI-U2-layers-Trekk_CI, SoapUI-U2-NAV-Medlemskap_CI, SoapUI-U2-NAV-BehandleMedlemskap_CI, SoapUI-U2-NAV-Journal_CI, SoapUI-U2-NAV-BehandlePerson_CI, SoapUI-U2-NAV-Person_CI, SoapUI-U2-NAV-Journalbehandling_CI, SoapUI-U2-NAV-Statistikk_CI, SoapUI-U2-NAV-Familieforhold_CI, SoapUI-U2-NAV-Enhet_CI, SoapUI-U2-NAV-Personsok_CI, SoapUI-U2-NAV-PensjonSak_CI, SoapUI-U2-NAV-PensjonBeregning_CI, SoapUI-U2-Ekstern-Pensjon-TPTILB_CI, SoapUI-U2-NAV-Arkiv_CI, SoapUI-U2-NAV-ArbeidOgAktivitet_CI, SoapUI-U2-NAV-Fullmakt_CI, SoapUI-U2-NAV-Samhandler_CI, SoapUI-U2-layers-Institusjonsopphold_CI, SoapUI-U2-NAV-Institusjonsopphold_CI, SoapUI-U2-layers-Medlemskapsunntak_CI, SoapUI-U2-layers-NAVAnsatt_CI, SoapUI-U2-layers-Brukerprofil_CI, SoapUI-U2-layers-Samhandler_CI, SoapUI-U2-layers-Oppgave_CI, SoapUI-U2-Ekstern-Pensjon-Person_CI, SoapUI-U2-layers-Dineutbetalinger_CI, SoapUI-U2-layers-Eresept_CI, SoapUI-U2-layers-fkafp-privat_CI, SoapUI-U2-layers-Fullmakt_CI, SoapUI-U2-NAV-Sak_CI, SoapUI-U2-NAV-Tjenestepensjon_CI, SoapUI-U2-NAV-ArbeidOgAktivitetYtelse_CI, SoapUI-U2-Ekstern-NAVYtelsesinfo_CI, SoapUI-U2-layers-Person_CI, SoapUI-U2-layers-Tjenestepensjon_CI, SoapUI-U2-NAV-BehandleTrekk_CI, SoapUI-U2-NAV-Trekk_CI, SoapUI-U2-Pensjon-Iverksetting_CI, SoapUI-U2-layers-Journal_CI, SoapUI-U2-Pensjon-Beregning_CI, SoapUI-U2-Pensjon-Grunnlag_CI, SoapUI-U2-Pensjon-Krav_CI, SoapUI-U2-Ekstern-Pensjon-Beregning_CI, SoapUI-U2-Pensjon-Sak_CI, SoapUI-U2-Pensjon-Vedtak_CI, SoapUI-U2-Pensjon-Samordning_CI, SoapUI-U2-Pensjon-TilbakekrevingHendelse_CI, SoapUI-U2-layers-Rettskilder_CI, SoapUI-U2-Ekstern-Pensjon-TjenestepensjonSimulering_CI, SoapUI-U2-NAV-BehandleArbeidsgiver_CI</childProjects>
           <threshold>
             <name>SUCCESS</name>
             <ordinal>0</ordinal>
@@ -251,14 +251,14 @@
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -305,6 +305,13 @@
       </trigger-property>
     </entry>
     <entry>
+      <string>hudson-plugins-cigame-GamePublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -312,7 +319,7 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
+      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -343,13 +350,6 @@
       </scm-property>
     </entry>
     <entry>
-      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>hudson-triggers-TimerTrigger</string>
       <trigger-property>
         <originalValue class="hudson.triggers.TimerTrigger">
@@ -378,7 +378,7 @@
   <cascading-job-properties class="java.util.concurrent.CopyOnWriteArraySet">
     <string>hudson-queueSorter-PrioritySorterJobProperty</string>
   </cascading-job-properties>
-  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[43]/scm-property/originalValue"/>
+  <scm class="hudson.scm.SubversionSCM" reference="../project-properties/entry[44]/scm-property/originalValue"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>

@@ -243,9 +243,7 @@ svn add --parents config.xml plugins.list jobs/*/config.xml
 
 svn st |grep &apos;^!&apos; |awk &apos;{print $2}&apos; | xargs -r svn rm
 
-svn st |grep -v &apos;^?&apos;
-svn ci --non-interactive -m &quot;$SVN_COMMENT&quot;
-svn st |grep -v &apos;^?&apos;</command>
+svn st |grep -v &apos;^?&apos; &amp;&amp; svn ci --non-interactive -m &quot;$SVN_COMMENT&quot;</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>
