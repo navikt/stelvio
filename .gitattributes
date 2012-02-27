@@ -1221,7 +1221,6 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower/config.xml -te
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery_nightly_q/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-discovery_nightly_t/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_datapower_service-gw_NEW/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/deploy_wps_withRevision/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/oppkoblingstest/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/stelvio_trunk_incubator_stelvio_example/config.xml -text
