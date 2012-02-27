@@ -257,7 +257,7 @@ SVN_COMMENT=&quot;$JOB_NAME: $HUDSON_HOME&quot;
 
 cd $HUDSON_HOME
 
-svn add --parents config.xml plugins.list jobs/*/config.xml 
+svn add -q --parents config.xml plugins.list jobs/*/config.xml 
 
 svn st |grep &apos;^!&apos; |awk &apos;{print $2}&apos; | xargs -r svn rm
 
