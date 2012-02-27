@@ -261,7 +261,11 @@ svn add --parents config.xml plugins.list jobs/*/config.xml
 
 svn st |grep &apos;^!&apos; |awk &apos;{print $2}&apos; | xargs -r svn rm
 
-svn st |grep -v &apos;^?&apos; &amp;&amp; svn ci --non-interactive -m &quot;$SVN_COMMENT&quot; || echo &quot;No changes, no commit will be performed!&quot;</command>
+if svn st |grep -v &apos;^?&apos; ;then
+   svn ci --non-interactive -m &quot;$SVN_COMMENT&quot;
+else
+   echo &quot;No changes, no commit will be performed!&quot;
+fi</command>
           </hudson.tasks.Shell>
         </originalValue>
         <propertyOverridden>false</propertyOverridden>

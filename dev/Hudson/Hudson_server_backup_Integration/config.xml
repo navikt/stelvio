@@ -352,6 +352,7 @@
       <filterQueue>false</filterQueue>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>deploy_datapower_service-gw_NEW</string>
       </jobNames>
       <jobFilters/>
       <columns>
