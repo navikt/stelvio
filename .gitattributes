@@ -1161,6 +1161,7 @@ dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Iverksetting_
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Krav_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Sak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Samordning_CI/config.xml -text
+dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Simulering_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-TilbakekrevingHendelse_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-Pensjon-Vedtak_CI/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/SoapUI-U2-StartStubbing_CI/config.xml -text
