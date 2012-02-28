@@ -5269,6 +5269,7 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/Web
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/LTPA.jsp -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/META-INF/MANIFEST.MF -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/SAML.jsp -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/SAMLTest.jsp -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/Simple.jsp -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/ibm-web-bnd.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/WebContent/WEB-INF/ibm-web-ext.xml -text
@@ -5279,6 +5280,8 @@ incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientAddressing.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientLTPA.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientSAML.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/EchoClientSAMLTest.java -text
+incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/client/SAMLCustomTokenGenerator.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumer/src/main/java/form/Query.java -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/clientPolicyAttachments.xml -text
 incubator/stelvio-example/stelvio-example-echo/stelvio-example-echo-consumerEAR/META-INF/ibm-application-bnd.xml -text

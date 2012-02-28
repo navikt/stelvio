@@ -15,6 +15,8 @@ import no.stelvio.example.services.echo.v1.binding.EchoServiceUnavailable;
 @WebServiceClient(name = "EchoLTPAService", targetNamespace = "http://stelvio.no/example/services/echo/v1/Binding/")
 public class EchoClientLTPA extends Service {
 
+		private static String PROVIDER_ENDPOINT_URI = "http://localhost:9080/stelvio-example-echo-provider/EchoLTPAService";
+		
 	    public EchoClientLTPA() throws MalformedURLException {
 	    	super(Echo.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://stelvio.no/example/services/echo/v1/Binding/", "EchoLTPAService"));
 	    }
@@ -29,7 +31,7 @@ public class EchoClientLTPA extends Service {
 		try {
 			EchoClientLTPA service = new EchoClientLTPA();
 			Echo port = service.getEchoServiceWSEXPEchoServiceHttpPort();
-			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9080/stelvio-example-echo-provider/EchoLTPAService");
+			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, PROVIDER_ENDPOINT_URI);
 			String output = port.echo(input);
 			return output;
 		} catch (MalformedURLException e) {

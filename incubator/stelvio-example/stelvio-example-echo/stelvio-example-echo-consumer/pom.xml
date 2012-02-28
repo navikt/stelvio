@@ -100,6 +100,20 @@
 			<version>5</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- Needed for programmatic creation of SAML token -->
+		<dependency>
+			<groupId>com.ibm.ws.runtime</groupId>
+			<artifactId>WS_Server</artifactId>
+			<version>7.0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- Needed for programmatic creation of SAML token -->
+		<dependency>
+			<groupId>com.ibm.jaxws.thinclient</groupId>
+			<artifactId>WebServicesFeaturePackThinClientRuntime</artifactId>
+			<version>7.0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 	<properties>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>

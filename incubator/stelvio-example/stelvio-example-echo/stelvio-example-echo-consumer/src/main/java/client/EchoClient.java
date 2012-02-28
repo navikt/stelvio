@@ -15,7 +15,9 @@ import no.stelvio.example.services.echo.v1.binding.EchoServiceUnavailable;
 @WebServiceClient(name = "EchoService", targetNamespace = "http://stelvio.no/example/services/echo/v1/Binding/")
 public class EchoClient extends Service {
 
-	    public EchoClient() throws MalformedURLException {
+		private static String PROVIDER_ENDPOINT_URI = "http://localhost:9080/stelvio-example-echo-provider/EchoService";
+	    
+		public EchoClient() throws MalformedURLException {
 	    	super(Echo.class.getResource("no/stelvio/example/services/V1/stelvio-example-echo-service_EchoServiceWSEXP.wsdl"), new QName("http://stelvio.no/example/services/echo/v1/Binding/", "EchoService"));
 	    }
 	    
@@ -29,7 +31,7 @@ public class EchoClient extends Service {
 		try {
 			EchoClient service = new EchoClient();
 			Echo port = service.getEchoServiceWSEXPEchoServiceHttpPort();
-			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:9080/stelvio-example-echo-provider/Echo");
+			((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, PROVIDER_ENDPOINT_URI);
 			String output = port.echo(input);
 			return output;
 		} catch (MalformedURLException e) {
