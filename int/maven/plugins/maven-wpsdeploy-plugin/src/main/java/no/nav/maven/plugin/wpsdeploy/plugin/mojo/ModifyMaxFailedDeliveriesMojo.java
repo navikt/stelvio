@@ -20,7 +20,7 @@ public class ModifyMaxFailedDeliveriesMojo extends WebsphereUpdaterMojo {
 
 	private final void modifyMaxFailedDeliveries(final Commandline commandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxFailedDeliveries.py");
+		arg.setLine("ModifyMaxFailedDeliveries.py");
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}

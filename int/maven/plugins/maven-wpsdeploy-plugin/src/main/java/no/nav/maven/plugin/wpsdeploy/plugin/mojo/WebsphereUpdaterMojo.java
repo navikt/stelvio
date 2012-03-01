@@ -7,7 +7,6 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.Commandline;
 
 /**
@@ -95,7 +94,11 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 */
 	protected String linuxPassword;
 	
-	protected String scriptsHome;
+	/**
+	 * @parameter expression="${logging.level}" default-value="false"
+	 */
+	private String logLevel;
+	
 	protected String deployableArtifactsHome;
 	protected String environmentFile;
 	protected String moduleConfigHome;
@@ -104,18 +107,14 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
-		scriptsHome = baseDirectory + busConfigurationExtractDirectory;
+		String scriptsHome = baseDirectory + "/scipts";
 		deployableArtifactsHome = baseDirectory + "/target/EARFilesToDeploy";
-		moduleConfigHome = scriptsHome + "/moduleconfig";
-		environmentFile = scriptsHome + "/environments/" + environment + ".properties";
+		moduleConfigHome = baseDirectory + busConfigurationExtractDirectory + "/moduleconfig";
+		environmentFile = baseDirectory + busConfigurationExtractDirectory + "/environments/" + environment + ".properties";
 
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline commandLine = new Commandline();
-		if (Os.isFamily("windows") == true) {
-			commandLine.setExecutable(widRuntime + "/bin/wsadmin.bat");
-		} else {
-			commandLine.setExecutable(widRuntime + "/bin/wsadmin.sh");
-		}
+		commandLine.setExecutable(widRuntime + "/bin/wsadmin.sh");
 
 		Commandline.Argument arg1 = new Commandline.Argument();
 		arg1.setLine("-host " + dmgrHostname);
@@ -132,6 +131,17 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		Commandline.Argument arg4 = new Commandline.Argument();
 		arg4.setLine("-password " + dmgrPassword);
 		commandLine.addArg(arg4);
+		
+		Commandline.Argument arg5 = new Commandline.Argument();
+		arg5.setLine("-f " + scriptsHome + "/Executor.py");
+		commandLine.addArg(arg5);
+		
+		
+		if (logLevel != null){
+			Commandline.Argument arg6 = new Commandline.Argument();
+			arg6.setLine("-Dlogging.level " + logLevel);
+			commandLine.addArg(arg6);
+		}
 
 		applyToWebSphere(commandLine);
 	}

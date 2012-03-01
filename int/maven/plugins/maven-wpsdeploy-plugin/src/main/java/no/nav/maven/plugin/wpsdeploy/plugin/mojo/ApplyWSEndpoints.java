@@ -3,7 +3,6 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.parsers.FactoryConfigurationError;
@@ -101,7 +100,7 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 			}
 			
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + scriptsHome + "/scripts/ModifySCAImportsBinding.py" + " " + scriptsHome + " " + "\"" + wsEndpoints + "\"");
+			arg.setLine("ModifySCAImportsBinding.py" + " " + deployableArtifactsHome + " " + "\"" + wsEndpoints + "\"");
 			commandLine.addArg(arg);
 			executeCommand(commandLine);
 

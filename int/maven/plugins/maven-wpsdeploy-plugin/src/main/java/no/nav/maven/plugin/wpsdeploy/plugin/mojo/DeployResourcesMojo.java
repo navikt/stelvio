@@ -53,7 +53,8 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 
 	private final void deployResources(final Commandline commandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/CreateApplicationArtifacts.py " + deployableArtifactsHome + " " + environment + " " + scriptsHome);
+		String app_props = busConfigurationExtractDirectory + "/app_props/" + environment + "/";
+		arg.setLine("CreateApplicationArtifacts.py " + deployableArtifactsHome + " " + environment + " " + app_props);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}
@@ -63,7 +64,7 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 	 */
 	private final void addOrUpdateWebsphereVariable(final Commandline commandLine, final String propertyType, final String propertyValue) {
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/setEnvironmentVariableOnDmgr.py" + propertyType + propertyValue + " " + scriptsHome);
+		arg.setLine("SetEnvironmentVariableDmgr.py" + propertyType + propertyValue);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}

@@ -3,8 +3,9 @@ sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE
 
 from lib.downloadUtil import downloadFile, getPage
 import lib.javaXMLUtil as XML
-import lib.logUtil as l
 from lib.pomUtil import Module
+import lib.logUtil as log
+l = log.getLogger(__name__)
 	
 EARFFILES = sys.argv[0]
 POMS = sys.argv[1]
@@ -41,5 +42,4 @@ def main():
 			downloadFile(EJBUrl, EARFFILES)
 		
 if __name__ == "__main__": 
-	if len(sys.argv) < 4: sys.exit('Minimum 4 arguments: downloadDir pomsString mvnRepo mvnSnapshotRepo')
 	main()

@@ -3,8 +3,6 @@ import java.io.StringReader as StringReader
 import org.xml.sax.InputSource as InputSource
 import javax.xml.parsers.DocumentBuilderFactory as DocumentBuilderFactory
 
-from lib.logUtil import error
-
 def makeFileObject(string):
 	file = InputSource();
 	file.setCharacterStream(StringReader(string));

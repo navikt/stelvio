@@ -18,26 +18,24 @@ def getScriptDir():
 			raise Exception, "Could not find the folder where the scripts are located!"
 	else:
 			return match.group(1) or "./"
-			
+
 def getScriptName():
 	if not sys.argv:
 		raise ValueError, "This script needs to have the script it is supposed to execute as an argument!"
 	return sys.argv[0]
-			
+
 def executeScript(script):
 	scriptName = getScriptName()
-	import lib.logUtil2 as log
+	from lib.timer import Timer
+	import lib.logUtil as log
 	l = log.getLogger("Executor")
 	l.info("Executing", scriptName)
 	try:
-			execfile(script)
+		myTimer = Timer
+		execfile(script)
+		l.info(getScriptName(), "took", myTimer, "to complete")
 	except:
-			#type, value, tracebackObj = sys.exc_info()
-			#traceback.print_exception(*sys.exc_info())
-			#sys.exit(1)
-			#traceback.print_tb(tracebackObj, limit=1, file=sys.stdout)
-			l.exception("Received an exception while executing script:", scriptName)
+		l.exception("Received an exception while executing script:", scriptName)
 	l.info("Finished executing", scriptName)
-			
-			
+
 if __name__ == "__main__": main()

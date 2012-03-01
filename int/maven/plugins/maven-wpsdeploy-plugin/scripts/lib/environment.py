@@ -1,6 +1,3 @@
-import os, re, sys
-sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE")).group(1)) #adding skript directory til path to be able to normaly libs
-
 ###############################################################################
 # "This program may be used, executed, copied, modified and distributed without
 # royalty for the purpose of developing, using, marketing, or distributing."
@@ -29,7 +26,8 @@ sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE
 # Description:	Create a name space binding. If it already exists, modify it.
 #****************************************************************************** 
 
-import lib.logUtil as l
+import lib.logUtil as log
+l = log.getLogger(__name__)
 
 def createNameSpaceBinding ( propertyFileName ):
 	

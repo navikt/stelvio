@@ -16,60 +16,56 @@
 import os, re, sys
 sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE")).group(1)) #adding skript directory til path to be able to normaly libs
 
-import lib.logUtil as l
+import lib.logUtil as log
+l = log.getLogger(__name__)
 
-APPLICATION_NAME = sys.argv[0]
-NEW_VERSION = sys.argv[1]
+APPLICATION_NAME = sys.argv[1]
+NEW_VERSION = sys.argv[2]
 
 def main():
 
 	l.info("RemoveOldBPModule: Checking whether older version of application " + APPLICATION_NAME + " exists.")
 
-	APPS_INSTALLED = AdminApp.list()
+	appsInstalled = AdminApp.list()
 
-	APP_TO_UNINSTALL = APPS_INSTALLED[APPS_INSTALLED.find(APPLICATION_NAME, 0, len(APPS_INSTALLED)):].split("\n")[0]
+	appToUninstall = appsInstalled[appsInstalled.find(APPLICATION_NAME, 0, len(appsInstalled)):].split("\n")[0]
 	
-	if (len(APP_TO_UNINSTALL) < 2):
+	if (len(appToUninstall) < 2):
 		l.info("Application not found!")
 		return
 
-	if (version_Check(APP_TO_UNINSTALL) == 0):
+	if not outdatedVersion(appToUninstall, NEW_VERSION):
 		l.info("No newer version to install!")
 		return
 			
-	l.info("Uninstalling application: " + APP_TO_UNINSTALL)
+	l.info("Uninstalling application: " + appToUninstall)
 	try:
-		AdminApp.uninstall(APP_TO_UNINSTALL)
+		AdminApp.uninstall(appToUninstall)
 	except:
-		type, value, tracebackObj = sys.exc_info()
-		l.error("Uninstall failed:\n"+value)
+		l.exception("Uninstall failed!")
 	AdminConfig.save()
 	
-#*************************************************************************
-# versionCheck(APP_TO_UNINSTALL)
-#
-# Checks if the application currently installed on the server is older 
-# than the one in the current busrelease, if so - return 1, else return 0
-#*************************************************************************
-	
-def version_Check(APP_TO_UNINSTALL):
-
+def outdatedVersion(appToUninstall, newVersion):
+	'''
+	Checks if the application currently installed on the server is older 
+	than the one in the current busrelease, if so - return True, else return False
+	'''
 	pattern = re.compile(r'\s+')
-	OLD_VERSION = re.sub(pattern, '', AdminApp.view(APP_TO_UNINSTALL, '-buildVersion').replace('Application Build ID:  ', ''))
+	oldVersion = re.sub(pattern, '', AdminApp.view(appToUninstall, '-buildVersion').replace('Application Build ID:  ', ''))
 	
-	if (NEW_VERSION.find("SNAPSHOT") >= 0):
-		print "SNAPSHOT version, will uninstall: " + APP_TO_UNINSTALL
-		return 1
+	if (newVersion.find("SNAPSHOT") >= 0):
+		l.info("SNAPSHOT version, will uninstall: " + appToUninstall)
+		return True
 				
-	elif (OLD_VERSION[0] == 'Unknown'):
-		print "Unknown version, will uninstall: " + APP_TO_UNINSTALL
-		return 1
+	elif (oldVersion[0] == 'Unknown'):
+		l.info("Unknown version, will uninstall: " + appToUninstall)
+		return True
 		
-	elif (OLD_VERSION == NEW_VERSION):
-		print "Equal version, will not uninstall: " + APP_TO_UNINSTALL
-		return 0
+	elif (oldVersion == newVersion):
+		l.info("Equal version, will not uninstall: " + appToUninstall)
+		return False
 	else:
-		print "Different version, will uninstall: " + APP_TO_UNINSTALL
-		return 1
+		l.info("Different version, will uninstall: " + appToUninstall)
+		return True
 
 main()

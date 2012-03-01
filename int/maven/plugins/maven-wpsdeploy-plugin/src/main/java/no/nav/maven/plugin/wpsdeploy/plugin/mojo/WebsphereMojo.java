@@ -1,7 +1,6 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.File;
-import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
@@ -202,6 +201,7 @@ public abstract class WebsphereMojo extends AbstractMojo {
 	private static class StreamConsumerChain implements StreamConsumer {
 		private final Collection<StreamConsumer> chain = new ArrayList<StreamConsumer>();
 
+		@SuppressWarnings("unused")
 		public StreamConsumerChain() {
 		}
 

@@ -6,19 +6,21 @@
 # Syntax: 	wsadmin -lang jython -f ModifyMaxFailedDeliveries.py
 #****************************************************************************** 
 
+import lib.logUtil as log
+l = log.getLogger(__name__)
+
 def findCellName():
 	cells = AdminConfig.list("Cell").split(java.lang.System.getProperty('line.separator'))
 
 	if(len(cells) > 1):
-		print "[FATAL] More than one cells found. Bailing out..."
-		sys.exit(1)
+		l.error("[FATAL] More than one cells found. Bailing out...")
 
 	cellName = AdminConfig.showAttribute(cells[0], "name")
-	print "[INFO] Using cell name: " + cellName
+	l.info("Using cell name: " + cellName)
 	return cellName
 
 BUS_NAME	 = "SCA.SYSTEM." + findCellName() + ".Bus"
-SIDestList = AdminTask.listSIBDestinations('-bus '+BUS_NAME).split(lineSeparator)
+SIDestList = AdminTask.listSIBDestinations('-bus '+BUS_NAME).splitlines()
 COUNTER = 1
 LENGTH = repr(len(SIDestList))
 
@@ -34,16 +36,9 @@ for dest in SIDestList:
 	else:
 		parmsmodify = '-bus '+BUS_NAME+' -name "'+ident+ '" -maxFailedDeliveries 2'
 	try:
-		_excp_ = 0
 		result = AdminTask.modifySIBDestination(parmsmodify)
-		print "[ " + repr(COUNTER) + " of " + LENGTH + " ] - Successfully modified maxFailedDeliveries on destination " + ident
-		COUNTER = COUNTER + 1	
+		l.info("[ " + repr(COUNTER) + " of " + LENGTH + " ] - Successfully modified maxFailedDeliveries on destination " + ident)
+		COUNTER += 1
 	except:
-		_type_, _value_, _tbck_ = sys.exc_info()
-		result = `_value_`
-		_excp_ = 1
-	if (_excp_ ):
-		print "ERROR (ModifyMaxFailedDeliveries): Error modifying SIB Destination for maxFailedDeliveries "
-		print "ERROR (ModifyMaxFailedDeliveries): "+result
-		sys.exit()
+		l.exception("(ModifyMaxFailedDeliveries): Error modifying SIB Destination for maxFailedDeliveries "
 AdminConfig.save()

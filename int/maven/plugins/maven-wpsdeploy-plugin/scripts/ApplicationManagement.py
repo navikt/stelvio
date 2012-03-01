@@ -3,17 +3,15 @@ sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE
 
 from java.util import Calendar
 
-from lib.adminUtil import sync
-from businessProcesses import getUniqueBPList
-from Utils import save, readDistributionDirectory, parseApplicationNames, intervalToString, getApplicationName, readNumberOfFilesInDistributionDirectory
+from lib.syncUtil import sync
+from lib.businessProcesses import getUniqueBPList
+from lib.Utils import save, readDistributionDirectory, parseApplicationNames, intervalToString, getApplicationName, readNumberOfFilesInDistributionDirectory
 
 import time
-import lib.logUtil as l
+import lib.logUtil as log
 
-WSADMIN_SCRIPTS_HOME	 = sys.argv[0]
-WSADMIN_SCRIPTS_HOME	 = WSADMIN_SCRIPTS_HOME.replace('\t','\\t')
+l = log.getLogger(__name__)
 DISTDIR				  = sys.argv[1]
-DISTDIR				  = DISTDIR.replace('\t','\\t')
 distDir				  = DISTDIR
 
 # file name without .ear extension from distDir

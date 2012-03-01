@@ -3,7 +3,6 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.parsers.FactoryConfigurationError;
@@ -100,7 +99,7 @@ public class ApplyActivationSpecs extends WebsphereUpdaterMojo {
 			}
 
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + scriptsHome + "/scripts/ModifyMaxConcurrencyAS.py" + " " + scriptsHome + " " + "\"" + activationSpecs + "\"");
+			arg.setLine("ModifyMaxConcurrencyAS.py " + "\"" + activationSpecs + "\"");
 			commandLine.addArg(arg);
 			executeCommand(commandLine);
 

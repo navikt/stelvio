@@ -7,7 +7,6 @@ import java.util.Set;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.codehaus.plexus.util.Os;
 import org.codehaus.plexus.util.cli.Commandline;
 
 /**
@@ -43,11 +42,6 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 			}
 		}
 		
-		// Sets the correct specs for the runtime environment
-		if(Os.isFamily("windows") == true) {
-		} else {
-		}	
-		
 		HashMap<String, String> modules = getModuleMap();
 	    
 		for (String artifact : modules.keySet()) {
@@ -68,7 +62,7 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	private final void removeBP(final Commandline commandLine,final String artifactId, String version) throws MojoExecutionException { 
 		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/RemoveOldBPModule.py " + artifactId + " " + version);
+		arg.setLine("RemoveOldBPModule.py " + artifactId + " " + version);
 		commandLine.addArg(arg);
 		executeCommand(commandLine);
 	}

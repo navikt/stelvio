@@ -6,7 +6,6 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.parsers.FactoryConfigurationError;
@@ -107,7 +106,7 @@ public class ApplyUsernameTokenDetails extends WebsphereUpdaterMojo {
 			}
 			
 			Commandline.Argument arg = new Commandline.Argument();
-			arg.setLine("-f " + scriptsHome + "/scripts/ModifyUserNameTokenGenerator.py" + " " + scriptsHome + " \"" + usernametokenDetails + "\"");
+			arg.setLine("ModifyUserNameTokenGenerator.py " + "\"" + usernametokenDetails + "\"");
 			commandLine.addArg(arg);
 			executeCommand(commandLine);
 

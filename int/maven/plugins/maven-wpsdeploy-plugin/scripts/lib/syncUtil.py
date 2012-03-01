@@ -1,5 +1,6 @@
 import re, time
-import lib.logUtil as l
+import lib.logUtil as log
+l = log.getLogger(__name__)
 
 # Define False, True
 (False, True) = (0,1)
@@ -22,12 +23,7 @@ def sync(pollTimer=10, retriesBeforeResync=30):
 					syncNode(node)
 				else:
 					time.sleep(pollTimer)
-		l.info("%s is now synchronized!" % node)
-
-def save():
-	l.info("Saving...")
-	AdminConfig.save()
-	l.info("Save done!")
+		l.info("%s is now synchronized!" % node
 
 def syncNode(node):
 	DeploymentManager = getDeployentManagerDict()

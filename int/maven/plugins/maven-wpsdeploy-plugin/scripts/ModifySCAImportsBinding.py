@@ -15,18 +15,17 @@ sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE
 #****************************************************************************
 
 import time
-import lib.logUtil as l
-from Utils import wsadminToDict
+import lib.logUtil as log
+from lib.Utils import wsadminToDict
 
-
-WSADMIN_SCRIPTS_HOME	= sys.argv[0]
-WSADMIN_SCRIPTS_HOME	= WSADMIN_SCRIPTS_HOME.replace('\t','\\t')
-ARG_LIST				= sys.argv[1].split(";")
+l = log.getLogger(__name__)
+EARFilesToDeployFolder  = sys.argv[1]
+ARG_LIST				= sys.argv[2].split(";")
 
 def main():
 		start = time.clock()
 
-		ears = os.listdir( WSADMIN_SCRIPTS_HOME + "/../EARFilesToDeploy/" )
+		ears = os.listdir(EARFilesToDeployFolder)
 
 		temp_ears = []
 

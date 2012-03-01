@@ -29,7 +29,7 @@ public class SynchronizeNodesMojo extends WebsphereUpdaterMojo {
 
 	private final void synchronizeNodes(final Commandline commandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("-f " + scriptsHome + "/scripts/ClusterStartStop.py " + scriptsHome + " synch");
+		arg.setLine("ClusterStartStop.py synch");
 		
 		commandLine.addArg(arg);
 		

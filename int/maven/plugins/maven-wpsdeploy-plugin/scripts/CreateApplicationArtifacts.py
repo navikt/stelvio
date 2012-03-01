@@ -1,5 +1,3 @@
-import os, re, sys
-sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE")).group(1)) #adding skript directory til path to be able to normaly libs
 #******************************************************************************
 # File Name:   	CreateApplicationArtifacts.py
 # Description: 	Used for script flow.
@@ -32,28 +30,39 @@ from java.net 	import InetAddress
 from java.util 	import Properties
 from java.io 	import FileInputStream
 
-import lib.logUtil as l
+import lib.logUtil as log
+l = log.getLogger(__name__)
 
-APPLICATIONS_FOLDER 	 = sys.argv[0]
-APPLICATIONS_FOLDER      = APPLICATIONS_FOLDER.replace('\t','\\t')
-ENVIRONMENT 	 	 = sys.argv[1]
-WSADMIN_SCRIPTS_HOME	 = sys.argv[2]
-WSADMIN_SCRIPTS_HOME 	 = WSADMIN_SCRIPTS_HOME.replace('\t','\\t')
-APP_PROPS_HOME 		 = WSADMIN_SCRIPTS_HOME+"/app_props/"+ENVIRONMENT+"/"
-APP_PROPS_HOME 		 = APP_PROPS_HOME.replace('\t','\\t')
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
+from lib.utils6 import readDistributionDirectory, parseApplicationNames
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/environment.py" )
+from lib.environment import createNameSpaceBinding, createSharedLibrary
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/monitor.py" )
+# `->Er ikke i bruk
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/reports.py" )
+# `->Er ikke i bruk
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/resources.py" )
+from lib.resources import installResourceAdapter, createJ2CConnectionFactory, createDataSource, createJDBCProvider, createJMSActivationSpec, createJMSConnectionFactory, createJMSQueue, createJMSTopic, createMQConnectionFactory, createMQDestination, createSharedLibrary
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/security.py" )
+#not in use
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverConfig.py" )
+#not in use
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverControl.py" )
+#not in use
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverSetup.py" )
+# not in use
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serviceIntegration.py" )
+from lib.serviceIntegration import createSIBDestination
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/troubleshoot.py" )
+#NOt in use
+#execfile( WSADMIN_SCRIPTS_HOME+"/scripts/WPS.py" )
+# not in use
 
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/utils6.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/environment.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/monitor.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/reports.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/resources.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/security.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverConfig.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverControl.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serverSetup.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/serviceIntegration.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/troubleshoot.py" )
-execfile( WSADMIN_SCRIPTS_HOME+"/scripts/WPS.py" )
+
+
+APPLICATIONS_FOLDER 	 = sys.argv[1]
+ENVIRONMENT 	 	 = sys.argv[2]
+APP_PROPS_HOME 		 = sys.argv[3]
 
 
 ############### Main Section ###############################################
