@@ -1079,7 +1079,6 @@ app/stelvio-test-java/src/test/java/no/stelvio/test/spring/transaction/.copyarea
 app/stelvio-test-java/src/test/java/no/stelvio/test/spring/transaction/MockTransactionTemplateTest.java -text
 app/version_number.txt -text
 dev/Hudson/Hudson_server_backup_Integration/config.xml -text
-dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL2[!!-~]7.3[!!-~]datapower_cfg_partner-gw/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL2_7.3_CheckScripts_Leveransedokumentasjon/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL2_7.3_datapower-cfg-secgw/config.xml -text
 dev/Hudson/Hudson_server_backup_Integration/jobs/2012HL2_7.3_ekstern/config.xml -text

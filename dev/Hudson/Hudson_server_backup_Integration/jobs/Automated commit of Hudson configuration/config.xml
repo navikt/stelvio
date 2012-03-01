@@ -259,7 +259,10 @@ cd $HUDSON_HOME
 
 svn add -q --parents config.xml plugins.list jobs/*/config.xml 
 
-svn st |grep &apos;^!&apos; |awk &apos;{print $2}&apos; | xargs -r svn rm
+svn st |grep &apos;^!&apos; |while read notation folder
+do
+  svn rm &quot;$folder&quot;
+done
 
 if svn st |grep -v &apos;^?&apos; ;then
    svn ci --non-interactive -m &quot;$SVN_COMMENT&quot;
