@@ -1,5 +1,3 @@
-import os, re, sys
-sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE")).group(1)) #adding skript directory til path to be able to normaly libs
 #****************************************************************************
 #
 # File name: ModifySCAImportsBinding.py
@@ -13,7 +11,7 @@ sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE
 # Author: test@example.com
 #
 #****************************************************************************
-
+import sys, os, re
 import time
 import lib.logUtil as log
 from lib.Utils import wsadminToDict

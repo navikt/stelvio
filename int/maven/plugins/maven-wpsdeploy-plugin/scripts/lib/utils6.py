@@ -63,7 +63,7 @@
 # updatePort
 # wsadminToList
 #--------------------------------------------------------------------
-import sys
+import sys, os, re
 import java
 
 from java import util
@@ -71,10 +71,7 @@ from java.io import *
 from java.lang import *
 from java.util import *
 import java.io as io
-import os
 
-import re 
-import sre
 def conditional(testCondition, trueValue, falseResult,):
         if(testCondition): return trueResult
         else: return falseResult

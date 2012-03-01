@@ -1,4 +1,4 @@
-import time
+import sys, re
 from lib.syncUtil import sync
 import lib.logUtil as log
 from lib.timeUtil import Timer

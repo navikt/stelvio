@@ -1,15 +1,11 @@
-import os.environ
-import re
-import time
+import sys
 from time import strftime
-
-ARG_LIST		= sys.argv[1].split(";")
-
 from lib.saveUtil import save
 from lib.timerUtil import Timer
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
+ARG_LIST		= sys.argv[1].split(";")
 
 def main():
 	myTimer = Timer()
@@ -50,7 +46,7 @@ def modifyResourceProperty (propSet, propName, propValue, propType):
 	attrs.append(["type", propType])
 
 	try:
-		result = AdminConfig.modify(propSet, attrs )
+		AdminConfig.modify(propSet, attrs )
 	except:
 		l.exception("Caught Exception modifying ResourceProperty!")
 

@@ -1,13 +1,10 @@
-import os, re, sys
-sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE")).group(1)) #adding skript directory til path to be able to normaly libs
-
 from java.util import Calendar
 
+import sys, os, re, time
 from lib.syncUtil import sync
 from lib.businessProcesses import getUniqueBPList
 from lib.Utils import save, readDistributionDirectory, parseApplicationNames, intervalToString, getApplicationName, readNumberOfFilesInDistributionDirectory
 
-import time
 import lib.logUtil as log
 
 l = log.getLogger(__name__)

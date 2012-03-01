@@ -1,3 +1,4 @@
+import sys, re
 import lib.logUtil as log
 l = log.getLogger(__name__)
 

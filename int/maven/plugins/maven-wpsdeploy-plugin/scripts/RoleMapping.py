@@ -12,10 +12,8 @@
 #
 #****************************************************************************
 
-import sys
-import os
+import sys, os, re
 import time
-import re
 
 from lib.saveUtil import save
 import lib.logUtil as log

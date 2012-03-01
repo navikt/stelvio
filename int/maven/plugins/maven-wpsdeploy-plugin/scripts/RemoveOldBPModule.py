@@ -12,10 +12,7 @@
 #	       test@example.com		                   
 #							 		
 #****************************************************************************
-
-import os, re, sys
-sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE")).group(1)) #adding skript directory til path to be able to normaly libs
-
+import sys, re
 import lib.logUtil as log
 l = log.getLogger(__name__)
 

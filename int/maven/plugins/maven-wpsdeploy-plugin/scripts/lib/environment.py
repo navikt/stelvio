@@ -25,7 +25,7 @@
 # Procedure:  	createNameSpaceBinding
 # Description:	Create a name space binding. If it already exists, modify it.
 #****************************************************************************** 
-
+import sys
 import lib.logUtil as log
 l = log.getLogger(__name__)
 

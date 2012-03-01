@@ -1,8 +1,9 @@
-INPUT = sys.argv[1]
-
+import sys
 from lib.saveUtil import save
 import lib.logUtil as log
 l = log.getLogger(__name__)
+
+INPUT = sys.argv[1]
 
 def setBindingAuth(userid, password, bindingname):
 	l.info("Modifying binding "+bindingname+"."))

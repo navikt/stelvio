@@ -1,9 +1,7 @@
-import os, re, sys
-sys.path.append(re.search("-f\s+(/?\S+/)", os.environ.get("IBM_JAVA_COMMAND_LINE")).group(1)) #adding skript directory til path to be able to normaly libs
-
+import sys, os
 from lib.downloadUtil import downloadFile, getPage
-import lib.javaXMLUtil as XML
 from lib.pomUtil import Module
+import lib.javaXMLUtil as XML
 import lib.logUtil as log
 l = log.getLogger(__name__)
 	
