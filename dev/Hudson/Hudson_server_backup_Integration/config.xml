@@ -64,7 +64,6 @@
         <string>TRUNK-nav-modules-ci</string>
         <string>TRUNK-nav-tjenestespesifikasjon</string>
         <string>TRUNK-nav_trunk_int_esb_layers</string>
-        <string>TRUNK-nav_trunk_int_esb_layers-maven3</string>
         <string>TRUNK-nav_trunk_int_esb_layers_dryRun_release</string>
         <string>TRUNK-nav_trunk_int_esb_poms</string>
         <string>TRUNK-pensjon</string>
@@ -80,7 +79,8 @@
       <columns/>
       <showStable>true</showStable>
       <showStableDetail>true</showStableDetail>
-      <highVis>true</highVis>
+      <highVis>false</highVis>
+      <groupByPrefix>false</groupByPrefix>
     </hudson.model.RadiatorView>
     <listView>
       <owner class="hudson" reference="../../.."/>
