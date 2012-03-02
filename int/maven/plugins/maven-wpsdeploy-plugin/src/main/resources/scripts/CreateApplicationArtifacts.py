@@ -29,7 +29,7 @@ from java.lang 	import System
 from java.net 	import InetAddress
 from java.util 	import Properties
 from java.io 	import FileInputStream
-import sys, os, re
+import sys, re
 
 import lib.logUtil as log
 l = log.getLogger(__name__)

@@ -18,7 +18,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class ExtractBusConfig extends WebsphereUpdaterMojo {
 
 	@Override
-	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		for (Artifact a : dependencyArtifacts) {
 			if (a.getArtifactId().equals(moduleConfigurationArtifactName)) {
 				File busConfigFolder = new File(baseDirectory, tmpBusConfigurationExtractDirectory);

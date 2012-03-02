@@ -20,7 +20,7 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class InterpolatorMojo extends WebsphereUpdaterMojo {
 
-	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		
 		String tmpEnvironmentFile = baseDirectory + tmpBusConfigurationExtractDirectory + "/environments/" + environment + ".properties";
 		

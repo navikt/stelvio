@@ -20,7 +20,7 @@ import org.codehaus.plexus.util.cli.Commandline;
 public class LoadEnvironmentConfiguration extends WebsphereUpdaterMojo {
 
 	@Override
-	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		try {
 			exposeEnvironmentProperties();
 		} catch (IOException e) {

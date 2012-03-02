@@ -98,52 +98,52 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 * @parameter expression="${logging.level}" default-value="false"
 	 */
 	private String logLevel;
-	
+	protected String scriptsHome;
 	protected String deployableArtifactsHome;
 	protected String environmentFile;
 	protected String moduleConfigHome;
 
-	protected abstract void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException;
+	protected abstract void applyToWebSphere(final Commandline wsadminCommandline) throws MojoExecutionException, MojoFailureException;
 
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
-		String scriptsHome = baseDirectory + "/scipts";
+		scriptsHome = baseDirectory + "/scipts";
 		deployableArtifactsHome = baseDirectory + "/target/EARFilesToDeploy";
 		moduleConfigHome = baseDirectory + busConfigurationExtractDirectory + "/moduleconfig";
 		environmentFile = baseDirectory + busConfigurationExtractDirectory + "/environments/" + environment + ".properties";
 
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
-		Commandline commandLine = new Commandline();
-		commandLine.setExecutable(widRuntime + "/bin/wsadmin.sh");
+		Commandline wsadminCommandLine = new Commandline();
+		wsadminCommandLine.setExecutable(widRuntime + "/bin/wsadmin.sh");
 
 		Commandline.Argument arg1 = new Commandline.Argument();
 		arg1.setLine("-host " + dmgrHostname);
-		commandLine.addArg(arg1);
+		wsadminCommandLine.addArg(arg1);
 
 		Commandline.Argument arg2 = new Commandline.Argument();
 		arg2.setLine("-port " + dmgrSOAPPort);
-		commandLine.addArg(arg2);
+		wsadminCommandLine.addArg(arg2);
 
 		Commandline.Argument arg3 = new Commandline.Argument();
 		arg3.setLine("-user " + dmgrUsername);
-		commandLine.addArg(arg3);
+		wsadminCommandLine.addArg(arg3);
 
 		Commandline.Argument arg4 = new Commandline.Argument();
 		arg4.setLine("-password " + dmgrPassword);
-		commandLine.addArg(arg4);
+		wsadminCommandLine.addArg(arg4);
 		
 		Commandline.Argument arg5 = new Commandline.Argument();
 		arg5.setLine("-f " + scriptsHome + "/Executor.py");
-		commandLine.addArg(arg5);
+		wsadminCommandLine.addArg(arg5);
 		
 		
 		if (logLevel != null){
 			Commandline.Argument arg6 = new Commandline.Argument();
 			arg6.setLine("-Dlogging.level " + logLevel);
-			commandLine.addArg(arg6);
+			wsadminCommandLine.addArg(arg6);
 		}
 
-		applyToWebSphere(commandLine);
+		applyToWebSphere(wsadminCommandLine);
 	}
 
 	protected File getConfigurationFile(String env, String fileName, String moduleConfigPath) {

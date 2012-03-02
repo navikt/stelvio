@@ -20,16 +20,16 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 	 */
 	private DeployArtifact[] artifacts;
 
-	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 
 		if (!isConfigurationLoaded()) {
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
 			return;
 		}
 
-		String[] orgArgs = commandLine.getArguments();
+		String[] orgArgs = wsadminCommandLine.getArguments();
 		
-		deployResources(commandLine);
+		deployResources(wsadminCommandLine);
 
 		for (DeployArtifact da : artifacts) {
 
@@ -39,34 +39,34 @@ public class DeployResourcesMojo extends WebsphereUpdaterMojo {
 			}
 
 			Commandline cmdline = new Commandline();
-			cmdline.setExecutable(commandLine.getExecutable());
+			cmdline.setExecutable(wsadminCommandLine.getExecutable());
 			cmdline.addArguments(orgArgs);
 			addOrUpdateWebsphereVariable(cmdline, " " + da.getVariableName() + " ", da.getVersion());
 		}
 		
 		Commandline cmdlineBusConfig = new Commandline();
-		cmdlineBusConfig.setExecutable(commandLine.getExecutable());
+		cmdlineBusConfig.setExecutable(wsadminCommandLine.getExecutable());
 		cmdlineBusConfig.addArguments(orgArgs);
 		addOrUpdateWebsphereVariable(cmdlineBusConfig, " BUS_CONFIGURATION_VERSION ", busConfigurationVersion);
 
 	}
 
-	private final void deployResources(final Commandline commandLine) {
+	private final void deployResources(final Commandline wsadminCommandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
 		String app_props = busConfigurationExtractDirectory + "/app_props/" + environment + "/";
 		arg.setLine("CreateApplicationArtifacts.py " + deployableArtifactsHome + " " + environment + " " + app_props);
-		commandLine.addArg(arg);
-		executeCommand(commandLine);
+		wsadminCommandLine.addArg(arg);
+		executeCommand(wsadminCommandLine);
 	}
 
 	/**
 	 * Adds or updates a WebSphere variable
 	 */
-	private final void addOrUpdateWebsphereVariable(final Commandline commandLine, final String propertyType, final String propertyValue) {
+	private final void addOrUpdateWebsphereVariable(final Commandline wsadminCommandLine, final String propertyType, final String propertyValue) {
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("SetEnvironmentVariableDmgr.py" + propertyType + propertyValue);
-		commandLine.addArg(arg);
-		executeCommand(commandLine);
+		wsadminCommandLine.addArg(arg);
+		executeCommand(wsadminCommandLine);
 	}
 
 	@Override

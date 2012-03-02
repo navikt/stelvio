@@ -102,16 +102,16 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 
 	/**
 	 * Takes a comma separated string of pom files and downloads the dependencies to the EARFilesToDeploy folder
-	 * @param commandLine
+	 * @param wsadminCommandLine
 	 * @param poms
 	 * @param mvnSnapshotRepo 
 	 * @param mvnSnapshotRepo 
 	 */
-	private void downloadEARFiles(Commandline commandLine, String poms, String mvnLocalRepo, String mvnRepo, String mvnSnapshotRepo){
+	private void downloadEARFiles(Commandline wsadminCommandLine, String poms, String mvnLocalRepo, String mvnRepo, String mvnSnapshotRepo){
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("DownloadEARFiles.py " + deployableArtifactsHome + " " +poms + " " + mvnLocalRepo + " " + mvnRepo + " " + mvnSnapshotRepo);
-		commandLine.addArg(arg);
-		executeCommand(commandLine);
+		wsadminCommandLine.addArg(arg);
+		executeCommand(wsadminCommandLine);
 	}	
 	
 	public static String arrayListToString(ArrayList<String> a, String separator) {
@@ -128,7 +128,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		try {
 			allArtifacts = new HashSet<Artifact>();
 
@@ -161,7 +161,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 			String mvnLocalRepo = localRepository.getUrl();
 			String mvnSnapshotRepo = ((Repository)repositories.get(0)).getUrl();
 			String mvnRepo = mvnSnapshotRepo.replace("-snapshots", "");
-			downloadEARFiles(commandLine, arrayListToString(poms, ","), mvnLocalRepo, mvnRepo, mvnSnapshotRepo);
+			downloadEARFiles(wsadminCommandLine, arrayListToString(poms, ","), mvnLocalRepo, mvnRepo, mvnSnapshotRepo);
 			
 		} catch (ProjectBuildingException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);

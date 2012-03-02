@@ -14,15 +14,15 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class ModifyMaxFailedDeliveriesMojo extends WebsphereUpdaterMojo {
 
-	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
-		modifyMaxFailedDeliveries(commandLine);
+	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
+		modifyMaxFailedDeliveries(wsadminCommandLine);
 	}
 
-	private final void modifyMaxFailedDeliveries(final Commandline commandLine) {
+	private final void modifyMaxFailedDeliveries(final Commandline wsadminCommandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("ModifyMaxFailedDeliveries.py");
-		commandLine.addArg(arg);
-		executeCommand(commandLine);
+		wsadminCommandLine.addArg(arg);
+		executeCommand(wsadminCommandLine);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 from java.util import Calendar
 
-import sys, os, re, time
+import sys, re
+import time
 from lib.syncUtil import sync
 from lib.businessProcesses import getUniqueBPList
 from lib.Utils import save, readDistributionDirectory, parseApplicationNames, intervalToString, getApplicationName, readNumberOfFilesInDistributionDirectory

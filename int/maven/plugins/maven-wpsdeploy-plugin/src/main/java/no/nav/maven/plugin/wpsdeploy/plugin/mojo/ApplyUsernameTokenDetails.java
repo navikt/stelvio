@@ -31,7 +31,7 @@ public class ApplyUsernameTokenDetails extends WebsphereUpdaterMojo {
 	 * @see no.nav.maven.plugin.wpsdeploy.plugin.mojo.WebsphereUpdaterMojo#applyToWebSphere(org.codehaus.plexus.util.cli.Commandline)
 	 */
 	@Override
-	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		if (!isConfigurationLoaded()){
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
 			return;
@@ -107,8 +107,8 @@ public class ApplyUsernameTokenDetails extends WebsphereUpdaterMojo {
 			
 			Commandline.Argument arg = new Commandline.Argument();
 			arg.setLine("ModifyUserNameTokenGenerator.py " + "\"" + usernametokenDetails + "\"");
-			commandLine.addArg(arg);
-			executeCommand(commandLine);
+			wsadminCommandLine.addArg(arg);
+			executeCommand(wsadminCommandLine);
 
 		} catch (SAXException e) {
 			throw new MojoFailureException(e.getMessage());

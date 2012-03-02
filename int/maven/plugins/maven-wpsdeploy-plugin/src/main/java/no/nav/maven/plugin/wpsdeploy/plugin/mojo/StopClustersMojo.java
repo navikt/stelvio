@@ -15,26 +15,26 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class StopClustersMojo extends WebsphereUpdaterMojo {
 
-	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		if (!isConfigurationLoaded()){
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
 			return;
 		}
 		
-		stopClusters(commandLine);
+		stopClusters(wsadminCommandLine);
 	}
 
-	private final void stopClusters(final Commandline commandLine) {
+	private final void stopClusters(final Commandline wsadminCommandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("ClusterStartStop.py stop");
-		commandLine.addArg(arg);
+		wsadminCommandLine.addArg(arg);
 
 		int attempt = 0;
 		int maxattempt = 5;
 		while (true) {
 			++attempt;
 			try{
-				executeCommand(commandLine);
+				executeCommand(wsadminCommandLine);
 				break;
 			} catch (MySOAPException e) {
 				if (attempt < maxattempt){

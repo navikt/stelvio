@@ -15,20 +15,20 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class DeployArtifactMojo extends WebsphereUpdaterMojo {
 
-	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		if (!isConfigurationLoaded()){
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
 			return;
 		}
 		
-		deployArtifacts(commandLine);
+		deployArtifacts(wsadminCommandLine);
 	}
 
-	private final void deployArtifacts(final Commandline commandLine) {
+	private final void deployArtifacts(final Commandline wsadminCommandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("ApplicationManagement.py " + deployableArtifactsHome);
-		commandLine.addArg(arg);
-		executeCommand(commandLine);
+		wsadminCommandLine.addArg(arg);
+		executeCommand(wsadminCommandLine);
 	}
 
 	@Override

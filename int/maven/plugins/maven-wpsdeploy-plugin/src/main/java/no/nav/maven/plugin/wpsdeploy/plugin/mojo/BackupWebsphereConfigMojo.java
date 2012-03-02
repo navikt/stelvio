@@ -23,7 +23,7 @@ public class BackupWebsphereConfigMojo extends WebsphereUpdaterMojo {
 	private boolean skipBackup;
 	
 	@Override
-	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		if (!isConfigurationLoaded()){
 			getLog().info("You can't run this step without having extracted the bus-configuration. Skipping ...");
 			return;

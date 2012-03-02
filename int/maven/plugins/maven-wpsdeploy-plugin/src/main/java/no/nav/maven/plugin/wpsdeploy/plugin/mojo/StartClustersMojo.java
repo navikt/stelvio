@@ -20,7 +20,7 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 	 */
 	protected boolean startClustersSkip;
 
-	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 
 		if (!isConfigurationLoaded()) {
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
@@ -28,24 +28,24 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 		}
 
 		if (!startClustersSkip) {
-			startClusters(commandLine);
+			startClusters(wsadminCommandLine);
 		} else {
 			getLog().info("Skipping cluster start-up.");
 		}
 	}
 
-	private final void startClusters(final Commandline commandLine) {
+	private final void startClusters(final Commandline wsadminCommandLine) {
 
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("ClusterStartStop.py start");
-		commandLine.addArg(arg);
+		wsadminCommandLine.addArg(arg);
 
 		int attempt = 1;
 		int maxattempt = 5;
 		while (true) {
 			++attempt;
 			try{
-				executeCommand(commandLine);
+				executeCommand(wsadminCommandLine);
 				break;
 			} catch (MySOAPException e) {
 				if (attempt < maxattempt){

@@ -27,7 +27,7 @@ import org.xml.sax.SAXException;
  */
 public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 
-	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 
 		if (!isConfigurationLoaded()){
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
@@ -101,8 +101,8 @@ public class ApplyWSEndpoints extends WebsphereUpdaterMojo {
 			
 			Commandline.Argument arg = new Commandline.Argument();
 			arg.setLine("ModifySCAImportsBinding.py" + " " + deployableArtifactsHome + " " + "\"" + wsEndpoints + "\"");
-			commandLine.addArg(arg);
-			executeCommand(commandLine);
+			wsadminCommandLine.addArg(arg);
+			executeCommand(wsadminCommandLine);
 
 		} catch (SAXException e) {
 			throw new MojoFailureException(e.getMessage());

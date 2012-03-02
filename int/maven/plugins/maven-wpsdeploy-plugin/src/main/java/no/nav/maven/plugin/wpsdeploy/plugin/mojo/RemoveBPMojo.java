@@ -31,7 +31,7 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	 * for each module specified in the constructor.
 	 */
 	@Override
-	protected void applyToWebSphere(Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		
 		modulesToRemove = new ArrayList<String>();
 		modulesToRemove.add("nav-bsrv-frg-hentinstitusjonsoppholdliste");
@@ -46,10 +46,10 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	    
 		for (String artifact : modules.keySet()) {
 			
-			String[] orgArgs = commandLine.getArguments();
+			String[] orgArgs = wsadminCommandLine.getArguments();
 			Commandline cmdline = new Commandline();
 			
-			cmdline.setExecutable(commandLine.getExecutable());
+			cmdline.setExecutable(wsadminCommandLine.getExecutable());
 			cmdline.addArguments(orgArgs);
 			
 			removeBP(cmdline, artifact, modules.get(artifact));
@@ -59,12 +59,12 @@ public class RemoveBPMojo extends WebsphereUpdaterMojo {
 	/*
 	 * Builds up and executes the commandline from the incoming parameters.
 	 */
-	private final void removeBP(final Commandline commandLine,final String artifactId, String version) throws MojoExecutionException { 
+	private final void removeBP(final Commandline wsadminCommandLine,final String artifactId, String version) throws MojoExecutionException { 
 		
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("RemoveOldBPModule.py " + artifactId + " " + version);
-		commandLine.addArg(arg);
-		executeCommand(commandLine);
+		wsadminCommandLine.addArg(arg);
+		executeCommand(wsadminCommandLine);
 	}
 
 	/*

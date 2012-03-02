@@ -17,28 +17,28 @@ import org.codehaus.plexus.util.cli.Commandline;
  */
 public class SynchronizeNodesMojo extends WebsphereUpdaterMojo {
 
-	public final void applyToWebSphere(final Commandline commandLine) throws MojoExecutionException, MojoFailureException {
+	public final void applyToWebSphere(final Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		
 		if (!isConfigurationLoaded()){
 			getLog().info("You can't run this step without having loaded the environment configuration. Skipping ...");
 			return;
 		}
 		
-		synchronizeNodes(commandLine);
+		synchronizeNodes(wsadminCommandLine);
 	}
 
-	private final void synchronizeNodes(final Commandline commandLine) {
+	private final void synchronizeNodes(final Commandline wsadminCommandLine) {
 		Commandline.Argument arg = new Commandline.Argument();
 		arg.setLine("ClusterStartStop.py synch");
 		
-		commandLine.addArg(arg);
+		wsadminCommandLine.addArg(arg);
 		
 		int attempt = 0;
 		int maxattempt = 5;
 		while (true) {
 			++attempt;
 			try{
-				executeCommand(commandLine);
+				executeCommand(wsadminCommandLine);
 				break;
 			} catch (MySOAPException e) {
 				if (attempt < maxattempt){
