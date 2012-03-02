@@ -3,8 +3,8 @@ import java
 
 from types import StringType
 
-VARIABLE_NAME = sys.argv[0]
-VARIABLE_VALUE = sys.argv[1]
+VARIABLE_NAME = sys.argv[1]
+VARIABLE_VALUE = sys.argv[2]
 
 from lib.saveUtil import save
 import lib.logUtil as log

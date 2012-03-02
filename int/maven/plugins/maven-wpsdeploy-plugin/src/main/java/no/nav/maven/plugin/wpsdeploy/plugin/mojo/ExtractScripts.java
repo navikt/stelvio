@@ -20,7 +20,7 @@ public class ExtractScripts extends WebsphereUpdaterMojo {
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
-		JarExtractor.extractJar(getJar(), new File(targetDirectory), "scripts/");
+		JarExtractor.extractJar(getJar(), new File(targetDirectory), "scripts/*");
 		getLog().info("Successfully extracted the scripts folder into " + targetDirectory + ".");
 	}
 

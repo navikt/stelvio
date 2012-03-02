@@ -43,10 +43,11 @@ class __Logger:
 
 	def exception(self, *args):
 		self.__log(EXCEPTION, *args)
-		self.__log(EXCEPTION, "Stacktrace:")
-		traceback.print_tb(sys.exc_info()[2])
-		self.__log(EXCEPTION, "Exception:")
-		raise
+		#self.__log(EXCEPTION, "Stacktrace:")
+		#traceback.print_tb(sys.exc_info()[2])
+		#self.__log(EXCEPTION, "Exception:")
+		traceback.print_exc()
+		sys.exit(99)
 		
 	def println(self, *args):
 		print ' '.join([str(x) for x in args])
@@ -58,9 +59,9 @@ class __Logger:
 	def __time(self): return time.strftime("%y.%m.%d-%H:%M:%S")
 
 def getLogLevelId():
-	logLevel = java.lang.System.getProperty('logging.level').upper()
+	logLevel = java.lang.System.getProperty('logging.level')
 	if logLevel:
 		for key, value in __availableLogLevels.items():
-			if key == logLevel:
+			if key == logLevel.upper():
 				return value
 	return __defaultLogLevel

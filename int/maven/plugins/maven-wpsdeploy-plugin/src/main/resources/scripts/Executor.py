@@ -26,7 +26,7 @@ def getScriptName():
 
 def executeScript(scriptPath):
 	scriptName = getScriptName()
-	from lib.timer import Timer
+	from lib.timerUtil import Timer
 	import lib.logUtil as log
 	l = log.getLogger("Executor")
 	l.info("Executing", scriptName)

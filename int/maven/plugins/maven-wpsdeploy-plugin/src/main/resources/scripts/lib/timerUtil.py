@@ -1,5 +1,5 @@
 import time
-class Timer():
+class Timer:
 	'''
 		Usage:
 			myTimer = timer()

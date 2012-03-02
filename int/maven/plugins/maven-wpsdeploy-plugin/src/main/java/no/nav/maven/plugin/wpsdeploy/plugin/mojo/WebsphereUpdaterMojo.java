@@ -1,6 +1,7 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
@@ -95,7 +96,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String linuxPassword;
 	
 	/**
-	 * @parameter expression="${logging.level}" default-value="false"
+	 * @parameter expression="${logging.level}"
 	 */
 	private String logLevel;
 	protected String targetDirectory;
@@ -104,45 +105,36 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String moduleConfigHome;
 
 	protected abstract void applyToWebSphere(final Commandline wsadminCommandline) throws MojoExecutionException, MojoFailureException;
-
+	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
 		targetDirectory = baseDirectory + "/target/";
 		deployableArtifactsHome = targetDirectory + "/EARFilesToDeploy";
 		moduleConfigHome = baseDirectory + busConfigurationExtractDirectory + "/moduleconfig";
 		environmentFile = baseDirectory + busConfigurationExtractDirectory + "/environments/" + environment + ".properties";
-
+		
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline wsadminCommandLine = new Commandline();
 		wsadminCommandLine.setExecutable(widRuntime + "/bin/wsadmin.sh");
+		ArrayList<String> args = new ArrayList<String>();
 
-		Commandline.Argument arg1 = new Commandline.Argument();
-		arg1.setLine("-host " + dmgrHostname);
-		wsadminCommandLine.addArg(arg1);
-
-		Commandline.Argument arg2 = new Commandline.Argument();
-		arg2.setLine("-port " + dmgrSOAPPort);
-		wsadminCommandLine.addArg(arg2);
-
-		Commandline.Argument arg3 = new Commandline.Argument();
-		arg3.setLine("-user " + dmgrUsername);
-		wsadminCommandLine.addArg(arg3);
-
-		Commandline.Argument arg4 = new Commandline.Argument();
-		arg4.setLine("-password " + dmgrPassword);
-		wsadminCommandLine.addArg(arg4);
-		
-		Commandline.Argument arg5 = new Commandline.Argument();
-		arg5.setLine("-f " + targetDirectory + "/scripts/Executor.py");
-		wsadminCommandLine.addArg(arg5);
-		
+		args.add("-host " + dmgrHostname);
+		args.add("-port " + dmgrSOAPPort);
+		args.add("-user " + dmgrUsername);
+		args.add("-password " + dmgrPassword);
 		
 		if (logLevel != null){
-			Commandline.Argument arg6 = new Commandline.Argument();
-			arg6.setLine("-Dlogging.level " + logLevel);
-			wsadminCommandLine.addArg(arg6);
+			args.add("-Dlogging.level " + logLevel);
 		}
+		
+		args.add("-f " + targetDirectory + "/scripts/Executor.py");
 
+		for(String arg : args){
+			Commandline.Argument cmdArg = new Commandline.Argument();
+			cmdArg.setLine(arg);
+			wsadminCommandLine.addArg(cmdArg);
+		}
+		
 		applyToWebSphere(wsadminCommandLine);
 	}
 
