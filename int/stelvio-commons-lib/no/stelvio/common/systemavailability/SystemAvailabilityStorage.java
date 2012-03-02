@@ -371,16 +371,13 @@ public class SystemAvailabilityStorage {
 					int length = directory.listFiles().length;
 					String app = "", s = "";
 					
-					// Gå gjennom alle mappene som ligger der som begynner på "nav-".
-					// TODO: Gjøre mer universell. F.eks. kun sjekke om variabelen app slutter på "App.ear"?
 					for (int x = 0; x < length; x++) {
 						fil = directory.listFiles()[x];
 						app = fil.getName();
-						if (((app.startsWith("nav-")) || (app.startsWith("pensjon-")))
-								&& app.indexOf("App.ear") != -1) {
+						if (app.indexOf("App.ear") != -1) {
 							app = app.substring(0, app.indexOf("App.ear"));
-							// Går gjennom alle mappene/filene som ligger i "nav-"-mappen.
-							// Hvis det finnes en fil der som begynner på det samme som prosjektet, så legges den til i lista.
+							// Går gjennom alle mappene/filene som ligger i installedApps
+							// Hvis det finnes en fil der som slutter på App.ear, så legges den til i lista.
 							for (int y = 0; y < fil.list().length; y++) {
 								s = fil.list()[y];
 								if (s.startsWith(app)) {
