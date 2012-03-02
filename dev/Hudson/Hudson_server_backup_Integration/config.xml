@@ -79,7 +79,7 @@
       <columns/>
       <showStable>true</showStable>
       <showStableDetail>true</showStableDetail>
-      <highVis>false</highVis>
+      <highVis>true</highVis>
       <groupByPrefix>false</groupByPrefix>
     </hudson.model.RadiatorView>
     <listView>
