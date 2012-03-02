@@ -98,7 +98,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	 * @parameter expression="${logging.level}" default-value="false"
 	 */
 	private String logLevel;
-	protected String scriptsHome;
+	protected String targetDirectory;
 	protected String deployableArtifactsHome;
 	protected String environmentFile;
 	protected String moduleConfigHome;
@@ -107,8 +107,8 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
-		scriptsHome = baseDirectory + "/scipts";
-		deployableArtifactsHome = baseDirectory + "/target/EARFilesToDeploy";
+		targetDirectory = baseDirectory + "/target/";
+		deployableArtifactsHome = targetDirectory + "/EARFilesToDeploy";
 		moduleConfigHome = baseDirectory + busConfigurationExtractDirectory + "/moduleconfig";
 		environmentFile = baseDirectory + busConfigurationExtractDirectory + "/environments/" + environment + ".properties";
 
@@ -133,7 +133,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		wsadminCommandLine.addArg(arg4);
 		
 		Commandline.Argument arg5 = new Commandline.Argument();
-		arg5.setLine("-f " + scriptsHome + "/Executor.py");
+		arg5.setLine("-f " + targetDirectory + "/scripts/Executor.py");
 		wsadminCommandLine.addArg(arg5);
 		
 		
