@@ -2,9 +2,9 @@ import sys, os, re
 import traceback
 import exceptions
 
-#False,True = 0,1 # Define False, True for executed script, imported libs still need to spesify them manually
 glob= globals()
 loc = locals()
+# Define False, True for executed script, imported libs still need to spesify them manually
 glob['False'] = 0
 glob['True'] = 1
 def main_funnye():
@@ -38,8 +38,14 @@ def executeScript(scriptPath):
 	try:
 		execfile(scriptPath, glob, loc)
 	except:
-		exceptionClass = sys.exc_info()[0]
-		if exceptionClass != exceptions.SystemExit:
+		#exceptionClass = sys.exc_info()[0]
+		#if exceptionClass != exceptions.SystemExit:
+		exceptionInstance = sys.exc_info()[1]
+		if isinstance(exceptionInstance, exceptions.SystemExit):
+			exitCode = exceptionInstance.code
+			l.println("Exitcode:", exitCode)
+			sys.exit(exitCode)
+		else:
 			l.exception("Received an exception while executing script:", scriptName)
 	l.info(scriptName, "took", myTimer, "to complete.")
 
