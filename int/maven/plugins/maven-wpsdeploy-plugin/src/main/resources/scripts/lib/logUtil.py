@@ -2,6 +2,7 @@ import time
 import java
 import re, sys, os
 import traceback
+import exceptions
 
 False,True = 0,1 # Define False, True
 DEBUGGING = "DEBUG"
@@ -43,12 +44,9 @@ class __Logger:
 
 	def exception(self, *args):
 		self.__log(EXCEPTION, *args)
-		#self.__log(EXCEPTION, "Stacktrace:")
-		#traceback.print_tb(sys.exc_info()[2])
-		#self.__log(EXCEPTION, "Exception:")
 		traceback.print_exc()
-		sys.exit(99)
-		
+		sys.exit(105)  #default wsadmin exit code
+			
 	def println(self, *args):
 		print ' '.join([str(x) for x in args])
 

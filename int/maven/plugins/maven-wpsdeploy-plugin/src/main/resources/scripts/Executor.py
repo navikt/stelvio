@@ -1,9 +1,13 @@
 import sys, os, re
 import traceback
+import exceptions
 
-False,True = 0,1 # Define False, True for executed script, imported libs still need to spesify them manually
-
-def main():
+#False,True = 0,1 # Define False, True for executed script, imported libs still need to spesify them manually
+glob= globals()
+loc = locals()
+glob['False'] = 0
+glob['True'] = 1
+def main_funnye():
 	scriptDir = getScriptDir()	
 	sys.path.append(scriptDir) #Essential to get the import statement to work as expected
 
@@ -30,12 +34,13 @@ def executeScript(scriptPath):
 	import lib.logUtil as log
 	l = log.getLogger("Executor")
 	l.info("Executing", scriptName)
+	myTimer = Timer
 	try:
-		l.info("Starting", scriptName + "...")
-		myTimer = Timer
-		execfile(scriptPath)
-		l.info(scriptName, "took", myTimer, "to complete.")
+		execfile(scriptPath, glob, loc)
 	except:
-		l.exception("Received an exception while executing script:", scriptName)
+		exceptionClass = sys.exc_info()[0]
+		if exceptionClass != exceptions.SystemExit:
+			l.exception("Received an exception while executing script:", scriptName)
+	l.info(scriptName, "took", myTimer, "to complete.")
 
-if __name__ == "__main__": main()
+main_funnye()

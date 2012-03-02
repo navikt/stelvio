@@ -108,7 +108,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
-		targetDirectory = baseDirectory + "/target/";
+		targetDirectory = baseDirectory + "/target";
 		deployableArtifactsHome = targetDirectory + "/EARFilesToDeploy";
 		moduleConfigHome = baseDirectory + busConfigurationExtractDirectory + "/moduleconfig";
 		environmentFile = baseDirectory + busConfigurationExtractDirectory + "/environments/" + environment + ".properties";
