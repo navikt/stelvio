@@ -11,6 +11,7 @@
 						<id>default</id>
 						<phases>
 							<validate>
+								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-scripts,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:extract-bus-configuration,
 								no.nav.maven.plugins:maven-wpsdeploy-plugin:interpolate-config,
 							</validate>
