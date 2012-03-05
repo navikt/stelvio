@@ -103,15 +103,17 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 	protected String deployableArtifactsHome;
 	protected String environmentFile;
 	protected String moduleConfigHome;
+	protected String busConfigurationDirectory;
 
 	protected abstract void applyToWebSphere(final Commandline wsadminCommandline) throws MojoExecutionException, MojoFailureException;
 	
 	protected final void doExecute() throws MojoExecutionException, MojoFailureException {
 		
 		targetDirectory = baseDirectory + "/target";
+		busConfigurationDirectory = baseDirectory + busConfigurationExtractDirectory;
 		deployableArtifactsHome = targetDirectory + "/EARFilesToDeploy";
-		moduleConfigHome = baseDirectory + busConfigurationExtractDirectory + "/moduleconfig";
-		environmentFile = baseDirectory + busConfigurationExtractDirectory + "/environments/" + environment + ".properties";
+		moduleConfigHome = busConfigurationDirectory + "/moduleconfig";
+		environmentFile = busConfigurationDirectory + "/environments/" + environment + ".properties";
 		
 		/* Given that the variable wid.runtime is set correctly in settings.xml */
 		Commandline wsadminCommandLine = new Commandline();
