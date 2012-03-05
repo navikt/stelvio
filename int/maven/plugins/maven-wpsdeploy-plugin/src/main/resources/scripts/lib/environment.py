@@ -26,6 +26,10 @@
 # Description:	Create a name space binding. If it already exists, modify it.
 #****************************************************************************** 
 import sys
+
+from lib.utils6 import findConfigTargetWithScope, findNode, findScopeEntry, findServer, findServerOnNode, getConfigId, getConfigItemId, getProperty, readProperties, wsadminToList
+from lib.Utils import readProperties, getProperty
+
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
