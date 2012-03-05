@@ -27,9 +27,9 @@ def waitForMessagingEnginesStarted():
 			started = AdminControl.invoke(engine, "isStarted")
 		except:
 			max_failed = max_failed + 1
-			l.warning(""Could not reach messaging engine, trying again...")
-			l.warning(""Return value is ["+started+"]")
-			l.warning(""Retry #"+str(max_failed))
+			l.warning("Could not reach messaging engine, trying again...")
+			l.warning("Return value is ["+started+"]")
+			l.warning("Retry #"+str(max_failed))
 		
 		if (started == 'true'):
 			l.info(str(re.split(',', re.split('\=', engine)[1])[0] + ' is started'))
