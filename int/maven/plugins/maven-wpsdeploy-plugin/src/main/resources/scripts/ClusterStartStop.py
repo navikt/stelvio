@@ -1,7 +1,7 @@
 import sys, re
 from lib.syncUtil import sync
 import lib.logUtil as log
-from lib.timeUtil import Timer
+from lib.timerUtil import Timer
 
 l = log.getLogger(__name__)
 OPERATION = sys.argv[1]

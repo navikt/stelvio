@@ -18,7 +18,7 @@ from lib.environment import createWebSphereVariable
 dmgrProps = AdminControl.queryNames("processType=DeploymentManager,*" ).split(',')
 
 if (len(dmgrProps)>1):
-	l.info("(setEnvironmentVariableOnDmgr): Is managed"))
+	l.info("(setEnvironmentVariableOnDmgr): Is managed")
 	dmgrName = "";
 	for prop in dmgrProps:
 		if (prop.startswith("node")):

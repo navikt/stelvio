@@ -11,10 +11,9 @@ import lib.logUtil as log
 
 l = log.getLogger(__name__)
 DISTDIR				  = sys.argv[1]
-distDir				  = DISTDIR
 
-# file name without .ear extension from distDir
-ears = readDistributionDirectory(distDir)
+# file name without .ear extension from DISTDIR
+ears = readDistributionDirectory(DISTDIR)
 appNames = parseApplicationNames(ears)
 
 def remove_v(name):
@@ -22,7 +21,7 @@ def remove_v(name):
 
 def uninstallAll(appNames):
 	start_u = time.clock()
-	l.info("Reading distribution directory: ["+distDir+"].")
+	l.info("Reading distribution directory: ["+DISTDIR+"].")
 
 	l.info("Building appsToDeploy dict...")
 	start = time.clock()
@@ -232,7 +231,7 @@ def installEAR ( appName, cluster ):
 
 
 def installAll(appNames):
-	totalNumberOfEarFiles = readNumberOfFilesInDistributionDirectory(distDir)
+	totalNumberOfEarFiles = readNumberOfFilesInDistributionDirectory(DISTDIR)
 	counter = 0
 
 	clusters = AdminConfig.list('ServerCluster', AdminConfig.list('Cell')).splitlines()
