@@ -2,8 +2,6 @@ package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
 import java.io.File;
 
-import no.nav.maven.plugin.wpsdeploy.plugin.utils.JarExtractor;
-
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.cli.Commandline;
@@ -20,7 +18,14 @@ public class ExtractScripts extends WebsphereUpdaterMojo {
 
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
-		JarExtractor.extractJar(getJar(), new File(targetDirectory), "scripts/*");
+		Commandline cl = new Commandline();
+		cl.setExecutable("unzip");
+		
+		Commandline.Argument cmdArg = new Commandline.Argument();
+		cmdArg.setLine(getJar().getAbsolutePath() + " -d " + targetDirectory + " scripts/*");
+		cl.addArg(cmdArg);
+		
+		executeCommand(cl);
 		getLog().info("Successfully extracted the scripts folder into " + targetDirectory + ".");
 	}
 
