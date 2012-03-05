@@ -1,9 +1,5 @@
 package no.nav.maven.plugin.wpsdeploy.plugin.mojo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -21,71 +17,28 @@ import org.codehaus.plexus.util.cli.Commandline;
 
 public class RemoveBPMojo extends WebsphereUpdaterMojo {
 
-	private ArrayList<String> modulesToRemove;
+	private String modulesToRemove;
 
-	/*
-	 * Inherited method which is the one executed when running the script.
-	 * 
-	 * Builds up a command line to send as a argument to the RemoveOldBPModule.py script with the appropriate 
-	 * environment specific information, customized for the current runtime environment and runs the removeBP method
-	 * for each module specified in the constructor.
+	/* 
+	 * Builds up a command line to send as a argument to the RemoveOldBPModule.py script
 	 */
 	@Override
 	protected void applyToWebSphere(Commandline wsadminCommandLine) throws MojoExecutionException, MojoFailureException {
 		
-		modulesToRemove = new ArrayList<String>();
-		modulesToRemove.add("nav-bsrv-frg-hentinstitusjonsoppholdliste");
+		modulesToRemove = "";
 		
 		for (Artifact a : artifacts){
-			if (a.getArtifactId().contains("-microflow-")){
-				modulesToRemove.add(a.getArtifactId());
+			if (a.getArtifactId().contains("-microflow-") 
+					|| a.getArtifactId().equals("nav-bsrv-frg-hentinstitusjonsoppholdliste")){
+				modulesToRemove += a.getArtifactId() +"="+ a.getVersion() +" ";
 			}
 		}
-		
-		HashMap<String, String> modules = getModuleMap();
-	    
-		for (String artifact : modules.keySet()) {
-			
-			String[] orgArgs = wsadminCommandLine.getArguments();
-			Commandline cmdline = new Commandline();
-			
-			cmdline.setExecutable(wsadminCommandLine.getExecutable());
-			cmdline.addArguments(orgArgs);
-			
-			removeBP(cmdline, artifact, modules.get(artifact));
-		}
-	} 
-	
-	/*
-	 * Builds up and executes the commandline from the incoming parameters.
-	 */
-	private final void removeBP(final Commandline wsadminCommandLine,final String artifactId, String version) throws MojoExecutionException { 
 		
 		Commandline.Argument arg = new Commandline.Argument();
-		arg.setLine("RemoveOldBPModule.py " + artifactId + " " + version);
+		arg.setLine("RemoveOldBPModule.py " + modulesToRemove);
 		wsadminCommandLine.addArg(arg);
+		
 		executeCommand(wsadminCommandLine);
-	}
-
-	/*
-	 * Returns a HashMap<String, String> containing 
-	 * <[WHICH APP TO UNINSTALL], [WHICH VERSION OF THIS APP IS IN THIS RELEASE]> 
-	 */
-	private final HashMap<String, String> getModuleMap() {
-		
-		HashMap<String, String> modulesMap = new HashMap<String, String>();
-		
-		Set<Artifact> releaseArtifacts = artifacts;
-		
-		for (String module : modulesToRemove){
-			for (Artifact a : releaseArtifacts) {
-				if (a.getArtifactId().contains(module)){
-					modulesMap.put(module, a.getVersion());
-				}
-			}
-		}
-		
-		return modulesMap;
 	}
 
 	@Override

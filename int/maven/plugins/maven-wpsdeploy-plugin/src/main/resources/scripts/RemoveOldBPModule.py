@@ -16,31 +16,30 @@ import sys, re
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-APPLICATION_NAME = sys.argv[1]
-NEW_VERSION = sys.argv[2]
+ArgumentList = sys.argv[1:]
 
 def main():
+	for APPLICATION_NAME, NEW_VERSION in [x.split('=') for x in ArgumentList]:
+		l.info("RemoveOldBPModule: Checking whether older version of application " + APPLICATION_NAME + " exists.")
 
-	l.info("RemoveOldBPModule: Checking whether older version of application " + APPLICATION_NAME + " exists.")
+		appsInstalled = AdminApp.list()
 
-	appsInstalled = AdminApp.list()
+		appToUninstall = appsInstalled[appsInstalled.find(APPLICATION_NAME, 0, len(appsInstalled)):].split("\n")[0]
+		
+		if (len(appToUninstall) < 2):
+			l.info("Application not found!")
+			return
 
-	appToUninstall = appsInstalled[appsInstalled.find(APPLICATION_NAME, 0, len(appsInstalled)):].split("\n")[0]
-	
-	if (len(appToUninstall) < 2):
-		l.info("Application not found!")
-		return
-
-	if not outdatedVersion(appToUninstall, NEW_VERSION):
-		l.info("No newer version to install!")
-		return
-			
-	l.info("Uninstalling application: " + appToUninstall)
-	try:
-		AdminApp.uninstall(appToUninstall)
-	except:
-		l.exception("Uninstall failed!")
-	AdminConfig.save()
+		if not outdatedVersion(appToUninstall, NEW_VERSION):
+			l.info("No newer version to install!")
+			return
+				
+		l.info("Uninstalling application: " + appToUninstall)
+		try:
+			AdminApp.uninstall(appToUninstall)
+		except:
+			l.exception("Uninstall failed!")
+		AdminConfig.save()
 	
 def outdatedVersion(appToUninstall, newVersion):
 	'''
