@@ -16,23 +16,22 @@ import sys, re
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
-ArgumentList = sys.argv[1:]
+argumentList = sys.argv[1:]
+appsInstalled = AdminApp.list()
 
 def main():
-	for APPLICATION_NAME, NEW_VERSION in [x.split('=') for x in ArgumentList]:
+	for APPLICATION_NAME, NEW_VERSION in [x.split('=') for x in argumentList]:
 		l.info("RemoveOldBPModule: Checking whether older version of application " + APPLICATION_NAME + " exists.")
-
-		appsInstalled = AdminApp.list()
 
 		appToUninstall = appsInstalled[appsInstalled.find(APPLICATION_NAME, 0, len(appsInstalled)):].split("\n")[0]
 		
 		if (len(appToUninstall) < 2):
 			l.info("Application not found!")
-			return
+			continue
 
 		if not outdatedVersion(appToUninstall, NEW_VERSION):
 			l.info("No newer version to install!")
-			return
+			continue
 				
 		l.info("Uninstalling application: " + appToUninstall)
 		try:
