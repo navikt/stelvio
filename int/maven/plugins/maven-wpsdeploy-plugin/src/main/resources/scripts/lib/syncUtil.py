@@ -3,9 +3,7 @@ import lib.logUtil as log
 l = log.getLogger(__name__)
 
 # Define False, True
-(False, True) = (0,1)
-
-
+False, True = 0,1
 
 def sync(pollTimer=10, retriesBeforeResync=30):
 	l.info("Synchronizing and checking if the node is synchronized every %s seconds, and resyncronizing after every %s times the check commes back as not synchronized." % (pollTimer, retriesBeforeResync))
@@ -23,7 +21,7 @@ def sync(pollTimer=10, retriesBeforeResync=30):
 					syncNode(node)
 				else:
 					time.sleep(pollTimer)
-		l.info("%s is now synchronized!" % node
+		l.info("%s is now synchronized!" % node)
 
 def syncNode(node):
 	DeploymentManager = getDeployentManagerDict()
