@@ -41,7 +41,7 @@ public class SynchronizeNodesMojo extends WebsphereUpdaterMojo {
 				executeCommand(wsadminCommandLine);
 				break;
 			} catch (MySOAPException e) {
-				if (attempt < maxattempt){
+				if (attempt <= maxattempt){
 					getLog().info("Caught exception, retrying ... " + "[" + attempt + "/" + maxattempt + "]");
 				} else {
 					throw new RuntimeException("Exiting after retrying "+maxattempt+" times!");

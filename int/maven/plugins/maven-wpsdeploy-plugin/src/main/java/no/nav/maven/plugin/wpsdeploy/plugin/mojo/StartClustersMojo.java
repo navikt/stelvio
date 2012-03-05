@@ -48,7 +48,7 @@ public class StartClustersMojo extends WebsphereUpdaterMojo {
 				executeCommand(wsadminCommandLine);
 				break;
 			} catch (MySOAPException e) {
-				if (attempt < maxattempt){
+				if (attempt <= maxattempt){
 					getLog().info("Caught exception, retrying ... " + "[" + attempt + "/" + maxattempt + "]");
 					continue;
 				} else {

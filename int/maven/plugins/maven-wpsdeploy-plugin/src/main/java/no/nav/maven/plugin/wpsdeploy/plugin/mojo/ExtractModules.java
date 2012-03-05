@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.xml.parsers.FactoryConfigurationError;
 import javax.xml.parsers.ParserConfigurationException;
 
+import no.nav.maven.plugin.wpsdeploy.plugin.utils.ArgumentUtil;
 import no.nav.maven.plugin.wpsdeploy.plugin.utils.XMLUtils;
 
 import org.apache.maven.artifact.Artifact;
@@ -113,18 +114,6 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 		wsadminCommandLine.addArg(arg);
 		executeCommand(wsadminCommandLine);
 	}	
-	
-	public static String arrayListToString(ArrayList<String> a, String separator) {
-	    StringBuffer result = new StringBuffer();
-	    if (a.size() > 0) {
-	        result.append(a.get(0));
-	        for (int i=1; i<a.size(); i++) {
-	            result.append(separator);
-	            result.append(a.get(i));
-	        }
-	    }
-	    return result.toString();
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -161,7 +150,7 @@ public class ExtractModules extends WebsphereUpdaterMojo {
 			String mvnLocalRepo = localRepository.getUrl();
 			String mvnSnapshotRepo = ((Repository)repositories.get(0)).getUrl();
 			String mvnRepo = mvnSnapshotRepo.replace("-snapshots", "");
-			downloadEARFiles(wsadminCommandLine, arrayListToString(poms, ","), mvnLocalRepo, mvnRepo, mvnSnapshotRepo);
+			downloadEARFiles(wsadminCommandLine, ArgumentUtil.arrayListToDelimitedString(poms, ","), mvnLocalRepo, mvnRepo, mvnSnapshotRepo);
 			
 		} catch (ProjectBuildingException e) {
 			throw new MojoExecutionException("[ERROR]: " + e);
