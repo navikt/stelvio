@@ -216,35 +216,18 @@ def installEAR ( appName, cluster ):
 
 	appPath = DISTDIR +"/"+appName+".ear"
 
-	if (clusterName != ""):
-		options = "[ -verbose -cluster "+clusterName+" -distributeApp ]"
-		l.info("Installing ["+appName+"] with options ["+options+"] on "+clusterName+".")
-		#match = re.search("-" + "(\d+\.)+\d+(-)?[a-z]*[0-9]*(-SNAPSHOT)?$", appName)
-		#buildVersion = appName[match.start():]
+	if (clusterName == ""):
+		l.error("No serverName/nodeName nor clusterName specified")
+		
+	options = "[ -verbose -cluster "+clusterName+" -distributeApp ]"
+	l.info("Installing ["+appName+"] with options ["+options+"] on "+clusterName+".")
 
-		try:
-			_excp_ = 0
-			installed = AdminApp.install(appPath, options)
-		except:
-			_type_, _value_, _tbck_ = sys.exc_l.info()
-			installed = `_value_`
-			_excp_ = 1
-		#endTry
-		temp = _excp_
-		if (temp != 0):
-			msg = "Exception installing "+appName+" to "+clusterName
-			l.error(msg+'\n'+installed)
-		#endIf
-	#endIf
-	else:
-		msg = "No serverName/nodeName nor clusterName specified"
-		l.error(msg)
-	#endElse
-	if (len(installed) > 0):
-		l.info(installed )
+	try:
+		installed = AdminApp.install(appPath, options)
+	except:
+		l.exception("Exception installing "+appName+" to "+clusterName)
 
-	#print ("INFO (installEAR): "+ appName + " DONE." )
-#endDef
+	l.info(installed)
 
 
 
