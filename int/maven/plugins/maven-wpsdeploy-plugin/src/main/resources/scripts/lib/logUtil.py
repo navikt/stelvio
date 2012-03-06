@@ -18,12 +18,12 @@ __defaultLogLevel = 3
 def getLogger(scriptName):
 	'''Usage: l = getLogger(__name__)'''
 	if not __loggers.has_key(scriptName):
-		__loggers[scriptName] = self.__Logger(scriptName)
+		__loggers[scriptName] = __Logger(scriptName)
 	return __loggers[scriptName]
 
 class __Logger:
 	def __init__(self, scriptName):
-		self.currentLogLevel = __getLogLevelId()
+		self.currentLogLevel = getLogLevelId()
 		if scriptName == "__main__":
 			self.scriptName = sys.argv[0]
 		else:
@@ -56,11 +56,10 @@ class __Logger:
 		
 	def __time(self): return time.strftime("%y.%m.%d-%H:%M:%S")
 
-	def __getLogLevelId():
-		logLevel = java.lang.System.getProperty('logging.level')
-		if logLevel:
-			for key, value in __availableLogLevels.items():
-				if key == logLevel.upper():
-					self.info("[[Logging.level=%s]]" % key)
-					return value
-		return __defaultLogLevel
+def getLogLevelId():
+	logLevel = java.lang.System.getProperty('logging.level')
+	if logLevel:
+		for key, value in __availableLogLevels.items():
+			if key == logLevel.upper():
+				return value
+	return __defaultLogLevel
