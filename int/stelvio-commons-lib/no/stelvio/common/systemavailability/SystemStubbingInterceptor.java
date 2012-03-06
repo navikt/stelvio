@@ -213,7 +213,7 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 		RuntimeException exception = null;
 		Object output = null;
 		validateSupportedInput(operationType, input);
-		String requestId = Long.toString(System.currentTimeMillis());
+		String requestId = java.util.UUID.randomUUID().toString();
 		recordStubDataRequest(requestId, operationType, input);
 		try {
 			output = interceptorChain.doIntercept(operationType, input);
@@ -368,9 +368,15 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	private void persistStubData(DataObject dataObject, File file, OperationType operationType) {
 		OutputStream outputStream = null;
 		try {
-			outputStream = new FileOutputStream(file);
-			Type type = dataObject.getType();
+			boolean fileSucessfullyCreated = file.createNewFile();
 			
+			if(!fileSucessfullyCreated){
+				throw new IOException();
+			}
+				
+			outputStream = new FileOutputStream(file);
+			Type type = dataObject.getType();		
+						
 			// Workaround start
 			if (operationType.isWrapperType(type) && !isObjectPrimitive(dataObject.get(0))) {
 				DataObject child = (DataObject)dataObject.get(0);
@@ -398,6 +404,12 @@ public class SystemStubbingInterceptor extends GenericInterceptor {
 	private void persistStubData(RuntimeException exception, File file) {
 		ObjectOutputStream objectOutputStream = null;
 		try {
+			boolean fileSucessfullyCreated = file.createNewFile();
+			
+			if(!fileSucessfullyCreated){
+				throw new IOException();
+			}
+			
 			objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
 			objectOutputStream.writeObject(exception);
 		} catch (IOException e) {
