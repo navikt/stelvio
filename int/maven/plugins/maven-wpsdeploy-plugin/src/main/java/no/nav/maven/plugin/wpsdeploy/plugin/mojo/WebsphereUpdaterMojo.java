@@ -126,7 +126,7 @@ public abstract class WebsphereUpdaterMojo extends WebsphereMojo {
 		args.add("-password " + dmgrPassword);
 		
 		if (logLevel != null){
-			args.add("-Dlogging.level " + logLevel);
+			args.add("-javaoption -Dlogging.level=" + logLevel);
 		}
 		
 		args.add("-f " + targetDirectory + "/scripts/Executor.py");
