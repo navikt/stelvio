@@ -18,7 +18,7 @@ __defaultLogLevel = 3
 def getLogger(scriptName):
 	'''Usage: l = getLogger(__name__)'''
 	if not __loggers.has_key(scriptName):
-		__loggers[scriptName] = __Logger(scriptName)
+		__loggers[scriptName] = self.__Logger(scriptName)
 	return __loggers[scriptName]
 
 class __Logger:
