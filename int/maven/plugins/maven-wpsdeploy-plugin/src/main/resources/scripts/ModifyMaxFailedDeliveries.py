@@ -40,5 +40,5 @@ for dest in SIDestList:
 		l.info("[ " + repr(COUNTER) + " of " + LENGTH + " ] - Successfully modified maxFailedDeliveries on destination " + ident)
 		COUNTER += 1
 	except:
-		l.exception("(ModifyMaxFailedDeliveries): Error modifying SIB Destination for maxFailedDeliveries "
+		l.exception("(ModifyMaxFailedDeliveries): Error modifying SIB Destination for maxFailedDeliveries!")
 AdminConfig.save()

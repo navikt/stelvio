@@ -6,14 +6,14 @@ l = log.getLogger(__name__)
 INPUT = sys.argv[1]
 
 def setBindingAuth(userid, password, bindingname):
-	l.info("Modifying binding "+bindingname+"."))
-	l.info("Binding info: userId: "+userid+" pw: " +password+" bindingname: " + bindingname))
+	l.info("Modifying binding "+bindingname+".")
+	l.info("Binding info: userId: "+userid+" pw: " +password+" bindingname: " + bindingname)
 	try:
 		result = AdminTask.setBinding('[-policyType WSSecurity -attachmentType client -bindingScope domain -attributes [ [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.classname com.ibm.websphere.wssecurity.callbackhandler.UNTGenerateCallbackHandler] [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.basicauth.userid '+userid+'] [description "' + bindingname + '"] [domain global] [application.securityoutboundbindingconfig.tokengenerator_0.callbackhandler.basicauth.password '+password+'] ] -bindingName "'+bindingname+'" -bindingLocation ]')
 	except:
 		l.exception("Exception modyfing binding "+bindingname+".")
 
-	l.info("Executed with success. Saving..."))
+	l.info("Executed with success. Saving...")
 	save()
 
 if (INPUT.count("#") > 0):

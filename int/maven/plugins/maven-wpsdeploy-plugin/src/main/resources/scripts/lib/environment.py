@@ -513,7 +513,7 @@ def createSharedLibrary ( propertyFileName ):
 
 	global AdminConfig
 
-	l.info('\n===== Create Shared Library '+libName+' if it does not exist  =====')
+	l.info('===== Create Shared Library '+libName+' if it does not exist  =====')
 
 
 	if (scope.lower() == "server"):
@@ -603,7 +603,7 @@ def createWebSphereVariable ( scope, scopeName, nodeName, name, value ):
 
 	global AdminConfig
 
-	l.info('\n====== Create variable '+name+' with value '+value+', if it does not exist ======')
+	l.info('====== Create variable '+name+' with value '+value+', if it does not exist ======')
 
 	scopeEntry = findScopeEntry(scope, scopeName)
 	if (scopeEntry == 0):

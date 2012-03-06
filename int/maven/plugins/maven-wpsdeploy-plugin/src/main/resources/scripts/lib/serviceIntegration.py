@@ -31,8 +31,12 @@ l = log.getLogger(__name__)
 # Author:     	Chuck Misuraca - test@example.com
 #
 # Note:  	Even though the documents indicate that description is an option, it 
-#	 	is not available from wsadmin or the console.
+#	 	is not available from wsadmin or the console.	
 #****************************************************************************** 
+from lib.utils6 import getProperty, readProperties, toggleService
+from lib.Utils import readProperties, getProperty
+
+
 def removeServerOrClusterToSIB ( busName, serverName, nodeName):
 
 	#-----------------------------------------------------------------------------
@@ -42,7 +46,7 @@ def removeServerOrClusterToSIB ( busName, serverName, nodeName):
 	l.info('\n====== remove '+serverName+' to the '+busName+' SIB =====')
 
 	SIBus = ['']
-	SIBusList = AdminTask.listSIBuses().split(lineSeparator)
+	SIBusList = AdminTask.listSIBuses().splitlines()
 
 	# Make sure the bus exists
 	for bus in SIBusList:
@@ -84,7 +88,7 @@ def addServerOrClusterToSIB ( busName, serverName, nodeName, dsName ):
 	l.info('\n====== Add '+serverName+' to the '+busName+' SIB =====')
 
 	SIBus = ''
-	SIBusList = AdminTask.listSIBuses().split(lineSeparator)
+	SIBusList = AdminTask.listSIBuses().splitlines()
 
 	# Make sure the bus exists
 	for bus in SIBusList:
@@ -115,7 +119,7 @@ def addServerOrClusterToSIB ( busName, serverName, nodeName, dsName ):
 #****************************************************************************** 
 def addUserOrGroupToBus ( busName, userName, groupName ):
 
-	SIBusList = AdminTask.listSIBuses().split(lineSeparator)
+	SIBusList = AdminTask.listSIBuses().splitlines()
 
 	# Make sure the bus exists
 	for bus in SIBusList:
@@ -210,7 +214,7 @@ def createSIBDestination( propertyFileName ):
 	parms += ' -replyDestination '+replyDest
 	parms += ' -replyDestinationBus '+replyDestBus+' -delegateAuthorizationCheckToTarget '+delAuth
 	
-	SIDestList = AdminTask.listSIBDestinations('-bus '+busName).split(lineSeparator)
+	SIDestList = AdminTask.listSIBDestinations('-bus '+busName).splitlines()
 	# Check for existence of SIB Destination, if yes delete
 	for dest in SIDestList:
 		ident = AdminConfig.showAttribute(dest, "identifier")
@@ -238,7 +242,7 @@ def createSIBDestination( propertyFileName ):
 		#	Fix this ".000-SCA stuff. It must be configurable.
 		if (type == "Queue" and highMessThres != None and highMessThres != "" ):
 			l.info("(createSIBDestination): Updating QueuePoint: HIGH_MESSAGE_THRESHOLD is set")
-			allqp = AdminConfig.list('SIBQueueLocalizationPoint').split(lineSeparator)
+			allqp = AdminConfig.list('SIBQueueLocalizationPoint').splitlines()
 			queuepointupdated=0
 			for qp in allqp:
 				identifier = AdminConfig.showAttribute(qp, 'identifier')
@@ -271,7 +275,7 @@ def deleteSIBDestination( propertyFileName ):
 	busName = 	getProperty("BUSNAME")
 	destName = 	getProperty("NAME")
 	l.info('(deleteSIBDestination): Delete '+destName+' on the '+busName+' SIBus')
-	SIDestList = AdminTask.listSIBDestinations('-bus '+busName).split(lineSeparator)
+	SIDestList = AdminTask.listSIBDestinations('-bus '+busName).splitlines()
 	# Check for existence of SIB Destination, if yes delete
 	for dest in SIDestList:
 		ident = AdminConfig.showAttribute(dest, "identifier")
@@ -313,7 +317,7 @@ def createSIBus( propertyFileName ):
 
 	l.info('====== Create SIBus '+name+', if it does not exist ======')
 
-	SIBusList = AdminTask.listSIBuses().split(lineSeparator)
+	SIBusList = AdminTask.listSIBuses().splitlines()
 
 	# Check for existence of SIBus
 	for bus in SIBusList:
@@ -343,7 +347,7 @@ def createSIBus( propertyFileName ):
 #****************************************************************************** 
 def removeUserOrGroupFromBus ( busName, userName, groupName ):
 
-	SIBusList = AdminTask.listSIBuses().split(lineSeparator)
+	SIBusList = AdminTask.listSIBuses().splitlines()
 
 	# Make sure the bus exists
 	for bus in SIBusList:

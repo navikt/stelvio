@@ -84,8 +84,6 @@ def regexpn(pattern, string, flags=0):
         r = re.compile(pattern, flags).subn("", string)
         return r[1]
 #endDef
-
-lineSeparator = java.lang.System.getProperty('line.separator')
 props = None
 
 #--------------------------------------------------------------------
@@ -111,7 +109,7 @@ def addHostAlias ( hostName, dnsHost, port ):
 
         # determin whether alias exists
         oNeedToDefine = 1
-	aliasList = AdminConfig.list("HostAlias", hostTarget).split(lineSeparator)
+	aliasList = AdminConfig.list("HostAlias", hostTarget).splitlines()
         for HAEntry in aliasList:
         	oHostName = AdminConfig.showAttribute(HAEntry, "hostname")
                 oPort = AdminConfig.showAttribute(HAEntry, "port")
@@ -203,7 +201,7 @@ def createJAASAuthAlias ( cellName, authAliasName, user, password, desc ):
         global AdminApp, AdminConfig
 
         # Check if alias already exists	
-        listJAAS = AdminConfig.list("JAASAuthData").split(lineSeparator)
+        listJAAS = AdminConfig.list("JAASAuthData").splitlines()
 	if (listJAAS != ['']):
 		for eachJAAS in listJAAS:
 			jaasname = AdminConfig.showAttribute(eachJAAS, "alias")
@@ -266,7 +264,7 @@ def doesAppExist ( appName ):
 #		0 (does not exist)
 #--------------------------------------------------------------------
 def doesOlderAppVersionsExist ( appName ):
-		applications = AdminApp.list().split(lineSeparator);
+		applications = AdminApp.list().splitlines();
 		
 		for app in applications:
 			if(app.find(appName) >= 0):
@@ -311,7 +309,7 @@ def findConfigTarget ( nameSearch, type ):
 	if (elements == " "):
 		return 0
 	#endIf
-	elementList = elements.split(lineSeparator)
+	elementList = elements.splitlines()
 	for element in elementList:
 		element=element.rstrip()
 		if (len(element) > 0 ):
@@ -346,7 +344,7 @@ def findConfigTargetWithScope ( scope, scopeName, nameSearch, type ):
         #endIf 
 
         elements = AdminConfig.list(type, scopeToUse )
-	elementList = elements.split(lineSeparator)
+	elementList = elements.splitlines()
 	for element in elementList:
 		element = element.rstrip()
 		if ((element.find(scopeName+"|") >= 0) or (element.find(nameSearch+"|") >= 0)):
@@ -749,7 +747,7 @@ def getPort ( nodeName, serverName ):
 	global AdminConfig
 
 	node = AdminConfig.getid("/Node:"+nodeName+"/")
-	serverEntries = AdminConfig.list('ServerEntry', node).split(lineSeparator)
+	serverEntries = AdminConfig.list('ServerEntry', node).splitlines()
 
 	for serverEntry in serverEntries:
 		sName = AdminConfig.showAttribute(serverEntry, "serverName")
@@ -1900,8 +1898,7 @@ def checkServerStopped ( nodeName, serverName ):
        
 #endDef
 def sync():
-	lineSeparator = java.lang.System.getProperty('line.separator')
-	nodeList = AdminTask.listNodes().split(lineSeparator)
+	nodeList = AdminTask.listNodes().splitlines()
 	print ("INFO (sync): Syncronizing...")
 	if(len(nodeList)>1):
 		syncNodesToMaster( nodeList )

@@ -10,11 +10,8 @@ class Timer:
 	def __str__(self):
 		return self.__secondsToHMS(self.seconds())
 		
-	def HMS(self):
-		return self.__secondsToHMS(self.seconds())	
-	
 	def seconds(self):
-		return int(time.time() - self.startTime)
+		return round(time.time() - self.startTime, 0)
 				
 	def __secondsToHMS(self, secondsPased):
 		minutes, seconds = divmod(secondsPased, 60)
