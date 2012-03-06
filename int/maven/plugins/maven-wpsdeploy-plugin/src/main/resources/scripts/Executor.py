@@ -2,20 +2,20 @@ import sys, os, re
 import traceback
 import exceptions
 
-glob= globals()
+glo = globals()
 loc = locals()
 # Define False, True for executed script, imported libs still need to spesify them manually
-glob['False'] = 0
-glob['True'] = 1
-def main_Executor():
-	scriptDir = getScriptDir_Executor()	
+glo['False'] = 0
+glo['True'] = 1
+def Executor_main():
+	scriptDir = Executor_getScriptDir()	
 	sys.path.append(scriptDir) #Essential to get the import statement to work as expected
 
-	scriptPath = scriptDir + getScriptName_Executor()
+	scriptPath = scriptDir + Executor_getScriptName()
 
-	executeScript_Executor(scriptPath)
+	Executor_executeScript(scriptPath)
 
-def getScriptDir_Executor():
+def Executor_getScriptDir():
 	IBM_JAVA_COMMAND_LINE = os.environ.get("IBM_JAVA_COMMAND_LINE")
 	match = re.search("-f\s+(/?\S+/)?Executor.py", IBM_JAVA_COMMAND_LINE)
 	if not match:
@@ -23,20 +23,20 @@ def getScriptDir_Executor():
 	else:
 			return match.group(1) or "./"
 
-def getScriptName_Executor():
+def Executor_getScriptName():
 	if not sys.argv:
 		raise ValueError, "This script needs to have the script it is supposed to execute as an argument!"
 	return sys.argv[0]
 
-def executeScript_Executor(scriptPath):
-	scriptName = getScriptName_Executor()
+def Executor_executeScript(scriptPath):
+	scriptName = Executor_getScriptName()
 	from lib.timerUtil import Timer
 	import lib.logUtil as log
 	l = log.getLogger("Executor")
 	l.info("Executing", scriptName)
 	myTimer = Timer()
 	try:
-		execfile(scriptPath, glob, loc)
+		execfile(scriptPath, glo, loc)
 	except:
 		exceptionInstance = sys.exc_info()[1]
 		if isinstance(exceptionInstance, exceptions.SystemExit):
@@ -47,4 +47,4 @@ def executeScript_Executor(scriptPath):
 			l.exception("Received an exception while executing script:", scriptName)
 	l.info(scriptName, "took", myTimer, "to complete.")
 
-main_Executor()
+Executor_main()
