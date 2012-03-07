@@ -1,5 +1,6 @@
 import re, time
 from lib.saveUtil import save
+import lib.exceptionUtil as ex
 import lib.logUtil as log
 l = log.getLogger(__name__)
 
@@ -36,12 +37,14 @@ def isSync(node, retries = 5):
 		try:
 			l.debug('AdminControl.completeObjectName("type=NodeSync,node=" + '+node+' + ",*")')
 			nodeSync = AdminControl.completeObjectName("type=NodeSync,node=" + node + ",*")
-			l.debug('AdminControl.invoke('+nodeSync+', \'isNodeSynchronized\')')
-			synched = AdminControl.invoke(nodeSync, 'isNodeSynchronized')			
-			l.debug('sync check done')
+			l.debug('AdminControl.invoke("'+nodeSync+'", "isNodeSynchronized")')
+			synched = AdminControl.invoke(nodeSync, "isNodeSynchronized")
+			l.debug("isSync(%s)"%node, "method is finished!")
 			return synched == 'true'
 		except:
-			l.warning('Encountered an exception! Retrying %s more time(s)...'% (retries-i))
+			l.warning('Encountered an exception while checking if node(%s) was synchronized!'%node)
+			l.debug(ex.getException())
+			l.info('Retrying %s more time(s)...'% (retries-i))
 	else:
 		l.error('Exceeded the maximum number for allowed retries!')
 	

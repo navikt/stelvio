@@ -1,5 +1,4 @@
 import sys, os, re
-import traceback
 import exceptions
 
 glo = globals()
@@ -29,18 +28,21 @@ def Executor_getScriptName():
 	return sys.argv[0]
 
 def Executor_executeScript(scriptPath):
-	scriptName = Executor_getScriptName()
 	from lib.timerUtil import Timer
 	import lib.logUtil as log
+	import lib.exceptionUtil
+	
+	scriptName = Executor_getScriptName()
 	l = log.getLogger("Executor")
 	l.info("Executing", scriptName)
 	myTimer = Timer()
+	
 	try:
 		execfile(scriptPath, glo, loc)
 	except:
-		exceptionInstance = sys.exc_info()[1]
-		if isinstance(exceptionInstance, exceptions.SystemExit):
-			exitCode = exceptionInstance.code
+		ex = lib.exceptionUtil.getException()
+		if ex.checkInstance(exceptions.SystemExit):
+			exitCode = ex.getExitCode()
 			l.println("Exitcode:", exitCode)
 			sys.exit(exitCode)
 		else:
