@@ -18,18 +18,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-tasks-TasksPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>blockBuildWhenDownstreamBuilding</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-tasks-TasksPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>hudson-plugins-descriptionsetter-JobByDescription</string>
@@ -51,6 +51,12 @@
       </base-property>
     </entry>
     <entry>
+      <string>logRotator</string>
+      <log-rotator-property>
+        <propertyOverridden>false</propertyOverridden>
+      </log-rotator-property>
+    </entry>
+    <entry>
       <string>hudson-queueSorter-PrioritySorterJobProperty</string>
       <base-property>
         <originalValue class="hudson.queueSorter.PrioritySorterJobProperty">
@@ -60,20 +66,14 @@
       </base-property>
     </entry>
     <entry>
-      <string>logRotator</string>
-      <log-rotator-property>
-        <propertyOverridden>false</propertyOverridden>
-      </log-rotator-property>
-    </entry>
-    <entry>
-      <string>hudson-plugins-violations-ViolationsPublisher</string>
+      <string>hudson-plugins-pmd-PmdPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-pmd-PmdPublisher</string>
+      <string>hudson-plugins-violations-ViolationsPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -106,14 +106,14 @@
       </boolean-property>
     </entry>
     <entry>
-      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
+      <string>hudson-plugins-git-GitPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-git-GitPublisher</string>
+      <string>org-hudsonci-maven-plugin-dependencymonitor-DependencyNotifier</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -139,18 +139,18 @@
       </external-property>
     </entry>
     <entry>
-      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>cleanWorkspaceRequired</string>
       <boolean-property>
         <originalValue class="boolean">false</originalValue>
         <propertyOverridden>false</propertyOverridden>
       </boolean-property>
+    </entry>
+    <entry>
+      <string>hudson-tasks-test-AggregatedTestResultPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>hudson-tasks-junit-JUnitResultArchiver</string>
@@ -168,13 +168,6 @@
     </entry>
     <entry>
       <string>hudson-plugins-sonar-SonarPublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
-      <string>hudson-tasks-JavadocArchiver</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -213,6 +206,13 @@
       </copy-write-list-property>
     </entry>
     <entry>
+      <string>hudson-tasks-JavadocArchiver</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
+    </entry>
+    <entry>
       <string>join-JoinTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -227,17 +227,17 @@
       </external-property>
     </entry>
     <entry>
-      <string>customWorkspace</string>
-      <string-property>
-        <propertyOverridden>false</propertyOverridden>
-      </string-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-emailext-ExtendedEmailPublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
+    </entry>
+    <entry>
+      <string>customWorkspace</string>
+      <string-property>
+        <propertyOverridden>false</propertyOverridden>
+      </string-property>
     </entry>
     <entry>
       <string>quietPeriod</string>
@@ -274,24 +274,24 @@
         <originalValue class="hudson.util.DescribableList">
           <hudson.tasks.Shell>
             <command>if [[ &quot;${BusPomRevision}&quot; =~ &quot;^[0-9]+$&quot; ]] ;then
-  wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-pom/pom.xml?op=dl&amp;rev=${BusPomRevision}
+  wget -O pom.xml https://versjonskontroll.adeo.no/wsvn/stelvio/trunk/int/maven/poms/maven-wpsdeploy-pom/pom.xml?op=dl\&amp;rev=${BusPomRevision}
 else
   echo &quot;Revision must be a number&quot;
   exit 1
 fi</command>
           </hudson.tasks.Shell>
           <hudson.tasks.Maven>
-            <targets>clean
-deploy
--Denvironment=${Environment}
--Dbus-configuration-version=${BusConfigurationVersion}
--Desb-modules-version=${ESBVersion}
--Dnav-modules-version=${ESBVersion}
--Dpensjon-modules-version=${ESBVersion}
--Dpensjon-prosess-modules-version=${ESBVersion}
--Dekstern-pensjon-modules-version=${ESBVersion}
--DinteractiveMode=false
--DenvClass=T
+            <targets>clean&#xd;
+deploy&#xd;
+-Denvironment=${Environment}&#xd;
+-Dbus-configuration-version=${BusConfigurationVersion}&#xd;
+-Desb-modules-version=${ESBVersion}&#xd;
+-Dnav-modules-version=${ESBVersion}&#xd;
+-Dpensjon-modules-version=${ESBVersion}&#xd;
+-Dpensjon-prosess-modules-version=${ESBVersion}&#xd;
+-Dekstern-pensjon-modules-version=${ESBVersion}&#xd;
+-DinteractiveMode=false&#xd;
+-DenvClass=T&#xd;
 -Dlogging.level=DEBUG</targets>
             <mavenName>Maven</mavenName>
             <usePrivateRepository>false</usePrivateRepository>
@@ -301,14 +301,14 @@ deploy
       </describable-list-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-clearcase-ucm-UcmMakeBaselineComposite</string>
+      <string>hudson-plugins-clearcase-ucm-UcmMakeBaseline</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -355,13 +355,6 @@ deploy
       </trigger-property>
     </entry>
     <entry>
-      <string>hudson-plugins-cigame-GamePublisher</string>
-      <external-property>
-        <propertyOverridden>false</propertyOverridden>
-        <modified>false</modified>
-      </external-property>
-    </entry>
-    <entry>
       <string>hudson-plugins-parameterizedtrigger-BuildTrigger</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
@@ -369,7 +362,7 @@ deploy
       </external-property>
     </entry>
     <entry>
-      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
+      <string>hudson-plugins-cigame-GamePublisher</string>
       <external-property>
         <propertyOverridden>false</propertyOverridden>
         <modified>false</modified>
@@ -381,6 +374,13 @@ deploy
         <originalValue class="hudson.scm.NullSCM"/>
         <propertyOverridden>false</propertyOverridden>
       </scm-property>
+    </entry>
+    <entry>
+      <string>hudson-plugins-findbugs-FindBugsPublisher</string>
+      <external-property>
+        <propertyOverridden>false</propertyOverridden>
+        <modified>false</modified>
+      </external-property>
     </entry>
     <entry>
       <string>hudson-triggers-TimerTrigger</string>
