@@ -352,6 +352,28 @@
       </columns>
       <includeRegex>(2012HL2_7\.3_).*</includeRegex>
     </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Deploy</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <de.fspengler.hudson.pview.ConsoleViewColumn/>
+      </columns>
+      <includeRegex>.*[Dd]eploy.*</includeRegex>
+    </listView>
   </views>
   <primaryView>All</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
